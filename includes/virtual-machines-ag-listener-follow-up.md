@@ -1,0 +1,2 @@
+Po vytvoření naslouchacího procesu skupiny dostupnosti, může být nezbytné upravit parametry clusteru RegisterAllProvidersIP a HostRecordTTL pro prostředek naslouchací proces. Tyto parametry můžete zkrátit dobu opětovného připojení po selhání, což by mohlo zabránit vypršení časových limitů připojení. Další informace o těchto parametrů, a také ukázkový kód, najdete v části [vytvořit nebo nakonfigurovat naslouchací proces skupiny dostupnosti](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
+
