@@ -1,0 +1,4 @@
+Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) ke každému z virtuálních počítačů. Síťový adaptér více je požadavek pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN. Seskupování více taky poskytuje další funkce správy provoz sítě, včetně izolace přenosů dat mezi popředí ukončení síťový adaptér a back end adaptérů NIC: nebo oddělení provozu roviny data z provozu roviny správy.
+
+Než budete moct implementovat více síťových adaptérů ve virtuálních počítačích, je třeba pochopit, kdy mohou používat více síťových adaptérů, a způsob jejich použití. Pro čtení [přehled seskupování více](../articles/virtual-network/virtual-networks-multiple-nics.md) Další informace o virtuálních počítačů s více síťovými kartami.
+
