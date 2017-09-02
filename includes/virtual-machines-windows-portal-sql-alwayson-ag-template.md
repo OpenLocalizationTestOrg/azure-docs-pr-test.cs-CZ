@@ -1,0 +1,2 @@
+Tento kurz vás provede procesem vytváření řešení na portálu Azure. Pokud vás zajímá při vytváření tohoto řešení ze šablony, vyberte příslušnou šablonu z [Microsoft Azure GitHub šablony](http://github.com/Azure/azure-quickstart-templates). [Vytvořit skupinu dostupnosti s virtuální počítače repliky SQL Server 2014](http://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) šablona vytváří stejný řešení jako tento kurz. 
+
