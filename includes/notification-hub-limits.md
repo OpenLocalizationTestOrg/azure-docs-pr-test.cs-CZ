@@ -1,9 +1,9 @@
 
-| ÚROVEŇ: | FREE | BASIC | STANDARD |
+| <span data-ttu-id="26599-101">ÚROVEŇ:</span><span class="sxs-lookup"><span data-stu-id="26599-101">TIER:</span></span> | <span data-ttu-id="26599-102">FREE</span><span class="sxs-lookup"><span data-stu-id="26599-102">FREE</span></span> | <span data-ttu-id="26599-103">BASIC</span><span class="sxs-lookup"><span data-stu-id="26599-103">BASIC</span></span> | <span data-ttu-id="26599-104">STANDARD</span><span class="sxs-lookup"><span data-stu-id="26599-104">STANDARD</span></span> |
 | --- | --- | --- | --- |
-| Nabízená oznámení v ceně |1 milion |10 milionů |10 milionů |
-| Aktivní zařízení |500 |200 000 | 10 milionů |
-| Kvóta značek na instalaci/registraci |60 |60 |60 |
+| <span data-ttu-id="26599-105">Nabízená oznámení v ceně</span><span class="sxs-lookup"><span data-stu-id="26599-105">Included Pushes</span></span> |<span data-ttu-id="26599-106">1 milion</span><span class="sxs-lookup"><span data-stu-id="26599-106">1 Million</span></span> |<span data-ttu-id="26599-107">10 milionů</span><span class="sxs-lookup"><span data-stu-id="26599-107">10 Million</span></span> |<span data-ttu-id="26599-108">10 milionů</span><span class="sxs-lookup"><span data-stu-id="26599-108">10 Million</span></span> |
+| <span data-ttu-id="26599-109">Aktivní zařízení</span><span class="sxs-lookup"><span data-stu-id="26599-109">Active Devices</span></span> |<span data-ttu-id="26599-110">500</span><span class="sxs-lookup"><span data-stu-id="26599-110">500</span></span> |<span data-ttu-id="26599-111">200 000</span><span class="sxs-lookup"><span data-stu-id="26599-111">200,000</span></span> | <span data-ttu-id="26599-112">10 milionů</span><span class="sxs-lookup"><span data-stu-id="26599-112">10 million</span></span> |
+| <span data-ttu-id="26599-113">Kvóta značek na instalaci/registraci</span><span class="sxs-lookup"><span data-stu-id="26599-113">Tag quota per installation/registration</span></span> |<span data-ttu-id="26599-114">60</span><span class="sxs-lookup"><span data-stu-id="26599-114">60</span></span> |<span data-ttu-id="26599-115">60</span><span class="sxs-lookup"><span data-stu-id="26599-115">60</span></span> |<span data-ttu-id="26599-116">60</span><span class="sxs-lookup"><span data-stu-id="26599-116">60</span></span> |
 
-Další podrobné informace o těchto omezeních a informace o cenách najdete v části [Ceník Notification Hubs](https://azure.microsoft.com/pricing/details/notification-hubs/). 
+<span data-ttu-id="26599-117">Další podrobné informace o těchto omezeních a informace o cenách najdete v části [Ceník Notification Hubs](https://azure.microsoft.com/pricing/details/notification-hubs/).</span><span class="sxs-lookup"><span data-stu-id="26599-117">For additional details on these limits and for information on pricing, see [Notification Hubs Pricing](https://azure.microsoft.com/pricing/details/notification-hubs/).</span></span> 
 

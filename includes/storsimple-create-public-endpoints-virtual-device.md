@@ -1,14 +1,14 @@
-#### <a name="to-create-public-endpoints-on-the-virtual-device"></a>Vytvoření veřejných koncových bodů na virtuálním zařízení
+#### <a name="to-create-public-endpoints-on-the-virtual-device"></a><span data-ttu-id="df014-101">Vytvoření veřejných koncových bodů na virtuálním zařízení</span><span class="sxs-lookup"><span data-stu-id="df014-101">To create public endpoints on the virtual device</span></span>
 
-1. Přihlaste se k portálu Azure Classic.
-2. Klikněte na **Virtuální počítače** a potom vyberte virtuální počítač, který používáte jako virtuální zařízení.
-3. Klikněte na **Koncové body**. Objeví se stránka **Koncové body**, která obsahuje všechny koncové body pro daný virtuální počítač.
-4. Klikněte na tlačítko **Add** (Přidat). Zobrazí se dialogové okno **Přidat koncový bod**. Pokračujte kliknutím na šipku.
-5. Do pole **Název** zadejte následující název koncového bodu: **WinRMHttps**.
-6. V poli **Protokol** uveďte **TCP**.
-7. Do pole **Veřejný port** zadejte čísla portů, která chcete pro připojení použít.
-8. Do pole **Privátní port** zadejte **5986**.
-9. Kliknutím na symbol zaškrtnutí vytvořte koncový bod.
+1. <span data-ttu-id="df014-102">Přihlaste se k portálu Azure Classic.</span><span class="sxs-lookup"><span data-stu-id="df014-102">Sign in to the Azure classic portal.</span></span>
+2. <span data-ttu-id="df014-103">Klikněte na **Virtuální počítače** a potom vyberte virtuální počítač, který používáte jako virtuální zařízení.</span><span class="sxs-lookup"><span data-stu-id="df014-103">Click **Virtual Machines**, and then select the virtual machine that is being used as your virtual device.</span></span>
+3. <span data-ttu-id="df014-104">Klikněte na **Koncové body**.</span><span class="sxs-lookup"><span data-stu-id="df014-104">Click **Endpoints**.</span></span> <span data-ttu-id="df014-105">Objeví se stránka **Koncové body**, která obsahuje všechny koncové body pro daný virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="df014-105">The **Endpoints** page lists all endpoints for the virtual machine.</span></span>
+4. <span data-ttu-id="df014-106">Klikněte na tlačítko **Add** (Přidat).</span><span class="sxs-lookup"><span data-stu-id="df014-106">Click **Add**.</span></span> <span data-ttu-id="df014-107">Zobrazí se dialogové okno **Přidat koncový bod**.</span><span class="sxs-lookup"><span data-stu-id="df014-107">The **Add Endpoint** dialog box appears.</span></span> <span data-ttu-id="df014-108">Pokračujte kliknutím na šipku.</span><span class="sxs-lookup"><span data-stu-id="df014-108">Click the arrow to continue.</span></span>
+5. <span data-ttu-id="df014-109">Do pole **Název** zadejte následující název koncového bodu: **WinRMHttps**.</span><span class="sxs-lookup"><span data-stu-id="df014-109">For the **Name**, type the following name for the endpoint: **WinRMHttps**.</span></span>
+6. <span data-ttu-id="df014-110">V poli **Protokol** uveďte **TCP**.</span><span class="sxs-lookup"><span data-stu-id="df014-110">For the **Protocol**, specify **TCP**.</span></span>
+7. <span data-ttu-id="df014-111">Do pole **Veřejný port** zadejte čísla portů, která chcete pro připojení použít.</span><span class="sxs-lookup"><span data-stu-id="df014-111">For the **Public Port**, type the port numbers that you want to use for the connection.</span></span>
+8. <span data-ttu-id="df014-112">Do pole **Privátní port** zadejte **5986**.</span><span class="sxs-lookup"><span data-stu-id="df014-112">For the **Private Port**, type **5986**.</span></span>
+9. <span data-ttu-id="df014-113">Kliknutím na symbol zaškrtnutí vytvořte koncový bod.</span><span class="sxs-lookup"><span data-stu-id="df014-113">Click the check mark to create the endpoint.</span></span>
 
-Po vytvoření koncového bodu můžete zobrazit jeho podrobnosti, abyste zjistili virtuální IP adresu (VIP). Tuto adresu si poznamenejte.
+<span data-ttu-id="df014-114">Po vytvoření koncového bodu můžete zobrazit jeho podrobnosti, abyste zjistili virtuální IP adresu (VIP).</span><span class="sxs-lookup"><span data-stu-id="df014-114">After the endpoint is created, you can view its details to determine the Public Virtual IP (VIP) address.</span></span> <span data-ttu-id="df014-115">Tuto adresu si poznamenejte.</span><span class="sxs-lookup"><span data-stu-id="df014-115">Record this address.</span></span>
 

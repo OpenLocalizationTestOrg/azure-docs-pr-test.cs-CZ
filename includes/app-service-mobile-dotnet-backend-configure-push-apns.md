@@ -1,13 +1,13 @@
 
-* **Rozhraní .NET back-end (C#)**:      
+* <span data-ttu-id="9d11f-101">**Rozhraní .NET back-end (C#)**:</span><span class="sxs-lookup"><span data-stu-id="9d11f-101">**.NET backend (C#)**:</span></span>      
   
-  1. V sadě Visual Studio, klikněte pravým tlačítkem na serverový projekt a klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.NotificationHubs`, pak klikněte na tlačítko **nainstalovat**. To nainstaluje knihovny centra oznámení pro odesílání oznámení z backendu.
-  2. V projektu sady Visual Studio back-end, otevřete **řadiče** > **TodoItemController.cs**. Na začátek souboru přidejte následující `using` příkaz:
+  1. <span data-ttu-id="9d11f-102">V sadě Visual Studio, klikněte pravým tlačítkem na serverový projekt a klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.NotificationHubs`, pak klikněte na tlačítko **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="9d11f-102">In Visual Studio, right-click the server project and click **Manage NuGet Packages**, search for `Microsoft.Azure.NotificationHubs`, then click **Install**.</span></span> <span data-ttu-id="9d11f-103">To nainstaluje knihovny centra oznámení pro odesílání oznámení z backendu.</span><span class="sxs-lookup"><span data-stu-id="9d11f-103">This installs the Notification Hubs library for sending notifications from your backend.</span></span>
+  2. <span data-ttu-id="9d11f-104">V projektu sady Visual Studio back-end, otevřete **řadiče** > **TodoItemController.cs**.</span><span class="sxs-lookup"><span data-stu-id="9d11f-104">In the backend's Visual Studio project, open **Controllers** > **TodoItemController.cs**.</span></span> <span data-ttu-id="9d11f-105">Na začátek souboru přidejte následující `using` příkaz:</span><span class="sxs-lookup"><span data-stu-id="9d11f-105">At the top of the file, add the following `using` statement:</span></span>
      
           using Microsoft.Azure.Mobile.Server.Config;
           using Microsoft.Azure.NotificationHubs;
 
-    3. Nahraďte `PostTodoItem` metoda následujícím kódem:  
+    3. <span data-ttu-id="9d11f-106">Nahraďte `PostTodoItem` metoda následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="9d11f-106">Replace the `PostTodoItem` method with the following code:</span></span>  
 
             public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
             {
@@ -47,12 +47,12 @@
                 return CreatedAtRoute("Tables", new { id = current.Id }, current);
             }
 
-    4. Znovu publikujte serverový projekt.
+    4. <span data-ttu-id="9d11f-107">Znovu publikujte serverový projekt.</span><span class="sxs-lookup"><span data-stu-id="9d11f-107">Republish the server project.</span></span>
 
-* **Back-end Node.js** : 
+* <span data-ttu-id="9d11f-108">**Back-end Node.js** :</span><span class="sxs-lookup"><span data-stu-id="9d11f-108">**Node.js backend** :</span></span> 
   
-  1. Pokud jste zatím žádný nevytvořili, [stažení projektu pro rychlý Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) nebo použijte jiný [online editor na webu Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
-  2. Skript tabulky todoitem.js nahraďte následujícím kódem:
+  1. <span data-ttu-id="9d11f-109">Pokud jste zatím žádný nevytvořili, [stažení projektu pro rychlý Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) nebo použijte jiný [online editor na webu Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).</span><span class="sxs-lookup"><span data-stu-id="9d11f-109">If you haven't already done so, [download the quickstart project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).</span></span>    
+  2. <span data-ttu-id="9d11f-110">Skript tabulky todoitem.js nahraďte následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="9d11f-110">Replace the todoitem.js table script with the following code:</span></span>
 
             var azureMobileApps = require('azure-mobile-apps'),
                 promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,4 +91,4 @@
 
             module.exports = table;
 
-    2. Při úpravách souboru v místním počítači, znovu publikujte serverový projekt.
+    2. <span data-ttu-id="9d11f-111">Při úpravách souboru v místním počítači, znovu publikujte serverový projekt.</span><span class="sxs-lookup"><span data-stu-id="9d11f-111">When editing the file on your local computer, republish the server project.</span></span>

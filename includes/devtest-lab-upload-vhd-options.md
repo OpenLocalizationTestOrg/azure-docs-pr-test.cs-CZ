@@ -1,6 +1,6 @@
-## <a name="prerequisites"></a>Požadavky 
-K dokončení tohoto kurzu, musí mít soubor virtuálního pevného disku, nahrán do účtu úložiště přidruženého k testovacímu prostředí, ve kterém vytváříte vlastní image. Vyberte některé z následujících odkazů můžete nahrát soubor virtuálního pevného disku:
+## <a name="prerequisites"></a><span data-ttu-id="31d18-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="31d18-101">Prerequisites</span></span> 
+<span data-ttu-id="31d18-102">K dokončení tohoto kurzu, musí mít soubor virtuálního pevného disku, nahrán do účtu úložiště přidruženého k testovacímu prostředí, ve kterém vytváříte vlastní image.</span><span class="sxs-lookup"><span data-stu-id="31d18-102">To complete this tutorial, you must have a VHD file uploaded to the storage account associated with the lab in which you are creating the custom image.</span></span> <span data-ttu-id="31d18-103">Vyberte některé z následujících odkazů můžete nahrát soubor virtuálního pevného disku:</span><span class="sxs-lookup"><span data-stu-id="31d18-103">Select any of the following links to upload a VHD file:</span></span>
 
-- [Nahrát pomocí příkazového řádku azcopy](../articles/devtest-lab/devtest-lab-upload-vhd-using-azcopy.md)
-- [Nahrát pomocí Microsoft Azure Storage Explorer](../articles/devtest-lab/devtest-lab-upload-vhd-using-storage-explorer.md)
-- [Nahrát pomocí konzoly Powershellu](../articles/devtest-lab/devtest-lab-upload-vhd-using-powershell.md)
+- [<span data-ttu-id="31d18-104">Nahrát pomocí příkazového řádku azcopy</span><span class="sxs-lookup"><span data-stu-id="31d18-104">Upload using the AzCopy command-line utility</span></span>](../articles/devtest-lab/devtest-lab-upload-vhd-using-azcopy.md)
+- [<span data-ttu-id="31d18-105">Nahrát pomocí Microsoft Azure Storage Explorer</span><span class="sxs-lookup"><span data-stu-id="31d18-105">Upload using the Microsoft Azure Storage Explorer</span></span>](../articles/devtest-lab/devtest-lab-upload-vhd-using-storage-explorer.md)
+- [<span data-ttu-id="31d18-106">Nahrát pomocí konzoly Powershellu</span><span class="sxs-lookup"><span data-stu-id="31d18-106">Upload using the PowerShell console</span></span>](../articles/devtest-lab/devtest-lab-upload-vhd-using-powershell.md)

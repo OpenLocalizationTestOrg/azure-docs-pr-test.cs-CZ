@@ -1,13 +1,13 @@
-Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické virtuální sítě otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
+<span data-ttu-id="8c081-101">Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické virtuální sítě otevřením připojení.</span><span class="sxs-lookup"><span data-stu-id="8c081-101">In the Azure portal, you can view the connection status for a classic VNet VPN Gateway by navigating to the connection.</span></span> <span data-ttu-id="8c081-102">Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.</span><span class="sxs-lookup"><span data-stu-id="8c081-102">The following steps show one way to navigate to your connection and verify.</span></span>
 
-1. Na webu [Azure Portal](http://portal.azure.com) klikněte na **Všechny prostředky** a přejděte ke klasické virtuální síti.
-2. V okně virtuální sítě klikněte na **Přehled**, abyste se dostali k části okna **Připojení VPN**.
-3. Na obrázku připojení VPN klikněte na web.
+1. <span data-ttu-id="8c081-103">Na webu [Azure Portal](http://portal.azure.com) klikněte na **Všechny prostředky** a přejděte ke klasické virtuální síti.</span><span class="sxs-lookup"><span data-stu-id="8c081-103">In the [Azure portal](http://portal.azure.com), click **All resources** and navigate to your classic virtual network.</span></span>
+2. <span data-ttu-id="8c081-104">V okně virtuální sítě klikněte na **Přehled**, abyste se dostali k části okna **Připojení VPN**.</span><span class="sxs-lookup"><span data-stu-id="8c081-104">On the virtual network blade, click **Overview** to access the **VPN connections** section of the blade.</span></span>
+3. <span data-ttu-id="8c081-105">Na obrázku připojení VPN klikněte na web.</span><span class="sxs-lookup"><span data-stu-id="8c081-105">On the VPN connections graphic, click the site.</span></span>
 
-    ![Místní web](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "místní web")
-4. V okně **Připojení VPN typu Site-to-Site** zobrazíte informace o vašem webu.
+    <span data-ttu-id="8c081-106">![Místní web](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "místní web")</span><span class="sxs-lookup"><span data-stu-id="8c081-106">![Local site](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "local site")</span></span>
+4. <span data-ttu-id="8c081-107">V okně **Připojení VPN typu Site-to-Site** zobrazíte informace o vašem webu.</span><span class="sxs-lookup"><span data-stu-id="8c081-107">On the **Site-to-site VPN connections** blade, view the information about your site.</span></span>
 
-    ![Stav připojení](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "stav připojení")
-5. Pokud chcete zobrazit další informace o připojení, klikněte na název připojení a otevřete okno **Připojení VPN typu Site-to-Site**.
+    <span data-ttu-id="8c081-108">![Stav připojení](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "stav připojení")</span><span class="sxs-lookup"><span data-stu-id="8c081-108">![Connection status](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Connection status")</span></span>
+5. <span data-ttu-id="8c081-109">Pokud chcete zobrazit další informace o připojení, klikněte na název připojení a otevřete okno **Připojení VPN typu Site-to-Site**.</span><span class="sxs-lookup"><span data-stu-id="8c081-109">To view more information about the connection, click the name of the connection to open the **Site-to-site VPN Connection** blade.</span></span>
 
-    ![Stav připojení – další informace](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Stav připojení – další informace")
+    <span data-ttu-id="8c081-110">![Stav připojení – další informace](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Stav připojení – další informace")</span><span class="sxs-lookup"><span data-stu-id="8c081-110">![Connection status more](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Connection status more info")</span></span>

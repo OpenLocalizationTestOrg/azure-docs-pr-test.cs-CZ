@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Požadavky
-* A [OneDrive](http://OneDrive.com) účtu 
+### <a name="prerequisites"></a><span data-ttu-id="1cf80-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="1cf80-101">Prerequisites</span></span>
+* <span data-ttu-id="1cf80-102">A [OneDrive](http://OneDrive.com) účtu</span><span class="sxs-lookup"><span data-stu-id="1cf80-102">A [OneDrive](http://OneDrive.com) account</span></span> 
 
-Než použijete OneDrive pro firmy účet v aplikaci logiky, musíte je nejdříve autorizovat aplikaci logiky pro připojení k vaší účtu Onedrivu pro firmy. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+<span data-ttu-id="1cf80-103">Než použijete OneDrive pro firmy účet v aplikaci logiky, musíte je nejdříve autorizovat aplikaci logiky pro připojení k vaší účtu Onedrivu pro firmy.</span><span class="sxs-lookup"><span data-stu-id="1cf80-103">Before you can use your OneDrive for Business account in a Logic app, you must authorize the Logic app to connect to your OneDrive for Business account.</span></span> <span data-ttu-id="1cf80-104">Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="1cf80-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k vaší účtu Onedrivu pro firmy:
+<span data-ttu-id="1cf80-105">Tady jsou kroky k autorizaci aplikace logiky pro připojení k vaší účtu Onedrivu pro firmy:</span><span class="sxs-lookup"><span data-stu-id="1cf80-105">Here are the steps to authorize your Logic app to connect to your OneDrive for Business account:</span></span>
 
-1. Chcete-li vytvořit připojení k Onedrivu pro firmy, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Onedrivu pro firmy* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. <span data-ttu-id="1cf80-106">Chcete-li vytvořit připojení k Onedrivu pro firmy, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Onedrivu pro firmy* do vyhledávacího pole.</span><span class="sxs-lookup"><span data-stu-id="1cf80-106">To create a connection to OneDrive for Business, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *OneDrive for Business* in the search box.</span></span> <span data-ttu-id="1cf80-107">Vyberte aktivační události nebo akci, kterou budete chtít použít:</span><span class="sxs-lookup"><span data-stu-id="1cf80-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Pokud jste nevytvořili žádné připojení k Onedrivu pro firmy před, budete získat zobrazí výzva k poskytování OneDrive pro firmy přihlašovací údaje. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k OneDrive pro firmy účet data:  
+2. <span data-ttu-id="1cf80-108">Pokud jste nevytvořili žádné připojení k Onedrivu pro firmy před, budete získat zobrazí výzva k poskytování OneDrive pro firmy přihlašovací údaje.</span><span class="sxs-lookup"><span data-stu-id="1cf80-108">If you haven't created any connections to OneDrive for Business before, you'll get prompted to provide your OneDrive for Business credentials.</span></span> <span data-ttu-id="1cf80-109">Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k OneDrive pro firmy účet data:</span><span class="sxs-lookup"><span data-stu-id="1cf80-109">These credentials will be used to authorize your Logic app to connect to, and access your OneDrive for Business account's data:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Zadejte OneDrive pro firmy uživatelské jméno a heslo k autorizaci aplikace logiky:  
+3. <span data-ttu-id="1cf80-110">Zadejte OneDrive pro firmy uživatelské jméno a heslo k autorizaci aplikace logiky:</span><span class="sxs-lookup"><span data-stu-id="1cf80-110">Provide your OneDrive for Business user name and password to authorize your Logic app:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+4. <span data-ttu-id="1cf80-111">Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:</span><span class="sxs-lookup"><span data-stu-id="1cf80-111">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

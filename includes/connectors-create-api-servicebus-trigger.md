@@ -1,16 +1,16 @@
-Tady je postup použití **Service Bus - při příjmu zprávy ve frontě** aktivační událost zahájíte pracovní postup aplikace logiky odeslání novou položku do fronty Service Bus.  
+<span data-ttu-id="0f8b5-101">Tady je postup použití **Service Bus - při příjmu zprávy ve frontě** aktivační událost zahájíte pracovní postup aplikace logiky odeslání novou položku do fronty Service Bus.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-101">Here's how to use the **Service Bus - When a message is received in a queue** trigger to initiate a logic app workflow when a new item is sent to a Service Bus queue.</span></span>  
 
 > [!NOTE]
-> Zobrazí se výzva k Přihlaste se pomocí vaší připojovací řetězec sběrnice služeb, pokud jste ještě nevytvořili připojení k Service Bus.  
+> <span data-ttu-id="0f8b5-102">Zobrazí se výzva k Přihlaste se pomocí vaší připojovací řetězec sběrnice služeb, pokud jste ještě nevytvořili připojení k Service Bus.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-102">You will be prompted to sign in with your Service Bus connection string if you have not already created a connection to Service Bus.</span></span>  
 > 
 > 
 
-1. Do vyhledávacího pole v návrháři aplikace logiky, zadejte **služby sběrnice**. Vyberte **Service Bus - při příjmu zprávy ve frontě** aktivační události.  
-   ![Service Bus aktivační událost obrázek 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-2. **Při příjmu zprávy ve frontě** se zobrazí dialogové okno.  
-   ![Service Bus aktivační událost obrázek 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-3. Zadejte název fronty Service Bus chcete aktivační události k monitorování.   
+1. <span data-ttu-id="0f8b5-103">Do vyhledávacího pole v návrháři aplikace logiky, zadejte **služby sběrnice**.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-103">In the search box on the logic apps designer, enter **service bus**.</span></span> <span data-ttu-id="0f8b5-104">Vyberte **Service Bus - při příjmu zprávy ve frontě** aktivační události.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-104">Then select the **Service Bus - When a message is received in a queue** trigger.</span></span>  
+   <span data-ttu-id="0f8b5-105">![Service Bus aktivační událost obrázek 1](./media/connectors-create-api-servicebus/trigger-1.png)</span><span class="sxs-lookup"><span data-stu-id="0f8b5-105">![Service Bus trigger image 1](./media/connectors-create-api-servicebus/trigger-1.png)</span></span>   
+2. <span data-ttu-id="0f8b5-106">**Při příjmu zprávy ve frontě** se zobrazí dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-106">The **When a message is received in a queue** dialog box is displayed.</span></span>  
+   <span data-ttu-id="0f8b5-107">![Service Bus aktivační událost obrázek 2](./media/connectors-create-api-servicebus/trigger-2.png)</span><span class="sxs-lookup"><span data-stu-id="0f8b5-107">![Service Bus trigger image 2](./media/connectors-create-api-servicebus/trigger-2.png)</span></span>   
+3. <span data-ttu-id="0f8b5-108">Zadejte název fronty Service Bus chcete aktivační události k monitorování.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-108">Enter the name of the Service Bus queue you would like the trigger to monitor.</span></span>   
    ![Obrázek aktivační události služby Service Bus 3](./media/connectors-create-api-servicebus/trigger-3.png)   
 
-Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost. Po přijetí nové položky ve frontě, které jste vybrali aktivační událost zahájíte spustit další aktivační události a akcí v pracovním postupu.    
+<span data-ttu-id="0f8b5-110">Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-110">At this point, your logic app has been configured with a trigger.</span></span> <span data-ttu-id="0f8b5-111">Po přijetí nové položky ve frontě, které jste vybrali aktivační událost zahájíte spustit další aktivační události a akcí v pracovním postupu.</span><span class="sxs-lookup"><span data-stu-id="0f8b5-111">When a new item is received in the queue you selected, the trigger will begin a run of the other triggers and actions in the workflow.</span></span>    
 

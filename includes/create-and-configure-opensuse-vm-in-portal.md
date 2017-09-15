@@ -1,52 +1,52 @@
-1. Přihlaste se do [portál Azure Classic](http://manage.windowsazure.com).  
-2. Na panelu příkazů v dolní části okna klikněte na tlačítko **nový**.
-3. V části **výpočetní**, klikněte na tlačítko **virtuálního počítače**a potom klikněte na **z Galerie**.
+1. <span data-ttu-id="930a7-101">Přihlaste se do [portál Azure Classic](http://manage.windowsazure.com).</span><span class="sxs-lookup"><span data-stu-id="930a7-101">Sign in to the [Azure classic portal](http://manage.windowsazure.com).</span></span>  
+2. <span data-ttu-id="930a7-102">Na panelu příkazů v dolní části okna klikněte na tlačítko **nový**.</span><span class="sxs-lookup"><span data-stu-id="930a7-102">On the command bar at the bottom of the window, click **New**.</span></span>
+3. <span data-ttu-id="930a7-103">V části **výpočetní**, klikněte na tlačítko **virtuálního počítače**a potom klikněte na **z Galerie**.</span><span class="sxs-lookup"><span data-stu-id="930a7-103">Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.</span></span>
    
     ![Vytvoření nového virtuálního počítače][Image1]
-4. V části **SUSE** skupiny, vyberte bitovou kopii virtuálního počítače OpenSUSE a pak klikněte na šipku pokračujte.
-5. V prvním **konfigurace virtuálního počítače** stránky:
+4. <span data-ttu-id="930a7-105">V části **SUSE** skupiny, vyberte bitovou kopii virtuálního počítače OpenSUSE a pak klikněte na šipku pokračujte.</span><span class="sxs-lookup"><span data-stu-id="930a7-105">Under the **SUSE** group, select an OpenSUSE virtual machine image, and then click the arrow to continue.</span></span>
+5. <span data-ttu-id="930a7-106">V prvním **konfigurace virtuálního počítače** stránky:</span><span class="sxs-lookup"><span data-stu-id="930a7-106">On the first **Virtual machine configuration** page:</span></span>
    
-   * Zadejte **název virtuálního počítače**, jako je například "testlinuxvm". Název musí obsahovat 3 až 15 znaků, může obsahovat pouze písmena, číslice a pomlčky a musí začínat písmenem a končit písmenem nebo číslicí.
-   * Ověřte **vrstvy** a vyberte **velikost**. Určuje vrstvu velikostí, které můžete vybrat z. Velikost ovlivní náklady na používání, stejně jako možnosti konfigurace, jako například kolik dat disků můžete připojit. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-   * Zadejte **nové uživatelské jméno**, nebo přijměte výchozí nastavení, **azureuser**. Tento název se přidá do souboru Sudoers seznamu.
-   * Rozhodněte, který typ **ověřování** používat. Obecné heslo, naleznete na adrese [silná hesla](http://msdn.microsoft.com/library/ms161962.aspx).
-6. Při dalším **konfigurace virtuálního počítače** stránky:
+   * <span data-ttu-id="930a7-107">Zadejte **název virtuálního počítače**, jako je například "testlinuxvm".</span><span class="sxs-lookup"><span data-stu-id="930a7-107">Type a **Virtual Machine Name**, such as "testlinuxvm".</span></span> <span data-ttu-id="930a7-108">Název musí obsahovat 3 až 15 znaků, může obsahovat pouze písmena, číslice a pomlčky a musí začínat písmenem a končit písmenem nebo číslicí.</span><span class="sxs-lookup"><span data-stu-id="930a7-108">The name must contain between 3 and 15 characters, can contain only letters, numbers, and hyphens, and must start with a letter and end with either a letter or number.</span></span>
+   * <span data-ttu-id="930a7-109">Ověřte **vrstvy** a vyberte **velikost**.</span><span class="sxs-lookup"><span data-stu-id="930a7-109">Verify the **Tier** and pick a **Size**.</span></span> <span data-ttu-id="930a7-110">Určuje vrstvu velikostí, které můžete vybrat z.</span><span class="sxs-lookup"><span data-stu-id="930a7-110">The tier determines the sizes you can choose from.</span></span> <span data-ttu-id="930a7-111">Velikost ovlivní náklady na používání, stejně jako možnosti konfigurace, jako například kolik dat disků můžete připojit.</span><span class="sxs-lookup"><span data-stu-id="930a7-111">The size affects the cost of using it, as well as configuration options such as how many data disks you can attach.</span></span> <span data-ttu-id="930a7-112">Podrobnosti najdete v tématu [velikosti virtuálních počítačů](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="930a7-112">For details, see [Sizes for virtual machines](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+   * <span data-ttu-id="930a7-113">Zadejte **nové uživatelské jméno**, nebo přijměte výchozí nastavení, **azureuser**.</span><span class="sxs-lookup"><span data-stu-id="930a7-113">Type a **New User Name**, or accept the default, **azureuser**.</span></span> <span data-ttu-id="930a7-114">Tento název se přidá do souboru Sudoers seznamu.</span><span class="sxs-lookup"><span data-stu-id="930a7-114">This name is added to the Sudoers list file.</span></span>
+   * <span data-ttu-id="930a7-115">Rozhodněte, který typ **ověřování** používat.</span><span class="sxs-lookup"><span data-stu-id="930a7-115">Decide which type of **Authentication** to use.</span></span> <span data-ttu-id="930a7-116">Obecné heslo, naleznete na adrese [silná hesla](http://msdn.microsoft.com/library/ms161962.aspx).</span><span class="sxs-lookup"><span data-stu-id="930a7-116">For general password guidelines, see [Strong passwords](http://msdn.microsoft.com/library/ms161962.aspx).</span></span>
+6. <span data-ttu-id="930a7-117">Při dalším **konfigurace virtuálního počítače** stránky:</span><span class="sxs-lookup"><span data-stu-id="930a7-117">On the next **Virtual machine configuration** page:</span></span>
    
-   * Použít výchozí **vytvořte novou cloudovou službu**.
-   * V **název DNS** zadejte jedinečný název DNS, který bude použit jako část adresy, jako je například "testlinuxvm".
-   * V **oblasti nebo vztahů skupiny nebo virtuální síť** vyberte oblast, kde se bude hostovat tuto bitovou kopii virtuálního.
-   * V části **koncové body**, zachovat koncový bod SSH. Můžete přidat další nyní, nebo přidat, změnit nebo odstranit, je po vytvoření virtuálního počítače.
+   * <span data-ttu-id="930a7-118">Použít výchozí **vytvořte novou cloudovou službu**.</span><span class="sxs-lookup"><span data-stu-id="930a7-118">Use the default **Create a new cloud service**.</span></span>
+   * <span data-ttu-id="930a7-119">V **název DNS** zadejte jedinečný název DNS, který bude použit jako část adresy, jako je například "testlinuxvm".</span><span class="sxs-lookup"><span data-stu-id="930a7-119">In the **DNS Name** box, type a unique DNS name to use as part of the address, such as "testlinuxvm".</span></span>
+   * <span data-ttu-id="930a7-120">V **oblasti nebo vztahů skupiny nebo virtuální síť** vyberte oblast, kde se bude hostovat tuto bitovou kopii virtuálního.</span><span class="sxs-lookup"><span data-stu-id="930a7-120">In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.</span></span>
+   * <span data-ttu-id="930a7-121">V části **koncové body**, zachovat koncový bod SSH.</span><span class="sxs-lookup"><span data-stu-id="930a7-121">Under **Endpoints**, keep the SSH endpoint.</span></span> <span data-ttu-id="930a7-122">Můžete přidat další nyní, nebo přidat, změnit nebo odstranit, je po vytvoření virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="930a7-122">You can add others now, or add, change, or delete them after the virtual machine is created.</span></span>
      
      > [!NOTE]
-     > Pokud chcete virtuální počítač používat virtuální síť, můžete **musí** při vytváření virtuálního počítače zadejte virtuální síť. Virtuální počítač nelze přidat k virtuální síti, po vytvoření virtuálního počítače. Další informace najdete v tématu [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
+     > <span data-ttu-id="930a7-123">Pokud chcete virtuální počítač používat virtuální síť, můžete **musí** při vytváření virtuálního počítače zadejte virtuální síť.</span><span class="sxs-lookup"><span data-stu-id="930a7-123">If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine.</span></span> <span data-ttu-id="930a7-124">Virtuální počítač nelze přidat k virtuální síti, po vytvoření virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="930a7-124">You can't add a virtual machine to a virtual network after you create the virtual machine.</span></span> <span data-ttu-id="930a7-125">Další informace najdete v tématu [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).</span><span class="sxs-lookup"><span data-stu-id="930a7-125">For more information, see [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md).</span></span>
      > 
      > 
-7. Na poslední **konfigurace virtuálního počítače** , potvrďte výchozí nastavení a pak klikněte na tlačítko zaškrtnutí dokončete.
+7. <span data-ttu-id="930a7-126">Na poslední **konfigurace virtuálního počítače** , potvrďte výchozí nastavení a pak klikněte na tlačítko zaškrtnutí dokončete.</span><span class="sxs-lookup"><span data-stu-id="930a7-126">On the last **Virtual machine configuration** page, keep the default settings and then click the check mark to finish.</span></span>
 
-Na portálu zobrazí nový virtuální počítač v rámci **virtuální počítače**. Když stav je uveden jako **(zřizování)**, virtuální počítač se nastavuje. Pokud je stav uveden jako **systémem**, můžete přesunout další krok.
+<span data-ttu-id="930a7-127">Na portálu zobrazí nový virtuální počítač v rámci **virtuální počítače**.</span><span class="sxs-lookup"><span data-stu-id="930a7-127">The portal lists the new virtual machine under **Virtual Machines**.</span></span> <span data-ttu-id="930a7-128">Když stav je uveden jako **(zřizování)**, virtuální počítač se nastavuje.</span><span class="sxs-lookup"><span data-stu-id="930a7-128">While the status is reported as **(Provisioning)**, the virtual machine is being set up.</span></span> <span data-ttu-id="930a7-129">Pokud je stav uveden jako **systémem**, můžete přesunout další krok.</span><span class="sxs-lookup"><span data-stu-id="930a7-129">When the status is reported as **Running**, you can move on to the next step.</span></span>
 
-## <a name="connect-to-the-virtual-machine"></a>Připojit k virtuálnímu počítači
-SSH nebo PuTTY budete používat pro připojení k virtuálnímu počítači, v závislosti na operační systém na počítač, na kterém budete připojení z:
+## <a name="connect-to-the-virtual-machine"></a><span data-ttu-id="930a7-130">Připojit k virtuálnímu počítači</span><span class="sxs-lookup"><span data-stu-id="930a7-130">Connect to the Virtual Machine</span></span>
+<span data-ttu-id="930a7-131">SSH nebo PuTTY budete používat pro připojení k virtuálnímu počítači, v závislosti na operační systém na počítač, na kterém budete připojení z:</span><span class="sxs-lookup"><span data-stu-id="930a7-131">You'll use SSH or PuTTY to connect to the virtual machine, depending on the operating system on the computer you'll connect from:</span></span>
 
-* Z počítače se systémem Linux pomocí SSH. Na příkazovém řádku zadejte:
+* <span data-ttu-id="930a7-132">Z počítače se systémem Linux pomocí SSH.</span><span class="sxs-lookup"><span data-stu-id="930a7-132">From a computer running Linux, use SSH.</span></span> <span data-ttu-id="930a7-133">Na příkazovém řádku zadejte:</span><span class="sxs-lookup"><span data-stu-id="930a7-133">At the command prompt, type:</span></span>
   
     `$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
   
-    Zadejte heslo uživatele.
-* Z počítače se systémem Windows použití klienta PuTTY. Pokud nemáte nainstalováno, ji stáhnout z [stránku položek ke stažení PuTTY][PuTTYDownload].
+    <span data-ttu-id="930a7-134">Zadejte heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="930a7-134">Type the user's password.</span></span>
+* <span data-ttu-id="930a7-135">Z počítače se systémem Windows použití klienta PuTTY.</span><span class="sxs-lookup"><span data-stu-id="930a7-135">From a computer running Windows, use PuTTY.</span></span> <span data-ttu-id="930a7-136">Pokud nemáte nainstalováno, ji stáhnout z [stránku položek ke stažení PuTTY][PuTTYDownload].</span><span class="sxs-lookup"><span data-stu-id="930a7-136">If you don't have it installed, download it from the [PuTTY Download Page][PuTTYDownload].</span></span>
   
-    Uložit **putty.exe** do adresáře v počítači. Otevřete příkazový řádek, přejděte do této složky a spusťte **putty.exe**.
+    <span data-ttu-id="930a7-137">Uložit **putty.exe** do adresáře v počítači.</span><span class="sxs-lookup"><span data-stu-id="930a7-137">Save **putty.exe** to a directory on your computer.</span></span> <span data-ttu-id="930a7-138">Otevřete příkazový řádek, přejděte do této složky a spusťte **putty.exe**.</span><span class="sxs-lookup"><span data-stu-id="930a7-138">Open a command prompt, navigate to that folder, and run **putty.exe**.</span></span>
   
-    Zadejte název hostitele, jako je například "testlinuxvm.cloudapp.net" a "22" zadejte **Port**.
+    <span data-ttu-id="930a7-139">Zadejte název hostitele, jako je například "testlinuxvm.cloudapp.net" a "22" zadejte **Port**.</span><span class="sxs-lookup"><span data-stu-id="930a7-139">Type the host name, such as "testlinuxvm.cloudapp.net", and type "22" for the **Port**.</span></span>
   
     ![PuTTY obrazovky][Image6]  
 
-## <a name="update-the-virtual-machine-optional"></a>Aktualizovat virtuální počítač (volitelné)
-1. Poté, co jste připojení k virtuálnímu počítači, můžete volitelně nainstalovat opravy a aktualizace systému. Chcete-li spustit aktualizaci, zadejte:
+## <a name="update-the-virtual-machine-optional"></a><span data-ttu-id="930a7-141">Aktualizovat virtuální počítač (volitelné)</span><span class="sxs-lookup"><span data-stu-id="930a7-141">Update the Virtual Machine (optional)</span></span>
+1. <span data-ttu-id="930a7-142">Poté, co jste připojení k virtuálnímu počítači, můžete volitelně nainstalovat opravy a aktualizace systému.</span><span class="sxs-lookup"><span data-stu-id="930a7-142">After you're connected to the virtual machine, you can optionally install system updates and patches.</span></span> <span data-ttu-id="930a7-143">Chcete-li spustit aktualizaci, zadejte:</span><span class="sxs-lookup"><span data-stu-id="930a7-143">To run the update, type:</span></span>
    
     `$ sudo zypper update`
-2. Vyberte **softwaru**, pak **Online aktualizace** seznam dostupných aktualizací. Vyberte **přijmout** spuštění instalace a použít všechny nové dostupných oprav (s výjimkou těch, volitelný).
-3. Po dokončení instalace, vyberte **Dokončit**.  Systém je nyní aktuální.
+2. <span data-ttu-id="930a7-144">Vyberte **softwaru**, pak **Online aktualizace** seznam dostupných aktualizací.</span><span class="sxs-lookup"><span data-stu-id="930a7-144">Select **Software**, then **Online Update** to list available updates.</span></span> <span data-ttu-id="930a7-145">Vyberte **přijmout** spuštění instalace a použít všechny nové dostupných oprav (s výjimkou těch, volitelný).</span><span class="sxs-lookup"><span data-stu-id="930a7-145">Select **Accept** to start the installation and apply all new available patches (except the optional ones).</span></span>
+3. <span data-ttu-id="930a7-146">Po dokončení instalace, vyberte **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="930a7-146">After installation is done, select **Finish**.</span></span>  <span data-ttu-id="930a7-147">Systém je nyní aktuální.</span><span class="sxs-lookup"><span data-stu-id="930a7-147">Your system is now up to date.</span></span>
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 

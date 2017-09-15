@@ -1,10 +1,10 @@
-Tento článek je pro službu Azure App Service (webové aplikace, aplikace API, mobilní aplikace, Logic Apps); cloudové služby, najdete v části [konfigurace vlastního názvu domény pro cloudové služby Azure](../articles/cloud-services/cloud-services-custom-domain-name.md).
+<span data-ttu-id="ac36b-101">Tento článek je pro službu Azure App Service (webové aplikace, aplikace API, mobilní aplikace, Logic Apps); cloudové služby, najdete v části [konfigurace vlastního názvu domény pro cloudové služby Azure](../articles/cloud-services/cloud-services-custom-domain-name.md).</span><span class="sxs-lookup"><span data-stu-id="ac36b-101">This article is for Azure App Service (Web Apps, API Apps, Mobile Apps, Logic Apps); for Cloud Services, see [Configuring a custom domain name for an Azure cloud service](../articles/cloud-services/cloud-services-custom-domain-name.md).</span></span>
 
 > [!NOTE]
-> Pokud je aplikace Vyrovnávání zatížení sítě ve [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), klikněte na výběr v horní části tohoto článku, chcete-li získat konkrétní kroky.
+> <span data-ttu-id="ac36b-102">Pokud je aplikace Vyrovnávání zatížení sítě ve [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), klikněte na výběr v horní části tohoto článku, chcete-li získat konkrétní kroky.</span><span class="sxs-lookup"><span data-stu-id="ac36b-102">If you app is load-balanced by [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), click the selector at the top of this article to get specific steps.</span></span>
 > 
-> **Vlastní doménu názvy nejsou povolené zdarma vrstvy**. Je nutné [škálování až používat vyšší cenová úroveň](../articles/app-service-web/web-sites-scale.md), což může změnit, kolik se účtují pro vaše předplatné. 
-> V tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/) Další informace.
+> <span data-ttu-id="ac36b-103">**Vlastní doménu názvy nejsou povolené zdarma vrstvy**.</span><span class="sxs-lookup"><span data-stu-id="ac36b-103">**Custom domain names are not enabled for Free tier**.</span></span> <span data-ttu-id="ac36b-104">Je nutné [škálování až používat vyšší cenová úroveň](../articles/app-service-web/web-sites-scale.md), což může změnit, kolik se účtují pro vaše předplatné.</span><span class="sxs-lookup"><span data-stu-id="ac36b-104">You must [scale up to a higher pricing tier](../articles/app-service-web/web-sites-scale.md), which may change how much you are billed for your subscription.</span></span> 
+> <span data-ttu-id="ac36b-105">V tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/) Další informace.</span><span class="sxs-lookup"><span data-stu-id="ac36b-105">See [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/) for more information.</span></span>
 > 
 > 
 

@@ -1,10 +1,10 @@
-## <a name="java-sample-code-repositories"></a>Java ukázkový kód úložiště
+## <a name="java-sample-code-repositories"></a><span data-ttu-id="5e0a4-101">Java ukázkový kód úložiště</span><span class="sxs-lookup"><span data-stu-id="5e0a4-101">Java sample code repositories</span></span>
 
-Tady je seznam všech naše Ukázka úložiště klientské knihovny Java úložiště Azure.
+<span data-ttu-id="5e0a4-102">Tady je seznam všech naše Ukázka úložiště klientské knihovny Java úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="5e0a4-102">Here is a list of all our sample repositories for the Azure Storage Java client library.</span></span>
 
-* [Získávání začít s úložiště – Správa účtu úložiště v jazyce Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
-* [Začínáme se službou objektů Blob v Azure v jazyce Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
-* [Začínáme se službou Azure souboru v jazyce Java](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
-* [Začínáme se službou Azure fronty v jazyce Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
-* [Začínáme se službou Azure tabulky v jazyce Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
-* [Ukázky knihovny klienta Java úložiště](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)
+* [<span data-ttu-id="5e0a4-103">Získávání začít s úložiště – Správa účtu úložiště v jazyce Java</span><span class="sxs-lookup"><span data-stu-id="5e0a4-103">Getting Started with Storage - Manage Storage Account in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
+* [<span data-ttu-id="5e0a4-104">Začínáme se službou objektů Blob v Azure v jazyce Java</span><span class="sxs-lookup"><span data-stu-id="5e0a4-104">Getting Started with Azure Blob Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
+* [<span data-ttu-id="5e0a4-105">Začínáme se službou Azure souboru v jazyce Java</span><span class="sxs-lookup"><span data-stu-id="5e0a4-105">Getting Started with Azure File Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
+* [<span data-ttu-id="5e0a4-106">Začínáme se službou Azure fronty v jazyce Java</span><span class="sxs-lookup"><span data-stu-id="5e0a4-106">Getting Started with Azure Queue Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
+* [<span data-ttu-id="5e0a4-107">Začínáme se službou Azure tabulky v jazyce Java</span><span class="sxs-lookup"><span data-stu-id="5e0a4-107">Getting Started with Azure Table Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
+* [<span data-ttu-id="5e0a4-108">Ukázky knihovny klienta Java úložiště</span><span class="sxs-lookup"><span data-stu-id="5e0a4-108">Storage Java Client Library Samples</span></span>](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)

@@ -1,14 +1,14 @@
-Starší (staré) skladové položky brány VPN jsou:
+<span data-ttu-id="50847-101">Starší (staré) skladové položky brány VPN jsou:</span><span class="sxs-lookup"><span data-stu-id="50847-101">The legacy (old) VPN gateway SKUs are:</span></span>
 
-* Basic
-* Standard
-* HighPerformance
+* <span data-ttu-id="50847-102">Basic</span><span class="sxs-lookup"><span data-stu-id="50847-102">Basic</span></span>
+* <span data-ttu-id="50847-103">Standard</span><span class="sxs-lookup"><span data-stu-id="50847-103">Standard</span></span>
+* <span data-ttu-id="50847-104">HighPerformance</span><span class="sxs-lookup"><span data-stu-id="50847-104">HighPerformance</span></span>
 
-VPN Gateway nepoužívá SKU brány UltraPerformance. Informace o SKU UltraPerformance najdete v dokumentaci k [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
+<span data-ttu-id="50847-105">VPN Gateway nepoužívá SKU brány UltraPerformance.</span><span class="sxs-lookup"><span data-stu-id="50847-105">VPN Gateway does not use the UltraPerformance gateway SKU.</span></span> <span data-ttu-id="50847-106">Informace o SKU UltraPerformance najdete v dokumentaci k [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).</span><span class="sxs-lookup"><span data-stu-id="50847-106">For information about the UltraPerformance SKU, see the [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentation.</span></span>
 
-Při práci se staršími skladovými položkami mějte na paměti následující:
+<span data-ttu-id="50847-107">Při práci se staršími skladovými položkami mějte na paměti následující:</span><span class="sxs-lookup"><span data-stu-id="50847-107">When working with the legacy SKUs, consider the following:</span></span>
 
-* Pokud chcete použít síť VPN typu PolicyBased, musíte použít SKU Basic. Sítě VPN typu PolicyBased (dříve nazývané Statické směrování) nejsou podporovány jinými SKU.
-* Protokol BGP není podporován v základní SKU.
-* Konfigurace současného fungování ExpressRoute a služby VPN Gateway nejsou podporované v základní SKU.
-* Propojení VPN Gateway S2S aktivní-aktivní jde konfigurovat jenom v SKU HighPerformance.
+* <span data-ttu-id="50847-108">Pokud chcete použít síť VPN typu PolicyBased, musíte použít SKU Basic.</span><span class="sxs-lookup"><span data-stu-id="50847-108">If you want to use a PolicyBased VPN type, you must use the Basic SKU.</span></span> <span data-ttu-id="50847-109">Sítě VPN typu PolicyBased (dříve nazývané Statické směrování) nejsou podporovány jinými SKU.</span><span class="sxs-lookup"><span data-stu-id="50847-109">PolicyBased VPNs (previously called Static Routing) are not supported on any other SKU.</span></span>
+* <span data-ttu-id="50847-110">Protokol BGP není podporován v základní SKU.</span><span class="sxs-lookup"><span data-stu-id="50847-110">BGP is not supported on the Basic SKU.</span></span>
+* <span data-ttu-id="50847-111">Konfigurace současného fungování ExpressRoute a služby VPN Gateway nejsou podporované v základní SKU.</span><span class="sxs-lookup"><span data-stu-id="50847-111">ExpressRoute-VPN Gateway coexist configurations are not supported on the Basic SKU.</span></span>
+* <span data-ttu-id="50847-112">Propojení VPN Gateway S2S aktivní-aktivní jde konfigurovat jenom v SKU HighPerformance.</span><span class="sxs-lookup"><span data-stu-id="50847-112">Active-active S2S VPN Gateway connections can be configured on the HighPerformance SKU only.</span></span>

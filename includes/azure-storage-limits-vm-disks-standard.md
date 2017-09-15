@@ -1,8 +1,8 @@
-**Standardní nespravované disky virtuálních počítačů: omezení na jeden disk**
+<span data-ttu-id="776a4-101">**Standardní nespravované disky virtuálních počítačů: omezení na jeden disk**</span><span class="sxs-lookup"><span data-stu-id="776a4-101">**Standard unmanaged virtual machine disks: per disk limits**</span></span>
 
-| Úroveň virtuálního počítače | Virtuální počítač na úrovni Basic | Virtuální počítač na úrovni Standard |
+| <span data-ttu-id="776a4-102">Úroveň virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="776a4-102">VM Tier</span></span> | <span data-ttu-id="776a4-103">Virtuální počítač na úrovni Basic</span><span class="sxs-lookup"><span data-stu-id="776a4-103">Basic Tier VM</span></span> | <span data-ttu-id="776a4-104">Virtuální počítač na úrovni Standard</span><span class="sxs-lookup"><span data-stu-id="776a4-104">Standard Tier VM</span></span> |
 | --- | --- | --- |
-| Velikost disku |4095 GB |4095 GB |
-| Maximálně 8 kB IOPS na trvalý disk |300 |500 |
-| Maximální počet disků provádějících maximální IOPS |66 |40 |
+| <span data-ttu-id="776a4-105">Velikost disku</span><span class="sxs-lookup"><span data-stu-id="776a4-105">Disk size</span></span> |<span data-ttu-id="776a4-106">4095 GB</span><span class="sxs-lookup"><span data-stu-id="776a4-106">4095 GB</span></span> |<span data-ttu-id="776a4-107">4095 GB</span><span class="sxs-lookup"><span data-stu-id="776a4-107">4095 GB</span></span> |
+| <span data-ttu-id="776a4-108">Maximálně 8 kB IOPS na trvalý disk</span><span class="sxs-lookup"><span data-stu-id="776a4-108">Max 8 KB IOPS per persistent disk</span></span> |<span data-ttu-id="776a4-109">300</span><span class="sxs-lookup"><span data-stu-id="776a4-109">300</span></span> |<span data-ttu-id="776a4-110">500</span><span class="sxs-lookup"><span data-stu-id="776a4-110">500</span></span> |
+| <span data-ttu-id="776a4-111">Maximální počet disků provádějících maximální IOPS</span><span class="sxs-lookup"><span data-stu-id="776a4-111">Max number of disks performing max IOPS</span></span> |<span data-ttu-id="776a4-112">66</span><span class="sxs-lookup"><span data-stu-id="776a4-112">66</span></span> |<span data-ttu-id="776a4-113">40</span><span class="sxs-lookup"><span data-stu-id="776a4-113">40</span></span> |
 

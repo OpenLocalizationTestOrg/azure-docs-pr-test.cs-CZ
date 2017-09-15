@@ -1,20 +1,20 @@
 
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Přidat nebo upravit plán zálohování StorSimple
-1. Na obrazovce **Rychlý start** zařízení klikněte na kartu **Zásady zálohování**. Tím přejdete na stránku **Zásady zálohování**.
-2. V tabulkovém seznam zásad, vyberte a klikněte na zásadu, kterou chcete upravit.
-3. V části **Obecné**, můžete upravit název zásady zálohování.
-4. V části **plány**, klikněte na tlačítko **Spravovat plány** přidat nebo odebrat plány. V **spravovat plán** dialogové okno pole, postupujte takto:
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a><span data-ttu-id="16b93-101">Přidat nebo upravit plán zálohování StorSimple</span><span class="sxs-lookup"><span data-stu-id="16b93-101">To add or modify a StorSimple backup schedule</span></span>
+1. <span data-ttu-id="16b93-102">Na obrazovce **Rychlý start** zařízení klikněte na kartu **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="16b93-102">On the device **Quick Start** page, click the **Backup Policies** tab.</span></span> <span data-ttu-id="16b93-103">Tím přejdete na stránku **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="16b93-103">This will take you to the **Backup Policies** page.</span></span>
+2. <span data-ttu-id="16b93-104">V tabulkovém seznam zásad, vyberte a klikněte na zásadu, kterou chcete upravit.</span><span class="sxs-lookup"><span data-stu-id="16b93-104">In the tabular listing of the policies, select and click the policy that you want to edit.</span></span>
+3. <span data-ttu-id="16b93-105">V části **Obecné**, můžete upravit název zásady zálohování.</span><span class="sxs-lookup"><span data-stu-id="16b93-105">Under **general**, you can modify the backup policy name.</span></span>
+4. <span data-ttu-id="16b93-106">V části **plány**, klikněte na tlačítko **Spravovat plány** přidat nebo odebrat plány.</span><span class="sxs-lookup"><span data-stu-id="16b93-106">Under **schedules**, click **manage schedules** to add or remove schedules.</span></span> <span data-ttu-id="16b93-107">V **spravovat plán** dialogové okno pole, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="16b93-107">In the **Manage Schedule** dialog box, do the following:</span></span>
    
-   1. Vyberte existující plán nebo vytvořte nový plán.
-   2. Vyberte typ zálohy jako místní nebo cloudový snímek.
-   3. Zadejte četnost zálohování, uchovávání a počáteční čas plánu.
-   4. Povolit nebo zakázat plán.
-   5. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) Chcete-li uložit změny plánu.
-5. V **svazky** část, přidat nebo odebrat svazky, které chcete tuto zásadu.
-6. Uložte změny do této zásady.
-7. Zobrazí se výzva k potvrzení. Klikněte na tlačítko **OK** zásady uložit.
+   1. <span data-ttu-id="16b93-108">Vyberte existující plán nebo vytvořte nový plán.</span><span class="sxs-lookup"><span data-stu-id="16b93-108">Choose an existing schedule or create a new schedule.</span></span>
+   2. <span data-ttu-id="16b93-109">Vyberte typ zálohy jako místní nebo cloudový snímek.</span><span class="sxs-lookup"><span data-stu-id="16b93-109">Select the type of backup as local or cloud snapshot.</span></span>
+   3. <span data-ttu-id="16b93-110">Zadejte četnost zálohování, uchovávání a počáteční čas plánu.</span><span class="sxs-lookup"><span data-stu-id="16b93-110">Specify the backup frequency, retention, and starting time of the schedule.</span></span>
+   4. <span data-ttu-id="16b93-111">Povolit nebo zakázat plán.</span><span class="sxs-lookup"><span data-stu-id="16b93-111">Enable or disable the schedule.</span></span>
+   5. <span data-ttu-id="16b93-112">Klikněte na ikonu zaškrtnutí</span><span class="sxs-lookup"><span data-stu-id="16b93-112">Click the check icon</span></span> ![ikona zaškrtnutí](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) <span data-ttu-id="16b93-114">Chcete-li uložit změny plánu.</span><span class="sxs-lookup"><span data-stu-id="16b93-114">to save the changes to the schedule.</span></span>
+5. <span data-ttu-id="16b93-115">V **svazky** část, přidat nebo odebrat svazky, které chcete tuto zásadu.</span><span class="sxs-lookup"><span data-stu-id="16b93-115">In the **Volumes** section, add or remove the volumes to this policy.</span></span>
+6. <span data-ttu-id="16b93-116">Uložte změny do této zásady.</span><span class="sxs-lookup"><span data-stu-id="16b93-116">Save the changes to this policy.</span></span>
+7. <span data-ttu-id="16b93-117">Zobrazí se výzva k potvrzení.</span><span class="sxs-lookup"><span data-stu-id="16b93-117">You will prompted for confirmation.</span></span> <span data-ttu-id="16b93-118">Klikněte na tlačítko **OK** zásady uložit.</span><span class="sxs-lookup"><span data-stu-id="16b93-118">Click **OK** to save the policy.</span></span>
 
-**Zásady zálohování** stránka bude aktualizována a uložte změny zásad.
+<span data-ttu-id="16b93-119">**Zásady zálohování** stránka bude aktualizována a uložte změny zásad.</span><span class="sxs-lookup"><span data-stu-id="16b93-119">The **Backup Policies** page will be updated to save the changes to the policy.</span></span>
 

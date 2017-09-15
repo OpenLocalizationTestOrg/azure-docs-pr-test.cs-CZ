@@ -19,14 +19,14 @@ ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2017
 ---
-Na Azure Site Recovery se vztahují následující omezení:
+<span data-ttu-id="37cca-103">Na Azure Site Recovery se vztahují následující omezení:</span><span class="sxs-lookup"><span data-stu-id="37cca-103">The following limits apply to Azure Site Recovery:</span></span>
 
-| IDENTIFIKÁTOR LIMIT | VÝCHOZÍ LIMIT |
+| <span data-ttu-id="37cca-104">IDENTIFIKÁTOR LIMIT</span><span class="sxs-lookup"><span data-stu-id="37cca-104">LIMIT IDENTIFIER</span></span> | <span data-ttu-id="37cca-105">VÝCHOZÍ LIMIT</span><span class="sxs-lookup"><span data-stu-id="37cca-105">DEFAULT LIMIT</span></span> |
 | --- | --- | --- | --- |
-| Počet trezorů na předplatné |25 |
-| Počet serverů za trezor služby Azure |250 |
-| Počet skupin ochrany za trezor služby Azure |Bez omezení |
-| Počet plány obnovení podle Azure trezoru |Bez omezení |
-| Počet serverů na skupinu ochrany |Bez omezení |
-| Počet serverů za plánu obnovení |50 |
+| <span data-ttu-id="37cca-106">Počet trezorů na předplatné</span><span class="sxs-lookup"><span data-stu-id="37cca-106">Number of vaults per subscription</span></span> |<span data-ttu-id="37cca-107">25</span><span class="sxs-lookup"><span data-stu-id="37cca-107">25</span></span> |
+| <span data-ttu-id="37cca-108">Počet serverů za trezor služby Azure</span><span class="sxs-lookup"><span data-stu-id="37cca-108">Number of servers per Azure vault</span></span> |<span data-ttu-id="37cca-109">250</span><span class="sxs-lookup"><span data-stu-id="37cca-109">250</span></span> |
+| <span data-ttu-id="37cca-110">Počet skupin ochrany za trezor služby Azure</span><span class="sxs-lookup"><span data-stu-id="37cca-110">Number of protection groups per Azure vault</span></span> |<span data-ttu-id="37cca-111">Bez omezení</span><span class="sxs-lookup"><span data-stu-id="37cca-111">No limit</span></span> |
+| <span data-ttu-id="37cca-112">Počet plány obnovení podle Azure trezoru</span><span class="sxs-lookup"><span data-stu-id="37cca-112">Number of recovery plans per Azure vault</span></span> |<span data-ttu-id="37cca-113">Bez omezení</span><span class="sxs-lookup"><span data-stu-id="37cca-113">No limit</span></span> |
+| <span data-ttu-id="37cca-114">Počet serverů na skupinu ochrany</span><span class="sxs-lookup"><span data-stu-id="37cca-114">Number of servers per protection group</span></span> |<span data-ttu-id="37cca-115">Bez omezení</span><span class="sxs-lookup"><span data-stu-id="37cca-115">No limit</span></span> |
+| <span data-ttu-id="37cca-116">Počet serverů za plánu obnovení</span><span class="sxs-lookup"><span data-stu-id="37cca-116">Number of servers per recovery plan</span></span> |<span data-ttu-id="37cca-117">50</span><span class="sxs-lookup"><span data-stu-id="37cca-117">50</span></span> |
 

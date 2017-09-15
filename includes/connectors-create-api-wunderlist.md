@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Požadavky
-* Účet Wunderlist  
+### <a name="prerequisites"></a><span data-ttu-id="9b299-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9b299-101">Prerequisites</span></span>
+* <span data-ttu-id="9b299-102">Účet Wunderlist</span><span class="sxs-lookup"><span data-stu-id="9b299-102">A Wunderlist account</span></span>  
 
-Než v aplikaci logiky můžete použít váš účet Wunderlist, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Wunderlist. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+<span data-ttu-id="9b299-103">Než v aplikaci logiky můžete použít váš účet Wunderlist, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9b299-103">Before you can use your Wunderlist account in a Logic app, you must authorize the Logic app to connect to your Wunderlist account.</span></span> <span data-ttu-id="9b299-104">Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="9b299-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Wunderlist:
+<span data-ttu-id="9b299-105">Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Wunderlist:</span><span class="sxs-lookup"><span data-stu-id="9b299-105">Here are the steps to authorize your Logic app to connect to your Wunderlist account:</span></span>
 
-1. Chcete-li vytvořit připojení k Wunderlist, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Wunderlist* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. <span data-ttu-id="9b299-106">Chcete-li vytvořit připojení k Wunderlist, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Wunderlist* do vyhledávacího pole.</span><span class="sxs-lookup"><span data-stu-id="9b299-106">To create a connection to Wunderlist, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Wunderlist* in the search box.</span></span> <span data-ttu-id="9b299-107">Vyberte aktivační události nebo akci, kterou budete chtít použít:</span><span class="sxs-lookup"><span data-stu-id="9b299-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-0.png)
-2. Pokud jste nevytvořili žádné připojení k Wunderlist před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Wunderlist. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Wunderlist:   
+2. <span data-ttu-id="9b299-108">Pokud jste nevytvořili žádné připojení k Wunderlist před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9b299-108">If you haven't created any connections to Wunderlist before, you'll get prompted to provide your Wunderlist credentials.</span></span> <span data-ttu-id="9b299-109">Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Wunderlist:</span><span class="sxs-lookup"><span data-stu-id="9b299-109">These credentials will be used to authorize your Logic app to connect to, and access your Wunderlist account's data:</span></span>   
    ![](./media/connectors-create-api-wunderlist/wunderlist-1.png)  
-3. Zadejte svoje přihlašovací údaje a kliknutím na tlačítko Přihlásit  
+3. <span data-ttu-id="9b299-110">Zadejte svoje přihlašovací údaje a kliknutím na tlačítko Přihlásit</span><span class="sxs-lookup"><span data-stu-id="9b299-110">Provide your credentials then select the button to sign in</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-2.png)  
-4. Pak jste vám sdělili, co bude aplikace logiky mít oprávnění ke všem s vaším účtem Wunderlist. Pokud souhlasíte, vyberte tlačítko označující vaše smlouvy. 
+4. <span data-ttu-id="9b299-111">Pak jste vám sdělili, co bude aplikace logiky mít oprávnění ke všem s vaším účtem Wunderlist.</span><span class="sxs-lookup"><span data-stu-id="9b299-111">You'll then be told what the Logic app will have permissions to do with your Wunderlist account.</span></span> <span data-ttu-id="9b299-112">Pokud souhlasíte, vyberte tlačítko označující vaše smlouvy.</span><span class="sxs-lookup"><span data-stu-id="9b299-112">If you agree, select the button to indicate your agreement.</span></span> 
    ![](./media/connectors-create-api-wunderlist/wunderlist-4.png)  
-5. Nakonec vyberte **Autorizovat** tlačítko  
+5. <span data-ttu-id="9b299-113">Nakonec vyberte **Autorizovat** tlačítko</span><span class="sxs-lookup"><span data-stu-id="9b299-113">Finally, select the **Authorize** button</span></span>  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 

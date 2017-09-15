@@ -1,16 +1,16 @@
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Zadání definice struktury obdélníková datové sady
-V části struktura v datových sadách JSON je **volitelné** část obdélníková tabulky (s řádky a sloupce) a obsahuje kolekci sloupců pro tabulku. V části struktura budete používat pro buď typ informacemi pro převody typů nebo provádění mapování sloupce. Následující části popisují tyto funkce podrobně. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a><span data-ttu-id="aa06a-101">Zadání definice struktury obdélníková datové sady</span><span class="sxs-lookup"><span data-stu-id="aa06a-101">Specifying structure definition for rectangular datasets</span></span>
+<span data-ttu-id="aa06a-102">V části struktura v datových sadách JSON je **volitelné** část obdélníková tabulky (s řádky a sloupce) a obsahuje kolekci sloupců pro tabulku.</span><span class="sxs-lookup"><span data-stu-id="aa06a-102">The structure section in the datasets JSON is an **optional** section for rectangular tables (with rows & columns) and contains a collection of columns for the table.</span></span> <span data-ttu-id="aa06a-103">V části struktura budete používat pro buď typ informacemi pro převody typů nebo provádění mapování sloupce.</span><span class="sxs-lookup"><span data-stu-id="aa06a-103">You will use the structure section for either providing type information for type conversions or doing column mappings.</span></span> <span data-ttu-id="aa06a-104">Následující části popisují tyto funkce podrobně.</span><span class="sxs-lookup"><span data-stu-id="aa06a-104">The following sections describe these features in detail.</span></span> 
 
-Všechny sloupce obsahují následující vlastnosti:
+<span data-ttu-id="aa06a-105">Všechny sloupce obsahují následující vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="aa06a-105">Each column contains the following properties:</span></span>
 
-| Vlastnost | Popis | Požaduje se |
+| <span data-ttu-id="aa06a-106">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="aa06a-106">Property</span></span> | <span data-ttu-id="aa06a-107">Popis</span><span class="sxs-lookup"><span data-stu-id="aa06a-107">Description</span></span> | <span data-ttu-id="aa06a-108">Požaduje se</span><span class="sxs-lookup"><span data-stu-id="aa06a-108">Required</span></span> |
 | --- | --- | --- |
-| jméno |Název sloupce. |Ano |
-| type |Datový typ sloupce. Najdete v části převody typu níže pro další podrobnosti týkající se kdy by měl můžete určit informace o typu |Ne |
-| Jazyková verze |.NET na základě jazykové verze má být použita, pokud je zadaný typ a typ formátu .NET Datetime nebo Datetimeoffset. Výchozí hodnota je "en-us". |Ne |
-| Formát |Řetězec formátu, který se má použít, když je zadaný typ a .NET typ Datetime nebo Datetimeoffset. |Ne |
+| <span data-ttu-id="aa06a-109">jméno</span><span class="sxs-lookup"><span data-stu-id="aa06a-109">name</span></span> |<span data-ttu-id="aa06a-110">Název sloupce.</span><span class="sxs-lookup"><span data-stu-id="aa06a-110">Name of the column.</span></span> |<span data-ttu-id="aa06a-111">Ano</span><span class="sxs-lookup"><span data-stu-id="aa06a-111">Yes</span></span> |
+| <span data-ttu-id="aa06a-112">type</span><span class="sxs-lookup"><span data-stu-id="aa06a-112">type</span></span> |<span data-ttu-id="aa06a-113">Datový typ sloupce.</span><span class="sxs-lookup"><span data-stu-id="aa06a-113">Data type of the column.</span></span> <span data-ttu-id="aa06a-114">Najdete v části převody typu níže pro další podrobnosti týkající se kdy by měl můžete určit informace o typu</span><span class="sxs-lookup"><span data-stu-id="aa06a-114">See type conversions section below for more details regarding when should you specify type information</span></span> |<span data-ttu-id="aa06a-115">Ne</span><span class="sxs-lookup"><span data-stu-id="aa06a-115">No</span></span> |
+| <span data-ttu-id="aa06a-116">Jazyková verze</span><span class="sxs-lookup"><span data-stu-id="aa06a-116">culture</span></span> |<span data-ttu-id="aa06a-117">.NET na základě jazykové verze má být použita, pokud je zadaný typ a typ formátu .NET Datetime nebo Datetimeoffset.</span><span class="sxs-lookup"><span data-stu-id="aa06a-117">.NET based culture to be used when type is specified and is .NET type Datetime or Datetimeoffset.</span></span> <span data-ttu-id="aa06a-118">Výchozí hodnota je "en-us".</span><span class="sxs-lookup"><span data-stu-id="aa06a-118">Default is “en-us”.</span></span> |<span data-ttu-id="aa06a-119">Ne</span><span class="sxs-lookup"><span data-stu-id="aa06a-119">No</span></span> |
+| <span data-ttu-id="aa06a-120">Formát</span><span class="sxs-lookup"><span data-stu-id="aa06a-120">format</span></span> |<span data-ttu-id="aa06a-121">Řetězec formátu, který se má použít, když je zadaný typ a .NET typ Datetime nebo Datetimeoffset.</span><span class="sxs-lookup"><span data-stu-id="aa06a-121">Format string to be used when type is specified and is .NET type Datetime or Datetimeoffset.</span></span> |<span data-ttu-id="aa06a-122">Ne</span><span class="sxs-lookup"><span data-stu-id="aa06a-122">No</span></span> |
 
-Následující příklad ukazuje oddílu struktura JSON pro tabulku, která má tři sloupce ID uživatele, název a lastlogindate.
+<span data-ttu-id="aa06a-123">Následující příklad ukazuje oddílu struktura JSON pro tabulku, která má tři sloupce ID uživatele, název a lastlogindate.</span><span class="sxs-lookup"><span data-stu-id="aa06a-123">The following sample shows the structure section JSON for a table that has three columns userid, name, and lastlogindate.</span></span>
 
 ```json
 "structure": 
@@ -21,31 +21,31 @@ Následující příklad ukazuje oddílu struktura JSON pro tabulku, která má 
 ],
 ```
 
-Použijte následující pokyny pro kdy "struktury" informace a co mají být zahrnuty **struktura** části.
+<span data-ttu-id="aa06a-124">Použijte následující pokyny pro kdy "struktury" informace a co mají být zahrnuty **struktura** části.</span><span class="sxs-lookup"><span data-stu-id="aa06a-124">Please use the following guidelines for when to include “structure” information and what to include in the **structure** section.</span></span>
 
-* **Pro strukturovaná data zdroje** , data schématu a zadejte informace o úložišti spolu s daty, samotné (zdrojů jako tabulky Azure SQL Server, Oracle, atd.), musíte zadat v části "struktura" pouze v případě, že chcete provádět mapování sloupců z konkrétního zdroje na konkrétní sloupce v jímka a jejich názvy sloupců nejsou stejné (viz podrobnosti v následující části mapování sloupců). 
+* <span data-ttu-id="aa06a-125">**Pro strukturovaná data zdroje** , data schématu a zadejte informace o úložišti spolu s daty, samotné (zdrojů jako tabulky Azure SQL Server, Oracle, atd.), musíte zadat v části "struktura" pouze v případě, že chcete provádět mapování sloupců z konkrétního zdroje na konkrétní sloupce v jímka a jejich názvy sloupců nejsou stejné (viz podrobnosti v následující části mapování sloupců).</span><span class="sxs-lookup"><span data-stu-id="aa06a-125">**For structured data sources** that store data schema and type information along with the data itself (sources like SQL Server, Oracle, Azure table etc.), you should specify the “structure” section only if you want do column mapping of specific source columns to specific columns in sink and their names are not the same (see details in column mapping section below).</span></span> 
   
-    Jak je uvedeno nahoře, je v části "struktura" volitelné informace o typu. Strukturované zdroje informací o typu je již k dispozici jako součást definice datové sady v úložišti dat, proto by nemělo zahrnete informací o typu zahrnete v části "struktura".
-* **Pro schéma pro zdroje dat pro čtení (konkrétně objektů blob v Azure)** můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty. Pro tyto typy zdrojů dat by měla obsahovat "struktura" 2 následujících případech:
-  * Chcete mapování sloupců.
-  * Pokud je datová sada zdroji v aktivitě kopírování, můžete zadat informace o typu "struktury" a objektu pro vytváření dat bude používat tento typ informace pro převod na nativní typy pro jímky. V tématu [přesun dat do a z Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) Další informace najdete v článku.
+    <span data-ttu-id="aa06a-126">Jak je uvedeno nahoře, je v části "struktura" volitelné informace o typu.</span><span class="sxs-lookup"><span data-stu-id="aa06a-126">As mentioned above, the type information is optional in “structure” section.</span></span> <span data-ttu-id="aa06a-127">Strukturované zdroje informací o typu je již k dispozici jako součást definice datové sady v úložišti dat, proto by nemělo zahrnete informací o typu zahrnete v části "struktura".</span><span class="sxs-lookup"><span data-stu-id="aa06a-127">For structured sources, type information is already available as part of dataset definition in the data store, so you should not include type information when you do include the “structure” section.</span></span>
+* <span data-ttu-id="aa06a-128">**Pro schéma pro zdroje dat pro čtení (konkrétně objektů blob v Azure)** můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty.</span><span class="sxs-lookup"><span data-stu-id="aa06a-128">**For schema on read data sources (specifically Azure blob)**  you can choose to store data without storing any schema or type information with the data.</span></span> <span data-ttu-id="aa06a-129">Pro tyto typy zdrojů dat by měla obsahovat "struktura" 2 následujících případech:</span><span class="sxs-lookup"><span data-stu-id="aa06a-129">For these types of data sources you should include “structure” in the following 2 cases:</span></span>
+  * <span data-ttu-id="aa06a-130">Chcete mapování sloupců.</span><span class="sxs-lookup"><span data-stu-id="aa06a-130">You want to do column mapping.</span></span>
+  * <span data-ttu-id="aa06a-131">Pokud je datová sada zdroji v aktivitě kopírování, můžete zadat informace o typu "struktury" a objektu pro vytváření dat bude používat tento typ informace pro převod na nativní typy pro jímky.</span><span class="sxs-lookup"><span data-stu-id="aa06a-131">When the dataset is a source in a Copy activity, you can provide type information in “structure” and data factory will use this type information for conversion to native types for the sink.</span></span> <span data-ttu-id="aa06a-132">V tématu [přesun dat do a z Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) Další informace najdete v článku.</span><span class="sxs-lookup"><span data-stu-id="aa06a-132">See [Move data to and from Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) article for more information.</span></span>
 
-### <a name="supported-net-based-types"></a>Podporováno. Na základě NET typy
-Objekt pro vytváření dat podporuje následující specifikací CLS kompatibilní .NET na základě typu hodnoty pro poskytnutí informací o typu "struktury" pro schéma na zdrojů dat čtení objektů blob v Azure.
+### <a name="supported-net-based-types"></a><span data-ttu-id="aa06a-133">Podporováno. Na základě NET typy</span><span class="sxs-lookup"><span data-stu-id="aa06a-133">Supported .NET-based types</span></span>
+<span data-ttu-id="aa06a-134">Objekt pro vytváření dat podporuje následující specifikací CLS kompatibilní .NET na základě typu hodnoty pro poskytnutí informací o typu "struktury" pro schéma na zdrojů dat čtení objektů blob v Azure.</span><span class="sxs-lookup"><span data-stu-id="aa06a-134">Data factory supports the following CLS compliant .NET based type values for providing type information in “structure” for schema on read data sources like Azure blob.</span></span>
 
-* Int16
-* Int32 
-* Int64
-* Jeden
-* Double
-* Decimal
-* Byte]
-* BOOL
-* Řetězec 
-* Identifikátor GUID
-* Data a času
-* Datový typ DateTimeOffset
-* Časový interval 
+* <span data-ttu-id="aa06a-135">Int16</span><span class="sxs-lookup"><span data-stu-id="aa06a-135">Int16</span></span>
+* <span data-ttu-id="aa06a-136">Int32</span><span class="sxs-lookup"><span data-stu-id="aa06a-136">Int32</span></span> 
+* <span data-ttu-id="aa06a-137">Int64</span><span class="sxs-lookup"><span data-stu-id="aa06a-137">Int64</span></span>
+* <span data-ttu-id="aa06a-138">Jeden</span><span class="sxs-lookup"><span data-stu-id="aa06a-138">Single</span></span>
+* <span data-ttu-id="aa06a-139">Double</span><span class="sxs-lookup"><span data-stu-id="aa06a-139">Double</span></span>
+* <span data-ttu-id="aa06a-140">Decimal</span><span class="sxs-lookup"><span data-stu-id="aa06a-140">Decimal</span></span>
+* <span data-ttu-id="aa06a-141">Byte]</span><span class="sxs-lookup"><span data-stu-id="aa06a-141">Byte[]</span></span>
+* <span data-ttu-id="aa06a-142">BOOL</span><span class="sxs-lookup"><span data-stu-id="aa06a-142">Bool</span></span>
+* <span data-ttu-id="aa06a-143">Řetězec</span><span class="sxs-lookup"><span data-stu-id="aa06a-143">String</span></span> 
+* <span data-ttu-id="aa06a-144">Identifikátor GUID</span><span class="sxs-lookup"><span data-stu-id="aa06a-144">Guid</span></span>
+* <span data-ttu-id="aa06a-145">Data a času</span><span class="sxs-lookup"><span data-stu-id="aa06a-145">Datetime</span></span>
+* <span data-ttu-id="aa06a-146">Datový typ DateTimeOffset</span><span class="sxs-lookup"><span data-stu-id="aa06a-146">Datetimeoffset</span></span>
+* <span data-ttu-id="aa06a-147">Časový interval</span><span class="sxs-lookup"><span data-stu-id="aa06a-147">Timespan</span></span> 
 
-Pro hodnotu Datetime a Datetimeoffset můžete volitelně specifikovat řetězec "culture" & "format" usnadňuje analýzy vaše vlastní řetězce data a času. Viz ukázka pro převod typů níže.
+<span data-ttu-id="aa06a-148">Pro hodnotu Datetime a Datetimeoffset můžete volitelně specifikovat řetězec "culture" & "format" usnadňuje analýzy vaše vlastní řetězce data a času.</span><span class="sxs-lookup"><span data-stu-id="aa06a-148">For Datetime & Datetimeoffset you can also optionally specify “culture” & “format” string to facilitate parsing of your custom Datetime string.</span></span> <span data-ttu-id="aa06a-149">Viz ukázka pro převod typů níže.</span><span class="sxs-lookup"><span data-stu-id="aa06a-149">See sample for type conversion below.</span></span>
 

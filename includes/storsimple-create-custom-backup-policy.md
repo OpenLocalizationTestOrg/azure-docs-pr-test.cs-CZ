@@ -1,27 +1,27 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-create-a-custom-backup-policy"></a>Chcete-li vytvořit vlastní zásady zálohování
-1. Na **zařízení** klikněte na tlačítko **zásady zálohování** a pak klikněte na **přidat**.
-2. V **přidat zásadu zálohování** dialogovém **definovat zásady zálohování**:
+#### <a name="to-create-a-custom-backup-policy"></a><span data-ttu-id="e5c60-101">Chcete-li vytvořit vlastní zásady zálohování</span><span class="sxs-lookup"><span data-stu-id="e5c60-101">To create a custom backup policy</span></span>
+1. <span data-ttu-id="e5c60-102">Na **zařízení** klikněte na tlačítko **zásady zálohování** a pak klikněte na **přidat**.</span><span class="sxs-lookup"><span data-stu-id="e5c60-102">On the **Devices** page, click **Backup Policies** and then click **Add**.</span></span>
+2. <span data-ttu-id="e5c60-103">V **přidat zásadu zálohování** dialogovém **definovat zásady zálohování**:</span><span class="sxs-lookup"><span data-stu-id="e5c60-103">In the **Add a backup policy** dialog box, under **Define your backup policy**:</span></span>
    
-   1. Zadejte název zásady zálohování.
-   2. Vyberte svazky, které chcete přidat do této zásady. Můžete přidat více svazků tak, že je vyberete v rozevíracím seznamu.
-   3. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
+   1. <span data-ttu-id="e5c60-104">Zadejte název zásady zálohování.</span><span class="sxs-lookup"><span data-stu-id="e5c60-104">Specify a backup policy name.</span></span>
+   2. <span data-ttu-id="e5c60-105">Vyberte svazky, které chcete přidat do této zásady.</span><span class="sxs-lookup"><span data-stu-id="e5c60-105">Select the volumes to be added to this policy.</span></span> <span data-ttu-id="e5c60-106">Můžete přidat více svazků tak, že je vyberete v rozevíracím seznamu.</span><span class="sxs-lookup"><span data-stu-id="e5c60-106">You can choose to add multiple volumes by selecting them from the drop-down list.</span></span>
+   3. <span data-ttu-id="e5c60-107">Klikněte na ikonu zaškrtnutí</span><span class="sxs-lookup"><span data-stu-id="e5c60-107">Click the check icon</span></span> ![ikona zaškrtnutí](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png)<span data-ttu-id="e5c60-109">.</span><span class="sxs-lookup"><span data-stu-id="e5c60-109">.</span></span>
       
-      Po zásady byla úspěšně vytvořena, budete upozorněni. Stránka zásady zálohování bude aktualizována taky na nově vytvořený zásad.
-3. Klikněte na název zásady (první sloupec) můžete rozbalit podrobnosti o zásadě, kterou jste právě vytvořili.
-4. Klikněte na tlačítko **Spravovat plány**.
-5. V **Spravovat plány** dialogové okno:
+      <span data-ttu-id="e5c60-110">Po zásady byla úspěšně vytvořena, budete upozorněni.</span><span class="sxs-lookup"><span data-stu-id="e5c60-110">You will be notified after the policy is created successfully.</span></span> <span data-ttu-id="e5c60-111">Stránka zásady zálohování bude aktualizována taky na nově vytvořený zásad.</span><span class="sxs-lookup"><span data-stu-id="e5c60-111">The backup policies page will also be updated to show the newly created policy.</span></span>
+3. <span data-ttu-id="e5c60-112">Klikněte na název zásady (první sloupec) můžete rozbalit podrobnosti o zásadě, kterou jste právě vytvořili.</span><span class="sxs-lookup"><span data-stu-id="e5c60-112">Click the policy name (first column) to drill down into details of the policy you just created.</span></span>
+4. <span data-ttu-id="e5c60-113">Klikněte na tlačítko **Spravovat plány**.</span><span class="sxs-lookup"><span data-stu-id="e5c60-113">Click **manage schedules**.</span></span>
+5. <span data-ttu-id="e5c60-114">V **Spravovat plány** dialogové okno:</span><span class="sxs-lookup"><span data-stu-id="e5c60-114">In the **Manage Schedules** dialog box:</span></span>
    
-   1. Vyberte **vytvořit nový** chcete přidat jiný plán.
-   2. V rozevíracím seznamu vyberte typ zálohy jako **místní** nebo **cloudu** snímku.
-   3. Zadejte četnost zálohování v minutách, hodinách, dnech nebo týdnech.
-   4. Vyberte uchovávání informací. Volby uchování závisí na požadované četnosti zálohování.
-   5. Vyberte počáteční čas a datum pro tuto zásadu.
-   6. Zaškrtněte políčko pro povolení zásad.
-6. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) Chcete-li dokončit.
-7. Vrátíte se na podrobnosti zásady. Klikněte na tlačítko **Uložit** uložit změny provedené na tuto zásadu. Pokud zásada uložena, budete upozorněni.
-8. Přejděte zpět **zásady zálohování** stránky. Tabulkový seznam zásady zálohování se aktualizuje a zobrazí změny zásad.
+   1. <span data-ttu-id="e5c60-115">Vyberte **vytvořit nový** chcete přidat jiný plán.</span><span class="sxs-lookup"><span data-stu-id="e5c60-115">Select **Create new** to add another schedule.</span></span>
+   2. <span data-ttu-id="e5c60-116">V rozevíracím seznamu vyberte typ zálohy jako **místní** nebo **cloudu** snímku.</span><span class="sxs-lookup"><span data-stu-id="e5c60-116">From the drop-down list, choose the backup type as **local** or **cloud** snapshot.</span></span>
+   3. <span data-ttu-id="e5c60-117">Zadejte četnost zálohování v minutách, hodinách, dnech nebo týdnech.</span><span class="sxs-lookup"><span data-stu-id="e5c60-117">Specify the backup frequency in minutes, hours, days, or weeks.</span></span>
+   4. <span data-ttu-id="e5c60-118">Vyberte uchovávání informací.</span><span class="sxs-lookup"><span data-stu-id="e5c60-118">Select a retention.</span></span> <span data-ttu-id="e5c60-119">Volby uchování závisí na požadované četnosti zálohování.</span><span class="sxs-lookup"><span data-stu-id="e5c60-119">The retention choices depend on the backup frequency.</span></span>
+   5. <span data-ttu-id="e5c60-120">Vyberte počáteční čas a datum pro tuto zásadu.</span><span class="sxs-lookup"><span data-stu-id="e5c60-120">Select the starting time and date for the policy.</span></span>
+   6. <span data-ttu-id="e5c60-121">Zaškrtněte políčko pro povolení zásad.</span><span class="sxs-lookup"><span data-stu-id="e5c60-121">Select the check box to enable the policy.</span></span>
+6. <span data-ttu-id="e5c60-122">Klikněte na ikonu zaškrtnutí</span><span class="sxs-lookup"><span data-stu-id="e5c60-122">Click the check icon</span></span> ![ikona zaškrtnutí](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) <span data-ttu-id="e5c60-124">Chcete-li dokončit.</span><span class="sxs-lookup"><span data-stu-id="e5c60-124">to finish.</span></span>
+7. <span data-ttu-id="e5c60-125">Vrátíte se na podrobnosti zásady.</span><span class="sxs-lookup"><span data-stu-id="e5c60-125">You will return to the policy details.</span></span> <span data-ttu-id="e5c60-126">Klikněte na tlačítko **Uložit** uložit změny provedené na tuto zásadu.</span><span class="sxs-lookup"><span data-stu-id="e5c60-126">Click **Save** to save the changes you made to this policy.</span></span> <span data-ttu-id="e5c60-127">Pokud zásada uložena, budete upozorněni.</span><span class="sxs-lookup"><span data-stu-id="e5c60-127">You will be notified when the policy has been saved.</span></span>
+8. <span data-ttu-id="e5c60-128">Přejděte zpět **zásady zálohování** stránky.</span><span class="sxs-lookup"><span data-stu-id="e5c60-128">Navigate back to the **Backup Policies** page.</span></span> <span data-ttu-id="e5c60-129">Tabulkový seznam zásady zálohování se aktualizuje a zobrazí změny zásad.</span><span class="sxs-lookup"><span data-stu-id="e5c60-129">The tabular listing of the backup policies will be updated to display the modified policy.</span></span>
    
-    ![Vlastní zásady zálohování](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
+    ![Vlastní zásady zálohování](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)<span data-ttu-id="e5c60-131">.</span><span class="sxs-lookup"><span data-stu-id="e5c60-131">.</span></span>
 

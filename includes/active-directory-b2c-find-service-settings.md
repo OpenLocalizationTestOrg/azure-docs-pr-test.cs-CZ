@@ -2,6 +2,6 @@
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Pokud Azure AD B2C není v seznamu služeb, rozbalte **Další služby** pod navigačním panelem v levé dolní části portálu. Vyhledejte **Azure AD B2C** a v seznamu výsledků vyberte **Azure AD B2C**. Můžete také vybrat ikonu hvězdičky a přidat tak Azure AD B2C do seznamu oblíbených služeb.
+<span data-ttu-id="dd818-101">Pokud Azure AD B2C není v seznamu služeb, rozbalte **Další služby** pod navigačním panelem v levé dolní části portálu.</span><span class="sxs-lookup"><span data-stu-id="dd818-101">If Azure AD B2C isn't in the services list, expand **More services** below the navigation bar in the bottom-left side of the portal.</span></span> <span data-ttu-id="dd818-102">Vyhledejte **Azure AD B2C** a v seznamu výsledků vyberte **Azure AD B2C**.</span><span class="sxs-lookup"><span data-stu-id="dd818-102">Search for **Azure AD B2C** and select **Azure AD B2C** in the result list.</span></span> <span data-ttu-id="dd818-103">Můžete také vybrat ikonu hvězdičky a přidat tak Azure AD B2C do seznamu oblíbených služeb.</span><span class="sxs-lookup"><span data-stu-id="dd818-103">You can also select the star icon to add Azure AD B2C it your favorite services list.</span></span>
 
 ![Hledání služby Azure AD B2C](media/active-directory-b2c-find-service-settings/navigate-to-azure-ad-b2c.png)

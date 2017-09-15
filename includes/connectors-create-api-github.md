@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Požadavky
-* A [Githubu](http://GitHub.com) účtu 
+### <a name="prerequisites"></a><span data-ttu-id="f0d84-101">Požadavky</span><span class="sxs-lookup"><span data-stu-id="f0d84-101">Prerequisites</span></span>
+* <span data-ttu-id="f0d84-102">A [Githubu](http://GitHub.com) účtu</span><span class="sxs-lookup"><span data-stu-id="f0d84-102">A [GitHub](http://GitHub.com) account</span></span> 
 
-Než v aplikaci logiky můžete použít váš účet Githubu, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu GitHub. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+<span data-ttu-id="f0d84-103">Než v aplikaci logiky můžete použít váš účet Githubu, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu GitHub.</span><span class="sxs-lookup"><span data-stu-id="f0d84-103">Before you can use your GitHub account in a Logic app, you must authorize the Logic app to connect to your GitHub account.</span></span> <span data-ttu-id="f0d84-104">Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="f0d84-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Githubu:
+<span data-ttu-id="f0d84-105">Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Githubu:</span><span class="sxs-lookup"><span data-stu-id="f0d84-105">Here are the steps to authorize your Logic app to connect to your GitHub account:</span></span>
 
-1. Chcete-li vytvořit připojení ke Githubu, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Githubu* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. <span data-ttu-id="f0d84-106">Chcete-li vytvořit připojení ke Githubu, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Githubu* do vyhledávacího pole.</span><span class="sxs-lookup"><span data-stu-id="f0d84-106">To create a connection to GitHub, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *GitHub* in the search box.</span></span> <span data-ttu-id="f0d84-107">Vyberte aktivační události nebo akci, kterou budete chtít použít:</span><span class="sxs-lookup"><span data-stu-id="f0d84-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-github/github-1.png)
-2. Pokud jste nevytvořili žádné připojení ke Githubu před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Githubu. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům v účtu Githubu:  
+2. <span data-ttu-id="f0d84-108">Pokud jste nevytvořili žádné připojení ke Githubu před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Githubu.</span><span class="sxs-lookup"><span data-stu-id="f0d84-108">If you haven't created any connections to GitHub before, you'll get prompted to provide your GitHub credentials.</span></span> <span data-ttu-id="f0d84-109">Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům v účtu Githubu:</span><span class="sxs-lookup"><span data-stu-id="f0d84-109">These credentials will be used to authorize your Logic app to connect to, and access your GitHub account's data:</span></span>  
    ![](./media/connectors-create-api-github/github-2.png)
-3. Zadejte Githubu uživatelské jméno a heslo k autorizaci aplikace logiky:  
+3. <span data-ttu-id="f0d84-110">Zadejte Githubu uživatelské jméno a heslo k autorizaci aplikace logiky:</span><span class="sxs-lookup"><span data-stu-id="f0d84-110">Provide your GitHub user name and password to authorize your Logic app:</span></span>  
    ![](./media/connectors-create-api-github/github-3.png)   
-4. Zkontrolujte vaše záměry:  
+4. <span data-ttu-id="f0d84-111">Zkontrolujte vaše záměry:</span><span class="sxs-lookup"><span data-stu-id="f0d84-111">Confirm your intentions:</span></span>  
    ![](./media/connectors-create-api-github/github-4.png)   
-5. Všimněte si, že připojení bylo vytvořeno na portálu. Můžete pokračovat s vytvoření aplikace logiky a v něm pomocí Githubu:   
+5. <span data-ttu-id="f0d84-112">Všimněte si, že připojení bylo vytvořeno na portálu.</span><span class="sxs-lookup"><span data-stu-id="f0d84-112">Notice the connection has been created in the portal.</span></span> <span data-ttu-id="f0d84-113">Můžete pokračovat s vytvoření aplikace logiky a v něm pomocí Githubu:</span><span class="sxs-lookup"><span data-stu-id="f0d84-113">You can now proceed with creating your Logic app and using GitHub in it:</span></span>   
    ![](./media/connectors-create-api-github/github-5.png)   
 

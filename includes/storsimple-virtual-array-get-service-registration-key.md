@@ -1,7 +1,7 @@
-#### <a name="to-get-the-storsimple-service-registration-key"></a>Získání registračního klíče služby StorSimple
+#### <a name="to-get-the-storsimple-service-registration-key"></a><span data-ttu-id="b5225-101">Získání registračního klíče služby StorSimple</span><span class="sxs-lookup"><span data-stu-id="b5225-101">To get the StorSimple service registration key</span></span>
 
-1.  V okně **Správce zařízení StorSimple** klikněte na službu, kterou jste vytvořili. Na pravé straně se otevře nové okno.
+1.  <span data-ttu-id="b5225-102">V okně **Správce zařízení StorSimple** klikněte na službu, kterou jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="b5225-102">On the **StorSimple Device Manager** blade, click the service that you created.</span></span> <span data-ttu-id="b5225-103">Na pravé straně se otevře nové okno.</span><span class="sxs-lookup"><span data-stu-id="b5225-103">This opens up a new blade to the right.</span></span>
 
-2.  V okně, které se otevře, klikněte na tlačítko **spravovat &gt;**  **klíče**.
+2.  <span data-ttu-id="b5225-104">V okně, které se otevře, klikněte na tlačítko **spravovat &gt;**  **klíče**.</span><span class="sxs-lookup"><span data-stu-id="b5225-104">In the blade that opens up, click **Manage &gt;** **Keys**.</span></span>
 
-3.  Kliknutím na ikonu kopírování registrační klíč služby zkopírujte a uložte jej pro pozdější použití.
+3.  <span data-ttu-id="b5225-105">Kliknutím na ikonu kopírování registrační klíč služby zkopírujte a uložte jej pro pozdější použití.</span><span class="sxs-lookup"><span data-stu-id="b5225-105">Click the copy icon to copy the service registration key and save it for later use.</span></span>

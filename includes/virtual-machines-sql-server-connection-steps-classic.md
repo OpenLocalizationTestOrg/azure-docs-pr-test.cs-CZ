@@ -1,23 +1,23 @@
-### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Určení názvu DNS virtuálního počítače
-Pokud se chcete připojit k databázovému stroji SQL Serveru z jiného počítače, musíte znát název DNS (Domain Name System) virtuálního počítače. (Je to název, který internet používá k identifikaci virtuálního počítače. Můžete použít IP adres, ale IP adresa se může změnit, když Azure přesune prostředky kvůli redundanci nebo údržbě. Název DNS bude stabilní, protože je možné ho přesměrovat na novou IP adresu.)  
+### <a name="determine-the-dns-name-of-the-virtual-machine"></a><span data-ttu-id="74735-101">Určení názvu DNS virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="74735-101">Determine the DNS name of the virtual machine</span></span>
+<span data-ttu-id="74735-102">Pokud se chcete připojit k databázovému stroji SQL Serveru z jiného počítače, musíte znát název DNS (Domain Name System) virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="74735-102">To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine.</span></span> <span data-ttu-id="74735-103">(Je to název, který internet používá k identifikaci virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="74735-103">(This is the name the internet uses to identify the virtual machine.</span></span> <span data-ttu-id="74735-104">Můžete použít IP adres, ale IP adresa se může změnit, když Azure přesune prostředky kvůli redundanci nebo údržbě.</span><span class="sxs-lookup"><span data-stu-id="74735-104">You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance.</span></span> <span data-ttu-id="74735-105">Název DNS bude stabilní, protože je možné ho přesměrovat na novou IP adresu.)</span><span class="sxs-lookup"><span data-stu-id="74735-105">The DNS name will be stable because it can be redirected to a new IP address.)</span></span>  
 
-1. Na webu Azure Portal (nebo z předchozího kroku) vyberte **Virtuální počítače (Classic)**.
-2. Vyberte virtuální počítač SQL.
-3. V okně **Virtuální počítač** zkopírujte **název DNS** pro tento virtuální počítač.
+1. <span data-ttu-id="74735-106">Na webu Azure Portal (nebo z předchozího kroku) vyberte **Virtuální počítače (Classic)**.</span><span class="sxs-lookup"><span data-stu-id="74735-106">In the Azure Portal (or from the previous step), select **Virtual machines (classic)**.</span></span>
+2. <span data-ttu-id="74735-107">Vyberte virtuální počítač SQL.</span><span class="sxs-lookup"><span data-stu-id="74735-107">Select your SQL VM.</span></span>
+3. <span data-ttu-id="74735-108">V okně **Virtuální počítač** zkopírujte **název DNS** pro tento virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="74735-108">On the **Virtual machine** blade, copy the **DNS name** for the virtual machine.</span></span>
    
     ![Název DNS](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a>Připojení k databázovému stroji z jiného počítače
-1. Na počítači připojeném k internetu otevřete SQL Server Management Studio.
-2. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) do pole **Název serveru** zadejte název DNS virtuálního počítače (zjištěný v předchozím úkolu) a číslo portu veřejného koncového bodu ve formátu*název_DNS,číslo_portu*, například **mysqlvm.cloudapp.net,57500**.
+### <a name="connect-to-the-database-engine-from-another-computer"></a><span data-ttu-id="74735-110">Připojení k databázovému stroji z jiného počítače</span><span class="sxs-lookup"><span data-stu-id="74735-110">Connect to the Database Engine from another computer</span></span>
+1. <span data-ttu-id="74735-111">Na počítači připojeném k internetu otevřete SQL Server Management Studio.</span><span class="sxs-lookup"><span data-stu-id="74735-111">On a computer connected to the internet, open SQL Server Management Studio.</span></span>
+2. <span data-ttu-id="74735-112">V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) do pole **Název serveru** zadejte název DNS virtuálního počítače (zjištěný v předchozím úkolu) a číslo portu veřejného koncového bodu ve formátu*název_DNS,číslo_portu*, například **mysqlvm.cloudapp.net,57500**.</span><span class="sxs-lookup"><span data-stu-id="74735-112">In the **Connect to Server** or **Connect to Database Engine** dialog box, in the **Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **mysqlvm.cloudapp.net,57500**.</span></span>
    
     ![Připojení pomocí SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
    
-    Pokud si nepamatujete číslo portu veřejného koncového bodu, který jste vytvořili, najdete ho v okně **Virtuální počítač** v části **Koncové body**.
+    <span data-ttu-id="74735-114">Pokud si nepamatujete číslo portu veřejného koncového bodu, který jste vytvořili, najdete ho v okně **Virtuální počítač** v části **Koncové body**.</span><span class="sxs-lookup"><span data-stu-id="74735-114">If you don't remember the public endpoint port number you previously created, you can find it in the **Endpoints** area of the **Virtual machine** blade.</span></span>
    
     ![Veřejný port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. V poli **Ověřování** vyberte **Ověřování serveru SQL Server**.
-4. Do pole **Přihlášení** zadejte název přihlášení, které jste vytvořili v předchozím úkolu.
-5. Do pole **Heslo** zadejte heslo přihlášení, které jste vytvořili v předchozím úkolu.
-6. Klikněte na **Připojit**.
+3. <span data-ttu-id="74735-116">V poli **Ověřování** vyberte **Ověřování serveru SQL Server**.</span><span class="sxs-lookup"><span data-stu-id="74735-116">In the **Authentication** box, select **SQL Server Authentication**.</span></span>
+4. <span data-ttu-id="74735-117">Do pole **Přihlášení** zadejte název přihlášení, které jste vytvořili v předchozím úkolu.</span><span class="sxs-lookup"><span data-stu-id="74735-117">In the **Login** box, type the name of a login that you created in an earlier task.</span></span>
+5. <span data-ttu-id="74735-118">Do pole **Heslo** zadejte heslo přihlášení, které jste vytvořili v předchozím úkolu.</span><span class="sxs-lookup"><span data-stu-id="74735-118">In the **Password** box, type the password of the login that you create in an earlier task.</span></span>
+6. <span data-ttu-id="74735-119">Klikněte na **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="74735-119">Click **Connect**.</span></span>
 

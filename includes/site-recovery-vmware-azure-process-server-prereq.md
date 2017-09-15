@@ -1,9 +1,9 @@
-V tomto článku se předpokládá následující:
+<span data-ttu-id="b86e6-101">V tomto článku se předpokládá následující:</span><span class="sxs-lookup"><span data-stu-id="b86e6-101">This article assumes that</span></span>
 
-1. Už bylo navázáno připojení **S2S VPN** nebo **Express Route** mezi vaší místní sítí a Azure Virtual Network.
-2. Váš uživatelský účet má oprávnění k vytvoření nového virtuálního počítače v rámci předplatného Azure, do kterého bylo provedeno převzetí služeb při selhání virtuálních počítačů.
-3. Vaše předplatné má minimálně 4 jádra, která jsou k dispozici pro rozběh nového virtuálního počítače procesového serveru.
-4. Máte k dispozici **heslo konfiguračního serveru**.
+1. <span data-ttu-id="b86e6-102">Už bylo navázáno připojení **S2S VPN** nebo **Express Route** mezi vaší místní sítí a Azure Virtual Network.</span><span class="sxs-lookup"><span data-stu-id="b86e6-102">A **Site to Site VPN** or an **Express Route** connection between your on-premises network and the Azure Virtual Network has already been established.</span></span>
+2. <span data-ttu-id="b86e6-103">Váš uživatelský účet má oprávnění k vytvoření nového virtuálního počítače v rámci předplatného Azure, do kterého bylo provedeno převzetí služeb při selhání virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="b86e6-103">Your user account has permissions to create a new virtual machine in the Azure Subscription that the virtual machines have been failed over into.</span></span>
+3. <span data-ttu-id="b86e6-104">Vaše předplatné má minimálně 4 jádra, která jsou k dispozici pro rozběh nového virtuálního počítače procesového serveru.</span><span class="sxs-lookup"><span data-stu-id="b86e6-104">Your subscription has a minimum of 4 Cores available to spin up a new Process Server virtual machine.</span></span>
+4. <span data-ttu-id="b86e6-105">Máte k dispozici **heslo konfiguračního serveru**.</span><span class="sxs-lookup"><span data-stu-id="b86e6-105">You have the **Configuration Server Passphrase** available.</span></span>
 
 > [!TIP]
-> Ujistěte se, že se můžete připojit na port 443 konfiguračního serveru (spuštěného místně) z Azure Virtual Network, kam bylo provedeno převzetí služeb při selhání virtuálních počítačů.
+> <span data-ttu-id="b86e6-106">Ujistěte se, že se můžete připojit na port 443 konfiguračního serveru (spuštěného místně) z Azure Virtual Network, kam bylo provedeno převzetí služeb při selhání virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="b86e6-106">Ensure that you are able to connect port 443 of the Configuration Server (running on-premises) from the Azure Virtual Network that the virtual machines have been failed over into.</span></span>

@@ -1,20 +1,20 @@
-#### <a name="vpn-type---resource-manager-deployment-model"></a>Typ sítě VPN - modelu nasazení Resource Manager
-|  | **RouteBased** | **PolicyBased** |
+#### <a name="vpn-type---resource-manager-deployment-model"></a><span data-ttu-id="21347-101">Typ sítě VPN - modelu nasazení Resource Manager</span><span class="sxs-lookup"><span data-stu-id="21347-101">VPN type - Resource Manager deployment model</span></span>
+|  | <span data-ttu-id="21347-102">**RouteBased**</span><span class="sxs-lookup"><span data-stu-id="21347-102">**RouteBased**</span></span> | <span data-ttu-id="21347-103">**PolicyBased**</span><span class="sxs-lookup"><span data-stu-id="21347-103">**PolicyBased**</span></span> |
 | --- | --- | --- |
-| **Site-to-Site** |Podporuje se |Podporuje se |
-| **VNet-to-VNet** |Podporuje se |Nepodporuje se |
-| **Více lokalit** |Podporuje se |Nepodporuje se |
-| **S2S a ExpressRoute existovat vedle sebe** |Podporuje se |Nepodporuje se |
-| **Point-to-Site** |Podporuje se |Nepodporuje se |
-| **Classic do Resource Manageru** |Podporuje se |Nepodporuje se |
+| <span data-ttu-id="21347-104">**Site-to-Site**</span><span class="sxs-lookup"><span data-stu-id="21347-104">**Site-to-Site**</span></span> |<span data-ttu-id="21347-105">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-105">Supported</span></span> |<span data-ttu-id="21347-106">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-106">Supported</span></span> |
+| <span data-ttu-id="21347-107">**VNet-to-VNet**</span><span class="sxs-lookup"><span data-stu-id="21347-107">**VNet-to-VNet**</span></span> |<span data-ttu-id="21347-108">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-108">Supported</span></span> |<span data-ttu-id="21347-109">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-109">Not Supported</span></span> |
+| <span data-ttu-id="21347-110">**Více lokalit**</span><span class="sxs-lookup"><span data-stu-id="21347-110">**Multi-Site**</span></span> |<span data-ttu-id="21347-111">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-111">Supported</span></span> |<span data-ttu-id="21347-112">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-112">Not Supported</span></span> |
+| <span data-ttu-id="21347-113">**S2S a ExpressRoute existovat vedle sebe**</span><span class="sxs-lookup"><span data-stu-id="21347-113">**S2S and ExpressRoute coexist**</span></span> |<span data-ttu-id="21347-114">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-114">Supported</span></span> |<span data-ttu-id="21347-115">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-115">Not Supported</span></span> |
+| <span data-ttu-id="21347-116">**Point-to-Site**</span><span class="sxs-lookup"><span data-stu-id="21347-116">**Point-to-Site**</span></span> |<span data-ttu-id="21347-117">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-117">Supported</span></span> |<span data-ttu-id="21347-118">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-118">Not Supported</span></span> |
+| <span data-ttu-id="21347-119">**Classic do Resource Manageru**</span><span class="sxs-lookup"><span data-stu-id="21347-119">**Classic to Resource Manager**</span></span> |<span data-ttu-id="21347-120">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-120">Supported</span></span> |<span data-ttu-id="21347-121">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-121">Not Supported</span></span> |
 
-#### <a name="vpn-type---classic-deployment-model"></a>Typ sítě VPN - modelu nasazení classic
-|  | **Dynamické** | **Statické** |
+#### <a name="vpn-type---classic-deployment-model"></a><span data-ttu-id="21347-122">Typ sítě VPN - modelu nasazení classic</span><span class="sxs-lookup"><span data-stu-id="21347-122">VPN type - classic deployment model</span></span>
+|  | <span data-ttu-id="21347-123">**Dynamické**</span><span class="sxs-lookup"><span data-stu-id="21347-123">**Dynamic**</span></span> | <span data-ttu-id="21347-124">**Statické**</span><span class="sxs-lookup"><span data-stu-id="21347-124">**Static**</span></span> |
 | --- | --- | --- |
-| **Site-to-Site** |Podporuje se |Podporuje se |
-| **VNet-to-VNet** |Podporuje se |Nepodporuje se |
-| **Více lokalit** |Podporuje se |Nepodporuje se |
-| **S2S a ExpressRoute existovat vedle sebe** |Podporuje se |Nepodporuje se |
-| **Point-to-Site** |Podporuje se |Nepodporuje se |
-| **Classic do Resource Manageru** |Podporuje se |Nepodporuje se |
+| <span data-ttu-id="21347-125">**Site-to-Site**</span><span class="sxs-lookup"><span data-stu-id="21347-125">**Site-to-Site**</span></span> |<span data-ttu-id="21347-126">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-126">Supported</span></span> |<span data-ttu-id="21347-127">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-127">Supported</span></span> |
+| <span data-ttu-id="21347-128">**VNet-to-VNet**</span><span class="sxs-lookup"><span data-stu-id="21347-128">**VNet-to-VNet**</span></span> |<span data-ttu-id="21347-129">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-129">Supported</span></span> |<span data-ttu-id="21347-130">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-130">Not Supported</span></span> |
+| <span data-ttu-id="21347-131">**Více lokalit**</span><span class="sxs-lookup"><span data-stu-id="21347-131">**Multi-Site**</span></span> |<span data-ttu-id="21347-132">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-132">Supported</span></span> |<span data-ttu-id="21347-133">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-133">Not Supported</span></span> |
+| <span data-ttu-id="21347-134">**S2S a ExpressRoute existovat vedle sebe**</span><span class="sxs-lookup"><span data-stu-id="21347-134">**S2S and ExpressRoute coexist**</span></span> |<span data-ttu-id="21347-135">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-135">Supported</span></span> |<span data-ttu-id="21347-136">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-136">Not Supported</span></span> |
+| <span data-ttu-id="21347-137">**Point-to-Site**</span><span class="sxs-lookup"><span data-stu-id="21347-137">**Point-to-Site**</span></span> |<span data-ttu-id="21347-138">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-138">Supported</span></span> |<span data-ttu-id="21347-139">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-139">Not Supported</span></span> |
+| <span data-ttu-id="21347-140">**Classic do Resource Manageru**</span><span class="sxs-lookup"><span data-stu-id="21347-140">**Classic to Resource Manager**</span></span> |<span data-ttu-id="21347-141">Podporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-141">Supported</span></span> |<span data-ttu-id="21347-142">Nepodporuje se</span><span class="sxs-lookup"><span data-stu-id="21347-142">Not Supported</span></span> |
 

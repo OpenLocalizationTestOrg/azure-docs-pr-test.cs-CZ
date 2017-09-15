@@ -1,20 +1,20 @@
 
-1. Navštivte [Azure Portal].
-2. Klikněte na **App Services** > back-end, který jste vytvořili.
-3. V nastavení mobilní aplikace klikněte na **Rychlý start** > **Cordova**.
-![Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]
-4. V části **Configure your client application** (Konfigurace klientské aplikace) vyberte možnost **Vytvořit novou aplikaci** a klikněte na **Stáhnout**.
-2. Rozbalte stažený soubor ZIP do adresáře na pevném disku, přejděte do souboru řešení (.sln) a otevřete ho pomocí sady Visual Studio.
-3. V sadě Visual Studio zvolte platformu řešení (Android, iOS nebo Windows) z rozevíracího seznamu vedle spouštěcí šipky. Vyberte konkrétní zařízení pro nasazení nebo emulátor kliknutím na rozevírací seznam na zelené šipce. Můžete použít výchozí platformu Android a emulátor Ripple. Pokročilejší kurzy (například k nabízeným oznámením) vyžadují výběr podporovaného zařízení nebo emulátoru.
-4. Aplikaci Cordova sestavíte a spustíte stisknutím klávesy F5 nebo kliknutím na zelenou šipku. Pokud se v emulátoru zobrazí dialogové okno zabezpečení požadující přístup k síti, potvrďte ho.
-5. Po spuštění aplikace v zařízení nebo emulátoru zadejte smysluplný text do pole **Zadejte nový text**, například *Dokončení kurzu*, a pak klikněte na tlačítko **Přidat**.
+1. <span data-ttu-id="b9972-101">Navštivte [Azure Portal].</span><span class="sxs-lookup"><span data-stu-id="b9972-101">Visit the [Azure portal].</span></span>
+2. <span data-ttu-id="b9972-102">Klikněte na **App Services** > back-end, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="b9972-102">Click **App Services** > the backend that you created.</span></span>
+3. <span data-ttu-id="b9972-103">V nastavení mobilní aplikace klikněte na **Rychlý start** > **Cordova**.</span><span class="sxs-lookup"><span data-stu-id="b9972-103">In the mobile app settings, click **Quickstart** > **Cordova**.</span></span>
+<span data-ttu-id="b9972-104">![Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]</span><span class="sxs-lookup"><span data-stu-id="b9972-104">![Azure Portal with Mobile Apps Quickstart highlighted][quickstart]</span></span>
+4. <span data-ttu-id="b9972-105">V části **Configure your client application** (Konfigurace klientské aplikace) vyberte možnost **Vytvořit novou aplikaci** a klikněte na **Stáhnout**.</span><span class="sxs-lookup"><span data-stu-id="b9972-105">Under **Configure your client application**, select **Create a New App**, then click **Download**.</span></span>
+2. <span data-ttu-id="b9972-106">Rozbalte stažený soubor ZIP do adresáře na pevném disku, přejděte do souboru řešení (.sln) a otevřete ho pomocí sady Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b9972-106">Unpack the downloaded ZIP file to a directory on your hard drive, navigate to the solution file (.sln) and  open it using Visual Studio.</span></span>
+3. <span data-ttu-id="b9972-107">V sadě Visual Studio zvolte platformu řešení (Android, iOS nebo Windows) z rozevíracího seznamu vedle spouštěcí šipky.</span><span class="sxs-lookup"><span data-stu-id="b9972-107">In Visual Studio, choose the solution platform (Android, iOS, or Windows) from the drop-down next to the start arrow.</span></span> <span data-ttu-id="b9972-108">Vyberte konkrétní zařízení pro nasazení nebo emulátor kliknutím na rozevírací seznam na zelené šipce.</span><span class="sxs-lookup"><span data-stu-id="b9972-108">Select a specific deployment device or emulator by clicking the drop-down on the green arrow.</span></span> <span data-ttu-id="b9972-109">Můžete použít výchozí platformu Android a emulátor Ripple.</span><span class="sxs-lookup"><span data-stu-id="b9972-109">You can use the default Android platform and Ripple emulator.</span></span> <span data-ttu-id="b9972-110">Pokročilejší kurzy (například k nabízeným oznámením) vyžadují výběr podporovaného zařízení nebo emulátoru.</span><span class="sxs-lookup"><span data-stu-id="b9972-110">More advanced tutorials (for example, push notifications) require you to select a supported device or emulator.</span></span>
+4. <span data-ttu-id="b9972-111">Aplikaci Cordova sestavíte a spustíte stisknutím klávesy F5 nebo kliknutím na zelenou šipku.</span><span class="sxs-lookup"><span data-stu-id="b9972-111">To build and run your Cordova app, press F5 or click the green arrow.</span></span> <span data-ttu-id="b9972-112">Pokud se v emulátoru zobrazí dialogové okno zabezpečení požadující přístup k síti, potvrďte ho.</span><span class="sxs-lookup"><span data-stu-id="b9972-112">If you see a security dialog in the emulator requesting access to the network, accept it.</span></span>
+5. <span data-ttu-id="b9972-113">Po spuštění aplikace v zařízení nebo emulátoru zadejte smysluplný text do pole **Zadejte nový text**, například *Dokončení kurzu*, a pak klikněte na tlačítko **Přidat**.</span><span class="sxs-lookup"><span data-stu-id="b9972-113">After the app is started on the device or emulator, type meaningful text in **Enter new text**, such  as *Complete the tutorial* and then click the **Add** button.</span></span>
 
-Back-end vloží data z požadavku do tabulky TodoItem ve službě SQL Database a vrátí informace o nově uložených položkách do mobilní aplikace. Mobilní aplikace zobrazí tato data v seznamu.
+<span data-ttu-id="b9972-114">Back-end vloží data z požadavku do tabulky TodoItem ve službě SQL Database a vrátí informace o nově uložených položkách do mobilní aplikace.</span><span class="sxs-lookup"><span data-stu-id="b9972-114">The backend inserts data from the request into the TodoItem table in the SQL Database, and returns information about the newly stored items back to the mobile app.</span></span> <span data-ttu-id="b9972-115">Mobilní aplikace zobrazí tato data v seznamu.</span><span class="sxs-lookup"><span data-stu-id="b9972-115">The mobile app displays this data in the list.</span></span>
 
-Kroky 3 až 5 můžete opakovat i pro jiné platformy.
+<span data-ttu-id="b9972-116">Kroky 3 až 5 můžete opakovat i pro jiné platformy.</span><span class="sxs-lookup"><span data-stu-id="b9972-116">You can repeat steps 3 through 5 for other platforms.</span></span>
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
 
 <!-- URLs -->
-[Azure Portal]: https://portal.azure.com/
+<span data-ttu-id="b9972-117">[Azure Portal]: https://portal.azure.com/</span><span class="sxs-lookup"><span data-stu-id="b9972-117">[Azure portal]: https://portal.azure.com/</span></span>

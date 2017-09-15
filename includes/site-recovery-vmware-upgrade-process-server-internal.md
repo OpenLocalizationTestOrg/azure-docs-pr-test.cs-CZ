@@ -1,4 +1,4 @@
-1. Přihlaste se k procesovému server jako správce.
-2. Stáhněte si nejnovější verzi [sjednocené instalace](http://aka.ms/unifiedinstaller).
-3. Poklikejte na instalační program a spusťte proces aktualizace.
-4. Instalační program zjistí jednotlivé instalované součásti a upgraduje je na nejnovější verzi.
+1. <span data-ttu-id="888a4-101">Přihlaste se k procesovému server jako správce.</span><span class="sxs-lookup"><span data-stu-id="888a4-101">Login to the process server as an Administrator.</span></span>
+2. <span data-ttu-id="888a4-102">Stáhněte si nejnovější verzi [sjednocené instalace](http://aka.ms/unifiedinstaller).</span><span class="sxs-lookup"><span data-stu-id="888a4-102">Download the latest version of the [Unified Setup](http://aka.ms/unifiedinstaller).</span></span>
+3. <span data-ttu-id="888a4-103">Poklikejte na instalační program a spusťte proces aktualizace.</span><span class="sxs-lookup"><span data-stu-id="888a4-103">Double-click the installer to launch the update process.</span></span>
+4. <span data-ttu-id="888a4-104">Instalační program zjistí jednotlivé instalované součásti a upgraduje je na nejnovější verzi.</span><span class="sxs-lookup"><span data-stu-id="888a4-104">The installer will detect the various components that are installed and upgrade them to the latest version.</span></span>

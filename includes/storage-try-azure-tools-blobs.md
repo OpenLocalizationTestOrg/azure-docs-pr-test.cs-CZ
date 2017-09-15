@@ -1,7 +1,7 @@
 > [!TIP]
 > 
-> **Správa prostředků Azure Blob Storage pomocí Microsoft Azure Storage Exploreru**
+> <span data-ttu-id="2bde6-101">**Správa prostředků Azure Blob Storage pomocí Microsoft Azure Storage Exploreru**</span><span class="sxs-lookup"><span data-stu-id="2bde6-101">**Manage Azure Blob Storage resources with Microsoft Azure Storage Explorer**</span></span>
 > 
-> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje [správu prostředků služby Azure Blob Storage](../articles/vs-azure-tools-storage-explorer-blobs.md). Microsoft Azure Storage Explorer umožňuje vizuální vytváření, čtení, aktualizace a odstraňování objektů blob a kontejnerů objektů blob, stejně jako správu přístupu k objektům blob a kontejnerům objektů blob.
+> <span data-ttu-id="2bde6-102">[Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje [správu prostředků služby Azure Blob Storage](../articles/vs-azure-tools-storage-explorer-blobs.md).</span><span class="sxs-lookup"><span data-stu-id="2bde6-102">[Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to [manage Azure Blob Storage resources](../articles/vs-azure-tools-storage-explorer-blobs.md).</span></span> <span data-ttu-id="2bde6-103">Microsoft Azure Storage Explorer umožňuje vizuální vytváření, čtení, aktualizace a odstraňování objektů blob a kontejnerů objektů blob, stejně jako správu přístupu k objektům blob a kontejnerům objektů blob.</span><span class="sxs-lookup"><span data-stu-id="2bde6-103">Using Microsoft Azure Storage Explorer, you can visually create, read, update, and delete blob containers and blobs, as well as manage access to your blobs containers and blobs.</span></span>
 
 

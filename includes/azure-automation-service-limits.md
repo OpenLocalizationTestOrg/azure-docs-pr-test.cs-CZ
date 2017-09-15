@@ -1,10 +1,10 @@
-| Prostředek | Maximální omezení |
+| <span data-ttu-id="054a1-101">Prostředek</span><span class="sxs-lookup"><span data-stu-id="054a1-101">Resource</span></span> | <span data-ttu-id="054a1-102">Maximální omezení</span><span class="sxs-lookup"><span data-stu-id="054a1-102">Maximum Limit</span></span> |
 | --- | --- |
-| Maximální počet nové úlohy, které se dají odeslat každých 30 sekund na účtu Automation (bez naplánovaná úloh) |100 |
-| Maximální počet souběžných úloh spuštěných na stejnou instanci doba účet Automation (bez naplánovaná úloh) |200 |
-| Maximální počet modulů, které lze importovat každých 30 sekund na účtu Automation |5 |
-| Maximální velikost modulu |100 MB |
-| Čas spuštění úlohy - úroveň Free |500 minut za předplatné za kalendářní měsíc |
-| Maximální množství paměti na úlohu |400 MB |
-| Maximální počet soketů sítě povolené na úlohu |1000 |
+| <span data-ttu-id="054a1-103">Maximální počet nové úlohy, které se dají odeslat každých 30 sekund na účtu Automation (bez naplánovaná úloh)</span><span class="sxs-lookup"><span data-stu-id="054a1-103">Max number of new jobs that can be submitted every 30 seconds per Automation Account (non Scheduled jobs)</span></span> |<span data-ttu-id="054a1-104">100</span><span class="sxs-lookup"><span data-stu-id="054a1-104">100</span></span> |
+| <span data-ttu-id="054a1-105">Maximální počet souběžných úloh spuštěných na stejnou instanci doba účet Automation (bez naplánovaná úloh)</span><span class="sxs-lookup"><span data-stu-id="054a1-105">Max number of concurrent running jobs at the same instance of time per Automation Account (non Scheduled jobs)</span></span> |<span data-ttu-id="054a1-106">200</span><span class="sxs-lookup"><span data-stu-id="054a1-106">200</span></span> |
+| <span data-ttu-id="054a1-107">Maximální počet modulů, které lze importovat každých 30 sekund na účtu Automation</span><span class="sxs-lookup"><span data-stu-id="054a1-107">Max number of modules that can be imported every 30 seconds per Automation Account</span></span> |<span data-ttu-id="054a1-108">5</span><span class="sxs-lookup"><span data-stu-id="054a1-108">5</span></span> |
+| <span data-ttu-id="054a1-109">Maximální velikost modulu</span><span class="sxs-lookup"><span data-stu-id="054a1-109">Max size of a Module</span></span> |<span data-ttu-id="054a1-110">100 MB</span><span class="sxs-lookup"><span data-stu-id="054a1-110">100 MB</span></span> |
+| <span data-ttu-id="054a1-111">Čas spuštění úlohy - úroveň Free</span><span class="sxs-lookup"><span data-stu-id="054a1-111">Job Run Time - Free tier</span></span> |<span data-ttu-id="054a1-112">500 minut za předplatné za kalendářní měsíc</span><span class="sxs-lookup"><span data-stu-id="054a1-112">500 minutes per subscription per calendar month</span></span> |
+| <span data-ttu-id="054a1-113">Maximální množství paměti na úlohu</span><span class="sxs-lookup"><span data-stu-id="054a1-113">Max amount of memory given to a job</span></span> |<span data-ttu-id="054a1-114">400 MB</span><span class="sxs-lookup"><span data-stu-id="054a1-114">400 MB</span></span> |
+| <span data-ttu-id="054a1-115">Maximální počet soketů sítě povolené na úlohu</span><span class="sxs-lookup"><span data-stu-id="054a1-115">Max number of network sockets allowed per job</span></span> |<span data-ttu-id="054a1-116">1000</span><span class="sxs-lookup"><span data-stu-id="054a1-116">1000</span></span> |
 

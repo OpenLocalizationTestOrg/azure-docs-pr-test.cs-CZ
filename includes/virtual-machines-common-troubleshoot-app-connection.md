@@ -1,124 +1,124 @@
-Při nesmí začínat ani připojit k aplikaci spuštěné v Azure virtuální počítač (VM) se z různých důvodů. Z těchto důvodů aplikace není spuštěna nebo naslouchá na očekávaných portech, port pro naslouchání blokované nebo sítě pravidla není správně předávání provoz do aplikace. Tento článek popisuje metodický přístup k vyhledání a odstranění problému.
+<span data-ttu-id="c480c-101">Při nesmí začínat ani připojit k aplikaci spuštěné v Azure virtuální počítač (VM) se z různých důvodů.</span><span class="sxs-lookup"><span data-stu-id="c480c-101">There are various reasons when you cannot start or connect to an application running on an Azure virtual machine (VM).</span></span> <span data-ttu-id="c480c-102">Z těchto důvodů aplikace není spuštěna nebo naslouchá na očekávaných portech, port pro naslouchání blokované nebo sítě pravidla není správně předávání provoz do aplikace.</span><span class="sxs-lookup"><span data-stu-id="c480c-102">Reasons include the application not running or listening on the expected ports, the listening port blocked, or networking rules not correctly passing traffic to the application.</span></span> <span data-ttu-id="c480c-103">Tento článek popisuje metodický přístup k vyhledání a odstranění problému.</span><span class="sxs-lookup"><span data-stu-id="c480c-103">This article describes a methodical approach to find and correct the problem.</span></span>
 
-Pokud máte problémy s připojením k virtuálnímu počítači pomocí protokolu RDP nebo SSH, najdete v jednom z následujících článků nejdřív:
+<span data-ttu-id="c480c-104">Pokud máte problémy s připojením k virtuálnímu počítači pomocí protokolu RDP nebo SSH, najdete v jednom z následujících článků nejdřív:</span><span class="sxs-lookup"><span data-stu-id="c480c-104">If you are having issues connecting to your VM using RDP or SSH, see one of the following articles first:</span></span>
 
-* [Řešení potíží s připojení ke vzdálené ploše do systému Windows Azure virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
-* [Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md).
+* [<span data-ttu-id="c480c-105">Řešení potíží s připojení ke vzdálené ploše do systému Windows Azure virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="c480c-105">Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine</span></span>](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
+* <span data-ttu-id="c480c-106">[Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md).</span><span class="sxs-lookup"><span data-stu-id="c480c-106">[Troubleshoot Secure Shell (SSH) connections to a Linux-based Azure virtual machine](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md).</span></span>
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../articles/resource-manager-deployment-model.md). Tento článek popisuje použití obou modelů, ale Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager.
+> <span data-ttu-id="c480c-107">Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../articles/resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="c480c-107">Azure has two different deployment models for creating and working with resources: [Resource Manager and classic](../articles/resource-manager-deployment-model.md).</span></span> <span data-ttu-id="c480c-108">Tento článek popisuje použití obou modelů, ale Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="c480c-108">This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.</span></span>
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [MSDN Azure a fóra Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+<span data-ttu-id="c480c-109">Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [MSDN Azure a fóra Stack Overflow](https://azure.microsoft.com/support/forums/).</span><span class="sxs-lookup"><span data-stu-id="c480c-109">If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/).</span></span> <span data-ttu-id="c480c-110">Alternativně můžete také soubor incidentu podpory Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-110">Alternatively, you can also file an Azure support incident.</span></span> <span data-ttu-id="c480c-111">Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.</span><span class="sxs-lookup"><span data-stu-id="c480c-111">Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.</span></span>
 
-## <a name="quick-start-troubleshooting-steps"></a>Úvodní při řešení potíží
-Pokud máte potíže s připojením k aplikaci, vyzkoušejte následující obecné řešení potíží. Po dokončení každého kroku zkuste se připojit k aplikaci znovu:
+## <a name="quick-start-troubleshooting-steps"></a><span data-ttu-id="c480c-112">Úvodní při řešení potíží</span><span class="sxs-lookup"><span data-stu-id="c480c-112">Quick-start troubleshooting steps</span></span>
+<span data-ttu-id="c480c-113">Pokud máte potíže s připojením k aplikaci, vyzkoušejte následující obecné řešení potíží.</span><span class="sxs-lookup"><span data-stu-id="c480c-113">If you have problems connecting to an application, try the following general troubleshooting steps.</span></span> <span data-ttu-id="c480c-114">Po dokončení každého kroku zkuste se připojit k aplikaci znovu:</span><span class="sxs-lookup"><span data-stu-id="c480c-114">After each step, try connecting to your application again:</span></span>
 
-* Restartujte virtuální počítač
-* Znovu vytvořte koncový bod / pravidla brány firewall / sítě pravidel zabezpečení skupiny (NSG)
-  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-  * [Klasického modelu – koncové body spravovat cloudové služby](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-* Připojení z různých umístění, jako je například jinou virtuální síť Azure
-* Znovu nasadit virtuální počítač
-  * [Znovu nasaďte Windows virtuálního počítače.](../articles/virtual-machines/windows/redeploy-to-new-node.md)
-  * [Opětovné nasazení virtuálního počítače s Linuxem](../articles/virtual-machines/linux/redeploy-to-new-node.md)
-* Znovu vytvořte virtuální počítač
+* <span data-ttu-id="c480c-115">Restartujte virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="c480c-115">Restart the virtual machine</span></span>
+* <span data-ttu-id="c480c-116">Znovu vytvořte koncový bod / pravidla brány firewall / sítě pravidel zabezpečení skupiny (NSG)</span><span class="sxs-lookup"><span data-stu-id="c480c-116">Recreate the endpoint / firewall rules / network security group (NSG) rules</span></span>
+  * [<span data-ttu-id="c480c-117">Model Resource Manager - spravovat skupiny zabezpečení sítě</span><span class="sxs-lookup"><span data-stu-id="c480c-117">Resource Manager model - Manage Network Security Groups</span></span>](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [<span data-ttu-id="c480c-118">Klasického modelu – koncové body spravovat cloudové služby</span><span class="sxs-lookup"><span data-stu-id="c480c-118">Classic model - Manage Cloud Services endpoints</span></span>](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+* <span data-ttu-id="c480c-119">Připojení z různých umístění, jako je například jinou virtuální síť Azure</span><span class="sxs-lookup"><span data-stu-id="c480c-119">Connect from different location, such as a different Azure virtual network</span></span>
+* <span data-ttu-id="c480c-120">Znovu nasadit virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="c480c-120">Redeploy the virtual machine</span></span>
+  * [<span data-ttu-id="c480c-121">Znovu nasaďte Windows virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="c480c-121">Redeploy Windows VM</span></span>](../articles/virtual-machines/windows/redeploy-to-new-node.md)
+  * [<span data-ttu-id="c480c-122">Opětovné nasazení virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="c480c-122">Redeploy Linux VM</span></span>](../articles/virtual-machines/linux/redeploy-to-new-node.md)
+* <span data-ttu-id="c480c-123">Znovu vytvořte virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="c480c-123">Recreate the virtual machine</span></span>
 
-Další informace najdete v tématu [řešení potíží s připojením koncový bod (RDP/SSH/HTTP, selhání atd.)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
+<span data-ttu-id="c480c-124">Další informace najdete v tématu [řešení potíží s připojením koncový bod (RDP/SSH/HTTP, selhání atd.)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).</span><span class="sxs-lookup"><span data-stu-id="c480c-124">For more information, see [Troubleshooting Endpoint Connectivity (RDP/SSH/HTTP, etc. failures)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).</span></span>
 
-## <a name="detailed-troubleshooting-overview"></a>Podrobný přehled řešení potíží
-Existují čtyři hlavní oblasti k řešení potíží s přístupem aplikace, která běží na virtuálním počítači Azure.
+## <a name="detailed-troubleshooting-overview"></a><span data-ttu-id="c480c-125">Podrobný přehled řešení potíží</span><span class="sxs-lookup"><span data-stu-id="c480c-125">Detailed troubleshooting overview</span></span>
+<span data-ttu-id="c480c-126">Existují čtyři hlavní oblasti k řešení potíží s přístupem aplikace, která běží na virtuálním počítači Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-126">There are four main areas to troubleshoot the access of an application that is running on an Azure virtual machine.</span></span>
 
 ![řešení potíží s nelze spustit aplikaci](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
-1. Aplikace běžící na virtuálním počítači Azure.
-   * Vlastní aplikace funguje správně?
-2. Virtuální počítač Azure.
-   * Virtuální počítač je správně spuštěn a reagovat na požadavky?
-3. Koncové body Azure sítě.
-   * Koncové body služby cloudu pro virtuální počítače ve model nasazení Classic.
-   * Skupiny zabezpečení sítě a příchozích pravidel NAT pro virtuální počítače v modelu nasazení Resource Manager.
-   * Tok od uživatelů do virtuálního počítače nebo aplikace na očekávaných portech můžete provozu?
-4. Hraniční zařízení Internetu.
-   * Pravidla brány firewall na místě brání provoz předávaných správně?
+1. <span data-ttu-id="c480c-128">Aplikace běžící na virtuálním počítači Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-128">The application running on the Azure virtual machine.</span></span>
+   * <span data-ttu-id="c480c-129">Vlastní aplikace funguje správně?</span><span class="sxs-lookup"><span data-stu-id="c480c-129">Is the application itself running correctly?</span></span>
+2. <span data-ttu-id="c480c-130">Virtuální počítač Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-130">The Azure virtual machine.</span></span>
+   * <span data-ttu-id="c480c-131">Virtuální počítač je správně spuštěn a reagovat na požadavky?</span><span class="sxs-lookup"><span data-stu-id="c480c-131">Is the VM itself running correctly and responding to requests?</span></span>
+3. <span data-ttu-id="c480c-132">Koncové body Azure sítě.</span><span class="sxs-lookup"><span data-stu-id="c480c-132">Azure network endpoints.</span></span>
+   * <span data-ttu-id="c480c-133">Koncové body služby cloudu pro virtuální počítače ve model nasazení Classic.</span><span class="sxs-lookup"><span data-stu-id="c480c-133">Cloud service endpoints for virtual machines in the Classic deployment model.</span></span>
+   * <span data-ttu-id="c480c-134">Skupiny zabezpečení sítě a příchozích pravidel NAT pro virtuální počítače v modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="c480c-134">Network Security Groups and inbound NAT rules for virtual machines in Resource Manager deployment model.</span></span>
+   * <span data-ttu-id="c480c-135">Tok od uživatelů do virtuálního počítače nebo aplikace na očekávaných portech můžete provozu?</span><span class="sxs-lookup"><span data-stu-id="c480c-135">Can traffic flow from users to the VM/application on the expected ports?</span></span>
+4. <span data-ttu-id="c480c-136">Hraniční zařízení Internetu.</span><span class="sxs-lookup"><span data-stu-id="c480c-136">Your Internet edge device.</span></span>
+   * <span data-ttu-id="c480c-137">Pravidla brány firewall na místě brání provoz předávaných správně?</span><span class="sxs-lookup"><span data-stu-id="c480c-137">Are firewall rules in place preventing traffic from flowing correctly?</span></span>
 
-Pro klientské počítače, které mají přístup k aplikaci prostřednictvím připojení site-to-site VPN nebo ExpressRoute hlavní oblasti, které může způsobit problémy jsou aplikace a virtuální počítač Azure.
+<span data-ttu-id="c480c-138">Pro klientské počítače, které mají přístup k aplikaci prostřednictvím připojení site-to-site VPN nebo ExpressRoute hlavní oblasti, které může způsobit problémy jsou aplikace a virtuální počítač Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-138">For client computers that are accessing the application over a site-to-site VPN or ExpressRoute connection, the main areas that can cause problems are the application and the Azure virtual machine.</span></span>
 
-Pokud chcete zjistit příčinu problému a jeho oprava, postupujte podle těchto kroků.
+<span data-ttu-id="c480c-139">Pokud chcete zjistit příčinu problému a jeho oprava, postupujte podle těchto kroků.</span><span class="sxs-lookup"><span data-stu-id="c480c-139">To determine the source of the problem and its correction, follow these steps.</span></span>
 
-## <a name="step-1-access-application-from-target-vm"></a>Krok 1: Přístup k aplikaci z cílového virtuálního počítače
-Došlo k pokusu o přístup k aplikaci s programem příslušného klienta z virtuálního počítače, na kterém je spuštěný. Použijte název místního hostitele, místní IP adresu nebo adresu zpětné smyčky (127.0.0.1).
+## <a name="step-1-access-application-from-target-vm"></a><span data-ttu-id="c480c-140">Krok 1: Přístup k aplikaci z cílového virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="c480c-140">Step 1: Access application from target VM</span></span>
+<span data-ttu-id="c480c-141">Došlo k pokusu o přístup k aplikaci s programem příslušného klienta z virtuálního počítače, na kterém je spuštěný.</span><span class="sxs-lookup"><span data-stu-id="c480c-141">Try to access the application with the appropriate client program from the VM on which it is running.</span></span> <span data-ttu-id="c480c-142">Použijte název místního hostitele, místní IP adresu nebo adresu zpětné smyčky (127.0.0.1).</span><span class="sxs-lookup"><span data-stu-id="c480c-142">Use the local host name, the local IP address, or the loopback address (127.0.0.1).</span></span>
 
 ![spustit aplikaci přímo z virtuálního počítače](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
-Například pokud aplikace je webový server, otevřete prohlížeč na virtuálním počítači a snaží o přístup k webové stránky hostované na virtuálním počítači.
+<span data-ttu-id="c480c-144">Například pokud aplikace je webový server, otevřete prohlížeč na virtuálním počítači a snaží o přístup k webové stránky hostované na virtuálním počítači.</span><span class="sxs-lookup"><span data-stu-id="c480c-144">For example, if the application is a web server, open a browser on the VM and try to access a web page hosted on the VM.</span></span>
 
-Pokud přístup k aplikaci, přejděte na [kroku 2](#step2).
+<span data-ttu-id="c480c-145">Pokud přístup k aplikaci, přejděte na [kroku 2](#step2).</span><span class="sxs-lookup"><span data-stu-id="c480c-145">If you can access the application, go to [Step 2](#step2).</span></span>
 
-Pokud máte přístup k aplikaci, ověřte následující nastavení:
+<span data-ttu-id="c480c-146">Pokud máte přístup k aplikaci, ověřte následující nastavení:</span><span class="sxs-lookup"><span data-stu-id="c480c-146">If you cannot access the application, verify the following settings:</span></span>
 
-* Aplikace běží na cílový virtuální počítač.
-* Aplikace naslouchá na očekávaných portech TCP a UDP.
+* <span data-ttu-id="c480c-147">Aplikace běží na cílový virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="c480c-147">The application is running on the target virtual machine.</span></span>
+* <span data-ttu-id="c480c-148">Aplikace naslouchá na očekávaných portech TCP a UDP.</span><span class="sxs-lookup"><span data-stu-id="c480c-148">The application is listening on the expected TCP and UDP ports.</span></span>
 
-V systému Windows a virtuálních počítačích se systémem Linux, použijte **netstat - a** příkazu zobrazte aktivní naslouchající porty. Prohlédněte si výstup pro očekávané porty, na kterých by vaše aplikace naslouchá. Restartování aplikace nebo nakonfigurujte ho podle potřeby použijte očekávaných portech a pokuste se znovu přístup k aplikaci místně.
+<span data-ttu-id="c480c-149">V systému Windows a virtuálních počítačích se systémem Linux, použijte **netstat - a** příkazu zobrazte aktivní naslouchající porty.</span><span class="sxs-lookup"><span data-stu-id="c480c-149">On both Windows and Linux-based virtual machines, use the **netstat -a** command to show the active listening ports.</span></span> <span data-ttu-id="c480c-150">Prohlédněte si výstup pro očekávané porty, na kterých by vaše aplikace naslouchá.</span><span class="sxs-lookup"><span data-stu-id="c480c-150">Examine the output for the expected ports on which your application should be listening.</span></span> <span data-ttu-id="c480c-151">Restartování aplikace nebo nakonfigurujte ho podle potřeby použijte očekávaných portech a pokuste se znovu přístup k aplikaci místně.</span><span class="sxs-lookup"><span data-stu-id="c480c-151">Restart the application or configure it to use the expected ports as needed and try to access the application locally again.</span></span>
 
-## <a id="step2"></a>Krok 2: Přístup k aplikaci z jiného virtuálního počítače ve stejné virtuální síti
-Došlo k pokusu o přístup k aplikaci z různých virtuálního počítače, ale ve stejné virtuální síti, pomocí názvu hostitele Virtuálního počítače nebo přiřazené Azure veřejné, privátní nebo poskytovatele IP adresu. Pro virtuální počítače vytvořené pomocí modelu nasazení classic nepoužívejte veřejnou IP adresu cloudové služby.
+## <span data-ttu-id="c480c-152"><a id="step2"></a>Krok 2: Přístup k aplikaci z jiného virtuálního počítače ve stejné virtuální síti</span><span class="sxs-lookup"><span data-stu-id="c480c-152"><a id="step2"></a>Step 2: Access application from another VM in the same virtual network</span></span>
+<span data-ttu-id="c480c-153">Došlo k pokusu o přístup k aplikaci z různých virtuálního počítače, ale ve stejné virtuální síti, pomocí názvu hostitele Virtuálního počítače nebo přiřazené Azure veřejné, privátní nebo poskytovatele IP adresu.</span><span class="sxs-lookup"><span data-stu-id="c480c-153">Try to access the application from a different VM but in the same virtual network, using the VM's host name or its Azure-assigned public, private, or provider IP address.</span></span> <span data-ttu-id="c480c-154">Pro virtuální počítače vytvořené pomocí modelu nasazení classic nepoužívejte veřejnou IP adresu cloudové služby.</span><span class="sxs-lookup"><span data-stu-id="c480c-154">For virtual machines created using the classic deployment model, do not use the public IP address of the cloud service.</span></span>
 
 ![spustit aplikaci z různých virtuálního počítače](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
-Například pokud aplikace je webový server, pokusu o přístup k webové stránky z prohlížeče na jiný virtuální počítač ve stejné virtuální síti.
+<span data-ttu-id="c480c-156">Například pokud aplikace je webový server, pokusu o přístup k webové stránky z prohlížeče na jiný virtuální počítač ve stejné virtuální síti.</span><span class="sxs-lookup"><span data-stu-id="c480c-156">For example, if the application is a web server, try to access a web page from a browser on a different VM in the same virtual network.</span></span>
 
-Pokud přístup k aplikaci, přejděte na [krok 3](#step3).
+<span data-ttu-id="c480c-157">Pokud přístup k aplikaci, přejděte na [krok 3](#step3).</span><span class="sxs-lookup"><span data-stu-id="c480c-157">If you can access the application, go to [Step 3](#step3).</span></span>
 
-Pokud máte přístup k aplikaci, ověřte následující nastavení:
+<span data-ttu-id="c480c-158">Pokud máte přístup k aplikaci, ověřte následující nastavení:</span><span class="sxs-lookup"><span data-stu-id="c480c-158">If you cannot access the application, verify the following settings:</span></span>
 
-* Brána firewall hostitele na cílovém virtuálním počítači umožňuje příchozí žádosti a odpovědi odchozí provoz.
-* Zjišťování neoprávněných vniknutí nebo monitorování softwaru na cílovém virtuálním počítači spuštěna sítě umožňuje provoz.
-* Koncové body cloudové služby nebo skupiny zabezpečení sítě stále umožňují provoz:
-  * [Klasického modelu – koncové body spravovat cloudové služby](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-* Samostatná komponenta běžících ve vašem virtuálním počítači v cestě mezi testovací virtuální počítač a virtuální počítač, jako je nástroj pro vyrovnávání zatížení nebo brány firewall, je povolení provoz.
+* <span data-ttu-id="c480c-159">Brána firewall hostitele na cílovém virtuálním počítači umožňuje příchozí žádosti a odpovědi odchozí provoz.</span><span class="sxs-lookup"><span data-stu-id="c480c-159">The host firewall on the target VM is allowing the inbound request and outbound response traffic.</span></span>
+* <span data-ttu-id="c480c-160">Zjišťování neoprávněných vniknutí nebo monitorování softwaru na cílovém virtuálním počítači spuštěna sítě umožňuje provoz.</span><span class="sxs-lookup"><span data-stu-id="c480c-160">Intrusion detection or network monitoring software running on the target VM is allowing the traffic.</span></span>
+* <span data-ttu-id="c480c-161">Koncové body cloudové služby nebo skupiny zabezpečení sítě stále umožňují provoz:</span><span class="sxs-lookup"><span data-stu-id="c480c-161">Cloud Services endpoints or Network Security Groups are allowing the traffic:</span></span>
+  * [<span data-ttu-id="c480c-162">Klasického modelu – koncové body spravovat cloudové služby</span><span class="sxs-lookup"><span data-stu-id="c480c-162">Classic model - Manage Cloud Services endpoints</span></span>](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+  * [<span data-ttu-id="c480c-163">Model Resource Manager - spravovat skupiny zabezpečení sítě</span><span class="sxs-lookup"><span data-stu-id="c480c-163">Resource Manager model - Manage Network Security Groups</span></span>](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* <span data-ttu-id="c480c-164">Samostatná komponenta běžících ve vašem virtuálním počítači v cestě mezi testovací virtuální počítač a virtuální počítač, jako je nástroj pro vyrovnávání zatížení nebo brány firewall, je povolení provoz.</span><span class="sxs-lookup"><span data-stu-id="c480c-164">A separate component running in your VM in the path between the test VM and your VM, such as a load balancer or firewall, is allowing the traffic.</span></span>
 
-Na virtuálním počítači systému Windows pomocí brány Windows Firewall s pokročilým zabezpečením k určení, zda pravidla brány firewall vyloučit příchozí a odchozí provoz vaší aplikace.
+<span data-ttu-id="c480c-165">Na virtuálním počítači systému Windows pomocí brány Windows Firewall s pokročilým zabezpečením k určení, zda pravidla brány firewall vyloučit příchozí a odchozí provoz vaší aplikace.</span><span class="sxs-lookup"><span data-stu-id="c480c-165">On a Windows-based virtual machine, use Windows Firewall with Advanced Security to determine whether the firewall rules exclude your application's inbound and outbound traffic.</span></span>
 
-## <a id="step3"></a>Krok 3: Přístup k aplikaci z mimo virtuální síť
-Došlo k pokusu o přístup k aplikaci z počítače mimo virtuální síť jako virtuální počítač, na kterém je aplikace spuštěna. Použijte jinou síť jako původní klientském počítači.
+## <span data-ttu-id="c480c-166"><a id="step3"></a>Krok 3: Přístup k aplikaci z mimo virtuální síť</span><span class="sxs-lookup"><span data-stu-id="c480c-166"><a id="step3"></a>Step 3: Access application from outside the virtual network</span></span>
+<span data-ttu-id="c480c-167">Došlo k pokusu o přístup k aplikaci z počítače mimo virtuální síť jako virtuální počítač, na kterém je aplikace spuštěna.</span><span class="sxs-lookup"><span data-stu-id="c480c-167">Try to access the application from a computer outside the virtual network as the VM on which the application is running.</span></span> <span data-ttu-id="c480c-168">Použijte jinou síť jako původní klientském počítači.</span><span class="sxs-lookup"><span data-stu-id="c480c-168">Use a different network as your original client computer.</span></span>
 
 ![Spusťte aplikaci z počítače mimo virtuální síť](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
-Například pokud aplikace je webový server, pokusu o přístup k webové stránky z prohlížeče na počítači, který není ve virtuální síti.
+<span data-ttu-id="c480c-170">Například pokud aplikace je webový server, pokusu o přístup k webové stránky z prohlížeče na počítači, který není ve virtuální síti.</span><span class="sxs-lookup"><span data-stu-id="c480c-170">For example, if the application is a web server, try to access the web page from a browser running on a computer that is not in the virtual network.</span></span>
 
-Pokud máte přístup k aplikaci, ověřte následující nastavení:
+<span data-ttu-id="c480c-171">Pokud máte přístup k aplikaci, ověřte následující nastavení:</span><span class="sxs-lookup"><span data-stu-id="c480c-171">If you cannot access the application, verify the following settings:</span></span>
 
-* Pro virtuální počítače vytvořené pomocí modelu nasazení classic:
+* <span data-ttu-id="c480c-172">Pro virtuální počítače vytvořené pomocí modelu nasazení classic:</span><span class="sxs-lookup"><span data-stu-id="c480c-172">For VMs created using the classic deployment model:</span></span>
   
-  * Ověřte, že konfigurace koncového bodu pro virtuální počítač umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísly veřejné a privátní port.
-  * Zkontrolujte, zda seznamy řízení přístupu (ACL) pro koncový bod nebrání příchozí provoz z Internetu.
-  * Další informace najdete v tématu [jak nastavit koncové body k virtuálnímu počítači](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-* Pro virtuální počítače vytvořené pomocí modelu nasazení Resource Manager:
+  * <span data-ttu-id="c480c-173">Ověřte, že konfigurace koncového bodu pro virtuální počítač umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísly veřejné a privátní port.</span><span class="sxs-lookup"><span data-stu-id="c480c-173">Verify that the endpoint configuration for the VM is allowing the incoming traffic, especially the protocol (TCP or UDP) and the public and private port numbers.</span></span>
+  * <span data-ttu-id="c480c-174">Zkontrolujte, zda seznamy řízení přístupu (ACL) pro koncový bod nebrání příchozí provoz z Internetu.</span><span class="sxs-lookup"><span data-stu-id="c480c-174">Verify that access control lists (ACLs) on the endpoint are not preventing incoming traffic from the Internet.</span></span>
+  * <span data-ttu-id="c480c-175">Další informace najdete v tématu [jak nastavit koncové body k virtuálnímu počítači](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c480c-175">For more information, see [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).</span></span>
+* <span data-ttu-id="c480c-176">Pro virtuální počítače vytvořené pomocí modelu nasazení Resource Manager:</span><span class="sxs-lookup"><span data-stu-id="c480c-176">For VMs created using the Resource Manager deployment model:</span></span>
   
-  * Ověřte, že příchozí pravidlo NAT konfiguraci pro virtuální počítač umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísly veřejné a privátní port.
-  * Ověřte, že jsou skupiny zabezpečení sítě umožňuje příchozí žádosti a odpovědi odchozí provoz.
-  * Další informace najdete v článku [Skupina zabezpečení sítě](../articles/virtual-network/virtual-networks-nsg.md).
+  * <span data-ttu-id="c480c-177">Ověřte, že příchozí pravidlo NAT konfiguraci pro virtuální počítač umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísly veřejné a privátní port.</span><span class="sxs-lookup"><span data-stu-id="c480c-177">Verify that the inbound NAT rule configuration for the VM is allowing the incoming traffic, especially the protocol (TCP or UDP) and the public and private port numbers.</span></span>
+  * <span data-ttu-id="c480c-178">Ověřte, že jsou skupiny zabezpečení sítě umožňuje příchozí žádosti a odpovědi odchozí provoz.</span><span class="sxs-lookup"><span data-stu-id="c480c-178">Verify that Network Security Groups are allowing the inbound request and outbound response traffic.</span></span>
+  * <span data-ttu-id="c480c-179">Další informace najdete v článku [Skupina zabezpečení sítě](../articles/virtual-network/virtual-networks-nsg.md).</span><span class="sxs-lookup"><span data-stu-id="c480c-179">For more information, see [What is a Network Security Group (NSG)?](../articles/virtual-network/virtual-networks-nsg.md)</span></span>
 
-Pokud je virtuální počítač nebo koncový bod členem sadu Vyrovnávání zatížení sítě:
+<span data-ttu-id="c480c-180">Pokud je virtuální počítač nebo koncový bod členem sadu Vyrovnávání zatížení sítě:</span><span class="sxs-lookup"><span data-stu-id="c480c-180">If the virtual machine or endpoint is a member of a load-balanced set:</span></span>
 
-* Ověřte správnost testu protokol (TCP nebo UDP) a číslo portu.
-* Pokud se test protokol a port se liší od sady s vyrovnáváním zatížení protokol a port:
-  * Ověřte, že aplikace naslouchá na test protokol (TCP nebo UDP) a číslo portu (použijte **netstat-a** na cílovém virtuálním počítači).
-  * Ověřte, že brána firewall hostitele na cílovém virtuálním počítači umožňuje příchozí zkušebního požadavku a provoz odpovědi odchozí testu.
+* <span data-ttu-id="c480c-181">Ověřte správnost testu protokol (TCP nebo UDP) a číslo portu.</span><span class="sxs-lookup"><span data-stu-id="c480c-181">Verify that the probe protocol (TCP or UDP) and port number are correct.</span></span>
+* <span data-ttu-id="c480c-182">Pokud se test protokol a port se liší od sady s vyrovnáváním zatížení protokol a port:</span><span class="sxs-lookup"><span data-stu-id="c480c-182">If the probe protocol and port is different than the load-balanced set protocol and port:</span></span>
+  * <span data-ttu-id="c480c-183">Ověřte, že aplikace naslouchá na test protokol (TCP nebo UDP) a číslo portu (použijte **netstat-a** na cílovém virtuálním počítači).</span><span class="sxs-lookup"><span data-stu-id="c480c-183">Verify that the application is listening on the probe protocol (TCP or UDP) and port number (use **netstat –a** on the target VM).</span></span>
+  * <span data-ttu-id="c480c-184">Ověřte, že brána firewall hostitele na cílovém virtuálním počítači umožňuje příchozí zkušebního požadavku a provoz odpovědi odchozí testu.</span><span class="sxs-lookup"><span data-stu-id="c480c-184">Verify that the host firewall on the target VM is allowing the inbound probe request and outbound probe response traffic.</span></span>
 
-Pokud přístup k aplikaci, ověřte, že je umožňuje vaše Internet hraniční zařízení:
+<span data-ttu-id="c480c-185">Pokud přístup k aplikaci, ověřte, že je umožňuje vaše Internet hraniční zařízení:</span><span class="sxs-lookup"><span data-stu-id="c480c-185">If you can access the application, ensure that your Internet edge device is allowing:</span></span>
 
-* Odchozí aplikace požadavek provoz z klientského počítače na virtuální počítač Azure.
-* Příchozí aplikace odpovědi provoz z virtuálního počítače Azure.
+* <span data-ttu-id="c480c-186">Odchozí aplikace požadavek provoz z klientského počítače na virtuální počítač Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-186">The outbound application request traffic from your client computer to the Azure virtual machine.</span></span>
+* <span data-ttu-id="c480c-187">Příchozí aplikace odpovědi provoz z virtuálního počítače Azure.</span><span class="sxs-lookup"><span data-stu-id="c480c-187">The inbound application response traffic from the Azure virtual machine.</span></span>
 
-## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Krok 4 Pokud nemají přístup k aplikaci, pomocí ověření IP zkontrolujte nastavení. 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a><span data-ttu-id="c480c-188">Krok 4 Pokud nemají přístup k aplikaci, pomocí ověření IP zkontrolujte nastavení.</span><span class="sxs-lookup"><span data-stu-id="c480c-188">Step 4 If you cannot access the application, use IP Verify to check the settings.</span></span> 
 
-Další informace najdete v tématu [síť Azure Přehled monitorování](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
+<span data-ttu-id="c480c-189">Další informace najdete v tématu [síť Azure Přehled monitorování](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview).</span><span class="sxs-lookup"><span data-stu-id="c480c-189">For more information, see [Azure network monitoring overview](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview).</span></span> 
 
-## <a name="additional-resources"></a>Další zdroje
-[Řešení potíží s připojení ke vzdálené ploše do systému Windows Azure virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
+## <a name="additional-resources"></a><span data-ttu-id="c480c-190">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="c480c-190">Additional resources</span></span>
+[<span data-ttu-id="c480c-191">Řešení potíží s připojení ke vzdálené ploše do systému Windows Azure virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="c480c-191">Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine</span></span>](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 
-[Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)
+[<span data-ttu-id="c480c-192">Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure</span><span class="sxs-lookup"><span data-stu-id="c480c-192">Troubleshoot Secure Shell (SSH) connections to a Linux-based Azure virtual machine</span></span>](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)
 

@@ -1,4 +1,4 @@
-| Prostředek | Omezení |
+| <span data-ttu-id="11426-101">Prostředek</span><span class="sxs-lookup"><span data-stu-id="11426-101">Resource</span></span> | <span data-ttu-id="11426-102">Omezení</span><span class="sxs-lookup"><span data-stu-id="11426-102">Limit</span></span> |
 | --- | --- |
-| Odběry událostí na oblast |1000 |
-| Vlastní témata na oblast |20 |
+| <span data-ttu-id="11426-103">Odběry událostí na oblast</span><span class="sxs-lookup"><span data-stu-id="11426-103">Event Subscriptions per region</span></span> |<span data-ttu-id="11426-104">1000</span><span class="sxs-lookup"><span data-stu-id="11426-104">1000</span></span> |
+| <span data-ttu-id="11426-105">Vlastní témata na oblast</span><span class="sxs-lookup"><span data-stu-id="11426-105">Custom Topics per region</span></span> |<span data-ttu-id="11426-106">20</span><span class="sxs-lookup"><span data-stu-id="11426-106">20</span></span> |

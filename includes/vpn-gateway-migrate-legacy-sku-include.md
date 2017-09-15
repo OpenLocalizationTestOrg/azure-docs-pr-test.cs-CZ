@@ -1,16 +1,16 @@
 > [!NOTE]
-> * Při migraci ze staré skladové položky na novou se změní veřejná IP adresa brány VPN.
-> * Brány VPN Classic není možné migrovat na nové skladové položky. Brány VPN Classic můžou používat pouze starší (staré) skladové položky.
+> * <span data-ttu-id="0890e-101">Při migraci ze staré skladové položky na novou se změní veřejná IP adresa brány VPN.</span><span class="sxs-lookup"><span data-stu-id="0890e-101">The VPN gateway Public IP address will change when migrating from an old SKU to a new SKU.</span></span>
+> * <span data-ttu-id="0890e-102">Brány VPN Classic není možné migrovat na nové skladové položky.</span><span class="sxs-lookup"><span data-stu-id="0890e-102">You can't migrate classic VPN gateways to the new SKUs.</span></span> <span data-ttu-id="0890e-103">Brány VPN Classic můžou používat pouze starší (staré) skladové položky.</span><span class="sxs-lookup"><span data-stu-id="0890e-103">Classic VPN gateways can only use the legacy (old) SKUs.</span></span>
 > 
 
-Při přechodu ze starých řad skladových položek na nové není možné měnit velikost bran VPN Azure. Pokud máte brány VPN v modelu nasazení Resource Manageru, které používají starší verze SKU, můžete migrovat na nové SKU. Pokud chcete provést migraci, odstraňte stávající bránu VPN pro vaši virtuální síť a potom vytvořte novou.
+<span data-ttu-id="0890e-104">Při přechodu ze starých řad skladových položek na nové není možné měnit velikost bran VPN Azure.</span><span class="sxs-lookup"><span data-stu-id="0890e-104">You can't resize your Azure VPN gateways between the old SKUs and the new SKU families.</span></span> <span data-ttu-id="0890e-105">Pokud máte brány VPN v modelu nasazení Resource Manageru, které používají starší verze SKU, můžete migrovat na nové SKU.</span><span class="sxs-lookup"><span data-stu-id="0890e-105">If you have VPN gateways in the Resource Manager deployment model that are using the older version of the SKUs, you can migrate to the new SKUs.</span></span> <span data-ttu-id="0890e-106">Pokud chcete provést migraci, odstraňte stávající bránu VPN pro vaši virtuální síť a potom vytvořte novou.</span><span class="sxs-lookup"><span data-stu-id="0890e-106">To migrate, you delete the existing VPN gateway for your virtual network, then create a new one.</span></span>
 
-Pracovní postup migrace:
+<span data-ttu-id="0890e-107">Pracovní postup migrace:</span><span class="sxs-lookup"><span data-stu-id="0890e-107">Migration workflow:</span></span>
 
-1. Odeberte všechna připojení k bráně virtuální sítě.
-2. Odstraňte starou bránu VPN.
-3. Vytvořte novou bránu VPN.
-4. Aktualizujte místní zařízení VPN novou IP adresou brány VPN (pro připojení typu Site-to-Site).
-5. Aktualizujte hodnotu IP adresy brány pro všechny místní síťové brány typu VNet-to-VNet, které se připojují k této bráně.
-6. Stáhněte nové klientské balíčky konfigurace klienta VPN pro klienty P2S, kteří se připojují k virtuální síti přes tuto bránu VPN.
-7. Znovu vytvořte všechna připojení k bráně virtuální sítě.
+1. <span data-ttu-id="0890e-108">Odeberte všechna připojení k bráně virtuální sítě.</span><span class="sxs-lookup"><span data-stu-id="0890e-108">Remove any connections to the virtual network gateway.</span></span>
+2. <span data-ttu-id="0890e-109">Odstraňte starou bránu VPN.</span><span class="sxs-lookup"><span data-stu-id="0890e-109">Delete the old VPN gateway.</span></span>
+3. <span data-ttu-id="0890e-110">Vytvořte novou bránu VPN.</span><span class="sxs-lookup"><span data-stu-id="0890e-110">Create the new VPN gateway.</span></span>
+4. <span data-ttu-id="0890e-111">Aktualizujte místní zařízení VPN novou IP adresou brány VPN (pro připojení typu Site-to-Site).</span><span class="sxs-lookup"><span data-stu-id="0890e-111">Update your on-premises VPN devices with the new VPN gateway IP address (for Site-to-Site connections).</span></span>
+5. <span data-ttu-id="0890e-112">Aktualizujte hodnotu IP adresy brány pro všechny místní síťové brány typu VNet-to-VNet, které se připojují k této bráně.</span><span class="sxs-lookup"><span data-stu-id="0890e-112">Update the gateway IP address value for any VNet-to-VNet local network gateways that will connect to this gateway.</span></span>
+6. <span data-ttu-id="0890e-113">Stáhněte nové klientské balíčky konfigurace klienta VPN pro klienty P2S, kteří se připojují k virtuální síti přes tuto bránu VPN.</span><span class="sxs-lookup"><span data-stu-id="0890e-113">Download new client VPN configuration packages for P2S clients connecting to the virtual network through this VPN gateway.</span></span>
+7. <span data-ttu-id="0890e-114">Znovu vytvořte všechna připojení k bráně virtuální sítě.</span><span class="sxs-lookup"><span data-stu-id="0890e-114">Recreate the connections to the virtual network gateway.</span></span>

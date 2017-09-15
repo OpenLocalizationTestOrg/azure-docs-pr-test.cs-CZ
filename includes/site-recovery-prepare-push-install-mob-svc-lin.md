@@ -1,22 +1,22 @@
-### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Příprava nabízené instalace na serveru s Linuxem
+### <a name="prepare-for-a-push-installation-on-a-linux-server"></a><span data-ttu-id="a6bcb-101">Příprava nabízené instalace na serveru s Linuxem</span><span class="sxs-lookup"><span data-stu-id="a6bcb-101">Prepare for a push installation on a Linux server</span></span>
 
-1. Zkontrolujte, že existuje síťové připojení mezi počítačem s Linuxem a procesovým serverem.
-2. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet musí být na zdrojovém serveru s Linuxem uživatelem **root**. (Používejte tento účet pouze pro nabízenou instalaci a aktualizace.)
-3. Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.
-4. Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.
-5. Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.
-6. V souboru sshd_config povolte subsystém SFTP a ověřování heslem:
-  1.  Přihlaste se jako uživatel **root**.
-  2.  V souboru /etc/ssh/sshd_config vyhledejte řádek, který začíná na **PasswordAuthentication**.
-  3.  Zrušte na řádku komentář a změňte hodnotu na **yes**.
-  4.  Vyhledejte řádek, který začíná na **Subsystem** a zrušte na něm komentář.
+1. <span data-ttu-id="a6bcb-102">Zkontrolujte, že existuje síťové připojení mezi počítačem s Linuxem a procesovým serverem.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-102">Ensure that there’s network connectivity between the Linux computer and the process server.</span></span>
+2. <span data-ttu-id="a6bcb-103">Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-103">Create an account that the process server can use to access the computer.</span></span> <span data-ttu-id="a6bcb-104">Účet musí být na zdrojovém serveru s Linuxem uživatelem **root**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-104">The account should be a **root** user on the source Linux server.</span></span> <span data-ttu-id="a6bcb-105">(Používejte tento účet pouze pro nabízenou instalaci a aktualizace.)</span><span class="sxs-lookup"><span data-stu-id="a6bcb-105">(Use this account only for the push installation and for updates.)</span></span>
+3. <span data-ttu-id="a6bcb-106">Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-106">Check that the /etc/hosts file on the source Linux server has entries that map the local hostname to IP addresses associated with all network adapters.</span></span>
+4. <span data-ttu-id="a6bcb-107">Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-107">Install the latest openssh, openssh-server, and openssl packages on the computer that you want to replicate.</span></span>
+5. <span data-ttu-id="a6bcb-108">Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-108">Ensure that Secure Shell (SSH) is enabled and running on port 22.</span></span>
+6. <span data-ttu-id="a6bcb-109">V souboru sshd_config povolte subsystém SFTP a ověřování heslem:</span><span class="sxs-lookup"><span data-stu-id="a6bcb-109">Enable SFTP subsystem and password authentication in the sshd_config file:</span></span>
+  1.  <span data-ttu-id="a6bcb-110">Přihlaste se jako uživatel **root**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-110">Sign in as **root**.</span></span>
+  2.  <span data-ttu-id="a6bcb-111">V souboru /etc/ssh/sshd_config vyhledejte řádek, který začíná na **PasswordAuthentication**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-111">In the file /etc/ssh/sshd_config file, find the line that begins with **PasswordAuthentication**.</span></span>
+  3.  <span data-ttu-id="a6bcb-112">Zrušte na řádku komentář a změňte hodnotu na **yes**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-112">Uncomment the line and change the value to **yes**.</span></span>
+  4.  <span data-ttu-id="a6bcb-113">Vyhledejte řádek, který začíná na **Subsystem** a zrušte na něm komentář.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-113">Find the line that begins with **Subsystem** and uncomment the line.</span></span>
 
      ![Linux](./media/site-recovery-prepare-push-install-mob-svc-lin/mobility2.png)
-  5. Restartujte službu **sshd**.
+  5. <span data-ttu-id="a6bcb-115">Restartujte službu **sshd**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-115">Restart the **sshd** service.</span></span>
 
-7. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili.
-    1.  Přihlaste se ke konfiguračnímu serveru.
-    2.  Otevřete **cspsconfigtool.exe**. (Je k dispozici jako zástupce na ploše a ve složce %ProgramData%\home\svsystems\bin.)
-    3.  Na kartě **Správa účtů** klikněte na **Přidat účet**.
-    4.  Přidejte účet, který jste vytvořili. 
-    5.  Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
+7. <span data-ttu-id="a6bcb-116">V nástroji CSPSConfigtool přidejte účet, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-116">Add the account that you created in CSPSConfigtool.</span></span>
+    1.  <span data-ttu-id="a6bcb-117">Přihlaste se ke konfiguračnímu serveru.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-117">Sign in to your configuration server.</span></span>
+    2.  <span data-ttu-id="a6bcb-118">Otevřete **cspsconfigtool.exe**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-118">Open **cspsconfigtool.exe**.</span></span> <span data-ttu-id="a6bcb-119">(Je k dispozici jako zástupce na ploše a ve složce %ProgramData%\home\svsystems\bin.)</span><span class="sxs-lookup"><span data-stu-id="a6bcb-119">(It's available as a shortcut on the desktop and in the %ProgramData%\home\svsystems\bin folder.)</span></span>
+    3.  <span data-ttu-id="a6bcb-120">Na kartě **Správa účtů** klikněte na **Přidat účet**.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-120">On the **Manage Accounts** tab, click **Add Account**.</span></span>
+    4.  <span data-ttu-id="a6bcb-121">Přidejte účet, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-121">Add the account you created.</span></span> 
+    5.  <span data-ttu-id="a6bcb-122">Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.</span><span class="sxs-lookup"><span data-stu-id="a6bcb-122">Enter the credentials you use when you enable replication for a computer.</span></span>

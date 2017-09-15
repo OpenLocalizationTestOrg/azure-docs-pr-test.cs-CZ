@@ -1,24 +1,24 @@
 <!--author=v-sharos last changed: 11/06/15-->
 
-#### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
-1. Na obrazovce **Rychlý start** zařízení klikněte na kartu **Zásady zálohování**. Tím přejdete na stránku **Zásady zálohování**.
-2. V dolní části stránky kliknutím na **Přidat** spusťte průvodce přidáním zásady zálohování.
+#### <a name="to-add-a-storsimple-backup-policy"></a><span data-ttu-id="bced0-101">Přidání zásady zálohování StorSimple</span><span class="sxs-lookup"><span data-stu-id="bced0-101">To add a StorSimple backup policy</span></span>
+1. <span data-ttu-id="bced0-102">Na obrazovce **Rychlý start** zařízení klikněte na kartu **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="bced0-102">On the device **Quick Start** page, click the **Backup Policies** tab.</span></span> <span data-ttu-id="bced0-103">Tím přejdete na stránku **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="bced0-103">This will take you to the **Backup Policies** page.</span></span>
+2. <span data-ttu-id="bced0-104">V dolní části stránky kliknutím na **Přidat** spusťte průvodce přidáním zásady zálohování.</span><span class="sxs-lookup"><span data-stu-id="bced0-104">At the bottom of the page, click **Add** to start the Add Backup Policy wizard.</span></span>
    
     ![Přidání zásady zálohování 1](./media/storsimple-add-backup-policy-u2/AddBackupPolicy1.png)
-3. V dialogovém okně **Přidat zásadu zálohování** v části **Definujte zásadu zálohování** proveďte následující:
+3. <span data-ttu-id="bced0-106">V dialogovém okně **Přidat zásadu zálohování** v části **Definujte zásadu zálohování** proveďte následující:</span><span class="sxs-lookup"><span data-stu-id="bced0-106">In the **Add Backup Policy** dialog box, under **Define your backup policy**, do the following:</span></span>
    
-   1. Zadejte název zásady zálohování, který obsahuje 3 až 150 znaků.
-   2. Zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků. Pamatujte, že nemůžete vybrat svazky využívající jiné poskytovatele cloudových služeb. Pokud používáte více poskytovatelů cloudových služeb, na základě první výběru se v seznamu zobrazí pouze svazky, které patří pod daného poskytovatele. To vám umožní do jednoho snímku seskupit svazky patřící pod jednoho poskytovatele cloudových služeb.
-   3. Kliknutím na ikonu šipky ![ikona šipky](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) přejděte na další stránku.
+   1. <span data-ttu-id="bced0-107">Zadejte název zásady zálohování, který obsahuje 3 až 150 znaků.</span><span class="sxs-lookup"><span data-stu-id="bced0-107">Specify a backup policy name that contains between 3 and 150 characters.</span></span>
+   2. <span data-ttu-id="bced0-108">Zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků.</span><span class="sxs-lookup"><span data-stu-id="bced0-108">Click the check box(es) to assign one or more volumes to this backup policy.</span></span> <span data-ttu-id="bced0-109">Pamatujte, že nemůžete vybrat svazky využívající jiné poskytovatele cloudových služeb.</span><span class="sxs-lookup"><span data-stu-id="bced0-109">Note that you cannot select volumes that use different cloud service providers.</span></span> <span data-ttu-id="bced0-110">Pokud používáte více poskytovatelů cloudových služeb, na základě první výběru se v seznamu zobrazí pouze svazky, které patří pod daného poskytovatele.</span><span class="sxs-lookup"><span data-stu-id="bced0-110">If you are using multiple cloud service providers, based on your first selection, the list will show volumes belonging to only that cloud service provider.</span></span> <span data-ttu-id="bced0-111">To vám umožní do jednoho snímku seskupit svazky patřící pod jednoho poskytovatele cloudových služeb.</span><span class="sxs-lookup"><span data-stu-id="bced0-111">This will allow you to group volumes belonging to a single cloud service provider in a snapshot.</span></span>
+   3. <span data-ttu-id="bced0-112">Kliknutím na ikonu šipky</span><span class="sxs-lookup"><span data-stu-id="bced0-112">Click the arrow icon</span></span> ![ikona šipky](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) <span data-ttu-id="bced0-114">přejděte na další stránku.</span><span class="sxs-lookup"><span data-stu-id="bced0-114">to go to the next page.</span></span>
       
       ![Přidání zásady zálohování 2](./media/storsimple-add-backup-policy-u2/AddBackupPolicy2.png)
-4. V části **Definujte plán** určete následující:
+4. <span data-ttu-id="bced0-116">V části **Definujte plán** určete následující:</span><span class="sxs-lookup"><span data-stu-id="bced0-116">Under **Define a schedule**, do the following:</span></span>
    
-   1. V poli **Typ zálohování** vyberte z rozevíracího seznamu **Cloudový snímek** nebo **Místní snímek**.
-   2. Určete frekvenci záloh (zadejte počet a vyberte z rozevíracího seznamu buď **Dny** nebo **Týdny**).
-   3. Zadejte plán uchovávání.
-   4. Zadejte čas a datum zahájení platnosti zásady zálohování.  
-   5. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) a zásadu uložte.
+   1. <span data-ttu-id="bced0-117">V poli **Typ zálohování** vyberte z rozevíracího seznamu **Cloudový snímek** nebo **Místní snímek**.</span><span class="sxs-lookup"><span data-stu-id="bced0-117">In the **Type of Backup** box, select **Cloud Snapshot** or **Local Snapshot** from the drop-down list.</span></span>
+   2. <span data-ttu-id="bced0-118">Určete frekvenci záloh (zadejte počet a vyberte z rozevíracího seznamu buď **Dny** nebo **Týdny**).</span><span class="sxs-lookup"><span data-stu-id="bced0-118">Indicate the frequency of backups (specify a number and then choose **Days** or **Weeks** from the drop-down list).</span></span>
+   3. <span data-ttu-id="bced0-119">Zadejte plán uchovávání.</span><span class="sxs-lookup"><span data-stu-id="bced0-119">Enter a retention schedule.</span></span>
+   4. <span data-ttu-id="bced0-120">Zadejte čas a datum zahájení platnosti zásady zálohování.</span><span class="sxs-lookup"><span data-stu-id="bced0-120">Enter a time and date for the backup policy to begin.</span></span>  
+   5. <span data-ttu-id="bced0-121">Klikněte na ikonu zaškrtnutí</span><span class="sxs-lookup"><span data-stu-id="bced0-121">Click the check icon</span></span> ![ikona zaškrtnutí](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) <span data-ttu-id="bced0-123">a zásadu uložte.</span><span class="sxs-lookup"><span data-stu-id="bced0-123">to save the policy.</span></span>
 
-Nově přidaná zásada se zobrazí v tabulkovém zobrazení na stránce **Zásady zálohování**.
+<span data-ttu-id="bced0-124">Nově přidaná zásada se zobrazí v tabulkovém zobrazení na stránce **Zásady zálohování**.</span><span class="sxs-lookup"><span data-stu-id="bced0-124">The newly added policy will be displayed in the tabular view on the **Backup Policies** page.</span></span>
 

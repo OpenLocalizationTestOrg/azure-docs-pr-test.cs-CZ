@@ -1,34 +1,34 @@
-### <a name="number-of-fault-domains-per-region"></a>Počet domén selhání podle oblastí
+### <a name="number-of-fault-domains-per-region"></a><span data-ttu-id="ac612-101">Počet domén selhání podle oblastí</span><span class="sxs-lookup"><span data-stu-id="ac612-101">Number of Fault Domains per region</span></span>
 
-| Oblast              | Maximální počet domén selhání  |
+| <span data-ttu-id="ac612-102">Oblast</span><span class="sxs-lookup"><span data-stu-id="ac612-102">Region</span></span>              | <span data-ttu-id="ac612-103">Maximální počet domén selhání</span><span class="sxs-lookup"><span data-stu-id="ac612-103">Max # of Fault Domains</span></span>  |
 |---------------------|-------------------------|
-| Východ USA             | 3                       |
-| Východní USA 2           | 3                       |
-| Západní USA             | 3                       |
-| Západní USA 2           | 2                       |
-| Střed USA          | 3                       |
-| Střed USA – sever    | 3                       |
-| Střed USA – jih    | 3                       |
-| Západní střed USA     | 2                       |
-| Střední Kanada      | 2                       |
-| Východní Kanada         | 2                       |
+| <span data-ttu-id="ac612-104">Východ USA</span><span class="sxs-lookup"><span data-stu-id="ac612-104">East US</span></span>             | <span data-ttu-id="ac612-105">3</span><span class="sxs-lookup"><span data-stu-id="ac612-105">3</span></span>                       |
+| <span data-ttu-id="ac612-106">Východní USA 2</span><span class="sxs-lookup"><span data-stu-id="ac612-106">East US 2</span></span>           | <span data-ttu-id="ac612-107">3</span><span class="sxs-lookup"><span data-stu-id="ac612-107">3</span></span>                       |
+| <span data-ttu-id="ac612-108">Západní USA</span><span class="sxs-lookup"><span data-stu-id="ac612-108">West US</span></span>             | <span data-ttu-id="ac612-109">3</span><span class="sxs-lookup"><span data-stu-id="ac612-109">3</span></span>                       |
+| <span data-ttu-id="ac612-110">Západní USA 2</span><span class="sxs-lookup"><span data-stu-id="ac612-110">West US 2</span></span>           | <span data-ttu-id="ac612-111">2</span><span class="sxs-lookup"><span data-stu-id="ac612-111">2</span></span>                       |
+| <span data-ttu-id="ac612-112">Střed USA</span><span class="sxs-lookup"><span data-stu-id="ac612-112">Central US</span></span>          | <span data-ttu-id="ac612-113">3</span><span class="sxs-lookup"><span data-stu-id="ac612-113">3</span></span>                       |
+| <span data-ttu-id="ac612-114">Střed USA – sever</span><span class="sxs-lookup"><span data-stu-id="ac612-114">North Central US</span></span>    | <span data-ttu-id="ac612-115">3</span><span class="sxs-lookup"><span data-stu-id="ac612-115">3</span></span>                       |
+| <span data-ttu-id="ac612-116">Střed USA – jih</span><span class="sxs-lookup"><span data-stu-id="ac612-116">South Central US</span></span>    | <span data-ttu-id="ac612-117">3</span><span class="sxs-lookup"><span data-stu-id="ac612-117">3</span></span>                       |
+| <span data-ttu-id="ac612-118">Západní střed USA</span><span class="sxs-lookup"><span data-stu-id="ac612-118">West Central US</span></span>     | <span data-ttu-id="ac612-119">2</span><span class="sxs-lookup"><span data-stu-id="ac612-119">2</span></span>                       |
+| <span data-ttu-id="ac612-120">Střední Kanada</span><span class="sxs-lookup"><span data-stu-id="ac612-120">Canada Central</span></span>      | <span data-ttu-id="ac612-121">2</span><span class="sxs-lookup"><span data-stu-id="ac612-121">2</span></span>                       |
+| <span data-ttu-id="ac612-122">Východní Kanada</span><span class="sxs-lookup"><span data-stu-id="ac612-122">Canada East</span></span>         | <span data-ttu-id="ac612-123">2</span><span class="sxs-lookup"><span data-stu-id="ac612-123">2</span></span>                       |
 |                     |                         |
-| Severní Evropa        | 3                       |
-| Západní Evropa         | 3                       |
-| Spojené království – jih            | 2                       |
-| Spojené království – západ             | 2                       |
+| <span data-ttu-id="ac612-124">Severní Evropa</span><span class="sxs-lookup"><span data-stu-id="ac612-124">North Europe</span></span>        | <span data-ttu-id="ac612-125">3</span><span class="sxs-lookup"><span data-stu-id="ac612-125">3</span></span>                       |
+| <span data-ttu-id="ac612-126">Západní Evropa</span><span class="sxs-lookup"><span data-stu-id="ac612-126">West Europe</span></span>         | <span data-ttu-id="ac612-127">3</span><span class="sxs-lookup"><span data-stu-id="ac612-127">3</span></span>                       |
+| <span data-ttu-id="ac612-128">Spojené království – jih</span><span class="sxs-lookup"><span data-stu-id="ac612-128">UK South</span></span>            | <span data-ttu-id="ac612-129">2</span><span class="sxs-lookup"><span data-stu-id="ac612-129">2</span></span>                       |
+| <span data-ttu-id="ac612-130">Spojené království – západ</span><span class="sxs-lookup"><span data-stu-id="ac612-130">UK West</span></span>             | <span data-ttu-id="ac612-131">2</span><span class="sxs-lookup"><span data-stu-id="ac612-131">2</span></span>                       |
 |                     |                         |
-| Východní Asie           | 2                       |
-| Jihovýchodní Asie     | 2                       |
-| Japonsko – východ          | 2                       |
-| Japonsko – západ          | 2                       |
-| Indie – jih         | 2                       |
-| Střed Indie       | 2                       |
-| Indie – západ          | 2                       |
-| Korea – střed       | 2                       |
-| Korea – jih         | 2                       |
+| <span data-ttu-id="ac612-132">Východní Asie</span><span class="sxs-lookup"><span data-stu-id="ac612-132">East Asia</span></span>           | <span data-ttu-id="ac612-133">2</span><span class="sxs-lookup"><span data-stu-id="ac612-133">2</span></span>                       |
+| <span data-ttu-id="ac612-134">Jihovýchodní Asie</span><span class="sxs-lookup"><span data-stu-id="ac612-134">South East Asia</span></span>     | <span data-ttu-id="ac612-135">2</span><span class="sxs-lookup"><span data-stu-id="ac612-135">2</span></span>                       |
+| <span data-ttu-id="ac612-136">Japonsko – východ</span><span class="sxs-lookup"><span data-stu-id="ac612-136">Japan East</span></span>          | <span data-ttu-id="ac612-137">2</span><span class="sxs-lookup"><span data-stu-id="ac612-137">2</span></span>                       |
+| <span data-ttu-id="ac612-138">Japonsko – západ</span><span class="sxs-lookup"><span data-stu-id="ac612-138">Japan West</span></span>          | <span data-ttu-id="ac612-139">2</span><span class="sxs-lookup"><span data-stu-id="ac612-139">2</span></span>                       |
+| <span data-ttu-id="ac612-140">Indie – jih</span><span class="sxs-lookup"><span data-stu-id="ac612-140">South India</span></span>         | <span data-ttu-id="ac612-141">2</span><span class="sxs-lookup"><span data-stu-id="ac612-141">2</span></span>                       |
+| <span data-ttu-id="ac612-142">Střed Indie</span><span class="sxs-lookup"><span data-stu-id="ac612-142">Central India</span></span>       | <span data-ttu-id="ac612-143">2</span><span class="sxs-lookup"><span data-stu-id="ac612-143">2</span></span>                       |
+| <span data-ttu-id="ac612-144">Indie – západ</span><span class="sxs-lookup"><span data-stu-id="ac612-144">West India</span></span>          | <span data-ttu-id="ac612-145">2</span><span class="sxs-lookup"><span data-stu-id="ac612-145">2</span></span>                       |
+| <span data-ttu-id="ac612-146">Korea – střed</span><span class="sxs-lookup"><span data-stu-id="ac612-146">Korea Central</span></span>       | <span data-ttu-id="ac612-147">2</span><span class="sxs-lookup"><span data-stu-id="ac612-147">2</span></span>                       |
+| <span data-ttu-id="ac612-148">Korea – jih</span><span class="sxs-lookup"><span data-stu-id="ac612-148">Korea South</span></span>         | <span data-ttu-id="ac612-149">2</span><span class="sxs-lookup"><span data-stu-id="ac612-149">2</span></span>                       |
 |                     |                         |
-| Austrálie – východ      | 2                       |
-| Austrálie – jihovýchod | 2                       |
+| <span data-ttu-id="ac612-150">Austrálie – východ</span><span class="sxs-lookup"><span data-stu-id="ac612-150">Australia East</span></span>      | <span data-ttu-id="ac612-151">2</span><span class="sxs-lookup"><span data-stu-id="ac612-151">2</span></span>                       |
+| <span data-ttu-id="ac612-152">Austrálie – jihovýchod</span><span class="sxs-lookup"><span data-stu-id="ac612-152">Australia Southeast</span></span> | <span data-ttu-id="ac612-153">2</span><span class="sxs-lookup"><span data-stu-id="ac612-153">2</span></span>                       |
 |                     |                         |
-| Brazílie – jih        | 2                       |
+| <span data-ttu-id="ac612-154">Brazílie – jih</span><span class="sxs-lookup"><span data-stu-id="ac612-154">Brazil South</span></span>        | <span data-ttu-id="ac612-155">2</span><span class="sxs-lookup"><span data-stu-id="ac612-155">2</span></span>                       |

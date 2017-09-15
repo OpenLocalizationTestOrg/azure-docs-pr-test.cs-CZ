@@ -1,16 +1,16 @@
-**Vytvoření nového profilu CDN**
+<span data-ttu-id="5b583-101">**Vytvoření nového profilu CDN**</span><span class="sxs-lookup"><span data-stu-id="5b583-101">**To create a new CDN profile**</span></span>
 
-1. Na [webu Azure Portal](https://portal.azure.com) klikněte v levém horním rohu na **Nový**.  V okně **Nový** vyberte **Web a mobilní zařízení** a potom **CDN**.
+1. <span data-ttu-id="5b583-102">Na [webu Azure Portal](https://portal.azure.com) klikněte v levém horním rohu na **Nový**.</span><span class="sxs-lookup"><span data-stu-id="5b583-102">In the [Azure Portal](https://portal.azure.com), in the upper left, click **New**.</span></span>  <span data-ttu-id="5b583-103">V okně **Nový** vyberte **Web a mobilní zařízení** a potom **CDN**.</span><span class="sxs-lookup"><span data-stu-id="5b583-103">In the **New** blade, select **Web + Mobile**, then **CDN**.</span></span>
    
-    Zobrazí se nové okno profilu CDN.
+    <span data-ttu-id="5b583-104">Zobrazí se nové okno profilu CDN.</span><span class="sxs-lookup"><span data-stu-id="5b583-104">The new CDN profile blade appears.</span></span>
    
     ![Nový profil CDN](./media/cdn-create-profile/new-cdn-profile-include.png)
-2. Zadejte název svého profilu CDN.
-3. Vyberte **Umístění**.  Toto je umístění v Azure, kam se uloží informace o vašem profilu CDN.  Nemá žádný vliv na umístění koncových bodů CDN.
-4. Vyberte nebo vytvořte **skupinu prostředků**.  Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
-5. Vyberte možnost u položky **Cenová úroveň**.  V článku [Přehled sítě CDN](../articles/cdn/cdn-overview.md#azure-cdn-features) najdete porovnání cenových úrovní.
+2. <span data-ttu-id="5b583-106">Zadejte název svého profilu CDN.</span><span class="sxs-lookup"><span data-stu-id="5b583-106">Enter a name for your CDN profile.</span></span>
+3. <span data-ttu-id="5b583-107">Vyberte **Umístění**.</span><span class="sxs-lookup"><span data-stu-id="5b583-107">Select a **Location**.</span></span>  <span data-ttu-id="5b583-108">Toto je umístění v Azure, kam se uloží informace o vašem profilu CDN.</span><span class="sxs-lookup"><span data-stu-id="5b583-108">This is the Azure location where your CDN profile information will be stored.</span></span>  <span data-ttu-id="5b583-109">Nemá žádný vliv na umístění koncových bodů CDN.</span><span class="sxs-lookup"><span data-stu-id="5b583-109">It has no impact on CDN endpoint locations.</span></span>
+4. <span data-ttu-id="5b583-110">Vyberte nebo vytvořte **skupinu prostředků**.</span><span class="sxs-lookup"><span data-stu-id="5b583-110">Select or create a **Resource Group**.</span></span>  <span data-ttu-id="5b583-111">Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).</span><span class="sxs-lookup"><span data-stu-id="5b583-111">For more information on Resource Groups, see [Azure Resource Manager overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).</span></span>
+5. <span data-ttu-id="5b583-112">Vyberte možnost u položky **Cenová úroveň**.</span><span class="sxs-lookup"><span data-stu-id="5b583-112">Select a **Pricing tier**.</span></span>  <span data-ttu-id="5b583-113">V článku [Přehled sítě CDN](../articles/cdn/cdn-overview.md#azure-cdn-features) najdete porovnání cenových úrovní.</span><span class="sxs-lookup"><span data-stu-id="5b583-113">See the [CDN Overview](../articles/cdn/cdn-overview.md#azure-cdn-features) for a comparison of pricing tiers.</span></span>
    
     ![Výběr cenové úrovně CDN](./media/cdn-create-profile/cdn-choose-sku-include.png)
-6. Vyberte **Předplatné** pro tento profil CDN.
-7. Nový profil vytvoříte kliknutím na tlačítko **Vytvořit**. 
+6. <span data-ttu-id="5b583-115">Vyberte **Předplatné** pro tento profil CDN.</span><span class="sxs-lookup"><span data-stu-id="5b583-115">Select the **Subscription** for this CDN profile.</span></span>
+7. <span data-ttu-id="5b583-116">Nový profil vytvoříte kliknutím na tlačítko **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="5b583-116">Click the **Create** button to create the new profile.</span></span> 
 
