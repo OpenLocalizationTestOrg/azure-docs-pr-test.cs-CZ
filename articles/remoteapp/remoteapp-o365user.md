@@ -1,0 +1,53 @@
+---
+title: "Jak používat Azure RemoteApp s uživatelských účtů Office 365 | Microsoft Docs"
+description: "Naučte se používat Azure RemoteApp s uživatelských účtů Office 365"
+services: remoteapp
+documentationcenter: 
+author: piotrci
+manager: mbaldwin
+ms.assetid: aba70fd3-60b0-4b44-9321-1ab18760ccd5
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/26/2017
+ms.author: mbaldwin
+ms.openlocfilehash: 1bc8949c236afd03415f961cf7a657d4d3926b07
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a><span data-ttu-id="30af5-103">Jak používat Azure RemoteApp s uživatelských účtů Office 365</span><span class="sxs-lookup"><span data-stu-id="30af5-103">How to use Azure RemoteApp with Office 365 user accounts</span></span>
+> [!IMPORTANT]
+> <span data-ttu-id="30af5-104">Azure RemoteApp se přestává používat dne 31. srpna 2017.</span><span class="sxs-lookup"><span data-stu-id="30af5-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="30af5-105">Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).</span><span class="sxs-lookup"><span data-stu-id="30af5-105">Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.</span></span>
+> 
+> 
+
+<span data-ttu-id="30af5-106">Pokud máte předplatné služeb Office 365, máte Azure Active Directory, která ukládá uživatelská jména a hesla, používá pro přístup ke službám Office 365.</span><span class="sxs-lookup"><span data-stu-id="30af5-106">If you have an Office 365 subscription you have an Azure Active Directory that stores your user names and passwords used to access Office 365 services.</span></span> <span data-ttu-id="30af5-107">Například když vaši uživatelé aktivují Office 365 ProPlus ověření služby Azure AD zkontrolujte licence.</span><span class="sxs-lookup"><span data-stu-id="30af5-107">For example, when your users activate Office 365 ProPlus they authenticate against Azure AD to check for licenses.</span></span> <span data-ttu-id="30af5-108">Většina zákazníků chcete použít stejný adresář s Azure Remoteappem.</span><span class="sxs-lookup"><span data-stu-id="30af5-108">Most customers would like to use the same directory with Azure RemoteApp.</span></span>
+
+<span data-ttu-id="30af5-109">Pokud nasazujete Azure RemoteApp používáte s největší pravděpodobností předplatné Azure, který je přidružen jiné službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="30af5-109">If you are deploying Azure RemoteApp you are most likely using an Azure subscription that is associated with a different Azure AD.</span></span> <span data-ttu-id="30af5-110">Chcete-li použít adresáře Office 365, musíte přesunout předplatné Azure, které do této složky.</span><span class="sxs-lookup"><span data-stu-id="30af5-110">In order to use your Office 365 directory, you will need to move the Azure subscription into that directory.</span></span>
+
+<span data-ttu-id="30af5-111">Informace o tom, jak nasadit aplikace klienta Office 365 najdete v tématu [jak používat předplatné služeb Office 365 s Azure Remoteappem](remoteapp-officesubscription.md).</span><span class="sxs-lookup"><span data-stu-id="30af5-111">For info on how to deploy Office 365 client applications, see [How to use your Office 365 subscription with Azure RemoteApp](remoteapp-officesubscription.md).</span></span>
+
+## <a name="phase-1-register-your-free-office-365-azure-active-directory-subscription"></a><span data-ttu-id="30af5-112">Fáze 1: Registrace vaší bezplatné předplatné Office 365 Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="30af5-112">Phase 1: Register your free Office 365 Azure Active Directory subscription</span></span>
+<span data-ttu-id="30af5-113">Pokud používáte portál Azure classic, použijte kroky v [zaregistrovat bezplatné předplatné služby Azure Active Directory](https://technet.microsoft.com/library/dn832618.aspx) získat přístup pro správu do služby Azure AD pomocí portálu pro správu Azure.</span><span class="sxs-lookup"><span data-stu-id="30af5-113">If you are using the Azure classic portal, use the steps in [Register your free Azure Active Directory subscription](https://technet.microsoft.com/library/dn832618.aspx) to get administrative access to your Azure AD via the Azure Management Portal.</span></span> <span data-ttu-id="30af5-114">V důsledku tohoto procesu bude schopen Přihlaste se k portálu Azure a najdete v adresáři existuje – v tomto okamžiku neuvidíte mnohem víc vzhledem k tomu, že úplné předplatné, které používáte s Azure Remoteappem je v jiném adresáři.</span><span class="sxs-lookup"><span data-stu-id="30af5-114">As the result of this process you should be able to log into the Azure portal and see your directory there – at this point you won’t see much more since the full Azure subscription you are using with Azure RemoteApp is in a different directory.</span></span>
+
+<span data-ttu-id="30af5-115">Mějte na paměti, jméno a heslo účtu správce, kterou jste vytvořili v tomto kroku – bude potřeba v fáze 2.</span><span class="sxs-lookup"><span data-stu-id="30af5-115">Remember the name and password of the administrator account you created in this step – they will be needed in Phase 2.</span></span>
+
+<span data-ttu-id="30af5-116">Pokud používáte portál Azure, podívejte se na [k registraci a aktivaci volné Azure Active Directory pomocí portálu Office 365](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).</span><span class="sxs-lookup"><span data-stu-id="30af5-116">If you are using the Azure portal, check out [How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).</span></span>
+
+## <a name="phase-2-change-the-azure-ad-associated-with-your-azure-subscription"></a><span data-ttu-id="30af5-117">Fáze 2: Změňte Azure AD spojené s předplatným Azure.</span><span class="sxs-lookup"><span data-stu-id="30af5-117">Phase 2: Change the Azure AD associated with your Azure subscription.</span></span>
+<span data-ttu-id="30af5-118">Přidáme změnit vašeho předplatného Azure z jeho aktuálního adresáře do adresáře Office 365, které jsme pracovali v fáze 1.</span><span class="sxs-lookup"><span data-stu-id="30af5-118">We are going to change your Azure subscription from its current directory into the Office 365 directory we worked with in Phase 1.</span></span>
+
+<span data-ttu-id="30af5-119">Postupujte podle pokynů v tématu [změna klienta Azure Active Directory v Azure Remoteappu](remoteapp-changetenant.md).</span><span class="sxs-lookup"><span data-stu-id="30af5-119">Follow the instructions described in [Change the Azure Active Directory tenant in Azure RemoteApp](remoteapp-changetenant.md).</span></span> <span data-ttu-id="30af5-120">Věnujte zvláštní pozornost následující kroky:</span><span class="sxs-lookup"><span data-stu-id="30af5-120">Pay particular attention to the following steps:</span></span>
+
+* <span data-ttu-id="30af5-121">Krok #1: Pokud jste nasadili Azure RemoteApp (ARA) v tomto předplatném, ujistěte se, že je všechny uživatelské účty Azure AD ze všech kolekcí ARA nejdříve odebrat, a teprve potom zkusili cokoliv jiného.</span><span class="sxs-lookup"><span data-stu-id="30af5-121">Step #1: If you have deployed Azure RemoteApp (ARA) in this subscription, make sure you remove all Azure AD user accounts from any ARA collections first, before trying anything else.</span></span> <span data-ttu-id="30af5-122">Alternativně můžete zvážit, odstranění všechny existující kolekce.</span><span class="sxs-lookup"><span data-stu-id="30af5-122">Alternatively, you can consider deleting any existing collections.</span></span>
+* <span data-ttu-id="30af5-123">Krok #2: Toto je důležitý krok.</span><span class="sxs-lookup"><span data-stu-id="30af5-123">Step #2: This is a critical step.</span></span> <span data-ttu-id="30af5-124">Je nutné použít účet Microsoft (například @outlook.com) jako správce služeb v předplatném; důvodem je, že jsme nemůže mít všechny uživatelské účty z existující Azure AD, které jsou připojené k předplatnému – v takovém případě jsme nebudete moci přesunout do jiné služby Azure AD .</span><span class="sxs-lookup"><span data-stu-id="30af5-124">You need to use a Microsoft account (e.g. @outlook.com) as a Service Administrator on the subscription; this is because we cannot have any user accounts from the existing Azure AD attached to the subscription – if we do, we won’t be able to move it to a different Azure AD.</span></span>
+* <span data-ttu-id="30af5-125">Krok #4: Při přidávání existující adresář, systém se zeptá se přihlásit pomocí účtu správce pro tento adresář.</span><span class="sxs-lookup"><span data-stu-id="30af5-125">Step #4: When adding an existing directory, the system will ask you to sign in with the administrator account for that directory.</span></span> <span data-ttu-id="30af5-126">Ujistěte se, že pomocí účtu správce z fáze 1.</span><span class="sxs-lookup"><span data-stu-id="30af5-126">Make sure to use the administrator account from Phase 1.</span></span>
+* <span data-ttu-id="30af5-127">Krok #5: Změňte nadřazený adresář předplatného do vašeho adresáře Office 365.</span><span class="sxs-lookup"><span data-stu-id="30af5-127">Step #5: Change the parent directory of the subscription to your Office 365 directory.</span></span> <span data-ttu-id="30af5-128">Konečný výsledek by měl být, že v Nastavení -> odběry vaše předplatné uvádí adresáři Office 365.</span><span class="sxs-lookup"><span data-stu-id="30af5-128">The end result should be that under Settings -> Subscriptions your subscription lists the Office 365 directory.</span></span> 
+  <span data-ttu-id="30af5-129">![Změnit nadřazený adresář předplatného](./media/remoteapp-o365user/settings.png)</span><span class="sxs-lookup"><span data-stu-id="30af5-129">![Change the parent directory of the subscription](./media/remoteapp-o365user/settings.png)</span></span>
+
+<span data-ttu-id="30af5-130">V tomto okamžiku je vaše předplatné Azure Remoteappu související s vaší Office 365, Azure AD; můžete použít existující uživatelských účtů Office 365 s Azure Remoteappem!</span><span class="sxs-lookup"><span data-stu-id="30af5-130">At this point your Azure RemoteApp subscription is associated with your Office 365 Azure AD; you can use the existing Office 365 user accounts with Azure RemoteApp!</span></span>
+
