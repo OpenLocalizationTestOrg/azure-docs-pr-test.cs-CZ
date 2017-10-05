@@ -1,0 +1,52 @@
+---
+title: "Možnosti zařízení cloud Azure IoT Hub | Microsoft Docs"
+description: "Příručka vývojáře – pokyny k použití zpráv typu zařízení cloud, hlášen vlastnostech nebo nahrávání souborů pro komunikaci typu cloud zařízení."
+services: iot-hub
+documentationcenter: .net
+author: fsautomata
+manager: timlt
+editor: 
+ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
+ms.service: iot-hub
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/25/2017
+ms.author: elioda
+ms.openlocfilehash: a36283053939ccd53856a394cd9efb66285271ae
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="device-to-cloud-communications-guidance"></a><span data-ttu-id="a9432-103">Komunikace zařízení cloud pokyny</span><span class="sxs-lookup"><span data-stu-id="a9432-103">Device-to-cloud communications guidance</span></span>
+<span data-ttu-id="a9432-104">Při odesílání informací z aplikace zařízení k back-end řešení, IoT Hub zpřístupní tři možnosti:</span><span class="sxs-lookup"><span data-stu-id="a9432-104">When sending information from the device app to the solution back end, IoT Hub exposes three options:</span></span>
+
+* <span data-ttu-id="a9432-105">[Zprávy typu zařízení cloud] [ lnk-d2c] pro časové řady telemetrie a výstrahy.</span><span class="sxs-lookup"><span data-stu-id="a9432-105">[Device-to-cloud messages][lnk-d2c] for time series telemetry and alerts.</span></span>
+* <span data-ttu-id="a9432-106">[Hlášené vlastnosti] [ lnk-twins] pro vytváření sestav informace o stavu zařízení například dostupné možnosti, podmínky nebo stav dlouho běžící pracovních postupů.</span><span class="sxs-lookup"><span data-stu-id="a9432-106">[Reported properties][lnk-twins] for reporting device state information such as available capabilities, conditions, or the state of long-running workflows.</span></span> <span data-ttu-id="a9432-107">Například konfigurace a aktualizace softwaru.</span><span class="sxs-lookup"><span data-stu-id="a9432-107">For example, configuration and software updates.</span></span>
+* <span data-ttu-id="a9432-108">[Nahrávání souborů] [ lnk-fileupload] pro média soubory a velké telemetrie dávek odeslaný občas připojených zařízení a Komprimovat pro snížení šířky pásma.</span><span class="sxs-lookup"><span data-stu-id="a9432-108">[File uploads][lnk-fileupload] for media files and large telemetry batches uploaded by intermittently connected devices or compressed to save bandwidth.</span></span>
+
+<span data-ttu-id="a9432-109">Zde je podrobné porovnání různých možností komunikace zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="a9432-109">Here is a detailed comparison of the various device-to-cloud communication options.</span></span>
+
+|  | <span data-ttu-id="a9432-110">Zprávy typu zařízení-cloud</span><span class="sxs-lookup"><span data-stu-id="a9432-110">Device-to-cloud messages</span></span> | <span data-ttu-id="a9432-111">Hlášené vlastnosti</span><span class="sxs-lookup"><span data-stu-id="a9432-111">Reported properties</span></span> | <span data-ttu-id="a9432-112">Nahrávání souborů</span><span class="sxs-lookup"><span data-stu-id="a9432-112">File uploads</span></span> |
+| ---- | ------- | ---------- | ---- |
+| <span data-ttu-id="a9432-113">Scénář</span><span class="sxs-lookup"><span data-stu-id="a9432-113">Scenario</span></span> | <span data-ttu-id="a9432-114">Výstrahy a telemetrie časové řady.</span><span class="sxs-lookup"><span data-stu-id="a9432-114">Telemetry time series and alerts.</span></span> <span data-ttu-id="a9432-115">Například 256 KB senzor datových balíků odesílá každých 5 minut.</span><span class="sxs-lookup"><span data-stu-id="a9432-115">For example, 256-KB sensor data batches sent every 5 minutes.</span></span> | <span data-ttu-id="a9432-116">Podmínky a dostupné možnosti.</span><span class="sxs-lookup"><span data-stu-id="a9432-116">Available capabilities and conditions.</span></span> <span data-ttu-id="a9432-117">Například aktuální zařízení režim připojení třeba mobilní síť nebo Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="a9432-117">For example, the current device connectivity mode such as cellular or WiFi.</span></span> <span data-ttu-id="a9432-118">Synchronizace dlouho běžící pracovních postupů, jako je například konfigurace a aktualizací softwaru.</span><span class="sxs-lookup"><span data-stu-id="a9432-118">Synchronizing long-running workflows, such as configuration and software updates.</span></span> | <span data-ttu-id="a9432-119">Mediálních souborů.</span><span class="sxs-lookup"><span data-stu-id="a9432-119">Media files.</span></span> <span data-ttu-id="a9432-120">Velké (obvykle komprimované) telemetrie dávek.</span><span class="sxs-lookup"><span data-stu-id="a9432-120">Large (typically compressed) telemetry batches.</span></span> |
+| <span data-ttu-id="a9432-121">Ukládání a načítání</span><span class="sxs-lookup"><span data-stu-id="a9432-121">Storage and retrieval</span></span> | <span data-ttu-id="a9432-122">Dočasně uložit službou IoT Hub až do 7 dnů.</span><span class="sxs-lookup"><span data-stu-id="a9432-122">Temporarily stored by IoT Hub, up to 7 days.</span></span> <span data-ttu-id="a9432-123">Pouze sekvenční čtení.</span><span class="sxs-lookup"><span data-stu-id="a9432-123">Only sequential reading.</span></span> | <span data-ttu-id="a9432-124">Ukládá v dvojče zařízení IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="a9432-124">Stored by IoT Hub in the device twin.</span></span> <span data-ttu-id="a9432-125">Dá načíst pomocí [IoT Hub dotazovací jazyk][lnk-query].</span><span class="sxs-lookup"><span data-stu-id="a9432-125">Retrievable using the [IoT Hub query language][lnk-query].</span></span> | <span data-ttu-id="a9432-126">Uložený v účtu Azure Storage zadaný uživatelem.</span><span class="sxs-lookup"><span data-stu-id="a9432-126">Stored in user-provided Azure Storage account.</span></span> |
+| <span data-ttu-id="a9432-127">Velikost</span><span class="sxs-lookup"><span data-stu-id="a9432-127">Size</span></span> | <span data-ttu-id="a9432-128">Až 256 KB zprávy.</span><span class="sxs-lookup"><span data-stu-id="a9432-128">Up to 256-KB messages.</span></span> | <span data-ttu-id="a9432-129">Maximální hlášené vlastnosti velikost je 8 KB.</span><span class="sxs-lookup"><span data-stu-id="a9432-129">Maximum reported properties size is 8 KB.</span></span> | <span data-ttu-id="a9432-130">Maximální velikost podporovaná technologií úložiště objektů Blob Azure.</span><span class="sxs-lookup"><span data-stu-id="a9432-130">Maximum file size supported by Azure Blob Storage.</span></span> |
+| <span data-ttu-id="a9432-131">frekvence</span><span class="sxs-lookup"><span data-stu-id="a9432-131">Frequency</span></span> | <span data-ttu-id="a9432-132">Vysoká.</span><span class="sxs-lookup"><span data-stu-id="a9432-132">High.</span></span> <span data-ttu-id="a9432-133">Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas].</span><span class="sxs-lookup"><span data-stu-id="a9432-133">For more information, see [IoT Hub limits][lnk-quotas].</span></span> | <span data-ttu-id="a9432-134">Střední.</span><span class="sxs-lookup"><span data-stu-id="a9432-134">Medium.</span></span> <span data-ttu-id="a9432-135">Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas].</span><span class="sxs-lookup"><span data-stu-id="a9432-135">For more information, see [IoT Hub limits][lnk-quotas].</span></span> | <span data-ttu-id="a9432-136">Nízká.</span><span class="sxs-lookup"><span data-stu-id="a9432-136">Low.</span></span> <span data-ttu-id="a9432-137">Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas].</span><span class="sxs-lookup"><span data-stu-id="a9432-137">For more information, see [IoT Hub limits][lnk-quotas].</span></span> |
+| <span data-ttu-id="a9432-138">Protocol (Protokol)</span><span class="sxs-lookup"><span data-stu-id="a9432-138">Protocol</span></span> | <span data-ttu-id="a9432-139">K dispozici ve všech protokolů.</span><span class="sxs-lookup"><span data-stu-id="a9432-139">Available on all protocols.</span></span> | <span data-ttu-id="a9432-140">Aktuálně dostupná jenom při použití MQTT.</span><span class="sxs-lookup"><span data-stu-id="a9432-140">Currently available only when using MQTT.</span></span> | <span data-ttu-id="a9432-141">K dispozici při použití libovolný protokol, ale vyžaduje HTTP na zařízení.</span><span class="sxs-lookup"><span data-stu-id="a9432-141">Available when using any protocol, but requires HTTP on the device.</span></span> |
+
+<span data-ttu-id="a9432-142">Je možné, že aplikace vyžaduje jak odesílat informace jako časové řady telemetrie nebo upozornění a také aby byl k dispozici v dvojče zařízení.</span><span class="sxs-lookup"><span data-stu-id="a9432-142">It is possible that an application requires to both send information as a telemetry time series or alert and also to make it available in the device twin.</span></span> <span data-ttu-id="a9432-143">V tomto scénáři můžete vybrat jednu z následujících možností:</span><span class="sxs-lookup"><span data-stu-id="a9432-143">In this scenario, you can chose one of the following options:</span></span>
+
+* <span data-ttu-id="a9432-144">Odešle zprávu typu zařízení cloud a sestavy změnu vlastnosti aplikace zařízení.</span><span class="sxs-lookup"><span data-stu-id="a9432-144">The device app sends a device-to-cloud message and reports a property change.</span></span>
+* <span data-ttu-id="a9432-145">Back-end řešení může ukládat informace ve značkách dvojče zařízení při přijetí zprávy.</span><span class="sxs-lookup"><span data-stu-id="a9432-145">The solution back end can store the information in the device twin's tags when it receives the message.</span></span>
+
+<span data-ttu-id="a9432-146">Vzhledem k tomu, že zprávy typu zařízení cloud povolit mnohem vyšší propustnost než aktualizace twin zařízení, je někdy žádoucí, aby se zabránilo aktualizace dvojče zařízení pro každou zprávu typu zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="a9432-146">Since device-to-cloud messages enable a much higher throughput than device twin updates, it is sometimes desirable to avoid updating the device twin for every device-to-cloud message.</span></span>
+
+
+[lnk-twins]: iot-hub-devguide-device-twins.md
+[lnk-fileupload]: iot-hub-devguide-file-upload.md
+[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
+[lnk-query]: iot-hub-devguide-query-language.md
+[lnk-d2c]: iot-hub-devguide-messages-d2c.md

@@ -1,0 +1,68 @@
+---
+title: "Povolit monitorování a Diagnostika v Microsoft Azure | Microsoft Docs"
+description: "Naučte se nastavení diagnostiky pro vaše prostředky v Azure."
+author: rboucher
+manager: carolz
+editor: 
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
+ms.assetid: af1947a9-c211-4aa1-8924-880a86240be4
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/06/2017
+ms.author: robb
+ms.openlocfilehash: b82bb1ab419831e803689edb2a2a7fe256dde5a2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="enable-monitoring-and-diagnostics"></a><span data-ttu-id="86a6b-103">Povolení monitorování a diagnostiky</span><span class="sxs-lookup"><span data-stu-id="86a6b-103">Enable monitoring and diagnostics</span></span>
+<span data-ttu-id="86a6b-104">V [portálu Azure](https://portal.azure.com), můžete konfigurovat bohaté, časté, monitorování a Diagnostika data o vašich prostředků.</span><span class="sxs-lookup"><span data-stu-id="86a6b-104">In the [Azure Portal](https://portal.azure.com), you can configure rich, frequent, monitoring and diagnostics data about your resources.</span></span> <span data-ttu-id="86a6b-105">Můžete také [REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) nebo [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) ke konfiguraci diagnostiky prostřednictvím kódu programu.</span><span class="sxs-lookup"><span data-stu-id="86a6b-105">You can also use the [REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) or [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) to configure diagnostics programmatically.</span></span>
+
+<span data-ttu-id="86a6b-106">Data diagnostiky, monitorování a metriky v Azure je uložen do účtu úložiště podle vašeho výběru.</span><span class="sxs-lookup"><span data-stu-id="86a6b-106">Diagnostics, monitoring and metric data in Azure is saved into a Storage account of your choice.</span></span> <span data-ttu-id="86a6b-107">To umožňuje použít libovolnou nástrojů, které chcete číst data, z Průzkumníka úložiště, do Power BI a jiných nástrojů.</span><span class="sxs-lookup"><span data-stu-id="86a6b-107">This allows you to use whatever tooling you want to read the data, from a storage explorer, to Power BI to third-party tooling.</span></span>
+
+## <a name="when-you-create-a-resource"></a><span data-ttu-id="86a6b-108">Při vytváření prostředku</span><span class="sxs-lookup"><span data-stu-id="86a6b-108">When you create a resource</span></span>
+<span data-ttu-id="86a6b-109">Většina služeb umožňují zapněte diagnostiku, při prvním vytváření je do [portálu Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="86a6b-109">Most services allow you to enable diagnostics when you first create them in the [Azure Portal](https://portal.azure.com).</span></span>
+
+1. <span data-ttu-id="86a6b-110">Přejděte na **nový** a vyberte prostředek, které vás zajímají.</span><span class="sxs-lookup"><span data-stu-id="86a6b-110">Go to **New** and choose the resource you are interested in.</span></span>
+2. <span data-ttu-id="86a6b-111">Vyberte **volitelné konfiguraci**.</span><span class="sxs-lookup"><span data-stu-id="86a6b-111">Select **Optional configuration**.</span></span>
+    <span data-ttu-id="86a6b-112">![Okno diagnostiky](./media/insights-how-to-use-diagnostics/Insights_CreateTime.png)</span><span class="sxs-lookup"><span data-stu-id="86a6b-112">![Diagnostics blade](./media/insights-how-to-use-diagnostics/Insights_CreateTime.png)</span></span>
+3. <span data-ttu-id="86a6b-113">Vyberte **diagnostiky**a klikněte na tlačítko **na**.</span><span class="sxs-lookup"><span data-stu-id="86a6b-113">Select **Diagnostics**, and click **On**.</span></span> <span data-ttu-id="86a6b-114">Musíte zvolit účet úložiště, které chcete diagnostiky ukládání.</span><span class="sxs-lookup"><span data-stu-id="86a6b-114">You will need to choose the Storage account that you want diagnostics to be saved to.</span></span> <span data-ttu-id="86a6b-115">Budete budou účtovat normální datové sazby za úložiště a transakce při odeslání diagnostiky do účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="86a6b-115">You’ll be charged normal data rates for storage and transactions when you send diagnostics to a storage account.</span></span>
+4. <span data-ttu-id="86a6b-116">Klikněte na tlačítko **OK** a vytvořit prostředek.</span><span class="sxs-lookup"><span data-stu-id="86a6b-116">Click **OK** and create the resource.</span></span>
+
+## <a name="change-settings-for-an-existing-resource"></a><span data-ttu-id="86a6b-117">Změna nastavení pro existující prostředek</span><span class="sxs-lookup"><span data-stu-id="86a6b-117">Change settings for an existing resource</span></span>
+<span data-ttu-id="86a6b-118">Pokud jste již vytvořili prostředku a chcete změnit nastavení diagnostiky (Chcete-li například změnit úroveň shromažďování dat), můžete udělat toto právo na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="86a6b-118">If you have already created a resource and you want to change the diagnostics settings (to change the level of data collection, for example), you can do that right in the Azure Portal.</span></span>
+
+1. <span data-ttu-id="86a6b-119">Přejděte na prostředek a kliknutím **nastavení** příkaz.</span><span class="sxs-lookup"><span data-stu-id="86a6b-119">Go to the resource and click the **Settings** command.</span></span>
+2. <span data-ttu-id="86a6b-120">Vyberte **diagnostiky**.</span><span class="sxs-lookup"><span data-stu-id="86a6b-120">Select **Diagnostics**.</span></span>
+3. <span data-ttu-id="86a6b-121">**Diagnostiky** okno obsahuje všechny možné diagnostiky a monitorování kolekce dat pro tento prostředek.</span><span class="sxs-lookup"><span data-stu-id="86a6b-121">The **Diagnostics** blade has all of the possible diagnostics and monitoring collection data for that resource.</span></span> <span data-ttu-id="86a6b-122">Pro některé prostředky, můžete také **uchování** zásady pro data, vyčistěte z vašeho účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="86a6b-122">For some resources you can also choose a **Retention** policy for the data, to clean it up from your storage account.</span></span>
+    <span data-ttu-id="86a6b-123">![Úložiště diagnostiky](./media/insights-how-to-use-diagnostics/Insights_StorageDiagnostics.png)</span><span class="sxs-lookup"><span data-stu-id="86a6b-123">![Storage diagnostics](./media/insights-how-to-use-diagnostics/Insights_StorageDiagnostics.png)</span></span>
+4. <span data-ttu-id="86a6b-124">Jakmile jste vybrali nastavení, klikněte na možnost **Uložit** příkaz.</span><span class="sxs-lookup"><span data-stu-id="86a6b-124">Once you've chosen your settings, click the **Save** command.</span></span> <span data-ttu-id="86a6b-125">Může trvat o něco při pro monitorování dat. objeví, pokud povolíte ji poprvé.</span><span class="sxs-lookup"><span data-stu-id="86a6b-125">It may take a little while for monitoring data to show up if you are enabling it for the first time.</span></span>
+
+### <a name="categories-of-data-collection-for-virtual-machines"></a><span data-ttu-id="86a6b-126">Kategorie shromažďování dat pro virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="86a6b-126">Categories of data collection for virtual machines</span></span>
+<span data-ttu-id="86a6b-127">Pro virtuální počítače všechny metriky a protokoly budou popsané v intervalech jedné minuty, abyste měli vždy nejnovější informace o vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="86a6b-127">For virtual machines all metrics and logs will be recorded at one-minute intervals, so you can always have the most up-to-date information about your machine.</span></span>
+
+* <span data-ttu-id="86a6b-128">**Základní metriky** : stavu metriky o vašem virtuálním počítači, jako je například procesoru a paměti</span><span class="sxs-lookup"><span data-stu-id="86a6b-128">**Basic metrics** : Health metrics about your virtual machine such as processor and memory</span></span>
+* <span data-ttu-id="86a6b-129">**Síťové a webové metriky** : metrik týkajících se připojení k síti a webové služby</span><span class="sxs-lookup"><span data-stu-id="86a6b-129">**Network and web metrics** : Metrics about your network connections and web services</span></span>
+* <span data-ttu-id="86a6b-130">**Metriky rozhraní .NET** : metriky o aplikace .NET a ASP.NET, které jsou spuštěny na virtuálním počítači</span><span class="sxs-lookup"><span data-stu-id="86a6b-130">**.NET metrics** : Metrics about the .NET and ASP.NET applications running on your virtual machine</span></span>
+* <span data-ttu-id="86a6b-131">**Metriky SQL** : Pokud je spuštěná služba Microsoft SQL, jeho metrik výkonu.</span><span class="sxs-lookup"><span data-stu-id="86a6b-131">**SQL metrics** : If you are running Microsoft SQL Service, its performance metrics</span></span>
+* <span data-ttu-id="86a6b-132">**Protokoly událostí aplikace systému Windows** : události systému Windows, které se odesílají do aplikace kanál</span><span class="sxs-lookup"><span data-stu-id="86a6b-132">**Windows event application logs** : Windows events that are sent to the application channel</span></span>
+* <span data-ttu-id="86a6b-133">**Protokoly událostí systému Windows** : události systému Windows, které se odesílají do systému kanál.</span><span class="sxs-lookup"><span data-stu-id="86a6b-133">**Windows event system logs** : Windows events that are sent to the system channel.</span></span> <span data-ttu-id="86a6b-134">To také zahrnuje všechny události z [Antimalware od Microsoftu](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409).</span><span class="sxs-lookup"><span data-stu-id="86a6b-134">This also includes all events from [Microsoft Antimalware](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409).</span></span>
+* <span data-ttu-id="86a6b-135">**Protokoly událostí zabezpečení systému Windows** : události systému Windows, které se odesílají do zabezpečený kanál</span><span class="sxs-lookup"><span data-stu-id="86a6b-135">**Windows event security logs** : Windows events that are sent to the security channel</span></span>
+* <span data-ttu-id="86a6b-136">**Diagnostické protokoly infrastruktury** : protokolování diagnostiky infrastruktury pro kolekce</span><span class="sxs-lookup"><span data-stu-id="86a6b-136">**Diagnostics infrastructure logs** : Logging about the diagnostics collection infrastructure</span></span>
+* <span data-ttu-id="86a6b-137">**Protokoly služby IIS** : protokoly o serveru služby IIS</span><span class="sxs-lookup"><span data-stu-id="86a6b-137">**IIS logs** : Logs about your IIS server</span></span>
+
+<span data-ttu-id="86a6b-138">Všimněte si, že v tuto chvíli nepodporuje některých distribucích systému Linux, a, Agent hosta musí být nainstalována na virtuálním počítači.</span><span class="sxs-lookup"><span data-stu-id="86a6b-138">Note that at this time certain distributions of Linux are not supported, and, the Guest Agent must be installed on the virtual machine.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="86a6b-139">Další kroky</span><span class="sxs-lookup"><span data-stu-id="86a6b-139">Next steps</span></span>
+* <span data-ttu-id="86a6b-140">[Přijímejte oznámení o výstrahách](insights-receive-alert-notifications.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.</span><span class="sxs-lookup"><span data-stu-id="86a6b-140">[Receive alert notifications](insights-receive-alert-notifications.md) whenever operational events happen or metrics cross a threshold.</span></span>
+* <span data-ttu-id="86a6b-141">[Monitorování služby metriky](insights-how-to-customize-monitoring.md) zkontrolovat služby je k dispozici a dobře reagovaly.</span><span class="sxs-lookup"><span data-stu-id="86a6b-141">[Monitor service metrics](insights-how-to-customize-monitoring.md) to make sure your service is available and responsive.</span></span>
+* <span data-ttu-id="86a6b-142">[Automatické škálování počtu instancí](insights-how-to-scale.md) a ujistěte se, vaše škálování služby na základě poptávky.</span><span class="sxs-lookup"><span data-stu-id="86a6b-142">[Scale instance count automatically](insights-how-to-scale.md) to make sure your service scale based on demand.</span></span>
+* <span data-ttu-id="86a6b-143">[Monitorování výkonu aplikací](../application-insights/app-insights-azure-web-apps.md) Pokud chcete zjistit, přesně jak kód provádí v cloudu.</span><span class="sxs-lookup"><span data-stu-id="86a6b-143">[Monitor application performance](../application-insights/app-insights-azure-web-apps.md) if you want to understand exactly how your code is performing in the cloud.</span></span>
+* <span data-ttu-id="86a6b-144">[Zobrazení událostí a protokolu aktivity](insights-debugging-with-events.md) další vše, co se stalo ve službě.</span><span class="sxs-lookup"><span data-stu-id="86a6b-144">[View events and activity log](insights-debugging-with-events.md) to learn everything that has happened in your service.</span></span>
+* <span data-ttu-id="86a6b-145">[Sledování stavu služby](insights-service-health.md) Chcete-li zjistit, kdy Azure došlo výkonu snížení nebo služba přerušení.</span><span class="sxs-lookup"><span data-stu-id="86a6b-145">[Track service health](insights-service-health.md) to find out when Azure has experienced performance degradation or service interruptions.</span></span>
+

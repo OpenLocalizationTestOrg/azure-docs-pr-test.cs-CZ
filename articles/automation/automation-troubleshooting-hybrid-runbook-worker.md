@@ -1,0 +1,61 @@
+---
+title: "Řešení potíží s Azure Automation Hybrid Runbook Worker | Microsoft Docs"
+description: "Popisují příznaky, příčiny a řešení nejběžnějších problémů hybridní pracovní proces Runbooku ve službě Azure Automation."
+services: automation
+documentationcenter: 
+author: mgoedtel
+manager: jwhit
+editor: tysonn
+ms.assetid: 02c6606e-8924-4328-a196-45630c2255e9
+ms.service: automation
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/25/2017
+ms.author: magoedte
+ms.openlocfilehash: 9d1ceda5a072f494651a751a25a8ccf66e4c72ef
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/03/2017
+---
+# <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a><span data-ttu-id="df0db-103">Tipy pro odstraňování potíží pro hybridní pracovní proces Runbooku</span><span class="sxs-lookup"><span data-stu-id="df0db-103">Troubleshooting tips for Hybrid Runbook Worker</span></span>
+
+<span data-ttu-id="df0db-104">Tento článek obsahuje nápovědu k odstraňování potíží chyby setkat s automatizace procesů Hybrid Runbook Worker a navrhne možná řešení jejich řešení.</span><span class="sxs-lookup"><span data-stu-id="df0db-104">This article provides help troubleshooting errors you might experience with Automation Hybrid Runbook Workers and suggests possible solutions to resolve them.</span></span>
+
+## <a name="a-runbook-job-terminates-with-a-status-of-suspended"></a><span data-ttu-id="df0db-105">Ukončí úlohy runbooku se stavem pozastaveno</span><span class="sxs-lookup"><span data-stu-id="df0db-105">A runbook job terminates with a status of Suspended</span></span>
+
+<span data-ttu-id="df0db-106">Vaše sada runbook je pozastaven krátce po pokusu o spuštění ho třikrát.</span><span class="sxs-lookup"><span data-stu-id="df0db-106">Your runbook is suspended shortly after attempting to execute it three times.</span></span> <span data-ttu-id="df0db-107">Existují podmínky, které mohou přerušit sady runbook nelze úspěšně dokončit a související chybová zpráva neobsahuje žádné další údaje, která udává, proč.</span><span class="sxs-lookup"><span data-stu-id="df0db-107">There are conditions which may interrupt the runbook from completing successfully and the related error message does not include any additional information indicating why.</span></span> <span data-ttu-id="df0db-108">Tento článek obsahuje pokyny k odstraňování potíží pro problémy související s selhání spuštění sady runbook hybridní pracovní proces Runbooku.</span><span class="sxs-lookup"><span data-stu-id="df0db-108">This article provides troubleshooting steps for issues related to the Hybrid Runbook Worker runbook execution failures.</span></span>
+
+<span data-ttu-id="df0db-109">Pokud není Azure problém řešený v tomto článku, navštivte fórech Azure na [MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/).</span><span class="sxs-lookup"><span data-stu-id="df0db-109">If your Azure issue is not addressed in this article, visit the Azure forums on [MSDN and the Stack Overflow](https://azure.microsoft.com/support/forums/).</span></span> <span data-ttu-id="df0db-110">Problém můžete účtovat na tyto fóra nebo na [ @AzureSupport na Twitteru](https://twitter.com/AzureSupport).</span><span class="sxs-lookup"><span data-stu-id="df0db-110">You can post your issue on these forums or to [@AzureSupport on Twitter](https://twitter.com/AzureSupport).</span></span> <span data-ttu-id="df0db-111">Navíc můžete soubor žádost o podporu Azure tak, že vyberete **získat podporu** na [podporu Azure](https://azure.microsoft.com/support/options/) lokality.</span><span class="sxs-lookup"><span data-stu-id="df0db-111">Also, you can file an Azure support request by selecting **Get support** on the [Azure support](https://azure.microsoft.com/support/options/) site.</span></span>
+
+### <a name="symptom"></a><span data-ttu-id="df0db-112">Příznaky</span><span class="sxs-lookup"><span data-stu-id="df0db-112">Symptom</span></span>
+<span data-ttu-id="df0db-113">Spuštění sady Runbook se nezdaří a Vrácená chyba je "úlohy akci, kterou 'Aktivovat' nelze spustit, protože proces se neočekávaně zastavil.</span><span class="sxs-lookup"><span data-stu-id="df0db-113">Runbook execution fails and the error returned is, "The job action 'Activate' cannot be run, because the process stopped unexpectedly.</span></span> <span data-ttu-id="df0db-114">Akce úlohy byl proveden pokus o 3krát."</span><span class="sxs-lookup"><span data-stu-id="df0db-114">The job action was attempted 3 times."</span></span>
+
+<span data-ttu-id="df0db-115">Existuje několik možných příčin chyby:</span><span class="sxs-lookup"><span data-stu-id="df0db-115">There are several possible causes for the error:</span></span> 
+
+1. <span data-ttu-id="df0db-116">Hybridní pracovní proces je za proxy nebo brány firewall</span><span class="sxs-lookup"><span data-stu-id="df0db-116">The hybrid worker is behind a proxy or firewall</span></span>
+2. <span data-ttu-id="df0db-117">Hybridní pracovní proces běží na počítač má menší než minimální [požadavky na hardware](automation-offering-get-started.md#hybrid-runbook-worker)</span><span class="sxs-lookup"><span data-stu-id="df0db-117">The computer the hybrid worker is running on has less than the minimum [hardware  requirements](automation-offering-get-started.md#hybrid-runbook-worker)</span></span>  
+3. <span data-ttu-id="df0db-118">Sady runbook se nemohou ověřovat se místní prostředky</span><span class="sxs-lookup"><span data-stu-id="df0db-118">The runbooks cannot authenticate with local resources</span></span>
+
+#### <a name="cause-1-hybrid-runbook-worker-is-behind-proxy-or-firewall"></a><span data-ttu-id="df0db-119">Příčina 1: Hybridní pracovní proces Runbooku je za proxy nebo brány firewall</span><span class="sxs-lookup"><span data-stu-id="df0db-119">Cause 1: Hybrid Runbook Worker is behind proxy or firewall</span></span>
+<span data-ttu-id="df0db-120">Počítač, na kterém běží hybridní pracovní proces Runbooku na je za serverem brány firewall nebo proxy server a odchozí síťový přístup nesmí být povoleny a správně nakonfigurován.</span><span class="sxs-lookup"><span data-stu-id="df0db-120">The computer the Hybrid Runbook Worker is running on is behind a firewall or proxy server and outbound network access may not be permitted or configured correctly.</span></span>
+
+#### <a name="solution"></a><span data-ttu-id="df0db-121">Řešení</span><span class="sxs-lookup"><span data-stu-id="df0db-121">Solution</span></span>
+<span data-ttu-id="df0db-122">Ověřte, zda že má počítač odchozí přístup k *.azure automation.net na portu 443.</span><span class="sxs-lookup"><span data-stu-id="df0db-122">Verify the computer has outbound access to *.azure-automation.net on port 443.</span></span> 
+
+#### <a name="cause-2-computer-has-less-than-minimum-hardware-requirements"></a><span data-ttu-id="df0db-123">2 příčina: Počítač má menší než minimální požadavky na hardware</span><span class="sxs-lookup"><span data-stu-id="df0db-123">Cause 2: Computer has less than minimum hardware requirements</span></span>
+<span data-ttu-id="df0db-124">Počítače se systémem hybridní pracovní proces Runbooku by měl splňovat minimální požadavky na hardware před označením ho k hostování této funkce.</span><span class="sxs-lookup"><span data-stu-id="df0db-124">Computers running the Hybrid Runbook Worker should meet the minimum hardware requirements before designating it to host this feature.</span></span> <span data-ttu-id="df0db-125">V závislosti na využití prostředků jiné procesy na pozadí a kolizí způsobené sady runbook během provádění, jinak hodnota počítače se stane přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.</span><span class="sxs-lookup"><span data-stu-id="df0db-125">Otherwise, depending on the resource utilization of other background processes and contention caused by runbooks during execution, the computer will become over utilized and cause runbook job delays or timeouts.</span></span> 
+
+#### <a name="solution"></a><span data-ttu-id="df0db-126">Řešení</span><span class="sxs-lookup"><span data-stu-id="df0db-126">Solution</span></span>
+<span data-ttu-id="df0db-127">Nejdřív ověřte, zda počítač určený pro spouštění funkce Hybrid Runbook Worker splňuje minimální požadavky na hardware.</span><span class="sxs-lookup"><span data-stu-id="df0db-127">First confirm the computer designated to run the Hybrid Runbook Worker feature meets the minimum hardware requirements.</span></span>  <span data-ttu-id="df0db-128">Pokud ano, sledujte využití procesoru a paměti k určení všech korelace mezi výkon procesů Hybrid Runbook Worker a Windows.</span><span class="sxs-lookup"><span data-stu-id="df0db-128">If it does, monitor CPU and memory utilization to determine any correlation between the performance of Hybrid Runbook Worker processes and Windows.</span></span>  <span data-ttu-id="df0db-129">Pokud je paměť nebo zatížení procesoru, může to znamenat potřeba upgradovat nebo přidáním dalších procesorů, případně zvyšte paměti adres problémové místo prostředků a opravte případné chyby.</span><span class="sxs-lookup"><span data-stu-id="df0db-129">If there is memory or CPU pressure, this may indicate the need to upgrade or add additional processors, or increase memory to address the resource bottleneck and resolve the error.</span></span> <span data-ttu-id="df0db-130">Nebo vyberte jiný výpočtový prostředek, který může podporovat minimální požadavky a škálování při vytížení indikovat, že se o zvýšení nezbytné.</span><span class="sxs-lookup"><span data-stu-id="df0db-130">Alternatively, select a different compute resource that can support the minimum requirements and scale when workload demands indicate an increase is necessary.</span></span>         
+
+#### <a name="cause-3-runbooks-cannot-authenticate-with-local-resources"></a><span data-ttu-id="df0db-131">Příčina 3: Sady Runbook se nemohou ověřovat se místní prostředky</span><span class="sxs-lookup"><span data-stu-id="df0db-131">Cause 3: Runbooks cannot authenticate with local resources</span></span>
+
+#### <a name="solution"></a><span data-ttu-id="df0db-132">Řešení</span><span class="sxs-lookup"><span data-stu-id="df0db-132">Solution</span></span>
+<span data-ttu-id="df0db-133">Zkontrolujte **Microsoft SMA** v protokolu událostí je odpovídající událost s popis *Win32 proces skončil s kódem [4294967295]*.</span><span class="sxs-lookup"><span data-stu-id="df0db-133">Check the **Microsoft-SMA** event log for a corresponding event with description *Win32 Process Exited with code [4294967295]*.</span></span>  <span data-ttu-id="df0db-134">Příčina této chyby je nebyly nakonfigurované ověřování ve vašich sadách runbook nebo zadaná pověření spustit jako pro skupinu hybridních pracovních procesů.</span><span class="sxs-lookup"><span data-stu-id="df0db-134">The cause of this error is you haven't configured authentication in your runbooks or specified the Run As credentials for the Hybrid worker group.</span></span>  <span data-ttu-id="df0db-135">Zkontrolujte [oprávnění sady Runbook](automation-hrw-run-runbooks.md#runbook-permissions) potvrďte jste správně nakonfigurovali ověřování pro vaše sady runbook.</span><span class="sxs-lookup"><span data-stu-id="df0db-135">Please review [Runbook permissions](automation-hrw-run-runbooks.md#runbook-permissions) to confirm you have correctly configured authentication for your runbooks.</span></span>  
+
+## <a name="next-steps"></a><span data-ttu-id="df0db-136">Další kroky</span><span class="sxs-lookup"><span data-stu-id="df0db-136">Next steps</span></span>
+
+<span data-ttu-id="df0db-137">Nápovědu k řešení potíží s další problémy v Automation najdete v tématu [běžných potíží s Azure Automation.](automation-troubleshooting-automation-errors.md)</span><span class="sxs-lookup"><span data-stu-id="df0db-137">For help troubleshooting other issues in Automation, see [Troubleshooting common Azure Automation issues](automation-troubleshooting-automation-errors.md)</span></span> 
