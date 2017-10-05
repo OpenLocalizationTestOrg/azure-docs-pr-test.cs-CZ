@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Formát souboru protokolu služby sady Azure Import/Export
 Když službu Microsoft Azure Import/Export provede akci na disku jako součást úlohy importu nebo úlohy exportu, protokoly zapisují na blok objektů BLOB v účtu úložiště přidruženého k této úlohy.  
