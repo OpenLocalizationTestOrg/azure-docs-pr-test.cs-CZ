@@ -1,0 +1,47 @@
+---
+title: "Modely připojení ExpressRoute: Připojení k Microsoft Azure prostřednictvím poskytovatelů síťových služeb, výměn a poskytovatelů ethernetových připojení | Dokumentace Microsoftu"
+description: "Tento článek popisuje různé režimy připojení mezi sítí zákazníka a službami Microsoft Azure, Office 365 a Dynamics 365. Zákazníci mohou využívat poskytovatele MPLS, cloudové výměny a poskytovatele ethernetových připojení."
+documentationcenter: na
+services: expressroute
+author: cherylmc
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/09/2017
+ms.author: cherylmc
+ms.openlocfilehash: 00f97da2189491103c461b49ac82feb92d8f4b9b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="expressroute-connectivity-models"></a><span data-ttu-id="ab968-104">Modely připojení ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="ab968-104">ExpressRoute connectivity models</span></span>
+<span data-ttu-id="ab968-105">Připojení mezi místní sítí a cloudem Microsoftu můžete vytvořit třemi různými způsoby: [společné umístění CloudExchange](#CloudExchange), [ethernetové připojení typu point-to-point](#Ethernet) a [připojení typu any-to-any (IPVPN)](#IPVPN).</span><span class="sxs-lookup"><span data-stu-id="ab968-105">You can create a connection between your on-premises network and the Microsoft cloud in three different ways, [CloudExchange Co-location](#CloudExchange), [Point-to-point Ethernet Connection](#Ethernet), and [Any-to-any (IPVPN) Connection](#IPVPN).</span></span> <span data-ttu-id="ab968-106">Poskytovatelé připojení můžou nabízet jeden nebo víc modelů připojení.</span><span class="sxs-lookup"><span data-stu-id="ab968-106">Connectivity providers can offer one or more connectivity models.</span></span> <span data-ttu-id="ab968-107">Můžete ve spolupráci s poskytovatelem připojení vybrat model, který vám bude nejlépe vyhovovat.</span><span class="sxs-lookup"><span data-stu-id="ab968-107">You can work with your connectivity provider to pick the model that works best for you.</span></span>
+<br><br>
+
+![Diagram modelů připojení ExpressRoute](./media/expressroute-connectivity-models/expressroute-connectivity-models-diagram.png)
+
+## <span data-ttu-id="ab968-109"><a name="CloudExchange"></a>Společně umístěné v cloudové výměně</span><span class="sxs-lookup"><span data-stu-id="ab968-109"><a name="CloudExchange"></a>Co-located at a cloud exchange</span></span>
+<span data-ttu-id="ab968-110">Pokud jste ve společném umístění s výměnou cloudu, můžete si objednat virtuální křížové připojení ke cloudu Microsoftu prostřednictvím ethernetové výměny poskytovatele ve společném umístění.</span><span class="sxs-lookup"><span data-stu-id="ab968-110">If you are co-located in a facility with a cloud exchange, you can order virtual cross-connections to the Microsoft cloud through the co-location provider’s Ethernet exchange.</span></span> <span data-ttu-id="ab968-111">Poskytovatelé ve společném umístění můžou nabízet křížová připojení vrstvy 2 nebo spravovaná křížová připojení vrstvy 3 mezi vaší infrastrukturou ve společném umístění a cloudem Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="ab968-111">Co-location providers can offer either Layer 2 cross-connections, or managed Layer 3 cross-connections between your infrastructure in the co-location facility and the Microsoft cloud.</span></span>
+
+## <span data-ttu-id="ab968-112"><a name="Ethernet"></a>Ethernetová připojení typu point-to-point</span><span class="sxs-lookup"><span data-stu-id="ab968-112"><a name="Ethernet"></a>Point-to-point Ethernet connections</span></span>
+<span data-ttu-id="ab968-113">Místní datová centra nebo pobočky můžete připojit ke cloudu Microsoftu prostřednictvím ethernetových propojení typu point-to-point.</span><span class="sxs-lookup"><span data-stu-id="ab968-113">You can connect your on-premises datacenters/offices to the Microsoft cloud through point-to-point Ethernet links.</span></span> <span data-ttu-id="ab968-114">Poskytovatelé ethernetových pripojení typu point-to-point můžou nabízet připojení vrstvy 2 nebo spravovaná připojení vrstvy 3 mezi vaší lokalitou a cloudem Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="ab968-114">Point-to-point Ethernet providers can offer Layer 2 connections, or managed Layer 3 connections between your site and the Microsoft cloud.</span></span>
+
+## <span data-ttu-id="ab968-115"><a name="IPVPN"></a>Sítě typu any-to-any (IPVPN)</span><span class="sxs-lookup"><span data-stu-id="ab968-115"><a name="IPVPN"></a>Any-to-any (IPVPN) networks</span></span>
+<span data-ttu-id="ab968-116">S cloudem Microsoftu můžete integrovat vaši síť WAN.</span><span class="sxs-lookup"><span data-stu-id="ab968-116">You can integrate your WAN with the Microsoft cloud.</span></span> <span data-ttu-id="ab968-117">Poskytovatelé IPVPN (obvykle MPLS VPN) nabízejí připojení typu any-to-any mezi pobočkami a datovými centry.</span><span class="sxs-lookup"><span data-stu-id="ab968-117">IPVPN providers (typically MPLS VPN) offer any-to-any connectivity between your branch offices and datacenters.</span></span> <span data-ttu-id="ab968-118">Cloud Microsoftu může být připojen do vaší sítě WAN, aby vypadal stejně jako jiné pobočky.</span><span class="sxs-lookup"><span data-stu-id="ab968-118">The Microsoft cloud can be interconnected to your WAN to make it look just like any other branch office.</span></span> <span data-ttu-id="ab968-119">Poskytovatelé sítě WAN obvykle nabízejí spravované připojení vrstvy 3.</span><span class="sxs-lookup"><span data-stu-id="ab968-119">WAN providers typically offer managed Layer 3 connectivity.</span></span> <span data-ttu-id="ab968-120">Funkce a možnosti ExpressRoute jsou u všech výše uvedených modelů připojení identické.</span><span class="sxs-lookup"><span data-stu-id="ab968-120">ExpressRoute capabilities and features are all identical across all of the above connectivity models.</span></span> 
+
+## <a name="next-steps"></a><span data-ttu-id="ab968-121">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ab968-121">Next steps</span></span>
+* <span data-ttu-id="ab968-122">Přečtěte si další informace o připojeních ExpressRoute a doménách směrování.</span><span class="sxs-lookup"><span data-stu-id="ab968-122">Learn about ExpressRoute connections and routing domains.</span></span> <span data-ttu-id="ab968-123">Viz [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).</span><span class="sxs-lookup"><span data-stu-id="ab968-123">See [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md).</span></span>
+* <span data-ttu-id="ab968-124">Seznamte se s funkcemi ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="ab968-124">Learn about ExpressRoute features.</span></span> <span data-ttu-id="ab968-125">[Technický přehled ExpressRoute](expressroute-introduction.md)</span><span class="sxs-lookup"><span data-stu-id="ab968-125">See the [ExpressRoute Technical Overview](expressroute-introduction.md)</span></span>
+* <span data-ttu-id="ab968-126">Vyhledejte poskytovatele služeb.</span><span class="sxs-lookup"><span data-stu-id="ab968-126">Find a service provider.</span></span> <span data-ttu-id="ab968-127">Viz [Partneři ExpressRoute a umístění partnerského vztahu](expressroute-locations.md).</span><span class="sxs-lookup"><span data-stu-id="ab968-127">See [ExpressRoute partners and peering locations](expressroute-locations.md).</span></span>
+* <span data-ttu-id="ab968-128">Zkontrolujte, že jsou splněné všechny požadavky.</span><span class="sxs-lookup"><span data-stu-id="ab968-128">Ensure that all prerequisites are met.</span></span> <span data-ttu-id="ab968-129">Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="ab968-129">See [ExpressRoute prerequisites](expressroute-prerequisites.md).</span></span>
+* <span data-ttu-id="ab968-130">Přečtěte si požadavky pro [směrování](expressroute-routing.md), [překlad adres (NAT)](expressroute-nat.md) a [technologii QoS](expressroute-qos.md).</span><span class="sxs-lookup"><span data-stu-id="ab968-130">Refer to the requirements for [Routing](expressroute-routing.md), [NAT](expressroute-nat.md), and [QoS](expressroute-qos.md).</span></span>
+* <span data-ttu-id="ab968-131">Nakonfigurujte připojení ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="ab968-131">Configure your ExpressRoute connection.</span></span>
+  * [<span data-ttu-id="ab968-132">Vytvoření okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="ab968-132">Create an ExpressRoute circuit</span></span>](expressroute-howto-circuit-portal-resource-manager.md)
+  * [<span data-ttu-id="ab968-133">Konfigurace směrování</span><span class="sxs-lookup"><span data-stu-id="ab968-133">Configure routing</span></span>](expressroute-howto-routing-portal-resource-manager.md)
+  * [<span data-ttu-id="ab968-134">Propojení virtuální sítě s okruhem ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="ab968-134">Link a VNet to an ExpressRoute circuit</span></span>](expressroute-howto-linkvnet-portal-resource-manager.md)

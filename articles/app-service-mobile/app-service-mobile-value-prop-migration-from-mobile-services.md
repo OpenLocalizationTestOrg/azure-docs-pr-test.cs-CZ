@@ -1,0 +1,65 @@
+---
+title: "Používám Mobile Services, jak mi pomůže App Service?"
+description: "Zjistěte, jaké výhody přináší služba App Service pro existující projekty Mobile Services."
+services: app-service\mobile
+documentationcenter: ios
+author: ggailey777
+manager: syntaxc4
+editor: 
+ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
+ms.service: app-service-mobile
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-multiple
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 10/01/2016
+ms.author: glenga
+ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/03/2017
+---
+# <span data-ttu-id="612e1-103"><a name="getting-started"> </a>Používám Mobile Services, jak mi pomůže App Service?</span><span class="sxs-lookup"><span data-stu-id="612e1-103"><a name="getting-started"> </a>I use Mobile Services, how does App Service help?</span></span>
+## <a name="overview"></a><span data-ttu-id="612e1-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="612e1-104">Overview</span></span>
+<span data-ttu-id="612e1-105">Vaše stávající služba Mobile Service je v bezpečí a bude i nadále podporována.</span><span class="sxs-lookup"><span data-stu-id="612e1-105">Your existing Mobile Service is safe and will remain supported.</span></span> <span data-ttu-id="612e1-106">Je však několik výhod, které vaší mobilní aplikaci poskytuje platforma *Azure App Service* a které dnes v Mobile Services nejsou k dispozici:</span><span class="sxs-lookup"><span data-stu-id="612e1-106">However there are number of advantages the *Azure App Service* platform provides for your mobile app that are not available today with Mobile Services:</span></span>
+
+* <span data-ttu-id="612e1-107">Jednodušší, snazší a nákladově efektivní nabídka pro aplikace, které obsahují jak webové, tak mobilní klienty</span><span class="sxs-lookup"><span data-stu-id="612e1-107">Simpler, easier and more cost effective offering for apps that include both web and mobile clients</span></span>
+* <span data-ttu-id="612e1-108">Nové hostitelské funkce včetně webových úloh, vlastní záznamy CNAME, lepší monitorování</span><span class="sxs-lookup"><span data-stu-id="612e1-108">New host features including Web Jobs, custom CNames, better monitoring</span></span>
+* <span data-ttu-id="612e1-109">Předpřipravená integrace s nástrojem Traffic Manager</span><span class="sxs-lookup"><span data-stu-id="612e1-109">Turnkey integration with Traffic Manager</span></span>
+* <span data-ttu-id="612e1-110">Možnosti připojení k místním prostředkům a sítím VPN pomocí virtuální sítě a Hybrid Connections</span><span class="sxs-lookup"><span data-stu-id="612e1-110">Connectivity to your on-premises resources and VPNs using VNet in addition to Hybrid Connections</span></span>
+* <span data-ttu-id="612e1-111">Monitorování, výstrahy a řešení potíží pro aplikace pomocí nástrojů NewRelic a AppInsights</span><span class="sxs-lookup"><span data-stu-id="612e1-111">Monitoring, alerting and  troubleshooting for your app using NewRelic or AppInsights</span></span>
+* <span data-ttu-id="612e1-112">Širší spektrum využívaných výpočetních prostředků a cenových úrovní</span><span class="sxs-lookup"><span data-stu-id="612e1-112">Richer spectrum of the underlying compute resources and pricing</span></span>
+* <span data-ttu-id="612e1-113">Integrované automatické škálování, vyrovnávání zatížení a monitorování výkonu</span><span class="sxs-lookup"><span data-stu-id="612e1-113">Built-in auto scale, load balancing, and performance monitoring.</span></span>
+* <span data-ttu-id="612e1-114">Integrované funkce pro fázování, zálohování, vrácení zpět a testování za provozu</span><span class="sxs-lookup"><span data-stu-id="612e1-114">Built-in staging, backup, roll-back, and testing-in-production capabilities</span></span>
+
+## <a name="new-hosting-features"></a><span data-ttu-id="612e1-115">Nové hostitelské funkce</span><span class="sxs-lookup"><span data-stu-id="612e1-115">New hosting features</span></span>
+<span data-ttu-id="612e1-116">V *Azure App Service* běží back-end kód *mobilní aplikace* ve stejném kontejneru jako webová aplikace a aplikace API.</span><span class="sxs-lookup"><span data-stu-id="612e1-116">In *Azure App Service* the *Mobile App* backend code runs in the same container as Web App and API App.</span></span> <span data-ttu-id="612e1-117">Díky tomu můžete využít všechny funkce tohoto kontejneru, včetně některých funkcí, které nejsou v tuto chvíli dostupné v Mobile Services:</span><span class="sxs-lookup"><span data-stu-id="612e1-117">As such you can take advantage of all the features in this container, including some of those that are not currently present in Mobile Services:</span></span>
+
+* <span data-ttu-id="612e1-118">Přidání neustále běžící back-end logiky přes webové úlohy</span><span class="sxs-lookup"><span data-stu-id="612e1-118">Add continuously running backend logic via Web Jobs</span></span>
+* <span data-ttu-id="612e1-119">Zajištění, že back-end kód bude vždy spuštěn</span><span class="sxs-lookup"><span data-stu-id="612e1-119">Ensure your backend code is always running</span></span>
+* <span data-ttu-id="612e1-120">Použití vlastních záznamů CNAME, aby byly k dispozici popisné a stabilní názvy koncových bodů mobilního back-endu</span><span class="sxs-lookup"><span data-stu-id="612e1-120">Use custom CNames to provide friendly and stable names to your mobile backend endpoints</span></span>
+* <span data-ttu-id="612e1-121">Geografické škálování aplikace pomocí nástroje Traffic Manager</span><span class="sxs-lookup"><span data-stu-id="612e1-121">Geo-scale your app with Traffic Manager</span></span>
+* <span data-ttu-id="612e1-122">Zahrnutí jakýchkoli knihoven nebo balíčků, které chcete použít</span><span class="sxs-lookup"><span data-stu-id="612e1-122">Include any libraries and packages you want.</span></span>
+* <span data-ttu-id="612e1-123">(Pro .NET) Využití jakékoli funkce technologie ASP.NET, včetně MVC</span><span class="sxs-lookup"><span data-stu-id="612e1-123">(For .NET) Leverage any feature of ASP.NET, including MVC</span></span>
+* <span data-ttu-id="612e1-124">(Pro Node.js) Využití jakékoli knihovny čistého JavaScriptu ekosystému Node, včetně běžných knihoven MVC</span><span class="sxs-lookup"><span data-stu-id="612e1-124">(For Node.js) Leverage any pure JavaScript library of the Node ecosystem, including common MVC libraries.</span></span>
+
+## <a name="access-on-premises-data-using-vnet"></a><span data-ttu-id="612e1-125">Přístup k lokálním datům přes virtuální síť</span><span class="sxs-lookup"><span data-stu-id="612e1-125">Access on-premises data using VNet</span></span>
+<span data-ttu-id="612e1-126">Již dnes můžete pomocí služby Mobile Services používat Hybrid Connections pro připojení k místním prostředkům.</span><span class="sxs-lookup"><span data-stu-id="612e1-126">With Mobile Services today you can already use Hybrid Connections to access on-premises resources.</span></span> <span data-ttu-id="612e1-127">Existují však situace, kdy je lepší použít řešení se sítí VPN.</span><span class="sxs-lookup"><span data-stu-id="612e1-127">However there are situations where a VPN solution is preferred.</span></span> <span data-ttu-id="612e1-128">S *Azure App Services* můžete pro back-end mobilní aplikace použít Azure VNet.</span><span class="sxs-lookup"><span data-stu-id="612e1-128">With *Azure App Service* you can use Azure VNet for your Mobile App backend code.</span></span>
+
+## <a name="use-your-favorite-backend-language"></a><span data-ttu-id="612e1-129">Využití oblíbeného jazyka pro back-end</span><span class="sxs-lookup"><span data-stu-id="612e1-129">Use your favorite backend language</span></span>
+<span data-ttu-id="612e1-130">Služba *Azure App Service* nabízí širší a bohatší podporu platforem ASP.NET a Node.js, včetně přístupu k nejnovějším modulům runtime.</span><span class="sxs-lookup"><span data-stu-id="612e1-130">*Azure App Service* offers broader and richer support for ASP.NET and Node.js platforms, including access to the latest runtimes.</span></span>
+
+## <a name="set-up-automatic-scale"></a><span data-ttu-id="612e1-131">Nastavení automatického škálování</span><span class="sxs-lookup"><span data-stu-id="612e1-131">Set up automatic scale</span></span>
+<span data-ttu-id="612e1-132">S Mobile Services běžely všechny instance back-end kódu na malých virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="612e1-132">With Mobile Services, all instances of your backend code were running on Small VMs.</span></span> <span data-ttu-id="612e1-133">Služba *Azure App Services* umožňuje vybrat velikost virtuálního počítače z mnohem širší nabídky.</span><span class="sxs-lookup"><span data-stu-id="612e1-133">*Azure App Service* enables you to select the size of the VMs from a much richer set of options.</span></span> <span data-ttu-id="612e1-134">Kromě toho je možné podle různých metrik výkonu rychle změnit škálování (vertikálně nebo horizontálně navýšit kapacitu), abyste zvládali zátěž vyplývající z příchozích zákaznických požadavků.</span><span class="sxs-lookup"><span data-stu-id="612e1-134">You can also  quickly scale up or out to handle any incoming customer load, based on various performance metrics.</span></span>
+
+## <a name="be-in-the-know"></a><span data-ttu-id="612e1-135">Neustálý přehled</span><span class="sxs-lookup"><span data-stu-id="612e1-135">Be in the “know”</span></span>
+<span data-ttu-id="612e1-136">Na problémy dokážete reagovat v reálném čase díky monitorování a výstrahám, které vám a vašemu týmu automaticky odešlou oznámení.</span><span class="sxs-lookup"><span data-stu-id="612e1-136">React to issues in real-time with monitoring and alerts to automatically notify you and your team.</span></span> <span data-ttu-id="612e1-137">Integrací pokročilé analýzy aplikací a monitorování funkcí z nástrojů New Relic a AppInsights získáte ještě podrobnější informace o výkonu mobilní aplikace.</span><span class="sxs-lookup"><span data-stu-id="612e1-137">Integrate advanced app analytics and monitoring functionality from New Relic and AppInsights to get even richer insight into how your Mobile app is performing.</span></span> <span data-ttu-id="612e1-138">S *Azure App Service* nyní můžete nastavit upozornění na základě různých metrik výkonu, a to buď programově, nebo přes web Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="612e1-138">With *Azure App Service* you can now setup alerts based on variety of performance metrics, either programatically and via the Azure Portal.</span></span>
+
+## <a name="keep-your-assets-safe"></a><span data-ttu-id="612e1-139">Zabezpečení prostředků</span><span class="sxs-lookup"><span data-stu-id="612e1-139">Keep your assets safe</span></span>
+<span data-ttu-id="612e1-140">Back-end a databáze je možné automaticky zálohovat.</span><span class="sxs-lookup"><span data-stu-id="612e1-140">Automatically back up your backend and database.</span></span> <span data-ttu-id="612e1-141">Kód a data jsou zabezpečeny proti havárii a lze je snadno obnovit. Díky tomu můžete řídit svou firmu s jistotou.</span><span class="sxs-lookup"><span data-stu-id="612e1-141">Your code and data is secure from disaster and easily restored, allowing you to run your business with confidence.</span></span>
+
+## <a name="ready-stage-go"></a><span data-ttu-id="612e1-142">Připravit, naplánovat, start!</span><span class="sxs-lookup"><span data-stu-id="612e1-142">Ready, Stage, Go!</span></span>
+<span data-ttu-id="612e1-143">S *Azure App Service* je nyní možné pro své mobilní aplikace vytvořit několik privátních testovacích a přípravných prostředí.</span><span class="sxs-lookup"><span data-stu-id="612e1-143">With *Azure App Service* you can now create multiple private testing and staging environments for your mobile apps.</span></span> <span data-ttu-id="612e1-144">Můžete je využít k otestování aplikací předtím, než je nasadíte.</span><span class="sxs-lookup"><span data-stu-id="612e1-144">Use them to perform testing before you deploy.</span></span> <span data-ttu-id="612e1-145">Do ostrého provozu je možné přejít zcela bez výpadku.</span><span class="sxs-lookup"><span data-stu-id="612e1-145">Swap to production with no downtime.</span></span> <span data-ttu-id="612e1-146">Webové aplikace se načítají předem – díky tomu mají zákazníci maximální pohodlí.</span><span class="sxs-lookup"><span data-stu-id="612e1-146">Web apps are pre-loaded, ensuring the best customer experience.</span></span>
+
+<span data-ttu-id="612e1-147">Výhody *App Service* pro existující Mobile Service můžete začít využívat tak, že si projdete tento [kurz](app-service-mobile-migrating-from-mobile-services.md).</span><span class="sxs-lookup"><span data-stu-id="612e1-147">You can get start taking advantage of *App Service* for your existing Mobile Service by following this [tutorial](app-service-mobile-migrating-from-mobile-services.md).</span></span>

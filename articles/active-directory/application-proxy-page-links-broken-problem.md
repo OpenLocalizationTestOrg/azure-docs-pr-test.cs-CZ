@@ -1,0 +1,49 @@
+---
+title: "Odkazy na stránce nejsou k dispozici pro aplikaci Proxy aplikace | Microsoft Docs"
+description: "Řešení potíží s poškozených odkazů na Proxy aplikace aplikací, které mají integrované s Azure AD"
+services: active-directory
+documentationcenter: 
+author: ajamess
+manager: femila
+ms.assetid: 
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2017
+ms.author: asteen
+ms.openlocfilehash: 83c4261fab0498541591c01f9bb692b396c7b751
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/03/2017
+---
+# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a><span data-ttu-id="0d6ce-103">Odkazy na stránce nejsou k dispozici pro aplikaci Proxy aplikace</span><span class="sxs-lookup"><span data-stu-id="0d6ce-103">Links on the page don't work for an Application Proxy application</span></span>
+
+<span data-ttu-id="0d6ce-104">Tento článek pomoci při řešení proto odkazy na aplikace Proxy aplikace služby Active Directory Azure nefungují správně.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-104">This article help you to troubleshoot why links on your Azure Active Directory Application Proxy application don't work correctly.</span></span>
+
+## <a name="overview"></a><span data-ttu-id="0d6ce-105">Přehled</span><span class="sxs-lookup"><span data-stu-id="0d6ce-105">Overview</span></span> 
+<span data-ttu-id="0d6ce-106">Po publikování aplikace Proxy aplikace, jenom odkazy, které fungují ve výchozím nastavení v aplikaci jsou odkazy na cíle obsažené v publikované kořenové adresy URL.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-106">After publishing an Application Proxy app, the only links that work by default in the application are links to destinations contained within the published root URL.</span></span> <span data-ttu-id="0d6ce-107">Odkazy v rámci aplikace nefungují, interní adresa URL pro aplikaci pravděpodobně nezahrnuje všechny cíle odkazy v aplikaci.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-107">The links within the applications aren’t working, the internal URL for the application probably does not include all the destinations of links within the application.</span></span>
+
+<span data-ttu-id="0d6ce-108">**Proč to stává?**</span><span class="sxs-lookup"><span data-stu-id="0d6ce-108">**Why does this happen?**</span></span> <span data-ttu-id="0d6ce-109">Pokud kliknutím na odkaz v aplikaci, Proxy aplikace se pokusí přeložit adresu URL jako buď interní adresu URL uvnitř stejné aplikaci, nebo jako adresu URL externě dostupný.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-109">When clicking a link in an application, Application Proxy tries to resolve the URL as either an internal URL within the same application, or as an externally available URL.</span></span> <span data-ttu-id="0d6ce-110">Pokud na odkaz odkazuje na interní adresu URL, která není v rámci stejné aplikaci, se nepodporuje patří k oběma těmito oblastmi a způsobit chybu nebyl nalezen.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-110">If the link points to an internal URL that is not within the same application, it does not belong to either of these buckets and result in a not found error.</span></span>
+
+## <a name="ways-you-can-resolve-broken-links"></a><span data-ttu-id="0d6ce-111">Způsoby, můžete vyřešit nefunkční odkazy</span><span class="sxs-lookup"><span data-stu-id="0d6ce-111">Ways you can resolve broken links</span></span>
+
+<span data-ttu-id="0d6ce-112">Existují tři způsoby, jak tento problém vyřešit.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-112">There are three ways to resolve this issue.</span></span> <span data-ttu-id="0d6ce-113">Volby níže jsou uvedeny v zvýšit složitost.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-113">The choices below are in listed in increasing complexity.</span></span>
+
+1.  <span data-ttu-id="0d6ce-114">Zajistěte, aby že interní adresa URL je kořenovou, která obsahuje všechny odkazy, které jsou relevantní pro aplikaci.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-114">Make sure the internal URL is a root that contains all the relevant links for the application.</span></span> <span data-ttu-id="0d6ce-115">To umožňuje všechny odkazy na možné přeložit jako obsah publikovat v rámci stejné aplikaci.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-115">This allows all links to be resolved as content published within the same application.</span></span>
+
+    <span data-ttu-id="0d6ce-116">Pokud změníte interní adresa URL, ale nechcete změnit cílová stránka pro uživatele, změňte adresu URL domovské stránky publikované dříve interní adresa URL.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-116">If you change the internal URL but don’t want to change the landing page for users, change the Home page URL to the previously published internal URL.</span></span> <span data-ttu-id="0d6ce-117">To lze provést přejdete do "Azure Active Directory" -&gt; registrace aplikace -&gt; vyberte aplikaci -&gt; vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-117">This can be done by going to “Azure Active Directory” -&gt; App Registrations -&gt; select the application -&gt; Properties.</span></span> <span data-ttu-id="0d6ce-118">Na této kartě Vlastnosti zobrazí pole "Domovskou stránku URL", lze ji nastavit na požadovanou cílová stránka.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-118">In this properties tab, you see the field “Home Page URL” which you can adjust to be the desired landing page.</span></span>
+
+2.  <span data-ttu-id="0d6ce-119">Pokud vaše aplikace použít plně kvalifikované názvy domény (FQDN), použijte [vlastní domény](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) k publikování aplikací.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-119">If your applications use fully qualified domain names (FQDNs), use [custom domains](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) to publish your applications.</span></span> <span data-ttu-id="0d6ce-120">Tato funkce umožňuje stejnou adresu URL, který se má použít jak interně a externě.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-120">This feature allows the same URL to be used both internally and externally.</span></span>
+
+    <span data-ttu-id="0d6ce-121">Tato možnost zajistí odkazy v aplikaci externě přístupné prostřednictvím Proxy aplikace vzhledem k tomu, že na odkazy v aplikaci na interní adresy URL jsou také rozpoznány externě.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-121">This option ensures that the links in your application are externally accessible through Application Proxy since the links within the application to internal URLs are also recognized externally.</span></span> <span data-ttu-id="0d6ce-122">Všimněte si, že všechny odkazy stále potřeba patří k publikované aplikaci.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-122">Note that all links still need to belong to a published application.</span></span> <span data-ttu-id="0d6ce-123">Však pomocí této možnosti odkazy nemusí patřit do stejné aplikaci a můžou patřit do více aplikací.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-123">However, with this option the links do not need to belong to the same application and can belong to multiple applications.</span></span>
+
+3.  <span data-ttu-id="0d6ce-124">Pokud žádná z těchto možností jsou vhodná, připojíte preview pro novou funkci, která provádějí překlad/přepisování adresy URL.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-124">If neither of these options are feasible, you join the preview for a new feature that do URL translation/rewriting.</span></span> <span data-ttu-id="0d6ce-125">Tato možnost, interní adresy URL nebo odkazy, které existují v těle HTML aplikací se přeložit, nebo "namapované", na publikované externí Proxy adresy URL aplikací.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-125">With this option, internal URLs or links that exist in the HTML body of your applications be translated, or “mapped”, to the published external App Proxy URLs.</span></span> <span data-ttu-id="0d6ce-126">To funguje pouze pro odkazy HTML nebo šablon stylů CSS, a to není pomoct v případě odkaz na vaši je generována prostřednictvím JS.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-126">This only works for links in the HTML or CSS, and this not help if your link is generated through JS.</span></span> 
+
+<span data-ttu-id="0d6ce-127">V důsledku toho důrazně doporučujeme používat [vlastní domény](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) řešení, pokud je to možné.</span><span class="sxs-lookup"><span data-stu-id="0d6ce-127">As a result, we strongly recommend using the [custom domains](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) solution if possible.</span></span> <span data-ttu-id="0d6ce-128">Pokud chcete pro připojení ve verzi preview, e-mailu < aadapfeedback@microsoft.com > s applicationId(s).</span><span class="sxs-lookup"><span data-stu-id="0d6ce-128">If you do want to join the preview, email <aadapfeedback@microsoft.com> with the applicationId(s).</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="0d6ce-129">Další kroky</span><span class="sxs-lookup"><span data-stu-id="0d6ce-129">Next steps</span></span>
+[<span data-ttu-id="0d6ce-130">Práce s existující místní proxy servery</span><span class="sxs-lookup"><span data-stu-id="0d6ce-130">Work with existing on-premises proxy servers</span></span>](application-proxy-working-with-proxy-servers.md)
+

@@ -1,0 +1,89 @@
+---
+title: Koncepty Mobile Engagementu | Dokumentace Microsoftu
+description: Koncepty Azure Mobile Engagementu
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: erikre
+editor: 
+ms.assetid: 8d19abd1-0a6c-4772-9fa5-5e99980ac5da
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/19/2016
+ms.author: piyushjo
+ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="azure-mobile-engagement-concepts"></a><span data-ttu-id="e0017-103">Koncepty Azure Mobile Engagementu</span><span class="sxs-lookup"><span data-stu-id="e0017-103">Azure Mobile Engagement concepts</span></span>
+<span data-ttu-id="e0017-104">Mobile Engagement definuje několik konceptů, které jsou společné pro všechny podporované platformy.</span><span class="sxs-lookup"><span data-stu-id="e0017-104">Mobile Engagement defines a few concepts common to all supported platforms.</span></span> <span data-ttu-id="e0017-105">Tento článek tyto koncepty stručně popisuje.</span><span class="sxs-lookup"><span data-stu-id="e0017-105">This article briefly describes those concepts.</span></span>
+
+<span data-ttu-id="e0017-106">Tento článek byste si měli přečíst, pokud s Mobile Engagementem začínáte.</span><span class="sxs-lookup"><span data-stu-id="e0017-106">This article is a good start if you are new to Mobile Engagement.</span></span> <span data-ttu-id="e0017-107">Také si nezapomeňte prostudovat dokumentaci pro konkrétní platformu, kterou používáte. Najdete tam podrobnější charakteristiku konceptů popsaných v tomto článku doplněnou více příklady s uvedením možných omezení.</span><span class="sxs-lookup"><span data-stu-id="e0017-107">Also make sure to read the documentation specific to the platform you are using, as it will refine the concepts described in this article with more details and examples as well as possible limitations.</span></span>
+
+## <a name="devices-and-users"></a><span data-ttu-id="e0017-108">Zařízení a uživatelé</span><span class="sxs-lookup"><span data-stu-id="e0017-108">Devices and users</span></span>
+<span data-ttu-id="e0017-109">Mobile Engagement rozpoznává uživatele tak, že pro každé zařízení generuje jedinečný identifikátor.</span><span class="sxs-lookup"><span data-stu-id="e0017-109">Mobile Engagement identifies users by generating a unique identifier for each device.</span></span> <span data-ttu-id="e0017-110">Tento identifikátor se nazývá identifikátor zařízení (neboli `deviceid`).</span><span class="sxs-lookup"><span data-stu-id="e0017-110">This identifier is called the device identifier (or `deviceid`).</span></span> <span data-ttu-id="e0017-111">Generuje se takovým způsobem, že všechny aplikace spuštěné na stejném zařízení sdílejí stejný identifikátor zařízení.</span><span class="sxs-lookup"><span data-stu-id="e0017-111">It is generated in such a way that all applications running of the same device share the same device identifier.</span></span>
+
+<span data-ttu-id="e0017-112">Implicitně to znamená, že Mobile Engagement počítá s tím, že jedno zařízení patří právě jednomu uživateli, takže uživatelé a zařízení znamenají v podstatě totéž.</span><span class="sxs-lookup"><span data-stu-id="e0017-112">Implicitly, it means that Mobile Engagement considers one device to belong to exactly one user, and thus, users and devices are equivalent concepts.</span></span>
+
+## <a name="sessions-and-activities"></a><span data-ttu-id="e0017-113">Relace a aktivity</span><span class="sxs-lookup"><span data-stu-id="e0017-113">Sessions and activities</span></span>
+<span data-ttu-id="e0017-114">Relace je jedno použití aplikace, které uživatel provede, počítáno od okamžiku, kdy s používáním začne, až do chvíle, kdy skončí.</span><span class="sxs-lookup"><span data-stu-id="e0017-114">A session is one use of the application performed by a user, from the time the user starts using it, until the user stops.</span></span>
+
+<span data-ttu-id="e0017-115">Aktivita je jedno použití určité dílčí části aplikace, které provede jeden uživatel (obvykle to bývá zobrazení určité obrazovky, ale může to být i cokoli jiného, co se dá  v rámci aplikace provést).</span><span class="sxs-lookup"><span data-stu-id="e0017-115">An activity is one use of a given sub-part of the application performed by one user (it is usually a screen, but it can be anything suitable to the application).</span></span>
+
+<span data-ttu-id="e0017-116">Uživatel může najednou provést pouze jednu aktivitu.</span><span class="sxs-lookup"><span data-stu-id="e0017-116">A user can only perform one activity at a time.</span></span>
+
+<span data-ttu-id="e0017-117">Aktivita je identifikována názvem (omezeným na 64 znaků) a dají se do ní volitelně vložit i doplňující data (limit 1024 bajtů).</span><span class="sxs-lookup"><span data-stu-id="e0017-117">An activity is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).</span></span>
+
+<span data-ttu-id="e0017-118">Relace se automaticky vypočítávají podle sekvence aktivit, které uživatelé provádějí.</span><span class="sxs-lookup"><span data-stu-id="e0017-118">Sessions are automatically computed from the sequence of activities performed by users.</span></span> <span data-ttu-id="e0017-119">Relace začíná, když uživatel zahájí první aktivitu, a končí, jakmile skončí poslední aktivita.</span><span class="sxs-lookup"><span data-stu-id="e0017-119">A session starts when the user starts his first activity and stops when he finishes his last activity.</span></span> <span data-ttu-id="e0017-120">To znamená, že relaci není přímo nutné zahajovat a ukončovat.</span><span class="sxs-lookup"><span data-stu-id="e0017-120">This means that a session does not need to be explicitly started or stopped.</span></span> <span data-ttu-id="e0017-121">Místo toho se explicitně zahajují a ukončují aktivity.</span><span class="sxs-lookup"><span data-stu-id="e0017-121">Instead, activities are explicitly started or stopped.</span></span> <span data-ttu-id="e0017-122">Pokud není hlášena žádná aktivita, není hlášena ani relace.</span><span class="sxs-lookup"><span data-stu-id="e0017-122">If no activity is reported, no session is reported.</span></span>
+
+## <a name="events"></a><span data-ttu-id="e0017-123">Události</span><span class="sxs-lookup"><span data-stu-id="e0017-123">Events</span></span>
+<span data-ttu-id="e0017-124">Události se používají k hlášení okamžitých akcí (například stisknutí tlačítka nebo přečtení článku uživatelem).</span><span class="sxs-lookup"><span data-stu-id="e0017-124">Events are used to report instant actions (like button pressed or articles read by users).</span></span>
+
+<span data-ttu-id="e0017-125">Událost může souviset s aktuální relací, s probíhající úlohou, nebo se může jednat o samostatnou událost.</span><span class="sxs-lookup"><span data-stu-id="e0017-125">An event can be related to the current session, to a running job, or it can be a standalone event.</span></span>
+
+<span data-ttu-id="e0017-126">Událost je identifikována názvem (omezeným na 64 znaků) a dají se do ní volitelně vložit i doplňující data (limit 1024 bajtů).</span><span class="sxs-lookup"><span data-stu-id="e0017-126">An event is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).</span></span>
+
+## <a name="error"></a><span data-ttu-id="e0017-127">Chyba</span><span class="sxs-lookup"><span data-stu-id="e0017-127">Error</span></span>
+<span data-ttu-id="e0017-128">Chyby se používají k hlášení problémů, které aplikace správně rozpozná (například chybně použité akce uživatele nebo nepodařené volání rozhraní API).</span><span class="sxs-lookup"><span data-stu-id="e0017-128">Errors are used to report issues correctly detected by the application (like incorrect user actions, or API call failures).</span></span>
+
+<span data-ttu-id="e0017-129">Chyba může souviset s aktuální relací, s probíhající úlohou, nebo se může jednat o samostatnou chybu.</span><span class="sxs-lookup"><span data-stu-id="e0017-129">An error can be related to the current session, to a running job, or it can be a standalone error.</span></span>
+
+<span data-ttu-id="e0017-130">Chyba je identifikována názvem (omezeným na 64 znaků) a dají se do ní volitelně vložit i doplňující data (limit 1024 bajtů).</span><span class="sxs-lookup"><span data-stu-id="e0017-130">An error is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).</span></span>
+
+## <a name="job"></a><span data-ttu-id="e0017-131">Úloha</span><span class="sxs-lookup"><span data-stu-id="e0017-131">Job</span></span>
+<span data-ttu-id="e0017-132">Úlohy slouží k hlášení akcí, které mají určitou dobu trvání (například doba volání  API, doba zobrazování reklamy, doba běhu úloh na pozadí nebo délka akcí uživatele).</span><span class="sxs-lookup"><span data-stu-id="e0017-132">Jobs are used to report actions having a duration (like duration of API calls, display time of ads, duration of background tasks or duration of user actions).</span></span>
+
+<span data-ttu-id="e0017-133">Úlohy nesouvisí s relací, protože se dají provádět na pozadí, aniž by musel uživatel nějak zasahovat.</span><span class="sxs-lookup"><span data-stu-id="e0017-133">A job is not related to a session, because a task can be performed in the background, without any user interaction.</span></span>
+
+<span data-ttu-id="e0017-134">Úloha je identifikována názvem (omezeným na 64 znaků) a dají se do ní volitelně vložit i doplňující data (limit 1024 bajtů).</span><span class="sxs-lookup"><span data-stu-id="e0017-134">A job is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).</span></span>
+
+## <a name="crash"></a><span data-ttu-id="e0017-135">Zhroucení</span><span class="sxs-lookup"><span data-stu-id="e0017-135">Crash</span></span>
+<span data-ttu-id="e0017-136">Zhroucení vydává automaticky sada Mobile Engagement SDK. Hlásí tak selhání aplikace, pokud se aplikace zhroutí a sama nerozpozná a nenahlásí chybu.</span><span class="sxs-lookup"><span data-stu-id="e0017-136">Crashes are issued automatically by the Mobile Engagement SDK to report application failures where issues not detected by the application make it crash.</span></span>
+
+## <a name="application-information"></a><span data-ttu-id="e0017-137">Informace o aplikaci</span><span class="sxs-lookup"><span data-stu-id="e0017-137">Application information</span></span>
+<span data-ttu-id="e0017-138">Informace o aplikaci slouží k označování uživatelů. To znamená, že aplikace jednotlivým uživatelům přiřadí určitá data. Podobá se to trochu webovým souborům cookie, ale informace o aplikaci se ukládají přímo na serveru platformy Azure Mobile Engagement.</span><span class="sxs-lookup"><span data-stu-id="e0017-138">Application information (or app info) is used to tag users, that is, to associate some data to the users of an application (this is similar to web cookies, except that app info is stored on the server side on the Azure Mobile Engagement platform).</span></span>
+
+<span data-ttu-id="e0017-139">Informace o aplikaci se dají zaregistrovat přes rozhraní API sady Mobile Engagement SDK nebo přes API zařízení platformy Mobile Engagement.</span><span class="sxs-lookup"><span data-stu-id="e0017-139">App info can be registered by using the Mobile Engagement SDK API or by using the Mobile Engagement platform Device API.</span></span>
+
+<span data-ttu-id="e0017-140">Informace o aplikaci tvoří pár klíč/hodnota přidružený k zařízení.</span><span class="sxs-lookup"><span data-stu-id="e0017-140">App info is a key/value pair associated to a device.</span></span> <span data-ttu-id="e0017-141">Klíč je název informace o aplikaci (omezený na 64 znaků ASCII – písmena [a-zA-Z], číslice [0-9] a podtržítka [_]).</span><span class="sxs-lookup"><span data-stu-id="e0017-141">The key is the name of the app info (limited to 64 ASCII letters [a-zA-Z], numbers [0-9] and underscores [_]).</span></span> <span data-ttu-id="e0017-142">Hodnota (omezena na 1024 znaků) může to být řetězec, celé číslo, datum (rrrr MM-dd) nebo logická hodnota (pravda nebo nepravda).</span><span class="sxs-lookup"><span data-stu-id="e0017-142">The value (limited to 1024 characters) can be any string, integer, date (yyyy-MM-dd) or Boolean (true or false).</span></span>
+
+<span data-ttu-id="e0017-143">K zařízení se dá přidružit libovolný počet informací o aplikaci (v rámci omezení stanoveného cenovými podmínkami Mobile Engagementu).</span><span class="sxs-lookup"><span data-stu-id="e0017-143">Any number of app info can be associated to a device, within the limits defined by the Mobile Engagement pricing terms.</span></span> <span data-ttu-id="e0017-144">Pro každý klíč uchovává Mobile Engagement pouze nejnovější nastavenou hodnotu (žádná historie).</span><span class="sxs-lookup"><span data-stu-id="e0017-144">For one given key, Mobile Engagement only keeps track of the latest value set (no history).</span></span> <span data-ttu-id="e0017-145">Nastavení nebo změna hodnoty informace o aplikaci přinutí Mobile Engagement znovu vyhodnotit kritéria cílové skupiny nastavená pro tuto informaci o aplikaci (pokud tato kritéria existují). To znamená, že informace o aplikaci lze využít k aktivaci nabízených oznámení v reálném čase.</span><span class="sxs-lookup"><span data-stu-id="e0017-145">Setting or changing the value of an app info forces Mobile Engagement to re-evaluate audience criteria set on this app info (if any) meaning that app info can be used to trigger realtime pushes.</span></span>
+
+## <a name="extra-data"></a><span data-ttu-id="e0017-146">Doplňující data</span><span class="sxs-lookup"><span data-stu-id="e0017-146">Extra data</span></span>
+<span data-ttu-id="e0017-147">Doplňující data jsou libovolná data, která se dají připojit k událostem, chybám, aktivitám nebo úlohám.</span><span class="sxs-lookup"><span data-stu-id="e0017-147">Extra data (or extras) is some arbitrary data that can be attached to events, errors, activities and jobs.</span></span>
+
+<span data-ttu-id="e0017-148">Doplňující data jsou strukturovaná podobně jako objekty JSON: tvoří je strom z párů klíč/hodnota.</span><span class="sxs-lookup"><span data-stu-id="e0017-148">Extras are structured similarly to JSON objects: they are made of a tree of key/value pairs.</span></span> <span data-ttu-id="e0017-149">Klíče jsou omezené na 64 znaků ASCII, tj. písmena [a-zA-Z], číslice [0-9] a podtržítka [_]). Celková velikost doplňkových dat je omezená na 1024 znaků (po zakódování ve formátu JSON přes sadu Mobile Engagement SDK).</span><span class="sxs-lookup"><span data-stu-id="e0017-149">Keys are limited to 64 ASCII letters [a-zA-Z], numbers [0-9] and underscores [_]) and the total size of extras is limited to 1024 characters (once encoded in JSON by the Mobile Engagement SDK).</span></span>
+
+<span data-ttu-id="e0017-150">Celý strom párů klíč/hodnota se ukládá jako objekt JSON.</span><span class="sxs-lookup"><span data-stu-id="e0017-150">The whole tree of key/value pairs is stored as a JSON object.</span></span> <span data-ttu-id="e0017-151">Nicméně pouze první úroveň párů klíč/hodnota je rozložená, aby byly přímo přístupné pro některé pokročilé funkce, jako jsou třeba segmenty. Můžete například snadno definovat segment s názvem „scifisti“ sestávající ze všech uživatelů, kteří za minulý měsíc alespoň desetkrát odeslali událost s názvem „content_viewed“, u které je doplňkový klíč „content_type“ nastaven na hodnotu „scifi“.</span><span class="sxs-lookup"><span data-stu-id="e0017-151">Nevertheless, only the first level of keys/values is decomposed to be directly accessible to some advanced functions like Segments (for example, you can easily define a segment called “SciFi fans” that is made of all users having sent at least 10 times the event named “content_viewed” with the extra key “content_type” set to the value “scifi” in the last month).</span></span> <span data-ttu-id="e0017-152">Proto důrazně doporučujeme odesílat pouze doplňková data tvořená z jednoduchých seznamů párů klíč/hodnota, které používají skalárních hodnoty (například řetězce, data, celá čísla nebo logické hodnoty).</span><span class="sxs-lookup"><span data-stu-id="e0017-152">It is thus highly recommended to send only extras made of simple lists of key/value pairs using scalar values (for example, strings, dates, integers or Boolean).</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="e0017-153">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e0017-153">Next steps</span></span>
+* [<span data-ttu-id="e0017-154">Přehled sady Windows Universal SDK pro Azure Mobile Engagement</span><span class="sxs-lookup"><span data-stu-id="e0017-154">Windows Universal SDK overview for Azure Mobile Engagement</span></span>](mobile-engagement-windows-store-sdk-overview.md)
+* [<span data-ttu-id="e0017-155">Přehled sady Windows Phone Silverlight SDK pro Azure Mobile Engagement</span><span class="sxs-lookup"><span data-stu-id="e0017-155">Windows Phone Silverlight SDK overview for Azure Mobile Engagement</span></span>](mobile-engagement-windows-phone-sdk-overview.md)
+* [<span data-ttu-id="e0017-156">iOS SDK pro Azure Mobile Engagement</span><span class="sxs-lookup"><span data-stu-id="e0017-156">iOS SDK for Azure Mobile Engagement</span></span>](mobile-engagement-ios-sdk-overview.md)
+* [<span data-ttu-id="e0017-157">Android SDK pro Azure Mobile Engagement</span><span class="sxs-lookup"><span data-stu-id="e0017-157">Android SDK for Azure Mobile Engagement</span></span>](mobile-engagement-android-sdk-overview.md)
+

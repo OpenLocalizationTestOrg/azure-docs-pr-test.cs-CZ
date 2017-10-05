@@ -1,0 +1,86 @@
+---
+title: "Příklady & běžné scénáře - Azure Logic Apps | Microsoft Docs"
+description: "Další informace o aplikacích logiky s příklady scénářů a kurzy"
+services: logic-apps
+author: jeffhollan
+manager: anneta
+editor: 
+documentationcenter: 
+ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
+ms.service: logic-apps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 08/9/2017
+ms.author: LADocs; jehollan
+ms.openlocfilehash: 50df1e3db239a6aa34ac91bfbd582625c5b0041b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/29/2017
+---
+# <a name="examples-and-common-scenarios-for-azure-logic-apps"></a><span data-ttu-id="e5e46-103">Příklady a běžné scénáře pro Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="e5e46-103">Examples and common scenarios for Azure Logic Apps</span></span>
+
+<span data-ttu-id="e5e46-104">Chcete-li získat další informace o mnoho vzory a možnosti v Azure Logic Apps, tady jsou běžných příkladů a scénářů.</span><span class="sxs-lookup"><span data-stu-id="e5e46-104">To help you learn more about the many patterns and capabilities in Azure Logic Apps, here are common examples and scenarios.</span></span>
+
+## <a name="key-scenarios-for-logic-apps"></a><span data-ttu-id="e5e46-105">Hlavní scénáře pro logic apps</span><span class="sxs-lookup"><span data-stu-id="e5e46-105">Key scenarios for logic apps</span></span>
+
+<span data-ttu-id="e5e46-106">Azure Logic Apps poskytuje orchestraci odolný a integrace pro různé služby.</span><span class="sxs-lookup"><span data-stu-id="e5e46-106">Azure Logic Apps provides resilient orchestration and integration for different services.</span></span> <span data-ttu-id="e5e46-107">Aplikace logiky, které služba je "bez serveru", takže není nutné se obávat škálování nebo instance - všechny, které musíte udělat je definice pracovního postupu (aktivační události a akce).</span><span class="sxs-lookup"><span data-stu-id="e5e46-107">The Logic Apps service is "serverless", so you don't have to worry about scale or instances - all you have to do is define the workflow (trigger and actions).</span></span> <span data-ttu-id="e5e46-108">Základní platformě zpracovává škálování, dostupnosti a výkonu.</span><span class="sxs-lookup"><span data-stu-id="e5e46-108">The underlying platform handles scale, availability, and performance.</span></span> <span data-ttu-id="e5e46-109">Každý scénář, kde je potřeba koordinovat více akcí, zejména ve více systémů, je případ skvělé použití pro Azure Logic Apps.</span><span class="sxs-lookup"><span data-stu-id="e5e46-109">Any scenario where you need to coordinate multiple actions, especially across multiple systems, is a great use case for Azure Logic Apps.</span></span> <span data-ttu-id="e5e46-110">Tady jsou některé příklady a vzory.</span><span class="sxs-lookup"><span data-stu-id="e5e46-110">Here are some patterns and examples.</span></span>
+
+## <a name="respond-to-triggers-and-extend-actions"></a><span data-ttu-id="e5e46-111">Reakce na aktivační události a rozšířit akce</span><span class="sxs-lookup"><span data-stu-id="e5e46-111">Respond to triggers and extend actions</span></span>
+
+<span data-ttu-id="e5e46-112">Všechny aplikace logiky začíná aktivační událost.</span><span class="sxs-lookup"><span data-stu-id="e5e46-112">Every logic app begins with a trigger.</span></span> <span data-ttu-id="e5e46-113">Pracovní postup může například začínat plán událostí, ruční volání nebo události z externího systému, jako je například "Pokud je soubor přidán k serveru FTP" aktivační událost.</span><span class="sxs-lookup"><span data-stu-id="e5e46-113">For example, your workflow can start with a schedule event, a manual invocation, or an event from an external system, such as the "when a file is added to an FTP server" trigger.</span></span> <span data-ttu-id="e5e46-114">Aplikace logiky Azure aktuálně podporuje více než 100 konektory připravené k použití, od místní SAP až kognitivní služby společnosti Microsoft.</span><span class="sxs-lookup"><span data-stu-id="e5e46-114">Azure Logic Apps currently supports over 100 ready-to-use connectors, ranging from on-premises SAP to Microsoft Cognitive Services.</span></span> <span data-ttu-id="e5e46-115">Pro systémy a služby, které nemusí být publikovány konektory můžete také rozšířit aplikace logiky.</span><span class="sxs-lookup"><span data-stu-id="e5e46-115">For systems and services that might not have published connectors, you can also extend logic apps.</span></span>
+
+* [<span data-ttu-id="e5e46-116">Vytvořit vlastní aktivační události nebo akce</span><span class="sxs-lookup"><span data-stu-id="e5e46-116">Create custom triggers or actions</span></span>](../logic-apps/logic-apps-create-api-app.md)
+* [<span data-ttu-id="e5e46-117">Nastavit dlouhotrvající akce pro spuštění pracovního postupu</span><span class="sxs-lookup"><span data-stu-id="e5e46-117">Set up long-running actions for workflow runs</span></span>](../logic-apps/logic-apps-create-api-app.md)
+* [<span data-ttu-id="e5e46-118">Reakce na externí události a akce s webhooky</span><span class="sxs-lookup"><span data-stu-id="e5e46-118">Respond to external events and actions with webhooks</span></span>](../logic-apps/logic-apps-create-api-app.md)
+* [<span data-ttu-id="e5e46-119">Volání, aktivaci nebo vnořit pracovních s synchronní odpovědí na požadavky HTTP</span><span class="sxs-lookup"><span data-stu-id="e5e46-119">Call, trigger, or nest workflows with synchronous responses to HTTP requests</span></span>](../logic-apps/logic-apps-http-endpoint.md)
+* [<span data-ttu-id="e5e46-120">Kurz: Reakce na webhooky Twilio SMS a odeslání text odpovědi</span><span class="sxs-lookup"><span data-stu-id="e5e46-120">Tutorial: Respond to Twilio SMS webhooks and send a text response</span></span>](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [<span data-ttu-id="e5e46-121">Kurz: Sestavení používá technologii AI sociálních řídicím v minutách s Logic Apps a Power BI</span><span class="sxs-lookup"><span data-stu-id="e5e46-121">Tutorial: Build an AI-powered social dashboard in minutes with Logic Apps and Power BI</span></span>](http://aka.ms/logicappsdemo)
+
+## <a name="error-handling-logging-and-control-flow-capabilities"></a><span data-ttu-id="e5e46-122">Zpracování chyb, protokolování a funkcí toku řízení</span><span class="sxs-lookup"><span data-stu-id="e5e46-122">Error handling, logging, and control flow capabilities</span></span>
+
+<span data-ttu-id="e5e46-123">Aplikace logiky patří bohaté možnosti pro pokročilé řízení toku, jako jsou podmínky, přepínače, smyčky a oborů.</span><span class="sxs-lookup"><span data-stu-id="e5e46-123">Logic apps include rich capabilities for advanced control flow, like conditions, switches, loops, and scopes.</span></span> <span data-ttu-id="e5e46-124">Aby odolné řešení, můžete taky implementovat chyb a zpracování výjimek v vaše pracovní postupy.</span><span class="sxs-lookup"><span data-stu-id="e5e46-124">To ensure resilient solutions, you can also implement error and exception handling in your workflows.</span></span> <span data-ttu-id="e5e46-125">Azure Logic Apps pro oznámení a diagnostické protokoly pro pracovní postup spustit stavu, poskytuje také monitorování a výstrahy.</span><span class="sxs-lookup"><span data-stu-id="e5e46-125">For notification and diagnostic logs for workflow run status, Azure Logic Apps also provides monitoring and alerts.</span></span>
+
+* [<span data-ttu-id="e5e46-126">Provádění různých akcí s příkazech switch</span><span class="sxs-lookup"><span data-stu-id="e5e46-126">Perform different actions with switch statements</span></span>](../logic-apps/logic-apps-switch-case.md)
+* [<span data-ttu-id="e5e46-127">Proces položky v poli a kolekce s smyčky a listy v aplikacích logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-127">Process items in arrays and collections with loops and batches in logic apps</span></span>](../logic-apps/logic-apps-loops-and-scopes.md)
+* [<span data-ttu-id="e5e46-128">Chyba autora a zpracování výjimek v pracovním postupu</span><span class="sxs-lookup"><span data-stu-id="e5e46-128">Author error and exception handling in a workflow</span></span>](../logic-apps/logic-apps-exception-handling.md)
+* [<span data-ttu-id="e5e46-129">Zapnout sledování, protokolování a výstrahy pro existující aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-129">Turn on monitoring, logging, and alerts for existing logic apps</span></span>](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [<span data-ttu-id="e5e46-130">Zapnout sledování a protokolování diagnostiky při vytváření aplikací logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-130">Turn on monitoring and diagnostics logging when creating logic apps</span></span>](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [<span data-ttu-id="e5e46-131">Případ použití: jak zdravotní péče společnost používá zpracování pro pracovní postupy HL7 FHIR výjimek aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-131">Use case: How a healthcare company uses logic app exception handling for HL7 FHIR workflows</span></span>](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+
+## <a name="deploy-and-manage-logic-apps"></a><span data-ttu-id="e5e46-132">Nasazení a Správa aplikací logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-132">Deploy and manage logic apps</span></span>
+
+<span data-ttu-id="e5e46-133">Můžete plně vývoj a nasazení aplikací logiky pomocí sady Visual Studio, Visual Studio Team Services, nebo jakékoli jiné zdrojového kódu a automatizované sestavovací nástroje.</span><span class="sxs-lookup"><span data-stu-id="e5e46-133">You can fully develop and deploy logic apps with Visual Studio, Visual Studio Team Services, or any other source control and automated build tools.</span></span> <span data-ttu-id="e5e46-134">Pro podporu nasazení pro pracovní postupy a závislé připojení v šabloně prostředků, pomocí aplikací logiky šablony nasazení prostředků Azure.</span><span class="sxs-lookup"><span data-stu-id="e5e46-134">To support deployment for workflows and dependent connections in a resource template, logic apps use Azure resource deployment templates.</span></span> <span data-ttu-id="e5e46-135">Nástroje sady Visual Studio automaticky generovat tyto šablony, které můžete vrátit se změnami do správy zdrojového kódu pro správu verzí.</span><span class="sxs-lookup"><span data-stu-id="e5e46-135">Visual Studio tools automatically generate these templates, which you can check in to source control for versioning.</span></span>
+
+* [<span data-ttu-id="e5e46-136">Vytvořit šablonu automatického nasazení</span><span class="sxs-lookup"><span data-stu-id="e5e46-136">Create an automated deployment template</span></span>](../logic-apps/logic-apps-create-deploy-template.md)
+* [<span data-ttu-id="e5e46-137">Vytváření a nasazování aplikací logiky ze sady Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e5e46-137">Build and deploy logic apps from Visual Studio</span></span>](../logic-apps/logic-apps-deploy-from-vs.md)
+* [<span data-ttu-id="e5e46-138">Monitorování stavu aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-138">Monitor the health of your logic apps</span></span>](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+
+## <a name="content-types-conversions-and-transformations-within-a-run"></a><span data-ttu-id="e5e46-139">Typy obsahu, převody a transformace v rámci spustit</span><span class="sxs-lookup"><span data-stu-id="e5e46-139">Content types, conversions, and transformations within a run</span></span>
+
+<span data-ttu-id="e5e46-140">Můžete používat, převod a transformace více typů obsahu pomocí mnoho funkcí v Azure Logic Apps [jazyk definic workflowů](http://aka.ms/logicappsdocs).</span><span class="sxs-lookup"><span data-stu-id="e5e46-140">You can access, convert, and transform multiple content types by using the many functions in the Azure Logic Apps [workflow definition language](http://aka.ms/logicappsdocs).</span></span> <span data-ttu-id="e5e46-141">Například můžete převést mezi řetězec, JSON a XML s `@json()` a `@xml()` výrazy pracovního postupu.</span><span class="sxs-lookup"><span data-stu-id="e5e46-141">For example, you can convert between a string, JSON, and XML with the `@json()` and `@xml()` workflow expressions.</span></span> <span data-ttu-id="e5e46-142">Modul Logic Apps zachovává typy obsahu pro podporu obsahu přenos beze ztrát způsobem mezi službami.</span><span class="sxs-lookup"><span data-stu-id="e5e46-142">The Logic Apps engine preserves content types to support content transfer in a lossless manner between services.</span></span>
+
+* <span data-ttu-id="e5e46-143">[Zpracování typy obsahu bez JSON](../logic-apps/logic-apps-content-type.md), například `application/xml`, `application/octet-stream`, a`multipart/formdata`</span><span class="sxs-lookup"><span data-stu-id="e5e46-143">[Handle non-JSON content types](../logic-apps/logic-apps-content-type.md), like `application/xml`, `application/octet-stream`, and `multipart/formdata`</span></span>
+* [<span data-ttu-id="e5e46-144">Jak fungují výrazy pracovního postupu v aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-144">How workflow expressions work in logic apps</span></span>](../logic-apps/logic-apps-author-definitions.md)
+* [<span data-ttu-id="e5e46-145">– Referenční informace: Jazyk definic workflowů funkce Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="e5e46-145">Reference: Azure Logic Apps workflow definition language</span></span>](http://aka.ms/logicappsdocs)
+
+## <a name="other-integrations-and-capabilities"></a><span data-ttu-id="e5e46-146">Další integrace a funkce</span><span class="sxs-lookup"><span data-stu-id="e5e46-146">Other integrations and capabilities</span></span>
+
+<span data-ttu-id="e5e46-147">Aplikace logiky také nabízí integraci s mnoha služeb, jako jsou funkce Azure, Azure API Management, Azure App Services a vlastní koncové body protokolu HTTP, například REST a protokolu SOAP.</span><span class="sxs-lookup"><span data-stu-id="e5e46-147">Logic apps also offer integration with many services, like Azure Functions, Azure API Management, Azure App Services, and custom HTTP endpoints, for example, REST and SOAP.</span></span>
+
+* [<span data-ttu-id="e5e46-148">Vytvořte v reálném čase sociálních řídicí bez serveru Azure</span><span class="sxs-lookup"><span data-stu-id="e5e46-148">Create a real-time social dashboard with Azure Serverless</span></span>](../logic-apps/logic-apps-scenario-social-serverless.md)
+* [<span data-ttu-id="e5e46-149">Azure Functions volání z aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-149">Call Azure Functions from logic apps</span></span>](../logic-apps/logic-apps-azure-functions.md)
+* [<span data-ttu-id="e5e46-150">Scénář: Aktivační událost logiku aplikace s Azure Functions</span><span class="sxs-lookup"><span data-stu-id="e5e46-150">Scenario: Trigger logic apps with Azure Functions</span></span>](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [<span data-ttu-id="e5e46-151">Blog: Volání koncových bodů protokolu SOAP z aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-151">Blog: Call SOAP endpoints from logic apps</span></span>](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+
+## <a name="end-to-end-scenarios"></a><span data-ttu-id="e5e46-152">Kompletní scénáře</span><span class="sxs-lookup"><span data-stu-id="e5e46-152">End-to-end scenarios</span></span>
+
+* [<span data-ttu-id="e5e46-153">Dokument White Paper: Enterprise začátku do konce případu vedení integrace se službami Azure, jako jsou aplikace logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-153">Whitepaper: Enterprise integration end-to-end case management with Azure services, like Logic Apps</span></span>](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+
+## <a name="next-steps"></a><span data-ttu-id="e5e46-154">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e5e46-154">Next steps</span></span>
+
+- [<span data-ttu-id="e5e46-155">Zpracování chyb a výjimek v aplikacích logiky</span><span class="sxs-lookup"><span data-stu-id="e5e46-155">Handle errors and exceptions in logic apps</span></span>](../logic-apps/logic-apps-exception-handling.md)
+- [<span data-ttu-id="e5e46-156">Definice pracovního postupu vytvořit pomocí jazyka pro definici pracovního postupu</span><span class="sxs-lookup"><span data-stu-id="e5e46-156">Author workflow definitions with the workflow definition language</span></span>](../logic-apps/logic-apps-author-definitions.md)
+- [<span data-ttu-id="e5e46-157">Odesílat dotazy, komentáře, zpětnou vazbu nebo návrhy pro jak budeme vylepšovat Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="e5e46-157">Submit your comments, questions, feedback, or suggestions for how can we improve Azure Logic Apps</span></span>](https://feedback.azure.com/forums/287593-logic-apps)
