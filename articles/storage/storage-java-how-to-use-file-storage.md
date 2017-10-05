@@ -1,0 +1,239 @@
+---
+title: "Vývoj pro Azure File storage s Javou | Microsoft Docs"
+description: "Další informace jak vyvíjet aplikace Java a služby, které používají Azure File storage k ukládání dat souborů."
+services: storage
+documentationcenter: java
+author: robinsh
+manager: timlt
+editor: tysonn
+ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 05/27/2017
+ms.author: robinsh
+ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/03/2017
+---
+# <a name="develop-for-azure-file-storage-with-java"></a>Vývoj pro Azure File storage s Javou
+[!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+
+[!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
+
+## <a name="about-this-tutorial"></a>O tomto kurzu
+Tento kurz popisuje základní informace o používání Javy k vývoji aplikací nebo služeb, které používají Azure File storage k ukládání dat souborů. V tomto kurzu jsme vytvořit jednoduché konzolové aplikace a ukazují, jak provést základní operace s Java a Azure File storage:
+
+* Vytvářet a odstraňovat sdílené složky Azure File
+* Vytvářet a odstraňovat adresáře
+* Vytvoření výčtu souborů a adresářů v Azure File sdílet
+* Odesílání, stahování a odstranění souboru
+
+> [!Note]  
+> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné psát jednoduché aplikace, které přístup k Azure souborové složce přes standardní třídy Java vstupně-výstupních operací. Tento článek popisuje, jak k psaní aplikací, které používají Java SDK úložiště Azure, kterou používá [REST API služby Azure File storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) ke komunikaci s úložištěm Azure File.
+
+## <a name="create-a-java-application"></a>Vytvoření aplikace Java
+Pokud chcete vytvořit ukázky, budete potřebovat Java Development Kit (JDK) a [] [Azure SDK úložiště pro jazyk Java]. Musí také jste vytvořili účet úložiště Azure.
+
+## <a name="setup-your-application-to-use-azure-file-storage"></a>Instalační program aplikace k používání Azure File storage
+Pokud chcete používat službu Azure storage rozhraní API, přidejte následující příkaz na začátek souboru Java, které máte v úmyslu přístup ke službě úložiště z.
+
+```java
+// Include the following imports to use blob APIs.
+import com.microsoft.azure.storage.*;
+import com.microsoft.azure.storage.file.*;
+```
+
+## <a name="setup-an-azure-storage-connection-string"></a>Instalační program připojovací řetězec úložiště Azure
+Používání Azure File storage, budete muset připojit k účtu úložiště Azure. Prvním krokem by mohla být nakonfigurovat připojovací řetězec, který jsme budete používat pro připojení k vašemu účtu úložiště. Umožňuje definovat statické proměnné na to.
+
+```java
+// Configure the connection-string with your values
+public static final String storageConnectionString =
+    "DefaultEndpointsProtocol=http;" +
+    "AccountName=your_storage_account_name;" +
+    "AccountKey=your_storage_account_key";
+```
+
+> [!NOTE]
+> Your_storage_account_name a your_storage_account_key nahraďte skutečnými hodnotami pro váš účet úložiště.
+> 
+> 
+
+## <a name="connecting-to-an-azure-storage-account"></a>Připojení k účtu úložiště Azure
+Pokud chcete připojit k účtu úložiště, budete muset použít **CloudStorageAccount** objekt, předávání připojovací řetězec k jeho **analyzovat** metoda.
+
+```java
+// Use the CloudStorageAccount object to connect to your storage account
+try {
+    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+} catch (InvalidKeyException invalidKey) {
+    // Handle the exception
+}
+```
+
+**CloudStorageAccount.parse** vyvolá InvalidKeyException, budete muset uvést uvnitř bloku try/catch.
+
+## <a name="create-an-azure-file-share"></a>Vytvoření Azure sdílené složky
+Všechny soubory a adresáře v úložišti Azure File jsou umístěny v kontejneru názvem **sdílené složky**. Váš účet úložiště může mít tolik sdílených složek jako umožňuje kapacitě vašeho účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, musíte použít klienta úložiště Azure File.
+
+```java
+// Create the Azure File storage client.
+CloudFileClient fileClient = storageAccount.createCloudFileClient();
+```
+
+Pomocí klienta aplikace Azure File storage můžete pak získat odkaz na sdílenou složku.
+
+```java
+// Get a reference to the file share
+CloudFileShare share = fileClient.getShareReference("sampleshare");
+```
+
+Chcete-li ve skutečnosti vytvořit sdílenou složku, použijte **createIfNotExists** metodu objektu CloudFileShare.
+
+```java
+if (share.createIfNotExists()) {
+    System.out.println("New share created");
+}
+```
+
+V tomto okamžiku **sdílet** obsahuje odkaz na sdílenou složku s názvem **sampleshare**.
+
+## <a name="delete-an-azure-file-share"></a>Odstranit sdílenou složku Azure
+Odstranění sdílené složky se provádí volání **deleteIfExists** metoda CloudFileShare objektu. Tady je ukázkový kód, který nemá.
+
+```java
+try
+{
+    // Retrieve storage account from connection-string.
+    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+    // Create the file client.
+   CloudFileClient fileClient = storageAccount.createCloudFileClient();
+
+   // Get a reference to the file share
+   CloudFileShare share = fileClient.getShareReference("sampleshare");
+
+   if (share.deleteIfExists()) {
+       System.out.println("sampleshare deleted");
+   }
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+
+## <a name="create-a-directory"></a>Vytvoření adresáře
+Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři. Azure File storage můžete vytvořit tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **sampledir** pod kořenovým adresářem.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the sampledir directory
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+if (sampleDir.createIfNotExists()) {
+    System.out.println("sampledir created");
+} else {
+    System.out.println("sampledir already exists");
+}
+```
+
+## <a name="delete-a-directory"></a>Odstranění adresáře
+Odstranění adresáře je docela jednoduché úlohy, i když je potřeba poznamenat, že nelze odstranit adresář, který ještě obsahuje soubory nebo ostatních adresářů.
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory you want to delete
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+// Delete the directory
+if ( containerDir.deleteIfExists() ) {
+    System.out.println("Directory deleted");
+}
+```
+
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v Azure File sdílet
+Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí voláním **listFilesAndDirectories** na CloudFileDirectory odkaz. Metoda vrátí seznam ListFileItem objektů, které můžete iterovat na. Například následující kód zobrazí seznam souborů a adresářů v kořenovém adresáři.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
+    System.out.println(fileItem.getUri());
+}
+```
+
+## <a name="upload-a-file"></a>Nahrání souboru
+Soubor s Azure, které se sdílená složka obsahuje v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+
+Prvním krokem při nahrání souboru se má získat odkaz na adresář, kde by měl být umístěn. To provedete pomocí volání **getRootDirectoryReference** metodu objektu sdílené složky.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+```
+
+Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete nahrát soubor do jej pomocí následujícího kódu.
+
+```java
+        // Define the path to a local file.
+        final String filePath = "C:\\temp\\Readme.txt";
+    
+        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+        cloudFile.uploadFromFile(filePath);
+```
+
+## <a name="download-a-file"></a>Stažení souboru
+Jedním z častější operace, které je potřeba provést před Azure File storage je ke stažení souborů. V následujícím příkladu kódu stáhne SampleFile.txt a zobrazí její obsah.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the directory that contains the file
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+//Get a reference to the file you want to download
+CloudFile file = sampleDir.getFileReference("SampleFile.txt");
+
+//Write the contents of the file to the console.
+System.out.println(file.downloadText());
+```
+
+## <a name="delete-a-file"></a>Odstranění souboru
+Další běžné operace úložiště Azure File je odstranění souborů. Následující kód odstraní soubor s názvem SampleFile.txt uložený v adresáři s názvem **sampledir**.
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory where the file to be deleted is in
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+String filename = "SampleFile.txt"
+CloudFile file;
+
+file = containerDir.getFileReference(filename)
+if ( file.deleteIfExists() ) {
+    System.out.println(filename + " was deleted");
+}
+```
+
+## <a name="next-steps"></a>Další kroky
+Pokud vás zajímají další informace o dalších úložiště Azure API, použijte tyto odkazy.
+
+* [Středisko pro vývojáře Java](http://azure.microsoft.com/develop/java/)
+* [Úložiště Azure SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
+* [Úložiště Azure SDK pro Android](https://github.com/azure/azure-storage-android)
+* [Odkaz na sadu SDK klienta úložiště Azure](http://dl.windowsazure.com/storage/javadoc/)
+* [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)

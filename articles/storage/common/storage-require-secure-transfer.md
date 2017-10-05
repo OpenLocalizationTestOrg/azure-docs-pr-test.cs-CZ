@@ -15,10 +15,10 @@ ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
 ms.openlocfilehash: bc5b7fc79869c632db96958f17aaf953a5fd3b19
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="require-secure-transfer"></a>Vyžádání bezpečného přenosu
 
