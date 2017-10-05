@@ -1,0 +1,127 @@
+---
+title: "Microsoft Azure Multi-Factor Authentication uživatele stavy"
+description: "Další informace o stavu uživatele v Azure MFA."
+services: multi-factor-authentication
+documentationcenter: 
+author: kgremban
+manager: femila
+ms.assetid: 0b9fde23-2d36-45b3-950d-f88624a68fbd
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/26/2017
+ms.author: kgremban
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.openlocfilehash: 1869b7a4ef42536a3cd909ba2983ae0fe97185a9
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/18/2017
+---
+# <a name="how-to-require-two-step-verification-for-a-user-or-group"></a><span data-ttu-id="68018-103">Jak vyžadovat dvoustupňové ověřování pro uživatele nebo skupinu</span><span class="sxs-lookup"><span data-stu-id="68018-103">How to require two-step verification for a user or group</span></span>
+
+<span data-ttu-id="68018-104">Existují dva přístupy pro vyžádání dvoustupňové ověřování.</span><span class="sxs-lookup"><span data-stu-id="68018-104">There are two approaches for requiring two-step verification.</span></span> <span data-ttu-id="68018-105">První možností je umožnit každý jednotlivý uživatel pro Azure Multi-Factor Authentication (MFA).</span><span class="sxs-lookup"><span data-stu-id="68018-105">The first option is to enable each individual user for Azure Multi-Factor Authentication (MFA).</span></span> <span data-ttu-id="68018-106">Pokud uživatelé jsou povolené jednotlivě, fungují vždy dvoustupňové ověření (s několika výjimkami, jako při přihlášení z důvěryhodných IP adres nebo pokud je zapnuta funkce zapamatovaných zařízeních).</span><span class="sxs-lookup"><span data-stu-id="68018-106">When users are enabled individually, they always perform two-step verification (with some exceptions, like when they sign in from trusted IP addresses or if the remembered devices feature is turned on).</span></span> <span data-ttu-id="68018-107">Druhou možností je nastavit zásady podmíněného přístupu, která vyžaduje dvoustupňové ověřování za určitých podmínek.</span><span class="sxs-lookup"><span data-stu-id="68018-107">The second option is to set up a conditional access policy that requires two-step verification under certain conditions.</span></span>
+
+>[!TIP] 
+><span data-ttu-id="68018-108">Vyberte jednu z těchto metod tak, aby vyžadovala dvoustupňové ověření, nikoli oba dva.</span><span class="sxs-lookup"><span data-stu-id="68018-108">Choose one of these methods to require two-step verification, not both.</span></span> <span data-ttu-id="68018-109">Povolení uživatele pro Azure MFA potlačí všechny zásady podmíněného přístupu.</span><span class="sxs-lookup"><span data-stu-id="68018-109">Enabling a user for Azure MFA overrides any conditional access policies.</span></span>
+
+## <a name="which-option-is-right-for-you"></a><span data-ttu-id="68018-110">Možnosti, kterou je pro vás nejvhodnější</span><span class="sxs-lookup"><span data-stu-id="68018-110">Which option is right for you</span></span>
+
+<span data-ttu-id="68018-111">**Povolení Azure MFA změnou stavů uživatele** je tradiční přístup pro vyžádání dvoustupňové ověřování.</span><span class="sxs-lookup"><span data-stu-id="68018-111">**Enabling Azure MFA by changing user states** is the traditional approach for requiring two-step verification.</span></span> <span data-ttu-id="68018-112">Funguje pro oba Azure MFA v cloudu a Azure MFA serveru.</span><span class="sxs-lookup"><span data-stu-id="68018-112">It works for both Azure MFA in the cloud and Azure MFA Server.</span></span> <span data-ttu-id="68018-113">Všichni uživatelé, které vám umožňují mít stejné prostředí, která je k provedení dvoustupňové ověřování při každém přihlášení.</span><span class="sxs-lookup"><span data-stu-id="68018-113">All the users that you enable have the same experience, which is to perform two-step verification every time they sign in.</span></span> <span data-ttu-id="68018-114">Povolení uživatele potlačí všechny zásady podmíněného přístupu, které může mít vliv na tohoto uživatele.</span><span class="sxs-lookup"><span data-stu-id="68018-114">Enabling a user overrides any conditional access policies that may affect that user.</span></span> 
+
+<span data-ttu-id="68018-115">**Povolení Azure MFA se zásadami podmíněného přístupu** je flexibilnější přístup pro vyžádání dvoustupňové ověřování.</span><span class="sxs-lookup"><span data-stu-id="68018-115">**Enabling Azure MFA with a conditional access policy** is a more flexible approach for requiring two-step verification.</span></span> <span data-ttu-id="68018-116">Ho fungovat pouze pro Azure MFA v cloudu, ale a podmíněného přístupu je [placené funkce služby Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features).</span><span class="sxs-lookup"><span data-stu-id="68018-116">It only work for Azure MFA in the cloud, though, and conditional access is a [paid feature of Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features).</span></span> <span data-ttu-id="68018-117">Můžete vytvořit zásady podmíněného přístupu, které platí pro skupiny, jakož i jednotlivé uživatele.</span><span class="sxs-lookup"><span data-stu-id="68018-117">You can create conditional access policies that apply to groups as well as individual users.</span></span> <span data-ttu-id="68018-118">S vysokým rizikem skupiny je možné přidělit další omezení než nízkým rizikem skupiny nebo dvoustupňové ověřování můžete vyžaduje se jenom pro vysoce rizikové cloudové aplikace a pro ty, které jsou nízkým rizikem přeskočeno.</span><span class="sxs-lookup"><span data-stu-id="68018-118">High-risk groups can be given more restrictions than low-risk groups, or two-step verification can be required only for high-risk cloud apps and skipped for low-risk ones.</span></span> 
+
+<span data-ttu-id="68018-119">Obě tyto možnosti vyzvat uživatele k registraci pro Azure Multi-Factor Authentication při prvním přihlášení po zapnutí požadavky.</span><span class="sxs-lookup"><span data-stu-id="68018-119">Both of these options prompt users to register for Azure Multi-Factor Authentication the first time that they sign in after the requirements turn on.</span></span> <span data-ttu-id="68018-120">Obě možnosti také pracovat konfigurovat [nastavení ověřování Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md)</span><span class="sxs-lookup"><span data-stu-id="68018-120">Both options also work with the configurable [Azure Multi-Factor Authentication settings](multi-factor-authentication-whats-next.md)</span></span>
+
+## <a name="enable-azure-mfa-by-changing-user-status"></a><span data-ttu-id="68018-121">Povolit Azure MFA změnou stavu uživatele</span><span class="sxs-lookup"><span data-stu-id="68018-121">Enable Azure MFA by changing user status</span></span>
+
+<span data-ttu-id="68018-122">Uživatelské účty v Azure Multi-Factor Authentication mají následující tři jedinečné stavy:</span><span class="sxs-lookup"><span data-stu-id="68018-122">User accounts in Azure Multi-Factor Authentication have the following three distinct states:</span></span>
+
+| <span data-ttu-id="68018-123">Status</span><span class="sxs-lookup"><span data-stu-id="68018-123">Status</span></span> | <span data-ttu-id="68018-124">Popis</span><span class="sxs-lookup"><span data-stu-id="68018-124">Description</span></span> | <span data-ttu-id="68018-125">Neprohlížečové aplikace vliv</span><span class="sxs-lookup"><span data-stu-id="68018-125">Non-browser apps affected</span></span> |
+|:---:|:---:|:---:|
+| <span data-ttu-id="68018-126">Zakázáno</span><span class="sxs-lookup"><span data-stu-id="68018-126">Disabled</span></span> |<span data-ttu-id="68018-127">Výchozího stavu pro nového uživatele, která nejsou zaregistrovaná Azure Multi-Factor Authentication (MFA).</span><span class="sxs-lookup"><span data-stu-id="68018-127">The default state for a new user not enrolled Azure Multi-Factor Authentication (MFA).</span></span> |<span data-ttu-id="68018-128">Ne</span><span class="sxs-lookup"><span data-stu-id="68018-128">No</span></span> |
+| <span data-ttu-id="68018-129">Povoleno</span><span class="sxs-lookup"><span data-stu-id="68018-129">Enabled</span></span> |<span data-ttu-id="68018-130">Uživatel byl zaregistrován ke službě Azure MFA, ale není registrován.</span><span class="sxs-lookup"><span data-stu-id="68018-130">The user has been enrolled in Azure MFA, but has not registered.</span></span> <span data-ttu-id="68018-131">Se zobrazí výzva k registraci při příštím přihlášení.</span><span class="sxs-lookup"><span data-stu-id="68018-131">They will be prompted to register the next time they sign in.</span></span> |<span data-ttu-id="68018-132">Ne.</span><span class="sxs-lookup"><span data-stu-id="68018-132">No.</span></span>  <span data-ttu-id="68018-133">Budou nadále fungovat až do dokončení procesu registrace.</span><span class="sxs-lookup"><span data-stu-id="68018-133">They continue to work until the registration process is completed.</span></span> |
+| <span data-ttu-id="68018-134">Vynuceno</span><span class="sxs-lookup"><span data-stu-id="68018-134">Enforced</span></span> |<span data-ttu-id="68018-135">Uživatel byl zaregistrován a dokončil proces registrace pro Azure MFA.</span><span class="sxs-lookup"><span data-stu-id="68018-135">The user has been enrolled and has completed the registration process for Azure MFA.</span></span> |<span data-ttu-id="68018-136">Ano.</span><span class="sxs-lookup"><span data-stu-id="68018-136">Yes.</span></span>  <span data-ttu-id="68018-137">Aplikace potřebujete hesla aplikace.</span><span class="sxs-lookup"><span data-stu-id="68018-137">Apps require app passwords.</span></span> |
+
+<span data-ttu-id="68018-138">Stav uživatele, odráží jestli správce zapsal je v Azure MFA, a zda jejich dokončit proces registrace.</span><span class="sxs-lookup"><span data-stu-id="68018-138">A user's state reflects whether an admin has enrolled them in Azure MFA, and whether they completed the registration process.</span></span>
+
+<span data-ttu-id="68018-139">Všichni uživatelé spustí *zakázáno*.</span><span class="sxs-lookup"><span data-stu-id="68018-139">All users start out *disabled*.</span></span> <span data-ttu-id="68018-140">Při zápisu uživatele v Azure MFA, jejich změny stavu *povoleno*.</span><span class="sxs-lookup"><span data-stu-id="68018-140">When you enroll users in Azure MFA, their state changes *enabled*.</span></span> <span data-ttu-id="68018-141">Při povolení uživatelé přihlásit a dokončit proces registrace, jejich stav se změní na *vynucené*.</span><span class="sxs-lookup"><span data-stu-id="68018-141">When enabled users sign in and complete the registration process, their state changes to *enforced*.</span></span>  
+
+### <a name="view-the-status-for-a-user"></a><span data-ttu-id="68018-142">Zobrazení stavu pro uživatele</span><span class="sxs-lookup"><span data-stu-id="68018-142">View the status for a user</span></span>
+
+<span data-ttu-id="68018-143">Pomocí následujících kroků pro přístup ke stránce, kde můžete zobrazit a spravovat stavů uživatele:</span><span class="sxs-lookup"><span data-stu-id="68018-143">Use the following steps to access the page where you can view and manage user states:</span></span>
+
+1. <span data-ttu-id="68018-144">Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.</span><span class="sxs-lookup"><span data-stu-id="68018-144">Sign in to the [Azure portal](https://portal.azure.com) as an administrator.</span></span>
+2. <span data-ttu-id="68018-145">Přejděte na **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="68018-145">Go to **Azure Active Directory** > **Users and groups** > **All users**.</span></span>
+3. <span data-ttu-id="68018-146">Vyberte **služby Multi-Factor Authentication**.</span><span class="sxs-lookup"><span data-stu-id="68018-146">Select **Multi-Factor Authentication**.</span></span>
+   <span data-ttu-id="68018-147">![Vyberte služby Multi-Factor Authentication](./media/multi-factor-authentication-get-started-user-states/selectmfa.png)</span><span class="sxs-lookup"><span data-stu-id="68018-147">![Select Multi-Factor Authentication](./media/multi-factor-authentication-get-started-user-states/selectmfa.png)</span></span>
+4. <span data-ttu-id="68018-148">Otevře se nová stránka, která zobrazuje stavů uživatele.</span><span class="sxs-lookup"><span data-stu-id="68018-148">A new page, which displays the user states, opens.</span></span>
+   <span data-ttu-id="68018-149">![Stav uživatele služby Multi-Factor authentication – snímek obrazovky](./media/multi-factor-authentication-get-started-user-states/userstate1.png)</span><span class="sxs-lookup"><span data-stu-id="68018-149">![multi-factor authentication user status - screenshot](./media/multi-factor-authentication-get-started-user-states/userstate1.png)</span></span>
+
+### <a name="change-the-status-for-a-user"></a><span data-ttu-id="68018-150">Změnit stav pro uživatele</span><span class="sxs-lookup"><span data-stu-id="68018-150">Change the status for a user</span></span>
+
+1. <span data-ttu-id="68018-151">Pomocí předchozího postupu se na stránku uživatelů služby Multi-Factor authentication.</span><span class="sxs-lookup"><span data-stu-id="68018-151">Use the preceding steps to get to the multi-factor authentication users page.</span></span>
+2. <span data-ttu-id="68018-152">Vyhledejte uživatele, který chcete povolit pro Azure MFA.</span><span class="sxs-lookup"><span data-stu-id="68018-152">Find the user that you want to enable for Azure MFA.</span></span> <span data-ttu-id="68018-153">Možná bude třeba změnit zobrazení v horní části.</span><span class="sxs-lookup"><span data-stu-id="68018-153">You may need to change the view at the top.</span></span> 
+   <span data-ttu-id="68018-154">![Najít uživatele – snímek obrazovky](./media/multi-factor-authentication-get-started-cloud/enable1.png)</span><span class="sxs-lookup"><span data-stu-id="68018-154">![Find user - screenshot](./media/multi-factor-authentication-get-started-cloud/enable1.png)</span></span>
+3. <span data-ttu-id="68018-155">Zaškrtněte políčko vedle jména.</span><span class="sxs-lookup"><span data-stu-id="68018-155">Check the box next to their name.</span></span>
+4. <span data-ttu-id="68018-156">Na pravé straně v části Rychlé kroky, zvolte **povolit** nebo **zakázat**.</span><span class="sxs-lookup"><span data-stu-id="68018-156">On the right, under quick steps, choose **Enable** or **Disable**.</span></span>
+   <span data-ttu-id="68018-157">![Povolit vybraného uživatele – snímek obrazovky](./media/multi-factor-authentication-get-started-cloud/user1.png)</span><span class="sxs-lookup"><span data-stu-id="68018-157">![Enable selected user - screenshot](./media/multi-factor-authentication-get-started-cloud/user1.png)</span></span>
+
+   >[!TIP]
+   ><span data-ttu-id="68018-158">*Povolit* uživatelé automaticky přepnout *vynucené* při registraci pro Azure MFA.</span><span class="sxs-lookup"><span data-stu-id="68018-158">*Enabled* users automatically switch to *enforced* when they register for Azure MFA.</span></span> <span data-ttu-id="68018-159">Neměňte ručně vynucené stavu uživatele.</span><span class="sxs-lookup"><span data-stu-id="68018-159">You shouldn't manually change the user state to enforced.</span></span> 
+
+5. <span data-ttu-id="68018-160">Potvrďte výběr v místním okně, které se otevře.</span><span class="sxs-lookup"><span data-stu-id="68018-160">Confirm your selection in the pop-up window that opens.</span></span> 
+
+<span data-ttu-id="68018-161">Po povolení uživatelů, je vhodné seznámit e-mailem.</span><span class="sxs-lookup"><span data-stu-id="68018-161">After you enable users, you should notify them via email.</span></span> <span data-ttu-id="68018-162">Sdělte jim, že budete vyzváni k registraci při příštím přihlášení.</span><span class="sxs-lookup"><span data-stu-id="68018-162">Tell them that they'll be asked to register the next time they sign in.</span></span> <span data-ttu-id="68018-163">Navíc pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, že budete muset vytvořit hesla aplikací.</span><span class="sxs-lookup"><span data-stu-id="68018-163">Also, if your organization uses non-browser apps that don't support modern authentication, they'll need to create app passwords.</span></span> <span data-ttu-id="68018-164">Můžete použít také odkaz na našem [Průvodce pro koncové uživatele Azure MFA](./end-user/multi-factor-authentication-end-user.md) pomáhá jim začít pracovat.</span><span class="sxs-lookup"><span data-stu-id="68018-164">You can also include a link to our [Azure MFA end-user guide](./end-user/multi-factor-authentication-end-user.md) to help them get started.</span></span>
+
+### <a name="use-powershell"></a><span data-ttu-id="68018-165">Použití prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="68018-165">Use PowerShell</span></span>
+<span data-ttu-id="68018-166">Chcete-li změnit stav stavu uživatele pomocí [Azure AD PowerShell](/powershell/azure/overview), změňte `$st.State`.</span><span class="sxs-lookup"><span data-stu-id="68018-166">To change the user status state using [Azure AD PowerShell](/powershell/azure/overview), change `$st.State`.</span></span> <span data-ttu-id="68018-167">Existují tři možné stavy:</span><span class="sxs-lookup"><span data-stu-id="68018-167">There are three possible states:</span></span>
+
+* <span data-ttu-id="68018-168">Povoleno</span><span class="sxs-lookup"><span data-stu-id="68018-168">Enabled</span></span>
+* <span data-ttu-id="68018-169">Vynuceno</span><span class="sxs-lookup"><span data-stu-id="68018-169">Enforced</span></span>
+* <span data-ttu-id="68018-170">Zakázáno</span><span class="sxs-lookup"><span data-stu-id="68018-170">Disabled</span></span>  
+
+<span data-ttu-id="68018-171">Nelze přesunout přímo na uživatele *vynucené* stavu.</span><span class="sxs-lookup"><span data-stu-id="68018-171">Don't move users directly to the *Enforced* state.</span></span> <span data-ttu-id="68018-172">Aplikace nezaložené na prohlížeči přestanou fungovat, protože uživatel neabsolvoval registraci MFA a nezískal [heslo aplikace](multi-factor-authentication-whats-next.md#app-passwords).</span><span class="sxs-lookup"><span data-stu-id="68018-172">Non-browser-based apps will stop working because the user has not gone through MFA registration and obtained an [app password](multi-factor-authentication-whats-next.md#app-passwords).</span></span> 
+
+<span data-ttu-id="68018-173">Pomocí prostředí PowerShell je vhodný, když potřebujete hromadné povolení uživatelů.</span><span class="sxs-lookup"><span data-stu-id="68018-173">Using PowerShell is a good option when you need to bulk enabling users.</span></span> <span data-ttu-id="68018-174">Vytvořte Powershellový skript, který prochází seznam uživatelů a umožňuje jim:</span><span class="sxs-lookup"><span data-stu-id="68018-174">Create a PowerShell script that loops through a list of users and enables them:</span></span>
+
+        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+        $st.RelyingParty = "*"
+        $st.State = “Enabled”
+        $sta = @($st)
+        Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+
+<span data-ttu-id="68018-175">Zde naleznete příklad:</span><span class="sxs-lookup"><span data-stu-id="68018-175">Here is an example:</span></span>
+
+    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
+    foreach ($user in $users)
+    {
+        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+        $st.RelyingParty = "*"
+        $st.State = “Enabled”
+        $sta = @($st)
+        Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
+    }
+
+## <a name="enable-azure-mfa-with-a-conditional-access-policy"></a><span data-ttu-id="68018-176">Povolit Azure MFA se zásadami podmíněného přístupu</span><span class="sxs-lookup"><span data-stu-id="68018-176">Enable Azure MFA with a conditional access policy</span></span>
+
+<span data-ttu-id="68018-177">Podmíněný přístup je placené funkce služby Azure Active Directory, s mnoha možností možné konfigurace.</span><span class="sxs-lookup"><span data-stu-id="68018-177">Conditional access is a paid feature of Azure Active Directory, with many possible configuration options.</span></span> <span data-ttu-id="68018-178">Tyto kroky provede jeden způsob, jak vytvořit zásady.</span><span class="sxs-lookup"><span data-stu-id="68018-178">These steps walk through one way to create a policy.</span></span> <span data-ttu-id="68018-179">Další informace najdete v tématu o [podmíněného přístupu v Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="68018-179">For more information, read about [Conditional Access in Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).</span></span>
+
+1. <span data-ttu-id="68018-180">Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.</span><span class="sxs-lookup"><span data-stu-id="68018-180">Sign in to the [Azure portal](https://portal.azure.com) as an administrator.</span></span>
+2. <span data-ttu-id="68018-181">Přejděte na **Azure Active Directory** > **podmíněného přístupu**.</span><span class="sxs-lookup"><span data-stu-id="68018-181">Go to **Azure Active Directory** > **Conditional access**.</span></span>
+3. <span data-ttu-id="68018-182">Vyberte **nové zásady**.</span><span class="sxs-lookup"><span data-stu-id="68018-182">Select **New policy**.</span></span>
+4. <span data-ttu-id="68018-183">V části **přiřazení**, vyberte **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="68018-183">Under **Assignments**, select **Users and groups**.</span></span> <span data-ttu-id="68018-184">Použití **zahrnout** a **vyloučit** karty se můžete určit, kteří uživatelé a skupiny bude spravovat zásady.</span><span class="sxs-lookup"><span data-stu-id="68018-184">Use the **Include** and **Exclude** tabs to specify which users and groups will be managed by the policy.</span></span>
+5. <span data-ttu-id="68018-185">V části **přiřazení**, vyberte **cloudových aplikací**.</span><span class="sxs-lookup"><span data-stu-id="68018-185">Under **Assignments**, select **Cloud apps**.</span></span> <span data-ttu-id="68018-186">Vybrat možnost zahrnutí **všech cloudových aplikací**.</span><span class="sxs-lookup"><span data-stu-id="68018-186">Choose to include **All cloud apps**.</span></span>
+6. <span data-ttu-id="68018-187">V části **přístup k ovládacím prvkům**, vyberte **Grant**.</span><span class="sxs-lookup"><span data-stu-id="68018-187">Under **Access controls**, select **Grant**.</span></span> <span data-ttu-id="68018-188">Zvolte **vyžadovat vícefaktorové ověřování**.</span><span class="sxs-lookup"><span data-stu-id="68018-188">Choose **Require multi-factor authentication**.</span></span>
+7. <span data-ttu-id="68018-189">Zapnout **povolit zásady** k **na** a pak vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="68018-189">Turn **Enable policy** to **On** and then select **Save**.</span></span>
+
+<span data-ttu-id="68018-190">Další možnosti v zásadách podmíněného přístupu umožňují zadat přesně v případě, že by měl být požadované dvoustupňové ověřování.</span><span class="sxs-lookup"><span data-stu-id="68018-190">The other options in the conditional access policy allow you to specify exactly when two-step verification should be required.</span></span> <span data-ttu-id="68018-191">Například můžete dokonce vytvářet zásady, které stavy: když dodavatelů došlo k pokusu o přístup k vaší aplikace Nákup z nedůvěryhodné sítě na zařízení, které nejsou připojené k doméně, vyžaduje dvoustupňové ověřování.</span><span class="sxs-lookup"><span data-stu-id="68018-191">For example, you could make a policy that states: when contractors try to access our procurement app from untrusted networks on devices that are not domain-joined, require two-step verification.</span></span> 
+
+## <a name="next-steps"></a><span data-ttu-id="68018-192">Další kroky</span><span class="sxs-lookup"><span data-stu-id="68018-192">Next steps</span></span>
+
+- <span data-ttu-id="68018-193">Získat tipy pro [osvědčené postupy pro podmíněný přístup](../active-directory/active-directory-conditional-access-best-practices.md)</span><span class="sxs-lookup"><span data-stu-id="68018-193">Get tips on the [Best practices for conditional access](../active-directory/active-directory-conditional-access-best-practices.md)</span></span>
+
+- <span data-ttu-id="68018-194">Správa nastavení služby Multi-Factor Authentication pro [uživatelům a jejich zařízení](multi-factor-authentication-manage-users-and-devices.md)</span><span class="sxs-lookup"><span data-stu-id="68018-194">Manage Multi-Factor Authentication settings for [your users and their devices](multi-factor-authentication-manage-users-and-devices.md)</span></span>
