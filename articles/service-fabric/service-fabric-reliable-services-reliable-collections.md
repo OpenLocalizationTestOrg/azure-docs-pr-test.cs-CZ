@@ -1,0 +1,69 @@
+---
+title: "Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric | Microsoft Docs"
+description: "Service Fabric stavové služby poskytují spolehlivé kolekce, které vám umožní zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace."
+services: service-fabric
+documentationcenter: .net
+author: mcoskun
+manager: timlt
+editor: masnider,rajak
+ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 5/1/2017
+ms.author: mcoskun
+ms.openlocfilehash: d0247ba0242af05ca6dcd8049ff9116683538fa5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a><span data-ttu-id="231cc-103">Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric</span><span class="sxs-lookup"><span data-stu-id="231cc-103">Introduction to Reliable Collections in Azure Service Fabric stateful services</span></span>
+<span data-ttu-id="231cc-104">Spolehlivé kolekce umožňují zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace, jako kdyby byly psaní aplikací jeden počítač.</span><span class="sxs-lookup"><span data-stu-id="231cc-104">Reliable Collections enable you to write highly available, scalable, and low-latency cloud applications as though you were writing single computer applications.</span></span> <span data-ttu-id="231cc-105">Třídy v **Microsoft.ServiceFabric.Data.Collections** obor názvů poskytují sadu kolekcí, které automaticky nastavit vašemu stavu jako vysoce dostupný.</span><span class="sxs-lookup"><span data-stu-id="231cc-105">The classes in the **Microsoft.ServiceFabric.Data.Collections** namespace provide a set of collections that automatically make your state highly available.</span></span> <span data-ttu-id="231cc-106">Vývojáři muset programu jen pro spolehlivé rozhraní API kolekce a nechat spolehlivé kolekce Správa stavu replikují a místní.</span><span class="sxs-lookup"><span data-stu-id="231cc-106">Developers need to program only to the Reliable Collection APIs and let Reliable Collections manage the replicated and local state.</span></span>
+
+<span data-ttu-id="231cc-107">Klíče rozdíl mezi spolehlivé kolekce a další technologie vysokou dostupnost (například Redis, služby Azure Table a fronty Azure service) je, že stav je uložen místně v instanci služby při také prováděné vysoce dostupný.</span><span class="sxs-lookup"><span data-stu-id="231cc-107">The key difference between Reliable Collections and other high-availability technologies (such as Redis, Azure Table service, and Azure Queue service) is that the state is kept locally in the service instance while also being made highly available.</span></span> <span data-ttu-id="231cc-108">To znamená, že:</span><span class="sxs-lookup"><span data-stu-id="231cc-108">This means that:</span></span>
+
+* <span data-ttu-id="231cc-109">Všechny operace čtení jsou místní, výsledkem s nízkou latencí a vysokou propustností čte.</span><span class="sxs-lookup"><span data-stu-id="231cc-109">All reads are local, which results in low latency and high-throughput reads.</span></span>
+* <span data-ttu-id="231cc-110">Všech zápisů zpoplatněná minimální počet IOs sítě, což vede k s nízkou latencí a vysokou propustností zapisuje.</span><span class="sxs-lookup"><span data-stu-id="231cc-110">All writes incur the minimum number of network IOs, which results in low latency and high-throughput writes.</span></span>
+
+![Obrázek vývoj kolekcí.](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
+
+<span data-ttu-id="231cc-112">Spolehlivé kolekce si lze představit jako přirozené vývoj **System.Collections** třídy: novou sadu kolekcí, které jsou určené pro cloudové a více počítači aplikace bez zvyšuje složitost pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="231cc-112">Reliable Collections can be thought of as the natural evolution of the **System.Collections** classes: a new set of collections that are designed for the cloud and multi-computer applications without increasing complexity for the developer.</span></span> <span data-ttu-id="231cc-113">Jako takový spolehlivé kolekce jsou:</span><span class="sxs-lookup"><span data-stu-id="231cc-113">As such, Reliable Collections are:</span></span>
+
+* <span data-ttu-id="231cc-114">Replikované: Se pro zajištění vysoké dostupnosti replikují změny stavu.</span><span class="sxs-lookup"><span data-stu-id="231cc-114">Replicated: State changes are replicated for high availability.</span></span>
+* <span data-ttu-id="231cc-115">Trvalé: Data přetrvají na disk pro odolnost proti výpadkům ve velkém rozsahu (například výpadku napájení datacenter).</span><span class="sxs-lookup"><span data-stu-id="231cc-115">Persisted: Data is persisted to disk for durability against large-scale outages (for example, a datacenter power outage).</span></span>
+* <span data-ttu-id="231cc-116">Asynchronní: Rozhraní API jsou asynchronní zajistit, že nejsou při by docházelo k vstupně-výstupní operace zablokované vláken.</span><span class="sxs-lookup"><span data-stu-id="231cc-116">Asynchronous: APIs are asynchronous to ensure that threads are not blocked when incurring IO.</span></span>
+* <span data-ttu-id="231cc-117">Transakční: Rozhraní API využívat abstrakce transakce, můžete snadno spravovat více spolehlivé kolekcí v rámci služby.</span><span class="sxs-lookup"><span data-stu-id="231cc-117">Transactional: APIs utilize the abstraction of transactions so you can manage multiple Reliable Collections within a service easily.</span></span>
+
+<span data-ttu-id="231cc-118">Spolehlivé kolekce poskytují silnou konzistenci zaručuje předinstalované usnadnění reasoning o stavu aplikace.</span><span class="sxs-lookup"><span data-stu-id="231cc-118">Reliable Collections provide strong consistency guarantees out of the box to make reasoning about application state easier.</span></span>
+<span data-ttu-id="231cc-119">Silnou konzistenci je dosaženo tím, že zajistí transakce, které potvrzení dokončit až poté, co je celá transakce byl zaprotokolován na většinu kvora repliky, včetně primární.</span><span class="sxs-lookup"><span data-stu-id="231cc-119">Strong consistency is achieved by ensuring transaction commits finish only after the entire transaction has been logged on a majority quorum of replicas, including the primary.</span></span>
+<span data-ttu-id="231cc-120">K dosažení slabší konzistence, může aplikace vědomí zpět do klienta žadatele o před vrátí asynchronního potvrzování.</span><span class="sxs-lookup"><span data-stu-id="231cc-120">To achieve weaker consistency, applications can acknowledge back to the client/requester before the asynchronous commit returns.</span></span>
+
+<span data-ttu-id="231cc-121">Rozhraní API, spolehlivé kolekce jsou vývojem souběžných kolekcí rozhraní API (v nalezen **System.Collections.Concurrent** oboru názvů):</span><span class="sxs-lookup"><span data-stu-id="231cc-121">The Reliable Collections APIs are an evolution of concurrent collections APIs (found in the **System.Collections.Concurrent** namespace):</span></span>
+
+* <span data-ttu-id="231cc-122">Asynchronní: Vrátí úlohu, protože na rozdíl od souběžných kolekcí, jsou operace replikovat a trvalé.</span><span class="sxs-lookup"><span data-stu-id="231cc-122">Asynchronous: Returns a task since, unlike concurrent collections, the operations are replicated and persisted.</span></span>
+* <span data-ttu-id="231cc-123">Žádná výstupní parametry: používá `ConditionalValue<T>` vrátí bool a hodnotu místo výstupní parametry.</span><span class="sxs-lookup"><span data-stu-id="231cc-123">No out parameters: Uses `ConditionalValue<T>` to return a bool and a value instead of out parameters.</span></span> <span data-ttu-id="231cc-124">`ConditionalValue<T>`je třeba `Nullable<T>` ale nevyžaduje T být struktury.</span><span class="sxs-lookup"><span data-stu-id="231cc-124">`ConditionalValue<T>` is like `Nullable<T>` but does not require T to be a struct.</span></span>
+* <span data-ttu-id="231cc-125">Transakce: Používá transakční objekt a umožňuje uživateli akce skupiny na více kolekcí spolehlivé v transakci.</span><span class="sxs-lookup"><span data-stu-id="231cc-125">Transactions: Uses a transaction object to enable the user to group actions on multiple Reliable Collections in a transaction.</span></span>
+
+<span data-ttu-id="231cc-126">V současné době **Microsoft.ServiceFabric.Data.Collections** obsahuje tři kolekce:</span><span class="sxs-lookup"><span data-stu-id="231cc-126">Today, **Microsoft.ServiceFabric.Data.Collections** contains three collections:</span></span>
+
+* <span data-ttu-id="231cc-127">[Spolehlivé slovník](https://msdn.microsoft.com/library/azure/dn971511.aspx): představuje replikovaných transakcí a asynchronní kolekci dvojic klíč/hodnota.</span><span class="sxs-lookup"><span data-stu-id="231cc-127">[Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): Represents a replicated, transactional, and asynchronous collection of key/value pairs.</span></span> <span data-ttu-id="231cc-128">Podobně jako **ConcurrentDictionary**, klíč a hodnotu můžou být jakéhokoli typu.</span><span class="sxs-lookup"><span data-stu-id="231cc-128">Similar to **ConcurrentDictionary**, both the key and the value can be of any type.</span></span>
+* <span data-ttu-id="231cc-129">[Spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx): představuje replikovaných transakcí a asynchronní striktní first-in použity fronty.</span><span class="sxs-lookup"><span data-stu-id="231cc-129">[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): Represents a replicated, transactional, and asynchronous strict first-in, first-out (FIFO) queue.</span></span> <span data-ttu-id="231cc-130">Podobně jako **ConcurrentQueue**, hodnota může být jakéhokoli typu.</span><span class="sxs-lookup"><span data-stu-id="231cc-130">Similar to **ConcurrentQueue**, the value can be of any type.</span></span>
+* <span data-ttu-id="231cc-131">[Spolehlivé souběžných fronty](service-fabric-reliable-services-reliable-concurrent-queue.md): představuje replikovaných transakcí a asynchronní úsilí nejlepší řazení fronty pro vysoké propustnosti.</span><span class="sxs-lookup"><span data-stu-id="231cc-131">[Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md): Represents a replicated, transactional, and asynchronous best effort ordering queue for high throughput.</span></span> <span data-ttu-id="231cc-132">Podobně jako **ConcurrentQueue**, hodnota může být jakéhokoli typu.</span><span class="sxs-lookup"><span data-stu-id="231cc-132">Similar to the **ConcurrentQueue**, the value can be of any type.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="231cc-133">Další kroky</span><span class="sxs-lookup"><span data-stu-id="231cc-133">Next steps</span></span>
+* [<span data-ttu-id="231cc-134">Spolehlivé kolekce pokyny a doporučení</span><span class="sxs-lookup"><span data-stu-id="231cc-134">Reliable Collection Guidelines & Recommendations</span></span>](service-fabric-reliable-services-reliable-collections-guidelines.md)
+* [<span data-ttu-id="231cc-135">Práce s Reliable Collections</span><span class="sxs-lookup"><span data-stu-id="231cc-135">Working with Reliable Collections</span></span>](service-fabric-work-with-reliable-collections.md)
+* [<span data-ttu-id="231cc-136">Transakce a zámky.</span><span class="sxs-lookup"><span data-stu-id="231cc-136">Transactions and Locks</span></span>](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+* [<span data-ttu-id="231cc-137">Správce spolehlivé stavu a interní informace o kolekci</span><span class="sxs-lookup"><span data-stu-id="231cc-137">Reliable State Manager and Collection Internals</span></span>](service-fabric-reliable-services-reliable-collections-internals.md)
+* <span data-ttu-id="231cc-138">Správa dat</span><span class="sxs-lookup"><span data-stu-id="231cc-138">Managing Data</span></span>
+  * [<span data-ttu-id="231cc-139">Zálohování a obnovení</span><span class="sxs-lookup"><span data-stu-id="231cc-139">Backup and Restore</span></span>](service-fabric-reliable-services-backup-restore.md)
+  * [<span data-ttu-id="231cc-140">Oznámení</span><span class="sxs-lookup"><span data-stu-id="231cc-140">Notifications</span></span>](service-fabric-reliable-services-notifications.md)
+  * [<span data-ttu-id="231cc-141">Spolehlivá serializace kolekcí</span><span class="sxs-lookup"><span data-stu-id="231cc-141">Reliable Collection serialization</span></span>](service-fabric-reliable-services-reliable-collections-serialization.md)
+  * [<span data-ttu-id="231cc-142">Serializace a Upgrade</span><span class="sxs-lookup"><span data-stu-id="231cc-142">Serialization and Upgrade</span></span>](service-fabric-application-upgrade-data-serialization.md)
+  * [<span data-ttu-id="231cc-143">Configuration Manager spolehlivé stavu</span><span class="sxs-lookup"><span data-stu-id="231cc-143">Reliable State Manager configuration</span></span>](service-fabric-reliable-services-configuration.md)
+* <span data-ttu-id="231cc-144">Ostatní</span><span class="sxs-lookup"><span data-stu-id="231cc-144">Others</span></span>
+  * [<span data-ttu-id="231cc-145">Spolehlivé služby rychlý start</span><span class="sxs-lookup"><span data-stu-id="231cc-145">Reliable Services quick start</span></span>](service-fabric-reliable-services-quick-start.md)
+  * [<span data-ttu-id="231cc-146">Referenční informace pro vývojáře pro spolehlivé kolekce</span><span class="sxs-lookup"><span data-stu-id="231cc-146">Developer reference for Reliable Collections</span></span>](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

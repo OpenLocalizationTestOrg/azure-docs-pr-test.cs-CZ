@@ -1,0 +1,19 @@
+## <a name="supported-operating-systems-and-drivers"></a><span data-ttu-id="ca85f-101">Podporované operační systémy a ovladače</span><span class="sxs-lookup"><span data-stu-id="ca85f-101">Supported operating systems and drivers</span></span>
+
+### <a name="nv-instances---nvidia-grid-drivers"></a><span data-ttu-id="ca85f-102">Instance NV – ovladače NVIDIA GRID</span><span class="sxs-lookup"><span data-stu-id="ca85f-102">NV instances - NVIDIA GRID drivers</span></span>
+
+| <span data-ttu-id="ca85f-103">Operační systém</span><span class="sxs-lookup"><span data-stu-id="ca85f-103">OS</span></span> | <span data-ttu-id="ca85f-104">Ovladač</span><span class="sxs-lookup"><span data-stu-id="ca85f-104">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="ca85f-105">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="ca85f-105">Windows Server 2016</span></span> | <span data-ttu-id="ca85f-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe)</span><span class="sxs-lookup"><span data-stu-id="ca85f-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe)</span></span> |
+| <span data-ttu-id="ca85f-107">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="ca85f-107">Windows Server 2012 R2</span></span> | <span data-ttu-id="ca85f-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)</span><span class="sxs-lookup"><span data-stu-id="ca85f-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)</span></span>  |
+
+### <a name="nc-instances---nvidia-tesla-drivers"></a><span data-ttu-id="ca85f-109">Instance NC – ovladače NVIDIA Tesla</span><span class="sxs-lookup"><span data-stu-id="ca85f-109">NC instances - NVIDIA Tesla drivers</span></span>
+
+| <span data-ttu-id="ca85f-110">Operační systém</span><span class="sxs-lookup"><span data-stu-id="ca85f-110">OS</span></span> | <span data-ttu-id="ca85f-111">Ovladač</span><span class="sxs-lookup"><span data-stu-id="ca85f-111">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="ca85f-112">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="ca85f-112">Windows Server 2016</span></span> | <span data-ttu-id="ca85f-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe)</span><span class="sxs-lookup"><span data-stu-id="ca85f-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe)</span></span> |
+| <span data-ttu-id="ca85f-114">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="ca85f-114">Windows Server 2012 R2</span></span> | <span data-ttu-id="ca85f-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe)</span><span class="sxs-lookup"><span data-stu-id="ca85f-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe)</span></span> |
+
+> [!NOTE]
+> <span data-ttu-id="ca85f-116">Odkazy na stažení ovladače Tesla jsou aktuální k datu publikování.</span><span class="sxs-lookup"><span data-stu-id="ca85f-116">Tesla driver download links are current at time of publication.</span></span> <span data-ttu-id="ca85f-117">Nejnovější ovladače najdete na webu [NVIDIA](http://www.nvidia.com/).</span><span class="sxs-lookup"><span data-stu-id="ca85f-117">For the latest drivers, visit the [NVIDIA](http://www.nvidia.com/) website.</span></span>
+>

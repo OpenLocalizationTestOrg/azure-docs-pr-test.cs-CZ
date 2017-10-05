@@ -1,0 +1,3 @@
+> [!IMPORTANT]
+> <span data-ttu-id="8845a-101">ID zařízení se může zobrazit v protokolech shromažďovaných pro účely zákaznické podpory a řešení potíží, proto se ujistěte, že při pojmenování nepoužíváte žádné citlivé údaje.</span><span class="sxs-lookup"><span data-stu-id="8845a-101">The device ID may be visible in the logs collected for customer support and troubleshooting, so make sure to avoid any sensitive information while naming it.</span></span>
+>

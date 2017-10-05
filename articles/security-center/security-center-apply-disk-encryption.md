@@ -1,0 +1,67 @@
+---
+title: "Použít šifrování disku v Azure Security Center | Microsoft Docs"
+description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** použít šifrování disku **."
+services: security-center
+documentationcenter: na
+author: TerryLanfear
+manager: MBaldwin
+editor: 
+ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
+ms.service: security-center
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 02/02/2017
+ms.author: terrylan
+ms.openlocfilehash: 67cff664f3723b2194ecd1519729cca17069d07f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="apply-disk-encryption-in-azure-security-center"></a><span data-ttu-id="d609b-103">Použít šifrování disku v Azure Security Center</span><span class="sxs-lookup"><span data-stu-id="d609b-103">Apply disk encryption in Azure Security Center</span></span>
+<span data-ttu-id="d609b-104">Azure Security Center doporučuje použít šifrování disku, pokud máte Windows nebo virtuálního počítače s Linuxem disků, které nejsou šifrovány pomocí Azure Disk Encryption.</span><span class="sxs-lookup"><span data-stu-id="d609b-104">Azure Security Center recommends that you apply disk encryption if you have Windows or Linux VM disks that are not encrypted using Azure Disk Encryption.</span></span> <span data-ttu-id="d609b-105">Disk Encryption umožňuje šifrování disků systému Windows a virtuálních počítačů IaaS Linux.</span><span class="sxs-lookup"><span data-stu-id="d609b-105">Disk Encryption lets you encrypt your Windows and Linux IaaS VM disks.</span></span>  <span data-ttu-id="d609b-106">Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.</span><span class="sxs-lookup"><span data-stu-id="d609b-106">Encryption is recommended for both the OS and data volumes on your VM.</span></span>
+
+<span data-ttu-id="d609b-107">Šifrování disku používá oborový standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkce systému Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkce systému Linux.</span><span class="sxs-lookup"><span data-stu-id="d609b-107">Disk Encryption uses the industry standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) feature of Windows and the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux.</span></span> <span data-ttu-id="d609b-108">Tyto funkce poskytují operačního systému a šifrování dat k ochraně a zabezpečení dat a splnit vaše organizace závazky zabezpečení a dodržování předpisů.</span><span class="sxs-lookup"><span data-stu-id="d609b-108">These features provide OS and data encryption to help protect and safeguard your data and meet your organizational security and compliance commitments.</span></span> <span data-ttu-id="d609b-109">Šifrování disku je integrovaná s [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) můžete řídit a spravovat disku šifrovacích klíčů a tajných klíčů ve vašem předplatném Key Vault, while, zajistíte, že všechna data na discích virtuálních počítačů jsou zašifrovaná přinejmenším ve vaší [Úložiště azure](https://azure.microsoft.com/documentation/services/storage/).</span><span class="sxs-lookup"><span data-stu-id="d609b-109">Disk Encryption is integrated with [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) to help you control and manage the disk encryption keys and secrets in your Key Vault subscription, while ensuring that all data in the VM disks are encrypted at rest in your [Azure Storage](https://azure.microsoft.com/documentation/services/storage/).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="d609b-110">Azure Disk Encryption je podporován v následujících Windows serveru operačních systémů – Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2.</span><span class="sxs-lookup"><span data-stu-id="d609b-110">Azure Disk Encryption is supported on the following Windows server operating systems - Windows Server 2008 R2, Windows Server 2012, and Windows Server 2012 R2.</span></span> <span data-ttu-id="d609b-111">Šifrování disku je podporován v následujících operačních systémů Linux server - Ubuntu, CentOS, SUSE a SUSE Linux Enterprise Server (SLES).</span><span class="sxs-lookup"><span data-stu-id="d609b-111">Disk encryption is supported on the following Linux server operating systems - Ubuntu, CentOS, SUSE, and SUSE Linux Enterprise Server (SLES).</span></span>
+>
+>
+
+## <a name="implement-the-recommendation"></a><span data-ttu-id="d609b-112">Implementace doporučení</span><span class="sxs-lookup"><span data-stu-id="d609b-112">Implement the recommendation</span></span>
+1. <span data-ttu-id="d609b-113">V **doporučení** vyberte **použít šifrování disku**.</span><span class="sxs-lookup"><span data-stu-id="d609b-113">In the **Recommendations** blade, select **Apply disk encryption**.</span></span>
+2. <span data-ttu-id="d609b-114">V **použít šifrování disku** okno, zobrazí se seznam virtuálních počítačů, u kterých se doporučuje šifrování disku.</span><span class="sxs-lookup"><span data-stu-id="d609b-114">In the **Apply disk encryption** blade, you see a list of VMs for which Disk Encryption is recommended.</span></span>
+3. <span data-ttu-id="d609b-115">Postupujte podle pokynů pro použití šifrování těchto virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="d609b-115">Follow the instructions to apply encryption to these VMs.</span></span>
+
+![][1]
+
+<span data-ttu-id="d609b-116">Pokud chcete zašifrovat virtuální počítače Azure, které byly identifikovány pomocí služby Security Center potřebují šifrování, doporučujeme následující kroky:</span><span class="sxs-lookup"><span data-stu-id="d609b-116">To encrypt Azure Virtual Machines that have been identified by Security Center as needing encryption, we recommend the following steps:</span></span>
+
+* <span data-ttu-id="d609b-117">Instalace a konfigurace Azure Powershellu.</span><span class="sxs-lookup"><span data-stu-id="d609b-117">Install and configure Azure PowerShell.</span></span> <span data-ttu-id="d609b-118">To umožňuje spouštění příkazů prostředí PowerShell, které jsou nutné k instalaci požadovaných součástí pro šifrování Azure Virtual Machines.</span><span class="sxs-lookup"><span data-stu-id="d609b-118">This enables you to run the PowerShell commands required to set up the prerequisites required to encrypt Azure Virtual Machines.</span></span>
+* <span data-ttu-id="d609b-119">Získat a spustit skript prostředí PowerShell Azure Disk Encryption požadavky Azure.</span><span class="sxs-lookup"><span data-stu-id="d609b-119">Obtain and run the Azure Disk Encryption Prerequisites Azure PowerShell script.</span></span>
+* <span data-ttu-id="d609b-120">Šifrování virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="d609b-120">Encrypt your virtual machines.</span></span>
+
+<span data-ttu-id="d609b-121">[Šifrování virtuálního počítače Azure](security-center-disk-encryption.md) vás provede tyto kroky.</span><span class="sxs-lookup"><span data-stu-id="d609b-121">[Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) walks you through these steps.</span></span>  <span data-ttu-id="d609b-122">Toto téma předpokládá, že používáte Windows 10 jako klientský počítač, ve kterém můžete nakonfigurovat šifrování disku.</span><span class="sxs-lookup"><span data-stu-id="d609b-122">This topic assumes you are using Windows 10 as the client machine from which you configure disk encryption.</span></span>
+
+<span data-ttu-id="d609b-123">Existuje mnoho přístupů, které lze použít pro virtuální počítače Azure.</span><span class="sxs-lookup"><span data-stu-id="d609b-123">There are many approaches that can be used for Azure Virtual Machines.</span></span> <span data-ttu-id="d609b-124">Pokud jste už s Azure PowerShellem nebo rozhraním příkazového řádku Azure CLI dobře obeznámeni, dáte možná přednost alternativním přístupům.</span><span class="sxs-lookup"><span data-stu-id="d609b-124">If you are already well-versed in Azure PowerShell or Azure CLI, then you may prefer to use alternate approaches.</span></span> <span data-ttu-id="d609b-125">Další informace o těchto dalších přístupů najdete v tématu [Azure disk encryption](../security/azure-security-disk-encryption.md).</span><span class="sxs-lookup"><span data-stu-id="d609b-125">To learn about these other approaches, see [Azure disk encryption](../security/azure-security-disk-encryption.md).</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="d609b-126">Viz také</span><span class="sxs-lookup"><span data-stu-id="d609b-126">See also</span></span>
+<span data-ttu-id="d609b-127">Tento dokument vám ukázal, jak provést doporučení Security Center "Použít šifrování disku."</span><span class="sxs-lookup"><span data-stu-id="d609b-127">This document showed you how to implement the Security Center recommendation "Apply disk encryption."</span></span> <span data-ttu-id="d609b-128">Další informace o šifrování disku, naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="d609b-128">To learn more about disk encryption, see the following:</span></span>
+
+* <span data-ttu-id="d609b-129">[Šifrování a klíč správy s Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 minut 39 sekund) – Další informace o použití k ochraně a zabezpečení dat Správa šifrování disku pro virtuální počítače IaaS a Azure Key Vault.</span><span class="sxs-lookup"><span data-stu-id="d609b-129">[Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec) -- Learn how to use disk encryption management for IaaS VMs and Azure Key Vault to help protect and safeguard your data.</span></span>
+* <span data-ttu-id="d609b-130">[Šifrování virtuálního počítače Azure](security-center-disk-encryption.md) (dokument) – zjistěte, jak šifrování Azure Virtual Machines.</span><span class="sxs-lookup"><span data-stu-id="d609b-130">[Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) (document) -- Learn how to encrypt Azure Virtual Machines.</span></span>
+* <span data-ttu-id="d609b-131">[Azure disk encryption](../security/azure-security-disk-encryption.md) (dokument) – informace o povolení šifrování disku pro systém Windows a virtuální počítače s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="d609b-131">[Azure disk encryption](../security/azure-security-disk-encryption.md) (document) -- Learn how to enable disk encryption for Windows and Linux VMs.</span></span>
+
+<span data-ttu-id="d609b-132">Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:</span><span class="sxs-lookup"><span data-stu-id="d609b-132">To learn more about Security Center, see the following:</span></span>
+
+* <span data-ttu-id="d609b-133">[Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.</span><span class="sxs-lookup"><span data-stu-id="d609b-133">[Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies.</span></span>
+* <span data-ttu-id="d609b-134">[Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.</span><span class="sxs-lookup"><span data-stu-id="d609b-134">[Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.</span></span>
+* <span data-ttu-id="d609b-135">[Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.</span><span class="sxs-lookup"><span data-stu-id="d609b-135">[Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.</span></span>
+* <span data-ttu-id="d609b-136">[Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.</span><span class="sxs-lookup"><span data-stu-id="d609b-136">[Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.</span></span>
+* <span data-ttu-id="d609b-137">[Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.</span><span class="sxs-lookup"><span data-stu-id="d609b-137">[Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.</span></span>
+* <span data-ttu-id="d609b-138">[Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.</span><span class="sxs-lookup"><span data-stu-id="d609b-138">[Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.</span></span>
+
+<!--Image references-->
+[1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

@@ -1,0 +1,77 @@
+---
+title: "Cílení na řešení v OMS | Microsoft Docs"
+description: "Cílení na řešení je funkce v Operations Management Suite (OMS), který vám umožní omezit na konkrétní sadu agentů řešení pro správu.  Tento článek popisuje, jak vytvořit konfiguraci oboru a použít ji k řešení."
+services: operations-management-suite
+documentationcenter: 
+author: bwren
+manager: carmonm
+editor: tysonn
+ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
+ms.service: operations-management-suite
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 04/27/2017
+ms.author: bwren
+ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a><span data-ttu-id="6b641-104">Pomocí řešení cílení v Operations Management Suite (OMS) do řešení pro správu oboru na konkrétní agenty (Preview)</span><span class="sxs-lookup"><span data-stu-id="6b641-104">Use solution targeting in Operations Management Suite (OMS) to scope management solutions to specific agents (Preview)</span></span>
+<span data-ttu-id="6b641-105">Když přidáte k OMS řešení, se automaticky nasadí ve výchozím nastavení všechny agenty systému Windows a Linux připojené k pracovní prostor analýzy protokolů.</span><span class="sxs-lookup"><span data-stu-id="6b641-105">When you add a solution to OMS, it's automatically deployed by default to all Windows and Linux agents connected to your Log Analytics workspace.</span></span>  <span data-ttu-id="6b641-106">Můžete spravovat vaše náklady a omezit množství dat vybraných pro řešení omezením na konkrétní sadu agenty.</span><span class="sxs-lookup"><span data-stu-id="6b641-106">You may want to manage your costs and limit the amount of data collected for a solution by limiting it to a particular set of agents.</span></span>  <span data-ttu-id="6b641-107">Tento článek popisuje způsob použití **cílení na řešení** což je funkce OMS, která umožňuje použít obor pro vaše řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-107">This article describes how to use **Solution Targeting** which is an OMS feature that allows you to apply a scope to your solutions.</span></span>
+
+## <a name="how-to-target-a-solution"></a><span data-ttu-id="6b641-108">Postupy pro řešení</span><span class="sxs-lookup"><span data-stu-id="6b641-108">How to target a solution</span></span>
+<span data-ttu-id="6b641-109">Existují tři kroky na cílení na řešení, jak je popsáno v následujících částech.</span><span class="sxs-lookup"><span data-stu-id="6b641-109">There are three steps to targeting a solution as described in the following sections.</span></span>  <span data-ttu-id="6b641-110">Všimněte si, že budete potřebovat na portálu OMS a webu Azure portal pro různé kroky.</span><span class="sxs-lookup"><span data-stu-id="6b641-110">Note that you will need both the OMS portal and the Azure portal for different steps.</span></span>
+
+
+### <a name="1-create-a-computer-group"></a><span data-ttu-id="6b641-111">1. Vytvořit skupinu počítačů</span><span class="sxs-lookup"><span data-stu-id="6b641-111">1. Create a computer group</span></span>
+<span data-ttu-id="6b641-112">Zadejte počítače, pro které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) v analýzy protokolů.</span><span class="sxs-lookup"><span data-stu-id="6b641-112">You specify the computers that you want to include in a scope by creating a [computer group](../log-analytics/log-analytics-computer-groups.md) in Log Analytics.</span></span>  <span data-ttu-id="6b641-113">Skupina počítačů můžete podle protokolu hledání nebo importovat z jiných zdrojů, například skupin služby Active Directory nebo služby WSUS.</span><span class="sxs-lookup"><span data-stu-id="6b641-113">The computer group can be based on a log search or imported from other sources such as Active Directory or WSUS groups.</span></span> <span data-ttu-id="6b641-114">Jako [popsané níže](#solutions-and-agents-that-cant-be-targeted), budou zahrnuty pouze počítače, které jsou přímo připojené k analýze protokolů v oboru.</span><span class="sxs-lookup"><span data-stu-id="6b641-114">As [described below](#solutions-and-agents-that-cant-be-targeted), only computers that are directly connected to Log Analytics will be included in the scope.</span></span>
+
+<span data-ttu-id="6b641-115">Jakmile budete mít skupina počítačů v pracovním prostoru, pak budete její zahrnutí do konfigurace oboru, který lze použít na jeden nebo více řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-115">Once you have the computer group created in your workspace, then you'll include it in a scope configuration that can be applied to one or more solutions.</span></span>
+ 
+ 
+ ### <a name="2-create-a-scope-configuration"></a><span data-ttu-id="6b641-116">2. Vytvoření konfigurace oboru</span><span class="sxs-lookup"><span data-stu-id="6b641-116">2. Create a scope configuration</span></span>
+ <span data-ttu-id="6b641-117">A **konfigurace oboru** obsahuje jeden nebo více skupin počítačů a dají se použít na jeden nebo více řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-117">A **Scope Configuration** includes one or more computer groups and can be applied to one or more solutions.</span></span> 
+ 
+ <span data-ttu-id="6b641-118">Vytvořte obor konfiguraci podle následujícího postupu.</span><span class="sxs-lookup"><span data-stu-id="6b641-118">Create a scope configuration using the following process.</span></span>  
+
+ 1. <span data-ttu-id="6b641-119">Na portálu Azure přejděte do **analýzy protokolů** a vyberte pracovní prostor.</span><span class="sxs-lookup"><span data-stu-id="6b641-119">In the Azure portal, navigate to **Log Analytics** and select your workspace.</span></span>
+ 2. <span data-ttu-id="6b641-120">Ve vlastnostech prostoru v **zdroje dat pracovního prostoru** vyberte **konfigurace oboru**.</span><span class="sxs-lookup"><span data-stu-id="6b641-120">In the properties for the workspace under **Workspace Data Sources** select **Scope Configurations**.</span></span>
+ 3. <span data-ttu-id="6b641-121">Klikněte na tlačítko **přidat** vytvořit novou konfiguraci oboru.</span><span class="sxs-lookup"><span data-stu-id="6b641-121">Click **Add** to create a new scope configuration.</span></span>
+ 4. <span data-ttu-id="6b641-122">Zadejte **název** pro konfiguraci rozsahu.</span><span class="sxs-lookup"><span data-stu-id="6b641-122">Type a **Name** for the scope configuration.</span></span>
+ 5. <span data-ttu-id="6b641-123">Klikněte na tlačítko **vyberte skupiny počítačů**.</span><span class="sxs-lookup"><span data-stu-id="6b641-123">Click **Select Computer Groups**.</span></span>
+ 6. <span data-ttu-id="6b641-124">Vyberte skupiny počítačů, který jste vytvořili a volitelně případné další skupiny pro přidání do konfigurace.</span><span class="sxs-lookup"><span data-stu-id="6b641-124">Select the computer group that you created and optionally any other groups to add to the configuration.</span></span>  <span data-ttu-id="6b641-125">Klikněte na **Vybrat**.</span><span class="sxs-lookup"><span data-stu-id="6b641-125">Click **Select**.</span></span>  
+ 6. <span data-ttu-id="6b641-126">Klikněte na tlačítko **OK** pro vytvoření konfigurace oboru.</span><span class="sxs-lookup"><span data-stu-id="6b641-126">Click **OK** to create the scope configuration.</span></span> 
+
+
+ ### <a name="3-apply-the-scope-configuration-to-a-solution"></a><span data-ttu-id="6b641-127">3. Použijete konfiguraci oboru na řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-127">3. Apply the scope configuration to a solution.</span></span>
+<span data-ttu-id="6b641-128">Jakmile je konfigurace oboru, můžete ji použít na jeden nebo více řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-128">Once you have a scope configuration, then you can apply it to one or more solutions.</span></span>  <span data-ttu-id="6b641-129">Všimněte si, že při konfiguraci jeden obor lze použít s více řešení, každé řešení můžete použít pouze jednu konfiguraci oboru.</span><span class="sxs-lookup"><span data-stu-id="6b641-129">Note that while a single scope configuration can be used with multiple solutions, each solution can only use one scope configuration.</span></span>
+
+<span data-ttu-id="6b641-130">Použití konfigurace oboru podle následujícího postupu.</span><span class="sxs-lookup"><span data-stu-id="6b641-130">Apply a scope configuration using the following process.</span></span>  
+
+ 1. <span data-ttu-id="6b641-131">Na portálu Azure přejděte do **analýzy protokolů** a vyberte pracovní prostor.</span><span class="sxs-lookup"><span data-stu-id="6b641-131">In the Azure portal, navigate to **Log Analytics** and select your workspace.</span></span>
+ 2. <span data-ttu-id="6b641-132">Ve vlastnostech pracovním prostoru vyberte **řešení**.</span><span class="sxs-lookup"><span data-stu-id="6b641-132">In the properties for the workspace select **Solutions**.</span></span>
+ 3. <span data-ttu-id="6b641-133">Klikněte na řešení, které chcete obor.</span><span class="sxs-lookup"><span data-stu-id="6b641-133">Click on the solution you want to scope.</span></span>
+ 4. <span data-ttu-id="6b641-134">Ve vlastnostech pro řešení v části **zdroje dat pracovního prostoru** vyberte **cílení na řešení**.</span><span class="sxs-lookup"><span data-stu-id="6b641-134">In the properties for the solution under **Workspace Data Sources** select **Solution Targeting**.</span></span>  <span data-ttu-id="6b641-135">Pokud není k dispozici možnost pak [toto řešení nemůžou být cílem](#solutions-and-agents-that-cant-be-targeted).</span><span class="sxs-lookup"><span data-stu-id="6b641-135">If the option is not available then [this solution cannot be targeted](#solutions-and-agents-that-cant-be-targeted).</span></span>
+ 5. <span data-ttu-id="6b641-136">Klikněte na tlačítko **konfigurace oboru přidat**.</span><span class="sxs-lookup"><span data-stu-id="6b641-136">Click **Add scope configuration**.</span></span>  <span data-ttu-id="6b641-137">Pokud již máte konfigurace použít k tomuto řešení Tato možnost nebude k dispozici.</span><span class="sxs-lookup"><span data-stu-id="6b641-137">If you already have a configuration applied to this solution then this option will be unavailable.</span></span>  <span data-ttu-id="6b641-138">Je nutné odebrat existující konfigurace před přidáním jiný.</span><span class="sxs-lookup"><span data-stu-id="6b641-138">You must remove the existing configuration before adding another one.</span></span>
+ 6. <span data-ttu-id="6b641-139">Klikněte na konfigurace oboru, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="6b641-139">Click on the scope configuration that you created.</span></span>
+ 7. <span data-ttu-id="6b641-140">Sledování **stav** konfigurace zajistit, že se zobrazí **úspěšné**.</span><span class="sxs-lookup"><span data-stu-id="6b641-140">Watch the **Status** of the configuration to ensure that it shows **Succeeded**.</span></span>  <span data-ttu-id="6b641-141">Pokud stav označuje chybu, pak klikněte na tlačítko se třemi tečkami napravo od konfigurace a vyberte **konfiguraci úpravy rozsahu** provádět změny.</span><span class="sxs-lookup"><span data-stu-id="6b641-141">If the status indicates an error, then click the ellipse to the right of the configuration and select **Edit scope configuration** to make changes.</span></span>
+
+## <a name="solutions-and-agents-that-cant-be-targeted"></a><span data-ttu-id="6b641-142">Řešení a agenty, kteří nemůžou být cílem</span><span class="sxs-lookup"><span data-stu-id="6b641-142">Solutions and agents that can't be targeted</span></span>
+<span data-ttu-id="6b641-143">Toto jsou kritéria pro agenty a řešení, které nelze použít s cílem řešení.</span><span class="sxs-lookup"><span data-stu-id="6b641-143">Following are the criteria for agents and solutions that can't be used with solution targeting.</span></span>
+
+- <span data-ttu-id="6b641-144">Cílení na řešení se vztahuje pouze na řešení, které nasazujete agenty.</span><span class="sxs-lookup"><span data-stu-id="6b641-144">Solution targeting only applies to solutions that deploy to agents.</span></span>
+- <span data-ttu-id="6b641-145">Cílení na řešení platí jenom pro řešení od společnosti Microsoft.</span><span class="sxs-lookup"><span data-stu-id="6b641-145">Solution targeting only applies to solutions provided by Microsoft.</span></span>  <span data-ttu-id="6b641-146">Nevztahuje se na řešení [vytvořené sami nebo partnery](operations-management-suite-solutions-creating.md).</span><span class="sxs-lookup"><span data-stu-id="6b641-146">It does not apply to solutions [created by yourself or partners](operations-management-suite-solutions-creating.md).</span></span>
+- <span data-ttu-id="6b641-147">Můžete filtrovat pouze na agenty, které se připojují přímo k Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="6b641-147">You can only filter out agents that connect directly to Log Analytics.</span></span>  <span data-ttu-id="6b641-148">Řešení automaticky nasadí na všechny agenty, které jsou součástí připojené skupiny pro správu nástroje Operations Manager, zda jsou zahrnuté v konfiguraci oboru.</span><span class="sxs-lookup"><span data-stu-id="6b641-148">Solutions will automatically deploy to any agents that are part of a connected Operations Manager management group whether or not they're included in a scope configuration.</span></span>
+
+### <a name="exceptions"></a><span data-ttu-id="6b641-149">Výjimky</span><span class="sxs-lookup"><span data-stu-id="6b641-149">Exceptions</span></span>
+<span data-ttu-id="6b641-150">Cílení na řešení nelze použít s následující řešení i když se vešly uvedená kritéria.</span><span class="sxs-lookup"><span data-stu-id="6b641-150">Solution targeting cannot be used with the following solutions even though they fit the stated criteria.</span></span>
+
+- <span data-ttu-id="6b641-151">Vyhodnocení stavu agenta</span><span class="sxs-lookup"><span data-stu-id="6b641-151">Agent Health Assessment</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="6b641-152">Další kroky</span><span class="sxs-lookup"><span data-stu-id="6b641-152">Next steps</span></span>
+- <span data-ttu-id="6b641-153">Další informace o řešení pro správu včetně řešení, které jsou k dispozici pro instalaci ve vašem prostředí v [přidat Azure Log Analytics řešení pro správu do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).</span><span class="sxs-lookup"><span data-stu-id="6b641-153">Learn more about management solutions including the solutions that are available to install in your environment at [Add Azure Log Analytics management solutions to your workspace](../log-analytics/log-analytics-add-solutions.md).</span></span>
+- <span data-ttu-id="6b641-154">Další informace o vytváření skupin počítačů v [skupiny počítačů v analýzy protokolů protokolu hledání](../log-analytics/log-analytics-computer-groups.md).</span><span class="sxs-lookup"><span data-stu-id="6b641-154">Learn more about creating computer groups at [Computer groups in Log Analytics log searches](../log-analytics/log-analytics-computer-groups.md).</span></span>

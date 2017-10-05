@@ -1,0 +1,71 @@
+---
+title: "Rozšířené použití spolehlivé služby | Microsoft Docs"
+description: "Další informace o pokročilé využití spolehlivé služby Service Fabric přidané flexibilitu v službě."
+services: Service-Fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: masnider
+ms.assetid: f2942871-863d-47c3-b14a-7cdad9a742c7
+ms.service: Service-Fabric
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 06/29/2017
+ms.author: vturecek
+ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2017
+---
+# <a name="advanced-usage-of-the-reliable-services-programming-model"></a><span data-ttu-id="7e17d-103">Rozšířené použití spolehlivé služby programovací model</span><span class="sxs-lookup"><span data-stu-id="7e17d-103">Advanced usage of the Reliable Services programming model</span></span>
+<span data-ttu-id="7e17d-104">Azure Service Fabric zjednodušuje zápis a správu spolehlivé bezstavové a stavové služby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-104">Azure Service Fabric simplifies writing and managing reliable stateless and stateful services.</span></span> <span data-ttu-id="7e17d-105">Tato příručka pojednává o Pokročilé použití spolehlivé služby k získání další kontrolu a flexibilitu přes vaše služby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-105">This guide talks about advanced usages of Reliable Services to gain more control and flexibility over your services.</span></span> <span data-ttu-id="7e17d-106">Před přečtení tohoto průvodce, seznamte se s [programovací model spolehlivé služby](service-fabric-reliable-services-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="7e17d-106">Prior to reading this guide, familiarize yourself with [the Reliable Services programming model](service-fabric-reliable-services-introduction.md).</span></span>
+
+<span data-ttu-id="7e17d-107">Stavová a Bezstavová služby mají dvě primární vstupní body pro uživatelský kód:</span><span class="sxs-lookup"><span data-stu-id="7e17d-107">Both stateful and stateless services have two primary entry points for user code:</span></span>
+
+* <span data-ttu-id="7e17d-108">`RunAsync(C#) / runAsync(Java)`je pro obecné účely vstupní bod pro kód služby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-108">`RunAsync(C#) / runAsync(Java)` is a general-purpose entry point for your service code.</span></span>
+* <span data-ttu-id="7e17d-109">`CreateServiceReplicaListeners(C#)`a `CreateServiceInstanceListeners(C#) / createServiceInstanceListeners(Java)` je pro otevření naslouchací procesy komunikace pro požadavky klientů.</span><span class="sxs-lookup"><span data-stu-id="7e17d-109">`CreateServiceReplicaListeners(C#)` and `CreateServiceInstanceListeners(C#) / createServiceInstanceListeners(Java)` is for opening communication listeners for client requests.</span></span>
+
+<span data-ttu-id="7e17d-110">Pro většinu služby jsou tyto dva vstupní body dostatečná.</span><span class="sxs-lookup"><span data-stu-id="7e17d-110">For most services, these two entry points are sufficient.</span></span> <span data-ttu-id="7e17d-111">Ve výjimečných případech Pokud větší kontrolu nad životního cyklu služby je nutné, další životního cyklu události jsou k dispozici.</span><span class="sxs-lookup"><span data-stu-id="7e17d-111">In rare cases when more control over a service's lifecycle is required, additional lifecycle events are available.</span></span>
+
+## <a name="stateless-service-instance-lifecycle"></a><span data-ttu-id="7e17d-112">Instance bezstavové služby životního cyklu</span><span class="sxs-lookup"><span data-stu-id="7e17d-112">Stateless service instance lifecycle</span></span>
+<span data-ttu-id="7e17d-113">Životní cyklus bezstavové služby je velmi jednoduchý.</span><span class="sxs-lookup"><span data-stu-id="7e17d-113">A stateless service's lifecycle is very simple.</span></span> <span data-ttu-id="7e17d-114">Bezstavové služby můžete pouze otevřít, ukončeno nebo byl zrušen.</span><span class="sxs-lookup"><span data-stu-id="7e17d-114">A stateless service can only be opened, closed, or aborted.</span></span> <span data-ttu-id="7e17d-115">`RunAsync`v bezstavové služby se spustí, až instance služby je otevřít a zrušit, pokud instance služby je uzavřen nebo přerušena.</span><span class="sxs-lookup"><span data-stu-id="7e17d-115">`RunAsync` in a stateless service is executed when a service instance is opened, and canceled when a service instance is closed or aborted.</span></span>
+
+<span data-ttu-id="7e17d-116">I když `RunAsync` by mělo být dostatečné v téměř všech případech otevřené, zavřete a přerušení události v bezstavové služby jsou k dispozici také:</span><span class="sxs-lookup"><span data-stu-id="7e17d-116">Although `RunAsync` should be sufficient in almost all cases, the open, close, and abort events in a stateless service are also available:</span></span>
+
+* <span data-ttu-id="7e17d-117">`Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java`OnOpenAsync je volána, když instance bezstavové služby se má použít.</span><span class="sxs-lookup"><span data-stu-id="7e17d-117">`Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java` OnOpenAsync is called when the stateless service instance is about to be used.</span></span> <span data-ttu-id="7e17d-118">V tuto chvíli můžete spustit úlohy inicializace služby rozšířených.</span><span class="sxs-lookup"><span data-stu-id="7e17d-118">Extended service initialization tasks can be started at this time.</span></span>
+* <span data-ttu-id="7e17d-119">`Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java`OnCloseAsync je volána, když bude instance bezstavové služby korektně vypnout.</span><span class="sxs-lookup"><span data-stu-id="7e17d-119">`Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java` OnCloseAsync is called when the stateless service instance is going to be gracefully shut down.</span></span> <span data-ttu-id="7e17d-120">To může dojít, když probíhá upgrade služby kódu, instance služby přesouvá kvůli Vyrovnávání zatížení nebo se detekuje přechodná chyba.</span><span class="sxs-lookup"><span data-stu-id="7e17d-120">This can occur when the service's code is being upgraded, the service instance is being moved due to load balancing, or a transient fault is detected.</span></span> <span data-ttu-id="7e17d-121">OnCloseAsync lze bezpečně zavřete všechny prostředky, zastavte všechny zpracování na pozadí, dokončení ukládání externí stavu nebo dolů existující připojení.</span><span class="sxs-lookup"><span data-stu-id="7e17d-121">OnCloseAsync can be used to safely close any resources, stop any background processing, finish saving external state, or close down existing connections.</span></span>
+* <span data-ttu-id="7e17d-122">`void OnAbort() - C# / void onAbort() - Java`OnAbort je volána, když instance bezstavové služby je vynuceně vypnut.</span><span class="sxs-lookup"><span data-stu-id="7e17d-122">`void OnAbort() - C# / void onAbort() - Java` OnAbort is called when the stateless service instance is being forcefully shut down.</span></span> <span data-ttu-id="7e17d-123">Obecně se používá při zjištění trvalé selhání na uzlu, nebo když Service Fabric se nedají spravovat spolehlivě životního cyklu instance služby z důvodu vnitřní chyby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-123">This is generally called when a permanent fault is detected on the node, or when Service Fabric cannot reliably manage the service instance's lifecycle due to internal failures.</span></span>
+
+## <a name="stateful-service-replica-lifecycle"></a><span data-ttu-id="7e17d-124">Životní cyklus repliky stavové služby</span><span class="sxs-lookup"><span data-stu-id="7e17d-124">Stateful service replica lifecycle</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="7e17d-125">Stavová spolehlivé služby ještě nepodporuje v jazyce Java.</span><span class="sxs-lookup"><span data-stu-id="7e17d-125">Stateful reliable services are not supported in Java yet.</span></span>
+>
+>
+
+<span data-ttu-id="7e17d-126">Životní cyklus repliku stavové služby je mnohem složitější než instance bezstavové služby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-126">A stateful service replica's lifecycle is much more complex than a stateless service instance.</span></span> <span data-ttu-id="7e17d-127">Kromě toho pokud chcete otevřít, zavřete a zrušení události, obsahuje repliku stavové služby role změny během celé jeho životnosti.</span><span class="sxs-lookup"><span data-stu-id="7e17d-127">In addition to open, close, and abort events, a stateful service replica undergoes role changes during its lifetime.</span></span> <span data-ttu-id="7e17d-128">Když se změní repliku stavové služby role, `OnChangeRoleAsync` je aktivována událost:</span><span class="sxs-lookup"><span data-stu-id="7e17d-128">When a stateful service replica changes role, the `OnChangeRoleAsync` event is triggered:</span></span>
+
+* <span data-ttu-id="7e17d-129">`Task OnChangeRoleAsync(ReplicaRole, CancellationToken)`OnChangeRoleAsync je volána, když replika stavové služby je například změna role na primární nebo sekundární.</span><span class="sxs-lookup"><span data-stu-id="7e17d-129">`Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync is called when the stateful service replica is changing role, for example to primary or secondary.</span></span> <span data-ttu-id="7e17d-130">Primární repliky mají stav zápisu (je povoleno vytvoření a zápis do spolehlivé kolekcí).</span><span class="sxs-lookup"><span data-stu-id="7e17d-130">Primary replicas are given write status (are allowed to create and write to Reliable Collections).</span></span> <span data-ttu-id="7e17d-131">Sekundární repliky jsou uvedeny čtení stav (můžete číst jenom z existující spolehlivé kolekce).</span><span class="sxs-lookup"><span data-stu-id="7e17d-131">Secondary replicas are given read status (can only read from existing Reliable Collections).</span></span> <span data-ttu-id="7e17d-132">Většinu práce v stavové služby se provádí na primární replice.</span><span class="sxs-lookup"><span data-stu-id="7e17d-132">Most work in a stateful service is performed at the primary replica.</span></span> <span data-ttu-id="7e17d-133">Sekundární repliky lze provést ověření jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.</span><span class="sxs-lookup"><span data-stu-id="7e17d-133">Secondary replicas can perform read-only validation, report generation, data mining, or other read-only jobs.</span></span>
+
+<span data-ttu-id="7e17d-134">V stavové služby pouze primární replika má oprávnění k zápisu do stavu a proto je obecně při službu provádí samotnou práci.</span><span class="sxs-lookup"><span data-stu-id="7e17d-134">In a stateful service, only the primary replica has write access to state and thus is generally when the service is performing actual work.</span></span> <span data-ttu-id="7e17d-135">`RunAsync` Metoda v stavové služby se spustí jenom v případě, že je primární replika stavové služby.</span><span class="sxs-lookup"><span data-stu-id="7e17d-135">The `RunAsync` method in a stateful service is executed only when the stateful service replica is primary.</span></span> <span data-ttu-id="7e17d-136">`RunAsync` Metoda se zruší, když se změní role primární repliky z primární i během události zavřít a přerušení.</span><span class="sxs-lookup"><span data-stu-id="7e17d-136">The `RunAsync` method is canceled when a primary replica's role changes away from primary, as well as during the close and abort events.</span></span>
+
+<span data-ttu-id="7e17d-137">Pomocí `OnChangeRoleAsync` událostí můžete pro práci v závislosti na role repliky také reakci na změnu role.</span><span class="sxs-lookup"><span data-stu-id="7e17d-137">Using the `OnChangeRoleAsync` event allows you to perform work depending on replica role as well as in response to role change.</span></span>
+
+<span data-ttu-id="7e17d-138">Stavové služby také poskytuje stejné události životního cyklu čtyři jako bezstavové služby, se stejnou sémantiku a případy použití:</span><span class="sxs-lookup"><span data-stu-id="7e17d-138">A stateful service also provides the same four lifecycle events as a stateless service, with the same semantics and use cases:</span></span>
+
+```csharp
+* Task OnOpenAsync(IStatefulServicePartition, CancellationToken)
+* Task OnCloseAsync(CancellationToken)
+* void OnAbort()
+```
+
+## <a name="next-steps"></a><span data-ttu-id="7e17d-139">Další kroky</span><span class="sxs-lookup"><span data-stu-id="7e17d-139">Next steps</span></span>
+<span data-ttu-id="7e17d-140">Pro pokročilejší témata týkající se Service Fabric naleznete v následujících článcích:</span><span class="sxs-lookup"><span data-stu-id="7e17d-140">For more advanced topics related to Service Fabric, see the following articles:</span></span>
+
+* [<span data-ttu-id="7e17d-141">Konfigurace stavové spolehlivé služby</span><span class="sxs-lookup"><span data-stu-id="7e17d-141">Configuring stateful Reliable Services</span></span>](service-fabric-reliable-services-configuration.md)
+* [<span data-ttu-id="7e17d-142">Úvod stavu Service Fabric</span><span class="sxs-lookup"><span data-stu-id="7e17d-142">Service Fabric health introduction</span></span>](service-fabric-health-introduction.md)
+* [<span data-ttu-id="7e17d-143">Pomocí sestav o stavu systému pro řešení potíží</span><span class="sxs-lookup"><span data-stu-id="7e17d-143">Using system health reports for troubleshooting</span></span>](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+* [<span data-ttu-id="7e17d-144">Konfigurace služeb pomocí Service Fabric clusteru správce prostředků</span><span class="sxs-lookup"><span data-stu-id="7e17d-144">Configuring Services with the Service Fabric Cluster Resource Manager</span></span>](service-fabric-cluster-resource-manager-configure-services.md)
