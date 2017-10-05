@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: dineshmurthy
 ms.openlocfilehash: 620efda06d8225b21b6bb9b104b79061ebb6515c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
 Uživatelé Azure Storage se často chtějí mít možnost k zobrazení nebo interakci s jejich daty pomocí klienta nástroje Azure Storage. V následujících tabulkách jsme seznam několik nástrojů, které vám umožní to. Můžeme uvést "X" v každém bloku pokud poskytuje možnost vytvořit výčet nebo přístup k abstrakci data. V tabulce také ukazuje, zda je volné nástroje, či nikoliv. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale kompletní produkt není volné. "Y/N" označuje, že verze je k dispozici zdarma, zatímco jiné verze je možné zakoupit.
