@@ -1,6 +1,6 @@
 ---
-redirect_url: /azure/active-directory/develop/active-directory-developers-guide
-ms.openlocfilehash: 61d59aa2f54a18859b4d0b27edeaa2cbd6da00ec
+redirect_url: /azure/active-directory/develop/active-directory-application-manifest
+ms.openlocfilehash: eca4c87360c9d41a79d4182cc34fce19465bd51d
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
