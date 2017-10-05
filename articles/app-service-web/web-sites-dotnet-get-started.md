@@ -1,7 +1,8 @@
 ---
-redirect_url: https://go.microsoft.com/fwlink/?linkid=847458
+redirect_url: /azure/app-service-web/app-service-web-get-started-dotnet
 redirect_document_id: FALSE
-ms.openlocfilehash: 8da2e08e91ddaa1df8236006c4a6590df247951a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ba4c7cc91c05b55bf6877cd2098e9b5a1549871
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
