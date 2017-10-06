@@ -1,6 +1,6 @@
 ---
-title: "Rozšíření experimentů pomocí R | Microsoft Docs"
-description: "Postup rozšíření funkce Azure Machine Learning Studio prostřednictvím jazyka R pomocí modulu spuštění skriptu R došlo k chybě."
+title: "aaaExtend experimentů pomocí R | Microsoft Docs"
+description: "Jak tooextend hello funkce Azure Machine Learning Studio prostřednictvím jazyka hello R pomocí modulu spustit skript jazyka R hello."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: fe207ef917980be8b554ad9c08176d108b19fb71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 396489f26f367a744922af65e04f056c7afa1399
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="extend-your-experiment-with-r"></a>Rozšíření experimentu pomocí R
-Funkce Azure Machine Learning Studio prostřednictvím jazyka R můžete rozšířit pomocí [spustit skript jazyka R] [ execute-r-script] modulu.
+Funkce hello nástroje Azure Machine Learning Studio prostřednictvím jazyka hello R můžete rozšířit pomocí hello [spustit skript jazyka R] [ execute-r-script] modulu.
 
-Tento modul přijímá více vstupní datové sady a výsledkem jednu datovou sadu jako výstup. Můžete zadat skript jazyka R do **skript jazyka R** parametr [spustit skript jazyka R] [ execute-r-script] modulu.
+Tento modul přijímá více vstupní datové sady a výsledkem jednu datovou sadu jako výstup. Skript jazyka R je možné zadat do hello **skript jazyka R** parametr hello [spustit skript jazyka R] [ execute-r-script] modulu.
 
-Máte přístup k každý vstupní port modulu pomocí kódu podobný následujícímu:
+Máte přístup k každý vstupní port hello modulu pomocí podobné toohello následující kód:
 
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>Seznam aktuálně nainstalovaných balíčků
-Seznam balíčků nainstalovaných můžete změnit. Seznam aktuálně nainstalovaných balíčků naleznete v [R balíčky nepodporuje Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+Hello seznam balíčků nainstalovaných můžete změnit. Seznam aktuálně nainstalovaných balíčků naleznete v [R balíčky nepodporuje Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
-Můžete také můžete získat úplný, aktuální seznam balíčků nainstalovaných tak, že zadáte následující kód do [spustit skript jazyka R] [ execute-r-script] modul:
+Také můžete získat hello dokončení, aktuální seznam balíčků nainstalovaných zadáním hello následující kód do hello [spustit skript jazyka R] [ execute-r-script] modul:
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-Tím se odešle seznam balíčků do výstupní port modulu [spustit skript jazyka R] [ execute-r-script] modulu.
-Chcete-li zobrazit seznam balíčků, připojte modul převod [převést na sdílený svazek clusteru] [ convert-to-csv] na levém výstupu [spustit skript jazyka R] [ execute-r-script] modulu, Spusťte experiment, pak klikněte na výstup modulu převod a vyberte **Stáhnout**. 
+Tím se odešle hello seznam balíčků toohello výstupní port modulu hello [spustit skript jazyka R] [ execute-r-script] modulu.
+balíček hello tooview seznamu, jako například připojit modul převod [převést tooCSV] [ convert-to-csv] toohello zbývajících výstup hello [spustit skript jazyka R] [ execute-r-script]modul, spustit hello experiment, potom klikněte na výstup hello hello převod modul a vyberte **Stáhnout**. 
 
-![Stažení výstupu modulu "Převést na CSV"](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+![Stažení výstupu "Převést tooCSV" modulu](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--
-For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+For convenience, here is hello [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
 ## <a name="importing-packages"></a>Import balíčků
-Můžete importovat balíčky, které již nejsou nainstalovány pomocí následujících příkazů v [spustit skript jazyka R] [ execute-r-script] modul:
+Můžete importovat balíčky, které již nejsou nainstalovány pomocí následujících příkazů v hello hello [spustit skript jazyka R] [ execute-r-script] modul:
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-kde `my_favorite_package.zip` soubor obsahuje vašeho balíčku.
+kde hello `my_favorite_package.zip` soubor obsahuje vašeho balíčku.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

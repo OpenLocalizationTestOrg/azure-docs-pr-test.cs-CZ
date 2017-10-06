@@ -1,6 +1,6 @@
 ---
 title: "Knihovny připojení pro databázi Azure pro PostgreSQL | Microsoft Docs"
-description: "Tento článek popisuje několik knihovny a ovladače, vývojáři mohou použít při kódování aplikace k připojení a dotazování databáze Azure pro PostgreSQL."
+description: "Tento článek popisuje několik knihovny a ovladače, které mohou vývojáři použít při kódování tooconnect aplikace a dotaz databáze Azure pro PostgreSQL."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/15/2017
-ms.openlocfilehash: 1f99ef7fefb1ff9d35f564a1f0ad77c8dd64659e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1f7234499d8abe37f8de9008e3158765b1fb0bde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Knihovny připojení pro databázi Azure pro PostgreSQL
-Toto téma obsahuje seznam knihoven a ovladače pro použití pro vývojáře pro programování aplikací k připojení a dotazování databáze Azure pro PostgreSQL.
+Toto téma obsahuje seznam knihoven a ovladače pro použití pro vývojáře pro programování aplikací tooconnect a dotaz Azure databázi PostgreSQL.
 
 ## <a name="client-interfaces"></a>Rozhraní klienta
-Většina jazyk klientské knihovny pro připojení k serveru PostgreSQL jsou externí projekty a distribuují nezávisle. Tyto jsou podporovány na platformách systému Windows, Linuxu a Macu. Některé ovladače oblíbených klienta, jsou uvedeny:
+Většina jazyk klienta knihovny tooconnect tooPostgreSQL serveru jsou externí projekty a distribuují nezávisle. Tyto jsou podporovány na platformách systému Windows, Linuxu a Macu. Některé ovladače hello oblíbených klienta, jsou uvedeny:
 
 | **Jazyk** | **Rozhraní klienta** | **Další informace** | **Stáhnout** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -35,6 +35,6 @@ Většina jazyk klientské knihovny pro připojení k serveru PostgreSQL jsou ex
 | C++ | [libpqxx](http://pqxx.org/) | Nový styl rozhraní C++ | [Stáhnout](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si tyto elementy QuickStart o tom, jak připojení a dotazování databáze Azure pro PostgreSQL pomocí vámi zvolený jazyk:
+Přečtěte si tyto elementy QuickStart o tooconnect a dotaz Azure databázi PostgreSQL pomocí vámi zvolený jazyk:
 
 [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)

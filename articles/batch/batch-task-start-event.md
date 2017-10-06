@@ -1,5 +1,5 @@
 ---
-title: "Azure události spuštění úlohy Batch | Microsoft Docs"
+title: "AAA \"události spuštění úlohy Azure Batch | Microsoft Docs\""
 description: "Referenční informace pro úlohy Batch spusťte událost."
 services: batch
 author: tamram
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: c47ab36c99dddd46a14c15018a2a46bf7f873ffa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2cb066be1578741125e9081a84a2b7c74dc8356a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="task-start-event"></a>Událost spuštění úlohy
 
- Tato událost je vygenerované po úlohu bylo naplánováno spuštění na výpočetním uzlu plánovačem. Upozorňujeme, že pokud je úloha opakovat nebo zařazena Tato událost bude znovu vygenerované pro stejnou úlohu, ale počet opakování, a verze systému úloh bude příslušným způsobem aktualizuje.
+ Tato událost je vygenerované Jakmile úloha už naplánované toostart na výpočetním uzlu plánovačem hello. Všimněte si, že pokud je úloha hello opakovat nebo zařazena Tato událost bude být vygenerované znovu hello stejný úkol, ale hello počet opakování a verze systému úloh bude příslušným způsobem aktualizuje.
 
 
- Následující příklad ukazuje, text úlohu spustit událostí.
+ Hello následující příklad ukazuje textu hello události spuštění úloh.
 
 ```
 {
@@ -49,36 +49,36 @@ ms.lasthandoff: 07/11/2017
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|JobId|Řetězec|Id úlohy, která obsahuje úlohu.|
-|id|Řetězec|Id úkolu.|
-|taskType|Řetězec|Typ úlohy. To může být JobManager oznamující, že je úkol správce nebo uživatel oznamující, že se nejedná o úkolu Správce úloh.|
-|systemTaskVersion|Int32|Toto je Čítač opakovaných pokusů interní na úlohu. Služba Batch interně může pokus zopakovat úlohu, aby se zohlednily přechodné problémy. Tyto problémy mohou zahrnovat plánování s interními chybami nebo pokusy o obnovení z výpočetních uzlů ve špatném stavu.|
-|[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém byla úloha spuštěna.|
-|[multiInstanceSettings](#multiInstanceSettings)|Komplexní typ|Určuje, že tato úloha je úkol s více instancemi nutnosti několika výpočetních uzlech.  V tématu [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) podrobnosti.|
-|[omezení](#constraints)|Komplexní typ|Provádění omezení, které se vztahují k tomuto úkolu.|
-|[executionInfo](#executionInfo)|Komplexní typ|Obsahuje informace o provádění úlohy.|
+|JobId|Řetězec|id Hello hello úlohy, která obsahuje úlohu hello.|
+|id|Řetězec|id Hello hello úlohy.|
+|taskType|Řetězec|Typ Hello hello úlohy. To může být JobManager oznamující, že je úkol správce nebo uživatel oznamující, že se nejedná o úkolu Správce úloh.|
+|systemTaskVersion|Int32|Toto je interní opakování čítač hello na úlohu. Služba Batch hello interně může pokus zopakovat tooaccount úloh pro přechodné problémy. Tyto problémy mohou zahrnovat interní plánování chyby nebo pokusy o toorecover z výpočetních uzlů ve špatném stavu.|
+|[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o hello výpočetním uzlu, na které hello úloha spustila.|
+|[multiInstanceSettings](#multiInstanceSettings)|Komplexní typ|Určuje, že tuto úlohu hello je úkol s více instancemi nutnosti několika výpočetních uzlech.  V tématu [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) podrobnosti.|
+|[omezení](#constraints)|Komplexní typ|Hello provádění omezení, která platí toothis úloh.|
+|[executionInfo](#executionInfo)|Komplexní typ|Obsahuje informace o provádění hello hello úlohy.|
 
 ###  <a name="nodeInfo"></a>nodeInfo
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|poolId|Řetězec|Id fondu, ve kterém byla spuštěna úloha.|
-|nodeId|Řetězec|Id uzlu, na kterém byla úloha spuštěna.|
+|poolId|Řetězec|id Hello hello fond, na které hello úloha spustila.|
+|nodeId|Řetězec|id Hello hello uzlu, na které hello úloha spustila.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|numberOfInstances|celá čísla|Celkový počet výpočetních uzlů požadovaných úkolem|
+|numberOfInstances|celá čísla|Hello počet výpočetních uzlů, které vyžadují hello úloh.|
 
 ###  <a name="constraints"></a>omezení
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|Maximální počet, který může být Opakovat úlohu. Služba Batch úkol zopakuje, pokud je jeho ukončovací kód nenulové hodnoty.<br /><br /> Všimněte si, že tato hodnota konkrétně určuje počet opakovaných pokusů. Služba Batch bude opakujte úlohu jednou a mohou zkuste až toto omezení. Například pokud je maximální počet opakování je 3, Batch pokusů a úloh až 4 případech (jeden počáteční pokus a 3 opakování).<br /><br /> Pokud je maximální počet opakování 0, služba Batch neopakuje úlohy.<br /><br /> Pokud je maximální počet opakování −1, služba Batch opakuje úlohy bez omezení.<br /><br /> Výchozí hodnota je 0 (bez opakování).|
+|maxTaskRetryCount|Int32|Hello maximální počet opakovaných úkolů hello. Hello služba Batch úkol zopakuje, pokud je jeho ukončovací kód nenulové hodnoty.<br /><br /> Všimněte si, že tato hodnota řídí konkrétně hello počet opakování. Služba Batch Hello se pokusí hello úloh jednou a mohou zkuste si toothis limit. Například pokud hello maximální počet opakování je 3, Batch pokusí úlohu až too4 dobu (jeden počáteční pokus a 3 opakování).<br /><br /> Pokud hello maximální počet opakování 0, služba Batch hello neopakuje úlohy.<br /><br /> Pokud hello maximální počet opakování −1, služba Batch hello opakuje úlohy bez omezení.<br /><br /> Hello výchozí hodnota je 0 (bez opakování).|
 
 ###  <a name="executionInfo"></a>executionInfo
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|retryCount|Int32|Počet, kolikrát má byla úloha opakovat službou Batch. Úloha je opakovat, pokud ho ukončí nenulový ukončovací kód, až do zadaného MaxTaskRetryCount|
+|retryCount|Int32|Hello počet oznámení, která má byla hello úloha opakovat hello služby Batch. Úloha Hello je zopakován, pokud bude nenulový ukončovací kód, až toohello zadaný MaxTaskRetryCount|

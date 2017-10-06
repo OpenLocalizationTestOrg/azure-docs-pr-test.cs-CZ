@@ -1,6 +1,6 @@
 ---
-title: "Kopírování dat do a z Azure Data Lake Store | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data do a z Data Lake Store pomocí Azure Data Factory"
+title: aaaCopy tooand dat z Azure Data Lake Store | Microsoft Docs
+description: "Zjistěte, jak toocopy tooand dat z Data Lake Store pomocí Azure Data Factory"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 11629fbc83f0554e2097eb4322701654c0bc2028
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2e78f75f3821738332dacf70f6bf2c16f0136408
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Kopírování dat do a z Data Lake Store pomocí objektu pro vytváření dat
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat do a z Azure Data Lake Store. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článku přehled o přesun dat s aktivitou kopírování.
+# <a name="copy-data-tooand-from-data-lake-store-by-using-data-factory"></a>Zkopírujte tooand dat z Data Lake Store pomocí objektu pro vytváření dat
+Tento článek vysvětluje, jak toouse aktivitu kopírování v Azure Data Factory toomove data tooand z Azure Data Lake Store. Vychází hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článku přehled o přesun dat s aktivitou kopírování.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Může kopírovat data **z Azure Data Lake Store** ukládá do následující data:
+Může kopírovat data **z Azure Data Lake Store** toohello následující úložišť dat:
 
 [!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
 
-Může kopírovat data z následujících datových úložišť **do Azure Data Lake Store**:
+Data můžete zkopírovat z hello následující úložišť dat **tooAzure Data Lake Store**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
@@ -36,57 +36,57 @@ Může kopírovat data z následujících datových úložišť **do Azure Data 
 > Před vytvořením kanálu s aktivitou kopírování, vytvoření účtu Data Lake Store. Další informace najdete v tématu [Začínáme s Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md).
 
 ## <a name="supported-authentication-types"></a>Typy podporované ověřování
-Konektor služby Data Lake Store podporuje tyto typy ověřování:
+konektor Hello Data Lake Store podporuje tyto typy ověřování:
 * Ověřování instančních objektů
 * Ověření přihlašovacích údajů (OAuth) uživatele 
 
-Doporučujeme použít objekt zabezpečení ověřování služby, zejména pro naplánované dat kopie. Vypršení platnosti tokenu chování mohou nastat u ověření přihlašovacích údajů uživatele. Podrobnosti konfigurace najdete v tématu [propojené vlastnosti služby](#linked-service-properties) části.
+Doporučujeme použít objekt zabezpečení ověřování služby, zejména pro naplánované dat kopie. Vypršení platnosti tokenu chování mohou nastat u ověření přihlašovacích údajů uživatele. Podrobnosti konfigurace najdete v tématu hello [propojené vlastnosti služby](#linked-service-properties) části.
 
 ## <a name="get-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure Data Lake Store pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál ke zkopírování dat je použití **Průvodce kopírováním**. Kurz týkající se vytváření kanálu pomocí Průvodce kopírováním, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
+Nejjednodušší způsob, jak toocreate Hello toocopy datový kanál je toouse hello **Průvodce kopírováním**. Kurz týkající se vytváření kanálu pomocí Průvodce kopírováním hello, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Můžete také použít následující nástroje toocreate kanálu hello: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny toocreate kanál s aktivitou kopírování.
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
+Jestli používáte nástroje hello nebo rozhraní API, je třeba provést následující kroky toocreate kanál, který přesouvá data ze zdrojových dat úložiště tooa jímku dat hello:
 
 1. Vytvoření **objekt pro vytváření dat**. Objekt pro vytváření dat může obsahovat jeden nebo víc kanálů. 
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do data factory. Pokud jsou kopírování dat z Azure blob storage do Azure Data Lake Store, například vytvoříte dvě propojené služby k propojení pro vytváření dat svůj účet úložiště Azure a Azure Data Lake store. Vlastnosti propojené služby, které jsou specifické pro Azure Data Lake Store, naleznete v části [propojené vlastnosti služby](#linked-service-properties) části. 
-2. Vytvoření **datové sady** představují vstupní a výstupní data pro kopírování. V příkladu uvedených v posledním kroku vytvoříte datové sady a zadat kontejner objektů blob a složky, která obsahuje vstupní data. A vytvořte jinou datovou sadu, která určete složku a cesta k souboru v úložišti Data Lake, který obsahuje data zkopírovat z úložiště objektů blob. Vlastnosti datové sady, které jsou specifické pro Azure Data Lake Store, naleznete v části [vlastnosti datové sady](#dataset-properties) části.
-3. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve použijete BlobSource jako zdroj a AzureDataLakeStoreSink jako jímku pro aktivitu kopírování. Podobně pokud kopírujete z Azure Data Lake Store do úložiště objektů Blob Azure, můžete použít AzureDataLakeStoreSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro Azure Data Lake Store, naleznete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímka klikněte na odkaz v předchozí části pro data store.  
+2. Vytvoření **propojené služby** toolink vstupní a výstupní data úložiště tooyour data factory. Například pokud kopírujete data ze Azure blob storage tooan Azure Data Lake Store, vytvoříte dvě propojené služby toolink vašeho účtu úložiště Azure a Azure Data Lake store tooyour data factory. Vlastnosti propojené služby, které jsou specifické tooAzure Data Lake Store, naleznete v části [propojené vlastnosti služby](#linked-service-properties) části. 
+2. Vytvoření **datové sady** toorepresent vstupní a výstupní data pro hello operace kopírování. V příkladu hello uvedených v posledním kroku hello vytvořte kontejner objektů blob hello toospecify datovou sadu a složky, která obsahuje vstupní data hello. A vytvořte jinou datovou sadu toospecify hello složky a cestu k souboru v úložišti Data Lake hello, který obsahuje hello daty zkopírovanými z úložiště objektů blob hello. Vlastnosti datové sady, které jsou specifické tooAzure Data Lake Store, naleznete v části [vlastnosti datové sady](#dataset-properties) části.
+3. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu hello již bylo zmíněno dříve použijete BlobSource jako zdroj a AzureDataLakeStoreSink jako jímku pro aktivitu kopírování hello. Podobně pokud zkopírujete z Azure Data Lake Store tooAzure úložiště objektů Blob, použijte AzureDataLakeStoreSource a BlobSink v aktivitě kopírování hello. Vlastnosti aktivity kopírování, které jsou specifické tooAzure Data Lake Store, naleznete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o způsobu toouse úložiště dat jako zdroj nebo jímka klikněte na tlačítko hello odkaz v předchozí části hello pro data store.  
 
-Když použijete průvodce, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), definujete tyto entity služby Data Factory pomocí formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke zkopírování dat do nebo ze Azure Data Lake Store naleznete v části [JSON příklady](#json-examples-for-copying-data-to-and-from-data-lake-store) tohoto článku.
+Když použijete Průvodce hello, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál hello). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), můžete definovat tyto entity služby Data Factory pomocí formátu JSON hello.  Ukázky s definicemi JSON entit služby Data Factory, které jsou používané toocopy data do nebo ze Azure Data Lake Store naleznete v části [JSON příklady](#json-examples-for-copying-data-to-and-from-data-lake-store) tohoto článku.
 
-Následující části obsahují podrobnosti o vlastnostech formátu JSON, které slouží k definování entit služby Data Factory, které jsou specifické pro Data Lake Store.
+Hello následující části obsahují podrobné informace o vlastnostech formátu JSON, které jsou používané toodefine objekt pro vytváření dat entity konkrétní tooData Lake Store.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Propojená služba odkazuje na objekt pro vytváření dat úložiště dat. Vytvoření propojené služby typu **AzureDataLakeStore** propojení Data Lake Store dat do data factory. Následující tabulka popisuje elementy JSON, které jsou specifické pro Data Lake Store propojené služby. Můžete zvolit instanční objekt a ověření přihlašovacích údajů uživatele.
+Propojená služba odkazuje data store tooa objekt pro vytváření dat. Vytvoření propojené služby typu **AzureDataLakeStore** toolink Data Lake Store data tooyour datovou továrnu. Hello následující tabulka popisuje JSON elementy konkrétní tooData Lake Store propojené služby. Můžete zvolit instanční objekt a ověření přihlašovacích údajů uživatele.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **Typ** | Vlastnost typu musí být nastavená na **AzureDataLakeStore**. | Ano |
-| **dataLakeStoreUri** | Informace o účtu Azure Data Lake Store. Tyto informace má jednu z následujících formátů: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/`. | Ano |
-| **ID předplatného** | ID předplatného Azure, ke kterému patří účet Data Lake Store. | Vyžaduje se pro sink |
-| **Název skupiny prostředků** | Název skupiny prostředků Azure, ke kterému patří účet Data Lake Store. | Vyžaduje se pro sink |
+| **Typ** | musí být nastavena vlastnost typu Hello příliš**AzureDataLakeStore**. | Ano |
+| **dataLakeStoreUri** | Informace o hello účtu Azure Data Lake Store. Tyto informace má jednu z následujících formátů hello: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/`. | Ano |
+| **ID předplatného** | Předplatné Azure ID toowhich hello účtu Data Lake Store patří. | Vyžaduje se pro sink |
+| **Název skupiny prostředků** | Patří prostředků Azure skupiny název toowhich hello účtu Data Lake Store. | Vyžaduje se pro sink |
 
 ### <a name="service-principal-authentication-recommended"></a>Objekt zabezpečení ověřování služby (doporučeno)
-Pokud chcete použít ověřování hlavní služby, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:
+objekt zabezpečení ověřování služby toouse registrace entity aplikace v Azure Active Directory (Azure AD) a udělte ho hello přístup tooData Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si hello následující hodnoty, které používáte toodefine hello propojené služby:
 * ID aplikace
 * Klíč aplikace 
 * ID tenanta
 
 > [!IMPORTANT]
-> Pokud použijete Průvodce kopírováním k vytváření datových kanálů, ujistěte se, že udělíte instanční objekt alespoň **čtečky** role v řízení přístupu (správu identit a přístupu) pro účet Data Lake Store. Navíc alespoň udělit instanční objekt **čtení + Execute** oprávnění kořenového adresáře Data Lake Store ("/") a její podřízené položky. V opačném případě může zobrazí se zpráva "zadané přihlašovací údaje jsou neplatné."<br/><br/>
-Po vytvoření nebo aktualizaci objektu služby ve službě Azure AD, může trvat několik minut, než změny vstoupí v platnost. Zkontrolujte instanční objekt a Data Lake Store přístup ovládacího prvku seznam (ACL) konfigurace. Pokud stále zobrazí zpráva "zadané přihlašovací údaje jsou neplatné," Vyčkejte chvíli a zkuste to znovu.
+> Pokud používáte hello Průvodce kopírováním tooauthor datových kanálů, ujistěte se, že udělíte hello instanční objekt alespoň **čtečky** role v řízení přístupu (správu identit a přístupu) pro účet Data Lake Store hello. Navíc alespoň udělit hello instanční objekt **čtení + Execute** oprávnění tooyour Data Lake Store kořenové ("/") a její podřízené položky. V opačném případě může zobrazit uvítací zprávu "hello, poskytnuté přihlašovací údaje jsou neplatné."<br/><br/>
+Po vytvoření nebo aktualizaci objektu služby ve službě Azure AD, může trvat několik minut, než platnost tootake změny hello. Zkontrolujte hello instanční objekt a Data Lake Store přístup ovládacího prvku seznam (ACL) konfigurace. Pokud stále vidět uvítací zprávu "hello, poskytnuté přihlašovací údaje jsou neplatné", Vyčkejte chvíli a zkuste to znovu.
 
-Použijte objekt zabezpečení ověřování služby tak, že zadáte následující vlastnosti:
+Objekt zabezpečení ověřování služby použijte zadáním hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Zadejte ID aplikace klienta. | Ano |
-| **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
+| **servicePrincipalId** | Zadejte ID aplikace hello klienta. | Ano |
+| **servicePrincipalKey** | Zadejte klíč aplikace hello. | Ano |
+| **klienta** | Zadejte informace klienta hello (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete jej načíst po výběru ukázáním hello myši v pravém horním rohu hello hello portálu Azure. | Ano |
 
 **Příkladu: Ověření objektu službu**
 ```json
@@ -107,12 +107,12 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 ```
 
 ### <a name="user-credential-authentication"></a>Ověření pověření uživatele
-Alternativně můžete ověření přihlašovacích údajů uživatele ke kopírování z nebo do Data Lake Store tak, že zadáte následující vlastnosti:
+Alternativně můžete použít toocopy ověřování přihlašovacích údajů uživatele z nebo tooData Lake Store zadáním hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **autorizace** | Klikněte **Autorizovat** tlačítko v editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje URL pro autorizaci automaticky generovaný této vlastnosti. | Ano |
-| **ID relace** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a může být použit pouze jednou. Toto nastavení se automaticky generuje při pomocí editoru služby Data Factory. | Ano |
+| **autorizace** | Klikněte na tlačítko hello **Autorizovat** tlačítka na hello editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje hello automaticky vygenerovanou autorizace URL toothis vlastnost. | Ano |
+| **ID relace** | ID relace OAuth z autorizační relace, hello OAuth. Každé ID relace je jedinečné a může být použit pouze jednou. Toto nastavení se automaticky generuje při použití hello editoru služby Data Factory. | Ano |
 
 **Příklad: Ověření pověření uživatele**
 ```json
@@ -132,21 +132,21 @@ Alternativně můžete ověření přihlašovacích údajů uživatele ke kopír
 ```
 
 #### <a name="token-expiration"></a>Vypršení platnosti tokenu
-Autorizační kód, který můžete vygenerovat pomocí **Autorizovat** tlačítko vyprší po určité době. Tato zpráva znamená, že vypršela platnost tokenu ověřování:
+Hello autorizační kód, který můžete vygenerovat pomocí hello **Autorizovat** tlačítko vyprší po určité době. Hello následující zpráva znamená, že vypršela platnost tohoto hello ověřovací token:
 
-Přihlašovací údaje chyby operace: invalid_grant - AADSTS70002: Chyba při ověřování přihlašovacích údajů. AADSTS70008: Předloženému udělení přístupu je prošlý nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: časové razítko fac30a0c-6be6-4e02-8d69-a776d2ffefd7: 2015-12-15 21-09-31Z.
+Přihlašovací údaje chyby operace: invalid_grant - AADSTS70002: Chyba při ověřování přihlašovacích údajů. AADSTS70008: hello údaje udělení přístupu vypršela platnost nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: časové razítko fac30a0c-6be6-4e02-8d69-a776d2ffefd7: 2015-12-15 21-09-31Z.
 
-V následující tabulce jsou uvedeny doby vypršení platnosti, různé typy uživatelských účtů:
+Hello následující tabulka uvádí dobu vypršení platnosti hello různé typy uživatelských účtů:
 
 
 | Typ uživatele | Platnost vyprší po |
 |:--- |:--- |
 | Uživatelské účty *není* spravované službou Azure Active Directory (například @hotmail.com nebo @live.com) |12 hodin |
-| Účty uživatelů spravované službou Azure Active Directory |14 dnů po poslední řez spustit <br/><br/>90 dnů, pokud řezu založeného na základě OAuth propojené služby používá alespoň jednou za 14 dní |
+| Účty uživatelů spravované službou Azure Active Directory |14 dnů po poslední řez hello spustit <br/><br/>90 dnů, pokud řezu založeného na základě OAuth propojené služby používá alespoň jednou za 14 dní |
 
-Pokud změníte heslo před časem vypršení platnosti tokenu, platnost tokenu vyprší okamžitě. Zobrazí se zpráva již bylo zmíněno dříve v této části.
+Pokud změníte heslo před hello dobu vypršení platnosti tokenu, platnost tokenu hello okamžitě vyprší. Zobrazí se zpráva hello dříve popsaných v této části.
 
-Můžete opětovné pověření k účtu pomocí **Autorizovat** tlačítko když vyprší platnost tokenu pro propojenou službu znovu nasaďte. Můžete také vygenerovat hodnoty **sessionId** a **autorizace** vlastnosti programově pomocí následujícího kódu:
+Můžete opětovné pověření účtu hello pomocí hello **Autorizovat** tlačítko když hello tokenu vyprší platnost tooredeploy hello propojené služby. Můžete také vygenerovat hodnoty pro hello **sessionId** a **autorizace** vlastnosti programově pomocí hello následující kód:
 
 
 ```csharp
@@ -173,26 +173,26 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Podrobnosti o třídách objekt pro vytváření dat používá v kódu najdete v tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata. Přidat odkaz na verzi `2.9.10826.1824` z `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` pro `WindowsFormsWebAuthenticationDialog` třída používaná v kódu.
+Podrobnosti o třídy hello Data Factory používané v hello kódu najdete v tématu hello [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [ Třída AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata. Přidat odkaz na tooversion `2.9.10826.1824` z `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` pro hello `WindowsFormsWebAuthenticationDialog` třída používaná v kódu hello.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Pokud chcete zadat datové sady představují vstupní data v Data Lake Store, nastavíte **typ** vlastnosti datové sady, která **AzureDataLakeStore**. Nastavte **linkedServiceName** vlastnosti datové sady, která název Data Lake Store propojené služby. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, jako například **struktura**, **dostupnosti**, a **zásad**, jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, databáze a tabulky Azure, např.). **Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace, jako je například umístění a formát dat v úložišti dat. 
+toospecify datovou sadu toorepresent vstupních dat v Data Lake Store, nastavíte hello **typ** vlastnosti datové sady hello příliš**AzureDataLakeStore**. Sada hello **linkedServiceName** vlastnost hello datovou sadu toohello název hello Data Lake Store propojené služby. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v části hello [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, jako například **struktura**, **dostupnosti**, a **zásad**, jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, databáze a tabulky Azure, např.). Hello **rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace, jako je například umístění a formát hello dat v úložišti dat hello. 
 
-**Rámci typeProperties** části datové sady typu **AzureDataLakeStore** obsahuje následující vlastnosti:
+Hello **rámci typeProperties** části datové sady typu **AzureDataLakeStore** obsahuje hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **folderPath** |Cesta ke kontejneru a složce v Data Lake Store. |Ano |
-| **Název souboru** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a velká a malá písmena. <br/><br/>Pokud zadáte **fileName**, aktivitu (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní datové sady.<br/><br/>Když **fileName** pro datovou sadu výstupů není zadána a **preserveHierarchy** není zadané v podřízený aktivity, je název vygenerovaný soubor ve formátu Data. _Identifikátor GUID_.txt'. Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
-| **partitionedBy** |**PartitionedBy** vlastnost je nepovinná. Můžete ji zadat dynamické cestu a název souboru pro data časové řady. Například **folderPath** lze nastavit parametry pro každou hodinu data. Podrobnosti a příklady naleznete v tématu [vlastnost partitionedBy](#using-partitionedby-property). |Ne |
-| **Formát** | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnost pod **formát** na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formátu](data-factory-supported-file-and-compression-formats.md#parquet-format) v částech [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` část v obou definice vstupní a výstupní datové sady. |Ne |
-| **komprese** | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| **folderPath** |Cesta toohello kontejneru a složce v Data Lake Store. |Ano |
+| **Název souboru** |Název souboru hello v Azure Data Lake Store. Hello **fileName** vlastnost je volitelná a velká a malá písmena. <br/><br/>Pokud zadáte **fileName**, na konkrétní soubor hello funguje hello aktivitu (včetně kopie).<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** v hello vstupní datové sady.<br/><br/>Když **fileName** pro datovou sadu výstupů není zadána a **preserveHierarchy** není zadané v aktivity podřízený hello název souboru hello generované je ve formátu hello Data. _Identifikátor GUID_.txt'. Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
+| **partitionedBy** |Hello **partitionedBy** vlastnost je nepovinná. Můžete ho toospecify dynamické cestu a název souboru pro data časové řady. Například **folderPath** lze nastavit parametry pro každou hodinu data. Podrobnosti a příklady naleznete v tématu [hello vlastnost partitionedBy](#using-partitionedby-property). |Ne |
+| **Formát** | jsou podporovány následující typy formátu Hello: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a  **ParquetFormat**. Sada hello **typ** vlastnost pod **formátu** tooone z těchto hodnot. Další informace najdete v tématu hello [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formátu ](data-factory-supported-file-and-compression-formats.md#parquet-format) části hello [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete soubory toocopy "jako-je" mezi souborové úložiště (binární kopie), přeskočte hello `format` část v obou definice vstupní a výstupní datové sady. |Ne |
+| **komprese** | Zadejte typ hello a úroveň komprese dat hello. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
-### <a name="the-partitionedby-property"></a>Vlastnost partitionedBy
-Můžete zadat dynamické **folderPath** a **fileName** vlastnosti pro data časové řady s **partitionedBy** vlastnost, funkce pro vytváření dat a systémové proměnné. Podrobnosti najdete v tématu [Azure Data Factory – funkce a systémové proměnné](data-factory-functions-variables.md) článku.
+### <a name="hello-partitionedby-property"></a>Vlastnost partitionedBy Hello
+Můžete zadat dynamické **folderPath** a **fileName** vlastnosti pro data časové řady s hello **partitionedBy** vlastnost, funkce pro vytváření dat a systému proměnné. Podrobnosti najdete v tématu hello [Azure Data Factory – funkce a systémové proměnné](data-factory-functions-variables.md) článku.
 
 
-V následujícím příkladu `{Slice}` se nahradí hodnota proměnné objektu pro vytváření dat systému `SliceStart` ve formátu určeném (`yyyyMMddHH`). Název `SliceStart` odkazuje na čas spuštění řezu. `folderPath` Vlastnost je jiný pro každý řez, jako v `wikidatagateway/wikisampledataout/2014100103` nebo `wikidatagateway/wikisampledataout/2014100104`.
+V následujícím příkladu hello `{Slice}` se nahradí hello hodnoty proměnné systému Data Factory hello `SliceStart` v zadaný formát hello (`yyyyMMddHH`). Název Hello `SliceStart` odkazuje čas zahájení toohello hello řez. Hello `folderPath` vlastnost je jiný pro každý řez, jako v `wikidatagateway/wikisampledataout/2014100103` nebo `wikidatagateway/wikisampledataout/2014100104`.
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -202,7 +202,7 @@ V následujícím příkladu `{Slice}` se nahradí hodnota proměnné objektu pr
 ],
 ```
 
-V následujícím příkladu, rok, měsíc, den a čas `SliceStart` extrahují do samostatné proměnné, které jsou používány `folderPath` a `fileName` vlastnosti:
+V následujícím příkladu, hello rok, měsíc, den a čas hello `SliceStart` extrahují do samostatné proměnné, které jsou používány hello `folderPath` a `fileName` vlastnosti:
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -214,47 +214,47 @@ V následujícím příkladu, rok, měsíc, den a čas `SliceStart` extrahují d
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Další informace o datových sad časové řady, plánování a řezů, najdete v článku [datové sady v Azure Data Factory](data-factory-create-datasets.md) a [Data Factory plánování a provádění](data-factory-scheduling-and-execution.md) články. 
+Další informace o datové sady času series, plánování a řezů, najdete v části hello [datové sady v Azure Data Factory](data-factory-create-datasets.md) a [Data Factory plánování a provádění](data-factory-scheduling-and-execution.md) články. 
 
 
 ## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu hello [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
 
-Vlastnosti dostupné ve **rámci typeProperties** části aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+Hello vlastnosti, které jsou k dispozici v hello **rámci typeProperties** části aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech hello zdrojů a jímky.
 
-**AzureDataLakeStoreSource** podporuje následující vlastnost v **rámci typeProperties** části:
-
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
-| --- | --- | --- | --- |
-| **rekurzivní** |Označuje, zda je data načíst rekurzivně z podsložky nebo pouze do zadané složky. |True (výchozí hodnota), False. |Ne |
-
-
-**AzureDataLakeStoreSink** podporuje následující vlastnosti v **rámci typeProperties** části:
+**AzureDataLakeStoreSource** podporuje následující vlastnosti v hello hello **rámci typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **copyBehavior** |Určuje chování kopírování. |<b>PreserveHierarchy</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta zdrojového souboru do zdrojové složky je stejný jako relativní cestu k souboru cíl k cílové složce.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky vygenerovanou názvy.<br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky pro jeden soubor. Pokud je zadaný název souboru nebo objekt blob, název souboru sloučené je zadaný název. Název souboru, jinak je generován automaticky. |Ne |
+| **rekurzivní** |Určuje, zda text hello je číst data rekurzivně z podsložky hello nebo pouze z hello zadané složky. |True (výchozí hodnota), False. |Ne |
+
+
+**AzureDataLakeStoreSink** podporuje následující vlastnosti v hello hello **rámci typeProperties** části:
+
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| --- | --- | --- | --- |
+| **copyBehavior** |Určuje chování kopie hello. |<b>PreserveHierarchy</b>: zachovává hello hierarchií souborů v cílové složce hello. relativní cesta Hello zdrojové složky toosource souboru je identické toohello relativní cestu složky tootarget cílového souboru.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky hello jsou vytvořené v první úroveň hello hello cílové složce. Hello zaměřením jsou vytvořeny s názvy generován automaticky.<br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze hello zdrojové složky tooone souboru. Pokud hello soubor nebo objekt blob je zadán název, název sloučené souboru hello je zadaný název hello. Název souboru hello jinak, je generován automaticky. |Ne |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Příklady rekurzivní a copyBehavior
-Tato část popisuje jejich výsledné chování pro různé kombinace hodnot rekurzivní a copyBehavior operace kopírování.
+Tato část popisuje hello výsledné chování hello kopírování pro různé kombinace hodnot rekurzivní a copyBehavior.
 
 | Rekurzivní | copyBehavior | Výsledné chování |
 | --- | --- | --- |
-| Hodnota TRUE |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 je vytvořena s stejná struktura jako zdroj<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| Hodnota TRUE |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
-| Hodnota TRUE |mergeFiles |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + soubor3 + File4 + soubor 5 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor |
-| False |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
-| False |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
-| False |mergeFiles |Pro zdrojové složky složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor. automaticky generovaný název File1<br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
+| Hodnota TRUE |preserveHierarchy |Pro zdrojové složky složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hello cílové složce složku1 je vytvořena s hello stejné struktury jako zdroj hello<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| Hodnota TRUE |flattenHierarchy |Pro zdrojové složky složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cíle Hello složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
+| Hodnota TRUE |mergeFiles |Pro zdrojové složky složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cíle Hello složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + soubor3 + File4 + soubor 5 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor |
+| False |preserveHierarchy |Pro zdrojové složky složku1 s hello strukturu: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hello cílové složce složku1 je vytvořena s hello strukturu<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
+| False |flattenHierarchy |Pro zdrojové složky složku1 s hello strukturu:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hello cílové složce složku1 je vytvořena s hello strukturu<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
+| False |mergeFiles |Pro zdrojové složky složku1 s hello strukturu:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hello cílové složce složku1 je vytvořena s hello strukturu<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor. automaticky generovaný název File1<br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
-Podrobnosti najdete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku.
+Podrobnosti najdete v tématu hello [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku.
 
-## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Příklady JSON pro kopírování dat do a z Data Lake Store
-Následující příklady poskytují definice JSON ukázka. Tyto ukázkové definice můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak ke zkopírování dat z Data Lake Store a Azure Blob storage a do. Nicméně je možné zkopírovat data _přímo_ ze všech zdrojů do jakéhokoli z podporovaném jímky. Další informace najdete v části "podporované úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.  
+## <a name="json-examples-for-copying-data-tooand-from-data-lake-store"></a>Příklady JSON kopírování tooand dat z Data Lake Store
+Následující příklady Hello poskytují definice JSON ukázka. Můžete použít tyto ukázkové definice toocreate kanálu pomocí hello [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazit příklady jak Hello toocopy tooand dat z Data Lake Store a Azure Blob storage. Nicméně je možné zkopírovat data _přímo_ z jakéhokoli z tooany zdroje hello z jímky hello podporována. Další informace najdete v tématu hello části "podporované úložiště dat a formáty" v hello [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.  
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Příklad: Kopírování dat z Azure Blob Storage do Azure Data Lake Store
-Ukázkový kód v této části uvádí:
+### <a name="example-copy-data-from-azure-blob-storage-tooazure-data-lake-store"></a>Příklad: Kopírování dat z Azure Blob Storage tooAzure Data Lake Store
+Hello ukázkový kód v této části uvádí:
 
 * Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
 * Propojené služby typu [AzureDataLakeStore](#linked-service-properties).
@@ -262,7 +262,7 @@ Ukázkový kód v této části uvádí:
 * Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureDataLakeStore](#dataset-properties).
 * A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [AzureDataLakeStoreSink](#copy-activity-properties).
 
-Příklady ukazují, jak časové řady dat z Azure Blob Storage je zkopírován do Data Lake Store každou hodinu. 
+Hello příklady ukazují, jak časové řady dat z Azure Blob Storage je zkopírovat tooData Lake Store každou hodinu. 
 
 **Propojená služba Azure Storage**
 
@@ -298,12 +298,12 @@ Příklady ukazují, jak časové řady dat z Azure Blob Storage je zkopírován
 ```
 
 > [!NOTE]
-> Podrobnosti konfigurace najdete v tématu [propojené vlastnosti služby](#linked-service-properties) části.
+> Podrobnosti konfigurace najdete v tématu hello [propojené vlastnosti služby](#linked-service-properties) části.
 >
 
 **Vstupní datová sada Azure Blob**
 
-V následujícím příkladu dat je převzata z nového objektu blob každou hodinu (`"frequency": "Hour", "interval": 1`). Název složky a cesta k souboru pro tento objekt blob se vyhodnocují dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc a den část čas spuštění. Název souboru používá hodinu část čas spuštění. `"external": true` Nastavení služba Data Factory informuje, že v tabulce je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+V následujícím příkladu hello, data je převzata z nového objektu blob každou hodinu (`"frequency": "Hour", "interval": 1`). název a cesta k souboru složky Hello pro objekt blob hello se vyhodnocují dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá hello rok, měsíc a den část hello počáteční čas. Název souboru Hello používá hodinu hello část hello počáteční čas. Hello `"external": true` nastavení informuje služba Data Factory hello Tato tabulka hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```JSON
 {
@@ -366,7 +366,7 @@ V následujícím příkladu dat je převzata z nového objektu blob každou hod
 
 **Azure Data Lake Store výstupní datovou sadu**
 
-Následující příklad zkopíruje data do Data Lake Store. Nová data se zkopírují do Data Lake Store každou hodinu.
+Následující příklad kopie dat tooData Lake Store Hello. Zkopíruje nová data Lake Store tooData každou hodinu.
 
 ```JSON
 {
@@ -388,7 +388,7 @@ Následující příklad zkopíruje data do Data Lake Store. Nová data se zkop�
 
 **Aktivita kopírování v kanálu s blob zdroj a jímka Data Lake Store**
 
-V následujícím příkladu kanál obsahuje aktivitu kopírování, která je nakonfigurována pro používání vstupní a výstupní datové sady. Aktivita kopírování je naplánována na každou hodinu. V definici JSON kanálu `source` je typ nastaven na `BlobSource`a `sink` je typ nastaven na `AzureDataLakeStoreSink`.
+V následujícím příkladu hello, hello kanál obsahuje aktivitu kopírování, který je nakonfigurovaný toouse hello vstupní a výstupní datové sady. Aktivita kopírování Hello je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello `source` je typ nastaven příliš`BlobSource`a hello `sink` je typ nastaven příliš`AzureDataLakeStoreSink`.
 
 ```json
 {  
@@ -438,8 +438,8 @@ V následujícím příkladu kanál obsahuje aktivitu kopírování, která je n
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Příklad: Kopírování dat z Azure Data Lake Store do objektu blob Azure
-Ukázkový kód v této části uvádí:
+### <a name="example-copy-data-from-azure-data-lake-store-tooan-azure-blob"></a>Příklad: Kopírování dat z Azure Data Lake Store tooan objektů blob v Azure
+Hello ukázkový kód v této části uvádí:
 
 * Propojené služby typu [AzureDataLakeStore](#linked-service-properties).
 * Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -447,7 +447,7 @@ Ukázkový kód v této části uvádí:
 * Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [AzureDataLakeStoreSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Kód kopíruje data časové řady z Data Lake Store do objektu blob Azure každou hodinu. 
+Kód Hello kopíruje data časové řady z Data Lake Store tooan objektů blob v Azure každou hodinu. 
 
 **Propojená služba Azure Data Lake Store**
 
@@ -467,7 +467,7 @@ Kód kopíruje data časové řady z Data Lake Store do objektu blob Azure každ
 ```
 
 > [!NOTE]
-> Podrobnosti konfigurace najdete v tématu [propojené vlastnosti služby](#linked-service-properties) části.
+> Podrobnosti konfigurace najdete v tématu hello [propojené vlastnosti služby](#linked-service-properties) části.
 >
 
 **Propojená služba Azure Storage**
@@ -485,7 +485,7 @@ Kód kopíruje data časové řady z Data Lake Store do objektu blob Azure každ
 ```
 **Vstupní datové sady Azure Data Lake**
 
-V tomto příkladu nastavení `"external"` k `true` služba Data Factory informuje, že v tabulce je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+V tomto příkladu nastavení `"external"` příliš`true` informuje služba Data Factory hello Tato tabulka hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```json
 {
@@ -520,7 +520,7 @@ V tomto příkladu nastavení `"external"` k `true` služba Data Factory informu
 ```
 **Výstupní datová sada Azure Blob**
 
-V následujícím příkladu, data se zapisují do nového objektu blob každou hodinu (`"frequency": "Hour", "interval": 1`). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas část čas spuštění.
+V následujícím příkladu hello, data se zapisují nový objekt blob tooa každou hodinu (`"frequency": "Hour", "interval": 1`). Cesta ke složce Hello pro objekt blob hello je vyhodnocován dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá hello rok, měsíc, den a čas část hello počáteční čas.
 
 ```JSON
 {
@@ -580,7 +580,7 @@ V následujícím příkladu, data se zapisují do nového objektu blob každou 
 
 **Aktivita kopírování v kanálu s na Azure Data Lake Store zdroj a jímka objektů blob**
 
-V následujícím příkladu kanál obsahuje aktivitu kopírování, která je nakonfigurována pro používání vstupní a výstupní datové sady. Aktivita kopírování je naplánována na každou hodinu. V definici JSON kanálu `source` je typ nastaven na `AzureDataLakeStoreSource`a `sink` je typ nastaven na `BlobSink`.
+V následujícím příkladu hello, hello kanál obsahuje aktivitu kopírování, který je nakonfigurovaný toouse hello vstupní a výstupní datové sady. Aktivita kopírování Hello je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello `source` je typ nastaven příliš`AzureDataLakeStoreSource`a hello `sink` je typ nastaven příliš`BlobSink`.
 
 ```json
 {  
@@ -628,7 +628,7 @@ V následujícím příkladu kanál obsahuje aktivitu kopírování, která je n
 }
 ```
 
-V definici aktivity kopírování můžete namapovat sloupců z datové sady zdroje sloupců v datové sadě jímky. Podrobnosti najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+V definici aktivity kopírování hello můžete namapovat sloupce z toocolumns datové sady zdroje hello v datové sadě podřízený hello. Podrobnosti najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-Další informace o faktory, které ovlivňují výkon aktivity kopírování a jak ji optimalizovat najdete v tématu [výkonu kopie aktivity a vyladění průvodce](data-factory-copy-activity-performance.md) článku.
+toolearn hello faktory, které ovlivňují výkon aktivity kopírování a jak toooptimize, najdete v části hello [výkonu kopie aktivity a vyladění průvodce](data-factory-copy-activity-performance.md) článku.

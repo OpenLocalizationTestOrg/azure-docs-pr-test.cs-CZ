@@ -1,6 +1,6 @@
 ---
-title: "Použití dynamické telemetrie | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak používat dynamické telemetrie s Azure IoT Suite předkonfigurovanému řešení vzdáleného monitorování."
+title: "dynamické telemetrie aaaUse | Microsoft Docs"
+description: "Postupujte podle tohoto kurzu toolearn jak toouse dynamické telemetrie s hello Azure IoT Suite vzdálené monitorování předkonfigurované řešení."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 0114f27f9b8ae76e1170d04ddf66e2c4bf20686a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 06cb2a370b67b4950efdfa4c7d906ac92106f4a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Použití dynamické telemetrie s předkonfigurovaného řešení vzdáleného monitorování
+# <a name="use-dynamic-telemetry-with-hello-remote-monitoring-preconfigured-solution"></a>Použití dynamické telemetrie s hello předkonfigurovanému řešení vzdáleného monitorování
 
-Dynamické telemetrie umožňuje vizualizovat všechny telemetrická data odesílaná do předkonfigurovaného řešení vzdáleného monitorování. Simulovaná zařízení, které nasadit s předkonfigurovaným řešením odesílat telemetrii teploty a vlhkosti, který můžete vizualizovat na řídicím panelu. Je-li přizpůsobit existující Simulovaná zařízení, vytvořte nové simulované zařízení nebo připojení fyzického zařízení s předkonfigurovaným řešením můžete odeslat další hodnoty telemetrie například externí teplotu, ot. / min nebo větru. Potom můžete vizualizovat tuto další telemetrii na řídicím panelu.
+Dynamické telemetrie umožňuje vám toovisualize všechny telemetrická data odesílaná toohello předkonfigurovanému řešení vzdáleného monitorování. Hello simulované zařízení, která nasazení s hello předkonfigurované řešení odesílat telemetrii teploty a vlhkosti, který můžete vizualizovat na řídicím panelu hello. Pokud upravíte existující Simulovaná zařízení, vytvořte nové simulované zařízení nebo připojení fyzických zařízení toohello předkonfigurované řešení můžete odeslat další hodnoty telemetrie například externí teplotu hello, ot. / min nebo větru. Potom můžete vizualizovat tuto další telemetrii na řídicím panelu hello.
 
-Tento kurz používá jednoduchý Node.js simulovaného zařízení, která můžete snadno upravit a experimentovat s dynamické telemetrie.
+Tento kurz používá jednoduchý simulované zařízení Node.js můžete snadno upravit tooexperiment s dynamické telemetrií.
 
-K dokončení tohoto kurzu, budete potřebovat:
+toocomplete tohoto kurzu budete potřebovat:
 
 * Aktivní předplatné Azure. Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk_free_trial].
 * [Node.js] [ lnk-node] verze 0.12.x nebo novější.
@@ -40,10 +40,10 @@ Tento kurz v jakémkoliv operačním systému, jako je například systému Wind
 
 ## <a name="add-a-telemetry-type"></a>Přidání typu telemetrie
 
-Dalším krokem je nahradit telemetrii vygenerovanou simulované zařízení Node.js s novou sadu hodnot:
+dalším krokem Hello je tooreplace hello telemetrii vygenerovanou hello Node.js simulované zařízení s novou sadu hodnot:
 
-1. Zastavit simulované zařízení Node.js zadáním **Ctrl + C** v příkazovém řádku nebo prostředí.
-2. V souboru remote_monitoring.js uvidíte základní datových hodnot pro existující teploty, vlhkosti a externí teplotní telemetrie. Přidejte hodnotu základní data pro **rpm** následujícím způsobem:
+1. Zastavení hello Node.js simulované zařízení tak, že zadáte **Ctrl + C** v příkazovém řádku nebo prostředí.
+2. V souboru remote_monitoring.js hello uvidíte hello základní data hodnoty pro existující teploty hello vlhkosti a externí teplotní telemetrie. Přidejte hodnotu základní data pro **rpm** následujícím způsobem:
 
     ```nodejs
     // Sensors data
@@ -53,7 +53,7 @@ Dalším krokem je nahradit telemetrii vygenerovanou simulované zařízení Nod
     var rpm = 200;
     ```
 
-3. Node.js simulované zařízení používá **generateRandomIncrement** funkce v souboru remote_monitoring.js přidejte náhodný přírůstek hodnoty základní data. Náhodně přeskupit **rpm** hodnota přidáním řádek kódu po existující randomizations následujícím způsobem:
+3. Simulovaná zařízení Node.js Hello používá hello **generateRandomIncrement** v hello remote_monitoring.js soubor tooadd toohello náhodných přírůstek fungovat základní datových hodnot. Náhodně přeskupit hello **rpm** hodnota přidáním řádek kódu po existující randomizations hello:
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +62,7 @@ Dalším krokem je nahradit telemetrii vygenerovanou simulované zařízení Nod
     rpm += generateRandomIncrement();
     ```
 
-4. Přidejte novou hodnotu rpm do datové části JSON, které zařízení odesílá do služby IoT Hub:
+4. Přidejte hello nové rpm hodnota toohello JSON datové části hello zařízení odesílá tooIoT rozbočovače:
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +74,20 @@ Dalším krokem je nahradit telemetrii vygenerovanou simulované zařízení Nod
     });
     ```
 
-5. Spusťte simulované zařízení Node.js pomocí následujícího příkazu:
+5. Spusťte hello Node.js simulované zařízení pomocí hello následující příkaz:
 
     `node remote_monitoring.js`
 
-6. Sledujte nový typ telemetrie ot. / min, který se zobrazí v grafu v řídicím panelu:
+6. Sledujte hello nový RPM telemetrie typ, který zobrazí v grafu hello hello řídicím panelu:
 
-![Přidat RPM na řídicí panel][image3]
+![Přidat řídicí panel toohello ot. / min][image3]
 
 > [!NOTE]
-> Budete muset zakažte a znovu povolte Node.js zařízení na **zařízení** stránky v řídicím panelu se projeví okamžitě.
+> Můžete třeba toodisable a pak povolte zařízení Node.js hello na hello **zařízení** stránky v změn hello toosee hello řídicí panel okamžitě.
 
-## <a name="customize-the-dashboard-display"></a>Přizpůsobení zobrazení řídicího panelu
+## <a name="customize-hello-dashboard-display"></a>Přizpůsobení zobrazení řídicího panelu hello
 
-**Informace o zařízení** zprávy může obsahovat metadata o telemetrie zařízení může odesílat do služby IoT Hub. Tato metadata můžete určit typy telemetrických dat, které zařízení odesílá. Změnit **deviceMetaData** hodnota v souboru remote_monitoring.js **Telemetrie** následující definice **příkazy** definice. Následující fragment kódu ukazuje kód **příkazy** definice (Nezapomeňte přidat `,` po **příkazy** definice):
+Hello **informace o zařízení** zprávy může obsahovat metadata o hello telemetrie může posílat hello zařízení tooIoT rozbočovače. Tato metadata můžete určit typy hello telemetrie, které odesílá hello zařízení. Upravit hello **deviceMetaData** hodnota v hello remote_monitoring.js soubor tooinclude **Telemetrie** definice následující hello **příkazy** definice. Hello následující fragment kódu ukazuje hello **příkazy** definice (být jisti tooadd `,` po hello **příkazy** definice):
 
 ```nodejs
 'Commands': [{
@@ -119,10 +119,10 @@ Dalším krokem je nahradit telemetrii vygenerovanou simulované zařízení Nod
 ```
 
 > [!NOTE]
-> Pro porovnání definici metadat s daty v datovém proudu telemetrických dat používá řešení vzdáleného monitorování porovnávání.
+> řešení vzdáleného monitorování Hello používá definice metadat hello toocompare velká a malá písmena shodu s daty v datovém proudu telemetrických dat hello.
 
 
-Přidání **Telemetrie** definice, jak je uvedeno v předchozím fragmentu kódu nezmění chování řídicího panelu. Však může také obsahovat metadata **DisplayName** atribut pro přizpůsobení zobrazení v řídicím panelu. Aktualizace **Telemetrie** definice metadat, jak je znázorněno v následujícím fragmentu kódu:
+Přidání **Telemetrie** definice, jak je znázorněno v hello předchozím fragmentu kódu nezmění chování hello hello řídicího panelu. Však může také obsahovat hello metadata **DisplayName** atribut toocustomize hello zobrazení v řídicím panelu hello. Aktualizace hello **Telemetrie** definice metadat, jak je znázorněno v následujícím fragmentu kódu hello:
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +144,18 @@ Přidání **Telemetrie** definice, jak je uvedeno v předchozím fragmentu kód
 ]
 ```
 
-Následující snímek obrazovky ukazuje, jak tuto změnu upraví legendu grafu na řídicím panelu:
+Hello následující snímek obrazovky ukazuje, jak tuto změnu upraví legendy grafu hello na řídicím panelu hello:
 
-![Přizpůsobení legendu grafu][image4]
+![Přizpůsobení legendy grafu hello][image4]
 
 > [!NOTE]
-> Budete muset zakažte a znovu povolte Node.js zařízení na **zařízení** stránky v řídicím panelu se projeví okamžitě.
+> Můžete třeba toodisable a pak povolte zařízení Node.js hello na hello **zařízení** stránky v změn hello toosee hello řídicí panel okamžitě.
 
-## <a name="filter-the-telemetry-types"></a>Filtroval typy telemetrie
+## <a name="filter-hello-telemetry-types"></a>Filtrovat hello telemetrie typy
 
-Ve výchozím nastavení graf na řídicí panel zobrazuje každé datové řady v datový proud telemetrie. Můžete použít **informace o zařízení** metadata potlačit zobrazení telemetrie konkrétní typy v grafu. 
+Ve výchozím nastavení hello graf na řídicí panel hello znázorňuje všechny datové řady v datovém proudu telemetrických dat hello. Můžete použít hello **informace o zařízení** metadata toosuppress hello zobrazení telemetrie konkrétní typy v grafu hello. 
 
-Chcete-li zobrazit pouze teploty a vlhkosti telemetrie grafu, vynechejte **ExternalTemperature** z **informace o zařízení** **Telemetrie** metadata následujícím způsobem:
+Graf hello toomake zobrazit pouze teploty a vlhkosti telemetrie, vynechejte **ExternalTemperature** z hello **informace o zařízení** **Telemetrie** metadata následujícím způsobem:
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +177,22 @@ Chcete-li zobrazit pouze teploty a vlhkosti telemetrie grafu, vynechejte **Exter
 ]
 ```
 
-**Venku teploty** už nebude zobrazovat na graf:
+Hello **venku teploty** už nebude zobrazovat v grafu hello:
 
-![Filtrovat telemetrii na řídicím panelu][image5]
+![Filtr hello telemetrii na řídicím panelu hello][image5]
 
-Tato změna ovlivňuje pouze zobrazení grafu. **ExternalTemperature** hodnoty data jsou stále uloženy a k dispozici pro zpracování všech back-end.
+Tato změna ovlivňuje pouze zobrazení grafu hello. Hello **ExternalTemperature** hodnoty data jsou stále uloženy a k dispozici pro zpracování všech back-end.
 
 > [!NOTE]
-> Budete muset zakažte a znovu povolte Node.js zařízení na **zařízení** stránky v řídicím panelu se projeví okamžitě.
+> Můžete třeba toodisable a pak povolte zařízení Node.js hello na hello **zařízení** stránky v změn hello toosee hello řídicí panel okamžitě.
 
 ## <a name="handle-errors"></a>Zpracování chyb
 
-Pro datový proud pro zobrazení v grafu jeho **typ** v **informace o zařízení** metadata musí odpovídat datovému typu hodnot telemetrie. Například, pokud metadata Určuje, že **typ** vlhkosti dat je **int** a **dvojité** nenajde v datovém proudu telemetrických dat, pak telemetrie vlhkosti nezobrazí. v grafu. Ale **vlhkosti** hodnoty jsou stále uloženy a k dispozici pro zpracování všech back-end.
+Pro toodisplay datového proudu data v grafu hello jeho **typ** v hello **informace o zařízení** metadata musí odpovídat datovému typu hello hello telemetrie hodnot. Například pokud hello metadata Určuje, že hello **typ** vlhkosti dat je **int** a **dvojité** se nachází v datový proud telemetrie hello pak nemá telemetrie vlhkosti hello nejsou zobrazeny v grafu hello. Ale hello **vlhkosti** hodnoty jsou stále uloženy a k dispozici pro zpracování všech back-end.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když už víte, jak používat dynamické telemetrie, další informace o tom, jak předkonfigurovaná řešení využívají informace o zařízení: [informace metadat zařízení ve vzdálené monitorování předkonfigurované řešení] [ lnk-devinfo].
+Teď, když už víte, jak toouse dynamické telemetrických dat, další informace o tom, jak hello předkonfigurovaných řešení použít informace o zařízení: [informace metadat zařízení v hello vzdálené monitorování předkonfigurované řešení] [ lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

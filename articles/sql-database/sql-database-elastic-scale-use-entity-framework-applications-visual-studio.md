@@ -1,5 +1,5 @@
 ---
-title: "Klientská knihovna pro elastické databáze pomocí rozhraní Entity Framework | Microsoft Docs"
+title: "Klientská knihovna pro aaaUsing elastické databáze s platformou Entity Framework | Microsoft Docs"
 description: "Pomocí klientské knihovny pro elastické databáze a Entity Framework pro kódování databází"
 services: sql-database
 documentationcenter: 
@@ -15,73 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: torsteng
-ms.openlocfilehash: 2f0bff394c1e11a270cb324be5a1a45e9e531d7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 917f6d28d9855c0b42afe2c008613a9bbb3ec6b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna pro elastické databáze s platformou Entity Framework
-Tento dokument ukazuje změny v aplikaci rozhraní Entity Framework, která jsou potřebné k integraci s [nástroje elastické databáze](sql-database-elastic-scale-introduction.md). Zaměřuje se na skládání [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md) a [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) s platformou Entity Framework **Code First** přístup. [Code nejprve - novou databázi](http://msdn.microsoft.com/data/jj193542.aspx) kurz pro EF slouží jako našem příkladu spuštěné v tomto dokumentu. Ukázkový kód doplňujícími tento dokument je součástí nástroje elastické databáze sada ukázky ve Visual Studio ukázky kódu.
+Tento dokument ukazuje hello změny v aplikaci rozhraní Entity Framework, které jsou potřebné toointegrate s hello [nástroje elastické databáze](sql-database-elastic-scale-introduction.md). Hello zaměřuje se na skládání [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md) a [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) s hello Entity Framework **Code First** přístup. Hello [Code nejprve - novou databázi](http://msdn.microsoft.com/data/jj193542.aspx) kurz pro EF slouží jako našem příkladu spuštěné v tomto dokumentu. Ukázkový kód Hello doplňujícími tento dokument je součástí nástroje elastické databáze sada ukázky v hello Visual Studio – ukázky kódu.
 
-## <a name="downloading-and-running-the-sample-code"></a>Stažení a spuštění ukázkového kódu
-Chcete-li stáhnout kód v tomto článku:
+## <a name="downloading-and-running-hello-sample-code"></a>Stažení a spuštění hello ukázkový kód
+toodownload hello kód v tomto článku:
 
 * Visual Studio 2012 nebo novější je povinný. 
-* Stažení [elastické databáze nástroje pro Azure SQL – ukázka integrace Entity Framework](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) z webu MSDN. Rozbalte vzorku, který se umístění vašeho výběru.
+* Stáhnout hello [elastické databáze nástroje pro Azure SQL – ukázka integrace Entity Framework](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) z webu MSDN. Rozbalte hello ukázka tooa umístění dle vlastního výběru.
 * Spusťte Visual Studio. 
 * V sadě Visual Studio vyberte soubor -> Otevřít projekt nebo řešení. 
-* V **otevřít projekt** dialogové okno, přejděte k ukázkové jste stáhli a vyberte **EntityFrameworkCodeFirst.sln** otevřete ukázku. 
+* V hello **otevřeného projektu** dialogové okno, přejděte toohello ukázka jste stáhli a vyberte **EntityFrameworkCodeFirst.sln** tooopen hello ukázka. 
 
-Ke spuštění ukázky, budete muset vytvořit tři prázdné databáze ve službě Azure SQL Database:
+Ukázka hello toorun, je třeba toocreate tři prázdné databáze ve službě Azure SQL Database:
 
 * Horizontálního oddílu mapa správce databáze
 * Databáze horizontálního oddílu 1
 * Databáze horizontálního oddílu 2
 
-Po vytvoření těchto databází, vyplňte zástupného v **Program.cs** se název serveru Azure SQL DB, názvy databáze a pověření pro připojení k databázím. Sestavte řešení v sadě Visual Studio. Visual Studio stáhne požadované balíčky NuGet pro klientské knihovny elastické databáze Entity Framework a přechodná chyba zpracování v rámci procesu sestavení. Ujistěte se, že probíhá obnovení balíčků NuGet je povolena pro vaše řešení. Toto nastavení můžete povolit kliknutím pravým tlačítkem na soubor řešení v Průzkumníku řešení Visual Studio. 
+Po vytvoření těchto databází, vyplňte hello zástupného v **Program.cs** se název serveru Azure SQL DB, hello názvy databáze a databáze toohello tooconnect přihlašovací údaje. Vytvoření hello řešení v sadě Visual Studio. Visual Studio stáhne hello požadované balíčky NuGet pro klientské knihovny pro elastické databáze hello Entity Framework a přechodná chyba zpracování jako součást procesu sestavení hello. Ujistěte se, že probíhá obnovení balíčků NuGet je povolena pro vaše řešení. Toto nastavení můžete povolit kliknutím pravým tlačítkem na soubor řešení hello v hello Průzkumníka řešení Visual Studio. 
 
 ## <a name="entity-framework-workflows"></a>Pracovní postupy Entity Framework
-Vývojáři Entity Framework využívají následující čtyři pracovních postupů, chcete-li vytvářet aplikace a zajistit trvalosti pro objekty aplikací: 
+Vývojáři Entity Framework spoléhají na jednom z hello následující čtyři pracovních toobuild aplikace a trvalost tooensure pro objekty aplikací: 
 
-* **Code First (nová databáze)**: EF vývojáře vytvoří model v kódu aplikace a pak EF vygeneruje databázi z něj. 
-* **Code First (existující databáze)**: vývojář umožňuje EF generování kódu aplikace pro model z existující databáze.
-* **Model první**: vývojář vytvoří model v EF designeru a pak EF vytvoří databázi z modelu.
-* **Databáze první**: vývojář používá EF tooling odvodit modelu z existující databáze. 
+* **Code First (nová databáze)**: hello EF vývojáře vytvoří v kódu aplikace hello hello model a pak EF generuje hello databáze z něj. 
+* **Code First (existující databáze)**: hello vývojáře umožňuje EF generování kódu aplikace hello hello modelu z existující databáze.
+* **Model první**: hello vývojáře vytvoří hello model v EF designeru hello a pak EF vytvoří hello databázi z modelu hello.
+* **Databáze první**: hello developer používá EF tooling tooinfer hello modelu z existující databáze. 
 
-Všechny tyto přístupy spoléhají na třídy DbContext transparentně Správa připojení k databázi a schéma databáze pro aplikaci. Jak se budeme zabývat podrobněji později v dokumentu, jiné konstruktory na základní třídy DbContext povolit pro různé úrovně kontroly nad vytváření připojení, databáze vytváření zavádění a schéma. Problémy jsou vyvolány především na skutečnost, že správu připojení databáze poskytované EF protíná s dat závislé směrování rozhraní poskytuje možnosti správy připojení pomocí klientské knihovny pro elastické databáze. 
+Spravovat všechny tyto přístupy spoléhají na tootransparently třídy DbContext hello připojení k databázi a schéma databáze pro aplikaci. Jak se budeme zabývat podrobněji později v dokumentu hello jiné konstruktory na základní třídy DbContext hello povolit pro různé úrovně kontroly nad vytváření připojení, databáze vytváření zavádění a schéma. Problémy jsou vyvolány především hello skutečnost, že správa připojení databáze hello poskytovaná v rámci EF protíná s hello data závislé směrování rozhraní poskytuje možnosti správy připojení hello pomocí klientské knihovny pro elastické databáze hello. 
 
 ## <a name="elastic-database-tools-assumptions"></a>Předpoklady nástroje elastické databáze
 Definice podmínek, najdete v části [Glosář nástroje elastické databáze](sql-database-elastic-scale-glossary.md).
 
-Klientská knihovna pro elastické databáze definovat oddíly názvem shardlets data aplikací. Shardlets jsou identifikovány klíč horizontálního dělení a jsou namapované na konkrétní databáze. Aplikace může mít libovolný počet databází, podle potřeby a distribuovat shardlets zajistit dostatek kapacity nebo výkonu zadána aktuální podnikové požadavky. Mapování hodnot klíče horizontálního dělení k databázím ukládá horizontálního oddílu mapu poskytuje rozhraní API klienta elastické databáze. Říkáme tato funkce **horizontálního oddílu mapy správu**, nebo pro zkrácení SMM. Mapování horizontálních slouží taky jako zprostředkovatel připojení databáze pro požadavky, které zajišťují klíč horizontálního dělení. Tato funkce jako označujeme **závislé na data směrování**. 
+Klientská knihovna pro elastické databáze definovat oddíly názvem shardlets data aplikací. Shardlets jsou identifikovány klíč horizontálního dělení a jsou namapované toospecific databáze. Aplikace může mít libovolný počet databází, podle potřeby a distribuci hello shardlets tooprovide dost kapacity nebo výkonu zadána aktuální obchodní požadavky. mapování Hello horizontálního dělení hodnoty klíče toohello databází ukládá horizontálního oddílu mapu poskytované hello elastické databáze klientských rozhraní API. Říkáme tato funkce **horizontálního oddílu mapy správu**, nebo pro zkrácení SMM. mapování horizontálních Hello slouží také jako hello zprostředkovatele připojení k databázi pro požadavky, které zajišťují klíč horizontálního dělení. Označujeme toothis funkce jako **závislé na data směrování**. 
 
-Mapa správce horizontálního oddílu chrání uživatelé z nekonzistentní zobrazení do shardlet data, která může dojít, když se děje operace správy souběžných shardlet (například přemístění dat z jedné horizontálního oddílu do jiného). Uděláte to tak mapy horizontálního oddílu spravuje zprostředkovatele knihovny klienta připojení databáze pro aplikaci. To umožňuje funkci horizontálního oddílu mapy automaticky ukončit připojení k databázi, pokud operace správy horizontálního oddílu by mohlo mít vliv shardlet, který byl vytvořen pro připojení. Tento přístup je potřeba integrovat některé EF na funkce, jako je například vytváření nových připojení z existující Zkontrolovat existenci databáze. Obecně platí naše pozorování bylo, že standardní konstruktory DbContext pouze pracovní spolehlivě pro uzavřené databázových připojení, která se dají bezpečně klonovat pro EF fungovat. Princip návrhu elastické databáze místo toho je pouze zprostředkovatel otevřené připojení. Může být jeden vezměte v úvahu uzavřením připojení pomocí klientské knihovny pro zprostředkované před předání do EF DbContext může vyřešit tento problém. Však Probíhá ukončování připojení a spoléhat na EF ho znovu otevřete, jeden foregoes kontroly ověřování a konzistence provádí knihovny. Funkce migrace ve EF, ale používá tato připojení ke správě základní schéma databáze tak, že je transparentní pro aplikace. V ideálním případě by rádi bychom zachovat a kombinace všechny tyto možnosti z klientské knihovny pro elastické databáze a EF ve stejné aplikaci. Následující část popisuje tyto vlastnosti a požadavky podrobněji. 
+správce mapy horizontálního oddílu Hello chrání uživatelé z nekonzistentní zobrazení do shardlet data, která může dojít, když se děje souběžných shardlet operace správy (například přemístění dat z jedné horizontálních tooanother). toodo tedy hello horizontálního oddílu mapy spravuje hello knihovně zprostředkovatele hello databáze připojení klienta pro aplikaci. To umožňuje hello horizontálního oddílu mapy funkce tooautomatically kill připojení k databázi při operacích správy horizontálního oddílu by mohlo mít vliv hello shardlet, který byl vytvořen hello připojení pro. Tento postup musí toointegrate s některými EF na funkce, jako je například vytváření nových připojení z existující jeden toocheck existence databáze. Obecně platí, naše pozorování bylo, že standardní konstruktory DbContext hello pouze fungovat spolehlivě pro připojení uzavřené databáze, které se dají bezpečně klonovat pro EF práci. Princip návrhu Hello elastické databáze místo toho je tooonly zprostředkovatele otevřít připojení. Může být jeden vezměte v úvahu uzavřením připojení zprostředkované pomocí klientské knihovny hello před blokováním přes toohello EF DbContext může vyřešit tento problém. Ale zavřením hello připojení a spoléhat na EF toore otevřete ho, jeden foregoes kontroly ověřování a konzistence hello provádí hello knihovně. funkce migrace Hello v EF, ale používá tyto hello toomanage připojení základní schéma databáze tak, že je transparentní toohello aplikace. V ideálním případě by jsme jako tooretain a kombinace všechny tyto funkce z klientské knihovny pro elastické databáze hello i EF v hello stejná aplikace. Hello následující část popisuje tyto vlastnosti a požadavky podrobněji. 
 
 ## <a name="requirements"></a>Požadavky
-Při práci s klientské knihovny pro elastické databáze a Entity Framework rozhraní API, chceme zachovat následující vlastnosti: 
+Při práci s hello klientské knihovny pro elastické databáze a Entity Framework rozhraní API, chceme tooretain hello následující vlastnosti: 
 
-* **Škálováním na více systémů**: můžete přidat nebo odebrat databáze z datové vrstvy horizontálně dělené aplikace v případě potřeby u požadavky kapacity aplikace. To znamená řízení přes vytváření a odstraňování databáze a horizontálního oddílu elastické databáze pomocí rozhraní API manager ke správě databáze a mapování shardlets mapy. 
-* **Konzistence**: aplikace používá horizontálního dělení a používá závislé směrování funkce dat klientské knihovny. Připojení se pokud chcete vyhnout poškození nebo výsledky dotazu nesprávný, zprostředkované prostřednictvím správce mapy horizontálního oddílu. Zachová také ověření a konzistence.
-* **Code First**: zachování pohodlím, které představuje první zlepší EF na kódu. Code First třídy v aplikaci se mapují transparentně základní struktury databáze. Kód aplikace komunikuje s DbSets, který maskování většinu aspektů základní zpracování databáze.
-* **Schéma**: rozhraní Entity Framework zpracovává vytvoření schématu počáteční databáze a následné schématu vývoj pomocí migrace. Přizpůsobení aplikace je snadné zachováním tyto možnosti, jak zpracovaní data. 
+* **Škálováním na více systémů**: tooadd nebo odebrat databáze z hello datové vrstvy hello horizontálně dělené aplikace podle potřeby pro požadavky na kapacitu hello aplikace hello. To znamená kontrolu nad hello hello vytváření a odstraňování databází a databází toomanage rozhraní API map hello elastické databáze horizontálního oddílu manager a mapování shardlets jeho použití. 
+* **Konzistence**: aplikace hello používá horizontálního dělení a používá hello závislé směrování funkce dat Klientská knihovna pro hello. tooavoid poškození nebo výsledky dotazu nesprávný připojení jsou zprostředkované přes správce mapy hello horizontálního oddílu. Zachová také ověření a konzistence.
+* **Code First**: tooretain hello pohodlím, které představuje první zlepší EF na kódu. V Code First jsou třídy v aplikaci hello namapované transparentně toohello základní struktury databáze. kód aplikace Hello komunikuje s DbSets, který maskování většinu aspektů hello základní zpracování databáze.
+* **Schéma**: rozhraní Entity Framework zpracovává vytvoření schématu počáteční databáze a následné schématu vývoj pomocí migrace. Zachováním tyto funkce, je snadné jako hello zpracovaní dat přizpůsobení vaší aplikace. 
 
-Následující pokyny dá pokyn, jak splnit tyto požadavky pro Code First aplikací pomocí nástroje elastické databáze. 
+Hello pokynů dá pokyn, jak toosatisfy tyto požadavky pro Code First aplikací pomocí nástroje elastické databáze. 
 
 ## <a name="data-dependent-routing-using-ef-dbcontext"></a>Data závislé směrování pomocí EF DbContext
-Databázová připojení s platformou Entity Framework se obvykle spravují prostřednictvím měly podtřídy **DbContext**. Vytvořit tyto podtřídy odvozené z **DbContext**. Toto je, kde můžete definovat vaše **DbSets** které implementují databáze zálohována kolekce objektů CLR pro vaši aplikaci. V kontextu dat závislé směrování abychom mohli identifikovat několik užitečné vlastnosti, které nemají nutně další EF code první aplikaci scénáře: 
+Databázová připojení s platformou Entity Framework se obvykle spravují prostřednictvím měly podtřídy **DbContext**. Vytvořit tyto podtřídy odvozené z **DbContext**. Toto je, kde můžete definovat vaše **DbSets** které implementují hello databáze zálohována kolekce objektů CLR pro vaši aplikaci. V kontextu hello data závislé směrování abychom mohli identifikovat několik užitečné vlastnosti, které nemají nutně další EF code první aplikaci scénáře: 
 
-* Databáze již existuje a je zaregistrován v mapě horizontálního oddílu elastické databáze. 
-* Schéma aplikace již byla nasazena do databáze (vysvětlení níže). 
-* Jsou závislé na data směrování připojení k databázi zprostředkované pomocí mapy horizontálního oddílu. 
+* Hello databáze již existuje a je zaregistrován v mapě horizontálního oddílu hello elastické databáze. 
+* schéma Hello hello aplikace je již nasazené toohello databáze (vysvětlení níže). 
+* Jsou závislé na data směrování připojení toohello databáze zprostředkované podle hello horizontálního oddílu mapy. 
 
-K integraci **DbContexts** s závislé na data směrování pro Škálováním na více systémů:
+toointegrate **DbContexts** s závislé na data směrování pro Škálováním na více systémů:
 
-1. Vytvořit fyzická databáze připojení prostřednictvím rozhraní klienta elastické databáze správce mapy horizontálního oddílu, 
-2. Zabalení připojení pomocí **DbContext** podtřídy
-3. Předat připojení do **DbContext** základní třídy, aby veškeré zpracování na straně EF se také stane. 
+1. Vytvořit fyzická databáze připojení prostřednictvím rozhraní klienta elastické databáze hello hello horizontálního oddílu mapa správce, 
+2. Zabalení hello připojení s hello **DbContext** podtřídy
+3. Předat připojení hello do hello **DbContext** základní třídy tooensure všechny hello zpracování na straně EF hello se také stane. 
 
-Následující příklad kódu ukazuje tento přístup. (Tento kód se taky v doprovodné projektu sady Visual Studio)
+Hello následující příklad kódu ukazuje tento přístup. (Tento kód se taky v hello doplňujícími projektu sady Visual Studio)
 
     public class ElasticScaleContext<T> : DbContext
     {
@@ -89,10 +89,10 @@ Následující příklad kódu ukazuje tento přístup. (Tento kód se taky v do
     …
 
         // C'tor for data dependent routing. This call will open a validated connection 
-        // routed to the proper shard by the shard map manager. 
-        // Note that the base class c'tor call will fail for an open connection
-        // if migrations need to be done and SQL credentials are used. This is the reason for the 
-        // separation of c'tors into the data-dependent routing case (this c'tor) and the internal c'tor for new shards.
+        // routed toohello proper shard by hello shard map manager. 
+        // Note that hello base class c'tor call will fail for an open connection
+        // if migrations need toobe done and SQL credentials are used. This is hello reason for hello 
+        // separation of c'tors into hello data-dependent routing case (this c'tor) and hello internal c'tor for new shards.
         public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
             : base(CreateDDRConnection(shardMap, shardingKey, connectionStr), 
             true /* contextOwnsConnection */)
@@ -108,26 +108,26 @@ Následující příklad kódu ukazuje tento přístup. (Tento kód se taky v do
             // No initialization
             Database.SetInitializer<ElasticScaleContext<T>>(null);
 
-            // Ask shard map to broker a validated connection for the given key
+            // Ask shard map toobroker a validated connection for hello given key
             SqlConnection conn = shardMap.OpenConnectionForKey<T>
                                 (shardingKey, connectionStr, ConnectionOptions.Validate);
             return conn;
         }    
 
 ## <a name="main-points"></a>Hlavní body
-* Nový konstruktor nahradí výchozí konstruktor v DbContext podtřídy 
-* Nový konstruktor přijímá argumenty, které jsou požadovány pro závislé směrování dat přes klientské knihovny pro elastické databáze:
+* Nový konstruktor nahrazuje hello výchozí konstruktor v podtřídami DbContext hello 
+* new – konstruktor Hello trvá hello argumenty, které jsou požadovány pro závislé směrování dat přes klientské knihovny pro elastické databáze:
   
-  * mapování horizontálních pro přístup k rozhraní směrování závislé na data
-  * klíč horizontálního dělení k identifikaci shardlet,
-  * připojovací řetězec s přihlašovacími údaji pro závislé na data směrování připojení k horizontálního oddílu. 
-* Volání konstruktoru základní třídy zohledňuje detour statickou metodu, která provádí všechny kroky potřebné pro směrování závislé na data. 
+  * Hello horizontálního oddílu mapy tooaccess hello rozhraní směrování závislé na data
+  * Hello horizontálního dělení klíče tooidentify hello shardlet,
+  * připojovací řetězec s hello přihlašovací údaje pro hello závislé na data směrování připojení toohello horizontálních. 
+* konstruktor základní třídy toohello volání Hello bere detour v statickou metodu, která provádí všechny kroky hello potřebné pro směrování závislé na data. 
   
-  * Volání OpenConnectionForKey rozhraní klienta elastické databáze na mapě horizontálního oddílu používá k navázání otevřené připojení.
-  * Mapování horizontálních vytvoří otevřít připojení k horizontálního oddílu, který obsahuje shardlet pro danou horizontálního dělení klíč.
-  * Toto otevřené připojení se předá zpět do konstruktoru základní třídy DbContext k označení, že je toto připojení má být používána EF místo EF automaticky vytvořit nové připojení. Tímto způsobem připojení má byla označená klientem elastické databáze rozhraní API, tak, aby ho může zaručit konzistenci v rámci operace správy mapy horizontálního oddílu.
+  * Hello OpenConnectionForKey volání rozhraní klienta elastické databáze hello používá na hello horizontálního oddílu mapy tooestablish otevřené připojení.
+  * mapování horizontálních Hello vytvoří horizontálního hello otevřené připojení toohello oddílu, který obsahuje hello shardlet pro zadaný klíč horizontálního dělení hello.
+  * Toto otevřené připojení je předán zpět toohello základní třída konstruktoru DbContext tooindicate, aby toto připojení není toobe používané EF místo EF automaticky vytvořit nové připojení. Toto připojení hello způsob, jak má byla označené klientem elastické databáze hello rozhraní API, tak, aby ho může zaručit konzistenci v rámci operace správy mapy horizontálního oddílu.
 
-Pomocí konstruktoru new podtřídy DbContext místo výchozí konstruktor v kódu. Zde naleznete příklad: 
+Použijte konstruktor nové hello podtřídy DbContext místo hello výchozí konstruktor v kódu. Zde naleznete příklad: 
 
     // Create and save a new blog.
 
@@ -150,12 +150,12 @@ Pomocí konstruktoru new podtřídy DbContext místo výchozí konstruktor v kó
      … 
     }
 
-Nový konstruktor otevře připojení k horizontálního oddílu, který obsahuje data pro shardlet identifikovaný hodnotu **tenantid1**. Kód v **pomocí** bloku zůstává beze změny, abyste měli přístup **DbSet** pro blogy pomocí EF na horizontálního oddílu pro **tenantid1**. Tato operace změní sémantiku pro kód v pomocí blokovat tak, že všechny databázové operace jsou nyní vymezeny na jednu horizontálního oddílu kde **tenantid1** je uložen. Například dotaz LINQ přes na blozích **DbSet** vrátí pouze uložené na aktuální horizontálního oddílu blogy, ale není těm, které jsou uložené na jiné horizontálních oddílů.  
+new – konstruktor Hello otevře hello horizontálních toohello připojení, která obsahuje data hello pro hello shardlet identifikovaný hello hodnotu **tenantid1**. Hello kód v hello **pomocí** bloku zůstává beze změny tooaccess hello **DbSet** pro blogy pomocí EF na hello horizontálního oddílu pro **tenantid1**. Tato operace změní sémantiku pro hello kód v hello použití bloku tak, že všechny databázové operace jsou nyní obor jeden horizontálního oddílu toohello kde **tenantid1** je uložen. Například dotaz LINQ přes hello blogy **DbSet** by vrátit pouze uložené na aktuální horizontálního oddílu hello blogy, ale není hello těch, které jsou uložené na jiné horizontálních oddílů.  
 
 #### <a name="transient-faults-handling"></a>Zpracování přechodné chyby
-Tým postupy společnosti Microsoft Patterns publikována [The přechodné chyby zpracování aplikace bloku](https://msdn.microsoft.com/library/dn440719.aspx). Knihovny se používá v kombinaci s EF Klientská knihovna pro elastické škálování. Však zajistěte, že všechny přechodný výjimka vrátí na místo, kde jsme můžete zajistit, že nový konstruktor je použit po přechodná chyba tak, aby všechny nový pokus o připojení se provádí pomocí konstruktorů, které jsme mít tweaked. Jinak hodnota není zaručena připojení ke správné horizontálního oddílu, a neexistují žádné záruky, které jsou prováděny změny mapy horizontálního oddílu se zachová připojení. 
+Hello postupy společnosti Microsoft Patterns team publikované hello [hello přechodné chyby zpracování bloku aplikace](https://msdn.microsoft.com/library/dn440719.aspx). Hello knihovně se používá v kombinaci s EF Klientská knihovna pro elastické škálování. Však zajistěte, že všechny přechodný výjimka vrátí tooa místě, kde jsme můžete zajistit, že tento nový konstruktor hello je používána po přechodná chyba tak, aby všechny nové připojení pokus se uskuteční pomocí hello konstruktory, které jsme mít tweaked. Správné není zaručena horizontálního oddílu, a neexistují žádné záruky hello připojení připojení toohello, jinak hodnota zachovaný jako změny dojít toohello horizontálního oddílu mapy. 
 
-Následující příklad kódu ukazuje použití zásady opakování SQL kolem nové **DbContext** podtřídami konstruktory: 
+Hello následující příklad kódu ukazuje, jak zásady opakování SQL lze použít kolem hello nové **DbContext** podtřídami konstruktory: 
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
     { 
@@ -171,38 +171,38 @@ Následující příklad kódu ukazuje použití zásady opakování SQL kolem n
             } 
         }); 
 
-**SqlDatabaseUtils.SqlRetryPolicy** ve výše uvedeném kódu je definován jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací dobu mezi opakovanými pokusy. Tento přístup je podobná pokyny pro EF a uživatel spustil transakce (viz [omezení s opakováním strategie provádění (EF6 a vyšší)](http://msdn.microsoft.com/data/dn307226). Obě situace vyžadují, aplikace programu určí obor, ke které se vrátí přechodný výjimka: Otevřete transakce, nebo (jak je znázorněno) znovu vytvořte kontext z správné konstruktor, který používá klientské knihovny pro elastické databáze.
+**SqlDatabaseUtils.SqlRetryPolicy** v hello výše uvedený kód je definovaný jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací dobu mezi opakovanými pokusy. Tento přístup je podobné toohello pokyny pro EF a uživatel spustil transakce (viz [omezení s opakováním strategie provádění (EF6 a vyšší)](http://msdn.microsoft.com/data/dn307226). Obě situace vyžadují tohoto programu hello aplikace řídí hello oboru toowhich hello přechodný výjimka vrátí: tooeither znovu otevřete hello transakce, nebo (jak je znázorněno) vytvořte znovu hello kontext z hello správné konstruktor, používá hello elastické databáze Klientská knihovna.
 
-Potřeba řídit, kde přechodné výjimky trvat nám zpět v oboru také neumožňuje použití předdefinované **SqlAzureExecutionStrategy** dodávaný s EF. **SqlAzureExecutionStrategy** by znovu otevřít připojení, ale nechcete použít **OpenConnectionForKey** a proto všechny ověření, které se provádí v rámci obejít **OpenConnectionForKey**volání. Místo toho ukázkový kód používá integrované **DefaultExecutionStrategy** také dodávaný s EF. Naproti tomu **SqlAzureExecutionStrategy**, funguje správně v kombinaci s zásady opakování z přechodných chyb. Zásada spouštění nastavena v **ElasticScaleDbConfiguration** třídy. Všimněte si, že jsme se rozhodli nepoužívat **DefaultSqlExecutionStrategy** vzhledem k tomu, že se doporučuje používat **SqlAzureExecutionStrategy** Pokud dojde k přechodné výjimky - popsané, což by způsobit nesprávné chování. Další informace o různých opakování zásady a EF najdete v tématu [odolnost připojení v EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Hello toocontrol třeba kde přechodné výjimky trvat nám zpět v oboru také vylučuje hello použití předdefinované hello **SqlAzureExecutionStrategy** dodávaný s EF. **SqlAzureExecutionStrategy** by znovu otevřít připojení, ale nechcete použít **OpenConnectionForKey** a proto všechny hello ověření, které se provádí v rámci hello obejít **OpenConnectionForKey** volání. Místo toho ukázka kódu hello používá integrované hello **DefaultExecutionStrategy** také dodávaný s EF. Na rozdíl od svazků příliš**SqlAzureExecutionStrategy**, funguje správně v kombinaci s hello zásady opakování z přechodných chyb. Zásady spouštění Hello je nastavena v hello **ElasticScaleDbConfiguration** třídy. Všimněte si, že jsme se rozhodli není toouse **DefaultSqlExecutionStrategy** vzhledem k tomu, že ho navrhuje toouse **SqlAzureExecutionStrategy** Pokud dojde k přechodné výjimky - který vede toowrong chování, jak je popsáno. Další informace o různých opakování zásady hello a EF najdete v tématu [odolnost připojení v EF](http://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor přepisů
-Výše uvedený kód příklady ilustrují, výchozí konstruktor znovu zapíše potřebné pro vaši aplikaci k použití dat závislé směrování s rozhraní Entity Framework. Následující tabulka umožňuje zobecnit tento přístup k jiné konstruktory. 
+Hello výše uvedené příklady kódu ilustrují hello výchozí konstruktor znovu zapíše potřebné pro vaši aplikaci v pořadí toouse datech závislé směrování s hello Entity Framework. Následující tabulka Hello umožňuje zobecnit konstruktory tooother tento přístup. 
 
 | Aktuální – konstruktor | Přepsaná konstruktor pro data | Základní – konstruktor | Poznámky |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení musí být funkce mapy horizontálního oddílu a klíč směrování závislé na data. Je třeba se obejít automatické připojení k vytvoření správcem EF a místo toho použijte mapování horizontálních k Zprostředkovatel připojení. |
-| MyContext(string) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení je funkce mapy horizontálního oddílu a klíč směrování závislé na data. Pevné databázové název nebo připojovací řetězec nebude fungovat jako jejich obejít ověření pomocí mapy horizontálního oddílu. |
-| MyContext(DbCompiledModel) |ElasticScaleContext (ShardMap TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota) |Připojení budou vytvořeny pro dané ID horizontálního oddílu mapy a horizontálního dělení klíč s modelem zadat. Kompilované modelu se předá základní c'tor. |
-| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap TKey, logická hodnota) |DbContext (DbConnection, bool) |Připojení je potřeba odvodit z mapy horizontálního oddílu a klíč. Jako vstup nemůže být zadaný (Pokud je tento vstup byl již pomocí mapy horizontálního oddílu a klíč). Logickou hodnotu, budou předány. |
-| MyContext (string, DbCompiledModel) |ElasticScaleContext (ShardMap TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota) |Připojení je potřeba odvodit z mapy horizontálního oddílu a klíč. Jako vstup nemůže být zadaný (Pokud je tento vstup byl pomocí mapy horizontálního oddílu a klíč). Kompilované modelu se předají. |
-| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Nový konstruktor musí zajistit, aby jakékoli připojení ve třídě ObjectContext předat jako vstup znovu směrované na připojení spravuje elastické škálování. Podrobnou diskuzi o ObjectContexts je nad rámec tohoto dokumentu. |
-| MyContext (DbConnection, DbCompiledModel, logická hodnota) |ElasticScaleContext (ShardMap, bool TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota); |Připojení je potřeba odvodit z mapy horizontálního oddílu a klíč. Připojení nelze zadat jako vstup (Pokud je tento vstup byl již pomocí mapy horizontálního oddílu a klíč). Model a logickou hodnotu jsou předány konstruktor základní třídy. |
+| MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Hello připojení musí toobe funkce hello horizontálního oddílu mapy a hello závislé na data směrování klíče. Vytvoření automatického připojení k průchodu tooby správcem EF a místo toho pomocí hello horizontálního oddílu mapy toobroker hello připojení. |
+| MyContext(string) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |připojení Hello je funkce hello horizontálního oddílu mapy a hello závislé na data směrování klíče. Pevné databázové název nebo připojovací řetězec nebude fungovat jako jejich obejít ověřování pomocí mapování horizontálních hello. |
+| MyContext(DbCompiledModel) |ElasticScaleContext (ShardMap TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota) |Hello připojení budou vytvořeny pro zadaný klíč mapy a horizontálního dělení horizontálního oddílu s modelem hello poskytuje hello. kompilované modelu Hello se předají na základní c'tor toohello. |
+| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap TKey, logická hodnota) |DbContext (DbConnection, bool) |Hello připojení musí toobe odvodit z mapy hello horizontálního oddílu a klíč hello. Jako vstup nemůže být zadaný (Pokud je tento vstup byl již pomocí mapy hello horizontálního oddílu a klíč hello). Hello logickou hodnotu, budou předány. |
+| MyContext (string, DbCompiledModel) |ElasticScaleContext (ShardMap TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota) |Hello připojení musí toobe odvodit z mapy hello horizontálního oddílu a klíč hello. Jako vstup nemůže být zadaný (Pokud je tento vstup byl pomocí mapy hello horizontálního oddílu a klíč hello). kompilované modelu Hello se předají. |
+| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |new – konstruktor Hello musí tooensure, který jakékoli připojení, v hello ObjectContext předán jako vstup je znovu směrované tooa připojení spravuje elastické škálování. Podrobnou diskuzi o ObjectContexts je nad rámec tohoto dokumentu hello. |
+| MyContext (DbConnection, DbCompiledModel, logická hodnota) |ElasticScaleContext (ShardMap, bool TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logická hodnota); |Hello připojení musí toobe odvodit z mapy hello horizontálního oddílu a klíč hello. Hello připojení nelze zadat jako vstup (Pokud je tento vstup byl již pomocí mapy hello horizontálního oddílu a klíč hello). Model a logickou hodnotu jsou předány na toohello – základní třída – konstruktor. |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>Nasazení schématu horizontálního oddílu pomocí EF migrace
-Správa automatického schématu je pro vaše pohodlí poskytované rozhraní Entity Framework. V souvislosti s aplikací pomocí nástroje elastické databáze chceme zachovat tato funkce automaticky zřídit schéma tak, aby nově vytvořený horizontálních oddílů po přidání databází do horizontálně dělené aplikace. Případem primárního použití je zvýšit kapacitu na datové vrstvě pro horizontálně dělenou aplikací s využitím EF. S horizontálně dělené aplikací postavené na EF spoléhat na EF na funkce pro správu schématu sníží úsilí správu databáze. 
+Správa automatického schématu je pro vaše pohodlí poskytované hello Entity Framework. V kontextu hello aplikací pomocí nástroje elastické databáze chceme tooretain této schopnosti tooautomatically zřídit hello schématu toonewly vytvořit horizontálních oddílů po přidání aplikace horizontálně dělené toohello databáze. případem primárního použití Hello je kapacita tooincrease na datové vrstvě hello pro horizontálně dělenou aplikací s využitím EF. S horizontálně dělené aplikací postavené na EF spoléhat na EF na funkce pro správu schématu snižuje hello databáze správy úsilí. 
 
-Nasazení schématu pomocí migrace EF funguje nejlépe na **nebyla otevřena připojení**. To je tento scénář pro data, které jsou závislé na rozdíl od směrování, spoléhá na otevřené připojení poskytnutý klientem elastické databáze rozhraní API. Další rozdíl je požadavek na konzistence: při žádoucí zajistit konzistenci pro všechny závislé na data směrování připojení k ochraně proti manipulaci mapy souběžných horizontálního oddílu, se nejedná o problém s počátečním nasazení schématu pro nové databáze má ještě není zaregistrována v mapě horizontálního oddílu a ještě není byl přidělen k uchování shardlets. Jsme můžete proto spoléhají na standardní databázi připojení pro tento scénáře, a závislé na data směrování.  
+Nasazení schématu pomocí migrace EF funguje nejlépe na **nebyla otevřena připojení**. Toto je na rozdíl od scénář toohello pro data závislé směrování, které jsou závislé na hello otevřít připojení poskytované hello elastické databáze klientského rozhraní API. Další rozdíl je požadavek konzistence hello: při žádoucí tooensure konzistence pro všechny závislé na data směrování připojení tooprotect proti manipulaci mapy souběžných horizontálního oddílu, se nejedná o problém s novou databází tooa počáteční schématu nasazení který má ještě není zaregistrována v mapě hello horizontálního oddílu a ještě není byl přidělen toohold shardlets. Jsme můžete proto spoléhají na standardní databázi připojení pro tento scénáře, jako názvem na rozdíl od směrování toodata závislé.  
 
-To vede k přístup, kde nasazení schématu pomocí EF migrace je úzce spojeny s registrací nové databáze jako horizontálního oddílu v mapě horizontálního oddílu aplikace. To závisí na následující požadavky: 
+To vede tooan přístup, kde nasazení schématu pomocí EF migrace je úzce spojeny s hello registrace nové databáze hello jako horizontálního oddílu v mapě horizontálního oddílu aplikace hello. To závisí na hello následující požadavky: 
 
-* Databáze již existuje. 
-* Databáze je prázdný – drží žádné schéma uživatele a žádná uživatelská data.
-* Databázi nelze ještě přistupovat prostřednictvím rozhraní API klienta elastické databáze pro směrování závislé na data. 
+* Hello databáze již existuje. 
+* Hello databáze je prázdná – drží žádné schéma uživatele a žádná uživatelská data.
+* Hello databáze nelze ještě přistupovat prostřednictvím rozhraní API hello elastické databáze klienta pro směrování závislé na data. 
 
-Tyto požadavky splněny, můžeme vytvořit běžný zrušení otevřenou **SqlConnection** k ji EF migrace pro nasazení schématu. Následující příklad kódu ukazuje tento přístup. 
+Tyto požadavky splněny, můžeme vytvořit běžný zrušení otevřenou **SqlConnection** tookick vypnout EF migrace pro nasazení schématu. Následující ukázka kódu Hello ukazuje tento přístup. 
 
-        // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
-        // and kick off EF intialization of the database to deploy schema 
+        // Enter a new shard - i.e. an empty database - toohello shard map, allocate a first tenant tooit  
+        // and kick off EF intialization of hello database toodeploy schema 
 
         public void RegisterNewShard(string server, string database, string connStr, int key) 
         { 
@@ -213,25 +213,25 @@ Tyto požadavky splněny, můžeme vytvořit běžný zrušení otevřenou **Sql
             connStrBldr.DataSource = server; 
             connStrBldr.InitialCatalog = database; 
 
-            // Go into a DbContext to trigger migrations and schema deployment for the new shard. 
+            // Go into a DbContext tootrigger migrations and schema deployment for hello new shard. 
             // This requires an un-opened connection. 
             using (var db = new ElasticScaleContext<int>(connStrBldr.ConnectionString)) 
             { 
-                // Run a query to engage EF migrations 
+                // Run a query tooengage EF migrations 
                 (from b in db.Blogs 
                     select b).Count(); 
             } 
 
-            // Register the mapping of the tenant to the shard in the shard map. 
-            // After this step, data-dependent routing on the shard map can be used 
+            // Register hello mapping of hello tenant toohello shard in hello shard map. 
+            // After this step, data-dependent routing on hello shard map can be used 
 
             this.ShardMap.CreatePointMapping(key, shard); 
         } 
 
 
-Tento příklad ukazuje metodu **RegisterNewShard** , zaregistruje horizontálního oddílu v mapě horizontálního oddílu, nasadí schéma prostřednictvím EF migrace a ukládá zajišťuje mapování klíč horizontálního dělení do horizontálního oddílu. Přitom spoléhá na konstruktoru objektu **DbContext** podtřídami (**ElasticScaleContext** v ukázce), která má jako vstup připojovací řetězec SQL. Kód tento konstruktor je jednoduché, jak ukazuje následující příklad: 
+Tento příklad ukazuje hello metoda **RegisterNewShard** , registry hello horizontálního oddílu v mapě hello horizontálního oddílu, nasadí hello schématu prostřednictvím EF migrace a ukládá mapování horizontálních klíče toohello horizontálního dělení. Přitom spoléhá na konstruktoru hello **DbContext** podtřídami (**ElasticScaleContext** v ukázce hello), která má jako vstup připojovací řetězec SQL. Kód Hello tento konstruktor je jednoduché, jako následující příklad ukazuje hello: 
 
-        // C'tor to deploy schema and migrations to a new shard 
+        // C'tor toodeploy schema and migrations tooa new shard 
         protected internal ElasticScaleContext(string connectionString) 
             : base(SetInitializerForConnection(connectionString)) 
         { 
@@ -240,24 +240,24 @@ Tento příklad ukazuje metodu **RegisterNewShard** , zaregistruje horizontáln�
         // Only static methods are allowed in calls into base class c'tors 
         private static string SetInitializerForConnection(string connnectionString) 
         { 
-            // We want existence checks so that the schema can get deployed 
+            // We want existence checks so that hello schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
             return connnectionString; 
         } 
 
-Jeden použili verze konstruktoru zděděn ze základní třídy. Je však nutné zajistit, aby používala výchozí inicializátoru pro EF při připojování kód. Proto krátké obcházejí do statickou metodu před voláním do konstruktoru základní třídy připojovacím řetězcem. Všimněte si, že registrace horizontálních oddílů měly být spuštěny v jiné domény aplikace nebo proces, který zajišťuje, že nastavení inicializátoru EF nejsou v konfliktu. 
+Jeden použili hello verzi hello konstruktor zděděn ze základní třídy hello. Ale hello tooensure potřebám kód, který hello výchozí inicializátoru pro EF se používá při připojování. Proto hello krátké detour do hello statickou metodu před voláním do konstruktoru základní třídy hello s hello připojovací řetězec. Všimněte si, že hello registrace horizontálních oddílů měly být spuštěny v jiné aplikace domény nebo proces tooensure které hello inicializátoru nastavení pro EF nejsou v konfliktu. 
 
 ## <a name="limitations"></a>Omezení
-Přístupy uvedených v tomto dokumentu za následek několik omezení: 
+přístupy Hello uvedených v tomto dokumentu za následek několik omezení: 
 
-* EF aplikace, které používají **LocalDb** nejprve budete muset migrovat na standardní databázi systému SQL Server před použitím klientské knihovny pro elastické databáze. Horizontální navýšení kapacity aplikace prostřednictvím horizontálního dělení s elastickým Škálováním není možné pomocí **LocalDb**. Všimněte si, že vývoj můžete nadále používat **LocalDb**. 
-* Všechny změny do aplikace, které implikují změny schématu databáze muset projít EF migrace na všechny horizontálních oddílů. Ukázkový kód pro tento dokument není ukazují, jak to udělat. Zvažte použití Update-Database s parametrem ConnectionString Iterujte přes všechny horizontálních oddílů; nebo extrahuje skriptu T-SQL pro migraci čekající na vyřízení pomocí Update-Database-skript s možnost a použít skriptu T-SQL pro vaše horizontálních oddílů.  
-* Zadaný požadavek, se předpokládá, že určeno klíčem horizontálního dělení poskytované žádost, všechny její zpracování databáze je obsažena v jedné horizontálního oddílu. Však tento předpoklad vždy nemá hodnotu true. Například když není možné zpřístupnit klíč horizontálního dělení. Chcete-li vyřešit tím, poskytuje knihovna klienta **MultiShardQuery** třídu, která implementuje abstraktní připojení pro dotazování přes několik horizontálních oddílů. Osvojit si **MultiShardQuery** v kombinaci s EF je nad rámec tohoto dokumentu
+* EF aplikace, které používají **LocalDb** nejprve toomigrate tooa standardní databázi systému SQL Server před použitím klientské knihovny pro elastické databáze. Horizontální navýšení kapacity aplikace prostřednictvím horizontálního dělení s elastickým Škálováním není možné pomocí **LocalDb**. Všimněte si, že vývoj můžete nadále používat **LocalDb**. 
+* Jakékoli změny toohello aplikace, která implikují změny schématu databáze potřebovat toogo prostřednictvím EF migrace na všechny horizontálních oddílů. Hello ukázkový kód pro tento dokument není ukazují, jak toodo to. Zvažte použití Update-Database s ConnectionString parametr tooiterate přes všechny horizontálních oddílů; nebo extrakce hello T-SQL skriptu pro hello čeká na migraci pomocí Update-Database s hello - možnost skript a použijte hello T-SQL skriptu tooyour horizontálních oddílů.  
+* Zadaný požadavek, se předpokládá, že určeno klíčem horizontálního dělení hello poskytované hello žádost, všechny její zpracování databáze je obsažena v jedné horizontálního oddílu. Však tento předpoklad vždy nemá hodnotu true. Například když není možné toomake horizontálního dělení klíč, který je k dispozici. tooaddress se hello klientské knihovny poskytuje hello **MultiShardQuery** třídu, která implementuje abstraktní připojení pro dotazování přes několik horizontálních oddílů. Učení toouse hello **MultiShardQuery** v kombinaci s EF je nad rámec tohoto dokumentu hello
 
 ## <a name="conclusion"></a>Závěr
-Pomocí kroků uvedených v tomto dokumentu, EF aplikace můžete použít možnost klientské knihovny elastické databáze pro data závislé směrování podle refaktoring konstruktory **DbContext** použitou v aplikaci EF podtřídy. Toto nastavení omezuje změny požadované na těchto místech kde **DbContext** třídy již existují. Kromě toho EF aplikace můžete nadále těžit z nasazení automatické schéma kombinací kroky, které vyvolání nezbytné migrace EF s registrací nové horizontálních oddílů a mapování v mapě horizontálního oddílu. 
+EF aplikace může prostřednictvím hello kroků uvedených v tomto dokumentu, použít schopností hello elastické databáze klientské knihovny pro data závislé směrování podle refaktoring konstruktory hello **DbContext** podtřídy použít v hello EF aplikace. Toto omezení hello změny požadované toothose umístí kde **DbContext** třídy již existují. Kromě toho EF aplikace můžete pokračovat toobenefit z nasazení automatické schéma kombinací hello kroky, které vyvolání hello nezbytné EF migrace s registrací hello nové horizontálních oddílů a mapování v mapě hello horizontálního oddílu. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

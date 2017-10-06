@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s brány virtuální sítě a připojení pomocí sledovací proces sítě Azure - REST | Microsoft Docs"
-description: "Tato stránka vysvětluje postup řešení potíží s brány virtuální sítě a připojení s sledovací proces sítě Azure pomocí REST"
+title: "aaaTroubleshoot brány virtuální sítě a připojení pomocí sledovací proces sítě Azure - REST | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak REST tootroubleshoot brány virtuální sítě a připojení s použitím sledovací proces sítě Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cc89b46643fdbfefe53727b45d6b7d06914b58a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s Brána virtuální sítě a připojení pomocí sledovací proces sítě Azure
 
@@ -29,24 +29,24 @@ ms.lasthandoff: 08/29/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Sledovací proces sítě obsahuje řadu funkcí ve vztahu k pochopení síťovým prostředkům v Azure. Jeden z těchto funkcí je prostředek řešení potíží. Řešení potíží s prostředků je možné volat prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Při volání, sledovací proces sítě kontroluje stav bránu virtuální sítě nebo připojení a vrátí nalezených výsledcích.
+Sledovací proces sítě obsahuje řadu funkcí, protože se týká toounderstanding síťovým prostředkům v Azure. Jeden z těchto funkcí je prostředek řešení potíží. Řešení potíží s prostředků je možné volat prostřednictvím portálu hello, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Při volání, sledovací proces sítě kontroluje stav hello bránu virtuální sítě nebo připojení a vrátí nalezených výsledcích.
 
-Tento článek vás provede úloh jiný správy, které jsou aktuálně dostupné pro řešení potíží s prostředků.
+Tento článek vás provede úlohy hello různých správy, které jsou aktuálně dostupné pro řešení potíží s prostředků.
 
 - [**Řešení potíží s bránu virtuální sítě**](#troubleshoot-a-virtual-network-gateway)
 - [**Vyřešte potíže připojením**](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>Než začnete
 
-ARMclient se používá k volání rozhraní REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey v [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient je použité toocall hello REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey v [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě.
 
 Seznam podporovaných brány typy návštěvě [typy podporované brány](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Přehled
 
-Řešení potíží s sledovací proces sítě poskytuje možnost odstraňování problémů, které nastat u brány virtuální sítě a připojení. Po odeslání žádosti k prostředku, řešení potíží s protokoly jsou dotazování a prověřovány. Po dokončení kontroly budou vráceny výsledky. Poradce při potížích rozhraní API žádosti, které jsou dlouhé systémem požadavků, které může trvat několik minut vrácení výsledku. Protokoly se ukládají v kontejneru v účtu úložiště.
+Řešení potíží s sledovací proces sítě poskytuje hello možnosti řešení potíží, které nastat u brány virtuální sítě a připojení. Po odeslání žádosti se toohello prostředků řešení potíží, protokoly jsou dotazování a prověřovány. Po dokončení kontroly hello výsledky se vrátí. Hello řešení rozhraní API žádosti jsou dlouhé systémem požadavků, které může trvat několik minut tooreturn výsledku. Protokoly se ukládají v kontejneru v účtu úložiště.
 
 ## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
 
@@ -57,9 +57,9 @@ armclient login
 ## <a name="troubleshoot-a-virtual-network-gateway"></a>Řešení potíží s bránu virtuální sítě
 
 
-### <a name="post-the-troubleshoot-request"></a>Odeslat požadavek Poradce při potížích
+### <a name="post-hello-troubleshoot-request"></a>Řešení požadavek POST hello
 
-Následující příklad dotazuje se na stav brány virtuální sítě.
+Následující příklad dotazy hello stav brány virtuální sítě Hello.
 
 ```powershell
 
@@ -84,12 +84,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30 "
 ```
 
-Vzhledem k tomu, že tato operace je dlouho spuštěný, identifikátor URI pro dotazování operaci a identifikátor URI pro výsledek je vrácená v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že tato operace je dlouhá spuštěna, hello identifikátor URI pro dotazování hello operace a hello identifikátor URI pro výsledek hello je vrácený v hello hlavička odpovědi, jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Azure AsyncOperation** -tato vlastnost obsahuje identifikátor URI pro dotaz Async řešení operace
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Azure AsyncOperation** -tato vlastnost obsahuje hello URI tooquery řešení hello asynchronní operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -109,15 +109,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Dotaz pro dokončení asynchronní operace
+### <a name="query-hello-async-operation-for-completion"></a>Dotaz hello asynchronní operace pro dokončení
 
-Použijte operace URI dotazu pro průběh operace, jak je vidět v následujícím příkladu:
+Použijte hello operations URI tooquery pro hello průběh operace hello, jak je vidět v hello následující ukázka:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Když probíhá operace, zobrazí odpověď **InProgress** jak je vidět v následujícím příkladu:
+Když probíhá operace hello hello odpovědi ukazuje **InProgress** jak je vidět v hello následující ukázka:
 
 ```json
 {
@@ -125,7 +125,7 @@ Když probíhá operace, zobrazí odpověď **InProgress** jak je vidět v násl
 }
 ```
 
-Po dokončení operace se stav změní na **úspěšné**.
+Pokud se operace hello je změny stavu dokončení hello příliš**úspěšné**.
 
 ```json
 {
@@ -133,15 +133,15 @@ Po dokončení operace se stav změní na **úspěšné**.
 }
 ```
 
-### <a name="retrieve-the-results"></a>Načíst výsledky
+### <a name="retrieve-hello-results"></a>Načíst výsledky hello
 
-Jakmile se stav vrátí je **úspěšné**, volání metody GET na výsledek URI načíst výsledky.
+Jakmile vrácen stav hello je **úspěšné**, na hello výsledek URI tooretrieve hello výsledky volání metody GET.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Příklady typických sníženou odpověď vrácená při dotazování na výsledky řešení potíží s bránu, jsou tyto odpovědi. V tématu [seznámení s výsledky](#understanding-the-results) získat vysvětlení na významu vlastnosti v odpovědi.
+Hello následující odpovědi jsou příklady typických sníženou odpověď vrácená při dotazování na výsledky hello řešení potíží s bránu. V tématu [pochopení hello výsledky](#understanding-the-results) tooget vysvětlení na jaké vlastnosti hello v odpovědi střední hello.
 
 ```json
 {
@@ -152,15 +152,15 @@ Příklady typických sníženou odpověď vrácená při dotazování na výsle
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN Gateway"
+          "actionUriText": "resetting hello VPN Gateway"
         },
         {
-          "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN gateway isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -172,7 +172,7 @@ Příklady typických sníženou odpověď vrácená při dotazování na výsle
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -190,7 +190,7 @@ Příklady typických sníženou odpověď vrácená při dotazování na výsle
 
 ## <a name="troubleshoot-connections"></a>Odstraňování potíží s připojením
 
-V následujícím příkladu se dotazuje stav připojení.
+Následující příklad dotazy hello stav připojení Hello.
 
 ```powershell
 
@@ -213,14 +213,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> Poradce při potížích operaci nelze spustit souběžně na jeho odpovídající brány a připojení. Operaci musíte dokončit před spuštěním na dřívější prostředek.
+> Hello řešení operaci nelze spustit souběžně na jeho odpovídající brány a připojení. Hello operaci musíte dokončit předchozí toorunning ho na dřívější prostředek hello.
 
-Vzhledem k tomu, že toto je dlouhotrvající transakci, v hlavičce odpověď se vrátí identifikátor URI pro dotazování operaci a identifikátor URI pro výsledek, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že toto je dlouhotrvající transakci, v hello hlavička odpovědi, hello identifikátor URI pro dotazování hello operace a hello identifikátor URI pro výsledek hello se vrátí, jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Azure AsyncOperation** -tato vlastnost obsahuje identifikátor URI pro dotaz Async řešení operace
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Azure AsyncOperation** -tato vlastnost obsahuje hello URI tooquery řešení hello asynchronní operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -240,15 +240,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Dotaz pro dokončení asynchronní operace
+### <a name="query-hello-async-operation-for-completion"></a>Dotaz hello asynchronní operace pro dokončení
 
-Použijte operace URI dotazu pro průběh operace, jak je vidět v následujícím příkladu:
+Použijte hello operations URI tooquery pro hello průběh operace hello, jak je vidět v hello následující ukázka:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Když probíhá operace, zobrazí odpověď **InProgress** jak je vidět v následujícím příkladu:
+Když probíhá operace hello hello odpovědi ukazuje **InProgress** jak je vidět v hello následující ukázka:
 
 ```json
 {
@@ -256,7 +256,7 @@ Když probíhá operace, zobrazí odpověď **InProgress** jak je vidět v násl
 }
 ```
 
-Po dokončení operace se stav změní na **úspěšné**.
+Po dokončení operace hello hello stav změní příliš**úspěšné**.
 
 ```json
 {
@@ -264,17 +264,17 @@ Po dokončení operace se stav změní na **úspěšné**.
 }
 ```
 
-Příklady typických odpověď vrácená při dotazování na výsledky řešení potíží s připojení, jsou tyto odpovědi.
+Hello následující odpovědi jsou příklady typických odpověď vrácená při dotazování na výsledky hello řešení potíží s připojení.
 
-### <a name="retrieve-the-results"></a>Načíst výsledky
+### <a name="retrieve-hello-results"></a>Načíst výsledky hello
 
-Jakmile se stav vrátí je **úspěšné**, volání metody GET na výsledek URI načíst výsledky.
+Jakmile vrácen stav hello je **úspěšné**, na hello výsledek URI tooretrieve hello výsledky volání metody GET.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Příklady typických odpověď vrácená při dotazování na výsledky řešení potíží s připojení, jsou tyto odpovědi.
+Hello následující odpovědi jsou příklady typických odpověď vrácená při dotazování na výsledky hello řešení potíží s připojení.
 
 ```json
 {
@@ -285,16 +285,16 @@ Příklady typických odpověď vrácená při dotazování na výsledky řešen
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
-is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
+is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN gateway"
+          "actionUriText": "resetting hello VPN gateway"
         },
         {
-          "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN Connection isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -306,7 +306,7 @@ is a transient state while the Azure platform is being updated.",
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -321,12 +321,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Seznámení s výsledky
+## <a name="understanding-hello-results"></a>Seznámení s výsledky hello
 
-Text akce obsahuje obecné pokyny k vyřešení problému. Pokud může být akce pro tento problém, je k dispozici odkaz s další pokyny. V případě, že tam, kde není žádná další pokyny, odpověď obsahuje adresu url pro otevření případu podpory.  Další informace o vlastnostech odpovědi a co je součástí najdete v článku [řešení sledovací proces sítě – přehled](network-watcher-troubleshoot-overview.md)
+text Hello akce obsahuje obecné pokyny k jak tooresolve hello problém. Pokud může být akce hello problému, je k dispozici odkaz s další pokyny. V případě hello tam, kde není žádná další pokyny, hello odpovědi poskytuje hello url tooopen případu podpory.  Další informace o vlastnostech hello hello odpovědi a co je součástí najdete v článku [řešení sledovací proces sítě – přehled](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účty azure storage, najdete v části [Začínáme s Azure Blob storage pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Jiný nástroj, který je možné je Storage Explorer. Další informace o Storage Explorer naleznete zde na následující odkaz: [Storage Explorer](http://storageexplorer.com/)
+Pokyny ke stahování souborů z účty azure storage, najdete v části příliš[Začínáme s Azure Blob storage pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Jiný nástroj, který je možné je Storage Explorer. Další informace o Storage Explorer naleznete zde na hello následující odkaz: [Storage Explorer](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nastavení bylo změněno tohoto připojení VPN zastavit, přečtěte si téma [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které může být nejistá.
+Pokud nastavení bylo změněno tohoto připojení VPN zastavit, přečtěte si téma [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které může být nejistá.

@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for PostgreSQL pomocí jazyka Go | Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete ukázku programovacího jazyka Go, kterou můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL."
+title: "aaaConnect tooAzure databázi PostgreSQL pomocí jazyka přejděte | Microsoft Docs"
+description: "Tento rychlý start poskytuje přejděte programovací jazyk ukázku, můžete použít tooconnect a zadávat dotazy na data z databáze Azure pro PostgreSQL."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,32 +11,32 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.openlocfilehash: a7555464879826c5e4f55929d23163b002664e81
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: aa3c93da03116b8fcb54557494dccfad558e5f1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití jazyka Go k připojení a dotazování dat
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí kódu napsaného v jazyce [Go](https://golang.org/) (Golang). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go, ale teprve začínáte pracovat se službou Azure Database for PostgreSQL.
+# <a name="azure-database-for-postgresql-use-go-language-tooconnect-and-query-data"></a>Azure databázi PostgreSQL: přejít pomocí jazyka tooconnect a dotazování dat
+Tento rychlý start předvádí jak tooconnect tooan databáze Azure pro používání PostgreSQL kód napsaný v hello [přejděte](https://golang.org/) jazyk (golang). Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Tento článek předpokládá, že jste obeznámeni s vývojem pomocí přejít, ale, že se nový tooworking s Azure databáze PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>Instalace jazyka Go a konektoru pq
-Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [ovladač Pure Go Postgres (pq)](https://github.com/lib/pq). V závislosti na vaší platformě postupujte podle příslušných kroků:
+Nainstalujte [přejděte](https://golang.org/doc/install) a hello [čistý přejděte Postgres ovladačů (pq)](https://github.com/lib/pq) na vlastním počítači. V závislosti na platformě postupujte podle kroků hello:
 
 ### <a name="windows"></a>Windows
-1. [Stáhněte](https://golang.org/dl/) a nainstalujte jazyk Go pro Microsoft Windows podle [pokynů k instalaci](https://golang.org/doc/install).
-2. Z nabídky Start spusťte příkazový řádek.
+1. [Stáhněte si](https://golang.org/dl/) a nainstalujte přejděte pro Microsoft Windows podle toohello [pokyny k instalaci](https://golang.org/doc/install).
+2. Spusťte příkazový řádek hello z nabídky start hello.
 3. Vytvořte složku pro váš projekt, například: `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
-4. Změňte adresář na složku projektu, například `cd %USERPROFILE%\go\src\postgresqlgo`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na adresář se zdrojovým kódem. `set GOPATH=%USERPROFILE%\go`.
-6. Nainstalujte [ovladač Pure Go Postgres (pq)](https://github.com/lib/pq) spuštěním příkazu `go get github.com/lib/pq`.
+4. Změnit adresář, do složky hello projektu, například `cd %USERPROFILE%\go\src\postgresqlgo`.
+5. Nastavit proměnnou prostředí hello pro GOPATH toopoint toohello zdrojový kód adresář. `set GOPATH=%USERPROFILE%\go`.
+6. Nainstalujte hello [čistý přejděte Postgres ovladačů (pq)](https://github.com/lib/pq) spuštěním hello `go get github.com/lib/pq` příkaz.
 
-   Stručně řečeno, nainstalujte jazyk Go a potom na příkazovém řádku spusťte následující příkazy:
+   V souhrnu nainstalujte přejděte a potom spusťte tyto příkazy v příkazovém řádku hello:
    ```cmd
    mkdir  %USERPROFILE%\go\src\postgresqlgo
    cd %USERPROFILE%\go\src\postgresqlgo
@@ -45,12 +45,12 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [
    ```
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Spusťte prostředí Bash. 
+1. Spusťte prostředí Bash hello. 
 2. Nainstalujte jazyk Go spuštěním příkazu `sudo apt-get install golang-go`.
 3. Ve svém domovském adresáři vytvořte složku pro projekt, například `mkdir -p ~/go/src/postgresqlgo/`.
-4. Změňte adresář na tuto složku, například `cd ~/go/src/postgresqlgo/`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na platný zdrojový adresář, jako je například aktuální složka go ve vašem domovském adresáři. Spuštěním příkazu `export GOPATH=~/go` v prostředí Bash přidejte adresář go jako hodnotu proměnné GOPATH pro aktuální relaci prostředí.
-6. Nainstalujte [ovladač Pure Go Postgres (pq)](https://github.com/lib/pq) spuštěním příkazu `go get github.com/lib/pq`.
+4. Změnit adresář, jako například do složky hello `cd ~/go/src/postgresqlgo/`.
+5. Sada hello GOPATH prostředí proměnné toopoint tooa platný zdrojový adresář, jako je vaše aktuální domovské adresáře přejít složku. V prostředí bash hello, spusťte `export GOPATH=~/go` tooadd hello přejděte directory jako hello GOPATH pro aktuální relaci prostředí hello.
+6. Nainstalujte hello [čistý přejděte Postgres ovladačů (pq)](https://github.com/lib/pq) spuštěním hello `go get github.com/lib/pq` příkaz.
 
    Stručně řečeno, spusťte tyto příkazy Bash:
    ```bash
@@ -62,12 +62,12 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Stáhněte a nainstalujte jazyk Go podle [pokynů k instalaci](https://golang.org/doc/install) odpovídajících vaší platformě. 
-2. Spusťte prostředí Bash. 
+1. Stáhněte a nainstalujte přejděte podle toohello [pokyny k instalaci](https://golang.org/doc/install) odpovídající vaši platformu. 
+2. Spusťte prostředí Bash hello. 
 3. Ve svém domovském adresáři vytvořte složku pro projekt, například `mkdir -p ~/go/src/postgresqlgo/`.
-4. Změňte adresář na tuto složku, například `cd ~/go/src/postgresqlgo/`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na platný zdrojový adresář, jako je například aktuální složka go ve vašem domovském adresáři. Spuštěním příkazu `export GOPATH=~/go` v prostředí Bash přidejte adresář go jako hodnotu proměnné GOPATH pro aktuální relaci prostředí.
-6. Nainstalujte [ovladač Pure Go Postgres (pq)](https://github.com/lib/pq) spuštěním příkazu `go get github.com/lib/pq`.
+4. Změnit adresář, jako například do složky hello `cd ~/go/src/postgresqlgo/`.
+5. Sada hello GOPATH prostředí proměnné toopoint tooa platný zdrojový adresář, jako je vaše aktuální domovské adresáře přejít složku. V prostředí bash hello, spusťte `export GOPATH=~/go` tooadd hello přejděte directory jako hello GOPATH pro aktuální relaci prostředí hello.
+6. Nainstalujte hello [čistý přejděte Postgres ovladačů (pq)](https://github.com/lib/pq) spuštěním hello `go get github.com/lib/pq` příkaz.
 
    Stručně řečeno, nainstalujte jazyk Go a potom spusťte tyto příkazy Bash:
    ```bash
@@ -78,31 +78,31 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [
    ```
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello databáze Azure pro PostgreSQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server, například **mypgserver-20170401**.
-3. Klikněte na název serveru **mypgserver-20170401**.
-4. Vyberte stránku **Přehled** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledejte hello serveru, které jste vytvořili, například **mypgserver 20170401**.
+3. Klikněte na název serveru hello **mypgserver 20170401**.
+4. Vyberte hello serveru **přehled** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
  ![Azure Database for PostgreSQL – přihlášení správce serveru](./media/connect-go/1-connection-string.png)
-5. Pokud zapomenete přihlašovací údaje pro váš server, přejděte na stránku **Přehled** a zobrazte přihlašovací jméno správce serveru. V případě potřeby obnovte heslo.
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránky a zobrazení hello serveru správce přihlašovací jméno. V případě potřeby resetovat heslo hello.
 
 ## <a name="build-and-run-go-code"></a>Sestavení a spuštění kódu jazyka Go 
-1. K psaní kódu jazyka Go můžete použít jednoduchý textový editor, jako je Poznámkový blok v systému Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatšímu integrovanému vývojovému prostředí (IDE), vyzkoušejte [Gogland](https://www.jetbrains.com/go/) od JetBrains, [Visual Studio Code](https://code.visualstudio.com/) od Microsoftu nebo [Atom](https://atom.io/).
-2. Kód jazyka Go z dalších částí vložte do textových souborů a tyto soubory uložte do složky vašeho projektu s příponou \*.go, například `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (cesta ve Windows) nebo `~/go/src/postgresqlgo/createtable.go` (cesta v Linuxu).
-3. V kódu vyhledejte konstanty `HOST`, `DATABASE`, `USER` a `PASSWORD` a příklady hodnot nahraďte vlastními hodnotami.  
-4. Spusťte příkazový řádek nebo prostředí Bash. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\postgresqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/postgresqlgo/`. Některá ze zmíněných integrovaných vývojových prostředí (IDE) nabízejí možnosti ladění a modulu runtime, které nevyžadují příkazy prostředí.
-5. Spusťte kód zadáním příkazu `go run createtable.go`, který aplikaci zkompiluje a spustí. 
-6. Alternativně, pokud z kódu chcete sestavit nativní aplikaci, spusťte příkaz `go build createtable.go` a pak aplikaci spusťte pomocí souboru `createtable.exe`.
+1. toowrite Golang kódu, můžete použít jednoduchý textový editor, například Poznámkový blok v systému Windows [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatšímu integrovanému vývojovému prostředí (IDE), vyzkoušejte [Gogland](https://www.jetbrains.com/go/) od JetBrains, [Visual Studio Code](https://code.visualstudio.com/) od Microsoftu nebo [Atom](https://atom.io/).
+2. Vložte kód Golang hello z hello oddílech do textových souborů a uložit do složky projektu s příponou \*.go, například Windows – cesta `%USERPROFILE%\go\src\postgresqlgo\createtable.go` nebo Linux cestu `~/go/src/postgresqlgo/createtable.go`.
+3. Vyhledejte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` konstanty v hello kód a nahraďte hello ukázkové hodnoty vlastními hodnotami.  
+4. Spusťte příkazový řádek hello nebo bash prostředí. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\postgresqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/postgresqlgo/`. Některé hello prostředí IDE uvedená nabízí možnosti ladění a runtime bez nutnosti příkazů prostředí.
+5. Spuštění kódu hello zadáním příkazu hello `go run createtable.go` toocompile hello aplikace a potom ho spusťte. 
+6. Alternativně toobuild hello kód do nativní aplikace `go build createtable.go`, spusťte `createtable.exe` toorun hello aplikace.
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
-Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
+Použití hello následující kód tooconnect a vytvořte tabulku pomocí **CREATE TABLE** příkaz jazyka SQL, za nímž následuje **INSERT INTO** SQL příkazy tooadd řádků do tabulky hello.
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), [balíček pq](http://godoc.org/github.com/lib/pq) jako ovladač pro komunikaci se serverem Postgres a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [pq balíček](http://godoc.org/github.com/lib/pq) jako ovladač toocommunicate s hello Postgres serveru a hello [fmt balíček](https://golang.org/pkg/fmt/) pro vytisknout vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://godoc.org/github.com/lib/pq#Open) pro připojení ke službě Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód několikrát volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění několika příkazů jazyka SQL. Pokaždé vlastní metoda checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, nouzově kód ukončí.
+Hello kód zavolá metodu [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure databáze PostgreSQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metoda několikrát toorun několik příkazů SQL. Každý čas vlastní checkError() metoda toocheck, pokud došlo k chybě a nouzové tooexit, pokud dojde k chybě.
 
-Nahraďte parametry `HOST`, `DATABASE`, `USER` a `PASSWORD` vlastními hodnotami. 
+Nahraďte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` parametry s vlastními hodnotami. 
 
 ```go
 package main
@@ -137,7 +137,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database")
+    fmt.Println("Successfully created connection toodatabase")
 
     // Drop previous table of same name if one exists.
     _, err = db.Exec("DROP TABLE IF EXISTS inventory;")
@@ -162,13 +162,13 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **vyberte** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), [balíček pq](http://godoc.org/github.com/lib/pq) jako ovladač pro komunikaci se serverem Postgres a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [pq balíček](http://godoc.org/github.com/lib/pq) jako ovladač toocommunicate s hello Postgres serveru a hello [fmt balíček](https://golang.org/pkg/fmt/) pro vytisknout vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://godoc.org/github.com/lib/pq#Open) pro připojení ke službě Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Dotaz SELECT se spustí zavoláním metody [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) a výsledné řádky se uloží do proměnné typu [rows](https://golang.org/pkg/database/sql/#Rows). Kód čte hodnoty dat sloupců na aktuálním řádku pomocí metody [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) a ve smyčce prochází řádky pomocí iterátoru [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next), dokud nějaké řádky existují. Hodnoty sloupců každého řádku se vytisknou na výstup konzoly. Pokaždé vlastní metoda checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, nouzově kód ukončí.
+Hello kód zavolá metodu [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure databáze PostgreSQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. spuštění dotazu vyberte Hello voláním metody [db. Query()](https://golang.org/pkg/database/sql/#DB.Query), a výsledné řádky hello je uložen v proměnné typu [řádky](https://golang.org/pkg/database/sql/#Rows). Hello kód čte data hodnoty ve sloupcích hello hello aktuálním řádku pomocí metody [řádků. Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) a smyčky přes hello řádky pomocí hello iterator [řádků. Next()](https://golang.org/pkg/database/sql/#Rows.Next) dokud neexistují žádné další řádky. Každý řádek hodnot sloupce jsou tištěné toohello konzoly se. Každý čas vlastní checkError() metoda toocheck, pokud došlo k chybě a nouzové tooexit, pokud dojde k chybě.
 
-Nahraďte parametry `HOST`, `DATABASE`, `USER` a `PASSWORD` vlastními hodnotami. 
+Nahraďte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` parametry s vlastními hodnotami. 
 
 ```go
 package main
@@ -204,7 +204,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database")
+    fmt.Println("Successfully created connection toodatabase")
 
     // Read rows from table.
     var id int
@@ -229,13 +229,13 @@ func main() {
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
+Použití hello následující kód tooconnect a aktualizovat data pomocí hello **aktualizace** příkaz jazyka SQL.
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), [balíček pq](http://godoc.org/github.com/lib/pq) jako ovladač pro komunikaci se serverem Postgres a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [pq balíček](http://godoc.org/github.com/lib/pq) jako ovladač toocommunicate s hello Postgres serveru a hello [fmt balíček](https://golang.org/pkg/fmt/) pro vytisknout vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://godoc.org/github.com/lib/pq#Open) pro připojení ke službě Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění příkazu jazyka SQL, který aktualizuje tabulku. Vlastní metoda checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, nouzově kód ukončí.
+Hello kód zavolá metodu [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure databáze PostgreSQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metoda toorun hello příkaz jazyka SQL, který aktualizuje hello tabulky. Metoda toocheck vlastní checkError(), pokud došlo k chybě a pokud chybu nouzové tooexit dojde.
 
-Nahraďte parametry `HOST`, `DATABASE`, `USER` a `PASSWORD` vlastními hodnotami. 
+Nahraďte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` parametry s vlastními hodnotami. 
 ```go
 package main
 
@@ -271,7 +271,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database")
+    fmt.Println("Successfully created connection toodatabase")
 
     // Modify some data in table.
     sql_statement := "UPDATE inventory SET quantity = $2 WHERE name = $1;"
@@ -282,13 +282,13 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **odstranit** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), [balíček pq](http://godoc.org/github.com/lib/pq) jako ovladač pro komunikaci se serverem Postgres a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [pq balíček](http://godoc.org/github.com/lib/pq) jako ovladač toocommunicate s hello Postgres serveru a hello [fmt balíček](https://golang.org/pkg/fmt/) pro vytisknout vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://godoc.org/github.com/lib/pq#Open) pro připojení ke službě Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění příkazu jazyka SQL, který aktualizuje tabulku. Vlastní metoda checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, nouzově kód ukončí.
+Hello kód zavolá metodu [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure databáze PostgreSQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metoda toorun hello příkaz jazyka SQL, který aktualizuje hello tabulky. Metoda toocheck vlastní checkError(), pokud došlo k chybě a pokud chybu nouzové tooexit dojde.
 
-Nahraďte parametry `HOST`, `DATABASE`, `USER` a `PASSWORD` vlastními hodnotami. 
+Nahraďte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` parametry s vlastními hodnotami. 
 ```go
 package main
 
@@ -324,7 +324,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database")
+    fmt.Println("Successfully created connection toodatabase")
 
     // Delete some data from table.
     sql_statement := "DELETE FROM inventory WHERE name = $1;"

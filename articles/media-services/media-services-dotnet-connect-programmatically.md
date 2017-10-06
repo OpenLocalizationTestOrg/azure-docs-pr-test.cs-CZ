@@ -1,6 +1,6 @@
 ---
-title: "Připojení k účtu Media Services pomocí rozhraní .NET"
-description: "Toto téma ukazuje, jak se připojit ke službě Media Services pomocí rozhraní .NET."
+title: "Účet služby tooMedia aaaConnecting pomocí rozhraní .NET"
+description: "Toto téma ukazuje, jak tooconnect tooMedia služby pomocí rozhraní .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,42 +14,42 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 892932116934952265a21ab17aac3434b5760136
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a23bd285f7cae17ae5831e1e50e73947afbb9a3d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-to-media-services-account-using-media-services-sdk-for-net"></a>Připojení k účtu Media Services pomocí sady Media Services SDK pro .NET
+# <a name="connecting-toomedia-services-account-using-media-services-sdk-for-net"></a>Připojení tooMedia účtu služby pomocí sady Media Services SDK pro .NET
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-connect-programmatically.md)
 > * [.NET](media-services-dotnet-connect-programmatically.md)
 > 
 > 
 
-Toto téma popisuje, jak získat programové připojení k Microsoft Azure Media Services, pokud jsou programování pomocí sady Media Services SDK pro .NET.
+Toto téma popisuje, jak tooobtain tooMicrosoft programové připojení Azure Media Services, pokud jsou programování s hello sady Media Services SDK pro .NET.
 
-## <a name="connecting-to-media-services"></a>Připojení ke službě Media Services
-Pro připojení ke službě Media Services prostřednictvím kódu programu, můžete musí mít dříve nastavil účet Azure, nakonfigurované na tento účet Media Services a nastavit projekt sady Visual Studio pro vývoj pomocí sady Media Services SDK pro .NET. Další informace najdete v tématu Nastavení pro vývoj pomocí sady Media Services SDK pro .NET.
+## <a name="connecting-toomedia-services"></a>Připojení služby tooMedia
+tooconnect tooMedia služeb prostřednictvím kódu programu, musíte mít dříve nastavil účet Azure, nakonfigurované na tento účet Media Services a potom nastavit projekt sady Visual Studio pro vývoj pomocí hello sady Media Services SDK pro .NET. Další informace najdete v tématu Nastavení pro vývoj s hello sady Media Services SDK pro .NET.
 
-Na konci procesu instalace účtu Media Services můžete získat následující hodnoty požadované připojení. Použijí pro provedení programové připojení ke službě Media Services.
+Na konci procesu instalace účtu Media Services hello na hello, jste získali hello následující požadované hodnoty připojení. Pomocí těchto programové připojení toomake tooMedia služby.
 
 * Název účtu Media Services.
 * Klíče účtu Media Services.
 
-Tyto hodnoty, najdete na portálu Azure Management Portal, vyberte svůj účet Media Service a klikněte na "**Správa KLÍČŮ**" v dolní části okna portálu na ikonu. Kliknutím na ikonu vedle každého textového pole zkopírujete příslušnou hodnotu do schránky systému.
+Tyto hodnoty, toofind přejděte toohello Azure Management Portal, vyberte svůj účet Media Service a klikněte na hello "**Správa KLÍČŮ**" ikonu na hello dolní části okna portálu hello. Kliknutím na hello ikonu další tooeach textové pole kopie hello hodnota toohello schránky systému.
 
 ## <a name="creating-a-cloudmediacontext-instance"></a>Vytvoření CloudMediaContext Instance
-Spusťte programové ošetření Media Services je nutné vytvořit **CloudMediaContext** instanci, která představuje kontext serveru. **CloudMediaContext** obsahuje odkazy na důležité kolekcí včetně úloh, prostředky, soubory, zásady přístupu a lokátory.
+programové ošetření Media Services je třeba toocreate toostart **CloudMediaContext** instanci, která představuje kontext server hello. Hello **CloudMediaContext** obsahuje odkazy na kolekce tooimportant včetně úloh, prostředky, soubory, zásady přístupu a lokátory.
 
 > [!NOTE]
-> **CloudMediaContext** třída není bezpečná pro přístup z více vláken. Měli byste vytvořit nový CloudMediaContext na vlákno nebo jednotlivou sadu operací.
+> Hello **CloudMediaContext** třída není bezpečná pro přístup z více vláken. Měli byste vytvořit nový CloudMediaContext na vlákno nebo jednotlivou sadu operací.
 > 
 > 
 
-CloudMediaContext má pět přetížení konstruktor. Doporučuje se použít konstruktory, které nepřijímají **MediaServicesCredentials** jako parametr. Další informace najdete v tématu **opakovaného použití tokeny služby Řízení přístupu** , který následuje. 
+CloudMediaContext má pět přetížení konstruktor. Je doporučené toouse konstruktory, které provést **MediaServicesCredentials** jako parametr. Další informace najdete v tématu hello **opakovaného použití tokeny služby Řízení přístupu** , který následuje. 
 
-Následující příklad používá veřejný konstruktor CloudMediaContext(MediaServicesCredentials credentials):
+Hello následující příklad používá veřejný konstruktor CloudMediaContext(MediaServicesCredentials credentials) hello:
 
     // _cachedCredentials and _context are class member variables. 
     _cachedCredentials = new MediaServicesCredentials(
@@ -60,22 +60,22 @@ Následující příklad používá veřejný konstruktor CloudMediaContext(Medi
 
 
 ## <a name="reusing-access-control-service-tokens"></a>Opětovné použití tokeny služby Řízení přístupu
-V této části ukazuje, jak znovu použít tokeny služby Řízení přístupu pomocí CloudMediaContext konstruktory, které provést MediaServicesCredentials jako parametr.
+Tato část uvádí, jak tooreuse služby Řízení přístupu tokeny pomocí CloudMediaContext konstruktory, které provést MediaServicesCredentials jako parametr.
 
-[Azure Active Directory, řízení přístupu](https://msdn.microsoft.com/library/hh147631.aspx) (také označované jako služby Řízení přístupu nebo služby ACS) je Cloudová služba, která poskytuje snadný způsob ověřování a autorizace uživatelů pro přístup do své webové aplikace. Microsoft Azure Media Services řídí přístup k jeho služby ale protokolu OAuth, který vyžaduje tokenu služby ACS. Media Services přijímá tokeny služby ACS ze serveru ověřování.
+[Azure Active Directory, řízení přístupu](https://msdn.microsoft.com/library/hh147631.aspx) (také označované jako služby Řízení přístupu nebo služby ACS) je služba založená na cloudu, která poskytuje snadný způsob ověřování a povolující přístupu uživatelů toogain tootheir webových aplikací. Microsoft Azure Media Services řídí přístup tooits služeb, když protokol OAuth, který vyžaduje tokenu služby ACS. Media Services přijímá tokeny služby ACS hello ze serveru ověřování.
 
-Při vývoj pomocí sady Media Services SDK, je možné není zacházet s tokeny, protože sada SDK kód správce je pro vás. Ale když necháte SDK plně spravovat tokeny služby ACS vede k nepotřebné žádostí o token. Požaduje tokeny trvá určitou dobu a spotřebovává prostředky klienta a serveru. Navíc omezí server služby ACS je generovaný žádosti, pokud je příliš vysoká rychlost. Limit je 30 požadavků za sekundu, najdete v části [omezení služby ACS](https://msdn.microsoft.com/library/gg185909.aspx) další podrobnosti.
+Při vývoji s hello sada SDK služby Media Services, protože můžete toonot pozornosti s tokeny hello hello správci kódu SDK je pro vás. Povolení hello SDK však plně spravovat hello ACS tokeny zájemců toounnecessary žádostí o token. Požaduje tokeny trvá určitou dobu a spotřebovává prostředky klienta a server hello. Navíc omezí serveru ACS hello je generovaný hello požadavky, pokud hello míry je příliš vysoká. Hello limit je 30 požadavků za sekundu, najdete v části [omezení služby ACS](https://msdn.microsoft.com/library/gg185909.aspx) další podrobnosti.
 
-Od verze sady Media Services SDK verze 3.0.0.0, můžete znovu použít tokeny služby ACS. **CloudMediaContext** konstruktory, které nepřijímají **MediaServicesCredentials** jako parametr Povolit sdílení mezi více kontexty tokeny služby ACS. MediaServicesCredentials třída zapouzdří přihlašovací údaje služby Media Services. Pokud je k dispozici tokenu služby ACS a znáte jeho čas vypršení platnosti, můžete vytvořit novou instanci MediaServicesCredentials s tokenem a předejte ji do konstruktoru objektu CloudMediaContext. Všimněte si, že sady Media Services SDK automaticky aktualizuje tokeny vždy, když vypršení jejich platnosti. Existují dva způsoby, jak znovu použít tokeny služby ACS, jak je znázorněno v následujících příkladech.
+Počínaje hello sady Media Services SDK verze 3.0.0.0, můžete znovu použít hello tokeny služby ACS. Hello **CloudMediaContext** konstruktory, které nepřijímají **MediaServicesCredentials** jako parametr Povolit sdílení tokeny hello ACS mezi více kontexty. Hello MediaServicesCredentials třída zapouzdří přihlašovací údaje služby Media Services hello. Pokud je k dispozici tokenu služby ACS a znáte jeho čas vypršení platnosti, můžete vytvořit novou instanci MediaServicesCredentials s tokenem hello a předejte ji toohello konstruktoru CloudMediaContext. Všimněte si, že hello sady Media Services SDK automaticky aktualizuje tokeny vždy, když vypršení jejich platnosti. Existují dva způsoby tooreuse tokeny služby ACS, jak je znázorněno v následující příklady hello.
 
-* Může ukládat do mezipaměti **MediaServicesCredentials** objekt v paměti (například v proměnné statické třídy). Pak předejte objektu v mezipaměti CloudMediaContext konstruktoru. Objekt MediaServicesCredentials obsahuje tokenu služby ACS, které můžete znovu použít, pokud je stále platný. Pokud token není platný, se aktualizují pomocí sady Media Services SDK pomocí přihlašovacích údajů na MediaServicesCredentials konstruktor.
+* Můžete mezipaměti hello **MediaServicesCredentials** objekt v paměti (například v proměnné statické třídy). Pak předejte hello mezipaměti objekt toohello CloudMediaContext konstruktor. objekt MediaServicesCredentials Hello obsahuje tokenu služby ACS, které můžete znovu použít, pokud je stále platný. Pokud hello token není platný, že se aktualizují podle hello Media Services SDK pomocí přihlašovacích údajů hello daného toohello MediaServicesCredentials konstruktor.
   
-    Všimněte si, že **MediaServicesCredentials** objekt získá platný token po volání RefreshToken. **CloudMediaContext** volání **RefreshToken** metoda v konstruktoru. Pokud máte v úmyslu uložit hodnoty tokenu do externího úložiště, nezapomeňte zkontrolovat, zda je hodnota TokenExpiration platný před uložením dat tokenů. Pokud není platný, zavolejte RefreshToken před ukládání do mezipaměti.
+    Všimněte si, že hello **MediaServicesCredentials** objekt získá platný token po hello RefreshToken je volána. Hello **CloudMediaContext** volání hello **RefreshToken** metoda v konstruktoru hello. Pokud plánujete toosave hello hodnoty tokenu tooan externího úložiště, proveďte toocheck se, zda hello TokenExpiration hodnota je platná před uložením dat tokenů hello. Pokud není platný, zavolejte RefreshToken před ukládání do mezipaměti.
   
-        // Create and cache the Media Services credentials in a static class variable.
+        // Create and cache hello Media Services credentials in a static class variable.
         _cachedCredentials = new MediaServicesCredentials(_mediaServicesAccountName, _mediaServicesAccountKey);
 
-        // Use the cached credentials to create a new CloudMediaContext object.
+        // Use hello cached credentials toocreate a new CloudMediaContext object.
         if(_cachedCredentials == null)
         {
             _cachedCredentials = new MediaServicesCredentials(_mediaServicesAccountName, _mediaServicesAccountKey);
@@ -83,23 +83,23 @@ Od verze sady Media Services SDK verze 3.0.0.0, můžete znovu použít tokeny s
 
         CloudMediaContext context = new CloudMediaContext(_cachedCredentials);
 
-* Můžete také mezipaměti řetězec AccessToken a TokenExpiration hodnoty. Hodnoty může později použije k vytvoření nového objektu MediaServicesCredentials se data uložená v mezipaměti tokenu.  To je obzvláště užitečná pro scénáře, kde token lze bezpečně sdílet mezi více procesy nebo počítače.
+* Můžete také mezipaměti hello AccessToken řetězec a hello TokenExpiration hodnoty. hodnoty Hello později nelze použít toocreate nové MediaServicesCredentials objektu tokenu daty hello do mezipaměti.  To je obzvláště užitečná pro scénáře, kde hello token lze bezpečně sdílet mezi více procesy nebo počítače.
   
-    Následující fragmenty kódu volání metody SaveTokenDataToExternalStorage, GetTokenDataFromExternalStorage a UpdateTokenDataInExternalStorageIfNeeded, které nejsou definované v tomto příkladu. Můžete třeba definovat tyto metody ukládání, načíst a aktualizovat token data v externím úložišti. 
+    Hello následující fragmenty kódu volání hello SaveTokenDataToExternalStorage, GetTokenDataFromExternalStorage a UpdateTokenDataInExternalStorageIfNeeded metody, které nejsou v tomto příkladu. Můžete třeba definovat tyto metody toostore, načtení a aktualizace dat tokenů v externím úložišti. 
   
         CloudMediaContext context1 = new CloudMediaContext(_mediaServicesAccountName, _mediaServicesAccountKey);
   
-        // Get token values from the context.
+        // Get token values from hello context.
         var accessToken = context1.Credentials.AccessToken;
         var tokenExpiration = context1.Credentials.TokenExpiration;
   
         // Save token values for later use. 
-        // The SaveTokenDataToExternalStorage method should check 
-        // whether the TokenExpiration value is valid before saving the token data. 
+        // hello SaveTokenDataToExternalStorage method should check 
+        // whether hello TokenExpiration value is valid before saving hello token data. 
         // If it is not valid, call MediaServicesCredentials’s RefreshToken before caching.
         SaveTokenDataToExternalStorage(accessToken, tokenExpiration);
   
-    Uložené hodnoty tokenu použijte k vytvoření MediaServicesCredentials.
+    Použití hello uložit hodnoty tokenu toocreate MediaServicesCredentials.
 
         var accessToken = "";
         var tokenExpiration = DateTime.UtcNow;
@@ -116,7 +116,7 @@ Od verze sady Media Services SDK verze 3.0.0.0, můžete znovu použít tokeny s
 
         CloudMediaContext context2 = new CloudMediaContext(credentials);
 
-    Aktualizujte token kopii v případě, že token byl aktualizován pomocí sady Media Services SDK. 
+    Aktualizujte token kopii hello v případě, že hello token byl aktualizován hello sada SDK služby Media Services. 
 
         if(tokenExpiration != context2.Credentials.TokenExpiration)
         {
@@ -124,13 +124,13 @@ Od verze sady Media Services SDK verze 3.0.0.0, můžete znovu použít tokeny s
         }
 
 
-* Pokud máte více účtů Media Services (například pro sdílení účely nebo Geo rozdělení zatížení) do mezipaměti můžete ukládat objekty MediaServicesCredentials pomocí kolekce System.Collections.Concurrent.ConcurrentDictionary (kolekci ConcurrentDictionary představuje kolekci vláken párů klíč/hodnota, které můžete přistupovat pomocí více vláken současně). Pak můžete použít metodu GetOrAdd získat přihlašovací údaje v mezipaměti. 
+* Pokud máte více účtů Media Services (například pro sdílení účely nebo Geo rozdělení zatížení) do mezipaměti můžete ukládat objekty MediaServicesCredentials pomocí kolekce System.Collections.Concurrent.ConcurrentDictionary hello (hello Kolekce ConcurrentDictionary představuje kolekci vláken párů klíč/hodnota, které můžete přistupovat pomocí více vláken současně). Potom můžete hello GetOrAdd metoda tooget hello do mezipaměti přihlašovací údaje. 
   
-        // Declare a static class variable of the ConcurrentDictionary type in which the Media Services credentials will be cached.  
+        // Declare a static class variable of hello ConcurrentDictionary type in which hello Media Services credentials will be cached.  
         private static readonly ConcurrentDictionary<string, MediaServicesCredentials> mediaServicesCredentialsCache = 
             new ConcurrentDictionary<string, MediaServicesCredentials>();
 
-        // Cache (or get already cached) Media Services credentials. Use these credentials to create a new CloudMediaContext object.
+        // Cache (or get already cached) Media Services credentials. Use these credentials toocreate a new CloudMediaContext object.
         static public CloudMediaContext CreateMediaServicesContext(string accountName, string accountKey)
         {
             CloudMediaContext cloudMediaContext;
@@ -145,8 +145,8 @@ Od verze sady Media Services SDK verze 3.0.0.0, můžete znovu použít tokeny s
             return cloudMediaContext;
         }
 
-## <a name="connecting-to-a-media-services-account-located-in-the-north-china-region"></a>Připojení k účtu Media Services nachází v oblasti severní Čína
-Pokud váš účet se nachází v oblasti severní Čína, použijte následující konstruktor:
+## <a name="connecting-tooa-media-services-account-located-in-hello-north-china-region"></a>Připojení účtu Media Services tooa nachází v oblasti severní Čína hello
+Pokud váš účet se nachází v oblasti severní Čína hello, použijte následující konstruktor hello:
 
     public CloudMediaContext(Uri apiServer, string accountName, string accountKey, string scope, string acsBaseAddress)
 
@@ -161,9 +161,9 @@ Například:
 
 
 ## <a name="storing-connection-values-in-configuration"></a>Ukládání hodnot připojení v konfiguraci
-Je vysoce doporučený postup pro uložení připojení hodnot, jako je například název účtu a hesla, obzvláště citlivé hodnoty v konfiguraci. Také je doporučený postup pro šifrování citlivých konfigurační data. Pomocí Windows systém souborů (Encrypting File System) můžete šifrovat celý konfiguračního souboru. Chcete-li povolit systémem souborů EFS na soubor, klikněte pravým tlačítkem na soubor, vyberte možnost **vlastnosti**a povolit šifrování v **Upřesnit** kartě nastavení. Nebo můžete vytvořit vlastní řešení pro šifrování vybraných částí konfiguračního souboru pomocí chráněné konfigurace. V tématu [šifrování informace o konfiguraci pomocí chráněné konfigurace](https://msdn.microsoft.com/library/53tyfkaw.aspx).
+Je připojení hodnoty toostore vysoce doporučený postup, obzvláště citlivé hodnoty, například název účtu a heslo v konfiguraci. Je také doporučený postup tooencrypt citlivé konfigurační data. Hello celý konfigurační soubor můžete šifrovat pomocí hello Windows systém souborů (Encrypting File System). Vyberte tooenable systémem souborů EFS v souboru, klikněte pravým tlačítkem na soubor hello, **vlastnosti**a povolilo se šifrování v hello **Upřesnit** kartě nastavení. Nebo můžete vytvořit vlastní řešení pro šifrování vybraných částí konfiguračního souboru pomocí chráněné konfigurace. V tématu [šifrování informace o konfiguraci pomocí chráněné konfigurace](https://msdn.microsoft.com/library/53tyfkaw.aspx).
 
-Následující soubor App.config obsahuje hodnoty požadované připojení. Hodnoty <appSettings> element jsou požadované hodnoty, které jste získali z instalačního procesu účtu Media Services.
+Hello následující soubor App.config obsahuje hodnoty hello požadované připojení. Hello hodnoty v hello <appSettings> element jsou hello požadované hodnoty, které jste získali z procesu instalace účtu Media Services hello.
 
     <configuration>
       <appSettings>
@@ -173,7 +173,7 @@ Následující soubor App.config obsahuje hodnoty požadované připojení. Hodn
     </configuration>
 
 
-Chcete-li načíst hodnoty připojení z konfigurace, můžete použít **ConfigurationManager** třídy a pak mu přiřaďte hodnoty polí ve vašem kódu:
+hodnoty připojení tooretrieve z konfigurace, můžete použít hello **ConfigurationManager** třídy a pak mu přiřaďte hello hodnoty toofields ve vašem kódu:
 
     private static readonly string _accountName = ConfigurationManager.AppSettings["MediaServicesAccountName"];
     private static readonly string _accountKey = ConfigurationManager.AppSettings["MediaServicesAccountKey"];

@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s příponou Panel přístupu Azure pro aplikaci Internet Explorer | Microsoft Docs"
-description: "Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny."
+title: "aaaTroubleshooting hello Azure přístup k panelu rozšíření pro aplikaci Internet Explorer | Microsoft Docs"
+description: "Jak toouse skupiny zásad toodeploy hello Internet Explorer rozšíření pro portál Moje aplikace hello."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -16,82 +16,82 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 938d0b4046afa8c80eabe542f4541d0554948f5d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 23cbb6117f34759330206de3a26f1397486acedb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s příponou Panel přístupu pro Internet Explorer
-Tento článek vám pomůže vyřešit tyto problémy:
+# <a name="troubleshooting-hello-access-panel-extension-for-internet-explorer"></a>Řešení potíží s hello rozšíření panely přístup pro prohlížeč Internet Explorer
+Tento článek vám pomůže vyřešit hello následující problémy:
 
-* Nelze získat přístup k vaší aplikace prostřednictvím portálu Moje aplikace při používání aplikace Internet Explorer.
-* Zobrazí se zpráva "Instalace softwaru", i když jste již nainstalovali software.
+* Můžete se vaše aplikace prostřednictvím portálu Moje aplikace hello nelze tooaccess při používání aplikace Internet Explorer.
+* Zobrazí zpráva "Instalace softwaru" i když jste již nainstalovali hello software hello.
 
-Pokud jste správce, viz také: [nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
+Pokud jste správce, viz také: [jak tooDeploy hello rozšíření přístup k panelu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
 
-## <a name="run-the-diagnostic-tool"></a>Spustit diagnostické nástroje
-Instalace problémy s příponou Panel přístupu lze diagnostikovat pomocí stažení a spuštění diagnostické nástroje přístupového panelu:
+## <a name="run-hello-diagnostic-tool"></a>Spusťte nástroj pro diagnostiku hello
+Instalace problémy s hello rozšíření přístup k panelu lze diagnostikovat pomocí stažení a spuštění hello přístupový Panel diagnostické nástroje:
 
-1. [Chcete-li stáhnout nástroj pro diagnostiku, klikněte sem.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
-2. Otevřete soubor a stiskněte klávesu **extrahujte všechny** tlačítko.
+1. [Toodownload hello diagnostický nástroj, klikněte sem.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+2. Soubor otevřete hello a stiskněte klávesu **extrahujte všechny** tlačítko.
    
     ![Stiskněte klávesu extrahujte všechny](./media/active-directory-saas-ie-troubleshooting/extract1.png)
-3. Stiskněte **extrahovat** tlačítko Pokračovat.
+3. Stiskněte klávesu hello **extrahovat** toocontinue tlačítko.
    
     ![Stiskněte klávesu extrakce](./media/active-directory-saas-ie-troubleshooting/extract2.png)
-4. Chcete-li spustit nástroj, klikněte pravým tlačítkem na soubor s názvem **AccessPanelExtensionDiagnosticTool**, pak vyberte **Otevřít protokolem > Microsoft Windows na základě Script Host**.
+4. Nástroj hello toorun, klikněte pravým tlačítkem na hello soubor s názvem **AccessPanelExtensionDiagnosticTool**, pak vyberte **Otevřít protokolem > Microsoft Windows na základě Script Host**.
    
     ![Otevřít v programu > základě Microsoft Windows Script Host](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
-5. Zobrazí se následující okno diagnostiky, které popisuje, co mohou být další potíže s instalací.
+5. Zobrazí se následující okno diagnostiky, která popisuje, co mohou být další potíže s instalací hello.
    
-    ![Ukázka okno diagnostiky](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
-6. Klikněte na tlačítko "**Ano**" umožníte programu opravit problémy, které byly nalezeny.
-7. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.<br />Pokud pořád nemáte přístup k vaší aplikace, zkuste následující postup.
+    ![Ukázka diagnostiky okna hello](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
+6. Klikněte na tlačítko "**Ano**" toolet hello program oprava hello problémy, které byly nalezeny.
+7. toosave tyto změny, každý okno Internet Exploreru zavřít a znovu otevřete Internet Explorer.<br />Pokud pořád nemáte přístup k vaší aplikace, zkuste následující postup hello.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Zkontrolujte, že je povolené rozšíření přístup k panelu
-Chcete-li ověřit, že je v Internet Exploreru povolená rozšíření přístup k panelu:
+## <a name="check-that-hello-access-panel-extension-is-enabled"></a>Zkontrolujte, že hello rozšíření přístup k panelu je povoleno
+v Internet Exploreru je povolená tooverify, který hello rozšíření přístup k panelu:
 
-1. V aplikaci Internet Explorer, klikněte **ozubené kolečko ikonu** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
+1. V aplikaci Internet Explorer, klikněte na tlačítko hello **ozubené kolečko ikonu** na hello pravém horním rohu okna hello. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
    
-    ![Přejděte na Nástroje > Možnosti Internetu](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
-2. Klikněte na tlačítko **programy** a potom klikněte **spravovat doplňky** tlačítko.
+    ![Přejděte tooTools > Možnosti Internetu](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
+2. Klikněte na tlačítko hello **programy** a potom klikněte na tlačítko hello **spravovat doplňky** tlačítko.
    
     ![Kliknutím na Spravovat doplňky](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
-3. V tomto dialogovém okně vyberte **rozšíření přístup k panelu** a klikněte **povolit** tlačítko.
+3. V tomto dialogovém okně vyberte **rozšíření přístup k panelu** a pak klikněte na tlačítko hello **povolit** tlačítko.
    
     ![Klikněte na položku Povolit](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
-4. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.
+4. toosave tyto změny, zavřete všechny okně Internet Exploreru a pak znovu otevřete Internet Explorer.
 
 ## <a name="enable-extensions-for-inprivate-browsing"></a>Povolit rozšíření pro procházení InPrivate
-Pokud používáte v režimu procházení InPrivate:
+Pokud používáte režim procházení se službou InPrivate hello:
 
-1. V aplikaci Internet Explorer, klikněte **ozubené kolečko ikonu** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
+1. V aplikaci Internet Explorer, klikněte na tlačítko hello **ozubené kolečko ikonu** na hello pravém horním rohu okna hello. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
    
-    ![Ukázka okno diagnostiky](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
-2. Přejděte na **o ochraně osobních údajů** kartě pak **zrušte zaškrtnutí políčka** zaškrtávací políčko s názvem bez přípony **zakažte panely nástrojů a rozšíření při procházení se službou InPrivate spuštění**</p>
+    ![Ukázka diagnostiky okna hello](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
+2. Přejděte toohello **o ochraně osobních údajů** kartě pak **zrušte zaškrtnutí políčka** hello zaškrtávací políčko s názvem bez přípony **zakažte panely nástrojů a rozšíření při procházení se službou InPrivate spuštění**</p>
    
     ![Zrušte zaškrtnutí zakažte panely nástrojů a rozšíření při spuštění procházení InPrivate](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
-3. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.
+3. toosave tyto změny, zavřete všechny okně Internet Exploreru a pak znovu otevřete Internet Explorer.
 
-## <a name="uninstall-the-access-panel-extension"></a>Odinstalovat rozšíření Panel přístupu
-Chcete-li odinstalovat rozšíření přístupový Panel z vašeho počítače:
+## <a name="uninstall-hello-access-panel-extension"></a>Odinstalovat rozšíření přístup k panelu hello
+toouninstall hello přístupový Panel rozšíření z vašeho počítače:
 
-1. Na klávesnici, stiskněte **Windows klíč** k otevření nabídky Start. V otevřeném v nabídce, můžete zadat nic, aby hledání. Zadejte "Ovládací panely" a pak otevřete **ovládací panely** při zobrazí ve výsledcích hledání.
+1. Na klávesnici stiskněte hello **Windows klíč** nabídky Start tooopen hello. V otevřeném hello nabídky, můžete zadat nic toodo vyhledávání. Zadejte "Ovládací panely" a pak otevřete hello **ovládací panely** při zobrazí ve výsledcích hledání hello.
    
     ![Vyhledejte ovládací panely](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
-2. V pravém horním rohu ovládacího panelu změnit **zobrazit** možnost k **ikony. velké ikony**. Poté vyhledejte a vyberte **programy a funkce** tlačítko.
+2. Hello pravém horním rohu hello ovládací panely, změňte hello **zobrazit** možnost příliš**ikony. velké ikony**. Poté vyhledejte a vyberte hello **programy a funkce** tlačítko.
    
-    ![Zobrazení změn zobrazíte ikony. velké ikony](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
-3. V seznamu vyberte **rozšíření přístup k panelu**a potom **odinstalovat** tlačítko.
+    ![Změn hello zobrazení tooshow ikony. velké ikony](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
+3. Hello seznamu, vyberte **rozšíření přístup k panelu**a klikněte na tlačítko hello hello **odinstalovat** tlačítko.
    
     ![Klikněte na tlačítko Odinstalovat](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
-4. Potom můžete zkusit nainstalovat rozšíření zjistíte, pokud byl problém vyřešen.
+4. Potom můžete zkusit tooinstall hello rozšíření znovu toosee Pokud hello problém byl vyřešen.
 
-Pokud narazíte na problémy odinstalace rozšíření, můžete také odebrat pomocí [Microsoft opravte ji](https://go.microsoft.com/?linkid=9779673) nástroj.
+Pokud narazíte na problémy odinstalace hello rozšíření, můžete také odebrat pomocí hello [Microsoft opravte ji](https://go.microsoft.com/?linkid=9779673) nástroj.
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md)
-* [Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
+* [Jak tooDeploy hello rozšíření přístup k panelu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
 

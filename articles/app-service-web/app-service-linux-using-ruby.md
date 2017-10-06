@@ -1,5 +1,5 @@
 ---
-title: "Použití Ruby v webové aplikace Azure App Service v systému Linux | Microsoft Docs"
+title: "aaaUsing Ruby v Azure App Service webové aplikace v systému Linux | Microsoft Docs"
 description: "Použití Ruby ve webové aplikace Azure App Service v systému Linux."
 keywords: "služby Azure app service, webové aplikace, – nejčastější dotazy, linux, operačních systémů, ruby"
 services: app-service
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 56105d1bc153e552e12c0c408c8f6075e4eff9d0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 45692cb3bf1da9ff65b9466055029bfaef8b7d8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-ruby-in-web-app-on-linux"></a>Použití Ruby v webové aplikace v systému Linux #
 
-Pomocí nejnovější aktualizace na našem back-end zavedli jsme podporu pro poznámky Ruby v.2.3. Nastavením konfigurace webové aplikace v systému Linux, můžete změnit v zásobníku aplikace.
+U hello nejnovější aktualizace tooour back-end zavedli jsme podporu pro poznámky Ruby v.2.3. Nastavení konfigurace hello Linux webové aplikace můžete změnit zásobník aplikací hello.
 
-## <a name="using-the-azure-portal"></a>Použití webu Azure Portal ##
+## <a name="using-hello-azure-portal"></a>Pomocí hello portálu Azure ##
 
-Z nové nabídky v [portál Azure](https://portal.azure.com), můžete k vytvoření webové aplikace v systému Linux z Web + mobilní možnosti, jak je znázorněno na následujícím obrázku:
+Z nové nabídky hello v hello [portál Azure](https://portal.azure.com), můžete zvolit toocreate webové aplikace v systému Linux hello Web + mobilní možnost jak ukazuje následující obrázek hello:
 
-![Zahájení vytváření webové aplikace na portálu Azure][1]
+![Zahájení vytváření webové aplikace na hello portálu Azure][1]
 
-Dále **vytvořit okno** otevře, jak je znázorněno na následujícím obrázku:
+V dalším kroku hello **vytvořit okno** otevře, jak ukazuje následující obrázek hello:
 
-![V okně Vytvořit][2]
+![okno Vytvořit Hello][2]
 
 1. Zadejte název webové aplikace.
-2. Vyberte existující skupinu prostředků nebo vytvořte novou. (Viz dostupné oblasti v [omezení části](app-service-linux-intro.md).)
-3. Vyberte existující plán služby Azure App Service nebo vytvořte novou. (Naleznete v poznámkách k plánu služby App Service v [omezení části](app-service-linux-intro.md).)
-4. Její vyberte z předdefinovaných Runtime zásobníky.
+2. Vyberte existující skupinu prostředků nebo vytvořte novou. (Viz dostupné oblasti v hello [omezení části](app-service-linux-intro.md).)
+3. Vyberte existující plán služby Azure App Service nebo vytvořte novou. (Naleznete v poznámkách k plánu služby App Service v hello [omezení části](app-service-linux-intro.md).)
+4. Hello Ruby vyberte z předdefinovaných Runtime zásobníky hello.
 
-Po vytvoření získá Ruby webové aplikace, můžete nasadit se pomocí Git a FTP.
+Po vytvoření získá Ruby webové aplikace, můžete nasadit tooit pomocí Git a FTP.
 
-Další informace o vytváření Ruby aplikace, zkontrolujte [Příručka Začínáme get](app-service-linux-ruby-get-started.md)
+Další informace o toolearn vytvořit aplikaci, Ruby, zkontrolujte hello [Příručka Začínáme get](app-service-linux-ruby-get-started.md)
 
 ## <a name="next-steps"></a>Další kroky
 * [Co je webová aplikace v systému Linux?](app-service-linux-intro.md)
-* [Místní nasazení z Gitu do služby Azure App Service](app-service-deploy-local-git.md)
+* [Místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md)
 * [Webové aplikace Azure App Service v systému Linux – nejčastější dotazy](app-service-linux-faq.md)
 * [Vytvoření aplikace pro poznámky Ruby pomocí Azure webové aplikace v systému Linux](app-service-linux-ruby-get-started.md)
 

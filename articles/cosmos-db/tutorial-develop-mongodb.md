@@ -1,6 +1,6 @@
 ---
-title: "Použít k vytvoření webové aplikace API Azure Cosmos DB pro MongoDB | Microsoft Docs"
-description: "Azure Cosmos DB kurz, který vytváří online databáze webové aplikace pomocí rozhraní API pro MongoDB."
+title: "aaaUse Azure Cosmos DB na rozhraní API pro MongoDB toobuild webové aplikace | Microsoft Docs"
+description: "Azure Cosmos DB kurz, který vytváří online databáze webové aplikace pomocí rozhraní API hello pro MongoDB."
 keywords: "Příklady mongodb"
 services: cosmos-db
 author: AndrewHoh
@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: ff277c7f88359cd977424f2e0958c69e2547a2af
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6dfa7fef49fc53ea2fcfcfbad3b3fcf97ac18e94
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: Připojení k MongoDB aplikace pomocí rozhraní .NET
+# <a name="azure-cosmos-db-connect-tooa-mongodb-app-using-net"></a>Azure Cosmos DB: Připojení tooa MongoDB aplikace pomocí rozhraní .NET
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento kurz ukazuje, jak vytvořit účet Azure Cosmos DB pomocí portálu Azure a jak vytvořit databázi a kolekci k ukládání dat pomocí [MongoDB API](mongodb-introduction.md). 
+Tento kurz ukazuje, jak hello toocreate účtu Azure Cosmos DB pomocí portálu Azure a jak toocreate databázi a kolekci toostore dat pomocí hello [MongoDB API](mongodb-introduction.md). 
 
-Tento kurz obsahuje následující úlohy:
+Tento kurz se zabývá hello následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB 
@@ -38,12 +38,12 @@ Tento kurz obsahuje následující úlohy:
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
-Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.  
+Začněme vytvořením účtu Azure Cosmos DB v hello portálu Azure.  
 
 > [!TIP]
-> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit na [nastavit řešení sady Visual Studio](#SetupVS)
-> * Měli jste účet Azure DocumentDB? Pokud ano, váš účet je teď účet Azure Cosmos DB a můžete přeskočit na [nastavit řešení sady Visual Studio](#SetupVS).  
-> * Pokud používáte emulátor DB Cosmos Azure, postupujte podle kroků v [emulátoru DB Cosmos Azure](local-emulator.md) nastavit emulátoru a přeskočit na [nastavení řešení v nástroji Visual Studio](#SetupVS). 
+> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit příliš[nastavit řešení sady Visual Studio](#SetupVS)
+> * Měli jste účet Azure DocumentDB? Pokud ano, váš účet je teď účet Azure Cosmos DB a můžete přeskočit příliš[nastavit řešení sady Visual Studio](#SetupVS).  
+> * Pokud používáte hello emulátoru DB Cosmos Azure, postupujte podle kroků hello v [emulátoru DB Cosmos Azure](local-emulator.md) toosetup hello emulátoru a přeskočit příliš[nastavení řešení v nástroji Visual Studio](#SetupVS). 
 >
 >
 
@@ -51,16 +51,16 @@ Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-1. Na portálu Azure v **Azure Cosmos DB** vyberte rozhraní API pro účet MongoDB. 
-2. V levém panelu okno účtu, klikněte na **úvodní**. 
+1. V portálu Azure, v hello hello **Azure Cosmos DB** vyberte hello rozhraní API pro účet MongoDB. 
+2. V levém panelu hello hello účet okna klikněte na **úvodní**. 
 3. Vyberte svou platformu (*ovladačů rozhraní .NET*, *Node.js ovladač*, *MongoDB prostředí*, *Java ovladač*, *Python ovladač*). Pokud nevidíte ovladače nebo nástroj uvedené, nemusíte si dělat starosti, budeme průběžně dokumentu další fragmenty kódu připojení. 
-4. Zkopírovat a Vložit fragment kódu do vaší aplikace MongoDB a jsou připravené na vynucování.
+4. Zkopírujte a vložte fragment kódu hello do vaší aplikace pro MongoDB, a jsou připravené toogo.
 
 ## <a name="set-up-your-mongodb-app"></a>Nastavit aplikaci MongoDB
 
-Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k MongoDB, které jsou spuštěny na virtuálním počítači](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md) kurz s minimálním změnách, se rychle nastavit aplikaci MongoDB (buď místně nebo publikována na webové aplikace Azure), připojí do rozhraní API pro účet MongoDB.  
+Můžete použít hello [vytvořit webovou aplikaci v Azure, která se připojuje tooMongoDB spuštěny na virtuálním počítači](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md) kurz s minimálním změnách, instalační program tooquickly MongoDB aplikace (buď místně nebo tooan publikované webové aplikace Azure), připojí tooan rozhraní API pro účet MongoDB.  
 
-1. Postupujte podle kurzu s jeden úpravy.  Nahraďte kód Dal.cs toto:
+1. Postupujte podle kurzu hello s jeden úpravy.  Nahraďte kód Dal.cs hello toto:
 
     ```csharp   
     using System;
@@ -80,7 +80,7 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
             //private MongoServer mongoServer = null;
             private bool disposed = false;
    
-            // To do: update the connection string with the DNS name
+            // toodo: update hello connection string with hello DNS name
             // or IP address of your server. 
             //For example, "mongodb://testlinux.cloudapp.net
             private string connectionString = "mongodb://localhost:27017";
@@ -89,7 +89,7 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
             private string password = "<your password>";
    
             // This sample uses a database named "Tasks" and a 
-            //collection named "TasksList".  The database and collection 
+            //collection named "TasksList".  hello database and collection 
             //will be automatically created if they don't already exist.
             private string dbName = "Tasks";
             private string collectionName = "TasksList";
@@ -99,7 +99,7 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
             {
             }
    
-            // Gets all Task items from the MongoDB server.        
+            // Gets all Task items from hello MongoDB server.        
             public List<MyTask> GetAllTasks()
             {
                 try
@@ -113,7 +113,7 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
                 }
             }
    
-            // Creates a Task and inserts it into the collection in MongoDB.
+            // Creates a Task and inserts it into hello collection in MongoDB.
             public void CreateTask(MyTask task)
             {
                 var collection = GetTasksCollectionForEdit();
@@ -195,7 +195,7 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
     }
     ```
 
-2. Upravte následující proměnné v souboru Dal.cs na nastavení svého účtu na stránce klíče na portálu Azure:
+2. Upravte hello následující proměnné v souboru Dal.cs hello na nastavení svého účtu ze stránky klíče hello hello portálu Azure:
 
     ```csharp   
     private string userName = "<your user name>";
@@ -203,25 +203,25 @@ Můžete použít [vytvořit webovou aplikaci v Azure, která se připojuje k Mo
     private string password = "<your password>";
     ```
 
-3. Použití aplikace!
+3. Použití aplikace hello!
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal. 
+Pokud ale nebudete toocontinue toouse tuto aplikaci, použijte následující kroky toodelete všechny prostředky vytvořené v tomto kurzu v portálu Azure hello hello. 
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB 
 > * Aktualizace připojovacího řetězce
 > * Vytvoření aplikace pro MongoDB ve virtuálním počítači
 
-Můžete pokračovat v dalším kurzu a importovat MongoDB data do Azure Cosmos DB.  
+Můžete pokračovat dalším kurzu toohello a importovat data tooAzure vaše MongoDB Cosmos DB.  
 
 > [!div class="nextstepaction"]
 > [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

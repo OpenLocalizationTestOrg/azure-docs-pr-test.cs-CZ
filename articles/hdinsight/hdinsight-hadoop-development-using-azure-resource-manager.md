@@ -1,6 +1,6 @@
 ---
-title: "Migrace do nástroje Správce prostředků Azure pro HDInsight | Microsoft Docs"
-description: "Postup migrace na vývojové nástroje Azure Resource Manageru pro clustery služby HDInsight na"
+title: "aaaMigrate tooAzure Resource Manager nástroje pro HDInsight | Microsoft Docs"
+description: "Jak nástroje toomigrate tooAzure vývoj Resource Manageru pro clustery HDInsight"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: 708d22b9ce53d4dbc07c6bcde0c46dcd238291bb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c087ae63d2544e5badae6be9c258f783aa92e2ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na Azure Resource Manager vývojové nástroje založené pro clustery služby HDInsight
+# <a name="migrating-tooazure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace tooAzure Resource Manager vývojové nástroje založené pro clustery služby HDInsight
 
-HDInsight je místo na základě Azure Service Manager ASM nástroje začne pro HDInsight. Pokud používáte prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo sady SDK rozhraní .NET HDInsight pro práci s clustery HDInsight, můžete se doporučuje používat založené na Azure Resource Manager ARM verze prostředí PowerShell, rozhraní příkazového řádku a .NET SDK do budoucna. Tento článek obsahuje ukazatele na tom, jak migrovat do nového přístupu založené na ARM. Bez ohledu na příslušném Tento článek také ukazuje out rozdíly mezi ASM a ARM přístupy pro HDInsight.
+HDInsight je místo na základě Azure Service Manager ASM nástroje začne pro HDInsight. Pokud používáte prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo hello SDK rozhraní .NET HDInsight toowork s clustery HDInsight, jste podporovali toouse hello založené na Azure Resource Manager ARM verze prostředí PowerShell, rozhraní příkazového řádku a .NET SDK do budoucna. Tento článek obsahuje ukazatele toomigrate toohello nový založené na ARM přístup. Pokud je to možné, v tomto článku také upozornění na hello rozdíly mezi hello ASM a ARM přístupy pro HDInsight.
 
 > [!IMPORTANT]
-> Podpora pro ASM na základě prostředí PowerShell, rozhraní příkazového řádku, a .NET SDK se ukončí na **1. ledna 2017**.
+> Podpora Hello ASM na základě prostředí PowerShell, rozhraní příkazového řádku, a .NET SDK se ukončí na **1. ledna 2017**.
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Migrace rozhraní příkazového řádku Azure do Azure Resource Manageru
-Azure CLI nyní výchozí do režimu Azure Resource Manager (ARM), pokud provádíte upgrade z předchozí instalace; v takovém případě budete možná muset použít `azure config mode arm` příkaz Přepnout do režimu ARM.
+## <a name="migrating-azure-cli-tooazure-resource-manager"></a>Migrace tooAzure rozhraní příkazového řádku Azure Resource Manager
+Hello příkazového řádku Azure CLI nyní výchozí tooAzure režimu Resource Manager (ARM), pokud provádíte upgrade z předchozí instalace; v takovém případě musíte toouse hello `azure config mode arm` příkaz tooswitch tooARM režimu.
 
-Základní příkazy, které rozhraní příkazového řádku Azure k dispozici pro práci s HDInsight pomocí Azure Service Management (ASM) jsou stejné, když pomocí modelu ARM; ale některé parametry a přepínače může mít nové názvy a existuje mnoho nových parametrů při použití ARM. Například můžete nyní použít `azure hdinsight cluster create` k určení virtuální síť Azure, který by měl být vytvořen v clusteru, nebo Hive a informace metaúložiště Oozie.
+základní příkazy Hello této hello rozhraní příkazového řádku Azure poskytuje toowork s HDInsight pomocí Azure Service Management (ASM) jsou hello stejné při použití ARM; ale některé parametry a přepínače může mít nové názvy a existuje mnoho nových parametrů při použití ARM. Například můžete nyní použít `azure hdinsight cluster create` toospecify hello virtuální sítě Azure, který by měl být vytvořen v clusteru, nebo Hive a informace metaúložiště Oozie.
 
 Základní příkazy pro práci s HDInsight prostřednictvím Správce Azure Resource Manager jsou:
 
@@ -42,25 +42,25 @@ Základní příkazy pro práci s HDInsight prostřednictvím Správce Azure Res
 * `azure hdinsight cluster show`– Zobrazí informace o stávajícího clusteru
 * `azure hdinsight cluster list`-obsahuje seznam clustery HDInsight pro vaše předplatné Azure
 
-Použití `-h` přepínač tak, aby kontrolovat parametry a přepínače, které jsou k dispozici u každého příkazu.
+Použití hello `-h` přepínač tooinspect hello parametry a přepínače, které jsou k dispozici u každého příkazu.
 
 ### <a name="new-commands"></a>Nové příkazy
 Nové příkazy, které jsou k dispozici s Azure Resource Manager jsou:
 
-* `azure hdinsight cluster resize`-dynamicky změní počet uzlů pracovního procesu v clusteru
-* `azure hdinsight cluster enable-http-access`– Umožňuje HTTPs přístup ke clusteru (na ve výchozím nastavení)
-* `azure hdinsight cluster disable-http-access`– Zakáže HTTPs přístup ke clusteru
+* `azure hdinsight cluster resize`-dynamicky změny hello počet uzlů pracovního procesu v clusteru hello
+* `azure hdinsight cluster enable-http-access`– umožňuje clusteru toohello přístup HTTPs (na ve výchozím nastavení)
+* `azure hdinsight cluster disable-http-access`– Zakáže clusteru toohello přístup HTTPs
 * `azure hdinsight script-action`-obsahuje příkazy pro vytváření nebo správu akcí skriptů v clusteru
-* `azure hdinsight config`-poskytuje příkazů pro vytvoření konfiguračního souboru, který lze použít s `hdinsight cluster create` příkaz poskytnout informace o konfiguraci.
+* `azure hdinsight config`-poskytuje příkazů pro vytvoření konfiguračního souboru, který lze použít s hello `hdinsight cluster create` příkaz tooprovide informace o konfiguraci.
 
 ### <a name="deprecated-commands"></a>Nepoužívané příkazy
-Pokud použijete `azure hdinsight job` příkazy k odesílání úloh do clusteru HDInsight, tyto nejsou k dispozici prostřednictvím příkazy ARM. Pokud potřebujete prostřednictvím kódu programu odesílání úloh do HDInsight z skriptů, měli byste místo toho použít rozhraní REST API poskytovaných v HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v následujících dokumentech.
+Pokud používáte hello `azure hdinsight job` příkazy toosubmit úlohy tooyour HDInsight clusteru, tyto nejsou k dispozici prostřednictvím hello příkazy ARM. Pokud potřebujete tooprogrammatically odeslání úlohy tooHDInsight z skriptů, měli byste místo toho použít hello rozhraní REST API poskytovaných v HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v tématu hello následující dokumenty.
 
 * [Spuštění úloh MapReduce s Hadoop v HDInsight pomocí cURL](hdinsight-hadoop-use-mapreduce-curl.md)
 * [Spouštění dotazů Hive se systémem Hadoop v HDInsight pomocí cURL](hdinsight-hadoop-use-hive-curl.md)
 * [Spuštění úlohy Pig s Hadoop v HDInsight pomocí cURL](hdinsight-hadoop-use-pig-curl.md)
 
-Informace o jiných způsobech spustit MapReduce, Hive a vepřových interaktivně, najdete v části [používání MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md), [používání Hive s Hadoop v HDInsight](hdinsight-use-hive.md), a [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
+Informace o jiných způsobech toorun MapReduce, Hive a vepřových interaktivně, najdete v části [používání MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md), [používání Hive s Hadoop v HDInsight](hdinsight-use-hive.md), a [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
@@ -79,7 +79,7 @@ Informace o jiných způsobech spustit MapReduce, Hive a vepřových interaktivn
 * Nový příkaz (ARM)-`azure hdinsight cluster list`
 
 > [!NOTE]
-> Pro příkaz seznamu zadání skupiny prostředků pomocí `-g` vrátí pouze clustery v zadaná skupina prostředků.
+> Pro příkaz seznamu hello, zadání hello skupinu prostředků pomocí `-g` vrátí pouze clustery hello v hello zadaná skupina prostředků.
 > 
 > 
 
@@ -88,22 +88,22 @@ Informace o jiných způsobech spustit MapReduce, Hive a vepřových interaktivn
 * Příkaz staré (ASM)-`azure hdinsight cluster show myhdicluster`
 * Nový příkaz (ARM)-`azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
-## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace prostředí Azure PowerShell pro Azure Resource Manager
-Obecné informace o prostředí Azure PowerShell v režimu Azure Resource Manager (ARM) najdete v [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
+## <a name="migrating-azure-powershell-tooazure-resource-manager"></a>Migrace tooAzure prostředí PowerShell Azure Resource Manager
+Hello obecné informace o prostředí Azure PowerShell v režimu Azure Resource Manager (ARM) hello lze najít na [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-Rutiny Azure PowerShell ARM může být nainstalovaná-souběžného s rutinami ASM. Rutiny ze dvou režimů dají rozlišovat podle jejich názvy.  Má režimu ARM *AzureRmHDInsight* v porovnání se názvy rutin *AzureHDInsight* v režimu ASM.  Například *New-AzureRmHDInsightCluster* vs. *Nové AzureHDInsightCluster*. Názvy zprávy mohou mít parametry a přepínače, existuje mnoho nových parametrů k dispozici při použití a ARM.  Například několik rutin vyžadovat nového přepínače názvem *- ResourceGroupName*. 
+Hello rutiny Azure PowerShell ARM může být nainstalovaná-souběžného s hello ASM rutiny. rutiny Hello ze dvou režimů hello dají rozlišovat podle jejich názvy.  má režimu ARM Hello *AzureRmHDInsight* v názvech rutiny hello porovnávání příliš*AzureHDInsight* v režimu ASM hello.  Například *New-AzureRmHDInsightCluster* vs. *Nové AzureHDInsightCluster*. Názvy zprávy mohou mít parametry a přepínače, existuje mnoho nových parametrů k dispozici při použití a ARM.  Například několik rutin vyžadovat nového přepínače názvem *- ResourceGroupName*. 
 
-Před použitím rutin HDInsight, musíte připojit k účtu Azure a vytvořit novou skupinu prostředků:
+Před použitím rutin HDInsight hello, musíte připojit tooyour účet Azure a vytvořit novou skupinu prostředků:
 
 * Login-AzureRmAccount nebo [vyberte AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). V tématu [ověřování hlavní název služby pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Nový AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>Přejmenovat rutiny
-Seznam rutin HDInsight ASM v konzole Windows PowerShell:
+toolist hello HDInsight ASM rutiny v konzole Windows PowerShell:
 
     help *azurermhdinsight*
 
-Následující tabulka uvádí jejich názvy v režimu ARM a ASM rutiny:
+Hello následující tabulka uvádí hello ASM rutiny a jejich názvy v režimu ARM hello:
 
 | Rutiny ASM | Rutiny ARM |
 | --- | --- |
@@ -136,21 +136,21 @@ Následující tabulka uvádí jejich názvy v režimu ARM a ASM rutiny:
 | Wait-AzureHDInsightJob |[Počkejte AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>Nové rutiny
-Níže jsou nové rutiny, které jsou dostupné jenom v režimu ARM. 
+Hello následují hello nové rutiny, které jsou dostupné jenom v režimu ARM hello. 
 
 **Akce skriptu související rutiny:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: získá akcí trvalého skriptu pro cluster a zobrazí je v chronologickém pořadí nebo získá podrobnosti pro akci zadaný trvalého skriptu. 
-* **Get-AzureRmHDInsightScriptActionHistory**: získá historii akcí skriptu pro cluster a seznamů v obráceném chronologickém pořadí nebo získá podrobnosti akce dříve spuštění skriptu. 
+* **Get-AzureRmHDInsightPersistedScriptAction**: hello získá trvalé akce skriptu pro cluster s podporou a zobrazí je v chronologickém pořadí nebo získá podrobnosti pro akci zadaný trvalého skriptu. 
+* **Get-AzureRmHDInsightScriptActionHistory**: získá hello v historii akcí skriptu pro cluster a seznamů v obráceném chronologickém pořadí nebo získá podrobnosti akce dříve spuštění skriptu. 
 * **Odebrat AzureRmHDInsightPersistedScriptAction**: Odebere akcí trvalého skriptu z clusteru služby HDInsight.
-* **Set-AzureRmHDInsightPersistedScriptAction**: Nastaví akce dříve spuštění skriptu jako akcí trvalého skriptu.
-* **Odeslání AzureRmHDInsightScriptAction**: Odešle nové akce skriptu do clusteru Azure HDInsight. 
+* **Set-AzureRmHDInsightPersistedScriptAction**: Nastaví dříve spustit skript akce toobe akcí trvalého skriptu.
+* **Odeslání AzureRmHDInsightScriptAction**: odešle nový cluster Azure HDInsight akce tooan skriptu. 
 
 Využití Další informace najdete v tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Clsuter identity související rutiny:**
 
-* **Přidat AzureRmHDInsightClusterIdentity**: Přidá identitu clusteru do objekt konfigurace clusteru tak, aby clusteru HDInsight můžete přístup k Azure Data Lake úložiště. V tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Přidat AzureRmHDInsightClusterIdentity**: Přidá objekt konfigurace clusteru tooa clusteru identity tak, aby hello clusteru HDInsight můžete přístup k Azure Data Lake úložiště. V tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
@@ -224,39 +224,39 @@ Nový příkaz (ARM):
 * [Odeslání úlohy Pig](hdinsight-hadoop-use-pig-powershell.md)
 * [Odesílání úloh Sqoop](hdinsight-hadoop-use-sqoop-powershell.md)
 
-## <a name="migrating-to-the-arm-based-hdinsight-net-sdk"></a>Migrace na bázi ARM HDInsight .NET SDK
-Azure Service Management základě [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) je nyní zastaralý. Doporučujeme používat správu prostředků Azure prostřednictvím [(ARM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). Následující balíčky HDInsight se systémem ASM jsou zastaralá.
+## <a name="migrating-toohello-arm-based-hdinsight-net-sdk"></a>Migrace toohello založené na ARM HDInsight .NET SDK
+Dobrý den, na základě Azure Service Management [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) je nyní zastaralý. Jsou podporovali toouse hello založený na správě prostředků Azure [(ARM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). Hello následující HDInsight se systémem ASM balíčky jsou zastaralá.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-Tato část obsahuje odkazy na další informace o tom, jak provádět určité úlohy pomocí sady SDK založené na ARM.
+Tato část obsahuje ukazatele toomore informace o tom, tooperform určité úlohy pomocí hello založené na ARM SDK.
 
-| Postup... pomocí sady SDK HDInsight založené na ARM | Odkazy |
+| Postup... pomocí hello SDK HDInsight založené na ARM | Odkazy |
 | --- | --- |
 | Vytvoření clusterů HDInsight pomocí sady .NET SDK |V tématu [Tvorba clusterů HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
 | Přizpůsobení clusteru pomocí akce skriptu pomocí .NET SDK |V tématu [HDInsight Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Ověření aplikací interaktivně pomocí .NET SDK služby Azure Active Directory |V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md). Fragment kódu v tomto článku používá interaktivní ověřování přístup. |
+| Ověření aplikací interaktivně pomocí .NET SDK služby Azure Active Directory |V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md). Hello fragment kódu v tomto článku používá hello interaktivního ověřování přístup. |
 | Ověření aplikací interaktivně pomocí .NET SDK služby Azure Active Directory |V tématu [vytvořit neinteraktivní aplikace pro HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Odeslání úlohy Hive pomocí sady .NET SDK |V tématu [úlohy odeslání Hive](hdinsight-hadoop-use-hive-dotnet-sdk.md) |
 | Odeslat úlohu Pig pomocí sady .NET SDK |V tématu [úlohy odeslání Pig](hdinsight-hadoop-use-pig-dotnet-sdk.md) |
 | Odeslání úlohy Sqoop pomocí sady .NET SDK |V tématu [Sqoop odeslání úlohy](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) |
 | Seznam clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight seznamu](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | Škálování clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight škálování](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| Udělení nebo odvolání přístupu ke clusterům HDInsight pomocí sady .NET SDK |V tématu [udělení nebo odvolání přístupu ke clusterům HDInsight](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
+| Udělení nebo odvolání přístupu tooHDInsight clustery pomocí sady .NET SDK |V tématu [udělení nebo odvolání přístupu tooHDInsight clustery](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
 | Aktualizovat pověření uživatele HTTP pro clustery služby HDInsight pomocí sady .NET SDK |V tématu [přihlašovací údaje uživatele HTTP aktualizace pro clustery služby HDInsight](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Najít výchozí účet úložiště pro clustery služby HDInsight pomocí sady .NET SDK |V tématu [najít výchozí účet úložiště pro clustery HDInsight](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
+| Najít hello výchozí účet úložiště pro clustery služby HDInsight pomocí sady .NET SDK |V tématu [najít hello výchozí účet úložiště pro clustery služby HDInsight](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
 | Odstranění clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight odstranit](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Příklady
-Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK na základě ASM a fragmentu kódu ekvivalentní pro sadu SDK založené na ARM.
+Tady jsou některé příklady na to, jak je operace používá hello na základě ASM SDK a fragmentu kódu ekvivalentní hello hello založené na ARM SDK.
 
 **Vytvoření klienta CRUD clusteru**
 
 * Příkaz staré (ASM)
   
         //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
+        //This logs hello application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
   
         const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
         var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
@@ -264,8 +264,8 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
 * Nový příkaz (ARM) (hlavní autorizace Service)
   
         //Service principal auth
-        //This will log the application in as itself, rather than on behalf of a specific user.
-        //For details, including how to set up the application, see:
+        //This will log hello application in as itself, rather than on behalf of a specific user.
+        //For details, including how tooset up hello application, see:
         //   https://azure.microsoft.com/en-us/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
   
         var authFactory = new AuthenticationFactory();
@@ -282,8 +282,8 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
 * Nový příkaz (ARM) (autorizace uživatelů)
   
         //User auth
-        //This will log the application in on behalf of the user.
-        //The end-user will see a login popup.
+        //This will log hello application in on behalf of hello user.
+        //hello end-user will see a login popup.
   
         var authFactory = new AuthenticationFactory();
   

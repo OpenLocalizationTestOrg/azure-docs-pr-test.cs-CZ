@@ -1,7 +1,7 @@
 ---
-title: "Azure AD Connect v Microsoft Cloudu Německo"
-description: "Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD."
-keywords: "Úvod do služby Azure AD Connect, přehled služby Azure AD Connect, co je Azure AD Connect, instalace služby Active Directory, Německo, Černý les"
+title: "aaaAzure AD Connect v Německu Microsoft Cloud"
+description: "Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To vám umožní tooprovide společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD."
+keywords: "Úvod tooAzure AD Connect, Azure AD Connect přehled, co je Azure AD Connect, nainstalovat službu active directory, Německo, černé doménové struktury"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,52 +15,52 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 4c55b116c0dc080ae316caca873a7b693caa793b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f32194fa6c365614f68e5d1ddcf0dac44d223292
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect v Microsoft Cloudu Německo – verze Public Preview
 ## <a name="introduction"></a>Úvod
 Azure AD Connect poskytuje synchronizaci mezi vaší místní službou Active Directory a službou Azure Active Directory.
-V současné době je nutné, aby mnoho scénářů v [Microsoft Cloudu Německo](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) prováděl operátor. Při používání Microsoft Cloudu Německo je třeba brát v úvahu následující:
+V současné době mnoho scénářů hello v [Microsoft Cloud Německo](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) je třeba provést hello operátorem. Pokud používáte Microsoft Cloud Německo, musí mít přehled o hello následující:
 
-* Aby mohlo dojít k úspěšné synchronizaci, je nutné, aby na proxy serveru byly otevřené následující adresy URL:
+* Hello následující adresy URL musí být otevřen na proxy server pro synchronizaci toooccur úspěšně:
   
   * *.microsoftonline.de
   * *.windows.net
   * * Seznamy odvolaných certifikátů
-* Při přihlášení do adresáře služby Azure AD je nutné použít účet v doméně onmicrosoft.de.
-* Následující funkce nejsou k dispozici:
+* Při přihlášení tooyour adresář Azure AD, musíte použít účet v doméně onmicrosoft.de hello.
+* nejsou k dispozici Hello následující funkce:
   * Azure AD Connect Health
   * Automatické aktualizace
  
 ## <a name="download"></a>Ke stažení
-Službu Azure AD Connect lze stáhnout z okna Azure AD Connect v rámci portálu.  Pomocí pokynů níže vyhledejte okno Azure AD Connect.
+Azure AD Connect si můžete stáhnout z okna Azure AD Connect hello hello portálu.  Použijte pokyny hello níže toolocate hello Azure AD Connect okno.
 
-### <a name="the-azure-ad-connect-blade"></a>Okno Azure AD Connect
-Po přihlášení na webu Azure Portal postupujte následovně:
+### <a name="hello-azure-ad-connect-blade"></a>Hello Azure AD Connect okno
+Po přihlášení toohello portál Azure hello následující:
 
-1. Přejděte do Procházet.
+1. Přejděte tooBrowse
 2. Vyberte Azure Active Directory.
 3. Poté vyberte Azure AD Connect.
 
-Měli byste vidět následující:
+Měli byste vidět hello následující:
 
 ![Okno Azure AD Connect](media/active-directory-aadconnect-germany/germany1.png)
 
-Následující tabulka popisuje funkce zobrazené v okně.
+Hello následující tabulka popisuje funkce hello zobrazí v okně hello.
 
 | Název | Popis |
 | --- | --- |
 | STAV SYNCHRONIZACE |Uvádí, zda je synchronizace povolená nebo zakázaná. |
-| POSLEDNÍ SYNCHRONIZACE |Čas dokončení poslední úspěšné synchronizace. |
-| FEDEROVANÉ DOMÉNY |Zobrazuje počet aktuálně nakonfigurovaných federovaných domén. |
+| POSLEDNÍ SYNCHRONIZACE |Hello čas poslední úspěšné synchronizace byla dokončena. |
+| FEDEROVANÉ DOMÉNY |Zobrazuje počet hello federované domény aktuálně konfigurována. |
 
 ## <a name="installation"></a>Instalace
-Chcete-li nainstalovat službu Azure AD Connect, můžete využít dokumentaci, kterou najdete [tady](active-directory-aadconnect.md#install-azure-ad-connect).
+tooinstall Azure AD Connect, můžete použít dokumentaci hello [zde](active-directory-aadconnect.md#install-azure-ad-connect).
 
 ## <a name="advanced-features-and-additional-information"></a>Pokročilé funkce a další informace
-Hledáte-li další informace a doprovodné materiály k vlastním nastavením nebo pokročilým konfiguracím, začněte s tématem [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).  Tato stránka poskytuje informace a odkazy na další doprovodné materiály.
+Hledáte-li další informace a doprovodné materiály k vlastním nastavením nebo pokročilým konfiguracím, začněte s tématem [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).  Tato stránka obsahuje informace a odkazy tooadditional pokyny.
 

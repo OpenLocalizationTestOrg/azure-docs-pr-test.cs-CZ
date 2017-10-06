@@ -1,6 +1,6 @@
 ---
-title: "Heslo správce zařízení změnu pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak změnit heslo správce zařízení pomocí portálu Azure nebo pole virtuální zařízení StorSimple webového uživatelského rozhraní."
+title: "heslo správce zařízení aaaChange pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje, jak toouse buď hello portálu Azure nebo hesla správce zařízení toochange pole virtuální zařízení StorSimple webového uživatelského rozhraní hello."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,67 +15,67 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 531b395df7aeade0a909360797c6b0f0abd9fd1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změna hesla správce zařízení pole virtuální zařízení StorSimple pomocí Správce zařízení StorSimple
+# <a name="change-hello-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změna hesla správce zařízení StorSimple virtuální pole hello pomocí Správce zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Pokud použijete rozhraní Windows PowerShell pro přístup k poli virtuální zařízení StorSimple, musíte k zadání hesla správce zařízení. Když zařízení StorSimple je nejdřív zřízený a spuštěna, je výchozí heslo *Heslo1*. Pro zabezpečení vašich dat výchozí heslo vyprší platnost při prvním přihlášení a je nutné toto heslo změnit.
+Při použití hello prostředí Windows PowerShell rozhraní tooaccess hello pole virtuální zařízení StorSimple, jsou požadované tooenter hesla správce zařízení. Pokud zařízení StorSimple hello je nejdřív zřízený a spuštěna, hello výchozí heslo je *Heslo1*. Hello zabezpečení vašich dat, hello výchozí heslo vyprší hello při prvním přihlášení a jsou požadované toochange toto heslo.
 
-Změna hesla správce zařízení kdykoli po nasazení zařízení v provozním prostředí můžete také použít místní webového uživatelského rozhraní nebo portálu Azure. Každá z těchto postupů je popsána v tomto článku.
+Buď hello místního webového uživatelského rozhraní nebo hello Azure portálu toochange hello hesla správce zařízení můžete taky kdykoli po nasazení hello zařízení v provozním prostředí. Každá z těchto postupů je popsána v tomto článku.
 
  ![Okno zařízení](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>Použijte portál Azure. Chcete-li změnit heslo
+## <a name="use-hello-azure-portal-toochange-hello-password"></a>Použít heslo hello Azure portálu toochange hello
 
-Proveďte následující kroky, chcete-li změnit heslo správce zařízení prostřednictvím portálu Azure.
+Proveďte následující kroky správce heslo zařízení hello toochange prostřednictvím portálu Azure hello hello.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Chcete-li změnit heslo správce zařízení prostřednictvím portálu Azure
+#### <a name="toochange-hello-device-administrator-password-via-hello-azure-portal"></a>heslo správce zařízení toochange hello prostřednictvím hello portálu Azure
 
-1. Na stránce cílové služby, vyberte svoji službu, dvakrát klikněte na název služby a pak v rámci **správy** klikněte na tlačítko **zařízení**. Tím se otevře **zařízení** okno, které obsahuje seznamy všech zařízení StorSimple virtuální pole.
+1. Na cílovou stránku hello služby, vyberte svoji službu, klikněte dvakrát na hello název služby a potom v rámci hello **správy** klikněte na tlačítko **zařízení**. Tím se otevře hello **zařízení** okno, které obsahuje seznamy všech zařízení StorSimple virtuální pole.
 
-2. V **zařízení** okno, dvakrát klikněte na zařízení, která vyžaduje změnu hesla.
+2. V hello **zařízení** okno, klikněte dvakrát na hello zařízení, která vyžaduje změnu hesla.
 
-3. V **nastavení** pro zařízení, klikněte na **zabezpečení**.
+3. V hello **nastavení** pro zařízení, klikněte na **zabezpečení**.
 
-4. V **nastavení zabezpečení** okno, postupujte takto:
+4. V hello **nastavení zabezpečení** okně hello následující:
    
-   1. Přejděte dolů k položce **heslo správce zařízení** části. Zadejte heslo správce, který obsahuje 8 až 15 znaků.
-   2. Potvrzení hesla.
-   3. Klikněte na tlačítko **Uložit** v horní části okna.
+   1. Projděte dolů toohello **heslo správce zařízení** části. Zadejte heslo správce, který obsahuje z 8 znaků too15.
+   2. Potvrzení hesla hello.
+   3. Klikněte na tlačítko **Uložit** hello horní části okna hello.
 
-Heslo správce zařízení se nyní aktualizuje. Toto upravené heslo slouží k přístupu k zařízení místně.
+heslo správce zařízení Hello se nyní aktualizuje. Toto zařízení hello tooaccess upravené heslo můžete místně.
 
 ![Okno nastavení zabezpečení](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>Chcete-li změnit heslo použít místní webového uživatelského rozhraní
+## <a name="use-hello-local-web-ui-toochange-hello-password"></a>Použijte hello místního webového uživatelského rozhraní toochange hello heslo
 
-Proveďte následující kroky, chcete-li změnit heslo správce zařízení prostřednictvím místního webového uživatelského rozhraní.
+Proveďte následující kroky správce heslo zařízení hello toochange hello místního webového uživatelského rozhraní hello.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Chcete-li změnit heslo správce zařízení prostřednictvím místního webového uživatelského rozhraní
+#### <a name="toochange-hello-device-administrator-password-via-hello-local-web-ui"></a>heslo správce zařízení toochange hello prostřednictvím hello místního webového uživatelského rozhraní
 
-1. V místní webového uživatelského rozhraní, klikněte na **údržby** > **Změna hesla** pro vaše zařízení.
+1. V hello místního webového uživatelského rozhraní, klikněte na **údržby** > **Změna hesla** pro vaše zařízení.
    
     ![změnit Heslo1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. Zadejte **aktuální heslo**.
-3. Zadejte **nové heslo**. Heslo musí být dlouhé alespoň 8 znaků. Musí obsahovat 3 z následujících 4: velká písmena, malá písmena, číselné a speciální znaky.
+2. Zadejte hello **aktuální heslo**.
+3. Zadejte **nové heslo**. Hello heslo musí být dlouhé alespoň 8 znaků. Musí obsahovat 3 4 následující hello: velká písmena, malá písmena, číselné a speciální znaky.
    
-    Všimněte si, že vaše heslo nemůže být stejný jako poslední 24 hesla.
-4. Zadejte znovu heslo k potvrzení této akce.
+    Všimněte si, že vaše heslo nemůže být hello stejná hodnota jako hello posledních 24 hesla.
+4. Zadejte znovu heslo tooconfirm hello ho.
    
     ![změnit Heslo2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. V dolní části stránky klikněte na tlačítko **použít**. Nové heslo se teď použijí. Pokud změna hesla se nepovedlo úspěšně dokončit, zobrazí se následující chyba:
+5. V dolní části hello hello stránky, klikněte na tlačítko **použít**. nové heslo Hello se teď použijí. Změna hesla hello neproběhne úspěšně, zobrazí hello následující chybě:
    
     ![Chyba hesla](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Po úspěšné aktualizaci heslo, budete upozorněni. Pak můžete toto upravené heslo pro přístup k zařízení místně.
+    Po úspěšné aktualizaci hello heslo, budete upozorněni. Pak můžete toto zařízení hello tooaccess upravené heslo místně.
 
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [spravovat vaše pole virtuální zařízení StorSimple](storsimple-ova-web-ui-admin.md).
+Zjistěte, jak příliš[spravovat vaše pole virtuální zařízení StorSimple](storsimple-ova-web-ui-admin.md).
 

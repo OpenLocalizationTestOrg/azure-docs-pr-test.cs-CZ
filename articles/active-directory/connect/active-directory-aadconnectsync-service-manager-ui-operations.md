@@ -1,6 +1,6 @@
 ---
 title: "Operace Správce synchronizace služby Azure AD Connect | Microsoft Docs"
-description: "Porozumět kartu operace ve Správci služby synchronizace Azure AD Connect."
+description: "Porozumět hello kartu operace v hello Synchronization Service Manager pro Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1475e4fcd11eb008badba49665f4af6029a1697
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: decbc53613d456a71cd116c40c5e1fd761efd4af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-sync-service-manager-operations-tab"></a>Pomocí karty operace synchronizace Service Manager
+# <a name="using-hello-sync-service-manager-operations-tab"></a>Pomocí hello kartu operace synchronizace Service Manager
 
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
-Na kartě operations zobrazuje výsledky z nejnovější operace. Na této kartě je klíčem k pochopení a řešení problémů.
+Hello operations kartě se zobrazují hello výsledky z nejnovější operace hello. Na této kartě je klíče toounderstand a řešení problémů.
 
-## <a name="understand-the-information-visible-in-the-operations-tab"></a>Pochopení informace zobrazené na kartě operace
-V horní polovině ukazuje všechny běží v chronologickém pořadí. Ve výchozím nastavení, operace protokolu udržuje informace o posledních sedmi dnů, ale toto nastavení lze změnit pomocí [Plánovač](active-directory-aadconnectsync-feature-scheduler.md). Chcete-li vyhledat všechny spuštění, které nejsou zobrazeny stav úspěšného dokončení. Řazení kliknutím na záhlaví, můžete změnit.
+## <a name="understand-hello-information-visible-in-hello-operations-tab"></a>Pochopení hello informace zobrazené na kartě operations hello
+horní polovině Hello ukazuje všechny běží v chronologickém pořadí. Ve výchozím nastavení, protokol operations hello udržuje informace o hello posledních sedmi dnů, ale toto nastavení lze změnit pomocí hello [Plánovač](active-directory-aadconnectsync-feature-scheduler.md). Chcete toolook pro všechny spuštění, které nejsou zobrazeny stav úspěšného dokončení. Můžete změnit hello řazení kliknutím na záhlaví hello.
 
-**Stav** je nejdůležitější informace a ukazuje nejzávažnějšího problém pro spuštění. Zde je stručný nejběžnější stavů v pořadí podle priority prozkoumat (kde * znamenat několik řetězců možná chyba).
+Hello **stav** sloupec je nejdůležitější informace hello a ukazuje hello nejzávažnějšího problém pro spuštění. Zde je stručný hello nejběžnější stavů v pořadí podle priority tooinvestigate (kde * znamenat několik řetězců možná chyba).
 
 | Status | Komentář |
 | --- | --- |
-| ukončeno-* |Spuštění se nepodařilo dokončit. Například pokud vzdálený systém je vypnutý a nelze kontaktovat. |
-| Zastavit limit chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
-| dokončené -\*– chyby |Spustit dokončilo, ale nejsou chyby (méně než 5 000), které by se měly prozkoumat. |
-| dokončené -\*– upozornění |Spustit dokončena, ale některá data, není v očekávaném stavu. Pokud máte chyby, pak tato zpráva je obvykle jenom příznakem. Dokud nebude mít řešit chyby, by neměl prozkoumat upozornění. |
+| ukončeno-* |Hello spuštění se nepodařilo dokončit. Například pokud hello vzdálený systém je vypnutý a nelze kontaktovat. |
+| Zastavit limit chyb |Existuje více než 5 000 chyby. Hello spustit automaticky zastavil z důvodu toohello velký počet chyb. |
+| dokončené -\*– chyby |Hello spustit dokončené, ale nejsou chyby (méně než 5 000), které by se měly prozkoumat. |
+| dokončené -\*– upozornění |Hello spustit dokončilo, ale některá data se nenachází ve stavu hello očekává. Pokud máte chyby, pak tato zpráva je obvykle jenom příznakem. Dokud nebude mít řešit chyby, by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek, aktualizuje dolní zobrazit podrobnosti, které používají. Na levém okraji dolní, můžete mít tom, že seznam **krok #**. Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře každou doménu, kde je reprezentována krok. Název domény naleznete v části **oddílu**. V části **Statistika synchronizace**, můžete najít další informace o počtu změn, které byly zpracovány. Můžete kliknutím na odkazy získat seznam změněných objektů. Pokud máte objektů s chybami, tyto chyby, zobrazí na **chyby synchronizace**.
+Když vyberete řádek, aktualizuje hello dolní tooshow hello podrobnosti této spustit. toohello daleko pravé dolní hello, můžete mít tom, že seznam **krok #**. Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře každou doménu, kde je reprezentována krok. název domény Hello naleznete pod nadpisem hello **oddílu**. V části **Statistika synchronizace**, můžete najít další informace o hello počet změn, které byly zpracovány. Můžete kliknout na hello odkazy tooget seznam objektů hello změnit. Pokud máte objektů s chybami, tyto chyby, zobrazí na **chyby synchronizace**.
 
 Další informace najdete v tématu [řešení potíží s objekt, který není synchronizace](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

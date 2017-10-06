@@ -1,6 +1,6 @@
 ---
-title: "Zásady ověřování Azure API Management | Microsoft Docs"
-description: "Další informace o zásady ověřování, která je k dispozici pro použití v Azure API Management."
+title: "zásady ověřování aaaAzure API Management | Microsoft Docs"
+description: "Další informace o zásadách ověřování hello k dispozici pro použití v Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 63ef20a56ab7721f9ecc7025d05963cc4b0c27a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce93cced66cb67520e97c7c15f3685bffb08e1f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování služby API Management
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Toto téma obsahuje odkaz pro hello následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AuthenticationPolicies"></a>Zásady ověřování  
   
@@ -30,7 +30,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   [Ověřování pomocí certifikátu klienta](api-management-authentication-policies.md#ClientCertificate) -ověření pomocí back-end službu pomocí klientských certifikátů.  
   
 ##  <a name="Basic"></a>Ověřování Basic  
- Použití `authentication-basic` zásad k ověření s back-end službu pomocí základního ověřování. Tato zásada nastavuje hlavičku autorizace protokolu HTTP na hodnotu odpovídající přihlašovacích údajů zadaných v zásadách.  
+ Použití hello `authentication-basic` zásad tooauthenticate s back-end službu pomocí základního ověřování. Tato zásada nastavuje toohello záhlaví HTTP autorizace hello odpovídající údaje toohello hodnota poskytnutá v zásadě hello.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -54,18 +54,18 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|uživatelské jméno|Určuje uživatelské jméno základní přihlašovací údaje.|Ano|Není k dispozici|  
-|heslo|Určuje heslo základní pověření.|Ano|Není k dispozici|  
+|uživatelské jméno|Určuje uživatelské jméno hello hello základní pověření.|Ano|Není k dispozici|  
+|heslo|Určuje heslo hello hello základní pověření.|Ano|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** příchozí  
   
 -   **Zásady obory:** rozhraní API  
   
 ##  <a name="ClientCertificate"></a>Ověřování pomocí certifikátu klienta  
- Použití `authentication-certificate` zásad k ověření s back-end službu pomocí klientského certifikátu. Certifikát musí být [nainstalován do rozhraní API správy](http://go.microsoft.com/fwlink/?LinkID=511599) první a je určený podle jeho kryptografický otisk.  
+ Použití hello `authentication-certificate` zásad tooauthenticate službě back-end pomocí klientského certifikátu. certifikát Hello musí toobe [nainstalován do rozhraní API správy](http://go.microsoft.com/fwlink/?LinkID=511599) první a je určený podle jeho kryptografický otisk.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -89,10 +89,10 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Name (Název)|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Kryptografický otisk|Kryptografický otisk certifikátu klienta.|Ano|Není k dispozici|  
+|Kryptografický otisk|Hello kryptografický otisk certifikátu klienta hello.|Ano|Není k dispozici|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tuto zásadu lze použít v následujících zásad hello [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásady:** příchozí  
   

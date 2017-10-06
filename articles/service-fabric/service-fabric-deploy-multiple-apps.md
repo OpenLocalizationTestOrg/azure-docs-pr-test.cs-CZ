@@ -1,6 +1,6 @@
 ---
-title: "Nasazení aplikace Node.js, která používá MongoDB | Microsoft Docs"
-description: "Návod o tom, jak balíček více spustitelné soubory hosta k nasazení clusteru služby Azure Service Fabric"
+title: "aaaDeploy aplikace Node.js, která používá MongoDB | Microsoft Docs"
+description: "Návod, jak toopackage více hosta spustitelné soubory toodeploy tooan Azure Service Fabric clusteru"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2775080f0d9d42d6ba15cca911e23067106be26d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
-Tento článek ukazuje, jak pro balíček a nasazení více spustitelné soubory hosta pro Azure Service Fabric. Vytváření a nasazování jeden balíček Service Fabric najdete v návodu k [nasadit do Service Fabric Host spustitelný soubor](service-fabric-deploy-existing-app.md).
+Tento článek ukazuje, jak toopackage a nasadit více hosta spustitelné soubory tooAzure Service Fabric. Pro vytváření a nasazování jeden balíček Service Fabric číst jak příliš[nasazení spustitelné tooService hosta Fabric](service-fabric-deploy-existing-app.md).
 
-Když tento návod ukazuje, jak nasadit aplikaci s Node.js front-end, který jako úložiště dat používá MongoDB, můžete použít kroky pro každou aplikaci, která má závislosti na jinou aplikaci.   
+Když tento návod ukazuje, jak toodeploy aplikace s Node.js front-end, který jako úložiště dat hello používá MongoDB, můžete použít hello kroky tooany aplikace, který má závislosti na jinou aplikaci.   
 
-Visual Studio můžete použít k vytvoření balíček aplikace, který obsahuje více spustitelné soubory hosta. V tématu [pomocí sady Visual Studio balíčku existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání první hosta spustitelný soubor, klikněte pravým tlačítkem na projekt aplikace a vyberte **Přidat -> Nový Service Fabric service** přidat druhý hosta spustitelný projekt do řešení. Poznámka: Pokud zvolíte možnost propojit zdroje v projektu sady Visual Studio, vytváření řešení sady Visual Studio, budou se, že je aktuální pomocí změn ve zdroji balíčku aplikace. 
+Můžete použít Visual Studio tooproduce hello aplikace balíček, který obsahuje více spustitelné soubory hosta. V tématu [pomocí sady Visual Studio toopackage existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání hello první hosta spustitelný soubor, klikněte pravým tlačítkem na projekt aplikace hello a vyberte hello **Přidat -> Nový Service Fabric service** tooadd hello druhý hosta spustitelný projekt toohello řešení. Poznámka: Pokud se rozhodnete, že zdroj hello toolink v hello projektu sady Visual Studio, vytváření hello řešení sady Visual Studio, se ujistěte se, že balíčku aplikace zapnutý toodate se změnami ve zdroji hello. 
 
 ## <a name="samples"></a>Ukázky
 * [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes službu Naming pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes hello pojmenování službu pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="manually-package-the-multiple-guest-executable-application"></a>Ručně balíček více hosta spustitelná aplikace
-Případně můžete ručně balíček Host spustitelný soubor. Pro ruční vytváření balíčků, tento článek používá nástroj balení Service Fabric, která je k dispozici v [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
+## <a name="manually-package-hello-multiple-guest-executable-application"></a>Ručně balíček hello více hosta spustitelná aplikace
+Případně můžete ručně balíček hello hosta spustitelný soubor. Pro ruční balení hello, tento článek používá hello Service Fabric balení nástroj, který je k dispozici na [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
 
-### <a name="packaging-the-nodejs-application"></a>Zabalení aplikace Node.js
-Tento článek předpokládá, že Node.js není nainstalována na uzly v clusteru Service Fabric. V důsledku toho je nutné přidat do kořenového adresáře aplikace uzlu před balení Node.exe. Struktura adresářů aplikace Node.js (s použitím expresního webová architektura a modulu Jade šablon) by měl vypadat podobná té následující:
+### <a name="packaging-hello-nodejs-application"></a>Balení hello aplikace Node.js
+Tento článek předpokládá, že není nainstalována Node.js hello uzlů v clusteru Service Fabric hello. V důsledku toho je nutné tooadd Node.exe toohello kořenový adresář aplikace uzlu před balení. struktura adresářů Hello aplikace Node.js hello (s použitím expresního webová architektura a modulu Jade šablon) by měl vypadat podobně jako toohello jeden níže:
 
 ```
 |-- NodeApplication
@@ -60,22 +60,22 @@ Tento článek předpokládá, že Node.js není nainstalována na uzly v cluste
     |-- node.exe
 ```
 
-Jako další krok vytvoříte balíček aplikace pro aplikaci Node.js. Následující kód vytvoří balíček aplikace Service Fabric, která obsahuje aplikaci Node.js.
+Jako další krok vytvoříte balíček aplikace pro aplikace Node.js hello. Následující kód Hello vytvoří balíček aplikace Service Fabric, která obsahuje aplikaci Node.js hello.
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
 ```
 
-Níže je uveden popis parametry, které jsou používány:
+Níže je uveden popis hello parametry, které jsou používány:
 
-* **/ source** odkazuje na adresář aplikace, která by měla být zabalena.
-* **/ target** definuje adresář, ve kterém by měl být balíček vytvořen. Tento adresář musí být odlišný od zdrojového adresáře.
-* **příkazy/appname** definuje název aplikace existující aplikace. Je důležité si uvědomit, že to znamená, že k názvu služby v manifestu a nikoliv k názvu aplikace Service Fabric.
-* **/exe** definuje spustitelný soubor, který by měl Service Fabric spustíte v tomto případě `node.exe`.
-* **/Ma** definuje argument, který slouží ke spuštění spustitelného souboru. Jako Node.js není nainstalovaná, Service Fabric musí spusťte webový server Node.js spuštěním `node.exe bin/www`.  `/ma:'bin/www'`informuje nástroj balení používat `bin/ma` jako argument pro node.exe.
-* **Nebo typ aplikace** definuje název typu aplikace Service Fabric.
+* **/ source** body toohello adresáře hello aplikace, který by měl být zabalen.
+* **/ target** definuje hello adresář, ve které hello by měl být balíček vytvořen. Tento adresář má toobe liší od hello zdrojový adresář.
+* **příkazy/appname** definuje název aplikace hello hello existující aplikace. Je důležité toounderstand, to znamená, že název služby toohello v manifestu hello a není toohello název aplikace Service Fabric.
+* **/exe** definuje hello spustitelný soubor, že Service Fabric je v tomto případě by měl toolaunch, `node.exe`.
+* **/Ma** definuje hello argument, který se použité toolaunch hello spustitelný soubor. Jako Node.js není nainstalovaná, Service Fabric musí toolaunch hello Node.js webový server tak, že spustíte `node.exe bin/www`.  `/ma:'bin/www'`informuje hello balení nástroj toouse `bin/ma` jako hello argument node.exe.
+* **Nebo typ aplikace** definuje název typu aplikace Service Fabric hello.
 
-Pokud přejdete do adresáře, která byla zadaná v parametru/Target, uvidíte, že nástroj vytvořil plně funkční balíček Service Fabric, jak je uvedeno níže:
+Pokud toohello adresář, který byl zadaný v parametru/Target hello, můžete zjistit, že tento nástroj hello vytvořil plně funkční balíček Service Fabric, jak je uvedeno níže:
 
 ```
 |--[yourtargetdirectory]
@@ -95,7 +95,7 @@ Pokud přejdete do adresáře, která byla zadaná v parametru/Target, uvidíte,
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Vygenerovaný ServiceManifest.xml teď má oddíl, který popisuje, jak Node.js webového serveru musí být spuštěna, jak je znázorněno v následujícím fragmentu kódu:
+Hello generovaného ServiceManifest.xml teď má oddíl, který popisuje, jak hello Node.js webového serveru musí být spuštěna, jak je znázorněno v následující fragment kódu hello:
 
 ```xml
 <CodePackage Name="C" Version="1.0">
@@ -108,7 +108,7 @@ Vygenerovaný ServiceManifest.xml teď má oddíl, který popisuje, jak Node.js 
     </EntryPoint>
 </CodePackage>
 ```
-V této ukázce Node.js webový server naslouchá na port 3000, proto musíte aktualizovat informace o koncový bod v souboru ServiceManifest.xml, jak je uvedeno níže.   
+V této ukázce hello Node.js webový server naslouchá tooport 3000, takže budete muset tooupdate hello koncový bod, informace v souboru ServiceManifest.xml hello, jak je uvedeno níže.   
 
 ```xml
 <Resources>
@@ -117,10 +117,10 @@ V této ukázce Node.js webový server naslouchá na port 3000, proto musíte ak
       </Endpoints>
 </Resources>
 ```
-### <a name="packaging-the-mongodb-application"></a>Balení aplikací MongoDB
-Teď, když máte zabalené aplikace Node.js, můžete přejít k tématu a balíček MongoDB. Jak je uvedeno nahoře, kroky, které teď projít nejsou specifické pro Node.js a MongoDB. Ve skutečnosti se vztahují na všechny aplikace, které jsou určené pro zabalené společně jako jednu aplikaci Service Fabric.  
+### <a name="packaging-hello-mongodb-application"></a>Balení hello MongoDB aplikace
+Teď, když máte zabalené aplikace Node.js hello, můžete přejít k tématu a balíček MongoDB. Jak je uvedeno nahoře, nejsou hello kroky, které teď projít konkrétní tooNode.js a MongoDB. Vztahují se ve skutečnosti tooall aplikace, které jsou určené toobe zabalené společně jako jednu aplikaci Service Fabric.  
 
-Chcete-li balíček MongoDB, budete chtít Ujistěte se, že balíček Mongod.exe a Mongo.exe. Obě binární soubory jsou umístěny ve `bin` adresář adresáře instalace MongoDB. Vypadá podobná té následující adresářovou strukturu.
+toopackage MongoDB, budete chtít toomake se, že balíček Mongod.exe a Mongo.exe. Obě binární soubory jsou umístěny v hello `bin` adresář adresáře instalace MongoDB. struktura adresářů Hello vypadá podobně jako toohello jeden níže.
 
 ```
 |-- MongoDB
@@ -129,25 +129,25 @@ Chcete-li balíček MongoDB, budete chtít Ujistěte se, že balíček Mongod.ex
         |-- mongo.exe
         |-- anybinary.exe
 ```
-Service Fabric musí začínat MongoDB podobné tomu příkaz níže, takže budete muset použít `/ma` parametr při balení MongoDB.
+Service Fabric potřebuje toostart MongoDB s příkaz podobné toohello, jeden níže, takže musíte toouse hello `/ma` parametr při balení MongoDB.
 
 ```
-mongod.exe --dbpath [path to data]
+mongod.exe --dbpath [path toodata]
 ```
 > [!NOTE]
-> Data není se zachovají v případě selhání uzlu, když vložíte do adresáře dat MongoDB v místním adresáři uzlu. Buď použijte odolná úložiště nebo implementovat prevence ztráty dat sady replik MongoDB.  
+> Hello data není právě zachována hello v případě selhání uzlu, když vložíte hello MongoDB data adresáře v místním adresáři hello hello uzlu. Buď použijte odolná úložiště nebo implementaci sady dojít ke ztrátě dat. pořadí tooprevent replik MongoDB.  
 >
 >
 
-V prostředí PowerShell nebo příkazové okno jsme spustit nástroj balení s následujícími parametry:
+V příkazovém prostředí PowerShell nebo hello jsme hello balení nástroj spustit s hello následující parametry:
 
 ```
-.\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
+.\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path toodata]' /AppType:NodeAppType
 ```
 
-Aby bylo možné přidat do balíčku aplikace Service Fabric MongoDB, budete muset Ujistěte se, že odkazuje parametr/target na stejný adresář, který již obsahuje aplikaci manifestu spolu s aplikací Node.js. Budete také muset Ujistěte se, že používáte stejný název ApplicationType.
+V pořadí tooadd MongoDB tooyour Service Fabric balíčku aplikace, musíte se, že parametr/target hello odkazují toohello toomake stejný adresář, který již obsahuje manifest aplikace hello spolu s aplikací Node.js hello. Musíte taky toomake jistotu, že používáte stejný název ApplicationType hello.
 
-Pojďme vyhledejte adresář a zkontrolujte, co nástroj vytvořil.
+Umožňuje procházet adresář toohello a prozkoumat co hello nástroj vytvořil.
 
 ```
 |--[yourtargetdirectory]
@@ -163,7 +163,7 @@ Pojďme vyhledejte adresář a zkontrolujte, co nástroj vytvořil.
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Jak vidíte, nástroj Přidat novou složku, MongoDB, k adresáři, který obsahuje binární soubory MongoDB. Pokud otevřete `ApplicationManifest.xml` souboru, zobrazí se balíček teď obsahuje aplikace Node.js i MongoDB. Následující kód ukazuje obsah manifestu aplikace.
+Jak vidíte, nástroj hello přidat nový adresář toohello složky, MongoDB, který obsahuje binární soubory MongoDB hello. Pokud otevřete hello `ApplicationManifest.xml` souboru, zobrazí se tento balíček hello nyní obsahuje aplikace Node.js hello a MongoDB. Následující kód Hello ukazuje hello obsah hello manifest aplikace.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -188,8 +188,8 @@ Jak vidíte, nástroj Přidat novou složku, MongoDB, k adresáři, který obsah
 </ApplicationManifest>  
 ```
 
-### <a name="publishing-the-application"></a>Publikování aplikace
-Posledním krokem je k publikování aplikace pro místní cluster Service Fabric pomocí skriptů prostředí PowerShell, níže:
+### <a name="publishing-hello-application"></a>Publikování aplikace hello
+posledním krokem Hello je toopublish hello aplikace toohello místní cluster Service Fabric pomocí skriptů prostředí PowerShell hello níže:
 
 ```
 Connect-ServiceFabricCluster localhost:19000
@@ -203,18 +203,18 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Jakmile se k místnímu clusteru se daná aplikace úspěšně publikuje, dostanete aplikace Node.js na portu, který jsme zadali v service manifest aplikace Node.js – například http://localhost: 3000.
+Jakmile aplikace hello úspěšně publikovaných toohello místní cluster, můžete přistupovat aplikace Node.js hello na hello portu, které jsme zadali v hello service manifest aplikace Node.js hello – například http://localhost: 3000.
 
-V tomto kurzu jste viděli, jak snadno balíček dvě existující aplikace jako jednu aplikaci Service Fabric. Naučili jste postup nasazení na Service Fabric, takže můžete využít některé funkce Service Fabric, jako například vysokou dostupnost a stavu systému integrace.
+V tomto kurzu jste viděli, jak tooeasily balíček dvě existující aplikace jako jednu aplikaci Service Fabric. Naučili jste se jak toodeploy ho tooService prostředků infrastruktury, které se mohou těžit z výhod některé hello Service Fabric funkce, jako je vysoká dostupnost a stavu systému integrace.
 
 
-## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Přidání další spustitelné soubory hosta do existující aplikace pomocí Yeoman v systému Linux
+## <a name="adding-more-guest-executables-tooan-existing-application-using-yeoman-on-linux"></a>Přidání další hosta spustitelné soubory tooan existující aplikace pomocí Yeoman v systému Linux
 
-Pokud chcete přidat další službu do aplikace již vytvořené pomocí `yo`, proveďte následující kroky: 
-1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spustit `yo azuresfguest:AddService` a zadejte potřebné detaily.
+tooadd jiná tooan aplikace služby již vytvořené pomocí `yo`, proveďte následující kroky hello: 
+1. Změnit kořenový adresář toohello hello existující aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je vytvořený Yeoman aplikace hello.
+2. Spustit `yo azuresfguest:AddService` a zadejte potřebné detaily hello.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o nasazení kontejnery s [Service Fabric a kontejnery – přehled](service-fabric-containers-overview.md)
 * [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes službu Naming pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes hello pojmenování službu pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)

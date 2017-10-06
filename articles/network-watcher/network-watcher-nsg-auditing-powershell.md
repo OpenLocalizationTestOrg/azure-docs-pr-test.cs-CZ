@@ -1,6 +1,6 @@
 ---
-title: "Automatizovat NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny, jak nakonfigurovat auditování skupinu zabezpečení sítě"
+title: "aaaAutomate NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure | Microsoft Docs"
+description: "Tato stránka obsahuje pokyny, jak tooconfigure auditování skupinu zabezpečení sítě"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: a91da330e677c85f16f6f4e506613576b6507d7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24fc418c433fceaf55a74b7c3b0e354dc46c8729
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizovat NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure
 
-Zákazníci jsou často potýkají s otázkou, ověřovat postavení zabezpečení svoji infrastrukturu. Tento problém se neliší pro jejich virtuální počítače v Azure. Je důležité mají podobné profil zabezpečení na základě pravidel skupiny zabezpečení sítě (NSG) použít. Pomocí zobrazení skupiny zabezpečení, můžete nyní získat seznam pravidel, které u virtuálních počítačů v rámci skupiny NSG. Můžete definovat zlaté profil zabezpečení NSG a zahájit zobrazení skupiny zabezpečení na týdenní cadence a porovnání výstup zlaté profil a vytvořit sestavu. Tímto způsobem můžete identifikovat snadno všechny virtuální počítače, které nejsou v souladu s profilem předepsaných zabezpečení.
+Zákazníci se často potýkají s hello výzvy ověřování postavení zabezpečení hello svoji infrastrukturu. Tento problém se neliší pro jejich virtuální počítače v Azure. Je důležité toohave podobné profil zabezpečení na základě hello skupina zabezpečení sítě (NSG) pravidel použít. Pomocí hello zobrazení skupiny zabezpečení, můžete nyní získat hello seznam pravidla použít tooa virtuálních počítačů v rámci skupiny NSG. Můžete definovat zlaté profil zabezpečení NSG a zahájit zobrazení skupiny zabezpečení na týdenní cadence a porovnání hello výstup toohello zlaté profil a vytvořit sestavu. Tímto způsobem můžete identifikovat snadno všechny hello virtuálních počítačů, které nejsou v souladu s toohello předepsané profil zabezpečení.
 
 Pokud jste obeznámeni s skupin zabezpečení sítě, navštivte [Přehled zabezpečení sítě](../virtual-network/virtual-networks-nsg.md)
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři můžete porovnat známé dobré standardní hodnoty pro zobrazení výsledků skupiny zabezpečení pro virtuální počítač vrátí.
+V tomto scénáři můžete porovnat skupiny zabezpečení toohello známé dobré směrného plánu zobrazit výsledky vrácené pro virtuální počítač.
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě. Tento scénář také předpokládá, že skupina prostředků se platný virtuální počítač existuje má být použit.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě. scénář Hello také předpokládá, že skupina prostředků se platný virtuální počítač existuje toobe použít.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář popsaná v tomto článku získá zobrazení skupiny zabezpečení pro virtuální počítač.
+scénář Hello popsaná v tomto článku získá hello zobrazení skupiny zabezpečení pro virtuální počítač.
 
 V tomto scénáři provedete následující:
 
@@ -45,7 +45,7 @@ V tomto scénáři provedete následující:
 
 ## <a name="retrieve-rule-set"></a>Načtení sady pravidel
 
-Prvním krokem v tomto příkladu je pro práci s stávajících standardních hodnot. Následující příklad je některé json extrahovat z existující skupinu zabezpečení sítě pomocí `Get-AzureRmNetworkSecurityGroup` rutinu, která se používá jako Směrný plán pro tento příklad.
+prvním krokem Hello v tomto příkladu je toowork s stávajících standardních hodnot. Hello následující příklad je některé json extrahoval z existující skupinu zabezpečení sítě pomocí hello `Get-AzureRmNetworkSecurityGroup` rutinu, která je použit jako účaří hello v tomto příkladu.
 
 ```json
 [
@@ -112,9 +112,9 @@ Prvním krokem v tomto příkladu je pro práci s stávajících standardních h
 ]
 ```
 
-## <a name="convert-rule-set-to-powershell-objects"></a>Převést sada pravidel pro objekty prostředí PowerShell
+## <a name="convert-rule-set-toopowershell-objects"></a>Převést objekty tooPowerShell sad pravidel
 
-V tomto kroku jsme čtete soubor json, který jste vytvořili pravidla, která se očekává, že se na skupinu zabezpečení sítě v tomto příkladu.
+V tomto kroku jsme jsou čtení souboru json, který byl vytvořen již dříve hello pravidla, která jsou očekávané toobe na hello skupinu zabezpečení sítě v tomto příkladu.
 
 ```powershell
 $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
@@ -122,7 +122,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Načtení sledovací proces sítě
 
-Dalším krokem je pro získání instance sledovací proces sítě. `$networkWatcher` Proměnné je předána `AzureRmNetworkWatcherSecurityGroupView` rutiny.
+dalším krokem Hello je tooretrieve hello sledovací proces sítě instance. Hello `$networkWatcher` proměnné je předán toohello `AzureRmNetworkWatcherSecurityGroupView` rutiny.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -131,7 +131,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-vm"></a>Získat virtuální počítač
 
-Virtuální počítač je potřeba spustit `Get-AzureRmNetworkWatcherSecurityGroupView` rutiny proti. Následující příklad načte objektu virtuálního počítače.
+Virtuální počítač je požadovaná toorun hello `Get-AzureRmNetworkWatcherSecurityGroupView` rutiny proti. Následující ukázka Hello získá objektu virtuálního počítače.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -139,17 +139,17 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="retrieve-security-group-view"></a>Načtení zobrazení skupiny zabezpečení
 
-Dalším krokem je načíst výsledky zobrazení skupiny zabezpečení. Tento výsledek se porovnává se "základní" formátu json, který byl dříve vidět.
+dalším krokem Hello je tooretrieve hello zabezpečení skupiny zobrazení výsledků. Tento výsledek je json "základní" porovnání toohello, zobrazená dříve.
 
 ```powershell
 $secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
-## <a name="analyzing-the-results"></a>Analýza výsledků
+## <a name="analyzing-hello-results"></a>Analýza výsledků hello
 
-Odpověď se seskupují po síťových rozhraní. Různé typy pravidel vrátil jsou platné a výchozí pravidla zabezpečení. Výsledkem je další členěné podle jak se používají, buď na podsíť, nebo virtuální síťový adaptér.
+odpověď Hello se seskupují po síťových rozhraní. Hello různých typů pravidel vrátil jsou platné a výchozí pravidla zabezpečení. výsledek Hello je další členěné podle jak se používají, buď na podsíť, nebo virtuální síťový adaptér.
 
-Následující skript prostředí PowerShell porovná výsledky zobrazení skupiny zabezpečení k existující výstup skupinu NSG. Následující příklad je jednoduchý příklad, jak je možné porovnávat výsledky s `Compare-Object` rutiny.
+Hello následující skript prostředí PowerShell porovná hello výsledky hello zobrazení skupiny zabezpečení tooan existující výstup skupinu NSG. Hello následující příklad je jednoduchý příklad, jak je možné porovnávat hello výsledky s `Compare-Object` rutiny.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -157,7 +157,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-V následujícím příkladu je výsledek. Uvidíte dvě pravidla, které byly v první pravidlo nastavené nebyly nalezeny v porovnání.
+Následující ukázka Hello je výsledek hello. Uvidíte dvě hello pravidel, které byly první sada pravidel hello nebyly nalezeny v porovnání hello.
 
 ```
 Name                     : My2ndRuleDoNotDelete
@@ -187,7 +187,7 @@ SideIndicator            : <=
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se změnila nastavení, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou v.
+Pokud se změnila nastavení, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které jsou v.
 
 
 

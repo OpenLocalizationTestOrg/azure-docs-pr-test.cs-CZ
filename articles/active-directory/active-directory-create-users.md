@@ -1,6 +1,6 @@
 ---
-title: "Přidání nových uživatelů do služby Azure Active Directory | Dokumentace Microsoftu"
-description: "Vysvětluje, jak ve službě Azure Active Directory přidat nové uživatele nebo změnit informace o uživatelích."
+title: "aaaAdd tooAzure nového uživatele služby Active Directory | Microsoft Docs"
+description: "Vysvětluje, jak tooadd nové uživatele nebo změnit informace o uživateli v Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -17,67 +17,67 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: ff4b742e772a6062885313e9bb49e55907fe125a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 72f67ad41022fd19fd94c8e1301943b0db1e57bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Přidání nových uživatelů nebo uživatelů s účty Microsoft do Azure Active Directory
-Vyplňte svůj adresář uživateli, které nově přidáte. Tento článek vysvětluje, jak pro vaši organizaci přidat nové uživatele a jak přidat uživatele, kteří mají účty Microsoft. Další informace o přidávání uživatelů z dalších adresářů ve službě Azure Active Directory nebo přidávání uživatelů z partnerských společností najdete v článku o [přidávání uživatelů z dalších adresářů nebo partnerských společností ve službě Azure Active Directory](active-directory-create-users-external.md). Přidaní uživatelé nemají ve výchozím nastavení oprávnění správce, ale příslušné role jim můžete kdykoli přiřadit.
+# <a name="add-new-users-or-users-with-microsoft-accounts-tooazure-active-directory"></a>Přidání nových uživatelů nebo uživatelé s tooAzure účty Microsoft, Active Directory
+Přidejte uživatele toopopulate adresáře. Tento článek vysvětluje, jak tooadd noví uživatelé ve vaší organizaci a jak tooadd uživatelé, kteří mají účty Microsoft. Další informace o přidávání uživatelů z dalších adresářů ve službě Azure Active Directory nebo přidávání uživatelů z partnerských společností najdete v článku o [přidávání uživatelů z dalších adresářů nebo partnerských společností ve službě Azure Active Directory](active-directory-create-users-external.md). Přidaní uživatelé nemají oprávnění správce ve výchozím nastavení, ale můžete kdykoli přiřadit role toothem.
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek. Jak přidat uživatele v Centru správy služby Azure AD, najdete v článku [přidání nových uživatelů do služby Azure Active Directory](active-directory-users-create-azure-portal.md).
+> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku. Pro jak tooadd s uživatelem v Centru pro správu hello Azure AD, najdete v části [přidat nové uživatele tooAzure služby Active Directory](active-directory-users-create-azure-portal.md).
 
 ## <a name="add-a-user"></a>Přidání uživatele
-1. Přihlaste se k portálu [Azure Classic](https://manage.windowsazure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **Active Directory** a potom vyberte název adresáře své organizace.
-3. Vyberte kartu **Uživatelé** a na panelu příkazů vyberte **Přidat uživatele**.
-4. Na stránce **Informace o uživateli** vyberte v části **Typ uživatele** jedno z následujících:
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **služby Active Directory**a potom vyberte hello název adresáře své organizace.
+3. Vyberte hello **uživatelé** a pak v řádku nabídek hello vyberte **přidat uživatele**.
+4. Na hello **Povězte nám o tohoto uživatele** v části **typ uživatele**, vyberte buď:
 
    * **Nový uživatel v organizaci** – přidá do vašeho adresáře nový uživatelský účet.
-   * **Uživatel s existujícím účtem Microsoft** – přidá do vašeho adresáře existující účet Microsoft uživatele (například účet Outlook).
+   * **Uživatel s existujícím účtem Microsoft** – přidá existující Microsoft uživatelský účet tooyour adresář (například účet Outlook)
 5. V závislosti na tom, jaký **Typ uživatele** jste vybrali, zadejte buď uživatelské jméno (pro nového uživatele), nebo e-mailovou adresu (pro uživatele s účtem Microsoft).
-6. Na stránce **Profil** uživatele zadejte jeho jméno, příjmení a uživatelské jméno a ze seznamu **Role** vyberte roli uživatele. Další informace o rolích uživatelů a správců najdete v článku [Přiřazení rolí správce ve službě Azure AD](active-directory-assign-admin-roles.md). Určete, jestli u uživatele chcete **Povolit službu Multi-Factor Authentication**.
-7. Na stránce **Získat dočasné heslo** vyberte **Vytvořit**.
+6. Hello uživatele **profil** stránky, zadejte název první a poslední, uživatelské jméno a roli uživatele z hello **role** seznamu. Další informace o rolích uživatelů a správců najdete v článku [Přiřazení rolí správce ve službě Azure AD](active-directory-assign-admin-roles.md). Určit, zda příliš**povolit službu Multi-Factor Authentication** pro uživatele hello.
+7. Na hello **získat dočasné heslo** vyberte **vytvořit**.
 
 > [!IMPORTANT]
-> Pokud vaše organizace používá více než jednu doménu, měli byste vědět o následujících problémech týkajících se přidávání uživatelských účtů:
+> Pokud vaše organizace používá více než jednu doménu, měli byste vědět o hello následující problémy při přidání uživatelského účtu:
 >
-> * Pokud chcete přidat uživatelské účty s totožným hlavním názvem uživatele (UPN) pro všechny domény, přidejte například geoffgrisso@contoso.onmicrosoft.com **jako první** a **až potom** geoffgrisso@contoso.com.
-> * **Nepřidávejte** geoffgrisso@contoso.com předtím, než přidáte geoffgrisso@contoso.onmicrosoft.com. Správné pořadí je důležité a náprava chyby může být náročná.
+> * hello tooadd uživatelské účty s totožným hlavním názvem uživatele (UPN) napříč doménami, **první** přidat, například geoffgrisso@contoso.onmicrosoft.com, **následuje** geoffgrisso@contoso.com.
+> * **Nepřidávejte**geoffgrisso@contoso.com předtím, než přidáte geoffgrisso@contoso.onmicrosoft.com. Správné pořadí je důležité a může být pracné tooundo.
 >
 >
 
 ## <a name="change-user-information"></a>Změna informací o uživateli
-S výjimkou ID objektu můžete změnit jakýkoli atribut uživatele.
+Můžete změnit jakýkoli atribut uživatele s výjimkou ID hello objektu.
 
 1. Otevřete svůj adresář.
-2. Vyberte kartu **Uživatelé** a pak vyberte zobrazované jméno uživatele, jehož informace chcete změnit.
+2. Vyberte hello **uživatelé** kartu a pak vyberte hello zobrazovaný název hello uživatele, bude toochange.
 3. Proveďte změny a klikněte na **Uložit**.
 
-Pokud je uživatel, jehož informace chcete změnit, synchronizovaný s místní službou Active Directory, nemůžete tento postup použít. Ke změně informací o uživateli použijte nástroje pro správu vaší místní služby Active Directory.
+Pokud hello uživatele, který chcete změnit synchronizována s místní službou Active Directory, nemůžete změnit informace o uživateli hello pomocí tohoto postupu. toochange hello uživatele, použijte nástroje pro správu vaší místní služby Active Directory.
 
 ## <a name="guest-user-management-and-limitations"></a>Správa a omezení uživatele typu host
-Účty hostů jsou uživatelé z jiných adresářů, kteří byli do vašeho adresáře pozváni a mají přístup k dokumentům SharePointu, aplikacím a dalším prostředkům služby Azure. Účet hosta má ve vašem adresáři základní atribut UserType (Typ uživatele) nastavený na hodnotu Guest (Host). Běžní uživatelé (konkrétně členové vašeho adresáře) mají atribut UserType nastavený na hodnotu Member (Člen).
+Účty hostů jsou uživatelé z jiných adresářů, kteří byli pozvané tooyour directory tooaccess SharePoint dokumenty, aplikací nebo jiných prostředků Azure. Účet guest ve vašem adresáři má jeho základní atribut UserType nastavený nastavit příliš "Guest." Běžní uživatelé (konkrétně členové vašeho adresáře) mají atribut UserType hello "(člen).
 
-Hosté mají ve vašem adresáři omezená oprávnění. Hostům jejich oprávnění neumožňují získávat podrobnější informace o ostatních uživatelích v adresáři. Uživatelé typu host však mohou interagovat s uživateli a skupinami přiřazenými k prostředkům, na kterých pracují. Uživatel typu host může:
+Hosté mají omezenou sadu oprávnění v adresáři hello. Tato práva omezit možnost hello hosté toodiscover informace o ostatních uživatelích v adresáři hello. Uživatele typu Host může nadále komunikovat s hello uživatelů a skupin přidružených k hello prostředky, které pracují na. Uživatel typu host může:
 
-* Vidět ostatní uživatele a skupiny přidružené k předplatnému Azure, ke kterému je přiřazený
-* Vidět členy skupin, do kterých patří
-* Vyhledávat ostatní uživatele v adresáři v případě, že zná jejich úplné e-mailové adresy
-* Vidět omezenou sadu atributů uživatelů, které vyhledává – omezeno na zobrazované jméno, e-mailovou adresu, hlavní název uživatele (UPN) a miniaturu fotografie
-* Získat seznam ověřených domén v adresáři
-* Dávat souhlas aplikacím, udělovat jim stejným přístup, jako mají členové vašeho adresáře
+* Vidět ostatní uživatele a skupiny přidružené toowhich předplatné Azure, který je přiřazený
+* V tématu hello členy skupiny toowhich, ke které patří
+* Vyhledávat ostatní uživatele v adresáři hello, v případě, že zná hello úplnou e-mailovou adresu uživatele hello
+* V tématu omezená sada atributů hello uživatelů, které vyhledává – omezené toodisplay jméno, e-mailovou adresu, hlavní název uživatele (UPN) a miniaturu fotografie
+* Získat seznam ověřených domén v adresáři hello
+* Tooapplications souhlasu, je udělení hello stejný přístup, který členové mají ve vašem adresáři
 
 ## <a name="set-guest-user-access-policies"></a>Nastavení zásad přístupu uživatele typu host
-Karta **Konfigurace** v adresáři zahrnuje i možnosti řízení přístupu uživatelů typu host. Tyto možnosti může změnit pouze globální správce adresáře prostřednictvím portálu Azure Classic. V současné době není k dispozici žádná metoda změny pomocí PowerShellu ani rozhraní API.
+Hello **konfigurace** karta adresáře obsahuje možnosti toocontrol přístupu uživatelů typu Host. Tyto možnosti může změnit pouze globální správce adresáře prostřednictvím portálu Azure Classic. V současné době není k dispozici žádná metoda změny pomocí PowerShellu ani rozhraní API.
 
-Pokud chcete na portálu Azure Classic otevřít kartu **Konfigurace**, vyberte **Active Directory** a pak vyberte název adresáře.
+tooopen hello **konfigurace** kartě v hello Azure classic portálu, vyberte **služby Active Directory**a pak vyberte název hello hello adresáře.
 
 ![Karta Konfigurace ve službě Azure Active Directory][1]
 
-Potom můžete upravit možnosti řízení přístupu pro uživatele typu host.
+Potom můžete upravit hello možnosti toocontrol přístupu uživatelů typu Host.
 
 ![možnosti řízení přístupu pro uživatele typu host][2]
 

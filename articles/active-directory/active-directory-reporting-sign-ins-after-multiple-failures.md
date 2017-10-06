@@ -1,5 +1,5 @@
 ---
-title: "Přihlášení po několika selháních"
+title: "aaaSign in po několika selháních"
 description: "Sestava, která označuje, uživatelé, kteří mají úspěšném přihlášení po několika po sobě jdoucích neúspěšných přihlášení pokusů o přihlášení."
 services: active-directory
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: e55e0145adbdb1f41a8b8753d5555f20e96bf161
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48d137dc3abf65287cb3b9ba8a6ff10340f6741f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-ins-after-multiple-failures"></a>Přihlášení po několika neúspěších
 Tato sestava označuje uživatele, kteří mají úspěšném přihlášení po několika po sobě jdoucích neúspěšných přihlášení pokusů o přihlášení. Možné příčiny:
 
-* Uživatel měl zapomněli svoje heslo</li><li>Uživatel je obětí za účelem uhodnutí hrubou úspěšné hesla vynutit útoku
+* Uživatel měl zapomněli svoje heslo</li><li>Uživatel je obětí hello za účelem uhodnutí útoku hrubou silou úspěšné hesla
 
-Počet po sobě jdoucích neúspěšných pokusů o přihlášení provedené před úspěšné přihlášení a časové razítko přidružené prvním úspěšném přihlášení se zobrazí výsledky z této sestavy.
+Výsledky z této sestavy se zobrazí hello počet po sobě jdoucích neúspěšných pokusů o přihlášení provedených předchozí toohello úspěšného přihlášení a časové razítko přidružené hello prvního úspěšného přihlášení.
 
-**Sestavy nastavení**: můžete nakonfigurovat minimální počet po sobě jdoucích neúspěšných přihlášení během pokusů, které musíte udělat předtím, než ji lze zobrazit v sestavě. Pokud provedete změny tohoto nastavení je důležité si uvědomit, že tyto změny se nepoužije pro jakékoli existující neúspěšných přihlášení in které aktuálně zobrazí v existující sestavy. Ale budou se použijí na všechny budoucí přihlášení. Změny do této sestavy můžete provést pouze správce licencovanou.
+**Sestavy nastavení**: můžete nakonfigurovat hello minimální počet po sobě jdoucích neúspěšných přihlášení během pokusů, které musíte udělat předtím, než ji bylo možné zobrazit v sestavě hello. Pokud provedete změny, které toothis jeho nastavení je důležité toonote, tyto změny nebudou použité tooany existující neúspěšných přihlášení, momentálně se objeví v existující sestavy. Však budou použité tooall budoucí přihlášení. Sestava změn toothis může provést pouze správce licencovanou.
 
 ![Přihlášení po několika selháních](./media/active-directory-reporting-sign-ins-after-multiple-failures/signInsAfterMultipleFailures.PNG)
 

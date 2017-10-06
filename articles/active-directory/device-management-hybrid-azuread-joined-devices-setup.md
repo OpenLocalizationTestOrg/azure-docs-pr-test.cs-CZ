@@ -1,6 +1,6 @@
 ---
-title: "Jak nakonfigurovat hybridní připojená k Azure Active Directory zařízení | Microsoft Docs"
-description: "Naučte se konfigurovat hybridní Azure Active Directory připojené zařízení."
+title: "zařízení připojená k hybridní tooconfigure aaaHow Azure Active Directory | Microsoft Docs"
+description: "Zjistěte, jak zařízení připojená k hybridní tooconfigure Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,64 +15,64 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4580075df9fce74664b22aa24065ba1885692384
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f97ea436eca2833d8a9843acd19e5c633bc0fc07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
+# <a name="how-tooconfigure-hybrid-azure-active-directory-joined-devices"></a>Jak zařízení připojená k hybridní tooconfigure Azure Active Directory
 
-Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují k prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Další podrobnosti najdete v tématu [Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md).
+Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují k prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Další podrobnosti najdete v tématu [Úvod toodevice správy ve službě Azure Active Directory](device-management-introduction.md).
 
-Pokud máte prostředí místní služby Active Directory a chcete pro připojení zařízení připojených k doméně ke službě Azure AD, můžete k tomu lze konfigurace hybridní Azure AD, které jsou připojené k zařízení. Téma vám poskytne související kroky. 
+Pokud máte prostředí místní služby Active Directory a chcete toojoin tooAzure vaše zařízení připojená k doméně AD, můžete k tomu lze konfigurace hybridní Azure AD, které jsou připojené k zařízení. Hello téma vám poskytne hello související kroky. 
 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před zahájením konfigurace zařízení služby Azure AD, které jsou připojené k hybridní ve vašem prostředí, by měl Seznamte se s Podporované scénáře a omezení.  
+Před zahájením konfigurace zařízení ve vašem prostředí připojená k hybridní Azure AD, byste si měli přečíst s hello Podporované scénáře a omezení hello.  
 
-Toto téma ke zlepšení čitelnosti popisy, používá následující období: 
+tooimprove hello čitelnost hello popisy, toto téma používá hello následujících podmínek: 
 
-- **Aktuální zařízení se systémem Windows** -tento termín se vztahuje k doméně, zařízení se systémem Windows 10 nebo Windows Server 2016.
-- **Zařízení se systémem Windows nižší úrovně** -tento termín se vztahuje na všechny **podporované** připojený k doméně zařízení Windows, která nejsou spuštěné Windows 10 ani systému Windows Server 2016.  
+- **Aktuální zařízení se systémem Windows** -tento termín se vztahuje toodomain připojené zařízení se systémem Windows 10 nebo Windows Server 2016.
+- **Zařízení se systémem Windows nižší úrovně** -tento termín se vztahuje tooall **podporované** připojený k doméně zařízení Windows, která nejsou spuštěné Windows 10 ani systému Windows Server 2016.  
 
 
 ### <a name="windows-current-devices"></a>Aktuální zařízení se systémem Windows
 
-- Pro zařízení se systémem Windows desktop operačního systému, doporučujeme používat Windows 10 Anniversary Update (verze 1607) nebo novější. 
-- Registrace zařízení se systémem Windows aktuální **je** podporované v nefederované prostředích, jako je konfigurace synchronizace hodnoty hash hesla.  
+- Pro zařízení se systémem plochy operační systém Windows hello, doporučujeme používat Windows 10 Anniversary Update (verze 1607) nebo novější. 
+- registrace zařízení se systémem Windows aktuální Hello **je** podporované v nefederované prostředích, jako je konfigurace synchronizace hodnoty hash hesla.  
 
 
 ### <a name="windows-down-level-devices"></a>Zařízení se systémem Windows nižší úrovně
 
-- Jsou podporovány následující zařízení se systémem Windows nižší úrovně:
+- jsou podporovány následující zařízení se systémem Windows nižší úrovně Hello:
     - Windows 8.1
     - Windows 7
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- Registrace zařízení se systémem Windows nižší úrovně **je** podporované v prostředích nefederovaných prostřednictvím bezproblémové jednotné přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://aka.ms/hybrid/sso).
-- Registrace zařízení se systémem Windows nižší úrovně **není** podporovaná pro zařízení s použitím profilů roamingu. Pokud se spoléháte na cestovních profilů nebo nastavení, používají systém Windows 10.
+- registrace zařízení se systémem Windows nižší úrovně Hello **je** podporované v prostředích nefederovaných prostřednictvím bezproblémové jednotné přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://aka.ms/hybrid/sso).
+- registrace zařízení se systémem Windows nižší úrovně Hello **není** podporovaná pro zařízení s použitím profilů roamingu. Pokud se spoléháte na cestovních profilů nebo nastavení, používají systém Windows 10.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, povolení hybridního Azure AD, které jsou připojené k zařízení ve vaší organizaci, musíte zajistit, že používáte aktuální verzi Azure AD connect.
+Než začnete, povolení hybridního Azure AD, které jsou připojené k zařízení ve vaší organizaci, je nutné toomake, zda jsou spuštěny na aktuální verzi Azure AD connect.
 
 Azure AD Connect:
 
-- Zachová přidružení mezi účet počítače v místní službě Active Directory (AD) a objektu zařízení ve službě Azure AD. 
+- Zachová hello přidružení mezi hello účet počítače v místní službě Active Directory (AD) a objekt hello zařízení ve službě Azure AD. 
 - Povoluje další zařízení související s funkcí, jako Windows Hello pro firmy.
 
 
 
 ## <a name="configuration-steps"></a>Kroky konfigurace
 
-Můžete nakonfigurovat hybridní zařízení připojených k Azure AD pro různé typy zařízení platformy systému Windows. Toto téma obsahuje požadované kroky pro všechny scénáře obvyklá konfigurace.  
+Můžete nakonfigurovat hybridní zařízení připojených k Azure AD pro různé typy zařízení platformy systému Windows. Toto téma obsahuje hello požadované kroky pro všechny scénáře obvyklá konfigurace.  
 
-Následující tabulku použijte k získání přehledu kroky, které jsou požadovány pro váš scénář:  
+Použijte následující tabulku tooget přehled hello kroky, které jsou požadovány pro váš scénář hello:  
 
 
 
@@ -88,20 +88,20 @@ Následující tabulku použijte k získání přehledu kroky, které jsou poža
 
 ## <a name="step-1-configure-service-connection-point"></a>Krok 1: Konfigurace spojovacího bodu služby
 
-Objekt připojení Spojovací bod služby se používá vaše zařízení během registrace ke zjišťování informace klienta Azure AD. Ve vaší místní služby Active Directory (AD) musí existovat objekt spojovací bod služby pro zařízení Azure AD, které jsou připojené k hybridní v kontextu názvové počítače doménové struktury. Není k dispozici pouze jeden názvovém kontextu konfigurace pro každou doménovou strukturu. V konfiguraci s více doménovými strukturami služby Active Directory musí existovat spojovací bod služby ve všech doménových strukturách obsahující počítače, připojený k doméně.
+objekt Spojovací bod připojení služby Hello používá zařízení během registrace toodiscover hello informace klienta Azure AD. Ve vaší místní služby Active Directory (AD) musí existovat hello spojovací bod služby objektu pro zařízení s Azure AD, které jsou připojené k hybridní hello v hello názvový kontext oddílu konfigurace doménové struktury hello počítače. Není k dispozici pouze jeden názvovém kontextu konfigurace pro každou doménovou strukturu. V konfiguraci s více doménovými strukturami služby Active Directory musí existovat spojovací bod služby hello ve všech doménových strukturách obsahující počítače, připojený k doméně.
 
-Můžete použít [ **Get-ADRootDSE** ](https://technet.microsoft.com/library/ee617246.aspx) rutiny načíst názvovém kontextu konfigurace doménové struktury.  
+Můžete použít hello [ **Get-ADRootDSE** ](https://technet.microsoft.com/library/ee617246.aspx) rutiny tooretrieve hello názvovém kontextu konfigurace doménové struktury.  
 
-Pro doménovou strukturu s názvem domény služby Active Directory *fabrikam.com*, je v názvovém kontextu konfigurace:
+Pro doménovou strukturu s názvem domény služby Active Directory hello *fabrikam.com*, je v názvovém kontextu konfigurace hello:
 
 `CN=Configuration,DC=fabrikam,DC=com`
 
-V doménové struktuře se nachází v objektu spojovací bod služby pro automatickou registraci zařízení připojená k doméně:  
+V doménové struktuře se nachází v objektu hello spojovací bod služby pro hello automatické registrace zařízení připojených k doméně:  
 
 `CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[Your Configuration Naming Context]`
 
-V závislosti na tom, jak jste nasadili Azure AD Connect objekt spojovací bod služby může mít již byla konfigurována.
-Můžete ověřit existenci objekt a načíst hodnoty zjišťování pomocí následujícího skriptu prostředí Windows PowerShell: 
+V závislosti na tom, jak jste nasadili Azure AD Connect hello spojovací bod služby objekt může mít již byla konfigurována.
+Můžete ověřit existenci hello hello objekt a načíst hodnoty hello zjišťování pomocí hello následující skript prostředí Windows PowerShell: 
 
     $scp = New-Object System.DirectoryServices.DirectoryEntry;
 
@@ -109,19 +109,19 @@ Můžete ověřit existenci objekt a načíst hodnoty zjišťování pomocí ná
 
     $scp.Keywords;
 
-**$Scp. Klíčová slova** výstup zobrazuje informace o klientovi Azure AD, například:
+Hello **$scp. Klíčová slova** výstup zobrazuje informace o klienta hello Azure AD, například:
 
     azureADName:microsoft.com
     azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 
-Pokud spojovací bod služby neexistuje, můžete ho vytvořit spuštěním `Initialize-ADSyncDomainJoinedComputerSync` rutiny na serveru Azure AD Connect. Ke spuštění této rutiny je vyžadováno přihlašovací údaje podnikového správce.  
-Rutinu:
+Pokud spojovací bod služby hello neexistuje, můžete ho vytvořit spuštěním hello `Initialize-ADSyncDomainJoinedComputerSync` rutiny na serveru Azure AD Connect. Pověření správce podniku je požadovaná toorun tuto rutinu.  
+rutina Hello:
 
-- Vytvoří spojovací bod služby v doménové struktuře služby Active Directory, Azure AD Connect je připojena k. 
-- Vyžaduje, abyste zadali `AdConnectorAccount` parametr. Toto je účet, který je nakonfigurovaný jako účet konektoru ve službě Azure AD connect služby Active Directory. 
+- Vytvoří spojovací bod služby hello v doménové struktuře služby Active Directory hello, Azure AD Connect je připojena k. 
+- Vyžaduje, abyste toospecify hello `AdConnectorAccount` parametr. Toto je hello účet, který je nakonfigurovaný jako účet konektoru ve službě Azure AD connect služby Active Directory. 
 
 
-Tento skript je ukázkou příklad, pomocí rutiny. V tento skript `$aadAdminCred = Get-Credential` vyžaduje, abyste zadejte uživatelské jméno. Je třeba zadat uživatelské jméno ve formátu hlavního názvu (UPN) uživatele (`user@example.com`). 
+Hello skript je ukázkou příklad, pomocí rutiny hello. V tento skript `$aadAdminCred = Get-Credential` vyžaduje, abyste tootype uživatelské jméno. Je třeba tooprovide hello uživatelské jméno ve formátu hlavního názvu (UPN) uživatele hello (`user@example.com`). 
 
 
     Import-Module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1";
@@ -130,14 +130,14 @@ Tento skript je ukázkou příklad, pomocí rutiny. V tento skript `$aadAdminCre
 
     Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
 
-`Initialize-ADSyncDomainJoinedComputerSync` Rutiny:
+Hello `Initialize-ADSyncDomainJoinedComputerSync` rutiny:
 
-- Používá modul Active Directory PowerShell, které závisí na službě Active Directory Web Services spuštěných na řadiči domény. Služba Active Directory Web Services je podporována v řadičích domény se systémem Windows Server 2008 R2 nebo novější.
-- Je podporován pouze serverem **MSOnline PowerShell verze modulu 1.1.166.0**. Chcete-li stáhnout tento modul, použijte toto [odkaz](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185).   
+- Používá modul Active Directory PowerShell hello, které závisí na službě Active Directory Web Services spuštěných na řadiči domény. Služba Active Directory Web Services je podporována v řadičích domény se systémem Windows Server 2008 R2 nebo novější.
+- Je podporovaná jenom rozhraním hello **MSOnline PowerShell verze modulu 1.1.166.0**. toodownload tento modul použít [odkaz](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185).   
 
-Pro řadiče domény se systémem Windows Server 2008 nebo dřívějších verzí použijte níže uvedeném skriptu k vytvoření spojovací bod služby.
+Pro řadiče domény se systémem Windows Server 2008 nebo dřívějších verzí použijte níže uvedený spojovací bod služby hello toocreate skript hello.
 
-V konfiguraci s více doménovými strukturami používejte následující skript k vytvoření spojovací bod služby v každé doménové struktuře, kde existují počítače:
+V konfiguraci s více doménovými strukturami byste měli použít následující skript spojovací bod služby hello toocreate v každé doménové struktuře, kde existují počítače hello:
  
     $verifiedDomain = "contoso.com"    # Replace this with any of your verified domain names in Azure AD
     $tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"    # Replace this with you tenant ID
@@ -158,42 +158,42 @@ V konfiguraci s více doménovými strukturami používejte následující skrip
 
 ## <a name="step-2-setup-issuance-of-claims"></a>Krok 2: Nastavení vystavování deklarací identity
 
-V federované Azure AD konfigurace zařízení závisí na službě Active Directory Federation Services (AD FS) nebo 3. stran místní služby FS k ověření do služby Azure AD. Zařízení ověření získání přístupového tokenu k registraci proti Azure Active Directory Device Registration Service (Azure DRS).
+V federované Azure AD konfigurace zařízení závisí na službě Active Directory Federation Services (AD FS) nebo 3. stran místní federační služby tooauthenticate tooAzure AD. Zařízení ověření tooget přístupu k tokenu tooregister proti hello Azure Active Directory Device Registration Service (Azure DRS).
 
-Windows, které aktuální zařízení ověřování pomocí integrovaného ověřování systému Windows na aktivní koncový bod WS-Trust (verze 1.3 nebo 2005) hostované službou federation service na místě.
+Windows, které aktuální zařízení ověřování pomocí integrovaného ověřování systému Windows tooan aktivní WS-Trust koncový bod (verze 1.3 nebo 2005) hostované hello místní federační služby.
 
 > [!NOTE]
-> Při použití služby AD FS buď **adfs/services/vztah důvěryhodnosti nebo 13 nebo windowstransport** nebo **služby AD FS nebo služby nebo vztahu důvěryhodnosti/2005/windowstransport** musí být povolena. Pokud používáte webový proxy server ověřování, ujistěte se také, že tento koncový bod publikovaný prostřednictvím proxy serveru. Uvidíte, jaké koncových bodů jsou povolené prostřednictvím konzoly pro správu služby AD FS v části **služby > Koncové body**.
+> Při použití služby AD FS buď **adfs/services/vztah důvěryhodnosti nebo 13 nebo windowstransport** nebo **služby AD FS nebo služby nebo vztahu důvěryhodnosti/2005/windowstransport** musí být povolena. Pokud používáte hello ověřování webový proxy server, ujistěte se také, že tento koncový bod publikovaný prostřednictvím proxy serveru hello. Uvidíte, jaké koncových bodů jsou povolené prostřednictvím konzoly pro správu služby AD FS hello pod **služby > Koncové body**.
 >
->Pokud nemáte jako místní federační služby AD FS, postupujte podle pokynů dodavatele a ujistěte se, že podporují WS-Trust 1.3 nebo 2005 koncových bodů a že jsou tyto publikovaných prostřednictvím soubor metadat Exchange (MEX).
+>Pokud nemáte jako místní federační služby AD FS, postupujte podle pokynů hello vaše dodavatele toomake se, že podporují WS-Trust 1.3 nebo 2005 koncových bodů a že jsou tyto publikovaných prostřednictvím hello Metadata Exchange souboru (MEX).
 
-Následující deklarace identity musí existovat v tokenu přijatých Azure DRS pro registraci zařízení pro dokončení. Azure DRS vytvoří objekt zařízení ve službě Azure AD pomocí některé z těchto informací, které se pak použije přes Azure AD Connect k objektu nově vytvořený zařízení přidružit počítači účet místní.
+Hello následující deklarace identity musí existovat v tokenu hello přijatých Azure DRS pro toocomplete registrace zařízení. Azure DRS vytvoří objekt zařízení ve službě Azure AD pomocí některé z těchto informací, které se pak použije v Azure AD Connect tooassociate hello nově vytvořený objekt zařízení hello počítači účet místní.
 
 * `http://schemas.microsoft.com/ws/2012/01/accounttype`
 * `http://schemas.microsoft.com/identity/claims/onpremobjectguid`
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`
 
-Pokud máte více než jeden název ověřené domény, budete muset zadat následující deklarace identity pro počítače:
+Pokud máte více než jeden název ověřené domény, je třeba tooprovide hello následující deklarace identity pro počítače:
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Pokud jsou již vydání deklaraci identity ImmutableID (například alternativního přihlašovacího ID), budete muset zadat jeden odpovídající deklarace identity pro počítače:
+Pokud jsou již vydání deklaraci identity ImmutableID (například alternativního přihlašovacího ID) je třeba tooprovide jeden odpovídající deklarace identity pro počítače:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
-V následujících částech najdete informace o:
+V následujících částech hello najdete informace o:
  
-- Hodnoty, které by měly mít jednotlivých deklarací identity
+- Hello hodnoty by měla mít jednotlivých deklarací identity
 - Jak bude vypadat definice ve službě AD FS
 
-Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete k jejich vytvoření.
+definice Hello vám pomůže tooverify, zda jsou hodnoty hello přítomen nebo pokud potřebujete toocreate je.
 
 > [!NOTE]
-> Pokud nepoužíváte místní federačního serveru služby AD FS, postupujte podle pokynů od dodavatele vytvořit odpovídající konfiguraci vystavovat tyto deklarace identity.
+> Pokud nepoužíváte místní federačního serveru služby AD FS, postupujte podle dodavatele pokyny toocreate hello odpovídající konfiguraci tooissue tyto deklarace.
 
 ### <a name="issue-account-type-claim"></a>Deklarace typu účtu problém
 
-**`http://schemas.microsoft.com/ws/2012/01/accounttype`**– Tato deklarace identity musí obsahovat hodnotu **DJ**, které identifikují zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/ws/2012/01/accounttype`**– Tato deklarace identity musí obsahovat hodnotu **DJ**, který identifikuje hello zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue account type for domain-joined computers"
     c:[
@@ -206,9 +206,9 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
         Value = "DJ"
     );
 
-### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>Problém objectGUID na počítači účet místního
+### <a name="issue-objectguid-of-hello-computer-account-on-premises"></a>Problém objectGUID hello počítači účet místního
 
-**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`**– Tato deklarace identity musí obsahovat **objectGUID** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`**– Tato deklarace identity musí obsahovat hello **objectGUID** hodnotu hello místní účet počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue object GUID for domain-joined computers"
     c1:[
@@ -228,9 +228,9 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
         param = c2.Value
     );
  
-### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>Problém objectSID na počítači účet místního
+### <a name="issue-objectsid-of-hello-computer-account-on-premises"></a>Problém objectSID hello počítači účet místního
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`**– Tato deklarace identity musí obsahovat **objectSid** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`**– Tato deklarace identity musí obsahovat hello hello **objectSid** hodnotu hello místní účet počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue objectSID for domain-joined computers"
     c1:[
@@ -247,9 +247,9 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
 
 ### <a name="issue-issuerid-for-computer-when-multiple-verified-domain-names-in-azure-ad"></a>Vystavovat issuerID pro počítač, pokud ověření více názvů domén ve službě Azure AD
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`**– Tato deklarace identity musí obsahovat identifikátor URI (Uniform Resource) všech názvy ověřené domény, které se připojují pomocí místní služby federation service (AD FS nebo 3. stran) vydání tokenu. Ve službě AD FS můžete přidat pravidla transformace vystavení, které vypadají jako jsou níže v tomto konkrétní pořadí po ty výše. Upozorňujeme, že je nutné tento jedno pravidlo explicitně vystavit pravidlo pro uživatele. V pravidlech níže se přidá první pravidlo identifikace uživatele nebo ověřování počítače.
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`**– Tato deklarace identity musí obsahovat hello identifikátor URI (Uniform Resource) všech hello ověřit názvy domén, které se připojují pomocí hello místní federační služby (služby AD FS nebo 3. stran) vydávající hello token. Ve službě AD FS můžete přidat pravidla transformace vystavení, které vypadají stejně, jako hello těch, které jsou níže v tom, že ty, které konkrétní pořadí po hello výše. Všimněte si daného jedno pravidlo tooexplicitly problém hello pravidla pro uživatele je nezbytné. V pravidlech hello níže se přidá první pravidlo identifikace uživatele nebo ověřování počítače.
 
-    @RuleName = "Issue account type with the value User when its not a computer"
+    @RuleName = "Issue account type with hello value User when its not a computer"
     NOT EXISTS(
     [
         Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", 
@@ -261,7 +261,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
         Value = "User"
     );
     
-    @RuleName = "Capture UPN when AccountType is User and issue the IssuerID"
+    @RuleName = "Capture UPN when AccountType is User and issue hello IssuerID"
     c1:[
         Type == "http://schemas.xmlsoap.org/claims/UPN"
     ]
@@ -291,15 +291,15 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
     );
 
 
-Ve výše uvedené, deklarace identity
+Ve výše uvedené, hello deklarací
 
-- `$<domain>`je adresa URL služby AD FS
-- `<verified-domain-name>`je zástupný symbol, který potřebujete nahradit s jedním názvů ověřené domény ve službě Azure AD
+- `$<domain>`je adresa URL služby hello AD FS
+- `<verified-domain-name>`je zástupný symbol potřebujete tooreplace s jedním názvů ověřené domény ve službě Azure AD
 
 
 
-Další informace o názvech ověřené domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](active-directory-add-domain.md).  
-Chcete-li získat seznam ověřených společnosti domény, můžete použít [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) rutiny. 
+Další informace o názvech ověřené domény najdete v tématu [přidat tooAzure název vlastní domény služby Active Directory](active-directory-add-domain.md).  
+tooget seznam vaše společnost ověřené domény, můžete použít hello [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) rutiny. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
@@ -325,9 +325,9 @@ Chcete-li získat seznam ověřených společnosti domény, můžete použít [G
         param = c2.Value
     );
 
-### <a name="helper-script-to-create-the-ad-fs-issuance-transform-rules"></a>Pomocník skript pro vytvoření pravidel transformace pro vystavení služby AD FS
+### <a name="helper-script-toocreate-hello-ad-fs-issuance-transform-rules"></a>Pomocník skriptu toocreate hello AD FS pravidla transformace při vystavení
 
-Následující skript pomáhá s vytvoření vystavení transformace pravidel popsaných výše.
+Hello následující skript vám pomůže s hello vytvoření hello vystavování transformace pravidel popsaných výše.
 
     $multipleVerifiedDomainNames = $false
     $immutableIDAlreadyIssuedforUsers = $false
@@ -377,7 +377,7 @@ Následující skript pomáhá s vytvoření vystavení transformace pravidel po
 
     $rule4 = ''
     if ($multipleVerifiedDomainNames -eq $true) {
-    $rule4 = '@RuleName = "Issue account type with the value User when it is not a computer"
+    $rule4 = '@RuleName = "Issue account type with hello value User when it is not a computer"
     NOT EXISTS(
     [
         Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", 
@@ -389,7 +389,7 @@ Následující skript pomáhá s vytvoření vystavení transformace pravidel po
         Value = "User"
     );
     
-    @RuleName = "Capture UPN when AccountType is User and issue the IssuerID"
+    @RuleName = "Capture UPN when AccountType is User and issue hello IssuerID"
     c1:[
         Type == "http://schemas.xmlsoap.org/claims/UPN"
     ]
@@ -450,133 +450,133 @@ Následující skript pomáhá s vytvoření vystavení transformace pravidel po
 
 ### <a name="remarks"></a>Poznámky 
 
-- Tento skript připojí k existující pravidla pravidla. Nelze spustit skript dvakrát vzhledem k tomu, že sadu pravidel, které by byl přidán dvakrát. Ujistěte se, že neexistují žádná pravidla odpovídající před spuštěním skriptu znovu v těchto deklarací identity (v odpovídajících podmínkách).
+- Tento skript připojí hello pravidla toohello existující pravidla. Nespouštějte hello skriptu dvakrát protože hello sada pravidel by byl přidán dvakrát. Ujistěte se, že neexistují žádná pravidla odpovídající před spuštěním skriptu hello znovu v těchto deklarací identity (v odpovídajících podmínkách hello).
 
-- Pokud máte více názvů ověřené domény (jak je znázorněno na portálu Azure AD nebo pomocí rutiny Get-MsolDomains), nastavte hodnotu **$multipleVerifiedDomainNames** ve skriptu **$true**. Také se ujistěte, že odeberete všechny existující issuerid deklaraci, která může být vytvořen přes Azure AD Connect nebo prostřednictvím jiným způsobem. Tady je příklad pro toto pravidlo:
+- Pokud máte více ověřených názvů domén (jak je znázorněno v portálu hello Azure AD nebo pomocí rutiny Get-MsolDomains hello), nastavte hodnotu hello **$multipleVerifiedDomainNames** v hello skriptu příliš**$true**. Také se ujistěte, že odeberete všechny existující issuerid deklaraci, která může být vytvořen přes Azure AD Connect nebo prostřednictvím jiným způsobem. Tady je příklad pro toto pravidlo:
 
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
         => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
-- Pokud jste již vystavily **ImmutableID** deklarace identity pro uživatelské účty, nastavte hodnotu **$immutableIDAlreadyIssuedforUsers** ve skriptu **$true**.
+- Pokud jste již vystavily **ImmutableID** deklarací identity pro uživatelské účty, nastavte hodnotu hello **$immutableIDAlreadyIssuedforUsers** v hello skriptu příliš**$true**.
 
 ## <a name="step-3-enable-windows-down-level-devices"></a>Krok 3: Zapnutí zařízení se systémem Windows nižší úrovně
 
 Pokud některé z vašich zařízení připojených k doméně Windows nižší úrovně zařízení, budete muset:
 
-- Nastavte zásady ve službě Azure AD umožňuje uživatelům registrovat zařízení.
+- Nastavte zásady v Azure AD tooenable tooregister zařízení uživatelů.
  
-- Místní službu FS vystavovat deklarace identity pro podporu nakonfigurovat **integrované ověřování systému Windows (IWA)** pro registraci zařízení.
+- Konfigurace vaší místní federační služby tooissue deklarace identity toosupport **integrované ověřování systému Windows (IWA)** pro registraci zařízení.
  
-- Přidáte koncový bod ověřování zařízení služby Azure AD do místní zóny intranetu, abyste se vyhnuli výzev ohledně certifikátů při ověřování zařízení.
+- Přidejte hello Azure AD zařízení ověřování koncový bod toohello místní intranetové zóny, který certifikát tooavoid výzvy při ověřování zařízení hello.
 
-### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Nastavit zásady ve službě Azure AD umožňuje uživatelům registrovat zařízení
+### <a name="set-policy-in-azure-ad-tooenable-users-tooregister-devices"></a>Nastavte zásady v Azure AD tooenable tooregister zařízení uživatelů
 
-Chcete-li zaregistrovat zařízení se systémem Windows nižší úrovně, ujistěte se, že bude uživatelům k registraci zařízení ve službě Azure AD povolit nastavení. Na portálu Azure můžete najít toto nastavení v části:
+tooregister zařízení se systémem Windows nižší úrovně, je nutné toomake zkontrolujte, jestli je nastavená této hello nastavení uživatelů tooallow tooregister zařízení ve službě Azure AD. V hello portálu Azure můžete najít toto nastavení v části:
 
 `Azure Active Directory > Users and groups > Device settings`
     
-Tyto zásady musí být nastavena na **všechny**: **uživatelé mohou registrovat svá zařízení s Azure AD**
+Hello tyto zásady musí být nastaven příliš**všechny**: **uživatelé mohou registrovat svá zařízení s Azure AD**
 
 ![Registrace zařízení](./media/active-directory-conditional-access-automatic-device-registration-setup/23.png)
 
 
 ### <a name="configure-on-premises-federation-service"></a>Nakonfigurujte místní služby FS 
 
-Vaše místní federační služba musí podporovat vydání **authenticationmehod** a **wiaormultiauthn** deklarací při přijímání požadavek ověřování Azure AD předávající strany, která uchovává resouce_params parametr s hodnotou kódovaného, jak je uvedeno níže:
+Vaše místní federační služba musí podporovat vydávající hello **authenticationmehod** a **wiaormultiauthn** deklarace identity při přijímání ověření požadavku toohello Azure AD předávající strany, která uchovává resouce_params parametr s hodnotou kódovaného jak je uvedené níže:
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 
     which decoded is {"Properties":[{"Key":"acr","Value":"wiaormultiauthn"}]}
 
-Pokud takový požadavek pochází, místní federační služby musí ověřit uživatele pomocí integrovaného ověřování systému Windows a na úspěch, vydá následující dvě deklarace identity:
+Pokud takový požadavek pochází, hello místní federační služby musí ověřit hello uživatele s využitím integrované ověřování systému Windows a na úspěch, vydá hello následující dvě deklarace identity:
 
     http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows
     http://schemas.microsoft.com/claims/wiaormultiauthn
 
-Ve službě AD FS musíte přidat pravidel transformace vystavení, který předává prostřednictvím metody ověřování.  
+Ve službě AD FS musíte přidat tuto metodu ověřování hello předává prostřednictvím pravidel transformace pro vystavování.  
 
-**Chcete-li přidat toto pravidlo:**
+**tooadd toto pravidlo:**
 
-1. V konzole pro správu služby AD FS, přejděte na `AD FS > Trust Relationships > Relying Party Trusts`.
-2. Klikněte pravým tlačítkem na objekt pro vztah důvěryhodnosti předávající strany ze serveru Microsoft Office 365 Identity Platform a vyberte **upravit pravidla deklarací identity**.
-3. Na **pravidlech transformace vystavení** vyberte **přidat pravidlo**.
-4. V **pravidlo deklarace identity** seznam šablon, vyberte **odesílat deklarace pomocí vlastního pravidla**.
+1. V konzole pro správu hello AD FS přejděte příliš`AD FS > Trust Relationships > Relying Party Trusts`.
+2. Klikněte pravým tlačítkem na objekt hello vztahu důvěryhodnosti předávající strany pro aplikaci Microsoft Office 365 Identity Platform a vyberte **upravit pravidla deklarací identity**.
+3. Na hello **pravidlech transformace vystavení** vyberte **přidat pravidlo**.
+4. V hello **pravidlo deklarace identity** seznam šablon, vyberte **odesílat deklarace pomocí vlastního pravidla**.
 5. Vyberte **Další**.
-6. V **název pravidla deklarací** zadejte **pravidlo deklarace identity metoda ověřování**.
-7. V **pravidlo deklarace identity** zadejte následující pravidlo:
+6. V hello **název pravidla deklarací** zadejte **pravidlo deklarace identity metoda ověřování**.
+7. V hello **pravidlo deklarace identity** pole, typ hello následující pravidlo:
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Na federačním serveru, zadejte příkaz prostředí PowerShell níže po nahrazení  **\<RPObjectName\>**  s předávající strany název objektu pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
+8. Na federačním serveru, zadejte příkaz prostředí PowerShell hello níže po nahrazení  **\<RPObjectName\>**  hello přijímající strany u objektu s názvem pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
-### <a name="add-the-azure-ad-device-authentication-end-point-to-the-local-intranet-zones"></a>Přidejte do zóny místního intranetu koncový bod ověřování zařízení služby Azure AD
+### <a name="add-hello-azure-ad-device-authentication-end-point-toohello-local-intranet-zones"></a>Přidejte hello Azure AD zařízení ověřování koncový bod toohello místní Intranet zóny
 
-Aby se zabránilo certifikát vyzve při ověřování uživatelů v registraci zařízení do služby Azure AD můžete posouvat nastavení zásad pro vaše zařízení připojených k doméně, přidat následující adresy URL do zóny místního intranetu v aplikaci Internet Explorer:
+Při ověřování uživatele v zařízení zaregistrovat tooAzure AD můžete posouvat nastavení zásady tooyour připojená k doméně tooadd hello následující adresu URL toohello zóny místního intranetu v aplikaci Internet Explorer zobrazí výzvu tooavoid certifikátu:
 
 `https://device.login.microsoftonline.com`
 
 ## <a name="step-4-control-deployment-and-rollout"></a>Krok 4: Řízení nasazení a zavedení
 
-Po dokončení požadovaných kroků připojená k doméně jsou připravené k automatickému připojení Azure AD:
+Když jste dokončili postup hello vyžaduje, jsou připojená k doméně připravené tooautomatically připojení k Azure AD:
 
 - Všechny připojené k doméně zařízení se systémem Windows 10 Anniversary Update a Windows Server 2016 automaticky zaregistrovat s Azure AD v zařízení restartujte nebo přihlášení uživatele. 
 
-- Zaregistrovat nová zařízení s Azure AD při restartování zařízení po dokončení operace připojení k doméně.
+- S Azure AD při restartování zařízení hello po dokončení operace připojení hello zaregistrovat nová zařízení.
 
-- Registruje zařízení, které byly dříve Azure AD (například pro Intune) přechod do "*připojený k doméně, zaregistrováno v AAD*"; však bude trvat delší dobu pro tento proces dokončit ve všech zařízeních z důvodu normálního toku domény a aktivity uživatelů.
+- Registruje zařízení, které byly dříve Azure AD (například pro Intune) přechod příliš "*připojený k doméně, zaregistrováno v AAD*"; ale trvá delší dobu pro tento proces toocomplete ve všech zařízeních kvůli toohello normálního toku doména a uživatelské aktivity.
 
 ### <a name="remarks"></a>Poznámky
 
-- Můžete objekt zásad skupiny a ovládejte automatické registrace Windows 10 a Windows Server 2016 počítačů připojených k doméně.
+- Můžete vytvořit zásad skupiny objekt toocontrol hello zavedení automatické registrace Windows 10 a Windows Server 2016 počítačů připojených k doméně.
 
-- Windows 10. listopadu 2015 aktualizace automaticky spojí se službou Azure AD **pouze** nastaveného zavedení objekt zásad skupiny.
+- Windows 10. listopadu 2015 aktualizace automaticky spojí se službou Azure AD **pouze** Pokud hello zavedení nastavení objektu zásad skupiny.
 
-- K zavedení počítačů se systémem Windows nižší úrovně, můžete nasadit [balíček služby Windows Installer](#windows-installer-packages-for-non-windows-10-computers) do počítačů, které jste vybrali.
+- toorollout počítačů se systémem Windows nižší úrovně, můžete nasadit [balíček služby Windows Installer](#windows-installer-packages-for-non-windows-10-computers) toocomputers, kterou jste vybrali.
 
-- Pokud jste nabízená objekt zásad skupiny Windows 8.1 připojená k doméně, dojde k pokusu o spojení; nedoporučujeme ale, že používáte [balíček služby Windows Installer](#windows-installer-packages-for-non-windows-10-computers) připojit všechna zařízení Windows nižší úrovně. 
+- Pokud jste push hello zásad skupiny objekt tooWindows 8.1 připojená k doméně, dojde k pokusu o spojení; nedoporučujeme ale, že používáte hello [balíček služby Windows Installer](#windows-installer-packages-for-non-windows-10-computers) toojoin všechna zařízení Windows nižší úrovně. 
 
 ### <a name="create-a-group-policy-object"></a>Vytvoření objektu zásad skupiny 
 
-Ovládejte aktuální počítačů se systémem Windows, měli byste nasadit **registraci připojený k doméně počítače jako zařízení** objekt zásad skupiny zařízení, který chcete zaregistrovat. Například můžete nasadit zásady do organizační jednotky nebo do skupiny zabezpečení.
+zavedení hello toocontrol aktuální počítačů se systémem Windows, měli byste nasadit hello **registraci připojený k doméně počítače jako zařízení** zařízení toohello objekt zásad skupiny chcete tooregister. Například můžete nasadit hello zásad tooan organizační jednotku nebo skupinu zabezpečení tooa.
 
-**Nastavení zásad:**
+**tooset hello zásad:**
 
-1. Otevřete **správce serveru**a pak přejděte na `Tools > Group Policy Management`.
-2. Přejděte na uzel domény, který odpovídá k doméně, ve které chcete aktivovat automatickou registraci aktuální počítačů se systémem Windows.
+1. Otevřete **správce serveru**a potom přejděte příliš`Tools > Group Policy Management`.
+2. Přejděte toohello domény uzlu, který odpovídá toohello domény, kam chcete tooactivate automatickou registraci aktuální počítačů se systémem Windows.
 3. Klikněte pravým tlačítkem na **objekty zásad skupiny**a potom vyberte **nový**.
 4. Zadejte název objektu zásad skupiny. Například * hybridní Azure AD join. 
 5. Klikněte na **OK**.
 6. Klikněte pravým tlačítkem na váš nový objekt zásad skupiny a potom vyberte **upravit**.
-7. Přejděte na **konfigurace počítače** > **zásady** > **šablony pro správu** > **součásti systému Windows** > **registrace zařízení**. 
+7. Přejděte příliš**konfigurace počítače** > **zásady** > **šablony pro správu** > **Windows Součásti** > **registrace zařízení**. 
 8. Klikněte pravým tlačítkem na **registraci připojený k doméně počítače jako zařízení**a potom vyberte **upravit**.
    
    > [!NOTE]
-   > Tato šablona zásad skupiny byla přejmenována z dřívějších verzí konzoly pro správu zásad skupiny. Pokud používáte starší verzi konzoly, přejděte na `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
+   > Tato šablona zásad skupiny byla přejmenována z dřívějších verzí konzoly pro správu zásad skupiny hello. Pokud používáte starší verzi konzoly hello, přejděte příliš`Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
 
 7. Vyberte **povoleno**a potom klikněte na **použít**.
 8. Klikněte na **OK**.
-9. Propojte objekt zásad skupiny k umístění podle vaší volby. Například můžete propojit k určité organizační jednotce. Můžete také může ho propojit s konkrétní skupiny zabezpečení počítačů, které automaticky připojit k službě Azure AD. Nastavení této zásady pro všechny připojené k doméně Windows 10 a Windows Server 2016 počítače ve vaší organizaci, propojte objekt zásad skupiny do domény.
+9. Odkaz hello tooa umístění objektu zásad skupiny podle svého výběru. Například můžete propojit jej tooa určité organizační jednotce. Můžete také propojit ho tooa konkrétní bezpečnostní skupiny počítačů, které automaticky připojit k službě Azure AD. tooset tuto zásadu pro všechny připojené k doméně Windows 10 a Windows Server 2016 počítače ve vaší organizaci, odkaz hello zásad skupiny objekt toohello domény.
 
 ### <a name="windows-installer-packages-for-non-windows-10-computers"></a>Balíčky Instalační služby systému Windows pro počítače s Windows 10
 
-K připojení k doméně počítače se systémem Windows nižší úrovně ve federovaném prostředí, můžete stáhnout a nainstalovat tyto balíček Instalační služby systému Windows (.msi) ze stažení softwaru společnosti Microsoft [připojení k síti na pracovišti Microsoft pro počítače s Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554) stránka.
+toojoin připojený k doméně nižší úrovně počítače se systémem Windows ve federovaném prostředí, můžete stáhnout a nainstalovat tyto balíček Instalační služby systému Windows (.msi) ze služby Stažení softwaru na hello [připojení k pracovní ploše Microsoft pro počítače s Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554)stránky.
 
-Balíček lze nasadit pomocí systém distribuce softwaru jako je System Center Configuration Manager. Balíček podporuje možnosti standardní bezobslužnou instalaci s *quiet* parametr. System Center Configuration Manager aktuální větev nabízí další výhody z dřívějších verzí, jako je schopnost sledovat dokončené registrace. Další informace najdete v tématu [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager).
+Balíček hello můžete nasadit pomocí systém distribuce softwaru jako je System Center Configuration Manager. Hello balíček podporuje možnosti standardní bezobslužnou instalaci hello hello *quiet* parametr. System Center Configuration Manager aktuální větev nabízí další výhody z dřívějších verzí, jako je hello možnost tootrack dokončení registrace. Další informace najdete v tématu [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager).
 
-Instalační program vytvoří naplánovanou úlohu na systém, který běží v kontextu uživatele. Úloha se aktivuje, když se uživatel přihlásí systému Windows. Úloha bezobslužně připojí zařízení s Azure AD s pověřeními uživatele po ověřování pomocí integrovaného ověřování systému Windows. Chcete-li zobrazit naplánované úlohy, v zařízení, přejděte na **Microsoft** > **k síti na pracovišti**a potom přejděte na Knihovna plánovače úloh.
+Instalační program Hello vytvoří naplánovanou úlohu na hello systému, který běží v kontextu uživatele hello. Při přihlášení uživatele hello tooWindows, aktivuje se úloha Hello. Úloha Hello bezobslužně spojí hello zařízení s Azure AD s pověřeními uživatele hello po ověřování pomocí integrovaného ověřování systému Windows. toosee hello naplánované úlohy, v zařízení hello přejděte příliš**Microsoft** > **k síti na pracovišti**, a potom přejděte toohello Knihovna plánovače úloh.
 
 ## <a name="step-5-verify-joined-devices"></a>Krok 5: Ověření připojeného k zařízení
 
-Úspěšné připojeného k zařízení ve vaší organizaci můžete zkontrolovat pomocí [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) rutiny v [modul Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Úspěšné připojeného k zařízení ve vaší organizaci můžete zkontrolovat pomocí hello [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) rutiny v hello [modul Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
-Výstup této rutiny zobrazuje zařízení, které jsou zaregistrované a propojit s Azure AD. Všechna zařízení, použijte **– všechny** parametr a pak je filtrování pomocí **deviceTrustType** vlastnost. Připojené k doméně zařízení mít hodnotu **připojený k doméně**.
+Hello výstup této rutiny zobrazuje zařízení, které jsou zaregistrované a propojit s Azure AD. tooget všechna zařízení, použijte hello **– všechny** parametr a potom filtru je pomocí hello **deviceTrustType** vlastnost. Připojené k doméně zařízení mít hodnotu **připojený k doméně**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md)
+* [Úvod toodevice správy ve službě Azure Active Directory](device-management-introduction.md)
 
 
 

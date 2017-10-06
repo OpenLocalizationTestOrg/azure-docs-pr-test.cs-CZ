@@ -1,6 +1,6 @@
 ---
-title: "Co je virtuální počítač vědecké účely dat? | Dokumentace Microsoftu"
-description: "Jak začít pracovat způsobem scénáře klíče analytics s Data vědecké účely virtuálních počítačů."
+title: "aaaWhat je virtuální počítač vědecké účely dat? | Dokumentace Microsoftu"
+description: "Jak tooget spustit provádění scénáře klíče analytics s Data vědecké účely virtuálních počítačů."
 keywords: "datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux"
 services: machine-learning
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: d6346419756cb0841c23f3ba63e479ba2397af54
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 18c7a75208671c663f3b6be6ee8d0bf666772e01
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Úvod do cloudových dat vědecké účely virtuálního počítače pro systémy Linux a Windows
-Virtuální počítač vědecké účely dat (DSVM) je přizpůsobená image virtuálního počítače v cloudu společnosti Microsoft Azure vytvořené speciálně pro provádění vědecké zpracování dat. Má mnoho vědecké zpracování oblíbených dat a jiných nástrojů, předem nainstalovaná a předem nakonfigurovaná pro rychle začít s prací vytváření inteligentní aplikace pro pokročilou analýzu. Je k dispozici v systému Windows Server a v systému Linux. Nabízíme edici Windows DSVM na Server 2016 a Server 2012. Nabízíme edici DSVM na Ubuntu 16.04 LTS a na základě OpenLogic 7.2 CentOS Linuxových distribucích systému Linux. 
+# <a name="introduction-toohello-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Úvod toohello cloudových dat vědecké účely virtuálního počítače pro systémy Linux a Windows
+Hello datové vědy virtuálního počítače (DSVM) je v cloudu společnosti Microsoft Azure vytvořené speciálně pro provádění vědecké zpracování dat vlastní image virtuálního počítače. Obsahuje mnoho vědecké zpracování oblíbených dat a dalších nástrojů předem nainstalovaná a předem nakonfigurované toojump-start vytváření inteligentní aplikace pro pokročilou analýzu. Je k dispozici pro Windows Server a Linux. Edici virtuálního počítače pro datové vědy pro Windows nabízíme ve verzích pro Server 2016 a Server 2012. Nabízíme edici hello DSVM na Ubuntu 16.04 LTS a na základě OpenLogic 7.2 CentOS Linuxových distribucích systému Linux. 
 
-Toto téma popisuje, co můžete dělat s virtuálním Počítačem vědecké účely Data, popisuje některé z klíčových scénářů pro použití virtuálního počítače, rozepisuje klíčové funkce, které jsou k dispozici ve verzích systému Windows a Linux a obsahuje pokyny, jak začít pracovat, jejich používání.
+Toto téma popisuje, co můžete dělat s hello vědecké účely dat virtuálních počítačů, popisuje některé z hello klíčové scénáře použití hello virtuálních počítačů, rozepisuje hello klíčové funkce dostupné v systému Windows hello a verze Linux a obsahuje pokyny, jak spustit tooget jejich používání.
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Jak se Data virtuálního počítače vědecké účely?
-Cílem z virtuálního počítače vědecké účely dat je poskytnout prostředí vědecké účely data bez třecí Odborníci v oblasti dat na všech úrovních dovedností a rolí. Tento virtuální počítač uloží významnou čas strávený by pokud byl nasazen porovnatelný z hlediska prostředí sami. Místo toho spuštění projektu vědecké účely data okamžitě v nově vytvořená instance virtuálních počítačů. 
+## <a name="what-can-i-do-with-hello-data-science-virtual-machine"></a>Co můžete dělat s hello datové vědy virtuálního počítače?
+cílem Hello hello datové vědy virtuálního počítače je Odborníci v oblasti dat tooprovide na všech úrovních dovedností a rolí s prostředím data bez třecí vědecké účely. Tento virtuální počítač uloží významnou čas strávený by pokud byl nasazen porovnatelný z hlediska prostředí sami. Místo toho spuštění projektu vědecké účely data okamžitě v nově vytvořená instance virtuálních počítačů. 
 
-Virtuální počítač datové vědy a konfigurují pro práci s scénáře obecné použití. Prostředí můžete škálovat nahoru nebo dolů podle projektu změn. Budete moci použít upřednostňovaný jazyk pro úlohy vědecké účely dat programu. Můžete nainstalovat další nástroje a přizpůsobení systému pro vašim konkrétním potřebám.
+Hello vědecké účely dat virtuálních počítačů a konfigurují pro práci s scénáře obecné použití. Prostředí můžete škálovat nahoru nebo dolů podle projektu změn. Budete se moct toouse úlohami upřednostňovaný jazyk data tooprogram vědecké účely. Můžete nainstalovat další nástroje a přizpůsobení hello systému pro vašim konkrétním potřebám.
 
 ## <a name="key-scenarios"></a>Klíčové scénáře
-Tato část navrhuje některých klíčových scénářů, pro které se dá nasadit virtuální počítač vědecké účely Data.
+Tato část navrhuje některých klíčových scénářů, pro které hello se dá nasadit vědecké účely dat virtuálních počítačů.
 
-### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Plocha předkonfigurované analýzy v cloudu
-Virtuální počítač vědecké účely dat poskytuje standardních hodnot konfigurace pro data vědecké účely týmům nahraďte plocha spravovaný cloudu jejich místních počítačů. Tyto standardní hodnoty zajistí, že všechny datových vědců na tým instalace, ke které má ověřte experimenty a zlepšení spolupráce s konzistentní. Také snižuje náklady na snížením zatížení správce systému a ukládání na čas potřebný k vyhodnocení, instalaci a údržbě různé softwarové balíčky, které jsou potřebné k provádět pokročilé analýzy.  
+### <a name="preconfigured-analytics-desktop-in-hello-cloud"></a>Předkonfigurované plochy analýzy v cloudu hello
+Hello vědecké účely dat virtuálních počítačů poskytuje standardních hodnot konfigurace pro data vědecké účely týmům tooreplace jejich místní počítačů s plocha spravovaný cloudu. Tyto standardní hodnoty zajišťuje, že všechny hello datových vědců na tým konzistentní instalační program, pomocí které tooverify experimenty a zlepšení spolupráce. Ukládání na hello času potřeba tooevaluate, instalaci a údržbě hello různé softwarové balíčky třeba toodo pokročilou analýzu a také snižuje náklady na snížením hello sysadmin zatížení.  
 
 ### <a name="data-science-training-and-education"></a>Školení a vzdělávání v oblasti datové vědy
-Enterprise školitelů a lektorům který naučit vědecké zpracování dat třídy obvykle nabízejí bitovou kopii virtuálního počítače zajistit, že jejich studenti, kteří mají konzistentní instalační program a ukázky fungovat předvídatelné. Virtuální počítač vědecké účely dat vytvoří prostředí na vyžádání s konzistentní instalačního programu, která usnadňuje podporu a nekompatibilita problémů. Případy, kdy musela být vytvořená často, hlavně pro kratší školení třídy těchto prostředích využívat podstatně.
+Enterprise školitele a lektorům, které obvykle naučit datové vědy třídy poskytují image tooensure virtuální počítač, zda jejich studenty instalace s konzistentní a předvídatelné fungovat hello ukázky. Hello vědecké účely Data virtuálního počítače vytvoří prostředí na vyžádání s konzistentní instalačního programu, která usnadňuje podporu a nekompatibilita výzvy hello. Případech, kde těchto prostředí musí toobe vytvořené často, zejména pro kratší školení třídy, podstatně využívat.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Elastické kapacity na vyžádání u rozsáhlých projektů
-Data vědecké účely hackathons/soutěže nebo modelování ve velkém rozsahu dat a zkoumání vyžadují škálovat na více systémů kapacitu hardwaru, obvykle pro krátké doby trvání. Virtuální počítač vědecké účely dat může pomoci replikovat prostředí vědecké účely data rychle na vyžádání, na škálovaný serverech, které umožňují experimenty, které vyžadují vysokým výkonem výpočetních prostředků ke spuštění.
+Data vědecké účely hackathons/soutěže nebo modelování ve velkém rozsahu dat a zkoumání vyžadují škálovat na více systémů kapacitu hardwaru, obvykle pro krátké doby trvání. Hello vědecké účely dat virtuálních počítačů může pomoci replikovat hello datové vědy prostředí rychle na vyžádání, na škálovaný serverech, které umožňují experimenty nutnosti vysokým výkonem výpočetní prostředky toobe spustit.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimentování a vyhodnocení
-Virtuální počítač vědecké účely Data lze použít k vyhodnocení nebo další nástroje, jako je Microsoft R Server, SQL Server, nástroje Visual Studio, Jupyter, hluboké učení / ML sadách a nových nástrojů oblíbených v komunitě s minimálním instalační program úsilí. Vzhledem k tomu, že virtuální počítač vědecké účely dat můžete rychle nastavit tak, můžete použít v jiné krátkodobé scénáře použití například replikace publikované experimenty, provádění ukázky, následující kurzy v online relací nebo kurzy konference.
+Hello vědecké účely dat virtuálních počítačů lze použít tooevaluate nebo další nástroje třeba Microsoft R Server, SQL Server, Visual Studio nástroje, Jupyter, hluboké učení / ML sadách a nových nástrojů oblíbených v hello community s minimální instalací úsilí. Vzhledem k tomu, že hello vědecké účely dat virtuálních počítačů můžete rychle nastavit tak, můžete použít v jiné krátkodobé scénáře použití například replikace publikované experimenty, provádění ukázky, následující kurzy v online relací nebo kurzy konference.
 
 ### <a name="deep-learning"></a>Hloubkové učení
-Vědecké zpracování dat virtuálních počítačů lze použít pro model školení pomocí hloubkové learning algoritmů na základě hardwaru grafický procesor (grafiky zpracování jednotky). Použití virtuálních počítačů škálování možnosti cloudu Azure, DSVM vám pomůže používat hardware, grafického procesoru založené na cloudu podle potřeby. Jeden můžete přepnout grafického procesoru na základě virtuálních počítačů při tréninku velké modely nebo potřebujete vysokou rychlostí výpočty při zachování stejné disk operačního systému.  Edice systému Windows Server 2016 DSVM dodává předinstalované ovladače grafického procesoru, architektury a GPU verzi hloubkového učení algoritmy. V systému Linux, přímým učení na grafického procesoru je povoleno pouze na [datové vědy virtuálního počítače pro Linux (Ubuntu) edici](http://aka.ms/dsvm/ubuntu). Ubuntu/Windows-2016 edice vědecké účely dat virtuálních počítačů můžete nasadit na virtuální počítač bez grafického procesoru na základě Azure v takovém případě bude všechna rozhraní hloubkové learning přechod na režim procesoru. Dříve, pro Windows Server 2012 jsme publikována [hloubkové učení toolkit](http://aka.ms/dsvm/deeplearning) , ale nyní vám doporučujeme používat systém Windows Server 2016 pro Windows na základě hloubkové learning úlohy. Na základě CentOS Linux, které edice DSVM obsahuje pouze procesoru sestavení některých hloubkového výukové nástroje (CNTK, Tensorflow, MXNet), ale nepochází předinstalované s grafickým Procesorem ovladače a rozhraní. 
+Hello vědecké zpracování dat virtuálních počítačů lze použít pro model školení pomocí hloubkové learning algoritmů na základě hardwaru grafický procesor (grafiky zpracování jednotky). Použití virtuálních počítačů škálování možnosti cloudu Azure, DSVM vám pomůže používat grafického procesoru na základě hardwaru v cloudu hello podle potřeby. Jeden můžete přepnout tooa grafického procesoru na základě virtuálních počítačů při tréninku velké modely nebo potřebovat hello vysokorychlostní výpočty při zachování stejné disk operačního systému.  edice systému Windows Server 2016 Hello DSVM dodává předinstalované GPU ovladače, architektury a GPU verzi hello hloubkové učení algoritmy. Na hello Linux, přímým učení na grafického procesoru je povolen pouze na hello [datové vědy virtuálního počítače pro Linux (Ubuntu) edici](http://aka.ms/dsvm/ubuntu). Ubuntu/Windows-2016 hello ve verzi datové vědy VM toonon grafického procesoru na základě virtuálního počítače Azure můžete nasadit v takovém případě budou všechna rozhraní hloubkové learning hello režimu záložní toohello procesoru. Dříve, pro Windows Server 2012 jsme publikována [hloubkové učení toolkit](http://aka.ms/dsvm/deeplearning) , ale nyní vám doporučujeme používat systém Windows Server 2016 pro Windows na základě hloubkové learning úlohy. na základě CentOS Linux Hello ve verzi hello DSVM obsahuje pouze hello procesoru sestavení některých hello hloubkové výukové nástroje (CNTK, Tensorflow, MXNet), ale nepochází předinstalované s hello GPU ovladače a rozhraní. 
 
-## <a name="whats-included-in-the-data-science-vm"></a>Co je součástí virtuálního počítače vědecké účely dat?
-Virtuální počítač vědecké účely dat má mnoho oblíbených datové vědy a přímý výukové nástroje již nainstalován a nakonfigurován. Zahrnuje také nástroje, které usnadňují spolupráci s různými Azure data a analýzy produkty. Vám umožní zkoumat a vytvářet prediktivní modely v rozsáhlých datových sad pomocí R Server společnosti Microsoft nebo pomocí SQL Server 2016. Hostitele z dalších nástrojů od komunity s otevřeným zdrojem a od společnosti Microsoft jsou také zahrnuté, stejně jako ukázku kódu a poznámkových bloků. V následující tabulce rozepisuje a porovná hlavní komponenty zahrnuté v edicích Windows a Linux z virtuálního počítače vědecké účely Data.
+## <a name="whats-included-in-hello-data-science-vm"></a>Co je součástí hello vědecké účely Data virtuálního počítače?
+Hello datové vědy virtuální počítač má mnoho oblíbených datové vědy a přímý výukové nástroje již nainstalován a nakonfigurován. Zahrnuje také nástroje, které umožňují snadno toowork s různými Azure data a analýzy produkty. Vám umožní zkoumat a vytvářet prediktivní modely v rozsáhlých datových sad pomocí hello Microsoft R Server nebo pomocí SQL Server 2016. Hostitel z dalších nástrojů hello open source Community a od společnosti Microsoft jsou také zahrnuté, stejně jako ukázku kódu a poznámkových bloků. Hello následující tabulka rozepisuje a porovná hello hlavní součásti součástí hello Windows a Linux edicích hello datové vědy virtuálního počítače.
 
 
 | **Nástroj**                                                           | **Edice Windows** | **Edice systému Linux** |
@@ -84,7 +84,7 @@ Virtuální počítač vědecké účely dat má mnoho oblíbených datové věd
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Rozhraní .net framework | Ano | N |
 | PowerBI Desktop | Ano | N |
-| Sady SDK pro přístup k Azure a Cortana Intelligence Suite služeb | Ano | Ano |
+| Tooaccess sady SDK služby Azure a Cortana Intelligence Suite služeb | Ano | Ano |
 | **Přesun dat a nástroje pro správu** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Storage Explorer | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview) | Ano | Ano |
@@ -119,18 +119,18 @@ Virtuální počítač vědecké účely dat má mnoho oblíbených datové věd
 
 
 
-## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Jak začít pracovat s virtuálním Počítačem Windows dat vědecké účely
-* Vytvořit instanci požadovaného edice Windows DSVM přechodem na
+## <a name="how-tooget-started-with-hello-windows-data-science-vm"></a>Jak tooget pracovat s hello virtuální počítač s Windows dat vědecké účely
+* Vytvořte instanci edice Windows DSVM hello potřeby tak, že přejdete na
   * [Windows Server 2016 na základě DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm)
   
   nebo 
   * [Windows Server 2012 na základě DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) 
-* Klikněte **získat IT teď** tlačítko.
-* Přihlásit se k virtuálnímu počítači pomocí vzdálené plochy s použitím přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
-* Pokud chcete zjistit a spusťte nástroje dostupné, klikněte **spustit** nabídky.
+* Klikněte na tlačítko hello **získat IT teď** tlačítko.
+* Přihlaste se toohello virtuálních počítačů z vzdálené plochy pomocí přihlašovacích údajů hello jste zadali při vytvoření hello virtuálních počítačů.
+* toodiscover a spuštění nástroje hello k dispozici, klikněte na tlačítko hello **spustit** nabídky.
 
-## <a name="get-started-with-the-linux-data-science-vm"></a>Začínáme s virtuálního počítače s Linuxem dat vědecké účely
-* Vytvořit instanci požadovaného edice Linux DSVM tak, že přejdete na 
+## <a name="get-started-with-hello-linux-data-science-vm"></a>Začínáme s hello virtuálního počítače s Linuxem dat vědecké účely
+* Vytvořit instanci požadovaného hello Linux DSVM edice přechodem příliš
   * [Ubuntu na základě DSVM](http://aka.ms/dsvm/ubuntu)
 
   nebo
@@ -138,17 +138,17 @@ Virtuální počítač vědecké účely dat má mnoho oblíbených datové věd
   * [OpenLogic CentOS na základě DSVM](http://aka.ms/dsvm/centos)
 
   
-* Klikněte **ho získat** tlačítko.
-* Přihlaste se k virtuálnímu počítači z klienta SSH, jako je například Putty nebo příkaz SSH, pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
-* V řádku prostředí zadejte dsvm. Další informace.
-* Grafické stolní počítač, stáhněte si klienta X2Go pro vaše klientská platforma [sem](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) a postupujte podle pokynů v dokumentu virtuálního počítače s Linuxem datové vědy [zřízení virtuálního počítače Linux datové vědy](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* Klikněte na tlačítko hello **ho získat** tlačítko.
+* Přihlaste se toohello virtuálních počítačů z klienta SSH, jako je například Putty nebo příkaz SSH, pomocí přihlašovacích údajů hello jste zadali při vytvoření hello virtuálních počítačů.
+* V řádku prostředí hello zadejte dsvm. Další informace.
+* Grafické stolní počítač, stáhněte si hello X2Go klienta pro vaše klientská platforma [sem](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) a postupujte podle pokynů hello v dokumentu virtuálního počítače s Linuxem datové vědy hello [zřídit hello Linux datové vědy virtuálního počítače](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="for-the-windows-data-science-vm"></a>Pro vědecké zpracování dat systému Windows virtuálního počítače
-* Další informace o tom, jak spustit určité nástroje, které jsou k dispozici na verzi systému Windows najdete v tématu [zřízení virtuálního počítače Microsoft Data vědecké účely](machine-learning-data-science-provision-vm.md) a
-* Další informace o tom, jak provádět různé úlohy, které jsou potřebné pro svůj projekt vědecké účely data na virtuálním počítači Windows najdete v tématu [deset způsobů, jak na vědecké zpracování dat virtuálního počítače](machine-learning-data-science-vm-do-ten-things.md).
+### <a name="for-hello-windows-data-science-vm"></a>Pro virtuální počítač s Windows datové vědy hello
+* Další informace o způsobu nástroje dostupné ve verzi Windows hello toorun konkrétní najdete v tématu [hello zřídit virtuální počítač Microsoft Data vědecké účely](machine-learning-data-science-provision-vm.md) a
+* Další informace o tom, jak tooperform různé úlohy, které jsou potřebné pro svůj projekt vědecké účely data na hello virtuální počítač s Windows, najdete v části [deset způsobů, jak na hello vědecké zpracování dat virtuálního počítače](machine-learning-data-science-vm-do-ten-things.md).
 
-### <a name="for-the-linux-data-science-vm"></a>Pro Linux datové vědy virtuálních počítačů
-* Další informace o tom, jak spustit určité nástroje, které jsou k dispozici na verzi systému Linux najdete v tématu [zřízení virtuálního počítače Linux datové vědy](machine-learning-data-science-linux-dsvm-intro.md).
-* Návod, který ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem najdete v tématu [vědecké zpracování dat na datové vědě virtuální počítač Linux](machine-learning-data-science-linux-dsvm-walkthrough.md).
+### <a name="for-hello-linux-data-science-vm"></a>Pro hello virtuálního počítače s Linuxem dat vědecké účely
+* Další informace o jak nástroje dostupné ve verzi systému Linux hello toorun konkrétní najdete v tématu [zřídit hello Linux datové vědy virtuální počítač](machine-learning-data-science-linux-dsvm-intro.md).
+* Návod, který ukazuje, jak tooperform několik běžných vědecké zpracování dat úlohy s hello virtuálního počítače s Linuxem najdete v tématu [vědecké zpracování dat na hello Linux datové vědy virtuální počítač](machine-learning-data-science-linux-dsvm-walkthrough.md).
 

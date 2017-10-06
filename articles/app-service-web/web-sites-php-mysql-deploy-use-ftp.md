@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace v PHP-MySQL ve službě Azure App Service a nasazení přes FTP"
-description: "Kurz ukazuje, jak vytvořit webovou aplikaci PHP, která ukládá data v MySQL a používání FTP nasazení do Azure."
+title: "aaaCreate PHP-MySQL, webová aplikace ve službě Azure App Service a nasazení pomocí protokolu FTP"
+description: "Kurz, který ukazuje, jak toocreate PHP webová aplikace, která ukládá data v MySQL a používání tooAzure nasazení FTP."
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
@@ -14,66 +14,66 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: d428dffc6b810a692be0ec39a5f9cca05f5439e3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4d3b56a8ac63d0eba0dc0aec1b62e6d12f601bf1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-ftp"></a>Vytvoření webové aplikace v PHP-MySQL ve službě Azure App Service a nasazení přes FTP
-Tento kurz ukazuje, jak vytvořit webovou aplikaci PHP MySQL a jak se dá nasadit pomocí protokolu FTP. Tento kurz předpokládá, že máte [PHP][install-php], [MySQL][install-mysql], webového serveru a klienta v počítači nainstalována. Pokyny v tomto kurzu platí pro všechny operační systémy, včetně systému Windows, Mac a Linux. Po dokončení tohoto průvodce, budete mít webovou aplikaci PHP nebo MySQL běžící v Azure.
+Tento kurz ukazuje, jak toocreate PHP-MySQL, webová aplikace a jak toodeploy pomocí služby FTP. Tento kurz předpokládá, že máte [PHP][install-php], [MySQL][install-mysql], webového serveru a klienta v počítači nainstalována. Hello pokyny v tomto kurzu platí pro všechny operační systémy, včetně systému Windows, Mac a Linux. Po dokončení tohoto průvodce, budete mít webovou aplikaci PHP nebo MySQL běžící v Azure.
 
 Co se dozvíte:
 
-* Jak vytvořit webovou aplikaci a databázi MySQL pomocí portálu Azure. Vzhledem k PHP je ve výchozím nastavení povolena ve službě Web Apps, nic speciální je vyžadovaná pro spouštění vašeho kódu PHP.
-* Postup publikování aplikace do Azure pomocí protokolu FTP.
+* Jak hello toocreate webovou aplikaci a MySQL databáze pomocí portálu Azure. Vzhledem k tomu, že jazyk PHP je ve výchozím nastavení povolena ve službě Web Apps, nic speciální je požadovaná toorun kódu PHP.
+* Jak toopublish tooAzure aplikace pomocí serveru FTP.
 
-Podle tohoto kurzu vytvoříte registrace jednoduché webové aplikace v jazyce PHP. Aplikace bude hostován ve webové aplikaci. Zde je snímek obrazovky dokončené aplikace:
+Podle tohoto kurzu vytvoříte registrace jednoduché webové aplikace v jazyce PHP. aplikace Hello bude hostován ve webové aplikaci. Zde je snímek obrazovky aplikace hello dokončena:
 
 ![Webové stránky Azure PHP][running-app]
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací k účtu, přejděte na [vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek. 
+> Pokud chcete začít s Azure App Service před registrací účtu tooget, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek. 
 > 
 > 
 
 ## <a name="create-a-web-app-and-set-up-ftp-publishing"></a>Vytvoření webové aplikace a nastavení publikování FTP
-Postupujte podle těchto kroků můžete vytvořit webovou aplikaci a databáze MySQL:
+Webové aplikace a databáze MySQL, postupujte podle těchto kroků toocreate:
 
-1. Přihlášení k [portál Azure][management-portal].
-2. Klikněte **+ nový** ikona nahoře vlevo na portálu Azure.
+1. Přihlášení toohello [portálu Azure][management-portal].
+2. Klikněte na tlačítko hello **+ nový** ikonu na hello horní pravé hello portálu Azure.
    
     ![Vytvořit nový web Azure][new-website]
-3. V typu vyhledávání **Web app + MySQL** a klikněte na **Web app + MySQL**.
+3. V typu vyhledávání hello **Web app + MySQL** a klikněte na **Web app + MySQL**.
    
     ![Vlastní vytvořit novou webovou stránku][custom-create]
-4. Klikněte na možnost **Vytvořit**. Zadejte název jedinečné app service, platný název pro skupinu prostředků a nový plán služby.
+4. Klikněte na možnost **Vytvořit**. Zadejte název jedinečné app service, platný název pro skupinu prostředků hello a nový plán služby.
    
     ![Název skupiny prostředků sady][resource-group]
-5. Zadejte hodnoty pro novou databázi, včetně, kterým Odsouhlasíte právní podmínky.
+5. Zadejte hodnoty pro novou databázi, včetně, kterým Odsouhlasíte toohello právní podmínky.
    
     ![Vytvořit novou databázi MySQL][new-mysql-db]
-6. Po vytvoření webové aplikace, zobrazí se nové okno aplikace služby.
+6. Po vytvoření webové aplikace hello, zobrazí se okno hello nové aplikace služby.
 7. Klikněte na **nastavení** > **přihlašovací údaje nasazení**. 
    
     ![Nastavení přihlašovacích údajů nasazení][set-deployment-credentials]
-8. Pokud chcete povolit publikování FTP, zadejte uživatelské jméno a heslo. Uložení přihlašovacích údajů a poznamenejte si uživatelské jméno a heslo, které vytvoříte.
+8. tooenable publikování FTP, je nutné zadat uživatelské jméno a heslo. Uložit pověření hello a poznamenejte si hello uživatelské jméno a heslo, které vytvoříte.
    
     ![Vytvořit přihlašovací údaje pro publikování][portal-ftp-username-password]
 
 ## <a name="build-and-test-your-app-locally"></a>Vytvoření a testování vaší aplikace místně
-Registrace aplikace je jednoduchou aplikaci PHP, která umožňuje zaregistrovat pro událost tím, že poskytuje vaše jméno a e-mailovou adresu. Zobrazí se informace o předchozích rejstříkem v tabulce. Registrační informace jsou uloženy v databázi MySQL. Aplikace se skládá z dva soubory:
+Registrace aplikace Hello je jednoduchou aplikaci PHP, která vám umožní tooregister pro událost tím, že poskytuje vaše jméno a e-mailovou adresu. Zobrazí se informace o předchozích rejstříkem v tabulce. Registrační informace jsou uloženy v databázi MySQL. Hello aplikace se skládá z dva soubory:
 
 * **index.php**: Zobrazí formulář pro registraci a tabulku obsahující informace osob žádajících o registraci.
-* **CreateTable.php**: vytvoří tabulku MySQL pro aplikaci. Tento soubor se dají použít jenom jednou.
+* **CreateTable.php**: vytvoří tabulku hello MySQL pro aplikace hello. Tento soubor se dají použít jenom jednou.
 
-Sestavení a spuštění aplikace místně, postupujte podle následujících kroků. Všimněte si, že tento postup předpokládá, máte PHP, MySQL a webový server nastavit na místním počítači a pokud jste povolili [PDO rozšíření pro databázi MySQL][pdo-mysql].
+toobuild a spuštění hello aplikaci místně, postupujte podle následujících kroků hello. Všimněte si, že tento postup předpokládá, že máte PHP, MySQL a webový server nastavit na místním počítači, a že je povoleno hello [PDO rozšíření pro databázi MySQL][pdo-mysql].
 
-1. Vytvoření databáze MySQL názvem `registration`. Můžete to udělat z příkazového řádku MySQL pomocí tohoto příkazu:
+1. Vytvoření databáze MySQL názvem `registration`. Můžete to udělat z hello MySQL příkazového řádku pomocí tohoto příkazu:
    
         mysql> create database registration;
 2. V kořenovém adresáři váš webový server, vytvořte složku s názvem `registration` a vytvořit dva soubory v ní – jednu s názvem `createtable.php` a jednu s názvem `index.php`.
-3. Otevřete `createtable.php` soubor v textovém editoru nebo IDE a přidejte následující kód. Tento kód se použije k vytvoření `registration_tbl` tabulky v `registration` databáze.
+3. Otevřete hello `createtable.php` soubor v textovém editoru nebo IDE a přidejte následující kód hello. Tento kód bude hello použité toocreate `registration_tbl` tabulky v hello `registration` databáze.
    
         <?php
         // DB connection info
@@ -99,11 +99,11 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         ?>
    
    > [!NOTE]
-   > Budete muset aktualizovat hodnoty <code>$user</code> a <code>$pwd</code> s vaší místní MySQL uživatelské jméno a heslo.
+   > Budete potřebovat tooupdate hello hodnoty pro <code>$user</code> a <code>$pwd</code> s vaší místní MySQL uživatelské jméno a heslo.
    > 
    > 
-4. Otevřete webový prohlížeč a přejděte do [http://localhost/registration/createtable.php][localhost-createtable]. Tím se vytvoří `registration_tbl` tabulky v databázi.
-5. Otevřete **index.php** soubor v textovém editoru nebo IDE a přidat základní HTML a CSS kódu stránky (v následujících krocích se přidají kód PHP.).
+4. Otevřete webový prohlížeč a vyhledejte příliš[http://localhost/registration/createtable.php][localhost-createtable]. Tím se vytvoří hello `registration_tbl` tabulky v databázi hello.
+5. Otevřete hello **index.php** soubor v textovém editoru nebo IDE a přidejte hello kód základní HTML a CSS hello stránky (v následujících krocích se přidají hello kódu PHP.).
    
         <html>
         <head>
@@ -124,7 +124,7 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         </head>
         <body>
         <h1>Register here!</h1>
-        <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+        <p>Fill in your name and email address, then click <strong>Submit</strong> tooregister.</p>
         <form method="post" action="index.php" enctype="multipart/form-data" >
               Name  <input type="text" name="name" id="name"/></br>
               Email <input type="text" name="email" id="email"/></br>
@@ -135,14 +135,14 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         ?>
         </body>
         </html>
-6. V rámci značky PHP přidejte kód PHP pro připojení k databázi.
+6. V rámci hello PHP značky přidejte kód PHP pro připojení toohello databáze.
    
         // DB connection info
         $host = "localhost";
         $user = "user name";
         $pwd = "password";
         $db = "registration";
-        // Connect to database.
+        // Connect toodatabase.
         try {
             $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
             $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -152,10 +152,10 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         }
    
    > [!NOTE]
-   > Znovu, budete muset aktualizovat hodnoty <code>$user</code> a <code>$pwd</code> s vaší místní MySQL uživatelské jméno a heslo.
+   > Znovu, budete potřebovat tooupdate hello hodnoty pro <code>$user</code> a <code>$pwd</code> s vaší místní MySQL uživatelské jméno a heslo.
    > 
    > 
-7. Následující kód připojení databáze přidáte kód pro vložení registrační informace do databáze.
+7. Následující kód připojení databáze hello přidáte kód pro vložení registrační informace do databáze hello.
    
         if(!empty($_POST)) {
         try {
@@ -176,7 +176,7 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         }
         echo "<h3>Your're registered!</h3>";
         }
-8. Nakonec následující kód výše, přidejte kód pro načítání dat z databáze.
+8. Nakonec následující kód hello výše, přidejte kód pro načítání dat z databáze hello.
    
         $sql_select = "SELECT * FROM registration_tbl";
         $stmt = $conn->query($sql_select);
@@ -197,37 +197,37 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
             echo "<h3>No one is currently registered.</h3>";
         }
 
-Nyní můžete procházet k [http://localhost/registration/index.php] [ localhost-index] k testování aplikace.
+Nyní můžete procházet příliš[http://localhost/registration/index.php] [ localhost-index] tootest hello aplikace.
 
 ## <a name="get-mysql-and-ftp-connection-information"></a>Získat informace o připojení databáze MySQL a FTP
-Pro připojení k databázi MySQL, která běží ve službě Web Apps, vaše bude potřebovat informace o připojení. Chcete-li získat informace o připojení databáze MySQL, postupujte takto:
+databáze MySQL toohello tooconnect, které běží ve službě Web Apps, vaše bude potřebovat hello informace o připojení. tooget informace o připojení databáze MySQL, postupujte takto:
 
-1. Ze služby app service okně webové aplikace klikněte na odkaz skupiny prostředků:
+1. Ze služby aplikace hello okně webové aplikace klikněte na odkaz skupinu prostředků hello:
    
     ![Vyberte skupinu prostředků][select-resourcegroup]
-2. Od vaší skupiny prostředků klikněte na databázi:
+2. Od vaší skupiny prostředků klikněte na databázi hello:
    
     ![Vyberte databázi][select-database]
-3. Z databáze souhrn, vyberte **nastavení** > **vlastnosti**.
+3. Z databáze hello souhrn, vyberte **nastavení** > **vlastnosti**.
    
     ![Výběr vlastností][select-properties]
-4. Poznamenejte si hodnoty pro `Database`, `Host`, `User Id`, a `Password`.
+4. Poznamenejte si hodnoty hello `Database`, `Host`, `User Id`, a `Password`.
    
     ![Poznámka: vlastnosti][note-properties]
-5. Z vaší webové aplikace, klikněte **stažení profilu publikování** odkaz v pravém dolním rohu stránky:
+5. Z vaší webové aplikace, klikněte na tlačítko hello **stažení profilu publikování** odkaz na hello pravém dolním rohu stránky hello:
    
     ![Stažení profilu publikování][download-publish-profile]
-6. Otevřete `.publishsettings` souboru v editoru XML. 
-7. Najít `<publishProfile >` element s `publishMethod="FTP"` který vypadá podobně jako tento:
+6. Otevřete hello `.publishsettings` souboru v editoru XML. 
+7. Najde hello `<publishProfile >` element s `publishMethod="FTP"` toto vypadá podobně jako toothis:
    
         <publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
             ...
         </publishProfile>
 
-Poznamenejte si `publishUrl`, `userName`, a `userPWD` atributy.
+Poznamenejte si hello `publishUrl`, `userName`, a `userPWD` atributy.
 
 ## <a name="publish-your-app"></a>Publikování aplikace
-Po testování vaší aplikace místně, můžete ji publikujete do webové aplikace pomocí protokolu FTP. Však musíte nejprve aktualizovat informace o připojení databáze v aplikaci. Pomocí informací o připojení databáze jste dříve získali (v **získat MySQL a FTP informace o připojení** část), aktualizujte následující informace v **i** `createdatabase.php` a `index.php` soubory s příslušnými hodnotami:
+Po testování vaší aplikace místně, můžete ho publikovat tooyour webové aplikace pomocí protokolu FTP. Nicméně je nutné nejprve tooupdate informací o připojení databáze hello v aplikaci hello. Pomocí informací připojení databáze hello jste dříve získali (v hello **získat MySQL a FTP informace o připojení** část), aktualizace hello následující informace v **i** hello `createdatabase.php` a `index.php` soubory s hello příslušné hodnoty:
 
     // DB connection info
     $host = "value of Data Source";
@@ -235,19 +235,19 @@ Po testování vaší aplikace místně, můžete ji publikujete do webové apli
     $pwd = "value of Password";
     $db = "value of Database";
 
-Nyní jste připraveni k publikování aplikace pomocí protokolu FTP.
+Nyní jste připraveni toopublish vaší aplikace pomocí protokolu FTP.
 
 1. Otevřete váš klient FTP podle volby.
-2. Zadejte *část názvu hostitele* z `publishUrl` atribut uvedených výše do vašeho klienta FTP.
-3. Zadejte `userName` a `userPWD` do vašeho klienta FTP beze změny atributů uvedených výše.
+2. Zadejte hello *část názvu hostitele* z hello `publishUrl` atribut uvedených výše do vašeho klienta FTP.
+3. Zadejte hello `userName` a `userPWD` do vašeho klienta FTP beze změny atributů uvedených výše.
 4. Navažte připojení.
 
-Po připojení bude moci nahrávání a stahování souborů podle potřeby. Ujistěte se, že jsou nahrávání souborů do kořenového adresáře, který je `/site/wwwroot`.
+Po připojení je bude možné tooupload a v případě potřeby stáhnout soubory. Ujistěte se, že nahráváte soubory toohello kořenový adresář, který je `/site/wwwroot`.
 
-Po nahrání obě `index.php` a `createtable.php`, přejděte do **http://[site name].azurewebsites.net/createtable.php** k vytvoření databáze MySQL tabulky pro aplikaci, pak přejděte do **http://[site name]. azurewebsites.NET/index.php** začít používat aplikaci.
+Po nahrání obě `index.php` a `createtable.php`, procházet příliš**http://[site name].azurewebsites.net/createtable.php** toocreate hello MySQL tabulky pro hello aplikaci a potom vyhledejte příliš**http://[site název ].azurewebsites.net/index.php** toobegin pomocí aplikace hello.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu hello [středisku pro vývojáře PHP](/develop/php/).
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-mysql]: http://dev.mysql.com/doc/refman/5.6/en/installing.html

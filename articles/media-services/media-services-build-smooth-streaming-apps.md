@@ -1,6 +1,6 @@
 ---
-title: Funkce Smooth Streaming kurzu aplikace Windows Store | Microsoft Docs
-description: "Naučte se používat Azure Media Services k vytvoření aplikace Windows Store jazyka C# s ovládacím prvkem XML MediaElement, který datový proud Smooth přehrávání obsahu."
+title: aaaSmooth Streaming Windows Store aplikace kurzu | Microsoft Docs
+description: "Zjistěte, jak řídit toouse Azure Media Services toocreate aplikace Windows Store jazyka C# s XML MediaElement tooplayback datový proud Smooth obsah."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: c9bb3b1915543fea3561cb309f55c4e8a74ded6d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b02aa2c7f68fe22a23ea846d72fdd23bfba2b19c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit funkce Smooth Streaming aplikaci pro Windows Store
+# <a name="how-toobuild-a-smooth-streaming-windows-store-application"></a>Jak tooBuild technologie Smooth Streaming aplikaci pro Windows Store
 
-Technologie Smooth Streaming klienta SDK pro Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které můžete přehrát na vyžádání i živé vysílání funkce Smooth Streaming obsah. Kromě základních přehrávání technologie Smooth Streaming obsahu, že sada SDK poskytuje také bohaté funkce, jako jsou Microsoft PlayReady ochrany, kvality úrovně omezení, Live formátu DVR, zvuk stream přepínání, naslouchá stav aktualizace (jako jsou například změny úrovně kvality) a chybové události a tak dále. Další informace o podporovaných funkcích najdete v tématu [poznámky k verzi](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [Player Framework pro Windows 8](http://playerframework.codeplex.com/). 
+Hello technologie Smooth Streaming klienta SDK pro Windows 8 povolí vývojáři toobuild aplikace Windows Store můžete přehrát na vyžádání i živé vysílání funkce Smooth Streaming obsah. Kromě základních přehrávání toohello funkce Smooth Streaming obsahu, hello SDK také poskytuje bohaté funkce jako je Microsoft PlayReady ochrany, omezení úrovně kvality, živé formátu DVR, zvukový datový proud přepínání, naslouchá stav aktualizací (jako jsou například změny úrovně kvality ) a chybové události a tak dále. Další informace podporované hello funkcí najdete v tématu hello [poznámky k verzi](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [Player Framework pro Windows 8](http://playerframework.codeplex.com/). 
 
 Tento kurz obsahuje čtyři lekce:
 
 1. Vytvořte základní technologie Smooth Streaming aplikace úložiště
-2. Přidat posuvníku k řízení průběh média
+2. Přidat posuvníku panelu tooControl hello průběh média
 3. Vyberte vysílání funkce Smooth Streaming datové proudy
 4. Vyberte vysílání funkce Smooth Streaming sleduje
 
 ## <a name="prerequisites"></a>Požadavky
 * Windows 8 32bitové nebo 64bitové verze. Můžete získat [zkušební verze Windows 8 Enterprise](http://msdn.microsoft.com/evalcenter/jj554510.aspx) z webu MSDN.
-* Visual Studio 2012 nebo Visual Studio Express 2012 (nebo novější). Můžete získat zkušební verzi z [zde](http://www.microsoft.com/visualstudio/11/downloads).
+* Visual Studio 2012 nebo Visual Studio Express 2012 (nebo novější). Můžete získat zkušební verzi hello z [zde](http://www.microsoft.com/visualstudio/11/downloads).
 * [Microsoft klienta funkce Smooth Streaming SDK pro systém Windows 8](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
-Dokončené řešení pro každé lekce si můžete stáhnout z ukázky kódu vývojáře MSDN (Galerie kódů): 
+Hello dokončit řešení pro každé lekce si můžete stáhnout z ukázky kódu vývojáře MSDN (Galerie kódů): 
 
 * [Lekce 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – jednoduchý systém Windows 8 funkce Smooth Streaming Media Player 
 * [Lekce 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – jednoduchý systém Windows 8 funkce Smooth Streaming Media Player pomocí jezdce lze ovládací prvek, 
@@ -45,22 +45,22 @@ Dokončené řešení pro každé lekce si můžete stáhnout z ukázky kódu v�
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lekce 1: Vytvoření základní technologie Smooth Streaming aplikace úložiště
 
-V této lekci vytvoříte aplikaci pro Windows Store s ovládacím prvkem MediaElement datový proud Smooth přehrávání obsahu.  Běžící aplikaci vypadá takto:
+V této lekci vytvoříte aplikaci pro Windows Store s MediaElement řízení tooplay Smooth datového proudu obsahu.  spuštěné aplikace Hello vypadá takto:
 
 ![Příklad aplikace Smooth Streaming Windows Store][PlayerApplication]
 
-Další informace o vývoji aplikací Windows Store najdete v tématu [vývoji kvalitních aplikací pro Windows 8](http://msdn.microsoft.com/windows/apps/br229512.aspx). V této lekci obsahuje následující postupy:
+Další informace o vývoji aplikací Windows Store najdete v tématu [vývoji kvalitních aplikací pro Windows 8](http://msdn.microsoft.com/windows/apps/br229512.aspx). V této lekci obsahuje hello následující postupy:
 
 1. Vytvoření projektu Windows Store
-2. Návrh uživatelského rozhraní (XAML)
-3. Úprava souboru kódu
-4. Kompilace a testování aplikace
+2. Návrh hello uživatelské rozhraní (XAML)
+3. Úprava souboru hello kódu
+4. Kompilace a testování aplikace hello
 
-**Chcete-li vytvořit projekt Windows Store**
+**toocreate projekt Windows Store**
 
 1. Spusťte Visual Studio 2012 nebo novějším.
-2. V nabídce **Soubor** klikněte na tlačítko **Nový** a pak klikněte na tlačítko **Projekt**.
-3. Z tohoto dialogového okna Nový projekt zadejte nebo vyberte tyto hodnoty:
+2. Z hello **soubor** nabídky, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
+3. Z dialogového okna Nový projekt hello typu nebo vyberte hello následující hodnoty:
 
 | Name (Název) | Hodnota |
 | --- | --- |
@@ -73,10 +73,10 @@ Další informace o vývoji aplikací Windows Store najdete v tématu [vývoji k
 
 1. Klikněte na **OK**.
 
-**Chcete-li přidat odkaz na technologie Smooth Streaming Client SDK**
+**tooadd toohello referenční dokumentace technologie Smooth Streaming Client SDK**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **SSPlayer**a potom klikněte na **přidat odkaz na**.
-2. Zadejte nebo vyberte tyto hodnoty:
+2. Zadejte nebo vyberte hello následující hodnoty:
 
 | Name (Název) | Hodnota |
 | --- | --- |
@@ -85,12 +85,12 @@ Další informace o vývoji aplikací Windows Store najdete v tématu [vývoji k
 
 1. Klikněte na **OK**. 
 
-Po přidání odkazů, je nutné vybrat cílovou platformu (x64 nebo x86), přidávání odkazů nebude fungovat pro jakýkoli procesor platformy konfiguraci.  V Průzkumníku řešení zobrazí se žlutý označit upozornění pro tyto přidat odkazy.
+Po přidání hello odkazy, je nutné vybrat hello cílové platformy (x64 nebo x86), přidávání odkazů nebude fungovat pro jakýkoli procesor platformy konfiguraci.  V Průzkumníku řešení zobrazí se žlutý označit upozornění pro tyto přidat odkazy.
 
-**Při návrhu player uživatelského rozhraní**
+**toodesign hello player uživatelského rozhraní**
 
-1. V Průzkumníku řešení poklikejte na **MainPage.xaml** a otevře se v zobrazení návrhu.
-2. Vyhledejte  **&lt;mřížky&gt;**  a  **&lt;/Grid&gt;**  značky souboru XAML a vložte následující kód mezi dvě značky:
+1. V Průzkumníku řešení poklikejte na **MainPage.xaml** tooopen v návrhu hello zobrazení.
+2. Vyhledejte hello  **&lt;mřížky&gt;**  a  **&lt;/Grid&gt;**  značky hello souboru XAML a vložte následující hello kód mezi hello dvě značky:
 
          <Grid.RowDefinitions>
 
@@ -135,27 +135,27 @@ Po přidání odkazů, je nutné vybrat cílovou platformu (x64 nebo x86), přid
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
    
-   Prvek MediaElement se používá k přehrávání média. Posuvník s názvem sliderProgress se použije v další lekce k řízení průběh média.
-3. Stiskněte klávesu **CTRL + S** k uložení souboru.
+   Hello prvek MediaElement je použité tooplayback média. Hello posuvník s názvem sliderProgress se použije probíhá hello Další lekce toocontrol hello média.
+3. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-Ovládací prvek MediaElement nepodporuje vysílání funkce Smooth Streaming obsahu out-of-box. Pokud chcete povolit podporu technologie Smooth Streaming, je nutné zaregistrovat obslužné rutiny byte – datový proud Smooth Streaming příponu názvu souboru a typ MIME.  Pokud chcete zaregistrovat, můžete použít metodu MediaExtensionManager.RegisterByteStremHandler Windows.Media oboru názvů.
+Hello prvek MediaElement nepodporuje vysílání funkce Smooth Streaming obsahu out-of-box. Podpora technologie Smooth Streaming tooenable hello je nutné zaregistrovat obslužná rutina hello technologie Smooth Streaming byte-stream příponu názvu souboru a typ MIME.  tooregister, použijte metodu MediaExtensionManager.RegisterByteStremHandler hello hello Windows.Media oboru názvů.
 
-V tomto souboru XAML některé obslužné rutiny událostí jsou přidruženy k ovládacích prvků.  Je nutné zadat tyto obslužné rutiny událostí.
+V tomto souboru XAML některé obslužné rutiny událostí jsou přidruženy k hello ovládací prvky.  Je nutné zadat tyto obslužné rutiny událostí.
 
-**K úpravě souboru kódu**
+**toomodify hello souboru kódu**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Na začátek souboru přidejte následující příkaz using:
+2. Horní hello hello souboru přidejte následující hello pomocí příkazu:
    
         using Windows.Media;
-3. Na začátku **MainPage** třídy, přidejte následující datový člen:
+3. Na začátku hello hello **MainPage** třídy, přidejte následující – datový člen hello:
    
          private MediaExtensionManager extensions = new MediaExtensionManager();
-4. Na konci **MainPage** konstruktoru, přidejte následující dva řádky:
+4. Na konci hello hello **MainPage** konstruktoru, přidejte následující dva řádky hello:
    
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
-5. Na konci **MainPage** třídy, vložte následující kód:
+5. Na konci hello hello **MainPage** třídy, vložte následující kód hello:
    
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -182,7 +182,7 @@ V tomto souboru XAML některé obslužné rutiny událostí jsou přidruženy k 
          }
          else
          {
-             txtStatus.Text = "Click the Play button to play the media source.";
+             txtStatus.Text = "Click hello Play button tooplay hello media source.";
          }
          }
          private void btnStop_Click(object sender, RoutedEventArgs e)
@@ -194,68 +194,68 @@ V tomto souboru XAML některé obslužné rutiny událostí jsou přidruženy k 
          private void sliderProgress_PointerPressed(object sender, PointerRoutedEventArgs e)
          {
 
-         txtStatus.Text = "Seek to position " + sliderProgress.Value;
+         txtStatus.Text = "Seek tooposition " + sliderProgress.Value;
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
          }
          # endregion
 
-Obslužné rutiny události sliderProgress_PointerPressed je definována v tomto poli.  Existují další funguje udělat, aby ho pracuje, získat, který se bude vztahovat v další lekci tohoto kurzu.
-6. Stiskněte klávesu **CTRL + S** k uložení souboru.
+obslužné rutiny události sliderProgress_PointerPressed Hello je definována v tomto poli.  Existují další tooget toodo funguje ho práce, která se bude vztahovat v další lekci hello tohoto kurzu.
+6. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-Dokončení kódu na pozadí se vypadat například takto:
+Hello souboru kódu dokončení hello se vypadat takto:
 
 ![Codeview v aplikaci Visual Studio o technologie Smooth Streaming Windows Store][CodeViewPic]
 
-**Pro zkompilování a testování aplikace**
+**toocompile a testování aplikace hello**
 
-1. Z **sestavení** nabídky, klikněte na tlačítko **nástroje Configuration Manager**.
-2. Změna **platforma Active řešení** tak, aby odpovídaly vývojové platformy.
-3. Stiskněte klávesu **F6** kompilace projektu. 
-4. Stisknutím klávesy **F5** spusťte aplikaci.
-5. V horní části aplikace můžete buď použít výchozí nastavení adresy URL technologie Smooth Streaming nebo zadejte jiný. 
-6. Klikněte na tlačítko **nastavit zdroj**. Protože **automatické přehrávání** je povoleno ve výchozím nastavení, se automaticky přehrání média.  Můžete řídit média pomocí **přehrání**, **pozastavení** a **Zastavit** tlačítka.  Můžete ovládat svazku média pomocí svislé posuvníku.  Ale vodorovné posuvník pro řízení průběh média není plně dosud implementována. 
+1. Z hello **sestavení** nabídky, klikněte na tlačítko **nástroje Configuration Manager**.
+2. Změna **platforma Active řešení** toomatch vývojové platformy.
+3. Stiskněte klávesu **F6** toocompile hello projektu. 
+4. Stiskněte klávesu **F5** toorun hello aplikace.
+5. V horní části hello hello aplikace můžete použít výchozí hello adresy URL technologie Smooth Streaming nebo zadejte jiný. 
+6. Klikněte na tlačítko **nastavit zdroj**. Protože **automatické přehrávání** je ve výchozím nastavení, hello média se přehrát automaticky povolené.  Můžete řídit hello média pomocí hello **přehrání**, **pozastavení** a **Zastavit** tlačítka.  Můžete ovládat svazku hello média pomocí posuvníku svislé hello.  Ale hello vodorovné posuvník pro řízení média průběh ještě není implementován plně hello. 
 
-Dokončili jste lesson1.  V této lekci použijte ovládací prvek MediaElement k přehrávání obsahu technologie Smooth Streaming.  V další lekci přidáte jezdce k řízení průběh obsah Smooth Streaming.
+Dokončili jste lesson1.  V této lekci použijete tooplayback řízení MediaElement technologie Smooth Streaming obsah.  V další lekci hello přidáte posuvníku toocontrol hello průběh hello technologie Smooth Streaming obsah.
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lekce 2: Přidání posuvníku k řízení průběh média
+## <a name="lesson-2-add-a-slider-bar-toocontrol-hello-media-progress"></a>Lekce 2: Přidání posuvníku panelu tooControl hello průběh média
 
-V Lekce 1 jste vytvořili aplikaci pro Windows Store s ovládacím prvkem MediaElement XAML k přehrávání technologie Smooth Streaming mediální obsah.  Některé funkce základní média jako spuštění, zastavení nebo pozastavení pochází.  V této lekci přidáte ovládací prvek typu jezdec panelu do aplikace.
+V lekci 1 jste vytvořili aplikaci pro Windows Store MediaElement XAML řízení tooplayback technologie Smooth Streaming mediální obsah.  Některé funkce základní média jako spuštění, zastavení nebo pozastavení pochází.  V této lekci přidáte aplikace toohello posuvníku panelu ovládacího prvku.
 
-V tomto kurzu budeme používat časovač aktualizovat pozice posuvníku založené na aktuální pozici MediaElement ovládacího prvku.  Posuvník počáteční a koncová čas také je potřeba aktualizovat v případě živý obsah.  To může lépe ošetřit v události adaptivní zdroj aktualizace.
+V tomto kurzu budeme používat časovač tooupdate hello posuvníku pozice založené na aktuální pozici hello prvek MediaElement hello.  posuvník Hello začínat a končit čas také toobe potřeba aktualizovat v případě živý obsah.  To může lépe ošetřit hello adaptivní zdroj aktualizace události.
 
-Média zdroje jsou objekty, které generují data média.  Překladač zdroj přebírá adresu URL nebo bajtů datového proudu a vytvoří odpovídající médium zdroj pro tento obsah.  Překladač zdroj je standardní způsob pro aplikace, které chcete vytvořit médium zdroje. 
+Média zdroje jsou objekty, které generují data média.  překladač zdroj Hello přebírá adresu URL nebo bajtů datového proudu a vytvoří hello odpovídající médium zdroje pro obsah.  překladač zdroj Hello je standardní způsob hello zdroje média toocreate aplikace hello. 
 
-V této lekci obsahuje následující postupy:
+V této lekci obsahuje hello následující postupy:
 
-1. Zaregistrovat obslužná rutina technologie Smooth Streaming 
-2. Přidání obslužných rutin událostí na úrovni správce adaptivní zdroje
-3. Přidání obslužných rutin událostí na úrovni adaptivní zdroje
+1. Registraci obslužné rutiny technologie Smooth Streaming hello 
+2. Přidání obslužných rutin událostí na úrovni hello adaptivní zdroj manager
+3. Přidání obslužných rutin událostí na úrovni adaptivní zdroj hello
 4. Přidání obslužných rutin událostí MediaElement
 5. Přidat posuvníku panelu související kódu
-6. Kompilace a testování aplikace
+6. Kompilace a testování aplikace hello
 
-**K registraci obslužné rutiny byte – datový proud Smooth Streaming a předat propertyset**
+**tooregister hello technologie Smooth Streaming byte-stream obslužné rutiny a předejte jí hello propertyset**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Na začátek souboru přidejte následující příkaz using:
+2. Od začátku hello hello souboru, přidejte hello následující příkaz using:
 
         using Microsoft.Media.AdaptiveStreaming;
-3. Na začátku MainPage třídy, přidejte následující členy dat:
+3. Na hello začátku hello MainPage třídy, přidejte hello následující datové členy:
 
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
-4. Uvnitř **MainPage** konstruktoru, přidejte následující kód po **to. Inicializace Components();**  řádku a registrace kód napsaný v předchozí lekci řádky:
+4. Uvnitř hello **MainPage** konstruktoru, přidejte následující kód po hello hello **to. Inicializace Components();**  řádku a řádky kódu registrace hello napsané v předchozí lekci hello:
 
-        // Gets the default instance of AdaptiveSourceManager which manages Smooth 
+        // Gets hello default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
         adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
-        // Sets property key value to AdaptiveSourceManager default instance.
+        // Sets property key value tooAdaptiveSourceManager default instance.
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
-5. Uvnitř **MainPage** konstruktoru, upravte tyto dvě metody RegisterByteStreamHandler přidat stanovilo parametry:
+5. Uvnitř hello **MainPage** konstruktoru, upravte hello dva RegisterByteStreamHandler metody tooadd hello stanovilo parametry:
 
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
-         // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
+         // "text/xml" and "application/vnd.ms-ss" mime-types and pass hello propertyset. 
          // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
          extensions.RegisterByteStreamHandler(
 
@@ -269,15 +269,15 @@ V této lekci obsahuje následující postupy:
             ".ism", 
             "application/vnd.ms-sstr+xml", 
          propertySet);
-6. Stiskněte klávesu **CTRL + S** k uložení souboru.
+6. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-**Přidání obslužné rutiny událostí na úrovni správce adaptivní zdroje**
+**tooadd hello adaptivní zdroj manager obslužné rutiny událostí na úrovni**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Uvnitř **MainPage** třídy, přidejte následující datový člen:
+2. Uvnitř hello **MainPage** třídy, přidejte následující – datový člen hello:
    
      privátní adaptiveSource AdaptiveSource = null;
-3. Na konci **MainPage** třídy, přidejte následující obslužnou rutinu události:
+3. Na konci hello hello **MainPage** třídy, přidejte následující obslužné rutiny události hello:
    
          # region Adaptive Source Manager Level Events
          private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
@@ -287,19 +287,19 @@ V této lekci obsahuje následující postupy:
          }
 
          # endregion Adaptive Source Manager Level Events
-4. Na konci **MainPage** konstruktoru, přidejte následující řádek k odběru události open adaptivní zdroje:
+4. Na konci hello hello **MainPage** konstruktoru, přidejte následující řádek toosubscribe toohello adaptivní zdroj otevřete událostí hello:
    
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
-5. Stiskněte klávesu **CTRL + S** k uložení souboru.
+5. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-**Přidání obslužných rutin událostí na úrovni adaptivní zdroje**
+**obslužné rutiny událostí na úrovni tooadd adaptivní zdroje**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Uvnitř **MainPage** třídy, přidejte následující datový člen:
+2. Uvnitř hello **MainPage** třídy, přidejte následující – datový člen hello:
    
      privátní AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate;   privátní manifestu manifestObject;
-3. Na konci **MainPage** třídy, přidejte následující obslužné rutiny událostí:
+3. Na konci hello hello **MainPage** třídy, přidejte následující obslužné rutiny událostí hello:
 
          # region Adaptive Source Level Events
          private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
@@ -322,7 +322,7 @@ V této lekci obsahuje následující postupy:
          }
 
          # endregion Adaptive Source Level Events
-4. Na konci **mediaElement AdaptiveSourceOpened** metoda, přidejte následující kód k odběru události:
+4. Na konci hello hello **mediaElement AdaptiveSourceOpened** metoda, přidejte následující kód toosubscribe toohello události hello:
    
          adaptiveSource.ManifestReadyEvent +=
 
@@ -333,14 +333,14 @@ V této lekci obsahuje následující postupy:
          adaptiveSource.AdaptiveSourceFailedEvent += 
 
             mediaElement_AdaptiveSourceFailed;
-5. Stiskněte klávesu **CTRL + S** k uložení souboru.
+5. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-Stejné události jsou k dispozici na adaptivní zdroj Manager úrovni také, které lze použít pro zpracování funkce, které jsou společné pro všechny elementy média v aplikaci. Každý AdaptiveSource zahrnuje vlastní události a všechny události AdaptiveSource předána pod AdaptiveSourceManager.
+Hello stejné události jsou k dispozici na adaptivní zdroj Manager úrovni také, které lze použít pro zpracování funkce společné tooall média prvky v aplikaci hello. Každý AdaptiveSource zahrnuje vlastní události a všechny události AdaptiveSource předána pod AdaptiveSourceManager.
 
-**Chcete-li přidat Element média obslužné rutiny událostí**
+**obslužné rutiny událostí tooadd Element média**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Na konci **MainPage** třídy, přidejte následující obslužné rutiny událostí:
+2. Na konci hello hello **MainPage** třídy, přidejte následující obslužné rutiny událostí hello:
 
          # region Media Element Event Handlers
          private void MediaOpened(object sender, RoutedEventArgs e)
@@ -362,29 +362,29 @@ Stejné události jsou k dispozici na adaptivní zdroj Manager úrovni také, kt
          }
 
          # endregion Media Element Event Handlers
-3. Na konci **MainPage** konstruktoru, přidejte následující kód do dolní index k událostem:
+3. Na konci hello hello **MainPage** konstruktoru, přidejte následující kód toosubscript toohello události hello:
 
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
-4. Stiskněte klávesu **CTRL + S** k uložení souboru.
+4. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-**Chcete-li přidat posuvníku související kódu**
+**tooadd posuvníku panelu související kódu**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Na začátek souboru přidejte následující příkaz using:
+2. Od začátku hello hello souboru, přidejte hello následující příkaz using:
       
         using Windows.UI.Core;
-3. Uvnitř **MainPage** třídy, přidejte následující členy dat:
+3. Uvnitř hello **MainPage** třídy, přidejte následující členy data hello:
    
          public static CoreDispatcher _dispatcher;
          private DispatcherTimer sliderPositionUpdateDispatcher;
-4. Na konci **MainPage** konstruktoru, přidejte následující kód:
+4. Na konci hello hello **MainPage** konstruktoru, přidejte následující kód hello:
    
          _dispatcher = Window.Current.Dispatcher;
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
-5. Na konci **MainPage** třídy, přidejte následující kód:
+5. Na konci hello hello **MainPage** třídy, přidejte následující kód hello:
 
          # region sliderMediaPlayer
          private double SliderFrequency(TimeSpan timevalue)
@@ -469,7 +469,7 @@ Stejné události jsou k dispozici na adaptivní zdroj Manager úrovni také, kt
          # endregion sliderMediaPlayer
       
 >[!NOTE]
->CoreDispatcher slouží ke změnám vlákna uživatelského rozhraní od jiných vlákna uživatelského rozhraní. V případě úzkým místem na vlákno dispečera můžete vybrat vývojáře použít dispečera poskytované si chtít aktualizovat prvek uživatelského rozhraní.  Například:
+>CoreDispatcher je použité toomake změny přístup z více vláken toohello uživatelského rozhraní od jiných vlákna uživatelského rozhraní. V případě potíže na vlákno dispečera vývojář může zvolit, že toouse dispečera poskytované elementu uživatelského rozhraní, že si má v úmyslu tooupdate.  Například:
    
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 
@@ -477,38 +477,38 @@ Stejné události jsou k dispozici na adaptivní zdroj Manager úrovni také, kt
          double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
 
          sliderProgress.Maximum = absvalue; }); 
-6. Na konci **mediaElement_AdaptiveSourceStatusUpdated** metoda, přidejte následující kód:
+6. Na konci hello hello **mediaElement_AdaptiveSourceStatusUpdated** metoda, přidejte následující kód hello:
 
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
-7. Na konci **MediaOpened** metoda, přidejte následující kód:
+7. Na konci hello hello **MediaOpened** metoda, přidejte následující kód hello:
 
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
-8. Stiskněte klávesu **CTRL + S** k uložení souboru.
+8. Stiskněte klávesu **CTRL + S** toosave hello souboru.
 
-**Pro zkompilování a testování aplikace**
+**toocompile a testování aplikace hello**
 
-1. Stiskněte klávesu **F6** kompilace projektu. 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí nastavení adresy URL technologie Smooth Streaming nebo zadejte jiný. 
+1. Stiskněte klávesu **F6** toocompile hello projektu. 
+2. Stiskněte klávesu **F5** toorun hello aplikace.
+3. V horní části hello hello aplikace můžete použít výchozí hello adresy URL technologie Smooth Streaming nebo zadejte jiný. 
 4. Klikněte na tlačítko **nastavit zdroj**. 
-5. Otestujte posuvníku.
+5. Test hello posuvníku.
 
-Když jste dokončili Lekce 2.  V této lekci přidané jezdce do aplikace. 
+Když jste dokončili Lekce 2.  V této lekci jste přidali tooapplication posuvníku. 
 
 ## <a name="lesson-3-select-smooth-streaming-streams"></a>Lekce 3: Vyberte vysílání funkce Smooth Streaming datové proudy
-Technologie Smooth Streaming je umožňující obsah datového proudu s více zvukových stop jazyk, které jsou lze vybrat pomocí prohlížeče.  V této lekci povolíte prohlížečům vyberte datových proudů. V této lekci obsahuje následující postupy:
+Technologie Smooth Streaming je schopný toostream obsah s více zvukových stop jazyk, které se vyvolá pomocí prohlížeče hello.  V této lekci povolíte datové proudy tooselect prohlížeče. V této lekci obsahuje hello následující postupy:
 
-1. Upravte soubor XAML
-2. Upravte soubor behand kódu
-3. Kompilace a testování aplikace
+1. Upravte soubor XAML hello
+2. Upravte soubor behand hello kódu
+3. Kompilace a testování aplikace hello
 
-**K úpravě souboru XAML**
+**souboru XAML toomodify hello**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **MainPage.xaml**a potom klikněte na **Návrhář zobrazení**.
-2. Vyhledejte &lt;Grid.RowDefinitions&gt;a upravte RowDefinitions tak bude vypadat takto:
+2. Vyhledejte &lt;Grid.RowDefinitions&gt;a upravte hello RowDefinitions tak bude vypadat takto:
    
          <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
@@ -517,7 +517,7 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-3. Uvnitř &lt;mřížky&gt;&lt;/Grid&gt; značky, přidejte následující kód k definování ListBox – ovládací prvek, aby uživatelé mohli zobrazit seznam dostupných datových proudů a vybrat datové proudy:
+3. Uvnitř hello &lt;mřížky&gt;&lt;/Grid&gt; značky, přidejte následující hello kód toodefine ListBox – ovládací prvek, aby uživatelé mohli zobrazit hello seznam dostupných datových proudů a vybrat datové proudy:
 
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
@@ -542,12 +542,12 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                 </ListBox>
             </StackPanel>
          </Grid>
-4. Stiskněte klávesu **CTRL + S** a uložte změny.
+4. Stiskněte klávesu **CTRL + S** toosave hello změny.
 
-**K úpravě souboru kódu**
+**toomodify hello souboru kódu**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Uvnitř SSPlayer oboru názvů přidejte novou třídu:
+2. Uvnitř hello SSPlayer oboru názvů přidejte novou třídu:
    
         #region class Stream
    
@@ -574,7 +574,7 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                 get { return isCheckedValue; }
                 set
                 {
-                    // mMke the video stream always checked.
+                    // mMke hello video stream always checked.
                     if (stream.Type == MediaStreamType.Video)
                     {
                         isCheckedValue = true;
@@ -593,21 +593,21 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
             }
         }
         #endregion class Stream
-3. Na začátku MainPage třídy, přidejte následující definice proměnné:
+3. Na hello začátku hello MainPage třídy, přidejte následující proměnné definice hello:
    
          private List<Stream> availableStreams;
          private List<Stream> availableAudioStreams;
          private List<Stream> availableTextStreams;
          private List<Stream> availableVideoStreams;
-4. Uvnitř MainPage třídy přidejte následující oblasti:
+4. Uvnitř hello MainPage třídy přidejte hello následující oblasti:
    
         #region stream selection
         ///<summary>
-        ///Functionality to select streams from IManifestStream available streams
+        ///Functionality tooselect streams from IManifestStream available streams
         /// </summary>
    
-        // This function is called from the mediaElement_ManifestReady event handler 
-        // to retrieve the streams and populate them to the local data members.
+        // This function is called from hello mediaElement_ManifestReady event handler 
+        // tooretrieve hello streams and populate them toohello local data members.
         public void getStreams(Manifest manifestObject)
         {
             availableStreams = new List<Stream>();
@@ -622,7 +622,7 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                     Stream newStream = new Stream(manifestObject.AvailableStreams[i]);
                     newStream.isChecked = false;
    
-                    //populate the stream lists based on the types
+                    //populate hello stream lists based on hello types
                     availableStreams.Add(newStream);
    
                     switch (newStream.ManifestStream.Type)
@@ -638,7 +638,7 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                             break;
                     }
    
-                    // Select the default selected streams from the manifest.
+                    // Select hello default selected streams from hello manifest.
                     for (int j = 0; j<manifestObject.SelectedStreams.Count; j++)
                     {
                         string selectedStreamName = manifestObject.SelectedStreams[j].Name;
@@ -656,12 +656,12 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
             }
         }
    
-        // This function set the list box ItemSource
+        // This function set hello list box ItemSource
         private async void refreshAvailableStreamsListBoxItemSource()
         {
             try
             {
-                //update the stream check box list on the UI
+                //update hello stream check box list on hello UI
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, ()
                     => { lbAvailableStreams.ItemsSource = availableStreams; });
             }
@@ -687,7 +687,7 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                 }
             }
    
-            // Select the frist video stream from the list if no video stream is selected
+            // Select hello frist video stream from hello list if no video stream is selected
             if (!isOneVideoSelected)
             {
                 availableVideoStreams[0].isChecked = true;
@@ -701,11 +701,11 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
                 {
                     selectedStreams.Add(availableAudioStreams[j].ManifestStream);
                     isOneAudioSelected = true;
-                    txtStatus.Text = "The audio stream is changed to " + availableAudioStreams[j].ManifestStream.Name;
+                    txtStatus.Text = "hello audio stream is changed too" + availableAudioStreams[j].ManifestStream.Name;
                 }
             }
    
-            // Select the frist audio stream from the list if no audio steam is selected.
+            // Select hello frist audio stream from hello list if no audio steam is selected.
             if (!isOneAudioSelected)
             {
                 availableAudioStreams[0].isChecked = true;
@@ -736,46 +736,46 @@ Technologie Smooth Streaming je umožňující obsah datového proudu s více zv
             }
         }
         #endregion stream selection
-5. Metoda mediaElement_ManifestReady najít, doplňovací následující kód na konci funkce:
+5. Hello mediaElement_ManifestReady metoda najít, doplňovací hello následující kód na konci hello hello funkce:
    
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
    
-    Proto když MediaElement manifest je připraven, kód získá seznam dostupných datových proudů a naplní pole se seznamem uživatelského rozhraní se seznamem.
-6. Uvnitř MainPage třídy, vyhledejte rozhraní tlačítka klikněte na události oblast a potom přidejte následující definice funkce:
+    Proto když MediaElement manifest je připraven, hello kód získá seznam dostupných datových proudů hello a naplní pole se seznamem hello uživatelského rozhraní pomocí seznamu hello.
+6. Uvnitř hello MainPage třídy, vyhledejte hello tlačítka uživatelského rozhraní klikněte na tlačítko oblasti události a poté přidejte následující definice funkce hello:
    
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
    
-            // Create a list of the selected streams
+            // Create a list of hello selected streams
             createSelectedStreamsList(selectedStreams);
    
-            // Change streams on the presentation
+            // Change streams on hello presentation
             changeStreams(selectedStreams);
         }
 
-**Pro zkompilování a testování aplikace**
+**toocompile a testování aplikace hello**
 
-1. Stiskněte klávesu **F6** kompilace projektu. 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí nastavení adresy URL technologie Smooth Streaming nebo zadejte jiný. 
+1. Stiskněte klávesu **F6** toocompile hello projektu. 
+2. Stiskněte klávesu **F5** toorun hello aplikace.
+3. V horní části hello hello aplikace můžete použít výchozí hello adresy URL technologie Smooth Streaming nebo zadejte jiný. 
 4. Klikněte na tlačítko **nastavit zdroj**. 
-5. Výchozí jazyk je audio_eng. Zkuste přepínat mezi audio_eng a audio_es. Při, vyberte nového datového proudu, musíte kliknout na tlačítko pro odeslání.
+5. výchozí jazyk Hello je audio_eng. Zkuste tooswitch mezi audio_eng a audio_es. Při, vyberte nového datového proudu, musíte kliknout na tlačítko Odeslat hello.
 
-Když jste dokončili Lekce 3.  V této lekci přidáte funkci zvolit datové proudy.
+Když jste dokončili Lekce 3.  V této lekci přidáte datové proudy toochoose funkce hello.
 
 ## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lekce 4: Vyberte vysílání funkce Smooth Streaming sleduje
-Prezentace technologie Smooth Streaming může obsahovat více videosouborů zakódovaných pomocí různé úrovně kvality (přenosové rychlosti) a jejich řešení. V této lekci povolíte uživatelům vybrat sleduje. V této lekci obsahuje následující postupy:
+Prezentace technologie Smooth Streaming může obsahovat více videosouborů zakódovaných pomocí různé úrovně kvality (přenosové rychlosti) a jejich řešení. V této lekci povolíte uživatelům tooselect sleduje. V této lekci obsahuje hello následující postupy:
 
-1. Upravte soubor XAML
-2. Upravte soubor behand kódu
-3. Kompilace a testování aplikace
+1. Upravte soubor XAML hello
+2. Upravte soubor behand hello kódu
+3. Kompilace a testování aplikace hello
 
-**K úpravě souboru XAML**
+**souboru XAML toomodify hello**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **MainPage.xaml**a potom klikněte na **Návrhář zobrazení**.
-2. Vyhledejte &lt;mřížky&gt; značky s názvem **gridStreamAndBitrateSelection**, přidejte následující text na konci značky:
+2. Vyhledejte hello &lt;mřížky&gt; značky s názvem hello **gridStreamAndBitrateSelection**, připojit hello následující kód na konci hello hello značky:
    
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -791,12 +791,12 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
              </ListBox.ItemTemplate>
          </ListBox>
          </StackPanel>
-3. Stiskněte klávesu **CTRL + S** se uložit změny he
+3. Stiskněte klávesu **CTRL + S** toosave změní
 
-**K úpravě souboru kódu**
+**toomodify hello souboru kódu**
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem **MainPage.xaml**a potom klikněte na **kód zobrazení**.
-2. Uvnitř SSPlayer oboru názvů přidejte novou třídu:
+2. Uvnitř hello SSPlayer oboru názvů přidejte novou třídu:
    
         #region class Track
         public class Track
@@ -834,17 +834,17 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             //public Track() { }
         }
         #endregion class Track
-3. Na začátku MainPage třídy, přidejte následující definice proměnné:
+3. Na hello začátku hello MainPage třídy, přidejte následující proměnné definice hello:
    
         private List<Track> availableTracks;
-4. Uvnitř MainPage třídy přidejte následující oblasti:
+4. Uvnitř hello MainPage třídy přidejte hello následující oblasti:
    
         #region track selection
         /// <summary>
-        /// Functionality to select video streams
+        /// Functionality tooselect video streams
         /// </summary>
    
-        /// This Function gets the tracks for the selected video stream
+        /// This Function gets hello tracks for hello selected video stream
         public void getTracks(Manifest manifestObject)
         {
             availableTracks = new List<Track>();
@@ -878,7 +878,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             }
         }
    
-        // This function gets the video stream that is playing
+        // This function gets hello video stream that is playing
         private IManifestStream getVideoStream()
         {
             IManifestStream videoStream = null;
@@ -893,12 +893,12 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             return videoStream;
         }
    
-        // This function set the UI list box control ItemSource
+        // This function set hello UI list box control ItemSource
         private async void refreshAvailableTracksListBoxItemSource()
         {
             try
             {
-                // Update the track check box list on the UI 
+                // Update hello track check box list on hello UI 
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, ()
                     => { lbAvailableVideoTracks.ItemsSource = availableTracks; });
             }
@@ -908,7 +908,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             }        
         }
    
-        // This function creates a list of the selected tracks.
+        // This function creates a list of hello selected tracks.
         private void createSelectedTracksList(List<IManifestTrack> selectedTracks)
         {
             // Create a list of selected tracks
@@ -921,7 +921,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             }
         }
    
-        // This function selects the tracks based on user selection 
+        // This function selects hello tracks based on user selection 
         private void changeTracks(List<IManifestTrack> selectedTracks)
         {
             IManifestStream videoStream = getVideoStream();
@@ -935,32 +935,32 @@ Prezentace technologie Smooth Streaming může obsahovat více videosouborů zak
             }
         }
         #endregion track selection
-5. Metoda mediaElement_ManifestReady najít, doplňovací následující kód na konci funkce:
+5. Hello mediaElement_ManifestReady metoda najít, doplňovací hello následující kód na konci hello hello funkce:
    
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
-6. Uvnitř MainPage třídy, vyhledejte rozhraní tlačítka klikněte na události oblast a potom přidejte následující definice funkce:
+6. Uvnitř hello MainPage třídy, vyhledejte hello tlačítka uživatelského rozhraní klikněte na tlačítko oblasti události a poté přidejte následující definice funkce hello:
    
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
 
-            // Create a list of the selected streams
+            // Create a list of hello selected streams
             createSelectedStreamsList(selectedStreams);
 
-            // Change streams on the presentation
+            // Change streams on hello presentation
             changeStreams(selectedStreams);
          }
 
-**Pro zkompilování a testování aplikace**
+**toocompile a testování aplikace hello**
 
-1. Stiskněte klávesu **F6** kompilace projektu. 
-2. Stisknutím klávesy **F5** spusťte aplikaci.
-3. V horní části aplikace můžete buď použít výchozí nastavení adresy URL technologie Smooth Streaming nebo zadejte jiný. 
+1. Stiskněte klávesu **F6** toocompile hello projektu. 
+2. Stiskněte klávesu **F5** toorun hello aplikace.
+3. V horní části hello hello aplikace můžete použít výchozí hello adresy URL technologie Smooth Streaming nebo zadejte jiný. 
 4. Klikněte na tlačítko **nastavit zdroj**. 
-5. Ve výchozím nastavení jsou vybrány všechny sleduje video datového proudu. Experimentovat míry změny bit, můžete vybrat nejnižší přenosová rychlost k dispozici a pak vyberte nejvyšší přenosovou rychlost, k dispozici. Musíte kliknout na odeslání po každé změně.  Zobrazí se změny kvalitu videa.
+5. Ve výchozím nastavení jsou vybrány všechny hello sleduje hello video datového proudu. tooexperiment hello bit míra změn, můžete vybrat hello nejnižší přenosová rychlost k dispozici a potom vyberte hello nejvyšší přenosová rychlost k dispozici. Musíte kliknout na odeslání po každé změně.  Uvidíte hello kvalitu videa změny.
 
-Když jste dokončili Lekce 4.  V této lekci přidáte funkci vybrat sleduje.
+Když jste dokončili Lekce 4.  V této lekci přidáte hello funkce toochoose sleduje.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -969,7 +969,7 @@ Když jste dokončili Lekce 4.  V této lekci přidáte funkci vybrat sleduje.
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Další prostředky:
-* [Jak sestavit aplikaci technologie Smooth Streaming JavaScript Windows 8 s pokročilé funkce](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Jak toobuild aplikace technologie Smooth Streaming JavaScript Windows 8 s pokročilé funkce](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
 * [Technologie Smooth Streaming technický přehled](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png

@@ -1,6 +1,6 @@
 ---
-title: "Přístup k aplikaci Samoobslužné služby a delegované správy pomocí služby Azure Active Directory | Microsoft Docs"
-description: "Tento článek popisuje, jak umožnit přístup k aplikaci Samoobslužné služby a delegované správy pomocí služby Azure Active Directory."
+title: "přístup k aplikaci služby aaaSelf a delegované správy pomocí služby Azure Active Directory | Microsoft Docs"
+description: "Tento článek popisuje, jak přistupovat k aplikaci tooenable samoobslužné služby a delegované správy pomocí služby Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,90 +16,90 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 7872d5229cdc053bfb9dc8ddba01785b0f8e5a9a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 90bec3bd71796f22a782929b028db0d18c3aa1c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Přístup k aplikaci Samoobslužné služby a delegované správy pomocí služby Azure Active Directory
-Povolení schopnosti samoobslužné služby pro koncové uživatele je běžný scénář pro podnikové IT. Velký počet uživatelů, velký počet aplikací a osobě, která je best-informed rozhodnutí pro udělení přístupu nemusí být správce adresáře. Často je nejlepší osoba rozhodnout, kdo má přístup k aplikaci vedoucí týmu nebo jiných delegovaný správce. Ale je uživatel, který používá aplikaci, a uživatel ví, co potřebují, abyste mohli dělat svou práci.
+Povolení schopnosti samoobslužné služby pro koncové uživatele je běžný scénář pro podnikové IT. Velký počet uživatelů, velký počet aplikací a hello osobě, která je best-informed toomake přístup udělit, že rozhodnutí, která nemusí být správce adresáře hello. Často hello osvědčených uživatel toodecide kdo má přístup k aplikaci je vedoucí týmu nebo jiných delegovaného správce. Je však hello uživatel, který používá aplikace hello a hello uživatel ví, co potřebují mít toodo toobe jejich úlohy.
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek. 
+> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku. 
 
 Přístup k aplikaci Samoobslužné služby je funkce [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) P1 a P2 licencí, které umožňují správcům adresáře:
 
-* Povolit uživatelům žádat o přístup k aplikacím pomocí "Získat další aplikace" v dlaždici [přístupový Panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Povolit uživatelům přístup toorequest tooapplications pomocí "Získat další aplikace" dlaždici v hello [přístupový Panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 * Sadu uživatelů, kteří aplikace můžete požádat o přístup k
-* Nastavte, zda schválení je potřeba pro uživatele, abyste mohli samoobslužné přiřadit přístup k aplikaci
-* Sada, kdo by měl schválení žádosti a správa přístupu pro každou aplikaci
+* Nastavte, zda je vyžadováno pro uživatele toobe možné tooself přiřazení přístupu tooan aplikaci schválení
+* Sada, kdo by měl schvalovat žádosti o hello a správa přístupu pro každou aplikaci
 
-Dnes tato funkce je podporována pro všechny předem integrované a přihlašování vlastní aplikace, které podporují federované nebo založené na heslech jedním [galerii aplikací Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/), včetně aplikace, jako je Google Apps služby Salesforce, Dropbox a další.
+Dnes tato funkce je podporována pro všechny předem integrované a vlastní aplikace, které podporují federované nebo založené na heslech jednotné přihlašování v hello [galerii aplikací Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/), včetně aplikace, jako je Salesforce, Dropbox, Google Apps a další.
 Tento článek popisuje, jak:
 
 * Konfigurace přístupu k aplikaci Samoobslužné služby pro koncové uživatele, včetně konfigurace pracovního postupu volitelné schválení 
-* Delegovat správu přístupu pro konkrétní aplikace nejvhodnější lidem ve vaší organizaci a povolit, aby uživatelé používali přístupový panel Azure AD pro schválení žádosti o přístup přímo přiřadit přístup pro vybrané uživatele nebo (volitelně) nastavit přihlašovací údaje pro přístup k aplikaci při konfiguraci založené na heslech jednotné přihlašování
+* Delegovat správu přístupu pro konkrétní aplikace toohello nejvhodnější osoby ve vaší organizaci a je povolit toouse hello Azure AD přístup k panelu tooapprove žádosti o přístup, přímo přiřadit přístup uživatelé tooselected nebo nastavte (volitelně) přihlašovací údaje pro přístup k aplikaci, když je nakonfigurovaný založené na heslech jednotné přihlašování
 
 ## <a name="configuring-self-service-application-access"></a>Konfigurace přístupu k aplikaci Samoobslužné služby
-Chcete-li povolit přístup k aplikaci Samoobslužné služby a nakonfigurovat aplikace, které mohou být přidány nebo požadoval koncovým uživatelům, postupujte podle následujících pokynů.
+přístup k aplikaci Samoobslužné služby tooenable a nakonfigurovat aplikace, které mohou být přidány nebo požadoval koncovým uživatelům, postupujte podle následujících pokynů.
 
-1. Přihlaste se k [portál Azure classic](https://manage.windowsazure.com/).
+1. Přihlaste se k hello [portál Azure classic](https://manage.windowsazure.com/).
 
-2.   V části **služby Active Directory** část, vyberte adresář a pak vyberte **aplikace** kartě. 
+2.   V části hello **služby Active Directory** část, vyberte adresář a pak vyberte hello **aplikace** kartě. 
 
-3. Vyberte **přidat** tlačítko a použijete možnost galerie a vyberte Přidat aplikaci.
+3. Vyberte hello **přidat** tlačítko použít hello Galerie možnost tooselect a přidat aplikaci.
 
-4. Po přidání aplikace získáte stránku rychlý Start aplikace. Klikněte na tlačítko **nakonfigurovat jednotné přihlašování**, vyberte požadované jeden přihlašování režim a uložte konfiguraci. 
+4. Po přidání aplikace získáte rychlý Start stránky aplikace hello. Klikněte na tlačítko **nakonfigurovat jednotné přihlašování**, vyberte hello požadované jediný přihlašování režim a uložte konfiguraci hello. 
 
-5. Potom vyberte **konfigurace** kartě. Chcete-li povolit uživatelům žádat o přístup k této aplikaci z přístupový panel Azure AD, nastavte **povolit přístup k aplikaci Samoobslužné služby** k **Ano**.
+5. Potom vyberte hello **konfigurace** kartě tooenable uživatelé toorequest přístup toothis aplikace z přístupového panelu hello Azure AD, nastavte **povolit přístup k aplikaci Samoobslužné služby** příliš**Ano**.
   
   ![][1]
 
-6. Chcete-li volitelně konfigurovat pracovní postup schválení žádosti o přístup, nastavte **vyžadovat schválení před udělením přístupu** k **Ano**. Pak lze vybrat jeden nebo více schvalovatelů pomocí **schvalovatelů** tlačítko.
+6. pracovní postup schválení žádosti o přístup, nakonfigurujte toooptionally nastavit **vyžadovat schválení před udělením přístupu** příliš**Ano**. Pak lze vybrat jeden nebo více schvalovatelů pomocí hello **schvalovatelů** tlačítko.
 
-  Approver může být každý uživatel v organizaci pomocí účtu Azure AD a může být zodpovědná za účet zřizování, Správa licencí, nebo jiné obchodní proces vaše organizace vyžaduje před udělením přístupu k aplikaci. Schvalovatel může být i vlastník skupiny jednoho nebo více sdílených účet skupiny a můžete přiřadit uživatele do jedné z těchto skupin a umožnit jim přístup prostřednictvím sdíleného účtu. 
+  Approver může být každý uživatel v organizaci hello pomocí účtu Azure AD a může být zodpovědná za zřizování účtu licencování nebo jiné obchodní proces vaše organizace vyžaduje před udělením přístupu tooan aplikace. Schvalovatel Hello může být i hello vlastník skupiny jednoho nebo více sdílených účet skupiny a můžete přiřadit uživatele tooone hello z těchto skupin toogive, které je přístup přes sdíleného účtu. 
 
-  Pokud je vyžadováno žádné schválení, uživatelé okamžitě získat aplikaci přidat do jejich přístupový panel Azure AD. Pokud aplikace má byly nastaveny pro [zřizování automatické uživatelů](active-directory-saas-app-provisioning.md), nebo byl nastavený [režimu SSO "spravovaná uživatelem" heslo](active-directory-appssoaccess-whatis.md#password-based-single-sign-on), uživatel byste již měli mít uživatel účet a znát heslo.
+  Pokud je vyžadováno žádné schválení, uživatelé okamžitě získat hello aplikace přidané tootheir Azure AD přístupového panelu. Pokud aplikace hello má byly nastaveny pro [zřizování automatické uživatelů](active-directory-saas-app-provisioning.md), nebo byl nastavený [režimu SSO "spravovaná uživatelem" heslo](active-directory-appssoaccess-whatis.md#password-based-single-sign-on), hello uživatele byste již měli mít uživatel účet a heslo hello znát.
 
-7. Pokud aplikace je nakonfigurovaná pro použití založené na heslech jednotné přihlašování, pak možnost pro povolení schvalovatel nastavit jednotné přihlašování pověření jménem každého uživatele, je také k dispozici. Další informace najdete v části na [Delegovaná správa přístupu](#delegated-application-access-management).
+7. Pokud aplikace hello nebyla nakonfigurovaná toouse založené na heslech jednotné přihlašování, pak možnost pro povolení hello schvalovatel tooset hello jednotné přihlašování pověření jménem každého uživatele, je také k dispozici. Další informace najdete v tématu část hello na [Delegovaná správa přístupu](#delegated-application-access-management).
 
-8. Nakonec **skupiny uživatelů Self-Assigned** se zobrazuje název skupiny, která se používá k ukládání uživatele, kterým byla udělena nebo přístupem k aplikaci. Schvalovatel přístup stává vlastníkem této skupiny. Pokud je název skupiny, zobrazí neexistuje, vytvoří se automaticky. Název skupiny Volitelně lze nastavit na název existující skupiny.
+8. Nakonec hello **skupiny uživatelů Self-Assigned** ukazuje hello název hello skupiny, která je použité toostore hello uživatelů, kteří bylo uděleno nebo přiřadit přístup toohello aplikace. Schvalovatel přístup Hello se změní na vlastníka hello této skupiny. Pokud název skupiny hello zobrazí neexistuje, vytvoří se automaticky. Název skupiny hello Volitelně můžete nastavit toohello název existující skupiny.
 
-9. Chcete-li uložit konfiguraci, klikněte na tlačítko **Uložit** v dolní části obrazovky. Uživatelé teď můžou k žádosti o přístup k této aplikaci na přístupovém panelu.
+9. toosave hello konfiguraci, klikněte na tlačítko **Uložit** v hello dolní části obrazovky hello. Uživatelé nyní mohou toorequest přístup toothis aplikace z hello přístupového panelu.
 
-10. Pokud chcete vyzkoušet činnost koncového uživatele, přihlaste se k přístupový panel Azure AD vaší organizace na https://myapps.microsoft.com, pokud možno pomocí jiného účtu, který není approver aplikace. 
+10. tootry hello činnost koncového uživatele, přihlaste se k přístupový panel Azure AD vaší organizace na https://myapps.microsoft.com, pokud možno pomocí jiného účtu, který není approver aplikace. 
 
-11. V části **aplikace** , klikněte na **získat další aplikace** dlaždici. Tuto dlaždici zobrazí Galerie všechny aplikace, které jsou zapnuty pro přístup k aplikaci Samoobslužné služby v adresáři, s možností vyhledávání a filtrování podle kategorie aplikace na levé straně. 
+11. V části hello **aplikace** , klikněte na hello **získat další aplikace** dlaždici. Tuto dlaždici zobrazí Galerie všechny hello aplikace, které jsou zapnuty pro přístup k aplikaci Samoobslužné služby v adresáři hello s hello možnost toosearch a filtrovat podle kategorie aplikace na levé straně hello. 
 
-12. Kliknutím na aplikaci zahájí proces žádosti. Pokud není třeba žádný proces schválení, pak aplikace bude okamžitě přidají pod **aplikace** karta po krátké potvrzení. Pokud je vyžadováno schválení, pak se zobrazí dialogové okno oznamující to a e-mail je odeslán schvalovatelů. Můžete musí být podepsané do přístupového panelu jako jiný schvalovatel zobrazíte tento proces žádosti.
+12. Kliknutím na aplikaci zahájí zpracování žádosti o hello. Pokud není třeba žádný proces schválení, pak aplikace hello se okamžitě přidají pod hello **aplikace** karta po krátké potvrzení. Pokud je vyžadováno schválení, pak se zobrazí dialogové okno oznamující to a e-mail je odeslán toohello schvalovatelů. Jste přihlášení k hello přístup k panelu jako jiný schvalovatel toosee tento proces žádosti.
 
-13. E-mailu přesměruje schvalovatel schválit požadavek a přihlášení do přístupového panelu Azure AD. Jakmile se žádost schválí (a žádné speciální procesy, které definujete prováděly schvalujícím,), uživateli se zobrazí aplikace se zobrazí pod jejich **aplikace** karty, které můžete přihlásit do ní.
+13. e-mailu Hello přesměruje hello schvalovatel toosign do přístupového panelu Azure AD hello a hello žádost schválit. Jakmile hello žádost se schválí (a žádné speciální procesy, které definujete prováděly schvalovatel hello), hello uživateli se zobrazí hello aplikace se zobrazí pod jejich **aplikace** karty, které můžete přihlásit do ní.
 
 ## <a name="delegated-application-access-management"></a>Správa přístupu k delegované aplikací
-Schvalovatel přístup aplikaci lze všechny uživatele ve vaší organizaci, který je nejvhodnější osoba schválí nebo zamítne přístup k dané žádosti. Tento uživatel může být zodpovědná za zřizování účtu licencování nebo jiné obchodní proces vaše organizace vyžaduje před udělením přístupu k aplikaci.
+Schvalovatel přístup aplikaci lze všechny uživatele ve vaší organizaci, který je nejvhodnější tooapprove osoba hello nebo odepřít přístup toohello aplikace. Tento uživatel může být zodpovědná za zřizování účtu licencování nebo jiné obchodní proces vaše organizace vyžaduje před udělením přístupu tooan aplikace.
 
-Při konfiguraci přístup k aplikaci Samoobslužné služby, které jsou popsané výše, všechny přiřazené aplikace schvalovatelů najdete v části Další **spravovat aplikace** dlaždice na přístupový panel Azure AD, která ukazuje, které aplikace, které jsou přístup správce. Kliknutím na tlačítko aplikace zobrazuje obrazovka s několik možností.
+Při konfiguraci přístup k aplikaci Samoobslužné služby, které jsou popsané výše, všechny přiřazené aplikace schvalovatelů najdete v části Další **spravovat aplikace** dlaždice na panel přístupu hello Azure AD, která ukazuje, které aplikace, které jsou Hello přístup správce. Kliknutím na tlačítko aplikace zobrazuje obrazovka s několik možností.
 
 ![][2]
 
 ### <a name="approve-requests"></a>Schválení žádostí
-**Schválení žádosti o** dlaždice umožňuje schvalovatelů zobrazíte všechny čeká na schválení, které jsou specifické pro tuto aplikaci a přesměruje na kartě schválení, kde žádosti je možné potvrdit nebo odepřít. Schvalovatel dále přijímá automatizovaných e-mailů, vždy, když je vytvořen požadavek, který jim vydává pokyn co dělat.
+Hello **schválení žádosti o** dlaždice umožňuje schvalovatelů toosee všechny čekající schválení toothat konkrétní aplikace a přesměrování toohello schválení karta kde hello požadavky možné potvrdit nebo odepřít. Schvalovatel Hello dále přijímá automatizovaných e-mailů, vždy, když je vytvořen požadavek, který jim vydává pokyn co toodo.
 
 ### <a name="add-users"></a>Přidání uživatelů
-**Přidat uživatele** dlaždice umožňuje schvalovatelů přímo vybrané uživatelům udělit přístup k aplikaci. Po kliknutí na tuto dlaždici, uvidí schvalovatel, že zobrazí se dialogové okno jim umožňuje zobrazení a hledání pro uživatele v jejich adresáře. Přidání uživatele výsledků v aplikaci se zobrazí v těchto uživatele Azure AD přístup panelů nebo Office 365. Pokud jakékoli ruční uživatele procesu zřizování je potřeba na aplikaci, než bude moci přihlásit uživatele, pak schvalovatel proveďte před udělením přístupu tohoto procesu.  
+Hello **přidat uživatele** dlaždice umožňuje schvalovatelů toodirectly grant vybrané uživatelé přístup toohello aplikace. Po kliknutí na tuto dlaždici, uvidí hello schvalovatel, že zobrazí se dialogové okno umožňuje jejich tooview a hledat uživatele v jejich adresář. Přidání uživatele výsledků v aplikaci hello se zobrazí v těchto uživatele Azure AD přístup panelů nebo Office 365. Pokud se požaduje jakékoli ruční uživatele zřizování v hello aplikace předtím, než uživatel hello je možné toosign v, a poté hello schvalovatel by měl proveďte tento proces před udělením přístupu.  
 
 ### <a name="manage-users"></a>Správa uživatelů
-**Spravovat uživatele** dlaždice umožňuje schvalovatelů přímo aktualizovat nebo odebrat uživatele, kteří mají přístup k aplikaci. 
+Hello **spravovat uživatele** dlaždice umožňuje schvalovatelů toodirectly aktualizace nebo odeberte uživatele, kteří mají přístup toohello aplikace. 
 
 ### <a name="configure-password-sso-credentials-if-applicable"></a>Konfigurovat přihlašovací údaje pro jednotné přihlašování k heslo (pokud existuje)
-**Konfigurace** dlaždici se zobrazují, pouze pokud aplikace byla nakonfigurována správcem IT používat založené na heslech jednotné přihlašování a správce udělena schvalovatel možnost nastavit přihlašovací údaje heslo jednotné přihlašování, jak je popsáno výše. Při výběru schvalovatel nabízí několik možností, jak přihlašovací údaje rozšířeny přiřadit uživatele:
+Hello **konfigurace** dlaždice se zobrazují, pouze pokud hello aplikace byla nakonfigurována pomocí hello IT správce toouse založené na heslech jednotné přihlašování a hello správci uděleno hello schvalovatel hello možnost tooset hesla jednotného přihlašování jak je popsáno výše. Při výběru hello schvalovatele pro jak hello přihlašovacích údajů jsou uživatelé šířený tooassigned zobrazí několik možností:
 
 ![][3]
 
-* **Uživatelé přihlásit pomocí hesla** – v tomto režimu přiřazené uživatelům vědět, co uživatelských jmen a hesel jsou pro aplikaci a výzva k zadání jejich při jejich prvním přihlášení k aplikaci. Tento scénář odpovídá heslo jednotné přihlašování – případ kde [uživatelé spravují přihlašovací údaje](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-* **Uživatelé se automaticky přihlásíte pomocí samostatné účty, které spravují** – v tomto režimu přiřazené uživatelé nemusí zadávat ani vědět své přihlašovací údaje specifické pro aplikace, pokud se přihlášení k aplikaci. Místo toho schvalovatel Nastaví pověření pro každého uživatele po přiřazení přístupu pomocí **přidat uživatele** dlaždici. Když uživatel klikne na aplikaci v jejich přístupového panelu nebo Office 365, jsou automaticky přihlášeni pomocí pověření, která nastavuje schvalovatel. Tento scénář odpovídá heslo jednotné přihlašování – případ kde [správci spravují přihlašovací údaje](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-* **Uživatelé se automaticky přihlásíte pomocí jeden účet, který lze spravovat** -ve speciálním případě tomto případě je vhodné použít při všechny přiřazené uživatelé musí mít udělen přístup pomocí jednoho sdíleného účtu. Nejběžnější případ použití pro tuto funkci je s aplikací sociálních médií, kde organizace má jeden "společnost" účet a více uživatelů třeba, aby aktualizace k tomuto účtu. Tento scénář také odpovídá heslo jednotné přihlašování – případ kde [správci spravují přihlašovací údaje](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Ale po výběru této možnosti, schvalovatel vyzváni k zadání uživatelského jména a hesla pro jednu sdíleného účtu. Po dokončení všech uživatelů přiřazených přihlášení pomocí tohoto účtu, když kliknete na aplikaci v jejich panelů přístup k Azure AD nebo Office 365.
+* **Uživatelé přihlásit pomocí hesla** – v tomto režimu hello přiřadit uživatelům vědět, co uživatelských jmen a hesel jsou určené pro hello aplikaci a jsou výzvami tooenter je při své první aplikaci toohello přihlášení. Hello scénář odpovídá toohello heslo jednotné přihlašování případ kde hello [uživatelé spravovat pověření](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+* **Uživatelé se automaticky přihlásíte pomocí samostatné účty, které spravují** – v tomto režimu hello přiřadit uživatele nejsou požadované tooenter nebo vědět své přihlašovací údaje pro konkrétní aplikaci, po přihlášení do aplikace hello. Místo toho hello schvalovatel nastaví hello pověření pro každého uživatele po přiřazení přístupu pomocí hello **přidat uživatele** dlaždici. Když hello uživatel klikne na aplikace hello v jejich přístupového panelu nebo Office 365, jsou automaticky přihlášeni pomocí hello pověření, která nastavuje schvalovatel hello. Hello scénář odpovídá toohello heslo jednotné přihlašování případ kde hello [správci spravují přihlašovací údaje](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+* **Uživatelé se automaticky přihlásíte pomocí jeden účet, který lze spravovat** -ve speciálním případě tomto případě je vhodné toouse při všechny přiřazené uživatelé potřebují toobe udělen přístup pomocí jednoho sdíleného účtu. Hello nejběžnější případ použití pro tuto funkci je s aplikací sociálních médií, kde organizace má jeden "společnost" účet a více uživatelů potřebovat toomake aktualizace toothat účet. Hello scénář také odpovídá toohello heslo jednotné přihlašování případ kde hello [správci spravují přihlašovací údaje](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Ale po výběru této možnosti, hello schvalovatel bude výzvami tooenter hello uživatelské jméno a heslo pro jeden sdíleného účtu hello. Po dokončení všech uživatelů přiřazených přihlášení pomocí tohoto účtu, když kliknete na aplikace hello v jejich panelů přístup k Azure AD nebo Office 365.
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)

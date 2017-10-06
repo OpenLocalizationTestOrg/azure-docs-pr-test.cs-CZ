@@ -1,6 +1,6 @@
 ---
-title: "Upgrade aplikace Service Fabric pomocí prostředí PowerShell | Microsoft Docs"
-description: "Tento článek vás provede možností nasazení aplikace Service Fabric, změna kódu a zavádění upgrade pomocí prostředí PowerShell."
+title: "upgrade aplikace Fabric aaaService pomocí prostředí PowerShell | Microsoft Docs"
+description: "Tento článek vás provede hello činnost nasazení aplikace Service Fabric, změna hello kódu a zavádění upgrade pomocí prostředí PowerShell."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 3591ced970887d4eb5a33cec8f6951b5476d04f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f31212264de45c3b257a0efafb75c10c279b989f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade aplikace Service Fabric pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -29,35 +29,35 @@ ms.lasthandoff: 08/18/2017
 
 <br/>
 
-Nejčastěji používané a doporučený postup upgradu je monitorovaných postupného upgradu.  Azure Service Fabric monitoruje stav aplikace upgraduje na základě sady zásad stavu. Po upgradu domény služby aktualizace (UD), Service Fabric vyhodnocuje stav aplikace a buď pokračuje do domény další aktualizace nebo upgradu v závislosti na zásadách stavu se nezdaří.
+Hello nejčastěji používá a doporučený postup upgradu postupného upgradu hello monitorovány.  Azure Service Fabric monitoruje stav hello aplikace hello upgraduje na základě sady zásad stavu. Po upgradu domény služby aktualizace (UD), Service Fabric vyhodnotí hello stavu aplikací a buď pokračuje toohello další aktualizace domény nebo hello upgradu v závislosti na zásadách stavu hello se nezdaří.
 
-Monitorované aplikaci upgrade lze provést pomocí spravovaným nebo nativním rozhraní API, Powershellu nebo REST. Pokyny k provedení upgradu pomocí sady Visual Studio, najdete v části [upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).
+Můžete provést upgrade monitorované aplikaci pomocí hello spravované nebo nativních rozhraní API prostředí PowerShell nebo REST. Pokyny k provedení upgradu pomocí sady Visual Studio, najdete v části [upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).
 
-Pomocí Service Fabric monitorovat postupné upgrady Správce aplikací můžete nakonfigurovat zásad vyhodnocení stavu, který Service Fabric používá k určení, zda je aplikace v pořádku. Kromě toho může správce nakonfigurovat akce, které mají být provedeny, když vyhodnocení stavu selže (například provádění automatického vrácení zpět.) Tato část vás provede monitorovaných upgrade pro jednu z ukázky sady SDK, které používá prostředí PowerShell. Následující Microsoft Virtual Academy video vás také provede upgrade aplikace:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
+Pomocí Service Fabric monitorovat postupné upgrady lze nakonfigurovat správce aplikací hello zásad vyhodnocení stavu hello, Service Fabric používá toodetermine, pokud aplikace hello je v pořádku. Kromě toho může správce hello nakonfigurovat toobe hello akce prováděné při vyhodnocování stavu hello selže (například provádění automatického vrácení zpět.) Tato část vás provede monitorovaných upgrade pro jednu z ukázky hello SDK, které používá prostředí PowerShell. Hello následující Microsoft Virtual Academy video vás také provede upgrade aplikace:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
 <img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Krok 1: Vytvoření a nasazení ukázkové vizuální objekty
-Vytvoření a publikování aplikace kliknutím pravým tlačítkem na projekt aplikace **VisualObjectsApplication,** a výběrem **publikovat** příkaz.  Další informace najdete v tématu [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternativně můžete použít PowerShell k nasazení aplikace.
+## <a name="step-1-build-and-deploy-hello-visual-objects-sample"></a>Krok 1: Vytvoření a nasazení ukázkové vizuální objekty hello
+Sestavení a publikování aplikace hello kliknutím pravým tlačítkem na projekt aplikace hello, **VisualObjectsApplication,** a výběrem hello **publikovat** příkaz.  Další informace najdete v tématu [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternativně můžete použít PowerShell toodeploy vaší aplikace.
 
 > [!NOTE]
-> Před všechny příkazy Service Fabric lze v prostředí PowerShell, musíte nejdřív připojit ke clusteru pomocí `Connect-ServiceFabricCluster` rutiny. Podobně se předpokládá, že clusteru je již nastaven na místním počítači. Najdete v článku na [nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
+> Před všechny příkazy Service Fabric hello mohou být použity v prostředí PowerShell, musíte nejdřív tooconnect toohello clusteru pomocí hello `Connect-ServiceFabricCluster` rutiny. Podobně se předpokládá, že hello clusteru již byla nastavena na místním počítači. Najdete v článku hello na [nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
 > 
 > 
 
-Po vytvoření projektu v sadě Visual Studio, můžete použít příkaz prostředí PowerShell [kopie ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) zkopírovat balíček aplikace do úložišti ImageStore. Pokud chcete ověřit balíček aplikace místně, použijte [Test ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) rutiny. Dalším krokem je registrace aplikace pomocí modulu runtime Service Fabric [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) rutiny. Posledním krokem je spuštění instance aplikace pomocí [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny.  Tyto tři kroky jsou podobná pomocí **nasadit** položky nabídky v sadě Visual Studio.
+Po sestavení hello projektu v sadě Visual Studio, můžete použít příkaz prostředí PowerShell hello [kopie ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) toocopy hello aplikace balíčku toohello úložiště bitových kopií. Pokud chcete tooverify hello balíček aplikace místně, použijte hello [Test ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) rutiny. Hello dalším krokem je tooregister hello aplikace toohello modulu runtime Service Fabric pomocí hello [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) rutiny. Hello posledním krokem je toostart instance aplikace hello pomocí hello [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny.  Tyto tři kroky jsou obdobou toousing hello **nasadit** položky nabídky v sadě Visual Studio.
 
-Teď můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webová služba, která lze procházet k v aplikaci Internet Explorer tak, že zadáte [http://localhost: 8081/visualobjects](http://localhost:8081/visualobjects) na panelu Adresa.  Měli byste vidět některé plovoucí vizuální objekty manipulaci se na obrazovce.  Kromě toho můžete použít [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) a zkontrolujte stav aplikace.
+Teď můžete použít [aplikace Service Fabric Explorer tooview hello clusteru a hello](service-fabric-visualizing-your-cluster.md). Hello aplikace má webová služba, která může být navigaci tooin Internet Explorer tak, že zadáte [http://localhost: 8081/visualobjects](http://localhost:8081/visualobjects) v panelu Adresa hello.  Měli byste vidět některé plovoucí vizuální objekty pohyb v úvodní obrazovka.  Kromě toho můžete použít [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) toocheck stav aplikace hello.
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Aktualizace Ukázka vizuální objekty
-Můžete si všimnout, že s verzí, který byl nasazen v kroku 1, není otočit vizuální objekty. Umožňuje upgradovat tuto aplikaci do jednoho kde také otočit vizuální objekty.
+## <a name="step-2-update-hello-visual-objects-sample"></a>Krok 2: Aktualizace Ukázka vizuální objekty hello
+Můžete si všimnout, že s verzí hello, který byl nasazen v kroku 1, není otočit hello vizuální objekty. Umožňuje upgradovat tento tooone aplikace, kde také otočit hello vizuální objekty.
 
-Vyberte projekt VisualObjects.ActorService v rámci řešení VisualObjects a otevřete soubor StatefulVisualObjectActor.cs. V rámci tohoto souboru, přejděte k metodě `MoveObject`, komentář `this.State.Move()`a zrušte komentář u `this.State.Move(true)`. Tato změna otočí objekty po upgradu služby.
+Vyberte projekt VisualObjects.ActorService hello v rámci hello VisualObjects řešení a otevřete soubor StatefulVisualObjectActor.cs hello. V rámci tohoto souboru, přejděte metoda toohello `MoveObject`, komentář `this.State.Move()`a zrušte komentář u `this.State.Move(true)`. Tato změna otočí hello objekty po upgradu služby hello.
 
-Také je potřeba aktualizovat *ServiceManifest.xml* projektu v souboru (pod PackageRoot) **VisualObjects.ActorService**. Aktualizace *CodePackage* a verze 2.0 a odpovídající řádky v *ServiceManifest.xml* souboru.
-Visual Studio můžete použít *upravit soubory manifestu* možnost po kliknutí pravým tlačítkem na řešení provést změny souboru manifestu.
+Potřebujeme tooupdate hello *ServiceManifest.xml* hello projektu v souboru (pod PackageRoot) **VisualObjects.ActorService**. Aktualizace hello *CodePackage* hello too2.0 verze služby a hello odpovídající řádky v hello *ServiceManifest.xml* souboru.
+Můžete použít hello Visual Studio *upravit soubory manifestu* možnost po kliknutí pravým tlačítkem na hello řešení toomake hello souboru manifestu změny.
 
-Po provedení změn v manifestu by měl vypadat takto (zvýrazněné části zobrazit změny):
+Po provedení změn hello, hello manifest by měl vypadat jako následující hello (zvýrazněné části zobrazit změny hello):
 
 ```xml
 <ServiceManifestName="VisualObjects.ActorService" Version="2.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -65,7 +65,7 @@ Po provedení změn v manifestu by měl vypadat takto (zvýrazněné části zob
 <CodePackageName="Code" Version="2.0">
 ```
 
-Nyní *ApplicationManifest.xml* souboru (v části **VisualObjects** projektu v části **VisualObjects** řešení) se aktualizuje na verzi 2.0 **VisualObjects.ActorService** projektu. Kromě toho verze aplikace se aktualizuje 2.0.0.0 z 1.0.0.0. *ApplicationManifest.xml* by měl vypadat jako následující fragment kódu:
+Nyní hello *ApplicationManifest.xml* souboru (v části hello **VisualObjects** projektu v části hello **VisualObjects** řešení) je aktualizovaný tooversion 2.0 Dobrý den  **VisualObjects.ActorService** projektu. Kromě toho je verze aplikace hello aktualizované too2.0.0.0 z 1.0.0.0. Hello *ApplicationManifest.xml* by měl vypadají hello následující fragment kódu:
 
 ```xml
 <ApplicationManifestxmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -74,14 +74,14 @@ Nyní *ApplicationManifest.xml* souboru (v části **VisualObjects** projektu v 
 ```
 
 
-Nyní, sestavte projekt tak, že vyberete jenom na **ActorService** projekt a potom kliknete pravým tlačítkem a vyberete **sestavení** možnost v sadě Visual Studio. Pokud vyberete **znovu vytvořit všechny**, verze pro všechny projekty, by měl aktualizovat, protože kód by změnily. Dále umožňuje kliknutím pravým tlačítkem na balíček aktualizovanou aplikaci ***VisualObjectsApplication***, vyberte v nabídce Service Fabric a zvolením **balíček**. Tato akce vytvoří balíček aplikace, které se dá nasadit.  Aktualizovaná aplikace je připravená k nasazení.
+Nyní, sestavení projektu hello výběrem jenom hello **ActorService** projekt a potom kliknete pravým tlačítkem a vyberete hello **sestavení** možnost v sadě Visual Studio. Pokud vyberete **znovu vytvořit všechny**, hello verze pro všechny projekty, by měl aktualizovat, protože by změnily hello kódu. Další, můžeme aktualizovat aplikace kliknutím pravým tlačítkem na balíček hello ***VisualObjectsApplication***, výběrem hello nabídky Service Fabric a zvolením **balíček**. Tato akce vytvoří balíček aplikace, které se dá nasadit.  Aktualizovaná aplikace je připravená toobe nasazení.
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: Rozhodněte o zásady stavu a upgradujte parametry
-Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a [procesu upgradu](service-fabric-application-upgrade.md) získat dostatečné povědomí o různé parametry upgradu, vypršení časových limitů a kritérium stavu použít. V tomto návodu je kritéria hodnocení stavu služby nastavenou na výchozí (a doporučené) hodnoty, které znamená, že by měly být všechny služby a instance *pořádku* po upgradu.  
+Seznamte se s hello [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a hello [procesu upgradu](service-fabric-application-upgrade.md) tooget dobrou znalost jazyka hello různé parametry, vypršení časových limitů a stavu kritérium použít upgradu . V tomto návodu je kritéria hodnocení stavu služby hello nastavit výchozí toohello (a doporučené) hodnoty, které znamená, že by měly být všechny služby a instance *pořádku* po upgradu hello.  
 
-Však umožňuje zvýšit *HealthCheckStableDuration* na 60 sekund (tak, aby služby jsou v pořádku po dobu 20 sekund před upgradem na další aktualizaci domény).  Umožňuje také nastavit *UpgradeDomainTimeout* být 1200 sekund a *UpgradeTimeout* být 3000 sekund.
+Však umožňuje zvýšit hello *HealthCheckStableDuration* too60 sekund (tak, aby aspoň 20 sekund před provedením upgradu hello toohello další aktualizace domény hello služby jsou v pořádku).  Umožňuje také nastavit hello *UpgradeDomainTimeout* toobe 1200 sekund a hello *UpgradeTimeout* toobe 3000 sekund.
 
-Nakonec můžeme také nastavit *UpgradeFailureAction* vrátit zpět. Tato možnost vyžaduje Service Fabric na vrátit zpět na předchozí verzi aplikace, pokud zjistí jakékoli problémy při upgradu. Proto při spouštění upgradu (v kroku 4), jsou zadány následující parametry:
+Nakonec také nastavíme hello *UpgradeFailureAction* toorollback. Tato možnost vyžaduje Service Fabric tooroll back hello aplikace toohello předchozí verze, pokud zjistí jakékoli problémy při upgradu hello. Proto při spouštění upgradu hello (v kroku 4), hello zadat následující parametry jsou:
 
 FailureAction = vrácení zpět
 
@@ -92,53 +92,53 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>Krok 4: Příprava aplikací pro upgrade
-Aplikace je teď vytvořený a připravené k upgradu. Pokud jste otevře okno prostředí PowerShell jako správce a zadejte [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), ponechte vás informuje, že je aplikace typu 1.0.0.0 **VisualObjects** který je nasazen.  
+Teď je vytvořená aplikace hello a připravena toobe upgradovat. Pokud jste otevře okno prostředí PowerShell jako správce a zadejte [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), ponechte vás informuje, že je aplikace typu 1.0.0.0 **VisualObjects** který je nasazen.  
 
-Aplikace je uložen pod následující relativní cestu, kde nekomprimovaným Service Fabric SDK - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. V tomto adresáři, kde je uložen balíček aplikace byste měli najít složku "Balíček". Zkontrolujte časová razítka zajistit, že je na nejnovější verzi (budete muset upravit cesty správně také).
+Hello balíčku aplikace je uložen pod následující hello relativní cestu, kde nekomprimovaným hello Service Fabric SDK - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. V tomto adresáři, kde je uložen balíček aplikace hello byste měli najít složku "Balíček". Zkontrolujte tooensure hello časová razítka, že je sestavení nejnovější hello (může být zapotřebí toomodify hello správně také cesty).
 
-Nyní Pojďme zkopírujte balíček aktualizovanou aplikaci služby prostředků infrastruktury úložiště bitových kopií (kde jsou balíčky aplikací uložené pomocí Service Fabric). Parametr *ApplicationPackagePathInImageStore* informuje o tom, kde ji můžete najít balíček aplikace Service Fabric. Jsme umístili aktualizovanou aplikaci "VisualObjects\_V2" pomocí následujícího příkazu (budete muset znovu správně Změna cest).
+Teď umožňuje kopírování hello aktualizovat toohello balíčku aplikace úložiště bitových kopií prostředků infrastruktury služby (kde jsou hello balíčky aplikací uložené pomocí Service Fabric). Hello parametr *ApplicationPackagePathInImageStore* informuje Service Fabric, kde ji můžete najít balíček aplikace hello. Jsme umístili aplikace hello aktualizovat "VisualObjects\_V2" s hello následující příkaz (může být zapotřebí toomodify cesty znovu správně).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package
 -ImageStoreConnectionString fabric:ImageStore   -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-Dalším krokem je zaregistrovat tuto aplikaci Service Fabric, která je možné provést pomocí [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) příkaz:
+dalším krokem Hello je tooregister tuto aplikaci s Service Fabric, která je možné provést pomocí hello [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) příkaz:
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
 ```
 
-Pokud předchozí příkaz k neúspěchu, je pravděpodobné, že je nutné znovu vytvořit všechny služby. Jak je uvedeno v kroku 2, budete muset aktualizovat vaši webovou verzi.
+Pokud hello předchozí příkaz k neúspěchu, je pravděpodobné, že to musíte znovu vytvořit všechny služby. Jak je uvedeno v kroku 2, může mít tooupdate vaši webovou verzi.
 
-## <a name="step-5-start-the-application-upgrade"></a>Krok 5: Spusťte upgrade aplikace
-Nyní jsme všechno nastavené ke spuštění upgradu aplikace pomocí [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) příkaz:
+## <a name="step-5-start-hello-application-upgrade"></a>Krok 5: Spuštění upgradu aplikace hello
+Nyní jsme všechny aplikace hello toostart sadu upgradu pomocí hello [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) příkaz:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
 ```
 
 
-Název aplikace je stejný, jak je popsáno v *ApplicationManifest.xml* souboru. Service Fabric používá k identifikaci, která aplikace je získávání upgradovat tento název. Pokud jste nastavili vypršení časových limitů jako příliš krátká, můžete se setkat selhání zpráva, že problém. V části řešení potíží, případně zvyšte vypršení časových limitů.
+Hello název aplikace je hello stejná jak je popsáno v hello *ApplicationManifest.xml* souboru. Service Fabric používá tento název tooidentify aplikaci, pro kterou je získávání upgradovat. Pokud jste nastavili hello vypršení časových limitů toobe příliš krátký, můžete se setkat selhání zpráva, že stavy hello problém. Najdete v části řešení potíží s toohello, případně zvyšte hello vypršení časových limitů.
 
-Nyní, jako aplikace upgradu bude pokračovat, můžete monitorovat pomocí Service Fabric Explorer nebo pomocí [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) příkaz prostředí PowerShell: 
+Nyní, při hello aplikace upgradu bude pokračovat, můžete sledovat pomocí Service Fabric Explorer nebo pomocí hello [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) příkaz prostředí PowerShell: 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 ```
 
-Za několik minut, stav, který jste získali pomocí předchozí příkaz prostředí PowerShell, stavu, aby byly upgradovány všechny aktualizace domény (Dokončit). A by měl zjistit, že vizuální objekty v okně prohlížeče spustili otáčení!
+Za několik minut, stav hello, který jste získali pomocí hello předcházející příkaz prostředí PowerShell, stavu, aby byly upgradovány všechny aktualizace domény (Dokončit). A by měl zjistit, že hello vizuální objekty v okně prohlížeče spustili otáčení!
 
-Pokuste se upgrade z verze 2 na verze 3 nebo z verze 2 na verze 1 jako cvičení. Přesun z verze 2 na verze 1 také považuje upgrade. Přehrání s vypršení časových limitů a zásad stavu proveďte vlastní obeznámeni s nimi. Při nasazení do Azure clusteru, parametry nutné nastavit správně. Je vhodné můžete nastavit vypršení časových limitů.
+Pokuste se upgrade z verze 2 tooversion 3, nebo z verze 2 tooversion 1 jako cvičení. Přechod z verze 2 tooversion 1 také považuje upgrade. Přehrání s vypršení časových limitů a toomake zásady stavu sami obeznámeni s nimi. Při nasazování tooan clusteru Azure, hello parametry nutné toobe sadu správně. Můžete je dobré tooset hello vypršení časových limitů.
 
 ## <a name="next-steps"></a>Další kroky
 [Upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
 
 Řídí, jak vaše aplikace upgraduje pomocí [upgrade parametry](service-fabric-application-upgrade-parameters.md).
 
-Zkontrolujte upgradů aplikace kompatibilní podle naučit se používat [serializace dat](service-fabric-application-upgrade-data-serialization.md).
+Aby aplikace upgradů kompatibilní metodou učení jak toouse [serializace dat](service-fabric-application-upgrade-data-serialization.md).
 
-Další informace o použití pokročilých funkcí při upgradu vaší aplikace tím, že odkazuje na [Advanced témata](service-fabric-application-upgrade-advanced.md).
+Zjistěte, jak toouse pokročilé funkce při upgradu vaší aplikace tím, že odkazuje příliš[Advanced témata](service-fabric-application-upgrade-advanced.md).
 
-Řešení běžných potíží v upgradů aplikací podle kroků v části [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).
+Řešení běžných potíží v upgradů aplikací tím, že odkazuje toohello kroky v [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).
 

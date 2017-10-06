@@ -1,6 +1,6 @@
 ---
-title: "Nahraďte skříň na zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje, jak odeberete a nahradíte skříň pro StorSimple primární skříň nebo EBOD skříň."
+title: "Skříň aaaReplace na zařízení řady StorSimple 8000 | Microsoft Docs"
+description: "Popisuje, jak tooremove a nahradit text hello skříň pro StorSimple primární skříň nebo EBOD skříň."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f8576d63520a6f7d3267180d2a68d4fc38fd48fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replace-the-chassis-on-your-storsimple-device"></a>Nahraďte skříň zařízení StorSimple
+# <a name="replace-hello-chassis-on-your-storsimple-device"></a>Nahraďte hello skříň zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Tento kurz vysvětluje, jak odeberete a nahradíte skříň v zařízení řady StorSimple 8000. Model StorSimple 8100 je zařízení jeden skříň (jednom šasi), zatímco 8600 je zařízení duální skříň (dvě chassis). Pro 8600 model jsou potenciálně dvě skříň, které by mohlo selhat v zařízení: Skříň pro primární skříň nebo skříň pro EBOD skříň.
+Tento kurz vysvětluje, jak tooremove a nahraďte skříň v zařízení řady StorSimple 8000. Hello StorSimple 8100 modelu je zařízení jeden skříň (jednom šasi), zatímco hello 8600 je zařízení duální skříň (dvě chassis). Pro 8600 model jsou potenciálně dvě skříň, které by mohlo selhat v zařízení hello: hello skříň pro primární skříň hello nebo hello skříň pro hello EBOD skříň.
 
-V obou případech skříň nahrazení, který je dodáván společností Microsoft je prázdný. Žádné napájení a chlazení moduly (PCMs), moduly řadič diskové jednotky SSD (Solid-State Drive), pevných disků (HDD) nebo EBOD moduly budou zahrnuty.
+V obou případech skříň hello nahrazení, který je dodáván společností Microsoft je prázdný. Žádné napájení a chlazení moduly (PCMs), moduly řadič diskové jednotky SSD (Solid-State Drive), pevných disků (HDD) nebo EBOD moduly budou zahrnuty.
 
 > [!IMPORTANT]
-> Před odebráním a nahraďte skříň, informace zabezpečení v [StorSimple hardwarové součásti nahrazení](storsimple-hardware-component-replacement.md).
+> Před odebírání a nahrazování hello skříň, zkontrolujte informace o zabezpečení hello v [StorSimple hardwarové součásti nahrazení](storsimple-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="remove-the-chassis"></a>Odebrat skříň.
-Proveďte následující kroky k odebrání skříň zařízení StorSimple.
+## <a name="remove-hello-chassis"></a>Odebrat hello skříň
+Proveďte následující kroky tooremove hello skříň zařízení StorSimple hello.
 
-#### <a name="to-remove-a-chassis"></a>Chcete-li odebrat skříň
-1. Ujistěte se, že je zařízení StorSimple vypnout a odpojit od všech zdrojů energie.
-2. Odeberte všechny sítě a SAS kabely, pokud je k dispozici.
-3. Odeberte jednotku z racku.
-4. Odeberte všechny jednotky a poznamenejte si sloty, ze kterých budou odstraněny. Další informace najdete v tématu [odebrat z disku](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
-5. Ve skříni EBOD (Pokud se jedná skříň, která se nezdařilo) odebrat moduly EBOD řadiče. Další informace najdete v tématu [odebrat řadič EBOD](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
+#### <a name="tooremove-a-chassis"></a>tooremove skříň
+1. Zajistěte, aby toto zařízení StorSimple hello je vypnout a odpojit od všech zdrojů energie hello.
+2. Odeberte všechny síťové hello a SAS kabely, pokud je k dispozici.
+3. Odeberte hello jednotku ze hello rack.
+4. Odeberte všechny jednotky hello a poznamenejte si hello sloty, ze kterých budou odstraněny. Další informace najdete v tématu [odebrat hello disku](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
+5. Na hello EBOD skříň (Pokud se jedná hello skříň, do které se nezdařilo) odeberte hello EBOD řadiče moduly. Další informace najdete v tématu [odebrat řadič EBOD](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
    
-    Na primární skříň (Pokud se jedná skříň, která se nezdařilo) odeberte řadiče a poznamenejte si sloty, ze kterých budou odstraněny. Další informace najdete v tématu [odebrání řadiče](storsimple-controller-replacement.md#remove-a-controller).
+    Na hello primární skříň (Pokud se jedná hello skříň, do které se nezdařilo), odeberte hello řadiče a poznamenejte si hello sloty, ze kterých budou odstraněny. Další informace najdete v tématu [odebrání řadiče](storsimple-controller-replacement.md#remove-a-controller).
 
-## <a name="install-the-chassis"></a>Nainstalujte skříň.
-Proveďte následující kroky instalace skříň na zařízení StorSimple.
+## <a name="install-hello-chassis"></a>Nainstalujte hello skříň
+Proveďte následující kroky tooinstall hello skříň zařízení StorSimple hello.
 
-#### <a name="to-install-a-chassis"></a>Chcete-li nainstalovat skříň
-1. Připojte skříň v racku. Další informace najdete v tématu [Rack připojení vaší 8100 StorSimple zařízení](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) nebo [zařízení 8600 vaší StorSimple Rack připojení](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
-2. Po skříň připojena v racku, nainstalujte na stejném místě, které byly dříve nainstalovány v moduly řadiče.
-3. Nainstalujte na discích ve stejné pozic a sloty, které byly dříve nainstalovány v.
+#### <a name="tooinstall-a-chassis"></a>tooinstall skříň
+1. Připojte hello skříň v racku hello. Další informace najdete v tématu [Rack připojení vaší 8100 StorSimple zařízení](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) nebo [zařízení 8600 vaší StorSimple Rack připojení](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
+2. Po hello skříň namontovat do racku hello, nainstalujte v hello stejné umisťuje, zda byly dříve nainstalovány v hello řadiče moduly.
+3. Instalace hello jednotek v hello stejné umisťuje a přihrádek, zda byly dříve nainstalovány v.
    
    > [!NOTE]
-   > Doporučujeme nejprve nainstalovat SSD v přihrádkách a pak nainstalujte pevné disky.
+   > Doporučujeme nejprve nainstalovat hello SSD v hello sloty a pak nainstalujte HDD hello.
    > 
    > 
-4. U zařízení připojené v racku a komponenty nainstalované připojení zařízení k příslušné power zdroje a zapněte zařízení. Podrobnosti najdete v tématu [zapojení kabeláže zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [zapojení kabeláže zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+4. S hello zařízení namontováno v racku hello a hello komponenty nainstalované, připojit vaše zařízení toohello odpovídající power zdroje a zapnout hello zařízení. Podrobnosti najdete v tématu [zapojení kabeláže zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [zapojení kabeláže zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o [StorSimple hardwarové součásti nahrazení](storsimple-hardware-component-replacement.md).

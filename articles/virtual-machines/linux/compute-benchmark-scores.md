@@ -1,5 +1,5 @@
 ---
-title: "Výpočetní srovnávacího testu skóre pro virtuální počítače s Linuxem | Microsoft Docs"
+title: "srovnávací test aaaCompute skóre pro virtuální počítače s Linuxem | Microsoft Docs"
 description: "Porovnání CoreMark výpočetní srovnávacího testu skóre pro virtuální počítače Azure se systémem Linux"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: 382c21343f1a41438277dc288dcdf136e4e1437e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2c1ca5fbd80cea030ac2cc22156c4e9444c6726
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače s Linuxem
-Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon systémem Ubuntu řazení pro virtuální počítač Azure vysoce výkonné. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuálních počítačů Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Hello následující CoreMark srovnávacího testu skóre zobrazit výpočetní výkon systémem Ubuntu řazení pro virtuální počítač Azure vysoce výkonné. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuálních počítačů Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="a-series---compute-intensive"></a>A-series - náročné na výkon
 | Velikost | Vcpu | Uzly NUMA | Procesor | Spustí | Iterace za sekundu | StdDev |
@@ -84,9 +84,9 @@ Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon
 | Standard_H16mr |16 |2 |Intel Xeon E5-. 2667 v3 @ 3,2 GHz |28 |274,523 |5,698 |
 
 ## <a name="about-coremark"></a>O CoreMark
-Linux čísla byly počítaný spuštěním [CoreMark](http://www.eembc.org/coremark/faq.php) na Ubuntu. CoreMark byl nakonfigurován s počet vláken, počet virtuálních procesorů, a nastavte souběžnosti na PThreads. Cílový počet iterací byla upravena podle očekávaný výkon zajistit runtime aspoň 20 sekund (obvykle mnohem déle). Konečný výsledek představuje počet iterací dokončit rozdělené podle počtu sekund, po které trvalo spuštění testu. Každý test byl spuštěn alespoň sedm časy pro každý virtuální počítač. Testy (s výjimkou pro H series_ byly spuštěné října 2015 na víc virtuálních počítačů v každé oblasti Azure veřejné virtuálního počítače byl v podporované na datum spustit.
+Linux čísla byly počítaný spuštěním [CoreMark](http://www.eembc.org/coremark/faq.php) na Ubuntu. CoreMark byl nakonfigurován s hello počet vláken sadu toohello počet virtuálních procesorů a souběžnosti nastavte tooPThreads. Hello cílový počet iterací byla upravena podle tooprovide očekávaný výkon modulu runtime aspoň 20 sekund (obvykle mnohem déle). Konečný výsledek Hello představuje hello počet iterací dokončit dělený hello počet sekund, po které trvalo toorun hello testu. Každý test byl spuštěn alespoň sedm časy pro každý virtuální počítač. Testy (s výjimkou pro H series_ byly spuštěné října 2015 na víc virtuálních počítačů v každé oblasti Azure veřejné hello virtuálního počítače byl v hello datum spuštění podporovaná v.
 
 ## <a name="next-steps"></a>Další kroky
 * Kapacity úložiště, podrobnosti o disku a další důležité informace pro výběr mezi velikosti virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Ke spouštění skriptů CoreMark na virtuální počítače s Linuxem, stáhněte si [CoreMark pack skriptu](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
+* toorun hello CoreMark skriptů na virtuální počítače s Linuxem, stáhněte si hello [CoreMark pack skriptu](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
 

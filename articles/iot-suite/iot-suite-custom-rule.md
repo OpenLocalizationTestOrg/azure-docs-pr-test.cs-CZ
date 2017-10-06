@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vlastního pravidla v sadě Azure IoT Suite | Microsoft Docs"
-description: "Postup vytvoření vlastního pravidla v sadě IoT Suite předkonfigurované řešení."
+title: "aaaCreate vlastní pravidla v sadě Azure IoT Suite | Microsoft Docs"
+description: "Jak toocreate vlastní pravidlo v prostředí IoT Suite předkonfigurované řešení."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,56 +15,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: d58c27234ea05a82aaa3e8d72f70c1449980df09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6c5bb2ca54f3f17b99ad482e727c8e9fa28d7fe5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>Vytvoření vlastního pravidla v předkonfigurovaného řešení vzdáleného monitorování
+# <a name="create-a-custom-rule-in-hello-remote-monitoring-preconfigured-solution"></a>Vytvoření vlastního pravidla v hello předkonfigurovanému řešení vzdáleného monitorování
 
 ## <a name="introduction"></a>Úvod
 
-V předkonfigurovaných řešení, můžete nakonfigurovat [pravidla, která spouští při telemetrie hodnota zařízení dosáhne určité prahové hodnoty][lnk-builtin-rule]. [Použití dynamické telemetrie s vzdálené monitorování předkonfigurované řešení] [ lnk-dynamic-telemetry] popisuje, jak můžete přidat vlastní telemetrii hodnoty, jako například *ExternalTemperature* do řešení. Tento článek ukazuje, jak vytvořit vlastní pravidlo pro dynamické telemetrie typy ve vašem řešení.
+V případě hello předkonfigurované řešení, můžete nakonfigurovat [pravidla, která spouští při telemetrie hodnota zařízení dosáhne určité prahové hodnoty][lnk-builtin-rule]. [Použití dynamické telemetrie s hello předkonfigurovanému řešení vzdáleného monitorování] [ lnk-dynamic-telemetry] popisuje, jak můžete přidat vlastní telemetrii hodnoty, jako například *ExternalTemperature* tooyour řešení. Tento článek ukazuje, jak toocreate vlastní pravidlo pro dynamické telemetrie typy ve vašem řešení.
 
-Tento kurz používá jednoduchý Node.js simulované zařízení k vygenerování dynamických telemetrie k odeslání do back-end předkonfigurovaných řešení. Potom přidáte vlastní pravidla v **RemoteMonitoring** řešení sady Visual Studio a nasadit tento vlastní back-end do vašeho předplatného Azure.
+Tento kurz používá jednoduchý Node.js simulované zařízení toogenerate dynamické telemetrie toosend toohello předkonfigurované řešení back-end. Pak přidejte vlastní pravidla ve hello **RemoteMonitoring** řešení sady Visual Studio a nasadit tento vlastní back-end tooyour předplatného Azure.
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu potřebujete:
 
 * Aktivní předplatné Azure. Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk_free_trial].
-* [Node.js] [ lnk-node] verze 0.12.x nebo novější k vytvoření simulovaného zařízení.
-* K úpravě předkonfigurované řešení Visual Studio 2015 nebo Visual Studio 2017 končit nové pravidel.
+* [Node.js] [ lnk-node] verze 0.12.x nebo novější toocreate simulované zařízení.
+* Visual Studio 2015 nebo Visual Studio 2017 toomodify hello předkonfigurované back-end řešení s nové pravidel.
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-Poznamenejte si název řešení, které jste zvolili pro vaše nasazení. Je třeba tento název řešení později v tomto kurzu.
+Poznamenejte si název hello řešení, které jste zvolili pro vaše nasazení. Je třeba tento název řešení později v tomto kurzu.
 
 [!INCLUDE [iot-suite-send-external-temperature](../../includes/iot-suite-send-external-temperature.md)]
 
-Po ověření, že posílá můžete zastavit konzolovou aplikaci softwaru Node.js **ExternalTemperature** telemetrie s předkonfigurovaným řešením. V okně konzoly zachovat otevřít, protože je znovu spustit tuto konzolovou aplikaci softwaru Node.js po do řešení přidat vlastní pravidlo.
+Po ověření, že posílá můžete zastavit konzolovou aplikaci softwaru Node.js hello **ExternalTemperature** telemetrie toohello předkonfigurované řešení. Vzhledem k tomu, že spustíte tuto konzolovou aplikaci softwaru Node.js znovu po přidání hello vlastní pravidlo toohello řešení, nechte okno konzoly hello otevřené.
 
 ## <a name="rule-storage-locations"></a>Pravidlo umístění úložiště
 
 Informace o pravidlech je uchován v dvou umístěních:
 
-* **DeviceRulesNormalizedTable** tabulce – v této tabulce jsou uloženy normalizovaný odkaz z pravidel definovaných pomocí portálu řešení. Když na portálu řešení zobrazuje pravidla zařízení, vyžádá si tuto tabulku definice pravidla.
-* **DeviceRules** objektů blob – tento objekt blob ukládá všechna pravidla pro všechny registrované zařízení a je definován jako odkaz na vstup do úlohy Azure Stream Analytics definována.
+* **DeviceRulesNormalizedTable** tabulce – v této tabulce jsou uloženy normalizovaný odkazovat toohello pravidla definované portál řešení hello. Když hello portál řešení zobrazí pravidla zařízení, vyžádá si tuto tabulku hello Definice pravidla.
+* **DeviceRules** objektů blob – tento objekt blob ukládá všechna pravidla hello definovaná pro všechny registrované zařízení a je definován jako úlohy Azure Stream Analytics vstupní toohello odkaz.
  
-Při aktualizaci existující pravidlo nebo definovat nové pravidlo na portálu řešení, tabulky a objektů blob jsou aktualizovány tak, aby odrážely změny. Definice pravidla zobrazí na portálu pochází z tabulky úložiště a definice pravidla odkazuje úlohy Stream Analytics pocházejí z objektu blob. 
+Při aktualizaci existující pravidlo nebo definovat nové pravidlo hello řešení portálu, hello tabulky a objektů blob jsou aktualizované tooreflect hello změny. pravidlo Hello definice zobrazení na portálu hello pocházejí z tabulky úložiště hello a hello pravidlo, že definice odkazuje úlohy Stream Analytics hello pochází z objektu blob hello. 
 
-## <a name="update-the-remotemonitoring-visual-studio-solution"></a>Aktualizace řešení RemoteMonitoring Visual Studio
+## <a name="update-hello-remotemonitoring-visual-studio-solution"></a>Aktualizovat řešení sady Visual Studio RemoteMonitoring hello
 
-Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonitoring Visual Studio zahrnout nové pravidlo, které používá **ExternalTemperature** telemetrická data odesílaná ze simulovaného zařízení:
+Hello následující kroky vám ukážou, jak toomodify hello tooinclude řešení sady Visual Studio RemoteMonitoring nové pravidlo, které používá hello **ExternalTemperature** telemetrická data odesílaná ze simulovaného zařízení hello:
 
-1. Pokud jste tak již neučinili, klonovat **azure-iot-remote-monitoring** úložiště do vhodného umístění na místním počítači pomocí následujícího příkazu Git:
+1. Pokud jste tak již neučinili, klonování hello **azure-iot-remote-monitoring** úložiště tooa vhodný umístění na místním počítači pomocí následujícího příkazu Git hello:
 
     ```
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 
-2. V sadě Visual Studio otevřete soubor RemoteMonitoring.sln z vaší místní kopii **azure-iot-remote-monitoring** úložiště.
+2. V sadě Visual Studio otevřete soubor RemoteMonitoring.sln hello z vaší místní kopii hello **azure-iot-remote-monitoring** úložiště.
 
-3. Otevřete soubor Infrastructure\Models\DeviceRuleBlobEntity.cs a přidejte **ExternalTemperature** vlastnost následujícím způsobem:
+3. Otevřete soubor hello Infrastructure\Models\DeviceRuleBlobEntity.cs a přidejte **ExternalTemperature** vlastnost následujícím způsobem:
 
     ```csharp
     public double? Temperature { get; set; }
@@ -72,7 +72,7 @@ Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonito
     public double? ExternalTemperature { get; set; }
     ```
 
-4. Ve stejném souboru, přidejte **ExternalTemperatureRuleOutput** vlastnost následujícím způsobem:
+4. V hello stejný soubor, přidejte **ExternalTemperatureRuleOutput** vlastnost následujícím způsobem:
 
     ```csharp
     public string TemperatureRuleOutput { get; set; }
@@ -80,7 +80,7 @@ Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonito
     public string ExternalTemperatureRuleOutput { get; set; }
     ```
 
-5. Otevřete soubor Infrastructure\Models\DeviceRuleDataFields.cs a přidejte následující **ExternalTemperature** vlastnost po existující **vlhkosti** vlastnost:
+5. Otevřete soubor hello Infrastructure\Models\DeviceRuleDataFields.cs a přidejte následující hello **ExternalTemperature** vlastnost po hello existující **vlhkosti** vlastnost:
 
     ```csharp
     public static string ExternalTemperature
@@ -89,7 +89,7 @@ Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonito
     }
     ```
 
-6. Ve stejném souboru, aktualizovat **_availableDataFields** tak, aby zahrnoval **ExternalTemperature** následujícím způsobem:
+6. V hello stejného souboru, aktualizujte hello **_availableDataFields** metoda tooinclude **ExternalTemperature** následujícím způsobem:
 
     ```csharp
     private static List<string> _availableDataFields = new List<string>
@@ -98,7 +98,7 @@ Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonito
     };
     ```
 
-7. Otevřete soubor Infrastructure\Repository\DeviceRulesRepository.cs a upravit **BuildBlobEntityListFromTableRows** metoda následujícím způsobem:
+7. Otevřete soubor hello Infrastructure\Repository\DeviceRulesRepository.cs a upravit hello **BuildBlobEntityListFromTableRows** metoda následujícím způsobem:
 
     ```csharp
     else if (rule.DataField == DeviceRuleDataFields.Humidity)
@@ -113,29 +113,29 @@ Následující kroky vám ukážou, jak upravit řešení nástroje RemoteMonito
     }
     ```
 
-## <a name="rebuild-and-redeploy-the-solution"></a>Znovu sestavili a nasadili řešení.
+## <a name="rebuild-and-redeploy-hello-solution"></a>Znovu sestavili a nasadili hello řešení.
 
-Teď můžete nasadit aktualizované řešení k předplatnému Azure.
+Teď můžete nasadit řešení tooyour hello aktualizovat předplatné Azure.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními a přejděte do kořenového adresáře místní kopii úložiště azure-iot-remote-monitoring.
+1. Otevřete příkazový řádek se zvýšenými oprávněními a přejděte toohello kořenovém místní kopii úložiště azure-iot-remote-monitoring hello.
 
-2. K nasazení řešení aktualizované, spusťte následující příkaz nahraďte **{název nasazení}** s názvem vašeho nasazení předkonfigurované řešení, které jste si poznamenali dříve:
+2. toodeploy řešení aktualizované, spusťte následující příkaz nahraďte hello **{název nasazení}** s názvem hello vašeho nasazení předkonfigurované řešení, které jste si poznamenali dříve:
 
     ```
     build.cmd cloud release {deployment name}
     ```
 
-## <a name="update-the-stream-analytics-job"></a>Aktualizace úlohy služby Stream Analytics
+## <a name="update-hello-stream-analytics-job"></a>Úloha Stream Analytics hello aktualizace
 
-Po dokončení nasazení můžete aktualizovat úlohu služby Stream Analytics používat nové definice pravidla.
+Po dokončení nasazení hello můžete aktualizovat hello Stream Analytics toouse hello nové pravidel definice úlohy.
 
-1. Na portálu Azure přejděte do skupiny prostředků, která obsahuje vaše prostředky předkonfigurované řešení. Tato skupina prostředků má stejný název, který jste zadali pro řešení během nasazení.
+1. V hello portálu Azure přejděte toohello skupinu prostředků, která obsahuje vaše prostředky předkonfigurované řešení. Tato skupina prostředků má stejný název, kterou jste zadali pro hello hello řešení během nasazení hello.
 
-2. Přejděte na název nasazení {} – úloha Stream Analytics pravidla. 
+2. Přejděte toohello {název nasazení}-úlohy Stream Analytics pravidla. 
 
-3. Klikněte na tlačítko **Zastavit** zastavit úlohu služby Stream Analytics spuštění. (Je nutné počkat úlohu streamování zastavit před úpravou dotazu).
+3. Klikněte na tlačítko **Zastavit** úlohy služby Stream Analytics hello toostop spuštění. (Je nutné počkat hello streamování úlohy toostop před úpravou dotazu hello).
 
-4. Klikněte na tlačítko **dotazu**. Upravit dotaz tak, aby zahrnují **vyberte** příkaz pro **ExternalTemperature**. Následující příklad ukazuje dokončení dotazu s novým **vyberte** příkaz:
+4. Klikněte na tlačítko **dotazu**. Upravit hello dotazu tooinclude hello **vyberte** příkaz pro **ExternalTemperature**. Hello následující příklad ukazuje hello dokončení dotazu s hello nové **vyberte** příkaz:
 
     ```
     WITH AlarmsData AS 
@@ -190,39 +190,39 @@ Po dokončení nasazení můžete aktualizovat úlohu služby Stream Analytics p
     FROM AlarmsData
     ```
 
-5. Klikněte na tlačítko **Uložit** změnit aktualizované pravidlo dotazu.
+5. Klikněte na tlačítko **Uložit** toochange hello aktualizovat pravidlo dotazu.
 
-6. Klikněte na tlačítko **spustit** při spuštění úlohy Stream Analytics znovu spustit.
+6. Klikněte na tlačítko **spustit** toostart hello Stream Analytics úlohu znovu spustit.
 
-## <a name="add-your-new-rule-in-the-dashboard"></a>Přidat nové pravidlo v řídicím panelu
+## <a name="add-your-new-rule-in-hello-dashboard"></a>Přidat nové pravidlo v řídicím panelu hello
 
-Nyní můžete přidat **ExternalTemperature** pravidlo pro zařízení na řídicím panelu řešení.
+Nyní můžete přidat hello **ExternalTemperature** pravidlo tooa zařízení na řídicím panelu řešení hello.
 
-1. Přejděte na portálu řešení.
+1. Přejděte toohello portál řešení.
 
-2. Přejděte na **zařízení** panelu.
+2. Přejděte toohello **zařízení** panelu.
 
-3. Vyhledejte jste vytvořili vlastní zařízení, které odesílá **ExternalTemperature** telemetrie a na **podrobnosti o zařízení** panelu, klikněte na tlačítko **přidat pravidlo**.
+3. Vyhledejte vlastní zařízení hello jste vytvořili, který odesílá **ExternalTemperature** telemetrie a na hello **podrobnosti o zařízení** panelu, klikněte na tlačítko **přidat pravidlo**.
 
 4. Vyberte **ExternalTemperature** v **datové pole**.
 
-5. Nastavit **prahová hodnota** k 56. Pak klikněte na tlačítko **uložit a zobrazit pravidla**.
+5. Nastavit **prahová hodnota** too56. Pak klikněte na tlačítko **uložit a zobrazit pravidla**.
 
-6. Vrátit na řídicí panel k zobrazení historie alarmů.
+6. Vrátí historie alarmů toohello řídicí panel tooview hello.
 
-7. V okně konzoly můžete ponechány otevřené, spusťte konzolovou aplikaci softwaru Node.js, aby se začala odesílat **ExternalTemperature** telemetrická data.
+7. V okně konzoly hello je ponechány otevřené spustit odesílání hello Node.js konzole aplikace toobegin **ExternalTemperature** telemetrická data.
 
-8. Všimněte si, že **historie alarmů** tabulka ukazuje nové výstrahy, když se aktivuje nové pravidlo.
+8. Všimněte si, že hello **historie alarmů** tabulka ukazuje nové výstrahy, když se aktivuje hello nové pravidlo.
  
 ## <a name="additional-information"></a>Další informace
 
-Změna operátor  **>**  je složitější a překročí podle kroků uvedených v tomto kurzu. Zatímco můžete změnit na jakémkoli operátor chcete úlohy Stream Analytics, odrážející tento operátor na portálu řešení je složitější úlohy. 
+Změna hello operátor  **>**  je složitější a překročí hello kroků uvedených v tomto kurzu. Při toouse úlohy Stream Analytics hello můžete změnit ať operátor se vám líbí, odrážející tento operátor portálu řešení hello je složitější úlohy. 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když už víte, jak vytvořit vlastní pravidla, můžete další informace o předkonfigurovaných řešení:
+Teď, když už víte, jak toocreate vlastní pravidla, získáte další informace o hello předkonfigurované řešení:
 
-- [Připojení aplikace logiky k řešení Azure IoT Suite vzdálené monitorování předkonfigurované][lnk-logic-app]
-- [Informace metadat zařízení ve vzdálené monitorování předkonfigurované řešení][lnk-devinfo].
+- [Připojení aplikace logiky tooyour Azure IoT Suite vzdálené monitorování předkonfigurované řešení][lnk-logic-app]
+- [Informace metadat zařízení v hello vzdálené monitorování předkonfigurované řešení][lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

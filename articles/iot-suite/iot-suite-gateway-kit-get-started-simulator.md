@@ -1,6 +1,6 @@
 ---
-title: "Připojení brány Azure IoT Suite pomocí Intel NUC | Microsoft Docs"
-description: "Použijte Kit komerční brány Microsoft IoT a předkonfigurované řešení vzdáleného monitorování. Použijte k připojení k řešení vzdáleného monitorování, odeslání simulovanou telemetrii do cloudu a reagovat na metody vyvolané z řídicího panelu řešení Azure IoT hraniční bránu."
+title: "aaaConnect tooAzure brány pomocí Intel NUC IoT Suite | Microsoft Docs"
+description: "Použijte hello Kit komerční brány Microsoft IoT a hello předkonfigurovaného řešení vzdáleného monitorování. Použití hello Azure IoT hraniční brány tooconnect toohello řešení vzdáleného monitorování, odešle simulovanou telemetrii toohello cloudu a reagovat toomethods volat z řídicí panel řešení hello."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 9ed57d3c23e2adbd42c054f33c8ed46e3d6c9792
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 46b545fc21b054191c8f78ace20fc628f839a819
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>Připojte bránu Azure IoT Edge pro předkonfigurované řešení vzdáleného monitorování a odeslat simulovanou telemetrii
+# <a name="connect-your-azure-iot-edge-gateway-toohello-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>Připojení vaší brány Azure IoT Edge toohello předkonfigurovanému řešení vzdáleného monitorování a odeslat simulovanou telemetrii
 
 [!INCLUDE [iot-suite-gateway-kit-selector](../../includes/iot-suite-gateway-kit-selector.md)]
 
-V tomto kurzu se dozvíte, jak používat Azure IoT Edge k simulaci teploty a vlhkosti data k odeslání do předkonfigurovaného řešení vzdáleného monitorování. Tento kurz používá:
+Tento kurz ukazuje, jak toouse Azure IoT Edge toosimulate teploty a vlhkosti data toosend toohello vzdálené monitorování předkonfigurované řešení. kurz Hello používá:
 
-- Azure IoT okraj implementovat ukázka brány.
-- Sadě IoT Suite předkonfigurované řešení vzdáleného monitorování jako cloudové back-end.
+- Azure IoT Edge tooimplement ukázka brány.
+- vzdálené monitorování Hello IoT Suite předkonfigurované řešení jako hello cloudové back-end.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu je provést následující kroky:
+V tomto kurzu dokončení hello následující kroky:
 
-- Nasaďte instanci předkonfigurovaného řešení vzdáleného monitorování k předplatnému Azure. Tento krok automaticky nasadí a nakonfiguruje více služeb Azure.
-- Nastavte vaše zařízení brány Intel NUC ke komunikaci s vaším počítačem a řešení vzdáleného monitorování.
-- Nakonfigurujte IoT hraniční brána k odesílání simulovanou telemetrii, která můžete zobrazit na řídicí panel řešení.
+- Nasaďte instanci hello vzdálené monitorování předkonfigurované řešení tooyour předplatného Azure. Tento krok automaticky nasadí a nakonfiguruje více služeb Azure.
+- Nastavte vaše Intel NUC brány zařízení toocommunicate s počítačem a hello řešení vzdáleného monitorování.
+- Nakonfigurujte hello IoT hraniční brány toosend simulated telemetrii, kterou můžete zobrazit na řídicí panel řešení hello.
 
 [!INCLUDE [iot-suite-gateway-kit-prerequisites](../../includes/iot-suite-gateway-kit-prerequisites.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Řešení vzdáleného monitorování zřídí sadu služeb Azure ve vašem předplatném Azure. Nasazení odráží architektura skutečné enterprise. Aby se zabránilo zbytečným využití platformy Azure poplatky, odstraňte instanci předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud budete znovu potřebovat předkonfigurované řešení, můžete ho snadno obnovit. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
+> Hello vzdálené monitorování zřídí řešení sadu služeb Azure ve vašem předplatném Azure. nasazení Hello odráží architektura skutečné enterprise. tooavoid nepotřebné využití platformy Azure poplatky, odstraňte instanci hello předkonfigurované řešení na azureiotsuite.com po dokončení s ním. Pokud třeba hello předkonfigurované řešení znovu, můžete ho snadno obnovit. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config].
 
 [!INCLUDE [iot-suite-gateway-kit-view-solution](../../includes/iot-suite-gateway-kit-view-solution.md)]
 
-Opakujte předchozí kroky pro přidání druhé zařízení pomocí ID zařízení, jako třeba **device02**. Ukázka odešle data ze dvou simulované zařízení v bráně řešení vzdáleného monitorování.
+Opakujte předchozí kroky tooadd hello druhé zařízení pomocí ID zařízení, jako třeba **device02**. Ukázka Hello odešle data ze dvou simulované zařízení v hello brány toohello řešení vzdáleného monitorování.
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-connectivity](../../includes/iot-suite-gateway-kit-prepare-nuc-connectivity.md)]
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-software](../../includes/iot-suite-gateway-kit-prepare-nuc-software.md)]
 
-## <a name="build-the-custom-iot-edge-module"></a>Vytvořit vlastní modul IoT Edge
+## <a name="build-hello-custom-iot-edge-module"></a>Vytvořit vlastní modul IoT Edge hello
 
-Nyní můžete vytvořit vlastní modul IoT okraj, který umožňuje brána k odesílání zpráv do řešení vzdáleného monitorování. Další informace o konfiguraci brány a IoT Edge moduly, naleznete v části [koncepty Azure IoT Edge][lnk-gateway-concepts].
+Teď můžete sestavit hello vlastní okraje IoT modul, který umožňuje hello brány toosend zprávy toohello řešení vzdáleného monitorování. Další informace o konfiguraci brány a IoT Edge moduly, naleznete v části [koncepty Azure IoT Edge][lnk-gateway-concepts].
 
-Zdrojový kód pro vlastní moduly IoT Edge stáhněte z Githubu, použijte následující příkazy:
+Hello zdrojového kódu pro vlastní moduly IoT Edge hello stáhněte z webu GitHub pomocí hello následující příkazy:
 
 ```bash
 cd ~
 git clone https://github.com/Azure-Samples/iot-remote-monitoring-c-intel-nuc-gateway-getting-started.git
 ```
 
-Vytvořit vlastní modul IoT Edge, pomocí následujících příkazů:
+Vytvořit vlastní modul IoT Edge hello pomocí hello následující příkazy:
 
 ```bash
 cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
@@ -72,22 +72,22 @@ sed -i -e 's/\r$//' build.sh
 ./build.sh
 ```
 
-Skript sestavení umístí vlastní modul IoT Edge libsimulator.so ve složce sestavení.
+skriptu buildu Hello umístí do složky sestavení hello hello libsimulator.so vlastní okraje IoT modul.
 
-## <a name="configure-and-run-the-iot-edge-gateway"></a>Nakonfigurujte a spusťte IoT hraniční brána
+## <a name="configure-and-run-hello-iot-edge-gateway"></a>Nakonfigurujte a spusťte hello IoT hraniční brána
 
-Teď můžete konfigurovat IoT hraniční brána k odesílání simulovanou telemetrii do řídicího panelu vzdáleného monitorování. Další informace o konfiguraci brány a IoT Edge moduly, naleznete v části [koncepty Azure IoT Edge][lnk-gateway-concepts].
+Teď můžete konfigurovat hello IoT hraniční brány toosend simulovanou telemetrii tooyour vzdálené monitorování řídicího panelu. Další informace o konfiguraci brány a IoT Edge moduly, naleznete v části [koncepty Azure IoT Edge][lnk-gateway-concepts].
 
 > [!TIP]
-> V tomto kurzu použijete standardní `vi` textového editoru na Intel NUC. Pokud jste nepoužili `vi` před, musíte provést úvodní kurz, jako například [Unix - vi Editor kurzu] [ lnk-vi-tutorial] Seznamte se s tohoto editoru. Alternativně můžete nainstalovat více uživatelsky přívětivý [nano](https://www.nano-editor.org/) editor pomocí příkazu `smart install nano -y`.
+> V tomto kurzu použijete standardní hello `vi` textového editoru na hello Intel NUC. Pokud jste nepoužili `vi` před, musíte provést úvodní kurz, jako například [Unix - hello vi Editor kurzu] [ lnk-vi-tutorial] toofamiliarize sami pomocí tohoto editoru. Alternativně můžete nainstalovat hello přívětivější [nano](https://www.nano-editor.org/) editor pomocí příkazu hello `smart install nano -y`.
 
-Otevřete konfigurační soubor ukázka v **vi** editor pomocí následujícího příkazu:
+Otevřete hello vzorový konfigurační soubor v hello **vi** editor pomocí hello následující příkaz:
 
 ```bash
 vi ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator/remote_monitoring.json
 ```
 
-V konfiguraci modulu IoTHub vyhledejte následující řádky:
+Vyhledejte následující řádky v hello konfiguraci pro modul IoTHub hello hello:
 
 ```json
 "args": {
@@ -97,9 +97,9 @@ V konfiguraci modulu IoTHub vyhledejte následující řádky:
 }
 ```
 
-Nahraďte zástupný symbol hodnoty s informacemi IoT Hub vytvořili a uložili na začátku tohoto kurzu. Hodnota IoTHubName vypadá jako **yourrmsolution37e08**, a hodnota IoTSuffix je obvykle **azure devices.net**.
+Nahraďte zástupný symbol hello hodnoty s hello informace služby IoT Hub vytvořili a uložili v hello spuštění tohoto kurzu. Hodnota Hello IoTHubName vypadá jako **yourrmsolution37e08**, a hodnota hello IoTSuffix je obvykle **azure devices.net**.
 
-V konfiguraci pro mapování modulu vyhledejte následující řádky:
+Vyhledejte následující řádky v konfiguraci hello hello mapování modulu hello:
 
 ```json
 args": [
@@ -116,39 +116,39 @@ args": [
 ]
 ```
 
-Nahraďte **deviceID** a **deviceKey** zástupné symboly pomocí ID a klíče pro dvě zařízení, které jste vytvořili dříve v řešení vzdáleného monitorování.
+Nahraďte hello **deviceID** a **deviceKey** zástupné symboly hello ID a klíče pro hello dva zařízení, které jste vytvořili dříve v hello řešení vzdáleného monitorování.
 
 Uložte provedené změny.
 
-Teď můžete spustit IoT hraniční bránu, použijte následující příkazy:
+Teď můžete spustit hello IoT hraniční bránu pomocí hello následující příkazy:
 
 ```bash
 cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
 /usr/share/azureiotgatewaysdk/samples/simulated_device_cloud_upload/simulated_device_cloud_upload remote_monitoring.json
 ```
 
-Brána se spouští v Intel NUC a odešle simulovanou telemetrii do řešení vzdáleného monitorování:
+Hello brány se spouští v hello Intel NUC a odešle simulovanou telemetrii toohello řešení vzdáleného monitorování:
 
 ![IoT hraniční brána generuje simulovanou telemetrii][img-simulated telemetry]
 
-Stiskněte klávesu **Ctrl-C** ukončete program kdykoli.
+Stiskněte klávesu **Ctrl-C** programu hello tooexit kdykoli.
 
-## <a name="view-the-telemetry"></a>Zobrazení telemetrie
+## <a name="view-hello-telemetry"></a>Zobrazení telemetrie hello
 
-IoT hraniční brána teď odesílá simulovanou telemetrii do řešení vzdáleného monitorování. Můžete zobrazit telemetrii na řídicí panel řešení.
+Hello IoT hraniční brána je nyní odesílání simulovanou telemetrii toohello řešení vzdáleného monitorování. Můžete zobrazit telemetrii hello na řídicí panel řešení hello.
 
-- Přejděte na řídicí panel řešení.
-- Vyberte jednu ze dvou zařízení, které jste nakonfigurovali v bráně v **zařízení do zobrazení** rozevíracího seznamu.
-- Telemetrická data ze zařízení brány se zobrazí na řídicím panelu.
+- Přejděte toohello řídicí panel řešení.
+- Vyberte jednu z hello dva zařízení, které jste nakonfigurovali v hello brány v hello **zařízení tooView** rozevíracího seznamu.
+- Hello telemetrie ze zařízení brány hello se zobrazí na řídicím panelu hello.
 
-![Zobrazení telemetrie z brány simulované zařízení.][img-telemetry-display]
+![Zobrazení telemetrie z hello simulované zařízení brány][img-telemetry-display]
 
 > [!WARNING]
-> Pokud necháte řešení vzdáleného monitorování spuštěné v účtu Azure, se vám účtuje v době spuštění. Další informace o snížení spotřeby průběhu řešení vzdáleného monitorování najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Odstraňte předkonfigurované řešení z účtu Azure, když přestanete používat.
+> Pokud necháte hello vzdálené monitorování řešení, které jsou spuštěné v účtu Azure, se vám účtuje hello, když ji spustí. Další informace o snížení spotřeby při hello vzdálené monitorování spustí řešení najdete v tématu [konfigurace Azure IoT Suite předkonfigurovaných řešení pro účely ukázky][lnk-demo-config]. Po dokončení používat, odstraňte hello předkonfigurované řešení z účtu Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
+Navštivte hello [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) Další ukázky a dokumentace na Azure IoT.
 
 [img-simulated telemetry]: ./media/iot-suite-gateway-kit-get-started-simulator/appoutput.png
 

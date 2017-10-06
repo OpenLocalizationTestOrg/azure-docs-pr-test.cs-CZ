@@ -1,6 +1,6 @@
 ---
-title: "Běžné FabricClient výjimky vydané | Microsoft Docs"
-description: "Popisuje běžné výjimek a chyb, k nimž může být vyvolána rozhraní API FabricClient při provádění aplikace a operace správy clusterů."
+title: "aaaCommon FabricClient výjimky vydané | Microsoft Docs"
+description: "Popisuje hello běžné výjimek a chyb, k nimž může být vyvolána hello rozhraní API FabricClient při provádění operací správy aplikací a clusteru."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.openlocfilehash: f8a4d7573f0d256b562056ba52939ff5e66de15c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55bb556b25150524ebc28756eb1bd3e91dc37853
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Běžné výjimek a chyb při práci s rozhraními API sady FabricClient
-[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) rozhraní API umožňují cluster a aplikace správcům umožňuje provádět úlohy správy na aplikace, služby nebo clusteru Service Fabric. Například nasazení aplikace, upgrade a odebrání, kontrola stavu clusteru nebo testování služby. Vývojáři aplikací a Správce clusteru můžete použít rozhraní API FabricClient vyvíjet nástroje pro správu clusteru Service Fabric a aplikace.
+# <a name="common-exceptions-and-errors-when-working-with-hello-fabricclient-apis"></a>Běžné výjimek a chyb při práci s hello FabricClient rozhraní API
+Hello [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) rozhraní API umožňují cluster a aplikace správci tooperform úlohy správy na aplikace, služby nebo clusteru Service Fabric. Například nasazení aplikace, upgrade a odebrání, kontrola stavu hello cluster nebo testování služby. Vývojáři aplikací a Správce clusteru můžete použít hello rozhraní API FabricClient toodevelop nástroje pro správu clusteru Service Fabric hello a aplikace.
 
-Existuje mnoho různých typů operací, které je možné provést pomocí FabricClient.  Každá metoda může vyvolat výjimky pro chyby z důvodu nesprávné vstup, chyby za běhu nebo problémů s přechodnou infrastrukturou.  V tématu referenční dokumentace rozhraní API k vyhledání výjimek, které jsou vyvolány pomocí konkrétní metody. Existují některé výjimky, ale to může být vyvolána mnoho různých [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) rozhraní API. Následující tabulka uvádí výjimky, které jsou společné pro rozhraní API FabricClient.
+Existuje mnoho různých typů operací, které je možné provést pomocí FabricClient.  Každá metoda může vyvolat výjimky chyby kvůli tooincorrect vstup, chyby za běhu nebo problémů s přechodnou infrastrukturou.  V tématu hello API referenční dokumentaci toofind výjimek, které jsou vyvolány pomocí konkrétní metody. Existují některé výjimky, ale to může být vyvolána mnoho různých [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) rozhraní API. Hello následující tabulka uvádí hello výjimky, které jsou společné pro hello FabricClient rozhraní API.
 
 | Výjimka | Při vyvolání |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objekt je v uzavřeném stavu. Odstranění [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) používáte a vytvořit novou instanci objektu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objektu. |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |Vypršel časový limit operace. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) je vrácena, pokud operace trvá déle než jako MaxOperationTimeout k dokončení. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Kontrola přístupu pro operace se nezdařila. E_ACCESSDENIED je vrácen. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Při provádění operace došlo k chybě za běhu. Libovolná z metod FabricClient potenciálně throw [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) vlastnost určuje přesné příčině výjimky. Kódy chyb jsou definovány v [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) výčtu. |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Operace se nezdařila z důvodu přechodného chybový stav určitého druhu. Například operace může selhat, protože kvorum repliky není dočasně dostupná. Přechodný výjimky odpovídají neúspěšné operace, které můžete zkusit znovu. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |Hello [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objekt je v uzavřeném stavu. Odstranění hello [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) používáte a vytvořit novou instanci objektu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objektu. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |Vypršel časový limit operace Hello. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) je vrácena, pokud operace hello trvá déle než jako MaxOperationTimeout toocomplete. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Kontrola přístupu Hello hello operace se nezdařila. E_ACCESSDENIED je vrácen. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Při provádění operace hello došlo k chybě za běhu. Libovolná z metod FabricClient hello potenciálně throw [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), hello [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) vlastnost udává hello přesné příčině hello výjimky. Kódy chyb jsou definovány v hello [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) výčtu. |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Hello operace se nezdařila z důvodu tooa přechodný chybový stav určitého druhu. Například operace může selhat, protože kvorum repliky není dočasně dostupná. Přechodný výjimky odpovídají toofailed operace, které můžete zkusit znovu. |
 
 Některé běžné [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) chyb, které mohou být vráceny v [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
 
 | Chyba | Podmínka |
 | --- |:--- |
-| CommunicationError |Komunikační chyba způsobila se operace nezdaří, zkuste operaci zopakovat. |
-| InvalidCredentialType |Tento typ přihlašovacích údajů je neplatný. |
-| InvalidX509FindType |X509FindType je neplatný. |
-| InvalidX509StoreLocation |X509 umístění úložiště je neplatný. |
-| InvalidX509StoreName |X509 úložiště název je neplatný. |
-| InvalidX509Thumbprint |X509 řetězec kryptografický otisk certifikátu je neplatný. |
-| InvalidProtectionLevel |Úroveň ochrany je neplatná. |
-| InvalidX509Store |X509 nelze otevřít úložiště certifikátů. |
-| InvalidSubjectName |Název předmětu je neplatný. |
-| InvalidAllowedCommonNameList |Formát řetězce seznamu běžný název je neplatný. To by měl být čárkami oddělený seznam. |
+| CommunicationError |Komunikační chyba způsobila hello operaci toofail, operace hello opakování. |
+| InvalidCredentialType |Typ přihlašovacích údajů Hello je neplatný. |
+| InvalidX509FindType |Hello X509FindType je neplatný. |
+| InvalidX509StoreLocation |umístění úložiště Hello X509 je neplatný. |
+| InvalidX509StoreName |Název úložiště Hello X509 je neplatný. |
+| InvalidX509Thumbprint |Hello X509 řetězec kryptografický otisk certifikátu je neplatný. |
+| InvalidProtectionLevel |úroveň ochrany Hello je neplatný. |
+| InvalidX509Store |úložiště certifikátů Hello X509 nelze otevřít. |
+| InvalidSubjectName |Název subjektu Hello je neplatný. |
+| InvalidAllowedCommonNameList |Formát Hello řetězce seznamu běžný název je neplatný. To by měl být čárkami oddělený seznam. |
 

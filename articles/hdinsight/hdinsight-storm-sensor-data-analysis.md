@@ -1,6 +1,6 @@
 ---
-title: "Analýza dat snímačů pomocí Apache Storm a HBase | Microsoft Docs"
-description: "Zjistěte, jak se připojit k Apache Storm s virtuální sítí. Používat Storm pro zpracování dat snímačů z centra událostí s HBase a vizualizovat s D3.js."
+title: "data snímače aaaAnalyze s Apache Storm a HBase | Microsoft Docs"
+description: "Zjistěte, jak tooconnect tooApache Storm s virtuální sítí. Pomocí Storm s HBase tooprocess data snímačů z centra událostí a vizualizovat s D3.js."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,146 +15,146 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/09/2017
 ms.author: larryfr
-ms.openlocfilehash: 0d1cc959c87bd64ed728f8b56c9b9156fa492a8b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e54fe9ffc720b0089f90e302b24a9438bd43999a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Analýza dat snímačů s Apache Storm, centra událostí a HBase v HDInsight (Hadoop)
 
-Další informace o použití Apache Storm v HDInsight ke zpracování dat snímačů z centra událostí Azure. Data jsou pak uloženy do Apache HBase v HDInsight a detekují pomocí D3.js.
+Zjistěte, jak toouse Apache Storm v HDInsight tooprocess senzor, data z centra událostí Azure. Hello data jsou pak uloženy do Apache HBase v HDInsight a detekují pomocí D3.js.
 
-Šablony Azure Resource Manager v tomto dokumentu ukazuje, jak vytvořit několik prostředků Azure ve skupině prostředků. Šablona vytvoří virtuální síť Azure, dva clustery HDInsight (Storm a HBase) a webové aplikace Azure. Implementace node.js řídicího panelu webu v reálném čase je automaticky nasadí do webové aplikace.
+šablony Azure Resource Manager Hello použité v tomto dokumentu ukazuje, jak toocreate několik prostředků Azure ve skupině prostředků. Hello šablona vytvoří virtuální síť Azure, dva clustery HDInsight (Storm a HBase) a webové aplikace Azure. Implementace node.js řídicího panelu webu v reálném čase je toohello automaticky nasazené webové aplikace.
 
 > [!NOTE]
-> Informace v tomto dokumentu a v příkladu v tomto dokumentu vyžadují HDInsight verze 3.6.
+> Hello informace v tomto dokumentu a v příkladu v tomto dokumentu vyžadují HDInsight verze 3.6.
 >
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
-* [Node.js](http://nodejs.org/): slouží k náhledu řídicího panelu webové místně na vašem vývojovém prostředí.
-* [Java a JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): použité k jejich vývoji topologie Storm.
-* [Maven](http://maven.apache.org/what-is-maven.html): použít k sestavení a kompilaci projektu.
-* [Git](http://git-scm.com/): používá ke stahování projektu z Githubu.
-* **SSH** klienta: používá k připojení ke clusterům HDInsight se systémem Linux. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* [Node.js](http://nodejs.org/): řídicího panelu webové hello použité toopreview místně na vašem vývojovém prostředí.
+* [Java a hello JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): používá topologie Storm toodevelop hello.
+* [Maven](http://maven.apache.org/what-is-maven.html): používané toobuild a kompilace projektu hello.
+* [Git](http://git-scm.com/): používané toodownload hello projektu z Githubu.
+* **SSH** klienta: používá clustery HDInsight se systémem Linux toohello tooconnect. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 > [!IMPORTANT]
-> Není nutné stávajícího clusteru HDInsight. Kroky v tomto dokumentu vytvořte následující prostředky:
+> Není nutné stávajícího clusteru HDInsight. Hello kroky v tomto dokumentu vytvořte hello následující prostředky:
 > 
 > * Virtuální síť Azure
 > * Storm v clusteru HDInsight (systémem Linux dva uzly pracovního procesu)
 > * Na clusteru HDInsight HBase (systémem Linux dva uzly pracovního procesu)
-> * Webové aplikace Azure, který je hostitelem webové řídicí panel
+> * Webové aplikace Azure, který je hostitelem webové hello řídicí panel
 
 ## <a name="architecture"></a>Architektura
 
 ![diagram architektury](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
 
-V tomto příkladu se skládá z následujících součástí:
+V tomto příkladu se skládá z hello následující součásti:
 
 * **Azure Event Hubs**: obsahuje data, která se shromažďují ze senzorů.
 * **Storm v HDInsight**: poskytuje v reálném čase zpracování dat z centra událostí.
 * **HBase v HDInsight**: po zpracování pomocí Storm poskytuje trvalé úložiště dat typu NoSQL pro data.
-* **Služba Azure virtuální sítě**: umožňuje zabezpečené komunikaci mezi Storm v HDInsight a HBase v HDInsight clustery.
+* **Služba Azure virtuální sítě**: umožňuje zabezpečení komunikace mezi hello Storm v HDInsight a HBase v HDInsight clustery.
   
   > [!NOTE]
-  > Virtuální sítě je potřeba při použití Java HBase klientského rozhraní API. Ho nebude vystavena, přes bránu veřejné pro clustery HBase. Instalace clustery HBase a Storm do stejné virtuální síti umožňuje Storm cluster (nebo všechny ostatní systémy ve virtuální síti) přímý přístup k HBase pomocí rozhraní API klienta.
+  > Při použití rozhraní API klienta hello Java HBase je potřeba virtuální síť. Ho nebude vystavena, přes hello veřejné brány pro clustery HBase. Instalaci HBase a Storm clusterů do stejné virtuální síti umožňuje hello hello clusteru Storm (nebo všechny ostatní systémy ve virtuální síti hello) toodirectly přístup HBase pomocí rozhraní API klienta.
 
 * **Řídicí panel webu**: příklad řídicího panelu, který grafy data v reálném čase.
   
-  * Web je implementované v Node.js.
-  * [Socket.IO](http://socket.io/) se používá pro komunikaci v reálném čase mezi topologie Storm a webu.
+  * Hello webu je implementované v Node.js.
+  * [Socket.IO](http://socket.io/) se používá pro komunikaci v reálném čase mezi topologie Storm hello a hello webu.
     
     > [!NOTE]
     > Pro komunikaci pomocí Socket.io je podrobností implementace. Můžete použít libovolnou architekturu komunikace, jako je například nezpracovaná Websocket nebo SignalR.
 
-  * [D3.js](http://d3js.org/) se používá k graf data, která se posílá webu.
+  * [D3.js](http://d3js.org/) jsou použité toograph hello data, která je odeslána toohello webu.
 
 > [!IMPORTANT]
-> Dva clustery jsou povinné, protože neexistuje žádná podporovaná metoda vytvoření jednoho clusteru HDInsight Storm a HBase.
+> Dva clustery jsou povinné, protože neexistuje žádná podporovaná metoda toocreate jeden cluster HDInsight Storm a HBase.
 
-Topologie čte data z centra událostí pomocí [org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) třídy a zápisu dat do HBase pomocí [org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) třídy. Komunikace s webem se dá udělat pomocí [socket.io client.java](https://github.com/nkzawa/socket.io-client.java).
+Hello topologie čte data z centra událostí pomocí hello [org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) třídy a zápisu dat do HBase pomocí hello [org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) Třída. Komunikace s webem hello se dá udělat pomocí [socket.io client.java](https://github.com/nkzawa/socket.io-client.java).
 
-Následující diagram popisuje rozložení topologie:
+Hello následující diagram popisuje rozložení hello hello topologie:
 
 ![diagram topologie](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
 
 > [!NOTE]
-> Tento diagram je zjednodušený přehled topologie. Pro každý oddíl v Centru událostí je vytvořena instance jednotlivých součástí. Tyto instance jsou rozdělené mezi uzly v clusteru a data se směruje mezi nimi takto:
+> Tento diagram je zjednodušený přehled topologie hello. Pro každý oddíl v Centru událostí je vytvořena instance jednotlivých součástí. Tyto instance jsou rozmístěny v hello uzly v clusteru hello a data se směruje mezi nimi takto:
 > 
-> * Data z spout pro Analyzátor je skupinu s vyrovnáváním zatížení.
-> * Data z analyzátor na řídicí panel a HBase se seskupují podle ID zařízení tak, aby zprávy ze stejného zařízení vždy tok stejné komponenty.
+> * Data z hello spout toohello Analyzátor je skupinu s vyrovnáváním zatížení.
+> * Data z hello analyzátor toohello řídicí panel a HBase se seskupují podle ID zařízení, tak, aby zprávy z hello stejného zařízení vždy toku toohello stejné komponenty.
 
 ### <a name="topology-components"></a>Topologie součásti
 
-* **Event Hub Spout**: spout je zadaný jako součást Apache Storm verze 0.10.0 nebo vyšší.
+* **Event Hub Spout**: hello spout je zadaný jako součást Apache Storm verze 0.10.0 nebo vyšší.
   
   > [!NOTE]
-  > Spout centra událostí použité v tomto příkladu vyžaduje Storm v HDInsight clusteru verze 3.5 nebo 3.6.
+  > spout Hello centra událostí použité v tomto příkladu vyžaduje Storm v HDInsight clusteru verze 3.5 nebo 3.6.
 
-* **ParserBolt.java**: data, která je vysílaných spout je nezpracovaném formátu JSON a současně je vygenerované příležitostně více než jednu událost. Touto funkcí bolt čte data vysílaných spout a analyzuje zpráva JSON. Bolt pak vysílá data jako řazené kolekce členů, která obsahuje více polí.
-* **DashboardBolt.java**: Tato součást ukazuje, jak používat k odesílání dat v reálném čase do řídicího panelu webové Socket.io klientské knihovny pro jazyk Java.
-* **Ne hbase.yaml**: definici topologie používá při spuštění v místním režimu. HBase součásti nepoužívá.
-* **s hbase.yaml**: definici topologie používá při spuštění topologii v clusteru. Používá HBase součásti.
-* **dev.Properties**: informace o konfiguraci funkcí spout centra událostí, HBase bolt a součástí řídicího panelu.
+* **ParserBolt.java**: hello data, která je vysílaných hello spout je nezpracovaném formátu JSON a současně je vygenerované příležitostně více než jednu událost. Touto funkcí bolt čte data hello vysílaných hello spout a analyzuje uvítací zprávu JSON. Hello bolt pak vysílá hello data jako řazené kolekce členů, která obsahuje více polí.
+* **DashboardBolt.java**: Tato součást ukazuje, jak toouse hello Socket.io klientské knihovny pro aplikace Java toosend data v reálném čase toohello webový řídicím panelu.
+* **Ne hbase.yaml**: hello Definice topologie použitá při spuštění v místním režimu. HBase součásti nepoužívá.
+* **s hbase.yaml**: hello Definice topologie použitá při spuštění v clusteru hello hello topologie. Používá HBase součásti.
+* **dev.Properties**: hello informace o konfiguraci pro hello Event Hub spout HBase bolt a součástí řídicího panelu.
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-Než použijete tento příklad, musíte vytvořit centra událostí Azure, který čte topologie Storm z.
+Než použijete tento příklad, musíte vytvořit centra událostí Azure, kterou topologii Storm hello čte z.
 
 ### <a name="configure-event-hub"></a>Konfigurace centra událostí
 
-Centrum událostí je zdroj dat pro tento příklad. Použijte následující postup k vytvoření centra událostí.
+Centrum událostí je hello zdroj dat pro tento příklad. Pomocí následujících kroků toocreate centra událostí hello.
 
-1. Z [portál Azure](https://portal.azure.com), vyberte **+ nový** -> **Internet věcí** -> **Event Hubs**.
-2. V **vytvořit Namespace** část, provádět následující úlohy:
+1. Z hello [portál Azure](https://portal.azure.com), vyberte **+ nový** -> **Internet věcí** -> **Event Hubs**.
+2. V hello **vytvořit Namespace** část, proveďte následující úlohy hello:
    
-   1. Zadejte **název** pro obor názvů.
+   1. Zadejte **název** pro obor názvů hello.
    2. Vyberte cenovou úroveň. **Základní** stačí pro tento příklad.
-   3. Vyberte Azure **předplatné** používat.
+   3. Vyberte hello Azure **předplatné** toouse.
    4. Vyberte existující skupinu prostředků nebo vytvořte novou.
-   5. Vyberte **umístění** pro centra událostí.
-   6. Vyberte **připnout na řídicí panel**a potom klikněte na **vytvořit**.
+   5. Vyberte hello **umístění** pro hello centra událostí.
+   6. Vyberte **Pin toodashboard**a potom klikněte na **vytvořit**.
 
-3. Po dokončení procesu vytváření, zobrazí se informace služby Event Hubs pro obor názvů. Zde vyberte **+ přidat centra událostí**. V **vytvoření centra událostí** části, zadejte název **sensordata**a potom vyberte **vytvořit**. Nechte ostatní pole na výchozí hodnoty.
-4. Ze služby Event Hubs zobrazení pro obor názvů, vyberte **Event Hubs**. Vyberte **sensordata** položku.
-5. Sensordata centra událostí, vyberte **zásady sdíleného přístupu**. Použití **+ přidat** odkaz přidat následující zásady:
+3. Po dokončení procesu vytváření hello hello Event Hubs informace pro vašeho oboru názvů se zobrazí. Zde vyberte **+ přidat centra událostí**. V hello **vytvoření centra událostí** části, zadejte název **sensordata**a potom vyberte **vytvořit**. Ostatní pole na výchozí hodnoty hello zůstanou hello.
+4. Ze služby Event Hubs hello zobrazení pro obor názvů, vyberte **Event Hubs**. Vyberte hello **sensordata** položku.
+5. Hello sensordata centra událostí, vyberte **zásady sdíleného přístupu**. Použití hello **+ přidat** hello tooadd odkaz následující zásady:
 
     | Název zásady | Deklarace identity |
     | ----- | ----- |
     | zařízení | Odeslat |
     | Storm | Naslouchání |
 
-1. Vyberte obě zásady a poznamenejte si **primární klíč** hodnotu. Potřebujete hodnota pro obě zásady v budoucnu krocích.
+1. Vyberte obě zásady a poznamenejte si hello **primární klíč** hodnotu. Potřebujete hello hodnota pro obě zásady v budoucnu krocích.
 
-## <a name="download-and-configure-the-project"></a>Stáhněte si a konfigurace projektu
+## <a name="download-and-configure-hello-project"></a>Stáhnout a nakonfigurovat hello projektu
 
-Použijte následující ke stažení projektu z Githubu.
+Pomocí následujících toodownload hello projektu z Githubu hello.
 
     git clone https://github.com/Blackmist/hdinsight-eventhub-example
 
-Po dokončení příkazu, máte následující adresářovou strukturu:
+Po dokončení příkazu hello máte hello následující adresářovou strukturu:
 
     hdinsight-eventhub-example/
-        TemperatureMonitor/ - this contains the topology
+        TemperatureMonitor/ - this contains hello topology
             resources/
-                log4j2.xml - set logging to minimal.
+                log4j2.xml - set logging toominimal.
                 no-hbase.yaml - topology definition without hbase components.
                 with-hbase.yaml - topology definition with hbase components.
             src/main/java/com/microsoft/examples/bolts/
                 ParserBolt.java - parses JSON data into tuples
-                DashboardBolt.java - sends data over Socket.IO to the web dashboard.
-        dashboard/nodejs/ - this is the node.js web dashboard.
-        SendEvents/ - utilities to send fake sensor data.
+                DashboardBolt.java - sends data over Socket.IO toohello web dashboard.
+        dashboard/nodejs/ - this is hello node.js web dashboard.
+        SendEvents/ - utilities toosend fake sensor data.
 
 > [!NOTE]
-> Tento dokument není přejděte na podrobnosti o kód, který najdete v tomto příkladu. Kód, je však plně komentář.
+> Tento dokument nepřekračuje v podrobnostech toofull hello kódu zahrnuty v tomto příkladu. Ale hello kód plně označené jako komentář.
 
-Ke konfiguraci projektu ke čtení z centra událostí, otevřete `hdinsight-eventhub-example/TemperatureMonitor/dev.properties` souboru a přidejte informace vašeho centra událostí do následující řádky:
+tooconfigure hello projektu tooread z centra událostí, otevřete hello `hdinsight-eventhub-example/TemperatureMonitor/dev.properties` souboru a přidejte toohello informace vašeho centra událostí následující řádky:
 
 ```bash
 eventhub.read.policy.name: your_read_policy_name
@@ -167,52 +167,52 @@ eventhub.partitions: 2
 ## <a name="compile-and-test-locally"></a>Kompilace a testování místně
 
 > [!IMPORTANT]
-> Místně pomocí topologie vyžaduje funkční Storm vývojové prostředí. Další informace najdete v tématu [nastavení vývojového prostředí Storm](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html) na Apache.org.
+> Použití topologie hello místně vyžaduje funkční Storm vývojové prostředí. Další informace najdete v tématu [nastavení vývojového prostředí Storm](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html) na Apache.org.
 
 > [!WARNING]
-> Pokud používáte vývojového prostředí systému Windows, může se zobrazit `java.io.IOException` při spuštění topologii místně. Pokud ano, přesunete k topologii systémem HDInsight.
+> Pokud používáte vývojového prostředí systému Windows, může se zobrazit `java.io.IOException` při spuštění hello topologie místně. Pokud ano, přesuňte na topologii hello toorunning v HDInsight.
 
-Před testováním, musíte spustit řídicí panel k zobrazení výstupu topologie a generovat data uložit do centra událostí.
+Před testováním, musí začínat hello řídicí panel tooview hello výstup hello topologie a generování dat toostore v Centru událostí.
 
 > [!IMPORTANT]
-> Komponenta HBase Tato topologie není aktivní, při testování místně. Rozhraní API Java pro cluster HBase, není přístupná z mimo virtuální síť Azure, který obsahuje clustery.
+> Hello HBase součást Tato topologie není aktivní, při testování místně. Hello Java API pro hello HBase cluster není přístupná z hello mimo virtuální síť Azure, která obsahuje hello cluster.
 
-### <a name="start-the-web-application"></a>Spuštění webové aplikace
+### <a name="start-hello-web-application"></a>Spustit hello webové aplikace
 
-1. Otevřete příkazový řádek a přejděte do adresáře `hdinsight-eventhub-example/dashboard`. Použijte následující příkaz k instalaci závislosti nutné webovou aplikací:
+1. Otevřete příkazový řádek a změňte adresáře příliš`hdinsight-eventhub-example/dashboard`. Použijte následující příkaz tooinstall hello závislosti nutné hello webové aplikace hello:
    
     ```bash
     npm install
     ```
 
-2. Použijte následující příkaz pro spuštění webové aplikace:
+2. Použijte následující příkaz toostart hello webové aplikace hello:
    
     ```bash
     node server.js
     ```
    
-    Zobrazí zpráva podobná následující text:
+    Zobrazí zpráva podobná toohello následující text:
    
         Server listening at port 3000
 
-3. Otevřete webový prohlížeč a zadejte `http://localhost:3000/` jako adresu. Zobrazí se stránka podobná na následujícím obrázku:
+3. Otevřete webový prohlížeč a zadejte `http://localhost:3000/` jako adresa hello. Zobrazí se stránka podobné toohello následující bitové kopie:
    
     ![webové řídicí panel](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
    
-    Nechte tato příkazového řádku otevřené. Po testování, pomocí kombinace kláves Ctrl-C zastavení webového serveru.
+    Nechte tato příkazového řádku otevřené. Po testování, pomocí kombinace kláves Ctrl-C toostop hello webový server.
 
 ### <a name="generate-data"></a>Generování dat
 
 > [!NOTE]
-> Postup v této části použijte Node.js tak, aby bylo možné na jakékoli platformě. Další příklady jazyka najdete v článku `SendEvents` adresáře.
+> Hello kroky v této části použijte Node.js tak, aby bylo možné na jakékoli platformě. Další příklady jazyka najdete v tématu hello `SendEvents` adresáře.
 
-1. Otevřete nový řádek, prostředí nebo terminálu a přejděte do adresáře `hdinsight-eventhub-example/SendEvents/nodejs`. Pokud chcete nainstalovat závislosti potřebné pro aplikaci, použijte následující příkaz:
+1. Otevřete nový řádek, prostředí nebo terminálu a změňte adresáře příliš`hdinsight-eventhub-example/SendEvents/nodejs`. tooinstall hello závislosti potřebné hello aplikaci, použijte následující příkaz hello:
 
     ```bash
     npm install
     ```
 
-2. Otevřete `app.js` soubor v textovém editoru a přidání informací o centra událostí, které jste dříve získali:
+2. Otevřete hello `app.js` soubor v textovém editoru a přidejte hello informace centra událostí, které jste dříve získali:
    
     ```javascript
     // ServiceBus Namespace
@@ -225,15 +225,15 @@ Před testováním, musíte spustit řídicí panel k zobrazení výstupu topolo
     ```
    
    > [!NOTE]
-   > Tento příklad předpokládá, že jste použili `sensordata` jako název vašeho centra událostí. A že `devices` jako název zásady, který má `Send` deklarací identity.
+   > Tento příklad předpokládá, že jste použili `sensordata` jako hello název vašeho centra událostí. A že `devices` jako název hello hello zásad, který má `Send` deklarací identity.
 
-3. Chcete-li vložit nové položky v Centru událostí použijte následující příkaz:
+3. Použijte následující příkaz tooinsert nové položky v Centru událostí hello:
    
     ```bash
     node app.js
     ```
    
-    Zobrazí několik řádků výstupu, které obsahují data odeslaná do centra událostí:
+    Zobrazí několik řádky výstupu, které obsahují hello data odesílání tooEvent rozbočovače:
    
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"0","Temperature":7}
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"1","Temperature":39}
@@ -246,126 +246,126 @@ Před testováním, musíte spustit řídicí panel k zobrazení výstupu topolo
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"8","Temperature":43}
         {"TimeStamp":"2015-02-10T14:43.05.00320Z","DeviceId":"9","Temperature":84}
 
-### <a name="build-and-start-the-topology"></a>Sestavte a spusťte topologie
+### <a name="build-and-start-hello-topology"></a>Sestavte a spusťte hello topologie
 
-1. Otevřete nový příkazový řádek a přejděte do adresáře `hdinsight-eventhub-example/TemperatureMonitor`. Pro sestavení a balíček topologii, použijte následující příkaz: 
+1. Otevřete nový příkazový řádek a změňte adresáře příliš`hdinsight-eventhub-example/TemperatureMonitor`. toobuild a balíček hello topologie, použijte následující příkaz hello: 
 
     ```bash
     mvn clean package
     ```
 
-2. Pokud chcete spustit topologii v místním režimu, použijte následující příkaz:
+2. topologie hello toostart v místním režimu, hello použijte následující příkaz:
 
     ```bash
     storm jar target/TemperatureMonitor-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local --filter dev.properties resources/no-hbase.yaml
     ```
 
-    * `--local`Spustí topologii v místním režimu.
-    * `--filter`používá `dev.properties` souboru k naplnění parametry v definici topologie.
-    * `resources/no-hbase.yaml`používá `no-hbase.yaml` definice topologie.
+    * `--local`Spustí hello topologie v místním režimu.
+    * `--filter`hello používá `dev.properties` souboru toopopulate parametry v definici topologie hello.
+    * `resources/no-hbase.yaml`hello používá `no-hbase.yaml` definice topologie.
  
-   Po zahájení, topologii čte položky z centra událostí a odešle je na řídicí panel spuštěna na místním počítači. Měli byste vidět řádky na webový řídicím panelu nezobrazí, podobně jako na následujícím obrázku:
+   Po zahájení, hello topologie čte položky z centra událostí a odešle je řídicí panel toohello spuštěna na místním počítači. Měli byste vidět řádky v řídicím panelu webové hello, podobně jako toohello následující bitové kopie:
    
     ![řídicí panel s daty](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
 
-2. Řídicí panel průběhu, použijte `node app.js` příkazu z předchozích kroků a odesílat nová data do centra událostí. Protože teploty hodnoty jsou náhodně vygenerované, by měl aktualizovat graf můžete zobrazit velké změny v teploty.
+2. Je spuštěn hello řídicí panel, použijte hello `node app.js` příkaz z hello předchozí kroky toosend nové tooEvent datového centra. Protože hello teploty hodnoty jsou náhodně vygenerované, by měl aktualizovat graf hello tooshow velké změny v teploty.
    
    > [!NOTE]
-   > Musí být v **hdinsight-eventhub – příklad/SendEvents/Nodejs** directory při použití `node app.js` příkaz.
+   > Musí být v hello **hdinsight-eventhub – příklad/SendEvents/Nodejs** directory při použití hello `node app.js` příkaz.
 
-3. Po ověření, že aktualizace řídicího panelu, zastavte topologie pomocí kombinace kláves Ctrl + C. Ctrl + C můžete také zastavit místní webový server.
+3. Po ověření, tento řídicí panel hello aktualizací, zastavte hello topologie pomocí kombinace kláves Ctrl + C. Také můžete použít kombinaci kláves Ctrl + C toostop hello místní webový server.
 
 ## <a name="create-a-storm-and-hbase-cluster"></a>Vytvoření clusteru Storm a HBase
 
-Kroky v tomto tématu použijte [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md) pro vytvoření clusteru služby Azure Virtual Network a Storm a HBase ve virtuální síti. Šablony také vytvoří Azure Web App a nasadí kopie řídicího panelu do ní.
+Hello kroky v této části použijte [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md) toocreate clusteru služby Azure Virtual Network a Storm a HBase ve virtuální síti hello. šablony Hello také vytvoří Azure Web App a nasadí kopii hello řídicího panelu do ní.
 
 > [!NOTE]
-> Virtuální síť se používá, takže topologie spuštěné v clusteru Storm může komunikovat přímo s clusteru HBase pomocí rozhraní API HBase Java.
+> Virtuální síť se používá, aby hello topologie běží v clusteru Storm hello přímo komunikovat s hello clusteru HBase pomocí hello HBase Java API.
 
-Šablony Resource Manageru v tomto dokumentu se nachází v kontejneru veřejného objektu blob na **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hbase-storm-cluster-in-vnet-3.6.json**.
+Šablona Resource Manager Hello v tomto dokumentu se nachází v kontejneru veřejného objektu blob na **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hbase-storm-cluster-in-vnet-3.6.json**.
 
-1. Klikněte na následující tlačítko a přihlaste se k Azure a otevřete šablonu Resource Manageru na portálu Azure.
+1. Klikněte na následující tlačítko toosign v tooAzure a otevřete hello šablony Resource Manageru v hello portál Azure hello.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet-3.6.json" target="_blank"><img src="./media/hdinsight-storm-sensor-data-analysis/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet-3.6.json" target="_blank"><img src="./media/hdinsight-storm-sensor-data-analysis/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-2. Z **vlastní nasazení** části, zadejte následující hodnoty:
+2. Z hello **vlastní nasazení** zadejte hello následující hodnoty:
    
     ![Parametry HDInsight](./media/hdinsight-storm-sensor-data-analysis/parameters.png)
    
-   * **Základní název clusteru**: Tato hodnota se používá jako základní název pro Storm a HBase clusterů. Například zadáním **abc** vytvoří cluster Storm s názvem **storm abc** a cluster HBase s názvem **hbase abc**.
-   * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce pro clustery Storm a HBase.
-   * **Heslo pro přihlášení clusteru**: uživatelské heslo správce pro clustery Storm a HBase.
-   * **Uživatelské jméno SSH**: SSH, aby uživatel vytvořil pro clustery Storm a HBase.
-   * **Heslo SSH**: heslo pro uživatele SSH pro clustery Storm a HBase.
-   * **Umístění**: oblast, která clustery jsou vytvořeny v.
+   * **Základní název clusteru**: Tato hodnota se používá jako hello základní název pro clustery Storm a HBase hello. Například zadáním **abc** vytvoří cluster Storm s názvem **storm abc** a cluster HBase s názvem **hbase abc**.
+   * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce hello u clusterů Storm a HBase hello.
+   * **Heslo pro přihlášení clusteru**: heslo uživatele správce hello u clusterů Storm a HBase hello.
+   * **Uživatelské jméno SSH**: hello toocreate uživatele SSH pro clustery Storm a HBase hello.
+   * **Heslo SSH**: hello heslo pro uživatele SSH hello u clusterů Storm a HBase hello.
+   * **Umístění**: hello oblast, která hello clustery jsou vytvořeny v.
      
-     Klikněte na možnost **OK** a uložte parametry.
+     Klikněte na tlačítko **OK** toosave hello parametry.
 
-3. Použití **Základy** části vytvořit skupinu prostředků nebo vyberte nějaký existující.
-4. V **umístění skupiny prostředků** rozevírací nabídce vyberte stejné umístění jako jste vybrali pro **umístění** parametr ve **nastavení** části.
-5. Přečtěte si podmínky a ujednání a pak vyberte **souhlasím s podmínkami a ujednáními výše uvedených**.
-6. Nakonec zkontrolujte **připnout na řídicí panel** a pak vyberte **nákupu**. Chcete-li vytvořit clustery trvá asi 20 minut.
+3. Použití hello **Základy** části toocreate skupinu prostředků nebo vyberte nějaký existující.
+4. V hello **umístění skupiny prostředků** rozevírací nabídce vyberte hello stejné umístění, jako jste vybrali pro hello **umístění** parametr v hello **nastavení** části.
+5. Přečtěte si hello podmínky a ujednání a pak vyberte **souhlasím toohello podmínky a ujednání, které jsou uvedené výše**.
+6. Nakonec zkontrolujte **Pin toodashboard** a pak vyberte **nákupu**. Trvá přibližně 20 minut toocreate hello clustery.
 
-Po vytvoření prostředky, zobrazí se informace o skupině prostředků.
+Po vytvoření hello prostředky, zobrazí se informace o skupině prostředků hello.
 
-![Skupinu prostředků pro virtuální síť a clustery](./media/hdinsight-storm-sensor-data-analysis/groupblade.png)
+![Skupinu prostředků pro virtuální síť hello a clustery](./media/hdinsight-storm-sensor-data-analysis/groupblade.png)
 
 > [!IMPORTANT]
-> Všimněte si, že jsou názvy clusterů HDInsight **storm BASENAME** a **hbase BASENAME**, kde BASENAME je jméno, které jste zadali v šabloně. Použít tyto názvy v pozdější fázi při připojení k clustery. Také Upozorňujeme, že je název řídicího panelu webu **basename – řídicí panel**. Tato hodnota se používá později v tomto dokumentu.
+> Všimněte si, že jsou názvy hello clusterů HDInsight hello **storm BASENAME** a **hbase BASENAME**, kde BASENAME je hello jméno, které jste zadali toohello šablony. Můžete použít tyto názvy v pozdější fázi při připojování toohello clustery. Všimněte si, že hello název hello řídicího panelu webu je také **basename – řídicí panel**. Tato hodnota se používá později v tomto dokumentu.
 
-## <a name="configure-the-dashboard-bolt"></a>Konfigurace funkcí bolt řídicí panel
+## <a name="configure-hello-dashboard-bolt"></a>Konfigurace funkcí bolt hello řídicí panel
 
-Pokud chcete odesílat data na řídicí panel nasadit jako webovou aplikaci, je třeba upravit následující řádek v `dev.properties`souboru:
+toosend data toohello řídicí panel nasadit jako webovou aplikaci, musíte upravit hello následující řádek ve hello `dev.properties`souboru:
 
 ```yaml
 dashboard.uri: http://localhost:3000
 ```
 
-Změna `http://localhost:3000` k `http://BASENAME-dashboard.azurewebsites.net` a soubor uložte. Nahraďte **BASENAME** s základní jméno, které jste zadali v předchozím kroku. Můžete taky Vybrat řídicí panel a zobrazit adresu URL předtím vytvořili skupinu prostředků.
+Změna `http://localhost:3000` příliš`http://BASENAME-dashboard.azurewebsites.net` a uložte soubor hello. Nahraďte **BASENAME** základní názvem hello jste zadali v předchozím kroku hello. Můžete vytvořit také skupinu prostředků hello vytvořili dříve tooselect hello řídicí panely a zobrazení hello adresy URL.
 
-## <a name="create-the-hbase-table"></a>Vytvoření tabulky HBase
+## <a name="create-hello-hbase-table"></a>Vytvoření tabulky HBase hello
 
-K uložení dat v HBase, jsme musíte nejdřív vytvořit tabulku. Předem vytvořit prostředky, které Storm potřebuje k zápisu, jako pokusu o vytvoření prostředky z uvnitř Storm může způsobit topologie více instancí pokusu o vytvoření stejného zdroje. Vytvořit prostředky mimo topologie a používat Storm pro čtení/zápis a analýzy.
+toostore data v HBase, jsme musíte nejdřív vytvořit tabulku. Předem vytvořit prostředky, které potřebuje Storm toowrite k, protože snažíme toocreate prostředky z uvnitř topologie Storm může způsobit pokusu o několik instancí toocreate hello stejného zdroje. Vytvořte hello prostředky mimo hello topologie a používat Storm pro čtení/zápis a analýzy.
 
-1. Použití SSH se připojit ke clusteru HBase pomocí SSH uživatele a heslo, které jste zadali v šabloně při vytváření clusteru. Například, pokud připojení pomocí `ssh` příkazu, použijte následující syntaxi:
+1. Pomocí SSH tooconnect toohello clusteru HBase pomocí hello SSH uživatele a heslo zadané toohello šablonu při vytváření clusteru. Například, pokud připojení pomocí hello `ssh` příkaz, využije hello následující syntaxi:
    
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
    
-    Nahraďte `sshuser` uživatelským jménem SSH, které jste zadali při vytvoření clusteru. Nahraďte `clustername` s názvem clusteru HBase.
+    Nahraďte `sshuser` s uživatelským jménem SSH hello jste zadali při vytváření clusteru hello. Nahraďte `clustername` s názvem clusteru HBase hello.
 
-2. Z relace SSH spusťte prostředí HBase.
+2. Z relace SSH hello spusťte prostředí HBase hello.
    
     ```bash
     hbase shell
     ```
    
-    Jakmile prostředí načetl, zobrazí `hbase(main):001:0>` řádku.
+    Jakmile hello prostředí načetl, zobrazí `hbase(main):001:0>` řádku.
 
-3. Z prostředí HBase zadejte následující příkaz a vytvořte tabulku pro ukládání dat snímačů:
+3. Z hello prostředí HBase zadejte následující příkaz toocreate dat snímačů hello v tabulce toostore hello:
    
     ```hbase
     create 'SensorData', 'cf'
     ```
 
-4. Ověřte, že tabulka byla vytvořena pomocí následujícího příkazu:
+4. Ověřte, zda že tato hello tabulka byla vytvořena pomocí hello následující příkaz:
    
     ```hbase
     scan 'SensorData'
     ```
    
-    Vrátí informace podobně jako v následujícím příkladu, označující, že jsou 0 řádky v tabulce.
+    Tento příkaz vrátí informace podobné toohello následující ukázka, označující, že jsou v tabulce hello 0 řádků.
    
         ROW                   COLUMN+CELL                                       0 row(s) in 0.1900 seconds
 
-5. Zadejte `exit` ukončíte prostředí HBase:
+5. Zadejte `exit` tooexit hello prostředí HBase:
 
-## <a name="configure-the-hbase-bolt"></a>Konfigurace funkcí bolt HBase
+## <a name="configure-hello-hbase-bolt"></a>Konfigurace funkcí bolt HBase hello
 
-Zapsat do HBase z clusteru Storm, je nutné zadat HBase bolt s podrobností konfigurace clusteru HBase.
+toowrite tooHBase z clusteru Storm hello, je nutné zadat hello HBase bolt s hello podrobnosti o konfiguraci vašeho clusteru HBase.
 
-1. K načtení Zookeeper kvora pro váš cluster HBase, použijte jednu z následujících příkladech:
+1. Použijte jednu z hello následující příklady tooretrieve hello Zookeeper kvora pro váš cluster HBase:
 
     ```bash
     CLUSTERNAME='your_HDInsight_cluster_name'
@@ -373,105 +373,105 @@ Zapsat do HBase z clusteru Storm, je nutné zadat HBase bolt s podrobností konf
     ```
 
     > [!NOTE]
-    > Parametr `your_HDInsight_cluster_name` nahraďte názvem vašeho clusteru HDInsight. Další informace o instalaci `jq` nástroj, najdete v části [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+    > Nahraďte `your_HDInsight_cluster_name` s názvem hello clusteru HDInsight. Další informace o instalaci hello `jq` nástroj, najdete v části [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
     >
-    > Po zobrazení výzvy zadejte heslo pro přihlašovací jméno správce HDInsight.
+    > Po zobrazení výzvy zadejte přihlašovací jméno správce HDInsight hello hello heslo.
 
     ```powershell
     $clusterName = 'your_HDInsight_cluster_name`
-    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HBASE/components/HBASE_MASTER" -Credential $creds
     $respObj = ConvertFrom-Json $resp.Content
     $respObj.metrics.hbase.master.ZookeeperQuorum
     ```
 
     > [!NOTE]
-    > Nahraďte ' your_HDInsight_cluster_name s názvem clusteru HDInsight. Po zobrazení výzvy zadejte heslo pro přihlašovací jméno správce HDInsight.
+    > Nahraďte ' your_HDInsight_cluster_name s názvem hello clusteru HDInsight. Po zobrazení výzvy zadejte přihlašovací jméno správce HDInsight hello hello heslo.
     >
     > Tento příklad vyžaduje prostředí Azure PowerShell. Další informace o použití prostředí Azure PowerShell najdete v tématu [Začínáme s Azure PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)
 
-    Informace vrácené těchto příkladech je podobná následující text:
+    informace Hello vrácený tyto příklady jsou podobné toohello následující text:
 
     `zk2-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181,zk0-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181,zk3-hbase.mf0yeg255m4ubit1auvj1tutvh.ex.internal.cloudapp.net:2181`
 
-    Tyto informace slouží Storm ke komunikaci s clusterem HBase.
+    Tyto informace slouží toocommunicate Storm s clusterem HBase hello.
 
-2. Upravit `dev.properties` souboru a přidejte informace o Zookeeper kvora do následujícího řádku:
+2. Upravit hello `dev.properties` souboru a přidejte hello Zookeeper kvora informace toohello následující řádek:
 
     ```yaml
     hbase.zookeeper.quorum: your_hbase_quorum
     ```
 
-## <a name="build-package-and-deploy-the-solution-to-hdinsight"></a>Vytvoření balíčku a nasadit řešení do HDInsight
+## <a name="build-package-and-deploy-hello-solution-toohdinsight"></a>Vytvoření balíčku a nasadit řešení tooHDInsight hello
 
-Ve vašem vývojovém prostředí použijte následující kroky k nasazení topologie Storm ke clusteru storm.
+Ve vašem vývojovém prostředí použijte následující kroky toodeploy hello Storm topologie toohello cluster storm hello.
 
-1. Z `TemperatureMonitor` adresář, použijte následující příkaz k provedení nového sestavení a vytvoření JAR balíčků z projektu:
+1. Z hello `TemperatureMonitor` adresář, použijte hello následující příkaz tooperform nového sestavení a vytvoření balíčku JAR z projektu:
    
         mvn clean package
    
-    Tento příkaz vytvoří soubor s názvem `TemperatureMonitor-1.0-SNAPSHOT.jar in the `cíl ' adresáři projektu.
+    Tento příkaz vytvoří soubor s názvem `TemperatureMonitor-1.0-SNAPSHOT.jar in hello `cíl ' adresáři projektu.
 
-2. Spojovací bod služby použít k nahrání `TemperatureMonitor-1.0-SNAPSHOT.jar` a `dev.properties` soubory do clusteru Storm. V následujícím příkladu nahraďte `sshuser` uživatele SSH, jste zadali při vytváření clusteru, a `clustername` s názvem vašeho clusteru Storm. Po zobrazení výzvy zadejte heslo pro uživatele SSH.
+2. Použití spojovací bod služby tooupload hello `TemperatureMonitor-1.0-SNAPSHOT.jar` a `dev.properties` cluster Storm tooyour soubory. Následující příklad, nahraďte v hello `sshuser` uživatele SSH hello jste zadali při vytváření clusteru hello a `clustername` s názvem hello clusteru Storm. Po zobrazení výzvy zadejte hello heslo pro uživatele SSH hello.
    
     ```bash
     scp target/TemperatureMonitor-1.0-SNAPSHOT.jar dev.properties sshuser@clustername-ssh.azurehdinsight.net:
     ```
 
    > [!NOTE]
-   > Ho může trvat několik minut odesílat soubory.
+   > Soubory hello tooupload může trvat několik minut.
 
-    Další informace o používání `scp` a `ssh` příkazy s HDInsight, najdete v části [použití SSH s HDInsight](./hdinsight-hadoop-linux-use-ssh-unix.md)
+    Další informace o používání hello `scp` a `ssh` příkazy s HDInsight, najdete v části [použití SSH s HDInsight](./hdinsight-hadoop-linux-use-ssh-unix.md)
 
-3. Jakmile soubor byl odeslán, připojte se ke clusteru Storm pomocí protokolu SSH.
+3. Po odeslání hello souboru, připojte cluster Storm toohello pomocí protokolu SSH.
    
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `sshuser` s uživatelským jménem SSH. Nahraďte `clustername` s názvem clusteru Storm.
+    Nahraďte `sshuser` s uživatelským jménem SSH hello. Nahraďte `clustername` s názvem clusteru Storm hello.
 
-4. Chcete-li spustit topologii, použijte následující příkaz z relace SSH:
+4. toostart hello topologie, použijte následující příkaz z relace SSH hello hello:
    
     ```bash
     storm jar TemperatureMonitor-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote --filter dev.properties -R /with-hbase.yaml
     ```
 
-    * `--remote`odešle topologii pro službu Nimbus, která distribuuje jej do nadřízeného uzly v clusteru.
-    * `--filter`používá `dev.properties` souboru k naplnění parametry v definici topologie.
-    * `-R /with-hbase.yaml`používá `with-hbase.yaml` topologie, které jsou součástí balíčku.
+    * `--remote`odešle hello topologie toohello Nimbus služba, která distribuuje jej toohello nadřízeného uzly v clusteru hello.
+    * `--filter`hello používá `dev.properties` souboru toopopulate parametry v definici topologie hello.
+    * `-R /with-hbase.yaml`hello používá `with-hbase.yaml` topologie, které jsou součástí balíčku hello.
 
-5. Po spuštění topologii, otevřete prohlížeč na web můžete publikovat na platformě Azure, potom použít `node app.js` příkaz, který odesílá data do centra událostí. Měli byste vidět řídicího panelu webové aktualizace pro zobrazení informací.
+5. Po spuštění hello topologie, otevřete web toohello prohlížeče jste publikovali v Azure, a pak použijte hello `node app.js` příkaz toosend data tooEvent rozbočovače. Měli byste vidět hello webový řídicím panelu toodisplay hello informace o aktualizaci.
    
     ![řídicí panel](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
 
 ## <a name="view-hbase-data"></a>Zobrazení dat HBase
 
-Použijte následující postup pro připojení k HBase a ověřte, že data byla zapsána na tabulky:
+Použijte následující postup tooconnect tooHBase hello a ověřte, že hello data byla zapsána toohello tabulky:
 
-1. Použití SSH se připojit ke clusteru HBase.
+1. Použijte SSH tooconnect toohello HBase cluster.
    
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `sshuser` s uživatelským jménem SSH. Nahraďte `clustername` s názvem clusteru HBase.
+    Nahraďte `sshuser` s uživatelským jménem SSH hello. Nahraďte `clustername` s názvem clusteru HBase hello.
 
-2. Z relace SSH spusťte prostředí HBase.
+2. Z relace SSH hello spusťte prostředí HBase hello.
    
     ```bash
     hbase shell
     ```
    
-    Jakmile prostředí načetl, zobrazí `hbase(main):001:0>` řádku.
+    Jakmile hello prostředí načetl, zobrazí `hbase(main):001:0>` řádku.
 
-3. Zobrazení řádků z tabulky:
+3. Zobrazení řádků z tabulky hello:
    
     ```hbase
     scan 'SensorData'
     ```
    
-    Tento příkaz vrátí informace podobná následující text, označující, že je v tabulce data.
+    Tento příkaz vrátí informace podobné toohello následující text, označující, že je v tabulce hello data.
    
         hbase(main):002:0> scan 'SensorData'
         ROW                             COLUMN+CELL
@@ -498,23 +498,23 @@ Použijte následující postup pro připojení k HBase a ověřte, že data byl
         10 row(s) in 0.1800 seconds
    
    > [!NOTE]
-   > Tato operace kontroly vrací maximálně 10 řádků z tabulky.
+   > Tato operace kontroly vrátí maximálně 10 řádků z tabulky hello.
 
 ## <a name="delete-your-clusters"></a>Odstranění clusterů
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud chcete odstranit clustery, úložiště a webové aplikace v jednom okamžiku, odstraňte skupinu prostředků, která je obsahuje.
+toodelete hello clustery, úložiště a webové aplikace v jednom okamžiku odstranit hello skupinu prostředků, který je obsahuje.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další příklady topologií Storm s HDInsight naleznete v tématu [příklad topologií pro Storm v HDInsight](hdinsight-storm-example-topology.md)
 
-Další informace o Apache Storm naleznete v tématu [Apache Storm](https://storm.incubator.apache.org/) lokality.
+Další informace o Apache Storm naleznete v tématu hello [Apache Storm](https://storm.incubator.apache.org/) lokality.
 
-Další informace o HBase v HDInsight, najdete v článku [HBase s HDInsight přehled](hdinsight-hbase-overview.md).
+Další informace o HBase v HDInsight, naleznete v části hello [HBase s HDInsight přehled](hdinsight-hbase-overview.md).
 
-Další informace o Socket.io najdete v tématu [socket.io](http://socket.io/) lokality.
+Další informace o Socket.io najdete v tématu hello [socket.io](http://socket.io/) lokality.
 
 Další informace o D3.js najdete v tématu [D3.js - dokumenty řízené daty](http://d3js.org/).
 

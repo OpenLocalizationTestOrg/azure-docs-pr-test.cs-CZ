@@ -1,6 +1,6 @@
 ---
-title: "Správa Azure Data Lake Analytics pomocí Azure PowerShell | Microsoft Docs"
-description: "Naučte se spravovat účty Data Lake Analytics, zdrojů dat, úlohy a položky katalogu. "
+title: "aaaManage Azure Data Lake Analytics pomocí Azure PowerShell | Microsoft Docs"
+description: "Zjistěte, jak toomanage účtů Data Lake Analytics, datových zdrojů, úloh a položek katalogu. "
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 862e9551f1e129b7bba06651fbae94e337c92dcb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5954f0efb7d5a9778727edfccae83aec046343bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Naučte se spravovat účty Azure Data Lake Analytics, zdrojů dat, úlohy a položky katalogu pomocí prostředí Azure PowerShell. 
+Zjistěte, jak toomanage účtů Azure Data Lake Analytics, datových zdrojů, úloh a položky katalogu pomocí prostředí Azure PowerShell. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Při vytváření účtu Data Lake Analytics, musíte znát:
+Při vytváření účtu Data Lake Analytics, je třeba tooknow:
 
-* **ID předplatného**: ID předplatného Azure, ve kterém se nachází váš účet Data Lake Analytics.
-* **Skupina prostředků**: název skupiny prostředků Azure, která obsahuje váš účet Data Lake Analytics.
-* **Název účtu data Lake Analytics**: název účtu musí obsahovat jenom malá písmena a číslice.
-* **Výchozí účet Data Lake Store:** Každý účet Data Lake Analytics má výchozí účet Data Lake Store. Tyto účty musí být ve stejném umístění.
-* **Umístění**: umístění vašeho účtu Data Lake Analytics, jako je například "East US 2" nebo jiné podporované umístění. Podporovaná umístění můžete zobrazit na našem [stránce s cenami](https://azure.microsoft.com/pricing/details/data-lake-analytics/).
+* **ID předplatného**: hello ID předplatného Azure, ve kterém se nachází váš účet Data Lake Analytics.
+* **Skupina prostředků**: hello název skupiny prostředků Azure hello, která obsahuje váš účet Data Lake Analytics.
+* **Název účtu data Lake Analytics**: hello účet název musí obsahovat jenom malá písmena a číslice.
+* **Výchozí účet Data Lake Store:** Každý účet Data Lake Analytics má výchozí účet Data Lake Store. Tyto účty musí být v hello stejné umístění.
+* **Umístění**: hello umístění vašeho účtu Data Lake Analytics, jako je například "East US 2" nebo jiné podporované umístění. Podporovaná umístění můžete zobrazit na našem [stránce s cenami](https://azure.microsoft.com/pricing/details/data-lake-analytics/).
 
-Fragment kódu PowerShellu v tomto kurzu používá následující proměnné k ukládání příslušných informací:
+fragmenty kódu Hello prostředí PowerShell v tomto kurzu tyto informace použít tyto proměnné toostore
 
 ```powershell
 $subId = "<SubscriptionId>"
@@ -59,7 +59,7 @@ Přihlaste se pomocí název odběru.
 Login-AzureRmAccount -SubscriptionName $subname 
 ```
 
-`Login-AzureRmAccount` Rutiny vždycky zobrazí výzvu k zadání pověření. Můžete vyhnout se zobrazí výzva, a to pomocí následujících rutin:
+Hello `Login-AzureRmAccount` rutiny vždycky zobrazí výzvu k zadání pověření. Dotaz, zda pomocí následující rutiny hello se můžete vyhnout:
 
 ```powershell
 # Save login session information
@@ -73,7 +73,7 @@ Select-AzureRmProfile -Path D:\profile.json
 
 ### <a name="create-a-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 
-Pokud ještě nemáte [skupiny prostředků](../azure-resource-manager/resource-group-overview.md#resource-groups) Pokud chcete používat, vytvořte jeden. 
+Pokud ještě nemáte [skupiny prostředků](../azure-resource-manager/resource-group-overview.md#resource-groups) toouse, vytvořte ho. 
 
 ```powershell
 New-AzureRmResourceGroup -Name  $rg -Location $location
@@ -99,13 +99,13 @@ Získejte podrobnosti o účtu.
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-Zkontrolujte existenci určitého účtu Data Lake Analytics. Vrátí rutina `True` nebo `False`.
+Zkontrolujte existenci hello určitého účtu Data Lake Analytics. Hello rutina vrací buď `True` nebo `False`.
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-Zkontrolujte existenci určitého účtu Data Lake Store. Vrátí rutina `True` nebo `False`.
+Zkontrolujte existenci hello určitého účtu Data Lake Store. Hello rutina vrací buď `True` nebo `False`.
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -113,7 +113,7 @@ Test-AdlStoreAccount -Name $adls
 
 ### <a name="listing-accounts"></a>Výpis účtů
 
-Seznam Data Lake Analytics účty v aktuálním předplatném.
+Seznam Data Lake Analytics účtů v rámci aktuálního předplatného hello.
 
 ```powershell
 Get-AdlAnalyticsAccount
@@ -169,21 +169,21 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
 ## <a name="managing-data-sources"></a>Správa zdrojů dat
-Azure Data Lake Analytics teď podporuje následující zdroje dat:
+Azure Data Lake Analytics teď podporuje hello následující zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Když vytvoříte účet Analytics, je třeba určit účet Data Lake Store jako zdroj dat výchozí. Výchozí účet Data Lake Store se používá k ukládání metadat a úlohy auditu v protokolech úloh. Po vytvoření účtu Data Lake Analytics, můžete přidat další účty Data Lake Store a účty úložiště. 
+Když vytvoříte účet Analytics, je třeba určit Data Lake Store účtu toobe hello výchozí datový zdroj. Hello výchozího účtu Data Lake Store se používá protokoly auditu metadata toostore úlohy a úlohy. Po vytvoření účtu Data Lake Analytics, můžete přidat další účty Data Lake Store a účty úložiště. 
 
-### <a name="find-the-default-data-lake-store-account"></a>Najít výchozího účtu Data Lake Store
+### <a name="find-hello-default-data-lake-store-account"></a>Najít hello výchozího účtu Data Lake Store
 
 ```powershell
 $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-Výchozí účet Data Lake Store můžete najít pomocí filtrování seznamu zdrojů dat pomocí `IsDefault` vlastnost:
+Hello výchozího účtu Data Lake Store můžete najít pomocí filtrování hello seznam zdrojů dat pomocí hello `IsDefault` vlastnost:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
@@ -206,7 +206,7 @@ Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ### <a name="list-data-sources"></a>Seznam zdrojů dat
 
 ```powershell
-# List all the data sources
+# List all hello data sources
 Get-AdlAnalyticsDataSource -Name $adla
 
 # List attached Data Lake Store accounts
@@ -229,7 +229,7 @@ $script = @"
             ("Woodgrove", 2700.0)
         ) AS D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 "@
 
@@ -250,9 +250,9 @@ Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 
 ## <a name="list-jobs-in-an-account"></a>Seznam úloh v účtu
 
-### <a name="list-all-the-jobs-in-the-account"></a>Vypište všechny úlohy v rámci účtu. 
+### <a name="list-all-hello-jobs-in-hello-account"></a>Zobrazí seznam všech úloh hello v účtu hello. 
 
-Výstup zahrnuje aktuálně spuštěné úlohy a nedávno dokončené úlohy.
+výstup Hello zahrnuje hello aktuálně spuštěných úloh a tyto úlohy, které byly nedávno dokončeny.
 
 ```powershell
 Get-AdlJob -Account $adla
@@ -261,16 +261,16 @@ Get-AdlJob -Account $adla
 
 ### <a name="list-a-specific-number-of-jobs"></a>Seznam určitý počet úloh
 
-Ve výchozím nastavení seřazeny seznam úloh na odeslání čas. Proto zobrazí první naposledy odeslaných úlohy. Ve výchozím nastavení ADLA účet pamatuje úlohy na 180 dní, ale Ge AdlJob rutina ve výchozím nastavení vrací pouze první 500. Pomocí - nejvyšší parametr seznam určitý počet úloh.
+Ve výchozím nastavení je hello seznam úloh seřadit na odeslání čas. Tak hello naposledy odeslání úlohy se zobrazí na prvním. Ve výchozím nastavení hello ADLA účet pamatuje úlohy na 180 dní, ale hello Ge AdlJob rutina ve výchozím nastavení vrátí hello pouze první 500. Pomocí - nejvyšší parametr toolist určitý počet úloh.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
 
-### <a name="list-jobs-based-on-the-value-of-job-property"></a>Seznam úloh na základě hodnoty vlastnosti úlohy
+### <a name="list-jobs-based-on-hello-value-of-job-property"></a>Seznam úloh na základě hello hodnoty vlastnosti úlohy
 
-Pomocí `-State` parametr. Zkombinováním některou z těchto hodnot:
+Pomocí hello `-State` parametr. Zkombinováním některou z těchto hodnot:
 
 * `Accepted`
 * `Compiling`
@@ -283,17 +283,17 @@ Pomocí `-State` parametr. Zkombinováním některou z těchto hodnot:
 * `Start`
 
 ```powershell
-# List the running jobs
+# List hello running jobs
 Get-AdlJob -Account $adla -State Running
 
-# List the jobs that have completed
+# List hello jobs that have completed
 Get-AdlJob -Account $adla -State Ended
 
-# List the jobs that have not started yet
+# List hello jobs that have not started yet
 Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 ```
 
-Použití `-Result` parametr ke zjištění, zda zakončeno úlohy byl úspěšně dokončen. Obsahuje tyto hodnoty:
+Použití hello `-Result` parametr toodetect zda zakončeno úlohy byl úspěšně dokončen. Obsahuje tyto hodnoty:
 
 * Zrušena
 * Se nezdařilo
@@ -309,21 +309,21 @@ Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
 
-`-Submitter` Parametr pomáhá identifikovat, kdo odeslání úlohy.
+Hello `-Submitter` parametr pomáhá identifikovat, kdo odeslání úlohy.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 ```
 
-`-SubmittedAfter` Je užitečný při filtrování časový rozsah.
+Hello `-SubmittedAfter` je užitečný při filtrování tooa časový rozsah.
 
 
 ```powershell
-# List  jobs submitted in the last day.
+# List  jobs submitted in hello last day.
 $d = [DateTime]::Now.AddDays(-1)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 
-# List  jobs submitted in the last seven day.
+# List  jobs submitted in hello last seven day.
 $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
@@ -332,11 +332,11 @@ Get-AdlJob -Account $adla -SubmittedAfter $d
 
 
 ```
-# List jobs submitted in the last five days and that successfully completed.
+# List jobs submitted in hello last five days and that successfully completed.
 $d = (Get-Date).AddDays(-5)
 Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
 
-# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
+# List all failed jobs submitted by "joe@contoso.com" within hello past seven days.
 Get-AdlJob -Account $adla `
     -Submitter "joe@contoso.com" `
     -SubmittedAfter (Get-Date).AddDays(-7) `
@@ -345,9 +345,9 @@ Get-AdlJob -Account $adla `
 
 ## <a name="filtering-a-list-of-jobs"></a>Filtrování seznamu úloh
 
-Jakmile máte seznam úloh v aktuální relaci prostředí PowerShell. Normální rutiny prostředí PowerShell můžete použít pro filtrování seznamu.
+Jakmile máte seznam úloh v aktuální relaci prostředí PowerShell. Můžete použít normální prostředí PowerShell rutiny toofilter hello seznamu.
 
-Filtrovat seznam úloh pro úlohy, odeslané za posledních 24 hodin
+Filtr seznam úloh toohello úlohy odeslání v hello posledních 24 hodin
 
 ```
 $upperdate = Get-Date
@@ -355,7 +355,7 @@ $lowerdate = $upperdate.AddHours(-24)
 $jobs | Where-Object { $_.EndTime -ge $lowerdate }
 ```
 
-Filtrovat seznam úloh úlohy, jejichž skončila v posledních 24 hodin
+Filtrovat seznam úloh toohello úlohy, které skončila v hello posledních 24 hodin
 
 ```
 $upperdate = Get-Date
@@ -363,7 +363,7 @@ $lowerdate = $upperdate.AddHours(-24)
 $jobs | Where-Object { $_.SubmitTime -ge $lowerdate }
 ```
 
-Filtrovat seznam úloh úlohy, jejichž spuštění. Úloha může selhat v době kompilace - a proto se nespustí. Podívejme se na neúspěšné úlohy, které ve skutečnosti spuštění a pak se nezdařilo.
+Filtrovat seznam úloh toohello úlohy, které spuštění. Úloha může selhat v době kompilace - a proto se nespustí. Podívejme se na úlohy hello se nezdařilo, které ve skutečnosti spuštění a pak se nezdařilo.
 
 ```powershell
 $jobs | Where-Object { $_.StartTime -ne $null }
@@ -371,22 +371,22 @@ $jobs | Where-Object { $_.StartTime -ne $null }
 
 ### <a name="analyzing-a-list-of-jobs"></a>Analýza seznam úloh
 
-Použití `Group-Object` rutiny k analýze seznam úloh.
+Použití hello `Group-Object` rutiny tooanalyze seznam úloh.
 
 ```
-# Count the number of jobs by Submitter
+# Count hello number of jobs by Submitter
 $jobs | Group-Object Submitter | Select -Property Count,Name
 
-# Count the number of jobs by Result
+# Count hello number of jobs by Result
 $jobs | Group-Object Result | Select -Property Count,Name
 
-# Count the number of jobs by State
+# Count hello number of jobs by State
 $jobs | Group-Object State | Select -Property Count,Name
 
-#  Count the number of jobs by DegreeOfParallelism
+#  Count hello number of jobs by DegreeOfParallelism
 $jobs | Group-Object DegreeOfParallelism | Select -Property Count,Name
 ```
-Při provádění analýzu, může být užitečné k přidání vlastností do objektů úloh, aby filtrování a seskupení jednodušší. Následující fragment kódu ukazuje, jak opatřit poznámkami informací o úloze s počítané vlastnosti.
+Při provádění analýzu, může být užitečné tooadd vlastnosti toohello úlohy objekty toomake filtrování a seskupení jednodušší. Hello následující fragment kódu ukazuje, jak tooannotate a informací o úloze s vypočítat vlastnosti.
 
 ```
 function annotate_job( $j )
@@ -411,7 +411,7 @@ $jobs = $jobs | %{ annotate_job( $_ ) }
 
 ## <a name="get-information-about-pipelines-and-recurrences"></a>Získání informací o kanálů a opakování
 
-Použití `Get-AdlJobPipeline` rutiny, které chcete zobrazit informace o kanálu předchozích odeslaných úlohy.
+Použití hello `Get-AdlJobPipeline` rutiny toosee hello kanálu informace dříve odeslání úlohy.
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
@@ -419,7 +419,7 @@ $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-Použití `Get-AdlJobRecurrence` rutiny zobrazíte informace o opakování pro dříve odeslání úlohy.
+Použití hello `Get-AdlJobRecurrence` rutiny toosee hello opakování informace pro dříve odeslaný úlohy.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -431,15 +431,15 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 
 ### <a name="get-job-status"></a>Získat stav úlohy
 
-Získejte stav konkrétní úlohy.
+Získáte stav hello určité úlohy.
 
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-### <a name="examine-the-job-outputs"></a>Zkontrolujte výstupy úlohy
+### <a name="examine-hello-job-outputs"></a>Zkontrolujte výstupy úlohy hello
 
-Po ukončení úlohy, zkontrolujte, jestli výstupní soubor existuje tak, že uvedete souborů ve složce.
+Po ukončení úlohy hello, zkontrolujte, jestli hello výstupní soubor existuje tak, že uvedete hello souborů ve složce.
 
 ```powershell
 Get-AdlStoreChildItem -Account $adls -Path "/"
@@ -453,9 +453,9 @@ Get-AdlStoreChildItem -Account $adls -Path "/"
 Stop-AdlJob -Account $adls -JobID $jobID
 ```
 
-### <a name="wait-for-a-job-to-finish"></a>Počkejte na dokončení úlohy
+### <a name="wait-for-a-job-toofinish"></a>Počkejte toofinish úlohy
 
-Místo opakující se `Get-AdlAnalyticsJob` , dokud nebude dokončeno úlohu, můžete použít `Wait-AdlJob` rutiny čekat na ukončení úlohy.
+Místo opakující se `Get-AdlAnalyticsJob` , dokud nebude dokončeno úlohu, můžete použít hello `Wait-AdlJob` toowait rutiny pro úlohy tooend hello.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -465,7 +465,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ### <a name="list-existing-compute-policies"></a>Seznam existujících zásad výpočetní
 
-`Get-AdlAnalyticsComputePolicy` Rutina načte informace o výpočetní zásady pro účet Data Lake Analytics.
+Hello `Get-AdlAnalyticsComputePolicy` rutina načte informace o výpočetní zásady pro účet Data Lake Analytics.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
@@ -473,7 +473,7 @@ $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 
 ### <a name="create-a-compute-policy"></a>Vytvořit zásadu výpočetní
 
-`New-AdlAnalyticsComputePolicy` Rutina vytvoří novou zásadu výpočetní pro účet Data Lake Analytics. Tento příklad nastaví maximální Austrálie k dispozici pro určeného uživatele na 50 a priority minimální úloh na 250.
+Hello `New-AdlAnalyticsComputePolicy` rutina vytvoří novou zásadu výpočetní pro účet Data Lake Analytics. Tento příklad, že nastaví hello maximální dostupné toohello Austrálie zadané uživatele too50 a too250 s prioritou hello minimální úlohy.
 
 ```powershell
 $userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -481,7 +481,7 @@ $userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
 
-## <a name="check-for-the-existence-of-a-file"></a>Zkontrolujte, jestli soubor existuje.
+## <a name="check-for-hello-existence-of-a-file"></a>Kontrola hello existenci souboru.
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -514,13 +514,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 ```
 
 > [!NOTE]
-> Pokud dojde k přerušení procesu nahrávání nebo stahování, můžete se pokusit obnovit proces spuštěním rutiny znovu s ``-Resume`` příznak.
+> Pokud hello nahrát nebo dojde k přerušení procesu stahování, můžete se pokusit tooresume hello proces spuštěný rutiny hello znovu s hello ``-Resume`` příznak.
 
 ## <a name="manage-catalog-items"></a>Spravovat položky katalogu
 
-Katalogu U-SQL se používá k struktury kódu a dat, může být sdílen skriptů U-SQL. Katalogu umožňuje nejvyšší možný s daty v Azure Data Lake výkon. Další informace najdete v tématu [Použití katalogu U-SQL](data-lake-analytics-use-u-sql-catalog.md).
+katalog Hello U-SQL je použité toostructure dat a kódu, takže může být sdílen skriptů U-SQL. katalog Hello umožňuje hello nejvyšší možný výkon s daty v Azure Data Lake. Další informace najdete v tématu [Použití katalogu U-SQL](data-lake-analytics-use-u-sql-catalog.md).
 
-### <a name="list-items-in-the-u-sql-catalog"></a>Položky seznamu v katalogu U-SQL
+### <a name="list-items-in-hello-u-sql-catalog"></a>Položky seznamu v katalogu hello U-SQL
 
 ```powershell
 # List U-SQL databases
@@ -533,7 +533,7 @@ Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database.schema"
 ```
 
-Zobrazí seznam všech sestaveních ve všech databází na ADLA účtu.
+Zobrazí seznam všech hello sestavení v všechny databáze hello ADLA účtu.
 
 ```powershell
 $dbs = Get-AdlCatalogItem -Account $adla -ItemType Database
@@ -562,7 +562,7 @@ Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
 
 ### <a name="create-credentials-in-a-catalog"></a>Vytvořit přihlašovací údaje v katalogu
 
-V databázi U-SQL vytvořte objekt přihlašovacích údajů pro databázi hostované v Azure. Přihlašovací údaje U-SQL v současné době jsou jediným typem položek katalogu, které můžete vytvořit pomocí prostředí PowerShell.
+V databázi U-SQL vytvořte objekt přihlašovacích údajů pro databázi hostované v Azure. V současné době jsou přihlašovací údaje U-SQL hello jediným typem položek katalogu, které můžete vytvořit pomocí prostředí PowerShell.
 
 ```powershell
 $dbName = "master"
@@ -578,7 +578,7 @@ New-AdlCatalogCredential -AccountName $adla `
 
 ### <a name="get-basic-information-about-an-adla-account"></a>Získejte základní informace o účtu ADLA
 
-Zadaný název účtu, vyhledá následující kód základní informace o účtu
+Zadaný název účtu vyhledává hello následující kód základní informace o účtu hello
 
 ```
 $adla_acct = Get-AdlAnalyticsAccount -Name "saveenrdemoadla"
@@ -674,7 +674,7 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Vytvoření účtu Data Lake Analytics pomocí šablony
 
-Můžete také použít šablonu skupiny prostředků Azure pomocí následujícího skriptu prostředí PowerShell:
+Můžete také použít šablonu skupiny prostředků Azure pomocí hello následující skript prostředí PowerShell:
 
 ```powershell
 $subId = "<Your Azure Subscription ID>"
@@ -685,15 +685,15 @@ $adls = "<New Data Lake Store Account Name>"
 $adla = "<New Data Lake Analytics Account Name>"
 
 $deploymentName = "MyDataLakeAnalyticsDeployment"
-$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update the JSON template path 
+$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update hello JSON template path 
 
-# Log in to Azure
+# Log in tooAzure
 Login-AzureRmAccount -SubscriptionId $subId
 
-# Create the resource group
+# Create hello resource group
 New-AzureRmResourceGroup -Name $rg -Location $location
 
-# Create the Data Lake Analytics account with the default Data Lake Store account.
+# Create hello Data Lake Analytics account with hello default Data Lake Store account.
 $parameters = @{"adlAnalyticsName"=$adla; "adlStoreName"=$adls}
 New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rg -TemplateFile $armTemplateFile -TemplateParameterObject $parameters 
 ```
@@ -702,7 +702,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 **Příklad šablony**
 
-Uložit jako následující text `.json` souboru a pak použijte předchozí skript prostředí PowerShell použít šablonu. 
+Uložte následující text jako hello `.json` souboru a pak použijte hello předcházející šablony hello toouse skript prostředí PowerShell. 
 
 ```json
 {
@@ -712,13 +712,13 @@ Uložit jako následující text `.json` souboru a pak použijte předchozí skr
     "adlAnalyticsName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the Data Lake Analytics account to create."
+        "description": "hello name of hello Data Lake Analytics account toocreate."
       }
     },
     "adlStoreName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the Data Lake Store account to create."
+        "description": "hello name of hello Data Lake Store account toocreate."
       }
     }
   },

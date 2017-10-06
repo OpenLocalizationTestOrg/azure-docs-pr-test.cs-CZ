@@ -1,6 +1,6 @@
 ---
-title: "Návrh svoji první databázi Azure SQL | Microsoft Docs"
-description: "Postup návrhu svoji první databázi Azure SQL."
+title: "aaaDesign svoji první databázi Azure SQL | Microsoft Docs"
+description: "Přečtěte si toodesign svoji první databázi Azure SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,50 +16,50 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/03/2017
 ms.author: carlrab
-ms.openlocfilehash: 69cfffdae5ce2db53acc6d668dbe468c3ef22dc2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 65f0a1594cbdda7480abf32a847266a073e7560d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>Návrh svoji první databázi Azure SQL
 
-Databáze SQL Azure je relační databáze jako a služba (DBaaS) v cloudu Microsoftu ("Azure"). V tomto kurzu zjistíte, jak pomocí portálu Azure a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) na: 
+Databáze SQL Azure je relační databáze jako a služba (DBaaS) v hello cloudu Microsoftu ("Azure"). V tomto kurzu zjistíte, jak toouse hello portál Azure a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) na: 
 
 > [!div class="checklist"]
-> * Vytvoření databáze na portálu Azure
-> * Nastavit pravidlo brány firewall na úrovni serveru, na portálu Azure
-> * Připojení k databázi pomocí SSMS
+> * Vytvoření databáze v hello portálu Azure
+> * Nastavit pravidlo brány firewall na úrovni serveru v hello portálu Azure
+> * Připojit databáze toohello pomocí SSMS
 > * Vytváření tabulek pomocí SSMS
 > * Hromadné načtení dat pomocí BCP
 > * Dotaz na data pomocí SSMS
-> * Obnovit databázi do předchozí [obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) na portálu Azure
+> * Obnovit předchozí tooa databáze hello [obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) v hello portálu Azure
 
 Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, ujistěte se, že jste nainstalovali:
-- Nejnovější verzi [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS).
-- Nejnovější verzi [BCP a SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433).
+toocomplete tento kurz, zkontrolujte zda jste nainstalovali:
+- nejnovější verze Hello [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS).
+- nejnovější verze Hello [BCP a SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="log-in-toohello-azure-portal"></a>Přihlaste se toohello portálu Azure
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se toohello [portál Azure](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvořit prázdnou databázi SQL
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](sql-database-features.md). 
+Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers.md). Hello databáze byla vytvořena v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) a v [logického serveru Azure SQL Database](sql-database-features.md). 
 
-Postupujte podle těchto kroků můžete vytvořit prázdnou databázi SQL. 
+Postupujte podle těchto kroků toocreate prázdnou databázi SQL. 
 
-1. Klikněte na tlačítko **Nový** v levém horním rohu webu Azure Portal.
+1. Klikněte na tlačítko hello **nový** nalezeno tlačítko na hello levém horním rohu hello portálu Azure.
 
-2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **SQL Database**. 
+2. Vyberte **databáze** z hello **nový** a vyberte **SQL Database** z hello **databáze** stránky. 
 
    ![Vytvořit prázdná databáze](./media/sql-database-design-first-database/create-empty-database.png)
 
-3. Vyplňte formulář databáze SQL pomocí následujících informací, jak je vidět na předchozím obrázku:   
+3. Vyplňte hello SQL Database formulář s hello následující informace, jak je znázorněno na hello předcházející bitové kopie:   
 
    | Nastavení       | Navrhovaná hodnota | Popis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
@@ -68,106 +68,106 @@ Postupujte podle těchto kroků můžete vytvořit prázdnou databázi SQL.
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
    | **Vyberte zdroj** | Prázdnou databázi | Určuje, že by měl být vytvořen prázdnou databázi. |
 
-4. Klikněte na **Server** a vytvořte a nakonfigurujte nový server pro novou databázi. Vyplňte **nového formuláře serveru** s následujícími informacemi: 
+4. Klikněte na tlačítko **Server** toocreate a nakonfigurujte nový server pro novou databázi. Vyplňte hello **nového formuláře serveru** s hello následující informace: 
 
    | Nastavení       | Navrhovaná hodnota | Popis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
    | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
-   | **Heslo** | Libovolné platné heslo | Heslo musí mít aspoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
+   | **Heslo** | Libovolné platné heslo | Heslo musí mít aspoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií hello: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
    ![create database-server](./media//sql-database-design-first-database/create-database-server.png)
 
 5. Klikněte na **Vybrat**.
 
-6. Klikněte na **Cenová úroveň** a určete úroveň služby a úroveň výkonu pro novou databázi. V tomto kurzu vyberte **20 Dtu** a **250** GB úložiště.
+6. Klikněte na tlačítko **cenová úroveň** toospecify hello služby vrstvy a úroveň výkonu pro novou databázi. V tomto kurzu vyberte **20 Dtu** a **250** GB úložiště.
 
    ![create database-s1](./media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
 7. Klikněte na tlačítko **Použít**.  
 
-8. Vyberte **kolace** pro prázdnou databázi (v tomto kurzu použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations)
+8. Vyberte **kolace** pro prázdnou databázi hello (pro tento kurz použijte hello výchozí hodnota). Další informace o kolacích najdete v tématu [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations)
 
-9. Klikněte na **Vytvořit**, aby se databáze zřídila. Zřizování trvá o minutu a půl k dokončení. 
+9. Klikněte na tlačítko **vytvořit** tooprovision hello databáze. Zřizování trvá o minutu a půl toocomplete. 
 
-10. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
+10. Na panelu nástrojů hello, klikněte na tlačítko **oznámení** procesu nasazení toomonitor hello.
 
    ![oznámení](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba SQL Database vytvoří bránu firewall na úrovni serveru, aby zabránila externím aplikacím a nástrojům v připojení k serveru nebo ke kterékoli databázi na serveru, pokud není vytvořené pravidlo brány firewall k otevření brány firewall pro konkrétní IP adresy. Postupujte podle těchto kroků a vytvořte [pravidlo brány firewall na úrovni serveru služby SQL Database](sql-database-firewall-configure.md) pro vaši IP adresu klienta a umožněte externí připojení přes bránu firewall služby SQL Database pouze pro vaši IP adresu. 
+Hello služba SQL Database vytvoří brána firewall na serveru – úrovni hello, které zabrání připojení toohello serveru nebo kterékoli databázi na serveru hello, pokud je vytvořeno pravidlo brány firewall tooopen hello brány firewall pro konkrétní IP adresy externí aplikace a nástroje. Postupujte podle těchto kroků toocreate [pravidlo brány firewall na úrovni serveru SQL Database](sql-database-firewall-configure.md) pro vašeho klienta IP adres a povolte externí připojení přes firewall hello databáze SQL pro vaše IP adresa. 
 
 > [!NOTE]
-> SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
+> SQL Database komunikuje přes port 1433. Pokud se pokoušíte tooconnect z podnikové sítě, odchozí provoz přes port 1433 nemusí mít povolený bránou firewall vaší sítě. Pokud ano, nemůžete připojit tooyour serveru Azure SQL Database, pokud vaše IT oddělení otevře port 1433.
 >
 
-1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver20170313.database.windows.net**) a možnosti pro další konfiguraci. Tento plně kvalifikovaný název serveru zkopírujte pro pozdější použití.
+1. Po dokončení hello nasazení, klikněte na tlačítko **databází SQL** z nabídky na levé straně hello a pak klikněte na tlačítko **mySampleDatabase** na hello **databází SQL** stránky. Hello přehledová stránka otevře vaší databáze, zobrazující text hello plně kvalifikovaný název serveru (například **mynewserver20170313.database.windows.net**) a poskytuje možnosti pro další konfiguraci. Tento plně kvalifikovaný název serveru zkopírujte pro pozdější použití.
 
    > [!IMPORTANT]
-   > Tento plně kvalifikovaný název serveru budete potřebovat pro připojení k serveru a jeho databázím v následujících rychlých startech.
+   > Je nutné tento plně kvalifikovaný název tooconnect tooyour serveru a její databáze v následných rychlé zahájení.
    > 
 
    ![název serveru](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-2. Klikněte na **Nastavit bránu firewall serveru** na panelu nástrojů, jak je vidět na předchozím obrázku. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database. 
+2. Klikněte na tlačítko **nastavení brány firewall serveru** na panelu nástrojů hello viz předchozí obrázek hello. Hello **nastavení brány Firewall** otevře se stránka pro hello databáze SQL server. 
 
    ![pravidlo brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 
-3. Klikněte na **Přidat IP adresu klienta** na panelu nástrojů a přidejte svoji aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
+3. Klikněte na tlačítko **přidat IP adresu klienta** na panelu nástrojů tooadd hello vaše aktuální IP adres tooa nové pravidlo brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-4. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+4. Klikněte na **Uložit**. Pro aktuální IP adrese otevřít port 1433 na logickém serveru hello je vytvořeno pravidlo brány firewall na úrovni serveru.
 
    ![nastavení pravidla brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
 
-4. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
+4. Klikněte na tlačítko **OK** a pak zavřete hello **nastavení brány Firewall** stránky.
 
-Nyní se můžete z této IP adresy připojit k serveru SQL Database a jeho databázím pomocí aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru použitím účtu správce serveru vytvořeného dříve.
+Teď se můžete připojit toohello databáze SQL server a její databáze pomocí SQL Server Management Studio nebo jiný nástroj podle svého výběru z tuto IP adresu pomocí účtu správce serveru hello vytvořili dříve.
 
 > [!IMPORTANT]
-> Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
+> Standardně je povolen přístup přes bránu firewall hello databáze SQL pro všechny služby Azure. Klikněte na tlačítko **OFF** na této stránce toodisable pro všechny služby Azure.
 
 ## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
 
-Na webu Azure Portal získejte plně kvalifikovaný název serveru služby Azure SQL Database. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí aplikace SQL Server Management Studio.
+Získáte hello serveru plně kvalifikovaný název pro váš server Azure SQL Database v hello portálu Azure. Použijete hello plně kvalifikovaný název tooconnect tooyour serveru pomocí SQL Server Management Studio.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky. 
+3. V hello **Essentials** podokně hello Azure stránky portálu pro vaši databázi, vyhledejte a pak zkopírujte hello **název serveru**.
 
    ![informace o připojení](./media/sql-database-connect-query-dotnet/server-name.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Připojení k databázi pomocí SSMS
+## <a name="connect-toohello-database-with-ssms"></a>Připojit databáze toohello pomocí SSMS
 
-Použití [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) k navázání připojení k serveru Azure SQL Database.
+Použití [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) tooestablish serveru Azure SQL Database tooyour připojení.
 
 1. Otevřete SQL Server Management Studio.
 
-2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
+2. V hello **připojit tooServer** dialogovém okně zadejte hello následující informace:
 
    | Nastavení       | Navrhovaná hodnota | Popis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Typ serveru | Databázový stroj | Tato hodnota je povinná. |
-   | Název serveru | Plně kvalifikovaný název serveru | Název musí vypadat přibližně takto: **mynewserver20170313.database.windows.net**. |
-   | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
-   | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
-   | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
+   | Název serveru | název plně kvalifikovaný server Hello | Hello název by měl být přibližně takto: **mynewserver20170313.database.windows.net**. |
+   | Authentication | Ověřování SQL Serveru | Ověřování systému SQL je typ hello pouze ověřování, který jsme nakonfigurovali v tomto kurzu. |
+   | Přihlásit | účet správce serveru Hello | Toto je hello účet, který jste zadali při vytváření hello server. |
+   | Heslo | Hello heslo pro váš účet správce serveru | Toto je hello heslo, které jste zadali při vytváření hello server. |
 
-   ![Připojení k serveru](./media/sql-database-connect-query-ssms/connect.png)
+   ![připojit tooserver](./media/sql-database-connect-query-ssms/connect.png)
 
-3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru**. V části **Připojit k databázi** zadejte **mySampleDatabase**, abyste se připojili k této databázi.
+3. Klikněte na tlačítko **možnosti** v hello **připojit tooserver** dialogové okno. V hello **připojit toodatabase** zadejte **mySampleDatabase** tooconnect toothis databáze.
 
-   ![připojení k databázi na serveru](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
+   ![připojit toodb na serveru](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
+4. Klikněte na **Připojit**. Otevře se okno Průzkumník objektů Hello v aplikaci SSMS. 
 
-5. V Průzkumníku objektů zobrazte objekty v ukázkové databázi rozbalením **Databáze** a potom **mySampleDatabase**.
+5. V Průzkumníku objektů rozbalte **databáze** a potom rozbalte **mySampleDatabase** tooview hello objekty v ukázkové databázi hello.
 
    ![Objekty databáze.](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="create-tables-in-the-database"></a>Vytváření tabulek v databázi 
+## <a name="create-tables-in-hello-database"></a>Vytváření tabulek v databázi hello 
 
 Vytvořte schéma databáze s čtyři tabulek, které model student systém správy pro použití vysoké školy [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference):
 
@@ -176,16 +176,16 @@ Vytvořte schéma databáze s čtyři tabulek, které model student systém spr�
 - Studenty
 - Úvěrového tohoto modelu systém správy student pro vysoké školy
 
-Následující diagram znázorňuje, jak tyto tabulky jsou vzájemně souvisí. Některé z těchto tabulek odkazovat na sloupce v jiné tabulky. Například studenty tabulka odkazuje **PersonId** sloupec **osoba** tabulky. Studie diagramu na pochopit, jak jsou vzájemně propojeny v tabulkách v tomto kurzu. Podrobný rozbor toho, jak vytvořit efektivní databázové tabulky, najdete v části [vytvořit efektivní databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [datové typy](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).
+Hello následující diagram znázorňuje jak Tyhle tabulky jsou související tooeach jiné. Některé z těchto tabulek odkazovat na sloupce v jiné tabulky. Například hello Student tabulka odkazuje na hello **PersonId** sloupec hello **osoba** tabulky. Studie hello diagram toounderstand jak hello tabulky v tomto kurzu jsou související tooone jiné. Pro podrobný rozbor toho, jak toocreate efektivní databázových tabulek, najdete v části [vytvořit efektivní databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [datové typy](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
-> Můžete také [návrháře tabulky v aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/hh272695.aspx) vytvoření a tabulek. 
+> Můžete taky hello [návrháře tabulky v aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/hh272695.aspx) toocreate a tabulek. 
 
 ![Relace mezi tabulkami](./media/sql-database-design-first-database/tutorial-database-tables.png)
 
-1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a potom klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
+1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a potom klikněte na **Nový dotaz**. Otevře okno prázdné dotazu který je připojený tooyour databáze.
 
-2. V okně dotazu spusťte následující dotaz, který vytvořit čtyři tabulky v databázi: 
+2. V okně dotazu hello spusťte následující dotaz toocreate čtyři tabulek v databázi hello: 
 
    ```sql 
    -- Create Person table
@@ -234,24 +234,24 @@ Následující diagram znázorňuje, jak tyto tabulky jsou vzájemně souvisí. 
 
    ![Vytváření tabulek](./media/sql-database-design-first-database/create-tables.png)
 
-3. Rozbalte uzel 'tabulky' v Průzkumníku objekt SQL Server Management Studio zobrazíte tabulky, které jste vytvořili.
+3. Rozbalte uzel 'tabulky' hello hello objekt SQL Server Management Studio Průzkumníka toosee hello tabulek, které jste vytvořili.
 
    ![vytvoření tabulek aplikace ssms](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="load-data-into-the-tables"></a>Načtení dat do tabulky
+## <a name="load-data-into-hello-tables"></a>Načtení dat do tabulky hello
 
-1. Vytvořte složku s názvem **SampleTableData** ve složce soubory ke stažení pro uložení ukázkových dat pro vaši databázi. 
+1. Vytvořte složku s názvem **SampleTableData** v vaše soubory ke stažení složky toostore ukázková data pro vaši databázi. 
 
-2. Klikněte pravým tlačítkem na následující odkazy a uložit je do **SampleTableData** složky. 
+2. Klikněte pravým tlačítkem na hello následující odkazy a uložit je do hello **SampleTableData** složky. 
 
    - [SampleCourseData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCourseData)
    - [SamplePersonData](https://sqldbtutorial.blob.core.windows.net/tutorials/SamplePersonData)
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. Otevřete okno příkazového řádku a přejděte do složky SampleTableData.
+3. Otevřete okno příkazového řádku a přejděte toohello SampleTableData složky.
 
-4. Spuštěním následujících příkazů vložení ukázková data do tabulky nahrazení hodnoty **ServerName**, **DatabaseName**, **uživatelské jméno**, a  **Heslo** s hodnotami pro vaše prostředí.
+4. Spustit následující příkazy tooinsert ukázková data do tabulek hello nahrazení hodnoty hello hello **ServerName**, **DatabaseName**, **uživatelské jméno**a **Heslo** hello hodnotami pro vaše prostředí.
   
    ```bcp
    bcp Course in SampleCourseData -S <ServerName>.database.windows.net -d <DatabaseName> -U <Username> -P <password> -q -c -t ","
@@ -260,16 +260,16 @@ Následující diagram znázorňuje, jak tyto tabulky jsou vzájemně souvisí. 
    bcp Credit in SampleCreditData -S <ServerName>.database.windows.net -d <DatabaseName> -U <Username> -P <password> -q -c -t ","
    ```
 
-Ukázková data mají nyní načtena do tabulky, které jste vytvořili dříve.
+Ukázková data mají nyní načtena do hello tabulek, které jste vytvořili dříve.
 
 ## <a name="query-data"></a>Dotazování dat
 
-Spusťte tyto dotazy k načtení informací z tabulek databáze. V tématu [zápis dotazů SQL](https://technet.microsoft.com/library/bb264565.aspx) Další informace o vytváření dotazů SQL. První dotaz spojí všechny čtyři tabulky najít všechny studenti výukové podle ' Dominick Pope', kteří mají vyšší než 75 % úrovni ve své třídě. Druhý dotaz spojuje všechny čtyři tabulky a vyhledá všechny kurzy, ve kterých má někdy zapsaná 'Noe Colemane'.
+Spusťte hello následujících dotazy tooretrieve informace z hello databázových tabulek. V tématu [zápis dotazů SQL](https://technet.microsoft.com/library/bb264565.aspx) toolearn více informací o zápis dotazů SQL. první dotaz Hello spojí všechny čtyři tabulky toofind, které všechny studenty hello výukové podle ' Dominick Pope, kdo mají vyšší než 75 % úrovni ve své třídě. druhý dotaz Hello připojí všechny čtyři tabulky a vyhledá všechny kurzy, ve kterých má někdy zapsaná 'Noe Colemane'.
 
-1. V okně dotazu SQL Server Management Studio spusťte následující dotaz:
+1. V okně dotazu SQL Server Management Studio spusťte následující dotaz hello:
 
    ```sql 
-   -- Find the students taught by Dominick Pope who have a grade higher than 75%
+   -- Find hello students taught by Dominick Pope who have a grade higher than 75%
 
    SELECT  person.FirstName,
    person.LastName,
@@ -286,7 +286,7 @@ Spusťte tyto dotazy k načtení informací z tabulek databáze. V tématu [záp
 2. V okně dotazu SQL Server Management Studio spusťte následující dotaz:
 
    ```sql
-   -- Find all the courses in which Noe Coleman has ever enrolled
+   -- Find all hello courses in which Noe Coleman has ever enrolled
 
    SELECT  course.Name,
    course.Teacher,
@@ -299,38 +299,38 @@ Spusťte tyto dotazy k načtení informací z tabulek databáze. V tématu [záp
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>Obnovení databáze k dřívějšímu bodu v čase
+## <a name="restore-a-database-tooa-previous-point-in-time"></a>Obnovit do databáze tooa předchozího bodu v čase
 
-Představte si, že jste omylem odstranili tabulku. Toto je něco, které nelze snadno obnovit z. Databáze SQL Azure můžete přejít zpět do libovolného bodu v čase v poslední až do 35 dní a obnovit tento bod v čase pro novou databázi. Můžete tuto databázi obnovit odstraněná data. Následující kroky obnovení ukázkové databáze do bodu předtím, než byly přidány tabulky.
+Představte si, že jste omylem odstranili tabulku. Toto je něco, které nelze snadno obnovit z. Databáze SQL Azure vám umožní toogo back tooany bodu v čase v hello poslední až too35 dnů a obnovit tento bod v čas tooa novou databázi. Můžete tuto databázi toorecover odstraněná data. Hello následující kroky hello ukázkové databáze tooa bod obnovení než byly přidány hello tabulky.
 
-1. Na stránce databáze SQL pro vaši databázi, klikněte na **obnovení** na panelu nástrojů. **Obnovení** otevře se stránka.
+1. Na stránce hello databáze SQL pro vaši databázi, klikněte na **obnovení** na panelu nástrojů hello. Hello **obnovení** otevře se stránka.
 
    ![Obnovení](./media/sql-database-design-first-database/restore.png)
 
-2. Vyplňte **obnovení** formuláře se požadované informace:
+2. Vyplňte hello **obnovení** formulář hello požadované informace:
     * Název databáze: Zadejte název databáze. 
-    * Bod v čase: Vyberte **v daném okamžiku** kartu na formuláři obnovení 
-    * Bod obnovení: vyberte čas, ke kterému dochází před změnou databáze
+    * Bodu v čase: Vyberte hello **v daném okamžiku** kartě ve formuláři obnovení hello 
+    * Bod obnovení: vyberte časový interval, který se vyskytuje před hello databáze byl změněn.
     * Cílový server: tuto hodnotu nelze změnit, při obnovení databáze 
     * Fond elastické databáze: vyberte **None**  
     * Cenová úroveň: vyberte **20 Dtu** a **250 GB** úložiště.
 
    ![bod obnovení](./media/sql-database-design-first-database/restore-point.png)
 
-3. Klikněte na tlačítko **OK** k obnovení databázi do [obnovit k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) předtím, než byly přidány tabulky. Obnovení databáze do jiného bodu v čase vytvoří duplicitní databázi na stejném serveru jako původní databáze od bodu v čase, které zadáte, dokud je v rámci dobu uchování vašeho [vrstvy služby](sql-database-service-tiers.md).
+3. Klikněte na tlačítko **OK** toorestore hello databáze příliš[obnovit tooa bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) předtím, než byly přidány hello tabulky. Obnovení do databáze tooa jiného bodu v čase vytvoří duplicitní databázi v hello stejný server jako původní databáze hello od hello bodu v čase zadáte, dokud je v rámci hello dobu uchování vašeho [vrstvy služby](sql-database-service-tiers.md).
 
 ## <a name="next-steps"></a>Další kroky 
-V tomto kurzu jste se dozvěděli, že databáze basic úlohy, jako například vytvořit databáze a tabulky, načítat a zadávat dotazy na data a obnovit databázi do předchozího bodu v čase. Jste se dozvěděli, jak na:
+V tomto kurzu jste se dozvěděli, že databáze basic úlohy, jako například vytvořit databáze a tabulky, načítat a zadávat dotazy na data a obnovit hello databáze tooa předchozího bodu v čase. Naučili jste se tyto postupy:
 > [!div class="checklist"]
 > * Vytvoření databáze
 > * Nastavit pravidlo brány firewall
-> * Připojení k databázi s [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
+> * Připojit databáze toohello s [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
 > * Vytváření tabulek
 > * Hromadné načítání dat
 > * Dotaz na data
-> * Obnovení databáze do předchozího bodu v čase pomocí SQL Database [obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) možnosti
+> * Obnovit hello databáze tooa předchozího bodu v čase pomocí SQL Database [obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) možnosti
 
-Přechodu na v dalším kurzu se dozvíte o návrhu databáze pomocí sady Visual Studio a C#.
+Posunutí další kurz toolearn toohello o návrhu databáze pomocí sady Visual Studio a C#.
 
 > [!div class="nextstepaction"]
 >[Návrh Azure SQL database a připojení s C# a ADO.NET](sql-database-design-first-database-csharp.md)

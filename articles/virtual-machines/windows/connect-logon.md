@@ -1,6 +1,6 @@
 ---
-title: "Připojení k virtuálnímu počítači s Windows Serverem | Dokumentace Microsoftu"
-description: "Zjistěte, jak se připojit a přihlásit k virtuálnímu počítači s Windows pomocí portálu Azure a modelu nasazení s využitím Resource Manageru."
+title: "aaaConnect tooa virtuálního počítače Windows serveru | Microsoft Docs"
+description: "Zjistěte, jak tooconnect a přihlášení pomocí tooa virtuální počítač s Windows hello Azure portal a hello modelu nasazení Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: cynthn
-ms.openlocfilehash: 88431377a36d5bc36220c630f0c8d4a46ab4a434
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc397f435ef165ae5af09f1d037ad3d520bb7ac3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači s Windows v Azure
-Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív se k virtuálnímu počítači připojíte a pak se k němu přihlásíte.
+# <a name="how-tooconnect-and-log-on-tooan-azure-virtual-machine-running-windows"></a>Jak se tooconnect a protokol na tooan Azure virtuální počítač, systémem Windows
+Budete používat hello **Connect** tlačítka na hello Azure portálu toostart relaci vzdálené plochy (RDP) z plochy Windows. Nejprve připojit toohello virtuálního počítače a potom přihlášení.
 
-Pokud se pokoušíte připojit k virtuálnímu počítači s Windows z Macu, budete muset nainstalovat klienta protokolu RDP pro Mac jako [Vzdálená plocha Microsoft](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
+Pokud se pokoušíte tooconnect tooa Windows virtuální počítač z algoritmu Mac, je třeba tooinstall klientem RDP pro Mac, například [Vzdálená plocha od Microsoftu](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
-## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
-1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com/).
-2. V nabídce centra klikněte na **Virtuální počítače**.
-3. Ze seznamu vyberte virtuální počítač.
-4. V okně pro virtuální počítač klikněte na **Připojit**.
+## <a name="connect-toohello-virtual-machine"></a>Připojit toohello virtuálního počítače
+1. Pokud jste tak již neučinili, přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. V nabídce centra hello, klikněte na tlačítko **virtuální počítače**.
+3. Vyberte virtuální počítač hello hello seznamu.
+4. V okně hello hello virtuálního počítače, klikněte na tlačítko **Connect**.
    
-    ![Snímek obrazovky Portálu Azure znázorňující způsob připojení k virtuálnímu počítači](./media/connect-logon/connect.png)
+    ![Snímek obrazovky portálu Azure znázorňující hello jak tooconnect tooyour virtuálních počítačů.](./media/connect-logon/connect.png)
    
    > [!TIP]
-   > Pokud je tlačítko **Připojit** na portálu zašedlé a nejste připojení k Azure přes [Express Route](../../expressroute/expressroute-introduction.md) nebo připojení [S2S (Site-to-site) VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), musíte před použitím protokolu RDP vytvořit veřejnou IP adresu a přiřadit ji svému virtuálnímu počítači. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Pokud hello **připojit** tlačítko hello portálu šedé a nejste připojené tooAzure prostřednictvím [Express Route](../../expressroute/expressroute-introduction.md) nebo [Site-to-Site VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) připojení, je nutné toocreate a Přiřazení virtuálního počítače na veřejnou IP adresu před použitím protokolu RDP. Podle potřeby si můžete přečíst další informace o [veřejných IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
    > 
    > 
 
-## <a name="log-on-to-the-virtual-machine"></a>Přihlášení k virtuálnímu počítači
+## <a name="log-on-toohello-virtual-machine"></a>Přihlaste se toohello virtuálního počítače
 [!INCLUDE [virtual-machines-log-on-win-server](../../../includes/virtual-machines-log-on-win-server.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud při připojování nastanou problémy, přečtěte si článek [Řešení problémů s připojením ke Vzdálené ploše](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tento článek vás provede diagnostikou a řešením běžných problémů.
+Pokud narazíte na potíže při pokusu o tooconnect, přečtěte si téma [připojení ke vzdálené ploše řešení potíží s](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tento článek vás provede diagnostikou a řešením běžných problémů.
 

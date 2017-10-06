@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření první webové Java aplikace ve službě Azure"
-description: "Nasazením základní Java aplikace se naučíte, jak spouštět webové aplikace ve službě App Service."
+title: "aaaCreate první webové aplikace Java v Azure"
+description: "Zjistěte, jak toorun webové aplikace ve službě App Service pomocí nasazení základní aplikace v jazyce Java."
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
@@ -15,24 +15,24 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc
-ms.openlocfilehash: b91b9bde5eb8ea0d7e2196056b635fe54095e748
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 81315c07b5aa84cbec50a17b2cb3914927b19c00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
-Funkce [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) služby [Azure App Service](../app-service/app-service-value-prop-what-is.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/).
+Hello [webové aplikace](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) funkce [Azure App Service](../app-service/app-service-value-prop-what-is.md) nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby. Tento rychlý start ukazuje, jak toodeploy Java webové aplikace tooApp služby pomocí hello [IDE Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/).
 
 ![Hello Azure! Ukázková webová aplikace](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba nainstalovat:
+toocomplete tento rychlý start, nainstalovat:
 
-* Bezplatné [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Neon.
-* [Sadu nástrojů Azure pro Eclipse](/azure/azure-toolkit-for-eclipse-installation).
+* Hello volné [IDE Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Neon.
+* Hello [nástrojů Azure pro Eclipse](/azure/azure-toolkit-for-eclipse-installation).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba nainstalovat:
 
 V prostředí Eclipse vyberte **File** (Soubor) > **New** (Nový) > **Dynamic Web Project** (Dynamický webový projekt).
 
-V dialogovém okně **New Dynamic Web Project** (Nový dynamický webový projekt) pojmenujte projekt **MyFirstJavaOnAzureWebApp** a vyberte **Finish** (Dokončit).
+V hello **nové Dynamic Web Project** dialogové okno, název projektu hello **MyFirstJavaOnAzureWebApp**a vyberte **Dokončit**.
    
 ![Dialogové okno New Dynamic Web Project (Nový dynamický webový projekt)](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -50,19 +50,19 @@ Pokud se nezobrazí Project Explorer (Prohlížeč projektu), obnovte zobrazení
 
 ![Pracovní prostor Java EE pro Eclipse](./media/app-service-web-get-started-java/pe.png)
 
-V prohlížeči Project Explorer rozbalte projekt **MyFirstJavaOnAzureWebApp**.
+V prohlížeči projektu rozbalte hello **MyFirstJavaOnAzureWebApp** projektu.
 Klikněte pravým tlačítkem na **WebContent** (Webový obsah) a potom vyberte **New** (Nový) > **JSP File** (Soubor JSP).
 
 ![Nabídka pro nový soubor JSP v prohlížeči Project Explorer](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
-V dialogovém okně **New JSP File** (Nový soubor JSP):
+V hello **nový soubor JSP** dialogové okno:
 
-* Soubor pojmenujte **index.jsp**.
+* Název souboru hello **index.jsp**.
 * Vyberte **Finish** (Dokončit).
 
   ![Dialogové okno New JSP File (Nový soubor JSP)](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
 
-V souboru index.jsp nahraďte element `<body></body>` následujícím kódem:
+V souboru index.jsp hello nahraďte hello `<body></body>` element s hello následující kód:
 
 ```jsp
 <body>
@@ -70,42 +70,42 @@ V souboru index.jsp nahraďte element `<body></body>` následujícím kódem:
 </body>
 ```
 
-Uložte změny.
+Uložte změny hello.
 
-## <a name="publish-the-web-app-to-azure"></a>Publikování webové aplikace do služby Azure
+## <a name="publish-hello-web-app-tooazure"></a>Publikování hello webové aplikace tooAzure
 
-V prohlížeči Project Explorer klikněte pravým tlačítkem na projekt a potom vyberte **Azure** > **Publish as Azure Web App** (Publikovat jako webovou aplikaci Azure).
+V prohlížeči projektu klikněte pravým tlačítkem na projekt hello a pak vyberte **Azure** > **publikovat jako webové aplikace Azure**.
 
 ![Místní nabídka Publish as Azure Web App (Publikovat jako webovou aplikaci Azure)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-V dialogovém okně **Azure Sign In** (Přihlášení k Azure) ponechejte možnost **Interactive** (Interaktivní) a pak vyberte **Sign in** (Přihlásit).
+V hello **přihlásit k Azure** dialogové okno, udržování hello **interaktivní** a pak vyberte možnost **přihlášení**.
 
-Postupujte podle pokynů k přihlášení.
+Podle pokynů hello přihlášení.
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogové okno Deploy Web App (Nasazení webové aplikace)
 
-Jakmile budete přihlášeni ke svému účtu Azure, zobrazí se dialogové okno **Deploy Web App** (Nasazení webové aplikace).
+Po přihlášení tooyour účet Azure hello **nasadit webovou aplikaci** zobrazí se dialogové okno.
 
-Vyberte **Create** (Vytvořit).
+Vyberte **Vytvořit**.
 
 ![Dialogové okno Deploy Web App (Nasazení webové aplikace)](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
 ### <a name="create-app-service-dialog-box"></a>Dialogové okno Create App Service (Vytvoření služby App Service)
 
-Dialogové okno **Create App Service** (Vytvoření služby App Service) se zobrazí s výchozími hodnotami. Číslo **170602185241** zobrazené na následujícím obrázku se bude ve vašem dialogovém okně lišit.
+Hello **vytvořit službu App Service** dialogové okno s výchozími hodnotami. Hello číslo **170602185241** ukazuje hello následující bitové kopie se ve vašem dialogovém liší.
 
 ![Dialogové okno Create App Service (Vytvoření služby App Service)](./media/app-service-web-get-started-java/cas1.png)
 
-V dialogovém okně **Create App Service** (Vytvoření služby App Service):
+V hello **vytvořit službu App Service** dialogové okno:
 
-* Ponechejte vygenerovaný název webové aplikace. Tento název musí být v rámci služby Azure jedinečný. Název je součástí adresy URL webové aplikace. Příklad: Pokud je název webové aplikace **MyJavaWebApp**, bude adresa URL *myjavawebapp.azurewebsites.net*.
-* Ponechejte výchozí webový kontejner.
+* Zachovejte hello vygeneruje název hello webové aplikace. Tento název musí být v rámci služby Azure jedinečný. Název Hello je součástí hello adresu URL pro webovou aplikaci hello. Například: Pokud je název webové aplikace hello **MyJavaWebApp**, adresa URL je hello *myjavawebapp.azurewebsites.net*.
+* Zachovat hello výchozí webový kontejner.
 * Vyberte předplatné služby Azure.
-* Na kartě **App service plan** (Plán služby App Service):
+* Na hello **plán služby App service** karty:
 
-  * **Create new** (Vytvořit nový): Ponechejte výchozí hodnotu, kterou je název plánu služby App Service.
+  * **Vytvořit nový**: zachovat hello výchozí, což je název hello hello plán služby App Service.
   * **Location** (Umístění): Vyberte **West Europe** (Západní Evropa) nebo umístění ve vaší blízkosti.
-  * **Pricing tier** (Cenová úroveň): Vyberte možnost Free. Informace o funkcích najdete na stránce [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+  * **Cenová úroveň**: Vyberte hello bezplatnou možností. Informace o funkcích najdete na stránce [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
 
    ![Dialogové okno Create App Service (Vytvoření služby App Service)](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
@@ -113,47 +113,47 @@ V dialogovém okně **Create App Service** (Vytvoření služby App Service):
 
 ### <a name="resource-group-tab"></a>Karta Resource group (Skupina prostředků)
 
-Vyberte kartu **Resource group** (Skupina prostředků). Ponechte výchozí vygenerovanou hodnotu pro skupinu prostředků.
+Vyberte hello **skupiny prostředků** kartě. Zachovat hello výchozí generovaný hodnotu pro skupinu prostředků hello.
 
 ![Karta Resource group (Skupina prostředků)](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-Vyberte **Create** (Vytvořit).
+Vyberte **Vytvořit**.
 
 <!--
-### The JDK tab
+### hello JDK tab
 
-Select the **JDK** tab. Keep the default, and then select **Create**.
+Select hello **JDK** tab. Keep hello default, and then select **Create**.
 
 ![Create App Service plan](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
 -->
 
-Sada nástrojů Azure vytvoří webovou aplikaci a zobrazí dialogové okno s ukazatelem průběhu.
+Hello nástrojů Azure vytvoří hello webovou aplikaci a zobrazí dialogové okno průběhu.
 
 ![Dialogové okno Create App Service Progress (Průběh vytváření plánu služby App Service)](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogové okno Deploy Web App (Nasazení webové aplikace)
 
-V dialogovém okně **Deploy Web App** (Nasazení webové aplikace) vyberte **Deploy to root** (Nasadit do kořene). Pokud máte službu App Service na adrese *wingtiptoys.azurewebsites.net* a nezvolíte nasazení do kořene, nasadí se vaše webová aplikace **MyFirstJavaOnAzureWebApp** do *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
+V hello **nasadit webovou aplikaci** dialogové okno, vyberte **nasazení tooroot**. Pokud máte aplikační službu v *wingtiptoys.azurewebsites.net* a nenasazujte toohello kořenová hello webovou aplikaci s názvem **MyFirstJavaOnAzureWebApp** nasazuje příliš *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
 
 ![Dialogové okno Deploy Web App (Nasazení webové aplikace)](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-Dialogové okno zobrazuje vybrané hodnoty pro Azure, JDK a webový kontejner.
+Hello dialogové okno pole ukazuje hello Azure, JDK a výběr webového kontejneru.
 
-Výběrem možnosti **Deploy** (Nasadit) publikujte webovou aplikaci do služby Azure.
+Vyberte **nasadit** toopublish hello webové aplikace tooAzure.
 
-Po dokončení publikování vyberte odkaz **Publikováno** v dialogovém okně **Protokol aktivit v Azure**.
+Po dokončení publikování hello vyberte hello **publikováno** odkaz v hello **protokol činnosti Azure** dialogové okno.
 
 ![Dialogové okno Protokol aktivit v Azure](./media/app-service-web-get-started-java/aal.png)
 
-Blahopřejeme! Úspěšně jste nasadili svou webovou aplikaci do služby Azure. 
+Blahopřejeme! Úspěšně jste nasadili tooAzure vaší webové aplikace. 
 
 ![Hello Azure! Ukázková webová aplikace](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="update-the-web-app"></a>Aktualizace webové aplikace
+## <a name="update-hello-web-app"></a>Aktualizace hello webové aplikace
 
-Změňte zprávu v ukázkovém kódu JSP na jinou.
+Změnit hello ukázka JSP kód tooa jiná zpráva.
 
 ```jsp
 <body>
@@ -161,35 +161,35 @@ Změňte zprávu v ukázkovém kódu JSP na jinou.
 </body>
 ```
 
-Uložte změny.
+Uložte změny hello.
 
-V prohlížeči Project Explorer klikněte pravým tlačítkem na projekt a potom vyberte **Azure** > **Publish as Azure Web App** (Publikovat jako webovou aplikaci Azure).
+V prohlížeči projektu klikněte pravým tlačítkem na projekt hello a pak vyberte **Azure** > **publikovat jako webové aplikace Azure**.
 
-Zobrazí se dialogové okno **Deploy Web App** (Nasazení webové aplikace), ve kterém se zobrazí aplikační služba, kterou jste předtím vytvořili. 
+Hello **nasadit webovou aplikaci** se zobrazí dialogové okno a ukazuje hello služby app service, kterou jste vytvořili. 
 
 > [!NOTE]
-> Při každém publikování vyberte **Deploy to root** (Nasadit do kořene).
+> Vyberte **nasazení tooroot** pokaždé, když publikujete.
 >
 
-Vyberte webovou aplikaci a pak vyberte **Deploy** (Nasadit). Tím změny publikujete.
+Vyberte hello webovou aplikaci a vyberte **nasadit**, který publikuje hello změny.
 
-Když se zobrazí odkaz **Publikováno**, vyberte ho. Tím přejdete do webové aplikace a budete moct vidět změny.
+Když hello **publikování** odkaz se zobrazí, vyberte ho toobrowse toohello webové aplikace a podívejte se změny hello.
 
-## <a name="manage-the-web-app"></a>Správa webové aplikace
+## <a name="manage-hello-web-app"></a>Správa webové aplikace hello
 
-Pokud chcete zobrazit webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte toohello <a href="https://portal.azure.com" target="_blank">portál Azure</a> toosee hello webovou aplikaci, kterou jste vytvořili.
 
-V levé nabídce vyberte **Skupiny prostředků**.
+Hello levé nabídce vyberte **skupiny prostředků**.
 
-![Navigace na skupiny prostředků na portálu](media/app-service-web-get-started-java/rg.png)
+![Skupiny tooresource portálu](media/app-service-web-get-started-java/rg.png)
 
-Vyberte skupinu prostředků. Stránka zobrazuje prostředky, které jste vytvořili v tomto kurzu Rychlý start.
+Vyberte skupinu prostředků hello. Hello stránka zobrazuje hello prostředky, které jste vytvořili v tento rychlý start.
 
 ![Skupina prostředků myResourceGroup](media/app-service-web-get-started-java/rg2.png)
 
-Vyberte webovou aplikaci (**webapp-170602193915** na předchozím obrázku).
+Vyberte hello webové aplikace (**webapp 170602193915** v hello předcházející bitové kopie).
 
-Zobrazí se stránka **Přehled**. Tato stránka poskytuje přehled toho, jak si aplikace vede. Tady můžete provádět základní úkoly správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Záložky na levé straně okna obsahují další možnosti konfigurace, které můžete otevřít. 
+Hello **přehled** se zobrazí stránka. Tato stránka poskytuje zobrazení jak je to aplikace hello. Tady můžete provádět základní úkoly správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Hello karty na levé straně stránky hello hello zobrazit hello různé konfigurace, které lze otevřít. 
 
 ![Stránka služby App Service na webu Azure Portal](media/app-service-web-get-started-java/web-app-blade.png)
 

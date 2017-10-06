@@ -1,6 +1,6 @@
 ---
-title: "Přehled o branách VPN: Vytváření připojení VPN mezi místy a virtuálními sítěmi Azure | Dokumentace Microsoftu"
-description: "Tento přehled o branách VPN vysvětluje způsoby připojení k virtuálním sítím Azure pomocí připojení VPN přes internet. Součástí článku jsou diagramy základní konfigurace připojení."
+title: "Přehled brány sítě VPN: Vytvořte připojení VPN mezi různými místy tooAzure virtuální sítě | Microsoft Docs"
+description: "Tento přehled brány VPN vysvětluje hello způsoby tooconnect tooAzure virtuálních sítí pomocí připojení k síti VPN přes hello Internet. Součástí článku jsou diagramy základní konfigurace připojení."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
-ms.openlocfilehash: ecfe6dab6e4deaa75d073badcb88d536396fe678
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 899270734270632a5b12d56021c924e977725a7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="about-vpn-gateway"></a>Informace o službě VPN Gateway
 
-Služba VPN Gateway je typem brány virtuální sítě, která odesílá šifrovaný síťový provoz přes veřejné spojení do místního umístění. Brány VPN můžete použít také k posílání šifrovaného provozu mezi virtuálními sítěmi Azure po síti Microsoftu. Pokud chcete posílat šifrovaný síťový provoz mezi virtuální sítí Azure a místní sítí, musíte pro virtuální síť vytvořit bránu VPN.
+Brána sítě VPN je typ brány virtuální sítě, který odesílá šifrovaný provoz mezi tooan veřejného připojení na místní umístění. Můžete také použít toosend šifrované přenosy bran VPN mezi virtuálními sítěmi Azure přes síť Microsoft hello. toosend šifrované síťový provoz mezi virtuální sítě Azure a místními servery, je nutné vytvořit bránu VPN pro virtuální síť.
 
-Každá virtuální síť může mít pouze jednu bránu VPN. Můžete ale vytvořit více připojení ke stejné bráně VPN. Příkladem je konfigurace připojení typu Multi-Site. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN, včetně sítí VPN typu Point-to-Site, sdílejí šířku pásma, která je pro tuto bránu dostupná.
+Každá virtuální síť může mít pouze jednu bránu VPN, ale můžete vytvořit více připojení toohello stejnou bránou sítě VPN. Příkladem je konfigurace připojení typu Multi-Site. Když vytvoříte více připojení toohello stejné brány sítě VPN, všechna tunelové propojení sítí VPN Point-to-Site VPN, sdílená šířka pásma hello, která je k dispozici pro bránu hello.
 
 ### <a name="whatis"></a>Co je brána virtuální sítě?
 
-Bránu virtuální sítě tvoří dva nebo více virtuálních počítačů nasazených v konkrétní podsíti, která se nazývá GatewaySubnet. Virtuální počítače, které se nachází v podsíti GatewaySubnet, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě GatewaySubnet byste nikdy neměli nasazovat další prostředky.
+Brána virtuální sítě se skládá ze dvou nebo více virtuálních počítačů, které jsou nasazené tooa konkrétní podsíť s názvem hello GatewaySubnet. Hello virtuálních počítačů, které se nacházejí v hello GatewaySubnet se vytvoří při vytvoření brány virtuální sítě hello. Brána virtuální sítě virtuálních počítačů jsou nakonfigurované toocontain směrovacích tabulek a brány konkrétní toohello služby brány. Nelze konfigurovat přímo hello virtuálních počítačů, které jsou součástí brány virtuální sítě hello a měli byste nikdy nasadit další prostředky toohello GatewaySubnet.
 
-Při vytvoření brány virtuální sítě pomocí brány typu VPN se vytvoří konkrétní typ brány virtuální sítě, která šifruje provoz – brána VPN. Vytvoření brány VPN může trvat až 45 minut. Důvodem je to, že virtuální počítače pro bránu VPN se nasazují do podsítě GatewaySubnet a konfigurují pomocí zadaného nastavení. SKU brány, kterou vyberete, určuje výkonnost virtuálních počítačů.
+Když vytvoříte bránu virtuální sítě pomocí typ brány hello 'Vpn', vytvoří určitý typ brány virtuální sítě, který šifruje provoz; Brána sítě VPN. Brána sítě VPN může trvat až toocreate too45 minut. To je kvůli hello virtuálních počítačů pro bránu VPN hello jsou nasazené toohello GatewaySubnet a nakonfigurované hello nastavení, které jste zadali. Hello skladová položka brány, kterou jste vybrali Určuje, jak výkonné hello virtuální počítače.
 
 ## <a name="gwsku"></a>SKU brány
 
@@ -39,41 +39,41 @@ Při vytvoření brány virtuální sítě pomocí brány typu VPN se vytvoří 
 
 ## <a name="configuring"></a>Konfigurace služby VPN Gateway
 
-Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných se specifickými nastaveními. Většinu prostředků lze nakonfigurovat jednotlivě, nicméně v některých případech je třeba je konfigurovat v určitém pořadí.
+Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných se specifickými nastaveními. Většinu hello prostředků můžete nakonfigurovat samostatně, přestože musí být nakonfigurovány v určitém pořadí v některých případech.
 
 ### <a name="settings"></a>Nastavení
 
-Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření úspěšného připojení zásadní. Informace o jednotlivých prostředcích a nastaveních služby VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md). Tento článek obsahuje informace, které vám pomůžou pochopit typy bran, typy sítí VPN, typy připojení, podsítě brány, místní síťové brány a různá další nastavení prostředků, o kterých možná uvažujete.
+Hello nastavení, které jste zvolili pro jednotlivé zdroje jsou kritické toocreating úspěšné připojení. Informace o jednotlivých prostředcích a nastaveních služby VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md). Hello článek obsahuje informace o toohelp porozumíte brány typy, typy sítě VPN, typy připojení, podsítě brány, brány místní sítě a různá nastavení prostředků, může být vhodné tooconsider.
 
 ### <a name="tools"></a>Nástroje pro nasazení
 
-Prostředky můžete začít vytvářet a konfigurovat pomocí konfiguračního nástroje, jako je například Azure Portal. Později se můžete rozhodnout používat ke konfiguraci dalších prostředků nebo úpravám stávajících prostředků jiný nástroj, třeba PowerShell. V současné době nelze konfigurovat všechny prostředky a nastavení prostředků pomocí webu Azure Portal. Pokyny v článcích pro každou topologii připojení určují, kdy je zapotřebí specifický konfigurační nástroj. 
+Můžete začít vytváření a konfigurace prostředků pomocí nástroj konfigurace, jako je například hello portálu Azure. Později můžete rozhodnout tooswitch tooanother nástroji, jako prostředí PowerShell, tooconfigure další prostředky, nebo upravit existující prostředky v případě potřeby. V současné době nelze konfigurovat každý prostředek a nastavení prostředků na hello portálu Azure. Při nástroje konkrétní konfigurace je potřeba zadat Hello pokyny v hello články pro každou topologie připojení. 
 
 ### <a name="models"></a>Model nasazení
 
-Kroky při konfiguraci brány VPN se budou lišit v závislosti na modelu nasazení, který jste použili k vytvoření virtuální sítě. Například pokud jste virtuální síť vytvořili pomocí modelu nasazení Classic, budete při vytváření a konfiguraci brány VPN postupovat podle pokynů pro model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Pochopení modelů nasazení Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md).
+Při konfiguraci brány VPN hello kroky, které můžete provést závisí na modelu nasazení hello používá toocreate vaší virtuální sítě. Například pokud jste vytvořili virtuální sítě pomocí modelu nasazení classic hello, použijte hello pokyny a pokyny pro nasazení classic hello modelu toocreate a nakonfigurovat nastavení brány sítě VPN. Další informace o modelech nasazení najdete v tématu [Pochopení modelů nasazení Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="diagrams"></a>Diagramy topologie připojení
 
-Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. V následujících oddílech si můžete prohlédnout diagramy topologie a informace o následujících připojení brány sítě VPN. Následující oddíly obsahují tabulky, které uvádějí:
+Je důležité tooknow, že jsou k dispozici pro připojení brány VPN různých konfigurací. Je nutné toodetermine konfiguraci, kterou nejlepší vyhovuje vašim potřebám. V následujících částech hello, můžete zobrazit diagramy topologie a informace o hello následující brány sítě VPN: hello následující části obsahují tabulky, které seznamu:
 
 * dostupný model nasazení,
 * dostupné konfigurační nástroje,
-* odkazy na příslušný článek, pokud existuje.
+* Odkazy, které vás zavedou přímo tooan článek, pokud je k dispozici
 
-Diagramy a popisy vám pomohou s výběrem topologie připojení, která bude odpovídat vašim požadavkům. Diagramy popisují základní topologie, ale je možné vytvořit komplexnější konfigurace s použitím diagramů jako vodítek.
+Použití hello diagramy a popisy toohelp vyberte toomatch topologie připojení hello vašim požadavkům. Hello diagramech hello základní topologie, ale je možné toobuild složitějších konfigurací pomocí hello diagramů jako vodítek.
 
 ## <a name="s2smulti"></a>Site-to-Site a Multi-Site (tunel VPN IPsec/IKE)
 
 ### <a name="S2S"></a>Site-to-Site
 
-Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení typu Site-to-Site vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu a není umístěné za překladem adres (NAT). Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace.   
+Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení S2S vyžaduje sítě VPN zařízení nachází v místě které má veřejnou IP adresu přiřazenou tooit a není umístěný za adres (NAT) Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace.   
 
 ![Příklad propojení Site-to-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
 ### <a name="Multi"></a>Multi-Site
 
-Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma. To se často označuje jako připojení „více lokalit“ (Multi-Site).
+Tento typ připojení je varianta hello připojení Site-to-Site. Vytvořit více než jedno připojení VPN z brány virtuální sítě, obvykle připojení toomultiple místními lokalitami. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Protože každá virtuální síť může mít pouze jednu bránu VPN, všechna připojení prostřednictvím brány hello sdílet hello dostupnou šířku pásma. To se často označuje jako připojení „více lokalit“ (Multi-Site).
 
 ![Příklad propojení Multi-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -83,11 +83,11 @@ Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální
 
 ## <a name="P2S"></a>Point-to-Site (VPN prostřednictvím protokolu SSTP)
 
-Brána VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení VPN typu Point-to-Site jsou užitečná, když se chcete ke své virtuální síti připojit ze vzdáleného umístění, například při práci z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN Site-to-Site, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. 
+Brána sítě VPN typu Point-to-Site (P2S) umožňuje vytvoření bezpečného připojení virtuální sítě tooyour z jednotlivých klientských počítačů. Připojení point-to-Site VPN jsou užitečné, když chcete, aby tooconnect tooyour virtuální síti ze vzdáleného umístění, například při jsou telefonicky z domova nebo z konference. Síť VPN P2S je také užitečné řešení toouse místo Site-to-Site VPN, pokud máte pouze několik klientů, kteří potřebují tooconnect tooa virtuální sítě. 
 
-Na rozdíl od připojení S2S nevyžadují připojení P2S místní veřejnou IP adresu ani zařízení VPN. Připojení typu P2S je možné použít s připojeními typu S2S prostřednictvím stejné brány VPN za předpokladu, že všechny požadavky na konfiguraci obou připojení jsou kompatibilní.
+Na rozdíl od připojení S2S nevyžadují připojení P2S místní veřejnou IP adresu ani zařízení VPN. Připojení P2S lze použít s připojení S2S prostřednictvím hello stejné brány sítě VPN, tak dlouho, dokud všechny hello požadavky na konfiguraci pro obě připojení jsou kompatibilní.
 
-P2S používá protokol SSTP (Secure Socket Tunneling Protocol), což je protokol VPN založený na protokolu SSL. Připojení VPN P2S se vytváří jeho zahájením z klientského počítače.
+Používá P2S hello Secure Socket SSTP (Tunneling Protocol), což je protokol VPN založené na protokolu SSL. Připojení P2S VPN je vytvořeno spuštěním z hello klientského počítače.
 
 ![Příklad propojení Point-to-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-point-to-site-connection-diagram.png)
 
@@ -97,23 +97,23 @@ P2S používá protokol SSTP (Secure Socket Tunneling Protocol), což je protoko
 
 ## <a name="V2V"></a>Připojení typu VNet-to-VNet (tunel VPN IPsec/IKE)
 
-Propojení virtuální sítě s jinou virtuální sítí (VNet-to-VNet) je podobné propojení virtuální sítě s místním serverem. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec/IKE. Dokonce je možné kombinovat komunikaci typu VNet-to-VNet s konfiguracemi připojení více lokalit. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí.
+Propojení virtuální sítě tooanother virtuální síť (VNet-to-VNet) je podobné tooconnecting umístění lokality tooan místní virtuální síť. Oba typy připojení využívají bránu tooprovide sítě VPN přes zabezpečené tunelové propojení prostřednictvím protokolu IPsec/IKE. Dokonce je možné kombinovat komunikaci typu VNet-to-VNet s konfiguracemi připojení více lokalit. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí.
 
-Virtuální sítě, které propojujete, můžou být:
+Hello připojení virtuální sítě může být:
 
-* v jedné nebo několika oblastech,
-* v jednom nebo několika předplatných, 
-* v jednom nebo několika modelech nasazení.
+* v hello stejný nebo jiný oblastí
+* v hello stejné nebo různých předplatných 
+* v hello modely stejný nebo jiný nasazení
 
-![Příklad propojení VNet-to-VNet pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-vnet-to-vnet-connection-diagram.png)
+![Azure VPN bránu VNet tooVNet připojení příklad](./media/vpn-gateway-about-vpngateways/vpngateway-vnet-to-vnet-connection-diagram.png)
 
 ### <a name="connections-between-deployment-models"></a>Připojení mezi různými modely nasazení
 
-Azure v současné době nabízí dva modely nasazení: Classic a Resource Manager. Pokud již Azure nějakou dobu používáte, pravděpodobně vaše virtuální počítače a role instancí Azure fungují ve virtuální síti Classic. Vaše novější virtuální počítače a role instancí však mohou používat virtuální síť vytvořenou v nástroji Resource Manager. Můžete vytvořit připojení mezi virtuálními sítěmi umožňující prostředkům v jedné virtuální síti přímo komunikovat s prostředky v jiné.
+Azure v současné době nabízí dva modely nasazení: Classic a Resource Manager. Pokud již Azure nějakou dobu používáte, pravděpodobně vaše virtuální počítače a role instancí Azure fungují ve virtuální síti Classic. Vaše novější virtuální počítače a role instancí však mohou používat virtuální síť vytvořenou v nástroji Resource Manager. Připojení mezi tooallow hello virtuální sítě můžete vytvořit v jedné virtuální sítě toocommunicate přímo s prostředky v jiném hello prostředky.
 
 ### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
-Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření připojení využít metodu VNet peering. VNet peering nepoužívá bránu virtuální sítě. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+Možnost toouse VNet peering toocreate připojení, může být také virtuální síti splňuje určité požadavky. VNet peering nepoužívá bránu virtuální sítě. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="deployment-models-and-methods-for-vnet-to-vnet"></a>Modely nasazení a metody pro VNet-to-VNet
 
@@ -121,17 +121,17 @@ Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření p
 
 ## <a name="ExpressRoute"></a>ExpressRoute (vyhrazené soukromé připojení)
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
+Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do hello cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. Prostřednictvím ExpressRoute můžete vytvořit připojení tooMicrosoft cloudové služby, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
-Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
+Připojení ExpressRoute se nepřenášejí prostřednictvím hello veřejného Internetu. To umožňuje toooffer připojení ExpressRoute Další spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než Typická připojení přes hello Internet.
 
-Připojení typu ExpressRoute nepoužívá bránu sítě VPN, přestože brána virtuální sítě využívá jako součást požadované konfigurace. U připojení ExpressRoute je brána virtuální sítě nakonfigurovaná s typem ExpressRoute (a ne Vpn). Další informace o ExpressRoute najdete v [Technickém přehledu ExpressRoute](../expressroute/expressroute-introduction.md).
+Připojení typu ExpressRoute nepoužívá bránu sítě VPN, přestože brána virtuální sítě využívá jako součást požadované konfigurace. V připojení ExpressRoute Brána virtuální sítě hello nastaven typ brány hello 'ExpressRoute', nikoli 'Vpn'. Další informace o ExpressRoute najdete v tématu hello [technický přehled ExpressRoute](../expressroute/expressroute-introduction.md).
 
 ## <a name="coexisting"></a>Současně existující připojení typu Site-to-Site a ExpressRoute
 
-ExpressRoute je přímé vyhrazené připojení ke službám Microsoftu, včetně Azure, z vaší sítě WAN (nikoli prostřednictvím veřejného internetu). Provoz VPN typu Site-to-Site je přenášen zašifrovaně prostřednictvím veřejného internetu. Možnost konfigurace VPN typu Site-to-Site a připojení ExpressRoute pro stejnou virtuální síť má několik výhod.
+ExpressRoute je přímé vyhrazené připojení z vaší sítě WAN (nikoli prostřednictvím veřejného Internetu hello) tooMicrosoft služeb, včetně Azure. Site-to-Site VPN provozu přenášen zašifrovaně prostřednictvím hello veřejného Internetu. Je možné tooconfigure připojení VPN typu Site-to-Site a ExpressRoute pro hello stejnou virtuální síť má několik výhod.
 
-Můžete nakonfigurovat síť VPN typu Site-to-Site jako zabezpečenou cestu převzetí služeb při selhání pro ExpressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou součástí vaší sítě, ale jsou připojené prostřednictvím ExpressRoute. Tato konfigurace vyžaduje dvě brány virtuální sítě pro stejnou virtuální síť, jednu typu Vpn a druhou typu ExpressRoute.
+Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute, nebo použít toosites tooconnect sítě Site-to-Site VPN, které nejsou součástí vaší sítě, ale jsou připojené prostřednictvím ExpressRoute. Všimněte si, že tato konfigurace vyžaduje dvě brány virtuální sítě pro hello stejné virtuální síti, pomocí hello typ brány, Vpn a pomocí typ brány hello 'ExpressRoute' hello.
 
 ![Příklad současné existence ExpressRoute a VPN Gateway](./media/vpn-gateway-about-vpngateways/expressroute-vpngateway-coexisting-connections-diagram.png)
 
@@ -147,11 +147,11 @@ Další informace o skladových jednotkách (SKU) brány pro službu VPN Gateway
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-Nejčastější dotazy týkající se služby VPN Gateway najdete v tématu [Nejčastější dotazy ke službě VPN Gateway](vpn-gateway-vpn-faq.md).
+Nejčastější dotazy o službě VPN gateway najdete v části hello [VPN Gateway – nejčastější dotazy](vpn-gateway-vpn-faq.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Plánování konfigurace brány VPN. Viz [Plánování a návrh pro VPN Gateway](vpn-gateway-plan-design.md).
-- Další informace najdete v tématu věnovaném [nejčastějším dotazům k VPN Gateway](vpn-gateway-vpn-faq.md).
-- Přečtěte si téma [Předplatné a omezení služeb](../azure-subscription-service-limits.md#networking-limits).
-- Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
+- Zobrazení hello [VPN Gateway – nejčastější dotazy](vpn-gateway-vpn-faq.md) Další informace.
+- Zobrazení hello [předplatné a omezení služby](../azure-subscription-service-limits.md#networking-limits).
+- Další informace o některých hello Další klíč [sítě možnosti](../networking/networking-overview.md) Azure.

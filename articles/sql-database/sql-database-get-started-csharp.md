@@ -1,6 +1,6 @@
 ---
 title: "C#: Začínáme s Azure SQL Database | Dokumentace Microsoftu"
-description: "Vyzkoušejte SQL Database při vývoji aplikací v jazyce C# využívajících SQL a vytvořte Azure SQL Database v C# s použitím knihovny SQL Database Library pro .NET."
+description: "Vyzkoušejte SQL Database při vývoji aplikací SQL a C# a vytvořte Azure SQL Database v C# s použitím hello SQL Database Library pro .NET."
 keywords: Zkuste sql, sql c#
 services: sql-database
 documentationcenter: 
@@ -16,53 +16,53 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
-ms.openlocfilehash: c8a2703da1ee3687f8d134e768dd8d31dc4f316b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e880ebabd53546bea37a13186b0f1a13db35b684
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Vytvoření databáze SQL pomocí jazyka C# a knihovny SQL Database Library pro .NET
+# <a name="use-c-toocreate-a-sql-database-with-hello-sql-database-library-for-net"></a>Použití jazyka C# toocreate databázi SQL s hello SQL Database Library pro .NET
 
-Zjistěte, jak v jazyce C# vytvořit databázi Azure SQL pomocí knihovny [Microsoft Azure SQL Management Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). Tento článek popisuje, jak vytvořit databázi pomocí jazyka SQL a C#. Chcete-li vytvořit elastické fondy, přečtěte si článek [Vytvoření elastického fondu](sql-database-elastic-pool-manage-csharp.md).
+Zjistěte, jak toouse C# toocreate Azure SQL databáze s hello [Microsoft Azure SQL Management Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). Tento článek popisuje, jak toocreate jedné databáze SQL a C#. toocreate elastické fondy, najdete v části [vytvoření fondu elastické databáze](sql-database-elastic-pool-manage-csharp.md).
 
-Azure SQL Database Management Library pro .NET poskytuje rozhraní API založené na [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md), které zabaluje rozhraní [SQL Database REST API založené na Správci prostředků](https://docs.microsoft.com/rest/api/sql/).
-
-> [!NOTE]
-> Podpora řady nových funkcí služby SQL Database je dostupná jen v případě, že používáte [model nasazení Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md), takže byste měli používat nejnovější knihovnu **Azure SQL Database Management Library pro .NET ([dokumenty](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Starší [knihovny založené na modelu nasazení Classic](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) jsou podporovány pouze kvůli zpětné kompatibilitě, takže doporučujeme, abyste používali novější knihovny založené na Resource Manageru.
-> 
-> 
-
-K dokončení kroků v tomto článku budete potřebovat následující:
-
-* Předplatné Azure. Pokud potřebujete předplatné Azure, jednoduše klikněte na **Bezplatný účet** v horní části této stránky a poté se vraťte a dokončete tento článek.
-* Visual Studio. Bezplatnou kopii sady Visual Studio naleznete na stránce [Soubory ke stažení pro Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs).
+Hello knihovny správu databáze SQL Azure pro .NET poskytuje [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)– na základě rozhraní API, které zabaluje hello [založené na správci prostředků SQL Database REST API](https://docs.microsoft.com/rest/api/sql/).
 
 > [!NOTE]
-> V tomto článku se vytváří nová, prázdná databáze SQL. Upravte metodu *CreateOrUpdateDatabase(...)* v následující ukázce tak, aby kopírovala databáze, škálovala databáze, vytvořila databázi ve fondu apod.  
+> Databáze SQL, mnoha nových funkcí podporují jenom při použití hello [modelu nasazení Azure Resource Manager](../azure-resource-manager/resource-group-overview.md), takže je třeba použít hello nejnovější **knihovny správu databáze SQL Azure pro .NET ([dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Hello starší [knihovny založené na modelu nasazení classic](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) jsou podporovány pouze z důvodů zpětné kompatibility, proto doporučujeme použít hello novější správce prostředků na základě knihovny.
+> 
 > 
 
-## <a name="create-a-console-app-and-install-the-required-libraries"></a>Vytvoření konzolové aplikace a instalace potřebných knihoven
+toocomplete hello kroky v tomto článku, budete potřebovat následující hello:
+
+* Předplatné Azure. Pokud potřebujete předplatné Azure, jednoduše klikněte na tlačítko **bezplatný účet** na začátku hello stránky a pak se vraťte toofinish v tomto článku.
+* Visual Studio. Bezplatnou kopii sady Visual Studio, najdete v části hello [Visual Studio stáhne](https://www.visualstudio.com/downloads/download-visual-studio-vs) stránky.
+
+> [!NOTE]
+> V tomto článku se vytváří nová, prázdná databáze SQL. Upravit hello *CreateOrUpdateDatabase(...)*  metoda v hello následující ukázkové databáze toocopy, škálování databáze, vytvoření databáze ve fondu, atd.  
+> 
+
+## <a name="create-a-console-app-and-install-hello-required-libraries"></a>Vytvořte aplikaci konzoly a nainstalujte požadované hello knihovny
 1. Spusťte Visual Studio.
 2. Klikněte na **Soubor**  >  **Nový**  >  **Projekt**.
 3. Vytvořte **Konzolovou aplikaci** v jazyce C# a pojmenujte ji *SqlDbConsoleApp*.
 
-Chcete-li vytvořit databázi SQL pomocí jazyka C#, načtěte požadované knihovny správy (pomocí [konzoly správce balíčků](http://docs.nuget.org/Consume/Package-Manager-Console)):
+toocreate databáze SQL pomocí C#, zatížení hello požadované knihovny správy (pomocí hello [konzoly Správce balíčků](http://docs.nuget.org/Consume/Package-Manager-Console)):
 
 1. Klikněte na **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
-2. Zadejte `Install-Package Microsoft.Azure.Management.Sql -Pre` a nainstalujte tak nejnovější knihovnu [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).
-3. Zadejte `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` a nainstalujte tak knihovnu [Microsoft Azure Resource Manager Library](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
-4. Zadejte `Install-Package Microsoft.Azure.Common.Authentication -Pre` a nainstalujte tak knihovnu [Microsoft Azure Common Authentication Library](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication). 
+2. Typ `Install-Package Microsoft.Azure.Management.Sql -Pre` tooinstall hello nejnovější [knihovnu Microsoft Azure SQL Management](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).
+3. Typ `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` tooinstall hello [knihovnu Microsoft Azure Resource Manager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
+4. Typ `Install-Package Microsoft.Azure.Common.Authentication -Pre` tooinstall hello [knihovnu běžných ověřování Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication). 
 
 > [!NOTE]
-> Příklady v tomto článku používají synchronní formu každého požadavku rozhraní API a provádění se tedy zablokuje, dokud se nedokončí volání REST základní služby. Dostupné jsou i asynchronní metody
+> Hello příklady v tomto článku používají synchronní formu každého požadavku rozhraní API a zároveň se zablokují až do dokončení volání REST hello hello základní služby. Dostupné jsou i asynchronní metody
 > 
 > 
 
 ## <a name="create-a-sql-database-server-firewall-rule-and-sql-database---c-example"></a>Vytvoření serveru služby SQL Database, pravidla brány firewall a databáze SQL – ukázka v jazyce C#
-Následující příklad vytvoří skupinu prostředků, server, pravidlo brány firewall a databázi SQL. Proměnné `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` získáte pomocí postupu v oddílu [Vytvoření instančního objektu pro přístup k prostředkům](#create-a-service-principal-to-access-resources).
+Hello následující ukázka vytvoří skupinu prostředků, server, pravidlo brány firewall a databázi SQL. Zobrazit, [vytvořit hlavní tooaccess služby prostředků](#create-a-service-principal-to-access-resources) tooget hello `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` proměnné.
 
-Nahraďte obsah souboru **Program.cs** následujícím ukázkovým kódem a aktualizujte hodnoty `{variables}` hodnotami vaší aplikace (bez závorek `{}`).
+Nahraďte obsah hello **Program.cs** s následující hello a aktualizace hello `{variables}` hodnotami vaší aplikace (nezahrnují hello `{}`).
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.ResourceManager;
@@ -83,7 +83,7 @@ Nahraďte obsah souboru **Program.cs** následujícím ukázkovým kódem a aktu
         static string _applicationId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}";
         static string _applicationSecret = "{your-password}";
 
-        // Create management clients for the Azure resources your app needs to work with.
+        // Create management clients for hello Azure resources your app needs toowork with.
         // This app works with Resource Groups, and Azure SQL Database.
         static ResourceManagementClient _resourceMgmtClient;
         static SqlManagementClient _sqlMgmtClient;
@@ -137,7 +137,7 @@ Nahraďte obsah souboru **Program.cs** následujícím ukázkovým kódem a aktu
             Console.WriteLine("Database: " + dbr.Id);
 
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key toocontinue...");
             Console.ReadKey();
         }
 
@@ -178,7 +178,7 @@ Nahraďte obsah souboru **Program.cs** následujícím ukázkovým kódem a aktu
 
         static Database CreateOrUpdateDatabase(SqlManagementClient sqlMgmtClient, string resourceGroupName, string serverName, string databaseName, string databaseEdition, string databasePerfLevel)
         {
-            // Retrieve the server that will host this database
+            // Retrieve hello server that will host this database
             Server currentServer = sqlMgmtClient.Servers.Get(resourceGroupName, serverName);
 
             // Create a database: configure create or update parameters and properties explicitly
@@ -209,19 +209,19 @@ Nahraďte obsah souboru **Program.cs** následujícím ukázkovým kódem a aktu
 
 
 
-## <a name="create-a-service-principal-to-access-resources"></a>Vytvoření instančního objektu pro přístup k prostředkům
-Následující skript prostředí PowerShell vytvoří aplikaci Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší aplikace v jazyce C#. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+## <a name="create-a-service-principal-tooaccess-resources"></a>Vytvořit hlavní tooaccess služby prostředků
+Hello následující skript prostředí PowerShell vytvoří hello Active Directory (AD) aplikace a služby hello hlavní, že potřebujeme tooauthenticate vaší aplikace C#. Hello skript vypíše hodnoty, které budeme potřebovat pro hello předcházející C# ukázkové. Podrobné informace najdete v tématu [toocreate použití Azure PowerShell objekt služby prostředků tooaccess](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-    # Sign in to Azure.
+    # Sign in tooAzure.
     Add-AzureRmAccount
 
-    # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
+    # If you have multiple subscriptions, uncomment and set toohello subscription you want toowork with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     #Set-AzureRmContext -SubscriptionId $subscriptionId
 
     # Provide these values for your new AAD app.
-    # $appName is the display name for your app, must be unique in your directory.
-    # $uri does not need to be a real uri.
+    # $appName is hello display name for your app, must be unique in your directory.
+    # $uri does not need toobe a real uri.
     # $secret is a password you create.
 
     $appName = "{app-name}"
@@ -231,19 +231,19 @@ Následující skript prostředí PowerShell vytvoří aplikaci Active Directory
     # Create a AAD app
     $azureAdApplication = New-AzureRmADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
-    # Create a Service Principal for the app
+    # Create a Service Principal for hello app
     $svcprincipal = New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-    # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
+    # tooavoid a PrincipalNotFound error, I pause here for 15 seconds.
     Start-Sleep -s 15
 
-    # If you still get a PrincipalNotFound error, then rerun the following until successful. 
+    # If you still get a PrincipalNotFound error, then rerun hello following until successful. 
     $roleassignment = New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 
-    # Output the values we need for our C# application to successfully authenticate
+    # Output hello values we need for our C# application toosuccessfully authenticate
 
-    Write-Output "Copy these values into the C# sample app"
+    Write-Output "Copy these values into hello C# sample app"
 
     Write-Output "_subscriptionId:" (Get-AzureRmContext).Subscription.SubscriptionId
     Write-Output "_tenantId:" (Get-AzureRmContext).Tenant.TenantId
@@ -253,9 +253,9 @@ Následující skript prostředí PowerShell vytvoří aplikaci Active Directory
 
 
 ## <a name="next-steps"></a>Další kroky
-Nyní, když jste si vyzkoušeli SQL Database a nastavili databázi pomocí C#, jste připraveni na následující články:
+Teď, když jste si vyzkoušeli SQL Database a nastavili databázi pomocí C#, jste připraveni pro hello následující články:
 
-* [Připojení k SQL Database přes SQL Server Management Studio a provedení ukázkového dotazu T-SQL](sql-database-connect-query-ssms.md)
+* [Připojení tooSQL databáze s SQL Server Management Studio a provedení ukázkového dotazu T-SQL](sql-database-connect-query-ssms.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 * [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)

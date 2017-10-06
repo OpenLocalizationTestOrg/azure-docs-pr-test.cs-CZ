@@ -1,6 +1,6 @@
 ---
-title: "Přehled back-endů s více tenanty s použitím služby Azure Application Gateway | Dokumentace Microsoftu"
-description: "Tato stránka poskytuje přehled podpory služby Application Gateway pro back-endy s více tenanty."
+title: "aaaOverview víceklientské zpět končí Azure Application Gateway | Microsoft Docs"
+description: "Tato stránka obsahuje přehled podpory hello aplikační brány pro back-EndY více klientů."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: gwallace
-ms.openlocfilehash: d944904db5b0bf176b214249ad59611e2b794ae0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b7da8c9c68e34bd83ad2b828fab62c00caea354a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Podpora služby Application Gateway pro back-endy s více tenanty
 
-Azure Application Gateway jako součást fondů back-end podporuje škálovací sady virtuálních počítačů, síťová rozhraní, veřejné a privátní IP adresy nebo plně kvalifikovaný název domény. Ve výchozím nastavení služba Application Gateway nemění hlavičku hostitele příchozího požadavku HTTP od klienta a nezměněnou hlavičku posílá na back-end. Existuje řada služeb jako [Azure Web Apps](../app-service-web/app-service-web-overview.md) a [API Management](../api-management/api-management-key-concepts.md), které jsou ze své podstaty s více tenanty a při překládání na správný koncový bod se spoléhají na konkrétní hlavičku hostitele nebo rozšíření SNI. Application Gateway nyní podporuje možnost uživatelů přepsat hlavičku hostitele příchozího požadavku HTTP na základě nastavení HTTP na straně back-endu. Tato schopnost umožňuje podporu back-endů s více tenanty Azure Web Apps a API Management. Tato schopnost je dostupná pro standardní skladové položky i pro skladové položky WAF. Podpora back-endu s více tenanty funguje také s ukončováním protokolu SSL a scénáři koncového šifrování protokolu SSL.
+Azure Application Gateway jako součást fondů back-end podporuje škálovací sady virtuálních počítačů, síťová rozhraní, veřejné a privátní IP adresy nebo plně kvalifikovaný název domény. Ve výchozím nastavení aplikační brány nezmění hello příchozí Hlavička hostitele HTTP od klienta hello a odešle hello hlavičky beze změny toohello back-end. Existuje mnoho služby, jako je [Azure Web Apps](../app-service-web/app-service-web-overview.md) a [API Management](../api-management/api-management-key-concepts.md) které jsou více klientů ve své podstatě a spoléhají na konkrétního hostitele hlavičky nebo SNI rozšíření tooresolve toohello správný koncový bod. Aplikační brána teď podporuje hello možnost pro uživatele toooverwrite hello příchozí hlavičky protokolu HTTP hostitele na základě nastavení back-end HTTP hello. Tato schopnost umožňuje podporu back-endů s více tenanty Azure Web Apps a API Management. Tato možnost je dostupná pro standardní hello i SKU firewall webových aplikací. Víceklientské back-end podporu také funguje se scénáři SSL tooend SSL pro ukončení a end.
 
 ![scénář webové aplikace](./media/application-gateway-web-app-overview/scenario.png)
 
-Možnost určit přepsání hostitele se definuje v nastavení HTTP a během vytváření pravidla je možné ji použít na jakýkoli fond back-end. Back-endy s více tenanty podporují následující dva způsoby přepsání hlavičky hostitele a rozšíření SNI.
+Hello možnost toospecify hostitele přepsání je definováno v hello nastavení HTTP a mohou být použité tooany zpět ukončit fondu při vytváření pravidel. Víceklientské zpět končí podpora hello následující dva způsoby přepsání rozšíření SNI a hlavičky hostitele.
 
-1. Možnost nastavit název hostitele na pevnou hodnotu v nastavení HTTP. Tato možnost zajišťuje, že se hlavička hostitele přepíše na tuto hodnotu u veškerého provozu přicházejícího do fondu back-end, na který se nastavení HTTP použilo. Při použití koncového šifrování protokolu SSL se přepsaný název hostitele použije v rozšíření SNI. Tato možnost umožňuje scénáře, kdy farma fondu back-end očekává hlavičku hostitele, která je jiná než příchozí zákaznická hlavička hostitele.
+1. Hello možnost tooset hello hostitele název tooa pevná hodnota ve hello nastavení HTTP. Tato funkce zajišťuje přepsána tuto hlavičku hostitele hello toothis hodnoty pro všechny přenosy toohello back-end fondu kterou platí nastavení hello protokolu HTTP. Pokud používáte end tooend SSL, tento název přepsané hostitele se používá v hello SNI rozšíření. Tato funkce umožňuje scénáře, kde farmu fond back-end očekává hlavičku hostitele, který se liší od hello příchozí hlavička zákazníků hostitele.
 
-2. Schopnost odvodit název hostitele z IP adresy nebo plně kvalifikovaného názvu domény členů fondu back-end. Nastavení HTTP nabízí také možnost vybrat název hostitele z plně kvalifikovaného názvu domény člena fondu back-end, pokud je nakonfigurovaná možnost odvodit název hostitele z jednotlivých členů fondu back-end. Při použití koncového šifrování protokolu SSL se tento název hostitele odvodí z plně kvalifikovaného názvu domény a použije v rozšíření SNI. Tato možnost umožňuje scénáře, kdy může mít fond back-end dvě nebo více služeb PaaS s více tenanty, jako jsou například webové aplikace Azure, a hlavička hostitele požadavku každého člena obsahuje název hostitele odvozený z jeho plně kvalifikovaného názvu domény.
+2. název hostitele Hello možnost tooderive hello z hello IP adresu nebo plně kvalifikovaný název domény hello členy fondu back-end. Nastavení HTTP také zadejte název hostitele možnost toopick hello z členem fondu back-end FQDN pokud nakonfigurovaný s názvem hostitele, hello možnost tooderive od člena fondu jednotlivých back-end. Pokud používáte end tooend SSL, tento název hostitele je odvozený od hello plně kvalifikovaný název domény a používá se v hello SNI rozšíření. Tato funkce umožňuje scénáře, kde fond back-end může mít dvě nebo více služeb PaaS víceklientské jako webové aplikace Azure a člen tooeach hlavičky hostitele hello žádost obsahuje název hostitele hello odvozené od jeho plně kvalifikovaný název domény.
 
 > [!NOTE]
-> V obou předchozích případech má nastavení vliv pouze na chování živého provozu a ne na chování sondy stavu. Vlastní sondy už podporují možnost zadat hlavičku hostitele v konfiguraci sondy. Vlastní sondy nyní podporují také možnost odvodit chování hlavičky hostitele z aktuálně nakonfigurovaného nastavení HTTP. Tuto konfiguraci je možné zadat pomocí parametru `PickHostNameFromback endAddress` v konfiguraci sondy. Aby fungovala funkce koncového šifrování, sondu i nastavení HTTP je potřeba upravit tak, aby odrážely správnou konfiguraci.
+> V obou předchozích případech hello hello nastavení má vliv pouze chování hello provoz za provozu a není hello chování test stavu. Vlastní sondy již podporu hello možnost toospecify hlavičku hostitele v konfiguraci testu hello. Vlastní testy paměti teď také podporují hello možnost tooderive hello hostitele záhlaví chování z hello konfigurovaná nastavení protokolu HTTP. Tato konfigurace může být určen pomocí hello `PickHostNameFromback endAddress` parametr v konfiguraci testu hello. Pro koncové tooend funkce toowork musí být hello test a nastavení HTTP hello upravené tooreflect hello správnou konfiguraci.
 
-Díky této schopnosti můžou zákazníci zadat možnosti v nastavení HTTP a vlastních sondách na odpovídající konfiguraci. Toto nastavení se pak pomocí pravidla naváže na naslouchací proces a fond back-end.
+Díky této funkci zadejte zákazníkům hello možnosti v nastavení hello HTTP a vlastní testy toohello odpovídající konfiguraci. Toto nastavení je pak vázaný tooa naslouchací proces a back end fondu pomocí pravidla.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak nastavit službu Application Gateway s webovou aplikací jako členem fondu back-end, v tématu [Konfigurace webových aplikací App Service pomocí služby Application Gateway](application-gateway-web-app-powershell.md).
+Zjistěte, jak tooset až aplikační brány s webovou aplikaci jako back end člena fondu navštivte stránky: [nakonfigurovat App Service web apps s aplikační brány](application-gateway-web-app-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: "Monitorování databáze Azure SQL pomocí zobrazení dynamické správy | Microsoft Docs"
-description: "Zjistěte, jak najít a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy ke sledování Microsoft Azure SQL Database."
+title: "aaaMonitoring Azure SQL Database pomocí dynamické zobrazení správy | Microsoft Docs"
+description: "Zjistěte, jak toodetect a diagnostikovat běžné problémy s výkonem pomocí toomonitor zobrazení dynamické správy Microsoft Azure SQL Database."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: d9b007d29e06e672db71b4a8415673f258c3fd89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 43d5fe2dd9a38d031e9334f6ad49fce5866e3bec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy
-Microsoft Azure SQL Database umožňuje podmnožinu zobrazení dynamické správy diagnostikovat problémy s výkonem, které mohou být způsobeny blokované nebo dlouhodobé dotazy, kritických bodů prostředků, dotaz nízký plány a tak dále. Toto téma obsahuje informace o tom, jak zjišťují běžné problémy s výkonem pomocí zobrazení dynamické správy.
+Microsoft Azure SQL Database umožňuje podmnožinu dynamické správy zobrazení problémy s výkonem toodiagnose, které mohou být způsobeny blokované nebo dlouhodobé dotazy, kritických bodů prostředků, dotaz nízký plány a tak dále. Toto téma obsahuje informace o tom, toodetect běžné problémy s výkonem pomocí zobrazení dynamické správy.
 
 Databáze SQL podporuje částečně tří kategorií zobrazení dynamické správy:
 
@@ -34,27 +34,27 @@ Databáze SQL podporuje částečně tří kategorií zobrazení dynamické spr�
 Podrobné informace o zobrazení dynamické správy najdete v tématu [funkce (Transact-SQL) a zobrazení dynamické správy](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online.
 
 ## <a name="permissions"></a>Oprávnění
-V databázi SQL, dotaz na zobrazení dynamické správy vyžaduje **stav databáze zobrazení** oprávnění. **Stav databáze zobrazení** oprávnění vrátí informace o všech objektech v aktuální databázi.
-Udělit **stav databáze zobrazení** oprávnění pro uživatele konkrétní databáze, spusťte následující dotaz:
+V databázi SQL, dotaz na zobrazení dynamické správy vyžaduje **stav databáze zobrazení** oprávnění. Hello **stav databáze zobrazení** oprávnění vrátí informace o všech objektech v rámci hello aktuální databázi.
+toogrant hello **stav databáze zobrazení** uživatel konkrétní databáze tooa oprávnění, spusťte následující dotaz hello:
 
-```GRANT VIEW DATABASE STATE TO database_user; ```
+```GRANT VIEW DATABASE STATE toodatabase_user; ```
 
 V instanci systému SQL Server, místní zobrazení dynamické správy vrátí informace o stavu serveru. V databázi SQL že budou vracet informace týkající se pouze v aktuální databázi logické.
 
 ## <a name="calculating-database-size"></a>Výpočet velikosti databáze
-Následující dotaz vrátí velikost databáze (v megabajtech):
+Hello následující dotaz vrátí hello velikost databáze (v megabajtech):
 
 ```
--- Calculates the size of the database.
+-- Calculates hello size of hello database.
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
 ```
 
-Následující dotaz vrátí velikost jednotlivých objektů (v megabajtech) v databázi:
+Hello následující dotaz vrátí hello velikost jednotlivých objektů (v megabajtech) v databázi:
 
 ```
--- Calculates the size of individual database objects.
+-- Calculates hello size of individual database objects.
 SELECT sys.objects.name, SUM(reserved_page_count) * 8.0 / 1024
 FROM sys.dm_db_partition_stats, sys.objects
 WHERE sys.dm_db_partition_stats.object_id = sys.objects.object_id
@@ -63,8 +63,8 @@ GO
 ```
 
 ## <a name="monitoring-connections"></a>Sledování připojení
-Můžete použít [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) zobrazení k načtení informací o připojení ke konkrétní server Azure SQL Database a podrobnosti o každé připojení. Kromě toho [zobrazení sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) zobrazení je vhodné při načítání informací o všechna připojení aktivního uživatele a interních úlohách.
-Následující dotaz načte informace o aktuální připojení:
+Můžete použít hello [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) zobrazit tooretrieve informace o hello připojení tooa konkrétní serveru Azure SQL Database a hello podrobnosti o každé připojení. Kromě toho hello [zobrazení sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) zobrazení je vhodné při načítání informací o všechna připojení aktivního uživatele a interních úlohách.
+Hello následující dotaz načte informace o aktuální připojení hello:
 
 ```
 SELECT
@@ -80,15 +80,15 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Při provádění **sys.dm_exec_requests** a **zobrazení zobrazení sys.dm_exec_sessions**, pokud máte **stav databáze zobrazení** oprávnění v databázi, uvidíte všechny provádění relace v databázi; jinak uvidíte pouze pro aktuální relaci.
+> Při provádění hello **sys.dm_exec_requests** a **zobrazení zobrazení sys.dm_exec_sessions**, pokud máte **stav databáze zobrazení** oprávnění v databázi hello, uvidíte všechny provádění relace v databázi hello; jinak uvidíte jenom hello aktuální relaci.
 > 
 > 
 
 ## <a name="monitoring-query-performance"></a>Sledování výkonu dotazů
-Pomalu nebo dlouho spuštění dotazů můžete využívat významné systémové prostředky. V této části ukazuje, jak pomocí zobrazení dynamické správy lze zjistit několik běžných potíží s výkonem dotazu. Odkaz na starší, ale stále užitečné při řešení potíží se [řešení potíží s problémy s výkonem v systému SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článek na Microsoft TechNetu.
+Pomalu nebo dlouho spuštění dotazů můžete využívat významné systémové prostředky. V této části ukážeme, jak dynamické správy toouse zobrazení toodetect několik běžných potíží s výkonem dotazu. Odkaz na starší, ale stále užitečné při řešení potíží se hello [řešení potíží s problémy s výkonem v systému SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článek na Microsoft TechNetu.
 
 ### <a name="finding-top-n-queries"></a>Hledání hlavních dotazy
-Následující příklad vrací informace o nejvyšší pět dotazy podle Průměrná doba využití procesoru. Tento příklad agreguje dotazy podle jejich hash dotaz tak, aby logicky ekvivalentní dotazy jsou seskupené podle jejich spotřeba kumulativní prostředků.
+Hello následující příklad vrací informace o dotazech hello nejvyšší pět podle Průměrná doba využití procesoru. Tento příklad agreguje hello dotazy podle tootheir hash dotaz tak, aby logicky ekvivalentní dotazy jsou seskupené podle jejich spotřeba kumulativní prostředků.
 
 ```
 SELECT TOP 5 query_stats.query_hash AS "Query Hash",
@@ -108,10 +108,10 @@ ORDER BY 2 DESC;
 ```
 
 ### <a name="monitoring-blocked-queries"></a>Monitorování blokované dotazy
-Pomalá nebo dlouhodobé dotazy můžete přispívat k všimnete nadměrné spotřeby prostředků a být důsledek blokované dotazy. Důvod blokování může být návrh nízký aplikace, plány chybných dotazů, nedostatečná užitečné indexy a tak dále. Zobrazení sys.dm_tran_locks můžete získat informace o aktuální uzamčení aktivita ve vaší databázi SQL Azure. Příklad kódu, najdete v části [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) v SQL Server Books Online.
+Pomalá nebo dlouhodobé dotazy můžete přispívat tooexcessive spotřeby prostředků a být důsledkem hello blokované dotazů. příčinu Hello hello blokování může být špatná návrh aplikace, chybný plány dotazů hello nedostatečná užitečné indexy a tak dále. Můžete hello sys.dm_tran_locks zobrazení tooget informace o aktuální uzamčení aktivita hello ve vaší databázi SQL Azure. Příklad kódu, najdete v části [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) v SQL Server Books Online.
 
 ### <a name="monitoring-query-plans"></a>Monitorování plány dotazů
-Plán dotazu neefektivní může také zvýšit spotřeby procesoru. Následující příklad používá [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) zobrazení dotazu, který používá většina kumulativní procesoru.
+Plán dotazu neefektivní může také zvýšit spotřeby procesoru. Hello následující příklad používá hello [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) zobrazení toodetermine dotazu, který používá většina kumulativní procesoru hello.
 
 ```
 SELECT
@@ -134,5 +134,5 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
 ## <a name="see-also"></a>Viz také
-[Úvod do databáze SQL](sql-database-technical-overview.md)
+[Úvod tooSQL databáze](sql-database-technical-overview.md)
 

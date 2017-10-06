@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření a správa hybridních připojení | Microsoft Docs"
-description: "Naučte se vytvořit hybridní připojení, Správa připojení a instalace správce hybridního připojení. MABS, WABS"
+title: "aaaCreate a správa hybridních připojení | Microsoft Docs"
+description: "Zjistěte, jak spravovat hello připojení toocreate hybridní připojení a nainstalujte hello správce hybridního připojení. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,137 +14,137 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: fceb6b0671e0f77c1f8f92bbb49c986fda3660ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 561d8f3dd97318130a05c3bb2874ee8022e7f417
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Vytvoření a správa hybridních připojení
 
 > [!IMPORTANT]
-> Hybridní připojení BizTalk jsou vyřazena z provozu a nahrazena hybridními připojeními App Service. Další informace, včetně informací o tom, jak spravovat existující hybridní připojení BizTalk, najdete v tématu [Hybridní připojení Azure App Service](../app-service/app-service-hybrid-connections.md).
+> Hybridní připojení BizTalk jsou vyřazena z provozu a nahrazena hybridními připojeními App Service. Další informace, včetně jak toomanage vaše stávající hybridní připojení BizTalk, najdete v části [Azure App Service hybridní připojení](../app-service/app-service-hybrid-connections.md).
 
 
-## <a name="overview-of-the-steps"></a>Přehled kroků
-1. Vytvořit hybridní připojení tak, že zadáte **název hostitele** nebo **plně kvalifikovaný název domény** místní prostředku v privátní síti.
-2. Webové aplikace Azure nebo Azure mobilní aplikace propojte hybridní připojení.
-3. Nainstalovat správce hybridního připojení na vaše místní prostředek a připojte se k určité hybridní připojení. Portál Azure poskytuje možnosti jedním kliknutím, nainstalovat a připojit.
+## <a name="overview-of-hello-steps"></a>Přehled kroků hello
+1. Vytvořit hybridní připojení tak, že zadáte hello **název hostitele** nebo **plně kvalifikovaný název domény** hello místního prostředku v privátní síti.
+2. Propojte webové aplikace Azure nebo mobilní aplikace Azure toohello hybridní připojení.
+3. Nainstalujte na místnímu prostředku hello správce hybridního připojení a připojení toohello konkrétní hybridní připojení. Hello portál Azure poskytuje tooinstall prostředí jedním kliknutím a připojení.
 4. Spravovat hybridní připojení a jejich klíče připojení.
 
 Toto téma obsahuje tyto kroky. 
 
 > [!IMPORTANT]
-> Je možné nastavit koncový bod hybridní připojení k IP adrese. Pokud chcete použít IP adresu, může nebo nemusí dosáhnout místnímu prostředku, v závislosti na vašeho klienta. Hybridního připojení závisí na klientovi provádění vyhledávání DNS. Ve většině případů **klienta** je kód aplikace. Pokud klient nebude provádět vyhledávání DNS (nepokouší pro překlad adres IP, jako by to byl platný název domény (x.x.x.x)), pak provoz nejsou odesílány prostřednictvím daného hybridního připojení.
+> Je možné tooset hybridní připojení IP adresa tooan koncového bodu. Pokud chcete použít IP adresu, může nebo nemusí dosáhnout hello místnímu prostředku, v závislosti na vašeho klienta. Hello hybridního připojení závisí na klienta hello provádění vyhledávání DNS. Ve většině případů hello **klienta** je kód aplikace. Pokud hello klienta nebude provádět vyhledávání DNS, (nepokouší tooresolve hello IP adresu jako by to byl platný název domény (x.x.x.x)), pak není přenosy budou odesílat prostřednictvím hello hybridní připojení.
 > 
 > Pro příklad (pseudokódu), můžete definovat **10.4.5.6** jako místního hostitele:
 > 
-> **V následujícím scénáři funguje:**  
-> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> **Hello následující scénáři funguje:**  
+> `Application code -> GetHostByName("10.4.5.6") -> Resolves too127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
 > 
-> **V následujícím scénáři nefunguje:**  
-> `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
+> **předchozí postup nebude fungovat podle scénáře Hello:**  
+> `Application code -> Connect("10.4.5.6") -> ?? -> No route toohost`
 > 
 > 
 
 ## <a name="CreateHybridConnection"></a>Vytvořit hybridní připojení.
-Hybridní připojení lze vytvořit na portálu Azure pomocí webových aplikací **nebo** pomocí služby BizTalk Services. 
+Hybridní připojení se dají vytvářet v hello portál Azure pomocí webových aplikací **nebo** pomocí služby BizTalk Services. 
 
-**Chcete-li vytvořit hybridní připojení pomocí webové aplikace**, najdete v části [připojení Azure Web Apps k místnímu prostředku](../app-service-web/web-sites-hybrid-connection-get-started.md). Hybridní připojení správce (HCM) můžete také nainstalovat z vaší webové aplikace, které je upřednostňovaná metoda. 
+**toocreate hybridní připojení pomocí webové aplikace**, najdete v části [tooan připojení Azure Web Apps místnímu prostředku](../app-service-web/web-sites-hybrid-connection-get-started.md). Hello hybridní připojení správce (HCM) můžete také nainstalovat z vaší webové aplikace, což je metoda hello upřednostňovaný. 
 
-**Chcete-li vytvořit hybridní připojení ve službě BizTalk Services**:
+**toocreate hybridní připojení ve službě BizTalk Services**:
 
-1. Přihlaste se do [portál Azure Classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. V levém navigačním podokně, vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
+1. Přihlaste se toohello [portál Azure classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. V levém navigačním podokně hello vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
    
     Pokud nemáte existující službu BizTalk, můžete [vytvoření služby BizTalk](biztalk-provision-services.md).
-3. Vyberte **hybridní připojení** karty:  
+3. Vyberte hello **hybridní připojení** karty:  
    ![Karta hybridní připojení][HybridConnectionTab]
-4. Vyberte **vytvořit hybridní připojení** nebo vyberte **přidat** tlačítko na hlavním panelu. Zadejte následující příkaz:
+4. Vyberte **vytvořit hybridní připojení** nebo vyberte hello **přidat** tlačítka na hlavním panelu hello. Zadejte hello následující:
    
    | Vlastnost | Popis |
    | --- | --- |
-   | Name (Název) |Hybridní připojení. název musí být jedinečné a nesmí být stejný název jako službu BizTalk. Můžete zadat libovolný název, ale buďte konkrétní s jeho účel. Příklady obsahují:<br/><br/>Mzdy*SQLServer*<br/>SupplyList*SharepointServer*<br/>Zákazníci*OracleServer* |
-   | Název hostitele |Zadejte název hostitele plně kvalifikovaný název hostitele nebo adresu IPv4 místnímu prostředku. Příklady obsahují:<br/><br/>Můjsqlserver<br/>*Můjsqlserver*. *Domény*. corp.*společnost*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*. *Společnost*.com<br/>10.100.10.10<br/><br/>Pokud chcete použít adresu IPv4, Všimněte si, že kódu klienta nebo aplikace nemusí přeložit IP adresu. Viz důležitá poznámka na začátku tohoto tématu. |
-   | Port |Zadejte číslo portu místnímu prostředku. Například pokud používáte webové aplikace, zadejte port 80 nebo 443. Pokud používáte systém SQL Server, zadejte port 1433. |
-5. Výběrem symbolu zaškrtnutí dokončete nastavení. 
+   | Name (Název) |Hello hybridní připojení. název musí být jedinečné a nesmí být hello stejný název jako hello služby BizTalk. Můžete zadat libovolný název, ale buďte konkrétní s jeho účel. Příklady obsahují:<br/><br/>Mzdy*SQLServer*<br/>SupplyList*SharepointServer*<br/>Zákazníci*OracleServer* |
+   | Název hostitele |Zadejte hello plně kvalifikovaný název hostitele, pouze název hostitele hello nebo hello IPv4 adresu hello místnímu prostředku. Příklady obsahují:<br/><br/>Můjsqlserver<br/>*Můjsqlserver*. *Domény*. corp.*společnost*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*. *Společnost*.com<br/>10.100.10.10<br/><br/>Pokud používáte hello IPv4 adresu, Všimněte si, že kódu klienta nebo aplikace nemusí vyřešit hello IP adresu. V tématu hello důležité Poznámka hello horní části tohoto tématu. |
+   | Port |Zadejte číslo portu hello hello místnímu prostředku. Například pokud používáte webové aplikace, zadejte port 80 nebo 443. Pokud používáte systém SQL Server, zadejte port 1433. |
+5. Vyberte instalační program hello zaškrtnutí toocomplete hello. 
 
 #### <a name="additional"></a>Další
-* Můžete vytvořit více hybridní připojení. Najdete v článku [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md) počet povolených připojení. 
+* Můžete vytvořit více hybridní připojení. V tématu hello [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md) hello počet povolených připojení. 
 * Každé hybridní připojení se vytvoří dvojice připojovacích řetězců: aplikace klíče tohoto SEND a místní klíče, které NASLOUCHAT. Každý pár má primární a sekundární klíč. 
 
 ## <a name="LinkWebSite"></a>Propojte mobilní aplikace nebo webové aplikace Azure App Service
-Chcete-li odkaz na webovou aplikaci nebo mobilní aplikace v Azure App Service na stávající hybridní připojení, vyberte **použít stávající hybridní připojení** v okně hybridní připojení. V tématu [přístup k místním prostředkům v Azure App Service pomocí hybridních připojení](../app-service-web/web-sites-hybrid-connection-get-started.md).
+toolink webovou aplikaci nebo mobilní aplikace v Azure App Service tooan stávající hybridní připojení, vyberte **použít stávající hybridní připojení** v okně hello hybridní připojení. V tématu [přístup k místním prostředkům v Azure App Service pomocí hybridních připojení](../app-service-web/web-sites-hybrid-connection-get-started.md).
 
-## <a name="InstallHCM"></a>Instalace správce hybridního připojení na místě
-Po vytvoření hybridní připojení, nainstalujte na prostředek místní správce hybridního připojení. Ho můžete stáhnout z vaší webové aplikace Azure nebo z vaší služby BizTalk. BizTalk Services kroky: 
+## <a name="InstallHCM"></a>Nainstalujte hello správce hybridního připojení na místě
+Po vytvoření hybridní připojení, nainstalujte na hello místnímu prostředku hello správce hybridního připojení. Ho můžete stáhnout z vaší webové aplikace Azure nebo z vaší služby BizTalk. BizTalk Services kroky: 
 
-1. Přihlaste se do [portál Azure Classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. V levém navigačním podokně, vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
-3. Vyberte **hybridní připojení** karty:  
+1. Přihlaste se toohello [portál Azure classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. V levém navigačním podokně hello vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
+3. Vyberte hello **hybridní připojení** karty:  
    ![Karta hybridní připojení][HybridConnectionTab]
-4. Na hlavním panelu vyberte **místní instalace**:  
+4. Hello hlavním panelu vyberte **místní instalace**:  
    ![Místní instalace][HCOnPremSetup]
-5. Vyberte **instalace a konfigurace** spustit nebo stáhnout správce hybridního připojení na místní systém. 
-6. Výběrem symbolu zaškrtnutí zahájíte instalaci. 
+5. Vyberte **instalace a konfigurace** toorun nebo stažení hello správce hybridního připojení na hello lokálního systému. 
+6. Vyberte hello zaškrtnutí toostart hello instalace. 
 
 <!--
-You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
+You can also download hello Hybrid Connection Manager MSI file and copy hello file tooyour on-premises resource. Specific steps:
 
-1. Copy the on-premises primary Connection String. See [Manage Hybrid Connections](#ManageHybridConnection) in this topic for the specific steps.
-2. Download the Hybrid Connection Manager MSI file. 
-3. On the on-premises resource, install the Hybrid Connection Manager from the MSI file. 
+1. Copy hello on-premises primary Connection String. See [Manage Hybrid Connections](#ManageHybridConnection) in this topic for hello specific steps.
+2. Download hello Hybrid Connection Manager MSI file. 
+3. On hello on-premises resource, install hello Hybrid Connection Manager from hello MSI file. 
 4. Using Windows PowerShell, type: 
 > Add-HybridConnection -ConnectionString “*Your On-Premises Connection String that you copied*” 
 --> 
 
 #### <a name="additional"></a>Další
-* Správce hybridního připojení lze nainstalovat na následující operační systémy:
+* Správce hybridního připojení lze nainstalovat na hello následující operační systémy:
   
   * Windows Server 2008 R2 (rozhraní .NET Framework 4.5 + a Windows Management Framework 4.0 + požadované)
   * Windows Server 2012 (Windows Management Framework 4.0 + požadované)
   * Windows Server 2012 R2
-* Když nainstalujete správce hybridního připojení, dojde k následující položky: 
+* Po instalaci hello správce hybridního připojení dojde k následujícímu hello: 
   
-  * Hybridní připojení hostované v Azure je automaticky konfigurují pro použití primární připojovací řetězec aplikace. 
-  * Místní prostředek je automaticky konfigurují pro použití primární připojovací řetězec místní.
-* Správce hybridního připojení musí používat platný místní připojovací řetězec pro ověřování. Azure Web Apps nebo Mobile Apps musí platnou aplikaci připojovací řetězec pro autorizaci použít.
-* Hybridní připojení je možné škálovat nainstalováním jiná instance správce hybridního připojení na jiném serveru. Nakonfigurujte místní naslouchací proces používat stejnou adresu jako první místní naslouchací proces. V takovém případě je provoz náhodně distribuované (kruhové dotazování) mezi active místní naslouchací procesy. 
+  * Hello hybridní připojení, které jsou hostované v Azure je automaticky nakonfigurované toouse hello primární aplikace připojovací řetězec. 
+  * Hello místní prostředek je automaticky nakonfigurované toouse hello primární připojovací řetězec místní.
+* Hello správce hybridního připojení musí používat platný místní připojovací řetězec pro ověřování. Hello Azure Web Apps nebo Mobile Apps musí platnou aplikaci připojovací řetězec pro autorizaci použít.
+* Hybridní připojení je možné škálovat nainstalováním jiná instance hello správce hybridního připojení na jiném serveru. Nakonfigurujte hello místní naslouchací proces toouse hello stejné adresy jako první místní naslouchání hello. V takovém případě je provoz hello náhodně distribuované (kruhové dotazování) mezi naslouchací procesy active místní hello. 
 
 ## <a name="ManageHybridConnection"></a>Správa hybridních připojení
-Chcete-li spravovat hybridní připojení, můžete:
+toomanage hybridní připojení, můžete:
 
-* Pomocí portálu Azure, přejděte na svoji službu BizTalk. 
+* Použít hello portál Azure a přejít tooyour služby BizTalk. 
 * Použití [rozhraní REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx).
 
-#### <a name="copyregenerate-the-hybrid-connection-strings"></a>Kopírování nebo znovu vygenerovat hybridní připojovací řetězce
-1. Přihlaste se do [portál Azure Classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. V levém navigačním podokně, vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
-3. Vyberte **hybridní připojení** karty:  
+#### <a name="copyregenerate-hello-hybrid-connection-strings"></a>Kopírování nebo znovu vygenerovat hello hybridní připojovací řetězce
+1. Přihlaste se toohello [portál Azure classic](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. V levém navigačním podokně hello vyberte **BizTalk Services** a potom vyberte svoji službu BizTalk. 
+3. Vyberte hello **hybridní připojení** karty:  
    ![Karta hybridní připojení][HybridConnectionTab]
-4. Vyberte hybridní připojení. Na hlavním panelu vyberte **spravovat připojení**:  
+4. Vyberte hello hybridní připojení. Hello hlavním panelu vyberte **spravovat připojení**:  
    ![Spravovat možnosti][HCManageConnection]
    
-    **Správa připojení** obsahuje připojovací řetězce aplikace a místně. Můžete kopírovat připojovací řetězce nebo znovu vygenerovat přístupový klíč použít v připojovacím řetězci. 
+    **Správa připojení** seznamy hello aplikace a místní připojovací řetězce. Můžete kopírovat hello připojovací řetězce nebo znovu vygenerovat přístupový klíč se používá v připojovacím řetězci hello hello. 
    
-    **Pokud vyberete znovu vygenerovat**, se změní sdílený přístupový klíč použít v připojovacím řetězci. Udělejte toto:
+    **Pokud vyberete znovu vygenerovat**, hello sdílený přístupový klíč používat v rámci hello je změnit připojovací řetězec. Hello následující:
    
-   * Na portálu Azure classic, vyberte **synchronizace klíčů** v aplikaci Azure.
-   * Znovu spustit **místní instalace**. Když znovu spustíte instalační program On-Premises, místnímu prostředku automaticky konfigurují pro použití aktualizované primární připojovací řetězec.
+   * V hello portál Azure classic, vyberte **synchronizace klíčů** v hello aplikaci Azure.
+   * Znovu spustit hello **místní instalace**. Když znovu spustíte hello místní instalace hello místnímu prostředku, je automaticky nakonfigurovat toouse hello aktualizovat primární připojovací řetězec.
 
-#### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>Použití zásad skupiny k řízení místní prostředky využívané třídou hybridní připojení
-1. Stažení [šablony pro správu Správce hybridního připojení](http://www.microsoft.com/download/details.aspx?id=42963).
-2. Extrahujte soubory.
-3. Na počítači, který upravuje zásad skupiny postupujte takto:  
+#### <a name="use-group-policy-toocontrol-hello-on-premises-resources-used-by-a-hybrid-connection"></a>Použití skupiny zásad toocontrol hello místní prostředky využívané třídou hybridní připojení
+1. Stáhnout hello [šablon správy Správce hybridního připojení](http://www.microsoft.com/download/details.aspx?id=42963).
+2. Extrahujte soubory hello.
+3. Na počítači hello, který upravuje zásad skupiny hello následující:  
    
-   * Kopírování. ADMX souborů do *%WINROOT%\PolicyDefinitions* složky.
-   * Kopírování. ADML souborů do *%WINROOT%\PolicyDefinitions\en-us* složky.
+   * Zkopírujte hello. ADMX soubory toohello *%WINROOT%\PolicyDefinitions* složky.
+   * Zkopírujte hello. ADML soubory toohello *%WINROOT%\PolicyDefinitions\en-us* složky.
 
-Po zkopírování, můžete změnit zásady Editor zásad skupiny.
+Po zkopírování, můžete použít zásady hello Editor zásad skupiny toochange.
 
 ## <a name="next"></a>Další
-[Připojení webové aplikace Azure k místnímu prostředku](../app-service-web/web-sites-hybrid-connection-get-started.md)  
-[Připojení k místnímu SQL serveru z webové aplikace Azure](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)   
+[Připojení Azure Web Apps tooan místnímu prostředku](../app-service-web/web-sites-hybrid-connection-get-started.md)  
+[Připojit tooon místní SQL Server z Azure Web Apps](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)   
 [Přehled hybridních připojení](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Viz také

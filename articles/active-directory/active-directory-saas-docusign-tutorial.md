@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s DocuSign | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DocuSign."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a DocuSign."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,139 +13,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 29c99fdf39d366df90abc070f7b836320935035c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e4ef40b8f5af20d811d8d806d2bd7e2039c55052
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Kurz: Azure Active Directory integrace s DocuSign
 
-V tomto kurzu zjistěte, jak integrovat DocuSign s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate DocuSign s Azure Active Directory (Azure AD).
 
-Integrace DocuSign s Azure AD poskytuje následující výhody:
+Integrace DocuSign s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k DocuSign
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k DocuSign (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooDocuSign
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooDocuSign (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s DocuSign, potřebujete následující položky:
+Integrace služby Azure AD s DocuSign tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - DocuSign jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání DocuSign z Galerie
+1. Přidání DocuSign z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-docusign-from-the-gallery"></a>Přidání DocuSign z Galerie
-Při konfiguraci integrace DocuSign do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS DocuSign z galerie.
+## <a name="adding-docusign-from-hello-gallery"></a>Přidání DocuSign z Galerie hello
+tooconfigure hello integrace DocuSign do Azure AD, je nutné tooadd DocuSign hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat DocuSign z galerie, proveďte následující kroky:**
+**tooadd DocuSign z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **novou aplikaci** hello nahoře hello dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **DocuSign**.
+4. Hello vyhledávacího pole zadejte **DocuSign**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_search.png)
 
-5. Na panelu výsledků vyberte **DocuSign**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **DocuSign**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s DocuSign podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v DocuSign je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v DocuSign musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v DocuSign je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v DocuSign musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v DocuSign.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v DocuSign.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s DocuSign, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s DocuSign, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele DocuSign](#creating-a-docusign-test-user)**  – Pokud chcete mít protějšek Britta Simon v DocuSign propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele DocuSign](#creating-a-docusign-test-user)**  -toohave protějšek Britta Simon v DocuSign, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci DocuSign.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci DocuSign.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s DocuSign, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s DocuSign, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **DocuSign** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **DocuSign** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_samlbase.png)
 
-3. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base 64)** a potom uložte soubor certifikátu v počítači.
+3. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base 64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_certificate.png) 
 
-4. Na **DocuSign konfigurace** části portálu Azure, klikněte na tlačítko **konfigurace DocuSign** otevřete konfigurovat přihlašování okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+4. Na hello **DocuSign konfigurace** části portálu Azure, klikněte na tlačítko **konfigurace DocuSign** tooopen přihlašování konfigurace okna. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_configure.png)
 
-5. V okně prohlížeče jiný web a přihlášení k vaší **portál pro správu DocuSign** jako správce.
+5. V okně prohlížeče jiný web, přihlášení tooyour **portál pro správu DocuSign** jako správce.
 
-6. V navigační nabídce na levé straně, klikněte na tlačítko **domény**.
+6. V navigační nabídce hello na levé straně hello, klikněte na **domény**.
    
     ![Konfigurace jednotného přihlašování][51]
 
-7. V pravém podokně klikněte na tlačítko **deklarace identity domény**.
+7. V pravém podokně hello, klikněte na tlačítko **deklarace identity domény**.
    
     ![Konfigurace jednotného přihlašování][52]
 
-8. Na **deklarace identity domény** dialogové okno, v **název domény** textovému poli, zadejte doménu vaší společnosti a pak klikněte na tlačítko **deklarace identity**. Ujistěte se, že ověření domény a stav je aktivní.
+8. Na hello **deklarace identity domény** dialogové okno, ve hello **název domény** textovému poli, zadejte doménu vaší společnosti a pak klikněte na tlačítko **deklarace identity**. Ujistěte se, že ověření hello domény a stav hello je aktivní.
    
     ![Konfigurace jednotného přihlašování][53]
 
-9. V nabídce na levé straně klikněte na tlačítko **poskytovatelů identit**  
+9. V nabídce na levé straně hello, klikněte na tlačítko **poskytovatelů identit**  
    
     ![Konfigurace jednotného přihlašování][54]
-10. V pravém podokně klikněte na **přidat zprostředkovatele Identity**. 
+10. V pravém podokně hello, klikněte na **přidat zprostředkovatele Identity**. 
    
     ![Konfigurace jednotného přihlašování][55]
 
-11. Na **nastavení zprostředkovatele Identity** proveďte následující kroky:
+11. Na hello **nastavení zprostředkovatele Identity** proveďte hello následující kroky:
    
     ![Konfigurace jednotného přihlašování][56]
 
-    a. V **název** textovému poli, zadejte jedinečný název pro svou konfiguraci. Nepoužívejte mezery.
+    a. V hello **název** textovému poli, zadejte jedinečný název pro svou konfiguraci. Nepoužívejte mezery.
 
-    b. Vložení **SAML Entity ID** do **vystavitele zprostředkovatele Identity** textové pole.
+    b. Vložení **SAML Entity ID** do hello **vystavitele zprostředkovatele Identity** textové pole.
 
-    c. Vložení **SAML jeden přihlašování adresa URL služby** do **adresu URL pro přihlášení zprostředkovatele Identity** textové pole.
+    c. Vložení **SAML jeden přihlašování adresa URL služby** do hello **adresu URL pro přihlášení zprostředkovatele Identity** textové pole.
 
-    d. Vložení **Sign-Out URL** do **adresa URL odhlašovací zprostředkovatele Identity** textové pole.
+    d. Vložení **Sign-Out URL** do hello **adresa URL odhlašovací zprostředkovatele Identity** textové pole.
 
     e. Vyberte **přihlásit ověřovacího požadavku**.
 
@@ -153,94 +153,94 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     g. Jako **odeslán požadavek na odhlášení podle**, vyberte **získat**.
 
-12. V **vlastní atribut mapování** zvolte pole, které chcete propojit s Azure AD deklarací identity. V tomto příkladu **emailaddress** deklarace identity je namapována na hodnotu **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Je výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu. 
+12. V hello **vlastní atribut mapování** zvolte pole hello chcete toomap s Azure AD deklarací identity. V tomto příkladu hello **emailaddress** deklarace identity je namapována na hodnotu hello **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Je hello výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu. 
    
     > [!NOTE]
-    > Použít příslušné **uživatelský identifikátor** k mapování uživatelů ze služby Azure AD pro mapování uživatele DocuSign. Vyberte správné pole a zadejte odpovídající hodnotu na základě nastavení vaší organizace.
+    > Použití hello odpovídající **uživatelský identifikátor** toomap hello uživatele z mapování uživatelů tooDocuSign Azure AD. Vyberte hello správné pole a zadejte odpovídající hodnotu hello na základě nastavení vaší organizace.
           
     ![Konfigurace jednotného přihlašování][57]
 
-13. V **certifikát zprostředkovatele Identity** klikněte na tlačítko **přidat certifikát**a pak nahrajte certifikát, který jste si stáhli z portálu Azure AD.   
+13. V hello **certifikát zprostředkovatele Identity** klikněte na tlačítko **přidat certifikát**a pak nahrajte certifikát hello jste si stáhli z portálu Azure AD.   
    
     ![Konfigurace jednotného přihlašování][58]
 
 14. Klikněte na **Uložit**.
 
-15. V **zprostředkovatelů Identity** klikněte na tlačítko **akce**a potom klikněte na **koncové body**.   
+15. V hello **zprostředkovatelů Identity** klikněte na tlačítko **akce**a potom klikněte na **koncové body**.   
    
     ![Konfigurace jednotného přihlašování][59]
  
-16. V **zobrazit SAML 2.0 koncové body** části na **portál pro správu DocuSign**, proveďte následující kroky:
+16. V hello **zobrazit SAML 2.0 koncové body** části na **portál pro správu DocuSign**, proveďte následující kroky hello:
    
     ![Konfigurace jednotného přihlašování][60]
    
-    a. Kopírování **adresa URL vystavitele pro zprostředkovatele služby**a vložte do **identifikátor** textové pole na **DocuSign domény a adresy URL** části portálu Azure následující vzoru: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`.
+    a. Kopírování hello **adresa URL vystavitele pro zprostředkovatele služby**a vložte do hello **identifikátor** textové pole na **DocuSign domény a adresy URL** části hello Azure portálu následující hello vzor: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`.
    
-    b. Kopírování **adresa URL služby zprostředkovatele přihlášení**a vložte do **přihlašovací adresa URL** textové pole na **DocuSign domény a adresy URL** části portálu Azure následující vzoru: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`.
+    b. Kopírování hello **adresa URL služby zprostředkovatele přihlášení**a vložte do hello **přihlašovací adresa URL** textové pole na **DocuSign domény a adresy URL** části hello Azure portálu následující hello vzor: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_url.png)
       
     c.  Klikněte na tlačítko **zavřít**
     
-17. Na portálu Azure klikněte na tlačítko **Uložit**.
+17. Na portálu Azure hello, klikněte na tlačítko **Uložit**.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_general_400.png)
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na položku **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části hello hello dialogového okna, klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-docusign-test-user"></a>Vytvoření zkušebního uživatele DocuSign
 
-Aplikace podporuje **těsně v zřizování uživatelů čas** a po ověření uživatelé jsou automaticky vytvořené v aplikaci.
+Aplikace podporuje **těsně v zřizování uživatelů čas** a po ověření uživatele v aplikaci hello automaticky vytvoří.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k DocuSign Azure jednotné přihlašování.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooDocuSign svůj přístup.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon DocuSign, proveďte následující kroky:**
+**tooassign Britta Simon tooDocuSign, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **DocuSign**.
+2. V seznamu aplikace hello vyberte **DocuSign**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -248,7 +248,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -256,14 +256,14 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici DocuSign na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci DocuSign.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici DocuSign hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour DocuSign aplikace.
+Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Konfiguraci zřizování uživatelů](active-directory-saas-docusign-provisioning-tutorial.md)
 

@@ -21,8 +21,8 @@
 ## [Ověření nastavení Traffic Manageru](traffic-manager-testing-settings.md)
 ## [Kombinace služeb pro vyrovnávání zatížení](traffic-manager-load-balancing-azure.md)
 ## [Měření výkonu Traffic Manageru](traffic-manager-performance-considerations.md)
-## [Použití PowerShellu ke správě Traffic Manageru](traffic-manager-powershell-arm.md)
-## [Nasměrování internetové domény na Traffic Manager](traffic-manager-point-internet-domain.md)
+## [Pomocí prostředí PowerShell toomanage Traffic Manager](traffic-manager-powershell-arm.md)
+## [Bod vaší internetové domény tooTraffic Manager](traffic-manager-point-internet-domain.md)
 ## Řešení potíží
 ### [Řešení potíží při sníženém výkonu Azure Traffic Manageru](traffic-manager-troubleshooting-degraded.md)
 

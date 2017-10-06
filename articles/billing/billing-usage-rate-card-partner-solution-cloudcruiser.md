@@ -1,6 +1,6 @@
 ---
-title: "Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure | Microsoft Docs"
-description: "Poskytuje jedinečný perspektivy z Microsoft Azure Billing partnera Cruiser cloudu v jejich prostředí integrace rozhraní API Azure fakturace do svých produktech.  To je obzvláště užitečné pro Azure a cloudu Cruiser zákazníky, kteří se chtějí pomocí nebo pokusu o Cruiser cloudu pro Microsoft Azure Pack."
+title: "aaaCloud Cruiser a fakturace integrace rozhraní API aplikace Microsoft Azure | Microsoft Docs"
+description: "Poskytuje jedinečný perspektivy z Microsoft Azure Billing partnera Cruiser cloudu v jejich prostředí integraci hello rozhraní API Správce Azure fakturace do svých produktech.  To je obzvláště užitečné pro Azure a cloudu Cruiser zákazníky, kteří se chtějí pomocí nebo pokusu o Cruiser cloudu pro Microsoft Azure Pack."
 services: 
 documentationcenter: 
 author: BryanLa
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 02/03/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: a05fe5e610f1f0ce216a4b84bf2873b0d081875d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74cc19bdeed26c6684210736caa0cb365e8f8821
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure
-Tento článek popisuje, jak můžete používat informace shromážděné z nové rozhraní Microsoft Azure Billing API v cloudu Cruiser pro simulaci náklady pracovního postupu a analýzu.
+Tento článek popisuje, jak hello informace shromážděné z hello nových Microsoft Azure Billing rozhraní API lze použít v cloudu Cruiser pro pracovní postup náklady simulace a analýzy.
 
 ## <a name="azure-ratecard-api"></a>Rozhraní API Azure RateCard
-Rozhraní API RateCard poskytuje míra informace z Azure. Po ověření se správnými přihlašovacími údaji, můžete dát dotaz na rozhraní API ke shromažďování metadat o službách, které jsou k dispozici v Azure, společně s sazby související s vaší nabízejí ID.
+Hello RateCard API poskytuje míra informace z Azure. Po ověření se správnými přihlašovacími údaji hello se můžete dotazovat hello rozhraní API toocollect metadata o hello služeb dostupných v Azure, společně s hello sazby související s vaší nabízejí ID.
 
-Toto je ukázková odpověď z rozhraní API, zobrazuje tyto ceny pro A0 (Windows) instance:
+Hello následuje ukázková odpověď z rozhraní API hello zobrazující hello ceny pro hello A0 (Windows) instance:
 
     {
         "MeterId": "0e59ad56-03e5-4c3d-90d4-6670874d7e29",
@@ -44,105 +44,105 @@ Toto je ukázková odpověď z rozhraní API, zobrazuje tyto ceny pro A0 (Window
         "MeterStatus": "Active"
     },
 
-### <a name="cloud-cruisers-interface-to-azure-ratecard-api"></a>Cloud je Cruiser rozhraní Azure RateCard rozhraní API
-Cruiser cloudu můžete využít rozhraní API RateCard informace různými způsoby. V tomto článku ukážeme, jak je možné použít k IaaS zatížení náklady simulace a analýzy.
+### <a name="cloud-cruisers-interface-tooazure-ratecard-api"></a>Cloud tooAzure Cruiser na rozhraní RateCard API
+Cruiser cloudu můžete využít rozhraní API RateCard informace hello různými způsoby. V tomto článku ukážeme, jak může být použité toomake IaaS zatížení náklady simulace a analýzy.
 
-K předvedení tento případ použití, představte si zatížení několik instancí spuštěných na Microsoft Azure Pack (WAP). Cílem je pro simulaci tento stejné zatížení v Azure a odhad nákladů na provádění takových migrace. Chcete-li vytvořit tuto simulace, existují dvě hlavní úlohy provést:
+toodemonstrate tento případ použití, představte si zatížení několik instancí spuštěných na Microsoft Azure Pack (WAP). cílem Hello je toosimulate tento stejné zatížení v Azure a odhad hello náklady provádění takových migrace. V pořadí toocreate této simulace, existují dvě hlavní úlohy toobe provést:
 
-1. **Importovat a zpracovat shromážděná z rozhraní API RateCard informace o služby.** Tato úloha provádí také na sešity, kde je extract z rozhraní API RateCard transformovat a publikované na nový plán rychlost. Tento nový plán míry se použije na simulace k zjištění přibližné hodnoty Azure ceny.
-2. **Normalizuje WAP služby a služby Azure IaaS.** Ve výchozím nastavení, jsou na základě služby WAP u jednotlivých prostředků (procesoru, velikosti paměti, velikost disku atd.) při Azure jsou služby založené na velikost instance (A0, A1, A2 atd.). Tato první úloha můžete provést pomocí modulu ETL Cruiser cloudu, názvem sešity, kde je možné seskupit tyto prostředky na instanci velikostí, která je obdobou Azure instance služby.
+1. **Import a proces hello služby informace shromážděné z hello RateCard rozhraní API.** Tato úloha provádí také na hello sešity, kde hello extrakce z hello RateCard rozhraní API je nový plán míra tooa transformovaných a publikovaná. Tento nový plán míry se budou používat v hello simulace tooestimate hello Azure ceny.
+2. **Normalizuje WAP služby a služby Azure IaaS.** Ve výchozím nastavení, jsou na základě služby WAP u jednotlivých prostředků (procesoru, velikosti paměti, velikost disku atd.) při Azure jsou služby založené na velikost instance (A0, A1, A2 atd.). Tato první úloha můžete provést pomocí modulu ETL Cruiser cloudu, názvem sešity, které tyto prostředky je možné seskupit instance velikostí, podobá tooAzure instance služby.
 
-### <a name="import-data-from-the-ratecard-api"></a>Umožňuje importovat data z rozhraní API RateCard
-Sešity Cruiser cloudu poskytují automatizovaný způsob, jak ke sběru a zpracování informací z rozhraní API RateCard.  Sešity ETL (extrakce zatížení transformace) umožňují konfigurovat kolekce, transformaci a publikování dat do databáze Cruiser cloudu.
+### <a name="import-data-from-hello-ratecard-api"></a>Umožňuje importovat data z hello RateCard rozhraní API
+Sešity Cruiser cloudu poskytují automatizovaný způsob, jak toocollect a proces informace z hello RateCard rozhraní API.  Sešity ETL (extrakce zatížení transformace) umožňují tooconfigure hello kolekce, transformaci a publikování dat do databáze cloudu Cruiser hello.
 
-Každý sešit může mít jeden nebo více kolekcí, což umožňuje korelovat informace z různých zdrojů doplňují nebo posílení dat o využití. Následující dva snímky obrazovky ukazují, jak vytvořit nový *kolekce* v existující sešit a import informací do *kolekce* z rozhraní API RateCard:
+Každý sešit můžete mít jeden nebo více kolekcí, což vám toocorrelate informace z různých zdrojů toocomplement nebo posílení data o využití hello. Následující dva snímky obrazovky zobrazit jak Hello toocreate nový *kolekce* v existující sešit a import informací do hello *kolekce* z hello RateCard rozhraní API:
 
 ![Obrázek 1 – Vytvoření nové kolekce][1]
 
-![Obrázek 2 – importovat data z nové kolekce][2]
+![Obrázek 2 – importovat data z nové kolekce hello][2]
 
-Po importu dat do sešitu, je možné vytvořit několika kroky a procesy transformace, a upravit data modelu. V tomto příkladu vzhledem k tomu, že jsme zajímá jenom infrastruktura jako služba (IaaS) používáme transformace kroky k odebrání nepotřebných řádků nebo záznamy, týkající se služby než IaaS.
+Po importu hello dat do sešitu hello je možné toocreate několika kroky a procesy zpracování, toomodify a modelu hello data. V tomto příkladu vzhledem k tomu, že jsme zajímá jenom infrastruktura jako služba (IaaS), můžeme použít hello transformace kroky tooremove nepotřebné řádky nebo záznamy, související tooservices než IaaS.
 
-Následující snímek obrazovky ukazuje postup transformace používá ke zpracování data shromážděná z rozhraní API RateCard:
+Hello následující snímek obrazovky ukazuje, že kroky transformace hello používá tooprocess hello data shromážděná z rozhraní API RateCard:
 
-![Obrázek 3 – postup transformace zpracovat shromážděná data z rozhraní API RateCard][3]
+![Obrázek 3 - transformace kroky tooprocess shromažďovat data z rozhraní API RateCard][3]
 
 ### <a name="defining-new-services-and-rate-plans"></a>Definování nových služeb a rychlost plány
-Určit služeb v cloudu Cruiser různými způsoby. Jednu z možností je importovat služby z dat o využití. Tato metoda se běžně používá při práci s veřejné cloudy, kde jsou již definováni služby zprostředkovatelem.
+V cloudu Cruiser jsou různé způsoby toodefine služby. Jednu z možností hello je tooimport hello služby z dat využití hello. Tato metoda se obvykle používá při práci s veřejné cloudy, kde jsou již definováni hello služby poskytovatelem hello.
 
-Míra plánování je sada sazby nebo ceny, které lze použít pro různé služby, na základě daty platnosti nebo skupinu zákazníků, mezi další možnosti. Míra plány můžete použít taky u cloudu Cruiser k vytvoření simulace nebo "Citlivostních" scénářů, pochopit vliv celkové náklady na zatížení změny ve službě.
+Míra plánování je sada sazby nebo ceny, které můžou být použité toodifferent služby, na základě daty platnosti nebo skupinu zákazníků, mezi další možnosti. Míra plány lze také v cloudu Cruiser toocreate simulace nebo "Citlivostních" scénářů, toounderstand vliv hello celkové náklady na zatížení změny ve službě.
 
-V tomto příkladu používáme informace služby z rozhraní API RateCard k definování nových služeb v cloudu Cruiser. Stejným způsobem používáme k sazby související službám vytvořit nový plán míra na Cruiser cloudu.
+V tomto příkladu použijeme informace o službě hello z hello RateCard API toodefine nových služeb v cloudu Cruiser. V hello stejný způsobem, můžeme použít hello sazby související toohello služeb toocreate nové míra plánování na Cruiser cloudu.
 
-Na konci procesu transformace je možné vytvořit nový krok a publikovat data z rozhraní API RateCard jako nové služby a sazby.
+Na konci hello hello transformace procesu je možné toocreate nový krok a publikovat data hello z hello RateCard API jako nové služby a sazby.
 
-![Obrázek 4 – publikování dat z rozhraní API RateCard jako nové služby a sazby][4]
+![Obrázek 4 – publikování hello data z hello RateCard API jako nové služby a sazby][4]
 
 ### <a name="verify-azure-services-and-rates"></a>Ověření služby Azure a sazby
-Po publikování služby a sazby, můžete ověřit seznam importovaných služeb v cloudu Cruiser *služby* karty:
+Po publikování služby hello a sazby, můžete ověřit hello seznam importovaných služeb v cloudu Cruiser *služby* karty:
 
-![Obrázek 5 – ověření nových služeb][5]
+![Obrázek 5 – ověření hello nových služeb][5]
 
-Na *plány míra* kartě, můžete zkontrolovat nové míra plán nazvaný "AzureSimulation" se kurzy importovat z rozhraní API RateCard.
+Na hello *plány míra* kartě, můžete zkontrolovat hello nové míra plán nazvaný "AzureSimulation" s hello sazby naimportované z hello RateCard rozhraní API.
 
-![Obrázek 6 – ověření nový plán rychlost a přidružené sazby][6]
+![Obrázek 6 – ověření hello nový plán rychlost a přidružené sazby][6]
 
 ### <a name="normalize-wap-and-azure-services"></a>Normalizuje WAP a službami Azure
-Ve výchozím nastavení WAP poskytuje informace o využití, které jsou založeny na použití výpočetní, paměti a síťovým prostředkům. V cloudu Cruiser, můžete definovat vašich služeb na základě přímo na přidělení nebo Měřené využití těchto prostředků. Můžete například nastavit základní kurz pro každou hodinu využití procesoru nebo účtují GB paměť přidělená pro instanci.
+Ve výchozím nastavení WAP poskytuje informace o využití, které jsou založeny na použití hello výpočetní, paměti a síťovým prostředkům. V cloudu Cruiser můžete definovat služeb na základě přímo na hello přidělení nebo Měřené využití těchto prostředků. Například můžete nastavit na základní míru pro každou hodinu využití procesoru nebo poplatků hello GB paměti přidělené tooan instance.
 
-Například pokud chcete porovnat náklady mezi WAP a Azure, je třeba k agregaci využití prostředků na WAP do sad, které lze mapovat ke službám Azure. Tato transformace můžou snadno implementovat v sešitů:
+V tomto příkladu v pořadí toocompare náklady mezi WAP a Azure potřebujeme tooaggregate využití hello prostředků na WAP do sad, které pak lze mapovat tooAzure služby. Tato transformace lze snadno implementovat v sešitech hello:
 
-![Obrázek 7: transformace dat WAP k normalizaci služby][7]
+![Obrázek 7: transformace WAP datové toonormalize služby][7]
 
-Posledním krokem v sešitu je publikovat data do databáze Cruiser cloudu. Během tohoto kroku je dat o využití teď seskupeny do služby (které jsou mapovány na Azure Services) a vázaný na výchozí sazby vytvořit poplatků.
+posledním krokem Hello v sešitu hello je toopublish hello data do databáze cloudu Cruiser hello. V tomto kroku data o využití hello je nyní seskupeny do služby (které mapují toohello služby Azure) a vázané toodefault sazby toocreate hello poplatky.
 
-Po dokončení sešit, je možné automatizovat zpracování dat, přidáním úlohu na Plánovač a zadáte četnost a čas pro sešit ke spuštění.
+Po dokončení hello sešitu můžete automatizovat hello zpracování dat hello přidáním úlohu pro hello Plánovač a určením hello četnost a čas pro sešit toorun hello.
 
 ![Obrázek 8 - sešitu plánování][8]
 
 ### <a name="create-reports-for-workload-cost-simulation-analysis"></a>Vytváření sestav pro analýzu náklady simulace pracovního vytížení
-Až se shromáždí využití a poplatky jsou načtena do cloudu Cruiser databáze, jsme můžete využít modul cloudu Cruiser Insights k vytvoření úlohy náklady simulace, který jsme požadavky.
+Až se shromažďují hello využití a poplatky jsou načtena do databáze cloudu Cruiser hello, jsme využít hello cloudu Cruiser Statistika modulu toocreate hello zatížení náklady simulaci, která jsme požadavky.
 
-K prokázání tohoto scénáře, jsme vytvořili následující sestavy:
+V pořadí toodemonstrate tento scénář jsme vytvořili hello následující sestavy:
 
 ![Cenově porovnání][9]
 
-Horní graf zobrazuje porovnání náklady službami porovnání ceny spuštěných úloh pro každou konkrétní službu mezi WAP (tmavý modrá) a Azure (světla modrá).
+Hello nejvyšší graf znázorňuje porovnání náklady, službami, porovnání hello cena spuštěného pracovního vytížení hello pro každou konkrétní službu mezi WAP (tmavý modrá) a Azure (světla modrá).
 
-Dolní graf zobrazuje stejná data, ale rozděleno podle oddělení. Ukazuje to náklady pro každé oddělení ke spuštění jejich pracovního vytížení na WAP a Azure, společně s rozdíl mezi nimi na panelu úspory (zelený).
+Hello dolní graf znázorňuje hello stejná data ale rozděleno podle oddělení. Ukazuje to hello náklady pro každé oddělení toorun jejich pracovního vytížení na WAP a Azure, společně s hello rozdíl mezi nimi panelu hello úspory (zelený).
 
 ## <a name="azure-usage-api"></a>Rozhraní API Azure využití
 ### <a name="introduction"></a>Úvod
-Microsoft nedávno zavedl využití rozhraní API služby Azure, umožňuje odběratelům prostřednictvím kódu programu stáhnout data o využití a získáte přehled o jejich používání. Toto je skvělé zprávy pro zákazníky Cruiser cloudu, které můžete využít výhod bohatší datová sada k dispozici prostřednictvím tohoto rozhraní API.
+Microsoft nedávno zavedl hello využití rozhraní API služby Azure, povolení tooprogrammatically vyžádání Odběratelé, kteří v využití dat toogain přehledy o jejich používání. Toto je skvělé zprávy pro zákazníky Cruiser cloudu, které můžete využít výhod hello bohatší datová sada k dispozici prostřednictvím tohoto rozhraní API.
 
-Cloud Cruiser můžou využít integraci s rozhraním API pro využití několika způsoby. Členitost (každou hodinu informace o využití) a informace metadat prostředků, které jsou k dispozici prostřednictvím rozhraní API poskytuje nezbytné datovou sadu pro podporu flexibilní modely kompletní přehled nákladů nebo vrácení peněz. 
+Cruiser cloudu můžete využít hello integrace s hello využití rozhraní API několika způsoby. členitost Hello (informace o hodinové využití) a informace metadat prostředků, které jsou k dispozici prostřednictvím rozhraní API poskytuje hello hello modely toosupport nezbytné datovou sadu flexibilní kompletní přehled nákladů nebo vrácení peněz. 
 
-V tomto kurzu jsme nabídne jeden příklad, jak cloudové Cruiser využívat informace o využití rozhraní API. Přesněji řečeno jsme se vytvoření skupiny prostředků v Azure, přiřadit značky pro strukturu účtu a pak popisují proces stahování a zpracování informací značka do cloudu Cruiser.
+V tomto kurzu jsme nabídne jeden příklad, jak cloudové Cruiser využívat hello informace o využití rozhraní API. Přesněji řečeno jsme se vytvoření skupiny prostředků v Azure, přiřadit značky pro strukturu hello účet a pak popisují proces hello stahování a zpracování informací značky hello do cloudu Cruiser.
 
-Konečné cílem je možnost vytváření sestav, jako je ta následující, a bude schopen analyzovat náklady a spotřeba podle struktura účtu naplněn značek.
+cílem konečné Hello je toobe možné toocreate sestavy jako hello následující jeden a být schopný tooanalyze náklady a spotřeba na základě struktury hello účtu naplněn hello značky.
 
 ![Obrázek 10 - sestava s členění pomocí značek][10]
 
 ### <a name="microsoft-azure-tags"></a>Značky Microsoft Azure
-K dispozici prostřednictvím rozhraní API pro využití služby Azure data zahrnují pouze informace o spotřebě, ale také metadata prostředků, včetně všechny značky, které s ním spojená. Značky poskytují snadný způsob k uspořádání prostředků, ale aby efektivní, je třeba zajistit, aby:
+Hello data k dispozici prostřednictvím hello využití rozhraní API služby Azure zahrnují pouze informace o spotřebě, ale také metadata prostředků, včetně všechny značky, které s ním spojená. Značky poskytují snadný způsob tooorganize vašich prostředků, ale v pořadí toobe efektivní, bude nutné tooensure který:
 
-* Značky správně použijí k prostředkům během zřizování
-* Značky jsou správně použít v procesu kompletní přehled nákladů/vracení peněz ke svázání využití pro strukturu účtu organizace.
+* Značky jsou správně použité toohello prostředky během zřizování
+* Značky jsou správně použít ve struktuře účet hello kompletní přehled nákladů/vracení peněz proces tootie hello využití toohello organizace.
 
-Oba tyto požadavky může být náročné, zejména v případě, že je ruční proces na poskytování nebo poplatků straně. Chybným zadáním, chybné nebo i chybějící značky jsou častých stížností od zákazníků, když pomocí značek a tyto chyby můžete aby na straně plnících velmi obtížné.
+Oba tyto požadavky může být náročné, zejména v případě, že je ruční proces na hello zřízení nebo poplatků straně. Chybným, nesprávnou nebo chybějící i značky jsou častých stížností od zákazníků, když pomocí značek a tyto chyby můžete provést životnosti v hello poplatků straně velmi obtížné.
 
-S novou využití rozhraní API služby Azure můžete cloudové Cruiser označování informace o prostředcích pro vyžádání obsahu a prostřednictvím sofistikované ETL nástroj nazvaný sešity, opravte tyto chyby běžné označování. Prostřednictvím transformaci pomocí regulárních výrazů a korelace data můžete cloudové Cruiser identifikovat nesprávně s příznakem prostředky a použít správné značky, zajistíte správné přidružení prostředky k příjemce.
+S hello nové rozhraní API Azure využití, Cruiser cloudu můžete prostředků označování informace pro vyžádání obsahu a pomocí sofistikované nástroje ETL názvem sešity, opravte tyto chyby běžné označování. Prostřednictvím transformaci pomocí regulárních výrazů a korelace data můžete cloudové Cruiser identifikovat nesprávně s příznakem prostředky a použít hello správné značky, zajistíte správné přidružení hello prostředků hello k příjemce hello.
 
-Na straně plnících cloudu Cruiser automatizuje proces kompletní přehled nákladů/vracení peněz a můžete využít informace o značkách ke svázání využití odpovídající příjemci (oddělení, dělení, projektu atd.). Tato automatizace poskytuje obrovské zlepšování a zajistit konzistentní a kontrolovatelný plnících procesu.
+Na hello poplatků straně cloudu Cruiser automatizuje hello procesu kompletní přehled nákladů/vracení peněz a můžete využít hello značky informace tootie hello využití toohello odpovídající příjemce (oddělení, dělení, projektu atd.). Tato automatizace poskytuje obrovské zlepšování a zajistit konzistentní a kontrolovatelný plnících procesu.
 
 ### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>Vytvoření skupiny prostředků pomocí značek v Microsoft Azure
-Prvním krokem v tomto kurzu je vytvořte skupinu prostředků na portálu Azure, pak vytvořte nové značky pro přidružení k prostředkům. V tomto příkladu budeme vytvářet těmito značkami: oddělení, prostředí, vlastník projektu.
+Hello první krok v tomto kurzu je toocreate skupiny prostředků v hello portál Azure a pak vytvořit nové značky tooassociate toohello prostředky. V tomto příkladu budeme vytvářet hello následující značky: oddělení, prostředí, vlastník projektu.
 
-Následující snímek obrazovky ukazuje ukázku skupinu prostředků s přidružených značek.
+Následující snímek obrazovky Hello obsahuje ukázku že přidružené skupiny prostředků s hello značky.
 
 ![Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure][11]
 
-Dalším krokem je načítat informace z rozhraní API využití do cloudu Cruiser. Využití rozhraní API aktuálně poskytuje odpovědi ve formátu JSON. Zde je ukázka data načtená:
+dalším krokem Hello je toopull hello informace hello využití rozhraní API do cloudu Cruiser. Hello využití rozhraní API aktuálně poskytuje odpovědi ve formátu JSON. Zde je ukázka hello data načtená:
 
     {
       "id": "/subscriptions/bb678b04-0e48-4b44-XXXX-XXXXXXX/providers/Microsoft.Commerce/UsageAggregates/Daily_BRSDT_20150623_0000",
@@ -167,59 +167,59 @@ Dalším krokem je načítat informace z rozhraní API využití do cloudu Cruis
     },
 
 
-### <a name="import-data-from-the-usage-api-into-cloud-cruiser"></a>Importovat data z rozhraní API využití do cloudu Cruiser
-Sešity Cruiser cloudu poskytují automatizovaný způsob, jak ke sběru a zpracování informací z rozhraní API využití. Sešit aplikace ETL (extrakce zatížení transformace) umožňuje nakonfigurovat kolekce, transformaci a publikování dat do databáze Cruiser cloudu.
+### <a name="import-data-from-hello-usage-api-into-cloud-cruiser"></a>Umožňuje importovat data z hello využití rozhraní API do cloudu Cruiser
+Sešity Cruiser cloudu poskytují automatizovaný způsob, jak toocollect a proces informace z hello využití rozhraní API. Sešit aplikace ETL (extrakce zatížení transformace) vám umožní tooconfigure hello kolekce, transformaci a publikování dat do databáze cloudu Cruiser hello.
 
-Každý sešit může mít jednu nebo více kolekcí. Tato funkce umožňuje korelovat informace z různých zdrojů doplňují nebo posílení dat o využití. V tomto příkladu vytvoříme nový list v sešitu šablony Azure (*UsageAPI)* a nastavte novou *kolekce* pro import informací z rozhraní API využití.
+Každý sešit může mít jednu nebo více kolekcí. To vám umožní toocorrelate informace z různých zdrojů toocomplement nebo posílení hello data o využití. V tomto příkladu vytvoříme nový list v sešitu šablony Azure hello (*UsageAPI)* a nastavte novou *kolekce* tooimport informace z hello využití rozhraní API.
 
-![Obrázek 3 - list UsageAPI importovat data o využití rozhraní API][12]
+![Obrázek 3 - importovat do listu UsageAPI hello data o využití rozhraní API][12]
 
-Všimněte si, že tento sešit již má jiné listy import služeb z Azure (*ImportServices*) a zpracování informací o spotřebě z rozhraní API fakturace (*PublishData*).
+Všimněte si, že tento sešit už obsahuje jiné listů tooimport služeb z Azure (*ImportServices*) a zpracování informací o spotřebě hello z hello fakturace rozhraní API (*PublishData*).
 
-Další využití rozhraní API bude používat k naplnění *UsageAPI* list a korelovat informace s datům o spotřebě z rozhraní API fakturace na *PublishData* listu.
+Vedle využijeme hello využití rozhraní API toopopulate hello *UsageAPI* list a correlate hello informace s hello datům o spotřebě z hello fakturace rozhraní API na hello *PublishData* listu.
 
-### <a name="processing-the-tag-information-from-the-usage-api"></a>Zpracování značky informací z rozhraní API využití
-Po importu dat do sešitu, vytvoříme transformace kroky *UsageAPI* listu, aby bylo možné zpracovat informace z rozhraní API. Prvním krokem je použití procesor "JSON rozdělení" extrahovat značek z jediné pole a pak vytvořit pole pro každou z nich (oddělení, projektů, vlastníka a prostředí).
+### <a name="processing-hello-tag-information-from-hello-usage-api"></a>Zpracování hello značky informací z hello využití rozhraní API
+Po importu hello dat do sešitu hello vytvoříme transformace kroky v hello *UsageAPI* listu v pořadí tooprocess hello informace z hello rozhraní API. Prvním krokem je toouse "JSON rozdělení" hello tooextract procesoru značky v jednom poli a potom vytvořit pole pro každý jeden z nich (oddělení, projektů, vlastníka a prostředí).
 
-![Obrázek 4 – vytvoření nové pole značky informace][13]
+![Obrázek 4 – vytvořit nové pole hello značky informace][13]
 
-Všimněte si "Síť" služby chybí značka informace (žlutý pole), ale nemůžeme můžete ověřit, že je součástí stejné skupiny prostředků prohlížením *ResourceGroupName* pole. Vzhledem k tomu, že máme značky pro další prostředky z této skupiny prostředků, můžete tyto informace používáme k nastavení platnosti chybějící značky pro tento prostředek později v tomto procesu.
+Oznámení hello "Síť" služby chybí značka informace hello (žlutý pole), ale nemůžeme ověřit, že je součástí hello stejnou skupinu prostředků prohlížením hello *ResourceGroupName* pole. Vzhledem k tomu, že máme hello značky pro hello další prostředky z této skupiny prostředků, můžeme použít tento hello tooapply informace, chybí prostředek toothis značky později v procesu hello.
 
-Dalším krokem je vytvoření vyhledávací tabulky přidružení informace z značek k *ResourceGroupName*. Tento vyhledávací tabulky se použije na další krok k rozšíření dat spotřeby s informacemi o značky.
+Hello dalším krokem je toocreate a vyhledávací tabulky přiřadit hello informace z hello značky toohello *ResourceGroupName*. Tento vyhledávací tabulky se budou používat v hello další krok tooenrich hello datům o spotřebě s informacemi o značky.
 
-### <a name="adding-the-tag-information-to-the-consumption-data"></a>Přidání značka informací k datům o spotřebě
-Nyní jsme přejít na *PublishData* seznamu, která zpracovává informací o spotřebě z rozhraní API fakturace a přidat pole extrahovat z uvedených značek. Tento proces se provádí prohlížením vyhledávací tabulky vytvořili v předchozím kroku, pomocí *ResourceGroupName* jako klíč k vyhledávání na.
+### <a name="adding-hello-tag-information-toohello-consumption-data"></a>Přidání hello značky informace toohello spotřeby dat
+Nyní jsme přejít toohello *PublishData* seznamu vlastností, které procesy hello informací o spotřebě z hello fakturace rozhraní API a přidat hello pole extrahovat z hello značky. Tento proces se provádí prohlížením hello vyhledávací tabulky vytvořili v předchozím kroku hello pomocí hello *ResourceGroupName* jako hello klíč k vyhledávání hello.
 
-![Obrázek 5 – naplnění strukturu účet s informacemi z hledání][14]
+![Obrázek 5 – naplnění struktura účtu hello hello informace z hledání hello][14]
 
-Všimněte si, že byly použity struktura pole odpovídající účet pro službu "Síť", opravit problém s chybějící značky. Také jsme naplněno pole struktura účtu pro prostředky než naše cíle skupinu prostředků s "Ostatní", aby je bylo možné odlišit na sestavy.
+Všimněte si, že byly použity hello odpovídající účet struktura pole pro službu "Síť" hello, opravě hello problém s hello chybí značky. Můžeme také naplněny hello účet struktura pole pro prostředky než naše cíle skupinu prostředků s "Ostatní", v pořadí toodifferentiate je na hello sestavy.
 
-Nyní potřebujeme přidejte krok k publikování dat o využití. V tomto kroku odpovídající sazby u každé služby definované v našich míra plánování uplatní na údaje o využití, s výsledné zdarma do databáze.
+Nyní potřebujeme jen tooadd krok toopublish hello využití dat. Během tohoto kroku bude hello odpovídající sazby u každé služby definované v našich míra plánování informace o využití toohello použité, s hello výsledné poplatků načíst do databáze hello.
 
-Nejlepší je, že máte jenom jednou projít tento proces. Po dokončení sešit stačí přidat do Plánovač a hodinové nebo denní bude spuštěn v naplánovaném čase. Potom ji stačí vytvoření nové sestavy, nebo přizpůsobení existujících, aby bylo možné analyzovat data a získat smysluplné přehledy z použití cloudové.
+nejlepší část Hello je, že máte jenom toogo na tomto procesu jednou. Po dokončení hello sešitu stačí tooadd ho toohello Plánovač a spustí hodinové nebo denní v hello naplánovaný čas. Potom ji stačí vytvoření nové sestavy, nebo přizpůsobení existujících, v pořadí tooanalyze hello data tooget smysluplné přehledy z použití cloudové.
 
 ### <a name="next-steps"></a>Další kroky
-* Podrobné pokyny pro vytvoření cloudu Cruiser sešitů a sestav, naleznete v cloudu Cruiser online [dokumentace](http://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Další informace o cloudu Cruiser, obraťte se na [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
-* V tématu [proniknout do vaší spotřeby prostředků Microsoft Azure](billing-usage-rate-card-overview.md) přehled informací o rozhraní API RateCard a využití prostředků Azure.
-* Podívejte se [referenční dokumentace rozhraní API Azure fakturace REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Další informace o obou rozhraní API, které jsou součástí sadu rozhraní API zadaná pomocí Správce prostředků Azure.
-* Pokud chcete pusťte do ukázkový kód, podívejte se na naše Microsoft Azure Billing API ukázky kódu na [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?term=billing).
+* Pro podrobné pokyny k vytvoření cloudové Cruiser sešitů a sestav, naleznete je online tooCloud Cruiser [dokumentace](http://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Další informace o cloudu Cruiser, obraťte se na [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
+* V tématu [proniknout do vaší spotřeby prostředků Microsoft Azure](billing-usage-rate-card-overview.md) přehled hello využití prostředků Azure a rozhraní API RateCard.
+* Podívejte se na hello [referenční dokumentace rozhraní API Azure fakturace REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Další informace o obou rozhraní API, které jsou součástí hello sadu rozhraní API poskytovaných hello Azure Resource Manager.
+* Pokud chcete toodive přímo do hello ukázkový kód, podívejte se na naše Microsoft Azure Billing API ukázky kódu na [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?term=billing).
 
 ### <a name="learn-more"></a>Další informace
-* Najdete v článku [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) článku se dozvíte více o Azure Resource Manager.
+* V tématu hello [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) článku toolearn více informací o hello Azure Resource Manager.
 
 <!--Image references-->
 
 [1]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Create-New-Workbook-Collection.png "Obrázek 1 – Vytvoření nové kolekce"
-[2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "Obrázek 2 – importovat data z nové kolekce"
-[3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "Obrázek 3 – postup transformace zpracovat shromážděná data z rozhraní API RateCard"
-[4]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Publish-RateCard-Data-New-Services-Rates.png "Obrázek 4 – publikování dat z rozhraní API RateCard jako nové služby a sazby"
-[5]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing1.png "Obrázek 5 – ověření nových služeb"
-[6]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing2.png "Obrázek 6 – ověření nový plán rychlost a přidružené sazby"
-[7]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transforming-WAP-Normalize-Services.png "Obrázek 7: transformace dat WAP k normalizaci služby"
+[2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "Obrázek 2 – importovat data z nové kolekce hello"
+[3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "Obrázek 3 - transformace kroky tooprocess shromažďovat data z rozhraní API RateCard"
+[4]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Publish-RateCard-Data-New-Services-Rates.png "Obrázek 4 – publikování hello data z hello RateCard API jako nové služby a sazby"
+[5]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing1.png "Obrázek 5 – ověření hello nových služeb"
+[6]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing2.png "Obrázek 6 – ověření hello nový plán rychlost a přidružené sazby"
+[7]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transforming-WAP-Normalize-Services.png "Obrázek 7: transformace WAP datové toonormalize služby"
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "Obrázek 8 - sešitu plánování"
-[9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "Obrázek 9 – ukázková sestava pro scénář porovnání náklady pracovního vytížení"
+[9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "Obrázek 9 – ukázková sestava pro scénář porovnání náklady zatížení hello"
 [10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "Obrázek 10 - sestava s členění pomocí značek"
 [11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure"
-[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "Obrázek 12 - list UsageAPI importovat data o využití rozhraní API"
-[13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Obrázek 13 – vytvořit nové pole informace značky"
-[14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Obrázek 14 - naplnění strukturu účet s informacemi z hledání"
+[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "Obrázek 12 - importovat do listu UsageAPI hello data o využití rozhraní API"
+[13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Obrázek 13 – vytvořit nové pole hello značky informace"
+[14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Obrázek 14 - naplnění struktura účtu hello hello informace z hledání hello"

@@ -1,32 +1,21 @@
 ---
-title: "Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Dokumentace Microsoftu"
-description: "Obsahuje vzorový kód v jazyce Go, který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů."
-services: cosmos-db
-author: Durgaprasad-Budhwani
-manager: jhubbard
-editor: mimig1
-ms.service: cosmos-db
-ms.topic: hero-article
-ms.date: 07/21/2017
-ms.author: mimig
-ms.openlocfilehash: 9461a5d86b321fd02167379ba8751d44a861ebc2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+Title: aaa "Azure Cosmos DB: vytvoření aplikace konzoly MongoDB rozhraní API s Golang a hello portálu Azure | Popis Microsoft Docs": uvede ukázku kódu Golang tooconnect tooand můžete dotazovat služby Azure Cosmos DB: cosmos-db Autor: Durgaprasad Budhwani manager: jhubbard editor: mimig1
+
+MS.Service: cosmos-db ms.topic: hero-article ms.date: 07/21/2017 ms.author: mimig
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-hello-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace konzoly MongoDB rozhraní API s Golang a hello portálu Azure
 
-Tento rychlý start popisuje způsob použití stávající aplikace [MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) napsané v jazyce [Go](https://golang.org/) a připojení k databázi Azure Cosmos DB, která podporuje připojení klienta MongoDB.
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB.
 
-Jinými slovy: aplikace v jazyce Go ví pouze to, že se připojuje k databázi pomocí rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
+Tento úvodní ukazuje, jak toouse existující [MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) aplikace napsané v [Golang](https://golang.org/) a připojte ho tooyour Azure Cosmos DB databáze, která podporuje připojení klienta MongoDB.
+
+Jinými slovy aplikace Golang pouze ví, že se počítač připojuje tooa databáze pomocí rozhraní API MongoDB. Je transparentní toohello aplikace, která hello dat je uložen v Azure Cosmos DB.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
-- [Go](https://golang.org/dl/) a základní znalost jazyka [Go](https://golang.org/).
+- [Přejděte](https://golang.org/dl/) a základní znalosti o hello [přejděte](https://golang.org/) jazyk.
 - Integrované vývojové prostředí – [Gogland](https://www.jetbrains.com/go/) od JetBrains, [Visual Studio Code](https://code.visualstudio.com/) od Microsoftu nebo [Atom](https://atom.io/). V tomto kurzu používáme Gogland.
 
 <a id="create-account"></a>
@@ -34,55 +23,55 @@ Jinými slovy: aplikace v jazyce Go ví pouze to, že se připojuje k databázi
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+## <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky.
+Klonování hello ukázkovou aplikaci a nainstalujte hello požadované balíčky.
 
-1. Vytvořte složku s názvem CosmosDBSample ve složce GOROOT\src, což je ve výchozím nastavení C:\Go\.
-2. V okně terminálu Git, jako je třeba Git Bash, spusťte následující příkaz, který naklonuje ukázkové úložiště do složky CosmosDBSample. 
+1. Vytvořte složku s názvem CosmosDBSample hello GOROOT\src naleznete ve složce, ve výchozím nastavení je C:\Go\.
+2. Spusťte následující příkaz pomocí okna terminálu git například git bash tooclone hello Ukázka úložiště do složky CosmosDBSample hello hello. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-golang-getting-started.git
     ```
-3.  Spuštěním následujícího příkazu získejte balíček mgo. 
+3.  Spusťte následující příkaz tooget hello mgo balíček hello. 
 
     ```
     go get gopkg.in/mgo.v2
     ```
 
-Ovladač [mgo](http://labix.org/mgo) (vyslovuje se jako *mango*) je ovladač [MongoDB](http://www.mongodb.org/) pro [jazyk Go](http://golang.org/), který implementuje bohatý a dobře otestovaný výběr funkcí v rámci velmi jednoduchého rozhraní API s využitím standardních frází jazyka Go.
+Hello [mgo](http://labix.org/mgo) ovladačů (vyslovováno jako *mango*) je [MongoDB](http://www.mongodb.org/) ovladač pro hello [přejděte jazyk](http://golang.org/) , implementuje s formátováním a dobře testována Výběr funkcí v části velmi jednoduché rozhraní API následující standardní idioms přejděte.
 
 <a id="connection-string"></a>
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.
 
-1. Informace o připojovacím řetězci požadované aplikací v jazyce Go zobrazíte tak, že v navigační nabídce vlevo kliknete na **Rychlý start** a pak na **Jiné**.
+1. Klikněte na tlačítko **úvodní** v hello levé navigační nabídku a pak klikněte na **jiných** tooview hello informace o připojovacím řetězci vyžadovanou hello aplikaci přejděte.
 
-2. V prostředí Gogland otevřete soubor main.go v adresáři GOROOT\CosmosDBSample a aktualizujte následující řádky kódu s použitím informací o připojovacím řetězci z webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
+2. V Goglang otevřete hello main.go soubor v adresáři GOROOT\CosmosDBSample hello a aktualizujte následující řádky kódu pomocí hello připojovacím řetězcem z hello portálu Azure, jak ukazuje následující snímek obrazovky hello hello. 
 
-    Název databáze je předpona hodnoty **Hostitel** v podokně připojovacího řetězce na webu Azure Portal. Pro účet znázorněný v obrázku níže je název databáze golang-coach.
+    Název databáze Hello je předpona hello hello **hostitele** hodnotu v podokně řetězec hello připojení portálu Azure. Pro účet hello znázorňuje následující obrázek hello je název databáze hello golang školit.
 
     ```go
-    Database: "The prefix of the Host value in the Azure portal",
-    Username: "The Username in the Azure portal",
-    Password: "The Password in the Azure portal",
+    Database: "hello prefix of hello Host value in hello Azure portal",
+    Username: "hello Username in hello Azure portal",
+    Password: "hello Password in hello Azure portal",
     ```
 
-    ![Podokno Rychlý start, karta Jiné na webu Azure Portal ukazující informace o připojovacím řetězci](./media/create-mongodb-golang/cosmos-db-golang-connection-string.png)
+    ![Rychlý start podokně kartu jiné v informace o připojovacím řetězci hello portálu Azure znázorňující hello](./media/create-mongodb-golang/cosmos-db-golang-connection-string.png)
 
-3. Uložte soubor main.go.
+3. Uložte soubor main.go hello.
 
-## <a name="review-the-code"></a>Kontrola kódu
+## <a name="review-hello-code"></a>Zkontrolujte hello kódu
 
-Ještě jednou se stručně podívejme na to, co se v souboru main.go děje. 
+Provedeme jejich stručný přehled o dění v souboru main.go hello. 
 
-### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Připojení aplikace v jazyce Go ke službě Azure Cosmos DB
+### <a name="connecting-hello-go-app-tooazure-cosmos-db"></a>Připojení hello tooAzure aplikace přejděte Cosmos DB
 
-Azure Cosmos DB podporuje MongoDB s povoleným protokolem SSH. Pokud se chcete připojit k MongoDB s povoleným protokolem SSH, je potřeba ve třídě [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) definovat funkci **DialServer** a pomocí funkce [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) provést připojení.
+Azure Cosmos DB podporuje hello MongoDB povolen protokol SSL. tooconnect tooan MongoDB povolen protokol SSL, je nutné toodefine hello **DialServer** fungovat v [mgo. DialInfo](http://gopkg.in/mgo.v2#DialInfo)a ujistěte se, použití hello [tls. *Vytočit* ](http://golang.org/pkg/crypto/tls#Dial) funkce tooperform hello připojení.
 
-Následující fragment kódu jazyka Go připojí aplikaci v jazyce Go pomocí rozhraní API MongoDB pro Azure Cosmos DB. Třída *DialInfo* obsahuje možnosti pro vytvoření relace s clusterem MongoDB.
+Následující fragment kódu Golang Hello připojí hello přejděte aplikace pomocí rozhraní API služby Azure Cosmos DB MongoDB. Hello *DialInfo* třída obsahuje možnosti pro vytvoření relace s clusterem s podporou MongoDB.
 
 ```go
 // DialInfo holds options for establishing a session with a MongoDB cluster.
@@ -98,27 +87,27 @@ dialInfo := &mgo.DialInfo{
 }
 
 // Create a session which maintains a pool of socket connections
-// to our Azure Cosmos DB MongoDB database.
+// tooour Azure Cosmos DB MongoDB database.
 session, err := mgo.DialWithInfo(dialInfo)
 
 if err != nil {
-    fmt.Printf("Can't connect to mongo, go error %v\n", err)
+    fmt.Printf("Can't connect toomongo, go error %v\n", err)
     os.Exit(1)
 }
 
 defer session.Close()
 
-// SetSafe changes the session safety mode.
-// If the safe parameter is nil, the session is put in unsafe mode, 
+// SetSafe changes hello session safety mode.
+// If hello safe parameter is nil, hello session is put in unsafe mode, 
 // and writes become fire-and-forget,
-// without error checking. The unsafe mode is faster since operations won't hold on waiting for a confirmation.
+// without error checking. hello unsafe mode is faster since operations won't hold on waiting for a confirmation.
 // 
 session.SetSafe(&mgo.Safe{})
 ```
 
-Metoda **mgo.Dial()** se používá v případě, že není k dispozici připojení SSL. Pro připojení SSL se vyžaduje metoda **mgo.DialWithInfo()**.
+Hello **mgo. Dial()** metoda se používá, když není připojení SSL. Pro připojení SSL, hello **mgo. DialWithInfo()** se metoda.
 
-Instance objektu **DialWIthInfo{}** slouží k vytvoření objektu relace. Po vytvoření relace můžete je kolekci přistupovat pomocí následujícího fragmentu kódu:
+Instance hello **{DialWIthInfo}** objekt je použité toocreate objektu session hello. Po vytvoření relace hello dostanete hello kolekce pomocí hello následující fragment kódu:
 
 ```go
 collection := session.DB(“database”).C(“package”)
@@ -157,10 +146,10 @@ if err != nil {
 
 ### <a name="query-or-read-a-document"></a>Dotazování nebo čtení dokumentu
 
-Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v každé z kolekcí. Následující ukázka kódu obsahuje dotaz, který je možné spustit proti dokumentům v kolekci.
+Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v každé z kolekcí. Hello následující vzorový kód ukazuje dotaz, který můžete spustit na hello dokumenty v kolekci.
 
 ```go
-// Get a Document from the collection
+// Get a Document from hello collection
 result := Package{}
 err = collection.Find(bson.M{"fullname": "react"}).One(&result)
 if err != nil {
@@ -199,13 +188,13 @@ if err != nil {
 }
 ```
     
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-hello-app"></a>Spuštění aplikace hello
 
-1. V prostředí Gogland ověřte, že cesta GOPATH (najdete ji v části **File** (Soubor), **Settings** (Nastavení), **Go**, **GOPATH**) zahrnuje umístění, ve kterém byl nainstalován balíček gopkg, což je ve výchozím nastavení PROFIL_UŽIVATELE\go. 
-2. Okomentujte řádky pro odstranění dokumentu (řádky 91–96), abyste dokument po spuštění aplikace mohli zobrazit.
+1. V Goglang, ověřte, že vaše GOPATH (k dispozici v části **soubor**, **nastavení**, **přejděte**, **GOPATH**) hello umístění zahrnout jako které hello gopkg byla nainstalována, což je USERPROFILE\go ve výchozím nastavení. 
+2. Komentář hello řádky, které odstranit řádky 91-96 hello dokumentu hello dokumentu viděli po spuštěné aplikaci hello.
 3. V prostředí Gogland klikněte na **Run** (Spustit) a pak na **Run 'Build main.go and run'** (Spustit akci „Sestavit a spustit main.go“).
 
-    Aplikace dokončí dokument vytvořený v části [Vytvoření dokumentu](#create-document) a zobrazí jeho popis.
+    aplikace Hello dokončí a zobrazí popis hello vytvořené v dokumentu hello [vytvořit dokument](#create-document).
     
     ```
     Description: A framework for building native apps with React.
@@ -213,32 +202,32 @@ if err != nil {
     Process finished with exit code 0
     ```
 
-    ![Gogland zobrazující výstup aplikace](./media/create-mongodb-golang/goglang-cosmos-db.png)
+    ![Goglang zobrazující hello výstup hello aplikace](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
 ## <a name="review-your-document-in-data-explorer"></a>Kontrola dokumentu v Průzkumníku dat
 
-Vraťte se na web Azure Portal a zobrazte dokument v Průzkumníku dat.
+Vraťte se zpátky toohello Azure portálu toosee vašeho dokumentu v Průzkumníku dat.
 
-1. V navigační nabídce vlevo klikněte na **Průzkumník dat (Preview)**, rozbalte **golang-coach**, **balíček** a pak klikněte na **Dokumenty**. Na kartě **Dokumenty** klikněte na \_id a zobrazte dokument v pravém podokně. 
+1. Klikněte na tlačítko **Data Explorer (Preview)** v levé navigační nabídce hello rozbalte **golang školit**, **balíček**a potom klikněte na **dokumenty**. V hello **dokumenty** , klikněte na hello \_id toodisplay hello dokumentu v pravém podokně hello. 
 
-    ![Průzkumník dat zobrazující nově vytvořený dokument](./media/create-mongodb-golang/golang-cosmos-db-data-explorer.png)
+    ![Data Explorer zobrazující hello nově vytvořeného dokumentu](./media/create-mongodb-golang/golang-cosmos-db-data-explorer.png)
     
-2. S dokumentem pak můžete přímo pracovat a kliknutím na **Aktualizovat** ho uložit. Můžete také odstranit dokument nebo vytvořit nové dokumenty nebo dotazy.
+2. Můžete pracovat s vloženého dokumentu hello a klikněte na tlačítko **aktualizace** toosave ho. Můžete také odstranit hello dokumentu nebo vytvořit nové dokumenty nebo dotazy.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Zkontrolujte SLA v hello portálu Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos DB a spuštění aplikace v jazyce Go pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data. 
+V tento rychlý start když jste se naučili jak toocreate účet Azure Cosmos DB a spusťte Golang aplikace pomocí hello rozhraní API pro MongoDB. Nyní můžete importovat další data tooyour Cosmos DB účtu. 
 
 > [!div class="nextstepaction"]
-> [Import dat do databáze Azure Cosmos pro rozhraní API MongoDB](mongodb-migrate.md)
+> [Importovat data do Azure Cosmos DB pro hello MongoDB rozhraní API](mongodb-migrate.md)

@@ -1,6 +1,6 @@
 ---
-title: "Bottle a úložiště Azure Table v Azure s nástroji Python Tools 2.2 pro Visual Studio"
-description: "Naučte se používat nástroje Python Tools pro sadu Visual Studio k vytvoření aplikace Bottle, která ukládá data ve službě Azure Table Storage a nasazení webové aplikace do Azure App Service Web Apps."
+title: "aaaBottle a Azure Table Storage na Azure pomocí nástroje Python Tools 2.2 pro Visual Studio"
+description: "Zjistěte, jak toouse hello Python Tools pro Visual Studio toocreate Bottle aplikace, která ukládá data ve službě Azure Table Storage a nasadit hello webové aplikace tooAzure App Service Web Apps."
 services: app-service\web
 documentationcenter: python
 author: huguesv
@@ -14,20 +14,20 @@ ms.devlang: python
 ms.topic: article
 ms.date: 07/07/2016
 ms.author: huvalo
-ms.openlocfilehash: fb25f03607ac6e9af46b47f54e830e0283dd1b0a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 25b9eb002b8748483d5b9458b7b5860a958b4bb3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="bottle-and-azure-table-storage-on-azure-with-python-tools-22-for-visual-studio"></a>Bottle a úložiště Azure Table v Azure s nástroji Python Tools 2.2 pro Visual Studio
-V tomto kurzu použijeme [Python Tools pro Visual Studio] vytvořit jednoduchou hlasovací webové aplikace pomocí jedné z ukázkových šablon PTVS. V tomto kurzu je také k dispozici [video](https://www.youtube.com/watch?v=GJXDGaEPy94).
+V tomto kurzu použijeme [Python Tools pro Visual Studio] dotazuje toocreate jednoduchou webovou aplikaci pomocí jednoho z ukázkových šablon PTVS hello. V tomto kurzu je také k dispozici [video](https://www.youtube.com/watch?v=GJXDGaEPy94).
 
-Hlasovací webové aplikace definuje abstrakci pro své úložiště, takže můžete snadno přepínat mezi různými typy úložiště (v paměti, Azure Table Storage, MongoDB).
+Hello hlasovací webové aplikace definuje abstrakci pro své úložiště, takže můžete snadno přepínat mezi různými typy úložiště (v paměti, Azure Table Storage, MongoDB).
 
-Jsme dozvíte, jak vytvořit účet úložiště Azure, jak nakonfigurovat webovou aplikaci k používání Azure Table Storage a jak publikovat webovou aplikaci do [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
+Jsme dozvíte, jak toocreate Azure Storage účet, jak tooconfigure hello toouse webové aplikace Azure Table Storage a jak toopublish hello webovou aplikaci příliš[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-Najdete v článku [středisku pro vývojáře Python] další články, které se týkají vývoj Azure App Service Web Apps s nástroji PTVS pomocí Bottle, Flask a Django webové rozhraní, se službami MongoDB, Azure Table Storage, MySQL a SQL Database. Ačkoli se tento článek zaměřuje na službu App Service, postup při vývoji služeb [Azure Cloud Services] je obdobný.
+V tématu hello [středisku pro vývojáře Python] další články, které se týkají vývoj Azure App Service Web Apps s nástroji PTVS pomocí Bottle, Flask a Django webové rozhraní, se službami MongoDB, Azure Table Storage, MySQL a SQL Database. Když tento článek se zaměřuje na služby App Service, hello postup je podobný jako při vývoji [Azure Cloud Services].
 
 ## <a name="prerequisites"></a>Požadavky
 * Visual Studio 2015
@@ -39,121 +39,121 @@ Najdete v článku [středisku pro vývojáře Python] další články, které 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
-## <a name="create-the-project"></a>Vytvoření projektu
-V této části vytvoříme projekt sady Visual Studio pomocí vzorové šablony. Jsme vytvoříte virtuální prostředí a nainstalujte požadované balíčky. Jsme budete pak spusťte aplikaci místně pomocí výchozí úložiště v paměti.
+## <a name="create-hello-project"></a>Vytvoření projektu hello
+V této části vytvoříme projekt sady Visual Studio pomocí vzorové šablony. Jsme vytvoříte virtuální prostředí a nainstalujte požadované balíčky. Potom budete spustíme aplikace hello místně pomocí hello výchozí v paměti úložiště.
 
 1. V sadě Visual Studio vyberte položku **Soubor**, **Nový projekt**.
-2. Šablony projektů z [Python Tools 2.2 pro Visual Studio – ukázky VSIX] jsou dostupné v části **Python**, **Ukázky**. Vyberte **hlasování Bottle webového projektu** a klikněte na tlačítko OK a vytvořte tak projekt.
+2. šablony projektů z hello Hello [Python Tools 2.2 pro Visual Studio – ukázky VSIX] jsou k dispozici v části **Python**, **ukázky**. Vyberte **hlasování Bottle webového projektu** a klikněte na tlačítko OK toocreate hello projektu.
    
      ![Dialogové okno Nový projekt](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleNewProject.png)
-3. Zobrazí se výzva k instalaci externích balíčků. Vyberte možnost **Instalovat do virtuálního prostředí**.
+3. Bude výzvami tooinstall externí balíčky. Vyberte možnost **Instalovat do virtuálního prostředí**.
    
      ![Dialogové okno Externí balíčky](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleExternalPackages.png)
-4. Jako základní překladač vyberte jazyk **Python 2.7** nebo **Python 3.4**.
+4. Vyberte **Python 2.7** nebo **Python 3.4** jako základní překladač hello.
    
      ![Dialogové okno Přidání virtuálního prostředí](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAddVirtualEnv.png)
-5. Stisknutím klávesy `F5` se ujistěte, zda aplikace pracuje. Ve výchozím nastavení používá aplikace jako úložiště v paměti, která nevyžaduje žádnou konfiguraci. Při zastavení webového serveru, dojde ke ztrátě všech dat.
+5. Potvrďte, že hello aplikace funguje tak, že stisknete `F5`. Ve výchozím nastavení používá aplikace hello jako úložiště v paměti, která nevyžaduje žádnou konfiguraci. Všechna data bude ztracena, jakmile je zastavena hello webový server.
 6. Klikněte na tlačítko **vytvořit ukázková hlasování**, klikněte na hlasování a Hlasujte.
    
      ![Webový prohlížeč](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleInMemoryBrowser.png)
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
-Chcete-li použít operace úložiště, potřebujete účet úložiště Azure. Pomocí následujícího postupu můžete vytvořit účet úložiště.
+operace úložiště toouse, potřebujete účet úložiště Azure. Pomocí následujícího postupu můžete vytvořit účet úložiště.
 
-1. Přihlaste se [portál Azure](https://portal.azure.com/).
-2. Klikněte na tlačítko **nový** ikonu na horní pravé portálu, pak klikněte na tlačítko **Data + úložiště** > **účet úložiště**.  Klikněte na tlačítko **vytvořit** tlačítko, pak zadejte jedinečný název účtu úložiště a vytvořte novou [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) pro ni.
+1. Přihlaste se k hello [portálu Azure](https://portal.azure.com/).
+2. Klikněte na tlačítko hello **nový** ikonu na hello horní pravé hello portál, pak klikněte na tlačítko **Data + úložiště** > **účet úložiště**.  Klikněte na tlačítko hello **vytvořit** tlačítko, pak zadejte účet úložiště hello jedinečný název a vytvořte novou [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) pro ni.
    
       ![Rychlé vytvoření](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png)
    
-    Po vytvoření účtu úložiště **oznámení** tlačítko bude flash zelená **úspěch** a okno účtu úložiště je otevřená a zobrazit tak, že patří do nové skupiny prostředků, který jste vytvořili.
-3. Klikněte **přístupové klíče** část v okně účtu úložiště. Poznamenejte si název účtu a key1.
+    Po vytvoření účtu úložiště hello hello **oznámení** tlačítko bude flash zelená **úspěch** a se otevře okno účtu úložiště hello tooshow patří toohello nový prostředek skupiny vytvořit.
+3. Klikněte na tlačítko hello **přístupové klíče** část v okně účtu úložiště hello. Poznamenejte si název účtu hello a key1.
    
       ![Klíče](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageKeys.png)
    
-    Potřebujeme bude tyto informace ke konfiguraci projektu v další části.
+    Potřebujeme bude tato informace tooconfigure projektu v další části hello.
 
-## <a name="configure-the-project"></a>Konfigurace projektu
-V této části nakonfigurujeme naší aplikaci, aby používala účet úložiště, který jsme právě vytvořili. Potom jsme budete místní spuštění aplikace.
+## <a name="configure-hello-project"></a>Konfigurace hello projektu
+V této části nakonfigurujeme naše aplikace toouse hello účet úložiště, který jsme právě vytvořili. Potom jsme budete místní spuštění aplikace hello.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení a vyberte **vlastnosti**. Klikněte na **ladění** kartě.
+1. V sadě Visual Studio, klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení a vyberte **vlastnosti**. Klikněte na hello **ladění** kartě.
    
      ![Nastavení pro ladění projektu](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleAzureTableStorageProjectDebugSettings.png)
-2. Nastavte hodnoty proměnných prostředí, které jsou požadované aplikací v **ladění serveru příkaz**, **prostředí**.
+2. Nastavení hello hodnot proměnných prostředí vyžaduje aplikace hello v **ladění serveru příkaz**, **prostředí**.
    
        REPOSITORY_NAME=azuretablestorage
        STORAGE_NAME=<storage account name>
        STORAGE_KEY=<primary access key>
    
-   Nastaví proměnné prostředí při jste **spustit ladění**. Pokud chcete, aby proměnné, které chcete být nastavený, pokud jste **spustit bez ladění**, nastavte stejné hodnoty v části **spustit příkaz serveru** také.
+   To bude nastavení proměnných prostředí hello když jste **spustit ladění**. Chcete-li hello proměnné toobe nastavený, pokud jste **spustit bez ladění**, sada hello stejné hodnoty v části **spustit příkaz serveru** také.
    
-   Alternativně můžete definovat proměnné prostředí pomocí ovládacího panelu Windows. Toto je lepší volbou, pokud se chcete vyhnout ukládání přihlašovacích údajů ve zdrojovém kódu / souboru projektu. Všimněte si, že budete muset restartovat Visual Studio pro nové hodnoty prostředí být k dispozici pro aplikaci.
-3. Kód, který implementuje úložiště Azure Table Storage je v **models/azuretablestorage.py**. Najdete v článku [dokumentace] Další informace o tom, jak používat služby Table z Pythonu.
-4. Spusťte aplikaci klávesou `F5`. Hlasování, které jsou vytvořeny pomocí **vytvořit ukázková hlasování** a data odeslaná při hlasování budou serializována v Azure Table Storage.
+   Alternativně můžete definovat proměnné prostředí pomocí ovládacích panelů Windows hello. Toto je lepší volbou, pokud chcete tooavoid ukládání přihlašovacích údajů ve zdrojovém kódu / souboru projektu. Všimněte si, že budete potřebovat toorestart Visual Studio pro hello nové prostředí hodnoty toobe k dispozici toohello aplikace.
+3. Hello kód, který implementuje úložiště Azure Table Storage hello je v **models/azuretablestorage.py**. V tématu hello [dokumentace] Další informace o tom, toouse služby Table z Pythonu.
+4. Spuštění aplikace hello s `F5`. Hlasování, které jsou vytvořeny pomocí **vytvořit ukázková hlasování** a hello data odeslaná při hlasování budou serializována v Azure Table Storage.
    
    > [!NOTE]
-   > Virtuální prostředí Python 2.7 může způsobit přerušení k výjimce v sadě Visual Studio.  Stiskněte klávesu `F5` Chcete-li pokračovat v načítání webového projektu.
+   > Hello virtuální prostředí Python 2.7 může způsobit přerušení k výjimce v sadě Visual Studio.  Stiskněte klávesu `F5` toocontinue načítání hello webového projektu.
    > 
    > 
-5. Vyhledejte **o** a ověřte, že je aplikace pomocí **Azure Table Storage** úložiště.
+5. Procházet toohello **o** tooverify stránky, které aplikace hello používá hello **Azure Table Storage** úložiště.
    
      ![Webový prohlížeč](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleAzureTableStorageAbout.png)
 
-## <a name="explore-the-azure-table-storage"></a>Prozkoumejte Azure Table Storage
-Je snadné zobrazení a úprava tabulek úložiště pomocí Průzkumníku cloudu v sadě Visual Studio. V této části použijeme v Průzkumníku serveru zobrazit obsah tabulek aplikace hlasování.
+## <a name="explore-hello-azure-table-storage"></a>Prozkoumejte hello Azure Table Storage
+Je snadno tooview a upravit tabulky úložiště pomocí Průzkumníku cloudu v sadě Visual Studio. V této části použijeme Průzkumníka serveru tooview hello obsahu tabulek aplikace hello hlasování.
 
 > [!NOTE]
-> To vyžaduje Microsoft Azure nástroje pro instalaci, které jsou k dispozici jako součást [Azure SDK for .NET].
+> To vyžaduje toobe nástroje Microsoft Azure nainstalovaná, které jsou k dispozici jako součást hello [Azure SDK for .NET].
 > 
 > 
 
 1. Otevřete **cloudu Explorer**. Rozbalte položku **účty úložiště**, váš účet úložiště, pak **tabulky**.
    
      ![Průzkumník cloudu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorer.png)
-2. Dvakrát klikněte na **hlasování** nebo **volby** tabulky k zobrazení obsahu tabulky v okně dokumentu a také přidat, odebrat nebo upravit entity.
+2. Dvakrát klikněte na hello **hlasování** nebo **volby** tabulky tooview hello obsah hello tabulky v okně dokumentu a také přidat, odebrat nebo upravit entity.
    
      ![Tabulky výsledků dotazu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorerTable.png)
 
-## <a name="publish-the-web-app-to-azure-app-service"></a>Publikování webové aplikace do služby Azure App Service
-Sada Azure .NET SDK poskytuje snadný způsob, jak nasadit webovou aplikaci do služby Azure App Service.
+## <a name="publish-hello-web-app-tooazure-app-service"></a>Publikování hello webové aplikace tooAzure služby App Service
+Hello .NET SDK služby Azure poskytuje snadno toodeploy tooAzure vaší webové aplikace služby App Service.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na uzel projektu a vyberte možnost **Publikovat**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na uzel projektu hello a vyberte **publikovat**.
    
      ![Dialogové okno Publikování webu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonPublishWebSiteDialog.png)
 2. Klikněte na položku **Microsoft Azure Web Apps**.
-3. Kliknutím na možnost **Nové** vytvořte novou webovou aplikaci.
-4. Vyplňte následující pole a klikněte na tlačítko **vytvořit**.
+3. Klikněte na **nový** toocreate novou webovou aplikaci.
+4. Vyplňte následující pole hello a klikněte na tlačítko **vytvořit**.
    
    * **Název webové aplikace**
    * **Plán služby App Service**
    * **Skupina prostředků**
    * **Oblast**
-   * Položku **Databázový server** ponechte nastavenou na možnost **Bez databáze**
+   * Nechte **databázový server** nastavit příliš**žádná databáze.**
 5. Přijměte veškerá ostatní výchozí nastavení a klikněte na možnost **Publikovat**.
-6. Automaticky se otevře webový prohlížeč s publikovanou webovou aplikací. Pokud přejdete o stránce, uvidíte, že používá **v paměti** úložiště, není **Azure Table Storage** úložiště.
+6. Webový prohlížeč se automaticky otevře toohello publikované webové aplikace. Pokud toohello o stránce, se zobrazí, že používá hello **v paměti** úložiště, není hello **Azure Table Storage** úložiště.
    
-   Je to způsobeno proměnné prostředí nejsou nastavte u instance webové aplikace v Azure App Service, takže používá výchozí hodnoty zadané v **settings.py**.
+   Je to způsobeno proměnné prostředí hello nejsou nastaveny na hello instanci webové aplikace v Azure App Service, takže používá hello výchozí hodnoty zadané v **settings.py**.
 
-## <a name="configure-the-web-apps-instance"></a>Konfigurace instance webové aplikace
-V této části nakonfigurujeme proměnných prostředí pro instanci webové aplikace.
+## <a name="configure-hello-web-apps-instance"></a>Konfigurace instance webové aplikace hello
+V této části nakonfigurujeme proměnných prostředí pro instanci webové aplikace hello.
 
-1. V [portálu Azure], otevřete okno webové aplikace kliknutím **Procházet** > **App Services** > název vaší webové aplikace.
+1. V [portálu Azure], otevřete okno hello webovou aplikaci kliknutím **Procházet** > **App Services** > název vaší webové aplikace.
 2. V okně vaší webové aplikace, klikněte na tlačítko **všechna nastavení**, pak klikněte na tlačítko **nastavení aplikace**.
-3. Přejděte dolů k položce **nastavení aplikace** tématu a nastavte hodnoty pro **úložiště\_název**, **úložiště\_název** a **úložiště\_klíč** jak je popsáno v **konfigurace projektu** část výše.
+3. Projděte dolů toohello **nastavení aplikace** tématu a nastavte hodnoty hello **úložiště\_název**, **úložiště\_název** a  **ÚLOŽIŠTĚ\_klíč** jak je popsáno v hello **konfigurovat hello projektu** část výše.
    
      ![Nastavení aplikace](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png)
-4. Klikněte na **Uložit**. Poté, co jste obdrží oznámení, že byly použity změny, klikněte na **Procházet** v okně hlavní webové aplikace.
-5. Měli byste vidět webové aplikace funguje podle očekávání, pomocí **Azure Table Storage** úložiště.
+4. Klikněte na **Uložit**. Poté, co jste přijali hello oznámení, že byly použity změny hello, klikněte na **Procházet** z hlavní okně hello webové aplikace.
+5. Měli byste vidět hello webové aplikace pracovní podle očekávání, pomocí hello **Azure Table Storage** úložiště.
    
    Blahopřejeme!
    
      ![Webový prohlížeč](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleAzureBrowser.png)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o nástrojích Python Tools pro Visual Studio, Bottle a Azure Table Storage na následujících odkazech.
+Použijte tyto odkazy toolearn Další informace o nástrojích Python Tools pro Visual Studio, Bottle a úložiště tabulek Azure.
 
 * [Dokumentace nástrojů Python Tools pro Visual Studio]
   * [Webové projekty]
@@ -162,16 +162,16 @@ Další informace o nástrojích Python Tools pro Visual Studio, Bottle a Azure 
 * [Bottle dokumentace]
 * [Azure Storage]
 * [Azure SDK pro Python]
-* [Jak používat služby úložiště Table z Pythonu]
+* [Jak tooUse hello služby úložiště Table z Pythonu]
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!--Link references-->
 [středisku pro vývojáře Python]: /develop/python/
 [Azure Cloud Services]: ../cloud-services/cloud-services-python-ptvs.md
 [dokumentace]:../cosmos-db/table-storage-how-to-use-python.md
-[Jak používat služby úložiště Table z Pythonu]:../cosmos-db/table-storage-how-to-use-python.md
+[Jak tooUse hello služby úložiště Table z Pythonu]:../cosmos-db/table-storage-how-to-use-python.md
 
 
 <!--External Link references-->

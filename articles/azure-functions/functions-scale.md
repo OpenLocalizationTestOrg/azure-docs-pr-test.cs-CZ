@@ -1,6 +1,6 @@
 ---
-title: "Azure plány využívání funkce a služby App Service | Microsoft Docs"
-description: "Pochopte, jak Azure Functions rozšiřuje podle potřeby vaší událostmi řízené zatížení."
+title: "plány aaaAzure využívání funkce a služby App Service | Microsoft Docs"
+description: "Pochopte, jak Azure Functions škáluje toomeet hello potřeb vašich zatížení založeného na událostech."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -17,93 +17,93 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70e77e09b2e2116153159167af61776398904a3c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3826915b93328635d9295efe90ecc421e6c56af2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-consumption-and-app-service-plans"></a>Azure plány využívání funkce a služby App Service 
 
 ## <a name="introduction"></a>Úvod
 
-Azure Functions můžete spustit ve dvou různých režimech: plánu spotřeby a plán služby Azure App Service. Plánu spotřeby automaticky přiděluje výpočetní výkon, když kód běží, horizontálně navýší kapacitu podle potřeby pro zpracování zatížení a potom škáluje, pokud kód není spuštěna. Ano nemusí platit pro nečinnosti virtuální počítače a nemusíte předem záložní kapacita. Tento článek se zaměřuje na plánu spotřeby. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Azure Functions můžete spustit ve dvou různých režimech: plánu spotřeby a plán služby Azure App Service. plánu spotřeby Hello automaticky přiděluje výpočetní výkon, pokud váš kód běží, horizontálně navýší kapacitu jako nezbytné toohandle zatížení a pak škáluje, pokud kód není spuštěna. Ano nemáte toopay nečinnosti virtuálních počítačů a nemáte dostatečnou kapacitu tooreserve předem. Tento článek se zaměřuje na plánu spotřeby hello. Podrobnosti o tom, jak funguje hello plán služby App Service najdete v tématu hello [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-Pokud se nevyznáte v Azure Functions, přečtěte si téma [přehled Azure Functions](functions-overview.md).
+Pokud se nevyznáte v Azure Functions, přečtěte si téma hello [přehled Azure Functions](functions-overview.md).
 
-Když vytvoříte aplikaci function app, je nutné nakonfigurovat plán hostování pro funkce, které obsahuje aplikaci. V obou režimech instanci *Azure Functions hostitele* provádí funkce. Typ plánu ovládacích prvků:
+Když vytvoříte aplikaci function app, je nutné nakonfigurovat plán hostování pro funkce hello aplikaci obsahuje. V obou režimech instanci hello *Azure Functions hostitele* provádí funkce hello. Typ Hello plán ovládacích prvků:
 
 * Jak jsou hostiteli instance škálovat na více systémů.
-* Prostředky, které jsou k dispozici na každém hostiteli.
+* Hello prostředky, které jsou k dispozici tooeach hostitele.
 
-V současné době je nutné vybrat typ plánu při vytváření aplikace funkce. Následně ho nelze změnit. 
+V současné době je nutné vybrat typ plánu hello během vytváření hello hello funkce aplikace. Následně ho nelze změnit. 
 
-Je možné škálovat mezi vrstvami na plán služby App Service. Azure Functions plánu spotřeby automaticky zpracovává všechny přidělení prostředků.
+Je možné škálovat mezi vrstvami na hello plán služby App Service. V plánu spotřeby hello Azure Functions automaticky zpracovává všechny přidělení prostředků.
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
-Pokud používáte plánu spotřeby, instance hostitele Azure Functions dynamicky přidat nebo odebrat závislosti na počtu příchozích událostí. Tento plán automaticky přizpůsobí a musíte platit za výpočetní prostředky jenom v případě, že funkce běží. V plánu spotřeby funkci můžete používat maximálně 10 minut. 
+Pokud používáte plánu spotřeby, instance hostitele Azure Functions hello dynamicky přidat nebo odebrat podle hello počet příchozích událostí. Tento plán automaticky přizpůsobí a musíte platit za výpočetní prostředky jenom v případě, že funkce běží. V plánu spotřeby funkci můžete používat maximálně 10 minut. 
 
 > [!NOTE]
-> Výchozí hodnota časového limitu pro funkce na plánu spotřeby je 5 minut. Hodnota je možné zvýšit na 10 minut pro aplikaci funkce Změna vlastnosti `functionTimeout` v [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+> Hello výchozí časový limit pro funkce na plánu spotřeby je 5 minut. Hello hodnota může být vyšší too10 minut hello funkce aplikace tak, že změníte vlastnost hello `functionTimeout` v [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 
-Fakturace vychází čas spuštění a využité a je agregovat přes všechny funkce v rámci funkce aplikace. Další informace najdete v tématu [Azure Functions stránce s cenami].
+Fakturace vychází čas spuštění a využité a je agregovat přes všechny funkce v rámci funkce aplikace. Další informace najdete v tématu hello [Azure Functions stránce s cenami].
 
-Spotřeba plán je výchozí a nabízí následující výhody:
+plán spotřeby Hello je výchozí hello a nabízí následující výhody hello:
 - Platí se pouze až nebudou spuštěny funkcí.
 - Automaticky škálovat, i během období vysoké zatížení.
 
 ## <a name="app-service-plan"></a>Plán služby App Service
 
-V plánu služby App Service vaše funkce aplikace běží na vyhrazených virtuálních počítačích na Basic, Standard a Premium SKU, podobně jako webové aplikace. Vyhrazených virtuálních počítačích jsou přiděleny aplikace služby App Service, což znamená, že na hostiteli funkce vždy běží.
+V App Service hello plánování, vaše aplikace funkce běží na vyhrazených virtuálních počítačích na Basic, Standard a Premium SKU, podobně jako tooWeb aplikace. Vyhrazených virtuálních počítačích jsou přidělené tooyour aplikace služby App Service, což znamená, že bude vždy spuštěn hello funkce hostitele.
 
-Vezměte v úvahu plán služby App Service v následujících případech:
+Vezměte v úvahu plán služby App Service v následujících případech hello:
 - Máte existující, nedostatečně virtuálních počítačů, které jsou již spuštěny jiné instance aplikace služby.
-- Funkce aplikací pro spuštění nepřetržitě nebo téměř nepřetržitě očekáváte.
-- Budete potřebovat další možnosti procesoru nebo paměti, než je zadán plánu spotřeby.
-- Budete muset spustit delší než maximální dobu spuštění povolena v plánu spotřeby.
+- Vaše aplikace toorun funkce předpokládáte nepřetržitě nebo téměř nepřetržitě.
+- Budete potřebovat další možnosti procesoru nebo paměti, než je zadán plán spotřeby hello.
+- Je nutné toorun delší než maximální dobu spuštění hello povolena v plánu spotřeby hello.
 
-Virtuální počítač oddělí ze velikost modulu runtime a paměti. V důsledku toho nebude platit víc než náklady na instanci virtuálního počítače, které můžete přidělit. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Virtuální počítač oddělí ze velikost modulu runtime a paměti. V důsledku toho nebude platit víc než hello náklady hello instance virtuálního počítače, které můžete přidělit. Podrobnosti o tom, jak funguje hello plán služby App Service najdete v tématu hello [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-Plán služby App Service můžete ručně škálovat tak, že přidáte další instance virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Také můžete škálovat a vybrat jiný plán služby App Service. Další informace najdete v tématu [škálování aplikace v Azure](../app-service-web/web-sites-scale.md). Pokud plánujete spouštět funkce jazyka JavaScript na plán služby App Service, měli byste vybrat plán, který má méně jádra. Další informace najdete v tématu [referenční dokumentace technologie JavaScript pro funkce](functions-reference-node.md#choose-single-core-app-service-plans).  
+Plán služby App Service můžete ručně škálovat tak, že přidáte další instance virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Také můžete škálovat a vybrat jiný plán služby App Service. Další informace najdete v tématu [škálování aplikace v Azure](../app-service-web/web-sites-scale.md). Pokud plánujete toorun funkce jazyka JavaScript na plán služby App Service, měli byste vybrat plán, který má méně jádra. Další informace najdete v tématu hello [referenční dokumentace technologie JavaScript pro funkce](functions-reference-node.md#choose-single-core-app-service-plans).  
 
-<!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
+<!-- Note: hello portal links toothis section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
 ###Always On
 
-Pokud spustíte na plán služby App Service, měli byste povolit **Always On** nastavení tak, aby vaše aplikace funkce běží správně. Na plán služby App Service bude přejděte functions runtime nečinnosti po několika minutách nečinnosti, takže pouze aktivace protokolu HTTP bude "probuzení" funkcí. Toto je podobná jak webové úlohy musí mít povolenou funkci Always On. 
+Pokud spustíte na plán služby App Service, měli byste povolit hello **Always On** nastavení tak, aby vaše aplikace funkce běží správně. Na plán služby App Service bude přejděte hello functions runtime nečinnosti po několika minutách nečinnosti, takže pouze aktivace protokolu HTTP bude "probuzení" funkcí. Toto je podobné toohow webové úlohy musí mít povolenou funkci Always On. 
 
-Always On je k dispozici pouze na plán služby App Service. V plánu spotřeby platformou automaticky aktivuje funkce aplikace.
+Always On je k dispozici pouze na plán služby App Service. V plánu spotřeby hello platformy automaticky aktivuje funkce aplikace.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Spotřeba plánu nebo plán služby App Service funkce aplikace vyžaduje účet služby Azure Storage, který podporuje úložiště Azure Blob, fronty a tabulky. Azure Functions interně používá Azure Storage pro operace, jako je například Správa aktivační události a protokolování spuštěních funkce. Některé účty úložiště nepodporují fronty a tabulky, jako je například účty pouze objekt blob úložiště (včetně úložiště premium) a účty úložiště pro obecné účely s replikací zónově redundantní úložiště. Tyto účty jsou filtrovány z **účet úložiště** okno při vytváření aplikaci funkce.
+Spotřeba plánu nebo plán služby App Service funkce aplikace vyžaduje účet služby Azure Storage, který podporuje úložiště Azure Blob, fronty a tabulky. Azure Functions interně používá Azure Storage pro operace, jako je například Správa aktivační události a protokolování spuštěních funkce. Některé účty úložiště nepodporují fronty a tabulky, jako je například účty pouze objekt blob úložiště (včetně úložiště premium) a účty úložiště pro obecné účely s replikací zónově redundantní úložiště. Tyto účty jsou filtrovány z hello **účet úložiště** okno při vytváření aplikaci funkce.
 
-Další informace o typech účtu úložiště najdete v tématu [Představení služby Azure Storage](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
+toolearn Další informace o typy účtů úložiště, najdete v části [Představení služby Azure Storage hello](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
 
-## <a name="how-the-consumption-plan-works"></a>Jak funguje s plánem spotřeba
+## <a name="how-hello-consumption-plan-works"></a>Jak funguje plánu spotřeby hello
 
-Plánu spotřeby automaticky přizpůsobí prostředků procesoru a paměti přidáním další instance funkce hostitele, na základě počtu událostí, které se jeho funkce aktivována. Každá instance hostitele funkce je omezený na 1,5 GB paměti.
+plánu spotřeby Hello automaticky přizpůsobí prostředků procesoru a paměti přidáním další instance hello funkce hostitele, na základě hello počtu událostí, které se jeho funkce aktivována. Každá instance hostitele funkce hello je omezená too1.5 GB paměti.
 
-Při spotřeby hostování plán, jsou uloženy soubory kódu funkce na Azure sdílených složek v účtu úložiště hlavní. Pokud odstraníte účet úložiště hlavní, tento obsah se odstraní a nelze jej obnovit.
+Při použití hello spotřeba hostování plán, jsou uloženy soubory kódu funkce v Azure sdílených složek v účtu úložiště hlavní hello. Pokud odstraníte účet úložiště hlavní hello, tento obsah se odstraní a nelze jej obnovit.
 
 > [!NOTE]
-> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění při zpracování nové objekty BLOB, pokud aplikaci funkce přešel nečinnosti. Po aplikaci funkce běží, objekty BLOB jsou zpracovávány okamžitě. Abyste se vyhnuli Tato počáteční prodleva, zvažte jednu z následujících možností:
+> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění tooa v zpracování nové objekty BLOB, je-li aplikaci funkce přešel nečinnosti. Po hello funkce aplikace běží, objekty BLOB jsou zpracovávány okamžitě. Tento počáteční tooavoid zpoždění, zvažte jednu hello následující možnosti:
 > - Plán služby App Service použijte s povolenou funkci Always On.
-> - Použijte jiný mechanismus pro aktivaci objektu blob zpracování, např. zprávu fronty, který obsahuje název objektu blob. Příklad, naleznete v části [vstupní frontě aktivační události s objektem blob vazby](functions-bindings-storage-blob.md#input-sample).
+> - Použijte jiný mechanismus tootrigger hello blob zpracování, např. zprávu fronty, který obsahuje název objektu blob hello. Příklad, naleznete v části [vstupní frontě aktivační události s objektem blob vazby](functions-bindings-storage-blob.md#input-sample).
 
 ### <a name="runtime-scaling"></a>Modul runtime škálování
 
-Azure Functions využívá komponenty s názvem *škálování řadiče* ke sledování frekvence událostí a určení, zda horizontální navýšení kapacity nebo snížit. Škálování řadiče pomocí heuristické metody pro každý typ aktivační události. Například pokud používáte aktivační procedury fronty Azure storage, škáluje na základě délka fronty a stáří nejstarší zprávy ve frontě.
+Azure Functions využívá komponenty s názvem hello *škálování řadič* toomonitor hello frekvence událostí a zjistěte, zda tooscale out nebo snížit. Hello škálování řadiče pomocí heuristické metody pro každý typ aktivační události. Například pokud používáte aktivační procedury fronty Azure storage, škáluje na základě délka fronty hello a stáří hello hello nejstarší fronty zpráv.
 
-Jednotka škálování je funkce aplikace. Když je funkce aplikace škálovat na více systémů, další prostředky jsou přiděleny spustit víc instancí služby Azure Functions hostitele. Naopak jako výpočetní, že se snižuje vyžádání, řadičem škálování odebere funkce hostitele instance. Počet instancí se nakonec měřítko nula. Pokud žádná funkce běží v rámci funkce aplikace.
+Hello jednotka škálování je funkce aplikace hello. Při aplikaci funkce hello je škálovat na více systémů, další prostředky jsou přidělené toorun více instancí hello Azure Functions hostitele. Naopak jako výpočetní, že se snižuje vyžádání, hello škálování řadiče odebere funkce hostitele instance. Hello počet instancí se nakonec měřítko toozero při žádné funkce běží v rámci funkce aplikace.
 
 ![Škálování řadič sledování událostí a vytváření instancí](./media/functions-scale/central-listener.png)
 
 ### <a name="billing-model"></a>Model fakturace
 
-Fakturace plánu spotřeby je podrobně popsán na [Azure Functions stránce s cenami]. Využití počty jenom čas, kód funkce běží a je agregován na úrovni aplikace funkce. Tady jsou jednotky pro fakturaci: 
+Fakturace plánu spotřeby hello je podrobně popsaná v hello [Azure Functions stránce s cenami]. Využití počty pouze hello čas kód funkce běží a je agregován na úrovni aplikace hello funkce. jednotky pro fakturaci se Hello následující: 
 * **Spotřeba prostředků v GB sekundách (v GB-s)**. Vypočtená jako kombinace velikost paměti a dobu spuštění pro všechny funkce v rámci funkce aplikace. 
-* **Spuštěních**. Počítají pokaždé, když provedení funkce v reakci na událost, spuštěnou vazbu.
+* **Spuštěních**. Počítají pokaždé, když funkce se spouštějí v odpovědi tooan události aktivované vazbu.
 
 [Azure Functions stránce s cenami]: https://azure.microsoft.com/pricing/details/functions

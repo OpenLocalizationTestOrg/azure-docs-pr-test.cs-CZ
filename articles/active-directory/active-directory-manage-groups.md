@@ -1,6 +1,6 @@
 ---
-title: "Použití skupin pro správu přístupu k prostředkům v Azure Active Directory | Microsoft Docs"
-description: "Postup používání skupin v Azure Active Directory můžete spravovat přístup uživatelů k místní a cloudové aplikace a prostředky."
+title: "aaaUse skupiny toomanage tooresources přístup v Azure Active Directory | Microsoft Docs"
+description: "Jak toouse skupin v Azure Active Directory toomanage uživatel přistupovat k tooon místní a cloudové aplikace a prostředky."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 876a356c8095505432e9346721f35c7943819e9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Spravovat přístup k prostředkům pomocí skupin Azure Active Directory
-Azure Active Directory (Azure AD) je komplexní identit a přístupu řešení správy, poskytuje výkonnou sadu funkcí, které chcete spravovat přístup k místní a cloudové aplikace a prostředky, včetně služeb Microsoft online services třeba Office 365 a World aplikací Microsoft SaaS. Tento článek obsahuje přehled, ale pokud chcete spustit pomocí služby Azure AD seskupení právě teď, postupujte podle pokynů v [Správa skupin zabezpečení ve službě Azure AD](active-directory-accessmanagement-manage-groups.md). Pokud chcete zobrazit, jak můžete použít PowerShell ke správě skupin ve službě Azure Active directory si můžete přečíst více v [rutiny služby Azure Active Directory pro správu skupin](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
+# <a name="manage-access-tooresources-with-azure-active-directory-groups"></a>Spravovat přístup tooresources pomocí skupin Azure Active Directory
+Azure Active Directory (Azure AD) je komplexní identit a přístupu řešení správy, poskytuje výkonnou sadu funkcí toomanage přístup tooon místní a cloudové aplikace a prostředky, včetně služeb Microsoft online services třeba Office 365 a celou řadu aplikací Microsoft SaaS. Tento článek obsahuje přehled, ale pokud chcete teď skupiny toostart pomocí služby Azure AD, postupujte podle pokynů hello v [Správa skupin zabezpečení ve službě Azure AD](active-directory-accessmanagement-manage-groups.md). Pokud chcete, aby toosee použití prostředí PowerShell toomanage skupiny ve službě Azure Active directory si můžete přečíst více v [rutiny služby Azure Active Directory pro správu skupin](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 > [!NOTE]
-> Chcete-li používat Azure Active Directory, potřebujete účet Azure. Pokud účet nemáte, můžete [si zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
+> toouse Azure Active Directory, potřebujete účet Azure. Pokud účet nemáte, můžete [si zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 >
 >
 
-V rámci Azure AD mezi hlavní funkce je schopnost spravovat přístup k prostředkům. Tyto prostředky můžou být součástí adresáři, jako v případě oprávnění ke správě objektů pomocí rolí v adresáři nebo prostředky, které jsou externí vzhledem k adresáři, jako je například aplikace SaaS, služby Azure a webů služby SharePoint nebo místních prostředků. Existují čtyři způsoby, které uživatele lze přiřadit přístupová práva k prostředku:
+V rámci Azure AD je jednou z hlavních funkcí hello hello možnost toomanage přístup tooresources. Tyto prostředky můžou být součástí hello adresář, jako v případě hello oprávnění toomanage objektů pomocí rolí v adresáři hello nebo prostředky, které jsou externí toohello adresáři, například aplikace SaaS, služby Azure a weby Sharepointu nebo místní prostředky. Existují čtyři způsoby, které uživatele lze přiřadit přístup práva tooa prostředků:
 
 1. Přímé přiřazení
 
-    Vlastník prostředku může být přímo k prostředku přiřazena uživatelům.
+    Uživatelé se dají přiřadit přímo tooa prostředků hello vlastník prostředku.
 2. Členství ve skupině
 
-    Skupinu můžete přiřadit k prostředku vlastníkem prostředku a díky tomu, udělení členové skupiny přístup k prostředku. Členství ve skupině potom můžete spravovat vlastníkem skupiny. Vlastník prostředku deleguje prakticky oprávnění přiřazovat uživatele k jeho prostředku vlastníkovi skupiny.
+    Skupinu lze přiřadit tooa prostředků vlastníkem prostředku hello a díky tomu, udělení hello členové skupiny přístup toohello prostředku. Členství ve skupině hello potom můžete spravovat hello vlastník skupiny hello. Delegáti vlastníka prostředku hello prakticky hello oprávnění tooassign uživatelé tootheir toohello vlastník prostředku skupiny hello.
 3. Založený na pravidlech
 
-    Vlastník prostředku může použít pravidlo k express, kteří uživatelé by se měla přiřadit přístup k prostředku. Výsledek pravidlo závisí na atributy používané v tomto pravidle a jejich hodnoty pro konkrétní uživatele, a díky tomu vlastník prostředku deleguje efektivně právo spravovat přístup k jejich prostředek pro autoritativní zdroj pro atributy, které se používají v Toto pravidlo. Vlastník prostředku stále spravuje pravidlo samotné a určí, které atributy a hodnoty poskytovat přístup k jejich prostředkům.
+    vlastník prostředku Hello můžete použít pravidlo tooexpress, kteří uživatelé by se měla přiřadit přístup tooa prostředků. výsledek Hello hello pravidlo závisí na atributy hello používané v tomto pravidle a jejich hodnoty pro konkrétní uživatele, a díky tomu vlastník prostředku hello efektivně deleguje hello správné toomanage přístup tootheir prostředků toohello autoritativní zdroj pro hello atributy, které se používají v pravidle hello. vlastník prostředku Hello stále spravuje hello pravidlo samotné a určí, které atributy a hodnoty poskytnout přístup tootheir prostředků.
 4. Externí autority
 
-    Přístup k prostředku je odvozený z externího zdroje; například skupina, která se synchronizují z autoritativní zdroj například místního adresáře nebo SaaS aplikace například WorkDay. Vlastník prostředku přiřadí skupinu a poskytne přístup k prostředku a externí zdroj spravuje členy skupiny.
+    Hello přístup tooa prostředků je odvozený z externího zdroje; například skupina, která se synchronizují z autoritativní zdroj například místního adresáře nebo SaaS aplikace například WorkDay. vlastník prostředku Hello přiřadí hello skupiny tooprovide přístup toohello prostředků a externí zdroj hello spravuje hello členy skupiny hello.
 
    ![Přehled diagram správy přístupu](./media/active-directory-access-management-groups/access-management-overview.png)
 
 ## <a name="watch-a-video-that-explains-access-management"></a>Přehrát video, které popisuje správu přístupu
 Podívejte se na krátké video, které vysvětluje více o toto:
 
-**Azure AD: Úvod do dynamické členství ve skupinách**
+**Azure AD: Úvod toodynamic členství ve skupinách**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
 >
 >
 
 ## <a name="how-does-access-management-in-azure-active-directory-work"></a>Jak Správa v Azure Active Directory pracovní přístupu?
-V centru Azure AD je řešení pro správu přístupu skupiny zabezpečení. Pomocí skupiny zabezpečení ke správě přístupu k prostředkům je dobře známé zlepší, která umožňuje flexibilní a snadno srozumitelné způsob, jak poskytnout přístup k prostředku pro zamýšlené skupiny uživatelů. Vlastník prostředku (nebo správce adresáře) můžete přiřadit skupiny k poskytování určité přístupu k prostředkům, které vlastní. Členové skupiny se poskytnout přístup a vlastníka prostředku můžete udělit oprávnění ke správě seznamu členů skupiny jinému uživateli, jako je například oddělení správce nebo správce technické podpory.
+V hello center hello řešení pro správu přístupu k Azure AD je skupina zabezpečení hello. Použití zabezpečení skupiny toomanage přístup tooresources je dobře známé zlepší, která umožňuje flexibilní a snadno srozumitelné způsob tooprovide přístup tooa prostředku pro hello určený skupinu uživatelů. vlastník prostředku Hello (nebo hello správce adresáře hello) můžete přiřadit skupiny tooprovide určitých přístup správné toohello prostředků, které vlastní. Hello členy skupiny hello bude poskytnuta hello přístup a vlastník prostředku hello můžete delegovat hello správné toomanage hello seznamu členy skupiny toosomeone else, jako je například Správce oddělení nebo technickou podporu správce.
 
 ![Diagram správy přístupu služby Azure Active Directory](./media/active-directory-access-management-groups/active-directory-access-management-works.png)
 
-Vlastník skupiny, můžete zpřístupnit této skupiny pro samoobslužné služby požadavky. Tím, koncový uživatel může hledat a najít skupinu a podání žádosti o připojení, efektivně vyhledávání oprávnění pro přístup k prostředkům, které jsou spravované prostřednictvím skupiny. Vlastník skupiny můžete nastavit skupiny tak, aby požadavků spojení budou automaticky schváleny nebo vyžadovat schválení vlastníka skupiny. Když uživatel odešle žádost o připojení ke skupině, žádost o připojení se předají na vlastníky skupiny. Pokud jeden z vlastníci schválí požadavek, je upozornění žádajícího uživatele a uživatel je připojený ke skupině. Pokud jeden z vlastníci odmítne požadavek, je žádajícího uživatele oznámení, ale není připojen ke skupině.
+Hello vlastník skupiny, můžete zpřístupnit této skupiny pro samoobslužné služby požadavky. Při tom koncový uživatel můžete vyhledat a najít skupinu hello a zkontrolujte toojoin požadavek efektivně vyhledávání oprávnění tooaccess hello prostředky, které jsou spravované prostřednictvím hello skupiny. Vlastník Hello hello skupiny můžete nastavit skupiny hello tak, aby požadavků spojení budou automaticky schváleny nebo vyžadovat schválení vlastníka hello hello skupiny. Když uživatel provede požadavek toojoin skupinu, žádost o připojení hello se předají toohello vlastníky hello skupiny. Pokud jeden z hello vlastníky schválí požadavek hello, je upozornění hello žádajícího uživatele a uživatel hello je připojený k toohello skupiny. Pokud jeden z hello vlastníky odmítne žádost hello, hello žádajícího uživatele upozornění, ale není připojen toohello skupiny.
 
 ## <a name="getting-started-with-access-management"></a>Začínáme se správou přístupu
-Jste připravení začít? Vyzkoušejte si základní úlohy, které můžete provést pomocí skupin Azure AD. Použijte tyto možnosti zajistit specializované přístup na různé skupiny uživatelů pro různé prostředky ve vaší organizaci. Seznam základní první kroky jsou uvedeny níže.
+Připraveno tooget spustit? Vyzkoušejte si hello základní úlohy, které můžete provést pomocí skupin Azure AD. Pomocí těchto možností tooprovide specializuje přístup toodifferent skupiny uživatelů pro různé prostředky ve vaší organizaci. Seznam základní první kroky jsou uvedeny níže.
 
-* [Vytvoření jednoduché pravidlo konfigurace dynamické členství ve skupině](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
-* [Pomocí skupiny pro správu přístupu k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md)
+* [Vytvoření jednoduché pravidlo tooconfigure dynamické členství ve skupinách pro skupinu](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
+* [Pomocí skupiny toomanage přístup k tooSaaS aplikacím](active-directory-accessmanagement-group-saasapps.md)
 * [Zpřístupnění skupiny pro koncového uživatele samoobslužné služby](active-directory-accessmanagement-self-service-group-management.md)
-* [Synchronizuje se místní skupině do Azure pomocí Azure AD Connect](active-directory-aadconnect.md)
+* [Synchronizuje se místní skupiny tooAzure pomocí služby Azure AD Connect](active-directory-aadconnect.md)
 * [Správa vlastníků pro skupinu](active-directory-accessmanagement-managing-group-owners.md)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když porozuměl základní informace o správu přístupu tady jsou některé další rozšířené možnosti dostupné v Azure Active Directory pro správu přístupu k aplikacím a prostředkům.
+Teď, když porozuměl hello základy správu přístupu tady jsou některé další rozšířené možnosti dostupné v Azure Active Directory pro správu přístup k tooyour aplikacím a prostředkům.
 
-* [Vytváření rozšířených pravidel pomocí atributů](active-directory-accessmanagement-groups-with-advanced-rules.md)
+* [Toocreate advanced pravidel pomocí atributů.](active-directory-accessmanagement-groups-with-advanced-rules.md)
 * [Správa skupin zabezpečení ve službě Azure AD](active-directory-accessmanagement-manage-groups.md)
 * [Nastavení vyhrazené skupiny ve službě Azure AD](active-directory-accessmanagement-dedicated-groups.md)
 * [Referenční dokumentace rozhraní Graph API pro skupiny](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)

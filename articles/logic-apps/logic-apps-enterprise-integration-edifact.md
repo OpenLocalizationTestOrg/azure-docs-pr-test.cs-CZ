@@ -1,5 +1,5 @@
 ---
-title: "EDIFACT zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs"
+title: "aaaEDIFACT zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs"
 description: "Exchange EDIFACT zprávy ve formátu EDI B2B enterprise integraci s Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,86 +15,86 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 496fadcda58de2d36459202b839b0a63c9e5857c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Zprávy Exchange EDIFACT pro podnikové integrace s logic apps
 
-Před výměnou zpráv EDIFACT pro Azure Logic Apps, musíte vytvořit smlouvy EDIFACT a uložení této smlouvy ve vašem účtu integrace. Tady jsou kroky pro vytvoření EDIFACT smlouvu.
+Před výměnou zpráv EDIFACT pro Azure Logic Apps, musíte vytvořit smlouvy EDIFACT a uložení této smlouvy ve vašem účtu integrace. Tady jsou hello postup, jak toocreate EDIFACT smlouvu.
 
 > [!NOTE]
-> Tato stránka se vztahuje na funkce EDIFACT pro Azure Logic Apps. Další informace najdete v tématu [X12](logic-apps-enterprise-integration-x12.md).
+> Tato stránka popisuje hello EDIFACT funkce pro Azure Logic Apps. Další informace najdete v tématu [X12](logic-apps-enterprise-integration-x12.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je položky, které budete potřebovat:
+Tady je hello položky, které budete potřebovat:
 
 * [Integrace účet](../logic-apps/logic-apps-enterprise-integration-accounts.md) který již má definovaný a přidružené k předplatnému Azure  
 * Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) , jsou již definováni ve vašem účtu integrace
 
 > [!NOTE]
-> Když vytvoříte smlouvu, obsah zprávy, které můžete přijímat nebo odesílat do a z partnera musí odpovídat typ smlouvy.
+> Když vytvoříte smlouvy, hello obsah v hello zprávy, které můžete přijímat nebo odesílat tooand z hello partnera musí odpovídat typ smlouvy hello.
 
 Po jste [vytvoření účtu integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md) a [přidat partnery](logic-apps-enterprise-integration-partners.md), EDIFACT smlouvu můžete vytvořit pomocí následujících kroků.
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1.  Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal"). V nabídce vlevo vyberte **další služby**.
+1.  Přihlaste se toohello [portál Azure](http://portal.azure.com "portál Azure"). Hello levé nabídce vyberte **další služby**.
 
     > [!TIP]
-    > Pokud nevidíte **další služby**, možná budete muset nejdřív rozbalte nabídku. V horní nabídce sbalené, vyberte **nabídky Zobrazit**.
+    > Pokud nevidíte **další služby**, může mít tooexpand hello nabídky nejdřív. V horní části hello hello sbalené nabídky, vyberte **nabídky Zobrazit**.
 
     ![V levé nabídce vyberte "Další služby"](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. Do vyhledávacího pole zadejte "integrace" filtru. V seznamu výsledků vyberte **účty pro integraci**.
+2. Hello vyhledávacího pole zadejte "integrace" filtru. V seznamu výsledků hello vyberte **účty pro integraci**.
 
     ![Filtrovat podle "integraci", vyberte "Účty pro integraci"](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
 
-3. V **účty pro integraci** okno, které se otevře, vyberte účet integrace, kde chcete vytvořit smlouvu.
+3. V hello **účty pro integraci** okno, které se otevře, vyberte hello integrace účet místo toocreate hello smlouvy.
 Pokud nevidíte žádné účty pro integraci, [vytvořit první](../logic-apps/logic-apps-enterprise-integration-accounts.md "všechny informace o účtech integrace").  
 
-    ![Vyberte účet integrace místo pro vytvoření této smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+    ![Vyberte účet integrace kde toocreate hello smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Vyberte **smlouvy** dlaždici. Pokud nemáte dlaždici smlouvy, přidejte nejprve dlaždici.   
+4. Zvolte hello **smlouvy** dlaždici. Pokud nemáte dlaždici smlouvy, přidejte nejprve hello dlaždice.   
 
     ![Vyberte že dlaždici "Smlouvy"](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. V okně smlouvy, které se otevře, zvolte **přidat**.
+5. V okně hello smlouvy, které se otevře, zvolte **přidat**.
 
     ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. V části **přidat**, zadejte **název** pro vaše smlouvy. Pro **typ smlouvy**, vyberte **EDIFACT**. Vyberte **hostitele partnera**, **identitu hostitele**, **hosta partnera**, a **hosta Identity** pro vaše smlouvy.
+6. V části **přidat**, zadejte **název** pro vaše smlouvy. Pro **typ smlouvy**, vyberte **EDIFACT**. Vyberte hello **hostitele partnera**, **identitu hostitele**, **hosta partnera**, a **hosta Identity** pro vaše smlouvy.
 
     ![Zadejte podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
     | Vlastnost | Popis |
     | --- | --- |
-    | Name (Název) |Název smlouvy |
+    | Name (Název) |Název smlouvy hello |
     | Typ smlouvy | Musí být EDIFACT |
-    | Hostitele partnera |Smlouvu musí hostitelské i hostované partnera. Partner hostitele představuje organizace, která nakonfiguruje smlouvu. |
-    | Identitu hostitele |Identifikátor pro hostitele partnera |
-    | Partner hosta |Smlouvu musí hostitelské i hostované partnera. Partner hosta představuje organizace, která je spolupráci s partnery hostitele. |
-    | Identity hosta |Identifikátor pro partnera hosta |
-    | Získat nastavení |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
-    | Odeslat nastavení |Tyto vlastnosti se vztahují na všechny zprávy odeslané smlouvu. |
+    | Hostitele partnera |Smlouvu musí hostitelské i hostované partnera. Hello hostitele partnera představuje hello organizace, který konfiguruje hello smlouvy. |
+    | Identitu hostitele |Identifikátor pro hostitele partnera hello |
+    | Partner hosta |Smlouvu musí hostitelské i hostované partnera. Hello hosta partnera představuje hello organizace, která je spolupráci s hello hostitele partnera. |
+    | Identity hosta |Identifikátor pro partnera hosta hello |
+    | Získat nastavení |Tyto vlastnosti použít tooall zprávy přijaté službou smlouvu. |
+    | Odeslat nastavení |Tyto vlastnosti použít tooall zprávy odeslané smlouvu. |
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Nakonfigurujte, jak vaše smlouvy popisovače přijatých zpráv
 
-Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od svého partnera prostřednictvím této smlouvy.
+Teď, když jste nastavili hello smlouvy vlastnosti, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od svého partnera prostřednictvím této smlouvy.
 
 1.  V části **přidat**, vyberte **přijímat nastavení**.
-Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se partnera, výměny zpráv s vámi. Vlastnost popis najdete v tématu tabulky v této části.
+Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se hello partnera, který výměny zpráv s vámi. Vlastnost popis najdete v tématu hello tabulky v této části.
 
     **Získat nastavení** jsou uspořádány do těchto oddílů: identifikátory, potvrzení, schémata, řízení čísla, ověřování a interní nastavení.
 
     ![Konfigurace "Obdrží nastavení"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-2. Jakmile jste hotovi, přesvědčte se, uložte nastavení tak, že zvolíte **OK**.
+2. Jakmile jste hotovi, ujistěte se, že toosave nastavení tak, že zvolíte **OK**.
 
-Nyní je připraven pro zpracování příchozích zpráv, které v souladu s vámi vybrané nastavení vaše smlouvy.
+Nyní je vaše smlouvy připravené toohandle příchozí zprávy, které odpovídají tooyour vybraná nastavení.
 
 ### <a name="identifiers"></a>Identifikátory
 
@@ -107,67 +107,67 @@ Nyní je připraven pro zpracování příchozích zpráv, které v souladu s v�
 
 | Vlastnost | Popis |
 | --- | --- |
-| Přijetí zprávy (CONTRL) |Zaškrtnutím tohoto políčka se vraťte do odesílatele výměnu technické potvrzení (CONTRL). Potvrzení se odesílají do odesílatele výměnu na základě nastavení Odeslat smlouvy. |
-| Potvrzení (CONTRL) |Zaškrtněte toto políčko vrátit funkční potvrzení (CONTRL) pro výměnu odesílatel potvrzení posílá odesílatel výměnu na základě nastavení Odeslat smlouvy. |
+| Přijetí zprávy (CONTRL) |Zaškrtněte toto políčko tooreturn technické toohello výměnu odesílatele potvrzení (CONTRL). potvrzení Hello se odesílají odesílatele výměnu toohello podle hello nastavení pro odesílání pro smlouvu hello. |
+| Potvrzení (CONTRL) |Zaškrtněte toto políčko tooreturn funkční (CONTRL) potvrzení toohello výměnu odesílatele hello potvrzení je odeslána odesílatele výměnu toohello podle hello nastavení pro odesílání pro smlouvu hello. |
 
 ### <a name="schemas"></a>Schémata
 
 | Vlastnost | Popis |
 | --- | --- |
 | UNH2.1 (TYP) |Vyberte typ sadu transakce. |
-| UNH2.2 (VERZE) |Zadejte číslo verze zprávy. (Minimální, jeden znak, maximum, tři znaky). |
-| UNH2.3 (VERZE) |Zadejte číslo verze zprávy. (Minimální, jeden znak, maximum, tři znaky). |
-| UNH2.5 (PŘIDRUŽENÉ PŘIŘAZENÉ KÓD) |Zadejte kód přiřazené. (Maximální šest znaků. Musí být alfanumerické znaky). |
+| UNH2.2 (VERZE) |Zadejte číslo verze zprávy hello. (Minimální, jeden znak, maximum, tři znaky). |
+| UNH2.3 (VERZE) |Zadejte číslo verze zprávy hello. (Minimální, jeden znak, maximum, tři znaky). |
+| UNH2.5 (PŘIDRUŽENÉ PŘIŘAZENÉ KÓD) |Zadejte kód hello přiřazen. (Maximální šest znaků. Musí být alfanumerické znaky). |
 | UNG2.1 (ID ODESÍLATELE APLIKACE) |Zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 35 znaků. |
 | UNG2.2 (KVALIFIKÁTOR APLIKACE ODESÍLATELE KÓDU) |Zadejte hodnotu alfanumerické delší než 4 znaky. |
-| SCHÉMA |Vyberte dříve odeslaný schéma, které chcete použít z vašeho účtu přidružené integrace. |
+| SCHÉMA |Vyberte hello předtím nahrála schématu chcete toouse z vašeho účtu přidružené integrace. |
 
 ### <a name="control-numbers"></a>Ovládací prvek čísla
 | Vlastnost | Popis |
 | --- | --- |
-| Zakáže duplikáty Interchange číslo ovládacího prvku |Chcete-li blokovat duplicitní mimoúrovňové křižovatky, vyberte tuto vlastnost. Pokud, EDIFACT dekódovat akce zkontroluje, že číslo ovládací prvek výměnu (UNB5) pro výměnu přijaté neodpovídá číslo řízení dříve zpracované výměnu. Pokud je zjištěna shoda, nebude zpracován výměnu. |
-| Kontrolovat duplicitní UNB5 každých (dny) |Pokud jste se rozhodli zakázat duplicitní výměnu řízení čísla, můžete zadat počet dnů, kdy se mají provést kontrolu tím, že na odpovídající hodnotu pro toto nastavení. |
-| Zakázat duplicity kontrolních čísel skupiny |Pokud chcete blokovat mimoúrovňové křižovatky s duplicitní skupině řízení čísla (UNG5), vyberte tuto vlastnost. |
-| Zakázat duplicity kontrolních čísel sad transakcí |Pokud chcete blokovat mimoúrovňové křižovatky se duplicitní transakce sadu řízení čísla (UNH1), vyberte tuto vlastnost. |
-| Číslo EDIFACT potvrzení Ovládací prvek |Chcete-li určit čísla transakcí sadu referenční dokumentace pro použití v potvrzení, zadejte hodnotu pro předponu, rozsah čísel odkaz a příponu. |
+| Zakáže duplikáty Interchange číslo ovládacího prvku |tooblock duplicitní mimoúrovňové křižovatky, vyberte tuto vlastnost. Pokud vybraná, hello EDIFACT dekódovat akce ověří, že hello výměnu ovládací prvek číslo (UNB5) pro výměnu hello přijatých neodpovídá číslo řízení dříve zpracované výměnu. Pokud je zjištěna shoda, nebude zpracován hello výměnu. |
+| Kontrolovat duplicitní UNB5 každých (dny) |Pokud jste zvolili toodisallow duplicitní výměnu řízení čísla, můžete zadat hello počet dní, když tooperform hello zkontrolujte tím, že hello odpovídající hodnotu pro toto nastavení. |
+| Zakázat duplicity kontrolních čísel skupiny |tooblock interchanges s duplicitní skupině řízení čísla (UNG5), vyberte tuto vlastnost. |
+| Zakázat duplicity kontrolních čísel sad transakcí |tooblock interchanges se duplicitní transakce sadu řízení čísla (UNH1), vyberte tuto vlastnost. |
+| Číslo EDIFACT potvrzení Ovládací prvek |transakce hello toodesignate nastaven čísla referenční dokumentace pro použití v potvrzení, zadejte hodnotu pro předponu hello, rozsah čísel odkaz a příponu. |
 
 ### <a name="validations"></a>Ověření
 
-Po dokončení každý řádek ověření jiné automaticky přidá. Pokud nezadáte všechna pravidla, ověření používá "Výchozího" řádku.
+Po dokončení každý řádek ověření jiné automaticky přidá. Pokud nezadáte všechna pravidla, ověření používá řádek "Výchozí" hello.
 
 | Vlastnost | Popis |
 | --- | --- |
-| Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověření EDI |Provedení ověření EDI pro datové typy podle definice schématu EDI vlastnosti, omezení délky, prázdný datové prvky a koncové oddělovače. |
-| Rozšířené ověření |Pokud datový typ není EDI, ověření se na element požadavek na data a povoleny opakování, výčty a data element délka ověření (min/max). |
+| Typ zprávy |Vyberte typ zprávy EDI hello. |
+| Ověření EDI |Proveďte ověření EDI na typy dat definované schéma hello EDI vlastnosti, omezení délky, prázdný datové prvky a koncové oddělovače. |
+| Rozšířené ověření |Pokud není hello datový typ EDI, ověření je na hello data element požadavku a povoleny opakování, výčty a data element délka ověření (min/max). |
 | Povolit úvodní nebo koncové nuly |Zachování všechny další počáteční nebo koncové nula a místo znaků. Nevysunujte tyto znaky. |
 | Trim – úvodní nebo koncové nuly |Odeberte úvodní a koncové nuly a místo znaků. |
-| Koncové oddělovače zásad |Generovat koncové oddělovače. <p>Vyberte **není povoleno** zakázat koncové oddělovače a oddělovače v přijatých výměnu. Pokud výměnu koncové oddělovače a oddělovačů, výměnu je deklarovaná není platný. <p>Vyberte **volitelné** tak, aby přijímal mimoúrovňové křižovatky s nebo bez koncové oddělovače a oddělovačů. <p>Vyberte **povinné** při přijaté výměnu musí mít koncové oddělovače a oddělovačů. |
+| Koncové oddělovače zásad |Generovat koncové oddělovače. <p>Vyberte **není povoleno** tooprohibit koncové oddělovače a oddělovače v hello přijatých výměnu. Pokud hello výměnu koncové oddělovače a oddělovačů, výměnu hello je deklarovaná není platný. <p>Vyberte **volitelné** tooaccept interchanges s nebo bez koncové oddělovače a oddělovačů. <p>Vyberte **povinné** při hello přijatých výměnu musí mít koncové oddělovače a oddělovačů. |
 
 ### <a name="internal-settings"></a>Vnitřní nastavení
 
 | Vlastnost | Popis |
 | --- | --- |
-| Pokud jsou povolené koncové oddělovače, vytvořit prázdné značky XML |Výběrem tohoto zaškrtávacího políčka tak, aby měl odesílatel výměnu obsahovat prázdný značky XML pro koncové oddělovače. |
-| Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci, nastavte v výměnu do samostatného dokumentu XML s použitím příslušné obálky do sady transakce. Pozastavte pouze transakce sady, které nesplní ověření. |
-| Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě|Analyzuje každou transakci, nastavte v výměnu do samostatného dokumentu XML s použitím příslušné obálku. Celý výměnu pozastavte, pokud selže ověření se jeden nebo více sad transakce v výměnu. | 
-| Zachovat výměnu – pozastavení sady transakce při chybě |Výměnu zůstanou zachovány, vytvoří dokument XML pro celý dávkové výměnu. Pozastavte pouze transakce sady, které selže ověření, můžete nadále zpracovat všechny ostatní sady transakce. |
-| Zachovat výměnu – pozastavit výměnu při chybě |Výměnu zůstanou zachovány, vytvoří dokument XML pro celý dávkové výměnu. Celý výměnu pozastavte, pokud selže ověření se jeden nebo více sad transakce v výměnu. |
+| Pokud jsou povolené koncové oddělovače, vytvořit prázdné značky XML |Vyberte toto políčko toohave hello výměnu odesílatele zahrnout prázdný značky XML pro koncové oddělovače. |
+| Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci, nastavte v výměnu do samostatného dokumentu XML s použitím hello obálek toohello transakce sady. Pozastavte pouze transakce sady hello, které nesplní ověření. |
+| Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě|Analyzuje každou transakci, nastavte v výměnu do samostatného dokumentu XML s použitím příslušné obálky hello. Pozastavte celý výměnu hello, pokud selže ověření se jednu nebo více sad transakce v hello výměnu. | 
+| Zachovat výměnu – pozastavení sady transakce při chybě |Výměnu hello zůstanou zachovány, vytvoří dokument XML pro celý dávkové výměnu hello. Pozastavit pouze transakce sady hello, které nesplní ověření, přitom dál tooprocess nastaví všechny ostatní transakce. |
+| Zachovat výměnu – pozastavit výměnu při chybě |Výměnu hello zůstanou zachovány, vytvoří dokument XML pro celý dávkové výměnu hello. Pozastavte celý výměnu hello, pokud selže ověření se jednu nebo více sad transakce v hello výměnu. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Nakonfigurujte, jak vaše smlouvy odešle zprávy
 
-Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozích zpráv, které jste odeslali partnerům prostřednictvím této smlouvy.
+Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozích zpráv, které odesílají tooyour partnery prostřednictvím této smlouvy.
 
 1.  V části **přidat**, vyberte **odeslat nastavení**.
-Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se svého partnera, který výměny zpráv s vámi. Vlastnost popis najdete v tématu tabulky v této části.
+Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se svého partnera, který výměny zpráv s vámi. Vlastnost popis najdete v tématu hello tabulky v této části.
 
     **Odeslat nastavení** jsou uspořádány do těchto oddílů: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovačů, řízení čísla a ověření.
 
     ![Konfigurace "Odeslat nastavení"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Jakmile jste hotovi, přesvědčte se, uložte nastavení tak, že zvolíte **OK**.
+2. Jakmile jste hotovi, ujistěte se, že toosave nastavení tak, že zvolíte **OK**.
 
-Nyní je připraven pro zpracování odchozích zpráv, které v souladu s vámi vybrané nastavení vaše smlouvy.
+Vaše smlouvy je nyní připraven toohandle odchozí zprávy, které odpovídají tooyour vybraná nastavení.
 
 ### <a name="identifiers"></a>Identifikátory
 
@@ -183,74 +183,74 @@ Nyní je připraven pro zpracování odchozích zpráv, které v souladu s vámi
 ### <a name="acknowledgment"></a>Potvrzení
 | Vlastnost | Popis |
 | --- | --- |
-| Přijetí zprávy (CONTRL) |Toto políčko zaškrtněte, pokud hostované partnera očekává technické potvrzení (CONTRL). Toto nastavení určuje, že požadavky hostované partnera, který odesílá zprávy, potvrzení z hosta partnera. |
-| Potvrzení (CONTRL) |Toto políčko zaškrtněte, pokud hostované partnera očekává funkční potvrzení (CONTRL). Toto nastavení určuje, že požadavky hostované partnera, který odesílá zprávy, potvrzení z hosta partnera. |
-| Vygenerovat smyčku SG1/SG4 pro přijaté sady transakcí |Pokud jste vybrali k vyžádání funkční potvrzení, zaškrtnutím tohoto políčka vynutit generování sz1/BS4 smyčky v funkční potvrzování CONTRL pro sady přijatý transakce. |
+| Přijetí zprávy (CONTRL) |Toto políčko zaškrtněte, pokud hello hostované partnera očekává tooreceive technické potvrzení (CONTRL). Toto nastavení určuje hello hostované partnera, který odesílá uvítací zprávu, požádá o potvrzení z hello hosta partnera. |
+| Potvrzení (CONTRL) |Toto políčko zaškrtněte, pokud hello hostované partnera očekává tooreceive funkční potvrzení (CONTRL). Toto nastavení určuje hello hostované partnera, který odesílá uvítací zprávu, požádá o potvrzení z hello hosta partnera. |
+| Vygenerovat smyčku SG1/SG4 pro přijaté sady transakcí |Pokud jste zvolili toorequest funkční potvrzení, vyberte toto zaškrtávací políčko tooforce generování sz1/BS4 smyčky v funkční potvrzování CONTRL pro sady přijatý transakce. |
 
 ### <a name="schemas"></a>Schémata
 | Vlastnost | Popis |
 | --- | --- |
 | UNH2.1 (TYP) |Vyberte typ sadu transakce. |
-| UNH2.2 (VERZE) |Zadejte číslo verze zprávy. |
-| UNH2.3 (VERZE) |Zadejte číslo verze zprávy. |
-| SCHÉMA |Vyberte schéma používat. Schémata jsou umístěny ve vašem účtu integrace. Pro přístup k vaší schémat, nejprve propojte si účet integraci do aplikace logiky. |
+| UNH2.2 (VERZE) |Zadejte číslo verze zprávy hello. |
+| UNH2.3 (VERZE) |Zadejte číslo verze zprávy hello. |
+| SCHÉMA |Vyberte toouse schématu hello. Schémata jsou umístěny ve vašem účtu integrace. tooaccess schémat, nejprve odkaz svou aplikaci logiky tooyour integrace účtu. |
 
 ### <a name="envelopes"></a>Obálky
 | Vlastnost | Popis |
 | --- | --- |
 | UNB8 (zpracování Priority kódu) |Zadejte abecední hodnotu, která není více než jeden znak. |
 | UNB10 (smlouva komunikaci) |Zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 40 znaků. |
-| UNB11 (Test ukazatele) |Zaškrtnutím tohoto políčka znamenat, že výměnu generované testovací data |
-| Použít segment UNA (Nápověda k řetězci služby) |Zaškrtnutím tohoto políčka Generovat UNA segmentu pro výměnu k odeslání. |
-| Použít segmenty UNG (Hlavička skupiny funkce) |Zaškrtnutím tohoto políčka pro vytvoření seskupení segmentů v hlavičce funkční skupiny v zprávy odeslané do hostovaného partnera. Chcete-li vytvořit segmenty UNG budou použity následující hodnoty: <p>Pro **UNG1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně šest znaků. <p>Pro **UNG2.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 35 znaků. <p>Pro **UNG2.2**, zadejte hodnotu alfanumerické delší než 4 znaky. <p>Pro **UNG3.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 35 znaků. <p>Pro **UNG3.2**, zadejte hodnotu alfanumerické delší než 4 znaky. <p>Pro **UNG6**, zadejte hodnotu alfanumerické s minimálně jeden a maximálně tři znaky. <p>Pro **UNG7.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně tři znaky. <p>Pro **UNG7.2**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně tři znaky. <p>Pro **UNG7.3**, zadejte hodnotu alfanumerické minimálně 1 znak a maximálně 6 znaků. <p>Pro **UNG8**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 14 znaků. |
+| UNB11 (Test ukazatele) |Vyberte, které je toto políčko tooindicate, který hello výměnu generované testovacích dat |
+| Použít segment UNA (Nápověda k řetězci služby) |Zaškrtněte toto políčko toogenerate UNA segmentu pro toobe výměnu hello odeslána. |
+| Použít segmenty UNG (Hlavička skupiny funkce) |Zaškrtněte toto políčko toocreate seskupení segmentů v záhlaví skupiny funkčnosti hello partnera hosta toohello zprávy odeslané hello. Hello následující hodnoty jsou použité toocreate hello UNG segmenty: <p>Pro **UNG1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně šest znaků. <p>Pro **UNG2.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 35 znaků. <p>Pro **UNG2.2**, zadejte hodnotu alfanumerické delší než 4 znaky. <p>Pro **UNG3.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 35 znaků. <p>Pro **UNG3.2**, zadejte hodnotu alfanumerické delší než 4 znaky. <p>Pro **UNG6**, zadejte hodnotu alfanumerické s minimálně jeden a maximálně tři znaky. <p>Pro **UNG7.1**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně tři znaky. <p>Pro **UNG7.2**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně tři znaky. <p>Pro **UNG7.3**, zadejte hodnotu alfanumerické minimálně 1 znak a maximálně 6 znaků. <p>Pro **UNG8**, zadejte hodnotu alfanumerické znaky s nejméně jeden znak a maximálně 14 znaků. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
 
-Jiného, než znaková sada, můžete zadat jinou sadu oddělovače má být použit pro každý typ zprávy. Pokud znakovou sadu pro danou zprávou schématu není zadána, použije se výchozí znakovou sadu.
+Kromě hello znaková sada, můžete zadat jinou sadu oddělovače toobe použít u každého typu zprávy. Pokud znakovou sadu není určena pro danou zprávou schéma, se používá hello výchozí znakovou sadu.
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB1.1 (System Identifier) |Vyberte EDIFACT znakovou sadu pro použití na odchozí výměnu. |
-| Schéma |V rozevíracím seznamu vyberte schéma. Po dokončení každý řádek je automaticky přidán nový řádek. Pro vybrané schéma vyberte sadu oddělovačů, který chcete použít, na základě následující popisů oddělovače. |
-| Typ vstupu |V rozevíracím seznamu vyberte typ vstupu. |
-| Součást oddělovače |Chcete-li samostatné složené datové prvky, zadejte jeden znak. |
-| Oddělovač elementu dat |Chcete-li samostatné jednoduché datové elementů v rámci složené datové prvky, zadejte jeden znak. |
-| Segment ukončovací znak |Chcete-li označení konce EDI segment, zadejte jeden znak. |
-| Přípona |Vyberte znak, který se používá s identifikátor segmentu. Určíte příponu, datový prvek ukončovací segment nesmí být prázdné. Pokud segment ukončení je prázdné, je třeba určit příponu. |
+| UNB1.1 (System Identifier) |Vyberte hello EDIFACT znak nastavit toobe na hello odchozí výměnu použita. |
+| Schéma |Vyberte z rozevíracího seznamu hello schéma. Po dokončení každý řádek je automaticky přidán nový řádek. Pro vybrané schéma hello vyberte hello oddělovačů nastavit, které chcete toouse, podle hello následující popisy oddělovače. |
+| Typ vstupu |Vyberte z rozevíracího seznamu hello typem vstupu. |
+| Součást oddělovače |složené datové prvky tooseparate, zadejte jeden znak. |
+| Oddělovač elementu dat |tooseparate jednoduché datové elementů v rámci složené datové prvky, zadejte jeden znak. |
+| Segment ukončovací znak |tooindicate hello konec EDI segment zadejte jeden znak. |
+| Přípona |Vyberte hello znak, který se používá s identifikátorem hello segmentu. Pokud jste určit příponu pak hello segment ukončovací datový prvek nesmí být prázdné. Pokud segment ukončovací hello je prázdné, je třeba určit příponu. |
 
 ### <a name="control-numbers"></a>Ovládací prvek čísla
 | Vlastnost | Popis |
 | --- | --- |
-| UNB5 (Interchange řízení číslo) |Zadejte předponu, rozsah hodnot pro ovládací prvek číslo výměnu a příponu. Tyto hodnoty se používají ke generování odchozí výměnu. Předpona a přípona jsou volitelné, při požadované číslo ovládacího prvku. Ovládací prvek je zvýšena pro každou novou zprávu; Předpona a přípona zůstávají stejné. |
-| UNG5 (skupina řízení číslo) |Zadejte předponu, rozsah hodnot pro ovládací prvek číslo výměnu a příponu. Tyto hodnoty se používají ke generování řízení čísla skupiny. Předpona a přípona jsou volitelné, při požadované číslo ovládacího prvku. Ovládací prvek je zvýšena pro každé nové zprávy, dokud nebude dosaženo maximální hodnoty; Předpona a přípona zůstávají stejné. |
-| UNH1 (zpráva hlavičky referenční číslo) |Zadejte předponu, rozsah hodnot pro ovládací prvek číslo výměnu a příponu. Tyto hodnoty se používají ke generování referenční číslo záhlaví zprávy. Předpona a přípona jsou volitelné, zatímco referenční číslo se vyžaduje. Referenční číslo se zvýší, pro každou novou zprávu; Předpona a přípona zůstávají stejné. |
+| UNB5 (Interchange řízení číslo) |Zadejte předponu, rozsah hodnot pro hello výměnu řízení číslo a příponu. Tyto hodnoty jsou použité toogenerate odchozí výměnu. Předpona Hello a příponu jsou volitelné, když je třeba zadat číslo řízení hello. ovládací prvek Hello je zvýšena pro každou novou zprávu; Předpona Hello a příponu zůstanou hello stejné. |
+| UNG5 (skupina řízení číslo) |Zadejte předponu, rozsah hodnot pro hello výměnu řízení číslo a příponu. Tyto hodnoty jsou použity číslo toogenerate hello skupiny ovládacího prvku. Předpona Hello a příponu jsou volitelné, když je třeba zadat číslo řízení hello. Hello ovládací prvek je zvýšena pro každé nové zprávy, dokud nebude dosaženo maximální hodnoty hello; Předpona Hello a příponu zůstanou hello stejné. |
+| UNH1 (zpráva hlavičky referenční číslo) |Zadejte předponu, rozsah hodnot pro hello výměnu řízení číslo a příponu. Tyto hodnoty jsou použity toogenerate hello zpráva hlavičky referenční číslo. Hello předponu a příponu jsou volitelné, zatímco hello referenční číslo se vyžaduje. Hello referenční číslo se zvýší, pro každou novou zprávu; Předpona Hello a příponu zůstanou hello stejné. |
 
 ### <a name="validations"></a>Ověření
 
-Po dokončení každý řádek ověření jiné automaticky přidá. Pokud nezadáte všechna pravidla, ověření používá "Výchozího" řádku.
+Po dokončení každý řádek ověření jiné automaticky přidá. Pokud nezadáte všechna pravidla, ověření používá řádek "Výchozí" hello.
 
 | Vlastnost | Popis |
 | --- | --- |
-| Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověření EDI |Proveďte ověření EDI na datových typů, jak definované vlastnosti EDI schéma, omezení délky, prázdný datové prvky a koncové oddělovače. |
-| Rozšířené ověření |Pokud datový typ není EDI, ověření se na element požadavek na data a povoleny opakování, výčty a data element délka ověření (min/max). |
+| Typ zprávy |Vyberte typ zprávy EDI hello. |
+| Ověření EDI |Proveďte ověření EDI na datových typů, jak definované vlastnosti EDI hello hello schématu, omezení délky, prázdný datové prvky a koncové oddělovače. |
+| Rozšířené ověření |Pokud není hello datový typ EDI, ověření je na hello data element požadavku a povoleny opakování, výčty a data element délka ověření (min/max). |
 | Povolit úvodní nebo koncové nuly |Zachování všechny další počáteční nebo koncové nula a místo znaků. Nevysunujte tyto znaky. |
 | Trim – úvodní nebo koncové nuly |Odeberte počáteční nebo koncové nulový počet znaků. |
-| Koncové oddělovače zásad |Generovat koncové oddělovače. <p>Vyberte **není povoleno** zakázat koncové oddělovače a oddělovače v odeslané výměnu. Pokud výměnu koncové oddělovače a oddělovačů, výměnu je deklarovaná není platný. <p>Vyberte **volitelné** odeslat mimoúrovňové křižovatky s nebo bez koncové oddělovače a oddělovačů. <p>Vyberte **povinné** Pokud odeslané výměnu musí mít koncové oddělovače a oddělovačů. |
+| Koncové oddělovače zásad |Generovat koncové oddělovače. <p>Vyberte **není povoleno** výměnu odeslat koncové oddělovače tooprohibit a oddělovače v hello. Pokud hello výměnu koncové oddělovače a oddělovačů, výměnu hello je deklarovaná není platný. <p>Vyberte **volitelné** toosend interchanges s nebo bez koncové oddělovače a oddělovačů. <p>Vyberte **povinné** Pokud hello odeslané výměnu musí mít koncové oddělovače a oddělovačů. |
 
 ## <a name="find-your-created-agreement"></a>Najít vaší vytvořené smlouvy
 
-1.  Po dokončení nastavení na všechny vlastnosti vaše smlouvy **přidat** okně zvolte **OK** dokončit vytváření vaší smlouvy a vrátíte se do okna vaší integrace účtu.
+1.  Po dokončení nastavení všechny vaše smlouvy vlastnosti na hello **přidat** okně zvolte **OK** toofinish vytváření smlouvy a okně návratový tooyour integrace účtu.
 
     Nově přidané smlouvy nyní se zobrazí v vaše **smlouvy** seznamu.
 
-2.  Můžete také zobrazit vaše smlouvy v váš účet Přehled integrace. V okně účtu vaší integrace, zvolte **přehled**, vyberte **smlouvy** dlaždici. 
+2.  Můžete také zobrazit vaše smlouvy v váš účet Přehled integrace. V okně účtu vaší integrace, zvolte **přehled**, pak vyberte hello **smlouvy** dlaždici. 
 
-    ![Vyberte že dlaždici "Smlouvy" Chcete-li zobrazit všechny smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Vyberte dlaždici tooview "Smlouvy" všechny smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>Soubor Swagger zobrazení
-Chcete-li zobrazit podrobnosti Swagger pro konektor EDIFACT, najdete v části [EDIFACT](/connectors/edifact/).
+Podrobnosti Swagger hello tooview hello EDIFACT konektor, najdete v tématu [EDIFACT](/connectors/edifact/).
 
 ## <a name="learn-more"></a>Další informace
-* [Další informace o integračního balíčku Enterprise](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
+* [Další informace o hello Enterprise integračního balíčku](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
 

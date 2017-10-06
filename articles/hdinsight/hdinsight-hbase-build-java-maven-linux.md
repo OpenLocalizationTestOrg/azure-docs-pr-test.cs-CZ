@@ -1,6 +1,6 @@
 ---
-title: Klient Java HBase - Azure HDInsight | Microsoft Docs
-description: "Další informace o použití Apache Maven k sestavení aplikace založené na jazyce Java Apache HBase a potom ji nasadit do HBase v Azure HDInsight."
+title: Klient aaaJava HBase - Azure HDInsight | Microsoft Docs
+description: "Zjistěte, jak toouse aplikaci Apache HBase Apache Maven toobuild založené na jazyce Java, pak je nasadit tooHBase v Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 03c88397e36c0fc7f19410e49f6b6f1a607659f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 41ef92b2900280dd59089c4fa40686c44133b337
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Sestavení aplikací Java pro Apache HBase
 
-Naučte se vytvářet [Apache HBase](http://hbase.apache.org/) aplikace v jazyce Java. Pak použijete aplikaci s HBase v Azure HDInsight.
+Zjistěte, jak toocreate [Apache HBase](http://hbase.apache.org/) aplikace v jazyce Java. Potom pomocí aplikace hello s HBase v Azure HDInsight.
 
-Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a sestavte projekt. Maven je správa softwaru projektu a míru porozumění nástroj, který umožňuje vytvářet softwaru, dokumentace a sestav pro projekty Java.
+Hello kroky v tomto dokumentu [Maven](http://maven.apache.org/) toocreate a sestavení projektu hello. Maven je správa softwaru projektu a míru porozumění nástroj, který umožňuje toobuild softwaru, dokumentace a sestav pro projekty Java.
 
 > [!NOTE]
-> Kroky v tomto dokumentu byly naposledy testovány s HDInsight 3.6.
+> Hello kroky v tomto dokumentu byly naposledy testovány s HDInsight 3.6.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Požadavky
 
@@ -45,33 +45,33 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
 * [Cluster Azure HDInsight se systémem Linux s HBase](hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
 
   > [!NOTE]
-  > Kroky v tomto dokumentu byly testovány s verze clusteru HDInsight 3.4 a 3.5. Výchozí hodnoty zadané v příkladech jsou pro cluster HDInsight 3.5.
+  > Hello kroky v tomto dokumentu byly testovány s verze clusteru HDInsight 3.4 a 3.5. Hello výchozí hodnoty zadané v příkladech jsou pro cluster HDInsight 3.5.
 
-## <a name="create-the-project"></a>Vytvoření projektu
+## <a name="create-hello-project"></a>Vytvoření projektu hello
 
-1. Z příkazového řádku ve vašem vývojovém prostředí, změňte adresáře na umístění, kde chcete vytvořit projekt, například `cd code\hbase`.
+1. Z příkazového řádku hello ve vašem vývojovém prostředí, změňte adresáře toohello umístění, kam má toocreate hello projektu, například `cd code\hbase`.
 
-2. Použití **mvn** příkazu, který se instaluje s Maven, vygenerujte generování uživatelského rozhraní pro projekt.
+2. Použití hello **mvn** příkaz, který se instaluje s Maven, toogenerate hello generování uživatelského rozhraní pro projekt hello.
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
     > [!NOTE]
-    > Pokud používáte prostředí PowerShell, je nutné uzavřít `-D` parametry v uvozovkách.
+    > Pokud používáte prostředí PowerShell, je nutné uzavřít hello `-D` parametry v uvozovkách.
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
-    Tento příkaz vytvoří adresář se stejným názvem jako **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje následující položky:
+    Tento příkaz vytvoří adresář s hello stejný název jako hello **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje hello následující položky:
 
-   * **pom.xml**: projektu objektový Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
-   * **src**: adresář, který obsahuje **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
+   * **pom.xml**: hello projektu objektový Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje informace a konfigurace projektu hello toobuild podrobnosti použít.
+   * **src**: hello adresář, který obsahuje hello **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace hello.
 
-3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není možné použít v tomto příkladu.
+3. Odstranit hello `src/test/java/com/microsoft/examples/apptest.java` souboru. Není možné použít v tomto příkladu.
 
-## <a name="update-the-project-object-model"></a>Aktualizace projektu objektový Model
+## <a name="update-hello-project-object-model"></a>Aktualizace hello projektu objektový Model
 
-1. Upravit `pom.xml` souboru a přidejte následující kód do `<dependencies>` části:
+1. Upravit hello `pom.xml` souboru a přidejte následující kód do hello hello `<dependencies>` části:
 
    ```xml
     <dependency>
@@ -86,19 +86,19 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     </dependency>
    ```
 
-    V této části ukazuje, že projekt vyžaduje **hbase-client** a **phoenix základní** součásti. Při kompilaci se stáhnou tyto závislosti z úložiště Maven výchozí. Můžete použít [Maven centrální úložiště hledání](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) Další informace o této závislosti.
+    V této části určuje projektu hello musí **hbase-client** a **phoenix základní** součásti. Při kompilaci se stáhnou tyto závislosti z hello výchozí Maven úložiště. Můžete použít hello [Maven centrální úložiště hledání](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) toolearn Další informace o této závislosti.
 
    > [!IMPORTANT]
-   > Číslo verze klienta hbase musí odpovídat verzi HBase, který je zadán v rámci clusteru HDInsight. Pomocí následující tabulky najít číslo správnou verzi.
+   > číslo verze Hello hello hbase-client musí odpovídat verzi hello hbase, který je zadán v rámci clusteru HDInsight. Pomocí následující tabulky toofind hello správnou verzi číslo hello.
 
-   | Verze clusteru HDInsight | HBase verze se má použít |
+   | Verze clusteru HDInsight | Verze toouse HBase |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 a 3.6 |1.1.2 |
 
-    Další informace o verzích HDInsight a součásti najdete v tématu [co jsou různé součásti Hadoop, která je k dispozici s HDInsight](hdinsight-component-versioning.md).
+    Další informace o verzích HDInsight a součásti najdete v tématu [co jsou hello různých komponent systému Hadoop HDInsight k dispozici](hdinsight-component-versioning.md).
 
-3. Přidejte následující kód, který **pom.xml** souboru. Tento text musí být uvnitř `<project>...</project>` značky v souboru, například mezi `</dependencies>` a `</project>`.
+3. Přidejte následující kód toohello hello **pom.xml** souboru. Tento text musí být uvnitř hello `<project>...</project>` značky v hello souboru, například mezi `</dependencies>` a `</project>`.
 
    ```xml
     <build>
@@ -148,17 +148,17 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     Tato část nakonfiguruje prostředku (`conf/hbase-site.xml`) obsahující informace o konfiguraci pro HBase.
 
    > [!NOTE]
-   > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. Zobrazte komentáře ve `CreateTable` příklad.
+   > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. V tématu hello komentáře v hello `CreateTable` příklad.
 
-    Tato část také nakonfiguruje [modulu plug-in kompilátoru Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru se používá ke kompilaci topologii. Modul plug-in stín se používá při prevenci licence duplikace v JAR balíček, který je sestavena Maven. Tento modul plug-in se používá při prevenci "duplicitní licence soubory" Chyba za běhu v clusteru HDInsight. Používání maven stín – modul plug-in s `ApacheLicenseResourceTransformer` implementace brání chyba.
+    Tato část také nakonfiguruje hello [modulu plug-in kompilátoru Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/). modul plug-in Hello kompilátoru je použité toocompile hello topologie. Hello stín modulu plug-in se použité tooprevent licence duplikace v hello JAR balíček, který je sestavena Maven. Tento modul plug-in je použité tooprevent "duplicitní souborů s licencí" Chyba za běhu v clusteru HDInsight hello. Pomocí modulu plug-in maven stín hello `ApacheLicenseResourceTransformer` implementace brání chyba hello.
 
-    Plugin stín maven vytvoří také uber jar, který obsahuje všechny závislosti, které jsou požadované aplikací.
+    Hello maven stín – modul plug-in vytvoří také uber jar, který obsahuje všechny závislosti hello požadované aplikace hello.
 
-4. Uložit `pom.xml` souboru.
+4. Uložit hello `pom.xml` souboru.
 
-5. Vytvořte adresář s názvem `conf` v `hbaseapp` adresáře. Tento adresář se používá k uložení konfigurační informace pro připojení k HBase.
+5. Vytvořte adresář s názvem `conf` v hello `hbaseapp` adresáře. Tento adresář se informace o konfiguraci toohold použité pro připojování tooHBase.
 
-6. Použijte následující příkaz pro kopírování HBase konfigurace z clusteru HBase `conf` adresáře. Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight:
+6. Použití hello následující příkaz toocopy hello HBase konfiguraci z toohello clusteru HBase hello `conf` adresáře. Nahraďte `USERNAME` s názvem hello vaše přihlášení SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight:
 
     ```bash
     scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -166,11 +166,11 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
 
    Další informace o používání `ssh` a `scp`, najdete v části [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-the-application"></a>Vytvoření aplikace
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
 
-1. Přejděte na `hbaseapp/src/main/java/com/microsoft/examples` adresáře a přejmenujte app.java soubor na `CreateTable.java`.
+1. Přejděte toohello `hbaseapp/src/main/java/com/microsoft/examples` adresáře a přejmenujte hello soubor app.java příliš`CreateTable.java`.
 
-2. Otevřete `CreateTable.java` souboru a nahradit existující obsah s následujícím textem:
+2. Otevřete hello `CreateTable.java` souboru a nahradit existující obsah hello hello následující text:
 
    ```java
     package com.microsoft.examples;
@@ -201,13 +201,13 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
         //NOTE: Actual zookeeper host names can be found using Ambari:
         //curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts"
 
-        //Linux-based HDInsight clusters use /hbase-unsecure as the znode parent
+        //Linux-based HDInsight clusters use /hbase-unsecure as hello znode parent
         config.set("zookeeper.znode.parent","/hbase-unsecure");
 
-        // create an admin object using the config
+        // create an admin object using hello config
         HBaseAdmin admin = new HBaseAdmin(config);
 
-        // create the table...
+        // create hello table...
         HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf("people"));
         // ... with two column families
         tableDescriptor.addFamily(new HColumnDescriptor("name"));
@@ -225,9 +225,9 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
 
         HTable table = new HTable(config, "people");
 
-        // Add each person to the table
-        //   Use the `name` column family for the name
-        //   Use the `contactinfo` column family for the email
+        // Add each person toohello table
+        //   Use hello `name` column family for hello name
+        //   Use hello `contactinfo` column family for hello email
         for (int i = 0; i< people.length; i++) {
             Put person = new Put(Bytes.toBytes(people[i][0]));
             person.add(Bytes.toBytes("name"), Bytes.toBytes("first"), Bytes.toBytes(people[i][1]));
@@ -235,18 +235,18 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
             person.add(Bytes.toBytes("contactinfo"), Bytes.toBytes("email"), Bytes.toBytes(people[i][3]));
             table.put(person);
         }
-        // flush commits and close the table
+        // flush commits and close hello table
         table.flushCommits();
         table.close();
         }
     }
    ```
 
-    Tento kód je **CreateTable** třídy, která vytvoří tabulku s názvem **osoby** a jeho naplnění některé předdefinované uživatele.
+    Tento kód je hello **CreateTable** třídy, která vytvoří tabulku s názvem **osoby** a jeho naplnění některé předdefinované uživatele.
 
-3. Uložit `CreateTable.java` souboru.
+3. Uložit hello `CreateTable.java` souboru.
 
-4. V `hbaseapp/src/main/java/com/microsoft/examples` adresáře, vytvořte soubor s názvem `SearchByEmail.java`. Jako obsah tohoto souboru použijte následující text:
+4. V hello `hbaseapp/src/main/java/com/microsoft/examples` adresáře, vytvořte soubor s názvem `SearchByEmail.java`. Použijte hello následující text jako hello obsah tohoto souboru:
 
    ```java
     package com.microsoft.examples;
@@ -268,18 +268,18 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
         public static void main(String[] args) throws IOException {
         Configuration config = HBaseConfiguration.create();
 
-        // Use GenericOptionsParser to get only the parameters to the class
-        // and not all the parameters passed (when using WebHCat for example)
+        // Use GenericOptionsParser tooget only hello parameters toohello class
+        // and not all hello parameters passed (when using WebHCat for example)
         String[] otherArgs = new GenericOptionsParser(config, args).getRemainingArgs();
         if (otherArgs.length != 1) {
             System.out.println("usage: [regular expression]");
             System.exit(-1);
         }
 
-        // Open the table
+        // Open hello table
         HTable table = new HTable(config, "people");
 
-        // Define the family and qualifiers to be used
+        // Define hello family and qualifiers toobe used
         byte[] contactFamily = Bytes.toBytes("contactinfo");
         byte[] emailQualifier = Bytes.toBytes("email");
         byte[] nameFamily = Bytes.toBytes("name");
@@ -288,8 +288,8 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
 
         // Create a regex filter
         RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
-        // Attach the regex filter to a filter
-        //   for the email column
+        // Attach hello regex filter tooa filter
+        //   for hello email column
         SingleColumnValueFilter filter = new SingleColumnValueFilter(
             contactFamily,
             emailQualifier,
@@ -297,11 +297,11 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
             emailFilter
         );
 
-        // Create a scan and set the filter
+        // Create a scan and set hello filter
         Scan scan = new Scan();
         scan.setFilter(filter);
 
-        // Get the results
+        // Get hello results
         ResultScanner results = table.getScanner(scan);
         // Iterate over results and print  values
         for (Result result : results ) {
@@ -321,11 +321,11 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     }
    ```
 
-    **SearchByEmail** třídu lze použít k dotazu pro řádků a e-mailovou adresu. Protože používá regulární výraz filtru, můžete zadat řetězce nebo regulárního výrazu při používání třídy.
+    Hello **SearchByEmail** třídy lze použít tooquery pro řádků a e-mailovou adresu. Protože používá regulární výraz filtru, můžete zadat řetězce nebo regulárního výrazu při použití třídy hello.
 
-5. Uložit `SearchByEmail.java` souboru.
+5. Uložit hello `SearchByEmail.java` souboru.
 
-6. V `hbaseapp/src/main/hava/com/microsoft/examples` adresáře, vytvořte soubor s názvem `DeleteTable.java`. Jako obsah tohoto souboru použijte následující text:
+6. V hello `hbaseapp/src/main/hava/com/microsoft/examples` adresáře, vytvořte soubor s názvem `DeleteTable.java`. Použijte hello následující text jako hello obsah tohoto souboru:
 
    ```java
     package com.microsoft.examples;
@@ -339,57 +339,57 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
         public static void main(String[] args) throws IOException {
         Configuration config = HBaseConfiguration.create();
 
-        // Create an admin object using the config
+        // Create an admin object using hello config
         HBaseAdmin admin = new HBaseAdmin(config);
 
-        // Disable, and then delete the table
+        // Disable, and then delete hello table
         admin.disableTable("people");
         admin.deleteTable("people");
         }
     }
    ```
 
-    Tato třída vyčistí tabulek HBase vytvořené zakázání a vkládání v tabulce vytvořené v tomto příkladu `CreateTable` třídy.
+    Tato třída vyčistí hello vytvořené v tomto příkladu zakázáním tabulky HBase a vyřazení hello tabulky vytvořené hello `CreateTable` třídy.
 
-7. Uložit `DeleteTable.java` souboru.
+7. Uložit hello `DeleteTable.java` souboru.
 
-## <a name="build-and-package-the-application"></a>Sestavení a balíček aplikace
+## <a name="build-and-package-hello-application"></a>Sestavení a balíček aplikace hello
 
-1. Z `hbaseapp` adresáře, použijte následující příkaz k vytvoření soubor JAR, která obsahuje aplikaci:
+1. Z hello `hbaseapp` adresář, použijte hello následující příkaz toobuild soubor JAR obsahující aplikace hello:
 
     ```bash
     mvn clean package
     ```
 
-    Tento příkaz vytvoří a balíčky aplikací do souboru .jar.
+    Tento příkaz vytvoří a balíčky hello aplikace do souboru .jar.
 
-2. Po dokončení příkazu `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar`.
+2. Když hello dokončení příkazu hello `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar`.
 
    > [!NOTE]
-   > `hbaseapp-1.0-SNAPSHOT.jar` Je soubor jar uber. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
+   > Hello `hbaseapp-1.0-SNAPSHOT.jar` je soubor jar uber. Obsahuje všechny aplikace hello požadované toorun hello závislosti.
 
 
-## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát JAR a spouštění úloh (SSH)
+## <a name="upload-hello-jar-and-run-jobs-ssh"></a>Nahrát hello JAR a spouštění úloh (SSH)
 
-Následující postup použijte `scp` zkopírovat JAR do hlavního uzlu primární vaší databáze hbase v clusteru HDInsight. `ssh` Příkaz se pak používá k připojení ke clusteru a spusťte v příkladu přímo na hlavního uzlu.
+Následující postup použijte Hello `scp` toocopy hello JAR toohello primární hlavního uzlu vaší databáze hbase v clusteru HDInsight. Hello `ssh` příkaz je pak použit tooconnect toohello clusteru a spusťte hello příklad přímo na hello hlavního uzlu.
 
-1. Nahrát jar do clusteru, použijte následující příkaz:
+1. tooupload hello jar toohello cluster, hello použijte následující příkaz:
 
     ```bash
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-    Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
+    Nahraďte `USERNAME` s názvem hello vaše přihlášení SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
 
-2. Pokud chcete připojit ke clusteru HBase, použijte následující příkaz:
+2. tooconnect toohello clusteru HBase pomocí hello následující příkaz:
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `USERNAME` název vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
+    Nahraďte `USERNAME` hello název vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
 
-3. K vytvoření tabulky HBase pomocí aplikace Java, použijte následující příkaz:
+3. toocreate tabulky HBase pomocí hello aplikaci Java, hello použijte následující příkaz:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -397,13 +397,13 @@ Následující postup použijte `scp` zkopírovat JAR do hlavního uzlu primárn
 
     Tento příkaz vytvoří tabulku HBase s názvem **osoby**a ta je s daty.
 
-4. K vyhledání e-mailové adresy, které jsou uložené v tabulce, použijte následující příkaz:
+4. toosearch pro e-mailové adresy, které jsou uložené v tabulce hello hello použijte následující příkaz:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
     ```
 
-    Zobrazí se následující výsledky:
+    Zobrazí hello následující výsledky:
 
         Franklin Holtz - ID: 2
         Franklin Holtz - franklin@contoso.com - ID: 2
@@ -412,23 +412,23 @@ Následující postup použijte `scp` zkopírovat JAR do hlavního uzlu primárn
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-5. Chcete-li odstranit tabulku, použijte následující příkaz:
+5. toodelete hello tabulky, hello použijte následující příkaz:
 
     
 
-## <a name="upload-the-jar-and-run-jobs-powershell"></a>Nahrát JAR a spouštění úloh (PowerShell)
+## <a name="upload-hello-jar-and-run-jobs-powershell"></a>Nahrát hello JAR a spouštění úloh (PowerShell)
 
-Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do výchozího úložiště pro váš cluster HBase. Rutiny služby HDInsight se pak používají k příklady spustit vzdáleně.
+Hello následující kroky pomocí prostředí Azure PowerShell tooupload hello JAR toohello výchozí úložiště pro váš cluster HBase. Rutiny služby HDInsight se pak použít toorun hello příklady vzdáleně.
 
-1. Po instalaci a konfiguraci Azure Powershellu, vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah tohoto souboru použijte následující text:
+1. Po instalaci a konfiguraci Azure Powershellu, vytvořte soubor s názvem `hbase-runner.psm1`. Použijte hello následující text jako hello obsah tohoto souboru:
 
    ```powershell
     <#
     .SYNOPSIS
-    Copies a file to the primary storage of an HDInsight cluster.
+    Copies a file toohello primary storage of an HDInsight cluster.
     .DESCRIPTION
-    Copies a file from a local directory to the blob container for
-    the HDInsight cluster.
+    Copies a file from a local directory toohello blob container for
+    hello HDInsight cluster.
     .EXAMPLE
     Start-HBaseExample -className "com.microsoft.examples.CreateTable"
     -clusterName "MyHDInsightCluster"
@@ -447,11 +447,11 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
     function Start-HBaseExample {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
-    #The class to run
+    #hello class toorun
     [Parameter(Mandatory = $true)]
     [String]$className,
 
-    #The name of the HDInsight cluster
+    #hello name of hello HDInsight cluster
     [Parameter(Mandatory = $true)]
     [String]$clusterName,
 
@@ -459,34 +459,34 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
     [Parameter(Mandatory = $false)]
     [String]$emailRegex,
 
-    #Use if you want to see stderr output
+    #Use if you want toosee stderr output
     [Parameter(Mandatory = $false)]
     [Switch]$showErr
     )
 
     Set-StrictMode -Version 3
 
-    # Is the Azure module installed?
+    # Is hello Azure module installed?
     FindAzure
 
-    # Get the login for the HDInsight cluster
-    $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
+    # Get hello login for hello HDInsight cluster
+    $creds=Get-Credential -Message "Enter hello login for hello cluster" -UserName "admin"
 
-    # The JAR
+    # hello JAR
     $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
-    # The job definition
+    # hello job definition
     $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
         -JarFile $jarFile `
         -ClassName $className `
         -Arguments $emailRegex
 
-    # Get the job output
+    # Get hello job output
     $job = Start-AzureRmHDInsightJob `
         -ClusterName $clusterName `
         -JobDefinition $jobDefinition `
         -HttpCredential $creds
-    Write-Host "Wait for the job to complete ..." -ForegroundColor Green
+    Write-Host "Wait for hello job toocomplete ..." -ForegroundColor Green
     Wait-AzureRmHDInsightJob `
         -ClusterName $clusterName `
         -JobId $job.JobId `
@@ -500,7 +500,7 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
                 -HttpCredential $creds `
                 -DisplayOutputType StandardError
     }
-    Write-Host "Display the standard output ..." -ForegroundColor Green
+    Write-Host "Display hello standard output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
@@ -509,10 +509,10 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
 
     <#
     .SYNOPSIS
-    Copies a file to the primary storage of an HDInsight cluster.
+    Copies a file toohello primary storage of an HDInsight cluster.
     .DESCRIPTION
-    Copies a file from a local directory to the blob container for
-    the HDInsight cluster.
+    Copies a file from a local directory toohello blob container for
+    hello HDInsight cluster.
     .EXAMPLE
     Add-HDInsightFile -localPath "C:\temp\data.txt"
     -destinationPath "example/data/data.txt"
@@ -527,15 +527,15 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
     function Add-HDInsightFile {
         [CmdletBinding(SupportsShouldProcess = $true)]
         param(
-            #The path to the local file.
+            #hello path toohello local file.
             [Parameter(Mandatory = $true)]
             [String]$localPath,
 
-            #The destination path and file name, relative to the root of the container.
+            #hello destination path and file name, relative toohello root of hello container.
             [Parameter(Mandatory = $true)]
             [String]$destinationPath,
 
-            #The name of the HDInsight cluster
+            #hello name of hello HDInsight cluster
             [Parameter(Mandatory = $true)]
             [String]$clusterName,
 
@@ -546,22 +546,22 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
 
         Set-StrictMode -Version 3
 
-        # Is the Azure module installed?
+        # Is hello Azure module installed?
         FindAzure
 
-        # Get authentication for the cluster
+        # Get authentication for hello cluster
         $creds=Get-Credential
 
-        # Does the local path exist?
+        # Does hello local path exist?
         if (-not (Test-Path $localPath))
         {
             throw "Source path '$localPath' does not exist."
         }
 
-        # Get the primary storage container
+        # Get hello primary storage container
         $storage = GetStorage -clusterName $clusterName
 
-        # Upload file to storage, overwriting existing files if -force was used.
+        # Upload file toostorage, overwriting existing files if -force was used.
         Set-AzureStorageBlobContent -File $localPath `
             -Blob $destinationPath `
             -force:$force `
@@ -574,7 +574,7 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
         $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use hello Login-AzureRmAccount cmdlet toologin tooyour subscription."
         }
     }
 
@@ -584,7 +584,7 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
             [String]$clusterName
         )
         $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        # Does the cluster exist?
+        # Does hello cluster exist?
         if (!$hdi)
         {
             throw "HDInsight cluster '$clusterName' does not exist."
@@ -600,67 +600,67 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
         $storageAccountKey=(Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
-        # Get the resource group, in case we need that
+        # Get hello resource group, in case we need that
         $return.resourceGroup = $resourceGroup
-        # Get the storage context, as we can't depend
-        # on using the default storage context
+        # Get hello storage context, as we can't depend
+        # on using hello default storage context
         $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        # Get the container, so we know where to
+        # Get hello container, so we know where to
         # find/store blobs
         $return.container = $container
-        # Return storage accounts to support finding all accounts for
+        # Return storage accounts toosupport finding all accounts for
         # a cluster
         $return.storageAccount = $storageAccountName
         $return.storageAccountKey = $storageAccountKey
 
         return $return
     }
-    # Only export the verb-phrase things
+    # Only export hello verb-phrase things
     export-modulemember *-*
    ```
 
     Tento soubor obsahuje dva moduly:
 
-   * **Přidat HDInsightFile** – použít k nahrání souborů do clusteru
-   * **Spuštění HBaseExample** – používá ke spuštění třídy vytvořený
+   * **Přidat HDInsightFile** – použité tooupload soubory toohello clusteru
+   * **Spuštění HBaseExample** -používané třídy hello toorun vytvořený
 
-2. Uložit `hbase-runner.psm1` souboru.
+2. Uložit hello `hbase-runner.psm1` souboru.
 
-3. Otevřete nové okno Azure PowerShell, přejděte do adresáře `hbaseapp` adresář a potom spusťte následující příkaz:
+3. Otevřete nové okno Azure PowerShell, změňte adresáře toohello `hbaseapp` adresář, a pak spusťte hello následující příkaz:
 
     ```powershell
     PS C:\ Import-Module c:\path\to\hbase-runner.psm1
     ```
 
-    Změňte cestu k umístění `hbase-runner.psm1` soubor vytvořený dříve. Tento příkaz registruje modul Azure PowerShell.
+    Změnit umístění toohello cesta hello hello `hbase-runner.psm1` soubor vytvořený dříve. Tento příkaz registruje hello modulu Azure PowerShell.
 
-4. Použijte následující příkaz pro nahrání `hbaseapp-1.0-SNAPSHOT.jar` do clusteru.
+4. Použití hello následující příkaz tooupload hello `hbaseapp-1.0-SNAPSHOT.jar` tooyour clusteru.
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru. Odešle příkaz `hbaseapp-1.0-SNAPSHOT.jar` k `example/jars` umístění primárního úložiště pro cluster.
+    Nahraďte `hdinsightclustername` s hello názvem vašeho clusteru. příkaz Hello odešle hello `hbaseapp-1.0-SNAPSHOT.jar` toohello `example/jars` umístění v hello primárního úložiště pro cluster.
 
-5. K vytvoření tabulky pomocí `hbaseapp`, použijte následující příkaz:
+5. hello toocreate tabulky pomocí `hbaseapp`, použijte následující příkaz hello:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru.
+    Nahraďte `hdinsightclustername` s hello názvem vašeho clusteru.
 
-    Tento příkaz vytvoří tabulku s názvem **osoby** v HBase v clusteru HDInsight. Tento příkaz nezobrazuje žádný výstup v okně konzoly.
+    Tento příkaz vytvoří tabulku s názvem **osoby** v HBase v clusteru HDInsight. Tento příkaz v okně konzoly hello nezobrazuje žádný výstup.
 
-6. K vyhledání položky v tabulce, použijte následující příkaz:
+6. toosearch pro položky v tabulce hello hello použijte následující příkaz:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru.
+    Nahraďte `hdinsightclustername` s hello názvem vašeho clusteru.
 
-    Tento příkaz používá `SearchByEmail` třídy pro vyhledávání pro všechny řádky, kde `contactinformation` rodin sloupců a `email` sloupec obsahuje řetězec `contoso.com`. Mělo by se zobrazit následující výsledky:
+    Tento příkaz používá hello `SearchByEmail` třídy toosearch pro všechny řádky, kde hello `contactinformation` rodin sloupců a hello `email` sloupec obsahuje řetězec hello `contoso.com`. Měli byste obdržet hello následující výsledky:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -669,15 +669,15 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    Pomocí **fabrikam.com** pro `-emailRegex` hodnota vrátí uživatele, kteří mají **fabrikam.com** v poli e-mailu. Regulární výrazy můžete použít také jako hledaný termín. Například **^ r** vrátí e-mailové adresy, které začínají písmeno "r".
+    Pomocí **fabrikam.com** pro hello `-emailRegex` hodnota vrátí hello uživatele, kteří mají **fabrikam.com** v poli hello e-mailu. Regulární výrazy můžete použít také jako hello hledaný termín. Například **^ r** vrátí e-mailové adresy, které začínají hello písmeno "r".
 
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Žádné výsledky nebo neočekávané výsledky při použití Start HBaseExample
 
-Použití `-showErr` parametr zobrazíte standardní chyba (STDERR), která je vytvořena při spuštění úlohy.
+Použití hello `-showErr` parametr tooview hello standardní chyba (STDERR) vytvořený při spuštěná úloha hello.
 
-## <a name="delete-the-table"></a>Odstranit tabulku
+## <a name="delete-hello-table"></a>Odstranit tabulku hello
 
-Až skončíte se na příklad, použijte následující odstranit **osoby** tabulka použitá v tomto příkladu:
+Až skončíte s hello příklad, použijte následující toodelete hello hello **osoby** tabulka použitá v tomto příkladu:
 
 __Ze `ssh` relace__:
 
@@ -689,4 +689,4 @@ __Z prostředí Azure PowerShell__:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se používat SQuirreL SQL s HBase](hdinsight-hbase-phoenix-squirrel-linux.md)
+[Zjistěte, jak toouse SQL SQuirreL s HBase](hdinsight-hbase-phoenix-squirrel-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: "Jak používat fronty Azure Service Bus s Javou | Microsoft Docs"
-description: "Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsanou v jazyce Java."
+title: aaaHow toouse Azure Service Bus fronty s Javou | Microsoft Docs
+description: "Zjistěte, jak fronty toouse Service Bus v Azure. Ukázky kódu napsanou v jazyce Java."
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -13,30 +13,30 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 170f431525ffdc93a01fc085e48e69c3a774968e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f68e941438134090c5eee53459e7667bda13ff3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat fronty Service Bus s Javou
+# <a name="how-toouse-service-bus-queues-with-java"></a>Jak toouse Service Bus fronty s Javou
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tento článek popisuje, jak používat fronty Service Bus. Ukázky jsou napsané v jazyce Java a použít [Azure SDK pro jazyk Java][Azure SDK for Java]. Pokryté scénáře zahrnují **vytváření front**, **odesílání a přijímání zpráv**, a **odstraňování front**.
+Tento článek popisuje, jak toouse fronty Service Bus. Hello ukázky jsou napsané v jazyce Java a používají hello [Azure SDK pro jazyk Java][Azure SDK for Java]. Hello pokryté scénáře zahrnují **vytváření front**, **odesílání a přijímání zpráv**, a **odstraňování front**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-Ujistěte se, že máte nainstalovanou [Azure SDK pro jazyk Java] [ Azure SDK for Java] před vytvořením této ukázce. Pokud používáte Eclipse, můžete nainstalovat [nástrojů Azure pro Eclipse] [ Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro jazyk Java. Poté můžete přidat **knihovny Microsoft Azure Libraries for Java** do projektu:
+## <a name="configure-your-application-toouse-service-bus"></a>Konfigurace vaší aplikace toouse Service Bus
+Ujistěte se, že máte nainstalovanou hello [Azure SDK pro jazyk Java] [ Azure SDK for Java] před vytvořením této ukázce. Pokud používáte Eclipse, můžete nainstalovat hello [nástrojů Azure pro Eclipse] [ Azure Toolkit for Eclipse] zahrnující hello Azure SDK pro jazyk Java. Poté můžete přidat hello **knihovny Microsoft Azure Libraries for Java** tooyour projektu:
 
 ![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
-Přidejte následující `import` příkazů do horní části souboru Java:
+Přidejte následující hello `import` toohello příkazy na začátek souboru Java hello:
 
 ```java
-// Include the following imports to use Service Bus APIs
+// Include hello following imports toouse Service Bus APIs
 import com.microsoft.windowsazure.services.servicebus.*;
 import com.microsoft.windowsazure.services.servicebus.models.*;
 import com.microsoft.windowsazure.core.*;
@@ -44,9 +44,9 @@ import javax.xml.datatype.*;
 ```
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
-Operace správy front služby Service Bus je možné provádět prostřednictvím **ServiceBusContract** třídy. A **ServiceBusContract** objektu je vytvořený pomocí odpovídající konfiguraci, který zapouzdřuje tokenu SAS s oprávněními ke správě, a **ServiceBusContract** třída je jediný bod komunikace s Azure.
+Operace správy front služby Service Bus je možné provádět prostřednictvím **ServiceBusContract** třídy. A **ServiceBusContract** objektu je vytvořený pomocí odpovídající konfiguraci, který zapouzdřuje token SAS s oprávněními toomanage a hello **ServiceBusContract** třída je jediný bod hello komunikace s Azure.
 
-**ServiceBusService** třída poskytuje metody pro vytvoření, výčet a odstranění front. V příkladu níže znázorňuje způsob **ServiceBusService** objekt lze vytvořit frontu s názvem `TestQueue`, obor názvů s názvem `HowToSample`:
+Hello **ServiceBusService** třída poskytuje metody toocreate, výčet a odstranění front. Hello Příklad dole ukazuje, jak **ServiceBusService** objekt může být použité toocreate frontu s názvem `TestQueue`, obor názvů s názvem `HowToSample`:
 
 ```java
 Configuration config =
@@ -71,7 +71,7 @@ catch (ServiceException e)
 }
 ```
 
-Způsoby na `QueueInfo` které umožňují vlastností fronty v úzkém ladit (například: Chcete-li hodnotu výchozí time to live (TTL) má být použita pro zprávy odeslané do fronty). Následující příklad ukazuje, jak vytvořit frontu s názvem `TestQueue` s maximální velikostí 5 GB:
+Způsoby na `QueueInfo` které umožňují vlastnosti toobe fronty hello přizpůsobená (například: tooset hello výchozí time to live (TTL) hodnotu toobe použít toomessages odeslané toohello fronty). Hello následující příklad ukazuje, jak toocreate frontu s názvem `TestQueue` s maximální velikostí 5 GB:
 
 ````java
 long maxSizeInMegabytes = 5120;
@@ -80,10 +80,10 @@ queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
 CreateQueueResult result = service.createQueue(queueInfo);
 ````
 
-Všimněte si, že můžete použít `listQueues` metodu **ServiceBusContract** objekty, které chcete zkontrolovat, zda fronta se zadaným názvem již existuje v rámci oboru názvů služby.
+Všimněte si, které můžete použít hello `listQueues` metodu **ServiceBusContract** objekty toocheck Pokud fronta se zadaným názvem již existuje v rámci oboru názvů služby.
 
-## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-K odeslání zprávy do fronty Service Bus, vaše aplikace získává **ServiceBusContract** objektu. Následující kód ukazuje, jak odeslat zprávu `TestQueue` vytvořili ve frontě `HowToSample` obor názvů:
+## <a name="send-messages-tooa-queue"></a>Odesílat zprávy fronty tooa
+Získá toosend fronty Service Bus zprávu tooa, aplikace **ServiceBusContract** objektu. Následující kód ukazuje, jak Hello toosend zprávu o hello `TestQueue` fronty předtím vytvořili v hello `HowToSample` obor názvů:
 
 ```java
 try
@@ -99,33 +99,33 @@ catch (ServiceException e)
 }
 ```
 
-Zprávy odeslané do a fronty přijal od služby Service Bus jsou instance [BrokeredMessage] [ BrokeredMessage] třídy. [BrokeredMessage] [ BrokeredMessage] objekty mají sadu standardních vlastností (jako například [popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) a [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.timetolive#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), slovník používaný pro udržení vlastních vlastností konkrétní aplikace a tělo s libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit podle předá jakýkoli serializovatelný objekt do konstruktoru objektu [BrokeredMessage][BrokeredMessage], a odpovídající serializátoru, který pak bude sloužit k serializaci objektu. Alternativně můžete zadat **java. VSTUPNĚ-VÝSTUPNÍ OPERACE. Třídy InputStream** objektu.
+Zprávy odeslané do a fronty přijal od služby Service Bus jsou instance třídy hello [BrokeredMessage] [ BrokeredMessage] třídy. [BrokeredMessage] [ BrokeredMessage] objekty mají sadu standardních vlastností (jako například [popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) a [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.timetolive#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), slovník, který je použité toohold vlastní vlastnosti specifické pro aplikace a tělo s libovolnými aplikačními daty. Aplikace můžete nastavit hello těla zprávy hello tak předá jakýkoli serializovatelný objekt do konstruktoru hello hello [BrokeredMessage][BrokeredMessage], a odpovídající serializátor hello se pak použije objekt tooserialize hello. Alternativně můžete zadat **java. VSTUPNĚ-VÝSTUPNÍ OPERACE. Třídy InputStream** objektu.
 
-Následující příklad ukazuje, jak odeslat pět zkušebních zpráv, které mají `TestQueue` **MessageSender** jsme získali v předchozím fragmentu kódu:
+Hello následující příklad ukazuje, jak testovací toosend pět zprávy toothe `TestQueue` **MessageSender** jsme získali v předchozím fragmentu kódu hello:
 
 ```java
 for (int i=0; i<5; i++)
 {
-     // Create message, passing a string message for the body.
+     // Create message, passing a string message for hello body.
      BrokeredMessage message = new BrokeredMessage("Test message " + i);
      // Set an additional app-specific property.
      message.setProperty("MyProperty", i);
-     // Send message to the queue
+     // Send message toohello queue
      service.sendQueueMessage("TestQueue", message);
 }
 ```
 
-Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB.
+Fronty Service Bus podporují maximální velikost zprávy 256 kB v hello [úrovně Standard](service-bus-premium-messaging.md) a 1 MB hello [úroveň Premium](service-bus-premium-messaging.md). Hello hlavičky, která zahrnuje hello standard a vlastnosti vlastní aplikace, může mít maximální velikost 64 KB. Neexistuje žádné omezení na hello počet zpráv držených ve frontě, ale není na hello celková velikost hello zpráv držených ve frontě. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
-Primární způsob pro příjem zpráv z fronty je použití **ServiceBusContract** objektu. Přijaté zprávy můžou pracovat ve dvou různých režimech: **ReceiveAndDelete** a **PeekLock**.
+Hello primární způsob tooreceive zprávy z fronty je toouse **ServiceBusContract** objektu. Přijaté zprávy můžou pracovat ve dvou různých režimech: **ReceiveAndDelete** a **PeekLock**.
 
-Při použití **ReceiveAndDelete** režimu přijímat je jednorázová operace – to znamená, když Service Bus přijme požadavek čtení zprávy ve frontě, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. **ReceiveAndDelete** režimu (což je výchozí režim) je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se.
-Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když se aplikace restartuje a začne znovu přijímat zprávy, ji budou neuskutečnily zprávu, která se spotřebovala před havárii.
+Při použití hello **ReceiveAndDelete** režimu přijímat je jednorázová operace – to znamená, když Service Bus přijme požadavek čtení zprávy ve frontě, označí uvítací zprávu jako spotřebovávanou a vrátí ji toohello aplikace. **ReceiveAndDelete** režimu (což je výchozí režim hello) je hello nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat hello události selhání se zpráva nezpracuje. toounderstand, představte si třeba situaci v problémy, které příjemce hello hello přijímání požadavků a pak dojde k chybě před zpracováním ho.
+Protože Service Bus bude označena hello zprávu jako spotřebovávanou, pak když aplikace hello restartuje a začne znovu přijímat zprávy, ji budou neuskutečnily uvítací zprávu, která byla spotřebované předchozí toohello havárií.
 
-V **PeekLock** režimu, zobrazí se změní na dvě fáze operaci, která umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Když aplikace dokončí zpracování zprávy (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze přijetí volání **odstranit** na přijatou zprávu. Když Service Bus uvidí **odstranit** volání, která se bude označí zprávu jako spotřebovávanou a odebrat ji z fronty.
+V **PeekLock** režimu, zobrazí se změní na dvě fáze operace, takže je možné toosupport aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde hello další zprávy toobe využívat, uzamkne ji tooprevent jinými spotřebiteli a vrátí ji toohello aplikace. Po hello aplikace dokončí zpracování zprávy hello (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze hello hello přijímat proces voláním **odstranit** na uvítací přijal zprávu. Když Service Bus uvidí hello **odstranit** volání, která se bude označit uvítací zprávu jako spotřebovávanou a odeberte ji z fronty hello.
 
-Následující příklad ukazuje, jak můžete obdržet zprávy a zpracování pomocí **PeekLock** režimu (není výchozí režim). Následující příklad nemá nekonečné smyčce a zpracuje zprávy, když dorazí do našich `TestQueue`:
+Hello následující příklad ukazuje, jak můžete obdržet zprávy a zpracování pomocí **PeekLock** režimu (ne hello výchozí režim). Hello příklad nepodporuje nekonečné smyčce a zpracuje zprávy, když dorazí do našich `TestQueue`:
 
 ```java
 try
@@ -140,7 +140,7 @@ try
         if (message != null && message.getMessageId() != null)
         {
             System.out.println("MessageID: " + message.getMessageId());
-            // Display the queue message.
+            // Display hello queue message.
             System.out.print("From queue: ");
             byte[] b = new byte[200];
             String s = null;
@@ -163,8 +163,8 @@ try
         {
             System.out.println("Finishing up - no more messages.");
             break;
-            // Added to handle no more messages.
-            // Could instead wait for more messages to be added.
+            // Added toohandle no more messages.
+            // Could instead wait for more messages toobe added.
         }
     }
 }
@@ -180,17 +180,17 @@ catch (Exception e) {
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může zavolat **unlockMessage** metoda na přijatou zprávu (místo **deleteMessage** metoda). To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>Jak toohandle aplikace spadne a nečitelných zpráv
+Service Bus poskytuje funkce toohelp, který elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nemůže tooprocess hello zprávy z nějakého důvodu a potom ji můžete volat hello **unlockMessage** na hello přijal zprávu (místo hello **deleteMessage** metoda). Tato příčiny hello toounlock sběrnice zpráv ve frontě hello a nastavit jej jako dostupné toobe přijetí, buď pomocí hello stejné využívání aplikací nebo jinou spotřebitelskou aplikací.
 
-Je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud se nepodaří aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak Service Bus zprávu automaticky odemkne a ji zpřístupní k přijetí.
+Je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace hello selže tooprocess hello zprávy vyprší časový limit uzamčení (například pokud hello aplikace spadne), pak Service Bus automaticky odemkne uvítací zprávu a je k dispozici toobe přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **deleteMessage** požadavku a potom zprávy je víckrát do aplikace odešle znovu. To se často označuje jako *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát stejnou zprávu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **getMessageId** metoda zprávy, která zůstává konstantní mezi pokusy o doručení.
+V hello událost, která hello aplikace spadne po zpracování uvítací zprávu, ale před hello **deleteMessage** požadavku a potom uvítací zprávu je víckrát toohello aplikace odešle znovu. To se často označuje jako *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích hello může doručit víckrát. Pokud hello scénář nemůže tolerovat zpracování duplicitní, měli vývojáři aplikace přidat další logiku tootheir aplikace toohandle víckrát doručené zprávy. To se často opírá hello **getMessageId** metoda hello zprávy, která zůstává konstantní mezi pokusy o doručení.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy front Service Bus, najdete v části [fronty, témata a odběry] [ Queues, topics, and subscriptions] Další informace.
+Teď, když jste se naučili základy hello front Service Bus, najdete v části [fronty, témata a odběry] [ Queues, topics, and subscriptions] Další informace.
 
-Další informace naleznete ve [Středisku pro vývojáře Java](https://azure.microsoft.com/develop/java/).
+Další informace najdete v tématu hello [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx

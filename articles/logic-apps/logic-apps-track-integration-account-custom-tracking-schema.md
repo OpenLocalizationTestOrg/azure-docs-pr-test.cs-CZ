@@ -1,6 +1,6 @@
 ---
-title: "Vlastní sledování schémata pro monitorování B2B - Azure Logic Apps | Microsoft Docs"
-description: "Vytvořte vlastní sledování schémata ke sledování zpráv B2B z transakcí ve vašem účtu integrace Azure."
+title: "aaaCustom sledování schémata B2B monitorování - Azure Logic Apps | Microsoft Docs"
+description: "Vytvořte vlastní sledování schémata toomonitor B2B zprávy z transakce ve vašem účtu integrace Azure."
 author: padmavc
 manager: anneta
 editor: 
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b71a4938dde2a71f1ce29403af7aa9101358d64c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8cf26a43d89f0414a2a8c5ef59d804235afeb5d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>Povolení sledování monitorování dokončení pracovního postupu, klient server
-Je integrované sledování, že můžete povolit pro různé části pracovního postupu business-to-business, jako je například sledování AS2 nebo X12 zprávy. Při vytváření pracovních postupů, které obsahuje aplikace logiky, BizTalk Server, SQL Server nebo jinou vrstvu, pak můžete povolit vlastní sledování, který protokoluje události od začátku do konce pracovní postup. 
+# <a name="enable-tracking-toomonitor-your-complete-workflow-end-to-end"></a>Povolit sledování toomonitor dokončení pracovního postupu, klient server
+Je integrované sledování, že můžete povolit pro různé části pracovního postupu business-to-business, jako je například sledování AS2 nebo X12 zprávy. Když vytvoříte pracovní postupy, které zahrnuje aplikace logiky, BizTalk Server, SQL Server nebo jinou vrstvu, můžete povolit vlastní sledování, který protokoluje události od hello začátku toohello konce pracovní postup. 
 
-Toto téma obsahuje vlastní kód, který můžete použít v vrstvy mimo aplikaci logiky. 
+Toto téma obsahuje vlastní kód, který můžete použít v hello vrstvy mimo aplikaci logiky. 
 
 ## <a name="custom-tracking-schema"></a>Schéma vlastní sledování
 ````java
@@ -63,19 +63,19 @@ Toto téma obsahuje vlastní kód, který můžete použít v vrstvy mimo aplika
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| SourceType |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. (Povinné) |
-| Zdroj |   | Pokud je typ zdroje **Microsoft.Logic/workflows**, informace o zdroji musí postupujte podle tohoto schématu. Pokud je typ zdroje **vlastní**, schéma je JToken. (Povinné) |
+| SourceType |   | Typ zdroje hello spustit. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. (Povinné) |
+| Zdroj |   | Pokud je typ zdroje hello **Microsoft.Logic/workflows**, informace o zdroji hello musí toofollow toto schéma. Pokud je typ zdroje hello **vlastní**, schéma hello je JToken. (Povinné) |
 | ID systému | Řetězec | ID logiku aplikace systému. (Povinné) |
 | identifikátor runId | Řetězec | Aplikace logiky spustit ID. (Povinné) |
-| operationName | Řetězec | Název operace (například akce nebo aktivační událost). (Povinné) |
-| repeatItemScopeName | Řetězec | Název položky opakovat, pokud je akce uvnitř `foreach` / `until` smyčky. (Povinné) |
-| repeatItemIndex | Integer | Jestli je akce uvnitř `foreach` / `until` smyčky. Určuje index opakovaných položky. (Povinné) |
-| trackingId | Řetězec | ID sledování ke korelaci zprávy. (Volitelné) |
-| correlationId | Řetězec | ID korelace ke korelaci zprávy. (Volitelné) |
-| clientRequestId | Řetězec | Klienta můžete naplnit ji ke korelaci zprávy. (Volitelné) |
-| eventLevel |   | Úroveň události. (Povinné) |
-| eventTime |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
-| recordType |   | Typ sledování záznamu. Povolená hodnota je **vlastní**. (Povinné) |
+| operationName | Řetězec | Název hello operace (například akce nebo aktivační událost). (Povinné) |
+| repeatItemScopeName | Řetězec | Je-li akce hello je uvnitř opakujte název položky `foreach` / `until` smyčky. (Povinné) |
+| repeatItemIndex | Integer | Jestli je akce hello uvnitř `foreach` / `until` smyčky. Určuje index opakovaných položky hello. (Povinné) |
+| trackingId | Řetězec | ID sledování toocorrelate hello zprávy. (Volitelné) |
+| correlationId | Řetězec | ID korelace, toocorrelate hello zprávy. (Volitelné) |
+| clientRequestId | Řetězec | Klient jej můžete naplnit toocorrelate zprávy. (Volitelné) |
+| eventLevel |   | Úroveň události hello. (Povinné) |
+| eventTime |   | Čas události hello ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
+| recordType |   | Typ záznamu sledovat hello. Povolená hodnota je **vlastní**. (Povinné) |
 | záznam |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování protokol B2B
@@ -85,5 +85,5 @@ Informace o protokolu B2B sledování schémata najdete v tématu:
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).   
-* Další informace o [sledování zpráv B2B na portálu služby Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Další informace o [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).
+* Další informace o [sledování zpráv B2B portálu Operations Management Suite hello](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Další informace o hello [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).

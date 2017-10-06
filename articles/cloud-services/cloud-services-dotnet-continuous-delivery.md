@@ -1,6 +1,6 @@
 ---
-title: "Nastavené průběžné doručování pro cloudové služby se sadou TFS v Azure | Microsoft Docs"
-description: "Zjistěte, jak nastavit průběžné doručování Azure cloudových aplikací. Ukázky kódu pro MSBuild příkazy příkazového řádku a skripty prostředí PowerShell."
+title: "aaaContinuous doručení pro cloudové služby se sadou TFS v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooset až nastavené průběžné doručování pro Azure cloudových aplikací. Ukázky kódu pro MSBuild příkazy příkazového řádku a skripty prostředí PowerShell."
 services: cloud-services
 documentationcenter: 
 author: kraigb
@@ -14,141 +14,141 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: kraigb
-ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c0e5e72ffbd3c05b84ce1733068e92c528bcc4b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>Nastavené průběžné doručování pro cloudové služby v Azure
-Proces popsaný v tomto článku se dozvíte, jak nastavit průběžné doručování Azure cloudových aplikací. Po každém vrácení kódu se změnami vám tento proces umožní automaticky vytvořit balíčky a nasadit balíček do Azure. Proces sestavení balíčku, který je popsaný v tomto článku je ekvivalentní **balíček** příkaz v sadě Visual Studio a publikování kroky jsou rovnocenná **publikovat** příkazu v sadě Visual Studio.
-Článek vysvětluje metod, které byste použili k vytvoření serveru sestavení s příkazy příkazového řádku nástroje MSBuild a skriptů prostředí Windows PowerShell a také ukazuje, jak Volitelně lze konfigurovat Visual Studio Team Foundation Server – definice sestavení Team použití nástroje MSBuild příkazy a skripty prostředí PowerShell. Proces je přizpůsobitelné prostředí pro sestavení a prostředí Azure cíl.
+Hello proces popsaný v tomto článku se dozvíte, jak tooset až nastavené průběžné doručování Azure cloudových aplikací. Tento proces umožňuje automatické vytvoření balíčků a nasadit balíček tooAzure hello po každé změnami kódu. Hello procesu sestavení balíčku popsané v tomto článku je ekvivalentní toohello **balíček** příkaz v sadě Visual Studio a publikování kroky jsou ekvivalentní toohello **publikovat** příkazu v sadě Visual Studio.
+Hello článek obsahuje hello metody toocreate sestavení serveru by používat s příkazy příkazového řádku nástroje MSBuild a skriptů prostředí Windows PowerShell a také ukazuje, jak nakonfigurovat toooptionally Visual Studio Team Foundation Server – definice sestavení Team toouse hello MSBuild příkazy a skripty prostředí PowerShell. proces Hello je přizpůsobitelné prostředí pro sestavení a prostředí Azure cíl.
 
-Můžete také použít Visual Studio Team Services, verzi sady TFS, která je hostovaná v Azure k tomu snadněji. 
+Můžete také použít Visual Studio Team Services, verzi sady TFS, která je hostovaná v Azure, toodo to snadněji. 
 
 Než začnete, byste měli publikovat aplikace ze sady Visual Studio.
-To zajistí, že všechny prostředky, které jsou dostupné a inicializovaného při pokusu automatizovat proces publikace.
+To zajistí, že jsou všechny prostředky hello dostupné a inicializovaného když pokusí tooautomate hello publikace procesu.
 
-## <a name="1-configure-the-build-server"></a>1: Konfigurace serveru sestavení
-Než vytvoříte balíček Azure pomocí nástroje MSBuild je na serveru sestavení nainstalovat požadovaný software a nástroje.
+## <a name="1-configure-hello-build-server"></a>1: Konfigurace hello serveru sestavení
+Než vytvoříte balíček Azure pomocí nástroje MSBuild je na serveru sestavení hello nainstalovat hello požadované softwaru a nástroje.
 
-Visual Studio není musí být nainstalovaný na serveru sestavení. Pokud chcete použít ke správě serveru sestavení služby sestavení Team Foundation, postupujte podle pokynů [služby sestavení Team Foundation] [ Team Foundation Build Service] dokumentaci.
+Visual Studio není požadovaná toobe nainstalován na serveru sestavení hello. Pokud chcete službu sestavení Team Foundation toomanage toouse sestavení serveru, postupujte podle pokynů hello v hello [služby sestavení Team Foundation] [ Team Foundation Build Service] dokumentaci.
 
-1. Na serveru, sestavení, nainstalujte [rozhraní .NET Framework 4.5.2][.NET Framework 4.5.2], což zahrnuje MSBuild.
-2. Nainstalujte si nejnovější verzi [nástroje pro tvorbu Azure pro .NET](https://azure.microsoft.com/develop/net/).
-3. Nainstalujte [knihovny Azure pro .NET](http://go.microsoft.com/fwlink/?LinkId=623519).
-4. Zkopírujte soubor Microsoft.WebApplication.targets z instalace sady Visual Studio k serveru sestavení.
+1. Na serveru hello sestavení, nainstalujte hello [rozhraní .NET Framework 4.5.2][.NET Framework 4.5.2], což zahrnuje MSBuild.
+2. Nainstalujte nejnovější hello [nástroje pro tvorbu Azure pro .NET](https://azure.microsoft.com/develop/net/).
+3. Nainstalujte hello [knihovny Azure pro .NET](http://go.microsoft.com/fwlink/?LinkId=623519).
+4. Kopírovat soubor Microsoft.WebApplication.targets hello z toohello instalace sady Visual Studio vytvořit server.
 
-   Na počítači s nainstalovanou sadu Visual Studio, tento soubor je umístěný v adresáři C:\\Program Files(x86)\\MSBuild\\Microsoft\\Visual Studio\\v14.0\\WebApplications. Měli byste ho zkopírovat do stejného adresáře na serveru sestavení.
-5. Nainstalujte [nástroje Azure pro sadu Visual Studio](https://www.visualstudio.com/features/azure-tools-vs.aspx).
+   Na počítači s nainstalovanou sadu Visual Studio, tento soubor je umístěný v adresáři hello C:\\Program Files(x86)\\MSBuild\\Microsoft\\Visual Studio\\v14.0\\WebApplications. Měli byste ho zkopírovat toohello stejný adresář na serveru sestavení hello.
+5. Nainstalujte hello [nástroje Azure pro sadu Visual Studio](https://www.visualstudio.com/features/azure-tools-vs.aspx).
 
 ## <a name="2-build-a-package-using-msbuild-commands"></a>2: vytvoření balíčku pomocí příkazů nástroje MSBuild
-Tato část popisuje, jak můžete vytvořit pomocí nástroje MSBuild příkazu, který vytvoří balíček Azure. Tento krok spusťte na serveru sestavení ověření všechno správně nakonfigurován a že příkaz MSBuild provést požadované na práci. Tento příkaz můžete přidat buď existující sestavení skriptů na serveru sestavení nebo příkazového řádku v definici sestavení TFS můžete použít, jak je popsáno v následující části. Další informace o parametry příkazového řádku a nástroje MSBuild najdete v tématu [příkazového řádku MSBuild – Reference](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx).
+Tato část popisuje, jak tooconstruct MSBuild příkaz, který vytvoří balíček Azure. Tento krok lze spusťte na hello sestavení serveru tooverify že všechno správně nakonfigurován a že hello MSBuild příkaz provést požadované ho toodo. Jak je popsáno v další části hello, můžete přidat buď tento příkazový řádek tooexisting skripty sestavení na hello sestavení serveru nebo můžete použít v definici sestavení TFS hello příkazového řádku. Další informace o parametry příkazového řádku a nástroje MSBuild najdete v tématu [příkazového řádku MSBuild – Reference](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx).
 
-1. Pokud Visual Studio je nainstalovaná na serveru sestavení, vyhledejte a vyberte **Visual Studio – příkazový řádek** v **nástroje sady Visual Studio** složky v systému Windows.
+1. Pokud na serveru sestavení hello je nainstalovaná sada Visual Studio, vyhledejte a vyberte **Visual Studio – příkazový řádek** v hello **nástroje sady Visual Studio** složky v systému Windows.
 
-   Pokud Visual Studio není nainstalována na serveru sestavení, otevřete příkazový řádek a ujistěte se, že je dostupný na cestě MSBuild.exe. MSBuild je nainstalován s rozhraním .NET Framework v cestě % WINDIR %\\Microsoft.NET\\Framework\\*verze*. Například MSBuild.exe přidat do proměnné prostředí PATH v případě, že máte nainstalované rozhraní .NET Framework 4, zadejte na příkazovém řádku následující příkaz:
+   Pokud Visual Studio není nainstalována na serveru hello sestavení, otevřete příkazový řádek a ujistěte se, že MSBuild.exe je dostupný v cestě. MSBuild se instaluje s hello rozhraní .NET Framework v hello cesta % WINDIR %\\Microsoft.NET\\Framework\\*verze*. Například proměnné prostředí PATH toohello MSBuild.exe přidat v případě, že máte nainstalované rozhraní .NET Framework 4, zadejte následující příkaz na příkazovém řádku hello hello:
 
        set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
-2. Na příkazovém řádku přejděte do složky obsahující soubor projektu Azure, který chcete vytvořit.
-3. Spuštění nástroje MSBuild pomocí / target: publikování možnost jako v následujícím příkladu:
+2. Na příkazovém řádku hello přejděte toohello složce obsahující soubor projektu Azure, které chcete toobuild.
+3. Spusťte nástroje MSBuild s hello/target: možnost jako hello následující ukázka publikování:
 
        MSBuild /target:Publish
 
-   Tuto možnost lze zkrátit na /t: publikování. Možnost /t:Publish v nástroji MSBuild Nezaměňovat s příkazy publikování, který je k dispozici v sadě Visual Studio Pokud máte sadu Azure SDK nainstalována. /T: publikovat pouze sestavení možnost Azure balíčky. Stejně jako příkazy Publikovat v sadě Visual Studio Nenasazuje balíčky.
+   Tuto možnost lze zkrátit na /t: publikování. možnost /t:Publish Hello v nástroji MSBuild Nezaměňovat s příkazy publikovat hello k dispozici v sadě Visual Studio až budete mít hello instalace Azure SDK. Hello /t: možnost publikování jen sestavení hello Azure balíčky. Stejně jako hello publikovat příkazy v sadě Visual Studio Nenasazuje hello balíčky.
 
-   Volitelně můžete zadat název projektu jako parametr MSBuild. Pokud není zadaný, použije se aktuální adresář. Další informace o možnostech příkazového řádku nástroje MSBuild najdete v tématu [příkazového řádku MSBuild – Reference](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx).
-4. Vyhledejte výstup. Ve výchozím nastavení, tento příkaz vytvoří adresář ve vztahu k kořenové složce projektu, například *ProjectDir*\\bin\\*konfigurace*\\app.publish\\. Při sestavování projektu Azure generovat dva soubory, samotný soubor balíčku a doprovodné konfigurační soubor:
+   Volitelně můžete zadat název projektu hello jako parametr MSBuild. Pokud není zadaný, použije se hello aktuální adresář. Další informace o možnostech příkazového řádku nástroje MSBuild najdete v tématu [příkazového řádku MSBuild – Reference](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx).
+4. Vyhledejte výstup hello. Ve výchozím nastavení, tento příkaz vytvoří adresář vztah toohello kořenové složky pro projekt hello, jako například *ProjectDir*\\bin\\*konfigurace* \\ app.publish\\. Při sestavování projektu Azure generovat ze dvou souborů, samotný soubor balíčku hello a hello doplňujícími konfigurační soubor:
 
    * Project.cspkg
    * Objekt ServiceConfiguration. *TargetProfile*.cscfg
 
-   Ve výchozím nastavení každý projekt, Azure zahrnuje jednu konfigurační soubor služby (soubor .cscfg) pro místní sestavení (ladění) a druhou pro sestavení cloudu (pracovním nebo produkčním), ale můžete přidat nebo odebrat soubory konfigurace služby podle potřeby. Když vytvoříte balíček Visual Studia, zobrazí se výzva které konfigurační soubor služby zahrnout společně se balíček.
-5. Zadejte konfigurační soubor služby. Když vytvoříte balíček pomocí nástroje MSBuild, místní služby konfigurační soubor je zahrnuté ve výchozím nastavení. K zahrnutí konfigurační soubor různé služby, nastavte vlastnost TargetProfile MSBuild příkazu, jako v následujícím příkladu:
+   Ve výchozím nastavení každý projekt, Azure zahrnuje jednu konfigurační soubor služby (soubor .cscfg) pro místní sestavení (ladění) a druhou pro sestavení cloudu (pracovním nebo produkčním), ale můžete přidat nebo odebrat soubory konfigurace služby podle potřeby. Když vytvoříte balíček Visual Studia, zobrazí se výzva které služby konfigurační soubor tooinclude spolu s hello balíčku.
+5. Zadejte konfigurační soubor služby hello. Když vytvoříte balíček pomocí nástroje MSBuild, hello místní služby konfigurační soubor je zahrnuté ve výchozím nastavení. tooinclude konfigurační soubor jinou službu, nastavte vlastnost TargetProfile hello MSBuild příkazu, stejně jako hello následující ukázka:
 
        MSBuild /t:Publish /p:TargetProfile=Cloud
-6. Zadejte umístění pro výstup. Nastavit cestu, pomocí /p:PublishDir =*Directory* \\ možnost, včetně koncové oddělovače zpětné lomítko, jako v následujícím příkladu:
+6. Zadejte umístění hello pro výstup hello. Cesta hello sady pomocí /p:PublishDir =*Directory* \\ možnost, včetně hello koncové oddělovače zpětné lomítko, stejně jako hello následující ukázka:
 
        MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
 
-   Jakmile jste sestavený a otestovat příslušné nástroje MSBuild příkazového řádku k vytvoření vašich projektů a zkombinovat do balíčku s Azure, můžete přidat tento příkazový řádek pro skripty sestavení. Pokud váš server sestavení používá vlastní skripty, tento proces bude záviset na jaké jsou specifikace svůj vlastní sestavovací proces. Pokud používáte jako prostředí pro sestavování sady TFS, můžete podle pokynů v dalším kroku přidejte balíček Azure sestavení do vašeho procesu sestavení.
+   Jakmile jste sestavený a otestovat příslušné nástroje MSBuild příkazového řádku toobuild vašich projektů a zkombinovat do balíčku s Azure, můžete přidat skripty sestavení tooyour Tento příkazový řádek. Pokud váš server sestavení používá vlastní skripty, tento proces bude záviset na jaké jsou specifikace svůj vlastní sestavovací proces. Pokud používáte jako prostředí pro sestavování sady TFS, můžete provést hello pokyny v hello další krok tooadd hello balíček Azure sestavení tooyour procesu sestavení.
 
 ## <a name="3-build-a-package-using-tfs-team-build"></a>3: vytvoření balíčku pomocí TFS Team Build
-Pokud máte nastavený jako řadič sestavení a sestavení serveru Team Foundation Server (TFS) nastavit jako počítač sestavení sady TFS a potom automatizované sestavení Volitelně můžete nastavit pro balíčku Azure. Informace o tom, jak nastavit a používat jako systém sestavení Team Foundation server najdete v tématu [škálování systém sestavení][Scale out your build system]. Zejména následující postup předpokládá, že jste nakonfigurovali vašem serveru sestavení, jak je popsáno v [nasadit a nakonfigurovat server sestavení][Deploy and configure a build server], a že jste vytvořili týmového projektu, vytvoří projekt cloudové služby v týmový projekt.
+Máte-li nastavit jako řadič sestavení a hello sestavení serveru Team Foundation Server (TFS) nastavit jako počítač sestavení sady TFS a potom automatizované sestavení Volitelně můžete nastavit pro balíčku Azure. Informace o tom, jak tooset nahoru a použít Team Foundation server jako systém sestavení, najdete v části [škálování systém sestavení][Scale out your build system]. Zejména následující postup předpokládá, že jste nakonfigurovali vašem serveru sestavení, jak je popsáno v [nasadit a nakonfigurovat server sestavení][Deploy and configure a build server], a že jste vytvořili týmového projektu, vytvoření cloudu projekt služby v hello týmového projektu.
 
-Pokud chcete konfigurovat TFS sestavovat balíčky, Azure, proveďte následující kroky:
+tooconfigure TFS toobuild Azure balíčky, proveďte následující kroky hello:
 
-1. V sadě Visual Studio ve svém vývojovém počítači, v nabídce Zobrazit zvolte **Team Explorer**, nebo zvolte Ctrl +\\, Ctrl + M. V okně Team Explorer rozbalte **sestavení** uzlu, nebo zvolte **sestavení** stránce a vyberte **novou definici sestavení**.
+1. V sadě Visual Studio ve svém vývojovém počítači, v nabídce zobrazení hello zvolte **Team Explorer**, nebo zvolte Ctrl +\\, Ctrl + M. V okně Team Explorer rozbalte hello **sestavení** uzlu, nebo zvolte hello **sestavení** stránce a vyberte **novou definici sestavení**.
 
    ![Nová možnost definice sestavení][0]
-2. Vyberte **aktivační událost** a zadejte požadované podmínek, když chcete, aby balíček, který má být sestaven. Můžete například zadat **průběžnou integraci** dojde k vytvoření balíčku vždy, když zdroj řídí změnami.
-3. Vyberte **nastavení zdroje** kartě a zajistěte, aby složky projektu, je uvedena ve **zdrojové složky řízení** sloupce a stav je **Active**.
-4. Vyberte **sestavení výchozí** a v části sestavení řadič, ověřte název serveru sestavení.  Také, zvolte možnost **kopie sestavení výstup do následující složky, vyřaďte** a zadejte požadované rozevírací umístění.
-5. Vyberte **proces** kartě. Na kartě procesu zvolit výchozí šablonu, v části **sestavení**, zvolte projekt, pokud není vybrána a rozbalte **Upřesnit** tématu **sestavení** části mřížky.
-6. Zvolte **argumenty MSBuild**a nastavte příslušné argumenty příkazového řádku nástroje MSBuild, jak je popsáno v kroku 2 výše. Zadejte například **/t: publikování /p:PublishDir =\\\\myserver\\zahodí\\**  k vytvoření balíčku a zkopírujte soubory balíčku do umístění \\ \\myserver\\zahodí\\:
+2. Zvolte hello **aktivační událost** a zadejte hello požadovaných podmínek, když chcete hello toobe balíček vytvořen. Můžete například zadat **průběžnou integraci** dojde k toobuild hello balíček vždy, když zdroj řídí změnami.
+3. Zvolte hello **nastavení zdroje** kartě a zajistěte, aby složky projektu je uvedena v hello **zdrojové složky řízení** sloupce, a stav hello **Active**.
+4. Zvolte hello **sestavení výchozí** a v kontroleru buildu, ověřte název hello hello sestavení serveru.  Také vyberte možnost hello **kopie sestavení výstupu toohello následující vyřadit složky** a zadejte umístění rozevírací hello potřeby.
+5. Zvolte hello **proces** kartě. Na kartě hello procesu, zvolte hello výchozí šablony, v části **sestavení**, zvolte projekt hello, pokud není vybrána a rozbalte hello **Upřesnit** část v hello **sestavení**části hello mřížky.
+6. Zvolte **argumenty MSBuild**a nastavte hello příslušné nástroje MSBuild argumenty příkazového řádku, jak je popsáno v kroku 2 výše. Zadejte například **/t: publikování /p:PublishDir =\\\\myserver\\zahodí\\**  toobuild hello balíček balíčku a zkopírujte soubory toohello umístění \\ \\myserver\\zahodí\\:
 
    ![Argumenty MSBuild][2]
 
    > [!NOTE]
-   > Kopírování souborů do veřejného umístění usnadňuje ručně nasadit balíčky z vývojovém počítači.
-7. Kontrola v změn do projektu test úspěch kroku sestavení nebo fronty, nové sestavení. Fronty, nové sestavení, v Team Exploreru kliknete pravým tlačítkem na **všechny definice sestavení,** a potom zvolte **fronty nové sestavení**.
+   > Kopírování souborů tooa hello veřejné složky umožňuje snazší toomanually nasadit balíčky hello z vývojovém počítači.
+7. Testování úspěšnosti hello kroku sestavení kontrolou v projektu tooyour změnu nebo fronty, nové sestavení. Klikněte pravým tlačítkem na tooqueue až nového sestavení, v nástroji Team Explorer **všechny definice sestavení,** a potom zvolte **fronty nové sestavení**.
 
 ## <a name="4-publish-a-package-using-a-powershell-script"></a>4: publikování balíčku pomocí skriptu prostředí PowerShell
-Tato část popisuje, jak vytvořit skript prostředí Windows PowerShell, která bude publikovat balíček výstup cloudové aplikace do Azure pomocí volitelné parametry. Tento skript je možné volat po kroku sestavení ve vaší vlastní sestavovací automation. Také může být volána z aktivit pracovního postupu šablonu procesu v sestavení Team TFS s Visual Studio.
+Tato část popisuje, jak tooconstruct skript prostředí Windows PowerShell, která bude publikovat balíček aplikace hello cloudu výstup tooAzure pomocí volitelné parametry. Tento skript je možné volat po kroku hello sestavení ve vaší vlastní sestavovací automation. Také může být volána z aktivit pracovního postupu šablonu procesu v sestavení Team TFS s Visual Studio.
 
-1. Nainstalujte [rutin prostředí Azure PowerShell] [ Azure PowerShell cmdlets] (v0.6.1 nebo vyšší).
-   Během fáze instalace rutiny zvolte instalaci jako modul snap-in. Všimněte si, že tato oficiálně podporované verze nahrazuje starší verze nabízeným přes webu CodePlex, i když bylo předchozí verze číslované 2.x.x.
-2. Otevřete prostředí Azure PowerShell pomocí nabídky Start nebo úvodní stránka. Pokud spustíte tímto způsobem, budou načteny rutin prostředí Azure PowerShell.
-3. Do příkazového řádku Powershellu, ověřte, zda jsou načteny rutin prostředí PowerShell zadáním příkazu částečné `Get-Azure` a stisknutím klávesy tabulátor pro dokončování.
+1. Nainstalujte hello [rutin prostředí Azure PowerShell] [ Azure PowerShell cmdlets] (v0.6.1 nebo vyšší).
+   Během fáze instalace hello rutiny vyberte tooinstall jako modul snap-in. Všimněte si, že tato oficiálně podporované verze nahrazuje starší verze hello nabízeným přes webu CodePlex, i když bylo předchozí verze hello číslované 2.x.x.
+2. Otevřete prostředí Azure PowerShell pomocí hello nabídky Start nebo úvodní stránky. Pokud spustíte tímto způsobem, budou načteny hello rutin prostředí Azure PowerShell.
+3. Na příkazovém řádku prostředí PowerShell text hello, ověřte, zda jsou načteny hello rutiny prostředí PowerShell zadáním příkazu částečné hello `Get-Azure` a stisknutím klávesy tabulátor pro dokončování hello.
 
-   Pokud opakovaně stiskněte klávesu Tabulátor, měli byste vidět různé příkazy prostředí Azure PowerShell.
-4. Ověřte, že se můžete připojit k předplatnému Azure pomocí Import ze souboru .publishsettings informace o vašem předplatném.
+   Když stisknete klávesy Tab hello opakovaně, měli byste vidět různé příkazy prostředí Azure PowerShell.
+4. Ověřte, že můžete importovat informace o vašem předplatném ze souboru .publishsettings hello připojit tooyour předplatného Azure.
 
    `Import-AzurePublishSettingsFile c:\scripts\WindowsAzure\default.publishsettings`
 
-   Potom zadejte příkaz
+   Potom zadejte příkaz hello
 
    `Get-AzureSubscription`
 
    Ukazuje to informace o vašem předplatném. Ověřte, že je vše v pořádku.
-5. Uložit šablonu skript zadaná na konci tohoto článku do složky skriptů jako c:\\skripty\\WindowsAzure\\**PublishCloudService.ps1**.
-6. Projděte si část parametry skriptu. Přidat nebo upravit všechny výchozí hodnoty. Tyto hodnoty mohou být přepsány vždy explicitní parametrů.
-7. Zajistí existuje, platný cloudové služby a úložiště účtů v rámci vašeho předplatného, které mohou být zaměřeny skriptem publikovat vytvoření. Účet úložiště (úložiště objektů blob) se použije k nahrání a nasazení balíčku a konfigurační soubor dočasně uložit, je při vytváření nasazení.
+5. Uložení šablony skriptu hello uvedených v hello konci tohoto článku do složky skriptů jako c:\\skripty\\WindowsAzure\\**PublishCloudService.ps1**.
+6. Projděte si část parametry hello hello skriptu. Přidat nebo upravit všechny výchozí hodnoty. Tyto hodnoty mohou být přepsány vždy explicitní parametrů.
+7. Ujistěte se, nejsou platná cloudové služby a účty úložiště vytvořené v rámci vašeho předplatného, který může být cílem hello publikování skriptu. Účet úložiště (úložiště objektů blob) bude použité tooupload a dočasně uložit hello nasazení balíčku a konfigurační soubor je při vytváření nasazení.
 
-   * Pokud chcete vytvořit novou cloudovou službu, můžete volat tento skript nebo použít [portál Azure](https://portal.azure.com). Název cloudové služby se použije jako předponu v platný plně kvalifikovaný název domény, a proto musí být jedinečný.
+   * toocreate novou cloudovou službu, můžete volat tento skript nebo použijte hello [portál Azure](https://portal.azure.com). Název cloudové služby Hello se použije jako předponu v platný plně kvalifikovaný název domény, a proto musí být jedinečný.
 
          New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-   * Pokud chcete vytvořit nový účet úložiště, můžete volat tento skript nebo použít [portál Azure](https://portal.azure.com). Název účtu úložiště se použije jako předponu v platný plně kvalifikovaný název domény, a proto musí být jedinečný. Můžete se pokusit použít stejný název jako cloudová služba.
+   * toocreate nový účet úložiště, můžete volat tento skript nebo použijte hello [portál Azure](https://portal.azure.com). název účtu úložiště Hello se použije jako předponu v platný plně kvalifikovaný název domény, a proto musí být jedinečný. Můžete se pokusit hello stejný název jako cloudová služba.
 
          New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-8. Volání skript přímo z prostředí Azure PowerShell nebo propojit se tento skript k vaší automatizace sestavení hostitele dochází po sestavení balíčku.
+8. Volání skriptu hello přímo z prostředí Azure PowerShell nebo propojit se tento skript tooyour hostitele sestavení automatizace toooccur po sestavení balíčku hello.
 
    > [!IMPORTANT]
-   > Skript bude vždy odstranit nebo nahradit existující nasazení ve výchozím nastavení, pokud jsou zjišťovány. Toto je nutná pro povolení průběžné doručování z automatizace, kde je možné použít bez vyzvání uživatele.
+   > Hello skript bude vždy odstranit nebo nahradit existující nasazení ve výchozím nastavení, pokud jsou zjišťovány. Toto je nutná pro povolení průběžné doručování z automatizace, kde je možné použít bez vyzvání uživatele.
    >
    >
 
-   **Příklad scénáře 1:** průběžné nasazování pro pracovní prostředí služby:
+   **Příklad scénáře 1:** toohello průběžné nasazování pracovní prostředí služby:
 
        PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-   To je obvykle následuje test spusťte ověření a prohození virtuálních IP adres. Prohození virtuálních IP adres, můžete to udělat pomocí [portál Azure](https://portal.azure.com) nebo pomocí rutiny přesunutí nasazení.
+   To je obvykle následuje test spusťte ověření a prohození virtuálních IP adres. swap Hello VIP, můžete to udělat pomocí hello [portál Azure](https://portal.azure.com) nebo pomocí rutiny hello přesunutí nasazení.
 
-   **Příklad scénáře 2:** průběžné nasazování do produkčního prostředí služby vyhrazené testu
+   **Příklad scénáře 2:** průběžné nasazování toohello provozním prostředí služby vyhrazené testu
 
        PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Production -enableDeploymentUpgrade 1 -serviceName mycloudservice -storageAccountName mystorageaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
    **Vzdálená plocha:**
 
-   Pokud v projektu Azure, budete muset provést další kroky jednorázové zajistit, že je načtený správný certifikát služby Cloud ke všem cloudovým službám, které jsou cílem tento skript je povolené vzdálené plochy.
+   Pokud je povoleno vzdálené plochy v projektu Azure budete potřebovat další jednorázové kroky tooperform tooensure hello je správný certifikát cloudové služby nahrán tooall cloudové služby, která je cílem tohoto skriptu.
 
-   Vyhledejte hodnoty kryptografického otisku certifikátu očekávanou role. Kryptografický otisk hodnoty jsou viditelné v části certifikáty do cloudu konfiguračního souboru (tj. ServiceConfiguration.Cloud.cscfg). Je také viditelné v dialogovém okně Konfigurace vzdálené plochy v sadě Visual Studio při zobrazení možností a zobrazení vybraný certifikát.
+   Vyhledejte hodnoty kryptografického otisku certifikátu hello očekávanou role. Kryptografický otisk hodnoty jsou viditelné v části certifikáty hello souboru konfigurace cloudu (tj. ServiceConfiguration.Cloud.cscfg). Je také v dialogovém okně hello konfigurace vzdálené plochy v sadě Visual Studio viditelné zobrazit možnosti a zobrazení hello výběru certifikátu.
 
        <Certificates>
              <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="C33B6C432C25581601B84C80F86EC2809DC224E8" thumbprintAlgorithm="sha1" />
        </Certificates>
 
-   Nahrání certifikátů vzdálené plochy jako krok jednorázové instalace pomocí následující rutiny skriptu:
+   Nahrání certifikátů vzdálené plochy jako krok jednorázové instalace pomocí následující rutiny skriptu hello:
 
        Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY\<THUMBPRINT>)
 
@@ -156,31 +156,31 @@ Tato část popisuje, jak vytvořit skript prostředí Windows PowerShell, kter�
 
        Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-   Případně můžete exportovat soubor PFX certifikátu s privátním klíčem a nahrát certifikáty na každý cílový cloud služby pomocí [portál Azure](https://portal.azure.com).
+   Případně můžete exportovat soubor certifikátu PFX hello s privátní klíč a nahrávání certifikátů tooeach cílový cloud service pomocí [portál Azure](https://portal.azure.com).
 
    <!---
-   Fixing broken links for Azure content migration from ACOM to DOCS. I'm unable to find a replacement links, so I'm commenting out this reference for now. The author can investigate in the future. "Read the following article to learn more: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx.
+   Fixing broken links for Azure content migration from ACOM tooDOCS. I'm unable toofind a replacement links, so I'm commenting out this reference for now. hello author can investigate in hello future. "Read hello following article toolearn more: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx.
    -->
    **Upgrade a nasazení. Odstranění nasazení -\> nové nasazení**
 
-   Skript bude ve výchozím nastavení provádět nasazení upgradu ($enableDeploymentUpgrade = 1) Pokud žádný parametr se předává v nebo hodnota 1, je předaná explicitně. Pro jeden instance to nabízí výhodu v podobě trvá kratší dobu, než úplné nasazení. Pro instance, které vyžadují vysokou dostupnost, to také nabízí výhodu v podobě ponechat některé instancí spuštěných zatímco jiné jsou upgradovány (proti vaší doméně aktualizace), plus vaše virtuální IP adresy se neodstraní.
+   Hello skript bude ve výchozím nastavení provádět nasazení upgradu ($enableDeploymentUpgrade = 1) Pokud žádný parametr se předává v nebo hodnota 1, je předaná explicitně. Pro jeden instance to nabízí výhodu v podobě trvá kratší dobu, než úplné nasazení. Pro instance, které vyžadují vysokou dostupnost, to také obsahuje výhod hello ponechat některé instancí spuštěných zatímco jiné jsou upgradovány (proti vaší doméně aktualizace), plus vaše virtuální IP adresy se neodstraní.
 
-   Nasazení upgradu lze zakázat ve skriptu ($enableDeploymentUpgrade = 0) nebo pomocí předání *- enableDeploymentUpgrade 0* jako parametr, který mění chování skriptu nejprve odstranit všechna stávající nasazení a pak vytvořte nové nasazení.
+   Nasazení upgradu můžete zakázat v hello skriptu ($enableDeploymentUpgrade = 0) nebo pomocí předání *- enableDeploymentUpgrade 0* jako parametr, který mění skriptu chování toofirst odstranit všechna stávající nasazení a pak vytvořte nové nasazení.
 
    > [!IMPORTANT]
-   > Skript bude vždy odstranit nebo nahradit existující nasazení ve výchozím nastavení, pokud jsou zjišťovány. Toto je nutná pro povolení nastavené průběžné doručování ze služby automation, kde je možné použít bez vyzvání uživatele / – operátor.
+   > Hello skript bude vždy odstranit nebo nahradit existující nasazení ve výchozím nastavení, pokud jsou zjišťovány. Toto je nutná pro povolení nastavené průběžné doručování ze služby automation, kde je možné použít bez vyzvání uživatele / – operátor.
    >
    >
 
 ## <a name="5-publish-a-package-using-tfs-team-build"></a>5: publikování balíčku pomocí TFS Team Build
-Tento volitelný krok připojí TFS Team od sestavení k skript vytvořený v kroku 4, která zpracovává publikování sestavení balíčku do Azure. To zahrnuje, úprava šablony procesu, který používá svou definici sestavení tak, aby běžel aktivitu publikovat na konci pracovního postupu. Aktivita publikování provede příkazu prostředí PowerShell předávání v parametry z buildu. Výstup MSBuild cílí a publikovat skriptu se přesměruje do výstupu standardní sestavení.
+Tento volitelný krok připojí TFS Team Build toohello skript vytvořený v kroku 4, která zpracovává publikování tooAzure sestavení balíčku hello. To má za následek změny hello používá svou definici sestavení tak, aby běžel aktivitu publikovat na konci hello hello pracovní postup šablony procesu. Hello publikovat aktivita provede předávání v parametrech ze sestavení hello příkazu prostředí PowerShell. Výstup hello MSBuild cílí a publikovat skript bude přesměrovat do výstupu standardní sestavení hello.
 
-1. Upravit definici sestavení zodpovědná za průběžné nasazování.
-2. Vyberte **proces** kartě.
-3. Postupujte podle [tyto pokyny](http://msdn.microsoft.com/library/dd647551.aspx) Přidání aktivity projektu pro šablonu procesu sestavení, stáhnout výchozí šablonu, přidejte do projektu a vrácení se změnami. Zadejte nový název, jako je například AzureBuildProcessTemplate šablony procesu sestavení.
-4. Vraťte se do **proces** kartě a používat **zobrazit podrobnosti** zobrazíte seznam šablony procesu sestavení k dispozici. Vyberte **nové...**  tlačítko a přejděte do projektu, stačí přidat a vrátit se změnami. Vyhledejte šablonu, kterou jste právě vytvořili a zvolte **OK**.
-5. Otevřete vybrané šablony procesu pro úpravy. Můžete otevřít přímo v Návrháři pracovních postupů, nebo v editoru XML pro práci s XAML.
-6. Následující seznam argumentů, nové přidáte jako samostatný řádek položky na kartě argumenty v Návrháři pracovních postupů. Všechny argumenty by měl mít směr = v a typ = řetězec. Tyto se použije tok parametry z definice sestavení do pracovního postupu, které pak získat používá k volání skriptu publikovat.
+1. Upravit hello sestavení definice zodpovědná za průběžné nasazování.
+2. Vyberte hello **proces** kartě.
+3. Postupujte podle [tyto pokyny](http://msdn.microsoft.com/library/dd647551.aspx) tooadd projektu aktivity pro hello šablony procesu sestavení, stáhnout výchozí šablonu pro hello, přidejte ho do projektu hello a vrácení se změnami. Zadejte nový název, jako je například AzureBuildProcessTemplate šablony procesu sestavení hello.
+4. Vrátí toohello **proces** kartě a používat **zobrazit podrobnosti** tooshow seznam šablony procesu sestavení k dispozici. Zvolte hello **nový...**  tlačítko a přejděte toohello projektu, stačí přidat a vrátit se změnami. Vyhledejte hello šablonu, kterou jste právě vytvořili a zvolte **OK**.
+5. Otevřete hello vybrané šablony procesu pro úpravy. Můžete otevřít přímo v Návrháři pracovních postupů hello nebo v toowork editor XML hello s hello XAML.
+6. Přidejte následující seznam nových argumentů jako samostatné řádku položky v kartě argumenty hello Návrháře pracovního postupu hello hello. Všechny argumenty by měl mít směr = v a typ = řetězec. Budou tyto parametry použité tooflow z definice sestavení hello do hello pracovního postupu, který pak použít toocall hello get publikování skriptu.
 
        SubscriptionName
        StorageAccountName
@@ -193,7 +193,7 @@ Tento volitelný krok připojí TFS Team od sestavení k skript vytvořený v kr
 
    ![Seznam argumentů][3]
 
-   Odpovídající XAML vypadá takto:
+   Hello odpovídající XAML vypadá takto:
 
        <Activity  _ />
          <x:Members>
@@ -228,38 +228,38 @@ Tento volitelný krok připojí TFS Team od sestavení k skript vytvořený v kr
          </x:Members>
 
          <this:Process.MSBuildArguments>
-7. Přidejte nové pořadí na konci spustit na agenta:
+7. Přidejte nové pořadí na konci hello spustit na agenta:
 
-   1. Začněte přidáním aktivitu Pokud příkaz zkontrolujte soubor platný skriptu. Podmínka nastavená na tuto hodnotu:
+   1. Začněte přidáním toocheck Pokud příkaz aktivity pro soubor platný skriptu. Nastavte hodnotu toothis hello podmínku:
 
           Not String.IsNullOrEmpty(PublishScriptLocation)
-   2. Pak případ Pokud příkaz Přidat novou aktivitu pořadí. Nastavit počáteční publikovat zobrazovaný název
-   3. S spuštění publikování pořadí při výběru, přidejte následující seznam nové proměnné jako samostatné řádku položky v kartě proměnné v Návrháři pracovních postupů. Všechny proměnné, měl by být proměnné typ = řetězec a obor = počáteční publikovat. Tyto se použije tok parametry z definice sestavení do pracovního postupu, které pak získat používá k volání skriptu publikovat.
+   2. Hello pak případ hello příkaz If přidejte nová aktivita pořadí. Sada hello zobrazovaný název too'Start publikovat.
+   3. S hello počáteční publikování pořadí při výběru přidejte jako samostatné položky řádek na kartě proměnné hello Návrháře pracovního postupu v následujícím seznamu nové proměnné. Všechny proměnné, měl by být proměnné typ = řetězec a obor = počáteční publikovat. Budou tyto parametry použité tooflow z definice sestavení hello do pracovního postupu, který pak použít toocall hello get publikování skriptu.
 
       * SubscriptionDataFilePath typu řetězec.
       * PublishScriptFilePath typu řetězec.
 
         ![Nové proměnné][4]
-   4. Pokud používáte sady TFS 2012 nebo starším, přidejte aktivitu ConvertWorkspaceItem na začátku nového pořadí. Pokud používáte sady TFS 2013 nebo novější, přidejte aktivitu GetLocalPath na začátku nového pořadí. Pro ConvertWorkspaceItem, nastavte vlastnosti takto: směr = ServerToLocal, DisplayName = název souboru skriptu publikovat převést, vstup = PublishScriptLocation, výsledek = PublishScriptFilePath, pracovní prostor = 'Prostoru'. Pro aktivitu GetLocalPath nastavte vlastnost IncomingPath na 'PublishScriptLocation' a výsledek, který má 'PublishScriptFilePath'. Tato aktivita převede cestu do skriptu publikování z TFS umístění serveru (Pokud je k dispozici) na místní disk standardní cestu.
-   5. Pokud používáte sady TFS 2012 nebo starším, přidejte další aktivitu ConvertWorkspaceItem na konci tohoto nového pořadí. Směr ServerToLocal, DisplayName = = převést předplatné filename, vstup = SubscriptionDataFileLocation, výsledek = SubscriptionDataFilePath, pracovní prostor = 'Prostoru'. Pokud používáte sady TFS 2013 nebo novější, přidejte další GetLocalPath. IncomingPath = 'SubscriptionDataFileLocation' a výsledek = "SubscriptionDataFilePath."
-   6. Přidejte aktivitu, InvokeProcess na konci tohoto nového pořadí.
-      Tato aktivita volá PowerShell.exe s argumenty předaná v definici sestavení.
+   4. Pokud používáte TFS 2012 nebo starší, přidat aktivitu ConvertWorkspaceItem na začátku hello hello nové pořadí. Pokud používáte sady TFS 2013 nebo novější, přidejte aktivitu GetLocalPath na začátku hello hello nové pořadí. Pro ConvertWorkspaceItem, nastavte vlastnosti hello následujícím způsobem: směr = ServerToLocal, DisplayName = název souboru skriptu publikovat převést, vstup = PublishScriptLocation, výsledek = PublishScriptFilePath, pracovní prostor = 'Prostoru'. Pro aktivitu GetLocalPath nastavit hello vlastnost IncomingPath too'PublishScriptLocation', a výsledek too'PublishScriptFilePath hello ". Tato aktivita převede hello cesta toohello publikování skript z umístění serveru TFS (pokud existuje) tooa disků na úrovni standard místní cesta.
+   5. Pokud používáte TFS 2012 nebo starší, přidejte další aktivitu ConvertWorkspaceItem na konci hello hello nové pořadí. Směr ServerToLocal, DisplayName = = převést předplatné filename, vstup = SubscriptionDataFileLocation, výsledek = SubscriptionDataFilePath, pracovní prostor = 'Prostoru'. Pokud používáte sady TFS 2013 nebo novější, přidejte další GetLocalPath. IncomingPath = 'SubscriptionDataFileLocation' a výsledek = "SubscriptionDataFilePath."
+   6. Přidejte aktivitu, InvokeProcess na konci hello hello nové pořadí.
+      Toto volání aktivity PowerShell.exe s argumenty hello předaná v hello definice sestavení.
 
       + Argumenty = String.Format ("-""{0}" "- serviceName {1} - storageAccountName {2} - packageLocation""{3}" "– cloudConfigLocation""{4}" "– subscriptionDataFile""{5}" "- selectedSubscription {6} souboru-prostředí""{7}" "", PublishScriptFilePath, ServiceName, StorageAccountName, PackageLocation, CloudConfigLocation, SubscriptionDataFilePath, Název_předplatného, prostředí)
       + DisplayName = Execute publikování skriptu
-      + Název souboru = "PowerShell" (použít uvozovky)
+      + Název souboru = "PowerShell" (včetně uvozovek hello)
       + OutputEncoding = System.Text.Encoding.GetEncoding(System.Globalization.CultureInfo.InstalledUICulture.TextInfo.OEMCodePage)
-   7. V **zpracování standardní výstup** část textového InvokeProcess, nastavte hodnotu textové pole na "data". Toto je proměnnou pro uložení standardní výstupní data.
-   8. Přidat aktivitu WriteBuildMessage právě níže **zpracování standardní výstup** části. Nastavit význam = 'Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High' a zpráva = "data". Tím se zajistí ve standardním výstupu skriptu získat zapíšou do výstupu sestavení.
-   9. V **zpracovávat chyby výstupu** část textového InvokeProcess, nastavte hodnotu textové pole na "data". Toto je proměnnou pro uložení dat standardní chyba.
-   10. Přidat aktivitu WriteBuildError právě níže **zpracovávat chyby výstupu** části. Nastavit zprávu = "data". Tím se zajistí, že standard chyby skriptu získat zapíšou do výstupu chyby sestavení.
-   11. Opravte všechny chyby, indikován blue vykřičníku značky. Najeďte myší značky vykřičníku získat nápovědu o této chybě. Uložení pracovního postupu vymazat chyby.
+   7. V hello **zpracování standardní výstup** část textového InvokeProcess, nastavte too'data hodnota textbox hello ". Toto je proměnné toostore hello standardní výstupní data.
+   8. Přidat aktivitu WriteBuildMessage pod hello **zpracování standardní výstup** části. Nastavit hello důležitosti = 'Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High' a hello zpráva = "data". Tím se zajistí, že hello standardní výstup skriptu získat zapíšou toohello výstupu sestavení.
+   9. V hello **zpracovávat chyby výstupu** část textového InvokeProcess, nastavte too'data hodnota textbox hello ". Toto je dat proměnné toostore hello standardní chyba.
+   10. Přidat aktivitu WriteBuildError pod hello **zpracovávat chyby výstupu** části. Nastavit hello zpráva = "data". Tím se zajistí, že hello standard chyby skriptu hello získat zapíšou toohello sestavení chyby výstupu.
+   11. Opravte všechny chyby, indikován blue vykřičníku značky. Pozastavte ukazatel myši nad tooget vykřičníku značky nápovědu o chybě hello. Uložení pracovního postupu hello zrušte chyby.
 
-   Konečný výsledek aktivit pracovního postupu publikovat bude v Návrháři vypadat například takto:
+   Konečný výsledek Hello hello publikovat pracovní postup, který aktivity bude vypadat například takto v Návrháři hello:
 
    ![Aktivity pracovního postupu][5]
 
-   Konečný výsledek aktivit pracovního postupu publikovat bude vypadat takto v jazyce XAML:
+   Konečný výsledek Hello hello publikovat pracovní postup, který aktivity bude vypadat například takto v jazyce XAML:
 
        <If Condition="[Not String.IsNullOrEmpty(PublishScriptLocation)]" sap2010:WorkflowViewState.IdRef="If_1">
            <If.Then>
@@ -292,22 +292,22 @@ Tento volitelný krok připojí TFS Team od sestavení k skript vytvořený v kr
            </If.Then>
          </If>
        </Sequence>
-8. Uložte tento soubor pracovní postup šablony procesu sestavení a vrátit se změnami.
-9. Upravit definici sestavení (zavřete ho Pokud už je otevřený) a vyberte **nový** tlačítko, pokud ještě nevidíte nové šablony v seznamu šablon procesů.
-10. Nastavte parametr hodnoty vlastností v části různé takto:
+8. Uložte hello pracovní postup šablony procesu sestavení a kontrola v tomto souboru.
+9. Upravit definici sestavení hello (zavřete ho Pokud už je otevřený) a vyberte hello **nový** tlačítko, pokud ještě nevidíte hello nové šablony v seznamu hello šablon procesů.
+10. Nastavte hodnoty hello parametr vlastností v hello různé části takto:
 
     1. CloudConfigLocation = "c:\\zahodí\\app.publish\\ServiceConfiguration.Cloud.cscfg' *tato hodnota se odvozuje od: ($PublishDir)ServiceConfiguration.Cloud.cscfg*
     2. PackageLocation = "c:\\zahodí\\app.publish\\ContactManager.Azure.cspkg' *tato hodnota se odvozuje od: ($PublishDir)($ProjectName) .cspkg*
     3. PublishScriptLocation = "c:\\skripty\\WindowsAzure\\PublishCloudService.ps1.
-    4. ServiceName = 'mycloudservicename' *zde použít název příslušné cloudové služby*
+    4. ServiceName = 'mycloudservicename' *použití hello odpovídající název cloudové služby zde*
     5. Prostředí = "pracovní.
-    6. StorageAccountName = 'mystorageaccountname' *zde použít název účtu příslušné úložiště*
+    6. StorageAccountName = 'mystorageaccountname' *název účtu úložiště odpovídající pomocí hello sem*
     7. SubscriptionDataFileLocation = "c:\\skripty\\WindowsAzure\\Subscription.xml.
     8. Název_předplatného = "default"
 
     ![Vlastnost hodnoty parametru][6]
-11. Uložte změny do definice sestavení.
-12. Fronta sestavení ke spouštění balíčku sestavení a publikování. Pokud je nastavena na průběžnou integraci aktivační událost, provede toto chování na každý vrácení se změnami.
+11. Uložte změny toohello hello definice sestavení.
+12. Fronta sestavení tooexecute obě hello balíček sestavení a publikování. Pokud máte aktivační událost nastavit tooContinuous integrace, provede toto chování na každý vrácení se změnami.
 
 ### <a name="publishcloudserviceps1-script-template"></a>Šablona PublishCloudService.ps1 skriptu
 ```
@@ -316,7 +316,7 @@ Param(  $serviceName = "",
         $packageLocation = "",
         $cloudConfigLocation = "",
         $environment = "Staging",
-        $deploymentLabel = "ContinuousDeploy to $servicename",
+        $deploymentLabel = "ContinuousDeploy too$servicename",
         $timeStampFormat = "g",
         $alwaysDeleteExistingDeployments = 1,
         $enableDeploymentUpgrade = 1,
@@ -332,7 +332,7 @@ function Publish()
     {
         Write-Output "$(Get-Date -f $timeStampFormat) - No deployment is detected. Creating a new deployment. "
     }
-    #check for existing deployment and then either upgrade, delete + deploy, or cancel according to $alwaysDeleteExistingDeployments and $enableDeploymentUpgrade boolean variables
+    #check for existing deployment and then either upgrade, delete + deploy, or cancel according too$alwaysDeleteExistingDeployments and $enableDeploymentUpgrade boolean variables
     if ($deployment.Name -ne $null)
     {
         switch ($alwaysDeleteExistingDeployments)
@@ -499,7 +499,7 @@ $subscriptionname = $subscription.subscriptionname
 $subscriptionid = $subscription.subscriptionid
 $slot = $environment
 
-#main driver - publish & write progress to activity log
+#main driver - publish & write progress tooactivity log
 Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy script started."
 Write-Output "$(Get-Date -f $timeStampFormat) - Preparing deployment of $deploymentLabel for $subscriptionname with Subscription ID $subscriptionid."
 
@@ -513,7 +513,7 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Chcete-li povolit vzdálené ladění při použití nastavené průběžné doručování, přečtěte si téma [povolení vzdáleného ladění při publikování v Azure pomocí nastavené průběžné doručování](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md).
+tooenable vzdálené ladění při použití nastavené průběžné doručování, najdete v části [povolení vzdáleného ladění při použití nastavené průběžné doručování toopublish tooAzure](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md).
 
 [Team Foundation Build Service]: https://msdn.microsoft.com/library/ee259687.aspx
 [.NET Framework 4]: https://www.microsoft.com/download/details.aspx?id=17851
@@ -522,7 +522,7 @@ Chcete-li povolit vzdálené ladění při použití nastavené průběžné dor
 [Scale out your build system]: https://msdn.microsoft.com/library/dd793166.aspx
 [Deploy and configure a build server]: https://msdn.microsoft.com/library/ms181712.aspx
 [Azure PowerShell cmdlets]: /powershell/azureps-cmdlets-docs
-[the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
+[hello .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
 [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01bc.png
 [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
 [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png

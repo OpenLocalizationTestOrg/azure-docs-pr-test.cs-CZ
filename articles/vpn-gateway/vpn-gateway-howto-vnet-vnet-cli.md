@@ -1,5 +1,5 @@
 ---
-title: "Připojení virtuální sítě k jiné virtuální síti: Azure CLI | Dokumentace Microsoftu"
+title: "Připojit virtuální síť tooanother virtuální sítě: rozhraní příkazového řádku Azure | Microsoft Docs"
 description: "Tento článek vás provede propojováním virtuálních sítí s použitím Azure Resource Manageru a Azure CLI."
 services: vpn-gateway
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
-ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 70113914bcae03c80f9ad133ff081d1cf37fc309
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
-Tento článek ukazuje, jak vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných. Pokud připojujete virtuální sítě z různých předplatných, tato předplatná nemusí být přidružená ke stejnému tenantovi Active Directory. 
+Tento článek ukazuje, jak toocreate připojení k bráně VPN mezi virtuálními sítěmi. Hello virtuální sítě může být v hello stejné nebo různých oblastí, a z hello stejné nebo různých předplatných. Při připojování virtuální sítě z různých předplatných, odběry hello nemusí toobe přidružené hello stejné klienta služby Active Directory. 
 
-Postupy v tomto článku se týkají modelu nasazení Resource Manager a používají Azure CLI. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
+Hello kroky v tomto článku použít toohello modelu nasazení Resource Manager a používat rozhraní příkazového řádku Azure. Můžete také vytvořit této konfigurace pomocí nástroje pro jiné nasazení nebo model nasazení tak, že vyberete jinou možnost z hello následující seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -37,43 +37,43 @@ Postupy v tomto článku se týkají modelu nasazení Resource Manager a použí
 >
 >
 
-Propojení virtuální sítě s jinou virtuální sítí (VNet-to-VNet) je podobné propojení virtuální sítě s místním serverem. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec/IKE. Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete uvažovat o jejich propojení vytvořením partnerského vztahu virtuálních sítí. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+Propojení virtuální sítě tooanother virtuální síť (VNet-to-VNet) je podobné tooconnecting umístění lokality tooan místní virtuální síť. Oba typy připojení využívají bránu tooprovide sítě VPN přes zabezpečené tunelové propojení prostřednictvím protokolu IPsec/IKE. Pokud vaše virtuální sítě jsou v hello stejné oblasti, může být vhodné tooconsider připojení pomocí virtuální sítě partnerský vztah. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
-Komunikaci typu VNet-to-VNet můžete kombinovat s konfiguracemi s více servery. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí, jak je znázorněno v následujícím schématu:
+Komunikaci typu VNet-to-VNet můžete kombinovat s konfiguracemi s více servery. To umožňuje vytvářet topologie sítí, které spojují připojení mezi různými místy s připojením propojování virtuálních sítí, jak je znázorněno v následujícím diagramu hello:
 
 ![Informace o připojeních](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
 ### <a name="why"></a>Proč propojovat virtuální sítě?
 
-Virtuální sítě může být vhodné propojit z následujících důvodů:
+Tooconnect virtuální sítě může být vhodné pro hello následujících důvodů:
 
 * **Geografická redundance napříč oblastmi a geografická přítomnost**
 
   * Můžete nastavit vlastní geografickou replikaci nebo synchronizaci se zabezpečeným připojením bez procházení koncovými body připojenými k internetu.
-  * Pomocí Azure Traffic Manageru a služby Load Balancer je možné vytvářet úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je nastavení technologie SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
+  * Pomocí Azure Traffic Manageru a služby Load Balancer je možné vytvářet úlohy s vysokou dostupností s geografickou redundancí nad několika oblastmi Azure. Jedním z důležitých příkladů je tooset až SQL Always On se skupinami dostupnosti nad několika oblastmi Azure.
 * **Regionální vícevrstvé aplikace s izolací nebo administrativní hranicí**
 
-  * V rámci stejné oblasti můžete vytvářet vícevrstvé aplikace s několika virtuálními sítěmi propojenými z důvodu izolace nebo požadavků na správu.
+  * Hello uvnitř stejné oblasti, můžete nastavit vícevrstvé aplikace s několika virtuálními sítěmi propojenými z důvodu tooisolation nebo požadavků na správu.
 
-Další informace o propojeních VNet-to-VNet najdete v části [Nejčastější dotazy týkající se propojení VNet-to-VNet](#faq) na konci tohoto článku.
+Další informace o připojení VNet-to-VNet, najdete v části hello [nejčastější dotazy týkající se propojení VNet-to-VNet](#faq) na konci hello tohoto článku.
 
 ### <a name="which-set-of-steps-should-i-use"></a>Kterou posloupnost kroků provést?
 
-V tomto článku uvidíte dvě různé sady kroků. Jedna sada kroků pro [virtuální sítě spadající do stejného předplatného](#samesub) a druhá sada kroků pro [virtuální sítě v různých předplatných](#difsub).
+V tomto článku uvidíte dvě různé sady kroků. Jednu sadu kroky pro [hello virtuální sítě, které jsou umístěny ve stejné předplatné](#samesub)a druhý pro [patřící do různých předplatných](#difsub).
 
-## <a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
+## <a name="samesub"></a>Propojení virtuálních sítí, které jsou v hello stejného předplatného.
 
 ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>Než začnete
 
-Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
+Než začnete, nainstalujte nejnovější verzi hello hello rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci hello rozhraní příkazového řádku najdete v tématu [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli).
 
 ### <a name="Plan"></a>Plánování rozsahů IP adres
 
-V následujících krocích vytvoříme dvě virtuální sítě spolu s příslušnými podsítěmi a konfiguracemi brány. Poté vytvoříme propojení VPN mezi oběma virtuálními sítěmi. Je důležité určit rozsahy IP adres pro konfiguraci vaší sítě. Mějte na paměti, že je třeba zajistit, aby se žádné rozsahy virtuálních sítí ani místní síťové rozsahy žádným způsobem nepřekrývaly. V těchto příkladech nezahrnujeme server DNS. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+V hello následující kroky vytvoříme dvě virtuální sítě spolu s jejich příslušnými podsítěmi brány a konfigurace. Poté vytvoříme připojení VPN mezi hello dvě virtuální sítě. Je důležité tooplan rozsahy IP adres hello pro konfiguraci sítě. Mějte na paměti, že je třeba zajistit, aby se žádné rozsahy virtuálních sítí ani místní síťové rozsahy žádným způsobem nepřekrývaly. V těchto příkladech nezahrnujeme server DNS. Pokud chcete překlad IP adres pro virtuální sítě, přečtěte si téma [Překlad IP adres](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-V příkladech používáme následující hodnoty:
+Můžeme použít následující hodnoty v příkladech hello hello:
 
 **Hodnoty pro virtuální síť TestVNet1:**
 
@@ -107,7 +107,7 @@ V příkladech používáme následující hodnoty:
 * Typ připojení: VNet2VNet
 
 
-### <a name="Connect"></a>Krok 1: Připojení k vašemu předplatnému
+### <a name="Connect"></a>Krok 1 – připojení tooyour odběru
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-numbers-include.md)]
 
@@ -118,32 +118,32 @@ V příkladech používáme následující hodnoty:
   ```azurecli
   az group create -n TestRG1  -l eastus
   ```
-2. Vytvořte virtuální síť TestVNet1 a její podsítě. Tento příklad vytvoří virtuální síť TestVNet1 a podsíť FrontEnd.
+2. Vytvořte virtuální síť TestVNet1 a hello podsítě pro virtuální síť TestVNet1. Tento příklad vytvoří virtuální síť TestVNet1 a podsíť FrontEnd.
 
   ```azurecli
   az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
   ```
-3. Vytvořte další adresní prostor pro podsíť back-endu. Všimněte si, že v tomto kroku zadáváme jak adresní prostor, který jsme vytvořili dříve, tak i další adresní prostor, který chceme přidat. Důvodem je, že příkaz [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet#update) přepíše předchozí nastavení. Nezapomeňte při použití tohoto příkazu zadat všechny předpony adres.
+3. Vytvořte další adresní prostor pro podsíť hello back-end. Všimněte si, že v tomto kroku jsme zadejte oba hello adresní prostor, který jsme vytvořili předtím a hello další adresní prostor, že má být tooadd. Důvodem je, že hello [aktualizace az sítě vnet](https://docs.microsoft.com/cli/azure/network/vnet#update) příkaz přepíše hello předchozí nastavení. Zajistěte, aby toospecify všechny předpon adres hello při použití tohoto příkazu.
 
   ```azurecli
   az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
   ```
-4. Vytvořte podsíť back-endu.
+4. Vytvořte podsíť hello back-end.
   
   ```azurecli
   az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
   ```
-5. Vytvořte podsíť brány. Všimněte si, že podsíť brány má název GatewaySubnet. Název je povinný. V příkladu používá podsíť brány možnost /27. I když je možné vytvořit podsíť brány s minimální velikostí /29, doporučujeme vytvořit větší podsíť, která pojme více adres, tzn. vybrat velikost alespoň /28 nebo /27. Tím vznikne dostatečný prostor pro adresy, který umožní nastavení případných dalších konfigurací v budoucnu.
+5. Vytvořte podsíť brány hello. Všimněte si, že tuto podsíť brány hello je s názvem "GatewaySubnet". Název je povinný. V tomto příkladu používá podsíť brány hello 27. I když je možné toocreate podsíť brány jako malé/29, doporučujeme vytvořit větší podsíť, která zahrnuje víc adres výběrem minimálně/28 nebo /27. To vám umožní dostatek adresy tooaccommodate možné další konfigurace, které můžete ve hello budoucí.
 
   ```azurecli 
   az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
   ```
-6. Vyžádejte si veřejnou IP adresu, která bude přidělena bráně, kterou vytvoříte pro příslušnou virtuální síť. Všimněte si, že metoda AllocationMethod je dynamická. Není možné určit IP adresu, kterou chcete používat. Přiděluje se pro bránu dynamicky.
+6. Požádat o veřejné IP adresy toobe přidělené toohello bránu, které vytvoříte pro virtuální síť. Všimněte si, že hello AllocationMethod je dynamický. Nelze zadat, které chcete toouse hello IP adresu. Je dynamicky přidělené tooyour brány.
 
   ```azurecli
   az network public-ip create -n VNet1GWIP -g TestRG1 --allocation-method Dynamic
   ```
-7. Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Konfigurace propojení VNet-to-VNet vyžadují typ sítě VPN RouteBased. Pokud tento příkaz spustíte s použitím parametru --no-wait, nezobrazí se žádná zpětná vazba ani výstup. Parametr --no-wait umožňuje bránu vytvořit na pozadí. Neznamená to, že se brána VPN vytvoří okamžitě. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na použité skladové jednotce (SKU) brány.
+7. Vytvoření brány virtuální sítě hello pro virtuální síť TestVNet1. Konfigurace propojení VNet-to-VNet vyžadují typ sítě VPN RouteBased. Pokud spustíte tento příkaz pomocí hello parametr '– žádné - wait', se nezobrazí žádné zpětnou vazbu nebo výstup. Hello '– žádné - wait' parametr umožňuje toocreate hello brány v pozadí hello. Neznamená to brány sítě VPN hello dokončí vytváření okamžitě. Vytvoření brány může trvat často 45 minut nebo déle, v závislosti na hello SKU brány, můžete použít.
 
   ```azurecli
   az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
@@ -168,7 +168,7 @@ V příkladech používáme následující hodnoty:
   az network vnet update -n TestVNet4 --address-prefixes 10.41.0.0/16 10.42.0.0/16 -g TestRG4 
   az network vnet subnet create --vnet-name TestVNet4 -n BackEnd -g TestRG4 --address-prefix 10.42.0.0/24 
   ```
-4. Vytvořte podsíť brány.
+4. Vytvořte podsíť brány hello.
 
   ```azurecli
    az network vnet subnet create --vnet-name TestVNet4 -n GatewaySubnet -g TestRG4 --address-prefix 10.42.255.0/27
@@ -178,25 +178,25 @@ V příkladech používáme následující hodnoty:
   ```azurecli
   az network public-ip create -n VNet4GWIP -g TestRG4 --allocation-method Dynamic
   ```
-6. Vytvořte bránu virtuální sítě TestVNet4.
+6. Vytvoření brány virtuální sítě TestVNet4 hello.
 
   ```azurecli
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="createconnect"></a>Krok 4: Vytvoření připojení
+### <a name="createconnect"></a>Krok 4 – vytvoření připojení hello
 
-Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvoření propojení bran VPN mezi bránami virtuálních sítí. Pokud jste použili výše uvedené příklady, vaše brány virtuálních sítí jsou v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, musíte při vytváření propojení identifikovat a zadat ID prostředků pro každou bránu. Pokud jsou vaše virtuální sítě ve stejné skupině prostředků, můžete použít [druhou sadu pokynů](#samerg), protože nemusíte zadávat ID prostředků.
+Nyní máte dvě virtuální sítě s bránami VPN. dalším krokem Hello je toocreate připojení brány VPN mezi hello brány virtuální sítě. Pokud jste použili výše uvedených příkladech hello, vaší brány virtuální sítě jsou v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, třeba tooidentify a při navazování připojení zadat ID hello prostředků pro každou bránu. Pokud vaše virtuální sítě jsou v hello stejnou skupinu prostředků, můžete použít hello [druhé sadě pokyny](#samerg) protože nepotřebujete ID toospecify hello prostředků.
 
-### <a name="diffrg"></a>Propojení virtuálních sítí patřících do různých skupin prostředků
+### <a name="diffrg"></a>tooconnect virtuální sítě, které jsou umístěny v různých skupinách prostředků
 
-1. Z výstupu následujícího příkazu získejte ID prostředku brány VNet1GW:
+1. Získání hello prostředků ID VNet1GW z hello výstup hello následující příkaz:
 
   ```azurecli
   az network vnet-gateway show -n VNet1GW -g TestRG1
   ```
 
-  Ve výstupu vyhledejte řádek, který začíná na "id:". Hodnoty v uvozovkách budete potřebovat pro vytvoření propojení v další části. Zkopírujte tyto hodnoty do textového editoru, jako je Poznámkový blok, abyste je při vytváření propojení mohli jednoduše vložit.
+  Ve výstupu hello najde hello "id:" řádku. Hello hodnoty v uvozovkách hello jsou potřebné toocreate hello připojení v další části hello. Zkopírujte tyto hodnoty tooa textový editor, například Poznámkový blok, takže můžete snadno vložit je při vytváření připojení.
 
   Příklad výstupu:
 
@@ -215,38 +215,38 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
   "ipConfigurations":
   ```
 
-  Zkopírujte hodnoty v uvozovkách následující po **"id":**.
+  Zkopírujte hodnoty hello po **"id":** v rámci hello uvozovky.
 
   ```
   "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
  ```
 
-2. Získejte ID prostředku brány VNet4GW a zkopírujte hodnoty do textového editoru.
+2. Získáte hello prostředků ID VNet4GW a zkopírujte hello hodnoty tooa textový editor.
 
   ```azurecli
   az network vnet-gateway show -n VNet4GW -g TestRG4
   ```
 
-3. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4. V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do virtuální sítě TestVNet4. V příkladech se uvádí sdílený klíč. Pro sdílený klíč můžete použít vlastní hodnoty. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení nějakou dobu trvá.
+3. Vytvořte připojení tooTestVNet4 hello virtuální sítě TestVNet1. V tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooTestVNet4. Není sdílený klíč uváděný v příkladech hello. Můžete použít vlastní hodnoty pro sdílený klíč hello. pro obě připojení musí shodovat Hello důležité věc, je tento sdílený klíč hello. Vytvoření připojení trvá malou chvíli toocomplete.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
   ```
-4. Vytvořte připojení virtuální sítě TestVNet4 k virtuální síti TestVNet1. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet4 do virtuální sítě TestVNet1. Ověřte, že se sdílené klíče shodují. Navázání připojení trvá několik minut.
+4. Vytvořte připojení tooTestVNet1 virtuální sítě TestVNet4 hello. Tento krok je podobný toohello jeden vyšší, s výjimkou toho, kterou vytváříte hello připojení z virtuální sítě TestVNet4 tooTestVNet1. Zkontrolujte, zda text hello sdílené klíče shodují. Připojení hello tooestablish trvá několik minut.
 
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG4 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW -l westus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1G
   ```
 5. Ověřte stav připojení. Viz [Ověření stavu připojení](#verify).
 
-### <a name="samerg"></a>Propojení virtuálních sítí patřících do stejné skupiny prostředků
+### <a name="samerg"></a>tooconnect patřící do hello stejné skupiny prostředků
 
-1. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4. V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do virtuální sítě TestVNet4. Všimněte si, že skupiny prostředků v příkladech jsou stejné. V příkladech také vidíte uvedený sdílený klíč. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení nějakou dobu trvá.
+1. Vytvořte připojení tooTestVNet4 hello virtuální sítě TestVNet1. V tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooTestVNet4. Skupiny prostředků hello oznámení jsou hello stejné v příkladech hello. Zobrazí také sdílený klíč uváděný v příkladech hello. Pro hello sdílený klíč můžete použít vlastní hodnoty, ale musí odpovídat hello sdílený klíč pro obě připojení. Vytvoření připojení trvá malou chvíli toocomplete.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet4GW
   ```
-2. Vytvořte připojení virtuální sítě TestVNet4 k virtuální síti TestVNet1. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet4 do virtuální sítě TestVNet1. Ověřte, že se sdílené klíče shodují. Navázání připojení trvá několik minut.
+2. Vytvořte připojení tooTestVNet1 virtuální sítě TestVNet4 hello. Tento krok je podobný toohello jeden vyšší, s výjimkou toho, kterou vytváříte hello připojení z virtuální sítě TestVNet4 tooTestVNet1. Zkontrolujte, zda text hello sdílené klíče shodují. Připojení hello tooestablish trvá několik minut.
 
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG1 --vnet-gateway1 VNet4GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet1GW
@@ -257,15 +257,15 @@ Nyní máte dvě virtuální sítě s bránami VPN. Dalším krokem je vytvořen
 
 ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
-V tomto scénáři propojíme sítě TestVNet1 a TestVNet5. Virtuální sítě patří k různým předplatným. Předplatná nemusí být přidružená ke stejnému tenantovi Active Directory. Tento postup přidá nové propojení VNet-to-VNet pro připojení virtuální sítě TestVNet1 k virtuální síti TestVNet5.
+V tomto scénáři propojíme sítě TestVNet1 a TestVNet5. Hello virtuální sítě jsou umístěny na různých předplatných. odběry Hello nemusí toobe přidružené hello stejné klienta služby Active Directory. Hello kroky pro tuto konfiguraci přidat další připojení VNet-to-VNet v pořadí tooconnect tooTestVNet5 virtuální sítě TestVNet1.
 
 ### <a name="TestVNet1diff"></a>Krok 5: Vytvoření a konfigurace virtuální sítě TestVNet1
 
-Tyto pokyny navazují na kroky v předchozích částech. Je třeba vytvořit a konfigurovat virtuální síť TestVNet1 a bránu VPN pro virtuální síť TestVNet1 provedením [kroku 1](#Connect) a [kroku 2](#TestVNet1). Pro tuto konfiguraci není nutné vytvářet virtuální síť TestVNet4 z předchozí části, ale pokud ji vytvoříte, nebude to s těmito kroky v konfliktu. Po dokončení kroků 1 a 2 pokračujte krokem 6 (níže).
+Tyto pokyny pokračovat od hello kroky v předchozích částech hello. Je třeba provést [kroku 1](#Connect) a [kroku 2](#TestVNet1) toocreate a konfigurace virtuální sítě TestVNet1 a hello brána sítě VPN pro virtuální síť TestVNet1. Pro tuto konfiguraci nemůžete se vyžaduje toocreate virtuální sítě TestVNet4 z předchozí části hello, ale pokud ho vytvoříte, se nebude v konfliktu s tyto kroky. Po dokončení kroků 1 a 2 pokračujte krokem 6 (níže).
 
-### <a name="verifyranges"></a>Krok 6: Ověření rozsahů IP adres
+### <a name="verifyranges"></a>Krok 6 – ověření hello rozsahy IP adres
 
-Při vytváření dalších připojení je důležité ověřit, že se adresní prostor IP adres nové virtuální sítě nepřekrývá se žádným z rozsahů jiných virtuálních sítí ani rozsahů bran místních sítí. Pro tento postup použijte následující hodnoty pro virtuální síť TestVNet5:
+Při vytváření další připojení, je důležité tooverify, který hello adresní prostor IP adres hello nové virtuální sítě se nepřekrývá s žádným z vaší rozsahy virtuálních sítí ani rozsahů bran místních sítí. Pro tento postup můžete použít následující hodnoty pro hello virtuální sítě TestVNet5 hello:
 
 **Hodnoty pro virtuální síť TestVNet5:**
 
@@ -284,9 +284,9 @@ Při vytváření dalších připojení je důležité ověřit, že se adresní
 
 ### <a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. Pro přepínání mezi předplatnými použijte příkaz „az account list --all“, který vypíše dostupná předplatná pro váš účet, a pak pomocí příkazu „az account set --subscription <subscriptionID>“ přepněte na předplatné, které chcete použít.
+Tento krok je třeba provést v kontextu hello hello nové předplatné, předplatné 5. Tuto část může provést pomocí Správce hello v jiné organizaci, který vlastní hello předplatné. tooswitch mezi odběrů použijte ' seznamu účtů az--všechny ' toolist hello účet k dispozici tooyour odběry, potom použijte ' nastaven účet az--předplatné <subscriptionID>' tooswitch toohello předplatné, které chcete toouse.
 
-1. Ujistěte se, že jste připojeni k předplatnému 5, a pak vytvořte skupinu prostředků.
+1. Ujistěte se, že jsou připojené tooSubscription 5 a potom vytvořte skupinu prostředků.
 
   ```azurecli
   az group create -n TestRG5  -l japaneast
@@ -304,7 +304,7 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
   az network vnet subnet create --vnet-name TestVNet5 -n BackEnd -g TestRG5 --address-prefix 10.52.0.0/24
   ```
 
-4. Přidejte podsíť brány.
+4. Přidání podsítě brány hello.
 
   ```azurecli
   az network vnet subnet create --vnet-name TestVNet5 -n GatewaySubnet -g TestRG5 --address-prefix 10.52.255.0/27
@@ -315,23 +315,23 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
   ```azurecli
   az network public-ip create -n VNet5GWIP -g TestRG5 --allocation-method Dynamic
   ```
-6. Vytvoření brány virtuální sítě TestVNet5
+6. Vytvoření brány virtuální sítě TestVNet5 hello
 
   ```azurecli
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="connections5"></a>Krok 8: Vytvoření připojení
+### <a name="connections5"></a>Krok 8 – vytvoření připojení hello
 
-Jelikož brány patří do různých předplatných, rozdělíme tento krok do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. Pro přepínání mezi předplatnými použijte příkaz „az account list --all“, který vypíše dostupná předplatná pro váš účet, a pak pomocí příkazu „az account set --subscription <subscriptionID>“ přepněte na předplatné, které chcete použít.
+Jsme rozdělit tento krok do dvou relací rozhraní příkazového řádku, označen jako **[předplatné 1]**, a **[předplatné 5]** vzhledem k tomu, že jsou v různých předplatných hello hello brány. tooswitch mezi odběrů použijte ' seznamu účtů az--všechny ' toolist hello účet k dispozici tooyour odběry, potom použijte ' nastaven účet az--předplatné <subscriptionID>' tooswitch toohello předplatné, které chcete toouse.
 
-1. **[Předplatné 1]** Přihlaste a připojte se k předplatnému 1. Spusťte následující příkaz a z výstupu získejte název a ID brány:
+1. **[Předplatné 1]**  Přihlásit a připojte tooSubscription 1. Hello spusťte následující příkaz tooget hello název a ID hello brány z výstupu hello:
 
   ```azurecli
   az network vnet-gateway show -n VNet1GW -g TestRG1
   ```
 
-  Zkopírujte část výstupu uvedeného textem „id:“. E-mailem nebo jiným způsobem odešlete ID a název brány virtuální sítě (VNet1GW) správci předplatného 5.
+  Kopírovat výstup hello "id:". Odešlete hello ID a název hello hello virtuální síť brány (VNet1GW) toohello správci předplatného 5 prostřednictvím e-mailu nebo jiným způsobem.
 
   Příklad výstupu:
 
@@ -339,27 +339,27 @@ Jelikož brány patří do různých předplatných, rozdělíme tento krok do d
   "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
   ```
 
-2. **[Předplatné 5]** Přihlaste a připojte se k předplatnému 5. Spusťte následující příkaz a z výstupu získejte název a ID brány:
+2. **[Předplatné 5]**  Přihlásit a připojte tooSubscription 5. Hello spusťte následující příkaz tooget hello název a ID hello brány z výstupu hello:
 
   ```azurecli
   az network vnet-gateway show -n VNet5GW -g TestRG5
   ```
 
-  Zkopírujte část výstupu uvedeného textem „id:“. E-mailem nebo jiným způsobem odešlete ID a název brány virtuální sítě (VNet5GW) správci předplatného 1.
+  Kopírovat výstup hello "id:". Odešlete hello ID a název hello hello virtuální síť brány (VNet5GW) toohello správci předplatného 1 prostřednictvím e-mailu nebo jiným způsobem.
 
-3. **[Předplatné 1]** V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k virtuální síti TestVNet5. Pro sdílený klíč můžete použít vlastní hodnoty, ale sdílené klíče pro obě připojení se musí shodovat. Vytvoření připojení může nějakou dobu trvat. Ujistěte se, že jste připojeni k předplatnému 1.
+3. **[Předplatné 1]**  v tomto kroku vytvoříte hello připojení z virtuální sítě TestVNet1 tooTestVNet5. Pro hello sdílený klíč můžete použít vlastní hodnoty, ale musí odpovídat hello sdílený klíč pro obě připojení. Vytvoření připojení může trvat malou chvíli toocomplete. Ujistěte se, že jste připojeni tooSubscription 1.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
   ```
 
-4. **[Předplatné 5]** Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet5 k virtuální síti TestVNet1. Zkontrolujte, že se sdílené klíče shodují a že se připojujete k předplatnému 5.
+4. **[Předplatné 5]**  Tento krok je podobný toohello jeden vyšší, s výjimkou toho, kterou vytváříte hello připojení z virtuální sítě TestVNet5 tooTestVNet1. Ujistěte se, že tento hello sdíleného klíče shodu a že se můžete připojit tooSubscription 5.
 
   ```azurecli
   az network vpn-connection create -n VNet5ToVNet1 -g TestRG5 --vnet-gateway1 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW -l japaneast --shared-key "eeffgg" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
   ```
 
-## <a name="verify"></a>Ověření stavu připojení
+## <a name="verify"></a>Ověřte připojení hello
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections v2v cli](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
@@ -369,5 +369,5 @@ Jelikož brány patří do různých předplatných, rozdělíme tento krok do d
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
-* Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).
+* Po dokončení připojení můžete přidat virtuální počítače tooyour virtuální sítě. Další informace najdete v tématu hello [virtuální počítače dokumentaci](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Informace o protokolu BGP najdete v tématu hello [přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [jak tooconfigure BGP](vpn-gateway-bgp-resource-manager-ps.md).

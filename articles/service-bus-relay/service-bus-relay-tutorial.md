@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure předávání přes Service Bus WCF | Microsoft Docs"
+title: "kurz předávání přes Service Bus WCF aaaAzure | Microsoft Docs"
 description: "Sestavení Service Bus klient aplikace a služby WCF předáváním přes."
 services: service-bus-relay
 documentationcenter: na
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: sethm
-ms.openlocfilehash: 5347bf85cad32b59677369d51a1f36529aef6662
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 78cd52ef51e9fcfcda2f13ec54bde3af50d76476
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure předávání WCF
 
-Tento kurz popisuje, jak sestavit jednoduchý klient WCF předávání aplikace a služby pomocí předávání přes Azure. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz popisuje, jak toobuild jednoduché WCF předávání klientská aplikace a služby pomocí předávání přes Azure. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Absolvování tohoto kurzu pochopíte kroky, které jsou potřeba k vytvoření aplikace klienta a služby WCF předávání. Stejně jako jejich původní protějšky WCF je služba konstrukce, která vystavuje jeden nebo více koncových bodů, každý z nich vystavuje jednu nebo víc operací služeb. Koncový bod služby specifikuje adresu, kde se dá služba najít, vazbu, která obsahuje informaci, že klient musí komunikovat se službou, a kontrakt, který definuje funkci, kterou služba klientovi poskytuje. Hlavní rozdíl mezi WCF a předávací WCF je, že koncový bod vystavený v cloudu, a ne místně na vašem počítači.
+Absolvování tohoto kurzu pochopíte hello kroků, které jsou požadované toocreate WCF přenosový klient a služba aplikace. Stejně jako jejich původní protějšky WCF je služba konstrukce, která vystavuje jeden nebo více koncových bodů, každý z nich vystavuje jednu nebo víc operací služeb. Hello koncový bod služby specifikuje adresu, kde se dá hello služba najít, vazbu, která obsahuje hello informace, které klient musí komunikovat s hello service a kontrakt, který definuje hello funkce poskytované službou hello služby tooits klientů. Hello hlavní rozdíl mezi WCF a předávací WCF je, že tento koncový bod hello vystavený v cloudu hello místo místně na vašem počítači.
 
-Po dokončení řady témat v tomto kurzu budete mít funkční službu a klienta, který může vyvolat operace této služby. První téma popisuje, jak vytvořit účet. V dalších krocích se popisuje, jak definovat službu, která používá kontrakt, jak tuto službu implementovat a jak službu konfigurovat pomocí kódu. Taky se v nich popisuje, jak hostovat a spustit službu. Vytvořená služba se hostuje sama a klient a služba běží na stejném počítači. Službu můžete konfigurovat pomocí kódu nebo konfiguračního souboru.
+Po absolvování hello řady témat v tomto kurzu budete mít funkční službu a klienta, který může vyvolat operace hello služby hello. Hello první téma popisuje, jak tooset si účet. Hello další kroky popisují, jak toodefine služby používající kontrakt, jak tooimplement hello služby a jak tooconfigure hello služby v kódu. Najdete zde také popis jak toohost a spusťte službu hello. Hello vytvořená služba se hostuje sama a klient hello a služba běží na hello stejný počítač. Hello služby můžete nakonfigurovat pomocí kódu nebo konfiguračního souboru.
 
-Poslední tři kroky popisují, jak vytvořit klientskou aplikaci, nakonfigurovat klientskou aplikaci a vytvořit a použít klienta, který může přistupovat k funkcím hostitele.
+Hello poslední tři kroky popisují, jak toocreate klientskou aplikaci, konfiguraci hello klientskou aplikaci a vytvořit a použít klienta, který můžete přístup k funkcím hello hello hostitele.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
 * [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). Tento kurz používá Visual Studio 2017.
 * Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Vytvoření oboru názvů služby
 
-Prvním krokem je vytvoření oboru názvů a získat [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu předávání. Systém automaticky vygeneruje SAS klíč při vytvoření oboru názvů služby. Kombinace oboru názvů služby a klíče SAS poskytuje pověření, kterým Azure k ověření přístupu k aplikaci. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
+prvním krokem Hello je toocreate obor názvů a tooobtain [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu předávání přes hello. Klíč SAS je automaticky generován hello systému při vytvoření oboru názvů služby. Hello kombinace oboru názvů služby a klíče SAS poskytuje pověření hello Azure tooauthenticate přístup tooan aplikace. Postupujte podle hello [pokynů tady](relay-create-namespace-portal.md) toocreate předávání názvů.
 
 ## <a name="define-a-wcf-service-contract"></a>Definování kontraktu služby WCF
 
-Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metody nebo funkce) služba podporuje. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Na každé rozhraní musí mít aplikovaný atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) a na každou operace musí byt aplikovaný atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx). Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), nemá atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), taková metoda se nevystaví. Kód k těmto úlohám najdete v příkladu za postupem. Podrobnější diskuzi o kontraktech a službách najdete v dokumentaci WCF v části [Návrh a implementace služeb](https://msdn.microsoft.com/library/ms729746.aspx).
+Hello kontrakt služby specifikuje, jaké operace (hello termín webových služeb pro metody nebo funkce) hello služba podporuje. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní hello odpovídá tooa konkrétní operaci služby. Každé rozhraní musí mít hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) tooit použit atribut a každou operaci musí mít hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) tooit atribut použitý. Pokud metoda v rozhraní, které má hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) atribut nemá hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) atribut, taková metoda se nevystaví. Kód Hello k těmto úlohám najdete v příkladu hello hello postupem. Diskuzi o kontraktech a službách, najdete v části [návrh a implementace služeb](https://msdn.microsoft.com/library/ms729746.aspx) v hello dokumentaci WCF.
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Vytvoření kontraktu předávání s rozhraním
 
-1. Otevřete Visual Studio jako správce tak, že v nabídce **Start** kliknete na program pravým tlačítkem a vyberete možnost **Spustit jako správce**.
-2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte **konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoService**. Kliknutím na tlačítko **OK** vytvořte projekt.
+1. Otevřete Visual Studio jako správce tak, že kliknete pravým tlačítkem na programu hello v hello **spustit** nabídky a výběrem **spustit jako správce**.
+2. Vytvořte nový projekt konzolové aplikace. Klikněte na tlačítko hello **soubor** nabídku a vyberte **nový**, pak klikněte na tlačítko **projektu**. V hello **nový projekt** dialogové okno, klikněte na tlačítko **Visual C#** (Pokud **Visual C#** nezobrazí, podívejte se do části **jiné jazyky**). Klikněte na tlačítko hello **konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoService**. Klikněte na tlačítko **OK** toocreate hello projektu.
 
     ![][2]
 
-3. Nainstalujte balíček Service Bus NuGet. Tento balíček automaticky přidá reference na knihovny Service Bus a WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
+3. Nainstalujte balíček Service Bus NuGet hello. Tento balíček automaticky přidá Reference knihovny Service Bus toohello, jakož i hello WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) je hello obor názvů, který vám umožní tooprogrammatically přístup hello základním funkcím WCF. Service Bus používá mnoho objektů hello a atributy kontrakty toodefine služeb WCF.
 
-    V Průzkumníku řešení klikněte pravým tlačítkem na projekt a pak klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
+    V Průzkumníku řešení klikněte pravým tlačítkem na projekt hello a pak klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus`. Zkontrolujte, že název projektu hello je vybraný v hello **verze** pole. Klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
 
     ![][3]
-4. V Průzkumníku řešení poklikejte na soubor Program.cs a pokud ještě není otevřený, otevře se v editoru Visual Studio.
-5. Na začátek souboru přidejte následující příkazy:
+4. V Průzkumníku řešení klikněte dvakrát na tooopen souboru Program.cs hello ji v editoru hello, pokud ještě není otevřete.
+5. Přidejte následující hello pomocí příkazů v horní části hello hello souboru:
 
     ```csharp
     using System.ServiceModel;
     using Microsoft.ServiceBus;
     ```
-6. Změňte název oboru názvů z výchozího názvu **EchoService** na **Microsoft.ServiceBus.Samples**.
+6. Změna hello název oboru názvů z výchozího názvu **EchoService** příliš**Microsoft.ServiceBus.Samples**.
 
    > [!IMPORTANT]
-   > Tento kurz používá obor názvů C# **Microsoft.ServiceBus.Samples**, které je obor názvů kontraktu základě spravovaný typ, který se používá v konfiguračním souboru v [konfigurace klienta WCF](#configure-the-wcf-client) krok. Při sestavování této ukázky můžete specifikovat jakýkoli obor názvů, který chcete – tento kurz ale bude fungovat jen tehdy, když odpovídajícím způsobem v konfiguračním souboru aplikace upravíte obor názvů kontraktu a služby. Obor názvů specifikovaný v souboru App.config musí být stejný jako obor názvů zadaný ve vašich souborech C#.
+   > Tento kurz používá obor názvů hello C# **Microsoft.ServiceBus.Samples**, které je obor názvů hello hello na základě smlouvy spravovaný typ, který se používá v konfiguračním souboru hello v hello [konfigurace klienta WCF hello](#configure-the-wcf-client) krok. Můžete zadat obor názvů, které chcete při sestavování této ukázky; kurz hello však nebude fungovat nezměníte pak hello názvů hello kontraktu a služby podle toho, v konfiguračním souboru aplikace hello. Hello obor názvů specifikovaný v hello musí být soubor App.config hello stejné jako hello obor názvů zadaný ve vašich souborech C#.
    >
    >
-7. Přímo po `Microsoft.ServiceBus.Samples` deklaraci oboru názvů, ale v rámci oboru názvů definujte nové rozhraní s názvem `IEchoContract` a použít `ServiceContractAttribute` atribut rozhraní s hodnotou oboru názvů `http://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů se liší od oboru názvů, které používáte v celém svém kódu. Místo toho se obor názvů používá jako jedinečný identifikátor pro tento kontrakt. Když explicitně zadáte obor názvů, zabráníte tím přidání výchozí hodnoty oboru názvů do názvu kontraktu. Vložte následující kód po deklaraci oboru názvů:
+7. Přímo po hello `Microsoft.ServiceBus.Samples` deklaraci oboru názvů, ale v rámci hello názvů definujte nové rozhraní s názvem `IEchoContract` a použít hello `ServiceContractAttribute` rozhraní toohello atributu s hodnotou oboru názvů `http://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů Hello se liší od hello obor názvů, který používáte v rámci oboru hello kódu. Místo toho hello hodnotu oboru názvů se používá jako jedinečný identifikátor pro tento kontrakt. Zadání oboru názvů hello explicitně brání přidání názvu kontraktu toohello hello výchozí hodnoty oboru názvů. Vložte následující kód po deklaraci oboru názvů hello hello:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -80,27 +80,27 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
     ```
 
    > [!NOTE]
-   > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžete dál používat starého kontraktu služby bez nutnosti ho aktualizovat klienty. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](http://go.microsoft.com/fwlink/?LinkID=180498). Pro účely tohoto kurzu nebude mít schéma pojmenování oboru názvů kontraktu služby žádné informace o verzi.
+   > Hello obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Hlavní změny tooisolate služeb včetně informací o verzi v oboru názvů kontraktu služby hello umožňuje definováním nové kontrakt služby s nový obor názvů a která bude vystavená na nový koncový bod. Tímto způsobem můžou klienti pokračovat toouse hello starého kontraktu služby bez nutnosti toobe aktualizovat. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](http://go.microsoft.com/fwlink/?LinkID=180498). Pro účely tohoto kurzu hello hello pojmenování schématu oboru názvů kontraktu služby hello neobsahuje informace o verzi.
    >
    >
-8. V rámci `IEchoContract` rozhraní, deklarujte metodu pro jednu operaci `IEchoContract` kontrakt vystaví v rozhraní a aplikujte `OperationContractAttribute` atribut metodu, kterou chcete vystavit v rámci veřejného kontraktu WCF předávání, následujícím způsobem:
+8. V rámci hello `IEchoContract` rozhraní, deklarujte metodu pro jednu operaci hello hello `IEchoContract` kontrakt zpřístupňuje v hello rozhraní a použít hello `OperationContractAttribute` způsob toohello atribut, který má tooexpose jako součást hello veřejné předávání WCF smluvním vztahu, následujícím způsobem:
 
     ```csharp
     [OperationContract]
     string Echo(string text);
     ```
-9. Přímo po definici rozhraní `IEchoContract` deklarujte kanál, který zdědí vlastnosti z obou `IEchoContract` a také do rozhraní `IClientChannel`, jak je vidět tady:
+9. Přímo po hello `IEchoContract` definici rozhraní, deklarujte kanál, který zdědí vlastnosti z obou `IEchoContract` a také toohello `IClientChannel` rozhraní, jak je vidět tady:
 
     ```csharp
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-    Kanál je objekt WCF, kterým si hostitel a klient navzájem posílají informace. Později napíšete kód na kanál, aby se informace zrcadlily mezi oběma aplikacemi.
-10. V nabídce **Sestavení** můžete kliknout na **Sestavit řešení** nebo stisknout **Ctrl+Shift+B** a potvrdit přesnost své dosavadní práce.
+    Kanál je objekt WCF hello hello hostitele a klienty průchodu, která tooeach informace o dalších. Později napíšete kód proti hello kanál tooecho informace mezi dvěma aplikacemi hello.
+10. Z hello **sestavení** nabídky, klikněte na tlačítko **sestavit řešení** nebo stiskněte klávesu **Ctrl + Shift + B** tooconfirm hello přesnost své dosavadní práce.
 
 ### <a name="example"></a>Příklad
 
-Následující kód ukazuje základní rozhraní, které definuje kontrakt předávání WCF.
+Hello následující kód ukazuje základní rozhraní, která definuje kontraktu WCF předávání.
 
 ```csharp
 using System;
@@ -126,13 +126,13 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-Když je teď vytvořené rozhraní, můžete ho implementovat.
+Je teď vytvořená hello rozhraní, můžete implementovat rozhraní hello.
 
-## <a name="implement-the-wcf-contract"></a>Implementace kontraktu WCF
+## <a name="implement-hello-wcf-contract"></a>Implementujte kontrakt WFG hello
 
-Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozím kroku. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem `EchoService`, která implementuje uživatelsky definované rozhraní `IEchoContract`. Po implementaci rozhraní nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje nezbytné informace pro aplikaci, například název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou předávání. Kód použitý k těmto úlohám najdete v příkladu za postupem. Obecnější diskuzi o způsobu implementace kontraktu služby najdete v dokumentaci WCF [Implementace kontraktů služby](https://msdn.microsoft.com/library/ms733764.aspx).
+Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt hello, který se definuje pomocí rozhraní. Další informace o vytváření rozhraní hello najdete v předchozím kroku hello. dalším krokem Hello je tooimplement hello rozhraní. To zahrnuje vytvoření třídy s názvem `EchoService` hello definovaný uživatelem, která implementuje `IEchoContract` rozhraní. Po implementaci rozhraní hello nakonfigurujete hello rozhraní pomocí souboru App.config. Hello konfigurační soubor obsahuje informace nutné k hello aplikaci, například název hello hello služby, název hello hello kontraktu a typ hello protokol, který je použité toocommunicate službou předávání přes hello. Hello kód použitý k těmto úlohám najdete v příkladu hello hello postupem. Obecnější diskuzi o způsobu tooimplement služby smlouvy, najdete v části [implementace kontraktů služby](https://msdn.microsoft.com/library/ms733764.aspx) v hello dokumentaci WCF.
 
-1. Vytvořte novou třídu s názvem `EchoService` přímo po definování rozhraní `IEchoContract`. Třída `EchoService` implementuje rozhraní `IEchoContract`.
+1. Vytvořte novou třídu s názvem `EchoService` přímo po definici hello hello `IEchoContract` rozhraní. Hello `EchoService` třída implementuje hello `IEchoContract` rozhraní.
 
     ```csharp
     class EchoService : IEchoContract
@@ -140,8 +140,8 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
     }
     ```
 
-    Podobně jako u implementace jiných rozhraní můžete definici implementovat v jiném souboru. V tomto kurzu je ale implementace ve stejném souboru jako definice rozhraní a metoda `Main`.
-2. Na rozhraní `IEchoContract` aplikujte atribut [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx). Atribut specifikuje název služby a obor názvů. Když to dokončíte, třída `EchoService` bude vypadat takto:
+    Podobné implementace rozhraní tooother, definice hello můžete implementovat v jiném souboru. V tomto kurzu však hello implementace je umístěn ve stejné souboru jako definice rozhraní hello a hello hello `Main` metoda.
+2. Použít hello [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) atribut toohello `IEchoContract` rozhraní. Určuje atribut Hello hello název služby a obor názvů. Až to uděláte, hello `EchoService` třída vypadat takto:
 
     ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -149,7 +149,7 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
     {
     }
     ```
-3. Implementujte metodu `Echo` definovanou v rozhraní `IEchoContract` ve třídě `EchoService`.
+3. Implementace hello `Echo` metoda definované v hello `IEchoContract` rozhraní v hello `EchoService` třídy.
 
     ```csharp
     public string Echo(string text)
@@ -158,14 +158,14 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
         return text;
     }
     ```
-4. Klikněte na **Sestavení**, klikněte na **Sestavit řešení** a zkontrolujte přesnost své práce.
+4. Klikněte na tlačítko **sestavení**, pak klikněte na tlačítko **sestavit řešení** tooconfirm hello přesnost své práce.
 
-### <a name="define-the-configuration-for-the-service-host"></a>Definice konfigurace hostitele služby
+### <a name="define-hello-configuration-for-hello-service-host"></a>Definice hello konfigurace pro hostitele služby hello
 
-1. Konfigurační soubor je velmi podobný konfiguračnímu souboru WCF. Obsahuje název služby, koncový bod (to znamená, umístění, které Azure předávání vystaví pro klienty a hostiteli pro komunikaci mezi sebou) a vazbu (typ protokolu používaný pro komunikaci). Hlavní rozdíl je v tom, že nakonfigurovaný koncový bod služby odkazuje na vazbu [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding), která není součástí architektury .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jedna z vazeb definovaných službou.
-2. V **Průzkumníku řešení** poklikejte na soubor App.config a otevře se v editoru Visual Studio.
-3. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
-4. Ve značkách `<system.serviceModel>` přidejte element `<services>`. V jednom konfiguračním souboru můžete definovat více aplikacích s předáváním. V tomto kurzu se ale definuje jen jedna.
+1. Hello konfigurační soubor je velmi podobný konfiguračnímu souboru WCF tooa. Obsahuje hello název služby, koncový bod (tedy umístění hello, který předávání přes Azure vystaví pro klienty a hostiteli toocommunicate mezi sebou) a vazbu (typ hello protokolu, který je použité toocommunicate) hello. Hello hlavní rozdíl je, že tento nakonfigurovaný koncový bod služby odkazuje tooa [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) vazby, který není součástí hello rozhraní .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jedním z hello vazeb definovaných prostředím hello service.
+2. V **Průzkumníku**, dvakrát klikněte na tooopen soubor App.config hello ji v editoru Visual Studio hello.
+3. V hello `<appSettings>` elementu, nahraďte zástupné symboly hello hello názvem vašeho oboru názvů služby a hello SAS klíč, který jste zkopírovali v předchozím kroku.
+4. V rámci hello `<system.serviceModel>` přidat značky, `<services>` elementu. V jednom konfiguračním souboru můžete definovat více aplikacích s předáváním. V tomto kurzu se ale definuje jen jedna.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -177,24 +177,24 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
       </system.serviceModel>
     </configuration>
     ```
-5. V elementu `<services>` přidejte element `<service>`, který definuje název služby.
+5. V rámci hello `<services>` elementu, přidejte `<service>` element toodefine hello název služby hello.
 
     ```xml
     <service name="Microsoft.ServiceBus.Samples.EchoService">
     </service>
     ```
-6. V elementu `<service>` definujte umístění koncového bodu kontraktu a také vazbu koncového bodu.
+6. V rámci hello `<service>` elementu, definujte hello umístění hello koncového bodu kontraktu a také hello typ vazby pro koncový bod hello.
 
     ```xml
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Kurz později použije tento krok k vytvoření adresu URI, která plně vystavuje hostitele přes předávání přes Azure. Vazba deklaruje, že se používá TCP jako protokol pro komunikaci se službou předávání přes.
-7. V nabídce **Sestavení** klikněte na **Sestavit řešení** a zkontrolujte přesnost své práce.
+    koncový bod Hello definuje, kde bude hello klient hledat hostitelskou aplikaci hello. Kurz hello později, používá tento krok toocreate identifikátor URI, která plně vystavuje hostitele hello prostřednictvím předávání přes Azure. Hello vazba deklaruje, že používáme TCP jako hello protokol toocommunicate službou předávání přes hello.
+7. Z hello **sestavení** nabídky, klikněte na tlačítko **sestavit řešení** tooconfirm hello přesnost své práce.
 
 ### <a name="example"></a>Příklad
 
-Následující kód ukazuje implementaci kontraktu služby.
+Hello následující kód ukazuje implementaci kontraktu služby hello hello.
 
 ```csharp
 [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -209,7 +209,7 @@ Následující kód ukazuje implementaci kontraktu služby.
     }
 ```
 
-Následující kód ukazuje základní formát souboru App.config přidruženého k hostiteli služby.
+Hello následující kód ukazuje základní formát souboru App.config hello přidružený k hostiteli služby hello hello.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -230,13 +230,13 @@ Následující kód ukazuje základní formát souboru App.config přidruženéh
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hostování a spuštění základní webové služby pro registraci ve službě předávání
+## <a name="host-and-run-a-basic-web-service-tooregister-with-hello-relay-service"></a>Hostování a spuštění tooregister základní webové služby s hello předávací služba
 
-Tento krok popisuje, jak spustit služby předávání přes Azure.
+Tento krok popisuje, jak toorun Azure předávání služby.
 
-### <a name="create-the-relay-credentials"></a>Vytvořit přihlašovací údaje předávání
+### <a name="create-hello-relay-credentials"></a>Vytvoření hello předávání pověření
 
-1. V `Main()` vytvořte dvě proměnné, do kterých se uloží obor názvů a klíč SAS načtené z okna konzoly.
+1. V `Main()`, vytvořte dvě proměnné v oboru názvů které toostore hello a hello SAS klíč, který se načítají z okna konzoly hello.
 
     ```csharp
     Console.Write("Your Service Namespace: ");
@@ -245,56 +245,56 @@ Tento krok popisuje, jak spustit služby předávání přes Azure.
     string sasKey = Console.ReadLine();
     ```
 
-    Klíč SAS se později použije pro přístup k projektu. Obor názvů se předá do `CreateServiceUri` jako parametr a vytvoří se URI služby.
-2. Pomocí objektu [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) deklarujte, že jako typ pověření budete používat klíč SAS. Následující kód přidejte přímo za kód, který jste přidali v předchozím kroku.
+    klíč SAS Hello bude použít novější tooaccess projektu. obor názvů Hello se předá jako parametr příliš`CreateServiceUri` toocreate URI služby.
+2. Použití [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) objektu, deklarovat, že budete používat klíč SAS jako typ přihlašovacích údajů hello. Přidejte následující kód přímo po kódu hello přidali v posledním kroku hello hello.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-### <a name="create-a-base-address-for-the-service"></a>Vytvoření bázové adresy pro službu
+### <a name="create-a-base-address-for-hello-service"></a>Vytvoření bázové adresy pro službu hello
 
-Po kódu, které jste přidali v posledním kroku, vytvořte `Uri` instance pro bázovou adresu služby. Toto URI specifikuje schéma Service Bus, obor názvů a cestu rozhraní služby.
+Po hello kódu, které jste přidali v posledním kroku hello, vytvořte `Uri` pro základní adresu hello instanci služby hello. Toto URI specifikuje schéma Service Bus hello hello obor názvů a hello cestu rozhraní služby hello.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 ```
 
-„sb“ je zkratka schématu Service Bus a indikuje, že používáme protokol TCP. To jsme předtím indikovali v konfiguračním souboru, když jsme specifikovali [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) jako vazbu.
+"sb" je zkratka schématu Service Bus hello a určuje, že používáme protokol TCP jako protokol pro hello. To jsme předtím indikovali v konfiguračním souboru hello, pokud [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) byl zadán jako hello vazby.
 
-V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
+V tomto kurzu hello identifikátor URI je `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
-### <a name="create-and-configure-the-service-host"></a>Vytvoření a konfigurace hostitele služby
+### <a name="create-and-configure-hello-service-host"></a>Vytvoření a konfigurace hostitele služby hello
 
-1. Nastavte režim připojení na `AutoDetect`.
+1. Nastavte režim připojení hello příliš`AutoDetect`.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Režim připojení popisuje, protokol, služba se používá ke komunikaci se službou předávání přes; pomocí protokolu HTTP nebo TCP. Pomocí výchozího nastavení `AutoDetect`, služba se pokusí připojit k předávání přes Azure přes TCP, pokud je k dispozici a HTTP, pokud TCP není k dispozici. Všimněte si, že tu je rozdíl oproti protokolu, který služba specifikuje pro komunikaci klienta. Jeho protokol se určuje podle požité vazby. Například můžete použít službu [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) vazba, která určuje, že její koncový bod s klienty komunikuje přes HTTP. Že stejné služba by mohla specifikovat **ConnectivityMode.AutoDetect** tak, aby služba komunikuje s Azure předávání přes protokol TCP.
-2. Vytvořte hostitele služby pomocí URI, které jste předtím vytvořili v této části.
+    Hello režim připojení popisuje hello protokol hello služby používá toocommunicate předávací službou hello; pomocí protokolu HTTP nebo TCP. Pomocí výchozího nastavení hello `AutoDetect`, hello služby pokusí tooconnect tooAzure předávání přes TCP, pokud je k dispozici a HTTP, pokud TCP není k dispozici. Všimněte si, že to se liší od služby hello protokolu hello specifikuje pro komunikaci klienta. Tento protokol se určuje podle hello vazby použít. Službu můžete například použít hello [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) vazba, která určuje, že její koncový bod s klienty komunikuje přes HTTP. Že stejné služba by mohla specifikovat **ConnectivityMode.AutoDetect** tak, aby služba hello komunikuje s Azure předávání přes protokol TCP.
+2. Vytvořte hostitele služby hello, pomocí hello URI vytvořený dříve v této části.
 
     ```csharp
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    Hostitel služby je objekt WCF, který instancuje službu. Tady jí předáte typ služby, kterou chcete vytvořit (typ `EchoService`) a taky adresu, na které chcete službu vystavit.
-3. Na začátku souboru Program.cs přidejte odkazy na [System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) a [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description).
+    Hostitel služby Hello je objekt WCF hello, který vytvoří instanci služby hello. Tady jí předáte typ hello služby chcete toocreate ( `EchoService` typu) a také toohello adresu, na které má služba tooexpose hello.
+3. Hello horní části souboru Program.cs hello, přidejte odkazy na příliš[System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) a [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description).
 
     ```csharp
     using System.ServiceModel.Description;
     using Microsoft.ServiceBus.Description;
     ```
-4. Zpátky v `Main()` nakonfigurujte koncový bod, a povolte tak veřejný přístup.
+4. Zpět v `Main()`, nakonfigurujte hello koncový bod tooenable veřejný přístup.
 
     ```csharp
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Tento krok informuje předávací služba, která vaše aplikace dá veřejně najít tak, že prověří ATOM kanálu pro váš projekt. Pokud **DiscoveryType** nastavíte na **private**, služba by pro klienta pořád byla dostupná. Službu však nebude se ale při prohledávání oboru názvů předávání. Místo toho by klient musel předem znát cestu ke koncovému bodu.
-5. Použijte pověření služby na koncové body služby definované v souboru App.config:
+    Tento krok informuje hello předávací služba, že vaše aplikace dá veřejně najít tak, že prověří hello informačního kanálu ATOM pro váš projekt. Pokud nastavíte **DiscoveryType** příliš**privátní**, klient bude stále možné tooaccess hello služby. Ale hello by se při vyhledávání hello předávání názvů. Hello klient místo toho by měla mít cesta ke koncovému bodu hello tooknow předem.
+5. Použít pověření služby hello toohello koncové body služby definované v souboru App.config hello:
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -304,32 +304,32 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     }
     ```
 
-    Jak jsme uvedli v předchozím kroku, mohli jste v konfiguračním souboru deklarovat několik služeb a koncových bodů. Pokud byste to udělali, tento kód by prošel konfigurační soubor a vyhledal by všechny koncové body, na které by měl vaše pověření použít. V tomto kurzu má ale konfigurační soubor jen jeden koncový bod.
+    Jak jsme uvedli v předchozím kroku hello, deklarovat vám může několik služeb a koncové body v konfiguračním souboru hello. Pokud jste měli, tento kód by prošel konfigurační soubor hello a vyhledávání pro každý koncový bod toowhich platit vaše přihlašovací údaje. V tomto kurzu má hello konfigurační soubor pouze jeden koncový bod.
 
-### <a name="open-the-service-host"></a>Otevření hostitele služby
+### <a name="open-hello-service-host"></a>Hostitel služby otevřete hello
 
-1. Otevřete službu.
+1. Otevřete službu hello.
 
     ```csharp
     host.Open();
     ```
-2. Informujte uživatele, že zpráva běží, a vysvětlete mu, jak službu ukončit.
+2. Informujte hello uživatele, který hello služby používá a popisují, jak tooshut dolů hello služby.
 
     ```csharp
     Console.WriteLine("Service address: " + address);
-    Console.WriteLine("Press [Enter] to exit");
+    Console.WriteLine("Press [Enter] tooexit");
     Console.ReadLine();
     ```
-3. Po dokončení zavřete hostitele služby.
+3. Po dokončení zavřete hostitele služby hello.
 
     ```csharp
     host.Close();
     ```
-4. Stisknutím kláves **CTRL+SHIFT+B** sestavte projekt.
+4. Stiskněte klávesu **Ctrl + Shift + B** toobuild hello projektu.
 
 ### <a name="example"></a>Příklad
 
-Kódu dokončené služby by měl vypadat takto. Kód obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci.
+Kódu dokončené služby by měl vypadat takto. Hello kód obsahuje hello kontrakt a implementaci služby z předchozích kroků v kurzu hello a hostitelé hello službu v konzolové aplikaci.
 
 ```csharp
 using System;
@@ -371,61 +371,61 @@ namespace Microsoft.ServiceBus.Samples
             Console.Write("Your SAS key: ");
             string sasKey = Console.ReadLine();
 
-           // Create the credentials object for the endpoint.
+           // Create hello credentials object for hello endpoint.
             TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
             sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
 
-            // Create the service URI based on the service namespace.
+            // Create hello service URI based on hello service namespace.
             Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 
-            // Create the service host reading the configuration.
+            // Create hello service host reading hello configuration.
             ServiceHost host = new ServiceHost(typeof(EchoService), address);
 
-            // Create the ServiceRegistrySettings behavior for the endpoint.
+            // Create hello ServiceRegistrySettings behavior for hello endpoint.
             IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
 
-            // Add the Relay credentials to all endpoints specified in configuration.
+            // Add hello Relay credentials tooall endpoints specified in configuration.
             foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
             {
                 endpoint.Behaviors.Add(serviceRegistrySettings);
                 endpoint.Behaviors.Add(sasCredential);
             }
 
-            // Open the service.
+            // Open hello service.
             host.Open();
 
             Console.WriteLine("Service address: " + address);
-            Console.WriteLine("Press [Enter] to exit");
+            Console.WriteLine("Press [Enter] tooexit");
             Console.ReadLine();
 
-            // Close the service.
+            // Close hello service.
             host.Close();
         }
     }
 }
 ```
 
-## <a name="create-a-wcf-client-for-the-service-contract"></a>Vytvoření klienta WCF pro kontrakt služby
+## <a name="create-a-wcf-client-for-hello-service-contract"></a>Vytvoření klienta WCF pro kontrakt služby hello
 
-Dalším krokem je vytvoření klientskou aplikaci a definování kontraktu služby, který implementujete v pozdějších krocích. Všimněte si, že hodně těchto kroků připomíná kroky k vytvoření služby: definování kontraktu, upravení App.config souboru, pomocí přihlašovacích údajů k připojení ke službě předávání a tak dále. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+dalším krokem Hello je toocreate klientské aplikace a definovat hello smlouvu, kterou implementujete v pozdějších krocích. Upozorňujeme, že hodně těchto kroků vypadat hello kroky použít toocreate služby: definování kontraktu, upravení App.config souboru, pomocí přihlašovacích údajů tooconnect toohello předávací služby a tak dále. Hello kód použitý k těmto úlohám najdete v příkladu hello hello postupem.
 
-1. Vytvořte pro klienta nový projekt v aktuálním řešení ve Visual Studiu, a to tímto postupem:
+1. Vytvořte nový projekt v hello aktuální řešení sady Visual Studio pro klienta hello díky hello následující:
 
-   1. V Průzkumníku řešení ve stejném řešení, které obsahuje službu, klikněte pravým tlačítkem na aktuální řešení (nikoli projekt) a klikněte na **Přidat**. Pak klikněte na **Nový projekt**.
-   2. V **přidat nový projekt** dialogové okno, klikněte na tlačítko **Visual C#** (Pokud **Visual C#** nezobrazí, podívejte se do části **jiné jazyky**), vyberte **Konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoClient**.
+   1. V Průzkumníku řešení v hello stejném řešení, které obsahuje službu hello, klikněte pravým tlačítkem na hello aktuální řešení (ne hello projekt) a klikněte na tlačítko **přidat**. Pak klikněte na **Nový projekt**.
+   2. V hello **přidat nový projekt** dialogové okno, klikněte na tlačítko **Visual C#** (Pokud **Visual C#** nezobrazí, podívejte se do části **jiné jazyky**), vyberte hello **Konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoClient**.
    3. Klikněte na **OK**.
       <br />
-2. V Průzkumníku řešení poklikejte na soubor Program.cs v projektu **EchoClient** a pokud ještě není otevřený, otevře se v editoru Visual Studio.
-3. Změňte název oboru názvů z výchozího názvu `EchoClient` na `Microsoft.ServiceBus.Samples`.
-4. Nainstalujte [balíček Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus): v Průzkumníku řešení klikněte pravým tlačítkem myši **EchoClient** projektu a pak klikněte na **spravovat balíčky NuGet**. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Klikněte na **Instalovat** a přijměte podmínky použití.
+2. V Průzkumníku řešení poklikejte na soubor Program.cs hello v hello **EchoClient** projektu tooopen ji v editoru hello, pokud ještě není otevřete.
+3. Změna hello název oboru názvů z výchozího názvu `EchoClient` příliš`Microsoft.ServiceBus.Samples`.
+4. Nainstalujte hello [balíček Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus): v Průzkumníku řešení klikněte pravým tlačítkem na hello **EchoClient** projektu a pak klikněte na **spravovat balíčky NuGet**. Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus`. Klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
 
     ![][3]
-5. V souboru Program.cs přidejte příkaz `using` pro obor názvů [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx).
+5. Přidat `using` příkaz pro hello [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) oboru názvů v souboru Program.cs hello.
 
     ```csharp
     using System.ServiceModel;
     ```
-6. Přidejte definici kontraktu služby do oboru názvů, jak je vidět v následujícím příkladu. Všimněte si, že je tato definice skoro stejná jako definice použitá v projektu **Service**. Tento kód byste měli přidat na začátek oboru názvů `Microsoft.ServiceBus.Samples`.
+6. Přidejte hello Definice toohello obor názvů kontraktu služby, jak ukazuje následující příklad hello. Upozorňujeme, že je tato definice identické toohello definice použitá v hello **služby** projektu. Měli byste přidat tento kód hello horní části hello `Microsoft.ServiceBus.Samples` oboru názvů.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -437,11 +437,11 @@ Dalším krokem je vytvoření klientskou aplikaci a definování kontraktu slu�
 
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
-7. Stisknutím kláves **CTRL+SHIFT+B** sestavte klienta.
+7. Stiskněte klávesu **Ctrl + Shift + B** toobuild hello klienta.
 
 ### <a name="example"></a>Příklad
 
-Následující kód ukazuje aktuální stav souboru Program.cs v **EchoClient** projektu.
+Hello následující kód ukazuje aktuální stav souboru Program.cs hello hello v hello **EchoClient** projektu.
 
 ```csharp
 using System;
@@ -470,13 +470,13 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="configure-the-wcf-client"></a>Konfigurace klienta WCF
+## <a name="configure-hello-wcf-client"></a>Konfigurace klienta WCF hello
 
-V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, která bude mít přístup ke službě vytvořené v jednom z předchozích kroků tohoto kurzu. Tento soubor App.config definuje kontrakt, vazbu a název koncového bodu. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, který přistupuje k službě hello vytvořili dříve v tomto kurzu. Tento soubor App.config definuje hello kontrakt, vazbu a název koncového bodu hello. Hello kód použitý k těmto úlohám najdete v příkladu hello hello postupem.
 
-1. V Průzkumníku řešení v projektu **EchoClient** poklikejte na **App.config.cs** a otevře se v editoru Visual Studio.
-2. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
-3. V elementu system.serviceModel element přidejte element `<client>`.
+1. V Průzkumníku řešení v hello **EchoClient** projektu, klikněte dvakrát na **App.config** tooopen hello souboru v editoru Visual Studio hello.
+2. V hello `<appSettings>` elementu, nahraďte zástupné symboly hello hello názvem vašeho oboru názvů služby a hello SAS klíč, který jste zkopírovali v předchozím kroku.
+3. V rámci elementu system.serviceModel hello, přidejte `<client>` elementu.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -489,7 +489,7 @@ V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, 
     ```
 
     Tento krok deklaruje, že definujete klientskou aplikaci ve stylu WCF.
-4. V elementu `client` definujte název, kontrakt a typ vazby koncového bodu.
+4. V rámci hello `client` elementu, definujte hello název, kontrakt a typ vazby pro koncový bod hello.
 
     ```xml
     <endpoint name="RelayEndpoint"
@@ -497,12 +497,12 @@ V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, 
                     binding="netTcpRelayBinding"/>
     ```
 
-    Tento krok definuje název koncového bodu, kontrakt definovaný ve službě a fakt, že klientská aplikace používá TCP ke komunikaci s předávání přes Azure. Název koncového bodu se použije v následujícím kroku k propojení této konfigurace koncového bodu s URI služby.
+    Tento krok definuje název hello hello koncového bodu, hello kontrakt definovaný ve hello služby a hello fakt, že klientská aplikace hello používá TCP toocommunicate s předávání přes Azure. Hello název koncového bodu se používá v hello dalším krokem toolink této konfigurace koncového bodu s URI služby hello.
 5. Klikněte na tlačítko **soubor**, pak klikněte na tlačítko **Uložit vše**.
 
 ## <a name="example"></a>Příklad
 
-Následující kód ukazuje soubor App.config pro klienta Echo.
+Hello následující kód ukazuje soubor App.config hello pro klienta Echo hello.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -523,26 +523,26 @@ Následující kód ukazuje soubor App.config pro klienta Echo.
 </configuration>
 ```
 
-## <a name="implement-the-wcf-client"></a>Implementace klienta WCF
-V tomto kroku implementujete základní klientskou aplikaci, která bude mít přístup ke službě, kterou jste vytvořili v jednom z předchozích kroků tohoto kurzu. Podobně jako u služby, klient provádí spoustu stejných operací jako pro přístup k předávání přes Azure:
+## <a name="implement-hello-wcf-client"></a>Implementace klienta WCF hello
+V tomto kroku implementujete základní klientskou aplikaci, který přistupuje k hello službu, kterou jste vytvořili dříve v tomto kurzu. Podobně jako toohello služby hello klient provádí spoustu hello stejné operace tooaccess předávání přes Azure:
 
-1. Nastaví režim připojení.
-2. Vytvoří URI, které vyhledá hostitelskou službu.
-3. Definuje bezpečnostní pověření.
-4. Aplikuje pověření na připojení.
-5. Otevře připojení.
-6. Provádí úlohy specifické pro aplikace.
-7. Ukončí připojení.
+1. Nastaví režim připojení hello.
+2. Vytvoří hello identifikátor URI, který vyhledá hello hostitele služby.
+3. Definuje hello zabezpečovací pověření.
+4. Platí hello pověření toohello připojení.
+5. Otevře připojení hello.
+6. Provádí úlohy specifické pro aplikaci hello.
+7. Zavře připojení hello.
 
-Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál, který se připojit ke službě předávání, zatímco služba používá volání **ServiceHost**. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+Jedním z hlavních rozdílů hello je však, že klientská aplikace hello používá službu předávání přes kanál tooconnect toohello, zatímco hello služba používá volání příliš**ServiceHost**. Hello kód použitý k těmto úlohám najdete v příkladu hello hello postupem.
 
 ### <a name="implement-a-client-application"></a>Implementace klientské aplikace
-1. Nastavte režim připojení na **AutoDetect**. Do metody `Main()` aplikace **EchoClient** přidejte následující kód.
+1. Nastavte režim připojení hello příliš**AutoDetect**. Přidejte následující kód do hello hello `Main()` metoda hello **EchoClient** aplikace.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
-2. Definujte proměnné, do kterých se uloží hodnoty obor názvů služby a klíče SAS načtené z konzoly.
+2. Definujte proměnné toohold hello hodnoty pro hello oboru názvů služby a klíče SAS načtené z konzoly hello.
 
     ```csharp
     Console.Write("Your Service Namespace: ");
@@ -550,39 +550,39 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
     Console.Write("Your SAS Key: ");
     string sasKey = Console.ReadLine();
     ```
-3. Vytvořte identifikátor URI, který definuje umístění hostitele ve vašem projektu předávání.
+3. Vytvořte hello identifikátor URI, který definuje umístění hello hello hostitele ve vašem projektu předávání.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
-4. Vytvořte objekt pověření pro koncový bod vašeho oboru názvů.
+4. Vytvoření objektu hello přihlašovací údaje pro svůj koncový bod služby oboru názvů.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
-5. Vytvořte objekt kanálu pro vytváření, který načte konfiguraci popsanou v souboru App.config.
+5. Vytváření hello kanál, který načítá hello konfigurace popsané v souboru App.config hello.
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
     ```
 
-    Objekt kanálu pro vytváření je objekt WCF, který vytvoří kanál, přes který může služba komunikovat s klientskými aplikacemi.
-6. Použijte přihlašovací údaje.
+    Postup kanálu je objekt WCF, který vytvoří kanál, který komunikuje hello služby a klientské aplikace.
+6. Použijte pověření hello.
 
     ```csharp
     channelFactory.Endpoint.Behaviors.Add(sasCredential);
     ```
-7. Vytvořte a otevřete kanál pro službu.
+7. Vytvořte a otevřete hello kanálu toohello služby.
 
     ```csharp
     IEchoChannel channel = channelFactory.CreateChannel();
     channel.Open();
     ```
-8. Napište základní uživatelské prostředí a funkci pro echo.
+8. Zápis hello základní uživatelské rozhraní a funkci pro hello echo.
 
     ```csharp
-    Console.WriteLine("Enter text to echo (or [Enter] to exit):");
+    Console.WriteLine("Enter text tooecho (or [Enter] tooexit):");
     string input = Console.ReadLine();
     while (input != String.Empty)
     {
@@ -598,8 +598,8 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
     }
     ```
 
-    Všimněte si, že kód používá instanci objektu kanálu jako proxy pro službu.
-9. Zavřete kanál a zavřete objekt pro vytváření.
+    Všimněte si, že kód hello používá hello instanci objektu kanálu hello jako proxy pro službu hello.
+9. Zavřete kanál hello a objektu pro vytváření zavřít hello.
 
     ```csharp
     channel.Close();
@@ -608,7 +608,7 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
 
 ## <a name="example"></a>Příklad
 
-Dokončený kód by měly vypadat následovně, jak vytvořit klientskou aplikaci, jak volat operace služby a jak zavřít klienta po volání operace je dokončena.
+Dokončený kód by měly vypadat následovně, znázorňující, jak toocreate klientskou aplikaci, jak toocall hello operace služby hello a jak tooclose hello klienta po operaci hello volání je dokončena.
 
 ```csharp
 using System;
@@ -652,7 +652,7 @@ namespace Microsoft.ServiceBus.Samples
             IEchoChannel channel = channelFactory.CreateChannel();
             channel.Open();
 
-            Console.WriteLine("Enter text to echo (or [Enter] to exit):");
+            Console.WriteLine("Enter text tooecho (or [Enter] tooexit):");
             string input = Console.ReadLine();
             while (input != String.Empty)
             {
@@ -675,52 +675,52 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="run-the-applications"></a>Spuštění aplikací
+## <a name="run-hello-applications"></a>Spouštění aplikací hello
 
-1. Stisknutím kláves **CTRL+SHIFT+B** sestavte řešení. Sestavíte tím projekt klienta a projekt služby, které jste vytvořili v předchozích krocích.
-2. Než spustíte klientskou aplikaci, musíte se ujistit, že aplikace služby běží. V Průzkumníku řešení ve Visual Studiu klikněte pravým tlačítkem na řešení **EchoService**, pak klikněte na **Vlastnosti**.
-3. V dialogovém okně vlastností řešení klikněte na **Spouštěný projekt** a pak klikněte na tlačítko **Více projektů po spuštění**. Ujistěte se, že se **EchoService** v seznamu objeví jako první.
-4. V poli **Akce** u projektů **EchoService** i **EchoClient** nastavte **Start**.
+1. Stiskněte klávesu **Ctrl + Shift + B** toobuild hello řešení. Toto sestavení projektu klienta hello i hello projekt služby, který jste vytvořili v předchozích krocích hello.
+2. Před spuštěné hello klientskou aplikaci musí Ujistěte se, zda je spuštěna aplikace služby hello. V Průzkumníku řešení v sadě Visual Studio, klikněte pravým tlačítkem na hello **EchoService** řešení, pak klikněte na tlačítko **vlastnosti**.
+3. V hello řešení dialogové okno Vlastnosti, klikněte na **spouštěný projekt**, pak klikněte na tlačítko hello **více projektů po spuštění** tlačítko. Zajistěte, aby **EchoService** objeví jako první v seznamu hello.
+4. Sada hello **akce** pole pro obě hello **EchoService** a **EchoClient** projekty příliš**spustit**.
 
     ![][5]
-5. Klikněte na **Závislosti projektu**. V poli **Projekty** klikněte na **EchoClient**. Ujistěte se, že je v poli **Závisí na** označené **EchoService**.
+5. Klikněte na **Závislosti projektu**. V hello **projekty** vyberte **EchoClient**. V hello **závisí na** zkontrolujte, zda **EchoService** je zaškrtnuté.
 
     ![][6]
-6. Klikněte na **OK**, a dialog **Vlastnosti** se zavře.
-7. Stiskněte klávesu **F5** a oba projekty se spustí.
-8. Obě okna konzoly se otevřou a požádají vás o zadání oboru názvů. Nejdřív se musí spustit služba, takže v okně konzoly **EchoService** zadejte obor názvů, a pak stiskněte **Enter**.
-9. Pak se zobrazí výzva k zadání klíče SAS. Zadejte klíč SAS a stiskněte Enter.
+6. Klikněte na tlačítko **OK** toodismiss hello **vlastnosti** dialogové okno.
+7. Stiskněte klávesu **F5** toorun obou projektů.
+8. Obě okna konzoly otevřete a vyzvat vás k názvu oboru názvů hello. Hello služby musíte nejprve spustit, tak v hello **EchoService** okně konzoly, zadejte obor názvů hello a potom stiskněte klávesu **Enter**.
+9. Pak se zobrazí výzva k zadání klíče SAS. Zadejte klíč SAS hello a stiskněte klávesu ENTER.
 
-    Tady je příklad výstupu z okna konzoly. Nezapomeňte, tyto zadané hodnoty platí jen pro tento příklad.
+    Tady je příklad výstupu z okna konzoly hello. Všimněte si, že zadané hodnoty hello tady jsou například pouze pro účely.
 
     `Your Service Namespace: myNamespace` `Your SAS Key: <SAS key value>`
 
-    Aplikace služby do okna konzoly vypíše adresu, na které naslouchá, jak je vidět na následujícím příkladu.
+    aplikace služby Hello vytiskne toohello konzoly okno hello adresu, na kterém naslouchá, jak je vidět v hello následující ukázka.
 
-    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] to exit`
-10. V okně konzoly **EchoClient** zadejte stejný údaj, který jste zadali pro aplikaci služby. Stejným postupem jako v předchozích krocích zadejte stejný obor názvů a klíč SAS pro klientskou aplikaci.
-11. Po zadání těchto hodnot klient otevře kanál ke službě a zobrazí se výzva k zadání nějakého textu, jak je vidět v následujícím příkladu výstupu konzoly.
+    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] tooexit`
+10. V hello **EchoClient** okně konzoly, zadejte text hello stejné informace, které jste zadali dříve pro aplikaci služby hello. Postupujte podle hello předchozí kroky tooenter hello stejný obor názvů služby a SAS klíč hodnoty pro klientské aplikace hello.
+11. Po zadání těchto hodnot, hello klient otevře kanál toohello služby a vyzve jste tooenter část textu, jak je vidět v následujícím příkladu výstupu konzoly hello.
 
-    `Enter text to echo (or [Enter] to exit):`
+    `Enter text tooecho (or [Enter] tooexit):`
 
-    Zadejte nějaký text, který se má odeslat do aplikace služby, a stiskněte Enter. Tento text se odešle do služby pomocí operace služby Echo a objeví se v okně konzoly služby, jak je vidět v následujícím příkladu výstupu.
+    Zadejte některé aplikace služby toohello toosend text a stiskněte klávesu Enter. Tento text je odeslán toohello služby prostřednictvím hello operace služby Echo a zobrazí se v okně konzoly služby hello jako následující příklad výstupu hello.
 
     `Echoing: My sample text`
 
-    Klientská aplikace obdrží hodnotu vrácenou z operace `Echo`. Tou je původní text, který se vypíše do okna konzoly. Následující příklad ukazuje výstup okna konzoly klienta.
+    Hello klientská aplikace obdrží hello návratová hodnota hello `Echo` operaci, která je původní text hello který se vypíše tooits okně konzoly. Hello následuje příklad výstupu z okna konzoly klienta hello.
 
     `Server echoed: My sample text`
-12. Tímto způsobem můžete dál posílat textové zprávy z klienta do služby. Když skončíte, stiskněte Enter v oknech konzoly klienta a služby a obě aplikace se ukončí.
+12. Můžete pokračovat v odesílání zpráv ze služby toohello klienta hello tímto způsobem. Jakmile budete hotovi, stiskněte klávesu Enter v hello klientem a službou konzoly windows tooend obě aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento kurz vám ukázal, jak vytvářet klientem předávání přes Azure aplikace a služby pomocí možnosti WCF předávání přes Service Bus. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz vám ukázal, jak toobuild klienta aplikace Azure předávání a služby pomocí hello možnosti WCF předávání přes Service Bus. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Další informace o předávání přes Azure, naleznete v následujících tématech.
+toolearn Další informace o předávání přes Azure, najdete v následujících tématech hello.
 
 * [Přehled architektury služby Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Přehled služby Azure Relay](relay-what-is-it.md)
-* [Jak používat předávání služby WCF s rozhraním .NET](relay-wcf-dotnet-get-started.md)
+* [Jak toouse hello WCF předávání služby pomocí rozhraní .NET](relay-wcf-dotnet-get-started.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
 

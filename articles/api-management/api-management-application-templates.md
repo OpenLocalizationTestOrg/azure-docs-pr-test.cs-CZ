@@ -1,6 +1,6 @@
 ---
-title: "Šablony aplikací ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky aplikace v portálu pro vývojáře ve službě Azure API Management."
+title: "aaaApplication šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello obsah stránky aplikace hello v hello portál pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 6d2d44465800219f16866a621d4822614ac9e1dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-templates-in-azure-api-management"></a>Šablony aplikací ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky aplikace v portálu pro vývojáře.  
+ Hello šablony v této části Povolit toocustomize hello obsah stránky aplikací hello na portál pro vývojáře hello.  
   
 -   [Seznam aplikací](#ProductList)  
   
 -   [Aplikace](#Application)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a>Seznam aplikací  
- **Seznam aplikací** šablona umožňuje přizpůsobit text seznamu stránka aplikace v portálu pro vývojáře.  
+ Hello **seznam aplikací** šablona vám umožní toocustomize hello textu hello aplikace seznamu stránky v portálu pro vývojáře hello.  
   
  ![Šablony portálu vývojář stránky v seznamu aplikací](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM aplikace seznamu vývojář stránky portálu šablony")  
   
@@ -70,7 +70,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Product list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -78,9 +78,9 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekce aplikací.|  
-|Aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace, které jsou viditelné pro aktuálního uživatele.|  
-|CategoryName|Řetězec|Kategorie aplikace.|  
+|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|informace o stránkování Hello pro kolekci aplikace hello.|  
+|Aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Hello aplikace viditelné toohello aktuálního uživatele.|  
+|CategoryName|Řetězec|kategorie Hello aplikace.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -134,7 +134,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="Application"></a>Aplikace  
- **Aplikace** šablona umožňuje přizpůsobit text stránka aplikace v portálu pro vývojáře.  
+ Hello **aplikace** šablona vám umožní toocustomize hello textu hello stránka aplikace v portálu pro vývojáře hello.  
   
  ![Šablony portálu vývojář stránky aplikací](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM aplikace vývojář stránky portálu šablony")  
   
@@ -177,7 +177,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Application` Šablona neumožňuje použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Application` šablona neumožňuje použití hello libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
  [Aplikace](api-management-template-data-model-reference.md#Application) entity.  
@@ -220,4 +220,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

@@ -1,6 +1,6 @@
 ---
-title: "Kurz k synonymům ve verzi Preview ve službě Azure Search | Dokumentace Microsoftu"
-description: "Přidání funkce synonym ve verzi Preview do indexu ve službě Azure Search."
+title: "aaaSynonyms náhled kurzu ve službě Azure Search | Microsoft Docs"
+description: "Přidáte hello synonyma preview funkce tooan index ve službě Azure Search."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -12,33 +12,33 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 03/31/2017
 ms.author: heidist
-ms.openlocfilehash: 014959ed471f796d2184f0f8ff10d15cdc8a2ec6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 055c1cbafb945823a3dc4da0c522db236b1d192c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="synonym-preview-c-tutorial-for-azure-search"></a>Kurz synonym (Preview) v jazyce C# pro Azure Search
 
-Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považované za sémantické ekvivalenty vstupního výrazu. Chcete třeba, aby položce auto odpovídaly i dokumenty obsahující termíny automobil a vozidlo.
+Synonyma odpovídající podle podmínek považují za vstupní termín sémanticky ekvivalentní toohello rozbalit dotazu. Například můžete "auto" toomatch dokumenty obsahující termíny hello "automobilu" nebo "vehicle".
 
-Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době zpracování dotazu služba Azure Search nejenom prohledá index, ale pokud některé z polí využitých v tomto dotazu má mapu synonym, prohledá i tuto mapu.
+Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Můžete vytvořit více mapami synonymum, odešlete je jako index k dispozici tooany celé služby prostředků a pak odkazovat které jeden toouse na úrovni pole hello. V době dotazů kromě toosearching indexu Azure Search nepodporuje vyhledávání v mapě synonymum, pokud je zadaná pro pole použitého v dotazu hello.
 
 > [!NOTE]
-> Funkce synonym je aktuálně ve verzi Preview a je podporovaná jenom v nejnovějších verzích Preview rozhraní API a sady SDK(api-version=2016-09-01-Preview, SDK verze 4.x-preview). Podpora webu Azure Portal se v současnosti neposkytuje. Na rozhraní API ve verzi Preview se nevztahuje žádná smlouva SLA a funkce se také mohou změnit, proto je nedoporučujeme používat v produkčních aplikacích.
+> Hello synonyma funkce je aktuálně ve verzi preview a podporována v pouze hello nejnovější verzi preview rozhraní API a verze sady SDK (api-version = 2016-09-01-Preview, verze SDK 4.x-preview). Podpora webu Azure Portal se v současnosti neposkytuje. Na rozhraní API ve verzi Preview se nevztahuje žádná smlouva SLA a funkce se také mohou změnit, proto je nedoporučujeme používat v produkčních aplikacích.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Požadavky kurzu zahrnují tyto položky:
+Kurz požadavky hello následující:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Služba Azure Search](search-create-service-portal.md)
 * [Verze Preview knihovny Microsoft.Azure.Search .NET](https://aka.ms/search-sdk-preview)
-* [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Jak toouse Azure vyhledávání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Přehled
 
-Dotazy před a po ukazují význam použití synonym. V tomto kurzu používáme ukázkovou aplikaci, která spustí dotazy a vrátí výsledky v ukázkovém indexu. Ukázková aplikace vytvoří malý index s názvem hotels naplněný dvěma dokumenty. Aplikace spustí vyhledávací dotazy s využitím termínů a frází, které nejsou v indexu uvedené, povolí funkci synonym a potom znovu provede stejné hledání. Uvedený kód ukazuje celkový tok.
+Před a po dotazy ukazují hello hodnotu synonyma. V tomto kurzu používáme ukázkovou aplikaci, která spustí dotazy a vrátí výsledky v ukázkovém indexu. Ukázková aplikace Hello vytvoří malé index s názvem "hotels" naplněný dva dokumenty. aplikace Hello provede vyhledávací dotazy pomocí podmínky a slovní spojení, která nejsou uvedena v indexu hello, povolí funkci synonyma hello, pak problémy hello stejné vyhledávání znovu. Hello uvedený níže ukazuje hello celkové toku.
 
 ```csharp
   static void Main(string[] args)
@@ -63,53 +63,53 @@ Dotazy před a po ukazují význam použití synonym. V tomto kurzu používáme
       Console.WriteLine("{0}", "Adding synonyms...\n");
       UploadSynonyms(serviceClient);
       EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for the changes to propagate
+      Thread.Sleep(10000); // Wait for hello changes toopropagate
 
       RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
 
-      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
+      Console.WriteLine("{0}", "Complete.  Press any key tooend application...\n");
 
       Console.ReadKey();
   }
 ```
-Postup vytvoření a naplnění ukázkového indexu jsou vysvětlené v tématu [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Hello toocreate kroky a naplnit index ukázka hello jsou vysvětlené v [jak toouse Azure vyhledávání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ## <a name="before-queries"></a>Dotazy „před“
 
 V `RunQueriesWithNonExistentTermsInIndex` jsme vydali vyhledávací dotazy pro „five star“, „internet“ a „economy AND hotel“.
 ```csharp
-Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
+Console.WriteLine("Search hello entire index for hello phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the term 'internet':\n");
+Console.WriteLine("Search hello entire index for hello term 'internet':\n");
 results = indexClient.Documents.Search<Hotel>("internet", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
+Console.WriteLine("Search hello entire index for hello terms 'economy' AND 'hotel':\n");
 results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
-Ani jeden z indexovaných dokumentů tyto termíny neobsahuje, proto z prvního volání `RunQueriesWithNonExistentTermsInIndex` dostáváme tento výstup.
+Ani jeden z hello dva indexované dokumenty obsahují hello podmínky, proto jsme hello následující výstup z hello nejprve `RunQueriesWithNonExistentTermsInIndex`.
 ~~~
-Search the entire index for the phrase "five star":
+Search hello entire index for hello phrase "five star":
 
 no document matched
 
-Search the entire index for the term 'internet':
+Search hello entire index for hello term 'internet':
 
 no document matched
 
-Search the entire index for the terms 'economy' AND 'hotel':
+Search hello entire index for hello terms 'economy' AND 'hotel':
 
 no document matched
 ~~~
 
 ## <a name="enable-synonyms"></a>Povolení synonym
 
-Povolení synonyma je dvoustupňový proces. Nejdřív nadefinujeme a nahrajeme pravidla synonym a potom nakonfigurujeme pole pro jejich použití. Proces je popsaný v `UploadSynonyms` a `EnableSynonymsInHotelsIndex`.
+Povolení synonyma je dvoustupňový proces. Nám nejdřív definovat a nahrát synonymum pravidla a pak nakonfigurujte toouse pole je. proces Hello popsané v `UploadSynonyms` a `EnableSynonymsInHotelsIndex`.
 
-1. Přidejte mapu synonym k vaší vyhledávací službě. V `UploadSynonyms` definujeme čtyři pravidla v mapě synonym desc-synonymmap a nahrajeme je do služby.
+1. Přidáte mapu synonymum tooyour vyhledávací službu. V `UploadSynonyms`, jsme definovat čtyři pravidla v mapě naše synonymum, desc-synonymmap' a nahrát toohello služby.
 ```csharp
     var synonymMap = new SynonymMap()
     {
@@ -123,9 +123,9 @@ Povolení synonyma je dvoustupňový proces. Nejdřív nadefinujeme a nahrajeme 
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
 ```
-Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Tento formát je vysvětlený v tématu [Synonyma ve službě Azure Search](search-synonyms.md) v části `Apache Solr synonym format`.
+Mapu synonymum musí odpovídat standard s otevřeným zdrojem toohello `solr` formátu. Formát Hello je vysvětleno v [synonyma ve službě Azure Search](search-synonyms.md) části hello `Apache Solr synonym format`.
 
-2. Nakonfigurujte prohledávatelná pole tak, aby používala mapu synonym v definici indexu. V `EnableSynonymsInHotelsIndex` povolíme synonyma u dvou polí `category` a `tags` nastavením vlastnosti `synonymMaps` na název nově nahrané mapy synonym.
+2. Konfigurovat prohledatelná pole toouse hello synonymum mapu v definici indexu hello. V `EnableSynonymsInHotelsIndex`, povolíte synonyma na dvě pole `category` a `tags` podle nastavení hello `synonymMaps` název vlastnosti toohello hello nově nahrán synonymum mapy.
 ```csharp
   Index index = serviceClient.Indexes.Get("hotels");
   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
@@ -133,37 +133,37 @@ Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Ten
 
   serviceClient.Indexes.CreateOrUpdate(index);
 ```
-Po přidání mapy synonym není potřeba znovu sestavovat index. Mapu synonymum můžete přidat ke službě a potom změnit stávající definice pole v libovolném indexu tak, aby tuto novou mapu synonym používala. Přidání nových atributů nemá žádný vliv na dostupnost indexu. To samé platí i pro zákaz synonym u pole. Stačí nastavit vlastnost `synonymMaps` na prázdný seznam.
+Po přidání mapy synonym není potřeba znovu sestavovat index. Můžete přidat službu tooyour mapy synonymum a potom změnit stávající definice pole v jakékoli index toouse hello nové synonymum mapování. Přidání nové atributy Hello nemá žádný vliv na dostupnost index. Hello totéž platí i v zakázání synonyma pro pole. Jednoduše můžete nastavit hello `synonymMaps` vlastnost tooan prázdný seznam.
 ```csharp
   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
 ```
 
 ## <a name="after-queries"></a>Dotazy „po“
 
-Po nahrání mapy synonym a aktualizaci indexu druhé volání `RunQueriesWithNonExistentTermsInIndex` vrátí tento výstup:
+Po nahrání hello synonymum mapy a hello index je aktualizovaný toouse hello synonymum mapy, hello druhý `RunQueriesWithNonExistentTermsInIndex` volání výstupy hello následující:
 
 ~~~
-Search the entire index for the phrase "five star":
+Search hello entire index for hello phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search the entire index for the term 'internet':
+Search hello entire index for hello term 'internet':
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search the entire index for the terms 'economy' AND 'hotel':
+Search hello entire index for hello terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
-První dotaz najde dokument z pravidla `five star=>luxury`. Druhý dotaz rozšíří vyhledávání pomocí `internet,wifi` a třetí použije k vyhledání shody v dokumentech `hotel, motel` i `economy,inexpensive=>budget`.
+Hello první dotaz najde hello dokumentu z pravidla hello `five star=>luxury`. druhý dotaz Hello rozšíří hello vyhledávání pomocí `internet,wifi` a hello třetí pomocí obou `hotel, motel` a `economy,inexpensive=>budget` v hledání dokumentů hello odpovídá.
 
-Přidání synonym úplně mění možnosti vyhledávání. Původním dotazům v tomto kurzu se nepodařilo vrátit smysluplné výsledky, i když dokumenty v indexu byly relevantní. Povolením synonym můžeme rozšířit index tak, aby zahrnoval běžně používané termíny, a nemusíme přitom nijak upravovat podkladová data v indexu.
+Přidání synonyma zcela změní hello vyhledáváním. V tomto kurzu hello původní dotazů se nezdařilo smysluplný výsledky tooreturn i v případě, že byly relevantní hello dokumenty v indexu. Povolením synonyma jsme můžete rozbalit indexu tooinclude podmínkami společné použití, s daty toounderlying žádné změny v indexu hello.
 
 ## <a name="sample-application-source-code"></a>Zdrojový kód ukázkové aplikace
-Úplný zdrojový kód ukázkové aplikace použité v tomto názorném postupu najdete na [Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
+Můžete najít hello úplný zdrojový kód vzorové aplikace hello použitý v této ukázce na [Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Projděte si téma věnované [použití synonym ve službě Azure Search](search-synonyms.md).
+* Zkontrolujte [jak synonyma toouse ve službě Azure Search](search-synonyms.md)
 * Projděte si [dokumentaci k rozhraní REST API pro synonyma](https://aka.ms/rgm6rq).
-* Projděte si referenční materiály pro [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [REST API](https://docs.microsoft.com/rest/api/searchservice/).
+* Procházet hello odkazy pro hello [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [REST API](https://docs.microsoft.com/rest/api/searchservice/).

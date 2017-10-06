@@ -1,6 +1,6 @@
 ---
-title: "Přehled výstrah v Microsoft Azure a Azure monitorování | Microsoft Docs"
-description: "Výstrahy umožňují sledovat metriky prostředků Azure, události nebo protokoly a být upozorněni, když je splněna podmínka, které zadáte."
+title: "aaaOverview výstrah v Microsoft Azure a Azure monitorování | Microsoft Docs"
+description: "Výstrahy umožňují metriky toomonitor prostředků Azure, události nebo protokoly a být upozorněni, když je splněna podmínka, které zadáte."
 author: rboucher
 manager: carmonm
 editor: 
@@ -15,56 +15,56 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d30ce72a3be298eba1f4e8f8d33b769971c96cb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d080080666fedc9eefda6b35cdea3714785d2223
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Co jsou výstrahy v Microsoft Azure?
-Tento článek popisuje různé zdroje výstrah v Microsoft Azure, co se účely pro tyto výstrahy, jejich výhody a jak začít pracovat s jejich používání. Konkrétně platí pro monitorování Azure, ale poskytuje také výstrahy ukazatele k jiným službám. Výstrahy nabízejí metoda monitorování v Azure, který vám umožní nakonfigurovat podmínky nad daty a být upozorněni, když podmínky odpovídají data nejnovější sledování.
+Tento článek popisuje hello různých zdrojů výstrah v Microsoft Azure, jaké jsou hello účely pro tyto výstrahy, jejich výhody a jak se tooget pracovat s jejich používání. Konkrétně platí tooAzure monitorování, ale poskytuje ukazatele tooother služby s výstrahami také. Výstrahy nabízejí metoda monitorování v Azure, který povolí tooconfigure podmínky přes data a stát upozorněni, když hello podmínky odpovídají hello nejnovější data monitorování.
 
 ## <a name="taxonomy-of-azure-alerts"></a>Taxonomii Azure výstrah
-Azure používá k popisu výstrahy a jejich funkce následující podmínky:
+Azure používá hello následující podmínky toodescribe výstrahy a jejich funkce:
 * **Výstrahy** -definici kritéria (jeden nebo více pravidel nebo podmínky), která se změní na aktivovat, pokud splněny.
-* **Aktivní** -stav, když je splněna kritéria definovaná výstrahu.
-* **Vyřešit** -stav, když po dříve splněné již není splněna kritéria definovaná výstrahu.
-* **Oznámení** – akce na základě z výstrahu, aby se aktivovala.
-* **Akce** -konkrétní volání odeslaných k příjemce oznámení (například e-mailem na adresu nebo příspěvků na adresu URL webhooku). Oznámení můžete aktivovat obvykle více akcí.
+* **Aktivní** – hello stavu hello při splnění kritérií pro definované výstrahu.
+* **Vyřešit** – hello stavu při hello po dříve splněné již není splněna kritéria definovaná výstrahu.
+* **Oznámení** -hello akce na základě z výstrahu, aby se aktivovala.
+* **Akce** -konkrétní volání odeslaných tooa příjemce oznámení (například e-mailem na adresu nebo publikování adresa URL webhooku tooa). Oznámení můžete aktivovat obvykle více akcí.
 
 ## <a name="alerts-in-different-azure-services"></a>Výstrahy v různých služeb Azure
-Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Informace o tom, a kdy použít tyto služby [najdete v článku](./monitoring-overview.md). Zde je výčet typů výstrah dostupné přes Azure:
+Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Informace o tom, jak a kdy toouse tyto služby [najdete v článku](./monitoring-overview.md). Zde je výčet typů výstrah hello k dispozici v Azure:
 
 | Služba | Typ výstrahy | Podporované služby | Popis |
 |---|---|---|---|
-| Azure Monitor | [Metriky výstrahy](./insights-alerts-portal.md) | [Podporované metriky z monitorování Azure](./monitoring-supported-metrics.md) | Přijímat oznámení v případě jakékoli úrovni platformy metrika splňuje určité podmínky (například % využití procesoru na virtuálním počítači je větší než 90 za posledních 5 minut). |
-| Azure Monitor | [Aktivity protokolu výstrahy](./monitoring-activity-log-alerts.md) | Všechny typy prostředků, k dispozici ve službě Správce prostředků Azure | Příjem oznámení, když se všechny nové události v [protokol činnosti Azure](./monitoring-overview-activity-logs.md) odpovídá konkrétní podmínky (například kdy dochází k operaci "Odstranit virtuální počítač" v myProductionResourceGroup nebo pokud se zobrazí nové události stavu služby s "Aktivní", jako stav). |
-| Application Insights | [Metriky výstrahy](../application-insights/app-insights-alerts.md) | Všechny aplikace instrumentovány k odesílání dat do služby Application Insights | Přijímat oznámení v případě jakékoli úrovni aplikace metrika splňuje určité podmínky (například doba odezvy serveru je větší než 2 sekund). |
-| Application Insights | [Webový test výstrahy](../application-insights/app-insights-monitor-web-app-availability.md) | Všechny webu instrumentovány k odesílání dat do služby Application Insights | Přijímat oznámení v případě dostupnosti nebo odezvy webu je nižší než očekávání. |
-| Log Analytics | [Upozornění analýzy protokolů](../log-analytics/log-analytics-alerts.md) | Všechny služby, konfigurované k odesílání dat do analýzy protokolů | Přijímat oznámení v případě vyhledávací dotaz analýzy protokolů přes data metriky a události splňuje určitá kritéria. |
+| Azure Monitor | [Metriky výstrahy](./insights-alerts-portal.md) | [Podporované metriky z monitorování Azure](./monitoring-supported-metrics.md) | Přijímat oznámení v případě jakékoli úrovni platformy metrika splňuje určité podmínky (například % využití procesoru na virtuálním počítači je větší než 90 pro hello za posledních 5 minut). |
+| Azure Monitor | [Aktivity protokolu výstrahy](./monitoring-activity-log-alerts.md) | Všechny typy prostředků, k dispozici ve službě Správce prostředků Azure | Příjem oznámení, když se všechny nové události v hello [protokol činnosti Azure](./monitoring-overview-activity-logs.md) odpovídá konkrétní podmínky (například pokud se operace "Odstranit virtuální počítač" dojde v myProductionResourceGroup nebo pokud novou událost stavu služby s "Aktivní" jako Zobrazí stav Hello). |
+| Application Insights | [Metriky výstrahy](../application-insights/app-insights-alerts.md) | Všechny aplikace instrumentovány toosend data tooApplication statistiky | Přijímat oznámení v případě jakékoli úrovni aplikace metrika splňuje určité podmínky (například doba odezvy serveru je větší než 2 sekund). |
+| Application Insights | [Webový test výstrahy](../application-insights/app-insights-monitor-web-app-availability.md) | Všechny webu instrumentovány toosend data tooApplication statistiky | Přijímat oznámení v případě dostupnosti nebo odezvy webu je nižší než očekávání. |
+| Log Analytics | [Upozornění analýzy protokolů](../log-analytics/log-analytics-alerts.md) | Všechny služby konfigurovaná toosend data do analýzy protokolů | Přijímat oznámení v případě vyhledávací dotaz analýzy protokolů přes data metriky a události splňuje určitá kritéria. |
 
 ## <a name="alerts-on-azure-monitor-data"></a>Výstrahy na dat monitorování Azure
 Existují dva typy výstrah z dat z Azure sledování – metriky výstrahy a protokol aktivit výstrahy k dispozici.
 
-* **Metriky výstrahy** – Tato výstraha aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, která přiřadíte. Výstraha vygeneruje oznámení, pokud je výstraha "aktivován" (Pokud se překročí prahovou hodnotu a je splněna podmínka výstrahy) a také při se "nevyřeší" (Pokud je znovu překročí prahovou hodnotu a již není splněna podmínka). Rostoucí seznam dostupné metriky, které podporuje Azure monitorování, naleznete v části [seznam metriky, které jsou podporovány pro monitorování Azure](monitoring-supported-metrics.md).
-* **Aktivity protokolu výstrahy** -streamování výstrahu protokolu, které spustí, když je generována událost protokol aktivit, že kritéria, které jste přiřadili filtru odpovídá. Tyto výstrahy mít pouze jeden stav "Aktivovali," vzhledem k tomu, že modul Výstrahy kritéria filtru, která jednoduše platí pro všechny nové události. Tyto výstrahy lze stát upozornění, když dojde k nový incident stav služby, nebo pokud uživatele nebo aplikace provede operaci v rámci vašeho předplatného, například "Odstranění virtuálního počítače."
+* **Metriky výstrahy** – Tato výstraha aktivuje, když hodnota hello zadaný metriky překračuje prahovou hodnotu, která přiřadíte. Výstraha Hello generuje oznámení, pokud je výstraha hello "aktivován" (Pokud se překročí prahovou hodnotu hello a je splněna podmínka výstrahy hello) a také při se "nevyřeší" (Pokud je znovu překročí prahovou hodnotu hello a již není splněna podmínka hello). Rostoucí seznam dostupné metriky, které podporuje Azure monitorování, naleznete v části [seznam metriky, které jsou podporovány pro monitorování Azure](monitoring-supported-metrics.md).
+* **Aktivity protokolu výstrahy** -streamování výstrahu protokolu, které spustí, když je generována událost protokol aktivit, že kritéria, které jste přiřadili filtru odpovídá. Tyto výstrahy mít pouze jeden stav "Aktivovali," vzhledem k tomu použije výstrahy modul hello jednoduše hello filtru kritéria tooany novou událost. Tyto výstrahy mohou být použité toobecome upozornění v případě nový incident stav služby nebo pokud uživatele nebo aplikace provede operaci v rámci vašeho předplatného, například "Odstranění virtuálního počítače."
 
-Pro data protokolů diagnostiky k dispozici prostřednictvím Azure monitorování doporučujeme směrování dat do analýzy protokolů a používání analýzy protokolů výstrahy. Následující diagram shrnuje zdroje dat v Azure monitorování a, koncepčně, jak můžete výstrahy z tato data.
+Pro data protokolů diagnostiky k dispozici prostřednictvím Azure monitorování doporučujeme dat směrování hello do analýzy protokolů a používání analýzy protokolů výstrahy. Hello následující diagram shrnuje zdroje dat v Azure monitorování a, koncepčně, jak můžete výstrahy z tato data.
 
 ![Vysvětlení výstrah](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
 
 ## <a name="how-do-i-receive-a-notification-on-an-azure-monitor-alert"></a>Jak mohu dostávat oznámení na výstrahu monitorování Azure?
-V minulosti Azure výstrahy z různých služeb používá vlastní metody předdefinovaných oznámení. Do budoucna, monitorování Azure nabízí opakovaně použitelné oznámení seskupení nazývají skupiny akce. Zadejte skupiny akcí sadu příjemci pro oznámení – všechny počet e-mailové adresy, telefonních čísel (pro SMS) nebo adresy URL webhooku – a kdykoli se aktivuje výstraha odkazuje skupinu, akce, všichni příjemci dostávat oznámení. To vám umožní znova využít seskupení příjemci (například na pracovníka seznamu volání) napříč mnoho výstrah objektů. V současné době pouze protokol aktivit výstrahy využívat skupin akce, ale několik dalších Azure typy výstrah pracují na také použití skupin akce.
+V minulosti Azure výstrahy z různých služeb používá vlastní metody předdefinovaných oznámení. Do budoucna, monitorování Azure nabízí opakovaně použitelné oznámení seskupení nazývají skupiny akce. Akce skupiny zadejte sadu příjemci pro oznámení – libovolný počet e-mailové adresy, telefonních čísel (pro SMS) nebo adresy URL webhooku – a kdykoli výstraha je aktivována, že odkazy hello akce skupiny všichni příjemci příjmu tohoto oznámení. To vám umožní tooreuse seskupení příjemci (například na pracovníka seznamu volání) napříč mnoho výstrah objektů. V současné době pouze protokol aktivit výstrahy využívat skupin akce, ale několik dalších Azure typy výstrah pracují na také použití skupin akce.
 
-Akce skupiny podporují oznámení odesláním adresa URL webhooku kromě e-mailové adresy a čísla SMS. To umožňuje automatizace a nápravu, například pomocí:
+Akce skupiny podporují oznámení zveřejněním adresa URL webhooku tooa v přidání tooemail adresy a čísla SMS. To umožňuje automatizace a nápravu, například pomocí:
     - Runbook Azure Automation
     - Azure – funkce
     - Azure Logic Apps
     - službu třetí strany
 
 Metriky výstrahy ještě nepoužívejte skupiny akcí. Na jednotlivé metriky výstrahy můžete nakonfigurovat oznámení:
-* Odesílání e-mailová oznámení pro správce služeb, spolusprávci nebo další e-mailové adresy, které zadáte.
-* Volejte webhook, která umožňuje spustit další automatizace akce.
+* Odeslat e-mailové oznámení toohello služby správce, tooco správci nebo tooadditional e-mailové adresy, které zadáte.
+* Volejte webhook, což vám umožní toolaunch automatizace další akce.
 
 ## <a name="next-steps"></a>Další kroky
 Získání informací o pravidla výstrah a jejich konfigurací pomocí:
@@ -77,6 +77,6 @@ Získání informací o pravidla výstrah a jejich konfigurací pomocí:
 * Další informace o [protokol aktivit](monitoring-overview-activity-logs.md)
 * Konfigurace [aktivity protokolu výstrahy prostřednictvím portálu Azure](monitoring-activity-log-alerts.md)
 * Konfigurace [aktivity protokolu výstrahy prostřednictvím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-* Zkontrolujte [schématu výstrahy webhooku protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
+* Zkontrolujte hello [schématu výstrahy webhooku protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
 * Další informace o [oznámení o službách](monitoring-service-notifications.md)
 * Další informace o [skupiny akcí](monitoring-action-groups.md)

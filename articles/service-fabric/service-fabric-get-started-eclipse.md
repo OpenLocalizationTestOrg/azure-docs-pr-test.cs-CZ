@@ -1,6 +1,6 @@
 ---
-title: Modul plug-in Azure Service Fabric pro Eclipse | Microsoft Docs
-description: "Začínáme s modulem plug-in Service Fabric pro Eclipse."
+title: aaaAzure Service Fabric modulu plug-in pro Eclipse | Microsoft Docs
+description: "Začínáme s hello Service Fabric modulu plug-in pro Eclipse."
 services: service-fabric
 documentationcenter: java
 author: sayantancs
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
 ms.author: saysa
-ms.openlocfilehash: 98c1b99972b9ad7a396d72b98e727286f6822e42
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4ba5a28a6282387249a2bd4e62314e891ff04162
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
-Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Naučíte se nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji na místní nebo vzdálený cluster Service Fabric v Eclipse Neonu.
+Eclipse je jednou z nejčastěji používá hello integrované vývojové prostředí (integrovaného vývojového prostředí) pro vývojáře v jazyce Java. V tomto článku jsme popisují, jak tooset do vašeho prostředí Eclipse vývoj prostředí toowork s Azure Service Fabric. Zjistěte, jak vytvořit aplikace Service Fabric tooinstall hello Service Fabric modul plug-in a nasazení vaší Service Fabric aplikace tooa místního nebo vzdáleného clusteru Service Fabric v prostředí Eclipse Neónová.
 
-## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse-neon"></a>Instalace a aktualizace modulu plug-in Service Fabric v prostředí Eclipse Neon
-Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Tento modul plug-in může zjednodušit proces vytváření a nasazování služeb v Javě.
+## <a name="install-or-update-hello-service-fabric-plug-in-in-eclipse-neon"></a>Nainstalujte nebo aktualizujte hello Service Fabric v prostředí Eclipse Neónová modulu plug-in
+Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Hello modul plug-in může zjednodušit proces vytváření a nasazení služeb Java hello.
 
-1.  Zkontrolujte, že máte nainstalovanou nejnovější verzi Eclipse Neonu a nejnovější verzi Buildshipu (1.0.17 nebo novější):
-    -   Verze nainstalovaných komponent můžete v Eclipse Neonu zkontrolovat tak, že zvolíte **Help** > **Installation Details** (Nápověda => Podrobnosti o instalaci).
-    -   Pokud chcete aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
-    -   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse Neon, přejděte k části **Help** > **Check for Updates** (Nápověda => Vyhledat aktualizace).
+1.  Ujistěte se, že máte nejnovější verzi Eclipse Neónová hello a hello nejnovější verzi Buildship nainstalován (1.0.17 nebo novější):
+    -   toocheck hello verze nainstalované součásti v prostředí Eclipse Neónová přejděte příliš**pomoci** > **podrobné informace o instalaci**.
+    -   tooupdate Buildship, najdete v části [Eclipse Buildship: Eclipse moduly plug-in pro Gradle][buildship-update].
+    -   toocheck pro a nainstalovat aktualizace pro Eclipse Neónová přejděte příliš**pomoci** > **vyhledat aktualizace**.
 
-2.  Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse Neonu, přejděte k části **Help** > **Install New Software** (Nápověda => Instalovat nový software).
-  1.    V poli **Work with** (Pracovat s) zadejte **http://dl.microsoft.com/eclipse**.
-  2.    Klikněte na **Přidat**.
+2.  tooinstall hello Service Fabric modul plug-in, v prostředí Eclipse Neónová přejděte příliš**pomoci** > **instalace nového softwaru**.
+  1.    V hello **pracovat s** zadejte **http://dl.microsoft.com/eclipse**.
+  2.    Klikněte na tlačítko **Přidat**.
 
          ![Modul plug-in Service Fabric pro Eclipse Neon][sf-eclipse-plugin-install]
-  3.    Vyberte modul plug-in Service Fabric a potom klikněte na **Další**.
-  4.    Dokončete instalaci a přijměte licenční podmínky pro software společnosti Microsoft.
+  3.    Vyberte hello Service Fabric modul plug-in a pak klikněte na tlačítko **Další**.
+  4.    Dokončete kroky instalace hello a přijměte licenční podmínky softwaru společnosti Microsoft hello.
 
-Pokud už máte modul plug-in Service Fabric nainstalovaný, ověřte, že používáte nejnovější verzi. Pokud chcete vyhledat dostupné aktualizace, přejděte k části **Help** > **Installation Details** (Nápověda => Podrobnosti o instalaci). V seznamu nainstalovaných modulů plug-in vyberte Service Fabric a potom klikněte na **Aktualizovat**. Nainstalují se dostupné aktualizace.
+Pokud již máte hello Service Fabric modulu plug-in nainstalována, ujistěte se, že máte nejnovější verzi hello. toocheck dostupných aktualizací, přejděte příliš**pomoci** > **podrobné informace o instalaci**. V seznamu nainstalovaných modulů plug-in hello vyberte Service Fabric a pak klikněte na tlačítko **aktualizace**. Nainstalují se dostupné aktualizace.
 
 > [!NOTE]
-> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě políčka odkazujícího na umístění modulu plug-in Service Fabric (http://dl.microsoft.com/eclipse/azure/servicefabric).
+> Pokud instalace nebo aktualizace hello Service Fabric modul plug-in je pomalé, může to být kvůli tooan Eclipse nastavení. Eclipse shromažďuje metadata na všechny lokality tooupdate změny, které jsou registrovány s vaší instancí Eclipse. toospeed až hello proces vyhledávání a instalace modulu plug-in aktualizace Service Fabric, přejděte příliš**dostupných stránek softwaru**. Zrušte zaškrtnutí políček hello pro všechny weby s výjimkou hello ten, který ukazuje toohello Service Fabric modulu plug-in umístění (http://dl.microsoft.com/eclipse/azure/servicefabric).
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Vytvoření aplikace Service Fabric pomocí Eclipse
 
-1.  V Eclipse Neonu přejděte na **File** > **New** > **Other** (Soubor => Nový => Ostatní). Vyberte **Service Fabric Project** (Projekt Service Fabric) a potom klikněte na **Next** (Další).
+1.  V Eclipse Neónová přejděte příliš**soubor** > **nový** > **jiných**. Vyberte **Service Fabric Project** (Projekt Service Fabric) a potom klikněte na **Next** (Další).
 
     ![Nový projekt Service Fabric – stránka 1][create-application/p1]
 
@@ -54,15 +54,15 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, ověřte, že použ
 
     ![Nový projekt Service Fabric – stránka 2][create-application/p2]
 
-3.  V seznamu šablon vyberte **Service Template** (Šablona služby). Vyberte typ šablony služby (Actor, Stateless, Container nebo Guest Binary) a potom klikněte na **Next** (Další).
+3.  V seznamu hello šablon vyberte **šablony služby**. Vyberte typ šablony služby (Actor, Stateless, Container nebo Guest Binary) a potom klikněte na **Next** (Další).
 
     ![Nový projekt Service Fabric – stránka 3][create-application/p3]
 
-4.  Zadejte název a podrobnosti služby a potom klikněte na **Finish** (Dokončit).
+4.  Zadejte název služby hello podrobnosti služby a pak klikněte na tlačítko **Dokončit**.
 
     ![Nový projekt Service Fabric – stránka 4][create-application/p4]
 
-5. Když vytvoříte svůj první projekt Service Fabric, v dialogovém okně **Open Associated Perspective** Otevřít přidruženou perspektivu) klikněte na **Yes** (Ano).
+5. Když vytvoříte svůj první projekt Service Fabric v hello **otevřete přidružené hlediska** dialogové okno, klikněte na tlačítko **Ano**.
 
     ![Nový projekt Service Fabric – stránka 5][create-application/p5]
 
@@ -76,77 +76,77 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, ověřte, že použ
 
     ![Nabídka Service Fabric zobrazená po kliknutí pravým tlačítkem][publish/RightClick]
 
-2. V podnabídce vyberte požadovanou možnost:
-    -   **Build Application** (Sestavit aplikaci) sestaví aplikaci bez vyčištění.
-    -   **Rebuild Application** (Znovu sestavit aplikaci) provede vyčištění a nové sestavení aplikace.
-    -   **Clean Application** (Vyčistit aplikaci) vyčistí aplikaci od artefaktů sestavení.
+2. V podnabídce hello vyberte požadovanou možnost hello:
+    -   Klikněte na tlačítko aplikace hello toobuild bez čištění, **sestavení aplikace**.
+    -   Klikněte na tlačítko toodo čistá sestavení aplikace hello **znovu sestavte aplikaci**.
+    -   Klikněte na tlačítko aplikace hello tooclean integrovaný artefaktů, **vyčištění aplikace**.
 
 3.  V této nabídce můžete zvolit také nasazení, zrušení nasazení nebo publikování aplikace:
-    -   **Deploy Application** (Nasadit aplikaci) nasadí aplikaci na místní cluster.
-    -   V dialogovém okně **Publish Application** (Publikovat aplikaci) vyberte profil publikování:
+    -   toodeploy tooyour místní cluster, klikněte na tlačítko **nasazení aplikace**.
+    -   V hello **publikovat aplikace** dialogové okno, vyberte profil publikování:
         -  **Local.json**
         -  **Cloud.json**
 
-     Tyto soubory JSON (JavaScript Object Notation) se používají k uložení informací (jako jsou koncové body připojení a informace o zabezpečení) potřebných pro připojení k místnímu nebo cloudovému (Azure) clusteru.
+     Tyto soubory JavaScript Object Notation (JSON) ukládat informace (například koncové body připojení a informace o zabezpečení), které jsou požadované tooconnect tooyour místní nebo v cloudu (Azure) clusteru.
 
   ![Nabídka Publish (Publikovat) v Service Fabric][publish/Publish]
 
-Existuje alternativní způsob nasazení aplikace Service Fabric pomocí konfigurací spuštění Eclipse.
+Toodeploy jiný způsob, jak vaše aplikace Service Fabric pomocí Eclipse spuštění konfigurace.
 
-  1.    Přejděte k části **Run** > **Run Configurations** (Spustit > Konfigurace spuštění).
-  2.    Vyberte konfiguraci spuštění **ServiceFabricDeployer** v části **Gradle Project** (Projekt Gradle).
-  3.    Na kartě **Arguments** (Argumenty) v pravém podokně jako **publishProfile** (Profil publikování) zadejte **local** (místní) nebo **cloud** (cloudový).  Výchozí hodnota je **local** (místní). Pro nasazení na vzdálený nebo cloudový cluster vyberte **cloud** (cloudový).
-  4.    Aby se zajistilo, že v profilech publikování jsou zadané správné informace, upravte **Local.json** nebo **Cloud.json** podle potřeby. Můžete přidat nebo aktualizovat podrobnosti o koncových bodech a zabezpečovací přihlašovací údaje.
-  5.    Ujistěte se, že **Working Directory** (Pracovní adresář) odkazuje na aplikaci, kterou chcete nasadit. Pokud chcete aplikaci změnit, stačí kliknout na **Workspace** (Pracovní prostor) a vybrat požadovanou aplikaci.
+  1.    Přejděte příliš**spustit** > **konfigurace spuštění**.
+  2.    V části **Gradle projektu**, vyberte hello **ServiceFabricDeployer** spustit konfigurace.
+  3.    V pravém podokně hello na hello **argumenty** kartě pro **publishProfile**, vyberte **místní** nebo **cloudu**.  Výchozí hodnota Hello je **místní**. toodeploy tooa vzdálené nebo cloudu cluster, vyberte **cloudu**.
+  4.    tooensure, správné informace hello se importují v hello publikační profily, upravit **Local.json** nebo **Cloud.json** podle potřeby. Můžete přidat nebo aktualizovat podrobnosti o koncových bodech a zabezpečovací přihlašovací údaje.
+  5.    Ujistěte se, že **pracovní adresář** body toohello aplikace, které chcete toodeploy. toochange hello aplikace, klikněte na tlačítko hello **prostoru** tlačítko a pak vyberte aplikaci hello.
   6.    Klikněte na **Apply** (Použít) a potom na **Run** (Spustit).
 
-Vaše aplikace se během chvilky sestaví a nasadí. Stav nasazení můžete sledovat v Service Fabric Exploreru.  
+Vaše aplikace se během chvilky sestaví a nasadí. Můžete sledovat stav nasazení hello v Service Fabric Exploreru.  
 
-## <a name="add-a-service-fabric-service-to-your-service-fabric-application"></a>Přidání služby Service Fabric do aplikace Service Fabric
+## <a name="add-a-service-fabric-service-tooyour-service-fabric-application"></a>Přidat Service Fabric service tooyour aplikace Service Fabric
 
-Přidat službu Service Fabric do stávající aplikace Service Fabric je možné pomocí následujících kroků:
+tooadd Service Fabric service tooan existující aplikace Service Fabric, hello následující kroky:
 
-1.  Klikněte pravým tlačítkem na projekt, ke kterému chcete přidat službu, a potom klikněte na **Service Fabric**.
+1.  Klikněte pravým tlačítkem na hello projektu tooadd služby a pak klikněte na **Service Fabric**.
 
     ![Přidat službu Service Fabric – stránka 1][add-service/p1]
 
-2.  Klikněte na **Add Service Fabric Service** (Přidat službu Service Fabric) a dokončete kroky pro přidání služby k tomuto projektu.
-3.  Vyberte šablonu služby, kterou chcete přidat do projektu, a potom klikněte na **Next** (Další).
+2.  Klikněte na tlačítko **přidat Service Fabric Service**, a dokončení hello sada kroků tooadd toohello projektu služby.
+3.  Šablona služby vyberte hello tooadd tooyour projekt a pak klikněte na **Další**.
 
     ![Přidat službu Service Fabric – stránka 2][add-service/p2]
 
-4.  Zadejte název služby (a další podrobnosti podle potřeby) a potom klikněte na **Add Service** (Přidat službu).  
+4.  Zadejte název služby hello (a další podrobnosti, podle potřeby) a pak klikněte na tlačítko hello **přidat službu** tlačítko.  
 
     ![Přidat službu Service Fabric – stránka 3][add-service/p3]
 
-5.  Celková struktura projektu po přidání služby vypadá podobně jako u tohoto projektu:
+5.  Po přidání služby hello strukturu celkové projektu vypadá podobně jako toohello následující projektu:
 
     ![Přidat službu Service Fabric – stránka 4][add-service/p4]
 
 ## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>Úprava verzí manifestu aplikace Service Fabric v jazyce Java
 
-Pokud chcete upravit verze manifestu, klikněte pravým tlačítkem na projekt, přejděte na **Service Fabric** a z rozevírací nabídky vyberte **Upravit verze manifestu...**. V průvodci můžete aktualizovat verze manifestu pro manifest aplikace, manifest služby a verze pro balíčky **Code**, **Config** a **Data**.
+verze manifestu tooedit, klikněte pravým tlačítkem na projekt hello, přejděte příliš**Service Fabric** a vyberte **upravit verze manifestu...**  z rozevírací nabídky hello. V Průvodci hello, můžete aktualizovat hello manifestu verze pro service manifest manifestu, aplikace a hello verze pro **kód**, **konfigurace** a **Data** balíčky.
 
-Pokud zaškrtnete políčko **Automaticky aktualizovat verze aplikací a služeb** a pak aktualizujete verzi, verze manifestu se zaktualizují automaticky. Když například nejprve zaškrtnete toto políčko a pak zaktualizujete verzi pro verzi **Code** z 0.0.0 na 0.0.1 a klikněte na **Dokončit**, verze manifestu služby a verze manifestu aplikace se automaticky aktualizují na 0.0.1.
+Pokud zaškrtnete možnost hello **automatické aktualizaci aplikace a verze aktualizace service** a aktualizujte na verzi, pak se automaticky aktualizuje verze manifestu hello. toogive příklad, je nejprve vybrat hello políčko a potom aktualizaci hello verze **kód** verzi z 0.0.0 too0.0.1 a klikněte na **Dokončit**, pak službu verze manifestu a manifest aplikace verze bude automaticky aktualizovány too0.0.1.
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Upgrade aplikace Service Fabric v Javě
 
-Pro scénář upgradu předpokládejme, že jste pomocí modulu plug-in Service Fabric v Eclipse vytvořili projekt **App1**. Pomocí modulu plug-in jste ho nasadili a vytvořili aplikaci s názvem **fabric: / App1Application**. Tato aplikace je typu **App1AppicationType** a verze této aplikace je 1.0. Nyní chcete provést upgrade této aplikace bez přerušení dostupnosti.
+Scénář upgradu, můžete vytvořit hello **App1** projektu pomocí hello Service Fabric v prostředí Eclipse modulu plug-in. Provedli jste nasazení pomocí modulu plug-in toocreate hello aplikaci s názvem **fabric: / App1Application**. je typem aplikace Hello **App1AppicationType**, a verze aplikace hello je 1.0. Teď chcete tooupgrade aplikace bez přerušení dostupnosti.
 
-Nejdřív proveďte úpravy aplikace a znovu sestavte upravenou službu. Aktualizujte soubor manifestu upravené služby (ServiceManifest.xml) s použitím aktualizovaných verzí pro službu (a podle potřeby i verzí kódu, konfigurace nebo dat). Dál upravte manifest aplikace (ApplicationManifest.xml) s použitím čísla aktualizované verze pro aplikaci a upravenou službu.  
+Nejprve proveďte požadované změny tooyour aplikace a pak znovu vytvořte hello upravit služby. Aktualizace hello změnit služby soubor manifestu (ServiceManifest.xml) hello aktualizované verze pro hello služby (a kód, konfigurace nebo Data, jako je relevantní). Navíc upravte manifest aplikace hello (ApplicationManifest.xml) s hello aktualizovat číslo verze aplikace hello a hello upravené služby.  
 
-Pokud chcete k upgradu aplikace použít Eclipse Neon, můžete vytvořit duplicitní profil konfigurace spuštění. Potom ho podle potřeby využijte k upgradu vaší aplikace.
+tooupgrade vaší aplikace pomocí Neónová Eclipse, můžete vytvořit duplicitní spuštění konfiguračního profilu. Potom ho použít tooupgrade aplikace podle potřeby.
 
-1.  Přejděte k části **Run** > **Run Configurations** (Spustit > Konfigurace spuštění). v levém podokně klikněte na malou šipku nalevo od možnosti **Gradle Project** (Projekt Gradle).
+1.  Přejděte příliš**spustit** > **konfigurace spuštění**. V levém podokně hello, klikněte na tlačítko hello malou šipku toohello nalevo od **Gradle projektu**.
 2.  Klikněte pravým tlačítkem na **ServiceFabricDeployer** a potom vyberte **Duplicate** (Duplikovat). Zadejte nový název pro tuto konfiguraci, třeba **ServiceFabricUpgrader**.
-3.  Na pravém panelu na kartě **Arguments** (Argumenty) změňte **-Pconfig='deploy'** na **-Pconfig=upgrade** a potom klikněte na **Apply** (Použít).
+3.  V pravém panelu hello na hello **argumenty** změňte **- Pconfig = 'nasazení'** příliš**- Pconfig = 'upgradu,**a potom klikněte na **použít**.
 
-Tento proces vytvoří a uloží profil konfigurace spuštění, který můžete kdykoliv použít k upgradu vaší aplikace. Postará se také o získání nejnovější aktualizované verze typu aplikace ze souboru manifestu aplikace.
+Tento proces vytvoří a uloží spuštění konfigurační profil můžete použít na všechny čas tooupgrade vaší aplikace. Získá také hello nejnovější verze typu aktualizovanou aplikaci ze souboru manifestu aplikace hello.
 
-Upgrade aplikace trvá několik minut. Průběh upgradu aplikace můžete monitorovat pomocí Service Fabric Exploreru.
+upgrade aplikace Hello trvá několik minut. Můžete monitorovat hello upgradu aplikace v Service Fabric Exploreru.
 
-## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>Migrace starých aplikací Service Fabric Java pro použití s Mavenem
-Nedávno jsme přesunuli knihovny Service Fabric Java ze sady Service Fabric Java SDK do úložiště Maven. Zatímco nové aplikace, které vygenerujete pomocí Eclipse, vygenerují nejnovější aktualizované projekty (které budou moct pracovat s Mavenem), můžete vaše stávající bezstavové aplikace nebo aplikace objektu actor v Javě pro Service Fabric, které dřív používali sadu Service Fabric Java SDK, aktualizovat tak, aby používaly závislosti Service Fabric Java z Mavenu. Abyste zajistili fungování starších aplikací s Mavenem, postupujte podle kroků uvedených [tady](service-fabric-migrate-old-javaapp-to-use-maven.md).
+## <a name="migrating-old-service-fabric-java-applications-toobe-used-with-maven"></a>Migrace starého toobe aplikace Service Fabric Java použít s Maven
+Nedávno jsme přesunuli knihovny Service Fabric Java z úložiště tooMaven Service Fabric Java SDK. Pokud je hello nové aplikace, který generovat pomocí prostředí Eclipse, vygeneruje nejnovější aktualizované projekty (které bude možné toowork s Maven), můžete aktualizovat existující Service Fabric bezstavové nebo objektu actor aplikací Java, které byly pomocí hello Service Fabric Java SDK starší, toouse hello Service Fabric Java závislostí z Maven. Postupujte podle kroků hello [sem](service-fabric-migrate-old-javaapp-to-use-maven.md) tooensure starší aplikace funguje s Maven.
 
 <!-- Images -->
 

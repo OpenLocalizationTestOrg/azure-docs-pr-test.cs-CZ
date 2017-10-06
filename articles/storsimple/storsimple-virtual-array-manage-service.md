@@ -1,6 +1,6 @@
 ---
-title: "Nasazení služby Správce zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak vytvářet a odstraňovat služby StorSimple Manager zařízení na portálu Azure a popisuje, jak spravovat registrační klíč služby."
+title: "aaaDeploy služby StorSimple Manager zařízení | Microsoft Docs"
+description: "Popisuje, jak toocreate a odstranění hello služby StorSimple Manager zařízení v hello portálu Azure a popisuje, jak toomanage hello registrační klíč služby."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,102 +14,102 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9064053addc7b3dfcce08b47e81b38c2e0e1b559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby StorSimple Manager zařízení StorSimple virtuální pole
+# <a name="deploy-hello-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Nasazení služby StorSimple Manager zařízení hello pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled
 
-Služba Správce zařízení StorSimple běží v Microsoft Azure a připojí k více zařízení StorSimple. Po vytvoření služby, můžete ke správě zařízení z portálu Microsoft Azure spuštěnému v prohlížeči. To vám umožňuje monitorovat všechna zařízení, které jsou připojené ke službě StorSimple Manager zařízení z jedné centrální umístění, a současně minimalizujete její související administrativní zátěže.
+Hello služby StorSimple Manager zařízení běží ve službě Microsoft Azure a připojí zařízení StorSimple toomultiple. Po vytvoření služby hello, můžete ji použít toomanage hello zařízení z hello Microsoft Azure portálu spuštěnému v prohlížeči. To vám umožní toomonitor všechna hello zařízení, které jsou připojené toohello Správce zařízení StorSimple služby z jedné centrální umístění, a současně minimalizujete její související administrativní zátěže.
 
-Běžné úlohy související s služby StorSimple Manager zařízení jsou:
+Hello, běžné úkoly, související, tooa služby StorSimple Manager zařízení jsou:
 
 * Vytvoření služby
 * Odstranění služby
-* Získání registračního klíče služby
-* Znovu vygenerovat registrační klíč služby
+* Získat registrační klíč služby hello
+* Znovu vygenerovat registrační klíč služby hello
 
-Tento kurz popisuje, jak provést jednotlivé předchozí úlohy. Informace obsažené v tomto článku se vztahuje pouze na pole virtuální zařízení StorSimple. Další informace o řady StorSimple 8000, přejděte na [nasazení služby StorSimple Manager](storsimple-manage-service.md).
+Tento kurz popisuje, jak tooperform z hello předchozí úlohy. Hello informace obsažené v tomto článku je použít jenom tooStorSimple virtuální pole. Další informace o řady StorSimple 8000 přejděte příliš[nasazení služby StorSimple Manager](storsimple-manage-service.md).
 
 ## <a name="create-a-service"></a>Vytvoření služby
 
-Pokud chcete vytvořit službu, musíte mít:
+toocreate služby, je třeba toohave:
 
 * Předplatné s smlouvu Enterprise Agreement
 * Aktivní účet úložiště Microsoft Azure
-* Fakturační informace, které se používá pro správu přístupu
+* fakturační informace, které se používá pro správu přístupu Hello
 
-Můžete také vygenerovat účet úložiště při vytváření služby.
+Můžete také toogenerate účet úložiště při vytváření služby hello.
 
-Jeden služby můžete spravovat více zařízení. Zařízení, ale nemůžou zahrnovat víc služeb. Velký podnik může mít víc instancí služby pro práci s různých předplatných, organizace nebo i umístění nasazení.
+Jeden služby můžete spravovat více zařízení. Zařízení, ale nemůžou zahrnovat víc služeb. Velký podnik může mít více instancí toowork služby pomocí různých předplatných, organizace nebo i umístění nasazení.
 
 > [!NOTE]
-> Je třeba samostatné instance služby StorSimple Manager zařízení ke správě zařízení řady StorSimple 8000 a pole virtuální zařízení StorSimple.
+> Je třeba samostatné instance řadu zařízení StorSimple Manager zařízení služby toomanage StorSimple 8000 a pole virtuální zařízení StorSimple.
 
 
-Proveďte následující kroky k vytvoření služby.
+Proveďte následující kroky toocreate služby hello.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 ## <a name="delete-a-service"></a>Odstranění služby
 
-Před odstraněním služby, ujistěte se, že žádné připojená zařízení ji používají. Pokud služba se používá, deaktivujte připojená zařízení. Operaci deaktivovat severu připojení mezi zařízením a služby, ale zachovat data zařízení v cloudu.
+Před odstraněním služby, ujistěte se, že žádné připojená zařízení ji používají. Pokud služba hello se používá, deaktivujte hello připojené zařízení. Hello deaktivovat operaci severu hello připojení mezi hello zařízení a hello služby, ale zachovat data zařízení hello v cloudu hello.
 
 > [!IMPORTANT]
-> Po odstranění služby nelze vrátit operaci zpět. Jakékoli zařízení, které se pomocí služby bude muset být tovární nastavení, než se dá použít s jinou službu. V tomto scénáři místní data na zařízení, jakož i konfigurace, budou ztracena.
+> Po odstranění služby hello operace se nedá vrátit. Jakékoli zařízení, které se pomocí služby hello potřebovat toobe tovární nastavení, než se dá použít s jinou službu. V tomto scénáři hello místní data na zařízení hello, jakož i hello konfigurace budou ztraceny.
  
 
-Proveďte následující kroky pro odstranění služby.
+Proveďte následující kroky toodelete služby hello.
 
-#### <a name="to-delete-a-service"></a>Chcete-li odstranit služby
+#### <a name="toodelete-a-service"></a>toodelete služby
 
-1. Přejděte na **všechny prostředky**. Vyhledávání služby StorSimple Manager zařízení. Vyberte službu, kterou chcete odstranit.
+1. Přejděte příliš**všechny prostředky**. Vyhledávání služby StorSimple Manager zařízení. Vyberte službu hello chcete toodelete.
    
-    ![Vyberte službu odstranit](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Přejděte na řídicí panel služby zajistit nejsou žádná zařízení připojené ke službě. Pokud nejsou žádná zařízení registrovaná ve službě, zobrazí se také zpráva hlavičky v tom smyslu. Klikněte na **Odstranit**.
+    ![Vyberte toodelete služby](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
+2. Přejděte tooensure řídicí panel služby tooyour neexistují žádné zařízení připojených toohello služby. Pokud nejsou žádná zařízení registrovaná ve službě, zobrazí se také vliv toohello zprávy informační zpráva. Klikněte na **Odstranit**.
    
     ![Odstranění služby](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** v potvrzení oznámení. 
+3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** v hello potvrzení oznámení. 
    
     ![Potvrdit odstranění služby](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. To může trvat několik minut, než službu, kterou chcete odstranit. Po odstranění služby je úspěšně, budete upozorněni.
+4. To může trvat několik minut, než toobe služby hello odstranit. Po hello služba se úspěšně odstranila, budete upozorněni.
    
     ![Odstranění úspěšné služby](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
-Seznam služeb se aktualizují.
+Hello seznam služeb se aktualizují.
 
  ![Aktualizovaný seznam služeb](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
-## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
-Po úspěšném vytvoření služby musíte registrace zařízení StorSimple pomocí služby. K registraci svého prvního zařízení StorSimple, budete potřebovat registrační klíč služby. K registraci dalších zařízení s existující službu StorSimple, budete potřebovat registrační klíč a služby datového šifrovacího klíče (což je vygenerovaný na první zařízení během registrace). Další informace o šifrovacího klíče dat služby najdete v tématu [zabezpečení zařízení StorSimple](storsimple-security.md). Abyste mohli získat registrační klíč přístup k **klíče** okno pro vaši službu.
+## <a name="get-hello-service-registration-key"></a>Získat registrační klíč služby hello
+Po úspěšném vytvoření služby budete potřebovat tooregister zařízení StorSimple službou hello. tooregister prvního zařízení StorSimple, bude nutné hello registrační klíč služby. tooregister další zařízení s existující službu StorSimple, budete potřebovat hello registrační klíč a hello šifrovacího klíče dat služby (který je generován během registrace na první zařízení hello). Další informace o hello šifrovacího klíče dat služby najdete v tématu [zabezpečení zařízení StorSimple](storsimple-security.md). Hello registrační klíč můžete získat přístup k hello **klíče** okno pro vaši službu.
 
-Proveďte následující kroky k získání registračního klíče služby.
+Proveďte následující kroky tooget hello služby registrační klíč hello.
 
-#### <a name="to-get-the-service-registration-key"></a>Chcete-li získat registrační klíč služby
-1. V **Manager zařízení StorSimple** okno, přejděte na **správy &gt;**  **klíče**.
+#### <a name="tooget-hello-service-registration-key"></a>registrační klíč služby hello tooget
+1. V hello **Manager zařízení StorSimple** okně přejděte příliš**správy &gt;**  **klíče**.
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. V **klíče** otevře se okno, registrační klíč služby. Zkopírujte registrační klíč pomocí ikonu kopírování. 
+2. V hello **klíče** otevře se okno, registrační klíč služby. Zkopírujte hello registrační klíč pomocí ikona kopírování hello. 
 
-Zachovat registrační klíč služby do bezpečného umístění. Budete potřebovat tento klíč, jakož i služby datový šifrovací klíč k registraci dalších zařízení s touto službou. Po získání registračního klíče služby, musíte nakonfigurovat zařízení pomocí Windows Powershellu pro StorSimple rozhraní.
+Registrační klíč služby hello mějte do bezpečného umístění. Budete potřebovat tento klíč, a také šifrovacího klíče dat služby hello, tooregister další zařízení s touto službou. Po získání registračního klíče služby hello, budete potřebovat tooconfigure zařízení prostřednictvím hello Windows Powershellu pro StorSimple rozhraní.
 
-## <a name="regenerate-the-service-registration-key"></a>Znovu vygenerovat registrační klíč služby
-Musíte se znova vygenerovat registrační klíč služby, pokud je nutné provést střídání klíče, nebo pokud došlo ke změně seznamu správců služeb. Pokud jste znovu vygenerovat klíč, nový klíč slouží pouze k registraci dalších zařízení. Zařízení, která již byla zaregistrována nejsou ovlivněny tímto procesem.
+## <a name="regenerate-hello-service-registration-key"></a>Znovu vygenerovat registrační klíč služby hello
+Je nutné tooregenerate registrační klíč služby, pokud jsou požadované tooperform střídání klíče nebo pokud došlo ke změně hello seznamu správců služeb. Pokud jste znovu vygenerovat klíč hello, hello nový klíč slouží pouze k registraci dalších zařízení. Hello zařízení, které již byly zaregistrovány nejsou ovlivněny tímto procesem.
 
-Proveďte následující kroky k opětovnému vytvoření registrační klíč služby.
+Proveďte následující kroky tooregenerate registrační klíč služby hello.
 
-#### <a name="to-regenerate-the-service-registration-key"></a>Chcete-li znovu vygenerovat registrační klíč služby
-1. V **Manager zařízení StorSimple** okno, přejděte na **správy &gt;**  **klíče**.
+#### <a name="tooregenerate-hello-service-registration-key"></a>registrační klíč služby hello tooregenerate
+1. V hello **Manager zařízení StorSimple** okně přejděte příliš**správy &gt;**  **klíče**.
    
    ![Okno Klíče](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. V **klíče** okně klikněte na tlačítko **znovu vygenerovat**.
+2. V hello **klíče** okně klikněte na tlačítko **znovu vygenerovat**.
    
    ![Klikněte na tlačítko znovu vygenerovat](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. V **registrační klíč znovu generovat služby** okno, zkontrolujte akce vyžadována, je-li se znovu vygenerovat klíče. Další zařízení, které jsou registrované s touto službou použije nový registrační klíč. Klikněte na tlačítko **znovu vygenerovat** k potvrzení. Po dokončení registrace, budete upozorněni.
+3. V hello **registrační klíč znovu generovat služby** okně zkontrolujte hello akce při vyžaduje hello klíče se generují. Všechny následné zařízení hello, které jsou registrované s touto službou použije hello nový registrační klíč. Klikněte na tlačítko **znovu vygenerovat** tooconfirm. Po dokončení registrace hello, budete upozorněni.
    
    ![Zkontrolujte znovu generovat klíče](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Zobrazí se nový registrační klíč služby.
@@ -119,6 +119,6 @@ Proveďte následující kroky k opětovnému vytvoření registrační klíč s
    Zkopírujte tento klíč a uložit ho pro registraci nové zařízení s touto službou.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [Začínáme](storsimple-virtual-array-deploy1-portal-prep.md) s polem virtuální zařízení StorSimple.
-* Zjistěte, jak [spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
+* Zjistěte, jak příliš[Začínáme](storsimple-virtual-array-deploy1-portal-prep.md) s polem virtuální zařízení StorSimple.
+* Zjistěte, jak příliš[spravovat zařízení StorSimple](storsimple-ova-web-ui-admin.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure Cosmos: Sestavení aplikace s kódem Node.js a rozhraním API DocumentDB | Dokumentace Microsoftu"
-description: "Představuje ukázku kódu Node.js, který můžete použít k připojení a dotazování do rozhraní API DocumentDB databáze Azure Cosmos."
+title: "Azure Cosmos DB: Sestavení aplikace pomocí Node.js a hello rozhraní API DocumentDB | Microsoft Docs"
+description: "Uvede ukázku kódu Node.js pomocí dotazu tooand tooconnect hello rozhraní API služby Azure Cosmos databáze DocumentDB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,21 +15,21 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 26e3548bf6aacbc60c4c46a5cc88749ca14cec01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 287d860c7d6f788f05a397b238ef0f841c3c30ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-nodejs-and-the-azure-portal"></a>Databáze Azure Cosmos: Sestavení aplikace s rozhraním API DocumentDB pomocí kódu Node.js a webu Azure Portal
+# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-nodejs-and-hello-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace DocumentDB rozhraní API pomocí Node.js a hello portálu Azure
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, databáze dokumentů a kolekce pomocí webu Azure Portal. Potom sestavíte a spustíte aplikaci konzoly založenou na [rozhraní API Node.js DocumentDB](documentdb-sdk-node.md).
+Tento rychlý start předvádí, jak hello toocreate účet Azure Cosmos DB, dokumentu databáze a kolekce pomocí portálu Azure. Potom sestavení a spuštění konzoly aplikace založená na hello [DocumentDB Node.js API](documentdb-sdk-node.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:
+* Před spuštěním této ukázce, musíte mít hello následující požadavky:
     * [Node.js](https://nodejs.org/en/) verze 0.10.29 nebo vyšší
     * [Git](http://git-scm.com/)
 
@@ -43,23 +43,23 @@ Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, 
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+## <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Teď naklonujeme aplikaci s rozhraním API DocumentDB z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď umožňuje nastavit připojovací řetězec hello klonování DocumentDB API aplikace z githubu a potom ho spusťte. Uvidíte, jak je snadné toowork s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `CD` přejděte do pracovního adresáře.  
+1. Otevřete okno terminálu git, jako je například git bash a `CD` tooa pracovní adresář.  
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+2. Spusťte následující příkaz tooclone hello Ukázka úložiště hello. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-nodejs-getting-started.git
     ```
 
-## <a name="review-the-code"></a>Kontrola kódu
+## <a name="review-hello-code"></a>Zkontrolujte hello kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor `app.js` a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos. 
+Provedeme jejich stručný přehled o dění v aplikaci hello. Otevřete hello `app.js` souboru a najít, že tyto řádky kódu vytvořit hello prostředky Azure Cosmos DB. 
 
-* Inicializuje se `documentClient`.
+* Hello `documentClient` je inicializován.
 
     ```nodejs
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
@@ -113,43 +113,43 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Klíče** a potom klikněte na **Klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru `config.js`.
+1. V hello [portál Azure](http://portal.azure.com/), ve vašem Azure Cosmos DB účet, klikněte v levé navigační hello **klíče**a potom klikněte na **klíče pro čtení a zápis**. Použijete tlačítka hello kopírovat na pravé straně hello hello obrazovky toocopy hello URI a Primary Key do hello `config.js` souboru v dalším kroku hello.
 
-    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-documentdb-dotnet/keys.png)
+    ![Zobrazení a zkopírování přístupový klíč v hello portálu Azure, okna klíče](./media/create-documentdb-dotnet/keys.png)
 
-2. Otevřete soubor `config.js`. 
+2. V otevřené hello `config.js` souboru. 
 
-3. Z portálu zkopírujte hodnotu identifikátoru URI (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče koncového bodu v souboru `config.js`. 
+3. Zkopírujte URI hodnota z portálu hello (pomocí tlačítka kopírování hello) a nastavit jej jako hello hodnotu klíče hello koncového bodu v `config.js`. 
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Potom z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu `config.primaryKey` v souboru `config.js`. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos. 
+4. Poté zkopírujte primární klíč hodnota z portálu hello a nastavit jej jako hello hodnotu hello `config.primaryKey` v `config.js`. Jste nyní aktualizovat vaši aplikaci s všechny údaje hello potřebuje toocommunicate s Azure Cosmos DB. 
 
     `config.primaryKey "FILLME"`
     
-## <a name="run-the-app"></a>Spuštění aplikace
-1. Spusťte v terminálu `npm install`, aby se nainstalovaly požadované moduly NPM.
+## <a name="run-hello-app"></a>Spuštění aplikace hello
+1. Spustit `npm install` v terminálu tooinstall požadované moduly npm
 
-2. Spuštění v terminálu `node app.js`, aby se spustila aplikace uzlu.
+2. Spustit `node app.js` v terminálu toostart aplikace uzlu.
 
-Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
+Teď můžete přejít zpět tooData Průzkumníka a zobrazit dotaz, upravit a pracovat s Tato nová data. 
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Zkontrolujte SLA v hello portálu Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jsme se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření kolekce pomocí Průzkumníka dat a spuštění aplikace. Teď můžete do účtu databáze Cosmos importovat další data. 
+V tento rychlý start když jste se naučili jak toocreate účtu Azure Cosmos DB, vytvořte kolekci pomocí hello Průzkumníku dat a spusťte aplikaci. Nyní můžete importovat další data tooyour Cosmos DB účtu. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

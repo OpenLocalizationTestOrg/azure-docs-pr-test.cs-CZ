@@ -1,5 +1,5 @@
 ---
-title: "Nejčastější dotazy ke službě Azure Machine Learning | Dokumentace Microsoftu"
+title: "aaaAzure Machine Learning nejčastější dotazy (FAQ) | Microsoft Docs"
 description: "Představení služby Azure Machine Learning: časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování"
 keywords: "úvod ke strojovému učení, prediktivní modelování, co je strojové učení"
 services: machine-learning
@@ -15,102 +15,102 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 0a1e23cd52ab5c10791a11d93753b54eb1c1b71a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3af84451dde064c3c9520ee520b541128b1eef92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy ke službě Azure Machine Learning: fakturace, možnosti, omezení a podpora
-Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
+Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Tyto nejčastější dotazy poskytují dotazy o tom, jak toouse hello service, která zahrnuje hello fakturační model, schopností, omezení a podpory.
 
 **Máte dotaz, který tady nemůžete najít?**
 
-Azure Machine Learning má fórum na webu MSDN, kde se členové komunity odborníků přes data můžou ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Přejděte na [fórum služby Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) a vyhledejte odpovědi nebo zadejte novou vlastní otázku.
+Azure Machine Learning má fórum na webu MSDN, kde můžete klást otázky o Azure Machine Learning členové komunity vědecké účely hello data. tým Azure Machine Learning Hello monitoruje fórum hello. Přejděte toohello [fóru služby Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) toosearch pro odpovědi nebo toopost novou otázku vlastní.
 
 ## <a name="general-questions"></a>Obecné otázky
 **Co je Azure Machine Learning?**
 
-Azure Machine Learning je plně spravovaná služba, kterou můžete využít k vytváření, testování, provozování a správě řešení prediktivní analýzy v cloudu. Vystačíte si jen s prohlížečem, přes který se můžete přihlásit, nahrát data a okamžitě začít experimentovat se strojovým učením. Prediktivní modelování podporující přetahování myší, rozsáhlá paleta modulů a knihovna šablon, se kterými je možné hned začít, značně usnadňují a urychlují běžné úkoly strojového učení. Další informace najdete v tématu [Přehled služby Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Úvod ke strojovému učení, ve kterém se vysvětluje klíčová terminologie a koncepty, najdete v [úvodu ke službě Azure Machine Learning](machine-learning-what-is-machine-learning.md).
+Azure Machine Learning je plně spravovaná služba, můžete použít toocreate, testování, provozovat a spravovat řešení prediktivní analýzy v cloudu hello. Vystačíte si jen s prohlížečem, přes který se můžete přihlásit, nahrát data a okamžitě začít experimentovat se strojovým učením. Prediktivní modelování podporující přetahování myší, rozsáhlá paleta modulů a knihovna šablon, se kterými je možné hned začít, značně usnadňují a urychlují běžné úkoly strojového učení. Další informace najdete v tématu hello [Přehled služby Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Learning toomachine Úvod vysvětlující klíčové terminologie a koncepty, najdete v části [tooAzure Úvod Machine Learning](machine-learning-what-is-machine-learning.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **Co je Machine Learning Studio?**
 
-Machine Learning Studio je pracovní prostředí, ke kterému přistupujete pomocí webového prohlížeče. Machine Learning Studio nabízí mnoho modulů s vizuálním kompozičním rozhraním, které umožňuje vytvořit komplexní pracovní postup založený na datové vědě ve formě experimentu.
+Machine Learning Studio je pracovní prostředí, ke kterému přistupujete pomocí webového prohlížeče. Machine Learning Studio nabízí mnoho modulů v vizuálním kompozičním rozhraním, která vám pomáhá tvořit začátku do konce, vědecké zpracování dat pracovního postupu v hello formě experimentu.
 
 Další informace o nástroji Machine Learning Studio najdete v tématu [Co je Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
-**Co je služba Machine Learning API?**
+**Co je Služba Machine Learning API hello?**
 
-Služba Machine Learning API umožňuje nasazovat prediktivní modely, jako jsou třeba modely integrované v Machine Learning Studiu, jako škálovatelné webové služby, které jsou odolné vůči chybám. Webové služby vytvořené pomocí služby Machine Learning API představují rozhraní REST API, která zajišťují komunikaci mezi externími aplikacemi a vašimi modely prediktivní analýzy.
+Hello Služba Machine Learning API umožňuje toodeploy prediktivní modely, například ty, které jsou součástí Machine Learning Studio, jako škálovatelné, odolné proti chybám, webové služby. Hello webové služby, které vytvoří služba Machine Learning API hello se rozhraní REST API, které poskytují rozhraní pro komunikaci mezi externími aplikacemi a vašimi modely prediktivní analýzy.
 
-Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](machine-learning-consume-web-services.md).
+Další informace najdete v tématu [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 
 **Kde jsou uvedené klasické webové služby? Kde jsou uvedené nové webové služby (využívající Azure Resource Manager)?**
 
-Webové služby vytvořené pomocí modelu nasazení Classic a Webové služby vytvořené pomocí nového modelu nasazení Azure Resource Manager jsou uvedené na portálu [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/).
+Webové služby vytvořené pomocí hello klasického modelu a webové služby pro nasazení vytvořené pomocí modelu nasazení nové Azure Resource Manager hello jsou uvedeny v hello [webové služby aplikace Microsoft Azure Machine Learning](https://services.azureml.net/) portálu.
 
-Klasické webové služby jsou uvedené také na kartě **Webové služby** v [Machine Learning Studiu](http://studio.azureml.net).
+Classic webových služeb jsou také uvedeny v [Machine Learning Studio](http://studio.azureml.net) na hello **webové služby** kartě.
 
 ## <a name="azure-machine-learning-questions"></a>Dotazy ke službě Azure Machine Learning
 **Co jsou webové služby Azure Machine Learning?**
 
-Webové služby Machine Learning poskytují rozhraní mezi aplikací a modelem Machine Learning pro vyhodnocování pracovních postupů. Pomocí služby Azure Machine Learning může externí aplikace komunikovat v reálném čase s modelem Machine Learning pro vyhodnocování pracovních postupů. Volání webové služby Machine Learning vrací do externí aplikace predikované výsledky. Webovou službu můžete volat předáním klíče rozhraní API, který se vytvořil při nasazení této webové služby. Webová služba Machine Learning je založená na architektuře REST, která je u programátorských projektů na webu oblíbenou volbou.
+Webové služby Machine Learning poskytují rozhraní mezi aplikací a modelem Machine Learning pro vyhodnocování pracovních postupů. Externí aplikací můžete použít Azure Machine Learning toocommunicate s vyhodnocování model Machine Learning pracovního postupu v reálném čase. Volání tooa webové službě Machine Learning vrátí předpovědi výsledky tooan externí aplikaci. toomake tooa volání webové služby, předáte klíč rozhraní API, která byla vytvořena, když jste nasadili hello webové služby. Webová služba Machine Learning je založená na architektuře REST, která je u programátorských projektů na webu oblíbenou volbou.
 
 Azure Machine Learning zahrnuje dva typy webových služeb:
 
-* Služba Request-Response (RRS): Služba s nízkou latencí, která je vysoce škálovatelná a poskytuje rozhraní pro bezstavové modely, které byly vytvořené a nasazené pomocí Machine Learning Studia.
+* Služba požadavků a odpovědí (záznamy RR): Nízkou latencí, vysoce škálovatelná služba, která poskytuje rozhraní toohello bezstavové modely vytvořená a nasazená pomocí Machine Learning Studio.
 * Služba Batch Execution (BES): Asynchronní služba pro vyhodnocování dávek datových záznamů.
 
-Existuje několik způsobů, jak využít REST API a komunikovat s webovou službou. Můžete například napsat aplikaci v jazyce C#, R nebo Python s pomocí ukázkového kódu, který se vygeneroval při nasazení webové služby.
+Existuje několik způsobů tooconsume hello REST API a přístup hello webové služby. Můžete například napsat aplikaci v jazyce C#, R nebo Python pomocí hello ukázkový kód, který se vygeneruje pro vás, když jste nasadili hello webové služby.
 
-Ukázkový kód je dostupný na těchto místech:
-- Stránka o využívání webových služeb na portálu Azure Machine Learning Web Services
-- Stránka nápovědy k rozhraní API na řídicím panelu webové služby v Machine Learning Studiu
+Hello ukázkový kód je k dispozici na:
+- Hello spotřebě stránky pro webovou službu hello hello webové služby Azure Machine Learning portálu
+- Hello stránce nápovědy k rozhraní API v řídicím panelu hello webových služeb v nástroji Machine Learning Studio
 
-Můžete také použít ukázkový sešit v Microsoft Excelu, který se pro vás vygeneroval a který je dostupný na řídicím panelu webové služby v Machine Learning Studiu.
+Můžete také použít sešit hello ukázkové aplikace Microsoft Excel, který je pro vás vytvořen a je k dispozici v řídicím panelu hello webových služeb v nástroji Machine Learning Studio.
 
-**Jaké jsou hlavní aktualizace služby Azure Machine Learning?**
+**Jaké jsou hlavní aktualizace tooAzure hello Machine Learning?**
 
-Nejnovější aktualizace najdete v tématu [Novinky ve službě Azure Machine Learning](machine-learning-whats-new.md).
+Hello nejnovější aktualizace, najdete v části [co je nového v Azure Machine Learning](machine-learning-whats-new.md).
 
 ## <a name="machine-learning-studio-questions"></a>Otázky k nástroji Machine Learning Studio
 ### <a name="import-and-export-data-for-machine-learning"></a>Import a export dat pro Machine Learning
 **Jaké zdroje dat Machine Learning podporuje?**
 
-Data můžete do experimentu Machine Learning Studio stáhnout třemi způsoby:
+Si můžete stáhnout tooa dat Machine Learning Studio experimentu třemi způsoby:
 
 - Nahrání místního souboru jako datové sady
-- Použití modulu k importu dat z cloudových datových služeb
+- Použít modul tooimport data z cloudových datových služeb
 - Import datové sady uložené z jiného experimentu
 
-Další informace o podporovaných formátech souborů najdete v tématu o [importu trénovacích dat do nástroje Machine Learning Studio](machine-learning-data-science-import-data.md).
+Další informace o toolearn podporované formáty souborů najdete v tématu [importu trénovacích dat do nástroje Machine Learning Studio](machine-learning-data-science-import-data.md).
 
-#### <a id="ModuleLimit"></a>Jak velká může být datová sada pro moje moduly?
-Moduly v nástroji Machine Learning Studio podporují datové sady, které obsahují až 10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá víc než jeden vstup, celková velikost všech vstupních velikostí je 10 GB. Větší datové sady je před ingestováním možné vzorkovat pomocí dotazů Hive nebo Azure SQL Database. Je možné také použít předzpracování metodou Learning by Counts.  
+#### <a id="ModuleLimit"></a>Jak velká může hello být datová sada pro mé moduly?
+Modulů v Machine Learning Studio podporují datové sady z až too10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá více než jeden vstup, hello 10 GB hodnota je hello celkový počet všech vstupních velikostí. Větší datové sady je před ingestováním možné vzorkovat pomocí dotazů Hive nebo Azure SQL Database. Je možné také použít předzpracování metodou Learning by Counts.  
 
-Během normalizace funkcí je možné následující typy dat rozšířit do větších datových sad. Tyto typy jsou omezené na méně než 10 GB:
+Hello následující typy dat během normalizace příznaků můžete rozšířit toolarger datových sad a jsou omezené tooless než 10 GB:
 
 * Řídké
 * Kategorické
 * Řetězce
 * Binární data
 
-Následující moduly jsou omezené na datové sady menší než 10 GB:
+Hello následující moduly jsou omezené toodatasets menší než 10 GB:
 
 * Doporučené moduly
 * Modul SMOTE (Synthetic Minority Oversampling Technique)
 * Skriptovací moduly: R, Python, SQL
-* Moduly, kde velikost výstupních dat může být větší než velikost vstupních dat, třeba Join nebo Feature Hashing
-* Pro velmi velký počet iterací Cross-validation, Tune Model Hyperparameters, Ordinal Regression a One-vs-All Multiclass
+* Moduly, kde výstup hello velikost dat může být větší než velikost vstupních dat, jako je například spojení nebo Hashování
+* Křížové ověření, Tune Model Hyperparameters, Ordinal Regression a One-vs-All Multiclass hello počet opakování je velmi velká
 
-#### <a id="UploadLimit"></a>Jaké jsou limity pro nahrávání dat?
-Pro datové sady větší než několik GB byste měli nahrát data do Azure Storage nebo Azure SQL Database, případně použít HDInsight, a nenahrávat přímo z místního souboru.
+#### <a id="UploadLimit"></a>Jaká jsou omezení hello dat nahrát?
+Pro datové sady, které jsou větší než několik GB, nahrávat data tooAzure úložiště nebo Azure SQL Database, nebo použití Azure HDInsight nikoli přímo nahrávat z místního souboru.
 
 **Je možné číst data z Amazonu S3?**
 
-Pokud máte malé množství dat a chcete je zveřejnit přes adresu URL protokolu HTTP, můžete použít modul [Import dat][import-data]. Jakákoli větší množství dat nejdřív přeneste do Azure Storage a potom použijte modul [Import dat][import-data], abyste je připojili k experimentu.
+Pokud máte malé množství dat a chcete tooexpose prostřednictvím adresy URL protokolu HTTP, pak může použít hello [importovat Data] [ import-data] modulu. Pro větší množství dat, přeneste ji tooAzure úložiště nejprve a pak použijte hello [importovat Data] [ import-data] toobring modulu do experimentu.
 <!--
 
 <SEE CLOUD DS PROCESS>
@@ -118,123 +118,123 @@ Pokud máte malé množství dat a chcete je zveřejnit přes adresu URL protoko
 
 **Je k dispozici integrovaná funkce pro obrazový vstup?**
 
-Informace o funkci obrazového vstupu najdete v referenci [Import obrázků][image-reader].
+Dozvíte se o funkci obrazového vstupu v hello [Import obrázků] [ image-reader] odkaz.
 
 ### <a name="modules"></a>Moduly
-**V Azure Machine Learning Studiu není algoritmus, zdroj dat, formát dat nebo operace transformace dat, kterou hledám. Jaké mám možnosti?**
+**Hello algoritmus, zdroj dat, formát dat nebo operace transformace dat, kterou hledám není v Azure Machine Learning Studio. Jaké mám možnosti?**
 
-Můžete navštívit [fórum pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231), kde najdete žádosti o funkce, které sledujeme. Pokud už existuje žádost o funkci, kterou sami hledáte, přidejte k ní svůj hlas. Pokud funkce, kterou hledáte, neexistuje, vytvořte novou žádost. Na tomto fóru můžete také sledovat stav své žádosti. Tento seznam pečlivě sledujeme a často aktualizujeme stav dostupnosti funkce. Navíc díky integrované podpoře R a Pythonu můžete podle potřeby vytvářet vlastní transformace.
+Můžete přejít toohello [fóru pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231) toosee funkce požadavky jsme sledování. Vaše žádost tooa hlas přidejte, pokud již požadavek funkci, která hledáte. Pokud hello schopností, který hledáte, neexistuje, vytvořte novou žádost. Na tomto fóru můžete zobrazit stav hello žádosti příliš. Tento seznam pečlivě sledovat jsme často aktualizovat hello stav dostupnosti funkce. Kromě toho můžete hello integrovaná podpora pro R a Python toocreate vlastní transformace v případě potřeby.
 
 **Můžu převést svůj existující kód do nástroje Machine Learning Studio?**
 
-Ano, svůj existující kód R nebo Python můžete do nástroje Machine Learning Studio převést, spustit jej v tom stejném experimentu pomocí inteligentních algoritmů Azure Machine Learning a přes Azure Machine Learning nasadit řešení jako webovou službu. Další informace najdete v tématech o [rozšíření experimentů pomocí R](machine-learning-extend-your-experiment-with-r.md) a o [spouštění pythonových skriptů strojového učení v nástroji Azure Machine Learning Studio](machine-learning-execute-python-scripts.md).
+Ano, můžete zahrnout existující kód R nebo Python do nástroje Machine Learning Studio, spusťte v hello stejné experimentovat s inteligentních algoritmů Azure Machine Learning a nasadit hello řešení jako webovou službu pomocí Azure Machine Learning. Další informace najdete v tématech o [rozšíření experimentů pomocí R](machine-learning-extend-your-experiment-with-r.md) a o [spouštění pythonových skriptů strojového učení v nástroji Azure Machine Learning Studio](machine-learning-execute-python-scripts.md).
 
-**Je možné definovat model pomocí něčeho takového, jako je jazyk [PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language)?**
+**Je možné toouse něco jako [PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language) toodefine modelu?**
 
-Ne, jazyk PMML (Predictive Model Markup Language) se nepodporuje. K definování modulu můžete využít vlastní kód v R a Pythonu.
+Ne, jazyk PMML (Predictive Model Markup Language) se nepodporuje. Můžete použít vlastní R a Python kódu toodefine modul.
 
 **Kolik modulů je možné v experimentu paralelně spustit?**  
 
-V jednom experimentu můžete paralelně spustit až čtyři moduly.
+Můžete spustit až toofour moduly v experimentu paralelně.
 
 ### <a name="data-processing"></a>Zpracování dat
-**Je k možné v rámci experimentu využívat interaktivní vizualizaci dat (kromě vizualizací R)?**
+**Je k dispozici data možnost toovisualize (kromě vizualizací R) interaktivně v rámci experimentu hello?**
 
-Kliknutím na výstup modulu můžete vizualizovat data a získat statistiky.
+Klikněte na výstup hello dat hello toovisualize modulu a získat statistiky.
 
-**Při prohlížení náhledu výsledků nebo dat v prohlížeči je počet řádků a sloupců omezený. Proč?**
+**Při prohlížení náhledu výsledků nebo dat v prohlížeči, je omezený počet hello řádků a sloupců. Proč?**
 
-Protože do prohlížeče je možné odesílat velké objemy dat, je velikost dat omezená, aby se Machine Learning Studio nezpomalovalo. Pokud chcete vizualizovat všechna data nebo výsledky, je vhodnější data stáhnout a použít Excel nebo jiný nástroj.
+Protože velké objemy dat mohou být odeslány tooa prohlížeče, velikost dat je omezená tooprevent zpomalení nástroje Machine Learning Studio. toovisualize všechny hello data nebo výsledky, lepší toodownload hello dat a použít Excel nebo jiný nástroj.
 
 ### <a name="algorithms"></a>Algoritmy
 **Jaké stávající algoritmy podporuje Machine Learning Studio?**
 
-Machine Learning Studio poskytuje nejmodernější algoritmy, například škálovatelné vylepšené rozhodovací stromy, systémy bayesovského rozhodování, hluboké neuronové sítě a rozhodovací džungle vyvinuté v Microsoft Research. Dostupné jsou i škálovatelné open-sourcové balíčky pro strojové učení, třeba Vowpal Wabbit. Machine Learning Studio podporuje algoritmy strojového učení pro binární klasifikaci a klasifikaci s více třídami, regresi a clustering. Podívejte se na úplný seznam [modulů služby Machine Learning][machine-learning-modules].
+Machine Learning Studio poskytuje nejmodernější algoritmy, například škálovatelné vylepšené rozhodovací stromy, systémy bayesovského rozhodování, hluboké neuronové sítě a rozhodovací džungle vyvinuté v Microsoft Research. Dostupné jsou i škálovatelné open-sourcové balíčky pro strojové učení, třeba Vowpal Wabbit. Machine Learning Studio podporuje algoritmy strojového učení pro binární klasifikaci a klasifikaci s více třídami, regresi a clustering. Viz úplný seznam k hello [modulů Machine Learning][machine-learning-modules].
 
-**Navrhnete mi automaticky algoritmus Machine Learning vhodný pro moje data?**
+**Budete automaticky hello správné Machine Learning algoritmus toouse pro svá data navrhnout?**
 
-Ne, ale Machine Learning Studio nabízí různé způsoby, jak porovnat výsledky jednotlivých algoritmů a určit, který z nich je pro váš problém nejvhodnější.
+Ne, ale Machine Learning Studio obsahuje různé způsoby, kterými toocompare hello výsledky jednotlivých algoritmus toodetermine hello správné jednu pro váš problém.
 
-**Lze obecně poradit, jak z poskytovaných algoritmů upřednostnit jeden před jiným?**
+**Máte poradit, výběr jeden algoritmus oproti jinému pro algoritmy hello poskytuje?**
 
-Přečtěte si téma [Jak vybrat algoritmus](machine-learning-algorithm-choice.md).
+V tématu [jak toochoose algoritmus](machine-learning-algorithm-choice.md).
 
-**Jsou poskytované algoritmy napsané v R nebo Pythonu?**
+**Jsou zadaná hello algoritmy napsány v R nebo Pythonu?**
 
-Ne, tyto algoritmy jsou většinou napsané v kompilovaných jazycích, aby poskytovaly vyšší výkon.
+Ne, tyto algoritmy jsou většinou napsány v kompilovaných jazycích tooprovide lepší výkon.
 
-**Jsou k dispozici nějaké podrobnosti o algoritmech?**
+**Jsou nějaké podrobnosti o hello algoritmy poskytuje?**
 
-Určité informace o algoritmech jsou uvedené v dokumentaci. Pro optimalizaci algoritmů pro vaše použití jsou popsané parametry, pomocí kterých je možné činnost algoritmů upravit.  
+Hello dokumentace obsahuje některé informace o hello algoritmy a parametry pro ladění jsou popsány toooptimize hello algoritmu pro vaše použití.  
 
 **Podporuje se online učení?**
 
 Ne, v tuto chvíli je podporováno jenom programové přeučení.
 
-**Je možné vizualizovat vrstvy modelu neuronové sítě pomocí integrovaného modulu?**
+**Můžete vizualizovat hello vrstvy modelu Neuronové sítě pomocí integrovaného modulu hello?**
 
 Ne.
 
 **Je možné vytvářet vlastní moduly v jazyce C# nebo v nějakém jiném jazyce?**
 
-V současnosti k vytvoření nových vlastních modulů můžete využít jenom R.
+V současné době můžete použít pouze vlastních modulů R toocreate nové.
 
 ### <a name="r-module"></a>Modul R
 **Jaké balíčky R jsou k dispozici v nástroji Machine Learning Studio?**
 
-K dnešnímu dni Machine Learning Studio podporuje přes 400 balíčků CRAN R. Všechny zahrnuté balíčky jsou uvedené v [aktuálním seznamu](http://az754797.vo.msecnd.net/docs/RPackages.xlsx). Pokud chcete zjistit, jak tento seznam získat sami, přečtěte si také téma o [rozšíření experimentů pomocí R](machine-learning-extend-your-experiment-with-r.md). Pokud požadovaný balíček není v seznamu, uveďte název balíčku na [fóru pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231).
+Machine Learning Studio podporuje více než 400 balíčků CRAN r. dnes, a zde je hello [aktuálního seznamu](http://az754797.vo.msecnd.net/docs/RPackages.xlsx) všechny zahrnuté balíčky. Další informace naleznete v [rozšíření experimentů pomocí R](machine-learning-extend-your-experiment-with-r.md) toolearn jak tooretrieve tento seznam sami. Pokud hello balíček, který chcete v tomto seznamu není, zadejte název hello hello balíčku na hello [fóru pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231).
 
-**Je možné vytvořit vlastní modul R?**
+**Je možné toobuild vlastní R modulu?**
 
 Ano, další informace najdete v tématu o [vytváření vlastních modulů R ve službě Azure Machine Learning](machine-learning-custom-r-modules.md).
 
 **Je pro R k dispozici prostředí REPL?**
 
-Ne, ve studiu není žádné prostředí REPL (Read-Eval-Print-Loop) pro R.
+Ne, je žádné čtení – zkušební verze-tisk-smyčky () prostředí REPL. v hello studio.
 
 ### <a name="python-module"></a>Modul Python
-**Je možné vytvořit vlastní modul Python?**
+**Je možné toobuild vlastní modul Python?**
 
-V této chvíli ne, ale stejného výsledku je možné dosáhnout použitím jednoho nebo více modulů [Execute Python Script][python].
+Není v současné době ale můžete použít jeden nebo více [Execute Python Script] [ python] tooget moduly hello stejného výsledku.
 
 **Je pro Python k dispozici prostředí REPL?**
 
-V nástroji Machine Learning Studio můžete použít Jupyter Notebooks. Další informace najdete v tématu [Úvod do aplikace Jupyter Notebooks v Azure Machine Learning Studio](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).
+V nástroji Machine Learning Studio můžete použít hello Jupyter Notebooks. Další informace najdete v tématu [Úvod do aplikace Jupyter Notebooks v Azure Machine Learning Studio](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).
 
 ## <a name="web-service"></a>Webová služba
 ### <a name="retrain"></a>Přeučování
 **Jak je možné programově přeučit modely Azure Machine Learning?**
 
-Použijte rozhraní API pro přeučení. Další informace najdete v tématu o [programovém přeučení modelů Machine Learning](machine-learning-retrain-models-programmatically.md). V [ukázce přeučování v Microsoft Azure Machine Learning](https://azuremlretrain.codeplex.com/) je k dispozici i ukázkový kód.
+Použijte hello retraining API. Další informace najdete v tématu o [programovém přeučení modelů Machine Learning](machine-learning-retrain-models-programmatically.md). Ukázkový kód je také dostupná v hello [Microsoft Azure Machine Learning ukázce Přeučování](https://azuremlretrain.codeplex.com/).
 
 ### <a name="create"></a>Vytvořit
-**Je možné model nasadit lokálně nebo do aplikace, která nemá připojení k internetu?**
+**Můžete nasadit hello model, místně nebo v aplikaci, která nemá připojení k Internetu?**
 
 Ne.
 
 **Existuje základní latence, kterou je možné očekávat u všech webových služeb?**
 
-Přečtěte si téma [Limity předplatného Azure](../azure-subscription-service-limits.md).
+V tématu hello [limity předplatného Azure](../azure-subscription-service-limits.md).
 
 ### <a name="use"></a>Použití
-**Kdy je žádoucí spustit prediktivní model jako službu Batch Execution a kdy jako službu Request Response?**
+**Pokud by se měla toorun prediktivní model jako službu Batch Execution a service Request Response?**
 
-Služba Request Response (RRS) je vysoce škálovatelná webová služba s nízkou latencí, pomocí které se poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z prostředí experimentů. Služba Batch Execution (BES) je služba pro asynchronní vyhodnocování dávek datových záznamů. Vstup pro BES je podobný datové vstupu, který využívá RRS. Hlavním rozdílem je to, že BES čte blok záznamů z několika různých zdrojů, jako je třeba Azure Blob Storage, Azure Table Storage, Azure SQL Database, HDInsight (dotaz Hive) a zdroje HTTP. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](machine-learning-consume-web-services.md).
+Hello služba Request Response (RRS) je nízkou latencí, špičkové webová služba, která je použité tooprovide rozhraní toostateless modelů, které jsou vytvořené a nasazené z prostředí experimentů hello. Hello služba Batch Execution (BES) je služba, která asynchronně skóre dávky datových záznamů. Hello vstup pro BES je jako vstup dat, který používá záznamy o prostředku. Hello hlavní rozdíl je, že BES čte blok záznamů z různých zdrojů, například Azure Blob storage, Azure Table storage, Azure SQL Database, HDInsight (dotaz hive) a zdrojů HTTP. Další informace najdete v tématu [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 
-**Jak je možné aktualizovat model pro nasazenou webovou službu?**
+**Jak aktualizovat hello modelu pro hello nasadit webovou službu?**
 
-Pokud chcete aktualizovat prediktivní model pro už nasazenou službu, upravte experiment, který jste použili k vytvoření a uložení natrénovaného modelu, a spusťte ho znovu. Jakmile je dostupná nová verze vytrénovaného modelu, Machine Learning Studio se vás zeptá, jestli chcete aktualizovat webovou službu. Podrobnosti o tom, jak aktualizovat nasazenou webovou službu, najdete v tématu o [nasazení webové služby Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
+tooupdate prediktivního modelu pro již nasazenou službu, upravit a znovu spusťte hello experiment, kterou jste použili tooauthor a uložit hello trained model. Až budete mít novou verzi k dispozici hello trained model, Machine Learning Studio požádá, pokud chcete tooupdate webové služby. Další informace o tom najdete v části tooupdate nasazenou webovou službu [nasazení webové služby Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
 
-Kromě toho můžete použít i rozhraní Retraining API.
-Další informace najdete v tématu o [programovém přeučení modelů Machine Learning](machine-learning-retrain-models-programmatically.md). V [ukázce přeučování v Microsoft Azure Machine Learning](https://azuremlretrain.codeplex.com/) je k dispozici i ukázkový kód.
+Můžete také použít hello rozhraní Retraining API.
+Další informace najdete v tématu o [programovém přeučení modelů Machine Learning](machine-learning-retrain-models-programmatically.md). Ukázkový kód je také dostupná v hello [Microsoft Azure Machine Learning ukázce Přeučování](https://azuremlretrain.codeplex.com/).
 
 **Jak je možné sledovat webovou službu nasazenou do produkčního prostředí?**
 
-Po nasazení prediktivního modelu ji můžete sledovat z portálu Azure Classic (jenom klasické webové služby) nebo z portálu Azure Machine Learning Web Services. Každá nasazená služba má svůj vlastní řídicí panel, kde můžete sledovat informace z monitorování dané služby. Další informace o správě nasazené webové služby najdete v tématech [Správa webové služby s použitím portálu Azure Machine Learning Web Services](machine-learning-manage-new-webservice.md) a [Správa pracovního prostoru Azure Machine Learning](machine-learning-manage-workspace.md).
+Po nasazení prediktivního modelu, můžete ho sledovat z hello Azure classic portal (pouze Classic webové služby) nebo webové služby Azure Machine Learning portál hello. Každá nasazená služba má svůj vlastní řídicí panel, kde můžete sledovat informace z monitorování dané služby. Další informace o tom, jak toomanage nasazené webové služby, najdete v části [spravovat webové služby pomocí portálu webové služby Azure Machine Learning hello](machine-learning-manage-new-webservice.md) a [spravovat pracovní prostor služby Azure Machine Learning](machine-learning-manage-workspace.md).
 
-**Je možné si někde zobrazit výstup RRS nebo BES?**
+**Je k dispozici na místě, kde jsou zobrazeny hello výstup RRS nebo BES?**
 
-V případě RRS je místem, kde uvidíte výsledky, zpravidla odpověď webové služby. Můžete je zapsat také do Azure Blob Storage. U BES je výstup standardně zapisován do objektu blob. Pomocí modulu [Export dat][export-data] je možné výstup zapsat i do databáze nebo tabulky.
+Pro záznamy o prostředcích hello odpověď webové služby je obvykle kde uvidíte hello výsledek. Je také možné zapsat ho tooAzure úložiště objektů Blob. Pro BES je výstup hello podle výchozího nastavení zapisují tooa objektů blob. Je také možné zapsat hello výstup tooa databázi nebo tabulku pomocí hello [Export dat] [ export-data] modulu.
 
 **Webové služby je možné vytvářet jenom z modelů, které byly vytvořené v Machine Learning Studiu?**
 
@@ -245,9 +245,9 @@ Ne, webové služby je možné vytvářet i přímo pomocí Jupyter Notebooks a 
 Seznam chybových kódů a jejich popisy najdete v tématu o [chybových kódech modulů Machine Learning](https://msdn.microsoft.com/library/azure/dn905910.aspx).
 
 ## <a name="scalability"></a>Škálovatelnost
-**Jaká je škálovatelnost webové služby?**
+**Co je škálovatelnost hello hello webové služby?**
 
-V tuto chvíli je výchozí koncový bod zřizován s 20 souběžnými požadavky RRS na jeden koncový bod. Jak je popsáno v tématu [Škálování webové služby](machine-learning-scaling-webservice.md), kapacitu je možné rozšířit na 200 souběžných požadavků na jeden koncový bod a každou webovou službu jde škálovat na 10 000 koncových bodů. Pro BES každý koncový bod může zpracovat 40 požadavků najednou, požadavky nad těchto 40 požadavků se zařazují do fronty. Požadavky ve frontě se budou spouštět automaticky podle toho, jak se fronta vyprazdňuje.
+V současné době hello výchozí koncový bod zřizován s 20 souběžnými požadavky RRS na jeden koncový bod. Je možné škálovat tento too200 souběžných požadavků na jeden koncový bod a je možné škálovat každý too10 webové služby, 000 koncových bodů webové služby, jak je popsáno v [škálování webové služby](machine-learning-scaling-webservice.md). Pro BES každý koncový bod může zpracovat 40 požadavků najednou, požadavky nad těchto 40 požadavků se zařazují do fronty. Požadavky ve frontě spustit automaticky jako hello fronta vyprazdňuje.
 
 **Jsou úlohy R rozdělené mezi uzly?**
 
@@ -255,185 +255,185 @@ Ne.
 
 **Kolik dat je možné použít k trénování?**
 
-Moduly v nástroji Machine Learning Studio podporují datové sady, které obsahují až 10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá více než jeden vstup, celková velikost všech vstupů je 10 GB. Větší datové sady je před ingestováním možné vzorkovat pomocí dotazů Hivu, dotazů Azure SQL Database nebo předzpracováním pomocí modulů [učení na základě počtů][counts].  
+Modulů v Machine Learning Studio podporují datové sady z až too10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá více než jeden vstupní, hello celková velikost všech vstupů je 10 GB. Větší datové sady je před ingestováním možné vzorkovat pomocí dotazů Hivu, dotazů Azure SQL Database nebo předzpracováním pomocí modulů [učení na základě počtů][counts].  
 
-Během normalizace funkcí je možné následující typy dat rozšířit do větších datových sad. Tyto typy jsou omezené na méně než 10 GB:
+Hello následující typy dat během normalizace příznaků můžete rozšířit toolarger datových sad a jsou omezené tooless než 10 GB:
 
 * Řídké
 * Kategorické
 * Řetězce
 * Binární data
 
-Následující moduly jsou omezené na datové sady menší než 10 GB:
+Hello následující moduly jsou omezené toodatasets menší než 10 GB:
 
 * Doporučené moduly
 * Modul SMOTE (Synthetic Minority Oversampling Technique)
 * Skriptovací moduly: R, Python, SQL
-* Moduly, kde velikost výstupních dat může být větší než velikost vstupních dat, třeba Join nebo Feature Hashing
+* Moduly, kde výstup hello velikost dat může být větší než velikost vstupních dat, jako je například spojení nebo Hashování
 * Pro velmi velký počet iterací Cross-Validate, Tune Model Hyperparameters, Ordinal Regression a One-vs-All Multiclass
 
-Pro datové sady větší než několik GB nahrajte data do úložiště Azure nebo Azure SQL Database, případně použijte HDInsight, a nenahrávejte přímo z místního souboru.
+Pro datové sady, které jsou větší než několik GB, nahrávat data tooAzure úložiště nebo Azure SQL Database, případně použít HDInsight nikoli přímo nahrávat z místního souboru.
 
 **Existují nějaká omezení velikosti vektoru?**
 
-Řádky i sloupce jsou omezeny na omezení Max Int v rozhraní .NET: 2 147 483 647.
+Řádky i sloupce jsou omezení Max Int každý omezené toohello .NET: 2 147 483 647.
 
-**Je možné upravit velikost virtuálního počítače, na kterém běží webová služba?**
+**Můžete upravit velikost hello hello virtuálního počítače, který spouští hello webovou službu?**
 
 Ne.  
 
 ## <a name="security-and-availability"></a>Zabezpečení a dostupnost
-**Kdo má ve výchozím nastavení přístup ke koncovému bodu HTTP pro webovou službu? Jak omezím přístup ke koncovému bodu?**
+**Kdo má přístup k hello koncový bod http pro webovou službu hello ve výchozím nastavení? Jak omezím přístup toohello koncový bod?**
 
-Po nasazení webové služby je pro tuto službu vytvořen koncový bod. Výchozí koncový bod je možné volat pomocí klíče rozhraní API. Další koncové body s vlastními klíči je možné přidat na portálu Azure Classic nebo programově pomocí rozhraní API pro správu webových služeb. Pro volání do webové služby se vyžadují přístupové klíče. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](machine-learning-consume-web-services.md).
+Po nasazení webové služby je pro tuto službu vytvořen koncový bod. Hello výchozí koncový bod je možné volat pomocí jeho klíče rozhraní API. Můžete přidat, že hello další koncové body s jejich vlastními klíči z hello portál Azure classic nebo programově pomocí rozhraní Web Service Management API. Přístupové klíče jsou potřebné toomake volání toohello webové služby. Další informace najdete v tématu [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 
 **Co se stane, když se můj účet Azure Storage nenajde?**
 
-Machine Learning Studio při provádění pracovního postupu využívá k ukládání pracovních dat uživatelem zadaný účet Azure Storage. Tento účet úložiště se do nástroje Machine Learning Studio zadává při vytváření pracovního prostoru. Pokud po vytvoření pracovního prostoru dojde k odstranění účtu úložiště a už se nedá najít, pracovní prostor přestane fungovat a všechny experimenty v něm selžou.
+Machine Learning Studio využívá u datových zprostředkující toosave účet úložiště Azure uživatelem zadané, když ji spustí pracovní postup hello. Tento účet úložiště je k dispozici tooMachine Learning Studio při vytváření pracovního prostoru. Po hello je vytvořen pracovní prostor, pokud účet úložiště hello se odstraní a již nelze nalézt, hello pracovní prostor přestane fungovat a všechny experimenty v tom, že pracovní prostor se nezdaří.
 
-Pokud jste účet úložiště omylem odstranili, znovu vytvořte účet úložiště se stejným názvem a ve stejné oblasti jako odstraněný účet úložiště. Potom znovu synchronizujte přístupový klíč.
+Pokud omylem odstraníte účet úložiště hello, znovu vytvořit účet úložiště hello hello stejný název v hello stejné oblasti jako hello odstranit účet úložiště. Potom nové synchronizace hello přístupový klíč.
 
 **Co se stane, když přístupový klíč účtu úložiště není synchronizovaný?**
 
-Machine Learning Studio při provádění pracovního postupu využívá k ukládání pracovních dat uživatelem zadaný účet Azure Storage. Tento účet úložiště se do nástroje Machine Learning Studio zadává při vytváření pracovního prostoru. Přístupové klíče se přiřadí k tomuto pracovnímu prostoru. Pokud se přístupové klíče po vytvoření pracovního prostoru změní, pracovní prostor už nebude mít přístup k účtu úložiště. Přestane proto fungovat a všechny experimenty v něm selžou.
+Machine Learning Studio využívá u datových zprostředkující toostore účet úložiště Azure uživatelem zadané, když ji spustí pracovní postup hello. Tento účet úložiště je získáte tooMachine Learning Studio, při vytváření pracovního prostoru, a hello přístupové klíče se přiřadí k danému pracovnímu prostoru. Pokud se hello přístupové klíče se změnila po vytvoření pracovního prostoru hello, hello prostoru mít nadále přístup k účtu úložiště hello. Přestane proto fungovat a všechny experimenty v něm selžou.
 
-Pokud jste změnili přístupové klíče účtu úložiště, znovu je v pracovním prostoru synchronizujte přes portál Azure Classic.  
+Pokud jste změnili přístupové klíče účtu úložiště, hello synchronizaci hello přístupové klíče v prostoru hello pomocí portálu Azure classic.  
 
 ## <a name="support-and-training"></a>Podpora a školení
 **Kde získám školení pro Azure Machine Learning?**
 
-V [centru dokumentace Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) najdete videokurzy a návody. Tyto podrobné návody představují jednotlivé služby a popisují životní cyklus vycházející z datové vědy a sestávající z importu dat, jejich čištění, vytváření prediktivních modelů a jejich nasazování do provozu pomocí Azure Machine Learningu.
+Hello [centru dokumentace Azure Machine Learning na](https://azure.microsoft.com/services/machine-learning/) hostitelem video kurzy a jak tooguides. Tyto podrobné návody zavést hello služby a popisují hello datové vědy životní cyklus importu dat, čištění dat, vytváření prediktivních modelů a jejich nasazení v produkčním prostředí pomocí Azure Machine Learning.
 
-Průběžně do centra pro Machine Learning přidáváme nové materiály. Na [fóru pro zpětnou vazbu uživatelů](https://windowsazure.uservoice.com/forums/257792-machine-learning) můžete zaslat žádost o další výukové materiály v centru pro Machine Learning.
+Průběžné přidáme nové podstatným toohello centru pro Machine Learning. Můžete zaslat žádost o další výukové materiály v Centru pro Machine Learning v hello [fóru pro zpětnou vazbu uživatelů](https://windowsazure.uservoice.com/forums/257792-machine-learning).
 
 Školení najdete i v [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-microsoft-azure-machine-learning).
 
 **Jak je možné získat podporu pro Azure Machine Learning?**
 
-Pokud potřebujete technickou podporu pro Azure Machine Learning, přejděte k [podpoře Azure](/support/options/) a vyberte **Machine Learning**.
+tooget technická podpora pro Azure Machine Learning, přejděte příliš[podporu Azure](/support/options/)a vyberte **Machine Learning**.
 
-Azure Machine Learning má i fórum komunity na webu MSDN, kde se můžete ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Navštivte [fórum Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
+Azure Machine Learning má i fórum komunity na webu MSDN, kde se můžete ptát na věci související se službou Azure Machine Learning. tým Azure Machine Learning Hello monitoruje fórum hello. Přejděte příliš[fóru Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 
 ## <a name="billing-questions"></a>Dotazy k fakturaci
 **Jak se Machine Learning fakturuje?**
 
 Azure Machine Learning má dvě komponenty: Machine Learning Studio a webové služby Machine Learning.
 
-Dokud vyhodnocujete využívání Machine Learning Studia, nemusíte za něj na úrovni Free platit. Úroveň Free mimo jiné umožňuje nasadit webovou službu Classic s omezenou kapacitou.
+Při hodnocení Machine Learning Studio, můžete úroveň Free fakturace hello. úroveň Free Hello také umožňuje nasazení Classic webová služba, která má omezenou kapacitu.
 
-Pokud si ověříte, že služba Azure Machine Learning splňuje vaše požadavky, můžete se zaregistrovat k úrovni Standard. K tomu ale musíte mít předplatné Microsoft Azure.
+Pokud se rozhodnete, že Azure Machine Learning vyhovuje vašim potřebám, můžete si zaregistrovat hello úrovně Standard. toosign nahoru, musí mít předplatné Microsoft Azure.
 
-Na úrovni Standard se vám bude účtovat měsíční poplatek za každý pracovní prostor, který v Machine Learning Studiu vytvoříte. Experimenty spouštěné v nástroji Studio se účtují podle využitých výpočetních prostředků. Co se týče nasazování webových služeb Classic, transakce a výpočetní hodiny se účtují na bázi průběžných plateb (Pay As You Go).
+V úrovni Standard hello fakturuje se každý měsíc pro každý pracovní prostor, který definujete v Machine Learning Studio. Při spuštění experimentu v hello studio se vám fakturují za výpočetní prostředky při spuštění experimentu. Při nasazení Classic webové služby, transakce a výpočetní hodiny se účtují na základě platím průběžně hello.
 
-S novými webovými službami (založenými na Resource Manageru) přichází fakturační plány, se kterými lépe odhadnete výsledné náklady. Odstupňované ceny umožňují snížit ceny zákazníkům, kteří potřebují vysokou kapacitu.
+S novými webovými službami (založenými na Resource Manageru) přichází fakturační plány, se kterými lépe odhadnete výsledné náklady. Vrstvený ceny nabízí toocustomers zvýhodněné sazby, které potřebují velké množství kapacity.
 
-Po vytvoření plánu se zavazujete hradit fixní částku, do které je zahrnuto určité množství výpočetních hodin a transakcí API. Pokud byste potřebovali zahrnout vyšší množství, stačí do plánu doplnit instance. Pokud budete vyžadovat podstatně víc výpočetního času a transakcí, můžete si vybrat vyšší úroveň, která kromě toho nabízí i výhodnější sazbu.
+Při vytváření plánu potvrzení tooa pevné náklady, která se dodává s zahrnuté množství výpočetních hodin API a rozhraní API transakce. Pokud potřebujete více zahrnuté množství, můžete přidat plán tooyour instance. Pokud budete vyžadovat podstatně víc výpočetního času a transakcí, můžete si vybrat vyšší úroveň, která kromě toho nabízí i výhodnější sazbu.
 
-Po vyčerpání množství zahrnutého v existujících instancích se další využití účtuje sazbou za nadlimitní využití, která je přiřazená danému fakturačnímu plánu.
+Až hello zahrnuté množství v existující instance vyčerpáte, další využití výši hello Nadlimitní míry, který je spojen s hello fakturační plán vrstvy.
 
 > [!NOTE]
-Zahrnuté množství se znovu přiděluje každých 30 dní a nevyčerpané prostředky se do dalšího období nepřevádějí.
+Zahrnuté množství jsou opětovnému přidělení každých 30 dní, a nepoužívané zahrnuté množství nevracet přes toohello další období.
 
 Další informace o fakturaci a cenách najdete v tématu [Machine Learning – ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 **Nabízí Machine Learning bezplatnou zkušební verzi?**
 
- Azure Machine Learning nabízí možnost bezplatného předplatného, které je vysvětlené v tématu [Podrobnosti o cenách za Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/). Machine Learning Studio nabízí osmihodinovou zkušební verzi pro rychlé vyhodnocení, která je dostupná po přihlášení do [Machine Learning Studia](https://studio.azureml.net/?selectAccess=true&o=2).
+ Azure Machine Learning nabízí možnost bezplatného předplatného, které je vysvětlené v tématu [Podrobnosti o cenách za Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/). Machine Learning Studio obsahuje rychlý vyhodnocení osmi hodin zkušební verze, která je k dispozici, když se přihlásíte příliš[Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2).
 
- Když se navíc zaregistrujete k bezplatné zkušební verzi Azure, získáte možnost vyzkoušet si všechny služby Azure po dobu jednoho měsíce. Další informace o bezplatné zkušební verzi Azure najdete v [nejčastějších dotazech k této verzi](https://azure.microsoft.com/pricing/free-trial-faq/).
+ Když se navíc zaregistrujete k bezplatné zkušební verzi Azure, získáte možnost vyzkoušet si všechny služby Azure po dobu jednoho měsíce. toolearn Další informace o hello Azure bezplatnou zkušební verzi, navštivte [Azure bezplatné zkušební verze – nejčastější dotazy](https://azure.microsoft.com/pricing/free-trial-faq/).
 
 **Co je transakce?**
 
 Transakcí se rozumí volání rozhraní API, na které odpoví služba Azure Machine Learning. Transakce, které proběhnou po volání služeb Request-Response (RRS) a Batch Execution (BES), se sčítají a potom účtují podle vašeho plánu.
 
-**Můžu objemy transakcí zahrnuté v plánu využít pro transakce RRS i BES?**
+**Lze použít hello zahrnuté množství transakcí v plánu pro transakce RRS a BES?**
 
 Ano, transakce RRS a BES se sčítají dohromady a účtují podle vašeho plánu.
 
 **Co je výpočetní čas rozhraní API?**
 
-Výpočetní hodina rozhraní API je fakturační jednotka pro zúčtování času, který spotřebují volání rozhraní API s využitím výpočetních prostředků Machine Learningu. Všechna volání se vám pro účely fakturace započítávají dohromady.
+Výpočetní hodiny API je jednotka fakturace hello dobu hello že toorun proveďte volání rozhraní API pomocí Machine Learning výpočetní prostředky. Všechna volání se vám pro účely fakturace započítávají dohromady.
 
 **Jak dlouho obvykle trvá volání rozhraní API produkčního prostředí?**
 
-Časy volání rozhraní API produkčního prostředí se mohou výrazně lišit, obecně od stovek milisekund až po několik sekund. Některá volání rozhraní API mohou vyžadovat i několik minut, v závislosti na složitosti modelu strojového učení a zpracování dat. Dobu volání API produkčního prostředí nejlépe odhadnete tak, že ve službě Machine Learning model otestujete.
+Časy volání rozhraní API produkčního prostředí se může lišit výrazně, obecně od stovky milisekundách tooa několik sekund. Některá volání rozhraní API může vyžadovat minut v závislosti na složitosti hello hello zpracování dat a strojové učení modelu. Hello nejlepší způsob, jak tooestimate rozhraní API produkčního prostředí volání časy je toobenchmark modelu na hello služby Machine Learning.
 
 **Co je výpočetní hodina Studia?**
 
-Výpočetní hodina Studia je jednotka pro zúčtování celkového času, po který vaše experimenty využívaly výpočetní prostředky ve Studiu.
+Výpočetní hodinu Studio je hello fakturace jednotka pro agregovaná doba hello, experimentů v studio použití výpočetní prostředky.
 
-**K čemu u nových webových služeb (využívajících Azure Resource Manager) slouží úroveň pro vývoj a testování?**
+**V nových služeb (Azure Resource Manager) webovou vrstvu vývoje/testování hello pojmy pro?**
 
-Webové služby využívající Azure Resource Manager nabízí několik úrovní fakturačního plánu. Cenová úroveň pro vývoj a testování zahrnuje omezené množství transakcí a výpočetního času, který využijete k otestování experimentu jako nové webové služby bez dalších nákladů. Službu si můžete vyzkoušet, abyste zjistili, jak funguje.
+Založené na správci prostředků webové služby poskytují více úrovně, které můžete použít tooprovision cenového plánu. Hello cenovou úroveň pro vývoj/testování poskytuje omezené, zahrnuté množství, které vám umožňují tootest experimentu jako webovou službu, aniž by docházelo k náklady. Máte toosee hello příležitost, jak to funguje.
 
 **Platí se úložiště odděleně?**
 
-Úroveň Free služby Machine Learning nevyžaduje, ale ani neumožňuje využívat oddělené úložiště. Uživatelé služby Machine Learning na úrovni Standard se naopak neobejdou bez účtu Azure Storage. Služba Azure Storage se [fakturuje zvlášť](https://azure.microsoft.com/pricing/details/storage/).
+Machine Learning bezplatnou úroveň Hello nevyžaduje ani povolit samostatné úložiště. Machine Learning standardní vrstvě Hello vyžaduje toohave uživatelé s účtem úložiště Azure. Služba Azure Storage se [fakturuje zvlášť](https://azure.microsoft.com/pricing/details/storage/).
 
 **Podporuje služba Machine Learning vysokou dostupnost?**
 
-Ano. Podrobnosti najdete v tématu [Machine Learning – ceny](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) u popisu smlouvy SLA.
+Ano. Podrobnosti najdete v tématu [Machine Learning – ceny](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) popis hello smlouvy o úrovni služeb (SLA).
 
 **Jaké výpočetní prostředky konkrétně zpracovávají volání rozhraní API produkčního prostředí?**
 
-Služba Machine Learning je víceklientská. Skutečné výpočetní prostředky, které se používají na back-endu, se liší a jsou optimalizované z hlediska výkonu a předvídatelnosti.
+Hello služby Machine Learning je víceklientské služby. Skutečné výpočetní prostředky, které se používají na hello back-end se liší a jsou optimalizované pro výkon a předvídatelnost.
 
 ### <a name="management-of-new-resource-manager-based-web-services"></a>Správa nových webových služeb (využívajících Resource Manager)
 **Co se stane, když odstraním plán?**
 
-Plán vám odebereme z předplatného a služby naúčtujeme podle průběžného využití.
+plán Hello se odebere ze svého předplatného a fakturuje se poměrné využití.
 
 > [!NOTE]
-Plán, který právě používá nějaká webová služba, se nedá odstranit. Pokud chcete takový plán odstranit, musíte webové službě přiřadit nový plán nebo nejdřív odstranit ji.
+Plán, který právě používá nějaká webová služba, se nedá odstranit. plán hello toodelete, je nutné buď přiřadit nový plán toohello webové služby nebo odstranit hello webové služby.
 
 **Co je instance plánu?**
 
-Instance plánu je jednotka množství zahrnutého času a transakcí, které si můžete přidávat do fakturačního plánu. Po výběru úrovně obsahuje plán jednu instanci. Když budete potřebovat zahrnout větší množství, stačí do plánu doplnit dodatečné instance vybrané úrovně.
+Plán instance je jednotka zahrnuté množství, můžete přidat tooyour fakturační plán. Po výběru úrovně obsahuje plán jednu instanci. Pokud potřebujete více zahrnuté množství, můžete přidat instancí hello vybrané úrovně tooyour plán fakturace.
 
 **Kolik instancí plánu je možné přidat?**
 
-Ve svém předplatném můžete mít jednu instanci cenové úrovně pro vývoj a testování.
+Může mít jednu instanci cenová úroveň hello vývoje/testování v odběru.
 
 Úrovně Standard S1, Standard S2 a Standard S3 můžete přidávat podle potřeby.
 
 > [!NOTE]
-V závislosti na tom, jaké využití očekáváte, může být výhodnější upgradovat na úroveň s větším zahrnutým množstvím než přidávat instance do aktuální úrovně.
+V závislosti na vaší předpokládaného využití doporučujeme může být cenově efektivnější tooupgrade tooa vrstvy, která má více zahrnuté množství spíše přidat instancí toohello Současná vrstva.
 
 **Co se stane po změně úrovně plánu (po upgradu nebo downgradu)?**
 
-Původní plán odstraníme a aktuální využití se účtuje průběžně. Na zbytek období je sestaven nový plán obsahující veškeré zahrnuté množství upgradované či downgradované úrovně.
+původní plán Hello je odstranit a aktuálního využití hello je účtován na základě poměrné. Pro zbytek hello hello období se vytvoří nový plán s hello úplné zahrnuté množství hello upgradovat nebo snížit úroveň.
 
 > [!NOTE]
 Zahrnuté množství se přiděluje na jednotlivá období a nevyužité prostředky se do dalších období nepřevádějí.
 
-**Co se stane po zvýšení počtu instancí v plánu?**
+**Co se stane, když zvýšit hello instancí v plánu?**
 
-Množství se zahrnuje na základě průběžné sazby a proces zahrnutí může trvat až 24 hodin.
+Počty jsou obsaženy na základě poměrné a může trvat 24 hodin toobe efektivní.
 
 **Co se stane po odstranění instance plánu?**
 
-Instanci vám odebereme z předplatného a služby účtujeme podle průběžného využití.
+Hello instance je odebrána ze svého předplatného a fakturuje se poměrné využití.
 
 ### <a name="sign-up-for-new-resource-manager-based-web-services-plans"></a>Registrace k novým plánům Web Service (které využívající Resource Manager)
 **Jak se mám k plánu zaregistrovat?**
 
-Fakturační plán lze vytvořit dvěma způsoby.
+Máte dva způsoby toocreate fakturace plány.
 
 Při prvním nasazení webové služby využívající Resource Manager můžete vybrat existující plán nebo vytvořit nový.
 
-Plány vytvořené tímto způsobem spadají do vaší výchozí oblasti, kam se taky nasazuje webová služba.
+Plány, které vytvoříte tímto způsobem jsou ve vašem regionu výchozí a webová služba bude nasazený toothat oblast.
 
-Pokud chcete službu nasadit v jiné než výchozí oblasti, bude možná vhodné definovat fakturační plány, ještě než službu nasadíte.
+Pokud chcete toodeploy služby tooregions než výchozí oblasti, můžete toodefine fakturace plánu před nasazením služby.
 
-V takovém případě se můžete přihlásit k portálu Azure Machine Learning Web Services a přejít na stránku s plány. Odtud můžete plány přidávat, odstraňovat a upravovat.
+V takovém případě můžete přihlásit toohello webové služby Azure Machine Learning portál a přejděte toohello plány stránku. Odtud můžete plány přidávat, odstraňovat a upravovat.
 
-**S jakým plánem je nejvhodnější začít?**
+**Které plán by měl vybrat toostart vypnout s?**
 
-Doporučujeme začít s úrovní Standard S1 a monitorovat využití prostředků. Pokud zjistíte, že zahrnuté množství transakcí a času rychle vyčerpáte, můžete doplnit instance nebo přejít na vyšší úroveň s výhodnější sazbou. Fakturační plán můžete podle potřeby upravovat kdykoliv během zúčtovacího období.
+Doporučujeme vám, který bude začínat hello Standard S1 vrstvy a monitorovat vaši službu pro využití. Pokud zjistíte, že vaše zahrnuté množství používáte rychle, můžete přidat instance nebo přesunout tooa vyšší úroveň a získat lepší zvýhodněné sazby. Fakturační plán můžete podle potřeby upravovat kdykoliv během zúčtovacího období.
 
-**Ve kterých oblastech jsou nové plány dostupné?**
+**Které oblasti jsou k dispozici v nové plány hello?**
 
-Nové fakturační plány jsou dostupné ve třech produkčních oblastech, kde podporujeme nové webové služby:
+Hello nové fakturace plány jsou k dispozici v hello tři produkční oblastech ve kterých podporujeme hello nové webové služby:
 
 * Střed USA – jih
 * Západní Evropa
@@ -441,26 +441,26 @@ Nové fakturační plány jsou dostupné ve třech produkčních oblastech, kde 
 
 **Webové služby využívám v několika různých oblastech. Potřebuji plán pro každou oblast?**
 
-Ano. Ceny plánů se podle oblasti liší. Pokud webovou službu nasadíte do jiné oblasti, je potřeba k ní přiřadit plán určený právě pro tuto oblast. Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech]( https://azure.microsoft.com/regions/services/).
+Ano. Ceny plánů se podle oblasti liší. Když nasadíte oblast tooanother webové služby, je třeba tooassign it a plán, který je konkrétní toothat oblast. Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech]( https://azure.microsoft.com/regions/services/).
 
 ### <a name="new-web-services-overages"></a>Nové webové služby: nadlimitní využití
 **Jak můžu ověřit, jestli webové služby nevyužívám nadlimitně?**
 
-Využití všech plánů najdete na stránce Plány na portálu Azure Machine Learning Web Services. Přihlaste se k portálu a v nabídce klikněte na možnost **Plány**.
+Můžete zobrazit hello použití na všechny plány na stránce plány hello hello webové služby Azure Machine Learning portálu. Přihlaste se toohello portál a potom klikněte na hello **plány** možnost nabídky.
 
-V tabulce se ve sloupcích pro **Transakce** a **Compute** zobrazí množství zahrnuté v plánu a procento využití.
+V hello **transakce** a **výpočetní** sloupce tabulky hello, uvidíte hello zahrnuté množství hello plán a procento hello používá.
 
-**Co se stane po vyčerpání množství zahrnutého v cenové úrovni pro vývoj a testování?**
+**Co se stane, když se používá až hello zahrnout počty cenovou úroveň pro vývoj/testování hello?**
 
-Služby, ke kterým je přiřazená cenová úroveň pro vývoj a testování, se zastaví, dokud nezačne další období nebo dokud je nepřesunete do placené úrovně.
+Služby, které mají vývoje/testování cenová úroveň přiřazené toothem se zastaví dokud hello další období nebo dokud se jejich přesunutí tooa placené vrstvy.
 
 **Jak se počítají ceny úloh RRS (Request Response) a BES (Batch) v případě klasických webových služeb a nadlimitního využití nových webových služeb (využívajících Resource Manager)?**
 
-Co se týče úloh RRS, účtujeme každé volání transakce API a zároveň výpočetní čas, který tyto žádosti spotřebují. Cena za transakce RRS v rozhraní API produkčního prostředí se tak rovná celkovému počtu volání API vynásobenému cenou za 1 000 transakcí (poměrně přepočítané na jednotlivé transakce). Cena za výpočetní čas RRS v rozhraní API produkčního prostředí se rovná době spuštění jednotlivých volání API vynásobené celkovým počtem transakcí API a cenou za výpočetní hodinu v rozhraní API produkčního prostředí.
+Pro zatížení RRS budou se vám účtovat pro každou transakci volání rozhraní API, které vytváříte a pro dobu hello výpočtů, který je spojen s těmito požadavky. Náklady RRS rozhraní API produkčního transakce se počítají jako hello celkový počet volání rozhraní API, které provedete násobí hodnotou hello cena za 1 000 transakcí (účtovány poměrnou částí jednotlivých transakcí). Náklady na hodinu výpočetní rozhraní API produkčního prostředí rozhraní API záznamy o prostředku se počítá jako hello množství času potřebné pro každé toorun volání rozhraní API, násobenou hello celkový počet transakcí rozhraní API, násobenou hello cena za hodinu výpočetní rozhraní API produkčního prostředí.
 
-Podívejme se na příklad z nadlimitního využití plánu Standard S1. 1 000 000 transakcí API, z nichž každá probíhá 0,72 sekundy, by stálo (1 000 000 * 0,50 USD / 1 000 transakcí API) 500 dolarů v nákladech za transakce API produkčního prostředí a (1 000 000 * 0,72 s * 2 USD/hod) 400 dolarů v nákladech za výpočetní hodiny API produkčního prostředí, takže celkem 900 dolarů.
+Například pro Nadlimitní události úrovně Standard S1, 1 000 000 transakcí rozhraní API, které 0,72 sekund každý toorun by způsobilo (1000000 * $0,50 / 1 tisíc transakcí rozhraní API) v 500 USD v cena za transakci rozhraní API produkčního prostředí a (1000000 * 0.72 sekundu * $2 / hr) $400 v výpočetní rozhraní API produkčního prostředí hodiny celkem 900 $.
 
-Úlohy BES se účtují stejně. Ale náklady na transakce API představují počet odeslaných dávkových úloh a náklady na výpočetní kapacitu představují s nimi spojený výpočetní čas. Cena za transakce BES v rozhraní API produkčního prostředí se tak rovná celkovému počtu odeslaných úloh vynásobenému cenou za 1 000 transakcí (poměrně přepočítané na jednotlivé transakce). Cena za výpočetní čas BES v rozhraní API produkčního prostředí se rovná době potřebné pro spuštění jednotlivých řádků úlohy vynásobené celkovým počtem řádků v úloze, celkovým počtem úloh a cenou za výpočetní čas API produkčního prostředí. Počítadlo transakcí v kalkulačce Machine Learning představuje počet úloh, které se chystáte odeslat, a pole s časem na transakci představuje celkovou dobu potřebnou ke spuštění všech řádků v jednotlivých úlohách.
+Pro BES zatížení, budou se vám účtovat v hello stejný způsobem. Však cena za transakci hello API představují hello počet dávkové úlohy, které odešlete a náklady na výpočetní hello představují dobu hello výpočtů, který je spojen s tyto úlohy batch. Náklady BES rozhraní API produkčního transakce se počítají jako hello celkový počet úlohy, odeslané násobí hodnotou hello cena za 1 000 transakcí (účtovány poměrnou částí jednotlivých transakcí). Náklady na rozhraní API BES rozhraní API produkčního prostředí výpočetní hodiny se počítá jako hello množství času potřebné pro každý řádek v vaše úlohy toorun násobí hodnotou hello celkový počet řádků ve vaší úloze násobí hodnotou hello celkový počet úloh násobí hodnotou hello cena za rozhraní API produkčního prostředí výpočetní hodinu. Pokud používáte hello kalkulačky Machine Learning, hello transakce měření představuje hello počet úloh, že máte v plánu toosubmit a pole čas jednotlivé transakce hello představuje hello kombinaci dobu, po kterou je potřeba pro všechny řádky v každé toorun úlohy.
 
 Podívejme se na příklad nadlimitního využití úrovně Standard S1. Předpokládejme, že odešlete 100 úloh za den, z nichž se každá skládá z 500 řádků trvajících 0,72 sekundy. Měsíční náklady za nadlimitní využití potom dosáhnou výše (100 úloh za den = 3 100 úloh za měsíc * 0,50 USD / 1 000 transakcí API) 1,55 USD za transakce API produkčního prostředí a (500 řádků * 0,72 s * 3 100 úloh * 2 USD / hod) 620 USD za výpočetní čas API produkčního prostředí, takže celkem 621,55 USD.
 
@@ -470,71 +470,71 @@ Podívejme se na příklad nadlimitního využití úrovně Standard S1. Předpo
 Ano, klasické webové služby jsou ve službě Azure Machine Learning stále dostupné.  
 
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning – úrovně Free a Standard
-**Co je ve službě Azure Machine Learning součástí úrovně Free?**
+**Co je součástí Azure Machine Learning bezplatnou úroveň hello?**
 
-Úroveň Free služby Azure Machine Learning slouží vás má detailně uvést do nástroje Azure Machine Learning Studio. K registraci stačí jen účet Microsoft. Úroveň Free zahrnuje bezplatný přístup do jednoho pracovního prostoru Azure Machine Learning Studio ke každému [účtu Microsoft](https://www.microsoft.com/account/default.aspx). Na této úrovni můžete využít až 10 GB úložiště a z modelů vytvářet rozhraní API přípravného prostředí. Úlohy úrovně Free nejsou předmětem smlouvy SLA a jsou určeny jenom pro vývoj a osobní užití. 
+Azure Machine Learning bezplatnou úroveň Hello je určený tooprovide Podrobný úvod toohello Azure Machine Learning Studio. Je třeba zapnutý toosign účet Microsoft. Hello úroveň Free zahrnuje volný přístup tooone Azure Machine Learning Studio prostoru za [účtu Microsoft](https://www.microsoft.com/account/default.aspx). V této vrstvě můžete použít až too10 GB úložiště a zprovoznit modely jako pracovní rozhraní API. Úlohy úrovně Free nejsou předmětem smlouvy SLA a jsou určeny jenom pro vývoj a osobní užití. 
 
-Pracovní prostory úrovně Free mají následující omezení:
+Pracovní prostory úroveň Free mít hello následující omezení:
 
-* Úlohy nemůžou přistupovat k datům tak, že se připojí k místnímu serveru se spuštěným SQL Serverem.
+* Úlohy nelze přistupovat k datům připojením tooan na místním serveru, který spouští SQL Server.
 * Nejde nasadit nové webové služby využívajících Resource Manager.
 
 
-**Co je ve službě Azure Machine Learning součástí úrovně a plánů Standard?**
+**Co je součástí vrstvy Azure Machine Learning standardní hello a plány?**
 
-Úroveň Standard služby Azure Machine Learning je placená produkční verze nástroje Azure Machine Learning Studio. Měsíční poplatek za Azure Machine Learning Studio účtujeme po pracovních prostorech a měsících a za částečné měsíce se účtuje poměrná část. Hodiny experimentování se službou Azure Machine Learning Studio se účtují za výpočetní čas aktivního experimentování. Načaté hodiny se fakturují podle průběžného využívání.  
+Azure Machine Learning standardní vrstvě Hello je placené produkční verzi Azure Machine Learning Studio. Hello Azure Machine Learning Studio se fakturuje měsíční poplatek na za základ prostoru za měsíc a poměrné částečné měsíců. Hodiny experimentování se službou Azure Machine Learning Studio se účtují za výpočetní čas aktivního experimentování. Načaté hodiny se fakturují podle průběžného využívání.  
 
-Služba Azure Machine Learning API se účtuje s ohledem na to, jestli jde o klasickou nebo novou webovou službu (využívající Resource Manager).
+v závislosti na tom, zda je webová služba Classic nebo novou službu web (využívající Resource Manager) se fakturuje Hello služby Azure Machine Learning API.
 
-Následující poplatky se v rámci předplatného započítávají za jednotlivé pracovní prostory.
+Hello následující poplatky jsou agregován na pracovní prostor pro vaše předplatné.
 
-* Předplatné za pracovní prostor Machine Learning: Předplatné za pracovní prostor Machine Learning je měsíční poplatek, který umožňuje přístup k pracovnímu prostoru Machine Learning Studia. Zároveň se bez něho neobejdete, pokud chcete spouštět experimenty ve Studiu nebo využívat rozhraní API produkčního prostředí.
-* Hodiny experimentování se službou ML Studio: Sčítá veškeré poplatky za výpočetní kapacitu související se spouštěním experimentů v Machine Learning Studiu nebo voláním produkčního rozhraní API v přípravném prostředí.
-* Pro účely trénování a hodnocení ve vašich modelech využijte pro přístup k datům připojení k místnímu serveru se spuštěným SQL Serverem.
+* Předplatné pracovního prostoru Machine Learning: hello předplatné pracovního prostoru Machine Learning je měsíční poplatek poskytující pracovního prostoru Machine Learning Studio tooa přístup. předplatné Hello je požadovaná toorun experimenty v hello studio a tooutilize hello produkční rozhraní API.
+* Hodiny experimentování se službou ml Studio: Toto monitorování agreguje všechny poplatky za výpočty, které nabíhají spuštěním experimentů v nástroji Machine Learning Studio a volání běžící rozhraní API produkčního v hello pracovní prostředí.
+* Přístup k datům připojením tooan na místním serveru, který spouští SQL Server v modely pro vaše školení a vyhodnocování.
 * U klasických webových služeb:
   * Výpočetní hodiny v rozhraní API produkčního prostředí: Měří poplatky za výpočetní kapacitu využitou webovými službami spuštěnými v produkčním prostředí.
-  * Transakce v rozhraní API produkčního prostředí (v tisících): Měří poplatky za volání webové služby v produkčním prostředí.
+  * Transakce v rozhraní API produkčního prostředí (v 1000s): Toto monitorování zahrnuje poplatky, které nabíhají za volání tooyour produkční webové služby.
 
-Vedle výše uvedených poplatků se v případě webových služeb využívajících Resource Manager poplatky souhrnně započítávají do vybraného plánu:
+Kromě hello předcházející poplatky, v případě hello založené na správci prostředků webové služby jsou poplatky agregované toohello vybraného plánu:
 
-* Plán API úrovně Standard S1/S2/S3 (jednotky): Reprezentuje typ instance vybraný pro webové služby využívajících Resource Manager.
-* Nadlimitní výpočetní hodiny API úrovně Standard S1/S2/S3: Zahrnuje poplatky za výpočetní kapacitu, kterou webové služby využívající Resource Manager a spuštěné v produkčním prostředí využijí potom, co se vyčerpá množství zahrnuté v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
-* Nadlimitní transakce plánu API úrovně Standard S1/S2/S3 (v tisících): Zahrnuje poplatky za volání webové služby využívající Resource Manager v produkčním prostředí potom, co se vyčerpá množství zahrnuté v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
-* Zahrnuté množství výpočetních hodin API: U webových služeb využívajících Resource Manager představuje zahrnuté množství výpočetních hodin API.
-* Zahrnuté množství transakcí API (v tisících): U webových služeb využívajících Resource Manager představuje zahrnuté množství transakcí API.
+* Standard S1 nebo S2/S3 API plánování (jednotky): Toto měření představuje typ hello instance, který je vybraný založené na správci prostředků webové služby.
+* Standard S1 nebo S2/Nadlimitní výpočetní hodiny API S3: Toto monitorování zahrnuje poplatky za výpočty, které nabíhání založené na správci prostředků webové služby, které spuštění v produkčním prostředí, až vyčerpáte počty hello zahrnuté v existující instance. Další využití Hello je účtován na hello overate kurz, který je spojen s S1 nebo S2/S3 plán vrstvy.
+* Standard S1 nebo S2/S3 Nadlimitní události úrovně rozhraní API transakce (v 1,000s): Toto monitorování zahrnuje poplatky, které nabíhají na produkční tooyour volání vyčerpáte založené na správci prostředků webové služby po hello součástí počty existující instance. Hello další využití je výši hello overate kurz spojený s S1 nebo S2/S3 plán vrstvy.
+* Zahrnuté množství výpočetních hodin API: S založené na správci prostředků webové služby, představuje toto měření hello zahrnuté množství výpočetních hodin API.
+* Zahrnuté množství transakcí API (v 1,000s): na základě s Resource Managerem webové služby, toto měření představuje hello zahrnuté množství transakcí API.
 
 **Jak se ve službě Azure Machine Learning zaregistrovat k úrovni Free?**
 
-Stačí vám jen účet Microsoft. Přejděte na [domovskou stránku Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) a potom klikněte na možnost **Začít**. Jen co se přihlásíte pomocí účtu Microsoft, vytvoří se vám pracovní prostor v úrovni Free. Okamžitě si můžete prostředí prohlédnout a vytvořit ve službě Machine Learning první experimenty.
+Stačí vám jen účet Microsoft. Přejděte příliš[Azure Machine Learning domovské](https://azure.microsoft.com/services/machine-learning/)a potom klikněte na **spustit nyní**. Jen co se přihlásíte pomocí účtu Microsoft, vytvoří se vám pracovní prostor v úrovni Free. Můžete spustit tooexplore a hned vytvořit experimenty Machine Learning.
 
 **Jak se ve službě Azure Machine Learning zaregistrovat k úrovni Standard?**
 
-Pokud chcete vytvořit pracovní prostor Machine Learning úrovně Standard, musíte mít přístup k předplatnému Azure. Nejdřív si můžete vyzkoušet 30denní bezplatnou verzi Azure a později upgradovat na placené předplatné Azure. Nebo si placenou verzi Azure můžete pořídit hned. S přístupem k předplatnému potom můžete pracovní prostor Machine Learning vytvořit na portálu Microsoft Azure Classic. Projděte si prosím [podrobný návod](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
+Přístup tooan předplatného Azure toocreate musí mít první pracovní prostor standardní Machine Learning. Můžete si zaregistrovat 30denní bezplatné zkušební verze předplatného Azure a novější upgradu tooa placené předplatné Azure, nebo si můžete zakoupit placené předplatné Azure přímý. Potom můžete vytvořit pracovní prostor Machine Learning z portálu Microsoft Azure classic hello po získání předplatného toohello přístup. Zobrazení hello [podrobné pokyny](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
 
-Nebo vás do pracovního prostoru může pozvat vlastník pracovního prostoru Machine Learning úrovně Standard.
+Alternativně můžete můžete pozvat pomocí pracovního prostoru standardní Machine Learning prostoru vlastníka tooaccess hello vlastníka.
 
-**Můžu pro úroveň Free zadat vlastní účet Azure Blob Storage?**
+**Můžete zadat vlastní toouse účtu úložiště objektů Blob v Azure s úroveň Free hello?**
 
-Ne, ekvivalentem verze služby Machine Learning, která byla dostupná před zavedením úrovní, je úroveň Standard.
+Ne, úroveň Standard hello je ekvivalentní toohello verzi hello Služba Machine Learning, která je k dispozici před hello, které byly zavedeny vrstev.
 
-**Je v úrovni Free možné nasadit modely strojového učení jako API?**
+**Můžete nasadit Moje modelů strojového učení jako rozhraní API v úrovni Free hello?**
 
-Ano, součástí úrovně Free je možnost zprovoznit modely strojového učení jako služby API přípravného prostředí. Abyste službu API přípravného prostředí přesunuli do produkce a získali ke zprovozněné službě produkční koncový bod, je potřeba využít úroveň Standard.
+Ano, můžete zprovoznit modelů machine learning toostaging rozhraní API služby v rámci úroveň Free hello. tooput hello pracovní službu rozhraní API do produkčního prostředí a získat koncový bod produkční hello operationalized služby, je nutné použít hello úrovně Standard.
 
-**Jaký je rozdíl mezi bezplatnou zkušební verzí Azure a úrovní Free služby Azure Machine Learning?**
+**Co je hello rozdíl mezi bezplatné zkušební verzi Azure a Azure Machine Learning bezplatnou úroveň?**
 
-[Bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/free/) obsahuje kredit, který můžete použít v jakékoliv službě Azure na dobu jednoho měsíce. Úroveň Free ve službě Azure Machine Learning nabízí stálý přístup jenom k této službě a její využití pro neprodukční úlohy.
+Hello [bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/free/) nabízí služby kredity, které můžete použít v tooany Azure po jeden měsíc. Hello Azure Machine Learning bezplatnou úroveň nabízí průběžné přístup konkrétně tooAzure Machine Learning pro úlohy mimo produkční.
 
-**Jak přesunu experiment z úrovně Free do úrovně Standard?**
+**Přesunutí experimentu z hello úroveň Free toohello úrovně Standard**
 
-Postup přesunutí experimentu z úrovně Free do úrovně Standard:
+toocopy experimentů z hello úroveň Free toohello standardní vrstvy:
 
-1. Přihlaste se do Azure Machine Learning Studia a zkontrolujte, jestli se pod selektorem pracovního prostoru na horním navigačním panelu zobrazuje pracovní prostor Free i Standard.
-2. Pokud jste v pracovním prostoru Standard, přepněte na možnost Free.
-3. V zobrazení seznamu experimentů vyberte experiment, který chcete zkopírovat, a klikněte na příkazové tlačítko **Kopírovat**.
-4. V dialogovém okně, které se otevře, vyberte pracovní prostor Standard a potom klikněte na tlačítko **Kopírovat**.
-   Společně s experimentem se do pracovního prostoru Standard zkopírují i všechny přiřazené datové sady, natrénované modely atd.
-5. V pracovním prostoru Standard bude potřeba experiment znovu spustit a webovou službu znovu publikovat.
+1. Přihlaste se tooAzure Machine Learning Studio a ujistěte se, že uvidíte hello volného prostoru a hello standardní prostoru v hello výběr pracovního prostoru v horním navigačním panelu hello.
+2. Přepnout tooFree prostoru, pokud jste v prostoru standardní hello.
+3. V zobrazení seznamu hello experiment vyberte experimentu, že by jako toocopy a pak klikněte na hello **kopie** příkazového tlačítka.
+4. Vyberte standardní pracovní prostor hello z hello dialogového okna, které se otevře a potom klikněte na hello **kopie** tlačítko.
+   Všechny hello přidružené datové sady, společně s hello experimentu do pracovního prostoru standardní hello se zkopírují trained model, atd.
+5. Je třeba toorerun hello experiment a znovu publikovat webovou službu v prostoru standardní hello.
 
 ### <a name="studio-workspace"></a>Pracovní prostor Studia
 **Fakturují se jednotlivé pracovní prostory zvlášť?**
@@ -543,12 +543,12 @@ Poplatky za pracovní prostory se rozepisují do jednotlivých měřených kateg
 
 **Jaké konkrétní výpočetní prostředky se používají ke spouštění experimentů?**
 
-Služba Machine Learning je víceklientská. Skutečné výpočetní prostředky, které se používají na back-endu, se liší a jsou optimalizované z hlediska výkonu a předvídatelnosti.
+Hello služby Machine Learning je víceklientské služby. Skutečné výpočetní prostředky, které se používají na hello back-end se liší a jsou optimalizované pro výkon a předvídatelnost.
 
 ### <a name="guest-access"></a>Přístup hosta
-**Co je přístup hosta ke službě Azure Machine Learning Studio?**
+**Co je přístup hosta tooAzure Machine Learning Studio?**
 
-Přístup hosta je omezený zkušební přístup. Umožňuje vytvářet a spouštět experimenty v Azure Machine Learning Studiu zdarma a bez ověřování. Relace hosta jsou dočasné (nejdou ukládat) a omezené na 8 hodin. Mezi další omezení patří chybějící podpora jazyků R a Python, chybějící rozhraní API přípravného prostředí a omezená velikost datové sady a úložiště. Naproti tomu uživatelé, kteří se přihlásí pomocí účtu Microsoft, získají v Machine Learning Studiu plný přístup k úrovni Free, která je popsaná výše a která zahrnuje stálý pracovní prostor a pokročilejší možnosti. Je na vás, jak službu Machine Learning bezplatně vyzkoušíte. Na webu [https://studio.azureml.net](https://studio.azureml.net) klikněte na **Začínáme** a vyberte **přístup hosta** nebo se přihlaste pomocí účtu Microsoft.
+Přístup hosta je omezený zkušební přístup. Umožňuje vytvářet a spouštět experimenty v Azure Machine Learning Studiu zdarma a bez ověřování. Relace typu Host jsou dočasnou (nelze uložit) a omezený tooeight hodin. Mezi další omezení patří chybějící podpora jazyků R a Python, chybějící rozhraní API přípravného prostředí a omezená velikost datové sady a úložiště. Pro srovnání uživatelé, kteří se rozhodnou toosign pomocí účtu Microsoft mají plný přístup úroveň Free toohello nástroje Machine Learning Studio, je popsáno dříve, který obsahuje trvalé prostoru a komplexnější funkce. toochoose prostředí vaší volné Machine Learning, klikněte na tlačítko **Začínáme** na [https://studio.azureml.net](https://studio.azureml.net)a potom vyberte **uhodnout přístup** nebo Přihlaste se pomocí služby Microsoft účet.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

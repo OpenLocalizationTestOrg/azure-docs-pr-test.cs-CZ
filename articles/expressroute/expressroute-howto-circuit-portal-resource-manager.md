@@ -1,6 +1,6 @@
 ---
 title: "Vytvoření a úprava okruhu ExpressRoute: portálu Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute."
+description: "Tento článek popisuje, jak toocreate, zřizovat, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: e3721cd3c031622788f553e71a6555b844f3f7dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 200418aed6bdebace43a2f57cf532d1c8d13cb83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -30,131 +30,131 @@ ms.lasthandoff: 08/03/2017
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek popisuje postup vytvoření okruhu Azure ExpressRoute pomocí webu Azure portal a modelu nasazení Azure Resource Manager. Následující kroky také ukazují zkontrolujte stav okruhu, aktualizaci, nebo odstranit a zrušit jejich zřízení se.
+Tento článek popisuje, jak hello toocreate okruhu Azure ExpressRoute pomocí Azure portal a hello modelu nasazení Azure Resource Manager. Hello také následující kroky ukazují, jak stav hello toocheck hello okruh, aktualizovat, nebo odstranit a zrušit jejich zřízení se.
 
 
 ## <a name="before-you-begin"></a>Než začnete
-* Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
-* Zajistěte, abyste měli přístup k [portál Azure](https://portal.azure.com).
-* Ujistěte se, zda máte oprávnění k vytvoření nových síťových prostředků. Pokud nemáte správná oprávnění, obraťte se na správce účtu.
-* Můžete [zobrazit video](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) před zahájením pro lepší pochopení kroků.
+* Zkontrolujte hello [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+* Zajistěte, abyste měli přístup toohello [portál Azure](https://portal.azure.com).
+* Ujistěte se, zda máte oprávnění toocreate nové síťové prostředky. Pokud nemáte hello správná oprávnění, obraťte se na správce účtu.
+* Můžete [zobrazit video](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) před zahájením v pořadí toobetter pochopit hello kroky.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Vytvořit a zřídit okruhu ExpressRoute
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Přihlášení k webu Azure Portal
-V prohlížeči přejděte na web [Azure Portal](http://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
+### <a name="1-sign-in-toohello-azure-portal"></a>1. Přihlaste se toohello portálu Azure
+V prohlížeči přejděte toohello [portál Azure](http://portal.azure.com) a přihlaste se pomocí účtu Azure.
 
 ### <a name="2-create-a-new-expressroute-circuit"></a>2. Vytvořit nový okruh ExpressRoute.
 > [!IMPORTANT]
-> Váš okruh ExpressRoute bude účtován od okamžiku, kdy se objeví klíč služby. Ujistěte se, při provádění této operace, pokud poskytovatel připojení je připraven ke zřízení okruhu.
+> Váš okruh ExpressRoute bude účtován z hello okamžiku, kdy se objeví klíč služby. Ujistěte se, když hello poskytovatele připojení je připraven tooprovision hello okruh provedení této operace.
 > 
 > 
 
-1. Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost vytvořit nový prostředek. Klikněte na tlačítko **nový** > **sítě** > **ExpressRoute**, jak je znázorněno na následujícím obrázku:
+1. Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost toocreate hello nový prostředek. Klikněte na tlačítko **nový** > **sítě** > **ExpressRoute**, jak ukazuje následující obrázek hello:
    
     ![Vytvoření okruhu ExpressRoute](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. Po kliknutí na tlačítko **ExpressRoute**, uvidíte **okruh ExpressRoute vytvořit** okno. Když jste vyplnění hodnoty v tomto okně, ujistěte se, že jste zadali správné úrovně SKU a data měření.
+2. Po kliknutí na tlačítko **ExpressRoute**, uvidíte hello **okruh ExpressRoute vytvořit** okno. Když jste vyplnění hello hodnoty v tomto okně, ujistěte se, že zadáváte správnou úroveň SKU hello a data měření.
    
-   * **Úroveň** Určuje, zda je povoleno ExpressRoute standard nebo doplněk ExpressRoute premium. Můžete zadat **standardní** získat standardní SKU nebo **Premium** pro doplněk premium.
-   * **Měření dat** Určuje typ fakturace. Můžete zadat **Metered** pro plán měření podle objemu dat a **neomezený** pro plán neomezená data na úrovni. Můžete změnit typ fakturace z **Metered** k **neomezený**, ale nemůžete změnit typ z **neomezený** k **Metered**.
+   * **Úroveň** Určuje, zda je povoleno ExpressRoute standard nebo doplněk ExpressRoute premium. Můžete zadat **standardní** tooget hello standardní SKU nebo **Premium** pro doplněk premium hello.
+   * **Měření dat** Určuje typ fakturace hello. Můžete zadat **Metered** pro plán měření podle objemu dat a **neomezený** pro plán neomezená data na úrovni. Můžete změnit hello fakturace typu z **Metered** příliš**neomezený**, ale nemůžete změnit typ hello z **neomezený** příliš**Metered**.
      
-     ![Konfigurace SKU vrstvy a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit2.png)
+     ![Konfigurace hello SKU vrstvy a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit2.png)
 
 > [!IMPORTANT]
-> Upozorňujeme, že označuje umístění partnerského vztahu [fyzické umístění](expressroute-locations.md) kde jste partnerského vztahu se společností Microsoft. Toto je **není** propojené s vlastností "Umístění", která odkazuje na geography, kde se nachází na poskytovatele síťové prostředků Azure. Při nesouvisí, je vhodné vybrat poskytovatele síťových prostředků geograficky v blízkosti umístění partnerského vztahu okruhu. 
+> Upozorňujeme, že hello umístění v partnerském vztahu označuje hello [fyzické umístění](expressroute-locations.md) kde jste partnerského vztahu se společností Microsoft. Toto je **není** příliš propojená vlastnost "Umístění", který odkazuje toohello geography, kde se nachází hello poskytovatele síťových prostředků Azure. I když se nesouvisí, je vhodné toochoose geograficky zavřít toohello poskytovatele síťových prostředků umístění v partnerském vztahu okruhu hello. 
 > 
 > 
 
-### <a name="3-view-the-circuits-and-properties"></a>3. Zobrazit okruhy a vlastnosti
-**Zobrazit všechny okruhy**
+### <a name="3-view-hello-circuits-and-properties"></a>3. Zobrazení hello okruhy a vlastnosti
+**Zobrazit všechny okruhy hello**
 
-Můžete zobrazit všechny okruhů, které jste vytvořili výběrem **všechny prostředky** v levé nabídce.
+Můžete zobrazit všechny hello okruhů, které jste vytvořili výběrem **všechny prostředky** v levé nabídce hello.
 
 ![Okruhy zobrazení](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
 
-**Zobrazit vlastnosti**
+**Zobrazit vlastnosti hello**
 
-    You can view the properties of the circuit by selecting it. On this blade, note the service key for the circuit. You must copy the circuit key for your circuit and pass it down to the service provider to complete the provisioning process. The circuit key is specific to your circuit.
+    You can view hello properties of hello circuit by selecting it. On this blade, note hello service key for hello circuit. You must copy hello circuit key for your circuit and pass it down toohello service provider toocomplete hello provisioning process. hello circuit key is specific tooyour circuit.
 
 ![Zobrazení vlastností](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Klíč služby poslat svého poskytovatele připojení pro zřizování
-V tomto okně **stav zprostředkovatele** poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. **Stav okruhu** poskytuje stav na straně společnosti Microsoft. Další informace o zřizování stavy okruhu najdete v tématu [pracovních](expressroute-workflows.md#expressroute-circuit-provisioning-states) článku.
+### <a name="4-send-hello-service-key-tooyour-connectivity-provider-for-provisioning"></a>4. Odeslání poskytovatele připojení klíče tooyour hello služby pro zřizování
+V tomto okně **stav zprostředkovatele** poskytuje informace o hello aktuální stav zřizování na straně hello poskytovatele služeb. **Stav okruhu** poskytuje hello stavu na straně Microsoft hello. Další informace o zřizování stavy okruhu najdete v tématu hello [pracovních](expressroute-workflows.md#expressroute-circuit-provisioning-states) článku.
 
-Když vytvoříte nový okruh ExpressRoute, okruhu bude v následujícím stavu:
+Když vytvoříte nový okruh ExpressRoute, bude mít okruh hello hello následující stav:
 
 Stav zprostředkovatele: není zajišťováno<BR>
 Stav okruhu: povoleno
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/viewstatus.png)
 
-Okruh se změní na následující stav, když probíhá povolení můžete poskytovatele připojení:
+okruh Hello změní toohello následující stavu, pokud je zprostředkovatel připojení k hello v procesu hello povolení pro vás:
 
 Stav zprostředkovatele: zřizování<BR>
 Stav okruhu: povoleno
 
-Abyste mohli používat okruh ExpressRoute musí být v následujícím stavu:
+Pro jste toobe možné toouse okruh ExpressRoute musí být v hello následující stav:
 
 Stav zprostředkovatele: zřídit<BR>
 Stav okruhu: povoleno
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Pravidelně kontrolovat stav a stav okruhu klíče
-Můžete zobrazit vlastnosti okruhu, který máte zájem výběrem. Zkontrolujte **stav zprostředkovatele** a ujistěte se, že se přesunul na **zajištěno** než budete pokračovat.
+### <a name="5-periodically-check-hello-status-and-hello-state-of-hello-circuit-key"></a>5. Pravidelně kontrolovat hello stav a stav hello hello okruh klíče
+Můžete zobrazit vlastnosti hello hello okruhu, který máte zájem výběrem. Zkontrolujte hello **stav zprostředkovatele** a ujistěte se, že se přesunul příliš**zajištěno** než budete pokračovat.
 
 ![Stav okruhu a zprostředkovatele](./media/expressroute-howto-circuit-portal-resource-manager/viewstatusprovisioned.png)
 
 ### <a name="6-create-your-routing-configuration"></a>6. Vytvořte vlastní konfiguraci směrování
-Podrobné pokyny najdete v části [konfigurace směrování pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) článek k vytvoření a úpravám partnerských vztahů pro okruh.
+Podrobné pokyny najdete v části toohello [konfigurace směrování pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) článek toocreate a upravit partnerských vztahů pro okruh.
 
 > [!IMPORTANT]
-> Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle virtuální privátní síť IP, např. MPLS), poskytovatel připojení nakonfigurujete a správu směrování za vás.
+> Tyto pokyny platí pouze toocircuits, které jsou vytvořené poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle virtuální privátní síť IP, např. MPLS), poskytovatel připojení nakonfigurujete a správu směrování za vás.
 > 
 > 
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Propojení virtuální sítě k okruhu ExpressRoute
-V dalším kroku propojení virtuální sítě k okruhu ExpressRoute. Použití [propojování virtuálních sítí pro okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager.
+### <a name="7-link-a-virtual-network-tooan-expressroute-circuit"></a>7. Propojení virtuální sítě tooan okruh ExpressRoute
+V dalším kroku propojte virtuální sítě tooyour okruh ExpressRoute. Použití hello [propojení virtuální sítě okruhů tooExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager hello.
 
-## <a name="getting-the-status-of-an-expressroute-circuit"></a>Získávání stav okruhu ExpressRoute
-Výběrem můžete zobrazit stav okruhu. 
+## <a name="getting-hello-status-of-an-expressroute-circuit"></a>Získávání hello stav okruhu ExpressRoute
+Hello stav okruhu můžete zobrazit výběrem. 
 
 ![Stav okruhu ExpressRoute](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>Úprava okruhu ExpressRoute
 Bez dopadu na připojení můžete upravit některé vlastnosti okruhu ExpressRoute.
 
-Můžete provést následující bez výpadků:
+Můžete provést následující bez výpadků hello:
 
 * Povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zadaný na tomto portu je dostupná kapacita, zvětšete šířku pásma okruhu ExpressRoute. Všimněte si, že šířku pásma okruhu přechod na starší verzi není podporován. 
-* Změňte plán měření z – měření podle objemu dat na neomezená Data na úrovni. Všimněte si, že změna měření plánu z neomezená Data – měření podle objemu dat není podporován.
+* Zvýšení hello šířka pásma okruhu ExpressRoute, pokud na portu hello je dostupné kapacity. Všimněte si, že hello šířka pásma okruhu přechod na starší verzi není podporován. 
+* Změnit plán z tooUnlimited dat – měření podle objemu dat měření hello. Poznámka: Změna hello měření plán z tooMetered neomezená Data na úrovni, dat není podporováno.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 
-Další informace o omezení a omezení, najdete v části [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+Další informace o omezení a omezení, najdete v části toohello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
-Chcete-li upravit okruh ExpressRoute, klikněte na **konfigurace** jak je znázorněno na obrázku níže.
+toomodify okruh ExpressRoute, klikněte na hello **konfigurace** jak je znázorněno na následujícím obrázku hello.
 
 ![Úprava okruhu](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
 
-Můžete upravit šířku pásma, SKU, model fakturace a povolit klasické operace v rámci konfigurace okna.
+Můžete upravit hello šířky pásma, SKU, model fakturace a povolit klasické operace v rámci okna konfigurace hello.
 
 > [!IMPORTANT]
-> Možná budete muset znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nelze upgradovat okruh.
+> Pokud je na existující port hello nedostatečné kapacity, mohou mít okruh ExpressRoute toorecreate hello. Pokud v tomto umístění není k dispozici žádné další kapacitu, nelze upgradovat hello okruh.
 >
-> Nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Přechod na starší verzi šířky pásma vyžaduje zrušení zřízení okruh ExpressRoute a pak znova nezajistíte nové okruh ExpressRoute.
+> Nelze zmenšit hello šířku pásma okruhu ExpressRoute bez přerušení. Přechod na starší verzi šířky pásma vyžaduje, abyste okruh ExpressRoute hello toodeprovision a pak znova nezajistíte nové okruh ExpressRoute.
 > 
-> Zakázat doplněk premium operace může selhat, pokud používáte prostředky, které jsou větší než co je povoleno pro standardní okruh.
+> Zakázat doplněk premium operace může selhat, pokud používáte prostředky, které jsou větší než co je povolené standardní okruh hello.
 > 
 > 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>Zrušení zřízení a odstraňování okruhu ExpressRoute
-Váš okruh ExpressRoute můžete odstranit výběrem **odstranit** ikonu. Je třeba počítat s následujícím:
+Váš okruh ExpressRoute můžete odstranit výběrem hello **odstranit** ikonu. Vezměte na vědomí následující hello:
 
-* Je nutné zrušit všechny virtuální sítě od okruhu ExpressRoute. Pokud se tato operace nezdaří, zkontrolujte, zda jsou všechny virtuální sítě propojené ke okruh.
-* Pokud je poskytovatel služby okruh ExpressRoute Stav zřizování **zřizování** nebo **zajištěno** , musíte pracovat se svým poskytovatelem služeb pro zrušení zřízení okruhu na jejich straně. Budeme nadále rezervovat prostředky a dokud poskytovatele služeb dokončení zrušení okruhu a upozorní nám vám účtovat.
-* Pokud má poskytovatel služeb zrušit okruhu (poskytovatele služeb Stav zřizování je nastavena na **není zajišťováno**) pak můžete odstranit okruh. Tato akce ukončí fakturace pro okruh
+* Je nutné zrušit všechny virtuální sítě od hello okruh ExpressRoute. Pokud se tato operace nezdaří, zkontrolujte, zda jsou všechny virtuální sítě propojené toohello okruh.
+* Pokud je hello ExpressRoute okruhu poskytovatele služeb Stav zřizování **zřizování** nebo **zajištěno** na jejich straně, musíte pracovat se váš okruh hello toodeprovision zprostředkovatele služby. Jsme bude i nadále tooreserve prostředky a dokud poskytovatele služeb hello dokončení zrušení zřízení hello okruhu a upozorní nám vám účtovat.
+* Pokud má poskytovatel služeb hello zrušit okruh hello (Stav zřizování poskytovatele služeb hello je nastaven příliš**není zajišťováno**) pak můžete odstranit okruh hello. Tato akce ukončí fakturace pro okruh hello
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření okruhu, ujistěte se, že provedete následující kroky:
+Po vytvoření okruhu, ujistěte se, že hello následující:
 
 * [Vytvoření a úprava směrování pro okruhu ExpressRoute](expressroute-howto-routing-portal-resource-manager.md)
-* [Propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-arm.md)
+* [Propojení vaší virtuální sítě tooyour okruh ExpressRoute](expressroute-howto-linkvnet-arm.md)
 

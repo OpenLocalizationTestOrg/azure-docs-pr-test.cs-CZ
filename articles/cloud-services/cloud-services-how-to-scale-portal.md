@@ -1,6 +1,6 @@
 ---
-title: "Automatické škálování cloudové služby na portálu | Microsoft Docs"
-description: "Další informace o použití portálu ke konfiguraci pravidel automatického škálování pro cloudové služby webovou roli nebo role pracovního procesu v Azure."
+title: "aaaAuto škálování cloudové služby na portálu hello | Microsoft Docs"
+description: "Zjistěte, jak toouse hello portálu tooconfigure automatické škálování pravidla pro cloudové služby webovou roli nebo role pracovního procesu v Azure."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 265f4c8ec5e1ec2f85585df25f18cd0d0c9946a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Postup konfigurace automatického škálování pro cloudové služby na portálu
+# <a name="how-tooconfigure-auto-scaling-for-a-cloud-service-in-hello-portal"></a>Jak tooconfigure automatické škálování pro cloudové služby v rámci portálu hello
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-how-to-scale-portal.md)
 > * [Portál Azure Classic](cloud-services-how-to-scale.md)
 
-Podmínky lze nastavit pro roli pracovního procesu cloudové služby, které aktivovat škálování nebo výstupní operace. Podmínky pro roli může být založená na využití procesoru, disku nebo zatížení sítě role. Můžete také nastavit podmínku na základě fronty zpráv nebo metriku jiný Azure prostředek spojené s vaším předplatným.
+Podmínky lze nastavit pro roli pracovního procesu cloudové služby, které aktivovat škálování nebo výstupní operace. Hello podmínky pro hello role může být založená na hello procesoru, disku nebo zatížení sítě hello role. Můžete také nastavit podmínku podle zprávy fronty nebo hello metrikou jiný Azure prostředek spojené s vaším předplatným.
 
 > [!NOTE]
 > Tento článek se zaměřuje na webových a pracovních rolí cloudové služby. Když vytvoříte virtuální počítač (klasický) přímo, je hostovaná v cloudové službě. Standardní virtuálního počítače je možné škálovat jeho s přidružením [skupinu dostupnosti](../virtual-machines/windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) a ručně je zapnout nebo vypnout.
 
 ## <a name="considerations"></a>Požadavky
-Před konfigurací škálování pro vaši aplikaci je třeba zvážit následující informace:
+Měli byste zvážit hello před konfigurací škálování pro vaši aplikaci následující informace:
 
 * Škálování má vliv základní použití.
 
-    Větší instance rolí pomocí více jader. Je možné škálovat aplikaci pouze v rámci maximální počet jader pro předplatné. Řekněme například, že vaše předplatné může mít 20 jader. Pokud spouštíte aplikaci pomocí dvou středních cloudové služby (celkem 4 jádra), můžete pouze postupně škálovat ostatních nasazení cloudové služby ve vašem předplatném ve zbývajících 16 jader. Další informace o velikosti najdete v tématu [cloudové služby velikosti](cloud-services-sizes-specs.md).
+    Větší instance rolí pomocí více jader. Je možné škálovat aplikaci pouze v rámci limitu hello jader pro předplatné. Řekněme například, že vaše předplatné může mít 20 jader. Pokud spouštíte aplikaci pomocí dvou středních cloudové služby (celkem 4 jádra), můžete pouze postupně škálovat ostatních nasazení cloudové služby ve vašem předplatném ve zbývajících 16 jader hello. Další informace o velikosti najdete v tématu [cloudové služby velikosti](cloud-services-sizes-specs.md).
 
-* Je možné škálovat podle prahová hodnota fronty zpráv. Další informace o tom, jak používat fronty najdete v tématu [jak používat fronty služby úložiště](../storage/queues/storage-dotnet-how-to-use-queues.md).
+* Je možné škálovat podle prahová hodnota fronty zpráv. Další informace o tom, najdete v části front toouse [jak toouse hello fronty úložiště služby](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
 * Můžete škálovat také další prostředky spojené s vaším předplatným.
 
-* Povolit vysokou dostupnost vaší aplikace, se ujistěte, že je nasazený s dvěma nebo více instancí role. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
+* tooenable vysokou dostupnost vaší aplikace, ujistěte se, že je nasazený s dvěma nebo více instancí role. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
 
 ## <a name="where-scale-is-located"></a>Kde se nachází škálování
-Po výběru cloudové služby, měli byste v okně služby cloud viditelné.
+Po výběru cloudové služby, měli byste mít hello cloudové služby okno viditelné.
 
-1. V okně cloudové služby na **rolí a instancí** dlaždici, vyberte název cloudové služby.   
-   **Důležité**: Ujistěte se, klikněte na roli služby cloud není instanci role, která je nižší než roli.
+1. V okně služby cloud hello, na hello **rolí a instancí** dlaždice, vyberte hello název hello cloudové služby.   
+   **Důležité**: Ujistěte se, že tooclick hello cloudové služby role, není hello instanci role, která je nižší než hello role.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. Vyberte **škálování** dlaždici.
+2. Vyberte hello **škálování** dlaždici.
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatické škálování
-Nastavení škálování v roli lze nakonfigurovat buď dva režimy **ruční** nebo **automatické**. Ruční je, jak jste zvyklí, nastavíte absolutní počet instancí. Automatické umožňuje ale, že je sada pravidel, které řídí způsob a jak mnohem je měli škálovat.
+Nastavení škálování v roli lze nakonfigurovat buď dva režimy **ruční** nebo **automatické**. Ruční je, jak jste zvyklí, nastavíte hello absolutní počet instancí. Automatické ale umožňuje tooset, které by měl škálování pravidla, které řídí způsob a jak mnohem je.
 
-Nastavte **škálovat podle** možnost k **pravidla plánu a výkonu**.
+Sada hello **škálovat podle** možnost příliš**pravidla plánu a výkonu**.
 
 ![Nastavení škálování cloudové služby s profil a pravidla](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Existující profil.
-2. Přidáte pravidlo pro nadřazené profil.
+2. Přidáte pravidlo pro profil nadřazené hello.
 3. Přidejte jiný profil.
 
-Vyberte **přidat profil**. Profil určuje režimu, který chcete použít pro měřítka: **vždy**, **opakování**, **pevným datem**.
+Vyberte **přidat profil**. Hello profil určuje režimu, který chcete použít pro škálování hello toouse: **vždy**, **opakování**, **pevným datem**.
 
-Po dokončení konfigurace profilu a pravidla, vyberte **Uložit** horním.
+Po dokončení konfigurace profilu hello a pravidla, vyberte hello **Uložit** ikona v horní části hello.
 
 #### <a name="profile"></a>Profil
-Profil Nastaví minimální a maximální instancí měřítka, a také tento rozsah škálování je aktivní.
+profil Hello Nastaví minimální a maximální počet instancí pro hello škálování a když tento rozsah škálování je také aktivní.
 
 * **Vždy**
 
@@ -80,35 +80,35 @@ Profil Nastaví minimální a maximální instancí měřítka, a také tento ro
     ![Cloudová služba, která vždy škálování](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Opakování**
 
-    Vyberte sadu dny v týdnu škálování.
+    Vyberte sadu dny v týdnu tooscale hello.
 
     ![Cloudové služby škálování s plán opakování](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **Pevné datum**
 
-    Pevné časové období se škálovat roli.
+    Pevné datum rozsahu tooscale hello roli.
 
     ![Cloudové služby škálování s pevnou datum](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-Po nakonfigurování profil, vyberte **OK** tlačítko v dolní části okna profilu.
+Po nakonfigurování hello profil, vyberte hello **OK** tlačítko v hello dolní části okna profil hello.
 
 #### <a name="rule"></a>Pravidlo
-Pravidla se přidají do profilu a představují podmínku, která aktivuje měřítka.
+Pravidla se přidají tooa profil a představují podmínku, která aktivuje hello škálování.
 
-Aktivační událost pravidlo je založena na metrika cloudové služby (využití procesoru, disková aktivita nebo síťové aktivity) do kterého můžete přidat podmíněného hodnotu. Kromě toho může mít aktivační události na základě fronty zpráv nebo metriku jiný Azure prostředek spojené s vaším předplatným.
+aktivační událost pravidlo Hello je založena na metrika hello cloudové služby (využití procesoru, disková aktivita nebo síťové aktivity) toowhich podmíněného hodnotu můžete přidat. Kromě toho může mít hello aktivační události podle zprávy fronty nebo hello metrikou jiný Azure prostředek spojené s vaším předplatným.
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-Po nakonfigurování pravidla, vyberte **OK** tlačítko v dolní části okna pravidlo.
+Po nakonfigurování hello pravidla, vyberte hello **OK** tlačítko v hello dolní části okna pravidlo hello.
 
-## <a name="back-to-manual-scale"></a>Zpět na ruční škálování
-Přejděte na [nastavení škálování](#where-scale-is-located) a nastavte **škálovat podle** možnost k **počet instancí, který nastavím ručně**.
+## <a name="back-toomanual-scale"></a>Zpět toomanual škálování
+Přejděte toohello [nastavení škálování](#where-scale-is-located) a sadu hello **škálovat podle** možnost příliš**počet instancí, který nastavím ručně**.
 
 ![Nastavení škálování cloudové služby s profil a pravidla](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Toto nastavení se odebere, automatické škálování z role a potom můžete nastavit počet instancí přímo.
+Toto nastavení se odebere z hello role automatické škálování a potom můžete nastavit počet instancí hello přímo.
 
-1. (Ruční nebo automatické) možnost škálování.
-2. Posuvník instance role pro nastavení instance, které chcete škálovat.
-3. Instance role, kterou chcete škálovat.
+1. možnost Hello škálování (ruční nebo automatické).
+2. Role instance posuvníku tooset hello instancí tooscale k.
+3. Instance role tooscale hello k.
 
-Po nakonfigurování nastavení škálování, vyberte **Uložit** horním.
+Po nakonfigurování nastavení škálování hello vyberte hello **Uložit** ikona v horní části hello.

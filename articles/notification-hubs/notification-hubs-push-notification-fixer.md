@@ -1,6 +1,6 @@
 ---
-title: "Azure Notification Hubs – pokyny pro diagnostiku"
-description: "Pokyny o tom, jak diagnostikovat běžné problémy s Azure Notification Hubs."
+title: "aaaAzure centra oznámení – pokyny pro diagnostiku"
+description: "Pokyny o tom, jak toodiagnose běžné problémy s Azure Notification Hubs."
 services: notification-hubs
 documentationcenter: Mobile
 author: ysxu
@@ -14,108 +14,108 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 32e3a2e6f840afd865375a622cfae0d33ba65090
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e374278f2bfdfad36ba091e8846059cd184c17ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-notification-hubs---diagnosis-guidelines"></a>Azure Notification Hubs – pokyny pro diagnostiku
 ## <a name="overview"></a>Přehled
-Jeden z nejčastějších dotazů, které jsme od vás odpověď od zákazníků Azure Notification Hubs je jak zjistěte, proč se nezobrazí oznámení odeslaných z jejich back-end aplikace zobrazí na klientském zařízení – kde a proč byly vyřazeny oznámení a jak tento problém opravit. V tomto článku jsme se projít různých důvodů, proč oznámení může získat vyřadit ani nekončí na zařízeních. Podíváme se také prostřednictvím způsoby, ve kterém můžete analyzovat a zjistěte hlavní příčinu. 
+Jeden z hello nejčastější dotazy jsme Azure Notification Hubs zákazníci obrátili názvem se toofigure out proč tu nezobrazí oznámení odeslaných z jejich back-end aplikace hello klientského zařízení – kde a proč byly vyřazeny oznámení a jak toofix to. V tomto článku projdeme hello různých důvodů, proč oznámení může získat vyřadit ani nekončí na zařízeních hello. Podíváme se také prostřednictvím způsoby, ve kterém můžete analyzovat a zjistěte hlavní příčinu hello. 
 
-První řadě je zásadně důležité pochopit, jak Azure Notification Hubs doručí se oznámení do zařízení.
+První řadě je důležité toounderstand jak Azure Notification Hubs doručí se oznámení toohello zařízení.
 ![][0]
 
-V toku typické odesílání oznámení, je zpráva odeslána z **back-end aplikace** k **Azure oznámení centra (NH)** na které pak se některé zpracování na všechny registrace vezme v úvahu nakonfigurované značky & značky výrazy k určení "cíle" znamená všechny registrace, které je potřeba příjem nabízených oznámení. Mezi některé nebo všechny naše podporované platformy – iOS, Google, Windows, Windows Phone, může mít rozsah tyto registrace Kindle a Baidu pro Android v Číně. Po vytvoření cíle jsou NH pak nabízených oznámení se oznámení, rozdělit do několika batch registrací pro konkrétní platformu zařízení **služby nabízených oznámení (PNS)** – např. pro Apple APNS, GCM pro Google atd. NH ověřuje s příslušnými systém PNS podle přihlašovacích údajů, které se nastavují v portálu Azure Classic na stránce Konfigurace centra oznámení. Systém PNS pak předá oznámení do příslušné **klientských zařízení**. Toto je platforma doporučená způsob, jak doručovat nabízená oznámení a Všimněte si, že konečné fáze doručení oznámení dochází mezi Správou platformy a zařízení. Proto máme čtyři hlavní součásti - *klienta*, *back-end aplikace*, *Azure Notification Hubs (NH)* a *služby nabízených oznámení (PNS)* a některý z těchto může způsobit oznámení získávání vyřadit. Další podrobnosti o této architektury je k dispozici na [přehledu této služby].
+V toku typické odesílání oznámení, je odeslána zpráva hello z hello **back-end aplikace** příliš**Azure oznámení centra (NH)** na které se pak některé zpracování na všechny registrace hello s ohledem na hello účet nakonfigurovat značky & toodetermine výrazy značka "cíle", tj. všechny hello registrace, které je třeba tooreceive hello nabízených oznámení. Mezi některé nebo všechny naše podporované platformy – iOS, Google, Windows, Windows Phone, může mít rozsah tyto registrace Kindle a Baidu pro Android v Číně. Po vytvoření hello cíle jsou NH pak nabízených oznámení se oznámení, rozdělit do několika batch registrací, toohello platforma konkrétní **služby nabízených oznámení (PNS)** – např. pro Apple APNS, GCM pro Google atd. NH ověří hello příslušných PNS založené na hello přihlašovací údaje, které jste nastavili v hello portálu Azure Classic na stránce Konfigurace centra oznámení hello. Hello systém PNS poté předává hello oznámení toohello příslušných **klientských zařízení**. Toto je platforma hello doporučené způsob toodeliver nabízená oznámení a Všimněte si, že hello konečné fáze doručení dochází mezi hello platformy systému PNS a hello zařízení. Proto máme čtyři hlavní součásti - *klienta*, *back-end aplikace*, *Azure Notification Hubs (NH)* a *služby nabízených oznámení (PNS)* a některý z těchto může způsobit oznámení získávání vyřadit. Další podrobnosti o této architektury je k dispozici na [přehledu této služby].
 
-Nepodařilo se doručit oznámení mohlo dojít během počáteční testovací nebo pracovní fáze, které mohou znamenat problém konfigurace nebo k tomu může dojít v produkčním prostředí, kde všechny nebo některé z oznámení může být získávání vynechaných uvádí některé hlubší aplikace nebo vzor problém pro zasílání zpráv. V části níže se podíváme na různé scénáře vynechaných oznámení od běžné vzácnějších druh, některé z nich může být zřejmé a jiná není mnoho. 
+Selhání toodeliver, může dojít oznámení, že testovací/pracovní fáze, což může značit problém konfigurace, nebo může dojít v produkčním prostředí, kde všechny nebo některé z hello oznámení během počáteční hello získávání může vyřadit označující některé hlubší aplikace nebo vzor problém pro zasílání zpráv. V části hello níže se podíváme na různé scénáře vynechaných oznámení od běžné druh vzácnějších toohello, některé z nich může být zřejmé a jiná není mnoho. 
 
 ## <a name="azure-notifications-hub-mis-configuration"></a>Chybná konfigurace centra oznámení Azure
-Centra oznámení Azure potřebuje ke svému ověření v kontextu vývojáře pro aplikace, abyste mohli úspěšně odesílat oznámení do příslušných systém PNS. To je umožněno vytvoření vývojářského účtu pomocí příslušné platformy (Google, Apple Windows atd.) a pak registraci své aplikace, kde získat přihlašovací údaje, které je třeba nakonfigurovat v části Konfigurace centra oznámení na portálu vývojáře. Pokud se prostřednictvím žádná oznámení, by mělo být prvním krokem správné přihlašovací údaje musí být nastaveny v centru oznámení zjišťování shody s aplikací vytvořil v rámci svého účtu vývojáře konkrétní platformu. Zjistíte, naše [získávání kurzů] užitečné projít tento proces způsobem krok za krokem. Zde jsou některé běžné chybné konfigurace:
+Centra oznámení Azure potřebuje tooauthenticate sám v kontextu hello nástroje pro vývojáře hello aplikace toobe možné toosuccessfully odesílání oznámení toohello příslušných PNS. To je umožněno díky hello vývojáře vytváření vývojářského účtu s hello příslušné platformy (Google, Apple Windows atd.) a pak registraci své aplikace, kde získat přihlašovací údaje, které vyžadují toobe nakonfigurované hello portálu v části oznámení Oddíl konfigurace rozbočovače. Pokud nejsou žádná oznámení přijímání prostřednictvím prvním krokem by měl být tooensure že hello správné přihlašovací údaje jsou nakonfigurované v hello Centrum oznámení je odpovídající pomocí aplikace hello vytvořil v rámci jejich konkrétní vývojářský účet platformy. Zjistíte, naše [získávání kurzů] užitečné toogo přes tento proces způsobem krok za krokem. Zde jsou některé běžné chybné konfigurace:
 
 1. **Obecné**
    
-    (a) ujistěte se, že je vaším jménem centra oznámení (bez překlepům) stejný:
+    (a) ujistěte se, že vaším jménem centra oznámení (bez překlepům) je hello stejné:
    
-   * Pokud registrujete z klienta, 
-   * Kde jsou odesílání oznámení z back-end,  
-   * Kde jste nakonfigurovali přihlašovací údaje systému PNS a 
-   * Jehož pověření SAS jste nakonfigurovali na klientovi a back-end. 
+   * Kde registraci od klienta hello 
+   * Kde jsou odesílání oznámení z back-end hello,  
+   * Kde jste nakonfigurovali systém PNS hello přihlašovací údaje a 
+   * Jehož pověření SAS jste nakonfigurovali na hello klienta a hello back-end. 
      
-     b) ujistěte se, že používáte správné konfigurace řetězce SAS na klientovi a back-end aplikace. Jako existuje pravidlo, je nutné použít **DefaultListenSharedAccessSignature** na straně klienta a **DefaultFullSharedAccessSignature** na back-end aplikace, (který poskytuje oprávnění, abyste mohli odeslat oznámení NH)
+     b) ujistěte se, že používáte hello správné SAS konfigurace řetězce na klientovi hello a back-end aplikace hello. Jako existuje pravidlo, musí používat hello **DefaultListenSharedAccessSignature** hello klienta a **DefaultFullSharedAccessSignature** na hello aplikace back-end (který poskytuje oprávnění toobe možnost toosend oznámení toohello NH)
 2. **Konfigurace Apple Push Notification Service (APNS)**
    
-    Musíte udržovat dvě různé centra – jednu pro produkční a druhý pro testování účel. To znamená, odesílání na certifikát, který chcete použít v prostředí izolovaného prostoru k rozbočovači samostatné a certifikát, který chcete použít v produkčním prostředí k rozbočovači samostatné. Nepokoušejte se nahrát různé typy certifikátů ke stejnému rozbočovači, jak může způsobit selhání oznámení dolů na řádku. Pokud na pozici, kde jste omylem odeslali různé typy certifikátů na stejném centru najít sami, se doporučuje odstranit rozbočovače a začít pracovat. Pokud z nějakého důvodu, nejste schopni odstranit centrum pak v každém, je nutné odstranit všechny existující registrace z rozbočovače. 
+    Musíte udržovat dvě různé centra – jednu pro produkční a druhý pro testování účel. To znamená, odesílání hello certifikátu, že budete toouse v samostatné hub tooa izolovaného prostoru prostředí a hello certifikátu, že budete toouse v produkční tooa samostatné rozbočovače. Nepokoušejte tooupload různé typy certifikátů toohello stejném centru jako ho může způsobit selhání oznámení dolů hello řádku. Pokud se přistihnete na pozici, kde jste omylem odeslali různé typy certifikátů toohello stejné rozbočovače, je doporučeno toodelete hello rozbočovače a spustit novou. Pokud z jakéhokoliv důvodu není možné toodelete hello rozbočovače pak v hello velmi alespoň, je nutné odstranit všechny existující registrace hello z centra hello. 
 3. **Konfigurace zasílání zpráv cloudu Google (GCM)** 
    
     (a) ujistěte se, že povolíte "Google Cloud Messaging pro Android" v části projektu cloudu. 
    
     ![][2]
    
-    b) zkontrolujte vytvořte klíč"Server" při získání přihlašovacích údajů, které NH bude používat k ověření pomocí služby GCM. 
+    b) zkontrolujte vytvořte klíč"Server" při získání přihlašovacích údajů hello které NH použije tooauthenticate GCM. 
    
     ![][3]
    
-    c) ujistěte se, že jste nakonfigurovali v klientovi, který je zcela číselné entita, která můžete získat z řídicího panelu "Projektu ID":
+    c) ujistěte se, že jste nakonfigurovali "ID projektu" hello klienta, který je zcela číselné entita, která můžete získat z řídicího panelu hello:
    
     ![][1]
 
 ## <a name="application-issues"></a>Problémy s aplikací
 1) **Značky / značka výrazy**
 
-Pokud používáte značky nebo značky výrazy segmentovat cílovou skupinu, vždycky je možné, že při odesílání oznámení, že žádný cíl byl nalezen založené na výrazech značky nebo značky, který určujete v odesílání volání. Je vhodné zkontrolovat vaše registrace do zajistěte, aby značky, které se shodují při odesílání oznámení a ověří přijetí oznámení pouze z klientů s tyto registrace. Například Pokud všechny vaše registrace s NH měla pracovat vyslovení značka "Politika" a odesílání oznámení pomocí značky "Sports", nebudou odeslány na jakékoli zařízení. Komplexní případu může patřit značky výrazy, kde můžete registrovat jenom s "Značky A" nebo "Značky B", ale při odesílání oznámení, kterou cílíte "Značky A a a značky B". V následující části Samoobslužné diagnostikovat tipy jsou způsoby, ve kterém můžete zkontrolovat vaše registrace společně se značkami, které mají. 
+Pokud používáte značky nebo značky výrazy toosegment cílovou skupinu, vždycky je možné, že při odesílání oznámení hello, že žádný cíl byl nalezen založené na výrazech hello značky nebo značky, který určujete v odesílání volání. Je nejvhodnější tooreview vaše tooensure registrace, která jsou značky které shodu při odesílání oznámení a pak ověřte hello potvrzení o doručení pouze z klientů hello s tyto registrace. Například Pokud všechny vaše registrace s NH měla pracovat vyslovení značka "Politika" a odesílání oznámení pomocí značky "Sports", nebude odeslána tooany zařízení. Komplexní případu může patřit značky výrazy, kde můžete registrovat jenom s "Značky A" nebo "Značky B", ale při odesílání oznámení, kterou cílíte "Značky A a a značky B". V hello samoobslužné diagnostikovat níže uvedené části Tipy, existují způsoby, ve kterém můžete zkontrolovat vaše registrace společně se značkami hello, kterou mají. 
 
 2) **Problémy se šablonou**
 
-Pokud používáte šablony a ujistěte se, že jsou následující podle pokynů popsaných na [šablony pokyny]. 
+Pokud používáte šablony a ujistěte se, že jsou následující hello pokynů popsaných na [šablony pokyny]. 
 
 3) **Neplatný registrace**
 
-Za předpokladu, že Centrum oznámení byla nakonfigurována správně a žádný z výrazů značky nebo značky používaly správně výsledkem najít platný cíle, do kterých muset odeslat oznámení, NH vyvolá několik zpracování dávky paralelně - každé dávce, odesílání zpráv na sadu registrací. 
+Za předpokladu, že hello centra oznámení byla správně nakonfigurována a žádný z výrazů značky nebo značky používaly správně výsledkem hello najít platný cílů toowhich hello oznámení potřebovat toobe odeslána, NH vyvolá několik zpracování dávky paralelně - každé dávky odesílání zpráv tooa sadu registrací. 
 
 > [!NOTE]
-> Vzhledem k tomu, že jsme provést paralelní zpracování, jsme nezaručují pořadí, ve kterém budou doručeny oznámení. 
+> Vzhledem k tomu, že jsme hello paralelní zpracování, jsme nezaručují hello pořadí, ve které hello bude doručit oznámení. 
 > 
 > 
 
-Nyní centra oznámení Azure je optimalizovaná pro model doručení zprávy "jednou na většinu". To znamená, jsme pokus deaktivace duplikace tak, aby žádná oznámení se doručují více než jednou na zařízení. Aby to jsme projděte registrace a ujistěte se, že pouze jeden zprávy podle identifikátoru zařízení před skutečného odeslání zprávy do systém PNS. Každé dávky je odeslán systém PNS, který naopak je přijetí a ověření registrace, je možné, že systém PNS zjistí chybu s jedním nebo více registrací v dávce, vrátí chybu Azure NH a ukončí zpracování, a tím zcela vyřazení tohoto batch. To platí hlavně službou APNS, který používá protokol TCP datového proudu. I když jsme jsou optimalizované pro na většinu po doručení, v tomto případě jsme odebrat chybující registraci z našich databáze a opakujte odeslání oznámení pro zbytek zařízení v této dávce.
+Nyní centra oznámení Azure je optimalizovaná pro model doručení zprávy "jednou na většinu". To znamená, jsme pokus deaktivace duplikace tak, aby žádná oznámení se doručují více než jednou tooa zařízení. tooensure jsme projděte hello registrace a ujistěte se, že pouze jednu zprávu je odeslána na identifikátor zařízení před ve skutečnosti odesílání hello zpráva toohello systém PNS. Protože každé dávky je odeslán toohello systém PNS, která pak dále přijímá a ověřování hello registrace, je možné, že hello systém PNS zjistí chybu s jedním nebo více hello registrací v dávce, vrátí k chybě tooAzure NH a ukončí zpracování, a tím vyřadit úplně dávky. To platí hlavně službou APNS, který používá protokol TCP datového proudu. I když jsme jsou optimalizované pro na většinu po doručení, v tomto případě jsme odstranit hello chybující registraci z našich databázi a poté opakujte doručení pro hello zbytek hello zařízení v této dávce.
 
-Můžete získat informace o chybě při pokusu o doručení selhání proti registrace pomocí rozhraní API REST centra oznámení Azure: [za zpráva Telemetrie: získání Telemetrických zpráv oznámení](https://msdn.microsoft.com/library/azure/mt608135.aspx) a [zpětnou vazbu systém PNS](https://msdn.microsoft.com/library/azure/mt705560.aspx). Najdete v článku [SendRESTExample](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample) například kódu.
+Můžete získat informace o chybě pro pokus o selhání doručení hello proti registrace pomocí hello API REST centra oznámení Azure: [za zpráva Telemetrie: získání Telemetrických zpráv oznámení](https://msdn.microsoft.com/library/azure/mt608135.aspx) a [zpětnou vazbu systém PNS](https://msdn.microsoft.com/library/azure/mt705560.aspx). V tématu hello [SendRESTExample](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample) například kódu.
 
 ## <a name="pns-issues"></a>Systém PNS problémy
-Jakmile byla přijata zpráva oznámení pomocí příslušných systém PNS je jeho odpovědností pro doručení oznámení do zařízení. Azure Notification Hubs je mimo zde na obrázku a nemá žádnou kontrolu případě nebo pokud oznámení má doručit do zařízení. Vzhledem k tomu, že se poměrně robustní služby platformy oznámení, oznámení mívají k dosažení zařízení během několika sekund z systém PNS. Pokud ale omezení systém PNS pak Azure Notification Hubs použijte exponenciální regrese strategie a pokud systém PNS zůstává nedostupný pro 30 min potom jsme zavedené zásady vypršení platnosti a trvale vyřadit tyto zprávy. 
+Jakmile byla přijata zpráva oznámení hello podle hello příslušných PNS, pak je jeho odpovědnost toodeliver hello oznámení toohello zařízení. Azure Notification Hubs je mimo hello obrázek sem a nemá žádnou kontrolu, když nebo oznámení hello přechází toobe doručit toohello zařízení. Vzhledem k tomu, že jsou poměrně robustní hello platformy oznámení služby, oznámení zpravidla tooreach hello zařízení během několika sekund z hello systém PNS. Pokud hello systém PNS ale je omezování pak Azure Notification Hubs použijte exponenciální regrese strategie a zda hello systém PNS zůstává nedostupný pro 30 min pak je k dispozici zásady v umístěte tooexpire a trvale vyřadit tyto zprávy. 
 
-Pokud systém PNS pokusí doručit oznámení, ale zařízení je offline, je oznámení ukládaná systém PNS po omezenou dobu a doručit do zařízení, až bude k dispozici. Je uložena pouze jedno poslední oznámení pro konkrétní aplikace. Pokud více oznámení se odesílají, když je zařízení offline, každé nové oznámení způsobí, že předchozí oznámení budou zahozeny. Toto chování, aby pouze nejnovější oznámení se označuje jako slučování oznámení v APNS a sbalení v GCM (který se používá ztenčeného klíč). Pokud zařízení zůstane v režimu offline delší dobu, žádné oznámení, které jste právě uložili pro něj se zahodí. Source – [APNS pokyny] & [GCM pokyny]
+Pokud systém PNS pokusí toodeliver oznámení, ale hello zařízení je offline, je oznámení hello ukládaná hello systém PNS po omezenou dobu a doručit toohello zařízení, až bude k dispozici. Je uložena pouze jedno poslední oznámení pro konkrétní aplikace. Pokud více oznámení se odesílají, když je zařízení hello offline, každé nové oznámení způsobí, že předchozí oznámení hello toobe zahozeny. Toto chování, aby pouze nejnovější oznámení hello je odkazované tooas slučování oznámení v APNS a sbalení v GCM (který se používá ztenčeného klíč). Pokud zařízení hello zůstane offline po dlouhou dobu, žádné oznámení, které jste právě uložili pro něj se zahodí. Source – [APNS pokyny] & [GCM pokyny]
 
-S Azure Notification Hubs – můžete předat slučování klíč prostřednictvím záhlaví HTTP pomocí Obecné `SendNotification` rozhraní API (např. v případě sady .NET SDK – `SendNotificationAsync`) což také trvá hlavičky protokolu HTTP, které jsou předány jako má odpovídající systém PNS. 
+S Azure Notification Hubs – můžete předat slučování klíč prostřednictvím záhlaví HTTP pomocí hello obecného `SendNotification` rozhraní API (např. v případě sady .NET SDK – `SendNotificationAsync`) což také trvá hlavičky protokolu HTTP, které jsou předány jako je toohello příslušných PNS. 
 
 ## <a name="self-diagnose-tips"></a>Samoobslužné diagnostikovat tipy
-Zde vyzkoušíme různé cesty pro diagnostiku a kořenový způsobit problémy s Centrum oznámení:
+Zde vyzkoušíme hello různé toodiagnose cesty a kořenové způsobit problémy s Centrum oznámení:
 
 ### <a name="verify-credentials"></a>Ověření přihlašovacích údajů
 1. **Systém PNS portál pro vývojáře**
    
-    Ověření je na příslušné systém PNS developer portal (GCM, APNS WNS atd) pomocí našich [získávání kurzů].
+    Ověření je hello příslušných systém PNS developer portal (GCM, APNS WNS atd) pomocí našich [získávání kurzů].
 2. **Portál Azure Classic**
    
-    Přejděte na kartu Konfigurace a zkontrolujte shodovat s pověřeními získanými z portálu pro vývojáře systému PNS. 
+    Přejděte toohello konfigurovat karta tooreview a shodovat hello pověřeními získanými z portálu pro vývojáře systému PNS hello. 
    
     ![][4]
 
 ### <a name="verify-registrations"></a>Ověření registrace
 1. **Visual Studio**
    
-    Pokud používáte Visual Studio pro vývoj můžete připojit k Microsoft Azure a zobrazení a správa bunch služeb Azure včetně centra oznámení z "Průzkumníka serveru". To je užitečné hlavně pro vaše prostředí pro vývoj/testování. 
+    Pokud používáte Visual Studio pro vývoj můžete připojit tooMicrosoft Azure a zobrazovat a spravovat bunch služeb Azure včetně centra oznámení z "Průzkumníka serveru". To je užitečné hlavně pro vaše prostředí pro vývoj/testování. 
    
     ![][9]
    
-    Můžete zobrazit a spravovat všechny registrace v centru, které jsou klasifikovány vhodně pro platformu, nativní nebo šablony registrace, všechny značky, systém PNS identifikátor, id registrace a datum vypršení platnosti. Můžete taky upravit registraci za chodu – což je užitečné, například pokud chcete upravit všechny značky. 
+    Můžete zobrazit a spravovat všechny registrace hello v centru, které jsou klasifikovány vhodně pro platformu, nativní nebo šablony registrace, všechny značky, systém PNS identifikátor, registrace id a hello datum vypršení platnosti. Můžete taky upravit registraci v chodu hello – což je užitečné, například pokud chcete tooedit všechny značky. 
    
     ![][8]
    
    > [!NOTE]
-   > Visual Studio funkce Upravit registrace lze používat pouze během vývoje/testování s omezený počet registrací. Pokud je potřeba opravit vaší registrace hromadné potřeby zvažte použití exportu/importu registrace funkcí popsaných v tomto poli - [exportu/importu registrace](https://msdn.microsoft.com/library/dn790624.aspx)
+   > Visual Studio funkce tooedit registrace lze používat pouze během vývoje/testování s omezený počet registrací. Pokud nastane toofix potřeby vaší registrace hromadně, zvažte použití hello exportu/importu registrace funkcí popsaných tady - [exportu/importu registrace](https://msdn.microsoft.com/library/dn790624.aspx)
    > 
    > 
 2. **Průzkumník služby Service Bus**
@@ -123,18 +123,18 @@ Zde vyzkoušíme různé cesty pro diagnostiku a kořenový způsobit problémy 
     Mnoho zákazníků použit sběrnice explorer popsané v tomto - [Explorer sběrnice] pro zobrazování a správu jejich centra oznámení. Je k dispozici z code.microsoft.com - opensourcový projekt [sběrnice Průzkumník kódu]
 
 ### <a name="verify-message-notifications"></a>Ověřte oznamování pomocí zpráv
-1. **portál Azure Classic**
+1. **Portál Azure Classic**
    
-    Můžete přejít na kartu "Debug" Odeslat zkušební oznámení pro klienty bez nutnosti jakéhokoli back-endu služby nahoru a spouštění. 
+    Můžete přejít toohello "Debug" karta toosend testovací oznámení tooyour klienty bez nutnosti jakéhokoli back-endu služby nahoru a spuštěna. 
    
     ![][7]
 2. **Visual Studio**
    
-    Můžete také odeslat zkušební oznámení z comforts sady Visual Studio:
+    Můžete také odeslat zkušební oznámení z hello comforts sady Visual Studio:
    
     ![][10]
    
-    Další informace o funkcích Průzkumníka Visual Studio oznámení centra Azure tady - 
+    Můžete si přečíst další na hello Visual Studio oznámení centra Azure explorer funkce zde- 
    
    * [Přehled Průzkumníka serveru VS]
    * [Příspěvek blogu Průzkumníka serveru VS - 1]
@@ -143,19 +143,19 @@ Zde vyzkoušíme různé cesty pro diagnostiku a kořenový způsobit problémy 
 ### <a name="debug-failed-notifications-review-notification-outcome"></a>Ladění chybných oznámení / zkontrolujte výsledek oznámení
 **Vlastnost EnableTestSend**
 
-Při odesílání oznámení prostřednictvím centra oznámení, nejdřív ho jenom získá zařazen do fronty pro NH udělat zpracování a pokuste se zjistit všechny jeho cíle a pak nakonec NH odešle ji do systém PNS. To znamená, že při použití rozhraní REST API nebo některou z klienta SDK, úspěšné návrat volání odesílání znamená pouze to, že zpráva má byl úspěšně zařazen do fronty pomocí centra oznámení. Nedává ho lépe pochopit, co se stalo při NH nakonec tu k odeslání zprávy do systému PNS. Pokud není oznámení přicházejících na klientském zařízení, je možné, že při pokusu o doručení zprávy do systému PNS NH, došlo k chybě, například velikost datové části překročila maximální povolenou systém PNS nebo nakonfigurované v NH přihlašovací údaje jsou neplatné atd. Pokud chcete získat přehled o systém PNS chyby, jsme zavedli vlastnost s názvem [EnableTestSend funkce]. Tato vlastnost je automaticky povolen při odesílání zkušebních zpráv z portálu nebo klienta Visual Studia a proto vám umožní zobrazit podrobné informace o ladění. Můžete použít prostřednictvím rozhraní API trvá v příkladu .NET SDK tam, kde je k dispozici nyní a přidá všechny klientské sady SDK nakonec. Používat toto volání REST, jednoduše připojte querystring parametr s názvem "test" na konci volání odesílání například 
+Při odesílání oznámení prostřednictvím centra oznámení, nejdřív ho jenom získá zařazen do fronty pro zpracování toofigure se všechny jeho cíle toodo NH a potom nakonec NH ji pošle toohello systém PNS. To znamená, že při použití rozhraní REST API nebo některou z hello klienta SDK, hello úspěšné návrat vaše odeslání volání pouze znamená, že hello zpráva má byl úspěšně zařazen do fronty pomocí centra oznámení. Nedává ho lépe pochopit, co se stalo při NH nakonec tu toosend hello zpráva tooPNS. Pokud není oznámení přicházejících u hello klientského zařízení, je možnost, že když NH pokoušeli toodeliver hello zpráva tooPNS, došlo k chybě například velikost datové části hello překročil maximální hello povolenou hello systém PNS nebo jsou nakonfigurované v NH pověření hello Neplatný atd tooget na aspekty hello systém PNS chyby, jsme zavedli vlastnost s názvem [EnableTestSend funkce]. Tato vlastnost je automaticky povolen při odeslání testovacích zpráv ze hello portálu nebo klienta Visual Studia a proto vám umožní toosee podrobné ladicí informace. Můžete použít prostřednictvím rozhraní API trvá hello příklad hello .NET SDK tam, kde je k dispozici nyní a bude přidané tooall klientské sady SDK nakonec. toouse, o volání REST hello, jednoduše připojte querystring parametr s názvem "test" na konci hello volání odesílání například 
 
     https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 
 *Příklad (.NET SDK)*
 
-Předpokládejme, že jsou pomocí sady .NET SDK k odesílání oznámení s informační zprávou nativní:
+Předpokládejme, že používáte .NET SDK toosend nativní informační zpráva:
 
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName);
     var result = await hub.SendWindowsNativeNotificationAsync(toast);
     Console.WriteLine(result.State);
 
-`result.State`bude jednoduše stavu `Enqueued` na konci provádění bez všechny aspekty co se stalo s vaší push. Nyní můžete pomocí `EnableTestSend` vlastnost typu boolean při inicializaci `NotificationHubClient` a může získat podrobné informace o stavu týkající se Správou chyb došlo při odesílání oznámení. Sem odeslání volání prodlouží dobu vrátit vzhledem k tomu, že ji vrací pouze po NH má doručit oznámení na systém oznámení platformy a určit výsledek. 
+`result.State`bude jednoduše stavu `Enqueued` na konci hello hello provádění bez všechny aspekty co se stalo tooyour push. Nyní můžete pomocí hello `EnableTestSend` vlastnost typu boolean při inicializaci hello `NotificationHubClient` a může získat podrobné informace o stavu informace o chybách systému PNS hello došlo při odesílání oznámení hello. Hello odesílání zde volání bude trvat tooreturn další čas, protože pouze vrací poté, co NH předložil hello oznámení tooPNS toodetermine hello výsledek. 
 
     bool enableTestSend = true;
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName, enableTestSend);
@@ -173,31 +173,31 @@ Předpokládejme, že jsou pomocí sady .NET SDK k odesílání oznámení s inf
     DetailedStateAvailable
     windows
     7619785862101227384-7840974832647865618-3
-    The Token obtained from the Token Provider is wrong
+    hello Token obtained from hello Token Provider is wrong
 
-Tato zpráva znamená buď neplatné přihlašovací údaje jsou nakonfigurované v centru oznámení nebo problém s registrací v centru a doporučené během by mohla být tato registrace odstraňte a znovu ji vytvořte před odesláním zprávy klienta. 
+Tato zpráva znamená buď neplatné přihlašovací údaje jsou nakonfigurované v centru oznámení hello nebo problém s registrací hello ve hello rozbočovače a hello doporučené kurzu by být toodelete tato registrace a nechat hello klienta znovu ji vytvořte před odesláním hello zpráva. 
 
 > [!NOTE]
-> Všimněte si, že použití této vlastnosti je výraznou omezené a proto musíte použít tento v prostředí pro vývoj/testování s omezenou sadu registrací. Pouze odešleme ladění oznámení na 10 zařízení. Máme také limit zpracování ladění odešle jako 10 za minutu. 
+> Upozorňujeme, že hello použití této vlastnosti je výraznou omezené, a proto musíte použít tento v prostředí pro vývoj/testování s omezenou sadu registrací. Pouze pošleme oznámení ladění too10 zařízení. Máme také limit zpracování ladění zasílá toobe 10 za minutu. 
 > 
 > 
 
 ### <a name="review-telemetry"></a>Zkontrolujte telemetrie
 1. **Použijte portál Azure Classic**
    
-    Na portálu můžete získat rychlý přehled všechny aktivity na vaše Centrum oznámení. 
+    portál Hello umožňuje tooget rychlý přehled o všechny aktivity hello na vaše Centrum oznámení. 
    
-    (a) na kartě "řídicího panelu" můžete zobrazit souhrnné zobrazení registrace, oznámení, jakož i chyby na každou platformu. 
+    (a) z karty "řídicího panelu" hello můžete zobrazit souhrnné zobrazení hello registrace, oznámení, jakož i chyby na každou platformu. 
    
     ![][5]
    
-    b) můžete také přidat mnoho dalších platformy určité metriky na kartě "Sledování" provést hlubší podívejte se na konkrétní chyby systému PNS vrácené když NH pokusí odeslat oznámení systém PNS zvlášť. 
+    b) můžete také přidat mnoho dalších platformy určité metriky z hello "Sledování" karta tootake hlubší podívejte se na konkrétní chyby systému PNS vrácené při NH pokusí toosend hello oznámení toohello systém PNS zvlášť. 
    
     ![][6]
    
-    c) byste měli začít s kontrola **příchozí zprávy**, **registrace Operations**, **úspěšné oznámení** a pak přejděte na kartu platformy ke kontrole konkrétní chyby systému PNS. 
+    c) byste měli začít s Kontrola hello **příchozí zprávy**, **registrace Operations**, **úspěšné oznámení** a potom přejděte tooper platformy karta tooreview hello Systém PNS konkrétní chyby. 
    
-    d) Pokud máte centra oznámení správně nakonfigurovaný s nastavení ověřování, zobrazí se Správou chyby ověřování. Toto je dobrá indikace toho zkontrolujte přihlašovací údaje systému PNS. 
+    d) Pokud máte zobrazí hello oznámení, že Centrum špatně nakonfigurovaný s nastavením ověřování hello pak můžete systém PNS chyby ověřování. Toto je dobrá indikace toho toocheck hello systém PNS přihlašovací údaje. 
 
 2) **Programový přístup**
 
@@ -207,7 +207,7 @@ Zde – podrobnosti
 * [Telemetrie přístup přes rozhraní API ukázka] 
 
 > [!NOTE]
-> Několik telemetrii související funkce, jako jsou **exportu/importu registrace**, **Telemetrie přístup přes rozhraní API** jsou dostupné v úrovni Standard jenom atd. Pokud se pokusíte tyto funkce používají, pokud jste v volné nebo úroveň Basic bude získat zpráva o výjimce za tímto účelem při použití sady SDK a protokolu HTTP 403 (zakázáno) je použití přímo z rozhraní REST API. Ujistěte se, že jste přesunuli až Standard vrstvy prostřednictvím portálu Azure Classic.  
+> Několik telemetrii související funkce, jako jsou **exportu/importu registrace**, **Telemetrie přístup přes rozhraní API** jsou dostupné v úrovni Standard jenom atd. Pokud se pokusíte toouse tyto funkce, pokud jste v volné nebo úroveň Basic pak můžete získají výjimka zpráva toothis vliv při použití hello SDK a protokolu HTTP 403 (zakázáno) je použití přímo z hello rozhraní REST API. Ujistěte se, že mají přesunout nahoru tooStandard vrstvy prostřednictvím portálu Azure Classic.  
 > 
 > 
 

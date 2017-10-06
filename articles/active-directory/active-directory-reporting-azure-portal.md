@@ -1,5 +1,5 @@
 ---
-title: "Generování sestav v Azure Active Directory | Dokumentace Microsoftu"
+title: "vytváření sestav služby Active Directory aaaAzure | Microsoft Docs"
 description: "Poskytuje obecný přehled generování sestav v Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c91813acbdc4b0bfcd164169b0b575accac227d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Generování sestav v Azure Active Directory
 
 Pomocí generování sestav v Azure Active Directory můžete získat přehled o stavu vašeho prostředí.  
-Poskytnutá data vám umožní:
+Hello zadaná data umožňuje:
 
 - Určit, jak uživatelé využívají vaše aplikace a služby.
-- Rozpoznat potenciální rizika ovlivňující stav vašeho prostředí.
+- Zjistit potenciální rizika, které mají vliv na stav hello prostředí
 - Řešit problémy, které brání uživatelům v práci.  
 
-Architektura generování sestav se spoléhá na dva hlavní pilíře:
+Architektura pro vytváření sestav Hello spoléhá na dvě hlavní pilíře:
 
 - Sestavy zabezpečení
 - Sestavy aktivit
@@ -41,79 +41,79 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
-Sestavy zabezpečení v Azure Active Directory pomáhají chránit identity vaší organizace.  
+Hello sestavy zabezpečení v Azure Active Directory pomoct vám tooprotect identity ve vaší organizaci.  
 V Azure Active Directory existují dva typy sestav zabezpečení:
 
-- **Uživatelé označení příznakem rizika** – Ze [sestavy zabezpečení uživatelů označených příznakem rizika](active-directory-reporting-security-user-at-risk.md) získáte přehled o uživatelských účtech, u kterých mohlo dojít k ohrožení zabezpečení.
+- **Uživatelé označení příznakem rizik** – hello [uživatelé označení příznakem riziko zabezpečení sestavy](active-directory-reporting-security-user-at-risk.md), získat přehled o uživatelské účty, které může být ohrožena.
 
-- **Riziková přihlášení** – Se [sestavou zabezpečení rizikových přihlášení](active-directory-reporting-security-risky-sign-ins.md) získáte indikátor pokusů o přihlášení, které mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+- **Rizikové přihlášení** – s hello [sestavy zabezpečení rizikové přihlášení](active-directory-reporting-security-risky-sign-ins.md), můžete získat slouží jako ukazatel přihlašovací pokusy, které se možná prováděly někdo, kdo není hello legitimní vlastníka uživatelského účtu. 
 
-**Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?**  
+**Jaké licence Azure AD potřebujete tooaccess sestavy zabezpečení?**  
 Sestavy uživatelů označených příznakem rizika a rizikových přihlášení nabízí všechny edice Azure Active Directory.  
-Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
+Ale hello úroveň členitost liší hello edice: 
 
-- **Edice Azure Active Directory Free a Basic** již nabízí seznam uživatelů označených příznakem rizika a rizikových přihlášení. 
+- V hello **edice Basic a Azure Active Directory volné**, již získat seznam uživatelů, které jsou označeny k rizika a rizikové přihlášení. 
 
-- Edice **Azure Active Directory Premium 1** tento model rozšiřuje tím, že umožňuje také prozkoumávat některé ze základních rizikových událostí, které byly v každé sestavě rozpoznány. 
+- Hello **Azure Active Directory Premium 1** edice rozšiřuje tohoto modelu tím, že také umožňuje tooexamine, některé základní riziko události, které pro každou sestavu nebyla zjištěna hello. 
 
-- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o základních rizikových událostech a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- Hello **Azure Active Directory Premium 2** edice nabízí vám hello nejvíce podrobné informace o hello základní rizikových událostech a také vám umožní tooconfigure zásady zabezpečení, které automaticky odpovídat tooconfigured úrovní rizika.
 
 
 ## <a name="activity-reports"></a>Sestavy aktivit
 
 V Azure Active Directory existují dva typy sestav aktivit:
 
-- **Protokoly auditu** – [Sestava aktivit protokolů auditu](active-directory-reporting-activity-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
+- **Protokoly auditu** – hello [protokoly auditu sestava aktivit](active-directory-reporting-activity-audit-logs.md) vám poskytne přístup k historii toohello každý úkol provést ve vašem klientovi.
 
-- **Přihlášení** – Se [sestavou aktivit přihlašování](active-directory-reporting-activity-sign-ins.md) můžete určit, kdo provedl úlohy hlášené sestavou protokolů auditu.
-
-
-
-**Sestava protokolů auditu** poskytuje záznamy systémových aktivit pro zajištění dodržování předpisů.
-Poskytnutá data umožňují mimo jiné řešit běžné scénáře tohoto typu:
-
-- Někdo v tenantovi získal přístup ke správcovské skupině. Kdo jim dal přístup? 
-
-- Chcete znát seznam uživatelů, kteří se přihlašují ke konkrétní aplikaci, protože jste aplikaci nedávno zprovoznili a chcete vědět, jestli funguje v pořádku.
-
-- Chcete vědět, ke kolika resetováním hesla ve vašem tenantovi dochází.
-
-
-**Jaká licence Azure AD je potřeba pro přístup k sestavě protokolů auditu?**  
-Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu.
-
-Další podrobnosti najdete v části **Porovnání všeobecně dostupných funkcí v edicích Free, Basic a Premium** v tématu [Funkce a možnosti v Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+- **Přihlášení** – s hello [sestava aktivit přihlášení](active-directory-reporting-activity-sign-ins.md), můžete určit, kdo má provést úlohy hello hlášené sestavy protokolů auditu hello.
 
 
 
-**Sestava aktivit přihlašování** umožňuje najít odpovědi na otázky tohoto typu:
+Hello **protokoly auditu sestavy** vám poskytne záznamů aktivit systému dodržování předpisů.
+Mimo jiné hello za předpokladu, že data vám umožní tooaddress běžné scénáře, jako:
 
-- Jaký je vzorec přihlašování uživatele?
+- Někdo v klienta získali přístupové skupiny pro správu tooan. Kdo jim dal přístup? 
+
+- Chci, aby tooknow hello seznam uživatelů, přihlášení k konkrétní aplikaci od I nedávno zařazený nemá hello aplikace a chcete tooknow Pokud dobře funguje
+
+- Chci, aby tooknow kolik heslo resetovat se děje v klienta
+
+
+**Jaké licence Azure AD potřebujete sestavy protokolů auditu hello tooaccess?**  
+Sestava protokoly auditu Hello je k dispozici pro funkce, pro které máte licence. Pokud máte licenci pro konkrétní funkci, máte také přístup toohello auditní informace protokolu pro ni.
+
+Další podrobnosti najdete v tématu **porovnávání všeobecně dostupná funkce edice Free, Basic a Premium hello** v [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+
+
+
+Hello **sestava aktivit přihlášení** umožňuje tootoofind odpovědi tooquestions jako například:
+
+- Co je hello přihlášení vzor uživatele?
 - Kolik uživatelů se přihlásilo za týden?
-- Jaký je stav těchto přihlášení?
+- Co je hello stav těchto přihlášení?
 
 
-**Jaká licence Azure AD je potřeba pro přístup k sestavě aktivit přihlašování?**  
-Pro přístup k sestavě aktivit přihlašování musí mít váš tenant přiřazenou licenci Azure AD Premium.
+**Jaké licence Azure AD se budete potřebovat tooaccess hello sestava aktivit přihlášení?**  
+Sestava aktivit přihlášení hello tooaccess, vašeho klienta musí mít licenci na Azure AD Premium s ním spojená.
 
 
 ## <a name="programmatic-access"></a>Programový přístup
 
-Kromě uživatelského rozhraní nabízí generování sestav v Azure Active Directory také [programový přístup](active-directory-reporting-api-getting-started-azure-portal.md) k datům sestav. Data z těchto sestav můžou být velmi užitečná pro vaše aplikace, jako jsou systémy SIEM nebo nástroje pro auditování a business intelligence. Rozhraní API pro generování sestav v Azure AD poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
+Přidání toohello uživatelské rozhraní, generování sestav Azure Active Directory také nabízí [programový přístup](active-directory-reporting-api-getting-started-azure-portal.md) toohello data pro vytváření sestav. Hello data tyto sestavy může být velmi užitečná tooyour aplikace, jako je například systémů SIEM, auditování a nástroje business intelligence. rozhraní API poskytují programový přístup k datům toohello pomocí sady založené na REST API, vytváření sestav Hello Azure AD. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět více o různých typech sestav v Azure Active Directory, přečtěte si:
+Pokud chcete více informací o hello tooknow různé typy sestav v Azure Active Directory, najdete v části:
 
 - [Sestava uživatelů s příznakem rizika](active-directory-reporting-security-user-at-risk.md)
 - [Sestava rizikových přihlášení](active-directory-reporting-security-risky-sign-ins.md)
 - [Sestava protokolů auditu](active-directory-reporting-activity-audit-logs.md)
 - [Sestava protokolů přihlášení](active-directory-reporting-activity-sign-ins.md)
 
-Pokud se chcete dozvědět více o přístupu k datům sestav pomocí rozhraní API pro generování sestav, přečtěte si: 
+Pokud chcete více informací o přístupu k hello hello data pomocí hello reporting rozhraní API pro vytváření sestav tooknow, najdete v části: 
 
-- [Začínáme s rozhraním API pro generování sestav v Azure Active Directory](active-directory-reporting-api-getting-started-azure-portal.md)
+- [Začínáme s Azure Active Directory, vytváření sestav API hello](active-directory-reporting-api-getting-started-azure-portal.md)
 
 
 <!--Image references-->

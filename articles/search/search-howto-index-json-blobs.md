@@ -1,5 +1,5 @@
 ---
-title: "Indexování objekty BLOB JSON s indexer objektu blob Azure Search"
+title: objekty BLOB JSON aaaIndexing s indexer objektu blob Azure Search
 description: "Indexování objekty BLOB JSON s indexer objektu blob Azure Search"
 services: search
 documentationcenter: 
@@ -14,29 +14,29 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
-ms.openlocfilehash: c4a9e57cda4ba5b4db742c1a37686a802f58212f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 269968714358cd40ea66863b4dbb97766e1d77e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objekty BLOB JSON s indexer objektu blob Azure Search
-Tento článek ukazuje, jak nakonfigurovat indexer Azure Search objektů blob k extrahování obsahu strukturovaných z objektů BLOB, které obsahují JSON.
+Tento článek ukazuje, jak tooextract indexer objektu blob Azure Search tooconfigure strukturovaná obsah z objektů BLOB, které obsahují JSON.
 
 ## <a name="scenarios"></a>Scénáře
-Ve výchozím nastavení [indexer objektu blob Azure Search](search-howto-indexing-azure-blob-storage.md) analyzuje objekty BLOB JSON jako jeden blok textu. Často budete chtít zachovat strukturu dokumentů JSON. Například uděleno dokumentu JSON
+Ve výchozím nastavení [indexer objektu blob Azure Search](search-howto-indexing-azure-blob-storage.md) analyzuje objekty BLOB JSON jako jeden blok textu. Často budete chtít toopreserve hello struktura dokumentů JSON. Například zadaný dokument JSON hello
 
     {
         "article" : {
-             "text" : "A hopefully useful article explaining how to parse JSON blobs",
+             "text" : "A hopefully useful article explaining how tooparse JSON blobs",
             "datePublished" : "2016-04-13"
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
 
-můžete k analýze do dokumentu sady Azure Search pomocí pole "značky", "datePublished" a "text".
+můžete chtít tooparse do Azure Search dokumentů s "text", "datePublished" a "značky" pole.
 
-Případně, pokud obsahovat objektů blob **pole objektů JSON**, můžete každý element pole se samostatný dokument Azure Search. Například zadaný objekt blob se tento text JSON:  
+Případně, pokud obsahovat objektů blob **pole objektů JSON**, můžete každý prvek hello pole toobecome samostatný dokument Azure Search. Například zadaný objekt blob se tento text JSON:  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -47,12 +47,12 @@ Případně, pokud obsahovat objektů blob **pole objektů JSON**, můžete kaž
 jej můžete naplnit index Azure Search s tři samostatné dokumenty, každý s pole "id" a "text".
 
 > [!IMPORTANT]
-> Pole JSON analýza funkce je aktuálně ve verzi preview. Je k dispozici pouze v rozhraní REST API pomocí verze **2015-02-28-Preview**. Mějte na paměti, verzi preview rozhraní API jsou určené pro testování a vyhodnocení a neměl by se používat v produkčním prostředí.
+> pole JSON Hello analýza funkce je aktuálně ve verzi preview. Je k dispozici pouze v hello REST API pomocí verze **2015-02-28-Preview**. Mějte na paměti, verzi preview rozhraní API jsou určené pro testování a vyhodnocení a neměl by se používat v produkčním prostředí.
 >
 >
 
 ## <a name="setting-up-json-indexing"></a>Nastavení indexování JSON
-Indexování objekty BLOB JSON je podobná extrakce běžný dokument. Nejprve vytvořte zdroj dat přesně stejně jako za normálních okolností: 
+Indexování objekty BLOB JSON je podobné extrakce toohello běžný dokument. Nejprve vytvořte zdroj dat hello přesně stejně jako za normálních okolností: 
 
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -65,9 +65,9 @@ Indexování objekty BLOB JSON je podobná extrakce běžný dokument. Nejprve v
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-Poté vytvořte index vyhledávání cíl, pokud jste ještě nemáte. 
+Poté vytvořte index vyhledávání cíl hello, pokud jste ještě nemáte. 
 
-Nakonec vytvořte indexer a nastavte `parsingMode` parametru `json` (do indexu každý objekt blob jako jedním dokumentem) nebo `jsonArray` (Pokud objektů BLOB obsahovat pole JSON a je třeba každý element pole jsou považovány za samostatný dokument):
+Nakonec vytvořte indexer a nastavte hello `parsingMode` parametr příliš`json` (tooindex každý objekt blob jako jedním dokumentem) nebo `jsonArray` (Pokud objektů BLOB obsahovat pole JSON a je třeba každý prvek pole toobe považovat za samostatný dokument):
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -81,27 +81,27 @@ Nakonec vytvořte indexer a nastavte `parsingMode` parametru `json` (do indexu k
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
 
-V případě potřeby použijte **pole mapování** a vyberte vlastnosti Zdrojový dokument JSON používaných k naplnění indexu vyhledávání cíl, jak je znázorněno v následujícím oddílu.
+V případě potřeby použijte **pole mapování** toopick hello vlastnosti hello zdroj JSON dokumentu používá toopopulate cíl indexu vyhledávání, jak je znázorněno v další části hello.
 
 > [!IMPORTANT]
-> Při použití `json` nebo `jsonArray` analýzy režimu Azure Search předpokládá, že všechny objekty BLOB ve zdroji dat obsahovat JSON. Pokud potřebujete podporovat směs JSON a jiný JSON objekty BLOB ve stejném datovém zdroji, dejte nám vědět na [našeho webu UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Při použití `json` nebo `jsonArray` analýzy režimu Azure Search předpokládá, že všechny objekty BLOB ve zdroji dat obsahovat JSON. Pokud potřebujete toosupport směs JSON a jiný JSON objektů BLOB v hello stejný zdroj dat, dejte nám vědět, na [našeho webu UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 >
 >
 
-## <a name="using-field-mappings-to-build-search-documents"></a>Použití mapování polí k sestavení vyhledávání dokumentů
-V současné době Azure Search nemůže indexovat libovolné dokumenty JSON přímo, protože podporuje jenom primitivní datové typy, řetězce pole a GeoJSON body. Můžete však použít **pole mapování** a vyberte části dokumentu JSON "navýšení" je do nejvyšší úrovně pole hledání dokumentu. Další informace o základní informace o mapování pole najdete v tématu [mapování polí indexer Azure Search přemostění rozdíly mezi zdroje dat a indexy vyhledávání](search-indexer-field-mappings.md).
+## <a name="using-field-mappings-toobuild-search-documents"></a>Pomocí pole mapování toobuild vyhledávání dokumentů
+V současné době Azure Search nemůže indexovat libovolné dokumenty JSON přímo, protože podporuje jenom primitivní datové typy, řetězce pole a GeoJSON body. Můžete však použít **pole mapování** toopick částí vaše struktury JSON dokumentu a "navýšení" je do nejvyšší úrovně pole hello vyhledávání dokumentů. toolearn o základech mapování pole, najdete v části [mapování polí indexer Azure Search přemostění hello rozdíly mezi zdroje dat a indexy vyhledávání](search-indexer-field-mappings.md).
 
-Vracející se zpět do dokumentu JSON náš příklad:
+Vracející se zpět dokumentu JSON tooour příklad:
 
     {
         "article" : {
-             "text" : "A hopefully useful article explaining how to parse JSON blobs",
+             "text" : "A hopefully useful article explaining how tooparse JSON blobs",
             "datePublished" : "2016-04-13"
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
 
-Řekněme, že máte index vyhledávání s následující pole: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`, a `tags` typu `Collection(Edm.String)`. Chcete-li mapování vaše struktury JSON na požadovaný tvar, použijte následující mapování polí:
+Řekněme, že máte index vyhledávání s hello následující pole: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`, a `tags` typu `Collection(Edm.String)`. toomap vaše struktury JSON do hello požadovaného tvaru, použijte následující mapování polí hello:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -109,21 +109,21 @@ Vracející se zpět do dokumentu JSON náš příklad:
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
 
-Názvy polí zdroje v mapování jsou určeny pomocí [JSON ukazatel](http://tools.ietf.org/html/rfc6901) zápis. Začínat lomítkem odkazovat na kořen dokumentu JSON a potom vyberte požadované vlastnosti (na libovolné úroveň vnoření) pomocí dopředného cesty oddělené lomítko.
+Hello zdroj názvy polí v mapování hello jsou určeny pomocí hello [JSON ukazatel](http://tools.ietf.org/html/rfc6901) zápis. Začínat lomítkem toorefer toohello kořenové dokumentu JSON a potom vyberte vlastnost hello požadovaného (v libovolné úroveň vnoření) pomocí dopředného cesty oddělené lomítko.
 
-Můžete také odkazovat na pole jednotlivé elementy pomocí index počítaný od nuly. Například vyberte první prvek pole "značky" z výše uvedeném příkladu, použijte mapování polí takto:
+Můžete se také podívat elementy pole tooindividual pomocí index počítaný od nuly. Například toopick hello první prvek pole "značky" hello z hello výše například použít mapování polí takto:
 
     { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
 
 > [!NOTE]
-> Pokud název pole zdroje v cestě mapování pole odkazuje na vlastnost, která neexistuje ve formátu JSON, že mapování přeskočen bez chyby. To se provádí tak, aby podporujeme dokumentů s zvolte jiné schéma (což je běžný případ použití). Protože není k dispozici žádné ověření, budete muset Ujistěte se, aby se zabránilo překlepům specifikací mapování pole.
+> Pokud název pole zdroje v cestě mapování pole odkazuje vlastnost tooa, který neexistuje ve formátu JSON, že mapování přeskočen bez chyby. To se provádí tak, aby podporujeme dokumentů s zvolte jiné schéma (což je běžný případ použití). Protože není k dispozici žádné ověření, musíte tootake pozor tooavoid překlepům specifikací mapování pole.
 >
 >
 
-Pokud vaše dokumenty JSON obsahovat pouze jednoduché vlastnosti nejvyšší úrovně, možná nebudete potřebovat mapování polí vůbec. Například pokud vaše struktury JSON vypadá to, nejvyšší úrovně vlastnosti "text", "datePublished" a "značky" přímo namapuje na odpovídající pole v indexu vyhledávání:
+Pokud vaše dokumenty JSON obsahovat pouze jednoduché vlastnosti nejvyšší úrovně, možná nebudete potřebovat mapování polí vůbec. Například pokud vaše struktury JSON vypadá se hello nejvyšší úrovně vlastnosti "text", "datePublished" a "značky" přímo mapuje toohello odpovídající pole v indexu vyhledávání hello:
 
     {
-       "text" : "A hopefully useful article explaining how to parse JSON blobs",
+       "text" : "A hopefully useful article explaining how tooparse JSON blobs",
        "datePublished" : "2016-04-13"
        "tags" : [ "search", "storage", "howto" ]    
      }
@@ -148,19 +148,19 @@ Tady je kompletní indexer datové části s mapování polí:
     }
 
 ## <a name="indexing-nested-json-arrays"></a>Indexování vnořená pole JSON
-Co dělat, když chcete indexu pole objektů JSON, ale tohoto pole je vnořený někde v tomto dokumentu? Můžete si vybrat vlastností, které obsahuje pole pomocí `documentRoot` vlastnosti konfigurace. Pokud například objektů BLOB vypadat takto:
+Co dělat, když chcete tooindex pole objektů JSON, ale tohoto pole je vnořený někde v rámci hello dokumentu? Můžete si vybrat vlastností, které obsahuje pole hello pomocí hello `documentRoot` vlastnosti konfigurace. Pokud například objektů BLOB vypadat takto:
 
     {
         "level1" : {
             "level2" : [
-                { "id" : "1", "text" : "Use the documentRoot property" },
-                { "id" : "2", "text" : "to pluck the array you want to index" },
-                { "id" : "3", "text" : "even if it's nested inside the document" }  
+                { "id" : "1", "text" : "Use hello documentRoot property" },
+                { "id" : "2", "text" : "toopluck hello array you want tooindex" },
+                { "id" : "3", "text" : "even if it's nested inside hello document" }  
             ]
         }
     }
 
-Pomocí této konfigurace můžete indexu pole obsažené ve `level2` vlastnost:
+Pomocí této konfigurace tooindex hello pole obsažené ve hello `level2` vlastnost:
 
     {
         "name" : "my-json-array-indexer",
@@ -169,4 +169,4 @@ Pomocí této konfigurace můžete indexu pole obsažené ve `level2` vlastnost:
     }
 
 ## <a name="help-us-make-azure-search-better"></a>Pomozte nám vylepšit Azure Search
-Pokud máte žádosti o funkce nebo vylepšení nápady, oslovení nám na našem [UserVoice lokality](https://feedback.azure.com/forums/263029-azure-search/).
+Pokud máte žádosti o funkce nebo vylepšení nápady, oslovení toous na našem [UserVoice lokality](https://feedback.azure.com/forums/263029-azure-search/).

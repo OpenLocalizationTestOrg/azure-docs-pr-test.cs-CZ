@@ -1,6 +1,6 @@
 ---
-title: "Klonování svazku na řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje různé klon typy a využití a vysvětluje, jak můžete pomocí zálohovacího skladu klonování svazku na zařízení řady StorSimple 8000."
+title: "aaaClone svazek na řady StorSimple 8000 | Microsoft Docs"
+description: "Popisuje hello klon různé typy a využití a vysvětluje, jak můžete pomocí zálohovacího skladu tooclone svazku na zařízení řady StorSimple 8000."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,93 +14,93 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/26/2017
 ms.author: alkohli
-ms.openlocfilehash: 70c85bcb2c26d2ad3d0515d24e028f84495634c0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4f7e1f62f17c7b2bd72820a00a5ab87b7e192332
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použít službu StorSimple Manager zařízení na portálu Azure ke klonování svazku
+# <a name="use-hello-storsimple-device-manager-service-in-azure-portal-tooclone-a-volume"></a>Použít službu StorSimple Manager zařízení hello ve službě Azure portálu tooclone svazku
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak můžete pomocí zálohovacího skladu klonování svazku pomocí **katalog zálohování** okno. Také vysvětluje rozdíly mezi *přechodný* a *trvalé* provede klonování. Pokyny v tomto kurzu platí pro všechna zařízení řady StorSimple 8000 verzi Update 3 nebo novější.
+Tento kurz popisuje, jak můžete pomocí zálohovacího skladu tooclone svazku prostřednictvím hello **katalog zálohování** okno. Také vysvětluje hello rozdíl mezi *přechodný* a *trvalé* provede klonování. Hello pokyny v tomto kurzu platí zařízení řady StorSimple 8000 hello tooall verzi Update 3 nebo novější.
 
-Služby StorSimple Manager zařízení **katalog zálohování** zobrazuje všechny zálohovací sklady, které vytvářejí, když jsou provedeny ruční nebo automatické zálohy. Pak můžete vybrat svazek v zálohovacího skladu klonovat.
+Hello služby StorSimple Manager zařízení **katalog zálohování** zobrazuje všechny zálohovací sklady hello, které vytvářejí, když jsou provedeny ruční nebo automatické zálohy. Pak můžete vybrat svazek v tooclone zálohovacího skladu.
 
  ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
 ## <a name="considerations-for-cloning-a-volume"></a>Důležité informace týkající se klonování svazku
 
-Při klonování svazku, zvažte následující informace.
+Vezměte v úvahu následující informace při klonování svazku hello.
 
-- Klon se chová stejně jako regulární svazek. Všechny operace, které je možné na svazku je k dispozici pro klonování.
+- Klon se chová v hello stejný způsob jako regulární svazek. Všechny operace, které je možné na svazku je k dispozici pro klonování hello.
 
-- Monitorování a výchozí zálohování jsou automaticky zakázán na klonovaný svazku. Musíte nakonfigurovat svazek klonovaný pro žádné zálohy.
+- Monitorování a výchozí zálohování jsou automaticky zakázán na klonovaný svazku. Potřebovali byste tooconfigure svazek klonovaný pro žádné zálohy.
 
-- Místně vázaný svazek je klonovat jako vrstvený svazek. Pokud potřebujete klonovaný být místně vázaný svazek, můžete klonu převést místně vázaný svazek po úspěšném dokončení operace klonování. Informace o převodu vrstvený svazek na místně vázaný svazek, přejděte na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+- Místně vázaný svazek je klonovat jako vrstvený svazek. Pokud třeba hello místně vázaný toobe klonovaný svazku, můžete převést hello klon tooa místně vázaný svazek po úspěšném dokončení operace klonování hello. Pro informace o převodu tooa vrstvený svazek, který je místně připnutý svazku, přejděte příliš[změnit typ svazku hello](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
 
-- Pokud se pokusíte převést svazek klonovaný ze zřízeny vrstvené místně vázaný okamžitě po klonování (Pokud je stále přechodný klon), převod selže s touto se následující chybová zpráva:
+- Pokud se pokusíte tooconvert, který svazek klonovaný ze vrstvené toolocally připnutý okamžitě po klonování (Pokud je stále přechodný klon), převod hello selže s touto hello následující chybová zpráva:
 
-    `Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
+    `Unable toomodify hello usage type for volume {0}. This can happen if hello volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry hello modify operation.`
 
-    Tato chyba byl přijat pouze v případě, že se klonování na jiném zařízení. Pokud převedete přechodný klonu nejdřív na trvalé klon místně vázaný svazek můžete úspěšně převést. Pořízení snímku cloudu přechodný klon ho převést na trvalé klonu.
+    Tato chyba byl přijat pouze v případě, že se klonování na tooa jiné zařízení. Můžete úspěšně převést toolocally svazku hello připnutý Pokud převedete hello přechodný klon tooa trvalé klonování. Pořízení snímku cloudu hello přechodný klon tooconvert ho tooa trvalé klonování.
 
 ## <a name="create-a-clone-of-a-volume"></a>Vytvořit klon svazku
 
-Můžete vytvořit klon na stejné zařízení, jiná zařízení nebo i o zařízení cloudu pomocí místní nebo cloudový snímek.
+Můžete vytvořit klon na hello stejného zařízení, jiná zařízení nebo i o zařízení cloudu pomocí místní nebo cloudové snímku.
 
-Následující postup popisuje vytvoření klonu z katalogu služby zálohování.  Alternativní metoda pro zahájení klonování je přejít na **svazky**, vyberte svazek, a pak klikněte pravým tlačítkem myši a vyvolání v místní nabídce vyberte **klon**.
+Hello následující postup popisuje, jak zálohovat toocreate klonu z hello katalogu.  Alternativní metoda tooinitiate klonování je příliš toogo**svazky**, vyberte svazek, pak klikněte pravým tlačítkem na tooinvoke hello kontextovou nabídku a vyberte **klon**.
 
-Proveďte následující kroky k vytvoření klonu svazku z katalogu služby zálohování.
+Proveďte následující kroky toocreate klon svazku z katalogu zálohování hello hello.
 
-#### <a name="to-clone-a-volume"></a>Klonování svazku
+#### <a name="tooclone-a-volume"></a>tooclone svazku
 
-1. Přejděte do služby StorSimple Manager zařízení a pak klikněte na tlačítko **katalog zálohování**.
+1. Přejděte služby StorSimple Manager zařízení tooyour a pak klikněte na tlačítko **katalog zálohování**.
 
 2. Vyberte zálohovací sklad následujícím způsobem:
    
-   1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek nebo zálohování zásady pro zálohu, kterou chcete vybrat.
-   3. Zadejte časový rozsah.
-   4. Klikněte na tlačítko **použít** ke spuštění tohoto dotazu.
+   1. Vyberte příslušné zařízení hello.
+   2. V rozevíracím seznamu hello výběru hello svazek nebo zálohování zásady zálohování hello chcete tooselect.
+   3. Zadejte časové rozmezí hello.
+   4. Klikněte na tlačítko **použít** tooexecute tento dotaz.
 
-    Zálohování přidružené k vybranému svazku nebo zásady zálohování by se měla objevit v seznamu sad záloh.
+    Hello zálohování přidružená k zásadě hello vybraný svazek nebo zálohování by se zobrazit v seznamu hello zálohovací sklady.
    
     ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Rozbalte zálohovací sklad zobrazíte přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli a zařízení, než bude možné obnovit. Přístup ke svazkům na **svazky** okno vašeho zařízení a pak postupujte podle kroků v [do offline režimu svazek](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) je uvedení do režimu offline.
+3. Rozbalte hello zálohovacího skladu tooview hello přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli hello a zařízení, než bude možné obnovit. Získat přístup ke svazkům hello na hello **svazky** okno zařízení a pak hello postupujte podle kroků v [do offline režimu svazek](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) tootake je v offline režimu.
    
    > [!IMPORTANT]
-   > Ujistěte se, že jste provedli svazky do offline režimu na hostiteli nejprve, před provedením svazky do režimu offline v zařízení. Pokud neprovedete offline svazky na hostiteli, může potenciálně vést k poškození dat.
+   > Ujistěte se, že jste provedli hello svazky do offline režimu na hostiteli hello nejprve, před provedením hello svazky do režimu offline v zařízení hello. Pokud neprovedete offline hello svazky na hostiteli hello, může potenciálně vést k poškození toodata.
    
-4. Přejděte zpět **katalog zálohování** a vyberte svazek v zálohovacím skladu. Klikněte pravým tlačítkem myši a potom v místní nabídce vyberte **klon**.
+4. Přejděte zpět toohello **katalog zálohování** a vyberte svazek v zálohovacím skladu. Klikněte pravým tlačítkem a pak z hello kontextové nabídky, vyberte **klon**.
 
    ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
-3. V **klon** okno, proveďte následující kroky:
+3. V hello **klon** okně hello následující kroky:
    
-    1. Určete cílové zařízení. Toto je umístění, kde bude vytvořen klonu. Můžete vybrat stejné zařízení nebo zadejte jiné zařízení.
+    1. Určete cílové zařízení. Toto je hello umístění, kde bude vytvořen hello klonování. Můžete vybrat hello stejné zařízení nebo zadejte jiné zařízení.
 
       > [!NOTE]
-      > Ujistěte se, že kapacitu, vyžaduje se pro klonování je nižší než kapacity, které jsou k dispozici na cílovém zařízení.
+      > Ujistěte se, že požadovaná pro klon hello kapacita hello je nižší než hello kapacity, které jsou k dispozici na cílovém zařízení hello.
        
-    2. Zadejte název jedinečné svazku pro vaše klon. Název musí obsahovat 3 až 127 znaků.
+    2. Zadejte název jedinečné svazku pro vaše klon. Hello název musí obsahovat 3 až 127 znaků.
       
         > [!NOTE]
-        > **Klonování svazku jako** pole bude **nastavování** i v případě, že se klonování místně vázaný svazek. Nelze změnit toto nastavení; ale pokud budete potřebovat klonovaný svazku, který má být místně vázaný i, můžete převést klonu pro místně vázaný svazek po úspěšném vytvoření klonu. Informace o převodu vrstvený svazek na místně vázaný svazek, přejděte na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+        > Hello **klonování svazku jako** pole bude **nastavování** i v případě, že se klonování místně vázaný svazek. Nelze změnit toto nastavení; ale pokud klonovaný svazku toobe místně vázaný také potřebovat hello, můžete převést hello klon tooa místně vázaný svazek po úspěšně vytvořit klon hello. Pro informace o převodu tooa vrstvený svazek, který je místně připnutý svazku, přejděte příliš[změnit typ svazku hello](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
           
-    3. V části **připojení hostitele**, zadejte záznam řízení přístupu (ACR) pro klonování. Můžete přidat nové ACR nebo zvolte ze seznamu existující. ACR určí, které hostitele může přístup Tenhle klon.
+    3. V části **připojení hostitele**, zadejte záznam řízení přístupu (ACR) pro klon hello. Můžete přidat nové ACR nebo vyberte možnost ze seznamu existující hello. Hello ACR určí, které hostitele může přístup Tenhle klon.
       
         ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-    4. Klikněte na tlačítko **klon** k dokončení operace.
+    4. Klikněte na tlačítko **klon** toocomplete hello operaci.
 
-4. Úloha klonování se zahájí a zobrazí se upozornění při klonování se úspěšně vytvořil. Kliknutím na úlohu oznámení nebo přejděte na **úlohy** okně můžete sledovat úlohu klonování.
+4. Úloha klonování se zahájí a zobrazí se upozornění při klonování hello je úspěšně vytvořen. Klikněte na úlohu oznámení hello nebo přejděte příliš**úlohy** okno toomonitor hello klon úlohy.
 
     ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. Po dokončení úlohy klon přejít na zařízení a potom klikněte na **svazky**. V seznamu svazků měli byste vidět klon, který byl právě vytvořen ve stejném kontejneru svazku, který má zdrojový svazek.
+7. Po dokončení úlohy klon hello přejděte tooyour zařízení a pak klikněte na tlačítko **svazky**. V seznamu hello svazků, měli byste vidět hello klon, který byl právě vytvořen v hello stejné kontejneru svazků, který má hello zdrojový svazek.
 
     ![Zálohovací sklad seznamu](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
@@ -108,20 +108,20 @@ Klon, který je vytvořen tímto způsobem je přechodný klonu. Další informa
 
 
 ## <a name="transient-vs-permanent-clones"></a>Pouze dočasné a trvalé klony
-Přechodný klony vytvoří jenom v případě, že se klonování na jiné zařízení. Může klonovat svazek konkrétní ze zálohovacího skladu na jiném zařízení spravovaných pomocí Správce zařízení StorSimple. Přechodný klonu má odkazů na data v původním svazku a používá tato data ke čtení a zápisu místně na cílovém zařízení.
+Přechodný klony vytvoří jenom v případě, že klonování tooanother zařízení. Může klonovat konkrétní svazku z jiného zařízení zálohovacího skladu tooa spravuje hello Správce zařízení StorSimple. klon přechodný Hello obsahuje odkazy na toohello data v původním svazku hello a používá tento tooread dat a zápisu místně na cílovém zařízení hello.
 
-Po provedení cloudový snímek přechodný klonování je výsledný klonování *trvalé* klonování. Během tohoto procesu se vytvoří kopie dat v cloudu a čas zkopírovat tato data je určena velikostí dat a Azure latenci (Toto je kopie Azure do Azure). Tento proces může trvat dnů, týdnů. Přechodný klon stane trvalé klonování a nemá všechny odkazy na původní data svazku, která byla naklonována ze.
+Po provedení cloudový snímek přechodný klonování je výsledný klon hello *trvalé* klonování. Během tohoto procesu kopii dat hello se vytvoří v cloudu hello a hello toocopy času, které tato data je určena velikostí hello hello dat a hello Azure latenci (Toto je kopie Azure do Azure). Tento proces může trvat tooweeks dnů. klon přechodný Hello stane trvalé klonování a nemá žádné odkazy toohello původní svazek data, která byla naklonována ze.
 
 ## <a name="scenarios-for-transient-and-permanent-clones"></a>Scénáře pro přechodný a trvalé klony
-Následující části popisují příklad situacích, ve kterých může být použit klony přechodný a trvalé.
+Hello následující oddíly popisují příklad situacích, ve kterých může být použit klony přechodný a trvalé.
 
 ### <a name="item-level-recovery-with-a-transient-clone"></a>Obnovení na úrovni položek s přechodný klon
-Budete muset obnovit soubor s jedním. roku starý Microsoft PowerPoint. Váš správce IT identifikuje konkrétní zálohování z této doby a pak filtry svazku. Správce pak provede klonování svazku, vyhledá soubor, který hledáte a poskytuje vám. V tomto scénáři se používá přechodný klonu.
+Je nutné toorecover jeden rok starý soubor s Microsoft PowerPoint. Váš správce IT identifikuje hello konkrétní zálohování z této doby a pak filtry hello svazku. Správce Hello pak provede klonování svazku hello, vyhledá hello soubor, který hledáte a poskytuje ji tooyou. V tomto scénáři se používá přechodný klonu.
 
-### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testování v produkčním prostředí s trvalé klon
-Je třeba ověřit chyby testování v produkčním prostředí. Vytvořit klon svazku v provozním prostředí a pak proveďte cloudový snímek Tenhle klon. k vytvoření klonovaného svazek nezávislé. V tomto scénáři se používá trvalá klonu.
+### <a name="testing-in-hello-production-environment-with-a-permanent-clone"></a>Testování hello produkčního prostředí s trvalé klon
+Je nutné tooverify chyby testování v produkčním prostředí hello. Vytvořit klon svazku hello hello produkčního prostředí a pak proveďte cloudový snímek tento toocreate klonování svazku nezávislé klonovaný. V tomto scénáři se používá trvalá klonu.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
-* Zjistěte, jak [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Zjistěte, jak příliš[obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
+* Zjistěte, jak příliš[použití hello tooadminister service Manager zařízení StorSimple zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

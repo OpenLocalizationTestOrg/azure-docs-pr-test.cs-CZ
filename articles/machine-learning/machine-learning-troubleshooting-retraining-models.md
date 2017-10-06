@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s retraining webové služby Azure Machine Learning Classic | Microsoft Docs"
-description: "Identifikujte a opravte narazil běžné problémy, když jsou retraining modelu pro webové služby Azure Machine Learning."
+title: "aaaTroubleshoot retraining Azure Machine Learning Classic webové služby | Microsoft Docs"
+description: "Identifikujte a opravte narazil běžné problémy, když jsou retraining hello modelu pro webové služby Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: VDonGlover
@@ -14,95 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: fc36499ebff88c86635228ff899c85e9166aabed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b6a78eaba161877106dccdc23437b5e454fca7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s retraining Azure Machine Learning Classic webové služby
+# <a name="troubleshooting-hello-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s hello retraining Azure Machine Learning Classic webové služby
 ## <a name="retraining-overview"></a>Retraining – přehled
-Když nasadíte prediktivní experiment jako vyhodnocování webové služby je statický model. Jakmile nová data k dispozici nebo pokud příjemce rozhraní API má svá vlastní data, musí být retrained modelu. 
+Když nasadíte prediktivní experiment jako vyhodnocování webové služby je statický model. Jakmile nová data k dispozici nebo pokud příjemce hello hello API má svá vlastní data, musí hello modelu toobe retrained. 
 
-Kompletní a podrobný postup retraining procesu Classic webové služby, najdete v části [Přeučování Machine Learning modely prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md).
+Kompletní návod hello retraining proces Classic webové služby, najdete v části [Přeučování Machine Learning modely prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md).
 
 ## <a name="retraining-process"></a>Retraining procesu
-Když potřebujete přeučování webovou službu, musíte přidat další některé jeho součásti:
+Pokud budete potřebovat tooretrain hello webové služby, musíte přidat další některé jeho součásti:
 
-* Webovou službu nasazenou z výukový Experiment. Musí mít experiment **výstup webové služby** modulu připojené k výstupu **Train Model** modulu.  
+* Webovou službu nasazenou z hello výukový Experiment. musí mít Hello experiment **výstup webové služby** modulu připojené toohello výstup hello **Train Model** modulu.  
   
-    ![Připojte k train model výstup webové služby.][image1]
-* Nový koncový bod přidán do vyhodnocování webovou službu.  Můžete přidat koncový bod programově pomocí ukázkový kód, kterou se odkazuje v Machine Learning Přeučování modelů prostřednictvím kódu programu tématu nebo prostřednictvím portálu Azure classic.
+    ![Připojte hello webové služby výstupní toohello train model.][image1]
+* Nový koncový bod přidat tooyour vyhodnocování webové služby.  Můžete přidat koncový bod hello programově pomocí hello ukázkový kód v hello odkazuje programovém přeučení modelů Machine Learning tématu nebo prostřednictvím hello portál Azure classic.
 
-Ukázka kódu C# ze stránky nápovědy školení webové rozhraní API pak můžete přeučování modelu. Po vyhodnocení výsledky a spokojeni s nimi, je třeba aktualizovat pro cvičný model vyhodnocování webové službě pomocí nového koncového bodu, který jste přidali.
+Potom můžete hello ukázkový kód C# z modelu tooretrain stránky nápovědy API hello školení webové služby. Jakmile máte vyhodnotit hello výsledky a spokojeni s nimi, aktualizujete hello trained model vyhodnocování webové službě pomocí nový koncový bod hello, kterou jste přidali.
 
-Hlavní kroky, které je nutné provést při programovém modelu s všechny části na místě, jsou následující:
+Hello hlavních kroků, je nutné provést tooretrain hello modelu se všechny kusy hello na místě, jsou následující:
 
-1. Volání webové služby školení: volání je do dávky spuštění služby (BES), není žádosti o odpověď služby (záznamy RR). Ukázkový kód jazyka C# můžete na stránce nápovědy rozhraní API pro volání. 
-2. Najít hodnoty *BaseLocation*, *RelativeLocation*, a *SasBlobToken*: tyto hodnoty jsou vráceny ve výstupu z volání k webové službě školení. 
-   ![zobrazuje výstup retraining ukázka a BaseLocation, RelativeLocation a SasBlobToken hodnoty.][image6]
-3. Aktualizace přidané koncového bodu z vyhodnocování webové služby s novou trénovaného modelu: pomocí ukázkový kód, který je součástí Machine Learning Přeučování modelů prostřednictvím kódu programu, aktualizaci nový koncový bod, které jste přidali do vyhodnocování model s nově trénovaného modelu z Školení webové služby.
+1. Volání hello školení webové služby: volání hello je toohello spuštění služby Batch (BES), není hello žádosti o služby odpovědi (RR). Můžete vytvořit hello ukázkový kód C# hello rozhraní API nápovědy stránky toomake hello volání. 
+2. Najít hello hodnoty pro hello *BaseLocation*, *RelativeLocation*, a *SasBlobToken*: tyto hodnoty jsou vráceny ve výstupu hello z vaší toohello volání webové školení Služba. 
+   ![zobrazuje výstup hello hello retraining ukázka a hello BaseLocation, RelativeLocation a SasBlobToken hodnoty.][image6]
+3. Aktualizace hello přidat koncový bod z hello vyhodnocování webové služby s hello nové Trénink modelu: pomocí hello ukázkový kód zadaný v hello Machine Learning Přeučování modelů prostřednictvím kódu programu, aktualizace nový koncový bod hello jste přidali toohello nově vyhodnocování model s hello trained model z hello školení webové služby.
 
 ## <a name="common-obstacles"></a>Běžné překážek
-### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Zkontrolujte, jestli máte správnou adresu URL oprava
-Adresa URL opravy, kterou používáte musí být přidružený nový vyhodnocovací koncový bod, které jste přidali k webové službě vyhodnocování. Existuje několik způsobů, jak získat adresu URL opravy:
+### <a name="check-toosee-if-you-have-hello-correct-patch-url"></a>Zkontrolujte toosee, pokud máte hello opravte oprava adresy URL
+Hello oprava URL používáte musí být hello jeden přidružené hello nový vyhodnocovací koncový bod přidat toohello vyhodnocování webové služby. Existuje několik způsobů tooobtain hello oprava adresy URL:
 
 **Možnost 1: programově**
 
-Pokud chcete získat správnou adresu URL opravy:
+tooget hello opravte oprava adresy URL:
 
-1. Spustit [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
-2. Z výstupu AddEndpoint, Najít *HelpLocation* hodnotu a zkopírujte adresu URL.
+1. Spustit hello [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
+2. Z výstupu hello AddEndpoint, najde hello *HelpLocation* hodnotu a zkopírujte adresu URL hello.
    
-   ![HelpLocation ve výstupu addEndpoint vzorku.][image2]
-3. Vložte adresu URL do prohlížeče, přejděte na stránku, která poskytuje odkazy na nápovědu pro webovou službu.
-4. Klikněte **aktualizace prostředků** odkazu k otevření stránky nápovědy opravy.
+   ![HelpLocation ve výstupu hello hello addEndpoint vzorku.][image2]
+3. Vložte hello URL do prohlížeče toonavigate tooa stránky, který poskytuje odkazy na nápovědu pro hello webové služby.
+4. Klikněte na tlačítko hello **aktualizace prostředků** stránku nápovědy oprava hello tooopen odkaz.
 
-**Možnost 2: Pomocí portálu Azure classic**
+**Možnost 2: Použití hello portál Azure classic**
 
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Otevřete kartu Machine Learning. 
-   ![Karta opřené počítače.][image4]
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Karta otevřete hello Machine Learning. ![Karta opřené počítače.][image4]
 3. Pak klikněte na název pracovního prostoru, **webové služby**.
-4. Klikněte na tlačítko vyhodnocování webové služby, kterou pracujete. (Pokud jste nezměnila výchozí název webové služby, se bude končit [vyhodnocování Exp.].)
+4. Klikněte na tlačítko hello vyhodnocování webové služby, kterou pracujete. (Pokud jste nezměnila hello výchozí název hello webové služby, se bude končit [vyhodnocování Exp.].)
 5. Klikněte na tlačítko **přidání koncového bodu**.
-6. Po přidání koncového bodu, klikněte na název koncového bodu. Pak klikněte na tlačítko **aktualizace prostředků** chcete otevřít stránku nápovědy oprav.
+6. Po přidání koncového bodu hello klikněte na název koncového bodu hello. Pak klikněte na tlačítko **aktualizace prostředků** tooopen hello oprav stránku nápovědy.
 
 > [!NOTE]
-> Pokud jste přidali koncový bod k webové službě školení místo prediktivní webové služby, zobrazí se chybová zpráva po kliknutí na tlačítko **aktualizace prostředků** odkaz: je nám líto, ale tato funkce není podporována nebo k dispozici v tomto kontext. Tato webová služba nemá žádné aktualizovat prostředky. Omlouváme se za nepříjemnosti a práce na zlepšení tento pracovní postup.
+> Pokud jste přidali hello koncový bod toohello školení webové služby místo hello prediktivní webové služby, zobrazí se následující chyba po kliknutí na tlačítko hello hello **aktualizace prostředků** odkaz: je nám líto, ale tato funkce není podporována nebo v tomto kontextu dostupné. Tato webová služba nemá žádné aktualizovat prostředky. Omlouváme se za nepříjemnosti hello a práce na zlepšení tento pracovní postup.
 > 
 > 
 
 ![Nový koncový bod řídicí panel.][image3]
 
-Na stránce nápovědy oprava obsahuje adresu URL opravy, je nutné použít a poskytuje ukázkový kód, které můžete použít k volání.
+stránka nápovědy oprava Hello obsahuje hello oprava adresa URL musí používat a poskytuje ukázkový kód můžete použít toocall ho.
 
 ![Adresa URL opravy.][image5]
 
-### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Zkontrolujte aktualizaci správný vyhodnocování koncový bod
-* Není oprava webovou službu školení: operace opravy se musí provést na vyhodnocování webové službě.
-* Výchozí koncový bod webové služby není oprava: operace opravy se musí provést na nové vyhodnocování webové služby koncového bodu, který jste přidali.
+### <a name="check-toosee-that-you-are-updating-hello-correct-scoring-endpoint"></a>Zkontrolujte toosee aktualizaci hello správný vyhodnocování koncový bod
+* Není oprava hello školení webové služby: hello operace opravy se musí provést na hello vyhodnocování webové služby.
+* Není oprava hello výchozí koncový bod webové služby: hello operace opravy se musí provést na hello nové vyhodnocování koncový bod webové služby, které jste přidali.
 
-Můžete ověřit, které webové služby, koncový bod je na pomocí portálu Azure classic. 
+Můžete ověřit, které koncový bod webové služby hello je zapnutá ve hostujícími hello portál Azure classic. 
 
 > [!NOTE]
-> Ujistěte se, že přidáváte koncový bod do prediktivní webové služby není školení webovou službu. Pokud jste nasadili správně školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby uvedené. Prediktivní webové služby musí končit "[prediktivní exp.]".
+> Ujistěte se, že přidáváte hello koncový bod toohello prediktivní webové služby, hello školení webové služby. Pokud jste nasadili správně školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby uvedené. Hello prediktivní webové služby musí končit "[prediktivní exp.]".
 > 
 > 
 
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Otevřete kartu Machine Learning. 
-   ![Machine learning prostoru uživatelského rozhraní.][image4]
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Karta otevřete hello Machine Learning. ![Machine learning prostoru uživatelského rozhraní.][image4]
 3. Vyberte pracovní prostor.
 4. Klikněte na tlačítko **webové služby**.
 5. Vyberte prediktivní webové služby.
-6. Ověřte, že váš nový koncový bod byl přidán k webové službě.
+6. Ověřte, že váš nový koncový bod byl přidán toohello webové služby.
 
-### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>Zkontrolujte pracovní prostor, který webová služba je v zajistit, že je ve správném oblasti
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Z nabídky vyberte Machine Learning.
+### <a name="check-hello-workspace-that-your-web-service-is-in-tooensure-it-is-in-hello-correct-region"></a>Zkontrolujte hello pracovní prostor, který je webová služba v tooensure, který je v oblasti správné hello
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Vyberte z nabídky hello Machine Learning.
    ![Machine learning oblast uživatelského rozhraní.][image4]
-3. Zkontrolujte umístění pracovního prostoru.
+3. Zkontrolujte umístění hello pracovního prostoru.
 
 <!-- Image Links -->
 

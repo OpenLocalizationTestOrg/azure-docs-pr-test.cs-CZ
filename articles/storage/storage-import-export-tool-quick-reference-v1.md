@@ -1,6 +1,6 @@
 ---
-title: "Stručná referenční příručka pro úlohy příkazy pro import nástroj Azure Import/Export - v1 | Microsoft Docs"
-description: "Azure Import/Export nástroj informace o příkazech pro import často používané příkazy úlohy. Vztahuje se k v1 nástroj importu a exportu."
+title: "aaaQuick reference pro příkazy úlohy Azure Import/Export nástroj import - v1 | Microsoft Docs"
+description: "Azure Import/Export nástroj informace o příkazech pro import často používané příkazy úlohy. Vztahuje se toov1 hello nástroj pro Import nebo Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 47f450ee87dac3db2ccf7659928d52a6330a5697
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e36f065e5d23268758cf6b6db9428fe8a8e1056d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Stručná referenční příručka pro často používané příkazy pro úlohy importu
 Tato část poskytuje že rychlé odkazy na některé často používané příkazy. Podrobné informace o použití, najdete v části [Příprava pevné disky pro úlohy importu](storage-import-export-tool-preparing-hard-drives-import-v1.md).  
 
-## <a name="prepare-the-disks-when-data-already-copied-to-the-disks"></a>Příprava disky, když data již zkopírují na disky
- Zde je ukázka příkazu, který připraví disky, když data již zkopírována na pevný disk, který nebyl byla zatím nebyla šifrované pomocí nástroje BitLocker:  
+## <a name="prepare-hello-disks-when-data-already-copied-toohello-disks"></a>Připravit disky hello při data již zkopírovat toohello disky
+ Tady je ukázkový příkaz tooprepare disky při data již zkopírovat toohello pevný disk, který nebyl byla zatím nebyla šifrované pomocí nástroje BitLocker:  
   
 ```  
   WAImportExport.exe PrepImport /j:9WM35C2V.jrn /id:session#1 /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:d /encrypt /srcdir:d:\movies\drama /dstdir:movies/drama/ /skipwrite
 ```    
 
-## <a name="copy-a-single-directory-to-a-hard-drive"></a>Zkopírovat jeden adresář na pevný disk  
- Zde je ukázka příkazu zkopírovat jeden zdrojový adresář na pevný disk, který nebyl byla zatím nebyla šifrované pomocí nástroje BitLocker:  
+## <a name="copy-a-single-directory-tooa-hard-drive"></a>Zkopírujte na jednoho adresářového tooa pevný disk  
+ Tady je ukázkový příkaz toocopy jednoho zdroje tooa directory pevný se disk, který nebyl byla zatím nebyla šifrované pomocí nástroje BitLocker:  
   
 ```  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:movies /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:d:\Movies /dstdir:entertainment/movies/  
 ```  
   
-## <a name="copy-wwo-directories-to-a-hard-drive"></a>Kopírování adresářů wwo na pevný disk  
- Pokud chcete zkopírovat dva adresáře zdroje na jednotku, budete potřebovat dva příkazy.  
+## <a name="copy-wwo-directories-tooa-hard-drive"></a>Zkopírujte wwo adresáře tooa pevný disk  
+ toocopy dva zdrojového adresáře tooa jednotce, budete potřebovat dva příkazy.  
   
- První příkaz určuje adresář protokolu, klíč účtu úložiště, písmeno jednotky cíl a `format/encrypt` požadavky, kromě běžné parametry:  
+ Určuje adresář protokolu hello, klíč účtu úložiště, písmeno jednotky cíl, Hello první příkaz a `format/encrypt` požadavky v přidání toohello společné parametry:  
   
 ```  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:movies /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:d:\Movies /dstdir:entertainment/movies/  
 ```  
   
- V druhém příkazu Určuje soubor deníku, nové ID relace a zdrojové a cílové umístění:  
+ druhý příkaz Hello Určuje soubor hello deníku, nové ID relace a hello zdrojové a cílové umístění:  
   
 ```  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:music /srcdir:d:\Music /dstdir:entertainment/music/  
 ```  
   
-## <a name="copy-a-large-file-to-a-hard-drive-in-a-second-copy-session"></a>Kopírování velkého souboru na pevný disk v relaci druhé kopie  
- Zde je ukázka příkaz, který zkopíruje jeden velký soubor na disk, který jste připravili v předchozí relaci kopie:  
+## <a name="copy-a-large-file-tooa-hard-drive-in-a-second-copy-session"></a>Kopírování velkého souboru tooa pevný disk v relaci druhé kopie  
+ Zde je ukázka příkaz, který zkopíruje jednotku tooa jeden velký soubor, který jste připravili v předchozí relaci kopie:  
   
 ```  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:dvd /srcfile:d:\dvd\favoritemovie.vhd /dstblob:dvd/favoritemovie.vhd  
@@ -61,4 +61,4 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:dvd /srcfile:d:\dvd\favorite
   
 ## <a name="next-steps"></a>Další kroky
 
-* [Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+* [Ukázkový pracovní postup tooprepare pevné disky pro úlohy importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)

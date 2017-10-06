@@ -1,6 +1,6 @@
 ---
-title: "Pomocí konektoru serveru SharePoint Server ve vašich Logic Apps | Microsoft Docs"
-description: "Začněte používat konektor Server služby SharePoint ve vašich Logic apps"
+title: "aaaUse hello serveru konektoru služby SharePoint ve vašich Logic Apps | Microsoft Docs"
+description: "Začněte používat hello hello konektor Server služby SharePoint ve vašich Logic apps"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b814f42611e4971ff5c94ae3b021829217911dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-sharepoint-connector"></a>Začínáme s konektorem služby SharePoint
-Konektor služby SharePoint poskytuje způsob práce se seznamy na webu služby SharePoint.
+# <a name="get-started-with-hello-sharepoint-connector"></a>Začínáme s konektorem služby SharePoint hello
+Hello konektor služby SharePoint poskytuje toowork způsob, jak se seznamy služby SharePoint.
 
 Začněte vytvořením aplikace logiky; v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-sharepoint"></a>Umožňuje vytvořit připojení do služby SharePoint
-K používání konektoru služby SharePoint, je třeba nejprve vytvořit **připojení** pak zadejte podrobnosti pro tyto vlastnosti: 
+## <a name="create-a-connection-toosharepoint"></a>Vytvoření připojení tooSharePoint
+toouse hello konektor služby SharePoint, je nejprve vytvořit **připojení** pak zadejte hello podrobnosti pro tyto vlastnosti: 
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | Token |Ano |Zadejte pověření serveru SharePoint |
 
-Pro připojení k **SharePoint**, zadejte svoji identitu (uživatelského jména a hesla, čipové karty přihlašovací údaje, atd.) do služby SharePoint. Jakmile jste jste ověřena, můžete přejít k používání konektoru služby SharePoint v aplikaci logiky. 
+tooconnect příliš**SharePoint**, zadejte tooSharePoint vaší identity (uživatelské jméno a heslo, pověření čipové karty, atd.). Po jste si ověřit, můžete v aplikaci logiky toouse hello SharePoint konektor. 
 
-Při na návrháře aplikace logiky, postupujte podle těchto kroků pro přihlášení do služby SharePoint k vytvoření připojení **připojení** pro použití v aplikaci logiky:
+Při na hello návrhář aplikace logiky, postupujte podle těchto kroků toosign do služby SharePoint toocreate hello připojení **připojení** pro použití v aplikaci logiky:
 
-1. Zadejte do pole vyhledávání služby SharePoint a počkat na výsledky vyhledávání na vrátí všechny položky se službou SharePoint v názvu:   
+1. Hello vyhledávacího pole zadejte SharePoint a počkejte tooreturn hello vyhledávání všech položek s služby SharePoint v názvu hello:   
    ![Konfigurace služby SharePoint][1]  
 2. Vyberte **SharePoint – když dojde k vytvoření souboru**   
-3. Vyberte **přihlásit do služby SharePoint**:   
+3. Vyberte **přihlášení tooSharePoint**:   
    ![Konfigurace služby SharePoint][2]    
-4. Zadejte svoje přihlašovací údaje služby SharePoint pro přihlášení k ověření pomocí služby SharePoint   
+4. Vaše přihlašovací údaje toosign služby SharePoint v tooauthenticate poskytnout služby SharePoint   
    ![Konfigurace služby SharePoint][3]     
-5. Po dokončení ověření budete přesměrováni na svou aplikaci logiky dokončit konfigurací služby SharePoint na **vytvoření souboru** dialogové okno.          
+5. Po dokončení ověřování hello budete přesměrovaného tooyour logiku aplikace toocomplete ho konfigurací Sharepointu **vytvoření souboru** dialogové okno.          
    ![Konfigurace služby SharePoint][4]  
-6. Poté můžete přidat další aktivační události a akce, které potřebujete k dokončení svou aplikaci logiky.   
-7. Uložte si práci, výběrem **Uložit** na panelu nabídek nahoře.  
+6. Poté můžete přidat další triggery a akce, je nutné toocomplete svou aplikaci logiky.   
+7. Uložte si práci, výběrem **Uložit** v řádku nabídek hello výše.  
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/sharepoint/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/sharepoint/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).
 
 [1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
 [2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 

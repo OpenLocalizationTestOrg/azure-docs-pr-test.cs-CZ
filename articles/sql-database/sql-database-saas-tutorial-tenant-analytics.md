@@ -1,5 +1,5 @@
 ---
-title: "Spouštění analytických dotazů pro více databází SQL Azure | Dokumentace Microsoftu"
+title: "analytické dotazy aaaRun proti více databází Azure SQL | Microsoft Docs"
 description: "Extrahovat data z databáze klienta do databáze analýzy pro offline analýzu"
 keywords: kurz k sql database
 services: sql-database
@@ -16,83 +16,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f2664e4aafd2fecc98d20d229342bca19b0b08c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>Extrahovat data z databáze klienta do databáze analýzy pro offline analýzu
 
-V tomto kurzu použijete elastické úlohy ke spouštění dotazů na každou databázi klienta. Úloha extrahuje data prodeje lístků a načte ji do databáze analýzy (nebo datového skladu) pro analýzu. Databáze analýzy je pak dotazován extrahovat statistiky z této každodenní provozních dat všech klientů.
+V tomto kurzu použijete elastické úlohy toorun dotazy pro každou databázi klienta. Úloha Hello extrahuje data prodeje lístků a načte ji do databáze analýzy (nebo datového skladu) pro analýzu. Hello analytics databáze je potom dotaz tooextract přehledy z této každodenní provozních dat všech klientů.
 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření analytické databáze tenantů
-> * Vytvoření plánované úlohy k načtení dat a naplnění analytické databáze
+> * Vytvoření databáze analýzy hello klienta
+> * Vytvoření tooretrieve dat naplánovanou úlohu a naplnění databáze analýzy hello
 
-Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
+toocomplete splnění tohoto kurzu, ujistěte se, hello následující požadavky:
 
-* Adresář Wingtip SaaS aplikace je nasazená. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
+* Hello Wingtip SaaS aplikace je nasazená. toodeploy za méně než pět minut, najdete v části [nasazení a seznamte se s hello Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Je nainstalovaná nejnovější verze SQL Server Management Studia (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+* je nainstalovaná nejnovější verze Hello systému SQL Server Management Studio (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 ## <a name="tenant-operational-analytics-pattern"></a>Vzor provozní analýzy tenanta
 
-Jednou ze skvělých příležitostí, které nabízejí aplikace SaaS, je používání rozsáhlého množství dat tenantů, která jsou uložená v cloudu. Tato data je možné využívat k získání přehledu o provozu a používání vaší aplikace a tenanta. Můžou řídit vývoj funkcí, vylepšení použitelnosti a další investice do aplikace a platformy. V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jedním z přístupů k těmto datům je použití elastických úloh, které umožňují zaznamenat výsledky dotazů vracejících výsledky z provedení úlohy do výstupní databáze a tabulky.
+Jedním z velké příležitosti hello s aplikacemi SaaS je toouse hello bohaté klienta data, která je uložená v cloudu hello. Použijte tato data toogain přehledy hello operace a využití vaší aplikace a klienty. Tato data můžete Průvodce vývoj funkce, vylepšení použitelnost a další investice do aplikace hello a platformu. V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jeden způsob tooaccessing tato data jsou toouse elastické úlohy, které umožňují vracení výsledků výsledků dotazu z toobe provádění úlohy zaznamenat do výstupní databáze a tabulky.
 
-## <a name="get-the-wingtip-application-scripts"></a>Získání skriptů aplikace Wingtip
+## <a name="get-hello-wingtip-application-scripts"></a>Získat hello Wingtip aplikační skripty
 
-Adresář Wingtip SaaS skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Postup stažení skripty Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS skripty a zdrojový kód aplikace jsou k dispozici v hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Kroky toodownload hello Wingtip SaaS skripty](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>Nasazení databáze pro výsledky analýzy tenanta
 
-Tento kurz vyžaduje, abyste měli nasazenou databázi, do které se budou zaznamenávat výsledky z provedení úlohy se skripty, která obsahuje dotazy vracející výsledky. Pro tento účel si vytvoříme databázi nazvanou tenantanalytics.
+Tento kurz vyžaduje toohave, které databáze nasazené toocapture hello výsledkem úlohy spouštění skriptů, které obsahují vrací výsledky dotazů. Pro tento účel si vytvoříme databázi nazvanou tenantanalytics.
 
-1. Otevřete skript …\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*Demo-TenantAnalyticsDB.ps1* ve složce *PowerShell ISE* a nastavte následující hodnotu:
-   * **$DemoScenario** = **2** *Nasazení provozní analytické databáze* 
-1. Stiskněte klávesu **F5** ke spuštění ukázkového skriptu (který volá skript *Deploy-TenantAnalyticsDB.ps1*), který vytvoří databázi analýzy tenanta.
+1. Otevřete... \\Learning moduly\\provozní Analytics\\klienta Analytics\\*ukázku TenantAnalyticsDB.ps1* v hello *prostředí PowerShell ISE* a nastavte Hello následující hodnotu:
+   * **$DemoScenario** = **2***Nasazení provozní analytické databáze* 
+1. Stiskněte klávesu **F5** toorun hello ukázkový skript (hello tohoto volání *nasadit TenantAnalyticsDB.ps1* skriptu) vytváří databáze analýzy hello klienta.
 
-## <a name="create-some-data-for-the-demo"></a>Vytvoření dat pro ukázku
+## <a name="create-some-data-for-hello-demo"></a>Vytvoření některá data pro ukázku hello
 
-1. Otevřete skript …\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*Demo-TenantAnalyticsDB.ps1* ve složce *PowerShell ISE* a nastavte následující hodnotu:
-   * **$DemoScenario** = **1** *Nákup lístků na akce na všech místech*
-1. Stiskněte klávesu **F5** ke spuštění skriptu a vytvoření historie nákupu lístků.
+1. Otevřete... \\Learning moduly\\provozní Analytics\\klienta Analytics\\*ukázku TenantAnalyticsDB.ps1* v hello *prostředí PowerShell ISE* a nastavte Hello následující hodnotu:
+   * **$DemoScenario** = **1***Nákup lístků na akce na všech místech*
+1. Stiskněte klávesu **F5** toorun hello skriptu a vytvoření lístku zakoupení historie.
 
 
-## <a name="create-a-scheduled-job-to-retrieve-tenant-analytics-about-ticket-purchases"></a>Vytvoření plánované úlohy k načtení analýzy tenanta k nákupu lístků
+## <a name="create-a-scheduled-job-tooretrieve-tenant-analytics-about-ticket-purchases"></a>Vytvoření analýza naplánovaná úloha tooretrieve klienta o lístek nákupy
 
-Tento skript vytvoří úlohu k načtení informací o nákupu lístků ze všech tenantů. Po shrnutí do jedné tabulky můžete získat bohatou informační metriku o vzorcích nákupu lístků napříč tenanty.
+Tento skript vytvoří informace o nákupu úlohy tooretrieve lístek od všech klientů. Jakmile agregován do jedné tabulky, můžete získat bohaté pronikavého metriky o lístek zakoupení vzory napříč hello klientům.
 
-1. Otevřete SSMS a připojte se k serveru catalog-&lt;user&gt;.database.windows.net.
+1. Otevřete aplikaci SSMS a připojte toohello katalogu -&lt;uživatele&gt;. database.windows.net serveru
 1. Otevřete složku ...\\Learning Modules\\Operational Analytics\\Tenant Analytics\\*TicketPurchasesfromAllTenants.sql*
-1. Upravit &lt;uživatele&gt;, použít uživatelské jméno použít při nasazení aplikace Wingtip SaaS v horní části na skript, **sp\_přidat\_cíl\_skupiny\_člen** a **sp\_přidat\_krok úlohy**
-1. Klikněte pravým tlačítkem, vyberte **připojení**a připojte se k katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
-1. Zkontrolujte, že jste připojení k databázi **jobaccount**, a stisknutím klávesy **F5** spusťte skript.
+1. Upravit &lt;uživatele&gt;, použijte hello uživatelské jméno používané při nasazení aplikace Wingtip SaaS hello v horní části hello hello skriptu **sp\_přidat\_cíl\_skupiny\_člen** a **sp\_přidat\_krok úlohy**
+1. Klikněte pravým tlačítkem, vyberte **připojení**a připojte toohello katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
+1. Ujistěte se, jsou připojené toohello **jobaccount** databáze a stiskněte klávesu **F5** pro spuštění skriptu hello
 
-* **sp\_add\_target\_group** vytvoří cílovou skupinu s názvem *TenantGroup*. Teď potřebujeme přidat cílové členy.
-* **SP\_přidat\_cíl\_skupiny\_člen** přidá *server* cíle typ člena, které považuje za všechny databáze v rámci tohoto serveru (Poznámka: Toto je customer1-&lt; Uživatel&gt; server obsahující databáze klienta) v čase úlohy by měl být součástí provádění úlohy.
+* **SP\_přidat\_cíl\_skupiny** vytvoří hello cílová skupina *TenantGroup*, nyní potřebujeme tooadd cíl členy.
+* **SP\_přidat\_cíl\_skupiny\_člen** přidá *server* cíle typ člena, které považuje za všechny databáze v rámci tohoto serveru (Poznámka: Toto je hello customer1 - &lt;Uživatele&gt; server obsahující databáze klienta hello) v čase úlohy by měl být součástí provádění úlohy hello.
 * **sp\_add\_job** vytvoří novou týdně plánovanou úlohu nazvanou Nákup lístků ze všech tenantů.
-* **sp\_add\_jobstep** vytvoří krok úlohy, který obsahuje text příkazu T-SQL k načtení všech informací o nákupu lístků ze všech tenantů, a zkopíruje výslednou sadu výsledků do tabulky nazvané *AllTicketsPurchasesfromAllTenants*
-* Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Zkontrolujte stavovou hodnotu ze sloupce **lifecycle**, která vám umožní monitorovat stav. V případě úspěchu je úloha zdárně dokončena na všech databázích tenantů i na dvou dalších databázích obsahujících referenční tabulku.
+* **SP\_přidat\_krok úlohy** vytvoří krok úlohy hello obsahující tooretrieve text T-SQL příkazu všechny informace o nákupu lístku hello ze všech klientů a kopírování hello vrací sadu výsledků do tabulce s názvem  *AllTicketsPurchasesfromAllTenants*
+* Zbývající zobrazení Hello ve skriptu hello zobrazení hello existenci hello objekty a provádění úlohy monitorování. Zkontrolujte hodnotu stavu hello z hello **životního cyklu** sloupec toomonitor hello stavu. Jednou byly úspěšné, hello úloha úspěšně dokončí na všechny databáze klienta a hello dva další databáze, které obsahují hello referenční tabulce.
 
-Úspěšné spuštění skriptu by mělo vrátit podobné výsledky:
+Úspěšném spuštění skriptu hello by měl mít za následek podobné výsledky:
 
 ![výsledky](media/sql-database-saas-tutorial-tenant-analytics/ticket-purchases-job.png)
 
-## <a name="create-a-job-to-retrieve-a-summary-count-of-ticket-purchases-from-all-tenants"></a>Vytvoření úlohy k načtení souhrnného počtu nákupů lístků ze všech tenantů
+## <a name="create-a-job-tooretrieve-a-summary-count-of-ticket-purchases-from-all-tenants"></a>Vytvoření úlohy tooretrieve, souhrnné počet lístku zakoupí od všech klientů
 
-Tento skript vytvoří úlohu k načtení souhrnu všech nákupů lístků ze všech tenantů.
+Tento skript vytvoří úlohu tooretrieve součet všech nákupů lístek od všech klientů.
 
-1. Otevřete SSMS a připojte se k serveru*catalog-&lt;User&gt;.database.windows.net*.
-1. Otevřete skript …\\Learning Modules\\Provision and Catalog\\Operational Analytics\\Tenant Analytics\\*Results-TicketPurchasesfromAllTenants.sql*
-1. Upravit &lt;uživatele&gt;, použít uživatelské jméno použít při nasazení aplikace Wingtip SaaS ve skriptu, v **sp\_přidat\_krok úlohy** uložené procedury
-1. Klikněte pravým tlačítkem, vyberte **připojení**a připojte se k katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
-1. Zkontrolujte, že jste připojení k databázi **tenantanalytics**, a stisknutím klávesy **F5** spusťte skript.
+1. Otevřete aplikaci SSMS a připojte toohello *katalogu -&lt;uživatele&gt;. database.windows.net* serveru
+1. Otevřete hello souboru... \\Učení moduly\\zřídit a katalog\\provozní Analytics\\klienta Analytics\\*TicketPurchasesfromAllTenants.sql výsledky*
+1. Upravit &lt;uživatele&gt;, použijte hello uživatelské jméno používané při nasazení aplikace Wingtip SaaS hello ve skriptu hello v hello **sp\_přidat\_krok úlohy** uložené procedury
+1. Klikněte pravým tlačítkem, vyberte **připojení**a připojte toohello katalogu -&lt;uživatele&gt;. database.windows.net serveru, pokud ještě není připojen.
+1. Ujistěte se, jsou připojené toohello **tenantanalytics** databáze a stiskněte klávesu **F5** pro spuštění skriptu hello
 
-Úspěšné spuštění skriptu by mělo vrátit podobné výsledky:
+Úspěšném spuštění skriptu hello by měl mít za následek podobné výsledky:
 
 ![výsledky](media/sql-database-saas-tutorial-tenant-analytics/total-sales.png)
 
@@ -100,9 +100,9 @@ Tento skript vytvoří úlohu k načtení souhrnu všech nákupů lístků ze v�
 
 * **sp\_add\_job** vytvoří novou týdně plánovanou úlohu nazvanou ResultsTicketsOrders
 
-* **sp\_add\_jobstep** vytvoří krok úlohy, který obsahuje text příkazu T-SQL k načtení všech informací o nákupu lístků ze všech tenantů, a zkopíruje výslednou sadu výsledků do tabulky nazvané CountofTicketOrders
+* **SP\_přidat\_krok úlohy** vytvoří krok úlohy hello obsahující tooretrieve text T-SQL příkazu všechny informace o nákupu lístku hello ze všech klientů a vrací sadu výsledků do tabulce s názvem CountofTicketOrders hello kopie
 
-* Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Zkontrolujte stavovou hodnotu ze sloupce **lifecycle**, která vám umožní monitorovat stav. V případě úspěchu je úloha zdárně dokončena na všech databázích tenantů i na dvou dalších databázích obsahujících referenční tabulku.
+* Zbývající zobrazení Hello ve skriptu hello zobrazení hello existenci hello objekty a provádění úlohy monitorování. Zkontrolujte hodnotu stavu hello z hello **životního cyklu** sloupec toomonitor hello stavu. Jednou byly úspěšné, hello úloha úspěšně dokončí na všechny databáze klienta a hello dva další databáze, které obsahují hello referenční tabulce.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -111,11 +111,11 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Nasazení analytické databáze tenantů
-> * Vytvoření plánované úlohy k načtení analytických dat mezi tenanty
+> * Vytvoření naplánované úlohy analytická data tooretrieve mezi klienty
 
 Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* Další [návodů, které stavět na adresář Wingtip SaaS aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* Další [návodů, které stavějí hello Wingtip SaaS aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické úlohy](sql-database-elastic-jobs-overview.md)

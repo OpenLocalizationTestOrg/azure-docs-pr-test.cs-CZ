@@ -1,6 +1,6 @@
 ---
-title: "Výsledky testu pro replikaci technologie Hyper-V mezi lokalitami s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje informace o testování výkonu pro místně na místní replikaci virtuálních počítačů technologie Hyper-V pomocí Azure Site Recovery."
+title: "aaaTest výsledky pro replikaci technologie Hyper-V mezi lokalitami s Azure Site Recovery | Microsoft Docs"
+description: "Tento článek obsahuje informace o testování výkonu pro místní tooon místní replikaci virtuálních počítačů Hyper-V pomocí Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b37542fc88e0af05e05cee78183983667618816
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Výsledky testu pro místně na místní replikaci technologie Hyper-V pomocí Site Recovery
+# <a name="test-results-for-on-premises-tooon-premises-hyper-v-replication-with-site-recovery"></a>Výsledky testu pro místní tooon místní replikace Hyper-V pomocí Site Recovery
 
-Microsoft Azure Site Recovery můžete použít k orchestraci a správě replikace virtuálních počítačů a fyzických serverů do Azure nebo do sekundárního datacentra. Tento článek obsahuje výsledky testování výkonu, které jsme to udělali při replikaci virtuálních počítačů technologie Hyper-V mezi dvěma místními datacentry.
+Můžete použít Microsoft Azure Site Recovery tooorchestrate a Správa replikace virtuálních počítačů a fyzických serverů tooAzure nebo tooa sekundárního datacentra. Tento článek obsahuje hello výsledky testování výkonu, které jsme to udělali při replikaci virtuálních počítačů technologie Hyper-V mezi dvěma místními datacentry.
 
 ## <a name="test-goals"></a>Test cíle
 
-Cílem testování se zjistit, jak Azure Site Recovery provede během stabilního stavu replikace. Po dokončení počáteční replikace virtuálních počítačů a synchronizují rozdílové změny dojde k replikaci stabilního stavu. Je důležité k měření výkonu pomocí stabilního stavu, protože se jedná o stavu, ve kterém se většina virtuální počítače zůstanou, dokud neočekávaných výpadků.
+cílem Hello testování bylo tooexamine jak Azure Site Recovery provede během stabilního stavu replikace. Po dokončení počáteční replikace virtuálních počítačů a synchronizují rozdílové změny dojde k replikaci stabilního stavu. Je důležité toomeasure výkonu pomocí stabilního stavu, protože je hello stavu, ve kterém se většina virtuální počítače zůstanou, dokud neočekávaných výpadků.
 
-Testovací nasazení se skládal z dvěma místními lokalitami s server VMM v každé lokalitě. Toto testovací nasazení je typické nasazení office head office nebo větev, s sídlo funguje jako primární lokality a na pobočce jako sekundární nebo obnovení lokality.
+testovací nasazení pro Hello se skládal z dvěma místními lokalitami s server VMM v každé lokalitě. Toto testovací nasazení je typické nasazení office head office nebo větev, s sídlo funguje jako primární lokality hello a pobočky hello jako hello sekundární nebo obnovení lokality.
 
 ## <a name="what-we-did"></a>Co jsme se
 
-Zde je seznam toho, co jsme v testu předat:
+Zde je seznam toho, co jsme v testu hello předat:
 
 1. Vytvořit virtuální počítače pomocí šablony nástroje VMM.
 2. Spuštění virtuálních počítačů a metriky zachycení standardních hodnot výkonu vyšší než 12 hodin.
 3. Vytvořený cloudy na primární server a obnovení serverů VMM.
 4. Ochrana cloudu nakonfigurované v Azure Site Recovery, včetně mapování cloudů zdroje a obnovení.
-5. Povolit ochranu pro virtuální počítače a povolení jejich dokončení počáteční replikace.
+5. Povolit ochranu pro virtuální počítače a povolení jejich toocomplete počáteční replikace.
 6. Čekali pár hodin pro ustálení systému.
 7. Vyšší než 12 hodin, zachytit metrik výkonu, u zajistíte, že všechny virtuální počítače zůstal ve stavu očekávané replikace těchto 12 hodin.
-8. Měření rozdílů mezi metriky výkonu směrného plánu a metriky výkonu replikace.
+8. Míra hello rozdíl mezi metriky výkonu hello směrného plánu a metriky výkonu replikace hello.
 
 
 ## <a name="primary-server-performance"></a>Primární server výkonu
 
-* Replika technologie Hyper-V asynchronně sleduje změny do souboru protokolu s režijní náklady na minimální úložiště na primárním serveru.
-* Replika technologie Hyper-V využívá samoobslužné zachována mezipaměti režie minimalizovat IOPS pro sledování. Ukládají se zapíše na formát VHDX v paměti a uvolní je do souboru protokolu před časem odeslaný protokol na lokalitě pro obnovení. Vyprázdnění disk se také stane, když zápisů dosáhl předem určený limit.
-* Následující graf ukazuje režii IOPS stabilního stavu pro replikaci. Vidíme, že IOPS režie z důvodu replikace je přibližně % 5, který je značně nízká.
+* Replika technologie Hyper-V asynchronně sleduje změny souboru tooa protokolu s úložiště minimální režií na primární server hello.
+* Replika technologie Hyper-V využívá režijní náklady na samoobslužné zachována paměti mezipaměti toominimize IOPS pro sledování. Ukládají se toohello zápisy, VHDX v paměti a vyprázdnění je do souboru protokolu hello před hello čas protokol hello je odeslána toohello obnovení lokality. Vyprázdnění disk se také stane, když hello zápisy dosáhl předem určený limit.
+* Následující graf Hello ukazuje režijní náklady na hello stabilního stavu IOPS pro replikaci. Vidíme, že hello režie kvůli tooreplication IOPS je přibližně % 5, který je značně nízká.
 
 ![Primární výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744913.png)
 
-Replika technologie Hyper-V využívá paměti na primárním serveru za účelem optimalizace výkonu disku. Jak je znázorněno v následujícím grafu, je okrajového paměti nároky na všech serverech v primární clusteru. Paměť režie vidět je procento paměti používané při replikaci ve srovnání s celkovou velikost paměti nainstalované na serveru Hyper-V.
+Replika technologie Hyper-V využívá paměti na výkon disku toooptimize hello primární server. Jak je znázorněno v následujícím grafu hello, je okrajového paměti nároky na všechny servery v clusteru primární hello. paměť Hello režie vidět je hello procento paměti používané replikace porovnání toohello celkový nainstalovaná paměť na serveru Hyper-V hello.
 
 ![Primární výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744914.png)
 
-Replika technologie Hyper-V má minimální nároky na procesor. Jak je znázorněno v grafu, režijní náklady replikace je v rozsahu 2 až 3 %.
+Replika technologie Hyper-V má minimální nároky na procesor. Jak je znázorněno v grafu hello, režijní náklady replikace je v rozsahu hello % 2-3.
 
 ![Primární výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
 
 ## <a name="secondary-recovery-server-performance"></a>Výkon serveru sekundárním serveru (obnovení)
 
-Replika technologie Hyper-V používá malé množství paměti na serveru pro obnovení k optimalizaci počet operací úložiště. Graf obsahuje souhrn využití paměti na serveru pro obnovení. Paměť režie vidět je procento paměti používané při replikaci ve srovnání s celkovou velikost paměti nainstalované na serveru Hyper-V.
+Replika technologie Hyper-V používá malé množství paměti na číslo hello hello obnovení serveru toooptimize operací úložiště. Graf Hello shrnuje hello využití paměti na serveru pro obnovení hello. paměť Hello režie vidět je hello procento paměti používané replikace porovnání toohello celkový nainstalovaná paměť na serveru Hyper-V hello.
 
 ![Sekundární výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
 
-Objem vstupně-výstupních operací na lokalitě pro obnovení je funkce počet operací zápisu na primární lokalitě. Pojďme podívejte se na celkový počet vstupně-výstupních operací na lokalitě pro obnovení ve srovnání s celkový počet vstupně-výstupních operací a operací v primární lokalitě zápisu. V grafech ukáže, že celkový počet IOPS v lokalitě pro obnovení
+Hello objem vstupně-výstupních operací na hello obnovení lokality je funkce hello počet operací zápisu na primární lokalitě hello. Umožňuje prohlížet hello celkový počet vstupně-výstupních operací na webovém serveru obnovení hello ve srovnání s hello celkový počet vstupně-výstupních operací a operací v primární lokalitě hello zápisu. Zobrazit grafy Hello IOPS na hello obnovení lokality je celková hello
 
-* Přibližně 1, 5krát zápis IOPS na primární.
-* Přibližně 37 % celkový počet IOPS v primární lokalitě.
+* Přibližně 1, 5krát hello zápisu IOPS na primární hello.
+* 37 % hello přibližně celkový počet IOPS v primární lokalitě hello.
 
 ![Sekundární výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744917.png)
 
@@ -77,35 +77,35 @@ Objem vstupně-výstupních operací na lokalitě pro obnovení je funkce počet
 
 ## <a name="effect-on-network-utilization"></a>Vliv na využití sítě
 
-V průměru 275 Mb za sekundu šířky pásma sítě byla použít mezi primárními a obnovovacími uzly (s komprese zapnuta) u existující pásma 5 Gb za sekundu.
+Proti existující pásma 5 Gb za sekundu byl použit v průměru 275 Mb za sekundu šířky pásma sítě mezi hello primární a obnovení uzly (s komprese zapnuta).
 
 ![Využití sítě výsledky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
 ## <a name="effect-on-vm-performance"></a>Vliv na výkon virtuálního počítače
 
-Důležitý aspekt spočívá v dopad replikace na produkční úlohy běžící na virtuálních počítačích. Pokud primární lokalita je zajištěna dostatečná pro replikaci, by neměl být žádný vliv na jiné úlohy. Sledování mechanismus lightweight replika technologie Hyper-V zajistí, že úlohy běžící ve virtuálních počítačích nejsou dopad během stabilního stavu replikace. To je znázorněno v následující grafy.
+Důležitý aspekt spočívá v hello dopad na produkční úlohy běžící na virtuálních počítačích hello replikace. Pokud primární lokalita hello je zajištěna dostatečná pro replikaci, by nemělo být dopady ve hello úlohy. Sledování mechanismus lightweight replika technologie Hyper-V zajistí, že nejsou úlohy běžící ve virtuálních počítačích hello dopad během stabilního stavu replikace. To je znázorněno v následující grafy hello.
 
-Tento graf znázorňuje IOPS provést podle virtuálních počítačů spuštěných různé úlohy před a po povolení replikace. Můžete sledovat, že není žádný rozdíl mezi nimi.
+Tento graf znázorňuje IOPS provést podle virtuálních počítačů spuštěných různé úlohy před a po povolení replikace. Můžete sledovat, že není žádný rozdíl mezi dvěma hello.
 
 ![Výsledky vliv repliky](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
 
-Následující graf ukazuje propustnost virtuálních počítačů spuštěných různé úlohy před a po povolení replikace. Můžete si všimnout, že replikace má významný dopad.
+Hello následující graf ukazuje hello propustnost virtuálních počítačů spuštěných různé úlohy před a po povolení replikace. Můžete si všimnout, že replikace má významný dopad.
 
 ![Výsledky repliky efekty](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
 ## <a name="conclusion"></a>Závěr
 
-Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou technologie Hyper-V, škáluje s minimální režie pro cluster s podporou velké.  Azure Site Recovery poskytuje jednoduché nasazení, replikace, Správa a monitorování. Replika technologie Hyper-V poskytuje potřebnou infrastrukturu pro škálování úspěšná replikace. Pro plánování optimální nasazení, doporučujeme si stáhnout [Capacity Planner repliky technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057).
+výsledky Hello jasnému určení, že Azure Site Recovery, kombinaci s replikou technologie Hyper-V, škáluje s minimální režie pro cluster s podporou velké.  Azure Site Recovery poskytuje jednoduché nasazení, replikace, Správa a monitorování. Replika technologie Hyper-V poskytuje hello potřebnou infrastrukturu pro škálování úspěšná replikace. Pro plánování optimální nasazení, doporučujeme si stáhnout hello [Capacity Planner repliky technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057).
 
 ## <a name="test-environment-details"></a>Podrobnosti testovacího prostředí
 
 ### <a name="primary-site"></a>Primární lokality
 
-* Primární lokalita má clusteru, který obsahuje pět serverů Hyper-V běžící 470 virtuální počítače.
-* Virtuální počítače spustit různé úlohy a všechny mají povolenou ochranu Azure Site Recovery.
-* ISCSI SAN poskytuje úložiště pro uzel clusteru. Model – Hitachi HUS130.
+* má primární lokalita Hello clusteru, který obsahuje pět serverů Hyper-V běžící 470 virtuální počítače.
+* Hello ve virtuálních počítačích spouštět různé úlohy a všechny mají povolenou ochranu Azure Site Recovery.
+* ISCSI SAN poskytuje úložiště pro uzel clusteru hello. Model – Hitachi HUS130.
 * Každý server clusteru má čtyři síťové karty (síťové adaptéry) jeden GB/s každou.
-* Dvě síťové karty jsou připojené k privátní síti iSCSI a dva jsou připojené k externí podnikové síti. Jeden z externí sítě je vyhrazený pro komunikaci pouze mezi clustery.
+* Dva hello síťové karty jsou privátní síť připojená tooan iSCSI a dva jsou připojené tooan externí podnikové sítě. Mezi hello externí sítě je vyhrazený pro komunikaci pouze mezi clustery.
 
 ![Požadavky na hardware](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
 
@@ -116,8 +116,8 @@ Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou techn
 
 ### <a name="secondary-recovery-site"></a>(Obnovení) sekundární lokality
 
-* Sekundární lokalitu má clusteru s podporou převzetí služeb při selhání půl uzlu.
-* ISCSI SAN poskytuje úložiště pro uzel clusteru. Model – Hitachi HUS130.
+* sekundární lokality Hello má clusteru s podporou převzetí služeb při selhání půl uzlu.
+* ISCSI SAN poskytuje úložiště pro uzel clusteru hello. Model – Hitachi HUS130.
 
 ![Specifikace primární hardwaru](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
@@ -131,8 +131,8 @@ Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou techn
 ### <a name="server-workloads"></a>Úlohy serveru
 
 * Pro účely testování můžeme zachyceny úlohy běžně používaný v podnikové scénáře zákazníka.
-* Používáme [IOMeter](http://www.iometer.org) s vlastnosti úlohy souhrnu pro simulaci v tabulce.
-* Všechny profily IOMeter se nastavují pro zápis náhodných bajtů k simulaci nejhorší zápisu vzory pro úlohy.
+* Používáme [IOMeter](http://www.iometer.org) s charakteristiky zatížení hello shrnuto v tabulce hello simulace.
+* Všechny profily IOMeter se nastavují toowrite náhodných bajtů toosimulate nejhorší zápisu vzory pro úlohy.
 
 | Úloha | Vstupně-výstupních operací velikost (KB) | % Přístup | % Pro čtení | Počet nezpracovaných vstupně-výstupních operací | Vzor vstupně-výstupních operací |
 | --- | --- | --- | --- | --- | --- |
@@ -144,9 +144,9 @@ Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou techn
 
 ### <a name="vm-configuration"></a>Konfigurace virtuálního počítače
 
-* 470 virtuální počítače v primární clusteru.
+* 470 virtuální počítače v clusteru primární hello.
 * Všechny virtuální počítače s diskem VHDX.
-* Virtuální počítače spuštěné úlohy souhrnu v tabulce. Všechny byly vytvořeny pomocí šablony nástroje VMM.
+* Virtuální počítače spuštěné úlohy souhrnu v tabulce hello. Všechny byly vytvořeny pomocí šablony nástroje VMM.
 
 | Úloha | # Virtuální počítače | Minimální velikost paměti RAM (GB) | Maximální paměť RAM (GB) | Velikost logický disk (GB) na virtuální počítač | Maximální IOPS |
 | --- | --- | --- | --- | --- | --- |
@@ -159,10 +159,10 @@ Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou techn
 
 ### <a name="site-recovery-settings"></a>Nastavení obnovení lokality
 
-* Azure Site Recovery byl nakonfigurován na místním nasazením a místní ochrany
-* VMM server obsahuje čtyři cloudy nakonfigurovaná, obsahující servery clusteru Hyper-V a jejich virtuálních počítačů.
+* Azure Site Recovery byl nakonfigurován na ochranu tooon místní místní
+* Hello VMM server obsahuje čtyři cloudy nakonfigurovaná, obsahující hello servery clusteru Hyper-V a jejich virtuálních počítačů.
 
-| Primární cloud VMM | Chráněné virtuální počítače v cloudu | Četnost replikace | Další body obnovení |
+| Primární cloud VMM | Chráněný virtuální počítač v cloudu hello | Četnost replikace | Další body obnovení |
 | --- | --- | --- | --- |
 | PrimaryCloudRpo15m |142 |15 minut |Žádný |
 | PrimaryCloudRpo30s |47 |30 sekund. |Žádný |
@@ -171,7 +171,7 @@ Výsledky jasnému určení, že Azure Site Recovery, kombinaci s replikou techn
 
 ### <a name="performance-metrics"></a>Metriky výkonu
 
-Tabulka shrnuje metriky výkonu a čítače, které byly měřená v nasazení.
+Hello tabulka shrnuje hello metriky výkonu a čítače, které byly měřená v nasazení hello.
 
 | Metrika | Čítač |
 | --- | --- |

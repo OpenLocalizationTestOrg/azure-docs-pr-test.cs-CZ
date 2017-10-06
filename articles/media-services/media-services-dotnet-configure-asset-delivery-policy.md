@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurujte zásady doručení assetu pomocí .NET SDK | Microsoft Docs"
-description: "Toto téma ukazuje, jak nakonfigurovat zásady doručení jiný prostředek Azure Media Services .NET SDK."
+title: "zásady doručení mediálního aaaConfigure pomocí .NET SDK | Microsoft Docs"
+description: "Toto téma ukazuje, jak zásady doručení tooconfigure jiný prostředek s Azure Media Services .NET SDK."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 282fd9e24dc147e31613469926128894d48366f4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a6f2644d639cd36d4cdc269b6f01fd4acdf7160b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Nakonfigurujte zásady doručení assetu pomocí .NET SDK
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ## <a name="overview"></a>Přehled
-Pokud budete chtít doručení šifrované prostředky, jeden z kroků v pracovním postupu doručování obsahu Media Services je konfigurace zásad doručení pro prostředky. Zásady doručení assetu informuje Media Services, jak chcete použít pro váš asset, který bude doručen: do které protokol pro streamování by měl váš asset dynamicky zabalené (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), zda chcete dynamicky šifrovat. váš asset a jak (obálky nebo common encryption).
+Pokud máte v plánu toodelivery šifrované prostředky, jeden z hello kroků v hello Media Services obsahu doručení pracovního postupu je konfigurace zásad doručení pro prostředky. zásady doručení assetu Hello informuje Media Services, jak chcete použít pro váš asset toobe doručit: do streamování protokol, který by měl váš asset dynamicky zabalené (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), zda chcete toodynamically váš asset šifrovat a jak (obálky nebo common encryption).
 
-Toto téma popisuje, proč a jak vytvořit a nakonfigurovat zásady doručení assetu.
+Toto téma popisuje, proč a jak toocreate a nakonfigurujte zásady doručení assetu.
 
 >[!NOTE]
->Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
+>Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu. 
 >
->Abyste mohli používat dynamické balením a dynamickým šifrováním také váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
+>Navíc toobe možné toouse dynamické balením a dynamickým šifrováním váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
 
 
-Různé zásady je možné aplikovat na stejný asset. Můžete například použít šifrování PlayReady na technologie Smooth Streaming a pomocí standardu AES Envelope šifrování a MPEG DASH, HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například když přidáte jedinou zásadu, která jako protokol určuje pouze HLS), budou při streamování blokovány. Výjimkou je, pokud nemáte definovány vůbec žádné zásady doručení assetu. Pak budou všechny protokoly povolené v nešifrované podobě.
+Je možné aplikovat různé zásady toohello stejné asset. Například může použít PlayReady šifrování tooSmooth Streaming a pomocí standardu AES Envelope šifrování tooMPEG DASH a HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například přidáte jedinou zásadu, která jako hello protokol určuje pouze HLS) budou při streamování blokovány. Výjimka toothis Hello je, pokud máte definovány vůbec žádné zásady doručení assetu. Potom bude možné v hello zrušte všechny protokoly.
 
-Pokud chcete doručovat šifrované asset úložiště, musíte nakonfigurovat zásady doručení assetu. Před asset Streamovat, server datových proudů odebere šifrování úložiště a datové proudy svůj obsah pomocí zadaného doručování zásad. Například k poskytování asset šifrován Advanced Encryption (Standard AES) obálky šifrovací klíč, nastavte typ zásad na **DynamicEnvelopeEncryption**. Pokud chcete odebrat šifrování úložiště a Streamovat prostředek v nešifrované podobě, nastavte typ zásad na **NoDynamicEncryption**. Postupujte podle příklady, které ukazují, jak konfigurovat tyto typy zásad.
+Pokud chcete toodeliver asset šifrované úložiště, musíte nakonfigurovat zásady doručení assetu hello. Před Streamovat asset hello streamování šifrování úložiště hello odebere server a datových proudů svůj obsah pomocí hello zadat zásady pro doručení. Například toodeliver asset šifrován Advanced Encryption (Standard AES) obálky šifrovací klíč, nastavte typ zásad hello příliš**DynamicEnvelopeEncryption**. šifrování úložiště tooremove a asset hello datový proud v hello jasné, nastavte typ zásad hello příliš**NoDynamicEncryption**. Příklady, které ukazují, jak tooconfigure tyto typy zásad podle.
 
-V závislosti na tom, jak nakonfigurovat zásady doručení assetu by nebudete moct dynamicky balíčku, dynamicky šifrovat a stream u následujících protokolů streamování: datové proudy technologie Smooth Streaming, HLS a MPEG DASH.
+V závislosti na tom, jak nakonfigurovat zásady doručení assetu hello je bude možné toodynamically balíčku, dynamicky šifrovat a stream hello následujících protokolů datových proudů: datové proudy technologie Smooth Streaming, HLS a MPEG DASH.
 
-V následujícím seznamu jsou formáty, které umožňují stream Smooth, HLS a POMLČKY.
+Hello následujícím seznamu jsou formáty hello použijete toostream Smooth, HLS a POMLČKY.
 
 Technologie Smooth Streaming:
 
@@ -56,16 +56,16 @@ MPEG DASH
 
 
 ## <a name="considerations"></a>Požadavky
-* Nelze odstranit AssetDeliveryPolicy přidružený prostředek při Lokátor OnDemand (streaming) existuje pro tento prostředek. Doporučuje se před odstraněním zásady odeberte zásady z prostředku.
-* Šifrované majetku úložiště nelze vytvořit lokátor streamování, nastavena žádné zásady doručení assetu.  Není-li Asset šifrování úložiště, systém vám umožní vytvořit Lokátor a Streamovat prostředek v nešifrované podobě bez zásady pro doručení assetu.
-* Můžete mít více zásady doručení mediálního přidružené jednoho datového zdroje, ale můžete určit pouze jeden způsob, jak zpracovávat dané AssetDeliveryProtocol.  Znamená, pokud se pokusíte propojit dvě zásady doručení, které zadat AssetDeliveryProtocol.SmoothStreaming protokol, který bude výsledkem chyba, protože systém nebude vědět, který jeden se má použít, když klient odešle požadavek technologie Smooth Streaming.
-* Pokud máte prostředek s stávající Lokátor streamování, nemůže propojit nové zásady pro daný prostředek (můžete odpojit existující zásady z prostředku, nebo aktualizujete zásady pro doručení přidružený asset).  Nejdřív musíte odstraňte Lokátor streamování, upravit zásady a potom je znovu vytvořit lokátor streamování.  Stejné locatorId můžete použít, když je znovu vytvořit lokátor streamování, ale měli byste zajistit, že vzhledem k tomu, že do mezipaměti obsah počátek nebo podřízené CDN, který nebude způsobovat problémy pro klienty.
+* Nelze odstranit AssetDeliveryPolicy přidružený prostředek při Lokátor OnDemand (streaming) existuje pro tento prostředek. Hello doporučení je zásada hello tooremove z hello asset před odstraněním hello zásad.
+* Šifrované majetku úložiště nelze vytvořit lokátor streamování, nastavena žádné zásady doručení assetu.  Není-li hello Asset šifrování úložiště, hello systému vám umožní vytvoření prostředku hello Lokátor a datový proud v hello zrušte bez zásady pro doručení assetu.
+* Může mít několik zásady doručení mediálního přidružené jednoho datového zdroje, ale můžete zadat jenom jeden ze způsobů toohandle daného AssetDeliveryProtocol.  Znamená, pokud se pokusíte toolink dvě zásady doručení určující hello AssetDeliveryProtocol.SmoothStreaming protokol, který bude výsledkem chyba, protože systém hello nebude vědět, které z nich chcete tooapply když klient zadává žádost technologie Smooth Streaming.
+* Pokud máte prostředek s stávající Lokátor streamování, nelze propojit nový prostředek zásad toohello (můžete odpojit existující zásady z hello asset, nebo aktualizujete zásady pro doručení přidružené hello asset).  Můžete nejprve mít Lokátor streamování hello tooremove, upravte hello zásady a potom je znovu vytvořit lokátor streamování hello.  Můžete použít hello, které by měly stejné locatorId při vytvoření hello streamování Lokátor ale můžete zajistit, který nezpůsobí problémy pro klienty, protože do mezipaměti obsah hello původ nebo příjem dat CDN.
 
 ## <a name="clear-asset-delivery-policy"></a>Zásady doručení assetu vymazat
 
-Následující **ConfigureClearAssetDeliveryPolicy** metoda určuje nelze použít dynamické šifrování a poskytovat datový proud v některém z těchto protokolů: protokoly MPEG DASH, HLS nebo technologie Smooth Streaming. Můžete chtít tuto zásadu použít pro vaše prostředky šifrování úložiště.
+Následující Hello **ConfigureClearAssetDeliveryPolicy** metoda určuje toonot použít dynamické šifrování a protokoly datového proudu hello toodeliver v některém z následujících hello: protokoly MPEG DASH, HLS nebo technologie Smooth Streaming. Můžete chtít tooapply této zásady tooyour šifrování úložiště prostředky.
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.
 
     static public void ConfigureClearAssetDeliveryPolicy(IAsset asset)
     {
@@ -79,9 +79,9 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Zásady doručení assetu DynamicCommonEncryption
 
-Následující **CreateAssetDeliveryPolicy** metoda vytvoří **AssetDeliveryPolicy** nakonfigurovaný pro použití běžného dynamického šifrování (**DynamicCommonEncryption**) smooth streamování protokolu (jiné protokoly, bude zablokován streamování). Metoda přebírá dva parametry: **Asset** (asset, do které chcete použít zásady doručení) a **IContentKey** (klíč obsahu **CommonEncryption** typu, pro Další informace najdete v tématu: [vytváření klíč obsahu](media-services-dotnet-create-contentkey.md#common_contentkey)).
+Následující Hello **CreateAssetDeliveryPolicy** metoda vytvoří hello **AssetDeliveryPolicy** který je nakonfigurovaný tooapply běžného dynamického šifrování (**DynamicCommonEncryption**) tooa technologie smooth streaming protocol (jiné protokoly, bude zablokován streamování). Hello metoda přebírá dva parametry: **Asset** (hello asset toowhich chcete zásady doručení hello tooapply) a **IContentKey** (hello obsahu klíč hello **CommonEncryption**typu, další informace najdete v tématu: [vytváření klíč obsahu](media-services-dotnet-create-contentkey.md#common_contentkey)).
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
@@ -99,7 +99,7 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
                 AssetDeliveryProtocol.SmoothStreaming,
                 assetDeliveryPolicyConfiguration);
     
-            // Add AssetDelivery Policy to the asset
+            // Add AssetDelivery Policy toohello asset
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
     
             Console.WriteLine();
@@ -107,20 +107,20 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
                 assetDeliveryPolicy.AssetDeliveryPolicyType);
      }
 
-Azure Media Services můžete také přidat Widevine šifrování. Následující příklad ukazuje technologie PlayReady a Widevine, který se přidává do zásady doručení assetu.
+Azure Media Services také umožňuje tooadd Widevine šifrování. Hello následující příklad ukazuje technologie PlayReady a Widevine přidávané zásady doručení assetu toohello.
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
-        // Get the PlayReady license service URL.
+        // Get hello PlayReady license service URL.
         Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
 
 
-        // GetKeyDeliveryUrl for Widevine attaches the KID to the URL.
+        // GetKeyDeliveryUrl for Widevine attaches hello KID toohello URL.
         // For example: https://amsaccount1.keydelivery.mediaservices.windows.net/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
-        // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
-        // to append /? KID =< keyId > to the end of the url when creating the manifest.
+        // hello WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
+        // tooappend /? KID =< keyId > toohello end of hello url when creating hello manifest.
         // As a result Widevine license acquisition URL will have KID appended twice, 
-        // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
+        // so we need tooremove hello KID that in hello URL when we call GetKeyDeliveryUrl.
 
         Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
         UriBuilder uriBuilder = new UriBuilder(widevineUrl);
@@ -142,38 +142,38 @@ Azure Media Services můžete také přidat Widevine šifrování. Následujíc�
             assetDeliveryPolicyConfiguration);
 
 
-        // Add AssetDelivery Policy to the asset
+        // Add AssetDelivery Policy toohello asset
         asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
     }
 
 > [!NOTE]
-> Při šifrování s technologií Widevine, by pouze možné doručíte pomocí čárka. Nezapomeňte zadat DASH v doručovací protokol assetu.
+> Při šifrování s technologií Widevine, by být pouze možnost toodeliver pomocí čárka. Ujistěte se, že toospecify DASH v doručovací protokol assetu hello.
 > 
 > 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Zásady doručení assetu DynamicEnvelopeEncryption
-Následující **CreateAssetDeliveryPolicy** metoda vytvoří **AssetDeliveryPolicy** nakonfigurovaný pro použití dynamické obálky šifrování (**DynamicEnvelopeEncryption**) pro protokoly technologie Smooth Streaming, HLS a DASH (Pokud se rozhodnete není uveden některé protokoly, že budou Blokovaní z streamování). Metoda přebírá dva parametry: **Asset** (asset, do které chcete použít zásady doručení) a **IContentKey** (klíč obsahu **EnvelopeEncryption** typu Další informace najdete v tématu: [vytváření klíč obsahu](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
+Následující Hello **CreateAssetDeliveryPolicy** metoda vytvoří hello **AssetDeliveryPolicy** který je nakonfigurovaný tooapply dynamické obálky šifrování (**DynamicEnvelopeEncryption** ) tooSmooth protokoly Streaming, HLS a DASH (Pokud se rozhodnete toonot zadejte některé protokoly, že budou Blokovaní z streamování). Hello metoda přebírá dva parametry: **Asset** (hello asset toowhich chcete zásady doručení hello tooapply) a **IContentKey** (hello obsahu klíč hello **EnvelopeEncryption**typu, další informace najdete v tématu: [vytváření klíč obsahu](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
 
-Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPolicy najdete v tématu [typy používané při definování AssetDeliveryPolicy](#types) části.   
+Informace o co hodnoty, které můžete zadat při vytváření AssetDeliveryPolicy, najdete v části hello [typy používané při definování AssetDeliveryPolicy](#types) části.   
 
     private static void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
 
-        //  Get the Key Delivery Base Url by removing the Query parameter.  The Dynamic Encryption service will
-        //  automatically add the correct key identifier to the url when it generates the Envelope encrypted content
-        //  manifest.  Omitting the IV will also cause the Dynamice Encryption service to generate a deterministic
-        //  IV for the content automatically.  By using the EnvelopeBaseKeyAcquisitionUrl and omitting the IV, this
-        //  allows the AssetDelivery policy to be reused by more than one asset.
+        //  Get hello Key Delivery Base Url by removing hello Query parameter.  hello Dynamic Encryption service will
+        //  automatically add hello correct key identifier toohello url when it generates hello Envelope encrypted content
+        //  manifest.  Omitting hello IV will also cause hello Dynamice Encryption service toogenerate a deterministic
+        //  IV for hello content automatically.  By using hello EnvelopeBaseKeyAcquisitionUrl and omitting hello IV, this
+        //  allows hello AssetDelivery policy toobe reused by more than one asset.
         //
         Uri keyAcquisitionUri = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.BaselineHttp);
         UriBuilder uriBuilder = new UriBuilder(keyAcquisitionUri);
         uriBuilder.Query = String.Empty;
         keyAcquisitionUri = uriBuilder.Uri;
 
-        // The following policy configuration specifies: 
-        //   key url that will have KID=<Guid> appended to the envelope and
-        //   the Initialization Vector (IV) to use for the envelope encryption.
+        // hello following policy configuration specifies: 
+        //   key url that will have KID=<Guid> appended toohello envelope and
+        //   hello Initialization Vector (IV) toouse for hello envelope encryption.
         Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
             new Dictionary<AssetDeliveryPolicyConfigurationKey, string> 
         {
@@ -187,7 +187,7 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
                         AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                         assetDeliveryPolicyConfiguration);
 
-        // Add AssetDelivery Policy to the asset
+        // Add AssetDelivery Policy toohello asset
         asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
         Console.WriteLine();
@@ -199,7 +199,7 @@ Informace na hodnotách, které můžete zadat při vytváření AssetDeliveryPo
 
 ### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
-Následující výčet popisuje hodnoty, které lze nastavit pro doručovací protokol assetu.
+Hello následující výčtu popisuje hodnoty, které lze nastavit pro doručovací protokol assetu hello.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -234,7 +234,7 @@ Následující výčet popisuje hodnoty, které lze nastavit pro doručovací pr
 
 ### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
-Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad doručení assetu.  
+Hello následující výčtu popisuje hodnoty, které můžete zadat pro typ zásady doručení assetu hello.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -244,12 +244,12 @@ Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad do
         None,
 
         /// <summary>
-        /// The Asset should not be delivered via this AssetDeliveryProtocol. 
+        /// hello Asset should not be delivered via this AssetDeliveryProtocol. 
         /// </summary>
         Blocked, 
 
         /// <summary>
-        /// Do not apply dynamic encryption to the asset.
+        /// Do not apply dynamic encryption toohello asset.
         /// </summary>
         /// 
         NoDynamicEncryption,  
@@ -267,7 +267,7 @@ Následující výčet popisuje hodnoty, které můžete zadat pro typ zásad do
 
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
-Následující výčet popisuje hodnoty, které můžete použít ke konfiguraci metodu doručení obsahu klíče, který se klient.
+Hello následující výčtu popisuje hodnoty, které můžete použít metodu doručení hello tooconfigure hello obsahu toohello klíče klienta.
     
     public enum ContentKeyDeliveryType
     {
@@ -299,7 +299,7 @@ Následující výčet popisuje hodnoty, které můžete použít ke konfiguraci
 
 ### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
-Následující výčet popisuje hodnoty, které můžete nastavit, aby konfigurace klíče, které slouží k získání konkrétní konfigurace pro zásady pro doručení assetu.
+Následující výčet Hello popisuje hodnoty můžete nastavit určité konfigurace tooget tooconfigure klíčů používaných pro zásady pro doručení assetu.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -319,22 +319,22 @@ Následující výčet popisuje hodnoty, které můžete nastavit, aby konfigura
         EnvelopeBaseKeyAcquisitionUrl,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption in Base64 format.
+        /// hello initialization vector toouse for envelope encryption in Base64 format.
         /// </summary>
         EnvelopeEncryptionIVAsBase64,
 
         /// <summary>
-        /// The PlayReady License Acquisition Url to use for common encryption.
+        /// hello PlayReady License Acquisition Url toouse for common encryption.
         /// </summary>
         PlayReadyLicenseAcquisitionUrl,
 
         /// <summary>
-        /// The PlayReady Custom Attributes to add to the PlayReady Content Header
+        /// hello PlayReady Custom Attributes tooadd toohello PlayReady Content Header
         /// </summary>
         PlayReadyCustomAttributes,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption.
+        /// hello initialization vector toouse for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
 

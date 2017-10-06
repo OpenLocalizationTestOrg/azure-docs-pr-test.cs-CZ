@@ -1,6 +1,6 @@
 ---
-title: "Průvodci odstraňováním potíží Azure DNS | Microsoft Docs"
-description: "Postup řešení běžných problémů s Azure DNS"
+title: "Průvodci odstraňováním potíží DNS aaaAzure | Microsoft Docs"
+description: "Jak tootroubleshoot běžné problémy s Azure DNS"
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: jonatul
-ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 944aa1811c980063f739268cd2c79b647b2754a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS Průvodci odstraňováním potíží
 
@@ -29,12 +29,12 @@ Pokud tyto kroky problém nevyřeší, můžete také vyhledat nebo zveřejnit s
 
 ## <a name="i-cant-create-a-dns-zone"></a>Nelze vytvořit zónu DNS
 
-Při řešení běžných problémů zkuste použít jeden nebo několik následujících kroků:
+tooresolve běžné problémy, zkuste jeden nebo více hello následující kroky:
 
-1.  Prohlédněte si protokoly auditu Azure DNS a určete důvod selhání.
-2.  Název každé zóny DNS musí být v rámci dané skupiny prostředků jedinečný. To znamená, že dvě zóny DNS se stejným názvem nemůžou sdílet stejnou skupinu prostředků. Zkuste použít jiný název zóny nebo jinou skupinu prostředků.
-3.  Může se zobrazit chyba typu Dosáhli nebo přesáhli jste maximální počet zón v předplatném {id předplatného}. Použijte jiné předplatné Azure, odstraňte některé zóny nebo kontaktujte podporu Azure se žádostí o zvýšení limitu vašeho předplatného.
-4.  Může se zobrazit chyba typu Zóna {název zóny} není k dispozici. Tato chyba znamená, že Azure DNS se pro tuto zónu DNS nepodařilo přidělit názvové servery. Zkuste použít jiný název zóny. Případně pokud jste vlastníkem názvu domény, kontaktujte podporu Azure, která může přidělit názvové servery za vás.
+1.  Zkontrolujte hello auditu Azure DNS zaznamená důvod selhání toodetermine hello.
+2.  Název každé zóny DNS musí být v rámci dané skupiny prostředků jedinečný. To znamená, dvě DNS zóny s hello stejný název nelze sdílet skupinu prostředků. Zkuste použít jiný název zóny nebo jinou skupinu prostředků.
+3.  Mohou se zobrazit chyba "Můžete mít dosáhli nebo Přesáhli jste maximální počet zón v předplatném {id předplatného} hello." Použijte jiné předplatné Azure, odstraňte některé zóny nebo požádejte podporu Azure tooraise svého limitu předplatného.
+4.  Zobrazí chyba "hello zóny {zóny name} není k dispozici." Tato chyba znamená, že Azure DNS bylo nelze tooallocate názvové servery pro tuto zónu DNS. Zkuste použít jiný název zóny. Případně pokud jste vlastník název domény hello, požádejte podporu Azure, který můžete přidělit názvové servery, které pro vás.
 
 
 ### <a name="recommended-documents"></a>**Doporučené dokumenty**
@@ -45,13 +45,13 @@ Při řešení běžných problémů zkuste použít jeden nebo několik násled
 
 ## <a name="i-cant-create-a-dns-record"></a>Nejde mi vytvořit záznam DNS
 
-Při řešení běžných problémů zkuste použít jeden nebo několik následujících kroků:
+tooresolve běžné problémy, zkuste jeden nebo více hello následující kroky:
 
-1.  Prohlédněte si protokoly auditu Azure DNS a určete důvod selhání.
-2.  Už tato sada záznamů existuje?  Azure DNS spravuje záznamy pomocí *sad* záznamů. To jsou kolekce záznamů se stejným názvem a typem. Pokud záznam se stejným názvem a typem už existuje a chcete přidat další takové záznam, měli byste existující sadu záznamů upravit.
-3.  Pokoušíte se vytvořit záznam ve vrcholu zóny DNS („kořenu“ zóny)? Pokud ano, v rámci konvence DNS se jako název tohoto záznamu používá znak ‘@’. Všimněte si také, že standardy DNS ve vrcholu zóny nepovolují záznamy CNAME.
-4.  Vznikl konflikt CNAME?  Standardy DNS nepovolují záznamy CNAME se stejným názvem jako záznam jakéhokoli jiného typu. Pokud už máte CNAME, vytvoření záznamu jiného typu se stejným názvem se nepovede.  Podobně se vytvoření CNAME nepovede, pokud jeho název odpovídá existujícímu záznamu jiného typu. Konflikt odstraníte odebráním druhého záznamu nebo volbou jiného názvu záznamu.
-5.  Dosáhli jste limitu povoleného počtu sad záznamů v zóně DNS? Aktuální počet sad záznamů a maximální počet sad záznamů se zobrazuje na webu Azure Portal ve vlastnostech zóny. Pokud jste dosáhli tohoto limitu, buď odstraňte některé sady záznamů nebo kontaktujte podporu Azure, požádejte o zvýšení limitu sad záznamů pro tuto zónu a zkuste to znovu. 
+1.  Zkontrolujte hello auditu Azure DNS zaznamená důvod selhání toodetermine hello.
+2.  Existuje sada záznamů hello již?  Azure DNS spravuje záznamy pomocí záznamu *nastaví*, což jsou kolekce hello záznamů hello stejný název a text hello, stejný typ. Pokud záznam s hello stejný název a typ již existuje, pak tooadd jiné takové byste neměli upravovat stávající záznam hello sady záznamů.
+3.  Pokoušíte toocreate záznamů na vrcholu zóny DNS hello (hello kořenové zóně hello)? Pokud ano, hello konvenci DNS je toouse hello ' @' znak jako název záznamu hello. Všimněte si také, že standardech DNS hello nepovoluje záznamy CNAME na vrcholu zóny hello.
+4.  Vznikl konflikt CNAME?  Hello standardech DNS záznam CNAME se hello stejný název jako záznamy o jiný typ nepovolují. Pokud máte existující CNAME, vytvoření záznamu s hello, v případě selhání stejný název jiného typu.  Podobně vytváření záznam CNAME se nezdaří, pokud název hello odpovídá existující záznam jiného typu. Odeberte hello konflikt odebráním hello jiný záznam nebo zvolte jiný záznam název.
+5.  Dosáhli jste limitu hello hello počtu sady záznamů v zóně DNS povolené? Hello aktuální počet sad záznamů a hello maximální počet sad záznamů jsou zobrazeny v portálu Azure, v části hello 'vlastnosti' pro zónu hello hello. Pokud bylo dosaženo tohoto limitu, pak buď odstranit některé sady záznamů nebo kontaktujte podporu Azure tooraise záznamů nastaveného limitu pro tuto zónu, a zkuste to znovu. 
 
 
 ### <a name="recommended-documents"></a>**Doporučené dokumenty**
@@ -64,37 +64,37 @@ Při řešení běžných problémů zkuste použít jeden nebo několik násled
 
 ## <a name="i-cant-resolve-my-dns-record"></a>Nejde mi přeložit záznam DNS
 
-Překlad názvů DNS je vícefázový proces, který může selhat z mnoha důvodů. Následující kroky vám pomůžou zjistit, proč se pro záznam DNS v zóně hostované v Azure DNS nedaří překlad DNS.
+Překlad názvů DNS je vícefázový proces, který může selhat z mnoha důvodů. Hello následující postup vám pomůže prozkoumat, proč se nedaří překlad názvů DNS pro záznam DNS v zóně hostované v Azure DNS.
 
-1.  Potvrďte, že záznamy DNS jsou v Azure DNS správně nakonfigurované. Zkontrolujte záznamy DNS na webu Azure Portal a ověřte, jestli název zóny, název záznamu a typ záznamu jsou správné.
-2.  Zkontrolujte, že se záznamy DNS správně překládají na názvových serverech Azure DNS.
-    - Pokud dotazy DNS zpracováváte z vašeho místního počítače, může se stát, že se zobrazují výsledky uložené v mezipaměti, které neodrážejí aktuální stav serverů.  Podnikové sítě navíc často používají proxy servery DNS, které zabraňují směrování dotazů DNS na konkrétní názvové servery.  Pokud se chcete těmto problémům vyhnout, použijte webovou službu překladu názvů, jako je třeba [digwebinterface](http://digwebinterface.com).
-    - Nezapomeňte zadat správné názvové servery pro zónu DNS (jsou uvedené na webu Azure Portal).
-    - Zkontrolujte správnost názvu DNS (musíte zadat plně kvalifikovaný název včetně názvu zóny) a typu záznamu.
-3.  Potvrďte, že název domény DNS byl správně [delegovaný na názvové servery Azure DNS](dns-domain-delegation.md). Existuje [celá řada webů třetích stran, které poskytují ověření delegování DNS](https://www.bing.com/search?q=dns+check+tool). Jde o test delegování *zóny*, takže byste měli zadat název zóny DNS, a ne plně kvalifikovaný název záznamu.
-4.  Po dokončení těchto kroků by se záznam DNS už měl překládat správně. K ověření můžete znovu využít [digwebinterface](http://digwebinterface.com) a tentokrát použít výchozí nastavení názvového serveru.
+1.  Potvrďte, že záznamy DNS hello byly nakonfigurovány správně v Azure DNS. Zkontrolujte záznamy DNS hello v hello portál Azure, kontrola, zda jsou správné hello název zóny, název záznamu a typ záznamu.
+2.  Potvrďte, že záznamy DNS hello správně přeložit na názvových serverů Azure DNS hello.
+    - Pokud provedete dotazy DNS z vašeho místního počítače, může se zobrazit výsledky uložené v mezipaměti, které neodpovídají hello aktuální stav hello názvové servery.  Kromě toho podnikové sítě často používají proxy servery DNS, který zabrání se dotazy DNS přesměruje toospecific názvové servery.  tooavoid tyto problémy používat webová služba pro překlad názvů, jako [digwebinterface](http://digwebinterface.com).
+    - Zda toospecify být hello správné názvové servery pro zónu DNS, jak je znázorněno v hello portálu Azure.
+    - Zkontrolujte, zda je název DNS hello správný, (máte toospecify hello plně kvalifikovaný název, včetně názvu zóny hello) a typ záznamu hello je správný
+3.  Zkontrolujte název domény DNS hello je správně [delegovaný názvových serverů Azure DNS toohello](dns-domain-delegation.md). Existuje [celá řada webů třetích stran, které poskytují ověření delegování DNS](https://www.bing.com/search?q=dns+check+tool). Tento test je *zóny* delegování test, takže byste měli jenom zadat název zóny DNS hello a není hello plně kvalifikovaný název záznamu.
+4.  Po dokončení hello výše, vaše záznam DNS by měl nyní vyřešit správně. tooverify, můžete znovu použít [digwebinterface](http://digwebinterface.com), tentokrát pomocí nastavení hello výchozí název serveru.
 
 
 ### <a name="recommended-documents"></a>**Doporučené dokumenty**
 
-[Delegování domény do Azure DNS](dns-domain-delegation.md)
+[Delegát tooAzure domény DNS](dns-domain-delegation.md)
 
 
 
-## <a name="how-do-i-specify-the-service-and-protocol-for-an-srv-record"></a>Jak zadat službu a protokol pro záznam SRV?
+## <a name="how-do-i-specify-hello-service-and-protocol-for-an-srv-record"></a>Jak určit hello "služba" a "protokol" pro záznam SRV?
 
-Azure DNS spravuje záznamy DNS jako sady záznamů. To jsou kolekce záznamů se stejným názvem a typem. U sady záznamů SRV se služba i protokol musí zadat jako součást názvu sady. Ostatní parametry SRV (priorita, váha, port a cíl) se pro jednotlivé záznamy v sadě záznamů zadávají samostatně.
+Azure DNS spravuje záznamy DNS jako sady záznamů – hello kolekce záznamů s hello stejný název a text hello, stejný typ. Pro sadu záznamů SRV služby"hello" a "protokol" potřebovat toobe zadaný jako součást hello název sady záznamů. Hello další parametry SRV ('prioritu', 'weight', 'port' a "target") se zadávají samostatně pro jednotlivé záznamy v sadě záznamů hello.
 
 Ukázkové názvy záznamů SRV (služba = sip, protokol = tcp):
 
-- \_sip.\_tcp (vytvoří sadu záznamů ve vrcholu zóny)
+- \_SIP. \_tcp (vytvoří záznamů na vrcholu zóny hello)
 - \_sip.\_tcp.sipservice (vytvoří sadu záznamů s názvem sipservice)
 
 ### <a name="recommended-documents"></a>**Doporučené dokumenty**
 
 [Záznamy a zóny DNS](dns-zones-records.md)
 <br>
-[Vytváření sad záznamů a záznamů DNS pomocí webu Azure Portal](dns-getstarted-create-recordset-portal.md)
+[Vytvoření sady záznamů DNS a záznamy pomocí hello portálu Azure](dns-getstarted-create-recordset-portal.md)
 <br>
 [Záznamy typu SRV (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
@@ -102,6 +102,6 @@ Ukázkové názvy záznamů SRV (služba = sip, protokol = tcp):
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure DNS zóny a záznamy](dns-zones-records.md)
-* Chcete-li začít používat Azure DNS, zjistěte další postup [vytvořit zónu DNS](dns-getstarted-create-dnszone-portal.md) a [vytvořit záznamy DNS](dns-getstarted-create-recordset-portal.md).
-* Pokud chcete migrovat existující zónu DNS, zjistěte, jak [import a export souboru zóny DNS](dns-import-export.md).
+* toostart pomocí Azure DNS, zjistěte, jak příliš[vytvořit zónu DNS](dns-getstarted-create-dnszone-portal.md) a [vytvořit záznamy DNS](dns-getstarted-create-recordset-portal.md).
+* toomigrate stávající zónu DNS, zjistěte, jak příliš[import a export souboru zóny DNS](dns-import-export.md).
 

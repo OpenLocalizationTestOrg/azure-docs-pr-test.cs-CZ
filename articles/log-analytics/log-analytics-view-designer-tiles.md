@@ -1,6 +1,6 @@
 ---
-title: "Dlaždice odkaz pro Návrhář zobrazení v OMS Log Analytics | Microsoft Docs"
-description: "Návrhář zobrazení v analýzy protokolů umožňuje vytvářet vlastní zobrazení v konzole OMS, které obsahují různé vizualizace dat v úložišti OMS. Tento článek obsahuje odkaz nastavení pro každou z dlaždice, které jsou k dispozici pro použití ve vaší vlastní zobrazení."
+title: "aaaTile odkaz pro Návrhář zobrazení v OMS Log Analytics | Microsoft Docs"
+description: "Návrhář zobrazení v analýzy protokolů vám umožní toocreate vlastní zobrazení v konzole hello OMS, které obsahují různé vizualizace dat v úložišti OMS hello. Tento článek obsahuje odkaz hello nastavení pro každou hello dlaždice dostupné toouse do vlastních zobrazení."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,168 +14,168 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4706abb16b8a3719f5dbe8c89cd61739391ab8f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Odkazy na dlaždici protokol Návrhář zobrazení analýzy
-Návrhář zobrazení v analýzy protokolů umožňuje vytvářet vlastní zobrazení v konzole OMS, které obsahují různé vizualizace dat v úložišti OMS. Tento článek obsahuje odkaz nastavení pro každou z dlaždice, které jsou k dispozici pro použití ve vaší vlastní zobrazení.
+Hello Návrhář zobrazení v analýzy protokolů vám umožní toocreate vlastní zobrazení v konzole hello OMS, které obsahují různé vizualizace dat v úložišti OMS hello. Tento článek obsahuje odkaz hello nastavení pro každou hello dlaždice dostupné toouse do vlastních zobrazení.
 
 Další články, které jsou k dispozici pro Návrhář zobrazení jsou:
 
-* [Zobrazit návrháře](log-analytics-view-designer.md) -přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
-* [Odkaz na část vizualizace](log-analytics-view-designer-parts.md) – odkaz na nastavení pro každou z dlaždice, které jsou k dispozici pro použití ve vaší vlastní zobrazení.
+* [Zobrazit návrháře](log-analytics-view-designer.md) -přehled hello Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
+* [Odkaz na část vizualizace](log-analytics-view-designer-parts.md) -odkaz hello nastavení pro každou hello dlaždice dostupné toouse do vlastních zobrazení.
 
 >[!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové protokolu Analytics query language](log-analytics-log-search-upgrade.md), pak dotazů ve všech zobrazeních, musí být napsaná [nové dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856078).  Všechna zobrazení, které byly vytvořeny před byl upgradován pracovním prostoru bude automtically převést.
+> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak dotazů ve všech zobrazeních, musí být napsaná v hello [nové dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856078).  Všechna zobrazení, které byly vytvořeny před byl upgradován hello prostoru bude automtically převést.
 
-Následující tabulka uvádí různé typy dlaždice, které jsou k dispozici v Návrháři zobrazení.  Následující oddíly popisují každý typ dlaždice v podrobností a jejich vlastnosti.
+Hello následující tabulka uvádí různé typy hello dlaždice, které jsou k dispozici v hello Návrhář zobrazení.  Hello části níže popisují každý typ dlaždice v podrobností a jejich vlastnosti.
 
 | Dlaždice | Popis |
 |:--- |:--- |
 | [Číslo](#number-tile) |Jedno číslo zobrazuje počet záznamů z dotazu. |
 | [Dvou čísel.](#two-numbers-tile) |Zobrazuje počet záznamů z dva různé dotazy dvou čísel jeden. |
-| [Prstenec](#donut-tile) |Prstenec grafu na základě dotazu s souhrnnou hodnotu v centru. |
+| [Prstenec](#donut-tile) |Prstenec grafu na základě dotazu s souhrnnou hodnotu v centru hello. |
 | [Spojnicový graf & popisku](#line-chart-amp-callout-tile) |Spojnicový graf na základě dotazu a popisku s souhrnnou hodnotu. |
 | [Spojnicový graf](#line-chart-tile) |Spojnicový graf založené na dotazu. |
 | [Dva časové osy](#two-timelines-tile) |Sloupcový graf s dvou řad, každou v závislosti na samostatné dotazu. |
 
 ## <a name="number-tile"></a>Číslo dlaždice
-**Číslo** dlaždice zobrazí jedno číslo zobrazuje počet záznamů z protokolu dotazu a štítek.
+Hello **číslo** dlaždice zobrazí jedno číslo zobrazuje počet hello záznamů z protokolu dotazu a štítek.
 
 ![Číslo dlaždice](media/log-analytics-view-designer/tile-number.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | **Dlaždice** | |
-| Legendy |Text, který se zobrazí v části hodnota. |
-| Dotaz |Dotaz spustit.  Zobrazí se počet záznamů vrácených dotazem. |
+| Legendy |Text toodisplay pod hello hodnotu. |
+| Dotaz |Toorun dotazu.  Zobrazí se počet Hello hello počet záznamů vrácených dotazem hello. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="two-numbers-tile"></a>Dlaždice dvou čísel.
-**Dva číslo** dlaždice zobrazí zobrazující počet záznamy ze dvou různých protokolových dotazy a popisek pro každý dvou čísel.
+Hello **dva číslo** dlaždice zobrazí zobrazující hello počet záznamy ze dvou různých protokolových dotazy a popisek pro každý dvou čísel.
 
 ![Dlaždice dvou čísel.](media/log-analytics-view-designer/tile-two-numbers.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | **První dlaždice** | |
-| Legendy |Text, který se zobrazí v části hodnota. |
-| Dotaz |Dotaz spustit.  Zobrazí se počet záznamů vrácených dotazem. |
+| Legendy |Text toodisplay pod hello hodnotu. |
+| Dotaz |Toorun dotazu.  Zobrazí se počet Hello hello počet záznamů vrácených dotazem hello. |
 | **Druhý dlaždice** | |
-| Legendy |Text, který se zobrazí v části hodnota. |
-| Dotaz |Dotaz spustit.  Zobrazí se počet záznamů vrácených dotazem. |
+| Legendy |Text toodisplay pod hello hodnotu. |
+| Dotaz |Toorun dotazu.  Zobrazí se počet Hello hello počet záznamů vrácených dotazem hello. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="donut-tile"></a>Dlaždice prstenec
-**Prstenec** dlaždice zobrazí jedno číslo souhrnu ze hodnotu sloupce v protokolu dotazu.  Prstenec graficky zobrazí výsledky nejvyšší tři záznamy.
+Hello **prstenec** dlaždice zobrazí jedno číslo souhrnu ze hodnotu sloupce v protokolu dotazu.  Hello prstenec graficky zobrazí výsledky hello nejvyšší tři záznamů.
 
 ![Dlaždice prstenec](media/log-analytics-view-designer/tile-donut.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | **Prstenec** | |
-| Dotaz |Dotaz, aby běžel prstenec.  První vlastností by měl být textovou hodnotu a druhou vlastností číselná hodnota.  Toto je obvykle dotaz, který používá **měr** – klíčové slovo pro shrnutí výsledků. |
+| Dotaz |Dotaz toorun pro prstenec hello.  první vlastnost Hello by měl být text hodnota a hello druhý vlastnost číselná hodnota.  Toto je obvykle dotaz, který používá hello **měr** – klíčové slovo toosummarize výsledky. |
 | **Prstenec** |**> Center** |
-| Text |Text, který se zobrazí v části hodnotu uvnitř prstenec. |
-| Operace |Operace k plnění vlastnost value pro shrnutí jednu hodnotu.<br><br>-Součet: Přidejte hodnoty všech záznamů se hodnota vlastnosti.<br>-Procento: Procento sečtené hodnoty ze záznamů se hodnota vlastnosti ve srovnání s sečtené hodnoty všechny záznamy. |
-| Výsledek hodnoty použít v operaci center |Volitelně klikněte na symbol plus přidat jednu nebo více hodnot.  Výsledky dotazu bude omezeno na záznamy s hodnotami vlastností, které zadáte.  Pokud žádné hodnoty se přidají, než jsou zahrnuty všechny záznamy v dotazu. |
+| Text |Text toodisplay pod hodnotu hello uvnitř prstenec hello. |
+| Operace |operace tooperform Hello na hello hodnotu vlastnosti toosummarize tooa jednu hodnotu.<br><br>-Součet: Přidejte hello hodnoty všech záznamů se hodnota vlastnosti hello.<br>-Procento: Procento hello sčítají hodnoty ze záznamů se hello vlastnost hodnota porovnání toohello sčítají hodnoty všech záznamů. |
+| Výsledek hodnoty použít v operaci center |Volitelně klikněte na tlačítko hello tooadd znaménko plus jedna nebo více hodnot.  Hello výsledky dotazu hello bude omezený toorecords s hello hodnoty vlastností, které určíte.  Pokud budou přidávána žádné hodnoty, než všechny záznamy jsou zahrnuty v dotazu hello. |
 | **Prstenec** |**> Další možnosti** |
-| Barvy |Barva má být zobrazen pro každé vlastnosti tři hlavní.  Pokud chcete zadat alternativní barvy pro konkrétní hodnoty vlastnosti, použijte rozšířené mapování barev. |
-| Mapování pokročilé barev |Zobrazí barvu pro konkrétní hodnoty vlastnosti.  Pokud je hodnota, kterou zadáte v horní tři, se zobrazí barvu alternativní místo standardní barvu.  Pokud vlastnost není v horní tři, se nezobrazí barvu. |
+| Barvy |Hello toodisplay barvu pro každé z vlastností pro tři hlavní hello.  Pokud chcete toospecify alternativní barvy pro konkrétní hodnoty vlastnosti, použijte rozšířené mapování barev. |
+| Mapování pokročilé barev |Zobrazí barvu pro konkrétní hodnoty vlastnosti.  Pokud hello hodnotu, kterou jste určili v hello nejvyšší tři, tak Alternativní barva hello se zobrazí místo standardní barva hello.  Pokud vlastnost hello není v hello nejvyšší tři a potom hello barva se nezobrazí. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="line-chart-tile"></a>Dlaždice grafu řádku
-**Spojnicový graf** dlaždice zobrazí spojnicový graf s více řad z protokolu dotazu v čase.  
+Hello **spojnicový graf** dlaždice zobrazí spojnicový graf s více řad z protokolu dotazu v čase.  
 
 ![Spojnicový graf & popisku dlaždice](media/log-analytics-view-designer/tile-line-chart.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | **Spojnicový graf** | |
-| Dotaz |Dotaz pro spojnicový graf.  První vlastností by měl být textovou hodnotu a druhou vlastností číselná hodnota.  Toto je obvykle dotaz, který používá **měr** – klíčové slovo pro shrnutí výsledků.  Pokud dotaz používá **interval** – klíčové slovo pak osy x grafu budou používat tento časový interval.  Pokud dotaz neobsahuje **interval** – klíčové slovo a každou hodinu intervaly se používají pro osu x. |
+| Dotaz |Dotaz toorun pro hello spojnicový graf.  první vlastnost Hello by měl být text hodnota a hello druhý vlastnost číselná hodnota.  Toto je obvykle dotaz, který používá hello **měr** – klíčové slovo toosummarize výsledky.  Pokud dotaz hello používá hello **interval** – klíčové slovo pak hello osy x grafu hello použije tento časový interval.  Pokud dotaz hello neobsahuje hello **interval** – klíčové slovo a každou hodinu intervaly se používají pro hello osy x. |
 | **Spojnicový graf** |**> Osy Y** |
-| Použít logaritmickou stupnici |Vyberte, chcete-li použít hodnota na logaritmické stupnici pro osu y. |
-| Jednotky |Zadejte jednotky pro hodnoty vrácených dotazem.  Tyto informace slouží k zobrazení popisků v grafu označující typy hodnot a volitelně pro převod hodnoty.  **Typ jednotky** Určuje kategorii jednotky a definuje **aktuální typ jednotky** hodnoty, které jsou k dispozici.  Pokud vyberete hodnotu v **převést na** pak číselné hodnoty jsou převést z **aktuální jednotku** typ, který má **převést na** typu. |
-| Vlastní popisek |Text k zobrazení pro osy Y vedle popisek pro daný typ jednotky.  Pokud není zadaný žádný štítek, se zobrazí pouze typ jednotky. |
+| Použít logaritmickou stupnici |Vyberte toouse hodnota na logaritmické stupnici pro hello osy y. |
+| Jednotky |Zadejte hello jednotky pro hello hodnot vrácených dotazem hello.  Tyto informace jsou použité toodisplay popisky v grafu hello označující hello typy hodnot a volitelně pro převod hodnoty hello.  Hello **typ jednotky** Určuje kategorii hello hello jednotky a definuje hello **aktuální typ jednotky** hodnoty, které jsou k dispozici.  Pokud vyberete hodnotu v **převést na** pak hello číselné hodnoty jsou převést z hello **aktuální jednotku** zadejte toohello **převést na** typu. |
+| Vlastní popisek |Text toodisplay hello osy Y další toohello popisu pro typ jednotky hello.  Pokud není zadaný žádný štítek, se zobrazí pouze typ jednotky hello. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="line-chart--callout-tile"></a>Dlaždice grafu & popisků čáry
-**Čáry popisku & grafu** dlaždice zobrazuje spojnicový graf s více řad z protokolu dotazu přes čas a popisku s souhrnnou hodnotu.  
+Hello **čáry popisku & grafu** dlaždice zobrazuje spojnicový graf s více řad z protokolu dotazu přes čas a popisku s souhrnnou hodnotu.  
 
 ![Spojnicový graf & popisku dlaždice](media/log-analytics-view-designer/tile-line-chart-callout.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | **Spojnicový graf** | |
-| Dotaz |Dotaz pro spojnicový graf.  První vlastností by měl být textovou hodnotu a druhou vlastností číselná hodnota.  Toto je obvykle dotaz, který používá **měr** – klíčové slovo pro shrnutí výsledků.  Pokud dotaz používá **interval** – klíčové slovo pak osy x grafu budou používat tento časový interval.  Pokud dotaz neobsahuje **interval** – klíčové slovo a každou hodinu intervaly se používají pro osu x. |
+| Dotaz |Dotaz toorun pro hello spojnicový graf.  první vlastnost Hello by měl být text hodnota a hello druhý vlastnost číselná hodnota.  Toto je obvykle dotaz, který používá hello **měr** – klíčové slovo toosummarize výsledky.  Pokud dotaz hello používá hello **interval** – klíčové slovo pak hello osy x grafu hello použije tento časový interval.  Pokud dotaz hello neobsahuje hello **interval** – klíčové slovo a každou hodinu intervaly se používají pro hello osy x. |
 | **Spojnicový graf** |**> Popisku** |
-| Popisku |Text názvu zobrazíte větší než hodnota popisku. |
-| Název řady |Hodnota vlastnosti řady, které chcete použít pro hodnotu popisku.  Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
-| Operace |Operace k plnění vlastnost value pro shrnutí pro jednu hodnotu pro popisek.<br>-Průměr: Průměr hodnoty ze všech záznamů.<br><br>-Count: Počet všech záznamů vrácených dotazem.<br>-Posledního vzorku: Hodnota od posledního intervalu zahrnuté v grafu.<br>-Max: Maximální hodnota z intervalů zahrnuté v grafu.<br>-Min: Minimální hodnota z intervalů zahrnuté v grafu.<br>-Součet: Součet hodnoty ze všech záznamů. |
+| Popisku |Title Text toodisplay větší než hodnota popisku hello. |
+| Název řady |Hodnota vlastnosti pro hello řady toouse pro hodnotu popisku hello.  Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu hello. |
+| Operace |operace tooperform Hello na hello hodnotu vlastnosti toosummarize tooa jednu hodnotu pro popisek hello.<br>-Průměr: Průměr hello hodnoty ze všech záznamů.<br><br>-Count: Počet všech záznamů vrácených dotazem hello.<br>-Posledního vzorku: Hodnota od posledního intervalu hello součástí hello grafu.<br>-Max: Maximální hodnota z hello intervaly součástí hello grafu.<br>-Min: Minimální hodnota z hello intervaly součástí hello grafu.<br>-Součet: Součet hodnoty hello ze všech záznamů. |
 | **Spojnicový graf** |**> Osy Y** |
-| Použít logaritmickou stupnici |Vyberte, chcete-li použít hodnota na logaritmické stupnici pro osu y. |
-| Jednotky |Zadejte jednotky pro hodnoty vrácených dotazem.  Tyto informace slouží k zobrazení popisků v grafu označující typy hodnot a volitelně pro převod hodnoty.  **Typ jednotky** Určuje kategorii jednotky a definuje **aktuální typ jednotky** hodnoty, které jsou k dispozici.  Pokud vyberete hodnotu v **převést na** pak číselné hodnoty jsou převést z **aktuální jednotku** typ, který má **převést na** typu. |
-| Vlastní popisek |Text k zobrazení pro osy Y vedle popisek pro daný typ jednotky.  Pokud není zadaný žádný štítek, se zobrazí pouze typ jednotky. |
+| Použít logaritmickou stupnici |Vyberte toouse hodnota na logaritmické stupnici pro hello osy y. |
+| Jednotky |Zadejte hello jednotky pro hello hodnot vrácených dotazem hello.  Tyto informace jsou použité toodisplay popisky v grafu hello označující hello typy hodnot a volitelně pro převod hodnoty hello.  Hello **typ jednotky** Určuje kategorii hello hello jednotky a definuje hello **aktuální typ jednotky** hodnoty, které jsou k dispozici.  Pokud vyberete hodnotu v **převést na** pak hello číselné hodnoty jsou převést z hello **aktuální jednotku** zadejte toohello **převést na** typu. |
+| Vlastní popisek |Text toodisplay hello osy Y další toohello popisu pro typ jednotky hello.  Pokud není zadaný žádný štítek, se zobrazí pouze typ jednotky hello. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="two-timelines-tile"></a>Dlaždice obě časové osy
-**Obě časové osy** dlaždice zobrazuje výsledky dva dotazy protokolu časem jako sloupcových grafů.  U každé série se zobrazí popisek.  
+Hello **obě časové osy** dlaždice zobrazí výsledky hello dva dotazy protokolu časem jako sloupcové grafy.  U každé série se zobrazí popisek.  
 
 ![Dlaždice obě časové osy](media/log-analytics-view-designer/tile-two-timelines.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Name (Název) |Text, který se zobrazí v horní části na dlaždici. |
-| Popis |Text, který se zobrazí pod názvem dlaždice. |
+| Name (Název) |Toodisplay textu hello horní části hello dlaždici. |
+| Popis |Text toodisplay pod názvem dlaždice hello. |
 | První graf | |
-| Legendy |Text, který se zobrazí v části popisku řady, první. |
-| Barva |Barva má být použita pro sloupce v první řadě. |
-| Graf dotazu |Dotaz pro první řady.  Počet záznamů v každém časovém intervalu budou odpovídat sloupcům grafu. |
-| Operace |Operace k plnění vlastnost value pro shrnutí pro jednu hodnotu pro popisek.<br><br>-Průměr: Průměr hodnoty ze všech záznamů.<br>-Count: Počet všech záznamů vrácených dotazem.<br>-Posledního vzorku: Hodnota od posledního intervalu zahrnuté v grafu.<br>-Max: Maximální hodnota z intervalů zahrnuté v grafu. |
+| Legendy |Text toodisplay pod hello popisku řady, první hello. |
+| Barva |Barva toouse pro hello sloupce v první řadě hello. |
+| Graf dotazu |Dotaz toorun pro první řady hello.  hello grafu sloupců budou odpovídat Hello počet hello záznamy průběhu v každém časovém intervalu. |
+| Operace |operace tooperform Hello na hello hodnotu vlastnosti toosummarize tooa jednu hodnotu pro popisek hello.<br><br>-Průměr: Průměr hello hodnoty ze všech záznamů.<br>-Count: Počet všech záznamů vrácených dotazem hello.<br>-Posledního vzorku: Hodnota od posledního intervalu hello součástí hello grafu.<br>-Max: Maximální hodnota z hello intervaly součástí hello grafu. |
 | **Druhý graf** | |
-| Legendy |Text, který se zobrazí v části popisku řady, druhý. |
-| Barva |Barva má být použita pro sloupce v druhé řady. |
-| Graf dotazu |Dotaz pro druhý řady.  Počet záznamů v každém časovém intervalu budou odpovídat sloupcům grafu. |
-| Operace |Operace k plnění vlastnost value pro shrnutí pro jednu hodnotu pro popisek.<br><br>-Průměr: Průměr hodnoty ze všech záznamů.<br>-Count: Počet všech záznamů vrácených dotazem.<br>-Posledního vzorku: Hodnota od posledního intervalu zahrnuté v grafu.<br>-Max: Maximální hodnota z intervalů zahrnuté v grafu. |
+| Legendy |Text toodisplay pod hello popisku řady, druhý hello. |
+| Barva |Barva toouse pro hello sloupce v druhé řady hello. |
+| Graf dotazu |Dotaz toorun pro druhý řady hello.  hello grafu sloupců budou odpovídat Hello počet hello záznamy průběhu v každém časovém intervalu. |
+| Operace |operace tooperform Hello na hello hodnotu vlastnosti toosummarize tooa jednu hodnotu pro popisek hello.<br><br>-Průměr: Průměr hello hodnoty ze všech záznamů.<br>-Count: Počet všech záznamů vrácených dotazem hello.<br>-Posledního vzorku: Hodnota od posledního intervalu hello součástí hello grafu.<br>-Max: Maximální hodnota z hello intervaly součástí hello grafu. |
 | **Upřesnit** |**> Ověření toku dat** |
-| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici.  To se obvykle používá k poskytování zprávu dočasné období, když je nainstalován zobrazení a dodává data k dispozici. |
-| Dotaz |Dotaz spustit, aby se kontrola, zda je k dispozici pro zobrazení dat.  Pokud dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hodnoty z hlavní dotazu. |
-| Zpráva |Zpráva zobrazí, pokud datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
+| Povoleno |Vyberte, pokud ověření toku dat by měla být povolená pro dlaždici hello.  To poskytuje alternativní zprávu, pokud data nejsou k dispozici pro dlaždici hello.  To je obvykle používanými tooprovide zprávu během hello dočasné období při zobrazení hello je nainstalovaný a dodává data k dispozici. |
+| Dotaz |Dotaz toorun toocheck, pokud jsou k dispozici pro zobrazení hello data.  Pokud hello dotaz vrátí žádné výsledky, se zobrazí zpráva namísto hello hodnoty z dotazu hlavní hello. |
+| Zpráva |Zpráva toodisplay Pokud hello datový tok ověření dotazu nevrátí žádná data.  Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí. |
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) pro podporu dotazů v dlaždice.
-* Přidat [vizualizace částí](log-analytics-view-designer-parts.md) do vlastních zobrazení.
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) toosupport hello dotazy v dlaždice.
+* Přidat [vizualizace částí](log-analytics-view-designer-parts.md) tooyour vlastní zobrazení.

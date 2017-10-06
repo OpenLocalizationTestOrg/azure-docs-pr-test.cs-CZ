@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření první funkce na webu Azure Portal | Dokumentace Microsoftu"
-description: "Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru."
+title: "aaaCreate první funkce z hello portálu Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate vaše první Azure fungovat pro provádění bez serveru pomocí portálu Azure."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,59 +16,59 @@ ms.workload: na
 ms.date: 08/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3ec1f278f21d89782137625aff200f07f15fd9fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 84283d7d4bc6015061946af4589f9a70ae61f36b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
+# <a name="create-your-first-function-in-hello-azure-portal"></a>Vytvoření první funkce v hello portálu Azure
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto tématu se dozvíte, jak pomocí služby Functions vytvořit na webu Azure Portal funkci Hello World.
+Azure Functions umožňuje spuštění kódu v prostředí bez serveru bez nutnosti toofirst vytvoření virtuálního počítače nebo publikování webové aplikace. V tomto tématu se dozvíte, jak toouse funkce toocreate funkci "hello, world" v hello portálu Azure.
 
-![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
+![Vytvoření aplikace pro funkce v hello portálu Azure](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se toohello [portál Azure](https://portal.azure.com/).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
+Musíte mít funkce aplikace toohost hello provádění funkcí. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-Dál vytvoříte v nové aplikaci Function App funkci.
+Dál vytvořte funkci v nové funkce aplikace hello.
 
 ## <a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. Rozbalte novou aplikaci Function App a potom klikněte na tlačítko  **+**  vedle položky **Funkce**.
+1. Rozbalte nové funkce aplikace, a poté klikněte na tlačítko hello  **+**  tlačítko vedle příliš**funkce**.
 
-2.  Na stránce **Začněte rychle** vyberte **Webhook + API**, **Zvolte jazyk** funkce a klikněte na **Vytvořit tuto funkci**. 
+2.  V hello **rychle začít** vyberte **WebHook + API**, **vybrat jazyk** pro svou funkci a klikněte na **vytvořit tuto funkci** . 
    
-    ![Stručný úvod do služby Functions na webu Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+    ![Funkce Rychlé spuštění v hello portálu Azure.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-Funkce ve vybraném jazyce se vytvoří pomocí šablony funkce aktivované protokolem HTTP. Novou funkci můžete spustit odesláním požadavku HTTP.
+Funkce je vytvořená ve zvoleného jazyka pomocí hello šablony pro HTTP aktivované funkce. Můžete spustit novou funkci hello odesláním požadavku HTTP.
 
-## <a name="test-the-function"></a>Testování funkce
+## <a name="test-hello-function"></a>Testování funkce hello
 
 1. V nové funkci klikněte na **</> Získat adresu URL funkce**, vyberte **výchozí (klíč funkce)** a pak na **Kopírovat**. 
 
-    ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
+    ![Zkopírujte adresu URL funkce hello z hello portálu Azure](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Připojte k této adrese URL řetězec dotazu `&name=<yourname>` a stisknutím klávesy `Enter` na klávesnici požadavek proveďte. Následuje příklad odpovědi vrácené funkcí v prohlížeči Edge:
+2. Vložte adresu URL funkce hello do panelu Adresa prohlížeče. Připojit řetězec dotazu hello `&name=<yourname>` toothis adresy URL a stiskněte klávesu hello `Enter` klíče na vaši žádost hello tooexecute klávesnice. Hello tady je příklad hello odpovědi vrácené funkcí hello v prohlížeči Edge hello:
 
-    ![Odezva funkce v prohlížeči.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+    ![Funkce odpověď v prohlížeči hello.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    Adresa URL požadavku obsahuje klíč, který je ve výchozím nastavení nezbytný pro přístup k funkci přes protokol HTTP.   
+    požadavek Hello adresa URL obsahuje klíč, který je ve výchozím nastavení, tooaccess požadována funkce prostřednictvím protokolu HTTP.   
 
-3. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Pokud chcete zobrazit výstup trasování z předchozího zpracování, vraťte se na funkce na portálu a kliknutím na šipku nahoru ve spodní části obrazovky rozbalte položku **Protokoly**. 
+3. Když je funkce spuštěná, se zapisují informace o trasování toohello protokoly. toosee hello výstup trasování z předchozí zpracování hello, vrátí funkce tooyour hello portálu a klikněte na tlačítko hello v hello dolní části obrazovky tooexpand hello šipka nahoru **protokoly**. 
 
-   ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
+   ![Funkce přihlášení prohlížeč hello portálu Azure.](./media/functions-create-first-azure-function/function-view-logs.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

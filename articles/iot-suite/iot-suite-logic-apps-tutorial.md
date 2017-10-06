@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Suite a aplikacích logiky | Microsoft Docs"
-description: "Kurz o tom, jak spojit Logic Apps, abyste Azure IoT Suite pro obchodní proces."
+title: aaaAzure IoT Suite a Logic Apps | Microsoft Docs
+description: "Kurz týkající se jak toohook až Logic Apps tooAzure IoT Suite pro obchodní proces."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: corywink
-ms.openlocfilehash: 2e7997e2a8bdeeec6083d40acb55e653f87e140b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ef7311ac38f4e2ddb032cff0fb73591da5f76c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Kurz: Připojení k Azure IoT Suite vzdálené monitorování předkonfigurované řešení aplikace logiky
-[Microsoft Azure IoT Suite] [ lnk-internetofthings] předkonfigurovanému řešení vzdáleného monitorování je skvělým způsobem, jak rychle začít používat sadu začátku do konce funkce, která exemplifies řešení IoT. Tento kurz vás provede procesem přidání aplikace logiky do vaší Microsoft Azure IoT Suite předkonfigurovanému řešení vzdáleného monitorování. Tyto kroky ukazují, jak může trvat i další řešení IoT připojením k obchodní proces.
+# <a name="tutorial-connect-logic-app-tooyour-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Kurz: Připojte aplikace logiky tooyour Azure IoT Suite vzdálené monitorování předkonfigurované řešení
+Hello [Microsoft Azure IoT Suite] [ lnk-internetofthings] předkonfigurovanému řešení vzdáleného monitorování je skvělým způsobem tooget rychle začít s sadu začátku do konce funkce, která exemplifies řešení IoT. Tento kurz vás provede jak tooadd aplikace logiky tooyour Microsoft Azure IoT Suite předkonfigurované řešení vzdáleného monitorování. Tyto kroky ukazují, jak může trvat i další řešení IoT propojením tooa obchodní proces.
 
-*Pokud hledáte návod o tom, jak zřídit předkonfigurované řešení vzdáleného monitorování, přečtěte si téma [kurz: Začínáme s přednastavenými řešeními IoT][lnk-getstarted].*
+*Pokud hledáte návod na tom, jak tooprovision vzdálené monitorování předkonfigurované řešení, přečtěte si téma [kurz: Začínáme s řešeními IoT předkonfigurované hello][lnk-getstarted].*
 
 Než začnete tento kurz, proveďte následující kroky:
 
-* Zřídit předkonfigurovaného řešení vzdáleného monitorování ve vašem předplatném Azure.
-* Vytvořte účet sendgrid vám umožňuje povolit odesílání e-mailu, která aktivuje obchodní proces. Můžete si zaregistrovat Bezplatný zkušební účet v [sendgrid vám umožňuje](https://sendgrid.com/) kliknutím **zkuste zdarma**. Po registraci pro bezplatný zkušební účet je potřeba vytvořit [klíč rozhraní API](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) v Sendgridu, která uděluje oprávnění k odesílání pošty. Později v tomto kurzu potřebujete tento klíč rozhraní API.
+* Zřízení hello vzdálené monitorování předkonfigurované řešení ve vašem předplatném Azure.
+* Vytvoření tooenable účet sendgrid vám umožňuje toosend e-mailu, která aktivuje obchodní proces. Můžete si zaregistrovat Bezplatný zkušební účet v [sendgrid vám umožňuje](https://sendgrid.com/) kliknutím **zkuste zdarma**. Po registraci pro bezplatný zkušební účet musíte toocreate [klíč rozhraní API](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) v Sendgridu, která uděluje oprávnění toosend e-mailu. Později v kurzu hello potřebujete tento klíč rozhraní API.
 
-K dokončení tohoto kurzu, musíte Visual Studio 2015 nebo Visual Studio 2017 chtěli změnit nastavení akcí v back-end předkonfigurovaných řešení.
+toocomplete tohoto kurzu budete potřebovat Visual Studio 2015 nebo Visual Studio 2017 akce hello toomodify v back-end hello předkonfigurovaných řešení.
 
-Za předpokladu, že jste už zřízené vzdáleného monitorování předkonfigurované řešení, přejděte do skupiny prostředků pro toto řešení v [portál Azure][lnk-azureportal]. Skupina prostředků má stejný název jako název řešení jste si zvolili při zřízení řešení vzdáleného monitorování. Ve skupině prostředků uvidíte všechny zřízené prostředky Azure pro vaše řešení s výjimkou aplikace Azure Active Directory, které můžete najít na portálu Azure Classic. Následující snímek obrazovky ukazuje příklad **skupiny prostředků** okno pro vzdálené monitorování předkonfigurované řešení:
+Za předpokladu, že jste už zřízené vzdáleného monitorování předkonfigurované řešení, přejděte toohello skupinu prostředků pro toto řešení v hello [portál Azure][lnk-azureportal]. Skupina prostředků Hello má hello stejný název jako hello řešení, kterou si zvolili při zřízení řešení vzdáleného monitorování. Ve skupině prostředků hello zobrazí se všechny hello zřízení prostředků Azure pro vaše řešení s výjimkou hello aplikaci Azure Active Directory, které můžete najít v hello portálu Azure Classic. Hello následující snímek obrazovky ukazuje příklad **skupiny prostředků** okno pro vzdálené monitorování předkonfigurované řešení:
 
 ![](media/iot-suite-logic-apps-tutorial/resourcegroup.png)
 
-Pokud chcete začít, nastavte pro použití s předkonfigurované řešení aplikace logiky.
+toobegin, nastavte hello logiku aplikace toouse s hello předkonfigurované řešení.
 
-## <a name="set-up-the-logic-app"></a>Nastavit aplikaci logiky
-1. Klikněte na tlačítko **přidat** v horní části vaší okně skupiny prostředků na portálu Azure.
+## <a name="set-up-hello-logic-app"></a>Nastavit hello aplikace logiky
+1. Klikněte na tlačítko **přidat** hello horní části vaší okně skupiny prostředků v hello portálu Azure.
 2. Vyhledejte **aplikace logiky**, vyberte ho a pak klikněte na tlačítko **vytvořit**.
-3. Vyplňte **název** a používat stejné **předplatné** a **skupiny prostředků** jste použili při zřizování řešení vzdáleného monitorování. Klikněte na možnost **Vytvořit**.
+3. Vyplňte hello **název** a použití hello stejné **předplatné** a **skupiny prostředků** jste použili při zřizování řešení vzdáleného monitorování. Klikněte na možnost **Vytvořit**.
    
     ![](media/iot-suite-logic-apps-tutorial/createlogicapp.png)
-4. Po dokončení nasazení uvidíte, že aplikace logiky je uveden jako prostředků ve vaší skupině prostředků.
-5. Klikněte na aplikaci logiky a přejděte do okna aplikace logiky, vyberte **prázdné aplikace logiky** šablony otevřete **logiku aplikace Návrhář**.
+4. Po dokončení nasazení uvidíte jako prostředek hello aplikace logiky, která je uvedena ve vaší skupině prostředků.
+5. Klikněte na tlačítko hello aplikace logiky toonavigate toohello aplikace logiky okně vyberte hello **prázdné aplikace logiky** šablony tooopen hello **logiku aplikace Návrhář**.
    
     ![](media/iot-suite-logic-apps-tutorial/logicappsdesigner.png)
 6. Vyberte **požadavku**. Tuto akci Určuje, že příchozí požadavek HTTP s konkrétní JSON formátu aktivační událost jednání datové části.
-7. Do schématu JSON textu žádosti vložte následující kód:
+7. Vložte následující kód do hello požadavku schématu JSON textu hello:
    
     ```json
     {
@@ -80,7 +80,7 @@ Pokud chcete začít, nastavte pro použití s předkonfigurované řešení apl
     ```
    
    > [!NOTE]
-   > Po uložení aplikaci logiky, ale nejdřív je nutné přidat akci, můžete zkopírovat adresu URL pro metodu post protokolu HTTP.
+   > Po uložení aplikace logiky hello, ale nejdřív je nutné přidat akci můžete zkopírovat hello URL pro hello HTTP post.
    > 
    > 
 8. Klikněte na tlačítko **+ nový krok** pod ruční aktivační událost. Pak klikněte na tlačítko **přidat akci**.
@@ -89,76 +89,76 @@ Pokud chcete začít, nastavte pro použití s předkonfigurované řešení apl
 9. Vyhledejte **sendgrid vám umožňuje - odesílání e-mailu** a klikněte na něj.
    
     ![](media/iot-suite-logic-apps-tutorial/logicappaction.png)
-10. Zadejte název připojení, jako například **SendGridConnection**, zadejte **klíč rozhraní API sendgrid vám umožňuje** jste vytvořili při nastavení účtu Sendgridu a klikněte na tlačítko **vytvořit**.
+10. Zadejte název hello připojení, jako například **SendGridConnection**, zadejte hello **klíč rozhraní API sendgrid vám umožňuje** jste vytvořili při nastavení účtu Sendgridu a klikněte na tlačítko **vytvořit**.
     
     ![](media/iot-suite-logic-apps-tutorial/sendgridconnection.png)
-11. Přidání e-mailové adresy, které vlastníte na obojí **z** a **k** pole. Přidat **vzdáleného sledování upozornění [DeviceId]** k **subjektu** pole. V **obsahu e-mailu** pole, přidejte **zařízení [DeviceId] ohlásil [measurementName] s hodnotou [measuredValue].** Můžete přidat **[DeviceId]**, **[measurementName]**, a **[measuredValue]** kliknutím v **můžete vložit data z předchozích kroků** části.
+11. Přidání e-mailových adres, vlastní tooboth hello **z** a **k** pole. Přidat **vzdáleného sledování upozornění [DeviceId]** toohello **subjektu** pole. V hello **obsahu e-mailu** pole, přidejte **zařízení [DeviceId] ohlásil [measurementName] s hodnotou [measuredValue].** Můžete přidat **[DeviceId]**, **[measurementName]**, a **[measuredValue]** kliknutím v hello **můžete vložit data z předchozích kroků**části.
     
     ![](media/iot-suite-logic-apps-tutorial/sendgridaction.png)
-12. Klikněte na tlačítko **Uložit** v horní nabídce.
-13. Klikněte na tlačítko **požadavku** aktivační události a zkopírujte **Http Post na tuto adresu URL** hodnotu. Později v tomto kurzu musíte tuto adresu URL.
+12. Klikněte na tlačítko **Uložit** v horní nabídce hello.
+13. Klikněte na tlačítko hello **požadavku** aktivační události a zkopírujte hello **Http Post toothis URL** hodnotu. Později v tomto kurzu musíte tuto adresu URL.
 
 > [!NOTE]
-> Logic Apps umožňují spustit [mnoho různých typů akce] [ lnk-logic-apps-actions] včetně akce v Office 365. 
+> Logic Apps umožňují toorun [mnoho různých typů akce] [ lnk-logic-apps-actions] včetně akce v Office 365. 
 > 
 > 
 
-## <a name="set-up-the-eventprocessor-web-job"></a>Nastavit webovou úlohu EventProcessor
-V této části se připojit k aplikaci logiky můžete vytvořit předkonfigurované řešení. Pro dokončení této úlohy, přidejte adresu URL pro aktivaci aplikace logiky k akci, která aktivuje se v případě hodnotu senzor zařízení překračuje prahovou hodnotu.
+## <a name="set-up-hello-eventprocessor-web-job"></a>Nastavit hello EventProcessor webové úlohy
+V této části je připojit vaše toohello předkonfigurované řešení aplikace logiky, které jste vytvořili. toocomplete této úlohy přidejte hello URL tootrigger hello aplikace logiky toohello akci, která aktivuje se v případě hodnotu senzor zařízení překračuje prahovou hodnotu.
 
-1. Pomocí vašeho klienta git clone nejnovější verzi [azure-iot-remote-monitoring úložiště github][lnk-rmgithub]. Například:
+1. Použijte váš git tooclone hello nejnovější verze klienta hello [azure-iot-remote-monitoring úložiště github][lnk-rmgithub]. Například:
    
     ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
-2. V sadě Visual Studio, otevřete **RemoteMonitoring.sln** z místní kopie úložiště.
-3. Otevřete **ActionRepository.cs** v soubor **infrastruktury\\úložiště** složky.
-4. Aktualizace **actionIds** slovníku pomocí **Http Post na tuto adresu URL** jste si poznamenali u aplikace logiky následujícím způsobem:
+2. V sadě Visual Studio otevřete hello **RemoteMonitoring.sln** z místní kopie hello hello úložiště.
+3. Otevřete hello **ActionRepository.cs** souboru v hello **infrastruktury\\úložiště** složky.
+4. Aktualizace hello **actionIds** slovník s hello **Http Post toothis URL** jste si poznamenali u aplikace logiky následujícím způsobem:
    
     ```csharp
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
-        { "Send Message", "<Http Post to this URL>" },
-        { "Raise Alarm", "<Http Post to this URL>" }
+        { "Send Message", "<Http Post toothis URL>" },
+        { "Raise Alarm", "<Http Post toothis URL>" }
     };
     ```
-5. Uložte změny v řešení a ukončení Visual Studio.
+5. Uložení změn hello v řešení a ukončení Visual Studio.
 
-## <a name="deploy-from-the-command-line"></a>Nasazení z příkazového řádku
-V této části nasadíte vaší aktualizovanou verzi řešení vzdáleného monitorování nahradit verzi aktuálně spuštěných v Azure.
+## <a name="deploy-from-hello-command-line"></a>Nasazení z příkazového řádku hello
+V této části nasadíte vaší aktualizovanou verzi hello vzdálené monitorování řešení tooreplace hello verzi aktuálně spuštěných v Azure.
 
-1. Následující [dev nastavení] [ lnk-devsetup] pokyny pro nastavení prostředí pro nasazení.
-2. Chcete-li nasadit místně, postupujte [místní nasazení] [ lnk-localdeploy] pokyny.
-3. Chcete-li nasadit do cloudu a aktualizovat vaše stávající nasazení cloudu, postupujte [cloudové nasazení] [ lnk-clouddeploy] pokyny. Název původního nasazení použijte jako název nasazení. Například pokud byla volána původního nasazení **demologicapp**, použijte následující příkaz:
+1. Následující hello [dev nastavení] [ lnk-devsetup] tooset pokyny prostředí pro nasazení.
+2. toodeploy místně, postupujte podle hello [místní nasazení] [ lnk-localdeploy] pokyny.
+3. toodeploy toohello cloudu a aktualizovat vaše stávající nasazení cloudu, postupujte podle hello [cloudové nasazení] [ lnk-clouddeploy] pokyny. Použijte název hello původní nasazení jako název nasazení hello. Například pokud byla volána původní nasazení hello **demologicapp**, použijte následující příkaz hello:
    
    ```cmd
    build.cmd cloud release demologicapp
    ```
    
-   Při spuštění skriptu sestavení, nezapomeňte použít stejný účet Azure, předplatné, oblast a instanci Active Directory, které jste použili při zřizování řešení.
+   Když hello vytvořit skript se spustí, ujistěte se, toouse hello stejný účet Azure, předplatné, oblast a instance služby Active Directory, které jste použili při zřizování řešení hello.
 
 ## <a name="see-your-logic-app-in-action"></a>V tématu aplikace logiky v akci
-Předkonfigurované řešení vzdáleného monitorování má dvě pravidla ve výchozím nastavení při zřizování řešení. Obě pravidla jsou na **SampleDevice001** zařízení:
+Hello předkonfigurovanému řešení vzdáleného monitorování má dvě pravidla ve výchozím nastavení při zřizování řešení. Obě pravidla jsou na hello **SampleDevice001** zařízení:
 
 * Teplotní > 38.00
 * Vlhkosti > 48.00
 
-Aktivační události pravidlo teploty **vyvolat alarmů** akce a vlhkost pravidla aktivační události **SendMessage** akce. Za předpokladu, že používá stejnou adresu URL pro obě akce **ActionRepository** třídy, vaše aplikace logiky aktivačních událostí pro buď pravidlo. Obě pravidla sendgrid vám umožňuje používat k odesílání e-mailu na **k** adresu podrobné informace o této výstrahy.
+pravidlo teploty Hello aktivuje hello **vyvolat alarmů** akce a hello vlhkosti pravidlo aktivuje hello **SendMessage** akce. Za předpokladu, že jste použili hello stejnou adresu URL pro obě akce hello **ActionRepository** třídy, vaše aplikace logiky aktivačních událostí pro buď pravidlo. Obě pravidla použít toosend sendgrid vám umožňuje e-mailu toohello **k** adresu s podrobnostmi hello výstrahy.
 
 > [!NOTE]
-> Aplikace logiky i nadále aktivovat pokaždé, když je splněna prahovou hodnotu. Aby se zabránilo zbytečným e-mailů, můžete buď vypněte pravidla na portálu řešení nebo zakázat aplikaci logiky v [portál Azure][lnk-azureportal].
+> Hello aplikace logiky pokračuje tootrigger pokaždé, když se dosáhla prahová hodnota hello. nepotřebné e-mailů tooavoid, můžete zakázat hello pravidla ve vašem řešení portálu nebo zakázat hello aplikace logiky v hello [portál Azure][lnk-azureportal].
 > 
 > 
 
-Kromě doručování e-mailů, můžete také zjistit při spuštění aplikace logiky na portálu:
+Kromě toho tooreceiving e-mailů, můžete také zjistit spuštění hello aplikace logiky hello portálu:
 
 ![](media/iot-suite-logic-apps-tutorial/logicapprun.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste použili aplikaci logiky pro připojení k obchodní proces předkonfigurované řešení, můžete se další informace o možnostech přizpůsobení předkonfigurovaných řešení:
+Teď, když jste použili aplikaci logiky tooconnect hello předkonfigurované řešení tooa obchodní proces, můžete další informace o hello možností pro přizpůsobení hello předkonfigurované řešení:
 
-* [Použití dynamické telemetrie s předkonfigurovaného řešení vzdáleného monitorování][lnk-dynamic]
-* [Informace metadat zařízení v předkonfigurovaného řešení vzdáleného monitorování][lnk-devinfo]
+* [Použití dynamické telemetrie s hello předkonfigurovanému řešení vzdáleného monitorování][lnk-dynamic]
+* [Informace metadat zařízení v hello předkonfigurovanému řešení vzdáleného monitorování][lnk-devinfo]
 
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md

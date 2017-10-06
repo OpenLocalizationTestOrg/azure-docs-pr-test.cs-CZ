@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení předkonfigurovaných řešení | Microsoft Docs"
-description: "Poskytuje pokyny o tom, jak přizpůsobit Azure IoT Suite předkonfigurované řešení."
+title: "aaaCustomizing předkonfigurovanými řešeními | Microsoft Docs"
+description: "Obsahuje pokyny k jak toocustomize hello Azure IoT Suite předkonfigurovaných řešení."
 services: 
 suite: iot-suite
 documentationcenter: .net
@@ -15,73 +15,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.openlocfilehash: bdf4cd89d5ad0392337dfe761108608d506adf18
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a8573f5ac6ed944c44459df495446f15174d513
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-a-preconfigured-solution"></a>Přizpůsobení předkonfigurovaného řešení
 
-Předkonfigurovaná řešení Azure IoT Suite součástí Ukázka služby v rámci sady společně k poskytování-komplexní řešení. Z tohoto bodu počáteční jsou různých místech, ve kterých můžete rozšířit a přizpůsobit řešení pro konkrétní scénáře. Následující části popisují tyto společné body přizpůsobení.
+Hello předkonfigurované řešení součástí hello Azure IoT Suite ukázka hello služby v rámci hello suite pracovní společně toodeliver-komplexní řešení. V tento počáteční bod existují různé míst, ve kterých můžete rozšířit a přizpůsobit hello řešení pro konkrétní scénáře. Hello následující části popisují tyto společné body přizpůsobení.
 
-## <a name="find-the-source-code"></a>Vyhledání zdrojového kódu
+## <a name="find-hello-source-code"></a>Najít hello zdrojového kódu
 
-Zdrojový kód pro předkonfigurované řešení je k dispozici na Githubu v následující úložiště:
+zdrojový kód Hello hello předkonfigurované řešení je k dispozici na Githubu v hello následující úložiště:
 
 * Vzdálené monitorování: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 * Prediktivní údržby: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
 * Připojené factory: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
-Zdrojový kód pro předkonfigurované řešení je určen k předvedení vzory a postupy, které slouží k implementaci začátku do konce funkcí řešení IoT pomocí sady Azure IoT Suite. Můžete najít další informace o tom, jak vytvořit a nasadit řešení v úložišť GitHub.
+zdrojový kód Hello hello předkonfigurované řešení je zadaný toodemonstrate hello vzory a postupy používané funkce začátku do konce hello tooimplement řešení IoT pomocí sady Azure IoT Suite. Můžete najít další informace o toobuild a nasadit řešení hello v úložišť GitHub hello.
 
-## <a name="change-the-preconfigured-rules"></a>Změnit předkonfigurovaných pravidel
+## <a name="change-hello-preconfigured-rules"></a>Změna pravidel hello předkonfigurované
 
-Řešení vzdáleného monitorování obsahuje tři [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy pro zpracování informací o zařízení, telemetrie a logiku pravidla v řešení.
+Hello řešení vzdáleného monitorování obsahuje tři [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy toohandle informace o zařízení, telemetrie a logiku pravidla v řešení hello.
 
-Jsou tři stream analytics úloh a jejich syntaxi jsou popsané v podrobně [vzdálené monitorování návod pro předkonfigurované řešení](iot-suite-remote-monitoring-sample-walkthrough.md). 
+Hello tři stream analytics úloh a jejich syntaxe jsou popsány podrobněji v hello [vzdálené monitorování návod pro předkonfigurované řešení](iot-suite-remote-monitoring-sample-walkthrough.md). 
 
-Můžete upravit tyto úlohy přímo ke změně logiku, nebo přidejte logiku, které jsou specifické pro váš scénář. Úlohy služby Stream Analytics můžete najít následujícím způsobem:
+Tyto úlohy můžete upravit přímo tooalter hello logiku, nebo přidejte logiku tooyour konkrétní scénáře. Můžete najít hello úlohy Stream Analytics následujícím způsobem:
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
-2. Přejděte do skupiny prostředků se stejným názvem jako řešení IoT. 
-3. Vyberte úlohu Azure Stream Analytics, kterou chcete upravit. 
-4. Zastavit úlohu tak, že vyberete **Zastavit** v sadu příkazů. 
-5. Upravte vstupy, dotazů a výstupy.
+1. Přejděte příliš[portál Azure](https://portal.azure.com).
+2. Přejděte toohello skupinu prostředků s hello stejný název jako řešení IoT. 
+3. Vyberte úlohy Azure Stream Analytics hello chcete toomodify. 
+4. Úlohu zastavení hello výběrem **Zastavit** v hello sadu příkazů. 
+5. Upravte hello vstupy, dotazů a výstupy.
    
-    Jednoduchých úprav je změna dotazu pro **pravidla** úlohu, která má použít **"<"** místo **">"**. Na portálu řešení stále zobrazuje **">"** při upravit pravidlo, ale Všimněte si, jak se chování obráceně z důvodu změny v základní úlohy.
-6. Spustit úlohu
+    Jednoduchých úprav je toochange hello dotazu pro hello **pravidla** toouse úlohy **"<"** místo **">"**. portál řešení Hello stále zobrazuje **">"** při upravit pravidlo, ale Všimněte si, jak je z důvodu změn toohello v hello základní úlohy obráceně hello chování.
+6. Spuštění úlohy hello
 
 > [!NOTE]
-> Řídicím panelu vzdáleného monitorování závisí na konkrétní data, takže změna úloh může způsobit selhání řídicího panelu.
+> vzdálené monitorování řídicí panel Hello závisí na konkrétní data, tak změnu hello úloh může způsobit toofail hello řídicího panelu.
 
 ## <a name="add-your-own-rules"></a>Přidání vlastních pravidel
 
-Kromě změna předkonfigurované úlohy Azure Stream Analytics, můžete na portálu Azure můžete přidat nové úlohy nebo přidat nové dotazy k stávající úlohy.
+Kromě toho toochanging hello předkonfigurované úlohy Azure Stream Analytics, můžete použít nové úlohy Azure portálu tooadd hello nebo přidat nové úlohy tooexisting dotazy.
 
 ## <a name="customize-devices"></a>Vlastní nastavení zařízení
 
-Mezi nejběžnější rozšíření aktivity ve spolupráci s zařízení, které jsou specifické pro váš scénář. Existuje několik metod pro práci s zařízení. Tyto metody zahrnují změny simulované zařízení tak, aby odpovídaly vašemu scénáři, nebo pomocí [sady SDK zařízení IoT] [ IoT Device SDK] připojit fyzického zařízení k řešení.
+Mezi nejběžnější aktivity rozšíření hello ve spolupráci s konkrétní tooyour scénář zařízení. Existuje několik metod pro práci s zařízení. Tyto metody zahrnují změny simulované zařízení toomatch váš scénář, nebo pomocí hello [sady SDK zařízení IoT] [ IoT Device SDK] tooconnect řešení toohello fyzického zařízení.
 
-Podrobný návod k přidávání zařízení, najdete v článku [Iot Suite připojení zařízení](iot-suite-connecting-devices.md) článku a [vzdálené monitorování C SDK – ukázka](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). Tato ukázka je navržen pro práci s předkonfigurovaného řešení vzdáleného monitorování.
+Podrobný průvodce tooadding zařízeních, najdete v části hello [Iot Suite připojení zařízení](iot-suite-connecting-devices.md) článek a hello [vzdálené monitorování C SDK – ukázka](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). Tato ukázka je navrženou toowork s hello předkonfigurovanému řešení vzdáleného monitorování.
 
 ### <a name="create-your-own-simulated-device"></a>Vytvoření simulovaného zařízení
 
-Součástí [pro vzdálené monitorování řešení zdrojového kódu](https://github.com/Azure/azure-iot-remote-monitoring), je simulátoru .NET. Tato simulátoru je zřízená jako součást řešení a můžete ho odeslat rozdílná metadata, telemetrických dat, a reagovat na jiné příkazy a metody alter.
+Součástí hello [pro vzdálené monitorování řešení zdrojového kódu](https://github.com/Azure/azure-iot-remote-monitoring), je simulátoru .NET. Tato simulátoru je hello jeden zřízený jako součást řešení hello a můžete změnu toosend rozdílná metadata, telemetrických dat a odpovědět, toodifferent příkazy a metody.
 
-Simulátoru předem nakonfigurované v předkonfigurovaného řešení vzdáleného monitorování simuluje chladič zařízení, který vysílá telemetrická data teploty a vlhkosti. Můžete upravit v simulátoru [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) projektu, když jste forked úložiště GitHub.
+předkonfigurované simulátoru Hello v hello předkonfigurovanému řešení vzdáleného monitorování simuluje chladič zařízení, který vysílá telemetrická data teploty a vlhkosti. Můžete upravit hello simulátoru v hello [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) projektu, když jste forked úložiště GitHub hello.
 
 ### <a name="available-locations-for-simulated-devices"></a>K dispozici umístění pro simulované zařízení
 
-Sada výchozí umístění je v Praze/Redmond, Washington, USA. Můžete změnit tato místa v [SampleDeviceFactory.cs][lnk-sample-device-factory].
+Sada Hello výchozí umístění je v Praze/Redmond, Washington, USA. Můžete změnit tato místa v [SampleDeviceFactory.cs][lnk-sample-device-factory].
 
-### <a name="add-a-desired-property-update-handler-to-the-simulator"></a>Přidání obslužné rutiny aktualizace požadované vlastnosti simulátoru
+### <a name="add-a-desired-property-update-handler-toohello-simulator"></a>Přidat simulátoru toohello obslužná rutina aktualizace požadované vlastnosti
 
-Na portálu řešení můžete nastavit hodnotu pro požadovanou vlastnost pro zařízení. Je zodpovědností zařízení ke zpracování vlastnosti žádost o změnu, když zařízení načte hodnoty požadované vlastnosti. Chcete-li přidat podporu pro změnu hodnoty vlastnosti prostřednictvím požadované vlastnosti, přidání obslužné rutiny simulátoru.
+Můžete nastavit hodnotu pro požadovanou vlastnost pro zařízení na portálu řešení hello. Pokud zařízení hello načte hodnotu vlastnosti hello potřeby je hello odpovědností hello zařízení toohandle hello vlastnost žádosti o změnu. Podpora tooadd pro změnu hodnoty vlastnosti prostřednictvím požadovanou vlastnost, je nutné tooadd simulátoru toohello obslužné rutiny.
 
-Simulátor obsahuje obslužné rutiny pro **SetPointTemp** a **TelemetryInterval** vlastnosti, které lze aktualizovat nastavením požadované hodnoty na portálu řešení.
+Simulátor Hello obsahuje obslužné rutiny pro hello **SetPointTemp** a **TelemetryInterval** vlastnosti, které lze aktualizovat nastavením požadované hodnoty v portálu řešení hello.
 
-Následující příklad ukazuje rutinu **SetPointTemp** potřeby vlastnost **CoolerDevice** – třída:
+Hello následující příklad ukazuje hello obslužné rutiny pro hello **SetPointTemp** potřeby vlastnost hello **CoolerDevice** třídy:
 
 ```csharp
 protected async Task OnSetPointTempUpdate(object value)
@@ -93,11 +93,11 @@ protected async Task OnSetPointTempUpdate(object value)
 }
 ```
 
-Tato metoda aktualizace teploty bodu telemetrie a hlásí změnu zpět do služby IoT Hub nastavením hlášené vlastnosti.
+Tato metoda hello telemetrie bod teploty a pak sestavy hello změnit back tooIoT rozbočovače nastavením hlášené vlastnosti aktualizace.
 
-Podle vzoru v předchozím příkladu můžete přidat svoje vlastní obslužné rutiny pro vlastní vlastnosti.
+Pomocí následující vzor hello v předchozím příkladu hello můžete přidat svoje vlastní obslužné rutiny pro vlastní vlastnosti.
 
-Je třeba také svázat požadovanou vlastnost obslužná rutina jak je znázorněno v následujícím příkladu z **CoolerDevice** konstruktor:
+Je třeba také svázat obslužná rutina toohello hello požadovanou vlastnost, jak ukazuje následující příklad z hello hello **CoolerDevice** konstruktor:
 
 ```csharp
 _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdate);
@@ -105,16 +105,16 @@ _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdat
 
 Všimněte si, že **SetPointTempPropertyName** konstanta definovaný jako "Config.SetPointTemp".
 
-### <a name="add-support-for-a-new-method-to-the-simulator"></a>Přidat podporu pro nové metody pro simulátoru
+### <a name="add-support-for-a-new-method-toohello-simulator"></a>Přidat podporu pro nové simulátoru toohello – metoda
 
-Můžete přizpůsobit simulátoru přidat podporu pro nové [– metoda (přímá metoda)][lnk-direct-methods]. Existují dva klíče kroky:
+Můžete přizpůsobit hello simulátoru tooadd podporu pro nové [– metoda (přímá metoda)][lnk-direct-methods]. Existují dva klíče kroky:
 
-- Simulátor musíte upozornit službu IoT hub v předkonfigurovaném řešení s podrobnostmi metody.
-- Simulátor musí obsahovat kód pro zpracování volání metody, které při vyvolání z **podrobnosti o zařízení** panely v Průzkumníku řešení nebo prostřednictvím úlohu.
+- Simulátor Hello musíte upozornit centra IoT hello hello předkonfigurované řešení s podrobnostmi metody hello.
+- Simulátor Hello musí obsahovat volání metody hello toohandle kód při vyvolání z hello **podrobnosti o zařízení** panely v Průzkumníku řešení hello nebo prostřednictvím úlohu.
 
-Vzdálené monitorování předkonfigurované řešení používá *hlášené vlastnosti* Odeslat podrobnosti o podporovaných metod do služby IoT hub. Back-end řešení udržuje seznam všech metod nepodporuje každé zařízení společně s historie volání metod. Můžete zobrazit tyto informace o zařízeních a volat metody na portálu řešení.
+Hello vzdálené monitorování předkonfigurované řešení používá *hlášené vlastnosti* toosend podrobnosti o podporovaných metod tooIoT rozbočovače. back-end Hello řešení udržuje seznam všech metod hello podporovaných každé zařízení společně s historie volání metod. Můžete zobrazit tyto informace o zařízeních a volat metody na portálu řešení hello.
 
-Oznámení služby IoT hub, zařízení podporuje metodu, zařízení musí přidat podrobnosti metody, která **SupportedMethods** uzlu ve vlastnostech hlášené:
+toonotify hello Centrum IoT hub, zařízení podporuje metodu hello zařízení musíte přidat podrobnosti o hello metoda toohello **SupportedMethods** uzel v hello hlášené vlastnosti:
 
 ```json
 "SupportedMethods": {
@@ -123,35 +123,35 @@ Oznámení služby IoT hub, zařízení podporuje metodu, zařízení musí při
 }
 ```
 
-Podpis metody má následující formát: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Například zadejte **InitiateFirmwareUpdate** metoda očekává parametr řetězec s názvem **FwPackageURI**, použijte následující podpis metody:
+Hello podpis metody má hello následující formát: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Například toospecify hello **InitiateFirmwareUpdate** metoda očekává parametr řetězec s názvem **FwPackageURI**, použijte následující podpis metody hello:
 
 ```json
 InitiateFirmwareUpate--FwPackageURI-string: "description of method"
 ```
 
-Seznam typů podporovaných parametrů najdete v tématu **CommandTypes** – třída v projektu infrastruktury.
+Seznam typů podporovaných parametrů najdete v tématu hello **CommandTypes** třídy v projektu OMI hello.
 
-Chcete-li odstranit metodu, nastavte podpis metody `null` ve vlastnostech hlášené.
+toodelete metodu, nastavení hello metoda podpis příliš`null` v hello hlášené vlastnosti.
 
 > [!NOTE]
-> Back-end řešení aktualizuje informace o podporovaných metod pouze, když obdrží *informace o zařízení* zprávy ze zařízení.
+> Hello back-end řešení aktualizuje pouze informace o podporovaných metod při přijetí *informace o zařízení* zpráv ze zařízení hello.
 
-Následující příklad kódu z **SampleDeviceFactory** – třída v běžné projektu ukazuje, jak přidat metodu do seznamu **SupportedMethods** ve vlastnostech hlášené poslal zařízení:
+Následující ukázka kódu z hello Hello **SampleDeviceFactory** třídy v hello běžné projektu ukazuje, jak tooadd seznam metoda toohello z **SupportedMethods** v hello hlášené vlastnosti poslal hello zařízení:
 
 ```csharp
 device.Commands.Add(new Command(
     "InitiateFirmwareUpdate",
     DeliveryType.Method,
-    "Updates device Firmware. Use parameter 'FwPackageUri' to specifiy the URI of the firmware file, e.g. https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin",
+    "Updates device Firmware. Use parameter 'FwPackageUri' toospecifiy hello URI of hello firmware file, e.g. https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin",
     new[] { new Parameter("FwPackageUri", "string") }
 ));
 ```
 
-Tento fragment kódu přidá podrobnosti o **InitiateFirmwareUpdate** metoda včetně text, který se zobrazí na portálu řešení a podrobnosti o parametrech požadovaná metoda.
+Tento fragment kódu přidá podrobnosti o hello **InitiateFirmwareUpdate** metoda včetně toodisplay textu hello portál řešení a podrobnosti o hello požadované parametry metody.
 
-Simulátor odešle hlášené vlastnosti, včetně seznamu podporovaných metod do služby IoT Hub při spuštění simulátoru.
+Simulátor Hello odešle hlášené vlastnosti, včetně hello seznam podporovaných metod tooIoT centra, když se spustí simulátoru hello.
 
-Přidání obslužné rutiny kód simulátor pro každou metodu, kterou podporuje. Zobrazí se stávající obslužné rutiny v **CoolerDevice** – třída v projektu Simulator.WebJob. Následující příklad ukazuje rutinu **InitiateFirmwareUpdate** metoda:
+Přidejte kód simulátoru toohello obslužné rutiny pro každou metodu, kterou podporuje. Zobrazí se stávající obslužné rutiny hello v hello **CoolerDevice** – třída v projektu Simulator.WebJob hello. Hello následující příklad ukazuje hello obslužné rutiny pro **InitiateFirmwareUpdate** metoda:
 
 ```csharp
 public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -195,58 +195,58 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 }
 ```
 
-Metoda obslužná rutina názvy musí začínat `On` následuje název metody. **MethodRequest** parametr obsahuje žádné parametry předané pomocí volání metody z back-end řešení. Návratová hodnota musí být typu **úloh&lt;MethodResponse&gt;**. **BuildMethodResponse** nástroj metoda vám pomůže vytvořit návratovou hodnotu.
+Metoda obslužná rutina názvy musí začínat `On` následuje název hello hello metody. Hello **methodRequest** parametr obsahuje žádné parametry předané pomocí volání metody hello z back-end hello řešení. Hello návratová hodnota musí být typu **úloh&lt;MethodResponse&gt;**. Hello **BuildMethodResponse** nástroj metoda vám pomůže vytvořit hello návratovou hodnotu.
 
-Uvnitř obslužné rutiny metoda může takto:
+Uvnitř hello metoda obslužnou rutinu vám může:
 
 - Spustí asynchronní úlohu.
-- Načíst požadované vlastnosti z *dvojče zařízení* IoT hub.
-- Aktualizovat vlastnosti jediné hlášené pomocí **SetReportedPropertyAsync** metoda v **CoolerDevice** třídy.
-- Aktualizovat více hlášené vlastnosti tak, že vytvoříte **TwinCollection** instance a volání **Transport.UpdateReportedPropertiesAsync** metoda.
+- Načíst požadované vlastnosti z hello *dvojče zařízení* IoT hub.
+- Aktualizovat vlastnosti jediné hlášené pomocí hello **SetReportedPropertyAsync** metoda v hello **CoolerDevice** třídy.
+- Aktualizovat více hlášené vlastnosti tak, že vytvoříte **TwinCollection** instance a volání hello **Transport.UpdateReportedPropertiesAsync** metoda.
 
-V předchozím příkladu aktualizace firmwaru provede následující kroky:
+Hello předchozí příklad aktualizace firmwaru provádí hello následující kroky:
 
-- Kontroluje, zda je zařízení nemůže přijmout žádost o aktualizaci firmwaru.
-- Asynchronně spustí operace aktualizace firmwaru a obnoví telemetrii po dokončení operace.
-- Okamžitě vrátí zprávu "FirmwareUpdate přijata" se indikovat, že žádost byla přijata zařízení.
+- Kontroly hello zařízení je možné tooaccept žádost o aktualizaci firmwaru hello.
+- Asynchronně spustí operace aktualizace firmwaru hello a obnoví hello telemetrie při dokončení operace hello.
+- Hned vrátí hello "FirmwareUpdate přijata" zpráva tooindicate hello žádost byla přijata hello zařízení.
 
 ### <a name="build-and-use-your-own-physical-device"></a>Vytvoření a použití si vlastní zařízení (fyzické)
 
-[SDK služby Azure IoT](https://github.com/Azure/azure-iot-sdks) poskytují knihovny pro připojení (jazyky a operační systémy) celou řadu typů zařízení do řešení IoT.
+Hello [SDK služby Azure IoT](https://github.com/Azure/azure-iot-sdks) poskytují knihovny pro připojení (jazyky a operační systémy) celou řadu typů zařízení do řešení IoT.
 
 ## <a name="modify-dashboard-limits"></a>Upravit omezení řídicí panel
 
 ### <a name="number-of-devices-displayed-in-dashboard-dropdown"></a>Počet zařízení, které jsou zobrazeny v rozevírací nabídce řídicí panel
 
-Výchozí hodnota je 200. Můžete změnit toto číslo v [DashboardController.cs][lnk-dashboard-controller].
+Hello výchozí hodnota je 200. Můžete změnit toto číslo v [DashboardController.cs][lnk-dashboard-controller].
 
-### <a name="number-of-pins-to-display-in-bing-map-control"></a>Počet kódů PIN pro zobrazení v ovládacím prvku mapy Bing
+### <a name="number-of-pins-toodisplay-in-bing-map-control"></a>Počet kódů PIN toodisplay v ovládacím prvku mapy Bing
 
-Výchozí hodnota je 200. Můžete změnit toto číslo v [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
+Hello výchozí hodnota je 200. Můžete změnit toto číslo v [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
 
 ### <a name="time-period-of-telemetry-graph"></a>Časové období telemetrických dat grafu
 
-Výchozí hodnota je 10 minut. Můžete změnit tuto hodnotu v [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
+Hello výchozí hodnota je 10 minut. Můžete změnit tuto hodnotu v [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
 
 ## <a name="manually-set-up-application-roles"></a>Ručně nastavit aplikační role
 
-Následující postup popisuje, jak přidat **správce** a **jen pro čtení** aplikační role pro předkonfigurované řešení. Všimněte si, že zahrnují předkonfigurovaných řešení, které jsou už zřízené z webu azureiotsuite.com **správce** a **jen pro čtení** role.
+Hello následující postup popisuje, jak tooadd **správce** a **jen pro čtení** aplikace role tooa předkonfigurované řešení. Předkonfigurovaná řešení, které jsou už zřízené z webu azureiotsuite.com hello obsahují hello **správce** a **jen pro čtení** role.
 
-Členové **jen pro čtení** role můžete zobrazit řídicí panel a v seznamu zařízení, ale nejsou povoleny zařízení přidat, změnit atributy zařízení nebo odesílat příkazy.  Členové **správce** role mají plný přístup ke všem funkcím v řešení.
+Členové hello **jen pro čtení** role můžete zobrazit seznam zařízení hello a hello řídicího panelu, ale nejsou povoleny tooadd zařízení, změny atributů zařízení nebo odesílání příkazů.  Členové hello **správce** role mají plný přístup tooall hello funkci v řešení hello.
 
-1. Přejděte na [portál Azure classic][lnk-classic-portal].
+1. Přejděte toohello [portál Azure classic][lnk-classic-portal].
 2. Vyberte **služby Active Directory**.
-3. Klikněte na název klienta AAD, které jste použili při zřizování řešení.
+3. Klikněte na název hello hello AAD klienta, který jste použili při zřízení řešení.
 4. Klikněte na tlačítko **aplikace**.
-5. Klikněte na název aplikace, která odpovídá názvu vašeho předkonfigurované řešení. Pokud nevidíte aplikaci v seznamu, vyberte **aplikace Moje společnost vlastní** v **zobrazit** rozevíracího seznamu a klikněte na označit kontroly.
-6. V dolní části stránky klikněte na tlačítko **spravovat Manifest** a potom **stáhnout Manifest**.
-7. Tento postup stáhne soubor .json do místního počítače. Umožňuje otevřete tento soubor pro úpravy v textovém editoru podle svého výběru.
-8. Na třetí řádek soubor .json se zobrazí:
+5. Klikněte na název hello hello aplikace, která odpovídá názvu vašeho předkonfigurované řešení. Pokud nevidíte aplikaci v seznamu hello, vyberte **aplikace Moje společnost vlastní** v hello **zobrazit** rozevíracího seznamu a klikněte na tlačítko hello zaškrtnutí.
+6. V dolní části hello hello stránky, klikněte na tlačítko **spravovat Manifest** a potom **stáhnout Manifest**.
+7. Tento postup stáhne .json souboru tooyour místním počítači. Umožňuje otevřete tento soubor pro úpravy v textovém editoru podle svého výběru.
+8. Na třetí řádek hello hello .json souboru se zobrazí:
 
    ```json
    "appRoles" : [],
    ```
-   Nahraďte tento řádek následujícím kódem:
+   Nahraďte tento řádek hello následující kód:
 
    ```json
    "appRoles": [
@@ -254,7 +254,7 @@ Následující postup popisuje, jak přidat **správce** a **jen pro čtení** a
    "allowedMemberTypes": [
    "User"
    ],
-   "description": "Administrator access to the application",
+   "description": "Administrator access toohello application",
    "displayName": "Admin",
    "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
    "isEnabled": true,
@@ -264,7 +264,7 @@ Následující postup popisuje, jak přidat **správce** a **jen pro čtení** a
    "allowedMemberTypes": [
    "User"
    ],
-   "description": "Read only access to device information",
+   "description": "Read only access toodevice information",
    "displayName": "Read Only",
    "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
    "isEnabled": true,
@@ -272,23 +272,23 @@ Následující postup popisuje, jak přidat **správce** a **jen pro čtení** a
    } ],
    ```
 
-9. Uložte soubor aktualizované .json (můžete přepsat existující soubor).
-10. V portálu Azure classic, v dolní části stránky, vyberte **spravovat Manifest** pak **nahrát Manifest** nahrát soubor .json, který jste uložili v předchozím kroku.
-11. Nyní jste přidali **správce** a **jen pro čtení** rolí do vaší aplikace.
-12. Přiřadit jedna z těchto rolí uživatele ve vašem adresáři, najdete v části [oprávnění na webu azureiotsuite.com][lnk-permissions].
+9. Uložte soubor .json aktualizované hello (můžete přepsat existující soubor hello).
+10. V hello portál Azure classic, v dolní části hello hello stránky, vyberte **spravovat Manifest** pak **nahrát Manifest** soubor .json hello tooupload jste uložili v předchozím kroku hello.
+11. Nyní jste přidali hello **správce** a **jen pro čtení** role tooyour aplikace.
+12. tooassign jednu z těchto rolí uživatele tooa ve vašem adresáři, najdete v části [oprávnění na webu azureiotsuite.com hello][lnk-permissions].
 
 ## <a name="feedback"></a>Váš názor
 
-Máte přizpůsobení chcete najdete v části zahrnuté v tomto dokumentu? Přidání funkce návrhy na [User Voice](https://feedback.azure.com/forums/321918-azure-iot), nebo komentář k tomuto článku. 
+Máte přizpůsobení chcete toosee zahrnuté v tomto dokumentu? Přidání funkce návrhy příliš[User Voice](https://feedback.azure.com/forums/321918-azure-iot), nebo komentář k tomuto článku. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech přizpůsobení předkonfigurovaných řešení najdete v tématu:
+toolearn Další informace o hello možností pro přizpůsobení hello předkonfigurované řešení, najdete v části:
 
-* [Připojení aplikace logiky k řešení Azure IoT Suite vzdálené monitorování předkonfigurované][lnk-logicapp]
-* [Použití dynamické telemetrie s předkonfigurovaného řešení vzdáleného monitorování][lnk-dynamic]
-* [Informace metadat zařízení v předkonfigurovaného řešení vzdáleného monitorování][lnk-devinfo]
-* [Přizpůsobit způsob, jakým připojené vytváření řešení zobrazí data z vašich serverů OPC UA][lnk-cf-customize]
+* [Připojení aplikace logiky tooyour Azure IoT Suite vzdálené monitorování předkonfigurované řešení][lnk-logicapp]
+* [Použití dynamické telemetrie s hello předkonfigurovanému řešení vzdáleného monitorování][lnk-dynamic]
+* [Informace metadat zařízení v hello předkonfigurovanému řešení vzdáleného monitorování][lnk-devinfo]
+* [Přizpůsobit způsob hello připojen objekt pro vytváření řešení zobrazí data z vašich serverů OPC UA][lnk-cf-customize]
 
 [lnk-logicapp]: iot-suite-logic-apps-tutorial.md
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md

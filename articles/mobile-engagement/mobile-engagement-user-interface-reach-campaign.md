@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – kampaně Reach"
-description: "Laern jak vytvářet a spravovat nabízených oznámení kampaně pomocí Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement uživatelské rozhraní – kampaně Reach"
+description: "Laern jak toocreate a spravovat kampaní nabízených oznámení pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 825e550ace63a34d1a90b10fa976a61eb15a6d04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-and-manage-push-notification-campaigns"></a>Jak vytvořit a spravovat kampaní nabízených oznámení
-V části Reach UI slouží k vytvoření nové kampaně nabízených s komplexní vzorec tím, že poskytuje všechny informace, které potřebujete k odesílání nabízených oznámení. Možnosti nabízené kampaně mírně lišit v závislosti na typech čtyři kampaň: oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone).
+# <a name="how-toocreate-and-manage-push-notification-campaigns"></a>Jak toocreate a spravovat kampaní nabízených oznámení
+Můžete se komplexní vzorcem hello Reach části hello uživatelského rozhraní toocreate novou kampaň nabízených tím, že poskytuje všechny hello informace, které budete potřebovat toosend nabízených oznámení. Hello se možnosti nabízené kampaně mírně lišit v závislosti na typech kampaň hello čtyři: oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone).
 
 ### <a name="option-applies-to"></a>Možnost se vztahuje na:
 * Jazyky: Všechny (oznámení, hlasování, datová oznámení, dlaždice)
@@ -35,18 +35,18 @@ V části Reach UI slouží k vytvoření nové kampaně nabízených s komplexn
 ![Reach Campaign1][20]
 
 ## <a name="languages"></a>Jazyky
-Rozevírací nabídky jazyků můžete použít k odeslání jinou verzi vaší nabízené do zařízení, které jsou nastavené na používají různé jazyky. Ve výchozím nastavení všechna zařízení se zobrazí stejné nabízeného oznámení bez ohledu na to, v jakém jazyce jsou nastaveny na používání. Uživatelé s jejich zařízení nastaven jiný jazyk, se zobrazí výchozí jazykovou verzi nabízeného oznámení. Mnohé z možností kampaň nabízených umožňují zadat alternativní obsah pro každý další jazyky, které vyberete. 
+Můžete použít toosend hello jazyky rozevírací nabídky jinou verzi vaší nabízené toodevices nastavený toouse různé jazyky. Ve výchozím nastavení všechna zařízení obdrží hello stejný bez ohledu na to, v jakém jazyce jsou nastavená toouse Push. Uživatelé s jiným jazykem jejich zařízení sady tooa obdrží hello výchozí jazykovou verzi hello Push. Mnoho možností kampaň nabízených hello povolit toospecify alternativní obsah pro každý hello další jazyky, které vyberete. 
 
 ![Reach Campaign2][21]
 
 ### <a name="language-differences-apply-to"></a>Jazyk rozdíly platí pro:
-* Jazyky: Jedinečný jazyky může být vybraný kromě výchozí jazyk
+* Jazyky: Jedinečný jazyky může být vybraný v přidání toohello výchozí jazyk
 * Kampaň: Stejný pro všechny jazyky
-* Oznámení: Jedinečný pro každý jazyk kromě výchozí jazyk
-* Obsah: Jedinečný pro každý jazyk kromě výchozí jazyk
+* Oznámení: Jedinečný pro každý jazyk kromě toohello výchozí jazyk
+* Obsah: Jedinečný pro každý jazyk kromě toohello výchozí jazyk
 * Cílová skupina: Lze filtrovat podle kritérium samostatné jazyk
 * Časový rámec: stejný pro všechny jazyky
-* Test: Mohou být odeslány na každý jazyk v čase
+* Test: Mohou být odeslány tooeach jazyk v čase
 
 ### <a name="supported-languages"></a>Podporované jazyky:
 * Arabština (ar) 
@@ -89,27 +89,27 @@ Rozevírací nabídky jazyků můžete použít k odeslání jinou verzi vaší 
 * Vietnamštině (vi) 
 
 ## <a name="campaign"></a>Kampaň
-V části kampaň můžete použít k nastavení názvu a kategorie kampaně také jako, pokud budete chtít ignorovat cílovou skupinu části nabízené kampaně a místo toho odeslat tuto kampaň prostřednictvím rozhraní Reach API (a některé prvky s nízkou úrovní Push rozhraní API). Kategorie lze použít s vlastní oznámení šablonu pro oznámení ovládacího prvku v aplikaci na základě předdefinovaných nastavení. Můžete získat seznam existujících "kategorií" prostřednictvím rozhraní Reach API.
+Můžete hello kampaň části tooset hello názvů a kategorie kampaně také jako kdyby plánování tooignore hello cílovou skupinu části nabízené kampaně a místo toho odeslat tuto kampaň prostřednictvím hello Reach API (a některé prvky s nízkou úrovní hello Push rozhraní API). Kategorie lze použít s vlastní oznámení šablony toocontrol v aplikaci oznámení na základě předdefinovaných nastavení. Můžete získat seznam existujících "kategorií" prostřednictvím hello Reach API.
 
 > [!WARNING]
-> Pokud použijete možnost "Ignorovat cílovou skupinu, nabízení se se uživatelům odešle přes rozhraní API" v části "Kampaň" kampaně Reach, kampaň se neodesílal automaticky, musíte ručně odesílání prostřednictvím rozhraní Reach API.
+> Pokud použijete možnost "Ignorovat cílovou skupinu, nabízení se odešle toousers prostřednictvím rozhraní API hello" hello v části "Kampaně" hello kampaně Reach hello kampaň bude neodesílal automaticky, budete potřebovat toosend ručně pomocí hello Reach API.
 
 ![Reach Campaign3][22]
 
 ### <a name="option-applies-to"></a>Možnost se vztahuje na:
 * Název: všechny
 * Kategorie: Oznámení, hlasování
-* Ignorovat cílovou skupinu, nabízení se odešle uživatelům prostřednictvím rozhraní API: všechny
+* Ignorovat cílovou skupinu, nabízení se odešle toousers prostřednictvím hello rozhraní API: všechny
 
 ## <a name="notification"></a>Oznámení
-Část oznámení můžete nastavit základní nastavení pro vaše včetně nabízené: název nabízeného oznámení, zprávu, bitovou kopii v aplikaci, nebo pokud je zprávy. Mnoho nastavení oznámení jsou specifické pro platformu zařízení. Můžete určit, zda vaše nabízení se odešle "aplikace" nebo "mimo aplikaci" nebo obojí. (Nezapomeňte, že uživatelé můžou "výslovný souhlas" nebo "výslovný nesouhlas s" aplikace"z" nabízených oznámení na operační systém úrovni na svých zařízeních a Azure Mobile Engagement nebudete moci toto nastavení přepsat. Nezapomeňte taky, že rozhraní Reach API zpracovává "v aplikaci" a "mimo aplikaci" nabízených oznámení. Rozhraní API nabízené slouží ke zpracování nabízených oznámení "mimo aplikaci" příliš.) Oznámení lze přizpůsobit s obrázky a obsah HTML, včetně přímých odkazů pro propojování mimo aplikaci nebo na jiné místo v aplikaci (Android SDK 2.1.0 nebo novější záměrné kategorií vyžaduje). Můžete změnit oznámení "BADGE" ikony nebo iOS a odeslání text nebo webového obsahu (místní okno s html, adresa URL odkaz na obsah do jiného umístění uvnitř nebo vně aplikace). Můžete také prozvonit zařízení se systémem Android nebo zavibrovat s nabízeného oznámení. (Nezapomeňte, že budete potřebovat správné oprávnění sady SDK v systémem Android manifest souboru prstence nebo zavibrovat zařízením.) Není aktuálně žádné oborový standard pro Android "velký obrázek" velikostí, protože velikost obrazovky se liší na každé zařízení, ale 400 × 100 obrázky fungovat na téměř jakoukoli velikosti obrazovky.
+Základní nastavení hello oznámení části tooset můžete použít pro vaše včetně nabízené: hello název hello nabízená instalace, uvítací zprávu, bitovou kopii v aplikaci, nebo pokud je zprávy. Mnoho nastavení oznámení jsou konkrétní toohello platformu zařízení. Můžete určit, zda vaše nabízení se odešle "aplikace" nebo "mimo aplikaci" nebo obojí. (Nezapomeňte, že uživatelé můžou "výslovný souhlas" nebo "výslovný nesouhlas s" aplikace"z" nabízených oznámení v hello operačního systému úrovni na svých zařízeních a bude Azure Mobile Engagement není možné toooverride se toto nastavení. Nezapomeňte taky, že hello Reach API zpracovává "v aplikaci" a "mimo aplikaci" nabízených oznámení. "Hello Push rozhraní API může být použité toohandle"mimo aplikaci"příliš nabízených oznámení.) Oznámení lze přizpůsobit s obrázky a obsah HTML, včetně přímých odkazů pro propojování mimo vaší aplikace nebo tooanother umístění ve vaší aplikaci (Android SDK 2.1.0 nebo novější záměrné kategorií vyžaduje). Můžete změnit hello ikony nebo iOS oznámení "BADGE" a odeslání text nebo webového obsahu (místní okno s html, adresa URL odkaz tooanother umístění obsahu uvnitř nebo vně aplikace hello). Můžete také prozvonit zařízení se systémem Android nebo zavibrovat s hello Push. (Nezapomeňte, že je budou potřebovat hello správná oprávnění sady SDK v systémem Android manifest souboru tooring nebo zavibrovat zařízením.) Není aktuálně žádné oborový standard pro Android "velký obrázek" velikostí, protože velikost obrazovky se liší na každé zařízení, ale 400 × 100 obrázky fungovat na téměř jakoukoli velikosti obrazovky.
 
 ### <a name="delivery-types"></a>Typy doručení:
-* Jen mimo aplikaci: oznámení budou doručeny, pokud uživatel nepoužívá aplikaci.
-* Mimo pouze oznámení aplikace vyžaduje certifikát od společnosti Apple nebo Google (certifikát služby APN nebo GCM).
-* V aplikaci jenom: oznámení se zobrazí, jenom když je aplikace spuštěna.
-* Oznámení používá systém doručení Capptain spojit uživatele. Visual rozložení nebo zobrazení vaší nabízené můžete plně přizpůsobit.
-* Kdykoli: Tuto možnost zajistí, že odesílat oznámení, která buď aplikace běží, nebo ne.
+* Jen mimo aplikaci: hello oznámení budou doručeny, pokud uživatel hello nepoužívá aplikace hello.
+* Hello mimo pouze oznámení aplikace vyžaduje certifikát od společnosti Apple nebo Google (certifikát služby APN nebo GCM).
+* V aplikaci jenom: hello oznámení se zobrazí pouze při spuštění aplikace hello.
+* oznámení Hello používá hello Capptain doručení systému tooreach hello uživatele. Můžete plně přizpůsobit hello visual rozložení nebo zobrazení vaší push.
+* Kdykoli: Tuto možnost zajistí, že odesílat oznámení, která buď hello aplikace běží, nebo ne.
 
 ![Reach Campaign4][23]
 
@@ -117,7 +117,7 @@ V části kampaň můžete použít k nastavení názvu a kategorie kampaně tak
 * Upozornění: Oznámení, hlasování
 
 ## <a name="content"></a>Obsah
-Části obsahu můžete upravovat obsah oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). Nastavení obsahu kampaní nabízených je specifické pro daný typ kampaně. 
+Můžete použít hello obsahu části toomodify hello obsah oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). nastavení obsah Hello kampaní nabízených je typ konkrétní toohello kampaně. 
 
 ### <a name="see-also"></a>Viz také
 * [Dokumentace k uživatelského rozhraní – dosáhnout – Push obsahu][Link 29]
@@ -125,15 +125,15 @@ V části kampaň můžete použít k nastavení názvu a kategorie kampaně tak
 ![Reach Campaign5][24]
 
 ## <a name="audience"></a>Cílová skupina
-V části cílové skupiny můžete definovat standardní seznam položek, které mají omezit kampaně nebo omezení kampaň na základě přizpůsobené kritérií. Standardní sada možností pro omezení cílovou skupinu umožňuje odešlete do nové nebo staré uživatele nebo pouze uživatele nativního nabízení. Můžete také nastavit kvótu omezit počet uživatelů, kteří obdrží nabízeného oznámení. Výraz pro filtrování kampaň zahrnout jeden nebo více kritéria pro cílové uživatele můžete ručně upravit. Výraz cílové skupiny, můžete zadat ručně. Takové výraz musí explicitně definovat vztah mezi kritérii. Kritérium se popisuje identifikátor, který musí začínat velkým písmenem a nesmí obsahovat mezery. Vztah mezi kritéria lze popsat pomocí 'a', 'nebo', 'není operátory a také '(',')'. Příklad: "Criterion1 nebo (Criterion1 a není Criterion2)".
+Můžete hello cílovou skupinu části toodefine standardní seznam položek toolimit kampaně nebo omezení kampaň na základě přizpůsobené kritérií. Hello standardní sadu možností tooLimit cílovou skupinu můžete toopush tooeither starý, nebo nový uživatele nebo pouze uživatele nativního nabízení. Můžete také nastavit číslo hello toolimit kvótu uživatelů, kteří obdrží nabízená hello. Můžete ručně upravit hello výraz jak kampaň je filtrovaná tooinclude jeden nebo více uživatelů tootarget kritérium. Výraz cílové skupiny, můžete zadat ručně. Takové výraz musí explicitně definujte hello vztah mezi kritérii. Kritérium se popisuje identifikátor, který musí začínat velkým písmenem a nesmí obsahovat mezery. Hello vztah mezi hello kritéria lze popsat pomocí 'a', 'nebo', 'není operátory a také '(',')'. Příklad: "Criterion1 nebo (Criterion1 a není Criterion2)".
 
 > [!NOTE]
-> S velké cílovou skupinu součástí kampaně může být na straně serveru cílení na kontrolu pomalé, obzvláště pokud se pokusíte spustit několik kampaní ve stejnou dobu.
+> S velké cílovou skupinu součástí kampaně, hello cílení kontroly na straně serveru může být pomalé, obzvláště pokud se pokusíte toostart hello více kampaně na stejný čas.
 
 * Pokud je to možné spusťte pouze jeden kampaň najednou.
-* Nejvýše spusťte pouze čtyři kampaně v čase.
-* Push jenom na aktivní uživatele (zaškrtávací políčko "zaujmout jen uživatele, kteří se dají oslovit pomocí nativního nabízení" a "Zaujmout jen aktivní uživatele"), aby pouze vaši uživatelé, kteří stále mít nainstalovanou aplikaci a použít ho bude muset být kontrolována.
-  Jakmile je definovány cílovou skupinu, můžete zjistit počet uživatelů, kteří obdrží tato nabízená tlačítko Simulovat. To bude vypočte se počet známých uživatelů potenciálně cílem touto cílovou skupinou (jde o odhad vycházející z náhodného vzorku uživatelů). Uvědomte si, že součástí této cílové skupiny jsou i uživatelé, kteří aplikaci odinstalovali, ale není dostupný.
+* V nejvíce, hello pouze počáteční čtyři kampaně v čase.
+* Push jen aktivní uživatele tooyour (zaškrtávací políčko "zaujmout jen uživatele, kteří se dají oslovit pomocí nativního nabízení" a "Zaujmout jen aktivní uživatele"), aby pouze kteří stále mít nainstalovanou aplikaci hello a použít ho uživatelé budou potřebovat toobe zkontrolovat.
+  Jakmile cílová skupina je definována, můžete použít hello simulovat tlačítko toofind se počet uživatelů, kteří obdrží tato Push. To bude výpočetní hello počet známých uživatelů potenciálně cílem touto cílovou skupinou (jde o odhad vycházející z náhodného vzorku uživatelů). Uvědomte si, že součástí této cílové skupiny jsou i uživatelé, kteří odinstalovali hello aplikace, ale nelze získat přístup.
 
 ### <a name="see-also"></a>Viz také
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
@@ -152,10 +152,10 @@ V části cílové skupiny můžete definovat standardní seznam položek, kter�
 * Zaujmout jen uživatele, kteří se dají oslovit pomocí nativního nabízení: oznámení, hlasování
 
 ## <a name="time-frame"></a>Časového rámce
-Nastavení, když bude zasláno nabízeného oznámení nebo časový rámec můžete nechat prázdné pro okamžité spuštění kampaň můžete části časového rámce. Mějte na paměti, že pomocí koncovým uživatelům se časové pásmo může spusťte kampaň dříve, než očekávat pro koncové uživatele v Asii a odesílat malé dávky oznámení najednou, dokud všechny časových pásem na světě odpovídat časového rámce, nastavte pro kampaň za den. Pomocí koncoví uživatelé časové pásmo může také způsobit zpoždění v kampaně vzhledem k tomu, že má k vyžádání čas z telefonu před zahájením nabízeného oznámení.
+Při nabízení hello se odešle nebo můžete nechat hello časového rámce prázdné toostart hello kampaň okamžitě můžete tooset části hello časového rámce. Mějte na paměti, že pomocí hello koncoví uživatelé časové pásmo může spustit hello kampaň dříve, než očekávat pro koncové uživatele v Asii a odesílat malé dávky oznámení najednou, dokud všechny časových pásem v hello world shodu hello časového rámce nastavit kampaně za den. Pomocí hello koncoví uživatelé časové pásmo může také způsobit zpoždění v kampaně vzhledem k tomu, že má toorequest čas hello z telefonu hello před zahájením nabízené hello.
 
 > [!NOTE]
-> Kampaně bez koncové datum může ukládat do mezipaměti nabízených oznámení místně a stále je zobrazit po můžete ručně dokončení kampaně. Aby se zabránilo toto chování konkrétní koncový čas pro kampaně.
+> Kampaně bez koncové datum může ukládat do mezipaměti nabízených oznámení místně a stále je zobrazit po můžete ručně dokončení kampaně. tooavoid toto chování, konkrétní koncový čas pro kampaně.
 
 ### <a name="see-also"></a>Viz také
 * [Dosažení – jak Tos – plánování][Link 3] 
@@ -166,10 +166,10 @@ Nastavení, když bude zasláno nabízeného oznámení nebo časový rámec mů
 * Časový rámec: oznámení, hlasování, dlaždice
 
 ## <a name="test"></a>Test
-Testovací část vám pomůže tento nabízené poslat testovací zařízení před uložením kampaně. Pokud jste nakonfigurovali všechny vlastní jazyků pro tuto kampaň, můžete otestovat nabízeného oznámení v jednotlivé jazyky. Můžete nastavit testovací zařízení z "Můj účet".
+Hello testovací část toosend můžete použít tento nabízené tooyour vlastní test zařízení před uložením hello kampaně. Pokud jste nakonfigurovali všechny vlastní jazyků pro tuto kampaň, můžete otestovat nabízená hello v jednotlivé jazyky. Můžete nastavit testovací zařízení z "Můj účet".
 
 > [!NOTE]
-> Žádné na straně serveru, který data se protokolují, když použijete tlačítko pro "test" nabízených oznámení, data se protokolují pouze pro skutečné nabízené kampaně.
+> Žádné na straně serveru, který data se protokolují, když použijete tlačítko hello příliš "test" nabízených oznámení, data se protokolují pouze pro skutečné nabízené kampaně.
 
 ### <a name="see-also"></a>Viz také
 * [Dokumentace k uživatelského rozhraní – Můj účet][Link 14]

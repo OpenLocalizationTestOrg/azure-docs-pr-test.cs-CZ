@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s doručováním obsahu na vyžádání pomocí REST | Microsoft Docs"
-description: "Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí rozhraní REST API."
+title: "aaaGet začít s doručováním obsahu na vyžádání pomocí REST | Microsoft Docs"
+description: "Tento kurz vás provede procesem hello kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí rozhraní REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,98 +14,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: f304f7671465862123f64c8b0f9af95a7c828cc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f270ed59e9ae9745e8403ec6e19d5c3533fc82b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-Tento rychlý start vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí rozhraní API REST Azure Media Services (AMS).
+Tento rychlý start vás provede procesem hello kroky implementace aplikace pro doručování obsahu na vyžádání pomocí rozhraní API REST Azure Media Services (AMS).
 
-Kurz představuje základní pracovní postup služby Media Services a nejběžnější programovací objekty a úkoly, které Media Services vyžaduje. Po dokončení kurzu bude umět streamovat nebo progresivně stáhnout ukázkový multimediální soubor, který jste odeslali, zakódovali a stáhli.
+Hello kurz představuje hello základní pracovní postup služby Media Services a nejběžnější programovací objekty hello a úkoly vyžadované pro vývoj pro Media Services. Na hello dokončení kurzu hello bude se mít toostream nebo progresivně stáhnout ukázkový mediální soubor, který nahráli, kódování a stáhnout.
 
-Následující obrázek ukazuje některé z nejčastěji používaných objektů při vývoji aplikace VoD na základě modelu Media Services OData.
+Hello následující obrázek ukazuje některé objekty hello nejčastěji používaná při vývoji aplikace VoD vůči modelu hello Media Services OData.
 
-Kliknutím na obrázek zobrazíte jeho plnou velikost.  
+Klikněte na tlačítko tooview hello bitové kopie je plná velikost.  
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li začít vyvíjet pomocí služby Media Services pomocí rozhraní REST API jsou požadovány následující součásti.
+Hello následující požadované součásti jsou požadované toostart vývoj pomocí služby Media Services pomocí rozhraní REST API.
 
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
-* Pochopení toho, jak pro vývoj pomocí Media Services REST API. Další informace najdete v tématu [Media Services REST API přehled](media-services-rest-how-to-use.md).
+* Účet Media Services. toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).
+* Pochopení toho, jak toodevelop s Media Services REST API. Další informace najdete v tématu [Media Services REST API přehled](media-services-rest-how-to-use.md).
 * Aplikace podle vašeho výběru, který může odesílat požadavky a odpovědi HTTP. Tento kurz používá [Fiddler](http://www.telerik.com/download/fiddler).
 
-V tento rychlý Start jsou uvedeny následující úlohy.
+v tento rychlý Start jsou uvedeny Hello následující úlohy.
 
-1. Spuštění koncového bodu streamování (pomocí webu Azure Portal).
-2. Připojte k účtu Media Services pomocí rozhraní REST API.
+1. Spuštění (pomocí portálu Azure hello) koncový bod streamování.
+2. Účet Media Services toohello připojte pomocí rozhraní REST API.
 3. Vytvoření nového prostředku a odeslání videosouboru pomocí rozhraní REST API.
-4. Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí pomocí rozhraní REST API.
-5. Publikování prostředku a get streamování a progresivního stahování adresy URL pomocí rozhraní REST API.
+4. Zakódujte hello zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí pomocí rozhraní REST API.
+5. Publikujte hello asset a get streamování a progresivní stahování adresy URL pomocí rozhraní REST API.
 6. Přehrání obsahu
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
 Podrobnosti o entitách AMS REST použitým v tomto tématu najdete v tématu [Azure Media Services REST API – referenční informace](/rest/api/media/services/azure-media-services-rest-api-reference). Další informace naleznete v [konceptech Azure Media Services](media-services-concepts.md).
 
 >[!NOTE]
 >Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 
-## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Spuštění koncového bodu streamování pomocí webu Azure Portal
+## <a name="start-streaming-endpoints-using-hello-azure-portal"></a>Spustit pomocí portálu Azure hello koncové body streamování
 
-Při práci se službou Azure Media Services je jedním z nejběžnější scénářů doručování videa prostřednictvím streamování s adaptivní přenosovou rychlostí. Služba Media Services poskytuje dynamické balení, které umožňuje doručovat obsah s adaptivní přenosovou rychlostí s kódováním MP4 ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming). není přitom potřeba ukládat předem zabalené verze pro každý z těchto formátů streamování.
-
->[!NOTE]
->Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**.
-
-Pokud chcete spustit koncový bod streamování, postupujte takto:
-
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-2. V okně Nastavení klikněte na Koncové body streamování.
-3. Klikněte na výchozí koncový bod streamování.
-
-    Zobrazí se okno VÝCHOZÍ KONCOVÝ BOD STREAMOVÁNÍ – PODROBNOSTI.
-
-4. Klikněte na ikonu Spustit.
-5. Kliknutím na tlačítko Uložit uložte provedené změny.
-
-## <a id="connect"></a>Připojení k účtu Media Services pomocí rozhraní REST API
-
-Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Při práci se službou Azure Media Services je jedním hello nejběžnějších scénářů doručování videa přes streamování s adaptivní přenosovou rychlostí. Služba Media Services poskytuje dynamické balení, což vám umožní toodeliver kódováním MP4 obsah ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming) v běhu, aniž byste museli toostore předem zabalené vaší s adaptivní přenosovou rychlostí verze pro každý z těchto formátů streamování.
 
 >[!NOTE]
->Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
+>Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu.
 
-Například pokud po pokusu o připojení, vy máte následující:
+toostart hello koncový bod streamování, hello následující:
+
+1. Přihlaste se na hello [portál Azure](https://portal.azure.com/).
+2. V okně Nastavení hello klikněte Streaming koncové body.
+3. Klikněte na tlačítko hello výchozího koncového bodu streamování.
+
+    Zobrazí se okno Hello výchozí podrobnosti koncový bod STREAMOVÁNÍ.
+
+4. Klikněte na ikonu Start hello.
+5. Klikněte na tlačítko toosave tlačítko hello uložit provedené změny.
+
+## <a id="connect"></a>Připojit toohello účtu Media Services pomocí rozhraní REST API
+
+Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
+
+Například pokud po pokusu o tooconnect, jste získali hello následující:
 
     HTTP/1.1 301 Moved Permanently
     Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-Publikujte následující volání rozhraní API https://wamsbayclus001rest-hs.cloudapp.net/api/.
+Publikujte vaší následné toohttps://wamsbayclus001rest-hs.cloudapp.net/api/ volání rozhraní API.
 
 ## <a id="upload"></a>Vytvoření nového prostředku a odeslání videosouboru pomocí rozhraní REST API
 
-Ve službě Media Services můžete digitální soubory nahrát do assetu. **Asset** entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a metadata o těchto souborech.)  Jakmile soubory odešlete do assetu, váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
+Ve službě Media Services můžete digitální soubory nahrát do assetu. Hello **Asset** entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a hello metadata o těchto souborech.)  Jakmile hello soubory jsou odeslány do hello asset, váš obsah bezpečně uložen v hello cloudu pro další zpracování a streamování.
 
-Jedna z hodnot, které je nutné zadat při vytváření prostředek je možností vytvoření prostředku. **Možnosti** vlastnost je hodnota výčtu, která popisuje možnosti šifrování, které prostředek může být vytvořen pomocí. Platná hodnota je jedna z hodnot v seznamu níže není kombinace hodnot z tohoto seznamu:
+Jedna z hodnot hello mít tooprovide, při vytváření prostředek je možností vytvoření prostředku. Hello **možnosti** vlastnost je hodnota výčtu, která popisuje možnosti hello šifrování, které prostředek může být vytvořen pomocí. Platná hodnota je jedna z hodnot hello hello seznamu níže není kombinace hodnot z tohoto seznamu:
 
 * **Žádný** = **0** – nepoužívá se žádné šifrování. Při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
-    Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.
-* **StorageEncrypted** = **1** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES 256 a odešle ji do Azure Storage kde bude uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
+    Tuto možnost použijte, pokud máte v plánu toodeliver MP4 pomocí progresivního stahování.
+* **StorageEncrypted** = **1** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES 256 a odešle ho tooAzure úložiště, kde je uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování a umístit do předchozí tooencoding systému souborů EFS a volitelně znovu zašifrovat předchozí toouploading zpět v podobě nového výstupního prostředku. Hello případem primárního použití šifrování úložiště je, pokud chcete toosecure souborů vysoce kvalitními vstupními médii pomocí silného šifrování v klidovém stavu na disku.
 * **CommonEncryptionProtected** = **2** – tuto možnost použijte, pokud nahráváte obsah, který byl zašifrován a chráněný běžným šifrováním nebo DRM s technologií PlayReady (například technologie Smooth Streaming chránit pomocí DRM s technologií PlayReady).
-* **EnvelopeEncryptionProtected** = **4** – tuto možnost použijte, pokud odesíláte HLS se šifrováním pomocí standardu AES. Soubory musí mít kódování a zašifrované pomocí Správce transformací.
+* **EnvelopeEncryptionProtected** = **4** – tuto možnost použijte, pokud odesíláte HLS se šifrováním pomocí standardu AES. Hello soubory musí být kódovaný a zašifrované pomocí Správce transformací.
 
 ### <a name="create-an-asset"></a>Vytvořit prostředek
-Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. Vytvoření prostředek v rozhraní REST API vyžaduje odesílání požadavku POST ke službě Media Services a umístění žádné vlastnosti informace o váš asset v textu požadavku.
+Prostředek je kontejner pro více typů nebo sady objektů ve službě Media Services, včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků. V rozhraní REST API, vytváření prostředek vyžaduje odesílání POST hello požadovat tooMedia služby a umístění žádné vlastnosti informace o váš asset v textu žádosti hello.
 
-Následující příklad ukazuje, jak vytvořit prostředek.
+Následující příklad ukazuje, jak Hello toocreate prostředek.
 
 **Požadavek HTTP**
 
@@ -126,7 +126,7 @@ Následující příklad ukazuje, jak vytvořit prostředek.
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující:
+V případě úspěchu se vrátí hello následující:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -157,9 +157,9 @@ V případě úspěchu se vrátí následující:
     }
 
 ### <a name="create-an-assetfile"></a>Vytvoření AssetFile
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat jednu nebo více AssetFiles. Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
+Hello [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entity představuje soubor video nebo zvuk, který je uložený v kontejneru objektů blob. Soubor asset je vždy přidružena k assetu a prostředek může obsahovat jednu nebo více AssetFiles. Hello Media Services Encoder úloh selže, pokud objekt souboru asset není spojen s digitálnímu souboru v kontejneru objektů blob.
 
-Po odeslání souboru digitálního média do kontejneru objektů blob, můžete použít **SLOUČENÍ** HTTP žádost o aktualizaci AssetFile s informacemi o souboru média (Jak uvidíte později v tomto tématu).
+Po odeslání souboru digitálního média do kontejneru objektů blob, použijete hello **SLOUČENÍ** HTTP žádost tooupdate hello AssetFile s informacemi o souboru média (jak je uvedeno dále v tématu hello).
 
 **Požadavek HTTP**
 
@@ -218,10 +218,10 @@ Po odeslání souboru digitálního média do kontejneru objektů blob, můžete
     }
 
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Vytváření AccessPolicy s oprávnění k zápisu
-Před nahráním do úložiště objektů blob všechny soubory, nastavení přístupu zásady oprávnění pro zápis do prostředek. Kvůli tomu odeslat požadavek HTTP do sady entit AccessPolicies. Zadejte hodnotu doba trvání v minutách, po vytvoření nebo zobrazí 500 chybová zpráva Interní Server zpět v odpovědi. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+### <a name="creating-hello-accesspolicy-with-write-permission"></a>Vytvoření hello AccessPolicy pomocí oprávnění k zápisu
+Před nahráním do úložiště objektů blob všechny soubory, nastavení přístupu hello zásady oprávnění pro zápis tooan asset. nastavit toodo, který POST toohello požadavku HTTP AccessPolicies entity. Zadejte hodnotu doba trvání v minutách, po vytvoření nebo zobrazí 500 chybová zpráva Interní Server zpět v odpovědi. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-Následující příklad ukazuje, jak vytvořit AccessPolicy:
+Následující příklad ukazuje, jak Hello toocreate AccessPolicy:
 
 **Požadavek HTTP**
 
@@ -240,7 +240,7 @@ Následující příklad ukazuje, jak vytvořit AccessPolicy:
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -266,23 +266,23 @@ V případě úspěchu se vrátí následující odpověď:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Získat adresu URL pro odeslání
+### <a name="get-hello-upload-url"></a>Získat hello adresa URL pro odeslání
 
-Pokud chcete získat adresu URL skutečného odeslání, vytvoření lokátoru SAS. Lokátory zadejte čas spuštění a typ koncového bodu připojení pro klienty, kteří mají přístup k souborům v prostředek. Můžete vytvořit více Lokátor entit pro danou AccessPolicy a Asset dvojici pro zpracování různých klientských požadavků a potřebách. Každá z těchto lokátory používá hodnoty StartTime plus hodnota Doba trvání v minutách AccessPolicy určit dobu, kterou lze použít adresu URL. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+tooreceive hello URL skutečného odeslání, vytvoření lokátoru SAS. Lokátory definovat hello počáteční čas a typ koncového bodu připojení pro klienty, kteří mají tooaccess soubory v prostředek. Požadavky a požadavky, můžete vytvořit více entit Lokátor pro danou AccessPolicy a Asset pár toohandle jiným klientem. Každá z těchto lokátory používá hodnoty StartTime hello plus hodnota Doba trvání v minutách hello hello AccessPolicy toodetermine hello délky doba, kterou lze použít adresu URL. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-Adresa URL typu SAS má následující formát:
+Adresa URL typu SAS má následující formát hello:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Musí být splněny určité předpoklady:
 
 * Nemůže mít více než pět jedinečný lokátory spojené s danou Asset najednou. Další informace najdete v tématu lokátoru.
-* Pokud potřebujete k nahrání souborů okamžitě, byste měli nastavit vaše hodnoty StartTime 5 minut před aktuálním časem. Je to proto, že je možné, hodiny zkosení mezi klientský počítač a služba Media Services. V následujícím formátu data a času musí být také hodnota pro čas spuštění: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").    
-* Může být druhý 30-40 zpoždění po vytvoření lokátoru k případě, že je k dispozici pro použití. Tento problém se vztahuje na SAS adresa URL a lokátory původu.
+* Pokud potřebujete tooupload vaše soubory okamžitě, byste měli nastavit vaše StartTime hodnota toofive minut před aktuálním časem hello. Je to proto, že je možné, hodiny zkosení mezi klientský počítač a služba Media Services. V hello formátu data a času musí být také hodnota pro čas spuštění: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").    
+* Může být druhý 30-40 zpoždění po vytvoření lokátoru toowhen je k dispozici pro použití. Tento problém se vztahuje tooboth SAS adresa URL a lokátory původu.
 
 Další informace o tokenu SAS najdete v části lokátory [to](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogu.
 
-Následující příklad ukazuje, jak vytvořit lokátor SAS adresa URL, podle definice vlastnost typu v textu požadavku ("1" pro Lokátor SAS) a "2" pro Lokátor původ na vyžádání. **Cesta** vlastnost vrátil obsahuje adresu URL, kterou musíte použít k odeslání souboru.
+Hello následující příklad ukazuje, jak toocreate lokátoru SAS adresa URL, podle definice hello vlastnost typu v textu žádosti hello ("1" pro Lokátor SAS) a "2" pro Lokátor původ na vyžádání. Hello **cesta** vlastnost vrátil obsahuje adresu URL hello, musíte použít tooupload souboru.
 
 **Požadavek HTTP**
 
@@ -307,7 +307,7 @@ Následující příklad ukazuje, jak vytvořit lokátor SAS adresa URL, podle d
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -338,17 +338,17 @@ V případě úspěchu se vrátí následující odpověď:
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>Nahrát soubor do kontejneru úložiště objektů blob
-Jakmile máte AccessPolicy a Lokátor nastavit, skutečný soubor nahraje do kontejner úložiště objektů blob v Azure pomocí rozhraní API REST úložiště Azure. Soubory musíte nahrát jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
+Jakmile máte hello AccessPolicy a Lokátor sady, skutečný soubor hello je kontejner úložiště objektů blob v Azure nahrané tooan pomocí hello rozhraní API REST úložiště Azure. Soubory hello musíte nahrát jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
 
 > [!NOTE]
-> Musíte přidat název souboru pro soubor, který chcete nahrát do Lokátor **cesta** přijaté v předchozí části hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Musíte přidat název souboru hello hello souboru chcete tooupload toohello Lokátor **cesta** přijaté v předchozí části hello hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 
 Další informace o práci s objekty BLOB úložiště Azure najdete v tématu [rozhraní API REST služby objektů Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Aktualizace AssetFile
-Teď, když jste odeslali souboru, aktualizujte informace FileAsset velikost (a další). Například:
+### <a name="update-hello-assetfile"></a>Aktualizace hello AssetFile
+Teď, když jste odeslali souboru, aktualizujte informace hello FileAsset velikost (a další). Například:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -371,12 +371,12 @@ Teď, když jste odeslali souboru, aktualizujte informace FileAsset velikost (a 
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující:
+V případě úspěchu se vrátí hello následující:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="delete-the-locator-and-accesspolicy"></a>Odstraňte Lokátor a AccessPolicy
+## <a name="delete-hello-locator-and-accesspolicy"></a>Odstranit hello Lokátor a AccessPolicy
 **Požadavek HTTP**
 
     DELETE https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -391,7 +391,7 @@ V případě úspěchu se vrátí následující:
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující:
+V případě úspěchu se vrátí hello následující:
 
     HTTP/1.1 204 No Content
     ...
@@ -409,23 +409,23 @@ V případě úspěchu se vrátí následující:
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující:
+V případě úspěchu se vrátí hello následující:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
+## <a id="encode"></a>Kódování hello zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
 
-Po zpracování, které může být zakódován prostředky ve službě Media Services, média, transmuxovat, označit vodoznakem a tak dále před doručení klientům. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které vykonávají samotnou práci na souboru prostředku (Další informace najdete v tématu [úlohy](/rest/api/media/services/job), [úloh](/rest/api/media/services/task) popisy).
+Po zpracování, které může být zakódován prostředky ve službě Media Services, média, transmuxovat, označit vodoznakem a tak dále před doručení tooclients. Tyto aktivity jsou naplánované a spouštění více pozadí role instance tooensure vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které hello samotnou práci na souboru Assetu hello (Další informace najdete v tématu [úlohy](/rest/api/media/services/job), [úloh](/rest/api/media/services/task) popisy).
 
-Jak již bylo zmíněno dříve, při práci se službou Azure Media Services jedním nejběžnější scénářů doručování streamování s adaptivní přenosovou rychlostí vašim klientům. Služba Media Services umí dynamicky balit sady souborů MP4 s adaptivní přenosovou do jedné z následujících formátů: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
+Jak již bylo zmíněno dříve, při práci s Azure Media Services jeden hello nejběžnějších scénářů doručování adaptivní přenosové rychlosti streamování tooyour klientů. Služba Media Services umí dynamicky balit sady souborů MP4 s adaptivní přenosovou rychlostí do jednoho z následujících formátů hello: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
 
-V následující části ukazuje, jak vytvořit úlohu, která obsahuje jednu úlohu, kódování. Úloha Určuje převod souboru mezzanine do sady s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi pomocí **Media Encoder Standard**. V části také ukazuje, jak monitorovat zpracování průběh úlohy. Po dokončení úlohy by mohli k vytvoření lokátorů, které jsou potřebné k získání přístupu k vaše prostředky.
+Následující části Hello ukazuje, jak toocreate úlohu, která obsahuje jeden kódování úloh. Hello úloh určuje tootranscode hello souboru mezzanine do sady s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi pomocí **Media Encoder Standard**. část Hello také ukazuje, jak toomonitor hello průběh zpracování úlohy. Po dokončení úlohy hello, bude možné toocreate lokátory, které jsou potřebné tooget přístup tooyour prostředky.
 
 ### <a name="get-a-media-processor"></a>Získat procesor médií
-Ve službě Media Services je procesor médií komponenty, která zpracovává zpracování specifické pro úlohy, jako je například kódování, převod formátu, šifrování nebo dešifrování objektu mediální obsah. Pro kódování úkol uvedené v tomto kurzu budeme používat Media Encoder Standard.
+Ve službě Media Services je procesor médií komponenty, která zpracovává zpracování specifické pro úlohy, jako je například kódování, převod formátu, šifrování nebo dešifrování objektu mediální obsah. Pro hello kódování úloh uvedené v tomto kurzu přidáme toouse hello Media Encoder Standard.
 
-Následující kód požadavků kodér id.
+Hello následující kód id kodér hello požadavky.
 
 **Požadavek HTTP**
 
@@ -469,9 +469,9 @@ Následující kód požadavků kodér id.
     }
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
-Každá úloha může mít jeden nebo více úloh, v závislosti na typu zpracování, který chcete provést. Přes rozhraní REST API, můžete vytvořit úlohy a jejich související úlohy v jedné ze dvou způsobů: úloh může být definována vložením prostřednictvím úlohy navigační vlastnost u entity úlohy nebo zpracování dávky OData. Sada SDK služby Media používá dávkové zpracování. Čitelnější příklady kódu v tomto tématu jsou úlohy však definována vložením. Informace o zpracování dávky, najdete v části [Open Data Protocol (OData) dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Každá úloha může mít jeden nebo více úloh v závislosti na typu hello zpracování, které chcete tooaccomplish. Prostřednictvím hello REST API, můžete vytvořit úlohy a jejich související úlohy v jedné ze dvou způsobů: úloh může být definována vložením prostřednictvím hello úlohy navigační vlastnost u entity úlohy nebo zpracování dávky OData. Hello sady Media Services SDK používá dávkové zpracování. Hello čitelnější hello příklady kódu v tomto tématu jsou úlohy však definována vložením. Informace o zpracování dávky, najdete v části [Open Data Protocol (OData) dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Následující příklad ukazuje, jak vytvořit a odeslat úlohu s jedním úloh nastavit ke kódování videa na konkrétní řešení a kvality. V následující části dokumentace obsahuje seznam všech [úkolů přednastavení](http://msdn.microsoft.com/library/mt269960) nepodporuje procesoru Media Encoder Standard.  
+Hello následující ukázka ukazuje, jak toocreate a post úlohu s jeden úkol nastavit tooencode video na konkrétní řešení a kvality. Hello následující dokumentace obsahuje hello seznam všech hello [úkolů přednastavení](http://msdn.microsoft.com/library/mt269960) nepodporuje procesoru Media Encoder Standard hello.  
 
 **Požadavek HTTP**
 
@@ -507,7 +507,7 @@ Následující příklad ukazuje, jak vytvořit a odeslat úlohu s jedním úloh
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -567,35 +567,35 @@ V případě úspěchu se vrátí následující odpověď:
     }
 
 
-Poznámka: v žádné žádosti o úlohu několik důležité věci:
+V žádné žádosti o úlohu jsou toonote několik důležitých věcí:
 
-* Taskbody – vlastnosti používaly literál XML Definujte počet vstup nebo výstup prostředky, které jsou používány úlohu. Úloha téma obsahuje definici schématu XML pro soubor XML.
-* V definici taskbody – každý vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
+* Taskbody – vlastnosti musí používat literál XML toodefine hello počet vstup nebo výstup prostředky, které jsou používány hello úloh. Hello úloh téma obsahuje hello definice schématu XML pro hello XML.
+* V hello taskbody – definice, každý vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
 * Úloha může mít více prostředků výstup. Jeden JobOutputAsset(x) lze použít jako výstup úlohy pro úlohu pouze jednou.
 * Můžete zadat JobInputAsset nebo JobOutputAsset jako vstupní datový zdroj úlohy.
 * Úlohy nesmí tvoří cyklus.
-* Hodnota parametru, který můžete předat JobInputAsset nebo JobOutputAsset představuje hodnotu indexu pro prostředek. Skutečné prostředky jsou definovány v navigační vlastnosti InputMediaAssets a OutputMediaAssets v definici úlohy entity.
+* parametr hodnoty Hello předáte tooJobInputAsset nebo JobOutputAsset představuje hodnotu indexu hello pro prostředek. Hello skutečné prostředky jsou definovány v hello InputMediaAssets a OutputMediaAssets navigační vlastnosti na hello entity definice úlohy.
 
 > [!NOTE]
-> Služba Media Services je integrovaná v OData v3, jsou jednotlivé prostředky v InputMediaAssets a OutputMediaAssets navigační vlastnost kolekce odkazuje prostřednictvím "__metadata: identifikátor uri" dvojice název hodnota.
+> Služba Media Services je integrovaná v OData v3, hello jednotlivé prostředky v InputMediaAssets a OutputMediaAssets navigační vlastnost kolekce se odkazuje prostřednictvím "__metadata: identifikátor uri" dvojice název hodnota.
 >
 >
 
-* InputMediaAssets se mapuje na jeden nebo více prostředků, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořené v systému. Neodkazujte existující prostředek.
-* Používání atributu assetName, může mít název OutputMediaAssets. Pokud tento atribut není k dispozici, je název OutputMediaAsset bez ohledu na hodnotu vnitřní text z <outputAsset> element je s příponou název úlohy hodnota nebo hodnota Id úlohy (v případě, kde není definována vlastnost Name). Například pokud nastavíte hodnotu assetName "Ukázce", pak vlastnost názvu OutputMediaAsset se nastavuje "Ukázce". Ale pokud jste nenastavili hodnotu assetName, ale nastavena název úlohy na "NewJob", pak OutputMediaAsset název bude "_NewJob JobOutputAsset (hodnota)".
+* InputMediaAssets mapuje tooone nebo další prostředky, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořené pomocí systému hello. Neodkazujte existující prostředek.
+* OutputMediaAssets může mít název pomocí atributu assetName hello. Pokud tento atribut není k dispozici, je název hello hello OutputMediaAsset libovolnou hodnotu vnitřní text hello hello <outputAsset> element je s příponou hello název úlohy hodnotu nebo hodnotu Id úlohy hello (v případě hello, kde není definován název vlastnosti hello). Například pokud nastavíte hodnotu assetName příliš "Ukázkový", pak hello se nastavuje vlastnost název OutputMediaAsset příliš "ukázkové". Pokud jste nenastavili hodnotu assetName, ale nastavit název úlohy hello příliš "NewJob", pak hello název OutputMediaAsset by však bylo "_NewJob JobOutputAsset (hodnota)".
 
-    Následující příklad ukazuje, jak nastavit atribut assetName:
+    Hello následující příklad ukazuje, jak tooset hello assetName atribut:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Chcete-li povolit řetězení úloh:
+* řetězení úloh tooenable:
 
   * Úloha musí mít alespoň dvě úlohy
-  * Musí existovat alespoň jeden úkol, jejichž vstup je výstup jiná úloha v úloze.
+  * Musí existovat alespoň jeden úkol, jejichž vstup je výstup jiná úloha v úloze hello.
 
-Další informace najdete v tématu [vytváření úlohu kódování s Media Services REST API](media-services-rest-encode-asset.md).
+Další informace najdete v tématu [vytváření úlohu kódování s hello Media Services REST API](media-services-rest-encode-asset.md).
 
 ### <a name="monitor-processing-progress"></a>Monitorování zpracování průběh
-Stav úlohy můžete načíst pomocí vlastnosti stavu, jak je znázorněno v následujícím příkladu.
+Stav úlohy hello můžete načíst pomocí vlastnosti hello stavu, jak ukazuje následující příklad hello.
 
 **Požadavek HTTP**
 
@@ -612,7 +612,7 @@ Stav úlohy můžete načíst pomocí vlastnosti stavu, jak je znázorněno v n�
 
 **Odpověď HTTP**
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -630,9 +630,9 @@ V případě úspěchu se vrátí následující odpověď:
 
 
 ### <a name="cancel-a-job"></a>Zrušení úlohy
-Služba Media Services umožňuje zrušit probíhající úlohy prostřednictvím funkce CancelJob. Toto volání vrátí, a kód 400 chyby, pokud se pokusíte zrušení úlohy, když se zruší její stav, zrušení, chyby nebo skončila.
+Služba Media Services umožňuje toocancel spuštěné úlohy prostřednictvím hello CancelJob funkce. Toto volání vrátí kód, Chyba 400, pokud se pokusíte toocancel úlohu, když se zruší její stav, zrušení, chyby nebo skončila.
 
-Následující příklad ukazuje způsob volání CancelJob.
+Následující příklad ukazuje, jak Hello toocall CancelJob.
 
 **Požadavek HTTP**
 
@@ -649,12 +649,12 @@ Následující příklad ukazuje způsob volání CancelJob.
 V případě úspěchu se vrátí kód odpovědi 204 s žádný text zprávy.
 
 > [!NOTE]
-> Je nutné kódování URL úlohu s id (obvykle nb:jid:UUID: somevalue) při předávání v CancelJob jako parametr.
+> Je nutné kódování URL hello úlohu s id (obvykle nb:jid:UUID: somevalue) při předávání v jako parametr tooCancelJob.
 >
 >
 
-### <a name="get-the-output-asset"></a>Získat výstupní asset
-Následující kód ukazuje, jak požádat o výstupní asset ID.
+### <a name="get-hello-output-asset"></a>Získat prostředek výstup hello
+Hello následující kód ukazuje, jak toorequest hello výstupní asset ID.
 
 **Požadavek HTTP**
 
@@ -703,42 +703,42 @@ Následující kód ukazuje, jak požádat o výstupní asset ID.
 
 
 
-## <a id="publish_get_urls"></a>Publikování prostředku a get streamování a progresivního stahování adresy URL pomocí rozhraní REST API
+## <a id="publish_get_urls"></a>Publikujte hello asset a get streamování a progresivní stahování adresy URL pomocí rozhraní REST API
 
-Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. Další informace o tokenu SAS najdete v části lokátory [to](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogu.
+toostream nebo stažení prostředek, je nejprve nutné příliš "publikovat" vytvořením lokátoru. Lokátory zajišťují přístup toofiles obsažené v hello asset. Služba Media Services podporuje dva typy lokátorů: OnDemandOrigin lokátory použité toostream médií (například MPEG DASH, HLS nebo technologie Smooth Streaming) a přístupového podpisu (SAS), používá toodownload mediálních souborů. Další informace o tokenu SAS najdete v části lokátory [to](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogu.
 
-Po vytvoření lokátorů můžete sestavit adresy URL, které se používají ke streamování a stahování souborů.
+Po vytvoření lokátorů hello, můžete vytvořit hello adresy URL, které jsou používané toostream a stahování souborů.
 
 >[!NOTE]
->Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**.
+>Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení dynamické šifrování, hello streamování koncový bod, ze kterého mají být má obsah toostream toobe v hello **systémem** stavu.
 
-Streamovací adresa URL pro technologii Smooth Streaming má následující formát:
+Streamovací adresa URL pro technologii Smooth Streaming má následující formát hello:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-Streamovací adresa URL pro HLS má následující formát:
+Streamovací adresa URL pro HLS má následující formát hello:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-Streamovací adresa URL pro MPEG DASH má následující formát:
+Streamovací adresa URL pro MPEG DASH má následující formát hello:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-SAS adresa URL používaná ke stahování souborů má následující formát:
+SAS adresa URL používaná toodownload souborů má hello následující formát:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-V této části ukazuje, jak provádět následující úlohy nezbytné "publikovat" vaše prostředky.  
+Tato část uvádí, jak tooperform hello následující úkoly potřebné příliš "publikovat" vaše prostředky.  
 
-* Vytváření AccessPolicy s oprávněními ke čtení
+* Vytváření hello AccessPolicy s oprávněními ke čtení
 * Vytváření SAS adresa URL pro stahování obsahu
 * Vytváření původní adresu URL pro streamování obsahu
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Vytváření AccessPolicy s oprávněními ke čtení
-Před stažením nebo streamování žádný obsah média, nejprve definovat AccessPolicy s oprávněními ke čtení a vytvořte odpovídající Lokátor entita, která určuje typ mechanismus doručování, který chcete povolit pro klienty. Další informace o dostupných vlastnostech najdete v tématu [vlastností Entity AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
+### <a name="creating-hello-accesspolicy-with-read-permission"></a>Vytváření hello AccessPolicy s oprávněními ke čtení
+Před stažením nebo streamování žádný obsah média, nejprve definovat AccessPolicy s oprávněními ke čtení a vytvořit hello odpovídající Lokátor entita, která určuje typ hello doručení mechanismu chcete tooenable pro klienty. Další informace o vlastnostech hello k dispozici, najdete v části [vlastností Entity AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
-Následující příklad ukazuje, jak zadat AccessPolicy pro oprávnění ke čtení pro daný prostředek.
+Hello následující příklad ukazuje, jak toospecify hello AccessPolicy pro oprávnění ke čtení pro daný prostředek.
 
     POST https://wamsbayclus001rest-hs.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json
@@ -753,15 +753,15 @@ Následující příklad ukazuje, jak zadat AccessPolicy pro oprávnění ke čt
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-V případě úspěchu se vrátí kód 201 úspěšnosti popisující AccessPolicy entity, který jste vytvořili. Pak použijete AccessPolicy Id společně s Id prostředku asset, který obsahuje soubor, který chcete vytvořit lokátor entity doručit (například výstupní asset).
+V případě úspěchu se vrátí kód 201 úspěšnosti popisující hello AccessPolicy entity, který jste vytvořili. Pak použijete hello AccessPolicy Id společně s hello Asset Id hello asset, který obsahuje soubor hello chcete entity Lokátor hello toocreate toodeliver (například výstupní asset).
 
 > [!NOTE]
-> Tento základní pracovní postup je stejný jako nahrání souboru, když příjem prostředek (jak je popsané v tomto tématu výše). Také jako nahrávání souborů, pokud vy (nebo klientů) potřebovat přístup k souborům okamžitě, můžete nastavte vaše hodnoty StartTime 5 minut před aktuálním časem. Tato akce je nutné, protože je možné, hodiny zkosení mezi klientem a služba Media Services. Hodnota čas spuštění musí být ve formátu data a času: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").
+> Tento základní pracovní postup je hello stejné jako nahrání souboru, když příjem prostředek (jak je popsané v tomto tématu výše). Také jako nahrávání souborů, pokud jste (nebo klientů) potřebovat tooaccess vaše soubory okamžitě, nastavte vaše StartTime hodnota toofive minut před aktuálním časem hello. Tato akce je nutné, protože je možné, hodiny zkosení mezi hello klient a služba Media Services. Hello hodnoty StartTime musí být ve formátu data a času hello: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").
 >
 >
 
 ### <a name="creating-a-sas-url-for-downloading-content"></a>Vytváření SAS adresa URL pro stahování obsahu
-Následující kód ukazuje, jak získat adresu URL, která slouží k stažení souboru média vytvořen a odesláno dříve. AccessPolicy má číst sadu oprávnění, a Lokátor cesta odkazuje na adresu URL typu SAS stahování.
+Hello následující kód ukazuje, jak tooget adresu URL, která lze použít toodownload soubor média vytvořit a nahrát dříve. Hello AccessPolicy má číst sadu oprávnění, a Lokátor cesty hello odkazuje adresa URL pro stahování tooa SAS.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -776,7 +776,7 @@ Následující kód ukazuje, jak získat adresu URL, která slouží k stažení
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -819,24 +819,24 @@ V případě úspěchu se vrátí následující odpověď:
     }
 
 
-Vrácený **cesta** vlastnost obsahuje adresu URL SAS.
+Hello vrátil **cesta** vlastnost obsahuje hello SAS adresa URL.
 
 > [!NOTE]
-> Pokud si stáhnout obsah šifrování úložiště, musí vám ručně dešifrovat před vykreslením nebo použijte MediaProcessor dešifrování úložiště úlohy zpracování výstupních zpracovaných souborů v nešifrované podobě k OutputAsset a pak stáhnout z tohoto prostředku. Další informace o zpracování najdete v části Vytvoření úlohu kódování pomocí Media Services REST API. SAS adresa URL lokátory navíc nelze aktualizovat, po jejich vytvoření. Například nelze znovu použít stejné Lokátor s hodnotou aktualizované čas spuštění. To je kvůli způsob, jakým se vytvářejí SAS adresy URL. Pokud chcete získat přístup ke stažení prostředek po vypršení platnosti lokátoru, musíte vytvořit novou na nový čas spuštění.
+> Pokud si stáhnout obsah šifrování úložiště, musíte ručně dešifrovat před vykreslením, nebo použijte hello MediaProcessor dešifrování úložiště v toooutput zpracování úloh zpracování souborů v hello zrušte tooan OutputAsset a následné stažení z tohoto prostředku. Další informace o zpracování najdete v části vytváření úlohu kódování s hello Media Services REST API. SAS adresa URL lokátory navíc nelze aktualizovat, po jejich vytvoření. Například nemůžete použít opakovaně hello stejné Lokátor s hodnotou aktualizované čas spuštění. To je kvůli hello způsob, jakým se vytvářejí SAS adresy URL. Pokud chcete tooaccess prostředek ke stažení po vypršení platnosti lokátoru, musíte vytvořit novou na nový čas spuštění.
 >
 >
 
 ### <a name="download-files"></a>Stažení souborů
-Jakmile máte AccessPolicy a Lokátor nastavení, můžete si stáhnout soubory pomocí rozhraní API REST úložiště Azure.  
+Jakmile máte hello AccessPolicy a Lokátor sady, můžete si stáhnout soubory pomocí hello rozhraní API REST úložiště Azure.  
 
 > [!NOTE]
-> Musíte přidat název souboru pro soubor, který chcete stáhnout do Lokátor **cesta** přijaté v předchozí části hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Musíte přidat název souboru hello hello souboru chcete toodownload toohello Lokátor **cesta** přijaté v předchozí části hello hodnoty. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 
 Další informace o práci s objekty BLOB úložiště Azure najdete v tématu [rozhraní API REST služby objektů Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-V důsledku úlohy kódování, které jste provedli starší (kódování do sady souborů MP4 s adaptivní) máte více souborů MP4, které jste ho progresivně stahovat. Například:    
+V důsledku hello kódování úlohy, které jste provedli dříve (kódování do sady souborů MP4 s adaptivní) máte více souborů MP4, které jste ho progresivně stahovat. Například:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -856,7 +856,7 @@ V důsledku úlohy kódování, které jste provedli starší (kódování do sa
 
 
 ### <a name="creating-a-streaming-url-for-streaming-content"></a>Vytváření streamovací adresa URL pro streamování obsahu
-Následující kód ukazuje, jak vytvořit lokátor streamování adresy URL:
+Následující kód ukazuje, jak Hello toocreate Lokátor streamování adresy URL:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -871,7 +871,7 @@ Následující kód ukazuje, jak vytvořit lokátor streamování adresy URL:
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-V případě úspěchu se vrátí následující odpověď:
+V případě úspěchu se vrátí hello následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -913,23 +913,23 @@ V případě úspěchu se vrátí následující odpověď:
        }
     }
 
-K vysílání datového proudu technologie Smooth Streaming původní adresu URL v streamování přehrávač médií, musíte připojit cesta vlastnost s názvem technologie Smooth Streaming manifest souboru, za nímž následuje "/ manifest".
+toostream technologie Smooth Streaming adresu URL původ v streamování přehrávač médií, musí připojit hello cesta vlastnost s názvem hello hello technologie Smooth Streaming manifest souboru, za nímž následuje "/ manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-K vysílání datového proudu HLS, připojte (format = m3u8-aapl) po "/ manifest".
+toostream HLS, připojte (format = m3u8-aapl) po hello "/ manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Chcete-li stream MPEG DASH, připojte (formát = mpd. čas csf) po "/ manifest".
+připojit toostream MPEG DASH (formát = mpd. čas csf) po hello "/ manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
 ## <a id="play"></a>Přehrání obsahu
-Pokud chcete video streamovat, použijte [přehrávač služby Azure Media Services](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+toostream video, použijete [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-Chcete-li otestovat progresivní stahování, vložte adresu URL do prohlížeče (například aplikace Internet Explorer, Chrome, Safari).
+tootest progresivní stahování, vložte adresu URL do prohlížeče (například aplikace Internet Explorer, Chrome, Safari).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Další kroky: Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

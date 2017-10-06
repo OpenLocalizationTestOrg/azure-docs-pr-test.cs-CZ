@@ -1,5 +1,5 @@
 ---
-title: "Uložené procedury v SQL Data Warehouse | Microsoft Docs"
+title: postupy aaaStored v SQL Data Warehouse | Microsoft Docs
 description: "Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,37 +15,37 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 416252dd3dea95c66aa5e886860b933b22578002
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="stored-procedures-in-sql-data-warehouse"></a>Uložené procedury v SQL Data Warehouse
-SQL Data Warehouse podporuje mnoho funkcí jazyka Transact-SQL v SQL serveru. Je důležité nejsou specifické funkce, které bude chceme využít také k maximalizovat výkon vašeho řešení s více instancemi.
+SQL Data Warehouse podporuje mnoho funkcí hello Transact-SQL, najít v systému SQL Server. Je důležité nejsou specifické funkce, že chceme tooleverage toomaximize hello výkon vašeho řešení s více instancemi.
 
-Zachování škálování a výkonu, služby SQL Data Warehouse jsou však také některé funkce a funkce, které mají rozdíly v chování a ostatní uživatele, které nejsou podporovány.
+Toomaintain hello škálování a výkonu, služby SQL Data Warehouse jsou však také některé funkce a funkce, které mají rozdíly v chování a ostatní uživatele, které nejsou podporovány.
 
-Tento článek vysvětluje, jak implementovat uložené procedury v rámci SQL Data Warehouse.
+Tento článek vysvětluje, jak tooimplement uložené procedury v rámci SQL Data Warehouse.
 
 ## <a name="introducing-stored-procedures"></a>Představení uložené procedury
-Uložené procedury jsou vhodné pro zapouzdření kódu SQL; ukládání blízko data v datovém skladu. Zapouzdřením kód do spravovatelných jednotek uložené procedury pomoci vývojářům rozčlenění moduly svá řešení; usnadnění větší znovuvyužití kódu. Každý uložené procedury mohou také přijímat parametry tak, aby byly i flexibilnější.
+Uložené procedury jsou vhodné pro zapouzdření kódu SQL; ukládání dat zavřít tooyour hello datového skladu. Zapouzdřením hello kódu do spravovatelných jednotek uložené procedury pomoci vývojářům rozčlenění moduly svá řešení; usnadnění větší znovuvyužití kódu. Každý uložené procedury může přijmout také parametry toomake je i flexibilnější.
 
-SQL Data Warehouse poskytuje zjednodušenou a efektivní uložené procedury implementaci. Největší rozdíl oproti systému SQL Server je, že uložená procedura není předem zkompilovaný kód. V datové sklady jsou obecně menší význam s časem kompilace. Je důležité kód uložené procedury je při fungování proti velkých objemů dat správně optimalizované. Cílem je uložit hodiny, minuty a sekundy není milisekundách. Je proto více vhodné zamyslet nad uložené procedury jako kontejnery pro logiku SQL.     
+SQL Data Warehouse poskytuje zjednodušenou a efektivní uložené procedury implementaci. Hello největších rozdíl oproti tooSQL, které je Server, hello uložená procedura není předem zkompilovaný kód. V datové sklady jsou obecně menší význam s časem kompilace hello. Je důležité hello uložené procedury kód je při fungování proti velkých objemů dat správně optimalizované. cílem Hello je toosave hodiny, minuty a sekundy není milisekundách. Proto je užitečné toothink uložené procedury jako kontejnery pro logiku SQL.     
 
-Když SQL Data Warehouse provede uložené procedury jsou analyzovat příkazy SQL, přeložených a optimalizované za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je ve skutečnosti spustit pro data se liší na dotaz odeslána.
+Když SQL Data Warehouse provede jsou příkazy SQL hello vaše uložené procedury analyzovat, přeložit a optimalizované v době běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Hello SQL kód, který je ve skutečnosti spustit pro hello data je jiný toohello dotazu odeslána.
 
 ## <a name="nesting-stored-procedures"></a>Vnoření uložené procedury
-Uložené procedury při volání jiné uložené procedury nebo pak vnitřní uložená procedura nebo kód volání říká, že je možné provést dynamické sql.
+Když uložené procedury volat jiné uložené procedury nebo spuštění dynamické sql pak hello vnitřní uložené procedury nebo kód volání říká, že je toobe vnořený.
 
-SQL Data Warehouse podporují maximálně 8 vnořených úrovní. To se mírně liší k systému SQL Server. Úroveň vnoření v systému SQL Server je 32.
+SQL Data Warehouse podporují maximálně 8 vnořených úrovní. Toto je mírně odlišný tooSQL serveru. úroveň vnoření Hello v systému SQL Server je 32.
 
-Volání uložené procedury nejvyšší úrovně se rovná vnořit úroveň 1
+volání uložené procedury nejvyšší úrovně Hello znamená zároveň toonest úroveň 1
 
 ```sql
 EXEC prc_nesting
 ```
-Pokud uložená procedura také provede další EXEC volání pak to zvýší úroveň vnoření 2
+Pokud hello uložené procedury navíc využívá další EXEC volání pak to zvýší too2 úrovně vnoření hello
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -54,7 +54,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-Pokud se druhý postup pak provede některé dynamické sql, pak to zvýší úroveň vnoření na 3
+Pokud se druhý postup hello pak provede některé dynamické sql pak to zvýší too3 úrovně vnoření hello
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -64,12 +64,12 @@ GO
 EXEC prc_nesting
 ```
 
-Poznámka: SQL Data Warehouse nepodporuje aktuálně@NESTLEVEL. Musíte mít nainstalované sledovat vaše úrovně vnoření. Nepravděpodobné, se setkají limit úrovně vnoření 8, ale v takovém případě budete muset znovu fungovat kódu a "zploštění" jej tak, aby odpovídal v rámci tohoto limitu.
+Poznámka: SQL Data Warehouse nepodporuje aktuálně@NESTLEVEL. Budete potřebovat tookeep sledovat vaše úrovně vnoření sami. Nepravděpodobné, se setkají limit úrovně vnoření hello 8, ale pokud uděláte budete potřebovat toore pracovní kódu a "zploštění" jej tak, aby odpovídal v rámci tohoto limitu.
 
 ## <a name="insertexecute"></a>PŘÍKAZ INSERT... SPUŠTĚNÍ
-SQL Data Warehouse nepovoluje využívat sady výsledků dotazu uložené proceduře pomocí příkazu INSERT. Je však alternativní způsob, který můžete použít.
+SQL Data Warehouse vám nepovoluje tooconsume hello sady výsledků dotazu uložené proceduře pomocí příkazu INSERT. Je však alternativní způsob, který můžete použít.
 
-Naleznete v následujícím článku na [dočasných tabulek] příklad o tom, jak to udělat.
+Naleznete v následujícím článku toohello [dočasných tabulek] pro příklad jak toodo to.
 
 ## <a name="limitations"></a>Omezení
 Existují některé aspekty Transact-SQL uložené procedury, které nejsou implementované v SQL Data Warehouse.

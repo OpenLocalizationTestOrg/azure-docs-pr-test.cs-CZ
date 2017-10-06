@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace softwaru diskového pole RAID na virtuálním počítači se systémem Linux | Microsoft Docs"
-description: "Další informace o použití mdadm ke konfiguraci RAID na systému Linux v Azure."
+title: "aaaConfigure softwaru diskového pole RAID na virtuálním počítači se systémem Linux | Microsoft Docs"
+description: "Zjistěte, jak toouse mdadm tooconfigure RAID v systému Linux v Azure."
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f06e2679d953faf88ffee9991226cdb3cc1cbdb0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
-Je běžný scénář pomocí softwaru diskového pole RAID na virtuální počítače s Linuxem v Azure k dispozici více připojených datových disků jako jedno zařízení RAID. Obvykle to lze zlepšit výkon a umožňuje lepší výkon ve srovnání s použitím právě jeden disk.
+Jedná se o běžné software toouse scénář RAID na virtuální počítače s Linuxem v Azure toopresent dat více připojené disky jako jedno zařízení RAID. Obvykle to být použité tooimprove výkonu a povolit pro zlepšila propustnost porovnání toousing právě jeden disk.
 
 ## <a name="attaching-data-disks"></a>Připojení datových disků
-Dvě nebo více prázdný datových disků jsou potřeba ke konfiguraci RAID zařízení.  Hlavním důvodem pro vytváření diskového pole RAID zařízení je ke zlepšení výkonu disku vstupně-výstupní operace.  Podle potřeb vstupně-výstupní operace, můžete připojit disky, které jsou uložené v našem standardního úložiště, s maximálně 500 vstupně-výstupní operace/ps pro na disk nebo naše storage úrovně Premium s až 5000 vstupně-výstupní operace za ps na disk. Tento článek nepřekračuje podrobnosti o tom, jak zřídit a připojte datových disků pro virtuální počítač s Linuxem.  Najdete v článku Microsoft Azure [připojit disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) podrobné pokyny o tom, jak připojit prázdný datový disk pro virtuální počítač s Linuxem v Azure.
+Minimálně dva prázdné datové disky jsou potřebné tooconfigure zařízení RAID.  Hello primární důvod pro vytváření diskového pole RAID zařízení je tooimprove výkon disku vstupně-výstupní operace.  V závislosti na vašich potřebách vstupně-výstupní operace, můžete vybrat tooattach disky, které jsou uložené v našich standardní úložiště s až too500 vstupně-výstupní operace/ps na disk nebo naše storage úrovně Premium s až too5000 vstupně-výstupní operace/ps na disk. Tento článek nezabývá podrobnosti o tom, tooprovision a připojte datové disky tooa Linux virtuálního počítače.  Najdete v článku Microsoft Azure hello [připojit disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro podrobné pokyny, jak tooattach prázdný datový disk tooa Linux virtuálního počítače na platformě Azure.
 
-## <a name="install-the-mdadm-utility"></a>Nainstalujte nástroj mdadm
+## <a name="install-hello-mdadm-utility"></a>Nainstalujte nástroj mdadm hello
 * **Ubuntu**
 ```bash
 sudo apt-get update
@@ -44,30 +44,30 @@ sudo yum install mdadm
 zypper install mdadm
 ```
 
-## <a name="create-the-disk-partitions"></a>Vytvoření oddílů disku
-V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový oddíl bude volána /dev/sdc1.
+## <a name="create-hello-disk-partitions"></a>Vytvoření oddílů disku hello
+V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Hello nový diskový oddíl bude volána /dev/sdc1.
 
-1. Spustit `fdisk` zahajte proces vytváření oddílů
+1. Spustit `fdisk` toobegin vytváření oddílů
 
     ```bash
     sudo fdisk /dev/sdc
     Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
     Building a new DOS disklabel with disk identifier 0xa34cb70c.
-    Changes will remain in memory only, until you decide to write them.
-    After that, of course, the previous content won't be recoverable.
+    Changes will remain in memory only, until you decide toowrite them.
+    After that, of course, hello previous content won't be recoverable.
 
     WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
-                    switch off the mode (command 'c') and change display units to
+                    switch off hello mode (command 'c') and change display units to
                     sectors (command 'u').
     ```
 
-2. Stiskněte klávesu n příkazového řádku k vytvoření  **n** ové oddílu:
+2. Stiskněte klávesu n na výzvy toocreate hello  **n** ové oddílu:
 
     ```bash
     Command (m for help): n
     ```
 
-3. Stiskněte klávesu "p" k vytvoření **p**rimární oddílu:
+3. Stiskněte klávesu toocreate "p" **p**rimární oddílu:
 
     ```bash 
     Command action
@@ -75,50 +75,50 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
             p   primary partition (1-4)
     ```
 
-4. Stiskněte klávesu '1' a vyberte číslo oddílu 1:
+4. Stiskněte číslo oddílu '1' tooselect 1:
 
     ```bash
     Partition number (1-4): 1
     ```
 
-5. Vyberte výchozí bod nového oddílu, nebo klikněte na tlačítko `<enter>` přijměte výchozí nastavení pro umístění oddílu na začátku volného místa na disku:
+5. Vyberte hello výchozí bod hello nový oddíl, nebo klikněte na tlačítko `<enter>` tooaccept hello výchozí tooplace hello oddílu na začátku hello hello volné místo na jednotce hello:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-6. Vyberte velikost oddílu, například typ '+10G' k vytvoření oddílu 10 GB. Také můžete stisknout klávesu `<enter>` vytvořte jeden oddíl, který zahrnuje celou jednotku:
+6. Vyberte velikost hello hello oddílu, například typ '+10G' toocreate oddíl 10 GB. Také můžete stisknout klávesu `<enter>` vytvořte jeden oddíl, který zahrnuje celou jednotku hello:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-7. V dalším kroku změňte ID a **t**typ oddílu z výchozí ID '83' (Linux) ID, fd' (Linux raid automaticky):
+7. V dalším kroku změnit hello ID a **t**typ oddílu hello z výchozí hello ID '83' tooID (Linux), fd' (Linux raid automaticky):
 
     ```bash  
     Command (m for help): t
     Selected partition 1
-    Hex code (type L to list codes): fd
+    Hex code (type L toolist codes): fd
     ```
 
-8. Nakonec tabulce oddílu zápis na disk a ukončete fdisk:
+8. Nakonec zápisu hello oddílu tabulky toohello jednotky a ukončete fdisk:
 
     ```bash   
     Command (m for help): w
-    The partition table has been altered!
+    hello partition table has been altered!
     ```
 
-## <a name="create-the-raid-array"></a>Vytvoření pole RAID
-1. Následující příklad se "stripe" (úroveň pole RAID 0) tři oddíly nachází na tři samostatné datové disky (sdc1, sdd1, sde1).  Po spuštění tohoto příkazu nové zařízení RAID názvem **/dev/md127** je vytvořena. Všimněte si, že pokud tyto datové disky jsme dříve součástí jiného nefunkční pole RAID může být potřeba přidat `--force` parametru `mdadm` příkaz:
+## <a name="create-hello-raid-array"></a>Vytvořit hello typu
+1. Následující příklad se "stripe" (úroveň pole RAID 0) tři oddíly nachází na tři samostatné datové disky (sdc1, sdd1, sde1) Hello.  Po spuštění tohoto příkazu nové zařízení RAID názvem **/dev/md127** je vytvořena. Všimněte si, že pokud tyto datové disky jsme dříve součástí jiného nefunkční pole RAID může být nutné tooadd hello `--force` parametr toohello `mdadm` příkaz:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-2. Vytvořit systém souborů na nové zařízení RAID
+2. Vytvořit systém souborů hello na nové zařízení RAID hello
    
     a. **CentOS, Oracle Linux, SLES 12, openSUSE a Ubuntu**
 
@@ -144,16 +144,16 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
    > 
    > 
 
-## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů do /etc/fstab
+## <a name="add-hello-new-file-system-tooetcfstab"></a>Přidat hello nový soubor systému příliš/atd/fstab
 > [!IMPORTANT]
-> Nesprávně úprav souboru /etc/fstab může mít za následek nelze spustit systém. Pokud jistí, naleznete distribuční dokumentaci informace o tom, jak správně upravit tento soubor. Dále je doporučeno, jestli je vytvořená záloha souboru /etc/fstab před úpravou.
+> Nesprávně úprav hello /etc/fstab souboru může mít za následek nelze spustit systém. Pokud si jisti, naleznete v dokumentaci toohello distribuční informace o tom, jak upravit tooproperly tento soubor. Dále je doporučeno, jestli je vytvořená záloha souboru /etc/fstab hello před úpravou.
 
-1. Vytvořte požadované přípojného bodu pro nový systém souborů, například:
+1. Vytvořte hello potřeby přípojný bod pro nový systém souborů, například:
 
     ```bash
     sudo mkdir /data
     ```
-2. Při úpravě /etc/fstab, **UUID** slouží k odkazování na systém souborů, nikoli název zařízení.  Použití `blkid` nástroj k určení identifikátor UUID pro nový systém souborů:
+2. Při úpravě /etc/fstab, hello **UUID** by měla být použité tooreference hello systému, nikoli hello zařízení název souboru.  Použití hello `blkid` nástroj toodetermine hello UUID pro hello nový systém souborů:
 
     ```bash   
     sudo /sbin/blkid
@@ -161,7 +161,7 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-3. V textovém editoru otevřete /etc/fstab a přidejte položku pro nový systém souborů, například:
+3. V textovém editoru otevřete /etc/fstab a přidejte položku pro hello nový systém souborů, například:
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -175,15 +175,15 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
    
     Potom uložte a zavřete /etc/fstab.
 
-4. Testovací správnost zadání fstab/etc /:
+4. Test této hello etc/správnost zadání fstab:
 
     ```bash  
     sudo mount -a
     ```
 
-    Pokud tento příkaz výsledkem chybovou zprávu, Zkontrolujte prosím syntaxe v souboru /etc/fstab.
+    Pokud tento příkaz výsledkem chybovou zprávu, Zkontrolujte prosím hello syntaxe v souboru /etc/fstab hello.
    
-    Následně spusťte `mount` zajistěte připojení k systému souborů:
+    Následně spusťte hello `mount` připojení k systému souborů hello tooensure příkaz:
 
     ```bash   
     mount
@@ -195,7 +195,7 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
    
     **Konfigurace fstab**
    
-    Velkém množství distribucí obsahovat buď `nobootwait` nebo `nofail` připojit parametry, které mohou být přidány do souboru/etc/fstab. Tyto parametry umožňují selhání při připojení příslušného systému souborů a povolit spuštění i v případě, že nelze správně připojit RAID systému souborů i nadále systému Linux. Vyhledejte vaší distribuční dokumentaci další informace o těchto parametrů.
+    Velkém množství distribucí obsahovat buď hello `nobootwait` nebo `nofail` připojit parametry, které mohou být přidány toohello/etc/fstab souboru. Tyto parametry umožňují selhání při připojení příslušného systému souborů a povolit tooboot toocontinue systému Linux hello, i když je systém souborů nelze tooproperly připojení hello RAID. Další informace o těchto parametrů naleznete v dokumentaci tooyour distribuce.
    
     Příklad (Ubuntu):
 
@@ -205,26 +205,26 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
 
     **Parametry spuštění systému Linux**
    
-    Kromě výše uvedených parametrů, parametr jádra "`bootdegraded=true`" Povolit systém tak, aby i v případě, že RAID je považována za poškozený nebo sníženou pro příklad, pokud datová jednotka nechtěně odebrán z virtuálního počítače. Ve výchozím nastavení může také výsledkem-spouštěcího systému.
+    V přidání toohello výše parametry, hello jádra parametr "`bootdegraded=true`" Povolit hello systému tooboot i v případě hello RAID je považována za poškozený nebo ke snížení, například pokud datová jednotka je neúmyslně odebere z hello virtuálního počítače. Ve výchozím nastavení může také výsledkem-spouštěcího systému.
    
-    Naleznete vaší distribuční dokumentaci o tom, jak správně upravit parametry jádra. Například ve velkém množství distribucí (CentOS, Oracle Linux SLES 11.) tyto parametry mohou být přidány ručně na "`/boot/grub/menu.lst`" soubor.  Na Ubuntu tento parametr lze přidat do `GRUB_CMDLINE_LINUX_DEFAULT` proměnné na "/ etc/výchozí/grub".
+    Naleznete v dokumentaci tooyour distribuční na tom, jak tooproperly upravit parametry jádra. Například ve velkém množství distribucí (CentOS, Oracle Linux SLES 11.) tyto parametry mohou být přidány ručně toohello "`/boot/grub/menu.lst`" soubor.  Na Ubuntu tento parametr je možné přidat toohello `GRUB_CMDLINE_LINUX_DEFAULT` proměnné na "/ etc/výchozí/grub".
 
 
 ## <a name="trimunmap-support"></a>Podpora uvolnění dočasné paměti nebo UNMAP
-Některé Linux jádra podporovat operace TRIM/UNMAP vyřadí nepoužívané bloky na disku. Tyto operace jsou užitečné hlavně v standardní úložiště k informování Azure, které odstraněné stránky již nejsou platné a může být vymazány. Zahození stránky můžete uložit náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je.
+Některé jádra Linux podporují toodiscard operace TRIM/UNMAP nepoužívané bloky na disku hello. Tyto operace jsou užitečné hlavně v tooinform standardní úložiště Azure, které odstraněné stránky již nejsou platné a může být vymazány. Zahození stránky můžete uložit náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je.
 
 > [!NOTE]
-> RAID nemusí zadávání příkazů zahození, velikost bloku pro toto pole je nastaven na hodnotu menší než výchozí (512 KB). Je to proto členitost unmap na hostiteli je také 512KB. Pokud jste změnili velikost bloku pole prostřednictvím na mdadm `--chunk=` parametr a potom zrušit mapování/TRIM žádosti může být ignorován jádrem.
+> RAID nemusí zadávání příkazů zahození, velikost bloku hello hello pole je nastaven tooless než výchozí hello (512 KB). Důvodem je, že zrušit mapování hello členitosti na hello hostitele je také 512KB. Pokud jste změnili velikost bloku hello pole prostřednictvím na mdadm `--chunk=` parametr a potom zrušit mapování/TRIM požadavky může být ignorována hello jádra.
 
-Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačům s Linuxem. Obvyklým způsobem podívejte se distribuční o doporučený postup:
+Existují dva způsoby tooenable TRIM podporují ve virtuálním počítačům s Linuxem. Obvyklým způsobem podívejte se distribuční hello doporučenému přístupu:
 
-- Použití `discard` připojit možnost v `/etc/fstab`, například:
+- Použití hello `discard` připojit možnost v `/etc/fstab`, například:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` ručně příkaz z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spouštět:
+- V některých případech hello `discard` možnost může mít vliv na výkon. Alternativně můžete spustit hello `fstrim` ručně příkaz z příkazového řádku hello, nebo ho přidat tooyour crontab toorun pravidelně:
 
     **Ubuntu**
 

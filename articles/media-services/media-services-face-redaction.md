@@ -1,6 +1,6 @@
 ---
-title: "Redigovat řezy s Azure Media Analytics | Microsoft Docs"
-description: "Toto téma ukazuje, jak redigovat řezy s Azure media analytics."
+title: "aaaRedact řezy s Azure Media Analytics | Microsoft Docs"
+description: "Toto téma ukazuje, jak tooredact otočená s Azure media analytics."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;
-ms.openlocfilehash: 747f3ae1a7484515083c590942de3da22568cd39
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1f5688a8c6374151c526a9c702b904d8c3e46164
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigovat řezy s Azure Media Analytics
 ## <a name="overview"></a>Přehled
-**Azure Media Redactor** je [Azure Media Analytics](media-services-analytics-overview.md) procesor médií (PP), která nabízí redigování škálovatelné řez v cloudu. Vzhled redigování umožní vám upravit videa k rozostření řezy vybrané jednotlivce. Můžete použít službu redigování řez ve veřejné scénáře zabezpečení a média zprávy. Pár minut záznamů, která obsahuje více řezy může trvat hodiny redigovat ručně, ale s touto službou proces redigování řez bude vyžadovat několika jednoduchých kroků. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
+**Azure Media Redactor** je [Azure Media Analytics](media-services-analytics-overview.md) procesor médií (PP), která nabízí redigování škálovatelné řez v cloudu hello. Vzhled redigování umožňuje vám toomodify videa v pořadí tooblur řezy vybrané osob. Můžete chtít toouse hello vzhled redigování služby ve veřejné scénáře zabezpečení a média zprávy. Pár minut záznamů, která obsahuje více řezy může trvat hodiny tooredact ručně, ale s této služby hello vzhled redigování proces bude vyžadovat několika jednoduchých kroků. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
-Toto téma uvádí podrobnosti o **Azure Media Redactor** a ukazuje, jak pomocí sady Media Services SDK pro .NET.
+Toto téma uvádí podrobnosti o **Azure Media Redactor** a ukazuje, jak toouse ho pomocí sady Media Services SDK pro .NET.
 
-**Azure Media Redactor** MP je aktuálně ve verzi Preview. Je k dispozici ve všech veřejných oblastí Azure a také datových centrech US Government a Číně. Tato verze preview je aktuálně zdarma. 
+Hello **Azure Media Redactor** MP je aktuálně ve verzi Preview. Je k dispozici ve všech veřejných oblastí Azure a také datových centrech US Government a Číně. Tato verze preview je aktuálně zdarma. 
 
 ## <a name="face-redaction-modes"></a>Vzhled redigování režimy
-Obličeje redigování funguje zjišťování tyto řezy v každém snímku videa a sledováním vzhled objekt obou dopředný a zpětně v průběhu času, aby stejné jednotlivých můžete hranice z jiných úhly také. Proces automatického redigování je velmi složitý a nemá vždy produktu 100 % požadované výstupu z tohoto důvodu Media Analytics nabízí několik způsobů, jak upravit finální výstup.
+Funguje obličeje redigování zjišťuje tyto řezy v každém snímku videa a sledování hello vzhled objektu obě dopředný a zpětně v čase, tak, aby hello stejné individuální může být hranice z jiných úhly také. Hello automatizované redigování proces je velmi složitý a vždy nevytváří 100 % požadované výstup z tohoto důvodu, které jste s několika způsoby Media Analytics poskytuje toomodify hello závěrečný výstup.
 
-Kromě plně automatickými režimu je dva průchodu pracovního postupu, které umožňuje výběr nebo deaktivuje-selection nalezen ploch prostřednictvím seznam identifikátorů. Také aby libovolný za rámce úpravy MP používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělená do **analyzovat** a **Redact** režimy. Zkombinováním dva režimy při jednom průchodu používající obě úlohy v úloh. Tento režim je volána **kombinované**.
+V režimu plně automatické přidání tooa je dva průchodu pracovního postupu, které umožňuje hello výběr/deaktivuje-selection nalezen ploch prostřednictvím seznam identifikátorů. Toomake libovolný za rámce úpravy hello MP také používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělená do **analyzovat** a **Redact** režimy. Zkombinováním hello dva režimy při jednom průchodu používající obě úlohy v úloh. Tento režim je volána **kombinované**.
 
 ### <a name="combined-mode"></a>Kombinovaná režimu
 Vznikne tak zredigované mp4 automaticky bez jakékoli ruční vstup.
@@ -49,14 +49,14 @@ Vznikne tak zredigované mp4 automaticky bez jakékoli ruční vstup.
 [přehrát toto video](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>Analýza režimu
-**Analyzovat** průchodu dva průchodu pracovního postupu přebírá vstup videa a vytvoří soubor JSON místa vzhled a obrázků jpg jednotlivých zjistila řez.
+Hello **analyzovat** průchodu hello dva průchodu pracovního postupu přebírá vstup videa a vytvoří soubor JSON místa vzhled a obrázků jpg jednotlivých zjistila řez.
 
 | Krok | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní prostředek |foo.bar |Video ve formátu WMV, MPV nebo MP4 |
 | Vstupní konfigurace |Předvolby úlohy konfigurace |{'version':'1.0 ', 'možnosti': {'režimu': 'analyzovat.}} |
-| Výstupní asset |foo_annotations.JSON |Poznámky data vzhled umístění ve formátu JSON. To se dá upravit uživatel k úpravě stírá ohraničujícího polí. Viz následující ukázka. |
-| Výstupní asset |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg jednotlivých zjistil vzhled, kde číslo udává labelId písmo |
+| Výstupní asset |foo_annotations.JSON |Poznámky data vzhled umístění ve formátu JSON. To se dá upravit pomocí hello uživatele toomodify hello stírá ohraničujícího polí. Viz následující ukázka. |
+| Výstupní asset |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg jednotlivých zjistil vzhled, kde hello číslo označuje hello labelId řezu hello |
 
 #### <a name="output-example"></a>Příklad výstupu:
 
@@ -108,22 +108,22 @@ Vznikne tak zredigované mp4 automaticky bez jakékoli ruční vstup.
     … truncated
 
 ### <a name="redact-mode"></a>Redigovat režimu
-Druhé fázi pracovního postupu přebírá větší počet vstupních hodnot, které musí zkombinovat do jednoho datového zdroje.
+Hello druhého průchodu hello pracovního postupu přebírá větší počet vstupních hodnot, které musí zkombinovat do jednoho datového zdroje.
 
-To zahrnuje seznam ID k rozostření, původní video a poznámky JSON. Tento režim pomocí poznámky použije stírá na vstup videa.
+To zahrnuje seznam ID tooblur hello původní video a poznámky hello JSON. Tento režim používá hello poznámky tooapply stírá na vstupní video hello.
 
-Výstup z průchodu analyzovat nezahrnuje původní video. Video je třeba nahraje do vstupní asset pro úlohu režimu Redact a vybrat jako primární soubor.
+výstup hello analyzovat průchodu Hello nezahrnuje původní video hello. Hello video musí toobe nahraje do vstupní asset hello hello Redact režimu úlohy a vybrat jako primární soubor hello.
 
 | Krok | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní prostředek |foo.bar |Video ve formátu WMV, MPV nebo MP4. Stejné jako v kroku 1 videa. |
 | Vstupní prostředek |foo_annotations.JSON |Soubor metadat poznámky z první fázi, pomocí volitelné úpravy. |
-| Vstupní prostředek |foo_IDList.txt (volitelné) |Volitelné nový řádek oddělený seznam vzhled ID chcete redigovat. Pokud necháte prázdnou, tato rozostří všechny řezy. |
+| Vstupní prostředek |foo_IDList.txt (volitelné) |Volitelné nový řádek oddělený seznam ID tooredact řez. Pokud necháte prázdnou, tato rozostří všechny řezy. |
 | Vstupní konfigurace |Předvolby úlohy konfigurace |{'version':'1.0 ', 'možnosti': {'režimu': 'redigovat.}} |
 | Výstupní asset |foo_redacted.MP4 |Video s stírá použít podle poznámky |
 
 #### <a name="example-output"></a>Příklad výstupu
-Toto je výstup IDList s jedno ID vybrané.
+Toto je výstup hello IDList s jedno ID vybrané.
 
 [přehrát toto video](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
@@ -135,9 +135,9 @@ Příklad foo_IDList.txt
 
 ## <a name="blur-types"></a>Rozostření typy
 
-V **kombinované** nebo **Redact** režimu, existují 5 rozostření různé režimy můžete vybrat z prostřednictvím konfigurace vstupu JSON: **nízká**, **Med**, **vysokou**, **ladění**, a **černé**. Ve výchozím nastavení **Med** se používá.
+V hello **kombinované** nebo **Redact** režimu, existují 5 rozostření různé režimy můžete vybrat z prostřednictvím hello JSON vstupu konfigurace: **nízká**, **Med**, **Vysokou**, **ladění**, a **černé**. Ve výchozím nastavení **Med** se používá.
 
-Můžete najít ukázky níže rozostření typů.
+Můžete najít, že ukázky hello rozostření typy níže.
 
 ### <a name="example-json"></a>Příklad JSON:
 
@@ -163,25 +163,25 @@ Můžete najít ukázky níže rozostření typů.
 
 ![Černá](./media/media-services-face-redaction/blur5.png)
 
-## <a name="elements-of-the-output-json-file"></a>Elementy výstupního souboru JSON
+## <a name="elements-of-hello-output-json-file"></a>Elementy výstupního souboru JSON, hello
 
-MP redigování poskytuje vysokou přesnost vzhled umístění detekce a sledování, může zjistit až 64 lidského řezy snímek videa. Čelní řezy zadejte nejlepších výsledků dosáhnete, při straně řezy a malé řezy (je menší než nebo rovno 24 x 24 pixelů) jsou dost náročné.
+Hello redigování MP poskytuje vysokou přesnost vzhled umístění zjišťování a sledování, které může zjistit, až too64 lidské řezy v snímek videa. Čelní řezy zadejte hello nejlepších výsledků při straně řezy a malé řezy (menší než nebo roven hodnotě too24x24 pixelů) jsou náročné.
 
 [!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-Program zobrazí následující postup:
+ukazuje programu Hello následující postup:
 
-1. Vytvořte asset a nahrajte soubor média do assetu.
-2. Vytvořte úlohu s úkolem redigování vzhled podle konfigurační soubor, který obsahuje následující přednastavení json. 
+1. Vytvořte asset a nahrajte soubor média do hello asset.
+2. Vytvořte úlohu s úkolem redigování vzhled podle konfigurační soubor, který obsahuje následující json přednastavených hello. 
    
         {'version':'1.0', 'options': {'mode':'combined'}}
-3. Stáhněte soubory JSON výstupu. 
+3. Stáhněte soubory JSON výstup hello. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad
 
@@ -197,7 +197,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
     {
         class Program
         {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -213,17 +213,17 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-            // Run the FaceRedaction job.
+            // Run hello FaceRedaction job.
             var asset = RunFaceRedactionJob(@"C:\supportFiles\FaceRedaction\SomeFootage.mp4",
                         @"C:\supportFiles\FaceRedaction\config.json");
 
-            // Download the job output asset.
+            // Download hello job output asset.
             DownloadAsset(asset, @"C:\supportFiles\FaceRedaction\Output");
         }
 
         static IAsset RunFaceRedactionJob(string inputMediaFilePath, string configurationFile)
         {
-            // Create an asset and upload the input media file to storage.
+            // Create an asset and upload hello input media file toostorage.
             IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
             "My Face Redaction Input Asset",
             AssetCreationOptions.None);
@@ -231,38 +231,38 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
             // Declare a new job.
             IJob job = _context.Jobs.Create("My Face Redaction Job");
 
-            // Get a reference to Azure Media Redactor.
+            // Get a reference tooAzure Media Redactor.
             string MediaProcessorName = "Azure Media Redactor";
 
             var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-            // Read configuration from the specified file.
+            // Read configuration from hello specified file.
             string configuration = File.ReadAllText(configurationFile);
 
-            // Create a task with the encoding details, using a string preset.
+            // Create a task with hello encoding details, using a string preset.
             ITask task = job.Tasks.AddNew("My Face Redaction Task",
             processor,
             configuration,
             TaskOptions.None);
 
-            // Specify the input asset.
+            // Specify hello input asset.
             task.InputAssets.Add(asset);
 
-            // Add an output asset to contain the results of the job.
+            // Add an output asset toocontain hello results of hello job.
             task.OutputAssets.AddNew("My Face Redaction Output Asset", AssetCreationOptions.None);
 
-            // Use the following event handler to check job progress.  
+            // Use hello following event handler toocheck job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-            // Launch the job.
+            // Launch hello job.
             job.Submit();
 
-            // Check job execution and wait for job to finish.
+            // Check job execution and wait for job toofinish.
             Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
             progressJobTask.Wait();
 
-            // If job state is Error, the event handling
+            // If job state is Error, hello event handling
             // method for job progress should log errors.  Here we check
             // for error state and exit if needed.
             if (job.State == JobState.Error)

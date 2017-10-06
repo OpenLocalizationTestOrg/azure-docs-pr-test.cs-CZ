@@ -1,6 +1,6 @@
 ---
-title: "Správa koncových bodů streamování pomocí portálu Azure | Microsoft Docs"
-description: "Toto téma ukazuje, jak spravovat koncových bodů streamování pomocí portálu Azure."
+title: "aaaManage streamování koncové body pomocí hello portálu Azure | Microsoft Docs"
+description: "Toto téma ukazuje, jak hello koncových bodů streamování toomanage pomocí portálu Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 797dced6c3e2525730afa29987259cb9b435ba66
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dfa9352894d37edb317a6334d7f109419deb362b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Správa koncových bodů streamování pomocí portálu Azure
+# <a name="manage-streaming-endpoints-with-hello-azure-portal"></a>Správa koncových bodů streamování s hello portálu Azure
 
-Toto téma ukazuje, jak pomocí portálu Azure ke správě koncových bodů streamování. 
+Toto téma ukazuje, jak toouse hello Azure portálu toomanage koncových bodů streamování. 
 
 >[!NOTE]
->Projděte si [přehled](media-services-streaming-endpoints-overview.md) tématu. 
+>Ujistěte se, zda text hello tooreview [přehled](media-services-streaming-endpoints-overview.md) tématu. 
 
-Informace o tom, jak škálování koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) tématu.
+Informace o tom, jak tooscale hello koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) tématu.
 
 ## <a name="start-managing-streaming-endpoints"></a>Zahájení správy koncových bodů streamování 
 
-Pokud chcete spustit, Správa koncových bodů streamování pro váš účet, postupujte takto.
+Správa koncových bodů streamování pro váš účet toostart hello následující.
 
-1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. V **nastavení** vyberte **koncové body streamování**.
+1. V hello [portál Azure](https://portal.azure.com/), vyberte svůj účet Azure Media Services.
+2. V hello **nastavení** vyberte **koncové body streamování**.
    
     ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -45,22 +45,22 @@ Pokud chcete spustit, Správa koncových bodů streamování pro váš účet, p
 ## <a name="adddelete-a-streaming-endpoint"></a>Přidání nebo odstranění koncového bodu streamování
 
 >[!NOTE]
->Nelze odstranit výchozí koncový bod streamování.
+>nelze odstranit, Hello výchozího koncového bodu streamování.
 
-K přidání nebo odstranění koncového bodu streamování pomocí portálu Azure, postupujte takto:
+tooadd nebo odstranění pomocí koncového bodu streamování hello portálu Azure, hello následující:
 
-1. Chcete-li přidat koncový bod streamování, klikněte na tlačítko **+ koncový bod** v horní části stránky. 
+1. tooadd koncový bod streamování, klikněte na tlačítko hello **+ koncový bod** hello horní části stránky hello. 
 
-    Pokud chcete mít jiný sítím CDN nebo CDN a přímý přístup můžete několik koncových bodů streamování.
+    Pokud máte v plánu toohave můžete několik koncových bodů streamování různých sítím CDN nebo CDN a přímý přístup.
 
-2. Pokud chcete odstranit koncový bod streamování, stiskněte **odstranit** tlačítko.      
-3. Klikněte **spustit** tlačítko Spustit koncový bod streamování.
+2. stiskněte klávesu toodelete koncový bod streamování, **odstranit** tlačítko.      
+3. Klikněte na tlačítko hello **spustit** hello toostart tlačítko koncový bod streamování.
    
     ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>Konfigurace koncového bodu streamování
-Koncový bod streamování, můžete nakonfigurovat následující vlastnosti:
+## <a id="configure_streaming_endpoints"></a>Konfigurace hello Streaming koncový bod
+Koncový bod streamování umožňuje tooconfigure hello následující vlastnosti:
 
 * Řízení přístupu
 * Ovládací prvek mezipaměti
@@ -68,18 +68,18 @@ Koncový bod streamování, můžete nakonfigurovat následující vlastnosti:
 
 Podrobné informace o těchto vlastnostech najdete v tématu [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Koncový bod streamování můžete nakonfigurovat následujícím způsobem:
+Koncový bod streamování můžete nakonfigurovat pomocí tohoto postupu hello následující:
 
-1. Vyberte koncový bod streamování, kterou chcete konfigurovat.
+1. Vyberte hello chcete tooconfigure koncový bod streamování.
 2. Klikněte na tlačítko **nastavení**.
 
-Následuje stručný popis polí.
+Následuje stručný popis hello pole.
 
 ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. Maximální mezipaměť zásad: slouží ke konfiguraci Životnost mezipaměti pro prostředky obsluhovat prostřednictvím tento koncový bod streamování. Pokud není nastavena žádná hodnota, použije se výchozí hodnota. Výchozí hodnoty můžete definovat také přímo v úložišti Azure. Pokud Azure CDN je povolená pro koncový bod streamování, nastavíte nesmí hodnota zásady mezipaměti na menší než 600 sekund.  
-2. Povolené IP adresy: slouží k zadání IP adresy, které bude mít možnost připojení k publikované koncový bod streamování. Pokud žádné IP adresy zadané, bude moct připojit jakékoli IP adresy. IP adresy lze zadat jako jednu IP adresu (například (10.0.0.1), rozsah IP pomocí IP adresy a masky podsítě CIDR (například (10.0.0.1/22) nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkou (například 10.0.0.1 ' () 255.255.255.0) ").
-3. Konfigurace pro ověřování záhlaví Akamai podpisu: umožňuje určit, jak konfigurovat žádosti o ověření podpisu hlavičky ze serverů Akamai. Vypršení platnosti je ve formátu UTC.
+1. Maximální mezipaměť zásad: používané tooconfigure Životnost mezipaměti pro prostředky obsluhovat prostřednictvím tento koncový bod streamování. Pokud není nastavena žádná hodnota, použije se výchozí hello. Hello výchozí hodnoty můžete definovat také přímo v úložišti Azure. Pokud Azure CDN je povolená pro hello koncový bod streamování, neměla by nastavená hello mezipaměť zásad hodnota tooless než 600 sekund.  
+2. Povolené IP adresy: používá toospecify IP adresy, které bude mít možnost tooconnect toohello publikovaná koncového bodu streamování. Pokud žádné IP adresy zadané jakékoli IP adresy by mít tooconnect. IP adresy lze zadat jako jednu IP adresu (například (10.0.0.1), rozsah IP pomocí IP adresy a masky podsítě CIDR (například (10.0.0.1/22) nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkou (například 10.0.0.1 ' () 255.255.255.0) ").
+3. Konfigurace pro ověřování záhlaví Akamai podpisu: používá toospecify konfiguraci žádosti o ověření podpisu hlavičky ze serverů Akamai. Vypršení platnosti je ve formátu UTC.
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Škálovat vaše Premium koncový bod streamování
 
@@ -89,25 +89,25 @@ Další informace najdete v [tomto](media-services-portal-scale-streaming-endpoi
 
 Když vytvoříte nový účet, je výchozí streamování koncového bodu Azure CDN integrace povolena ve výchozím nastavení.
 
-Pokud budete později chtít zapnout/vypnout CDN, koncový bod streamování, musí být ve **zastavena** stavu. Může to trvat až 2 hodiny pro integraci produktů Azure CDN tak, aby získat povolená a změny se být aktivní v rámci všech CDN POP. Však můžete spustit z koncového bodu streamování váš koncový bod streamování a datový proud bez přerušení a po dokončení integrace datový proud doručen od CDN. Zřizování období koncový bod streamování bude v **od** stavu a můžete všimnout degredad výkonu.
+Pokud chcete později toodisable/povolit hello CDN, koncový bod streamování, musí být v hello **zastavena** stavu. Může trvat až too2 hodin pro tooget integrace Azure CDN hello povolená a toobe změny hello active mezi všechny hello CDN POP. Však můžete spustit váš koncový bod streamování a datový proud bez přerušení z hello koncový bod streamování a po dokončení integrace hello hello datový proud doručen z hello CDN. Při zřizování období hello koncový bod streamování bude v **od** stavu a můžete všimnout degredad výkonu.
 
-Integrace CDN je povolena ve všech centrech execpt dat Azure Číně a Federal Goverment oblasti.
+Integrace CDN je povolený v všechny hello dat Azure centrech execpt Číně a Federal Goverment oblastí.
 
-Když je tato funkce povolená, **řízení přístupu**, **vlastní název hostitele** a **ověřování podpisu Akamai** konfigurace získá zakázána.
+Když je tato funkce povolená, hello **řízení přístupu**, **vlastní název hostitele** a **ověřování podpisu Akamai** konfigurace získá zakázána.
  
 > [!IMPORTANT]
-> Azure Media Services integraci s Azure CDN se implementuje na **Azure CDN společnosti Verizon** pro standardní koncové body streamování. Premium koncové body streamování pomocí se dají konfigurovat všechny **Azure CDN cenové úrovně a poskytovatelé**. Další informace o funkcích Azure CDN najdete v tématu [přehled CDN](../cdn/cdn-overview.md).
+> Azure Media Services integraci s Azure CDN se implementuje na **Azure CDN společnosti Verizon** pro standardní koncové body streamování. Premium koncové body streamování pomocí se dají konfigurovat všechny **Azure CDN cenové úrovně a poskytovatelé**. Další informace o funkcích Azure CDN najdete v tématu hello [přehled CDN](../cdn/cdn-overview.md).
  
 ### <a name="additional-considerations"></a>Další aspekty
 
-* Pokud CDN je povoleno pro koncový bod streamování, nemůže klient vyžádá obsah přímo z tohoto počátku. Pokud chcete mít možnost otestovat váš obsah s nebo bez CDN, můžete vytvořit další streamování koncový bod, který není povolen CDN.
-* Vaše streamování hostitele koncového bodu zůstává stejná i poté, co povolíte CDN. Nepotřebujete žádné změny do pracovního postupu media services po povolení CDN. Například pokud vaše streamování hostitele koncového bodu strasbourg.streaming.mediaservices.windows.net, po povolení CDN, je použít přesný stejný název hostitele.
-* Pro nové koncových bodů streamování můžete povolit CDN jednoduše tak, že vytvoříte nový koncový bod; pro existující koncových bodů streamování musíte nejprve zastavit koncový bod a potom povolit nebo zakázat CDN.
+* Pokud CDN je povoleno pro koncový bod streamování, nemůže klient vyžádá obsah přímo z počátku hello. Pokud potřebujete hello možnost tootest obsah s nebo bez CDN, můžete vytvořit další streamování koncový bod, který není povolen CDN.
+* Vaše streamování zůstane názvu hostitele koncového bodu hello stejné po povolení CDN. Nepotřebujete toomake pracovního postupu všechny změny tooyour media services po povolení CDN. Například pokud vaše streamování hostitele koncového bodu strasbourg.streaming.mediaservices.windows.net, po povolení CDN, se používá hello přesně stejný název hostitele.
+* Pro nové koncových bodů streamování můžete povolit CDN jednoduše tak, že vytvoříte nový koncový bod; pro existující koncových bodů streamování budete potřebovat toofirst zastavení hello koncový bod a poté povolí nebo zakáže hello CDN.
 * Koncový bod streamování standard se dá nakonfigurovat jenom pomocí **poskytovatele CDN úrovně Standard Verizon** pomocí portálu pro správu Azure. Můžete ale povolit jiných poskytovatelů Azure CDN pomocí rozhraní REST API.
 
 ## <a name="configure-cdn-profile"></a>Konfigurace profilu CDN
 
-Profil CDN můžete nakonfigurovat tak, že vyberete **spravovat CDN** tlačítko shora.
+Profil CDN hello můžete nakonfigurovat tak, že vyberete hello **spravovat CDN** tlačítko shora hello.
 
 ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 

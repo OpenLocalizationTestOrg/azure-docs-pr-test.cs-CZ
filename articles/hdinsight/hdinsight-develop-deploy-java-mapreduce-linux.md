@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření Java MapReduce pro Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight."
+title: aaaCreate Java MapReduce pro Hadoop - Azure HDInsight | Microsoft Docs
+description: "Zjistěte, jak toouse Apache Maven toocreate založené na jazyce Java MapReduce aplikace, spusťte ji s Hadoop v Azure HDInsight."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,15 +16,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 11d63f22204eb2acb530378f53ac72f16a35a4f2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 903a57a482395f7da79002188399a4d6288ff0af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Vývoj aplikací Java MapReduce pro Hadoop v HDInsight
 
-Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight.
+Zjistěte, jak toouse Apache Maven toocreate založené na jazyce Java MapReduce aplikace, spusťte ji s Hadoop v Azure HDInsight.
 
 > [!NOTE]
 > Tento příklad byl naposledy otestovali na HDInsight 3.6.
@@ -40,44 +40,44 @@ Další informace o použití Apache Maven k vytvoření aplikace založené na 
 
 ## <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Hello následující proměnné prostředí může být nastaven při instalaci Java a hello JDK. Ale byste měli zkontrolovat, že existují a že obsahují hello správné hodnoty pro váš systém.
 
-* `JAVA_HOME`-by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou`c:\Program Files (x86)\Java\jre1.7`
+* `JAVA_HOME`-by měla odkazovat toohello adresáře, kde je nainstalován hello prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, musí mít hodnotu podobnou příliš`/usr/lib/jvm/java-7-oracle`. Windows neměl by mít hodnotu podobnou příliš`c:\Program Files (x86)\Java\jre1.7`
 
-* `PATH`-musí obsahovat následující cesty:
+* `PATH`-musí obsahovat hello následující cesty:
   
-  * `JAVA_HOME`(nebo ekvivalentní cesta)
+  * `JAVA_HOME`(nebo ekvivalentní cesta hello)
 
-  * `JAVA_HOME\bin`(nebo ekvivalentní cesta)
+  * `JAVA_HOME\bin`(nebo ekvivalentní cesta hello)
 
-  * Adresář, kde je nainstalován Maven
+  * Hello adresáře, kde je nainstalován Maven
 
 ## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
 
-1. Z relace Terminálové služby nebo příkazového řádku ve vašem vývojovém prostředí změňte adresáře na umístění, které chcete uložit tento projekt.
+1. Z relace Terminálové služby nebo příkazového řádku ve vašem vývojovém prostředí změňte umístění adresáře toohello chcete toostore tento projekt.
 
-2. Použití `mvn` příkazu, který se instaluje s Maven, vygenerujte generování uživatelského rozhraní pro projekt.
+2. Použití hello `mvn` příkaz, který se instaluje s Maven, toogenerate hello generování uživatelského rozhraní pro projekt hello.
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
     > [!NOTE]
-    > Pokud používáte prostředí PowerShell, je nutné uzavřít `-D` parametry v uvozovkách.
+    > Pokud používáte prostředí PowerShell, je nutné uzavřít hello `-D` parametry v uvozovkách.
     >
     > `mvn archetype:generate "-DgroupId=org.apache.hadoop.examples" "-DartifactId=wordcountjava" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
-    Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametr (**wordcountjava** v tomto příkladu.) Tento adresář obsahuje následující položky:
+    Tento příkaz vytvoří adresář s názvem hello určeného hello `artifactID` parametr (**wordcountjava** v tomto příkladu.) Tento adresář obsahuje hello následující položky:
 
-   * `pom.xml`-Na [projektu objektu modelu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) obsahující podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * `pom.xml`-hello [projektu objektu modelu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) obsahující informace a podrobnosti o konfiguraci použít toobuild hello projektu.
 
-   * `src`-Adresář, který obsahuje aplikace.
+   * `src`-hello adresář, který obsahuje aplikace hello.
 
-3. Odstranit `src/test/java/org/apache/hadoop/examples/apptest.java` souboru. V tomto příkladu se nepoužívá.
+3. Odstranit hello `src/test/java/org/apache/hadoop/examples/apptest.java` souboru. V tomto příkladu se nepoužívá.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Upravit `pom.xml` souboru a přidejte následující text v rámci `<dependencies>` části:
+1. Upravit hello `pom.xml` souboru a přidejte následující text v rámci hello hello `<dependencies>` části:
    
    ```xml
     <dependency>
@@ -100,14 +100,14 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     </dependency>
    ```
 
-    Definuje požadované knihovny (uvedené v &lt;artifactId\>) s určitou verzí (uvedené v &lt;verze\>). Při kompilaci se stáhnou tyto závislosti z úložiště Maven výchozí. Můžete použít [hledání úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) zobrazení.
+    Definuje požadované knihovny (uvedené v &lt;artifactId\>) s určitou verzí (uvedené v &lt;verze\>). Při kompilaci se stáhnou tyto závislosti z hello výchozí Maven úložiště. Můžete použít hello [hledání úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) tooview Další.
    
-    `<scope>provided</scope>` Informuje Maven, tyto závislosti by neměl být zabalené s aplikací, jako jsou k dispozici v clusteru HDInsight za běhu.
+    Hello `<scope>provided</scope>` informuje Maven, nesmí tyto závislosti zabalit s hello aplikace, jako jsou poskytovány hello clusteru HDInsight se při spuštění.
 
     > [!IMPORTANT]
-    > Je verze použitá by měl odpovídat verzi nachází v clusteru Hadoop. Další informace o verzích, najdete v článku [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
+    > verze Hello používá by měl odpovídat hello verzi nachází v clusteru Hadoop. Další informace o verzích, najdete v části hello [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
-2. Přidejte následující `pom.xml` souboru. Tento text musí být uvnitř `<project>...</project>` značky v souboru, například mezi `</dependencies>` a `</project>`.
+2. Přidejte následující toohello hello `pom.xml` souboru. Tento text musí být uvnitř hello `<project>...</project>` značky v souboru hello, například mezi `</dependencies>` a `</project>`.
 
    ```xml
     <build>
@@ -144,20 +144,20 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     </build>
    ```
 
-    První modul plug-in nakonfiguruje [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/), sloužící k sestavení uberjar (někdy nazývané fatjar), která obsahuje závislosti, které jsou požadované aplikací. Rovněž zamezí duplikace licencí v rámci balíčku jar, což může způsobit problémy na některé systémy.
+    Hello první modul plug-in nakonfiguruje hello [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/), což je použité toobuild uberjar (někdy nazývané fatjar), která obsahuje závislosti požadované aplikace hello. Rovněž zamezí duplikace licencí v rámci balíčku jar hello, což může způsobit problémy na některé systémy.
 
-    Druhý modul plug-in nakonfiguruje cílová verze Java.
+    druhý modul plug-in Hello nakonfiguruje hello cílová Java verze.
 
     > [!NOTE]
     > HDInsight 3.4 a starší používání Java 7. HDInsight 3.5 a vyšší používá Java 8.
 
-3. Uložit `pom.xml` souboru.
+3. Uložit hello `pom.xml` souboru.
 
-## <a name="create-the-mapreduce-application"></a>Vytvoření aplikace nástroje MapReduce
+## <a name="create-hello-mapreduce-application"></a>Vytvoření aplikace MapReduce hello
 
-1. Přejděte na `wordcountjava/src/main/java/org/apache/hadoop/examples` adresáře a přejmenujte `App.java` do souboru `WordCount.java`.
+1. Přejděte toohello `wordcountjava/src/main/java/org/apache/hadoop/examples` adresáře a přejmenujte hello `App.java` souboru příliš`WordCount.java`.
 
-2. Otevřete `WordCount.java` soubor v textovém editoru a nahraďte jeho obsah následujícím textem:
+2. Otevřete hello `WordCount.java` soubor v textovém editoru a nahraďte obsah hello hello následující text:
    
     ```java
     package org.apache.hadoop.examples;
@@ -230,58 +230,58 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     }
     ```
    
-    Všimněte si, název balíčku je `org.apache.hadoop.examples` a název třídy je `WordCount`. Můžete použít tyto názvy při odeslání úlohy MapReduce.
+    Název balíčku hello oznámení je `org.apache.hadoop.examples` a název třídy hello je `WordCount`. Tyto názvy se používají, když odeslat úlohu MapReduce hello.
 
-3. Uložte soubor.
+3. Uložte soubor hello.
 
-## <a name="build-the-application"></a>Sestavení aplikace
+## <a name="build-hello-application"></a>Vytvoření aplikace hello
 
-1. Změnit na `wordcountjava` adresáře, pokud si nejste již existuje.
+1. Změnit toohello `wordcountjava` adresáře, pokud si nejste již existuje.
 
-2. Vytvořit soubor JAR obsahující aplikace, použijte následující příkaz:
+2. Použijte následující příkaz toobuild JAR soubor obsahující aplikace hello hello:
 
    ```
    mvn clean package
    ```
 
-    Tento příkaz odstraní všechny předchozí artefakty sestavení, stáhne všechny závislosti, které dosud nebyly nainstalovány a pak sestavení a balíček aplikace.
+    Tento příkaz odstraní všechny předchozí artefakty sestavení, stáhne všechny závislosti, které dosud nebyly nainstalovány a pak sestavení a aplikace hello balíčku.
 
-3. Po dokončení příkazu `wordcountjava/target` adresář obsahuje soubor s názvem `wordcountjava-1.0-SNAPSHOT.jar`.
+3. Jakmile hello dokončení příkazu hello `wordcountjava/target` adresář obsahuje soubor s názvem `wordcountjava-1.0-SNAPSHOT.jar`.
    
    > [!NOTE]
-   > `wordcountjava-1.0-SNAPSHOT.jar` Soubor je uberjar, který obsahuje pouze úlohu WordCount, ale také závislosti, které úloha vyžaduje za běhu.
+   > Hello `wordcountjava-1.0-SNAPSHOT.jar` soubor je uberjar, obsahující nejen hello WordCount úlohy, ale je potřeba závislosti, které hello úlohy za běhu.
 
-## <a id="upload"></a>Nahrát jar
+## <a id="upload"></a>Nahrát hello jar
 
-Použijte následující příkaz k nahrání na soubor jar do HDInsight headnode:
+Použijte následující příkaz tooupload hello jar souboru toohello HDInsight headnode hello:
 
    ```bash
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-    Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
+    Replace __USERNAME__ with your SSH user name for hello cluster. Replace __CLUSTERNAME__ with hello HDInsight cluster name.
 
-Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Tento příkaz zkopíruje soubory hello z hlavního uzlu toohello hello místní systém. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run"></a>Spustit úlohu MapReduce na Hadoop
+## <a name="run"></a>Spustit úlohu MapReduce hello na Hadoop
 
-1. Připojení k HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Připojte tooHDInsight pomocí protokolu SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Z relace SSH použijte následující příkaz ke spuštění aplikace MapReduce:
+2. Z relace SSH hello použijte následující příkaz toorun hello MapReduce aplikace hello:
    
    ```bash
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
    
-    Tento příkaz spustí aplikaci WordCount MapReduce. Vstupní soubor je `/example/data/gutenberg/davinci.txt`, a je k zadanému výstupnímu adresáři `/example/data/wordcountout`. Soubor vstupní i výstupní jsou uloženy na výchozí úložiště pro cluster.
+    Tento příkaz spustí hello aplikace WordCount MapReduce. vstupní soubor Hello je `/example/data/gutenberg/davinci.txt`, a adresář výstup hello je `/example/data/wordcountout`. Vstupní soubor hello i výstupní jsou uložené toohello výchozí úložiště pro hello cluster.
 
-3. Po dokončení úlohy pro zobrazení výsledků použijte následující příkaz:
+3. Po dokončení úlohy hello, použijte následující příkaz tooview hello výsledky hello:
    
    ```bash
    hdfs dfs -cat /example/data/wordcountout/*
    ```
 
-    Mělo by se zobrazit seznam slova a počty s hodnotami podobná následující text:
+    Seznam slova a počty, mělo by se zobrazit s hodnotami podobné toohello následující text:
    
         zeal    1
         zelus   1
@@ -289,13 +289,13 @@ Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu. Dalš�
 
 ## <a id="nextsteps"></a>Další kroky
 
-V tomto dokumentu jste se naučili, jak vyvíjet úlohu Java MapReduce. Najdete v následujících dokumentech pro další způsoby, jak pracovat s HDInsight.
+V tomto dokumentu jste se naučili jak toodevelop úlohu Java MapReduce. V tématu hello následující dokumenty, kde najdete další způsoby toowork s HDInsight.
 
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použití Pigu se službou HDInsight][hdinsight-use-pig]
 * [Používání nástroje MapReduce s HDInsight](hdinsight-use-mapreduce.md)
 
-Další informace naleznete také [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
+Další informace najdete v tématu taky hello [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

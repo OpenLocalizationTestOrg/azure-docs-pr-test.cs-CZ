@@ -1,6 +1,6 @@
 ---
-title: "Postup telefonní hovor z Twilio (PHP) | Microsoft Docs"
-description: "Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky jsou pro aplikace PHP."
+title: "aaaHow toomake telefonní hovor z Twilio (PHP) | Microsoft Docs"
+description: "Zjistěte, jak toomake telefonní hovor a odesílání SMS zprávy službou hello Twilio rozhraní API v Azure. Ukázky jsou pro aplikace PHP."
 documentationcenter: php
 services: 
 author: devinrader
@@ -14,25 +14,25 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: f35450ace02727ddf392dbbe857b934a45ee022a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e6fecc345bf9ae787d14d533bd8d96b175c2453b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Postup telefonní hovor pomocí Twilio v aplikaci PHP v Azure
-Následující příklad ukazuje, jak Twilio můžete využít volání z webové stránky PHP hostované v Azure. Výsledné aplikace vyzve uživatele, hodnoty telefonní hovor, jak je znázorněno na následujícím snímku obrazovky.
+# <a name="how-toomake-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Jak tooMake Twilio pomocí telefonního hovoru v aplikaci PHP v Azure
+Hello následující příklad ukazuje, je použití Twilio toomake volání z webové stránky PHP hostované v Azure. Výsledná aplikace Hello vyzve uživatele hello hodnoty telefonní hovor, jak ukazuje následující snímek obrazovky hello.
 
 ![Azure volání formulář s využitím Twilio a PHP][twilio_php]
 
-Budete muset následujícím postupem použít kód v tomto tématu:
+Budete potřebovat následující hello toodo toouse hello kód v tomto tématu:
 
-1. Získání účtu Twilio a ověřování tokenu z vaší [Twilio konzoly][twilio_console]. Začít s Twilio vyhodnotit ceny v [http://www.twilio.com/pricing][twilio_pricing]. Můžete si zaregistrovat zkušební účet v [https://www.twilio.com/try-twilio][try_twilio].
-2. Získat [Twilio knihovny pro jazyk PHP](https://github.com/twilio/twilio-php) nebo ji nainstalovat jako balíček HRUŠKAMI. Další informace najdete v tématu [souboru readme](https://github.com/twilio/twilio-php/blob/master/README.md).
-3. Nainstalujte si Azure SDK pro jazyk PHP. Přehled sady SDK a pokyny k instalaci ji najdete v tématu [nastavit sadu Azure SDK pro jazyk PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md)
+1. Získání účtu Twilio a ověřování tokenu z vaší [Twilio konzoly][twilio_console]. začít s Twilio, tooget vyhodnotit ceny v [http://www.twilio.com/pricing][twilio_pricing]. Můžete si zaregistrovat zkušební účet v [https://www.twilio.com/try-twilio][try_twilio].
+2. Získat hello [Twilio knihovny pro jazyk PHP](https://github.com/twilio/twilio-php) nebo ji nainstalovat jako balíček HRUŠKAMI. Další informace najdete v tématu hello [souboru readme](https://github.com/twilio/twilio-php/blob/master/README.md).
+3. Nainstalujte hello Azure SDK pro jazyk PHP. Přehled hello SDK a pokyny k instalaci ji najdete v tématu [nastavit hello Azure SDK pro jazyk PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md)
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Vytvoření webového formuláře pro volání
-Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform.html**), načte data uživatele pro volání:
+Hello HTML následující kód ukazuje, jak toobuild na webové stránce (**callform.html**), načte data uživatele pro volání:
 
 ```html
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform.htm
       </tr>
       <tr>
         <td>Call message:</td>
-        <td><input name="callText" size="100" type="text" value="Hello. This is the call text. Good bye."></td>
+        <td><input name="callText" size="100" type="text" value="Hello. This is hello call text. Good bye."></td>
       </tr>
       <tr>
         <td colspan="2"><input type="submit" value="Make this call"></td>
@@ -66,8 +66,8 @@ Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform.htm
 </html>
 ```
 
-## <a name="create-the-code-to-make-the-call"></a>Vytvoření kódu pro volání
-Následující kód ukazuje, jak sestavit **makecall.php**, která je volána, když uživatel odešle formulář zobrazuje **callform.html**. Následující kód vytvoří zprávu volání a vygeneruje volání. Navíc je nutné používat svůj účet Twilio a ověřování tokenu z [Twilio konzoly] [ twilio_console] místo zástupné hodnoty přiřazené **$sid** a **$token** v následujícím kódu.
+## <a name="create-hello-code-toomake-hello-call"></a>Vytvoření hello kód toomake hello volání
+Následující kód ukazuje, jak Hello toobuild **makecall.php**, která je volána, když hello uživatel odešle formulář hello zobrazuje **callform.html**. Kód Hello vidíte níže vytvoří zprávu volání hello a generuje hello volání. Být také, zda toouse účtu Twilio a ověřování tokenu z hello [Twilio konzoly] [ twilio_console] místo hello zástupné hodnoty přiřazené příliš**$sid** a **$token** v hello kód níže.
 
 ```html
 <html>
@@ -100,27 +100,27 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-Kromě vytváření volání **makecall.php** zobrazí některá metadata volání tak, jak je znázorněno na obrázku níže. Další informace o metadatech volání najdete v tématu [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
+Kromě toho toomaking hello volání **makecall.php** zobrazí některá metadata volání znázorněné v následující obrázek hello. Další informace o metadatech volání najdete v tématu [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
 
 ![Azure volání odpovědi pomocí Twilio a PHP][twilio_php_response]
 
-## <a name="run-the-application"></a>Spuštění aplikace
-Dalším krokem je pro nasazení aplikace na weby Azure. V následujících článcích obsahovat informace o vytvoření webu a nasazení kódu s Git, FTP nebo WebMatrix (i když nejsou všechny informace v jednotlivých článků je relevantní):
+## <a name="run-hello-application"></a>Spuštění aplikace hello
+dalším krokem Hello je toodeploy vaší aplikace tooAzure weby. Hello následující články obsahovat hello informace pro vytvoření webu a nasazení kódu s Git, FTP nebo WebMatrix (i když nejsou všechny informace v jednotlivých článků je relevantní):
 
 * [Vytvoření webu PHP MySQL Azure a nasadit pomocí Git](app-service-web/web-sites-php-mysql-deploy-use-git.md)
 * [Vytvoření webu PHP MySQL Azure a nasadit pomocí protokolu FTP](app-service-web/web-sites-php-mysql-deploy-use-ftp.md)
 
 ## <a name="next-steps"></a>Další kroky
-Tento kód byl poskytnut tak, aby zobrazovalo základních funkcí pomocí Twilio v jazyce PHP v Azure. Před nasazením do Azure v produkčním prostředí, můžete přidat další zpracování chyb a další funkce. Například:
+Tento kód byl poskytnut tooshow je základní funkce pomocí Twilio v jazyce PHP v Azure. Před nasazením tooAzure v produkčním prostředí, můžete chtít tooadd další zpracování chyb a další funkce. Například:
 
-* Místo použití webového formuláře, můžete použít objekty BLOB úložiště Azure nebo databázi SQL pro ukládání telefonních čísel a volání text. Informace o použití objektů BLOB služby Azure storage v jazyce PHP najdete v tématu [pomocí Azure Storage s aplikací PHP][howto_blob_storage_php]. Informace o používání databáze SQL v jazyce PHP najdete v tématu [pomocí SQL Database pomocí aplikace PHP][howto_sql_azure_php].
-* **Makecall.php** kód používá URL poskytnutou Twilio ([http://twimlets.com/message][twimlet_message_url]) můžete zadat odpověď Twilio Markup Language (TwiML), které informují Twilio postup při volání. Například může obsahovat TwiML, která je vrácena `<Say>` akci, která je výsledkem text použitém k příjemce volání. Místo použití URL poskytnutou Twilio, může vytvořit vlastní služba neodpoví na požadavek na Twilio; Další informace najdete v tématu [jak Twilio použijte pro hlasový a možnosti serveru SMS v jazyce PHP][howto_twilio_voice_sms_php]. Další informace o TwiML lze najít na [http://www.twilio.com/docs/api/twiml][twiml]a další informace o `<Say>` a ostatní operace Twilio naleznete na adrese [http://www.twilio.com/docs/api/twiml/say][twilio_say].
-* Přečtěte si pokyny zabezpečení Twilio v [https://www.twilio.com/docs/security][twilio_docs_security].
+* Místo použití webového formuláře, můžete použít objekty BLOB úložiště Azure nebo databázi SQL toostore telefonních čísel a volání text. Informace o použití objektů BLOB služby Azure storage v jazyce PHP najdete v tématu [pomocí Azure Storage s aplikací PHP][howto_blob_storage_php]. Informace o používání databáze SQL v jazyce PHP najdete v tématu [pomocí SQL Database pomocí aplikace PHP][howto_sql_azure_php].
+* Hello **makecall.php** kód používá URL poskytnutou Twilio ([http://twimlets.com/message][twimlet_message_url]) tooprovide odpovědi Twilio Markup Language (TwiML), která informuje o tom, jak Twilio tooproceed s hello volání. Například může obsahovat hello TwiML, která je vrácena `<Say>` akci, která má za následek textová hodnota mluvené toohello volání příjemce. Místo použití hello URL poskytnutou Twilio, je sestavení vlastní tooTwilio toorespond služby požadavek; Další informace najdete v tématu [jak tooUse Twilio pro hlasový a možnosti serveru SMS v jazyce PHP][howto_twilio_voice_sms_php]. Další informace o TwiML lze najít na [http://www.twilio.com/docs/api/twiml][twiml]a další informace o `<Say>` a ostatní operace Twilio naleznete na adrese [http://www.twilio.com/docs/api/twiml/say][twilio_say].
+* Přečtěte si pokyny pro zabezpečení Twilio hello v [https://www.twilio.com/docs/security][twilio_docs_security].
 
 Další informace o Twilio najdete v tématu [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a>Viz také
-* [Jak používat Twilio pro hlasový a možnosti serveru SMS v jazyce PHP](partner-twilio-php-how-to-use-voice-sms.md)
+* [Jak tooUse Twilio pro hlasový a možnosti serveru SMS v jazyce PHP](partner-twilio-php-how-to-use-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: http://www.twilio.com/pricing

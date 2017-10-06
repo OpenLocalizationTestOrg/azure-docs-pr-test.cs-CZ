@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby Azure Application Gateway - rozhraní příkazového řádku Azure 1.0 | Microsoft Docs"
-description: "Informace o vytvoření služby Application Gateway pomocí Azure CLI 1.0 ve službě Správce prostředků"
+title: "aaaCreate služby Azure Application Gateway - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate služby Application Gateway pomocí Azure CLI 1.0 ve službě Správce prostředků"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: e7b16e789e0f241aa8ca2292aacb2bccde8777ee
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3c0d2d96b6be404d0372d00f0deb2a32959ca419
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
+# <a name="create-an-application-gateway-by-using-hello-azure-cli"></a>Vytvoření služby application gateway pomocí hello rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-gateway-portal.md)
@@ -33,18 +33,18 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application gateway poskytuje následující funkce doručování aplikací: HTTP načíst vlastní stavu sondy vyrovnávání, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL) a podpora pro více lokalit.
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou hello cloudu nebo místně. Application gateway poskytuje následující funkce doručování aplikací hello: HTTP načíst vlastní stavu sondy vyrovnávání, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL) a podpora pro více lokalit.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace rozhraní příkazového řádku Azure CLI
+## <a name="prerequisite-install-hello-azure-cli"></a>Předpoklad: Instalace hello rozhraní příkazového řádku Azure
 
-Chcete-li provést kroky v tomto článku, je potřeba [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](../xplat-cli-install.md) a potřebujete [Přihlaste se k Azure](../xplat-cli-connect.md). 
+tooperform hello kroky v tomto článku, budete potřebovat příliš[instalace hello rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](../xplat-cli-install.md) a potřebujete příliš[přihlásit tooAzure](../xplat-cli-connect.md). 
 
 > [!NOTE]
 > Pokud nemáte účet Azure, budete potřebovat. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../active-directory/sign-up-organization.md).
 
 ## <a name="scenario"></a>Scénář
 
-V tomto scénáři zjistíte postup vytvoření služby application gateway pomocí portálu Azure.
+V tomto scénáři zjistíte, jak hello toocreate brány aplikace pomocí portálu Azure.
 
 Tento scénář se:
 
@@ -53,41 +53,41 @@ Tento scénář se:
 * Vytvoříte podsíť s názvem subnet01, který používá jako jeho blok CIDR 10.0.0.0/28.
 
 > [!NOTE]
-> Další konfigurace aplikační brány, včetně stavu vlastní testy, adresy fondu back-end a dalších pravidlech nakonfigurovány po dokončení konfigurace aplikační brány a ne během počátečního nasazení.
+> Další konfigurace hello aplikační brány, včetně stavu vlastní testy, adresy fondu back-end a dalších pravidlech nakonfigurovány po hello aplikace brána je nakonfigurovaná a ne během počátečního nasazení.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Služba Azure Application Gateway vyžaduje vlastní podsíti. Při vytváření virtuální sítě, ujistěte se, že necháte dostatek adresní prostor tak, aby měl více podsítí. Po nasazení služby application gateway k podsíti, jedinými dodatečnými application Gateway je moct přidat do podsítě.
+Služba Azure Application Gateway vyžaduje vlastní podsíti. Při vytváření virtuální sítě, ujistěte se, ponechte dostatek místa toohave adresu více podsítí. Jakmile nasadíte tooa podsítě application gateway, jsou pouze další aplikaci brány možné toobe přidat toohello podsítě.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Otevřete **Microsoft Azure příkazového řádku**a přihlaste se. 
+Otevřete hello **Microsoft Azure příkazového řádku**a přihlaste se. 
 
 ```azurecli-interactive
 azure login
 ```
 
-Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte do https://aka.ms/devicelogin ve prohlížeči a pokračujte v procesu přihlášení.
+Jakmile zadáte hello předchozím příkladu, je k dispozici kód. Přejděte toohttps://aka.ms/devicelogin v procesu přihlášení hello toocontinue prohlížeče.
 
 ![cmd zobrazující zařízení přihlášení][1]
 
-V prohlížeči zadejte kód, který jste dostali. Budete přesměrováni na stránku přihlášení.
+V prohlížeči hello zadejte kód hello, kterou jste obdrželi. Jste přihlašovací stránku přesměrovaného tooa.
 
-![prohlížeče k zadání kódu][2]
+![Prohlížeč tooenter kódu][2]
 
-Jakmile byl zadán kód jste přihlášeni, zavřete prohlížeč pokračovat na tento scénář.
+Jakmile byl zadán kód hello jste přihlášeni, Zavřít hello prohlížeče toocontinue se scénářem hello.
 
 ![Úspěšné přihlášení][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Přepnout do režimu Resource Manager
+## <a name="switch-tooresource-manager-mode"></a>Přepínač tooResource režimu Manager
 
 ```azurecli-interactive
 azure config mode arm
 ```
 
-## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-hello-resource-group"></a>Vytvořte skupinu prostředků hello
 
-Před vytvořením služby application gateway, se tak, aby obsahovala služby application gateway vytvoří skupinu prostředků. Následuje ukázka příkazu.
+Před vytvořením hello aplikační bránu, se vytvoří skupinu prostředků toocontain hello aplikační brány. Následující Hello ukazuje příkaz hello.
 
 ```azurecli-interactive
 azure group create \
@@ -97,7 +97,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Po vytvoření skupiny prostředků pro službu application gateway se vytvoří virtuální síť.  V následujícím příkladu se adresní prostor jako 10.0.0.0/16, jak jsou definovány v předchozím scénáři poznámky.
+Po vytvoření skupiny prostředků hello vytvoření virtuální sítě pro službu hello application gateway.  V následujícím příkladu hello hello adresní prostor se jako 10.0.0.0/16 jak je definována v předchozím scénáři poznámky hello.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -109,7 +109,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Vytvoření podsítě
 
-Po vytvoření virtuální sítě, přidá se podsíť pro aplikační bránu.  Pokud budete chtít aplikační bránu pomocí webové aplikace hostované ve stejné virtuální síti jako službu application gateway, ujistěte se, zda je dostatek místa pro jinou podsíť.
+Po vytvoření virtuální sítě hello je hello aplikační brány přidat podsíť.  Pokud máte v plánu toouse aplikační bránu s webové aplikace hostované v hello stejné virtuální síť jako hello aplikační brány, nebude se tooleave dostatek místa pro jinou podsíť.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -119,9 +119,9 @@ azure network vnet subnet create \
 --address-prefix 10.0.0.0/28 
 ```
 
-## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-hello-application-gateway"></a>Vytvoření hello application gateway
 
-Po vytvoření virtuální sítě a podsítě jsou dokončeny předpoklady pro službu application gateway. Kromě toho jsou požadovány pro následující krok .pfx dříve exportovaný certifikát a heslo pro certifikát: IP adresy pro back-end jsou IP adresy pro back-end serveru. Tyto hodnoty může být buď soukromé IP adresy ve virtuální síti, veřejné IP adresy nebo plně kvalifikované názvy domény pro back-end serverů.
+Po vytvoření hello virtuální síť a podsíť hello předpoklady pro službu hello application gateway jsou dokončeny. Kromě toho jsou požadovány pro hello následující krok .pfx dříve exportovaný certifikát a hello heslo pro certifikát hello: hello adres IP použitých pro back-end hello jsou hello IP adresy pro back-end serveru. Tyto hodnoty mohou být buď soukromé IP adresy ve virtuální síti hello, veřejné IP adresy nebo plně kvalifikované názvy domény pro back-end serverů.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -143,16 +143,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Seznam parametrů, které lze zadat během vytváření, spusťte následující příkaz: **síť azure aplikace gateway vytvořit – pomáhají**.
+> Seznam parametrů, které lze zadat během vytváření, spusťte následující příkaz hello: **síť azure aplikace gateway vytvořit – pomáhají**.
 
-Tento příklad vytvoří základní aplikační brána s výchozím nastavením pro naslouchací proces, fond back-end, nastavení http back-end a pravidla. Můžete upravit toto nastavení tak, aby vyhovovala vašemu nasazení po úspěšné přidělení přístupových práv.
-Pokud již máte webové aplikace definovaná pomocí fondu back-end v předchozích krocích po vytvoření, Vyrovnávání zatížení začne.
+Tento příklad vytvoří základní aplikační brána s výchozím nastavením pro naslouchací proces hello, fond back-end, nastavení http back-end a pravidla. Můžete upravit tyto toosuit nastavení nasazení po úspěšné hello zřizování.
+Pokud již máte webovou aplikaci definované s fondem back-end hello v předchozích krocích, po vytvoření, hello Vyrovnávání zatížení začne.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se vytvářet vlastní stavu sondy navštivte stránky [vytvořit vlastní stav testu](application-gateway-create-probe-portal.md)
+Zjistěte, jak testy toocreate vlastní stavu navštivte stránky [vytvořit vlastní stav testu](application-gateway-create-probe-portal.md)
 
-Zjistěte, jak nakonfigurovat snižování zátěže protokolu SSL a trvat nákladná dešifrování SSL vypnout webových serverů, navštivte stránky [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
+Zjistěte, jak tooconfigure snižování zátěže protokolu SSL a proveďte hello nákladná SSL dešifrování vypnout navštivte stránky webových serverů [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

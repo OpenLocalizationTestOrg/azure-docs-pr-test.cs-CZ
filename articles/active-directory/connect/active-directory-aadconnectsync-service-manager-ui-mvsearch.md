@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect Sync Service Manager hledání úložiště Metaverse | Microsoft Docs"
-description: "Pochopení kartě hledání úložiště Metaverse ve Správci služby synchronizace Azure AD Connect."
+title: "Hledání Azure AD Connect Sync Service Manager Metaverse aaaThe | Microsoft Docs"
+description: "Porozumět hello hledání úložiště Metaverse karta v hello Synchronization Service Manager pro Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: faf66f19ab1fe5c38273b22c1ff8aeff4d26f1ea
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5cc115344255ecbb3d13d11eaa4bbe95bdbefe22
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Správce synchronizace služby hledání úložiště Metaverse
 
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
 
-Na kartě hledání úložiště metaverse je užitečné při řešení problémů souvisejících s daty. V horní polovině můžete vytvořit dotaz založený na kombinaci atributů. Jakmile budete spokojeni s dotazem, klikněte na tlačítko **vyhledávání**. Výsledkem je zobrazených v mřížce dole. Můžete vybrat sloupce, které by měly jít vidět s **nastavení sloupců**.
+Karta hledání úložiště metaverse Hello je užitečné při řešení problémů souvisejících s daty. V horní polovině hello můžete vytvořit dotaz založený na kombinaci atributů. Jakmile budete spokojeni s dotazem, klikněte na tlačítko **vyhledávání**. výsledek Hello je viditelný v mřížce dole hello. Můžete vybrat sloupce, které by měly jít vidět s **nastavení sloupců**.
 
-Ve výsledcích hledání vyberte objekt a **vlastnosti** zobrazíte [vlastnosti objektu úložiště metaverse](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md#metaverse-object-properties).
+Ve výsledcích hledání hello, vyberte objekt a **vlastnosti** toosee hello [vlastnosti objektu úložiště metaverse](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md#metaverse-object-properties).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

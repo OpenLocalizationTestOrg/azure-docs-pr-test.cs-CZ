@@ -1,6 +1,6 @@
 ---
-title: "Povolení metrik úložiště na portálu Azure | Microsoft Docs"
-description: "Postup povolení úložiště metriky pro služby objektů Blob, fronty, tabulky a souborů"
+title: "aaaEnabling úložiště metriky v hello portálu Azure | Microsoft Docs"
+description: "Jak tooenable úložiště metriky pro hello službám Blob, fronty, tabulky a souborů"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,73 +14,73 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 2906f808482d0b990e3ddd31ef5368e9fdd9f646
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4e705ecbdd083c77f8ceff87214d7221495d2d2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a prohlížení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Přehled
-Úložiště Metrics je povolena ve výchozím nastavení, když vytvoříte nový účet úložiště. Můžete nakonfigurovat monitorování prostřednictvím [portál Azure](https://portal.azure.com) nebo prostředí Windows PowerShell, nebo prostřednictvím kódu programu prostřednictvím knihovny klienta úložiště.
+Úložiště Metrics je povolena ve výchozím nastavení, když vytvoříte nový účet úložiště. Můžete nakonfigurovat monitorování prostřednictvím hello [portál Azure](https://portal.azure.com) nebo prostředí Windows PowerShell, nebo prostřednictvím kódu programu prostřednictvím knihovny klienta úložiště hello.
 
-Můžete nakonfigurovat dobu uchování dat metrik: Toto období určuje, jak dlouho úložiště služby udržuje metriky a poplatky, že v prostoru třeba je uložit. Obvykle měli byste použít kratší doby uchování pro minutu metriky než hodinová metriky z důvodu významné přebytečné místo požadované pro minutu metriky. Měli byste vybrat dobu uchovávání tak, že máte dostatek času k analýze dat a stáhnout všechny metriky, které chcete zachovat pro offline analýzu nebo pro účely generování sestav. Mějte na paměti, že vám budou dostávat také pro stahování dat metriky z vašeho účtu úložiště.
+Můžete nakonfigurovat dobu uchování dat metrik hello: Tato doba určuje, jak dlouho hello úložiště služby udržuje hello metriky a poplatky, můžete pro hello místo požadované toostore je. Obvykle měli byste použít kratší doby uchování pro minutu metriky než hodinová metriky kvůli hello významné přebytečné místo požadované pro minutu metriky. Měli byste vybrat dobu uchovávání tak, aby dostatečný čas tooanalyze hello dat a stáhnout všechny metriky, které chcete tookeep pro offline analýzu nebo pro účely generování sestav. Mějte na paměti, že vám budou dostávat také pro stahování dat metriky z vašeho účtu úložiště.
 
-## <a name="how-to-enable-metrics-using-the-azure-portal"></a>Postup povolení metriky pomocí portálu Azure
-Použijte následující postup metriky v povolit [portál Azure](https://portal.azure.com):
+## <a name="how-tooenable-metrics-using-hello-azure-portal"></a>Jak hello tooenable metriky pomocí portálu Azure
+Postupujte podle těchto kroků tooenable metriky v hello [portál Azure](https://portal.azure.com):
 
-1. Přejděte na svůj účet úložiště.
-1. Vyberte **diagnostiky** na **nabídky** okna
-1. Ujistěte se, že **stav** je nastaven na **na**.
-1. Vyberte metriky pro služby, které chcete monitorovat.
-1. Zadejte zásady uchovávání informací a jak dlouho informuje zachovat metriky a protokolovat data.
+1. Přejděte tooyour účet úložiště.
+1. Vyberte **diagnostiky** na hello **nabídky** okna
+1. Ujistěte se, že **stav** je nastaven příliš**na**.
+1. Vyberte hello metriky pro služby hello chcete toomonitor.
+1. Zadejte tooindicate zásady uchovávání informací jak dlouho data tooretain metriky a protokolu.
 1. Vyberte **Uložit**.
 
-Všimněte si, že [portál Azure](https://portal.azure.com) neumožňuje aktuálně nakonfigurovat minutu metriky v účtu úložiště; je nutné povolit minutu metriky pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
+Všimněte si, že hello [portál Azure](https://portal.azure.com) neumožňuje aktuálně tooconfigure minutu metriky ve vašem účtu úložiště; je nutné povolit minutu metriky pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
 
-## <a name="how-to-enable-metrics-using-powershell"></a>Postup povolení metriky pomocí prostředí PowerShell
-Konfigurace úložiště metriky ve vašem účtu úložiště pomocí rutiny prostředí Azure PowerShell Get-AzureStorageServiceMetricsProperty načíst aktuální nastavení a rutinu Set-AzureStorageServiceMetricsProperty změnit aktuální nastavení můžete použít PowerShell na místním počítači.
+## <a name="how-tooenable-metrics-using-powershell"></a>Jak tooenable metriky pomocí prostředí PowerShell
+Pomocí prostředí PowerShell na váš místní počítač tooconfigure metriky úložiště ve vašem účtu úložiště pomocí hello prostředí Azure PowerShell rutinu Get-AzureStorageServiceMetricsProperty tooretrieve hello aktuální nastavení a hello rutiny Set-AzureStorageServiceMetricsProperty toochange hello aktuální nastavení.
 
-Rutiny, které řídí metriky úložiště použijte následující parametry:
+Hello rutiny, které řídí metriky úložiště používají hello následující parametry:
 
 * MetricsType: možné hodnoty jsou hodin a minut.
 * ServiceType: možné hodnoty jsou objekt Blob, fronty a tabulky.
 * MetricsLevel: možné hodnoty jsou None, služby a ServiceAndApi.
 
-Například následující příkaz přepne na minutu metriky pro služby objektů Blob v účtu úložiště výchozí s dobou uchování období nastavit na pět dní:
+Například hello následující příkaz přepne na minutu metriky pro hello služby objektů Blob v účtu úložiště výchozí s dobou uchování hello nastavit toofive dny:
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
-Tento příkaz načte aktuální hodinové metriky úrovně a jejich uchovávání dny služby objektů blob na výchozí účet úložiště:
+Hello následující příkaz načte hello aktuální hodinové metriky úrovně a jejich uchovávání dní hello služby objektů blob v účtu úložiště výchozí:
 
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informace o tom, jak nakonfigurovat rutin prostředí Azure PowerShell k práci s předplatným Azure a jak vybrat výchozí účet úložiště, který chcete použít, najdete v tématu: [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Informace o tom, jak tooconfigure hello prostředí Azure PowerShell rutiny toowork ve vašem předplatném Azure a jak tooselect hello výchozí úložiště účtu toouse najdete v tématu: [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-## <a name="how-to-enable-storage-metrics-programmatically"></a>Postup povolení metrik úložiště prostřednictvím kódu programu
-Následující fragment C# ukazuje, jak povolit protokolování pro službu Blob pomocí klientské knihovny pro úložiště pro .NET a metriky:
+## <a name="how-tooenable-storage-metrics-programmatically"></a>Jak tooenable metriky úložiště prostřednictvím kódu programu
+Následující fragment kódu jazyka C# Hello ukazuje, jak tooenable metrik a protokolování pro použití služby Blob hello hello Klientská knihovna pro úložiště pro .NET:
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
-// Create service client for credentialed access to the Blob service.
+// Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Enable Storage Analytics logging and set retention policy to 10 days.
+// Enable Storage Analytics logging and set retention policy too10 days.
 ServiceProperties properties = new ServiceProperties();
 properties.Logging.LoggingOperations = LoggingOperations.All;
 properties.Logging.RetentionDays = 10;
 properties.Logging.Version = "1.0";
 
-// Configure service properties for metrics. Both metrics and logging must be set at the same time.
+// Configure service properties for metrics. Both metrics and logging must be set at hello same time.
 properties.HourMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.HourMetrics.RetentionDays = 10;
 properties.HourMetrics.Version = "1.0";
@@ -89,36 +89,36 @@ properties.MinuteMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.MinuteMetrics.RetentionDays = 10;
 properties.MinuteMetrics.Version = "1.0";
 
-// Set the default service version to be used for anonymous requests.
+// Set hello default service version toobe used for anonymous requests.
 properties.DefaultServiceVersion = "2015-04-05";
 
-// Set the service properties.
+// Set hello service properties.
 blobClient.SetServiceProperties(properties);
 ```
 
 ## <a name="viewing-storage-metrics"></a>Zobrazení metriky úložiště
-Po dokončení konfigurace metriky Storage Analytics k monitorování účtu úložiště, Storage Analytics zaznamenává metriky v sadě dobře známé tabulek ve vašem účtu úložiště. Můžete nakonfigurovat grafy, aby se po hodinách metriky v zobrazit [portál Azure](https://portal.azure.com):
+Po dokončení konfigurace účtu úložiště Storage Analytics metriky toomonitor, Storage Analytics zaznamenává hello metriky v sadě dobře známé tabulek ve vašem účtu úložiště. Grafy tooview hodinové metriky můžete nakonfigurovat v hello [portál Azure](https://portal.azure.com):
 
-1. Přejděte na svůj účet úložiště [portál Azure](https://portal.azure.com).
-1. Vyberte **metriky** v **nabídky** okna pro službu jejichž metriky, které chcete zobrazit.
-1. Vyberte **upravit** v grafu, kterou chcete konfigurovat.
-1. V **upravit graf** okně, vyberte **časový rozsah**, **typ grafu**a metriky, které chcete zobrazit v grafu.
+1. Přejděte tooyour účet úložiště v hello [portál Azure](https://portal.azure.com).
+1. Vyberte **metriky** v hello **nabídky** okně hello služby jejichž metriky chcete tooview.
+1. Vyberte **upravit** v grafu hello chcete tooconfigure.
+1. V hello **upravit graf** okně, vyberte hello **časový rozsah**, **typ grafu**a hello metriky, které chcete zobrazit v grafu hello.
 1. Vyberte **OK**.
 
-Pokud chcete stáhnout metriky pro dlouhodobé uložení nebo pro analýzu je místně, je potřeba:
+Pokud chcete, aby toodownload hello metriky pro dlouhodobé uložení nebo tooanalyze je místně, budete muset:
 
-* Použijte nástroj, který má informace o těchto tabulek a vám umožní zobrazit a je stáhnout.
-* Napište vlastní aplikaci nebo skript ke čtení a ukládání tabulek.
+* Použijte nástroj, který má informace o těchto tabulek a bude umožňují tooview a je stáhnout.
+* Napsat vlastní aplikace nebo skriptu tooread a ukládání tabulek hello.
 
-Celou řadu nástrojů procházení úložiště jiných výrobců jsou informace o těchto tabulek a vám umožní zobrazit přímo.
+Celou řadu nástrojů procházení úložiště jiných výrobců Uvědomte těchto tabulek a umožňují tooview je přímo.
 Najdete v tématu [Azure Storage Client Tools](storage-explorers.md) seznam dostupných nástrojů.
 
 > [!NOTE]
-> Počínaje verzí 0.8.0 [Microsoft Azure Storage Explorer](http://storageexplorer.com/), můžete zobrazit a stáhnout tabulky metriky analytics.
+> Počínaje verzí 0.8.0 hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/), můžete zobrazit a stáhnout hello analytics metriky tabulky.
 > 
 > 
 
-K přístupu k tabulce analýzy prostřednictvím kódu programu, Všimněte si, analýzy tabulky se nezobrazí Pokud seznamu všechny tabulky v účtu úložiště. Můžete k nim přistupovat přímo podle názvu, nebo použít [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) v klientské knihovny .NET k dotazování názvy tabulek.
+V pořadí tooaccess hello analytics tabulky prostřednictvím kódu programu, Všimněte si, hello analytics tabulky se nezobrazí Pokud seznam všech tabulek hello ve vašem účtu úložiště. Můžete k nim přistupovat přímo podle názvu, nebo použijte hello [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) v hello .NET klienta knihovny tooquery hello názvy tabulek.
 
 ### <a name="hourly-metrics"></a>Hodinové metriky
 * $MetricsHourPrimaryTransactionsBlob
@@ -133,7 +133,7 @@ K přístupu k tabulce analýzy prostřednictvím kódu programu, Všimněte si,
 ### <a name="capacity"></a>Kapacita
 * $MetricsCapacityBlob
 
-Můžete najít podrobnosti schémat pro tyto tabulky v [schématu tabulky metriky Analytics úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx). Ukázka řádků níže zobrazit pouze podmnožinu sloupců, které jsou k dispozici, ale ilustrovat některé důležité funkce způsob, jakým Storage Metrics uloží tyto metriky:
+Můžete najít podrobnosti o hello schémata pro tyto tabulky v [schématu tabulky metriky Analytics úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx). Hello ukázka řádků níže zobrazit pouze podmnožinu sloupců hello k dispozici, ale ilustrovat některé důležité funkce hello způsob, jakým Storage Metrics uloží tyto metriky:
 
 | Klíč oddílu | RowKey | časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
@@ -142,46 +142,46 @@ Můžete najít podrobnosti schémat pro tyto tabulky v [schématu tabulky metri
 | 20140522T1100 |uživatel; QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |uživatel; UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-V těchto datech minutu metriky příklad používá klíč oddílu čas na minutu řešení. Klíč řádku určuje typ informací, která je uložená v řádku, a to se skládá ze dvou částí informace, typ přístupu a typ požadavku:
+V těchto datech minutu metriky příklad používá klíč oddílu hello hello čas na minutu řešení. klíč řádku Hello identifikuje hello typ informací uložených v řádku hello a tím se skládá ze dvou částí informace, typ přístupu hello a typ požadavku hello:
 
-* Typ přístupu je uživatel nebo systém, uživatel odkazuje na všechny požadavky na uživatele ve službě úložiště, kde systém odkazuje na požadavky na analytika úložiště.
-* Typ požadavku je buď všechny v takovém případě ji souhrn řádku, nebo ji identifikuje konkrétní API jako třeba QueryEntity nebo UpdateEntity.
+* Typ přístupu Hello je uživatele nebo systému, kde uživatel odkazuje tooall uživatelské požadavky toohello úložiště služby, a systém odkazuje toorequests provedené Storage Analytics.
+* Typ požadavku Hello je všechny v takovém případě je souhrn řádku, nebo ji identifikuje hello konkrétní API jako třeba QueryEntity nebo UpdateEntity.
 
-Výše uvedené ukázková data zobrazí všechny záznamy pro jednu minutu (počínaje 11:00 AM), tak počet požadavků QueryEntities plus počet QueryEntity požadavky plus počet UpdateEntity požadavků přidat až 7, což je celkový počet zobrazený na uživatele: všechny řádek. Podobně můžete odvodit Průměrná latence začátku do konce 104.4286 pro uživatele: všechny řádek pomocí výpočtu ((143.8 * 5) + 3 + 9) / 7.
+Ukázková data Hello výš ukazuje, které všechny hello zaznamenává pro jednu minutu (počínaje 11:00 AM), takže hello počet požadavků QueryEntities plus hello počet požadavků QueryEntity plus počet hello UpdateEntity požadavků, které dohromady tooseven, což je hello celkový zobrazený na řádek uživatele: všechny Hello. Podobně můžete odvodit hello průměrnou dobu začátku do konce 104.4286 na řádku uživatele: všechny hello pomocí výpočtu ((143.8 * 5) + 3 + 9) / 7.
 
 ## <a name="metrics-alerts"></a>Metriky výstrahy
-Měli byste zvážit vytvoření výstrahy v [portál Azure](https://portal.azure.com) tak metriky úložiště můžete automaticky upozorňují na důležité změny v chování nástroje vaší služby úložiště. Pokud používáte nástroj Průzkumník úložišť pro stahování této metriky dat ve formátu odděleného, můžete k analýze dat aplikace Microsoft Excel. V tématu [Azure Storage Client Tools](storage-explorers.md) seznam nástrojů Průzkumníka úložiště k dispozici. Výstrahy v můžete nakonfigurovat **výstrah pravidla** okně přístupná **monitorování** v okně nabídce účtu úložiště.
+Měli byste zvážit vytvoření výstrahy v hello [portál Azure](https://portal.azure.com) tak metriky úložiště automaticky vás může upozornit, důležité změny v chování hello vaší služby úložiště. Pokud toodownload nástroj Průzkumníka úložiště používáte ve formátu odděleného tato data metriky, můžete data hello tooanalyze Microsoft Excel. V tématu [Azure Storage Client Tools](storage-explorers.md) seznam nástrojů Průzkumníka úložiště k dispozici. Výstrahy můžete nakonfigurovat v hello **výstrah pravidla** okně přístupná **monitorování** v okně nabídce účtu úložiště hello.
 
 > [!IMPORTANT]
-> Může nastat zpoždění mezi událostí úložiště a když se zaznamenává odpovídající data hodinových nebo minutu metriky. V případě minutu metriky může několik minut data zapsat najednou. To může vést k transakce z dřívějších minut agregovaný do transakce pro do aktuální minuty. V takovém případě výstrah služby nemusí mít všechna data dostupné metriky pro nakonfigurované výstrahy interval, což může vést k upozornění, která iniciovala neočekávaně.
+> Může nastat zpoždění mezi událostí úložiště a když se zaznamenává hello odpovídající hodinových nebo minutu metriky data. V případě hello minutu metrik může několik minut dat zapsat najednou. To může způsobit tootransactions z dřívějších minut agregovaný do hello transakci pro hello aktuální minuty. V takovém případě hello výstraha, že službu nemusí mít všechna data dostupné metriky pro hello nakonfigurovat výstrahy interval, což může vést tooalerts neočekávaně aktivuje.
 >
 
 ## <a name="accessing-metrics-data-programmatically"></a>Přístup k datům metriky prostřednictvím kódu programu
-Následující seznam zobrazuje ukázka C# kód, který přistupuje k minutu metriky pro řadu minut a zobrazí výsledky v okně konzoly. Používá knihovna pro úložiště Azure verze 4, který zahrnuje CloudAnalyticsClient třídu, která zjednodušuje přístup k tabulky metriky v úložišti.
+Hello následující výpis ukazuje ukázka C# kód, který přistupuje k hello minutu metriky pro řadu minut a zobrazí výsledky hello v okně konzoly. Používá hello knihovny pro úložiště Azure verze 4, který zahrnuje hello CloudAnalyticsClient třídu, která zjednodušuje přístupem hello metriky tabulek v úložišti.
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)
 {
-    // Convert the dates to the format used in the PartitionKey
+    // Convert hello dates toohello format used in hello PartitionKey
     var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
     var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
 
     var services = Enum.GetValues(typeof(StorageService));
     foreach (StorageService service in services)
     {
-        Console.WriteLine("Minute Metrics for Service {0} from {1} to {2} UTC", service, start, end);
+        Console.WriteLine("Minute Metrics for Service {0} from {1} too{2} UTC", service, start, end);
         var metricsQuery = analyticsClient.CreateMinuteMetricsQuery(service, StorageLocation.Primary);
         var t = analyticsClient.GetMinuteMetricsTable(service);
         var opContext = new OperationContext();
         var query =
           from entity in metricsQuery
-          // Note, you can't filter using the entity properties Time, AccessType, or TransactionType
-          // because they are calculated fields in the MetricsEntity class.
-          // The PartitionKey identifies the DataTime of the metrics.
+          // Note, you can't filter using hello entity properties Time, AccessType, or TransactionType
+          // because they are calculated fields in hello MetricsEntity class.
+          // hello PartitionKey identifies hello DataTime of hello metrics.
           where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0
         select entity;
 
-        // Filter on "user" transactions after fetching the metrics from Table Storage.
+        // Filter on "user" transactions after fetching hello metrics from Table Storage.
         // (StartsWith is not supported using LINQ with Azure table storage)
         var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));
         var resultString = results.Aggregate(new StringBuilder(), (builder, metrics) => builder.AppendLine(MetricsString(metrics, opContext))).ToString();
@@ -202,15 +202,15 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 ```
 
 ## <a name="what-charges-do-you-incur-when-you-enable-storage-metrics"></a>Jaké poplatky platit při povolení metrik úložiště?
-Zapsat požadavky na vytvoření entity tabulky metrik, které budou účtovat podle standardních sazeb platí pro všechny operace úložiště Azure.
+Požadavky toocreate tabulka entity metrik, které jsou výši hello standardních sazeb použít tooall Azure Storage operace zápisu
 
-Požadavků na čtení a odstranění klientem metriky dat jsou také fakturovatelný na standardních sazeb. Pokud jste nakonfigurovali zásadu uchovávání dat, vám není účtován když odstraní stará data metrik Azure Storage. Pokud odstraníte analytická data, váš účet účtovat pro operace odstranění.
+Čtení a odstraňování požadavků podle dat toometrics klienta jsou taky fakturovatelný na standardních sazeb. Pokud jste nakonfigurovali zásadu uchovávání dat, vám není účtován když odstraní stará data metrik Azure Storage. Pokud odstraníte analytická data, váš účet účtovat pro operace odstranění hello.
 
-Kapacita používané metriky tabulky je také fakturovatelný: k zjištění přibližné hodnoty množství kapacity, na které se používá k ukládání dat metriky můžete použít následující:
+kapacita Hello používá tabulky metriky hello je také fakturovatelný: můžete použít následující tooestimate hello množství kapacity, na které se používá k ukládání dat metriky hello:
 
-* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 148KB dat je uložený každou hodinu do tabulky transakcí metriky Pokud jste povolili službu a úroveň API souhrnu.
-* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 12KB dat je uložený každou hodinu do tabulky transakcí metriky Pokud jste povolili právě služby úrovni souhrnu.
-* Tabulka kapacity pro objekty BLOB obsahuje dva řádky přidat každý den (za předpokladu, že uživatel požádal v protokolů): to znamená, že každý den velikost této tabulky zvyšuje úroveň až přibližně 300 bajtů.
+* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 148KB dat je uložený každou hodinu do tabulky transakcí metriky hello Pokud jste povolili službu a úroveň API souhrnu.
+* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 12KB dat je uložený každou hodinu do tabulky transakcí metriky hello Pokud jste povolili právě služby úrovni souhrnu.
+* Hello kapacity pro objekty BLOB má dva řádky přidat každý den (za předpokladu, že uživatel, má vyjádřit výslovný souhlas pro protokoly): to znamená, že každý den hello velikost této tabulky zvyšuje úroveň až tooapproximately 300 bajtů.
 
 ## <a name="next-steps"></a>Další kroky
 [Povolení protokolování a přístup k datům protokolu úložiště](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

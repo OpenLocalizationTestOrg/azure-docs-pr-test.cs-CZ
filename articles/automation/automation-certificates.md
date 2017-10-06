@@ -1,6 +1,6 @@
 ---
-title: "Certifikát prostředky ve službě Azure Automation | Microsoft Docs"
-description: "Certifikáty můžete bezpečně uloženy ve službě Azure Automation, takže přístupná pomocí sady runbook nebo konfigurace DSC k ověřování na základě Azure a prostředky třetích stran.  Tento článek vysvětluje podrobnosti o certifikáty a postupy pro práci s nimi v textové a grafické vytváření."
+title: "aaaCertificate prostředky ve službě Azure Automation | Microsoft Docs"
+description: "Certifikáty můžete bezpečně uloženy ve službě Azure Automation, takže přístupná pomocí sady runbook nebo tooauthenticate konfigurace DSC s Azure a prostředky třetích stran.  Tento článek vysvětluje podrobnosti hello certifikátů a jak toowork s nimi v textové a grafické vytváření."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c25bee937890438ea9022669be2c24c77a110b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Certifikát prostředky ve službě Azure Automation
 
-Certifikáty můžete bezpečně uloženy ve službě Azure Automation, přístupná pomocí sady runbook nebo konfigurací DSC pomocí **Get-AzureRmAutomationRmCertificate** aktivity pro prostředky Azure Resource Manager. To vám umožní vytvořit runboocích a konfiguracích DSC, které používají certifikáty k ověřování nebo přidá je do Azure nebo třetích stran prostředky.
+Certifikáty můžete bezpečně uloženy ve službě Azure Automation, přístupná pomocí sady runbook nebo konfigurací DSC pomocí hello **Get-AzureRmAutomationRmCertificate** aktivity pro prostředky Azure Resource Manager. To vám umožní toocreate runboocích a konfiguracích DSC, které používají certifikáty k ověřování nebo je přidá prostředky tooAzure nebo třetích stran.
 
 > [!NOTE] 
-> Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, připojení, certifikátů a zašifrované proměnné. Tyto prostředky jsou zašifrovány a uložené ve službě Azure Automation pomocí jedinečný klíč, který se vygeneruje pro každý účet automation. Tento klíč se šifruje pomocí hlavního certifikátu a uloží ve službě Azure Automation. Před ukládání o zabezpečený prostředek, klíč pro účet služby automation jsou dešifrována pomocí hlavního certifikátu a pak se použije k zašifrování asset.
+> Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, připojení, certifikátů a zašifrované proměnné. Tyto prostředky jsou zašifrovány a uložené v Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který se vygeneruje hello. Tento klíč se šifruje pomocí hlavního certifikátu a uloží ve službě Azure Automation. Před uložením o zabezpečený prostředek, hello klíč pro účet automation hello se dešifruje pomocí hlavního certifikátu hello a pak se použije tooencrypt hello asset.
 > 
 
 ## <a name="windows-powershell-cmdlets"></a>Rutiny prostředí Windows PowerShell
 
-Rutiny v následující tabulce se používají k vytváření a správě certifikátu prostředky automation pomocí prostředí Windows PowerShell. Se dodávají jako součást [modul Azure PowerShell](../powershell-install-configure.md) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
+Hello rutiny v následující tabulce hello jsou použité toocreate a spravovat prostředky certifikátu automation pomocí prostředí Windows PowerShell. Se dodávají jako součást hello [modul Azure PowerShell](../powershell-install-configure.md) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
 
 |Rutiny|Popis|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Načte informace o certifikátu pro použití v runbooku nebo konfigurace DSC. Samotný certifikát můžete načíst jenom z Get-AutomationCertificate aktivity.|
+|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Načte informace o certifikátu toouse v sady runbook nebo konfigurace DSC. Vlastní certifikát hello můžete načíst jenom z Get-AutomationCertificate aktivity.|
 |[Nové AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603604.aspx)|Vytvoří nový certifikát do Azure Automation.|
 [Odebrat AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603529.aspx)|Odebere certifikát Azure Automation.|Vytvoří nový certifikát do Azure Automation.
-|[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|Nastaví vlastnosti existujícího certifikátu včetně nahrání souboru certifikátu a nastavení hesla pro .pfx.|
-|[Přidat AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Odešle certifikát služby pro zadané cloudové služby.|
+|[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|Nastaví vlastnosti hello existujícího certifikátu včetně nahrání souboru certifikátu hello a nastavení hello hesla pro .pfx.|
+|[Přidat AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Odeslání certifikátu služby pro hello zadat cloudové služby.|
 
 
 ## <a name="creating-a-new-certificate"></a>Vytvoření nového certifikátu
 
-Když vytvoříte nový certifikát, odeslat soubor .cer nebo .pfx pro Azure Automation. Pokud označíte certifikátu jako exportovatelný, můžete ho přenést z úložiště certifikátů Azure Automation. Pokud není exportovatelný, pak je můžete jenom použije pro podepisování v rámci sady runbook nebo konfigurace DSC.
+Když vytvoříte nový certifikát, nahrajete .cer nebo .pfx souboru tooAzure automatizace. Pokud označíte hello certifikátu jako exportovatelný, můžete ho přenést z úložiště certifikátů hello Azure Automation. Pokud není exportovatelný, pak je můžete jenom použije pro podepisování v rámci sady runbook hello nebo konfigurace DSC.
 
 
-### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Chcete-li vytvořit nový certifikát pomocí portálu Azure
+### <a name="toocreate-a-new-certificate-with-hello-azure-portal"></a>toocreate nový certifikát se hello portálu Azure
 
-1. Z vašeho účtu Automation, klikněte **prostředky** dlaždici otevřete **prostředky** okno.
-1. Klikněte **certifikáty** dlaždici otevřete **certifikáty** okno.
-1. Klikněte na tlačítko **přidat certifikát** v horní části okna.
-2. Zadejte název certifikátu **název** pole.
-2. Klikněte na tlačítko **vyberte soubor** pod **nahrát soubor s certifikátem** a vyhledejte soubor .cer nebo .pfx.  Pokud jste vybrali soubor .pfx, zadejte heslo a jestli by měl být povolen export.
-1. Klikněte na tlačítko **vytvořit** uložit nový prostředek certifikátu.
+1. Z vašeho účtu Automation, klikněte na tlačítko hello **prostředky** dlaždice tooopen hello **prostředky** okno.
+1. Klikněte na tlačítko hello **certifikáty** dlaždice tooopen hello **certifikáty** okno.
+1. Klikněte na tlačítko **přidat certifikát** hello horní části okna hello.
+2. Zadejte název certifikátu hello hello **název** pole.
+2. Klikněte na tlačítko **vyberte soubor** pod **nahrát soubor s certifikátem** toobrowse pro soubor .cer nebo .pfx.  Pokud jste vybrali soubor .pfx, zadejte heslo a zda se má být povoleno toobe exportovali.
+1. Klikněte na tlačítko **vytvořit** toosave hello nového certifikátu prostředku.
 
 
-### <a name="to-create-a-new-certificate-with-windows-powershell"></a>Chcete-li vytvořit nový certifikát v prostředí Windows PowerShell
+### <a name="toocreate-a-new-certificate-with-windows-powershell"></a>toocreate nový certifikát v prostředí Windows PowerShell
 
-Následující příklad ukazuje, jak vytvořit nový certifikát automatizace a označte ji jako exportovatelný. To Importuje existující soubor .pfx.
+Hello následující příklad ukazuje, jak toocreate nové automatizace certifikátů a označte ji jako exportovatelný. To Importuje existující soubor .pfx.
 
     $certName = 'MyCertificate'
     $certPath = '.\MyCert.pfx'
@@ -69,11 +69,11 @@ Následující příklad ukazuje, jak vytvořit nový certifikát automatizace a
 
 ## <a name="using-a-certificate"></a>Použití certifikátu
 
-Je nutné použít **Get-AutomationCertificate** aktivity pro použití certifikátu. Nelze použít [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) rutiny vzhledem k tomu, že ji vrací informace o prostředek certifikátu, ale ne samotný certifikát.
+Je nutné použít hello **Get-AutomationCertificate** aktivity toouse certifikát. Nemůžete použít hello [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) rutiny vzhledem k tomu, že ji vrací informace o hello asset certifikátu, ale není hello vlastní certifikát.
 
 ### <a name="textual-runbook-sample"></a>Ukázkový textový
 
-Následující vzorový kód ukazuje, jak přidat certifikát do cloudové služby v sadě runbook. V této ukázce je z proměnná šifrované automatizace načíst heslo.
+Hello následující vzorový kód ukazuje, jak tooadd tooa certifikát cloudové služby v sadě runbook. V této ukázce hello heslo se načítají proměnná šifrované automatizace.
 
     $serviceName = 'MyCloudService'
     $cert = Get-AutomationCertificate -Name 'MyCertificate'
@@ -83,15 +83,15 @@ Následující vzorový kód ukazuje, jak přidat certifikát do cloudové služ
 
 ### <a name="graphical-runbook-sample"></a>Ukázka grafický runbook
 
-Přidání **Get-AutomationCertificate** na grafický runbook pravým tlačítkem na certifikát v podokně knihovna grafického editoru a výběrem **přidat na plátno**.
+Přidání **Get-AutomationCertificate** tooa grafický runbook kliknutím pravým tlačítkem na certifikát hello v podokně knihovna hello grafický editor hello a výběrem **přidat toocanvas**.
 
-![Přidání certifikátu na plátno](media/automation-certificates/automation-certificate-add-to-canvas.png)
+![Přidat certifikát toohello plátno](media/automation-certificates/automation-certificate-add-to-canvas.png)
 
-Následující obrázek ukazuje příklad použití certifikátu v grafický runbook.  Toto je stejný příkladu výše pro přidání certifikátu do cloudové služby z textové runbooku.
+Hello následující obrázek ukazuje příklad použití certifikátu v grafický runbook.  Toto je hello stejné příkladu výše pro přidání certifikátu tooa cloudové služby z textové runbooku.
 
 ![Vytváření grafického obsahu příklad ](media/automation-certificates/graphical-runbook-add-certificate.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o práci s odkazy na řízení logický tok vaše sada runbook je navržen pro provádění aktivit najdete v tématu [odkazy v vytváření grafického obsahu](automation-graphical-authoring-intro.md#links-and-workflow). 
+- informace o práci s odkazy toocontrol hello logický tok aktivit vaše sada runbook je toolearn určené tooperform najdete v tématu [odkazy v vytváření grafického obsahu](automation-graphical-authoring-intro.md#links-and-workflow). 

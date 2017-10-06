@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Vytvoření klienta Azure Active Directory B2C | Microsoft Docs"
-description: "Téma o tom, jak vytvořit klienta Azure Active Directory B2C"
+description: "Téma o tom, jak toocreate Azure Active Directory B2C klienta"
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,50 +14,50 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
-ms.openlocfilehash: 1a7eb94e3c74aa0dc187a6d203ba0cf885b97c4d
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: e8b257d66c1f66ffb84f5d3d21b30b42eddcbac9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Vytvoření klienta Azure Active Directory B2C na portálu Azure
+# <a name="create-an-azure-active-directory-b2c-tenant-in-hello-azure-portal"></a>Vytvoření klienta Azure Active Directory B2C v hello portálu Azure
 
 Upravená Sipi.
 
-Tento rychlý start vám pomůže vytvořit klienta Microsoft Azure Active Directory (Azure AD) B2C za několik minut. Jakmile budete hotovi, máte použít pro registraci aplikace B2C klienta B2C.
+Tento rychlý start vám pomůže vytvořit klienta Microsoft Azure Active Directory (Azure AD) B2C za několik minut. Jakmile budete hotovi, máte toouse klienta B2C pro registraci aplikace B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-##  <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+##  <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se toohello [portál Azure](https://portal.azure.com/).
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
-Funkce B2C nelze povolit v existující klienty. Budete muset vytvořit klienta Azure AD B2C.
+Funkce B2C nelze povolit v existující klienty. Je nutné toocreate klienta Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
-Blahopřejeme, jste vytvořili klienta služby Azure Active Directory B2C. Jste globální správce klienta. Podle potřeby můžete přidat další globální správce. Chcete-li přepnout do nového klienta, klikněte na tlačítko *spravovat odkaz na vaši novou klienta*.
+Blahopřejeme, jste vytvořili klienta služby Azure Active Directory B2C. Jste globálním správcem klienta hello. Podle potřeby můžete přidat další globální správce. tooswitch tooyour nového klienta, klikněte na tlačítko hello *spravovat odkaz na vaši novou klienta*.
 
 ![Spravovat odkaz na vaši nového klienta](./media/active-directory-b2c-get-started/manage-new-b2c-tenant-link.png)
 
 > [!IMPORTANT]
-> Pokud máte v úmyslu použít klienta B2C u produkční aplikace, najdete v článku [produkční škálování oproti preview B2C klienty](active-directory-b2c-reference-tenant-type.md). Existují známé problémy při odstranění existujícího klienta B2C a znovu ho vytvořte se stejným názvem domény. Budete muset vytvořit klienta B2C s jiným názvem domény.
+> Pokud plánujete toouse klienta B2C u produkční aplikace, přečtěte si článek hello [produkční škálování oproti preview B2C klienty](active-directory-b2c-reference-tenant-type.md). Existují známé problémy při odstranění existující B2C klienta a znovu ji vytvořte s hello stejným názvem domény. Je nutné toocreate klienta B2C s jiným názvem domény.
 >
 >
 
-## <a name="link-your-tenant-to-your-subscription"></a>Odkaz vašeho klienta do vašeho předplatného
+## <a name="link-your-tenant-tooyour-subscription"></a>Odkaz tooyour předplatného klienta
 
-Potřebujete připojit k předplatnému Azure povolit všechny funkce B2C a platit poplatky za používání klienta služby Azure AD B2C. Další informace, přečtěte si [v tomto článku](active-directory-b2c-how-to-enable-billing.md). Pokud jste k předplatnému Azure není váš klient Azure AD B2C, některé funkce se blokovat a zobrazí se zpráva upozornění ("žádné předplatné odkaz na tohoto klienta B2C nebo předplatné potřebám pozornost.") v nastavení B2C. Je důležité provést tento krok, ještě před odesláním aplikace do produkčního prostředí.
+Je třeba toolink vaše Azure AD B2C klienta všechny funkce B2C tooenable tooyour předplatného Azure a platit poplatky za používání. toolearn víc, přečtěte si [v tomto článku](active-directory-b2c-how-to-enable-billing.md). Když nemáte propojení vaší tooyour klienta Azure AD B2C předplatné Azure, některé funkce se blokovat a zobrazí se zpráva upozornění ("žádné předplatné propojené toothis B2C klienta nebo hello předplatné vyžaduje pozornost.") v nastavení hello B2C. Je důležité provést tento krok, ještě před odesláním aplikace do produkčního prostředí.
 
-## <a name="easy-access-to-settings"></a>Snadný přístup k nastavení
+## <a name="easy-access-toosettings"></a>Snadný přístup toosettings
 
 [!INCLUDE [active-directory-b2c-find-service-settings](../../includes/active-directory-b2c-find-service-settings.md)]
 
-Můžete taky přejít v okně zadáním `Azure AD B2C` v **vyhledávání prostředků** v horní části portálu. V seznamu výsledků vyberte **Azure AD B2C** přístup v okně Nastavení B2C.
+Můžete taky přejít hello okno zadáním `Azure AD B2C` v **vyhledávání prostředků** hello horní části portálu hello. V seznamu výsledků hello vyberte **Azure AD B2C** tooaccess hello okno nastavení B2C.
 
 ## <a name="next-steps"></a>Další kroky
 

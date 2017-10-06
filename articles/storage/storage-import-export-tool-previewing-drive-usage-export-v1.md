@@ -1,6 +1,6 @@
 ---
-title: "Náhled využití disku pro úlohy exportu Azure Import/Export - v1 | Microsoft Docs"
-description: "Informace o zobrazení náhledu seznam objektů BLOB, které jste vybrali pro úlohy exportu ve službě Azure Import/Export."
+title: "využívání jednotek aaaPreviewing úlohy exportu Azure Import/Export - v1 | Microsoft Docs"
+description: "Zjistěte, jak toopreview hello seznam objektů BLOB jste vybrali pro úlohy exportu ve službě Azure Import/Export hello."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 7bf74247090f91e17f81a9bc98ebfa78334c8c10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88495f921371458c0451da6878fd7cc9a45d20cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Náhled využití disku pro úlohu exportu
-Než vytvoříte úlohy exportu, je třeba vybrat sadu objektů blob pro export. Službu Microsoft Azure Import/Export můžete použít seznam objektů blob cesty nebo objekt blob předpony k reprezentaci objektů BLOB, které jste vybrali.  
+Než vytvoříte úlohy exportu, je třeba toochoose sadu objektů BLOB toobe exportovali. Hello služby Microsoft Azure Import/Export můžete toouse seznam objektů blob cesty nebo objekt blob předpony toorepresent hello BLOB, které jste vybrali.  
   
-Dále musíte určit, kolik jednotek, budete muset odeslat. Tento nástroj Import/Export nabízí `PreviewExport` příkaz Náhled využití disku pro objekty BLOB, které jste vybrali, na základě velikosti jednotky se chystáte použít.
+Dále musíte toodetermine, kolik jednotek potřebujete toosend. Hello nástroj pro Import nebo Export poskytuje hello `PreviewExport` příkaz toopreview využívání jednotek pro objekty BLOB hello jste vybrali, na základě velikosti hello jednotek hello budete toouse.
 
 ## <a name="command-line-parameters"></a>Parametry příkazového řádku
 
-Při použití, můžete použít následující parametry `PreviewExport` příkaz nástroje importu a exportu.
+Můžete použít následující parametry při použití hello hello `PreviewExport` příkazu z hello nástroj pro Import nebo Export.
 
 |Parametr příkazového řádku|Popis|  
 |--------------------------|-----------------|  
-|**/logdir:**< LogDirectory\>|Volitelné. K adresáři protokolů. Souborů podrobného protokolování se zapíšou do tohoto adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář se použije jako adresář protokolu.|  
-|**/sn:**< StorageAccountName\>|Vyžaduje se. Název účtu úložiště pro úlohy exportu.|  
-|**/Sk:**< StorageAccountKey\>|Vyžaduje, pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohy exportu.|  
-|**/csas:**< ContainerSas\>|Vyžaduje, pokud není zadaný klíč účtu úložiště. Kontejner SAS pro výpis objekty BLOB ve úloha exportu.|  
-|**/ ExportBlobListFile:**< ExportBlobListFile\>|Vyžaduje se. Cesta k souboru XML soubor obsahující seznam objektů blob cesty nebo objektu blob předpony cestu pro export objektů BLOB. Formát souboru, který je používán `BlobListBlobPath` element v [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace importu/exportu služby REST API.|  
-|**/ DriveSize:**< DriveSize\>|Vyžaduje se. Velikost jednotky použijte pro úlohy exportu, *například*, 500 GB, 1,5 TB.|  
+|**/logdir:**< LogDirectory\>|Volitelné. Adresář protokolu Hello. Podrobné soubory protokolu se zapíše toothis adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář hello se použije jako adresář protokolu hello.|  
+|**/sn:**< StorageAccountName\>|Povinná hodnota. Úloha exportu Hello název účtu úložiště hello hello.|  
+|**/Sk:**< StorageAccountKey\>|Vyžaduje, pokud není zadán sdíleného přístupového podpisu kontejneru. Úloha exportu Hello klíč účtu pro účet úložiště hello hello.|  
+|**/csas:**< ContainerSas\>|Vyžaduje, pokud není zadaný klíč účtu úložiště. Hello kontejneru SAS pro výpis hello objekty BLOB toobe exportují do úlohy exportu hello.|  
+|**/ ExportBlobListFile:**< ExportBlobListFile\>|Povinná hodnota. Cesta toohello XML soubor obsahující seznam objektů blob cesty nebo objektu blob předpony cestu pro toobe objekty BLOB hello exportovali. Formát souboru Hello používá v hello `BlobListBlobPath` element v hello [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci hello REST API služby importu a exportu.|  
+|**/ DriveSize:**< DriveSize\>|Povinná hodnota. Hello velikost jednotky toouse pro úlohy exportu, *například*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Příklad příkazového řádku
 
-Následující příklad ukazuje `PreviewExport` příkaz:  
+Hello následující příklad ukazuje hello `PreviewExport` příkaz:  
   
 ```  
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-Seznam souboru exportu objektu blob může obsahovat názvy objektů blob a objektů blob předpony, jak je vidět tady:  
+Hello export souboru seznamu objektů blob může obsahovat názvy objektů blob a objektů blob předpony, jak je vidět tady:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -57,9 +57,9 @@ Seznam souboru exportu objektu blob může obsahovat názvy objektů blob a obje
 </BlobList>  
 ```
 
-Nástroj Azure Import/Export obsahuje seznam všech objektů blob pro export a vypočítá postup pack je do jednotky po zadanou velikost vezme v úvahu všechny nezbytné režijní náklady a pak odhadne počet jednotek, které jsou potřebné pro uložení objektů BLOB a informace o využití disku.  
+Hello Azure Import/Export nástroj obsahuje seznam všech objektů BLOB toobe exportovali a vypočítá jak toopack do jednotky hello určená velikost, vezme v úvahu žádné režijní náklady na potřebné, pak odhadne hello počet jednotek potřebné objekty BLOB hello toohold a využití disku informace.  
   
-Tady je příklad výstupu s informační protokoly vynechání:  
+Tady je příklad výstupu hello informační protokoly vynechání:  
   
 ```  
 Number of unique blob paths/prefixes:   3  

@@ -1,6 +1,6 @@
 ---
-title: "Průvodci programovatelnosti U-SQL Azure Data Lake | Microsoft Docs"
-description: "Další informace o sadu služeb v Azure Data Lake, které vám umožní vytvořit cloudové velkých objemů dat platformu."
+title: "Příručka k programovatelnosti aaaU SQL pro Azure Data Lake | Microsoft Docs"
+description: "Další informace o hello sadu služeb v Azure Data Lake, které umožňují toocreate velkých objemů dat cloudové platformy."
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc8f126234c6106a0dc633ce85a1d9ab1e634e30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelnosti U-SQL
 
-U-SQL je dotazovací jazyk, který je určený pro velkých datových typů úloh. Mezi funkce jedinečné jazykem U-SQL se rozumí kombinace jazyka SQL jako deklarativní s rozšiřitelnosti a programovatelnosti, který je zadán v jazyce C#. V této příručce budeme soustředit na rozšiřitelnost a programovatelnosti jazyka U-SQL, který je povolený v jazyce C#.
+U-SQL je dotazovací jazyk, který je určený pro velkých datových typů úloh. Jednou z funkcí hello jedinečné jazykem U-SQL je kombinací hello hello deklarativní jazyka SQL jako s hello rozšiřitelnosti a programovatelnosti, který je zadán v jazyce C#. V této příručce budeme soustředit na hello rozšiřitelnosti a programovatelnosti hello jazyka U-SQL, který je povolený v jazyce C#.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -29,7 +29,7 @@ Stáhněte a nainstalujte [nástrojů Azure Data Lake pro Visual Studio](https:/
 
 ## <a name="get-started-with-u-sql"></a>Začínáme s jazykem U-SQL  
 
-Podívejme se na následující skript U-SQL:
+Podívejme se na hello následující skript U-SQL:
 
 ```
 @a  = 
@@ -53,7 +53,7 @@ Definuje sadu řádků názvem @a a vytvoří sadu řádků názvem @results z @
 
 Výraz U-SQL je výraz jazyka C# v kombinaci s logických operací U-SQL, `AND`, `OR`, a `NOT`. Výrazy U-SQL lze použít s příkazem SELECT, EXTRAHOVÁNÍ, kde s, Seskupit podle a DEKLAROVAT.
 
-Například následující skript analyzuje řetězec hodnotu data a času v klauzuli SELECT.
+Například následující skript hello analyzuje řetězec hodnotu data a času v klauzuli SELECT hello.
 
 ```
 @results =
@@ -64,14 +64,14 @@ Například následující skript analyzuje řetězec hodnotu data a času v kla
     FROM @a;    
 ```
 
-Následující skript analyzuje řetězec hodnotu data a času v příkazu DECLARE.
+Hello následující skript analyzuje řetězec hodnotu data a času v příkazu DECLARE.
 
 ```
 DECLARE @d DateTime = ToDateTime.Date("2016/01/01");
 ```
 
 ### <a name="use-c-expressions-for-data-type-conversions"></a>Použití jazyka C# výrazů pro konverze datových typů
-Následující příklad ukazuje, jak můžete provést převod dat data a času pomocí výrazy jazyka C#. V tomto scénáři konkrétní data řetězce data a času jsou převedeny na standardní datetime s půlnoc 00:00:00 čas zápis.
+Hello následující příklad ukazuje, jak můžete provést převod dat data a času pomocí výrazy jazyka C#. V tomto scénáři konkrétní data řetězce data a času je převeden toostandard datetime s půlnoc 00:00:00 čas zápis.
 
 ```
 DECLARE @dt String = "2016-07-06 10:23:15";
@@ -81,17 +81,17 @@ DECLARE @dt String = "2016-07-06 10:23:15";
         Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
         dt AS olddt
     FROM @rs0;
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 too@output_file USING Outputters.Text();
 ```
 
 ### <a name="use-c-expressions-for-todays-date"></a>Použití jazyka C# výrazů pro dnešní datum
-Vyžádání dnešní datum, můžeme použít následující výraz jazyka C#:
+toopull dnešní datum, můžeme použít hello následující výraz jazyka C#:
 
 ```
 DateTime.Now.ToString("M/d/yyyy")
 ```
 
-Tady je příklad toho, jak používat tento výraz ve skriptu:
+Tady je příklad toho, jak toouse tento výraz ve skriptu:
 
 ```
 @rs1 =
@@ -110,40 +110,40 @@ Tady je příklad toho, jak používat tento výraz ve skriptu:
 
 
 ## <a name="using-net-assemblies"></a>Použití sestavení rozhraní .NET
-Model rozšiřitelnosti U-SQL založena na možnost přidat vlastní kód. V současné době U-SQL umožňuje snadno způsoby, jak přidat vlastní Microsoft. Na základě NET kód (zejména, C#). Můžete však také přidat vlastní kód, který je zapsán do jiných jazyků .NET, například VB.NET nebo F #. 
+Model rozšiřitelnosti U-SQL založena na hello možnost tooadd vlastní kód. V současné době U-SQL umožňuje snadno způsoby tooadd vlastní Microsoft. Na základě NET kód (zejména, C#). Můžete však také přidat vlastní kód, který je zapsán do jiných jazyků .NET, například VB.NET nebo F #. 
 
 ### <a name="register-a-net-assembly"></a>Registrace sestavení rozhraní .NET
 
-Použijte příkaz CREATE ASSEMBLY umístit sestavení .NET do databáze U-SQL. Po sestavení je v databázi, skriptů U-SQL můžete použít tyto sestavení s použitím příkazu referenční sestavení. 
+Použijte tooplace příkaz CREATE ASSEMBLY hello sestavení .NET do databáze U-SQL. Po sestavení je v databázi, skriptů U-SQL můžete použít tyto sestavení pomocí příkazu referenční sestavení hello. 
 
-Následující kód ukazuje, jak registrovat sestavení:
+Následující kód ukazuje, jak Hello tooregister sestavení:
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
     FROM "/myassembly.dll";
 ```
 
-Následující kód ukazuje, jak odkazovat na sestavení:
+Následující kód ukazuje, jak Hello tooreference sestavení:
 
 ```
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Obrátit [pokyny pro registraci sestavení](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) , která se vztahuje toto téma podrobněji.
+Poraďte se hello [pokyny pro registraci sestavení](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) , která se vztahuje toto téma podrobněji.
 
 
 ### <a name="use-assembly-versioning"></a>Pomocí správy verzí sestavení
-U-SQL v současné době používá rozhraní .NET Framework verze 4.5. Proto zajistěte, aby byly kompatibilní s danou verzi modulu runtime vlastního sestavení.
+U-SQL v současné době používá hello rozhraní .NET Framework verze 4.5. Proto zajistěte, aby byly kompatibilní s danou verzi modulu runtime hello vlastního sestavení.
 
-Jak už bylo zmíněno dříve, spustí kód U-SQL ve formátu 64bitovou (x 64). Proto se ujistěte, že je zkompilovaný kód pro spuštění na x64. V opačném případě se zobrazí správný formát chyba, uvedena výše.
+Jak už bylo zmíněno dříve, spustí kód U-SQL ve formátu 64bitovou (x 64). Proto se ujistěte, že jste kód napsali kompilované toorun na x64. V opačném případě se zobrazí chyba správný formát hello uvedena výše.
 
-Každý odeslán sestavení knihoven DLL a souboru prostředků, jako je jiný modul runtime, nativní sestavení nebo konfiguračním souboru může být maximálně 400 MB. Celková velikost nasazené prostředky, prostřednictvím nasazení prostředků nebo prostřednictvím odkazů na sestavení a další soubory, nemůže být delší než 3 GB.
+Každý odeslán sestavení knihoven DLL a souboru prostředků, jako je jiný modul runtime, nativní sestavení nebo konfiguračním souboru může být maximálně 400 MB. Celková velikost Hello nasazené prostředky, prostřednictvím nasazení prostředků nebo prostřednictvím odkazů tooassemblies a další soubory, nesmí překročit 3 GB.
 
-Nakonec si všimněte, že každý U-SQL databáze může obsahovat pouze jednu verzi žádné zadaného sestavení. Například pokud budete potřebovat verze 7 a 8 verzi knihovny NewtonSoft Json.Net, budete muset registraci je ve dvou různých databází. Kromě toho každý skript může odkazovat pouze na jednu verzi zadaného sestavení knihovny DLL. V tomto ohledu následuje U-SQL C# sestavení správy a správa verzí sémantiky.
+Nakonec si všimněte, že každý U-SQL databáze může obsahovat pouze jednu verzi žádné zadaného sestavení. Například pokud budete potřebovat verze 7 a 8 verzi hello knihovně NewtonSoft Json.Net, je třeba tooregister je ve dvou různých databází. Kromě toho každý skript se může vztahovat pouze tooone verzi zadaného sestavení knihovny DLL. V tomto ohledu následuje U-SQL hello C# sestavení správy a správa verzí sémantiku.
 
 
 ## <a name="use-user-defined-functions-udf"></a>Použití uživatelem definované funkce: UDF
-Uživatelem definované funkce U-SQL nebo UDF, jsou programovacích rutin, které přijímají parametry, provedení akce (například komplexní výpočet) a vrátit výsledek této akce jako hodnotu. Návratová hodnota UDF lze pouze jednu skalární hodnota. UDF U-SQL je možné volat v základní skript U-SQL jako všechny ostatní C# skalární funkce.
+Uživatelem definované funkce U-SQL nebo UDF, jsou programovacích rutin, které přijímají parametry, provedení akce (například komplexní výpočet) a hello v důsledku této akce jako hodnotu. Hello vrátit hodnotu UDF může mít pouze jednu skalární hodnota. UDF U-SQL je možné volat v základní skript U-SQL jako všechny ostatní C# skalární funkce.
 
 Doporučujeme, abyste inicializaci U-SQL uživatelsky definované funkce jako **veřejné** a **statické**.
 
@@ -154,11 +154,11 @@ public static string MyFunction(string param1)
 }
 ```
 
-První Podíváme se na jednoduchý příklad vytvoření uživatelem definovanou FUNKCI.
+První Podíváme se na hello jednoduchý příklad vytvoření uživatelem definovanou FUNKCI.
 
-V tomto scénáři případ použití musíme určit fiskální období, včetně fiskální čtvrtletí a fiskální měsíc prvního sign-in pro konkrétního uživatele. První měsíc fiskálního roku v našem scénáři je června.
+V tomto scénáři případ použití potřebujeme fiskální období hello toodetermine, včetně hello fiskální čtvrtletí a fiskální měsíc hello první přihlášení pro konkrétního uživatele hello. Hello první měsíc fiskálního roku hello v našem scénáři je června.
 
-K výpočtu fiskální období, zavedeme následující funkce jazyka C#:
+fiskální období toocalculate, zavedeme hello následující funkce jazyka C#:
 
 ```
 public static string GetFiscalPeriod(DateTime dt)
@@ -195,11 +195,11 @@ public static string GetFiscalPeriod(DateTime dt)
 }
 ```
 
-Jednoduše vypočítá fiskální měsíc a čtvrtletí a vrátí hodnotu řetězce. Pro červen prvního měsíce od první fiskální čtvrtletí používáme "Q1:P1". Pro červenec můžeme použít "Q1:P2" a tak dále.
+Jednoduše vypočítá fiskální měsíc a čtvrtletí a vrátí hodnotu řetězce. Pro června, hello první měsíc hello první fiskální čtvrtletí, použijeme "Q1:P1". Pro červenec můžeme použít "Q1:P2" a tak dále.
 
-To je normální C# funkce budeme používat v našem projekt U-SQL.
+Toto je normální funkce jazyka C# s Snažíme se probíhající toouse v našem projekt U-SQL.
 
-Zde je, jak vypadá v části kódu v tomto scénáři:
+Zde je, jak vypadá hello kódu části v tomto scénáři:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -251,13 +251,13 @@ namespace USQL_Programmability
 }
 ```
 
-Teď přidáme volání této funkce ze základní skriptu U-SQL. K tomuto účelu máme zadejte plně kvalifikovaný název funkce, včetně oboru názvů, který je v tomto případě NameSpace.Class.Function(parameter).
+Teď se zaměříme toocall tuto funkci z hello základní skript U-SQL. toodo, máme tooprovide plně kvalifikovaný název hello funkce, včetně hello oboru názvů, který je v tomto případě NameSpace.Class.Function(parameter).
 
 ```
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
-Toto je skutečný základní skript U-SQL:
+Toto je základní skript skutečné U-SQL hello:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -285,11 +285,11 @@ DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
     GROUP BY user, des;
 
 OUTPUT @rs1 
-    TO @output_file 
+    too@output_file 
     USING Outputters.Text();
 ```
 
-Toto je výstupní soubor spuštění skriptu:
+Toto je výstupní soubor hello spuštění skriptu hello:
 
 ```
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
@@ -302,19 +302,19 @@ Toto je výstupní soubor spuštění skriptu:
 Tento příklad ukazuje jednoduchý využití vložené UDF v U-SQL.
 
 ### <a name="keep-state-between-udf-invocations"></a>Zachovat stav mezi UDF volání
-U-SQL C# programovatelnosti objekty může být více pokročilé, využitím interaktivity prostřednictvím globální proměnné kódu. Podívejme se na následující scénář případu použití firmy.
+U-SQL C# programovatelnosti objekty může být více pokročilé, využitím interaktivity prostřednictvím hello kódu globální proměnné. Podívejme se na následující scénář případu použití obchodní hello.
 
-Ve velkých organizacích mohou uživatelé přepínat mezi typy interních aplikací. Může jít o Microsoft Dynamics CRM, PowerBI a tak dále. Zákazníci chtít použít analýzu telemetrii jak uživatelé přepínat mezi různými aplikacemi, jaké jsou trendy využití, a tak dále. Cílem pro firmu je za účelem optimalizace využití aplikace. Také může chtějí kombinovat různé aplikace nebo konkrétní rutiny přihlášení.
+Ve velkých organizacích mohou uživatelé přepínat mezi typy interních aplikací. Může jít o Microsoft Dynamics CRM, PowerBI a tak dále. Zákazníci může být vhodné tooapply analýzu telemetrii jak uživatelé přepínat mezi různými aplikacemi, jaké hello využití trendů jsou a tak dále. cílem Hello pro firmy hello je toooptimize využití aplikace. Také může chtějí toocombine různé aplikace nebo konkrétní rutiny přihlášení.
 
-K dosažení tohoto cíle, musíme určit ID relace a prodlevy mezi poslední relace, který došlo k chybě.
+tooachieve tento cíl máme toodetermine ID relace a prodleva mezi hello poslední relace, který došlo k chybě.
 
-Potřebujeme najít předchozí přihlášení a pak mu přiřaďte tento přihlášení do všech relací, ke kterým dochází na stejné aplikaci. První výzva je, že základní skript U-SQL nepodporuje nám umožňují použít výpočty již počítaného sloupce se funkce LAG. Druhá výzva je, že se musí zachovat konkrétní relace pro všechny relace v rámci stejné časové období.
+Budeme potřebovat toofind předchozí přihlášení a pak mu přiřaďte toto přihlášení tooall relací, které probíhá generovaného toohello stejná aplikace. Hello první výzva je, že základní skript U-SQL nepovoluje nám tooapply výpočty přes již počítaného sloupce se funkce LAG. Hello Druhá výzva je, že jsme tookeep hello konkrétní relace pro všechny relace v rámci hello stejné časové období.
 
-Chcete-li tento problém vyřešit, používáme globální proměnné v části kódu: `static public string globalSession;`.
+toosolve tento problém jsme použít globální proměnné uvnitř části kódu: `static public string globalSession;`.
 
-Tato globální proměnná se použije pro celý řádků při našich provádění skriptu.
+Tato globální proměnná je použité toohello celý řádků při našich provádění skriptu.
 
-Tady je části kódu programu naše U-SQL:
+Tady je části kódu hello naše programu U-SQL:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -352,9 +352,9 @@ namespace USQLApplication21
 }
 ```
 
-Tento příklad ukazuje globální proměnná `static public string globalSession;` použít uvnitř `getStampUserSession` funkce a získávání inicializace pokaždé, když se změní parametr relace.
+Tento příklad ukazuje hello – globální proměnná `static public string globalSession;` použít uvnitř hello `getStampUserSession` funkce a získávání inicializace každý čas hello relace parametr je změnit.
 
-Základní skript U-SQL je následující:
+Hello základní skript U-SQL je následující:
 
 ```
 DECLARE @in string = @"\UserSession\test1.tsv";
@@ -399,14 +399,14 @@ DECLARE @out3 string = @"\UserSession\Out3.csv";
     WHERE UserName != "UserName";
 
 OUTPUT @rs2
-    TO @out2
+    too@out2
     ORDER BY UserName, EventDateTime ASC
     USING Outputters.Csv();
 ```
 
-Funkce `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` se nazývá zde během druhé sady řádků výpočtu paměti. Pak předá `UserSessionTimestamp` sloupce a vrátí hodnotu, dokud `UserSessionTimestamp` došlo ke změně.
+Funkce `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` je zde volána v průběhu hello druhý paměti řádků výpočtu. Pak předá hello `UserSessionTimestamp` sloupce a vrátí hodnotu, dokud hello `UserSessionTimestamp` došlo ke změně.
 
-Výstupní soubor je následující:
+výstupní soubor Hello vypadá takto:
 
 ```
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
@@ -433,17 +433,17 @@ Výstupní soubor je následující:
 "2016-02-19T01:20:31.4800000-08:00","User4","2016-02-18T14:37:27.6560000-08:00",False,"2136f4cf-7c7d-43c1-8ae2-08f4ad6a6e08"
 ```
 
-Tento příklad ukazuje složitější scénář případu použití používáme globální proměnné v části kódu, který se použije pro celý paměti řádků.
+Tento příklad ukazuje složitější scénář případu použití používáme globální proměnné uvnitř oddíl kódu, který je použité toohello celý paměti řádků.
 
 ## <a name="use-user-defined-types-udt"></a>Uživatelem definované typy použití: UDT
-Uživatelem definované typy nebo UDT, je jiná funkcí programovatelnosti U-SQL. U-SQL UDT funguje jako regulární C# definovaný uživatelem typem. C# je jazyk silného typu, který umožňuje použít předdefinované a vlastní uživatelem definované typy.
+Uživatelem definované typy nebo UDT, je jiná funkcí programovatelnosti U-SQL. U-SQL UDT funguje jako regulární C# definovaný uživatelem typem. C# je jazyk silného typu, který umožňuje použití hello předdefinované a vlastní uživatelem definované typy.
 
-U-SQL nelze implicitně serializaci nebo libovolný uživatelsky definovaný typ deserializovat, když UDT předána mezi vrcholy v sady řádků. To znamená, že uživatel musí zadat explicitní formátovací modul používá rozhraní IFormatter. To poskytuje U-SQL serializace a deserializovat metody pro UDT.
+U-SQL nelze implicitně serializaci nebo libovolný uživatelsky definovaný typ deserializovat, když hello UDT předána mezi vrcholy v sady řádků. To znamená, že tento uživatel hello má tooprovide explicitní formátování s použitím rozhraní IFormatter hello. To poskytuje U-SQL s hello serializovat a deserializovat metody pro hello UDT.
 
 > [!NOTE]
-> Předdefinované extraktory U-SQL a outputters aktuálně nelze serializovat nebo deserializovat UDT data do nebo ze souborů i sadou IFormatter. Proto při zápisu do souboru s příkazem výstupní UDT data, nebo jeho čtení s extrakci, budete muset předat jako řetězec nebo bajtové pole. Potom volání serializace a deserializace explicitně kódu (to znamená, metodu ToString() UDT). Uživatelem definované extraktory a outputters, na druhé straně může číst a zapisovat UDT.
+> Předdefinované extraktory U-SQL a outputters aktuálně nelze serializovat nebo deserializovat UDT tooor dat ze souborů i hello IFormatter sady. Takže když píšete UDT data tooa soubor s hello výstup příkazu, nebo jeho čtení s extrakci, máte toopass ji jako řetězec nebo bajtové pole. Potom volání hello serializace a deserializace explicitně kódu (to znamená, metodu ToString() hello UDT). Uživatelem definované extraktory a outputters na hello jiných ruční, lze číst a zapisovat UDT.
 
-Pokud jsme zkuste použít UDT v EXTRAKTOR nebo OUTPUTTER (mimo předchozí vyberte), jak je vidět tady:
+Pokud jsme zkuste toouse UDT v EXTRAKTOR nebo OUTPUTTER (mimo předchozí vyberte), jak je vidět tady:
 
 ```
 @rs1 =
@@ -452,14 +452,14 @@ Pokud jsme zkuste použít UDT v EXTRAKTOR nebo OUTPUTTER (mimo předchozí vybe
     FROM @rs0;
 
 OUTPUT @rs1 
-    TO @output_file 
+    too@output_file 
     USING Outputters.Text();
 ```
 
-Nemůžeme zobrazit následující chyba:
+Nemůžeme zobrazit hello následující chybě:
 
 ```
-Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
+Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used toooutput column myfield of type
 MyNameSpace.Myfunction_Returning_UDT.
 
 Description:
@@ -468,14 +468,14 @@ Outputters.Text only supports built-in types.
 
 Resolution:
 
-Implement a custom outputter that knows how to serialize this type, or call a serialization method on the type in
-the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
+Implement a custom outputter that knows how tooserialize this type, or call a serialization method on hello type in
+hello preceding SELECT. C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-Pro práci s UDT v outputter, máme buď ho na řetězec pomocí metody ToString() nebo vytvořit vlastní outputter serializovat.
+toowork s UDT v outputter buď máme tooserialize ho toostring s hello metodu ToString() nebo vytvořit vlastní outputter.
 
-UDT aktuálně nelze použít v GROUP BY. Pokud UDT se používá v GROUP BY, je vyvolána k následující chybě:
+UDT aktuálně nelze použít v GROUP BY. Pokud UDT se používá v GROUP BY, je vyvolána hello následující chybě:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
@@ -487,33 +487,33 @@ GROUP BY doesn't support UDT or Complex types.
 
 Resolution:
 
-Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
+Add a SELECT statement where you can project a scalar column that you want toouse with GROUP BY.
 C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
 62  5   USQL-Programmability
 ```
 
-Pokud chcete definovat typ definovaný uživatelem, musíme:
+toodefine typ definovaný uživatelem, musíme:
 
-* Přidání následujících oborů názvů:
+* Přidejte následující obory názvů hello:
 
 ```
 using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
 
-* Přidat `Microsoft.Analytics.Interfaces`, což je vyžadováno pro UDT rozhraní. Kromě toho `System.IO` mohou být potřebné k definování rozhraní IFormatter.
+* Přidat `Microsoft.Analytics.Interfaces`, což je vyžadováno pro rozhraní UDT hello. Kromě toho `System.IO` mohou být potřebné toodefine hello IFormatter rozhraní.
 
 * Definování typu používá definované atributem SqlUserDefinedType.
 
-**SqlUserDefinedType** slouží k označení definice typu v sestavení jako uživatelem definovaný typ (UDT) v U-SQL. Vlastnosti v atributu projeví fyzické charakteristiky UDT. Tato třída nelze dědí.
+**SqlUserDefinedType** je použité toomark definice typu v sestavení jako uživatelem definovaný typ (UDT) v U-SQL. Vlastnosti Hello na atribut hello odrážet fyzické vlastnosti hello UDT hello. Tato třída nelze dědí.
 
 SqlUserDefinedType je povinný atribut pro UDT definici.
 
-V konstruktoru třídy:  
+Hello konstruktoru třídy hello:  
 
 * SqlUserDefinedTypeAttribute (formátovací modul typu)
 
-* Formátovací modul typu: požadovaný parametr k definování formátování UDT – konkrétně typ `IFormatter` rozhraní musí být předán sem.
+* Formátovací modul typu: vyžaduje parametr toodefine formátování UDT – konkrétně hello typ hello `IFormatter` rozhraní musí být předán sem.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -521,7 +521,7 @@ public class MyType
 { … }
 ```
 
-* Typické UDT taky vyžaduje definice IFormatter rozhraní, jak je znázorněno v následujícím příkladu:
+* Typické UDT taky vyžaduje definice hello IFormatter rozhraní, jak ukazuje následující příklad hello:
 
 ```
 public class MyTypeFormatter : IFormatter<MyType>
@@ -534,25 +534,25 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-`IFormatter` Rozhraní serializuje a poté serializuje grafu objektu s kořenový typ \<typeparamref name = "T" >.
+Hello `IFormatter` rozhraní serializuje a poté serializuje grafu objektu s hello kořenový typ \<typeparamref name = "T" >.
 
-\<typeparam name = "T" > kořenový typ grafu objektů serializovat a deserializovat.
+\<typeparam name = "T" > hello kořenový typ pro hello objekt grafu tooserialize a deserializovat.
 
-* **Deserializovat**: zrušte serializuje data na zadaný datový proud a reconstitutes grafu objektů.
+* **Deserializovat**: zrušte serializuje hello data v datovém proudu hello zadaný a reconstitutes hello grafu objektů.
 
-* **Serializovat**: serializuje objektu, nebo grafu objektů s danou kořenovou do zadaného datového proudu.
+* **Serializovat**: serializuje objektu, nebo grafu objektů, s hello zadaný kořenový toohello zadaný datový proud.
 
-`MyType`instance: Instance typu.  
-`IColumnWriter`Zapisovač / `IColumnReader` čtečky: základního datového proudu sloupce.  
-`ISerializationContext`kontext: výčet, který definuje sadu příznaky, která určuje zdrojový nebo cílový kontext pro datový proud během serializace.
+`MyType`instance: Instance typu hello.  
+`IColumnWriter`Zapisovač / `IColumnReader` čtečky: hello základní sloupec datového proudu.  
+`ISerializationContext`kontext: výčet, který definuje sadu příznaky, která určuje hello zdrojový nebo cílový kontext pro datový proud hello během serializace.
 
-* **Zprostředkující**: Určuje, že kontext zdrojové nebo cílové není trvalého úložiště.
+* **Zprostředkující**: Určuje, že hello zdrojový nebo cílový kontext není trvalého úložiště.
 
-* **Trvalost**: Určuje, že zdrojový nebo cílový kontext je trvalé úložiště.
+* **Trvalost**: Určuje, že hello zdrojové nebo cílové kontextu je trvalé úložiště.
 
-Jako regulární C# typ definici UDT U-SQL můžete zahrnout přepsání pro operátory, jako +/ == /! =. Může také obsahovat statické metody. Například pokud jsme se bude používat toto UDT jako parametr pro agregační funkci MIN U-SQL, se musí definovat < operátor přepsání.
+Jako regulární C# typ definici UDT U-SQL můžete zahrnout přepsání pro operátory, jako +/ == /! =. Může také obsahovat statické metody. Například pokud přidáme toouse tento UDT jako parametr tooa agregační funkci MIN U-SQL, máme toodefine < operátor přepsání.
 
-Dříve v tomto průvodci jsme ukázán příklad pro fiskálním období identifikaci od určitého data ve formátu Qn:Pn (Q1:P10). Následující příklad ukazuje, jak definovat vlastní typ pro hodnoty fiskálním období.
+Dříve v tomto průvodci jsme ukázán příklad pro fiskálním období identifikaci z hello konkrétní datum ve formátu hello Qn:Pn (Q1:P10). Hello následující příklad ukazuje, jak toodefine vlastní typ pro hodnoty fiskálním období.
 
 Tady je příklad oddílu kódu s vlastní UDT a IFormatter rozhraní:
 
@@ -655,11 +655,11 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-Definovaného typu zahrnuje dvě čísla: čtvrtletí a měsíce. Operátory == /! = / > nebo < a statickou metodu ToString() jsou definovány v tomto poli.
+Hello definovaný typ. zahrnuje dvě čísla: čtvrtletí a měsíce. Operátory == /! = / > nebo < a statickou metodu ToString() jsou definovány v tomto poli.
 
-Jak už bylo zmíněno dříve, můžete použít ve výrazech vyberte UDT, ale nejde použít v OUTPUTTER/EXTRAKTOR bez vlastní serializace. Je buď musí být serializován jako řetězec s ToString() nebo použít s vlastní OUTPUTTER/EXTRAKTOR.
+Jak už bylo zmíněno dříve, můžete použít ve výrazech vyberte UDT, ale nejde použít v OUTPUTTER/EXTRAKTOR bez vlastní serializace. Buď má toobe serializován jako řetězec s ToString() nebo použít s vlastní OUTPUTTER/EXTRAKTOR.
 
-Nyní probereme využití UDT. V části kódu jsme změnili naše funkce GetFiscalPeriod takto:
+Nyní probereme využití UDT. V části kódu jsme změnili naše GetFiscalPeriod funkce toohello následující:
 
 ```
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
@@ -696,9 +696,9 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 }
 ```
 
-Jak vidíte, vrátí hodnotu typu naše FiscalPeriod.
+Jak vidíte, vrátí hodnotu hello naše FiscalPeriod typu.
 
-Zde jsme uveďte příklad toho, jak ho další použít základní skript U-SQL. Tento příklad ukazuje různé formy UDT volání ze skriptu U-SQL.
+Zde jsme uveďte příklad jak toouse dále s ním v základní skript U-SQL. Tento příklad ukazuje různé formy UDT volání ze skriptu U-SQL.
 
 ```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
@@ -733,14 +733,14 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
            fiscalmonth,
            USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).ToString() AS fiscalperiod,
 
-       // This user-defined type was created in the prior SELECT.  Passing the UDT to this subsequent SELECT would have failed if the UDT was not annotated with an IFormatter.
+       // This user-defined type was created in hello prior SELECT.  Passing hello UDT toothis subsequent SELECT would have failed if hello UDT was not annotated with an IFormatter.
            fiscalperiod_adjusted.ToString() AS fiscalperiod_adjusted,
            user,
            des
     FROM @rs1;
 
 OUTPUT @rs2 
-    TO @output_file 
+    too@output_file 
     USING Outputters.Text();
 ```
 
@@ -905,9 +905,9 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 ```
 
 ## <a name="use-user-defined-aggregates-udagg"></a>Použití uživatelem definovaných agregacích: UDAGG
-Uživatelem definované agregace jsou funkce související s agregace, které jsou součástí není out-of-the-box se U-SQL. V příkladu může být agregace k provedení vlastní matematické výpočty, zřetězení řetězců, manipulace s řetězci a tak dále.
+Uživatelem definované agregace jsou funkce související s agregace, které jsou součástí není out-of-the-box se U-SQL. Příklad Hello může být agregační tooperform vlastní matematické výpočty, zřetězení řetězců manipulace s řetězci a tak dále.
 
-Definice uživatelem definované agregace základní třídy je následující:
+Definice uživatelem definované agregace základní třídy Hello vypadá takto:
 
 ```c#
     [SqlUserDefinedAggregate]
@@ -921,12 +921,12 @@ Definice uživatelem definované agregace základní třídy je následující:
     }
 ```
 
-**SqlUserDefinedAggregate** označuje, že typ by měl být registrován jako uživatelem definovaná agregace. Tato třída nelze dědí.
+**SqlUserDefinedAggregate** označuje, že hello typ měli být registrován jako uživatelem definovaná agregace. Tato třída nelze dědí.
 
 Atribut SqlUserDefinedType je **volitelné** pro UDAGG definici.
 
 
-Základní třída umožňuje předat abstraktní tři parametry: dvě jako vstupní parametry a jako výsledek. Datové typy jsou proměnné a by měl být definován během dědičnosti tříd.
+Hello základní třída umožňuje toopass tři abstraktní parametry: dvě jako vstupní parametry a jako výsledek hello. Hello datové typy jsou proměnné a by měl být definován během dědičnosti tříd.
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -945,17 +945,17 @@ public class GuidAggregate : IAggregate<string, string, string>
 ```
 
 * **Init –** vyvolá jednou pro každou skupinu během výpočtu. Poskytuje rutiny inicializace pro každou skupinu agregace.  
-* **Accumulate** se spustí jednou pro každou hodnotu. Poskytuje hlavní funkce algoritmu agregace. Může sloužit k agregované hodnoty s různými typy dat, které jsou definovány během dědičnosti tříd. Může přijímat dva parametry proměnné datové typy.
-* **Ukončit** se spustí jednou na skupinu agregace na konci zpracování k vypsání výsledků pro každou skupinu.
+* **Accumulate** se spustí jednou pro každou hodnotu. Hlavní funkce hello poskytuje pro algoritmus agregace hello. Může být hodnoty používané tooaggregate s různými typy dat, které jsou definovány během dědičnosti tříd. Může přijímat dva parametry proměnné datové typy.
+* **Ukončit** se spustí jednou na skupinu agregace na konci hello zpracování toooutput hello výsledek pro každou skupinu.
 
-Deklarovat správný vstupní a výstupní datové typy, použijte definici třídy následujícím způsobem:
+toodeclare správný vstupní a výstupní datové typy, použijte definici třídy hello následujícím způsobem:
 
 ```
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: Accumulate první parametr
-* T2: Accumulate první parametr
+* T1: První parametr tooaccumulate
+* T2: První parametr tooaccumulate
 * TResult: Návratový typ ukončit
 
 Například:
@@ -971,9 +971,9 @@ public class GuidAggregate : IAggregate<string, string, string>
 ```
 
 ### <a name="use-udagg-in-u-sql"></a>Použití UDAGG v U-SQL
-Chcete-li použít UDAGG, nejprve definování v kódu nebo odkazovat z existující programovatelnosti knihovny DLL, jak je popsáno výše.
+toouse UDAGG, nejprve definování v kódu nebo odkazovat z hello svědčící programovatelnosti knihovny DLL, jak je popsáno výše.
 
-Pak použijte následující syntaxi:
+Poté hello použijte následující syntaxi:
 
 ```
 AGG<UDAGG_functionname>(param1,param2)
@@ -1029,30 +1029,30 @@ DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
     FROM @rs0
     GROUP BY user;
 
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 too@output_file USING Outputters.Text();
 ```
 
-V tomto scénáři případ použití jsme řetězení třída identifikátory GUID pro konkrétní uživatele.
+V tomto scénáři případ použití jsme řetězení třída identifikátory GUID pro konkrétní uživatele hello.
 
 ## <a name="use-user-defined-objects-udo"></a>Uživatelem definované objekty použít: UDO
-U-SQL umožňuje definovat vlastní programovatelnosti objekty, které se nazývají uživatelem definované objekty nebo UDO.
+U-SQL umožňuje toodefine programovatelnosti vlastní objekty, které se nazývají uživatelem definované objekty nebo UDO.
 
-Následuje seznam UDO v U-SQL:
+Hello následuje seznam UDO v U-SQL:
 
 * Uživatelem definované extraktory
     * Extrakce řádek po řádku
-    * Použít k implementaci extrakce dat z vlastních strukturovaných souborů
+    * Použít tooimplement extrakce dat z vlastních strukturovaných souborů
 
 * Uživatelem definované outputters
     * Výstup po řádcích
-    * Použít k výstupu vlastní datové typy nebo vlastního souboru formáty
+    * Použít vlastní datové typy toooutput nebo vlastních formátů souborů
 
 * Uživatelem definované procesorů
     * Vezme jeden řádek a vytvoří jeden řádek
-    * Umožňuje snížit počet sloupců nebo vytvořit nové sloupce s hodnotami, které jsou odvozené z existující sady sloupců
+    * Použít tooreduce hello počet sloupců nebo vytvořit nové sloupce s hodnotami, které jsou odvozené z existující sady sloupců
 
 * Uživatelem definované appliers
-    * Vezme jeden řádek a vytvoří 0 n řádků
+    * Vezme jeden řádek a vytvoří 0 toon řádků
     * Použít s vnější/mezi použít
 
 * Uživatelem definované combiners
@@ -1060,9 +1060,9 @@ Následuje seznam UDO v U-SQL:
 
 * Uživatelem definované přechodky
     * Vezme n řádků a vytvoří jeden řádek
-    * Se používá ke snížení počtu řádků
+    * Použít tooreduce hello počet řádků
 
-UDO se obvykle nazývá explicitně ve skriptu U-SQL v rámci následující příkazy U-SQL:
+UDO se obvykle nazývá explicitně ve skriptu U-SQL v rámci hello následující příkazy U-SQL:
 
 * EXTRAKCE
 * VÝSTUP
@@ -1071,10 +1071,10 @@ UDO se obvykle nazývá explicitně ve skriptu U-SQL v rámci následující př
 * SNÍŽENÍ
 
 > [!NOTE]  
-> UDO na jsou omezené využívat 0,5 Gb paměti.  Toto omezení paměti se nevztahuje na místní spuštění.
+> UDO na jsou omezené tooconsume 0,5 Gb paměti.  Toto omezení paměti nevztahuje toolocal spuštěních.
 
 ## <a name="use-user-defined-extractors"></a>Použití uživatelem definované extraktory
-U-SQL umožňuje importovat externí data pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované extraktory UDO:  
+U-SQL umožňuje tooimport externích dat pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované extraktory UDO:  
 
 * *Extractors.Text()*: poskytuje extrakci z textových souborů s oddělovači různá kódování.
 
@@ -1082,13 +1082,13 @@ U-SQL umožňuje importovat externí data pomocí příkazu EXTRAKCE. Příkaz E
 
 * *Extractors.Tsv()*: poskytuje extrakci z hodnoty oddělené tabulátory (TSV) soubory různá kódování.
 
-Může být užitečné pro vývoj vlastních Extraktor. To může být užitečné při importu dat Pokud nám chcete provádět žádnou z následujících úloh:
+Může být užitečné toodevelop vlastní Extraktor. To může být užitečné při importu dat pokud chceme, aby toodo žádné hello následující úlohy:
 
-* Upravte vstupní data tak, že rozdělení sloupců a změnou jednotlivé hodnoty. Funkce procesoru je lepší pro kombinace sloupců.
+* Upravte vstupní data tak, že rozdělení sloupců a změnou jednotlivé hodnoty. Hello funkcionality procesoru je lepší pro kombinace sloupců.
 * Analyzovat Nestrukturovaná data, jako jsou webové stránky a e-mailů nebo polovičním nestrukturovaných dat, jako je například XML nebo JSON.
 * Analyzovat data v kódování nepodporovaný.
 
-K definování vlastní Extraktor nebo OUČIT, je potřeba vytvořit `IExtractor` rozhraní. Všechny vstupní parametry pro extrakci, jako je například sloupce či řádku oddělovače a kódování, musí být definované v konstruktoru třídy. `IExtractor` Rozhraní musí také obsahovat definice pro `IEnumerable<IRow>` přepsat následujícím způsobem:
+toodefine Extraktor uživatelem definované nebo OUČIT, potřebujeme toocreate `IExtractor` rozhraní. Všechny vstupní Extraktor toohello parametry, například sloupce či řádku oddělovače a kódování, třeba toobe definované v hello konstruktoru třídy hello. Hello `IExtractor` rozhraní musí také obsahovat definice pro hello `IEnumerable<IRow>` přepsat následujícím způsobem:
 
 ```
 [SqlUserDefinedExtractor]
@@ -1102,20 +1102,20 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** atribut uvádí, že typ by měl být registrován jako Extraktor se uživatelem definované. Tato třída nelze dědí.
+Hello **SqlUserDefinedExtractor** atribut uvádí, které hello typ měli být registrován jako Extraktor se definovaný uživatelem. Tato třída nelze dědí.
 
-SqlUserDefinedExtractor je volitelný atribut pro OUČIT definici. Ji používá k definování vlastností AtomicFileProcessing OUČIT objektu.
+SqlUserDefinedExtractor je volitelný atribut pro OUČIT definici. Použije toodefine AtomicFileProcessing vlastností pro objekt OUČIT hello.
 
 * BOOL AtomicFileProcessing   
 
 * **Hodnota TRUE,** = označuje, že tento Extraktor vyžaduje atomic vstupní soubory (JSON, XML,...)
 * **false** = označuje, že tento Extraktor můžete řešit rozdělení / distribuované soubory (sdíleného svazku clusteru, SEQ,...)
 
-Hlavní objekty programovatelnosti OUČIT **vstupní** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupní data jako `IUnstructuredReader`. Objekt výstup se používá nastavit výstupní data v důsledku Extraktor aktivity.
+Hello hlavní OUČIT programovatelnosti objekty jsou **vstupní** a **výstup**. vstupní objekt Hello je použité tooenumerate vstupní data jako `IUnstructuredReader`. objekt výstup Hello je použité tooset výstupní data v důsledku hello Extraktor aktivity.
 
-Vstupní data přistupuje prostřednictvím `System.IO.Stream` a `System.IO.StreamReader`.
+vstupní data Hello je přístupné přes `System.IO.Stream` a `System.IO.StreamReader`.
 
-Pro vstupní sloupce výčet nám nejdřív rozdělení vstupního datového proudu pomocí oddělovač řádků.
+Pro vstupní sloupce výčet jsme nejprve rozdělení hello vstupního datového proudu pomocí oddělovač řádků.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1136,17 +1136,17 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Pokud chcete nastavit výstupní data, použijeme `output.Set` metoda.
+tooset výstupní data, používáme hello `output.Set` metoda.
 
-Je důležité si uvědomit, že vlastní Extraktor pouze výstupy sloupců a hodnot, které jsou definovány s výstup. Nastavit volání metody.
+Je důležité, že toounderstand, který hello vlastní Extraktor pouze výstupy sloupců a hodnot, které jsou definovány výstup hello. Nastavit volání metody.
 
 ```
 output.Set<string>(count, part);
 ```
 
-Skutečné Extraktor výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+skutečné Extraktor výstup Hello se aktivuje při volání metody `yield return output.AsReadOnly();`.
 
-Následuje příklad Extraktor:
+Následuje příklad Extraktor hello:
 
 ```
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
@@ -1167,13 +1167,13 @@ public class FullDescriptionExtractor : IExtractor
     public override IEnumerable<IRow> Extract(IUnstructuredReader input, IUpdatableRow output)
     {
          string line;
-         //Read the input line by line
+         //Read hello input line by line
          foreach (Stream current in input.Split(_encoding.GetBytes("\r\n")))
          {
         using (System.IO.StreamReader streamReader = new StreamReader(current, this._encoding))
          {
              line = streamReader.ReadToEnd().Trim();
-             //Split the input by the column delimiter
+             //Split hello input by hello column delimiter
              string[] parts = line.Split(this._col_delim);
              int count = 0; // start with first column
              foreach (string part in parts)
@@ -1185,13 +1185,13 @@ public class FullDescriptionExtractor : IExtractor
              }
              else if (count == 2)
              {
-                 // for column “user”, convert to UPPER case
+                 // for column “user”, convert tooUPPER case
                  output.Set<string>(count, part.ToUpper());
 
              }
              else
              {
-                 // keep the rest of the columns as-is
+                 // keep hello rest of hello columns as-is
                  output.Set<string>(count, part);
              }
              count += 1;
@@ -1205,7 +1205,7 @@ public class FullDescriptionExtractor : IExtractor
 }
 ```
 
-V tomto scénáři případ použití Extraktor regeneruje identifikátor GUID pro sloupec "guid" a převede k hodnotám sloupce "user" na velká písmena. Vlastní extraktory může vytvářet složitější výsledky analýzou vstupní data a manipulaci.
+V tomto scénáři případ použití hello Extraktor regeneruje hello identifikátor GUID pro sloupec "guid" a převádí hodnoty hello "user" sloupec tooupper případu. Vlastní extraktory může vytvářet složitější výsledky analýzou vstupní data a manipulaci.
 
 Toto je základní skript U-SQL, která používá vlastní Extraktor:
 
@@ -1222,25 +1222,25 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
     FROM @input_file
         USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
 
-OUTPUT @rs0 TO @output_file USING Outputters.Text();
+OUTPUT @rs0 too@output_file USING Outputters.Text();
 ```
 
 ## <a name="use-user-defined-outputters"></a>Použít outputters uživatelem definované
-Uživatelem definované outputter je jiný UDO U-SQL, který vám umožní rozšiřovat integrovanou funkci U-SQL. Podobně jako Extraktor, existuje několik předdefinovaných outputters.
+Uživatelem definované outputter je jiný UDO U-SQL, který vám umožní tooextend integrovanou funkci U-SQL. Podobně jako toohello Extraktor existuje několik předdefinovaných outputters.
 
-* *Outputters.Text()*: zapisuje data do textových souborů s oddělovači různých kódování.
-* *Outputters.Csv()*: zapisuje data do různých kódování na soubory textový soubor s oddělovači (CSV).
-* *Outputters.Tsv()*: zapisuje data do hodnoty oddělené tabulátory (TSV) soubory různá kódování.
+* *Outputters.Text()*: zapíše data toodelimited textové soubory různá kódování.
+* *Outputters.Csv()*: zapíše data toocomma s oddělovači (CSV) soubory různá kódování.
+* *Outputters.Tsv()*: zapíše data tootab s oddělovači (TSV) soubory různá kódování.
 
-Vlastní outputter umožňuje zapisovat data ve vlastním formátu definované. To může být užitečné pro následující úkoly:
+Vlastní outputter umožňuje toowrite data ve vlastním formátu definované. To může být užitečné pro hello následující úlohy:
 
-* Zápis dat do částečně strukturovaných nebo nestrukturovaných souborů.
+* Zápis dat toosemi strukturovaných nebo nestrukturovaných soubory.
 * Zápis dat není podporováno kódování.
 * Úprava výstupní data nebo přidání vlastních atributů.
 
-K definování outputter definovaný uživatelem, je potřeba vytvořit `IOutputter` rozhraní.
+uživatelem definované outputter toodefine, potřebujeme toocreate hello `IOutputter` rozhraní.
 
-Toto je základní `IOutputter` implementaci třídy:
+Toto je základní hello `IOutputter` implementaci třídy:
 
 ```
 public abstract class IOutputter : IUserDefinedOperator
@@ -1252,7 +1252,7 @@ public abstract class IOutputter : IUserDefinedOperator
 }
 ```
 
-Všechny vstupní parametry outputter, jako jsou sloupce či řádku oddělovače, kódování a tak dále, musí být definované v konstruktoru třídy. `IOutputter` Rozhraní musí také obsahovat definice pro `void Output` přepsat. Atribut `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` můžete volitelně můžete nastavit pro zpracování atomic souboru. Další informace najdete v tématu následující podrobnosti.
+Všechny vstupní parametry toohello outputter, jako jsou sloupce či řádku oddělovače, kódování a tak dále, musí toobe definované v hello konstruktoru třídy hello. Hello `IOutputter` rozhraní musí také obsahovat definice pro `void Output` přepsat. atribut Hello `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` můžete volitelně můžete nastavit pro zpracování atomic souboru. Další informace najdete v tématu hello následujících podrobnostech.
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1276,24 +1276,24 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`je volána pro každý řádek vstupu. Vrátí `IUnstructuredWriter output` sady řádků.
-* Konstruktor třída se používá k předat parametry outputter definovaný uživatelem.
-* `Close`slouží k volitelně přepsat verzi nákladné stavu nebo zjistit, kdy byla zapsána poslední řádek.
+* `Output`je volána pro každý řádek vstupu. Vrátí hello `IUnstructuredWriter output` sady řádků.
+* Hello konstruktor třída se používá toopass parametry toohello uživatelem definované outputter.
+* `Close`se používá toooptionally přepsat toorelease nákladné stavu nebo určit, kdy byla zapsána hello poslední řádek.
 
-**SqlUserDefinedOutputter** atribut uvádí, že typ by měl být registrován jako outputter se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedOutputter** atribut uvádí, které hello typ měli být registrován jako outputter se definovaný uživatelem. Tato třída nelze dědí.
 
-SqlUserDefinedOutputter je volitelný atribut pro definici outputter definovaný uživatelem. Slouží k definování vlastností AtomicFileProcessing.
+SqlUserDefinedOutputter je volitelný atribut pro definici outputter definovaný uživatelem. Použije se toodefine hello AtomicFileProcessing vlastnost.
 
 * BOOL AtomicFileProcessing   
 
 * **Hodnota TRUE,** = označuje, že tento outputter vyžaduje atomic výstupní soubory (JSON, XML,...)
 * **false** = označuje, že tento outputter můžete řešit rozdělení / distribuované soubory (sdíleného svazku clusteru, SEQ,...)
 
-Objekty hlavního programovatelnosti **řádek** a **výstup**. **Řádek** objekt se používá k vytvoření výčtu výstupní data jako `IRow` rozhraní. **Výstup** slouží k nastavení výstupní data k cílovému souboru.
+Hello hlavního programovatelnosti objekty jsou **řádek** a **výstup**. Hello **řádek** objekt je použité tooenumerate výstupní data jako `IRow` rozhraní. **Výstup** je použité tooset výstupní data toohello cílový soubor.
 
-Výstupní data přistupuje prostřednictvím `IRow` rozhraní. Výstupní data předávána řádek najednou.
+Hello výstupní data přistupuje prostřednictvím hello `IRow` rozhraní. Výstupní data předávána řádek najednou.
 
-Jednotlivé hodnoty jsou uvedené voláním metody Get IRow rozhraní:
+jednotlivé hodnoty Hello se nachází voláním metody Get hello hello IRow rozhraní:
 
 ```
 row.Get<string>("column_name")
@@ -1307,11 +1307,11 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Tento přístup umožňuje vytvořit flexibilní outputter pro žádné schéma metadat.
+Tento přístup umožňuje toobuild flexibilní outputter pro žádné schéma metadat.
 
-Výstupní data je zapsán do souboru pomocí `System.IO.StreamWriter`. Parametr datový proud je nastaven na `output.BaseStrea` jako součást `IUnstructuredWriter output`.
+Hello výstupní data jsou zapsána toofile pomocí `System.IO.StreamWriter`. parametr datového proudu Hello je nastaven příliš`output.BaseStrea` jako součást `IUnstructuredWriter output`.
 
-Všimněte si, že je důležité, abyste po každé iteraci řádek vyprázdní vyrovnávací paměť dat do souboru. Kromě toho `StreamWriter` objekt musí použít s povoleno uvolnitelná atribut (výchozí) a **pomocí** – klíčové slovo:
+Všimněte si, že je důležité tooflush hello dat vyrovnávací paměti toohello soubor po každé iteraci řádek. Kromě toho hello `StreamWriter` objekt musí použít s hello na jedno použití atributu povoleno (výchozí) a hello **pomocí** – klíčové slovo:
 
 ```
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -1320,10 +1320,10 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 }
 ```
 
-Jinak volejte metodu Flush() explicitně po každé iteraci. Nemůžeme zobrazit v následujícím příkladu.
+Jinak volejte metodu Flush() explicitně po každé iteraci. Nemůžeme zobrazit v hello následující ukázka.
 
 ### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Nastavte záhlaví a zápatí pro uživatelem definované outputter
-Pokud chcete nastavit hlavičku, použijte jednu iterace provádění toku.
+tooset záhlaví, použijte jednu iterace provádění toku.
 
 ```
 public override void Output(IRow row, IUnstructuredWriter output)
@@ -1344,9 +1344,9 @@ if (isHeaderRow)
 }
 ```
 
-Kód v prvním `if (isHeaderRow)` bloku se spustí jenom jednou.
+nejprve Hello kód v hello `if (isHeaderRow)` bloku se spustí jenom jednou.
 
-Pro zápatí stránky, použijte odkaz na instanci `System.IO.Stream` objektu (`output.BaseStream`). Zápis zápatí v metodě Close() `IOutputter` rozhraní.  (Další informace najdete v následujícím příkladu.)
+Pro zápatí hello použít instanci toohello odkaz hello `System.IO.Stream` objektu (`output.BaseStream`). Zapisovat hello zápatí v hello Close() metodu hello `IOutputter` rozhraní.  (Další informace najdete v tématu hello následující ukázka.)
 
 Následuje příklad uživatelem definované outputter:
 
@@ -1369,10 +1369,10 @@ public class HTMLOutputter : IOutputter
     this.encoding = ((encoding == null) ? Encoding.UTF8 : encoding);
     }
 
-    // The Close method is used to write the footer to the file. It's executed only once, after all rows
+    // hello Close method is used toowrite hello footer toohello file. It's executed only once, after all rows
     public override void Close().
     {
-    //Reference to IO.Stream object - g_writer
+    //Reference tooIO.Stream object - g_writer
     StreamWriter streamWriter = new StreamWriter(g_writer, this.encoding);
     streamWriter.Write("</table>");
     streamWriter.Flush();
@@ -1383,7 +1383,7 @@ public class HTMLOutputter : IOutputter
     {
     System.IO.StreamWriter streamWriter = new StreamWriter(output.BaseStream, this.encoding);
 
-    // Metadata schema initialization to enumerate column names
+    // Metadata schema initialization tooenumerate column names
     ISchema schema = row.Schema;
 
     // This is a data-independent header--HTML table definition
@@ -1419,7 +1419,7 @@ public class HTMLOutputter : IOutputter
         string val = "";
         try
         {
-        // Data type enumeration--required to match the distinct list of types from OUTPUT statement
+        // Data type enumeration--required toomatch hello distinct list of types from OUTPUT statement
         switch (col.Type.Name.ToString().ToLower())
         {
             case "string": val = row.Get<string>(col.Name).ToString(); break;
@@ -1439,13 +1439,13 @@ public class HTMLOutputter : IOutputter
     {
         isHeaderRow = false;
     }
-    // Reference to the instance of the IO.Stream object for footer generation
+    // Reference toohello instance of hello IO.Stream object for footer generation
     g_writer = output.BaseStream;
     streamWriter.Flush();
     }
 }
 
-// Define the factory classes
+// Define hello factory classes
 public static class Factory
 {
     public static HTMLOutputter HTMLOutputter(bool isHeader = false, Encoding encoding = null)
@@ -1471,23 +1471,23 @@ DECLARE @output_file string = @"\usql-programmability\output_file.html";
          USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
 
 OUTPUT @rs0 
-    TO @output_file 
+    too@output_file 
     USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
 Toto je outputter HTML, který vytvoří soubor HTML s dat v tabulce.
 
 ### <a name="call-outputter-from-u-sql-base-script"></a>Volání outputter ze základní skriptu U-SQL
-Vlastní outputter volat z základní skript U-SQL, je potřeba vytvořit novou instanci objektu outputter.
+toocall vlastní outputter z hello základní skript U-SQL, hello novou instanci objektu outputter hello má toobe vytvořili.
 
 ```sql
-OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
+OUTPUT @rs0 too@output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Abyste se vyhnuli, vytvoření instance objektu v základní skriptu, můžeme vytvořit funkce obálku, jak je znázorněno v našem příkladu starší:
+Vytvoření instance hello tooavoid objekt v základní skriptu, můžeme vytvořit funkce obálku, jak je znázorněno v našem příkladu starší:
 
 ```c#
-        // Define the factory classes
+        // Define hello factory classes
         public static class Factory
         {
             public static HTMLOutputter HTMLOutputter(bool isHeader = false, Encoding encoding = null)
@@ -1497,20 +1497,20 @@ Abyste se vyhnuli, vytvoření instance objektu v základní skriptu, můžeme v
         }
 ```
 
-V takovém případě původní volání vypadá takto:
+V takovém případě původní volání hello vypadá hello následující:
 
 ```
 OUTPUT @rs0 
-TO @output_file 
+too@output_file 
 USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>Používají procesory uživatelem definované
-Uživatelem definované procesoru nebo UDP, je typ UDO U-SQL, která umožňuje použití funkcí programovatelnosti zpracování příchozí řádky. UDP umožňuje sloučení sloupců, upravte hodnoty a v případě potřeby přidejte nové sloupce. V podstatě je dobré se zpracovat sadu řádků k vytvoření požadované datové prvky.
+Uživatelem definované procesoru nebo UDP, je typ UDO U-SQL, která vám umožní příchozí řádky tooprocess hello použitím funkcí programovatelnosti. UDP vám umožní toocombine sloupců, upravte hodnoty a v případě potřeby přidejte nové sloupce. V podstatě pomáhá tooprocess sady řádků tooproduce požadované datové prvky.
 
-K definování UDP, je potřeba vytvořit `IProcessor` rozhraní s `SqlUserDefinedProcessor` atribut, který je pro UDP volitelné.
+toodefine UDP, potřebujeme toocreate `IProcessor` rozhraní s hello `SqlUserDefinedProcessor` atribut, který je pro UDP volitelné.
 
-Toto rozhraní by měl obsahovat definici `IRow` rozhraní řádků přepsat, jak je znázorněno v následujícím příkladu:
+Toto rozhraní by měl obsahovat definici hello hello `IRow` rozhraní řádků přepsat, jak je znázorněno v hello následující ukázka:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1523,29 +1523,29 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** označuje, že typ by měl být registrován jako procesor uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedProcessor** Určuje, které hello typ měli být registrován jako procesor definovaný uživatelem. Tato třída nelze dědí.
 
-Je atribut SqlUserDefinedProcessor **volitelné** pro definici UDP.
+atribut SqlUserDefinedProcessor Hello je **volitelné** pro definici UDP.
 
-Objekty hlavního programovatelnosti **vstupní** a **výstup**. Vstupní objekt se používá výčet vstupní sloupce a výstup a nastavit výstupní data v důsledku činnosti procesoru.
+Hello hlavního programovatelnosti objekty jsou **vstupní** a **výstup**. vstupní objekt Hello je vstupní sloupce použité tooenumerate a výstup a výstupní data tooset v důsledku činnosti procesoru hello.
 
-Pro vstupní sloupce výčet používáme `input.Get` metoda.
+Pro vstupní sloupce výčet používáme hello `input.Get` metoda.
 
 ```
 string column_name = input.Get<string>("column_name");
 ```
 
-Parametr pro `input.Get` metoda je sloupec, který se předá jako součást `PRODUCE` klauzuli `PROCESS` prohlášení o základní skript U-SQL. Je potřeba použít na správný typ. zde.
+Hello parametr pro `input.Get` metoda je sloupec, který se předá jako součást hello `PRODUCE` klauzule hello `PROCESS` příkaz skriptu základní hello U-SQL. Potřebujeme toouse sem zadejte hello správná data.
 
-Pro výstup, použijte `output.Set` metoda.
+Pro výstup, použijte hello `output.Set` metoda.
 
-Je důležité si uvědomit, že vlastní výrobce pouze výstupy sloupců a hodnot, které jsou definovány pomocí `output.Set` volání metody.
+Je důležité toonote tento vlastní producent je výstupy pouze, sloupce a hodnoty, které jsou definovány s hello `output.Set` volání metody.
 
 ```
 output.Set<string>("mycolumn", mycolumn);
 ```
 
-Skutečné procesoru výstup se aktivuje při volání metody `return output.AsReadOnly();`.
+výstup Hello skutečné procesoru se aktivuje při volání metody `return output.AsReadOnly();`.
 
 Následuje příklad procesoru:
 
@@ -1567,9 +1567,9 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-V tomto scénáři případ použití procesor generuje nový sloupec s názvem "full_description" kombinací existujícího sloupce – v tomto případě "user" velká a "des". Také znovu vytvoří identifikátor GUID a vrátí původní a nové hodnoty identifikátor GUID.
+V tomto scénáři případ použití hello procesoru generuje nový sloupec s názvem "full_description" kombinací hello existující sloupce – v tomto případě "user" velká a "des". Také znovu vytvoří identifikátor GUID a vrátí hodnot hello původní a nový identifikátor GUID.
 
-Jak vidíte z předchozího příkladu, můžete volat metody C# během `output.Set` volání metody.
+Jak vidíte z předchozího příkladu hello, můžete volat metody C# během `output.Set` volání metody.
 
 Tady je příklad základní skriptu U-SQL, který používá vlastního procesoru:
 
@@ -1593,26 +1593,26 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
              new_guid Guid
      USING new USQL_Programmability.FullDescriptionProcessor();
 
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 too@output_file USING Outputters.Text();
 ```
 
 ## <a name="use-user-defined-appliers"></a>Použít appliers uživatelem definované
-Uživatelem definované applier U-SQL umožňuje vyvolání vlastní C# funkce pro každý řádek, který je vrácen vnější tabulky výraz dotazu. Správný vstup je vyhodnotit pro každý řádek z levého vstup a řádky, které vytváří spojují pro finální výstup. Seznam sloupců, které jsou vytvářeny v operátor APPLY jsou kombinace sadu sloupců v vlevo a vpravo vstup.
+Uživatelem definované applier U-SQL umožňuje funkce tooinvoke vlastní C# pro každý řádek, který je vrácen hello vnější tabulky výraz dotazu. pravé vstup Hello je vyhodnotit pro každý řádek z levého vstup hello a hello řádky, které vytváří spojují pro výsledný výstup hello. Hello seznam sloupců, které jsou vytvářeny v operátor APPLY hello jsou hello kombinací hello sadu sloupců v hello v levém horním a hello právo vstup.
 
-Uživatelem definované applier je volaná jako součást výrazu USQL vyberte.
+Uživatelem definované applier je volaná jako součást hello USQL vyberte výraz.
 
-Typické volání applier uživatelem definované vypadá takto:
+Typické Hello volání toohello uživatelem definované applier zdá hello následující:
 
 ```
 SELECT …
 FROM …
-CROSS APPLYis used to pass parameters
+CROSS APPLYis used toopass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
 Další informace o používání appliers ve výrazu SELECT, najdete v části [U-SQL vyberte výběr z křížové použít a vnější použít](https://msdn.microsoft.com/library/azure/mt621307.aspx).
 
-Definice uživatelem definované applier základní třídy je následující:
+Hello uživatelem definované applier základní definice třídy vypadá takto:
 
 ```
 public abstract class IApplier : IUserDefinedOperator
@@ -1623,7 +1623,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 }
 ```
 
-K definování applier se definovaný uživatelem, je potřeba vytvořit `IApplier` rozhraní s [`SqlUserDefinedApplier`] atribut, který je pro uživatelem definované applier definice volitelné.
+toodefine applier se definovaný uživatelem, potřebujeme toocreate hello `IApplier` rozhraní s hello [`SqlUserDefinedApplier`] atribut, který je pro uživatelem definované applier definice volitelné.
 
 ```
 [SqlUserDefinedApplier]
@@ -1641,23 +1641,23 @@ public class ParserApplier : IApplier
 }
 ```
 
-* Použít je volána pro každý řádek vnější tabulky. Vrátí `IUpdatableRow` výstup sady řádků.
-* Konstruktor třída se používá k předat parametry applier definovaný uživatelem.
+* Použít je volána pro každý řádek tabulky vnější hello. Vrátí hello `IUpdatableRow` výstup sady řádků.
+* Třída konstruktor Hello je použité toopass parametry toohello uživatelem definované applier.
 
-**SqlUserDefinedApplier** označuje, že typ by měl být registrován jako applier se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedApplier** Určuje, které hello typ měli být registrován jako applier se definovaný uživatelem. Tato třída nelze dědí.
 
 **SqlUserDefinedApplier** je **volitelné** pro definici applier definovaný uživatelem.
 
 
-Objekty hlavního programovatelnosti jsou následující:
+Hello hlavního programovatelnosti objekty jsou následující:
 
 ```
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
-Vstupní sady řádků se předávají jako `IRow` vstupní. Výstup řádky jsou generovány jako `IUpdatableRow` rozhraní výstup.
+Vstupní sady řádků se předávají jako `IRow` vstupní. Hello výstup řádky jsou generovány jako `IUpdatableRow` rozhraní výstup.
 
-Názvy jednotlivých sloupců se dá určit pomocí volání `IRow` metoda schématu.
+Názvy jednotlivých sloupců se dá určit pomocí volání hello `IRow` metoda schématu.
 
 ```
 ISchema schema = row.Schema;
@@ -1665,35 +1665,35 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Chcete-li získat skutečný datových hodnot z příchozích `IRow`, jsme použijte metodu Get() `IRow` rozhraní.
+tooget hello skutečná data hodnoty z hello příchozí `IRow`, jsme použijte metodu Get() hello `IRow` rozhraní.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Nebo používáme schématu název sloupce:
+Nebo používáme název sloupce hello schématu:
 
 ```
 row.Get<int>(row.Schema[0].Name)
 ```
 
-Výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup:
+Hello výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup:
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Je důležité si uvědomit, vlastní appliers pouze výstup sloupců a hodnot, které jsou definovány s `output.Set` volání metody.
+Je důležité toounderstand vlastní appliers pouze výstup sloupců a hodnot, které jsou definovány s `output.Set` volání metody.
 
-Skutečný výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+aktuální výstup Hello se aktivuje při volání metody `yield return output.AsReadOnly();`.
 
-Uživatelem definované applier parametry mohou být předaný konstruktoru. Applier může vrátit proměnný počet sloupců, které musí být definované během applier volání v základní skript U-SQL.
+Hello uživatelem definované applier parametry lze předat toohello konstruktor. Applier může vrátit proměnný počet sloupců, které je třeba toobe definované během hello applier volání v základní skript U-SQL.
 
 ```
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
-Tady je příklad applier uživatelem definované:
+Tady je příklad applier uživatelem definované hello:
 
 ```
 [SqlUserDefinedApplier]
@@ -1751,7 +1751,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 }
 ```
 
-Toto je základní skript U-SQL pro tento uživatelem definované applier:
+Toto je hello základní skript U-SQL pro tento uživatelem definované applier:
 
 ```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
@@ -1777,10 +1777,10 @@ DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
     CROSS APPLY
     new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 too@output_file USING Outputters.Text();
 ```
 
-V tomto scénáři případu použití uživatelem definované applier funguje jako analyzátor oddělených čárkou pro vlastnosti loďstva Auto. Vstupní soubor řádky vypadat následovně:
+V tento scénář případu využití, uživatelem definované applier jednání jako analyzátor oddělených čárkou pro hello car loďstva vlastnosti. řádky vstupní soubor Hello vypadat hello následující:
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
@@ -1788,30 +1788,30 @@ V tomto scénáři případu použití uživatelem definované applier funguje j
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
-Je typické oddělený tabulátory TSV soubor s vlastností sloupec, který obsahuje vlastnosti car například výrobce a model. Tyto vlastnosti musí být analyzován na sloupce tabulky. Applier, který je k dispozici také umožňuje vygenerovat dynamické počet vlastností v dané sadě řádků výsledek, na základě parametru, který je předán. Můžete vygenerovat buď všechny vlastnosti, nebo konkrétní sadu pouze vlastnosti.
+Je typické oddělený tabulátory TSV soubor s vlastností sloupec, který obsahuje vlastnosti car například výrobce a model. Tyto vlastnosti musí být Analyzovaná toohello sloupců tabulky. Hello applier, který je k dispozici také umožňuje toogenerate dynamické počet vlastností v hello způsobit řádků, na základě hello parametru, který je předán. Můžete vygenerovat buď všechny vlastnosti, nebo konkrétní sadu pouze vlastnosti.
 
     …USQL_Programmability.ParserApplier ("all")
     …USQL_Programmability.ParserApplier ("make")
     …USQL_Programmability.ParserApplier ("make&model")
 
-Uživatelem definované applier lze volat jako novou instanci třídy applier objektu:
+uživatelem definované applier Hello lze volat jako novou instanci třídy applier objektu:
 
 ```
 CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
-Nebo pomocí volání metody vytváření obálky:
+Nebo pomocí hello volání metody vytváření obálky:
 
 ```c#
     CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
 ## <a name="use-user-defined-combiners"></a>Použít combiners uživatelem definované
-Uživatelem definované kombinační nebo UDC, můžete kombinovat řádky z levé a pravé sady řádků, na základě vlastní logiky. Uživatelem definované kombinační se používá s KOMBINAČNÍ výraz.
+Uživatelem definované kombinační nebo UDC, umožňuje toocombine řádky z levé a pravé sady řádků, na základě vlastní logiky. Uživatelem definované kombinační se používá s KOMBINAČNÍ výraz.
 
-Kombinační je volaná s KOMBINAČNÍ výraz, který obsahuje potřebné informace o jak vstupní sady řádků, sloupců seskupení, očekávaný výsledek schématu a další informace.
+Výraz hello kombinovaného ÚTVARU, který poskytuje hello nezbytné informace o obou hello vstupní sady řádků se vyvolání kombinační, hello seskupení sloupců, hello očekávaný výsledek schématu a další informace.
 
-Volat kombinační v základní skript U-SQL, můžeme použít následující syntaxi:
+toocall kombinační v základní skript U-SQL, můžeme použít hello následující syntaxi:
 
 ```
 Combine_Expression :=
@@ -1826,7 +1826,7 @@ Combine_Expression :=
 
 Další informace najdete v tématu [KOMBINOVAT výrazu (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx).
 
-K definování kombinační se definovaný uživatelem, je potřeba vytvořit `ICombiner` rozhraní s [`SqlUserDefinedCombiner`] atribut, který je pro definici uživatelem definované kombinační volitelné.
+toodefine kombinační se definovaný uživatelem, potřebujeme toocreate hello `ICombiner` rozhraní s hello [`SqlUserDefinedCombiner`] atribut, který je pro definici uživatelem definované kombinační volitelné.
 
 Základní `ICombiner` definici třídy:
 
@@ -1841,7 +1841,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-Vlastní implementace `ICombiner` rozhraní by měl obsahovat definici `IEnumerable<IRow>` kombinovat přepsání.
+vlastní implementace Hello `ICombiner` rozhraní by měl obsahovat definici hello pro `IEnumerable<IRow>` kombinovat přepsání.
 
 ```
 [SqlUserDefinedCombiner]
@@ -1856,45 +1856,45 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** atribut uvádí, že typ by měl být registrován jako kombinační se uživatelem definované. Tato třída nelze dědí.
+Hello **SqlUserDefinedCombiner** atribut uvádí, které hello typ měli být registrován jako kombinační se definovaný uživatelem. Tato třída nelze dědí.
 
-**SqlUserDefinedCombiner** se používá k definování vlastnost kombinační režimu. Je volitelný atribut pro definici kombinační definovaný uživatelem.
+**SqlUserDefinedCombiner** je vlastnost režimu kombinační použité toodefine hello. Je volitelný atribut pro definici kombinační definovaný uživatelem.
 
 Režim CombinerMode
 
-Výčet CombinerMode provést následující hodnoty:
+Výčet CombinerMode může trvat hello následující hodnoty:
 
-* Úplné (0), každý řádek výstupu potenciálně závisí na všechny vstupní řádky z levé a pravé se stejnou hodnotou klíče.
+* Úplné (0), každý řádek výstupu potenciálně závisí na všechny hello vstupní řádky z levé a pravé s hello stejnou hodnotu klíče.
 
-* Doleva (1) každý řádek výstupu závisí na jeden vstupní řádek z doleva (a potenciálně všechny řádky z pravé se stejnou hodnotou klíče).
+* Každý řádek výstupu závisí na jednom řádku vstupní zleva hello doleva (1) (a potenciálně všechny řádky z hello přímo s hello stejnou hodnotu klíče).
 
-* Práva (2) každý řádek výstupu závisí na jeden vstupní řádek z vpravo (a potenciálně všechny řádky z levé straně se stejnou hodnotou klíče).
+* Každý řádek výstupu závisí na jeden vstupní řádek z hello správné vpravo (2) (a potenciálně všechny řádky z levé hello s hello stejnou hodnotu klíče).
 
-* Vnitřní (3), každý řádek výstupu závisí na jeden řádek vstupu z doleva a doprava a mají stejnou hodnotu.
+* Vnitřní (3), každý řádek výstupu závisí na jeden vstup řádek z levé a pravé s hello stejnou hodnotu.
 
 Příklad: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 
-Objekty hlavního programovatelnosti jsou:
+Hello hlavního programovatelnosti objekty jsou:
 
 ```c#
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```
 
-Vstupní sady řádků se předávají jako **levém** a **správné** `IRowset` typu rozhraní. Obě sady řádků musí být ve výčtu objevit pro zpracování. Každé rozhraní můžete pouze výčet jednou, abychom měli vytvořit výčet a uložení do mezipaměti v případě potřeby.
+Vstupní sady řádků se předávají jako **levém** a **správné** `IRowset` typu rozhraní. Obě sady řádků musí být ve výčtu objevit pro zpracování. Každé rozhraní můžete pouze výčet jednou, takže jsme tooenumerate a uložení do mezipaměti v případě potřeby.
 
-Pro ukládání do mezipaměti pro účely, můžeme vytvořit seznam\<T\> typ konstrukce paměti v důsledku LINQ spuštění dotazu, konkrétně seznam <`IRow`>. Anonymní datový typ lze během výčtu také.
+Pro ukládání do mezipaměti pro účely, můžeme vytvořit seznam\<T\> typ konstrukce paměti v důsledku LINQ spuštění dotazu, konkrétně seznam <`IRow`>. Hello anonymní datový typ můžete použít během výčtu také.
 
-V tématu [Úvod do dotazů LINQ (C#)](https://msdn.microsoft.com/library/bb397906.aspx) Další informace o dotazech LINQ a [rozhraní IEnumerable\<T\> rozhraní](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Další informace o rozhraní IEnumerable\<T\> rozhraní.
+V tématu [Úvod tooLINQ dotazů (C#)](https://msdn.microsoft.com/library/bb397906.aspx) Další informace o dotazech LINQ a [rozhraní IEnumerable\<T\> rozhraní](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Další informace o rozhraní IEnumerable\<T\> rozhraní.
 
-Chcete-li získat skutečný datových hodnot z příchozích `IRowset`, jsme použijte metodu Get() `IRow` rozhraní.
+tooget hello skutečná data hodnoty z hello příchozí `IRowset`, jsme použijte metodu Get() hello `IRow` rozhraní.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Názvy jednotlivých sloupců se dá určit pomocí volání `IRow` metoda schématu.
+Názvy jednotlivých sloupců se dá určit pomocí volání hello `IRow` metoda schématu.
 
 ```
 ISchema schema = row.Schema;
@@ -1902,13 +1902,13 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Nebo pomocí názvu sloupce schématu:
+Nebo pomocí názvu sloupce hello schématu:
 
 ```
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
-Obecné výčtu s dotazy LINQ vypadá takto:
+Obecné – výčet Hello s dotazy LINQ vypadá hello následující:
 
 ```
 var myRowset =
@@ -1919,15 +1919,15 @@ var myRowset =
                           }).ToList();
 ```
 
-Po vytvoření výčtu obě sady řádků, přidáme můžete procházet všechny řádky. Pro každý řádek v levém řádků přidáme najít všechny řádky, které splňují podmínku naše kombinační.
+Po vytvoření výčtu obě sady řádků, přidáme tooloop prostřednictvím všechny řádky. Pro každý řádek v levém řádků hello přidáme toofind všechny řádky, které splňují podmínku hello naše kombinační.
 
-Výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup.
+Hello výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup.
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Skutečný výstup se aktivuje při volání do `yield return output.AsReadOnly();`.
+aktuální výstup Hello se aktivuje při volání metody příliš`yield return output.AsReadOnly();`.
 
 Následuje příklad kombinační:
 
@@ -1983,9 +1983,9 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-V tomto scénáři případ použití jsme se vytváření zprávu o analýzy, které prodejce. Cílem je najít všechny produkty, které náklady více než 20 000 $ a který prodeje prostřednictvím webu rychleji než pomocí regulárních prodejce v určitém časovém rámci.
+V tomto scénáři případ použití jsme se vytváření zprávu o analýzy pro hello prodejce. cílem Hello je toofind všechny produkty, které náklady více než 20 000 $ a že prodeje prostřednictvím webu hello rychlejší než prostřednictvím prodejce regulární hello v určitém časovém rámci.
 
-Zde je základní skript U-SQL. Můžete porovnat logiku mezi regulárního spojení a kombinační:
+Zde je hello základní skript U-SQL. Můžete porovnat hello logiku mezi regulárního spojení a kombinační:
 
 ```sql
 DECLARE @LocalURI string = @"\usql-programmability\";
@@ -2076,18 +2076,18 @@ PRODUCE OrderDateKey int,
         Reseller_Sales_Amount decimal
 USING new USQL_Programmability.CombineSales();
 
-OUTPUT @rs1 TO @output_file1 USING Outputters.Tsv();
-OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
+OUTPUT @rs1 too@output_file1 USING Outputters.Tsv();
+OUTPUT @rs2 too@output_file2 USING Outputters.Tsv();
 ```
 
-Uživatelem definované kombinační lze volat jako novou instanci třídy applier objektu:
+Uživatelem definované kombinační lze volat jako novou instanci objektu applier hello:
 
 ```
 USING new MyNameSpace.MyCombiner();
 ```
 
 
-Nebo pomocí volání metody vytváření obálky:
+Nebo pomocí hello volání metody vytváření obálky:
 
 ```
 USING MyNameSpace.MyCombiner();
@@ -2095,13 +2095,13 @@ USING MyNameSpace.MyCombiner();
 
 ## <a name="use-user-defined-reducers"></a>Použít přechodky uživatelem definované
 
-U-SQL umožňuje psát vlastní řádků přechodky v jazyce C# s využitím rozhraní rozšiřitelnosti uživatelem definovaný operátor a implementace rozhraní IReducer.
+U-SQL umožňuje toowrite přechodky vlastní řádků v jazyce C# s využitím rozhraní rozšiřitelnosti uživatelem definovaný operátor hello a implementace rozhraní IReducer.
 
-Uživatelem definované reduktorem nebo UDR, slouží k vyloučení nepotřebných řádků při extrakci dat (Importovat). Je také slouží k manipulaci a vyhodnotit, řádků a sloupců. Na základě programovatelnosti logiky, ho můžete také definovat řádky musí být rozbalena.
+Uživatelem definované reduktorem nebo UDR, můžou být použité tooeliminate nepotřebné řádků při extrakci dat (Importovat). Také můžete být použité toomanipulate a vyhodnotit řádků a sloupců. Na základě programovatelnosti logiky, ho můžete také definovat řádky potřebovat toobe extrahovat.
 
-Můžete definovat třídu UDR, je potřeba vytvořit `IReducer` rozhraní s volitelný `SqlUserDefinedReducer` atribut.
+toodefine třídu UDR, potřebujeme toocreate `IReducer` rozhraní s volitelný `SqlUserDefinedReducer` atribut.
 
-Tato třída rozhraní by měl obsahovat definici `IEnumerable` přepsat rozhraní sady řádků.
+Tato třída rozhraní by měl obsahovat definici hello `IEnumerable` přepsat rozhraní sady řádků.
 
 ```
 [SqlUserDefinedReducer]
@@ -2116,15 +2116,15 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** atribut uvádí, že typ by měl být registrován jako reduktorem se uživatelem definované. Tato třída nelze dědí.
-**SqlUserDefinedReducer** je volitelný atribut pro definici reduktorem definovaný uživatelem. Slouží k definování IsRecursive vlastnost.
+Hello **SqlUserDefinedReducer** atribut uvádí, které hello typ měli být registrován jako reduktorem se definovaný uživatelem. Tato třída nelze dědí.
+**SqlUserDefinedReducer** je volitelný atribut pro definici reduktorem definovaný uživatelem. Použije se toodefine IsRecursive vlastnost.
 
 * BOOL IsRecursive    
 * **Hodnota TRUE,** = označuje, zda je tento reduktorem idempotent
 
-Objekty hlavního programovatelnosti **vstupní** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupní řádky. Výstup se používá k nastavení výstupní řádků v důsledku omezení aktivity.
+Hello hlavního programovatelnosti objekty jsou **vstupní** a **výstup**. vstupní objekt Hello je použité tooenumerate vstupní řádky. Výstup je použité tooset výstup řádků v důsledku omezení aktivity.
 
-Pro vstupní řádky výčet používáme `Row.Get` metoda.
+Pro vstupní řádky výčet používáme hello `Row.Get` metoda.
 
 ```
 foreach (IRow row in input.Rows)
@@ -2133,17 +2133,17 @@ foreach (IRow row in input.Rows)
 }
 ```
 
-Parametr pro `Row.Get` metoda je sloupec, který se předá jako součást `PRODUCE` třídu `REDUCE` prohlášení o základní skript U-SQL. Je potřeba použít na správný typ. zde také.
+parametr pro hello Hello `Row.Get` metoda je sloupec, který se předá jako součást hello `PRODUCE` třídu hello `REDUCE` příkaz skriptu základní hello U-SQL. Potřebujeme toouse hello správného datového typu zde také.
 
-Pro výstup, použijte `output.Set` metoda.
+Pro výstup, použijte hello `output.Set` metoda.
 
-Je důležité si uvědomit, že vlastní reduktorem výstupy pouze hodnoty, které jsou definovány pomocí `output.Set` volání metody.
+Je důležité toounderstand, který vlastní reduktorem pouze výstupy hodnoty, které jsou definovány s hello `output.Set` volání metody.
 
 ```
 output.Set<string>("mycolumn", guid);
 ```
 
-Skutečné reduktorem výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+skutečné reduktorem výstup Hello se aktivuje při volání metody `yield return output.AsReadOnly();`.
 
 Následuje příklad reduktorem:
 
@@ -2181,7 +2181,7 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-V tomto scénáři případ použití reduktorem přeskakuje řádky s prázdné jméno. Pro každý řádek v sadě řádků přečte každý požadovaný sloupec, následně vyhodnocuje délka uživatelského jména. Skutečný řádek vyprodukuje pouze v případě, že hodnota délka jména uživatele je větší než 0.
+V tomto scénáři případ použití hello reduktorem přeskakuje řádky s prázdné jméno. Pro každý řádek v sadě řádků přečte každý požadovaný sloupec, následně vyhodnocuje hello délka hello uživatelské jméno. Skutečný řádek hello vyprodukuje pouze v případě, že hodnota délka jména uživatele je větší než 0.
 
 Toto je základní skript U-SQL, která používá vlastní reduktorem:
 
@@ -2214,6 +2214,6 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
     FROM @rs1;
 
 OUTPUT @rs2 
-    TO @output_file 
+    too@output_file 
     USING Outputters.Text();
 ```

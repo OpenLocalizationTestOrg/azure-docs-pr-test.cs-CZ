@@ -1,6 +1,6 @@
 ---
-title: "Pomocí portálu hledání protokolů v Azure Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje kurz, který popisuje, jak vytvořit protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů.  Tento kurz zahrnuje spustíte pár jednoduchých dotazů vrátit různé typy dat a analýza výsledků."
+title: "aaaUsing hello hledání protokolů portálu v Azure Log Analytics | Microsoft Docs"
+description: "Tento článek obsahuje kurz, který popisuje, jak toocreate protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů hello.  kurz Hello zahrnuje spouštění několik jednoduchých dotazů tooreturn různé typy dat a analýza výsledků."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2e6633d548bb508edc0c650d11d2c32fc6ee536c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Vytvoření protokolu hledání v Azure Log Analytics pomocí portálu hledání protokolů
+# <a name="create-log-searches-in-azure-log-analytics-using-hello-log-search-portal"></a>Vytvoření protokolu hledání v Azure Log Analytics pomocí portálu hledání protokolů hello
 
 > [!NOTE]
-> Tento článek popisuje portálu hledání protokolů v Azure Log Analytics jazykem nový dotaz.  Můžete získat další informace o nový jazyk a získat postup upgradu pracovního prostoru v [upgradu pracovní prostor analýzy protokolů Azure na nové hledání protokolu](log-analytics-log-search-upgrade.md).  
+> Tento článek popisuje hello hledání protokolů portálu v Azure Log Analytics pomocí dotazovacího jazyka pro nové hello.  Můžete získat další informace o nový jazyk hello a získat hello postup tooupgrade pracovního prostoru v [Upgrade vyhledávání protokolu toonew pracovní prostor analýzy protokolů Azure](log-analytics-log-search-upgrade.md).  
 >
-> Pokud pracovní prostor nebyla upgradována, aby nové dotazovací jazyk, se seznamte s [najít data pomocí protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) informace o aktuální verzi portálu hledání protokolů.
+> Pokud pracovní prostor nebyla upgradovaná toohello nové dotazovací jazyk, se seznamte s příliš[najít data pomocí protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) informace o aktuální verzi portálu hledání protokolů hello hello.
 
-Tento článek obsahuje kurz, který popisuje, jak vytvořit protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů.  Tento kurz zahrnuje spustíte pár jednoduchých dotazů vrátit různé typy dat a analýza výsledků.  Zaměřuje se na funkce na portálu hledání protokolů pro úpravy dotazu a nikoli změny přímo.  Podrobnosti o přímou úpravou dotazu, najdete v článku [referenční příručka jazyka dotazů](https://go.microsoft.com/fwlink/?linkid=856079).
+Tento článek obsahuje kurz, který popisuje, jak toocreate protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů hello.  kurz Hello zahrnuje spouštění několik jednoduchých dotazů tooreturn různé typy dat a analýza výsledků.  Zaměřuje se na funkce portálu hello hledání protokolů pro úpravy hello dotazu a nikoli změny přímo.  Podrobnosti o přímou úpravou dotazu hello, najdete v části hello [referenční příručka jazyka dotazů](https://go.microsoft.com/fwlink/?linkid=856079).
 
-Vytvoření vyhledávání v portálu pokročilé analýzy místo portálu vyhledávání protokolu naleznete v tématu [Začínáme s portálu analýza](https://go.microsoft.com/fwlink/?linkid=856587).  Oba Portály pomocí stejné dotazovací jazyk přístup ke stejným datům v pracovním prostoru analýzy protokolů.
+hledání toocreate portálu hello pokročilé analýzy místo hello hledání protokolů portálu, najdete v části [Začínáme s hello portálu analýza](https://go.microsoft.com/fwlink/?linkid=856587).  Oba Portály použít hello stejný dotaz jazyka tooaccess hello stejná data v pracovní prostor analýzy protokolů hello.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz předpokládá, že už máte pracovní prostor analýzy protokolů s alespoň jeden připojený zdroj, který generuje data pro dotazy k analýze.  
+Tento kurz předpokládá, že už máte pracovní prostor analýzy protokolů s alespoň jeden připojený zdroj, který generuje data pro dotazy tooanalyze hello.  
 
-- Pokud nemáte pracovní prostor, můžete vytvořit volné jeden pomocí postupu v [začít pracovat s pracovní prostor analýzy protokolů](log-analytics-get-started.md).
-- Připojit aspoň jeden [agenta Windows](log-analytics-windows-agents.md) nebo jednu [agenta systému Linux](log-analytics-linux-agents.md) do pracovního prostoru.  
+- Pokud nemáte pracovní prostor, můžete vytvořit volné jedním postupem hello v [začít pracovat s pracovní prostor analýzy protokolů](log-analytics-get-started.md).
+- Připojit aspoň jeden [agenta Windows](log-analytics-windows-agents.md) nebo jednu [agenta systému Linux](log-analytics-linux-agents.md) toohello prostoru.  
 
-## <a name="open-the-log-search-portal"></a>Otevřete portál hledání protokolů
-Začněte otevřením portálu hledání protokolů.  Můžete k němu přístup v portálu Azure nebo na portálu OMS.
+## <a name="open-hello-log-search-portal"></a>Otevřete hello hledání protokolů portálu
+Začněte otevřením portálu hledání protokolů hello.  Můžete k němu přístup v hello portál Azure nebo portálu OMS hello.
 
-1. Otevřete portál Azure.
-2. Přejděte k analýze protokolů a vyberte pracovní prostor.
-3. Vyberte buď **hledání protokolů** zůstat na webu Azure portal nebo spusťte na portálu OMS výběrem **portálu OMS** a kliknutím na tlačítko Hledat protokolu.
+1. Otevřete hello portálu Azure.
+2. Přejděte tooLog analýzy a vyberte pracovní prostor.
+3. Vyberte buď **hledání protokolů** toostay v hello Azure portal nebo spusťte hello portálu OMS výběrem **portálu OMS** a potom kliknutím na tlačítko hledání protokolů hello.
 
 ![Tlačítko vyhledat protokolu](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>Vytvoření jednoduché hledání
-Nejrychlejší způsob, jak načíst některá data pro práci s je jednoduchý dotaz, který vrátí všechny záznamy v tabulce.  Pokud máte jakékoli klienti systému Windows nebo Linux připojení do pracovního prostoru, pak budete mít data v událostí (Windows) nebo tabulka Syslog (Linux).
+Hello nejrychlejší způsob, jak tooretrieve některé toowork data s je jednoduchý dotaz, který vrátí všechny záznamy v tabulce.  Pokud máte jakékoli systému Windows nebo Linux prostoru připojené tooyour klientů, budete mít data v buď hello událostí (Windows) nebo tabulka, Syslog (Linux).
 
-Zadejte jednu následující dotazy do vyhledávacího pole a klikněte na tlačítko Hledat.  
+Zadejte jeden hello následující dotazy hello vyhledávacího pole a klikněte na tlačítko Hledat hello.  
 
 ```
 Event
@@ -57,27 +57,27 @@ Event
 Syslog
 ```
 
-Data jsou vrácena ve výchozím zobrazení seznamu a můžete zobrazit celkový počet záznamů vrácených.
+Data jsou vrácena v zobrazení seznamu výchozí hello a můžete zobrazit celkový počet záznamů vrácených.
 
 ![Jednoduchý dotaz](media/log-analytics-log-search-log-search-portal/log-search-portal-01.png)
 
-Zobrazí se pouze první několik vlastnosti každý záznam.  Klikněte na tlačítko **zobrazit další** zobrazíte všechny vlastnosti pro konkrétní záznam.
+Pouze hello první několik vlastností každý záznam se zobrazí.  Klikněte na tlačítko **zobrazit další** toodisplay všechny vlastnosti pro konkrétní záznam.
 
 ![Podrobnosti záznamu](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
 
-## <a name="set-the-time-scope"></a>Nastavit obor čas
-Každý záznam shromažďují analýzy protokolů má **TimeGenerated** vlastnost, která obsahuje datum a čas, který byl vytvořen záznam.  Dotaz na portálu hledání protokolů pouze vrátí záznamy s **TimeGenerated** v rámci oboru čas, který se zobrazí na levé straně obrazovky.  
+## <a name="set-hello-time-scope"></a>Nastavit obor čas hello
+Každý záznam shromažďují analýzy protokolů má **TimeGenerated** vlastnost, která obsahuje hello datum a čas vytvoření tohoto záznamu hello.  Dotaz portálu hledání protokolů hello pouze vrátí záznamy s **TimeGenerated** v rámci oboru hello čas, který se zobrazí na levé straně obrazovky hello hello.  
 
-Filtr času můžete změnit tak, že vyberete rozevíracího seznamu nebo změnou posuvníku.  Posuvník Zobrazí pruhový graf, který se zobrazuje číslo relativní záznamů pro každý segment čas v rozsahu.  Tento segment se bude lišit v závislosti na rozsahu.
+Filtr času hello můžete změnit tak, že vyberete hello rozevírací nebo změnou hello posuvníku.  posuvník Hello Zobrazí pruhový graf, který ukazuje hello relativní počet záznamů pro každý segment čas v rozsahu hello.  Tento segment se bude lišit v závislosti na rozsahu hello.
 
-Rozsah výchozí doba je **1 den**.  Změna této hodnoty na **7 dní**, a celkový počet záznamů měli zvýšit.
+Hello výchozí čas obor je **1 den**.  Tuto hodnotu změnit příliš**7 dní**, a celkový počet záznamů hello měli zvýšit.
 
 ![Datum čas oboru](media/log-analytics-log-search-log-search-portal/log-search-portal-03.png)
 
-## <a name="filter-results-of-the-query"></a>Filtrování výsledků dotazu
-Na levé straně obrazovky je podokno filtru, která umožňuje filtrování chcete do dotazu přidat bez změny přímo.  Několik vlastností vrácené záznamy jsou zobrazit s jejich hodnoty prvních deset s jejich počet záznamů.
+## <a name="filter-results-of-hello-query"></a>Filtrování výsledků dotazu hello
+Na hello je levé straně obrazovky hello hello podokno filtru, která vám umožní tooadd filtrování toohello dotazu bez změny přímo.  Zobrazí se několik vlastnosti hello záznamů vrácených s jejich top deset hodnoty s jejich počet záznamů.
 
-Pokud pracujete s **událostí**, zaškrtněte políčko vedle **chyba** pod **EVENTLEVELNAME**.   Pokud pracujete s **Syslog**, zaškrtněte políčko vedle **chyba** pod **úroveň ZÁVAŽNOSTI**.  Tato operace změní dotaz na jednu z těchto omezit výsledky do chybové události.
+Pokud pracujete s **událostí**, vyberte hello zaškrtávací políčko vedle příliš**chyba** pod **EVENTLEVELNAME**.   Pokud pracujete s **Syslog**, vyberte hello zaškrtávací políčko vedle příliš**chyba** pod **úroveň ZÁVAŽNOSTI**.  Tato operace změní hello dotazů tooone hello následující toolimit hello výsledků tooerror události.
 
 ```
 Event | where (EventLevelName == "Error")
@@ -88,28 +88,28 @@ Syslog | where (SeverityLevel == "err")
 
 ![Filtr](media/log-analytics-log-search-log-search-portal/log-search-portal-04.png)
 
-Přidání vlastnosti do podokna filtru tak, že vyberete **přidat do filtry** na jeden ze záznamů v nabídce vlastnost.
+Přidat vlastnosti toohello podokno filtru tak, že vyberete **přidat toofilters** z nabídky vlastnost hello na jednom hello záznamů.
 
-![Přidání do nabídky filtru](media/log-analytics-log-search-log-search-portal/log-search-portal-02a.png)
+![Přidat nabídku toofilter](media/log-analytics-log-search-log-search-portal/log-search-portal-02a.png)
 
-Stejný filtr můžete nastavit tak, že vyberete **filtru** z nabídky vlastnost pro záznam s hodnotou, který chcete filtrovat.  
+Můžete nastavit hello stejné filtrovat výběrem **filtru** nabídce hello vlastnost pro záznam s hodnotou hello chcete toofilter.  
 
-Můžete mít pouze **filtru** možnost Vlastnosti s jejich název modře.  Jedná se o *prohledávatelné* pole, které jsou indexované pro podmínky vyhledávání.  Pole šedě jsou *volné text prohledávatelné* pole, které mají jenom **zobrazit odkazy** možnost.  Tato možnost vrátí záznamy, které mají tuto hodnotu v libovolné vlastnosti.
+Máte hello **filtru** možnost Vlastnosti s jejich název modře.  Jedná se o *prohledávatelné* pole, které jsou indexované pro podmínky vyhledávání.  Pole šedě jsou *volné text prohledávatelné* pole, které mají jenom hello **zobrazit odkazy** možnost.  Tato možnost vrátí záznamy, které mají tuto hodnotu v libovolné vlastnosti.
 
 ![Filtr nabídky](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-Výsledky na jedinou vlastností můžete seskupovat podle výběru **Seskupit podle** možnost v nabídce záznam.  Bude přidáno [shrnout](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) operátor do dotazu, který zobrazí výsledky v grafu.  Můžete seskupit na více než jednu vlastnost, ale budete muset upravit dotaz přímo.  Vyberte nabídku záznam Další **počítače** vlastnost a vyberte **Seskupit podle "Počítač"**.  
+Můžete seskupit hello výsledky na jedinou vlastnost výběrem hello **Seskupit podle** možnost v nabídce záznam hello.  Bude přidáno [shrnout](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) dotazu tooyour operátor, který zobrazí výsledky hello v grafu.  Můžete seskupit na více než jednu vlastnost, ale měli byste tooedit hello dotaz přímo.  Vyberte hello záznamů nabídky Další hello hello **počítače** vlastnost a vyberte **Seskupit podle "Počítač"**.  
 
 ![Seskupit podle počítače](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
 ## <a name="work-with-results"></a>Práce s výsledky
-Portál vyhledávání protokolu obsahuje řadu funkcí pro práci s výsledky dotazu.  Můžete řadit, filtr a výsledky skupiny k analýze dat bez úpravy skutečné dotazu.  Ve výchozím nastavení nejsou seřazeny výsledků dotazu.
+portál hledání protokolů Hello obsahuje řadu funkcí pro práci s hello výsledků dotazu.  Můžete řadit, filtr a seskupení výsledků tooanalyze hello dat bez úpravy dotazu skutečné hello.  Ve výchozím nastavení nejsou seřazeny výsledků dotazu.
 
-Chcete-li zobrazit data v tabulce formulář, který nabízí další možnosti pro filtrování a řazení, klikněte na tlačítko **tabulky**.  
+tooview hello dat v tabulce formulář, který nabízí další možnosti pro filtrování a řazení, klikněte na tlačítko **tabulky**.  
 
 ![Zobrazení tabulky](media/log-analytics-log-search-log-search-portal/log-search-portal-05.png)
 
-Klikněte na šipku podle záznam zobrazíte podrobnosti pro tento záznam.
+Klikněte na šipku hello pomocí záznamu tooview hello podrobnosti pro tento záznam.
 
 ![Řazení výsledků](media/log-analytics-log-search-log-search-portal/log-search-portal-06.png)
 
@@ -117,18 +117,18 @@ Klikněte na šipku podle záznam zobrazíte podrobnosti pro tento záznam.
 
 ![Řazení výsledků](media/log-analytics-log-search-log-search-portal/log-search-portal-07.png)
 
-Filtrování výsledků na konkrétní hodnotu ve sloupci klepnutím na tlačítko filtru a poskytnutím podmínku filtrování.
+Filtrování výsledků hello na konkrétní hodnotu ve sloupci hello kliknutím na tlačítko Filtrovat hello a poskytnutím podmínku filtrování.
 
 ![Filtrování výsledků](media/log-analytics-log-search-log-search-portal/log-search-portal-08.png)
 
-Skupiny na sloupci, přetáhněte záhlaví sloupce na začátek výsledky.  Přetažením více sloupců do horní části můžete seskupit více polí.
+Skupiny na sloupci tak, že přetáhnete nahoře toohello záhlaví sloupce hello výsledků.  Můžete seskupit více polí přetažením horní toohello více sloupců.
 
 ![Výsledky skupiny](media/log-analytics-log-search-log-search-portal/log-search-portal-09.png)
 
 
 
 ## <a name="work-with-performance-data"></a>Práce s data výkonu
-Údaje o výkonu pro systém Windows a Linux agentů je uložen v prostoru analýzy protokolů **výkonu** tabulky.  Zaznamenává výkonu vypadají stejně jako jakýkoli jiný záznam a jsme může zapisovat jednoduchý dotaz, který vrátí že všechny záznamy výkonu stejně jako s událostmi.
+Údaje o výkonu pro systém Windows a Linux agentů je uložen v prostoru analýzy protokolů hello hello **výkonu** tabulky.  Zaznamenává výkonu vypadají stejně jako jakýkoli jiný záznam a jsme může zapisovat jednoduchý dotaz, který vrátí že všechny záznamy výkonu stejně jako s událostmi.
 
 ```
 Perf
@@ -136,7 +136,7 @@ Perf
 
 ![Údaje o výkonu](media/log-analytics-log-search-log-search-portal/log-search-portal-11.png)
 
-Vrácení miliony záznamů pro všechny objekty výkonu a čítače, když není velmi užitečné.  Můžete použít stejné metody, které jste použili výše a filtrujte data nebo právě zadejte následující dotaz přímo do vyhledávacího pole protokolu.  Tento příkaz vrátí jenom procesoru záznamů využití pro počítače se systémy Windows a Linux.
+Vrácení miliony záznamů pro všechny objekty výkonu a čítače, když není velmi užitečné.  Hello stejné metody, které můžete použít výše toofilter hello dat nebo jednoduše zadejte hello následující dotaz můžete použít přímo do vyhledávacího pole hello protokolu.  Tento příkaz vrátí jenom procesoru záznamů využití pro počítače se systémy Windows a Linux.
 
 ```
 Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time")
@@ -144,7 +144,7 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 
 ![Využití procesoru](media/log-analytics-log-search-log-search-portal/log-search-portal-12.png)
 
-Toto nastavení omezuje data na konkrétní čítače, ale je stále není pro něj formulář, který je obzvláště užitečné.  Můžete zobrazit data ve spojnicovém grafu, ale nejprve skupiny tak, že počítač a TimeGenerated.  K seskupení více polí, je nutné upravit dotaz přímo, takže upravit dotaz pro následující.  Tato služba využívá [průměr](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) na fungovat **přepočtené** vlastnost pro výpočet průměrné hodnoty přes každou hodinu.
+Toto nastavení omezuje hello data tooa konkrétní čítače, ale je stále není pro něj formulář, který je obzvláště užitečné.  Můžete zobrazit hello data v spojnicový graf, ale nejprve toogroup ji tak, že počítač a TimeGenerated.  toogroup více polí, je nutné dotaz hello toomodify přímo, takže upravit následující toohello hello dotazu.  Tato služba využívá hello [průměr](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) funkce na hello **přepočtené** průměrnou hodnotu vlastnosti toocalculate hello přes každou hodinu.
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
@@ -152,7 +152,7 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ![Data grafu výkonu](media/log-analytics-log-search-log-search-portal/log-search-portal-13.png)
 
-Teď, když vhodně seskupuje data, můžete zobrazit jeho v visual graf tak, že přidáte [vykreslení](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) operátor.  
+Teď, když jsou seskupena vhodně hello data, můžete zobrazit jeho v visual graf přidáním hello [vykreslení](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) operátor.  
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
@@ -162,5 +162,5 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o analýzy protokolů dotazovací jazyk v [Začínáme s portálu analýza](https://go.microsoft.com/fwlink/?linkid=856079).
-- Provede kurz pomocí [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587) která umožňuje spouštět stejné dotazy a přístup ke stejným datům jako portál hledání protokolů.
+- Další informace o hello analýzy protokolů dotazu jazyka v [Začínáme s hello portálu analýza](https://go.microsoft.com/fwlink/?linkid=856079).
+- Provede kurz pomocí hello [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587) který vám umožní toorun hello stejné dotazů a přístup hello stejná data jako portál hledání protokolů hello.

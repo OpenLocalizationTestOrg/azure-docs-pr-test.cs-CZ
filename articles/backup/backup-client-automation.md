@@ -1,6 +1,6 @@
 ---
-title: "Zálohování Windows serveru do Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak nasadit a spravovat Azure Backup pomocí prostředí PowerShell"
+title: "aaaUse prostředí PowerShell tooback až Windows serveru tooAzure | Microsoft Docs"
+description: "Zjistěte, jak toodeploy a spravovat Azure Backup pomocí prostředí PowerShell"
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: d3f165c749af0553c4918b33b0d24cc1e21af2a9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f13224f53abd6fbd132fee4347b0b99e8f5e2678
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
+# <a name="deploy-and-manage-backup-tooazure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správě zálohování tooAzure pro klienta systému Windows Server a Windows pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [ARM](backup-client-automation.md)
 > * [Classic](backup-client-automation-classic.md)
 >
 >
 
-Tento článek ukazuje, jak pomocí prostředí PowerShell pro nastavení služby Azure Backup na Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
+Tento článek ukazuje, jak toouse prostředí PowerShell pro nastavení služby Azure Backup na Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Tento článek se zaměřuje na Azure Resource Manager (ARM) a rutiny MS Online zálohování Powershellu, které vám umožní používat Trezor služeb zotavení ve skupině prostředků.
+Tento článek se zaměřuje na hello Azure Resource Manager (ARM) a hello rutiny prostředí PowerShell zálohování Online s MS, povolit toouse trezoru služeb zotavení ve skupině prostředků.
 
-Října 2015 byla vydána Azure PowerShell 1.0. Tato verze 0.9.8 bylo úspěšně dokončeno. Uvolněte a uvést do režimu o významné změny, zejména v vzoru pro pojmenovávání rutin. Rutiny verze 1.0 dodržují formát pojmenování {sloveso}-AzureRm {podstatné jméno}, kdežto názvy ve verzi 0.9.8 neobsahují označení **Rm** (třeba New-AzureRmResourceGroup místo New-AzureResourceGroup). Pokud používáte prostředí Azure PowerShell 0.9.8, musíte nejdřív spuštěním příkazu **Switch-AzureMode AzureResourceManager** spustit režim Resource Manager. Tento příkaz není nutné v 1.0 nebo novější.
+Října 2015 byla vydána Azure PowerShell 1.0. Tato verze byla úspěšná hello 0.9.8 verze a uvést do režimu o významné změny, zejména v vzoru pro pojmenovávání hello rutin hello. postupujte podle 1.0 rutiny hello formát pojmenování {sloveso}-AzureRm {podstatné jméno}; vzhledem k tomu, názvy hello 0.9.8 neobsahují **Rm** (třeba New-AzureRmResourceGroup místo New-AzureResourceGroup). Pokud používáte prostředí Azure PowerShell 0.9.8, musíte nejdřív povolit režimu Resource Manager hello spuštěním hello **Switch-AzureMode AzureResourceManager** příkaz. Tento příkaz není nutné v 1.0 nebo novější.
 
-Pokud chcete použít skripty napsané pro verzi 0.9.8 prostředí v prostředí 1.0 nebo novější, měli byste pečlivě aktualizace a testovat skripty v předprodukčním prostředí před jejich používání v produkčním prostředí předejdete neočekávané dopad.
+Pokud chcete toouse skripty napsané pro prostředí hello 0.9.8, v hello 1.0 nebo novější prostředí, měli pečlivě aktualizace a testování skriptů hello v předprodukčním prostředí, než je použijete v produkčním tooavoid neočekávané dopad.
 
-[Stáhněte si nejnovější verzi prostředí PowerShell](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
+[Stáhněte si nejnovější verzi prostředí PowerShell hello](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
 
 [!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
-Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor služeb zotavení se liší od úložiště záloh.
+Hello následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor služeb zotavení se liší od úložiště záloh.
 
-1. Pokud používáte Azure Backup poprvé, musíte použít **Register-AzureRMResourceProvider** rutiny k registraci poskytovatele služeb zotavení Azure s vaším předplatným.
+1. Pokud používáte Azure Backup pro hello poprvé, musíte použít hello **Register-AzureRMResourceProvider** rutiny tooregister hello službu Azure Recovery zprostředkovatele s vaším předplatným.
 
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-2. Trezor služeb zotavení je prostředek ARM, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte název a umístění pro skupinu prostředků.  
+2. Hello trezor služeb zotavení je ARM prostředek, takže je třeba tooplace ji ve skupině prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte hello název a umístění pro skupinu prostředků hello.  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. Použití **New-AzureRmRecoveryServicesVault** vytvořte nový trezor. Ujistěte se, že zadejte stejné umístění pro úložiště, jako byl použit pro skupinu prostředků.
+3. Použití hello **New-AzureRmRecoveryServicesVault** rutiny toocreate hello nový trezor. Ujistěte se, toospecify hello stejné umístění pro hello trezoru, protože byl použit pro skupinu prostředků hello.
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
-4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testVault nastavena na GeoRedundant.
+4. Zadejte typ hello toouse redundance úložiště; můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Hello následující příklad ukazuje, že je možnost hello - BackupStorageRedundancy pro testVault nastavena tooGeoRedundant.
 
    > [!TIP]
-   > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení jako vstup. Z tohoto důvodu je vhodné pro uložení objektu trezoru služeb zotavení zálohování v proměnné.
+   > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení hello jako vstup. Z tohoto důvodu je vhodné toostore hello služeb zotavení zálohy trezoru objekt v proměnné.
    >
    >
 
@@ -72,10 +72,10 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit trezorů v předplatném.
-Použití **Get-AzureRmRecoveryServicesVault** Chcete-li zobrazit seznam všech trezorů v aktuálním předplatném. Tento příkaz můžete použít, chcete-li zkontrolovat, zda byl vytvořen nový trezor nebo jaké trezory jsou k dispozici v rámci předplatného.
+## <a name="view-hello-vaults-in-a-subscription"></a>Zobrazení hello trezorů v předplatném.
+Použití **Get-AzureRmRecoveryServicesVault** tooview hello seznam všech trezorů v aktuálním předplatném hello. Můžete použít tento příkaz toocheck, zda byl vytvořen nový trezor nebo toosee jaké trezory jsou k dispozici v rámci předplatného hello.
 
-Spusťte příkaz, **Get-AzureRmRecoveryServicesVault**, a jsou uvedeny všechny trezorů v rámci předplatného.
+Spusťte příkaz hello **Get-AzureRmRecoveryServicesVault**, a jsou uvedeny všechny trezorů v předplatném hello.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault
@@ -89,10 +89,10 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="installing-the-azure-backup-agent"></a>Instalace agenta Azure Backup
-Před instalací agenta Azure Backup, musíte mít instalační program stažené a existuje v systému Windows Server. Můžete získat nejnovější verzi instalačního programu z [Microsoft Download Center](http://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu trezoru služeb zotavení. Instalační program uložte na snadno dostupném místě jako * C:\Downloads\*.
+## <a name="installing-hello-azure-backup-agent"></a>Instalace agenta Azure Backup hello
+Před instalací agenta Azure Backup hello, musíte instalační program toohave hello stažené a na serveru Windows hello. Můžete získat nejnovější verzi instalačního programu hello hello hello [Microsoft Download Center](http://aka.ms/azurebackup_agent) nebo z trezoru služeb zotavení hello stránka řídicího panelu. Uložení instalačního programu hello tooan snadno dostupné místo jako * C:\Downloads\*.
 
-Chcete-li získat nástroj pro stažení programu Alternativně pomocí prostředí PowerShell:
+Můžete taky použijte programu hello tooget prostředí PowerShell:
  
  ```
  $MarsAURL = 'Http://Aka.Ms/Azurebackup_Agent'
@@ -101,33 +101,33 @@ Chcete-li získat nástroj pro stažení programu Alternativně pomocí prostře
  C:\Downloads\MARSAgentInstaller.EXE /q
  ```
 
-Pokud chcete nainstalovat agenta, spusťte v konzolu prostředí PowerShell se zvýšenými oprávněními následující příkaz:
+tooinstall hello agenta, spusťte následující příkaz v konzolu prostředí PowerShell se zvýšenými oprávněními hello:
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
 ```
 
-Tím se nainstaluje agent s výchozími možnostmi. Instalace trvá několik minut na pozadí. Pokud nezadáte */nu* možnost potom **Windows Update** otevře se okno na konci instalace k vyhledání všech aktualizací. Po instalaci agenta se zobrazí v seznamu nainstalovaných programů.
+Tím se nainstaluje hello agent se všemi možnostmi výchozí hello. Hello instalace trvá několik minut v pozadí hello. Pokud nezadáte hello */nu* možnost pak hello **Windows Update** otevře se okno na konci hello hello toocheck instalace pro všechny aktualizace. Po instalaci agenta hello se zobrazí v seznamu nainstalovaných programů hello.
 
-Chcete-li zobrazit seznam nainstalovaných programů, přejděte na **ovládací panely** > **programy** > **programy a funkce**.
+toosee hello seznamu nainstalovaných programů, přejděte příliš**ovládací panely** > **programy** > **programy a funkce**.
 
 ![Instalaci agenta](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Možnosti instalace
-Pokud chcete zobrazit všechny možnosti, které jsou k dispozici prostřednictvím příkazového řádku, použijte následující příkaz:
+toosee, které všechny možnosti, které jsou k dispozici prostřednictvím hello hello příkazového řádku, použijte následující příkaz hello:
 
 ```
 PS C:\> MARSAgentInstaller.exe /?
 ```
 
-Mezi dostupné možnosti patří:
+Hello dostupné možnosti patří:
 
 | Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
 | /q |Tichá instalace |- |
-| / p: "umístění" |Cesta ke složce instalace pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services agenta |
-| / s: "umístění" |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Výslovný souhlas ke službě Microsoft Update |- |
+| / p: "umístění" |Cesta toohello instalační složku pro agenta Azure Backup hello. |C:\Program Files\Microsoft Azure Recovery Services agenta |
+| / s: "umístění" |Složka mezipaměti toohello cestu pro agenta Azure Backup hello. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Výslovný souhlas tooMicrosoft aktualizace |- |
 | /nu |Nekontrolovat aktualizace po dokončení instalace |- |
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa proxy hostitele |- |
@@ -135,31 +135,31 @@ Mezi dostupné možnosti patří:
 | /Pu |Uživatelské jméno proxy hostitele |- |
 | /pW |Heslo pro proxy server |- |
 
-## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrace systému Windows Server a klientský počítač systému Windows do trezoru služeb zotavení
-Po vytvoření trezoru služeb zotavení, stáhněte si nejnovější verzi agenta a přihlašovací údaje trezoru a uložte ho do vhodného umístění jako C:\Downloads.
+## <a name="registering-windows-server-or-windows-client-machine-tooa-recovery-services-vault"></a>Registrace systému Windows Server a Windows klientský počítač tooa trezoru služeb zotavení
+Po vytvoření trezoru služeb zotavení hello stáhnout nejnovější verzi agenta hello a přihlašovací údaje trezoru hello a uložte ho do vhodného umístění jako C:\Downloads.
 
 ```
 PS C:\> $credspath = "C:\downloads"
 PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
-V systému Windows Server nebo klientský počítač systému Windows, spusťte [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny počítač zaregistrovat v trezoru.
-Tato a další rutiny používané pro zálohování, jsou z MSONLINE modul, který Mars AgentInstaller přidat jako součást procesu instalace. 
+Na serveru Windows hello nebo klientský počítač systému Windows, spusťte hello [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny tooregister hello počítač s hello trezoru.
+Tato a další rutiny používané pro zálohování, jsou z modulu MSONLINE hello které hello Mars AgentInstaller přidat jako součást procesu instalace hello. 
 
-Instalační program agenta nelze aktualizovat $Env: PSModulePath proměnné. To znamená, že automaticky načíst modul selže. Tento problém vyřešíte tak můžete provést následující:
+Instalační program agenta Hello neaktualizuje hello $Env: PSModulePath proměnné. To znamená, že automaticky načíst modul selže. tooresolve to můžete provést následující hello:
 
 ```
 PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules
 ```
 
-Alternativně můžete ručně načíst modul ve vašem skriptu následujícím způsobem:
+Alternativně můžete ručně načíst modul hello ve vašem skriptu následujícím způsobem:
 
 ```
 PS C:\>  Import-Module  'C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup'
 
 ```
 
-Po načtení rutiny Online zálohování, zaregistrujte se přihlašovací údaje úložiště:
+Po načtení hello Online zálohování rutiny zaregistrujete přihlašovací údaje trezoru hello:
 
 
 ```
@@ -173,16 +173,16 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> Nepoužívejte relativní cesty k určení souboru s přihlašovacími údaji. Jako vstup do rutiny, musí zadat absolutní cestu.
+> Nepoužívejte soubor s relativní cesty toospecify hello přihlašovacími údaji. Musíte zadat absolutní cestu jako vstupní toohello rutiny.
 >
 >
 
 ## <a name="networking-settings"></a>Nastavení sítě
-Pokud připojení Windows počítače k Internetu prostřednictvím proxy serveru, nastavení proxy serveru se dá zadat i k agentovi. V tomto příkladu neexistuje žádný proxy server, takže jsme jsou explicitně vymazání údaje související s proxy serverem.
+Při připojení hello hello Windows počítač toohello je Internetu prostřednictvím proxy serveru, nastavení proxy serveru hello se dá zadat i toohello agenta. V tomto příkladu neexistuje žádný proxy server, takže jsme jsou explicitně vymazání údaje související s proxy serverem.
 
-Využití šířky pásma se dá taky nastavit pomocí možnosti ```work hour bandwidth``` a ```non-work hour bandwidth``` pro danou sadu dny v týdnu.
+Využití šířky pásma také lze kontrolovat pomocí možnosti hello ```work hour bandwidth``` a ```non-work hour bandwidth``` pro danou sadu dny v týdnu hello.
 
-Nastavení serveru proxy a šířky pásma podrobnosti se provádí pomocí [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) rutiny:
+Nastavení serveru proxy a šířky pásma podrobnosti hello se provádí pomocí hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) rutiny:
 
 ```
 PS C:\> Set-OBMachineSetting -NoProxy
@@ -193,7 +193,7 @@ Server properties updated successfully.
 ```
 
 ## <a name="encryption-settings"></a>Nastavení šifrování
-Zálohování data přenášená do služby Azure Backup je zašifrovaná chránit jejich důvěrnost dat. Šifrovací přístupové heslo je 'heslo' k dešifrování dat v době obnovení.
+zálohování dat odesílaných tooAzure Hello zálohování je šifrovaný tooprotect hello důvěrnost dat hello. šifrovací přístupové heslo Hello jsou hello "password" toodecrypt hello data v době obnovení hello.
 
 ```
 PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
@@ -204,30 +204,30 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Zachování informací o přístupové heslo bezpečném, po nastavení. Není možné obnovit data ze služby Azure bez tohoto hesla.
+> Zachování informací o přístupové heslo hello bezpečném, po nastavení. Nejsou-li být schopný toorestore dat z Azure bez tohoto hesla.
 >
 >
 
 ## <a name="back-up-files-and-folders"></a>Zálohování souborů a složek
-Zásady se řídí všechny zálohy ze Windows serverů a klientů do služby Azure Backup. Zásady se skládá ze tří částí:
+Zásady se řídí všech záloh z Windows serverů a klientů tooAzure zálohování. Hello zásad se skládá ze tří částí:
 
-1. A **plán zálohování** určující při zálohování muset provést a synchronizovat se službou.
-2. A **plán uchovávání informací** který určuje, jak dlouho chcete zachovat body obnovení v Azure.
+1. A **plán zálohování** určující, kdy zálohování potřebovat toobe provést a synchronizovat se službou hello.
+2. A **plán uchovávání informací** určující, jak dlouho body obnovení hello tooretain v Azure.
 3. A **zadání zahrnutí nebo vyloučení souboru** který určuje, co by měl být zálohovány.
 
-V tomto dokumentu protože jsme se automatizaci zálohování, budete předpokládáme, že nic nebyl nakonfigurován. Začneme vytvořením nové zásady zálohování pomocí [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) rutiny.
+V tomto dokumentu protože jsme se automatizaci zálohování, budete předpokládáme, že nic nebyl nakonfigurován. Začneme vytvořením nové zásady zálohování pomocí hello [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) rutiny.
 
 ```
 PS C:\> $newpolicy = New-OBPolicy
 ```
 
-V tuto chvíli je prázdné zásady a ostatní rutiny jsou potřebné k definování položky, které je budou zahrnuté ani vyloučené, při zálohování se spustí, a tam, kde se uloží v zálohování.
+V tento čas hello je prázdné zásady a jiné rutiny jsou potřebné toodefine co položky budou zahrnout nebo vyloučit, při zálohování spustí a kde hello zálohy budou uloženy.
 
-### <a name="configuring-the-backup-schedule"></a>Konfigurace plánu zálohování
-První den 3 části zásada je plán zálohování, která je vytvořena pomocí [New-OBSchedule](https://technet.microsoft.com/library/hh770401) rutiny. Plán zálohování definuje, kdy je třeba přijmout zálohy. Při vytváření plánu je třeba zadat 2 vstupní parametry:
+### <a name="configuring-hello-backup-schedule"></a>Konfigurace plánu zálohování hello
+nejprve Hello hello 3 části zásady je plán zálohování hello, který je vytvořený pomocí hello [New-OBSchedule](https://technet.microsoft.com/library/hh770401) rutiny. plán zálohování Hello definuje při zálohování potřebovat toobe provedena. Při vytváření plánu je třeba toospecify 2 vstupní parametry:
 
-* **Dny v týdnu** , má-li spustit zálohování. Můžete spustit úlohu zálohování na právě jeden den nebo každý den v týdnu nebo libovolnou kombinaci mezi nimi.
-* **Časy dne** spuštění zálohování. Můžete definovat až 3 různou dobu, kdy se spustí zálohování.
+* **Počet dnů v týdnu hello** zálohování hello měly být spuštěny. Můžete spustit úlohy zálohování hello pouze jeden den nebo každý den v týdnu hello nebo libovolnou kombinaci mezi nimi.
+* **Hello denní dobu** spuštění zálohování hello. Můžete definovat až too3 různou dobu hello, když se spustí zálohování hello.
 
 Například může nakonfigurovat zásady zálohování, který se spustí na 16: 00 každou sobotu a neděli.
 
@@ -235,20 +235,20 @@ Například může nakonfigurovat zásady zálohování, který se spustí na 16
 PS C:\> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
 ```
 
-Plán zálohování musí být přidružený k zásadě, a to jde dosáhnout pomocí [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) rutiny.
+plán zálohování Hello potřebuje toobe přidružené k zásadě a toho lze dosáhnout pomocí hello [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) rutiny.
 
 ```
 PS C:> Set-OBSchedule -Policy $newpolicy -Schedule $sched
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 ### <a name="configuring-a-retention-policy"></a>Konfigurace zásad uchovávání
-Zásady uchovávání informací definuje, jak dlouho se uchovají body obnovení vytvořené z úlohy zálohování. Při vytváření nové zásady uchovávání informací pomocí [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) rutiny, můžete zadat počet dnů, které je třeba body obnovení záloh pro zachování s Azure Backup. Následující příklad nastaví zásady uchovávání informací 7 dní.
+zásady uchovávání informací Hello definuje, jak dlouho obnovení, které se uchovají body vytvořené z úlohy zálohování. Při vytváření nových zásad uchovávání informací pomocí hello [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) rutiny, můžete zadat třeba hello počet dní, které hello body obnovení záloh toobe uchovávají s Azure Backup. Následující příklad Hello nastaví zásady uchovávání informací 7 dní.
 
 ```
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-Zásady uchovávání informací musí být přidružené hlavní zásadám, pomocí rutiny [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
+Hello zásady uchovávání informací musí být přidruženy k hlavní zásady hello pomocí rutiny hello [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
 
 ```
 PS C:\> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
@@ -272,16 +272,16 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
-### <a name="including-and-excluding-files-to-be-backed-up"></a>Zahrnutí a vyloučení souborů k zálohování
-```OBFileSpec``` Objekt definuje soubory zahrnout a vyloučit zálohu. To je sada pravidel, která obor chráněné soubory a složky na počítači. Můžete mít mnoho souboru pravidla zahrnutí nebo vyloučení podle potřeby a přidružovat je k zásadě. Při vytváření nového objektu OBFileSpec, můžete:
+### <a name="including-and-excluding-files-toobe-backed-up"></a>Zahrnutí a vyloučení souborů toobe zálohovat
+```OBFileSpec``` Objekt definuje hello soubory toobe zahrnout a vyloučit zálohu. Toto je sada pravidel, že obor se hello chráněné soubory a složky na počítači. Můžete mít mnoho souboru pravidla zahrnutí nebo vyloučení podle potřeby a přidružovat je k zásadě. Při vytváření nového objektu OBFileSpec, můžete:
 
-* Zadejte soubory a složky, které mají být zahrnuty
-* Zadejte soubory a složky, které se mají vyloučit
-* Zadejte rekurzivní zálohování dat v složku (nebo) zda pouze nejvyšší úrovně soubory v zadané složce by měl být zálohuje nahoru.
+* Zadejte soubory a složky toobe hello zahrnuté
+* Zadejte soubory a složky toobe hello vyloučené
+* Zadejte rekurzivní zálohování dat v složku (nebo) zda pouze hello nejvyšší úrovně soubory v zadané složce hello by měl být zálohuje nahoru.
 
-K tomu se dosáhne použitím příznaku - nerekurzivní v příkazu New-OBFileSpec.
+Hello pozdější se dosáhne použitím příznaku - nerekurzivní hello v příkazu New-OBFileSpec hello.
 
-V následujícím příkladu jsme budete zálohování svazku C: a D: a vyloučit binární soubory operačního systému ve složce Windows a všechny dočasné složky. K tomu vytvoříme dvě specifikace pomocí souboru [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) rutiny – jeden pro zahrnutí a jeden pro vyloučení. Po vytvoření souboru specifikace jsou spojené s použitím zásad [přidat OBFileSpec](https://technet.microsoft.com/library/hh770424) rutiny.
+V příkladu hello níže jsme budete zálohování svazku C: a D: a vyloučit hello binární soubory operačního systému ve složce Windows hello a všechny dočasné složky. toodo, vytvoříme dvě specifikace souborů pomocí hello [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) rutiny – jeden pro zahrnutí a jeden pro vyloučení. Po vytvoření specifikace hello souborů jsou přidružené zásady hello použitím hello [přidat OBFileSpec](https://technet.microsoft.com/library/hh770424) rutiny.
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -372,19 +372,19 @@ State           : New
 PolicyState     : Valid
 ```
 
-### <a name="applying-the-policy"></a>Použití zásad
-Objekt zásad teď dokončení a má přidružené plánu zálohování, zásady uchovávání informací a seznam souborů zahrnutí nebo vyloučení. Tato zásada může být nyní potvrdit pro zálohování Azure používat. Před použitím nově vytvořenou zásadu zajistěte, aby žádné existující zásady zálohování, které jsou přidružené k serveru pomocí [odebrat OBPolicy](https://technet.microsoft.com/library/hh770415) rutiny. Odebrání zásady zobrazí výzvu k potvrzení. Přeskočit použití potvrzení ```-Confirm:$false``` příznak pomocí rutiny.
+### <a name="applying-hello-policy"></a>Použití zásad hello
+Teď objektu zásad hello dokončení a má přidružené plánu zálohování, zásady uchovávání informací a seznam souborů zahrnutí nebo vyloučení. Tato zásada může být nyní potvrdit pro toouse Azure Backup. Před použitím hello nově vytvořený zásad zajistěte, aby žádné existující zásady zálohování, které jsou přidružené k serveru hello pomocí hello [odebrat OBPolicy](https://technet.microsoft.com/library/hh770415) rutiny. Odebírání hello zásady zobrazí výzvu k potvrzení. potvrzení hello tooskip použít hello ```-Confirm:$false``` příznak pomocí rutiny hello.
 
 ```
 PS C:> Get-OBPolicy | Remove-OBPolicy
-Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Are you sure you want tooremove this backup policy? This will delete all hello backed up data. [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
 ```
 
-Potvrzení objektu zásad se provádí pomocí [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) rutiny. Také to požádá o potvrzení. Přeskočit použití potvrzení ```-Confirm:$false``` příznak pomocí rutiny.
+Objekt zásad spouštění hello se provádí pomocí hello [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) rutiny. Také to požádá o potvrzení. potvrzení hello tooskip použít hello ```-Confirm:$false``` příznak pomocí rutiny hello.
 
 ```
 PS C:> Set-OBPolicy -Policy $newpolicy
-Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Do you want toosave this backup policy ? [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
          DatasourceId:4508156004108672185
@@ -425,7 +425,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-Můžete zobrazit podrobnosti o existující zásady zálohování pomocí [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) rutiny. Vám může procházení další pomocí [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) rutina pro plán zálohování a [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) rutina pro zásady uchovávání informací
+Můžete zobrazit podrobnosti o hello hello existující zásady zálohování pomocí hello [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) rutiny. Vám může procházení další pomocí hello [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) rutiny pro plán zálohování hello a hello [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) rutina pro zásady uchovávání informací hello
 
 ```
 PS C:> Get-OBPolicy | Get-OBSchedule
@@ -466,32 +466,32 @@ IsRecursive : True
 ```
 
 ### <a name="performing-an-ad-hoc-backup"></a>Provádění zálohu ad-hoc
-Jakmile byla nastavena zásada zálohování dojde k zálohování podle plánu. Aktivuje zálohu ad-hoc je také možné pomocí [Start-OBBackup](https://technet.microsoft.com/library/hh770426) rutiny:
+Jakmile byla nastavena zásada zálohování hello zálohy dojde za hello plán. Spuštění služby ad-hoc zálohy je také možné pomocí hello [Start-OBBackup](https://technet.microsoft.com/library/hh770426) rutiny:
 
 ```
 PS C:> Get-OBPolicy | Start-OBBackup
 Initializing
 Taking snapshot of volumes...
 Preparing storage...
-Generating backup metadata information and preparing the metadata VHD...
-Data transfer is in progress. It might take longer since it is the first backup and all data needs to be transferred...
-Data transfer completed and all backed up data is in the cloud. Verifying data integrity...
+Generating backup metadata information and preparing hello metadata VHD...
+Data transfer is in progress. It might take longer since it is hello first backup and all data needs toobe transferred...
+Data transfer completed and all backed up data is in hello cloud. Verifying data integrity...
 Data transfer completed
 In progress...
 Job completed.
-The backup operation completed successfully.
+hello backup operation completed successfully.
 ```
 
 ## <a name="restore-data-from-azure-backup"></a>Obnovení dat z Azure Backup
-Tato část vás provede kroky pro automatizaci obnovení dat z Azure Backup. Díky tomu zahrnuje následující kroky:
+Tato část vás provede kroky hello pro automatizaci obnovení dat z Azure Backup. To zahrnuje tak hello následující kroky:
 
-1. Vyberte zdrojový svazek
-2. Vyberte bod obnovení zálohy
-3. Vyberte položku, kterou chcete obnovit
-4. Aktivační událost v procesu obnovení
+1. Vyberte zdrojový svazek hello
+2. Vyberte zálohování toorestore bodu
+3. Zvolte toorestore položky
+4. Proces obnovení hello aktivační události
 
-### <a name="picking-the-source-volume"></a>Výběr zdrojovém svazku
-Chcete-li obnovit položky z Azure Backup, musíte nejprve k identifikaci zdroje položky. Vzhledem k tomu, že jsme se provádění příkazů v kontextu systému Windows Server nebo klienta Windows, počítač je už definovaný. Dalším krokem při identifikaci zdroj je k identifikaci svazku, který ji obsahuje. Seznam svazků nebo zdrojů zálohovaných z tohoto počítače se dá načíst spuštěním [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) rutiny. Tento příkaz vrátí pole všech zdrojů zálohovat z tohoto serveru nebo klienta.
+### <a name="picking-hello-source-volume"></a>Výběr hello zdrojový svazek
+V pořadí toorestore položku z Azure Backup je nutné nejprve tooidentify hello zdroj položky hello. Vzhledem k tomu, že jsme se provádění příkazů hello v kontextu hello systému Windows Server nebo klienta Windows, hello počítač je už definovaný. dalším krokem Hello při identifikaci zdroje hello je tooidentify hello svazku, který ji obsahuje. Seznam svazků nebo zdrojů zálohovaných z tohoto počítače se dá načíst spuštěním hello [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) rutiny. Tento příkaz vrátí pole všech zdrojů hello zálohovat z tohoto serveru nebo klienta.
 
 ```
 PS C:> $source = Get-OBRecoverableSource
@@ -505,8 +505,8 @@ RecoverySourceName : D:\
 ServerName : myserver.microsoft.com
 ```
 
-### <a name="choosing-a-backup-point-from-which-to-restore"></a>Výběr bodu zálohy pro obnovení
-Načíst seznam body zálohy spuštěním [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutiny s příslušnými parametry. V našem příkladu jsme vybrali nejnovější bod zálohy pro zdrojový svazek *D:* a použít ho k obnovení konkrétní soubor.
+### <a name="choosing-a-backup-point-from-which-toorestore"></a>Výběr bodu zálohy z které toorestore
+Načíst seznam body zálohy spuštěním hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutiny s příslušnými parametry. V našem příkladu jsme vybrali hello nejnovější bod zálohy pro zdrojový svazek hello *D:* a použít ho toorecover konkrétní soubor.
 
 ```
 PS C:> $rps = Get-OBRecoverableItem -Source $source[1]
@@ -532,12 +532,12 @@ ServerName : myserver.microsoft.com
 ItemSize :
 ItemLastModifiedTime :
 ```
-Objekt ```$rps``` je pole body zálohy. První prvek je poslední bod a n-tou elementu bude nejstarší bod. Zvolte nejnovější bod, použijeme ```$rps[0]```.
+objekt Hello ```$rps``` je pole body zálohy. první prvek Hello je poslední bod hello a n-tou element hello je nejstarší bod hello. toochoose hello posledního bodu, použijeme ```$rps[0]```.
 
-### <a name="choosing-an-item-to-restore"></a>Vybrat položku, kterou chcete obnovit
-K identifikaci přesný soubor nebo složku pro obnovení, použijte rekurzivně [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutiny. Tímto způsobem lze procházet hierarchii složek výhradně pomocí ```Get-OBRecoverableItem```.
+### <a name="choosing-an-item-toorestore"></a>Výběr toorestore položky
+tooidentify hello přesný soubor nebo složku toorestore, rekurzivně použít hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) rutiny. Hierarchie složky hello tento způsob, jak lze procházet výhradně pomocí hello ```Get-OBRecoverableItem```.
 
-V tomto příkladu, pokud chcete obnovit soubor *finances.xls* jsme může odkazovat, který používá objekt ```$filesFolders[1]```.
+V tomto příkladu, pokud chceme souboru hello toorestore *finances.xls* jsme můžete odkazovat pomocí tohoto objektu hello ```$filesFolders[1]```.
 
 ```
 PS C:> $filesFolders = Get-OBRecoverableItem $rps[0]
@@ -578,20 +578,20 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-Můžete také vyhledat položky k obnovení pomocí ```Get-OBRecoverableItem``` rutiny. V našem příkladu, k vyhledání *finances.xls* nám může získat popisovač v souboru tak, že spustíte tento příkaz:
+Můžete také vyhledat položky toorestore pomocí hello ```Get-OBRecoverableItem``` rutiny. V našem příkladu toosearch pro *finances.xls* nám může získat popisovač souboru hello spuštěním tohoto příkazu:
 
 ```
 PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
-### <a name="triggering-the-restore-process"></a>Spuštění procesu obnovení
-K aktivaci v procesu obnovení, musíme nejprve nastavte možnosti obnovení. To můžete provést pomocí [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) rutiny. Pro tento příklad předpokládejme, že chceme obnovit soubory *C:\temp*. Také Předpokládejme, že chceme přeskočit soubory, které již existují na cílovou složku *C:\temp*. Pokud chcete vytvořit možnost obnovení, použijte následující příkaz:
+### <a name="triggering-hello-restore-process"></a>Spuštění procesu obnovení hello
+proces obnovení hello tootrigger, potřebujeme nejprve možnosti obnovení toospecify hello. Tento krok můžete provést pomocí hello [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) rutiny. Pro tento příklad předpokládejme, že chceme, aby soubory hello toorestore příliš*C:\temp*. Také Předpokládejme, že má být tooskip soubory, které již existují na cílovou složku hello *C:\temp*. toocreate takové možnost obnovení pomocí hello následující příkaz:
 
 ```
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Teď spustit proces obnovení pomocí [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) příkaz na vybraném ```$item``` z výstupu ```Get-OBRecoverableItem``` rutiny:
+Teď spustit proces obnovení hello pomocí hello [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) příkaz na hello vybrané ```$item``` z hello výstup hello ```Get-OBRecoverableItem``` rutiny:
 
 ```
 PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
@@ -600,29 +600,29 @@ Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
 Job completed.
-The recovery operation completed successfully.
+hello recovery operation completed successfully.
 ```
 
 
-## <a name="uninstalling-the-azure-backup-agent"></a>Odinstalace agenta Azure Backup
-Odinstalace agenta Azure Backup lze provést pomocí následujícího příkazu:
+## <a name="uninstalling-hello-azure-backup-agent"></a>Odinstalace agenta Azure Backup hello
+Odinstalaci agenta Azure Backup hello lze provést pomocí hello následující příkaz:
 
 ```
 PS C:\> .\MARSAgentInstaller.exe /d /q
 ```
 
-Odinstalace binárních souborů agenta z počítače má některé důsledky vzít v úvahu:
+Odinstalace binárních souborů hello agenta z počítače hello má některé tooconsider důsledky:
 
-* Odebere filtr souborů z počítače a sledování změn je zastavena.
-* Všechny informace o zásadách se odebere z počítače, ale informace o zásadách dále uložena ve službě.
+* Odebere z počítače hello soubor filtru hello a sledování změn je zastavena.
+* Všechny informace o zásadách se odebere z počítače hello, ale informace o zásadách hello pokračuje toobe uložené ve službě hello.
 * Se odeberou všechny plány zálohování a jsou provedeny žádné další zálohy.
 
-Však data uložená v Azure zůstane a se uchovávají podle nastavení zásad uchovávání informací, které jste. Starší body jsou automaticky stará.
+Ale hello data uložená v Azure zůstane a zůstane podle nastavení zásad uchovávání hello vy. Starší body jsou automaticky stará.
 
 ## <a name="remote-management"></a>Vzdálená správa
-Veškerá správa, kolem agenta Azure Backup, zásady a zdroje dat lze provést vzdáleně pomocí prostředí PowerShell. Na počítač, který bude spravovat vzdáleně musí být správně připravena.
+Veškerá Správa hello kolem hello agenta Azure Backup, zásady a zdroje dat lze provést vzdáleně pomocí prostředí PowerShell. Hello počítač, který bude spravovat vzdáleně musí toobe připravený správně.
 
-Ve výchozím nastavení je Služba WinRM nakonfigurován pro ruční spuštění. Typ spuštění musí být nastavený na *automatické* a musí být spuštěna. Pokud chcete ověřit, že Služba WinRM je spuštěná, by měla být hodnota vlastnosti stav *systémem*.
+Ve výchozím nastavení je Vzdálená správa systému Windows hello nakonfigurovaná pro ruční spuštění. musí být nastaven typ spouštění Hello příliš*automatické* a musí být spuštěna služba hello. tooverify, který hello Služba WinRM je spuštěná, by měly být hello hodnotu hello Vlastnost Status *systémem*.
 
 ```
 PS C:\> Get-Service WinRM
@@ -636,14 +636,14 @@ Prostředí PowerShell by měl být nakonfigurovaný pro vzdálenou komunikaci.
 
 ```
 PS C:\> Enable-PSRemoting -force
-WinRM is already set up to receive requests on this computer.
+WinRM is already set up tooreceive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.
 
 PS C:\> Set-ExecutionPolicy unrestricted -force
 ```
 
-Tento počítač teď můžete spravovat vzdáleně – od instalace agenta. Například následující skript zkopíruje agenta ke vzdálenému počítači a ho nainstaluje.
+počítač Hello teď můžete spravovat vzdáleně – od hello instalace agenta hello. Například následující skript hello zkopíruje hello agenta toohello vzdáleného počítače a ho nainstaluje.
 
 ```
 PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
@@ -658,5 +658,5 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## <a name="next-steps"></a>Další kroky
 Další informace o Azure Backup pro Windows Server nebo klienta najdete v tématu
 
-* [Seznámení s Azure Backup](backup-introduction-to-azure-backup.md)
+* [Úvod tooAzure zálohování](backup-introduction-to-azure-backup.md)
 * [Zálohování serverů Windows](backup-configure-vault.md)

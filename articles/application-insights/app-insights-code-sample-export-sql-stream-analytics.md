@@ -1,6 +1,6 @@
 ---
-title: Exportovat do SQL z Azure Application Insights | Microsoft Docs
-description: "Nepřetržitě exportujte data Application Insights do SQL pomocí služby Stream Analytics."
+title: "Export tooSQL ze služby Azure Application Insights | Microsoft Docs"
+description: "Nepřetržitě exportujte tooSQL Application Insights dat pomocí služby Stream Analytics."
 services: application-insights
 documentationcenter: 
 author: noamben
@@ -13,89 +13,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: bwren
-ms.openlocfilehash: d51e80509ffb63cef0d01133a2295d58757d5b1a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 58b579499113751a088dc7e66cbec71529773322
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do SQL z Application Insights pomocí služby Stream Analytics
-Tento článek ukazuje, jak přesunout data telemetrie z [Azure Application Insights] [ start] do Azure SQL database pomocí [průběžné exportovat] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+# <a name="walkthrough-export-toosql-from-application-insights-using-stream-analytics"></a>Návod: Export tooSQL ze služby Application Insights pomocí služby Stream Analytics
+Tento článek ukazuje, jak toomove vaše telemetrická data z [Azure Application Insights] [ start] do Azure SQL database pomocí [průběžné exportovat] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
-Průběžné export přesune telemetrická data do úložiště Azure ve formátu JSON. Jsme budete objekty JSON pomocí Azure Stream Analytics analyzovat a vytvořte řádky v tabulce databáze.
+Průběžné export přesune telemetrická data do úložiště Azure ve formátu JSON. Jsme budete objekty JSON hello pomocí Azure Stream Analytics analyzovat a vytvořte řádky v tabulce databáze.
 
-(Obecně platí, průběžné Export je způsob, jak provést vlastní analýzu telemetrie aplikace odesílání Application Insights. Vám může přizpůsobit této ukázce kódu provádět další akce s exportovaný telemetrických dat, jako je například agregace dat.)
+(Obecně platí, průběžné Export je způsob, jak toodo hello vlastní analýzu hello telemetrie aplikace odeslat tooApplication statistiky. Vám může přizpůsobit tento toodo ukázkový kód jiných věcí pomocí telemetrie hello exportovali, jako je například agregace dat.)
 
-Začneme s se předpokládá, že už máte aplikaci, kterou chcete monitorovat.
+Začneme s hello předpokládá, že už máte aplikaci hello se mají toomonitor.
 
-V tomto příkladu použijeme data zobrazit na stránce, ale stejného vzoru lze snadno rozšířit na jiné datové typy, jako jsou vlastní události a výjimky. 
+V tomto příkladu použijeme hello stránky zobrazení dat, ale hello stejného vzoru lze snadno rozšířit tooother datové typy, jako jsou vlastní události a výjimky. 
 
-## <a name="add-application-insights-to-your-application"></a>Přidejte Application Insights do vaší aplikace
-Abyste mohli začít:
+## <a name="add-application-insights-tooyour-application"></a>Přidání Application Insights tooyour aplikace
+tooget spuštění:
 
 1. [Nastavte Application Insights pro webové stránky](app-insights-javascript.md). 
    
-    (V tomto příkladu budete zaměříme na zpracování stránky zobrazení dat v prohlížečích klienta, ale můžete také nastavit Application Insights pro na straně serveru vaší [Java](app-insights-java-get-started.md) nebo [ASP.NET](app-insights-asp-net.md) aplikace a proces žádosti závislosti a další telemetrií serveru.)
+    (V tomto příkladu budete zaměříme na zpracování stránky zobrazení dat z hello klientský prohlížeč, ale můžete také nastavit Application Insights pro hello na straně serveru vaší [Java](app-insights-java-get-started.md) nebo [ASP.NET](app-insights-asp-net.md) aplikace a proces žádosti závislosti a další telemetrií serveru.)
 2. Publikování aplikace a sledujte telemetrii dat zobrazovaných v prostředku Application Insights.
 
 ## <a name="create-storage-in-azure"></a>Vytvořte úložiště v Azure
-Průběžné export vždy poskytuje data pro účet úložiště Azure, musíte nejprve vytvořit úložiště.
+Průběžné export vždy výstupy účet úložiště Azure tooan dat, proto musíte nejprve toocreate hello úložiště.
 
-1. Vytvořit účet úložiště v rámci vašeho předplatného v [portál Azure][portal].
+1. Vytvořit účet úložiště v rámci vašeho předplatného v hello [portál Azure][portal].
    
     ![Na portálu Azure zvolte nový, Data, úložiště. Vyberte Classic, vyberte vytvořit. Zadejte název úložiště.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. Vytvoření kontejneru
    
-    ![V novém úložišti vyberte kontejnery, klikněte na dlaždici kontejnery a potom přidat](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
-3. Kopii přístupového klíče úložiště.
+    ![V novém úložišti hello vyberte kontejnery, klikněte na dlaždici hello kontejnery a potom přidat](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
+3. Zkopírovat přístupový klíč k úložišti hello
    
-    Musíte ho brzy k nastavení vstup do služby stream analytics.
+    Budete je potřebovat brzy tooset až hello vstupní toohello stream analytics služby.
    
-    ![V úložišti otevře se nastavení klíče a proveďte kopii primární přístupový klíč](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![V úložišti hello otevře se nastavení klíče a proveďte kopii hello primární přístupový klíč](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžné export do úložiště Azure
-1. Na portálu Azure přejděte do prostředku Application Insights, kterou jste vytvořili pro vaši aplikaci.
+## <a name="start-continuous-export-tooazure-storage"></a>Spustit průběžné export tooAzure úložiště
+1. V hello portálu Azure vyhledejte prostředek Application Insights toohello, který jste vytvořili pro vaše aplikace.
    
     ![Vyberte možnost Procházet, Application Insights, vaše aplikace](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
 2. Vytvořte průběžné export.
    
     ![Vyberte nastavení, průběžné exportu, přidejte](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
 
-    Vyberte účet úložiště, které jste vytvořili dříve:
+    Vyberte účet úložiště hello, které jste vytvořili dříve:
 
-    ![Nastavit cíl exportu](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
+    ![Nastavit cíl exportu hello](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
 
-    Nastavte typy událostí, které chcete zobrazit:
+    Nastavte hello typy událostí, které se mají toosee:
 
     ![Vyberte typy událostí](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
 
 1. Některá data hromadí let. Sledujte a umožnit lidem nějakou dobu používat vaši aplikaci. Telemetrická data se odešlou a zobrazí statistické grafy v [metriky explorer](app-insights-metrics-explorer.md) a jednotlivé události v [diagnostické vyhledávání](app-insights-diagnostic-search.md). 
    
-    A navíc bude exportovat data do úložiště. 
-2. Zkontrolujte exportovaná data, buď v portálu – volba **Procházet**, vyberte svůj účet úložiště a potom **kontejnery** - nebo v sadě Visual Studio. V sadě Visual Studio, vyberte **zobrazení / cloudu Explorer**a otevřete Azure nebo úložiště. (Pokud nemáte tento příkaz nabídky, budete muset nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete Visual C# / Cloud / získat Microsoft Azure SDK pro .NET.)
+    A navíc hello dat bude exportovat tooyour úložiště. 
+2. Zkontrolujte hello export dat, buď v portálu hello – volba **Procházet**, vyberte svůj účet úložiště a potom **kontejnery** - nebo v sadě Visual Studio. V sadě Visual Studio, vyberte **zobrazení / cloudu Explorer**a otevřete Azure nebo úložiště. (Pokud nemáte tento příkaz nabídky, je třeba tooinstall hello Azure SDK: Otevřete dialogové okno Nový projekt hello a otevřete Visual C# / Cloud / získat Microsoft Azure SDK pro .NET.)
    
     ![V sadě Visual Studio otevřete prohlížeč Server, Azure, úložiště](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
    
-    Poznamenejte si část běžný název cesty, které je odvozeno z klíče název a instrumentace aplikací. 
+    Poznamenejte si hello běžné součástí hello název cesty, které je odvozeno z názvu a instrumentace klíč aplikace hello. 
 
-Události se zapisují do objektu blob soubory ve formátu JSON. Každý soubor může obsahovat jeden nebo více událostí. Proto jsme chtěli číst data události a filtrovat pole, která má být. Jsou k dispozici všechny typy věcí, které můžeme udělat s daty, ale pokud chcete přesunout data do databáze SQL pomocí služby Stream Analytics dnes je naše plán. To bude usnadní spouštět velké množství zajímavé dotazy.
+Hello události se zapisují tooblob soubory ve formátu JSON. Každý soubor může obsahovat jeden nebo více událostí. Proto rádi bychom znali data události hello tooread a filtrování hello pole, která má být. Jsou k dispozici všechny typy věcí, které můžeme udělat s daty hello, ale naše plán dnes je toouse Stream Analytics toomove hello data tooa databáze SQL. Která znamená, že snadno toorun spoustu zajímavé dotazy.
 
 ## <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL
-Znovu se spouští ze svého předplatného v [portál Azure][portal], vytvořit databázi (a nový server, pokud již máte jeden) kterého budete zapsat data.
+Znovu se spouští ze svého předplatného v [portál Azure][portal], vytvořit databázi hello (a nový server, pokud již máte jeden) toowhich napíšete hello data.
 
 ![Nový dat, SQL](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
-Ujistěte se, že databázový server umožňuje přístup ke službám Azure:
+Zkontrolujte, zda že server databáze hello umožňuje přístup tooAzure služby:
 
-![Procházet, servery, server, nastavení brány Firewall, povolit přístup k Azure](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
+![Procházet, servery, server, nastavení, brána Firewall, povolit přístup tooAzure](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-db"></a>Vytvoření tabulky v databázi SQL Azure
-Připojte k databázi vytvořené v předchozí části s vaší nástroj pro správu upřednostňované. V tomto návodu použijeme [nástroje správy systému SQL Server](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
+Připojte databázi toohello vytvořené v předchozí části hello s vaší nástroj pro správu upřednostňované. V tomto návodu použijeme [nástroje správy systému SQL Server](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/31-sql-table.png)
 
-Vytvořit nový dotaz a spusťte následující T-SQL:
+Vytvořit nový dotaz a spusťte hello následující T-SQL:
 
 ```SQL
 
@@ -137,64 +137,64 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
-V této ukázce používáme data ze zobrazení stránky. Pokud chcete zobrazit dostupné data, zkontrolujte výstupu JSON a najdete v článku [Exportovat datový model](app-insights-export-data-model.md).
+V této ukázce používáme data ze zobrazení stránky. toosee hello jiná data dostupná, zkontrolujte výstupu JSON a najdete v části hello [Exportovat datový model](app-insights-export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance služby Azure Stream Analytics
-Z [portál Azure Classic](https://manage.windowsazure.com/), vyberte službu Azure Stream Analytics a vytvořit novou úlohu služby Stream Analytics:
+Z hello [portál Azure Classic](https://manage.windowsazure.com/), vyberte službu Azure Stream Analytics hello a vytvořit novou úlohu služby Stream Analytics:
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/38-create-stream-analytics-form.png)
 
-Když je vytvořena nová úloha, rozbalte položku Podrobnosti:
+Když je vytvořena nová úloha hello, rozbalte položku Podrobnosti:
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/41-sa-job.png)
 
 #### <a name="set-blob-location"></a>Nastavení umístění objektu blob
-Nastavte ji tak, aby vstupní z objektu blob služby průběžné Export:
+Nastavte tootake vstup z objektu blob služby průběžné Export:
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/42-sa-wizard1.png)
 
-Nyní budete potřebovat primární přístupový klíč z vašeho účtu úložiště, který jste si předtím poznamenali. Nastavením této hodnoty jako klíč účtu úložiště.
+Nyní budete potřebovat hello primární přístupový klíč z vašeho účtu úložiště, který jste si předtím poznamenali. Nastavením této hodnoty jako hello klíč účtu úložiště.
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/46-sa-wizard2.png)
 
 #### <a name="set-path-prefix-pattern"></a>Sada cesta předpona vzoru
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/47-sa-wizard3.png)
 
-Nastavte formát data **rrrr-MM-DD** (s **pomlčky**).
+Zda tooset hello formát data byla příliš**rrrr-MM-DD** (s **pomlčky**).
 
-Cesta předpony vzor Určuje, jak Stream Analytics vyhledá vstupní soubory v úložišti. Budete muset nastavit tak, aby odpovídaly jak průběžné exportovat data uloží. Nastavte takto:
+Hello cesta předpony vzor Určuje, jak Stream Analytics vyhledá hello vstupní soubory v úložišti hello. Je třeba tooset ho toocorrespond toohow průběžné exportovat ukládá hello data. Nastavte takto:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 V tomto příkladu:
 
-* `webapplication27`je název prostředku Application Insights **vše na malá písmena**. 
-* `1234...`je klíč instrumentace prostředku Application Insights **s pomlčkami odebrat**. 
-* `PageViews`je typ dat, který chcete analyzovat. Dostupné typy závisí na filtr, který nastavíte v průběžné exportovat. Zkontrolujte exportovaná data zobrazit dostupné typy a zobrazit [Exportovat datový model](app-insights-export-data-model.md).
+* `webapplication27`je název hello hello prostředku Application Insights **vše na malá písmena**. 
+* `1234...`je klíč instrumentace hello hello prostředek Application Insights **s pomlčkami odebrat**. 
+* `PageViews`hello typu dat chceme tooanalyze. dostupné typy Hello závisí na hello filtr, který nastavíte v průběžné exportovat. Zkontrolujte hello exportovaná data toosee hello jiné typy k dispozici a zobrazí hello [Exportovat datový model](app-insights-export-data-model.md).
 * `/{date}/{time}`vzor zapsána oznámena.
 
-Chcete-li získat název a iKey prostředku Application Insights, otevřete Essentials na stránku s jeho přehled nebo otevřete nastavení.
+Název hello tooget a iKey prostředku Application Insights, otevřete Essentials na stránku s jeho přehled nebo otevřete nastavení.
 
 #### <a name="finish-initial-setup"></a>Dokončit počáteční nastavení
-Zkontrolujte formát serializace:
+Zkontrolujte formát serializace hello:
 
 ![Potvrďte a zavřete průvodce](./media/app-insights-code-sample-export-sql-stream-analytics/48-sa-wizard4.png)
 
-Zavřete průvodce a počkejte na dokončení instalace.
+Zavřete průvodce hello a počkejte toocomplete hello instalační program.
 
 > [!TIP]
-> Zkontrolujte, že jste správně nastavili vstupní cesta použijte funkci Sample. Pokud se nezdaří: Zkontrolujte, zda je data v úložišti pro ukázkové časové rozmezí jste zvolili. Upravte definici vstupní a zkontrolujte nastavení účtu úložiště, cesta předponu a datum formátu správně.
+> Použijte hello ukázka funkce toocheck, že jste správně nastavili hello vstupní cesta. Pokud se nezdaří: Zkontrolujte, zda je data v úložišti hello hello ukázka časovém rozmezí jste zvolili. Upravte definici vstupní hello a zkontrolujte nastavení hello účet úložiště, cesta předponu a datum formátu správně.
 > 
 > 
 
 ## <a name="set-query"></a>Sada dotazu
-Otevřete část dotazu:
+Otevřete část dotazu hello:
 
 ![V služby stream analytics vyberte dotazu](./media/app-insights-code-sample-export-sql-stream-analytics/51-query.png)
 
-Nahraďte výchozí dotaz s:
+Nahraďte hello výchozí dotaz s:
 
 ```SQL
 
@@ -232,37 +232,37 @@ Nahraďte výchozí dotaz s:
 
 ```
 
-Všimněte si, že první několik vlastností jsou specifické pro data zobrazení stránky. Export jiné typy telemetrických dat bude mít jiné vlastnosti. Najdete v článku [podrobné referenční model dat pro typy vlastností a hodnoty.](app-insights-export-data-model.md)
+Všimněte si, že nejprve hello několik vlastností jsou konkrétní toopage dat zobrazení. Export jiné typy telemetrických dat bude mít jiné vlastnosti. V tématu hello [podrobné referenční model dat pro hello typy a hodnoty vlastností.](app-insights-export-data-model.md)
 
-## <a name="set-up-output-to-database"></a>Nastavit výstup do databáze
-Vyberte SQL jako výstup.
+## <a name="set-up-output-toodatabase"></a>Nastavit toodatabase výstup
+Vyberte SQL jako výstup hello.
 
 ![V služby stream analytics vyberte výstupy](./media/app-insights-code-sample-export-sql-stream-analytics/53-store.png)
 
-Zadejte databáze SQL.
+Zadejte databáze SQL hello.
 
-![Zadejte podrobnosti databáze](./media/app-insights-code-sample-export-sql-stream-analytics/55-output.png)
+![Zadejte podrobnosti hello databáze](./media/app-insights-code-sample-export-sql-stream-analytics/55-output.png)
 
-Zavřete průvodce a čekat na oznámení, že byla nastavena výstup.
+Zavřete průvodce hello a čekat na oznámení, že byla nastavena výstup hello.
 
 ## <a name="start-processing"></a>Spuštění zpracování
-Spustíte úlohu z panelu akcí:
+Spuštění úlohy hello z panelu hello akce:
 
 ![V služby stream analytics klikněte na tlačítko Start](./media/app-insights-code-sample-export-sql-stream-analytics/61-start.png)
 
-Můžete zvolit, jestli se má spustit zpracování dat od teď nebo začínat starší data. Je užitečné, pokud jste předtím průběžné exportovat už běží nějakou dobu.
+Můžete vybrat, zda zpracování toostart hello data od teď nebo toostart starší daty. Hello druhé je užitečné, pokud jste předtím průběžné exportovat už běží nějakou dobu.
 
 ![V služby stream analytics klikněte na tlačítko Start](./media/app-insights-code-sample-export-sql-stream-analytics/63-start.png)
 
-Po několika minutách vraťte se zpátky a nástroje správy systému SQL Server a sledovat data předávaná v. Například použijte dotaz takto:
+Po několika minutách přejděte zpět tooSQL nástroje pro správu serveru a podívejte se na hello dat odesílaných v. Například použijte dotaz takto:
 
     SELECT TOP 100 *
     FROM [dbo].[PageViewsTable]
 
 
 ## <a name="related-articles"></a>Související články
-* [Exportovat do PowerBI pomocí služby Stream Analytics](app-insights-export-power-bi.md)
-* [Podrobný datový model referenční informace pro vlastnost typů a hodnot.](app-insights-export-data-model.md)
+* [Export tooPowerBI pomocí služby Stream Analytics](app-insights-export-power-bi.md)
+* [Podrobný datový model referenční informace pro hello typy a hodnoty vlastností.](app-insights-export-data-model.md)
 * [Průběžné Export ve službě Application Insights](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 

@@ -1,6 +1,6 @@
 ---
-title: "Jak používat vlastní image Docker pro webové aplikace Azure v systému Linux | Microsoft Docs"
-description: "Jak používat vlastní image Docker pro webové aplikace Azure v systému Linux."
+title: "aaaHow toouse vlastní image Docker pro webové aplikace Azure v systému Linux | Microsoft Docs"
+description: "Jak toouse vlastní Docker obrázků pro webové aplikace Azure v systému Linux."
 keywords: "služby Azure app service, webové aplikace, linux, docker, kontejneru"
 services: app-service
 documentationcenter: 
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.openlocfilehash: 1458217a31c4781b28877c030a665f5b22819e13
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8853095d0e1067cfea4297bbd23b622fe4a0d4db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-a-custom-docker-image-for-azure-web-app-on-linux"></a>Použití vlastní image Docker pro webové aplikace Azure v systému Linux #
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 
-Služba App Service poskytuje zásobníky předem definované aplikací v systému Linux s podporou pro konkrétní verze, jako je například PHP 7.0 a Node.js 4.5. Aplikační služby v systému Linux využívá Docker kontejnery k hostování těchto zásobníky předem sestavených aplikací. Vlastní image Docker můžete také použít k nasazení vaší webové aplikace do zásobník aplikací, které již nejsou definované v Azure. Vlastní imagí Dockeru může být hostitelem buď veřejných nebo privátních Docker úložiště.
+Služba App Service poskytuje zásobníky předem definované aplikací v systému Linux s podporou pro konkrétní verze, jako je například PHP 7.0 a Node.js 4.5. Aplikační služby v systému Linux používá Docker kontejnery toohost, tyto předem integrované zásobníky aplikace. Můžete také použít vlastní toodeploy image Docker vaší webové aplikace tooan zásobník aplikací v Azure, již není definovaná. Vlastní imagí Dockeru může být hostitelem buď veřejných nebo privátních Docker úložiště.
 
 
 ## <a name="how-to-set-a-custom-docker-image-for-a-web-app"></a>Postupy: nastavení vlastní image Docker pro webovou aplikaci
-Můžete nastavit vlastní obrázek Docker pro obě aplikace a weby nových nebo stávajících. Při vytváření webové aplikace v systému Linux v [portál Azure](https://portal.azure.com/#create/Microsoft.AppSvcLinux), klikněte na tlačítko **kontejneru konfigurace** nastavit vlastní image Docker:
+Můžete nastavit hello vlastní image Docker pro obě nové a stávající aplikace a weby. Při vytváření webové aplikace v systému Linux v hello [portál Azure](https://portal.azure.com/#create/Microsoft.AppSvcLinux), klikněte na tlačítko **kontejneru konfigurace** tooset vlastní image Docker:
 
 ![Vlastní Image Docker pro novou webovou aplikaci v systému Linux][1]
 
 
 ## <a name="how-to-use-a-custom-docker-image-from-docker-hub"></a>Postupy: použití vlastní image Docker z úložiště Docker Hub ##
-Použití vlastní image Docker z úložiště Docker Hub:
+toouse vlastní image Docker z úložiště Docker Hub:
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **kontejner Docker**.
+1. V hello [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **kontejner Docker**.
 
-2.  Vyberte **úložiště Docker Hub** jako **zdroj bitové kopie**, pak klikněte buď na **veřejné** nebo **privátní** a zadejte **bitové kopie a název značky volitelné**, jako například `node:4.5`. **Spuštění příkazu** je sada automaticky na základě co je definována v souboru bitové kopie Docker, ale můžete nastavit vlastní příkazy.  
+2.  Vyberte **úložiště Docker Hub** jako hello **zdroj bitové kopie**, pak klikněte buď na **veřejné** nebo **privátní** a typ hello **bitové kopie a název značky volitelné**, jako například `node:4.5`. Hello **spuštění příkazu** je sada automaticky na základě co je definována v souboru bitové kopie Docker hello, ale můžete nastavit vlastní příkazy.  
 
     ![Obrázek veřejného úložiště Docker Hub konfigurace][2]
 
-    Když bitové kopie z privátní úložiště, musíte taky zadat přihlašovací údaje úložiště Docker Hub jako (**uživatelské jméno přihlášení** a **heslo**) pro privátní úložiště Docker Hub.
+    Když bitové kopie z privátní úložiště, musíte taky přihlašovací údaje úložiště Docker Hub hello tooenter jako (**uživatelské jméno přihlášení** a **heslo**) pro privátní úložiště Docker Hub hello.
 
     ![Obrázek privátní úložiště Docker Hub konfigurace][3]
 
-3. Po konfiguraci kontejneru, klikněte na tlačítko **Uložit**.
+3. Po nakonfigurování hello kontejner, klikněte na tlačítko **Uložit**.
 
-## <a name="how-to-use-a-docker-image-from-a-private-image-registry"></a>Jak použít bitovou kopii Docker z registru privátní bitové kopie ##
-Použití vlastní image Docker z registru privátní bitové kopie:
+## <a name="how-toouse-a-docker-image-from-a-private-image-registry"></a>Jak toouse Docker obrázek z registru privátní bitové kopie ##
+toouse vlastní image Docker z registru privátní bitové kopie:
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **kontejner Docker**.
+1. V hello [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **kontejner Docker**.
 
-2.  Klikněte na tlačítko **privátní registru** jako **zdroj bitové kopie**. Zadejte **bitové kopie a název značky volitelné**, **adresa URL serveru** pro privátní registru, spolu s přihlašovací údaje (**uživatelské jméno přihlášení** a **heslo**). Klikněte na **Uložit**.
+2.  Klikněte na tlačítko **privátní registru** jako hello **zdroj bitové kopie**. Zadejte hello **bitové kopie a název značky volitelné**, **adresa URL serveru** pro privátní registru hello spolu s přihlašovací údaje hello (**uživatelské jméno přihlášení** a **heslo** ). Klikněte na **Uložit**.
 
     ![Obrázek Docker z registru privátní konfigurace][4]
 
 
-## <a name="how-to-set-the-port-used-by-your-docker-image"></a>Postupy: nastavení port je používán bitové kopie Docker ##
+## <a name="how-to-set-hello-port-used-by-your-docker-image"></a>Postupy: nastavení portu hello používá Docker image ##
 
-Pokud používáte vlastní image Docker pro vaši webovou aplikaci, můžete použít `WEBSITES_PORT` proměnné prostředí v váš soubor Docker, který získá přidat do kontejneru vygenerovaný. Podívejte se na následující příklad souboru docker pro poznámky Ruby aplikaci:
+Pokud používáte vlastní image Docker pro vaši webovou aplikaci, můžete použít hello `WEBSITES_PORT` proměnné prostředí v váš soubor Docker, který získá přidat toohello generované kontejneru. Vezměte v úvahu následující ukázka soubor docker pro poznámky Ruby aplikace hello:
 
     FROM ruby:2.2.0
     RUN mkdir /app
@@ -71,49 +71,49 @@ Pokud používáte vlastní image Docker pro vaši webovou aplikaci, můžete po
     RUN bundle install
     CMD bundle exec puma config.ru -p WEBSITES_PORT -e production
 
-Na poslední řádek příkazu se zobrazí, že proměnná prostředí WEBSITES_PORT předaný za běhu. Mějte na paměti, že v příkazech záleží velká a malá písmena.
+Na poslední řádek hello příkazu uvidíte, že tuto proměnnou prostředí WEBSITES_PORT hello předaný za běhu. Mějte na paměti, že v příkazech záleží velká a malá písmena.
 
-Dřív používal platformou `PORT` aplikace nastavení, jsme plánování přestat používat použití této aplikace, nastavení a přesouvat pomocí `WEBSITES_PORT` výhradně.
+Dřív byla hello platformě pomocí `PORT` aplikace nastavení, jsme plánování toodeprecate hello použití této aplikace, nastavení a přesunout toousing `WEBSITES_PORT` výhradně.
 
-Při použití stávající image Docker vytvořené někdo jiný, budete možná muset zadat jiný port než port 80 pro aplikace. Pokud chcete konfigurovat port, přidání aplikace nastavení s názvem `WEBSITES_PORT` s hodnotou, jak je uvedeno níže:
+Pokud používáte stávající image Docker vytvořené někdo jiný, musíte toospecify jiný port než port 80 pro aplikaci hello. tooconfigure hello port, přidání aplikace nastavení s názvem `WEBSITES_PORT` hodnotou hello, jak je uvedeno níže:
 
 ![Konfigurace nastavení portu aplikace pro vlastní obrázek Docker][6]
 
-## <a name="how-to-set-the-startup-time-for-your-docker-image"></a>Postupy: nastavení času spuštění pro bitové kopie Docker ##
+## <a name="how-to-set-hello-startup-time-for-your-docker-image"></a>Postupy: nastavení času spuštění hello pro bitové kopie Docker ##
 
-Ve výchozím nastavení Pokud vaše kontejneru nespustí před 230 sekund, restartuje platforma vašeho kontejneru. Pokud vaše vlastní image Docker spustí ve více než 230 sekund, můžete použít `WEBSITES_CONTAINER_START_TIME_LIMIT` aplikace nastavení, hodnota tohoto nastavení je v sekundách, to umožní zachovat platforma vašeho kontejneru spuštěné před jeho restartování. Výchozí hodnota je 230 sekund a maximální povolená hodnota je 600 sekund.
+Ve výchozím nastavení Pokud vaše kontejneru nespustí před 230 sekund, restartuje hello platforma vašeho kontejneru. Pokud vaše vlastní image Docker spustí ve více než 230 sekund, můžete použít hello `WEBSITES_CONTAINER_START_TIME_LIMIT` nastavení aplikace hello hodnota tohoto nastavení je v sekundách, to vám umožní zachovat platformy hello vašeho kontejneru spuštěné před jej restartovat. Hello výchozí hodnota je 230 sekund a hello maximální povolená hodnota je 600 sekund.
 
-## <a name="how-to-unmount-the-platform-provided-storage"></a>Postupy: odpojení platforma poskytovaná úložiště ##
+## <a name="how-to-unmount-hello-platform-provided-storage"></a>Postupy: odpojení hello platforma poskytovaná úložiště ##
 
-Ve výchozím nastavení, bude platformou připojit sdílenou složku trvalé úložiště k `\home\` adresáře. Pokud je image kontejneru nemusí trvalé sdílené složky, můžete zakázat připojení tohoto úložiště nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace nastavte na `false`. Budete mít stále přístup do tohoto úložiště z webu scm a všechny protokoly Docker (Pokud je povoleno) se zapíšou do protokolu soubory generované platformu.
+Ve výchozím nastavení, bude hello platformy připojit trvalého úložiště sdílené složky toohello `\home\` adresáře. Pokud je image kontejneru nemusí trvalé sdílené složky, můžete zakázat připojení tohoto úložiště pomocí nastavení hello `WEBSITES_ENABLE_APP_SERVICE_STORAGE` aplikace nastavení příliš`false`. Z lokality scm hello budete mít stále přístup k úložišti toothat a všechny protokoly Docker (Pokud je povoleno) se zapíšou toohello souborů protokolu vygenerovaných hello platformy.
 
-## <a name="how-to-switch-back-to-using-a-built-in-image"></a>Postupy: Přejít zpět k používání předdefinovaných bitové kopie ##
+## <a name="how-to-switch-back-toousing-a-built-in-image"></a>Postupy: přepínač zpět toousing integrované bitové kopie ##
 
-Chcete-li přepnout pomocí vlastní image pomocí předdefinovaných bitové kopie:
+tooswitch pomocí vlastní image toousing integrované bitové kopie:
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **služby App Service**.
+1. V hello [portál Azure](https://portal.azure.com), vyhledejte vaší webové aplikace v systému Linux, pak v **nastavení** klikněte na tlačítko **služby App Service**.
 
-2. Vyberte vaše **Runtime zásobníku** Pokud chcete použít integrované bitové kopie, pak klikněte na tlačítko **Uložit**. 
+2. Vyberte vaše **Runtime zásobníku** toouse hello integrované bitové kopie, pak klikněte na **Uložit**. 
 
 ![Konfigurace předdefinovaných Docker image][5]
 
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
-Pokud vaše aplikace se nepodaří spustit s vlastní Docker bitovou kopii, zkontrolujte, že že docker protokolů v adresáři LogFiles. Buď prostřednictvím webu SCM nebo FTP, můžete přístup k tomuto adresáři.
-Do protokolu `stdout` a `stderr` z kontejneru, je nutné povolit **kontejner Docker protokolování** pod **protokolů diagnostiky**.
+Pokud vaše aplikace nezdaří toostart s vlastní bitovou kopii Docker, zkontrolujte hello Docker protokolů v adresáři LogFiles hello. Buď prostřednictvím webu SCM nebo FTP, můžete přístup k tomuto adresáři.
+toolog hello `stdout` a `stderr` z kontejneru, je nutné tooenable **kontejner Docker protokolování** pod **protokolů diagnostiky**.
 
 ![Povolení protokolování][8]
 
-![Pokud chcete zobrazit protokoly Docker pomocí modulu Kudu][7]
+![Pomocí modulu Kudu tooview Docker protokolů][7]
 
-Můžete získat přístup k webu SCM z **Rozšířené nástroje** v **nástroje pro vývoj** nabídky.
+Dostanete hello SCM lokality z **Rozšířené nástroje** v hello **nástroje pro vývoj** nabídky.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-Postupujte podle následujících odkazů můžete začít pracovat s webové aplikace v systému Linux.   
+Postupujte podle hello následující odkazy tooget začít s webovou aplikaci v systému Linux.   
 
-* [Úvod do Azure webové aplikace v systému Linux](./app-service-linux-intro.md)
+* [Úvod tooAzure webové aplikace v systému Linux](./app-service-linux-intro.md)
 * [Pomocí PM2 konfigurace pro Node.js v Azure webové aplikace v systému Linux](./app-service-linux-using-nodejs-pm2.md)
 * [Webové aplikace Azure App Service v systému Linux – nejčastější dotazy](app-service-linux-faq.md)
 

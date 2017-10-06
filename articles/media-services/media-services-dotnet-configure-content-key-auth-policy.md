@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services .NET SDK | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat zásady autorizace pro klíč obsahu pomocí sady Media Services .NET SDK."
+title: "zásady autorizace klíče obsahu aaaConfigure pomocí sady Media Services .NET SDK | Microsoft Docs"
+description: "Zjistěte, jak tooconfigure zásad autorizace pro klíč obsahu pomocí sady Media Services .NET SDK."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cfcbc5da9819bcec8b163fef183988a8beff9ed2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamické šifrování: Nakonfigurujte zásady autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
-Microsoft Azure Media Services umožňuje doručovat datové proudy MPEG-DASH, technologie Smooth Streaming a HTTP-Live-Streaming (HLS) chráněné pomocí Standard AES (Advanced Encryption) (pomocí klíče 128bitové šifrování) nebo [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS také umožňuje doručovat datové proudy DASH šifrované pomocí Widevine DRM. Technologie PlayReady a Widevine jsou šifrované podle specifikace Common Encryption (ISO/IEC CENC 23001-7).
+Microsoft Azure Media Services umožňuje toodeliver MPEG-DASH, technologie Smooth Streaming a datové proudy HTTP-Live-Streaming (HLS) chráněné pomocí Standard AES (Advanced Encryption) (pomocí klíče 128bitové šifrování) nebo [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS taky umožňuje vám toodeliver datové proudy DASH šifrované pomocí Widevine DRM. Technologie PlayReady a Widevine jsou šifrované podle specifikace Common Encryption (ISO/IEC CENC 23001-7) hello.
 
-Služba Media Services také poskytuje **klíč nebo licenční služby doručení** klienty, kteří mohou získat klíče AES nebo licence PlayReady nebo Widevine přehrávání šifrovaný obsah.
+Služba Media Services také poskytuje **klíč nebo licenční služby doručení** ze kterých klienti můžete získat klíče AES nebo tooplay licence PlayReady nebo Widevine hello šifrovaný obsah.
 
-Pokud chcete pro Media Services k šifrování prostředek, je potřeba přidružit šifrovací klíč (**CommonEncryption** nebo **EnvelopeEncryption**) k assetu (jak je popsáno [sem](media-services-dotnet-create-contentkey.md)) a taky nakonfigurovat zásady autorizace pro klíč (jak je popsáno v tomto článku).
+Pokud chcete pro Media Services tooencrypt prostředek, je nutné tooassociate šifrovací klíč (**CommonEncryption** nebo **EnvelopeEncryption**) s hello asset (jak je popsáno [sem](media-services-dotnet-create-contentkey.md)) a také nakonfigurovat zásady autorizace pro klíč hello (jak je popsáno v tomto článku).
 
-Datový proud je žádost přehrávač, Media Services používá k zadanému klíči dynamicky šifrovat obsah s šifrováním AES nebo DRM. K dešifrování datového proudu, bude přehrávač požadovat klíč ze služby doručení klíče. Při rozhodování, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Když přehrávač vyžádá datový proud, služba Media Services použije hello zadané klíče toodynamically šifrování svůj obsah pomocí šifrování AES nebo DRM. datový proud hello toodecrypt, hello player bude požadovat hello klíč z hello doručení klíče služby. toodecide, jestli je uživatel hello autorizovaný tooget hello klíč, hello služba vyhodnocuje hello zásady autorizace, které jste zadali pro klíč hello.
 
-Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace klíče obsahu může mít jeden nebo více omezení autorizace: **otevřete** nebo **tokenu** omezení. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve **jednoduchých webových tokenů** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátu a **webových tokenů JSON** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) formátu.
+Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Hello zásady autorizace klíče obsahu může mít jeden nebo více omezení autorizace: **otevřete** nebo **tokenu** omezení. zásady omezení tokenem Hello musí být doplněny tokenem vydaným podle zabezpečení tokenu služby (STS). Služba Media Services podporuje tokeny ve hello **jednoduchých webových tokenů** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátu a **webových tokenů JSON** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) formátu.
 
-Služba Media Services neposkytuje zabezpečení tokenu služby. Můžete vytvořit vlastní službu tokenů zabezpečení nebo využívat Microsoft Azure ACS problém tokeny. Služba tokenů zabezpečení musí být nakonfigurované vytvořit token podepsané zadaný klíč a vystavování deklarací identity, které jste zadali v nastavení omezení s tokenem (jak je popsáno v tomto článku). Doručení klíče služby Media Services bude vrácena klientovi šifrovací klíč, pokud token je platný a deklarace identity v tokenu shodují s těmi, nakonfigurované pro klíč k obsahu.
+Služba Media Services neposkytuje zabezpečení tokenu služby. Můžete vytvořit vlastní službu tokenů zabezpečení nebo využívat Microsoft Azure ACS tooissue tokeny. Hello služby tokenů zabezpečení musí být nakonfigurované toocreate token podepsané hello zadaný klíč a deklarace identity vystavují (jak je popsáno v tomto článku) zadaný v konfiguraci omezení s tokenem hello. Hello doručení klíče služby Media Services vrátí hello šifrovací klíče toohello klienta Pokud hello token je platný a hello deklarace v tokenu hello odpovídají nakonfigurovaným pro klíč obsahu hello.
 
 Další informace najdete v tématu
 
@@ -42,22 +42,22 @@ Další informace najdete v tématu
 
 [Integrace aplikace Azure Media Services OWIN MVC se službou Azure Active Directory a omezit klíče doručování obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-[Pomocí Azure ACS problém tokeny](http://mingfeiy.com/acs-with-key-services).
+[Použití Azure ACS tooissue tokeny](http://mingfeiy.com/acs-with-key-services).
 
 ### <a name="some-considerations-apply"></a>Musí být splněny určité předpoklady:
-* Při vytvoření účtu AMS **výchozí** koncový bod streamování je přidána k vašemu účtu v **Zastaveno** stavu. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamické šifrování, musí být v koncovém bodu streamování **systémem** stavu. 
+* Při vytvoření účtu AMS **výchozí** koncový bod streamování se přidá účet tooyour hello **Zastaveno** stavu. toostart streamování vašeho obsahu a proveďte výhod dynamického balení a dynamické šifrování, koncový bod streamování má toobe v hello **systémem** stavu. 
 * Váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí. Další informace najdete v tématu [kódovat asset](media-services-encode-asset.md).
 * Nahrání a kódování vaše prostředky pomocí **AssetCreationOptions.StorageEncrypted** možnost.
-* Pokud budete chtít mít několik klíčů obsahu, které vyžadují stejnou konfiguraci zásad, důrazně doporučujeme vytvořit zásadu jeden autorizace a opakovaně ji používat s více klíčů k obsahu.
-* Službu doručování klíč ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (Možnosti zásad a omezení) pro 15 minut.  Pokud vytvoříte ContentKeyAuthorizationPolicy a nastavení, aby používal "Token" omezení, pak otestovat ji a potom aktualizovat zásady "Otevřené" omezení, bude trvat přibližně 15 minut, než zásady přepne do "Otevřené" verze zásad.
+* Pokud máte v plánu toohave více obsahu klíčů, které vyžadují hello stejné konfigurace zásad, se důrazně doporučuje toocreate zásady jeden autorizace a opakovaně ji používat s více klíčů k obsahu.
+* Hello služba pro přenos klíče ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (Možnosti zásad a omezení) pro 15 minut.  Pokud vytvoříte ContentKeyAuthorizationPolicy a zadejte toouse "Token" omezení, pak otestovat ji a potom aktualizovat zásady hello příliš "Otevřít" omezení, bude trvat přibližně 15 minut před hello zásad přepínače toohello "Otevřené" verze hello zásad.
 * Pokud přidáte nebo aktualizujete zásady pro doručení assetu, musíte odstranit stávající lokátor (pokud existuje) a vytvořit nový.
 * V současné době nelze zašifrovat progresivní stahování.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamické šifrování AES-128
 ### <a name="open-restriction"></a>Otevřete omezení
-Otevřete omezení znamená, že systém bude poskytovat klíč všem uživatelům, kteří vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
+Otevřete omezení znamená, že systém hello dodá hello tooanyone klíče, který vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
 
-Následující příklad vytvoří zásadu otevřete autorizace a přidává ji k klíč obsahu.
+Hello následující ukázka vytvoří zásadu otevřete autorizace a přidá ho toohello klíč obsahu.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -89,17 +89,17 @@ Následující příklad vytvoří zásadu otevřete autorizace a přidává ji 
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
     }
 
 
 ### <a name="token-restriction"></a>Omezení s tokenem
-Tato část popisuje, jak vytvořit zásady autorizace klíče obsahu a přidružte ji k klíč obsahu. Zásady autorizace popisuje, jaké autorizace musí být splněny k určení, pokud je uživatel oprávněn přijímat klíč (například nemá seznam "ověřovací klíč" obsahovat klíč, který byl podepsaný token).
+Tato část popisuje, jak toocreate obsahu klíče zásad autorizace a přidružte ji k hello klíč obsahu. zásady autorizace Hello popisuje, jaké požadavky na ověřování musí být nesplnění toodetermine, pokud je uživatel hello autorizovaný tooreceive hello klíč (například seznamu "ověřovací klíč" hello obsahovat hello klíč byl podepsaný token tuto hello).
 
-Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML k popisu tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat následujícím schématu XML.
+možnost omezení s tokenem hello tooconfigure, je nutné toouse XML tokenu hello toodescribe autorizace požadavky. Konfigurace omezení s tokenem Hello XML musí odpovídat toohello následující schématu XML.
 
 #### <a id="schema"></a>Omezení s tokenem schématu
     <?xml version="1.0" encoding="utf-8"?>
@@ -149,10 +149,10 @@ Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Při konfiguraci **tokenu** omezený zásady, je nutné zadat primární ** ověřovací klíč **, **vystavitele** a **cílovou skupinu** parametry. ** Primární ověření klíč ** obsahuje klíč, který byl podepsaný token, **vystavitele** je zabezpečený tokenu služba, která vydá token. **Cílovou skupinu** (někdy nazývané **oboru**) popisuje záměr token nebo token povolí přístup k prostředku. Služba Media Services doručení klíče ověří, jestli tyto hodnoty v tokenu shodují s hodnotami v šabloně. 
+Při konfiguraci hello **tokenu** omezený zásady, je nutné zadat hello primární ** ověřovací klíč **, **vystavitele** a **cílovou skupinu** parametry. Hello ** primární ověření klíč ** obsahuje hello klíč, který hello token byl podepsán, **vystavitele** služby tokenů zabezpečení hello je tento token hello problémy. Hello **cílovou skupinu** (někdy nazývané **oboru**) popisuje hello záměr hello tokenu nebo hello prostředků hello token povolí přístup k. Hello doručení klíče služby Media Services ověří, že tyto hodnoty v tokenu hello shodují s hodnotami hello v šabloně hello. 
 
-Při použití **sady Media Services SDK pro .NET**, můžete použít **TokenRestrictionTemplate** k vygenerování tokenu omezení.
-Následující příklad vytvoří zásad autorizace pomocí tokenu omezení. V tomto příkladu by klient musel token, který obsahuje k dispozici: podpisový klíč (VerificationKey), vydavatel tokenu a požadované deklarace identity.
+Při použití **sady Media Services SDK pro .NET**, můžete použít hello **TokenRestrictionTemplate** třída toogenerate hello omezení token.
+Hello následující ukázka vytvoří token omezení zásad autorizace. V tomto příkladu hello by klient musel předem toopresent token, který obsahuje: podpisový klíč (VerificationKey), vydavatel tokenu a požadované deklarace identity.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -186,10 +186,10 @@ Následující příklad vytvoří zásad autorizace pomocí tokenu omezení. V 
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
 
         return tokenTemplateString;
     }
@@ -209,36 +209,36 @@ Následující příklad vytvoří zásad autorizace pomocí tokenu omezení. V 
     }
 
 #### <a id="test"></a>Testovací token
-Chcete-li získat token testovací podle tokenu omezení, která byla použita pro zásad autorizace pro klíč, postupujte takto.
+tooget testovací token podle hello tokenu omezení, která byla použita pro zásad autorizace pro klíč hello, hello následující.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-    // Note, you need to pass the key id Guid because we specified 
-    // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+    // Generate a test token based on hello hello data in hello given TokenRestrictionTemplate.
+    // Note, you need toopass hello key id Guid because we specified 
+    // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
     Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
 
-    //The GenerateTestToken method returns the token without the word “Bearer” in front
-    //so you have to add it in front of the token string. 
+    //hello GenerateTestToken method returns hello token without hello word “Bearer” in front
+    //so you have tooadd it in front of hello token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+    Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
     Console.WriteLine();
 
 
 ## <a name="playready-dynamic-encryption"></a>Šifrování PlayReady dynamický
-Služba Media Services umožňuje nakonfigurovat práva a omezení, které chcete použít pro modul runtime PlayReady DRM vynucovat, když uživatel se pokouší o přehrání chráněný obsah. 
+Služba Media Services umožňuje tooconfigure hello práva a omezení, že chcete pro hello tooenforce runtime PlayReady DRM při uživatele, že tooplay zpět chráněného obsahu. 
 
-Při ochraně obsahu pomocí technologie PlayReady, jednou z věcí, je třeba zadat ve vaší zásady autorizace je řetězec XML, který definuje [šablona licence PlayReady](media-services-playready-license-template-overview.md). V sady Media Services SDK pro platformu .NET **PlayReadyLicenseResponseTemplate** a **PlayReadyLicenseTemplate** třídy vám pomohou definovat šablonu licence PlayReady.
+Při ochraně obsahu pomocí technologie PlayReady, jednou z věcí hello potřebujete toospecify ve vaší zásady autorizace je řetězec XML, který definuje hello [šablona licence PlayReady](media-services-playready-license-template-overview.md). V sady Media Services SDK pro .NET, hello **PlayReadyLicenseResponseTemplate** a **PlayReadyLicenseTemplate** třídy vám pomůže definovat hello šablona licence PlayReady.
 
-[Toto téma](media-services-protect-with-drm.md) ukazuje, jak šifrování svůj obsah pomocí **PlayReady** a **Widevine**.
+[Toto téma](media-services-protect-with-drm.md) ukazuje, jak tooencrypt svůj obsah pomocí **PlayReady** a **Widevine**.
 
 ### <a name="open-restriction"></a>Otevřete omezení
-Otevřete omezení znamená, že systém bude poskytovat klíč všem uživatelům, kteří vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
+Otevřete omezení znamená, že systém hello dodá hello tooanyone klíče, který vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
 
-Následující příklad vytvoří zásadu otevřete autorizace a přidává ji k klíč obsahu.
+Hello následující ukázka vytvoří zásadu otevřete autorizace a přidá ho toohello klíč obsahu.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -272,13 +272,13 @@ Následující příklad vytvoří zásadu otevřete autorizace a přidává ji 
 
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate the content key authorization policy with the content key.
+        // Associate hello content key authorization policy with hello content key.
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
     }
 
 ### <a name="token-restriction"></a>Omezení s tokenem
-Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML k popisu tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat schématu XML ukazuje [to](#schema) části.
+možnost omezení s tokenem hello tooconfigure, je nutné toouse XML tokenu hello toodescribe autorizace požadavky. Konfigurace omezení s tokenem Hello XML musí odpovídat schématu XML toohello ukazuje [to](#schema) části.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -313,10 +313,10 @@ Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate the content key authorization policy with the content key
+        // Associate hello content key authorization policy with hello content key
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
 
@@ -341,42 +341,42 @@ Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML
 
     static private string ConfigurePlayReadyLicenseTemplate()
     {
-        // The following code configures PlayReady License Template using .NET classes
-        // and returns the XML string.
+        // hello following code configures PlayReady License Template using .NET classes
+        // and returns hello XML string.
 
-        //The PlayReadyLicenseResponseTemplate class represents the template for the response sent back to the end user. 
-        //It contains a field for a custom data string between the license server and the application 
+        //hello PlayReadyLicenseResponseTemplate class represents hello template for hello response sent back toohello end user. 
+        //It contains a field for a custom data string between hello license server and hello application 
         //(may be useful for custom app logic) as well as a list of one or more license templates.
         PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
 
-        // The PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
-        // to be returned to the end users. 
-        //It contains the data on the content key in the license and any rights or restrictions to be 
-        //enforced by the PlayReady DRM runtime when using the content key.
+        // hello PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
+        // toobe returned toohello end users. 
+        //It contains hello data on hello content key in hello license and any rights or restrictions toobe 
+        //enforced by hello PlayReady DRM runtime when using hello content key.
         PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
-        //Configure whether the license is persistent (saved in persistent storage on the client) 
-        //or non-persistent (only held in memory while the player is using the license).  
+        //Configure whether hello license is persistent (saved in persistent storage on hello client) 
+        //or non-persistent (only held in memory while hello player is using hello license).  
         licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
 
-        // AllowTestDevices controls whether test devices can use the license or not.  
-        // If true, the MinimumSecurityLevel property of the license
-        // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
+        // AllowTestDevices controls whether test devices can use hello license or not.  
+        // If true, hello MinimumSecurityLevel property of hello license
+        // is set too150.  If false (hello default), hello MinimumSecurityLevel property of hello license is set too2000.
         licenseTemplate.AllowTestDevices = true;
 
 
-        // You can also configure the Play Right in the PlayReady license by using the PlayReadyPlayRight class. 
-        // It grants the user the ability to playback the content subject to the zero or more restrictions 
-        // configured in the license and on the PlayRight itself (for playback specific policy). 
-        // Much of the policy on the PlayRight has to do with output restrictions 
-        // which control the types of outputs that the content can be played over and 
+        // You can also configure hello Play Right in hello PlayReady license by using hello PlayReadyPlayRight class. 
+        // It grants hello user hello ability tooplayback hello content subject toohello zero or more restrictions 
+        // configured in hello license and on hello PlayRight itself (for playback specific policy). 
+        // Much of hello policy on hello PlayRight has toodo with output restrictions 
+        // which control hello types of outputs that hello content can be played over and 
         // any restrictions that must be put in place when using a given output.
-        // For example, if the DigitalVideoOnlyContentRestriction is enabled, 
-        //then the DRM runtime will only allow the video to be displayed over digital outputs 
-        //(analog video outputs won’t be allowed to pass the content).
+        // For example, if hello DigitalVideoOnlyContentRestriction is enabled, 
+        //then hello DRM runtime will only allow hello video toobe displayed over digital outputs 
+        //(analog video outputs won’t be allowed toopass hello content).
 
-        //IMPORTANT: These types of restrictions can be very powerful but can also affect the consumer experience. 
-        // If the output protections are configured too restrictive, 
-        // the content might be unplayable on some clients. For more information, see the PlayReady Compliance Rules document.
+        //IMPORTANT: These types of restrictions can be very powerful but can also affect hello consumer experience. 
+        // If hello output protections are configured too restrictive, 
+        // hello content might be unplayable on some clients. For more information, see hello PlayReady Compliance Rules document.
 
         // For example:
         //licenseTemplate.PlayRight.AgcAndColorStripeRestriction = new AgcAndColorStripeRestriction(1);
@@ -387,7 +387,7 @@ Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML
     }
 
 
-Chcete-li získat token testovací podle omezení s tokenem, který byl použit zásady autorizace pro klíč, najdete v tématu [to](#test) části. 
+tooget testovací token podle hello tokenu omezení, která byla použita hello autorizace pro klíč zásad najdete v tématu [to](#test) části. 
 
 ## <a id="types"></a>Typy používané při definování ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -424,5 +424,5 @@ Chcete-li získat token testovací podle omezení s tokenem, který byl použit 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Další krok
-Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, přejděte na [postup konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md) tématu.
+Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, přejděte toohello [jak zásady doručení assetu tooconfigure](media-services-dotnet-configure-asset-delivery-policy.md) tématu.
 

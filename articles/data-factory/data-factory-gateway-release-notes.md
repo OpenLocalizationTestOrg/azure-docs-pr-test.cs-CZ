@@ -1,5 +1,5 @@
 ---
-title: "Poznámky k verzi pro Brána pro správu dat | Microsoft Docs"
+title: "Poznámky k aaaRelease pro Brána pro správu dat | Microsoft Docs"
 description: "Brána pro správu dat, text poznámky k verzi"
 services: data-factory
 author: nabhishek
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 published: True
-ms.openlocfilehash: c052d7e9f757164429ce867201b96305e405dce9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3165d7537410a0531e0bb7f7fe584767f9155574
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
-Jedním z problémů pro integraci moderní dat je přesun dat do a z místního do cloudu. Objekt pro vytváření dat umožňuje integraci se Brána pro správu dat, což je místní povolit hybridní přesun dat můžete nainstalovat agenta.
+Jedním z hello výzvy pro integraci moderní dat je toomove tooand data z místně toocloud. Objekt pro vytváření dat umožňuje integraci se Brána pro správu dat, což je agenta můžete nainstalovat přesun dat hybridní tooenable místně.
 
-Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v následujících článcích:
+V tématu hello následující články podrobné informace o Brána pro správu dat a jak toouse ho:
 
 *  [Brána správy dat](data-factory-data-management-gateway.md)
 *  [Přesun dat mezi místními a cloudu pomocí Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
@@ -32,9 +32,9 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 ## <a name="current-version-21063477"></a>AKTUÁLNÍ VERZE (2.10.6347.7)
 
 ### <a name="enhancements-"></a>Vylepšení-
-- Přidáním položky DNS do seznamu povolených IP adres služby service bus, místo vytvoření seznamu povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Odpovídající položka DNS můžete najít na portálu Azure ('Vytvořit a nasadit' -> objekt pro vytváření dat -> 'Brány' -> "serviceUrls" (ve formátu JSON)
+- Můžete přidat DNS položky toowhitelist služby service bus, místo vytvoření seznamu povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Odpovídající položka DNS můžete najít na portálu Azure ('Vytvořit a nasadit' -> objekt pro vytváření dat -> 'Brány' -> "serviceUrls" (ve formátu JSON)
 - Konektor HDFS nyní podporuje veřejný certifikát podepsaný svým držitelem tím, že umožňuje přeskočit ověřování SSL.
-- Opravené: Problém s bránou offline během aktualizace (z důvodu posun hodin)
+- Opravené: Problém s bránou offline během aktualizace (z důvodu tooclock zkosení)
 
 
 
@@ -42,12 +42,12 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Vylepšení-
--   Můžete přidat záznamy DNS na seznam povolených adres služby Service Bus, místo vytvoření seznamu povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Další informace v tomto poli.
--   Můžete teď kopírování dat z jeden blok objektů blob až 4.75 TB, což je maximální podporovaná velikost objektu blob bloku. (dřívější limit byl 195 GB).
+-   Můžete přidat toowhitelist položky DNS Service Bus, místo vytvoření seznamu povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Další informace v tomto poli.
+-   Nyní můžete zkopírovat data z objektu blob jeden blok až too4.75 TB, což je maximální hello podporované velikost objektu blob bloku. (dřívější limit byl 195 GB).
 -   Opravené: Nedostatek paměti problém při rozbalení několik malých souborů během aktivity kopírování.
--   Opravené: Index je mimo rozsah problém při kopírování z databáze dokumentu aplikace idempotenci funkce na místní server SQL.
+-   Pevné: Index je mimo rozsah problém při kopírování z dokumentu DB tooan místní systém SQL Server s funkcí idempotenci.
 -   Opravené: Skript pro vyčištění SQL nefunguje s místní SQL Server z Průvodce kopírováním.
--   Opravené: Název sloupce s místem na konci nefunguje v aktivitě kopírování.
+-   Opravené: Název sloupce s místem na konci hello nefunguje v aktivitě kopírování.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Vylepšení-
@@ -71,58 +71,58 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 
 ## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>Vylepšení
-- Vylepšené a robustnější brány registrace zkušeností – teď můžete sledovat průběh během procesu registrace brány, který umožňuje registraci prostředí rychleji reagovat.
-- Zlepšení brány obnovit proces - je stále možné obnovit bránu i v případě, že nemáte brány záložní soubor s touto aktualizací. To bude vyžadovat jste se resetovat přihlašovací údaje propojené služby v portálu.
+- Vylepšené a robustnější brány registrace zkušeností – teď můžete sledovat průběh během procesu registrace brány hello, takže je registrace hello prostředí rychlejšího.
+- Zlepšení brány obnovit proces - je stále možné obnovit bránu i v případě, že nemáte hello brány záložní soubor s touto aktualizací. To se vyžaduje pověření tooreset propojené služby v portálu.
 - Oprava chyby.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Co je nového
 
-- Nyní můžete ukládat přihlašovací údaje zdroje dat místně. Přihlašovací údaje jsou šifrované. Pověření ke zdroji dat lze obnovit a obnovit pomocí záložní soubor, který se dá vyexportovat ze existující bránu, všechny místní.
+- Nyní můžete ukládat přihlašovací údaje zdroje dat místně. Hello přihlašovací údaje jsou šifrované. Hello přihlašovacích údajů zdroje dat lze obnovit a obnovit pomocí hello záložní soubor, který se dá vyexportovat ze hello existující bránu, všechny místní.
 
 ### <a name="enhancements-"></a>Vylepšení-
 
 - Vylepšené a robustnější brány registrace prostředí.
-- Podpora automatického zjišťování QuoteChar konfigurace formátu textu v Průvodce kopírováním a zlepšit celkové přesnost detekce formátu.
+- Podpora formátu textu v Průvodce kopírováním automatické zjišťování QuoteChar konfigurace a zlepšit hello celkové formátu detekce přesnost.
 
 ## <a name="2361002"></a>2.3.6100.2
 
 - Podpora firstRowAsHeader a SkipLineCount automatické zjišťování v Průvodce kopírováním textových souborů v systému souborů na místě a HDFS.
-- Zvýšení stability síťové připojení mezi bránou a Service Bus
+- Zvýšení stability hello síťové připojení mezi bránou a Service Bus
 - Několik oprav chyb
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Podporuje nastavení proxy serveru HTTP pro bránu pomocí Správce konfigurace brány. Pokud nakonfigurovaný, objektů Blob v Azure, Azure Table, Azure Data Lake a Documentdb jsou přístupné prostřednictvím proxy serveru HTTP.
-*  Místní systém souborů podporuje hlavička zpracování TextFormat při kopírování dat z/do objektu Blob Azure, Azure Data Lake Store a místní HDFS.
-*  Podporuje kopírování dat z objektu Blob připojit a objektů Blob stránky spolu s již podporované objekt Blob bloku.
-*  Zavádí nový stav brány **Online (s omezením)**, což naznačuje, že hlavní funkce brány funguje s výjimkou interaktivní operace podporu pro Průvodce kopírováním.
-*  Zvyšuje odolnost registrace brány pomocí registračního klíče.
+*  Podporuje nastavení proxy serveru HTTP pro použití brány hello hello Správce konfigurace brány. Pokud nakonfigurovaný, objektů Blob v Azure, Azure Table, Azure Data Lake a Documentdb jsou přístupné prostřednictvím proxy serveru HTTP.
+*  Hlavička podporuje zpracování TextFormat při kopírování dat z / tooAzure objektů Blob, Azure Data Lake Store, místní systém souborů a místní HDFS.
+*  Podporuje kopírování dat z objektu Blob připojit a objektů Blob stránky spolu s hello již nepodporuje objekt Blob bloku.
+*  Zavádí nový stav brány **Online (s omezením)**, což znamená, že hlavní funkce hello hello brány funguje s výjimkou hello interaktivní operace podporu pro Průvodce kopírováním.
+*  Zvyšuje odolnost hello registrace brány pomocí registračního klíče.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  Ovladač DB2 je nyní obsažena v instalační balíček brány. Není nutné instalovat samostatně.
-*  Teď podporuje DB2 ovladače z/OS a DB2 pro i (AS / 400) společně s již podporované platformy (Linux, Unix a Windows).
+*  Ovladač DB2 je součástí instalační balíček brány hello teď. Není nutné tooinstall ho samostatně.
+*  Teď podporuje DB2 ovladače z/OS a DB2 pro i (AS / 400) společně s hello platformách, již podporuje (Linux, Unix a Windows).
 *  Podporuje používání Azure Cosmos DB jako zdrojový nebo cílový pro místní úložiště dat
-*  Podporuje kopírování dat z/do za provozu nebo studený objekt blob úložiště společně s účet již podporované úložiště pro obecné účely.
-*  Umožňuje připojení k místnímu SQL serveru prostřednictvím brány s oprávněními vzdálené přihlášení.  
+*  Podporuje kopírování dat z/toocold/horkou objektu blob úložiště společně s hello již nepodporuje účet úložiště pro obecné účely.
+*  Umožňuje tooon místní tooconnect systému SQL Server prostřednictvím brány s oprávněními vzdálené přihlášení.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  Můžete vybrat jazyk nebo jazykovou verzi, která během ruční instalace použít bránu.
+*  Můžete vybrat toobe jazyků a kultur hello používá bránu při ruční instalaci.
 
-*  Pokud brána nebude fungovat podle očekávání, můžete odeslat protokoly gateway posledních sedmi dnů společnosti Microsoft, které usnadňují řešení potíží s problému. Pokud brána není připojená ke cloudové službě, můžete uložit a archivovat protokoly gateway.  
+*  Pokud brána nebude fungovat podle očekávání, můžete protokoly brány toosend posledních sedmi dnech tooMicrosoft toofacilitate řešení potíží s hello problém. Pokud brána není připojen toohello cloudovou službu, můžete zvolit toosave a archivaci protokoly gateway.  
 
 *  Vylepšení uživatelského rozhraní pro správce konfigurace brány:
 
-    *  Nastavit stav brány. na kartě Domů více viditelné.
+    *  Nastavit stav brány. víc viditelný na kartě Domů hello.
 
     *  Ovládací prvky reorganizovány všechny a jednodušší.
 
-    *  Může kopírovat data z úložiště pomocí [nástroj preview bez kódu kopírování](data-factory-copy-data-wizard-tutorial.md). V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) obecné podrobnosti o této funkci.
-*  Brána pro správu dat na vstupní data přímo z místní databáze systému SQL Server můžete do Azure Machine Learning.
+    *  Můžete zkopírovat data z úložiště pomocí hello [nástroj preview bez kódu kopírování](data-factory-copy-data-wizard-tutorial.md). V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) obecné podrobnosti o této funkci.
+*  Brána pro správu dat tooingress data přímo z místní databáze systému SQL Server můžete použít do Azure Machine Learning.
 
 *  Vylepšení výkonu
 
@@ -134,9 +134,9 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  Maximální velikost protokolu událostí brány byla zvýšena z 1 MB na 40 MB.
+*  Maximální velikost protokolu událostí brány hello zvýšila od 1 MB too40 MB.
 
-*  V případě, že během automatickou aktualizaci brány je zapotřebí restartování, zobrazí se dialog s upozorněním. Je možné restartovat právo pak nebo novější.
+*  V případě, že během automatickou aktualizaci brány je zapotřebí restartování, zobrazí se dialog s upozorněním. Můžete toorestart vpravo pak nebo novější.
 
 *  V případě, že automatické aktualizace nezdaří, instalační program brány opakuje, automatické aktualizace třikrát za maximální.
 
@@ -156,8 +156,8 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 
 *  Nulové funkcí touch automatické aktualizace
 *  Ikona nový panelu s indikátory stavu brány
-*  Možnost "Teď Update" z klienta
-*  Možnost nastavit čas plánu aktualizace
+*  Možnost příliš "teď"z aktualizovat hello klienta
+*  Čas plánované aktualizace tooset možnost
 *  Skript prostředí PowerShell pro přepnutím zapnout nebo vypnout automatickou aktualizaci
 *  Podpora formátu JSON  
 *  Vylepšení výkonu
@@ -237,12 +237,12 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 ### <a name="1454921"></a>1.4.5492.1
 
 *  Jednotná binární soubor, který podporuje služby Microsoft Azure Data Factory a Office 365 Power BI
-*  Upřesnit proces uživatelské rozhraní konfigurace a registrace
+*  Upřesnit hello procesu uživatelské rozhraní konfigurace a registrace
 *  Azure Data Factory – Azure příchozí a odchozí podporu pro zdroj dat systému SQL Server
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Opravte problém časový limit pro podporu více připojení ke zdroji dat časově náročná.
+*  Opravte problém toosupport časový limit více časově náročné připojení ke zdroji dat.
 
 ### <a name="1155268"></a>1.1.5526.8
 

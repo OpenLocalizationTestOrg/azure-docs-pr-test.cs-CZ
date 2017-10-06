@@ -1,6 +1,6 @@
 ---
-title: "Zřídit a nasadit mikroslužeb předvídatelné v Azure"
-description: "Informace o nasazení aplikace skládá z mikroslužeb v Azure App Service jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell."
+title: "aaaProvision a nasazení mikroslužeb předvídatelné v Azure"
+description: "Zjistěte, jak toodeploy aplikace skládá z mikroslužeb v Azure App Service jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 844f42e61ba443a4b74a52f622113e87a7781913
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d32c2fc82a8b09e89224ec437e5819b65b2e9e78
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřídit a nasadit mikroslužeb předvídatelné v Azure
-Tento kurz ukazuje, jak zřídit a nasadit aplikace skládá z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](/services/app-service/) jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell. 
+Tento kurz ukazuje, jak tooprovision a nasazení aplikace skládá z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](/services/app-service/) jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a Skriptů prostředí PowerShell. 
 
-Při zřizování a nasazování aplikací špičkové, které se skládají z vysoce odpojené mikroslužeb, opakovatelnost a předvídatelnost jsou klíčové pro úspěch. [Aplikační služba Azure](/services/app-service/) umožňuje vytvářet mikroslužeb, které zahrnují webové aplikace, mobilní aplikace, aplikace API a logic apps. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) vám umožňuje spravovat všechny mikroslužeb jako celek, společně s závislosti prostředků, jako jsou databáze a nastavení řízení zdroje. Teď můžete nasadit taky takové aplikace pomocí šablony JSON a jednoduchý skriptů prostředí PowerShell. 
+Při zřizování a nasazování aplikací špičkové, které se skládají z vysoce odpojeného mikroslužeb, opakovatelnost a předvídatelnost jsou zásadní toosuccess. [Aplikační služba Azure](/services/app-service/) vám umožní mikroslužeb toocreate, které zahrnují webové aplikace, mobilní aplikace, aplikace API a logic apps. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umožňuje všechny hello mikroslužeb toomanage můžete jako jednotku, společně s závislosti prostředků, jako je například databáze a zdroj nastavení ovládacího prvku. Teď můžete nasadit taky takové aplikace pomocí šablony JSON a jednoduchý skriptů prostředí PowerShell. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-do"></a>Co provedete
-V tomto kurzu nasazujete aplikaci, která zahrnuje:
+V kurzu hello nasadíte aplikaci, která zahrnuje:
 
 * Dva webové aplikace (tj. dva mikroslužeb)
 * Back-end databáze SQL
@@ -36,192 +36,192 @@ V tomto kurzu nasazujete aplikaci, která zahrnuje:
 * Application insights, výstrahy, nastavení automatického škálování
 
 ## <a name="tools-you-will-use"></a>Nástroje, které budete používat
-V tomto kurzu budete používat následující nástroje. Vzhledem k tomu, že není komplexní zabývat nástroje, kliknete na přilepit do začátku do konce scénáře a právě získáte stručný úvod ke každému, a kde můžete najít další informace o jeho. 
+V tomto kurzu použijete hello následující nástroje. Vzhledem k tomu, že není komplexní zabývat nástroje, I bude toostick toohello začátku do konce scénář a právě získáte tooeach stručný úvod a kde můžete najít další informace o jeho. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Šablony Azure Resource Manageru (JSON)
-Pokaždé, když vytvoříte webovou aplikaci v Azure App Service, například Azure Resource Manager používá k vytvoření skupiny celý prostředků s prostředky součást šablonu JSON. Komplexní šablony z [Azure Marketplace](/marketplace) jako [škálovatelné WordPress](/marketplace/partners/wordpress/scalablewordpress/) aplikace může obsahovat databáze MySQL, účty úložiště, plán služby App Service, webové aplikace, pravidla výstrah, nastavení aplikace, nastavení automatického škálování a další, a všechny tyto šablony jsou k dispozici prostřednictvím prostředí PowerShell. Informace o tom, jak stáhnout a použít tyto šablony najdete v tématu [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
+Pokaždé, když vytvoříte webovou aplikaci v Azure App Service, například Azure Resource Manager používá JSON šablony toocreate hello celé skupiny prostředků s prostředky součást hello. Komplexní šablony z hello [Azure Marketplace](/marketplace) jako hello [škálovatelné WordPress](/marketplace/partners/wordpress/scalablewordpress/) aplikace mohou obsahovat hello databáze MySQL, účty úložiště, hello plán služby App Service, hello webové aplikace, pravidla výstrah, aplikace nastavení, nastavení automatického škálování a další a všechny tyto šablony jsou k dispozici tooyou pomocí prostředí PowerShell. Informace o tom, jak toodownload a použijte tyto šablony, najdete v části [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-Další informace o šablonách Azure Resource Manager, najdete v části [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+Další informace o šablonách Azure Resource Manager hello najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>2.6 Azure SDK pro Visual Studio
-Nejnovější SDK obsahuje vylepšení podpory šablony správce prostředků v editoru JSON. Používejte rychle vytvořit šablonu skupiny prostředků od nuly nebo otevřete stávající šablonu JSON (například šablonu stažené galerie) pro úpravy, naplnění souboru parametrů a i nasazení skupiny prostředků přímo z řešení skupiny prostředků Azure.
+Hello nejnovější SDK obsahuje vylepšení toohello podpora šablony správce prostředků v editoru JSON hello. Můžete použít tento tooquickly vytvořit šablonu skupiny prostředků od začátku nebo otevřete stávající šablonu JSON (například šablonu stažené galerie) pro úpravy, naplnění souboru parametrů hello a i nasazení skupiny prostředků hello přímo z Azure Skupina prostředků řešení.
 
 Další informace najdete v tématu [2.6 Azure SDK pro Visual Studio](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/).
 
 ### <a name="azure-powershell-080-or-later"></a>Prostředí Azure PowerShell 0.8.0 nebo novější
-Počínaje verzí 0.8.0 je součástí instalace prostředí Azure PowerShell modulu Azure Resource Manager kromě modulu Azure. Tento nový modul umožňuje skript nasazení skupiny prostředků.
+Počínaje verzí 0.8.0, zahrnuje hello prostředí Azure PowerShell instalace modulu Azure Resource Manager hello v toohello přidání modulu Azure. Tento nový modul umožňuje tooscript hello nasazení skupiny prostředků.
 
 Další informace najdete v tématu [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
-To [nástroje preview](https://resources.azure.com) umožňuje prozkoumat JSON definice všech skupin prostředků v předplatného a jednotlivých zdrojů. V nástroji můžete upravovat JSON definice prostředku, odstranit celou hierarchii prostředků a vytvořit nové prostředky.  Snadno dostupné v tomto nástroji informace jsou velmi užitečné při vytváření šablony, protože zobrazuje jaké vlastnosti je třeba nastavit pro konkrétní typ prostředku, správné hodnoty, atd. Můžete například vytvořit vaší skupiny prostředků v [portálu Azure](https://portal.azure.com/), zkontrolujte jeho definice JSON v nástroj Průzkumník můžete templatize skupině prostředků.
+To [nástroje preview](https://resources.azure.com) vám umožní tooexplore hello JSON definice všech hello skupin prostředků v předplatném a hello jednotlivé prostředky. V nástroji hello můžete upravit hello JSON definice prostředku, odstranit celou hierarchii prostředků a vytvořit nové prostředky.  informace o Hello snadno dostupné v tento nástroj je velmi užitečné při vytváření šablony, protože ho se dozvíte, co potřebujete tooset pro konkrétní typ prostředku, hello vlastnosti opravte hodnoty atd. Můžete například vytvořit vaší skupiny prostředků v hello [portálu Azure](https://portal.azure.com/), zkontrolujte jeho definice JSON v toohelp nástroj Průzkumník hello templatize hello skupinu prostředků.
 
-### <a name="deploy-to-azure-button"></a>Nasazení do Azure tlačítko
-Pokud používáte GitHub pro řízení zdrojů, které můžete vložit [nasadit do Azure tlačítko](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) do vašeho souboru README. MD, což umožňuje nasazení klíč uživatelského rozhraní do Azure. Zatímco můžete provést pro všechny jednoduché webové aplikace, můžete rozšířit na povolit nasazení celé skupiny prostředků umístěním souboru azuredeploy.json v kořenovém adresáři úložiště. Tento soubor JSON, který obsahuje šablony skupiny prostředků, použije nasadit do Azure tlačítko pro vytvoření skupiny prostředků. Příklad, naleznete v části [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) vzorku, který budete používat v tomto kurzu.
+### <a name="deploy-tooazure-button"></a>TooAzure tlačítko nasadit
+Pokud používáte GitHub pro řízení zdrojů, které můžete vložit [nasadit tooAzure tlačítko](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) do vašeho souboru README. MD, která umožňuje tooAzure uživatelského rozhraní klíč nasazení. Zatímco můžete provést pro všechny jednoduché webové aplikace, můžete rozšířit tento tooenable nasazení umístěním souboru azuredeploy.json v úložišti kořenové hello celé skupiny prostředků. Tento soubor JSON, který obsahuje šablony skupiny prostředků hello, použije hello nasadit tooAzure tlačítko toocreate hello skupinu prostředků. Příklad najdete v tématu hello [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) vzorku, který budete používat v tomto kurzu.
 
-## <a name="get-the-sample-resource-group-template"></a>Získat šablonu ukázka skupiny prostředků
-Proto nyní Pojďme vpravo na ni.
+## <a name="get-hello-sample-resource-group-template"></a>Získat šablony skupiny prostředků ukázka hello
+Proto nyní Pojďme správné tooit.
 
-1. Přejděte na [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) Ukázka aplikace služby.
-2. V readme.md, klikněte na **nasadit do Azure**.
-3. Se [nasadit do azure](https://deploy.azure.com) lokality a výzva k vstupní parametry nasazení. Všimněte si, že většina polí se naplní název úložiště a některé náhodného řetězce pro vás. Všechna pole můžete změnit, pokud chcete, ale pouze věcí, je nutné zadat jsou přihlášení správce systému SQL Server a heslo a pak klikněte na **Další**.
+1. Přejděte toohello [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) Ukázka aplikace služby.
+2. V readme.md, klikněte na **nasazení tooAzure**.
+3. Jste prováděné toohello [nasadit do azure](https://deploy.azure.com) parametry kladené tooinput nasazení a lokality. Všimněte si, že většina polí hello se naplní hello úložiště název a některé náhodného řetězce pro vás. Všechna pole hello můžete změnit, pokud chcete, ale pouze věcí hello máte tooenter přihlášení správce systému SQL Server hello a hello heslo a pak klikněte na **Další**.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. Klikněte na tlačítko **nasadit** k zahájení procesu nasazení. Jakmile se spustí proces dokončen, klikněte na tlačítko http://todoapp*XXXX*. azurewebsites.net odkaz na Procházet nasazené aplikace. 
+4. Klikněte na tlačítko **nasadit** procesu nasazení toostart hello. Jakmile hello proces běží toocompletion, klikněte na možnost hello http://todoapp*XXXX*. azurewebsites.net odkaz toobrowse hello nasazené aplikace. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
-   Uživatelské rozhraní by být trochu pomalé, pokud nejprve procházení vzhledem k tomu, že se aplikace právě spuštění, ale přimět sami, že je plně funkční aplikaci.
-5. Zpět na stránce nasadit, klikněte **spravovat** odkaz zobrazíte novou aplikaci na portálu Azure.
-6. V **Essentials** rozevíracího seznamu, klikněte na odkaz skupiny prostředků. Všimněte si také, že webová aplikace je již připojen k úložišti GitHub pod **externí projektu**. 
+   Hello uživatelského rozhraní může být trochu pomalé, kdy tooit nejprve procházet, protože se právě spuštění hello aplikace, ale přimět sami, že je plně funkční aplikaci.
+5. Zpět na stránku hello nasadit, klikněte na hello **spravovat** odkaz toosee hello nové aplikace v hello portálu Azure.
+6. V hello **Essentials** rozevíracího seznamu, klikněte na odkaz skupinu prostředků hello. Všimněte si také že hello webové aplikace je už připojené úložiště GitHub toohello pod **externí projektu**. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
-7. V okně skupiny prostředků Všimněte si, že již existují dva webové aplikace a jedna databáze SQL ve skupině prostředků.
+7. V okně skupiny prostředků hello Všimněte si, že již existují dva webové aplikace a jedna databáze SQL ve skupině prostředků hello.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
-Vše, co jste viděli pouze za pár minut krátké plně nasazené dva mikroslužbu aplikace, se všechny součásti, závislosti, nastavení, databáze a průběžné publikování nastavil automatizované orchestration ve službě Správce prostředků Azure. Všechny tomu bylo potřeba dvě věci:
+Vše, co jste viděli pouze za pár minut krátké plně nasazené dva mikroslužbu aplikace, se všemi hello součásti, závislosti, nastavení, databáze a průběžné publikování nastavil automatizované orchestration ve službě Správce prostředků Azure. Všechny tomu bylo potřeba dvě věci:
 
-* Nasadit do Azure tlačítko
-* azuredeploy.JSON v kořenovém úložišti
+* tlačítko tooAzure nasadit Hello
+* azuredeploy.JSON v úložišti kořenové hello
 
-Můžete nasadit stejná aplikace desítek, stovek nebo tisíců časy a přesně stejnou konfiguraci pokaždé, když máte. Opakovatelnost a předvídatelnost tento přístup umožňuje nasadit špičkové aplikace s jednoduchosti a spolehlivosti.
+Můžete nasadit stejná aplikace desítek, stovek nebo tisíců časy a přesně stejnou konfiguraci hello pokaždé, když máte. Hello opakovatelnost a hello předvídatelnost tento přístup umožňuje toodeploy špičkové aplikace s jednoduchosti a spolehlivosti.
 
 ## <a name="examine-or-edit-azuredeployjson"></a>Zkontrolujte (nebo upravit) AZUREDEPLOY. JSON
-Nyní podíváme, jak bylo nastaveno úložiště GitHub. Budete používat JSON editor v .NET SDK služby Azure, takže pokud jste ještě nenainstalovali [Azure .NET SDK 2.6](/downloads/), udělejte teď.
+Nyní podíváme, jak bylo nastaveno úložiště GitHub hello. Budete používat hello JSON editor v hello .NET SDK služby Azure, takže pokud jste ještě nenainstalovali [Azure .NET SDK 2.6](/downloads/), udělejte teď.
 
-1. Klon [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) úložiště pomocí vaše oblíbené git nástroje. Na tomto snímku obrazovky to bude to v Průzkumník týmových projektů v sadě Visual Studio 2013.
+1. Klon hello [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) úložiště pomocí vaše oblíbené git nástroje. Na snímku obrazovky hello níže to bude to v hello Průzkumník týmových projektů v sadě Visual Studio 2013.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
-2. Na kořenovém adresáři úložiště spusťte azuredeploy.json v sadě Visual Studio. Pokud nevidíte v podokně osnovou JSON, budete muset nainstalovat sadu Azure .NET SDK.
+2. Z kořenového úložiště hello otevřete v sadě Visual Studio azuredeploy.json. Pokud nevidíte podokně hello osnovou JSON, je třeba tooinstall Azure .NET SDK.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
-Není, který bude popisují každou podrobností formátu JSON, ale [více prostředků](#resources) část obsahuje odkazy pro učení jazyka šablony skupiny prostředků. Právě zde bude ukázat vám, že zajímavé funkce, které vám pomůžou začít při vytvoření vlastní šablony pro nasazení aplikace.
+I mě není toodescribe má každý detail hello formátu JSON, ale hello [více prostředků](#resources) část obsahuje odkazy pro jazyk šablony skupiny prostředků hello učení. Zde právě kliknu tooshow hello zajímavé funkce, které vám pomůžou začít při vytvoření vlastní šablony pro nasazení aplikace.
 
 ### <a name="parameters"></a>Parametry
-Podívejte se na části Parametry uvidíte, že většina tyto parametry jsou co **nasadit do Azure** tlačítko vás vyzve, abyste vstup. Lokality za **nasadit do Azure** tlačítko naplní vstupní parametry definované v azuredeploy.json pomocí uživatelského rozhraní. Tyto parametry se používají v definicích prostředků, jako je například názvy prostředků, hodnoty vlastností, atd.
+Podívejte se na hello parametry části toosee, většinu těchto parametrů jsou jaké hello **nasazení tooAzure** tlačítko vás vyzve tooinput. Hello lokality za hello **nasazení tooAzure** tlačítko naplní hello vstup uživatelského rozhraní pomocí hello parametry definované v azuredeploy.json. Tyto parametry se používají v definicích prostředků hello, například názvy prostředků, hodnoty vlastností atd.
 
 ### <a name="resources"></a>Zdroje
-V uzlu prostředků uvidíte, že jsou definovány 4 nejvyšší úrovně prostředky, včetně instance systému SQL Server, plán služby App Service a dva webové aplikace. 
+V uzlu hello prostředky uvidíte, že jsou definovány 4 nejvyšší úrovně prostředky, včetně instance systému SQL Server, plán služby App Service a dva webové aplikace. 
 
 #### <a name="app-service-plan"></a>Plán služby App Service
-Začněme jednoduché prostředků úrovni kořenového adresáře v kódu JSON. V osnovou JSON, klikněte na plán služby App Service s názvem **[hostingPlanName]** zvýrazněte odpovídající kód JSON. 
+Začněme jednoduché kořenové úrovni prostředku v hello JSON. V hello osnovou JSON, klikněte na plán služby App Service hello s názvem **[hostingPlanName]** toohighlight hello odpovídající kód JSON. 
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
-Všimněte si, že `type` element určuje řetězec pro plán služby App Service (byla volána v serverové farmě dlouhý, dlouhou dobou) a další prvky a vlastnosti jsou vyplněny pomocí parametry definované v souboru JSON a tento prostředek neobsahuje žádné vnořené prostředky.
+Všimněte si, že hello `type` element určuje hello řetězec pro plán služby App Service (byla volána v serverové farmě dlouhý, dlouhou dobou) a další elementy a vlastnosti jsou vyplněny pomocí hello parametry definované v souboru JSON hello a nemá tento prostředek všech vnořených prostředků.
 
 > [!NOTE]
-> Poznámka: hodnota `apiVersion` informuje Azure, která verze rozhraní REST API použijte JSON definice prostředků s ale může mít vliv na způsob formátování prostředek uvnitř `{}`. 
+> Všimněte si také, že hodnota hello `apiVersion` informuje Azure, kterou verzi hello REST API toouse hello prostředků definici JSON s ale může mít vliv na způsob formátování hello prostředků uvnitř hello `{}`. 
 > 
 > 
 
 #### <a name="sql-server"></a>SQL Server
-Potom klikněte na prostředek systému SQL Server s názvem **SQLServer** osnovy JSON.
+Potom klikněte na prostředek hello systému SQL Server s názvem **SQLServer** v hello osnovy JSON.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
-Vezměte na vědomí následující skutečnosti související zvýrazněný kód JSON:
+Poznámka: hello následující o hello zvýrazněná kódu JSON:
 
-* Použití parametrů zajišťuje, že jsou vytvořené prostředky s názvem a nakonfigurovat tak, že jsou konzistentní s jednu na druhou.
-* Prostředek SQLServer má dva vnořených prostředků, každá z nich má jinou hodnotu pro `type`.
-* Vnořených prostředků uvnitř `“resources”: […]`, kde jsou definovány databáze a pravidla brány firewall, mají `dependsOn` element, který určuje ID prostředku prostředku SQLServer kořenové úrovni. Tato hodnota informuje Azure Resource Manager, "před vytvořením tohoto prostředku, který už musí existovat jiný prostředek; a pokud tento jiný prostředek je definován v šabloně, vytvořte než nejprve".
+* Hello použití parametrů zajišťuje, že jsou hello vytvořit prostředky s názvem a nakonfigurovat tak, že jsou konzistentní s navzájem.
+* Hello SQLServer prostředků má dva vnořených prostředků, každá z nich má jinou hodnotu pro `type`.
+* Hello vnořených prostředků v `“resources”: […]`, kde jsou definovány hello databáze a pravidel brány firewall hello, mají `dependsOn` element, který určuje ID prostředku hello hello kořenové úrovni SQLServer prostředku. Tato hodnota informuje Azure Resource Manager, "před vytvořením tohoto prostředku, který už musí existovat jiný prostředek; a pokud tento jiný prostředek je definován v šabloně hello, vytvořte než nejprve".
   
   > [!NOTE]
-  > Podrobné informace o tom, jak používat `resourceId()` funkce najdete v tématu [funkce šablon Azure Resource Manager](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > Podrobné informace o tom, toouse hello `resourceId()` funkce najdete v tématu [funkce šablon Azure Resource Manager](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
   > 
   > 
-* Účinek `dependsOn` element je, že Azure Resource Manager mohli zjistit prostředky, ke kterým může být vytvořen paralelně a prostředky, ke kterým musí být vytvořený postupně. 
+* Hello účinku hello `dependsOn` element je, že Azure Resource Manager mohli zjistit prostředky, ke kterým může být vytvořen paralelně a prostředky, ke kterým musí být vytvořený postupně. 
 
 #### <a name="web-app"></a>Webová aplikace
-Nyní můžeme přesunout k skutečné webové aplikace, sami, které jsou složitější. Klikněte na tlačítko webové aplikace [variables('apiSiteName')] do osnovou JSON, abyste měli na očích jeho kód JSON. Můžete si všimnout, že jsou získávání věcí mnohem víc zajímavé. Pro tento účel I mluvit o funkcích jeden po druhém:
+Teď umožňuje přesunout na toohello skutečné webové aplikace sami, které jsou složitější. Klikněte na tlačítko hello [variables('apiSiteName')] webové aplikace ve hello osnovy JSON toohighlight jeho kód JSON. Můžete si všimnout, že jsou získávání věcí mnohem víc zajímavé. Pro tento účel I mluvit o funkcích hello jeden po druhém:
 
 ##### <a name="root-resource"></a>Kořenové prostředků
-Webové aplikace, závisí na dvou různých prostředků. To znamená, že bude Azure Resource Manager až po, vytvoří se plán služby App Service a instance systému SQL Server vytvořit webové aplikace.
+webové aplikace Hello závisí na dvou různých prostředků. To znamená, že Azure Resource Manager bude vytvořit webovou aplikaci hello až po obou hello, které se vytvoří plán služby App Service a hello instance systému SQL Server.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>Nastavení aplikace
-Nastavení aplikace jsou také definovat jako vnořeného prostředku.
+nastavení aplikace Hello jsou také definovat jako vnořeného prostředku.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-V `properties` element pro `config/appsettings`, máte dvě nastavení aplikace ve formátu `“<name>” : “<value>”`.
+V hello `properties` element pro `config/appsettings`, máte dvě nastavení aplikace ve formátu hello `“<name>” : “<value>”`.
 
-* `PROJECT`je [KUDU nastavení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) které sděluje nasazení Azure, které projektu pro použití v sadě Visual Studio řešení vícenásobného projektu. I vám ukáže, později zdrojového kódu konfiguraci, ale vzhledem k tomu, že kód ToDoApp je v sadě Visual Studio řešení vícenásobného projektu, je třeba, aby toto nastavení.
-* `clientUrl`je jednoduše aplikace nastavení, která kódu aplikace používá.
+* `PROJECT`je [KUDU nastavení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , která oznamuje nasazení Azure které toouse projektu v sadě Visual Studio řešení vícenásobného projektu. I vám ukáže, později zdrojového kódu konfiguraci, ale protože hello ToDoApp kódu je v sadě Visual Studio řešení vícenásobného projektu, je třeba, aby toto nastavení.
+* `clientUrl`je jednoduše aplikace nastavení tohoto kódu aplikace hello používá.
 
 ##### <a name="connection-strings"></a>Připojovací řetězce
-Připojovací řetězce, je definována jako vnořeného prostředku.
+Hello připojovací řetězce, je definována jako vnořeného prostředku.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-V `properties` element pro `config/connectionstrings`, každý připojovací řetězec je také definován jako dvojice názvu a hodnoty, s konkrétní formát `“<name>” : {“value”: “…”, “type”: “…”}`. Pro `type` elementu možné hodnoty jsou `MySql`, `SQLServer`, `SQLAzure`, a `Custom`.
+V hello `properties` element pro `config/connectionstrings`, každý připojovací řetězec je také definován jako dvojice názvu a hodnoty hello formátu konkrétní `“<name>” : {“value”: “…”, “type”: “…”}`. Pro hello `type` elementu možné hodnoty jsou `MySql`, `SQLServer`, `SQLAzure`, a `Custom`.
 
 > [!TIP]
-> Pro konečné seznam typů řetězec připojení, spusťte následující příkaz v prostředí Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> Pro konečné seznam typů řetězec připojení hello, spusťte následující příkaz v prostředí Azure PowerShell hello: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 
 ##### <a name="source-control"></a>Správa zdrojového kódu
-Nastavení správy zdrojů, je definována jako vnořeného prostředku. Azure Resource Manager používá tento prostředek konfigurace průběžné publikování (viz přímý přístup paměti na `IsManualIntegration` později) a taky ji nasazování kódu aplikace automaticky během zpracování souboru JSON.
+nastavení správy zdrojů Hello jsou také definovat jako vnořeného prostředku. Azure Resource Manager používá toto průběžné publikování prostředků tooconfigure (viz přímý přístup paměti na `IsManualIntegration` později) a také tookick vypnout hello nasazování kódu aplikace automaticky při zpracování souboru JSON hello hello.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`a `branch` by měl být poměrně intuitivní a by měla odkazovat na název větve pro publikování z a úložiště Git. Opakujte tyto jsou definované vstupní parametry. 
+`RepoUrl`a `branch` by měl být poměrně intuitivní a by měla odkazovat Git toohello úložiště a hello název hello toopublish větev z. Opakujte tyto jsou definované vstupní parametry. 
 
-Poznámka: v `dependsOn` element, který kromě webovým prostředkům aplikace samostatně, `sourcecontrols/web` závisí také na `config/appsettings` a `config/connectionstrings`. Důvodem je, že po `sourcecontrols/web` je nakonfigurován, proces nasazení Azure budou snažit o automatické nasazení, sestavit a spustit kódu aplikace. Proto vkládání tuto závislost vám pomůže Ujistěte se, že aplikace má přístup k nastavení požadovaná aplikace a připojovací řetězce, před spuštěním kódu aplikace. 
+Poznámka: v hello `dependsOn` element, který v toohello přidání webové aplikace prostředků, samostatně, `sourcecontrols/web` závisí také na `config/appsettings` a `config/connectionstrings`. Důvodem je, že po `sourcecontrols/web` je nakonfigurován, hello proces nasazení Azure se automaticky pokusí toodeploy, sestavit a spustit kód aplikace hello. Proto vkládání tuto závislost pomáhá byste se ujistit aplikace hello má nastavení přístupu toohello požadované aplikace a připojovacích řetězců před spuštěním kódu aplikace hello. 
 
 > [!NOTE]
-> Všimněte si také, že `IsManualIntegration` je nastaven na `true`. Tato vlastnost je nutné v tomto kurzu, protože ve skutečnosti nevlastníte úložiště GitHub a proto nelze udělit ve skutečnosti oprávnění k Azure a nakonfigurovat nepřetržité publikování z [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (tj.) nabízená aktualizace automatické úložiště Azure). Můžete použít výchozí hodnotu `false` pro zadané úložiště jenom v případě, že jste nakonfigurovali přihlašovací údaje Githubu vlastníka v [portál Azure](https://portal.azure.com/) před. Jinými slovy Pokud jste nastavili zdrojového kódu pro libovolnou aplikaci v GitHub nebo BitBucket [portálu Azure](https://portal.azure.com/) dříve, pomocí vaší uživatelské přihlašovací údaje, pak Azure bude pamatovat přihlašovací údaje a použít je vždy, když nasazujete žádné aplikace z webu GitHub nebo BitBucket v budoucnu. Ale pokud jste to ještě neudělali, nasazení šablony JSON se nezdaří když Azure Resource Manager pokusí konfigurovat nastavení správy zdrojů webové aplikace, protože se nemůžete přihlásit do GitHub nebo BitBucket s přihlašovacími údaji úložiště vlastníka.
+> Všimněte si také, že `IsManualIntegration` je nastaven příliš`true`. Tato vlastnost je nutné v tomto kurzu, protože ve skutečnosti nevlastníte hello úložiště GitHub a proto nelze udělit ve skutečnosti oprávnění tooAzure tooconfigure průběžné publikování z [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (tj. push automatické úložiště aktualizací tooAzure). Můžete použít výchozí hodnotu hello `false` pro zadané úložiště hello pouze v případě, že jste nakonfigurovali přihlašovací údaje hello vlastníka Githubu v hello [portál Azure](https://portal.azure.com/) před. Jinými slovy Pokud jste nastavili zdroj ovládacího prvku tooGitHub nebo BitBucket pro libovolnou aplikaci v hello [portálu Azure](https://portal.azure.com/) dříve, pomocí vaší uživatelské přihlašovací údaje, pak bude pamatovat přihlašovací údaje hello a je použít při každém nasazení žádné aplikace z Azure GitHub nebo BitBucket v budoucnu hello. Ale pokud jste to ještě neudělali, nasazení šablony JSON hello se nezdaří při Azure Resource Manager pokusí nastavení správy zdrojů tooconfigure hello webové aplikace, protože se nemůžete přihlásit do GitHub nebo BitBucket s přihlašovacími údaji úložiště vlastníka hello.
 > 
 > 
 
-## <a name="compare-the-json-template-with-deployed-resource-group"></a>Porovnání šablona JSON se skupinou nasazené prostředků
-Zde můžete přejít pomocí okna všechny webové aplikace v [portálu Azure](https://portal.azure.com/), ale existuje jiný nástroj, který není stejně jako užitečné, pokud informace. Přejděte na [Průzkumníka prostředků Azure](https://resources.azure.com) preview nástroj, který poskytuje reprezentaci JSON všech skupin prostředků v rámci vašich předplatných, které jsou ve skutečnosti v Azure back-end. Můžete také zjistit, jak odpovídá hierarchii JSON skupině prostředků v Azure s hierarchií v souboru šablony, který se používá k jeho vytvoření.
+## <a name="compare-hello-json-template-with-deployed-resource-group"></a>Porovnání šablony JSON hello se skupinou nasazené prostředků
+Zde můžete přejít pomocí okna všechny hello webové aplikace v hello [portálu Azure](https://portal.azure.com/), ale existuje jiný nástroj, který není stejně jako užitečné, pokud informace. Přejděte toohello [Průzkumníka prostředků Azure](https://resources.azure.com) preview nástroj, který poskytuje reprezentaci JSON všechny skupiny zdrojů hello v rámci vašich předplatných, které jsou ve skutečnosti v hello Azure back-end. Můžete také zjistit, jak hierarchie skupiny prostředků hello JSON v Azure odpovídá hello hierarchie v souboru hello šablony, který byl použit toocreate ho.
 
-Například když přejít k [Průzkumníka prostředků Azure](https://resources.azure.com) nástroje a rozbalte uzly v Průzkumníku, zobrazují se skupina prostředků a prostředky úrovni kořenového adresáře, které se shromažďují v jejich typy příslušných prostředků.
+Například když přejít toohello [Průzkumníka prostředků Azure](https://resources.azure.com) nástroje a rozbalte uzly hello v Průzkumníku hello, zobrazují se skupina prostředků hello a hello kořenové úrovni prostředky, které byly shromážděny v jejich typy příslušných prostředků.
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
-Pokud můžete přejít k podrobnostem a webovou aplikaci, byste měli vidět podrobnosti konfigurace webové aplikace podobně jako následující snímek obrazovky:
+Pokud přejdete k podrobnostem tooa webové aplikace, měli byste mít možnost toosee webové aplikace konfigurace podrobnosti podobné toohello následující snímek obrazovky:
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
-Znovu vnořených prostředků by měl mít velmi podobná těm v souboru šablony JSON hierarchie a měli byste vidět nastavení aplikace, připojovací řetězce, atd., správně odrážela v podokně JSON. Nastavení v tomto poli chybí může značit problém s souboru JSON a může pomoci při odstraňování souboru šablony JSON.
+Znovu hello vnořených prostředků by měl mít velmi podobné toothose hierarchie v souboru šablony JSON a měli byste vidět nastavení aplikace hello připojovací řetězce, atd., správně odrážela v podokně hello JSON. nastavení v tomto poli chybí Hello může značit problém s souboru JSON a může pomoci při odstraňování souboru šablony JSON.
 
-## <a name="deploy-the-resource-group-template-yourself"></a>Nasazení šablony skupiny prostředků sami
-**Nasadit do Azure** tlačítko je skvělé, ale umožňuje nasadit šablony skupiny prostředků v azuredeploy.json pouze v případě, že jste již nabídnutých azuredeploy.json do Githubu. .NET SDK služby Azure také poskytuje nástroje, které můžete nasadit všechny soubor šablony JSON přímo z vašeho místního počítače. Chcete-li to provést, postupujte následujícím způsobem:
+## <a name="deploy-hello-resource-group-template-yourself"></a>Nasazení šablony skupiny prostředků hello sami
+Hello **nasazení tooAzure** tlačítko je skvělé, ale umožňuje vám šablony skupiny prostředků hello toodeploy v azuredeploy.json pouze v případě, že jste již nabídnutých azuredeploy.json tooGitHub. Hello Azure .NET SDK také poskytuje hello nástroje pro toodeploy jste žádné soubor šablony JSON přímo z vašeho místního počítače. toodo tento, postupujte podle kroků hello níže:
 
 1. V sadě Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu**.
 2. Klikněte na tlačítko **Visual C#** > **cloudu** > **skupiny prostředků Azure**, pak klikněte na tlačítko **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. V **vybrat šablonu Azure**, vyberte **prázdné šablonu** a klikněte na tlačítko **OK**.
-4. Přetáhněte azuredeploy.json do **šablony** složky nový projekt.
+4. Přetáhněte azuredeploy.json do hello **šablony** složky nový projekt.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
-5. V Průzkumníku řešení otevřete zkopírovaný azuredeploy.json.
-6. Pouze z důvodu ukázky, přidejme některé standardní prostředky aplikace vhled do našich souboru JSON, kliknutím na **přidat prostředek**. Pokud vás zajímá jenom nasazení souboru JSON, pokračujte kroky nasazení.
+5. V Průzkumníku řešení otevřete azuredeploy.json hello zkopírovali.
+6. Jenom pro hello zájmu ukázkový text hello, přidejme některé standardní informace o aplikaci prostředky tooour soubor JSON, kliknutím na **přidat prostředek**. Pokud vás zajímá jenom nasazení hello soubor JSON, přeskočte toohello kroky nasazení.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. Vyberte **Application Insights pro webové aplikace**, pak se ujistěte, že je vybrána existující aplikaci plán a webové služby App Service a pak klikněte na tlačítko **přidat**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
-   Nyní budete moct najdete několik nových prostředků, který v závislosti na prostředek a jakým způsobem, jsou závislé na plán služby App Service nebo webovou aplikaci. Tyto prostředky nejsou povolené podle jejich stávající definice a změnit, který se chystáte.
+   Nyní budete mít možnost toosee několik nových prostředků, že v závislosti na hello prostředků a jakým způsobem se mají závislosti na buď hello webové aplikace App Service plán nebo hello. Tyto prostředky nejsou povolené podle jejich stávající definice a budete toochange který.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
-8. V osnovou JSON, klikněte na **appInsights škálování** zvýrazněte jeho kód JSON. Toto je nastavení škálování pro plán služby App Service.
-9. Vyhledejte ve zvýrazněný kód JSON `location` a `enabled` vlastnosti a nastavte je, jak je uvedeno níže.
+8. V hello osnovou JSON, klikněte na **appInsights škálování** toohighlight jeho kód JSON. Toto je hello škálování nastavení pro plán služby App Service.
+9. V hello zvýrazněný kód JSON, vyhledejte hello `location` a `enabled` vlastnosti a nastavte je, jak je uvedeno níže.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
-10. V osnovou JSON, klikněte na **CPUHigh appInsights** zvýrazněte jeho kód JSON. Toto je upozornění.
-11. Vyhledejte `location` a `isEnabled` vlastnosti a nastavte je, jak je uvedeno níže. Totéž pro další tři výstrahy (fialové žárovky).
+10. V hello osnovou JSON, klikněte na **CPUHigh appInsights** toohighlight jeho kód JSON. Toto je upozornění.
+11. Vyhledejte hello `location` a `isEnabled` vlastnosti a nastavte je, jak je uvedeno níže. Hello stejné pro hello další tři výstrahy (fialové žárovky).
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. Teď jste připravení nasadit. Klikněte pravým tlačítkem na projekt a vyberte **nasadit** > **nové nasazení**.
+12. Nyní jste toodeploy připraven. Klikněte pravým tlačítkem na projekt hello a vyberte **nasadit** > **nové nasazení**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Přihlaste se k účtu Azure, pokud jste tak již neučinili.
@@ -229,38 +229,38 @@ Znovu vnořených prostředků by měl mít velmi podobná těm v souboru šablo
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
-    Nyní budete moci upravit všechny parametry definované v souboru šablony dobrý tabulky. Parametry, které definují výchozí hodnoty budou již máte výchozí hodnoty a parametry, které definují seznam povolených hodnot se zobrazí jako rozevírací seznamy.
+    Nyní budete moct tooedit všechny parametry hello definované v souboru šablony hello dobrý tabulky. Parametry, které definují výchozí hodnoty budou již máte výchozí hodnoty a parametry, které definují seznam povolených hodnot se zobrazí jako rozevírací seznamy.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. Zadejte všechny prázdné parametry a použít [adresu úložišti GitHub pro ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) v **repoUrl**. Potom klikněte na **Uložit**.
+15. Zadejte všechny parametry prázdný hello a použít hello [adresu úložišti GitHub pro ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) v **repoUrl**. Potom klikněte na **Uložit**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
-    > Automatické škálování je funkce, které nabízí v **standardní** vrstvě nebo vyšší a plán úroveň výstrahy jsou funkce nenabízí **základní** úroveň, nebo vyšší, budete muset nastavit **sku** parametru **standardní** nebo **Premium** Chcete-li zobrazit všechny nové aplikace Insights prostředky světla nahoru.
+    > Automatické škálování je funkce, které nabízí v **standardní** vrstvě nebo vyšší a plán úroveň výstrahy jsou funkce nenabízí **základní** úroveň, nebo vyšší, budete potřebovat tooset hello **sku** parametr příliš**standardní** nebo **Premium** v pořadí toosee všechny nové aplikace Insights prostředky světla nahoru.
     > 
     > 
-16. Klikněte na tlačítko **nasazení**. Pokud jste vybrali **ukládat hesla**, heslo bude uloženo v souboru parametrů **ve formátu prostého textu**. Jinak budete požádáni o zadání hesla databáze během procesu nasazení.
+16. Klikněte na tlačítko **nasazení**. Pokud jste vybrali **ukládat hesla**, hello heslo bude uloženo v souboru parametrů hello **ve formátu prostého textu**. Jinak zobrazí se výzva heslo k databázi hello tooinput během procesu nasazení hello.
 
-A to je vše! Teď stačí přejít na [portálu Azure](https://portal.azure.com/) a [Průzkumníka prostředků Azure](https://resources.azure.com) nástroj zobrazíte nové výstrahy a nastavení automatického škálování přidán do vaší JSON nasazené aplikace.
+A to je vše! Teď stačí toogo toohello [portálu Azure](https://portal.azure.com/) a hello [Průzkumníka prostředků Azure](https://resources.azure.com) nástroj toosee hello nové výstrahy a nastavení automatického škálování přidat tooyour JSON nasazené aplikace.
 
-Vaše kroky v této části především udělat následující:
+Vaše kroky v této části především udělat hello následující:
 
-1. Připravený soubor šablony
-2. Vytvořit soubor parametr pomocí souboru šablony
-3. Nasadit soubor šablony s soubor parametrů
+1. Soubor šablony připravené hello
+2. Vytvoření parametr souboru toogo pomocí souboru šablony hello
+3. Soubor šablony nasazené hello souborem parametr hello
 
-Posledním krokem je snadno provádí rutiny prostředí PowerShell. Chcete-li zjistit, co Visual Studio se po jeho nasazení vaší aplikace, otevřete Scripts\Deploy AzureResourceGroup.ps1. Existuje mnoho kódu existuje, ale právě přechod do zvýrazněte všechny příslušné kód, který potřebujete k nasazení šablony souborů a parametr.
+poslední krok Hello je snadno provést pomocí rutiny prostředí PowerShell. toosee co Visual Studio se po jeho nasazení vaší Scripts\Deploy-AzureResourceGroup.ps1 aplikace, otevřete. Existuje mnoho kódu existuje, ale právě kliknu toohighlight všechny příslušné kód hello budete potřebovat soubor šablony hello toodeploy souborem parametr hello.
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
-Rutinu poslední `New-AzureResourceGroup`, je ten, který ve skutečnosti provádí akce. To vše prokázat vám, že s pomocí nástrojů, je relativně jednoduché nasazení cloudových aplikací předvídatelné. Pokaždé, když spustíte rutinu na stejné šablony s stejný soubor parametrů, budete získáte stejný výsledek.
+Hello poslední rutiny `New-AzureResourceGroup`, je hello ten, který ve skutečnosti provádí akce hello. To vše prokázat, že hello pomoci nástrojů, je relativně jednoduché toodeploy tooyou vaší cloudové aplikace předvídatelné. Pokaždé, když hello rutina se spouští na hello stejné šablony s hello stejný soubor parametrů, budete tooget hello stejného výsledku.
 
 ## <a name="summary"></a>Souhrn
-V DevOps opakovatelnost a předvídatelnost jsou klíče pro všechny úspěšné nasazení velkého rozsahu aplikace skládá z mikroslužeb. V tomto kurzu jste nasadili dva mikroslužbu aplikaci do Azure jako jedna skupina prostředků pomocí šablony Azure Resource Manager. Doufáme ho udělil znalosti, které potřebujete, aby bylo možné spustit převodu šablonu aplikace v Azure a můžete zřídit a nasadit ji předvídatelné. 
+V DevOps opakovatelnost a předvídatelnost jsou klíče tooany úspěšné nasazení velkého rozsahu aplikace skládá z mikroslužeb. V tomto kurzu jste nasadili dva mikroslužbu aplikace tooAzure jako jedna skupina prostředků pomocí šablony Azure Resource Manager hello. Doufáme, vám poskytla hello znalostní báze v pořadí toostart převodu šablonu aplikace v Azure a můžete zřídit a nasadit ji předvídatelné. 
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [použít agilní metod a průběžně snadno publikovat svoji aplikaci mikroslužeb](app-service-agile-software-development.md) a pokročilé techniky nasazení jako [flighting nasazení](app-service-web-test-in-production-controlled-test-flight.md) snadno.
+Zjistěte, jak příliš[použít agilní metod a průběžně snadno publikovat svoji aplikaci mikroslužeb](app-service-agile-software-development.md) a pokročilé techniky nasazení jako [flighting nasazení](app-service-web-test-in-production-controlled-test-flight.md) snadno.
 
 <a name="resources"></a>
 

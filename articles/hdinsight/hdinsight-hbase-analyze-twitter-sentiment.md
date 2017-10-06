@@ -1,6 +1,6 @@
 ---
-title: "Analýza v reálném čase sentimentu Twitter s HBase - Azure | Microsoft Docs"
-description: "Další informace o postupu v reálném čase postojích analýzy velkých objemů dat z Twitteru pomocí HBase v clusteru služby HDInsight (Hadoop)."
+title: "aaaAnalyze v reálném čase sentimentu Twitter s HBase - Azure | Microsoft Docs"
+description: "Zjistěte, jak toodo v reálném čase postojích analýzy velkých objemů dat z Twitteru pomocí HBase v clusteru služby HDInsight (Hadoop)."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,76 +15,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jgao
-ms.openlocfilehash: 4d5bb90c0e7573afb75282810c9ba58e7163e127
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 87e5c0c0a90d222a3f0bc3c3f3fce1e938320480
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a>Analýza v reálném čase sentimentu Twitter s HBase v HDInsight
-Další informace o postupu v reálném čase [postojích analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) velkých objemů dat z Twitteru pomocí HBase cluster v HDInsight.
+Zjistěte, jak v reálném čase toodo [postojích analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) velkých objemů dat z Twitteru pomocí HBase cluster v HDInsight.
 
-Sociální weby jsou jedním z hlavních řízení vynutí pro velké objemy dat přijetí. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy. V tomto kurzu vyvíjíte konzoly streamování aplikace služby a webovou aplikaci ASP.NET k těmto činnostem:
+Sociální weby jsou jedním z hlavních řízení vynutí hello pro velké objemy dat přijetí. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy. V tomto kurzu budete vyvíjet konzoly streamování aplikace služby a ASP.NET webové aplikace tooperform hello následující:
 
 ![Postojích HDInsight HBase analyzovat Twitter.][img-app-arch]
 
-* Streamování aplikací
+* Hello streamování aplikací
 
-  * získáte označené geograficky tweetů v reálném čase pomocí služby Twitter streamování rozhraní API
-  * vyhodnocení myšlenkou tyto tweetů
-  * Uložte informace o postojích v HBase pomocí sady SDK Microsoft HBase
-* Aplikace weby Azure
+  * získat označené geograficky tweetů v reálném čase pomocí služby Twitter hello streamování rozhraní API
+  * vyhodnocení hello postojích z těchto tweetů
+  * uložení hello postojích informace v HBase pomocí hello Microsoft HBase SDK
+* Hello aplikace na weby Azure
 
-  * vykreslení v reálném čase statistické výsledky na Bing maps pomocí webové aplikace ASP.NET. Vizualizaci tweetů je podobná následující snímek obrazovky:
+  * vykreslení v reálném čase statistické výsledky hello na Bing maps pomocí webové aplikace ASP.NET. Vizualizaci tweetů hello je podobné toohello následující snímek obrazovky:
 
     ![hdinsight.hbase.Twitter.sentiment.Bing.map][img-bing-map]
 
-    Budete moci tweetů dotazu s určitým klíčová slova získat představu o Pokud vyjádřené stanovisko v tweetů kladné, záporné nebo neutrální.
+    Budete mít tooquery tweetů s určitým tooget klíčová slova představu o Pokud stanovisko hello vyjádřené v hello tweetů kladné, záporné nebo neutrální.
 
 Ucelenou ukázku řešení sady Visual Studio naleznete na webu GitHub: [aplikace analýzy v reálném čase sociálních postojích](https://github.com/maxluk/tweet-sentiment).
 
 ### <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
+Než začnete tento kurz, musíte mít následující hello:
 
 * **Cluster HBase v HDInsight**. Pokyny k vytváření clusterů, v tématu [Začínáme používat HBase s Hadoop v HDInsight][hbase-get-started]. 
 
 * **Pracovní stanice** s Visual Studio 2013 nebo 2015 nebo 2017 nainstalována. Pokyny najdete v tématu [instalaci sady Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).
 
 ## <a name="create-a-twitter-application-id-and-secrets"></a>Vytvoření ID aplikace služby Twitter a tajné klíče
-Twitter streamování pomocí rozhraní API [OAuth](http://oauth.net/) k autorizaci požadavků. Prvním krokem k používají OAuth je vytvoření nové aplikace na webu pro vývojáře služby Twitter.
+Hello Twitter, pomocí rozhraní API pro streamování [OAuth](http://oauth.net/) tooauthorize požadavky. první krok toouse Hello OAuth je toocreate novou aplikaci na webu pro vývojáře hello Twitter.
 
-**Vytvoření ID aplikace služby Twitter a tajné klíče**
+**ID aplikace Twitter toocreate a tajné klíče**
 
-1. Přihlaste se k [Twitter aplikace](https://apps.twitter.com/). Klikněte na tlačítko **nyní** odkaz, pokud nemáte účet služby Twitter.
+1. Přihlaste se příliš[Twitter aplikace](https://apps.twitter.com/). Klikněte na tlačítko hello **nyní** odkaz, pokud nemáte účet služby Twitter.
 2. Klikněte na tlačítko **vytvořte novou aplikaci**.
-3. Zadejte **název**, **popis**, a **webu**. Název aplikace služby Twitter. musí být jedinečný název. Pole Website skutečně nepoužívá. Nemusí to být platná adresa URL.
+3. Zadejte **název**, **popis**, a **webu**. název aplikace služby Twitter Hello musí být jedinečný název. pole webu Hello nepoužívá skutečně. Toobe nemá platnou adresu URL.
 4. Zkontrolujte **souhlasím**a potom klikněte na **vytvořit aplikaci služby Twitter**.
-5. Klikněte **oprávnění** a pak klikněte **jen pro čtení**. Oprávnění jen pro čtení je dostačující pro účely tohoto kurzu.
-6. Klikněte **klíče a přístupové tokeny** kartě.
-7. Klikněte na tlačítko **vytvořit můj přístupový token** v dolní části stránky.
-9. Kopírování **uživatelský klíč (klíč rozhraní API)**, **uživatelský tajný klíč (tajný klíč rozhraní API)**, **přístupový token**, a **tajný klíč přístupového tokenu** hodnoty. Je nutné tyto hodnoty později v tomto kurzu.
+5. Klikněte na tlačítko hello **oprávnění** a pak klikněte **jen pro čtení**. Hello oprávnění jen pro čtení je dostačující pro účely tohoto kurzu.
+6. Klikněte na tlačítko hello **klíče a přístupové tokeny** kartě.
+7. Klikněte na tlačítko **vytvořit můj přístupový token** na hello dolní části stránky hello.
+9. Kopírování hello **uživatelský klíč (klíč rozhraní API)**, **uživatelský tajný klíč (tajný klíč rozhraní API)**, **přístupový token**, a **tajný klíč přístupového tokenu** hodnoty. Je nutné tyto hodnoty později v kurzu hello.
 
-    > ! [POZNÁMKA] Tlačítko Test OAuth už nefunguje.
+    > ! Tlačítko Test OAuth hello [poznámka] už nefunguje.
 
 ## <a name="create-twitter-streaming-service"></a>Vytvoření datových proudů služby Twitter
-Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích tweet a poslat slova zpracovaná tweet HBase.
+Je třeba toocreate tweetů tooget aplikaci, výpočtu skóre postojích tweet a odeslat tooHBase slova tweet hello zpracovat.
 
-**K vytvoření datových proudů aplikace**
+**hello toocreate streamování aplikací**
 
 1. Otevřete **Visual Studio**a vytvořte konzolovou aplikaci Visual C# názvem **TweetSentimentStreaming**.
-2. Z **Konzola správce balíčků**, spusťte následující příkazy:
+2. Z **Konzola správce balíčků**spusťte hello následující příkazy:
 
         Install-Package Microsoft.HBase.Client -version 0.4.2.0
         Install-Package TweetinviAPI -version 1.0.0.0
 
-    Instalace těchto příkazů [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) balíček, který je klientská knihovna pro přístup ke clusteru HBase, a [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) balíček, který se používá pro přístup k rozhraní API služby Twitter.
+    Tyto příkazy instalace hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) balíček, který je hello klienta knihovny tooaccess hello cluster HBase a hello [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) balíček, který je použité tooaccess hello rozhraní API služby Twitter.
 
    > [!NOTE]
-   > Ukázka používané v tomto článku byl testován pomocí verze uveden výše.  Odeberete-verze přepínač tak, aby nainstalovat nejnovější verzi.
+   > Ukázka Hello používané v tomto článku byl testován pomocí verze hello uveden výše.  Můžete odebrat hello - verze přepínač tooinstall hello nejnovější verzi.
    >
    >
-3. Z **Průzkumníku řešení**, přidejte **System.Configuration** k odkazu.
-4. Přidat nový soubor třídu do projektu názvem **HBaseWriter.cs**a pak nahraďte kód následujícím kódem:
+3. Z **Průzkumníku řešení**, přidejte **System.Configuration** toohello odkaz.
+4. Přidat nový třída souboru toohello projekt s názvem **HBaseWriter.cs**a pak nahraďte kód hello hello následující:
 
         using System;
         using System.Collections.Generic;
@@ -103,8 +103,8 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
             {
                 // HDinsight HBase cluster and HBase table information
                 const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.net/";
-                const string HADOOPUSERNAME = "admin"; //the default name is "admin"
-                const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
+                const string HADOOPUSERNAME = "admin"; //hello default name is "admin"
+                const string HADOOPUSERPASSWORD = "<Enter hello Hadoop User Password>";
 
                 const string HBASETABLENAME = "tweets_by_words";
                 const string COUNT_ROW_KEY = "~ROWCOUNT";
@@ -112,13 +112,13 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
 
                 long rowCount = 0;
 
-                // Sentiment dictionary file and the punctuation characters
+                // Sentiment dictionary file and hello punctuation characters
                 const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
                 private static char[] _punctuationChars = new[] {
             ' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
-                // For writting to HBase
+                // For writting tooHBase
                 HBaseClient client;
 
                 // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
@@ -129,13 +129,13 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                 Queue<ITweet> queue = new Queue<ITweet>();
                 bool threadRunning = true;
 
-                // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
+                // This function connects tooHBase, loads hello sentiment dictionary, and starts hello thread for writting.
                 public HBaseWriter()
                 {
                     ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
                     client = new HBaseClient(credentials);
 
-                    // create the HBase table if it doesn't exist
+                    // create hello HBase table if it doesn't exist
                     if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
                         TableSchema tableSchema = new TableSchema();
@@ -151,7 +151,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                     // Load sentiment dictionary from a file
                     LoadDictionary();
 
-                    // Start a thread for writting to HBase
+                    // Start a thread for writting tooHBase
                     writerThread = new Thread(new ThreadStart(WriterThreadFunction));
                     writerThread.Start();
                 }
@@ -179,7 +179,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                     }
                     catch(Exception ex)
                     {
-                        if (ex.InnerException.Message.Equals("The remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
+                        if (ex.InnerException.Message.Equals("hello remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
                         {
                             return 0;
                         }
@@ -193,7 +193,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                     return 0;
                 }
 
-                // Enqueue the Tweets received
+                // Enqueue hello Tweets received
                 public void WriteTweet(ITweet tweet)
                 {
                     lock (queue)
@@ -260,19 +260,19 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                     }
                 }
 
-                // Popular a CellSet object to be written into HBase
+                // Popular a CellSet object toobe written into HBase
                 private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
                 {
-                    // Split the Tweet into words
+                    // Split hello Tweet into words
                     string[] words = tweet.Text.ToLower().Split(_punctuationChars);
 
-                    // Calculate sentiment score base on the words
+                    // Calculate sentiment score base on hello words
                     int sentimentScore = CalcSentimentScore(words);
                     var word_pairs = words.Take(words.Length - 1)
                                         .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
                     var all_words = words.Concat(word_pairs).ToList();
 
-                    // For each word in the Tweet add a row to the HBase table
+                    // For each word in hello Tweet add a row toohello HBase table
                     foreach (string word in all_words)
                     {
                         string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
@@ -281,7 +281,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                         // Create a row
                         var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 
-                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment
+                        // Add columns toohello row, including Tweet identifier, language, coordinator(if available), and sentiment
                         var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
                         row.values.Add(value);
 
@@ -302,7 +302,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                     }
                 }
 
-                // Write a Tweet (CellSet) to HBase
+                // Write a Tweet (CellSet) tooHBase
                 public void WriterThreadFunction()
                 {
                     try
@@ -321,7 +321,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                                     } while (queue.Count > 0);
                                 }
 
-                                // Write the Tweet by words cell set to the HBase table
+                                // Write hello Tweet by words cell set toohello HBase table
                                 client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
                             }
@@ -344,8 +344,8 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                 public string Polarity { get; set; }
             }
         }
-5. Nastavit konstanty v předchozí kód, včetně **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD**a DICTIONARYFILENAME. DICTIONARYFILENAME je název souboru a umístění direction.tsv.  Soubor můžete stáhnout z **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**. Pokud chcete změnit název tabulky HBase, musíte změnit název tabulky ve webové aplikaci odpovídajícím způsobem.
-6. Otevřete **Program.cs**a nahraďte následující kód:
+5. Nastavit hello konstanty v hello předchozí kód, včetně **CLUSTERNAME**, **HADOOPUSERNAME**, **HADOOPUSERPASSWORD**a DICTIONARYFILENAME. Hello DICTIONARYFILENAME je hello název souboru a umístění hello hello direction.tsv.  soubor Hello si můžete stáhnout z **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv**. Pokud chcete název tabulky HBase hello toochange, musíte změnit název tabulky hello ve webové aplikaci hello odpovídajícím způsobem.
+6. Otevřete **Program.cs**a nahraďte kód hello hello následující:
 
         using System;
         using System.Diagnostics;
@@ -386,7 +386,7 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
                                 tweetCount++;
                                 var tweet = args.Tweet;
 
-                                // Write Tweets to HBase
+                                // Write Tweets tooHBase
                                 hbase.WriteTweet(tweet);
 
                                 if (timer.ElapsedMilliseconds > 1000)
@@ -416,22 +416,22 @@ Můžete třeba vytvořit aplikaci získat tweetů, výpočtu skóre postojích 
 
             }
         }
-7. Nastavit konstanty, včetně **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** a **TWITTERAPPAPISECRET**.
+7. Nastavit hello konstanty včetně **TWITTERAPPACCESSTOKEN**, **TWITTERAPPACCESSTOKENSECRET**, **TWITTERAPPAPIKEY** a **TWITTERAPPAPISECRET**.
 
-Chcete-li spustit službu streamování, stiskněte **F5**. Zde je snímek obrazovky aplikace konzoly:
+hello toorun streamování služby, stiskněte klávesu **F5**. Následující Hello je snímek obrazovky aplikace hello konzoly:
 
 ![hdinsight.hbase.Twitter.sentiment.Streaming.Service][img-streaming-service]
 
-Zachovat streamování konzole aplikace spuštěna při vývoji webové aplikace, abyste získali další data se mají použít. K prozkoumání dat vloženy do tabulky, můžete použít prostředí HBase. V tématu [začít pracovat s HBase v HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).
+Zachovat hello streamování konzolové aplikace běžící při vývoji hello webové aplikace, abyste získali další toouse data. data hello tooexamine vloženy do tabulky hello, můžete použít prostředí HBase. V tématu [začít pracovat s HBase v HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).
 
 ## <a name="visualize-real-time-sentiment"></a>Vizualizace postojích v reálném čase
-V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném čase postojích HBase a vykreslení dat na mapy Bing.
+V této části vytvoříte v reálném čase postojích dat nástroje webové aplikace tooread hello rozhraní ASP.NET MVC z dat hello HBase a výkresu na mapy Bing.
 
-**Vytvoření aplikace technologie ASP.NET MVC**
+**toocreate aplikace technologie ASP.NET MVC**
 
 1. Otevřete sadu Visual Studio.
 2. Klikněte na tlačítko **soubor**, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
-3. Zadejte následující informace:
+3. Zadejte hello následující informace:
 
    * Šablona kategorie: **Visual C# / Web**
    * Šablona: **webové aplikace ASP.NET**
@@ -441,25 +441,25 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
 5. V **vyberte šablonu**, klikněte na tlačítko **MVC**.
 6. V **Microsoft Azure**, klikněte na tlačítko **Spravovat odběry**.
 7. Z **spravovat předplatná Microsoft Azure**, klikněte na tlačítko **přihlášení**.
-8. Zadejte přihlašovací údaje Azure. Informace o vašem předplatném Azure je zobrazený na **účty** kartě.
-9. Klikněte na tlačítko **zavřete** zavřete **spravovat předplatná Microsoft Azure** okno.
+8. Zadejte přihlašovací údaje Azure. Informace o vašem předplatném Azure je zobrazený na hello **účty** kartě.
+9. Klikněte na tlačítko **Zavřít** tooclose hello **spravovat předplatná Microsoft Azure** okno.
 10. Z **nový projekt ASP.NET - TweetSentimentWeb**, klikněte na tlačítko **OK**.
-11. Z **nakonfigurovat nastavení webu Microsoft Azure**, vyberte **oblast** který je nejblíže k vám. Zadejte databázový server nemusíte.
+11. Z **nakonfigurovat nastavení webu Microsoft Azure**, vyberte hello **oblast** který je nejblíže tooyou. Nepotřebujete toospecify databázový server.
 12. Klikněte na **OK**.
 
-**Instalace balíčků NuGet**
+**balíčky NuGet tooinstall**
 
-1. Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků Nuget**a potom klikněte na **Konzola správce balíčků**. Na panelu konzoly je otevřen v dolní části stránky.
-2. Použijte následující příkaz k instalaci [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) balíček, který je klientská knihovna pro přístup ke clusteru HBase:
+1. Z hello **nástroje** nabídky, klikněte na tlačítko **Správce balíčků Nuget**a potom klikněte na **Konzola správce balíčků**. panelu konzoly Hello je otevřen v hello dolní části stránky hello.
+2. Použití hello následující příkaz tooinstall hello [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) balíček, který je hello klienta knihovny tooaccess HBase cluster:
 
         Install-Package Microsoft.HBase.Client
 
-**Chcete-li přidat HBaseReader – třída**
+**tooadd HBaseReader – třída**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentiment**.
 2. Klikněte pravým tlačítkem na **modely**, klikněte na tlačítko **přidat**a potom klikněte na **třída**.
-3. V **název** zadejte **HBaseReader.cs**a potom klikněte na **přidat**.
-4. Nahraďte kód tímto:
+3. V hello **název** zadejte **HBaseReader.cs**a potom klikněte na **přidat**.
+4. Nahraďte kód hello hello následující:
 
         using System;
         using System.Collections.Generic;
@@ -485,7 +485,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 const string HADOOPUSERPASSWORD = "<HBaseCluserUserPassword>";
                 const string HBASETABLENAME = "tweets_by_words";
 
-                // The constructor
+                // hello constructor
                 public HBaseReader()
                 {
                     ClusterCredentials creds = new ClusterCredentials(
@@ -495,12 +495,12 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                     client = new HBaseClient(creds);
                 }
 
-                // Query Tweets sentiment data from the HBase table asynchronously
+                // Query Tweets sentiment data from hello HBase table asynchronously
                 public async Task<IEnumerable<Tweet>> QueryTweetsByKeywordAsync(string keyword)
                 {
                     List<Tweet> list = new List<Tweet>();
 
-                    // Demonstrate Filtering the data from the past 6 hours the row key
+                    // Demonstrate Filtering hello data from hello past 6 hours hello row key
                     string timeIndex = (ulong.MaxValue -
                         (ulong)DateTime.UtcNow.Subtract(new TimeSpan(6, 0, 0)).ToBinary()).ToString().PadLeft(20);
                     string startRow = keyword + "_" + timeIndex;
@@ -522,7 +522,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                     {
                         foreach (CellSet.Row row in next.rows)
                         {
-                            // find the cell with string pattern "d:coor"
+                            // find hello cell with string pattern "d:coor"
                             var coordinates =
                                 row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:coor");
 
@@ -567,23 +567,23 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 public int Sentiment { get; set; }
             }
         }
-5. Uvnitř **HBaseReader** třídy, změňte hodnoty konstant následujícím způsobem:
+5. Uvnitř hello **HBaseReader** třídy, změňte hodnoty konstant hello následujícím způsobem:
 
-   * **Název clusteru**: HBase název clusteru, například *https://<HBaseClusterName>.azurehdinsight.net/*.
-   * **HADOOPUSERNAME**: HBase v clusteru Hadoop uživatel uživatelské jméno. Výchozí název je *správce*.
-   * **HADOOPUSERPASSWORD**: HBase v clusteru Hadoop uživatelské heslo.
+   * **Název clusteru**: hello HBase název clusteru, například *https://<HBaseClusterName>.azurehdinsight.net/*.
+   * **HADOOPUSERNAME**: hello HBase clusteru Hadoop uživatel uživatelské jméno. Hello výchozí název je *správce*.
+   * **HADOOPUSERPASSWORD**: heslo uživatele hello HBase clusteru Hadoop.
    * **HBASETABLENAME** = "tweets_by_words";
 
-     Název tabulky HBase je **"tweets_by_words";**. Hodnoty se musí shodovat s hodnotami, které jste poslali ve službě streamování, tak, aby webová aplikace čte data ze stejné tabulky HBase.
+     Název tabulky HBase Hello je **"tweets_by_words";**. Hello hodnoty musí odpovídat hello hodnoty, které jste odeslali v hello streamování služby, aby webová aplikace hello čte hello data z hello stejné tabulky HBase.
 
-**Chcete-li přidat TweetsController řadiče**
+**tooadd TweetsController řadiče**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**.
 2. Klikněte pravým tlačítkem na **řadiče**, klikněte na tlačítko **přidat**a potom klikněte na **řadič**.
 3. Klikněte na tlačítko **webové rozhraní API 2 řadiče - prázdný**a potom klikněte na **přidat**.
-4. V **názvu Kontroleru** zadejte **TweetsController**a potom klikněte na **přidat**.
-5. Z **Průzkumníku**, dvakrát klikněte na TweetsController.cs k otevření souboru.
-6. Upravte soubor, aby vypadal jako následující:
+4. V hello **názvu Kontroleru** zadejte **TweetsController**a potom klikněte na **přidat**.
+5. Z **Průzkumníku**, poklikejte na soubor hello tooopen TweetsController.cs.
+6. Upravte soubor hello, takže to vypadá hello následující:
 
         using System;
         using System.Collections.Generic;
@@ -608,12 +608,12 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
             }
         }
 
-**Chcete-li přidat heatmap.js**
+**tooadd heatmap.js**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**.
 2. Klikněte pravým tlačítkem na **skripty**, klikněte na tlačítko **přidat**, klikněte na tlačítko **soubor JavaScript**.
-3. V **název položky** zadejte **heatmap.js**.
-4. Vložte následující kód do souboru. Kód napsal Alastair Aitchison. Další informace najdete v tématu [Bing Maps AJAX v7 HeatMap knihovny](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/).
+3. V hello **název položky** zadejte **heatmap.js**.
+4. Vložte následující kód do souboru hello hello. Kód Hello napsal Alastair Aitchison. Další informace najdete v tématu [Bing Maps AJAX v7 HeatMap knihovny](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/).
 
         /*******************************************************************************
         * Author: Alastair Aitchison
@@ -621,22 +621,22 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
         * Date: 15th April 2011
         *
         * Description:
-        * This JavaScript file provides an algorithm that can be used to add a heatmap
-        * overlay on a Bing Maps v7 control. The intensity and temperature palette
-        * of the heatmap are designed to be easily customisable.
+        * This JavaScript file provides an algorithm that can be used tooadd a heatmap
+        * overlay on a Bing Maps v7 control. hello intensity and temperature palette
+        * of hello heatmap are designed toobe easily customisable.
         *
         * Requirements:
-        * The heatmap layer itself is created dynamically on the client-side using
-        * the HTML5 &lt;canvas> element, and therefore requires a browser that supports
+        * hello heatmap layer itself is created dynamically on hello client-side using
+        * hello HTML5 &lt;canvas> element, and therefore requires a browser that supports
         * this element. It has been tested on IE9, Firefox 3.6/4 and
         * Chrome 10 browsers. If you can confirm whether it works on other browsers or
-        * not, I'd love to hear from you!
+        * not, I'd love toohear from you!
         *
         * Usage:
-        * The HeatMapLayer constructor requires:
-        * - A reference to a map object
+        * hello HeatMapLayer constructor requires:
+        * - A reference tooa map object
         * - An array or Microsoft.Maps.Location items
-        * - Optional parameters to customise the appearance of the layer
+        * - Optional parameters toocustomise hello appearance of hello layer
         *  (Radius,, Unit, Intensity, and ColourGradient), and a callback function
         */
 
@@ -652,16 +652,16 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
 
             // Set default options
             var _options = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 1000,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'meters',
 
-                // Colour temperature gradient of the map
+                // Colour temperature gradient of hello map
                 colourgradient: {
                     "0.00": 'rgba(255,0,255,20)',  // Magenta
                     "0.25": 'rgba(0,0,255,40)',    // Blue
@@ -670,7 +670,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                     "1.00": 'rgba(255,0,0,150)'    // Red
                 },
 
-                // Callback function to be fired after heatmap layer has been redrawn
+                // Callback function toobe fired after heatmap layer has been redrawn
                 callback: null
             };
 
@@ -679,7 +679,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 var _mapDiv = _map.getRootElement();
 
                 if (_mapDiv.childNodes.length >= 3 && _mapDiv.childNodes[2].childNodes.length >= 2) {
-                    // Create the canvas element
+                    // Create hello canvas element
                     _canvas = document.createElement('canvas');
                     _canvas.style.position = 'relative';
 
@@ -691,16 +691,16 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
 
                     _mapDiv.childNodes[2].childNodes[1].appendChild(container);
 
-                    // Override defaults with any options passed in the constructor
+                    // Override defaults with any options passed in hello constructor
                     _setOptions(options);
 
                     // Load array of location data
                     _setPoints(locations);
 
-                    // Create a colour gradient from the suppied colourstops
+                    // Create a colour gradient from hello suppied colourstops
                     _temperaturemap = _createColourGradient(_options.colourgradient);
 
-                    // Wire up the event handler to redraw heatmap canvas
+                    // Wire up hello event handler tooredraw heatmap canvas
                     _viewchangestarthandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangestart', _clearHeatMap);
                     _viewchangeendhandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangeend', _createHeatMap);
 
@@ -712,7 +712,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 }
             }
 
-            // Resets the heat map
+            // Resets hello heat map
             function _clearHeatMap() {
                 var ctx = _canvas.getContext("2d");
                 ctx.clearRect(0, 0, _canvas.width, _canvas.height);
@@ -730,19 +730,19 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 return ctx.getImageData(0, 0, 256, 1).data;
             }
 
-            // Applies a colour gradient to the intensity map
+            // Applies a colour gradient toohello intensity map
             function _colouriseHeatMap() {
                 var ctx = _canvas.getContext("2d");
                 var dat = ctx.getImageData(0, 0, _canvas.width, _canvas.height);
                 var pix = dat.data; // pix is a CanvasPixelArray containing height x width x 4 bytes of data (RGBA)
                 for (var p = 0, len = pix.length; p < len;) {
-                    var a = pix[p + 3] * 4; // get the alpha of this pixel
-                    if (a != 0) { // If there is any data to plot
-                        pix[p] = _temperaturemap[a]; // set the red value of the gradient that corresponds to this alpha
-                        pix[p + 1] = _temperaturemap[a + 1]; //set the green value based on alpha
-                        pix[p + 2] = _temperaturemap[a + 2]; //set the blue value based on alpha
+                    var a = pix[p + 3] * 4; // get hello alpha of this pixel
+                    if (a != 0) { // If there is any data tooplot
+                        pix[p] = _temperaturemap[a]; // set hello red value of hello gradient that corresponds toothis alpha
+                        pix[p + 1] = _temperaturemap[a + 1]; //set hello green value based on alpha
+                        pix[p + 2] = _temperaturemap[a + 2]; //set hello blue value based on alpha
                     }
-                    p += 4; // Move on to the next pixel
+                    p += 4; // Move on toohello next pixel
                 }
                 ctx.putImageData(dat, 0, 0);
             }
@@ -754,22 +754,22 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 }
             }
 
-            // Sets the heatmap points from an array of Microsoft.Maps.Locations  
+            // Sets hello heatmap points from an array of Microsoft.Maps.Locations  
             function _setPoints(locations) {
                 _locations = locations;
             }
 
-            // Main method to draw the heatmap
+            // Main method toodraw hello heatmap
             function _createHeatMap() {
-                // Ensure the canvas matches the current dimensions of the map
-                // This also has the effect of resetting the canvas
+                // Ensure hello canvas matches hello current dimensions of hello map
+                // This also has hello effect of resetting hello canvas
                 _canvas.height = _map.getHeight();
                 _canvas.width = _map.getWidth();
 
                 _canvas.style.top = -_canvas.height / 2 + 'px';
                 _canvas.style.left = -_canvas.width / 2 + 'px';
 
-                // Calculate the pixel radius of each heatpoint at the current map zoom
+                // Calculate hello pixel radius of each heatpoint at hello current map zoom
                 if (_options.unit == "pixels") {
                     radiusInPixel = _options.radius;
                 } else {
@@ -778,12 +778,12 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
 
                 var ctx = _canvas.getContext("2d");
 
-                // Convert lat/long to pixel location
+                // Convert lat/long toopixel location
                 var pixlocs = _map.tryLocationToPixel(_locations, Microsoft.Maps.PixelReference.control);
                 var shadow = 'rgba(0, 0, 0, ' + _options.intensity + ')';
                 var mapWidth = 256 * Math.pow(2, _map.getZoom());
 
-                // Create the Intensity Map by looping through each location
+                // Create hello Intensity Map by looping through each location
                 for (var i = 0, len = pixlocs.length; i < len; i++) {
                     var x = pixlocs[i].x;
                     var y = pixlocs[i].y;
@@ -797,15 +797,15 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                     grd.addColorStop(0.0, shadow);
                     grd.addColorStop(1.0, 'transparent');
 
-                    // Draw the heatpoint onto the canvas
+                    // Draw hello heatpoint onto hello canvas
                     ctx.fillStyle = grd;
                     ctx.fillRect(x - radiusInPixel, y - radiusInPixel, 2 * radiusInPixel, 2 * radiusInPixel);
                 }
 
-                // Apply the specified colour gradient to the intensity map
+                // Apply hello specified colour gradient toohello intensity map
                 _colouriseHeatMap();
 
-                // Call the callback function, if specified
+                // Call hello callback function, if specified
                 if (_options.callback) {
                     _options.callback();
                 }
@@ -830,17 +830,17 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 _setOptions(options);
             }
 
-            // Sets an array of Microsoft.Maps.Locations from which the heatmap is created
+            // Sets an array of Microsoft.Maps.Locations from which hello heatmap is created
             this.SetPoints = function (locations) {
-                // Reset the existing heatmap layer
+                // Reset hello existing heatmap layer
                 _clearHeatMap();
-                // Pass in the new set of locations
+                // Pass in hello new set of locations
                 _setPoints(locations);
-                // Recreate the layer
+                // Recreate hello layer
                 _createHeatMap();
             }
 
-            // Removes the heatmap layer from the DOM
+            // Removes hello heatmap layer from hello DOM
             this.Remove = function () {
                 _canvas.parentNode.parentNode.removeChild(_canvas.parentNode);
 
@@ -855,19 +855,19 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 _viewchangeendhandler = null;
             }
 
-            // Call the initialisation routine
+            // Call hello initialisation routine
             _init();
         };
 
-        // Call the Module Loaded method
+        // Call hello Module Loaded method
         Microsoft.Maps.moduleLoaded('HeatMapModule');
 
-**Chcete-li přidat twitterStream.js**
+**tooadd twitterStream.js**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**.
 2. Klikněte pravým tlačítkem na **skripty**, klikněte na tlačítko **přidat**, klikněte na tlačítko **soubor JavaScript**.
-3. V **název položky** zadejte**twitterStream.js**.
-4. Zkopírujte a vložte následující kód do souboru:
+3. V hello **název položky** zadejte**twitterStream.js**.
+4. Zkopírujte a vložte následující kód do souboru hello hello:
 
         var liveTweetsPos = [];
         var liveTweets = [];
@@ -878,7 +878,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
         var heatmapPos;
 
         function initialize() {
-            // Initialize the map
+            // Initialize hello map
             var options = {
                 credentials: "AvFJTZPZv8l3gF8VC3Y7BPBd0r7LKo8dqKG02EAlqg9WAi0M7la6zSIT-HwkMQbx",
                 center: new Microsoft.Maps.Location(23.0, 8.0),
@@ -891,24 +891,24 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
             // Heatmap options for positive, neutral and negative layers
 
             var heatmapOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels'
             };
 
             var heatmapPosOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels',
 
                 colourgradient: {
@@ -926,13 +926,13 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
             };
 
             var heatmapNegOptions = {
-                // Opacity at the centre of each heat point
+                // Opacity at hello centre of each heat point
                 intensity: 0.5,
 
                 // Affected radius of each heat point
                 radius: 15,
 
-                // Whether the radius is an absolute pixel value or meters
+                // Whether hello radius is an absolute pixel value or meters
                 unit: 'pixels',
 
                 colourgradient: {
@@ -949,7 +949,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
                 }
             };
 
-            // Register and load the Client Side HeatMap Module
+            // Register and load hello Client Side HeatMap Module
             Microsoft.Maps.registerModule("HeatMapModule", "scripts/heatmap.js");
             Microsoft.Maps.loadModule("HeatMapModule", {
                 callback: function () {
@@ -993,7 +993,7 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
         }
 
         function addTweet(item) {
-            //Add tweet to the heat map arrays.
+            //Add tweet toohello heat map arrays.
             var tweetLocation = new Microsoft.Maps.Location(item.Latitude, item.Longtitude);
             if (item.Sentiment > 0) {
                 liveTweetsPos.push(tweetLocation);
@@ -1063,10 +1063,10 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
             }
         }
 
-**Chcete-li upravit layout.cshtml**
+**toomodify hello layout.cshtml**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**, rozbalte položku **zobrazení**, rozbalte položku **sdílené**a potom dvakrát klikněte na _**Layout.cshtml**.
-2. Nahraďte obsah s následujícími službami:
+2. Nahraďte obsah hello hello následující:
 
         <!DOCTYPE html>
         <html>
@@ -1126,10 +1126,10 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
         </body>
         </html>
 
-**Chcete-li upravit Index.cshtml**
+**toomodify hello Index.cshtml**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**, rozbalte položku **zobrazení**, rozbalte položku **Domů**a potom dvakrát klikněte na  **Index.cshtml**.
-2. Nahraďte obsah s následujícími službami:
+2. Nahraďte obsah hello hello následující:
 
         @{
             ViewBag.Title = "Tweet Sentiment";
@@ -1139,10 +1139,10 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
             <div id="map_canvas"/>
         </div>
 
-**K úpravě souboru site.css**
+**souboru site.css toomodify hello**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**, rozbalte položku **obsahu**a potom dvakrát klikněte na **Site.css**.
-2. Následující kód pro přidání do souboru:
+2. Připojte hello následující soubor toohello kódu:
 
         /* make container, and thus map, 100% width */
         .map_container {
@@ -1162,33 +1162,33 @@ V této části vytvoříte webovou aplikaci ASP.NET MVC číst data v reálném
           font-size: 30px;
         }
 
-**K úpravě souboru global.asax**
+**soubor global.asax toomodify hello**
 
 1. Z **Průzkumníku řešení**, rozbalte položku **TweetSentimentWeb**a potom dvakrát klikněte na **Global.asax**.
-2. Přidejte následující **pomocí** příkaz:
+2. Přidejte následující hello **pomocí** příkaz:
 
         using System.Web.Http;
-3. Přidejte následující řádky uvnitř **Application_Start()** funkce:
+3. Přidejte následující řádky uvnitř hello hello **Application_Start()** funkce:
 
         // Register API routes
         GlobalConfiguration.Configure(WebApiConfig.Register);
 
-    Upravte registraci tras do rozhraní API, aby kontroleru webového rozhraní API fungovat v aplikaci MVC.
+    Upravte registraci hello hello API trasy toomake hello webového rozhraní API řadiče práce v aplikaci MVC hello.
 
-**Ke spuštění webové aplikace**
+**toorun hello webové aplikace**
 
-1. Ověřte, zda streamování konzolové aplikace služby je stále spuštěna, abyste viděli změny v reálném čase.
-2. Stiskněte klávesu **F5** ke spuštění webové aplikace:
+1. Ověřte, že tento hello streamování aplikace konzoly služby je stále spuštěná, abyste viděli změny v reálném čase hello.
+2. Stiskněte klávesu **F5** toorun hello webové aplikace:
 
     ![hdinsight.hbase.Twitter.sentiment.Bing.map][img-bing-map]
-3. Do textového pole zadejte klíčové slovo a pak klikněte na tlačítko **přejděte**.  V závislosti na data shromážděná v tabulce HBase pravděpodobně nebyly nalezeny některé klíčová slova. Zkuste některé běžné klíčová slova, například "rádi," "xbox" a "playstation."
-4. Přepínání mezi **kladné**, **neutrální**, a **záporné** k porovnání postojích na předmět.
-5. Umožní službě streamování spustit jinou hodinu a potom stejné klíčová slova pro vyhledávání a porovnejte výsledky.
+3. Hello textového pole zadejte klíčové slovo a pak klikněte na tlačítko **přejděte**.  V závislosti na hello data shromážděná v tabulce HBase hello pravděpodobně nebyly nalezeny některé klíčová slova. Zkuste některé běžné klíčová slova, například "rádi," "xbox" a "playstation."
+4. Přepínání mezi **kladné**, **neutrální**, a **záporné** toocompare postojích na hello subjektu.
+5. Umožňují hello streamování službu spustit jinou hodinu a pak hledání hello stejné klíčová slova a porovnejte výsledky hello.
 
-Volitelně můžete nasadit aplikace na weby Azure. Pokyny najdete v tématu [začít pracovat s weby Azure a ASP.NET][website-get-started].
+Volitelně můžete nasadit aplikace tooAzure hello weby. Pokyny najdete v tématu [začít pracovat s weby Azure a ASP.NET][website-get-started].
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak získat tweetů, analyzovat myšlenkou tweetů, uložit data postojích k HBase a k dispozici data v reálném čase Twitter postojích ke službě Bing maps. Další informace naleznete v tématu:
+V tomto kurzu jste se dozvěděli, jak tooget tweetů, analyzovat hello postojích z tweetů, uložte hello postojích data tooHBase a existuje hello v reálném čase Twitter postojích data tooBing mapy. toolearn více, najdete v části:
 
 * [Začínáme s HDInsight][hdinsight-get-started]
 * [Konfigurace replikace HBase v HDInsight](hdinsight-hbase-replication.md)

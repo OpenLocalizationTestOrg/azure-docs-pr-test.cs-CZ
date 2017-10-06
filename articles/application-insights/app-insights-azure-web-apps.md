@@ -1,5 +1,5 @@
 ---
-title: "Monitorování výkonu webových aplikací Azure | Dokumentace Microsoftu"
+title: "aaaMonitor službě Azure web app výkonu | Microsoft Docs"
 description: "Monitorování výkonu webových aplikací Azure. Můžete vytvářet grafy zatížení a doby odezvy nebo informací o závislosti a nastavovat upozornění týkající se výkonu."
 services: application-insights
 documentationcenter: .net
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
-ms.openlocfilehash: f2bbadfbcb93873ed910aeff050bd6896e2e8fec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d1083254e5c504b18f2ac5ae2368610dc2790436
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorování výkonu webových aplikací Azure
-Na webu [Azure Portal](https://portal.azure.com) můžete pro své [webové aplikace Azure](../app-service-web/app-service-web-overview.md) nastavit monitorování výkonu. [Azure Application Insights](app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
+V hello [portálu Azure](https://portal.azure.com) můžete nastavit monitorování výkonu aplikací na vašem [webové aplikace Azure](../app-service-web/app-service-web-overview.md). [Azure Application Insights](app-insights-overview.md) instruments telemetrie toosend aplikace o jeho aktivity toohello služby Application Insights, kde je uložený a analyzovat. Zde je možné metriky grafů a vyhledávací nástroje toohelp diagnostikovat problémy, výkon a vyhodnocení využití.
 
 ## <a name="run-time-or-build-time"></a>Za běhu nebo při sestavení
-Monitorování s použitím aplikace můžete konfigurovat dvěma způsoby:
+Můžete nakonfigurovat monitorování instrumentaci aplikace hello v některém ze dvou způsobů:
 
-* **Za běhu** – Můžete vybrat rozšíření pro monitorování výkonu, když je webová aplikace již v živém provozu. Aplikaci není třeba znovu sestavit ani instalovat. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
-* **Při sestavení** – Do aplikace můžete balíček nainstalovat během vývoje. Tato možnost nabízí větší variabilitu. Kromě stejných standardních balíčků můžete napsat kód pro přizpůsobení telemetrických dat nebo pro odesílání vlastních telemetrických dat. Můžete protokolovat konkrétní aktivity nebo zaznamenávat události podle sémantiky domény aplikace. 
+* **Za běhu** – Můžete vybrat rozšíření pro monitorování výkonu, když je webová aplikace již v živém provozu. Není nutné toorebuild, nebo znovu nainstalujte vaší aplikace. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
+* **Při sestavení** – Do aplikace můžete balíček nainstalovat během vývoje. Tato možnost nabízí větší variabilitu. V toohello přidání stejné standardní balíčků, můžete napsat kód toocustomize hello telemetrie nebo toosend vlastní telemetrii. Můžete protokolovat konkrétní aktivity nebo záznam událostí podle toohello sémantiku vaší domény aplikace. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Použití za běhu s Application Insights
-Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jisté míry k dispozici: můžete monitorovat požadavky a chybovost. Přidejte Application Insights a získejte další možnosti, například zaznamenávání doby odezvy, monitorování volání závislostí, inteligentní detekci a výkonný dotazovací jazyk Log Analytics. 
+Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jisté míry k dispozici: můžete monitorovat požadavky a chybovost. Přidejte Application Insights tooget další, například dobu odezvy, monitorování toodependencies volání, inteligentní detekce a hello dotazovacího jazyka pro efektivní analýzy protokolů. 
 
-1. **Vyberte Application Insights** pro svou webovou aplikaci na ovládacím panelu Azure.
+1. **Vyberte Application Insights** Azure ovládacího panelu hello pro vaši webovou aplikaci.
    
     ![V části Monitorování zvolte Application Insights.](./media/app-insights-azure-web-apps/05-extend.png)
    
-   * Zvolte možnost vytvoření nového prostředku, pokud jste ještě prostředek Application Insights pro tuto aplikaci nenastavili jiným způsobem.
+   * Zvolte toocreate nový prostředek, pokud jste již nastavili prostředek Application Insights pro tuto aplikaci pomocí jiné trasy.
 2. Po instalaci Application Insights **webovou aplikaci používejte**. 
    
     ![Používejte webovou aplikaci.](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
@@ -48,59 +48,59 @@ Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jis
     Klíč: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
     
     Hodnota: `true`
-   * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
-3. **Monitorujte aplikaci**.  [Prozkoumejte data](#explore-the-data).
+   * **Uložit** hello nastavení a **restartujte** vaší aplikace.
+3. **Monitorujte aplikaci**.  [Expore hello data](#explore-the-data).
 
-Později můžete pomocí Application Insights aplikaci sestavit, pokud budete chtít.
+Pokud chcete později, můžete vytvořit aplikace hello pomocí Application Insights.
 
-*Jak lze odebrat Application Insights nebo přepnout na odesílání do jiného prostředku?*
+*Jak odebrat Application Insights, nebo přepnout toosending tooanother prostředků?*
 
-* V Azure otevřete okno s ovládacími prvky webové aplikace a v části Vývojové nástroje otevřete **Rozšíření**. Odstraňte rozšíření Application Insights. Potom v části Monitorování zvolte Application Insights a vytvořte nebo vyberte požadovaný prostředek.
+* V Azure, otevřete hello webové aplikace ovládacího prvku okno a v části nástroje pro vývoj, otevřete **rozšíření**. Odstraňte rozšíření Application Insights hello. Potom v části sledování, vyberte Application Insights a vytvořte nebo vyberte hello prostředek, který chcete.
 
-## <a name="build-the-app-with-application-insights"></a>Sestavení aplikace s použitím Application Insights
+## <a name="build-hello-app-with-application-insights"></a>Sestavení aplikace hello s Application Insights
 Application Insights může poskytovat podrobnější telemetrie po nainstalování sady SDK do příslušné aplikace. Konkrétně je možné shromažďovat protokoly trasování, [psát vlastní telemetrii](app-insights-api-custom-events-metrics.md)a získávat podrobnější sestavy výjimek.
 
 1. **V sadě Visual Studio** (2013 s aktualizací 2 nebo novější) nakonfigurujte Application Insights pro svůj projekt.
 
-    Klikněte pravým tlačítkem myši na webový projekt a vyberte **Přidat > Application Insights** nebo **Nakonfigurovat Application Insights**.
+    Klikněte pravým tlačítkem na hello webový projekt a vyberte **Přidat > Application Insights** nebo **konfigurovat Application Insights**.
    
-    ![Klikněte pravým tlačítkem myši na webový projekt a zvolte Přidat nebo Nakonfigurovat Application Insights.](./media/app-insights-azure-web-apps/03-add.png)
+    ![Klikněte pravým tlačítkem na hello webový projekt a zvolte Přidat nebo konfigurovat Application Insights](./media/app-insights-azure-web-apps/03-add.png)
    
-    Pokud budete vyzváni k přihlášení, použijte přihlašovací údaje ke svému účtu Azure.
+    Zobrazení dotazu toosign v, použijte hello přihlašovací údaje k účtu Azure.
    
-    Operace má dva důsledky:
+    operace Hello má dva důsledky:
    
    1. Vytvoří prostředek Application Insights v Azure, kde se ukládají, analyzují a zobrazují telemetrická data.
-   2. Přidá do kódu balíček NuGet Application Insights (pokud tam ještě není) a nakonfiguruje ho tak, aby odesílal telemetrická data do příslušného prostředku Azure.
-2. **Otestujte telemetrická data** spuštěním aplikace v počítači pro vývoj (F5).
-3. **Publikujte aplikaci** v Azure obvyklým způsobem. 
+   2. Přidá hello Application Insights NuGet balíček tooyour kódu (pokud existuje již není) a nakonfiguruje jej toosend telemetrie toohello prostředků Azure.
+2. **Testování hello telemetrie** ve spuštěné aplikaci hello ve vývojovém počítači (F5).
+3. **Publikování aplikace hello** tooAzure v hello obvyklým způsobem. 
 
-*Jak lze přepnout na odesílání do jiného prostředku Application Insights?*
+*Jak lze přepnout toosending tooa jiný prostředek služby Application Insights?*
 
-* V sadě Visual Studio klikněte pravým tlačítkem na projekt, zvolte **Nakonfigurovat Application Insights** a zvolte požadovaný prostředek. Budete mít možnost vytvořit nový prostředek. Proveďte opětné sestavení a nasazení.
+* V sadě Visual Studio, klikněte pravým tlačítkem na projekt hello, zvolte **konfigurovat Application Insights** a vyberte prostředek hello chcete. Získáte možnost toocreate hello nový prostředek. Proveďte opětné sestavení a nasazení.
 
-## <a name="explore-the-data"></a>Zkoumání dat
-1. V okně Application Insights na ovládacím panelu webové aplikace se zobrazuje část Live Metrics, která obsahuje požadavky a selhání během sekundy či dvou od jejich výskytu. Toto zobrazení je velmi užitečné, pokud aplikaci znovu publikujete – okamžitě uvidíte veškeré případné problémy.
-2. Proklikejte se k úplnému prostředku Application Insights.
+## <a name="explore-hello-data"></a>Prozkoumejte hello data
+1. V okně hello Application Insights z vaší webové aplikace ovládacích panelů, uvidíte metriky za provozu, který ukazuje žádostí a selhání v rámci druhý nebo dvě z nich ke kterým dochází. Toto zobrazení je velmi užitečné, pokud aplikaci znovu publikujete – okamžitě uvidíte veškeré případné problémy.
+2. Proklikejte se prostřednictvím toohello úplné prostředek Application Insights.
 
     ![Proklikejte se.](./media/app-insights-azure-web-apps/view-in-application-insights.png)
 
     Můžete tam přejít i přímo z navigace pro prostředky Azure.
 
-1. Proklikáním se kterýmkoli grafem přejdete k zobrazení podrobnějších údajů:
+1. Proklikejte se prostřednictvím jakékoli grafu tooget podrobněji:
    
-    ![V okně s přehledem Application Insights klikněte na graf.](./media/app-insights-azure-web-apps/07-dependency.png)
+    ![V okně Přehled hello Application Insights klikněte na graf](./media/app-insights-azure-web-apps/07-dependency.png)
    
     Můžete [přizpůsobit okna metrik](app-insights-metrics-explorer.md).
-2. Další proklikáním se můžete zobrazit jednotlivé události a jejich vlastnosti:
+2. Klikněte na další toosee jednotlivé události a jejich vlastnosti:
    
-    ![Kliknutím na typ události otevřete vyhledávání filtrované podle příslušného typu.](./media/app-insights-azure-web-apps/08-requests.png)
+    ![Klikněte na tlačítko tooopen typ události vyhledávání filtrováno typu](./media/app-insights-azure-web-apps/08-requests.png)
    
-    Všimněte si, že odkaz „...“ otevře všechny vlastnosti.
+    Všimněte si, hello "..." odkaz tooopen všechny vlastnosti.
    
     Můžete [přizpůsobovat hledání](app-insights-diagnostic-search.md).
 
-Pokud chcete v telemetrických datech provádět výkonnější hledání, použijte [dotazovací jazyk Log Analytics](app-insights-analytics-tour.md).
+Pro účinnější hledání přes telemetrie, použijte hello [analýzy protokolů dotazu jazyka](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>Další telemetrická data
 
@@ -112,11 +112,11 @@ Pokud chcete v telemetrických datech provádět výkonnější hledání, použ
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další kroky
-* [Spusťte profiler v živé aplikaci](app-insights-profiler.md).
+* [Spustit hello profileru ve vaší živé aplikaci](app-insights-profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – monitorujte službu Azure Functions pomocí Application Insights.
-* [Povolte odesílání diagnostiky Azure](app-insights-azure-diagnostics.md) do Application Insights.
-* [Monitorujte metriky stavu služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
+* [Povolit Azure diagnostics](app-insights-azure-diagnostics.md) toobe odeslané tooApplication statistiky.
+* [Monitorování stavu metriky služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) toomake, že je služba dostupná a dobře reagovaly.
 * [Přijímejte oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
-* Použitím [Application Insights pro aplikace JavaScript a webové stránky](app-insights-javascript.md) získávejte telemetrické údaje klienta z prohlížečů, které webovou stránky navštíví.
-* [Nastavte testy dostupnosti webu](app-insights-monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.
+* Použití [Application Insights pro aplikace JavaScript a webové stránky](app-insights-javascript.md) tooget klienta telemetrie z hello prohlížečů, které navštívit webovou stránku.
+* [Nastavit testy dostupnosti webu](app-insights-monitor-web-app-availability.md) toobe zobrazí výstraha, pokud váš webový server je mimo provoz.
 

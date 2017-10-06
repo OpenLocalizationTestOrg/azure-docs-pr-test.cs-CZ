@@ -1,6 +1,6 @@
 ---
-title: "Zřízení webové aplikace, která používá databázi SQL"
-description: "Nasazení webové aplikace, která zahrnuje SQL Database pomocí šablony Azure Resource Manager."
+title: "aaaProvision webovou aplikaci, která používá databázi SQL"
+description: "Použijte toodeploy šablony Azure Resource Manager webovou aplikaci, která obsahuje databázi SQL."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 189c0122d201e88f15013bf241d66652ef23df4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-a-web-app-with-a-sql-database"></a>Zřízení webové aplikace s databází SQL
-V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, nasadí webové aplikace a SQL Database. Se dozvíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+V tomto tématu se dozvíte, jak toocreate šablonu Azure Resource Manager, které nasadí webovou aplikaci a databázi SQL. Se dozvíte, jak toodefine prostředky, ke kterým jsou nasazené a jak toodefine parametry, které jsou zadané, když se spustí nasazení hello. Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet vašim požadavkům.
 
 Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Další informace o nasazování aplikací najdete v tématu [nasazení komplexní aplikace předvídatelné v Azure](app-service-deploy-complex-application-predictably.md).
 
-Pro úplnou šablonu, najdete v části [šablony webové aplikace s SQL Database](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
+Hello úplnou šablonu, najdete v části [šablony webové aplikace s SQL Database](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,29 +41,29 @@ V této šabloně je nasadit:
 * Pravidla výstrah
 * Přehled aplikace
 
-Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+toorun hello nasazení automaticky, klikněte na následující tlačítko hello:
 
-[![Nasazení do Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
+[![Nasazení tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Chcete-li zadat parametry
+## <a name="parameters-toospecify"></a>Parametry toospecify
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="administratorlogin"></a>administratorLogin
-Název účtu, který se má použít pro správce databáze serveru.
+Hello toouse název účtu správce serveru pro databázi hello.
 
     "administratorLogin": {
       "type": "string"
     }
 
 ### <a name="administratorloginpassword"></a>administratorLoginPassword
-Heslo správce serveru pro databázi.
+Hello toouse heslo správce serveru pro databázi hello.
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
 ### <a name="databasename"></a>Název databáze
-Název nové databáze k vytvoření.
+Hello název nové databáze toocreate hello.
 
     "databaseName": {
       "type": "string",
@@ -71,7 +71,7 @@ Název nové databáze k vytvoření.
     }
 
 ### <a name="collation"></a>Kolace
-Kolaci databáze pro řídících správné použití znaků.
+Hello databáze kolace toouse pro řízení hello správné použití znaků.
 
     "collation": {
       "type": "string",
@@ -79,7 +79,7 @@ Kolaci databáze pro řídících správné použití znaků.
     }
 
 ### <a name="edition"></a>Edice
-Typ databáze slouží k vytvoření.
+Typ Hello toocreate databáze.
 
     "edition": {
       "type": "string",
@@ -90,12 +90,12 @@ Typ databáze slouží k vytvoření.
         "Premium"
       ],
       "metadata": {
-        "description": "The type of database to create."
+        "description": "hello type of database toocreate."
       }
     }
 
 ### <a name="maxsizebytes"></a>maxSizeBytes
-Maximální velikost v bajtech pro databázi.
+Hello maximální velikost v bajtech hello databáze.
 
     "maxSizeBytes": {
       "type": "string",
@@ -103,7 +103,7 @@ Maximální velikost v bajtech pro databázi.
     }
 
 ### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
-Název odpovídající úroveň výkonu pro edici. 
+Hello název odpovídající toohello úroveň výkonu pro edici. 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,12 +118,12 @@ Název odpovídající úroveň výkonu pro edici.
         "P3"
       ],
       "metadata": {
-        "description": "Describes the performance level for Edition"
+        "description": "Describes hello performance level for Edition"
       }
     }
 
 ## <a name="variables-for-names"></a>Proměnné pro názvy
-Tato šablona obsahuje proměnné, které vytvořit názvy použité v šabloně. Proměnná hodnoty použít **uniqueString** funkce, která má název vygenerovat z id skupiny prostředků.
+Tato šablona obsahuje proměnné, které vytvořit názvů používaných v šabloně hello. hodnoty proměnné Hello použít hello **uniqueString** funkce toogenerate název z hello id skupiny prostředků.
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,9 +132,9 @@ Tato šablona obsahuje proměnné, které vytvořit názvy použité v šabloně
     },
 
 
-## <a name="resources-to-deploy"></a>Prostředky k nasazení
+## <a name="resources-toodeploy"></a>Toodeploy prostředky
 ### <a name="sql-server-and-database"></a>SQL Server a databáze
-Vytvoří nový SQL Server a databáze. Je název serveru zadaný v **serverName** parametr a umístění zadané v **serverLocation** parametr. Při vytváření nového serveru, musíte zadat přihlašovací jméno a heslo správce databáze serveru. 
+Vytvoří nový SQL Server a databáze. Název Hello hello serveru je zadán v hello **serverName** parametr a hello umístění zadaná v hello **serverLocation** parametr. Při vytváření nového serveru hello, je nutné zadat přihlašovací jméno a heslo správce serveru pro databázi hello. 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -373,7 +373,7 @@ Vytvoří nový SQL Server a databáze. Je název serveru zadaný v **serverName
       },
       "properties": {
         "name": "[concat('CPUHigh ', variables('hostingPlanName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', variables('hostingPlanName'))]",
+        "description": "[concat('hello average CPU is high across all hello instances of ', variables('hostingPlanName'))]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -407,7 +407,7 @@ Vytvoří nový SQL Server a databáze. Je název serveru zadaný v **serverName
       },
       "properties": {
         "name": "[concat('LongHttpQueue ', variables('hostingPlanName'))]",
-        "description": "[concat('The HTTP queue for the instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
+        "description": "[concat('hello HTTP queue for hello instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -446,7 +446,7 @@ Vytvoří nový SQL Server a databáze. Je název serveru zadaný v **serverName
       }
     }
 
-## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
+## <a name="commands-toorun-deployment"></a>Příkazy toorun nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -462,6 +462,6 @@ Vytvoří nový SQL Server a databáze. Je název serveru zadaný v **serverName
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE]
-> Obsah souboru JSON parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
+> Obsah souboru JSON hello parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
 >
 >

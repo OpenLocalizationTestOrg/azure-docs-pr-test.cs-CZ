@@ -1,6 +1,6 @@
 ---
-title: "Potlačení chování HTTP pomocí stroj pravidel Azure CDN | Microsoft Docs"
-description: "Stroj pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP pomocí Azure CDN, třeba blokování doručování určité typy obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP."
+title: "chování aaaOverride HTTP pomocí stroj pravidel Azure CDN hello | Microsoft Docs"
+description: "Stroj pravidel Hello vám umožní toocustomize zpracování požadavků HTTP pomocí Azure CDN, třeba blokování hello doručování určité typy obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dd7194be9dbda43180c64568d3e1f52c5c513a7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Potlačení chování HTTP pomocí stroj pravidel Azure CDN
+# <a name="override-http-behavior-using-hello-azure-cdn-rules-engine"></a>Potlačení chování HTTP pomocí stroj pravidel hello Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
-Stroj pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP, jako je například blokování doručování určité typy obsahu, definování zásady ukládání do mezipaměti a úpravy hlaviček protokolu HTTP.  V tomto kurzu se ukazují, že vytvoření pravidla, která se změní chování ukládání do mezipaměti CDN prostředků.  Také obsahu videa v není k dispozici "[viz také](#see-also)" oddílu.
+Stroj pravidel Hello umožňuje toocustomize způsob zpracování požadavků HTTP, jako je například blokování hello doručování určité typy obsahu, definování zásady ukládání do mezipaměti a úpravy hlaviček protokolu HTTP.  V tomto kurzu se ukazují, že vytvoření pravidla, která se změní hello ukládání do mezipaměti chování CDN prostředků.  Je také video obsah k dispozici v hello "[viz také](#see-also)" oddílu.
 
    > [!TIP] 
-   > Odkaz na syntaxi podrobně, najdete v části [referenční dokumentace pravidel modul](cdn-rules-engine-reference.md).
+   > Odkaz na syntaxi toohello podrobně naleznete v tématu [referenční dokumentace pravidel modul](cdn-rules-engine-reference.md).
    > 
 
 
 ## <a name="tutorial"></a>Kurz
-1. Okno profil CDN, klikněte **spravovat** tlačítko.
+1. Z hello okno profil CDN, klikněte na tlačítko hello **spravovat** tlačítko.
    
     ![Tlačítko Spravovat okno profil CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Klikněte na **HTTP velké** kartě, za nímž následuje **stroj pravidel**.
+    Otevře portál pro správu Hello CDN.
+2. Klikněte na hello **HTTP velké** kartě, za nímž následuje **stroj pravidel**.
    
     Zobrazí se možnosti pro nové pravidlo.
    
     ![Nové možnosti pravidlo CDN](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Pořadí, ve kterém jsou uvedeny víc pravidel, ovlivňuje způsob zpracování. Následující pravidlo může přepsat akce zadané předchozí pravidlem.
+   > Hello pořadí, ve kterém jsou uvedeny víc pravidel, ovlivňuje způsob zpracování. Následující pravidlo může přepsat hello akce zadané předchozí pravidlem.
    > 
    > 
-3. Zadejte název do pole **název nebo popis** textové pole.
-4. Určete typ požadavky, bude pravidlo platí pro.  Ve výchozím nastavení **vždy** je vybraná podmínka shodu.  Budete používat **vždy** pro účely tohoto kurzu, takže políčko nechte který vybrali.
+3. Zadejte název v hello **název nebo popis** textové pole.
+4. Identifikace typu hello požadavků, které hello pravidlo se použije k.  Ve výchozím nastavení, hello **vždy** je vybraná podmínka shodu.  Budete používat **vždy** pro účely tohoto kurzu, takže políčko nechte který vybrali.
    
    ![Stav shody CDN](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!TIP]
-   > Existuje mnoho typů odpovídal podmínky, které jsou k dispozici v rozevírací nabídce.  Aktuálně vybrané podmínky podrobně vysvětluje kliknutím na ikonu blue informační nalevo od podmínky shody.
+   > Existuje mnoho typů odpovídal podmínky, které jsou k dispozici v rozevírací nabídce hello.  Kliknete na informační ikonu toohello hello blue nalevo od hello shodu podmínku vysvětluje podmínku hello aktuálně vybrané podrobně.
    > 
-   >  Úplný seznam podmíněné výrazy podrobně najdete v tématu [pravidla modul podmíněné výrazy](cdn-rules-engine-reference-match-conditions.md).
+   >  Úplný seznam hello podmíněných výrazů podrobně najdete v tématu [pravidla modul podmíněné výrazy](cdn-rules-engine-reference-match-conditions.md).
    >  
-   > Úplný seznam podmínek shodu podrobně, najdete v části [podmínky odpovídají stroj pravidel](cdn-rules-engine-reference-match-conditions.md).
+   > Úplný seznam hello shodu podmínek podrobně najdete v tématu [podmínky odpovídají stroj pravidel](cdn-rules-engine-reference-match-conditions.md).
    > 
    > 
-5. Klikněte  **+**  vedle položky **funkce** přidat nové funkce.  V rozevírací nabídce na levé straně vyberte **Force interní Max-Age**.  Do textového pole, která se zobrazí, zadejte **300**.  Ponechejte zbývající výchozí hodnoty.
+5. Klikněte na tlačítko hello  **+**  tlačítko vedle příliš**funkce** tooadd nové funkce.  V rozevírací nabídce hello na levé straně hello, vyberte **Force interní Max-Age**.  V textovém poli hello, který se zobrazí, zadejte **300**.  Ponechejte zbývající výchozí hodnoty hello.
    
    ![Funkce CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Jako s shodu podmínky, kliknutím na ikonu blue informační nalevo od novou funkci se zobrazí podrobnosti o této funkci.  U **Force interní Max-Age**, jsme jsou přepsání assetu **Cache-Control** a **Expires** hlavičky řídit, kdy bude hraničního uzlu CDN aktualizace asset z tohoto počátku.  Náš příklad 300 sekund znamená, že CDN hraničního uzlu po dobu 5 minut před aktualizací asset z jeho počátku mezipaměti asset.
+   > Jako s podmínkami shoda, kliknete na informační ikonu toohello hello blue levé hello nové funkce zobrazí podrobnosti o této funkci.  V případě hello **Force interní Max-Age**, jsme jsou přepsání hello asset **Cache-Control** a **Expires** hlavičky toocontrol při hello CDN hraniční uzel aktualizuje hello Asset z počátku hello.  Náš příklad 300 sekund znamená, že hello CDN hraniční uzel po dobu 5 minut před aktualizací hello asset z jeho počátku mezipaměti hello asset.
    > 
-   > Úplný seznam funkcí podrobně, najdete v části [podrobnosti o funkcích stroj pravidel](cdn-rules-engine-reference-features.md).
+   > Hello úplný seznam funkcí podrobně najdete v tématu [podrobnosti o funkcích stroj pravidel](cdn-rules-engine-reference-features.md).
    > 
    > 
-6. Klikněte **přidat** tlačítko pro uložení nové pravidlo.  Nové pravidlo je nyní čeká na schválení. Jakmile byla schválena, stav se změní z **čekající XML** k **Active XML**.
+6. Klikněte na tlačítko hello **přidat** tlačítko toosave hello nové pravidlo.  nové pravidlo Hello je nyní čeká na schválení. Jakmile byla schválena, hello stav se změní z **čekající XML** příliš**Active XML**.
    
    > [!IMPORTANT]
-   > Změny pravidel může trvat až 90 minut rozšíří v rámci CDN.
+   > Změny pravidel může trvat až minut toopropagate too90 prostřednictvím hello CDN.
    > 
    > 
 
@@ -83,5 +83,5 @@ Stroj pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP, j
 * [Stav shody motoru pravidla](cdn-rules-engine-reference-match-conditions.md)
 * [Podmíněné výrazy stroj pravidel](cdn-rules-engine-reference-conditional-expressions.md)
 * [Funkce modulu pravidla](cdn-rules-engine-reference-features.md)
-* [Přepsání výchozího nastavení HTTP používá stroj pravidel](cdn-rules-engine.md)
+* [Přepsání výchozího nastavení HTTP používá stroj pravidel hello](cdn-rules-engine.md)
 * [Azure pátek: Azure CDN výkonné nové prémiové funkce](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)

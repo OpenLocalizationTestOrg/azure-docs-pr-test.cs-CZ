@@ -1,6 +1,6 @@
 ---
-title: "Jak používat témata a předplatné Azure Service Bus s Node.js | Microsoft Docs"
-description: "Naučte se používat témata a odběry Service Bus v Azure z aplikace Node.js."
+title: "aaaHow toouse Azure Service Bus témata a odběry s Node.js | Microsoft Docs"
+description: "Zjistěte, jak toouse Service Bus témat a odběrů v Azure z aplikace Node.js."
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
@@ -14,29 +14,29 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 24ae9b80f75531c5e4a84c3b4a6666a6f8a83d2c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e8f6e7ad6ed16d844c408337ac9e50f990e3fafd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Postup použití služby Service Bus témata a odběry s Node.js
+# <a name="how-toouse-service-bus-topics-and-subscriptions-with-nodejs"></a>Jak tooUse Service Bus témata a odběry s Node.js
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Tato příručka popisuje, jak používat témata Service Bus a odběry z aplikací Node.js. Pokryté scénáře zahrnují **vytváření témat a odběrů**, **vytváření filtrů odběrů**, **odesílání zpráv** do tématu, **přijetí zprávy z odběru**, a **odstranění témat a odběrů**. Další informace o tématech a odběrech najdete v části [Další kroky](#next-steps).
+Tato příručka popisuje, jak toouse Service Bus témata a odběry z aplikací Node.js. Hello pokryté scénáře zahrnují **vytváření témat a odběrů**, **vytváření filtrů odběrů**, **odesílání zpráv** tooa tématu **přijetí zprávy z odběru**, a **odstranění témat a odběrů**. Další informace o tématech a odběrech najdete v tématu hello [další kroky](#next-steps) části.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvoření prázdné aplikace Node.js. Pokyny pro vytvoření aplikace Node.js, naleznete v části [vytvoření a nasazení aplikace Node.js na webovou stránku Azure], [Node.js Cloudová služba] [ Node.js Cloud Service] pomocí systému Windows Prostředí PowerShell nebo na webovém serveru pomocí služby WebMatrix.
+Vytvoření prázdné aplikace Node.js. Pokyny pro vytvoření aplikace Node.js, naleznete v části [vytvořit a nasadit tooan aplikace Node.js webu Azure], [Node.js Cloudová služba] [ Node.js Cloud Service] pomocí systému Windows Prostředí PowerShell nebo na webovém serveru pomocí služby WebMatrix.
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-K použití služby Service Bus, stáhněte si balíček Node.js Azure. Tento balíček obsahuje sadu knihoven, které komunikují s služby REST pro Service Bus.
+## <a name="configure-your-application-toouse-service-bus"></a>Konfigurace vaší aplikace toouse Service Bus
+toouse Service Bus, stáhněte si balíček Node.js Azure hello. Tento balíček obsahuje sadu knihoven, které komunikují s hello služby REST pro Service Bus.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Získat balíček pomocí uzlu balíček správce (NPM)
-1. Pomocí rozhraní příkazového řádku, jako například **prostředí PowerShell** (Windows) **Terminálové** (Mac), nebo **Bash** (Unix), přejděte do složky, které jste vytvořili ukázkové aplikaci.
-2. Typ **npm nainstalujte azure** v okně příkazového řádku, což by měla vést ke následující výstup:
+### <a name="use-node-package-manager-npm-tooobtain-hello-package"></a>Použijte uzel balíček správce (NPM) tooobtain hello balíček
+1. Pomocí rozhraní příkazového řádku, jako například **prostředí PowerShell** (Windows) **Terminálové** (Mac), nebo **Bash** (Unix), přejděte toohello složku, kde jste vytvořili ukázkové aplikaci.
+2. Typ **npm nainstalujte azure** v hello příkazové okno, které by měl způsobit hello následující výstup:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -51,30 +51,30 @@ K použití služby Service Bus, stáhněte si balíček Node.js Azure. Tento ba
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. Můžete ručně spustit **ls** příkazu ověřte, že **uzlu\_moduly** složka byla vytvořena. V této složce najít **azure** balíček, který obsahuje knihovny, je třeba získat přístup témat sběrnice Service Bus.
+3. Můžete ručně spustit hello **ls** tooverify příkaz, **uzlu\_moduly** složka byla vytvořena. V této složce najít **azure** balíček, který obsahuje hello knihovny, je nutné tooaccess témat sběrnice Service Bus.
 
-### <a name="import-the-module"></a>Naimportujte modul
-Pomocí programu Poznámkový blok nebo jiném textovém editoru, přidejte následující do horní části **server.js** souboru aplikace:
+### <a name="import-hello-module"></a>Import modulu hello
+Pomocí programu Poznámkový blok nebo jiném textovém editoru, přidejte následující toohello horní části hello hello **server.js** souboru aplikace hello:
 
 ```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Nastavení připojení služby Service Bus
-Azure modul čte proměnné prostředí `AZURE_SERVICEBUS_NAMESPACE` a `AZURE_SERVICEBUS_ACCESS_KEY` informace požadované pro připojení k Service Bus. Pokud nejsou nastavené těchto proměnných prostředí, musíte zadat informace o účtu při volání metody `createServiceBusService`.
+Hello Azure modul čte proměnné prostředí hello `AZURE_SERVICEBUS_NAMESPACE` a `AZURE_SERVICEBUS_ACCESS_KEY` informace požadované tooconnect tooService sběrnice. Pokud nejsou nastavené těchto proměnných prostředí, musíte zadat informace o účtu hello při volání metody `createServiceBusService`.
 
-Příklad nastavení proměnných prostředí pro cloudové služby Azure, naleznete v části [Node.js Cloudová služba se úložiště][Node.js Cloud Service with Storage].
+Příklad nastavení hello proměnných prostředí pro cloudové služby Azure, naleznete v části [Node.js Cloudová služba se úložiště][Node.js Cloud Service with Storage].
 
-Příklad nastavení proměnných prostředí pro web Azure, naleznete v části [webovou aplikaci Node.js s úložištěm][Node.js Web Application with Storage].
+Příklad nastavení hello proměnných prostředí pro web Azure, naleznete v části [webovou aplikaci Node.js s úložištěm][Node.js Web Application with Storage].
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
-**ServiceBusService** objektu umožňuje pracovat s tématy. Následující kód vytvoří **ServiceBusService** objektu. Přidejte do horní části **server.js** souboru po příkazu k importu modulu azure:
+Hello **ServiceBusService** objekt vám umožní toowork s tématy. Následující kód vytvoří **ServiceBusService** objektu. Přidejte do horní části hello **server.js** souboru po hello příkaz tooimport hello azure modul:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Při volání `createTopicIfNotExists` na **ServiceBusService** objektu zadaného tématu bude vrácen (pokud existuje), nebo se vytvoří nové téma se zadaným názvem. Následující kód používá `createTopicIfNotExists` vytvořit nebo připojit k tématu s názvem `MyTopic`:
+Při volání `createTopicIfNotExists` na hello **ServiceBusService** objektu hello určena, bude vrácen tématu (pokud existuje), nebo se vytvoří nové téma se zadaným názvem hello. Hello následující kód používá `createTopicIfNotExists` toocreate nebo připojení toohello téma s názvem `MyTopic`:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -85,7 +85,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` Metoda také podporuje další možnosti, které vám umožní přepsat výchozí nastavení téma například zpráva hodnota time to live nebo téma maximální velikost. Následující příklad nastaví téma maximální velikost 5 GB s časem TTL 1 minuta:
+Hello `createServiceBusService` metoda také podporuje další možnosti, které umožňují toooverride výchozí téma nastavení jako hodnota time to live zpráva nebo téma maximální velikost. Hello následující příklad ilustruje hello tématu maximální velikost too5GB s časem toolive 1 minuta:
 
 ```javascript
 var topicOptions = {
@@ -101,21 +101,21 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>Filtry
-Volitelné filtrování operace lze použít pro operace provedené pomocí **ServiceBusService**. Filtrování operací může zahrnovat protokolování, automatickým opakovaným pokusem o atd. Filtry jsou objekty, které implementovat metodu s podpisem:
+Volitelné filtrování operace může být použité toooperations provádí pomocí **ServiceBusService**. Filtrování operací může zahrnovat protokolování, automatickým opakovaným pokusem o atd. Filtry jsou objekty, které implementovat metodu podpisem hello:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Po provedení předzpracování na žádost o možnostech, volá metodu `next`, předání zpětné volání podpisem následující:
+Po provedení předzpracování na možnosti hello požadavku, hello volání metod `next`, předání zpětné volání s hello následující podpis:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-V této zpětného volání a po zpracování `returnObject` (odpověď z požadavku na serveru), zpětné volání musí vyvolat další, pokud existuje pokračovat ve zpracovávání ostatní filtry nebo vyvolat `finalCallback` , jinak hodnota na konec volání služby.
+V této zpětného volání a po zpracování hello `returnObject` (hello odpovědi ze serveru toohello požadavek hello), zpětné volání hello musí tooeither vyvolat další, pokud existuje toocontinue zpracování ostatní filtry nebo vyvolat `finalCallback` , jinak hodnota tooend hello volání služby.
 
-Dva filtry, které implementují logiku opakovaných pokusů, které jsou součástí sady Azure SDK pro Node.js, **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Vytvoří následující **ServiceBusService** objekt, který používá **ExponentialRetryPolicyFilter**:
+Dva filtry, které implementují logiku opakovaných pokusů, které jsou součástí hello Azure SDK pro Node.js, **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. vytvoří následující Hello **ServiceBusService** objekt, který používá hello **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -123,15 +123,15 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="create-subscriptions"></a>Vytvořte odběr
-Odběry témat taky jsou vytvořeny pomocí **ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, které omezují výběr zpráv doručených do virtuální fronty odběru.
+Odběry témat taky jsou vytvořeny pomocí hello **ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, které omezuje hello sadu zpráv doručených virtuální fronty odběru toohello.
 
 > [!NOTE]
-> Odběry jsou trvalé a bude dál existovat, dokud buď jejich nebo tématu jsou spojeny s, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, musí nejprve zkontrolujte, zda předplatné už existuje s použitím `getSubscription` metoda.
+> Odběry jsou trvalé a bude pokračovat tooexist, dokud nebudou buď jejich nebo hello téma jejich jsou přidruženy, budou odstraněny. Pokud vaše aplikace obsahuje logiku toocreate předplatné, musí nejprve zkontrolujte, zda hello předplatné už existuje s použitím `getSubscription` metoda.
 >
 >
 
-### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
-Filtr **MatchAll** je výchozí filtr, který se použije v případě, že při vytváření nového odběru nezadáte žádný filtr. Když **MatchAll** filtr se používá, všechny zprávy publikované do tématu jsou umístěny do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem "AllMessages" a používá výchozí **MatchAll** filtru.
+### <a name="create-a-subscription-with-hello-default-matchall-filter"></a>Vytvoření odběru s filtrem (MatchAll) výchozí hello
+Hello **MatchAll** filtr je hello výchozí filtr, který se používá v případě, že při vytvoření nového předplatného je zadán žádný filtr. Když hello **MatchAll** filtr se používá, všechny zprávy publikované toohello tématu ukládány do virtuální fronty odběru. Hello následující příklad vytvoří odběr s názvem "AllMessages" a používá hello výchozí **MatchAll** filtru.
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -142,18 +142,18 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Vytvoření odběru s filtry
-Můžete taky vytvořit filtry, které umožňují, že jste do oboru, který zprávy odeslané do tématu by měla objeví v konkrétním odběru tématu.
+Můžete taky vytvořit filtry, které vám umožňují tooscope příjem zpráv odeslaných tooa tématu by měla objeví v konkrétním odběru tématu.
 
-Nejflexibilnější filtr, který odběry podporují je **SqlFilter**, který implementuje je podmnožinou SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další podrobnosti o výrazy, které lze použít s filtrem SQL, projděte si [SqlFilter.SqlExpression] [ SqlFilter.SqlExpression] syntaxe.
+je technologie Hello nejflexibilnější filtr, který odběry podporují **SqlFilter**, který implementuje je podmnožinou SQL92. Filtry SQL pracují hello vlastnosti hello zpráv, které jsou publikované toohello tématu. Další podrobnosti o hello výrazy, které lze použít s filtrem SQL, projděte si hello [SqlFilter.SqlExpression] [ SqlFilter.SqlExpression] syntaxe.
 
-Filtry lze přidat na předplatné s použitím `createRule` metodu **ServiceBusService** objektu. Tato metoda umožňuje přidat nové filtry k existujícímu předplatnému.
+Filtry lze přidat předplatné tooa pomocí hello `createRule` metoda hello **ServiceBusService** objektu. Tato metoda umožňuje přidat nové předplatné tooan existující filtry.
 
 > [!NOTE]
-> Protože výchozí filtr je automaticky použita pro všechny nové odběry, je nutno nejprve odstranit výchozí filtr nebo **MatchAll** přepíše ostatní filtry, můžete určit. Výchozí pravidla můžete odebrat pomocí `deleteRule` metodu **ServiceBusService** objektu.
+> Protože se automaticky použije výchozí filtr hello tooall nových předplatných, je nutné nejprve odebrat hello výchozí filtr nebo **MatchAll** přepíše ostatní filtry, můžete určit. Hello výchozí pravidla můžete odebrat pomocí hello `deleteRule` metodu **ServiceBusService** objektu.
 >
 >
 
-Následující příklad vytvoří odběr s názvem `HighMessages` s **SqlFilter** který vybere jen zprávy, které mají vlastní `messagenumber` vlastnost větší než 3:
+Hello následující příklad vytvoří odběr s názvem `HighMessages` s **SqlFilter** který vybere jen zprávy, které mají vlastní `messagenumber` vlastnost větší než 3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -188,7 +188,7 @@ var rule={
 }
 ```
 
-Podobně platí, tento příklad vytvoří odběr s názvem `LowMessages` s **SqlFilter** který vybere jen zprávy, které mají `messagenumber` vlastnost menší než nebo rovna na 3:
+Podobně hello následující příklad vytvoří odběr s názvem `LowMessages` s **SqlFilter** který vybere jen zprávy, které mají `messagenumber` vlastnost menší než nebo rovna too3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -223,14 +223,14 @@ var rule={
 }
 ```
 
-Když je nyní odeslána zpráva `MyTopic`, budou doručeny vždy příjemci `AllMessages` odběr tématu a selektivně příjemcům přihlásit k odběru `HighMessages` a `LowMessages` (odběry tématu v závislosti na obsahu zprávy).
+Když je nyní odeslána zpráva příliš`MyTopic`, bude vždy doručit do příjemci toohello `AllMessages` odběr tématu a odběru selektivně tooreceivers toohello `HighMessages` a `LowMessages` odběry témat (v závislosti na obsahu zprávy hello).
 
-## <a name="how-to-send-messages-to-a-topic"></a>Odesílání zpráv do tématu
-K odeslání zprávy do tématu Service Bus, musí vaše aplikace používat `sendTopicMessage` metodu **ServiceBusService** objektu.
-Zprávy odeslané do témat Service Bus jsou **BrokeredMessage** objekty.
-**BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník používaný pro udržení vlastních vlastností specifické pro aplikaci a obsah řetězec dat. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `sendTopicMessage` a potřebné standardní vlastnosti vyplní výchozí hodnoty.
+## <a name="how-toosend-messages-tooa-topic"></a>Jak toosend zprávy tooa tématu
+toosend tématu Service Bus zprávu tooa, musí vaše aplikace používat `sendTopicMessage` metoda hello **ServiceBusService** objektu.
+Témata sběrnice tooService jsou odesílány zprávy **BrokeredMessage** objekty.
+**BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník, který je použité toohold vlastní vlastnosti specifické pro aplikace a tělo dat řetězce. Aplikace může nastavit hello textu hello zprávy pomocí předání řetězcovou hodnotu hello `sendTopicMessage` a potřebné standardní vlastnosti vyplní výchozí hodnoty.
 
-Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `MyTopic`. Všimněte si, že `messagenumber` hodnota vlastnosti každé zprávy se liší na iteraci smyčky (to určí, které odběry ji přijmou):
+Hello následující příklad ukazuje, jak toosend pět zkušebních zpráv do `MyTopic`. Všimněte si, že hello `messagenumber` hodnotu vlastnosti každé zprávy se liší na hello iteraci smyčky hello (to určí, které odběry ji přijmou):
 
 ```javascript
 var message = {
@@ -251,17 +251,17 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených v tématu není omezený, ale celková velikost zpráv držených v tématu omezená je. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
+Témata Service Bus podporují maximální velikost zprávy 256 kB v hello [úrovně Standard](service-bus-premium-messaging.md) a 1 MB hello [úroveň Premium](service-bus-premium-messaging.md). Hello hlavičky, která zahrnuje hello standard a vlastnosti vlastní aplikace, může mít maximální velikost 64 KB. Neexistuje žádné omezení na hello počet zpráv držených v tématu, ale není na hello celková velikost hello zpráv držených v tématu. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
-Přijímání zpráv z odběru pomocí `receiveSubscriptionMessage` metodu **ServiceBusService** objektu. Ve výchozím nastavení jsou odstraněny zprávy z odběru jsou pro čtení; ale můžete číst (funkce Náhled) a uzamčení zpráva bez odstranění z předplatného nastavením volitelný parametr `isPeekLock` k **true**.
+Přijímání zpráv z odběru pomocí `receiveSubscriptionMessage` metodu hello **ServiceBusService** objektu. Ve výchozím nastavení jsou odstraněny zprávy z předplatného hello jsou pro čtení; ale můžete číst (funkce Náhled) a uzamčení uvítací zprávu bez odstranění z předplatného hello podle nastavení volitelný parametr hello `isPeekLock` příliš**true**.
 
-Výchozí chování pro čtení a odstranění zprávy v rámci operace příjmu je nejjednodušší model a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když se aplikace restartuje a začne znovu přijímat zprávy, ji budou neuskutečnily zprávu, která se spotřebovala před havárii.
+výchozí chování Hello čtení a odstraňování uvítací zprávu jako součást operace příjmu je nejjednodušší model hello a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat hello události selhání se zpráva nezpracuje. toounderstand, vezměte v úvahu scénář, ve kterém hello problémy příjemce přijímání požadavků a pak dojde k chybě před zpracováním ho. Protože Service Bus bude označena hello zprávu jako spotřebovávanou, pak když aplikace hello restartuje a začne znovu přijímat zprávy, ji budou neuskutečnily uvítací zprávu, která byla spotřebované předchozí toohello havárií.
 
-Pokud `isPeekLock` parametr je nastaven na **true**, receive stane dvoufázového operaci, která umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace.
-Když aplikace dokončí zpracování zprávy (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze přijetí volání **deleteMessage** metoda a poskytující zprávu odstranit jako parametr. **DeleteMessage** metoda bude označí zprávu jako spotřebovávanou a odebrat ji z odběru.
+Pokud hello `isPeekLock` parametr je nastaven příliš**true**, přijímat hello stane dvoufázového operace, takže je možné toosupport aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde hello další zprávy toobe využívat, uzamkne ji tooprevent jinými spotřebiteli a vrátí ji toohello aplikace.
+Po hello aplikace dokončí zpracování zprávy hello (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze přijetí hello volání **deleteMessage** metoda a poskytování toobe zpráv Odstranit jako parametr. Hello **deleteMessage** metoda bude označit uvítací zprávu jako spotřebovávanou a jeho odebrání ze hello předplatného.
 
-Následující příklad ukazuje, jak můžete obdržet zprávy a zpracování pomocí `receiveSubscriptionMessage`. V příkladu nejprve obdrží a odstraní zprávu z předplatného 'LowMessages' a potom pomocí předplatného 'HighMessages' přijme zprávu o `isPeekLock` nastaven na hodnotu true. Pak odstraní zprávu pomocí `deleteMessage`:
+Hello následující příklad ukazuje, jak můžete obdržet zprávy a zpracování pomocí `receiveSubscriptionMessage`. Hello příklad nejprve obdrží a odstraní zprávu z hello 'LowMessages' předplatného a pak obdrží zprávu z hello 'HighMessages' předplatnému pomocí `isPeekLock` nastavit tootrue. Pak odstraní hello zprávu pomocí `deleteMessage`:
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -284,16 +284,16 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 });
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může zavolat `unlockMessage` metodu **ServiceBusService** objektu. To způsobí, že Service Bus zprávu odemkne v odběru a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>Jak toohandle aplikace spadne a nečitelných zpráv
+Service Bus poskytuje funkce toohelp, který elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nemůže tooprocess hello zprávy z nějakého důvodu a potom ji můžete volat hello `unlockMessage` metodu **ServiceBusService** objektu. To bude způsobit toounlock sběrnice zpráv v rámci předplatného hello a nastavit jej jako dostupné toobe přijetí, buď pomocí hello stejné využívání aplikací nebo jinou spotřebitelskou aplikací.
 
-Je také vypršení časového limitu zpráva uzamčená v odběru, a pokud se nepodaří aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak Service Bus zprávu automaticky odemkne a ji zpřístupní k přijetí.
+Je také vypršení časového limitu zpráva uzamčená v odběru, a pokud aplikace hello selže tooprocess uvítací zprávu před hello zámku vyprší časový limit (například pokud hello aplikace spadne), pak uvítací zprávu odemkne Service Bus automaticky a je k dispozici toobe přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, pak zpráva bude vysláním do aplikace odešle znovu. To se často označuje jako *zpracování nejméně jednou*, který je každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát stejnou zprávu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **MessageId** vlastnosti zprávy, která zůstane konstantní mezi pokusy o doručení.
+V hello událost, která hello aplikace spadne po zpracování uvítací zprávu, ale před hello `deleteMessage` metoda je volána, pak uvítací zprávu bude víckrát toohello aplikace odešle znovu. To se často označuje jako *zpracování nejméně jednou*, který je každá zpráva se zpracuje alespoň jednou, ale v určitých situacích hello může doručit víckrát. Pokud hello scénář nemůže tolerovat zpracování duplicitní, měli vývojáři aplikace přidat další logiku tootheir aplikace toohandle víckrát doručené zprávy. To se často opírá **MessageId** vlastnost hello zprávy, která zůstane konstantní mezi pokusy o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry jsou trvalé a musí být explicitně odstranit buď prostřednictvím [portál Azure] [ Azure portal] nebo prostřednictvím kódu programu.
-Následující příklad ukazuje, jak odstranit téma s názvem `MyTopic`:
+Témata a odběry jsou trvalé a musí být explicitně odstranit buď prostřednictvím hello [portál Azure] [ Azure portal] nebo prostřednictvím kódu programu.
+Hello následující příklad ukazuje, jak s názvem toodelete hello tématu `MyTopic`:
 
 ```javascript
 serviceBusService.deleteTopic('MyTopic', function (error) {
@@ -303,7 +303,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-Odstraní téma také odstraní všechny odběry registrované k tomuto tématu. Odběry se taky dají odstranit samostatně. Následující příklad ukazuje, jak odstranit odběr s názvem `HighMessages` z `MyTopic` tématu:
+Odstraní téma také odstraní všechny odběry, které jsou registrovány hello tématu. Odběry se taky dají odstranit samostatně. Následující příklad ukazuje, jak toodelete předplatné s názvem `HighMessages` z hello `MyTopic` tématu:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -314,11 +314,11 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy témat sběrnice Service Bus, postupujte podle následujících odkazech na další informace.
+Teď, když jste se naučili základy hello témat Service Bus, postupujte podle těchto odkazů toolearn Další.
 
 * V tématu [fronty, témata a odběry][Queues, topics, and subscriptions].
 * Reference k rozhraní API pro [SqlFilter][SqlFilter]
-* Přejděte [Azure SDK pro uzel] [ Azure SDK for Node] úložišti na Githubu.
+* Navštivte hello [Azure SDK pro uzel] [ Azure SDK for Node] úložišti na Githubu.
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
@@ -326,6 +326,6 @@ Teď, když jste se naučili základy témat sběrnice Service Bus, postupujte p
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[vytvoření a nasazení aplikace Node.js na webovou stránku Azure]: ../app-service-web/app-service-web-get-started-nodejs.md
+[vytvořit a nasadit tooan aplikace Node.js webu Azure]: ../app-service-web/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md

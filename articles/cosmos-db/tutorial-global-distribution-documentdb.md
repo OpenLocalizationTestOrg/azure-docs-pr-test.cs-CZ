@@ -1,6 +1,6 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro rozhraní API DocumentDB | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API pro DocumentDB."
+title: "kurz globální distribuční aaaAzure Cosmos DB pro rozhraní API DocumentDB | Microsoft Docs"
+description: "Zjistěte, jak pomocí globální distribuční databázi Cosmos Azure toosetup hello DocumentDB rozhraní API."
 services: cosmos-db
 keywords: "globální distribuční, documentdb"
 documentationcenter: 
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: f4d8efe9814bd28bb902567a23b541bc9b5414a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a1d5f01faa62407fbbc9c078ef4a9589a1a29219
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-documentdb-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API DocumentDB
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-documentdb-api"></a>Jak toosetup Azure Cosmos DB globální distribuční pomocí rozhraní API DocumentDB hello
 
-V tomto článku jsme ukazují, jak nastavit globální distribuční databázi Cosmos Azure a potom se připojte pomocí rozhraní API DocumentDB pomocí portálu Azure.
+V tomto článku ukážeme, jak toouse hello Azure portálu toosetup globální distribuční databázi Cosmos Azure a potom se připojte pomocí hello DocumentDB rozhraní API.
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá hello následující úlohy: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí [DocumentDB rozhraní API](documentdb-introduction.md)
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello [DocumentDB rozhraní API](documentdb-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-documentdb-api"></a>Připojování k upřednostňovaná oblast pomocí rozhraní API DocumentDB
+## <a name="connecting-tooa-preferred-region-using-hello-documentdb-api"></a>Připojení tooa upřednostňovaná oblast pomocí hello DocumentDB rozhraní API
 
-Aby bylo možné využít výhod [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat seznam seřazený předvoleb oblastí se používá k provádění operací dokumentu. Tento krok můžete provést nastavením zásad pro připojení. Na základě konfigurace účtu Azure Cosmos DB, aktuální místní dostupnosti a seznamu předvoleb zadaný, optimální koncového bodu, bude použita volba DocumentDB SDK k provedení operace zápisu a operace čtení.
+V pořadí tootake výhody [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat hello seřazené předvoleb seznam oblastí toobe použít tooperform dokumentu operace. Tento krok můžete provést nastavením zásad pro připojení hello. V závislosti na konfiguraci účtu Azure Cosmos DB hello aktuální místní dostupnosti a seznamu předvoleb hello zadat, hello většina optimální koncového bodu, bude použita volba hello DocumentDB SDK tooperform zápisu a operace čtení.
 
-Tento seznam předvoleb je zadána při inicializaci připojení pomocí DocumentDB SDK. Sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
+Tento seznam předvoleb je zadána při inicializaci připojení pomocí hello DocumentDB SDK. Hello sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
 
-Sada SDK automaticky odesílat všechny zápisy na aktuální zápisu oblast.
+Hello SDK automaticky odesílat všechny zápisy toohello aktuální zápisu oblasti.
 
-Všechny operace čtení odešle první oblasti k dispozici v seznamu PreferredLocations. Pokud se požadavek nezdaří, klient se nezdaří dolů v seznamu další oblasti a tak dále.
+Všechny operace čtení odešle první dostupné oblasti toohello v seznamu PreferredLocations hello. Pokud hello požadavek selže, hello klienta se nezdaří dolů hello seznamu toohello další oblasti a tak dále.
 
-Sady SDK se pouze pokusí číst z oblastí, zadaný v PreferredLocations. Ano například pokud databázový účet je k dispozici v tři oblasti, ale klient pouze určuje pro PreferredLocations dvou oblastí bez zápisu, pak žádný čtení se zpracuje mimo oblast zápisu, i v případě převzetí služeb při selhání.
+Hello sady SDK se pouze pokusí tooread z oblastí hello zadaný v PreferredLocations. Ano například pokud hello databázového účtu je k dispozici v tři oblasti, ale hello klienta pouze určuje pro PreferredLocations dvou oblastí bez zápisu hello, pak žádný čtení se zpracuje mimo oblast hello zápisu, i v případě hello převzetí služeb při selhání.
 
-Aplikace můžete ověřit aktuální koncový bod zápisu a čtení koncový bod vybrali SDK kontrolou dvě vlastnosti WriteEndpoint a ReadEndpoint dostupné ve verzi sady SDK 1.8 a výše.
+aplikace Hello můžete ověřte hello aktuální koncový bod zápisu a čtení koncový bod zvolí hello SDK pomocí kontrola dvě vlastnosti WriteEndpoint a ReadEndpoint, k dispozici ve verzi sady SDK 1.8 a vyšší.
 
-Pokud není nastavena vlastnost PreferredLocations, bude z oblasti aktuální zápisu zpracovat všechny požadavky.
+Pokud není nastavena vlastnost PreferredLocations hello, bude z aktuální oblasti zápisu hello zpracovat všechny požadavky.
 
 ## <a name="net-sdk"></a>.NET SDK
-Sady SDK můžete použít beze změn kódu. V takovém případě sady SDK automaticky přesměruje obě operace čtení a zapíše do aktuální oblasti zápisu.
+Hello SDK můžete použít beze změn kódu. V takovém případě hello SDK automaticky přesměruje obě operace čtení a zapíše toohello aktuální zápisu oblasti.
 
-Ve verzi 1,8 a později sady .NET SDK ConnectionPolicy parametr pro konstruktor DocumentClient má vlastnost s názvem Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu kolekce `<string>` a musí obsahovat seznam názvů oblast. Řetězcové hodnoty jsou formátovány na sloupci Název oblasti na [oblasti Azure] [ regions] stránky, bez mezer před nebo po první a poslední znak v uvedeném pořadí.
+Ve verzi 1,8 a novější. hello .NET SDK hello ConnectionPolicy parametr pro konstruktor DocumentClient hello má vlastnost s názvem Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu kolekce `<string>` a musí obsahovat seznam názvů oblast. Hello řetězcové hodnoty jsou formátovány každý sloupec název oblasti hello na hello [oblasti Azure] [ regions] stránky, bez mezer před nebo po hello první a poslední znak v uvedeném pořadí.
 
-V uvedeném pořadí jsou k dispozici v DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint aktuální zápisu a čtení koncové body.
+Hello aktuální zápisu a čtení koncové body k dispozici v DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint v uvedeném pořadí.
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Sada SDK zpracovává tuto změnu automaticky.
+> Hello adresy URL pro koncové body hello by se neměla považovat jako dlohotrvající konstanty. Služba Hello může aktualizovat tyto v libovolném bodě. Tato změna zpracovává Hello SDK automaticky.
 >
 >
 
@@ -81,44 +81,44 @@ DocumentClient docClient = new DocumentClient(
     accountKey,
     connectionPolicy);
 
-// connect to DocDB
+// connect tooDocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
 ## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript a Python SDK
-Sady SDK můžete použít beze změn kódu. V takovém případě sada SDK bude automaticky přímé čtení i zápisy na aktuální zápisu oblast.
+Hello SDK můžete použít beze změn kódu. V takovém případě hello SDK bude automaticky nasměrovat jak čte a zapisuje toohello aktuální zápisu oblasti.
 
-Ve verzi 1,8 a novější každý SDK ConnectionPolicy parametr pro konstruktor DocumentClient novou vlastnost s názvem DocumentClient.ConnectionPolicy.PreferredLocations. To je parametr pole řetězců, která přebírá seznam názvů oblast. Názvy jsou formátovány za ve sloupci Název oblasti [oblasti Azure] [ regions] stránky. Také můžete použít předdefinované konstanty v objektu pohodlí AzureDocuments.Regions
+V verze 1,8 a později každý SDK hello ConnectionPolicy parametr pro konstruktor DocumentClient hello novou vlastnost s názvem DocumentClient.ConnectionPolicy.PreferredLocations. To je parametr pole řetězců, která přebírá seznam názvů oblast. názvy Hello jsou formátovány za hello oblast název sloupce v hello [oblasti Azure] [ regions] stránky. Můžete použít také hello předdefinované konstanty v objektu pohodlí hello AzureDocuments.Regions
 
-V uvedeném pořadí jsou k dispozici v DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint aktuální zápisu a čtení koncové body.
+Hello aktuální zápisu a čtení koncové body k dispozici v DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint v uvedeném pořadí.
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Tato změna bude zpracována sady SDK automaticky.
+> Hello adresy URL pro koncové body hello by se neměla považovat jako dlohotrvající konstanty. Služba Hello může aktualizovat tyto v libovolném bodě. Tato změna bude zpracována Hello SDK automaticky.
 >
 >
 
-Níže je příklad kódu pro NodeJS/Javascript. Python a Java bude postupují stejným způsobem.
+Níže je příklad kódu pro NodeJS/Javascript. Python a Java bude postupovat podle hello stejného vzoru.
 
 ```java
 // Creating a ConnectionPolicy object
 var connectionPolicy = new DocumentBase.ConnectionPolicy();
 
-// Setting read region selection preference, in the following order -
+// Setting read region selection preference, in hello following order -
 // 1 - West US
 // 2 - East US
 // 3 - North Europe
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 
-// initialize the connection
+// initialize hello connection
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
 ## <a name="rest"></a>REST
-Jakmile se databázový účet má k dispozici v několika oblastech, klienti mohou odesílat dotazy jeho dostupnost provedením požadavek GET na následující identifikátor URI.
+Jakmile se databázový účet má k dispozici v několika oblastech, klienti mohou odesílat dotazy jeho dostupnost provedením požadavek GET na hello následující identifikátor URI.
 
     https://{databaseaccount}.documents.azure.com/
 
-Služba, vrátí se seznam oblastí a jejich odpovídající Azure Cosmos DB koncový bod identifikátory URI pro repliky. Aktuální oblasti zápisu budou uvedené v odpovědi. Klienta můžete pak vybrat příslušný koncový bod pro všechny další požadavky REST API následujícím způsobem.
+Hello služby, vrátí se seznam oblastí a jejich odpovídající endpoint Azure Cosmos DB identifikátory URI pro repliky hello. aktuální oblast zápisu Hello budou uvedené v odpovědi hello. Hello klienta můžete pak vybrat hello příslušný koncový bod pro všechny další požadavky REST API následujícím způsobem.
 
 Příklad odpovědi
 
@@ -153,27 +153,27 @@ Příklad odpovědi
     }
 
 
-* Požadavky PUT, POST a DELETE musí přejít do uvedeného zápisu identifikátoru URI
-* Získá všechny a ostatních jen pro čtení požadavků (například dotazy) může přejděte na libovolný koncový bod podle svého výběru
+* Požadavky PUT, POST a DELETE musí přejít toohello uvedené zápisu identifikátoru URI
+* Získá všechny a ostatních jen pro čtení požadavků (například dotazy) může se stát, koncový bod tooany výběru hello klienta
 
-Zápis, požadavky na jen pro čtení oblasti selže s kódem chyby protokolu HTTP 403 "(zakázáno).
+Zapisovat pouze tooread oblasti požadavky selže s kódem chyby protokolu HTTP 403 "(zakázáno).
 
-Pokud oblasti zápisu změn po počáteční zjišťování fáze klienta, následné zápisy do oblasti předchozí zápis selže s kódem chyby protokolu HTTP 403 "(zakázáno). Klient pak měli získat seznam oblastí znovu k získání oblasti aktualizované zápisu.
+Pokud oblast zápisu hello změní po zapíše hello klienta počáteční zjišťování fázi následné toohello předchozí zápisu oblast selže s kódem chyby protokolu HTTP 403 "(zakázáno). Hello Klient by pak získat hello seznam oblastí znovu tooget hello aktualizované zápisu oblast.
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+Je to, že dokončení tohoto kurzu. Další informace jak toomanage hello konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí rozhraní API DocumentDB
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello DocumentDB rozhraní API
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak vyvíjet místně pomocí emulátoru místního Azure Cosmos DB.
+Nyní můžete přejít toohello další kurz toolearn jak hello toodevelop místně pomocí emulátoru místního Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj místně pomocí emulátoru](local-emulator.md)
+> [Vývoj místně pomocí emulátoru hello](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

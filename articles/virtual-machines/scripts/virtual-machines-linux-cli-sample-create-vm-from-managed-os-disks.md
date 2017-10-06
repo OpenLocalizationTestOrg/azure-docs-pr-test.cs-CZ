@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI skriptu ukázkové – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému | Microsoft Docs"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému | Microsoft Docs"
 description: "Azure CLI skriptu ukázkové – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 18eefee869b243b35d4426c226eff5f48cd490a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 71fc5c6a577c64b913cfa35e99b2b9b75dea0c31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Vytvoření virtuálního počítače existující spravované disk operačního systému pomocí rozhraní příkazového řádku
 
@@ -35,11 +35,11 @@ Tento skript vytvoří virtuální počítač připojením existující spravova
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "vytvoření virtuálního počítače ze spravovaných disků")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "Create VM from a managed disk")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spusťte následující příkaz tooremove hello prostředků skupiny virtuálních počítačů a všechny související prostředky hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -47,14 +47,14 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy získat vlastnosti spravovaných disků, připojte spravovaných disků na nový virtuální počítač a vytvoření virtuálního počítače. Každou položku v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující vlastnosti disku tooget spravovat příkazů, připojte tooa spravovaných disků na nový virtuální počítač a vytvoření virtuálního počítače. Každou položku v tabulce hello propojí toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Zobrazit az disku](https://docs.microsoft.com/cli/azure/disk#show) | Vlastnosti spravovaných disků na získá pomocí název disku a název skupiny prostředků. Vlastnost ID se používá k připojení se spravovaným diskem k vytvoření nového virtuálního počítače |
+| [Zobrazit az disku](https://docs.microsoft.com/cli/azure/disk#show) | Vlastnosti spravovaných disků na získá pomocí název disku a název skupiny prostředků. Vlastnost ID je použité tooattach tooa spravovaných disků na nový virtuální počítač |
 | [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#create) | Vytvoří virtuálního počítače pomocí spravovaného disk operačního systému |
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v hello [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

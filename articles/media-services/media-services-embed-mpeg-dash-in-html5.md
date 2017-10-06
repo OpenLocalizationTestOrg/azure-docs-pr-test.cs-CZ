@@ -1,6 +1,6 @@
 ---
-title: "Vložení do aplikace HTML5 s DASH.js Video adaptivní streamování MPEG-DASH | Microsoft Docs"
-description: "Toto téma ukazuje, jak pro vložení do aplikace HTML5 s DASH.js Video adaptivní streamování MPEG-DASH."
+title: "aaaEmbedding MPEG-DASH adaptivní streamování videa v aplikaci HTML5 s DASH.js | Microsoft Docs"
+description: "Toto téma ukazuje, jak tooembed MPEG-DASH adaptivní streamování videa v aplikaci s DASH.js HTML5."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a73713d20f95262654532b94576ae9669d829354
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení do aplikace HTML5 s DASH.js Video adaptivní streamování MPEG-DASH
 ## <a name="overview"></a>Přehled
-MPEG-DASH je standard ISO pro adaptivní streamování videa obsah, který nabízí významné výhody pro ty, kteří chtějí poskytování vysoce kvalitních, adaptivní video streamování výstup. S MPEG-DASH bude datový proud videa automaticky vyřadit nižší definice stane zahlcení sítě. Tím se snižuje pravděpodobnost, že v prohlížeči zobrazuje "pozastavený" video při přehrávač stáhne další několik sekund přehrávání (neboli ukládání do vyrovnávací paměti). Jako zahlcení sítě snižuje, přehrávání videa pak vrátí datový proud s vyšší kvality. Tato schopnost přizpůsobit se šířky pásma požadované výsledkem také rychlejší čas spuštění videa. To znamená, že první několik sekund můžete přehrávají v segment fast stažení nižší kvality a potom krok až vyšší jednou dostatečný obsah kvality má byla uložená do vyrovnávací paměti.
+MPEG-DASH je standard ISO pro adaptivní streamování videa obsahu, který nabízí významné výhody pro osoby, které chcete toodeliver vysoce kvalitní, adaptivní video streamování výstup hello. S MPEG-DASH bude datový proud videa hello automaticky vyřadit nižší definice tooa, stane se zahlcení sítě hello. Tím se snižuje pravděpodobnost hello hello prohlížeče zobrazuje "pozastavený" video při hello player stáhne hello vedle několik sekund tooplay (neboli ukládání do vyrovnávací paměti). Jako zahlcení sítě snižuje, přehrávání videa hello pak vrátí tooa vyšší kvality datového proudu. Tato možnost tooadapt hello šířky pásma požadované výsledkem také rychlejší čas spuštění videa. Znamená, že hello první několik sekund lze přehrávat v segment fast stažení nižší kvality a pak postupujte nahoru vyšší kvality tooa po dostatečná obsah má byla uložená do vyrovnávací paměti.
 
-Dash.js je otevřeným zdrojem MPEG-DASH přehrávání videa napsané v jazyce JavaScript. Jeho cílem je zajistit přehrávač robustní, a platformy, které můžete volně opakovaně použít v aplikacích, které vyžadují přehrávání videa. Poskytuje MPEG-DASH přehrávání v žádný prohlížeč, který podporuje dnes W3C média zdrojového rozšíření (MSE), je Chrome, Microsoft Edge a IE11 (dalších prohlížečích označili jejich záměr pro podporu MSE). Další informace o DASH.js js, najdete v části dash.js úložiště GitHub.
+Dash.js je otevřeným zdrojem MPEG-DASH přehrávání videa napsané v jazyce JavaScript. Jeho cílem je tooprovide přehrávač robustní, a platformy, které můžete volně opakovaně použít v aplikacích, které vyžadují přehrávání videa. Poskytuje MPEG-DASH přehrávání v žádný prohlížeč, který podporuje hello W3C média zdrojového rozšíření (MSE), který ještě dnes je Chrome, Microsoft Edge a IE11 (dalších prohlížečích označili jejich záměrné toosupport MSE). Další informace o DASH.js js, najdete v části úložiště dash.js hello GitHub.
 
 ## <a name="creating-a-browser-based-streaming-video-player"></a>Vytváření založené na prohlížeči streamování videa přehrávač
-K vytvoření jednoduché webové stránky, která zobrazuje přehrávání videa s očekávané řídí takové a play, pozastavení, rewind atd., budete muset:
+toocreate jednoduché webové stránky, která zobrazuje přehrávání videa s hello očekává řídí takové a play, pozastavení, rewind atd., budete muset:
 
 1. Vytvoření stránky HTML
-2. Přidat video značky
-3. Přidat dash.js player
-4. Inicializace player
+2. Přidání značka video hello
+3. Přidat hello dash.js player
+4. Inicializace hello player
 5. Přidat některé stylu CSS
-6. Zobrazit výsledky v prohlížeči, který implementuje MSE
+6. Zobrazení výsledků hello v prohlížeči, který implementuje MSE
 
-Inicializace přehrávač může dokončit jenom pár řádků kódu JavaScript. Pomocí dash.js, ve skutečnosti je to jednoduché vložit video MPEG-DASH do aplikací využívajících prohlížeč.
+Inicializace hello player může dokončit jenom pár řádků kódu JavaScript. Pomocí dash.js, ve skutečnosti je jednoduchý tooembed MPEG-DASH videa v aplikací využívajících prohlížeč.
 
-## <a name="creating-the-html-page"></a>Vytvoření stránky HTML
-Prvním krokem je vytvoření standardní stránku HTML obsahující **video** elementu, uložte tento soubor jako basicPlayer.html jako následující příklad znázorňuje:
+## <a name="creating-hello-html-page"></a>Vytváření hello stránky HTML
+prvním krokem Hello je stránka toocreate standardní HTML obsahující hello **video** elementu, uložte tento soubor jako basicPlayer.html jako hello následující příklad znázorňuje:
 
     <!DOCTYPE html>
     <html>
@@ -50,19 +50,19 @@ Prvním krokem je vytvoření standardní stránku HTML obsahující **video** e
       </body>
     </html>
 
-## <a name="adding-the-dashjs-player"></a>Přidání DASH.js Player
-Pokud chcete přidat odkaz na implementaci dash.js do aplikace, budete muset získat soubor dash.all.js z verzi 1.0 dash.js projektu. To má být uložen ve složce JavaScript vaší aplikace. Tento soubor je soubor pohodlí, který vrátí všechny nezbytné dash.js kód do jediného souboru. Pokud máte podívejte kolem dash.js úložiště, bude najít jednotlivých souborů, testování kódu a mnoho dalšího, ale pokud všechny chcete je použít dash.js a pak soubor dash.all.js je, co potřebujete.
+## <a name="adding-hello-dashjs-player"></a>Přidání hello DASH.js Player
+tooadd hello dash.js referenční implementace toohello aplikace, budete potřebovat soubor dash.all.js hello toograb z verze hello 1.0 dash.js projektu. To má být uložen ve složce JavaScript hello vaší aplikace. Tento soubor je soubor pohodlí, který vrátí všechny nezbytné dash.js kód hello do jediného souboru. Pokud máte podívejte kolem hello dash.js úložiště, se najde hello jednotlivé soubory, testování kódu a mnoho dalšího, ale pokud všechny budete chtít toodo je použití dash.js a pak soubor dash.all.js hello je, co potřebujete.
 
-Pokud chcete přidat dash.js player do aplikací, přidejte do části head basicPlayer.html značky script:
+tooadd hello dash.js player tooyour aplikací, přidejte skript značky toohello head oddíl basicPlayer.html:
 
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 
 
-Dál vytvořte funkci k chybě při inicializaci přehrávač při načtení stránky. Přidejte následující skript po řádek, ve kterém můžete načíst dash.all.js:
+Dále vytvořte přehrávač funkce tooinitialize hello při načtení stránky hello. Přidejte následující skript po hello řádku, ve kterém můžete načíst dash.all.js hello:
 
     <script>
-    // setup the video element and attach it to the Dash player
+    // setup hello video element and attach it toohello Dash player
     function setupVideo() {
       var url = "http://wams.edgesuite.net/media/MPTExpressionData02/BigBuckBunny_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)";
       var context = new Dash.di.DashContext();
@@ -73,17 +73,17 @@ Dál vytvořte funkci k chybě při inicializaci přehrávač při načtení str
     }
     </script>
 
-Tato funkce nejprve vytvoří DashContext. Slouží ke konfiguraci aplikace pro konkrétní běhového prostředí. Z technického hlediska definuje třídy, které rozhraní vkládání závislostí musí použít při vytváření aplikace. Ve většině případů budete používat Dash.di.DashContext.
+Tato funkce nejprve vytvoří DashContext. Toto je aplikace hello tooconfigure použitých pro konkrétní běhového prostředí. Z technického hlediska definuje hello třídy, které hello framework vkládání závislostí musí použít při vytváření aplikace hello. Ve většině případů budete používat Dash.di.DashContext.
 
-Dále vytvořte instanci primární třídu rozhraní dash.js Media Player. Tato třída obsahuje metody, jako například potřeby přehrání a pozastavit, spravuje relaci s video element a také výklad soubor média prezentace popis (MPD), který popisuje video má být přehráván základní.
+V dalším kroku doložit třídu primární hello hello dash.js prostředí, Media Player. Tato třída obsahuje hello základní metody, jako například potřeby přehrání a pozastavit, spravuje hello vztah s hello video element a také hello výklad hello soubor média prezentace popis (MPD), který popisuje přehrát video toobe hello.
 
-K zajištění, že přehrávač je připraven k přehrávání videa je volána funkce startup() třídy Media Player. Mimo jiné tato funkce zajišťuje, že všechny potřebné třídy (podle definice v kontextu) byly načteny. Jakmile přehrávač je připraven, můžete připojit video element se pomocí funkce attachView(). To umožňuje Media Player vložit do elementu datový proud videa a také řídit přehrávání podle potřeby.
+Funkce startup() Hello hello Media Player třídy se nazývá tooensure které player hello je připraven tooplay videa. Mimo jiné tato funkce zajišťuje, že všechny potřebné třídy hello (podle definice v kontextu hello) byly načteny. Jakmile hello player je připraven, můžete připojit tooit video element hello pomocí funkce attachView() hello. To umožňuje hello Media Player tooinject hello datový proud videa na hello element a také ovládat přehrávání podle potřeby.
 
-Předejte adresu URL souboru MPD Media Player tak, že o video ví, že se očekává, přehrávání. Funkce setupVideo() právě vytvořili, bude nutné provést po plně načtení stránky. To provést pomocí události při načtení textu elementu. Změna vaší <body> elementu, který chcete:
+Předat hello URL hello MPD souboru toohello Media Player tak, že ví o hello video očekává se funkce setupVideo() tooplay.hello právě vytvořili, bude nutné toobe provést po stránku hello plně načetl. To provést pomocí události při načtení hello hello textu elementu. Změna vaší <body> elementu, který chcete:
 
     <body onload="setupVideo()">
 
-Nakonec nastavte velikost element video pomocí šablon stylů CSS. V adaptivní streamování prostředí je to možnost obzvláště důležité, protože velikost přehrávání videa může změnit při přehrávání přizpůsobuje na měnící se síťové podmínky. V této ukázce jednoduché jednoduše vynuťte element video být 80 % okna prohlížeče dostupné přidáním následujících šablon stylů CSS do části head stránky:
+Nakonec nastavte velikost hello element video hello pomocí šablon stylů CSS. V prostředí adaptivní streamování totiž zvlášť důležité hello velikost hello video přehrávání může změnit při přehrávání přizpůsobuje toochanging síťové podmínky. V této ukázce jednoduché jednoduše vynuťte hello video element toobe 80 % k dispozici prohlížeč okna hello přidáním hello následující šablon stylů CSS toohello head oddílu hello stránky:
 
     <style>
     video {
@@ -93,7 +93,7 @@ Nakonec nastavte velikost element video pomocí šablon stylů CSS. V adaptivní
     </style>
 
 ## <a name="playing-a-video"></a>Přehrávání videa
-Pokud chcete přehrát video, přejděte v prohlížeči na soubor basicPlayback.html a kliknutím na tlačítko Přehrát na přehrávání videa zobrazí.
+tooplay video, přejděte v prohlížeči na hello basicPlayback.html souboru a klikněte na tlačítko Přehrát v přehrávání videa hello zobrazí.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

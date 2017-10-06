@@ -1,5 +1,5 @@
 ---
-title: "Úvod do služby Azure Cosmos DB | Dokumentace Microsoftu"
+title: aaaIntroduction tooAzure Cosmos DB | Microsoft Docs
 description: "Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržena s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost."
 services: cosmos-db
 author: mimig1
@@ -15,32 +15,32 @@ ms.topic: get-started-article
 ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f2acbe99f425b2f07a62bbbb4324aa48f1037481
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
+# <a name="welcome-tooazure-cosmos-db"></a>Vítejte tooAzure Cosmos DB
 
-Azure Cosmos DB je globálně distribuovaná databáze Microsoftu pro více modelů. Stačí kliknout na tlačítko a Azure Cosmos DB vám umožní elasticky a nezávisle škálovat propustnost a úložiště v řadě geografických oblastí Azure. Nabízí záruku propustnosti, latence, dostupnosti a konzistence s kompletními [smlouvami o úrovni služeb](https://aka.ms/acdbsla) (SLA), které někdy nenabízejí žádné jiné databázové služby.
+Azure Cosmos DB je globálně distribuovaná databáze Microsoftu pro více modelů. Díky hello kliknutím na tlačítko Azure Cosmos DB vám umožní tooelastically a nezávisle škálování propustnost a úložiště napříč libovolný počet zeměpisné oblasti Azure. Nabízí záruku propustnosti, latence, dostupnosti a konzistence s kompletními [smlouvami o úrovni služeb](https://aka.ms/acdbsla) (SLA), které někdy nenabízejí žádné jiné databázové služby.
 
 ![Azure Cosmos DB je celosvětově distribuovaná databázová služba od Microsoftu, která nabízí elastické horizontální navýšení kapacity, zaručenou nízkou latenci, pět modelů konzistence a kompletní zaručené smlouvy SLA](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Řešení, kterým služba Azure Cosmos DB přináší výhody
 
-[Garantovaná](https://azure.microsoft.com/support/legal/sla/cosmos-db/) dostupnost, vysoká propustnost, nízká latence a přizpůsobitelná konzistence ve službě Azure Cosmos DB bude výhodná pro všechny [webové, mobilní a herní aplikace a aplikace IoT](use-cases.md), které potřebují zpracovávat obrovské množství čtení a zápisů v [globálním](distribute-data-globally.md) měřítku s nízkou dobou odezvy pro různá data.
+Všechny [webové, mobilní, hry a aplikace či aplikace IoT](use-cases.md) vyžadující toohandle masivní objemy čtení a zápisy na [globální](distribute-data-globally.md) škálování s nízkou odezvy pro různá data, bude mít užitek z Azure Cosmos DB [zaručit](https://azure.microsoft.com/support/legal/sla/cosmos-db/) dostupnost, Vysoká propustnost, nízkou latenci a přizpůsobitelné konzistence.
 
 ## <a name="key-capabilities"></a>Klíčové funkce
-Azure Cosmos DB jakožto globálně distribuovaná databázová služba poskytuje následující možnosti, které pomáhají vytvářet škálovatelné aplikace s rychlou odezvou:
+Jako služba globálně distribuovanou databázi databázi Cosmos Azure poskytuje následující možnosti toohelp vytvářet škálovatelné a vysoce přizpůsobivém aplikace hello:
 
 * **Globální distribuce na klíč**
-    * Můžete [distribuovat data](distribute-data-globally.md) do libovolného počtu [oblastí Azure](https://azure.microsoft.com/regions/), a to [jediným kliknutím na tlačítko](tutorial-global-distribution-documentdb.md). Díky tomu můžete umístit data tam, kde jsou vaši uživatelé, a zajistit uživatelům nejnižší možnou latenci. 
-    * Pomocí rozhraní API pro vícenásobné navádění služby Azure Cosmos DB bude aplikace vždycky vědět, kde je nejbližší oblast, a požadavky bude odesílat do nejbližšího datového centra. Toto vše je možné bez změny konfigurace – nastavíte oblast zápisu a tolik oblastí čtení, kolik chcete, a o zbytek se postará služba za vás.
+    * Můžete [distribuci dat](distribute-data-globally.md) tooany počet [oblastí Azure](https://azure.microsoft.com/regions/), s hello [klikněte na tlačítka s](tutorial-global-distribution-documentdb.md). To umožňuje vám tooput vaše data, kde uživatelé jsou, zajištění hello nejnižší možnou latenci tooyour zákazníků. 
+    * Pomocí Azure Cosmos DB více funkci rozhraní API, vždy aplikace hello ví, kde je hello nejbližší oblast a odešle požadavky toohello nejbližší datového centra. Všechny tyto je možné bez změny konfigurace, nastavení vaší oblasti zápisu a mnoho pro čtení oblastech, jako má a hello zbývající bude zpracován za vás.
 
 * **Více datových modelů a oblíbená rozhraní API pro přístup k datům a dotazování na ně**
-    * Datový model založený na sekvenci záznamu atomů (ARS), na kterém je služba Azure Cosmos DB postavena, nativně podporuje více datových modelů, mimo jiné modely dokumentů, grafů, párů klíč-hodnota, tabulek a sloupcových dat.
-    * Rozhraní API pro následující datové modely jsou podporována se sadami SDK dostupnými v několika jazycích:
+    * Hello atom sekvence záznamů (ARS) na základě datový model, který Azure Cosmos DB je založený na nativně podporuje více datové modely, včetně, ale bez omezení toodocument, grafu, klíč hodnota, tabulka a sloupcovém datové modely.
+    * Rozhraní API pro hello následující datové modely jsou podporovány pomocí sady SDK k dispozici v několika jazycích:
         * [Rozhraní DocumentDB API](documentdb-introduction.md)
         * [Rozhraní MongoDB API](mongodb-introduction.md)
         * [Rozhraní Table API](table-introduction.md)
@@ -49,19 +49,19 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba poskytuj
 
 * **Elastické škálování propustnosti a úložiště na vyžádání, celosvětově**
     * Snadno škálujte propustnost databáze v přírůstcích po [sekundách](request-units.md), přičemž to můžete kdykoli změnit. 
-    * Škálujte velikost úložiště [transparentně a automaticky](partition-data.md) s ohledem na současné a budoucí požadavky na velikost.
+    * Škálování velikost úložiště [transparentně a automaticky](partition-data.md) toohandle požadavků velikost teď a navždy.
 
 * **Vytváření aplikací s rychlou odezvou a vysokou důležitostí pro chod firmy**
-    * Azure Cosmos DB zaručuje svým zákazníkům koncovou nízkou latentnost na 99. percentilu. 
-    * Pro typickou 1kB položku zaručuje služba Cosmos DB koncovou latenci čtení pod 10 ms a indexovaných zápisů pod 15 ms na 99. percentilu v rámci stejné oblasti Azure. Střední latence jsou výrazně nižší (pod 5 ms).
+    * Azure Cosmos DB zaručuje začátku do konce s nízkou latencí v hello 99th percentilu tooits zákazníků. 
+    * Pro typické 1 KB položku Cosmos DB zaručuje začátku do konce latence čtení v části 10 ms a indexované zápisy na hello 99th percentilu, v části 15 ms hello uvnitř stejné oblasti Azure. Střední latence Hello se výrazně nižší (v části 5 ms).
 
 * **Zajištění neustálé dostupnosti**
     * 99,99% dostupnost v jedné oblasti.
-    * Nasaďte je do libovolného počtu [oblastí Azure](https://azure.microsoft.com/regions) pro zajištění vyšší dostupnosti.
+    * Nasazení tooany počet [oblastí Azure](https://azure.microsoft.com/regions) vyšší dostupnosti.
     * [Simulujte selhání](regional-failover.md) jedné nebo více oblastí se zárukou nulových ztrát dat. 
 
-* **Psaní globálně distribuovaných aplikací správným způsobem**
-    * Pět [modelů konzistence](consistency-levels.md) poskytuje celé spektrum od silné konzistence podobné SQL až po konzistenci typu Případné podobné NoSQL a vše mezi tím. 
+* **Zápis globálně distribuované aplikace hello pravým způsob**
+    * Pět [konzistence modely](consistency-levels.md) modely poskytují spektrum silnou konzistenci SQL jako všechny hello konzistence typu případné způsobem jako tooNoSQL a každý věc mezi nimi. 
   
 * **Záruka vrácení peněz**
     * Data budou k dispozici rychle, jinak dostanete zpátky peníze. 
@@ -69,15 +69,15 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba poskytuj
 
 * **Není potřeba správa schématu/indexu databáze**
     * Už si nemusíte dělat starosti se zajištěním synchronizace databázového schématu a indexů ve schématu aplikace. Schéma není zapotřebí. 
-    * Databázový stroj služby Azure Cosmos DB je zcela nezávislý na schématu – automaticky indexuje všechna data, která ingestuje, bez vyžadování jakéhokoli schématu nebo indexů a zajišťuje bleskově rychlé dotazy. 
+    * Azure Cosmos DB databázový stroj je plně vázané na schéma – ji automaticky indexuje všechny údaje, které hello ingestuje bez nutnosti žádné schéma nebo indexy a slouží neuvěřitelně rychlou dotazy. 
 
 * **Nízké náklady na vlastnictví**
-    * Toto řešení je pět až desetkrát [méně nákladné](https://aka.ms/cosmos-db-tco-paper) než nespravované řešení.
+    * Pětkrát tooten [větší finanční efektivita](https://aka.ms/cosmos-db-tco-paper) než nespravované řešení.
     * Třikrát levnější než DynamoDB.
 
 ## <a name="capability-comparison"></a>Porovnání schopností
 
-Azure Cosmos DB nabízí ty nejlepší možnosti relačních a nerelačních databází.
+Azure Cosmos DB poskytuje nejlepší možnosti hello relačních a nerelačních databází.
 
 | Možnosti | Relační databáze   | Nerelační databáze (NoSQL) |    Azure Cosmos DB |
 | --- | --- | --- | --- |

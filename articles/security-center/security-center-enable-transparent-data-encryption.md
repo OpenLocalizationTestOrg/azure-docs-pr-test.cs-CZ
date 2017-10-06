@@ -1,6 +1,6 @@
 ---
-title: "Povolit transparentní šifrování dat v Azure Security Center | Microsoft Docs"
-description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit transparentní dat šifrování **."
+title: "aaaEnable transparentní šifrování dat v Azure Security Center | Microsoft Docs"
+description: "Tento dokument ukazuje, jak tooimplement hello Azure Security Center doporučení ** povolit transparentní dat šifrování **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 94c6e9a1feddaa48faac6c835d416c4d131cd5c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Povolit transparentní šifrování dat v Azure Security Center
-Azure Security Center doporučí, povolte šifrování transparentní dat (TDE) u databází SQL, pokud již není povolené šifrování TDE. Šifrování TDE chrání vaše data a pomáhá splnit požadavky na dodržování předpisů šifrováním vaší databáze, přidružených záloh a souborů protokolů transakci v klidu, bez nutnosti změny do vaší aplikace. Další informace najdete v další [transparentní šifrování dat s Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
+Azure Security Center doporučí, povolte šifrování transparentní dat (TDE) u databází SQL, pokud již není povolené šifrování TDE. Šifrování TDE chrání vaše data a pomáhá splnit požadavky na dodržování předpisů šifrováním vaší databáze, přidružených záloh a souborů protokolů transakci v klidu, bez nutnosti změny tooyour aplikace. víc najdete v části toolearn [transparentní šifrování dat s Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
 
-Toto doporučení se vztahují ke službě Azure SQL pouze; neobsahuje SQL běžících na virtuálních počítačích.
+Toto doporučení platí toohello pouze; služby Azure SQL neobsahuje SQL běžících na virtuálních počítačích.
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Není to podrobný průvodce.
+> Toto téma představuje hello služby pomocí příklad nasazení.  Není to podrobný průvodce.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementace doporučení
-1. V **doporučení** vyberte **povolit transparentní šifrování dat**.
+## <a name="implement-hello-recommendation"></a>Implementace doporučení hello
+1. V hello **doporučení** vyberte **povolit transparentní šifrování dat**.
    ![Povolení transparentního šifrování dat][1]
-2. Tím se otevře **povolit transparentní šifrování dat v databázích SQL** okno. Vyberte databázi SQL, chcete-li povolit šifrování TDE na.
-   ![Vyberte databázi SQL, povolit šifrování TDE na][2]
-3. Na **transparentní šifrování dat** vyberte **ON** pod šifrování dat a vyberte **Uložit** na pásu karet na horní části okna.
+2. Tím se otevře hello **povolit transparentní šifrování dat v databázích SQL** okno. Vyberte SQL databázi tooenable TDE na.
+   ![Vyberte databázi SQL tooenable TDE na][2]
+3. Na hello **transparentní šifrování dat** vyberte **ON** pod šifrování dat a vyberte **Uložit** nejvyšší pásu karet hello hello okna.
    ![Zapnout šifrování TDE][3]
 
-   Jakmile povolíte šifrování TDE na vybranou databázi SQL, **stav šifrování** se změní na **šifrovaný**.    
+   Jakmile je povolené šifrování TDE na hello vybrané databáze SQL, hello **stav šifrování** změní příliš**šifrovaný**.    
 
    ![Stav šifrování][4]
 
 ## <a name="see-also"></a>Viz také
-Tento článek vám ukázal, jak provést doporučení Security Center "Povolit transparentní šifrování dat." Další informace o šifrování TDE SQL, naleznete v následujících tématech:
+Tento článek ukázal, jak tooimplement hello Security Center doporučení "Povolit transparentní šifrování dat." toolearn Další informace o šifrování TDE SQL, najdete v části hello následující:
 
 * [Transparentní šifrování dat s databází Azure SQL](https://msdn.microsoft.com/library/dn948096)
 * [Začínáme s transparentní šifrování dat (TDE)](../sql-data-warehouse/sql-data-warehouse-encryption-tde.md)
 
-Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+toolearn Další informace o Security Center, najdete v části hello následující:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak tooconfigure zásady zabezpečení pro skupiny prostředků a předplatná Azure.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure a informace.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak toomonitor hello stav svých prostředků Azure.
+* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak toomanage a reakce toosecurity výstrahy.
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello.
+* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure hello a informace.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-tde-on-sql-databases/enable-tde.png

@@ -1,6 +1,6 @@
 ---
-title: "Připojení k účtu Media Services pomocí rozhraní REST API | Microsoft Docs"
-description: "Toto téma ukazuje, jak se připojit ke službě Media Services pomocí rozhraní REST API."
+title: "aaaConnecting tooMedia účtu služby pomocí rozhraní REST API | Microsoft Docs"
+description: "Toto téma popisuje, jak pomocí služby tooMedia tooconnect REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d5064a3612dc96f5c5ad910d183d84fb70a3b6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-to-media-services-account-using-media-services-rest-api"></a>Připojení k účtu Media Services pomocí Media Services REST API
+# <a name="connecting-toomedia-services-account-using-media-services-rest-api"></a>Připojení tooMedia účtu služby pomocí Media Services REST API
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-connect-programmatically.md)
 > * [REST](media-services-rest-connect-programmatically.md)
 > 
 > 
 
-Toto téma popisuje, jak získat programové připojení k Microsoft Azure Media Services, pokud jsou programování s Media Services REST API.
+Toto téma popisuje, jak tooobtain tooMicrosoft programové připojení Azure Media Services, pokud jsou programování s hello Media Services REST API.
 
-Při přístupu k Microsoft Azure Media Services jsou požadovány dvě věci: přístupový token poskytovaný služby Řízení přístupu Azure (ACS) a identifikátor URI Media Services sám sebe. Můžete použít jakýmkoli způsobem, který má být při vytváření tyto požadavky, dokud, zadejte hodnoty hlavičky správné a předejte v tokenu přístupu správně při volání do služby Media Services.
+Při přístupu k Microsoft Azure Media Services jsou požadovány dvě věci: přístupový token poskytovaný služby Řízení přístupu Azure (ACS) a hello URI Media Services sám sebe. Můžete použít jakýmkoli způsobem, který má být při vytváření tyto požadavky, dokud, zadejte hodnoty hlavičky správné hello a předat hello přístupový token správně při volání metody ve službě Media Services.
 
-Následující kroky popisují nejběžnější pracovního postupu při použití Media Services REST API pro připojení ke službě Media Services:
+Hello následující kroky popisují hello nejběžnější pracovního postupu při použití tooMedia tooconnect hello Media Services REST API služby:
 
 1. Získání tokenu přístupu 
-2. Připojení ke službě Media Services identifikátor URI 
+2. Připojení toohello Media Services URI 
    
    > [!NOTE]
-   > Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI.
-   > Také můžete obdržet odpovědi HTTP/1.1 200, která obsahuje popis metadat rozhraní API ODATA.
+   > Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI.
+   > Může se také zobrazit odpověď HTTP/1.1 200 obsahující hello popis metadat rozhraní API ODATA.
    > 
    > 
-3. POST následující volání rozhraní API nové adrese URL. 
+3. Následné rozhraní API po volání toohello nové adrese URL. 
    
-    Například pokud po pokusu o připojení, vy máte následující:
+    Například pokud po pokusu o tooconnect, jste získali hello následující:
    
         HTTP/1.1 301 Moved Permanently
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
-    Publikujte následující volání rozhraní API https://wamsbayclus001rest-hs.cloudapp.net/api/.
+    Publikujte vaší následné toohttps://wamsbayclus001rest-hs.cloudapp.net/api/ volání rozhraní API.
 
     >[!NOTE]
-    >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+    >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
 ## <a name="access-control-address"></a>Adresy MAC
 Služba Media Services adresy MAC je https://wamsprodglobal001acs.accesscontrol.windows.net, s výjimkou oblast Severní Čína, kde je https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn.
 
 ## <a name="getting-an-access-token"></a>Získání tokenu přístupu
-Přístup k Media Services přímo prostřednictvím REST API, načtou přístupový token ze služby ACS a použití při každé žádosti protokolu HTTP, které provedete ve službě. Tento token je podobná dalších tokenů poskytované služby ACS na základě deklarací přístup zadaná v hlavičce požadavku HTTP a pomocí protokolu OAuth v2. Nepotřebujete žádné další nezbytné součásti před přímým připojením ke službě Media Services.
+tooaccess Media Services přímo prostřednictvím hello REST API, načtou přístupový token ze služby ACS a použít ho při každé žádosti protokolu HTTP, které provedete do provozu hello. Tento token je podobné tooother tokeny poskytované služby ACS na základě deklarací přístup součástí hello hlavičky požadavku HTTP a pomocí protokolu hello OAuth v2. Před připojením přímo tooMedia služby nepotřebujete další nezbytné součásti.
 
-Následující příklad ukazuje hlavičku požadavku HTTP a text, na které se používá k načtení tokenu.
+Hello následující příklad ukazuje hello hlavičku požadavku HTTP a text používá tooretrieve token.
 
 **Záhlaví**:
 
@@ -74,9 +74,9 @@ Následující příklad ukazuje hlavičku požadavku HTTP a text, na které se 
 
 **Text**:
 
-Budete potřebovat prokázat, že hodnoty client_id a tajný klíč client_secret v těle této žádosti; client_id a tajný klíč client_secret odpovídají hodnoty AccountName a AccountKey. Tyto hodnoty jsou které jste získali od Media Services při nastavování účtu. 
+Je třeba hodnoty client_id a tajný klíč client_secret hello tooprove v textu hello tohoto požadavku; client_id a tajný klíč client_secret odpovídají se, toohello AccountName a AccountKey hodnoty, v uvedeném pořadí. Tyto hodnoty jsou poskytovány tooyou Media Services při nastavování účtu. 
 
-Všimněte si, že AccountKey pro váš účet Media Services musí být kódovaná adresou URL (najdete v části [kódování procent](http://tools.ietf.org/html/rfc3986#section-2.1) při použití jako hodnota tajný klíč client_secret v žádosti o token přístupu.
+Všimněte si, že hello AccountKey pro váš účet Media Services musí být kódovaná adresou URL (viz [kódování procent](http://tools.ietf.org/html/rfc3986#section-2.1) při použití jako hodnota tajný klíč client_secret hello v žádosti o token přístupu.
 
     grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -86,7 +86,7 @@ Například:
     grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
 
 
-Následující příklad ukazuje odpověď HTTP, který obsahuje přístup v textu odpovědi tokenu.
+Hello následující příklad ukazuje hello odpověď HTTP, který obsahuje hello přístup v hello odpovědi tokenu.
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache, no-store
@@ -108,18 +108,18 @@ Následující příklad ukazuje odpověď HTTP, který obsahuje přístup v tex
 
 
 > [!NOTE]
-> Doporučuje se pro ukládání do mezipaměti hodnoty "access_token" a "expires_in" na externí úložiště. Token dat může později načíst z úložiště a opětovně využít v voláními rozhraní REST API Media Services. To je obzvláště užitečná pro scénáře, kde token lze bezpečně sdílet mezi více procesy nebo počítače.
+> Doporučujeme toocache hello "access_token" a "expires_in" hodnoty tooan externího úložiště. Hello token data může být později načíst z úložiště hello a opětovně využít v voláními rozhraní REST API Media Services. To je obzvláště užitečná pro scénáře, kde hello token lze bezpečně sdílet mezi více procesy nebo počítače.
 > 
 > 
 
-Zajistěte, aby ke sledování hodnotu "expires_in" přístupový token a podle potřeby aktualizujte voláními rozhraní REST API s nové tokeny.
+Ujistěte se, že hodnota "expires_in" hello toomonitor hello přístupu tokenu a podle potřeby aktualizujte voláními rozhraní REST API s nové tokeny.
 
-### <a name="connecting-to-the-media-services-uri"></a>Připojení ke službě Media Services identifikátor URI
-Kořenová identifikátor URI pro Media Services je https://media.windows.net/. Měli nejdřív připojit k tento identifikátor URI, a pokud jste zpátky v odpovědi 301 přesměrování, byste měli následující volání nový identifikátor URI. Kromě toho nepoužívejte veškeré auto přesměrování nebo postupujte podle logiky své žádosti. Příkazy HTTP a těla požadavku nebudou předávány na nový identifikátor URI.
+### <a name="connecting-toohello-media-services-uri"></a>Připojení toohello Media Services URI
+Kořenová Hello identifikátor URI pro Media Services je https://media.windows.net/. By měl původně připojení toothis identifikátor URI, a pokud jste zpátky v odpovědi 301 přesměrování, měli byste si následující volání toohello nový identifikátor URI. Kromě toho nepoužívejte veškeré auto přesměrování nebo postupujte podle logiky své žádosti. Příkazy HTTP a textem žádosti nebude předají toohello nový identifikátor URI.
 
-Všimněte si, že kořenový identifikátor URI pro nahrávání a stahování souborů Asset https://yourstorageaccount.blob.core.windows.net/ kde název účtu úložiště je stejný jako ten, který jste použili při nastavení vašeho účtu Media Services.
+Všimněte si, že hello kořenového identifikátoru URI pro nahrávání a stahování souborů Asset je https://yourstorageaccount.blob.core.windows.net/, kde je název účtu úložiště hello hello stejné ten, který jste použili při nastavení vašeho účtu Media Services.
 
-Následující příklad ukazuje, požadavek HTTP do kořenového adresáře Media Services identifikátor URI (https://media.windows.net/). Požadavek získá zpět v odpovědi 301 přesměrování. Další požadavek používá nový identifikátor URI (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
+Hello následující příklad ukazuje HTTP žádost toohello Media Services kořenového identifikátoru URI (https://media.windows.net/). žádost o Hello získá zpět v odpovědi 301 přesměrování. Hello následného požadavku používá hello nový identifikátor URI (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
 
 **Požadavek HTTP**:
 
@@ -143,11 +143,11 @@ Následující příklad ukazuje, požadavek HTTP do kořenového adresáře Med
     Content-Length: 164
 
     <html><head><title>Object moved</title></head><body>
-    <h2>Object moved to <a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
+    <h2>Object moved too<a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
     </body></html>
 
 
-**Požadavek HTTP** (pomocí nový identifikátor URI):
+**Požadavek HTTP** (pomocí hello nový identifikátor URI):
 
     GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f19258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
@@ -176,7 +176,7 @@ Následující příklad ukazuje, požadavek HTTP do kořenového adresáře Med
 
 
 > [!NOTE]
-> Jakmile se zobrazí nový identifikátor URI, který je identifikátor URI, který se má použít pro komunikaci pomocí služby Media Services. 
+> Po získání hello nový identifikátor URI, který je hello identifikátor URI, který by měl být použité toocommunicate pomocí služby Media Services. 
 > 
 > 
 

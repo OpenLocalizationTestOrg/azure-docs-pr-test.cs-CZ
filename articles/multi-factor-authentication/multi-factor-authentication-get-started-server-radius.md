@@ -1,6 +1,6 @@
 ---
-title: "Ověřování pomocí protokolu RADIUS a Azure MFA Server | Dokumentace Microsoftu"
-description: "Toto je stránka Azure Multi-Factor Authentication, která vám pomůže při nasazení ověření RADIUS a serveru Azure Multi-Factor Authentication."
+title: "aaaRADIUS ověřování a Azure MFA serveru | Microsoft Docs"
+description: "Toto je stránka Azure Multi-Factor authentication hello, která vám pomůže při nasazení ověření RADIUS a Server Azure Multi-Factor Authentication."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,65 +15,65 @@ ms.date: 02/26/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: a4c52cc40b17902d92f7a94028ddb3c641911e8d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dac061b83f2657c67192a7aa9c5de63ffeffaaa8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrace ověření služby RADIUS se serverem Azure Multi-Factor Authentication
-Ověřování pomocí protokolu RADIUS můžete povolit a konfigurovat v části Azure MFA Serveru Ověřování pomocí protokolu RADIUS. RADIUS je standardní protokol pro přijímání požadavků na ověření a zpracování těchto požadavků. Azure Multi-Factor Authentication Server funguje jako server protokolu RADIUS. Vložte jej mezi vašeho klienta protokolu RADIUS (např. zařízení sítě VPN) a cíl ověřování, kterým může být služba Active Directory (AD), adresář LDAP nebo jiný server protokolu RADIUS, aby bylo možné přidat službu Azure Multi-Factor Authentication. Aby služba Azure Multi-Factor Authentication (MFA) fungovala, je nutné Azure MFA Server nakonfigurovat tak, aby komunikoval s klientskými servery i s cílem ověřování. Azure MFA Server přijímá požadavky od klienta protokolu RADIUS, ověřuje přihlašovací údaje proti cíli ověřování, přidává ověřování Azure Multi-Factor Authentication a odesílá odpověď zpět do klienta protokolu RADIUS. Požadavek na ověření bude úspěšný pouze v případě, že uspěje primární ověřování i ověřování Multi-Factor Authentication.
+Použijte hello ověřování pomocí protokolu RADIUS část tooenable Azure MFA serveru a konfigurovat ověřování RADIUS. RADIUS je standardní protokol tooaccept žádosti o ověření a tooprocess tyto požadavky. Hello Azure Multi-Factor Authentication Server funguje jako RADIUS server. Vložte jej mezi vašeho klienta protokolu RADIUS (zařízení VPN) a cíl ověřování, které by mohly být služby Active Directory (AD), adresář LDAP nebo jiný tooadd serveru RADIUS Azure Multi-Factor Authentication. Pro toofunction Azure Multi-Factor Authentication (MFA) musíte nakonfigurovat hello Azure MFA serveru, aby mohl komunikovat se servery klienta hello i cíl ověřování hello. Hello Azure MFA serveru přijímá požadavky od klienta RADIUS, ověřuje pověření proti hello cíl ověřování, přidává ověřování Azure Multi-Factor Authentication a odešle odpověď zpět toohello klienta RADIUS. žádosti o ověření Hello pouze úspěšné, pokud primární ověřování hello i hello Azure Multi-Factor Authentication úspěšné.
 
 > [!NOTE]
-> Server MFA podporuje pouze PAP (protokol ověřování hesla) a protokoly MSCHAPv2 (protokol ověřování Challenge Handshake společnosti Microsoft) RADIUS při fungování jako server RADIUS.  Když server MFA funguje jako proxy server protokolu RADIUS na jiný server protokolu RADIUS, který podporuje tento protokol, je možné použít jiné protokoly, například protokol EAP (Extensible Authentication Protocol).
+> Hello MFA Server podporuje pouze PAP (protokol ověřování hesla) a MSCHAPv2 (protokol ověřování Challenge Handshake společnosti Microsoft) RADIUS protokoly když funguje jako RADIUS server.  Jiné protokoly, jako je protokol EAP (extensible authentication protocol), můžete použít při hello MFA server funguje jako server RADIUS tooanother proxy server RADIUS, který podporuje tento protokol.
 >
-> V této konfiguraci nejsou funkční jednosměrné tokeny SMS a OATH, protože MFA Server nemůže vytvořit úspěšné odpovědi RADIUS na výzvy k ověření pomocí alternativních protokolů.
+> V této konfiguraci není jednosměrné tokeny SMS a OATH fungovat, protože hello MFA serveru nelze zahájit úspěšné odpovědi RADIUS výzvu pomocí alternativní protokolů.
 
 ![Ověřování Radius](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
 ## <a name="add-a-radius-client"></a>Přidání klienta protokolu RADIUS
-Pro konfiguraci ověřování pomocí protokolu RADIUS nainstalujte server Azure Multi-Factor Authentication na server Windows. Pokud máte prostředí služby Active Directory, server by měl být připojen k doméně uvnitř sítě. Pomocí následujícího postupu nakonfigurujte server Azure Multi-Factor Authentication:
+ověřování RADIUS tooconfigure, hello instalace Azure Multi-Factor Authentication Server v systému Windows server. Pokud máte prostředí služby Active Directory, by měl být hello server toohello připojené k doméně uvnitř sítě hello. Použijte následující postup tooconfigure hello Azure Multi-Factor Authentication Server hello:
 
-1. V rámci Azure Multi-Factor Authentication Serveru klikněte na ikonu Ověřování pomocí protokolu RADIUS v levé nabídce.
-2. Zaškrtněte políčko **Povolit ověřování pomocí protokolu RADIUS**.
-3. Na kartě klienti změňte porty Ověřování a Monitorování, pokud služba Azure MFA RADIUS potřebuje naslouchat požadavkům protokolu RADIUS na nestandardních portech.
+1. V hello Azure Multi-Factor Authentication Server klikněte na ikonu hello ověřování pomocí protokolu RADIUS v levé nabídce hello.
+2. Zkontrolujte hello **ověřování RADIUS povolit** zaškrtávací políčko.
+3. Na kartě klienti hello změňte hello ověřování a porty monitorování účtů, pokud hello služba Azure MFA RADIUS potřebuje toolisten pro požadavky protokolu RADIUS na nestandardní porty.
 4. Klikněte na tlačítko **Přidat**.
-5. Zadejte IP adresu zařízení/serveru, který se bude ověřovat v Azure Multi-Factor Authentication Serveru, název aplikace (volitelné) a sdílený tajný klíč.
+5. Zadejte IP adresu hello hello zařízení/serveru, které se budou ověřovat toohello Azure Multi-Factor Authentication Server, název aplikace (volitelné) a sdílený tajný klíč.
 
-  Název aplikace se zobrazí v sestavách služby Azure Multi-Factor Authentication a může se zobrazit v rámci SMS zpráv nebo mobilních aplikací ověřování.
+  název aplikace Hello se zobrazí v sestavách Azure Multi-Factor Authentication a může se zobrazit v rámci zpráv SMS nebo mobilních aplikací ověřování.
 
-  Sdílený tajný klíč musí být stejný jak na Azure Multi-Factor Authentication Serveru, tak i v zařízení/serveru.
+  Hello sdílený tajný potřebám toobe hello stejné u obou hello Azure Multi-Factor Authentication Server a zařízení/serveru.
 
-6. Zaškrtněte políčko **Vyžadovat porovnání uživatele u služby Multi-Factor Authentication**, pokud se všichni uživatelé importovali nebo budou importovat na server a budou podléhat vícefaktorovému ověřování. Pokud ještě na server nebyl importován velký počet uživatelů nebo budou uživatelé vyloučení z dvoustupňového ověření, nechte toto políčko nezaškrtnuté.
-7. Zaškrtněte políčko **Povolit záložní token OAUTH**, pokud chcete použít hesla OAUTH z aplikací pro mobilní ověření jako záložní ověřování pro telefonní hovory, SMS zprávy nebo nabízená oznámení mimo pásmo.
-8. Klikněte na tlačítko **OK**.
+6. Zkontrolujte hello **Vícefaktorové ověřování vyžadovat shodu uživatele** pole, pokud byli nebo budou importovány do hello serveru a ověřování subjektu toomulti všichni uživatelé. Pokud velký počet uživatelů dosud nebyl importován do hello serveru a/nebo budou vyloučeni z dvoustupňové ověřování, nechte hello políčko nezaškrtnuté.
+7. Zkontrolujte hello **povolit záložní token OATH** pole, chcete-li hesla OATH toouse z ověření mobilní aplikace jako záložní toohello out-of-band telefonní hovor, SMS, nebo nabízená oznámení.
+8. Klikněte na **OK**.
 
-Opakováním kroků 4 až 8 přidejte požadovaný počet dalších klientů protokolu RADIUS.
+Opakujte kroky 4 až 8 tooadd libovolný počet dalších klientů RADIUS podle potřeby.
 
 ## <a name="configure-your-radius-client"></a>Konfigurace klienta protokolu RADIUS
 
-1. Klikněte na kartu **Cíl**.
-2. Pokud je Azure MFA Server nainstalován na server připojený k doméně v prostředí služby Active Directory, vyberte doménu systému Windows.
+1. Klikněte na tlačítko hello **cíl** kartě.
+2. Pokud hello Azure MFA serveru je nainstalovaná na serveru připojeném k doméně v prostředí služby Active Directory, vyberte doménu systému Windows.
 3. Pokud musí být uživatelé ověřováni proti adresáři LDAP, vyberte **Vázání protokolu LDAP**.
 
-  Pokud chcete použít vázání protokolu LDAP, klikněte na ikonu Integrace adresáře a na kartě Nastavení upravte konfiguraci protokolu LDAP tak, aby server mohl vytvořit vazbu k adresáři. Pokyny ke konfiguraci protokolu LDAP najdete v [průvodci konfigurací serveru proxy protokolu LDAP](multi-factor-authentication-get-started-server-ldap.md).
+  toouse vazby protokolu LDAP, klikněte na ikonu integrace adresáře hello a upravit konfiguraci LDAP hello na kartě nastavení hello tak, aby hello Server mohl vytvořit vazbu tooyour adresáře. Pokyny ke konfiguraci LDAP naleznete v hello [Průvodci konfigurací proxy serveru LDAP](multi-factor-authentication-get-started-server-ldap.md).
 
 4. Pokud mají být uživatelé ověřování proti jinému serveru RADIUS, vyberte servery RADIUS.
-5. Klikněte na **Přidat** a nakonfigurujte server, na který bude Azure MFA Server přes proxy předávat požadavky protokolu RADIUS.
-6. V dialogovém okně Přidat server protokolu RADIUS zadejte IP adresu serveru protokolu RADIUS a sdílený tajný klíč.
+5. Klikněte na tlačítko **přidat** požadavky tooconfigure hello serveru toowhich hello Azure MFA serveru bude proxy hello protokolu RADIUS.
+6. V dialogové okno Přidat Server RADIUS hello zadejte IP adresu hello hello serveru RADIUS a sdílený tajný klíč.
 
-  Sdílený tajný klíč musí být stejný jak na Azure Multi-Factor Authentication Serveru, tak i na serveru protokolu RADIUS. Změňte port ověřování a port monitorování účtů, pokud server RADIUS využívá jiné porty.
+  Hello sdílené tajné potřebám toobe hello stejné u obou hello Azure Multi-Factor Authentication Server a RADIUS server. Změňte port ověřování hello a port monitorování účtů, pokud hello RADIUS server používají jiné porty.
 
-7. Klikněte na tlačítko **OK**.
-8. Přidejte Azure MFA Server jako klienta protokolu RADIUS v druhém serveru protokolu RADIUS, aby mohl zpracovávat požadavky na přístup odeslané z Azure MFA Serveru. Použijte stejný sdílený tajný klíč konfigurovaný na Azure Multi-Factor Authentication Serveru.
+7. Klikněte na **OK**.
+8. Přidejte hello Azure MFA serveru jako klienta protokolu RADIUS v hello jiný server RADIUS, aby mohl zpracovávat požadavky na přístup odeslané tooit z hello Azure MFA serveru. Použijte stejný sdílený tajný klíč konfigurovaný na hello Azure Multi-Factor Authentication Server hello.
 
-Opakováním těchto kroků přidejte další servery protokolu RADIUS a pomocí tlačítek **Přesunout nahoru** a **Přesunout dolů** nakonfigurujte pořadí, ve kterém je Azure MFA Server má volat.
+Opakujte tyto kroky tooadd další servery RADIUS a konfigurovat hello pořadí, ve které hello Azure MFA serveru by měly volat je s hello **nahoru** a **přesunout dolů** tlačítka.
 
-Dokončení konfigurace serveru Azure Multi-Factor Authentication. Server teď naslouchá na nakonfigurovaných portech požadavkům přístupu protokolu RADIUS z konfigurovaných klientů.   
+Dokončení konfigurace serveru Azure Multi-Factor Authentication Server hello. Hello Server nyní naslouchá požadavkům přístupu protokolu RADIUS od klientů hello nakonfigurované na hello nakonfigurované porty.   
 
 ## <a name="radius-client-configuration"></a>Konfigurace klienta protokolu RADIUS
-Chcete-li nakonfigurovat klienta RADIUS, postupujte podle pokynů:
+tooconfigure hello klienta RADIUS, použijte pokyny hello:
 
-* Nakonfigurujte zařízení/server k ověřování prostřednictvím protokolu RADIUS nIP adrese serveru Azure Multi-Factor Authentication, která bude fungovat jako RADIUS server.
-* Použijte stejný sdílený tajný klíč, který byl nakonfigurován dříve.
-* Časový limit platnosti protokolu RADIUS nakonfigurujte na 30–60 sekund, aby byl dostatek času na ověření přihlašovacích údajů uživatele, provedení dvoustupňového ověřování, obdržení odpovědi a následnou odpověď na žádost o přístup protokolu RADIUS.
+* Nakonfigurujte vaše zařízení/serveru tooauthenticate prostřednictvím toohello Azure Multi-Factor Authentication serveru RADIUS IP adresu, která bude fungovat jako hello RADIUS server.
+* Použijte stejný sdílený tajný klíč, který byl dříve nakonfigurován hello.
+* Konfigurace hello RADIUS časový limit too30 – 60 sekund, aby byl čas toovalidate hello přihlašovacích údajů uživatele, provádět dvoustupňové ověřování, obdržení odpovědi a pak odpověď toohello žádost o přístup protokolu RADIUS.

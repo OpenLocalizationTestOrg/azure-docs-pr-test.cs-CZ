@@ -1,5 +1,5 @@
 ---
-title: "Spustit HVĚZDIČKY – CCM + s HPC Pack na virtuální počítače s Linuxem | Microsoft Docs"
+title: "aaaRun HVĚZDIČKY – CCM + s HPC Pack na virtuální počítače s Linuxem | Microsoft Docs"
 description: "Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spuštění HVĚZDIČKOU – CCM + úlohy na několika Linux výpočetní uzly přes sítě RDMA."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8265013cb295f53d6d4354ab2f100ef20d9f4c8c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Spustit HVĚZDIČKY – CCM + pomocí sady Microsoft HPC Pack na Linux RDMA cluster v Azure
-Tento článek ukazuje, jak nasadit cluster sady Microsoft HPC Pack na Azure a spusťte [HVĚZDIČKY CD adapco-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) úlohy na několika výpočetních uzlech Linux, které jsou vzájemně propojeny InfiniBand.
+Tento článek ukazuje, jak toodeploy sady Microsoft HPC Pack clusteru v Azure a spusťte [HVĚZDIČKY CD adapco-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) úlohy na několika výpočetních uzlech Linux, které jsou vzájemně propojeny InfiniBand.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-Microsoft HPC Pack poskytuje funkce pro spouštění různých rozsáhlé HPC a paralelní aplikace, včetně aplikací MPI, v clusterech virtuální počítače Microsoft Azure. HPC Pack také podporuje spuštěné aplikace prostředí HPC Linux virtuálních počítačů Linux výpočetní uzly, které jsou nasazené na clusteru HPC Pack. Úvod do používání Linux výpočetní uzly s HPC Pack, naleznete v části [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md).
+Microsoft HPC Pack poskytuje funkce toorun celou řadu rozsáhlé HPC a paralelní aplikace, včetně aplikací MPI, v clusterech virtuální počítače Microsoft Azure. HPC Pack také podporuje spuštěné aplikace prostředí HPC Linux virtuálních počítačů Linux výpočetní uzly, které jsou nasazené na clusteru HPC Pack. Úvod toousing Linux výpočetní uzly s HPC Pack, najdete v části [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md).
 
 ## <a name="set-up-an-hpc-pack-cluster"></a>Nastavení clusteru služby HPC Pack
-Stáhněte si skripty nasazení HPC Pack IaaS z [Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=44949) a extrahovat je místně.
+Stáhnout skriptů nasazení HPC Pack IaaS hello z hello [Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=44949) a extrahovat je místně.
 
-Prostředí Azure PowerShell je požadována. Pokud PowerShell není nakonfigurovaný v místním počítači, najdete v článku [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Prostředí Azure PowerShell je požadována. Pokud PowerShell není nakonfigurovaný v místním počítači, přečtěte si článek hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-V době psaní tohoto textu Linux obrázky z Azure Marketplace, (který obsahuje ovladače InfiniBand pro Azure) jsou pro SLES 12, CentOS 6.5 a CentOS 7.1. Tento článek je založena na použití SLES 12. Pokud chcete načíst název všechny Image Linux, které podporují prostředí HPC v Marketplace, spuštěním následujícího příkazu Powershellu:
+V době psaní tohoto textu hello hello Linux Image z hello Azure Marketplace, (který obsahuje hello InfiniBand ovladače pro Azure) jsou pro SLES 12, CentOS 6.5 a CentOS 7.1. Tento článek je založená na využití hello SLES 12. Název hello tooretrieve všechny Image Linux, které podporují prostředí HPC v hello Marketplace, můžete spustit následující příkaz prostředí PowerShell hello:
 
 ```
     get-azurevmimage | ?{$_.ImageName.Contains("hpc") -and $_.OS -eq "Linux" }
 ```
 
-Výstup obsahuje umístění, ve kterém jsou k dispozici tyto bitové kopie a název bitové kopie (**ImageName**) mají být použity v šabloně nasazení později.
+výstup Hello uvádí hello umístění, ve kterém se tyto Image jsou k dispozici a hello název bitové kopie (**ImageName**) toobe použitých v šabloně nasazení hello později.
 
-Před nasazením clusteru, budete muset vytvořit soubor HPC Pack nasazení šablony. Protože jsme se cílení na clusteru s podporou malé, hlavního uzlu bude řadič domény a hostování místní databáze SQL.
+Před nasazením hello clusteru, máte toobuild soubor HPC Pack nasazení šablony. Protože jsme se cílení na clusteru s podporou malé, hlavního uzlu hello bude řadič domény hello a hostování místní databáze SQL.
 
-Následující šablony bude nasazení hlavního uzlu, vytvořte soubor XML s názvem **MyCluster.xml**a nahraďte hodnoty **SubscriptionId**, **StorageAccount**, **umístění**, **VMName**, a **ServiceName** s tímto počítačem.
+Hello následující šablony bude nasazení hlavního uzlu, vytvořte soubor XML s názvem **MyCluster.xml**a nahraďte hodnoty hello **SubscriptionId**, **StorageAccount**,  **Umístění**, **VMName**, a **ServiceName** s tímto počítačem.
 
     <?xml version="1.0" encoding="utf-8" ?>
     <IaaSClusterConfig>
@@ -79,138 +79,138 @@ Následující šablony bude nasazení hlavního uzlu, vytvořte soubor XML s n�
       </LinuxComputeNodes>
     </IaaSClusterConfig>
 
-Spuštění vytvoření hlavního uzlu tak, že v příkazovém řádku se zvýšenými oprávněními spustíte příkaz prostředí PowerShell:
+Spusťte hello hlavní uzel vytvoření spuštěním hello příkaz prostředí PowerShell v příkazovém řádku se zvýšenými oprávněními:
 
 ```
     .\New-HPCIaaSCluster.ps1 -ConfigFile MyCluster.xml
 ```
 
-Po 20-30 minutách hlavního uzlu musí být připravené. Můžete připojit k němu z portálu Azure klepnutím **Connect** ikona virtuálního počítače.
+Po 20 minutách too30 hello hlavního uzlu by měl být připraven. Tooit můžete připojit z portálu Azure hello kliknutím hello **Connect** ikonu hello virtuálního počítače.
 
-Nakonec bude pravděpodobně nutné opravit předávání DNS. Uděláte to tak, spusťte Správce DNS.
+Nakonec máte toofix hello, server DNS pro předávání. toodo Ano, spusťte Správce DNS.
 
-1. Klikněte pravým tlačítkem na název serveru ve Správci DNS, vyberte **vlastnosti**a klikněte **předávání** kartě.
-2. Klikněte **upravit** tlačítko Odebrat všechny servery pro předávání a potom klikněte na **OK**.
-3. Ujistěte se, že **pomocí odkazů na kořenový server, pokud jsou k dispozici žádné servery pro předávání** zaškrtávací políčko je vybraná a pak klikněte na tlačítko **OK**.
+1. Klikněte pravým tlačítkem na název serveru hello ve Správci DNS, vyberte **vlastnosti**a potom klikněte na hello **předávání** kartě.
+2. Klikněte na tlačítko hello **upravit** tlačítko tooremove veškeré služby předávání a potom klikněte na **OK**.
+3. Ujistěte se, že hello **pomocí odkazů na kořenový server, pokud jsou k dispozici žádné servery pro předávání** zaškrtávací políčko je vybraná a pak klikněte na tlačítko **OK**.
 
 ## <a name="set-up-linux-compute-nodes"></a>Nastavit Linuxových výpočetních uzlů
-Výpočetní uzly Linux nasadíte pomocí stejné šablony nasazení, který jste použili k vytvoření hlavního uzlu.
+Nasazení hello Linux výpočetní uzly s hello stejné šablony nasazení, kterou jste použili toocreate hello hlavního uzlu.
 
-Zkopírujte soubor **MyCluster.xml** ze svého místního počítače k hlavnímu uzlu a aktualizací **NodeCount** značka s číslem uzlů, které chcete nasadit (< = 20). Buďte opatrní tak, aby měl dostatek dostupné jader v rámci svojí Azure kvóty, protože každá instance A9 spotřebuje 16 jader v rámci vašeho předplatného. Pokud chcete použít další virtuální počítače ve stejném rozpočtu, můžete použít A8 instancí (8 jader) namísto A9.
+Kopírovat soubor hello **MyCluster.xml** z hlavního uzlu toohello místního počítače a aktualizace hello **NodeCount** značka s číslem hello uzlů, které chcete toodeploy (< = 20). Být opatrní toohave dostatek dostupné jader v rámci svojí Azure kvóty, protože každá instance A9 spotřebuje 16 jader v rámci vašeho předplatného. A8 instancí (8 jader) můžete použít místo A9, pokud chcete toouse více virtuálních počítačů v hello stejný rozpočet.
 
-Z hlavního uzlu zkopírujte skriptů nasazení HPC Pack IaaS.
+Hello hlavního uzlu zkopírujte skriptů nasazení hello HPC Pack IaaS.
 
-V příkazovém řádku se zvýšenými oprávněními spusťte následující příkazy prostředí Azure PowerShell:
+Spusťte následující příkazy prostředí Azure PowerShell v příkazovém řádku se zvýšenými hello:
 
-1. Spustit **Add-AzureAccount** pro připojení k předplatnému Azure.
-2. Pokud máte více předplatných, spusťte **Get-AzureSubscription** je.
-3. Nastavit výchozí předplatné spuštěním **Select-AzureSubscription - Název_předplatného xxxx-výchozí** příkaz.
-4. Spustit **.\New-HPCIaaSCluster.ps1 - ConfigFile MyCluster.xml** zahájíte nasazení Linuxových výpočetních uzlů.
+1. Spustit **Add-AzureAccount** tooconnect tooyour předplatného Azure.
+2. Pokud máte více předplatných, spusťte **Get-AzureSubscription** toolist je.
+3. Nastavit výchozí předplatné spuštěním hello **Select-AzureSubscription - Název_předplatného xxxx-výchozí** příkaz.
+4. Spustit **.\New-HPCIaaSCluster.ps1 - ConfigFile MyCluster.xml** toostart nasazení Linuxových výpočetních uzlů.
    
    ![Nasazení hlavního uzlu v akci][hndeploy]
 
-Otevřete nástroj Správce clusterů HPC Pack. Za několik minut bude pravidelně Linux výpočetní uzly zobrazí v seznamu výpočetních uzlů clusteru. V režimu nasazení classic se vytvoří virtuální počítače IaaS postupně. Proto pokud počet uzlů je důležité, pak získávání všechny nasazené může trvat dlouhou dobu.
+Otevřete nástroj Správce clusterů HPC Pack hello. Za několik minut bude pravidelně Linux výpočetní uzly zobrazí v seznamu výpočetních uzlů clusteru. V režimu nasazení classic hello se vytvoří virtuální počítače IaaS postupně. Takže pokud hello počet uzlů je důležité, pak získávání všechny nasazené může trvat dlouhou dobu.
 
 ![Linuxové uzly ve Správci clusteru HPC Pack][clustermanager]
 
-Teď, když jsou všechny uzly jsou spuštěny v clusteru, existují další infrastrukturu nastavení je třeba provést.
+Teď, když jsou všechny uzly jsou spuštěny v clusteru hello, existují další infrastrukturu toomake nastavení.
 
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Nastavit sdílená Azure pro Windows a Linux uzly
-Služba Azure souborů můžete použít k ukládání skriptů, balíčky aplikací a datových souborů. Azure File nabízí funkce CIFS nad úložiště objektů Blob v Azure jako trvalé úložiště. Uvědomte si, že to není nejvíce škálovatelným řešením, ale je ta nejjednodušší a nevyžaduje vyhrazených virtuálních počítačích.
+Můžete použít skripty toostore služby Azure File hello, balíčky aplikací a datových souborů. Azure File nabízí funkce CIFS nad úložiště objektů Blob v Azure jako trvalé úložiště. Uvědomte si, že to není hello nejvíce škálovatelným řešením, ale je hello nejjednodušší jeden a nevyžaduje vyhrazených virtuálních počítačích.
 
-Vytvoření Azure sdílené složky podle pokynů v článku [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-dotnet-how-to-use-files.md).
+Vytvoření Azure sdílené složky podle hello pokynů v článku hello [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-dotnet-how-to-use-files.md).
 
-Zachovat název účtu úložiště jako **saname**, název sdílené složky souborů jako **sharename**a klíč účtu úložiště jako **sakey**.
+Zachovat hello název účtu úložiště jako **saname**, název sdílené složky souborů hello jako **sharename**a klíč účtu úložiště hello jako **sakey**.
 
-### <a name="mount-the-azure-file-share-on-the-head-node"></a>Připojení Azure sdílené složky z hlavního uzlu
-Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz k uložení pověření v úložišti místního počítače:
+### <a name="mount-hello-azure-file-share-on-hello-head-node"></a>Připojit sdílenou složku Azure File hello hello hlavního uzlu
+Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz toostore hello přihlašovací údaje v úložišti místního počítače hello hello:
 
 ```
     cmdkey /add:<saname>.file.core.windows.net /user:<saname> /pass:<sakey>
 ```
 
-Potom připojit sdílenou složku Azure File, spusťte příkaz:
+Potom toomount hello sdílenou složku Azure File, spusťte:
 
 ```
     net use Z: \\<saname>.file.core.windows.net\<sharename> /persistent:yes
 ```
 
-### <a name="mount-the-azure-file-share-on-linux-compute-nodes"></a>Připojení Azure sdílené složky na Linuxových výpočetních uzlů
-Užitečné nástroj, který se dodává s HPC Pack se nástroj clusrun. Tento nástroj příkazového řádku můžete spustit stejný příkaz současně se sadou výpočetních uzlů. V našem případě se používá k připojení Azure sdílené složky a k uložení mohla zůstat platné i po restartování počítače.
-V příkazovém řádku se zvýšenými oprávněními z hlavního uzlu spusťte následující příkazy.
+### <a name="mount-hello-azure-file-share-on-linux-compute-nodes"></a>Připojit sdílenou složku Azure File hello na Linuxových výpočetních uzlů
+Užitečné nástroj, který se dodává s HPC Pack je nástroj clusrun hello. Tento nástroj příkazového řádku toorun hello stejný příkaz můžete použít současně se sadou výpočetních uzlů. V našem případě se používá sdílenou složku Azure File hello toomount a zachovat ji toosurvive restartování.
+V příkazovém řádku se zvýšenými hello hlavního uzlu spusťte následující příkazy hello.
 
-Vytvoření adresáře připojení:
+toocreate hello přípojného adresáře:
 
 ```
     clusrun /nodegroup:LinuxNodes mkdir -p /hpcdata
 ```
 
-Chcete-li připojit sdílenou složku Azure File:
+toomount hello sdílenou složku Azure:
 
 ```
     clusrun /nodegroup:LinuxNodes mount -t cifs //<saname>.file.core.windows.net/<sharename> /hpcdata -o vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777
 ```
 
-Chcete-li zachovat připojení sdílené složky:
+toopersist hello připojení sdílené složky:
 
 ```
     clusrun /nodegroup:LinuxNodes "echo //<saname>.file.core.windows.net/<sharename> /hpcdata cifs vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777 >> /etc/fstab"
 ```
 
 ## <a name="install-star-ccm"></a>Nainstalujte HVĚZDIČKY – CCM +
-Instancemi Azure virtuální počítač A8 a A9 poskytnout podporu InfiniBand a RDMA. Ovladače jádra, které povolují tyto funkce jsou dostupné pro Windows Server 2012 R2, SUSE 12, CentOS 6.5 a CentOS 7.1 bitové kopie v Azure Marketplace. Microsoft MPI a Intel MPI (verze 5.x) jsou dvě knihovny MPI, které podporují tyto ovladače v Azure.
+Instancemi Azure virtuální počítač A8 a A9 poskytnout podporu InfiniBand a RDMA. Hello jádra ovladače, které umožňují tyto funkce jsou dostupné pro Windows Server 2012 R2, SUSE 12, CentOS 6.5 a CentOS 7.1 obrázků v hello Azure Marketplace. Microsoft MPI a Intel MPI (verze 5.x) jsou hello dvě MPI knihovny, které podporují tyto ovladače v Azure.
 
 CD adapco HVĚZDIČKY – CCM + verze 11.x a později je instalován s verzí Intel MPI 5.x, tak, aby zahrnuté InfiniBand podpora pro Azure.
 
-Získat Linux64 HVĚZDIČKY – CCM + balíček z [CD adapco portál](https://steve.cd-adapco.com). V našem případě jsme použili verze 11.02.010 ve smíšeném přesnost.
+Získat hello Linux64 HVĚZDIČKY – CCM + balíček z hello [CD adapco portál](https://steve.cd-adapco.com). V našem případě jsme použili verze 11.02.010 ve smíšeném přesnost.
 
-Z hlavního uzlu v **/hpcdata** Azure File sdílenou složku, vytvořit skript prostředí s názvem **setupstarccm.sh** s následujícím obsahem. Tento skript se spustí na každém výpočetním uzlu nastavit HVĚZDIČKY – CCM + místně.
+Hello hlavního uzlu v hello **/hpcdata** Azure File sdílenou složku, vytvořit skript prostředí s názvem **setupstarccm.sh** s hello následující obsah. Tento skript se spustí na každý výpočetní uzel tooset až HVĚZDIČKY – CCM + místně.
 
 #### <a name="sample-setupstarcmsh-script"></a>Ukázkový skript setupstarcm.sh
 ```
     #!/bin/bash
-    # setupstarcm.sh to set up STAR-CCM+ locally
+    # setupstarcm.sh tooset up STAR-CCM+ locally
 
-    # Create the CD-adapco main directory
+    # Create hello CD-adapco main directory
     mkdir -p /opt/CD-adapco
 
-    # Copy the STAR-CCM package from the file share to the local directory
+    # Copy hello STAR-CCM package from hello file share toohello local directory
     cp /hpcdata/StarCCM/STAR-CCM+11.02.010_01_linux-x86_64.tar.gz /opt/CD-adapco/
 
-    # Extract the package
+    # Extract hello package
     tar -xzf /opt/CD-adapco/STAR-CCM+11.02.010_01_linux-x86_64.tar.gz -C /opt/CD-adapco/
 
-    # Start a silent installation of STAR-CCM without the FLEXlm component
+    # Start a silent installation of STAR-CCM without hello FLEXlm component
     /opt/CD-adapco/starccm+_11.02.010/STAR-CCM+11.02.010_01_linux-x86_64-2.5_gnu4.8.bin -i silent -DCOMPUTE_NODE=true -DNODOC=true -DINSTALLFLEX=false
 
     # Update memory limits
     echo "*               hard    memlock         unlimited" >> /etc/security/limits.conf
     echo "*               soft    memlock         unlimited" >> /etc/security/limits.conf
 ```
-Nyní nastavit HVĚZDIČKY – CCM + na všechny Linux výpočetní uzly, otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz:
+Nyní, tooset až HVĚZDIČKY – CCM + na všechny Linux výpočetní uzly, otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz hello:
 
 ```
     clusrun /nodegroup:LinuxNodes bash /hpcdata/setupstarccm.sh
 ```
 
-Když je spuštěný příkaz, můžete sledovat využití procesoru pomocí heat mapa ze Správce clusteru. Za několik minut všechny uzly by měl být správně nastavena.
+Když je spuštěný příkaz hello, můžete sledovat využití procesoru hello pomocí hello heat mapa ze Správce clusteru. Za několik minut všechny uzly by měl být správně nastavena.
 
 ## <a name="run-star-ccm-jobs"></a>Spustit HVĚZDIČKY – CCM + úlohy
-HPC Pack se používá pro možnosti plánovače úloh fungování HVĚZDIČKY – CCM + úlohy. To pokud chcete udělat, budeme potřebovat podporu několik skriptů, které se používají ke spuštění úlohy a spuštění HVĚZDIČKY – CCM +. Vstupní data se ukládají na sdílenou složku Azure File první pro jednoduchost.
+HPC Pack se používá pro možnosti plánovače úloh v pořadí toorun HVĚZDIČKY – CCM + úlohy. toodo tak, budeme potřebovat hello podporu několik skriptů, které jsou používané toostart hello úlohy a spusťte HVĚZDIČKY – CCM +. Hello vstupní data se ukládají na sdílenou složku Azure File hello první pro jednoduchost.
 
-Následující skript prostředí PowerShell slouží k fronty HVĚZDU – CCM + úlohy. Trvá tři argumenty:
+Následující skript prostředí PowerShell Hello je použité tooqueue HVĚZDU – CCM + úlohy. Trvá tři argumenty:
 
-* Název modelu
-* Počet uzlů, který se má použít
-* Počet jader na každém uzlu, který se má použít
+* Název modelu Hello
+* Hello počet uzlů toobe použít
+* Hello počet jader na každý uzel toobe použít
 
-Protože HVĚZDIČKY – CCM + můžete vyplnit šířky pásma paměti, je vhodnější použít menší počet jader na výpočetní uzly a přidat nové uzly. Přesný počet jader na uzel, bude záviset na třídu procesoru a rychlost propojení.
+Protože HVĚZDIČKY – CCM + můžete vyplnit hello paměti šířky pásma, jeho obvykle lepší toouse menší počet jader na výpočetní uzly a přidejte nové uzly. Hello přesný počet jader na uzel, bude záviset na třídu hello procesoru a rychlost propojení hello.
 
-Uzly jsou přiděleny výhradně pro úlohu a nemohou být sdíleny s ostatními úlohami. Úloha není spuštěna jako úloha MPI přímo. **Runstarccm.sh** Spouštěč MPI se spustit skript prostředí.
+Hello uzly jsou přiděleny výhradně pro úlohu hello a nemohou být sdíleny s ostatními úlohami. Úloha Hello není spuštěna jako úloha MPI přímo. Hello **runstarccm.sh** Spouštěč MPI hello se spustit skript prostředí.
 
-Vstupní modelu a **runstarccm.sh** skriptů jsou uložené v **/hpcdata** sdílené složce, která byla dříve připojena.
+Hello vstupní modelu a hello **runstarccm.sh** skriptů jsou uložené v hello **/hpcdata** sdílené složce, která byla dříve připojena.
 
-Soubory protokolu jsou pojmenované s ID úlohy a jsou uloženy v **/hpcdata sdílení**, společně s HVĚZDIČKOU – CCM + výstupní soubory.
+Soubory protokolu jsou pojmenované s ID úlohy hello a jsou uloženy v hello **/hpcdata sdílení**, společně s hello HVĚZDIČKY – CCM + výstupní soubory.
 
 #### <a name="sample-submitstarccmjobps1-script"></a>Ukázkový skript SubmitStarccmJob.ps1
 ```
@@ -221,13 +221,13 @@ Soubory protokolu jsou pojmenované s ID úlohy a jsou uloženy v **/hpcdata sd�
     $nbNodes=$args[1]
 
     #---------------------------------------------------------------------------------------------------------
-    # Create a new job; this will give us the job ID that's used to identify the name of the uploaded package in Azure
+    # Create a new job; this will give us hello job ID that's used tooidentify hello name of hello uploaded package in Azure
     #
     $job = New-HpcJob -Name "$modelName $nbNodes $nbCoresPerNode" -Scheduler $scheduler -NumNodes $nbNodes -NodeGroups "LinuxNodes" -FailOnTaskFailure $true -Exclusive $true
     $jobId = [String]$job.Id
 
     #---------------------------------------------------------------------------------------------------------
-    # Submit the job     
+    # Submit hello job     
     $workdir =  "/hpcdata"
     $execName = "$nbCoresPerNode runner.java $modelName.sim"
 
@@ -242,10 +242,10 @@ Nahraďte **runner.java** vaše upřednostňované hvězdičkou-Spouštěče mod
 ```
     #!/bin/bash
     echo "start"
-    # The path of this script
+    # hello path of this script
     SCRIPT_PATH="$( dirname "${BASH_SOURCE[0]}" )"
     echo ${SCRIPT_PATH}
-    # Set the mpirun runtime environment
+    # Set hello mpirun runtime environment
     export CDLMD_LICENSE_FILE=1999@flex.cd-adapco.com
 
     # mpirun command
@@ -256,11 +256,11 @@ Nahraďte **runner.java** vaše upřednostňované hvězdičkou-Spouštěče mod
     COUNT=${#NODESCORES[@]}
     NBCORESPERNODE=$1
 
-    # Create the hostfile file
+    # Create hello hostfile file
     NODELIST_PATH=${SCRIPT_PATH}/hostfile_$$
     echo ${NODELIST_PATH}
 
-    # Get every node name and write into the hostfile file
+    # Get every node name and write into hello hostfile file
     I=1
     NBNODES=0
     while [ ${I} -lt ${COUNT} ]
@@ -271,7 +271,7 @@ Nahraďte **runner.java** vaše upřednostňované hvězdičkou-Spouštěče mod
     done
     let "NBCORES=${NBNODES}*${NBCORESPERNODE}"
 
-    # Run STAR-CCM with the hostfile argument
+    # Run STAR-CCM with hello hostfile argument
     #  
     ${STARCCM} -np ${NBCORES} -machinefile ${NODELIST_PATH} \
         -power -podkey "<yourkey>" -rsh ssh \
@@ -284,11 +284,11 @@ Nahraďte **runner.java** vaše upřednostňované hvězdičkou-Spouštěče mod
     exit ${RTNSTS}
 ```
 
-V našem testu jsme použili token licence Power na vyžádání. Pro tento token, budete muset nastavit **$CDLMD_LICENSE_FILE** proměnnou prostředí  **1999@flex.cd-adapco.com**  a klíč v **- podkey** možnost příkazového řádku.
+V našem testu jsme použili token licence Power na vyžádání. Token, je nutné tooset hello **$CDLMD_LICENSE_FILE** proměnnou prostředí příliš **1999@flex.cd-adapco.com**  a hello klíč v hello **- podkey** možnost hello příkazového řádku .
 
-Po inicializaci, skript extrahuje--z **$CCP_NODES_CORES** proměnné prostředí tohoto HPC Pack nastavit – seznam uzlů k sestavení hostfile, který Spouštěč MPI používá. Tato hostfile bude obsahovat seznam názvů výpočetní uzel, které se používají pro úlohy, jeden název na každý řádek.
+Po inicializaci, skript hello extrahuje--z hello **$CCP_NODES_CORES** proměnné prostředí, které HPC Pack nastavit – hello seznam uzlů toobuild hostfile, který hello MPI Spouštěč používá. Tato hostfile bude obsahovat seznam hello výpočetní uzel názvy, které se používají pro úlohu hello, jeden název na každý řádek.
 
-Formát **$CCP_NODES_CORES** následuje tento vzor:
+Formát Hello **$CCP_NODES_CORES** následuje tento vzor:
 
 ```
 <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
@@ -296,28 +296,28 @@ Formát **$CCP_NODES_CORES** následuje tento vzor:
 
 Kde:
 
-* `<Number of nodes>`je počet uzlů přidělených pro tuto úlohu.
-* `<Name of node_n_...>`je název každého uzlu přidělené této úlohy.
-* `<Cores of node_n_...>`je počet jader na uzel přidělené této úlohy.
+* `<Number of nodes>`je hello počet uzlů přidělených toothis úlohy.
+* `<Name of node_n_...>`je název hello každého uzlu přidělené toothis úlohy.
+* `<Cores of node_n_...>`je hello počet jader na uzel hello přidělené toothis úlohy.
 
-Počet jader (**$NBCORES**) se také vypočítává podle počtu uzlů (**$NBNODES**) a počet jader na uzel (jako parametr **$NBCORESPERNODE**).
+Hello počet jader (**$NBCORES**) je také počítané hello na základě počtu uzlů (**$NBNODES**) a hello počet jader na uzel (jako parametr **$NBCORESPERNODE**).
 
-Možnosti MPI jsou ty, které se používají s Intel MPI ve službě Azure:
+Možnosti MPI hello hello ty, které se používají s Intel MPI v Azure jsou:
 
-* `-mpi intel`Chcete-li určit Intel MPI.
-* `-fabric UDAPL`používat příkazy Azure InfiniBand.
-* `-cpubind bandwidth,v`za účelem optimalizace šířky pásma pro MPI s HVĚZDIČKOU – CCM +.
-* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`Chcete-li pracovat s Azure InfiniBand MPI Intel a nastavit požadovaný počet jader na uzel.
-* `-batch`Spusťte HVĚZDIČKY – CCM + v dávkovém režimu s žádné uživatelské rozhraní.
+* `-mpi intel`toospecify Intel MPI.
+* `-fabric UDAPL`příkazy toouse Azure InfiniBand.
+* `-cpubind bandwidth,v`toooptimize šířky pásma pro MPI s HVĚZDIČKOU – CCM +.
+* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`toomake Intel MPI pracovat s Azure InfiniBand a tooset hello požadovaný počet jader na uzel.
+* `-batch`toostart HVĚZDIČKY – CCM + v dávkovém režimu s žádné uživatelské rozhraní.
 
-Nakonec chcete-li spustit úlohu, ujistěte se, že uzly jsou spuštěny a jsou online ve Správci clusteru. Z příkazového řádku prostředí PowerShell, spusťte toto:
+Nakonec toostart úlohu, ujistěte se, že uzly jsou spuštěny a jsou online ve Správci clusteru. Z příkazového řádku prostředí PowerShell, spusťte toto:
 
 ```
     .\ SubmitStarccmJob.ps1 <model> <nbNodes> <nbCoresPerNode>
 ```
 
 ## <a name="stop-nodes"></a>Zastavit uzly
-Později po dokončení testů, můžete použít následující příkazy prostředí PowerShell HPC Pack zastavení a spuštění uzly:
+Později na po dokončení testů, můžete použít následující příkazy toostop prostředí HPC Pack PowerShell hello a spustit uzly:
 
 ```
     Stop-HPCIaaSNode.ps1 -Name <prefix>-00*

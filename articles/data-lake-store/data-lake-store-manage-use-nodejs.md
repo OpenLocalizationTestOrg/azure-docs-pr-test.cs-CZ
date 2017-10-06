@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Data Lake Store pomocí sady Azure SDK pro Node.js | Microsoft Docs"
-description: "Další informace o použití Node.js pro práci s účty Data Lake Store a systému souborů."
+title: "aaaGet začít s Azure Data Lake Store pomocí sady Azure SDK pro Node.js | Microsoft Docs"
+description: "Zjistěte, jak toouse toowork Node.js s účty Data Lake Store a hello systému souborů."
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/06/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c7a2e6ca061bbfa077592efb73d592906c3d070
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce36a2e0de4e091a4e85ed784a3381415ef6f9e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-sdk-for-nodejs"></a>Začínáme s Azure Data Lake Store pomocí sady Azure SDK pro Node.js
 > [!div class="op_single_selector"]
@@ -34,31 +34,31 @@ ms.lasthandoff: 07/11/2017
 > 
 
 > [!NOTE]
-> Pro odesílání a stahování velké množství dat (velkých souborů, velký počet souborů nebo obě), doporučujeme použít [Python SDK](data-lake-store-get-started-python.md), [.NET SDK](data-lake-store-get-started-net-sdk.md), [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md), nebo [prostředí Azure PowerShell](data-lake-store-get-started-powershell.md). Tyto možnosti mají lepší výkon, protože používají více vláken, aby přesun dat probíhal paralelně.
+> Pro odesílání a stahování velké množství dat (velkých souborů, velký počet souborů nebo obě), doporučujeme použít hello [Python SDK](data-lake-store-get-started-python.md), hello [.NET SDK](data-lake-store-get-started-net-sdk.md), [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md), nebo [prostředí Azure PowerShell](data-lake-store-get-started-powershell.md). Tyto možnosti mají lepší výkon, které používají více přesun dat hello tooparallelize vláken.
 > 
 > 
 
-Naučte se používat sadu Azure SDK pro Node.js k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace týkající se Data Lake Store najdete v tématu [Přehled Data Lake Store](data-lake-store-overview.md). V současné době podporuje sadu SDK
+Zjistěte, jak toouse hello Azure SDK pro Node.js toocreate účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace týkající se Data Lake Store najdete v tématu [Přehled Data Lake Store](data-lake-store-overview.md). V současné době podporuje SDK hello
 
 * **Verze Node.js: 0.10.0 nebo vyšší**
 * **Verze rozhraní REST API pro Účet: 2015-10-01-preview**
 * **Verze rozhraní REST API pro systém souborů: 2015-10-01-preview**
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto článku měli tyto položky:
+Před zahájením tohoto článku, musíte mít následující hello:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Vytvoření aplikace Azure Active Directory**. Aplikaci Azure AD použijete k ověření aplikace Data Lake Store ve službě Azure AD. Existují různé přístupy k ověřování ve službě Azure AD, jsou to **ověřování koncového uživatele** nebo **ověřování služba-služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory**. Hello Azure AD aplikace tooauthenticate hello Data Lake Store aplikaci můžete používat s Azure AD. Existují různé přístupy tooauthenticate s Azure AD, které jsou **ověřování koncového uživatele** nebo **service-to-service ověřování**. Pokyny a další informace o tooauthenticate, najdete v části [ověřování koncového uživatele](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Service-to-service ověřování](data-lake-store-authenticate-using-active-directory.md).
 
-## <a name="how-to-install"></a>Postup instalace
+## <a name="how-tooinstall"></a>Jak tooInstall
 ```bash
 npm install azure-arm-datalake-store
 ```
 
 ## <a name="authenticate-using-azure-active-directory"></a>Ověření pomocí služby Azure Active Directory
-Níže zobrazené fragmenty kódu ukazují dva samostatné způsoby ověřování s Data Lake Store pomocí služby Azure AD. Podrobné informace o různých metodách ověřování s Data Lake Store, naleznete v části [ověřit s Data Lake Store pomocí Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Hello níže zobrazené fragmenty kódu ukazují dva samostatné způsoby ověřování s Data Lake Store pomocí služby Azure AD. Podrobné informace o různých toouse metody pro ověřování s Data Lake Store, naleznete v části [ověřit s Data Lake Store pomocí Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
 
-Následující fragment také vyžaduje zadání jako název domény služby Azure AD, ID klienta pro aplikací Azure AD, atd. Tyto podrobnosti můžete načíst z Azure AD aplikace, která je nutné vytvořit, podrobnosti, které jsou součástí výše uvedený odkaz.
+Následující fragment Hello také vyžaduje zadání jako název domény služby Azure AD, ID klienta pro aplikací Azure AD, atd. Tyto podrobnosti můžete načíst z aplikace Azure AD, která je nutné vytvořit, hello podrobnosti, které jsou součástí výše uvedený odkaz.
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
@@ -68,7 +68,7 @@ Následující fragment také vyžaduje zadání jako název domény služby Azu
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## <a name="create-the-data-lake-store-clients"></a>Vytvořit klienti Data Lake Store
+## <a name="create-hello-data-lake-store-clients"></a>Vytvořit hello Data Lake Store klienti
 ```javascript
 var adlsManagement = require("azure-arm-datalake-store");
 var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, "your-subscription-id");
@@ -82,7 +82,7 @@ var resourceGroupName = 'testrg';
 var accountName = 'testadlsacct';
 var location = 'eastus2';
 
-// account object to create
+// account object toocreate
 var accountToCreate = {
   tags: {
     testtag1: 'testvalue1',
@@ -95,14 +95,14 @@ var accountToCreate = {
 client.account.create(resourceGroupName, accountName, accountToCreate, function (err, result, request, response) {
   if (err) {
     console.log(err);
-    /*err has reference to the actual request and response, so you can see what was sent and received on the wire.
-      The structure of err looks like this:
+    /*err has reference toohello actual request and response, so you can see what was sent and received on hello wire.
+      hello structure of err looks like this:
       err: {
         code: 'Error Code',
         message: 'Error Message',
-        body: 'The response body if any',
-        request: reference to a stripped version of http request
-        response: reference to a stripped version of the response
+        body: 'hello response body if any',
+        request: reference tooa stripped version of http request
+        response: reference tooa stripped version of hello response
       }
     */
   } else {

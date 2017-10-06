@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Netsuite | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Netsuite."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Netsuite."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a19ab310212b93a53495a6fc6c25c77dfb82e79
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7cf205d5bda5333872fb589e57f4779a8670b595
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Kurz: Azure Active Directory integrace s Netsuite
 
-V tomto kurzu zjistěte, jak integrovat Netsuite s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Netsuite s Azure Active Directory (Azure AD).
 
-Integrace Netsuite s Azure AD poskytuje následující výhody:
+Integrace Netsuite s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Netsuite
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Netsuite (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooNetsuite
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooNetsuite (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Netsuite, potřebujete následující položky:
+Integrace služby Azure AD s Netsuite tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Netsuite jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Netsuite z Galerie
+1. Přidání Netsuite z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-netsuite-from-the-gallery"></a>Přidání Netsuite z Galerie
-Při konfiguraci integrace Netsuite do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Netsuite z galerie.
+## <a name="adding-netsuite-from-hello-gallery"></a>Přidání Netsuite z Galerie hello
+tooconfigure hello integrace Netsuite do Azure AD, je nutné tooadd Netsuite hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Netsuite z galerie, proveďte následující kroky:**
+**tooadd Netsuite z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **novou aplikaci** hello nahoře hello dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Netsuite**.
+4. Hello vyhledávacího pole zadejte **Netsuite**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_search.png)
 
-5. Na panelu výsledků vyberte **Netsuite**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **Netsuite**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Netsuite podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Netsuite je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Netsuite musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Netsuite je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Netsuite musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Netsuite.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Netsuite.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Netsuite, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s Netsuite, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Netsuite](#creating-a-netsuite-test-user)**  – Pokud chcete mít protějšek Britta Simon v Netsuite propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Netsuite](#creating-a-netsuite-test-user)**  -toohave protějšek Britta Simon v Netsuite, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Netsuite.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Netsuite.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Netsuite, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Netsuite, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **Netsuite** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Netsuite** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_samlbase.png)
 
-3. Na **Netsuite domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **Netsuite domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_url.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs``https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
+    V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzor: `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs``https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné hodnoty. Aktualizujte hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Netsuite](http://www.netsuite.com/portal/services/support.shtml) získat tuto hodnotu.
+    > Tato hodnota není skutečné hodnoty. Aktualizace hello hodnotu s hello skutečná adresa URL odpovědi. Obraťte se na [tým podpory Netsuite](http://www.netsuite.com/portal/services/support.shtml) tooget tuto hodnotu.
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_certificate.png) 
 
@@ -123,33 +123,33 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_general_400.png)
 
-6. Na **Netsuite konfigurace** klikněte na tlačítko **konfigurace Netsuite** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **Netsuite konfigurace** klikněte na tlačítko **konfigurace Netsuite** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_configure.png) 
 
 7. V prohlížeči otevřete novou kartu a přihlaste se k serveru vaší společnosti Netsuite jako správce.
 
-8. Na panelu nástrojů v horní části stránky klikněte na tlačítko **instalace**, pak klikněte na tlačítko **Správce instalace**.
+8. Na hello nástrojů v horní části hello hello stránky, klikněte na **instalace**, pak klikněte na tlačítko **Správce instalace**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
-9. Z **úlohy nastavení** seznamu, vyberte **integrace**.
+9. Z hello **úlohy nastavení** seznamu, vyberte **integrace**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-integration.png)
 
-10. V **spravovat ověřování** klikněte na tlačítko **SAML jednotné přihlašování**.
+10. V hello **spravovat ověřování** klikněte na tlačítko **SAML jednotné přihlašování**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-saml.png)
 
-11. Na **SAML instalace** proveďte následující kroky:
+11. Na hello **SAML instalace** proveďte hello následující kroky:
    
-    a. Kopírování **SAML jeden přihlašování adresa URL služby** z hodnoty **Stručná referenční příručka** části **konfigurovat přihlášení** a vložte ji do **stránka přihlášení zprostředkovatele Identity** pole Netsuite.
+    a. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hodnoty **Stručná referenční příručka** části **konfigurovat přihlášení** a vložte jej do hello **zprostředkovatele Identity Přihlašovací stránka** pole Netsuite.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/ns-saml-setup.png)
   
     b. V Netsuite, vyberte **primární metoda ověřování**.
 
-    c. Pro pole s názvem bez přípony **metadat zprostředkovatelů Identity SAMLV2**, vyberte **nahrát soubor metadat IDP**. Pak klikněte na tlačítko **Procházet** nahrát soubor metadat, který jste si stáhli z portálu Azure.
+    c. Pro hello pole s názvem bez přípony **metadat zprostředkovatelů Identity SAMLV2**, vyberte **nahrát soubor metadat IDP**. Pak klikněte na tlačítko **Procházet** tooupload hello metadata souboru, který jste stáhli z portálu Azure.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/ns-sso-setup.png)
 
@@ -159,37 +159,37 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
 
-13. Pro **název atributu** pole, zadejte v `account`. Pro **hodnota atributu** pole, zadejte v ID Netsuite účtu. Tato hodnota je konstanta a změňte pomocí účtu. Pokyny o tom, jak najít ID vašeho účtu jsou uvedeny níže:
+13. Pro hello **název atributu** pole, zadejte v `account`. Pro hello **hodnota atributu** pole, zadejte v ID Netsuite účtu. Tato hodnota je konstanta a změňte pomocí účtu. Pokyny, jak toofind vaše ID pro účet jsou popsány níže:
 
       ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
 
-    a. V Netsuite, klikněte na **instalační program** v horním navigačním panelu nabídce.
+    a. V Netsuite, klikněte na **instalace** nabídce hello v horním navigačním panelu.
 
-    b. Klikněte v části **instalační úlohy, které** levé navigační nabídky, vyberte **integrace** a klikněte na **webové služby Předvolby**.
+    b. Klikněte v části hello **úlohy nastavení** části hello levé navigační nabídce vyberte hello **integrace** a klikněte na **webové služby Předvolby**.
 
-    c. Vaše ID pro účet Netsuite zkopírujte a vložte ji do **hodnota atributu** pole ve službě Azure AD.
+    c. Vaše ID pro účet Netsuite zkopírujte a vložte ho do hello **hodnota atributu** pole ve službě Azure AD.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-account-id.png)
 
-14. Předtím, než mohou uživatelé provádět jednotné přihlašování do Netsuite, je třeba nejprve je přiřadit v Netsuite příslušná oprávnění. Postupujte podle pokynů pro toto přiřazení oprávnění.
+14. Předtím, než mohou uživatelé provádět jednotné přihlašování do Netsuite, je třeba nejprve je přiřadit hello v Netsuite příslušná oprávnění. Postupujte podle pokynů hello níže tooassign tato oprávnění.
 
-    a. V nabídce horním navigačním panelu klikněte na tlačítko **instalace**, pak klikněte na tlačítko **Správce instalace**.
+    a. V nabídce hello horním navigačním panelu klikněte na tlačítko **instalace**, pak klikněte na tlačítko **Správce instalace**.
       
       ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
-    b. V levém navigačním nabídce vyberte **uživatele/role**, pak klikněte na tlačítko **spravovat role**.
+    b. V levém navigačním nabídce hello vyberte **uživatele/role**, pak klikněte na tlačítko **spravovat role**.
       
       ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-manage-roles.png)
 
     c. Klikněte na tlačítko **novou roli**.
 
-    d. Zadejte **název** pro novou roli a vyberte **jednoho přihlášení pouze** zaškrtávací políčko.
+    d. Zadejte **název** pro novou roli a vyberte hello **jednoho přihlášení pouze** zaškrtávací políčko.
       
       ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
 
     e. Klikněte na **Uložit**.
 
-    f. V nabídce v horní části, klikněte na tlačítko **oprávnění**. Pak klikněte na tlačítko **instalační program**.
+    f. V nabídce hello hello nahoře, klikněte na tlačítko **oprávnění**. Pak klikněte na tlačítko **instalační program**.
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
 
@@ -197,11 +197,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     h. Klikněte na **Uložit**.
 
-    i. V nabídce horním navigačním panelu klikněte na tlačítko **instalace**, pak klikněte na tlačítko **Správce instalace**.
+    i. V nabídce hello horním navigačním panelu klikněte na tlačítko **instalace**, pak klikněte na tlačítko **Správce instalace**.
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
-    j. V levém navigačním nabídce vyberte **uživatele/role**, pak klikněte na tlačítko **spravovat uživatele**.
+    j. V levém navigačním nabídce hello vyberte **uživatele/role**, pak klikněte na tlačítko **spravovat uživatele**.
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-manage-users.png)
 
@@ -209,70 +209,70 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-edit-user.png)
 
-    l. V dialogovém okně rolí vyberte roli, který jste vytvořili a klikněte na tlačítko **přidat**.
+    l. V dialogovém okně hello rolí, vyberte roli hello, který jste vytvořili a klikněte na tlačítko **přidat**.
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
 
     m. Klikněte na **Uložit**.
     
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/create_aaduser_01.png) 
 
-2.  Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2.  toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na položku **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části hello hello dialogového okna, klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-netsuite-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="creating-a-netsuite-test-user"></a>Vytvoření zkušebního uživatele Netsuite
 
 V této části se uživatel volá Britta Simon vytvoří v Netsuite. Netsuite podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
-Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v Netsuite ještě neexistuje, vytvoří se při pokusu o přístup k Netsuite novou.
+Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v Netsuite ještě neexistuje, je vytvořen nový pokusíte-li tooaccess Netsuite.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Netsuite.
+V této části povolíte tak, že udělíte přístup tooNetsuite toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Netsuite, proveďte následující kroky:**
+**tooassign Britta Simon tooNetsuite, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Netsuite**.
+2. V seznamu aplikace hello vyberte **Netsuite**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -280,7 +280,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -288,13 +288,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-K testování vaše nastavení jednotného přihlašování, otevřete Panel přístupu na [https://myapps.microsoft.com](https://myapps.microsoft.com/), přihlaste se k testovací účet a klikněte na tlačítko **Netsuite**.
+tootest jeden přihlašování nastavení, otevřete hello přístupovému panelu na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com/), přihlaste se k hello testovací účet a klikněte na tlačítko **Netsuite**.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Konfiguraci zřizování uživatelů](active-directory-saas-netsuite-provisioning-tutorial.md)
 

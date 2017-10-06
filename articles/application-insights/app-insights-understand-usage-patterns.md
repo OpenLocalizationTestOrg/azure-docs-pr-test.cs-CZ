@@ -1,6 +1,6 @@
 ---
-title: "Nálevky Azure Application Insights"
-description: "Zjistěte, jak nálevky můžete zjistit, jak jsou zákazníci interakci s vaší aplikací."
+title: "aaaAzure nálevky Application Insights"
+description: "Zjistěte, jak můžete pomocí nálevky toodiscover jak zákazníci komunikují s vaší aplikací."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: cfreeman
-ms.openlocfilehash: 85f47daaaff8967eb83c330bab839023f128b486
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a90cfd11cb193e303136504df44008ffd04a290
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Zjistit, jak zákazníci používají aplikace s nálevky statistiky aplikace
+# <a name="discover-how-customers-are-using-your-application-with-hello-application-insights-funnels"></a>Zjistit, jak zákazníci používají aplikace s hello nálevky Application Insights
 
-Principy zkušeností zákazníků je nesmírně důležité k vaší firmě. Pokud vaše aplikace zahrnuje několik fází, musíte vědět, pokud se většina zákazníků pokročíte prostřednictvím celý proces, nebo pokud jsou jejich ukončení procesu v určitém okamžiku. Průběh prostřednictvím sérii kroků ve webové aplikaci se označuje jako "trychtýřového grafu". Můžete nálevky Statistika aplikaci a získáte přehled o vašich uživatelů a monitorování podrobné převod sazby. 
+Principy zkušeností zákazníků je hello velký důraz tooyour firmy. Pokud vaše aplikace zahrnuje několik fází, tooknow je nutné, pokud se většina zákazníků pokročíte prostřednictvím hello celý proces, nebo pokud jsou jejich ukončení procesu hello v určitém okamžiku. rozšiřování Hello prostřednictvím sérii kroků ve webové aplikaci se označuje jako "trychtýřového grafu". Můžete použít hello Application Insights nálevky toogain přehledy o vašich uživatelů a monitorování podrobné převod sazby. 
 
-## <a name="get-started-with-the-funnels-blade"></a>Začínáme s nálevky okna
-Nejjednodušší způsob, jak získat informace o nálevky je provedeme příklad. Následující ilustrace ukazují vlastníci kroky elektronické obchodování bude trvat, než se dozvíte, jak zákazníkům komunikovat s touto webovou aplikací.  
+## <a name="get-started-with-hello-funnels-blade"></a>Začínáme s okno nálevky hello
+Hello nejjednodušší způsob, jak toolearn o nálevky je toowalk, když příklad. Hello následující obrázky ukazují hello vlastníci kroky elektronické obchodování bude trvat, než se toolearn jak zákazníkům komunikovat s touto webovou aplikací.  
 
 ### <a name="create-your-funnel"></a>Vytvoření vaší trychtýřového grafu
-Než vytvoříte vaší trychtýřového grafu, musíte rozhodnout na otázku, kterou chcete odpovědět. Například můžete chtít vědět, jak mnoho zákazníků zobrazení vaší domovské stránce kliknutím na oznámení o inzerovaném programu. V tomto příkladu vlastníci společnosti Fabrikam Fiber zajímat, do jaké procento zákazníci, kteří nákup po přidání položky do jejich nákupní košík během poslední měsíc.
+Než vytvoříte vaší trychtýřového grafu, je třeba toodecide na otázku hello chcete tooanswer. Například můžete tooknow jak mnoho zákazníků zobrazení vaší domovské stránce kliknutím na oznámení o inzerovaném programu. V tomto příkladu má hello vlastníci hello společnosti Fabrikam Fiber tooknow hello podíl zákazníci, kteří nákup po přidání položky tootheir nákupní košík během hello poslední měsíc.
 
-Tady jsou kroky, které budou chtít vytvořit jejich trychtýřového grafu.
+Tady jsou kroky hello jejich trvat toocreate jejich trychtýřového grafu.
 
-1. Klikněte na tlačítko Nový v okně nálevky.
-1. Vyberte časové rozmezí "Poslední měsíc" z **časový rozsah** rozevíracího seznamu. 
-1. Vyberte **stránky produktu** událost z **kroku 1** rozevíracího seznamu. 
-1. Vyberte **přidat nákupního košíku** událost z **kroku 2** rozevíracího seznamu.
-1. Vyberte **kliknutím na nákup** událost z **krok 3** rozevíracího seznamu.
-1. Přidat název do trychtýřového grafu a klikněte na tlačítko **Uložit**.
+1. Klikněte na tlačítko Nový hello v okně nálevky hello.
+1. Vyberte časové rozmezí hello "Poslední měsíc" z hello **časový rozsah** rozevíracího seznamu. 
+1. Vyberte hello **stránky produktu** událost z hello **kroku 1** rozevíracího seznamu. 
+1. Vyberte hello **přidat tooshopping košíku** událost z hello **kroku 2** rozevíracího seznamu.
+1. Vyberte hello **kliknutím na nákup** událost z hello **krok 3** rozevíracího seznamu.
+1. Přidat trychtýřového grafu s názvem toohello a klikněte na **Uložit**.
 
-Následující obrázek ukazuje, že data v okně nálevky generuje. Tady Fabrikam můžete zobrazit vlastníky během posledního týdne dokončit 22.7 % zákazníků, kteří přidat položku do jejich nákupní košík nákupu. Můžete také zobrazit, 1 % zákazníkům před hostujících stránky produktu a 20 % zákazníkům odhlášení po dokončení jejich nákup kliknutí na oznámení o inzerovaném programu.
+Hello následující obrázek ukazuje, že generuje okno nálevky hello dat hello. Z hello sem můžete zobrazit vlastníci společnosti Fabrikam, během posledního týdne hello, 22.7 % zákazníků, kteří přidáni tootheir položky nákupního košíku dokončené hello nákupu. Můžete také zobrazit, 1 % hello zákazníků před hostujících stránku hello produktů a 20 % zákazníkům odhlášení po dokončení jejich nákup kliknutí na oznámení o inzerovaném programu.
 
 
 ![Okno nálevky s daty](./media/app-insights-understand-usage-patterns/funnel1.png)

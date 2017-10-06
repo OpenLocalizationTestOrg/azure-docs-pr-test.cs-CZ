@@ -1,6 +1,6 @@
 ---
-title: "Aplikace a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory | Microsoft Docs"
-description: "Pomocí podmíněného řízení přístupu Azure Active Directory ověří za určitých podmínek, když se ověřuje uživatele a umožnit přístup k aplikaci."
+title: "aaaApplications a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory | Microsoft Docs"
+description: "Pomocí podmíněného řízení přístupu Azure Active Directory zjišťuje konkrétní podmínky během ověřování uživatele hello a tooallow přístup k aplikaci."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,27 +15,27 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8614660f7c98af7b4e6d50348775495c67ae1cc8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ca20853bb9f4b22d0b88ddd2f051d658e0d88cf3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>Aplikace a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory
 
 Pravidla podmíněného přístupu jsou podporovány v Azure Active Directory (Azure AD)-připojený aplikace, předem integrovaných federované software jako služba (SaaS) aplikace, aplikace, které používají heslo jednotné přihlašování (SSO),-obchodní aplikace a aplikace, které používají Azure AD Application Proxy. Podrobný seznam aplikací, které můžete použít podmíněný přístup, najdete v části [povolit služby s podmíněným přístupem](active-directory-conditional-access-technical-reference.md). Podmíněný přístup funguje i u mobilních a desktopových aplikací, které používají moderní ověřování. V tomto článku nabídneme jak podmíněný přístup funguje v mobilních a desktopových aplikací.
 
-V aplikacích, které používají moderní ověřování můžete použít Azure AD přihlašovací stránky. S přihlašovací stránkou uživatel vyzván k služby Multi-Factor authentication. Zpráva se zobrazí, pokud je blokován přístup uživatele. Moderní ověřování je požadované pro zařízení k ověřování s Azure AD, tak, aby se vyhodnocují zásady podmíněného přístupu podle zařízení.
+V aplikacích, které používají moderní ověřování můžete použít Azure AD přihlašovací stránky. S přihlašovací stránkou uživatel vyzván k služby Multi-Factor authentication. Zpráva se zobrazí, pokud je blokován přístup hello uživatele. Moderní ověřování je vyžadována pro hello tooauthenticate zařízení s Azure AD, tak, aby se vyhodnocují zásady podmíněného přístupu podle zařízení.
 
-Je důležité vědět, které aplikace můžete použít pravidla podmíněného přístupu a kroky, které možná budete muset provést k zajištění zabezpečení další vstupní body aplikace.
+Je důležité tooknow aplikace, které můžete použít pravidla podmíněného přístupu a hello kroky, které můžete potřebovat tootake toosecure další vstupní body aplikace.
 
 ## <a name="applications-that-use-modern-authentication"></a>Aplikace, které používají moderní ověřování
 > [!NOTE]
-> Pokud máte zásadu podmíněného přístupu ve službě Azure AD, který má ekvivalentní v Office 365, nakonfigurujte obě zásady podmíněného přístupu. To platí, například zásady podmíněného přístupu pro Exchange Online nebo SharePoint Online.
+> Pokud máte zásadu podmíněného přístupu ve službě Azure AD, který má ekvivalentní v Office 365, nakonfigurujte obě zásady podmíněného přístupu. To platí, například tooconditional zásady přístupu pro Exchange Online nebo SharePoint Online.
 >
 >
 
-Následující aplikace podporují podmíněný přístup pro Office 365 a další služby Azure AD připojené aplikace:
+Hello následující aplikace podporují podmíněný přístup pro Office 365 a další služby Azure AD připojené aplikace:
 
 
 | Cílová služba| Platforma| Aplikace |
@@ -48,12 +48,12 @@ Následující aplikace podporují podmíněný přístup pro Office 365 a dalš
 | Office 365 Exchange Online| Windows 8.1, Windows 7| Outlook 2016, aplikace Outlook 2013 (s moderní ověřování), Skype pro firmy (s moderní ověřování)|
 | Office 365 Exchange Online| iOS| Mobilní aplikace Outlook|
 | Office 365 Exchange Online| Mac OS X| Outlook 2016 (Office pro systému macOS)|
-| Office 365 Sharepointu Online| Windows 10| Aplikace Office 2016, Office univerzální aplikace, Office 2013 (s moderní ověřování), OneDrive synchronizace klienta (najdete v části [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podporu skupiny Office plánované do budoucna plánované do budoucna podpora aplikací služby SharePoint|
+| Office 365 Sharepointu Online| Windows 10| Aplikace Office 2016, Office univerzální aplikace, Office 2013 (s moderní ověřování), OneDrive synchronizace klienta (v tématu [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podporu skupiny Office plánované pro budoucí hello plánované podpora aplikací služby SharePoint pro budoucí hello|
 | Office 365 Sharepointu Online| Windows 8.1, Windows 7| Aplikace Office 2016, Office 2013 (s moderní ověřování), Onedrivu synchronizovat klienta (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|
 | Office 365 Sharepointu Online| iOS, Android| Mobilní aplikace Office|
-| Office 365 Sharepointu Online| Mac OS X| Office 2016 pro systému macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podporu plánované v budoucnosti|
+| Office 365 Sharepointu Online| Mac OS X| Office 2016 pro systému macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podporu plánované pro budoucí hello|
 | Yammer Office 365| Windows 10, iOS, Android| Aplikace Yammer Office|
-| Služba PowerBI| Windows 10, Windows 8.1, Windows 7 a iOS| Aplikaci PowerBI. Power BI aplikace pro Android v současné době nepodporuje podmíněného přístupu podle zařízení.|
+| Služba PowerBI| Windows 10, Windows 8.1, Windows 7 a iOS| Aplikaci PowerBI. Hello Power BI aplikace pro Android v současné době nepodporuje podmíněného přístupu podle zařízení.|
 | Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS a Android| Visual Studio Team Services aplikace|
 
 
@@ -64,24 +64,24 @@ Následující aplikace podporují podmíněný přístup pro Office 365 a dalš
 
 
 ## <a name="applications-that-do-not-use-modern-authentication"></a>Aplikace, které nepoužívají moderní ověřování
-V současné době je nutné použít jiné metody blokovat přístup k aplikacím, které nepoužívají moderní ověřování. Pravidla přístupu pro aplikace, které nepoužívají moderní ověřování vynucovat podmíněný přístup. Toto je primárně zabývat pro přístup k systému Exchange a SharePoint. Většina starších verzí aplikací používají starší protokoly řízení přístupu.
+V současné době je nutné použít jiné metody tooblock přístup tooapps, který nepoužívejte moderní ověřování. Pravidla přístupu pro aplikace, které nepoužívají moderní ověřování vynucovat podmíněný přístup. Toto je primárně zabývat pro přístup k systému Exchange a SharePoint. Většina starších verzí aplikací používají starší protokoly řízení přístupu.
 
 ### <a name="control-access-in-office-365-sharepoint-online"></a>Řízení přístupu v Office 365 Sharepointu Online
-Zastaralé protokoly pro přístup k Sharepointu můžete zakázat pomocí rutiny Set-SPOTenant. Chcete-li zabránit klientům Office, které používají jiných než moderních ověřovacích protokolů v přístupu k prostředkům služby SharePoint Online, použijte tuto rutinu.
+Zastaralé protokoly pro přístup k Sharepointu můžete zakázat pomocí rutiny Set-SPOTenant hello. Pomocí této rutiny tooprevent Office klienty, kteří používají jiných než moderních ověřovacích protokolů v přístupu k prostředkům služby SharePoint Online.
 
 **Příklad**:`Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
 
 ### <a name="control-access-in-office-365-exchange-online"></a>Řízení přístupu v Office 365 Exchange Online
-Exchange nabízí dvou hlavních kategorií protokolů. Projděte si následující možnosti a pak vyberte zásadu, která je pro organizaci správné.
+Exchange nabízí dvou hlavních kategorií protokolů. Zkontrolujte hello následující možnosti a pak vyberte hello zásad, který je pro organizaci správné.
 
-* **Exchange ActiveSync**. Ve výchozím nastavení vynucovat zásady podmíněného přístupu pro službu Multi-Factor authentication a umístění pro Exchange ActiveSync. Je třeba chránit přístup k těmto službám, buď přímo konfigurací zásad protokolu Exchange ActiveSync, nebo pomocí blokování protokolu Exchange ActiveSync pomocí pravidel Active Directory Federation Services (AD FS).
-* **Zastaralé protokoly**. Můžete blokovat starších protokolů se službou AD FS. To blokuje přístup na starší klienty Office, jako je například Office 2013 bez moderní ověřování povoleno a dřívějších verzí sady Office.
+* **Exchange ActiveSync**. Ve výchozím nastavení vynucovat zásady podmíněného přístupu pro službu Multi-Factor authentication a umístění pro Exchange ActiveSync. Je nutné tooprotect přístup toothese služby konfigurace přímo zásad protokolu Exchange ActiveSync, nebo zasláním blokování protokolu Exchange ActiveSync pomocí pravidel Active Directory Federation Services (AD FS).
+* **Zastaralé protokoly**. Můžete blokovat starších protokolů se službou AD FS. To blokuje přístup tooolder Office klienty, například Office 2013 bez moderní ověřování povoleno a dřívějších verzí sady Office.
 
-### <a name="use-ad-fs-to-block-legacy-protocol"></a>Blokovat starší verze protokolu pomocí služby AD FS
-Následující příklad autorizační pravidla vystavování můžete použít k blokování přístupu starší verze protokolu na úrovni služby AD FS. Vyberte z dvě běžné konfigurace.
+### <a name="use-ad-fs-tooblock-legacy-protocol"></a>Použití služby AD FS tooblock starší verze protokolu
+Můžete použít následující příklad vystavování autorizační pravidla tooblock starší verze protokolu přístupu na úrovni hello služby AD FS hello. Vyberte z dvě běžné konfigurace.
 
-#### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-the-intranet"></a>Možnost 1: Povolit Exchange ActiveSync a povolit starší verze aplikace, ale jenom na intranetu
-Při použití následující tři pravidla pro vztah důvěryhodnosti předávající strany pro aplikaci Microsoft Office 365 Identity Platform, provoz protokolu Exchange ActiveSync a prohlížeče a přenosy moderní ověřování služby AD FS, máte přístup. Starší verze aplikace jsou blokovaná z extranetu.
+#### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-hello-intranet"></a>Možnost 1: Povolení protokolu Exchange ActiveSync a povolit starší verze aplikace, ale jenom na intranetu hello
+Použitím hello následující tři pravidla toohello vztah důvěryhodnosti předávající strany služby AD FS pro Microsoft Office 365 Identity Platform, provoz protokolu Exchange ActiveSync, a prohlížeče a přenosy dat moderní ověřování, máte přístup. Starší verze aplikace jsou blokovaná z extranetu hello.
 
 ##### <a name="rule-1"></a>Pravidlo 1
     @RuleName = "Allow all intranet traffic"
@@ -100,7 +100,7 @@ Při použití následující tři pravidla pro vztah důvěryhodnosti předáva
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 #### <a name="option-2-allow-exchange-activesync-and-block-legacy-apps"></a>Možnost 2: Povolit Exchange ActiveSync a blokovat starší verze aplikace
-Při použití následující tři pravidla pro vztah důvěryhodnosti předávající strany pro aplikaci Microsoft Office 365 Identity Platform, provoz protokolu Exchange ActiveSync a prohlížeče a přenosy moderní ověřování služby AD FS, máte přístup. Starší verze aplikace jsou blokovaná z libovolného místa.
+Použitím hello následující tři pravidla toohello vztah důvěryhodnosti předávající strany služby AD FS pro Microsoft Office 365 Identity Platform, provoz protokolu Exchange ActiveSync, a prohlížeče a přenosy dat moderní ověřování, máte přístup. Starší verze aplikace jsou blokovaná z libovolného místa.
 
 ##### <a name="rule-1"></a>Pravidlo 1
     @RuleName = "Allow all intranet traffic only for browser and modern authentication clients"
@@ -124,7 +124,7 @@ Při použití následující tři pravidla pro vztah důvěryhodnosti předáva
 
 ## <a name="supported-browsers-for-device-based-policies"></a>Podporované prohlížeče pro zařízení na základě zásad 
 
-Pokud Azure AD můžete identifikovat a ověřovat zařízení, může získat pouze pro zařízení na základě zásady, které kontrolují přístup pro dodržování předpisů pro zařízení a připojení k doméně. Při většina kontroly, jako je umístění a pracovní MFA na většině zařízení a prohlížeče zásady zařízení vyžadují verze operačního systému a prohlížeče, které jsou uvedeny níže. Pro uživatele na nepodporované prohlížeče nebo operační systémy je blokován přístup, když se zásada zařízení na místě. 
+Pokud Azure AD můžete identifikovat a ověřovat hello zařízení, může získat pouze přístup pro zařízení na základě zásady, které kontrolují pro dodržování předpisů pro zařízení a připojení k doméně. Při většina kontroly, jako je umístění a pracovní MFA na většině zařízení a prohlížeče zásady zařízení vyžadují verze hello operačního systému a prohlížeče, které jsou uvedeny níže. Pro uživatele na nepodporované prohlížeče nebo hello operačních systémů je blokován přístup po zavedené zásady zařízení. 
 
 | Operační systém                     | Prohlížeče                 | Podpora     |
 | :--                    | :--                      | :-:         |
@@ -143,7 +143,7 @@ Pokud Azure AD můžete identifikovat a ověřovat zařízení, může získat p
 | Mac OS                 | Chrome                   | Již brzy |
 
 > [!NOTE]
-> Podpora Chrome, které musí být pomocí Windows 10 Creators Update a nainstalovat nalezeno rozšíření [zde](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+> Podpora Chrome, používejte Windows 10 Creators Update a instalace rozšíření hello nalezeno [zde](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: "Nakonfigurujte časový limit nečinnosti TCP nástroje pro vyrovnávání zatížení | Microsoft Docs"
+title: "časový limit nečinnosti TCP nástroje pro vyrovnávání zatížení aaaConfigure | Microsoft Docs"
 description: "Nakonfigurujte časový limit nečinnosti TCP nástroje pro vyrovnávání zatížení"
 services: load-balancer
 documentationcenter: na
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-ms.openlocfilehash: d040fe6580b8ae777aecc9dd385ed33861530c38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bf0704b891f708e0a5bd7aa827441930f51cfaf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurace nastavení časového limitu nečinnosti TCP pro službu Vyrovnávání zatížení Azure
 
-Ve výchozí konfiguraci Vyrovnávání zatížení Azure má časový limit nečinnosti nastavení 4 minut. Je-li určité době nečinnosti delší než hodnota časového limitu, neexistuje žádná záruka, který se spravuje relace TCP nebo HTTP mezi klientem a cloudové služby.
+Ve výchozí konfiguraci Vyrovnávání zatížení Azure má časový limit nečinnosti nastavení 4 minut. Pokud je delší než hodnota časového limitu hello určité době nečinnosti, není zaručeno, že hello TCP nebo HTTP relace zachovaný mezi klientem hello a cloudové služby.
 
-Když se připojení uzavře, klientské aplikace může zobrazit následující chybová zpráva: "základní připojení bylo ukončeno: byl očekáván být zachováno připojení bylo ukončeno serverem."
+Při hello připojení je ukončeno, klientská aplikace může zobrazit hello následující chybová zpráva: "hello základní připojení bylo ukončeno: připojení, který byl očekáván toobe zachovány zachování připojení bylo ukončeno serverem hello."
 
-Běžnou praxí je použít udržování připojení TCP. Tento postup zachová připojení active delší dobu. Další informace najdete v tématu tyto [.NET příklady](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). S udržování připojení povolena, jsou pakety odesílány době nečinnosti na připojení. Tyto udržovací pakety zajistěte, aby hodnota časového limitu nečinnosti není přístupný a se zachová připojení na dlouhou dobu.
+Běžnou praxí je toouse udržování připojení TCP. Tento postup zachová připojení hello active delší dobu. Další informace najdete v tématu tyto [.NET příklady](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). S udržování připojení povolena, jsou pakety odesílány době nečinnosti hello připojení. Tyto udržovací pakety zajistěte, aby hodnota časového limitu nečinnosti hello není přístupný a se zachová připojení hello na dlouhou dobu.
 
-Toto nastavení funguje pro příchozí připojení pouze. Aby nedošlo ke ztrátě připojení, musíte nakonfigurovat interval menší než nastavení pro časový limit nečinnosti udržování připojení TCP nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu takových scénářů, přidali jsme podporu pro konfigurovat časový limit nečinnosti. Nyní ji můžete nastavit po dobu 4 až 30 minut.
+Toto nastavení funguje pro příchozí připojení pouze. tooavoid ztráta hello připojení, je nutné nakonfigurovat hello udržování připojení protokolu TCP s intervalem menší než hello časový limit nečinnosti nastavení, nebo zvyšte hello časový limit nečinnosti hodnota. toosupport takových scénářů přidali jsme podporu pro konfigurovat časový limit nečinnosti. Nyní ji můžete nastavit po dobu 4 minuty too30.
 
-Udržování připojení TCP funguje dobře pro scénáře, kdy výdrž baterie není omezení. Není doporučeno pro mobilní aplikace. Používání udržování v mobilní aplikaci TCP můžou vyprázdnit baterie zařízení pouze rychlejší.
+Udržování připojení TCP funguje dobře pro scénáře, kdy výdrž baterie není omezení. Není doporučeno pro mobilní aplikace. Používání udržování v mobilní aplikaci TCP můžou vyprázdnit baterie zařízení hello pouze rychlejší.
 
 ![Vypršení časového limitu TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Následující části popisují, jak změnit nastavení časového limitu nečinnosti v virtuální počítače a cloudové služby.
+Hello následující části popisují, jak toochange nečinnosti nastavení časového limitu v virtuální počítače a cloudové služby.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Konfigurace časového limitu TCP pro vaše instance úrovni veřejné IP adresy na 15 minut
+## <a name="configure-hello-tcp-timeout-for-your-instance-level-public-ip-too15-minutes"></a>Konfigurace hello TCP vypršení časového limitu pro vaše instance úrovni veřejné IP too15 minut
 
 ```powershell
 Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 ```
 
-Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastaven, je výchozí hodnota časového limitu 4 minuty. Rozsah přijatelný časový limit je 4 až 30 minut.
+Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastaven, hello výchozí časový limit je 4 minuty. rozsah Hello přijatelný časový limit je 4 minuty too30.
 
-## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Při vytváření koncový bod Azure na virtuálním počítači nastavit časový limit nečinnosti
+## <a name="set-hello-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Při vytváření koncový bod Azure na virtuálním počítači nastavit časový limit nečinnosti hello
 
-Chcete-li změnit nastavení časového limitu pro koncový bod, použijte následující:
+toochange hello časový limit nastavení pro koncový bod, použijte následující hello:
 
 ```powershell
 Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
 ```
 
-Pokud chcete načíst konfiguraci časového limitu nečinnosti, použijte následující příkaz:
+tooretrieve konfiguraci časový limit nečinnosti hello použijte následující příkaz:
 
     PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
@@ -71,9 +71,9 @@ Pokud chcete načíst konfiguraci časového limitu nečinnosti, použijte násl
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Nastavit časový limit TCP na sady koncových bodů s vyrovnáváním zatížení
+## <a name="set-hello-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Nastavit časový limit TCP hello na sady koncových bodů s vyrovnáváním zatížení
 
-Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, vypršení časového limitu TCP musí být nastavena na sady koncových bodů s vyrovnáváním zatížení. Například:
+Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, hello TCP vypršení časového limitu musí být nastavena na sady koncových bodů s vyrovnáváním zatížení hello. Například:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -81,9 +81,9 @@ Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Prot
 
 ## <a name="change-timeout-settings-for-cloud-services"></a>Změna nastavení časového limitu pro cloudové služby
 
-Azure SDK můžete použít k aktualizaci cloudové služby. Vytváření nastavení koncového bodu pro cloudové služby v souboru .csdef. Aktualizace časového limitu TCP pro nasazení cloudové služby vyžaduje nasazení upgradu. Výjimkou je, pokud je časový limit TCP zadat jenom pro veřejnou IP adresu. Nastavení veřejné IP adresy jsou v souboru .cscfg a můžete je aktualizovat prostřednictvím aktualizací nasazení a upgrade.
+Tooupdate hello Azure SDK můžete použít cloudové služby. Vytváření nastavení koncového bodu pro cloudové služby v souboru .csdef hello. Aktualizace hello časového limitu TCP pro nasazení cloudové služby vyžaduje nasazení upgradu. Výjimkou je, pokud je časový limit TCP hello zadat jenom pro veřejnou IP adresu. Nastavení veřejné IP adresy jsou v souboru .cscfg hello a můžete je aktualizovat prostřednictvím aktualizací nasazení a upgrade.
 
-Změny .csdef pro koncový bod nastavení jsou tyto:
+Hello .csdef změny pro koncový bod nastavení jsou tyto:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -93,7 +93,7 @@ Změny .csdef pro koncový bod nastavení jsou tyto:
 </WorkerRole>
 ```
 
-Změny .cscfg pro nastavení limitu na veřejné IP adresy jsou tyto:
+změny Hello .cscfg pro nastavení limitu hello na veřejné IP adresy jsou tyto:
 
 ```xml
 <NetworkConfiguration>
@@ -110,7 +110,7 @@ Změny .cscfg pro nastavení limitu na veřejné IP adresy jsou tyto:
 
 ## <a name="rest-api-example"></a>Příklad REST API
 
-Časový limit nečinnosti TCP můžete nakonfigurovat pomocí rozhraní API správy služby. Ujistěte se, že `x-ms-version` záhlaví je nastaven na verzi `2014-06-01` nebo novější. Aktualizujte konfiguraci zadané Vyrovnávání zatížení sítě vstupní koncové body na všechny virtuální počítače v nasazení.
+Časový limit nečinnosti TCP hello můžete nakonfigurovat pomocí služby hello rozhraní API pro správu. Ujistěte se, že hello `x-ms-version` záhlaví nastavena tooversion `2014-06-01` nebo novější. Aktualizace konfigurace hello hello zadat Vyrovnávání zatížení sítě vstupních koncových bodů na všechny virtuální počítače v nasazení.
 
 ### <a name="request"></a>Žádost
 

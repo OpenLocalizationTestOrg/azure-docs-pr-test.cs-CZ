@@ -1,8 +1,8 @@
 ---
-title: "Nastavit dvoustupňové ověřování pro pracovní nebo školní účet | Microsoft Docs"
-description: "Pokud vaše společnost konfiguruje Azure Multi-Factor Authentication, zobrazí se výzva k zaregistrovat pro dvoustupňové ověření. Zjistěte, jak ho nastavit. "
+title: "aaaSet si dvoustupňové ověřování pro pracovní nebo školní účet | Microsoft Docs"
+description: "Pokud vaše společnost konfiguruje Azure Multi-Factor Authentication, bude výzvami toosign pro dvoustupňové ověření. Zjistěte, jak tooset ho nahoru. "
 services: multi-factor-authentication
-keywords: "jak používat azure, active directory v cloudu, služby active directory kurzu"
+keywords: "jak toouse azure, active directory v cloudu hello kurz služby active directory"
 documentationcenter: 
 author: kgremban
 manager: femila
@@ -16,94 +16,94 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.openlocfilehash: 3499a7b23a7b4bdd44b5d9e8d7e750681efc3825
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2d0348081eefa42c23de2047044688879dcb5966
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověření
-Dvoustupňové ověření je na další bezpečnostní krok, který pomáhá chránit váš účet tak, že těžší jiní proniknout. Pokud přečtení tohoto článku pravděpodobně tu e-mailu ze svého pracovního nebo školního správce o službě Multi-Factor Authentication. Nebo možná pokusili přihlásit a zobrazí chybové hlášení výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.
+Dvoustupňové ověření je na další bezpečnostní krok, který pomáhá chránit váš účet tak, že pro jiné osoby toobreak v složitější. Pokud přečtení tohoto článku pravděpodobně tu e-mailu ze svého pracovního nebo školního správce o službě Multi-Factor Authentication. Nebo možná pokusil toosign v a zobrazí chybové hlášení s dotazem, tooset až dalšího ověření zabezpečení. Pokud je případ hello **nemůžete se přihlásit před dokončením procesu automatické registrace hello**.
 
-Tento článek vám pomůže nastavit vaše **pracovní nebo školní účet**. Pokud chcete zapnout dvoustupňové ověřování pro vlastní, osobní účet Microsoft, přečtěte si téma [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+Tento článek vám pomůže nastavit vaše **pracovní nebo školní účet**. Pokud chcete tooenable dvoustupňové ověřování pro vlastní, osobní účet Microsoft, najdete v části [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
 ## <a name="set-up-your-account"></a>Nastavení účtu
 
-Pokud vaše IT oddělení vyžaduje spuštění pomocí dvoustupňového ověření na obrazovce o tom, že **váš správce vyžaduje, abyste nastavili tento účet další bezpečnostní ověření** se zobrazí:
+Pokud vaše IT oddělení vyžaduje, abyste toostart pomocí dvoustupňového ověření na obrazovce o tom, že **váš správce vyžaduje, abyste nastavili tento účet další bezpečnostní ověření** se zobrazí:
 
 ![Nastavení](./media/multi-factor-authentication-end-user-first-time/first.png)
 
-Chcete-li začít, vyberte **nyní nastavit.**
+Vyberte tooget spustili, **nyní nastavit.**
 
-Pokud se nezobrazí na obrazovku takto při přihlášení, postupujte podle pokynů v [spravovat nastavení pro dvoustupňové ověření](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) najděte stránku nastavení, kde můžete spravovat vaše možnosti ověření. 
+Pokud nevidíte obrazovky takto při přihlášení, postupujte podle pokynů hello v [spravovat nastavení pro dvoustupňové ověření](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) toofind hello nastavení stránky, kde můžete spravovat vaše možnosti ověření. 
 
-## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Rozhodněte, jak chcete ověřit vaše přihlášení
+## <a name="decide-how-you-want-tooverify-your-sign-ins"></a>Určuje, jakým tooverify vaše přihlášení
 
-První otázku v procesu registrace je, jak chcete, abychom vás kontaktovali. Podívejte se na možnosti v tabulce a pokud chcete přejít na kroky nastavení pro každou metodu použijte odkazy.
+první otázku Hello v procesu registrace hello je, jak chcete, abychom toocontact můžete. Podívejte se na možnosti hello v tabulce hello a hello odkazy toogo toohello instalační kroky použijte pro každou metodu.
 
 | Způsob kontaktu | Popis |
 | --- | --- |
-| [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Přijímejte oznámení pro ověření.** Tato možnost odešle oznámení do aplikace Authenticator na tablet nebo smartphone. Zobrazit oznámení a pokud je oprávněné, vyberte **ověřit** v aplikaci. Vaše škola nebo pracoviště může vyžadovat zadání kódu PIN, než ověřování.<br>- **Použijte ověřovací kód.** V tomto režimu ověřovací aplikace generuje ověřovací kód, který aktualizuje každých 30 sekund. Zadejte aktuální ověřovací kód v rozhraní přihlášení.<br>Je k dispozici pro aplikaci Microsoft Authenticator [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
-| [Volání na mobilní telefon nebo text.](#use-your-mobile-phone-as-the-contact-method) |- **Telefonní hovor** umístí automatický hlasový hovor na telefonní číslo, které zadáte. Odpovězte volání a stisknutím klávesy # v klávesnici telefonu provede ověření.<br>- **Textová zpráva** ukončí textovou zprávu s ověřovacím kódem. Následující řádku v textu odpovědi na textovou zprávu nebo zadejte ověřovací kód zadat do rozhraní přihlášení. |
-| [Office telefonního hovoru](#use-your-office-phone-as-the-contact-method) |Umístí automatický hlasový hovor na telefonní číslo, které zadáte. Odpovězte hovor a stiskem tlačítka # na klávesnici telefonu provede ověření. |
+| [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Přijímejte oznámení pro ověření.** Tato možnost nabízených oznámení oznámení toohello ověřovací aplikaci na tablet nebo smartphone. Zobrazit oznámení hello a, pokud je oprávněné, vyberte **ověřit** v aplikaci hello. Vaše škola nebo pracoviště může vyžadovat zadání kódu PIN, než ověřování.<br>- **Použijte ověřovací kód.** V tomto režimu hello ověřovací aplikace generuje ověřovací kód, který aktualizuje každých 30 sekund. Zadejte aktuální ověřovací kód hello v hello přihlašovací rozhraní.<br>je k dispozici pro aplikaci Microsoft Authenticator Hello [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| [Volání na mobilní telefon nebo text.](#use-your-mobile-phone-as-the-contact-method) |- **Telefonní hovor** umístí automatický hlasový hovor toohello telefonní číslo je zadat. Odpovězte hello volání a stisknutím klávesy # v tooauthenticate klávesnici telefonu hello.<br>- **Textová zpráva** ukončí textovou zprávu s ověřovacím kódem. Následující hello řádku v textu hello odpovědět toohello textová zpráva nebo zadejte ověřovací kód hello zadané do hello přihlašovací rozhraní. |
+| [Office telefonního hovoru](#use-your-office-phone-as-the-contact-method) |Umístí automatický hlasový hovor toohello telefonní číslo, které zadáte. Odpověď hello hovor a stiskem tlačítka # na tooauthenticate klávesnici telefonu hello. |
 
-## <a name="use-a-mobile-app-as-the-contact-method"></a>Použití mobilní aplikace jako způsob kontaktu
-Pomocí této metody vyžaduje instalaci ověřovací aplikaci na telefonu nebo tabletu. Kroky v tomto článku jsou založeny na aplikaci Microsoft Authenticator, která je k dispozici pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+## <a name="use-a-mobile-app-as-hello-contact-method"></a>Použití mobilní aplikace jako způsob kontaktu hello
+Pomocí této metody vyžaduje instalaci ověřovací aplikaci na telefonu nebo tabletu. Hello kroky v tomto článku jsou založeny na aplikaci Microsoft Authenticator hello, která je k dispozici pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
-1. Vyberte **mobilní aplikace** z rozevíracího seznamu.
+1. Vyberte **mobilní aplikace** z rozevíracího seznamu hello.
 2. Vyberte buď **dostávat oznámení pro ověření** nebo **použít ověřovací kód**, pak vyberte **nastavit**.
 
    ![Další bezpečnostní ověření obrazovky](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
 
-3. Na telefonu nebo tabletu, otevřete aplikaci a vyberte  **+**  přidat účet. (Na zařízeních s Androidem, vyberte se třemi tečkami, potom **přidejte účet**.)
-4. Zadejte, zda chcete přidat pracovní nebo školní účet. Otevře se skeneru kód QR na váš telefon. Pokud svůj fotoaparát nepracuje správně, můžete vybrat ručně zadat informace o vaší společnosti. Další informace najdete v tématu [ručně přidat účet](#add-an-account-manually).  
-5. Naskenujte obrázek kódu QR, který se objevil se na obrazovce konfigurace mobilní aplikace.  Vyberte **provádí** zavřete obrazovce kód QR.  
+3. Na telefonu nebo tabletu, otevřete aplikaci hello a vyberte  **+**  tooadd účet. (Na zařízeních s Androidem, vyberte hello tři tečky, pak **přidejte účet**.)
+4. Zadejte, že chcete tooadd pracovní nebo školní účet. Otevře se skener kód QR Hello na váš telefon. Pokud svůj fotoaparát nepracuje správně, můžete vybrat tooenter informací o společnosti ručně. Další informace najdete v tématu [ručně přidat účet](#add-an-account-manually).  
+5. Naskenujte obrázek kódu QR hello, který se objevil s úvodní obrazovka pro konfiguraci mobilní aplikace hello.  Vyberte **provádí** tooclose hello QR kód obrazovky.  
 
    ![Obrazovka kód QR](./media/multi-factor-authentication-end-user-first-time/scan2.png)
 
-6. Po dokončení aktivace v telefonu, vyberte **kontaktujte mi**.  Tento krok odešle oznámení nebo ověřovací kód na váš telefon. Vyberte **ověřte**.  
+6. Po dokončení aktivace na telefonu hello vyberte **kontaktujte mi**.  Tento krok odešle oznámení nebo telefon tooyour ověřovací kód. Vyberte **ověřte**.  
 7. Pokud vaše společnost vyžaduje kód PIN pro schválení ověření přihlášení, zadejte její název.
 
    ![Pole pro zadání kódu PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 
 8. Po dokončení zadání kódu PIN, vyberte **Zavřít**. Ověření v tomto okamžiku by měla být úspěšné.
-9. Doporučujeme, abyste zadali číslo svého mobilního telefonu v případě, že byste ztratili přístup k mobilní aplikaci. Vaší země z rozevíracího seznamu a zadejte své mobilní telefonní číslo do pole vedle názvu země. Vyberte **Další**.
-10. V tomto okamžiku budete vyzváni k nastavení hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočte zbytek tyto kroky.
-11. Pokud používáte tyto aplikace, kopírování heslo aplikace zadat a vložte jej do vaší aplikace místo regulární heslo. Stejné heslo aplikace můžete použít pro více aplikací. Další informace najdete [pomoci s hesly aplikací].
+9. Doporučujeme, abyste zadali číslo svého mobilního telefonu v případě ztráty přístupu tooyour mobilní aplikace. Ve vaší zemi hello rozevíracího seznamu a zadejte své mobilní telefonní číslo v názvu další toohello země hello pole. Vyberte **Další**.
+10. V tomto okamžiku jste výzvami tooset si hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo hello nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočit hello zbytek tyto kroky.
+11. Pokud používáte tyto aplikace, heslo aplikace hello kopie zadaný a vložte jej do vaší aplikace místo regulární heslo. Můžete použít hello stejné heslo aplikace pro víc aplikací. Další informace najdete [pomoci s hesly aplikací].
 12. Klikněte na **Done** (Hotovo).
 
 ### <a name="add-an-account-manually"></a>Ručně přidat účet
-Pokud chcete přidat účet do mobilní aplikace ručně, místo použití čtečky QR, postupujte podle těchto kroků.
+Pokud chcete tooadd k účtu toohello mobilní aplikaci ručně, místo použití čtečky hello QR, postupujte podle těchto kroků.
 
-1. Vyberte **ručně zadejte účet** tlačítko.  
-2. Zadejte kód a adresu URL, která jsou k dispozici na stejné stránce zobrazující čárový kód. Tyto informace je třeba do **kód** a **URL** políček na mobilní aplikaci.
+1. Vyberte hello **ručně zadejte účet** tlačítko.  
+2. Zadejte hello kód a adresu URL hello, které jsou k dispozici na hello stejné stránce, která vám zobrazí hello čárový kód. Tyto informace je třeba do hello **kód** a **URL** políček na mobilní aplikace hello.
 
     ![Nastavení](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
-3. Po dokončení aktivace vyberte **kontaktujte mi**. Tento krok odešle oznámení nebo ověřovací kód na váš telefon. Vyberte **ověřte**.
+3. Po dokončení aktivace hello vyberte **kontaktujte mi**. Tento krok odešle oznámení nebo telefon tooyour ověřovací kód. Vyberte **ověřte**.
 
-## <a name="use-your-mobile-phone-as-the-contact-method"></a>Pomocí mobilního telefonu jako způsob kontaktu
-1. Vyberte **telefon pro ověření** z rozevíracího seznamu.  
+## <a name="use-your-mobile-phone-as-hello-contact-method"></a>Pomocí mobilního telefonu jako způsob kontaktu hello
+1. Vyberte **telefon pro ověření** z rozevíracího seznamu hello.  
 
     ![Nastavení](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. Zvolte vaší země z rozevíracího seznamu a zadejte své mobilní telefonní číslo.
-3. Vyberte metodu, kterou chcete použít s mobilním telefonem - text nebo volání.
-4. Vyberte **kontaktujte mi** k ověření svého telefonního čísla. V závislosti na režimu, které jste vybrali nemůžeme vám pošleme text nebo zavolat. Postupujte podle pokynů na obrazovce a potom vyberte **ověřte**.
-5. V tomto okamžiku budete vyzváni k nastavení hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočte zbytek postupu.
-6. Pokud používáte tyto aplikace, kopírování heslo aplikace zadat a vložte jej do vaší aplikace místo regulární heslo. Stejné heslo aplikace můžete použít pro více aplikací. Další informace najdete [pomoci s hesly aplikací].
+2. Zvolte vaší země z rozevíracího seznamu hello a zadejte své mobilní telefonní číslo.
+3. Vyberte metodu hello si přejete toouse s mobilním telefonem - text nebo volání.
+4. Vyberte **kontaktujte mi** tooverify vaše telefonní číslo. V závislosti na režimu hello, který jste vybrali nemůžeme vám pošleme text nebo zavolat. Postupujte podle pokynů hello na úvodní obrazovka a pak vyberte **ověřte**.
+5. V tomto okamžiku jste výzvami tooset si hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo hello nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočit hello zbytek hello kroky.
+6. Pokud používáte tyto aplikace, heslo aplikace hello kopie zadaný a vložte jej do vaší aplikace místo regulární heslo. Můžete použít hello stejné heslo aplikace pro víc aplikací. Další informace najdete [pomoci s hesly aplikací].
 7. Klikněte na **Done** (Hotovo).
 
-## <a name="use-your-office-phone-as-the-contact-method"></a>Použijte váš telefon do kanceláře jako způsob kontaktu
-1. Vyberte **Telefon do kanceláře** z rozevíracího seznamu  
+## <a name="use-your-office-phone-as-hello-contact-method"></a>Použijte váš telefon do kanceláře jako způsob kontaktu hello
+1. Vyberte **Telefon do kanceláře** z rozevíracího seznamu hello  
 
     ![Nastavení](./media/multi-factor-authentication-end-user-first-time/office.png)  
-2. Pole telefonního čísla je automaticky vyplněno své kontaktní informace společnosti. Pokud je číslo nesprávnou nebo chybějící, požádejte správce, aby změny.
-3. Vyberte **kontaktujte mi** ověřit vaše telefonní číslo a My zavolá vaše číslo. Postupujte podle pokynů na obrazovce a potom vyberte **ověřte**.
-4. V tomto okamžiku budete vyzváni k nastavení hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočte zbytek postupu.
-5. Pokud používáte tyto aplikace, kopírování heslo aplikace zadat a vložte jej do vaší aplikace místo regulární heslo. Stejné heslo aplikace můžete použít pro více aplikací. Další informace najdete v tématu [co jsou hesla aplikací](multi-factor-authentication-end-user-app-passwords.md).
+2. Hello telefonní číslo pole je automaticky vyplněno své kontaktní informace společnosti. Pokud je číslo hello nesprávnou nebo chybějící, požádejte správce toomake změny.
+3. Vyberte **kontaktujte mi** tooverify vaše telefonní číslo a my vám zavoláme vaše číslo. Postupujte podle pokynů hello na úvodní obrazovka a pak vyberte **ověřte**.
+4. V tomto okamžiku jste výzvami tooset si hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší nebo hello nativní e-mailové aplikace na zařízení Apple. Tato akce je vzhledem k tomu, že některé aplikace nepodporují dvoustupňové ověřování. Pokud nepoužijete těchto aplikací, klikněte na tlačítko **provádí** a přeskočit hello zbytek hello kroky.
+5. Pokud používáte tyto aplikace, heslo aplikace hello kopie zadaný a vložte jej do vaší aplikace místo regulární heslo. Můžete použít hello stejné heslo aplikace pro víc aplikací. Další informace najdete v tématu [co jsou hesla aplikací](multi-factor-authentication-end-user-app-passwords.md).
 6. Klikněte na **Done** (Hotovo).
 
 ## <a name="next-steps"></a>Další kroky
 * Změňte upřednostňované možnosti a [spravovat nastavení pro dvoustupňové ověření](multi-factor-authentication-end-user-manage-settings.md)
 * Nastavit [hesla aplikací](multi-factor-authentication-end-user-app-passwords.md) pro nativní zařízení s aplikací, které nepodporují dvoustupňové ověřování.
-* Podívejte se [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) fast, zabezpečení ověřování i v případě, že nemáte buňky služby.
+* Podívejte se na hello [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) fast, zabezpečení ověřování i v případě, že nemáte buňky služby.
 

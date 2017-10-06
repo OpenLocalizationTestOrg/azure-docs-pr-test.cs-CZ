@@ -1,6 +1,6 @@
 ---
-title: "Nasazení virtuálních počítačů, které jsou pro SAP v systému Windows Azure | Microsoft Docs"
-description: "Informace o nasazení SAP software na virtuálních počítačích s Windows v Azure."
+title: "aaaAzure nasazení virtuálních počítačů pro SAP v systému Windows | Microsoft Docs"
+description: "Zjistěte, jak toodeploy SAP software na virtuálních počítačích s Windows v Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: MSSedusch
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac7c1e3b015a21fe06f27205b27a53fc4d2f3df7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 121e317afc6498a896959e58ebfbdcbef9432ef5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-sap-on-windows-vms-in-azure"></a>Nasazení SAP na virtuálních počítačích Windows v Azure
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -86,9 +86,9 @@ ms.lasthandoff: 07/11/2017
 [dbms-guide-3]:sap-dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 (High availability and disaster recovery with Azure VMs)
 [dbms-guide-5.5.1]:sap-dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 (SQL Server 2012 SP1 CU4 and later)
 [dbms-guide-5.5.2]:sap-dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b (SQL Server 2012 SP1 CU3 and earlier releases)
-[dbms-guide-5.6]:sap-dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (Using a SQL Server image from the Azure Marketplace)
+[dbms-guide-5.6]:sap-dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (Using a SQL Server image from hello Azure Marketplace)
 [dbms-guide-5.8]:sap-dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 (General SQL Server for SAP on Azure summary)
-[dbms-guide-5]:sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 (Specifics to SQL Server RDBMS)
+[dbms-guide-5]:sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 (Specifics tooSQL Server RDBMS)
 [dbms-guide-8.4.1]:sap-dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 (Storage configuration)
 [dbms-guide-8.4.2]:sap-dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d (Backup and restore)
 [dbms-guide-8.4.3]:sap-dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c (Performance considerations for backup and restore)
@@ -108,24 +108,24 @@ ms.lasthandoff: 07/11/2017
 [deployment-guide]:sap-deployment-guide.md (Azure Virtual Machines deployment for SAP on Windows)
 [deployment-guide-2.2]:#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP resources)
 [deployment-guide-3.1.2]:#3688666f-281f-425b-a312-a77e7db2dfab (Deploying a VM by using a custom image)
-[deployment-guide-3.2]:#db477013-9060-4602-9ad4-b0316f8bb281 (Scenario 1: Deploying a VM from the Azure Marketplace for SAP)
+[deployment-guide-3.2]:#db477013-9060-4602-9ad4-b0316f8bb281 (Scenario 1: Deploying a VM from hello Azure Marketplace for SAP)
 [deployment-guide-3.3]:#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (Scenario 2: Deploying a VM with a custom image for SAP)
 [deployment-guide-3.4]:#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (Scenario 3: Moving a VM from on-premises using a non-generalized Azure VHD with SAP)
 [deployment-guide-3]:#b3253ee3-d63b-4d74-a49b-185e76c4088e (Deployment scenarios of VMs for SAP on Microsoft Azure)
 [deployment-guide-4.1]:#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Deploying Azure PowerShell cmdlets)
 [deployment-guide-4.2]:#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (Download and import SAP-relevant PowerShell cmdlets)
-[deployment-guide-4.3]:#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Join a VM to an on-premises domain - Windows only)
+[deployment-guide-4.3]:#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Join a VM tooan on-premises domain - Windows only)
 [deployment-guide-4.4.2]:#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
-[deployment-guide-4.4]:#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Download, install, and enable the Azure VM Agent)
+[deployment-guide-4.4]:#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Download, install, and enable hello Azure VM Agent)
 [deployment-guide-4.5.1]:#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
-[deployment-guide-4.5]:#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Configure the Azure Enhanced Monitoring Extension for SAP)
+[deployment-guide-4.5]:#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Configure hello Azure Enhanced Monitoring Extension for SAP)
 [deployment-guide-5.1]:#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Readiness check for Azure Enhanced Monitoring for SAP)
-[deployment-guide-5.2]:#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Health check for the Azure monitoring infrastructure)
+[deployment-guide-5.2]:#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Health check for hello Azure monitoring infrastructure)
 [deployment-guide-5.3]:#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Troubleshooting Azure monitoring for SAP)
 
 [deployment-guide-configure-monitoring-scenario-1]:#ec323ac3-1de9-4c3a-b770-4ff701def65b (Configure monitoring)
-[deployment-guide-configure-proxy]:#baccae00-6f79-4307-ade4-40292ce4e02d (Configure the proxy)
+[deployment-guide-configure-proxy]:#baccae00-6f79-4307-ade4-40292ce4e02d (Configure hello proxy)
 [deployment-guide-figure-100]:./media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:./media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
 [deployment-guide-figure-11]:#figure-11
@@ -182,21 +182,21 @@ ms.lasthandoff: 07/11/2017
 [planning-guide-11]:sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (High availability and disaster recovery for SAP NetWeaver running on Azure Virtual Machines)
 [planning-guide-11.4.1]:sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (High availability for SAP Application Servers)
 [planning-guide-11.5]:sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (Using Autostart for SAP instances)
-[planning-guide-2.1]:sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (Cloud-only - Virtual Machine deployments in Azure without dependencies on the on-premises customer network)
-[planning-guide-2.2]:sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (Cross-premises - Deployment of single or multiple SAP VMs in Azure fully integrated with the on-premises network)
+[planning-guide-2.1]:sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (Cloud-only - Virtual Machine deployments in Azure without dependencies on hello on-premises customer network)
+[planning-guide-2.2]:sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (Cross-premises - Deployment of single or multiple SAP VMs in Azure fully integrated with hello on-premises network)
 [planning-guide-3.1]:sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure regions)
 [planning-guide-3.2.1]:sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (Fault domains)
 [planning-guide-3.2.2]:sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Upgrade domains)
 [planning-guide-3.2.3]:sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure availability sets)
 [planning-guide-3.2]:sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure virtual machines concept)
 [planning-guide-3.3.2]:sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
-[planning-guide-5.1.1]:sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Moving a VM from on-premises to Azure with a non-generalized disk)
+[planning-guide-5.1.1]:sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Moving a VM from on-premises tooAzure with a non-generalized disk)
 [planning-guide-5.1.2]:sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Deploying a VM with a customer specific image)
-[planning-guide-5.2.1]:sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Preparation for moving a VM from on-premises to Azure with a non-generalized disk)
+[planning-guide-5.2.1]:sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Preparation for moving a VM from on-premises tooAzure with a non-generalized disk)
 [planning-guide-5.2.2]:sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (Preparation for deploying a VM with a customer specific image for SAP)
 [planning-guide-5.2]:sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (Preparing VMs with SAP for Azure)
 [planning-guide-5.3.1]:sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Difference between an Azure disk and an Azure image)
-[planning-guide-5.3.2]:sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (Uploading a VHD from on-premises to Azure)
+[planning-guide-5.3.2]:sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (Uploading a VHD from on-premises tooAzure)
 [planning-guide-5.4.2]:sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Copying disks between Azure Storage accounts)
 [planning-guide-5.5.1]:sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM/VHD structure for SAP deployments)
 [planning-guide-5.5.3]:sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Setting automount for attached disks)
@@ -257,7 +257,7 @@ ms.lasthandoff: 07/11/2017
 [virtual-machines-azure-resource-manager-architecture]:../../resource-manager-deployment-model.md
 [virtual-machines-azurerm-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI)
+[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and hello Azure CLI)
 [virtual-machines-deploy-rmtemplates-powershell]:../virtual-machines-windows-ps-manage.md (Manage virtual machines using Azure Resource Manager and PowerShell)
 [virtual-machines-linux-agent-user-guide]:../linux/agent-user-guide.md
 [virtual-machines-linux-agent-user-guide-command-line-options]:../linux/agent-user-guide.md#command-line-options
@@ -305,66 +305,66 @@ ms.lasthandoff: 07/11/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-Virtuální počítače Azure je řešení pro organizace, které potřebují výpočetní a úložnou kapacitu, minimální včas a bez zdlouhavé nákup cykly. Virtuální počítače Azure můžete použít k nasazení klasického aplikací, jako jsou aplikace založené na SAP NetWeaver v Azure. Rozšiřte spolehlivosti a dostupnosti bez dalších místních prostředků aplikace. Virtuální počítače Azure podporuje připojení mezi různými místy, takže virtuální počítače Azure můžete integrovat do místní domény vaší organizace, privátních cloudů a šířku systému SAP.
+Virtuální počítače Azure je hello řešení pro organizace, které potřebují výpočetní a úložnou kapacitu, minimální včas a bez zdlouhavé nákup cykly. Aplikace, klasického virtuálních počítačích Azure toodeploy jako SAP NetWeaver-li aplikace, můžete použít v Azure. Rozšiřte spolehlivosti a dostupnosti bez dalších místních prostředků aplikace. Virtuální počítače Azure podporuje připojení mezi různými místy, takže virtuální počítače Azure můžete integrovat do místní domény vaší organizace, privátních cloudů a šířku systému SAP.
 
-V tomto článku jsme zahrnují kroky k nasazení SAP aplikací na Windows virtuálních počítačů (VM) v Azure. Tento článek vychází informace v [virtuální počítače Azure plánování a implementace pro SAP v systému Windows][planning-guide]. Také doplňuje SAP instalace dokumentace a poznámky k SAP, které jsou primární prostředky pro instalaci a nasazení SAP softwaru.
+V tomto článku nabídneme hello kroky toodeploy SAP aplikací na Windows virtuálních počítačů (VM) v Azure. Tento článek vychází hello informace v [virtuální počítače Azure plánování a implementace pro SAP v systému Windows][planning-guide]. Také doplňuje SAP instalace dokumentace a poznámky k SAP, které jsou hello primární prostředky pro instalaci a nasazení SAP softwaru.
 
 ## <a name="prerequisites"></a>Požadavky
-Nastavení virtuálního počítače Azure pro nasazení softwaru SAP zahrnuje několik kroků a prostředky. Než začnete, ujistěte se, že splňujete požadavky pro instalaci softwaru SAP na virtuálních počítačích s Windows v Azure.
+Nastavení virtuálního počítače Azure pro nasazení softwaru SAP zahrnuje několik kroků a prostředky. Než začnete, ujistěte se, že splňujete hello požadavky pro instalaci softwaru SAP na virtuálních počítačích s Windows v Azure.
 
 ### <a name="local-computer"></a>Místní počítač
-Ke správě systému Windows nebo Linux virtuálních počítačů, můžete použít skript prostředí PowerShell a portálu Azure. Pro oba nástroje budete potřebovat místní počítač se systémem Windows 7 nebo novější verzi systému Windows. Pokud chcete spravovat pouze virtuální počítače s Linuxem a chcete pro tuto úlohu použít počítač se systémem Linux, můžete použít rozhraní příkazového řádku Azure.
+toomanage Windows nebo Linux virtuální počítače, můžete použít skript prostředí PowerShell a hello portálu Azure. Pro oba nástroje budete potřebovat místní počítač se systémem Windows 7 nebo novější verzi systému Windows. Pokud chcete toomanage pouze virtuální počítače s Linuxem a vy chcete toouse počítač se systémem Linux pro tento úkol můžete použít rozhraní příkazového řádku Azure.
 
 ### <a name="internet-connection"></a>Připojení k Internetu
-Ke stažení a spuštění nástroje a skripty, které jsou požadovány pro nasazení softwaru SAP, musí být připojen k Internetu. Virtuální počítač Azure, který běží Azure rozšířené monitorování rozšíření pro SAP také potřebuje přístup k Internetu. Pokud virtuální počítač Azure je součástí virtuální síť Azure nebo místní domény, ujistěte se, že jsou nastavené příslušné nastavení serveru proxy, jak je popsáno v [proxy server nakonfigurovat][deployment-guide-configure-proxy].
+toodownload a spuštění hello nástroje a skripty, které jsou požadovány pro nasazení softwaru SAP, musí být připojen toohello Internetu. také je nutné Hello virtuálního počítače Azure, který běží hello Azure rozšířené monitorování rozšíření pro SAP toohello přístup k Internetu. Pokud hello virtuální počítač Azure je součástí virtuální síť Azure nebo místní domény, ujistěte se, že jsou nastavené hello příslušné nastavení serveru proxy, jak je popsáno v [nakonfigurovat proxy server hello][deployment-guide-configure-proxy].
 
 ### <a name="microsoft-azure-subscription"></a>Předplatné Microsoft Azure
 Potřebujete aktivní účet Azure.
 
 ### <a name="topology-and-networking"></a>Topologie a sítě
-Je třeba definovat topologii a architektura nasazení SAP v Azure:
+Je třeba toodefine hello topologie a architektura hello nasazení SAP v Azure:
 
-* Účty úložiště Azure, který se má použít
-* Virtuální síť, ve které chcete nasazení systému SAP
-* Skupina prostředků, do které chcete nasadit systému SAP
-* Oblast Azure, ve které chcete nasazení systému SAP
+* Toobe účty úložiště Azure používají
+* Virtuální síť, kam chcete toodeploy hello SAP systému
+* Toowhich skupiny prostředků má systém SAP toodeploy hello
+* Oblast Azure, kam chcete toodeploy hello SAP systému
 * Konfigurace SAP (dvouvrstvá nebo třívrstvá)
-* Velikosti virtuálních počítačů a počet další virtuální pevné disky (VHD) se chcete připojit k virtuálním počítačům
+* Velikosti virtuálních počítačů a hello počet toobe další virtuální pevné disky (VHD) připojené toohello virtuální počítače
 * Konfigurace SAP oprava a přenosu systému (CTS)
 
-Vytvořit a nakonfigurovat účty úložiště Azure nebo virtuální sítě Azure, před zahájením procesu nasazení softwaru SAP. Informace o tom, jak vytvořit a nakonfigurovat těchto prostředků najdete v tématu [virtuální počítače Azure plánování a implementace pro SAP v systému Windows][planning-guide].
+Vytvořit a nakonfigurovat účty úložiště Azure nebo virtuální sítě Azure, před zahájením procesu nasazení softwaru SAP hello. Informace o toocreate a nakonfigurovat tyto prostředky, najdete v části [virtuální počítače Azure plánování a implementace pro SAP v systému Windows][planning-guide].
 
 ### <a name="sap-sizing"></a>Nastavení velikosti SAP
-Následující informace pro nastavení velikosti SAP vědět:
+Následující informace o nastavení velikosti SAP hello vědět:
 
-* Předpokládané úlohy SAP, například pomocí nástroje pro rychlé přizpůsobení velikosti symbolů SAP a SAP aplikace výkonu standardní (přístupové body) číslo
-* Požadovaný prostředek a paměti spotřeby procesoru systému SAP
+* Projektovat SAP zatížení, například pomocí nástroje rychlé přizpůsobení velikosti symbolů SAP hello a číslo hello SAP aplikace výkonu standardní (protokoly SAP)
+* Požadovaný prostředek a paměti spotřeby procesoru systému SAP hello
 * Požadované vstupní a výstupní (I/O) operace za sekundu
 * Požadované šířky pásma sítě případné komunikace mezi virtuálními počítači v Azure
-* Požadované šířku pásma sítě mezi místními prostředky a v systému SAP nasazení Azure
+* Požadované šířku pásma sítě mezi místními prostředky a hello systému Azure nasazení SAP
 
 ### <a name="resource-groups"></a>Skupiny prostředků
-V Azure Resource Manager, můžete použít skupin prostředků ke správě všechny prostředky aplikace ve vašem předplatném Azure. Další informace najdete v tématu [přehled Azure Resource Manageru][resource-group-overview].
+V Azure Resource Manager, můžete použít toomanage skupiny prostředků všechny prostředky aplikace hello ve vašem předplatném Azure. Další informace najdete v tématu [přehled Azure Resource Manageru][resource-group-overview].
 
 ## <a name="resources"></a>Zdroje
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
-Pokud nastavujete nasazení SAP softwaru, je třeba na následujících odkazech SAP:
+Pokud nastavujete nasazení softwaru SAP, potřebujete následující prostředky SAP hello:
 
 * Poznámka SAP [1928533], na kterém je:
-  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
+  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro hello nasazení SAP softwaru
   * Kapacita důležité informace o velikosti virtuálního počítače Azure
   * Podporované SAP software a operační systém (OS) a kombinace databáze
   * Požadovaná verze SAP jádra pro Windows a Linux v Microsoft Azure
 
 * Poznámka SAP [2015553] uvádí požadavky pro nasazení softwaru podporovaných SAP SAP v Azure.
 * Poznámka SAP [2178632] obsahuje podrobné informace o veškeré monitorování metriky pro SAP v Azure.
-* Poznámka SAP [1409604] má požadovaná verze SAP hostitele agenta pro Windows v Azure.
-* Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
+* Poznámka SAP [1409604] hello vyžaduje verze SAP hostitele agenta pro Windows v Azure.
+* Poznámka SAP [2191498] hello vyžaduje verze SAP hostitele agenta pro Linux v Azure.
 * Poznámka SAP [2243692] obsahuje informace o licencích SAP v systému Linux v Azure.
 * Poznámka SAP [1984787] má obecné informace o SUSE Linux Enterprise Server 12.
 * Poznámka SAP [2002167] má obecné informace o Red Hat Enterprise Linux 7.x.
-* Poznámka SAP [1999351] Další informace o řešení problémů s Azure rozšířené monitorování rozšíření pro SAP.
+* Poznámka SAP [1999351] obsahuje další informace o řešení potíží pro hello Azure rozšířené monitorování rozšíření pro SAP.
 * [SAP komunity WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované SAP poznámky pro Linux.
 * Rutiny prostředí PowerShell specifické pro SAP, které jsou součástí [prostředí Azure PowerShell][azure-ps].
 * Příkazy rozhraní příkazového řádku Azure specifické pro SAP, které jsou součástí [rozhraní příkazového řádku Azure][azure-cli].
@@ -380,196 +380,196 @@ Tyto články Microsoft popisuje nasazení SAP v Azure:
 * [Portál Azure][azure-portal]
 
 ## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Scénáře nasazení SAP softwaru na virtuálních počítačích Azure
-Máte několik možností pro nasazení virtuálních počítačů a přidruženými disky v Azure. Je důležité pochopit rozdíly mezi možnostmi nasazení, protože může trvat různé kroky, které připravit virtuální počítače pro nasazení na základě typu nasazení, které zvolíte.
+Máte několik možností pro nasazení virtuálních počítačů a přidruženými disky v Azure. Je důležité toounderstand hello rozdíly mezi možnostmi nasazení, protože může trvat různé kroky tooprepare virtuální počítače pro nasazení podle typu hello nasazení, který zvolíte.
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Scénář 1: Nasazení virtuálního počítače z Azure Marketplace pro SAP
-Image zadaná společnost Microsoft nebo třetích stran v Azure Marketplace můžete použít k nasazení virtuálního počítače. Na webu Marketplace nabízí některé standardní bitové kopie operačního systému Windows Server a různých distribucí Linux. Obrázek, který zahrnuje správu databáze také můžete nasadit systém SKU, například Microsoft SQL Server. Další informace o používání bitové kopie s SKU databázového systému najdete v tématu [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide].
+### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Scénář 1: Nasazení virtuálního počítače z hello Azure Marketplace pro SAP
+Můžete použít bitovou kopii od Microsoftu nebo třetí strany v Azure Marketplace toodeploy hello virtuálního počítače. Hello Marketplace nabízí některé standardní bitové kopie operačního systému Windows Server a různých distribucí Linux. Obrázek, který zahrnuje správu databáze také můžete nasadit systém SKU, například Microsoft SQL Server. Další informace o používání bitové kopie s SKU databázového systému najdete v tématu [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide].
 
-Následující diagram ukazuje SAP konkrétní pořadí kroků pro nasazení virtuálního počítače z Azure Marketplace:
+Hello následující vývojový diagram znázorňuje hello SAP konkrétní pořadí kroků pro nasazení virtuálního počítače z Azure Marketplace hello:
 
-![Vývojový diagram nasazení virtuálního počítače pro systémy SAP pomocí bitové kopie virtuálních počítačů z Azure Marketplace][deployment-guide-figure-100]
+![Vývojový diagram nasazení virtuálního počítače pro systémy SAP pomocí bitové kopie virtuálního počítače z hello Azure Marketplace][deployment-guide-figure-100]
 
-#### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače pomocí portálu Azure
-Nejjednodušší způsob, jak vytvořit nový virtuální počítač s bitovou kopii z Azure Marketplace je pomocí portálu Azure.
+#### <a name="create-a-virtual-machine-by-using-hello-azure-portal"></a>Vytvoření virtuálního počítače pomocí hello portálu Azure
+Nejjednodušší způsob, jak toocreate Hello nový virtuální počítač s bitovou kopii z hello Azure Marketplace je pomocí hello portálu Azure.
 
-1.  Přejděte na <https://portal.azure.com/#create>.  Nebo v nabídce portálu Azure vyberte **+ nový**.
-2.  Vyberte **výpočetní**a pak vyberte typ operačního systému, kterou chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) nebo Red Hat Enterprise Linux 7.2 (RHEL 7.2). Výchozí zobrazení seznamu nezobrazuje, že všechny podporované operační systémy. Vyberte **zobrazit všechny** úplný seznam. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP, viz poznámka SAP [1928533].
-3.  Na další stránce přečtěte si podmínky a ujednání.
-4.  V **vybrat model nasazení** vyberte **Resource Manager**.
+1.  Přejděte příliš<https://portal.azure.com/#create>.  Nebo, v nabídce portálu Azure hello, vyberte **+ nový**.
+2.  Vyberte **výpočetní**a pak vyberte typ operačního systému, který má toodeploy hello. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) nebo Red Hat Enterprise Linux 7.2 (RHEL 7.2). zobrazení seznamu výchozí Hello nezobrazuje, že všechny podporované operační systémy. Vyberte **zobrazit všechny** úplný seznam. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP, viz poznámka SAP [1928533].
+3.  Na další stránku hello přečtěte si podmínky a ujednání.
+4.  V hello **vybrat model nasazení** vyberte **Resource Manager**.
 5.  Vyberte **Vytvořit**.
 
-Průvodce vás provede nastavení požadované parametry, které chcete vytvořit virtuální počítač, kromě všechny požadované prostředky, jako je síťová rozhraní a účty úložiště. Některé z těchto parametrů jsou:
+Hello Průvodce vás provede nastavením hello požadované parametry toocreate hello virtuálního počítače, kromě tooall požadované prostředky, jako je síťová rozhraní a účty úložiště. Některé z těchto parametrů jsou:
 
 1. **Základy**:
-  * **Název**: název prostředku (název virtuálního počítače).
- * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH), který používáte k přihlášení k počítači.
- * **Předplatné**: Vyberte odběr, který chcete použít ke zřízení nového virtuálního počítače.
- * **Skupina prostředků**: název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, která již existuje.
- * **Umístění**: kde nasadit nový virtuální počítač. Pokud se chcete připojit virtuální počítač k síti na pracovišti, nezapomeňte že vybrat umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [sítě Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide].
+  * **Název**: hello název prostředku hello (hello název virtuálního počítače).
+ * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte hello uživatelské jméno a heslo hello uživatele, který se vytvoří během zřizování hello. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH) hello použít toosign v toohello počítače.
+ * **Předplatné**: Vyberte předplatné hello má toouse tooprovision hello nového virtuálního počítače.
+ * **Skupina prostředků**: hello název skupiny prostředků hello hello virtuálních počítačů. Můžete zadat buď název hello nový prostředek skupiny nebo hello název skupiny prostředků, která již existuje.
+ * **Umístění**: kde toodeploy hello nového virtuálního počítače. Pokud chcete tooconnect hello virtuálního počítače tooyour do místní sítě, ujistěte se, že jste vybrali hello umístění hello virtuální sítě, která se připojuje Azure tooyour do místní sítě. Další informace najdete v tématu [sítě Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide].
 2. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače hello, pokud chcete, aby toouse Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide].
 
 3. **Nastavení**:
    * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte novou. Ne všechny typy úložiště fungovat pro spouštění aplikací SAP. Další informace o typech úložiště najdete v tématu [Microsoft Azure Storage] [ dbms-guide-2.3] v [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide].
-   * **Virtuální síť** a **podsíť**: integrovat virtuální počítač s intranetu, vyberte virtuální síť, který je připojen k síti na pracovišti.
-   * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k virtuálnímu počítači.
+   * **Virtuální síť** a **podsíť**: toointegrate hello virtuální počítač s intranetu, vyberte hello virtuální síť, která je připojená tooyour do místní sítě.
+   * **Veřejná IP adresa**: Vyberte hello veřejnou IP adresu, mají toouse, nebo zadejte parametry toocreate novou veřejnou IP adresu. Můžete veřejné tooaccess adresu IP virtuálního počítače přes hello Internet. Ujistěte se také vytvořit sítě zabezpečení skupiny toohelp zabezpečený přístup tooyour virtuálního počítače.
    * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s skupin zabezpečení sítě][virtual-networks-nsg].
-   * **Dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry, které chcete vytvořit novou skupinu dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
-   * **Monitorování**: můžete vybrat **zakázat** pro monitorování diagnostiky. Je povolena jako automaticky při spuštění příkazů povolit Azure rozšířené monitorování rozšíření, jak je popsáno v [konfigurace monitorování][deployment-guide-configure-monitoring-scenario-1].
+   * **Dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte hello parametry toocreate dostupnost nové nastavení. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
+   * **Monitorování**: můžete vybrat **zakázat** pro monitorování diagnostiky. Je povolena automaticky při spuštění hello příkazy tooenable hello Azure rozšířené monitorování rozšíření, jak je popsáno v [konfigurace monitorování][deployment-guide-configure-monitoring-scenario-1].
 
 4. **Souhrn**:
 
   Zkontrolujte váš výběr a potom vyberte **OK**.
 
-Virtuální počítač nasazen ve skupině prostředků, které jste vybrali.
+Virtuální počítač nasazen ve skupině prostředků hello, který jste vybrali.
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Vytvoření virtuálního počítače pomocí šablony
-Virtuální počítač můžete vytvořit pomocí jedné z šablon SAP publikované v [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí [portál Azure][virtual-machines-windows-tutorial], [prostředí PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms], nebo [rozhraní příkazového řádku Azure][virtual-machines-linux-tutorial].
+Virtuální počítač můžete vytvořit pomocí jedné z šablony SAP hello publikované v hello [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí hello [portál Azure][virtual-machines-windows-tutorial], [prostředí PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms], nebo [rozhraní příkazového řádku Azure ][virtual-machines-linux-tutorial].
 
 * [**Šablona dvouvrstvá konfigurace (jenom jeden virtuální počítač)** (sap-2vrstvy marketplace-image)][sap-templates-2-tier-marketplace-image]
 
-  K vytvoření dvouvrstvé systému pomocí jenom jeden virtuální počítač, použijte tuto šablonu.
+  Tuto šablonu použít toocreate dvouvrstvá systému pomocí jenom jeden virtuální počítač.
 * [**Šablona třívrstvá konfigurace (více virtuálních počítačů)** (sap-3vrstvy marketplace-image)][sap-templates-3-tier-marketplace-image]
 
-  K vytvoření třívrstvé systému pomocí více virtuálních počítačů, použijte tuto šablonu.
+  Tuto šablonu použít toocreate třívrstvá systému pomocí více virtuálních počítačů.
 
-Na portálu Azure zadejte následující parametry šablony:
+V hello portálu Azure zadejte následující parametry šablony hello hello:
 
 1. **Základy**:
-  * **Předplatné**: předplatné pro použití k nasazení šablony.
-  * **Skupina prostředků**: skupiny prostředků můžete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků, nebo můžete vybrat existující skupinu prostředků v předplatném.
-  * **Umístění**: kde chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
+  * **Předplatné**: hello předplatné toouse toodeploy hello šablony.
+  * **Skupina prostředků**: hello prostředků skupiny toouse toodeploy hello šablony. Můžete vytvořit novou skupinu prostředků, nebo můžete vybrat existující skupinu prostředků v předplatném hello.
+  * **Umístění**: kde toodeploy hello šablony. Pokud jste vybrali existující skupinu prostředků, použije se hello umístění této skupiny prostředků.
 
 2. **Nastavení**:
-  * **ID systému SAP**: ID systému SAP (SID).
-  * **Typ operačního systému**: operačního systému, kterou chcete nasadit, například, Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) nebo Red Hat Enterprise Linux 7.2 (RHEL 7.2).
+  * **ID systému SAP**: hello ID systému SAP (SID).
+  * **Typ operačního systému**: hello chcete toodeploy, například operační systém, Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) nebo Red Hat Enterprise Linux 7.2 (RHEL 7.2).
 
-    Výchozí zobrazení seznamu nezobrazuje, že všechny podporované operační systémy. Vyberte **zobrazit všechny** úplný seznam. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP, viz poznámka SAP [1928533].
-  * **Velikost systému SAP**: velikost systému SAP.
+    zobrazení seznamu výchozí Hello nezobrazuje, že všechny podporované operační systémy. Vyberte **zobrazit všechny** úplný seznam. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP, viz poznámka SAP [1928533].
+  * **Velikost systému SAP**: hello velikost hello systému SAP.
 
-    Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor.
-  * **Dostupnost systému** (pouze šablony třívrstvá): dostupnost systému.
+    poskytuje Hello počet protokoly SAP hello nový systém. Pokud si nejste jisti, kolik protokoly SAP hello systém vyžaduje, požádejte SAP technologie partnera nebo systémový integrátor.
+  * **Dostupnost systému** (pouze šablony třívrstvá): hello dostupnosti systému.
 
     Vyberte **HA** konfigurace, který je vhodný pro instalaci s vysokou dostupností. Vytvoří se dvou databázové servery a dva servery pro ABAP SAP centrální služby (ASC).
-  * **Typ úložiště** (pouze šablony dvouvrstvá): typ úložiště používat.
+  * **Typ úložiště** (pouze šablony dvouvrstvá): hello typ toouse úložiště.
 
     U větších systémů důrazně doporučujeme pomocí Azure Premium Storage. Další informace o typech úložiště najdete v těchto zdrojích:
       * [Používání úložiště Azure Premium SSD pro instanci databázového systému SAP][2367194]
       * [Microsoft Azure Storage] [ dbms-guide-2.3] v [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide]
       * [Úložiště Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
-      * [Úvod do Microsoft Azure Storage][storage-introduction]
+      * [Úvod tooMicrosoft Azure Storage][storage-introduction]
   * **Uživatelské jméno správce** a **heslo správce**: uživatelské jméno a heslo.
-    Po vytvoření nového uživatele pro přihlášení k virtuálnímu počítači.
-  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojen k síti na pracovišti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě virtuálních počítačů se připojí k. Vyberte podsíť virtuální sítě Azure ExpressRoute pro použití pro připojení k síti na pracovišti virtuální počítač nebo virtuální privátní sítě (VPN). ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
+    Pro přihlášení toohello virtuální počítač se vytvoří nového uživatele.
+  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojená tooyour do místní sítě, vyberte **existující**.
+  * **ID podsítě**: ID hello hello podsíť hello virtuálních počítačů se budou připojovat k. Vyberte podsíť hello virtuální privátní sítě (VPN) nebo Azure ExpressRoute virtuální sítě toouse tooconnect hello virtuálního počítače tooyour do místní sítě. Hello ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 3. **Podmínky a ujednání**:  
-    Přečtěte si a přijměte právní podmínky.
+    Přečtěte si a přijměte právní podmínky hello.
 
 4.  Vyberte **nákupu**.
 
-Ve výchozím nastavení je nasadit agenta virtuálního počítače Azure, při použití bitovou kopii z Azure Marketplace.
+ve výchozím nastavení je nasazené Hello agenta virtuálního počítače Azure, při použití bitové kopie z hello Azure Marketplace.
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
-V závislosti na konfiguraci místní sítě může být potřeba nastavení serveru proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený k vaší místní sítě prostřednictvím sítě VPN nebo ExpressRoute, virtuální počítač nemusí být možné získat přístup k Internetu a nebude ji již možné stáhnout požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [proxy server nakonfigurovat][deployment-guide-configure-proxy].
+V závislosti na konfiguraci vaší místní síti bude pravděpodobně nutné tooset až hello proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený tooyour do místní sítě prostřednictvím sítě VPN nebo ExpressRoute, hello virtuálních počítačů nemusí být schopný tooaccess hello Internetu a nebude se moct toodownload hello požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [nakonfigurovat proxy server hello][deployment-guide-configure-proxy].
 
 #### <a name="join-a-domain-windows-only"></a>Připojení k doméně (jenom Windows)
-Pokud vaše nasazení Azure je připojen k místní instance služby Active Directory nebo DNS prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (to se označuje jako *mezi různými místy* v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), očekává se, že virtuální počítač je připojení k místní doméně. Další informace o požadavcích pro tuto úlohu najdete v tématu [připojit virtuální počítač k doméně místní (jenom Windows)][deployment-guide-4.3].
+Pokud vaše nasazení Azure je instance služby Active Directory nebo DNS místně připojených tooan prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (to se označuje jako *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci pro SAP v systému Linux][planning-guide]), očekává se, že hello virtuálního počítače je připojení k místní doméně. Další informace o požadavcích pro tuto úlohu najdete v tématu [doméně virtuálního počítače tooan místní (jenom Windows)][deployment-guide-4.3].
 
 #### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurace monitorování
-Aby byly vaše prostředí podporuje SAP, nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5]. Kontrola předpokladů pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
+jestli vaše prostředí podporuje SAP, nastavit hello rozšíření monitorování Azure pro SAP, jak je popsáno v toobe [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro hello pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v hello prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Monitorování kontroly
 Zkontrolujte, zda monitorování funguje, jak je popsáno v [kontroly a řešení potíží pro nastavení sledování začátku do konce][deployment-guide-troubleshooting-chapter].
 
 #### <a name="post-deployment-steps"></a>Kroky po nasazení
-Po můžete vytvořit virtuální počítač a nasazení virtuálního počítače, musíte nainstalovat požadované softwarové komponenty ve virtuálním počítači. Z důvodu pořadí nasazení a software instalace v tomto typu nasazení virtuálního počítače nainstalovat software již musí být k dispozici, buď v Azure, na jiný počítač nebo jako disk, který lze připojit. Nebo, zvažte použití mezi různými místy scénář, ve které připojení k místní je uvedeno prostředky (Instalace sdílených složek).
+Po vytvoření je nasazená hello virtuálních počítačů a hello virtuálních počítačů, musíte tooinstall hello požadované softwarové součásti v hello virtuálních počítačů. Z důvodu hello nasazení a software instalace pořadí v tomto typu nasazení virtuálního počítače musí být toobe hello software nainstalovaný již k dispozici, buď v Azure, na jiný počítač nebo jako disk, který lze připojit. Nebo, zvažte použití mezi různými místy scénář, ve které připojení toohello místní prostředky (instalace sdílené složky) je zadána.
 
-Po nasazení virtuálního počítače v Azure, postupujte podle stejné pokyny a nástroje pro instalaci softwaru SAP na vašem virtuálním počítači, jako byste v místním prostředí. K instalaci softwaru SAP do virtuálního počítače Azure, doporučujeme SAP a Microsoft nahrát a uložit na instalačním médiu SAP na virtuální pevné disky Azure, nebo vytvořit virtuální počítač Azure, funguje jako souborový server, který obsahuje všechny požadované SAP instalačního média.
+Po nasazení virtuálního počítače v Azure, postupujte podle hello stejné pokyny a nástroje tooinstall hello SAP softwaru na vašem virtuálním počítači, jako je byste v místním prostředí. software SAP tooinstall na virtuální počítač Azure, jak SAP a společnosti Microsoft, abyste nahrát a uložit hello SAP instalačním médiu na virtuální pevné disky Azure, nebo vytvořit virtuální počítač Azure, který funguje jako souborový server, který má všechny hello vyžaduje SAP instalačního média.
 
-[comment]: <> (Proč to potřebujeme doporučit Správa souborů, například TODO MSSedusch souborového serveru nebo virtuálního pevného disku? Je, že tak liší od místně?)
+[comment]: <> (Proč to potřebujeme toorecommend Správa souborů, například TODO MSSedusch, souborový Server nebo virtuální pevný disk? Je, že tak liší od místně?)
 
 ### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>Scénář 2: Nasazení virtuálního počítače s vlastní image pro SAP
-Vzhledem k tomu, že různé verze operačního systému nebo databázového systému požadavky na jiné opravy, bitových kopií, které můžete najít v Azure Marketplace nemusí podle svých potřeb. Místo toho můžete chtít vytvořit virtuální počítač pomocí vlastní bitovou kopii operačního systému nebo databázového systému virtuálního počítače, kterou můžete nasadit znovu později.
-Použijete různé kroky k vytvoření bitové kopie privátní pro Linux než chcete vytvořit jednu pro Windows.
+Vzhledem k tomu, že různé verze operačního systému nebo databázového systému požadavky na jiné opravy, nemusí hello bitových kopií, které můžete najít v hello Azure Marketplace odpovídá vašim potřebám. Místo toho můžete toocreate virtuální počítač pomocí vlastní bitovou kopii operačního systému nebo databázového systému virtuálního počítače, kterou můžete nasadit znovu později.
+Použijete jiný postup toocreate privátní bitové kopie pro Linux než toocreate, jednu pro systém Windows.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Příprava bitové kopie systému Windows, který můžete použít k nasazení více virtuálních počítačů, musí být abstrahované nebo zobecněn ve virtuálním počítači místní nastavení systému Windows (např. Windows SID a název hostitele). Můžete použít [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) k tomu.
+> tooprepare bitovou kopii systému Windows, který můžete použít toodeploy více virtuálních počítačů, nastavení systému Windows hello (jako jsou SID systému Windows a název hostitele) musí být abstrahované nebo zobecněn na hello místní počítač. Můžete použít [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) toodo to.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Chcete-li připravit bitovou kopii systému Linux, který můžete použít k nasazení více virtuálních počítačů, musí být některá nastavení Linux abstrahované nebo zobecněn na místní počítač. Můžete použít `waagent -deprovision` k tomu. Další informace najdete v tématu [zachytit virtuální počítač Linux spuštěné v Azure] [ virtual-machines-linux-capture-image] a [Azure Linux agent uživatelská příručka][virtual-machines-linux-agent-user-guide-command-line-options].
+> tooprepare bitovou kopii systému Linux, které můžete použít toodeploy více virtuálních počítačů, musí být některá nastavení Linux hello abstraktní nebo zobecněný na místní počítač. Můžete použít `waagent -deprovision` toodo to. Další informace najdete v tématu [zachytit virtuální počítač Linux spuštěné v Azure] [ virtual-machines-linux-capture-image] a hello [Azure Linux agent uživatelská příručka][virtual-machines-linux-agent-user-guide-command-line-options].
 >
 >
 
 - - -
-Příprava a vytvořit vlastní image a pak ho používali k vytváření více nové virtuální počítače. To je popsáno v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]. Nastavení databáze obsahu pomocí Správce zřizování společnosti SAP softwaru k instalaci nového systému SAP (Obnoví zálohu databáze z virtuálního pevného disku, který je připojen k virtuálnímu počítači) nebo přímo obnovením zálohy databáze ze služby Azure storage, pokud ji podporuje vaše databázového systému. Další informace najdete v tématu [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide]. Pokud jste již nainstalovali systému SAP na váš místní virtuální počítač (hlavně u dvouvrstvá systémy), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure pomocí postupu přejmenovat systému nepodporuje správce zřizování softwaru SAP (Poznámka SAP [1619720]). Jinak můžete nainstalovat SAP software po nasazení virtuálního počítače Azure.
+Příprava a vytvořit vlastní image a pak jeho pomocí toocreate více nové virtuální počítače. To je popsáno v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]. Nastavení databáze obsahu, buď pomocí Správce zřizování softwaru SAP tooinstall nového systému SAP (Obnoví zálohu databáze z virtuálního pevného disku, který je připojený toohello virtuálního počítače) nebo přímo obnovení ze zálohy databáze ze služby Azure storage, pokud vaše databázového systému podporuje. Další informace najdete v tématu [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide]. Pokud jste již nainstalovali systému SAP na váš místní virtuální počítač (hlavně u dvouvrstvá systémy), můžete upravit nastavení systému SAP hello po nasazení hello hello virtuálního počítače Azure pomocí postupu hello přejmenovat systému nepodporuje zřizování softwaru SAP Správce (Poznámka SAP [1619720]). Jinak můžete nainstalovat hello SAP software poté, co nasadíte hello virtuálního počítače Azure.
 
-Následující diagram ukazuje SAP konkrétní pořadí kroků pro nasazení virtuálního počítače z vlastní image:
+Hello následující vývojový diagram znázorňuje hello SAP konkrétní pořadí kroků pro nasazení virtuálního počítače z vlastní image:
 
 ![Vývojový diagram nasazení virtuálního počítače pro systémy SAP pomocí bitové kopie virtuálních počítačů v privátní Marketplace][deployment-guide-figure-300]
 
-#### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
-K vytvoření nasazení s použitím privátní bitové kopie operačního systému z portálu Azure, použijte jednu z následujících šablon SAP. Tyto šablony jsou publikovány v [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí [prostředí PowerShell][virtual-machines-upload-image-windows-resource-manager].
+#### <a name="create-hello-virtual-machine"></a>Vytvoření virtuálního počítače hello
+toocreate nasazení s použitím privátní bitové kopie operačního systému z hello portál Azure, použijte jednu z následujících šablon SAP hello. Tyto šablony jsou publikovány v hello [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí [prostředí PowerShell][virtual-machines-upload-image-windows-resource-manager].
 
 * [**Šablona dvouvrstvá konfigurace (jenom jeden virtuální počítač)** (sap-2vrstvy uživatel image)][sap-templates-2-tier-user-image]
 
-  K vytvoření dvouvrstvé systému pomocí jenom jeden virtuální počítač, použijte tuto šablonu.
+  Tuto šablonu použít toocreate dvouvrstvá systému pomocí jenom jeden virtuální počítač.
 * [**Šablona třívrstvá konfigurace (více virtuálních počítačů)** (sap-3vrstvy uživatel image)][sap-templates-3-tier-user-image]
 
-  K vytvoření třívrstvé systému pomocí více virtuálních počítačů nebo vlastní image operačního systému, použijte tuto šablonu.
+  Tuto šablonu použít toocreate třívrstvá systému pomocí více virtuálních počítačů nebo vlastní bitovou kopii operačního systému.
 
-Na portálu Azure zadejte následující parametry šablony:
+V hello portálu Azure zadejte následující parametry šablony hello hello:
 
 1. **Základy**:
-  * **Předplatné**: předplatné pro použití k nasazení šablony.
-  * **Skupina prostředků**: skupiny prostředků můžete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
-  * **Umístění**: kde chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
+  * **Předplatné**: hello předplatné toouse toodeploy hello šablony.
+  * **Skupina prostředků**: hello prostředků skupiny toouse toodeploy hello šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném hello.
+  * **Umístění**: kde toodeploy hello šablony. Pokud jste vybrali existující skupinu prostředků, použije se hello umístění této skupiny prostředků.
 2. **Nastavení**:
-  * **ID systému SAP**: ID SAP systému.
-  * **Typ operačního systému**: typ operačního systému, kterou chcete nasadit (Windows nebo Linux).
-  * **Velikost systému SAP**: velikost systému SAP.
+  * **ID systému SAP**: hello ID systému SAP.
+  * **Typ operačního systému**: hello typ operačního systému, které chcete toodeploy (Windows nebo Linux).
+  * **Velikost systému SAP**: hello velikost hello systému SAP.
 
-    Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor.
-  * **Dostupnost systému** (pouze šablony třívrstvá): dostupnost systému.
+    poskytuje Hello počet protokoly SAP hello nový systém. Pokud si nejste jisti, kolik protokoly SAP hello systém vyžaduje, požádejte SAP technologie partnera nebo systémový integrátor.
+  * **Dostupnost systému** (pouze šablony třívrstvá): hello dostupnosti systému.
 
     Vyberte **HA** konfigurace, který je vhodný pro instalaci s vysokou dostupností. Vytvoří se dvou databázové servery a dva servery pro ASC.
-  * **Typ úložiště** (pouze šablony dvouvrstvá): typ úložiště používat.
+  * **Typ úložiště** (pouze šablony dvouvrstvá): hello typ toouse úložiště.
 
-    U větších systémů důrazně doporučujeme pomocí Azure Premium Storage. Další informace o typech úložiště najdete v následujících zdrojích informací:
+    U větších systémů důrazně doporučujeme pomocí Azure Premium Storage. Další informace o typech úložiště najdete v tématu hello následující prostředky:
       * [Používání úložiště Azure Premium SSD pro instanci databázového systému SAP][2367194]
       * [Microsoft Azure Storage] [ dbms-guide-2.3] v [databázového systému virtuální počítače Azure nasazení pro SAP v systému Linux][dbms-guide]
       * [Úložiště Premium: Vysoce výkonné úložiště pro úlohy virtuálního počítače Azure][storage-premium-storage-preview-portal]
-      * [Úvod do Microsoft Azure Storage][storage-introduction]
-  * **Uživatelská image URI virtuálního pevného disku**: identifikátoru URI privátní operačního systému bitové kopie disku VHD, například https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **Účet úložiště bitových kopií uživatele**: název účtu úložiště privátní bitové kopie operačního systému se uloží, například &lt;accountname > v https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **Uživatelské jméno správce** a **heslo správce**: uživatelské jméno a heslo.
+      * [Úvod tooMicrosoft Azure Storage][storage-introduction]
+  * **Uživatelská image URI virtuálního pevného disku**: hello URI hello privátní bitové kopie operačního systému virtuálního pevného disku, například https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+  * **Účet úložiště bitových kopií uživatele**: hello název účtu úložiště hello hello privátní bitové kopie operačního systému se uloží, například &lt;accountname > v https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+  * **Uživatelské jméno správce** a **heslo správce**: hello uživatelské jméno a heslo.
 
-    Po vytvoření nového uživatele pro přihlášení k virtuálnímu počítači.
-  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojen k síti na pracovišti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě, do které budou virtuální počítače připojit k. Vyberte podsíť virtuální sítě VPN nebo ExpressRoute sloužící k připojení virtuálního počítače k síti na pracovišti. ID obvykle vypadá takto:
+    Pro přihlášení toohello virtuální počítač se vytvoří nového uživatele.
+  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojená tooyour do místní sítě, vyberte **existující**.
+  * **ID podsítě**: ID hello hello podsíť toowhich hello virtuálních počítačů se budou připojovat k. Vyberte podsíť hello VPN nebo ExpressRoute virtuální sítě toouse tooconnect hello virtuálního počítače tooyour místní sítě. Hello ID obvykle vypadá takto:
 
     /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 3. **Podmínky a ujednání**:  
-    Přečtěte si a přijměte právní podmínky.
+    Přečtěte si a přijměte právní podmínky hello.
 
 4.  Vyberte **nákupu**.
 
-#### <a name="install-the-vm-agent-linux-only"></a>Nainstalujte agenta virtuálního počítače (pouze Linux)
-Použití šablon popsané v předchozí části, musíte Linux Agent již nainstalován v bitové kopii uživatele nebo nasazení se nezdaří. Stáhněte a nainstalujte agenta virtuálního počítače v bitové kopii uživatele, jak je popsáno v [stáhnout, nainstalovat a povolit agenta virtuálního počítače Azure][deployment-guide-4.4]. Pokud nepoužíváte šablony, můžete také nainstalovat agenta virtuálního počítače později.
+#### <a name="install-hello-vm-agent-linux-only"></a>Nainstalujte hello agenta virtuálního počítače (pouze Linux)
+popsané v předcházející části hello šablony hello toouse, hello agenta systému Linux musí být nainstalována v hello uživatelská image nebo hello nasazení se nezdaří. Stáhněte a nainstalujte hello agenta virtuálního počítače v hello uživatelská image, jak je popsáno v [stáhnout, nainstalovat a povolit hello agenta virtuálního počítače Azure][deployment-guide-4.4]. Pokud nepoužijete hello šablony, také můžete nainstalovat později hello agenta virtuálního počítače.
 
 #### <a name="join-a-domain-windows-only"></a>Připojení k doméně (jenom Windows)
-Pokud vaše nasazení Azure je připojen k místní instance služby Active Directory nebo DNS prostřednictvím Azure připojení site-to-site VPN nebo Azure ExpressRoute (to se označuje jako *mezi různými místy* v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), očekává se, že virtuální počítač je připojení k místní doméně. Další informace o aspektech týkajících se pro tento krok najdete v tématu [připojit virtuální počítač k doméně místní (jenom Windows)][deployment-guide-4.3].
+Pokud vaše nasazení Azure je instance služby Active Directory nebo DNS místně připojených tooan prostřednictvím Azure připojení site-to-site VPN nebo Azure ExpressRoute (to se označuje jako *mezi různými místy* v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), očekává se, že hello virtuálního počítače je připojení k místní doméně. Další informace o aspektech týkajících se pro tento krok najdete v tématu [doméně virtuálního počítače tooan místní (jenom Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
-V závislosti na konfiguraci místní sítě může být potřeba nastavení serveru proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený k vaší místní sítě prostřednictvím sítě VPN nebo ExpressRoute, virtuální počítač nemusí být možné získat přístup k Internetu a nebude ji již možné stáhnout požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [proxy server nakonfigurovat][deployment-guide-configure-proxy].
+V závislosti na konfiguraci vaší místní síti bude pravděpodobně nutné tooset až hello proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený tooyour do místní sítě prostřednictvím sítě VPN nebo ExpressRoute, hello virtuálních počítačů nemusí být schopný tooaccess hello Internetu a nebude se moct toodownload hello požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [nakonfigurovat proxy server hello][deployment-guide-configure-proxy].
 
 #### <a name="configure-monitoring"></a>Konfigurace monitorování
-Aby byly vaše prostředí podporuje SAP, nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5]. Kontrola předpokladů pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
+jestli vaše prostředí podporuje SAP, nastavit hello rozšíření monitorování Azure pro SAP, jak je popsáno v toobe [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro hello pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v hello prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Monitorování kontroly
 Zkontrolujte, zda monitorování funguje, jak je popsáno v [kontroly a řešení potíží pro nastavení sledování začátku do konce][deployment-guide-troubleshooting-chapter].
@@ -578,11 +578,11 @@ Zkontrolujte, zda monitorování funguje, jak je popsáno v [kontroly a řešen�
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scénář 3: Přesun místní počítač pomocí virtuálního pevného disku není zobecněný Azure SAP
-V tomto scénáři chcete přesunout konkrétního systému SAP do Azure z místního prostředí. To provedete tím, že nahrajete virtuální pevný disk, který má operačního systému, binární soubory SAP a nakonec databázového systému binárních souborů a virtuálních pevných disků se soubory protokolu a data z databázového systému, do Azure. Na rozdíl od podle scénáře popsaného v [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP][deployment-guide-3.3], v takovém případě byste mít název hostitele, identifikátor SID SAP, a SAP uživatelských účtů ve virtuálním počítači Azure, protože byly nakonfigurovány v místním prostředí. Není nutné ke generalizaci operačního systému. Tento scénář platí nejčastěji používá pro scénáře mezi různými místy, kde součástí povahu SAP běží místně a jeho součástí běží na Azure.
+V tomto scénáři plánujete toomove konkrétního systému SAP z tooAzure místní prostředí. Můžete to provést tím, že nahrajete hello virtuálního pevného disku, který má hello operačního systému, binární soubory hello SAP, a nakonec hello binární soubory databázového systému plus hello virtuální pevné disky s hello data a soubory hello databázového systému, tooAzure protokolu. Na rozdíl od hello scénář popsaný v [scénář 2: nasazení virtuálního počítače s vlastní image pro SAP][deployment-guide-3.3], v takovém případě zachovat hello název hostitele, identifikátor SID SAP, a SAP uživatelských účtů v hello virtuálního počítače Azure, protože byly nakonfigurovaný v místním prostředí hello. Není nutné toogeneralize hello operačního systému. Tento scénář se vztahuje nejčastěji toocross místní scénáře, kde součástí hello SAP šířku běží místně a jeho součástí běží na Azure.
 
-V tomto scénáři není automaticky instalován Agent virtuálního počítače během nasazení. Protože agenta virtuálního počítače a Azure rozšířené monitorování rozšíření pro SAP požadované pro spuštění SAP, musíte stáhnout, nainstalovat a povolit i komponent ručně po vytvoření virtuálního počítače.
+V tomto scénáři není automaticky instalován hello agenta virtuálního počítače během nasazení. Protože hello agenta virtuálního počítače a hello Azure rozšířené monitorování rozšíření pro SAP požadované pro toorun SAP, budete potřebovat toodownload, instalaci a povolte obě součásti ručně po vytvoření hello virtuálního počítače.
 
-Další informace o agenta virtuálního počítače Azure najdete v následujících materiálech.
+Další informace o hello agenta virtuálního počítače Azure najdete v části hello následující prostředky.
 
 [comment]: <> (Níže uvedený odkaz MSSedusch TODO aktualizace systému Windows)
 
@@ -599,158 +599,158 @@ Další informace o agenta virtuálního počítače Azure najdete v následují
 
 - - -
 
-Následující vývojový diagram znázorňuje pořadí kroků pro přesun místní počítač pomocí virtuálního pevného disku není zobecněný Azure:
+Hello následující vývojový diagram znázorňuje hello pořadí kroků pro přesun místní počítač pomocí virtuálního pevného disku není zobecněný Azure:
 
 ![Vývojový diagram nasazení virtuálního počítače pro SAP systémy pomocí disku virtuálního počítače][deployment-guide-figure-400]
 
-Za předpokladu, že je disk již nahrán a definované v Azure (viz [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), provést úkoly popsané v další části několik.
+Za předpokladu, že hello disk již odeslán a definované v Azure (v tématu [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), proveďte hello úkoly popsané v tématu hello vedle několik oddílů.
 
 #### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-K vytvoření nasazení pomocí privátní disk operačního systému, prostřednictvím portálu Azure, použijte šablonu SAP publikované v [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Také můžete ručně vytvoříte virtuální počítač pomocí prostředí PowerShell.
+toocreate nasazení pomocí privátní disk operačního systému, prostřednictvím hello portál Azure, použijte šablonu SAP hello publikované v hello [úložiště GitHub šablon azure rychlý Start][azure-quickstart-templates-github]. Také můžete ručně vytvoříte virtuální počítač pomocí prostředí PowerShell.
 
 * [**Šablona dvouvrstvá konfigurace (jenom jeden virtuální počítač)** (sap-2vrstvy uživatel disk)][sap-templates-2-tier-os-disk]
 
-  K vytvoření dvouvrstvé systému pomocí jenom jeden virtuální počítač, použijte tuto šablonu.
+  Tuto šablonu použít toocreate dvouvrstvá systému pomocí jenom jeden virtuální počítač.
 
-Na portálu Azure zadejte následující parametry šablony:
+V hello portálu Azure zadejte následující parametry šablony hello hello:
 
 1. **Základy**:
-  * **Předplatné**: předplatné pro použití k nasazení šablony.
-  * **Skupina prostředků**: skupiny prostředků můžete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
-  * **Umístění**: kde chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
+  * **Předplatné**: hello předplatné toouse toodeploy hello šablony.
+  * **Skupina prostředků**: hello prostředků skupiny toouse toodeploy hello šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném hello.
+  * **Umístění**: kde toodeploy hello šablony. Pokud jste vybrali existující skupinu prostředků, použije se hello umístění této skupiny prostředků.
 2. **Nastavení**:
-  * **ID systému SAP**: ID SAP systému.
-  * **Typ operačního systému**: typ operačního systému, kterou chcete nasadit (Windows nebo Linux).
-  * **Velikost systému SAP**: velikost systému SAP.
+  * **ID systému SAP**: hello ID systému SAP.
+  * **Typ operačního systému**: hello typ operačního systému, které chcete toodeploy (Windows nebo Linux).
+  * **Velikost systému SAP**: hello velikost hello systému SAP.
 
-    Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor.
-  * **Typ úložiště** (pouze šablony dvouvrstvá): typ úložiště používat.
+    poskytuje Hello počet protokoly SAP hello nový systém. Pokud si nejste jisti, kolik protokoly SAP hello systém vyžaduje, požádejte SAP technologie partnera nebo systémový integrátor.
+  * **Typ úložiště** (pouze šablony dvouvrstvá): hello typ toouse úložiště.
 
-    U větších systémů důrazně doporučujeme pomocí Azure Premium Storage. Další informace o typech úložiště najdete v následujících zdrojích informací:
+    U větších systémů důrazně doporučujeme pomocí Azure Premium Storage. Další informace o typech úložiště najdete v tématu hello následující prostředky:
       * [Používání úložiště Azure Premium SSD pro instanci databázového systému SAP][2367194]
       * [Microsoft Azure Storage] [ dbms-guide-2.3] v [nasazení virtuálního počítače Azure databázového systému pro SAP v systému Linux][dbms-guide]
       * [Úložiště Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
-      * [Úvod do Microsoft Azure Storage][storage-introduction]
-  * **Identifikátor URI virtuálního pevného disku na disku operačního systému**: URI privátní disk operačního systému, například https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
-  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojen k síti na pracovišti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě, do které budou virtuální počítače připojit k. Vyberte podsíť virtuální sítě VPN nebo Azure ExpressRoute sloužící k připojení virtuálního počítače k síti na pracovišti. ID obvykle vypadá takto:
+      * [Úvod tooMicrosoft Azure Storage][storage-introduction]
+  * **Identifikátor URI virtuálního pevného disku na disku operačního systému**: hello URI hello privátní disk operačního systému, například https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
+  * **Nový nebo existující podsíť**: Určuje, zda se vytvoří nová virtuální síť a podsíť, nebo se používá existující podsítí. Pokud již máte virtuální síť, která je připojená tooyour do místní sítě, vyberte **existující**.
+  * **ID podsítě**: ID hello hello podsíť toowhich hello virtuálních počítačů se budou připojovat k. Vyberte podsíť hello VPN nebo Azure ExpressRoute virtuální sítě toouse tooconnect hello virtuálního počítače tooyour místní sítě. Hello ID obvykle vypadá takto:
 
     /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 3. **Podmínky a ujednání**:  
-    Přečtěte si a přijměte právní podmínky.
+    Přečtěte si a přijměte právní podmínky hello.
 
 4.  Vyberte **nákupu**.
 
-#### <a name="install-the-vm-agent"></a>Nainstalujte agenta virtuálního počítače
-Použití šablon popsané v předchozí části, musí být Agent virtuálního počítače nainstalovaný na disk operačního systému nebo nasazení se nezdaří. Stáhněte a nainstalujte agenta virtuálního počítače ve virtuálním počítači, jak je popsáno v [stáhnout, nainstalovat a povolit agenta virtuálního počítače Azure][deployment-guide-4.4].
+#### <a name="install-hello-vm-agent"></a>Nainstalujte hello agenta virtuálního počítače
+hello hello toouse šablony popsané v předchozí části, hello agenta virtuálního počítače musí být nainstalován na disku hello operačního systému nebo hello nasazení se nezdaří. Stáhněte a nainstalujte hello agenta virtuálního počítače v hello virtuální počítač, jak je popsáno v [stáhnout, nainstalovat a povolit hello agenta virtuálního počítače Azure][deployment-guide-4.4].
 
-Pokud nepoužíváte šablony popsané v předchozí části, můžete také nainstalovat agenta virtuálního počítače později.
+Pokud nepoužijete hello šablony popsané v předcházející části hello, můžete taky nainstalovat agenta virtuálního počítače hello později.
 
 #### <a name="join-a-domain-windows-only"></a>Připojení k doméně (jenom Windows)
-Pokud vaše nasazení Azure je připojen k místní instance služby Active Directory nebo DNS prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (to se označuje jako *mezi různými místy* v [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide]), očekává se, že virtuální počítač je připojení k místní doméně. Další informace o požadavcích pro tuto úlohu najdete v tématu [připojit virtuální počítač k doméně místní (jenom Windows)][deployment-guide-4.3].
+Pokud vaše nasazení Azure je instance služby Active Directory nebo DNS místně připojených tooan prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (to se označuje jako *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci pro SAP v systému Linux][planning-guide]), očekává se, že hello virtuálního počítače je připojení k místní doméně. Další informace o požadavcích pro tuto úlohu najdete v tématu [doméně virtuálního počítače tooan místní (jenom Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
-V závislosti na konfiguraci místní sítě může být potřeba nastavení serveru proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený k vaší místní sítě prostřednictvím sítě VPN nebo ExpressRoute, virtuální počítač nemusí být možné získat přístup k Internetu a nebude ji již možné stáhnout požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [proxy server nakonfigurovat][deployment-guide-configure-proxy].
+V závislosti na konfiguraci vaší místní síti bude pravděpodobně nutné tooset až hello proxy na vašem virtuálním počítači. Pokud virtuální počítač je připojený tooyour do místní sítě prostřednictvím sítě VPN nebo ExpressRoute, hello virtuálních počítačů nemusí být schopný tooaccess hello Internetu a nebude se moct toodownload hello požadované rozšíření nebo shromažďovat data monitorování. Další informace najdete v tématu [nakonfigurovat proxy server hello][deployment-guide-configure-proxy].
 
 #### <a name="configure-monitoring"></a>Konfigurace monitorování
-Aby byly vaše prostředí podporuje SAP, nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5]. Kontrola předpokladů pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
+jestli vaše prostředí podporuje SAP, nastavit hello rozšíření monitorování Azure pro SAP, jak je popsáno v toobe [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro hello pro SAP monitorování a požadovaná minimální verze SAP jádra a Agent hostitele SAP, v hello prostředky uvedené v [SAP prostředky][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Monitorování kontroly
 Zkontrolujte, zda monitorování funguje, jak je popsáno v [kontroly a řešení potíží pro nastavení sledování začátku do konce][deployment-guide-troubleshooting-chapter].
 
-## <a name="update-the-monitoring-configuration-for-sap"></a>Aktualizovat konfiguraci monitorování pro SAP
-Aktualizujte konfiguraci monitorování SAP v některém z následujících scénářů:
-* Společné týmu Microsoft/SAP rozšiřuje možnosti monitorování a požadavky čítače více nebo méně.
-* Microsoft zavádí novou verzi základní infrastrukturu Azure, který poskytuje data monitorování a Azure rozšířené monitorování rozšíření pro SAP musí být přizpůsobena tyto změny.
-* Připojit další virtuální pevné disky na virtuální počítač Azure nebo odeberte virtuální pevný disk. V tomto scénáři aktualizujte shromažďování dat souvisejících s úložištěm. Změna konfigurací přidáním nebo odstraněním koncových bodů nebo přiřazení IP adres k virtuálnímu počítači nemá vliv na konfiguraci monitorování.
-* Změníte velikost virtuálního počítače Azure, například velikost A5 tak, aby ostatní velikost virtuálního počítače.
-* K virtuálnímu počítači Azure přidáte nové síťových rozhraní.
+## <a name="update-hello-monitoring-configuration-for-sap"></a>Aktualizovat hello konfiguraci monitorování pro SAP
+Aktualizujte konfiguraci monitorování hello SAP v některém z hello následující scénáře:
+* společné týmu Microsoft/SAP Hello rozšiřuje možnosti monitorování hello a požadavky čítače více nebo méně.
+* Microsoft zavádí novou verzi hello základní Azure infrastrukturu, která poskytuje hello data monitorování a hello rozšíření rozšířené monitorování Azure pro SAP toobe potřeby přizpůsobit toothose změny.
+* Připojit další tooyour virtuální pevné disky virtuálního počítače Azure nebo odeberte virtuální pevný disk. V tomto scénáři aktualizujte kolekci hello související s úložištěm dat. Změna konfiguraci přidáním nebo odstraněním koncových bodů nebo přiřazení IP adresy tooa virtuálního počítače nemá vliv na konfiguraci monitorování hello.
+* Změníte hello velikost virtuálního počítače Azure, například z velikost A5 tooany jiných velikost virtuálního počítače.
+* Můžete přidat nové sítě tooyour rozhraní virtuálního počítače Azure.
 
-Aktualizovat nastavení monitorování, aktualizace infrastruktury pro monitorování pomocí následujících kroků v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5].
+tooupdate nastavení monitorování, aktualizace hello monitorování infrastruktury hello následující kroky [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5].
 
 ## <a name="detailed-tasks-for-sap-software-deployment-on-a-windows-vm"></a>Podrobný popis úkolů pro nasazení softwaru SAP na virtuální počítač s Windows
-Tato část popsala postup při provádění konkrétní úlohy v procesu konfigurace a nasazení.
+Tato část popsala postup při provádění konkrétní úlohy v procesu konfigurace a nasazení hello.
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Nasazení rutin prostředí Azure PowerShell
-1.  Přejděte na [Microsoft Azure stáhne](https://azure.microsoft.com/downloads/).
+1.  Přejděte příliš[Microsoft Azure stáhne](https://azure.microsoft.com/downloads/).
 2.  V části **nástroje příkazového řádku**v části **prostředí PowerShell**, vyberte **nainstalovat Windows**.
-3.  V dialogovém okně Microsoft Download Manager pro stažený soubor (například WindowsAzurePowershellGet.3f.3f.3fnew.exe), vyberte **spustit**.
-4.  Ke spuštění instalačního programu webové platformy (Microsoft webové platformy), vyberte **Ano**.
+3.  V hello Microsoft stáhnout Manager dialog box se pro hello stáhnout soubor (například WindowsAzurePowershellGet.3f.3f.3fnew.exe), vyberte **spustit**.
+4.  toorun instalačního programu webové platformy (Microsoft Web PI), vyberte **Ano**.
 5.  Stránka, která vypadá to, se zobrazuje:
 
   ![Stránka Instalace rutin prostředí Azure PowerShell][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  Vyberte **nainstalovat**a pak přijměte licenční podmínky pro Software společnosti Microsoft.
-7.  Prostředí PowerShell je nainstalovaný. Vyberte **Dokončit** zavřete průvodce instalací.
+6.  Vyberte **nainstalovat**a pak přijměte licenční podmínky softwaru společnosti Microsoft hello.
+7.  Prostředí PowerShell je nainstalovaný. Vyberte **Dokončit** Průvodce instalací tooclose hello.
 
-Často vyhledat aktualizace do rutin prostředí PowerShell, které obvykle jsou aktualizovány jednou měsíčně. Nejjednodušší způsob, jak zkontrolovat aktualizace je postup předchozí instalace, až na stránce instalace zobrazí v kroku 5. Číslo verze datum a verze rutin jsou zahrnuty v stránka zobrazená v kroku 5. Pokud není uvedeno jinak v Poznámka SAP [1928533] nebo Poznámka SAP [2015553], doporučujeme vám, že pracujete s nejnovější verzi rutin prostředí Azure PowerShell.
+Kontrola často rutiny prostředí PowerShell toohello aktualizace, které obvykle jsou aktualizovány jednou měsíčně. Hello nejjednodušší způsob, jak toocheck aktualizací je toodo hello předcházející instalační kroky, až toohello instalace stránky, která je uvedená v kroku 5. číslo datum a vydání verze Hello rutin hello jsou zahrnuty v hello stránka zobrazená v kroku 5. Pokud není uvedeno jinak v Poznámka SAP [1928533] nebo Poznámka SAP [2015553], doporučujeme pracovat hello nejnovější verzi rutin prostředí Azure PowerShell.
 
-Pokud chcete zkontrolovat verzi rutin Azure Powershellu, které jsou nainstalovány v počítači, spusťte tento příkaz prostředí PowerShell:
+toocheck hello verzi hello rutin Azure Powershellu, které jsou nainstalovány v počítači, spusťte tento příkaz prostředí PowerShell:
 ```powershell
 Import-Module Azure
 (Get-Module Azure).Version
 ```
-Výsledek vypadá takto:
+výsledek Hello vypadá takto:
 
 ![Výsledek kontroly verze rutiny prostředí Azure PowerShell][deployment-guide-figure-600]
 <a name="figure-6"></a>
 
-Pokud je verze Azure rutiny v počítači nainstalována aktuální verze, první stránce Průvodce instalací znamenají, že přidáním **(nainstalována)** pro název produktu (viz následující snímek obrazovky). Vaše rutiny prostředí PowerShell Azure jsou aktuální. Zavřete průvodce instalací, vyberte **ukončení**.
+Pokud je verze Azure rutiny hello v počítači nainstalována aktuální verze hello, první stránka Průvodce instalací hello hello znamenají, že přidáním **(nainstalována)** název produktu toohello (viz následující snímek obrazovky hello). Vaše rutiny prostředí PowerShell Azure jsou aktuální. tooclose hello Průvodce instalací, vyberte **ukončení**.
 
-![Instalační stránku rutin prostředí Azure PowerShell, která udává, zda jsou nainstalovány nejnovější verzi rutin prostředí Azure PowerShell][deployment-guide-figure-700]
+![Jsou nainstalované instalační stránku rutin prostředí Azure PowerShell, která určuje, že hello nejnovější verzi rutin prostředí Azure PowerShell][deployment-guide-figure-700]
 <a name="figure-7"></a>
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Nasazení rozhraní příkazového řádku Azure
-1.  Přejděte na [Microsoft Azure stáhne](https://azure.microsoft.com/downloads/).
-2.  V části **nástroje příkazového řádku**v části **rozhraní příkazového řádku Azure**, vyberte **nainstalovat** odkaz pro váš operační systém.
-3.  V dialogovém okně Microsoft Download Manager pro stažený soubor (například WindowsAzureXPlatCLI.3f.3f.3fnew.exe), vyberte **spustit**.
-4.  Ke spuštění instalačního programu webové platformy (Microsoft webové platformy), vyberte **Ano**.
+1.  Přejděte příliš[Microsoft Azure stáhne](https://azure.microsoft.com/downloads/).
+2.  V části **nástroje příkazového řádku**v části **rozhraní příkazového řádku Azure**, vyberte hello **nainstalovat** odkaz pro váš operační systém.
+3.  V hello Microsoft stáhnout Manager dialog box se pro hello stáhnout soubor (například WindowsAzureXPlatCLI.3f.3f.3fnew.exe), vyberte **spustit**.
+4.  toorun instalačního programu webové platformy (Microsoft Web PI), vyberte **Ano**.
 5.  Stránka, která vypadá to, se zobrazuje:
 
   ![Stránka Instalace rutin prostředí Azure PowerShell][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  Vyberte **nainstalovat**a pak přijměte licenční podmínky pro Software společnosti Microsoft.
-7.  Rozhraní příkazového řádku Azure je nainstalovaný. Vyberte **Dokončit** zavřete průvodce instalací.
+6.  Vyberte **nainstalovat**a pak přijměte licenční podmínky softwaru společnosti Microsoft hello.
+7.  Rozhraní příkazového řádku Azure je nainstalovaný. Vyberte **Dokončit** Průvodce instalací tooclose hello.
 
-Často vyhledat aktualizace pro rozhraní příkazového řádku Azure, která obvykle se aktualizuje jednou měsíčně. Nejjednodušší způsob, jak zkontrolovat aktualizace je postup předchozí instalace, až na stránce instalace zobrazí v kroku 5.
+Kontrola často aktualizace tooAzure rozhraní příkazového řádku, která obvykle se aktualizuje jednou měsíčně. Hello nejjednodušší způsob, jak toocheck aktualizací je toodo hello předcházející instalační kroky, až toohello instalace stránky, která je uvedená v kroku 5.
 
 
-Pokud chcete zkontrolovat verzi rozhraní příkazového řádku Azure, který je nainstalován v počítači, spusťte tento příkaz:
+toocheck hello verzi rozhraní příkazového řádku Azure, který je nainstalován v počítači, spusťte tento příkaz:
 ```
 azure --version
 ```
 
-Výsledek vypadá takto:
+výsledek Hello vypadá takto:
 
 ![Výsledek kontroly verze rozhraní příkazového řádku Azure][deployment-guide-figure-760]
 <a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
-### <a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>Připojit virtuální počítač k doméně místní (jenom Windows)
-Pokud nasadíte virtuální počítače SAP ve scénáři mezi různými místy, kde místní služby Active Directory a DNS jsou rozšířené v Azure, očekává se, že virtuální počítače jsou připojení k místní doméně. Podrobné kroky, které je třeba provést připojení k místní doméně a další software, musí být členem domény služby místní virtuální počítač se liší podle zákazníka. Obvykle Pokud chcete virtuální počítač připojit k místní doméně, musíte nainstalovat další software, jako je antimalwarový software a zálohování nebo monitorování softwaru.
+### <a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>Připojení k virtuální počítač tooan místní doméně (jenom Windows)
+Pokud nasadíte virtuální počítače SAP ve scénáři mezi různými místy, kde jsou rozšířené místní služby Active Directory a DNS v Azure, očekává se, že hello virtuální počítače jsou připojení k místní doméně. Hello podrobné kroky trvat toojoin místní domény tooan virtuálních počítačů a hello toobe další software potřebný místní doméně se liší podle zákazníka. Obvykle toojoin tooan virtuálního počítače místní domény, musíte tooinstall další software, jako je antimalwarový software a zálohování nebo monitorování softwaru.
 
-V tomto scénáři musíte také ujistěte se, že pokud nastavení internetového proxy serveru jsou povinná, pokud virtuální počítač připojen do domény ve vašem prostředí, Windows místní systémový účet (S-1-5-18) ve virtuálním počítači hosta má stejné nastavení proxy serveru. Je nejjednodušší možnost vynutit proxy server pomocí zásad skupiny, které se vztahuje na systémy v doméně domény.
+V tomto scénáři musíte taky toomake jistotu, že pokud nastavení internetového proxy serveru jsou povinná, pokud virtuální počítač připojen do domény ve vašem prostředí, Windows hello místní systémový účet (S-1-5-18) v hello hosta virtuálního počítače má hello stejné nastavení proxy serveru. Nejjednodušší možnost Hello je tooforce hello proxy pomocí zásad skupiny, která se vztahuje toosystems v doméně hello domény.
 
-### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Stáhnout, nainstalovat a povolit agenta virtuálního počítače Azure
-Pro virtuální počítače, které jsou nasazeny z image operačního systému, který není zobecněný (například obrázek, který není v nástroji pro přípravu systému Windows nebo nástroje sysprep, pocházejí) musíte ručně stáhnout, nainstalovat a povolit agenta virtuálního počítače Azure.
+### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Stáhnout, nainstalovat a povolit hello agenta virtuálního počítače Azure
+Pro virtuální počítače, které jsou nasazeny z image operačního systému, který není zobecněný (například obrázek, který není v nástroji pro přípravu systému Windows nebo nástroje sysprep, hello pocházejí) budete potřebovat toomanually stažení, instalace a povolit hello agenta virtuálního počítače Azure.
 
-Pokud nasadíte virtuální počítač z Azure Marketplace, tento krok není povinný. Bitové kopie z Azure Marketplace už mít agenta virtuálního počítače Azure.
+Pokud nasadíte virtuální počítač z Azure Marketplace hello, tento krok není povinný. Bitové kopie z Azure Marketplace hello už máte hello agenta virtuálního počítače Azure.
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
-1.  Stáhněte agenta virtuálního počítače Azure:
-  1.  Stažení [instalační balíček agenta virtuálního počítače Azure](https://go.microsoft.com/fwlink/?LinkId=394789).
-  2.  Balíček MSI agenta virtuálního počítače ukládat místně na osobním počítači nebo serveru.
-2.  Nainstalujte agenta virtuálního počítače Azure:
-  1.  Připojení k nasazené virtuálního počítače Azure pomocí protokolu RDP (Remote Desktop).
-  2.  Otevřete okno Průzkumníka Windows na virtuální počítač a vyberte cílový adresář pro soubor MSI agenta virtuálního počítače.
-  3.  Přetáhněte soubor MSI Instalační program agenta virtuálního počítače Azure ze svého místního počítače nebo serveru na cílový adresář agenta virtuálního počítače na virtuálním počítači.
-  4.  Poklikejte na soubor MSI ve virtuálním počítači.
-3.  Pro virtuální počítače, které jsou připojeny k místní domény, ujistěte se, že případný nastavení proxy Internetu platí také pro účet místního systému Windows (S-1-5-18) ve virtuálním počítači, jak je popsáno v [proxy server nakonfigurovat][deployment-guide-configure-proxy]. Agent virtuálního počítače běží v tomto kontextu a musí být schopný se připojit k Azure.
+1.  Stáhněte si hello agenta virtuálního počítače Azure:
+  1.  Stáhnout hello [instalační balíček agenta virtuálního počítače Azure](https://go.microsoft.com/fwlink/?LinkId=394789).
+  2.  Ukládání balíčku MSI agenta virtuálního počítače hello místně na osobním počítači nebo serveru.
+2.  Nainstalujte agenta virtuálního počítače Azure hello:
+  1.  Připojit toohello nasazuje virtuální počítač Azure s použitím protokolu RDP (Remote Desktop).
+  2.  Otevřete okno Průzkumníka Windows na hello virtuálních počítačů a vyberte hello cílový adresář pro soubor MSI hello hello agenta virtuálního počítače.
+  3.  Přetáhněte soubor MSI Instalační program agenta virtuálního počítače Azure hello z vaší místní počítač nebo server toohello cílový adresář hello agenta virtuálního počítače na hello virtuálních počítačů.
+  4.  Poklikejte na soubor MSI hello na hello virtuálních počítačů.
+3.  Pro virtuální počítače, které jsou připojené k tooon místní domény, ujistěte se, že případný nastavení proxy Internetu toohello účet místního systému Windows (S-1-5-18) také použít v hello virtuálních počítačů, jak je popsáno v [nakonfigurovat proxy server hello] [ deployment-guide-configure-proxy]. Hello agenta virtuálního počítače běží v tomto kontextu a musí mít tooconnect tooAzure toobe.
 
-Žádná interakce s uživatelem, je potřeba aktualizovat agenta virtuálního počítače Azure. Agent virtuálního počítače se automaticky aktualizuje a nevyžaduje restartování virtuálního počítače.
+Žádná interakce s uživatelem je požadovaná tooupdate hello agenta virtuálního počítače Azure. Hello agenta virtuálního počítače se automaticky aktualizuje a nevyžaduje restartování virtuálního počítače.
 
 #### <a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
-Pomocí následujících příkazů nainstalujte VM agenta pro Linux:
+Použijte následující příkazy tooinstall hello agenta virtuálního počítače pro Linux hello:
 
 * **SUSE Linux Enterprise Server (SLES)**
 
@@ -764,109 +764,109 @@ Pomocí následujících příkazů nainstalujte VM agenta pro Linux:
   sudo yum install WALinuxAgent
   ```
 
-Pokud agent je již nainstalován, aktualizace Azure Linux Agent, postupujte podle pokynů popsaných v [aktualizovat Azure Linux Agent na virtuálním počítači na nejnovější verzi z webu GitHub][virtual-machines-linux-update-agent].
+Pokud je již nainstalován hello agent, tooupdate hello Azure Linux Agent hello kroků popsaných v [aktualizace hello Azure Linux Agent na nejnovější verzi toohello virtuálních počítačů z Githubu][virtual-machines-linux-update-agent].
 
-### <a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>Konfigurace proxy serveru
-Kroky, které je třeba provést konfiguraci proxy serveru v systému Windows se liší od způsob konfigurace proxy serveru v systému Linux.
+### <a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>Nakonfigurovat proxy server hello
+Hello postup, kterým tooconfigure hello proxy v systému Windows se liší od hello způsob, jak nakonfigurovat hello proxy v systému Linux.
 
 #### <a name="windows"></a>Windows
-Nastavení proxy serveru musí být nastavit správně pro místní systémový účet pro přístup k Internetu. Pokud vaše nastavení proxy serveru nejsou nastavené zásady skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
+Nastavení proxy serveru musí být nastavit správně pro hello účet Local System, tooaccess hello Internetu. Pokud vaše nastavení proxy serveru nejsou nastavené zásady skupiny, můžete nakonfigurovat nastavení hello hello místního systémového účtu.
 
-1. Přejděte na **spustit**, zadejte **gpedit.msc**a potom vyberte **Enter**.
-2. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **aplikace Internet Explorer**. Ujistěte se, že nastavení **zkontrolujte proxy nastavení podle počítače (nikoli na uživatele)** je zakázána nebo není nakonfigurována.
-3. V **ovládací panely**, přejděte na **Centrum sítí a sdílení** > **Možnosti Internetu**.
-4. Na **připojení** vyberte **nastavení místní sítě** tlačítko.
-5. Vymazat **automaticky zjišťovat nastavení** zaškrtávací políčko.
-6. Vyberte **použít proxy server pro síť LAN** zaškrtněte políčko a potom zadejte adresu proxy serveru a port.
-7. Vyberte **Upřesnit** tlačítko.
-8. V **výjimky** zadejte IP adresu **168.63.129.16**. Vyberte **OK**.
+1. Přejděte příliš**spustit**, zadejte **gpedit.msc**a potom vyberte **Enter**.
+2. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **aplikace Internet Explorer**. Ujistěte se, že nastavení hello **zkontrolujte proxy nastavení podle počítače (nikoli na uživatele)** je zakázána nebo není nakonfigurována.
+3. V **ovládací panely**, přejděte příliš**Centrum sítí a sdílení** > **Možnosti Internetu**.
+4. Na hello **připojení** karty, vyberte hello **nastavení místní sítě** tlačítko.
+5. Vymazat hello **automaticky zjišťovat nastavení** zaškrtávací políčko.
+6. Vyberte hello **použít proxy server pro síť LAN** zaškrtněte políčko a potom zadejte hello adresy a portu.
+7. Vyberte hello **Upřesnit** tlačítko.
+8. V hello **výjimky** zadejte IP adresu, hello **168.63.129.16**. Vyberte **OK**.
 
 
 #### <a name="linux"></a>Linux
-Správné proxy server nakonfigurovat v souboru konfigurace agenta hosta Microsoft Azure, která se nachází v \\atd\\waagent.conf.
+Konfigurace proxy správné hello v souboru konfigurace hello hello Microsoft Azure hostovaného agenta, která se nachází v \\atd\\waagent.conf.
 
-Nastavte následující parametry:
+Nastavte hello následující parametry:
 
-1.  **HTTP proxy hostitele**. Například nastavte ji na **proxy.corp.local**.
+1.  **HTTP proxy hostitele**. Například nastavit příliš**proxy.corp.local**.
   ```
   HttpProxy.Host=<proxy host>
 
   ```
-2.  **Port proxy serveru HTTP**. Například nastavte ji na **80**.
+2.  **Port proxy serveru HTTP**. Například nastavit příliš**80**.
   ```
-  HttpProxy.Port=<port of the proxy host>
+  HttpProxy.Port=<port of hello proxy host>
 
   ```
-3.  Restartujte agenta.
+3.  Restartujte agenta hello.
 
   ```
   sudo service waagent restart
   ```
 
-Nastavení proxy serveru v \\atd\\waagent.conf platí také pro požadované rozšíření virtuálního počítače. Pokud chcete používat úložiště Azure, ujistěte se, že přenosy na těchto úložiště není projít místního intranetu. Pokud jste vytvořili trasy definované uživatelem, chcete-li povolit vynucené tunelování, ujistěte se, že přidáte trasu který směruje provoz do úložiště přímo k Internetu a ne prostřednictvím připojení VPN typu site-to-site.
+nastavení proxy serveru v Hello \\atd\\waagent.conf platí také toohello požadované rozšíření virtuálního počítače. Pokud chcete, aby toouse hello úložiště Azure, ujistěte se, hello provoz toothese úložiště není projít místního intranetu. Pokud jste vytvořili, uživatelem definované trasy tooenable vynuceného tunelování, ujistěte se, že přidáte trasu, který směruje provoz toohello úložiště přímo toohello Internetu a ne prostřednictvím připojení VPN typu site-to-site.
 
 * **SLES**
 
-  Musíte taky přidat trasy pro IP adresy uvedené v \\atd\\regionserverclnt.cfg. Následující obrázek znázorňuje příklad:
+  Je také nutné tooadd trasy pro hello IP adres uvedených v \\atd\\regionserverclnt.cfg. Hello následující obrázek znázorňuje příklad:
 
   ![Vynucené tunelování][deployment-guide-figure-50]
 
 
 * **RHEL**
 
-  Musíte taky přidat trasy pro IP adresy hostitelů uvedených v \\atd\\yum.repos.d\\rhui Vyrovnávání zatížení. Příklad podívejte se na předchozí obrázek.
+  Je také nutné tooadd trasy pro hello IP adresy hostitelů hello uvedených v \\atd\\yum.repos.d\\rhui Vyrovnávání zatížení. Příklad najdete v tématu hello předcházející obrázek.
 
 Další informace o trasy definované uživatelem, najdete v části [trasy definované uživatelem a předávání IP][virtual-networks-udr-overview].
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace rozšíření Azure rozšířené monitorování pro SAP
-Když jste virtuální počítač připravený, jak je popsáno v [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači. Dalším krokem je pro nasazení Azure rozšířené monitorování rozšíření pro SAP, která je k dispozici v úložišti rozšíření Azure v globálních datových centrech Azure. Další informace najdete v tématu [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide-9.1].
+### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace hello Azure rozšířené monitorování rozšíření pro SAP
+Pokud jste připravený hello virtuálního počítače podle [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], hello Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači hello. dalším krokem Hello je toodeploy hello Azure rozšířené monitorování rozšíření pro SAP, která je k dispozici v hello rozšíření úložiště Azure v hello datových centrech Azure globální. Další informace najdete v tématu [virtuální počítače Azure plánování a implementace pro SAP v systému Linux][planning-guide-9.1].
 
-Prostředí PowerShell nebo rozhraní příkazového řádku Azure můžete použít k instalaci a konfiguraci Azure rozšířené monitorování rozšíření pro SAP. Instalace rozšíření v systému Windows nebo virtuálního počítače s Linuxem pomocí počítače s Windows, najdete v části [prostředí Azure PowerShell][deployment-guide-4.5.1]. Pokud chcete nainstalovat rozšíření virtuálního počítače s Linuxem pomocí plochy Linux, najdete v části [rozhraní příkazového řádku Azure][deployment-guide-4.5.2].
+Můžete použít PowerShell nebo rozhraní příkazového řádku Azure tooinstall a nakonfigurovat hello Azure rozšířené monitorování rozšíření pro SAP. rozšíření hello tooinstall v systému Windows nebo virtuálního počítače s Linuxem pomocí počítače s Windows najdete v části [prostředí Azure PowerShell][deployment-guide-4.5.1]. rozšíření hello tooinstall na virtuální počítač s Linuxem pomocí stolní počítač Linux, najdete v části [rozhraní příkazového řádku Azure][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Prostředí Azure PowerShell pro systémy Linux a virtuálních počítačů Windows
-Chcete-li nainstalovat Azure rozšířené monitorování rozšíření pro SAP pomocí prostředí PowerShell:
+tooinstall hello Azure rozšířené monitorování rozšíření pro SAP pomocí prostředí PowerShell:
 
-1. Ujistěte se, že instalaci nejnovější verze rutiny Azure Powershellu. Další informace najdete v tématu [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].  
-2. Spuštěním následující rutiny prostředí PowerShell.
-  Seznam dostupných prostředí, spusťte `commandlet Get-AzureRmEnvironment`. Pokud chcete používat veřejná Azure, je prostředí **AzureCloud**. Azure v Číně, vyberte **AzureChinaCloud**.
+1. Ujistěte se, že jste nainstalovali nejnovější verzi rutin prostředí Azure PowerShell hello hello. Další informace najdete v tématu [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].  
+2. Spusťte následující rutiny prostředí PowerShell hello.
+  Seznam dostupných prostředí, spusťte `commandlet Get-AzureRmEnvironment`. Pokud chcete, aby toouse veřejný Azure, prostředí je **AzureCloud**. Azure v Číně, vyberte **AzureChinaCloud**.
 
 
       ```powershell
-      $env = Get-AzureRmEnvironment -Name <name of the environment>
+      $env = Get-AzureRmEnvironment -Name <name of hello environment>
       Login-AzureRmAccount -Environment $env
       Set-AzureRmContext -SubscriptionName <subscription name>
 
       Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
       ```
 
-Po zadání vaše data na účtu a identifikovat virtuální počítač Azure, skript nasadí požadované rozšíření a umožňuje požadované funkce. To může trvat několik minut.
+Po zadání vaše data na účtu a identifikovat hello virtuální počítač Azure, skript hello nasadí hello požadované rozšíření a umožňuje hello požadované funkce. To může trvat několik minut.
 Další informace o `Set-AzureRmVMAEMExtension`, najdete v části [Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension].
 
 ![Úspěšné provedení specifické pro SAP Azure rutiny Set-AzureRmVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzureRmVMAEMExtension` Konfigurace nemá všechny kroky konfigurace hostitele monitorování pro SAP.
+Hello `Set-AzureRmVMAEMExtension` konfigurace nemá všechny hello kroky tooconfigure hostitele monitorování pro SAP.
 
-Výstup skriptu obsahuje následující informace:
+výstup skriptu Hello zahrnuje hello následující informace:
 
-* Potvrzení, že monitorování pro základní virtuální pevný disk (s operačním systémem) a všechny další virtuální pevné disky připojené k virtuálnímu počítači je nakonfigurovaný.
-* Další dvě zprávy potvrďte konfiguraci úložiště metriky pro účet konkrétní úložiště.
-* Jeden řádek výstupu poskytuje stav skutečné aktualizace konfiguraci monitorování.
-* Další řádek výstupu potvrdí, že byla konfigurace nasazení nebo aktualizovat.
-* Poslední řádek výstupu je informační. Zobrazuje možnosti testování konfiguraci monitorování.
+* Potvrzení tohoto monitorování pro základní hello virtuálního pevného disku (s hello operačního systému) a všechny další virtuální pevné disky připojené toohello, který je nakonfigurovaný virtuální počítač.
+* Další dvě zprávy Hello potvrďte hello konfigurace úložiště metrik pro účet konkrétní úložiště.
+* Jeden řádek výstupu dává hello stav hello skutečné aktualizace konfigurace monitorování hello.
+* Další řádek výstupu potvrdí, že hello konfigurace byl nasazen nebo aktualizován.
+* Hello poslední řádek výstupu je informační. Zobrazuje možnosti testování konfigurace monitorování hello.
 
-Pokud chcete zkontrolovat úspěšně byly provedeny všechny kroky rozšířené monitorování Azure a že infrastruktury Azure poskytuje potřebná data, pokračujte kontrolu připravenosti Azure rozšířené monitorování rozšíření pro SAP, jak je popsáno v [kontrolu připravenosti pro Azure rozšířené monitorování pro SAP][deployment-guide-5.1]. Počkejte, než 15 až 30 minut Azure Diagnostics shromažďovat relevantní data.
+toocheck, že byly úspěšně provedeny všechny kroky rozšířené monitorování Azure a že hello infrastruktury Azure poskytuje hello potřebná data, pokračujte kontrolu připravenosti hello hello Azure rozšířené monitorování rozšíření pro SAP, jak je popsáno v [Kontrolu připravenosti pro Azure rozšířené monitorování pro SAP][deployment-guide-5.1]. Počkejte, než 15 až 30 minut pro Azure Diagnostics toocollect hello relevantní data.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure CLI pro virtuální počítače s Linuxem
-Chcete-li nainstalovat Azure rozšířené monitorování rozšíření pro SAP pomocí rozhraní příkazového řádku Azure:
+tooinstall hello Azure rozšířené monitorování rozšíření pro SAP pomocí rozhraní příkazového řádku Azure:
 
-1. Instalace rozhraní příkazového řádku Azure, jak je popsáno v [nainstalovat Azure CLI][azure-cli].
+1. Instalace rozhraní příkazového řádku Azure, jak je popsáno v [hello instalace rozhraní příkazového řádku Azure][azure-cli].
 2. Přihlaste se pomocí účtu Azure:
 
   ```
   azure login
   ```
 
-3. Přepněte do režimu Azure Resource Manager:
+3. Přepnutí režimu Resource Manager tooAzure:
 
   ```
   azure config mode arm
@@ -878,12 +878,12 @@ Chcete-li nainstalovat Azure rozšířené monitorování rozšíření pro SAP 
   azure vm enable-aem <resource-group-name> <vm-name>
   ```
 
-5. Ověřte, že Azure rozšířené monitorování rozšíření na virtuální počítač s Linuxem Azure aktivní. Zkontrolujte, zda soubor \\var\\lib\\AzureEnhancedMonitor\\PerfCounters existuje. Pokud existuje, na příkazovém řádku, spusťte tento příkaz zobrazíte údaje shromážděné pomocí Azure rozšířené monitorování:
+5. Ověřte, že je tento hello rozšíření rozšířené monitorování Azure aktivní na hello virtuální počítač Azure s Linuxem. Zkontrolujte zda text hello souboru \\var\\lib\\AzureEnhancedMonitor\\PerfCounters existuje. Pokud existuje, na příkazovém řádku, spusťte tento příkaz toodisplay shromažďované nástrojem hello Azure rozšířené monitorování:
 ```
 cat /var/lib/AzureEnhancedMonitor/PerfCounters
 ```
 
-Výstup vypadá takto:
+výstup Hello vypadá takto:
 ```
 2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
 2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
@@ -892,190 +892,190 @@ Výstup vypadá takto:
 ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a řešení potíží pro sledování začátku do konce
-Po nasazení virtuálního počítače Azure a nastavte příslušné monitorování infrastruktury Azure, zkontrolujte, zda jsou všechny součásti Azure rozšířené monitorování rozšíření funguje podle očekávání.
+Po nasazení virtuálního počítače Azure a nastavit hello relevantní monitorování infrastrukturu Azure, zkontrolujte, zda jsou všechny komponenty hello hello rozšíření rozšířené monitorování Azure funguje podle očekávání.
 
-Spustit kontrolu připravenosti Azure rozšířené monitorování rozšíření pro SAP, jak je popsáno v [kontrolu připravenosti Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-5.1]. Pokud jsou všechny výsledky kontroly připravenosti kladné a všechny relevantní čítače výkonu zobrazují OK, Azure monitorování se úspěšně nastavilo. Můžete pokračovat v instalaci agenta hostitele SAP popsané v poznámkách k SAP v [SAP prostředky][deployment-guide-2.2]. Pokud kontrola připravenosti uvádí, že chybí čítače, spusťte kontrolu stavu pro monitorování infrastruktury Azure, jak je popsáno v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury][deployment-guide-5.2]. Další možnosti řešení potíží najdete v tématu [monitorování řešení potíží s Azure pro SAP][deployment-guide-5.3].
+Spustit kontrolu připravenosti hello hello Azure rozšířené monitorování rozšíření pro SAP, jak je popsáno v [kontrolu připravenosti hello Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-5.1]. Pokud jsou všechny výsledky kontroly připravenosti kladné a všechny relevantní čítače výkonu zobrazují OK, Azure monitorování se úspěšně nastavilo. Abyste mohli pokračovat hello instalace agenta hostitele SAP popsané v poznámkách k SAP hello v [SAP prostředky][deployment-guide-2.2]. Pokud kontrola připravenosti hello indikuje, že čítače chybí, spusťte kontrolu stavu hello pro hello monitorování infrastrukturu Azure, jak je popsáno v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury] [ deployment-guide-5.2]. Další možnosti řešení potíží najdete v tématu [monitorování řešení potíží s Azure pro SAP][deployment-guide-5.3].
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontrola připravenosti Azure rozšířené monitorování rozšíření pro SAP
-Tato kontrola zajišťuje, že všechny metriky výkonu, které se zobrazují v aplikaci SAP jsou poskytovány základní monitorování infrastruktury Azure.
+### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontrola připravenosti hello Azure rozšířené monitorování rozšíření pro SAP
+Tato kontrola zajišťuje, že všechny metriky výkonu, které se zobrazují v aplikaci SAP jsou poskytovány hello základní monitorování infrastruktury Azure.
 
-#### <a name="run-the-readiness-check-on-a-windows-vm"></a>Spustit kontrolu připravenosti na virtuální počítač s Windows
+#### <a name="run-hello-readiness-check-on-a-windows-vm"></a>Spustit kontrolu připravenosti hello na virtuální počítač s Windows
 
-1.  Přihlaste se k virtuální počítač Azure (pomocí účtu správce není potřeba).
+1.  Přihlaste se toohello virtuální počítač Azure (pomocí účtu správce není potřeba).
 2.  Otevřete okno příkazového řádku.
-3.  Na příkazovém řádku změňte adresář na instalační složku Azure rozšířené monitorování rozšíření pro SAP: C:\\balíčky\\modulů plug-in\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vyřadit
+3.  Na příkazovém řádku hello změnit hello directory toohello instalační složky hello Azure rozšířené monitorování rozšíření pro SAP: C:\\balíčky\\modulů plug-in\\ Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vyřadit
 
-  *Verze* v cestě k rozšíření monitorování mohou lišit. Pokud se zobrazí složek pro více verzí rozšíření monitorování ve složce instalace, zkontrolujte konfiguraci služby systému AzureEnhancedMonitoring Windows a pak přejděte do složky uvedené jako *cesta ke spustitelnému souboru*.
+  Hello *verze* v hello cesta toohello rozšíření monitorování mohou lišit. Pokud uvidíte složek pro více verzí hello rozšíření hello instalační složky zkontrolujte konfiguraci hello hello službu systému AzureEnhancedMonitoring Windows monitorování a potom složku toohello přepínač uvedené jako *tooexecutable cesta* .
 
-  ![Vlastnosti služby spuštěna Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-figure-1000]
+  ![Vlastnosti služba spuštěná hello Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-figure-1000]
 
-4.  Na příkazovém řádku spusťte **azperflib.exe** bez parametrů.
+4.  Na příkazovém řádku hello spustit **azperflib.exe** bez parametrů.
 
   > [!NOTE]
-  > Azperflib.exe běží ve smyčce a aktualizuje počitadla shromažďovaných každých 60 sekund. Pro ukončení smyčky, zavřete okno příkazového řádku.
+  > Azperflib.exe běží ve smyčce a aktualizace čítačů hello shromažďovaných každých 60 sekund. tooend hello smyčky, hello zavřít okno příkazového řádku.
   >
   >
 
-Pokud Azure rozšířené monitorování rozšíření není nainstalována nebo není spuštěná AzureEnhancedMonitoring, rozšíření nebyla nakonfigurována správně. Podrobné informace o tom, jak nasadit rozšíření najdete v tématu [řešení potíží s Azure monitorování infrastruktury pro SAP][deployment-guide-5.3].
+Pokud hello rozšíření rozšířené monitorování Azure není nainstalovaný nebo hello AzureEnhancedMonitoring služba neběží, hello rozšíření nebyla nakonfigurována správně. Podrobné informace o tom, jak toodeploy hello rozšíření najdete v tématu [Poradce při potížích s hello monitorování infrastruktury Azure pro SAP][deployment-guide-5.3].
 
-##### <a name="check-the-output-of-azperflibexe"></a>Zkontrolujte výstup azperflib.exe
-Azperflib.exe výstup ukazuje, že všechny čítače výkonu Azure vyplněný pro SAP. V dolní části seznamu shromážděných čítače indikátoru stavu a souhrn zobrazit stav monitorování Azure.
+##### <a name="check-hello-output-of-azperflibexe"></a>Zkontrolujte výstup hello azperflib.exe
+Azperflib.exe výstup ukazuje, že všechny čítače výkonu Azure vyplněný pro SAP. V dolní části hello hello seznamu shromážděných čítačů indikátoru stavu a souhrn zobrazit stav hello Azure monitorování.
 
 ![Výstup Kontrola stavu spuštěním azperflib.exe, který označuje, že neexistují žádné problémy][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-Zkontrolujte výsledek vrácený pro **čítače celkem** výstupu, který se použije v hlášení jako prázdný a pro **stav**, uvedené v předchozí obrázek.
+Zkontrolujte hello výsledek vrácený pro hello **čítače celkem** výstupu, který se použije v hlášení jako prázdný a pro **stav**, uvedené v předcházející obrázek hello.
 
-Výsledné hodnoty interpretovat následujícím způsobem:
+Interpretace výsledných hodnot hello následujícím způsobem:
 
 | Azperflib.exe výsledek hodnoty | Azure stav monitorování |
 | --- | --- |
-| **Volání rozhraní API – není k dispozici** | Čítače, které nejsou k dispozici může být buď není použitelná pro danou konfiguraci virtuálního počítače nebo chyby. V tématu **stav**. |
-| **Čítače Celkový – prázdné** |Následující dva čítače úložiště Azure může být prázdný: <ul><li>Čtení z úložiště Op latence serveru MS</li><li>Čtení z úložiště Op latence E2E MS</li></ul>Všechny ostatní čítače musí mít hodnoty. |
+| **Volání rozhraní API – není k dispozici** | Čítače, které nejsou k dispozici může být buď konfiguraci virtuálního počítače není k dispozici toohello nebo chyby. V tématu **stav**. |
+| **Čítače Celkový – prázdné** |Následující dva čítače úložiště Azure Hello nesmí být prázdné: <ul><li>Čtení z úložiště Op latence serveru MS</li><li>Čtení z úložiště Op latence E2E MS</li></ul>Všechny ostatní čítače musí mít hodnoty. |
 | **Stav** |Pouze OK Pokud vrátit stav ukazuje **OK**. |
 | **Diagnostika** |Podrobné informace o stavu. |
 
-Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury][deployment-guide-5.2].
+Pokud hello **stav** hodnota není **OK**, postupujte podle pokynů hello v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury] [ deployment-guide-5.2].
 
-#### <a name="run-the-readiness-check-on-a-linux-vm"></a>Spustit kontrolu připravenosti na virtuální počítač s Linuxem
+#### <a name="run-hello-readiness-check-on-a-linux-vm"></a>Spustit kontrolu připravenosti hello na virtuální počítač s Linuxem
 
-1.  Na virtuálním počítači Azure připojte pomocí protokolu SSH.
+1.  Toohello virtuálním počítači Azure připojte pomocí protokolu SSH.
 
-2.  Zkontrolujte výstup Azure rozšířené monitorování rozšíření.
+2.  Zkontrolujte výstup hello hello rozšíření rozšířené monitorování Azure.
 
   a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
 
-   **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
+   **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Hello soubor by neměl být prázdný.
 
  b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
 
-   **Očekávaný výsledek**: vrátí jeden řádek, kde je chyba **žádné**, například **3; konfigurace; Chyba; 0; 0; žádná; 0; 1456416792; tst-servercs;**
+   **Očekávaný výsledek**: vrátí jeden řádek, kde je chyba hello **žádné**, například **3; konfigurace; Chyba; 0; 0; žádná; 0; 1456416792; tst-servercs;**
 
   c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
 
     **Očekávaný výsledek**: vrátí jako prázdný nebo neexistuje.
 
-Pokud předchozí kontroly nebyla úspěšná, spusťte tyto další kontroly:
+Pokud hello předchozí kontroly nebyla úspěšná, spusťte tyto další kontroly:
 
-1.  Ujistěte se, že příkaz waagent nainstalován a povolen.
+1.  Ujistěte se, že příkaz waagent hello je nainstalován a povolen.
 
   a.  Spusťte `sudo ls -al /var/lib/waagent/`.
 
-      **Očekávaný výsledek**: obsahuje seznam obsahu, který příkaz waagent adresáře.
+      **Očekávaný výsledek**: obsahuje seznam obsahu, hello hello příkaz waagent adresáře.
 
   b.  Spusťte `ps -ax | grep waagent`.
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobnou:`python /usr/sbin/waagent -daemon`
 
-2. Ujistěte se, že rozšíření diagnostiky Linux nainstalováno a povoleno.
+2. Zkontrolujte, zda text hello rozšíření diagnostiky Linux je nainstalováno a povoleno.
 
   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-'`.
 
-   **Očekávaný výsledek**: uvádí obsah adresáře rozšíření diagnostiky Linux.
+   **Očekávaný výsledek**: obsahuje seznam obsahu, hello hello Linux diagnostiky rozšíření adresáře.
 
  b. Spusťte `ps -ax | grep diagnostic`.
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobnou:`python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon`
 
-3.   Ujistěte se, zda je rozšíření monitorování rozšířeného Azure nainstalovaná a spuštěná.
+3.   Ujistěte se, že tento hello rozšíření rozšířené monitorování Azure je nainstalovaná a spuštěná.
 
   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-/'`.
 
-    **Očekávaný výsledek**: uvádí obsah adresáře Azure rozšířeného rozšíření monitorování.
+    **Očekávaný výsledek**: obsahuje seznam obsahu, hello hello rozšíření rozšířené monitorování Azure Directory.
 
   b. Spusťte `ps -ax | grep AzureEnhanced`.
 
      **Očekávaný výsledek**: Zobrazí jednu položku podobnou:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-3. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup `saposcol`.
+3. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup hello `saposcol`.
 
   a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
 
   b.  Spusťte `dump ccm`.
 
-  c.  Zkontrolujte, zda **Virtualization_Configuration\Enhanced monitorování přístupu** metrika **true**.
+  c.  Zkontrolujte, zda hello **Virtualization_Configuration\Enhanced monitorování přístupu** metrika **true**.
 
 Pokud je již nainstalována aplikační server SAP NetWeaver ABAP, otevřete transakce ST06 sekce a zkontrolujte, zda je povoleno rozšířené monitorování.
 
-Pokud některý z těchto kontrol selhání a podrobné informace o tom, jak znovu nasaďte rozšíření najdete v tématu [řešení potíží s Azure monitorování infrastruktury pro SAP][deployment-guide-5.3].
+Pokud některý z těchto kontrol selhání a podrobné informace o tom, jak tooredeploy hello rozšíření najdete v tématu [Poradce při potížích s hello monitorování infrastruktury Azure pro SAP][deployment-guide-5.3].
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrola stavu pro konfiguraci Azure monitorování infrastruktury
-Pokud některé z monitorování dat není správně, jak je uvedeno testem popsané v doručí [kontrolu připravenosti pro Azure rozšířené monitorování pro SAP][deployment-guide-5.1]spusťte `Test-AzureRmVMAEMExtension` rutiny zkontrolujte, zda Azure monitorování infrastruktury a monitorování rozšíření pro SAP jsou správně nakonfigurované.
+### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrola stavu pro hello Azure monitorování konfigurace infrastruktury
+Pokud některé hello monitorování dat není správně označené doručena hello testovací popsaných v [kontrolu připravenosti pro Azure rozšířené monitorování pro SAP][deployment-guide-5.1]spusťte hello `Test-AzureRmVMAEMExtension` toocheck rutiny jestli hello Azure monitorování infrastruktury a hello rozšíření monitorování pro SAP jsou správně nakonfigurované.
 
-1.  Ujistěte se, že instalaci nejnovější verze rutiny Azure Powershellu, jak je popsáno v [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].
-2.  Spuštěním následující rutiny prostředí PowerShell. Seznam dostupných prostředí, spusťte rutinu `Get-AzureRmEnvironment`. Chcete-li použít veřejné Azure, vyberte **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
+1.  Ujistěte se, že jste nainstalovali nejnovější verzi hello hello rutiny Azure Powershellu, jak je popsáno v [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].
+2.  Spusťte následující rutiny prostředí PowerShell hello. Seznam dostupných prostředí, spusťte rutinu hello `Get-AzureRmEnvironment`. veřejný Azure, vyberte toouse hello **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
   ```powershell
-  $env = Get-AzureRmEnvironment -Name <name of the environment>
+  $env = Get-AzureRmEnvironment -Name <name of hello environment>
   Login-AzureRmAccount -Environment $env
   Set-AzureRmContext -SubscriptionName <subscription name>
   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
   ```
 
-3.  Zadejte vaše data na účtu a identifikovat virtuální počítač Azure.
+3.  Zadejte vaše data na účtu a identifikovat hello virtuální počítač Azure.
 
   ![Vstupní stránky specifické pro SAP Azure rutiny Test-VMConfigForSAP_GUI][deployment-guide-figure-1200]
 
-4. Skript testy konfigurace virtuálního počítače, které vyberete.
+4. Hello skriptu testy hello konfiguraci hello virtuálního počítače jste vybrali.
 
-  ![Výstup úspěšný test Azure monitorování infrastruktury pro SAP][deployment-guide-figure-1300]
+  ![Výstup úspěšný test hello monitorování infrastruktury Azure pro SAP][deployment-guide-figure-1300]
 
-Ujistěte se, že je každý výsledek kontroly stavu **OK**. Pokud nějaké kontroly nezobrazovat **OK**, spusťte rutinu aktualizace, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v [kontrolu připravenosti pro Azure rozšířené monitorování pro SAP] [ deployment-guide-5.1] a [Kontrola stavu pro konfigurace monitorování infrastruktury Azure][deployment-guide-5.2]. Pokud kontroly stále znamenat problém související s některé nebo všechny čítače, přečtěte si téma [řešení potíží s Azure monitorování infrastruktury pro SAP][deployment-guide-5.3].
+Ujistěte se, že je každý výsledek kontroly stavu **OK**. Pokud nějaké kontroly nezobrazovat **OK**, spusťte rutinu hello aktualizace, jak je popsáno v [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5]. Počkejte, 15 minut, a kontroluje opakování hello popsané v [kontrolu připravenosti pro Azure rozšířené monitorování pro SAP] [ deployment-guide-5.1] a [Kontrola stavu pro Azure monitorování infrastruktury konfiguraci] [deployment-guide-5.2]. Pokud hello kontroly stále znamenat problém související s některé nebo všechny čítače, přečtěte si téma [Poradce při potížích s hello monitorování infrastruktury Azure pro SAP][deployment-guide-5.3].
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s Azure monitorování infrastruktury pro SAP
+### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s hello monitorování infrastruktury Azure pro SAP
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se nezobrazí vůbec
-Služba systému AzureEnhancedMonitoring Windows shromažďuje metriky výkonu v Azure. Pokud služba není správně nainstalovaná. nebo pokud není spuštěn v virtuálního počítače, se můžou shromažďovat metrik výkonu.
+Hello služba AzureEnhancedMonitoring systému Windows shromažďuje metriky výkonu v Azure. Pokud hello služba nebyla správně nainstalována nebo není spuštěn v virtuálního počítače, se můžou shromažďovat metrik výkonu.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář Azure rozšířené monitorování rozšíření je prázdná
+##### <a name="hello-installation-directory-of-hello-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář Hello hello rozšíření rozšířené monitorování Azure je prázdná
 
 ###### <a name="issue"></a>Problém
-Instalační adresář C:\\balíčky\\modulů plug-in\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vynechání je prázdný.
+Instalační adresář Hello C:\\balíčky\\modulů plug-in\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vynechání je prázdný.
 
 ###### <a name="solution"></a>Řešení
-Rozšíření není nainstalována. Určí, zda se jedná o problém proxy (jak je popsáno výše). Možná muset restartovat počítač nebo znovu spustit `Set-AzureRmVMAEMExtension` konfigurační skript.
+rozšíření Hello není nainstalována. Určí, zda se jedná o problém proxy (jak je popsáno výše). Může být nutné toorestart hello počítač a znovu spusťte hello `Set-AzureRmVMAEMExtension` konfigurační skript.
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Služba pro rozšířené monitorování Azure neexistuje.
 
 ###### <a name="issue"></a>Problém
-Služba systému AzureEnhancedMonitoring Windows neexistuje.
+Hello služba systému AzureEnhancedMonitoring Windows neexistuje.
 
 Výstup Azperflib.exe vrátí chybu:
 
-![Provádění azperflib.exe označuje, zda není spuštěna služba Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-figure-1400]
+![Provádění azperflib.exe označuje, zda není spuštěna služba hello hello rozšíření rozšířené monitorování Azure pro SAP][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Řešení
-Pokud služba neexistuje, Azure rozšířené monitorování rozšíření pro SAP nebyl nainstalován správně. Znovu nasaďte rozšíření pomocí kroků popsaných pro váš scénář nasazení v [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3].
+Pokud služba hello neexistuje, hello Azure rozšířené monitorování rozšíření pro SAP nebyl nainstalován správně. Znovu nasaďte hello rozšíření pomocí hello postupu pro váš scénář nasazení v [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3].
 
-Poté, co nasadíte rozšíření, po jedné hodině, zkontrolujte znovu, zda jsou čítače výkonu Azure součástí virtuálních počítačů Azure.
+Poté, co nasadíte rozšíření hello po jedné hodině, zkontrolujte znovu, zda jsou čítače výkonu Azure hello součástí hello virtuálního počítače Azure.
 
-##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Služba pro rozšířené monitorování Azure existuje, ale nepodaří spustit
+##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-toostart"></a>Služba pro rozšířené monitorování Azure existuje, ale selže toostart
 
 ###### <a name="issue"></a>Problém
-Služba systému AzureEnhancedMonitoring Windows existuje a je povoleno, ale nepodaří spustit. Další informace najdete v protokolu událostí aplikace.
+Hello služba systému AzureEnhancedMonitoring Windows existuje a je povoleno, ale toostart se nezdaří. Další informace zkontrolujte protokol událostí aplikace hello.
 
 ###### <a name="solution"></a>Řešení
-Konfigurace je nesprávná. Restartujte rozšíření monitorování pro virtuální počítač, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5].
+Hello konfigurace je nesprávná. Restartujte hello rozšíření pro hello virtuálních počítačů, monitorování, jak je popsáno v [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5].
 
 #### <a name="windowslogowindows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure
-Služba systému AzureEnhancedMonitoring Windows shromažďuje metriky výkonu v Azure. Služba získá data z několika zdrojů. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Z vaší protokolování na úrovni předplatného úložiště jsou použity čítače úložiště.
+Hello služba AzureEnhancedMonitoring systému Windows shromažďuje metriky výkonu v Azure. Služba Hello získá data z několika zdrojů. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Z vaší protokolování na úrovni předplatného hello úložiště jsou použity čítače úložiště.
 
-Pokud řešení potíží pomocí příkazu Poznámka SAP [1999351] problém nevyřešíte, spusťte znovu `Set-AzureRmVMAEMExtension` konfigurační skript. Možná bude muset počkat hodinu, protože úložiště analytics nebo diagnostiky čítače nemusí být vytvářeny ihned po jsou povoleny. Pokud potíže potrvají, otevřete zprávu SAP zákaznické podpory na BC OP NT AZR součásti pro systém Windows nebo BC-OP-LNX-AZR pro virtuální počítač s Linuxem.
+Pokud řešení potíží pomocí příkazu Poznámka SAP [1999351] hello potíže nevyřešíte, spusťte znovu hello `Set-AzureRmVMAEMExtension` konfigurační skript. Protože storage analytics nebo diagnostiky čítače nemusí vytvořit ihned po jejich jsou povolené, může mít toowait na hodinu. Pokud hello problém přetrvává, otevřete zprávu SAP zákaznické podpory na hello BC OP NT AZR součásti pro systém Windows nebo BC-OP-LNX-AZR pro virtuální počítač s Linuxem.
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se nezobrazí vůbec
-Démon shromážděné metriky výkonu v Azure. Pokud není spuštěn démon, se můžou shromažďovat metrik výkonu.
+Démon shromážděné metriky výkonu v Azure. Pokud hello démon není spuštěn, je možné sbírat metrik výkonu.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář rozšíření Azure rozšířené monitorování je prázdná
+##### <a name="hello-installation-directory-of-hello-azure-enhanced-monitoring-extension-is-empty"></a>Instalační adresář Hello hello rozšíření Azure rozšířeného Monitoring je prázdná
 
 ###### <a name="issue"></a>Problém
-Adresář \\var\\lib\\příkaz waagent\\ nemá podadresáři rozšíření Azure rozšířené monitorování.
+Hello directory \\var\\lib\\příkaz waagent\\ nemá podadresáři pro hello rozšířené monitorování Azure rozšíření.
 
 ###### <a name="solution"></a>Řešení
-Rozšíření není nainstalována. Určí, zda se jedná o problém proxy (jak je popsáno výše). Možná budete muset restartovat počítač a znovu spustit `Set-AzureRmVMAEMExtension` konfigurační skript.
+rozšíření Hello není nainstalována. Určí, zda se jedná o problém proxy (jak je popsáno výše). Může být nutné toorestart hello počítače nebo znovu spusťte hello `Set-AzureRmVMAEMExtension` konfigurační skript.
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure
-Démon procesu, který získá data z několika zdrojů shromážděné metriky výkonu v Azure. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Úložiště čítače pocházet z protokolů v rámci vašeho předplatného úložiště.
+Démon procesu, který získá data z několika zdrojů shromážděné metriky výkonu v Azure. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Úložiště čítače pocházet z protokolů hello ve vašem předplatném úložiště.
 
 Pro dokončení a aktuální seznam známých problémů, viz poznámka SAP [1999351], která obsahuje další informace o řešení potíží pro rozšířené monitorování Azure pro SAP.
 
-Pokud řešení potíží pomocí příkazu Poznámka SAP [1999351] neobsahuje problém vyřešit, spusťte znovu `Set-AzureRmVMAEMExtension` konfigurační skript, jak je popsáno v [konfiguraci Azure rozšířené monitorování rozšíření přístup k SAP][deployment-guide-4.5]. Bude pravděpodobně nutné čekat na jednu hodinu, protože úložiště analytics nebo diagnostiky čítače nemusí vytvořit okamžitě po jsou povoleny. Pokud potíže potrvají, otevřete zprávu SAP zákaznické podpory na BC OP NT AZR součásti pro systém Windows nebo BC-OP-LNX-AZR pro virtuální počítač s Linuxem.
+Pokud řešení potíží pomocí příkazu Poznámka SAP [1999351] neobsahuje hello problém vyřešit, spusťte znovu hello `Set-AzureRmVMAEMExtension` konfigurační skript, jak je popsáno v [hello konfigurovat Azure rozšířené monitorování rozšíření pro SAP][deployment-guide-4.5]. Toowait může mít jednu hodinu, protože úložiště analytics nebo diagnostiky čítače nemusí vytvořit okamžitě po jsou povoleny. Pokud hello problém přetrvává, otevřete zprávu SAP zákaznické podpory na hello BC OP NT AZR součásti pro systém Windows nebo BC-OP-LNX-AZR pro virtuální počítač s Linuxem.

@@ -1,6 +1,6 @@
 ---
-title: "Spravovat zachycení paketů s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak spravovat funkci zachycení paketu sledovací proces sítě pomocí prostředí PowerShell"
+title: "paket aaaManage zachytávali sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak pro zachytávání paketů hello toomanage funkce sledovací proces sítě pomocí prostředí PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: abd3b3641da80ee835fac85b4bde68594449e451
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 77a522a1b05e020a73ba7140c1410615eb8761da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Spravovat zachycení paketů s sledovací proces sítě Azure pomocí prostředí PowerShell
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Rozhraní API Azure REST](network-watcher-packet-capture-manage-rest.md)
 
-Zachytáváním paketů sledovací proces sítě vám umožní vytvořit relace zachytávání sledovat provoz do a z virtuálního počítače. Filtry jsou k dispozici pro relaci zachytávání zajistit, že zaznamenáte pouze provoz, který chcete. Při diagnostice sítě anomálií reaktivně a proaktivně pomáhá zachytáváním paketů. Jiné účely zahrnují shromažďování statistiku sítě, získá informace o síti vniknutí, k ladění komunikaci klienta se serverem a mnoho dalšího. Díky vzdáleně aktivovat paketu zachycení, tato funkce snižuje zátěž spuštěných zachytáváním paketů ručně a na požadované počítače, který úspora času.
+Zachytáváním paketů sledovací proces sítě vám umožní toocreate zaznamenání relace tootrack provoz tooand z virtuálního počítače. Filtry jsou podle hello zaznamenání relace tooensure že zaznamenáte jenom provoz hello, které chcete. Zachytáváním paketů pomáhá toodiagnose sítě anomálií reaktivně a proaktivně. Mezi další použití patří shromažďování statistiku sítě, získá informace o síti vniknutí, toodebug klient server komunikace a mnoho dalšího. Tím, že je schopný tooremotely aktivační událost paketu zachycení, tato funkce snižuje zátěž hello spuštěných zachytáváním paketů ručně a hello požadované počítače, který úspora času.
 
-Tento článek vás provede úloh jiný správy, které jsou aktuálně dostupné pro zachytávání paketů.
+Tento článek vás provede hello úlohy různých správy, které jsou aktuálně dostupné pro zachytávání paketů.
 
 - [**Spustit zachytávání paketů**](#start-a-packet-capture)
 - [**Zastavit zachytávání paketů**](#stop-a-packet-capture)
@@ -40,14 +40,14 @@ Tento článek vás provede úloh jiný správy, které jsou aktuálně dostupn�
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte v následujících zdrojích informací:
+Tento článek předpokládá, že máte hello následující prostředky:
 
-* Instance sledovací proces sítě v oblasti, kterou chcete vytvořit zachytávání paketů
+* Instance sledovací proces sítě v hello oblasti, kterou chcete toocreate zachytávání paketů
 
-* Virtuální počítač s příponou zachytávání paketů povoleno.
+* Virtuální počítač s hello paketu zachytit rozšíření povolené.
 
 > [!IMPORTANT]
-> Rozšíření virtuálního počítače vyžaduje zachytáváním paketů `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Rozšíření virtuálního počítače vyžaduje zachytáváním paketů `AzureNetworkWatcherExtension`. Instaluje se rozšíření hello na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálního počítače
 
@@ -59,10 +59,10 @@ $VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>Krok 2
 
-Následující příklad načte informace o rozšíření, které jsou potřebné ke spuštění `Set-AzureRmVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů na virtuálním počítači hosta.
+Hello následující příklad načte hello informace o rozšíření potřeby toorun hello `Set-AzureRmVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů hello na hello hostovaného virtuálního počítače.
 
 > [!NOTE]
-> `Set-AzureRmVMExtension` Rutiny může trvat několik minut na dokončení.
+> Hello `Set-AzureRmVMExtension` rutiny může trvat několik minut toocomplete.
 
 Pro virtuální počítače s Windows:
 
@@ -80,7 +80,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ````
 
-Následující příklad je úspěšné odpovědi po spuštění `Set-AzureRmVMExtension` rutiny.
+Hello následující příklad je úspěšné odpovědi po spuštění hello `Set-AzureRmVMExtension` rutiny.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -90,13 +90,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Krok 3
 
-Chcete-li zajistit, že je agent nainstalovaný, spusťte `Get-AzureRmVMExtension` rutiny a předejte ji název virtuálního počítače a název rozšíření.
+tooensure, který hello agenta nainstalovat, spustit hello `Get-AzureRmVMExtension` rutiny a předejte ji hello název virtuálního počítače a název rozšíření hello.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Následující příklad je příklad odpovědi spuštění`Get-AzureRmVMExtension`
+Následující ukázka Hello je příkladem hello odpověď od spuštění`Get-AzureRmVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -120,11 +120,11 @@ ForceUpdateTag          :
 
 ## <a name="start-a-packet-capture"></a>Spustit zachytávání paketů
 
-Po dokončení předchozích kroků se agent zachytávání paketů je nainstalován na virtuálním počítači.
+Jakmile hello předchozí kroky jsou dokončeny, hello paketů zachycení agent je nainstalován na virtuálním počítači hello.
 
 ### <a name="step-1"></a>Krok 1
 
-Dalším krokem je pro získání instance sledovací proces sítě. Tato proměnná je předána `New-AzureRmNetworkWatcherPacketCapture` rutiny v kroku 4.
+dalším krokem Hello je tooretrieve hello sledovací proces sítě instance. Tato proměnná je předán toohello `New-AzureRmNetworkWatcherPacketCapture` rutiny v kroku 4.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -133,7 +133,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ### <a name="step-2"></a>Krok 2
 
-Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachytávání paketů.
+Načtěte účet úložiště. Tento účet úložiště je použité toostore hello paketu zachycení soubor.
 
 ```powershell
 $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
@@ -141,7 +141,7 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 
 ### <a name="step-3"></a>Krok 3
 
-Chcete-li omezit data, která je uložená ve zachytáváním paketů použít filtry. Následující příklad nastaví dva filtry.  Jeden filtr shromažďuje odchozí přenosy TCP pouze z místní IP 10.0.0.3 do cílové porty 20, 80 a 443.  Druhý filtr shromažďuje jenom provoz UDP.
+Filtry lze použít toolimit hello data uložená ve zachytáváním paketů hello. Hello následující příklad nastaví dva filtry.  Shromažďuje jeden filtr protokolu TCP odchozí provoz jenom z místní IP 10.0.0.3 toodestination porty 20, 80 a 443.  druhý filtr Hello shromažďuje jenom provoz UDP.
 
 ```powershell
 $filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -153,13 +153,13 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>Krok 4
 
-Spustit `New-AzureRmNetworkWatcherPacketCapture` rutiny spustit proces zachycení paketu předávání požadované hodnoty načíst v předchozích krocích.
+Spustit hello `New-AzureRmNetworkWatcherPacketCapture` rutiny toostart hello paketu proces zachycení, předávání hello požadované hodnoty získané v předchozích krocích hello.
 ```powershell
 
 New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
 ```
 
-V následujícím příkladu je očekávaný výstup spuštění `New-AzureRmNetworkWatcherPacketCapture` rutiny.
+Hello následující příklad je hello očekávaný výstup z systémem hello `New-AzureRmNetworkWatcherPacketCapture` rutiny.
 
 ```
 Name                    : PacketCaptureTest
@@ -199,13 +199,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Získat zachytávání paketů
 
-Spuštění `Get-AzureRmNetworkWatcherPacketCapture` rutina načte stav paketu zachycení aktuálně spuštěné, nebo pokud byla dokončena.
+Spuštění hello `Get-AzureRmNetworkWatcherPacketCapture` rutina, načte stav hello paketu zachycení aktuálně spuštěné, nebo pokud byla dokončena.
 
 ```powershell
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-V následujícím příkladu je výstup z `Get-AzureRmNetworkWatcherPacketCapture` rutiny. V následujícím příkladu je po dokončení zachytávání. Hodnota PacketCaptureStatus je zastavena, s StopReason TimeExceeded. Tato hodnota ukazuje, že zachytáváním paketů byla úspěšná a jeho spuštění.
+Hello následující příklad je hello výstup hello `Get-AzureRmNetworkWatcherPacketCapture` rutiny. Hello následující příklad je po dokončení hello zachycení. StopReason TimeExceeded je zastavena Hello PacketCaptureStatus hodnotu. Tato hodnota ukazuje, že zachytáváním paketů hello byla úspěšná a jeho spuštění.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -246,14 +246,14 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Zastavit zachytávání paketů
 
-Spuštěním `Stop-AzureRmNetworkWatcherPacketCapture` rutiny, pokud zachycení relace je v průběhu je zastavena.
+Spuštěním hello `Stop-AzureRmNetworkWatcherPacketCapture` rutiny, pokud zachycení relace je v průběhu je zastavena.
 
 ```powershell
 Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
-> Žádná odpověď vrátí rutina při spuštěné v relaci aktuálně spuštěné zachycení nebo existující relaci, která již byla zastavena.
+> žádná odpověď vrátí rutina Hello při spuštěné v relaci aktuálně spuštěné zachycení nebo existující relaci, která již byla zastavena.
 
 ## <a name="delete-a-packet-capture"></a>Odstranit zachytávání paketů
 
@@ -262,13 +262,13 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -Packe
 ```
 
 > [!NOTE]
-> Odstraňuje se zachytáváním paketů nedojde k odstranění souboru v účtu úložiště.
+> Odstraňuje se zachytáváním paketů nedojde k odstranění hello souboru v účtu úložiště hello.
 
 ## <a name="download-a-packet-capture"></a>Stáhnout zachytáváním paketů
 
-Po dokončení relace zachytávání paketů můžete zaznamenat soubor odeslat do úložiště objektů blob nebo do místního souboru virtuálního počítače. Umístění úložiště pro zachytávání paketů se definuje při vytvoření relace. Nástroj vhodné pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, kterou můžete stáhnout tady: http://storageexplorer.com/
+Po dokončení relace zachytávání paketů hello zachycení soubor může být nahrané tooblob úložiště nebo tooa místního souboru na hello virtuálních počítačů. umístění úložiště Hello zachytáváním paketů hello se definuje při vytvoření relace hello. Vhodné nástroje tooaccess tyto zaznamenat soubory uložené tooa účet úložiště je Microsoft Azure Storage Explorer, kterou můžete stáhnout tady: http://storageexplorer.com/
 
-Pokud je zadaný účet úložiště, soubory zachytávání paketů ukládají na účet úložiště v následujícím umístění:
+Pokud je zadaný účet úložiště, soubory zachytávání paketů ukládají tooa účet úložiště v hello následující umístění:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
@@ -276,7 +276,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o automatizaci paketu zachytává se virtuální počítač výstrahy zobrazením [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
+Zjistěte, jak zaznamená tooautomate paketů s výstrahami, virtuální počítač zobrazením [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
 
 Najít, pokud určité provoz je povolený v orr mimo váš virtuální počítač navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)
 

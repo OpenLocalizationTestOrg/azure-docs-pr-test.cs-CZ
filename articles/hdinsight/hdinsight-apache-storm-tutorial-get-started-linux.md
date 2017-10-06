@@ -1,6 +1,6 @@
 ---
-title: "Příklady topologie Storm Starter v systému Apache Storm v HDInsight – Azure | Dokumentace Microsoftu"
-description: "Přečtěte si, jak provádět analýzu velkých objemů dat a zpracovávat data v reálném časem pomocí Apache Storm a příkladů topologie Storm Starter ve službě HDInsight."
+title: "Příklady aaaStorm starter na Apache Storm v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toodo analýzy velkých objemů dat a zpracování dat v reálném čase pomocí Apache Storm a hello počáteční příklady storm v HDInsight."
 keywords: "Storm Starter, příklad Apache Storm"
 services: hdinsight
 documentationcenter: 
@@ -16,20 +16,20 @@ ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bb6d6549e67ca5b557f0692f98c89692a87267b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
+#<a name="get-started-with-apache-storm-on-hdinsight-using-hello-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí hello počáteční příklady storm
 
-Naučte se používat systém Apache Storm v HDInsight pomocí příkladů topologie Storm Starter.
+Zjistěte, jak toouse Apache Storm v HDInsight pomocí hello počáteční příklady storm.
 
 Apache Storm je škálovatelný výpočetní systém v reálném čase odolný proti chybám, distribuovaný určený pro zpracování datových proudů. Pomocí Storm v Azure HDInsight můžete vytvořit cloudový cluster Storm, který bude provádět analýzy velkých objemů dat v reálném čase.
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,24 +41,24 @@ Apache Storm je škálovatelný výpočetní systém v reálném čase odolný p
 
 ## <a name="create-a-storm-cluster"></a>Vytvoření clusteru Storm
 
-Pomocí následujících kroků můžete vytvořit Storm na clusteru HDInsight:
+Použijte následující postup toocreate Storm v clusteru HDInsight hello:
 
-1. Na webu [Azure Portal](https://portal.azure.com) vyberte **+ NOVÉ**, **Inteligentní funkce a analýzy** a pak **HDInsight**.
+1. Z hello [portál Azure](https://portal.azure.com), vyberte **+ nový**, **Intelligence + analýzy**a potom vyberte **HDInsight**.
 
     ![Vytvoření clusteru HDInsight](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
-2. V okně **Základy** zadejte následující informace:
+2. Z hello **Základy** okno, zadejte hello následující informace:
 
-    * **Název clusteru:** Název clusteru HDInsight.
-    * **Předplatné:** Vyberte předplatné, které chcete použít.
-    * **Uživatelské jméno přihlášení clusteru** a **Heslo přihlášení clusteru**: Přihlašovací údaje pro přístup ke clusteru pomocí protokolu HTTPS. Tyto přihlašovací údaje se používají i pro přístup ke službám, jako jsou webové uživatelské rozhraní Ambari nebo REST API.
-    * **Uživatelské jméno Secure Shell (SSH:)** Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
-    * **Skupina prostředků:** Skupina prostředků, ve které se cluster vytváří.
-    * **Umístění:** Oblast Azure, ve které se cluster vytváří.
+    * **Název clusteru**: název hello hello clusteru HDInsight.
+    * **Předplatné**: Vyberte předplatné toouse hello.
+    * **Uživatelské jméno přihlášení clusteru** a **clusteru přihlašovacího hesla**: hello přihlášení při přístupu k hello clusteru přes protokol HTTPS. Tyto přihlašovací údaje služby tooaccess například hello webové uživatelské rozhraní Ambari nebo REST API používáte.
+    * **Secure Shell (SSH) username**: hello přihlášení, které se používá při získávání hello clusteru prostřednictvím SSH. Ve výchozím nastavení je hello hello heslo stejné jako heslo pro přihlášení hello clusteru.
+    * **Skupina prostředků**: hello prostředků skupiny toocreate hello clusteru v.
+    * **Umístění**: hello oblast Azure toocreate hello clusteru v.
 
     ![Výběr předplatného](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. Vyberte **Typ clusteru** a pak v okně **Konfigurace clusteru** zadejte tyto hodnoty:
+3. Vyberte **clusteru typ**, a pak sadu hello následující hodnoty na hello **konfigurace clusteru** okno:
 
     * **Typ clusteru:** Storm
 
@@ -68,99 +68,99 @@ Pomocí následujících kroků můžete vytvořit Storm na clusteru HDInsight:
 
     * **Úroveň clusteru:** Standard
 
-    Nakonec uložte nastavení tlačítkem **Vybrat**.
+    Nakonec použijte hello **vyberte** tlačítko toosave nastavení.
 
     ![Výběr typu clusteru](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
-4. Po výběru typu clusteru použijte tlačítko __Vybrat__ k výběru typu clusteru. Dále stisknutím tlačítka __Další__ dokončete základní konfiguraci.
+4. Po výběru typu hello clusteru, použijte hello __vyberte__ tooset hello clusteru typ tlačítka. Pak pomocí hello __Další__ tlačítko toofinish základní konfigurace.
 
-5. V okně **Úložiště** vyberte nebo vytvořte účet úložiště. Pro ukázkový postup v tomto dokumentu ponechte všechna ostatní pole v tomto okně na výchozích hodnotách. Stisknutím tlačítka __Další__ uložte konfiguraci úložiště.
+5. Z hello **úložiště** okně vyberte nebo vytvořte účet úložiště. Hello kroky v tomto dokumentu ponechte hello další pole v tomto okně na hello výchozí hodnoty. Použití hello __Další__ tlačítko toosave úložiště konfigurace.
 
-    ![Nastavení účtu úložiště pro HDInsight](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
+    ![Nastavit hello nastavení účtu úložiště pro HDInsight](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. V okně **Souhrn** zkontrolujte konfiguraci clusteru. Pomocí odkazů __Upravit__ opravte případná chybná nastavení. Nakonec stisknutím tlačítka Vytvořit cluster vytvořte.
+6. Z hello **Souhrn** okno, zkontrolujte konfiguraci hello pro hello cluster. Použití hello __upravit__ odkazy toochange všechna nastavení, která jsou nesprávné. Nakonec použijte the__Create__ tlačítko toocreate hello clusteru.
 
     ![Souhrn konfigurace clusteru](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
     > [!NOTE]
-    > Vytvoření clusteru trvá přibližně 20 minut.
+    > To může trvat až too20 minut toocreate hello clusteru.
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Spuštění ukázky topologie Storm Starter v HDInsight
 
-1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
+1. Připojte toohello clusteru HDInsight pomocí protokolu SSH:
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    Pokud jste použili heslo k zabezpečení uživatelského účtu SSH, zobrazí se výzva k jeho zadání. Pokud jste použili veřejný klíč, bude pravděpodobně muset použít parametr `-i` k určení odpovídajícího privátního klíče. Například, `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+    Pokud jste použili toosecure hesla účtu uživatele SSH, jste výzvami tooenter ho. Pokud jste použili veřejný klíč, můžete potřebovat použít hello `-i` parametr toospecify hello odpovídající soukromý klíč. Například, `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Následující příkaz použijte ke spuštění ukázkové topologie:
+2. Použijte následující příkaz toostart ukázkové topologie hello:
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
 
     > [!NOTE]
-    > V dřívějších verzích služby HDInsight je název třídy topologie `storm.starter.WordCountTopology` místo `org.apache.storm.starter.WordCountTopology`.
+    > V dřívějších verzích systému HDInsight, název třídy hello hello topologie je `storm.starter.WordCountTopology` místo `org.apache.storm.starter.WordCountTopology`.
 
-    Tento příkaz spustí ukázkovou topologii WordCount v clusteru s popisným názvem „wordcount“. Bude náhodně generovat věty a počítat výskyt jednotlivých slov v těchto větách.
+    Tento příkaz spustí hello ukázkovou topologii WordCount v clusteru hello s popisným názvem "WordCount". Generuje náhodně věty a počet hello výskytem jednotlivých slov v hello věty.
 
     > [!NOTE]
-    > Při odesílání vlastních topologií do clusteru je před použitím příkazu `storm` nutné nejprve zkopírovat soubor jar obsahující cluster. Ke zkopírování tohoto souboru použijte příkaz `scp`. Například `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+    > Při odesílání vlastní topologie toohello cluster, je nutné nejprve zkopírovat soubor jar hello obsahující hello cluster před použitím hello `storm` příkaz. Použití hello `scp` příkaz toocopy hello souboru. Například `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
     >
-    > Příklad WordCount a další příklady topologie Storm Starter jsou již zahrnuty v clusteru na `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+    > Příklad WordCount Hello a další příklady storm starter jsou již zahrnuty v clusteru na `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-Pokud si chcete prohlédnout zdrojové kódy příkladů topologie Storm Starter, najdete je na [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Tento odkaz je pro Storm 1.1.x, který je součástí služby HDInsight 3.6. Pro ostatní verze Stormu použijte tlačítko __Větev__ v horní části stránky a vyberte jinou verzi Stormu.
+Pokud vás zajímá v zobrazení zdroje hello hello příklady storm-starter, můžete najít hello kód na [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Tento odkaz je pro Storm 1.1.x, který je součástí služby HDInsight 3.6. U ostatních verzí Storm použít hello __větve__ tlačítko hello horní části stránky tooselect hello jinou verzi Storm.
 
-## <a name="monitor-the-topology"></a>Monitorování topologie
+## <a name="monitor-hello-topology"></a>Monitorování hello topologie
 
-Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight.
+Hello uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight.
 
-Ke sledování topologie pomocí uživatelského rozhraní Storm použijte následující kroky:
+Použijte následující postup toomonitor hello topologie pomocí hello uživatelské rozhraní Storm hello:
 
-1. Pokud chcete zobrazit uživatelské rozhraní Storm, ve webovém prohlížeči otevřete stránku https://CLUSTERNAME.azurehdinsight.net/stormui. Nahraďte **CLUSTERNAME** názvem vašeho clusteru.
+1. hello toodisplay uživatelské rozhraní Storm, otevřete toohttps://CLUSTERNAME.azurehdinsight.net/stormui webového prohlížeče. Nahraďte **CLUSTERNAME** s hello názvem vašeho clusteru.
 
     > [!NOTE]
-    > Pokud budete vyzváni k zadání uživatelského jména a hesla, zadejte správce clusteru (admin) a heslo použité při vytvoření clusteru.
+    > Pokud se zobrazí dotaz tooprovide uživatelské jméno a heslo, zadejte Správce clusteru hello (správce) a heslo použité při vytváření clusteru hello.
 
-2. V části **Souhrn topologie**, vyberte položku **wordcount** ve sloupci **Název**. Zobrazí se další informace o topologii.
+2. V části **souhrn topologie**, vyberte hello **wordcount** položku v hello **název** sloupce. Zobrazí se informace o topologii hello.
 
     ![Řídicí panel Storm s informacemi o topologii Storm Starter WordCount.](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
 
-    Tato stránka přináší následující informace:
+    Tato stránka obsahuje hello následující informace:
 
-    * **Statistiky topologie** – základní informace o výkonu topologie uspořádané do časových oken.
+    * **Statistiky topologie** – základní informace o hello výkonu topologie uspořádané do časových oken.
 
         > [!NOTE]
-        > Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.
+        > Výběr určité časové okno změny hello časové okno informací zobrazených v dalších částech stránky hello.
 
-    * **Funkce Spouts** – základní informace o funkcích spouts, včetně poslední chyby vrácené každou funkcí spout.
+    * **Spouts** – základní informace o funkcích spouts, včetně hello poslední chyby vrácené každou funkcí spout.
 
     * **Funkce Bolts** – základní informace o funkcích bolts.
 
-    * **Topologie konfigurace** – podrobné informace o konfiguraci topologie.
+    * **Topologie konfigurace** -podrobné informace o konfiguraci topologie hello.
 
-    Tato stránka také obsahuje akce, které můžete provést na topologii:
+    Tato stránka také obsahuje akce, které můžete provést na topologii hello:
 
     * **Aktivovat** – obnoví zpracování deaktivované topologie.
 
     * **Deaktivovat** – pozastaví spuštěné topologie.
 
-    * **Znovu vyvážit** – upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace naleznete v části [Pochopení paralelismu topologie Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    * **Znovu vyvážit** – upraví paralelismus hello hello topologie. Po změně hello počet uzlů v clusteru hello, znovu vyvážit spuštěné topologie. Vyrovnává upraví paralelismus toocompensate pro hello zvýšení nebo snížení počtu uzlů v clusteru hello. Další informace najdete v tématu [pochopení paralelismu topologie Storm hello](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-    * **Ukončit** – ukončí topologii Storm po zadaném časovém limitu.
+    * **Příkaz kill** – ukončí topologii Storm po hello zadaný časový limit.
 
-3. Na této stránce vyberte položku z oddílu **Spouts** nebo **Bolts**. Zobrazí se informace o vybrané komponentě.
+3. Z této stránky, vyberte položku z hello **Spouts** nebo **Bolts** části. Zobrazí se informace o vybrané součásti hello.
 
     ![Řídicí panel Storm s informacemi o vybraných součástech.](./media/hdinsight-apache-storm-tutorial-get-started-linux/component-summary.png)
 
-    Tato stránka obsahuje následující informace:
+    Tato stránka zobrazuje hello následující informace:
 
-    * **Statistiky funkcí Spout/Bolt** – základní informace o výkonu komponenty uspořádané do časových oken.
+    * **Statistiky funkcí spout/Bolt** – základní informace o hello výkonu komponenty uspořádané do časových oken.
 
         > [!NOTE]
-        > Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.
+        > Výběr určité časové okno změny hello časové okno informací zobrazených v dalších částech stránky hello.
 
-    * **Statistiky vstupu** (pouze funkce bolt) – informace o komponentech, které vytváří dat využívaná funkcí bolt.
+    * **Statistiky vstupu** (pouze funkce bolt) – informace o komponentech, které vytváří dat využívaná funkcí hello bolt.
 
     * **Statististiky výstupu** – informace o datech vysílaných touto funkcí bolt.
 
@@ -168,7 +168,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
     * **Chyby** – chyby vytvořené touto komponentou.
 
-4. Chcete-li zobrazit podrobnosti pro konkrétní instanci komponenty, při zobrazení podrobností o funkcích spout nebo bolt vyberte položku ze sloupce **Port** v oddílu **Vykonavatelé**.
+4. Při zobrazení podrobností hello spout nebo bolt, vyberte položku z hello **Port** sloupec v hello **vykonavatelů** části tooview podrobnosti pro konkrétní instanci komponenty hello.
 
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
@@ -179,13 +179,13 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
 
-    V tomto příkladu se slovo **seven** vyskytlo 1493957krát. Tolikrát bylo toto slovo zjištěno od spuštění této topologie.
+    V tomto příkladu hello word **sedm** došlo 1 493 957krát. Je to počet kolikrát hello word došlo od spuštění této topologii.
 
-## <a name="stop-the-topology"></a>Zastavení topologie
+## <a name="stop-hello-topology"></a>Zastavení topologie hello
 
-Vraťte se na stránku **Souhrn topologie**, kde naleznete topologii počtu slov a pak vyberte tlačítko **Zastavit** z oddílu **Topologie akce**. Po zobrazení výzvy zadejte hodnotu 10 jako počet sekund, po které se má počkat před zastavením topologie. Po uplynutí časového limitu se topologie už při návštěvě oddílu **Uživatelské rozhraní Storm** řídicího panelu nezobrazí.
+Vrátí toohello **souhrn topologie** pro hello topologii počtu slov a pak vyberte hello **Kill** tlačítko z hello **topologie akce** části. Po zobrazení výzvy zadejte 10 sekund toowait hello před zastavením topologie hello. Po hello časového limitu hello topologie již nadále nebude zobrazovat při návštěvě hello **uživatelské rozhraní Storm** část řídicího panelu hello.
 
-## <a name="delete-the-cluster"></a>Odstranění clusteru
+## <a name="delete-hello-cluster"></a>Odstranění clusteru hello
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -193,13 +193,13 @@ Pokud narazíte na problém s vytvářením clusteru HDInsight, podívejte se na
 
 ## <a id="next"></a>Další kroky
 
-V tomto kurzu Apache Storm jste se naučili základy práce se Stormem v HDInsightu. Dále se naučíte, jak [Vyvíjet topologie založené na jazyce Java pomocí nástroje Maven](hdinsight-storm-develop-java-topology.md).
+V tomto kurzu Apache Storm jste se dozvěděli hello základy práce se Storm v HDInsight. Dále se naučíte, jak příliš[založené na jazyce Java vyvíjet topologie pomocí nástroje Maven](hdinsight-storm-develop-java-topology.md).
 
-Pokud jste již obeznámeni s vývojem topologií založených na jazyce Java a chcete nasadit existující topologie do HDInsight, naleznete postup v části [Nasazení a správa topologií Apache Storm v HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md).
+Pokud jste již obeznámeni s vývojem topologií založených na jazyce Java a chcete toodeploy existující tooHDInsight topologii, přečtěte si téma [nasazení a správa topologií Apache Storm v HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md).
 
 Pokud jste vývojář .NET, můžete s použitím sady Visual Studio vytvořit topologie C# nebo hybridní topologie C#/Java. Další informace najdete v tématu [Vývoj topologií C# pro Apache Storm ve službě HDInsight pomocí nástrojů Hadoop pro Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
-Příklady topologií, které se dají použít se systémem Storm ve službě HDInsight:
+Topologie, které lze použít s Storm v HDInsight, například zobrazit hello následující příklady:
 
 * [Příklad topologií pro Storm v HDInsight](hdinsight-storm-example-topology.md)
 

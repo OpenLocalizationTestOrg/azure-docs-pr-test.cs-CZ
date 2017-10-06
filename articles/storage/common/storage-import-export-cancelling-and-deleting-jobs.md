@@ -1,6 +1,6 @@
 ---
-title: "Zrušit a odstranit úlohu Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak zrušit a odstraňovat úlohy pro službu Microsoft Azure Import/Export."
+title: "aaaCancel a odstranit úlohu Azure Import/Export | Microsoft Docs"
+description: "Zjistěte, jak toocancel a odstranění úlohy pro hello služby Microsoft Azure Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1e989c72fc03697bf6d2e515ff53003703665d1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 13456a8e7652850baacb53730cc7bb1520b0a4c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>Zrušení a odstranění úlohy Azure Import/Export
 
- Požádat o zrušit úlohu předtím, než je v `Packaging` stavu, volejte [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace a sadu `CancelRequested` element `true`. Úloha je zrušena na základě typu best effort. Pokud jednotky probíhá přenos dat, dat pokračovat v přesunu, i když bylo vyžádáno zrušení.
+ toorequest zrušení úlohy dříve, než je v hello `Packaging` stav, volání hello [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace a sadu hello `CancelRequested` element příliš`true`. Hello úlohy na základě typu best effort zrušeny. Pokud jednotky v hello proces přenosu dat, může data stále toobe přenést i poté, co bylo vyžádáno zrušení.
 
- Zrušené úlohy je přesunuta do `Completed` stavu a je uložen za 90 dnů od této chvíle se odstraní.
+ Zrušené úlohy je přesunutý toohello `Completed` stavu a je uložen za 90 dnů od této chvíle se odstraní.
 
- Chcete-li odstranit úlohu, volejte [odstranit úlohu](/rest/api/storageimportexport/jobs#Jobs_Delete) operace předtím, než má dodaný úlohy (to znamená, když úloha je v `Creating` stav). Můžete také odstranit úlohu, když je `Completed` stavu. Po odstranění úlohy její informace a stav již nejsou přístupné přes rozhraní REST API nebo portálu Azure.
+ toodelete úlohu, volání hello [odstranit úlohu](/rest/api/storageimportexport/jobs#Jobs_Delete) operace předtím, než má dodaný hello úlohy (to znamená, zatímco úloha hello je v hello `Creating` stav). Můžete také odstranit úlohu, pokud je v hello `Completed` stavu. Po odstranění úlohy její informace a stav již nejsou přístupné přes hello REST API nebo hello portálu Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)
+* [Pomocí REST API služby importu a exportu hello](storage-import-export-using-the-rest-api.md)

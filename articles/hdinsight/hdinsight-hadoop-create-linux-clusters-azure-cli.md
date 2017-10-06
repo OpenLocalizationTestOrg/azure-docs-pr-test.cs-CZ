@@ -1,6 +1,6 @@
 ---
-title: "Vytváření clusterů systému Hadoop pomocí příkazového řádku-Azure HDInsight | Microsoft Docs"
-description: "Informace o vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure napříč platformami 1.0."
+title: "aaaCreate clusterů systému Hadoop pomocí hello příkazového řádku - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate clusterů HDInsight pomocí hello a platformy Azure CLI 1.0."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 8f2fcb46789d000cd66164508f1159338dcae5f9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5295b01054b8c23df0e3b75a3e0e8c933ac48b3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
+# <a name="create-hdinsight-clusters-using-hello-azure-cli"></a>Vytvoření clusterů HDInsight pomocí hello rozhraní příkazového řádku Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroky v tohoto návodu dokumentu vytváření clusteru HDInsight 3.5 pomocí Azure CLI 1.0.
+Hello kroky tohoto návodu dokumentu vytváření clusteru HDInsight 3.5 pomocí hello Azure CLI 1.0.
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -38,90 +38,90 @@ Kroky v tohoto návodu dokumentu vytváření clusteru HDInsight 3.5 pomocí Azu
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Rozhraní příkazového řádku Azure**. Kroky v tomto dokumentu byly naposledy testovány s Azure CLI verze 0.10.14.
+* **Azure CLI**. pomocí Azure CLI verze 0.10.14 poslední testovali Hello kroky v tomto dokumentu.
 
     > [!IMPORTANT]
-    > Kroky v tomto dokumentu není kompatibilní s Azure CLI 2.0. Azure CLI 2.0 nepodporuje vytváření clusteru služby HDInsight.
+    > pomocí Azure CLI 2.0 nefungují Hello kroky v tomto dokumentu. Azure CLI 2.0 nepodporuje vytváření clusteru služby HDInsight.
 
-## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
+## <a name="log-in-tooyour-azure-subscription"></a>Přihlaste se tooyour předplatného Azure
 
-Postupujte podle kroků popsaných v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](../xplat-cli-connect.md) a připojte se k předplatnému pomocí metody **přihlášení**.
+Postupujte podle kroků hello popsaných v [připojit tooan předplatného Azure z rozhraní příkazového řádku Azure (Azure CLI) hello](../xplat-cli-connect.md) a připojte se pomocí hello předplatné tooyour **přihlášení** metoda.
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Z příkazového řádku, jako je například PowerShell nebo Bash je třeba provést následující kroky.
+z příkazového řádku, jako je například PowerShell nebo Bash je třeba provést následující kroky Hello.
 
-1. K ověření vašeho předplatného Azure, použijte následující příkaz:
+1. Použijte následující příkaz tooauthenticate tooyour předplatného Azure hello:
 
         azure login
 
-    Zobrazí se výzva k zadání jména a hesla. Pokud máte víc předplatných Azure, použijte `azure account set <subscriptionname>` nastavte předplatné, které příkazy rozhraní příkazového řádku Azure používají.
+    Můžete se výzvami tooprovide své jméno a heslo. Pokud máte víc předplatných Azure, použijte `azure account set <subscriptionname>` použijte příkazy tooset hello předplatné, které hello rozhraní příkazového řádku Azure.
 
-2. Přepněte do režimu Azure Resource Manager pomocí následujícího příkazu:
+2. Přepnutí režimu Resource Manager tooAzure pomocí hello následující příkaz:
 
         azure config mode arm
 
-3. Vytvořte skupinu prostředků. Tato skupina prostředků obsahuje HDInsight cluster a související účet úložiště.
+3. Vytvořte skupinu prostředků. Tato skupina prostředků obsahuje hello HDInsight cluster a související účet úložiště.
 
         azure group create groupname location
 
-    * Nahraďte `groupname` s jedinečným názvem skupiny.
+    * Nahraďte `groupname` s jedinečným názvem skupiny hello.
 
-    * Nahraďte `location` s zeměpisnou oblast, kterou chcete vytvořit skupinu v.
+    * Nahraďte `location` s hello zeměpisnou oblast, která chcete v toocreate hello skupiny.
 
-       Seznam platných umístění, použijte `azure location list` příkaz a pak použijte jednu z umístění z `Name` sloupce.
+       Seznam platných umístění, použijte hello `azure location list` příkaz a potom použijte jednu z umístění hello z hello `Name` sloupce.
 
-4. Vytvoření účtu úložiště. Tento účet úložiště se používá jako výchozí úložiště pro HDInsight cluster.
+4. Vytvoření účtu úložiště. Tento účet úložiště se používá jako hello výchozí úložiště pro hello HDInsight cluster.
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
 
-    * Nahraďte `groupname` s názvem skupiny vytvořené v předchozím kroku.
+    * Nahraďte `groupname` hello názvem skupiny hello vytvořili v předchozím kroku hello.
 
-    * Nahraďte `location` s stejné umístění, které jsou používané v předchozím kroku.
+    * Nahraďte `location` s hello používá stejné umístění v předchozím kroku hello.
 
-    * Nahraďte `storagename` s jedinečným názvem pro účet úložiště.
+    * Nahraďte `storagename` s jedinečným názvem pro účet úložiště hello.
 
         > [!NOTE]
-        > Další informace o parametrech použité v tomto příkazu použít `azure storage account create -h` chcete zobrazit nápovědu pro tento příkaz.
+        > Další informace o hello parametry použité v tomto příkazu použít `azure storage account create -h` tooview nápovědu pro tento příkaz.
 
-5. Načtěte klíč používaný k přístupu k účtu úložiště.
+5. Načtení hello klíč používá účet úložiště tooaccess hello.
 
         azure storage account keys list -g groupname storagename
 
-    * Nahraďte `groupname` s názvem skupiny prostředků.
-    * Nahraďte `storagename` s názvem účtu úložiště.
+    * Nahraďte `groupname` s názvem skupiny prostředků hello.
+    * Nahraďte `storagename` hello název účtu úložiště hello.
 
-     V datech, která je vrácena, uložte `key` hodnota `key1`.
+     V hello data, která je vrácena, uložte hello `key` hodnota `key1`.
 
 6. Vytvoření clusteru HDInsight.
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * Nahraďte `groupname` s názvem skupiny prostředků.
+    * Nahraďte `groupname` s názvem skupiny prostředků hello.
 
-    * Nahraďte `Hadoop` typu clusteru, který chcete vytvořit. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
+    * Nahraďte `Hadoop` s typem clusteru hello chcete toocreate. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
 
      > [!IMPORTANT]
-     > HDInsight clustery mají různé typy, které odpovídají zatížení nebo technologie, která clusteru je přizpůsobená pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je například Storm a HBase v jednom clusteru.
+     > HDInsight clustery jsou v různých typů, které odpovídají toohello zatížení a technologie, která hello clusteru je přizpůsobená pro. Neexistuje žádná podporovaná metoda toocreate clusteru, který kombinuje více typů, jako je například Storm a HBase v jednom clusteru.
 
-    * Nahraďte `location` s stejné umístění, které jsou používané v předchozích krocích.
+    * Nahraďte `location` s hello používá stejné umístění v předchozích krocích.
 
-    * Nahraďte `storagename` s názvem účtu úložiště.
+    * Nahraďte `storagename` hello názvem účtu úložiště.
 
-    * Nahraďte `storagekey` klíčem získaných v předchozím kroku.
+    * Nahraďte `storagekey` klíčem hello získaných v předchozím kroku hello.
 
-    * Pro `--defaultStorageContainer` parametr, použijte stejný název jako jste používali pro cluster.
+    * Pro hello `--defaultStorageContainer` parametr, hello použijte stejný název jako používáte pro hello cluster.
 
-    * Nahraďte `admin` a `httppassword` s jméno a heslo, které chcete použít při přístupu ke clusteru pomocí protokolu HTTPS.
+    * Nahraďte `admin` a `httppassword` hello jméno a heslo chcete toouse při přístupu k hello clusteru prostřednictvím protokolu HTTPS.
 
-    * Nahraďte `sshuser` a `sshuserpassword` pomocí uživatelského jména a hesla, které chcete použít při přístupu ke clusteru pomocí protokolu SSH
+    * Nahraďte `sshuser` a `sshuserpassword` s hello uživatelského jména a hesla nechcete toouse při přístupu k hello clusteru pomocí protokolu SSH
 
     > [!IMPORTANT]
-    > Tento příklad vytvoří cluster s dvě poznámky pracovního procesu. Můžete také změnit počet uzlů pracovního procesu až po vytvoření clusteru provedením operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu lze nastavit pomocí `--headNodeSize` parametru během vytváření clusteru.
+    > Tento příklad vytvoří cluster s dvě poznámky pracovního procesu. Hello počet uzlů pracovního procesu můžete také změnit po vytvoření clusteru provedením operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu hello lze nastavit pomocí hello `--headNodeSize` parametru během vytváření clusteru.
     >
     > Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-    To může trvat několik minut na dokončení procesu vytváření clusteru. Obvykle přibližně 15.
+    To může trvat několik minut, než toofinish procesu vytváření clusteru hello. Obvykle přibližně 15.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -129,7 +129,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vytvořili clusteru HDInsight pomocí rozhraní příkazového řádku Azure, použijte následující postupy se dozvíte, jak pracovat s clusteru:
+Teď, když jste úspěšně vytvořili clusteru HDInsight pomocí hello rozhraní příkazového řádku Azure, použijte následující toolearn jak hello toowork k vašemu clusteru:
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 

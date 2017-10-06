@@ -1,6 +1,6 @@
 ---
-title: "Exportu certifikátů emulátoru DB Cosmos Azure | Microsoft Docs"
-description: "Při vývoji v jazycích a moduly runtime, která nepoužívají Windows Store certifikát budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek poskytuje podrobné pokyny."
+title: "certifikáty emulátoru DB Cosmos Azure hello aaaExport | Microsoft Docs"
+description: "Při vývoji v jazycích a moduly runtime, která nepoužívají úložiště certifikátů Windows hello bude potřebovat tooexport a spravovat certifikáty SSL hello. Tento příspěvek poskytuje podrobné pokyny."
 services: cosmos-db
 documentationcenter: 
 keywords: "Emulátor Azure Cosmos DB"
@@ -16,36 +16,36 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4add5028d50972316902cecd8c399781c012cb77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: db56cda856fccf93d71ae5b21c4090ccb9aa40a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportu certifikátů emulátoru DB Cosmos Azure pro použití s Java, Python a Node.js
+# <a name="export-hello-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportovat hello emulátoru DB Cosmos Azure certifikáty pro použití s Java, Python a Node.js
 
-[**Stáhněte si v emulátoru**](https://aka.ms/cosmosdb-emulator)
+[**Stáhnout hello emulátoru**](https://aka.ms/cosmosdb-emulator)
 
-Emulátor DB Cosmos Azure poskytuje místní prostředí, které emuluje služby Azure Cosmos DB pro účely vývoje, včetně jeho použití připojení SSL. Tento příspěvek ukazuje, jak k exportu certifikátů SSL pro použití v jazycích a moduly runtime, který nelze integrovat do úložiště certifikátů systému Windows, například Java, která používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) a Python, který používá [soketu obálky](https://docs.python.org/2/library/ssl.html) a Node.js, která používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru v [použití emulátoru DB Cosmos Azure pro vývoj a testování](./local-emulator.md).
+Hello emulátoru DB Cosmos Azure poskytuje místní prostředí, které emuluje hello služby Azure Cosmos DB pro účely vývoje, včetně jeho použití připojení SSL. Tento příspěvek ukazuje, jak tooexport hello SSL certifikáty pro použití v jazycích a moduly runtime, který není integrovat hello úložiště certifikátů systému Windows, jako je například Java, která používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) a Python, který používá [soketu obálky](https://docs.python.org/2/library/ssl.html) a Node.js, která používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru hello v [hello použití emulátoru DB Cosmos Azure pro vývoj a testování](./local-emulator.md).
 
-Tento kurz obsahuje následující úlohy:
+Tento kurz se zabývá hello následující úlohy:
 
 > [!div class="checklist"]
 > * Otáčení certifikáty
 > * Export certifikátu protokolu SSL
-> * Informace o způsobu použití certifikátu v jazyce Java, Python a Node.js
+> * Učení jak toouse hello certifikátu v jazyce Java, Python a Node.js
 
 ## <a name="certification-rotation"></a>Otočení certifikační
 
-Certifikáty v emulátoru místního DB Cosmos Azure jsou generovány při prvním spuštění emulátor. Existují dva certifikáty. Jeden použité pro připojování k místní emulátoru a jeden pro správu tajných klíčů v emulátoru. Certifikát, který chcete exportovat, je připojení certifikát s popisným názvem "DocumentDBEmulatorCertificate".
+Certifikáty v hello místní emulátoru DB Cosmos Azure jsou generovány hello prvním spuštění hello emulátor. Existují dva certifikáty. Jeden použité pro připojování toohello místní emulátoru a jeden pro správu tajných klíčů v emulátoru hello. Hello certifikátu, že který má tooexport je hello připojení certifikát s popisným názvem hello "DocumentDBEmulatorCertificate".
 
-Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je uvedeno níže z emulátoru DB Cosmos Azure je spuštěná na hlavním panelu Windows. Máte-li znovu vygenerovat certifikáty a byly nainstalovány do úložiště certifikátů Java nebo je použili jinde je nutné je aktualizovat, jinak aplikace se už připojí k místní emulátor.
+Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je uvedeno níže z emulátoru DB Cosmos Azure spuštěné v panelu Windows hello. Máte-li znovu vygenerovat certifikáty hello a byly nainstalovány do úložiště certifikátů hello Java nebo je někde použili budete potřebovat tooupdate je, jinak aplikace už připojit místní emulátoru toohello.
 
 ![Azure Cosmos DB místní emulátoru obnovení dat](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Tom, jak exportovat certifikát Azure Cosmos DB SSL
+## <a name="how-tooexport-hello-azure-cosmos-db-ssl-certificate"></a>Jak tooexport hello certifikát Azure Cosmos DB SSL
 
-1. Spusťte správce certifikátů systému Windows ve spuštění certlm.msc a přejděte do složky-> osobní certifikáty a otevřete certifikát s popisným názvem **DocumentDbEmulatorCertificate**.
+1. Spusťte správce certifikátů Windows hello spuštěním certlm.msc a přejděte toohello osobní -> složky certifikáty a otevřete hello certifikát s popisným názvem hello **DocumentDbEmulatorCertificate**.
 
     ![Azure Cosmos DB místní emulátoru exportovat krok 1](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
 
@@ -53,7 +53,7 @@ Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je u
 
     ![Azure Cosmos DB místní emulátoru exportovat krok 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
-3. Klikněte na tlačítko **kopírovat do souboru...** .
+3. Klikněte na tlačítko **zkopírujte tooFile...** .
 
     ![Azure Cosmos DB místní emulátoru exportovat krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
@@ -69,7 +69,7 @@ Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je u
 
     ![Azure Cosmos DB místní emulátoru exportovat krok 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
-7. Zadejte název certifikátu. V takovém případě **documentdbemulatorcert** a pak klikněte na **Další**.
+7. Zadejte název certifikátu hello. V takovém případě **documentdbemulatorcert** a pak klikněte na **Další**.
 
     ![Azure Cosmos DB místní emulátoru exportovat krok 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
@@ -77,32 +77,32 @@ Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je u
 
     ![Krok 8 exportovat Azure Cosmos DB místní emulátoru](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
-## <a name="how-to-use-the-certificate-in-java"></a>Postup použití certifikátu v jazyce Java
+## <a name="how-toouse-hello-certificate-in-java"></a>Jak toouse hello certifikátu v jazyce Java
 
-Při spuštění aplikací v jazyce Java nebo MongoDB aplikací, které používají klienta Java je snazší nainstalujte certifikát do úložiště certifikátů výchozí Java než předávání "-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"příznaky. Například zahrnuty [Java ukázkové aplikace](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
+Při spuštění aplikací v jazyce Java nebo MongoDB aplikací, které používají klienta Java hello je snazší certifikát tooinstall hello do úložiště certifikátů výchozí Java hello než předávání hello "-Djavax.net.ssl.trustStore=<keystore> - Djavax.net.ssl.trustStorePassword= "<password>" příznaky. Například hello zahrnuté [Java ukázkové aplikace](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů hello.
 
-Postupujte podle pokynů [přidání certifikátu do úložiště certifikátů certifikační Autority Java](https://docs.microsoft.com/azure/java-add-certificate-ca-store) pro import certifikátu X.509 do výchozího úložiště certifikátů Java. Uvědomte si, že pracovat v adresáři % JAVA_HOME % při spuštění příkazu keytool.
+Postupujte podle pokynů hello v hello [přidání certifikátu toohello, úložiště certifikátů certifikační Autority Java](https://docs.microsoft.com/azure/java-add-certificate-ca-store) tooimport hello X.509 certifikátu do úložiště certifikátů Java výchozí hello. Zachovat v si, že pracovat v adresáři % JAVA_HOME % hello při spuštění příkazu keytool.
 
-Jednou "CosmosDBEmulatorCertificate" SSL je nainstalován certifikát pro aplikaci by mohli připojit a používat místní emulátoru DB Cosmos Azure. Pokud budete pokračovat, potíže se můžete použít postup popsaný [ladění připojení protokolem SSL/TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) článku. Je velmi pravděpodobné že certifikát není nainstalovaný do %JAVA_HOME%/jre/lib/security/cacerts úložiště. Pro příklad, pokud máte víc nainstalovaných verzí aplikace Java může pomocí různých cacerts úložiště než ten, který jste aktualizovali.
+Jednou hello "CosmosDBEmulatorCertificate" SSL je nainstalován certifikát pro vaše aplikace by měl být schopný tooconnect a použití hello místní emulátoru DB Cosmos Azure. Pokud budete pokračovat toohave řešení problémů může být vhodné toofollow hello [ladění připojení protokolem SSL/TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) článku. Je velmi pravděpodobné hello certifikát není nainstalován do úložiště %JAVA_HOME%/jre/lib/security/cacerts hello. Pro příklad, pokud máte víc nainstalovaných verzí aplikace Java může pomocí různých cacerts úložiště, než jeden, který jste aktualizovali hello.
 
-## <a name="how-to-use-the-certificate-in-python"></a>Postup použití certifikátu v Pythonu
+## <a name="how-toouse-hello-certificate-in-python"></a>Jak toouse hello certifikátu v Pythonu
 
-Ve výchozím nastavení [Python SDK(version 2.0.0 or higher)](documentdb-sdk-python.md) pro rozhraní API DocumentDB nebude zkuste a použít certifikát SSL při připojování k místní emulátor. Pokud ale chcete použít ověřování SSL můžete podle příklady v [Python soketu obálky](https://docs.python.org/2/library/ssl.html) dokumentaci.
+Ve výchozím nastavení hello [Python SDK(version 2.0.0 or higher)](documentdb-sdk-python.md) pro hello nebude DocumentDB API zkuste a používat certifikát SSL hello při připojování toohello místní emulátor. Pokud však chcete, aby ověření toouse SSL můžete podle hello příklady v hello [Python soketu obálky](https://docs.python.org/2/library/ssl.html) dokumentaci.
 
-## <a name="how-to-use-the-certificate-in-nodejs"></a>Použití certifikátu v Node.js
+## <a name="how-toouse-hello-certificate-in-nodejs"></a>Jak toouse hello certifikátu v Node.js
 
-Ve výchozím nastavení [Node.js SDK(version 1.10.1 or higher)](documentdb-sdk-node.md) pro rozhraní API DocumentDB nebude zkuste a použít certifikát SSL při připojování k místní emulátor. Pokud ale chcete použít ověřování SSL můžete podle příklady v [Node.js dokumentaci](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
+Ve výchozím nastavení hello [Node.js SDK(version 1.10.1 or higher)](documentdb-sdk-node.md) pro hello nebude DocumentDB API zkuste a používat certifikát SSL hello při připojování toohello místní emulátor. Pokud však chcete, aby ověření toouse SSL můžete podle hello příklady v hello [Node.js dokumentaci](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
 > * Otočený certifikáty
-> * Exportovat certifikát SSL
-> * Zjistili, jak pro použití certifikátu v jazyce Java, Python a Node.js
+> * Certifikát SSL exportovaný hello
+> * Naučili, jak toouse hello certifikátu v jazyce Java, Python a Node.js
 
-Nyní můžete přejít k části koncepty pro další informace o Cosmos DB.
+Nyní můžete přejít toohello koncepty části Další informace o Cosmos DB.
 
 > [!div class="nextstepaction"]
 > [Globální distribuce](distribute-data-globally.md) 

@@ -1,6 +1,6 @@
 ---
-title: "Poradce při potížích s sestav o stavu systému | Microsoft Docs"
-description: "Popisuje sestav stavu odesílají součásti Azure Service Fabric a jejich využití pro řešení potíží clusteru nebo problémy s aplikací."
+title: "aaaTroubleshoot s sestav o stavu systému | Microsoft Docs"
+description: "Popisuje sestav stavu hello odesílají součásti Azure Service Fabric a jejich využití pro řešení potíží clusteru nebo problémy s aplikací."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: 54e20146b2f1e0ca6153b66319be70c6f7c2fb59
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c77a6cdd0440ce5d354cd8760f40151f674a3529
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
-Azure Service Fabric součásti sestavy mimo pole na všech entit v clusteru. [Úložiště stavu](service-fabric-health-introduction.md#health-store) vytvoří nebo odstraní entit na základě sestav systému. Také slouží k uspořádání je v hierarchii, která zaznamená interakce entity.
+# <a name="use-system-health-reports-tootroubleshoot"></a>Použít tootroubleshoot sestavy stavu systému
+Azure Service Fabric součásti sestavy předinstalované hello na všechny entity v clusteru hello. Hello [úložiště stavu](service-fabric-health-introduction.md#health-store) vytvoří nebo odstraní entity založené na zprávách systému hello. Také slouží k uspořádání je v hierarchii, která zaznamená interakce entity.
 
 > [!NOTE]
-> Abyste pochopili související se stavem koncepty, další informace v [modelu stavu Service Fabric](service-fabric-health-introduction.md).
+> Koncepty toounderstand související se stavem, další informace v [modelu stavu Service Fabric](service-fabric-health-introduction.md).
 > 
 > 
 
-Sestav o stavu systému poskytují přehled o clusteru a příznak problémy prostřednictvím stavu a funkce aplikací. Pro aplikace a služby ověřte sestav o stavu systému entity jsou implementované a chovají správně z hlediska Service Fabric. Sestavy neposkytují žádné sledování stavu obchodní logiky služby nebo zjišťování "zamrzlých" procesů. Uživatel služby lze rozšířit údaje o stavu informace specifické pro jejich logiku.
-
-> [!NOTE]
-> Sestavy stavu watchdogs jsou viditelné pouze *po* součástech systému vytvořte entitu. Při odstranění entity úložiště zdravotní automaticky odstraní všechny sestavy stavu s ním spojená. Stejné hodnotu true, pokud je vytvořena nová instance entity (například je vytvořena nová instance repliky stavové trvalou služby). Všechny sestavy přidružené k původní instanci jsou odstraněna a vyčistit z úložiště.
-> 
-> 
-
-Součást systému sestavy, jsou identifikovány zdroj, který začíná "**systému.**" Předpona. Watchdogs nelze používat stejnou předponu pro jejich zdroje, jako jsou odmítnuta sestavy se neplatné parametry.
-Podívejme se na některé sestavy systému pochopit, co je aktivuje a jak chybu opravit možné problémy, které reprezentují.
+Sestav o stavu systému poskytují přehled o clusteru a příznak problémy prostřednictvím stavu a funkce aplikací. Pro aplikace a služby ověřte sestav o stavu systému entity jsou implementované a chovají správně z hello perspektivy Service Fabric. sestavy Hello neposkytují žádné sledování stavu hello obchodní logiky hello služby nebo zjišťování "zamrzlých" procesů. Data stavu hello se informace o konkrétní tootheir logikou lze rozšířit uživatele služby.
 
 > [!NOTE]
-> Service Fabric i nadále přidat sestavy týkající se podmínek, které vylepšují získat přehled o dění v clusteru a aplikace. Existující sestavy lze také rozšířit o další podrobnosti k řešení problému rychlejší.
+> Sestavy stavu watchdogs jsou viditelné pouze *po* součásti systému hello vytvořte entitu. Při odstranění entity hello stavu úložiště automaticky odstraní všechny sestavy stavu s ním spojená. Hello stejné je hodnota true, když je vytvořena nová instance entity hello (například je vytvořena nová instance repliky stavové trvalou služby). Všechny sestavy přidružené k původní instance hello jsou odstraněna a vyčistit z úložiště hello.
+> 
+> 
+
+Hello sestav součásti systému jsou identifikovány hello zdroj, který začíná textem hello "**systému.**" Předpona. Watchdogs nelze použít hello stejnou předponu pro jejich zdroje, jako jsou odmítnuta sestavy se neplatné parametry.
+Pojďme podívejte se na některé systému sestavy toounderstand, co je aktivuje a jak toocorrect hello možných problémů se představují.
+
+> [!NOTE]
+> Service Fabric pokračuje tooadd sestavy týkající se podmínek, které vylepšují získat přehled o dění v hello cluster a aplikace. Existující sestavy lze také rozšířit s dalšími podrobnostmi toohelp řešení hello problému rychlejší.
 > 
 > 
 
 ## <a name="cluster-system-health-reports"></a>Cluster sestav o stavu systému
-Stav entity clusteru se vytvoří automaticky v health store. Pokud všechno funguje správně, nemá sestavu system.
+Hello clusteru stavu entity se vytvoří automaticky v hello health store. Pokud všechno funguje správně, nemá sestavu system.
 
 ### <a name="neighborhood-loss"></a>Ztráta Okolní počítače
-**System.Federation** nahlásí chybu, když zjistí ztrátu okolí. Sestava je z jednotlivých uzlů a ID uzlu je součástí názvu vlastnosti. Pokud je jeden okolí ztratili v celé prstenec Service Fabric, můžete očekávat obvykle dvě události (obou stranách sestavy mezera). Pokud další sousedství jsou ztraceny, existují další události.
+**System.Federation** nahlásí chybu, když zjistí ztrátu okolí. Sestava Hello je z jednotlivých uzlů a ID uzlu hello je součástí názvu vlastnosti hello. Pokud je jeden okolí ztratili v Service Fabric prstenec celý text hello, můžete očekávat obvykle dvě události (obou stranách sestavy mezera hello). Pokud další sousedství jsou ztraceny, existují další události.
 
-Sestava Určuje časový limit zapůjčení globální jako TTL. Sestava je nutno každých poloviny doby trvání TTL pro podmínku zůstává aktivní. Událost je automaticky odstraněna po jeho vypršení. Odeberte, pokud vypršela platnost zaručuje, že sestava je vyčištěna z health store správně, přestože uzlu vytváření sestav je vypnutý.
+Sestava Hello Určuje časový limit zapůjčení globální hello jako čas hello toolive. Sestava Hello je nutno každých poloviny doba TTL hello tak dlouho, dokud podmínky hello zůstává aktivní. po jeho vypršení je automaticky odstraněna Hello událost. Odeberte, pokud vypršela platnost zaručuje, že sestava hello je vyčištěna z hello health store správně, přestože sestavy uzlu hello je vypnutý.
 
 * **SourceId**: System.Federation
 * **Vlastnost**: začíná **okolí** a obsahuje informace o uzlu
-* **Další kroky**: Zjistěte, proč dojde ke ztrátě okolí (například zkontrolovat komunikaci mezi uzly clusteru).
+* **Další kroky**: Zjistěte, proč dojde ke ztrátě (např. Zkontrolujte hello komunikaci mezi uzly clusteru) a okolí hello.
 
 ## <a name="node-system-health-reports"></a>Uzel sestav o stavu systému
-**System.FM**, který představuje službu Failover Manager je autority, který spravuje informace o uzly clusteru. Každý uzel musí mít jednu sestavu z System.FM zobrazuje stav. Uzel entity, které se odeberou, když se odebere stav uzlu (viz [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)).
+**System.FM**, který představuje službu Failover Manager hello, hello autoritou, která spravuje informace o uzly clusteru. Každý uzel musí mít jednu sestavu z System.FM zobrazuje stav. Hello uzlu entity se odeberou, když se odebere stav uzlu hello (viz [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)).
 
 ### <a name="node-updown"></a>Uzel nahoru/dolů
-System.FM nahlásí jako OK, když se uzel připojí prstenec (je spuštěná). Nahlásí chybu, pokud uzel vyplouvající řetězci (je vypnutý, buď pro upgrade nebo jednoduše protože se nezdařilo). Stav hierarchie sestavena úložiště zdravotní provádět akce se nasazené entity v korelace s System.FM sestavy uzlu. Nadřazený virtuální všechny nasazené entit považuje uzlu. Nasazené entit na tomto uzlu se zveřejňují přes dotazy, pokud uzel je hlášen jako až podle System.FM s stejnou instanci jako instanci spojenou s entity. Když System.FM ohlásí, že uzel je mimo provoz nebo restartovat (nové instance), úložiště zdravotní automaticky vyčistí nasazené entitami, které může existovat jenom v uzlu dolů nebo na předchozí instanci uzlu.
+System.FM nahlásí jako OK, když se uzel hello připojí hello prstenec (je spuštěná). Nahlásí chybu, pokud uzel hello vyplouvající hello prstenec (je vypnutý, buď pro upgrade nebo jednoduše protože se nezdařilo). Hello stavu hierarchie sestavena úložiště stavu hello provádět akce se nasazené entity v korelace s System.FM sestavy uzlu. Uzel hello považuje virtuální nadřazené všechny nasazené entit. Hello nasazení entit na tomto uzlu se zveřejňují přes dotazy, pokud uzel hello hlášení jako si podle System.FM, s hello stejné instance jako hello instanci spojenou s hello entity. Když System.FM ohlásí tento uzel hello je mimo provoz nebo restartovat (nové instance), úložiště stavu hello automaticky vyčistí hello nasazení entit, které může existovat pouze na hello dolů uzlu nebo na předchozí instanci hello hello uzlu.
 
 * **SourceId**: System.FM
 * **Vlastnost**: stavu
-* **Další kroky**: Pokud je uzel dolů k upgradu by měl mít zpět po byl upgradován. V takovém případě by měl stav přepněte zpět na OK. Pokud uzel nemá vraťte nebo se nezdaří, problém potřebuje další šetření.
+* **Další kroky**: Pokud uzel hello je vypnutý pro upgrade, by měl mít zpět po byl upgradován. V takovém případě by měl hello stav přepnout zpět tooOK. Pokud uzel hello nepřejde do stavu zpět nebo se nezdaří, problém hello potřebuje další šetření.
 
-Následující příklad ukazuje System.FM události se stavem stavu OK pro uzel:
+Hello následující příklad ukazuje hello System.FM události se stavem stavu OK pro uzel:
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
@@ -88,30 +88,30 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Vypršení platnosti certifikátu
-**System.FabricNode** sestavy upozornění, když se certifikáty používané uzlu blíží vypršení platnosti. Existují tři certifikáty na uzel: **Certificate_cluster**, **Certificate_server**, a **Certificate_default_client**. Při vypršení je alespoň dva týdny, je sestava stavu v pořádku. Pokud doba vypršení platnosti je během dvou týdnů, typ sestavy je upozornění. Hodnota TTL z těchto událostí je nekonečno, a budou odstraněny Jestliže uzel opustí clusteru.
+**System.FabricNode** sestavy upozornění, když se certifikáty používané hello uzlu blíží vypršení platnosti. Existují tři certifikáty na uzel: **Certificate_cluster**, **Certificate_server**, a **Certificate_default_client**. Alespoň dva týdny po vypršení platnosti hello je hello sestavy stavu v pořádku. Po vypršení platnosti hello během dvou týdnů hello typ sestavy je upozornění. Hodnota TTL z těchto událostí je nekonečno, a budou odstraněny Jestliže uzel opustí hello clusteru.
 
 * **SourceId**: System.FabricNode
-* **Vlastnost**: začíná **certifikát** a obsahuje další informace o typ certifikátu
-* **Další kroky**: aktualizovat certifikáty, pokud se blíží vypršení platnosti.
+* **Vlastnost**: začíná **certifikát** a obsahuje další informace o typu certifikátu hello
+* **Další kroky**: aktualizace certifikátů hello, pokud se blíží vypršení platnosti.
 
 ### <a name="load-capacity-violation"></a>Načíst porušení kapacity
-Vyrovnávání zatížení Service Fabric hlásí upozornění, když zjistí porušení kapacity uzlu.
+Hello nástroj pro vyrovnávání zatížení Service Fabric hlásí upozornění, když zjistí porušení kapacity uzlu.
 
 * **SourceId**: System.PLB
 * **Vlastnost**: začíná **kapacity**
-* **Další kroky**: Zkontrolujte zadaný metriky a zobrazit aktuální kapacitu na uzlu.
+* **Další kroky**: Kontrola poskytuje metriky a zobrazení hello aktuální kapacity na uzlu hello.
 
 ## <a name="application-system-health-reports"></a>Aplikace sestav o stavu systému
-**System.CM**, který představuje službu Správce clusteru, je že úřad, který spravuje informace o aplikaci.
+**System.CM**, který představuje službu hello Správce clusteru, je hello autority, který spravuje informace o aplikaci.
 
 ### <a name="state"></a>Stav
-System.CM nahlásí jako OK když aplikace byly vytvořeny nebo aktualizovány. Informuje úložiště zdravotní po odstranění aplikace tak, aby bylo možné odebrat z úložiště.
+System.CM nahlásí jako OK když aplikace hello byly vytvořeny nebo aktualizovány. Informuje hello stavu úložiště po odstranění aplikace hello tak, aby bylo možné odebrat z úložiště.
 
 * **SourceId**: System.CM
 * **Vlastnost**: stavu
-* **Další kroky**: Pokud aplikace má byly vytvořeny nebo aktualizovány, měl by obsahovat sestava stavu Správce clusteru. Jinak, zkontrolujte stav aplikace vydáním dotazu (například rutinu prostředí PowerShell **Get ServiceFabricApplication - ApplicationName *applicationName***).
+* **Další kroky**: Pokud aplikace hello má byly vytvořeny nebo aktualizovány, měl by obsahovat sestava stavu hello Správce clusteru. Zkontrolujte, zda hello se stav aplikace hello vydáním dotazu (například hello rutiny prostředí PowerShell **Get ServiceFabricApplication - ApplicationName *applicationName***).
 
-Následující příklad ukazuje události stavu na **fabric: / WordCount** aplikace:
+Hello následující příklad ukazuje událost stavu hello na hello **fabric: / WordCount** aplikace:
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -135,15 +135,15 @@ HealthEvents                    :
 ```
 
 ## <a name="service-system-health-reports"></a>Služba sestav o stavu systému
-**System.FM**, který představuje službu Failover Manager je autority, který spravuje informace o službách.
+**System.FM**, který představuje službu Failover Manager hello, hello autoritou, která spravuje informace o službách.
 
 ### <a name="state"></a>Stav
-System.FM sestavy jako OK po vytvoření služby. Odstraní entitu z health store, pokud služba je Odstraněná.
+System.FM sestavy jako OK po vytvoření služby hello. Odstraní hello entity z hello health store, pokud služba hello byla odstraněna.
 
 * **SourceId**: System.FM
 * **Vlastnost**: stavu
 
-Následující příklad ukazuje události stavu služby **fabric: / WordCount/WordCountWebService**:
+Hello následující příklad ukazuje hello události stavu služby hello **fabric: / WordCount/WordCountWebService**:
 
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
@@ -170,27 +170,27 @@ HealthEvents          :
 ```
 
 ### <a name="service-correlation-error"></a>Chyba korelace služby
-**System.PLB** nahlásí chybu, když zjistí, zda aktualizace služby ke korelaci se jiné služby vytvoří řetězec vztahů. Sestava je vymazán poté, co se stane úspěšná aktualizace.
+**System.PLB** nahlásí chybu, když zjistí, že aktualizace služby toobe korelační s jinou službu vytvoří řetězec vztahů. Sestava Hello je vymazán poté, co se stane úspěšná aktualizace.
 
 * **SourceId**: System.PLB
 * **Vlastnost**: ServiceDescription
-* **Další kroky**: Zkontrolujte popis korelační služby.
+* **Další kroky**: Kontrola hello korelační popis služby.
 
 ## <a name="partition-system-health-reports"></a>Oddíl sestav o stavu systému
-**System.FM**, který představuje službu Failover Manager je autority, který spravuje informace o oddílech služby.
+**System.FM**, který představuje službu Failover Manager hello, hello autoritou, která spravuje informace o oddílech služby.
 
 ### <a name="state"></a>Stav
-System.FM nahlásí jako OK když oddíl existuje a je v pořádku. Odstraní entitu z health store při odstranění oddílu.
+System.FM nahlásí jako OK když hello oddílu byl vytvořen a je v pořádku. Odstraní hello entity z hello health store při odstranění hello oddílu.
 
-Pokud oddílu je menší než počet minimální repliky, nahlásí chybu. Pokud oddíl není nižší než počet minimální repliky, ale je nižší než počtu cílových replik, sestavy upozornění. Pokud oddíl je ve ztrátě kvora, System.FM nahlásí chybu.
+Pokud hello oddílu je menší než počet hello minimální repliky, nahlásí chybu. Pokud hello oddíl není nižší než počet hello minimální repliky, ale je nižší než počet replik cíl hello, sestavy upozornění. Pokud hello oddíl je ve ztrátě kvora, System.FM nahlásí chybu.
 
-Další důležité události zahrnovat upozornění změnu konfigurace trvá déle, než se očekávalo, a při sestavení trvá déle, než se očekávalo. Očekávané časy pro sestavení a změny konfigurace se dají konfigurovat na základě služby scénářů. Například pokud má služba terabajt stavu, například SQL Database, sestavení trvá déle než pro službu s malou stavu.
+Další důležité události zahrnovat varování hello Rekonfigurace trvá déle, než se očekávalo, a při sestavení hello trvá déle, než se očekávalo. dobu Hello očekává hello sestavení a změny konfigurace se dají konfigurovat na základě scénářů služby. Například pokud má služba terabajt stavu, například SQL Database, hello sestavení trvá déle než pro službu s malou stavu.
 
 * **SourceId**: System.FM
 * **Vlastnost**: stavu
-* **Další kroky**: Pokud stav není v pořádku, je možné, že nebyly některé repliky vytvoření, otevření nebo povýšen na primární nebo sekundární správně. V mnoha případech je hlavní příčinou chyby služby k implementaci otevřené nebo změny role.
+* **Další kroky**: Pokud hello stav není v pořádku, je možné, že některé repliky nebyly vytvořené, otevřenou nebo propagovaných tooprimary nebo sekundární správně. V mnoha případech je hello příčiny chyb služby v hello otevřít nebo změnit roli implementace.
 
-Následující příklad ukazuje oddíl v pořádku:
+Hello následující příklad zobrazuje oddíl v pořádku:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
@@ -212,7 +212,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-Následující příklad ukazuje stav oddíl, který je pod počtu cílových replik. Dalším krokem je popis oddílu, který ukazuje, jak jsou nakonfigurované získání: **MinReplicaSetSize** je tři a **TargetReplicaSetSize** je 7. Potom získat počet uzlů v clusteru: pět. Proto v tomto případě dvě repliky nelze umístit, protože cílový počet replik je vyšší než počet uzlů, které jsou k dispozici.
+Hello následující příklad ukazuje stav hello oddíl, který je pod počtu cílových replik. dalším krokem Hello je tooget hello oddílu popis, který ukazuje, jak jsou nakonfigurované: **MinReplicaSetSize** je tři a **TargetReplicaSetSize** je 7. Potom získat hello počet uzlů v clusteru hello: pět. Proto v tomto případě dvě repliky nelze umístit, protože hello cílový počet replik je vyšší než hello počet uzlů, které jsou k dispozici.
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
@@ -252,8 +252,8 @@ HealthEvents          :
                         SentAt                : 7/14/2017 4:58:13 PM
                         ReceivedAt            : 7/14/2017 4:58:14 PM
                         TTL                   : 00:01:05
-                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        Secondary replica could not be placed due to the following constraints and properties:  
+                        Description           : hello Load Balancer was unable toofind a placement for one or more of hello Service's Replicas:
+                        Secondary replica could not be placed due toohello following constraints and properties:  
                         TargetReplicaSetSize: 7
                         Placement Constraint: N/A
                         Parent Service: N/A
@@ -291,21 +291,21 @@ PS C:\> @(Get-ServiceFabricNode).Count
 ```
 
 ### <a name="replica-constraint-violation"></a>Porušení omezení repliky
-**System.PLB** sestavy upozornění, pokud zjistí porušení omezení repliky a nelze umístit všechny repliky oddílu. Zobrazí podrobnosti sestavy, které omezení a vlastnosti zabránit umístění repliky.
+**System.PLB** sestavy upozornění, pokud zjistí porušení omezení repliky a nelze umístit všechny repliky oddílu. Zobrazí podrobnosti sestavy Hello které omezení a vlastnosti zabránit umístění repliky hello.
 
 * **SourceId**: System.PLB
 * **Vlastnost**: začíná **ReplicaConstraintViolation**
 
 ## <a name="replica-system-health-reports"></a>Repliky sestav o stavu systému
-**System.RA**, která představuje součást reconfiguration agent, je autorita pro stav repliky.
+**System.RA**, která představuje hello součást reconfiguration agent, je hello autority pro stav repliky hello.
 
 ### <a name="state"></a>Stav
-**System.RA** sestavy OK po vytvoření repliky.
+**System.RA** sestavy OK po vytvoření repliky hello.
 
 * **SourceId**: System.RA
 * **Vlastnost**: stavu
 
-Následující příklad ukazuje repliku v pořádku:
+Hello následující příklad ukazuje repliku v pořádku:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -328,22 +328,22 @@ HealthEvents          :
 ```
 
 ### <a name="replica-open-status"></a>Otevřete stav repliky
-Popis této sestavy health obsahuje čas spuštění (Coordinated Universal Time) při volání rozhraní API byla volána.
+Hello popis této sestavy stavu obsahuje čas zahájení hello (Coordinated Universal Time), kdy byl vyvolán volání hello rozhraní API.
 
-**System.RA** sestavy upozornění, pokud repliku open trvá déle, než nastaveném časovém intervalu (výchozí: 30 minut). Pokud rozhraní API má dopad na dostupnost služby, je vydána sestavu mnohem rychleji (Konfigurovat intervalu, výchozí hodnota je 30 sekund). Měření času zahrnuje čas potřebný pro open Replikátor a otevřete službu. Vlastnost se změní na OK open dokončení.
+**System.RA** sestavy upozornění, pokud hello repliku open trvá déle, než období hello nakonfigurovaný (výchozí: 30 minut). Pokud hello API má dopad na dostupnost služby, je vydána hello sestavy mnohem rychleji (Konfigurovat intervalu, výchozí hodnota je 30 sekund). měření času Hello zahrnuje hello doba hello Replikátor otevřené a služba hello otevřete. dokončení Hello vlastnost změny tooOK Pokud hello otevřít.
 
 * **SourceId**: System.RA
 * **Vlastnost**: **ReplicaOpenStatus**
-* **Další kroky**: Pokud stav není v pořádku, zjistěte, proč repliku open trvá déle, než se očekávalo.
+* **Další kroky**: Pokud hello stav není v pořádku, zjistěte, proč hello repliku open trvá déle, než se očekávalo.
 
 ### <a name="slow-service-api-call"></a>Pomalá volání rozhraní API služby
-**System.RAP** a **System.Replicator** sestavy upozornění, pokud volání do kódu uživatele služby trvá déle, než je doba, nakonfigurované. Upozornění je vymazán po dokončení volání.
+**System.RAP** a **System.Replicator** sestavy upozornění, pokud kód volání toohello uživatele služby trvá déle, než čas hello nakonfigurované. upozornění Hello je vymazán po dokončení volání hello.
 
 * **SourceId**: System.RAP nebo System.Replicator
-* **Vlastnost**: název pomalé rozhraní API. Popis poskytuje další podrobnosti o době, kdy byl čeká na rozhraní API.
-* **Další kroky**: Zjistěte, proč trvá déle, než bylo očekáváno volání.
+* **Vlastnost**: název hello hello pomalé rozhraní API. Popis Hello poskytuje další podrobnosti o hello čas hello rozhraní API byla čekající na vyřízení.
+* **Další kroky**: Zjistěte, proč trvá déle, než bylo očekáváno volání hello.
 
-Následující příklad ukazuje oddíl ve ztrátě kvora a provádí zjistěte, proč kroky šetření. Jedna z replik má stav varování, proto jeho stav. Zobrazuje, že operace služby trvá déle, než se očekávalo, hlášené System.RAP událost. Po přijetí těchto informací je dalším krokem je kódu služby a prozkoumat existuje. Pro tento případ **RunAsync** implementace stavové služby, vyvolá k neošetřené výjimce. Repliky jsou recyklace, takže se nemusí zobrazovat všechny repliky ve stavu upozornění. Můžete opakovat získávání stavu a vyhledejte případné rozdíly v ID repliky. V některých případech opakované pokusy vám může poskytnout různá vodítka.
+Hello následující příklad zobrazuje oddíl ve ztrátě kvora a toofigure kroky provést šetření hello se důvod, proč. Jedna z repliky hello má stav varování, proto jeho stav. Zobrazuje, že operace hello služby trvá déle, než se očekávalo, událost hlášené System.RAP. Po přijetí těchto informací hello dalším krokem je toolook v kódu služby hello a prozkoumat existuje. Pro tento případ hello **RunAsync** implementace hello stavové služby, vyvolá k neošetřené výjimce. Hello repliky jsou recyklace, takže se nemusí zobrazovat všechny repliky ve stavu upozornění hello. Můžete opakovat získávání hello stavu a vyhledejte případné rozdíly v ID hello repliky. V některých případech hello opakování vám může poskytnout různá vodítka.
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/HelloWorldStatefulApplication/HelloWorldStateful | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics
@@ -437,7 +437,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/24/2015 7:00:59 PM
 ```
 
-Při spuštění aplikace vadný v ladicím programu zobrazit windows diagnostických událostí výjimky z RunAsync:
+Při spuštění hello vadný aplikací v rámci v ladicím programu hello zobrazit hello diagnostických událostí windows hello došlo k výjimce z RunAsync:
 
 ![Visual Studio 2015 diagnostických událostí: selhání RunAsync v fabric: / HelloWorldStatefulApplication.][1]
 
@@ -447,26 +447,26 @@ Visual Studio 2015 diagnostických událostí: selhání RunAsync v **fabric: / 
 
 
 ### <a name="replication-queue-full"></a>Replikační fronta je plná
-**System.Replicator** nahlásí upozornění, když se fronta replikací je plná. Na primárním fronty replikací obvykle plný protože jeden nebo více sekundárních replikách jsou pomalé potvrdit operace. Na sekundárním to obvykle se stane, když služba pomalé použít operace. Upozornění je vymazán poté, co už fronta je plná.
+**System.Replicator** nahlásí upozornění, když hello fronta replikací je plná. Na hello primární fronty replikací obvykle plný protože jeden nebo více sekundárních replikách jsou pomalé tooacknowledge operace. Na hello sekundární to obvykle se stane, když služba hello pomalé tooapply hello operace. upozornění Hello je zrušeno při hello už zaplnění fronty.
 
 * **SourceId**: System.Replicator
-* **Vlastnost**: **PrimaryReplicationQueueStatus** nebo **SecondaryReplicationQueueStatus**, v závislosti na roli repliky
+* **Vlastnost**: **PrimaryReplicationQueueStatus** nebo **SecondaryReplicationQueueStatus**, v závislosti na role repliky hello
 
 ### <a name="slow-naming-operations"></a>Pomalé operations pojmenování
 **System.NamingService** při operaci pojmenování trvá déle než přijatelné hlásí stav na jeho primární repliky. Příklady operací pojmenování [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) nebo [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Další metody naleznete v části FabricClient, například v [služby metody správy](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) nebo [metody správy vlastnost](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
-> Službu Naming překládá názvy služby do umístění v clusteru a umožňuje uživatelům spravovat služby názvy a vlastnosti. Je, že služba jako trvalý, Service Fabric rozdělena na oddíly. Jeden z oddílů představuje Authority Owner, který obsahuje metadata o všechny názvy Service Fabric a služeb. Service Fabric názvy jsou namapované na různé oddíly, označované jako oddíly Name Owner, tak služba je rozšiřitelný. Další informace o [Naming service](service-fabric-architecture.md).
+> Hello Naming service řeší služba názvy tooa umístění v clusteru hello a umožňuje uživatelům toomanage služby názvy a vlastnosti. Je, že služba jako trvalý, Service Fabric rozdělena na oddíly. Jeden z oddílů hello představuje hello Authority Owner, který obsahuje metadata o všechny názvy Service Fabric a služeb. Hello Service Fabric názvy nejsou namapované toodifferent oddíly, označované jako oddíly Name Owner, tak službu hello lze rozšířit. Další informace o [Naming service](service-fabric-architecture.md).
 > 
 > 
 
-Při operaci pojmenování trvá déle, než se očekávalo, operace je příznak se sestavou upozornění na *primární repliky oddílu pojmenování služby, který slouží operaci*. Pokud po úspěšném dokončení operace je zrušeno upozornění. Dokončení operace s chybou, sestava stavu zahrnuje podrobnosti o této chybě.
+Při operaci pojmenování trvá déle, než se očekávalo, operace hello je označené zprávu upozornění o hello *primární repliky hello pojmenování oddílu služby, který slouží hello operaci*. Po úspěšném dokončení operace hello hello upozornění není zaškrtnuto. V případě hello operace skončí s chybou, hello stavu sestava obsahuje podrobnosti o chybě hello.
 
 * **SourceId**: System.NamingService
-* **Vlastnost**: začíná předponu **Duration_** a identifikuje pomalé operaci a název Service Fabric, na kterém se používá operaci. Například pokud vytvořit službu na název fabric: / MyApp/Moje_služba trvá příliš dlouho, vlastnost je Duration_AOCreateService.fabric:/MyApp/MyService. AO odkazuje na roli pojmenování oddílu pro tento název a operaci.
-* **Další kroky**: Kontrola proč pojmenování operace selže. Každé operace může mít různé kořenové příčiny. Například odstranit, může být služba zablokována na uzlu, protože udržuje na uzlu z důvodu chyby uživatele v kódu služby chybám hostitele aplikací.
+* **Vlastnost**: začíná předponu **Duration_** a identifikuje hello pomalé operace a název hello Service Fabric, na které hello operaci použít. Například pokud vytvořit službu na název fabric: / MyApp/Moje_služba trvá příliš dlouho, vlastnost hello je Duration_AOCreateService.fabric:/MyApp/MyService. AO body toohello role hello pojmenování oddílu pro tento název a operaci.
+* **Další kroky**: Kontrola proč hello pojmenování operace selže. Každé operace může mít různé kořenové příčiny. Například odstranit, může být služba zablokována na uzlu, protože hostitel aplikace hello udržuje chybám na uzlu z důvodu chyb tooa uživatele v kódu služby hello.
 
-Následující příklad ukazuje operaci vytvoření služby. Operace trvalo déle, než nakonfigurovaná doba trvání. AO opakování a odešle pracovní ne. JIŽ byla dokončena poslední operaci s vypršením časového limitu. V takovém případě je stejné repliky primární AO a žádné role.
+Hello následující příklad ukazuje operaci vytvoření služby. operace Hello trvalo déle než hello nakonfigurovaná doba trvání. AO opakování a odešle pracovní tooNO. ŽÁDNÉ dokončené hello poslední operaci s vypršením časového limitu. V takovém případě hello stejné replika je primární hello AO a žádné role.
 
 ```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
@@ -495,7 +495,7 @@ HealthEvents          :
                         SentAt                : 4/29/2016 8:39:12 PM
                         ReceivedAt            : 4/29/2016 8:39:38 PM
                         TTL                   : 00:05:00
-                        Description           : The AOCreateService started at 2016-04-29 20:39:08.677 is taking longer than 30.000.
+                        Description           : hello AOCreateService started at 2016-04-29 20:39:08.677 is taking longer than 30.000.
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
@@ -507,23 +507,23 @@ HealthEvents          :
                         SentAt                : 4/29/2016 8:41:05 PM
                         ReceivedAt            : 4/29/2016 8:41:08 PM
                         TTL                   : 00:00:15
-                        Description           : The NOCreateService started at 2016-04-29 20:39:08.689 completed with FABRIC_E_TIMEOUT in more than 30.000.
+                        Description           : hello NOCreateService started at 2016-04-29 20:39:08.689 completed with FABRIC_E_TIMEOUT in more than 30.000.
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication sestav o stavu systému
-**System.Hosting** autoritou na nasazené entity.
+**System.Hosting** hello autoritou na nasazené entity.
 
 ### <a name="activation"></a>Aktivace
-System.Hosting nahlásí jako OK když aplikace úspěšně aktivuje na uzlu. V opačném případě nahlásí chybu.
+System.Hosting sestavy jako OK aplikace byla úspěšně aktivaci v uzlu hello. V opačném případě nahlásí chybu.
 
 * **SourceId**: System.Hosting
-* **Vlastnost**: aktivace, včetně zavedení verze
-* **Další kroky**: Pokud aplikace není v pořádku, zjistěte, proč aktivace se nezdařila.
+* **Vlastnost**: aktivace, včetně hello zavedení verze
+* **Další kroky**: Pokud aplikace hello není v pořádku, zjistěte, proč hello aktivace se nezdařila.
 
-Následující příklad ukazuje úspěšné aktivaci:
+Hello následující příklad ukazuje úspěšné aktivaci:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
@@ -545,42 +545,42 @@ HealthEvents                       :
                                      SentAt                : 7/14/2017 4:55:08 PM
                                      ReceivedAt            : 7/14/2017 4:55:14 PM
                                      TTL                   : Infinite
-                                     Description           : The application was activated successfully.
+                                     Description           : hello application was activated successfully.
                                      RemoveWhenExpired     : False
                                      IsExpired             : False
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="download"></a>Ke stažení
-**System.Hosting** nahlásí chybu, pokud stahování balíčku aplikace selže.
+**System.Hosting** nahlásí chybu, pokud stahování balíčku aplikace hello selže.
 
 * **SourceId**: System.Hosting
 * **Vlastnost**:  **stáhnout:*RolloutVersion***
-* **Další kroky**: Zjistěte, proč se stahování v tomto uzlu selhal.
+* **Další kroky**: Zjistěte, proč se nepodařilo stáhnout hello na uzlu hello.
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage sestav o stavu systému
-**System.Hosting** autoritou na nasazené entity.
+**System.Hosting** hello autoritou na nasazené entity.
 
 ### <a name="service-package-activation"></a>Služba aktivace balíčku
-System.Hosting jako OK sestavy, pokud je aktivace balíček služby v uzlu úspěšná. V opačném případě nahlásí chybu.
+System.Hosting sestavy jako OK, pokud je aktivace balíčku hello služby v uzlu hello úspěšná. V opačném případě nahlásí chybu.
 
 * **SourceId**: System.Hosting
 * **Vlastnost**: Aktivace
-* **Další kroky**: Zjistěte, proč aktivace se nezdařila.
+* **Další kroky**: Zjistěte, proč hello aktivace se nezdařila.
 
 ### <a name="code-package-activation"></a>Aktivace balíčku kódu.
-**System.Hosting** sestavy jako OK pro každý balíček kódu, pokud aktivace nebude úspěšná. Pokud se aktivace nezdaří, sestavy upozornění podle konfigurace. Pokud **CodePackage** nepodaří aktivovat nebo ukončí s chybou větší než nakonfigurované **CodePackageHealthErrorThreshold**, nahlásí chybu, který je hostitelem. Pokud balíček služby obsahuje více balíčků kódu, zprávu o aktivaci se generuje pro každé z nich.
+**System.Hosting** sestavy jako OK pro každý balíček kódu, pokud je hello aktivace úspěšná. Pokud hello aktivace nepodaří, sestavy upozornění podle konfigurace. Pokud **CodePackage** selže tooactivate nebo ukončí s chybou větší než nakonfigurovaný hello **CodePackageHealthErrorThreshold**, nahlásí chybu, který je hostitelem. Pokud balíček služby obsahuje více balíčků kódu, zprávu o aktivaci se generuje pro každé z nich.
 
 * **SourceId**: System.Hosting
-* **Vlastnost**: používá předponu **CodePackageActivation** a obsahuje název balíček kódu a vstupního bodu jako  **CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** (například **CodePackageActivation:Code:SetupEntryPoint**)
+* **Vlastnost**: Předpona hello používá **CodePackageActivation** a obsahuje název hello balíček kódu hello a hello vstupního bodu jako  **CodePackageActivation:* CodePackageName*:*SetupEntryPoint/EntryPoint*** (například **CodePackageActivation:Code:SetupEntryPoint**)
 
 ### <a name="service-type-registration"></a>Typ registrace služby
-**System.Hosting** sestavy jako OK, pokud typ služby byl úspěšně zaregistrován. Nahlásí chybu, pokud nebyla provedena registrace v čase (jak je nakonfigurovat pomocí **ServiceTypeRegistrationTimeout**). Pokud je zavřená modulu runtime, typ služby je odregistrovat z uzlu a hostitelský sestavy upozornění.
+**System.Hosting** sestavy jako OK, pokud typ služby hello byl úspěšně zaregistrován. Nahlásí chybu, pokud nebyla provedena registrace hello v čase (jak je nakonfigurovat pomocí **ServiceTypeRegistrationTimeout**). Pokud je zavřená hello runtime, typ služby hello je odregistrovat z uzlu hello a hostitelský oznámí upozornění.
 
 * **SourceId**: System.Hosting
-* **Vlastnost**: používá předponu **ServiceTypeRegistration** a obsahuje název typu služby (například **ServiceTypeRegistration:FileStoreServiceType**)
+* **Vlastnost**: Předpona hello používá **ServiceTypeRegistration** a obsahuje název typu služby hello (například **ServiceTypeRegistration:FileStoreServiceType**)
 
-Následující příklad ukazuje v pořádku nasazený balíček služby:
+Hello následující příklad ukazuje v pořádku nasazený balíček služby:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
@@ -599,7 +599,7 @@ HealthEvents               :
                              SentAt                : 7/14/2017 4:55:08 PM
                              ReceivedAt            : 7/14/2017 4:55:14 PM
                              TTL                   : Infinite
-                             Description           : The ServicePackage was activated successfully.
+                             Description           : hello ServicePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -611,7 +611,7 @@ HealthEvents               :
                              SentAt                : 7/14/2017 4:55:08 PM
                              ReceivedAt            : 7/14/2017 4:55:14 PM
                              TTL                   : Infinite
-                             Description           : The CodePackage was activated successfully.
+                             Description           : hello CodePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -623,30 +623,30 @@ HealthEvents               :
                              SentAt                : 7/14/2017 4:55:08 PM
                              ReceivedAt            : 7/14/2017 4:55:14 PM
                              TTL                   : Infinite
-                             Description           : The ServiceType was registered successfully.
+                             Description           : hello ServiceType was registered successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="download"></a>Ke stažení
-**System.Hosting** nahlásí chybu, pokud služba stahování balíčku selže.
+**System.Hosting** nahlásí chybu, pokud stahování balíčku služby hello selže.
 
 * **SourceId**: System.Hosting
 * **Vlastnost**:  **stáhnout:*RolloutVersion***
-* **Další kroky**: Zjistěte, proč se stahování v tomto uzlu selhal.
+* **Další kroky**: Zjistěte, proč se nepodařilo stáhnout hello na uzlu hello.
 
 ### <a name="upgrade-validation"></a>Ověření upgradu
-**System.Hosting** nahlásí chybu, pokud selže ověření během upgradu nebo pokud upgrade selže na uzlu.
+**System.Hosting** nahlásí chybu, pokud selže ověření během upgradu hello nebo pokud hello upgrade selže na uzlu hello.
 
 * **SourceId**: System.Hosting
-* **Vlastnost**: používá předponu **FabricUpgradeValidation** a obsahuje upgradovaná verze
-* **Popis**: odkazuje na došlo k chybě
+* **Vlastnost**: Předpona hello používá **FabricUpgradeValidation** a obsahuje hello upgradu verze
+* **Popis**: body toohello došlo k chybě
 
 ## <a name="next-steps"></a>Další kroky
 [Zobrazit sestavy stavu Service Fabric](service-fabric-view-entities-aggregated-health.md)
 
-[Postup vytvoření sestavy a zkontrolujte stav služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[Jak tooreport a zkontrolujte stav služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [Monitorování a Diagnostika služby místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 

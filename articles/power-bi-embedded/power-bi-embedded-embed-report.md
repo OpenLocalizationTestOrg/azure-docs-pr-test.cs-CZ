@@ -1,6 +1,6 @@
 ---
-title: "Vložení sestavy v Azure Power BI Embedded | Microsoft Docs"
-description: "Postup vložení sestavy, který je v Power BI Embedded do vaší aplikace."
+title: aaaEmbed sestavy v Azure Power BI Embedded | Microsoft Docs
+description: "Zjistěte, jak tooembed sestava, která je v Power BI Embedded do vaší aplikace."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 3d865af2418c9c557c861a379766a125d75cebf1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f25344bbd0b9c092ef19da04d0b455d453b426a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="embed-a-report-in-power-bi-embedded"></a>Vložení sestavy v Power BI Embedded
 
-Postup vložení sestavy, který je v Power BI Embedded do vaší aplikace.
+Zjistěte, jak tooembed sestava, která je v Power BI Embedded do vaší aplikace.
 
-Podíváme se na tom, jak ve skutečnosti vložení sestavy do vaší aplikace. Toto předpokládá, že už máte sestavu, která existuje v rámci pracovního prostoru v kolekci pracovního prostoru. Pokud tento krok jste ještě neudělali, přečtěte si téma [Začínáme s Power BI Embedded](power-bi-embedded-get-started.md).
+Podíváme se na tom, jak tooactually vložení sestavy do vaší aplikace. Toto předpokládá, že už máte sestavu, která existuje v rámci pracovního prostoru v kolekci pracovního prostoru. Pokud tento krok jste ještě neudělali, přečtěte si téma [Začínáme s Power BI Embedded](power-bi-embedded-get-started.md).
 
-Rozhraní .NET (C#) nebo Node.js SDK, společně s JavaScript, můžete snadno vytvářet aplikace s Power BI Embedded. 
+Můžete použít hello .NET (C#) nebo Node.js SDK, společně s JavaScript, tooeasily sestavení vaší aplikace pomocí Power BI Embedded. 
 
-## <a name="using-the-access-keys-to-use-rest-apis"></a>Pomocí rozhraní REST API pomocí přístupových kláves
+## <a name="using-hello-access-keys-toouse-rest-apis"></a>Pomocí hello přístup klíče toouse rozhraní REST API
 
-Aby bylo možné volat rozhraní REST API, můžete předat přístupový klíč, který můžete získat z portálu Azure pro kolekci daného pracovního prostoru. Další informace najdete v tématu [Začínáme s Power BI Embedded](power-bi-embedded-get-started.md).
+V pořadí toocall hello REST API které lze předat hello přístupový klíč, který můžete získat z hello portál Azure pro kolekci daného pracovního prostoru. Další informace najdete v tématu [Začínáme s Power BI Embedded](power-bi-embedded-get-started.md).
 
 ## <a name="get-a-report-id"></a>Získání id sestavy
 
-Každý přístupový token je založena na sestavu. Musíte získat id dané sestavy pro sestavu, kterou chcete vložit. To lze provést na základě volání [Get Reports](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API. Tato možnost vrátí id sestavy a adresu url pro vložení. To lze provést pomocí .NET SDK služby Power BI nebo přímé volání rozhraní REST API.
+Každý přístupový token je založena na sestavu. Budete potřebovat hello tooget pro hello sestavy, které chcete tooembed zadané id sestavy. To lze provést podle volání toohello [Get Reports](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API. Tato možnost vrátí hello sestavy id a hello vložte adresu url. To lze provést pomocí hello Power BI .NET SDK nebo přímé volání rozhraní REST API hello.
 
-### <a name="using-the-power-bi-net-sdk"></a>Pomocí .NET SDK služby Power BI
+### <a name="using-hello-power-bi-net-sdk"></a>Pomocí hello Power BI .NET SDK
 
-Když pomocí sady .NET SDK, musíte se k vytvoření tokenu přihlašovacích údajů, která je založena na přístupový klíč, který můžete získat z portálu Azure. To je nutné nainstalovat [balíček NuGet pro rozhraní API Power BI](https://www.nuget.org/profiles/powerbi).
+Pokud používáte hello .NET SDK, budete potřebovat toocreate tokenu přihlašovacích údajů, která je založena na hello přístupový klíč, který můžete získat z hello portálu Azure. To je nutné nainstalovat hello [balíček NuGet pro rozhraní API Power BI](https://www.nuget.org/profiles/powerbi).
 
 **Instalace balíčku NuGet**
 
@@ -59,10 +59,10 @@ client.BaseUri = new Uri(https://api.powerbi.com);
 
 var reports = (IList<Report>)client.Reports.GetReports(workspaceCollectionName, workspaceId).Value;
 
-// Select the report that you want to work with from the collection of reports.
+// Select hello report that you want toowork with from hello collection of reports.
 ```
 
-### <a name="calling-the-rest-api-directly"></a>Přímé volání rozhraní REST API
+### <a name="calling-hello-rest-api-directly"></a>Volání hello přímo REST API
 
 ```
 System.Net.WebRequest request = System.Net.WebRequest.Create("https://api.powerbi.com/v1.0/collections/{collectionName}/workspaces/{workspaceId}/Reports") as System.Net.HttpWebRequest;
@@ -75,7 +75,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 {
     using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
     {
-        // Work with JSON response to get the report you want to work with.
+        // Work with JSON response tooget hello report you want toowork with.
     }
 
 }
@@ -83,11 +83,11 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 ## <a name="create-an-access-token"></a>Vytvořit token přístupu
 
-Power BI Embedded používají vložení token, který jsou HMAC podepsané webových tokenů JSON. Přístupový klíč z vaší Azure Power BI Embedded kolekce pracovních prostorů jsou podepsané tokeny. Vložení tokeny, ve výchozím nastavení, používají se pro čtení pouze přístup k sestavě pro vložení do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
+Power BI Embedded používají vložení token, který jsou HMAC podepsané webových tokenů JSON. Hello tokeny jsou podepsané hello přístupový klíč z vaší Azure Power BI Embedded kolekce pracovních prostorů. Vložení tokeny, ve výchozím nastavení, jsou použité tooprovide číst přístup jenom k tooembed tooa sestavy do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
 
-Přístupové tokeny by se vytvořit na serveru, přístupové klíče se používají pro přihlášení nebo šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [Authenticating a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
+Přístupové tokeny musí být vytvořena na serveru hello hello přístupové klíče jsou použité toosign nebo šifrování tokenů hello. Informace o tom najdete v části toocreate přístupový token, [Authenticating a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md). Můžete také zkontrolovat hello [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí hello .NET SDK pro Power BI.
 
-Použijete id sestavy, které jste získali dříve. Po vytvoření vkládací token pak použijete přístupový klíč pro vygenerování tokenu, který můžete použít z pohledu javascript. *PowerBIToken třída* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Použijete id hello sestavy, které jste získali dříve. Po vložení hello je vytvořen token, pak bude používat hello přístupový klíč toogenerate hello token, který můžete použít z pohledu hello javascript. Hello *PowerBIToken třída* vyžaduje instalaci hello [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Instalace balíčku NuGet**
 
@@ -106,16 +106,16 @@ embedToken = PowerBIToken.CreateReportEmbedToken(workspaceCollectionName, worksp
 var token = embedToken.Generate("{access key}");
 ```
 
-### <a name="adding-permission-scopes-to-embed-tokens"></a>Přidání obory oprávnění pro vložení tokeny
+### <a name="adding-permission-scopes-tooembed-tokens"></a>Přidání oprávnění obory tooembed tokenů
 
-Pokud používáte vložení tokeny, můžete omezit využití prostředků, které vám umožní získat přístup k. Z tohoto důvodu můžete vygenerovat token s vymezená oprávnění. Další informace najdete v tématu [oborů](power-bi-embedded-app-token-flow.md#scopes)
+Pokud používáte vložení tokeny, může být vhodné toorestrict využití hello prostředků, které vám umožní získat přístup k. Z tohoto důvodu můžete vygenerovat token s vymezená oprávnění. Další informace najdete v tématu [oborů](power-bi-embedded-app-token-flow.md#scopes)
 
 ## <a name="embed-using-javascript"></a>Vložení pomocí jazyka JavaScript
 
-Až budete mít přístupový token a id sestavy, jsme vložení sestavy pomocí jazyka JavaScript. To je nutné nainstalovat nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
+Až budete mít hello přístupový token a id hello sestavy, jsme vložení sestavy hello pomocí jazyka JavaScript. To je nutné nainstalovat hello nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Hello embedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
+> Můžete použít hello [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) tootest funkce. Také nabízí příklady kódu pro hello různé operace, které jsou k dispozici.
 
 **Instalace balíčku NuGet**
 
@@ -140,9 +140,9 @@ var $reportContainer = $('#reportContainer');
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 ```
 
-### <a name="set-the-size-of-embedded-elements"></a>Nastavení velikosti vložené prvky
+### <a name="set-hello-size-of-embedded-elements"></a>Nastavení velikosti hello vložených elementů
 
-Sestava bude automaticky vložený podle velikosti svého kontejneru. Chcete-li přepsat výchozí velikost vloží jednoduše přidat třídy atribut nebo vložené stylů CSS pro šířku a výšku.
+Sestava Hello automaticky vložený závislosti na velikosti hello svého kontejneru. Výchozí velikost toooverride hello hello vloží jednoduše přidat třídy atribut nebo vložené stylů CSS pro šířku a výšku.
 
 ## <a name="see-also"></a>Viz také
 
@@ -155,4 +155,4 @@ Sestava bude automaticky vložený podle velikosti svého kontejneru. Chcete-li 
 [Power BI základní NuGut balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Úložiště Git PowerBI CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
 [Úložiště Git PowerBI uzlu](https://github.com/Microsoft/PowerBI-Node)  
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Zkuste hello komunitě Power BI](http://community.powerbi.com/)

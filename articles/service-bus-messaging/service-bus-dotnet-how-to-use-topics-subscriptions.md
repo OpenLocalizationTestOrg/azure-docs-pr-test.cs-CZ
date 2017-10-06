@@ -1,5 +1,5 @@
 ---
-title: "Začínáme s tématy a odběry služby Azure Service Bus | Dokumentace Microsoftu"
+title: "aaaGet začít s Azure Service Bus témat a odběrů | Microsoft Docs"
 description: "Napíšeme aplikaci konzoly v jazyce C# využívající témata a odběry zasílání zpráv služby Service Bus."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: sethm
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 619d602599d97ecff2ded0681a383b19f1a8b7ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -26,74 +26,74 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
 
-Tento kurz se zabývá následujícími kroky:
+Tento kurz se zabývá hello následující kroky:
 
-1. Pomocí webu Azure Portal vytvoříme obor názvů služby Service Bus.
-2. Pomocí webu Azure Portal vytvoříme téma služby Service Bus.
-3. Pomocí webu Azure Portal vytvoříme k tomuto tématu odběr služby Service Bus.
-4. Napíšeme aplikaci konzoly pro odeslání zprávy do tohoto tématu.
-5. Napíšeme aplikaci konzoly pro příjem této zprávy z odběru.
+1. Vytvořte obor názvů Service Bus pomocí hello portálu Azure.
+2. Vytvoření tématu Service Bus, pomocí hello portálu Azure.
+3. Vytvořte téma toothat předplatné služby Service Bus pomocí hello portálu Azure.
+4. Zápis na konzole aplikace toosend téma toohello zprávy.
+5. Zápis na konzole aplikace tooreceive zprávy z předplatného hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). Hello příklady v tomto kurzu použít Visual Studio 2017.
 2. Předplatné Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Vytvoření oboru názvů pomocí hello portálu Azure
 
-Pokud už máte vytvořený obor názvů pro zasílání zpráv služby Service Bus, přejděte k části [Vytvoření tématu pomocí webu Azure Portal](#2-create-a-topic-using-the-azure-portal).
+Pokud jste již vytvořili obor názvů zasílání zpráv Service Bus, přeskočit toohello [vytvořit téma pomocí portálu Azure hello](#2-create-a-topic-using-the-azure-portal) části.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Vytvoření tématu pomocí webu Azure Portal
+## <a name="2-create-a-topic-using-hello-azure-portal"></a>2. Vytvoří téma pomocí hello portálu Azure
 
-1. Přihlaste se k webu [Azure Portal][azure-portal].
-2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Další služby**).
-3. Klikněte na obor názvů, ve kterém chcete vytvořit téma. Zobrazí se okno přehledu oboru názvů:
+1. Přihlaste se toohello [portál Azure][azure-portal].
+2. V levém navigačním podokně hello hello portálu, klikněte na **Service Bus** (Pokud nevidíte **Service Bus**, klikněte na tlačítko **další služby**).
+3. Klikněte na tlačítko hello obor názvů, ve kterém chcete toocreate hello tématu. Zobrazí se okno Přehled Hello obor názvů:
    
     ![Vytvoření tématu][createtopic1]
-4. V okně **Obor názvů služby Service Bus** klikněte na **Témata** a pak na **Přidat téma**.
+4. V hello **oboru názvů Service Bus** okně klikněte na tlačítko **témata**, pak klikněte na tlačítko **přidat tématu**.
    
     ![Výběr témat][createtopic2]
-5. Zadejte název tématu a zrušte zaškrtnutí možnosti **Povolit dělení**. U ostatních možností ponechte jejich výchozí hodnoty.
+5. Zadejte název pro téma hello a zrušte zaškrtnutí políčka hello **povolit vytváření oddílů** možnost. Nechte hello jiné možnosti s jejich výchozí hodnoty.
    
     ![Vyberte Nový][createtopic3]
-6. Dole na v okně klikněte na **Vytvořit**.
+6. Hello dolní části okna hello, klikněte na **vytvořit**.
 
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Vytvoření odběru tématu
+## <a name="3-create-a-subscription-toohello-topic"></a>3. Vytvoří téma toohello předplatného
 
-1. V podokně prostředků na portálu klikněte na obor názvů, který jste vytvořili v kroku 1, a pak klikněte na téma, které jste vytvořili v kroku 2.
-2. V horní části podokna přehledu kliknutím na symbol plus vedle možnosti **Odběr** přidejte odběr tohoto tématu.
+1. V podokně portálu prostředky hello klikněte hello obor názvů, který jste vytvořili v kroku 1 a pak klikněte na název hello téma, které jste vytvořili v kroku 2.
+2. Top hello hello přehled podokna klikněte na tlačítko hello plus přihlásit další příliš**předplatné** tooadd téma toothis předplatné.
 
     ![Vytvoření odběru][createtopic4]
 
-3. Zadejte název odběru. U ostatních možností ponechte jejich výchozí hodnoty.
+3. Zadejte název pro předplatné hello. Nechte hello jiné možnosti s jejich výchozí hodnoty.
 
-## <a name="4-send-messages-to-the-topic"></a>4. Odesílání zpráv do tématu
+## <a name="4-send-messages-toohello-topic"></a>4. Odeslání zprávy toohello tématu
 
-Pro odesílání zpráv do tématu napíšeme pomocí sady Visual Studio aplikaci konzoly v jazyce C#.
+toosend zprávy toohello tématu jsme zápisu konzolovou aplikaci C# pomocí sady Visual Studio.
 
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET Framework)**.
 
-### <a name="add-the-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet
+### <a name="add-hello-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet hello
 
-1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-2. Klikněte na kartu **Procházet**, vyhledejte **Microsoft Azure Service Bus** a pak vyberte položku **WindowsAzure.ServiceBus**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
+1. Klikněte pravým tlačítkem hello nově vytvořený projekt a vyberte **spravovat balíčky NuGet**.
+2. Klikněte na tlačítko hello **Procházet** kartě, vyhledejte **Microsoft Azure Service Bus**a potom vyberte hello **WindowsAzure.ServiceBus** položky. Klikněte na tlačítko **nainstalovat** toocomplete hello instalace a pak zavřete toto dialogové okno.
    
     ![Výběr balíčku NuGet][nuget-pkg]
 
-### <a name="write-some-code-to-send-a-message-to-the-topic"></a>Napsání kódu pro odeslání zprávy do tématu
+### <a name="write-some-code-toosend-a-message-toohello-topic"></a>Zápis některé kód toosend téma toohello zpráv
 
-1. Na začátek souboru Program.cs přidejte následující příkaz `using`.
+1. Přidejte následující hello `using` toohello příkaz na začátku souboru Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Do metody `Main` přidejte následující kód. Nastavte proměnnou `connectionString` na připojovací řetězec, který jste získali při vytváření oboru názvů, a proměnnou `topicName` nastavte na název, který jste použili při vytváření tématu.
+2. Přidejte následující kód toohello hello `Main` metoda. Sada hello `connectionString` proměnné toohello připojovací řetězec, který jste získali při vytváření názvů hello a nastavte `topicName` toohello název, který jste použili při vytváření tématu hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -107,7 +107,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -138,25 +138,25 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Spusťte program a podívejte se na web Azure Portal: klikněte na název vašeho tématu v okně **Přehled** oboru názvů. Zobrazí se okno **Základy** tématu. Všimněte si, že v odběrech uvedených v dolní části okna by hodnota **Počet zpráv** měla být u každého odběru 1. Pokaždé, když spustíte aplikaci odesílatele bez načtení zpráv (jak je popsáno v další části), se tato hodnota zvýší o 1. Všimněte si také, že aktuální velikost tématu navyšuje hodnotu **Aktuální** v okně **Základy** pokaždé, když aplikace do daného tématu nebo odběru přidá zprávu.
+3. Spuštění programu hello a zkontrolujte hello portálu Azure: klikněte na název hello témat v oboru názvů hello **přehled** okno. téma Hello **Essentials** zobrazí se okno. V uvedených téměř hello dolní části okna hello hello odběry, Všimněte si, že hello **počet zpráv** hodnota pro každé předplatné by teď měly být 1. Pokaždé, když provedete spuštění aplikace sender hello bez načítání zpráv hello (jak je popsáno v další části hello), tato hodnota se zvýší o 1. Všimněte si, že hello aktuální velikost hello tématu přírůstcích hello **aktuální** hodnota na hello **Essentials** okno pokaždé, když aplikace hello přidá zprávu toohello téma/odběr.
    
       ![Velikost zpráv][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Příjem zpráv z odběru
+## <a name="5-receive-messages-from-hello-subscription"></a>5. Příjem zpráv z odběru hello
 
-1. Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte novou aplikaci konzoly a přidejte odkaz na balíček NuGet služby Service Bus, podobně jako předtím u aplikace odesílatele.
-2. Na začátek souboru Program.cs přidejte následující příkaz `using`.
+1. tooreceive uvítací zprávu nebo zpráv, které jste právě zaslali, vytvořte novou konzolovou aplikaci a přidejte odkaz na balíček Service Bus NuGet toohello, podobně jako toohello předchozí odesílatele aplikaci.
+2. Přidejte následující hello `using` toohello příkaz na začátku souboru Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Do metody `Main` přidejte následující kód. Nastavte proměnnou `connectionString` na připojovací řetězec, který jste získali při vytváření oboru názvů, a proměnnou `topicName` nastavte na název, který jste použili při vytváření tématu.
+3. Přidejte následující kód toohello hello `Main` metoda. Sada hello `connectionString` proměnné toohello připojovací řetězec jste získali při vytváření názvů hello a nastavte `topicName` toohello název, který jste použili při vytváření tématu hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -170,7 +170,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER to exit program");
+    Console.WriteLine("Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -197,13 +197,13 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER to exit program");   
+          Console.WriteLine("Press ENTER tooexit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Spusťte program a znovu se podívejte na portál. Všimněte si, že hodnoty **Počet zpráv** a **Aktuální** jsou nyní 0.
+4. Spuštění programu hello a znovu zkontrolujte hello portálu. Všimněte si, že hello **počet zpráv** a **aktuální** jsou hodnoty 0.
    
     ![Délka tématu][topic-message-receive]
 
@@ -211,7 +211,7 @@ Blahopřejeme! Právě jste vytvořili téma a odběr, odeslali zprávu a přija
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na naše [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples), které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
+Podívejte se na naše [úložiště GitHub se ukázky](https://github.com/Azure/azure-service-bus/tree/master/samples) který předvedli hello pokročilejší funkce zasílání zpráv Service Bus.
 
 <!--Image references-->
 

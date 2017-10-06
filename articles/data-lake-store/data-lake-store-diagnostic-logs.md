@@ -1,6 +1,6 @@
 ---
-title: "Zobrazení diagnostických protokolů pro Azure Data Lake Store | Microsoft Docs"
-description: "Pochopit, jak nastavit a přístupu k diagnostickým protokolům pro Azure Data Lake Store "
+title: "diagnostické protokoly aaaViewing pro Azure Data Lake Store | Microsoft Docs"
+description: "Pochopit, jak toosetup a přístupu k diagnostickým protokolům pro Azure Data Lake Store "
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,83 +14,83 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: b7a38ec445ef0ce13f3f1931e8ee246dce6412a5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 11fbf7f517f97abdcaf809c1ebeeb51424ab2c1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Store
-Další informace o tom, jak povolit protokolování diagnostiky pro váš účet Data Lake Store a postup zobrazení shromážděné pro váš účet protokoly.
+Informace o tom, jak tooenable protokolování diagnostiky pro váš účet Data Lake Store a jak tooview hello protokoly shromážděné pro váš účet.
 
-Organizace může povolit protokolování diagnostiky ke svému účtu Azure Data Lake Store ke shromažďování dat záznamy auditu přístupu, která poskytuje informace, jako je seznam uživatelům přístup k datům, jak často se data používají, kolik dat je uložené v účtu atd.
+Organizace může povolit protokolování diagnostiky pro jejich Azure Data Lake Store účet toocollect data přístup kontrolní záznamy, které poskytuje informace, jako je seznam uživatele, kteří používají hello data, jak často se hello data používají, kolik dat je uložen v hello účet, atd.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Store**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Store**. Postupujte podle pokynů hello [Začínáme s Azure Data Lake Store pomocí portálu Azure hello](data-lake-store-get-started-portal.md).
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Povolit protokolování diagnostiky pro váš účet Data Lake Store
-1. Přihlaste se k novému [webu Azure Portal](https://portal.azure.com).
+1. Přihlášení toohello nové [portálu Azure](https://portal.azure.com).
 2. Otevřete účet Data Lake Store a z vaší okně účtu Data Lake Store klikněte na tlačítko **nastavení**a potom klikněte na **diagnostické protokoly**.
-3. V **protokolů diagnostiky** okně klikněte na tlačítko **zapněte diagnostiku**.
+3. V hello **protokolů diagnostiky** okně klikněte na tlačítko **zapněte diagnostiku**.
 
     ![Povolit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "povolení diagnostických protokolů")
 
-3. V **diagnostiky** okno, proveďte následující změny konfigurace protokolování diagnostiky.
+3. V hello **diagnostiky** okno, proveďte následující změny protokolování diagnostiky tooconfigure hello.
    
     ![Povolit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "povolení diagnostických protokolů")
    
-   * Nastavit **stav** k **na** povolit protokolování diagnostiky.
-   * Můžete úložiště/zpracovat data různými způsoby.
+   * Nastavit **stav** příliš**na** tooenable protokolování diagnostiky.
+   * Můžete data toostore/procesu hello různými způsoby.
      
-        * Vyberte možnost **archivu do účtu úložiště** k ukládání protokolů pro účet úložiště Azure. Tuto možnost použijte, pokud chcete archivovat data, která bude zpracování dávky později. Pokud vyberete tuto možnost je nutné zadat účet služby Azure Storage k ukládání protokolů.
+        * Vyberte možnost hello příliš**archivu účet úložiště tooa** toostore protokoly tooan účet úložiště Azure. Tuto možnost použijte, pokud chcete tooarchive hello data, která bude zpracování dávky později. Pokud vyberete tuto možnost je nutné zadat účet služby Azure Storage toosave hello protokolů.
         
-        * Vyberte možnost **datový proud do centra událostí** na datový proud protokolu data do centra událostí Azure. Bude s největší pravděpodobností používat tuto možnost, pokud máte kanálu zpracování příjmu dat pro analýzu příchozích protokolů v reálném čase. Pokud vyberete tuto možnost, je nutné zadat podrobnosti pro centra událostí Azure, kterou chcete použít.
+        * Vyberte možnost hello příliš**centra událostí tooan datového proudu** toostream protokolu data tooan centra událostí Azure. S největší pravděpodobností použijete tuto možnost, pokud mají podřízené zpracování kanálu tooanalyze příchozí protokolů v reálném čase. Pokud vyberete tuto možnost, je nutné zadat hello podrobnosti pro hello chcete toouse centra událostí Azure.
 
-        * Vyberte možnost **odeslat k analýze protokolů** používat službu Azure Log Analytics k analýze dat generovaný protokolu. Pokud vyberete tuto možnost, je nutné zadat podrobnosti pro pracovní prostor služby Operations Management Suite se, že používáte analýzy protokolů provést.
+        * Vyberte možnost hello příliš**odeslat tooLog Analytics** toouse hello data protokolu hello generované tooanalyze služba Analýza protokolů Azure. Pokud vyberete tuto možnost, je nutné zadat, že hello podrobnosti o hello prostoru služby Operations Management Suite, které by použití hello provádět analýzu protokolu.
      
-   * Určete, jestli chcete získat protokoly auditu nebo protokoly požadavku nebo obě.
-   * Zadejte počet dnů, pro které se musí uchovávat data. Uchování platí pouze pokud používáte k archivaci dat protokolu účtu úložiště Azure.
+   * Zadejte, zda chcete protokoly auditu tooget nebo protokoly požadavku nebo obojí.
+   * Zadejte hello počet dnů, pro které se musí uchovávat hello data. Uchování platí pouze pokud používáte data protokolu tooarchive účtu úložiště Azure.
    * Klikněte na **Uložit**.
 
-Jakmile povolíte nastavení diagnostiky, můžete sledovat v protokolech **diagnostické protokoly** kartě.
+Jakmile povolíte nastavení diagnostiky, můžete sledovat hello přihlásí hello **diagnostické protokoly** kartě.
 
 ## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Zobrazení diagnostických protokolů pro účet Data Lake Store
-Existují dva způsoby, jak zobrazit data protokolu pro váš účet Data Lake Store.
+Existují dva způsoby tooview hello data protokolu pro váš účet Data Lake Store.
 
-* V zobrazení nastavení účtu Data Lake Store
-* Z účtu úložiště Azure, kde jsou data uložená
+* Z účtu Data Lake Store hello nastavení zobrazení
+* Z účtu úložiště Azure hello ukládat hello data
 
-### <a name="using-the-data-lake-store-settings-view"></a>Pomocí Data Lake Store nastavení zobrazení
+### <a name="using-hello-data-lake-store-settings-view"></a>Pomocí hello zobrazit Data Lake Store nastavení
 1. Z účtu Data Lake Store **nastavení** okně klikněte na tlačítko **diagnostické protokoly**.
    
     ![Protokolování diagnostiky zobrazení](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "zobrazení diagnostických protokolů") 
-2. V **diagnostické protokoly** okno, měli byste vidět protokoly zařazený do kategorie službou **protokoly auditu** a **požadavku protokoly**.
+2. V hello **diagnostické protokoly** okno, měli byste vidět hello protokoly zařazený do kategorie službou **protokoly auditu** a **požadavku protokoly**.
    
-   * Protokoly žádosti o zachycení každý API požadavek na účet Data Lake Store.
-   * Protokoly auditu jsou podobná žádosti protokoly, ale poskytují mnohem podrobnější rozpis operací týkajících se účet Data Lake Store. Například volání rozhraní API jednoho uložení v protokolech žádost může způsobit více operací "Připojit" v protokolech auditu.
-3. Klikněte **Stáhnout** odkaz u každé položky protokolu pro stahování protokolů.
+   * Protokoly žádosti o zachycení každý API požadavek na hello účtu Data Lake Store.
+   * Protokoly auditu jsou podobné toorequest protokoly, ale poskytují mnohem podrobnější rozpis hello operací provádí na účtu Data Lake Store hello. Například volání rozhraní API jednoho uložení v protokolech žádost může způsobit více operací "Připojit" v protokolech auditu hello.
+3. Klikněte na tlačítko hello **Stáhnout** odkaz proti jednotlivým protokol položka toodownload hello protokoly.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Z účtu úložiště Azure, který obsahuje data protokolu
-1. Otevřete okno účtu úložiště Azure spojené s Data Lake Store pro protokolování a pak klikněte na objekty BLOB. **Služba objektů Blob** okno uvádí dva kontejnery.
+### <a name="from-hello-azure-storage-account-that-contains-log-data"></a>Z hello účet služby Azure Storage, který obsahuje data protokolu
+1. Otevřete okno účtu Azure Storage hello spojené s Data Lake Store pro protokolování a pak klikněte na objekty BLOB. Hello **služba objektů Blob** okno uvádí dva kontejnery.
    
     ![Protokolování diagnostiky zobrazení](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "zobrazení diagnostických protokolů")
    
-   * Kontejner **přehledy. protokoly auditu** obsahující protokoly auditu.
-   * Kontejner **přehledy. protokoly žádosti** obsahující protokoly požadavku.
-2. V rámci těchto kontejnerů protokoly jsou uloženy v rámci následující strukturu.
+   * kontejner Hello **přehledy. protokoly auditu** obsahuje hello protokoly auditu.
+   * kontejner Hello **přehledy. protokoly žádosti** obsahuje hello požadavek protokoly.
+2. V rámci těchto kontejnerů hello protokoly jsou uloženy v rámci hello strukturu.
    
     ![Protokolování diagnostiky zobrazení](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "zobrazení diagnostických protokolů")
    
-    Jako příklad může být úplná cesta k protokolu auditování`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Jako příklad může být protokolu auditování tooan kompletní cesta hello`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Obdobně, může být úplná cesta k požadavku protokolu`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Obdobně, může být hello kompletní cesta tooa žádost protokolu`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## <a name="understand-the-structure-of-the-log-data"></a>Pochopení struktury data protokolu
-Protokoly auditu a požadavku jsou ve formátu JSON. V této části jsme zobrazit strukturu JSON pro požadavek a protokoly auditu.
+## <a name="understand-hello-structure-of-hello-log-data"></a>Pochopení hello struktura dat protokolu hello
+Hello protokoly auditu a požadavku jsou ve formátu JSON. V této části jsme podívejte se na hello struktura JSON pro požadavek a protokoly auditu.
 
 ### <a name="request-logs"></a>Žádost o protokoly
-Zde je vzorového vstupu do formátu JSON žádost protokolu. Každý objekt blob má jeden kořenový objekt názvem **záznamy** obsahující pole objektů protokolu.
+Zde je vzorového vstupu v protokolu hello požadavků formátu JSON. Každý objekt blob má jeden kořenový objekt názvem **záznamy** obsahující pole objektů protokolu.
 
     {
     "records": 
@@ -116,28 +116,28 @@ Zde je vzorového vstupu do formátu JSON žádost protokolu. Každý objekt blo
 #### <a name="request-log-schema"></a>Schéma požadavku protokolu
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| time |Řetězec |Časové razítko (ve formátu UTC) v protokolu |
-| resourceId |Řetězec |ID prostředku, který operace trvalo umístit na |
-| category |Řetězec |Kategorie protokolu. Například **požadavky**. |
-| operationName |Řetězec |Název operace, která je zaznamenána. Například getfilestatus. |
-| resultType |Řetězec |Stav operace, například 200. |
-| callerIpAddress |Řetězec |IP adresa klienta vytvoření požadavku |
-| correlationId |Řetězec |Id protokolu, který můžete použít k seskupení sady položek protokolu související |
-| identity |Objekt |Identity, která generuje protokol |
+| time |Řetězec |časové razítko Hello (ve formátu UTC) hello protokolu |
+| resourceId |Řetězec |ID Hello hello prostředku, který operace trvalo umístit na |
+| category |Řetězec |kategorie Hello protokolu. Například **požadavky**. |
+| operationName |Řetězec |Název hello operace, která je zaznamenána. Například getfilestatus. |
+| resultType |Řetězec |Stav Hello hello operace, například 200. |
+| callerIpAddress |Řetězec |Hello IP adresa klienta hello vytváření hello požadavku |
+| correlationId |Řetězec |id Hello hello protokolu, který můžete použít toogroup společně sada položek související protokolu |
+| identity |Objekt |Hello identity, která vygenerovala hello protokolu |
 | properties |JSON |Níže naleznete podrobnosti |
 
 #### <a name="request-log-properties-schema"></a>Schéma vlastnosti požadavku protokolu
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| HttpMethod |Řetězec |Metoda HTTP se používá pro operaci. Například získáte. |
-| Cesta |Řetězec |Cesta k operaci byla provedena na |
-| RequestContentLength |celá čísla |Délka obsahu požadavku HTTP |
-| clientRequestId |Řetězec |Identifikátor, který jedinečně identifikuje tuto žádost |
-| Čas spuštění |Řetězec |Čas, na které server přijal žádost |
-| čas ukončení |Řetězec |Čas, kdy server odeslal odpověď |
+| HttpMethod |Řetězec |Hello metoda HTTP pro hello operaci použít. Například získáte. |
+| Cesta |Řetězec |operace hello Hello cesta byla provedena na |
+| RequestContentLength |celá čísla |Délka obsahu Hello hello HTTP požadavku |
+| clientRequestId |Řetězec |Hello Id, který jedinečně identifikuje tuto žádost |
+| Čas spuštění |Řetězec |Hello čas, který hello server obdržel hello požadavku |
+| čas ukončení |Řetězec |Hello čas, který hello serveru odeslání odpovědi |
 
 ### <a name="audit-logs"></a>Protokoly auditu
-Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt blob má jeden kořenový objekt názvem **záznamy** obsahující pole objektů protokolu
+Zde je vstup vzorového ve formátu JSON auditní protokol hello. Každý objekt blob má jeden kořenový objekt názvem **záznamy** obsahující pole objektů protokolu
 
     {
     "records": 
@@ -162,22 +162,22 @@ Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| time |Řetězec |Časové razítko (ve formátu UTC) v protokolu |
-| resourceId |Řetězec |ID prostředku, který operace trvalo umístit na |
-| category |Řetězec |Kategorie protokolu. Například **auditu**. |
-| operationName |Řetězec |Název operace, která je zaznamenána. Například getfilestatus. |
-| resultType |Řetězec |Stav operace, například 200. |
-| correlationId |Řetězec |Id protokolu, který můžete použít k seskupení sady položek protokolu související |
-| identity |Objekt |Identity, která generuje protokol |
+| time |Řetězec |časové razítko Hello (ve formátu UTC) hello protokolu |
+| resourceId |Řetězec |ID Hello hello prostředku, který operace trvalo umístit na |
+| category |Řetězec |kategorie Hello protokolu. Například **auditu**. |
+| operationName |Řetězec |Název hello operace, která je zaznamenána. Například getfilestatus. |
+| resultType |Řetězec |Stav Hello hello operace, například 200. |
+| correlationId |Řetězec |id Hello hello protokolu, který můžete použít toogroup společně sada položek související protokolu |
+| identity |Objekt |Hello identity, která vygenerovala hello protokolu |
 | properties |JSON |Níže naleznete podrobnosti |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastnosti protokolu auditu
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| StreamName |Řetězec |Cesta k operaci byla provedena na |
+| StreamName |Řetězec |operace hello Hello cesta byla provedena na |
 
-## <a name="samples-to-process-the-log-data"></a>Ukázky ke zpracování dat protokolu
-Azure Data Lake Store poskytuje vzorku o tom, jak zpracovávat a analyzovat data protokolu. Můžete najít ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+## <a name="samples-tooprocess-hello-log-data"></a>Data protokolu hello tooprocess ukázky
+Azure Data Lake Store obsahuje ukázku tooprocess a analýze dat protokolů hello. Můžete najít hello ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: "Monitorování služeb Node.js pomocí Azure Application Insights | Dokumentace Microsoftu"
+title: "aaaMonitor Node.js služby pomocí služby Azure Application Insights | Microsoft Docs"
 description: "Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights."
 services: application-insights
 documentationcenter: nodejs
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/01/2017
 ms.author: bwren
-ms.openlocfilehash: ee65207e546c7050cc7bf35c36624fc49ad9eec4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0a7e66990cd4d3a2fcaf3fa779adb336c861f8ce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](app-insights-overview.md) monitoruje po nasazení vaše back-endové služby a komponenty a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](app-insights-detect-triage-diagnose.md). Tuto službu můžete použít pro služby Node.js hostované kdekoli: ve vašem datacentru, na virtuálních počítačích nebo ve webových aplikacích Azure a dokonce i v dalších veřejných cloudech.
+[Azure Application Insights](app-insights-overview.md) monitoruje back-end služby a součásti po nasazení je toohelp jste [zjistit a rychle diagnostikovat výkonu a další problémy](app-insights-detect-triage-diagnose.md). Tuto službu můžete použít pro služby Node.js hostované kdekoli: ve vašem datacentru, na virtuálních počítačích nebo ve webových aplikacích Azure a dokonce i v dalších veřejných cloudech.
 
-Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, postupujte podle následujících pokynů a vložte do svého kódu agenta a nastavte v Azure odpovídající prostředek Application Insights. Agent do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
+tooreceive, uložit a prozkoumejte monitorování data, postupujte podle následujících pokynů tooinclude agenta ve vašem kódu hello a nastavit odpovídající prostředek Application Insights v Azure. Hello agent odesílá data toothat prostředku pro další analýzy a zkoumání.
 
-Agent Node.js dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, řadu systémových metrik a výjimky. Počínaje verzí 0.20 dokáže monitorovat také některé běžné balíčky třetích stran, jako například `mongodb`, `mysql` a `redis`. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
+agenta Node.js Hello může automaticky sledovat příchozí a odchozí HTTP požadavků, několik systému metriky a výjimky. Počínaje verzí 0.20 dokáže monitorovat také některé běžné balíčky třetích stran, jako například `mongodb`, `mysql` a `redis`. Všechny události související se příchozí požadavek HTTP tooan jsou korelační rychlejší při řešení potíží.
 
-Můžete monitorovat více aspektů aplikace a systému, pokud je ručně nakonfigurujete pomocí rozhraní API agenta popsaného níže.
+Další aspekty aplikace můžete monitorovat a systému instrumentace je ručně pomocí rozhraní API agenta hello popsané dál.
 
 ![Příklady tabulek sledování výkonu](./media/app-insights-nodejs/10-perf.png)
 
@@ -37,33 +37,33 @@ Projděme si nastavení monitorování pro aplikaci nebo službu.
 
 ### <a name="resource"></a> Nastavení prostředku App Insights
 
-**Než začnete**, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud vaše organizace již má předplatné Azure, správce vás do něj může přidat pomocí [těchto pokynů][add-aad-user].
+**Než začnete**, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud už vaše organizace má předplatné Azure, můžete postupovat podle správce [tyto pokyny] [ add-aad-user] tooadd tooit je.
 
 [azure-free-offer]: https://azure.microsoft.com/en-us/free/
 [add-aad-user]: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-create-azure-portal
 
-Nyní se přihlaste k webu [Azure Portal][portal] a vytvořte prostředek Application Insights, jak je znázorněno na následujícím obrázku – Klikněte na Nový > Vývojářské nástroje > Application Insights. Prostředek zahrnuje koncový bod pro příjem telemetrických dat, úložiště pro tato data, uložené sestavy a řídicí panely, konfigurace pravidel a upozornění a ještě více.
+Teď se přihlásit toohello [portál Azure] [ portal] a vytvořte prostředek Application Insights, jak je znázorněno v následující hello – klikněte na tlačítko "New" > "Developer tools" > "Application Insights". Hello prostředků obsahuje koncový bod pro příjem telemetrická data, úložiště pro tato data uložena sestavy a řídicí panely, pravidla a konfigurace výstrah a další.
 
 ![Vytvoření prostředku App Insights](./media/app-insights-nodejs/03-new_appinsights_resource.png)
 
-Na stránce vytváření prostředku vyberte z rozevírací nabídky typu aplikace možnost Aplikace Node.js. Typ aplikace určuje výchozí sadu řídicích panelů a sestav, které se pro vás vytvoří. Ale nebojte se, každý prostředek App Insights může ve skutečnosti shromažďovat data z jakéhokoli jazyka a libovolné platformy.
+Na stránce vytváření prostředků hello vyberte "Aplikace Node.js" hello aplikace typu rozevíracího seznamu. Typ aplikace Hello Určuje výchozí sadu hello řídicí panely a sestavy vytvořené pro vás. Ale nebojte se, každý prostředek App Insights může ve skutečnosti shromažďovat data z jakéhokoli jazyka a libovolné platformy.
 
 ![Formulář Nový prostředek App Insights](./media/app-insights-nodejs/04-create_appinsights_resource.png)
 
-### <a name="agent"></a> Nastavení agenta Node.js
+### <a name="agent"></a>Nastavení agenta Node.js hello
 
-Nyní je čas do aplikace vložit agenta, aby mohl shromažďovat data.
-Začněte zkopírováním instrumentačního klíče vašeho prostředku (dále jen `ikey`) z portálu, jak je znázorněno níže. Systém App Insights pomocí tohoto klíče mapuje data na váš prostředek Azure, proto ho musíte zadat ve svém kódu jako proměnnou prostředí, aby ho agent mohl použít.  
+Nyní je čas tooinclude hello agenta ve vaší aplikaci, aby mohla shromažďovat data.
+Začněte tím, že kopírování klíč instrumentace vaší prostředků (dále tooas vaše `ikey`) z portálu hello, jak je uvedeno níže. Hello App Insights systému používá tento klíč toomap data tooyour prostředků Azure, takže je nutné toospecify v proměnné prostředí nebo v kódu, hello agent toouse.  
 
 ![Zkopírování instrumentačního klíče](./media/app-insights-nodejs/05-appinsights_ikey_portal.png)
 
-Dále přidejte do závislostí aplikace knihovnu agenta Node.js prostřednictvím souboru package.json. Z kořenové složky aplikace spusťte:
+Dál přidejte závislosti hello Node.js agenta knihovny tooyour aplikace prostřednictvím package.json. Z hello kořenové složky vaší aplikace spusťte:
 
 ```bash
 npm install applicationinsights --save
 ```
 
-Nyní je potřeba knihovnu explicitně načíst v kódu. Vzhledem k tomu, že agent vkládá instrumentaci do mnoha dalších knihoven, musíte ho načíst co nejdříve, dokonce ještě před dalšími příkazy `require`. Začněte tak, že na začátek vašeho prvního souboru .js přidáte:
+Nyní je třeba tooexplicitly zatížení hello knihovně ve vašem kódu. Vzhledem k tomu, že hello agent vloží instrumentace do mnoha další knihovny, by se měly načíst co nejdříve, i před ostatními `require` příkazy. spuštění tooget, hello horní části souboru první .js přidejte:
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -71,46 +71,46 @@ appInsights.setup("<instrumentation_key>");
 appInsights.start();
 ```
 
-Metoda `setup` konfiguruje instrumentační klíč (a tedy prostředek Azure), který se použije jako výchozí pro všechny sledované položky. Po dokončení konfigurace zavolejte metodu `start`, která spustí shromažďování a odesílání telemetrických dat.
+Hello `setup` metoda nakonfiguruje klíč instrumentace hello (a tedy prostředků Azure) toobe používá ve výchozím nastavení pro všechny sledované položky. Volání `start` po dokončení toobegin shromažďování a odesílání telemetrických dat konfigurace.
 
-Istrumentační klíč můžete místo ručního předávání do metod `setup()` nebo`getClient()` zadat také přes proměnnou prostředí APPINSIGHTS\_INSTRUMENTATIONKEY. Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a určit různé instrumentační klíče pro různá prostředí.
+Můžete zadat také ikey prostřednictvím proměnné prostředí hello APPINSIGHTS\_INSTRUMENTATIONKEY neprochází ručně příliš `setup()` nebo `getClient()`. Tento postup umožňuje zachovat ikeys mimo potvrdit zdrojového kódu a jiné ikeys toospecify pro různá prostředí.
 
 Další možnosti konfigurace jsou popsány níže.
 
-Agenta můžete vyzkoušet bez odesílání telemetrie tak, že instrumentační klíč nastavíte na neprázdný řetězec.
+Hello agenta můžete vyzkoušet bez odesílání telemetrie nastavením hello instrumentace klíče tooany neprázdný řetězec.
 
 ### <a name="monitor"></a> Monitorování aplikace
 
-Agent automaticky shromažďuje telemetrii o modulu runtime Node.js a některých dalších modulech třetích stran. Nyní použijte svou aplikaci k vygenerování nějakých dat.
+Hello agent automaticky shromažďuje telemetrická data o běhu Node.js hello a některé běžné modulů třetích stran. Použít toogenerate teď vaše aplikace některé tato data.
 
-Potom na webu [Azure Portal][portal] přejděte do prostředku Application Insights, který jste vytvořili dříve, a na časové ose Přehled vyhledejte vaše první datové body, jak je znázorněno na následujícím obrázku. Přes grafy se můžete proklikat k dalším podrobnostem.
+Potom v hello [portál Azure] [ portal] procházet prostředek Application Insights toohello jste vytvořili dříve a vyhledejte první několik datových bodů v hello přehled časová osa jako hello následující obrázek. Proklikejte se prostřednictvím hello grafy pro další podrobnosti.
 
 ![První datové body](./media/app-insights-nodejs/12-first-perf.png)
 
-Kliknutím na tlačítko Mapa aplikace zobrazte zjištěnou topologii vaší aplikace, jak je znázorněno na následujícím obrázku. Přes komponenty na mapě se můžete proklikat k dalším podrobnostem.
+Klikněte na tlačítko hello aplikace mapy tlačítko tooview hello topologie zjištěných pro aplikace, jako hello následující obrázek. Proklikejte se prostřednictvím součásti v mapě hello další podrobnosti.
 
 ![Mapa jedné aplikace](./media/app-insights-nodejs/06-appinsights_appmap.png)
 
-Pomocí dalších zobrazení dostupných v části Prozkoumávání můžete zjistit další informace o vaší aplikaci a řešit problémy.
+Další informace o vaší aplikace a řešení problémů pomocí hello s dalšími zobrazeními k dispozici v části hello část "Prošetření".
 
 ![Část Prozkoumávání](./media/app-insights-nodejs/07-appinsights_investigate_blades.png)
 
 #### <a name="no-data"></a>Žádná data?
 
-Vzhledem k tomu, že agent seskupuje data do dávek pro odesílání, může docházet k prodlevám v zobrazení položek na portálu. Pokud ve svém prostředku nevidíte data, vyzkoušejte některou z následujících oprav:
+Vzhledem k tomu, že hello agent dávek dat k odeslání může nastat zpoždění před položky jsou zobrazeny v portálu hello. Pokud nevidíte data v prostředku vyzkoušíme některá hello následující opravy:
 
-* Používejte aplikaci trochu více a proveďte více akcí pro vygenerování další telemetrie.
-* V zobrazení prostředku na portálu klikněte na **Aktualizovat**. Grafy se samy pravidelně automaticky aktualizují, ale aktualizace vynutí, že k tomu dojde okamžitě.
+* Pomocí aplikace hello některé více; Proveďte další akce toogenerate další telemetrie.
+* Klikněte na tlačítko **aktualizovat** v zobrazení portálu zdrojů hello. Grafy automaticky aktualizovat sami pravidelně ale aktualizace vynutí tato toohappen okamžitě.
 * Ověřte, že jsou otevřené [požadované výchozí porty](app-insights-ip-addresses.md).
-* Otevřete dlaždici [Vyhledávání](app-insights-diagnostic-search.md) a vyhledejte jednotlivé události.
-* Přečtěte si část [Nejčastější dotazy][].
+* Otevřete hello [vyhledávání](app-insights-diagnostic-search.md) dlaždici a vyhledejte jednotlivé události.
+* Zkontrolujte hello [– nejčastější dotazy][].
 
 
 ## <a name="agent-configuration"></a>Konfigurace agenta
 
-Dále jsou uvedeny metody konfigurace agenta a jejich výchozí hodnoty.
+Tady jsou způsoby konfigurace hello agentů a jejich výchozí hodnoty.
 
-Pro úplnou korelaci událostí ve službě nezapomeňte nastavit `.setAutoDependencyCorrelation(true)`. To agentovi umožní sledovat kontext napříč asynchronními zpětnými voláními v Node.js.
+být toofully correlate událostí ve službě, že tooset `.setAutoDependencyCorrelation(true)`. To umožňuje hello agenta tootrack kontextu napříč asynchronní zpětná volání v Node.js.
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -127,9 +127,9 @@ appInsights.setup("<instrumentation_key>")
 
 <!-- TODO: Fully document agent API. -->
 
-Rozhraní API agenta pro .NET je podrobně popsané [tady](app-insights-api-custom-events-metrics.md).
+Hello .NET API agenta je podrobně popsán [zde](app-insights-api-custom-events-metrics.md).
 
-Pomocí klienta Application Insights pro Node.js můžete sledovat jakékoli žádosti, události, metriky nebo výjimky. Následující příklad ukazuje některá dostupná rozhraní API.
+Můžete sledovat všechny žádosti, události, Metrika nebo výjimky pomocí klienta Application Insights Node.js hello. Hello následující příklad ukazuje některé hello dostupných rozhraní API.
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -143,7 +143,7 @@ client.trackTrace("trace message");
 
 let http = require("http");
 http.createServer( (req, res) => {
-  client.trackRequest(req, res); // Place at the beginning of your request handler
+  client.trackRequest(req, res); // Place at hello beginning of your request handler
 });
 ```
 
@@ -162,7 +162,7 @@ success = true;
 client.trackDependency("dependency name", "command name", duration, success);
 ```
 
-### <a name="add-a-custom-property-to-all-events"></a>Přidání vlastní vlastnosti do všech událostí
+### <a name="add-a-custom-property-tooall-events"></a>Přidání události tooall vlastní vlastnosti
 
 ```javascript
 appInsights.client.commonProperties = {
@@ -194,10 +194,10 @@ server.on("listening", () => {
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Monitorování telemetrických dat na portálu](app-insights-dashboards.md)
+* [Monitorování telemetrie hello portálu](app-insights-dashboards.md)
 * [Psaní analytických dotazů do telemetrických dat](app-insights-analytics-tour.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[Nejčastější dotazy]: app-insights-troubleshoot-faq.md
+[– nejčastější dotazy]: app-insights-troubleshoot-faq.md

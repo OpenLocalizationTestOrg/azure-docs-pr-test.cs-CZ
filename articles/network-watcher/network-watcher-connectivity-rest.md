@@ -1,6 +1,6 @@
 ---
-title: "Zkontrolujte připojení s sledovací proces sítě Azure - portálu Azure | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak ověřit funkčnost připojení k sledovací proces sítě na portálu Azure"
+title: "aaaCheck připojení s sledovací proces sítě Azure - portálu Azure | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak hello toocheck připojení s sledovací proces sítě v portálu Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: gwallace
-ms.openlocfilehash: ca62bea581acb59d3c3c0b8a204cc9d42de2b27f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8560011906fcce46d31556fc52cbfa671e8e653a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Zkontrolujte připojení s sledovací proces sítě Azure pomocí portálu Azure
+# <a name="check-connectivity-with-azure-network-watcher-using-hello-azure-portal"></a>Zkontrolujte připojení s sledovací proces sítě Azure pomocí hello portálu Azure
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-connectivity-portal.md)
@@ -27,41 +27,41 @@ ms.lasthandoff: 08/18/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Rozhraní API Azure REST](network-watcher-connectivity-rest.md)
 
-Naučte se používat připojení k ověření, pokud lze navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
+Zjistěte, jak by bylo možné navázat připojení tooverify toouse Pokud přímé připojení TCP z virtuálního počítače tooa, zadaný koncový bod.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte v následujících zdrojích informací:
+Tento článek předpokládá, že máte hello následující prostředky:
 
-* Instance sledovací proces sítě v oblasti, které chcete zkontrolovat připojení.
+* Instance sledovací proces sítě v hello oblasti, kterou chcete toocheck připojení.
 
-* Zkontrolujte připojení k virtuálním počítačům.
+* Virtuální počítače připojení toocheck s.
 
-ARMclient se používá k volání rozhraní REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey v [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient je použité toocall hello REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey v [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě.
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instaluje se rozšíření hello na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-the-preview-capability"></a>Registrace funkce preview
+## <a name="register-hello-preview-capability"></a>Zaregistrovat hello funkce preview
 
-Kontrola připojení je aktuálně ve verzi public preview k použití této funkce, které musí být registrováno. Chcete-li to provést, spusťte následující ukázku v prostředí PowerShell:
+Zkontrolujte připojení je aktuálně ve verzi public preview, toouse tato funkce je nutné toobe zaregistrován. toodo se spuštění hello následující ukázka prostředí PowerShell:
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-Chcete-li ověřit, zda že byla registrace úspěšná, spusťte následující ukázku v prostředí Powershell:
+tooverify hello registrace byla úspěšná, spusťte hello následující ukázka prostředí Powershell:
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-Pokud funkci byla správně zaregistrovány, by měl odpovídat následující výstup:
+Pokud funkce hello byla správně zaregistrovány, hello výstup by měl odpovídat hello následující:
 
 ```
 FeatureName                             ProviderName      RegistrationState
@@ -71,7 +71,7 @@ AllowNetworkWatcherConnectivityCheck    Microsoft.Network Registered
 
 ## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
 
-Přihlaste se k armclient pomocí svých přihlašovacích údajů Azure.
+Přihlaste se pomocí svých přihlašovacích údajů Azure tooarmclient.
 
 ```PowerShell
 armclient login
@@ -79,12 +79,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Načíst virtuální počítač
 
-Spusťte následující skript pro vrácení virtuálního počítače. Tyto informace budete potřebovat pro spuštění připojení. 
+Spusťte následující skript tooreturn hello virtuálního počítače. Tyto informace budete potřebovat pro spuštění připojení. 
 
-Následující kód potřebuje hodnoty pro následující proměnné:
+Následující kód Hello potřebuje hodnoty pro hello následující proměnné:
 
-- **ID předplatného** – ID předplatného používat.
-- **Název skupiny prostředků** -název skupiny prostředků, která obsahuje virtuální počítače.
+- **ID předplatného** -hello toouse ID předplatného.
+- **Název skupiny prostředků** – hello název skupiny prostředků, která obsahuje virtuální počítače.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -93,7 +93,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Z výstupu v následujícím ID virtuálního počítače se používá v následujícím příkladu:
+ID hello hello virtuálního počítače hello následující výstup, se používá v hello následující ukázka:
 
 ```json
 ...
@@ -108,9 +108,9 @@ Z výstupu v následujícím ID virtuálního počítače se používá v násle
 }
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Zkontrolujte připojení k virtuálnímu počítači
+## <a name="check-connectivity-tooa-virtual-machine"></a>Zkontrolujte připojení k tooa virtuálního počítače
 
-Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
+Tento příklad zkontroluje připojení tooa cílového virtuálního počítače přes port 80.
 
 ### <a name="example"></a>Příklad
 
@@ -137,11 +137,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je dlouho spuštěný, identifikátor URI pro výsledek je vrácená v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že tato operace je dlouhá spuštěna, hello identifikátor URI pro výsledek hello je vrácený v hlavičku odpovědi hello jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -162,7 +162,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny sondy neodesílají se nezdařilo. Připojení se nezdařilo u virtuálního zařízení z důvodu nakonfigurován uživatel `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurovaná tak, aby blokovala příchozí přenosy na portu 80. Tyto informace můžete použít pro zkoumání problémů s připojením.
+Hello následující odpověď je z předchozího příkladu hello.  V této odpovědi hello `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny hello sondy odeslání se nezdařilo. Hello připojení se nezdařilo u virtuálního zařízení hello kvůli tooa uživatelem nakonfigurovaného `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurované tooblock příchozí přenosy na portu 80. Tato informace může být použité tooresearch problémů s připojením.
 
 ```json
 {
@@ -226,7 +226,7 @@ Následující odpověď je z předchozího příkladu.  V této odpovědi `Conn
 
 ## <a name="validate-routing-issues"></a>Ověření směrování problémy
 
-V příkladu ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.
+Příklad Hello ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.
 
 ### <a name="example"></a>Příklad
 
@@ -253,11 +253,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je dlouho spuštěný, identifikátor URI pro výsledek je vrácená v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že tato operace je dlouhá spuštěna, hello identifikátor URI pro výsledek hello je vrácený v hlavičku odpovědi hello jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -278,7 +278,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `connectionStatus` se zobrazí jako **Unreachable**. V `hops` podrobnosti, můžete zobrazit v části `issues` blokovaného provoz z důvodu `UserDefinedRoute`.
+V následujícím příkladu hello, hello `connectionStatus` se zobrazí jako **Unreachable**. V hello `hops` podrobnosti, můžete zobrazit v části `issues` že hello provoz byl zablokován kvůli tooa `UserDefinedRoute`.
 
 ```json
 {
@@ -322,7 +322,7 @@ V následujícím příkladu `connectionStatus` se zobrazí jako **Unreachable**
 
 ## <a name="check-website-latency"></a>Zkontrolujte latence webu
 
-Následující příklad zkontroluje připojení k webu.
+Hello následující příklad zkontroluje hello připojení tooa webu.
 
 ### <a name="example"></a>Příklad
 
@@ -349,11 +349,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je dlouho spuštěný, identifikátor URI pro výsledek je vrácená v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že tato operace je dlouhá spuštěna, hello identifikátor URI pro výsledek hello je vrácený v hlavičku odpovědi hello jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -374,7 +374,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následující odpověď, se zobrazí `connectionStatus` zobrazuje jako **dostupné**. Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.
+V následující odpověď hello, uvidíte hello `connectionStatus` zobrazuje jako **dostupné**. Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.
 
 ```json
 {
@@ -407,9 +407,9 @@ V následující odpověď, se zobrazí `connectionStatus` zobrazuje jako **dost
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontrolujte připojení ke koncovému bodu úložiště
+## <a name="check-connectivity-tooa-storage-endpoint"></a>Zkontrolujte připojení koncový bod úložiště tooa
 
-Následující příklad ověří připojení z virtuálního počítače k účtu úložiště blogu.
+Hello následující příklad zkontroluje hello připojení z účtu úložiště virtuálního počítače tooa blogu.
 
 ### <a name="example"></a>Příklad
 
@@ -436,11 +436,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je dlouho spuštěný, identifikátor URI pro výsledek je vrácená v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že tato operace je dlouhá spuštěna, hello identifikátor URI pro výsledek hello je vrácený v hlavičku odpovědi hello jak je znázorněno v hello následující odpověď:
 
 **Důležité hodnoty**
 
-* **Umístění** -tato vlastnost obsahuje identifikátor URI, kde jsou výsledky při dokončení operace
+* **Umístění** -tato vlastnost obsahuje hello URI kde hello výsledky jsou při hello bylo dokončeno
 
 ```
 HTTP/1.1 202 Accepted
@@ -461,7 +461,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu je odpověď z spuštění předchozího volání rozhraní API. Jako kontrola proběhne úspěšně, `connectionStatus` vlastnost zobrazuje jako **dostupné**.  Jsou k dispozici podrobnosti týkající se počet skoků potřebná k získání přístupu objektu blob storage a latenci.
+Hello následující příklad je hello odpověď z systémem hello předchozí volání rozhraní API. Kontrola hello je úspěšné, hello `connectionStatus` vlastnost zobrazuje jako **dostupné**.  Jsou k dispozici hello podrobnosti týkající se hello počet segmentů směrování požadované tooreach hello úložiště objektů blob a latenci.
 
 ```json
 {
@@ -496,7 +496,7 @@ V následujícím příkladu je odpověď z spuštění předchozího volání r
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o automatizaci paketu zachytává se virtuální počítač výstrahy zobrazením [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
+Zjistěte, jak zaznamená tooautomate paketů s výstrahami, virtuální počítač zobrazením [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
 
 Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Klávesové zkratky pro Azure Data Catalog | Microsoft Docs"
-description: "Tento článek ukazuje klávesové zkratky pro Azure Data Catalog."
+title: zkratky aaaKeyboard pro Azure Data Catalog | Microsoft Docs
+description: "Tento článek ukazuje hello klávesové zkratky pro Azure Data Catalog."
 services: data-catalog
 documentationcenter: 
 author: spelluru
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/17/2017
 ms.author: spelluru
-ms.openlocfilehash: d498eac2d0dfe7d271bdb5e47159faa113545ab4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 58511a27e9b4e7bf5ab0a38b13b1132ec6467512
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Klávesové zkratky pro Azure Data Catalog
-## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Klávesové zkratky pro data katalogu Data Catalog zdroje nástroj pro registraci
+## <a name="keyboard-shortcuts-for-hello-data-catalog-data-source-registration-tool"></a>Klávesové zkratky pro hello katalogu Data Catalog dat zdroje nástroj pro registraci
 ### <a name="general-keyboard-shortcuts"></a>Obecné klávesové zkratky
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Kartu pro každý ovládací prvek na stránce. |Karta |
+| Ovládací prvek karty tooeach na stránce. |Karta |
 | Vyberte jednu možnost |Zadejte nebo MEZERNÍK |
 | Maximalizovat stránky |WIN + ŠIPKA NAHORU |
 | Obnovení nebo minimalizace stránky |WIN + ŠIPKA DOLŮ |
@@ -40,13 +40,13 @@ ms.lasthandoff: 08/18/2017
 ### <a name="data-source-selection-page"></a>Stránka Výběr zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejděte na další stránce (Pokud je povoleno) |ALT + N |
-| Změnit vybraného typu, pokud je fokus nastavený na dlaždici |LEVÉ, pravé nebo šipka dolů |
+| Přejděte toonext stránku (Pokud je povoleno) |ALT + N |
+| Změnit vybraného typu, pokud je fokus hello na dlaždici |LEVÉ, pravé nebo šipka dolů |
 
 ### <a name="data-source-connection-page"></a>Stránka připojení zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejít na předchozí stránce (Pokud je povoleno) |ALT + P |
+| Přejděte tooprevious stránku (Pokud je povoleno) |ALT + P |
 | Zvolte tlačítko Připojit. |ALT + C |
 
 ### <a name="connection-context-page"></a>Připojení kontextu stránky
@@ -55,9 +55,9 @@ ms.lasthandoff: 08/18/2017
 | Tlačítko Registrovat (Pokud je povoleno) |ALT + R |
 | Zahrnout políčko verze Preview (Pokud je k dispozici) |ALT + P |
 | Zahrnout Data profilu políčko (Pokud je k dispozici) |ALT + D |
-| Přejděte na jednotlivé položky seznamu |NAHORU nebo šipku dolů |
+| Přejděte tooeach položky seznamu |NAHORU nebo šipku dolů |
 | Hierarchie serverů, rozbalte uzel stromové zobrazení |ŠIPKA DOPRAVA |
-| Přesunout vybrané položky pro **dostupné objekty** nebo **objekty k registraci** |MEZERNÍK |
+| Přesunout vybrané položky pro **dostupné objekty** nebo **objekty toobe zaregistrován** |MEZERNÍK |
 
 ### <a name="publish-progress-page"></a>Průběh stránky publikování
 | Operace | Stisknutím klávesy |
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/18/2017
 | Tlačítko Uložit (Pokud je povoleno) |ALT + S |
 | Tlačítko Zrušit |ALT + C |
 
-## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Klávesové zkratky pro portál katalogu Data Catalog
+## <a name="keyboard-shortcuts-for-hello-data-catalog-portal"></a>Klávesové zkratky pro portál hello katalogu Data Catalog
 | Operace | Stisknutím klávesy |
 | --- | --- |
 | Přejděte |TAB a SHIFT + TAB |
@@ -80,9 +80,9 @@ ms.lasthandoff: 08/18/2017
 | Přejděte do oddílu |MÍSTO nebo zadejte |
 | Ukončit oddíl |ESC |
 | PIN kód nebo Odepnout prostředek |ALT + P |
-| Na stránce discover při prostředek má právě fokus, vyberte asset |MÍSTO nebo zadejte |
+| Na hello zjišťování stránky, když má právě fokus, vyberte prostředek, prostředek |MÍSTO nebo zadejte |
 | Přidá nebo odebrat asset z vícenásobný výběr v |CTRL + MEZERNÍK nebo ENTER |
-| Přepněte nabídce hledání shod |ALT + S |
+| Přepnutí hello hledání odpovídá nabídky |ALT + S |
 | Přepnutí **otevřít v** nabídky |ALT + O |
-| Prozkoumejte kontejneru, pokud je kontejner prostředku |ALT + L |
+| Prozkoumejte kontejneru, pokud prostředek hello je kontejner |ALT + L |
 

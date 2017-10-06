@@ -1,6 +1,6 @@
 ---
-title: "Jak aplikace se objeví na panel přístupu | Microsoft Docs"
-description: "Poradce při potížích se aplikace se zobrazuje na přístupovém panelu"
+title: "aaaHow aplikace se objeví na panel přístupu hello | Microsoft Docs"
+description: "Poradce při potížích se aplikace se zobrazuje v hello přístupového panelu"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,129 +14,129 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 14ee732c4ed5260cba878e949cf9d90877aee67e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-applications-appear-on-the-access-panel"></a>Jak aplikace se objeví na panel přístupu
+# <a name="how-applications-appear-on-hello-access-panel"></a>Jak aplikace se objeví na panel přístupu hello
 
-Přístupový Panel je webový portál, který umožňuje uživatele, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) k zobrazení a spustit cloudové aplikace, aby správce Azure AD má je přístup povolen. Tyto aplikace jsou konfigurovány jménem uživatele na portálu Azure AD. Správce můžete zřídit aplikaci na tohoto uživatele přímo nebo do skupiny uživatel je součástí výsledkem aplikace, které jsou uvedeny na Panel přístupu uživatele.
+Hello přístupový Panel je webový portál, který umožňuje uživatele, který má pracovní nebo školní účet v Azure Active Directory (Azure AD) tooview a spusťte cloudové aplikace této hello správce Azure AD udělil je přístup k. Tyto aplikace jsou konfigurovány jménem uživatele hello na portálu Azure AD hello. Dobrý den, správce můžete zřídit hello aplikace toohello uživatel přímo nebo tooa skupinu, kterou uživatel je součástí výsledkem aplikace hello zobrazovaných na Panel přístupu hello uživatele.
 
-## <a name="general-issues-to-check-first"></a>Běžné problémy a proveďte nejprve kontrolu
+## <a name="general-issues-toocheck-first"></a>Obecné problémy toocheck nejprve
 
--   Pokud aplikace byla právě odebrána ze uživatele nebo skupiny, kterých je uživatel členem, zkuste pro přihlášení a odhlášení znovu do přístupového panelu uživatele po několika minutách zda je aplikace odebrat.
+-   Pokud aplikace právě odebral od uživatele nebo skupiny hello uživatel je členem skupiny, opakujte toosign a odhlašování do přístupového panelu hello uživatele po několika minutách toosee Pokud odebrání aplikace hello.
 
--   Pokud licence byla právě odebrána ze uživatele nebo skupinu je uživatel že členem skupiny to může trvat dlouhou dobu, v závislosti na velikost a složitost skupiny změny má být provedeno. Povolit další dobu před přihlášení k přístupovému panelu.
+-   Pokud licence byla právě odebrána ze uživatele nebo skupiny hello uživatel je že členem skupiny to může trvat dlouhou dobu, v závislosti na hello velikost a složitost hello skupiny pro toobe změny provedené. Povolit další dobu před přihlášením hello přístupového panelu.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>Problémy související s přiřazení aplikací pro uživatele
+## <a name="problems-related-tooassigning-applications-toousers"></a>Problémy související tooassigning aplikace toousers
 
-Uživatel může být zobrazuje aplikace na jejich přístupový Panel měl byly dřív přiřazené k němu. Tady jsou některé způsoby, jak zkontrolovat:
+Uživatel může být zobrazuje aplikace na jejich přístupového panelu jejich měl byly dřív přiřazené tooit. Tady jsou některé toocheck způsoby:
 
--   [Zkontrolujte, pokud uživatel je přiřazená k aplikaci](#check-if-a-user-is-assigned-to-the-application)
+-   [Zkontrolujte, pokud uživatel je přiřazená toohello aplikace](#check-if-a-user-is-assigned-to-the-application)
 
--   [Zkontrolujte, jestli je uživatel v rámci licence týkající se aplikace](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Zkontrolujte, jestli je uživatel v rámci licence související toohello aplikace](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Zkontrolujte, pokud uživatel je přiřazená k aplikaci
+### <a name="check-if-a-user-is-assigned-toohello-application"></a>Zkontrolujte, pokud uživatel je přiřazená toohello aplikace
 
-Pokud chcete zkontrolovat, pokud má uživatel přiřazeno k aplikaci, postupujte podle následujících kroků:
+toocheck Pokud uživatel přiřazený toohello aplikace, postupujte podle kroků hello níže:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-6.  **Hledání** pro název dané žádosti.
+6.  **Hledání** pro název hello aplikace hello nejistá.
 
 7.  Klikněte na tlačítko **uživatelů a skupin**.
 
-8.  Zkontrolujte, pokud uživatel je přiřazena k aplikaci.
+8.  Toosee zkontrolujte, zda váš uživatel toohello aplikace.
 
-  * Pokud chcete odebrat uživatele z aplikace, **klikněte na řádek** uživatele a vyberte **odstranit**.
+  * Pokud chcete, aby uživatel hello tooremove z aplikace hello **klikněte na řádek hello** hello uživatele a vyberte **odstranit**.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Zkontrolujte, jestli je uživatel v rámci licence týkající se aplikace
+### <a name="check-if-a-user-is-under-a-license-related-toohello-application"></a>Zkontrolujte, jestli je uživatel v rámci licence související toohello aplikace
 
-Pokud chcete zkontrolovat uživatele přiřazené licence, postupujte podle následujících kroků:
+toocheck uživatele je přiřazena licence, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
 
-7.  Klikněte na tlačítko **licence** zobrazíte, které uživatel aktuálně licence jeho přiřazení.
+7.  Klikněte na tlačítko **licence** toosee, kteří uživatelé hello licence má přiřazeny.
 
-   * Pokud uživatel je přiřazen k Office licence touto aplikací povolit první strany Office se objevily na Panel přístupu uživatele.
+   * Pokud uživatel hello přiřazené tooan Office licence tato povolí tooappear aplikace první strany Office na Panel přístupu hello uživatele.
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Problémy související s přiřazování aplikací do skupin
+## <a name="problems-related-tooassigning-applications-toogroups"></a>Problémy související tooassigning aplikace toogroups
 
-Uživatele může být zobrazuje aplikace na jejich přístupového panelu jsou součástí skupiny, která byla přiřazena aplikace. Tady jsou některé způsoby, jak zkontrolovat:
+Uživatele může být zobrazuje aplikace na jejich přístupového panelu jsou součástí skupiny, která byla přiřazena aplikace hello. Tady jsou některé toocheck způsoby:
 
 -   [Zkontrolujte členství uživatele ve skupinách](#check-a-users-group-memberships)
 
--   [Zkontrolujte, jestli je uživatel členem skupiny přiřazené k licenci](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+-   [Zkontrolujte, zda uživatel je členem skupiny přiřazené licence tooa](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
 ### <a name="check-a-users-group-memberships"></a>Zkontrolujte členství uživatele ve skupinách
 
-Pokud chcete zkontrolovat členství ve skupině, postupujte podle následujících kroků:
+toocheck členství ve skupině, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
-
-5.  Klikněte na tlačítko **všichni uživatelé**.
-
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
-
-7.  Klikněte na tlačítko **skupiny.**
-
-8.  Zkontrolujte, zda uživatel je součástí skupiny přiřazené k aplikaci.
-
-   * Pokud chcete odebrat uživatele ze skupiny, **klikněte na řádek** tuto skupinu a vyberte možnost odstranit.
-
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Zkontrolujte, jestli je uživatel členem skupiny přiřazené k licenci
-
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
-
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
-
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
 
 7.  Klikněte na tlačítko **skupiny.**
 
-8.  Klikněte na řádek určité skupiny.
+8.  Zkontrolujte toosee, pokud uživatel je součástí aplikace toohello skupiny přiřazené.
 
-9.  Klikněte na tlačítko **licence** zobrazíte, které skupiny licencí má přiřazen.
+   * Pokud chcete, aby tooremove hello uživatele ze skupiny hello **klikněte na řádek hello** hello skupiny a vyberte možnost odstranit.
 
-  * Pokud tato skupina je přiřazená k licenci Office to může povolit konkrétní aplikace Office první strany se objevily na Panel přístupu uživatele.
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-tooa-license"></a>Zkontrolujte, zda uživatel je členem skupiny přiřazené licence tooa
+
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+
+5.  Klikněte na tlačítko **všichni uživatelé**.
+
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+
+7.  Klikněte na tlačítko **skupiny.**
+
+8.  Klikněte na řádek hello určité skupiny.
+
+9.  Klikněte na tlačítko **licence** toosee, které skupiny licencí hello přiřazenému tooit.
+
+  * Pokud skupina hello přiřazené tooan Office licence to může povolit určité aplikace tooappear první strany Office na Panel přístupu hello uživatele.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Pokud tyto kroky řešení potíží se není vyřešit problém
+## <a name="if-these-troubleshooting-steps-do-not-hello-resolve-hello-issue"></a>Pokud tento postup řešení není hello hello problém vyřešte
 
-Otevřete lístek podpory s následujícími informacemi, pokud je k dispozici:
+Otevřete lístek podpory se hello, pokud je k dispozici následující informace:
 
 -   ID chyby korelace
 

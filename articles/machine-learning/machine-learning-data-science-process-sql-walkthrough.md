@@ -1,5 +1,5 @@
 ---
-title: "Sestavení a nasazení modelu strojového učení pomocí systému SQL Server na virtuálním počítači Azure | Microsoft Docs"
+title: "aaaBuild a nasazení modelu strojového učení pomocí systému SQL Server na virtuálním počítači Azure | Microsoft Docs"
 description: "Proces pokročilou analýzu a technologie v akci"
 services: machine-learning
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: fashah;bradsev
-ms.openlocfilehash: 6c5361c7e47209c8eb4d5630b44b3dcfeedeaf01
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 30ba9a9e3cf65f75015e13f9c7876dcbccc5bc47
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-team-data-science-process-in-action-using-sql-server"></a>Proces Team dat. vědecké účely v akci: pomocí SQL serveru
-V tomto kurzu vás provede procesem vytváření a nasazování modelu strojového učení pomocí systému SQL Server a veřejně dostupné datové sady – [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datovou sadu. Postup dodržovat standardní data vědecké účely pracovního postupu: ingestování a zkoumat data, pracovníka funkce pro usnadnění učení se pak sestavení a nasazení modelu.
+# <a name="hello-team-data-science-process-in-action-using-sql-server"></a>Hello proces vědecké účely Team dat v akci: pomocí SQL serveru
+V tomto kurzu jste provede hello proces vytváření a nasazování model strojového učení pomocí systému SQL Server a veřejně dostupné datové sady – hello [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datovou sadu. Postup Hello dodržovat standardní data vědecké účely pracovního postupu: ingestování a zkoumat hello data, analyzovat funkce toofacilitate učení se pak sestavení a nasazení modelu.
 
 ## <a name="dataset"></a>NYC taxíkem cest v popis datové sady
-Data NYC taxíkem cesty je přibližně 20GB komprimovaných souborů CSV (nekomprimovaným ~ 48GB), skládající se z více než 173 milionů jednotlivých cest a tarify placené pro každou cestu. Každý záznam cestě zahrnuje číslo licence vyzvednutí a odkládací umístění a čas, anonymizovaná hackerský (ovladač) a číslo Medailon (taxi na jedinečné id). Data obsahuje všechny služebních cest v roku 2013 a je dostupné pro každý měsíc následující dvě datové sady:
+Hello NYC taxíkem cestě dat je přibližně 20GB komprimovaných souborů CSV (nekomprimovaným ~ 48GB), která obsahuje více než 173 milionů jednotlivých cest a hello tarify placené pro každou cestu. Každý záznam cestě zahrnuje hello vyzvednutí a odkládací umístění a čas, číslo licence anonymizovaná hackerský (ovladač) a číslo Medailon (taxi na jedinečné id). Hello dat obsahuje všechny služebních cest v hello roku 2013 a je součástí hello následující dvě datové sady pro každý měsíc:
 
-1. 'trip_data' CSV obsahuje podrobnosti o cestě, například na počtu cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
+1. Hello 'trip_data' CSV obsahuje podrobnosti o cestě, například na počtu cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -34,7 +34,7 @@ Data NYC taxíkem cesty je přibližně 20GB komprimovaných souborů CSV (nekom
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. Trip_fare CSV obsahující podrobnosti o tarif placené pro každou cestu, například typ platby, velikost tarif, příplatek a daně, tipy a mýtné, a celkovou velikost placené. Tady je několik ukázkových záznamů:
+2. Hello CSV obsahuje podrobnosti o tarif hello placené pro každou cestu, například typ platby, velikost tarif, příplatek a daně, tipy a mýtné a celkovou velikost hello placené trip_fare. Tady je několik ukázkových záznamů:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -43,121 +43,121 @@ Data NYC taxíkem cesty je přibližně 20GB komprimovaných souborů CSV (nekom
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Jedinečný klíč pro připojení k cestě\_dat a cesty\_tarif se skládá z pole: medailonu, hackerský\_licence a vyzvednutí\_data a času.
+Hello jedinečné klíče toojoin cestě\_dat a cesty\_tarif se skládá z pole hello: medailonu, hackerský\_licence a vyzvednutí\_data a času.
 
 ## <a name="mltasks"></a>Příklady předpovědi úlohy
-Jsme se formulovali tři předpovědi problémů na základě *tip\_velikost*, konkrétně:
+Jsme se formulovali tři předpovědi problémy podle hello *tip\_velikost*, konkrétně:
 
 1. Binární klasifikace: předpovědět, zda byl tip placené cesty, tj. *tip\_velikost* větší než $0 je pozitivní příklad, při *tip\_velikost* $ 0 je Příklad záporné.
-2. Více třídami klasifikace: K předpovědi rozsahu tipu placené pro cestu. Jsme rozdělit *tip\_velikost* do pěti přihrádek nebo třídy:
+2. Více třídami klasifikace: rozsah hello toopredict tipu zaplacení hello cesty. Jsme rozdělit hello *tip\_velikost* do pěti přihrádek nebo třídy:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Úloha regrese: K předvídání množství tip placené cesty.  
+3. Úloha regrese: toopredict hello množství tip placené cesty.  
 
-## <a name="setup"></a>Nastavení si Azure datové vědy prostředí pro pokročilou analýzu
-Jak vidíte z [plánování vašeho prostředí](machine-learning-data-science-plan-your-environment.md) průvodce, máte několik možností pro práci s datovou sadu NYC taxíkem cest v Azure:
+## <a name="setup"></a>Nastavení se hello dat Azure vědecké účely prostředí pro pokročilou analýzu
+Jak vidíte z hello [plánování vašeho prostředí](machine-learning-data-science-plan-your-environment.md) průvodce, existuje několik možností toowork s datovou sadu cest taxíkem NYC hello v Azure:
 
-* Práce s data do objektů BLOB služby Azure a modelu v Azure Machine Learning
-* Načíst data do databáze systému SQL Server a modelu v Azure Machine Learning
+* Práce s hello data do objektů BLOB služby Azure a modelu v Azure Machine Learning
+* Načtení dat hello do databáze systému SQL Server a modelu v Azure Machine Learning
 
-V tomto kurzu si předvedeme paralelní hromadného importu dat do SQL Server, který zkoumání dat, funkce technici a dolů vzorkování pomocí SQL Server Management Studio a také pomocí IPython Poznámkový blok. [Ukázkové skripty](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) a [poznámkových bloků IPython](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) jsou sdíleny v Githubu. Ukázkový IPython Poznámkový blok pro práci s daty v Azure blob je k dispozici také ve stejném umístění.
+V tomto kurzu si předvedeme paralelní hromadným importem tooa hello dat systému SQL Server, zkoumání dat, funkce technici a dolů vzorkování pomocí SQL Server Management Studio a také pomocí IPython Poznámkový blok. [Ukázkové skripty](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) a [poznámkových bloků IPython](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) jsou sdíleny v Githubu. Ukázkové IPython poznámkového bloku toowork s daty hello v Azure blob je také dostupná v hello stejné umístění.
 
-Nastavení prostředí vědecké zpracování dat Azure:
+tooset prostředí vědecké zpracování dat Azure:
 
 1. [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md)
 2. [Vytvořit pracovní prostor služby Azure Machine Learning](machine-learning-create-workspace.md)
 3. [Zřízení virtuálního počítače s datové vědy](machine-learning-data-science-setup-sql-server-virtual-machine.md), který poskytuje systému SQL Server a server služby IPython Poznámkový blok.
    
    > [!NOTE]
-   > Ukázkové skripty a poznámkových bloků IPython bude stažen do virtuálního počítače vědecké zpracování dat během procesu instalace. Po dokončení skriptu po instalaci virtuálního počítače, bude mít ukázky knihovna dokumentů Virtuálního počítače:  
+   > Hello ukázkové skripty a IPython poznámkových bloků se stažené tooyour vědecké zpracování dat virtuálního počítače během procesu instalace hello. Po dokončení hello virtuálního počítače po instalaci skriptu hello ukázky bude v knihovně dokumentů Virtuálního počítače:  
    > 
    > * Ukázku skripty:`C:\Users\<user_name>\Documents\Data Science Scripts`  
    > * Ukázka IPython poznámkových bloků:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
-   >   kde `<user_name>` je váš virtuální počítač Windows přihlašovací jméno. Bude označujeme ukázkové složky jako **ukázkové skripty** a **poznámkových bloků IPython ukázka**.
+   >   kde `<user_name>` je váš virtuální počítač Windows přihlašovací jméno. Označujeme toohello ukázkové složky jako **ukázkové skripty** a **poznámkových bloků IPython ukázka**.
    > 
    > 
 
-Na základě velikost datové sady, umístění zdroje dat a vybrané Azure cílovém prostředí, tento scénář je podobná [scénář \#5: velké datové sady v místních souborů cíle systému SQL Server ve virtuálním počítači Azure](machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb).
+Na základě hello velikost datové sady, umístění zdroje dat a hello vybrané Azure cílové prostředí, tento scénář je podobné příliš[scénář \#5: velké datové sady v místních souborů cíle systému SQL Server ve virtuálním počítači Azure](machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb).
 
-## <a name="getdata"></a>Získat Data z veřejné zdroje
-Chcete-li získat [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datové sady z veřejného umístění, můžete použít některou z metod popsaných v [přesun dat do a z Azure Blob Storage](machine-learning-data-science-move-azure-blob.md) zkopírovat data do nového virtuálního počítače.
+## <a name="getdata"></a>Získat hello Data z veřejné zdroje
+tooget hello [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datové sady z veřejného umístění, můžete použít některou z metod hello popsané v [tooand přesun dat z Azure Blob Storage](machine-learning-data-science-move-azure-blob.md) toocopy hello data tooyour nového virtuálního počítače.
 
-Ke zkopírování dat pomocí nástroje AzCopy:
+pomocí AzCopy data hello toocopy:
 
-1. Přihlaste se k virtuálnímu počítači (VM)
-2. Vytvořte nový adresář v datový disk Virtuálního počítače (Poznámka: Nepoužívejte dočasné Disk, který se dodává s virtuální počítač jako datový Disk).
-3. V okně příkazového řádku spusťte následující příkazového řádku Azcopy nahrazení < path_to_data_folder > vaše data složky vytvořené v (2):
+1. Přihlaste se tooyour virtuální počítač (VM)
+2. Vytvořte nový adresář v datový disk hello Virtuálního počítače (Poznámka: Nepoužívejte hello dočasné Disk, který se dodává s hello virtuální počítač jako datový Disk).
+3. V okně příkazového řádku spusťte hello následující příkazového řádku Azcopy, nahraďte < path_to_data_folder > vaše data složky vytvořené v (2):
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
    
-    Po dokončení AzCopy CSV soubory ZIP celkem 24 (12 pro cestu\_dat a 12 pro cestu\_tarif) by měla být ve složce data.
-4. Rozbalte stažené soubory. Všimněte si, složky, kde jsou umístěny nekomprimovaných souborů. Tato složka se označuje jako < cesta\_k\_data\_soubory\>.
+    Po dokončení hello AzCopy CSV soubory ZIP celkem 24 (12 pro cestu\_dat a 12 pro cestu\_tarif) by měl být ve složce data hello.
+4. Rozbalte hello stažené soubory. Všimněte si hello složku, kde jsou uloženy soubory hello nekomprimovaným. Tato složka bude odkazované tooas hello < cesta\_k\_data\_soubory\>.
 
 ## <a name="dbload"></a>Hromadný Import dat do databáze serveru SQL
-Je možné zlepšit výkon načítání nebo přenos velkých objemů dat do databáze SQL a následné dotazy pomocí *rozdělena na oddíly tabulky a zobrazení*. V této části jsme postupujte podle pokynů v tématu [paralelní hromadný Import pomocí SQL oddílu tabulky dat](machine-learning-data-science-parallel-load-sql-partitioned-tables.md) vytvořit novou databázi a načítání dat do dělené tabulky paralelně.
+Hello výkon načítání nebo přenos velkých objemů dat tooan SQL database a následné dotazy lze zvýšit pomocí *rozdělena na oddíly tabulky a zobrazení*. V této části jsme postupujte podle pokynů hello v tématu [paralelní hromadný Import pomocí SQL oddílu tabulky dat](machine-learning-data-science-parallel-load-sql-partitioned-tables.md) toocreate nová data hello databáze a zatížení do dělené tabulky paralelně.
 
-1. Při přihlášení k virtuálnímu počítači, spusťte **SQL Server Management Studio**.
+1. Během přihlášení tooyour virtuálního počítače, spusťte **SQL Server Management Studio**.
 2. Připojte pomocí ověřování systému Windows.
    
     ![Připojení přes SSMS][12]
-3. Pokud máte ještě změnit režim ověřování systému SQL Server a vytvořit nového uživatele SQL přihlášení, otevřete soubor skriptu s názvem **změnit\_auth.sql** v **ukázkové skripty** složky. Změňte výchozí uživatelské jméno a heslo. Klikněte na tlačítko **! Spuštění** na panelu nástrojů pro spuštění skriptu.
+3. Pokud máte ještě změnit režim ověřování systému SQL Server hello a vytvořit nového uživatele SQL přihlášení, otevřete soubor skriptu hello s názvem **změnit\_auth.sql** v hello **ukázkové skripty** složky. Změňte hello výchozí uživatelské jméno a heslo. Klikněte na tlačítko **! Spuštění** ve hello nástrojů toorun hello skriptu.
    
     ![Spuštění skriptu][13]
-4. Ověřte nebo změnit systému SQL Server výchozí složky databáze a protokolu zajistit, které nově vytvořený databáze bude uložen v datový Disk. Virtuální počítač s SQL serverem bitovou kopii, která je optimalizovaná pro datawarehousing zatížení je předem nakonfigurovaný s disky protokolu a data. Pokud virtuální počítač neobsahuje datový Disk a přidat nové virtuální pevné disky během procesu instalace virtuálních počítačů, změňte výchozí složky takto:
+4. Ověřte nebo změňte hello výchozí databáze a protokolu složky tooensure nově vytvořené databáze bude uložen v datový Disk systému SQL Server. bitovou kopii Hello virtuální počítač SQL Server, která je optimalizovaná pro datawarehousing zatížení je předem nakonfigurovaný s disky protokolu a data. Pokud virtuální počítač neobsahuje datový Disk a přidat nové virtuální pevné disky během hello procesu instalace virtuálních počítačů, změňte výchozí složky hello takto:
    
-   * Klikněte pravým tlačítkem na název serveru SQL Server na levém panelu a klikněte na tlačítko **vlastnosti**.
+   * Klikněte pravým tlačítkem na název serveru SQL Server hello v hello zbývajících panelu a klikněte na tlačítko **vlastnosti**.
      
        ![Vlastnosti serveru SQL][14]
-   * Vyberte **nastavení databáze** z **vybrat stránku** seznamu na levé straně.
-   * Ověřte nebo změňte **databáze výchozí umístění** k **datový Disk** umístění podle vaší volby. Toto je, kde jsou umístěny nové databáze, pokud vytvořili pomocí výchozích nastavení umístění.
+   * Vyberte **nastavení databáze** z hello **vybrat stránku** seznamu toohello doleva.
+   * Ověřte nebo změňte hello **databáze výchozí umístění** toohello **datový Disk** umístění podle vaší volby. Toto je, kde jsou umístěny nové databáze, pokud vytvořen s hello výchozí umístění nastavení.
      
        ![Výchozí nastavení databáze SQL][15]  
-5. Chcete-li vytvořit novou databázi a sadu skupin souborů pro uložení dělené tabulky, otevřete ukázkový skript **vytvořit\_db\_default.sql**. Skript se vytvoří novou databázi s názvem **TaxiNYC** a 12 skupiny souborů ve výchozím umístění data. Každou skupinu souborů bude obsahovat jeden měsíc cesty\_dat a cesty\_jízdenky data. Změňte název databáze, v případě potřeby. Klikněte na tlačítko **! Spuštění** pro spuštění skriptu.
-6. Dále vytvořte dvě tabulky oddílů, jeden pro cestu\_dat a druhý pro cestu\_tarif. Otevřete ukázkový skript **vytvořit\_oddílů\_table.sql**, který bude:
+5. toocreate novou databázi a sadu skupin souborů toohold hello dělené tabulky, otevřete hello ukázkový skript **vytvořit\_db\_default.sql**. skript Hello vytvoří novou databázi s názvem **TaxiNYC** a 12 skupiny souborů v umístění dat výchozí hello. Každou skupinu souborů bude obsahovat jeden měsíc cesty\_dat a cesty\_jízdenky data. Upravte hello název databáze, v případě potřeby. Klikněte na tlačítko **! Spuštění** toorun hello skriptu.
+6. Dále vytvořte dvě tabulky oddílů, jeden pro cestu hello\_dat a druhý pro cestu hello\_tarif. Otevřete hello ukázkový skript **vytvořit\_oddílů\_table.sql**, který bude:
    
-   * Vytvořte funkci oddílu k rozdělení dat po měsících.
-   * Vytvořte schéma oddílu mapování dat každý měsíc do jiné skupiny souborů.
-   * Vytvořte dva dělené tabulky, které jsou mapovány na schéma oddílu: **nyctaxi\_cestě** bude obsahovat cestu\_dat a **nyctaxi\_tarif** bude obsahovat cestě\_jízdenky data.
+   * Vytvoření oddílu funkce toosplit hello dat po měsících.
+   * Vytvořte toomap schéma oddílu každý měsíc dat tooa různých souborů.
+   * Vytvořte dva schéma oddílu namapované toohello dělené tabulky: **nyctaxi\_cestě** bude obsahovat hello cestě\_dat a **nyctaxi\_tarif** bude obsahovat hello cesty \_jízdenky data.
      
-     Klikněte na tlačítko **! Spuštění** spusťte skript a vytvořit dělené tabulky.
-7. V **ukázkové skripty** složky, existují dva ukázkové skripty prostředí PowerShell poskytuje k předvedení paralelní hromadné importuje dat do tabulek systému SQL Server.
+     Klikněte na tlačítko **! Spuštění** toorun hello skriptu a vytvářet tabulky hello rozdělena na oddíly.
+7. V hello **ukázkové skripty** složky, existují dva ukázkové skripty prostředí PowerShell zadat toodemonstrate paralelní hromadné importy dat tooSQL serveru tabulek.
    
-   * **BCP\_paralelní\_generic.ps1** je obecný skript k paralelní hromadně importovat data do tabulky. Upravte tento skript nastavit proměnné vstup a cíle, jak je uvedeno v řádcích komentáře ve skriptu.
-   * **BCP\_paralelní\_nyctaxi.ps1** je předem nakonfigurovaný verze obecný skript a může sloužit k načtení obě tabulky pro data NYC taxíkem cest.  
-8. Klikněte pravým tlačítkem myši **bcp\_paralelní\_nyctaxi.ps1** název skriptu a klikněte na tlačítko **upravit** a otevře se v prostředí PowerShell. Zkontrolujte přednastavené proměnné a upravte podle název vybrané databáze, složka vstupních dat, cílové složce protokolu a cesty k ukázkové soubory formátu **nyctaxi_trip.xml** a **nyctaxi\_fare.xml** (součástí **ukázkové skripty** složku).
+   * **BCP\_paralelní\_generic.ps1** je obecný skript tooparallel hromadného importu dat do tabulky. Umožňuje změnit tento skript tooset hello vstup a cíle proměnné, které je uvedené v řádcích hello komentáře ve skriptu hello.
+   * **BCP\_paralelní\_nyctaxi.ps1** je předem nakonfigurovaný verze hello obecný skript a může být použité tootooload obě tabulky pro data NYC taxíkem cest hello.  
+8. Klikněte pravým tlačítkem na hello **bcp\_paralelní\_nyctaxi.ps1** název skriptu a klikněte na tlačítko **upravit** tooopen v prostředí PowerShell. Zkontrolujte hello předvolby proměnné a úpravám podle názvu tooyour vybrané databáze, složka vstupních dat, cílové složce protokolu a cesty toohello ukázkových formát souborů **nyctaxi_trip.xml** a **nyctaxi\_ fare.xml** (součástí hello **ukázkové skripty** složku).
    
     ![Hromadný Import dat][16]
    
-    Můžete také vybrat režim ověřování, výchozí hodnota je ověřování systému Windows. Klikněte na zelenou šipku na panelu nástrojů ke spuštění. Skript se spustí 24 operace hromadného importu v paralelní, 12 pro každou tabulku oddílů. Probíhá import dat může sledovat otevřením složky dat SQL Server výchozí výše.
-9. Skript prostředí PowerShell hlásí počáteční a koncový čas. Pokud všechny hromadně importy dokončení, uvede se čas dokončení. Zkontrolujte cílové složce protokol ověření, že hromadné importy byla úspěšná, tedy žádné chyby hlášené v cílové složce protokolu.
-10. Vaše databáze je nyní připraven pro zkoumání, technici funkce a další operace podle potřeby. Vzhledem k tomu, že jsou rozděleny do oddílů tabulky podle **vyzvednutí\_data a času** pole, dotazy, které zahrnují **vyzvednutí\_data a času** podmínky v **kde** klauzule výhod schéma oddílu.
-11. V **SQL Server Management Studio**, prozkoumejte zadaný ukázkový skript **ukázka\_queries.sql**. Pokud chcete spustit všechny ukázkové dotazy, označte řádky dotazu a poté klikněte na tlačítko **! Spuštění** na panelu nástrojů.
-12. Data odezvy taxíkem NYC je načten do dvou samostatných tabulkách. Pokud chcete zlepšit operace spojení, důrazně doporučujeme k indexu tabulky. Ukázkový skript **vytvořit\_oddílů\_index.sql** vytváří indexy oddílů spojení složený klíč **medailonu, hackerský\_licence a vyzvednutí\_ data a času**.
+    Můžete také vybrat režim ověřování hello, výchozí hodnota je ověřování systému Windows. Klikněte na tlačítko hello zelenou šipku v panelu nástrojů toorun hello. Hello skript se spustí 24 operace hromadného importu v paralelní, 12 pro každou tabulku oddílů. Probíhá import dat hello může sledovat otevřením složky dat výchozí systému SQL Server hello výše.
+9. sestavy skript prostředí PowerShell Hello Dobrý den, počáteční a koncový čas. Pokud všechny hromadně importy dokončení, uvede se hello čas dokončení. Žádné chyby hlášené hello do cílové složky protokolů zkontrolujte hello cíl protokolu složky tooverify, který hello hromadný import byl úspěšný, tj.
+10. Vaše databáze je nyní připraven pro zkoumání, technici funkce a další operace podle potřeby. Vzhledem k tomu, že hello tabulky jsou rozděleny do oddílů podle toohello **vyzvednutí\_data a času** pole, dotazy, které zahrnují **vyzvednutí\_data a času** podmínky v hello  **KDE** klauzule výhod schéma oddílu hello.
+11. V **SQL Server Management Studio**, prozkoumejte hello poskytuje ukázkový skript **ukázka\_queries.sql**. toorun žádné hello ukázkové dotazy, zvýraznění hello dotaz na řádky a pak klikněte na **! Spuštění** v panelu nástrojů hello.
+12. Hello NYC taxíkem cest dat je načten do dvou samostatných tabulkách. operace spojení tooimprove, důrazně doporučujeme tooindex hello tabulky. Hello ukázkový skript **vytvořit\_oddílů\_index.sql** vytváří indexy oddílů hello spojení složený klíč **medailonu, hackerský\_licence a vyzvednutí\_data a času**.
 
 ## <a name="dbexplore"></a>Zkoumání dat a konstruování funkce v systému SQL Server
-V této části, provedeme zkoumání a funkce generování dat přímo v spuštěním dotazů SQL **SQL Server Management Studio** pomocí databázi systému SQL Server vytvořili dříve. Ukázkový skript s názvem **ukázka\_queries.sql** je součástí **ukázkové skripty** složky. Upravte skript, který chcete změnit název databáze, pokud se liší od výchozí hodnota: **TaxiNYC**.
+V této části, provedeme zkoumání a funkce generování dat spuštěním dotazů SQL přímo v hello **SQL Server Management Studio** použití databáze systému SQL Server hello vytvořili dříve. Ukázkový skript s názvem **ukázka\_queries.sql** je součástí hello **ukázkové skripty** složky. Upravit název hello skriptu toochange hello databáze, pokud se liší od výchozí hello: **TaxiNYC**.
 
 V tomto cvičení provedeme následující:
 
-* Připojení k **SQL Server Management Studio** pomocí buď ověřování systému Windows nebo pomocí ověřování SQL a SQL přihlašovací jméno a heslo.
+* Připojit příliš**SQL Server Management Studio** pomocí buď ověřování systému Windows nebo pomocí ověřování SQL a hello SQL přihlašovací jméno a heslo.
 * Prozkoumejte data distribuce několik polí v různých časových oken.
-* Prozkoumejte data quality polí zeměpisné šířky a délky.
-* Generovat binární a více třídami klasifikační štítky na základě **tip\_velikost**.
+* Prozkoumejte data quality hello zeměpisné šířky a délky polí.
+* Generovat binární a více třídami klasifikační štítky podle hello **tip\_velikost**.
 * Generovat funkce a výpočetní nebo porovnat cestě vzdálenosti.
-* Spojení dvou tabulek a extrahovat z náhodného vzorku, který bude použit k vytvoření modelů.
+* Připojení k hello dvou tabulek a extrahovat z náhodného vzorku, který bude použité toobuild modely.
 
-Jakmile budete připraveni pokračovat do Azure Machine Learning, můžete se buď:  
+Pokud jste připravené tooproceed tooAzure Machine Learning, můžete se buď:  
 
-1. Poslední dotaz SQL k extrahování a ukázková data a způsobené kopírováním a vkládáním dotaz přímo do uložit [importovat Data] [ import-data] modulu v Azure Machine Learning, nebo
-2. Zachovat jen Vzorkovaná a inženýrství dat, které máte v úmyslu použít pro model sestavování v nové databáze tabulky a používat nové tabulky v [importovat Data] [ import-data] modulu v Azure Machine Learning.
+1. Uložit hello konečné SQL dotaz tooextract a ukázkové hello dat a způsobené kopírováním a vkládáním hello dotaz přímo do [importovat Data] [ import-data] modulu v Azure Machine Learning, nebo
+2. Zachovat hello vzorků a inženýrství dat, které máte v plánu toouse pro model sestavování v nové databáze tabulky a používání hello novou tabulku v hello [importovat Data] [ import-data] modulu v Azure Machine Learning.
 
-V této části jsme se uložit poslední dotaz k extrahování a ukázková data. Druhá metoda ukazují [zkoumání dat a funkce Engineering v poznámkovém bloku IPython](#ipnb) části.
+V této části jsme se hello poslední dotaz tooextract a ukázkové hello data uložit. druhý metoda Hello je znázorněn v hello [zkoumání dat a funkce Engineering v poznámkovém bloku IPython](#ipnb) části.
 
-Pro rychlé ověření počtu řádků a sloupců v tabulkách vyplněny dříve paralelní hromadného importu
+Pro rychlou kontrolu hello počtu řádků a sloupců v hello tabulky vyplněny dříve paralelní hromadného importu
 
     -- Report number of rows in table nyctaxi_trip without table scan
     SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -166,7 +166,7 @@ Pro rychlé ověření počtu řádků a sloupců v tabulkách vyplněny dříve
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Zkoumání: Cestě distribuce podle Medailon
-Tento příklad identifikuje Medailon (taxi čísla) s více než 100 služebních cest v daném časovém období. Dotaz by využívat přístup dělenou tabulku vzhledem k tomu, že je podmíněno tím schéma oddílů **vyzvednutí\_data a času**. Dotazování úplné datové sadě také budou používat oddílů tabulky nebo indexu kontroly.
+Tento příklad identifikuje Medailon hello (taxi čísla) s více než 100 služebních cest v daném časovém období. Hello dotazu by využívat přístup k tabulce hello rozdělena na oddíly, vzhledem k tomu, že je podmíněno tím schéma oddílů hello **vyzvednutí\_data a času**. Dotazování hello úplnou datovou sadu se ujistěte se taky použít hello oddílů tabulky nebo indexu kontroly.
 
     SELECT medallion, COUNT(*)
     FROM nyctaxi_fare
@@ -182,7 +182,7 @@ Tento příklad identifikuje Medailon (taxi čísla) s více než 100 služební
     HAVING COUNT(*) > 100
 
 #### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Hodnocení kvality dat: Ověřte záznamy s nesprávné délky a šířky
-Tento příklad prověří, pokud jakýkoli z pole zeměpisné délky a šířky buď obsahuje neplatnou hodnotu (radián stupňů musí být mezi -90 a 90), nebo (0, 0) souřadnice.
+Tento příklad prověří, pokud jakýkoli hello zeměpisné délky a šířky polí buď obsahuje neplatnou hodnotu (radián stupňů musí být mezi -90 a 90), nebo (0, 0) souřadnice.
 
     SELECT COUNT(*) FROM nyctaxi_trip
     WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
@@ -194,7 +194,7 @@ Tento příklad prověří, pokud jakýkoli z pole zeměpisné délky a šířky
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
 #### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Zkoumání: Šikmý vs. Není vysypávány služebních cest distribučního
-Tento příklad vyhledá počet cest, které byly vysypávány oproti není vysypávány v daném časovém období (nebo pokud vztahující se na úplné rok úplné datové sady). Toto rozdělení odráží binární popisek distribuci do později použije pro modelování binární klasifikace.
+Tento příklad vyhledá hello počet cest, které byly vysypávány oproti není vysypávány v daném časovém období (nebo hello úplnou datovou sadu Pokud pokrývající celý rok hello). Toto rozdělení odráží toobe distribuční binární popisek hello později použita k modelování binární klasifikace.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
@@ -203,7 +203,7 @@ Tento příklad vyhledá počet cest, které byly vysypávány oproti není vysy
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>Zkoumání: Třída nebo rozsah distribuční Tip
-Tento příklad vypočítá distribuci rozsahy tip v daném časovém období (nebo pokud vztahující se na úplné rok úplné datové sady). Toto je distribuce popisek třídy, které se později použije pro modelování více třídami klasifikace.
+Tento příklad vypočítá distribuci hello rozsahy tip v daném časovém období (nebo hello úplnou datovou sadu Pokud pokrývající celý rok hello). Toto je hello distribuční hello popisek tříd, které se použijí později pro modelování více třídami klasifikace.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -218,7 +218,7 @@ Tento příklad vypočítá distribuci rozsahy tip v daném časovém období (n
     GROUP BY tip_class
 
 #### <a name="exploration-compute-and-compare-trip-distance"></a>Zkoumání: Výpočetní a porovnání vzdálenost cesty
-Tento příklad převede vyzvednutí a odkládací zeměpisné délky a šířky na SQL geography body, vypočítá pomocí SQL geography body rozdíl vzdálenost cestě a vrátí z náhodného vzorku výsledky pro porovnání. V příkladu omezí výsledky do platná souřadnice jenom pomocí dotazu hodnocení kvality dat popsané výše.
+Tento příklad převede hello vyzvednutí a odkládací zeměpisné délky a šířky tooSQL geography body, vypočítá vzdálenost cestě hello pomocí SQL geography body rozdíl a vrátí z náhodného vzorku hello výsledky pro porovnání. Příklad Hello omezí výsledky hello toovalid koordinuje jenom pomocí hello kvality assessment dotaz na data popsané výše.
 
     SELECT
     pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
@@ -232,10 +232,10 @@ Tento příklad převede vyzvednutí a odkládací zeměpisné délky a šířky
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 #### <a name="feature-engineering-in-sql-queries"></a>Funkce analýzy v dotazy SQL
-Popisek generování a zeměpisnou převod zkoumání dotazy mohou sloužit také ke generování popisků nebo funkcích odstraněním počítání části. Další funkce engineering SQL příklady jsou součástí [zkoumání dat a funkce Engineering v poznámkovém bloku IPython](#ipnb) části. Je efektivnější spustit funkci generování dotazy na úplné datové sady nebo velké podmnožinu pomocí dotazů SQL, které se spustit přímo na instanci databáze systému SQL Server. Dotazy může být spuštěna v **SQL Server Management Studio**, IPython Poznámkový blok nebo všechny vývoj nástroj/prostředí, které máte přístup k databázi, místně nebo vzdáleně.
+Hello popisek generování geography převod zkoumání dotazy a může být také použít toogenerate popisky nebo funkcích odebráním hello počítání část. Další funkce engineering SQL příklady jsou uvedeny v hello [zkoumání dat a funkce Engineering v poznámkovém bloku IPython](#ipnb) části. Je efektivnější toorun hello funkce generování dotazy na úplnou datovou sadu hello nebo velké podmnožinu pomocí dotazů SQL, které se spustit přímo na instanci databáze systému SQL Server hello. Hello dotazy může být spuštěna v **SQL Server Management Studio**, IPython Poznámkový blok nebo všechny vývojové nástroje/prostředí který má přístup k databázi hello místně nebo vzdáleně.
 
 #### <a name="preparing-data-for-model-building"></a>Připravují se Data k vytváření modelů
-Následující dotaz spojení **nyctaxi\_cestě** a **nyctaxi\_tarif** tabulky, vygeneruje štítek binární klasifikace **vysypávány**, Popisek více třída klasifikace **tip\_třída**a extrahuje z náhodného vzorku 1 % z připojeného k úplné datové sadě. Tento dotaz můžete zkopírovat a vložit přímo v [Azure Machine Learning Studio](https://studio.azureml.net) [importovat Data] [ import-data] modul pro přijímání přímé dat z databáze serveru SQL instance v Azure. Dotaz vyloučí záznamy s nesprávnou (0, 0) souřadnice.
+Hello následující dotaz spojení hello **nyctaxi\_cestě** a **nyctaxi\_tarif** tabulky, vygeneruje štítek binární klasifikace **vysypávány**, Popisek více třída klasifikace **tip\_třída**a extrahuje z náhodného vzorku 1 % z hello úplné připojené k datové sadě. Tento dotaz můžete zkopírovat a vložit přímo v hello [Azure Machine Learning Studio](https://studio.azureml.net) [importovat Data] [ import-data] modul pro přijímání přímé dat z databáze serveru SQL Server hello instance v Azure. dotaz Hello vyloučí záznamy s nesprávnou (0, 0) souřadnice.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -254,25 +254,25 @@ Následující dotaz spojení **nyctaxi\_cestě** a **nyctaxi\_tarif** tabulky, 
 
 
 ## <a name="ipnb"></a>Zkoumání dat a funkce technikům v poznámkovém bloku IPython
-V této části provedeme zkoumání dat a funkce generování pomocí jazyka Python a SQL dotazů v databázi systému SQL Server vytvořili dříve. Ukázka IPython Poznámkový blok s názvem **machine-Learning-data-science-process-sql-story.ipynb** je součástí **poznámkových bloků IPython ukázka** složky. Tento poznámkový blok je také k dispozici na [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks).
+V této části provedeme zkoumání dat a funkce generování pomocí jazyka Python a SQL dotazů na databázi systému SQL Server hello vytvořili dříve. Ukázka IPython Poznámkový blok s názvem **machine-Learning-data-science-process-sql-story.ipynb** je součástí hello **poznámkových bloků IPython ukázka** složky. Tento poznámkový blok je také k dispozici na [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks).
 
-Doporučené pořadí při práci s velkým objemem dat je následující:
+Hello Doporučené pořadí při práci s velkým objemem dat je hello následující:
 
-* Přečtěte si v malé ukázkové dat do data v paměti rámečku.
-* Proveďte některé vizualizace a explorations pomocí jen Vzorkovaná data.
-* Experimentujte s inženýrství funkce pomocí jen Vzorkovaná data.
-* Pro větší zkoumání dat, manipulaci s daty a funkce technikům používejte jazyk Python k vydávání dotazů SQL přímo s databází systému SQL Server ve virtuálním počítači Azure.
-* Rozhodněte, velikost vzorku, který chcete použít pro vytváření modelů Azure Machine Learning.
+* Přečtěte si v malé ukázkové hello dat do data v paměti rámečku.
+* Provést některé vizualizace a explorations pomocí hello jen Vzorkovaná data.
+* Experimentů pomocí funkce inženýrství pomocí hello Vzorkovat data.
+* Pro větší zkoumání dat manipulaci s daty a funkce technologie, použijte dotazy SQL tooissue Python přímo pro databázi systému SQL Server hello v hello virtuálního počítače Azure.
+* Rozhodněte, hello ukázka velikost toouse pro vytváření modelů Azure Machine Learning.
 
-Až budete připraveni pokračovat Azure Machine Learning, můžete se buď:  
+Jakmile budete připraveni tooproceed tooAzure Machine Learning, můžete buď může:  
 
-1. Poslední dotaz SQL k extrahování a ukázková data a způsobené kopírováním a vkládáním dotaz přímo do uložit [importovat Data] [ import-data] modulu v Azure Machine Learning. Tato metoda je znázorněn v [vytváření modelů v Azure Machine Learning](#mlmodel) části.    
-2. Zachovat data jen Vzorkovaná a inženýrství máte v úmyslu použít pro model sestavování v nové databázové tabulky, potom použijte novou tabulku v [importovat Data] [ import-data] modulu.
+1. Uložit hello konečné SQL dotaz tooextract a ukázkové hello dat a způsobené kopírováním a vkládáním hello dotaz přímo do [importovat Data] [ import-data] modulu v Azure Machine Learning. Tato metoda je znázorněn v hello [vytváření modelů v Azure Machine Learning](#mlmodel) části.    
+2. Zachování hello vzorků a inženýrství dat, které máte v plánu toouse pro model sestavování v nové databázové tabulky, potom použijte novou tabulku hello v hello [importovat Data] [ import-data] modulu.
 
-Následuje několik zkoumání dat, vizualizace dat a funkce technici příklady. Další příklady najdete v tématu ukázkový poznámkový blok SQL IPython v **poznámkových bloků IPython ukázka** složky.
+Hello následují několik zkoumání dat, vizualizace dat a funkce technici příklady. Další příklady najdete v tématu hello ukázkový SQL IPython Poznámkový blok v hello **poznámkových bloků IPython ukázka** složky.
 
 #### <a name="initialize-database-credentials"></a>Inicializace přihlašovací údaje databáze
-Inicializace nastavení připojení k databázi v následující proměnné:
+Inicializace nastavení připojení k databázi v hello následující proměnné:
 
     SERVER_NAME=<server name>
     DATABASE_NAME=<database name>
@@ -302,7 +302,7 @@ Inicializace nastavení připojení k databázi v následující proměnné:
 * Celkový počet řádků = 173179759  
 * Celkový počet sloupců = 14
 
-#### <a name="read-in-a-small-data-sample-from-the-sql-server-database"></a>Pro čtení ve vzorku malá data z databáze serveru SQL
+#### <a name="read-in-a-small-data-sample-from-hello-sql-server-database"></a>Pro čtení ve vzorku malá data z databáze systému SQL Server hello
     t0 = time.time()
 
     query = '''
@@ -318,20 +318,20 @@ Inicializace nastavení připojení k databázi v následující proměnné:
     df1 = pd.read_sql(query, conn)
 
     t1 = time.time()
-    print 'Time to read the sample table is %f seconds' % (t1-t0)
+    print 'Time tooread hello sample table is %f seconds' % (t1-t0)
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-Doba čtení ukázkové tabulky je 6.492000 sekund  
+Čas tooread hello ukázková tabulka je 6.492000 sekund  
 Počet řádků a sloupců načíst = (84952, 21)
 
 #### <a name="descriptive-statistics"></a>Popisný statistiky
-Teď je připravena k prozkoumání jen Vzorkovaná data. Začneme s prohlížení popisný statistiku pro **cestě\_vzdálenost** (nebo libovolný jiný) polí:
+Nyní jsou data připravena tooexplore hello vzorků. Začneme s prohlížení popisný statistiku pro hello **cestě\_vzdálenost** (nebo libovolný jiný) polí:
 
     df1['trip_distance'].describe()
 
 #### <a name="visualization-box-plot-example"></a>Vizualizace: Příklad vykreslení pole
-Potom se podíváme na Krabicový pro vzdálenost cesty k vizualizaci quantiles
+Potom se podíváme na hello Krabicový graf pro hello cestě vzdálenost toovisualize hello quantiles
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
@@ -347,14 +347,14 @@ Potom se podíváme na Krabicový pro vzdálenost cesty k vizualizaci quantiles
 ![Vykreslení #2][2]
 
 #### <a name="visualization-bar-and-line-plots"></a>Vizualizaci: Panelu a řádku pozemků
-V tomto příkladu jsme bin vzdálenost cesty do pěti přihrádek a vizualizace binning výsledků.
+V tomto příkladu jsme bin hello vzdálenost cesty do pěti přihrádek a vizualizovat hello přihrádkování výsledky.
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
     df1['trip_distance']
     trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
     trip_dist_bin_id
 
-Nemůžeme vykreslení výše uvedené distribuční bin panelu nebo řádek výkresu, jak je uvedeno níže
+Nemůžeme vykreslení hello výše bin distribuce v pás nebo řádek výkresu, jak je uvedeno níže
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
@@ -365,25 +365,25 @@ Nemůžeme vykreslení výše uvedené distribuční bin panelu nebo řádek vý
 ![Vykreslení #4][4]
 
 #### <a name="visualization-scatterplot-example"></a>Vizualizaci: Příklad Scatterplot
-Ukážeme bodové vykreslení mezi **cestě\_čas\_v\_sekundy** a **cestě\_vzdálenost** jestli jsou všechny korelace
+Ukážeme bodové vykreslení mezi **cestě\_čas\_v\_sekundy** a **cestě\_vzdálenost** toosee, pokud neexistuje žádné korelace
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Vykreslení #6][6]
 
-Podobně jsme můžete zkontrolovat vztah mezi **míra\_kód** a **cestě\_vzdálenost**.
+Podobně jsme můžete zkontrolovat hello vztah mezi **míra\_kód** a **cestě\_vzdálenost**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![Vykreslení #8][8]
 
-### <a name="sub-sampling-the-data-in-sql"></a>Vzorkování dat v systému SQL
-Při přípravě dat pro model vytváření [Azure Machine Learning Studio](https://studio.azureml.net), můžete rozhodnout buď na **dotazu SQL pro použití přímo v modulu importovat Data** nebo zachovat v nové inženýrství a jen Vzorkovaná data tabulky a který můžete použít v [importovat Data] [ import-data] modul s jednoduchou **vyberte * FROM < vaší\_nové\_tabulky\_name >** .
+### <a name="sub-sampling-hello-data-in-sql"></a>Hello dílčí vzorkování dat v systému SQL
+Při přípravě dat pro sestavování ve model [Azure Machine Learning Studio](https://studio.azureml.net), můžete rozhodnout buď na hello **toouse dotazu SQL přímo v modulu importu dat hello** nebo zachovat hello analyzovány a vzorků data do nové tabulky, které můžete použít v hello [importovat Data] [ import-data] modul s jednoduchou **vyberte * FROM < vaše\_nové\_tabulky\_name >**.
 
-V této části vytvoříme novou tabulku pro uložení dat jen Vzorkovaná a inženýrství. Je součástí příkladem přímý dotaz SQL pro vytváření modelů [zkoumání dat a funkce Engineering v systému SQL Server](#dbexplore) části.
+V této části, které vytvoříme nové hello toohold tabulky vzorků a analyzována data. Příkladem přímý dotaz SQL pro vytváření modelů je součástí hello [zkoumání dat a funkce Engineering v systému SQL Server](#dbexplore) části.
 
-#### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Vytvořit vzorek, tabulky a naplnění 1 % spojené tabulky. Pokud existuje vyřaďte první tabulky.
-V této části jsme připojení tabulky **nyctaxi\_cestě** a **nyctaxi\_tarif**, extrahujte náhodného vzorku 1 %, a zachovat jen Vzorkovaná data v názvu nové tabulky  **nyctaxi\_jeden\_procent**:
+#### <a name="create-a-sample-table-and-populate-with-1-of-hello-joined-tables-drop-table-first-if-it-exists"></a>Vytvoření ukázkové tabulky a vyplnit hello připojený tabulek: % 1. Pokud existuje vyřaďte první tabulky.
+V této části jsme připojit hello tabulky **nyctaxi\_cestě** a **nyctaxi\_tarif**, extrahujte náhodného vzorku 1 %, a zachovat data hello vzorkovat nový název tabulky  **nyctaxi\_jeden\_procent**:
 
     cursor = conn.cursor()
 
@@ -407,7 +407,7 @@ V této části jsme připojení tabulky **nyctaxi\_cestě** a **nyctaxi\_tarif*
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Zkoumání dat pomocí dotazů SQL v poznámkovém bloku IPython
-V této části nám prozkoumat distribuce dat pomocí 1 % vzorků dat, který je uchován v nové tabulky, kterou jsme vytvořili výše. Všimněte si, že podobné explorations je možné provést pomocí původní tabulky, volitelně pomocí **TABLESAMPLE** omezit zkoumání ukázku nebo omezením výsledky do dané časové období pomocí **vyzvednutí\_data a času** oddíly, jak je znázorněno [zkoumání dat a funkce Engineering v systému SQL Server](#dbexplore) části.
+V této části nám prozkoumat distribuce dat pomocí hello 1 % vzorků dat, který je uchován v hello nové tabulky, kterou jsme vytvořili výše. Všimněte si, že podobné explorations je možné provést pomocí původní tabulky hello, volitelně pomocí **TABLESAMPLE** toolimit hello zkoumání ukázku nebo omezením hello výsledků tooa zadané časové období pomocí hello **vyzvednutí \_data a času** oddíly, jak je ukázáno v hello [zkoumání dat a funkce Engineering v systému SQL Server](#dbexplore) části.
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Zkoumání: Denní distribuce služebních cest
     query = '''
@@ -428,13 +428,13 @@ V této části nám prozkoumat distribuce dat pomocí 1 % vzorků dat, který j
     pd.read_sql(query,conn)
 
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>Funkce generování pomocí dotazů SQL v poznámkovém bloku IPython
-V této části vygenerujeme nové štítky a funkce přímo pomocí dotazů SQL, fungujícími v tabulce 1 % jsme vytvořili v předchozí části.
+V této části vygenerujeme nové štítky a funkce přímo pomocí dotazů SQL, operační v tabulce 1 % ukázka hello jsme vytvořili v předchozí části hello.
 
 #### <a name="label-generation-generate-class-labels"></a>Popisek generování: Generování popisků – třída
-V následujícím příkladu se vygeneruje dvě sady popisky, které chcete použít pro modelování:
+V následujícím příkladu hello vygeneruje dvě sady popisky toouse pro modelování:
 
 1. Binární třída popisky **vysypávány** (predikci, pokud bude mu udělená tip)
-2. Více třídami popisky **tip\_třída** (predikci popisek přihrádku nebo rozsah)
+2. Více třídami popisky **tip\_třída** (predikci hello popisek přihrádku nebo rozsah)
    
         nyctaxi_one_percent_add_col = '''
             ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -459,7 +459,7 @@ V následujícím příkladu se vygeneruje dvě sady popisky, které chcete pou�
         cursor.commit()
 
 #### <a name="feature-engineering-count-features-for-categorical-columns"></a>Funkce inženýrství: Počet funkcí pro kategorií sloupce
-Tento příklad transformuje pole kategorií na číselné pole nahrazením každou kategorii počet jeho výskytů v datech.
+Tento příklad transformuje pole kategorií na číselné pole nahrazením každou kategorii hello počet jeho výskytů v datech hello.
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
@@ -517,7 +517,7 @@ Tento příklad transformuje průběžné číselné pole na rozsahy přednastav
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Funkce inženýrství: Extrahování umístění funkce z Decimal zeměpisnou šířku a délku
-Tento příklad rozpis decimal reprezentace zeměpisnou šířku a zeměpisnou délku pole do více polí oblasti jiné členitosti, jako země, Město, města, blok atd. Všimněte si, že nová geo pole nejsou namapované na skutečné umístění. Informace o mapování geocode umístění najdete v tématu [služby Bing Maps REST](https://msdn.microsoft.com/library/ff701710.aspx).
+Tento příklad rozpis hello decimal reprezentace zeměpisnou šířku a zeměpisnou délku pole do více polí oblasti jiné členitosti, například, země, Město, města, blok atd. Všimněte si, že nová hello geo pole nejsou namapované tooactual umístění. Informace o mapování geocode umístění najdete v tématu [služby Bing Maps REST](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -542,87 +542,87 @@ Tento příklad rozpis decimal reprezentace zeměpisnou šířku a zeměpisnou d
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="verify-the-final-form-of-the-featurized-table"></a>Ověření konečné formuláře featurized tabulky
+#### <a name="verify-hello-final-form-of-hello-featurized-table"></a>Ověření formuláře konečné hello hello featurized tabulky
     query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
     pd.read_sql(query,conn)
 
-Snažíme se teď přejít k vytváření modelů a modelu nasazení v [Azure Machine Learning](https://studio.azureml.net). Data je připraven pro některý z identifikované dříve, a to předpovědi problémy:
+Snažíme se teď připravena tooproceed toomodel sestavení a nasazení modelu v [Azure Machine Learning](https://studio.azureml.net). Hello data jsou připravena k některé z problémů předpovědi hello identifikuje dříve, konkrétně:
 
-1. Binární klasifikace: K předvídání, jestli tip byl placené cesty.
-2. Více třídami klasifikace: K předpovědi rozsahu tipu placené podle dříve definovaných tříd.
-3. Úloha regrese: K předvídání množství tip placené cesty.  
+1. Binární klasifikace: toopredict, jestli byl tip placené cesty.
+2. Více třídami klasifikace: rozsah hello toopredict tipu placené, podle toohello dříve definovaných tříd.
+3. Úloha regrese: toopredict hello množství tip placené cesty.  
 
 ## <a name="mlmodel"></a>Vytváření modelů v Azure Machine Learning
-Pokud chcete začít cvičení modelování, přihlaste se do pracovního prostoru Azure Machine Learning. Pokud jste ještě nevytvořili machine learning pracovního prostoru, přečtěte si téma [vytvořit pracovní prostor služby Azure Machine Learning](machine-learning-create-workspace.md).
+toobegin hello modelování cvičení, protokolu v prostoru tooyour Azure Machine Learning. Pokud jste ještě nevytvořili machine learning pracovního prostoru, přečtěte si téma [vytvořit pracovní prostor služby Azure Machine Learning](machine-learning-create-workspace.md).
 
-1. Chcete-li začít s Azure Machine Learning, přečtěte si téma [co je Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md)
-2. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net).
-3. Na domovskou stránku Studio poskytuje širokou řadu informací, videa, kurzy, odkazů na odkaz na moduly a dalším prostředkům. Další informace o Azure Machine Learning, najdete [centru dokumentace Azure Machine Learning na](https://azure.microsoft.com/documentation/services/machine-learning/).
+1. tooget začít s Azure Machine Learning, najdete v části [co je Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md)
+2. Přihlaste se příliš[Azure Machine Learning Studio](https://studio.azureml.net).
+3. Hello Studio Domovská stránka obsahuje širokou řadu informací, videa, kurzy, odkazy toohello odkaz moduly a dalším prostředkům. Další informace o Azure Machine Learning najdete hello [centru dokumentace Azure Machine Learning na](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Typické výukový experiment sestává z následujících akcí:
+Typické výukový experiment sestává z následujících hello:
 
 1. Vytvoření **+ nový** experiment.
-2. Načíst data do Azure Machine Learning.
-3. Předběžně zpracovat, transformace a manipulovat s daty, podle potřeby.
+2. Získání dat tooAzure hello Machine Learning.
+3. Předběžně zpracovat, transformace a pracovat s daty hello podle potřeby.
 4. Funkce vygenerujte, podle potřeby.
-5. Rozdělení dat do školení, ověření nebo testování datové sady (nebo samostatné datové sady pro každou).
-6. Vyberte jeden nebo více algoritmy strojového učení v závislosti na learning problém vyřešit. Například: binární klasifikace, klasifikace více třídami, regresi.
-7. Cvičení jednoho nebo více modelů použití školení datové sady.
-8. Stanovení skóre datovou sadu ověření pomocí vyškolení modely.
-9. Vyhodnoťte modely k výpočtu relevantní metriky pro učení problém.
-10. Bez problémů ladit modely a vyberte doporučené modelu pro nasazení.
+5. Rozdělení dat hello na školení, ověření nebo testování datové sady (nebo samostatné datové sady pro každou).
+6. Vyberte jeden nebo více algoritmů strojového učení v závislosti na hello učení toosolve problém. Například: binární klasifikace, klasifikace více třídami, regresi.
+7. Cvičení jednoho nebo více modelů použití hello školení datové sady.
+8. Stanovení skóre hello ověření datové sady pomocí vyškolení modely hello.
+9. Vyhodnoťte hello modely toocompute hello relevantní metriky pro hello učení problém.
+10. Vyladění hello modely a vyberte hello nejlepší toodeploy modelu.
 
-V tomto cvičení jsme již prozkoumali a analýzou dat v systému SQL Server a rozhodli na velikost vzorku ingestování v Azure Machine Learning. K vytvoření jednoho nebo více modelů předpovědi jsme se rozhodli:
+V tomto cvičení jsme již prozkoumali a analyzovány hello dat v systému SQL Server a rozhodli tooingest velikost vzorku hello v Azure Machine Learning. toobuild jeden nebo více modelů předpovědi hello jsme se rozhodli:
 
-1. Získat data pomocí Azure Machine Learning [importovat Data] [ import-data] modulu, k dispozici v **vstupu a výstupu dat** části. Další informace najdete v tématu [importovat Data] [ import-data] stránka s referencemi modul.
+1. Získání dat tooAzure hello Machine Learning pomocí hello [importovat Data] [ import-data] modulu, k dispozici v hello **vstupu a výstupu dat** části. Další informace najdete v tématu hello [importovat Data] [ import-data] stránka s referencemi modul.
    
     ![Azure Machine Learning Import dat][17]
-2. Vyberte **Azure SQL Database** jako **zdroj dat** v **vlastnosti** panelu.
-3. Zadejte název DNS databáze v **název databázového serveru** pole. Formát:`tcp:<your_virtual_machine_DNS_name>,1433`
-4. Zadejte **název databáze** v odpovídajícím poli.
-5. Zadejte **uživatelské jméno SQL** v ** aqccount uživatelského jména a hesla **heslo uživatelského účtu serveru**.
+2. Vyberte **Azure SQL Database** jako hello **zdroj dat** v hello **vlastnosti** panelu.
+3. Zadejte název DNS hello databáze v hello **název databázového serveru** pole. Formát:`tcp:<your_virtual_machine_DNS_name>,1433`
+4. Zadejte hello **název databáze** v odpovídající pole hello.
+5. Zadejte hello **uživatelské jméno SQL** v hello ** aqccount uživatelského jména a hesla hello v hello **heslo uživatelského účtu serveru**.
 6. Zkontrolujte **přijmout některý z certifikátů serveru** možnost.
-7. V **databázový dotaz** upravit textová oblast, vložte dotaz, který extrahuje pole potřeby databáze (včetně všech počítané pole, jako je popisků) a nižší ukázky data na požadovanou velikost.
+7. V hello **databázový dotaz** upravit textová oblast, vložte hello dotazu, který extrahuje hello potřeby databáze pole (včetně všech počítané pole, jako je popisky hello) a dolů – ukázky velikost vzorku toohello požadovaných dat hello.
 
-Příkladem binární klasifikace experimentů, čtení dat přímo z databáze serveru SQL je na obrázku níže. Podobně jako experimenty konstruovat pro více třídami klasifikaci a regresní problémy.
+Hello obrázek je příkladem binární klasifikace experimentů, čtení dat přímo z databáze systému SQL Server hello. Podobně jako experimenty konstruovat pro více třídami klasifikaci a regresní problémy.
 
 ![Azure Machine Learning Train][10]
 
 > [!IMPORTANT]
-> V datech modelování extrakce a vzorkuje příklady dotazu zadaný v předchozích částech **všech popisků tři modelování cvičení jsou zahrnuty v dotazu**. Důležitým krokem (povinné) v každé cvičení modelování je **vyloučit** nepotřebné štítky pro dva problémy a všemi ostatními **cíle nevracení**. Pro například binární klasifikace, používejte návěští **vysypávány** a vyloučit pole **tip\_třída**, **tip\_velikost**a **celkový\_velikost**. K tomu jsou cílové nevracení vzhledem k tomu, že implikují tip placené.
+> V hello modelování extrakce dat a vzorkuje příklady dotazu uvedené v předchozí části **všech popisků hello tři modelování cvičení jsou zahrnuty v dotazu hello**. Důležitým krokem (povinné) v každé z hello modelování cvičení je příliš**vyloučit** hello nepotřebné štítky pro hello další dva problémy a všemi ostatními **cíle nevracení**. Pro například při použití binární klasifikace, používat hello popisek **vysypávány** a vyloučit hello pole **tip\_– třída**, **tip\_velikost**, a **celkový\_velikost**. Hello druhé jsou placené cíl nevracení vzhledem k tomu, že implikují hello tip.
 > 
-> Vyloučení nepotřebných sloupců nebo cíle nevracení, můžete použít [výběr sloupců v datové sadě] [ select-columns] modulu nebo [upravit Metadata][edit-metadata]. Další informace najdete v tématu [výběr sloupců v datové sadě] [ select-columns] a [upravit Metadata] [ edit-metadata] referenční stránky.
+> tooexclude nepotřebných sloupců a/nebo nevracení cíl, můžete použít hello [výběr sloupců v datové sadě] [ select-columns] modulu nebo hello [upravit Metadata] [ edit-metadata]. Další informace najdete v tématu [výběr sloupců v datové sadě] [ select-columns] a [upravit Metadata] [ edit-metadata] referenční stránky.
 > 
 > 
 
 ## <a name="mldeploy"></a>Nasazování modelů v Azure Machine Learning
-Pokud váš model je připraven, můžete snadno nasadit ho jako webovou službu přímo z experimentu. Další informace o nasazení webové služby Azure Machine Learning najdete v tématu [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
+Pokud váš model je připraven, můžete snadno nasadit ho jako webovou službu přímo z hello experimentu. Další informace o nasazení webové služby Azure Machine Learning najdete v tématu [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
 
-Chcete-li nasadit novou webovou službu, je potřeba:
+toodeploy novou webovou službu, musíte:
 
 1. Vytvoření experimentu vyhodnocování.
-2. Nasazení webové služby.
+2. Nasaďte hello webové služby.
 
-K vytvoření vyhodnocování experimentu z **dokončeno** cvičení experiment, klikněte na tlačítko **vytvořit vyhodnocování EXPERIMENTOVAT** na dolním panelu akcí.
+toocreate vyhodnocování experimentovat z **dokončeno** cvičení experiment, klikněte na tlačítko **vytvořit vyhodnocování EXPERIMENTOVAT** akce panelu nižší hello.
 
 ![Výpočet skóre Azure][18]
 
-Azure Machine Learning se pokusí vytvořit vyhodnocování experimentu založené na součástech experimentu školení. Konkrétně se:
+Azure Machine Learning se pokusí toocreate vyhodnocování experimentu podle hello součástí hello výukový experiment. Konkrétně se:
 
-1. Uložení naučeného modelu a odeberte moduly školení modelu.
-2. Identifikovat logickou **vstupní port** představují schéma očekávané vstupní data.
-3. Identifikovat logickou **výstupní port** představují výstupního schématu očekávané webové služby.
+1. Uložit hello trained model a odeberte hello modelu školení moduly.
+2. Identifikovat logickou **vstupní port** toorepresent hello očekávána vstupní data schématu.
+3. Identifikovat logickou **výstupní port** toorepresent hello očekávané webové služby výstupního schématu.
 
-Při vyhodnocování experimentu je vytvořen, zkontrolujte jej a podle potřeby upravte. Typické úpravu je nahradit vstupní datové sady nebo dotaz s jedním, který vyloučí pole štítek, jak tyto nebudete mít k dispozici při volání služby. Je také vhodné zmenšit velikost vstupní datové sady a/nebo dotaz na několik záznamů, akorát, aby znamenat vstupní schéma. Na výstupní port je společné pro všechny vstupní pole vyloučit a obsahovat jenom **popisky vyhodnocení** a **skóre pro Magnitudu Pravděpodobnostech** ve výstupu pomocí [výběr sloupců v datové sadě] [ select-columns] modulu.
+Když hello vyhodnocování experimentu je vytvořen, zkontrolujte jej a podle potřeby upravte. Typické úpravu je tooreplace hello vstupní datové sady nebo dotaz s jedním, který vyloučí popisek pole, protože tyto nebudete mít k dispozici, když je volána hello služby. Je také že vhodné tooreduce hello velikost hello vstupní datové sady nebo tooa několik záznamů, akorát tooindicate hello vstupní schéma. Pro hello výstupní port, je běžné tooexclude všechny vstupní pole a obsahovat jenom hello **popisky vyhodnocení** a **skóre pro Magnitudu Pravděpodobnostech** v hello výstup pomocí hello [výběr sloupců v datové sadě ] [ select-columns] modulu.
 
-Ukázka vyhodnocování experimentu je na obrázku níže. Až bude připravený k nasazení, klikněte na tlačítko **publikování webové služby** tlačítko na dolním panelu akcí.
+Ukázka vyhodnocování experimentu je hello obrázek. Jakmile budete připraveni toodeploy, klikněte na tlačítko hello **publikování webové služby** tlačítka na dolním panelu akcí hello.
 
 ![Azure Machine Learning publikování][11]
 
-K recap v tomto kurzu návodu jste vytvořili prostředí vědecké účely dat Azure, práce s velké veřejné datové sady úplně z získávání dat pro modelování školení a nasazení webové služby Azure Machine Learning.
+toorecap, v tomto kurzu návodu jste vytvořili prostředí vědecké účely dat Azure, práce s velké veřejné datové sady všechny způsob hello z dat pořízení toomodel školení a nasazení webové služby Azure Machine Learning.
 
 ### <a name="license-information"></a>Informace o licenci
-Tento návod ukázka a jeho doplňujícími skripty a IPython notebook(s) sdílí Microsoft v rámci licencí MIT. Zkontrolujte prosím soubor LICENSE.txt v adresáři ukázkový kód na Githubu další podrobnosti.
+Tento návod ukázka a jeho doplňujícími skripty a IPython notebook(s) sdílí Microsoft v rámci licencí MIT hello. Zkontrolujte prosím soubor LICENSE.txt hello v adresáři hello hello ukázkový kód na Githubu další podrobnosti.
 
 ### <a name="references"></a>Odkazy
 • [Stránce pro stažení Andrés Monroy NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/)  

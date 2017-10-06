@@ -1,6 +1,6 @@
 ---
-title: "Azure funkce F # referenční informace pro vývojáře | Microsoft Docs"
-description: "Pochopit, jak vyvíjet Azure Functions pomocí F #."
+title: "aaaAzure funkce F # referenční informace pro vývojáře | Microsoft Docs"
+description: "Pochopit, jak toodevelop Azure Functions pomocí F #."
 services: functions
 documentationcenter: fsharp
 author: sylvanc
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 1691d378263f6b4ce5072f5c621d8db02f774b5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1ac366ba6f73d191c582dcd9214b688ef719617a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions referenční informace pro vývojáře F #
 > [!div class="op_single_selector"]
@@ -30,17 +30,17 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-F # pro Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Toky dat do funkce F # prostřednictvím argumenty funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k takové věci, jako funkce protokolovacího nástroje a zrušení tokenů.
+F # pro Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu hello. Toky dat do funkce F # prostřednictvím argumenty funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k akce, jako je hello funkce protokolovacího nástroje a zrušení tokenů.
 
-Tento článek předpokládá, že jste si již přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+Tento článek předpokládá, že jste si přečetli již hello [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
 ## <a name="how-fsx-works"></a>Jak funguje .fsx
-`.fsx` Soubor je skript F #. Ho můžete představit jako projekt F #, který je obsažen v jednom souboru. Soubor obsahuje kód k aplikaci (v tomto případě funkce Azure) a direktivy pro správu závislosti.
+`.fsx` Soubor je skript F #. Ho můžete představit jako projekt F #, který je obsažen v jednom souboru. Hello soubor obsahuje i kód hello k aplikaci (v tomto případě funkce Azure) a direktivy pro správu závislosti.
 
-Když použijete `.fsx` pro funkce Azure, běžně vyžaduje sestavení jsou pro vás, což umožňuje zaměřit se na funkce, nikoli "standardní" kód automaticky zahrnuty.
+Když použijete `.fsx` pro funkce Azure, běžně vyžaduje sestavení jsou pro vás, abyste toofocus na kód funkce místo "často používaný text" hello automaticky zahrnuty.
 
-## <a name="binding-to-arguments"></a>Vytvoření vazby na argumenty
-Každou vazbu podporuje někteří sadu argumentů, podle popisu v [referenční vývojáře triggerů a vazeb Azure Functions](functions-triggers-bindings.md). Například jedna z vazeb argument, který podporuje aktivační události objektu blob je objektů POCO, které lze vyjádřit pomocí záznamu F #. Například:
+## <a name="binding-tooarguments"></a>Vazba tooarguments
+Každou vazbu podporuje někteří sadu argumentů, jako podrobné v hello [referenční vývojáře triggerů a vazeb Azure Functions](functions-triggers-bindings.md). Například jeden argument vazeb hello, které podporuje aktivační události objektu blob je objektů POCO, které lze vyjádřit pomocí záznamu F #. Například:
 
 ```fsharp
 type Item = { Id: string }
@@ -50,11 +50,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Funkce Azure F # bude trvat jeden nebo více argumentů. Když mluvíme o argumenty funkce Azure, označujeme *vstupní* argumenty a *výstup* argumenty. Vstupní argument je přesně vypadá jako: vstup do funkce Azure F #. *Výstup* argument je měnitelný datový nebo `byref<>` argument, který slouží jako způsob, jak předat data zpět *out* vaší funkce.
+Funkce Azure F # bude trvat jeden nebo více argumentů. Když mluvíme o argumenty funkce Azure, označujeme příliš*vstupní* argumenty a *výstup* argumenty. Vstupní argument je přesně vypadá jako: vstup tooyour funkce Azure F #. *Výstup* argument je měnitelný datový nebo `byref<>` argument, který slouží jako toopass data způsob zpět *out* vaší funkce.
 
-V příkladu nahoře `blob` je vstupní argument, a `output` je argument výstup. Všimněte si, že jsme použili `byref<>` pro `output` (je nutné přidat `[<Out>]` poznámky). Použití `byref<>` typ umožňuje funkce změnit které záznam nebo argument odkazuje na objekt.
+Ve výše uvedeném příkladu hello `blob` je vstupní argument, a `output` je argument výstup. Všimněte si, že jsme použili `byref<>` pro `output` (není bez nutnosti tooadd hello `[<Out>]` poznámky). Použití `byref<>` typ umožňuje vaší toochange funkce, které argument hello záznamu nebo objektu odkazuje na.
 
-Pokud záznam F # je použita jako vstupní typ, musí být označen definici záznam s `[<CLIMutable>]` Chcete-li povolit rozhraní Azure Functions správně nastavit pole před předáním záznam funkce. Pod pokličkou `[<CLIMutable>]` generuje setter vlastnosti záznamu. Například:
+Když je záznam F # slouží jako vstupní typ, záznamu definice hello označena `[<CLIMutable>]` v pořadí tooallow hello Azure Functions framework tooset hello pole správně před předáním hello záznamů tooyour funkce. Pod pokličkou hello `[<CLIMutable>]` generuje setter vlastnosti záznamu hello. Například:
 
 ```fsharp
 [<CLIMutable>]
@@ -79,7 +79,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokolování
-Protokolovat výstup do vaší [protokoly streamování](../app-service-web/web-sites-streaming-logs-and-console.md) v F # funkce zabere argument typu `TraceWriter`. Konzistence, doporučujeme, abyste tento argument je s názvem `log`. Například:
+toolog výstup tooyour [protokoly streamování](../app-service-web/web-sites-streaming-logs-and-console.md) v F # funkce zabere argument typu `TraceWriter`. Konzistence, doporučujeme, abyste tento argument je s názvem `log`. Například:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -88,7 +88,7 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
 ```
 
 ## <a name="async"></a>Asynchronní
-`async` Pracovní postup můžete použít, ale musí vrátit výsledek `Task`. To lze provést pomocí `Async.StartAsTask`, například:
+Hello `async` pracovní postup můžete použít, je však nutné hello výsledek tooreturn `Task`. To lze provést pomocí `Async.StartAsTask`, například:
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -98,7 +98,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Token zrušení
-Pokud funkce potřebuje pro pohodlné zpracování vypnutí, můžete jí [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argument. To je možné kombinovat s `async`, například:
+Pokud funkce potřebuje řádně toohandle vypnutí, můžete jí [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argument. To je možné kombinovat s `async`, například:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -110,7 +110,7 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
 ```
 
 ## <a name="importing-namespaces"></a>Import obory názvů
-Obory názvů lze otevřít obvyklým způsobem:
+Obory názvů lze otevřít v hello obvyklým způsobem:
 
 ```fsharp
 open System.Net
@@ -120,7 +120,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-Automaticky se otevře následujících oborů názvů:
+automaticky se otevře Hello následující obory názvů:
 
 * `System`
 * `System.Collections.Generic`
@@ -132,7 +132,7 @@ Automaticky se otevře následujících oborů názvů:
 * `Microsoft.Azure.WebJobs.Host`.
 
 ## <a name="referencing-external-assemblies"></a>Odkazování na externí sestavení
-Podobně sestavení rozhraní přidat s odkazy `#r "AssemblyName"` – direktiva.
+Podobně sestavení rozhraní přidat odkazy s hello `#r "AssemblyName"` – direktiva.
 
 ```fsharp
 #r "System.Web.Http"
@@ -145,7 +145,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-Následující sestavení jsou automaticky přidány Azure Functions hostování prostředí:
+Hello následující sestavení jsou automaticky přidány hello Azure Functions hostování prostředí:
 
 * `mscorlib`,
 * `System`
@@ -158,7 +158,7 @@ Následující sestavení jsou automaticky přidány Azure Functions hostování
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Kromě toho jsou speciální následující sestavení použita a může být odkazováno simplename (například `#r "AssemblyName"`):
+Kromě toho jsou speciální hello následující sestavení použita a může být odkazováno simplename (například `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -166,10 +166,10 @@ Kromě toho jsou speciální následující sestavení použita a může být od
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Pokud potřebujete odkazovat na privátní sestavení, můžete nahrát soubor sestavení do `bin` složky vzhledem ke vaší ho pomocí souboru (např. název funkce a referenční dokumentace  `#r "MyAssembly.dll"`). Informace o tom, jak odeslat soubory do složky funkce najdete v následující části na správy balíčků.
+Pokud potřebujete tooreference privátní sestavení, můžete nahrát soubor sestavení hello do `bin` referenční ho pomocí hello (např. název souboru a složky relativní tooyour funkce  `#r "MyAssembly.dll"`). Informace o způsobu tooupload tooyour funkce složku souborů najdete v části hello následující části na správy balíčků.
 
 ## <a name="editor-prelude"></a>Editor Prelude
-Editor, který podporuje služby kompilátoru F # nebude vědět, obory názvů a sestavení, které automaticky zahrne Azure Functions. Jako takový může být užitečné zahrnout prelude, která pomáhá editoru najít sestavení, který používáte a explicitně otevřete obory názvů. Například:
+Editor, který podporuje služby kompilátoru F # nebude vědět hello obory názvů a sestavení, které automaticky zahrne Azure Functions. Jako takový může být užitečné tooinclude prelude, která pomáhá hello editor najít hello sestavení, který používáte, a tooexplicitly otevřete obory názvů. Například:
 
 ```fsharp
 #if !COMPILED
@@ -184,12 +184,12 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     ...
 ```
 
-Když Azure Functions provede kódu, zpracovává zdroji s `COMPILED` definované editor prelude bude proto ignorován.
+Když Azure Functions provede kódu, zpracovává hello zdroj s `COMPILED` definované hello editor prelude bude proto ignorován.
 
 <a name="package"></a>
 
 ## <a name="package-management"></a>Správy balíčků
-Použít balíčků NuGet v F # funkci, přidejte `project.json` do souboru složku funkce v systému souborů aplikaci funkce. Tady je příklad `project.json` soubor, který přidá odkaz na balíček NuGet `Microsoft.ProjectOxford.Face` verze 1.1.0:
+Přidání balíčků NuGet toouse v F # funkci, `project.json` složka funkce hello toohello soubory v aplikaci funkce hello systému souborů. Tady je příklad `project.json` soubor, který přidá odkaz balíčku NuGet příliš`Microsoft.ProjectOxford.Face` verze 1.1.0:
 
 ```json
 {
@@ -203,16 +203,16 @@ Použít balíčků NuGet v F # funkci, přidejte `project.json` do souboru slo�
 }
 ```
 
-Je podporováno pouze rozhraní .NET Framework 4.6, tak zkontrolujte, zda vaše `project.json` soubor Určuje `net46` jak je vidět tady.
+Hello rozhraní .NET Framework 4.6 je podporována pouze, tak zkontrolujte, zda vaše `project.json` soubor Určuje `net46` jak je vidět tady.
 
-Když nahrajete `project.json` soubor modulu runtime získá balíčky a automaticky přidá reference na sestavení balíčku. Nemusíte přidávat `#r "AssemblyName"` direktivy. Stačí přidat požadované `open` příkazů do vaší `.fsx` souboru.
+Když nahrajete `project.json` souboru, hello runtime získá hello balíčky a automaticky přidá reference toohello balíček sestavení. Nepotřebujete tooadd `#r "AssemblyName"` direktivy. Stačí přidat hello požadované `open` tooyour příkazy `.fsx` souboru.
 
-Můžete uvést automaticky odkazy na sestavení do vaší prelude editor, ke zlepšení vaší editor interakci s zkompilovat služby F #.
+Můžete taky, že tooput automaticky odkazuje na sestavení v editoru prelude, tooimprove jako editor interakci s zkompilovat služby F #.
 
-### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Postup přidání `project.json` soubor funkce Azure
-1. Začněte zajišťuje funkce aplikace běží, což lze provést otevřením funkce na portálu Azure. To také umožňuje přístup do protokolů streamování kde se zobrazí výstup instalace balíčku.
-2. Nahrát `project.json` souboru, použijte jednu z metod popsaných v [jak aktualizovat soubory aplikace funkce](functions-reference.md#fileupdate). Pokud používáte [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md), můžete přidat `project.json` souboru do svojí pracovní větve, aby bylo možné experimentovat před přidáním do svojí větve nasazení.
-3. Po `project.json` se přidá soubor, zobrazí se výstup podobný následujícímu příkladu funkce je streamování protokolu:
+### <a name="how-tooadd-a-projectjson-file-tooyour-azure-function"></a>Jak tooadd `project.json` souboru tooyour funkce Azure
+1. Začněte zajišťuje funkce aplikace běží, což lze provést otevřením funkce v hello portálu Azure. To také umožňuje přístup datový proud protokolů toohello kde se zobrazí výstup instalace balíčku.
+2. tooupload `project.json` souboru, použijte jednu z metod hello popsané v [jak tooupdate funkce soubory aplikace](functions-reference.md#fileupdate). Pokud používáte [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md), můžete přidat `project.json` souboru tooyour pracovní větev v pořadí tooexperiment s ním před přidáním tooyour nasazení větve.
+3. Po hello `project.json` se přidá soubor, zobrazí se výstup podobný toohello následující ukázka ve vaší funkci je streamování protokolu:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -232,7 +232,7 @@ Můžete uvést automaticky odkazy na sestavení do vaší prelude editor, ke zl
 ```
 
 ## <a name="environment-variables"></a>Proměnné prostředí
-Proměnné prostředí nebo nastavení hodnoty aplikace, použijte `System.Environment.GetEnvironmentVariable`, například:
+tooget proměnné prostředí nebo hodnotu nastavení aplikace, použijte `System.Environment.GetEnvironmentVariable`, například:
 
 ```fsharp
 open System.Environment
@@ -261,16 +261,16 @@ let mylog(log: TraceWriter, text: string) =
     log.Verbose(text);
 ```
 
-Poskytuje cesty `#load` direktivy jsou relativní vzhledem k umístění vaší `.fsx` souboru.
+Cesty poskytuje toohello `#load` – direktiva jsou relativní toohello umístění vaší `.fsx` souboru.
 
-* `#load "logger.fsx"`načte soubor umístěný ve složce funkce.
-* `#load "package\logger.fsx"`načte soubor umístěný ve `package` složky ve složce funkce.
-* `#load "..\shared\mylogger.fsx"`načte soubor umístěný ve `shared` složky na stejné úrovni jako složka funkce, který je přímo pod `wwwroot`.
+* `#load "logger.fsx"`načte soubor umístěný ve složce funkce hello.
+* `#load "package\logger.fsx"`načte soubor umístěný ve hello `package` složku ve složce funkce hello.
+* `#load "..\shared\mylogger.fsx"`načte soubor umístěný ve hello `shared` složky na stejné úrovni jako složka funkce hello, tedy hello přímo pod `wwwroot`.
 
-`#load` – Direktiva pracuje pouze s `.fsx` soubory (F # skript) a nikoli s `.fs` soubory.
+Hello `#load` – direktiva pracuje pouze s `.fsx` soubory (F # skript) a nikoli s `.fs` soubory.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace najdete v tématu hello následující prostředky:
 
 * [Průvodce F #](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

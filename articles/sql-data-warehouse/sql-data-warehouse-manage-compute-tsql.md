@@ -1,6 +1,6 @@
 ---
-title: "Pozastavit, obnovit a škálovat pomocí T-SQL v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Příkaz Transact-SQL (T-SQL) úlohy škálovatelný výkon úpravou Dwu. Uložte náklady škálování zpět v době mimo špičku."
+title: "aaaPause, obnovit, škálovat pomocí T-SQL v Azure SQL Data Warehouse | Microsoft Docs"
+description: "Příkaz Transact-SQL (T-SQL) úlohy se na více systémů tooscale výkonu úpravou Dwu. Uložte náklady škálování zpět v době mimo špičku."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 03/30/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 9221d72ecf8ab2ba8b04e4bc97eeef7157817cca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84c6868acb673221d8853319ac9a05bb98b2b7c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-t-sql"></a>Spravovat výpočetní výkon v Azure SQL Data Warehouse (T-SQL)
 > [!div class="op_single_selector"]
@@ -33,11 +33,11 @@ ms.lasthandoff: 07/11/2017
 <a name="current-dwu-bk"></a>
 
 ## <a name="view-current-dwu-settings"></a>Aktuální nastavení DWU zobrazení
-Chcete-li zobrazit aktuální nastavení DWU pro vaše databáze:
+tooview hello aktuální DWU nastavení pro vaše databáze:
 
 1. Otevřete Průzkumník objektů systému SQL Server v sadě Visual Studio.
-2. Připojení k databázi hlavní přidružené k logickému serveru služby SQL Database.
-3. Vyberte ze zobrazení dynamické správy sys.database_service_objectives. Zde naleznete příklad: 
+2. Připojte toohello přidružené k logickému serveru SQL Database hello hlavní databázi.
+3. Vyberte zobrazení dynamické správy sys.database_service_objectives hello. Zde naleznete příklad: 
 
 ```sql
 SELECT
@@ -56,10 +56,10 @@ JOIN
 ## <a name="scale-compute"></a>Škálování výpočetní kapacity
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Chcete-li změnit jednotkami Dwu:
+hello toochange Dwu:
 
-1. Připojení k databázi hlavní přidružené k logické databáze SQL serveru.
-2. Použití [ALTER DATABASE] [ ALTER DATABASE] příkaz TSQL. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW. 
+1. Připojte toohello přidružené k databázi SQL serveru logické hlavní databázi.
+2. Použití hello [ALTER DATABASE] [ ALTER DATABASE] příkaz TSQL. Hello následující příklad ilustruje hello služby úrovně cíle tooDW1000 pro databázi hello MySQLDW. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -71,8 +71,8 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ## <a name="check-database-state-and-operation-progress"></a>Kontrola stavu a operaci průběhu databáze
 
-1. Připojení k databázi hlavní přidružené k logické databáze SQL serveru.
-2. Odesílání dotazu pro kontrolu stavu databáze
+1. Připojte toohello přidružené k databázi SQL serveru logické hlavní databázi.
+2. Odeslání stav databáze toocheck dotazu
 
 ```sql
 SELECT *
@@ -80,7 +80,7 @@ FROM
 sys.databases
 ```
 
-3. Odesílání dotazu a zkontrolujte stav operace
+3. Odeslat dotaz toocheck stav operace
 
 ```sql
 SELECT *
@@ -92,7 +92,7 @@ AND
     major_resource_id = 'MySQLDW'
 ```
 
-Tato DMV vrátí informace o různé operace správy v SQL Data Warehouse například operaci a stav operace, který bude buď IN_PROGRESS nebo byla DOKONČENA.
+Tato DMV vrátí informace o různé operace správy v SQL Data Warehouse jako je například stav operace a hello hello hello operace, který bude buď IN_PROGRESS nebo byla DOKONČENA.
 
 
 

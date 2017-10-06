@@ -1,6 +1,6 @@
 ---
-title: "Postup ladění webové aplikace Node.js ve službě Azure App Service"
-description: "Postup ladění webové aplikace Node.js ve službě Azure App Service."
+title: "aaaHow toodebug webové aplikace Node.js ve službě Azure App Service"
+description: "Zjistěte, jak toodebug Node.js webové aplikace v Azure App Service."
 tags: azure-portal
 services: app-service\web
 documentationcenter: nodejs
@@ -15,123 +15,123 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.openlocfilehash: 5e302a4c58a171d40e43a22c34c724e868019ec8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 888ec5c3f92cfc3aeea4ea86005b9b6a0d1306ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-debug-a-nodejs-web-app-in-azure-app-service"></a>Postup ladění webové aplikace Node.js ve službě Azure App Service
-Azure poskytuje integrované diagnostiky vám pomůže při ladění aplikace Node.js ve [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace. V tomto článku se dozvíte, jak povolit protokolování stdout a stderr, v prohlížeči zobrazit informace o chybě a jak stáhnout a zobrazit soubory protokolu.
+# <a name="how-toodebug-a-nodejs-web-app-in-azure-app-service"></a>Jak toodebug Node.js webové aplikace v Azure App Service
+Azure poskytuje integrované diagnostiky tooassist s ladění aplikace Node.js ve [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace. V tomto článku se dozvíte, jak protokolování tooenable stdout a stderr, informace o chybě zobrazení v prohlížeči hello a jak toodownload a zobrazit soubory protokolu.
 
-Diagnostika pro aplikace Node.js hostované v Azure poskytuje [IISNode]. Když tento článek popisuje nejběžnější nastavení pro shromažďování diagnostické informace, neposkytuje úplný referenční pro práci s modulu IISNode. Další informace o práci s modulu IISNode, najdete v článku [modulu IISNode Readme] na Githubu.
+Diagnostika pro aplikace Node.js hostované v Azure poskytuje [IISNode]. Když tento článek popisuje hello nejběžnější nastavení pro shromažďování diagnostické informace, neposkytuje úplný referenční pro práci s modulu IISNode. Další informace o práci s modulu IISNode, najdete v části hello [modulu IISNode Readme] na Githubu.
 
 <a id="enablelogging"></a>
 
 ## <a name="enable-logging"></a>Povolit protokolování
 Ve výchozím nastavení webové aplikace služby App Service zaznamená pouze diagnostické informace o nasazení, například když nasadíte webovou aplikaci pomocí Git. Tyto informace jsou užitečné, pokud máte potíže při nasazení, například selhání při instalaci modulu, kterou se odkazuje v **package.json**, nebo pokud používáte vlastní nasazení skriptu.
 
-Chcete-li povolit protokolování stdout a stderr datové proudy, musíte vytvořit **IISNode.yml** souboru v kořenovém adresáři aplikace Node.js a přidejte následující:
+tooenable hello protokolování stdout a stderr datové proudy, musíte vytvořit **IISNode.yml** souboru v kořenovém adresáři aplikace Node.js hello a přidejte následující hello:
 
     loggingEnabled: true
 
-To umožňuje protokolování stderr a stdout z aplikace Node.js.
+To umožňuje protokolování hello stderr a stdout z aplikace Node.js.
 
-**IISNode.yml** soubor lze použít také na ovládací prvek, zda popisný chyby nebo vývojáře se vrátí do prohlížeče při dojde k chybě. Povolit vývojáře chyby, přidejte následující řádek na **IISNode.yml** souboru:
+Hello **IISNode.yml** soubor může být také použít toocontrol zda popisný chyby nebo vývojáře jsou vráceny toohello prohlížeče, když dojde k chybě. chyby tooenable developer, přidejte následující řádek toohello hello **IISNode.yml** souboru:
 
     devErrorsEnabled: true
 
-Jakmile povolíte tuto možnost, modul IISNode vrátí poslední 64 kB informace odesílané do stderr místo popisný chyby, jako je "o vnitřní chybu serveru došlo k chybě".
+Jakmile povolíte tuto možnost, modul IISNode vrátí hello poslední 64 tisíc informací odesílaných toostderr místo popisný chyby, jako je "o vnitřní chybu serveru došlo k chybě".
 
 > [!NOTE]
-> Zatímco devErrorsEnabled je užitečné při diagnostice problémů během vývoje, povolení v produkčním prostředí může vést k chybám vývoj odesílány koncovým uživatelům.
+> Zatímco devErrorsEnabled je užitečné při diagnostice problémů během vývoje, povolení v produkčním prostředí může vést k chybám vývoj odesílány tooend uživatele.
 > 
 > 
 
-Pokud **IISNode.yml** soubor v rámci vaší aplikace již neexistoval, je nutné restartovat vaší webové aplikace po publikování aktualizované aplikace. Pokud chcete změnit nastavení v existující jednoduše **IISNode.yml** soubor, který se dříve publikoval, není nutné žádné restartování.
+Pokud hello **IISNode.yml** souboru v rámci vaší aplikace již neexistuje, je nutné restartovat po publikování aplikace hello aktualizovat vaši webovou aplikaci. Pokud chcete změnit nastavení v existující jednoduše **IISNode.yml** soubor, který se dříve publikoval, není nutné žádné restartování.
 
 > [!NOTE]
-> Pokud vaše webová aplikace byla vytvořena pomocí nástroje příkazového řádku Azure nebo rutin prostředí Azure PowerShell, výchozí **IISNode.yml** soubor se automaticky vytvoří.
+> Pokud vaše webová aplikace byla vytvořena pomocí nástroje příkazového řádku Azure hello nebo rutin prostředí Azure PowerShell, výchozí **IISNode.yml** soubor se automaticky vytvoří.
 > 
 > 
 
-Restartování webové aplikace, vyberte webovou aplikaci v [portálu Azure](https://portal.azure.com)a potom klikněte na **RESTARTUJTE** tlačítko:
+toorestart hello webovou aplikaci, vyberte hello webové aplikace ve hello [portálu Azure](https://portal.azure.com)a potom klikněte na **RESTARTUJTE** tlačítko:
 
 ![Restartujte tlačítko][restart-button]
 
-Pokud nástroje příkazového řádku Azure jsou nainstalovány ve vašem vývojovém prostředí, můžete tyto příkazy k restartování webové aplikace:
+Pokud nástroje příkazového řádku Azure hello jsou nainstalovány ve vašem vývojovém prostředí, můžete použít následující příkaz toorestart hello webové aplikace hello:
 
     azure site restart [sitename]
 
 > [!NOTE]
-> LoggingEnabled a devErrorsEnabled jsou nejčastěji používané IISNode.yml možnosti konfigurace pro shromažďování diagnostických informací, IISNode.yml slouží ke konfiguraci celou řadu možností pro hostitelské prostředí. Úplný seznam možností konfigurace, najdete v článku [iisnode_schema.xml](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml) souboru.
+> LoggingEnabled a devErrorsEnabled jsou možnosti konfigurace IISNode.yml hello nejčastěji používaná pro shromažďování diagnostických informací, může být IISNode.yml použité tooconfigure celou řadu možností pro hostitelské prostředí. Úplný seznam možností konfigurace hello najdete v tématu hello [iisnode_schema.xml](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml) souboru.
 > 
 > 
 
 <a id="viewlogs"></a>
 
 ## <a name="accessing-logs"></a>Přístup k protokoly
-Diagnostické protokoly jsou přístupné třemi způsoby; Pomocí protokol FTP (File Transfer), stahování archivu Zip, nebo jako živé aktualizovat datového proudu protokolu (také označované jako tail). Stahování archivu Zip souborů protokolu nebo zobrazení živý datový proud vyžadují nástroje příkazového řádku Azure. Lze je instalovat pomocí následujícího příkazu:
+Diagnostické protokoly jsou přístupné třemi způsoby; Pomocí hello protokol FTP (File Transfer), stahování archivu Zip, nebo jako živé aktualizovat datový proud protokolu hello (také označované jako tail). Stahování archivu Zip hello hello protokolových souborů nebo zobrazení živý datový proud hello vyžadují hello nástroje příkazového řádku Azure. Lze je instalovat pomocí hello následující příkaz:
 
     npm install azure-cli -g
 
-Po instalaci nástroje je přístupný pomocí příkazu "azure". Nástroje příkazového řádku musí nejdřív nakonfigurovat na používání vašeho předplatného Azure. Informace o tom, jak se dá tento úkol provést, najdete v tématu **stahování a import nastavení publikování** části [postup použití nástroje příkazového řádku Azure](../xplat-cli-connect.md) článku.
+Po instalaci nástrojů hello je přístupný pomocí příkazu "azure" hello. Hello nástroje příkazového řádku musí být nakonfigurované toouse nejprve při vašeho předplatného Azure. Informace o tom, jak se tooaccomplish to úloh najdete v tématu hello **jak toodownload a import nastavení publikování** části hello [jak tooUse hello nástroje příkazového řádku Azure](../xplat-cli-connect.md) článku.
 
 ### <a name="ftp"></a>FTP
-Pro přístup k diagnostické informace pomocí služby FTP, přejděte [portálu Azure](https://portal.azure.com), vyberte webovou aplikaci a pak vyberte **řídicí panel**. V **rychlé odkazy** části **diagnostické protokoly FTP** a **FTPS diagnostické protokoly** odkazy poskytují přístup k protokolům pomocí protokolu FTP.
+tooaccess hello diagnostických informací pomocí služby FTP, navštivte hello [portálu Azure](https://portal.azure.com), vyberte webovou aplikaci a pak vyberte hello **řídicí panel**. V hello **rychlé odkazy** části hello **diagnostické protokoly FTP** a **FTPS diagnostické protokoly** odkazy poskytují přístup k protokolům toohello pomocí protokolu hello FTP.
 
 > [!NOTE]
-> Pokud jste předtím nenakonfigurovali uživatelské jméno a heslo pro nasazení nebo FTP, můžete tak učinit z **rychlý Start** stránce management výběrem **nastavit přihlašovací údaje nasazení**.
+> Pokud jste předtím nenakonfigurovali uživatelské jméno a heslo pro nasazení nebo FTP, můžete tak učinit z hello **rychlý Start** stránce management výběrem **nastavit přihlašovací údaje nasazení**.
 > 
 > 
 
-Adresa URL FTP, vrátí se v řídicím panelu **LogFiles** adresáři, který bude obsahovat následující dílčí adresáře:
+Hello adresy URL FTP, vrátí se v řídicím panelu hello je pro hello **LogFiles** adresáři, který bude obsahovat hello následující dílčí adresáře:
 
-* [Metoda nasazení](web-sites-deploy.md) – Pokud používáte metodu nasazení, jako je například Git, se vytvoří adresář se stejným názvem a bude obsahovat informace týkající se nasazení.
+* [Metoda nasazení](web-sites-deploy.md) – Pokud používáte metodu nasazení, jako je například Git, adresář hello stejným názvem bude vytvořen a bude obsahují informace související s toodeployments.
 * nodejs - Stdout a stderr informace zachyceného v všechny instance aplikace (Pokud loggingEnabled hodnotu true.)
 
 ### <a name="zip-archive"></a>Archivu ZIP
-Chcete-li stáhnout archivu Zip diagnostických protokolů, použijte následující příkaz z příkazového řádku nástroje Azure:
+toodownload archivu Zip hello diagnostických protokolů, hello použijte následující příkaz z nástroje příkazového řádku Azure hello:
 
     azure site log download [sitename]
 
-To bude stahovat **diagnostics.zip** v aktuálním adresáři. Archivu obsahuje následující adresářovou strukturu:
+To bude stahovat **diagnostics.zip** v aktuálním adresáři hello. Archivu obsahuje hello následující adresářovou strukturu:
 
 * nasazení – protokolu informace o nasazení aplikace
 * LogFiles
   
-  * [Metoda nasazení](web-sites-deploy.md) – Pokud používáte metodu nasazení, jako je například Git, se vytvoří adresář se stejným názvem a bude obsahovat informace týkající se nasazení.
+  * [Metoda nasazení](web-sites-deploy.md) – Pokud používáte metodu nasazení, jako je například Git, adresář hello stejným názvem bude vytvořen a bude obsahují informace související s toodeployments.
   * nodejs - Stdout a stderr informace zachyceného v všechny instance aplikace (Pokud loggingEnabled hodnotu true.)
 
 ### <a name="live-stream-tail"></a>Živý datový proud (tail)
-Chcete-li zobrazit živý datový proud diagnostických informací, protokolu, použijte následující příkaz z příkazového řádku nástroje Azure:
+tooview živý datový proud protokolů diagnostiky informací, hello použijte následující příkaz z nástroje příkazového řádku Azure hello:
 
     azure site log tail [sitename]
 
-Tato možnost vrátí datový proud protokolu událostí, které jsou aktualizované, kdy k nim dojde na serveru. Tento datový proud vrátí informace o nasazení a také stdout a stderr informace (Pokud loggingEnabled hodnotu true.)
+Tato možnost vrátí datový proud protokolu událostí, které jsou aktualizované, kdy k nim dojde na serveru hello. Tento datový proud vrátí informace o nasazení a také stdout a stderr informace (Pokud loggingEnabled hodnotu true.)
 
 <a id="nextsteps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak povolit a přístup k diagnostické informace pro Azure. Když tyto informace jsou užitečné v Principy problémy, které se aplikace, mohou odkazovat problém s modulem používáte nebo verze Node.js používané App Service Web Apps je jiný než ten, který používá v prostředí pro nasazení.
+V tomto článku jste se naučili jak tooenable a přístup diagnostické informace pro Azure. Když tyto informace jsou užitečné v Principy problémy, které ke kterým dochází u vaší aplikace, už může ukazovat tooa problém s modul, který používáte nebo že hello tato verze Node.js používané App Service Web Apps je jiný než hello používá v nasazení prostředí.
 
 Informace v práci s moduly v Azure najdete v tématu [používání modulů Node.js s aplikacemi Azure](../nodejs-use-node-modules-azure-apps.md).
 
 Informace o určení verze Node.js pro vaši aplikaci najdete v tématu [určení verze Node.js v aplikaci Azure].
 
-Další informace naleznete také [středisku pro vývojáře Node.js](/develop/nodejs/).
+Další informace najdete v tématu taky hello [středisku pro vývojáře Node.js](/develop/nodejs/).
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [modulu IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
-[How to Use The Azure Command-Line Interface]:../cli-install-nodejs.md
+[How tooUse hello Azure Command-Line Interface]:../cli-install-nodejs.md
 [Using Node.js Modules with Azure Applications]: ../nodejs-use-node-modules-azure-apps.md
 [určení verze Node.js v aplikaci Azure]: ../nodejs-specify-node-version-azure-apps.md
 

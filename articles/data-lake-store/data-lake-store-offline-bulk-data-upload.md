@@ -1,6 +1,6 @@
 ---
-title: "Nahrát velké objemy dat do Data Lake Store pomocí offline metod | Microsoft Docs"
-description: "Použijte nástroj AdlCopy ke zkopírování dat z Azure úložiště objektů BLOB do Data Lake Store"
+title: "aaaUpload velkých objemů dat do Data Lake Store pomocí offline metod | Microsoft Docs"
+description: "Použití hello AdlCopy nástroj toocopy dat z Azure úložiště objektů BLOB tooData Lake Store"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: b469c0ebe9838a1ea986cff3043e3008941e9aa9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 42ef75142a26ebfab05d89614782a54c244c4bcb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Používat službu Azure Import/Export pro offline kopii dat do Data Lake Store
-V tomto článku se dozvíte kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Store pomocí metod kopii offline, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor používá jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Umožňuje volání 319GB.tsv tento soubor.
+# <a name="use-hello-azure-importexport-service-for-offline-copy-of-data-toodata-lake-store"></a>Pomocí služby Azure Import/Export hello offline kopie dat tooData Lake Store
+V tomto článku se dozvíte, jak velký data toocopy nastaví (> 200 GB) do Azure Data Lake Store pomocí metod kopii offline, jako je hello [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Konkrétně hello souboru, který slouží jako příklad v tomto článku je 339,420,860,416 bajtů, nebo o 319 GB na disku. Umožňuje volání 319GB.tsv tento soubor.
 
-Služba Azure Import/Export vám umožní bezpečněji přenos velkých objemů dat do úložiště objektů Blob v Azure pomocí přesouvání pevných disků o datovém centru Azure.
+Služba Azure Import/Export Hello vám pomůže tootransfer velkých objemů dat další bezpečně tooAzure úložiště objektů Blob přesouvání pevným diskem disky tooan datového centra Azure.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, musíte mít následující:
+Než začnete, musíte mít následující hello:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet úložiště Azure**.
-* **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Účet Azure Data Lake Store**. Návod, jak jeden, viz toocreate [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md)
 
-## <a name="preparing-the-data"></a>Příprava dat
-Než začnete používat službu Import/Export, rozdělit datového souboru k přesunu **do kopie, které jsou menší než 200 GB** velikost. Nástroj pro import nefunguje s soubory větší než 200 GB. V tomto kurzu jsme rozdělit do bloků, 100 GB. Můžete to provést pomocí [emulaci](https://cygwin.com/install.html). Emulaci podporuje příkazy Linux. V takovém případě použijte následující příkaz:
+## <a name="preparing-hello-data"></a>Příprava dat hello
+Než začnete používat službu Import/Export hello, zalomení hello dat souboru toobe přenést **do kopie, které jsou menší než 200 GB** velikost. Nástroj pro import Hello nefunguje s soubory větší než 200 GB. V tomto kurzu jsme rozdělit hello soubor do bloků, 100 GB. Můžete to provést pomocí [emulaci](https://cygwin.com/install.html). Emulaci podporuje příkazy Linux. V takovém případě použijte hello následující příkaz:
 
     split -b 100m 319GB.tsv
 
-Operace rozdělení vytvoří soubory s následujícími názvy.
+operace rozdělení Hello vytvoří soubory s hello následující názvy.
 
     319GB.tsv-part-aa
 
@@ -48,28 +48,28 @@ Operace rozdělení vytvoří soubory s následujícími názvy.
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>Příprava disky s daty
-Postupujte podle pokynů v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **Příprava jednotky** část) k přípravě pevné disky. Tady je celkový pořadí:
+Postupujte podle pokynů hello v [pomocí služby Azure Import/Export hello](../storage/common/storage-import-export-service.md) (v části hello **Příprava jednotky** část) tooprepare pevné disky. Tady je hello celkové pořadí:
 
-1. Pořídit pevný disk, který splňuje požadavek na který se má použít pro službu Azure Import/Export.
-2. Určete účet úložiště Azure, kde data se zkopírují po je dodáván na datovém centru Azure.
-3. Použití [nástroj Azure Import/Export](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroj příkazového řádku. Zde je ukázka fragment kódu, který ukazuje, jak používat nástroj.
+1. Pořídit pevný disk, který splňuje toobe požadavek hello používá pro hello služba Azure Import/Export.
+2. Určete účet úložiště Azure, kde hello data se zkopírují po uvidíte toohello datového centra Azure.
+3. Použití hello [nástroj Azure Import/Export](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroj příkazového řádku. Zde je ukázka fragment kódu, který ukazuje, jak toouse hello nástroj.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    V tématu [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) pro další fragmenty ukázka.
-4. Předchozí příkaz vytvoří soubor deníku do zadaného umístění. Tento soubor deníku použít k vytvoření úlohy importu z [portál Azure classic](https://manage.windowsazure.com).
+    V tématu [pomocí služby Azure Import/Export hello](../storage/common/storage-import-export-service.md) pro další fragmenty ukázka.
+4. Hello předchozí příkaz vytvoří deník souboru v hello zadané umístění. Použít tento deník souboru toocreate úlohy importu z hello [portál Azure classic](https://manage.windowsazure.com).
 
 ## <a name="create-an-import-job"></a>Vytvoření úlohy importu
-Nyní můžete vytvořit úlohy importu pomocí pokynů uvedených v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **vytvořit úlohy importu** části). Pro tuto úlohu importu s další podrobnosti, také poskytněte soubor deníku vytvořili při přípravě na pevných discích.
+Nyní můžete vytvořit úlohy importu podle pokynů hello v [pomocí služby Azure Import/Export hello](../storage/common/storage-import-export-service.md) (v části hello **úlohy importu hello vytvořit** části). Pro tuto úlohu importu s další podrobnosti, také poskytněte soubor deníku hello vytvořili při přípravě hello diskových jednotek.
 
-## <a name="physically-ship-the-disks"></a>Fyzicky dodávat disky
-Nyní můžete fyzicky dodávat disky datového centra Azure. Existuje ale data se zkopírují přes Azure úložiště objektů BLOB, které jste zadali při vytváření úlohy importu. Navíc při vytváření úlohy, když jste se rozhodli poskytnout informace o sledování později, můžete nyní přejděte zpět na vaše úlohy importu a aktualizovat číslo sledování.
+## <a name="physically-ship-hello-disks"></a>Fyzicky dodávat hello disky
+Nyní můžete fyzicky dodávat hello disky tooan datového centra Azure. Zde hello data se zkopírují nad objekty toohello úložiště Azure BLOB, které jste zadali při vytváření úlohy importu hello. Navíc při vytváření úlohy hello, pokud jste se rozhodli tooprovide hello později, informace o sledování můžete nyní se vrátit úlohy a aktualizace hello serveru tooyour import sledování Číslo.
 
-## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Kopírování dat z objektů BLOB služby Azure Storage do Azure Data Lake Store
-Po ve stavu úlohy importu zobrazuje, zda je dokončena, můžete ověřit, zda je k dispozici do objektů BLOB Azure Storage, měl zadaná data. Potom můžete různé metody pro přesun dat z objektů BLOB do Azure Data Lake Store. Všechny dostupné možnosti, pro nahrávání dat najdete v tématu [příjem dat do Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store).
+## <a name="copy-data-from-azure-storage-blobs-tooazure-data-lake-store"></a>Kopírování dat z Azure Storage blobs tooAzure Data Lake Store
+Po hello stav hello úlohy importu ukazuje, že nebyla dokončena, můžete ověřit, zda jsou k dispozici do objektů BLOB Azure Storage hello, měl zadaná hello data. Pak můžete použít různé metody toomove, že data z hello objekty BLOB tooAzure Data Lake Store. Všechny hello dostupné možnosti pro nahrávání dat, najdete v části [příjem dat do Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store).
 
-V této části nám umožňují JSON definice, které můžete použít k vytvoření kanál služby Azure Data Factory pro kopírování dat. Můžete použít tyto definice JSON z [portál Azure](../data-factory/data-factory-copy-activity-tutorial-using-azure-portal.md), nebo [Visual Studio](../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](../data-factory/data-factory-copy-activity-tutorial-using-powershell.md).
+V této části nám umožňují hello JSON definice používané toocreate kanál služby Azure Data Factory pro kopírování dat. Můžete použít tyto definice JSON z hello [portál Azure](../data-factory/data-factory-copy-activity-tutorial-using-azure-portal.md), nebo [Visual Studio](../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](../data-factory/data-factory-copy-activity-tutorial-using-powershell.md).
 
 ### <a name="source-linked-service-azure-storage-blob"></a>Zdroj propojené služby (objekt blob úložiště Azure)
 ````
@@ -93,9 +93,9 @@ V této části nám umožňují JSON definice, které můžete použít k vytvo
         "type": "AzureDataLakeStore",
         "description": "",
         "typeProperties": {
-            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Store with your access rights>",
+            "authorization": "<Click 'Authorize' tooallow this data factory and hello activities it runs tooaccess this Data Lake Store with your access rights>",
             "dataLakeStoreUri": "https://<adls_account_name>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<OAuth session id from the OAuth authorization session. Each session id is unique and may only be used once>"
+            "sessionId": "<OAuth session id from hello OAuth authorization session. Each session id is unique and may only be used once>"
         }
     }
 }
@@ -187,23 +187,23 @@ V této části nám umožňují JSON definice, které můžete použít k vytvo
     }
 }
 ````
-Další informace najdete v tématu [přesun dat z objektu blob úložiště Azure do Azure Data Lake Store pomocí Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md).
+Další informace najdete v tématu [přesun dat z úložiště Azure blob tooAzure Data Lake Store pomocí Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md).
 
-## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Rekonstrukci datových souborů v Azure Data Lake Store
-Spuštění se souborem, který byl 319 GB a překročila ho dolů do souborů menší velikost tak, že by mohla být přenesena pomocí služby Azure Import/Export. Teď, když se data v Azure Data Lake Store, jsme rekonstrukci soubor původní velikost. K tomu můžete použít následující cmldts prostředí Azure PowerShell.
+## <a name="reconstruct-hello-data-files-in-azure-data-lake-store"></a>Rekonstrukci hello datových souborů v Azure Data Lake Store
+Spuštění se souborem, který byl 319 GB a něco stalo ho do souborů menší velikost tak, že by mohla být přenesena pomocí služby Azure Import/Export hello. Nyní když hello data v Azure Data Lake Store, jsme rekonstrukci hello souboru tooits původní velikost. Můžete použít následující toodo cmldts prostředí Azure PowerShell tak hello.
 
 ````
-# Login to our account
+# Login tooour account
 Login-AzureRmAccount
 
 # List your subscriptions
 Get-AzureRmSubscription
 
-# Switch to the subscription you want to work with
+# Switch toohello subscription you want toowork with
 Set-AzureRmContext –SubscriptionId
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
-# Join  the files
+# Join  hello files
 Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv”
 ````
 

@@ -1,6 +1,6 @@
 ---
-title: "Jak používat Engagement rozhraní API v systému Android"
-description: "Nejnovější Android SDK – jak používat Engagement rozhraní API v systému Android"
+title: "aaaHow tooUse hello Engagement rozhraní API v systému Android"
+description: "Nejnovější Android SDK – jak tooUse hello Engagement rozhraní API v systému Android"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0b2d484616c0c7874e77c5283d94c3063949ed2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-engagement-api-on-android"></a>Jak používat Engagement rozhraní API v systému Android
-Tento dokument je doplněk k dokumentu [Reporting rozšířené možnosti pro Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
+# <a name="how-toouse-hello-engagement-api-on-android"></a>Jak tooUse hello Engagement rozhraní API v systému Android
+Tento dokument je dokument toohello rozšíření [Reporting rozšířené možnosti pro Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Poskytuje v hloubka podrobnosti o tom, jak toouse hello Engagement API tooreport statistik vaší aplikace.
 
-Mějte na paměti, že pokud chcete pouze Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak nejjednodušší způsob, jak se zajistit všechny vaše `Activity` dílčí třídy dědí odpovídající `EngagementActivity` třídy.
+Mějte na paměti, že pokud chcete pouze tooreport zapojení vaší aplikace relací, aktivit, dojde k chybě a technické informace, pak hello nejjednodušší způsob, jak se toomake všechny vaše `Activity` dílčí třídy dědí hello odpovídající `EngagementActivity` třídy.
 
-Pokud chcete informace, například pokud je třeba ohlásit určité události aplikace, chyb a úlohy, nebo pokud máte k hlášení aktivitami aplikace jiným způsobem než ten, implementované v `EngagementActivity` třídy, pak budete muset použít rozhraní API zapojení.
+Pokud chcete, aby toodo další, např. Pokud potřebujete tooreport aplikace konkrétní události, chyb a úlohy, nebo pokud máte tooreport aktivitami aplikace jiným způsobem než jednu implementaci hello hello `EngagementActivity` třídy, pak je nutné toouse hello Zapojení rozhraní API.
 
-Rozhraní API Engagement poskytuje `EngagementAgent` třídy. Instance této třídy může načíst volání `EngagementAgent.getInstance(Context)` statickou metodu (Všimněte si, že `EngagementAgent` objekt vrácený je typu singleton).
+Hello rozhraní API Engagement poskytuje hello `EngagementAgent` třídy. Instance této třídy může načíst volání hello `EngagementAgent.getInstance(Context)` statickou metodu (Všimněte si, že hello `EngagementAgent` objekt vrácený je typu singleton).
 
 ## <a name="engagement-concepts"></a>Koncepty engagementu
-Následující části Upřesnit nejběžnější [koncepty Mobile Engagementu](mobile-engagement-concepts.md), pro platformu Android.
+Hello následujících částí Upřesnit hello běžné [koncepty Mobile Engagementu](mobile-engagement-concepts.md), pro platformu Android hello.
 
 ### <a name="session-and-activity"></a>`Session` a `Activity`
-Je-li uživatel více než pár sekundách nečinnosti mezi dvěma *aktivity*, potom jeho posloupnost *aktivity* je rozdělit na dvě odlišné *relací*. Tyto několik sekund, se nazývají "časový limit relace".
+Pokud uživatel hello zůstane více než pár sekundách nečinnosti mezi dvěma *aktivity*, potom jeho posloupnost *aktivity* je rozdělit na dvě odlišné *relací*. Tyto několik sekund, se nazývají hello "časový limit relace".
 
-*Aktivity* je obvykle spojovány s jednu obrazovku aplikace, to znamená *aktivity* spustí, když se zobrazí na obrazovce a zastaví, když je uzavřený obrazovky: to je případ, kdy je sady Engagement SDK integrovaná pomocí `EngagementActivity` třídy.
+*Aktivity* obvykle souvisí s jeden obrazovky aplikace hello, který je toosay hello *aktivity* spustí, když se zobrazí úvodní obrazovka a zastaví, když je uzavřený úvodní obrazovka: Toto je hello případ, kdy Hello Engagement SDK je integrovaná s použitím hello `EngagementActivity` třídy.
 
-Ale *aktivity* můžete ručně kontrolovat také pomocí rozhraní API zapojení. To umožňuje rozdělit dané obrazovky v několik částí Sub – Chcete-li získat další podrobnosti o použití této obrazovky (například jak často známé a jak dlouho se používají dialogová okna v rámci této obrazovce).
+Ale *aktivity* můžete ručně kontrolovat také pomocí hello Engagement rozhraní API. To umožňuje toosplit dané obrazovky v několika dílčí části tooget hello další podrobnosti o použití této obrazovce (například jak často tooknown a jak dlouho se používají dialogová okna v rámci této obrazovce).
 
 ## <a name="reporting-activities"></a>Sestavy aktivit
 > [!IMPORTANT]
-> Nemusíte aktivity, například sestavy popsané v této části, pokud používáte `EngagementActivity` třídy a jeho variant, jak je popsáno v tom, jak integrovat Engagement Android dokumentu.
+> Nepotřebujete tooreport aktivity, jako jsou popsané v této části, pokud používáte hello `EngagementActivity` třídy a jeho variant, jak je popsáno v hello jak tooIntegrate Engagement Android dokumentu.
 > 
 > 
 
 ### <a name="user-starts-a-new-activity"></a>Uživatel spustí novou aktivitu
             EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
-            // Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
+            // Passing hello current activity is required for Reach toodisplay in-app notifications, passing null will postpone such announcements and polls.
 
-Je třeba volat `startActivity()` pokaždé, když změny aktivity uživatelů. První volání této funkce spustí novou relaci uživatele.
+Je třeba toocall `startActivity()` Každá aktivita uživatele hello čas změny. Hello první volání funkce toothis spustí novou relaci uživatele.
 
-Nejlepší místo k volání této funkce je v každé aktivity `onResume` zpětného volání.
+Tato funkce je v každé aktivity nejlepší místo toocall Hello `onResume` zpětného volání.
 
 ### <a name="user-ends-his-current-activity"></a>Uživatel končí jeho aktuální aktivita
             EngagementAgent.getInstance(this).endActivity();
 
-Je třeba volat `endActivity()` alespoň jednou po dokončení uživatele poslední aktivita. Tento příkaz informuje sady Engagement SDK, že je uživatel aktuálně nečinnosti, a že relaci uživatele, který je třeba ukončit jednou časový limit relace vyprší (při volání `startActivity()` předtím, než vyprší časový limit relace, relaci jednoduše obnovit).
+Je třeba toocall `endActivity()` alespoň jednou po dokončení hello uživatele poslední aktivita. Tento příkaz informuje hello vyprší Engagement SDK hello uživatel aktuálně nečinný, a že hello uživatelské relace nutné toobe uzavřít jednou hello časový limit relace (při volání `startActivity()` vyprší časový limit relace hello hello relaci je jednoduše obnovit).
 
-Nejlepší místo k volání této funkce je v každé aktivity `onPause` zpětného volání.
+Tato funkce je v každé aktivity nejlepší místo toocall Hello `onPause` zpětného volání.
 
 ## <a name="reporting-events"></a>Události vytváření sestav
 ### <a name="session-events"></a>Události relací
-Relace události se obvykle používají k hlášení akcí prováděná uživatelem během jeho relace.
+Relace události jsou obvykle použité tooreport hello akce prováděné uživatelem během jeho relace.
 
 **Příklad bez doplňující data:**
 
@@ -89,11 +89,11 @@ Relace události se obvykle používají k hlášení akcí prováděná uživat
             }
 
 ### <a name="standalone-events"></a>Samostatné události
-Rozporu s touto relace události může dojít k událostem samostatné mimo kontext relace.
+Jinak zvláštní toosession, samostatné události může dojít k událostem mimo hello kontext relace.
 
 **Příklad:**
 
-Předpokládejme, že chcete do sestavy událostí, ke kterým dochází při aktivaci všesměrového vysílání příjemce:
+Předpokládejme, že chcete tooreport události, ke kterým dochází při aktivaci všesměrového vysílání příjemce:
 
             /** Triggered by Intent.ACTION_BATTERY_LOW */
             public BatteryLowReceiver extends BroadcastReceiver {
@@ -107,16 +107,16 @@ Předpokládejme, že chcete do sestavy událostí, ke kterým dochází při ak
 
 ## <a name="reporting-errors"></a>Zasílání zpráv o chybách
 ### <a name="session-errors"></a>Chyby relace
-Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, které mají vliv uživatele.
+Relace chyby jsou obvykle použité tooreport hello chyby během jeho relace, které mají vliv hello uživatele.
 
 **Příklad:**
 
-            /** The user has entered invalid data in a form */
+            /** hello user has entered invalid data in a form */
             public MyActivity extends EngagementActivity {
               [...]
               public void onMyFormSubmitted(MyForm form) {
                 [...]
-                /* The user has entered an invalid email address */
+                /* hello user has entered an invalid email address */
                 getEngagementAgent().sendSessionError("sign_up_email", null);
                 [...]
               }
@@ -124,11 +124,11 @@ Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, kte
             }
 
 ### <a name="standalone-errors"></a>Samostatné chyby
-Rozporu s touto relací chyb může dojít k chybám samostatné mimo kontext relace.
+Jinak zvláštní toosession chyby samostatné může dojít k chybám mimo hello kontext relace.
 
 **Příklad:**
 
-Následující příklad ukazuje, jak chcete sestavu chybu vždy, když velikost paměti je nedostatek v telefonu během procesu vaše aplikace běží.
+Hello následující příklad ukazuje, jak tooreport chybu vždy, když hello paměti je nedostatek na telefonu hello při procesu vaše aplikace běží.
 
             public MyApplication extends EngagementApplication {
 
@@ -140,12 +140,12 @@ Následující příklad ukazuje, jak chcete sestavu chybu vždy, když velikost
 
 ## <a name="reporting-jobs"></a>Úlohy sestav
 ### <a name="example"></a>Příklad
-Předpokládejme, že chcete nahlásit trvání přihlašovací proces:
+Předpokládejme, že chcete tooreport hello trvání přihlašovací proces:
 
             [...]
             public void signIn(Context context, ...) {
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+              /* We need an Android context toocall hello Engagement API, if you are extending Activity, Service, you can pass "this" */
               EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
               /* Report sign in job has started */
@@ -159,28 +159,28 @@ Předpokládejme, že chcete nahlásit trvání přihlašovací proces:
             [...]
 
 ### <a name="report-errors-during-a-job"></a>Sestava chyb během úlohy
-Chyby může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
+Chyby může být spuštěna úloha namísto související tooa související toohello se aktuální uživatelská relace.
 
 **Příklad:**
 
-Předpokládejme, že chcete proces přihlášení k chybě během můžete sestavy:
+Předpokládejme, že chcete tooreport chybu během jste přihlášení proces:
 
 [...] veřejné přihlášení void (kontextu kontextu,...) {
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+              /* We need an Android context toocall hello Engagement API, if you are extending Activity, Service, you can pass "this" */
               EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
               /* Report sign in job has been started */
               engagementAgent.startJob("sign_in", null);
 
-              /* Try to sign in */
+              /* Try toosign in */
               while(true)
                 try {
                   trySignin();
                   break;
                 }
                 catch(Exception e) {
-                  /* Report the error to Engagement */
+                  /* Report hello error tooEngagement */
                   engagementAgent.sendJobError("sign_in_error", "sign_in", null);
 
                   /* Retry after a moment */
@@ -193,13 +193,13 @@ Předpokládejme, že chcete proces přihlášení k chybě během můžete sest
             [...]
 
 ### <a name="reporting-events-during-a-job"></a>Události vytváření sestav během úlohy
-Události může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
+Události může být spuštěna úloha namísto související tooa související toohello se aktuální uživatelská relace.
 
 **Příklad:**
 
-Předpokládejme, že máme sociálních sítí, a úlohu do sestavy používáme celkovou dobu, během kterého uživatel se připojí k serveru. Uživatele můžete zůstat připojeni pozadí i když mu používá jiná aplikace nebo když je v režimu spánku telefonu, takže není žádná relace.
+Předpokládejme, že máme sociálních sítí a používáme úlohy tooreport hello celkový čas během které hello je uživatel připojený toohello serveru. Hello uživatele můžete zůstat připojeni pozadí i v případě, že mu používá jiná aplikace nebo když je v režimu spánku hello phone, takže není žádná relace.
 
-Uživatel může přijímat zprávy z jeho přátel, jedná se o událost úlohy.
+Hello uživatel může přijímat zprávy z jeho přátel, jedná se o událost úlohy.
 
             [...]
             public void signin(Context context, ...) {
@@ -219,12 +219,12 @@ Uživatel může přijímat zprávy z jeho přátel, jedná se o událost úlohy
             [...]
 
 ## <a name="extra-parameters"></a>Další parametry
-Libovolná data lze připojit k události, chyb, aktivity a úlohy.
+Libovolná data může být připojené tooevents, chyb, aktivity a úlohy.
 
 Tato data mohou být strukturovaná, používá třída sady pro Android (ve skutečnosti, funguje jako další parametry v Android záměry). Všimněte si, že sady může obsahovat pole nebo jiné sady instancí.
 
 > [!IMPORTANT]
-> Ujistěte se, když vložíte v parametrech parcelable nebo serializable, jejich `toString()` je implementována metoda vrátit čitelná pro člověka řetězec. Serializovatelné třídy, které obsahovat jiné přechodné pole, které nejsou serializovatelný provede Android havárií, když budete volat`bundle.putSerializable("key",value);`
+> Ujistěte se, když vložíte v parametrech parcelable nebo serializable, jejich `toString()` metoda je implementovaná tooreturn řetězec čitelná pro člověka. Serializovatelné třídy, které obsahovat jiné přechodné pole, které nejsou serializovatelný provede Android havárií, když budete volat`bundle.putSerializable("key",value);`
 > 
 > [!WARNING]
 > Zhuštěný pole v další parametry nejsou podporovány, to znamená, nebude možné serializovat jako pole. Je třeba je převést na standardní pole před použitím v další parametry.
@@ -239,28 +239,28 @@ Tato data mohou být strukturovaná, používá třída sady pro Android (ve sku
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v `Bundle` musí odpovídat následujícímu regulárnímu výrazu:
+Každý klíč v hello `Bundle` musí odpovídat hello následující regulární výraz:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Funkce jsou omezeny na **1024** znaků na jednu volání (po zakódování ve formátu JSON pomocí služby zapojení).
+Funkce omezeny příliš**1024** znaků na jednu volání (po zakódování ve formátu JSON hello zapojení služby).
 
-V předchozím příkladu je JSON odeslat na server 58 znaků:
+Předchozí příklad, hello JSON odeslán toohello serveru v hello je 58 znaků:
 
             {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
 ## <a name="reporting-application-information"></a>Informace o vytváření sestav aplikace
-Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí `sendAppInfo()` funkce.
+Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí hello `sendAppInfo()` funkce.
 
-Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení.
+Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze hello nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení.
 
-Jako událostí funkce sady třída slouží k abstraktní informace o aplikaci, Všimněte si, že pole nebo dílčí sady bude považována za plochý řetězce (pomocí serializace JSON).
+Jako funkce událostí hello třída sady použité tooabstract informace o aplikaci, Všimněte si, že maticových nebo dílčí obsahuje ureitou bude považována za plochý řetězce (pomocí serializace JSON).
 
 ### <a name="example"></a>Příklad
-Zde je ukázka kódu odesílání pohlaví uživatele a datum narození:
+Tady je datum narození a pohlaví uživatele toosend ukázka kódu:
 
             Bundle appInfo = new Bundle();
             appInfo.putString("status", "premium");
@@ -269,15 +269,15 @@ Zde je ukázka kódu odesílání pohlaví uživatele a datum narození:
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v `Bundle` musí odpovídat následujícímu regulárnímu výrazu:
+Každý klíč v hello `Bundle` musí odpovídat hello následující regulární výraz:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Informace o aplikaci jsou omezeny na **1024** znaků na jednu volání (po zakódování ve formátu JSON pomocí služby zapojení).
+Informace o aplikaci jsou omezené příliš**1024** znaků na jednu volání (po zakódování ve formátu JSON hello zapojení služby).
 
-V předchozím příkladu je JSON odeslat na server 44 znaků:
+Předchozí příklad, hello JSON odeslán toohello serveru v hello je 44 znaků:
 
             {"expiration":"2016-12-07","status":"premium"}

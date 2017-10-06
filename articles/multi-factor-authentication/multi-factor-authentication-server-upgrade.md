@@ -1,6 +1,6 @@
 ---
-title: "Upgrade služby Azure MFA serveru | Microsoft Docs"
-description: "Kroky a pokyny k upgradu serveru Azure Multi-Factor Authentication na novější verzi."
+title: upgrade serveru MFA aaaAzure | Microsoft Docs
+description: "Kroky a pokyny tooupgrade hello Azure Multi-Factor Authentication Server tooa novější verze."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,96 +15,96 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaa8d400e0e5f1c6be3a6d22cde6dd893ef4d546
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější Azure Multi-Factor Authentication Server
+# <a name="upgrade-toohello-latest-azure-multi-factor-authentication-server"></a>Upgrade toohello nejnovější Azure Multi-Factor Authentication Server
 
-Tento článek provede vás proces upgradu serveru Azure Multi-Factor Authentication (MFA) verze 6.0 nebo vyšší. Pokud je třeba upgradovat starší verzi agenta PhoneFactor, podívejte se na [Upgrade agenta PhoneFactor na Server Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server-upgrade.md).
+Tento článek vás provede procesem hello proces upgradu serveru Azure Multi-Factor Authentication (MFA) verze 6.0 nebo vyšší. Pokud potřebujete tooupgrade starší verzi hello agenta PhoneFactor, podívejte se příliš[hello upgradu agenta PhoneFactor tooAzure aplikace Multi-Factor Authentication Server](multi-factor-authentication-get-started-server-upgrade.md).
 
-Pokud provádíte upgrade z verze 6.x nebo starší na v7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 na rozhraní .NET 4.5. Všechny součásti také vyžadují Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší. MFA Server instalační program nainstaluje x86 a x64 verze těchto komponent, pokud již nejsou nainstalovány. Pokud portál User Portal a webová služba mobilní aplikace spustit na samostatných serverech, musíte nainstalovat tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat nejnovější aktualizace služby Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
+Pokud jste upgrade z verze 6.x nebo starší toov7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 too.NET 4.5. Všechny součásti také vyžadují Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší. Instalační program MFA Server Hello nainstaluje obě verze hello x86 a x64 všechny tyto komponenty, pokud již nejsou nainstalovány. Pokud hello portálu User Portal a webová služba mobilní aplikace spustit na samostatných serverech, musíte tooinstall tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat hello nejnovější aktualizace Microsoft Visual C++ 2015 Redistributable na hello [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
 
-## <a name="install-the-latest-version-of-azure-mfa-server"></a>Nainstalujte nejnovější verzi Azure MFA serveru
+## <a name="install-hello-latest-version-of-azure-mfa-server"></a>Nainstalujte nejnovější verzi Azure MFA Server hello
 
-1. Postupujte podle pokynů v [stažení serveru Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) získat nejnovější verzi Azure MFA serveru.
-2. Vytvořte záložní kopii datového souboru MFA Server nachází v C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (za předpokladu, že výchozí umístění instalace) na hlavním serveru MFA.
-3. Pokud spouštíte více serverů pro zajištění vysoké dostupnosti, změňte klientské systémy, které prováděl ověření vůči serveru MFA tak, aby se zastavit odesílání provozu na servery, které provádíte upgrade. Pokud použijete nástroj pro vyrovnávání zatížení, odeberte MFA serveru z nástroje pro vyrovnávání zatížení, provést upgrade a pak přidejte server zpátky do farmy.
-4. Spusťte nové instalační program na každém serveru MFA. Nejprve upgradujte podřízené servery, protože starý datový soubor replikuje pomocí hlavní může číst. 
+1. Postupujte pokynů hello v [hello stažení serveru Azure Multi-Factor Authentication Server](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) tooget hello nejnovější verzi hello Azure MFA serveru.
+2. Vytvořte záložní kopii hello MFA Server datový soubor nacházející se v C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (v případě hello výchozí umístění instalace) na hlavním serveru MFA.
+3. Pokud spouštíte více serverů pro zajištění vysoké dostupnosti, změňte hello klientské systémy, které ověření toohello MFA Server tak, aby se zastavit odesílání provozu toohello servery, které provádíte upgrade. Pokud používáte nástroj pro vyrovnávání zatížení, odeberte MFA serveru z nástroje pro vyrovnávání zatížení hello, hello upgrade a pak přidejte hello server zpět do farmy hello.
+4. Spuštění nového instalačního programu hello na každý Server MFA. Nejprve upgradujte podřízené servery, protože můžou přečíst hello starý datový soubor replikuje pomocí hlavního hello. 
 
-  Není nutné odinstalovat aktuální Server MFA před spuštěním Instalační služby. Instalační program provádí upgrade na místě. Cesta instalace je převzata z registru z předchozí instalace, takže se nainstaluje ve stejném umístění (například C:\Program Files\Multi-Factor Authentication Server). 
+  Není nutné toouninstall váš aktuální Server MFA před spuštěné hello Instalační služby. Hello instalační program provádí upgrade na místě. Hello cesta instalace je převzata z registru hello z předchozí instalace hello, takže se nainstaluje v hello stejné umístění (například C:\Program Files\Multi-Factor Authentication Server). 
   
-5. Pokud se zobrazí výzva k instalaci Microsoft Visual C++ 2015 Redistributable balíček aktualizace, přijměte řádku. X86 a x64 verze balíčku jsou nainstalovány.
-5. Pokud používáte sady SDK webové služby, zobrazí se výzva k instalaci nové sady SDK webové služby. Při instalaci nové sady SDK webové služby se ujistěte, že název virtuálního adresáře odpovídá dříve nainstalované virtuálního adresáře (například MultiFactorAuthWebServiceSdk).
-6. Opakujte kroky na všechny podřízené servery. Zvyšte úroveň jednoho podřízené jako nový hlavní server a pak upgradujte starého hlavního serveru. 
+5. Pokud jste balíček výzvami tooinstall Microsoft Visual C++ 2015 Redistributable aktualizace, přijetí výzvy hello. Obě verze hello x86 a x64 hello balíčku jsou nainstalovány.
+5. Pokud používáte hello Web Service SDK, zobrazí se výzva tooinstall hello nové sady SDK webové služby. Při instalaci hello nové sady SDK webové služby, ujistěte se, že tento název virtuálního adresáře hello odpovídá hello z dříve nainstalovaných virtuálního adresáře (například MultiFactorAuthWebServiceSdk).
+6. Opakujte kroky hello na všechny podřízené servery. Zvyšte úroveň jednoho hello podřízené toobe hello nový vzor, pak se upgrade hello starého hlavního serveru. 
 
-## <a name="upgrade-the-user-portal"></a>Upgrade portálu User Portal
+## <a name="upgrade-hello-user-portal"></a>Upgrade hello portálu User Portal
 
-1. Vytvořte záložní kopii souboru web.config, který je ve virtuálním adresáři umístění instalace portálu User Portal (např. C:\inetpub\wwwroot\MultiFactorAuth). Pokud výchozí motiv nebyly provedeny žádné změny, vytvořte záložní kopii složce App_Themes\Default. Je lepší vytvořit kopii do výchozí složky a vytvořit nový motiv než změňte výchozí motiv.
-2. Pokud portálu User Portal běží na stejném serveru jako ostatní součásti serveru MFA, instalace MFA serveru vás vyzve k aktualizaci portálu User Portal. Přijměte řádku a nainstalujte aktualizaci portálu User Portal. Zkontrolujte, jestli název virtuálního adresáře odpovídá dříve nainstalované virtuálního adresáře (například MultiFactorAuth).
-3. Pokud portál User Portal na vlastním serveru, zkopírujte soubor MultiFactorAuthenticationUserPortalSetup64.msi z umístění instalace jednoho ze serverů MFA a umístí jej do portálu User Portal webový server. Spusťte instalační program. 
+1. Vytvořte záložní kopii hello souboru web.config, který je v hello virtuální adresář hello umístění instalace portálu User Portal (např. C:\inetpub\wwwroot\MultiFactorAuth). Pokud výchozí motiv toohello nebyly provedeny žádné změny, vytvořte záložní kopii hello App_Themes\Default také složky. Je lepší toocreate kopie hello výchozí složky a vytvořit nový motiv než toochange hello výchozí motiv.
+2. Pokud hello portálu User Portal běží na stejném serveru jako ostatní součásti serveru MFA hello hello hello instalace MFA serveru vás vyzve k tooupdate hello portálu User Portal. Přijetí výzvy hello a nainstalujte aktualizaci hello portálu User Portal. Zkontrolujte, zda že tento název virtuálního adresáře hello odpovídá hello z dříve nainstalovaných virtuálního adresáře (například MultiFactorAuth).
+3. Pokud hello portálu User Portal je na vlastním serveru kopírovat soubor MultiFactorAuthenticationUserPortalSetup64.msi hello z hello nainstalujte umístění hello vícefaktorového ověřování serverů a umístí jej do hello portálu User Portal webový server. Spusťte instalační program hello. 
 
-  Pokud dojde k chybě stanovení, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší je povinné," stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
+  Pokud dojde k chybě stanovení, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší je povinné," stáhnout a nainstalovat nejnovější balíček aktualizace hello z hello [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte obě verze x86 a x64 hello.
 
-4. Po instalaci aktualizovaný software portálu User Portal porovnejte web.config zálohování, které jste provedli v kroku 1 pomocí nového souboru web.config. Pokud neexistují žádné nové atributy do nového souboru Web.config, zkopírujte do virtuálního adresáře přepsat novým zálohování souboru web.config. Další možností je zkopírujte a vložte hodnoty appSettings a adresu URL sady SDK webové služby ze záložního souboru do nového souboru web.config.
+4. Po aktualizaci User Portal je nainstalován software hello porovnejte hello web.config zálohování, které jste provedli v kroku 1 s hello nový soubor web.config. Pokud žádné nové atributy neexistují v hello nového souboru web.config, zkopírujte do hello virtuální adresář toooverwrite hello nový zálohování souboru web.config. Další možností je toocopy a vložte hello appSettings hodnoty a hello adresa URL webové služby sady SDK z hello záložní soubor do nového souboru web.config hello.
 
-Pokud máte portálu User Portal na více serverech, opakujte instalaci na všechny z nich. 
+Pokud máte hello portálu User Portal na více serverech, opakujte instalaci hello na všechny z nich. 
 
 
-## <a name="upgrade-the-mobile-app-web-service"></a>Upgrade služby Mobile App Web
+## <a name="upgrade-hello-mobile-app-web-service"></a>Upgrade hello webové služby mobilní aplikace
 
-1. Vytvořte záložní kopii souboru web.config, který je ve virtuálním adresáři umístění instalace webové služby mobilní aplikace (například C:\inetpub\wwwroot\app nebo C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. Zkopírujte soubor MultiFactorAuthenticationMobileAppWebServiceSetup64.msi z umístění instalace serveru MFA a umístí jej do mobilní aplikace registrace webový server.
-3. Spusťte instalační program. 
+1. Vytvořte záložní kopii hello souboru web.config, který je v hello virtuální adresář hello umístění instalace webové služby mobilní aplikace (například C:\inetpub\wwwroot\app nebo C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
+2. Kopírovat soubor MultiFactorAuthenticationMobileAppWebServiceSetup64.msi hello z hello nainstalujte umístění hello vícefaktorového ověřování serverů a umístí jej do hello mobilní aplikace registrace webový server.
+3. Spusťte instalační program hello. 
 
-  Pokud dojde k chybě s oznámením, že Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší není vyžadováno, stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
+  Pokud dojde k chybě s oznámením, že Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší není vyžadováno, stáhněte a nainstalujte nejnovější balíček aktualizace hello z hello [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte obě verze x86 a x64 hello.
 
-4. Po instalaci aktualizovaný software webové služby mobilní aplikace porovnejte souboru web.config, který byl zálohován v kroku 1 pomocí nového souboru web.config. Pokud neexistují žádné nové atributy do nového souboru Web.config, můžete zkopírovat uloženého souboru web.config zpět do virtuálního adresáře a přepsat novým. Další možností je zkopírujte a vložte hodnoty appSettings a adresu URL sady SDK webové služby ze záložního souboru do nového souboru web.config.
+4. Po instalaci softwaru webové služby mobilní aplikace hello aktualizovat porovnejte hello souboru web.config, který byl zálohován v kroku 1 s hello nový soubor web.config. Pokud žádné nové atributy neexistují v hello nového souboru web.config, můžete zkopírovat uloženého souboru web.config zpět do virtuálního adresáře hello a přepsat hello nový. Další možností je toocopy a vložte hello appSettings hodnoty a hello adresa URL webové služby sady SDK z hello záložní soubor do nového souboru web.config hello.
 
-Pokud máte webové služby mobilní aplikace na více serverech, opakujte instalaci na všechny z nich. 
+Pokud máte hello webové služby mobilní aplikace na více serverech, opakujte instalaci hello na všechny z nich. 
 
-## <a name="upgrade-the-ad-fs-adapters"></a>Upgrade adaptéry AD FS
+## <a name="upgrade-hello-ad-fs-adapters"></a>Upgrade hello adaptéry AD FS
 
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Pokud vícefaktorové ověřování běží na různých serverech než služba AD FS
 
-Tyto pokyny platí pouze pro spuštění aplikace Multi-Factor Authentication Server samostatně z vašich serverů služby AD FS. Pokud obě služby spustit na stejném serveru, tuto část přeskočte a přejděte na postup instalace. 
+Tyto pokyny platí pouze pro spuštění aplikace Multi-Factor Authentication Server samostatně z vašich serverů služby AD FS. Pokud obě služby spustili hello stejných serverů, tuto část přeskočte a přejděte toohello kroky instalace. 
 
-1. Uložení kopie souboru MultiFactorAuthenticationAdfsAdapter.config, který byl zaregistrován ve službě AD FS nebo exportovat konfiguraci pomocí následujícího příkazu prostředí PowerShell: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. V závislosti na dříve nainstalovaná verze je název adaptéru "WindowsAzureMultiFactorAuthentication" nebo "AzureMfaServerAuthentication".
-2. Zkopírujte následující soubory z umístění instalace serveru MFA na servery služby AD FS:
+1. Uložení kopie souboru MultiFactorAuthenticationAdfsAdapter.config hello, který byl zaregistrován ve službě AD FS nebo exportovat konfiguraci hello pomocí hello následující příkaz prostředí PowerShell: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path tooconfig file]`. v závislosti na dříve nainstalované verzi hello je název adaptéru Hello "WindowsAzureMultiFactorAuthentication" nebo "AzureMfaServerAuthentication".
+2. Zkopírujte následující soubory z hello MFA Server instalace umístění toohello AD FS serverů hello:
 
   - MultiFactorAuthenticationAdfsAdapterSetup64.msi
   - Register-MultiFactorAuthenticationAdfsAdapter.ps1
   - Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
   - MultiFactorAuthenticationAdfsAdapter.config
 
-3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath [path]` na konec `Register-AdfsAuthenticationProvider` příkaz. Nahraďte *[cesta]* s úplnou cestou k MultiFactorAuthenticationAdfsAdapter.config soubor nebo konfiguračního souboru exportovali v předchozím kroku. 
+3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 hello přidáním `-ConfigurationFilePath [path]` toohello konec hello `Register-AdfsAuthenticationProvider` příkaz. Nahraďte *[cesta]* s hello úplná cesta toohello MultiFactorAuthenticationAdfsAdapter.config soubor nebo soubor konfigurace hello exportovali v předchozím kroku hello. 
 
-  Zkontrolujte atributy v nové MultiFactorAuthenticationAdfsAdapter.config chcete zobrazit, pokud budou odpovídat původního konfiguračního souboru. Pokud žádné atributy přidané nebo odebrané v nové verzi, zkopírujte hodnoty atributů z původního konfiguračního souboru do nového nebo upravit původní soubor konfigurace tak, aby odpovídaly.
+  Zkontrolujte hello atributů v nové toosee MultiFactorAuthenticationAdfsAdapter.config hello, pokud budou odpovídat hello původního konfiguračního souboru. Pokud žádné atributy přidané nebo odebrané v nové verzi hello, zkopírovat hodnoty atributu hello hello původní konfigurace souboru toohello nový nebo upravit hello toomatch souboru původní konfigurace.
 
 ### <a name="install-new-ad-fs-adapters"></a>Instalace nové adaptéry služby AD FS
 
 > [!IMPORTANT] 
-> Uživatelé nebudou muset provést dvoustupňové ověřování během kroky 3-8 v této části. Pokud máte služby AD FS nakonfigurovaný v více clusterů, můžete odebrat, upgrade a obnovení každý cluster ve farmě nezávisle na jiných clusterů výpadky.
+> Uživatelé nebudou požadované tooperform dvoustupňové ověřování během kroky 3-8 v této části. Pokud máte služby AD FS nakonfigurovaný v více clusterů, můžete odebrat, upgrade a obnovení farmy jednotlivé clustery v hello nezávisle na hello další clustery tooavoid výpadku.
 
-1. Odeberte některé servery služby AD FS z farmy. Aktualizujte tyto servery, zatímco jiné jsou pořád spuštěné.
-2. Nainstalujte nový adaptér služby AD FS na každém serveru odebrány z farmy služby AD FS. Pokud je Server vícefaktorového ověřování nainstalovaný na každém serveru služby AD FS, můžete aktualizovat pomocí Správce serveru MFA UX V opačném aktualizujte spuštěním soubory MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
+1. Odeberte některé servery služby AD FS z farmy hello. Aktualizujte tyto servery při hello ponecháním ostatních v běhu.
+2. Nainstalujte nový adaptér služby AD FS hello na každém serveru odebrány z farmy hello AD FS. Pokud hello MFA serveru je nainstalovaná na každém serveru služby AD FS, můžete aktualizovat pomocí Správce serveru MFA Server hello UX V opačném aktualizujte spuštěním soubory MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
 
-  Pokud dojde k chybě stanovení, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší je povinné," stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
+  Pokud dojde k chybě stanovení, "Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší je povinné," stáhnout a nainstalovat nejnovější balíček aktualizace hello z hello [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte obě verze x86 a x64 hello.
 
-3. Přejděte na **služby AD FS** > **zásady ověřování** > **upravit globální vícefaktorového ověřování zásad**. Zrušte zaškrtnutí políčka **WindowsAzureMultiFactorAuthentication** nebo **AzureMFAServerAuthentication** (v závislosti na aktuální verzi). 
+3. Přejděte příliš**služby AD FS** > **zásady ověřování** > **upravit globální zásady vícefaktorového ověřování**. Zrušte zaškrtnutí políčka **WindowsAzureMultiFactorAuthentication** nebo **AzureMFAServerAuthentication** (v závislosti na aktuální verzi hello nainstalovaná). 
 
   Po dokončení tohoto kroku dvoustupňové ověřování přes MFA Server není k dispozici v tomto clusteru služby AD FS, dokud nedokončíte krok 8.
 
-4. Spuštěním skriptu prostředí PowerShell Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 zrušte registraci starší verzi adaptér AD FS. Ujistěte se, že *-název* parametr ("WindowsAzureMultiFactorAuthentication" nebo "AzureMFAServerAuthentication") odpovídá názvu, který se zobrazí v kroku 3. To platí pro všechny servery ve stejném clusteru služby AD FS, protože centrální konfigurace.
-5. Spuštěním skriptu prostředí PowerShell Register-MultiFactorAuthenticationAdfsAdapter.ps1 Zaregistrujte nový adaptér služby AD FS. To platí pro všechny servery ve stejném clusteru služby AD FS, protože centrální konfigurace.
-6. Restartujte službu AD FS na každém serveru odebrány z farmy služby AD FS.
-7. Přidejte aktualizovanou servery zpět do farmy služby AD FS a odeberte ostatní servery z farmy.
-8. Přejděte na **služby AD FS** > **zásady ověřování** > **upravit globální vícefaktorového ověřování zásad**. Zkontrolujte **AzureMfaServerAuthentication**.
-9. Opakujte krok 2: aktualizace serverů nyní odebrány z farmy služby AD FS a restartujte službu AD FS na těchto serverech.
-10. Přidáte tyto servery zpátky do farmy služby AD FS.
+4. Unregister hello starší verze hello AD FS adapteru pomocí skriptu prostředí PowerShell Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 hello. Ujistěte se, že hello *-název* hello název, který se zobrazí v kroku 3 odpovídá parametru ("WindowsAzureMultiFactorAuthentication" nebo "AzureMFAServerAuthentication"). Vzhledem k tomu, že je konfigurace centrálních platí tooall servery v clusteru hello stejnou AD FS.
+5. Zaregistrujte nový adaptér služby AD FS hello spuštěním skriptu prostředí PowerShell Register-MultiFactorAuthenticationAdfsAdapter.ps1 hello. Vzhledem k tomu, že je konfigurace centrálních platí tooall servery v clusteru hello stejnou AD FS.
+6. Hello restartování služby AD FS na každém serveru odebrat z hello farma služby AD FS.
+7. Přidejte servery hello aktualizovat zpět farmy toohello AD FS a odebrat hello jiné servery z farmy hello.
+8. Přejděte příliš**služby AD FS** > **zásady ověřování** > **upravit globální zásady vícefaktorového ověřování**. Zkontrolujte **AzureMfaServerAuthentication**.
+9. Opakujte krok 2 tooupdate hello servery nyní odebrány z farmy hello AD FS a restartujte službu hello AD FS na těchto serverech.
+10. Přidáte tyto servery zpátky do farmy hello služby AD FS.
 
 ## <a name="next-steps"></a>Další kroky
 

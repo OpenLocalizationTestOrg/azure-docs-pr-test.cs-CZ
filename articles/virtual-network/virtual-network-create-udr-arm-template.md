@@ -1,6 +1,6 @@
 ---
-title: "Řídit směrování a virtuální zařízení ve službě Azure - šablony | Microsoft Docs"
-description: "Zjistěte, jak řídit směrování a virtuální zařízení pomocí šablony Azure Resource Manager."
+title: "aaaControl směrování a virtuální zařízení ve službě Azure - šablony | Microsoft Docs"
+description: "Zjistěte, jak toocontrol směrování a virtuální zařízení pomocí šablony Azure Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 781340593541784d2d9772d310c041ad4a5c3101
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Vytvoření trasy definované uživatelem (UDR) pomocí šablony
 
@@ -31,14 +31,14 @@ ms.lasthandoff: 07/11/2017
 > * [Rozhraní příkazového řádku (Classic)](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
-> Než začnete pracovat s prostředky Azure, je potřeba si uvědomit, že Azure má v současné době dva modely nasazení: Azure Resource Manager a klasický. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty v horní části tohoto článku. Tento článek se týká modelu nasazení Resource Manager. 
+> Než začnete pracovat s prostředky Azure, je důležité toounderstand Azure aktuálně má dva modely nasazení: Azure Resource Manager a Klasický model. Před zahájením práce s jakýmikoli prostředky Azure se ujistěte, že rozumíte [modelům nasazení a příslušným nástrojům](../azure-resource-manager/resource-manager-deployment-model.md). Hello dokumentaci k různým nástrojům můžete zobrazit kliknutím na karty hello hello horní části tohoto článku. Tento článek se týká modelu nasazení Resource Manager hello. 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
 ## <a name="udr-resources-in-a-template-file"></a>UDR prostředky v souboru šablony
-Můžete zobrazit a stáhnout [Ukázka šablony](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
+Můžete zobrazit a stáhnout hello [Ukázka šablony](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
 
-V následující části zobrazuje definici front-end UDR v **azuredeploy-vnet-nsg-udr.json** souboru pro tento scénář:
+Hello následující část popisuje hello Definice hello front-end UDR v hello **azuredeploy-vnet-nsg-udr.json** soubor pro scénář hello:
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/routeTables",
@@ -59,7 +59,7 @@ V následující části zobrazuje definici front-end UDR v **azuredeploy-vnet-n
         }
       ]
 
-Chcete-li přidružit UDR ke klientské podsíti, musíte změnit definici podsítě v šabloně a použít id odkazu UDR.
+tooassociate hello UDR toohello podsítě front-endu, máte v hello šablony a id odkazu hello použijte pro hello UDR toochange definici podsítě hello.
 
     "subnets": [
         "name": "[parameters('frontEndSubnetName')]",
@@ -73,9 +73,9 @@ Chcete-li přidružit UDR ke klientské podsíti, musíte změnit definici pods�
           }
         },
 
-Všimněte si stejné prováděná pro NSG back-end a back-end podsíť v šabloně.
+Všimněte si, hello stejné prováděná hello back-end NSG a hello back-end podsítě v šabloně hello.
 
-Musíte také zkontrolujte, zda **FW1** virtuálních počítačů má předávání vlastnost povoleno na síťový adaptér, který se použije pro příjem a předávání paketů IP adresu. Následující části zobrazuje definici síťový adaptér pro FW1 v souboru azuredeploy-nsg-udr.json závislosti na scénáři výše.
+Musíte taky tooensure této hello **FW1** předávání vlastnost povoleno na hello síťové adaptéry, které budou použité tooreceive a k předávání paketů IP hello má virtuální počítač. Hello části níže ukazuje definici hello hello síťovou kartu pro FW1 v souboru azuredeploy-nsg-udr.json hello podle hello scénář výše.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -111,17 +111,17 @@ Musíte také zkontrolujte, zda **FW1** virtuálních počítačů má předáv�
       "count": "[parameters('fwCount')]"
     }
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Nasazení šablony pomocí metody Click to Deploy
-Ukázková šablona, která je k dispozici ve veřejném úložišti, používá soubor parametrů obsahující výchozí hodnoty, které se použijí k vygenerování výše popsaného scénáře. Pokud chcete nasadit tuto šablonu pomocí metody Click to Deploy, pokračujte na [tento odkaz](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), klikněte na **Nasadit do Azure**, v případě potřeby nahraďte výchozí hodnoty parametrů, a pokračujte podle pokynů na portálu.
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Nasazení šablony hello pomocí klikněte na tlačítko toodeploy
+Hello Ukázka šablony k dispozici v úložišti na veřejné hello používá parametr souboru, který obsahuje hello výchozí hodnoty používané toogenerate hello scénář popsaný výše. toodeploy pomocí této šablony, klikněte na toodeploy, postupujte podle [tento odkaz](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), klikněte na tlačítko **nasazení tooAzure**, nahraďte hello výchozí hodnoty parametrů v případě potřeby a postupujte podle pokynů hello hello portálu.
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
-2. Spuštěním následujícího příkazu vytvoříte skupinu prostředků:
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, projděte si téma [jak tooInstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů hello všechny toohello hello způsob ukončení toosign do Azure a vybrat své předplatné.
+2. Spusťte následující příkaz toocreate hello skupiny prostředků:
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location westus
     ```
 
-3. Spusťte následující příkaz k nasazení šablony:
+3. Spusťte následující příkaz toodeploy hello šablony hello:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeployUDR -ResourceGroupName TestRG `
@@ -171,22 +171,22 @@ Ukázková šablona, která je k dispozici ve veřejném úložišti, používá
 
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Nasazení šablony pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Nasazení šablony hello pomocí hello rozhraní příkazového řádku Azure
 
-Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte následující kroky:
+toodeploy hello šablony ARM pomocí hello rozhraní příkazového řádku Azure, dokončení hello následující kroky:
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
-2. Spusťte následující příkaz Přepnout do režimu Resource Manager:
+1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, projděte si téma [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) a postupujte podle pokynů hello až toohello bodu, kde můžete vybrat svůj účet Azure a předplatné.
+2. Spusťte následující příkaz tooswitch tooResource Manager režimu hello:
 
     ```azurecli
     azure config mode arm
     ```
 
-    Toto je očekávaný výstup výše uvedeného příkazu:
+    Tady je hello očekávaný výstup výše hello příkazu:
 
         info:    New mode is arm
 
-3. V prohlížeči přejděte na **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, zkopírujte obsah souboru json a vložit do nového souboru ve vaší počítač. V tomto scénáři můžete by být kopírování hodnoty menší než do souboru s názvem **c:\udr\azuredeploy.parameters.json**.
+3. V prohlížeči přejděte příliš**https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**hello obsah souboru json hello kopírovat a vložit do nového souboru v vaší počítač. V tomto scénáři by kopírování hello hodnoty menší než tooa soubor s názvem **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {
@@ -206,7 +206,7 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
         }
     ```
 
-4. Spusťte následující příkaz, který nasadíte novou síť VNet pomocí šablony a parametr soubory stáhli a upravili v předchozích krocích:
+4. Spusťte následující příkaz toodeploy hello nové sítě VNet pomocí hello šablony a parametr soubory stáhli a upravili v předchozích krocích hello:
 
     ```azurecli
     azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
@@ -229,7 +229,7 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
         data:    
         info:    group create command OK
 
-5. Spusťte následující příkaz k zobrazení prostředků služby vytvořené v nové skupiny prostředků:
+5. Spusťte následující příkaz tooview hello prostředky vytvořené v novou skupinu prostředků hello hello:
 
     ```azurecli
     azure group show TestRG
@@ -239,7 +239,7 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
 
             info:    Executing command group show
             info:    Listing resource groups
-            info:    Listing resources for the group
+            info:    Listing resources for hello group
             data:    Id:                  /subscriptions/[Subscription Id]/resourceGroups/TestRG
             data:    Name:                TestRG
             data:    Location:            westus
@@ -404,5 +404,5 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
             info:    group show command OK
 
 > [!TIP]
-> Pokud nevidíte všechny prostředky, spusťte `azure group deployment show` příkaz zajistit Stav zřizování nasazení je *Succeded*.
+> Pokud nevidíte všechny prostředky hello, spusťte hello `azure group deployment show` příkaz tooensure hello stav nasazení hello zřizování je *Succeded*.
 > 

@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit cluster Service Fabric na portálu Azure | Microsoft Docs"
-description: "Tento článek popisuje postup nastavení zabezpečení clusteru Service Fabric v Azure pomocí portálu Azure a Azure Key Vault."
+title: "cluster Service Fabric aaaCreate v hello portálu Azure | Microsoft Docs"
+description: "Tento článek popisuje, jak hello tooset zabezpečení clusteru Service Fabric v Azure pomocí portálu Azure a Azure Key Vault."
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
-ms.openlocfilehash: 7dda9520ce3d93bf0e86bd2481ad06c268d087c7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 045f71b491260e741ce7a54a75c440e1b33059a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvořit cluster Service Fabric v Azure pomocí portálu Azure
+# <a name="create-a-service-fabric-cluster-in-azure-using-hello-azure-portal"></a>Vytvořit cluster Service Fabric v Azure pomocí hello portálu Azure
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
-Toto je podrobný průvodce, který vás provede kroky nastavení zabezpečení clusteru Service Fabric v Azure pomocí portálu Azure. Tento průvodce vás provede následující kroky:
+Toto je podrobný průvodce, který vás provede kroky hello nastavení zabezpečení clusteru Service Fabric v Azure pomocí hello portálu Azure. Tento průvodce vás provede hello následující kroky:
 
-* Nastavte Key Vault pro správu klíčů pro zabezpečení clusteru.
-* Vytvoření zabezpečeného clusteru v Azure prostřednictvím portálu Azure.
+* Nastavení klíče toomanage Key Vault pro zabezpečení clusteru.
+* Vytvoření zabezpečeného clusteru v Azure prostřednictvím hello portálu Azure.
 * Ověřování pomocí certifikátů správci.
 
 > [!NOTE]
@@ -38,14 +38,14 @@ Toto je podrobný průvodce, který vás provede kroky nastavení zabezpečení 
 > 
 > 
 
-Cluster s podporou zabezpečení je clusteru, který brání neoprávněným přístupem k operace správy, která zahrnuje nasazení, upgrade a odstranění aplikací, služeb a data, která obsahují. Nezabezpečená clusteru je cluster každý, kdo může připojit k kdykoli a provádět operace správy. Přestože je možné vytvořit nezabezpečená clusteru, je **důrazně doporučujeme vytvořit cluster zabezpečené**. Nezabezpečená clusteru **nelze zabezpečit později** -je nutné vytvořit nový cluster.
+Cluster s podporou zabezpečení je clusteru, který brání neoprávněným přístupem toomanagement operace, která zahrnuje nasazení, upgrade a odstranění aplikací, služeb a hello data, která obsahují. Nezabezpečená clusteru je cluster, že každý, kdo připojit tooat kdykoli a provádět operace správy. Přestože je možné toocreate nezabezpečená clusteru, je **důrazně doporučujeme toocreate cluster zabezpečené**. Nezabezpečená clusteru **nelze zabezpečit později** -je nutné vytvořit nový cluster.
 
-Koncepty jsou stejné pro vytvoření zabezpečeného clusterů, jestli jsou clusterů systému Windows nebo Linux clusterů. Další informace a pomocné rutiny skripty pro vytvoření zabezpečeného clusterů systému Linux, najdete v tématu [vytváření zabezpečené clusterů v systému Linux](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters). Parametry získané zadané pomocné rutiny skript můžete zadat přímo do portálu, jak je popsáno v části [na portálu Azure vytvořit cluster](#create-cluster-portal).
+Koncepty Hello jsou hello stejné pro vytvoření zabezpečeného clusterů, ať už hello clustery jsou clusterů systému Linux nebo Windows clusterů. Další informace a pomocné rutiny skripty pro vytvoření zabezpečeného clusterů systému Linux, najdete v tématu [vytváření zabezpečené clusterů v systému Linux](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters). Hello parametry získané skriptem hello Pomocník poskytuje může být vstup přímo na portálu hello jak je popsáno v části hello [vytvořit cluster v hello portál Azure](#create-cluster-portal).
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Tato příručka používá [prostředí Azure PowerShell][azure-powershell]. Při spouštění novou relaci prostředí PowerShell, přihlaste se k účtu Azure a vybrat své předplatné před provedením Azure příkazy.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
+Tato příručka používá [prostředí Azure PowerShell][azure-powershell]. Při spouštění novou relaci prostředí PowerShell, přihlaste se tooyour účet Azure a vybrat své předplatné před provedením Azure příkazy.
 
-Přihlaste se k účtu azure:
+Přihlaste se účtem tooyour azure:
 
 ```powershell
 Login-AzureRmAccount
@@ -59,21 +59,21 @@ Set-AzureRmContext -SubscriptionId <guid>
 ```
 
 ## <a name="set-up-key-vault"></a>Nastavení služby Key Vault
-Tato část průvodce vás provede procesem vytvoření trezoru klíč pro cluster Service Fabric v Azure a aplikace Service Fabric. Dokončení průvodce v Key Vault, najdete v článku [Key Vault Příručka Začínáme][key-vault-get-started].
+Tato část hello Průvodce vás provede procesem vytváření Key Vault pro cluster Service Fabric v Azure a aplikace Service Fabric. Dokončení průvodce v Key Vault, najdete v části hello [Key Vault Příručka Začínáme][key-vault-get-started].
 
-Service Fabric používá certifikáty X.509 k zabezpečení clusteru. Azure Key Vault se používá ke správě certifikátů pro clusterů Service Fabric v Azure. Pokud cluster je nasazené v Azure, poskytovatel prostředků Azure, který je zodpovědný za vytváření clusterů Service Fabric vyžaduje certifikáty od Key Vault a nainstaluje je v clusteru virtuálních počítačů.
+Service Fabric používá toosecure certifikáty X.509 clusteru. Azure Key Vault je použité toomanage certifikáty pro clusterů Service Fabric v Azure. Pokud cluster je nasazené v Azure, poskytovatel prostředků Azure hello zodpovědný za vytváření clusterů Service Fabric vyžaduje certifikáty od Key Vault a nainstaluje je hello clusteru virtuálních počítačů.
 
-Následující diagram znázorňuje vztah mezi Key Vault, cluster Service Fabric a poskytovatel prostředků Azure, která používá certifikáty uložené v Key Vault, při vytváření clusteru:
+Hello následující diagram znázorňuje hello vztah mezi Key Vault, cluster Service Fabric a hello poskytovatel prostředků Azure, která používá certifikáty uložené v Key Vault, při vytváření clusteru:
 
 ![Instalace certifikátu][cluster-security-cert-installation]
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Prvním krokem je vytvoření nové skupiny prostředků speciálně pro Key Vault. Uvedení Key Vault do vlastní skupiny prostředků se doporučuje, aby odeberete skupiny prostředků výpočetního prostředí a úložiště – například skupiny prostředků, který má cluster Service Fabric – bez ztráty klíče a tajné klíče. Skupinu prostředků, která má Key Vault musí být ve stejné oblasti jako cluster, který se používá.
+prvním krokem Hello je toocreate novou skupinu prostředků speciálně pro Key Vault. Uvedení Key Vault do vlastní skupiny prostředků se doporučuje, aby můžete odebrat skupiny prostředků výpočetního prostředí a úložiště – například hello skupiny prostředků, který má cluster Service Fabric – bez ztráty klíče a tajné klíče. Skupina prostředků Hello, který má Key Vault musí být v hello stejné oblasti jako hello clusteru, který se používá.
 
 ```powershell
 
     PS C:\Users\vturecek> New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
-    WARNING: The output object type of this cmdlet will be modified in a future release.
+    WARNING: hello output object type of this cmdlet will be modified in a future release.
 
     ResourceGroupName : mycluster-keyvault
     Location          : westus
@@ -84,7 +84,7 @@ Prvním krokem je vytvoření nové skupiny prostředků speciálně pro Key Vau
 ```
 
 ### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
-Vytvoření trezoru klíč do nové skupiny prostředků. Key Vault **musí být povolen pro nasazení** umožňující poskytovateli prostředků Service Fabric získat certifikáty z něj a nainstalujte na uzly clusteru:
+Vytvoření trezoru klíč v hello novou skupinu prostředků. Hello Key Vault **musí být povolen pro nasazení** tooallow hello Service Fabric prostředků zprostředkovatele tooget certifikáty z něj a nainstalujte na uzly clusteru:
 
 ```powershell
 
@@ -106,8 +106,8 @@ Vytvoření trezoru klíč do nové skupiny prostředků. Key Vault **musí být
                                        Object ID                :    <guid>
                                        Application ID           :
                                        Display Name             :    
-                                       Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
-                                       Permissions to Secrets   :    all
+                                       Permissions tooKeys      :    get, create, delete, list, update, import, backup, restore
+                                       Permissions tooSecrets   :    all
 
 
     Tags                             :
@@ -124,62 +124,62 @@ Pokud máte existující Key Vault, můžete ji povolit pro nasazení pomocí ro
 ```
 
 
-## <a name="add-certificates-to-key-vault"></a>Přidejte certifikáty do Key Vault
-Ve službě Service Fabric se k ověřování a šifrování pro zabezpečení různých aspektů clusteru a jeho aplikací využívají certifikáty. Další informace o tom, jak certifikáty se používají v Service Fabric najdete v tématu [scénáře zabezpečení clusteru Service Fabric][service-fabric-cluster-security].
+## <a name="add-certificates-tookey-vault"></a>Přidejte certifikáty tooKey trezoru
+Certifikáty se používají v Service Fabric tooprovide ověřování a šifrování toosecure různé aspekty cluster a jeho aplikace. Další informace o tom, jak certifikáty se používají v Service Fabric najdete v tématu [scénáře zabezpečení clusteru Service Fabric][service-fabric-cluster-security].
 
 ### <a name="cluster-and-server-certificate-required"></a>Cluster a server certifikátu (povinné)
-Tento certifikát je vyžadován k zabezpečení clusteru a zabránit neoprávněnému přístupu k němu. Poskytuje zabezpečení clusteru několik způsoby:
+Tento certifikát je požadovaná toosecure cluster a zabránit tooit neoprávněného přístupu. Poskytuje zabezpečení clusteru několik způsoby:
 
-* **Ověřování clusteru:** ověřuje komunikaci mezi uzly pro cluster federaci. Pouze uzly, které můžete prokázání své identity s tímto certifikátem může připojit ke clusteru.
-* **Ověření serveru:** ověřuje koncové body správy clusteru klient pro správu, tak, aby klient správy zná je rozhovoru s skutečné clusteru. Tento certifikát také poskytuje SSL pro rozhraní API pro správu protokolu HTTPS a pro Service Fabric Explorer přes protokol HTTPS.
+* **Ověřování clusteru:** ověřuje komunikaci mezi uzly pro cluster federaci. Pouze uzly, které můžete prokázání své identity s tímto certifikátem můžete připojit hello cluster.
+* **Ověření serveru:** ověřuje hello clusteru správy koncové body tooa správy klienta, tak, aby hello klienta pro správu zná ho je rozhovoru toohello skutečné clusteru. Tento certifikát také poskytuje protokol SSL pro hello rozhraní API pro správu protokolu HTTPS a pro Service Fabric Explorer přes protokol HTTPS.
 
-Poskytovat tyto účely, certifikát musí splňovat následující požadavky:
+tooserve tyto účely, hello certifikátu musí splňovat následující požadavky hello:
 
-* Certifikát musí obsahovat privátní klíč.
-* Certifikát se musí vytvořit pro výměnu klíčů, exportovat do souboru Personal Information Exchange (.pfx).
-* Název předmětu certifikátu musí odpovídat doménu použitou pro přístup ke clusteru Service Fabric. To je potřeba zajistit SSL pro koncové body správy protokolu HTTPS a Service Fabric Explorer clusteru. Nelze získat certifikát SSL od certifikační autority (CA) pro `.cloudapp.azure.com` domény. Získejte vlastní název domény pro váš cluster. Při žádosti o certifikát od certifikační Autority název subjektu certifikátu musí odpovídat vlastní název domény pro váš cluster používá.
+* Hello certifikát musí obsahovat privátní klíč.
+* Hello certifikátu musí být vytvořeny pro výměnu klíčů, exportovatelný tooa soubor Personal Information Exchange (.pfx).
+* Hello názvu subjektu certifikátu musí odpovídat cluster Service Fabric hello domény použít tooaccess hello. Toto je požadovaná tooprovide SSL pro koncové body správy protokolu HTTPS a Service Fabric Explorer hello clusteru. Nelze získat certifikát SSL od certifikační autority (CA) pro hello `.cloudapp.azure.com` domény. Získejte vlastní název domény pro váš cluster. Při žádosti o certifikát od název subjektu certifikátu certifikační Autority hello musí odpovídat názvu vlastní domény hello používá pro váš cluster.
 
 ### <a name="client-authentication-certificates"></a>Certifikáty pro ověřování klientů
 Další klientské certifikáty ověřit správci pro úlohy správy clusteru. Service Fabric má dvě úrovně přístupu: **správce** a **jen pro čtení uživatele**. Minimálně je třeba použít jeden certifikát pro přístup pro správu. Pro další přístupu na úrovni uživatele je třeba zadat samostatný certifikát. Další informace o přístupu rolí najdete v tématu [řízení přístupu na základě rolí pro Service Fabric klienty][service-fabric-cluster-security-roles].
 
-Není nutné nahrát certifikáty pro ověřování klientů pro Key Vault pro práci s Service Fabric. Tyto certifikáty pouze musí být zadané pro uživatele, kteří mají oprávnění pro správu clusteru. 
+Není nutné tooupload klienta ověřování certifikátů tooKey trezoru toowork s Service Fabric. Tyto certifikáty stačí toobe poskytuje toousers, kteří mají oprávnění pro správu clusteru. 
 
 > [!NOTE]
-> Azure Active Directory je doporučeným způsobem k ověřování klientů pro operace správy clusterů. Chcete-li používat Azure Active Directory, je potřeba [vytvořit cluster pomocí Azure Resource Manager][create-cluster-arm].
+> Azure Active Directory je, že hello doporučená způsob tooauthenticate klientů pro cluster operace správy. toouse Azure Active Directory, musíte [vytvořit cluster pomocí Azure Resource Manager][create-cluster-arm].
 > 
 > 
 
 ### <a name="application-certificates-optional"></a>Certifikáty aplikace (volitelné)
-Libovolný počet dalších certifikátů lze nainstalovat na clusteru pro aplikace z bezpečnostních důvodů. Před vytvořením clusteru, vezměte v úvahu scénáře zabezpečení aplikací, které vyžadují certifikát nainstalovaný na uzlech, například:
+Libovolný počet dalších certifikátů lze nainstalovat na clusteru pro aplikace z bezpečnostních důvodů. Před vytvořením clusteru, zvažte hello aplikace zabezpečení scénáře, které vyžadují certifikát toobe, nainstalovaná na uzlech hello, jako například:
 
 * Šifrování a dešifrování hodnot konfigurace aplikace
 * Šifrování dat mezi uzly během replikace 
 
-Při vytváření clusteru prostřednictvím portálu Azure se nedá nakonfigurovat certifikáty k aplikaci. Konfigurace aplikace certifikáty během instalace clusteru, musíte [vytvořit cluster pomocí Azure Resource Manager][create-cluster-arm]. Certifikáty aplikace můžete také přidat do clusteru po jeho vytvoření.
+Při vytváření clusteru prostřednictvím hello portál Azure se nedá nakonfigurovat certifikáty k aplikaci. certifikáty k aplikaci tooconfigure během instalace clusteru, musíte [vytvořit cluster pomocí Azure Resource Manager][create-cluster-arm]. Můžete také přidat aplikace certifikáty toohello clusteru po jeho vytvoření.
 
 ### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Certifikáty formátování pro použití poskytovatele prostředků Azure.
-Soubory privátních klíčů (.pfx) můžete přidat a používat přímo přes Key Vault. Však poskytovatel prostředků Azure vyžaduje klíče ukládaly ve speciální formátu JSON, který zahrnuje .pfx jako base-64 kódovaný řetězec a heslo soukromého klíče. Abychom vyhověli tyto požadavky, klíče musí být umístěn do řetězce formátu JSON a pak uloženy jako *tajné klíče* v Key Vault.
+Soubory privátních klíčů (.pfx) můžete přidat a používat přímo přes Key Vault. Poskytovatel prostředků Azure hello však vyžaduje toobe klíče uložené ve speciální formátu JSON, který zahrnuje hello .pfx jako kódování base-64 kódovaného řetězec a hello heslo soukromého klíče. tooaccommodate tyto požadavky klíče musí být umístěn do řetězce formátu JSON a pak uloženy jako *tajné klíče* v Key Vault.
 
-Pro usnadnění tohoto procesu je modul prostředí PowerShell [dostupná na Githubu][service-fabric-rp-helpers]. Postupujte podle těchto kroků, které chcete použít modul:
+modul prostředí PowerShell je toomake to zpracovat snadnější, [dostupná na Githubu][service-fabric-rp-helpers]. Postupujte podle těchto kroků toouse hello modul:
 
-1. Stáhněte si celý obsah úložiště do místního adresáře. 
-2. Naimportujte modul v okně prostředí PowerShell:
+1. Stáhněte si celý obsah hello hello úložiště do místního adresáře. 
+2. Import modulu hello v okně prostředí PowerShell:
 
 ```powershell
   PS C:\Users\vturecek> Import-Module "C:\users\vturecek\Documents\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 ```
 
-`Invoke-AddCertToKeyVault` Příkaz v tento modul prostředí PowerShell automaticky formáty privátní klíč certifikátu do řetězce formátu JSON a odešle ji do služby Key Vault. Ho použijte k přidání certifikátu clusteru a všechny další aplikaci certifikáty do Key Vault. Tento krok opakujte pro všechny další certifikáty, které chcete nainstalovat v clusteru.
+Hello `Invoke-AddCertToKeyVault` příkaz v tento modul prostředí PowerShell automaticky formáty privátní klíč certifikátu do řetězce formátu JSON a odešle ho tooKey trezoru. Použijte ji tooadd hello clusteru certifikát a všechny další aplikaci certifikáty tooKey trezoru. Tento krok opakujte pro všechny další certifikáty, že chcete tooinstall v clusteru.
 
 ```powershell
 PS C:\Users\vturecek> Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
 
-    Switching context to SubscriptionId <guid>
+    Switching context tooSubscriptionId <guid>
     Ensuring ResourceGroup mycluster-keyvault in West US
-    WARNING: The output object type of this cmdlet will be modified in a future release.
+    WARNING: hello output object type of this cmdlet will be modified in a future release.
     Using existing valut myvault in West US
     Reading pfx file from C:\path\to\key.pfx
-    Writing secret to myvault in vault myvault
+    Writing secret toomyvault in vault myvault
 
 
 Name  : CertificateThumbprint
@@ -193,7 +193,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 ```
 
-Toto jsou všechny předpoklady Key Vault pro konfiguraci šablony správce prostředků clusteru Service Fabric, která nainstaluje certifikáty pro ověřování uzlu, zabezpečení koncového bodu správy a ověřování a funkcí zabezpečení další aplikace, které používají certifikáty X.509. V tomto okamžiku teď byste měli mít následující nastavení v Azure:
+Toto jsou všechny požadované součásti hello Key Vault pro konfiguraci šablony správce prostředků clusteru Service Fabric, která nainstaluje certifikáty pro ověřování uzlu, zabezpečení koncového bodu správy a ověření a zabezpečení žádné další aplikace Funkce, které používají certifikáty X.509. V tomto okamžiku teď byste měli mít hello po instalaci v Azure:
 
 * Skupina prostředků Key Vault
   * Key Vault
@@ -201,62 +201,62 @@ Toto jsou všechny předpoklady Key Vault pro konfiguraci šablony správce pros
 
 < /a "Vytvoření cluster-portal" ></a>
 
-## <a name="create-cluster-in-the-azure-portal"></a>Vytvoření clusteru na portálu Azure
-### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek clusteru Service Fabric
-![vyhledávání pro šablonu clusteru Service Fabric na portálu Azure.][SearchforServiceFabricClusterTemplate]
+## <a name="create-cluster-in-hello-azure-portal"></a>Vytvoření clusteru v hello portálu Azure
+### <a name="search-for-hello-service-fabric-cluster-resource"></a>Vyhledejte hello prostředku clusteru Service Fabric
+![Vyhledejte šablony clusteru Service Fabric na hello portálu Azure.][SearchforServiceFabricClusterTemplate]
 
-1. Přihlaste se na web [Azure Portal][azure-portal].
-2. Klikněte na tlačítko **nový** o přidání nového prostředku šablony. Vyhledejte šablony Service Fabric Cluster **Marketplace** pod **všechno, co**.
-3. Vyberte **Service Fabric Cluster** ze seznamu.
-4. Přejděte na **Service Fabric Cluster** okně klikněte na tlačítko **vytvořit**,
-5. **Cluster Service Fabric vytvořit** okno obsahuje následující čtyři kroky.
+1. Přihlaste se toohello [portál Azure][azure-portal].
+2. Klikněte na tlačítko **nový** tooadd novou šablonu prostředků. Vyhledejte šablony hello Service Fabric Cluster v hello **Marketplace** pod **všechno, co**.
+3. Vyberte **Service Fabric Cluster** hello seznamu.
+4. Přejděte toohello **Service Fabric Cluster** okně klikněte na tlačítko **vytvořit**,
+5. Hello **cluster Service Fabric vytvořit** okno obsahuje hello následující čtyři kroky.
 
 #### <a name="1-basics"></a>1. Základy
 ![Snímek obrazovky vytváření nové skupiny prostředků.][CreateRG]
 
-V okně základy budete muset zadat základní informace pro váš cluster.
+V okně základy hello musíte tooprovide hello základní informace pro váš cluster.
 
-1. Zadejte název clusteru.
-2. Zadejte **uživatelské jméno** a **heslo** pro vzdálené plochy pro virtuální počítače.
-3. Je nutné vybrat **předplatné** má cluster pro nasazení do, zvláště pokud máte více předplatných.
-4. Vytvoření **novou skupinu prostředků**. Je nejlepší a použít stejný název jako cluster, protože pomáhá při hledání je později, zejména v případě, že se pokoušíte provést změny vašeho nasazení nebo odstranit cluster.
+1. Zadejte název hello clusteru.
+2. Zadejte **uživatelské jméno** a **heslo** pro vzdálená plocha pro hello virtuálních počítačů.
+3. Ujistěte se, zda text hello tooselect **předplatné** má váš clusteru toobe nasazen, zvláště pokud máte více předplatných.
+4. Vytvoření **novou skupinu prostředků**. Je nejlepší toogive hello stejný název jako hello clusteru, protože pomáhá při hledání je později, zejména v případě, že se pokoušíte toomake změny tooyour nasazení nebo odstranit cluster.
    
    > [!NOTE]
-   > I když můžete se rozhodnete použít existující skupinu prostředků, je vhodné vytvořit novou skupinu prostředků. To usnadňuje odstranění clusterů, které nepotřebujete.
+   > I když toouse existující skupinu prostředků, můžete rozhodnout, je vhodné toocreate novou skupinu prostředků. Díky tomu snadno toodelete clustery, které nepotřebujete.
    > 
    > 
-5. Vyberte **oblast** ve kterém chcete vytvořit cluster. Je nutné použít stejné oblasti, kterou Key Vault je v.
+5. Vyberte hello **oblast** ve kterém chcete toocreate hello clusteru. Je nutné použít hello se stejné oblasti, kterou si klíč trezoru.
 
 #### <a name="2-cluster-configuration"></a>2. Konfigurace clusteru
 ![Vytvoření typu uzlu][CreateNodeType]
 
-Nakonfigurujte uzly clusteru. Typy uzlů definovat velikosti virtuálních počítačů, počet virtuálních počítačů a jejich vlastnosti. Cluster může mít více než jeden typ uzlu, ale typ primárního uzlu (první, kterou definujete na portálu) musí mít aspoň pět virtuálních počítačů, jedná se o typ uzlu, kde jsou umístěny Service Fabric systémových služeb. Nekonfigurujte **vlastnosti umístění** vzhledem k tomu je automaticky přidá výchozí umístění vlastnost "NodeTypeName".
+Nakonfigurujte uzly clusteru. Typy uzlů definovat velikosti virtuálních počítačů hello hello počet virtuálních počítačů a jejich vlastnosti. Cluster může mít více než jeden typ uzlu, ale typ primárního uzlu hello (hello první, kterou definujete na portálu hello) musí mít aspoň pět virtuálních počítačů, protože tento typ uzlu hello umístění Service Fabric systémových služeb. Nekonfigurujte **vlastnosti umístění** vzhledem k tomu je automaticky přidá výchozí umístění vlastnost "NodeTypeName".
 
 > [!NOTE]
-> Běžný scénář pro více typů uzlu je aplikace, která obsahuje službu front-endu a back endové službě. Chcete umístit front-endová služba menší virtuálních počítačů (velikosti virtuálních počítačů jako D2) s porty otevřené k Internetu, ale chcete umístit na větší virtuální počítače (s velikostí virtuálního počítače jako D4, D6, D15 a tak dále) bez internetového portů otevřete back endové službě.
+> Běžný scénář pro více typů uzlu je aplikace, která obsahuje službu front-endu a back endové službě. Chcete tooput hello front-endových služeb na menší virtuálních počítačů (velikosti virtuálních počítačů jako D2) s porty otevřené toohello Internet, ale bez internetového portů otevřené, aby tooput hello back-end službu na větší virtuální počítače (s velikostí virtuálního počítače jako D4, D6, D15 a tak dále).
 > 
 > 
 
-1. Zvolte název pro váš typ uzlu (obsahující pouze písmena a čísla 1 až 12 znaků).
-2. Minimální **velikost** virtuálních počítačů pro primární uzel typu vycházejí z **odolnost** vrstvy, které zvolíte pro cluster. Výchozí hodnota pro úroveň odolnosti je Bronzová. Další informace o odolnost, najdete v části [jak zvolit spolehlivost clusteru Service Fabric a odolnost][service-fabric-cluster-capacity].
-3. Vyberte velikost virtuálního počítače a cenovou úroveň. Virtuální počítače D-series jednotek SSD a jsou doporučovány stavových aplikací. Použít všechny virtuálních počítačů SKU, který má částečné jader nebo mají méně než 7 GB kapacity disku. 
-4. Minimální **číslo** virtuálních počítačů pro primární uzel typu vycházejí z **spolehlivost** vrstvy, které zvolíte. Výchozí hodnota pro úroveň spolehlivosti je Silver. Další informace o spolehlivosti, najdete v části [jak zvolit spolehlivost clusteru Service Fabric a odolnost][service-fabric-cluster-capacity].
-5. Zvolte počet virtuálních počítačů pro typ uzlu. Je možné škálovat později na nahoru nebo dolů počet virtuálních počítačů v uzlu typu, ale na primárním uzlu, který typ minimální doprovází úroveň spolehlivosti, které jste vybrali. Ostatní typy uzlů může mít minimálně 1 virtuální počítač.
-6. Nakonfigurujte vlastní koncové body. Toto pole umožňuje zadat seznam portů, které chcete zpřístupnit prostřednictvím nástroje pro vyrovnávání zatížení Azure do veřejného Internetu pro vaše aplikace oddělených čárkami. Například pokud plánujete nasadit webovou aplikaci pro váš cluster, zadejte "80" zde Pokud chcete povolit přenosy na portu 80 do clusteru. Další informace o koncových bodů najdete v tématu [komunikaci s aplikacemi][service-fabric-connect-and-communicate-with-services]
-7. Konfigurace clusteru **diagnostiky**. Ve výchozím nastavení jsou diagnostiky povolené v clusteru, vám pomůže při řešení potíží. Pokud chcete zakázat diagnostiky změnu **stav** přepnutím **vypnout**. Vypnutí možnosti diagnostiky je **není** nedoporučuje.
-8. Vyberte režim upgradu prostředků infrastruktury, které chcete nastavit váš cluster. Vyberte **automatické**, pokud chcete, aby systém automaticky vyzvedne, až na nejnovější dostupnou verzi a pokuste se upgrade clusteru na ni. Nastavit režim **ruční**, pokud chcete zvolit podporovanou verzi.
+1. Zvolte název pro váš typ uzlu (1 too12 znaků obsahující pouze písmena a číslice).
+2. Hello minimální **velikost** virtuálních počítačů pro primární uzel hello typ doprovází hello **odolnost** vrstvy, které jste vybrali pro hello clusteru. Výchozí hodnota Hello pro vrstvu odolnost hello je Bronzová. Další informace o odolnost, najdete v části [jak toochoose hello Service Fabric clusteru spolehlivost a odolnost][service-fabric-cluster-capacity].
+3. Vyberte velikost virtuálního počítače hello a cenovou úroveň. Virtuální počítače D-series jednotek SSD a jsou doporučovány stavových aplikací. Použít všechny virtuálních počítačů SKU, který má částečné jader nebo mají méně než 7 GB kapacity disku. 
+4. Hello minimální **číslo** virtuálních počítačů pro primární uzel hello typ doprovází hello **spolehlivost** vrstvy, které zvolíte. Výchozí hodnota Hello pro úroveň spolehlivosti hello je Silver. Další informace o spolehlivosti, najdete v části [jak toochoose hello Service Fabric clusteru spolehlivost a odolnost][service-fabric-cluster-capacity].
+5. Zvolte hello počet virtuálních počítačů pro typ uzlu hello. Je možné škálovat později na nahoru nebo dolů hello počet virtuálních počítačů v uzlu typu, ale na primárním uzlu, který typ hello, hello minimální doprovází hello úroveň spolehlivosti, která jste vybrali. Ostatní typy uzlů může mít minimálně 1 virtuální počítač.
+6. Nakonfigurujte vlastní koncové body. Toto pole umožňuje tooenter textový soubor s oddělovači seznam portů, které chcete tooexpose prostřednictvím hello nástroj pro vyrovnávání zatížení Azure toohello veřejného Internetu pro vaše aplikace. Například pokud máte v plánu toodeploy clusteru tooyour webové aplikace, zadejte "80" zde tooallow přenosy na portu 80 do clusteru. Další informace o koncových bodů najdete v tématu [komunikaci s aplikacemi][service-fabric-connect-and-communicate-with-services]
+7. Konfigurace clusteru **diagnostiky**. Ve výchozím nastavení jsou diagnostiky povolené na váš clusteru tooassist s řešení potíží. Pokud chcete změnit toodisable diagnostiky hello **stav** přepnutí příliš**vypnout**. Vypnutí možnosti diagnostiky je **není** nedoporučuje.
+8. Vyberte hello Fabric upgradu, které chcete nastavit clusteru režimu. Vyberte **automatické**, pokud chcete vybrat tooautomatically systému hello až hello nejnovější dostupnou verzi a zkuste tooupgrade tooit vašeho clusteru. Nastavit režim hello příliš**ruční**, pokud chcete, aby toochoose na podporovanou verzi.
 
 > [!NOTE]
-> Podporujeme pouze clustery, které běží podporovaná verze služby prostředků infrastruktury. Výběrem **ruční** režimu přenášíte na odpovědnost cluster upgradovat na podporovanou verzi. Pro další informace o prostředcích infrastruktury upgradu naleznete v režimu [service fabric clusteru upgrade dokumentu.][service-fabric-cluster-upgrade]
+> Podporujeme pouze clustery, které běží podporovaná verze služby prostředků infrastruktury. Výběrem hello **ruční** režimu přenášíte na hello odpovědnost tooupgrade tooa podporované verze vašeho clusteru. Další podrobnosti o režimu upgradu hello prostředků infrastruktury, najdete v tématu hello [service fabric clusteru upgrade dokumentu.][service-fabric-cluster-upgrade]
 > 
 > 
 
 #### <a name="3-security"></a>3. Zabezpečení
 ![Snímek obrazovky konfigurace zabezpečení na portálu Azure.][SecurityConfigs]
 
-Posledním krokem je poskytnout informace o certifikátu k zabezpečení clusteru pomocí Key Vault a certifikát informace vytvořený dříve.
+posledním krokem Hello je tooprovide certifikátu informace toosecure hello clusteru pomocí hello Key Vault a certifikát informace vytvořený dříve.
 
-* Vyplňte pole primární certifikát s výstupem získané z odesílání **clusteru certifikát** pomocí Key Vault `Invoke-AddCertToKeyVault` příkaz prostředí PowerShell.
+* Naplnění polí hello primární certifikát získaný odesílání hello výstup hello **clusteru certifikát** pomocí trezoru tooKey hello `Invoke-AddCertToKeyVault` příkaz prostředí PowerShell.
 
 ```powershell
 Name  : CertificateThumbprint
@@ -269,36 +269,36 @@ Name  : CertificateURL
 Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
 ```
 
-* Zkontrolujte **konfigurovat upřesňující nastavení** pole k zadání klientské certifikáty pro **správce klienta** a **jen pro čtení klienta**. V těchto polích zadejte kryptografický otisk certifikátu klienta správce a kryptografický otisk certifikátu klienta uživatele jen pro čtení, pokud je k dispozici. Když se správce pokusí připojit ke clusteru, získají přístup pouze v případě, že mají certifikát s kryptografickým otiskem, který odpovídá hodnoty kryptografického otisku zadali tady.  
+* Zkontrolujte hello **konfigurovat upřesňující nastavení** pole tooenter klientské certifikáty pro **správce klienta** a **jen pro čtení klienta**. V těchto polích zadejte hello kryptografický otisk certifikátu klienta správce a hello kryptografický otisk certifikátu klienta uživatele jen pro čtení, pokud je k dispozici. Pokud se správce pokusí o tooconnect toohello clusteru, získají přístup pouze v případě, že mají certifikát s kryptografickým otiskem, který odpovídá hodnoty kryptografického otisku hello zadali tady.  
 
 #### <a name="4-summary"></a>4. Souhrn
-![Snímek obrazovky úvodní panel zobrazení "Nasazení Cluster Service Fabric." ][Notifications]
+![Snímek obrazovky Tabule start hello zobrazení "Nasazení Cluster Service Fabric." ][Notifications]
 
-Chcete-li dokončit vytvoření clusteru, klikněte na tlačítko **Souhrn** najdete v části konfigurace, které jste zadali, nebo stáhnout šablony Azure Resource Manager, který používá k nasazení clusteru. Poté, co jste zadali povinná nastavení **OK** bude zelené tlačítko a procesu vytváření clusteru můžete spustit kliknutím.
+Vytvoření clusteru hello toocomplete, klikněte na tlačítko **Souhrn** toosee hello konfigurace, které jste zadali, nebo stáhnout hello šablony Azure Resource Manageru, který používá toodeploy vašeho clusteru. Po zadané povinné nastavení hello hello **OK** bude zelené tlačítko a hello procesu vytváření clusteru můžete spustit kliknutím.
 
-Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvonku u stavového řádku v pravém horním rohu obrazovky.) Pokud jste klikli na **připnout na úvodní panel** při vytváření clusteru, zobrazí se **nasazení Cluster Service Fabric** připnuli k **spustit** panelu.
+Zobrazí se průběh vytváření hello v oznámeních hello. (Klikněte na ikonu zvonku"hello" v blízkosti hello stavového řádku v hello pravé horní části obrazovky.) Pokud jste klikli na **Pin tooStartboard** při vytváření clusteru hello, uvidíte **nasazení Cluster Service Fabric** připnutý toohello **spustit** panelu.
 
 ### <a name="view-your-cluster-status"></a>Zobrazení stavu clusteru
-![Snímek obrazovky podrobnosti o clusteru v řídicím panelu.][ClusterDashboard]
+![Snímek obrazovky podrobnosti o clusteru hello řídicím panelu.][ClusterDashboard]
 
-Po vytvoření clusteru si můžete prohlédnout cluster v portálu:
+Po vytvoření clusteru si můžete prohlédnout cluster hello portálu:
 
-1. Přejděte na **Procházet** a klikněte na tlačítko **clustery infrastruktury služby**.
+1. Přejděte příliš**Procházet** a klikněte na tlačítko **clustery infrastruktury služby**.
 2. Vyhledejte cluster a klikněte na něj.
-3. Na řídicím panelu se zobrazí podrobnosti o clusteru, včetně veřejného koncového bodu clusteru a odkaz na Service Fabric Explorer.
+3. Zobrazí podrobnosti o hello clusteru na řídicím panelu hello, včetně veřejný koncový bod clusteru hello a odkaz tooService Fabric Exploreru.
 
-**Uzlu monitorování** část v okně řídicí panel clusteru označuje počet virtuálních počítačů, které jsou v pořádku a není v pořádku. Můžete najít další podrobnosti o stavu clusteru na [Service Fabric stavu modelu ÚVOD][service-fabric-health-introduction].
+Hello **uzlu monitorování** část v okně řídicí panel clusteru hello označuje hello počet virtuálních počítačů, které jsou v pořádku a není v pořádku. Můžete najít další podrobnosti o stavu hello clusteru na [Service Fabric stavu modelu ÚVOD][service-fabric-health-introduction].
 
 > [!NOTE]
-> Clusterů Service Fabric vyžadovat určité počet uzlů na být až vždycky zachování dostupnosti a zároveň zachovat stav – označuje jako "Správa kvora". Proto, je obvykle není bezpečné vypnout všechny počítače v clusteru, pokud jste provedli nejprve [úplného zálohování vaší stavu][service-fabric-reliable-services-backup-restore].
+> Clusterů Service Fabric vyžadují určitý počet uzlů toobe dostupnost vždy toomaintain a zachovávají stav – odkazované tooas "Správa kvora". Proto, je obvykle není bezpečné tooshut dolů všechny počítače v clusteru hello Pokud jste provedli nejprve [úplného zálohování vaší stavu][service-fabric-reliable-services-backup-restore].
 > 
 > 
 
-## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci a sadu škálování virtuálního počítače nebo uzlu clusteru
-Každý z NodeTypes zadáte v clusteru výsledky do sady škálování virtuálního počítače získávání nastavení. V tématu [vzdálené připojení k instanci sadu škálování virtuálního počítače] [ remote-connect-to-a-vm-scale-set] podrobnosti.
+## <a name="remote-connect-tooa-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení instance tooa sadu škálování virtuálního počítače nebo uzlu clusteru
+Každý z hello NodeTypes zadáte v clusteru výsledky do sady škálování virtuálního počítače získávání nastavení. V tématu [vzdáleného připojení instance sadu škálování virtuálního počítače tooa] [ remote-connect-to-a-vm-scale-set] podrobnosti.
 
 ## <a name="next-steps"></a>Další kroky
-V tuto chvíli máte zabezpečené cluster pro správu ověřování pomocí certifikátů. Dále [připojit ke clusteru](service-fabric-connect-to-secure-cluster.md) a zjistěte, jak [spravovat tajné klíče aplikace](service-fabric-application-secret-management.md).  Také další informace o [možnosti podpory Service Fabric](service-fabric-support.md).
+V tuto chvíli máte zabezpečené cluster pro správu ověřování pomocí certifikátů. Dále [připojení clusteru tooyour](service-fabric-connect-to-secure-cluster.md) a zjistěte, jak příliš[spravovat tajné klíče aplikace](service-fabric-application-secret-management.md).  Také další informace o [možnosti podpory Service Fabric](service-fabric-support.md).
 
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

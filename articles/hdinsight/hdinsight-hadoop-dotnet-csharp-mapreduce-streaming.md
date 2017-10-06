@@ -1,6 +1,6 @@
 ---
-title: "Použití jazyka C# s MapReduce systému Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití jazyka C# k vytvoření řešení MapReduce s Hadoop v prostředí Azure HDInsight."
+title: "aaaUse C# s použitím prostředí MapReduce systému Hadoop v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak řešení MapReduce toocreate toouse C# s Hadoop v Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,52 +16,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: adb454e56378a800c671614735aec78b6851aeb2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd8b684e74155bc1a37d4ab8d6f9033276ef5aa3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce, streamování systému Hadoop v HDInsight
 
-Další informace o použití jazyka C# k vytvoření řešení MapReduce v HDInsight.
+Zjistěte, jak toouse C# toocreate MapReduce řešení v HDInsight.
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md).
 
-Streamování Hadoop je nástroj, který umožňuje spouštění úloh MapReduce pomocí skriptu nebo spustitelného souboru. V tomto příkladu se používá .NET pro implementaci mapper a reduktorem počet řešení aplikace word.
+Streamování Hadoop je nástroj, který vám umožní úloh MapReduce toorun pomocí skriptu nebo spustitelného souboru. V tomto příkladu je rozhraní .NET použité tooimplement hello mapper a reduktorem počet řešení aplikace word.
 
 ## <a name="net-on-hdinsight"></a>Rozhraní .NET v HDInsight
 
-__HDInsight se systémem Linux__ clusterů použijte [Mono (https://mono-project.com)](https://mono-project.com) ke spouštění aplikací .NET. Monofonní verze 4.2.1 je součástí HDInsight verze 3.5. Další informace o verzi Mono zahrnuté do HDInsight naleznete v tématu [HDInsight verze součástí](hdinsight-component-versioning.md). Použít konkrétní verzi Mono, najdete v článku [instalace nebo aktualizace Mono](hdinsight-hadoop-install-mono.md) dokumentu.
+__HDInsight se systémem Linux__ clusterů použijte [Mono (https://mono-project.com)](https://mono-project.com) toorun aplikací .NET. Monofonní verze 4.2.1 je součástí HDInsight verze 3.5. Další informace o verzi hello Mono zahrnuté do HDInsight naleznete v tématu [HDInsight verze součástí](hdinsight-component-versioning.md). toouse na konkrétní verzi Mono, najdete v části hello [instalace nebo aktualizace Mono](hdinsight-hadoop-install-mono.md) dokumentu.
 
 Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework naleznete v tématu [Mono kompatibility](http://www.mono-project.com/docs/about-mono/compatibility/).
 
 ## <a name="how-hadoop-streaming-works"></a>Jak funguje streamování Hadoop
 
-Základní proces použít pro streamování v tomto dokumentu je následující:
+Základní proces Hello používá pro streamování v tomto dokumentu je následující:
 
-1. Hadoop předává na stdin – data mapper (mapper.exe v tomto příkladu).
-2. Mapper zpracovává dat a vysílá páry oddělený tabulátory klíč/hodnota pro STDOUT.
-3. Výstup bude číst Hadoop a následně předán do reduktorem (reducer.exe v tomto příkladu) na STDIN.
-4. Reduktorem čte páry klíč/hodnota oddělený tabulátory, zpracuje data a potom vydá výsledek jako dvojice klíč/hodnota oddělený tabulátory do datového proudu STDOUT.
-5. Výstup bude Hadoop číst a zapisovat do výstupního adresáře.
+1. Hadoop předá na stdin – toohello Mapovač dat (mapper.exe v tomto příkladu).
+2. Mapovač Hello zpracovává hello dat a vysílá tooSTDOUT páry klíč/hodnota oddělený tabulátory.
+3. výstup Hello je číst Hadoop a poté předá stdin – reduktorem toohello (reducer.exe v tomto příkladu).
+4. Hello reduktorem čte páry klíč – hodnota hello oddělený tabulátory, zpracovává hello data a potom vydá hello výsledek jako dvojice klíč/hodnota oddělený tabulátory do datového proudu STDOUT.
+5. výstup Hello bude číst Hadoop a zapisovat toohello výstupního adresáře.
 
 Další informace o streamování najdete v tématu [Hadoop streamování (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Znalost zápis a sestavování kód C#, která je cílena rozhraní .NET Framework 4.5. Kroky v tomto dokumentu používají Visual Studio 2017.
+* Znalost zápis a sestavování kód C#, která je cílena rozhraní .NET Framework 4.5. Hello kroky v tomto dokumentu Visual Studio 2017.
 
-* Způsob, jak nahrát soubory .exe do clusteru. Kroky v tomto dokumentu použít nástroje Data Lake pro Visual Studio k nahrání souborů do primárního úložiště pro cluster.
+* Způsob tooupload .exe soubory toohello clusteru. Hello kroky v tomto dokumentu používají hello nástrojů Data Lake pro Visual Studio tooupload hello soubory tooprimary úložiště pro hello cluster.
 
 * Prostředí Azure PowerShell nebo SSH klienta.
 
 * Hadoop v clusteru HDInsight. Další informace týkající se vytvoření clusteru najdete v tématu [vytvoření clusteru HDInsight](hdinsight-provision-clusters.md).
 
-## <a name="create-the-mapper"></a>Vytvořte mapper
+## <a name="create-hello-mapper"></a>Vytvořit mapování hello
 
-V sadě Visual Studio vytvořte novou __Konzolová aplikace__ s názvem __mapper__. Použijte následující kód pro aplikaci:
+V sadě Visual Studio vytvořte novou __Konzolová aplikace__ s názvem __mapper__. Použijte následující kód aplikace hello hello:
 
 ```csharp
 using System;
@@ -74,14 +74,14 @@ namespace mapper
         static void Main(string[] args)
         {
             string line;
-            //Hadoop passes data to the mapper on STDIN
+            //Hadoop passes data toohello mapper on STDIN
             while((line = Console.ReadLine()) != null)
             {
                 // We only want words, so strip out punctuation, numbers, etc.
                 var onlyText = Regex.Replace(line, @"\.|;|:|,|[0-9]|'", "");
                 // Split at whitespace.
                 var words = Regex.Matches(onlyText, @"[\w]+");
-                // Loop over the words
+                // Loop over hello words
                 foreach(var word in words)
                 {
                     //Emit tab-delimited key/value pairs.
@@ -94,11 +94,11 @@ namespace mapper
 }
 ```
 
-Po vytvoření aplikace, sestavte jej k vytvoření `/bin/Debug/mapper.exe` soubor v adresáři projektu.
+Po vytvoření aplikace hello sestavení ho tooproduce hello `/bin/Debug/mapper.exe` soubor v adresáři projektu hello.
 
-## <a name="create-the-reducer"></a>Vytvořte reduktorem
+## <a name="create-hello-reducer"></a>Vytvoření reduktorem hello
 
-V sadě Visual Studio vytvořte novou __Konzolová aplikace__ s názvem __reduktorem__. Použijte následující kód pro aplikaci:
+V sadě Visual Studio vytvořte novou __Konzolová aplikace__ s názvem __reduktorem__. Použijte následující kód aplikace hello hello:
 
 ```csharp
 using System;
@@ -119,19 +119,19 @@ namespace reducer
             {
                 // Data from Hadoop is tab-delimited key/value pairs
                 var sArr = line.Split('\t');
-                // Get the word
+                // Get hello word
                 string word = sArr[0];
-                // Get the count
+                // Get hello count
                 int count = Convert.ToInt32(sArr[1]);
 
-                //Do we already have a count for the word?
+                //Do we already have a count for hello word?
                 if(words.ContainsKey(word))
                 {
-                    //If so, increment the count
+                    //If so, increment hello count
                     words[word] += count;
                 } else
                 {
-                    //Add the key to the collection
+                    //Add hello key toohello collection
                     words.Add(word, count);
                 }
             }
@@ -147,9 +147,9 @@ namespace reducer
 }
 ```
 
-Po vytvoření aplikace, sestavte jej k vytvoření `/bin/Debug/reducer.exe` soubor v adresáři projektu.
+Po vytvoření aplikace hello sestavení ho tooproduce hello `/bin/Debug/reducer.exe` soubor v adresáři projektu hello.
 
-## <a name="upload-to-storage"></a>Nahrání do úložiště
+## <a name="upload-toostorage"></a>Nahrát toostorage
 
 1. V sadě Visual Studio otevřete **Průzkumníka serveru**.
 
@@ -157,29 +157,29 @@ Po vytvoření aplikace, sestavte jej k vytvoření `/bin/Debug/reducer.exe` sou
 
 3. Po zobrazení výzvy zadejte své přihlašovací údaje předplatného Azure a pak klikněte na tlačítko **přihlásit**.
 
-4. Rozbalte položku, kterou chcete nasadit tuto aplikaci do clusteru HDInsight. Položku s textem __(výchozí účet úložiště)__ je uveden.
+4. Rozbalte cluster HDInsight hello, který chcete toodeploy této aplikace. Položku s textem hello __(výchozí účet úložiště)__ je uveden.
 
-    ![Průzkumník serveru zobrazující účet úložiště pro cluster](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Průzkumník serveru zobrazující hello účet úložiště pro hello cluster](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Pokud tuto položku lze rozšířit, kterou používáte __účet úložiště Azure__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a dvakrát __(výchozí kontejner)__.
+    * Pokud tuto položku lze rozšířit, kterou používáte __účet úložiště Azure__ jako výchozí úložiště pro hello cluster. soubory hello tooview na hello výchozí úložiště pro hello cluster, rozbalte položku hello a potom dvakrát klikněte na hello __(výchozí kontejner)__.
 
-    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte na __(výchozí účet úložiště)__ položku.
+    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako hello výchozí úložiště pro hello cluster. soubory hello tooview na hello výchozí úložiště pro hello cluster, dvakrát klikněte na hello __(výchozí účet úložiště)__ položku.
 
-5. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
+5. soubory .exe tooupload hello, použijte jednu z následujících metod hello:
 
-    * Pokud se používá __účet úložiště Azure__, klikněte na ikonu nahrávání a potom vyhledejte **bin\debug** složku pro **mapper** projektu. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **Ok**.
+    * Pokud se používá __účet úložiště Azure__, klikněte na ikonu hello nahrávání a vyhledejte toohello **bin\debug** složku pro hello **mapper** projektu. Nakonec vyberte hello **mapper.exe** souboru a klikněte na tlačítko **Ok**.
 
         ![Nahrajte ikonu](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **otevřete**.
+    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu hello souboru a pak vyberte __nahrát__. Nakonec vyberte hello **mapper.exe** souboru a klikněte na tlačítko **otevřete**.
 
-    Jednou __mapper.exe__ odesílání skončí, opakujte tento postup nahrání pro __reducer.exe__ souboru.
+    Jednou hello __mapper.exe__ nahrávání dokončí, proces odesílání opakování hello hello __reducer.exe__ souboru.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>Spustit úlohu: pomocí relace SSH
 
-1. Použití SSH se připojit ke clusteru HDInsight. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Použití clusteru HDInsight toohello tooconnect SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Použijte jednu z následujícího příkazu spustíte úlohu MapReduce:
+2. Použijte jednu z následujících úlohu MapReduce hello toostart příkaz hello:
 
     * Pokud používáte __Data Lake Store__ jako výchozí úložiště:
 
@@ -193,22 +193,22 @@ Po vytvoření aplikace, sestavte jej k vytvoření `/bin/Debug/reducer.exe` sou
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
         ```
 
-    Následující seznam popisuje, jaké jsou jednotlivé parametry:
+    Hello následující seznam popisuje, jaké jsou jednotlivé parametry:
 
-    * `hadoop-streaming.jar`: Na soubor jar, který obsahuje funkce datových proudů MapReduce.
-    * `-files`: Přidá `mapper.exe` a `reducer.exe` soubory do této úlohy. `adl:///` Nebo `wasb:///` před každý soubor je cesta ke kořenovému adresáři výchozí úložiště pro cluster.
-    * `-mapper`: Určuje soubor, který implementuje mapper.
-    * `-reducer`: Určuje soubor, který implementuje reduktorem.
-    * `-input`: Vstupní data.
-    * `-output`: Výstupního adresáře.
+    * `hadoop-streaming.jar`: soubor jar hello, který obsahuje hello streamování MapReduce funkce.
+    * `-files`: Přidá hello `mapper.exe` a `reducer.exe` soubory toothis úlohy. Hello `adl:///` nebo `wasb:///` před každý soubor hello cesta toohello kořenovém výchozí úložiště pro hello cluster.
+    * `-mapper`: Určuje soubor, který implementuje hello mapper.
+    * `-reducer`: Určuje soubor, který implementuje reduktorem hello.
+    * `-input`: hello vstupní data.
+    * `-output`: hello výstupního adresáře.
 
-3. Po dokončení úlohy MapReduce, použijte následující postupy pro zobrazení výsledků:
+3. Po dokončení úlohy MapReduce hello použijte hello následující tooview hello výsledky:
 
     ```bash
     hdfs dfs -text /example/wordcountout/part-00000
     ```
 
-    Tento text je příklad dat vrácených tento příkaz:
+    Hello následující text je příklad hello dat vrácených tento příkaz:
 
         you     1128
         young   38
@@ -222,11 +222,11 @@ Po vytvoření aplikace, sestavte jej k vytvoření `/bin/Debug/reducer.exe` sou
 
 ## <a name="run-a-job-using-powershell"></a>Spustit úlohu: pomocí prostředí PowerShell
 
-Pomocí následujícího skriptu prostředí PowerShell a spusťte úlohu MapReduce stažení výsledků.
+Pomocí následujících toorun skript prostředí PowerShell úlohu MapReduce hello a stahování hello výsledky.
 
-[!code-powershell[hlavní](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
+[!code-powershell[main](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Tento skript vyzve k zadání názvu clusteru přihlášení účtu a heslo, společně s názvem clusteru HDInsight. Po dokončení úlohy, výstup se stáhne do `output.txt` soubor v adresáři je skript spustili z. Tento text je příklad dat v `output.txt` souboru:
+Tento skript vyzve k zadání hello clusteru přihlašovací účet jméno a heslo, společně s názvem clusteru HDInsight hello. Po dokončení úlohy hello výstup hello je stažené toohello `output.txt` je soubor v hello directory hello skript spustili z. Hello následující text je příkladem hello data v hello `output.txt` souboru:
 
     you     1128
     young   38

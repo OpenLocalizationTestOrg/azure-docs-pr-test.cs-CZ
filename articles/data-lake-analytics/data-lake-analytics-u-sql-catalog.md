@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s jazykem U-SQL catalog | Microsoft Docs"
-description: "Další informace o použití katalogu U-SQL pro sdílení kódu a data."
+title: "Začínáme s jazykem U-SQL hello catalog | Microsoft Docs"
+description: "Zjistěte, jak toouse hello U-SQL katalogu tooshare kód a data."
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/09/2017
 ms.author: edmaca
-ms.openlocfilehash: 08364c6c7bea53807844e3b1cc327dc3742e0487
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 559bb7a3879031eb290a3e82946d7bf42ac9f553
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-u-sql-catalog"></a>Začínáme s katalogem U-SQL
+# <a name="get-started-with-hello-u-sql-catalog"></a>Začínáme s hello katalogu U-SQL
 
 ## <a name="create-a-tvf"></a>Vytvoření TVF
 
-V předchozích skript U-SQL opakované použití EXTRAKCE číst ze stejné zdrojového souboru. S U-SQL funkce vracející tabulku (TVF) může zapouzdřit data pro budoucí využití.  
+V hello předchozí skript U-SQL, opakované použití hello EXTRAKCE tooread z hello stejný zdrojový soubor. Pomocí funkce vracející tabulku hello U-SQL (TVF) může zapouzdřit hello data pro budoucí využití.  
 
-Tento skript vytvoří TVF, názvem `Searchlog()` ve výchozí databázi a schéma:
+Hello následující skript vytvoří TVF, názvem `Searchlog()` v hello výchozí databázi a schéma:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -57,7 +57,7 @@ RETURN;
 END;
 ```
 
-Tento skript je ukázkou, jak používat funkci TVF, která byla definována v předchozí skript:
+Následující skript Hello ukazuje, jak toouse hello TVF, která byla definována v předchozí skript hello:
 
 ```
 @res =
@@ -69,16 +69,16 @@ GROUP BY Region
 HAVING SUM(Duration) > 200;
 
 OUTPUT @res
-    TO "/output/SerachLog-use-tvf.csv"
+    too"/output/SerachLog-use-tvf.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
 ## <a name="create-views"></a>Vytvoření zobrazení
 
-Pokud máte jeden dotaz výrazu, místo TVF můžete zobrazení U-SQL pro zapouzdření tento výraz.
+Pokud máte jeden dotaz výrazu, místo TVF můžete U-SQL zobrazení tooencapsulate tento výraz.
 
-Tento skript vytvoří zobrazení s názvem `SearchlogView` ve výchozí databázi a schéma:
+Hello následující skript vytvoří zobrazení s názvem `SearchlogView` v hello výchozí databázi a schéma:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -95,7 +95,7 @@ CREATE VIEW SearchlogView AS
 USING Extractors.Tsv();
 ```
 
-Následující skript demonstruje použití definované zobrazení:
+Následující skript Hello ukazuje použití hello hello definované zobrazení:
 
 ```
 @res =
@@ -107,15 +107,15 @@ GROUP BY Region
 HAVING SUM(Duration) > 200;
 
 OUTPUT @res
-    TO "/output/Searchlog-use-view.csv"
+    too"/output/Searchlog-use-view.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
 ## <a name="create-tables"></a>Vytváření tabulek
-Jako s tabulkami relační databáze pomocí U-SQL můžete vytvořit tabulku s předdefinovaným schématem nebo vytvořit tabulku, která odvodí, že schéma z dotazu, který naplní tabulky (také označované jako CREATE TABLE AS SELECT nebo funkce CTAS).
+Jako s tabulkami relační databáze pomocí U-SQL můžete vytvořit tabulku s předdefinovaným schématem nebo vytvořit tabulku, která odvodí hello schématu z hello dotazu, který naplní hello tabulku (také označované jako CREATE TABLE AS SELECT nebo funkce CTAS).
 
-Vytvořte databázi a dvě tabulky pomocí následující skript:
+Vytvořte databázi a dvě tabulky pomocí hello následující skript:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -147,9 +147,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Dotazu na tabulky
-Můžete dotazovat tabulkami, jako jsou ty, vytvořené v předchozí skript stejným způsobem dotazování datové soubory. Místo vytvoření pomocí EXTRAKCE sadu řádků, teď můžete odkazovat na název tabulky.
+Můžete zadat dotaz tabulkami, jako jsou ty, vytvořené v předchozí skript hello v hello stejným způsobem jako dotazování hello datových souborů. Místo vytváření sadu řádků s využitím EXTRAKCE, teď může odkazovat toohello název tabulky.
 
-Čtení z tabulek, upravte transformace skript, který jste použili dříve:
+tooread z tabulek hello upravte hello transformace skript, který jste použili dříve:
 
 ```
 @rs1 =
@@ -166,13 +166,13 @@ GROUP BY Region;
     FETCH 5 ROWS;
 
 OUTPUT @res
-    TO "/output/Searchlog-query-table.csv"
+    too"/output/Searchlog-query-table.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
  >[!NOTE]
- >S výběrem nelze v současné době spustit v tabulce ve skriptu stejný jako ten, na které jste vytvořili v tabulce.
+ >S výběrem nelze v současné době spustit v tabulce v hello stejný skript jako jeden hello kde jste vytvořili tabulku hello.
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

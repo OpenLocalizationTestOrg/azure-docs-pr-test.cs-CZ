@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for MySQL z jazyka C++ | Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete vzorový kód jazyka C++, který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: "Připojit tooAzure databáze pro databázi MySQL z jazyka C++ | Microsoft Docs"
+description: "Tento rychlý start poskytuje ukázka kódu C++ pomocí tooconnect a zadávat dotazy na data z databáze Azure pro databázi MySQL."
 services: mysql
 author: seanli1988
 ms.author: seal
@@ -11,17 +11,17 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: hero-article
 ms.date: 08/03/2017
-ms.openlocfilehash: 63388b83b913d95136140fa4c56af0dbebbdad81
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d027597bf02b1eacab9b8808957399f6e54e63cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v jazyce C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V krocích v tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí jazyka C++ a teprve začínáte pracovat se službou Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-connectorc-tooconnect-and-query-data"></a>Azure databáze pro databázi MySQL: tooconnect a dotazování dat použití konektoru/C++
+Tento rychlý start předvádí jak tooconnect tooan Azure databáze pro databázi MySQL pomocí aplikace C++. Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Hello postup v tomto článku předpokládá, že jste obeznámeni s vývojem pomocí C++, a že jste novou tooworking s Azure Database pro databázi MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -32,35 +32,35 @@ Budete také muset:
 - Nainstalovat [Boost](http://www.boost.org/)
 
 ## <a name="install-visual-studio-and-net"></a>Instalace sady Visual Studio a .NET
-Kroky v této části předpokládají, že máte zkušenosti s vývojem pomocí rozhraní .NET.
+Hello kroky v této části předpokládají, že jste obeznámeni s vývojem pomocí rozhraní .NET.
 
 ### <a name="windows"></a>**Windows**
-1. Nainstalujte sadu Visual Studio 2017 Community, což je plně vybavené, rozšiřitelné a bezplatné integrované vývojové prostředí (IDE) pro vytváření moderních aplikací pro Android, iOS a Windows, stejně jako webových a databázových aplikací a cloudových služeb. Můžete nainstalovat buď úplné rozhraní .NET Framework, nebo jenom jádro .NET Core. Fragmenty kódu v rychlém startu pracují s oběma. Pokud již máte v počítači nainstalovanou sadu Visual Studio, přeskočte následující dva kroky.
-   - Stáhněte si [instalační program sady Visual Studio 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
-   - Spusťte instalační program a podle zobrazených pokynů instalaci dokončete.
+1. Nainstalujte sadu Visual Studio 2017 Community, což je plně vybavené, rozšiřitelné a bezplatné integrované vývojové prostředí (IDE) pro vytváření moderních aplikací pro Android, iOS a Windows, stejně jako webových a databázových aplikací a cloudových služeb. Můžete nainstalovat buď hello úplné rozhraní .NET Framework, nebo jenom .NET Core. fragmenty kódu Hello v hello rychlý start fungovat se. Pokud již máte nainstalovanou na počítači pro sadu Visual Studio, přeskočte následující dva kroky hello.
+   - Stáhnout hello [instalační program Visual Studio 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
+   - Spusťte instalační program hello a postupujte podle hello instalace výzvy toocomplete hello instalace.
 
 ### <a name="configure-visual-studio"></a>**Konfigurace sady Visual Studio**
-1. V sadě Visual Studio v části Vlastnosti projektu > Vlastnosti konfigurace > C/C++ > Linker > Obecné > Další adresáře knihoven přidejte adresář lib\opt (tj.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) konektoru C++.
+1. Ze sady Visual Studio projektu vlastnost > Vlastnosti konfigurace > C/C++ > linkeru > Obecné > adresáře další knihovny, přidejte adresář lib\opt hello (tj.: C:\Program Files (x86) \MySQL\MySQL konektor C++ 1.1.9\lib\opt) z hello c ++ konektor.
 2. V sadě Visual Studio v části Vlastnosti projektu > Vlastnosti konfigurace > C/C++ > Obecné > Další adresáře k zahrnutí:
    - Přidejte adresář include/ konektoru C++ (tj.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)
    - Přidejte kořenový adresář knihovny Boost (tj.: C:\boost_1_64_0\)
-3. V sadě Visual Studio v části Vlastnosti projektu > Vlastnosti konfigurace > C/C++ > Linker > Vstup > Další závislosti přidejte do textového pole mysqlcppconn.lib.
-4. Zkopírujte soubor mysqlcppconn.dll ze složky knihovny konektoru C++ z kroku 3 do stejného adresáře jako spustitelný soubor aplikace nebo ho přidejte do proměnné prostředí, aby ho vaše aplikace mohla najít.
+3. Ze sady Visual Studio projektu vlastnost > Vlastnosti konfigurace > C/C++ > linkeru > vstup > Další závislosti, do pole text hello, přidejte mysqlcppconn.lib
+4. Buď mysqlcppconn.dll kopírování z hello c ++ konektor složku knihovny v kroku 3 toohello stejném adresáři jako spustitelný soubor aplikace hello nebo ji můžete přidat proměnnou prostředí toohello tak vaše aplikace k dispozici.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure Database pro databázi MySQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server, například **myserver4demo**.
-3. Klikněte na název serveru.
-4. Vyberte stránku **Vlastnosti** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledejte hello serveru, které jste vytvořili, například **myserver4demo**.
+3. Klikněte na název serveru hello.
+4. Vyberte hello serveru **vlastnosti** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
  ![Název serveru Azure Database for MySQL](./media/connect-cpp/1_server-properties-name-login.png)
-5. Pokud zapomenete přihlašovací údaje pro váš server, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby obnovit heslo.
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránka tooview hello serveru správce přihlašovací jméno a v případě potřeby obnovit heslo hello.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Použijte následující kód k připojení a načtení dat pomocí příkazů **CREATE TABLE** a **INSERT INTO** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody createStatement() a execute() pro spuštění příkazů databáze. 
+Použití hello následující kód tooconnect a načtení dat pomocí hello **CREATE TABLE** a **INSERT INTO** příkazů SQL. Kód Hello používá třídu sql::Driver s hello connect() metoda tooestablish tooMySQL připojení. Potom kód hello používá metoda createStatement() a execute() toorun hello databáze příkazy. 
 
-Nahraďte parametry Host (hostitel), DBName (název databáze), User (uživatel) a Password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze. 
+Nahraďte hello hostitele, DBName, uživatele a heslo parametry hello hodnoty, kterou jste zadali při vytvoření hello server a databáze. 
 
 ```c++
 #include <stdlib.h>
@@ -83,12 +83,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }
@@ -125,9 +125,9 @@ int main()
 
 ## <a name="read-data"></a>Čtení dat
 
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů select. Nakonec kód použije metodu next() k přechodu na záznamy ve výsledcích. Potom kód použije metody getInt() a getString() k parsování hodnot v záznamu.
+Použití hello následující kód tooconnect a čtení dat pomocí hello **vyberte** příkaz jazyka SQL. Kód Hello používá třídu sql::Driver s hello connect() metoda tooestablish tooMySQL připojení. Potom kód hello používá metoda prepareStatement() a executeQuery() toorun hello vyberte příkazy. Nakonec hello kód používá next() tooadvance toohello záznamy ve výsledcích hello. Potom kód hello používá getInt() a funkci getString() tooparse hello hodnoty v záznamu hello.
 
-Nahraďte parametry Host (hostitel), DBName (název databáze), User (uživatel) a Password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze. 
+Nahraďte hello hostitele, DBName, uživatele a heslo parametry hello hodnoty, kterou jste zadali při vytvoření hello server a databáze. 
 
 ```csharp
 #include <stdlib.h>
@@ -151,12 +151,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }   
@@ -177,9 +177,9 @@ int main()
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Použijte následující kód k připojení a čtení dat pomocí příkazu **UPDATE** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů update. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **aktualizace** příkaz jazyka SQL. Kód Hello používá třídu sql::Driver s hello connect() metoda tooestablish tooMySQL připojení. Potom kód hello používá metoda prepareStatement() a executeQuery() toorun hello příkazy aktualizace. 
 
-Nahraďte parametry Host (hostitel), DBName (název databáze), User (uživatel) a Password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze. 
+Nahraďte hello hostitele, DBName, uživatele a heslo parametry hello hodnoty, kterou jste zadali při vytvoření hello server a databáze. 
 
 ```csharp
 #include <stdlib.h>
@@ -201,12 +201,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }   
@@ -227,9 +227,9 @@ int main()
 
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů delete.
+Použití hello následující kód tooconnect a čtení dat pomocí hello **odstranit** příkaz jazyka SQL. Kód Hello používá třídu sql::Driver s hello connect() metoda tooestablish tooMySQL připojení. Potom kód hello používá metoda prepareStatement() executeQuery() toorun hello příkazy a delete.
 
-Nahraďte parametry Host (hostitel), DBName (název databáze), User (uživatel) a Password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze. 
+Nahraďte hello hostitele, DBName, uživatele a heslo parametry hello hodnoty, kterou jste zadali při vytvoření hello server a databáze. 
 
 ```csharp
 #include <stdlib.h>
@@ -253,12 +253,12 @@ int main()
     try
     {
         driver = get_driver_instance();
-        //for demonstration only. never save password in the code!
+        //for demonstration only. never save password in hello code!
         con = driver>connect("tcp://myserver4demo.mysql.database.azure.com:3306/quickstartdb", "myadmin@myserver4demo", "server_admin_password");
     }
     catch (sql::SQLException e)
     {
-        cout << "Could not connect to database. Error message: " << e.what() << endl;
+        cout << "Could not connect toodatabase. Error message: " << e.what() << endl;
         system("pause");
         exit(1);
     }
@@ -279,4 +279,4 @@ int main()
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.](concepts-migrate-dump-restore.md)
+> [Migrace vaší tooAzure databáze MySQL databáze pro databázi MySQL pomocí výpisu a obnovení](concepts-migrate-dump-restore.md)

@@ -1,6 +1,6 @@
 ---
-title: "Využívat pomocí šablony webové aplikace webové služby Machine Learning | Microsoft Docs"
-description: "Použití šablony webové aplikace v Azure Marketplace využívat prediktivní webové služby v Azure Machine Learning."
+title: "aaaConsume pomocí šablony webové aplikace webové služby Machine Learning | Microsoft Docs"
+description: "Použití šablony webové aplikace v Azure Marketplace tooconsume prediktivní webové služby v Azure Machine Learning."
 keywords: "Webová služba, operationalization, REST API strojového učení"
 services: machine-learning
 documentationcenter: 
@@ -15,48 +15,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;raymondl
-ms.openlocfilehash: 95aa1fa23d83ec0dcd00870179167e803bafbd16
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1199377bead470807d58ca7f7a667175cbb88450
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>Využívání webové služby Azure Machine Learning pomocí šablony webové aplikace
 
-Jednou jste vyvinuté prediktivního modelu a nasadit jako Azure webové služby pomocí Machine Learning Studio, nebo pomocí nástrojů, jako je R nebo Python, můžete přístup operationalized modelu s použitím rozhraní REST API.
+Jednou jste vyvinuté prediktivního modelu a nasadit jako Azure webové služby pomocí Machine Learning Studio, nebo pomocí nástrojů, jako je R nebo Python, můžete přístup hello operationalized model pomocí rozhraní REST API.
 
-Existuje několik způsobů, jak používat rozhraní REST API a přístup k webové službě. Můžete například napsat aplikaci v jazyce C#, R nebo Python pomocí ukázkový kód pro vás vygeneroval při nasazení webové služby (k dispozici v [Machine Learning Web Services portálu](https://services.azureml.net/quickstart) nebo v řídicím panelu webové služby v nástroji Machine Learning Studio). Nebo můžete použít sešit aplikace Excel ukázka vytvořili pro vás ve stejnou dobu.
+Existuje několik způsobů tooconsume hello REST API a přístup hello webové služby. Například můžete napsat aplikaci v jazyce C#, R, nebo Python pomocí hello ukázkový kód pro vás vygeneroval při nasazení hello webové služby (k dispozici v hello [Machine Learning Web Services portálu](https://services.azureml.net/quickstart) nebo v řídicím panelu hello webových služeb v Machine Learning Studio). Nebo můžete použít sešit aplikace Excel ukázka hello vytvořená v hello stejnou dobu.
 
-Ale nejrychlejší a nejsnazší způsob pro přístup k webové služby je prostřednictvím šablony webové aplikace k dispozici v [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
+Ale hello tooaccess nejrychlejší a nejjednodušší způsob je webová služba prostřednictvím hello webové aplikace šablony dostupné na hello [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="the-azure-machine-learning-web-app-templates"></a>Azure Machine Learning šablony webové aplikace
-Webové aplikace šablony dostupné v Azure Marketplace můžete vytvořit vlastní webové aplikace, kterou zná vstupní data webové služby a očekávané výsledky. Jediné, co musíte udělat je poskytnout přístup k webové aplikaci pro webové služby a data a šablona nemá rest.
+## <a name="hello-azure-machine-learning-web-app-templates"></a>Hello Azure Machine Learning webové aplikace šablony
+Hello webové aplikace šablony dostupné na hello Azure Marketplace můžete vytvořit vlastní webové aplikace, kterou zná vstupní data webové služby a očekávané výsledky. Stačí toodo je poskytnout webové služby přístup tooyour hello webové aplikace a data a šablony hello hello rest.
 
 Dvě šablony jsou k dispozici:
 
 * [Šablony aplikace webové služby Azure ML požadavků a odpovědí](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
 * [Šablony aplikace webové služby provedení dávky Azure ML](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Každá šablona vytvoří ukázkovou aplikaci ASP.NET, pomocí rozhraní API URI a klíč pro webovou službu a nasadí jej jako webového serveru do Azure. Šablona služby požadavků a odpovědí (záznamy RR) vytvoří webovou aplikaci, která umožňuje odesílání jednoho řádku dat k webové službě získat jeden výsledek. Spuštění služby Batch (BES) šablona vytvoří webovou aplikaci, která umožňuje odeslat mnoho řádků dat. Chcete-li získat více výsledků.
+Každá šablona vytvoří ukázkovou aplikaci ASP.NET, pomocí hello API URI a klíč pro webovou službu a nasadí jej jako tooAzure webu. Šablona služby požadavků a odpovědí (záznamy RR) Hello vytvoří webovou aplikaci, která vám umožní toosend jednoho řádku dat toohello webové služby tooget jeden výsledek. Hello spuštění služby Batch (BES) šablona vytvoří webovou aplikaci, která vám umožní toosend mnoho řádků dat tooget více výsledků.
 
-Žádné kódování je potřeba použít tyto šablony. Stačí zadat klíč rozhraní API a identifikátor URI a šablona vytvoří aplikaci za vás.
+Žádné kódování je požadovaná toouse tyto šablony. Stačí zadat hello klíč rozhraní API a identifikátoru URI a hello šablona vytvoří hello aplikaci za vás.
 
-Pokud chcete získat klíč rozhraní API a URI požadavku pro webovou službu:
+klíč tooget hello rozhraní API a URI požadavku pro webovou službu:
 
-1. V [webový portál služby](https://services.azureml.net/quickstart), novou webovou službu, klikněte na tlačítko **webové služby** v horní části. Nebo pro web Classic, klikněte na tlačítko služby **Classic webové služby**.
-2. Klikněte na tlačítko webové služby, kterou chcete získat přístup.
-3. Pro webovou službu Classic klikněte na koncový bod, které chcete získat přístup.
-4. Klikněte na tlačítko **spotřebě** v horní části.
-5. Kopírování **primární** nebo **sekundární klíč** a uložte ho.
-6. Pokud vytváříte šablonu služby požadavků a odpovědí (záznamy RR), zkopírovat **požadavků a odpovědí** URI a uložte ho. Pokud vytváříte šablonu spuštění služby Batch (BES), zkopírovat **dávkových žádostí** URI a uložte ho.
+1. V hello [webový portál služby](https://services.azureml.net/quickstart), novou webovou službu, klikněte na tlačítko **webové služby** v horní části hello. Nebo pro web Classic, klikněte na tlačítko služby **Classic webové služby**.
+2. Klikněte na tlačítko chcete tooaccess hello webové služby.
+3. Klasické webové služby klikněte na koncový bod hello chcete tooaccess.
+4. Klikněte na tlačítko **spotřebě** v horní části hello.
+5. Kopírování hello **primární** nebo **sekundární klíč** a uložte ho.
+6. Pokud vytváříte šablonu služby požadavků a odpovědí (záznamy RR), zkopírovat hello **požadavků a odpovědí** URI a uložte ho. Pokud vytváříte šablonu spuštění služby Batch (BES), zkopírovat hello **dávkových žádostí** URI a uložte ho.
 
 
-## <a name="how-to-use-the-request-response-service-rrs-template"></a>Použití šablony služby požadavků a odpovědí (záznamy RR)
-Použijte následující postup použijte šablony webové aplikace RRS, jak je znázorněno v následujícím diagramu.
+## <a name="how-toouse-hello-request-response-service-rrs-template"></a>Jak toouse hello šablony služby požadavků a odpovědí (záznamy RR)
+Postupujte podle těchto kroků toouse hello RRS webové aplikace šablony, jak je znázorněno v následujícím diagramu hello.
 
-![Postup použití RRS webové šablony][image1]
+![Proces toouse RRS webové šablony][image1]
 
 
 <!--    ![API Key][image3] -->
@@ -67,61 +67,61 @@ Použijte následující postup použijte šablony webové aplikace RRS, jak je 
    
     ![Request URI][image4] -->
 
-1. Přejděte na [portál Azure](https://portal.azure.com), **přihlášení**, klikněte na tlačítko **nový**, vyhledejte a vyberte **webové aplikace Azure ML požadavků a odpovědí Service**, pak klikněte na tlačítko **vytvořit**. 
+1. Přejděte toohello [portál Azure](https://portal.azure.com), **přihlášení**, klikněte na tlačítko **nový**, vyhledejte a vyberte **webové aplikace Azure ML požadavků a odpovědí Service**, pak klikněte na **Vytvořit**. 
    
-   * Zadejte jedinečný název webové aplikace. Adresa URL webové aplikace bude tento název, za nímž následuje `.azurewebsites.net.` například`http://carprediction.azurewebsites.net.`
-   * Vyberte předplatné Azure a služby, pod kterým běží webové služby.
+   * Zadejte jedinečný název webové aplikace. Adresa URL Hello hello webové aplikace bude tento název, za nímž následuje `.azurewebsites.net.` například`http://carprediction.azurewebsites.net.`
+   * Vyberte hello předplatného Azure a služby, pod kterým běží webové služby.
    * Klikněte na možnost **Vytvořit**.
      
      ![Vytvoření webové aplikace][image5]
 
-4. Po dokončení nasazení webové aplikace Azure klikněte **URL** v nastavení aplikace webové stránky v Azure nebo ve webovém prohlížeči zadejte adresu URL. Například `http://carprediction.azurewebsites.net.`.
-5. Při prvním spuštění webové aplikace se zobrazí dotaz **Post URL rozhraní API** a **klíč rozhraní API**.
-   Zadejte hodnoty, které jste předtím uložili (**URI požadavku** a **klíč rozhraní API**, v uvedeném pořadí).
+4. Po dokončení nasazení hello webové aplikace Azure, klikněte na tlačítko hello **URL** na hello webové stránky nastavení aplikace v Azure, nebo zadejte adresu URL hello ve webovém prohlížeči. Například `http://carprediction.azurewebsites.net.`.
+5. Když hello spustí první webové aplikace se zobrazí výzvu k hello **Post URL rozhraní API** a **klíč rozhraní API**.
+   Zadejte hello hodnoty, které jste předtím uložili (**URI požadavku** a **klíč rozhraní API**, v uvedeném pořadí).
      
      Klikněte na tlačítko **odeslání**.
      
      ![Zadejte Post URI a klíč rozhraní API][image6]
 
-6. Zobrazí aplikace webové jeho **konfiguraci webové aplikace** stránka s aktuální nastavení webové služby. Sem můžete provést změny nastavení používaná při webové aplikace.
+6. Hello webové aplikace zobrazí jeho **konfiguraci webové aplikace** stránka s hello aktuální nastavení webové služby. Zde můžete provádět změny nastavení toohello používané hello webové aplikace.
    
    > [!NOTE]
-   > Nastavení zde pouze změna pro tuto webovou aplikaci. Výchozí nastavení webové služby neprojeví. Například, pokud změníte **popis** zde nemění Popis zobrazený na řídicím panelu webové služby v nástroji Machine Learning Studio.
+   > Nastavení hello zde pouze změna pro tuto webovou aplikaci. Neprojeví hello výchozí nastavení webové služby. Například, pokud změníte hello **popis** zde nemění hello Popis zobrazený na řídicí panel hello webové služby v nástroji Machine Learning Studio.
    > 
    > 
    
-    Když jste hotovi, klikněte na tlačítko **uložit změny**a potom klikněte na **přejít na domovskou stránku**.
+    Když jste hotovi, klikněte na tlačítko **uložit změny**a potom klikněte na **přejděte tooHome stránky**.
 
-7. Na domovské stránce můžete zadat hodnoty k odeslání do webové služby. Klikněte na tlačítko **odeslání** když jste hotovi, a vrátí výsledek.
+7. Z hello domovské stránky, které můžete zadat hodnoty toosend tooyour webové služby. Klikněte na tlačítko **odeslání** když jste hotovi, a bude vrácen hello výsledek.
 
-Pokud chcete vrátit **konfigurace** stránky, přejděte na `setting.aspx` stránku webové aplikace. Příklad: `http://carprediction.azurewebsites.net/setting.aspx.` zobrazí se výzva k opakovanému zadání klíč rozhraní API – budete potřebovat, který pro přístup k stránce a aktualizujte nastavení.
+Pokud chcete, aby tooreturn toohello **konfigurace** stránky, přejděte toohello `setting.aspx` stránku hello webové aplikace. Příklad: `http://carprediction.azurewebsites.net/setting.aspx.` bude výzvami tooenter hello API klíč znovu – budete potřebovat, tooaccess hello stránky a aktualizovat nastavení hello.
 
-Můžete zastavit, restartovat nebo odstranit webovou aplikaci na portálu Azure stejně jako jiná webové aplikace. Tak dlouho, dokud běží můžete procházet domácí webovou adresu a zadejte nové hodnoty.
+Můžete zastavit, restartovat nebo odstranit hello webové aplikace ve hello portálu Azure stejně jako jiná webové aplikace. Tak dlouho, dokud běží můžete procházet toohello domácí webovou adresu a zadejte nové hodnoty.
 
-## <a name="how-to-use-the-batch-execution-service-bes-template"></a>Použití šablony spuštění služby Batch (BES)
-Šablona BES webové aplikace můžete použít stejným způsobem jako šablonu RRS, s tím rozdílem, že webová aplikace, která je vytvořena vám umožní odeslat více řádků dat a příjem více výsledků.
+## <a name="how-toouse-hello-batch-execution-service-bes-template"></a>Jak toouse hello šablony spuštění služby Batch (BES)
+Můžete použít hello BES šablony webové aplikace v hello stejný způsobem jako hello záznamy o prostředku šablony, s výjimkou tohoto hello webovou aplikaci, která je vytvořena vám umožní toosubmit více řádků dat a příjem více výsledků.
 
-Vstupní hodnoty pro spuštění webové služby batch mohou pocházet z úložiště Azure nebo místního souboru; výsledky jsou uloženy v kontejneru úložiště Azure.
-Ano budete potřebovat kontejner úložiště Azure pro uložení výsledků vrácených webové aplikace a budete muset připravit vstupní data.
+Hello vstupní hodnoty pro spuštění webové služby batch mohou pocházet z úložiště Azure nebo místního souboru; Hello výsledky ukládat do kontejneru úložiště Azure.
+Ano, budete potřebovat toohold kontejneru úložiště Azure hello výsledků vrácených hello webové aplikace a budete potřebovat tooget vstupní data připravena.
 
-![Postup použití BES webové šablony][image2]
+![Zpracování toouse BES webové šablony][image2]
 
-1. Postupujte stejným způsobem, k vytvoření webové aplikace BES jako záznamy o prostředku šablony, s výjimkou, přejděte na [Azure ML dávky spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) BES šablony na webu Azure Marketplace otevřete a kliknete na **vytvořit webovou aplikaci**.
+1. Postupujte podle hello stejný postup toocreate hello BES webová aplikace jako šablony hello RRS, s výjimkou přejděte příliš[Azure ML dávky spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) tooopen hello BES šablony v Azure Marketplace a klikněte na tlačítko **vytvoření webové aplikace** .
 
-2. K určení, kde chcete výsledky uložené, zadejte informace o cílovém kontejneru na domovskou stránku webové aplikace. Také určete, kde webové aplikace můžete získat vstupní hodnoty, buď v případě místního souboru nebo kontejner úložiště Azure.
+2. toospecify místo hello výsledky uložené, zadejte informace o kontejneru cílové hello na domovskou stránku hello webové aplikace. Také určete, kde hello webovou aplikaci můžete získat hello vstupní hodnoty, buď v případě místního souboru nebo kontejner úložiště Azure.
    Klikněte na tlačítko **odeslání**.
    
     ![Informace o úložiště][image7]
 
-Webové aplikace se zobrazí stránka s stav úlohy.
-Po dokončení úlohy budete mít k dispozici umístění výsledky v úložišti objektů blob Azure. Máte také možnost stahování výsledky do místního souboru.
+Hello webové aplikace se zobrazí stránka s stav úlohy.
+Po dokončení úlohy hello budete mít k dispozici hello umístění hello výsledky v Azure blob storage. Máte také možnost hello stahování hello výsledky tooa místního souboru.
 
 ## <a name="for-more-information"></a>Další informace
-Další informace o...
+Další informace o toolearn...
 
 * Vytvoření experimentu machine learning s Machine Learning Studio najdete v části [vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](machine-learning-create-experiment.md)
-* tom, jak nasadit experimentu machine learning jako webovou službu, najdete v části [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md)
-* Další způsoby pro přístup k vaší webové služby, najdete v části [využívání Azure Machine Learning webové služby](machine-learning-consume-web-services.md)
+* jak zjistit, toodeploy strojové učení experimentovat jako webovou službu, [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md)
+* jiné způsoby tooaccess vaší webové služby, najdete v části [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md)
 
 [image1]: media/machine-learning-consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/machine-learning-consume-web-service-with-web-app-template/bes-web-template-flow.png

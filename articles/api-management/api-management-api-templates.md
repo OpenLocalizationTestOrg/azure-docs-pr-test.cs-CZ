@@ -1,6 +1,6 @@
 ---
-title: "Šablony rozhraní API v Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky rozhraní API v portálu pro vývojáře ve službě Azure API Management."
+title: "aaaAPI šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello obsah stránky hello rozhraní API v hello portál pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 3802868470f0f74cd1f895a00195259861ea16f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdfa76167cfaf3b23b22d6321904f34da077fecb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky rozhraní API v portálu pro vývojáře.  
+ Hello šablony v této části Povolit obsah hello toocustomize hello API stránek v portálu pro vývojáře hello.  
   
 -   [Rozhraní API seznamu](#APIList)  
 -   [Operace](#Product)  
@@ -38,10 +38,10 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="APIList"></a>Rozhraní API seznamu  
- **Rozhraní API seznamu** šablona umožňuje přizpůsobit text stránce rozhraní API seznamu v portálu pro vývojáře.  
+ Hello **rozhraní API seznamu** šablona vám umožní toocustomize hello textu hello rozhraní API seznamu stránky v portálu pro vývojáře hello.  
   
  ![Seznam rozhraní API portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM vývojáře portálu šablony rozhraní API seznamu")  
   
@@ -76,7 +76,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `API list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `API list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -86,7 +86,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Rozhraní API|Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Rozhraní API viditelné pro aktuálního uživatele.|  
+|Rozhraní API|Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Hello rozhraní API viditelné toohello aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -109,7 +109,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="Product"></a>Operace  
- **Operace** šablona umožňuje přizpůsobit text stránce operace v portálu pro vývojáře.  
+ Hello **operace** šablona vám umožní toocustomize hello textu hello operaci stránky v portálu pro vývojáře hello.  
   
  ![Stránka portálu operaci vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "stránka operace portál pro vývojáře APIM šablony")  
   
@@ -335,21 +335,21 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Operation` Šablona neumožňuje použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Operation` šablona neumožňuje použití hello libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|ApiId|Řetězec|Id aktuální rozhraní API.|  
-|apiName|Řetězec|Název rozhraní API.|  
-|apiDescription|Řetězec|Popis rozhraní API.|  
-|rozhraní api|[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Aktuální rozhraní API.|  
-|operace|[Operace](api-management-template-data-model-reference.md#Operation)|Aktuálně zobrazený operaci.|  
-|sampleUrl|Řetězec|Adresa URL pro aktuální operaci.|  
+|ApiId|Řetězec|id Hello hello aktuální rozhraní API.|  
+|apiName|Řetězec|Název Hello hello rozhraní API.|  
+|apiDescription|Řetězec|Popis hello rozhraní API.|  
+|rozhraní api|[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.|Hello aktuální rozhraní API.|  
+|operace|[Operace](api-management-template-data-model-reference.md#Operation)|operace Hello aktuálně zobrazený.|  
+|sampleUrl|Řetězec|Adresa URL Hello pro aktuální operaci hello.|  
 |operationMenu|[Operace nabídky](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
-|consoleUrl|IDENTIFIKÁTOR URI|Identifikátor URI **vyzkoušet** tlačítko.|  
-|Ukázky|Kolekce [ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.|Ukázky kódu pro aktuální operace...|  
+|consoleUrl|IDENTIFIKÁTOR URI|Hello identifikátor URI pro hello **vyzkoušet** tlačítko.|  
+|Ukázky|Kolekce [ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.|Ukázky kódu Hello hello aktuální operace...|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -376,7 +376,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -456,7 +456,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -480,7 +480,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -504,7 +504,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -528,7 +528,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -552,7 +552,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -576,7 +576,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -600,7 +600,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -624,7 +624,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -639,7 +639,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="CodeSamples"></a>Ukázky kódu  
- Následující šablony umožňují přizpůsobit text ukázky jednotlivých kódu na stránce operace.  
+ Hello následující šablony umožní toocustomize hello textu hello jednotlivých kód vzorků, které se na stránce Operace hello.  
   
  ![Ukázky kódu šablony portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "ukázky APIM Developer Portal šablony kódu")  
   
@@ -660,7 +660,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 -   [Ruby](#Ruby)  
   
 ###  <a name="Curl"></a>Curl  
- **DocumentationSamplesCurl** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesCurl** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -678,7 +678,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -700,7 +700,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -713,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a>C#  
- **DocumentationSamplesCsharp** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesCsharp** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -731,7 +731,7 @@ namespace CSHttpClientSample
         static void Main()  
         {  
             MakeRequest();  
-            Console.WriteLine("Hit ENTER to exit...");  
+            Console.WriteLine("Hit ENTER tooexit...");  
             Console.ReadLine();  
         }  
   
@@ -857,7 +857,7 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -879,7 +879,7 @@ namespace CSHttpClientSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -892,12 +892,12 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a>Java  
- **DocumentationSamplesJava** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesJava** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
 ```xml  
-// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// // This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
@@ -953,7 +953,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -975,7 +975,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -988,7 +988,7 @@ public class JavaSample
 ```  
   
 ###  <a name="JavaScript"></a>JavaScript  
- **DocumentationSamplesJs** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesJs** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -1042,7 +1042,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -1064,7 +1064,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1077,7 +1077,7 @@ public class JavaSample
 ```  
   
 ###  <a name="ObjectiveC"></a>Objective C  
- **DocumentationSamplesObjc** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesObjc** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -1154,7 +1154,7 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -1176,7 +1176,7 @@ int main(int argc, const char * argv[])
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1189,13 +1189,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a>PHP  
- **DocumentationSamplesPhp** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesPhp** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1244,7 +1244,7 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -1266,7 +1266,7 @@ catch (HttpException $ex)
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1279,7 +1279,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a>Python  
- **DocumentationSamplesPython** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesPython** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -1362,7 +1362,7 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -1384,7 +1384,7 @@ except Exception as e:
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1397,7 +1397,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a>Ruby  
- **DocumentationSamplesRuby** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.  
+ Hello **DocumentationSamplesRuby** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.  
   
 #### <a name="default-template"></a>Výchozí šablony  
   
@@ -1433,7 +1433,7 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
  [Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.  
@@ -1455,7 +1455,7 @@ puts response.body
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1468,4 +1468,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

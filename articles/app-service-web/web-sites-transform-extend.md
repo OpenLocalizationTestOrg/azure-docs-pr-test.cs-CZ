@@ -1,6 +1,6 @@
 ---
-title: "Pokročilá konfigurace a rozšíření Azure App Service webové aplikace"
-description: "Pomocí deklarace Transformation(XDT) dokumentu XML k transformaci soubor ApplicationHost.config ve vaší webové aplikace služby Azure App Service a přidejte pro soukromá rozšíření povolí správu vlastní akce."
+title: "aaaAzure webové aplikace App Service pokročilá konfigurace a rozšíření"
+description: "Použijte soubor ApplicationHost.config Transformation(XDT) dokumentu XML deklarace tootransform hello ve vaší službě Azure App Service webové aplikace a tooadd pro soukromá rozšíření tooenable vlastní akce správy."
 author: cephalin
 writer: cephalin
 editor: mollybos
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 314d3a954e712b829e7cf5eb37b23b31670f976b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 873347ac13113d1ac989cba29128382c81dcfcca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-web-app-advanced-config-and-extensions"></a>Pokročilá konfigurace a rozšíření Azure App Service webové aplikace
-Pomocí [transformace dokumentů XML](http://msdn.microsoft.com/library/dd465326.aspx) deklarace (XDT), můžete převést [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) souborů ve vaší webové aplikaci ve službě Azure App Service. Deklarace XDT můžete taky přidat pro soukromá rozšíření povolit akce správy vlastní webové aplikace. Tento článek obsahuje rozšíření aplikace webového správce PHP ukázkové, který umožňuje správu nastavení PHP prostřednictvím webového rozhraní.
+Pomocí [transformace dokumentů XML](http://msdn.microsoft.com/library/dd465326.aspx) deklarace (XDT), můžete převést hello [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) souborů ve vaší webové aplikaci ve službě Azure App Service. Můžete také použít XDT deklarace tooadd pro soukromá rozšíření tooenable vlastní webové aplikace akce správy. Tento článek obsahuje rozšíření aplikace webového správce PHP ukázkové, který umožňuje správu nastavení PHP prostřednictvím webového rozhraní.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a id="transform"></a>Pokročilá konfigurace prostřednictvím ApplicationHost.config
-Platforma služby App Service poskytuje flexibilitu a řízení pro konfiguraci webové aplikace. I když není k dispozici pro přímé úpravy ve službě App Service standardní konfigurační soubor ApplicationHost.config služby IIS, platformu podporuje deklarativní model transformace ApplicationHost.config založené na XML dokumentu transformaci (XDT).
+Hello platformě App Service poskytuje flexibilitu a řízení pro konfiguraci webové aplikace. I když hello standardní konfigurační soubor ApplicationHost.config služby IIS není k dispozici pro přímé úpravy ve službě App Service, hello platforma podporuje deklarativní model transformace ApplicationHost.config založené na XML dokumentu transformaci (XDT).
 
-Tato funkce transformace využít, vytvořte soubor ApplicationHost.xdt s XDT obsahu a umístěte do kořenové lokality (d:\home\site) v [Kudu konzoly](https://github.com/projectkudu/kudu/wiki/Kudu-console). Musíte restartovat webovou aplikaci pro změny vstoupily v platnost.
+tooleverage tato funkce transformace, vytvořte soubor ApplicationHost.xdt s XDT obsahu a umístěte do kořenové lokality hello (d:\home\site) v hello [Kudu konzoly](https://github.com/projectkudu/kudu/wiki/Kudu-console). Toorestart hello webové aplikace může být nutné pro změny tootake vliv.
 
-Následující ukázka applicationHost.xdt ukazuje, jak přidat novou proměnnou vlastního prostředí do webové aplikace, která se používá PHP 5.4.
+Následující ukázka applicationHost.xdt Hello ukazuje, jak tooadd nové proměnné tooa vlastní prostředí webové aplikaci, která používá PHP 5.4.
 
 ```xml
 <?xml version="1.0"?>
@@ -48,46 +48,46 @@ Následující ukázka applicationHost.xdt ukazuje, jak přidat novou proměnnou
 </configuration>
 ```
 
-Soubor protokolu s transform stav a podrobnosti o je k dispozici z kořenového adresáře serveru FTP v rámci LogFiles\Transform.
+Soubor protokolu s transform stav a podrobnosti o je k dispozici z kořenového hello FTP v rámci LogFiles\Transform.
 
 Další ukázky naleznete v části [https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples).
 
 **Poznámka**<br />
-Elementy ze seznamu modulů podle `system.webServer` nemůže být odebrány nebo přeuspořádány, ale je možné, přidané do seznamu.
+Elementy z hello seznam modulů v části `system.webServer` nemůže být odebrány nebo přeuspořádány, ale je možné, dodatky toohello seznamu.
 
 ## <a id="extend"></a>Rozšíření webové aplikace
 ### <a id="overview"></a>Přehled rozšíření privátní webové aplikace
-App Service podporuje rozšíření webové aplikace jako bod rozšiřitelnosti pro akce správy. Ve skutečnosti některé funkce služby App Service jsou implementované jako předem nainstalovaná rozšíření. Při předinstalovány platforma rozšíření nemůže být upraven, můžete vytvořit a nakonfigurovat pro soukromá rozšíření pro webovou aplikaci. Tato funkce také závisí na XDT deklarace. Klíčové kroky pro vytvoření rozšíření privátní webové aplikace jsou následující:
+App Service podporuje rozšíření webové aplikace jako bod rozšiřitelnosti pro akce správy. Ve skutečnosti některé funkce služby App Service jsou implementované jako předem nainstalovaná rozšíření. Při hello předinstalovány platforma rozšíření nemůže být upraven, můžete vytvořit a nakonfigurovat pro soukromá rozšíření pro webovou aplikaci. Tato funkce také závisí na XDT deklarace. Hello klíčové kroky pro vytvoření rozšíření privátní webové aplikace jsou hello následující:
 
 1. Webové aplikace rozšíření **obsah**: vytvoření žádné webové aplikace podporované službou App Service
 2. Webové aplikace rozšíření **deklarace**: Vytvořte soubor ApplicationHost.xdt
-3. Webové aplikace rozšíření **nasazení**: umístit obsah ve složce SiteExtensions v`root`
+3. Webové aplikace rozšíření **nasazení**: umístit obsah složky SiteExtensions hello v části`root`
 
-Interní odkazy pro webovou aplikaci by měla odkazovat na relativní cestu k aplikaci zadaný v souboru ApplicationHost.xdt cestu. Všechny změny do souboru ApplicationHost.xdt vyžaduje recyklaci webové aplikace.
+Interní odkazy pro webovou aplikaci hello by měla odkazovat tooa cesta relativní toohello cestu aplikace zadané v souboru ApplicationHost.xdt hello. Všechny změny toohello ApplicationHost.xdt soubor vyžaduje recyklaci webové aplikace.
 
 **Poznámka:**: Další informace o těchto klíčové prvky je k dispozici na [https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions).
 
-Podrobný příklad je obsažena znázorňující kroky pro vytvoření a povolení rozšíření privátní webové aplikace. Zdrojový kód v příkladu správce PHP, která následuje si můžete stáhnout z [https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager).
+Podrobný příklad je součástí tooillustrate hello kroky pro vytvoření a povolení rozšíření privátní webové aplikace. Hello zdrojového kódu pro příklad správce PHP hello způsobem si můžete stáhnout z [https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager).
 
 ### <a id="SiteSample"></a>Příklad rozšíření webové aplikace: Správce PHP
-Správce PHP je rozšíření webové aplikace, která správcům webové aplikace umožňuje snadno zobrazit a nakonfigurovat jejich nastavení PHP pomocí webové rozhraní, aniž by museli přímo upravit soubory INI PHP. Běžné konfigurační soubory pro jazyk PHP zahrnout soubor php.ini umístěný ve složce Program Files a. user.ini umístěného v kořenové složce webové aplikace. Vzhledem k tomu, že soubor php.ini není přímo upravovat na platformě App Service, používá rozšíření správce PHP. user.ini souboru použít změny nastavení.
+Správce PHP je rozšíření webové aplikace, která umožňuje správci aplikace webového tooeasily zobrazení a konfigurace jejich nastavení PHP, místo nutnosti soubory INI PHP toomodify přímo pomocí webového rozhraní. Běžné konfigurační soubory pro jazyk PHP zahrnout soubor php.ini hello umístěny ve složce Program Files and hello. user.ini umístěného v kořenové složce hello vaší webové aplikace. Vzhledem k tomu, že soubor php.ini hello není přímo upravovat na hello platformě App Service, hello rozšíření PHP správce používá hello. tooapply souboru user.ini změny nastavení.
 
-#### <a id="PHPwebapp"></a>Správce PHP webové aplikace
-Toto je domovské stránce Správce PHP nasazení:
+#### <a id="PHPwebapp"></a>Hello správce PHP webové aplikace
+Hello následuje hello domovské stránce hello správce PHP nasazení:
 
 ![TransformSitePHPUI][TransformSitePHPUI]
 
-Jak je vidět, rozšíření webové aplikace je stejně jako regulární webovou aplikaci, ale s další soubor ApplicationHost.xdt umístěné v kořenové složce webové aplikace (Další informace o souboru ApplicationHost.xdt jsou k dispozici v další části tohoto článku).
+Jak můžete vidět, je stejně jako regulární webovou aplikaci, ale s další soubor ApplicationHost.xdt umístit do kořenové složky hello hello webové aplikace (Další informace o souboru ApplicationHost.xdt hello jsou k dispozici v další části hello tohoto rozšíření webové aplikace článek).
 
-Správce PHP rozšíření byl vytvořen pomocí šablony Visual Studio ASP.NET MVC 4 webové aplikace. V Průzkumníku řešení následující zobrazení ukazuje strukturu rozšíření správce PHP.
+Správce PHP rozšíření Hello byl vytvořen pomocí šablony Visual Studio MVC 4 webovou aplikaci ASP.NET hello. Hello následující zobrazení v Průzkumníku řešení ukazuje hello strukturu hello správce PHP rozšíření.
 
 ![TransformSiteSolEx][TransformSiteSolEx]
 
-Pouze speciální logiku potřebné pro soubor vstupně-výstupních operací je označíte, kde je umístěn daný adresář wwwroot webové aplikace. Jak ukazuje následující příklad kódu, v prostředí proměnné "HOME" znamená kořenová cesta webové aplikace a cestu wwwroot lze sestavit připojením "site\wwwroot":
+Hello jenom speciální logika potřebné pro soubor vstupně-výstupních operací je tooindicate kde hello adresář wwwroot hello webové aplikace se nachází. Jako hello následující příklad ukazuje kód hello proměnné prostředí "HOME" označuje hello kořenová cesta webové aplikace a cestu hello wwwroot lze sestavit připojením "site\wwwroot":
 
 ```csharp
 /// <summary>
-/// Gives the location of the .user.ini file, even if one doesn't exist yet
+/// Gives hello location of hello .user.ini file, even if one doesn't exist yet
 /// </summary>
 private static string GetUserSettingsFilePath()
 {
@@ -102,22 +102,22 @@ private static string GetUserSettingsFilePath()
 ```
 
 
-Až budete mít cesta k adresáři, můžete ke čtení a zápis do souborů běžným sdíleným vstupně-výstupních operací.
+Až budete mít hello cesta k adresáři, můžete použít běžný soubor tooread vstupně-výstupních operací a zápisu toofiles.
 
-Jeden bod upozornění se rozšíření webové aplikace, pokud o zpracování interní odkazy.  Pokud máte jakékoli odkazy v soubory ve formátu HTML, která umožňují absolutní cesty k interní odkazy na webové aplikace, je třeba zkontrolovat, že tyto odkazy se přidá jako předpona názvem svého rozšíření jako kořenového adresáře. To je nutné, protože kořenová pro toto rozšíření je nyní "/`[your-extension-name]`/" místo se musí být právě "/", tak interní odkazy příslušným způsobem aktualizuje. Předpokládejme například, že váš kód obsahuje odkaz na následující:
+Jeden bod upozornění se rozšíření webové aplikace, pokud o hello zpracování interní odkazy.  Pokud máte jakékoli odkazy v soubory ve formátu HTML, která umožňují absolutní cesty toointernal odkazy na webové aplikace, je třeba zkontrolovat, že tyto odkazy se přidá jako předpona názvem svého rozšíření jako kořenového adresáře. To je nutné, protože kořenová hello pro toto rozšíření je nyní "/`[your-extension-name]`/" místo se musí být právě "/", tak interní odkazy příslušným způsobem aktualizuje. Například předpokládejme, že kód obsahuje toohello následující odkaz:
 
 `"<a href="/Home/Settings">PHP Settings</a>"`
 
-Při odkazu je součástí rozšíření webové aplikace, musí být odkaz v následující podobě:
+Při propojení hello je součástí rozšíření webové aplikace, musí být odkaz hello hello následující formulář:
 
 `"<a href="/[your-site-name]/Home/Settings">Settings</a>"`
 
-Tento požadavek můžete obejít a to buď pomocí pouze relativní cesty v rámci webové aplikace nebo v případě aplikací ASP.NET, pomocí `@Html.ActionLink` metoda, kterou vytvoří na příslušné odkazy.
+Tento požadavek můžete obejít buď pomocí pouze relativní cesty v rámci webové aplikace nebo v případě aplikací ASP.NET hello pomocí hello `@Html.ActionLink` metoda, kterou vytvoří hello příslušné odkazy.
 
-#### <a id="XDT"></a>Soubor applicationHost.xdt
-Kód pro rozšíření vaší webové aplikace přejde pod %HOME%\SiteExtensions\[si název rozšíření]. Zavoláme vám to kořenového rozšíření.  
+#### <a id="XDT"></a>soubor applicationHost.xdt Hello
+Hello kód pro rozšíření vaší webové aplikace přejde pod %HOME%\SiteExtensions\[si název rozšíření]. Zavoláme vám tato rozšíření kořenové hello.  
 
-Registrace rozšíření vaší webové aplikace pomocí souboru applicationHost.config, musíte umístit soubor s názvem ApplicationHost.xdt v kořenu rozšíření. Obsah souboru ApplicationHost.xdt by měl vypadat takto:
+tooregister rozšíření vaší webové aplikace pomocí souboru applicationHost.config hello, budete potřebovat tooplace do souboru s názvem ApplicationHost.xdt v kořenovém rozšíření hello. Hello obsah souboru ApplicationHost.xdt hello by měl vypadat takto:
 
 ```xml
 <?xml version="1.0"?>
@@ -125,7 +125,7 @@ Registrace rozšíření vaší webové aplikace pomocí souboru applicationHost
   <system.applicationHost>
     <sites>
       <site name="%XDT_SCMSITENAME%" xdt:Locator="Match(name)">
-        <!-- NOTE: Add your extension name in the application paths below -->
+        <!-- NOTE: Add your extension name in hello application paths below -->
         <application path="/[your-extension-name]" xdt:Locator="Match(path)" xdt:Transform="Remove" />
         <application path="/[your-extension-name]" applicationPool="%XDT_APPPOOLNAME%" xdt:Transform="Insert">
           <virtualDirectory path="/" physicalPath="%XDT_EXTENSIONPATH%" />
@@ -136,9 +136,9 @@ Registrace rozšíření vaší webové aplikace pomocí souboru applicationHost
 </configuration>
 ```
 
-Název, který jste vybrali jako název rozšíření by měl mít stejný název jako kořenové složky rozšíření.
+Hello název, který jste vybrali jako název rozšíření by měl mít hello stejný název jako kořenové složky rozšíření.
 
-To má za následek přidání nové aplikace cestu k `system.applicationHost` seznam stránek v lokalitě SCM. Lokalita SCM je koncový bod správy lokality konkrétní přihlašovací údaje. Obsahuje adresu URL `https://[your-site-name].scm.azurewebsites.net`.  
+Tato akce nemá vliv hello přidávání nové toohello cesta aplikace `system.applicationHost` seznam stránek v lokalitě SCM hello. lokalita SCM Hello je koncový bod správy lokality konkrétní přihlašovací údaje. Obsahuje adresu URL hello `https://[your-site-name].scm.azurewebsites.net`.  
 
 ```xml
 <system.applicationHost>
@@ -155,7 +155,7 @@ To má za následek přidání nové aplikace cestu k `system.applicationHost` s
       <application path="/" applicationPool="[your-website]">
         <virtualDirectory path="/" physicalPath="D:\Program Files (x86)\SiteExtensions\Kudu\1.24.20926.5" />
       </application>
-      <!-- Note the custom changes that go here -->
+      <!-- Note hello custom changes that go here -->
       <application path="/[your-extension-name]" applicationPool="[your-website]">
         <virtualDirectory path="/" physicalPath="C:\DWASFiles\Sites\[your-website]\VirtualDirectory0\SiteExtensions\[your-extension-name]" />
       </application>
@@ -166,23 +166,23 @@ To má za následek přidání nové aplikace cestu k `system.applicationHost` s
 ```
 
 ### <a id="deploy"></a>Nasazení rozšíření webové aplikace
-K instalaci rozšíření vaší webové aplikace, můžete pomocí protokolu FTP zkopírujte všechny soubory vaší webové aplikace `\SiteExtensions\[your-extension-name]` složku, ve kterém chcete nainstalovat rozšíření webové aplikace.  Nezapomeňte zkopírovat soubor ApplicationHost.xdt do tohoto umístění také. Restartujte vaší webové aplikace, která rozšíření aktivuje.
+tooinstall rozšíření vaší webové aplikace, FTP toocopy můžete použít všechny soubory hello vaší webové aplikace toohello `\SiteExtensions\[your-extension-name]` složky hello webové aplikace, na kterém chcete tooinstall hello rozšíření.  Zda toocopy hello ApplicationHost.xdt toothis umístění souboru také být. Restartujte rozšíření hello tooenable vaší webové aplikace.
 
-Měli byste mít moci zobrazit vaše rozšíření webové aplikace na:
+Byste měli mít toosee rozšíření vaší webové aplikace na:
 
 `https://[your-site-name].scm.azurewebsites.net/[your-extension-name]`
 
-Všimněte si, že adresa URL vypadá stejně jako adresu URL pro webovou aplikaci, s tím rozdílem, že se používá protokol HTTPS a obsahuje ".scm".
+Všimněte si, že adresa URL vypadá stejně jako hello adresu URL pro webovou aplikaci, s tím rozdílem, že se používá protokol HTTPS a obsahuje ".scm" hello.
 
-Je možné zakázat všechna rozšíření privátní (není předem nainstalovaná) pro webovou aplikaci během vývoje a vyšetřování přidáním nastavení aplikace s klíčem `WEBSITE_PRIVATE_EXTENSIONS` a hodnota `0`.
+Je rozšíření všechny privátní možné toodisable (není předinstalovaným) pro webovou aplikaci během vývoje a vyšetřování přidáním nastavení aplikace s klíčem hello `WEBSITE_PRIVATE_EXTENSIONS` a hodnota `0`.
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png

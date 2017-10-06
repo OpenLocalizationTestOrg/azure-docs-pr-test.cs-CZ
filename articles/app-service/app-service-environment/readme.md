@@ -1,6 +1,6 @@
 ---
-title: Soubor readme Azure App Service Environment
-description: "Jsou uvedeny v dokumentaci, která popisuje Azure App Service Environment"
+title: soubor readme aaaAzure App Service Environment
+description: "Seznamy hello dokumentace, která popisuje Azure App Service Environment"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 5b1362854dbc3b0098718bd2ea3cffb06366000c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6edc74804ded7497e70c31c9e08252257add4415
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-environment-documentation"></a>Dokumentace prostředí služby App Service
  Azure App Service Environment je funkce služby Azure App Service, která poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění aplikací App Service ve velkém rozsahu. Tato funkce může hostovat vaše [webové aplikace][webapps], [mobilní aplikace][mobileapps], [aplikace API][APIApps], a [funkce][Functions].
@@ -29,20 +29,20 @@ Služby App Service Environment (ASEs) jsou ideální pro aplikační procesy, k
 
 Zákazníci vytvářet více ASEs v rámci jedné oblasti Azure a nad několika oblastmi Azure. Díky této univerzálnost je ASEs ideální pro bezstavové aplikačními vrstvami podporu vysoké zatížení RPS vodorovně škálování.
 
-ASEs izolují spouštění jenom jednoho zákazníka aplikací a vždy nasazených do virtuální sítě Azure. Zákazníci mají jemně odstupňovanou kontrolu nad aplikace příchozí a odchozí síťový provoz s použitím [skupin zabezpečení sítě][NSGs]. Aplikace můžete také vytvořit vysokorychlostní zabezpečené připojení přes virtuální sítě k firemním prostředkům místně.
+ASEs jsou izolované toorunning jenom jednoho zákazníka aplikace a jsou vždy nasazené do virtuální sítě Azure. Zákazníci mají jemně odstupňovanou kontrolu nad aplikace příchozí a odchozí síťový provoz s použitím [skupin zabezpečení sítě][NSGs]. Aplikace můžete také vytvořit vysokorychlostní zabezpečené připojení přes virtuální sítě tooon místním firemním prostředkům.
 
-Aplikace často potřebují přístup k podnikovým prostředkům, jako jsou třeba interní databáze a webové služby. Aplikace, které běží na ASEs mají přístup k prostředkům prostřednictvím [site-to-site] [ SiteToSite] VPN a [Azure ExpressRoute] [ ExpressRoute] připojení.
+Aplikace často potřebují tooaccess podnikovým prostředkům, jako je například interní databází a webové služby. Aplikace, které běží na ASEs mají přístup k prostředkům prostřednictvím [site-to-site] [ SiteToSite] VPN a [Azure ExpressRoute] [ ExpressRoute] připojení.
 
 * [Co je služba App Service environment?][Intro]
 * [Vytvoření služby App Service environment][MakeExternalASE]
 * [Vytvoření interní zátěže služby App Service environment][MakeILBASE]
 * [Použití služby App Service environment][UsingASE]
-* [Aspekty sítě a služby App Service environment][ASENetwork]
+* [Aspekty sítě a hello služby App Service environment][ASENetwork]
 * [Vytvoření služby App Service environment ze šablony][MakeASEfromTemplate]
 
 
 ## <a name="videos"></a>Videa
-Zvládnutí moderních funkcí PaaS ve firmě s využitím Azure App Service
+Hlavní moderních PaaS pro hello Enterprise službou Azure App Service
 >[!VIDEO https://channel9.msdn.com/Events/Ignite/2016/BRK3205/player]
 
 Nasazení vysoce škálovatelných a zabezpečených aplikací

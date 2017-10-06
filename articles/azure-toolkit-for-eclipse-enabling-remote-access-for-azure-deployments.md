@@ -1,6 +1,6 @@
 ---
-title: "Povolení vzdáleného přístupu pro Azure nasazení v prostředí Eclipse"
-description: "Postup povolení vzdáleného přístupu pro Azure nasazení pomocí sady nástrojů pro Azure pro Eclipse."
+title: "aaaEnabling vzdáleného přístupu pro Azure nasazení v prostředí Eclipse"
+description: "Zjistěte, jak tooenable vzdáleného přístupu pro Azure nasazení pomocí hello Azure Toolkit pro Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,112 +14,112 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 654d511bd5a62341f87569317e97360c94a6f26c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00c2bf22c1f3ec792098f154f771c87506e87881
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-remote-access-for-azure-deployments-in-eclipse"></a>Povolení vzdáleného přístupu pro Azure nasazení v prostředí Eclipse
-Pomoc při řešení potíží s vaše nasazení, můžete povolit a používat vzdáleného přístupu pro připojení k virtuálnímu počítači hostování vašeho nasazení. Funkce vzdáleného přístupu závisí na protokol RDP (Remote Desktop). Vzdálený přístup můžete nakonfigurovat pro vaše nasazení po publikovali do Azure, nebo pokud používáte Eclipse s operačním systémem Windows, můžete nakonfigurovat vzdálený přístup před publikováním do Azure. Všimněte si, že budete potřebovat klient vzdálené plochy, který je kompatibilní s operačním systémem bylo před připojením k vašeho nasazení virtuálního počítače v Azure.
+toohelp řešení nasazení, můžete povolit a používat vzdálený přístup tooconnect toohello virtuální počítač hostování vašeho nasazení. Hello funkce vzdáleného přístupu závisí na hello protokolu RDP (Remote Desktop). Po jejím publikování tooAzure, nebo pokud používáte Eclipse s operačním systémem Windows, můžete nakonfigurovat vzdálený přístup před publikováním tooAzure, můžete nakonfigurovat vzdáleného přístupu pro vaše nasazení. Všimněte si, že budete potřebovat klient vzdálené plochy, který je kompatibilní s operačním systémem v pořadí tooconnect tooyour nasazení virtuálního počítače v Azure.
 
-## <a name="how-to-enable-remote-access-before-you-deploy-to-azure"></a>Postup povolení vzdáleného přístupu, před nasazením do Azure
+## <a name="how-tooenable-remote-access-before-you-deploy-tooazure"></a>Nasazení vzdáleného přístupu tooenable před tooAzure
 > [!NOTE]
-> Postup povolení vzdáleného přístupu, před nasazením aplikace do Azure, budete muset používat prostředí Eclipse v systému Windows.
+> tooenable vzdálený přístup před nasazením tooAzure vaší aplikace, musíte toobe Eclipse systémem Windows.
 > 
 > 
 
-Na následujícím obrázku **vzdáleného přístupu** dialogové okno Vlastnosti používaným pro povolení vzdáleného přístupu.
+Hello následující obrázek ukazuje hello **vzdáleného přístupu** dialogové okno Vlastnosti použít tooenable vzdáleného přístupu.
 
 ![][ic719494]
 
-Existují dva způsoby, jak zobrazit **vzdáleného přístupu** dialogové okno Vlastnosti:
+Existují dva způsoby toodisplay hello **vzdáleného přístupu** dialogové okno Vlastnosti:
 
-* Klikněte na tlačítko **Upřesnit** na odkaz v **vzdáleného přístupu** části **publikovat do Azure** dialogové okno.
+* Klikněte na tlačítko hello **Upřesnit** odkaz v hello **vzdáleného přístupu** části hello **publikování tooAzure** dialogové okno.
 
-* Otevřete **vlastnosti** dialogové okno Azure projektu.
+* Otevřete hello **vlastnosti** dialogové okno Azure projektu.
 
-Když vytvoříte nový projekt nasazení Azure, projekt nebude mít vzdálený přístup ve výchozím nastavení povolené. Však můžete snadno povolit vzdáleného přístupu tak, že zadáte uživatelské jméno a heslo **publikovat do Azure** dialogové okno. Heslo vzdáleného přístupu je zašifrována pomocí certifikátů X.509. Pokud nepoužijete zadejte svůj vlastní certifikát šifrování spoléhá na certifikát podepsaný svým držitelem, které jsou součástí modulu plug-in Azure pro Eclipse. Tento certifikát podepsaný držitelem je v **cert** složce projektu Azure uložená i jako soubor certifikátu veřejného (SampleRemoteAccessPublic.cer) a jako Personal Information Exchange (PFX) soubor certifikátu () SampleRemoteAccessPrivate.pfx). Ta obsahuje soukromý klíč pro certifikát, a má výchozí heslo **Heslo1**. Vzhledem k tomu, že je toto heslo veřejné znalostní báze, výchozí certifikát by měl použít pouze pro účely, není pro produkční nasazení učení. Takže než pro učení účely, pokud chcete povolit vzdálené relace pro vaše nasazení, měli byste kliknout na **Upřesnit** na odkaz v **publikovat do Azure** dialogovém okně můžete zadat vlastní certifikát. Všimněte si, že budete muset nahrát verze PFX certifikátu k vaší hostované služby v rámci portálu pro správu Azure tak, že Azure může dešifrovat heslo uživatele.
+Když vytvoříte nový projekt nasazení Azure, hello projektu nebude mít vzdálený přístup ve výchozím nastavení povolené. Však můžete snadno povolit vzdálený přístup zadáním hello uživatelské jméno a heslo v hello **publikování tooAzure** dialogové okno. heslo Hello vzdáleného přístupu je zašifrována pomocí certifikátů X.509. Pokud nepoužijete zadejte svůj vlastní certifikát šifrování hello spoléhá na certifikát podepsaný svým držitelem, které jsou součástí hello modul plug-in Azure pro prostředí Eclipse. Tento certifikát podepsaný držitelem je v hello **cert** složce projektu Azure uložená i jako soubor certifikátu veřejného (SampleRemoteAccessPublic.cer) a jako Personal Information Exchange (PFX) soubor certifikátu () SampleRemoteAccessPrivate.pfx). Hello pozdější obsahuje hello privátní klíč pro certifikát hello a má výchozí heslo **Heslo1**. Vzhledem k tomu, že je toto heslo veřejné znalostní báze, hello výchozí certifikát by měl použít pouze pro účely, není pro produkční nasazení učení. Takže než pro učení účely, pokud chcete vzdálené relace tooenabled nasazení, měli byste kliknout na hello **Upřesnit** odkaz v hello **publikování tooAzure** toospecify dialogové okno Vlastní certifikát. Všimněte si, že potřebujete tooupload hello PFX verze hello certifikát tooyour hostované služby v rámci hello portálu pro správu Azure, tak, že Azure může dešifrovat heslo uživatele hello.
 
-Zbývající část tohoto kurzu se dozvíte, jak pro povolení vzdáleného přístupu pro projekt nasazení Azure, která byla původně vytvořena s vzdálený přístup zakázán. Pro účely tohoto kurzu vytvoříme nový certifikát podepsaný svým držitelem a jeho soubor .pfx, bude mít heslo podle svého výběru. Máte také možnost použít certifikát vydaný certifikační autority.
+Hello zbytek hello kurz ukazuje, jak tooenable vzdáleného přístupu pro projekt nasazení Azure, která byla původně vytvořena s vzdálený přístup zakázán. Pro účely tohoto kurzu vytvoříme nový certifikát podepsaný svým držitelem a jeho soubor .pfx, bude mít heslo podle svého výběru. Máte také možnost hello používá certifikát vydaný certifikační autoritou.
 
-## <a name="how-to-enable-remote-access-after-you-have-deployed-to-azure"></a>Postup povolení vzdáleného přístupu, když nasadíte do Azure
-Postup povolení vzdáleného přístupu, když nasadíte do Azure, použijte následující postup:
+## <a name="how-tooenable-remote-access-after-you-have-deployed-tooazure"></a>Jak tooenable vzdáleného přístupu po jste nasadili tooAzure
+tooenable vzdálený přístup po nasazení tooAzure hello použijte následující kroky:
 
-1. Přihlaste se k portálu správy Azure pomocí účtu Azure
+1. Přihlaste se pomocí účtu Azure portál pro správu Azure hello
 
 2. V seznamu **cloudové služby**, vyberte nasazené cloudové služby
 
-3. Cloudové služby webové stránce, klikněte na tlačítko **konfigurace** odkaz
+3. Hello cloudové služby webové stránce, klikněte na tlačítko hello **konfigurace** odkaz
 
-4. V dolní části stránky konfigurace, klikněte na **vzdáleného** odkaz
+4. Na hello dolní části stránky hello konfigurace, klikněte na tlačítko hello **vzdáleného** odkaz
 
-5. Jakmile se zobrazí dialogové okno automaticky otevírané okno:
+5. Jakmile se zobrazí dialogové okno hello automaticky otevírané okno:
    
-   * Zadejte Role, pro který chcete povolit vzdálený přístup
+   * Zadejte hello Role můžete pro kterou chcete tooenable vzdáleného přístupu
 
-   * Kliknutím vyberte **povolení vzdálené plochy** zaškrtávací políčko
+   * Klikněte na tlačítko tooselect hello **povolení vzdálené plochy** zaškrtávací políčko
    
-   * Zadejte uživatelské jméno a heslo, které chcete použít pro vzdálený přístup
+   * Zadejte uživatelské jméno a heslo, které chcete toouse pro vzdálený přístup
    
-   * Vyberte certifikát, který chcete použít
+   * Vyberte certifikát toouse hello
 
 6. Klikněte na tlačítko **OK**. 
 
-Zobrazí se zpráva, že změna konfigurace je v průběhu, který může trvat několik minut. Po dokončení změny konfigurace, postupujte podle kroků v **přihlásit vzdáleně** později v tomto článku.
+Zobrazí se zpráva, že změna konfigurace je v průběhu, který může trvat několik minut toocomplete. Po změně konfigurace hello byl dokončen, postupujte podle kroků hello v hello **toolog v vzdáleně** později v tomto článku.
 
-## <a name="how-to-enable-remote-access-in-your-package"></a>Postup povolení vzdáleného přístupu na balíček
+## <a name="how-tooenable-remote-access-in-your-package"></a>Jak tooenable vzdáleného přístupu na balíček
 1. V podokně Eclipse na prohlížeči projektu klikněte pravým tlačítkem na projekt Azure a klikněte na tlačítko **vlastnosti**.
 
-2. V **vlastnosti** dialogové okno, rozbalte položku **Azure** v levém podokně a klikněte na **vzdáleného přístupu**.
+2. V hello **vlastnosti** dialogové okno, rozbalte položku **Azure** v levém podokně hello a klikněte na **vzdáleného přístupu**.
 
-3. V **vzdáleného přístupu** dialogové okno, ujistěte se, **povolit všechny role tak, aby přijímal připojení vzdálené plochy s tyto přihlašovací údaje** je zaškrtnuté.
+3. V hello **vzdáleného přístupu** dialogové okno, ujistěte se, **povolit všechny role tooaccept připojení vzdálené plochy s tyto přihlašovací údaje** je zaškrtnuté.
 
-4. Zadejte uživatelské jméno pro připojení ke vzdálené ploše.
+4. Zadejte uživatelské jméno pro připojení ke vzdálené ploše hello.
 
-5. Zadejte a potvrďte heslo pro uživatele. Uživatelské jméno a heslo hodnotami nastavenými v tomto dialogu se použije při vytváření připojení vzdálené plochy. (Všimněte si, že se jedná o samostatný heslo z PFX heslo.)
+5. Zadejte a potvrďte heslo hello hello uživatele. Hello uživatelské jméno a heslo hodnoty nastavení v tomto dialogu se použije při vytváření připojení vzdálené plochy. (Všimněte si, že se jedná o samostatný heslo z PFX heslo.)
 
-6. Zadejte datum vypršení platnosti pro uživatelský účet.
+6. Zadejte datum vypršení platnosti hello hello uživatelského účtu.
 
-7. Klikněte na tlačítko **nový** k vytvoření nového certifikátu podepsaného svým držitelem. (Alternativně můžete třeba vybrat certifikát z vašeho pracovního prostoru nebo souboru systému prostřednictvím **prostoru** nebo **FileSystem** tlačítka, v uvedeném pořadí, ale pro účely tohoto kurzu vytvoříme novou certifikát.)
+7. Klikněte na tlačítko **nový** toocreate nový certifikát podepsaný svým držitelem. (Alternativně můžete třeba vybrat certifikát z vašeho pracovního prostoru nebo souboru systému prostřednictvím hello **prostoru** nebo **FileSystem** tlačítka, v uvedeném pořadí, ale pro účely tohoto kurzu vytvoříme novou certifikát.)
 
-   * V **nový certifikát** dialogové okno, zadejte a potvrďte heslo budete používat pro soubor PFX.
+   * V hello **nový certifikát** dialogové okno, zadejte a potvrďte heslo hello budete používat pro soubor PFX.
 
-   * Hodnota zadaná pro přijmout **název (CN)**, nebo použít vlastní název.
+   * Přijměte hello hodnota zadaná pro **název (CN)**, nebo použít vlastní název.
 
-   * Zadejte název a cesta k souboru, kde bude uložen nový certifikát v podobě .cer. Pro tento krok a dalšímu kroku, můžete použít **cert** složce projektu Azure, ale máte volné vyberte jiné umístění. Pro účely tohoto kurzu použijeme **c:\mycert\mycert.cer**. (Vytvořte **c:\mycert** složku před pokračováním, nebo použijte existující složku v případě potřeby.)
+   * Zadejte název a cesta k souboru hello hello nový certifikát v podobě .cer, kam bude uložena. Pro tento krok a další krok text hello, můžete použít hello **cert** složce projektu Azure, ale máte volné toochoose jiné umístění. Pro účely tohoto kurzu použijeme **c:\mycert\mycert.cer**. (Vytvořte hello **c:\mycert** předchozí tooproceeding složky, nebo použijte existující složku v případě potřeby.)
 
-   * Zadejte název a cesta k souboru, kde bude uložen nový certifikát a jeho privátní klíč ve formátu .pfx. Pro účely tohoto kurzu použijeme **c:\mycert\mycert.pfx**. Vaše **nový certifikát** by měl vypadat podobně jako následující dialogové okno (aktualizace cestách ke složkám, pokud jste nepoužili **c:\mycert**):
+   * Zadejte název a cesta k souboru hello uložení hello nový certifikát a jeho privátní klíč ve formátu .pfx. Pro účely tohoto kurzu použijeme **c:\mycert\mycert.pfx**. Vaše **nový certifikát** dialogové okno by měl vypadat podobně jako následující toohello (aktualizace cesty ke složce zadat hello, pokud jste nepoužili **c:\mycert**):
      
       ![][ic712275]
 
-   * Klikněte na tlačítko **OK** zavřete **nový certifikát** dialogové okno.
+   * Klikněte na tlačítko **OK** tooclose hello **nový certifikát** dialogové okno.
 
-8. Vaše **vzdáleného přístupu** dialogové okno by měl vypadat podobně jako následující:</p>
+8. Vaše **vzdáleného přístupu** dialogové okno by měl vypadat podobně jako toohello následující:</p>
    
    ![][ic719495]
 
-9. Klikněte na tlačítko **OK** zavřete **vzdáleného přístupu** dialogové okno.
+9. Klikněte na tlačítko **OK** tooclose hello **vzdáleného přístupu** dialogové okno.
 
-Sestavení aplikace, se sestavením, nastavte pro nasazení do cloudu.
+Sestavení aplikace, s hello sestavení sady pro toocloud nasazení.
 
-## <a name="to-log-in-remotely"></a>Ke vzdálenému
-Jakmile vaši instanci role je připraven, můžete vzdáleně přihlášení do virtuálního počítače, který je hostitelem vaší aplikace.
+## <a name="toolog-in-remotely"></a>toolog v vzdáleně
+Jakmile vaši instanci role je připraven, můžete vzdáleně přihlásit toohello virtuální počítač, který je hostitelem vaší aplikace.
 
-* Pokud používáte Eclipse ve Windows a vybrali jste **spuštění vzdálené plochy na nasazení** možnost během nasazení do Azure, zobrazí se přihlašovací obrazovka připojení ke vzdálené ploše při spuštění vašeho nasazení. Po zobrazení výzvy pro uživatelské jméno a heslo, zadejte hodnoty, které jste zadali pro vzdálené uživatele a bude moct přihlásit.
+* Pokud používáte Eclipse v systémech Windows a je vybraný hello **spuštění vzdálené plochy na nasazení** možnost během tooAzure vaše nasazení, zobrazí se přihlašovací obrazovka připojení ke vzdálené ploše při spuštění vašeho nasazení. Po zobrazení výzvy k hello uživatelského jména a hesla, zadejte hello hodnoty, které jste zadali pro hello vzdáleného uživatele a bude moct toolog v.
 
-* Je také možné přihlásit vzdáleně přes <a href="http://go.microsoft.com/fwlink/?LinkID=512959">portálu pro správu Azure</a>:
+* Jiný způsob toolog v vzdáleně je prostřednictvím hello <a href="http://go.microsoft.com/fwlink/?LinkID=512959">portálu pro správu Azure</a>:
   
-  * V rámci **cloudové služby** zobrazení portálu pro správu Azure, klikněte na tlačítko cloudové služby, klikněte na **instance**, klikněte na konkrétní instanci a klikněte **připojit** tlačítko. **Connect** tlačítko se zobrazí jako následující na panelu příkazů:
+  * V rámci hello **cloudové služby** zobrazení hello portálu pro správu Azure, klikněte na tlačítko cloudové služby, klikněte na tlačítko **instance**, klikněte na konkrétní instanci a pak klikněte na tlačítko hello **připojit**tlačítko. Hello **Connect** tlačítko se zobrazí jako následující hello v řádku nabídek hello:
     
       ![][ic659273]
 
-  * Po kliknutí na tlačítko **Connect** tlačítko, zobrazí se výzva k otevření souboru RDP. Otevřete soubor a postupujte podle pokynů. (Můžete může také uložte tento soubor do místního počítače a potom spusťte soubor poklepáním na vzdálené přihlášení k virtuálnímu počítači bez nutnosti nejprve přejděte na portálu pro správu.)
+  * Po kliknutí na hello **Connect** tlačítko bude výzvami tooopen soubor RDP. Otevřete soubor hello a budete postupovat podle pokynů hello. (Můžete také uložit tento soubor tooyour místní počítač a spusťte soubor hello poklepáním tooremote protokolu v tooyour virtuálního počítače bez nutnosti toofirst přejděte hello portálu pro správu.)
 
-  * Po zobrazení výzvy pro uživatelské jméno a heslo, zadejte hodnoty, které jste zadali pro vzdálené uživatele a bude moct přihlásit.
+  * Po zobrazení výzvy k hello uživatelského jména a hesla, zadejte hello hodnoty, které jste zadali pro hello vzdáleného uživatele a bude moct toolog v.
 
 > [!NOTE]
-> Pokud jste na jiný systém než Windows operační systém, budete muset použít klienta vzdálené plochy, který je kompatibilní s operačním systémem a postup konfigurace tohoto klienta pomocí nastavení v souboru RDP, který jste stáhli.
+> Pokud jste na jiný systém než Windows operační systém, budete potřebovat toouse klienta vzdálené plochy, který je kompatibilní s operačním systémem a postupujte podle kroků tooconfigure hello tohoto klienta s hello nastavení v souboru RDP hello, který jste stáhli.
 > 
 > 
 
@@ -128,9 +128,9 @@ Jakmile vaši instanci role je připraven, můžete vzdáleně přihlášení do
 
 [Vytvoření aplikace Hello World služby Azure v prostředí Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Instalace Azure Toolkit pro Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalace hello nástrojů Azure pro Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
-Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java][Azure Java Developer Center].
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -138,7 +138,7 @@ Další informace o používání Azure s Java najdete v tématu [Azure středis
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

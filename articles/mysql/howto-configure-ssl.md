@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace připojení SSL k bezpečnému připojování k databázi Azure pro databázi MySQL | Microsoft Docs"
-description: "Pokyny, jak správně nakonfigurovat databázi Azure pro MySQL a přidružené aplikace správně používat připojení SSL"
+title: "toosecurely připojení SSL aaaConfigure připojit tooAzure databáze pro databázi MySQL | Microsoft Docs"
+description: "Pokyny, jak nakonfigurovat tooproperly Azure databáze MySQL a přidružené aplikace toocorrectly pomocí připojení SSL"
 services: mysql
 author: seanli1988
 ms.author: seanli
@@ -9,47 +9,47 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 07/28/2017
-ms.openlocfilehash: 77e1b6266a2cf47949fa06358ec003f6b6b38065
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8c37c19d4c101abfb730f429a19441e94e52fc85
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k databázi Azure pro databázi MySQL
-Azure databáze pro databázi MySQL podporuje připojení databáze Azure pro server databáze MySQL pro klientské aplikace pomocí Secure Sockets Layer (SSL). Vynucování připojení SSL mezi databázový server a klientských aplikací pomáhá chránit před útoky "man uprostřed" šifrování datový proud mezi serverem a aplikace.
+# <a name="configure-ssl-connectivity-in-your-application-toosecurely-connect-tooazure-database-for-mysql"></a>Konfigurace protokolu SSL připojení ve vaší aplikaci toosecurely connect tooAzure databáze pro databázi MySQL
+Azure databáze pro databázi MySQL podporuje připojení databáze Azure pro aplikace tooclient MySQL serveru pomocí Secure Sockets Layer (SSL). Vynucování připojení SSL mezi databázový server a klientských aplikací pomáhá chránit před útoky "man uprostřed hello" šifrování hello datový proud mezi hello serveru a aplikace.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: Získání certifikátu SSL
-Stáhněte si certifikát potřebné pro komunikaci pomocí protokolu SSL s Azure databáze MySQL serveru od [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místní disk (v tomto kurzu použili jsme c:\ssl).
-**Aplikace Microsoft Internet Explorer a Microsoft Edge:** po dokončení stahování, přejmenujte BaltimoreCyberTrustRoot.crt.pem certifikát.
+Stahování hello zamýšlený účel toocommunicate přes SSL s Azure databáze MySQL serveru od [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte místní tooyour soubor certifikátu hello disk (v tomto kurzu použili jsme c:\ssl).
+**Aplikace Microsoft Internet Explorer a Microsoft Edge:** po dokončení stahování hello přejmenovat tooBaltimoreCyberTrustRoot.crt.pem certifikát hello.
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: Vytvoření vazby SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Připojování k serveru pomocí nástroje MySQL Workbench přes protokol SSL
-Nakonfigurujte MySQL Workbench pro zabezpečené připojení prostřednictvím protokolu SSL. Přejděte na **SSL** ve MySQL Workbench o dialogu nastavit nové připojení. Zadejte umístění souboru **BaltimoreCyberTrustRoot.crt.pem** v **souboru certifikační Autorita protokolu SSL:** pole.
+### <a name="connecting-tooserver-using-hello-mysql-workbench-over-ssl"></a>Připojení tooserver pomocí hello MySQL Workbench přes protokol SSL
+Nakonfigurujte MySQL Workbench tooconnect bezpečně přes protokol SSL. Přejděte toohello **SSL** ve hello MySQL Workbench na hello dialog nastavit nové připojení. Zadejte umístění souboru hello hello **BaltimoreCyberTrustRoot.crt.pem** v hello **souboru certifikační Autorita protokolu SSL:** pole.
 ![Uložte vlastní dlaždici](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Připojování k serveru pomocí rozhraní příkazového řádku MySQL přes protokol SSL
-Pomocí rozhraní příkazového řádku MySQL, spusťte následující příkaz:
+### <a name="connecting-tooserver-using-hello-mysql-cli-over-ssl"></a>Připojení tooserver pomocí rozhraní příkazového řádku MySQL hello přes protokol SSL
+Pomocí rozhraní příkazového řádku hello MySQL, spusťte následující příkaz hello:
 ```dos
 mysql.exe -h mysqlserver4demo.mysql.database.azure.com -u Username@mysqlserver4demo -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3: Vynucování připojení SSL v Azure 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
-Pomocí portálu Azure přejděte Azure databáze MySQL serveru a klikněte na **zabezpečení připojení**. Přepínací tlačítko použít k povolení nebo zakázání **připojení SSL vynutit** nastavení. Potom klikněte na **Uložit**. Microsoft doporučuje, vždy povolit **připojení SSL vynutit** nastavení pro lepší zabezpečení.
+Pomocí hello portál Azure, navštivte Azure databáze MySQL serveru a klikněte na **zabezpečení připojení**. Použít hello přepínací tlačítko tooenable nebo zakázat hello **připojení SSL vynutit** nastavení. Potom klikněte na **Uložit**. Společnost Microsoft doporučuje povolit tooalways **připojení SSL vynutit** nastavení pro lepší zabezpečení.
 ![povolit ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
-Můžete povolit nebo zakázat **ssl vynucení** parametr pomocí povoleno nebo zakázáno hodnot v uvedeném pořadí v rozhraní příkazového řádku Azure.
+Můžete povolit nebo zakázat hello **ssl vynucení** parametr pomocí povoleno nebo zakázáno hodnot v uvedeném pořadí v rozhraní příkazového řádku Azure.
 ```azurecli-interactive
 az mysql server update --resource-group myresource --name mysqlserver4demo --ssl-enforcement Enabled
 ```
 
 ## <a name="step-4-verify-ssl-connection"></a>Krok 4: Ověření připojení SSL
-Spuštění mysql **stav** příkazu ověřte, že jste připojení k serveru databáze MySQL pomocí protokolu SSL:
+Spuštění hello mysql **stav** příkaz tooverify, že jste připojení tooyour MySQL serveru pomocí protokolu SSL:
 ```dos
 mysql> status
 ```
-Potvrďte, že připojení je zašifrovaná kontrolou výstupu. Měl by se zobrazit: **SSL: šifer používán je AES256 SHA** 
+Potvrďte, že připojení hello se šifrují kontrolou výstup hello. Měl by se zobrazit: **SSL: šifer používán je AES256 SHA** 
 
 ## <a name="sample-code"></a>Ukázka kódu
 ### <a name="php"></a>PHP
@@ -58,7 +58,7 @@ $conn = mysqli_init();
 mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL) ; 
 mysqli_real_connect($conn, 'myserver4demo.mysql.database.azure.com', 'myadmin@myserver4demo', 'yourpassword', 'quickstartdb', 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 ```
 ### <a name="python"></a>Python

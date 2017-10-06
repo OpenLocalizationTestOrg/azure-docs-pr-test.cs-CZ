@@ -1,6 +1,6 @@
 ---
-title: "Spuštění libovolné aplikace pro Windows v jakémkoliv zařízení s Azure RemoteAppem | Dokumentace Microsoftu"
-description: "Naučte se sdílet libovolnou aplikaci pro Windows s uživateli pomocí Azure RemoteAppu."
+title: "aaaRun libovolné aplikace pro Windows v jakémkoliv zařízení s Azure Remoteappem | Microsoft Docs"
+description: "Zjistěte, jak tooshare libovolné aplikace pro Windows s uživateli pomocí Azure Remoteappu."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -14,109 +14,109 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 348e154f8398b5e60ad5a698cd319fa381de2fa5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 750f3b881e0cb671ff6e8f3e851bccdf2262d156
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Spuštění libovolné aplikace pro Windows v jakémkoliv zařízení s Azure RemoteAppem
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Aplikaci pro Windows můžete hned teď spustit kdekoliv a v jakémkoliv zařízení. Neděláme si srandu – stačí použít Azure RemoteApp. Ať se jedná o nějakou vlastní aplikaci napsanou před 10 lety, nebo o aplikaci Office, uživatelé již nemusí vlastnit konkrétní operační systém (např. Windows, XP), aby těchto pár aplikací mohli používat.
+Aplikaci pro Windows můžete hned teď spustit kdekoliv a v jakémkoliv zařízení. Neděláme si srandu – stačí použít Azure RemoteApp. Ať už se jedná vlastní aplikaci napsanou před 10 lety, nebo aplikaci Office, uživatelé nebudou mít toobe svázané tooa konkrétní operační systém (např. Windows XP) aby těchto pár aplikací.
 
-S Azure RemoteAppem můžou uživatelé používat svá zařízení Android nebo Apple a mít v nich stejné prostředí jako ve Windows (nebo ve Windows Phone). Toho se dosáhne hostováním aplikací pro Windows v kolekci virtuálních počítačů Windows ve službě Azure – uživatelé k nim budou mít přístup odkudkoliv, kde je připojení k internetu. 
+S Azure Remoteappem vaši uživatelé můžete také použít vlastní Android nebo zařízení Apple a získání hello stejné prostředí jako v systému Windows (nebo na zařízení Windows Phone). Toho se dosáhne hostováním aplikací pro Windows v kolekci virtuálních počítačů Windows ve službě Azure – uživatelé k nim budou mít přístup odkudkoliv, kde je připojení k internetu. 
 
-Přečtěte si, jak přesně to provést.
+Přečtěte si příklad přesně jak toodo to.
 
-V tomto článku budeme se všemi uživateli sdílet aplikaci Access. Můžete však použít LIBOVOLNOU aplikaci. Pokud lze aplikaci instalovat do počítače se systémem Windows Server 2012 R2, můžete ji sdílet pomocí následujícího postupu. Zkontrolujte [požadavky aplikace](remoteapp-appreqs.md) a ujistěte se, zda bude fungovat.
+V tomto článku vytvoříme tooshare přístup ke všem uživatelům. Můžete však použít LIBOVOLNOU aplikaci. Také můžete nainstalovat aplikace v počítači Windows Server 2012 R2, můžete pomocí následujících kroků hello sdílet. Můžete zkontrolovat hello [požadavky aplikací na](remoteapp-appreqs.md) toomake, že vaše aplikace bude fungovat.
 
-Poznámka: Protože Access je databázová aplikace a chceme, aby byla užitečná, provedeme několik kroků navíc, které uživatelům umožní přístup ke sdílení dat Accessu. Pokud vaše aplikace není databázová nebo nepotřebujete, aby uživatelé měli přístup ke sdílené složce, můžete tyto kroky kurzu přeskočit
+Prosím Poznámka, protože Access je databázová aplikace a chceme toobe této databáze užitečná, provedeme několik kroků navíc toolet uživatelé přístup ke sdílení dat Accessu hello. Pokud vaše aplikace není databázová nebo nepotřebujete mít tooaccess vaše uživatele toobe sdílené složky, můžete přeskočit tyto kroky v tomto kurzu
 
 > [!NOTE]
-> <a name="note"></a>K dokončení tohoto kurzu potřebujete mít účet Azure:
+> <a name="note"></a>Je třeba účtu Azure toocomplete v tomto kurzu:
 > 
-> * Můžete si [otevřít účet Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F): Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až je vypotřebujete, můžete si účet nechat a dál používat bezplatné služby Azure, například Websites. Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby.
+> * Můžete [zdarma otevřít účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F): získáte kredity, můžete použít tootry na placené služby Azure a i po jejich použití až můžete hello účet ponechat a používat bezplatné služby Azure, jako jsou weby. Platební karty nikdy odečte, není-li explicitně změnit nastavení a požádejte toobe účtovat.
 > * Můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Vaše předplatné MSDN vám každý měsíc dává kredity, které můžete použít k placení za služby Azure.
 > 
 > 
 
 ## <a name="create-a-collection-in-remoteapp"></a>Vytvoření kolekce v RemoteAppu
-Začněte vytvořením kolekce. Kolekce slouží jako kontejner pro vaše aplikace a uživatele. Každá kolekce je založena na imagi – můžete vytvořit vlastní nebo použít image ve vašem předplatném. Pro účely tohoto kurzu používáme image zkušební verze Office 2013 – obsahuje aplikaci, kterou chceme sdílet.
+Začněte vytvořením kolekce. Hello kolekce slouží jako kontejner pro vaše aplikace a uživatele. Každá kolekce je založena na imagi – můžete vytvořit vlastní nebo použít image ve vašem předplatném. V tomto kurzu používáme image zkušební hello Office 2013 – obsahuje aplikace hello, že má být tooshare.
 
-1. Na portálu Azure přejděte v levém navigační stromu dolů do části RemoteApp. Otevřete danou stránku.
+1. V hello portálu Azure přejděte dolů v hello levém navigační stromu do části RemoteApp. Otevřete danou stránku.
 2. Klikněte na tlačítko **Vytvořit kolekci RemoteApp**.
 3. Klikněte na tlačítko **Rychlé vytvoření** a zadejte název kolekce.
-4. Vyberte oblast, kterou chcete použít k vytvoření kolekce. Pro dosažení co nejlepších výsledků vyberte oblast geograficky co nejblíže k umístění, ze kterého budou uživatelé k aplikaci přistupovat. Například v tomto kurzu se uživatelé budou nacházet v Redmondu ve Washingtonu. Nejbližší oblast Azure je **Západní USA**.
-5. Vyberte fakturační plán, který chcete použít. V základním fakturačním plánu jeden velký virtuální počítač Azure používá 16 uživatelů, ve standardním fakturačním plánu používá tento počítač 10 uživatelů. Základní plán obecně dobře funguje pro pracovní postupy zadávání dat. V případě kancelářských aplikací, jako například Office, je vhodnější standardní plán.
-6. Nakonec vyberte image Office 2013 Professional. Tento image obsahuje aplikace Office 2013. Jen upozorníme, že tento image je vhodný pouze pro zkušební kolekce a testovací prostředí. Nemůžete ho používat v produkční kolekci.
+4. Vyberte oblast hello chcete toouse toocreate vaší kolekce. Pro hello co nejlepších výsledků vyberte hello oblast, která je geograficky nejblíže toohello umístění, kde budou vaši uživatelé přístup k aplikaci hello. Například v tomto kurzu hello uživatelé budou nacházet v Redmond, Washington. nejbližší oblast Azure Hello je **západní USA**.
+5. Vyberte hello fakturační plán, že který má toouse. Hello základním fakturačním plánu používá 16 uživatelů na velký virtuální počítač Azure, zatímco hello standardním fakturačním plánu používá 10 uživateli na velký virtuální počítač Azure. Jako v příkladu obecné základní plán hello dobře funguje pro pracovní postupy zadávání data. Pro kancelářských aplikací, jako je Office je vhodnější standardní plán hello.
+6. Nakonec vyberte image Office 2013 Professional hello. Tento image obsahuje aplikace Office 2013. Jen upozorníme, že tento image je vhodný pouze pro zkušební kolekce a testovací prostředí. Nemůžete ho používat v produkční kolekci.
 7. Nyní klikněte na **Vytvořit kolekci RemoteApp**.
 
 ![Vytvoření cloudové kolekce v RemoteAppu](./media/remoteapp-anyapp/ra-anyappcreatecollection.png)
 
-Spustí se vytváření kolekce, což může trvat až hodinu.
+Spustí se vytváření kolekce, ale může to trvat až hodinu tooan.
 
-Nyní jste připraveni přidat uživatele.
+Nyní jste se připravené tooadd vaši uživatelé.
 
-## <a name="share-the-app-with-users"></a>Sdílení aplikace s uživateli
-Po úspěšném vytvoření kolekce je čas na publikování aplikace Access pro uživatele a přidání uživatelů, kteří k ní mají mít přístup.
+## <a name="share-hello-app-with-users"></a>Aplikace hello sdílení s uživateli
+Po úspěšném vytvoření kolekce, je čas toopublish přístup toousers a přidání hello uživatelů, kteří mají mít přístup tooit.
 
-Pokud jste při vytváření kolekce odešli z uzlu Azure RemoteAppu, je třeba se tam znovu vrátit z domovské stránky Azure.
+Pokud jste přešli z uzlu Azure Remoteappu hello při vytváření kolekce hello, začněte tím, že váš způsob zálohování tooit z hello domovské stránky Azure.
 
-1. Kliknutím na kolekci, kterou jste dříve vytvořili, získáte přístup k dalším možnostem a ke konfiguraci kolekce.
+1. Klikněte na tlačítko hello kolekce, které jste vytvořili starší tooaccess další možnosti a nakonfigurujte hello kolekce.
    ![Nová cloudová kolekce RemoteApp](./media/remoteapp-anyapp/ra-anyappcollection.png)
-2. Na kartě **Publikování** klikněte na **Publikovat** v dolní části obrazovky a pak klikněte na **Publikovat programy v nabídce Start**.
+2. Na hello **publikování** , klikněte na **publikovat** v dolní části hello úvodní obrazovka, a pak klikněte na **programy v nabídce Start publikování**.
    ![Publikování aplikace RemoteAppu](./media/remoteapp-anyapp/ra-anyapppublish.png)
-3. Ze seznamu vyberte aplikace, které chcete publikovat. Pro naše účel jsme zvolili Access. Klikněte na **Dokončit**. Počkejte na dokončení publikování aplikace.
+3. Vyberte hello aplikace, které mají toopublish hello seznamu. Pro naše účel jsme zvolili Access. Klikněte na **Dokončit**. Počkejte, než pro publikování toofinish aplikace hello.
    ![Publikování aplikace Access v RemoteAppu](./media/remoteapp-anyapp/ra-anyapppublishaccess.png)
-4. Po dokončení publikování aplikace přejděte na kartu **Uživatelský přístup** a přidejte všechny uživatele, kteří potřebují k aplikaci přístup. Zadejte uživatelská jména (e-mailové adresy) a potom klikněte na **Uložit**.
+4. Po dokončení publikování aplikace hello zamiřte toohello **přístup uživatelů** kartě tooadd všechny hello uživatele, kteří potřebují přístup k aplikacím tooyour. Zadejte uživatelská jména (e-mailové adresy) a potom klikněte na **Uložit**.
 
-![Přidání uživatelů do RemoteAppu](./media/remoteapp-anyapp/ra-anyappaddusers.png)
+![Přidat uživatele tooRemoteApp](./media/remoteapp-anyapp/ra-anyappaddusers.png)
 
-1. Nyní je čas uživatele o těchto nových aplikacích a o přístupu k nim informovat. Udělejte to tak, že uživatelům pošlete e-mail s odkazem na adresu URL pro stažení klienta vzdálené plochy.
-   ![Adresa URL pro stažení klienta pro RemoteApp](./media/remoteapp-anyapp/ra-anyappurl.png)
+1. Nyní je čas tootell uživatelům o těchto nových aplikacích a jak tooaccess je. toodo to, že uživatelům pošlete e-mail s odkazem toohello adresa URL stažení klienta vzdálené plochy.
+   ![stažení klientského Hello adresu URL pro vzdálené aplikace RemoteApp](./media/remoteapp-anyapp/ra-anyappurl.png)
 
-## <a name="configure-access-to-access"></a>Konfigurace přístupu k Accessu
-Některé aplikace po nasazení prostřednictvím RemoteAppu vyžadují další konfiguraci. V případě Accessu vytvoříme ve službě Azure sdílenou složku, ke které bude mít přístup každý uživatel. (Pokud to dělat nechcete, můžete vytvořit [hybridní kolekci](remoteapp-create-hybrid-deployment.md) [namísto naší cloudové kolekce], která uživatelům umožňuje přístup k souborům a informacím v místní síti.) Poté je třeba uživatelům říct, aby namapovali místní jednotku ve svém počítači na systém souborů Azure.
+## <a name="configure-access-tooaccess"></a>Konfigurace přístupu tooAccess
+Některé aplikace po nasazení prostřednictvím RemoteAppu vyžadují další konfiguraci. Konkrétně pro přístup, jsme toocreate probíhající sdílenou v Azure, každý uživatel může přistupovat. (Pokud nechcete, aby toodo, že můžete vytvořit [hybridní kolekci](remoteapp-create-hybrid-deployment.md) [namísto naší cloudové kolekce], která uživatelům umožňuje přístup k souborům a informacím v místní síti.) Potom budeme potřebovat tootell naši uživatelé toomap místní jednotky na jejich počítač toohello systém souborů Azure.
 
-První část, kterou provedete jako správce. Potom máme několik kroků pro vaše uživatele.
+Hello první část, které jako dobrý den, správce provést. Potom máme několik kroků pro vaše uživatele.
 
-1. Začněte publikováním rozhraní příkazového řádku (cmd.exe). Na kartě **Publikování** vyberte možnost **cmd** a potom klikněte na **Publikovat > Publikovat program pomocí cesty**.
-2. Zadejte název a cestu aplikace. Pro naše účely použijte jako název „Průzkumník souborů“ a jako cestu „%SYSTEMDRIVE%\windows\explorer.exe“.
-   ![Publikování souboru cmd.exe.](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. Nyní je třeba vytvořit [účet úložiště](../storage/common/storage-create-storage-account.md) Azure. Náš jsme pojmenovali „accessstorage“, vy si vyberte jakýkoliv svůj smysluplný název. (Název „accessstorage“ musí být jedinečný) ![Náš účet úložiště Azure](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
-4. Nyní přejděte zpět na řídicí panel, kde získáte cestu do úložiště (umístění koncového bodu). Za chvilku ji budete potřebovat, takže si ji někam zkopírujte.
-   ![Cesta k účtu úložiště](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
-5. Po vytvoření účtu úložiště je nutné zadat primární přístupový klíč. Klikněte na tlačítko **Spravovat přístupové klíče** a poté zkopírujte primární přístupový klíč.
-6. Nyní nastavte kontext účtu úložiště a vytvořte novou sdílenou složku pro Access. V okně Windows PowerShell se zvýšenými oprávněními spusťte následující rutiny:
+1. Spusťte rozhraním publikování hello příkazový řádek (cmd.exe). V hello **publikování** vyberte **cmd**a potom klikněte na **publikovat > publikovat program pomocí cesty**.
+2. Zadejte název hello hello aplikace a cestu hello. Pro naše účel použijte jako název hello a "% SYSTEMDRIVE%\windows\explorer.exe" jako cestu hello "Průzkumník souborů".
+   ![Publikování souboru cmd.exe hello.](./media/remoteapp-anyapp/ra-publishcmd.png)
+3. Nyní je třeba toocreate Azure [účet úložiště](../storage/common/storage-create-storage-account.md). "Accessstorage", náš jsme pojmenovali vyberte název, který je smysluplný tooyou. (toomisquote unikátní, může existovat pouze jedna "accessstorage".) ![Náš účet úložiště Azure](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
+4. Nyní přejděte zpět tooyour řídicí panel, kde získáte hello cesta tooyour úložiště (umístění koncového bodu). Za chvilku ji budete potřebovat, takže si ji někam zkopírujte.
+   ![Cesta k účtu úložiště Hello](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
+5. Po vytvoření účtu úložiště hello dále musíte hello primární přístupový klíč. Klikněte na tlačítko **spravovat přístupové klíče**a potom kopie hello primární přístupový klíč.
+6. Nyní nastavit kontext hello hello účtu úložiště a vytvořit nové sdílené složky pro přístup. Spusťte následující rutiny v okno prostředí Windows PowerShell se zvýšenými oprávněními hello:
    
         $ctx=New-AzureStorageContext <account name> <account key>
         $s = New-AzureStorageShare <share name> -Context $ctx
    
-    V případě naší sdílené složky tedy spustíme tyto rutiny:
+    Proto případě naší sdílené složky, ty jsou rutiny hello, spustíme:
    
         $ctx=New-AzureStorageContext accessstorage <key>
         $s = New-AzureStorageShare <share name> -Context $ctx
 
-Nyní jsou na řadě uživatelé. Nejdříve nechte uživatele nainstalovat [klienta RemoteApp](remoteapp-clients.md). Dále uživatelé musí namapovat jednotku ze svého účtu na sdílenou složku Azure, kterou jste vytvořili, a přidat své soubory Access. Udělají to takto:
+Nyní je zapnout hello uživatele. Nejdříve nechte uživatele nainstalovat [klienta RemoteApp](remoteapp-clients.md). V dalším kroku hello uživatelé potřebovat toomap jednotku ze svého účtu toothat Azure file sdílet, kterou jste vytvořili a přidat své soubory Access. Udělají to takto:
 
-1. V klientovi RemoteApp přejděte k publikovaným aplikacím. Spusťte program cmd.exe.
-2. Spusťte následující příkaz k namapování jednotky z počítače na sdílenou složku:
+1. V klientovi RemoteApp hello přístup hello publikované aplikace. Spusťte hello cmd.exe program.
+2. Spusťte následující příkaz toomap hello jednotku ze sdílené složky toohello počítače:
    
         net use z: \\<accountname>.file.core.windows.net\<share name> /u:<user name> <account key>
    
-    Pokud nastavíte parametr**/persistent** na hodnotu „yes“, mapovaná jednotka se zachová napříč relacemi.
-3. Nyní z RemoteAppu spusťte aplikaci Průzkumník souborů. Do sdílené složky zkopírujte všechny soubory Accessu, které chcete používat ve sdílené aplikaci.
+    Pokud nastavíte hello **/ persistent** parametr tooyes hello mapovaná jednotka se zachová napříč relacemi.
+3. Nyní spusťte aplikaci Průzkumník souborů hello ze vzdálené aplikace RemoteApp. Zkopírujte všechny soubory Accessu chcete toouse toohello hello sdílené aplikaci pro sdílení souborů.
    ![Umístění souborů Accessu do sdílené složky Azure](./media/remoteapp-anyapp/ra-anyappuseraccess.png)
-4. Nakonec otevřete Access a pak otevřete databázi, kterou jste právě nasdíleli. V Accessu by se měla zobrazit vaše data spuštěná z cloudu.
-   ![Skutečná databáze Access spuštěná z cloudu](./media/remoteapp-anyapp/ra-anyapprunningaccess.png)
+4. Nakonec otevřete Access a pak otevřete hello databáze, kterou jste právě Nasdíleli. Měli byste vidět vaše data v Access spuštěná z cloudu hello.
+   ![Skutečná databáze Access spuštěná z cloudu hello](./media/remoteapp-anyapp/ra-anyapprunningaccess.png)
 
 Nyní můžete Access používat v libovolném zařízení – stačí si jen nainstalovat klienta RemoteApp.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste zvládli vytvoření kolekce, zkuste vytvořit [kolekci používající Office 365](remoteapp-tutorial-o365anywhere.md). Nebo můžete vytvořit [hybridní kolekci ](remoteapp-create-hybrid-deployment.md), která má přístup k místní síti.
 

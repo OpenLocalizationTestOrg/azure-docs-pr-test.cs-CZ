@@ -1,6 +1,6 @@
 ---
-title: "Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs"
-description: "Tento článek výhod integrace s místními, cloudu a aplikace SaaS Azure Active Directory."
+title: "aaaManaging aplikací s Azure Active Directory | Microsoft Docs"
+description: "Tento článek hello výhod integrace s místními, cloudu a aplikace SaaS Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,101 +14,101 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0016f8b433e101d8a150bc6d9be3931851578241
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
-Mimo pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:
+Nad rámec hello pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:
 
-1. Zvýšení produktivity, aplikace by měla být snadno vyhledatelné a přístup
-2. Povolit zabezpečení a zásad správného řízení, musí organizace řízení a dohledu, na který můžete a ve skutečnosti přistupuje každou aplikaci
+1. tooincrease produktivity, aplikace by měl být snadno toodiscover a přístup
+2. tooenable zabezpečení a zásad správného řízení, hello organizace potřebuje řízení a dohledu, na který můžete a ve skutečnosti přistupuje každou aplikaci
 
-V celém světě nejlépe jde tohoto dosáhnout pomocí identity k řízení cloudových aplikací "*KDO může provádět co*".
+V hello, world cloudových aplikací, které nejlépe jde tohoto dosáhnout pomocí identity toocontrol "*KDO je povoleno toodo, co*".
 
 V oblasti výpočetních terminologie:
 
-* *Kdo* se označuje jako *identity* -správu uživatelů a skupin
-* *Co* se označuje jako *správy přístupu* – správu přístup k chráněným prostředkům
+* *Kdo* se označuje jako *identity* -hello správu uživatelů a skupin
+* *Co* se označuje jako *správy přístupu* – hello řízení přístupu tooprotected prostředků
 
-I komponent společně se označují jako *Identity a řízení přístupu (IAM)*, která je definována [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) skupiny jako "*oborů zabezpečení, umožňující správné jednotlivce pro přístup k prostředkům správné vpravo časy správné z důvodů*".
+Obě součásti společně se označují jako *Identity a řízení přístupu (IAM)*, která je definována pomocí hello [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) skupiny jako "*hello disciplíně zabezpečení, která umožňuje hello vpravo jednotlivce tooaccess hello správné prostředky v hello pravým časy správné důvodů hello*".
 
-V pořádku, a co je problém? Pokud je IAM *nespravovaná* na jednom místě s integrované řešení:
+V pořádku, co si hello problém? Pokud je IAM *nespravovaná* na jednom místě s integrované řešení:
 
-* Správci identity nemusí jednotlivě vytvářet a aktualizovat uživatelské účty ve všech aplikacích samostatně, aktivitu redundantní a časově náročné.
-* Uživatelé mají k pamatovat více přihlašovací údaje pro přístup k aplikacím, které potřebují k práci s. Výsledkem je uživatelé zpravidla zapište své heslo nebo použít dalších řešení pro správu heslo, které zavádí další data bezpečnostní rizika.
-* Redundantní, časově náročné aktivity snížit množství času uživatelé a správci pracují na obchodní aktivity, které zvýšit řádku dolní vaší firmy.
+* Správci identity mají tooindividually vytvářet a aktualizovat uživatelské účty ve všech aplikacích samostatně, aktivitu redundantní a časově náročné.
+* Uživatelé mají toomemorize více aplikací hello tooaccess přihlašovací údaje, které potřebují toowork s. V důsledku toho uživatelé mívají toowrite dolů hesel nebo použití jiných řešení pro správu heslo, které zavádí další data bezpečnostní rizika.
+* Redundantní, časově náročné aktivity snižte hello množství času uživatelé a správci pracují na obchodní aktivity, které zvýšit řádku dolní vaší firmy.
 
 Ano co obecně brání organizace z přijetí integrované řešení IAM?
 
-* Většinu technických řešení jsou založené na platformách softwaru, které je potřeba nasadit a přizpůsobit každé organizace pro své vlastní aplikace.
+* Většinu technických řešení jsou založené na platformách softwaru, které je třeba toobe nasadit a přizpůsobit každé organizace pro své vlastní aplikace.
 * Cloudové aplikace jsou často přijata s vyšší rychlostí než IT organizace může integrovat existující IAM řešení.
-* Zabezpečení a monitorování nástrojů vyžadují další přizpůsobení a integrace zajistit komplexní E2E scénáře.
+* Zabezpečení a monitorování nástrojů vyžadují další přizpůsobení a integrace tooachieve komplexní E2E scénáře.
 
 ## <a name="azure-active-directory-integrated-with-applications"></a>Azure Active Directory integrovat s aplikacemi
 Azure Active Directory je komplexní Identity společnosti Microsoft jako řešení služby (IDaaS) který:
 
 * Jako cloudová služba umožňuje IAM 
 * Poskytuje správu centrální přístupu, jednotného přihlašování (SSO) a vytváření sestav 
-* Podporuje správu integrovaného přístupu k [tisíce aplikace](https://azure.microsoft.com/marketplace/active-directory/) v galerii aplikací, včetně služby Salesforce, Google Apps, pole, Concur a další. 
+* Podporuje správu integrovaného přístupu k [tisíce aplikace](https://azure.microsoft.com/marketplace/active-directory/) v galerii aplikací hello, včetně služby Salesforce, Google Apps, pole, Concur a další. 
 
-S Azure Active Directory všechny aplikace publikujete pro partnery a zákazníky (obchodní nebo příjemce) mají stejnou identitu a přístup k možnosti správy.<br> To vám umožňuje výrazně snížit provozní náklady.
+S Azure Active Directory, všechny aplikace publikujete pro partnery a zákazníky (obchodní nebo příjemce) mají hello stejné možnosti správy identit a přístupu.<br> Díky této může toosignificantly můžete snížit provozní náklady.
 
-Co když potřebujete implementovat aplikaci, která ještě není uveden v galerii aplikací? Přestože se trochu náročnější než nakonfigurovat jednotné přihlašování pro aplikace v galerii aplikací, Azure AD poskytuje průvodce, který vám pomůže s konfigurací.
+Co když potřebujete tooimplement aplikace, která ještě není uvedený v galerii aplikací hello? To je více než nakonfigurovat jednotné přihlašování pro aplikace z Galerie aplikace hello časově náročné, Azure AD poskytuje průvodce, který vám pomůže s konfigurací hello.
 
-Hodnota Azure AD překročí "právě" cloudové aplikace. Můžete ji použít i s místním aplikacím tím, že poskytuje zabezpečený vzdálený přístup. Zabezpečený vzdálený přístup, můžete eliminovat nutné pro sítě VPN nebo jiných implementacích správy tradiční vzdáleného přístupu.
+Hodnota Hello Azure AD překročí "právě" cloudové aplikace. Můžete ji použít i s místním aplikacím tím, že poskytuje zabezpečený vzdálený přístup. Zabezpečený vzdálený přístup můžete eliminovat hello hello nutné pro sítě VPN nebo jiných implementacích správy tradiční vzdáleného přístupu.
 
-Zadáním správy centrálního přístupu a jednotné přihlašování (SSO) pro všechny aplikace Azure AD poskytuje řešení problémů zabezpečení a produktivitu hlavní data.
+Zadáním správy centrálního přístupu a jednotné přihlašování (SSO) pro všechny aplikace Azure AD poskytuje řešení hello toohello problémy zabezpečení a produktivitu hlavní data.
 
-* Uživatelé můžou používat více aplikací s jeden přihlašování udělíte více času k příjmu generování nebo obchodní aktivity operace provádí.
-* Správci identity můžete spravovat přístup k aplikacím na jednom místě.
+* Uživatelé můžou používat více aplikací s jeden přihlašování poskytnutí další tooincome čas generování nebo obchodní aktivity operace provádí.
+* Správci identity můžete spravovat přístup tooapplications na jednom místě.
 
-Výhodou pro uživatele a pro vaši společnost je zřejmé. Podívejme bližší pohled na výhody pro správce identit a v organizaci.
+je zřejmé Hello výhody pro hello uživatele a pro vaši společnost. Podívejme bližší pohled na hello výhody pro správce identit a hello organizace.
 
 ## <a name="integrated-application-benefits"></a>Výhody integrované aplikace
-Proces přihlášení SSO má dva kroky:
+Hello jednotného přihlašování k procesu má dva kroky:
 
-* Ověřování, proces ověření identity uživatele.
-* Autorizace, rozhodnutí povolit nebo blokovat přístup k prostředku s zásady přístupu.
+* Ověřování, hello proces ověření identity uživatele hello.
+* Autorizace, hello rozhodnutí tooenable nebo blokování přístupu tooa prostředek s zásady přístupu.
 
-Při správě aplikací a povolení jednotného přihlašování pomocí služby Azure AD:
+Při použití aplikace toomanage Azure AD a povolit jednotné přihlašování:
 
-* Ověřování se provádí na uživatele v místě (například AD) nebo účet Azure AD.
-* Autorizace se spouští na Azure AD přiřazení a ochrany zásady zajistit konzistentní přivětivé uživatelské prostředí a umožňuje přidat přiřazení, umístění a podmínky MFA na všechny aplikace, bez ohledu na jeho vnitřní funkce.
+* Ověřování se provádí na místě (například AD) nebo účet Azure AD hello uživatele.
+* Autorizace se spouští na hello Azure AD přiřazení ochrany zásadu a zajistit konzistentní přivětivé uživatelské prostředí a umožňuje přiřazení tooadd, umístění a podmínky MFA na všechny aplikace, bez ohledu na jeho vnitřní funkce.
 
-Je důležité si uvědomit, že budou způsob autorizaci přijaty na cílové aplikace se liší v závislosti na tom, jak se aplikace integrované s Azure AD.
+Je důležité toounderstand, který hello autorizace hello způsob, jak budou přijaty na cílové aplikace hello se liší v závislosti na tom, jak se aplikace hello integrované s Azure AD.
 
-* **Aplikace je předem integrovaných poskytovatelem služby** jako je Office 365 a Azure, jedná se o aplikace založena přímo na Azure AD a spoléhat na něm pro jejich komplexní funkce pro správu identit a přístupu. Pomocí informací v adresáři a vystavování tokenů je povolen přístup k těmto aplikacím.
-* **Aplikace je předem integrovaných společností Microsoft a vlastních aplikací** Toto jsou nezávislé cloudové aplikace, které spoléhají na adresář interní aplikace a může pracovat nezávisle na Azure AD. Po vydání aplikace konkrétní pověření namapován na účet aplikace je povolen přístup k těmto aplikacím. V závislosti na možnosti aplikací může být pověření federační token nebo uživatelské jméno a heslo pro účet, který byl dříve zajištěny v aplikaci.
-* **Místní aplikace** aplikacích publikovaných prostřednictvím proxy aplikace Azure AD, především povolení přístupu k místním aplikacím. Tyto aplikace se spoléhají na centrální místní adresář, jako je Windows Server Active Directory. Ve spouštěcí proxy server při doručování obsahu aplikace do koncového uživatele respektováním místní přihlášení požadavek je povolený přístup k těmto aplikacím.
+* **Aplikace je předem integrovaných poskytovatelem služby** jako je Office 365 a Azure, jedná se o aplikace založena přímo na Azure AD a spoléhat na něm pro jejich komplexní funkce pro správu identit a přístupu. Přístup k aplikacím toothese je povolená díky directory token a informace o vystavování.
+* **Aplikace je předem integrovaných společností Microsoft a vlastních aplikací** Toto jsou nezávislé cloudové aplikace, které spoléhají na adresář interní aplikace a může pracovat nezávisle na Azure AD. Ve vydávající účet aplikace tooan specifické pověření namapované aplikace je povolený přístup k aplikacím toothese. V závislosti na možnosti hello aplikací může být hello pověření federační token nebo uživatelské jméno a heslo pro účet, který byl dříve zajištěny v aplikaci hello.
+* **Místní aplikace** aplikacích publikovaných prostřednictvím především povolení přístup k aplikacím tooon místní proxy aplikace hello Azure AD. Tyto aplikace se spoléhají na centrální místní adresář, jako je Windows Server Active Directory. Přístup k aplikacím toothese se aktivuje spuštění hello proxy toodeliver hello aplikace obsahu toohello koncový uživatel respektováním hello místní přihlášení požadavek.
 
-Například pokud uživatel připojí vaší organizace, budete muset vytvořit účet pro uživatele ve službě Azure AD pro primární operace přihlášení. Pokud tento uživatel vyžaduje přístup ke spravované aplikaci, například služby Salesforce, budete muset taky vytvořit účet pro tohoto uživatele v Salesforce a tu propojit na účet Azure, aby jednotného přihlašování k práci. Když uživatel opustí vaši organizaci, se doporučuje odstranit účet Azure AD a všechny účty protějškem v IAM ukládá aplikací, které uživatel měl přístup k.
+Například pokud se uživatel připojí vaší organizace, musíte toocreate účet pro hello uživatele ve službě Azure AD pro hello primární přihlašování operace. Pokud tento uživatel vyžaduje přístup tooa spravované aplikaci, například služby Salesforce, je také nutné toocreate účet pro tohoto uživatele v Salesforce a tu propojit toohello účet Azure toomake jednotného přihlašování k práci. Když uživatel hello opustí vaši organizaci, je vhodné toodelete hello účet Azure AD a všechny účty protějškem v hello IAM úložiště hello aplikací, které hello uživatel měl přístup k.
 
 ## <a name="access-detection"></a>Detekce přístup
-V rámci moderní firmy IT oddělení nemají často informace všech cloudových aplikací, které jsou používány. Ve spojení s Cloud App Discovery Azure AD poskytuje řešení ke zjištění těchto aplikací.
+V rámci moderní firmy IT oddělení nemají často informace o všech hello cloudové aplikace, které jsou používány. Ve spojení s Cloud App Discovery Azure AD poskytuje řešení toodetect tyto aplikace.
 
 ## <a name="account-management"></a>Správa účtů
-Správa účtů v různých aplikacích obvyklým je ruční proces provádí IT nebo podporují osobní v organizaci. Azure AD plně automatizované správy účtů mezi všechny zprostředkovatele integrované aplikace služby a tyto aplikace předem integrované společností Microsoft podpora zajišťování automatizované uživatele nebo SAML JIT.
+Tradičně, správě účtů v hello různé aplikace je ruční proces provádí IT nebo podporují osobní v organizaci hello. Azure AD plně automatizované správy účtů mezi všechny zprostředkovatele integrované aplikace služby a tyto aplikace předem integrované společností Microsoft podpora zajišťování automatizované uživatele nebo SAML JIT.
 
 ## <a name="automated-user-provisioning"></a>Zřizování automatizované uživatelů
-Některé aplikace poskytují rozhraní automatizace pro vytváření a odebrání (nebo deaktivace) účtů. Pokud zprostředkovatele nabízí takového rozhraní, je využít Azure AD. To snižuje provozní náklady, protože úlohy správy dojít automaticky a zvyšuje zabezpečení vašeho prostředí, protože se sníží riziko neoprávněného přístupu.
+Některé aplikace poskytují rozhraní automatizace pro vytváření a odebrání (nebo deaktivace) účtů. Pokud zprostředkovatele nabízí takového rozhraní, je využít Azure AD. To snižuje provozní náklady, protože úlohy správy dojít automaticky a zvyšuje hello zabezpečení vašeho prostředí, protože se sníží hello riziko neoprávněného přístupu.
 
 ## <a name="access-management"></a>Správa přístupu
-Pomocí služby Azure AD můžete spravovat přístup k aplikacím pomocí jednotlivých nebo pravidlo řízené přiřazení. Můžete taky delegovat přístup správu odpovídajícím lidem v organizaci zajistit nejlepší dohledu a snížení zatížení na technickou podporu.
+Pomocí služby Azure AD můžete spravovat přístup k tooapplications pomocí jednotlivých nebo pravidlo řízené přiřazení. Můžete taky delegovat přístup správu toohello příslušní lidé v hello organizace zajistit hello nejlepší dohledu a snížení zatížení hello technickou podporu.
 
 ## <a name="on-premises-applications"></a>místní aplikace
-Předdefinovaných proxy aplikace umožňuje publikování aplikací pro vaše uživatele, což je místní i konzistentní přístup k prostředí s moderní cloudové aplikace a výhody z možnosti monitorování, vytváření sestav a zabezpečení služby Azure AD.
+Hello součástí proxy aplikací vám umožní toopublish vaši uživatelé tooyour místní aplikace výsledkem obě konzistentní přístup zkušenosti s moderní cloudové aplikace a hello výhody z Azure AD monitorování, vytváření sestav a funkcích zabezpečení .
 
 ## <a name="reporting-and-monitoring"></a>Monitorování a vytváření sestav
-Azure AD poskytuje předem integrovaných sestav a monitorování funkce, které vám umožní vědět, kdo má přístup k aplikacím a pokud je ve skutečnosti používány.
+Azure AD poskytuje předem integrovaných sestav a možnosti, které umožňují tooknow, kdo má přístup tooapplications a když ve skutečnosti používají je monitorování.
 
 ## <a name="related-capabilities"></a>Související možnosti
-S Azure AD můžete zabezpečit vaše aplikace s zásady granulární přístupu a předem integrované MFA. Další informace o Azure MFA najdete [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
+S Azure AD můžete zabezpečit vaše aplikace s zásady granulární přístupu a předem integrované MFA. informace o používání Azure MFA najdete toolearn [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
 
 ## <a name="getting-started"></a>Začínáme
-Abyste mohli začít, integrace aplikací s Azure AD, prohlédněte si [Příručka Začínáme integrace Azure Active Directory s aplikacemi, získávání](active-directory-integrating-applications-getting-started.md).
+tooget spuštění integrace aplikací s Azure AD, prohlédněte si hello [Příručka Začínáme integrace Azure Active Directory s aplikacemi, získávání](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Viz také
 [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)

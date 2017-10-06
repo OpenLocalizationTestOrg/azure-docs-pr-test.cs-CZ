@@ -1,5 +1,5 @@
 ---
-title: Transakce v SQL Data Warehouse | Microsoft Docs
+title: aaaTransactions v SQL Data Warehouse | Microsoft Docs
 description: "Tipy pro provádění transakcí v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,25 +15,25 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c541648553238443b407666612561918096eb61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Transakce v SQL Data Warehouse
-Jak jste zvyklí, SQL Data Warehouse podporuje transakce v rámci úlohy datového skladu. Ale zajistit, že výkon služby SQL Data Warehouse je udržován na úrovni škálování některé funkce omezeny ve srovnání s systému SQL Server. V tomto článku klade důraz rozdíly a uvádí ostatní. 
+Jak jste zvyklí, SQL Data Warehouse podporuje transakce v rámci úlohy datového skladu hello. Ale tooensure hello výkon služby SQL Data Warehouse je udržován na úrovni škálování některé funkce jsou omezené při porovnání tooSQL serveru. V tomto článku klade důraz hello rozdíly a seznamy hello ostatní. 
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
-SQL Data Warehouse implementuje transakce ACID. Izolaci podpora transakcí je však omezená na `READ UNCOMMITTED` a toto nastavení nelze změnit. Můžete implementovat řadu kódování metody, aby se zabránilo nekonzistence čtení dat, pokud se jedná o problém pro vás. Nejčastěji používané metody využít uživatelům zabránit v dotazování na data, která stále připraveném funkce CTAS a přepínání oddílů tabulky (často označované jako posuvné okno vzor). Zobrazení, které předem filtrovat data je také oblíbených přístup.  
+SQL Data Warehouse implementuje transakce ACID. Hello izolace podpora transakcí hello je však omezená příliš`READ UNCOMMITTED` a toto nastavení nelze změnit. Můžete implementovat řadu kódování metod, které tooprevent nekonzistence čte dat, pokud se jedná o problém pro vás. využít funkce CTAS a přepnutí oddílu tabulky (často označované jako posuvné okno vzor hello) zprostředkovatele Hello nejoblíbenější metody tooprevent uživatele z dotazování na data, která stále připraveném. Zobrazení, které předem filtrování dat hello je také oblíbených přístup.  
 
 ## <a name="transaction-size"></a>Velikost transakce
-Transakce úpravy jednoho datového je omezen velikostí. Limit dnes platí "za distribuční". Proto lze vypočítat celkové přidělení vynásobením limit počtu distribučních. Přibližná maximální počet řádků v transakci rozdělíte krytky distribuční celková velikost každý řádek. Pro proměnnou délkou zvažte trvá délka průměrná sloupce, nikoli pomocí maximální velikosti.
+Transakce úpravy jednoho datového je omezen velikostí. Hello limit dnes platí "za distribuční". Proto lze vypočítat celkové přidělení hello vynásobením hello limit počtu distribučních hello. tooapproximate hello maximální počet řádků v transakci hello dělení hello distribuční cap hello celková velikost každý řádek. Pro proměnnou délkou zvažte trvá délka průměrná sloupce, nikoli pomocí hello maximální velikost.
 
-V následující tabulce následující předpoklady byly provedeny:
+V tabulce hello hello byly provedeny následující předpoklady:
 
 * Rovnoměrné rozdělení dat došlo k chybě. 
-* Délka průměrná řádek je 250 bajtů
+* délka řádku průměrná Hello je 250 bajtů
 
 | [DWU][DWU] | Cap za distribuční (GiB) | Počet distribuce | MAXIMÁLNÍ velikost transakce (GiB) | # Řádků na jeden distribuce | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
@@ -50,21 +50,21 @@ V následující tabulce následující předpoklady byly provedeny:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Limit velikosti transakce se použije pro transakci nebo operace. Nebude použito v rámci všech souběžných transakcí. Každou transakci je proto oprávnění k zápisu takové množství dat do protokolu. 
+omezení velikosti transakce Hello se použije pro transakci nebo operace. Nebude použito v rámci všech souběžných transakcí. Proto každou transakci je povolené toowrite toto množství dat toohello protokolu. 
 
-K a minimalizuje množství dat, zapíšou do protokolu naleznete [transakce osvědčené postupy] [ Transactions best practices] článku.
+toooptimize a minimalizovat hello množství dat zapsaných toohello protokolu naleznete toohello [transakce osvědčené postupy] [ Transactions best practices] článku.
 
 > [!WARNING]
-> Transakce maximální velikost lze dosáhnout pouze pro hodnoty HASH nebo dokonce ROUND_ROBIN distribuované tabulky, kde je šíření data. Pokud transakce je zápis dat zkreslilo způsobem do distribucí limit je pravděpodobně dosažitelná před transakce maximální velikost.
+> maximální velikost transakce lze dosáhnout pouze pro hodnoty HASH nebo kde hello šířit z tabulky ROUND_ROBIN distribuované hello data Hello je i. Pokud transakce hello je zápis dat zkreslilo způsobem toohello distribuce hello limit je pravděpodobně toobe nedosáhla předchozí toohello transakce maximální velikosti.
 > <!--REPLICATED_TABLE-->
 > 
 > 
 
 ## <a name="transaction-state"></a>Stav transakce
-SQL Data Warehouse používá funkci XACT_STATE() k hlášení selhání transakce pomocí hodnoty -2. To znamená, že transakce se nezdařilo a je označen pro vrácení zpět pouze
+SQL Data Warehouse používá hello XACT_STATE() funkce tooreport selhání transakce pomocí hodnoty hello -2. To znamená, že hello transakce se nezdařilo a je označen pro vrácení zpět pouze
 
 > [!NOTE]
-> Použití -2 funkcí XACT_STATE k označení selhání transakce představuje různé chování v systému SQL Server. SQL Server používá k reprezentaci rámci transakce hodnota -1. SQL Server může tolerovat chybami v transakci bez nutnosti označit jako rámci. Například `SELECT 1/0` by způsobit chybu, ale bez vynucení transakce v rámci stavu. SQL Server také umožňuje čtení v rámci transakce. Ale SQL Data Warehouse, nebudou vám to. Pokud dojde k chybě v transakci SQL Data Warehouse automaticky přejde do stavu-2 a nebudete moct provádět žádné další výběr příkazy, dokud příkaz byla vrácena zpět. Proto je důležité zkontrolovat, že kód aplikace zobrazíte, pokud používá XACT_STATE() jako je třeba provést změny kódu.
+> Hello použít-2 pomocí hello XACT_STATE funkce toodenote selhání transakce představuje různé chování tooSQL serveru. Používá systém SQL Server hello hodnota -1 toorepresent rámci transakce. SQL Server může tolerovat chybami v transakci bez nutnosti toobe označena jako rámci. Například `SELECT 1/0` by způsobit chybu, ale bez vynucení transakce v rámci stavu. Systému SQL Server také umožňuje čtení v rámci transakce hello. Ale SQL Data Warehouse, nebudou vám to. Pokud dojde k chybě v transakci SQL Data Warehouse zadá automaticky stavu hello -2 a nebude ji již možné toomake všechny příkazy další výběr, dokud příkaz hello byla vrácena zpět. Proto je důležité toocheck, že vaše toosee kód aplikace, pokud používá XACT_STATE() podle může být nutné změny kódu toomake.
 > 
 > 
 
@@ -106,13 +106,13 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Pokud necháte kódu, protože je výše a zobrazí se následující chybová zpráva:
+Pokud necháte kódu, protože je nad obdržíte hello následující chybová zpráva:
 
-Msg 111233, Level 16, stav 1, řádek 1 111233; Aktuální transakce byla přerušena a všechny čekající změny byly vráceny zpět. Příčina: Transakce ve stavu jen pro vrácení zpět nebyla vrácena explicitně před DDL, DML nebo příkazu SELECT.
+Msg 111233, Level 16, State 1, řádek 1 111233; hello aktuální transakce byla přerušena a všechny neuložené změny byly vráceny zpět. Příčina: Transakce ve stavu jen pro vrácení zpět nebyla vrácena explicitně před DDL, DML nebo příkazu SELECT.
 
-Také nebude získat výstup funkce ERROR_ *.
+Také nebude získat výstup hello hello ERROR_ * funkcí.
 
-V SQL Data Warehouse musí být mírně změněn kód:
+V SQL Data Warehouse potřebuje hello kód toobe mírně změnit:
 
 ```sql
 SET NOCOUNT ON;
@@ -149,22 +149,22 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Nyní je zaznamenali očekávané chování. Chyba v transakci je spravovat a funkce ERROR_ * zadejte hodnoty, podle očekávání.
+Hello očekává, že je nyní zjištěnými chování. Hello došlo k chybě v transakci hello je spravovat a hello ERROR_ * funkce zadejte hodnoty, podle očekávání.
 
-Všechny, které se změnily je, že `ROLLBACK` transakce museli dojít před čtení informací o chybě v `CATCH` bloku.
+Všechno, co došlo ke změně této hello je `ROLLBACK` z hello transakce měl toohappen než hello čtení hello informací o chybách v hello `CATCH` bloku.
 
 ## <a name="errorline-function"></a>Error_Line() – funkce
-Je také vhodné poznamenat, že SQL Data Warehouse implementovat nebo podporují funkci ERROR_LINE(). Pokud máte ve vašem kódu, budete muset odebrat tak, aby vyhovoval s SQL Data Warehouse to. Použijte místo toho popisky dotazu v kódu k implementaci ekvivalentní funkce. Podrobnosti najdete [popisek] [ LABEL] další podrobnosti o této funkci najdete v článku.
+Je také vhodné poznamenat, že SQL Data Warehouse implementovat nebo podporují funkce ERROR_LINE() hello. Pokud máte ve vašem kódu to budete potřebovat tooremove ho toobe kompatibilní s SQL Data Warehouse. Místo toho použijte popisky dotazu v kódu tooimplement ekvivalentní funkce. Podrobnosti najdete toohello [popisek] [ LABEL] další podrobnosti o této funkci najdete v článku.
 
 ## <a name="using-throw-and-raiserror"></a>Pomocí THROW a RAISERROR
-THROW je více moderní implementaci pro vyvolávání výjimek v SQL Data Warehouse, ale RAISERROR je také podporována. Existuje několik rozdílů, které jsou vhodné důrazem ale.
+THROW je hello více moderní implementace pro vyvolávání výjimek v SQL Data Warehouse, ale RAISERROR je také podporována. Existuje několik rozdílů, které jsou vhodné platícího toohowever pozornost.
 
-* Uživatelem definované chybové zprávy, které čísla nemůže být v rozsahu 100 000-150 000 pro THROW
+* Uživatelem definované chybové zprávy, že čísla nemůže být v hello 150 100 000 000 rozsah THROW
 * Chybové zprávy RAISERROR stanoví na 50 000
 * Použití systémových není podporováno.
 
 ## <a name="limitiations"></a>Limitiations
-SQL Data Warehouse má několik omezení, které se týkají transakce.
+SQL Data Warehouse má několik omezení, které se týkají tootransactions.
 
 Ty jsou následující:
 
@@ -176,7 +176,7 @@ Ty jsou následující:
 * Žádná podpora pro DDL jako `CREATE TABLE` uvnitř uživatele definované transakce
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o optimalizaci transakce, najdete v části [transakce osvědčené postupy][Transactions best practices].  Další informace o ostatní osvědčené postupy pro SQL Data Warehouse najdete v tématu [osvědčené postupy pro SQL Data Warehouse][SQL Data Warehouse best practices].
+toolearn Další informace o optimalizaci transakce, najdete v části [transakce osvědčené postupy][Transactions best practices].  toolearn o ostatní osvědčené postupy SQL Data Warehouse, najdete v části [osvědčené postupy pro SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->
 

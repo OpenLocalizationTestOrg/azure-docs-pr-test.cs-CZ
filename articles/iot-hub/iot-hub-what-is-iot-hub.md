@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure IoT Hub | Dokumentace Microsoftu"
-description: "Přehled služby Azure IoT Hub: co je služba IoT Hub, připojení zařízení, schémata komunikace s internetem věcí, brány a schéma komunikace s asistencí služby"
+title: "aaaAzure Přehled služby IoT Hub | Microsoft Docs"
+description: "Přehled hello služby Azure IoT Hub: co je IoT Hub, připojení zařízení, pro internet věcí komunikačních schémat, bran a vzor hello komunikace s asistencí služby"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,70 +15,70 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d290ee8a3cee1242f14726b5cf7ca531a3f5830a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0b46868a1ec9e13c8f107b90269c5307f4ba27c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="overview-of-the-azure-iot-hub-service"></a>Přehled služby Azure IoT Hub
+# <a name="overview-of-hello-azure-iot-hub-service"></a>Přehled služby Azure IoT Hub hello
 
-Vítá vás služba Azure IoT Hub. Tento článek obsahuje přehled služby Azure IoT Hub a popisuje důvody implementace řešení internetu věcí (IoT) pomocí této služby. Azure IoT Hub je plně spravovaná služba, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a back-endem řešení. Azure IoT Hub:
+Vítejte tooAzure IoT Hub. Tento článek obsahuje přehled služby Azure IoT Hub a popisuje, proč byste měli používat tuto službu tooimplement do řešení pro Internet věcí (IoT). Azure IoT Hub je plně spravovaná služba, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a back-endem řešení. Azure IoT Hub:
 
 * Nabízí několik možností komunikace zařízení-cloud a cloud-zařízení, včetně jednosměrného zasílání zpráv, přenosu souborů a metod požadavek-odpověď.
-* Poskytuje integrované deklarativní směrování zpráv do dalších služeb Azure.
+* Poskytuje integrovanou deklarativní zpráva směrování tooother služby Azure.
 * Poskytuje dotazovatelné úložiště metadat zařízení a synchronizované stavové informace.
 * Umožňuje zabezpečit komunikaci a řízení přístupu pomocí klíčů specifických pro jednotlivá zařízení a certifikátů X.509.
 * Zajišťuje rozsáhlé monitorování událostí připojení zařízení a správy identity zařízení.
-* Zahrnuje knihovny zařízení pro nejoblíbenější jazyky a platformy.
+* Zahrnuje knihovny zařízení pro hello Nejoblíbenější jazyky a platformy.
 
-Článek [Srovnání služeb IoT Hub a Event Hubs][lnk-compare] popisuje klíčové rozdíly mezi těmito dvěma službami a zdůrazňuje výhody používání služby IoT Hub ve vašich řešeních pro IoT.
+článek Hello [srovnání služeb IoT Hub a Event Hubs] [ lnk-compare] popisuje hello hlavní rozdíly mezi těmito dvěma službami a zvýrazňuje hello výhody používání služby IoT Hub ve vašich vlastních IoT řešení.
 
-Další informace o tom, jak Azure a IoT Hub pomáhají se zabezpečením řešení IoT, najdete v tématu [Zabezpečení internetu věcí od počátku][lnk-security-ground-up].
+Další informace o tom, jak Azure a IoT Hub pomoc se zabezpečením řešení IoT najdete v tématu [zabezpečení Internetu věcí z hello pozadí][lnk-security-ground-up].
 
 ![Služba Azure IoT Hub jako cloudová brána v řešení internetu věcí][img-architecture]
 
 > [!NOTE]
-> Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v systému Microsoft Azure][lnk-refarch].
+> Podrobné informace o architektuře IoT najdete v části hello [referenční architektura IoT Microsoft Azure][lnk-refarch].
 
 ## <a name="iot-device-connectivity-challenges"></a>Výzvy spojené s připojením zařízení IoT
 
-Služba IoT Hub a knihovny zařízení vám pomohou čelit výzvám, které představuje spolehlivé a bezpečné připojení zařízení k back-endu řešení. Zařízení IoT:
+IoT Hub a hello knihovny zařízení vám pomůže toomeet hello výzvám, které představuje tooreliably a bezpečné připojení zařízení toohello back-end řešení. Zařízení IoT:
 
 * Jsou často vestavěnými systémy bez lidské obsluhy.
 * Můžou se nacházet ve vzdálených umístěních, kam je fyzický přístup nákladný.
-* Můžou být dostupná jenom prostřednictvím back-endu řešení.
+* Můžou být dostupná jenom prostřednictvím back-end hello řešení.
 * Můžou mít omezené prostředky pro napájení a zpracování.
 * Můžou mít přerušované, pomalé nebo nákladné síťové připojení.
-* Můžou potřebovat chráněné, vlastní nebo průmyslové protokoly aplikací.
+* Může být nutné toouse aplikace vlastní, vlastní nebo průmyslové protokoly.
 * Můžou být vytvořená pomocí rozsáhlé sady oblíbených hardwarových a softwarových platforem.
 
-Kromě výše uvedených požadavků musí jakékoli řešení IoT zajistit také škálování, zabezpečení a spolehlivost. Výslednou sadu požadavků na připojení je obtížné implementovat pomocí tradičních technologií, jakými jsou webové kontejnery a zprostředkovatelé zasílání zpráv.
+Kromě výše uvedených požadavků toohello, jakékoli řešení IoT musí zajistit také škálování, zabezpečení a spolehlivost. Hello výslednou sadu požadavků na připojení je obtížné tooimplement při pomocí tradičních technologií, jako jsou webové kontejnery a zprostředkovatelé zasílání zpráv.
 
 ## <a name="why-use-azure-iot-hub"></a>Proč používat Azure IoT Hub?
 
-Kromě bohatých možností komunikace [zařízení-cloud][lnk-d2c-guidance] a [cloud-zařízení][lnk-c2d-guidance], včetně jednosměrného zasílání zpráv, přenosu souborů a metod požadavek-odpověď, řeší Azure IoT Hub požadavky propojení zařízení následujícími způsoby:
+Kromě toho sada bohaté tooa [zařízení cloud] [ lnk-d2c-guidance] a [cloud zařízení] [ lnk-c2d-guidance] možnosti komunikace, včetně zasílání zpráv, souborů přenosy a metody požadavku a odpovědi, Azure IoT Hub adresy hello problémy s připojením zařízení v hello následující způsoby:
 
-* **Dvojče zařízení**. Pomocí [dvojčat zařízení][lnk-twins] můžete ukládat, synchronizovat a dotazovat se na metadata a stav zařízení. Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub udržuje takové dvojče pro každé zařízení, které k IoT Hub připojíte.
+* **Dvojče zařízení**. Pomocí [dvojčat zařízení][lnk-twins] můžete ukládat, synchronizovat a dotazovat se na metadata a stav zařízení. Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub trvá dvojče zařízení pro každé zařízení připojení tooIoT rozbočovače.
 
-* **Ověřování podle zařízení a zabezpečené připojení**. Každému zařízení můžete zřídit vlastní [klíč zabezpečení][lnk-devguide-security], který umožňuje připojení ke službě IoT Hub. [Registr identit služby IoT Hub][lnk-devguide-identityregistry] uchovává identity a klíče zařízení. Back-end řešení může jednotlivá zařízení přidat na seznam povolených nebo blokovaných, což umožňuje úplnou kontrolu přístupu zařízení.
+* **Ověřování podle zařízení a zabezpečené připojení**. Každému zařízení vlastní můžete zřídit [klíč zabezpečení] [ lnk-devguide-security] tooenable ho tooconnect tooIoT rozbočovače. Hello [registru identit služby IoT Hub] [ lnk-devguide-identityregistry] ukládá v řešení identity a klíče zařízení. Back-end řešení můžete přidat tooallow jednotlivá zařízení nebo odepřít seznamy tooenable úplnou kontrolu nad přístup k zařízení.
 
-* **Směrování zpráv typu zařízení-cloud do služeb Azure na základě deklarativních pravidel**. IoT Hub vám umožňuje definovat trasy zpráv na základě pravidel směrování, díky čemuž máte kontrolu nad tím, kam služba IoT Hub odesílá zprávy typu zařízení-cloud. Pravidla směrování nevyžadují psaní kódu a mohou nahradit vlastní dispečery zpráv po ingestování.
+* **Trasy zařízení cloud zprávy tooAzure služeb na základě pravidel, deklarativní**. IoT Hub umožňuje vám zprávy toodefine trasy založené na směrování toocontrol pravidla, kde vaše Centrum posílání zpráv typu zařízení cloud. Pravidla směrování nevyžadují toowrite je jakýkoli kód a může trvat hello místo dispečerů vlastní po přijímání zpráv.
 
-* **Sledování operací připojení zařízení**. O událostech připojení zařízení a operacích správy identity zařízení můžete dostávat podrobné protokoly operací. Tato schopnost sledování vašemu řešení IoT umožní identifikovat problémy s připojením, například zařízení, která se snaží připojit pomocí nesprávných přihlašovacích údajů nebo posílat zprávy příliš často, nebo zamítnout všechny zprávy typu cloud-zařízení.
+* **Sledování operací připojení zařízení**. O událostech připojení zařízení a operacích správy identity zařízení můžete dostávat podrobné protokoly operací. Tato možnost monitorování umožňuje vaší IoT řešení tooidentify problémy s připojením, jako jsou zařízení, které se pokusí tooconnect pomocí nesprávných přihlašovacích údajů, posílat zprávy příliš často, nebo zamítnout všechny zprávy typu cloud zařízení.
 
 * **Rozsáhlá sada knihoven zařízení**. [Sady SDK pro zařízení Azure IoT][lnk-device-sdks] jsou dostupné a podporované pro různé jazyky a platformy – pro řadu distribucí systému Linux, systém Windows a operační systémy v reálném čase. Sady SDK pro zařízení Azure IoT také podporují spravované jazyky,  jako je C#, Java či JavaScript.
 
-* **Protokoly a rozšiřitelnost IoT**. Pokud vaše řešení nemůže používat knihovny zařízení, služba IoT Hub zpřístupní veřejný protokol, který zařízením  umožní nativně používat protokoly MQTT v3.1.1, HTTP 1.1 nebo AMQP 1.0. Službu IoT Hub můžete také rozšířit tak, aby podporovala vlastní protokoly. Provedete to následovně:
+* **Protokoly a rozšiřitelnost IoT**. Pokud vaše řešení nemůže používat knihovny zařízení hello, IoT Hub zpřístupní veřejný protokol, který umožňuje protokoly zařízení toonatively použití hello MQTT v3.1.1, HTTP 1.1 nebo AMQP 1.0 protokoly. Můžete také rozšířit toosupport IoT Hub pro vlastní protokoly. provedete:
 
-  * Vytvořením brány pole pomocí služby [Azure IoT Edge][lnk-iot-edge], která převede váš vlastní protokol na jeden ze tří protokolů podporovaných službou IoT Hub.
-  * Přizpůsobením [brány protokolu Azure IoT][protocol-gateway], komponenty s otevřeným zdrojovým kódem, která se spouští v cloudu.
+  * Vytvořením brány pole s [Azure IoT Edge] [ lnk-iot-edge] která převede váš vlastní protokol tooone Dobrý den, porozuměl jsem jim tří protokolů službou IoT Hub.
+  * Přizpůsobení hello [brány protokolu Azure IoT][protocol-gateway], komponentu s otevřeným zdrojem, který běží v cloudu hello.
 
-* **Škálování**. Službu Azure IoT Hub lze škálovat na miliony současně připojených zařízení a miliony událostí za sekundu.
+* **Škálování**. Azure IoT Hub lze škálovat toomillions současně připojených zařízení a miliony událostí za sekundu.
 
 ## <a name="gateways"></a>Brány
 
-Brána je v řešení IoT obvykle buď [brána protokolu][lnk-iotedge], která je nasazena v cloudu, nebo [brána pole][lnk-field-gateway], která je nasazena místně ve vašich zařízeních. Brána protokolu provádí převody protokolů, například MQTT do AMQP. Brána pole může spouštět hraniční analýzu, provádět rozhodnutí v časovém rámci ke zkrácení latence, poskytovat zařízením služby správy, vynucovat bezpečnostní omezení a omezení na ochranu soukromí a také převádět protokoly. Oba typy brány fungují jako prostředníci mezi vaším zařízením a službou IoT Hub.
+Se brána v řešení IoT obvykle buď [brány protokolu] [ lnk-iotedge] který je nasazen v cloudu hello nebo [brána pole] [ lnk-field-gateway] tedy nasadit místně ve vašich zařízeních. Brána protokolu provádí překlad protokolu, například MQTT tooAMQP. Brána pole můžete spustit analytics hello hranu, rozhodnutí dobou tooreduce latenci, poskytovat zařízením služby správy, vynucovat zabezpečení a ochrany osobních údajů omezení a také provést překlad protokolu. Oba typy brány fungují jako prostředníci mezi vaším zařízením a službou IoT Hub.
 
 Brána pole se od jednoduchého zařízení pro směrování provozu (například zařízení pro překládání adres nebo brány firewall) liší, protože při správě přístupu a informačního toku ve vašem řešení obvykle hraje aktivní roli.
 
@@ -86,35 +86,35 @@ Brána pole se od jednoduchého zařízení pro směrování provozu (napříkla
 
 ## <a name="how-does-iot-hub-work"></a>Jak služba IoT Hub funguje?
 
-Služba Azure IoT Hub implementuje schéma [komunikace s asistencí služby][lnk-service-assisted-pattern], které zprostředkovává komunikaci mezi zařízeními a back-endem řešení. Komunikace s asistencí služby má za cíl navázat důvěryhodné, obousměrné komunikační trasy mezi řídicím systémem, například službou IoT Hub, a zařízeními pro zvláštní účely, která jsou nasazena v nedůvěryhodném fyzickém umístění. Schéma zavádí následující zásady:
+Azure IoT Hub implementuje hello [komunikace s asistencí služby] [ lnk-service-assisted-pattern] vzor toomediate hello interakce mezi zařízeními a řešení back-end. cílem Hello komunikace s asistencí služby je tooestablish důvěryhodné, obousměrné komunikační trasy mezi řídicím systémem, jako je například IoT Hub a zařízeními pro zvláštní účely, které jsou nasazeny v nedůvěryhodných fyzického místa na disku. Hello schéma zavádí následující zásady hello:
 
 * Zabezpečení má přednost před všemi dalšími možnostmi.
 
-* Zařízení nepřijímají nevyžádané informace o síti. Zařízení navazuje všechna připojení a vytváří trasy jako pouze odchozí. Aby zařízení mohlo přijmout příkaz z back-endu řešení, musí pravidelně inicializovat připojení a kontrolovat případné čekající příkazy ke zpracování.
+* Zařízení nepřijímají nevyžádané informace o síti. Zařízení navazuje všechna připojení a vytváří trasy jako pouze odchozí. Pro zařízení tooreceive příkaz z back-end hello řešení hello musí pravidelně inicializovat připojení toocheck pro všechny čekající příkazy tooprocess.
 
-* Zařízení by se měla připojovat pouze k dobře známým službám (nebo k nim vytvářet trasu), se kterými mají partnerský vztah, například ke službě IoT Hub.
+* Zařízení musí připojit pouze tooor vytvořit trasy toowell známé služby, se kterými mají partnerský vztah, jako je například IoT Hub.
 
-* Komunikační trasa mezi zařízením a službou nebo mezi zařízením a bránou je zabezpečená na úrovni aplikačního protokolu.
+* Hello komunikační trasa mezi zařízením a službou nebo mezi zařízením a bránou je zabezpečená na hello aplikačního protokolu.
 
 * Autorizace a ověření na úrovni systému jsou založeny na identifikaci jednotlivých zařízení. Díky tomu jsou přístupové údaje a povolení téměř okamžitě odvolatelné.
 
-* Obousměrná komunikace se v případě zařízení, která se připojují pouze občasně z důvodu problémů s napájením nebo připojením, zjednodušuje tím, že se příkazy a oznámení zařízením pozdržují do doby, než se zařízení připojí a bude je moci přijmout. Služba IoT Hub pro odesílané příkazy udržuje fronty pro konkrétní zařízení.
+* Obousměrnou komunikaci pro zařízení, která se připojují k kvůli toopower nebo připojení obavy zjednodušuje tím, že příkazy a oznámení zařízení, dokud se zařízení připojí tooreceive je. IoT Hub uchovává fronty zařízení specifické pro odesílané příkazy hello.
 
-* Datové části aplikací se zabezpečují samostatně za účelem chráněného přenosu dat prostřednictvím bran do konkrétní služby.
+* Datové části aplikací se zabezpečují samostatně za účelem chráněného přenosu dat prostřednictvím bran tooa konkrétní službu.
 
-Mobilní průmysl v obrovském měřítku používá schéma komunikace s asistencí služby k implementaci služeb nabízených oznámení, například [služeb nabízených oznámení Windows][lnk-wns], [služby GCM (Google Cloud Messaging)][lnk-google-messaging] nebo [služby Apple Push Notification Service][lnk-apple-push].
+Hello mobilní průmysl využil hello komunikace s asistencí služby vzor v obrovském měřítku tooimplement nabízených oznámení služeb, jako [služeb nabízených oznámení Windows][lnk-wns], [Google Cloud Messaging][lnk-google-messaging], a [Apple Push Notification Service][lnk-apple-push].
 
 IoT Hub se podporuje přes cestu veřejného partnerského vztahu ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak odesílat zprávy ze zařízení a přijímat je ze služby IoT Hub, a jak konfigurovat trasy zpráv, najdete v tématu [Odesílání a příjem zpráv pomocí služby IoT Hub][lnk-send-messages].
+toolearn jak toosend zpráv ze zařízení a přijímat z IoT Hub, a také jak směruje zprávy tooconfigure, najdete v části [odesílat a přijímat zprávy službou IoT Hub][lnk-send-messages].
 
-V tématu [Přehled správy zařízení ve službě IoT Hub][lnk-device-management] zjistíte, jak služba IoT Hub umožňuje pomocí správy zařízení založené na standardech provádět vzdálenou správu, konfiguraci a aktualizaci vašich zařízení.
+toolearn způsobu IoT Hub umožňuje správu zařízení založených na standardech pro tooremotely můžete spravovat, konfigurovat a aktualizovat vaše zařízení, najdete v [přehled správy zařízení s centrem IoT][lnk-device-management].
 
-K implementaci klientských aplikací v celé řadě hardwarových platforem a operačních systémů zařízení můžete použít sady SDK pro zařízení Azure IoT. Sady SDK pro zařízení zahrnují knihovny, které usnadňují odesílání telemetrických dat do služby IoT Hub a příjem zpráv typu cloud-zařízení. Při používání sad SDK pro zařízení si ke komunikaci se službou IoT Hub můžete vybrat z řady síťových protokolů. Další informace najdete v tématu [informace sadách SDK pro zařízení][lnk-device-sdks].
+tooimplement klientským aplikacím na širokou škálu zařízení hardwarových platforem a operačních systémů, můžete použít sady SDK pro zařízení Azure IoT hello. sady SDK pro zařízení Hello zahrnují knihovny, které usnadňují odesílání telemetrie tooan IoT hub a příjem cloud zařízení zpráv. Při použití sady SDK, hello zařízení můžete vybírat z různých síťových protokolů toocommunicate službou IoT Hub. toolearn více, viz hello [informace o zařízení sady SDK][lnk-device-sdks].
 
-Pokud chcete začít s psaním kódu a spouštěním ukázek, přečtěte si kurz [Začínáme se službou IoT Hub][lnk-get-started].
+tooget spuštění psaní nějaký kód a spuštění některých ukázek najdete v části hello [Začínáme se službou IoT Hub] [ lnk-get-started] kurzu.
 
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
 

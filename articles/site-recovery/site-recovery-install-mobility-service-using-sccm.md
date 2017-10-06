@@ -1,5 +1,5 @@
 ---
-title: "Instalace služby Mobility pro Azure Site Recovery automatizovat pomocí nástroje pro nasazení softwaru | Microsoft Docs"
+title: "instalace služby Mobility pro Azure Site Recovery pomocí nástroje pro nasazení softwaru aaaAutomate | Microsoft Docs"
 description: "Tento článek vám umožňuje automatizovat instalaci služby Mobility pomocí nástroje pro nasazení softwaru jako je System Center Configuration Manager."
 services: site-recovery
 documentationcenter: 
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: 49b72cd306aa91f114af7688f02d95db6f6eca05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c883c6d5308dcec6e0628b0c2196b3a12e08ebe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automate-mobility-service-installation-by-using-software-deployment-tools"></a>Instalace služby Mobility automatizovat pomocí nástroje pro nasazení softwaru
 
 >[!IMPORTANT]
 Tento dokument předpokládá, že používáte verzi **9.9.4510.1** nebo vyšší.
 
-Tento článek obsahuje příklad, jak můžete pomocí nástroje System Center Configuration Manager nasadit službu Mobility Azure Site Recovery ve vašem datovém centru. Pomocí nástroje pro nasazení softwaru, jako jsou nástroje Configuration Manager má následující výhody:
+Tento článek obsahuje příklady použití System Center Configuration Manager toodeploy hello službě Azure Site Recovery Mobility ve vašem datovém centru. Pomocí nástroje pro nasazení softwaru jako nástroje Configuration Manager má hello následující výhody:
 * Plánování nasazení nové instalace a upgradu, během plánované údržby pro aktualizace softwaru
-* Škálování nasazení stovky serverů současně
+* Škálování toohundreds nasazení serverů současně
 
 
 > [!NOTE]
-> Tento článek používá System Center Configuration Manager 2012 R2 k předvedení aktivity nasazení. Instalace služby Mobility může také automatizovat pomocí [Azure Automation a konfigurace požadovaného stavu](site-recovery-automate-mobility-service-install.md).
+> Tento článek používá aktivita nasazení hello toodemonstrate System Center Configuration Manager 2012 R2. Instalace služby Mobility může také automatizovat pomocí [Azure Automation a konfigurace požadovaného stavu](site-recovery-automate-mobility-service-install.md).
 
 ## <a name="prerequisites"></a>Požadavky
 1. Nástroj nasazení softwaru, jako jsou nástroje Configuration Manager, který je už nasazená ve vašem prostředí.
-  Vytvořte dvě [kolekce zařízení](https://technet.microsoft.com/library/gg682169.aspx), jeden pro všechny **servery Windows**a druhou pro všechny **servery se systémem Linux**, chcete chránit pomocí Site Recovery.
+  Vytvořte dvě [kolekce zařízení](https://technet.microsoft.com/library/gg682169.aspx), jeden pro všechny **servery Windows**a druhou pro všechny **servery se systémem Linux**, že chcete tooprotect pomocí Site Recovery.
 3. Konfigurační server, který je již zaregistrována k Site Recovery.
-4. Zabezpečené síťové sdílené složky (Server Message Block sdílené složky), který je přístupný pomocí serveru nástroje Configuration Manager.
+4. Zabezpečené síťové sdílené složky (Server Message Block sdílené složky), který je přístupný pomocí serveru nástroje Configuration Manager hello.
 
 ## <a name="deploy-mobility-service-on-computers-running-windows"></a>Nasazení služby Mobility na počítačích se systémem Windows
 > [!NOTE]
-> Tento článek předpokládá, že je IP adresa serveru konfigurace 192.168.3.121 a zda zabezpečené sdílení souborů \\\ContosoSecureFS\MobilityServiceInstallers.
+> Tento článek předpokládá, že IP adresa hello hello konfigurační server je 192.168.3.121 a že hello zabezpečené sdílení souborů je \\\ContosoSecureFS\MobilityServiceInstallers.
 
 ### <a name="step-1-prepare-for-deployment"></a>Krok 1: Příprava na nasazení
-1. Vytvořte složku ve sdílené síťové složce a pojmenujte ji **MobSvcWindows**.
-2. Přihlaste se k konfigurační server a otevřete příkazový řádek pro správu.
-3. Spusťte následující příkazy ke generování souboru přístupové heslo:
+1. Vytvořte složku ve sdílené síťové složce hello a pojmenujte ji **MobSvcWindows**.
+2. Přihlaste se tooyour konfigurační server a otevřete příkazový řádek pro správu.
+3. Spusťte následující příkazy toogenerate soubor přístupové heslo hello:
 
     `cd %ProgramData%\ASR\home\svsystems\bin`
 
     `genpassphrase.exe -v > MobSvc.passphrase`
-4. Kopírování **MobSvc.passphrase** soubor do **MobSvcWindows** složky do sdílené síťové složky.
-5. Přejděte do instalačního programu úložiště na konfiguračním serveru tak, že spustíte následující příkaz:
+4. Kopírování hello **MobSvc.passphrase** souboru do hello **MobSvcWindows** složky do sdílené síťové složky.
+5. Procházet toohello Instalační služby úložiště na konfiguračním serveru hello spuštěním hello následující příkaz:
 
    `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
 
-6. Kopírování  **Microsoft automatické obnovení systému\_uživatelský Agent\_*verze*\_Windows\_GA\_*datum* \_Release.exe** k **MobSvcWindows** složky do sdílené síťové složky.
-7. Zkopírujte následující kód a uložte ho jako **install.bat** do **MobSvcWindows** složky.
+6. Kopírování hello  **Microsoft automatické obnovení systému\_uživatelský Agent\_*verze*\_Windows\_GA\_*datum* \_ Release.exe** toohello **MobSvcWindows** složky do sdílené síťové složky.
+7. Zkopírujte následující kód hello a uložte ho jako **install.bat** do hello **MobSvcWindows** složky.
 
    > [!NOTE]
-   > Nahraďte zástupné symboly [CSIP] ve skriptu skutečnými hodnotami IP adresy konfigurační server.
+   > Nahraďte zástupné symboly hello [CSIP] ve skriptu hello skutečnými hodnotami hello IP adresu konfigurační server.
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
 REM ==================================================
-REM ==== Clean up the folders ========================
+REM ==== Clean up hello folders ========================
 RMDIR /S /q %temp%\MobSvc
 MKDIR %Temp%\MobSvc
 MKDIR C:\Temp
@@ -77,9 +77,9 @@ CD %Temp%\MobSvc
 REN Micro*.exe MobSvcInstaller.exe
 REM ==================================================
 
-REM ==== Extract the installer =======================
+REM ==== Extract hello installer =======================
 MobSvcInstaller.exe /q /x:%Temp%\MobSvc\Extracted
-REM ==== Wait 10s for extraction to complete =========
+REM ==== Wait 10s for extraction toocomplete =========
 TIMEOUT /t 10
 REM =================================================
 
@@ -161,20 +161,20 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="step-2-create-a-package"></a>Krok 2: Vytvoření balíčku
 
-1. Přihlaste se ke konzole nástroje Configuration Manager.
-2. Přejděte do **softwarová knihovna** > **Správa aplikací** > **balíčky**.
+1. Přihlaste se tooyour Konzola nástroje Configuration Manager.
+2. Procházet příliš**softwarová knihovna** > **Správa aplikací** > **balíčky**.
 3. Klikněte pravým tlačítkem na **balíčky**a vyberte **vytvořit balíček**.
-4. Zadejte hodnoty pro název, popis, výrobce, jazyk a verzi.
-5. Vyberte **tento balíček obsahuje zdrojové soubory** zaškrtávací políčko.
-6. Klikněte na tlačítko **Procházet**a vyberte síťové sdílené položce, kde je uložený instalační program (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
+4. Zadejte hodnoty pro hello název, popis, výrobce, jazyk a verzi.
+5. Vyberte hello **tento balíček obsahuje zdrojové soubory** zaškrtávací políčko.
+6. Klikněte na tlačítko **Procházet**a vyberte hello síťové sdílené položce, se uloží instalační program hello (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package.png)
 
-7. Na **zvolte typ programu, který chcete vytvořit** vyberte **standardní Program**a klikněte na tlačítko **Další**.
+7. Na hello **typ programu hello zvolte, které chcete toocreate** vyberte **standardní Program**a klikněte na tlačítko **Další**.
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. Na **zadejte informace o tomto standardním programu** stránky, zadejte následující vstupy a klikněte na tlačítko **Další**. (Další vstupních hodnot můžete použít výchozí hodnoty.)
+8. Na hello **zadejte informace o tomto standardním programu** zadejte hello následující vstupy a klikněte na tlačítko **Další**. (hello ostatní vstupy můžete použít výchozí hodnoty.)
 
   | **Název parametru** | **Hodnota** |
   |--|--|
@@ -184,60 +184,60 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties.png)
 
-9. Na další stránce vyberte cíl operační systémy. Služba mobility lze nainstalovat pouze na Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2.
+9. Na další stránku hello vyberte hello cílový operační systémy. Služba mobility lze nainstalovat pouze na Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2.
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)
 
-10. Dokončete průvodce, klikněte na tlačítko **Další** dvakrát.
+10. toocomplete hello průvodce, klikněte na tlačítko **Další** dvakrát.
 
 
 > [!NOTE]
-> Skript podporuje i nové instalace služby Mobility agentů a aktualizace agentů, kteří jsou již nainstalovány.
+> skript Hello podporuje i nové instalace služby Mobility agentů a aktualizuje tooagents, které jsou již nainstalovány.
 
-### <a name="step-3-deploy-the-package"></a>Krok 3: Nasazení balíčku
-1. V konzole nástroje Configuration Manager, klikněte pravým tlačítkem na váš balíček a vyberte **distribuovat obsah**.
+### <a name="step-3-deploy-hello-package"></a>Krok 3: Nasazení balíčku hello
+1. V konzole Configuration Manager hello, klikněte pravým tlačítkem na váš balíček a vyberte **distribuovat obsah**.
   ![Snímek obrazovky nástroje Configuration Manager konzoly](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
-2. Vyberte  **[distribuční body](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  na které balíčky by se měl zkopírovat.
-3. Dokončete průvodce. Balíček pak spustí replikující se do určených distribučních bodů.
-4. Po dokončení distribuci balíčku, klikněte pravým tlačítkem na balíček a vyberte **nasadit**.
+2. Vyberte hello  **[distribuční body](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  na toowhich by se měl zkopírovat hello balíčky.
+3. Dokončení hello průvodce. Hello balíček pak spustí replikaci toohello zadat distribuční body.
+4. Po dokončení hello distribuci balíčku, klikněte pravým tlačítkem na balíček hello a vyberte **nasadit**.
   ![Snímek obrazovky nástroje Configuration Manager konzoly](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
-5. Vyberte kolekci zařízení systému Windows Server, kterou jste vytvořili v části předpoklady jako cílovou kolekci pro nasazení.
+5. Vyberte kolekci zařízení systému Windows Server hello, kterou jste vytvořili v části předpoklady hello jako hello cílovou kolekci pro nasazení.
 
   ![Průvodce snímek nasazení softwaru](./media/site-recovery-install-mobility-service-using-sccm/sccm-select-target-collection.png)
 
-6. Na **zadejte cílové umístění obsahu** vyberte vaše **distribuční body**.
-7. Na **zadejte nastavení pro kontrolu způsobu nasazení tohoto softwaru** stránka, zkontrolujte, zda je účelem **požadované**.
+6. Na hello **zadejte cílové umístění obsahu hello** vyberte vaše **distribuční body**.
+7. Na hello **toocontrol nastavení zadejte, jak tento software nasazen** stránka, zkontrolujte, zda text hello účel **požadované**.
 
   ![Průvodce snímek nasazení softwaru](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
-8. Na **zadejte plán pro toto nasazení** určete plán. Další informace najdete v tématu [plánování balíčky](https://technet.microsoft.com/library/gg682178.aspx).
-9. Na **distribuční body** nakonfigurujte vlastnosti podle potřeb vašeho datového centra. Dokončete průvodce.
+8. Na hello **zadejte hello plán pro toto nasazení** určete plán. Další informace najdete v tématu [plánování balíčky](https://technet.microsoft.com/library/gg682178.aspx).
+9. Na hello **distribuční body** nakonfigurujte vlastnosti hello podle potřeby toohello vašeho datového centra. Dokončete Průvodce hello.
 
 > [!TIP]
-> Předejdete zbytečnému resetování Naplánujte instalaci balíčku během měsíčního časového období údržby nebo okno aktualizace softwaru.
+> tooavoid nepotřebné dojde k restartování, instalace balíčku hello plán během měsíčního časového období údržby nebo okno aktualizace softwaru.
 
-Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration Manager. Přejděte na **monitorování** > **nasazení** > *[váš název balíčku]*.
+Hello nasazení průběh můžete sledovat pomocí konzoly nástroje Configuration Manager hello. Přejděte příliš**monitorování** > **nasazení** > *[váš název balíčku]*.
 
-  ![Snímek obrazovky nástroje Configuration Manager možnost monitorování nasazení](./media/site-recovery-install-mobility-service-using-sccm/report.PNG)
+  ![Snímek obrazovky nástroje Configuration Manager možnost toomonitor nasazení](./media/site-recovery-install-mobility-service-using-sccm/report.PNG)
 
 ## <a name="deploy-mobility-service-on-computers-running-linux"></a>Nasazení služby Mobility na počítačích se systémem Linux
 > [!NOTE]
-> Tento článek předpokládá, že je IP adresa serveru konfigurace 192.168.3.121 a zda zabezpečené sdílení souborů \\\ContosoSecureFS\MobilityServiceInstallers.
+> Tento článek předpokládá, že IP adresa hello hello konfigurační server je 192.168.3.121 a že hello zabezpečené sdílení souborů je \\\ContosoSecureFS\MobilityServiceInstallers.
 
 ### <a name="step-1-prepare-for-deployment"></a>Krok 1: Příprava na nasazení
-1. Vytvořte složku ve sdílené síťové složce a pojmenujte ji jako **MobSvcLinux**.
-2. Přihlaste se k konfigurační server a otevřete příkazový řádek pro správu.
-3. Spusťte následující příkazy ke generování souboru přístupové heslo:
+1. Vytvořte složku ve sdílené síťové složce hello a pojmenujte ji jako **MobSvcLinux**.
+2. Přihlaste se tooyour konfigurační server a otevřete příkazový řádek pro správu.
+3. Spusťte následující příkazy toogenerate soubor přístupové heslo hello:
 
     `cd %ProgramData%\ASR\home\svsystems\bin`
 
     `genpassphrase.exe -v > MobSvc.passphrase`
-4. Kopírování **MobSvc.passphrase** soubor do **MobSvcLinux** složky do sdílené síťové složky.
-5. Přejděte do instalačního programu úložiště na konfiguračním serveru spuštěním příkazu:
+4. Kopírování hello **MobSvc.passphrase** souboru do hello **MobSvcLinux** složky do sdílené síťové složky.
+5. Spuštěním příkazu hello procházet toohello Instalační služby úložiště na hello konfigurační server:
 
    `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
 
-6. Zkopírujte následující soubory do **MobSvcLinux** složky do sdílené síťové složky:
+6. Kopírování hello následující soubory toohello **MobSvcLinux** složky do sdílené síťové složky:
    * Microsoft automatické obnovení systému\_uživatelský Agent\*RHEL6 64*release.tar.gz
    * Microsoft automatické obnovení systému\_uživatelský Agent\*RHEL7-64\*release.tar.gz
    * Microsoft automatické obnovení systému\_uživatelský Agent\*SLES11-SP3-64\*release.tar.gz
@@ -246,9 +246,9 @@ Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration 
    * Microsoft automatické obnovení systému\_uživatelský Agent\*UBUNTU 14.04-64\*release.tar.gz
 
 
-7. Zkopírujte následující kód a uložte ho jako **install_linux.sh** do **MobSvcLinux** složky.
+7. Zkopírujte následující kód hello a uložte ho jako **install_linux.sh** do hello **MobSvcLinux** složky.
    > [!NOTE]
-   > Nahraďte zástupné symboly [CSIP] ve skriptu skutečnými hodnotami IP adresy konfigurační server.
+   > Nahraďte zástupné symboly hello [CSIP] ve skriptu hello skutečnými hodnotami hello IP adresu konfigurační server.
 
 ```Bash
 #!/usr/bin/env bash
@@ -324,7 +324,7 @@ Install()
     RET_VAL=$?
     echo "Installation Returncode: $RET_VAL" >> /tmp/MobSvc/sccm.log
     if [ $RET_VAL -eq 0 ]; then
-        echo "Installation has succeeded. Proceed to configuration." >> /tmp/MobSvc/sccm.log
+        echo "Installation has succeeded. Proceed tooconfiguration." >> /tmp/MobSvc/sccm.log
         Configure
     else
         echo "Installation has failed." >> /tmp/MobSvc/sccm.log
@@ -370,10 +370,10 @@ if [ -e ${VX_VERSION_FILE} ]; then
     agent_configuration=$(grep ^AGENT_CONFIGURATION_STATUS "${VX_VERSION_FILE}" | cut -d"=" -f2 | tr -d " ")
     echo "agent_configuration=$agent_configuration" >> /tmp/MobSvc/sccm.log
      if [ "$agent_configuration" == "Succeeded" ]; then
-        echo "Agent is already configured. Proceed to Upgrade." >> /tmp/MobSvc/sccm.log
+        echo "Agent is already configured. Proceed tooUpgrade." >> /tmp/MobSvc/sccm.log
         Upgrade
     else
-        echo "Agent is not configured. Proceed to Configure." >> /tmp/MobSvc/sccm.log
+        echo "Agent is not configured. Proceed tooConfigure." >> /tmp/MobSvc/sccm.log
         Configure
     fi
 else
@@ -386,20 +386,20 @@ cd /tmp
 
 ### <a name="step-2-create-a-package"></a>Krok 2: Vytvoření balíčku
 
-1. Přihlaste se ke konzole nástroje Configuration Manager.
-2. Přejděte do **softwarová knihovna** > **Správa aplikací** > **balíčky**.
+1. Přihlaste se tooyour Konzola nástroje Configuration Manager.
+2. Procházet příliš**softwarová knihovna** > **Správa aplikací** > **balíčky**.
 3. Klikněte pravým tlačítkem na **balíčky**a vyberte **vytvořit balíček**.
-4. Zadejte hodnoty pro název, popis, výrobce, jazyk a verzi.
-5. Vyberte **tento balíček obsahuje zdrojové soubory** zaškrtávací políčko.
-6. Klikněte na tlačítko **Procházet**a vyberte síťové sdílené položce, kde je uložený instalační program (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
+4. Zadejte hodnoty pro hello název, popis, výrobce, jazyk a verzi.
+5. Vyberte hello **tento balíček obsahuje zdrojové soubory** zaškrtávací políčko.
+6. Klikněte na tlačítko **Procházet**a vyberte hello síťové sdílené položce, se uloží instalační program hello (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package-linux.png)
 
-7. Na **zvolte typ programu, který chcete vytvořit** vyberte **standardní Program**a klikněte na tlačítko **Další**.
+7. Na hello **typ programu hello zvolte, které chcete toocreate** vyberte **standardní Program**a klikněte na tlačítko **Další**.
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. Na **zadejte informace o tomto standardním programu** stránky, zadejte následující vstupy a klikněte na tlačítko **Další**. (Další vstupních hodnot můžete použít výchozí hodnoty.)
+8. Na hello **zadejte informace o tomto standardním programu** zadejte hello následující vstupy a klikněte na tlačítko **Další**. (hello ostatní vstupy můžete použít výchozí hodnoty.)
 
     | **Název parametru** | **Hodnota** |
   |--|--|
@@ -409,36 +409,36 @@ cd /tmp
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-linux.png)
 
-9. Na další stránce vyberte **tento program lze spustit na jakékoli platformě**.
+9. Na další stránku hello, vyberte **tento program lze spustit na jakékoli platformě**.
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2-linux.png)
 
-10. Dokončete průvodce, klikněte na tlačítko **Další** dvakrát.
+10. toocomplete hello průvodce, klikněte na tlačítko **Další** dvakrát.
 
 > [!NOTE]
-> Skript podporuje i nové instalace služby Mobility agentů a aktualizace agentů, kteří jsou již nainstalovány.
+> skript Hello podporuje i nové instalace služby Mobility agentů a aktualizuje tooagents, které jsou již nainstalovány.
 
-### <a name="step-3-deploy-the-package"></a>Krok 3: Nasazení balíčku
-1. V konzole nástroje Configuration Manager, klikněte pravým tlačítkem na váš balíček a vyberte **distribuovat obsah**.
+### <a name="step-3-deploy-hello-package"></a>Krok 3: Nasazení balíčku hello
+1. V konzole Configuration Manager hello, klikněte pravým tlačítkem na váš balíček a vyberte **distribuovat obsah**.
   ![Snímek obrazovky nástroje Configuration Manager konzoly](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
-2. Vyberte  **[distribuční body](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  na které balíčky by se měl zkopírovat.
-3. Dokončete průvodce. Balíček pak spustí replikující se do určených distribučních bodů.
-4. Po dokončení distribuci balíčku, klikněte pravým tlačítkem na balíček a vyberte **nasadit**.
+2. Vyberte hello  **[distribuční body](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  na toowhich by se měl zkopírovat hello balíčky.
+3. Dokončení hello průvodce. Hello balíček pak spustí replikaci toohello zadat distribuční body.
+4. Po dokončení hello distribuci balíčku, klikněte pravým tlačítkem na balíček hello a vyberte **nasadit**.
   ![Snímek obrazovky nástroje Configuration Manager konzoly](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
-5. Vyberte kolekci zařízení Linux Server, kterou jste vytvořili v části předpoklady jako cílovou kolekci pro nasazení.
+5. Vyberte hello Linux Server kolekce zařízení, kterou jste vytvořili v části předpoklady hello jako hello cílovou kolekci pro nasazení.
 
   ![Průvodce snímek nasazení softwaru](./media/site-recovery-install-mobility-service-using-sccm/sccm-select-target-collection-linux.png)
 
-6. Na **zadejte cílové umístění obsahu** vyberte vaše **distribuční body**.
-7. Na **zadejte nastavení pro kontrolu způsobu nasazení tohoto softwaru** stránka, zkontrolujte, zda je účelem **požadované**.
+6. Na hello **zadejte cílové umístění obsahu hello** vyberte vaše **distribuční body**.
+7. Na hello **toocontrol nastavení zadejte, jak tento software nasazen** stránka, zkontrolujte, zda text hello účel **požadované**.
 
   ![Průvodce snímek nasazení softwaru](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
-8. Na **zadejte plán pro toto nasazení** určete plán. Další informace najdete v tématu [plánování balíčky](https://technet.microsoft.com/library/gg682178.aspx).
-9. Na **distribuční body** nakonfigurujte vlastnosti podle potřeb vašeho datového centra. Dokončete průvodce.
+8. Na hello **zadejte hello plán pro toto nasazení** určete plán. Další informace najdete v tématu [plánování balíčky](https://technet.microsoft.com/library/gg682178.aspx).
+9. Na hello **distribuční body** nakonfigurujte vlastnosti hello podle potřeby toohello vašeho datového centra. Dokončete Průvodce hello.
 
-Služba mobility získá nainstalovaná na kolekci zařízení Server Linux podle plánu, který jste nakonfigurovali.
+Získá nainstalovaná služba mobility hello kolekce zařízení Server Linux, podle plánu toohello, které jste nakonfigurovali.
 
-## <a name="other-methods-to-install-mobility-service"></a>Další metody pro instalaci služby Mobility
+## <a name="other-methods-tooinstall-mobility-service"></a>Ostatní metody tooinstall služba Mobility
 Zde jsou některé další možnosti pro instalaci služby Mobility:
 * [Ruční instalace pomocí grafického uživatelského rozhraní](http://aka.ms/mobsvcmanualinstall)
 * [Ruční instalace pomocí příkazového řádku](http://aka.ms/mobsvcmanualinstallcli)
@@ -446,7 +446,7 @@ Zde jsou některé další možnosti pro instalaci služby Mobility:
 * [Automatická instalace pomocí Azure Automation a konfigurace požadovaného stavu](http://aka.ms/mobsvcdscinstall)
 
 ## <a name="uninstall-mobility-service"></a>Odinstalujte službu Mobility
-Můžete vytvořit balíčků nástroje Configuration Manager, odinstalujte službu Mobility. K tomu použijte následující skript:
+Můžete vytvořit toouninstall balíčků nástroje Configuration Manager služby Mobility. Použijte následující skript toodo tak hello:
 
 ```
 Time /t >> C:\logfile.log
@@ -470,4 +470,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste připraveni k [povolení ochrany](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) pro virtuální počítače.
+Nyní jste připraveni příliš[povolení ochrany](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) pro virtuální počítače.

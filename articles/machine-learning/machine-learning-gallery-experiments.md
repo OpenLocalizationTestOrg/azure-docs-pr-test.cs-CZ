@@ -1,5 +1,5 @@
 ---
-title: Cortana Intelligence Gallery experimenty | Microsoft Docs
+title: experimenty aaaCortana Intelligence Gallery | Microsoft Docs
 description: "Vyhledat a sdílet experimenty v Cortana Intelligence Gallery."
 services: machine-learning
 documentationcenter: 
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: e1f784eff02cacd680d631a843e6384697d0ae6e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55994846e277061bbb3febb759e0c68ad6cee7e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="discover-experiments-in-cortana-intelligence-gallery"></a>Zjistit experimenty v Cortana Intelligence Gallery
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="experiments-for-machine-learning-studio"></a>Experimenty pro Machine Learning Studio
-Galerie obsahuje širokou škálu [experimenty](https://gallery.cortanaintelligence.com/experiments) které byly vyvinuty v [Azure Machine Learning Studio](https://studio.azureml.net). Experimenty rozsahu od rychlé experimenty testování konceptu, které ukazují konkrétní strojového učení techniku, plně vyvinuté řešení problémů, komplexní machine learning.
+Hello galerie obsahuje širokou škálu [experimenty](https://gallery.cortanaintelligence.com/experiments) které byly vyvinuty v [Azure Machine Learning Studio](https://studio.azureml.net). Experimenty rozsahu od rychlé experimenty testování konceptu, které ukazují konkrétní strojového učení techniku, toofully vyvinutá řešení problémů složitých machine learning.
 
 > [!NOTE]
-> ***Experimentovat*** je plátno v nástroji Machine Learning Studio, můžete použít k vytvoření model prediktivní analýzy. Vytvoření modelu propojením dat s různými analytickým modulům. Mohou zkuste jinou nápady, nemáte běží zkušební verze a nakonec model nasadit jako webovou službu v Azure. Příklad toho, jak vytvořit základní experiment, naleznete v části [kurz strojového učení: vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](machine-learning-create-experiment.md). Komplexnější návod, jak vytvořit řešení prediktivní analýzy, najdete v části [návod: vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
+> ***Experimentovat*** je plátno v nástroji Machine Learning Studio, které můžete použít tooconstruct model prediktivní analýzy. Vytvoříte hello model propojením dat s různými analytickým modulům. Mohou zkuste jinou nápady, nemáte běží zkušební verze a nakonec model nasadit jako webovou službu v Azure. Pro příklad najdete v části toocreate základní experiment, [kurz strojového učení: vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](machine-learning-create-experiment.md). Pro komplexnější návod, jak toocreate řešení prediktivní analýzy, najdete v části [návod: vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 >
 >
 
 ## <a name="discover"></a>Informace
-Procházet experimenty [v galerii](http://gallery.cortanaintelligence.com), v horní části domovské stránce galerie, vyberte **experimenty**.
+experimenty toobrowse [v hello Galerie](http://gallery.cortanaintelligence.com), hello horní části hello Galerie domovskou stránku, vyberte **experimenty**.
 
-** [Experimenty](https://gallery.cortanaintelligence.com/experiments) ** stránky zobrazí seznam nedávno přidané a populární experimenty. Pokud chcete zobrazit všechny experimenty, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní experiment, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
+Hello  **[experimenty](https://gallery.cortanaintelligence.com/experiments)**  stránky zobrazí seznam nedávno přidané a populární experimenty. Vyberte všechny experimenty toosee hello **zobrazit všechny** tlačítko. Vyberte toosearch pro konkrétní experiment, **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v hello **vyhledávání** pole v horní části hello hello Galerie stránky.
 
-Můžete získat další informace o experimentu na stránce podrobností experimentu. Otevřete stránku experimentu podrobnosti, vyberte experimentu. V experimentu podrobnosti stránky, v **komentáře** části, můžete komentář, poskytnout zpětnou vazbu nebo klást otázky týkající se experimentu. Experiment můžete také sdílet s přátele nebo kolegy na Twitteru nebo LinkedIn. Také můžete poštovní odkaz na stránku podrobností experimentu pozvaným jiní uživatelé při zobrazení stránky.
+Můžete získat další informace o experimentu na stránce s podrobnostmi o hello experimentu. stránka, vyberte hello experimentu podrobností tooopen experimentu. V experimentu stránka Podrobnosti v hello **komentáře** části, můžete komentář, poskytnout zpětnou vazbu nebo klást otázky týkající se hello experimentu. Hello experimentu můžete také sdílet s přátele nebo kolegy na Twitteru nebo LinkedIn. Můžete také můžete poštovní experimentu podrobnosti odkaz toohello stránky, tooinvite jinou stránku hello tooview uživatele.
 
 ![Sdílet tuto položku s friends](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Ke stažení
-Do pracovního prostoru Machine Learning Studio můžete stáhnout kopii všech experimentu v galerii. Potom můžete upravit vaší kopie vytvářet vlastní řešení.
+Můžete stáhnout kopii všech experimentu v prostoru Machine Learning Studio tooyour Galerie hello. Potom můžete upravit vaší kopie toocreate vlastní řešení.
 
-Cortana Intelligence Gallery nabízí dva způsoby, jak importovat kopii experimentu:
+Cortana Intelligence Gallery nabízí dva způsoby tooimport kopii experimentu:
 
-* **Z Galerie**. Pokud zjistíte experimentu, který chcete v galerii, můžete stáhnout kopii a potom ho otevřete v pracovním prostoru Machine Learning Studio.
-* **V nástroji strojového učení Studio**. V nástroji Machine Learning Studio můžete všechny experimentu v galerii jako šablonu pro vytvoření nového experimentu.
+* **Z hello Galerie**. Pokud experimentu, který chcete najít v hello galerie, můžete stáhnout kopii a potom ho otevřete v pracovním prostoru Machine Learning Studio.
+* **V nástroji strojového učení Studio**. V nástroji Machine Learning Studio můžete použít všechny experimentu v hello Galerie jako šablona toocreate nový experiment.
 
-### <a name="from-the-gallery"></a>Z Galerie
+### <a name="from-hello-gallery"></a>Z hello Galerie
 
-1. V galerii otevřete stránku Podrobnosti experimentu.
+1. V hello Galerie otevřete stránku Podrobnosti o hello experimentu.
 2. Vyberte **Open in Studio**.
 
-    ![Otevřete experimentu z Galerie](media/machine-learning-gallery-experiments/open-experiment-from-gallery.png)
+    ![Otevřete experimentu z hello Galerie](media/machine-learning-gallery-experiments/open-experiment-from-gallery.png)
 
-Když vyberete **Open in Studio**, otevře se v pracovním prostoru Machine Learning Studio experimentu. (Pokud jste již přihlášení do nástroje Machine Learning Studio, zobrazí se výzva k první přihlášení pomocí účtu Microsoft.)
+Když vyberete **Open in Studio**, hello experimentu otevře v pracovním prostoru Machine Learning Studio. (Pokud jste již přihlášeni tooMachine Learning Studio, zobrazí se výzva toofirst přihlášení pomocí účtu Microsoft.)
 
 ### <a name="from-within-machine-learning-studio"></a>V nástroji strojového učení Studio
 
 1. V nástroji Machine Learning Studio, vyberte **nový**.
-2. Vyberte **experimentu**. Můžete vybrat ze seznamu galerie experimenty nebo najít konkrétní experimentu pomocí **vyhledávání** pole.
-3. Přesuňte ukazatel myši na experiment a potom vyberte **Open in Studio**. (Pokud chcete zobrazit informace o experiment, vyberte **zobrazit v galerii**. Tím přejdete na stránku podrobností experimentu v galerii.)
+2. Vyberte **experimentu**. Můžete vybrat ze seznamu galerie experimenty nebo najít konkrétní experimentu pomocí hello **vyhledávání** pole.
+3. Přesuňte ukazatel myši na experiment a potom vyberte **Open in Studio**. (vyberte toosee informace o hello experimentu **zobrazit v galerii**. Tím přejdete stránce s podrobnostmi o toohello experimentu v hello galerie.)
 
     ![Otevření Galerie experimentovat z uvnitř Machine Learning Studio](media/machine-learning-gallery-experiments/open-experiment-from-studio.png)
 
@@ -72,20 +72,20 @@ Můžete přizpůsobit, iterace a nasadit stažené experimentu jako ostatní ex
 ![Experiment otevřít v sadě Studio](media/machine-learning-gallery-experiments/experiment-open-in-studio.png)
 
 ## <a name="contribute"></a>Přispívání
-Při přihlášení do galerie, stane se členem Galerie komunit. Jako člena komunity můžete přispívat vlastní experimenty, takže další uživatelé mohou mít prospěch z řešení, které jste se seznámili s.
+Když se přihlásíte v galerii toohello, stane se členem hello Galerie komunit. Jako člena hello komunity můžete přispívat vlastní experimenty, takže ostatní uživatelé mohou mít prospěch z hello řešení, které jste se seznámili s.
 
-### <a name="publish-your-experiment-to-the-gallery"></a>Publikování experimentu do Galerie
+### <a name="publish-your-experiment-toohello-gallery"></a>Publikování do Galerie toohello experimentu
 
-1. Přihlaste se do nástroje Machine Learning Studio pomocí účtu Microsoft.
+1. TooMachine Learning Studio se přihlaste pomocí účtu Microsoft.
 2. Vytvoření experimentu a potom ho spusťte.
-3. Až budete připraveni k publikování experimentu v galerii, v seznamu akcí níže na plátno experimentu vyberte **publikovat do Galerie**.
+3. Až budete připravené toopublish experimentu v hello galerie, v seznamu hello akcí pod plátnem experimentu hello, vyberte **publikování tooGallery**.
 
-    ![Vyberte možnost "publikovat do Galerie"](media/machine-learning-gallery-experiments/publish-experiment-to-gallery.png)
-4. Na **experimentu popis** stránky, zadejte název a značky. Zkontrolujte popisný název a značky. Zvýrazněte technik, které jste použili nebo řešení skutečných problémů. Příklad experimentu popisný název je "binární klasifikace: Twitter Analysis postojích."
+    ![Vyberte "Publikovat tooGallery"](media/machine-learning-gallery-experiments/publish-experiment-to-gallery.png)
+4. Na hello **experimentu popis** stránky, zadejte název a značky. Zkontrolujte popisný název hello a značky. Zvýrazněte hello techniky, které jste použili hello reálného problému, který se řešení. Příklad experimentu popisný název je "binární klasifikace: Twitter Analysis postojích."
 
     ![Zadejte název a značky pro publikování](media/machine-learning-gallery-experiments/experiment-description.png)
-5. V **souhrnné** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
-6. V **podrobný popis** pole, popisují kroky trvalo v jednotlivých součástí experimentu. Jsou některé užitečné témata, které zahrnují:
+5. V hello **souhrnné** zadejte souhrn experimentu. Stručně popisují experimentu hello hello problém řeší, a jak dosaženy.
+6. V hello **podrobný popis** pole, popisují kroky hello trvalo v jednotlivých součástí experimentu. Jsou některé užitečné témata tooinclude:
    * Snímek obrazovky experimentu grafu
    * Vysvětlení a zdroje dat
    * Zpracování dat
@@ -93,44 +93,44 @@ Při přihlášení do galerie, stane se členem Galerie komunit. Jako člena ko
    * Popis modelu
    * Výsledky a vyhodnocení modelu výkonu
 
-   Můžete markdown k formátování vaše popis. Chcete-li zjistit, jak bude vaše záznamy na stránce experimentu popis zobrazovat experimentu je při publikování, vyberte **Preview**.
+   Můžete vytvořit markdownu tooformat vaše popis. Vyberte vzhled vaše záznamy na stránce popis experimentu hello při publikování hello experimentu toosee **Preview**.
 
-   ![Vyberte "Náhled", chcete-li zobrazit vzhled text](media/machine-learning-gallery-experiments/preview-markdown-text.png)
+   ![Vyberte "Náhled" toosee vzhled text](media/machine-learning-gallery-experiments/preview-markdown-text.png)
 
    > [!TIP]
-   > Do textových polí, zadaná pro úpravy markdownu a preview jsou malé. Doporučujeme, aby zapisovat dokumentaci experimentu v editoru markdownu, zkopírujte jej a vložte dokončené dokumentace v textovém poli v galerii. Po publikování experimentu můžete provádět všechny opravy pomocí standardní webové nástroje této markdownu použijte pro úpravy a preview.
+   > textová pole Hello zadaný pro markdownu jsou malé úpravy a preview. Doporučujeme, aby zapisovat dokumentaci experimentu v editoru markdownu, zkopírujte jej a vložte hello dokončit dokumentace v textovém poli hello hello galerie. Po publikování experimentu můžete provádět všechny opravy pomocí standardní webové nástroje této markdownu použijte pro úpravy a preview.
 
-7. Na **výběr Image** vyberte miniaturu pro experimentu. Na miniaturu se zobrazí v horní části stránce s podrobnostmi o experiment a na dlaždici experimentu. Ostatní uživatelé se zobrazí na miniaturu při procházení Galerie. Můžete nahrát bitovou kopii z vašeho počítače nebo vyberte uložených bitovou kopii z galerie.
+7. Na hello **výběr Image** vyberte miniaturu pro experimentu. Hello miniaturu se zobrazí v horní části hello stránce s podrobnostmi o hello experiment a na dlaždici experimentu hello. Ostatní uživatelé uvidí hello miniaturu při procházení hello galerie. Můžete nahrát bitovou kopii z vašeho počítače nebo vyberte bitovou kopii uložených hello galerie.
     </br>
-    ![Nahrát, nebo můžete vybrat bitovou kopii pro galerii](media/machine-learning-gallery-experiments/select-gallery-image.png)
-8. Na **nastavení** v části **viditelnost**, vyberte, zda chcete publikovat obsah veřejně (**veřejné**) nebo je přístupné pouze pro uživatele, kteří odkaz na stránku ( **Neuvedené**).
+    ![Nahrát, nebo můžete vybrat bitovou kopii pro hello Galerie](media/machine-learning-gallery-experiments/select-gallery-image.png)
+8. Na hello **nastavení** v části **viditelnost**, zvolte zda toopublish obsah veřejně (**veřejné**) nebo toohave je přístupné pouze toopeople, kdo odkaz stránka toohello (**Unlisted**).
 
-    ![Vyberte, zda chcete publikovat veřejně nebo jako neuvedené](media/machine-learning-gallery-experiments/choose-public-or-unlisted.png)
+    ![Vyberte, zda toopublish veřejně nebo jako neuvedené](media/machine-learning-gallery-experiments/choose-public-or-unlisted.png)
 
     <!-- -->
 
    > [!TIP]
-   > Pokud chcete, aby se v dokumentaci k vypadá správné před veřejně vydání, můžete publikovat nejprve experimentu jako **Unlisted**. Později, můžete změnit nastavení viditelnost na **veřejné** na stránce podrobností experimentu.
+   > Pokud chcete, aby se v dokumentaci k vypadá správné před veřejně verze toomake, můžete publikovat nejprve hello experimentu jako **Unlisted**. Později, můžete změnit nastavení hello viditelnost příliš**veřejné** na stránce s podrobnostmi o hello experimentu.
    >
    >
-9. Chcete-li publikovat experimentu do galerie, vyberte **OK** zaškrtnutí.
+9. toopublish hello experimentu toohello galerie, vyberte hello **OK** zaškrtnutí.
 
-    ![Vyberte zatržítko OK publikovat experimentu](media/machine-learning-gallery-experiments/ok-checkmark.png)
+    ![Vyberte hello OK zaškrtnutí toopublish hello experimentu](media/machine-learning-gallery-experiments/ok-checkmark.png)
 
-Tipy o tom, jak publikovat vysoce kvalitní Galerie experimentu najdete v tématu [tipy pro dokumentaci a publikování experimentu](#tips-for-documenting-and-publishing-your-experiment).
+Tipy, jak toopublish vysoce kvalitní Galerie experiment, najdete v části [tipy pro dokumentaci a publikování experimentu](#tips-for-documenting-and-publishing-your-experiment).
 
 Je to – všechny dokončení.
 
-Teď můžete zobrazit v galerii experimentu a sdílet s ostatními odkaz. Pokud jste publikovali experimentu pomocí **veřejné** viditelnost nastavení, experimentu se zobrazí ve výsledcích Procházet a hledání v galerii. Můžete upravit dokumentaci experimentu na stránce podrobností experiment, když jste přihlášení do galerie.
+Teď můžete zobrazit experimentu v hello galerie a sdílet s ostatními hello odkaz. Pokud jste publikovali experimentu pomocí hello **veřejné** nastavení, viditelnost hello experimentu zobrazí se ve výsledcích Procházet a hledání v hello galerie. Můžete upravit dokumentaci experimentu na stránce s podrobnostmi o hello experiment, když jste přihlášení toohello galerie.
 
-Pokud chcete zobrazit seznam vaše příspěvky, vyberte bitové kopie v pravém horním rohu libovolné stránky galerie. Potom vyberte název otevřete stránku účtu.
+toosee hello seznam vaše příspěvky, vyberte bitové kopie v pravém horním rohu hello libovolné stránky galerie. Pak vyberte váš název tooopen stránku účtu.
 
 ![Vyberte název účtu](media/machine-learning-gallery-experiments/click-account-name.png)
 
 ### <a name="update-your-experiment"></a>Aktualizovat experimentu
-Pokud potřebujete, můžete provést změny pracovního postupu (moduly, parametry a tak dále) v jednom experimentu, kterou jste publikovali do galerie. V nástroji Machine Learning Studio proveďte požadované změny, které byste chtěli provést experiment a potom znovu publikovat. Experimentu publikované aktualizují na změny.
+Pokud potřebujete, můžete provést změny toohello workflow (moduly, parametry a tak dále) v jednom experimentu, že jste publikovali toohello galerie. V nástroji Machine Learning Studio proveďte požadované změny chcete vytvořit toomake toohello experiment a potom znovu publikovat. Experimentu publikované aktualizují na změny.
 
-Pro experimentu přímo v galerii můžete změnit některé z následujících informací:
+Můžete změnit libovolné hello následující informace pro experimentu přímo v hello galerie:
 
 * Název experimentu
 * Souhrn nebo popis
@@ -138,54 +138,54 @@ Pro experimentu přímo v galerii můžete změnit některé z následujících 
 * Image
 * Nastavení viditelnosti (**veřejné** nebo **Unlisted**)
 
-Můžete také odstranit experimentu z galerie.
+Můžete také odstranit hello experimentu z hello galerie.
 
-Můžete tyto změny nebo odstranění experiment, na stránce podrobností experimentu nebo z vašeho profilu stránky v galerii.
+Můžete tyto změny, nebo odstranit hello experimentu z stránce s podrobnostmi o experimentu hello nebo stránce profilu v hello galerie.
 
 
-#### <a name="from-the-experiment-details-page"></a>Na stránce podrobností experimentu
-Na stránce s podrobnostmi o experiment, chcete-li změnit podrobnosti experimentu, vyberte **upravit**.
+#### <a name="from-hello-experiment-details-page"></a>Z hello experimentovat stránce s podrobnostmi o
+Na stránce s podrobnostmi o experimentu hello, toochange hello podrobnosti experimentu, vyberte **upravit**.
 
-![Vyberte upravit, chcete-li upravit experimentu](media/machine-learning-gallery-experiments/edit-button.png)
+![Vyberte upravit tooedit experimentu](media/machine-learning-gallery-experiments/edit-button.png)
 
-Stránce s podrobnostmi o vstupuje do režimu úprav. Chcete-li provést změny, vyberte **upravit** vedle název experimentu, souhrn nebo značky. Po dokončení provádění změn, vyberte **provádí**.
+Stránka Podrobnosti Hello vstupuje do režimu úprav. Vyberte změny toomake **upravit** další toohello experimentovat název, souhrn nebo značky. Po dokončení provádění změn, vyberte **provádí**.
 
-![Vyberte "Upravit" Chcete-li upravit podrobnosti a vyberte možnost "Hotovo" po dokončení](media/machine-learning-gallery-experiments/edit-details-page.png)
+![Vyberte podrobnosti tooedit "Upravit" a vyberte "Hotovo" po dokončení](media/machine-learning-gallery-experiments/edit-details-page.png)
 
-Chcete-li změnit nastavení viditelnosti experimentu (**veřejné** nebo **Unlisted**), nebo odstranit experimentu z galerie, vyberte **nastavení** ikonu.
+nastavení viditelnosti hello toochange experimentu hello (**veřejné** nebo **Unlisted**), nebo toodelete hello experimentovat z galerie, vyberte hello hello **nastavení** ikonu.
 
-![Vyberte "Nastavení" Změna viditelnost nebo odstranit experimentu](media/machine-learning-gallery-experiments/settings-button.png)
+![Vyberte "Nastavení" toochange viditelnost nebo toodelete hello experimentu](media/machine-learning-gallery-experiments/settings-button.png)
 
 #### <a name="from-your-profile-page"></a>Ze stránky profilu
-Na stránce vašeho profilu, vyberte na šipku dolů experimentu a pak vyberte **upravit**. Tím přejdete na stránku podrobností pro experimentu v režimu úprav. Po dokončení změn vyberte **provádí**.
+Na stránce vašeho profilu, vyberte hello hello experimentu šipka dolů a pak vyberte **upravit**. Tím přejdete stránce s podrobnostmi o toohello svého experimentu v režimu úprav. Po dokončení změn vyberte **provádí**.
 
-Chcete-li odstranit experimentu z galerie, vyberte **odstranit**.
+experiment hello toodelete z hello galerie, vyberte **odstranit**.
 
 ![Vyberte možnost "Upravit" nebo "Odstranit"](media/machine-learning-gallery-experiments/edit-delete-buttons.png)
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipy pro dokumentaci a publikování experimentu
-* Můžete předpokládat, že čtečka má vědecké zpracování předchozí dat prostředí, ale může být užitečné použití jednoduchého jazyka. Popisují věcí podrobně kdykoli je to možné.
-* Cortana Intelligence Suite je relativně nové. Ne všechny čtečky se seznámíte s způsobu jeho použití. Zadejte dostatek informace a podrobné vysvětlení pomohou čtečky přejděte experimentu.
-* Vizuály může být užitečné pro čtečky jak interpretovat a používat dokumentaci experimentu správně. Vizuální prvky zahrnují grafy experimentů a snímky obrazovek data. Další informace o tom, jak zahrnují Image v dokumentaci k experimentu najdete v tématu [publikování pokyny a příklady kolekce](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
-* Pokud jste zahrnuli datové sady v experimentu (není tedy Import datové sady přes modul importovat Data), datová sada je součástí experimentu a je publikována v galerii. Ujistěte se, že sadu dat, kterou publikujete má licenční smlouvy, které umožňujících sdílení a stahování každému uživateli. Příspěvky galerie jsou popsané v části Azure [podmínky použití](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* Můžete předpokládat, že čtečka hello obsahuje vědecké zpracování předchozí dat prostředí, ale může být užitečné toouse Jednoduchý jazyk. Popisují věcí podrobně kdykoli je to možné.
+* Cortana Intelligence Suite je relativně nové. Ne všechny čtečky obeznámeni s postupem toouse ho. Zadejte dostatek informace a podrobné vysvětlení toohelp čtečky přejděte experimentu.
+* Vizuální prvky můžete být užitečné pro čtečky toointerpret a používat dokumentaci experimentu správně. Vizuální prvky zahrnují grafy experimentů a snímky obrazovek data. Další informace o tom, jak tooinclude obrázků v dokumentaci k experimentu najdete v tématu hello [publikování pokyny a příklady kolekce](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
+* Pokud jste zahrnuli datové sady v experimentu (není tedy import hello datové sady přes modul importovat Data hello), hello datové sady je součástí experimentu a je publikována v hello galerie. Ujistěte se, zda má tento hello datové sady, kterou publikujete, licenční smlouvy, které umožňujících sdílení a stahování každému uživateli. Příspěvky galerie jsou popsané v části hello Azure [podmínky použití](https://azure.microsoft.com/support/legal/website-terms-of-use/).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-**Jaké jsou požadavky pro odesílání nebo úprava obrázku pro experimentu?**
+**Jaké jsou požadavky hello pro odesílání nebo úprava obrázku pro experimentu?**
 
-Bitové kopie, které odešlete s experimentu slouží k vytváření dlaždici vašeho příspěvku experimentu. Doporučujeme vám, že Image být menší než 500 KB, aspect ratio 3:2 a řešení 960 & #215; 640.
+Bitové kopie, které odešlete s experimentu jsou použité toocreate dlaždici vašeho příspěvku experimentu. Doporučujeme vám, že Image být menší než 500 KB, aspect ratio 3:2 a řešení 960 &#215; 640.
 
-**Co se stane se sada dat, které lze použít v rámci experimentu? V datové sadě publikovali také v galerii?**
+**Co se stane toohello datové sady, které lze použít v experimentu hello? Datové sady hello publikovali také v hello Galerie?**
 
-Pokud sadu dat je součástí experimentu a není importovaných prostřednictvím modulu Import dat, datová sada je publikován v galerii v rámci experimentu. Ujistěte se, že sada dat, kterou chcete publikovat pomocí experimentu obsahuje příslušné licenční podmínky. Licenční podmínky by měla umožnit všem uživatelům sdílet a stáhnout data.
+Pokud sadu dat je součástí experimentu a není importovaných prostřednictvím hello importovat Data modulu, hello datové sady je publikován v hello Galerie v rámci experimentu. Ujistěte se, zda má tento hello datové sady, které publikujete pomocí experimentu hello příslušné licenční podmínky. Hello licenční smlouvy, které by kdokoli tooshare a stahování dat hello.
 
-**Je nutné experimentu, který používá modul importovat Data k získání dat z Azure HDInsight nebo SQL Server. Používá pověření k načtení požadovaných dat. Můžete publikovat tento druh experimentu? Jak můžu si být jistí, že moje pověření nebude sdílet?**
+**Je nutné experimentu, který používá importu dat modul toopull data z Azure HDInsight nebo SQL Server. Moje pověření tooretrieve hello dat používá. Můžete publikovat tento druh experimentu? Jak můžu si být jistí, že moje pověření nebude sdílet?**
 
-V současné době nelze publikovat experimentu, který používá přihlašovací údaje v galerii.
+V současné době nelze publikovat experimentu, který používá přihlašovací údaje v hello galerie.
 
 **Zadávání více značek**
 
-Po zadání značku, zadat jiné značky, stiskněte klávesu Tabulátor.
+Po zadání značku tooenter jiné značky, stiskněte klávesu Tab hello.
 
-**[Přejděte do Galerie](http://gallery.cortanaintelligence.com)**
+**[Galerii toohello](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]

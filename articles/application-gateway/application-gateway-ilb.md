@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway pomocí nástroje pro vyrovnávání zatížení pro vnitřní | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny ke konfiguraci služby Azure Application Gateway s vyrovnáváním zatížení se vnitřní koncový bod"
+title: "aaaUsing Azure Application Gateway s interním nástrojem pro vyrovnávání zatížení | Microsoft Docs"
+description: "Tato stránka obsahuje pokyny tooconfigure služby Azure Application Gateway s vyrovnáváním zatížení se vnitřní koncový bod"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 272ef84a02f92a8521c35aad6f1d9f9bf1675718
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření brány Application Gateway s interním nástrojem Load Balancer (ILB)
 
@@ -26,25 +26,25 @@ ms.lasthandoff: 07/11/2017
 > * [Azure Classic PowerShell](application-gateway-ilb.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ilb-arm.md)
 
-Application Gateway se dá nakonfigurovat s internetovým virtuální IP adresy nebo se vnitřní koncový bod není přístup k Internetu, také známé jako koncový bod interní nástroj pro vyrovnávání zatížení (ILB). Konfigurace brány pomocí ILB je užitečná pro interní-obchodní aplikace, které nejsou viditelné k Internetu. Je také užitečné pro/úrovně služeb v rámci vícevrstvé aplikace, která je umístěna v rámci hranice zabezpečení nejsou viditelné k Internetu, ale stále vyžadují distribuci zatížení kruhové dotazování, dlouhodobost relace nebo ukončení protokolu SSL. Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
+Application Gateway se dá nakonfigurovat s internetovým virtuální IP adresy nebo se toohello vnitřní koncový bod, nejsou viditelné internet, taky označovaný jako koncový bod interní nástroj pro vyrovnávání zatížení (ILB). Konfigurace hello brány s ILB je užitečná pro interní-obchodní aplikace, které nejsou viditelné toointernet. Je také užitečné pro/úrovně služeb v rámci vícevrstvé aplikace, který je spuštěn toointernet hranice nejsou viditelné zabezpečení, ale stále vyžadují distribuci zatížení kruhové dotazování, dlouhodobost relace nebo ukončení protokolu SSL. Tento článek vás provede kroky tooconfigure hello aplikační brány s ILB.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí služby instalace webové platformy. Můžete stáhnout a nainstalovat nejnovější verzi **prostředí Windows PowerShell** části [stránky pro stažení](https://azure.microsoft.com/downloads/).
+1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell hello pomocí hello instalačního programu webové platformy. Můžete stáhnout a nainstalovat nejnovější verzi hello z hello **prostředí Windows PowerShell** části hello [stránky pro stažení](https://azure.microsoft.com/downloads/).
 2. Ověřte, zda máte funkční virtuální síť s platnou podsítí.
-3. Ověřte, zda máte back-end serverů ve virtuální síti nebo s veřejné nebo virtuálními IP Adresami přiřazen.
+3. Ověřte, zda máte back-end serverů ve virtuální síti hello nebo s veřejné nebo virtuálními IP Adresami přiřazen.
 
-K vytvoření aplikační brány, proveďte následující kroky v uvedeném pořadí. 
+toocreate aplikační brány, proveďte následující kroky v uvedeném pořadí hello hello. 
 
 1. [Vytvoření služby application gateway](#create-a-new-application-gateway)
-2. [Konfigurace brány](#configure-the-gateway)
-3. [Nastavení konfigurace brány](#set-the-gateway-configuration)
-4. [Spusťte bránu](#start-the-gateway)
-5. [Ověření brány](#verify-the-gateway-status)
+2. [Konfigurace brány hello](#configure-the-gateway)
+3. [Konfigurace brány hello sady](#set-the-gateway-configuration)
+4. [Spusťte bránu hello](#start-the-gateway)
+5. [Ověření hello brány](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby application gateway:
 
-**Chcete-li vytvořit bránu**, použijte `New-AzureApplicationGateway` rutinu a nahraďte hodnoty vlastními. Všimněte si, že fakturace brány se nespustí v tomhle okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány.
+**Brána hello toocreate**, použijte hello `New-AzureApplicationGateway` rutinu a nahraďte hello hodnoty vlastními. Všimněte si, že fakturace brány hello se nespustí v tomto okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány hello.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -58,9 +58,9 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 ```
 
-**K ověření** , vytvoření brány, můžete použít `Get-AzureApplicationGateway` rutiny. 
+**toovalidate** , byl vytvořen hello brány, můžete použít hello `Get-AzureApplicationGateway` rutiny. 
 
-V ukázce *popis*, *InstanceCount*, a *GatewaySize* jsou volitelné parametry. Výchozí hodnota *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Malých a velkých jsou ostatní dostupné hodnoty. *VIP* a *DnsName* se zobrazují jako prázdné, protože brána se ještě nespustilo. Vytvoří se, jakmile bude brána v běžícím stavu. 
+V ukázce hello *popis*, *InstanceCount*, a *GatewaySize* jsou volitelné parametry. Výchozí hodnota pro Hello *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota pro Hello *GatewaySize* je střední. Malých a velkých jsou ostatní dostupné hodnoty. *VIP* a *DnsName* se zobrazují jako prázdné, protože hello brána ještě nespustila. Tyto soubory jsou vytvořeny po hello brána je v běžícím stavu hello. 
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -81,25 +81,25 @@ VirtualIPs:
 DnsName:
 ```
 
-## <a name="configure-the-gateway"></a>Konfigurace brány
-Konfigurace brány aplikace se skládá z více hodnot. Může být vázáno hodnoty společně k vytvoření konfigurace.
+## <a name="configure-hello-gateway"></a>Konfigurace brány hello
+Konfigurace brány aplikace se skládá z více hodnot. může být vázáno Hello hodnoty společně tooconstruct hello konfigurace.
 
-Hodnoty jsou:
+Hello hodnoty jsou:
 
-* **Fond back-end serverů:** seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do podsítě virtuální sítě, nebo musí být veřejné IP Adrese nebo VIP. 
-* **Nastavení fondu serverů back-end:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end Port:** Toto je veřejný port otevřít ve službě application gateway. Když provoz dorazí na tento port, přesměruje se na některý ze serverů back-end.
-* **Naslouchací proces:** naslouchací proces má front-end port, protokol (Http nebo Https, ty jsou malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL). 
-* **Pravidlo:** pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back-end serverů se provoz směrovat při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
+* **Fond back-end serverů:** hello seznam IP adres hello back-end serverů. uvedené Hello IP adresy by měly buď patřit toohello podsíť virtuální sítě, nebo by měla být veřejné IP Adrese nebo VIP. 
+* **Nastavení fondu serverů back-end:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení jsou vázané tooa fond a jsou použité tooall servery v rámci fondu hello.
+* **Front-end Port:** Toto je veřejný port hello otevírá ve hello application gateway. Provoz volá Tenhle port a pak získá přesměrovaného tooone hello back-end serverů.
+* **Naslouchací proces:** hello naslouchací proces má front-end port, protokol (Http nebo Https, ty jsou malá a velká písmena) a název certifikátu SSL hello (Pokud se konfiguruje přesměrování zpracování SSL). 
+* **Pravidlo:** hello pravidlo váže naslouchací proces hello a fondu hello back-end serverů a definuje, jaký provoz back-end serveru fondu hello by měla být směrovanou toowhen volání příslušného naslouchacího procesu. V současné době pouze hello *základní* pravidel je podporována. Hello *základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
-Konfiguraci můžete vytvořit buď tak, že vytvoříte objekt konfigurace, nebo pomocí konfiguračního souboru XML. Chcete-li vytvořit konfiguraci pomocí konfiguračního souboru XML, použijte následující ukázka.
+Konfiguraci můžete vytvořit buď tak, že vytvoříte objekt konfigurace, nebo pomocí konfiguračního souboru XML. tooconstruct ukázkové konfiguraci pomocí konfiguračního souboru XML, použijte hello níže.
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* *FrontendIPConfigurations* element popisuje relevantní pro konfiguraci aplikační brány s ILB ILB podrobnosti. 
-* IP front-endu *typu* musí být nastavena na "Privátní"
-* *StaticIPAddress* musí být nastavená na požadované interních IP, na kterém přijímá brána provoz. Všimněte si, že *StaticIPAddress* prvek je volitelný. Pokud není sady, je zvolen k dispozici interní IP adresy z nasazené podsítě. 
-* Hodnota *název* zadaný v elementu *FrontendIPConfiguration* by měly být použity HTTPListener *FrontendIP* element, který bude odkazovat na FrontendIPConfiguration.
+* Hello *FrontendIPConfigurations* element popisuje podrobnosti ILB hello relevantní pro konfiguraci aplikační brány s ILB. 
+* IP front-endu Hello *typ* by mělo být nastavené too'Private.
+* Hello *StaticIPAddress* by mělo být nastavené toohello potřeby interních IP, na které hello brány přijímá provoz. Všimněte si, že hello *StaticIPAddress* prvek je volitelný. Pokud není sady, na k dispozici interní IP adresu z podsítě hello nasazení je vybrán. 
+* Hello hodnotu hello *název* zadaný v elementu *FrontendIPConfiguration* by měly být použity hello HTTPListener na *FrontendIP* toohello toorefer – element FrontendIPConfiguration.
   
   **Ukázkový kód XML konfigurace**
 ```xml
@@ -156,8 +156,8 @@ Je třeba počítat s následujícím:
 ```
 
 
-## <a name="set-the-gateway-configuration"></a>Nastavení konfigurace brány
-Budete dále nastavte aplikační bránu. Můžete použít `Set-AzureApplicationGatewayConfig` rutiny objekt konfigurace, nebo s konfiguračním souborem XML. 
+## <a name="set-hello-gateway-configuration"></a>Konfigurace brány hello sady
+Dále budete nastavte hello aplikační brány. Můžete použít hello `Set-AzureApplicationGatewayConfig` rutiny objekt konfigurace, nebo s konfiguračním souborem XML. 
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -171,12 +171,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 ```
 
-## <a name="start-the-gateway"></a>Spusťte bránu
+## <a name="start-hello-gateway"></a>Spusťte bránu hello
 
-Jakmile se brána nakonfiguruje, pomocí rutiny `Start-AzureApplicationGateway` ji spusťte. Fakturace aplikační brány se spustí až po úspěšném spuštění brány. 
+Jakmile se nakonfiguruje brána hello, použijte hello `Start-AzureApplicationGateway` rutiny toostart hello brány. Fakturace aplikační brány se spustí po úspěšném spuštění brány hello. 
 
 > [!NOTE]
-> `Start-AzureApplicationGateway` Rutiny může trvat až 15-20 minut. 
+> Hello `Start-AzureApplicationGateway` rutiny může trvat až toocomplete too15-20 minut. 
 > 
 > 
 
@@ -192,12 +192,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   fc592db8-4c58-2c8e-9a1d-1c97880f0b9b
 ```
 
-## <a name="verify-the-gateway-status"></a>Ověřte stav brány.
+## <a name="verify-hello-gateway-status"></a>Ověření stavu brány hello
 
-Použití `Get-AzureApplicationGateway` rutiny a zkontrolujte stav brány. Pokud `Start-AzureApplicationGateway` byly úspěšné v předchozím kroku, musí být stav *systémem*, a virtuální IP adresy a DnsName musí obsahovat platné položky. Tento příklad ukazuje rutinu na prvním řádku, následovanou výstupem. V této ukázce brána je spuštěná a je připraven přijmout provoz. 
+Použití hello `Get-AzureApplicationGateway` rutiny toocheck hello stav brány. Pokud `Start-AzureApplicationGateway` byly úspěšné v předchozím kroku hello, by měla být hello stavu *systémem*, hello Vip a DnsName musí obsahovat platné položky. Tento příklad ukazuje rutinu hello na prvním řádku hello, následuje výstup hello. V této ukázce hello brány je spuštěná a připravená tootake přenosy. 
 
 > [!NOTE]
-> Application gateway je nakonfigurovat tak, aby přijímal provoz na nakonfigurovaný koncový bod ILB 10.0.0.10 v tomto příkladu.
+> Hello aplikace brána je nakonfigurovaná tooaccept provoz na hello nakonfigurovaný koncový bod ILB 10.0.0.10 v tomto příkladu.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest 

@@ -1,6 +1,6 @@
 ---
-title: "Správa Azure Data Lake Analytics pomocí Python | Microsoft Docs"
-description: "Zjistěte, jak pomocí Pythonu vytvořit účet Data Lake Store a odesílat úlohy. "
+title: "aaaManage Azure Data Lake Analytics pomocí Python | Microsoft Docs"
+description: "Zjistěte, jak toouse Python toocreate Data Lake ukládání účtu a odesílání úloh. "
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 31326a32f8748e6cfb8bfe24cda46c511ab59352
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3c0fff155db7c4fd4e84c2562816995eb156be16
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics používá Python
 
 ## <a name="python-versions"></a>Verze jazyka Python
 
 * Použijte 64bitovou verzi jazyka Python.
-* Můžete použít standardní distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 
-* Celá řada vývojářů být vhodné použít  **[distribuci jazyka Python Anaconda](https://www.continuum.io/downloads)**.  
-* Tento článek byl napsané v Pythonu verze 3.6 ze standardního distribučního Python
+* Můžete použít standardní distribuci jazyka Python hello nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 
+* Celá řada vývojářů vyhledání pohodlnou toouse hello  **[distribuci jazyka Python Anaconda](https://www.continuum.io/downloads)**.  
+* Tento článek byl napsán pomocí Pythonu verze 3.6 z hello standardní distribuci jazyka Python
 
 ## <a name="install-azure-python-sdk"></a>Instalace sady Azure Python SDK
 
-Nainstalujte následující moduly:
+Nainstalujte následující moduly hello:
 
-* **Prostředků azure mgmt** modul obsahuje další moduly Azure Active Directory, atd.
-* **Azure mgmt datalake úložiště** modul obsahuje operace správy účtů Azure Data Lake Store.
-* **Úložiště azure datalake** modul obsahuje operace systému souborů Azure Data Lake Store. 
-* **Azure-datalake-analytics** modulu zahrnuje operace Azure Data Lake Analytics. 
+* Hello **prostředků azure mgmt** modul obsahuje další moduly Azure Active Directory, atd.
+* Hello **azure mgmt datalake úložiště** modul obsahuje operace správy účtů Azure Data Lake Store hello.
+* Hello **úložiště azure datalake** modul obsahuje hello operace systému souborů Azure Data Lake Store. 
+* Hello **azure-datalake-analytics** modulu zahrnuje operace, hello Azure Data Lake Analytics. 
 
-První, zajistěte, abyste měli nejnovější `pip` spuštěním následujícího příkazu:
+Nejprve zkontrolujte nejnovější máte hello `pip` spuštěním hello následující příkaz:
 
 ```
 python -m pip install --upgrade pip
@@ -46,7 +46,7 @@ python -m pip install --upgrade pip
 
 Tento dokument byla zapsána pomocí `pip version 9.0.1`.
 
-Použijte následující `pip` příkazy pro instalaci modulů z příkazovému řádku:
+Použijte hello `pip` příkazy moduly hello tooinstall z příkazového řádku hello:
 
 ```
 pip install azure-mgmt-resource
@@ -57,7 +57,7 @@ pip install azure-mgmt-datalake-analytics
 
 ## <a name="create-a-new-python-script"></a>Vytvořit nový skript v jazyce Python
 
-Vložte následující kód do skriptu:
+Vložte následující kód do skriptu hello hello:
 
 ```python
 ## Use this only for Azure AD service-to-service authentication
@@ -92,7 +92,7 @@ from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManage
 import logging, getpass, pprint, uuid, time
 ```
 
-Spusťte tento skript k ověření, že můžete naimportovat moduly.
+Spusťte tento skript tooverify této hello, který lze importovat moduly.
 
 ## <a name="authentication"></a>Authentication
 
@@ -103,7 +103,7 @@ Tato metoda není podporována.
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktivním ověřování uživatelů s kódem zařízení
 
 ```python
-user = input('Enter the user to authenticate with that has permission to subscription: ')
+user = input('Enter hello user tooauthenticate with that has permission toosubscription: ')
 password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
@@ -120,7 +120,7 @@ Tato metoda není podporována.
 
 ## <a name="common-script-variables"></a>Běžné proměnné skriptu
 
-Tyto proměnné se používají v ukázky.
+Tyto proměnné se používají v hello ukázky.
 
 ```python
 subid= '<Azure Subscription ID>'
@@ -130,7 +130,7 @@ adls = '<Azure Data Lake Store Account Name>'
 adla = '<Azure Data Lake Analytics Account Name>'
 ```
 
-## <a name="create-the-clients"></a>Vytvoření klientů
+## <a name="create-hello-clients"></a>Vytvořit klienti hello
 
 ```python
 resourceClient = ResourceManagementClient(credentials, subid)
@@ -185,7 +185,7 @@ script = """
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 """
 
@@ -201,7 +201,7 @@ jobResult = adlaJobClient.job.create(
 )
 ```
 
-## <a name="wait-for-a-job-to-end"></a>Počkejte na ukončení úlohy
+## <a name="wait-for-a-job-tooend"></a>Počkejte tooend úlohy
 
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
@@ -228,11 +228,11 @@ for r in recurrences:
 
 ## <a name="manage-compute-policies"></a>Správa zásad výpočetní
 
-Objekt DataLakeAnalyticsAccountManagementClient poskytuje metody pro správu výpočetních zásady pro účet Data Lake Analytics.
+objekt DataLakeAnalyticsAccountManagementClient Hello poskytuje metody pro správu hello výpočetní zásady pro účet Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Seznam výpočetní zásad
 
-Následující kód načte seznam výpočetní zásad pro účet Data Lake Analytics.
+Hello následující kód načte seznam výpočetní zásad pro účet Data Lake Analytics.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
@@ -242,7 +242,7 @@ for p in policies:
 
 ### <a name="create-a-new-compute-policy"></a>Vytvořit novou zásadu výpočetní
 
-Následující kód vytvoří novou zásadu výpočetní pro účet Data Lake Analytics, nastavení maximální Austrálie dostupná pro zadaného uživatele na 50 a priority minimální úloh na 250.
+Hello následující kód vytvoří novou zásadu výpočetní pro účet Data Lake Analytics, nastavení hello maximální Austrálie dostupné toohello zadané uživatele too50 a too250 s prioritou hello minimální úlohy.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"
@@ -252,7 +252,7 @@ adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPo
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
-- Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
+- toosee hello stejný kurz pomocí jiných nástrojů, klikněte na selektory karet hello na hello horní části stránky hello.
+- toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).
 - Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
 

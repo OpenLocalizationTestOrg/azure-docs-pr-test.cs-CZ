@@ -1,5 +1,5 @@
 ---
-title: "Přehled služby Azure Event Hubs standardní rozhraní API technologie .NET | Microsoft Docs"
+title: "aaaOverview hello Azure Event Hubs standardní rozhraní API technologie .NET | Microsoft Docs"
 description: "Přehled standardní rozhraní API .NET"
 services: event-hubs
 documentationcenter: na
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c97acecb35b69039e06ded7203c75fca41ce98f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Přehled služby Event Hubs .NET standardní API
-Tento článek shrnuje některé klíče rozhraní API Standard .NET události rozbočovače klienta. Aktuálně existují dvě rozhraní .NET standardní knihovny klienta:
+Tento článek shrnuje některé hello klíče rozhraní API Standard .NET události rozbočovače klienta. Aktuálně existují dvě rozhraní .NET standardní knihovny klienta:
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
   *  Tato knihovna nabízí všechny operace základní runtime.
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-  * Tato knihovna přidává další funkce, která umožňuje pro udržování přehledu o zpracování událostí a je nejjednodušší způsob, jak číst z centra událostí.
+  * Tato knihovna přidává další funkce, která umožňuje pro udržování přehledu o zpracování události a hello nejjednodušší způsob, jak tooread z centra událostí.
 
 ## <a name="event-hubs-client"></a>Události rozbočovače klienta
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) je primární objekt, který používáte pro odeslání události vytvořit příjemci a získat informace o běhu. Tento klient je propojena k rozbočovači určitá událost a vytvoří nové připojení ke koncovému bodu služby Event Hubs.
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) je hello primární objekt použijete toosend události, vytvořte příjemce a informace o běhu tooget. Tento klient je propojené tooa určitá událost rozbočovače a vytvoří nový koncový bod připojení služby Event Hubs toohello.
 
 ### <a name="create-an-event-hubs-client"></a>Vytvoření klienta pro centra událostí (Event Hubs)
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) z připojovacího řetězce je vytvořen objekt. Nejjednodušší způsob, jak vytvořit nový klient je znázorněno v následujícím příkladu:
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) z připojovacího řetězce je vytvořen objekt. Nejjednodušší způsob, jak tooinstantiate Hello nového klienta se zobrazí v hello následující ukázka:
 
 ```csharp
 var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hubs connection string}");
 ```
 
-Chcete-li prostřednictvím kódu programu upravit připojovací řetězec, můžete použít [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) třídy a předejte připojovací řetězec jako parametr, který se [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
+tooprogrammatically upravit hello připojovací řetězec, můžete použít hello [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) třídy a předejte hello připojovací řetězec jako parametr příliš[EventHubClient.CreateFromConnectionString ](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hubs connection string}")
@@ -49,7 +49,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>Odesílání událostí
-Chcete-li odesílání událostí do centra událostí, použijte [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) třídy. Obsah musí být `byte` pole, nebo `byte` segmentu pole.
+centra událostí toosend události tooan, použijte hello [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) třídy. Hello obsah musí být `byte` pole, nebo `byte` segmentu pole.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -61,32 +61,32 @@ await eventHubClient.SendAsync(data);
 ```
 
 ### <a name="receive-events"></a>Příjem událostí
-Doporučený způsob přijímání události ze služby Event Hubs je pomocí [Event Processor Host](#event-processor-host-apis), která poskytuje funkce můžete automaticky sledovat posun a informace o oddílu. Existují však určité situace, ve kterých můžete chtít použít možnost základní knihovny služby Event Hubs přijímat události.
+Doporučená způsob tooreceive události ze služby Event Hubs Hello používá hello [Event Processor Host](#event-processor-host-apis), který poskytuje funkce tooautomatically sledovat posun a informace o oddílu. Existují však určité situace, ve kterých může být vhodné toouse hello flexibilitu hello základní služby Event Hubs knihovny tooreceive události.
 
 #### <a name="create-a-receiver"></a>Vytvoření příjemce
-Příjemci, jsou svázané s konkrétní oddíly, tak aby bylo možné přijímat všechny události v Centru událostí, budete muset vytvořit více instancí. Obecně je vhodné se získat informace o oddílu programově, místo pevně kódováno ID oddílů. Chcete-li to provést, můžete použít [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metoda.
+Příjemci jsou vázané toospecific oddíly, tak v pořadí tooreceive všechny události v Centru událostí, budete potřebovat toocreate více instancí. Obecně je vhodné tooget hello oddílu informace o programově, místo pevně kódováno ID oddílů hello. V pořadí toodo tak, můžete použít hello [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metoda.
 
 ```csharp
-// Create a list to keep track of the receivers
+// Create a list tookeep track of hello receivers
 var receivers = new List<PartitionReceiver>();
-// Use the eventHubClient created above to get the runtime information
+// Use hello eventHubClient created above tooget hello runtime information
 var runTimeInformation = await eventHubClient.GetRuntimeInformationAsync();
-// Loop over the resulting partition ids
+// Loop over hello resulting partition ids
 foreach (var partitionId in runTimeInformation.PartitionIds)
 {
-    // Create the receiver
+    // Create hello receiver
     var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, PartitionReceiver.EndOfStream);
-    // Add the receiver to the list
+    // Add hello receiver toohello list
     receivers.Add(receiver);
 }
 ```
 
-Vzhledem k tomu, že události jsou nikdy z centra událostí (a pouze vyprší platnost), budete muset zadat správné počáteční bod. Následující příklad ukazuje možné kombinace.
+Vzhledem k tomu, že události jsou nikdy z centra událostí (a pouze vyprší platnost), je nutné toospecify hello správné počáteční bod. Hello následující příklad ukazuje možné kombinace.
 
 ```csharp
-// partitionId is assumed to come from GetRuntimeInformationAsync()
+// partitionId is assumed toocome from GetRuntimeInformationAsync()
 
-// Using the constant PartitionReceiver.EndOfStream only receives all messages from this point forward.
+// Using hello constant PartitionReceiver.EndOfStream only receives all messages from this point forward.
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, PartitionReceiver.EndOfStream);
 
 // All messages available
@@ -98,17 +98,17 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 
 #### <a name="consume-an-event"></a>Využívat událost
 ```csharp
-// Receive a maximum of 100 messages in this call to ReceiveAsync
+// Receive a maximum of 100 messages in this call tooReceiveAsync
 var ehEvents = await receiver.ReceiveAsync(100);
 // ReceiveAsync can return null if there are no messages
 if (ehEvents != null)
 {
-    // Since ReceiveAsync can return more than a single event you will need a loop to process
+    // Since ReceiveAsync can return more than a single event you will need a loop tooprocess
     foreach (var ehEvent in ehEvents)
     {
-        // Decode the byte array segment
+        // Decode hello byte array segment
         var message = UnicodeEncoding.UTF8.GetString(ehEvent.Body.Array);
-        // Load the custom property that we set in the send example
+        // Load hello custom property that we set in hello send example
         var customType = ehEvent.Properties["Type"];
         // Implement processing logic here
     }
@@ -116,10 +116,10 @@ if (ehEvents != null)
 ```
 
 ## <a name="event-processor-host-apis"></a>Rozhraní API hostitele procesor událostí
-Tato rozhraní API poskytují odolnost pro pracovní procesy, které mohly být nedostupné, a to distribucí oddíly mezi dostupné pracovních procesů.
+Tato rozhraní API nabízejí odolnosti tooworker procesy, které mohly být nedostupné, a to distribucí oddíly mezi dostupné pracovních procesů.
 
 ```csharp
-// Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
+// Checkpointing is done within hello SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
 
 // Read these connection strings from a secure location
 var ehConnectionString = "{Event Hubs connection string}";
@@ -137,11 +137,11 @@ var eventProcessorHost = new EventProcessorHost(
 // Start/register an EventProcessorHost
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// Disposes of the Event Processor Host
+// Disposes of hello Event Processor Host
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-Tady je příklad implementace [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor).
+Hello tady je příklad implementace hello [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor).
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -178,12 +178,12 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o scénářích služby Event Hubs naleznete pod těmito odkazy:
+toolearn Další informace o scénářích služby Event Hubs naleznete pod těmito odkazy:
 
 * [Co je Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
 * [Rozhraní API k dispozici události rozbočovače](event-hubs-api-overview.md)
 
-Odkazy na rozhraní API .NET jsou tady:
+Hello .NET API odkazy jsou tady:
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)

@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření sady škálování virtuálního počítače pomocí rutin prostředí PowerShell | Microsoft Docs"
+title: "Nastaví aaaCreating škálování virtuálních počítačů pomocí rutin prostředí PowerShell | Microsoft Docs"
 description: "Začínáme s vytváření a správa vašeho prvního Azure sady škálování virtuálního počítače pomocí rutin prostředí Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: danielsollondon
-ms.openlocfilehash: a3a36028a75d6cb7eb36277f3e2b5ab833c96a96
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7979be367d04c904b60d78849c1b751a52cc8caf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-virtual-machine-scale-sets-using-powershell-cmdlets"></a>Vytvoření sady škálování virtuálního počítače pomocí rutin prostředí PowerShell
-Tento článek vás provede příklad vytvoření škálovací sadu virtuálních počítačů (VMSS). Vytvoří sadu škálování tři uzly s přidružené sítě a úložiště.
+Tento článek vás provede příklady jak toocreate škálovací sady virtuálních počítačů (VMSS). Vytvoří sadu škálování tři uzly s přidružené sítě a úložiště.
 
 ## <a name="first-steps"></a>První kroky
-Ujistěte se, že máte nejnovější modul Azure PowerShell nainstalovali, a ujistěte se, že máte rutiny prostředí PowerShell, který je potřeba k údržbě a vytvoření sady škálování.
-Přejděte k nástrojům příkazového řádku [sem](http://aka.ms/webpi-azps) pro nejnovější dostupné moduly Azure.
+Ujistěte se, máte nejnovější modul Azure PowerShell hello nainstalovaný, toomake se, že máte rutiny prostředí PowerShell hello potřeby toomaintain a vytvoření sady škálování.
+Přejděte nástroje příkazového řádku toohello [sem](http://aka.ms/webpi-azps) pro hello nejnovější dostupné moduly Azure.
 
-K vyhledání VMSS související rutiny PowerShell, použijte vyhledávací řetězec \*VMSS\*. Například _gcm *vmss*_
+toofind VMSS související rutiny PowerShell, použijte vyhledávací řetězec hello \*VMSS\*. Například _gcm *vmss*_
 
 ## <a name="creating-a-vmss"></a>Vytváření VMSS
 #### <a name="create-resource-group"></a>Vytvoření skupiny prostředků
@@ -50,12 +50,12 @@ $subnetName = 'websubnet'
 $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 
-# In this case assume the new subnet is the only one
+# In this case assume hello new subnet is hello only one
 $subnetId = $vnet.Subnets[0].Id;
 ```
 
-#### <a name="create-public-ip-resource-to-allow-external-access"></a>Vytvořte prostředek veřejné IP adresy povolit externí přístup
-To bude vázán ke službě Vyrovnávání zatížení.
+#### <a name="create-public-ip-resource-tooallow-external-access"></a>Vytvořte prostředek veřejné IP tooAllow externí přístup
+Bude jím vázané toohello nástroj pro vyrovnávání zatížení.
 
 ```
 $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -71,24 +71,24 @@ $inboundNatPoolName = 'innatpool' + $rgname
 $lbruleName = 'lbrule' + $rgname
 $lbName = 'vmsslb' + $rgname
 
-# Bind Public IP to Load Balancer
+# Bind Public IP tooLoad Balancer
 $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
 ```
 
 #### <a name="configure-load-balancer"></a>Konfigurace pro vyrovnávání zatížení
-Vytvoření konfigurace fondu adres back-end, to budou sdílet síťové adaptéry virtuálních počítačů v sadě škálování.
+Vytvoření konfigurace fondu adres back-end, to budou sdílet hello síťové adaptéry virtuálních počítačů hello v sadě škálování hello.
 
 ```
 $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
 ```
 
-Nastavit Port testu vyrovnáváním zatížení, změňte nastavení podle potřeby pro vaši aplikaci.
+Nastavit Port testu vyrovnáváním zatížení, změňte nastavení hello podle potřeby pro vaši aplikaci.
 
 ```
 $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 ```
 
-Vytvořte příchozí fond NAT pro přímé připojení směrované (ne skupiny s vyrovnáváním zatížení) pro virtuální počítače ve škálovací nastavených prostřednictvím nástroje pro vyrovnávání zatížení. Toto je demonstruje použití protokolu RDP a nemusí být potřeba ve vaší aplikace.
+Vytvořte příchozí fond NAT pro přímé připojení směrované (ne skupiny s vyrovnáváním zatížení) toohello virtuální počítače ve škálovací hello nastavených prostřednictvím hello Vyrovnávání zatížení. Toto je toodemonstrate pomocí protokolu RDP a nemusí být potřeba ve vaší aplikace.
 
 ```
 $frontendpoolrangestart = 3360
@@ -98,7 +98,7 @@ $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatP
 $frontend.Id -Protocol Tcp -FrontendPortRangeStart $frontendpoolrangestart -FrontendPortRangeEnd $frontendpoolrangeend -BackendPort $backendvmport;
 ```
 
-Načíst skupinu s vyrovnáváním pravidlo vytvořte, tento příklad ukazuje zátěže vyrovnávání port 80 požadavků, pomocí nastavení z předchozích kroků.
+Vytvořte hello načíst skupinu s vyrovnáváním pravidlo tento příklad ukazuje zátěže vyrovnávání port 80 požadavků, pomocí nastavení hello z předchozích kroků.
 
 ```
 $protocol = 'Tcp'
@@ -119,14 +119,14 @@ $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Lo
 -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool -Verbose;
 ```
 
-Zkontrolujte nastavení LB, zkontrolujte konfigurací portů skupinu s vyrovnáváním zatížení, Všimněte si, se nezobrazí pravidla příchozí NAT dokud se vytvoří virtuální počítače v sadě škálování.
+Zkontrolujte nastavení LB, zkontrolujte zatížení vyrovnáváním port konfigurací, Všimněte si, že se nezobrazí, vytvoří příchozí NAT pravidla, dokud hello virtuální počítače ve škálovací sadě hello.
 
 ```
 $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
-##### <a name="configure-and-create-the-scale-set"></a>Konfigurace a vytvořit sadu škálování
-Všimněte si, že se tato infrastruktura příklad ukazuje, jak nastavit distribuovat a škálování webových přenosů mezi škálovací sadu, ale bitové kopie virtuálních počítačů, které zde zadané nemají žádné webové služby.
+##### <a name="configure-and-create-hello-scale-set"></a>Nakonfigurujte a nastavte vytvořit hello škálování
+Všimněte si, že se tento infrastruktury příklad ukazuje, jak distribuovat tooset nahoru a škálování webových přenosů mezi hello škálovací sadu, ale hello bitové kopie virtuálních počítačů, které zde zadané nemají žádné webové služby.
 
 ```
 # specify scale set Name
@@ -149,7 +149,7 @@ $exttype = 'BGInfo';
 $extver = '2.1';
 ```
 
-Vytvořit vazbu síťový adaptér služby Vyrovnávání zatížení a podsíť
+Vytvoření vazby tooLoad síťový adaptér služby Vyrovnávání a podsíť
 
 ```
 $ipCfg = New-AzureRmVmssIPConfig -Name 'nic' `
@@ -179,7 +179,7 @@ Konfigurace sady škálování sestavení
 New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -Verbose;
 ```
 
-Nyní jste vytvořili byly sadou škálování. Můžete otestovat připojení k jednotlivých virtuálních počítačů pomocí protokolu RDP v tomto příkladu:
+Nyní jste vytvořili hello škálovací sadu. Můžete otestovat připojování toohello jednotlivých virtuálních počítačů pomocí protokolu RDP v tomto příkladu:
 
 ```
 VM0 : pubipmynewrgwu.westus.cloudapp.azure.com:3360

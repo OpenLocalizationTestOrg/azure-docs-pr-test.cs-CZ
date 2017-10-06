@@ -1,6 +1,6 @@
 ---
-title: "Nabídka změnu předplatného Azure | Microsoft Docs"
-description: "Další informace o tom, jak změnit vašeho předplatného Azure a přepnout na jinou nabídku pomocí portálu pro správu předplatného"
+title: "nabídka předplatného Azure aaaChange | Microsoft Docs"
+description: "Další informace o tom, jak toochange vaše Azure předplatného a přepínače tooa různých nabízejí pomocí portálu pro správu předplatného hello"
 services: 
 documentationcenter: 
 author: genlin
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: genli
-ms.openlocfilehash: e5616a43b0a5f9545ad3450af32ad6062af9d5a7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3bed1f270296ebeff70fa8d2e02c08ad6da27184
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="switch-your-azure-subscription-to-another-offer"></a>Přepnout na jinou nabídku vašeho předplatného Azure
+# <a name="switch-your-azure-subscription-tooanother-offer"></a>Přepínač vaši nabídku tooanother předplatného Azure
 
-Jako [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) zákazníka, vašeho předplatného Azure můžete přepnout na jinou nabídku v [centra účtů](https://account.windowsazure.com/Subscriptions). Například můžete pomocí této funkce lze využít [měsíční kredit pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Pokud jste na [bezplatné zkušební verze](https://azure.microsoft.com/free/), zjistěte, jak [upgradovat na průběžné platby](billing-upgrade-azure-subscription.md).
+Jako [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) zákazník vaši nabídku tooanother předplatné můžete přepnout v hello [centra účtů](https://account.windowsazure.com/Subscriptions). Například můžete použít tuto funkci využít tootake hello [měsíční kredit pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Pokud jste na [bezplatné zkušební verze](https://azure.microsoft.com/free/), zjistěte, jak příliš[upgrade tooPay jako-vám-přejděte](billing-upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Co je podporováno:
 
-| Z | až |
+| Z | příliš|
 | --- | --- |
 | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Průběžné platby vývoje/testování](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
@@ -51,80 +51,80 @@ Jako [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) zá
 
 1. Vyberte předplatné s průběžnými platbami.
 
-1. Klikněte na **Přepnout na jinou nabídku**. Toto tlačítko je dostupné, jenom když používáte průběžné platby a ukončili jste první fakturační období.
+1. Klikněte na tlačítko **přepínač tooanother nabídka**. tlačítko Hello je pouze k dispozici, pokud jste na průběžné platby a prováděné se vaše první fakturačního období.
 
-   ![Všimněte si, tlačítko Nabídka přepnout na pravé straně stránky](./media/billing-how-to-switch-azure-offer/switchbutton.png)
+   ![Všimněte si hello přepínač nabízí tlačítko na pravé straně hello stránku hello](./media/billing-how-to-switch-azure-offer/switchbutton.png)
 
-1. **Vyberte nabídku chcete** ze seznamu nabízí lze přepnout vašeho předplatného. Tento seznam se může lišit podle členství ve skupinách, které je váš účet přidružen. Pokud nejsou k dispozici, zkontrolujte [seznam dostupné nabídky, můžete přepnout](#whats-supported) a ujistěte se, zda máte správné členství. 
+1. **Vyberte hello nabídka chcete** hello seznamu nabízí lze přepnout vašeho předplatného. Tento seznam se může lišit podle hello členství ve skupinách, které je váš účet přidružen. Pokud nejsou k dispozici, zkontrolujte hello [seznam dostupné nabídky, můžete přepnout](#whats-supported) a ujistěte se, zda máte správné členství hello. 
 
-   ![Vyberte nabídku, kterou chcete přepnout na](./media/billing-how-to-switch-azure-offer/selectoffer.png)
+   ![Vyberte nabídky, které chcete tooswitch k](./media/billing-how-to-switch-azure-offer/selectoffer.png)
 
-1. V závislosti na tom, které jste přepnutí do nabídky může se zobrazit Poznámka o důsledcích přepínání. Projít tento seznam pečlivě a postupujte podle pokynů, než budete pokračovat.
+1. V závislosti na hello nabídky, které jste přepnutí do může se zobrazit Poznámka o důsledcích hello přepínání. Projít tento seznam pečlivě a postupujte podle pokynů hello, než budete pokračovat.
 
-   ![Prostudujte poznámky](./media/billing-how-to-switch-azure-offer/thingstonote.png)
+   ![Poznámky ke kontrole hello](./media/billing-how-to-switch-azure-offer/thingstonote.png)
 
-1. Můžete přejmenovat své předplatné. Ve výchozím nastavení jsme ho nastavit na nový název nabídky. Klikněte na tlačítko **přepínač nabízejí** proces dokončete.
+1. Můžete přejmenovat své předplatné. Ve výchozím nastavení, jsme ho nastavit nové nabídky toohello název. Klikněte na tlačítko **přepínač nabízejí** toocomplete hello procesu.
 
-   ![Kliknutím na zelené tlačítko](./media/billing-how-to-switch-azure-offer/confirmpage.png)
+   ![Klikněte na tlačítko hello zelená](./media/billing-how-to-switch-azure-offer/confirmpage.png)
 
-1. Úspěšné! Předplatné je nyní přepnout do nové nabídky.
+1. Úspěšné! Předplatné je nyní vypnuté toohello nové nabídky.
 
 ## <a name="what-is-an-azure-offer"></a>Co je Azure nabídku?
 
-Azure nabídka je určena *typ* máte předplatného Azure. Například [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure v rámci Open](https://azure.microsoft.com/offers/ms-azr-0111p/), a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) jsou všechny Azure nabízí. Každý nabídka má jiný [podmínky](https://azure.microsoft.com/support/legal/offer-details/) a některé mají zvláštní výhody. Nabídku předplatného najdete na stránce centra účtů předplatného. Klikněte na název nabídky k získání dalších podrobností.
+Azure nabídka je určena hello *typ* z hello máte předplatné Azure. Například [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure v rámci Open](https://azure.microsoft.com/offers/ms-azr-0111p/), a [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) jsou všechny Azure nabízí. Každý nabídka má jiný [podmínky](https://azure.microsoft.com/support/legal/offer-details/) a některé mají zvláštní výhody. Nabídka Hello předplatného najdete v stránku hello centra účtů odběru. Klikněte na tlačítko hello nabídka název tooget další podrobnosti.
 
-   ![Klikněte na odkaz nabídky v centru účtů získat další informace](./media/billing-how-to-switch-azure-offer/offerlink.png)
+   ![Kliknutím na odkaz nabídka hello v centru účtů tooget další podrobnosti](./media/billing-how-to-switch-azure-offer/offerlink.png)
 
 ## <a name="why-cant-i-switch-offers"></a>Proč nelze přepnout nabízí?
 
-Nemusíte to vidět **přepnout na jinou nabídku** tlačítko pokud:
+Nemusíte to vidět hello **přepínač tooanother nabídka** tlačítko pokud:
 
-* Nejste na [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/). Aktuálně lze pouze průběžné platby odběry přepnout na jinou nabídku.
+* Nejste na [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/). Aktuálně jen odběry průběžné platby může být vypnuté tooanother nabídky.
 
-  * Pokud jste na [bezplatné zkušební verze](https://azure.microsoft.com/free/), zjistěte, jak [upgradovat na průběžné platby](billing-upgrade-azure-subscription.md).
-  * Chcete-li přepnout nabídka z jiného předplatného, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+  * Pokud jste na [bezplatné zkušební verze](https://azure.microsoft.com/free/), zjistěte, jak příliš[upgrade tooPay jako-vám-přejděte](billing-upgrade-azure-subscription.md).
+  * Nabídka tooswitch z jiného předplatného, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-* Jste ještě na vaše první fakturační období; je nutné počkat, až vaše první fakturační období ukončit předtím, než přepnete nabídky.
+* Jste ještě na vaše první fakturační období; je nutné počkat, až vaše první fakturační období tooend předtím, než můžete přepnout nabízí.
 
 Můžete se setkat **nejsou žádné nabídky k dispozici ve vaší zemi v tuto chvíli** pokud:
 
-* Nejste vhodné pro všechny nabídky přepínače. Zkontrolujte [seznam dostupné nabídky, můžete přepnout](#whats-supported).
+* Nejste vhodné pro všechny nabídky přepínače. Zkontrolujte hello [seznam dostupné nabídky, můžete přepnout](#whats-supported).
 
 * Některé nabídky nemusí být k dispozici ve všech zemích.
 
-## <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Jaké jsou přepnutí Azure nabízí do mé služby a fakturace?
+## <a name="what-does-switching-azure-offers-do-toomy-service-and-billing"></a>Jaké jsou přepínání Azure nabízí proveďte toomy služby a fakturace?
 
-Tady jsou podrobnosti co se stane, když přejdete Azure poskytuje v centru účtů.
+Tady jsou podrobnosti hello co se stane, když přejdete Azure poskytuje v hello centra účtů.
 
 ### <a name="no-service-downtime"></a>Žádný výpadek služby
 
-Neexistuje žádný výpadek služby pro všechny uživatele přidružené k předplatnému. Nabídka, ke které jste přešli do ale může mít omezení. Například některé nabídky zakázat použití v provozním prostředí, takže je třeba přesunout produkční prostředky do jiného předplatného.
+Neexistuje žádný výpadek služby pro všechny uživatele přidružené k předplatnému hello. Nabídka hello přepnete toomay ale mají omezení. Například některé nabídky zakázat použití v provozním prostředí, proto musíte by toomove produkční prostředky tooanother předplatné.
 
 ### <a name="quota-increases-are-reset"></a>Zvýšení kvóty se obnoví.
 
-Když přepnete nabídky, všechny [limit nebo kvóty zvyšuje nad výchozí limit](../azure-supportability/resource-manager-core-quotas-request.md) se obnoví. I když máte více prostředků nad výchozí limit je bez výpadku služby. Například používáte 200 jader na vaše předplatné a potom vaší kvóty jader přepínání nabízí obnoví na výchozí hodnotu 20 jader. Virtuální počítače, které používají 200 jader jsou poškozena a bude i nadále spouštět. Pokud neprovedete jiné kvótu zvýšit požadavek, ale nejde zřídit žádné více jader.
+Když přepnete nabídky, všechny [limit nebo kvóty zvyšuje výše hello výchozí limit](../azure-supportability/resource-manager-core-quotas-request.md) se obnoví. I když máte více prostředků nad rámec hello výchozí limit je bez výpadku služby. Například používáte 200 jader na vaše předplatné a potom přepnout nabízí obnoví výchozí kvótu back toohello jader 20 jader. Hello virtuálních počítačů, které používají 200 jader hello jsou poškozena a bude pokračovat toorun. Pokud neprovedete jiné kvótu zvýšit požadavek, ale nejde zřídit žádné více jader.
 
 ### <a name="billing"></a>Fakturace
 
-V den, kdy jste přešli je vygenerována faktura pro všechny nezaplacených poplatků. Potom vaše předplatné se fakturuje za cenovými podmínkami novou nabídku. K fakturaci výročí předplatného se změní datum, na kterém jste změnili nabídky. Využití a fakturace data předtím, než se změna nabídka není zachována, proto doporučujeme si stáhnout kopii před přepnutím.
+Na hello den, kdy jste přešli je vygenerována faktura pro všechny nezaplacených poplatků. Potom vaše předplatné se fakturuje za cenovými podmínkami hello nové nabídky. Vaše předplatné fakturace výročí změny toohello datum, na kterém jste změnili nabídky. Využití a fakturace data před hello nabídka změnu nezůstanou zachovány, takže doporučujeme, abyste si stáhnout kopii před přepnutím.
 
 > [!NOTE]
-> Z důvodu omezení týkajícího se fakturace nabídka přepínače nejsou možné v rámci první fakturačního cyklu po vytvoření odběru.
+> Z důvodu omezení týkajícího se toobilling nabídka přepínače nejsou možné v rámci hello první fakturační cyklus. Po vytvoření odběru.
 >
 >
 
-## <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Můžete migrovat z průběžné platby k [poskytovatele Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) nebo [smlouva Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
+## <a name="can-i-migrate-from-pay-as-you-go-toocloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Můžete migrovat z průběžné platby příliš[poskytovatele Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) nebo [smlouva Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
 
-* Chcete-li migrovat do CSP, přečtěte si téma [migrace předplatného Azure k CSP](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/).
+* toomigrate tooCSP, najdete v části [migrace předplatného Azure tooCSP](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/).
 
-* Pokud chcete migrovat do EA, mohl váš správce pro zápis do EA přidejte svůj účet. Postupujte podle pokynů v e-mailová pozvánka tak, aby měl vašich předplatných přesunout pod EA registrace. Další informace najdete v tématu [přidružit existující účet](https://ea.azure.com/helpdocs/associateExistingAccount) EA portálu.
+* toomigrate tooEA mohl váš správce pro zápis do hello EA přidejte svůj účet. Postupujte podle pokynů v toohave e-mailová pozvánka hello vašich předplatných přesunout pod EA registrace. Další, najdete v části toolearn [přidružit existující účet](https://ea.azure.com/helpdocs/associateExistingAccount) hello EA portálu.
 
-## <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Můžete migrovat data a služby do nového předplatného?
+## <a name="can-i-migrate-data-and-services-tooa-new-subscription"></a>Můžete migrovat data a služby tooa nové předplatné?
 
-* Můžete migrovat prostředky přímo do nového předplatného najdete v tématu [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+* Můžete migrovat prostředky hello přímo toohello nové předplatné, najdete v části [přesunout skupiny prostředků toonew prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-* Chcete-li přenos vlastnictví předplatného Azure a všechno, co v ní někomu jinému, přečtěte si téma [přenos vlastnictví předplatného Azure](billing-subscription-transfer.md)
+* tootransfer vlastnictví předplatného Azure a všechno, co je v něm najdete v části toosomeone #else [přenos vlastnictví předplatného Azure](billing-subscription-transfer.md)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 
-Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rychle vyřešit problém.

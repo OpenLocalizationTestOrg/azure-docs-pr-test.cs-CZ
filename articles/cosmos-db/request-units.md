@@ -1,6 +1,6 @@
 ---
-title: "Požadované jednotky & odhadnout propustnost - Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o tom, jak porozumět, zadejte a odhadnout požadavky na jednotky žádosti v Azure Cosmos DB."
+title: aaaRequest jednotky & odhadnout propustnost - Azure Cosmos DB | Microsoft Docs
+description: "Další informace o tom, jak toounderstand, zadejte a odhadnout požadavky na jednotky žádosti v Azure Cosmos DB."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 7a4efc0fb9b3855b9dbbe445768ceb2a9940d0b2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 13c4e7aeb6222fa14ef982e238716e15a0159fd5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 Nyní k dispozici: Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner). Další informace v [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs).
@@ -26,41 +26,41 @@ Nyní k dispozici: Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.
 ![Propustnost kalkulačky][5]
 
 ## <a name="introduction"></a>Úvod
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuované databáze více modelu společnosti Microsoft. S Azure DB Cosmos nemáte pronajímat virtuálních počítačů, nasazení softwaru nebo monitorování databází. Azure Cosmos DB je provozována a průběžně monitorovat pomocí Microsoft nejvyšší technici k poskytování world třída data dostupnosti, výkonu a ochrany. Přistupujete k datům pomocí rozhraní API podle svého výběru jako [DocumentDB SQL](documentdb-sql-query.md) (dokumentu), MongoDB (dokumentu), [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/) (klíč hodnota), a [Gremlin](https://tinkerpop.apache.org/gremlin.html) (graf) jsou všechny nativně podporuje. Měna Azure Cosmos DB je jednotka žádosti (RU). S RUs není potřeba rezervovat kapacity pro čtení a zápis nebo přidělení procesoru, paměti a procesorů.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuované databáze více modelu společnosti Microsoft. S Azure DB Cosmos nemáte toorent virtuálních počítačů, nasazování softwaru nebo monitorování databází. Azure Cosmos DB je provozována a průběžně monitorovat pomocí Microsoft nejvyšší technici toodeliver world třída data dostupnosti, výkonu a ochrany. Přistupujete k datům pomocí rozhraní API podle svého výběru jako [DocumentDB SQL](documentdb-sql-query.md) (dokumentu), MongoDB (dokumentu), [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/) (klíč hodnota), a [Gremlin](https://tinkerpop.apache.org/gremlin.html) (graf) jsou všechny nativně podporuje. Měna Hello Azure Cosmos databáze je hello jednotka žádosti (RU). S RUs není nutné tooreserve kapacity pro čtení a zápis a zřizovat procesoru, paměti a procesorů.
 
-Azure Cosmos DB podporuje několik rozhraní API s různé operace, od jednoduchého čte a zapisuje do grafu komplexní dotazy. Vzhledem k tomu, že ne všechny požadavky jsou stejné, jsou přiřazeny normalizovaný objemu **požadované jednotky** založenou na velikosti výpočty potřebné k požadavek vyřídit. Počet jednotek žádosti operace je deterministická, a můžete sledovat počet jednotek žádosti spotřebovávají všechny operace v Azure Cosmos DB prostřednictvím hlavičky odpovědi. 
+Azure Cosmos DB podporuje několik rozhraní API s různé operace, od jednoduchého čte a zapisuje toocomplex dotazy grafu. Vzhledem k tomu, že ne všechny požadavky jsou stejné, jsou přiřazeny normalizovaný objemu **požadované jednotky** podle hello objem výpočtů požadované tooserve hello požadavku. Hello počet jednotek žádosti operace je deterministická, a můžete sledovat hello počet jednotek žádosti spotřebovávají všechny operace v Azure Cosmos DB prostřednictvím hlavičky odpovědi. 
 
-Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotkách 100 RU za sekundu. 
+tooprovide předvídatelný výkon, je nutné tooreserve propustnost v jednotkách 100 RU za sekundu. 
 
-Po přečtení tohoto článku, budete moct odpovězte si na následující otázky:  
+Po přečtení tohoto článku, budete moct tooanswer hello následující otázky:  
 
 * Jaké jsou požadované jednotky a požádat o poplatky?
 * Jak určit kapacitu jednotky žádosti pro kolekci?
 * Jak odhadnout, že je jednotka žádosti Moje aplikace?
 * Co se stane, když I překročit kapacitu jednotky žádosti pro kolekci?
 
-Jak Azure Cosmos DB je více modelu databáze, je důležité si uvědomit, že bude označujeme kolekce či dokumentu pro dokument rozhraní API, grafu nebo uzel pro graph API a tabulka/entity pro rozhraní API tabulky. Propustnost tohoto dokumentu jsme se generalize Principy kontejneru nebo položky.
+Jak Azure Cosmos DB je více modelu databáze, je důležité toonote, že bude označujeme tooa kolekce či dokumentu pro dokument rozhraní API, grafu nebo uzel pro graf rozhraní API a tabulka/entity pro tabulku rozhraní API. Propustnost tohoto dokumentu jsme se generalize toohello koncepty kontejneru nebo položky.
 
 ## <a name="request-units-and-request-charges"></a>Jednotek žádosti a poplatky požadavku
-Azure Cosmos DB poskytuje rychlé, předvídatelný výkon pomocí *rezervování* prostředky pro uspokojení musí propustnost vaší aplikace.  Vzhledem k aplikaci načíst a přístup k vzory změny v čase, Azure Cosmos DB umožňuje snadno zvýšit nebo snížit množství vyhrazenou propustností, které jsou k dispozici pro aplikaci.
+Azure Cosmos DB poskytuje rychlé, předvídatelný výkon pomocí *rezervování* toosatisfy prostředky musí propustnost vaší aplikace.  Vzhledem k aplikaci načíst a přístup k vzory změny v čase, Azure Cosmos DB vám umožní zvýšení tooeasily nebo snížit množství hello aplikace k dispozici tooyour vyhrazenou propustností.
 
-S Azure Cosmos databáze je zadána vyhrazenou propustností z hlediska jednotek žádosti zpracování za sekundu. Si můžete představit jednotek žádosti jako měnu propustnost, které jste *rezervovat* množství jednotek zaručenou žádosti, které jsou k dispozici pro aplikaci na základě za sekundu.  Každé operace v Azure DB Cosmos - zápis dokumentu, provádění dotazu, aktualizace dokumentu - spotřebuje procesoru, paměti a procesorů.  To znamená, každou operaci způsobuje *požadavku poplatků*, vyjádřeného v *požadované jednotky*.  Principy faktory, což ovlivňuje poplatky jednotek žádosti, společně s požadavky na propustnost vaší aplikace, umožňuje aplikaci spustit jako efektivně možné náklady. Průzkumník dotazů je také skvělý nástroj pro testování základní dotazu.
+S Azure Cosmos databáze je zadána vyhrazenou propustností z hlediska jednotek žádosti zpracování za sekundu. Si můžete představit jednotek žádosti jako měnu propustnost, které jste *rezervovat* množství zaručit jednotek žádosti k dispozici tooyour aplikace na základě za sekundu.  Každé operace v Azure DB Cosmos - zápis dokumentu, provádění dotazu, aktualizace dokumentu - spotřebuje procesoru, paměti a procesorů.  To znamená, každou operaci způsobuje *požadavku poplatků*, vyjádřeného v *požadované jednotky*.  Pochopení hello faktory, což ovlivňuje poplatky jednotek žádosti, společně s požadavky na propustnost vaší aplikace, umožňuje vám toorun aplikaci jako efektivně možné náklady. Průzkumník dotazů Hello je také jádro hello tootest skvělý nástroj dotazu.
 
-Doporučujeme začít následujícím videem, kde vysvětluje Aravind Ramachandran jednotek žádosti a předvídatelného výkonu s Azure Cosmos DB.
+Doporučujeme začít sledování hello následující video, kde vysvětluje Aravind Ramachandran jednotek žádosti a předvídatelného výkonu s Azure Cosmos DB.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
 > 
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Určení požadavku jednotka kapacity v Azure Cosmos DB
-Při spouštění novou kolekci, tabulka nebo graf, je třeba zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené. Na základě zřízené propustnosti, Azure Cosmos DB přiděluje fyzické oddíly pro hostování vaší kolekce a rozdělení/rebalances dat napříč oddíly ho s růstem.
+Při spouštění novou kolekci, tabulka nebo grafu, můžete zadat číslo hello jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené. Na základě hello zřízené propustnosti, Azure Cosmos DB přiděluje fyzické oddíly toohost kolekce a rozdělení/rebalances dat napříč oddíly ho s růstem.
 
-Azure Cosmos DB vyžaduje klíč oddílu na zadat, když je kolekce s 2 500 jednotek žádosti přiděleným nebo vyšší. Klíč oddílu je taky požadovat, aby v budoucnu škálování propustnost vaší kolekce nad rámec odpovídající 2500 jednotek žádosti. Proto důrazně doporučujeme nakonfigurovat [klíč oddílu](partition-data.md) při vytváření kontejneru bez ohledu na počáteční propustnosti. Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony jedinečných hodnot), aby kolekce, tabulka nebo graf a žádostí je možné rozšířit jednotně pomocí Azure Cosmos DB. 
+Azure Cosmos DB vyžaduje že toobe klíče oddílu zadat, když je kolekce s 2 500 jednotek žádosti přiděleným nebo vyšší. Klíč oddílu je taky požadované tooscale propustnost vaší kolekce nad rámec odpovídající 2500 jednotek žádosti v budoucnu hello. Proto důrazně doporučujeme tooconfigure [klíč oddílu](partition-data.md) při vytváření kontejneru bez ohledu na počáteční propustnosti. Vzhledem k tomu, že vaše data mít toobe rozdělit do několika oddílů, je nutné toopick klíč oddílu, který má vysokou kardinalitou (100 toomillions jedinečných hodnot), aby kolekce, tabulka nebo graf a žádostí je možné rozšířit jednotně pomocí Azure Cosmos DB. 
 
 > [!NOTE]
-> Klíč oddílu je logické hranice a není fyzický jeden. Proto není potřeba omezit počet hodnoty klíče jedinečné oddílu. Ve skutečnosti je lepší má více jedinečných hodnot klíče oddílu menší, než databázi Cosmos Azure má další možnosti vyrovnávání zatížení.
+> Klíč oddílu je logické hranice a není fyzický jeden. Proto není nutné toolimit hello počet hodnoty klíče jedinečné oddílu. Ve skutečnosti je lepší toohave více jedinečných oddílu hodnoty klíče menší, než databázi Cosmos Azure má další možnosti vyrovnávání zatížení.
 
-Zde je fragment kódu pro vytvoření kolekce s 3 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+Zde je fragment kódu pro vytvoření kolekce s 3 000 požadavek hello jednotek na druhý pomocí .NET SDK:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -73,46 +73,46 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Azure Cosmos DB funguje na rezervace modelu na propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů množství vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
+Azure Cosmos DB funguje na rezervace modelu na propustnost. To znamená, že se vám účtuje hello množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako aplikace zatížení, data a využití vzory změn je možné snadno škálovat nahoru a dolů hello množství vyhrazené RUs prostřednictvím sady SDK nebo pomocí hello [portálu Azure](https://portal.azure.com).
 
-Každý kolekce a tabulka/grafika jsou namapované na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kolekce do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+Každý kolekce a tabulka/grafika jsou namapované tooan `Offer` prostředků v Azure DB Cosmos, který má metadata o hello zřízené propustnosti. Vyhledávání hello odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí hello novou hodnotu propustnosti, můžete změnit hello přidělené propustnost. Zde je fragment kódu pro změnu hello propustnost kolekce too5, hello 000 jednotek žádosti za druhé pomocí .NET SDK:
 
 ```csharp
-// Fetch the resource to be updated
+// Fetch hello resource toobe updated
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
                 .AsEnumerable()
                 .SingleOrDefault();
 
-// Set the throughput to 5000 request units per second
+// Set hello throughput too5000 request units per second
 offer = new OfferV2(offer, 5000);
 
-// Now persist these changes to the database by replacing the original resource
+// Now persist these changes toohello database by replacing hello original resource
 await client.ReplaceOfferAsync(offer);
 ```
 
-Neexistuje žádný vliv na dostupnost vaší kontejneru při změně propustnost. Nové vyhrazenou propustností je obvykle efektivní během několika sekund na použití nové propustnost.
+Neexistuje žádný dopad toohello dostupnosti vaší kontejneru při změně hello propustnost. Nové vyhrazenou propustností hello je obvykle efektivní během několika sekund na aplikace hello nové propustnosti.
 
 ## <a name="request-unit-considerations"></a>Aspekty jednotek žádosti
-Při odhadování počet jednotek žádosti můžete vyhradit pro váš kontejner Azure Cosmos DB, je důležité vzít v úvahu následující proměnné:
+Při odhadování hello počet tooreserve jednotek žádosti pro váš kontejner Azure Cosmos DB, je důležité tootake hello v úvahu následující proměnné:
 
-* **Velikost položky**. Jak roste množství jednotek použití číst nebo zapisovat data také zvýší.
-* **Počet vlastností položky**. V případě indexování výchozí všech vlastností, jednotek použití k zápisu dokumentu nebo uzel nebo ntity zvýší jako zvyšuje počet vlastnost.
-* **Konzistenci dat**. Při použití úrovně konzistence dat silného nebo typu s ohraničenou Prošlostí, budou další jednotky pro čtení položek.
-* **Indexované vlastnosti**. Zásadu indexu na každý kontejner určuje vlastnosti, které jsou uloženy ve výchozím nastavení. Omezení počtu indexované vlastnosti nebo povolením Opožděné indexování můžete snížit spotřebu jednotky vaší žádosti.
-* **Indexování dokumentů**. Ve výchozím nastavení je každá položka automaticky indexovaný bude využívat méně jednotek žádosti, pokud se rozhodnete indexování některých položek.
-* **Dotaz vzory**. Složitost dotazu má dopad na tom, kolik jednotek žádosti se spotřebovávají pro operace. Počet predikáty, povaha predikáty, projekce, počet UDF a velikost datové sady zdroje, které jsou všechny ovlivnit náklady na operace dotazů.
-* **Použití skriptu**.  Stejně jako u dotazů, využívat jednotek žádosti podle složitosti operací během provádění uložené procedury a triggery. Když budete vyvíjet aplikace, zkontrolujte hlavičky požadavku poplatků abyste lépe pochopili, jak každou operaci spotřebovává požadavek jednotky kapacity.
+* **Velikost položky**. Jak roste množství hello jednotek použití tooread nebo zapisovat data hello se taky zvýší.
+* **Počet vlastností položky**. Za předpokladu, že výchozí indexování všech vlastností, toowrite hello jednotek použití, které dokumentu nebo uzel nebo ntity zvýší jako zvyšuje počet vlastnost hello.
+* **Konzistenci dat**. Při použití úrovně konzistence dat silného nebo typu s ohraničenou Prošlostí, bude další jednotky spotřebované tooread položky.
+* **Indexované vlastnosti**. Zásadu indexu na každý kontejner určuje vlastnosti, které jsou uloženy ve výchozím nastavení. Omezením hello počet indexované vlastnosti nebo povolením Opožděné indexování můžete snížit spotřebu jednotky vaší žádosti.
+* **Indexování dokumentů**. Ve výchozím nastavení je každá položka automaticky indexovaný bude využívat méně jednotek žádosti, pokud si zvolíte není tooindex některé položky.
+* **Dotaz vzory**. složitost Hello dotazu má dopad na tom, kolik jednotek žádosti se spotřebovávají pro operace. Hello počet predikáty, povaha hello predikáty, projekce, počet UDF a velikost hello hello zdroje dat sady všechny ovlivnit hello náklady na dotaz operace.
+* **Použití skriptu**.  Stejně jako u dotazů, využívat jednotek žádosti podle složitosti hello operací prováděných na hello uložených procedur a aktivačních událostí. Když budete vyvíjet aplikace, zkontrolujte hello požadavek poplatků záhlaví toobetter pochopit, jak každou operaci spotřebovává požadavek jednotky kapacity.
 
 ## <a name="estimating-throughput-needs"></a>Odhad potřeb propustnost
-Jednotka žádosti je normalizovaný míru náklady na zpracování požadavku. Jednotka jedné žádosti představuje kapacity zpracování požadovaná pro čtení (prostřednictvím id nebo vlastní odkaz) jeden 1KB položky skládající se z 10 jedinečnou vlastnost hodnot (s výjimkou vlastnosti systému). Požadavek na vytvoření (Vložit), nahraďte nebo odstranění stejnou položku spotřebuje další zpracování ze služby a tím více jednotek žádosti.   
+Jednotka žádosti je normalizovaný míru náklady na zpracování požadavku. Jednotka jedné žádosti představuje hello zpracování požadovaná kapacita tooread (prostřednictvím id nebo vlastní odkaz) jeden 1KB položky skládající se z 10 jedinečnou vlastnost hodnot (s výjimkou vlastnosti systému). Žádost o toocreate (Vložit), nahraďte nebo odstranit hello stejné položky spotřebuje další zpracování ze služby hello a tak další požadované jednotky.   
 
 > [!NOTE]
-> Směrný plán pro 1KB požadavků 1 jednotka položky odpovídá jednoduché GET vlastní odkaz nebo id položky.
+> Hello účaří požadavků 1 jednotka pro 1KB položky odpovídá tooa jednoduché získat vlastní odkaz nebo id položky hello.
 > 
 > 
 
-Například je zde tabulku, která zobrazí počet jednotek žádosti zřídit na tři různé položky velikosti (1KB, 4KB a 64KB) a na dvou různých výkonu úrovních (500 čtení za sekundu + 100 zápisů za sekundu a 500 čtení za sekundu + 500 zápisů za sekundu). Konzistenci dat byl nakonfigurován v relaci a zásady indexování byla nastavena na hodnotu None.
+Zde je tabulku, která ukazuje, kolik požadavků například jednotky tooprovision na tři různé položky velikosti (1KB, 4KB a 64KB) a na dvou různých výkonu úrovních (500 čtení za sekundu + 100 zápisů za sekundu a 500 čtení za sekundu + 500 zápisů za sekundu). Hello konzistenci dat byla nakonfigurována v relaci a hello zásady indexování byla nastavena tooNone.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -161,64 +161,64 @@ Například je zde tabulku, která zobrazí počet jednotek žádosti zřídit n
     </tbody>
 </table>
 
-### <a name="use-the-request-unit-calculator"></a>Použití kalkulačky jednotek žádosti
-Pro zákazníky, dobře ladit jejich odhady propustnost, je web, na základě [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner) ke zjištění přibližné hodnoty požadované žádosti jednotky pro typická operace, včetně:
+### <a name="use-hello-request-unit-calculator"></a>Použití kalkulačky jednotek žádosti hello
+Zákazníci toohelp jemné vyladění jejich odhady propustnost, je web, na základě [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner) požadavky jednotky toohelp odhad hello požadavku pro typická operace, včetně:
 
 * Vytvoří položku (zápisy)
 * Čtení položky
 * Odstranění položky
 * Aktualizace položky
 
-Nástroj zahrnuje taky podporu odhadnout požadavky na úložiště dat podle ukázkové položky, které zadáte.
+Nástroj Hello zahrnuje taky podporu odhadnout požadavky na úložiště dat podle hello ukázkové položky, které zadáte.
 
-Pomocí nástroje je jednoduchý:
+Pomocí nástroje hello je jednoduchý:
 
 1. Nahrajte jednu nebo více reprezentativní položek.
    
-    ![Nahrání položky do kalkulačky jednotek žádosti][2]
-2. Chcete-li odhadnout požadavky na úložiště dat, zadejte celkový počet položek, které chcete uložit.
-3. Zadejte počet položek, které vytvářet, číst, aktualizovat a odstranit operations vyžadují (na základě za sekundu). K zjištění přibližné hodnoty poplatky jednotek žádosti operací aktualizace položky, nahrajte kopii ukázkové položky z kroku 1 výše, zahrnuje typické pole aktualizace.  Například pokud položku aktualizace obvykle upravit dvě vlastnosti s názvem lastLogin a userVisits, pak jednoduše zkopírovat ukázkové položky, aktualizujte hodnoty pro tyto dvě vlastnosti a nahrát kopírovaných položek.
+    ![Nahrát položky toohello požadavek jednotky kalkulačky][2]
+2. požadavky na úložiště dat tooestimate, zadejte hello celkový počet položek očekáváte, že toostore.
+3. Zadejte hello počet položek, které vytvářet, číst, aktualizovat a odstranit operations vyžadují (na základě za sekundu). tooestimate hello požadavek jednotky poplatky položky aktualizace operací, nahrajte kopii hello ukázkové položky z kroku 1 výše, zahrnuje typické pole aktualizace.  Například pokud položku aktualizace obvykle upravit dvě vlastnosti s názvem lastLogin a userVisits a pak položku ukázka hello jednoduše zkopírovat, aktualizujte hello hodnoty pro tyto dvě vlastnosti a nahrajte hello zkopírovat položky.
    
-    ![Zadejte požadavky na propustnost v kalkulačky jednotek žádosti][3]
-4. Klikněte na tlačítko Vypočítat a podívejte se na výsledky.
+    ![Zadejte požadavky na propustnost v kalkulačky jednotek žádosti hello][3]
+4. Klikněte na tlačítko Vypočítat a prozkoumejte výsledky hello.
    
     ![Žádosti o výsledky kalkulačky jednotky][4]
 
 > [!NOTE]
-> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, nahrajte vzorek každého *typ* z typických položky do nástroje a potom vypočítat výsledky.
+> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a hello počet indexované vlastnosti, nahrajte vzorek každého *typ* z toohello typické položky nástroje a potom vypočítat hello výsledky.
 > 
 > 
 
-### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Použití hlavičku odpovědi Azure Cosmos DB požadavek zdarma
-Každou odpověď ze služby Azure Cosmos DB obsahuje vlastní hlavičky (`x-ms-request-charge`) obsahující jednotek žádosti využité pro požadavek. Tuto hlavičku je také přístupné prostřednictvím sady SDK Azure Cosmos DB. V sadě SDK .NET je RequestCharge vlastnost ResourceResponse objektu.  Pro dotazy Průzkumník Azure Cosmos DB dotazů na portálu Azure poskytuje informace poplatků požadavku pro spuštění dotazů.
+### <a name="use-hello-azure-cosmos-db-request-charge-response-header"></a>Použít hlavičku odpovědi hello Azure Cosmos DB požadavek zdarma
+Každou odpověď z hello služby Azure Cosmos DB obsahuje vlastní hlavičky (`x-ms-request-charge`) obsahující jednotek žádosti hello využité pro požadavek hello. Tuto hlavičku je také přístupné prostřednictvím hello Azure Cosmos DB sady SDK. RequestCharge v hello .NET SDK, je vlastnost hello ResourceResponse objektu.  Pro dotazy hello Průzkumníka dotazů DB Cosmos Azure v hello portál Azure poskytuje informace poplatků požadavku pro spuštění dotazů.
 
-![Zkoumání RU poplatky v Průzkumníku dotazu][1]
+![Zkoumání RU poplatky v hello Průzkumníka dotazů][1]
 
-Myslete na to je záznam zřizování jednotky žádosti přidružené spuštěná typických operací proti položku reprezentativní používá vaše aplikace a pak odhadnout jedné metody odhadnout velikost vyhrazenou propustností požadované aplikací počet operací, které předpokládáte provádění každou sekundu.  Nezapomeňte měřit a zahrnují typické dotazy a také při použití skriptu Azure Cosmos DB.
+Myslete na to, jednu metodu k odhadování hello množství vyhrazenou propustností požadované aplikací je toorecord hello požadavek jednotky poplatků přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a potom odhad hello počet operací předpokládáte provádění každou sekundu.  Být jisti toomeasure a zahrnují typické dotazy a také při použití skriptu Azure Cosmos DB.
 
 > [!NOTE]
-> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte poplatků jednotek žádosti příslušné operace spojené s každou *typ* typické položky.
+> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a hello počet indexované vlastnosti, potom si poznamenejte hello použít operaci požadavku jednotky poplatků spojených s jednotlivými *typ* typické položky.
 > 
 > 
 
 Například:
 
-1. Zaznamenejte poplatků jednotek žádosti o vytvoření (vkládání) typické položky. 
-2. Záznam poplatků jednotek žádosti o čtení typické položky.
-3. Záznam poplatků jednotek žádosti aktualizace typické položky.
-4. Záznam poplatků jednotek žádosti typické, běžné položky dotazů.
-5. Zaznamenejte poplatků jednotek žádosti vlastních skriptů (uložené procedury, triggery, funkce definované uživatelem), využít aplikací
-6. Vypočítejte jednotky požadované žádosti dané odhadovaný počet operací, které předpokládáte spouštět každou sekundu.
+1. Zaznamenejte poplatků jednotky hello žádost o vytvoření (vkládání) typické položky. 
+2. Záznamů hello poplatků jednotky žádosti o čtení typické položky.
+3. Záznamů hello požadavek jednotky poplatků aktualizace typické položky.
+4. Záznamů hello požadavek jednotky poplatků typické, běžné položky dotazů.
+5. Záznamů hello požadavek jednotky poplatků vlastních skriptů (uložené procedury, triggery, funkce definované uživatelem) využít aplikace hello
+6. Vypočítejte hello požadované žádosti že jednotky dané hello odhadovaný počet operací předpokládáte toorun každou sekundu.
 
 ### <a id="GetLastRequestStatistics"></a>Použití rozhraní API pro příkaz GetLastRequestStatistics pro MongoDB
-Rozhraní API pro MongoDB podporuje vlastního příkazu *getLastRequestStatistics*, pro načítání poplatků požadavku pro zadané operace.
+Rozhraní API pro MongoDB podporuje vlastního příkazu *getLastRequestStatistics*, pro načítání hello požadavek zdarma pro zadané operace.
 
-Například v prostředí Mongo provést operaci chcete ověřit žádost zdarma pro.
+Například v hello prostředí Mongo, hello operaci provést, které chcete tooverify hello požadavek zdarma pro.
 ```
 > db.sample.find()
 ```
 
-Potom spusťte příkaz *getLastRequestStatistics*.
+Potom spusťte příkaz hello *getLastRequestStatistics*.
 ```
 > db.runCommand({getLastRequestStatistics: 1})
 {
@@ -230,20 +230,20 @@ Potom spusťte příkaz *getLastRequestStatistics*.
 }
 ```
 
-Myslete na to je záznam zřizování jednotky žádosti přidružené spuštěná typických operací proti položku reprezentativní používá vaše aplikace a pak odhadnout jedné metody odhadnout velikost vyhrazenou propustností požadované aplikací počet operací, které předpokládáte provádění každou sekundu.
+Myslete na to, jednu metodu k odhadování hello množství vyhrazenou propustností požadované aplikací je toorecord hello požadavek jednotky poplatků přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a potom odhad hello počet operací předpokládáte provádění každou sekundu.
 
 > [!NOTE]
-> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte poplatků jednotek žádosti příslušné operace spojené s každou *typ* typické položky.
+> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a hello počet indexované vlastnosti, potom si poznamenejte hello použít operaci požadavku jednotky poplatků spojených s jednotlivými *typ* typické položky.
 > 
 > 
 
 ## <a name="use-api-for-mongodbs-portal-metrics"></a>Použít rozhraní API pro portál metriky pro MongoDB
-Nejjednodušší způsob, jak získat dobrý odhad požadavku poplatky jednotky pro vaše rozhraní API pro databázi MongoDB má použít [portál Azure](https://portal.azure.com) metriky. S *počet požadavků, které* a *požadavek poplatků* grafy, můžete získat odhad, kolik jednotek žádosti ze každý je náročné operace a kolik jednotek žádosti, které budou využívat relativně k jinému.
+Nejjednodušší způsob, jak tooget dobrý odhad požadavek jednotky poplatky za vaše rozhraní API pro databázi MongoDB je toouse hello Hello [portál Azure](https://portal.azure.com) metriky. S hello *počet požadavků, které* a *požadavek poplatků* grafy, můžete získat odhad, kolik jednotek žádosti je každé operace využívání a kolik jednotek žádosti budou využívat relativní tooone jiné.
 
 ![Rozhraní API pro MongoDB portálu metriky][6]
 
 ## <a name="a-request-unit-estimation-example"></a>V příkladu odhad jednotek žádosti
-Vezměte v úvahu následující ~ 1KB dokumentu:
+Vezměte v úvahu následující ~ 1KB dokumentu hello:
 
 ```json
 {
@@ -296,11 +296,11 @@ Vezměte v úvahu následující ~ 1KB dokumentu:
 ```
 
 > [!NOTE]
-> Dokumenty jsou minifikovaný v Azure Cosmos DB, takže systém vypočítat velikost dokumentu výše je něco menší než 1 KB.
+> Dokumenty jsou minifikovaný v Azure Cosmos DB, takže hello systému vypočítat velikost hello dokumentu výše je něco menší než 1 KB.
 > 
 > 
 
-Následující tabulka uvádí přibližnou požadavek jednotky poplatky za typických operací u této položky (zdarma jednotky přibližnou požadavek předpokládá, že je úroveň konzistence účtu nastavená na "Relace" a automaticky indexování všech položek):
+Hello následující tabulka uvádí přibližnou požadavek jednotky poplatky za typických operací u této položky (hello přibližnou požadavek jednotky poplatků předpokládá úroveň konzistence účtu hello nastavena příliš "Relace" a že jsou všechny položky automaticky indexovány):
 
 | Operace | Žádost o jednotky zdarma |
 | --- | --- |
@@ -308,7 +308,7 @@ Následující tabulka uvádí přibližnou požadavek jednotky poplatky za typi
 | Čtení položky |~ 1 RU |
 | Dotaz položky podle id |~2.5 RU |
 
-Kromě toho tato tabulka ukazuje přibližnou požadavek poplatky jednotky pro typické dotazy použitou v aplikaci:
+Kromě toho tato tabulka ukazuje přibližnou požadavek jednotky poplatky za typické dotazy používané v aplikaci hello:
 
 | Dotaz | Žádost o jednotky zdarma | počet vrácených položek |
 | --- | --- | --- |
@@ -318,11 +318,11 @@ Kromě toho tato tabulka ukazuje přibližnou požadavek poplatky jednotky pro t
 | Vyberte nejvyšší 10 potravin ve skupině jídlo |~ 10 RU |10 |
 
 > [!NOTE]
-> Poplatky za RU lišit v závislosti na počet vrácených položek.
+> Poplatky za RU lišit v závislosti na hello počet vrácených položek.
 > 
 > 
 
-Pomocí těchto informací jsme odhadnout požadavky na RU pro tuto aplikaci zadaný počet operací a dotazy že Očekáváme, že za sekundu:
+Pomocí těchto informací jsme odhadnout hello RU požadavky pro toto číslo zadané aplikace hello operací a dotazy že Očekáváme, že za sekundu:
 
 | Operace nebo dotazu | Očekávaný počet za sekundu | Požadované RUs |
 | --- | --- | --- |
@@ -332,31 +332,31 @@ Pomocí těchto informací jsme odhadnout požadavky na RU pro tuto aplikaci zad
 | Vyberte jídlo skupinou |10 |700 |
 | Vyberte nejvyšší 10 |15 |Celkem 150 |
 
-V takovém případě Očekáváme, že požadavek průměrnou propustností 1,275 RU/s.  Zaokrouhlení až nejbližší 100 jsme by zřídit 1 300 RU/s pro kolekci této aplikace.
+V takovém případě Očekáváme, že požadavek průměrnou propustností 1,275 RU/s.  Zaokrouhlení nahoru toohello nejbližší 100, jsme by zřídit 1 300 RU/s pro kolekci této aplikace.
 
 ## <a id="RequestRateTooLarge"></a>Překročení omezení vyhrazenou propustností v Azure Cosmos DB
-Odvolat, že spotřeba jednotek žádosti budou vyhodnocené jako za sekundu Pokud rozpočtu je prázdný. Pro aplikace, které překračují rychlost jednotky zřízené požadavků pro kontejner budou požadavky na tuto kolekci omezeny, dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, bude ho preventivně ukončení požadavek s RequestRateTooLargeException (kód stavu HTTP 429) a vrátit hlavičku x-ms opakování za ms, která určuje množství času v milisekundách, která uživatel musí počkat před provedením nového pokusu serveru požadavek.
+Odvolat, že spotřeba jednotek žádosti budou vyhodnocené jako za sekundu Pokud hello rozpočtu je prázdný. Pro aplikace, které překračují hello míra jednotky zřízené požadavku pro kontejner, požadavků, že kolekce toothat budou omezeny, dokud hello rychlost klesne pod úroveň hello vyhrazena. Když dojde omezení, hello server se ukončí ho preventivně hello žádost s RequestRateTooLargeException (kód stavu HTTP 429) a návratové hello hlavičky x-ms opakování za ms informující o hello množství času v milisekundách, která hello uživatele čekat, než neúspěšných hello požadavek.
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
 
-Pokud používáte klienta SDK rozhraní .NET a LINQ dotazů a potom ve většině případů není nutné řešit výjimku, jako aktuální verze rozhraní .NET Client SDK implicitně zachytí této odpovědi, respektuje záhlaví zadaný server opakovat po a opakuje požadavek. Pokud váš účet je současně přistupuje více klientů, další pokus bude úspěšné.
+Pokud používáte hello .NET klienta SDK a LINQ dotazů a pak většinu času hello toodeal s výjimku, máte nikdy jako hello aktuální verzi hello .NET klienta SDK implicitně zachytí této odpovědi, respektuje hello zadaný server opakovat po záhlaví, a žádost o hello opakování. Pokud váš účet je současně přistupuje více klientů, hello další pokus bude úspěšné.
 
-Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků nemusí stačit výchozí chování opakování a klient vyvolá výjimku DocumentClientException se stavovým kódem 429 k aplikaci. V případech, jako je tato zvažte zpracování logiky aplikace chyba zpracování rutiny nebo zvýšení vyhrazenou propustností kontejneru a postup pro opakované.
+Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků hello, hello výchozí chování opakování nemusí stačit a hello klienta vyvolá výjimku DocumentClientException s aplikaci toohello 429 kódu stavu. V případech, jako je tato zvažte zpracování logiky aplikace chyba zpracování rutiny nebo zvýšení hello vyhrazenou propustností hello kontejneru a postup pro opakované.
 
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a>Překročení omezení vyhrazenou propustností v rozhraní API pro MongoDB
-Aplikace, které překračují jednotek zřízené žádosti pro kolekci budou omezeny, dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, back-end se ukončí ho preventivně požadavek s *16500* kód chyby - *příliš mnoho požadavků*. Ve výchozím nastavení, rozhraní API pro MongoDB bude automaticky opakovat až 10krát před vrácením *příliš mnoho požadavků* kód chyby. Pokud se zobrazuje řada *příliš mnoho požadavků* kódy chyb, můžete zvážit buď přidání opakování chování vaší aplikace chyba zpracování rutiny nebo [zvýšení vyhrazenou propustností pro kolekci](set-throughput.md).
+Aplikace, které překračují jednotek žádosti hello zřízené pro kolekci budou omezeny, dokud hello rychlost klesne pod úroveň hello vyhrazena. Když dojde omezení, back-end hello se ukončí ho preventivně hello žádosti s *16500* kód chyby - *příliš mnoho požadavků*. Ve výchozím nastavení, bude rozhraní API pro MongoDB automaticky opakovat too10 časů před vrácením *příliš mnoho požadavků* kód chyby. Pokud se zobrazuje řada *příliš mnoho požadavků* kódy chyb, můžete zvážit buď přidání opakování chování vaší aplikace chyba zpracování rutiny nebo [zvýšení hello vyhrazenou propustností pro kolekci hello](set-throughput.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vyhrazenou propustností s databázemi Azure Cosmos DB najdete v těchto zdrojích:
+toolearn Další informace o vyhrazenou propustností s databází Azure Cosmos DB těchto materiálech:
 
 * [Azure Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/)
 * [Segmentace dat v Azure Cosmos DB](partition-data.md)
 
-Další informace o databázi Cosmos Azure najdete v tématu Azure Cosmos DB [dokumentaci](https://azure.microsoft.com/documentation/services/cosmos-db/). 
+toolearn Další informace o databázi Cosmos Azure, najdete v části hello Azure Cosmos DB [dokumentaci](https://azure.microsoft.com/documentation/services/cosmos-db/). 
 
-Začínáme s škálování a výkon testování pomocí Azure Cosmos DB, najdete v tématu [testování výkonu a škálování s Azure Cosmos DB](performance-testing.md).
+tooget začít s škálování a výkon testování pomocí Azure Cosmos DB, najdete v části [testování výkonu a škálování s Azure Cosmos DB](performance-testing.md).
 
 [1]: ./media/request-units/queryexplorer.png 
 [2]: ./media/request-units/RUEstimatorUpload.png

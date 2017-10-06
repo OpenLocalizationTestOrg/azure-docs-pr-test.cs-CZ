@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření SQL Data Warehouse pomocí prostředí PowerShell | Dokumentace Microsoftu"
+title: "aaaCreate SQL Data Warehouse pomocí prostředí PowerShell | Microsoft Docs"
 description: "Vytvoření SQL Data Warehouse pomocí prostředí PowerShell"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: a763f1c600c1a3f37cb565a8eb7db3c3f27dcf75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8af29ec285a11285785ab5474e4dfc8c36bc3ab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-sql-data-warehouse-using-powershell"></a>Vytvoření SQL Data Warehouse pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -29,15 +29,15 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-V tomto článku zjistíte, jak můžete k vytvoření SQL Data Warehouse použít PowerShell.
+Tento článek ukazuje, jak toocreate SQL datového skladu pomocí prostředí PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
-Na začátek budete potřebovat:
+tooget spuštění, budete potřebovat:
 
-* **Účet Azure**: Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatná zkušební verze Azure][Azure Free Trial] nebo [Kredity Azure pro předplatitele MSDN][MSDN Azure Credits].
-* **Azure SQL Server:** Přečtěte si článek [Vytvoření Azure SQL Database pomocí webu Azure Portal][Create an Azure SQL database in the Azure Portal] nebo [Vytvoření Azure SQL Database pomocí prostředí PowerShell][Create an Azure SQL database with PowerShell], kde najdete další podrobnosti.
-* **Skupinu prostředků:** Buď použijte stejnou skupinu prostředků jako pro Azure SQL Server, nebo zjistěte, [jak vytvořit skupinu prostředků](../azure-resource-manager/resource-group-portal.md).
-* **Prostředí PowerShell verze 1.0.3 nebo novější:** To, jakou máte verzi, můžete zjistit spuštěním rutiny **Get-Module -ListAvailable -Name Azure**.  Nejnovější verzi si můžete nainstalovat pomocí [instalačního programu Webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][How to install and configure Azure PowerShell].
+* **Účet Azure**: navštivte [bezplatná zkušební verze Azure] [ Azure Free Trial] nebo [kredity Azure MSDN] [ MSDN Azure Credits] toocreate účet.
+* **Azure SQL server**: najdete v části [vytvoření Azure SQL database v hello portálu Azure] [ Create an Azure SQL database in hello Azure Portal] nebo [vytvoření Azure SQL database pomocí prostředí PowerShell] [ Create an Azure SQL database with PowerShell] další podrobnosti.
+* **Skupina prostředků**: použijte hello stejný zdroj skupiny jako server Azure SQL nebo v tématu [jak toocreate skupinu prostředků](../azure-resource-manager/resource-group-portal.md).
+* **Prostředí PowerShell verze 1.0.3 nebo novější:** To, jakou máte verzi, můžete zjistit spuštěním rutiny **Get-Module -ListAvailable -Name Azure**.  je možné nainstalovat nejnovější verzi Hello od [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell][How tooinstall and configure Azure PowerShell].
 
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba.  Další podrobnosti o cenách najdete v tématu [SQL Data Warehouse – ceny][SQL Data Warehouse pricing].
@@ -46,17 +46,17 @@ Na začátek budete potřebovat:
 
 ## <a name="create-a-sql-data-warehouse"></a>Vytvoření SQL Data Warehouse
 1. Otevřete Windows PowerShell.
-2. Spuštěním této rutiny se přihlaste do Azure Resource Manageru.
+2. Spusťte tuto rutinu toologin tooAzure Resource Manager.
 
     ```Powershell
     Login-AzureRmAccount
     ```
-3. Vyberte předplatné, které chcete použít pro aktuální relaci.
+3. Vyberte předplatné hello chcete toouse pro aktuální relaci.
 
     ```Powershell
     Get-AzureRmSubscription    -SubscriptionName "MySubscription" | Select-AzureRmSubscription
     ```
-4. Vytvořte databázi. Tento příklad vytvoří databázi s názvem mynewsqldw s úrovní cíle služby DW400 na serveru s názvem sqldwserver1, který je ve skupině prostředků s názvem mywesteuroperesgp1.
+4. Vytvořte databázi. Tento příklad vytvoří databáze s názvem "mynewsqldw", s úrovní cíle služby "DW400" toohello serveru s názvem "sqldwserver1", který je ve skupině prostředků hello s názvem "mywesteuroperesgp1".
 
    ```Powershell
    New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse" -CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 10995116277760
@@ -64,23 +64,23 @@ Na začátek budete potřebovat:
 
 Požadované parametry jsou:
 
-* **RequestedServiceObjectiveName**: Počet jednotek [DWU][DWU], o které žádáte.  Podporované hodnoty: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500, DW2000, DW3000 a DW6000.
-* **DatabaseName**: Název služby SQL Data Warehouse, kterou vytváříte.
-* **ServerName**: Název serveru, který používáte pro vytvoření (musí to být server V12).
-* **ResourceGroupName**: Skupina prostředků, kterou používáte.  K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edition:** Aby bylo možné vytvořit SQL Data Warehouse, je nutné nastavit edici DataWarehouse.
+* **RequestedServiceObjectiveName**: hello množství [DWU] [ DWU] jste požádali.  Podporované hodnoty: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500, DW2000, DW3000 a DW6000.
+* **DatabaseName**: název hello hello SQL Data Warehouse, kterou vytváříte.
+* **ServerName**: název hello hello serveru, který používáte pro vytvoření (musí být verze 12).
+* **ResourceGroupName**: Skupina prostředků, kterou používáte.  skupiny toofind dostupných prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
+* **Edice**: musí být "Datového skladu" toocreate SQL Data Warehouse.
 
 Volitelné parametry jsou:
 
-* **CollationName:** Pokud není uvedeno, je výchozí kolace SQL_Latin1_General_CP1_CI_AS.  Kolaci nejde pro databázi změnit.
-* **MaxSizeBytes:** Výchozí maximální velikost databáze je 10 GB.
+* **%{Collationname/**: hello výchozí kolace není-li zadána, je SQL_Latin1_General_CP1_CI_AS.  Kolaci nejde pro databázi změnit.
+* **MaxSizeBytes**: hello výchozí maximální velikost databáze je 10 GB.
 
-Další podrobnosti o možných parametrech najdete v tématech [New-AzureRmSqlDatabase][New-AzureRmSqlDatabase] a [Vytvoření databáze (Azure SQL Data Warehouse)][Create Database (Azure SQL Data Warehouse)].
+Další podrobnosti o možnostech parametr hello najdete v tématu [New-AzureRmSqlDatabase] [ New-AzureRmSqlDatabase] a [Create Database (Azure SQL Data Warehouse)][Create Database (Azure SQL Data Warehouse)].
 
 ## <a name="next-steps"></a>Další kroky
-Až se vám zřídí SQL Data Warehouse, můžete zkusit [načíst ukázková data][loading sample data] nebo se můžete podívat, jak na [vývoj][develop], [načítání][load] nebo [migraci][migrate].
+Po dokončení SQL Data Warehouse zřizování, můžete chtít tootry [načíst ukázková data] [ loading sample data] nebo podívat, jak příliš[vyvíjet] [ develop] , [načíst][load], nebo [migrovat][migrate].
 
-Pokud vás zajímají další informace o tom, jak SQL Data Warehouse spravovat prostřednictvím kódu programu, podívejte se na náš článek věnovaný tomu, jak používat [rutiny prostředí PowerShell a rozhraní REST API][PowerShell cmdlets and REST APIs].
+Pokud vás zajímají další informace o tom toomanage SQL Data Warehouse prostřednictvím kódu programu, podívejte se na náš článek o toouse [rutiny prostředí PowerShell a rozhraní REST API][PowerShell cmdlets and REST APIs].
 
 <!--Image references-->
 
@@ -93,11 +93,11 @@ Pokud vás zajímají další informace o tom, jak SQL Data Warehouse spravovat 
 [PowerShell cmdlets and REST APIs]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: ../sql-database-configure-firewall-settings.md
 
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[how to create a SQL Data Warehouse from the Azure Portal]: ./sql-data-warehouse-get-started-provision.md
-[Create an Azure SQL database in the Azure Portal]: ../sql-database/sql-database-get-started.md
+[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[how toocreate a SQL Data Warehouse from hello Azure Portal]: ./sql-data-warehouse-get-started-provision.md
+[Create an Azure SQL database in hello Azure Portal]: ../sql-database/sql-database-get-started.md
 [Create an Azure SQL database with PowerShell]: ../sql-database/sql-database-get-started-powershell.md
-[how to create a resource group]: ../azure-resource-manager/resource-group-template-deploy-portal.md#create-resource-group
+[how toocreate a resource group]: ../azure-resource-manager/resource-group-template-deploy-portal.md#create-resource-group
 
 <!--MSDN references-->
 [MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx

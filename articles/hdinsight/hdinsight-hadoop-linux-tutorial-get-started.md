@@ -1,6 +1,6 @@
 ---
-title: "Začínáme používat Hadoop a Hive v Azure HDInsight | Dokumentace Microsoftu"
-description: "Naučte se vytvářet clustery HDInsight a dotazy na data pomocí Hive."
+title: "aaaGet začít s Hadoop a Hive v Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate HDInsight clustery a dotaz na data pomocí Hive."
 keywords: "začínáme používat hadoop, hadoop linux, hadoop rychlý start, hive začínáme, hive rychlý start"
 services: hdinsight
 documentationcenter: 
@@ -17,73 +17,73 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.openlocfilehash: fd9e6dcea6524f55c1bd06da35f02be5670bf95f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3d96d78121200ebda3626dd2c3885e3ddacd546d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Kurz Hadoopu: Začínáme používat Hadoop v HDInsight
 
-Naučte se vytvářet clustery [Hadoop](http://hadoop.apache.org/) v HDInsight a spouštět úlohy Hive v HDInsight. [Hive Apache](https://hive.apache.org/) je nejoblíbenější součástí ekosystému Hadoop. Aktuálně se HDInsight dodává se [sedmi různými typy clusteru](hdinsight-hadoop-introduction.md#overview). Každý typ clusteru podporuje odlišnou sadu komponent. Všechny typy clusteru podporují Hive. Seznam podporovaných součásti v HDInsight naleznete v tématu [Co je nového ve verzích clusterů Hadoop poskytovaných v HDInsight?](hdinsight-component-versioning.md)  
+Zjistěte, jak toocreate [Hadoop](http://hadoop.apache.org/) clusterů v HDInsight a jak úlohy toorun Hive v HDInsight. [Apache Hive](https://hive.apache.org/) je nejoblíbenější součástí ekosystému Hadoop hello hello. Aktuálně se HDInsight dodává se [sedmi různými typy clusteru](hdinsight-hadoop-introduction.md#overview). Každý typ clusteru podporuje odlišnou sadu komponent. Všechny typy clusteru podporují Hive. Seznam podporovaných součásti v HDInsight, naleznete v části [co je nového ve verzích clusterů systému Hadoop hello poskytovaných v HDInsight?](hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete tento kurz, musíte mít:
 
-* **Předplatné Azure**: pro vytvoření bezplatného zkušebního účet na jeden měsíc otevřete web [azure.microsoft.com/free](https://azure.microsoft.com/free).
+* **Předplatné Azure**: toocreate Bezplatný zkušební účet jeden měsíc, procházet příliš[azure.microsoft.com/free](https://azure.microsoft.com/free).
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
-Většina úloh Hadoop jsou dávkové úlohy. Vytvoříte cluster, spustíte některé úlohy a pak cluster odstraníte. V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Zkušenosti s šablonou Resource Manageru nejsou pro postup dle tohoto kurzu vyžadovány. Další metody vytváření clusterů a principy vlastnosti používaných v tomto kurzu, naleznete v části [Vytváření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Pomocí selektoru v horní části stránky vyberte možnosti vytvoření clusteru.
+Většina úloh Hadoop jsou dávkové úlohy. Vytvořit cluster, spustíte některé úlohy a pak odstraňte hello clusteru. V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Zkušenosti s šablonou Resource Manageru nejsou pro postup dle tohoto kurzu vyžadovány. Další metody vytváření clusterů a principy vlastnosti hello používané v tomto kurzu, najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Použijte selektor hello na hello horní části stránky toochoose hello možnosti vytvoření clusteru.
 
-Šablona Resource Manageru použitá v tomto kurzu je umístěná v [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). 
+Šablona Resource Manager Hello použili v tomto kurzu se nachází v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). 
 
-1. Klikněte na následující obrázek pro přihlášení do Azure a otevřete šablonu Resource Manageru na webu Azure Portal. 
+1. Klikněte na tlačítko hello toosign bitové kopie v tooAzure a otevřete hello šablony Resource Manageru v hello portálu Azure. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Zadejte nebo vyberte tyto hodnoty:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Zadejte nebo vyberte hello následující hodnoty:
    
-    ![Šablona Resource Manageru pro zahájení práce s HDInsight Linux na portálu](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Nasazení clusteru Hadoop ve službě HDInsight pomocí portálu Azure Portal a šablony správce skupin prostředků").
+    ![HDInsight Linux Začínáme šablony Resource Manageru na portálu](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "hello clusteru Hadoop nasazení v HDInsigut pomocí portálu Azure a šablony správce prostředků skupiny").
    
     * **Předplatné**: Vyberte své předplatné Azure.
-    * **Skupina prostředků**: Vytvořte skupinu prostředků, nebo vyberte existující.  Skupina prostředků je kontejner komponent Azure.  V tomto případě skupina prostředků obsahuje cluster HDInsight a závislý účet služby Azure Storage. 
-    * **Umístění**: Vyberte umístění Azure, ve kterém chcete cluster vytvořit.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. 
+    * **Skupina prostředků**: Vytvořte skupinu prostředků, nebo vyberte existující.  Skupina prostředků je kontejner komponent Azure.  V takovém případě obsahuje hello skupinu prostředků clusteru HDInsight hello a hello závislý účet úložiště Azure. 
+    * **Umístění**: Vyberte místo, kam chcete toocreate, cluster Azure umístění.  Zvolte blíže tooyou pro lepší výkon umístění. 
     * **Typ clusteru**: Pro účely tohoto kurzu vyberte **hadoop**.
-    * **Název clusteru:** Zadejte název clusteru Hadoop.
-    * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.
-    * **Uživatelské jméno a heslo SSH**: výchozí uživatelské jméno **sshuser**.  Můžete ho změnit. 
+    * **Název clusteru**: Zadejte název pro hello Hadoop cluster.
+    * **Přihlašovací jméno a heslo clusteru**: hello výchozí přihlašovací jméno je **správce**.
+    * **SSH uživatelské jméno a heslo**: výchozí uživatelské jméno hello **sshuser**.  Můžete ho změnit. 
      
-    Některé vlastnosti jsou v šabloně pevně kódované.  Takové hodnoty můžete konfigurovat v šabloně.
+    Některé vlastnosti nejsou pevně kódovaný v šabloně hello.  Můžete nakonfigurovat tyto hodnoty z šablony hello.
 
-    * **Umístění**: Umístění clusteru a závislý účet úložiště používají stejné umístění jako skupina prostředků.
+    * **Umístění**: hello umístění hello clusteru a hello účet závislého úložiště sdílené složky hello stejné umístění jako skupina prostředků hello.
     * **Verze clusteru:** 3.5
     * **Typ operačního systému**: Linux
     * **Počet pracovních uzlů**: 2
 
-     Každý cluster obsahuje závislost [účtu Azure Storage](hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být umístěny společně a nacházet se ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště. 
+     Každý cluster obsahuje závislost [účtu Azure Storage](hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště hello. HDInsight cluster a jeho výchozí účet úložiště musí být společně umístěny v hello stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště hello. 
      
      Podrobnější vysvětlení těchto vlastností naleznete v tématu [Vytváření clusterů Hadoop ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a **Připnout na řídicí panel** a pak klikněte na **Koupit**. Na řídicím panelu portálu by se měla zobrazit nová dlaždice s názvem **Nasazení šablony**. Vytvoření clusteru trvá přibližně 20 minut. Jakmile je cluster vytvořen, popis dlaždice se změní na zadaný název skupiny prostředků. Na portálu se v novém okně automaticky otevře skupina prostředků. V seznamu bude uvedený cluster i výchozí úložiště.
+3. Vyberte **souhlasím toohello podmínky a ujednání, které jsou uvedené výše** a **Pin toodashboard**a potom klikněte na **nákupu**. Zobrazí se nová dlaždice s názvem **nasazení šablony** na řídicí panel portálu hello. Trvá přibližně 20 minut toocreate cluster. Po vytvoření clusteru hello hello titulek hello dlaždice je změněné toohello název skupiny prostředků, které zadáte. A skupina prostředků hello hello portálu automaticky otevře v novém okně. Uvidíte hello clusteru i hello výchozí úložiště uvedené.
    
     ![Počáteční skupina prostředků HDInsight Linux](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Skupina prostředků clusteru Azure HDInsight").
 
-4. Kliknutím na název clusteru otevřete cluster v novém okně.
+4. Klikněte na tlačítko hello clusteru název tooopen hello clusteru v novém okně.
 
    ![Počáteční nastavení clusteru HDInsight Linux](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png "Vlastnosti clusteru HDInsight")
 
 
 ## <a name="run-hive-queries"></a>Spuštění dotazů Hive
-[Apache Hive](hdinsight-use-hive.md) je nejoblíbenější součástí používanou v HDInsight. Existuje mnoho způsobů spouštění úloh Hive v HDInsight. V tomto kurzu použijete zobrazení Ambari Hive z portálu. Další metody pro odesílání úloh Hive naleznete v části [Použití Hive v HDInsight](hdinsight-use-hive.md).
+[Apache Hive](hdinsight-use-hive.md) je hello nejoblíbenější součástí používanou v HDInsight. Existuje mnoho způsobů toorun úlohy Hive v HDInsight. V tomto kurzu použijete zobrazení Ambari Hive z portálu hello hello. Další metody pro odesílání úloh Hive naleznete v části [Použití Hive v HDInsight](hdinsight-use-hive.md).
 
-1. Klikněte na **Řídicí panel clusteru** uvedený na předchozím snímku obrazovky a pak klikněte na **Řídicí panel clusteru HDInsight**.  Můžete také přejít na adresu **https://&lt;název_clusteru>.azurehdinsight.net**, kde &lt;název_clusteru> je název clusteru vytvořeného v předchozí části pro otevření Ambari.
-2. Zadejte uživatelské jméno a heslo Hadoop, které jste zadali v předchozí části. Výchozí uživatelské jméno **admin**.
-3. Otevřete **Zobrazení Hive**, jak je znázorněno na následujícím snímku obrazovky:
+1. Z hello předchozím snímku obrazovky, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **řídicí panel clusteru HDInsight**.  Můžete také vyhledat příliš **https://&lt;ClusterName >. azurehdinsight.net**, kde &lt;ClusterName > je hello clusteru, kterou jste vytvořili v předchozí části tooopen hello Ambari.
+2. Zadejte hello Hadoop uživatelské jméno a heslo, které jste zadali v předchozí části hello. výchozí uživatelské jméno Hello **správce**.
+3. Otevřete **zobrazení Hive** jak ukazuje následující snímek obrazovky hello:
    
     ![Výběr zobrazení Ambari](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png "Nabídka zobrazení Hive služby HDInsight").
-4. V části **Editor dotazů** stránky vložte následující příkazy HiveQL do pracovního listu:
+4. V hello **Editor dotazů** oddílu hello stránky, hello vložte následující příkazy HiveQL do listu hello:
    
         SHOW TABLES;
    
@@ -91,65 +91,65 @@ Většina úloh Hadoop jsou dávkové úlohy. Vytvoříte cluster, spustíte ně
    > Hive vyžaduje středník.       
    > 
    > 
-5. Klikněte na tlačítko **Spustit**. Pod Editorem dotazů se musí zobrazit část **Výsledky zpracování dotazu** a informace o úloze. 
+5. Klikněte na tlačítko **Spustit**. A **výsledky zpracování dotazu** část by měla být pod hello Editor dotazů a zobrazení informací o hello úlohy. 
    
-    Po dokončení dotazu se v části **Výsledky zpracování dotazu** zobrazí výsledky operace. Zobrazí jedna tabulka s názvem **hivesampletable**. Tato vzorová tabulka Hive obsahuje všechny clustery HDInsight.
+    Po dokončení dotazu hello hello **výsledky zpracování dotazu** části zobrazí výsledky hello hello operace. Zobrazí jedna tabulka s názvem **hivesampletable**. Tato vzorová tabulka Hive obsahuje všechny clustery HDInsight hello.
    
     ![Zobrazení Hive služby HDInsight](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png "Editor dotazů zobrazení Hive služby HDInsight").
-6. Opakujte kroky 4 a 5 a spusťte následující dotaz:
+6. Opakujte kroky 4 a hello toorun krok 5 následující dotaz:
    
         SELECT * FROM hivesampletable;
    
    > [!TIP]
-   > Všimněte si rozevíracího seznamu **Uložit výsledky** v pravé horní části **Výsledky zpracování dotazu**. Tuto část můžete použít pro stažení výsledků nebo pro jejich uložení do úložiště HDInsight jako soubor CSV.
+   > Poznámka: hello **výsledky uložit** rozevírací seznam v horní hello levé hello **výsledky zpracování dotazu** část můžete použít tento výsledky stahování hello tooeither nebo uložíte tooHDInsight úložiště jako soubor CSV.
    > 
    > 
-7. Klikněte na tlačítko **Historie** a načtěte seznam úloh.
+7. Klikněte na tlačítko **historie** tooget seznam úloh hello.
 
-Po dokončení úlohy Hive můžete [Exportovat výsledky do databáze Azure SQL nebo databáze systému SQL Server](hdinsight-use-sqoop-mac-linux.md), můžete také [zobrazit výsledky pomocí aplikace Excel](hdinsight-connect-excel-power-query.md). Další informace o používání Hive v HDInsight naleznete v části [Použití Hive a HiveQL s Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](hdinsight-use-hive.md).
+Po dokončení úlohy Hive můžete [exportovat hello výsledky tooAzure SQL database nebo databáze systému SQL Server](hdinsight-use-sqoop-mac-linux.md), můžete také [vizualizace výsledků hello pomocí aplikace Excel](hdinsight-connect-excel-power-query.md). Další informace o používání Hive v HDInsight, naleznete v části [použití Hive a HiveQL s Hadoop v HDInsight tooanalyze ukázkového souboru Apache log4j](hdinsight-use-hive.md).
 
-## <a name="clean-up-the-tutorial"></a>Vyčistěte kurz
-Po dokončení kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. 
+## <a name="clean-up-hello-tutorial"></a>Vyčistěte kurz hello
+Po dokončení kurzu hello můžete toodelete hello clusteru. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že hello poplatky za hello clusteru jsou mnohokrát víc než hello poplatky za úložiště, dává ekonomický smysl clustery toodelete které nejsou používána. 
 
 > [!NOTE]
-> Pomocí [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) můžete s HDInsight vytvářet clustery na vyžádání a nakonfigurovat nastavení TimeToLive na automatické mazání clusterů. 
+> Pomocí [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md), můžete vytvořit clustery HDInsight na vyžádání a nakonfigurovat TimeToLive nastavení automaticky příliš odstranění clusterů hello. 
 > 
 > 
 
-**Postup odstranění clusteru a/nebo výchozího účtu úložiště**
+**toodelete hello clusteru a/nebo hello výchozí účet úložiště**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V ovládacím panelu portálu klikněte na dlaždici s názvem skupiny prostředků, které jste použili při vytvoření clusteru.
-3. V okně prostředků klikněte na tlačítko **Odstranit** a odstraňte skupinu prostředků, která obsahuje cluster a výchozí účet úložiště, nebo klikněte na název clusteru v dlaždici **Prostředky** a pak v okně clusteru klikněte na **Odstranit**. Upozorňujeme, že odstraněním skupiny prostředků odstraníte účet úložiště. Pokud chcete zachovat účet úložiště, zvolte odstranění samotného clusteru.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Na panelu portálu hello klikněte na dlaždici hello s hello název skupiny prostředků, který jste použili při vytvoření clusteru hello.
+3. Klikněte na tlačítko **odstranit** na hello prostředků okno toodelete hello skupinu prostředků, která obsahuje hello clusteru a hello výchozí účet úložiště nebo klikněte na název clusteru hello na hello **prostředky** dlaždici a potom klikněte na **Odstranit** v okně clusteru hello. Poznámka: odstranění skupiny prostředků hello odstraní účet úložiště hello. Pokud chcete účet úložiště hello tookeep, zvolte toodelete hello pouze clusteru.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se naučili, jak vytvořit cluster HDInsight se systémem Linux pomocí šablony Resource Manageru, a jak provádět základní dotazy Hive.
+V tomto kurzu jste se naučili, jak toocreate HDInsight se systémem Linux clusteru pomocí šablony Resource Manageru a tooperform základní dotazy Hive.
 
-Další informace o analýze dat pomocí HDInsight naleznete v následujících článcích:
+toolearn Další informace o analýze dat pomocí HDInsight, najdete v části hello následující články:
 
-* Další informace o používání Hivu se službou HDInsight, včetně postupu provádění dotazů Hivu ze sady Visual Studio, najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
-* Další informace o jazyce Pig používaném k transformaci dat najdete v tématu [Použití Pigu se službou HDInsight][hdinsight-use-pig].
-* Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight][hdinsight-use-mapreduce].
-* Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight naleznete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md).
+* toolearn Další informace o používání Hive s HDInsight, včetně jak dotazuje tooperform Hive ze sady Visual Studio, najdete v části [používání Hive s HDInsight][hdinsight-use-hive].
+* toolearn o Pig jazyk používaný datový tootransform najdete v tématu [použijte Pig s HDInsight][hdinsight-use-pig].
+* toolearn o MapReduce, způsob, jakým toowrite programy, které zpracovávají data v Hadoop, najdete v části [používání MapReduce s HDInsight][hdinsight-use-mapreduce].
+* toolearn o používání hello nástroje HDInsight pro Visual Studio tooanalyze data v HDInsight, najdete v části [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
-Pokud jste připraveni začít pracovat s vlastními daty a potřebujete vědět více o způsobu, jakým HDInsight ukládá data nebo jak načítá data do HDInsight, projděte si následující témata:
+Pokud jste připravené toostart práce s vlastními daty a potřebovat další informace o tooknow způsob, jakým HDInsight ukládá data, nebo jak tooget data do HDInsight, najdete v části hello následující:
 
 * Informace o tom, jak HDInsight používá Azure Storage, najdete v tématu [Používání Azure Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md).
-* Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight][hdinsight-upload-data].
+* Informace o tom tooupload data tooHDInsight, najdete v části [nahrát data tooHDInsight][hdinsight-upload-data].
 
-Pokud chcete získat další informace o vytváření a správě clusteru služby HDInsight, projděte si následující témata:
+Pokud vás zajímají další informace o vytváření a správě clusteru služby HDInsight toolearn, najdete v části hello následující:
 
-* Další informace o správě clusteru HDInsight se systémem Linux naleznete v části [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md).
-* Další informace o možnostech, které můžete vybrat při vytváření clusteru služby HDInsight, naleznete v tématu [Vytváření HDInsight na Linuxu pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md).
-* Je-li obeznámeni s Linux a Hadoop, ale chcete znát podrobnosti o Hadoop na HDInsight, prostudujte si část [Práce s HDInsight v systému Linux](hdinsight-hadoop-linux-information.md). Tento článek obsahuje informace o:
+* toolearn o správě clusteru HDInsight se systémem Linux, najdete v části [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md).
+* toolearn Další informace o možnosti hello můžete vybrat při vytváření clusteru HDInsight, najdete v části [vytváření HDInsight v Linuxu pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md).
+* Pokud jste obeznámeni s Linux a Hadoop, ale chcete tooknow podrobnosti o Hadoop na hello HDInsight, přečtěte si téma [práce s HDInsight v Linuxu](hdinsight-hadoop-linux-information.md). Tento článek obsahuje informace o:
   
-  * Adresách URL služeb hostovaných v clusteru, například Ambari a WebHCat
-  * Umístění souborů Hadoop a příkladech v místním systému souborů
-  * Používání Azure Storage (WASB) namísto HDFS jako výchozího datového úložiště
+  * Adresách URL služeb hostovaných na hello clusteru, například Ambari a WebHCat
+  * Hello umístění souborů Hadoop a příkladech v hello místního systému souborů
+  * Hello použití služby Azure Storage (WASB) namísto HDFS jako úložiště dat výchozí hello
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 

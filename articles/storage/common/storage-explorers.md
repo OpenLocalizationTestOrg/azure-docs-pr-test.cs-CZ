@@ -1,6 +1,6 @@
 ---
-title: "Nástroje pro práci s Azure Storage | Microsoft Docs"
-description: "Seznam nástrojů, které vám umožní zobrazit nebo práci s daty Azure Storage."
+title: "aaaTools pro práci s Azure Storage | Microsoft Docs"
+description: "Seznam nástrojů, které vám umožňují tooview nebo práci s daty Azure Storage."
 services: storage
 documentationcenter: 
 author: dineshmurthy
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: dineshmurthy
-ms.openlocfilehash: 620efda06d8225b21b6bb9b104b79061ebb6515c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3308de2153099a05a676ab1d76426bd932e8a96c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
-Uživatelé Azure Storage se často chtějí mít možnost k zobrazení nebo interakci s jejich daty pomocí klienta nástroje Azure Storage. V následujících tabulkách jsme seznam několik nástrojů, které vám umožní to. Můžeme uvést "X" v každém bloku pokud poskytuje možnost vytvořit výčet nebo přístup k abstrakci data. V tabulce také ukazuje, zda je volné nástroje, či nikoliv. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale kompletní produkt není volné. "Y/N" označuje, že verze je k dispozici zdarma, zatímco jiné verze je možné zakoupit.
+Uživatelé Azure Storage často mají toobe možné tooview nebo interakci s jejich daty pomocí klienta nástroje Azure Storage. V následujících tabulkách hello jsme seznam několik nástrojů, které vám umožňují toodo to. Můžeme uvést "X" v každém bloku pokud poskytuje možnost hello tooeither výčet nebo přístup hello data abstraction. Hello tabulka také ukazuje, zda je volné hello nástroje, či nikoliv. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale kompletní produkt hello není volné. "Y/N" označuje, že verze je k dispozici zdarma, zatímco jiné verze je možné zakoupit.
 
-Připravili jsme vám pouze snímek dostupných nástrojích klienta Azure Storage. Tyto nástroje mohou nadále můžete rozvíjet a rozšiřovat funkcí. Pokud jsou opravy nebo aktualizace, uveďte poznámky a dejte nám vědět. Totéž platí, že pokud znáte nástrojů, které by měla být zde - rádi bychom je přidat.
+Připravili jsme vám pouze snímek hello dostupných nástrojích klienta Azure Storage. Tyto nástroje může pokračovat tooevolve a zvýší funkcí. Pokud jsou opravy nebo aktualizace, nechejte prosím toolet komentáře, které nám vědět. Hello stejné je hodnota true, pokud víte, nástrojů, které by mělo být toobe Zde – jsme by radostí tooadd je.
 
 **Nástroje pro klienta úložiště Microsoft Azure**
 
@@ -91,7 +91,7 @@ Připravili jsme vám pouze snímek dostupných nástrojích klienta Azure Stora
 
 **Úložiště Azure třetích stran klienta nástroje**
 
-Jsme nebyly ověřeny funkce nebo kvality nárokován následující nástroje třetích stran a jejich seznam neznamená neznamená společností Microsoft.
+Nebyly jsme ověřit, že funkce hello nebo kvality nárokován hello nástroje třetích stran a jejich seznam neznamená neznamená společností Microsoft.
 
 <table>
   <tr>

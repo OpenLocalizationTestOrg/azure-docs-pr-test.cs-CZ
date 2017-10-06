@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s PlanMyLeave | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PlanMyLeave."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a PlanMyLeave."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: jeedes
-ms.openlocfilehash: ba418a641b339a0d94a3c7b2596d37fbd88a30c5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44a6782e44ef22fc957544960be1742f9eed6e51
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Kurz: Azure Active Directory integrace s PlanMyLeave
 
-V tomto kurzu zjistěte, jak integrovat PlanMyLeave s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate PlanMyLeave s Azure Active Directory (Azure AD).
 
-Integrace PlanMyLeave s Azure AD poskytuje následující výhody:
+Integrace PlanMyLeave s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k PlanMyLeave
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k PlanMyLeave (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooPlanMyLeave
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooPlanMyLeave (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s PlanMyLeave, potřebujete následující položky:
+Integrace služby Azure AD s PlanMyLeave tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - PlanMyLeave jednotného přihlašování povolené předplatné
 
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání PlanMyLeave z Galerie
+1. Přidání PlanMyLeave z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 
-## <a name="adding-planmyleave-from-the-gallery"></a>Přidání PlanMyLeave z Galerie
-Při konfiguraci integrace PlanMyLeave do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS PlanMyLeave z galerie.
+## <a name="adding-planmyleave-from-hello-gallery"></a>Přidání PlanMyLeave z Galerie hello
+tooconfigure hello integrace PlanMyLeave do Azure AD, je nutné tooadd PlanMyLeave hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat PlanMyLeave z galerie, proveďte následující kroky:**
+**tooadd PlanMyLeave z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **PlanMyLeave**.
+4. Hello vyhledávacího pole zadejte **PlanMyLeave**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_001.png)
 
-5. Na panelu výsledků vyberte **PlanMyLeave**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **PlanMyLeave**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_0001.png)
 
@@ -85,64 +85,64 @@ Při konfiguraci integrace PlanMyLeave do služby Azure AD musíte přidat do se
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s PlanMyLeave podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v PlanMyLeave je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v PlanMyLeave musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v PlanMyLeave je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v PlanMyLeave musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v PlanMyLeave.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v PlanMyLeave.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PlanMyLeave, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s PlanMyLeave, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele PlanMyLeave](#creating-a-planmyleave-test-user)**  – Pokud chcete mít protějšek Britta Simon v PlanMyLeave propojeném s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele PlanMyLeave](#creating-a-planmyleave-test-user)**  -toohave protějšek Britta Simon v PlanMyLeave, která je jí reprezentace toohello propojené služby Azure AD.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci PlanMyLeave.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci PlanMyLeave.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s PlanMyLeave, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s PlanMyLeave, proveďte následující kroky hello:**
 
-1. Na portálu Azure Management portal na **PlanMyLeave** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V hello Azure Management portal na hello **PlanMyLeave** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno stránky, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
+2. Na hello **jednotného přihlašování** dialogové okno stránky, jako **režimu** vyberte **na základě SAML přihlašování** jednotného přihlašování k tooenable.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_01.png)
 
-3. Na **PlanMyLeave domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **PlanMyLeave domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_02.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company-name>.planmyleave.com/Login.aspx`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<company-name>.planmyleave.com/Login.aspx`
     
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company-name>.planmyleave.com`
+    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<company-name>.planmyleave.com`
 
     > [!NOTE] 
-    > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PlanMyLeave](mailto:support@planmyleave.com) k získání těchto hodnot.
+    > Upozorňujeme, že tyto nejsou hello skutečné hodnoty. Máte tooupdate tyto hodnoty s hello skutečné přihlášení adresy URL a identifikátor. Obraťte se na [tým podpory PlanMyLeave](mailto:support@planmyleave.com) tooget tyto hodnoty.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **vytvořit nový certifikát**.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **vytvořit nový certifikát**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_03.png)     
 
-5. Na **vytvořit nový certifikát** dialogové okno, klikněte na ikonu kalendáři a vyberte **datum vypršení platnosti**. Pak klikněte na tlačítko **Uložit** tlačítko.
+5. Na hello **vytvořit nový certifikát** dialogové okno, klikněte na ikonu hello kalendáře a vyberte **datum vypršení platnosti**. Pak klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_300.png)
 
-6. Na **SAML podpisový certifikát** vyberte **aktivujte nový certifikát** a klikněte na tlačítko **Uložit** tlačítko.
+6. Na hello **SAML podpisový certifikát** vyberte **aktivujte nový certifikát** a klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_04.png)
 
-7. V místní nabídce **certifikát výměny** okně klikněte na tlačítko **OK**.
+7. V místní nabídce hello **certifikát výměny** okně klikněte na tlačítko **OK**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_400.png)
 
-8. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (base64)** a potom uložte soubor certifikátu v počítači.
+8. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_05.png) 
 
-9. Na **PlanMyLeave konfigurace** klikněte na tlačítko **konfigurace PlanMyLeave** otevřete **konfigurovat přihlášení** okno.
+9. Na hello **PlanMyLeave konfigurace** klikněte na tlačítko **konfigurace PlanMyLeave** tooopen **konfigurovat přihlášení** okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_06.png) 
 
@@ -150,56 +150,56 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
 10. V okně prohlížeče jiný web Přihlaste se ke klientovi PlanMyLeave jako správce.
 
-11. Přejděte na **nastavení systému**. Pak na **zabezpečení správy** klikněte na část **nastavení společnosti SAML** .
+11. Přejděte příliš**nastavení systému**. Pak na hello **zabezpečení správy** klikněte na část **nastavení společnosti SAML** .
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
-12. Na **SAML nastavení** klikněte ikonu editor.
+12. Na hello **SAML nastavení** klikněte ikonu editor.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_003.png)
 
-13. Na **SAML nastavení aktualizace** část, proveďte následující kroky:
+13. Na hello **nastavení SAML aktualizace** část, proveďte následující kroky hello:
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_004.png)
 
-    a.  V **přihlašovací adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** z okna konfigurace aplikace Azure AD.
+    a.  V hello **přihlašovací adresa URL** textovému poli, vložte hodnotu hello z **SAML jeden přihlašování adresa URL služby** z okna konfigurace aplikace Azure AD.
 
-    b.  Otevřete soubor stažený certifikátu v poznámkovém bloku kopírovat pouze obsah mezi---začít certifikát a---konec certifikátu---ji do schránky a vložte jej do **certifikát** textové pole.
+    b.  V poznámkovém bloku otevřete soubor stažený certifikátu, kopírovat pouze hello obsah mezi hello---začít certifikát a---End certifikát---ho do schránky a pak ji vložit toohello **certifikát** textové pole.
 
-    c. Nastavit "**je povolit**"do"**Ano**".
+    c. Nastavení"**je povolit**"příliš"**Ano**".
 
     d. Klikněte na **Uložit**.
 
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
@@ -207,32 +207,32 @@ Cílem této části je vytvoření zkušebního uživatele na portálu správy 
 
 ### <a name="creating-a-planmyleave-test-user"></a>Vytvoření zkušebního uživatele PlanMyLeave
 
-Cílem této části je vytvoření uživatele v PlanMyLeave nazývá Britta Simon. PlanMyLeave podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
+Hello cílem této části je toocreate volal Britta Simon v PlanMyLeave uživatele. PlanMyLeave podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
 
-Neexistuje žádná položka akce pro vás v této části. Vytvoří se nový uživatel během pokusu o přístup k PlanMyLeave, pokud ještě neexistuje.
+Neexistuje žádná položka akce pro vás v této části. Pokud ještě neexistuje, se během pokusu o tooaccess PlanMyLeave vytvoří nového uživatele.
 
 > [!NOTE]
-> Pokud potřebujete vytvořit uživatele s ručně, budete muset kontaktovat [tým podpory PlanMyLeave](mailto:support@planmyleave.com).
+> Pokud potřebujete toocreate uživatelé ručně, je nutné toocontact [tým podpory PlanMyLeave](mailto:support@planmyleave.com).
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k PlanMyLeave Azure jednotné přihlašování.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooPlanMyLeave svůj přístup.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon PlanMyLeave, proveďte následující kroky:**
+**tooassign Britta Simon tooPlanMyLeave, proveďte následující kroky hello:**
 
-1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **PlanMyLeave**.
+2. V seznamu aplikace hello vyberte **PlanMyLeave**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_50.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -240,7 +240,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -250,14 +250,14 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici PlanMyLeave na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci PlanMyLeave.
+Když kliknete na dlaždici PlanMyLeave hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour PlanMyLeave aplikace.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

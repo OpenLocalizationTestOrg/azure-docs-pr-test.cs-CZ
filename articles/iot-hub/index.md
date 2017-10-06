@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure IoT Hub – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízení milionů assetů Internetu věcí. Kurzy, reference k rozhraní API, videa a další dokumentace"
+title: "aaaAzure dokumentace IoT Hub - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse tooconnect IoT Hub, monitorování a řízení až miliardy Internet věcí prostředků. Kurzy, reference k rozhraní API, videa a další dokumentace"
 services: iot-hub
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4d9e66dad55417cff6b9252379cf7265fb542fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-hub-documentation"></a>Dokumentace ke službě IoT Hub 
 
-Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízení milionů assetů Internetu věcí. Kurzy, reference k rozhraní API, videa a další dokumentace pomáhají nasadit spolehlivou a obousměrnou komunikaci mezi zařízeními IoT a back-endem řešení. 
+Zjistěte, jak toouse tooconnect IoT Hub, monitorování a řízení až miliardy Internet věcí prostředků. Kurzy, reference k rozhraní API, videa a další dokumentace pomáhají nasadit spolehlivou a obousměrnou komunikaci mezi zařízeními IoT a back-endem řešení. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -106,7 +106,7 @@ Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízen�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Přečíst příručku pro vývojáře</h3>
+                        <h3>Příručka vývojáře pro čtení hello</h3>
                     </div>
                 </div>
             </div>

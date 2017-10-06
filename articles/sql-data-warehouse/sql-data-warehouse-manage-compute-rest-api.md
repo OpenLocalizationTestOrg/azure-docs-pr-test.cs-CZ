@@ -1,5 +1,5 @@
 ---
-title: "Pozastavit, obnovit a škálování se ULOŽENÁ v Azure SQL Data Warehouse | Microsoft Docs"
+title: "aaaPause, obnovit, škálování se ULOŽENÁ v Azure SQL Data Warehouse | Microsoft Docs"
 description: "Spravujte výpočetní výkon v SQL Data Warehouse prostřednictvím REST, T-SQL a prostředí PowerShell."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 07/25/2017
 ms.author: elbutter
-ms.openlocfilehash: 24e43205c0c562fca9b1c2c0e5eed4da54e17ed7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fc867febb118fb5c86c2637a41b232076021b95d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>Spravovat výpočetní výkon v Azure SQL Data Warehouse (REST)
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="scale-compute-power"></a>Škálování výpočetní výkon
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Chcete-li změnit jednotkami Dwu, použijte [vytvoření nebo aktualizace databáze] [ Create or Update Database] REST API. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, který je hostován na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
+hello toochange Dwu, použijte hello [vytvoření nebo aktualizace databáze] [ Create or Update Database] REST API. Hello následující příklad ilustruje hello služby úrovně cíle tooDW1000 pro databázi hello MySQLDW, který je hostován na serveru MyServer. Hello server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -55,7 +55,7 @@ Content-Type: application/json; charset=UTF-8
 ## <a name="pause-compute"></a>Pozastavit výpočetní
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Chcete-li pozastavit databázi, použijte [pozastavení databáze] [ Pause Database] REST API. Následující příklad pozastaví databáze s názvem Database02 hostovaná na serveru s názvem Server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
+toopause databázi, použijte hello [pozastavení databáze] [ Pause Database] REST API. Hello následující příklad pozastaví databáze s názvem Database02 hostovaná na serveru s názvem Server01. Hello server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -66,7 +66,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ## <a name="resume-compute"></a>Obnovit výpočetní
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Chcete-li spustit databázi, použijte [obnovit databáze] [ Resume Database] REST API. Následující příklad spustí databáze s názvem Database02 hostovaná na serveru s názvem Server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1. 
+toostart databázi, použijte hello [obnovit databáze] [ Resume Database] REST API. Hello následující příklad spustí databáze s názvem Database02 hostovaná na serveru s názvem Server01. Hello server je ve skupině prostředků Azure s názvem ResourceGroup1. 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

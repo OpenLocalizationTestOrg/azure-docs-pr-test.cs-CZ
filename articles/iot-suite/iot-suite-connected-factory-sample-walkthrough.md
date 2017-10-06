@@ -1,6 +1,6 @@
 ---
-title: "Průvodce řešením propojené továrny v sadě Azure IoT Suite | Dokumentace Microsoftu"
-description: "Popis předkonfigurovaného řešení Azure IoT pro propojenou továrnu a jeho architektura."
+title: "návod řešení Azure IoT Suite factory aaaConnected | Microsoft Docs"
+description: "Popis hello řešení Azure IoT předkonfigurované připojen objekt pro vytváření a jeho architektura."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,121 +15,121 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7fd55c51351659401349cfde91a20fce1045b4f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Průvodce předkonfigurovaným řešením propojené továrny
 
-[Předkonfigurované řešení][lnk-preconfigured-solutions] sady IoT Suite pro propojenou továrnu je implementace komplexního průmyslového řešení, které:
+Hello IoT Suite připojen objekt pro vytváření [předkonfigurované řešení] [ lnk-preconfigured-solutions] je implementací řešení průmyslových začátku do konce který:
 
-* Se připojuje k simulovaným průmyslovým zařízením se servery OPC UA na simulovaných výrobních linkách i ke skutečným zařízením serveru OPC UA. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md).
+* Připojí tooboth simulated průmyslových zařízení se systémem OPC UA servery v řádky výrobní simulované objekt pro vytváření a skutečné zařízení OPC UA serveru. Další informace o OPC UA najdete v tématu hello [připojené nejčastější dotazy týkající se vytváření](iot-suite-faq-cf.md).
 * Ukazuje klíčové ukazatele výkonu a celkovou efektivitu těchto zařízení a výrobních linek.
-* Ukazuje možnosti použití cloudové aplikace k interakci se serverovými systémy OPC UA.
-* Umožňuje připojení vlastních zařízení serveru OPC UA.
-* Umožňuje procházení a úpravy dat na serveru OPC UA.
-* Se integruje se službou Azure Time Series Insights (TSI), aby mohlo poskytovat přizpůsobená zobrazení dat ze serverů OPC UA.
+* Ukazuje, jak k aplikaci založené na cloudu může být použité toointeract systémech OPC UA server.
+* Umožňuje vám tooconnect si vlastní zařízení OPC UA serveru.
+* Umožňuje toobrowse a upravit hello OPC UA dat serveru.
+* Vlastní zobrazení dat hello z vašich serverů OPC UA se integruje s hello tooprovide služby Azure časové řady přehledy (TSI).
 
-Můžete ho použít jako výchozí bod pro vlastní implementaci a [přizpůsobit][lnk-customize] si ho tak, aby splňovalo vaše konkrétní obchodní požadavky.
+Hello řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit] [ lnk-customize] ho toomeet specifických podnikových požadavků.
 
-Tento článek vás provede některými z klíčových prvků řešení propojené továrny, aby vám pomohl pochopit, jak toto řešení funguje. Díky tomu budete moct:
+Tento článek vás provede procesem některé klíčové prvky hello hello připojen objekt pro vytváření řešení tooenable toounderstand jak to funguje. Díky tomu budete moct:
 
-* Odstraňovat potíže v řešení.
-* Naplánujte, jak řešení přizpůsobit podle konkrétních požadavků.
+* Řešení problémů v řešení hello.
+* Plánování jak toocustomize toohello řešení toomeet vaše konkrétní požadavky.
 * Navrhněte vlastní řešení IoT, které používá služby Azure.
 
-Další informace najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md).
+Další informace najdete v tématu hello [připojené nejčastější dotazy týkající se vytváření](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logická architektura
 
-Následující diagram popisuje logické součásti tohoto předkonfigurovaného řešení:
+Hello následující diagram popisuje logické součásti hello hello předkonfigurované řešení:
 
 ![Logická architektura propojené továrny][connected-factory-logical]
 
 ## <a name="communication-patterns"></a>Vzory komunikace
 
-Toto řešení k odesílání telemetrických dat OPC UA do služby IoT Hub ve formátu JSON používá [specifikaci publikování a odběru OPC UA](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/). Řešení pro tento účel používá modul [vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher) pro IoT Edge.
+řešení Hello používá hello [OPC UA Pub nebo Sub specifikace](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/) toosend OPC UA telemetrická data tooIoT rozbočovače ve formátu JSON. řešení Hello používá hello [OPC vydavatele](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge modul pro tento účel.
 
-Řešení má také ve webové aplikaci integrovaného klienta OPC UA, který navazuje připojení k místním serverům OPC UA. Klient používá [reverzní proxy](https://wikipedia.org/wiki/Reverse_proxy) a s pomocí služby IoT Hub vytváří připojení, aniž by vyžadoval otevřené porty na místní bráně firewall. Tento vzor komunikace se nazývá [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/). Řešení pro tento účel používá modul [proxy serveru OPC](https://github.com/Azure/iot-edge-opc-proxy/) pro IoT Edge.
+řešení Hello má také klientem OPC UA integrována do webové aplikace, které může vytvořit připojení s místními OPC UA servery. Klient Hello používá [reverznímu proxy serveru](https://wikipedia.org/wiki/Reverse_proxy) a přijímá nápovědy ze služby IoT Hub toomake hello připojení bez nutnosti otevřít porty v bráně firewall místní hello. Tento vzor komunikace se nazývá [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/). řešení Hello používá hello [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge modul pro tento účel.
 
 
 ## <a name="simulation"></a>Simulace
 
-Simulované stanice a systémy řízení výroby tvoří výrobní linku továrny. Simulovaná zařízení a modul vydavatele OPC jsou založeny na [standardu OPC UA .NET][lnk-OPC-UA-NET-Standard] vydaném nadací OPC Foundation.
+Hello simulované stanic a provádění hello simulated výroby, které systémy (MES) tvoří tovární. Hello simulované zařízení a hello OPC vydavatele modulu jsou založené na hello [OPC UA .NET Standard] [ lnk-OPC-UA-NET-Standard] publikováno hello OPC Foundation.
 
-Proxy server OPC a vydavatel OPC jsou implementovány jako moduly založené na [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Každá simulovaná výrobní linka má připojenu vyhrazenou bránu.
+Hello OPC Proxy a OPC vydavatele jsou implementované jako moduly založené na [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Každá simulovaná výrobní linka má připojenu vyhrazenou bránu.
 
-Všechny simulované komponenty jsou spuštěné v kontejnerech Dockeru hostovaných na virtuálních počítačích Azure s Linuxem. Simulace je ve výchozím nastavení nakonfigurovaná tak, aby bylo spuštěno 8 simulovaných výrobních linek.
+Všechny simulované komponenty jsou spuštěné v kontejnerech Dockeru hostovaných na virtuálních počítačích Azure s Linuxem. simulace Hello je nakonfigurované toorun osm simulované produkční řádků ve výchozím nastavení.
 
 ## <a name="simulated-production-line"></a>Simulovaná výrobní linka
 
 Výrobní linka vyrábí součásti. Skládá se z různých stanic: montážní stanice, testovací stanice a balicí stanice.
 
-Simulace zpracovává a aktualizuje data vystavená prostřednictvím uzlů OPC UA. Všechny stanice simulované výrobní linky jsou orchestrované systémem řízení výroby (MES) prostřednictvím OPC UA.
+simulace Hello spustí a aktualizuje hello dat, který je zveřejněný prostřednictvím hello OPC UA uzlů. Všechny stanice produkční Simulovaná jsou řízená hello MES prostřednictvím OPC UA.
 
 ## <a name="simulated-manufacturing-execution-system"></a>Simulovaný systém řízení výroby
 
-Systém řízení výroby monitoruje všechny stanice na výrobní lince prostřednictvím OPC UA a zjišťuje tak změny stavu stanic. Voláním metod OPC UA řídí stanice a předává produkt z jedné stanice do další, dokud se proces nedokončí.
+Hello MES monitoruje každé stanici v řádku produkční hello prostřednictvím změny stavu stanice toodetect OPC UA. Volá metody toocontrol hello stanice OPC UA a předává produktu z jedné stanici toohello vedle jeho dokončení.
 
 ## <a name="gateway-opc-publisher-module"></a>Modul vydavatele brány OPC
 
-Modul vydavatele OPC se připojuje ke staničním serverům OPC UA a přihlašuje se k odběru uzlů OPC, které se zřídí. Modul převádí data z uzlu do formátu JSON, šifruje je a odesílá je do služby IoT Hub jako zprávy publikování a odběru OPC UA.
+OPC vydavatele modul připojí toohello stanice OPC UA servery a přihlásí se k odběru toohello OPC uzly toobe publikovaná. modul Hello převede data uzlu hello do formátu JSON, zašifruje a odešle ji jako zprávy OPC UA Pub nebo Sub tooIoT rozbočovače.
 
-Modul vydavatele OPC vyžaduje pouze výchozí port HTTPS (443) a může fungovat se stávající podnikovou infrastrukturou.
+modul OPC vydavatele Hello pouze vyžaduje k portu odchozí https (443) a mohou pracovat s stávající infrastrukturu.
 
 ## <a name="gateway-opc-proxy-module"></a>Modul proxy serveru brány OPC
 
-Modul proxy serveru brány OPC UA tuneluje binární příkazy OPC UA a řídicí zprávy a vyžaduje pouze výchozí port HTTPS (443). Může fungovat s existující podnikovou infrastrukturou, včetně webových proxy serverů.
+Hello brány OPC UA Proxy modulu tunelových propojení binární OPC UA příkazy a ovládání zpráv a vyžaduje pouze k portu odchozí https (443). Může fungovat s existující podnikovou infrastrukturou, včetně webových proxy serverů.
 
-Pomocí metod zařízení ve službě IoT Hub přenáší do balíčků zabalená data protokolu TCP/IP na úrovni aplikace a tak zajišťuje zabezpečení koncových bodů, šifrování dat a integritu pomocí protokolu SSL/TLS.
+Používá zařízení IoT Hub metody tootransfer packetized TCP/IP data na aplikační vrstvu hello a tím zajišťuje důvěryhodnosti koncový bod, šifrování dat a integritu pomocí protokolu SSL/TLS.
 
-Samotný binární protokol OPC UA předávaný přes proxy server používá ověřování a šifrování pomocí UA.
+Hello OPC UA binární protokol přes předávací službu přes proxy server hello samotné používá uživatelský Agent ověřování a šifrování.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Modul vydavatele brány OPC se přihlašuje k odběru uzlů serveru OPC UA, aby mohl zjišťovat změny hodnot dat. Pokud se v některém z uzlů zjistí změna dat, modul odešle zprávy do služby Azure IoT Hub.
+Hello brány OPC vydavatele modulu odběratel tooOPC uživatelský Agent serveru uzly toodetect změnu v hodnotě hello datových hodnot. Pokud je zjištěna změna dat v jednom z uzlů hello, tento modul pak odešle zprávy tooAzure IoT Hub.
 
-Služba IoT Hub poskytuje zdroj událostí pro službu Azure TSI. TSI data ukládá po dobu 30 dní na základě časových razítek připojených ke zprávám. Mezi tato data patří:
+Služba IoT Hub zajišťuje tooAzure zdroje událostí TSI. TSI ukládá data po dobu 30 dnů podle časová razítka připojených toohello zprávy. Mezi tato data patří:
 
 * Identifikátor OPC UA ApplicationUri
 * Identifikátor OPC UA NodeId
-* Hodnota uzlu
+* Hodnota uzlu hello
 * Časové razítko zdroje
 * Název OPC UA DisplayName
 
-TSI aktuálně neumožňuje změnu doby, po kterou se data mají uchovat.
+V současné době TSI neumožňuje zákazníci toocustomize jak dlouho si přejí tookeep hello data.
 
 Dotazy služby TSI na data uzlů se provádí pomocí SearchSpan (Time.From a Time.To) a agregace podle identifikátoru OPC UA ApplicationUri nebo OPC UA NodeId nebo názvu OPC UA DisplayName.
 
-Při načítání dat pro měřidla celkové efektivity zařízení, klíčových ukazatelů výkonu a grafů časových řad se data agregují podle počtu událostí, celkového součtu, průměrného součtu, minima a maxima.
+agregovaná data hello tooretrieve pro měřidla hello OEE a klíčových ukazatelů výkonu a grafy řady hello, data podle počtu událostí, Sum, Avg, Min a Max.
 
-Časové řady se sestavují jiným způsobem. Celková efektivita zařízení a klíčové ukazatele výkonu se počítají ze základních dat stanic a pronikají do topologie (výrobní linky, továrny, podnik) aplikace.
+Hello časové řady jsou vytvořeny pomocí jiným procesem. OEE a klíčových ukazatelů výkonu se počítá z stanice základní data a probublala do topologie hello (řádků výroby, objekty Factory, enterprise) v aplikaci hello.
 
-Kromě toho se časové řady pro celkovou efektivitu zařízení a klíčové ukazatele výkonu počítají v aplikaci kdykoli, kdy je připravený zobrazený časový rozsah. Například zobrazení dne se aktualizuje každou celou hodinu.
+Kromě toho časové řady pro topologii s OEE a klíčového ukazatele výkonu se počítá v aplikaci hello vždy, když je připraven na zobrazené časové rozpětí. Hello den zobrazení je třeba aktualizovat každou hodinu úplné.
 
-Zobrazení časových řad dat uzlu přichází přímo z TSI a používá agregaci časového rozsahu.
+Hello časové řady zobrazení data uzlu pochází přímo z TSI pomocí agregace pro časový interval.
 
 ## <a name="iot-hub"></a>IoT Hub
-Služba [IoT Hub][lnk-IoT Hub] přijímá data odesílaná z modulu vydavatele OPC do cloudu a zpřístupňuje je službě Azure TSI. 
+Hello [služby IoT hub] [ lnk-IoT Hub] přijímá data odeslaná z hello OPC vydavatele modulu do cloudu hello a je k dispozici toohello Azure TSI služby. 
 
-Služba IoT Hub v tomto řešení také:
-- Udržuje registr identit, ve kterém jsou uložena ID všech modulů vydavatele OPC a všech modulů proxy serveru OPC.
-- Pro obousměrnou komunikaci modulu proxy serveru OPC používá přenosový kanál.
+Hello IoT Hub v řešení hello také:
+- Udržuje registr identity, který ukládá hello ID pro všechny OPC vydavatele modulu a všechny moduly OPC Proxy.
+- Slouží jako kanál přenosu pro obousměrnou komunikaci hello OPC modul proxy serveru.
 
 ## <a name="azure-storage"></a>Azure Storage
-Řešení používá jako diskové úložiště pro virtuální počítač a k ukládání dat nasazení službu Azure Blob Storage.
+řešení Hello používá úložiště objektů blob v Azure jako úložiště disku pro data nasazení virtuálních počítačů a toostore hello.
 
 ## <a name="web-app"></a>Webová aplikace
-Webová aplikace nasazená jako součást předkonfigurovaného řešení se skládá z integrovaného klienta OPC UA, zpracování upozornění a vizualizace telemetrie.
+webové aplikace Hello nasadit jako součást hello předkonfigurované řešení se skládá ze klientem integrované OPC UA, výstrahy zpracování a vizualizace telemetrie.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o sadě IoT Suite najdete v následujících článcích:
+Budete-li pokračovat, Začínáme se službou IoT Suite načtením hello následující články:
 
-* [Oprávnění na webu azureiotsuite.com][lnk-permissions]
-* [Nasazení brány pro předkonfigurované řešení propojené továrny ve Windows nebo v Linuxu](iot-suite-connected-factory-gateway-deployment.md)
+* [Oprávnění na webu azureiotsuite.com hello][lnk-permissions]
+* [Nasazení brány v systému Windows nebo Linux hello připojen objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

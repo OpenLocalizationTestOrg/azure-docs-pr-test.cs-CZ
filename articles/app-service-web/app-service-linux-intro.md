@@ -1,5 +1,5 @@
 ---
-title: "Úvod do Azure webové aplikace v systému Linux | Microsoft Docs"
+title: "aaaIntroduction tooAzure webové aplikace v systému Linux | Microsoft Docs"
 description: "Další informace o Azure webové aplikace v systému Linux."
 keywords: "služby Azure app service, linux, operačních systémů"
 services: app-service
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.openlocfilehash: 0870f811845ec7c705da13f08abdfa762d25b209
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 43b9865ade251909a77429eb3e18fe0bcaac3bde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-web-app-on-linux"></a>Úvod do Azure webové aplikace v systému Linux
+# <a name="introduction-tooazure-web-app-on-linux"></a>Úvod tooAzure webové aplikace v systému Linux
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 ## <a name="overview"></a>Přehled
-Zákazníci mohou pomocí webové aplikace v systému Linux do hostitele webové aplikace v systému Linux nativně pro zásobníky podporovaných aplikací. V následující části jsou uvedeny zásobníky aplikace, které jsou aktuálně podporovány. 
+Zákazníci mohou používat webové aplikace ve webových aplikacích toohost Linux nativně v systému Linux pro zásobníky podporovaných aplikací. Hello následující části jsou uvedeny zásobníky hello aplikace, které jsou aktuálně podporovány. 
 
 ## <a name="features"></a>Funkce
-Webové aplikace v systému Linux aktuálně podporuje následující zásobníky aplikace:
+Webové aplikace v systému Linux aktuálně podporuje následující zásobníky aplikace hello:
 
 * Node.js
     * 4.4
@@ -59,10 +59,10 @@ Zákazníci můžou nasazovat svých aplikacích pomocí:
 
 Pro škálování aplikací:
 
-* Zákazníci mohou nahoru a dolů škálování webové aplikace tak, že změníte úroveň jejich plán služby App Service
-* Zákazníci můžete škálovat aplikace a spustit více instancí aplikace v hranicích jejich SKU
+* Zákazníci mohou nahoru a dolů škálování webové aplikace tak, že změníte úroveň hello jejich plánu služby App Service
+* Zákazníci můžete škálovat aplikace a spustit více instancí aplikace v rámci hello rámec jejich SKU
 
-Pro Kudu, některé základní funkce:
+Pro Kudu, některé základní funkce hello:
 
 * Prostředí
 * Nasazení
@@ -75,11 +75,11 @@ Pro devops:
 * ACR a DockerHub CI/CD
 
 ## <a name="limitations"></a>Omezení
-Portál Azure jsou pouze funkce, které aktuálně fungují pro webovou aplikaci v systému Linux a zbytek skryje. Jak jsme povolit další funkce, se bude zobrazovat na portálu.
+Hello portálu Azure jsou pouze funkce, které aktuálně fungují pro webovou aplikaci v systému Linux a skryje hello rest. Jak jsme povolit další funkce, bude zobrazovat na portálu hello.
 
-Některé funkce, například integrace virtuální sítě, ověřování Azure Active Directory nebo třetích stran nebo rozšíření lokality Kudu, ještě nejsou k dispozici. Jakmile se tyto funkce jsou k dispozici, budeme aktualizovat naší dokumentaci a blog o změnách.
+Některé funkce, například integrace virtuální sítě, ověřování Azure Active Directory nebo třetích stran nebo rozšíření lokality Kudu, ještě nejsou k dispozici. Jakmile se tyto funkce jsou k dispozici, budeme aktualizovat naší dokumentaci a blog o změnách hello.
 
-Tato verze public preview je aktuálně k dispozici pouze v následujících oblastech:
+Tuto verzi public preview je aktuálně k dispozici pouze v hello následující oblasti:
 
 * Západní USA
 * Východ USA
@@ -94,25 +94,25 @@ Tato verze public preview je aktuálně k dispozici pouze v následujících obl
 * Brazílie – jih
 * Indie – jih
 
-Webové aplikace v systému Linux je podporována pouze v rámci plánů služby vyhrazené aplikace a nemá úroveň Free nebo sdílené. Také plány služby App Service pro regulární a Linux webové aplikace se vzájemně vylučují, proto nelze vytvořit webovou aplikaci Linux v plánu služby app-systému Linux.
+Webové aplikace v systému Linux je podporována pouze v rámci plánů služby vyhrazené aplikace hello a nemá úroveň Free nebo sdílené. Také plány služby App Service pro regulární a Linux webové aplikace se vzájemně vylučují, proto nelze vytvořit webovou aplikaci Linux v plánu služby app-systému Linux.
 
-Webové aplikace v systému Linux musí být vytvořeny ve skupině prostředků, který neobsahuje jiné Linux webové aplikace ve stejné oblasti.
+Webové aplikace v systému Linux musí být vytvořeny ve skupině prostředků, který neobsahuje jiné Linux webové aplikace v hello stejné oblasti.
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
-Pokud vaše aplikace se nepodaří spustit nebo chcete provést kontrolu protokolování z vaší aplikace, zkontrolujte, že že docker protokolů v adresáři LogFiles. Buď prostřednictvím webu SCM nebo FTP, můžete přístup k tomuto adresáři.
-Do protokolu `stdout` a `stderr` z kontejneru, je nutné povolit **kontejner Docker protokolování** pod **protokolů diagnostiky**.
+Když toostart selhání aplikace nebo chcete toocheck hello protokolování z vaší aplikace, zkontrolujte hello Docker protokolů v adresáři LogFiles hello. Buď prostřednictvím webu SCM nebo FTP, můžete přístup k tomuto adresáři.
+toolog hello `stdout` a `stderr` z kontejneru, je nutné tooenable **kontejner Docker protokolování** pod **protokolů diagnostiky**.
 
 ![Povolení protokolování][2]
 
-![Pokud chcete zobrazit protokoly Docker pomocí modulu Kudu][1]
+![Pomocí modulu Kudu tooview Docker protokolů][1]
 
-Můžete získat přístup k webu SCM z **Rozšířené nástroje** v **nástroje pro vývoj** nabídky.
+Dostanete hello SCM lokality z **Rozšířené nástroje** v hello **nástroje pro vývoj** nabídky.
 
 ## <a name="next-steps"></a>Další kroky
-V následujících tématech začít pracovat s App Service v systému Linux. Otázky a aspekty můžete zveřejnit na [našem fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+V tématu hello následující odkazy tooget spuštění službou App Service v systému Linux. Otázky a aspekty můžete zveřejnit na [našem fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
-* [Jak používat vlastní image Docker pro webové aplikace Azure v systému Linux](app-service-linux-using-custom-docker-image.md)
+* [Jak toouse vlastní Docker obrázků pro webové aplikace Azure v systému Linux](app-service-linux-using-custom-docker-image.md)
 * [Pomocí PM2 konfigurace pro Node.js v Azure webové aplikace v systému Linux](app-service-linux-using-nodejs-pm2.md)
 * [Pomocí .NET Core v webové aplikace Azure App Service v systému Linux](app-service-linux-using-dotnetcore.md)
 * [Použití Ruby v webové aplikace Azure App Service v systému Linux](app-service-linux-ruby-get-started.md)

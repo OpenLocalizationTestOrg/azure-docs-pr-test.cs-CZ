@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory na základě skupin licencí další scénáře | Microsoft Docs"
+title: "aaaAzure služby Active Directory na základě skupin licencí další scénáře | Microsoft Docs"
 description: "Další scénáře pro Azure Active Directory na základě skupiny licencí"
 services: active-directory
 keywords: "Licencování Azure AD"
@@ -16,38 +16,38 @@ ms.workload: identity
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55e2e095138842f8e2d31a4f79ffb22b81d18dba
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 782b7c9aa1c062a55c1241d69af673466f7a849c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, použití skupin ke správě licencování v Azure Active Directory
+# <a name="scenarios-limitations-and-known-issues-using-groups-toomanage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy pomocí skupin toomanage licencování v Azure Active Directory
 
-Použijte následující informace a příklady pro získání rozsáhlejšími znalostmi na základě skupiny licencování Azure Active Directory (Azure AD).
+Použijte následující informace a příklady toogain rozsáhlejšími znalostmi Azure Active Directory (Azure AD) na základě skupiny licencování hello.
 
 ## <a name="usage-location"></a>Umístění využití
 
-Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí určit **umístění využití** vlastnost na uživatele. V [portálu Azure](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profil** &gt; **nastavení**.
+Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před tooa uživatele lze přiřadit licenci, má správce hello toospecify hello **umístění využití** vlastnost hello uživatele. V [hello portál Azure](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profil** &gt; **nastavení**.
 
-Pro přiřazení skupiny licencí zdědí všechny uživatele bez využití umístění zadané umístění adresáře. Pokud máte uživatele na více místech, zajistěte, aby tak, aby odrážela který správně v uživatelské objekty před přidáním uživatelů do skupin s licencí.
+Pro přiřazení skupiny licencí zdědí všechny uživatele bez zadané umístění využití hello umístění adresáře hello. Pokud máte uživatele na více místech, ujistěte se, že tooreflect, správně v uživatelské objekty před přidáním toogroups uživatelé s licencí.
 
 > [!NOTE]
-> Přiřazení licencí skupiny nikdy upraví stávající hodnotu umístění využití určitého uživatele. Doporučujeme vždy nastavit umístění využití jako součást vaší toku vytvoření uživatele ve službě Azure AD (např. přes AAD Connect konfigurace) –, který zajistí výsledek přiřazení licence se vždy správný, a uživatelé neobdrží služby v umístění, které nejsou povoleny.
+> Přiřazení licencí skupiny nikdy upraví stávající hodnotu umístění využití určitého uživatele. Doporučujeme vždy nastavit umístění využití v rámci vaší toku vytvoření uživatele ve službě Azure AD (např. přes AAD Connect konfigurace) –, který zajistí hello výsledek přiřazení licence je vždy správný, a uživatelé neobdrží v umístění, které nejsou služby povolené.
 
 ## <a name="use-group-based-licensing-with-dynamic-groups"></a>Správa na základě skupiny licencí s dynamickými skupinami
 
-Na základě skupiny licencování s žádnou skupinu zabezpečení, což znamená, že ho mohou být kombinovány s dynamických skupin Azure AD, můžete použít. Dynamické skupiny spustit pravidla pro uživatele atributů objektu automaticky přidat a odebrat uživatele ze skupin.
+Na základě skupiny licencování s žádnou skupinu zabezpečení, což znamená, že ho mohou být kombinovány s dynamických skupin Azure AD, můžete použít. Dynamické skupiny pravidel spouštění tooautomatically atributy objektu uživatele přidávat a odebírat uživatele ze skupin.
 
-Můžete například vytvořit skupinu dynamické pro některé sadu produkty, které chcete přiřadit uživatelům. Každý skupina se zaplní pravidlem přidávání uživatelů podle jejich atributů a každou skupinu je přiřazena licence, které mají přijímat. Můžete přiřadit atribut na místě a synchronizovat s Azure AD, nebo je můžete spravovat atribut přímo v cloudu.
+Například můžete vytvořit dynamické skupiny pro některé sadu produktů chcete tooassign toousers. Každý skupina se zaplní pravidlem přidávání uživatelů podle jejich atributů a každá skupina je hello přiřazené licence, zda je chcete tooreceive. Můžete přiřadit hello atribut místně a synchronizovat s Azure AD, nebo je můžete spravovat hello atribut přímo v cloudu hello.
 
-Licence jsou přiřazeny uživateli krátce po budou přidány do skupiny. Při změně atributu, uživatel odejde skupiny a jsou odebrány licence.
+Licence jsou přiřazeny toohello uživatele krátce po jejich přidání toohello skupiny. Při změně atributu hello hello uživatel opustí hello skupin a jsou odebrány licence hello.
 
 ### <a name="example"></a>Příklad
 
-Podívejte se na příklad řešení správy identity místně, rozhodne, které uživatelé by měli mít přístup k webovým službám společnosti Microsoft. Používá **extensionAttribute1** k uložení řetězcovou hodnotu představující licence, musí mít uživatel. Azure AD Connect synchronizuje se službou Azure AD.
+Podívejte se na příklad hello řešení správy identity místně, rozhodne, které uživatelé by měli mít přístup tooMicrosoft webové služby. Používá **extensionAttribute1** toostore řetězec hodnotu představující hello licence by měl mít uživatel hello. Azure AD Connect synchronizuje se službou Azure AD.
 
-Uživatelé mohou potřebovat licence ale není jiný, nebo může být nutné obě. Tady je příklad, ve kterém jsou distribuci Office 365 Enterprise E5 a Enterprise Mobility + Security (EMS) licence pro uživatele ve skupinách:
+Uživatelé mohou potřebovat licence ale není jiný, nebo může být nutné obě. Tady je příklad, ve kterém jsou distribuci Office 365 Enterprise E5 a Enterprise Mobility + Security (EMS) licence toousers ve skupinách:
 
 #### <a name="office-365-enterprise-e5-base-services"></a>Office 365 Enterprise E5: základní služby
 
@@ -57,112 +57,112 @@ Uživatelé mohou potřebovat licence ale není jiný, nebo může být nutné o
 
 ![Snímek obrazovky Enterprise Mobility + Security licencované uživatele](media/active-directory-licensing-group-advanced/o365-e5-licensed-users.png)
 
-V tomto příkladu úprava jednoho uživatele a nastavte jejich extensionAttribute1 na hodnotu `EMS;E5_baseservices;` Pokud má uživatel obou licence. Tato úprava můžete provést místní. Po změnu synchronizuje s cloudem, uživatel se automaticky přidá do obou skupinách a přiřazené licence.
+V tomto příkladu úprava jednoho uživatele a nastavte jejich hodnotu toohello extensionAttribute1 `EMS;E5_baseservices;` Pokud chcete hello uživatele toohave obou licence. Tato úprava můžete provést místní. Po hello změnit synchronizacemi hello cloudu, hello je automaticky přidán tooboth skupin a přiřazené licence.
 
-![Snímek obrazovky ukazující, jak nastavit extensionAttribute1 uživatele](media/active-directory-licensing-group-advanced/user-set-extensionAttribute1.png)
+![Snímek obrazovky ukazující, jak tooset hello extensionAttribute1 uživatele](media/active-directory-licensing-group-advanced/user-set-extensionAttribute1.png)
 
 > [!WARNING]
-> Buďte opatrní při úpravě pravidla členství ve stávající skupině. Při změně pravidla členství ve skupině bude znovu zhodnotí a budou uživatelé, kteří už neodpovídá nové pravidlo odebrané (uživatelé, kteří odpovídají nové pravidlo nebude mít vliv během tohoto procesu je stále). Tito uživatelé budou mít jejichž licence jsou během procesu, který může mít za následek ztrátu služby, nebo v některých případech ke ztrátě dat odebrány.
+> Buďte opatrní při úpravě pravidla členství ve stávající skupině. Pokud pravidlo mění, hello členství ve skupině hello bude znovu zhodnotí a uživatelé, kteří už neodpovídá hello nové pravidel se odeberou (uživatelů, kteří stále odpovídat hello nové pravidlo nebude mít vliv během tohoto procesu). Tito uživatelé budou mít jejich licencí během hello proces, který může mít za následek ztrátu služby, nebo v některých případech ke ztrátě dat odebrány.
 
-> Pokud máte velké dynamická skupina, které závisí na pro přiřazení licence, vezměte v úvahu ověřování žádnými většími změnami v testovací skupině, menší než je použijete do hlavní skupiny.
+> Pokud máte velké dynamická skupina, které závisí na pro přiřazení licence, vezměte v úvahu ověřování žádnými většími změnami v testovací skupině, menší než je použijete toohello hlavní skupiny.
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>Více skupin a více licencí
 
-Uživatel může být členem více skupin s licencí. Zde jsou některé věci vzít v úvahu:
+Uživatel může být členem více skupin s licencí. Zde jsou některé tooconsider věcí:
 
-- Více licencí pro stejný produkt, může dojít k překrytí a budou mít za následek všechny povolené služby, které bylo použito pro uživatele. Následující příklad ukazuje dva licencování skupin: *základní služby E3* obsahuje foundation služby pro nasazení, nejprve pro všechny uživatele. A *E3 rozšířené služby* obsahuje další služby (boční výkyvy a Planner) nasadit jenom pro některé uživatele. V tomto příkladu uživatel byl přidán do obou skupin:
+- Více licencí pro hello stejné produktu může dojít k překrytí a mít za následek povoleny všechny služeb, které jsou použité toohello uživatele. Hello následující příklad ukazuje dva licencování skupin: *základní služby E3* obsahuje hello foundation services toodeploy nejdřív tooall uživatele. A *E3 rozšířené služby* obsahuje další služby (boční výkyvy a Planner) toodeploy pouze toosome uživatele. V tomto příkladu byl přidán uživatel hello tooboth skupiny:
 
   ![Snímek obrazovky povolené služby](media/active-directory-licensing-group-advanced/view-enabled-services.png)
 
-  V důsledku toho uživatel má 7 12 služeb v produktu povoleno, při použití pouze jednu licenci tohoto produktu.
+  V důsledku toho uživatel hello má 7 hello 12 služeb v produktu hello povolené, při použití pouze jednu licenci tohoto produktu.
 
-- Výběr *E3* licence ukazuje další podrobnosti, včetně informací o tom, které skupiny způsobila, co services povolit pro uživatele.
+- Výběr hello *E3* licence ukazuje další podrobnosti, včetně informací o tom, které skupiny způsobila jaké služby toobe pro hello uživatele povoleno.
 
   ![Snímek obrazovky povolené služby podle skupiny](media/active-directory-licensing-group-advanced/view-enabled-service-by-group.png)
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>Přímé licence souběžnou existenci s skupiny licencí
 
-Když uživatel dědí licenci ze skupiny, nedá přímo odebrat ani změnit tohoto přiřazení licence ve vlastnostech daného uživatele. Změny, musí být provedené ve skupině a pak se rozšíří na všechny uživatele.
+Když uživatel dědí licenci ze skupiny, nedá přímo odebrat ani změnit tohoto přiřazení licence ve vlastnostech hello uživatele. Změny ve skupině hello musí být provedeny a pak se rozšíří tooall uživatele.
 
-Je však možné, přiřaďte stejné licenci produktu přímo na uživatele, kromě zděděné licence. Další služby z produktu jen pro jednoho uživatele, můžete povolit bez ovlivnění jiných uživatelů.
+Je možné, ale tooassign hello stejné licenci produktu přímo toohello uživatele v přidání toohello zděděná licence. Další služby z produktu hello jen pro jednoho uživatele, můžete povolit bez ovlivnění jiných uživatelů.
 
-Přímo přiřazené licence lze odebrat a nemají vliv zděděná licence. Vezměte v úvahu uživatele, který dědí ze skupiny licenci pro Office 365 Enterprise E3.
+Přímo přiřazené licence lze odebrat a nemají vliv zděděná licence. Vezměte v úvahu hello uživatele, který dědí ze skupiny licenci pro Office 365 Enterprise E3.
 
-1. Původně uživatele dědí licence pouze z *základní služby E3* skupinu, která umožňuje čtyři plány služby, jak je znázorněno:
+1. Původně hello uživatele dědí hello licencí pouze z hello *základní služby E3* skupinu, která umožňuje čtyři plány služby, jak je znázorněno:
 
   ![Snímek obrazovky E3 skupiny povolené služby](media/active-directory-licensing-group-advanced/e3-group-enabled-services.png)
 
-2. Můžete vybrat **přiřadit** přímo uživateli přiřadit licenci E3. V takovém případě se chystáte zakažte všechny plány služby s výjimkou Yammer Enterprise:
+2. Můžete vybrat **přiřadit** toodirectly přiřadit uživatele toohello licence E3. V takovém případě budete toodisable plány všechny služby s výjimkou Yammer Enterprise:
 
-  ![Snímek obrazovky přiřazení licence přímo na uživatele](media/active-directory-licensing-group-advanced/assign-license-to-user.png)
+  ![Snímek obrazovky jak tooassign licenci přímo tooa uživatele](media/active-directory-licensing-group-advanced/assign-license-to-user.png)
 
-3. V důsledku toho uživatel pořád používají pouze jednu licenci produktu E3. Ale umožňuje přímé přiřazení Služba Yammer Enterprise pouze pro tohoto uživatele. Můžete zjistit, které služby jsou povolené ve členství ve skupině a přímé přiřazení:
+3. V důsledku toho uživatel hello pořád používají pouze jednu licenci produktu hello E3. Ale umožňuje přímé přiřazení hello hello Služba Yammer Enterprise pouze pro tohoto uživatele. Můžete zjistit, které služby jsou povolené ve členství ve skupině hello versus hello přímé přiřazení:
 
   ![Snímek obrazovky zděděná versus přímé přiřazení](media/active-directory-licensing-group-advanced/direct-vs-inherited-assignment.png)
 
-4. Pokud používáte přímé přiřazení, jsou povoleny následující operace:
+4. Pokud používáte přímé přiřazení, jsou povoleny hello následující operace:
 
-  - Yammer Enterprise může být vypnuto v objektu user přímo. **Zapnutí nebo vypnutí** pro tuto službu, a další služby přepínačů bylo povoleno přepnutí na obrázku. Vzhledem k tomu, že je služba zapnutá přímo na uživatele, můžete změnit.
-  - Další služby můžete povolit taky jako součást přímo přiřazené licence.
-  - **Odebrat** tlačítko slouží k odebrání přímé licence od uživatele. Uvidíte, že má uživatel nyní pouze zděděné skupinu licencí a zůstat zapnuté, pouze původní služby:
+  - Yammer Enterprise můžete vypnout v objektu user hello přímo. Hello **zapnutí nebo vypnutí** přepnutí hello obrázku byla povolená pro tuto službu, jako toohello názvem na rozdíl od jiných služeb přepínačů. Protože je povolena služba hello přímo na hello uživatele, můžete změnit.
+  - Jako součást hello přímo přiřazena licence můžete taky povolit další služby.
+  - Hello **odebrat** tlačítko lze použít tooremove hello přímé licenci hello uživatele. Uvidíte, že hello uživatel nyní má pouze hello zděděné skupinu licencí a pouze původní služby hello zůstat zapnuté:
 
-    ![Snímek obrazovky ukazující, jak odebrat přímé přiřazení](media/active-directory-licensing-group-advanced/remove-direct-license.png)
+    ![Snímek obrazovky ukazující, jak tooremove přímé přiřazení](media/active-directory-licensing-group-advanced/remove-direct-license.png)
 
-## <a name="managing-new-services-added-to-products"></a>Správa nové služby přidán do produktů
-Když Microsoft přidá novou službu pro určitý produkt, bude povoleno ve výchozím nastavení ve všech skupinách, na které jste přiřadili licenci produktu. Uživatelé ve vašem klientovi, kteří jsou přihlášeni k odběru oznámení o změnách produktu bude dostávat e-maily s předstihem jim informace o přidání nadcházející služby.
+## <a name="managing-new-services-added-tooproducts"></a>Správa nové služby přidat tooproducts
+Když Microsoft přidá nového produktu tooa služby, bude povoleno ve výchozím nastavení všechny skupiny toowhich přiřadili jste licence produktu hello. Uživatelé ve vašem klientovi, kteří jsou odebírané toonotifications o změnách produktu bude dostávat e-maily s předstihem jim informace o přidání nadcházející služby hello.
 
-Jako správce můžete revidovat všechny skupiny vliv změn a provést akci, například zakázání nové služby v každé skupině. Například pokud jste vytvořili skupiny cílení pouze konkrétní služby pro nasazení, můžete pokroku těchto skupin a ujistěte se, že všechny nově přidaní služby jsou zakázány.
+Jako správce můžete revidovat všechny skupiny hello změnou ovlivněná a provést akci, například zakázání hello novou službu v každé skupině. Například pokud jste vytvořili skupiny cílení pouze konkrétní služby pro nasazení, můžete pokroku těchto skupin a ujistěte se, že všechny nově přidaní služby jsou zakázány.
 
 Tady je příklad, jak může vypadat tento proces:
 
-1. Původně, jste přiřadili *Office 365 Enterprise E5* produktu do několika skupin. Jeden z těchto skupin nazývaných *O365 E5 - Exchange pouze* byla navržená tak, aby povolit pouze *Exchange Online (plán 2)* služby pro její členy.
+1. Původně, jste přiřadili hello *Office 365 Enterprise E5* skupiny tooseveral produktu. Jeden z těchto skupin nazývaných *O365 E5 - Exchange pouze* byla pouze hello navrženou tooenable *Exchange Online (plán 2)* služby pro její členy.
 
-2. Obdržíte oznámení od společnosti Microsoft, který produkt E5 bude rozšířeno o novou službu - *Microsoft Stream*. Jakmile služba k dispozici ve vašem klientovi, můžete provést následující:
+2. Obdržela oznámení o společnosti Microsoft, která hello E5 produktu bude rozšířeno o novou službu - *Microsoft Stream*. Jakmile hello služby k dispozici ve vašem klientovi, můžete provést následující hello:
 
-3. Přejděte na [ **Azure Active Directory > licence > všechny produkty** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) a vyberte *Office 365 Enterprise E5*, pak vyberte **licenci skupiny** Chcete-li zobrazit seznam všech skupin s tohoto produktu.
+3. Přejděte toohello [ **Azure Active Directory > licence > všechny produkty** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) a vyberte *Office 365 Enterprise E5*, pak vyberte **licenci skupiny**  tooview seznam všechny skupiny s tohoto produktu.
 
-4. Klikněte na skupinu, které chcete zkontrolovat (v tomto případě *O365 E5 - Exchange pouze*). Otevře se **licence** kartě. Kliknutím na E5 licence, které se otevře okno výpis všech služeb povoleno.
+4. Klikněte na skupinu hello chcete tooreview (v tomto případě *O365 E5 - Exchange pouze*). Otevře se hello **licence** kartě. Kliknutím na licenční E5 hello se otevře okno výpis všech služeb povoleno.
 > [!NOTE]
-> *Microsoft Stream* služby je automaticky přidán a povoleno v této skupině kromě *Exchange Online* služby:
+> Hello *Microsoft Stream* služby je automaticky přidán a povoleno v této skupině v přidání toohello *Exchange Online* služby:
 
-  ![Snímek obrazovky nové služby, které jsou přidány do skupiny licencí](media/active-directory-licensing-group-advanced/manage-new-services.png)
+  ![Snímek obrazovky nové služby přidat tooa skupiny licencí](media/active-directory-licensing-group-advanced/manage-new-services.png)
 
-5. Pokud chcete zakázat službu nové v této skupině, klikněte na tlačítko **zapnutí nebo vypnutí** přepnutí vedle služby a klikněte na tlačítko **Uložit** tlačítko pro potvrzení změny. Azure AD bude nyní zpracovat všechny uživatele ve skupině na použití změny; nebude mít žádné noví uživatelé přidaní do skupiny *Microsoft Stream* služby povolena.
+5. Pokud chcete toodisable hello nové služby v této skupině, klikněte na tlačítko hello **zapnutí nebo vypnutí** přepnutí další toohello služby a klikněte na tlačítko hello **Uložit** tlačítko tooconfirm hello změnu. Azure AD bude nyní zpracovat všichni uživatelé v hello skupiny tooapply hello změnu; všechny nové uživatele přidaných toohello skupiny nebude mít hello *Microsoft Stream* služby povolena.
 
   > [!NOTE]
-  > Uživatelé mohou mít i nadále službu pomocí některé jiné přiřazení licence (jiné skupiny jsou členy nebo přiřazení přímé licence) povolena.
+  > Uživatelé mohou mít i nadále hello služby pomocí některé jiné přiřazení licence (jiné skupiny jsou členy nebo přiřazení přímé licence) povolena.
 
-6. V případě potřeby proveďte s tímto produktem přiřazen stejný postup pro jiné skupiny.
+6. V případě potřeby proveďte hello přiřazen stejný postup pro jiné skupiny s tohoto produktu.
 
-## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Pomocí prostředí PowerShell, který dědí a přímé licencí
-Skript prostředí PowerShell můžete použít ke kontrole, pokud uživatelé mít licenci přiřazené přímo nebo zděděno od skupiny.
+## <a name="use-powershell-toosee-who-has-inherited-and-direct-licenses"></a>Použijte toosee prostředí PowerShell, který dědí a přímé licencí
+Toocheck skript prostředí PowerShell můžete použít, pokud uživatelé používají licence přiřadit přímo nebo zděděno od skupiny.
 
-1. Spustit `connect-msolservice` rutiny k ověření a připojení ke klientovi.
+1. Spustit hello `connect-msolservice` tooauthenticate rutiny a připojte tooyour klienta.
 
-2. `Get-MsolAccountSku`umožňuje zjistit všechny licence zřízené produktu v klientovi.
+2. `Get-MsolAccountSku`lze použít toodiscover všechny licence zřízené produktu v klientovi hello.
 
-  ![Snímek obrazovky rutinu Get-Msolaccountsku](media/active-directory-licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+  ![Snímek obrazovky rutiny Get-Msolaccountsku hello](media/active-directory-licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. Použití *AccountSkuId* hodnotu pro licence, které vás zajímá, [tento skript prostředí PowerShell](./active-directory-licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group). Vznikne tak seznam uživatelů, kteří mají tuto licenci s informacemi o tom, jak přiřadit licence.
+3. Použití hello *AccountSkuId* hodnotu pro vás zajímá s licencí hello [tento skript prostředí PowerShell](./active-directory-licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group). Vznikne tak seznam uživatelů, kteří mají tuto licenci s hello informace o tom, jak hello licence se nepřiřadí.
 
-## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Protokoly auditu pomocí monitorování na základě skupiny licencování
+## <a name="use-audit-logs-toomonitor-group-based-licensing-activity"></a>Protokoly auditu použití toomonitor na základě skupiny licencování aktivity
 
-Můžete použít [protokoly auditu Azure AD](./active-directory-reporting-activity-audit-logs.md#audit-logs) zobrazíte všechny aktivity související s na základě skupiny licencí, včetně:
+Můžete použít [protokoly auditu Azure AD](./active-directory-reporting-activity-audit-logs.md#audit-logs) toosee veškeré aktivity související na základě toogroup licencování, včetně:
 - kdo změnil licencí na skupiny
-- Při spuštění systému zpracování změnu skupinu licencí a po jeho dokončení
-- jaké změny licencí byly provedeny na uživatele v důsledku přiřazení licencí skupiny.
+- Při spuštění systému hello zpracování změnu skupinu licencí a po jeho dokončení
+- jaké změny licencí byly provedeny tooa uživatele v důsledku přiřazení licencí skupiny.
 
 >[!NOTE]
-> Protokoly auditu jsou k dispozici na většině oken v části služby Azure Active Directory na portálu. V závislosti na tom, odkud je může být filtry předem použít pouze zobrazuje relevantní pro kontextu okna aktivity. Pokud nevidíte očekáváte, že výsledky, prozkoumejte [možnosti filtrování](./active-directory-reporting-activity-audit-logs.md#filtering-audit-logs) nebo přístup k protokolům nefiltrované auditu v části [ **Azure Active Directory > Aktivity > protokoly auditu** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
+> Protokoly auditu jsou k dispozici na většině oken v Azure Active Directory části portálu hello hello. V závislosti na tom, odkud je může být filtry předem použité tooonly zobrazit aktivitu relevantní toohello kontextu okna hello. Pokud nevidíte hello výsledky očekáváte, prozkoumejte [hello možnosti filtrování](./active-directory-reporting-activity-audit-logs.md#filtering-audit-logs) nebo přístup protokoly auditu hello nefiltrovaná pod [ **Azure Active Directory > Aktivity > protokoly auditu** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
 
 ### <a name="find-out-who-modified-a-group-license"></a>Zjistěte, kdo upravit skupinu licencí
 
-1. Nastavte **aktivity** filtrovat, aby *sady skupiny licencí* a klikněte na tlačítko **použít**.
-2. Výsledky budou zahrnovat všechny případy licencí se nastavit nebo změnit na skupiny.
+1. Sada hello **aktivity** filtrovat příliš*sady skupiny licencí* a klikněte na tlačítko **použít**.
+2. Hello výsledky obsahovat všech případech se nastavit nebo změnit na skupiny licencí.
 >[!TIP]
-> Můžete také zadat název skupiny v *cíl* filtr k určení rozsahu výsledky.
+> Můžete také zadat název hello hello skupiny v hello *cíl* filtrování výsledků tooscope hello.
 
-3. Klikněte na položku v zobrazení seznamu zobrazíte podrobnosti o co se změnilo. V části *upravit vlastnosti* staré a nové hodnoty pro přiřazení licence jsou uvedené.
+3. Klikněte na položky v seznamu zobrazit hello toosee-podrobnosti o hello co se změnilo. V části *upravit vlastnosti* staré a nové hodnoty pro přiřazení licence hello jsou uvedené.
 
 Tady je příklad nedávné změny skupiny licencí, s podrobnostmi:
 
@@ -170,15 +170,15 @@ Tady je příklad nedávné změny skupiny licencí, s podrobnostmi:
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Zjistit, kdy změny skupiny spuštění a dokončení zpracování
 
-Když se změní licenci na skupinu, Azure AD se spustí použití změn, pro všechny uživatele.
+Pokud licence se změní na skupinu, Azure AD se spustí, použití hello změny tooall uživatele.
 
-1. Při spuštění skupiny zpracování najdete nastavit **aktivity** filtrovat, aby *spustit použití skupinu na základě licencí pro uživatele*. Všimněte si, že je objektu actor pro operaci *Microsoft Azure AD na základě skupiny Licensing* -systémový účet, který se používá k provedení všech změn skupiny licencí.
+1. toosee při spuštění skupiny zpracování, nastavte hello **aktivity** filtrovat příliš*spustit použití skupinu na základě licencí toousers*. Všimněte si, že hello objektu actor pro operaci hello je *Microsoft Azure AD na základě skupiny Licensing* -systému účtu, který je použité tooexecute všechny změny skupiny licencí.
 >[!TIP]
-> Klikněte na položku v seznamu zobrazíte *upravit vlastnosti* pole - zobrazuje změny licencí, které byly zachyceny pro zpracování. To je užitečné, pokud jste provedli více změn do skupiny a si nejste jisti, která byla zpracována.
+> Klikněte na položku v hello seznamu toosee hello *upravit vlastnosti* pole - zobrazuje změny hello licencí, které byly zachyceny pro zpracování. To je užitečné, pokud jste provedli několik změny tooa skupiny a si nejste jisti, která byla zpracována.
 
-2. Podobně, pokud chcete zobrazit, dokončení zpracování skupiny, použijte hodnota filtru *dokončit použití skupinu na základě licencí pro uživatele*.
+2. Podobně toosee po dokončení skupiny zpracování, hodnota filtru hello použití *dokončit použití skupinu na základě licencí toousers*.
 >[!TIP]
-> V takovém případě *upravit vlastnosti* pole obsahuje souhrn výsledků – to je užitečné můžete rychle zjistit, pokud zpracování výsledkem případné chyby. Ukázkový výstup:
+> V takovém případě hello *upravit vlastnosti* pole obsahuje souhrn výsledků hello – to je užitečné tooquickly kontrolu v případě zpracování výsledkem případné chyby. Ukázkový výstup:
 > ```
 Modified Properties
 ...
@@ -187,42 +187,42 @@ Old Value : []
 New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
 > ```
 
-3. Chcete-li naleznete v protokolu dokončení jak byla zpracována skupiny, včetně změny všech uživatelů, nastavte následující filtry:
+3. dokončení protokolu toosee hello jak byla zpracována skupiny, včetně změny všech uživatelů, nastavit hello následující filtry:
   - **Zahájit (objektu Actor)**: "Microsoft Azure AD na základě skupin licencí."
   - **Rozsah** (volitelné): Pokud znáte konkrétní skupinu vlastní rozsah spuštění a dokončení zpracování
 
-Tento ukázkový výstup ukazuje spuštění zpracování, výsledné změny uživatelů a dokončit zpracování.
+Tento ukázkový výstup zobrazuje hello začátek zpracování, všechny výsledné změny uživatelů a hello dokončit zpracování.
 
 ![Změny licencí skupiny – snímek obrazovky](media/active-directory-licensing-group-advanced/audit-group-processing-log.png)
 
 >[!TIP]
-> Kliknutím na položky související s *uživatelské licence pro změnu* zobrazí podrobnosti pro licenční změny použité pro každý jednotlivý uživatel.
+> Kliknutím na položky související s příliš*uživatelské licence pro změnu* zobrazí podrobnosti pro licenční změny tooeach jednotlivé uživatele.
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
-Pokud chcete použít, na základě skupiny licencí, je vhodné se seznámit s následující seznam omezení a známé problémy.
+Pokud chcete použít, na základě skupiny licencí, je vhodné toofamiliarize sami s hello následující seznam omezení a známé problémy.
 
-- Na základě skupiny licencování aktuálně nepodporuje skupiny, které obsahují další skupiny (vnořené skupiny). Pokud použijete licenci pro vnořené skupiny, mají pouze členy okamžitou první úrovně uživatelské skupiny licencí použít.
+- Na základě skupiny licencování aktuálně nepodporuje skupiny, které obsahují další skupiny (vnořené skupiny). Pokud použijete tooa vnořené skupiny licencí, mají pouze členové okamžitou první úrovně uživatele hello hello skupiny licencí hello použít.
 
-- Tuto funkci lze použít pouze se skupinami zabezpečení. Aktuálně nejsou podporované skupiny Office a nebude možné použít při procesu přiřazení licence.
+- Funkce Hello lze použít pouze se skupinami zabezpečení. Aktuálně nejsou podporované skupiny Office a nebude ji již možné toouse je v procesu přiřazení licence hello.
 
-- [Portálu pro správu Office 365](https://portal.office.com ) současné době nepodporuje na základě skupin licencí. Pokud uživatel dědí licenci ze skupiny, zobrazí se tuto licenci na portálu správy Office jako běžných uživatelských licencí. Pokud se pokusíte změnit licencích nebo pokuste se odebrat licence, portálu vrátí chybovou zprávu. Licence zděděné skupiny nemůže být upraven přímo na uživatele.
+- Hello [portálu pro správu Office 365](https://portal.office.com ) současné době nepodporuje na základě skupin licencí. Pokud uživatel dědí licenci ze skupiny, zobrazí tuto licenci v portálu pro správu Office hello jako běžných uživatelských licencí. Pokud se pokusíte toomodify, který licence nebo zkuste tooremove hello licence, portál hello vrátí chybovou zprávu. Licence zděděné skupiny nemůže být upraven přímo na uživatele.
 
-- Když uživatel se odebere ze skupiny a ztratí licence, plány služby z této licence (například služby SharePoint Online) jsou nastaveny na **pozastaveno** stavu. Plány služeb nejsou nastavené konečné, zakázaném stavu. Toto opatření se můžete vyhnout náhodného odstranění dat uživatele, pokud správce zadá chybu ve správě členství skupiny.
+- Pokud uživatele se odebere ze skupiny a ztratí hello licence, plány služby hello z tohoto licence (například služby SharePoint Online) se nastaví tooa **pozastaveno** stavu. Hello plány služeb nejsou nastaveny tooa konečné, zakázané stavu. Toto opatření se můžete vyhnout náhodného odstranění dat uživatele, pokud správce zadá chybu ve správě členství skupiny.
 
-- Když jsou licence přiřadit nebo změnit pro velké skupinu (například 100 000 uživatelů), může ovlivnit výkon. Konkrétně objemu změn generované automatizace Azure AD může mít negativní vliv na výkon vaší synchronizace adresářů mezi službami Azure AD a místních systémech.
+- Když jsou licence přiřadit nebo změnit pro velké skupinu (například 100 000 uživatelů), může ovlivnit výkon. Konkrétně hello objemu změn generované automatizace Azure AD může mít negativní vliv hello výkon vaší synchronizace adresářů mezi službami Azure AD a místních systémech.
 
-- Automatizace správy licencí nereaguje automaticky pro všechny typy změny v prostředí. Například můžete pravděpodobně vyčerpala volné licence, způsobuje někteří uživatelé v chybovém stavu. K uvolněte počet dostupných stanici, můžete odebrat některé přímo přiřazené licence od jiných uživatelů. Systém však automaticky reagovat na tuto změnu a opravte uživatelé v tomto stavu chyby.
+- Automatizace správy licencí tooall typů změn v prostředí hello automaticky nereaguje. Například můžete pravděpodobně vyčerpala volné licence, způsobuje toobe někteří uživatelé v chybovém stavu. toofree až počet hello k dispozici stanici, můžete odebrat některé přímo přiřazené licence od jiných uživatelů. Hello systému však automaticky reagovat toothis změn a opravte uživatelé v tomto stavu chyby.
 
-  Jako řešení pro tyto typy omezení, můžete přejít na **skupiny** okno ve službě Azure AD a klikněte na tlačítko **znovu zpracovat**. Tento příkaz zpracovává všechny uživatele v dané skupině a přeloží chybové stavy, pokud je to možné.
+  Jako alternativní řešení toothese, druhy omezení můžete přejít toohello **skupiny** okno ve službě Azure AD a klikněte na tlačítko **znovu zpracovat**. Tento příkaz zpracovává všechny uživatele v dané skupině a přeloží hello chybové stavy, pokud je to možné.
 
-- Na základě skupiny licencování nezaznamenává chyby, pokud licenci nelze přiřadit uživateli kvůli konfiguraci proxy duplicitní adresa v systému Exchange Online; tyto uživatele jsou přeskočeny při přiřazení licence. Další informace o tom, jak identifikovat a vyřešit tento problém, naleznete v části [v této části](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
+- Na základě skupiny licencování nezaznamenává chyby, pokud nebylo možné přiřadit licenci tooa uživatele kvůli konfiguraci adresy tooa duplicitní proxy serveru v systému Exchange Online; tyto uživatele jsou přeskočeny při přiřazení licence. Další informace o tom, tooidentify a tento problém vyřešit, najdete v části [v této části](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o scénáře pro správu licencí prostřednictvím na základě skupin licencí najdete v tématu:
+toolearn Další informace o scénáře pro správu licencí prostřednictvím na základě skupiny licencí, najdete v části:
 
 * [Co je na základě skupin licencování v Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazování licencí pro skupinu v Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
+* [Přiřazení licencí tooa skupiny ve službě Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
 * [Identifikace a řešení potíží s licencí pro skupinu v Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)
-* [Postup migrace na základě skupiny licencí v Azure Active Directory pro jednotlivé licencovaní uživatelé](active-directory-licensing-group-migration-azure-portal.md)
+* [Jak toomigrate jednotlivé licencované uživatele toogroup základě licencování v Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Správa účtů Azure Media Services pomocí prostředí PowerShell"
-description: "Zjistěte, jak chcete spravovat účty pro Azure Media Services pomocí rutin prostředí PowerShell."
+title: "aaaManage Azure Media Services účty pomocí prostředí PowerShell"
+description: "Zjistěte, jak účty toomanage Azure Media Services pomocí rutin prostředí PowerShell."
 author: Juliako
 manager: erikre
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: juliako
-ms.openlocfilehash: 3d999d9e27844bc0164cc3572522b9ec022118a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e8f97bb2393343e45fabf9c437b4fc09f2525dc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-media-services-accounts-with-powershell"></a>Správa účtů Azure Media Services pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 > * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
-> Abyste mohli vytvořit účet Azure Media Services, musí mít účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Bezplatná zkušební verze Azure</a>.
+> toobe možné toocreate účtu Azure Media Services, musí mít účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Bezplatná zkušební verze Azure</a>.
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje seznam rutin prostředí Azure PowerShell pro Azure Media Services (AMS) v rámci Azure Resource Manager. Rutiny v existovat **Microsoft.Azure.Commands.Media** oboru názvů.
+Tento článek obsahuje seznam rutin prostředí Azure PowerShell hello pro Azure Media Services (AMS) v Azure Resource Manager framework hello. rutiny Hello existovat v hello **Microsoft.Azure.Commands.Media** oboru názvů.
 
 ## <a name="versions"></a>Verze
 **ApiVersion**: "2015-10-01"
@@ -52,11 +52,11 @@ Sada parametrů: StorageAccountsParamSet
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -64,11 +64,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | Name (Název) |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |1 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |False |
@@ -76,11 +76,11 @@ Určuje název mediální služby.
 
 **-Umístění &lt;řetězec&gt;**
 
-Určuje umístění prostředků mediální služby.
+Určuje umístění prostředků hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |2 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -88,14 +88,14 @@ Určuje umístění prostředků mediální služby.
 
 **-StorageAccountId &lt;řetězec&gt;**
 
-Určuje primárního úložiště účet, který přidružené mediální služby.
+Určuje primárního úložiště účet, který přidružené hello mediální služby.
 
-* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků) podporovaná jenom.
-* Účet úložiště, musí existovat a má stejné umístění s mediální služby.
+* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků hello) podporovaná jenom.
+* Hello účet úložiště, musí existovat a má hello stejného umístění, hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |3 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -104,15 +104,15 @@ Určuje primárního úložiště účet, který přidružené mediální služb
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Určuje účty úložiště, které přidružené mediální služby.
+Určuje účty úložiště, které přísluší službě hello média.
 
-* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků) podporovaná jenom.
-* Účet úložiště, musí existovat a má stejné umístění s mediální služby.
+* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků hello) podporovaná jenom.
+* Hello účet úložiště, musí existovat a má hello stejného umístění, hello mediální služby.
 * Pouze jeden účet úložiště lze zadat jako primární.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |3 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -121,13 +121,13 @@ Určuje účty úložiště, které přidružené mediální služby.
 
 **-Značky &lt;zatřiďovací tabulky&gt;**
 
-Určuje tabulku hash značek, které jsou přidruženy mediální služby.
+Určuje tabulku hash hello značky, které jsou přidruženy hello mediální služby.
 
 * Příklad: @{"tag1"="hodnota1";" tag2 "=: value2"}
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |False |
+| Povinné? |False |
 | Pozice? |S názvem |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |False |
@@ -135,13 +135,13 @@ Určuje tabulku hash značek, které jsou přidruženy mediální služby.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
 Aktualizace služby media service.
@@ -152,11 +152,11 @@ Aktualizace služby media service.
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -164,11 +164,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | Name (Název) |
 | --- | --- |
-| Vyžaduje? |True |
+| Povinné? |True |
 | Pozice? |1 |
 | Výchozí hodnota |Žádný |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -176,15 +176,15 @@ Určuje název mediální služby.
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Určuje účty úložiště, které přidružené mediální služby.
+Určuje účty úložiště, které přísluší službě hello média.
 
-* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků) podporovaná jenom.
-* Účet úložiště, musí existovat a má stejné umístění s mediální služby.
+* Nový účet úložiště jsou (vytvořený pomocí rozhraní API Správce prostředků hello) podporovaná jenom.
+* Hello účet úložiště, musí existovat a má hello stejného umístění, hello mediální služby.
 * Pouze jeden účet úložiště lze zadat jako primární.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |False |
+| Povinné? |False |
 | Pozice? |S názvem |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -193,13 +193,13 @@ Určuje účty úložiště, které přidružené mediální služby.
 
 **-Značky &lt;zatřiďovací tabulky&gt;**
 
-Určuje tabulku hash značek, které jsou spojeny s touto službou média.
+Určuje tabulku hash hello značky, které jsou spojeny s touto službou média.
 
-* Značky, které jsou přidruženy mediální služby se nahradí hodnotu zadanou pomocí zákazníka.
+* Hello značky, které jsou přidruženy hello mediální služby se nahradí hodnotu zadanou pomocí hello zákazníka.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |False |
+| Povinné? |False |
 | Pozice? |S názvem |
 | Výchozí hodnota |Žádný |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -207,13 +207,13 @@ Určuje tabulku hash značek, které jsou spojeny s touto službou média.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
 Odebere služby media service.
@@ -224,11 +224,11 @@ Odebere služby media service.
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -236,11 +236,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |2 |
 | Výchozí hodnota |Žádný |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -248,13 +248,13 @@ Určuje název mediální služby.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
 Získá všechny služby media services ve skupině prostředků nebo služby media service se zadaným názvem.
@@ -271,11 +271,11 @@ ParameterSet: AccountNameParameterSet
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -285,11 +285,11 @@ Přijímat zástupné znaky?   False
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |1 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -298,13 +298,13 @@ Určuje název mediální služby.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
 Získá klíče služby media service.
@@ -315,11 +315,11 @@ Získá klíče služby media service.
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -327,11 +327,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |1 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -339,13 +339,13 @@ Určuje název mediální služby.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
 Regeneruje primární nebo sekundární klíč služby média.
@@ -356,11 +356,11 @@ Regeneruje primární nebo sekundární klíč služby média.
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -368,11 +368,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |1 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -380,13 +380,13 @@ Určuje název mediální služby.
 
 **Typ_klíče - &lt;Typ_klíče.&gt;**
 
-Určuje typ klíče mediální služby.
+Určuje typ klíče hello hello média služby.
 
 * Primární nebo sekundární
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |2 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |False |
@@ -394,16 +394,16 @@ Určuje typ klíče mediální služby.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toothe rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
-Synchronizuje klíče účtu úložiště pro účet úložiště, který je přidružený k službě média.
+Synchronizuje klíče účtu úložiště pro účet úložiště přidružené hello mediální služby.
 
 ### <a name="syntax"></a>Syntaxe
     Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
@@ -411,11 +411,11 @@ Synchronizuje klíče účtu úložiště pro účet úložiště, který je př
 ### <a name="parameters"></a>Parametry
 **-ResourceGroupName &lt;řetězec&gt;**
 
-Určuje název skupiny prostředků, do které patří tato služba média.
+Určuje název hello hello prostředků skupiny toowhich, ke které patří tato služba média.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |0 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -423,11 +423,11 @@ Určuje název skupiny prostředků, do které patří tato služba média.
 
 **-AccountName &lt;řetězec&gt;**
 
-Určuje název mediální služby.
+Určuje název hello hello mediální služby.
 
 | Aliasy | None |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |1 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -435,11 +435,11 @@ Určuje název mediální služby.
 
 **-StorageAccountId &lt;řetězec&gt;**
 
-Určuje účet úložiště, který je přidružený k službě média.
+Určuje účet úložiště hello přidružený hello mediální služby.
 
 | Aliasy | ID |
 | --- | --- |
-| Vyžaduje? |Hodnota TRUE |
+| Povinné? |Hodnota TRUE |
 | Pozice? |2 |
 | Výchozí hodnota |None |
 | Přijímat kanálu vstup? |true(ByPropertyName) |
@@ -447,13 +447,13 @@ Určuje účet úložiště, který je přidružený k službě média.
 
 **&lt;CommandParameters&gt;**
 
-Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
+Tato rutina podporuje běžné parametry hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction a - WarningVariable.
 
 ### <a name="inputs"></a>Vstupy
-Vstupní typ je typ objektů, které můžete rutině předat kanálem.
+Hello vstupní typ je typ hello hello objekty toohello rutiny můžete prostřednictvím kanálu.
 
 ### <a name="outputs"></a>Výstupy
-Výstupní typ je typ objektů, které rutina generuje.
+Hello výstupní typ je typ hello hello objektů, které hello rutiny vysílá.
 
 ## <a name="next-step"></a>Další krok
 Podívejte se na kurzů ke službě Media Services.

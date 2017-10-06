@@ -1,6 +1,6 @@
 ---
-title: "Nejčastější dotazy k agentovi Azure Backup | Dokumentace Microsoftu"
-description: "Odpovědi na běžné dotazy týkající se fungování agenta Azure Backup a omezení zálohování a uchovávání."
+title: "agent zálohování aaaAzure – nejčastější dotazy | Microsoft Docs"
+description: "Odpovědi toocommon otázky týkající se: jak hello omezení funguje, zálohování a uchovávání Azure backup agent."
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 227cdc87f3e2c8ed393145f4bbde7f74606bdf3b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bdefb4efb39301f38cdf692bdc93c841a2bbb441
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
-Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="questions-about-hello-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup hello
+Tento článek obsahuje odpovědi toocommon otázky toohelp rychle pochopit součásti hello Azure Backup agent. V některých hello odpovědi jsou články toohello odkazy, které mají komplexní informace. Také můžete pokládat dotazy týkající se služby Azure Backup hello v hello [diskusní fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
-### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Kde mohu stáhnout nejnovější verzi agenta Azure Backup? <br/>
-Nejnovější verzi agenta pro zálohování Windows Serveru, aplikace System Center DPM nebo klienta Windows si můžete stáhnout [zde](http://aka.ms/azurebackup_agent). Chcete-li zálohovat virtuální počítač, použijte agenta virtuálního počítače (který automaticky nainstaluje správné rozšíření). Agent virtuálního počítače je již nainstalován na virtuálních počítačích vytvořených z galerie Azure.
+### <a name="where-can-i-download-hello-latest-azure-backup-agent-br"></a>Kde lze stáhnout hello nejnovější verze agenta Azure Backup? <br/>
+Si můžete stáhnout nejnovější verzi agenta hello k zálohování systému Windows Server, System Center DPM nebo klienta Windows z [zde](http://aka.ms/azurebackup_agent). Pokud chcete tooback virtuální počítač, použijte hello agenta virtuálního počítače (který automaticky nainstaluje správné rozšíření hello). Hello agenta virtuálního počítače je již nainstalován na virtuálních počítačích vytvořených z Galerie Azure hello.
 
-### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Při konfiguraci agenta Azure Backup se zobrazí výzva k zadání přihlašovacích údajů trezoru. Mohou přihlašovací údaje trezoru vypršet?
-Ano, přihlašovací údaje trezoru vyprší po 48 hodinách. Pokud soubor vyprší, přihlaste se k webu Azure Portal a ze svého trezoru si stáhněte soubory s přihlašovacími údaji trezoru.
+### <a name="when-configuring-hello-azure-backup-agent-i-am-prompted-tooenter-hello-vault-credentials-do-vault-credentials-expire"></a>Při konfiguraci agenta Azure Backup hello, jsem přihlašovací údaje trezoru výzvami tooenter hello. Mohou přihlašovací údaje trezoru vypršet?
+Ano, hello přihlašovací údaje trezoru vyprší po 48 hodinách. Pokud hello soubor vyprší, soubory protokolu jsou v toohello Azure portál a stahování hello trezoru přihlašovací údaje z trezoru.
 
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Z jakých typů jednotek můžu zálohovat soubory a složky? <br/>
-Nemůžete zálohovat následující jednotky a svazky:
+Hello následující jednotky/svazky nelze zálohovat:
 
 * Vyměnitelné médium: Všechny zdroje položek k zálohování se musí hlásit jako pevné.
-* Svazky jen pro čtení: Svazek musí být zapisovatelný, aby fungovala služba Stínová kopie svazku (VSS).
-* Offline svazky: Svazek musí být online, aby fungovala služba VSS.
-* Sdílené síťové složky: Svazek musí být místní pro server, aby mohl být zálohovaný pomocí online zálohování.
-* Svazky chráněné nástrojem Bitlocker: Předtím, než může dojít k zálohování, musí být svazek odemčený.
-* Identifikace systému souborů: Jediným podporovaným systémem souborů je NTFS.
+* Svazky jen pro čtení: svazek hello musí být zapisovatelný hello svazku stínové kopie (svazku VSS) služby toofunction.
+* Offline svazky: svazek hello musí být online pro toofunction služby Stínová kopie svazku.
+* Síťové sdílené složky: svazek hello musí být místní toohello server toobe zálohovat pomocí online zálohování.
+* Svazky chráněné nástrojem BitLocker: musí být hello svazek odemčený, než může dojít k zálohování hello.
+* Identifikace systému souborů: Systém souborů NTFS je hello jediným podporovaným systémem souborů.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Jaké typy souborů a složek mohu zálohovat ze svého serveru?<br/>
-Jsou podporovány následující typy:
+jsou podporovány následující typy Hello:
 
 * Šifrované
 * Komprimované
@@ -54,52 +54,52 @@ Jsou podporovány následující typy:
 * Komprimovaný datový proud: Není podporováno, vynecháno
 * Řídký datový proud: Není podporováno, vynecháno
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Mohu nainstalovat agenta Azure Backup na virtuální počítač Azure, který už je zálohovaný službou Azure Backup pomocí rozšíření virtuálního počítače? <br/>
-Jistě. Azure Backup poskytuje zálohování na úrovni virtuálních počítačů pro virtuální počítače Azure, které používají rozšíření virtuálního počítače. Pokud chcete chránit soubory a složky na hostovaném operačním systému Windows, nainstalujte na něj agenta Azure Backup.
+### <a name="can-i-install-hello-azure-backup-agent-on-an-azure-vm-already-backed-by-hello-azure-backup-service-using-hello-vm-extension-br"></a>Můžete nainstalovat agenta Azure Backup hello na virtuální počítač Azure už je zálohovaný službou Azure Backup hello pomocí hello rozšíření virtuálního počítače? <br/>
+Jistě. Azure Backup poskytuje zálohování na úrovni virtuálních počítačů pro virtuální počítače Azure pomocí rozšíření virtuálního počítače hello. tooprotect soubory a složky na hello hostovaného operačního systému Windows, nainstalujte agenta Azure Backup hello na hello hostovaného operačního systému Windows.
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Mohu nainstalovat agenta Azure Backup na virtuální počítač Azure a použít ho k zálohování souborů a složek umístěných na dočasném úložišti poskytnutém virtuálním počítačem Azure? <br/>
-Ano. Nainstalujte agenta Azure Backup na hostovaný operační systém Windows a zálohujte soubory a složky do dočasného úložiště. Jakmile dojde k vymazání dat na dočasném úložišti, úlohy zálohování selžou. Navíc pokud dojde k vymazání dat na dočasném úložišti, budete moci provést obnovení pouze na stálé úložiště.
+### <a name="can-i-install-hello-azure-backup-agent-on-an-azure-vm-tooback-up-files-and-folders-present-on-temporary-storage-provided-by-hello-azure-vm-br"></a>Můžete nainstalovat agenta Azure Backup hello na tooback virtuálního počítače Azure se souborů a složek umístěných na dočasném úložišti poskytnutém podle hello virtuálního počítače Azure? <br/>
+Ano. Nainstalujte agenta Azure Backup hello na hello hostovaný operační systém Windows a zálohovat soubory a složky tootemporary úložiště. Jakmile dojde k vymazání dat na dočasném úložišti, úlohy zálohování selžou. Navíc pokud dat na dočasném úložišti hello byl odstraněn, lze obnovit pouze toonon volatile úložiště.
 
-### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Jaký je požadavek na minimální velikost složky mezipaměti? <br/>
-Velikost složky mezipaměti určuje množství dat, která zálohujete. Složka mezipaměti by měla zabírat 5 % požadovaného místa pro úložiště dat.
+### <a name="whats-hello-minimum-size-requirement-for-hello-cache-folder-br"></a>Co je požadavek na minimální velikost hello hello složky mezipaměti? <br/>
+Hello velikost složky mezipaměti hello určuje hello množství dat, která zálohujete. Složka mezipaměti musí být 5 % hello místo požadované pro datové úložiště.
 
-### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Jak mohu zaregistrovat svůj server k jinému datovému centru?<br/>
-Zálohovaná data se odesílají do datového centra trezoru, ke kterému je agent registrován. Nejjednodušší způsob, jak změnit datové centrum, je odinstalování agenta a jeho přeinstalování a zaregistrování k novému trezoru, který patří k požadovanému datovému centru.
+### <a name="how-do-i-register-my-server-tooanother-datacenterbr"></a>Jak se zaregistruji Moje datacenter tooanother serveru?<br/>
+Zálohovaná data se odesílají toohello datového centra toowhich hello trezoru, je registrován. Hello nejjednodušší způsob, jak toochange hello datacenter toouninstall hello Agent a znovu nainstalujte agenta hello a zaregistrujte tooa nové úložiště, který patří toodesired datacenter.
 
-### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Funguje agent Azure Backup na serveru, který používá odstranění duplicit Windows Serveru 2012? <br/>
-Ano. Služba agenta během přípravy operace zálohování převádí odstraněná duplicitní data na normální data. Poté optimalizuje data pro zálohování, zašifruje je, a zašifrovaná data odešle do online služby zálohování.
+### <a name="does-hello-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Podporuje hello Azure Backup agent fungovat na serveru, který používá odstranění duplicitních dat Windows serveru 2012? <br/>
+Ano. Služba agenta Hello převede hello odstranění duplicit dat toonormal data během přípravy operace zálohování hello. Potom optimalizuje hello data pro zálohování, zašifruje hello dat a pak odešle hello zašifrovaná data toohello online služby zálohování.
 
 ## <a name="backup"></a>Zálohování
-### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Jak změním umístění mezipaměti, zadané pro agenta Azure Backup?<br/>
-Umístění mezipaměti můžete změnit pomocí následujícího seznamu.
+### <a name="how-do-i-change-hello-cache-location-specified-for-hello-azure-backup-agentbr"></a>Změna umístění mezipaměti hello zadané pro agenta Azure Backup hello<br/>
+Použití hello následující seznam umístění mezipaměti toochange hello.
 
-1. Zastavte modul zálohování spuštěním následujícího příkazu v příkazovém řádku se zvýšenými oprávněními:
+1. Zastavte modul zálohování hello tak, že spustíte následující příkaz v příkazovém řádku se zvýšenými hello:
 
     ```PS C:\> Net stop obengine``` 
   
-2. Soubory nepřesouvejte. Místo toho zkopírujte složku s místem v mezipaměti na jinou jednotku s dostatkem volného místa. Po potvrzení, že zálohování s novým místem v mezipaměti funguje správně, můžete původní místo v mezipaměti odebrat.
-3. U následujících položek registru aktualizujte cestu k nové složce s místem v mezipaměti.<br/>
+2. Hello soubory nepřesouvejte. Místo toho zkopírujte hello mezipaměti místo složky tooa jinou jednotku s dostatkem místa. Po potvrzení hello zálohy fungují s hello novým místem v mezipaměti se dá odebrat Hello původní místo v mezipaměti.
+3. Aktualizujte hello následující položky registru s hello cesta toohello nové místo složky mezipaměti.<br/>
 
     | Cesta k registru | Klíč registru | Hodnota |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
 
-4. Restartujte modul Backup spuštěním následujícího příkazu v příkazovém řádku se zvýšenými oprávněními:
+4. Restartujte hello modul Backup spuštěním hello následující příkaz v příkazovém řádku se zvýšenými oprávněními:
 
     ```PS C:\> Net start obengine```
 
-Po úspěšném dokončení vytvoření zálohy v novém umístění mezipaměti můžete původní složku mezipaměti odebrat.
+Po úspěšném dokončení vytvoření zálohy hello v hello nové umístění mezipaměti můžete původní složku mezipaměti hello odebrat.
 
 
-### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Kam můžu dát složku mezipaměti, aby agent Azure Backup fungoval podle očekávání?<br/>
-Pro složku mezipaměti nedoporučujeme používat následující umístění:
+### <a name="where-can-i-put-hello-cache-folder-for-hello-azure-backup-agent-toowork-as-expectedbr"></a>Kam mohu dát složku mezipaměti hello hello Azure Backup Agent toowork podle očekávání?<br/>
+Hello následující umístění složky mezipaměti hello nejsou doporučené:
 
-* Sdílenou síťovou složku nebo vyměnitelné médium: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovaná.
-* Offline svazky: Složka mezipaměti musí být online pro očekávané zálohování pomocí agenta Azure Backup.
+* Sdílenou síťovou složku nebo vyměnitelné médium: složka mezipaměti hello musí být místní toohello serveru, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovaná.
+* Offline svazky: složka mezipaměti hello musí být online pro očekávané zálohování pomocí agenta Azure Backup.
 
-### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Jsou nějaké atributy složky mezipaměti, které nejsou podporované?<br/>
-Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
+### <a name="are-there-any-attributes-of-hello-cache-folder-that-are-not-supportedbr"></a>Jsou nějaké atributy hello-složky mezipaměti, které nejsou podporovány?<br/>
+Hello následující atributy nebo jejich kombinace nejsou podporovány pro složku mezipaměti hello:
 
 * Šifrované
 * S odstraněním duplicit
@@ -107,21 +107,21 @@ Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
 * Řídké
 * Bod rozboru
 
-Složka mezipaměti ani virtuální pevný disk s metadaty nemají atributy vyžadované pro agenta Azure Backup.
+složka mezipaměti Hello a hello metadata virtuálního pevného disku není nutné hello nezbytné atributy pro agenta Azure Backup hello.
 
-### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Existuje způsob, jak nastavit šířku pásma používaného službou Backup?<br/>
-  Ano, k úpravě šířky pásma použijte možnost **Změnit vlastnosti** v agentu Backup. Můžete upravit šířku pásma a dobu, kdy tuto šířku pásma používáte. Podrobné pokyny najdete v tématu **[Povolení omezení využití sítě](backup-configure-vault.md#enable-network-throttling)**.
+### <a name="is-there-a-way-tooadjust-hello-amount-of-bandwidth-used-by-hello-backup-servicebr"></a>Je k dispozici způsob tooadjust hello šířku pásma, které používá služba zálohování hello?<br/>
+  Ano, použít hello **změnit vlastnosti** možnost hello Backup Agent tooadjust šířky pásma. Můžete upravit hello množství šířky pásma a hello časy, kdy tuto šířku pásma používáte. Podrobné pokyny najdete v tématu **[Povolení omezení využití sítě](backup-configure-vault.md#enable-network-throttling)**.
 
 ## <a name="manage-backups"></a>Správa záloh
-### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Co se stane, když přejmenuji server Windows, který zálohuje data do Azure?<br/>
+### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-tooazurebr"></a>Co se stane, když přejmenuji server Windows, který zálohuje data tooAzure?<br/>
 Když server přejmenujete, všechna stávající nastavená zálohování se zastaví.
-Zaregistrujte nový název serveru k trezoru služby Backup. Když zaregistrujete nový název trezoru, první zálohování bude provedeno jako *úplné*. Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost [**Jiný server**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) v průvodci **Obnova dat**.
+Zaregistrujte nový název hello hello serveru s úložištěm záloh hello. Když registrujete nový název hello hello trezoru, hello první zálohování je *úplné* zálohování. Pokud potřebujete zálohovat toohello trezoru se starým názvem hello data toorecover, použijte hello [ **jiný server** ](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) možnost v hello **obnovit Data** průvodce.
 
-### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Jaká je maximální délka cesty k souboru, kterou lze zadat v zásadě služby Backup pomocí agenta Azure Backup? <br/>
-Agent Azure Backup se spoléhá na systém souborů NTFS. [Specifikace délky cesty k souboru je omezená rozhraním API systému Windows](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Pokud mají soubory, které chcete chránit, délku cesty k souboru větší než povoluje rozhraní API systému Windows, zálohujte nadřazenou složku nebo diskovou jednotku.  
+### <a name="what-is-hello-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Co je hello maximální délka cesty k souboru, může být uveden v zásadách zálohování pomocí agenta Azure Backup? <br/>
+Agent Azure Backup se spoléhá na systém souborů NTFS. Hello [specifikace délky cesta k souboru je omezena hello rozhraní API systému Windows](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Pokud hello soubory, které chcete tooprotect mít délku cestu souboru déle, než je povolené podle hello rozhraní API systému Windows, zálohujte hello nadřazenou složku nebo diskovou jednotku hello.  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Jaké znaky jsou povolené v cestě k souboru zásady Azure Backup pomocí agenta Azure Backup? <br>
  Agent Azure Backup se spoléhá na systém souborů NTFS. Pro specifikaci souboru povoluje [znaky podporované systémem souborů NTFS](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions). 
  
-### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Zobrazuje se upozornění „Služba Azure Backup nebyla pro tento server nakonfigurovaná“ i přesto, že jsem nakonfiguroval zásadu zálohování. <br/>
-Toto upozornění se zobrazí v případě, že se nastavení plánu zálohování uložené na místním serveru neshodují s nastaveními uloženými v trezoru záloh. Pokud došlo k obnovení serveru nebo nastavení do známého stavu, může dojít ke ztrátě synchronizace plánů zálohování. Pokud se zobrazí toto upozornění, [překonfigurujte zásadu zálohování](backup-azure-manage-windows-server.md) a poté **spusťte Zálohovat nyní**, aby došlo k opětovné synchronizaci místního serveru s Azure. 
+### <a name="i-receive-hello-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Přestože lze nakonfigurovat zásadu zálohování se zobrazí upozornění, hello "Zálohování Azure není nakonfigurovaná pro tento server" <br/>
+Toto upozornění se zobrazí, pokud hello nastavení plánu zálohování uložené na místním serveru hello nejsou stejná jako hello nastavení uložená v úložišti záloh hello hello. Pokud hello server nebo nastavení hello byly obnovené tooa známé dobrý stav, plánů zálohování hello může dojít ke ztrátě synchronizace. Pokud se zobrazí toto upozornění [překonfigurujte zásadu zálohování hello](backup-azure-manage-windows-server.md) a potom **spusťte zálohovat nyní** tooresynchronize hello místního serveru s Azure.

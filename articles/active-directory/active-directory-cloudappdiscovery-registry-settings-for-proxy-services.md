@@ -1,6 +1,6 @@
 ---
-title: "Cloud App Discovery. nastavení registru pro Proxy služby | Microsoft Docs"
-description: "Cílem tohoto tématu je poskytnout kroky, které je třeba provést nastavit požadovaný port v počítačích se systémem agenta Cloud App Discovery."
+title: "aaaCloud aplikace zjišťování nastavení registru pro Proxy služby | Microsoft Docs"
+description: "Hello cílem tohoto tématu je tooprovide vám hello kroky je třeba, aby tooperform tooset hello požadované port na počítačích hello s Cloud App Discovery agent hello."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ea15dc9a9f20a296e622c8fb1011f7ee99de3e99
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bb1fe20016459160b4f67cb0125b1781a0260c4b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Cloud App Discovery. nastavení registru pro služby Proxy
-Ve výchozím nastavení agenta Cloud App Discovery konfigurován pro použití pouze porty 80 nebo 443. Pokud plánujete instalaci Cloud App Discovery v prostředí s proxy serveru, který používá vlastní port (80 ani 443), budete muset nakonfigurovat agenty na tento port použít. Konfigurace je založena na klíč registru.
+Ve výchozím nastavení hello Cloud App Discovery agent je nakonfigurované toouse pouze hello porty 80 nebo 443. Pokud plánujete instalaci Cloud App Discovery v prostředí s proxy serveru, který používá vlastní port (80 ani 443), je třeba tooconfigure vaše agenty toouse tento port. Hello konfigurace je založená na klíč registru.
 
-Cílem tohoto tématu je poskytnout kroky, které je třeba provést nastavit požadovaný port v počítačích se systémem agenta Cloud App Discovery.
+Hello cílem tohoto tématu je tooprovide vám hello kroky je třeba, aby tooperform tooset hello požadované port na počítačích hello s Cloud App Discovery agent hello.
 
-**Pokud chcete upravit portu používá počítač se spuštěným agentem Cloud App Discovery, proveďte následující kroky:**
+**toomodify hello port používaný systémem hello počítači agenta Cloud App Discovery hello, proveďte následující kroky hello:**
 
-1. Spusťte editor registru. <br> ![Spuštění](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
-2. Přejděte na nebo vytvořte následující klíč registru: <br> **Discovery\Endpoint HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud aplikace** 
+1. Spusťte editor registru hello. <br> ![Spusťte](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+2. Přejděte tooor vytvořit hello následující klíč registru: <br> **Discovery\Endpoint HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud aplikace** 
 3. Vytvořte novou **víceřetězcovou** hodnotu s názvem **porty**. ![Nový](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
-4. Chcete-li otevřít **Upravit víceřetězcovou** dialogové okno, dvakrát klikněte na hodnotu porty.
-5. Do textového pole hodnoty dat zadejte následující hodnoty a přidejte všechny vlastní porty, které se používají ve vaší organizaci: <br><br>
+4. tooopen hello **Upravit víceřetězcovou** dialogové okno, dvakrát klikněte na hodnotu porty hello.
+5. V hello textové pole hodnoty dat zadejte následující hodnoty hello a přidejte všechny vlastní porty, které se používají ve vaší organizaci: <br><br>
    **80** <br>
    **8080** <br>
    **8118** <br>
@@ -45,7 +45,7 @@ Cílem tohoto tématu je poskytnout kroky, které je třeba provést nastavit po
    **443** <br>
    **1110** <br><br>
    ![Upravit víceřetězcovou](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)
-6. Klikněte na tlačítko **OK** zavřete **Upravit víceřetězcovou** dialogové okno.
+6. Klikněte na tlačítko **OK** tooclose hello **Upravit víceřetězcovou** dialogové okno.
 
 **Další zdroje**
 

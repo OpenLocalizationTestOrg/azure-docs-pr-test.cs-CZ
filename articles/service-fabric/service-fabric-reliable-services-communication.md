@@ -1,6 +1,6 @@
 ---
-title: "Spolehlivé služby communication – přehled | Microsoft Docs"
-description: "Přehled modelu komunikace spolehlivé služby, včetně otevírání moduly pro naslouchání na službách, vyřešte koncových bodů a komunikaci mezi službami."
+title: "Přehled komunikace služby aaaReliable | Microsoft Docs"
+description: "Přehled hello spolehlivé služby komunikace modelu, včetně otevírání moduly pro naslouchání na službách, vyřešte koncových bodů a komunikaci mezi službami."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/07/2017
 ms.author: vturecek
-ms.openlocfilehash: b418904f50b772c12bfcdbb95beb9312c8b9fb00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 93a7017b50df0822969daa5ad78302c73e8ba641
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci spolehlivé služby
-Azure Service Fabric jako platformu je zcela lhostejné o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné, z UDP do HTTP. Je to na vývojáře služby zvolit komunikace služby. Rozhraní spolehlivé služby poskytuje zásobníky předdefinované komunikaci, jakož i rozhraní API, které můžete použít k vytvoření vlastních komunikační součásti.
+# <a name="how-toouse-hello-reliable-services-communication-apis"></a>Jak toouse hello spolehlivé služby komunikace rozhraní API
+Azure Service Fabric jako platformu je zcela lhostejné o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné, z UDP tooHTTP. Je to toohello služby vývojáře toochoose komunikace služby. Architektura aplikace na Hello spolehlivé služby poskytuje integrované komunikace balíků i rozhraní API, které můžete použít toobuild vlastní komunikační součásti.
 
 ## <a name="set-up-service-communication"></a>Nastavení komunikace služby
-Spolehlivé služby API používá jednoduché rozhraní pro komunikace služby. Chcete-li spustit koncový bod služby, jednoduše toto rozhraní implementujte:
+Hello spolehlivé rozhraní API služby používá jednoduché rozhraní pro komunikace služby. Toto rozhraní implementovat jednoduše tooopen koncový bod pro vaši službu:
 
 ```csharp
 
@@ -92,9 +92,9 @@ class MyStatefulService : StatefulService
 }
 ```
 
-V obou případech vracet kolekci naslouchacího procesu. To umožňuje služba naslouchala na několik koncových bodů, potenciálně pomocí různých protokolů, s použitím více naslouchací procesy. Například můžete mít naslouchací proces protokolu HTTP a samostatné naslouchací proces protokolu WebSocket. Každý naslouchací proces získá název a výsledný kolekce *název: adresa* páry jsou reprezentovány jako objekt JSON, když klient požádá o naslouchání adresy pro instance služby nebo oddíl.
+V obou případech vracet kolekci naslouchacího procesu. To umožňuje vaší služby toolisten na několik koncových bodů, potenciálně pomocí různých protokolů, s použitím více naslouchací procesy. Například můžete mít naslouchací proces protokolu HTTP a samostatné naslouchací proces protokolu WebSocket. Každý naslouchací proces získá název a kolekci výsledné hello *název: adresa* páry jsou reprezentovány jako objekt JSON, když klient požádá o hello naslouchání adresy pro instance služby nebo oddíl.
 
-Přepsání v bezstavové služby vrátí kolekci ServiceInstanceListeners. A `ServiceInstanceListener` obsahuje funkci pro vytvoření `ICommunicationListener(C#) / CommunicationListener(Java)` a název. Přepsání pro stavové služby, vrátí kolekci ServiceReplicaListeners. To se mírně liší od jeho protějšku bezstavové, protože `ServiceReplicaListener` má možnost otevření `ICommunicationListener` na sekundárních replikách. Nejenže můžete použít více naslouchací procesy komunikace ve službě, ale můžete také určit, který naslouchací procesy přijímat požadavky na sekundárních replikách a ty, které naslouchat pouze primární repliky.
+V bezstavové služby hello přepsání vrátí kolekci ServiceInstanceListeners. A `ServiceInstanceListener` obsahuje funkce toocreate `ICommunicationListener(C#) / CommunicationListener(Java)` a název. Hello přepsání pro stavové služby, vrátí kolekci ServiceReplicaListeners. To se mírně liší od jeho protějšku bezstavové, protože `ServiceReplicaListener` má tooopen možnost `ICommunicationListener` na sekundárních replikách. Nejenže můžete použít více naslouchací procesy komunikace ve službě, ale můžete také určit, který naslouchací procesy přijímat požadavky na sekundárních replikách a ty, které naslouchat pouze primární repliky.
 
 Například můžete mít ServiceRemotingListener, která přebírá volání RPC jenom na primární repliky a druhý, vlastní naslouchací proces, který přebírá čtení požadavky na sekundárních replikách prostřednictvím protokolu HTTP:
 
@@ -121,7 +121,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 >
 >
 
-Nakonec popisují koncové body, které jsou požadovány pro služby [service manifest](service-fabric-application-model.md) části u koncových bodů.
+Nakonec popisují hello koncové body, které jsou požadovány pro službu hello v hello [service manifest](service-fabric-application-model.md) části hello u koncových bodů.
 
 ```xml
 <Resources>
@@ -133,7 +133,7 @@ Nakonec popisují koncové body, které jsou požadovány pro služby [service m
 
 ```
 
-Naslouchací proces komunikace můžete přístup k prostředkům koncový bod přidělených z `CodePackageActivationContext` v `ServiceContext`. Naslouchací proces potom lze spustit naslouchaly žádostem, když je otevřen.
+naslouchací proces komunikace Hello mají přístup k prostředkům koncový bod hello přidělené tooit z hello `CodePackageActivationContext` v hello `ServiceContext`. naslouchací proces Hello potom lze spustit naslouchaly žádostem, když je otevřen.
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -147,12 +147,12 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 ```
 
 > [!NOTE]
-> Koncový bod prostředků, které jsou společné pro celý balíček a jsou přiděleny pomocí Service Fabric, když je aktivován balíčku služby. Víc replik služby hostované ve stejném ServiceHost může sdílet stejný port. To znamená, že by měly podporovat komunikaci naslouchací proces sdílení portů. Doporučený způsob to provést, je pro komunikaci naslouchací proces pro použití oddílu, ID a ID repliky nebo instanci, když ji vygeneruje adresu naslouchání.
+> Koncový bod prostředky jsou běžné balíček toohello celou službou, a jsou přiděleny pomocí Service Fabric, když je aktivován balíček služby hello. Víc replik služby hostované v hello může sdílet stejnou ServiceHost hello stejný port. To znamená, že naslouchací proces hello komunikace by měly podporovat sdílení portů. Hello doporučuje se způsob, jak to provést pro hello komunikaci naslouchacího procesu toouse hello oddíl ID a ID repliky nebo instanci, pokud vygeneruje adresu naslouchání hello.
 >
 >
 
 ### <a name="service-address-registration"></a>Registrace adresy služby
-Volá se služba system *služby DNS* běží na clusterů Service Fabric. Služby DNS je doménového registrátora služeb a jejich adresy, které naslouchá na každou instanci nebo repliky služby. Když `OpenAsync(C#) / openAsync(Java)` metodu `ICommunicationListener(C#) / CommunicationListener(Java)` dokončí, vraťte se jeho hodnota získá registrované ve službě pojmenování. Tato návratovou hodnotu, která zveřejnění ve službě pojmenování je řetězec, jehož hodnota může být jakýkoli vůbec. Tato hodnota řetězce je, co klienti uvidí, když vyzvou ze služby DNS pro adresu pro službu.
+Služba system názvem hello *služby DNS* běží na clusterů Service Fabric. Hello služby DNS je doménového registrátora služeb a jejich adresy, které naslouchá na každou instanci nebo repliky služby hello. Když hello `OpenAsync(C#) / openAsync(Java)` metodu `ICommunicationListener(C#) / CommunicationListener(Java)` dokončí, vraťte se jeho hodnota získá registrované v hello Naming Service. Tato vrátí hodnotu, která se získá publikované v hello služby DNS je řetězec, jehož hodnota může být jakýkoli vůbec. Tato hodnota řetězce je, co klienti uvidí, když vyzvou pro adresu hello službu hello Naming Service.
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -169,7 +169,7 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
     this.webApp = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Invoke(appBuilder));
 
-    // the string returned here will be published in the Naming Service.
+    // hello string returned here will be published in hello Naming Service.
     return Task.FromResult(this.publishAddress);
 }
 ```
@@ -184,26 +184,26 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
     this.webApp = new WebApp(port);
     this.webApp.start();
 
-    /* the string returned here will be published in the Naming Service.
+    /* hello string returned here will be published in hello Naming Service.
      */
     return CompletableFuture.completedFuture(this.publishAddress);
 }
 ```
 
-Service Fabric poskytuje rozhraní API umožňující klientů a dalším službám, a pak požádejte podle názvu služby pro tuto adresu. To je důležité, protože není statickou adresu služby. Služby se přesouvají v clusteru pro účely vyrovnávání a dostupnosti prostředků. Toto je mechanismus, který klientům umožňují překlad adresu naslouchání pro službu.
+Service Fabric poskytuje rozhraní API, které umožňují klienty a další služby toothen požádejte pro tuto adresu podle názvu služby. To je důležité, protože není statickou adresu služby hello. Služby přesouvání hello clusteru za účelem vyrovnávání a dostupnosti prostředků. Toto je hello mechanismus, který klientům tooresolve hello naslouchání adresu pro službu.
 
 > [!NOTE]
-> Kompletní návod jak napsat naslouchací proces komunikace, najdete v části [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md) pro jazyk C#, zatímco pro jazyk Java můžete napsat vlastní implementaci serveru HTTP, najdete v příkladu aplikace EchoServer na https://github.com/Azure-Samples/service-fabric-java-getting-started.
+> Pro kompletní návod jak toowrite naslouchací proces komunikace, najdete v části [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md) C#, zatímco pro jazyk Java můžete napsat vlastní implementaci serveru HTTP, najdete v části EchoServer aplikace Příklad v https://github.com/Azure-Samples/service-fabric-java-getting-started.
 >
 >
 
 ## <a name="communicating-with-a-service"></a>Komunikace se službou
-Spolehlivé služby API poskytuje následující knihovny zápis klienty, kteří komunikovat se službami.
+Hello spolehlivé rozhraní API služby poskytuje hello následující klienti toowrite knihovny, které komunikovat se službami.
 
 ### <a name="service-endpoint-resolution"></a>Rozlišení koncového bodu služby
-Prvním krokem k komunikace se službou je k vyřešení adresu koncového bodu oddílu, nebo instance služby, kterou chcete, aby komunikoval s. `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` Nástroj třída je základní Primitivum, které pomáhají klientům zjistit koncový bod služby za běhu. V terminologii Service Fabric, proces určování koncový bod služby se označuje jako *rozlišení koncového bodu služby*.
+Hello první krok toocommunication službou je tooresolve adresu koncového bodu hello oddílu nebo instance, které chcete tootalk do služby hello. Hello `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` nástroj třída je základní Primitivum, které pomáhají klientům určit hello koncový bod služby za běhu. V terminologii Service Fabric hello proces určení hello koncový bod služby se označují tooas hello *rozlišení koncového bodu služby*.
 
-Pro připojení ke službám v rámci clusteru, můžete vytvořit ServicePartitionResolver pomocí výchozího nastavení. Toto je doporučený způsob většině situací:
+tooconnect tooservices v rámci clusteru, můžete vytvořit ServicePartitionResolver, pomocí výchozího nastavení. Toto je doporučená využití většině situací hello:
 
 ```csharp
 ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
@@ -212,7 +212,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru, lze vytvořit ServicePartitionResolver sadu koncovým bodům clusteru brány. Upozorňujeme, že jsou koncové body brány právě různými koncovými body pro připojení do stejného clusteru. Například:
+tooconnect tooservices v jiném clusteru, ServicePartitionResolver lze vytvořit sadu koncovým bodům clusteru brány. Upozorňujeme, že jsou koncové body brány právě různými koncovými body pro připojení toohello stejného clusteru. Například:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -221,7 +221,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.clo
 FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
 ```
 
-Alternativně `ServicePartitionResolver` možné přidělit funkce pro vytváření `FabricClient` interně použít:
+Alternativně `ServicePartitionResolver` možné přidělit funkce pro vytváření `FabricClient` toouse interně:
 
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
@@ -236,7 +236,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`je objekt, který se používá ke komunikaci se cluster Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladač oddílu služby se váš cluster. `FabricClient`provede ukládání do mezipaměti interně a je obecně nákladné vytvořit, takže je potřeba znovu použít `FabricClient` instance co nejvíc.
+`FabricClient`je hello objekt, který je použité toocommunicate se cluster Service Fabric hello pro různé operace správy v clusteru hello. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladač oddílu služby se váš cluster. `FabricClient`provede ukládání do mezipaměti interně a je obvykle levnější toocreate, takže je důležité tooreuse `FabricClient` instance co nejvíc.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -245,7 +245,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMy
 FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver(() -> new CreateFabricClientImpl());
 ```
 
-Vyřešte metoda pak slouží k načtení adresu služby nebo služby u oddílů služby.
+Metoda vyřešte je pak použít tooretrieve hello adresu služby nebo služby u oddílů služby.
 
 ```csharp
 ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
@@ -260,16 +260,16 @@ CompletableFuture<ResolvedServicePartition> partition =
     resolver.resolveAsync(new URI("fabric:/MyApp/MyService"), new ServicePartitionKey());
 ```
 
-Adresa služby lze vyřešit pomocí snadno ServicePartitionResolver, ale je potřeba další práci zajistěte, aby byl že vyřešen adresu je možné použít správně. Váš klient potřebuje zjistit, zda pokus o připojení se nezdařilo z důvodu přechodná chyba a můžete zkusit znovu (například služba přesunut nebo je dočasně nedostupná), nebo trvalé chybě (např. Služba je Odstraněná nebo požadovaný prostředek již existuje). Instance služby nebo repliky můžete pohyb z uzlu do uzlu kdykoli z několika důvodů. Adresa služby přeložit prostřednictvím ServicePartitionResolver může být zastaralé dobu, kterou váš klientský kód pokusí o připojení. V takovém případě znovu klient musí znovu překlad adresy. Poskytnutí předchozí `ResolvedServicePartition` ukazuje, že překladač vyžaduje pokus místo jednoduše načíst adresu v mezipaměti.
+Adresa služby lze vyřešit pomocí snadno ServicePartitionResolver, ale je nutná další práci tooensure hello přeložit adresu je možné použít správně. Váš klient musí toodetect, zda se nezdařilo z důvodu přechodná chyba umožňující opakovaný pokus o připojení hello a můžete zkusit znovu (například služba přesunut nebo je dočasně nedostupná), nebo trvalé chybě (např. Služba je Odstraněná nebo hello požadovaný prostředek již existuje). Instance služby nebo repliky můžete přesunout z uzlu toonode kdykoli z několika důvodů. Adresa služby Hello přeložit prostřednictvím ServicePartitionResolver může být váš klientský kód pokusí tooconnect doby hello zastaralé. V takovém případě znovu hello klient potřebuje vyřešit toore hello adresu. Poskytnutí hello předchozí `ResolvedServicePartition` označuje, která znovu hello překladač potřebám tootry nikoli jednoduše načíst adresu v mezipaměti.
 
-Obvykle kód klienta nemusí pracovat ServicePartitionResolver přímo. Je vytvořen a k předání komunikace klienta továrny v spolehlivé rozhraní API služby. Překladač objekty Factory interně použít ke generování klientského objektu, který umožňuje komunikovat se službami.
+Obvykle kód klienta hello nemusí pracovat s hello ServicePartitionResolver přímo. Je vytvořen a předán na objekty Factory klienta toocommunication v hello spolehlivé Services API. objekty Factory Hello používají hello překladač interně toogenerate klientského objektu, který lze použít toocommunicate službou.
 
 ### <a name="communication-clients-and-factories"></a>Komunikace klientů a objekty pro vytváření
-Knihovna vytváření komunikace implementuje typický vzor opakování selhání zpracování, který usnadňuje Probíhá opakování připojení ke koncovým bodům služby vyřešený. Objekt pro vytváření knihovny poskytuje mechanismus opakování, zatímco poskytují chyba obslužné rutiny.
+Knihovna vytváření komunikace Hello implementuje typický vzor opakování selhání zpracování, které usnadňuje koncovým bodům služby tooresolved Probíhá opakování připojení. Knihovna vytváření Hello poskytuje mechanismus opakování hello zatímco poskytují hello chyba obslužné rutiny.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`definuje základní rozhraní implementované objekt factory komunikaci klienta, který vytváří klientů, které může kontaktovat službě Service Fabric. Implementace CommunicationClientFactory závisí na komunikačního balíku používá služba Service Fabric, kde se chce, aby klient komunikovat. Poskytuje spolehlivé rozhraní API služby `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny balíčky komunikace. (Tyto úlohy patří, použití ServicePartitionResolver k určení, koncový bod služby). Klienti obvykle implementovat abstraktní třídy CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikačního balíku.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`definuje základní rozhraní hello implementované objekt factory komunikaci klienta, který vytváří klientů, které může kontaktovat službu tooa Service Fabric. Hello implementace hello CommunicationClientFactory závisí na používá služba hello Service Fabric, kde hello klienta chce toocommunicate hello komunikačního balíku. poskytuje technologie Hello spolehlivé rozhraní API služby `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory hello a provádí úlohy, které jsou společné tooall hello komunikace zásobníky. (Tyto úlohy patří pomocí koncového bodu služby ServicePartitionResolver toodetermine hello). Klienti obvykle implementovat hello abstraktní CommunicationClientFactoryBase třída toohandle logiku, která je konkrétní toohello komunikačního balíku.
 
-Komunikace klienta pouze přijímá adresu a použije k připojení ke službě. Klienta můžete použít libovolnou protokol ho chce.
+Hello komunikace klienta pouze obdrží adresu a používá je tooconnect tooa služby. Hello klienta můžete použít libovolnou protokol ho chce.
 
 ```csharp
 class MyCommunicationClient : ICommunicationClient
@@ -294,7 +294,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Dodavatel klienta především zodpovídá za vytvoření komunikace klientů. Pro klienty, kteří nejsou udržovat trvalé připojení, jako je například klientovi HTTP musí objekt pro vytváření pouze k vytvoření a vrátí klientovi. Jiné protokoly, které udržují trvalé připojení, jako je například některé binární protokoly by měl být také ověřené pomocí objektu pro vytváření k určení, zda připojení musí být znovu vytvořena.  
+Dodavatel klienta Hello především zodpovídá za vytvoření komunikace klientů. Pro klienty, kteří nejsou udržovat trvalé připojení, jako je například klientovi HTTP musí objekt pro vytváření hello pouze toocreate a návratové hello klienta. Jiné protokoly, které udržují trvalé připojení, jako je například některé binární protokoly, by také být ověřen hello factory toodetermine zda hello připojení musí toobe znovu vytvořit.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
@@ -337,14 +337,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Nakonec obslužné rutiny výjimky je zodpovědná za určení, jaká opatření se mají provést, když dojde k výjimce. Výjimky jsou rozdělené do **opakovatelné** a **neopakovatelného**.
+Nakonec obslužné rutiny výjimky je zodpovědná za určení jaké akce tootake, když dojde k výjimce. Výjimky jsou rozdělené do **opakovatelné** a **neopakovatelného**.
 
-* **Neopakovatelného** výjimky jednoduše získat znovu vyvolány zpět k volajícímu.
+* **Neopakovatelného** výjimky jednoduše získat znovu vyvolány back toohello volajícího.
 * **Opakovatelná** výjimky se dále dělí do **přechodný** a **-pouze dočasné**.
-  * **Přechodný** výjimky jsou ty, které můžete jednoduše opakovat bez znovu řešení adresa koncového bodu služby. To bude obsahovat přechodné problémy se sítí nebo služby chybové odpovědi kromě těch, které indikuje, že adresa koncového bodu služby neexistuje.
-  * **Bez přechodná** výjimky jsou ty, které vyžadují adresa koncového bodu služby do znovu přeložit. Mezi ně patří výjimky, které označují, že není dostupný koncový bod služby, označující služby se přesunul do jiného uzlu.
+  * **Přechodný** výjimky jsou ty, které můžete jednoduše opakovat bez znovu řešení hello adresa koncového bodu služby. Patří přechodné problémy se sítí nebo služby chybové odpovědi kromě těch, které označují hello adresa koncového bodu služby neexistuje.
+  * **Bez přechodná** výjimky jsou ty, které vyžadují hello služby koncový bod adresy toobe znovu přeložit. Mezi ně patří výjimky, které označují, že koncový bod služby hello není dostupný, což značí, že služba hello přesunul tooa jiný uzel.
 
-`TryHandleException` Provádí rozhodnutí o dané výjimka. Pokud ho **neví** jaké rozhodnutí, která chcete-li o výjimku, měla by vrátit **false**. Pokud ho **vědět** jaké rozhodnutí, měl by odpovídajícím způsobem nastavit výsledek a vrátí **true**.
+Hello `TryHandleException` provádí rozhodnutí o dané výjimka. Pokud ho **neví** co toomake rozhodnutí o výjimku, by měla vrátit **false**. Pokud ho **vědět** co toomake rozhodnutí, měl by odpovídajícím způsobem nastavit hello výsledek a vrátí **true**.
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler
@@ -360,7 +360,7 @@ class MyExceptionHandler : IExceptionHandler
         result = new ExceptionHandlingRetryResult(exceptionInformation.Exception, false, retrySettings, retrySettings.DefaultMaxRetryCount);
         return true;
 
-        // if exceptionInformation.Exception is unknown (let the next IExceptionHandler attempt to handle it)
+        // if exceptionInformation.Exception is unknown (let hello next IExceptionHandler attempt toohandle it)
         result = null;
         return false;
     }
@@ -383,7 +383,7 @@ public class MyExceptionHandler implements ExceptionHandler {
         result = new ExceptionHandlingRetryResult(exceptionInformation.getException(), false, retrySettings, retrySettings.getDefaultMaxRetryCount());
         return true;
 
-        /* if exceptionInformation.getException() is unknown (let the next ExceptionHandler attempt to handle it)
+        /* if exceptionInformation.getException() is unknown (let hello next ExceptionHandler attempt toohandle it)
          */
         result = null;
         return false;
@@ -392,7 +392,7 @@ public class MyExceptionHandler implements ExceptionHandler {
 }
 ```
 ### <a name="putting-it-all-together"></a>Třeba umisťovat všechny společně
-S `ICommunicationClient(C#) / CommunicationClient(Java)`, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`, a `IExceptionHandler(C#) / ExceptionHandler(Java)` vytvořených na základě komunikační protokol, `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` všechny společně se zabalí a poskytuje řešení smyčky adresu oddílu zpracování chyb a služeb kolem těchto součástí.
+S `ICommunicationClient(C#) / CommunicationClient(Java)`, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`, a `IExceptionHandler(C#) / ExceptionHandler(Java)` vytvořených na základě komunikační protokol, `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` všechny společně se zabalí a poskytuje odolnost zpracování hello a služby oddílu adresu řešení smyčky kolem těchto součástí.
 
 ```csharp
 private MyCommunicationClientFactory myCommunicationClientFactory;
@@ -405,7 +405,7 @@ var myServicePartitionClient = new ServicePartitionClient<MyCommunicationClient>
 
 var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) =>
    {
-      // Communicate with the service using the client.
+      // Communicate with hello service using hello client.
    },
    CancellationToken.None);
 
@@ -420,7 +420,7 @@ FabricServicePartitionClient myServicePartitionClient = new FabricServicePartiti
     myPartitionKey);
 
 CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(client -> {
-      /* Communicate with the service using the client.
+      /* Communicate with hello service using hello client.
        */
    });
 

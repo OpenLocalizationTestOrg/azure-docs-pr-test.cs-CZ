@@ -1,6 +1,6 @@
 ---
-title: "Jaký typ kolekce potřebujete pro Azure RemoteApp? | Dokumentace Microsoftu"
-description: "Další informace o typech kolekcí, které jsou k dispozici s Azure Remoteappem."
+title: "druh aaaWhat kolekce potřebujete pro Azure RemoteApp? | Dokumentace Microsoftu"
+description: "Informace o typech hello kolekcí, které jsou k dispozici s Azure Remoteappem."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,48 +13,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 10f6c0533027767b6635ebff1e6a9872bde06a68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f00b5fe41af597cf75e26300bf7842c3a8ff94fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp"></a>Jaký typ kolekce potřebujete pro Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Azure RemoteApp umožňuje sdílet aplikace a prostředky s uživateli na všech zařízeních. Můžeme provést vytvořením kolekce k uchování aplikacím a prostředkům, a potom sdílet těchto kolekcí s uživateli. Existují 2 možnosti jinou kolekci, s jinou síť a možnosti ověřování – které je pro vás nejvhodnější?
+Azure RemoteApp umožňuje sdílet aplikace a prostředky s uživateli na všech zařízeních. Můžeme provést vytvořením kolekce toohold hello aplikacím a prostředkům, a potom sdílet těchto kolekcí s uživateli. Existují 2 možnosti jinou kolekci, s jinou síť a možnosti ověřování – které je pro vás nejvhodnější?
 
-Projděme různé aspekty a možnosti, které je potřeba udělat k plnému využití z vaší kolekce Azure Remoteappu. 
+Projděme různé aspekty hello a možnosti toomake tooget hello potřebujete nejvíce mimo kolekcí vzdálené aplikace Azure RemoteApp. 
 
-## <a name="quick-differences-between-the-collection-types"></a>Rychlé rozdíly mezi typy kolekcí
+## <a name="quick-differences-between-hello-collection-types"></a>Rychlé rozdíly mezi typy kolekcí hello
 |  | Cloud | Hybridní |
 | --- | --- | --- |
 | Použít existující virtuální síť |Ano |Ano |
 | Vyžaduje účty připojení AD (DirSync) |Ne |Ano |
 | Vyžaduje připojení k doméně |Ne |Ano |
-| Vyžaduje řadič domény dostupný pro virtuální síť |Ne |Ano |
+| Vyžaduje tooVNET dostupný řadič domény |Ne |Ano |
 
 ## <a name="cloud-collections"></a>Cloudové kolekce
-* Rychlé vytvoření - je kolekce rychle zřízený, což znamená, vaše aplikace získat uživatelům rychlejší.
-* Zahrnout vlastní aplikace nebo náš sdílenou složkou. Můžete vytvořit vlastní image (vytvořen z virtuálního počítače Azure) nebo jednu z imagí, které jsou součástí vašeho předplatného.
-* Nemusíte nakonfigurovat připojení mezi vaší kolekce a místní doméně.
-* Ale můžete volitelně použít vlastní virtuální sítě Azure k poskytování přístupu do místního prostředí pro sdílení dat, nebo chcete použít jiný systém než Windows ověřování do prostředkům, jako SQL Server (s použitím ověřování databáze).
+* Rychlé toocreate - hello kolekce se rychle zřizuje, což znamená, že vaše aplikace získat toousers rychlejší.
+* Zahrnout vlastní aplikace nebo náš sdílenou složkou. Můžete vytvořit vlastní image (vytvořen z virtuálního počítače Azure) nebo jedna z bitové kopie hello součástí vašeho předplatného.
+* Nepotřebujete tooconfigure připojení mezi vaší kolekce a místní doméně.
+* Ale můžete volitelně použít vlastní virtuální síť Azure tooprovide přístup do místního prostředí pro data sdílení nebo toouse ověřování jiný systém než Windows do prostředkům, jako SQL Server (s použitím ověřování databáze).
 
 OK jak jednu vytvořit?
 
-* Jenom cloud? Vytvoření pomocí **rychle vytvořit** možnost na portálu.
-* Cloud + virtuální síť? Vytvořte pomocí **vytvořit s virtuální síť** možnost, ale chcete připojit k doméně.
+* Jenom cloud? Vytvořit s hello **rychle vytvořit** možnost hello portálu.
+* Cloud + virtuální síť? Vytvořte pomocí hello **vytvořit s virtuální síť** možnost ale nevybírejte toojoin domény.
 
 ## <a name="hybrid-collections"></a>Hybridní kolekce
-* Poskytnutí plného přístupu k místní síti + virtuální sítí Azure.
+* Poskytnout úplný přístup tooon místní sítě a virtuální sítí Azure.
 * Zahrnuje přístup připojení k doméně pro aplikace a data. Vzdálené aplikace můžete ověřování pro vaše místní službu Active Directory – můžete pak přístupu k prostředkům ve vaší doméně.
 * Povolit rozšířené monitorování a správu s existující řešení System Center a zásady skupiny systému Windows (prostřednictvím vlastní image založený na Windows Server 2012 R2)
-* Podpora [ExpressRoute](https://azure.microsoft.com/services/expressroute/) připojení virtuální sítě Azure k místní virtuální síť.
+* Podpora [ExpressRoute](https://azure.microsoft.com/services/expressroute/) tooconnect vaší virtuální sítě Azure tooyour virtuální místní sítě.
 
-Vytvořte pomocí **vytvořit s virtuální síť** možnost a vyberte pro připojení k doméně.
+Vytvořte pomocí hello **vytvořit s virtuální síť** možnost a zvolte toojoin doménu.
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 Azure RemoteApp podporuje účty Microsoft a účtů služby Azure Active Directory, ale ne všechny kolekce podporují všechny metody. 
@@ -71,23 +71,23 @@ Azure RemoteApp podporuje účty Microsoft a účtů služby Azure Active Direct
 | Multi-factor Authentication | |Ano |Ano |Ano |
 
 ### <a name="cloud-and-cloud--vnet"></a>Cloud a cloudu + virtuální sítě
-Cloudové kolekce můžete účty Microsoft, účty Azure AD nebo kombinaci těchto dvou. Použijte účty, které fungují nejvhodnější pro vaše uživatele.
+Cloudové kolekce můžete účty Microsoft, účty Azure AD nebo jejich kombinace hello dva. Použijte hello účty, které fungují nejvhodnější pro vaše uživatele.
 
 Nejsou žádné zvláštní požadavky pro použití účtů Microsoft. 
 
-Pokud chcete použít účty Azure AD, budete muset Ujistěte se, že klientovi Azure AD odpovídá názvu, který je spojen s vaším předplatným. Když jste vytvořili vaše předplatné Azure Remoteappu, klient Azure AD, které jste používali se automaticky spojeny s předplatným. Žádné uživatele Azure AD, které můžete udělit oprávnění k musí být téhož klienta. V případě potřeby můžete [změna klienta Azure AD](remoteapp-changetenant.md) spojené s vaším předplatným.
+Pokud chcete, aby toouse účty Azure AD, je třeba toomake ujistěte, zda váš klient Azure AD odpovídají hello jeden spojené s vaším předplatným. Když jste vytvořili vaše předplatné Azure Remoteappu, se automaticky spojeny s předplatným hello klienta Azure AD, které jste používali. Žádné uživatele Azure AD můžete udělit oprávnění tooneeds toobe téhož klienta. V případě potřeby můžete [změna klienta Azure AD hello](remoteapp-changetenant.md) spojené s vaším předplatným.
 
 ### <a name="hybrid-or-cloud--azure-ad--ad"></a>Hybridní (nebo cloudu + Azure AD + AD)
-Pomocí služby Azure AD a místní služby Active Directory je předpokladem pro hybridní kolekce. Budete muset použít AD Connect k integraci dva adresáře. Ale nutné některé volbou při rozhodování o tom, jak nakonfigurujete AD Connect. 
+Pomocí služby Azure AD a místní služby Active Directory je předpokladem pro hybridní kolekce. Je nutné toouse AD Connect toointegrate hello dva adresáře. Ale nutné některé volbou při přechodu do toohow konfigurace AD Connect. 
 
-Existují 2 AD Connect scénáře - pomocí synchronizace hesel nebo pomocí AD federace. Podívejte se [AD Connect informace](../active-directory/active-directory-aadconnect.md) zjistěte, které z těchto funguje nejlépe za vás.
+Existují 2 AD Connect scénáře - pomocí synchronizace hesel nebo pomocí AD federace. Podívejte se na hello [AD Connect informace](../active-directory/active-directory-aadconnect.md) toofigure, které z nich nejlépe vyhovuje.
 
-Můžete také použít Azure AD + AD s cloudovou kolekcí. Ujistěte se, že budete postupovat podle stejné nastavení kroků.
+Můžete také použít Azure AD + AD s cloudovou kolekcí. Ujistěte se, že budete postupovat podle hello stejné nastavení kroků.
 
-Podívejte se na [Azure AD + požadavky služby Active Directory pro Azure RemoteApp](remoteapp-ad.md) kroky potřebné ke konfiguraci Azure AD a služby Active Directory.
+Podívejte se na [Azure AD + požadavky služby Active Directory pro Azure RemoteApp](remoteapp-ad.md) hello kroky požadované tooconfigure Azure AD a služby Active Directory.
 
 ## <a name="go-create-your-collection"></a>Vytvoření kolekce můžete vše vyzkoušet.
-OK je pravděpodobné, že už víme jste, co ji nyní, takže není právě jednou z věcí zleva provést – vytvoření vaší první kolekce Azure Remoteappu.
+OK podezření, že už víme jste, co ji nyní, takže není právě jednu věc levém toodo – vytvoření vaší první kolekce Azure Remoteappu.
 
 [Vytvoření cloudové kolekce](remoteapp-create-cloud-deployment.md) nebo [vytvoření hybridní kolekce](remoteapp-create-hybrid-deployment.md) -právě získat vytváření.
 

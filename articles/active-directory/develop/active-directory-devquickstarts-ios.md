@@ -1,6 +1,6 @@
 ---
-title: Integrace Azure AD do aplikace pro iOS | Microsoft Docs
-description: "Jak vytvářet aplikace pro iOS, který se integruje s Azure AD pro přihlášení a volání služby Azure AD chráněný rozhraní API pomocí OAuth."
+title: aaaIntegrate Azure AD do aplikace pro iOS | Microsoft Docs
+description: "Tom, jak toobuild aplikace pro iOS, který se integruje s Azure AD pro přihlášení a volání služby Azure AD chráněný rozhraní API pomocí OAuth."
 services: active-directory
 documentationcenter: ios
 author: brandwe
@@ -15,76 +15,76 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e05745b2b2b122995dcba896ab0f2ed32509e3a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>Integrace Azure AD do aplikace pro iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> Vyzkoušejte verzi preview našeho nového [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) který vám pomůže spuštěná v Azure Active Directory v několika málo minut!  Portál pro vývojáře vás provede procesem registrace aplikace a integraci služby Azure AD do vašeho kódu.  Jakmile budete hotovi, budete mít jednoduchou aplikaci, která může ověřit uživatele v klientovi a back-end, které mohou přijímat tokeny a provést ověření. 
+> Vyzkoušení verze preview hello naší nové [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) který vám pomůže spuštěná v Azure Active Directory v několika málo minut!  portál pro vývojáře Hello vás provede procesem hello registrace aplikace a integraci služby Azure AD do vašeho kódu.  Jakmile budete hotovi, budete mít jednoduchou aplikaci, která může ověřit uživatele v klientovi a back-end, které mohou přijímat tokeny a provést ověření. 
 > 
 > 
 
-Azure Active Directory (Azure AD) poskytuje knihovna ověřování Active Directory nebo ADAL pro iOS klienti, kteří potřebují přístup k chráněným prostředkům. ADAL zjednodušuje proces, který vaše aplikace používá k získání přístupových tokenů. K předvedení toho, jak je snadné, v tomto článku jsme sestavit seznam úkolů Objective C aplikaci, která:
+Azure Active Directory (Azure AD) poskytuje hello knihovna ověřování Active Directory nebo ADAL pro iOS klienti, kteří potřebují tooaccess chráněné zdroje. ADAL zjednodušuje proces hello, že vaše aplikace používá tooobtain přístupových tokenů. toodemonstrate jak snadné je v tomto článku jsme sestavit seznam úkolů Objective C aplikaci, která:
 
-* Získá přístup k tokeny pro volání rozhraní API služby Azure AD Graph pomocí [protokol ověřování OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Získá přístup k tokeny pro volání rozhraní API Azure AD Graph hello pomocí hello [protokol ověřování OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * Vyhledá adresář pro uživatele s danou alias.
 
-Chcete-li vytvořit úplný funkční aplikaci, je potřeba:
+toobuild hello dokončení pracovní aplikace, budete muset:
 
 1. Registrace vaší aplikace s Azure AD.
 2. Nainstalujte a nakonfigurujte ADAL.
-3. Pomocí ADAL získat tokeny z Azure AD.
+3. Pomocí ADAL tooget tokeny z Azure AD.
 
-Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) nebo [stažení je hotová ukázka](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Musíte taky klient služby Azure AD, ve kterém můžete vytvořit uživatele a zaregistrovat aplikaci. Pokud ještě nemáte klienta, [zjistěte, jak získat](active-directory-howto-tenant.md).
+spuštění, tooget [stáhnout kostru aplikace hello](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) nebo [stažení ukázky hello Dokončit](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Musíte taky klient služby Azure AD, ve kterém můžete vytvořit uživatele a zaregistrovat aplikaci. Pokud ještě nemáte klienta, [zjistěte, jak tooget jeden](active-directory-howto-tenant.md).
 
 
 > [!TIP]
-> Vyzkoušejte verzi preview našeho nového [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) , umožňuje zprovoznění s Azure AD za několik minut. Portál pro vývojáře vás provede procesem registrace aplikace a integraci služby Azure AD do vašeho kódu. Až budete hotoví, budete mít jednoduchou aplikaci, která může ověřit uživatele ve vašem klientovi a back-end, můžete přijímat tokeny a provést ověření. 
+> Vyzkoušení verze preview hello naší nové [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) , umožňuje zprovoznění s Azure AD za několik minut. portál pro vývojáře Hello vás provede procesem hello registrace aplikace a integraci služby Azure AD do vašeho kódu. Až budete hotoví, budete mít jednoduchou aplikaci, která může ověřit uživatele ve vašem klientovi a back-end, můžete přijímat tokeny a provést ověření. 
 > 
 > 
 
 ## <a name="1-determine-what-your-redirect-uri-is-for-ios"></a>1. Určit, jaké vaše přesměrování je identifikátor URI pro iOS
-Bezpečně spuštění aplikace v některých scénářích jednotné přihlašování, musíte vytvořit *identifikátor URI pro přesměrování* v určitém formátu. Identifikátor URI pro přesměrování slouží k zajištění, že tokeny vrátit k správné aplikaci, která je žádali.
+toosecurely spuštění aplikace v některých scénářích jednotné přihlašování, musíte vytvořit *identifikátor URI pro přesměrování* v určitém formátu. Přesměrování identifikátor URI je použité tooensure, který hello návratový toohello tokeny správné se aplikace, která je žádali.
 
 
-Formát iOS pro přesměrování je identifikátor URI:
+Formát iOS Hello přesměrování je identifikátor URI:
 
 ```
 <app-scheme>://<bundle-id>
 ```
 
 * **aplikace – schéma** – to je zaregistrován ve vašem projektu XCode. Je, jak jiné aplikace může volat. Můžete najít to pod Info.plist -> adresa URL typy -> identifikátoru adresy URL. Pokud ještě nemáte jeden nebo více nakonfigurované byste měli vytvořit jednu.
-* **id sady** -Toto je identifikátor svazku v části "identity" zrušení nastavení projektu v XCode.
+* **id sady** -Toto je identifikátor svazku v části "identity" hello zrušit nastavení projektu v XCode.
 
 Příklad pro tento kód rychlý start: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="2-register-the-directorysearcher-application"></a>2. Registrace aplikace DirectorySearcher
-Chcete-li nastavit aplikaci získat tokeny, musíte nejprve zaregistrovat v klientovi služby Azure AD a udělit mu oprávnění k přístupu k Azure AD Graph API:
+## <a name="2-register-hello-directorysearcher-application"></a>2. Registrace aplikace DirectorySearcher hello
+tooset až tokeny tooget vaší aplikace, musíte nejprve tooregister ji ve službě Azure AD klienta a udělit mu oprávnění tooaccess hello Azure AD Graph API:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na horním panelu klikněte na váš účet. V části **Directory** vyberte klienta služby Active Directory, kde chcete registrace vaší aplikace.
-3. Klikněte na tlačítko **více služeb** v levém navigačním podokně a potom vyberte **Azure Active Directory**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Na horním panelu hello klikněte na váš účet. V části hello **Directory** vyberte místo, kam chcete tooregister klienta služby Active Directory hello vaší aplikace.
+3. Klikněte na tlačítko **více služeb** v hello levém navigačním podokně a pak vyberte **Azure Active Directory**.
 4. Klikněte na tlačítko **registrace aplikace**a potom vyberte **přidat**.
-5. Postupujte podle výzev a vytvořte novou **nativní klientská aplikace**.
-  * **Název** aplikace popisuje vaší aplikace pro koncové uživatele.
-  * **Identifikátor Uri pro přesměrování** je kombinace schématu a řetězec, Azure AD se používá k vrácení odpovědi tokenu.  Zadejte hodnotu, která je specifický pro vaši aplikaci a je založena na předchozí informace o identifikátor URI přesměrování.
-6. Po dokončení registrace Azure AD přiřadí vaší aplikace ID jedinečný aplikace.  Tuto hodnotu budete potřebovat v další části, zkopírujte jej na kartě aplikace.
-7. Z **nastavení** vyberte **požadovaných oprávnění** a pak vyberte **přidat**. Vyberte **Microsoft Graph** jako rozhraní API a poté přidejte **čtení dat adresáře** oprávnění v rámci **delegovaná oprávnění**.  Toto nastaví aplikace zpracovat dotaz rozhraní Azure AD Graph API pro uživatele.
+5. Postupujte podle hello vyzve toocreate nový **nativní klientská aplikace**.
+  * Hello **název** z hello aplikace popisuje tooend uživatelů vaší aplikace.
+  * Hello **identifikátor Uri pro přesměrování** schématu a řetězec kombinací, Azure AD používá tooreturn odpovědi tokenu.  Zadejte hodnotu, která je konkrétní tooyour aplikace která je založena na hello předchozí informace o identifikátor URI přesměrování.
+6. Po dokončení registrace hello, Azure AD přiřadí vaší aplikace ID jedinečný aplikace.  Tuto hodnotu budete potřebovat v dalších částech hello, takže zkopírujte jej z karty aplikace hello.
+7. Z hello **nastavení** vyberte **požadovaných oprávnění** a pak vyberte **přidat**. Vyberte **Microsoft Graph** jako hello rozhraní API a poté přidejte hello **čtení dat adresáře** oprávnění v rámci **delegovaná oprávnění**.  Toto nastaví vaší hello tooquery aplikace Azure AD Graph API pro uživatele.
 
 ## <a name="3-install-and-configure-adal"></a>3. Instalace a konfigurace ADAL
-Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a zadejte kód, týkající se identity.  Pro ADAL ke komunikaci s Azure AD budete muset poskytnout některé informace o registraci vaší aplikace.
+Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a zadejte kód, týkající se identity.  ADAL toocommunicate s Azure AD, musíte tooprovide její některé informace o registraci vaší aplikace.
 
-1. Začněte tím, že přidání ADAL do projektu DirectorySearcher pomocí CocoaPods.
+1. Začněte tím, že přidání ADAL toohello DirectorySearcher projektu pomocí CocoaPods.
 
     ```
     $ vi Podfile
     ```
-2. Do tohoto souboru podfile přidejte následující:
+2. Přidejte následující toothis podfile hello:
 
     ```
     source 'https://github.com/CocoaPods/Specs.git'
@@ -94,7 +94,7 @@ Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a za
     pod 'ADALiOS'
     ```
 
-3. Nyní načtěte podfile pomocí CocoaPods. Tento krok vytvoří nový pracovní prostor XCode, který můžete načíst.
+3. Nyní načtěte hello podfile pomocí CocoaPods. Tento krok vytvoří nový pracovní prostor XCode, který můžete načíst.
 
     ```
     $ pod install
@@ -102,15 +102,15 @@ Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a za
     $ open QuickStart.xcworkspace
     ```
 
-4. V projektu pro rychlý start, otevřete soubor plist `settings.plist`.  Nahraďte hodnoty elementů v části tak, aby odrážela hodnoty, které jste zadali v portálu Azure. Váš kód odkazuje na tyto hodnoty vždy, když ho využívá ADAL.
-  * `tenant` Je doména klienta služby Azure AD, například contoso.onmicrosoft.com.
-  * `clientId` Je ID klienta aplikace, který jste zkopírovali z portálu.
-  * `redirectUri` Je adresa URL přesměrování, který je zaregistrovaný v portálu.
+4. V projektu typu rychlý start hello, otevřete soubor plist hello `settings.plist`.  Nahraďte hodnoty hello hello elementů v hello části tooreflect hello hodnoty, které jste zadali v hello portálu Azure. Váš kód odkazuje na tyto hodnoty vždy, když ho využívá ADAL.
+  * Hello `tenant` je hello domény klienta služby Azure AD, například contoso.onmicrosoft.com.
+  * Hello `clientId` je hello ID klienta aplikace, který jste zkopírovali z portálu hello.
+  * Hello `redirectUri` je hello přesměrování URL, která jste zaregistrovali hello portálu.
 
-## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.    Získat tokeny z Azure AD pomocí ADAL
-Základní princip za ADAL je, že vždy, když aplikace potřebuje přístupový token, jednoduše volá completionBlock `+(void) getToken : `, a zbývající ADAL.  
+## <a name="4----use-adal-tooget-tokens-from-azure-ad"></a>4.    Použití ADAL tooget tokeny z Azure AD
+Hello základní princip za ADAL je, že vždy, když aplikace potřebuje přístupový token, jednoduše volá completionBlock `+(void) getToken : `, a ADAL hello rest.  
 
-1. V `QuickStart` projekt, otevřete `GraphAPICaller.m` a najděte `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` komentář horní části.  Toto je, kde je předat ADAL souřadnice prostřednictvím CompletionBlock, komunikovat s Azure AD, a určit, jak pro ukládání do mezipaměti tokenů.
+1. V hello `QuickStart` projekt, otevřete `GraphAPICaller.m` a vyhledejte hello `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` komentář v horní hello.  Toto je, kde můžete předat ADAL hello souřadnice prostřednictvím CompletionBlock, toocommunicate s Azure AD a určit, jak toocache tokeny.
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -134,7 +134,7 @@ Základní princip za ADAL je, že vždy, když aplikace potřebuje přístupov�
                                   redirectUri:redirectUri
                                promptBehavior:AD_PROMPT_AUTO
                                        userId:data.userItem.userInformation.userId
-                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy to display the correct mobile UX. You most likely won't need it in your code.
+                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy toodisplay hello correct mobile UX. You most likely won't need it in your code.
                              completionBlock:^(ADAuthenticationResult *result) {
 
                                   if (result.status != AD_SUCCEEDED)
@@ -151,7 +151,7 @@ Základní princip za ADAL je, že vždy, když aplikace potřebuje přístupov�
 
     ```
 
-2. Teď je potřeba tento token slouží k vyhledání uživatele v grafu. Najít `// TODO: implement SearchUsersList` komentář. Tato metoda vytváří požadavek GET na Azure AD Graph API k dotazu pro uživatele, jehož UPN začíná zadaný hledaný termín.  Zpracovat dotaz rozhraní Azure AD Graph API, je nutné zahrnout access_token v `Authorization` hlavičky žádosti. Toto je, kde odeslán ADAL.
+2. Nyní potřebujeme toouse tento token toosearch pro uživatele v grafu hello. Najde hello `// TODO: implement SearchUsersList` komentář. Tato metoda vytváří tooquery toohello Azure AD Graph API požadavek GET pro uživatele, jehož UPN začíná hello zadaný hledaný termín.  tooquery hello Azure AD Graph API, musíte tooinclude access_token v hello `Authorization` hlavičky požadavku hello. Toto je, kde odeslán ADAL.
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -186,10 +186,10 @@ Základní princip za ADAL je, že vždy, když aplikace potřebuje přístupov�
 
                          NSDictionary *dataReturned = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-                         // We can grab the JSON node at the top to get our graph data.
+                         // We can grab hello JSON node at hello top tooget our graph data.
                          NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 
-                         // Don't be thrown off by the key name being "value". It really is the name of the
+                         // Don't be thrown off by hello key name being "value". It really is hello name of the
                          // first node. :-)
 
                          // Each object is a key value pair
@@ -223,25 +223,25 @@ Základní princip za ADAL je, že vždy, když aplikace potřebuje přístupov�
     ```
 
 
-3. Když vaše aplikace vyžaduje token voláním `getToken(...)`, ADAL pokusí vrátit token bez požadavku uživatele na přihlašovací údaje.  Pokud ADAL zjistí, že uživatel musí pro přihlášení k získání tokenu, bude zobrazit dialogové okno pro přihlášení, shromažďování přihlašovacích údajů uživatele a pak se vraťte token po úspěšném ověření.  Pokud není možné vrátit token z jakéhokoli důvodu ADAL, vyvolá `AdalException`.
+3. Když vaše aplikace vyžaduje token voláním `getToken(...)`, ADAL pokusí tooreturn token bez nutnosti hello uživatelské přihlašovací údaje.  Pokud ADAL zjistí, že tento uživatel hello je toosign v tooget token, bude zobrazit dialogové okno pro přihlášení, shromažďování přihlašovacích údajů uživatele hello a vrátíte se po úspěšném ověření tokenu.  Pokud ADAL není možné tooreturn token z jakéhokoli důvodu, že nastane `AdalException`.
 
 > [!Note] 
-> `AuthenticationResult` Objekt obsahuje `tokenCacheStoreItem` objekt, který můžete použít ke shromažďování informací, které vaše aplikace může být nutné. V rychlé spuštění `tokenCacheStoreItem` slouží k určení, pokud je už hotové ověřování.
+> Hello `AuthenticationResult` objekt obsahuje `tokenCacheStoreItem` objekt, který lze použít toocollect hello informace, které může být nutné vaší aplikace. V hello rychlý Start `tokenCacheStoreItem` je použité toodetermine Pokud ověřování již probíhá.
 >
 >
 
-## <a name="5-build-and-run-the-application"></a>5. Sestavení a spuštění aplikace
-Blahopřejeme! Teď máte funkční aplikaci iOS, která můžete ověřovat uživatele, bezpečně volání webového rozhraní API pomocí standardu OAuth 2.0 a získat základní informace o uživateli.  Pokud jste to ještě neudělali, nyní je čas k naplnění vašeho klienta s některými uživateli.  Spusťte aplikaci rychlý start a pak se přihlaste pomocí jeden z těchto uživatelů.  Hledání jiných uživatelů podle jejich UPN.  Zavřete aplikaci a pak spusťte znovu.  Všimněte si, že uživatelské relace zůstává beze změn.
+## <a name="5-build-and-run-hello-application"></a>5. Sestavení a spuštění aplikace hello
+Blahopřejeme! Teď máte funkční aplikaci iOS, která můžete ověřovat uživatele, bezpečně volání webového rozhraní API pomocí standardu OAuth 2.0 a získat základní informace o uživateli hello.  Pokud jste to ještě neudělali, nyní je čas toopopulate hello vašeho klienta s některými uživateli.  Spusťte aplikaci rychlý start a pak se přihlaste pomocí jeden z těchto uživatelů.  Hledání jiných uživatelů podle jejich UPN.  Zavření aplikace hello a pak spusťte znovu.  Všimněte si, že hello uživatelské relace zůstává beze změn.
 
-ADAL usnadňuje všechny tyto běžné funkce identity začlenit do vaší aplikace.  Se postará všechnu práci dirty, jako je Správa mezipaměti podpora protokolu OAuth, představuje uživatele pomocí uživatelského rozhraní pro přihlášení, a aktualizovat platnost tokenů.  Všechny skutečně potřebujete vědět, je jednoho volání rozhraní API `getToken`.
+ADAL umožňuje snadno tooincorporate všechny tyto běžné funkce identity do aplikace.  Se postará všechny pracovní dirty hello, jako je Správa mezipaměti podpora protokolu OAuth, prezentuje toosign uživatelského rozhraní v hello uživatele a aktualizaci vypršení platnosti tokenů.  Všechny skutečně potřebujete tooknow je jednoho volání rozhraní API `getToken`.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) zajišťuje na [Githubu](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
+Pro odkaz, hello dokončit ukázka (bez vašich hodnot nastavení) zajišťuje na [Githubu](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
 
 ## <a name="next-steps"></a>Další kroky
-Nyní se můžete přesunout dalších scénářů.  Můžete se pokusit:
+Nyní se můžete přesunout na tooadditional scénáře.  Může být vhodné tootry:
 
 * [Zabezpečení webové aplikace Node.JS API s Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
-* Další informace [postup povolení jednotného přihlašování napříč aplikacemi v systému iOS pomocí ADAL](active-directory-sso-ios.md)  
+* Další informace [jak tooenable jednotného přihlašování napříč aplikacemi v systému iOS pomocí ADAL](active-directory-sso-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

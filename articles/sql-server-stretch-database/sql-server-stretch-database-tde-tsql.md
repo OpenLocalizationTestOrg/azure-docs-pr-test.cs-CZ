@@ -1,5 +1,5 @@
 ---
-title: "Povolit transparentní šifrování dat pro funkce Stretch Database TSQL - Azure | Microsoft Docs"
+title: "aaaEnable transparentní šifrování dat pro funkci Stretch Database TSQL - Azure | Microsoft Docs"
 description: "Povolit transparentní šifrování dat (šifrování TDE) pro SQL Server Stretch Database na Azure TSQL"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: anvang
-ms.openlocfilehash: ed26c2b386e08b76f78b4a05e12c46d2b97c20f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a9ba23649656fb344480d79438a1115f0eb353bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Povolit transparentní šifrování dat (šifrování TDE) pro funkce Stretch Database na Azure (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -27,35 +27,35 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Transparentní šifrování šifrování dat (TDE) pomáhá chránit před ohrožením škodlivých aktivit provedením v reálném čase šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakci bez nutnosti změny aplikace.
+Transparentní šifrování šifrování dat (TDE) pomáhá chránit před ohrožením hello škodlivých aktivit provedením v reálném čase šifrování a dešifrování hello databáze, přidružených záloh a souborů protokolů transakci bez nutnosti změny toohello aplikace.
 
-Šifrování TDE zašifruje úložiště celé databáze pomocí symetrický klíč s názvem šifrovací klíč databáze. Šifrovací klíč databáze je chráněn certifikát integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty alespoň jednou za 90 dní. Obecný popis TDE, najdete v části [transparentní šifrování šifrování dat (TDE)].
+Šifrování TDE zašifruje úložiště hello celé databáze pomocí symetrického klíče volané hello šifrovací klíč databáze. šifrovací klíč databáze Hello je chráněn certifikát integrovaného serveru. certifikát integrovaného serveru Hello je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty alespoň jednou za 90 dní. Obecný popis TDE, najdete v části [transparentní šifrování šifrování dat (TDE)].
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Chcete-li povolit šifrování TDE Azure migrovat databázi, která ukládá data z databáze serveru SQL povolenou funkcí Stretch, provádět následující akce:
+tooenable TDE pro databázi aplikace Azure, která ukládá hello, které se migrují data z databáze povolenou funkcí Stretch SQL Server hello následující věci:
 
-1. Připojení k *hlavní* databáze na serveru Azure, který je hostitelem databáze pomocí přihlášení, který je správcem nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojit toohello *hlavní* databáze na hello Azure hostování hello databáze serveru pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
+2. Spusťte následující příkaz tooencrypt hello databáze hello.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Zakázáním šifrování
-Zakázat šifrování TDE Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL Server, provádět následující akce:
+toodisable TDE pro databázi aplikace Azure, která ukládá hello, které se migrují data z databáze povolenou funkcí Stretch SQL Server hello následující věci:
 
-1. Připojení k *hlavní* databáze pomocí přihlášení, který je správcem nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojit toohello *hlavní* databáze pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
+2. Spusťte následující příkaz tooencrypt hello databáze hello.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
 ## <a name="verifying-encryption"></a>Ověření šifrování
-Pokud chcete ověřit, že stav šifrování pro databázi Azure, která ukládá data migrována z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
+stav šifrování tooverify pro databázi aplikace Azure, která ukládá hello, které se migrují data z databáze povolenou funkcí Stretch SQL Server hello následující věci:
 
-1. Připojení k *hlavní* nebo instanci databáze pomocí přihlášení, který je správcem nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojit toohello *hlavní* nebo instanci databáze pomocí přihlášení, která je správce nebo členem hello **dbmanager** role v hlavní databázi hello
+2. Spusťte následující příkaz tooencrypt hello databáze hello.
 
 ```sql
 SELECT

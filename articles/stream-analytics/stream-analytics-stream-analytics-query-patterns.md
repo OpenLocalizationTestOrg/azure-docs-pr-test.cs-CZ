@@ -1,5 +1,5 @@
 ---
-title: "Dotaz příkladů běžných vzorů využití v Stream Analytics | Microsoft Docs"
+title: "aaaQuery příkladů běžných vzorů využití v Stream Analytics | Microsoft Docs"
 description: "Běžné typy dotazů Azure Stream Analytics"
 keywords: "Příklady dotazů"
 services: stream-analytics
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
 ms.author: jenniehubbard
-ms.openlocfilehash: a00855c200b3fb365073bad4c5773b02c4c2c7fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c8f7a8ac661eaf0281f4140b02c42141b73040fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Dotaz příkladů běžných vzorů využití Stream Analytics
 ## <a name="introduction"></a>Úvod
-Dotazy v Azure Stream Analytics jsou vyjádřeny v jazyce SQL jako dotaz. Tyto dotazy jsou dokumentovány v článku [Stream Analytics query referenční informace k jazyku](https://msdn.microsoft.com/library/azure/dn834998.aspx) průvodce. Tento článek popisuje řešení několik běžné typy dotazů, na základě reálného scénářů. Je pracuje a bude aktualizován s novou vzory průběžně.
+Dotazy v Azure Stream Analytics jsou vyjádřeny v jazyce SQL jako dotaz. Tyto dotazy jsou popsané v hello [Stream Analytics query referenční informace k jazyku](https://msdn.microsoft.com/library/azure/dn834998.aspx) průvodce. Tento článek obsahuje přehled řešení tooseveral běžné typy dotazů, na základě reálných scénářů. Je pracuje a pokračuje toobe nové vzory průběžně aktualizovat.
 
 ## <a name="query-example-convert-data-types"></a>Příklad dotazu: Převést datové typy
-**Popis**: definování typů vlastností v vstupního datového proudu.
-Například váhy car pochází na vstupního datového proudu jako řetězce a je třeba má být převeden na **INT** k provedení **součet** ho nahoru.
+**Popis**: definování typů hello vlastností na hello vstupního datového proudu.
+Například hello car váhy pochází na hello vstupního datového proudu jako řetězce a je třeba toobe převést příliš**INT** tooperform **součet** ho nahoru.
 
 **Vstup**:
 
@@ -53,11 +53,11 @@ Například váhy car pochází na vstupního datového proudu jako řetězce a 
         Make,
         TumblingWindow(second, 10)
 
-**Vysvětlení**: použití **PŘETYPOVÁNÍ** příkaz v **váhy** pro zadání jeho datového typu pole. Zobrazit seznam podporované datové typy v [datové typy (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+**Vysvětlení**: použití **PŘETYPOVÁNÍ** příkaz v hello **váhy** pole toospecify jeho datového typu. Zobrazit seznam hello podporované datové typy v [datové typy (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Příklad dotazu: použijte jako nebo nebyla chtěli vzor odpovídající
-**Popis**: Zkontrolujte, jestli hodnotu pole na události odpovídá určitého.
-Například zkontrolujte, že výsledek vrátí desky licencí, které se začínat a končit 9.
+## <a name="query-example-use-likenot-like-toodo-pattern-matching"></a>Příklad dotazu: použijte jako nebo nebyla jako toodo shoda vzoru
+**Popis**: Zkontrolujte, jestli hodnotu pole na hello události odpovídá určitého.
+Například zkontrolujte, že hello výsledek vrátí desky licencí, které se začínat a končit 9.
 
 **Vstup**:
 
@@ -83,11 +83,11 @@ Například zkontrolujte, že výsledek vrátí desky licencí, které se začí
     WHERE
         LicensePlate LIKE 'A%9'
 
-**Vysvětlení**: použití **jako** příkazu ke kontrole **LicensePlate** pole hodnota. By měl začínat A potom mít libovolný řetězec nula nebo více znaků a pak končit 9. 
+**Vysvětlení**: použití hello **jako** příkaz toocheck hello **LicensePlate** pole hodnota. By měl začínat A potom mít libovolný řetězec nula nebo více znaků a pak končit 9. 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Příklad dotazu: Zadejte logiku pro různé případech nebo hodnoty (CASE – příkazy)
 **Popis**: Zadejte jiný výpočet pro pole, v závislosti na konkrétní kritérium.
-Zadejte například, že řetězec popis Ujistěte se, kolik aut stejného byla dokončena s ve speciálním případě pro 1.
+Například zadejte popis řetězce, pro kolik aut hello stejné zkontrolujte byla dokončena s ve speciálním případě pro 1.
 
 **Vstup**:
 
@@ -118,11 +118,11 @@ Zadejte například, že řetězec popis Ujistěte se, kolik aut stejného byla 
         Make,
         TumblingWindow(second, 10)
 
-**Vysvětlení**: **případ** klauzule umožňuje, abychom mohli poskytovat různé výpočtů, na základě některé kritérií (v našem případě počet aut v okně agregační).
+**Vysvětlení**: hello **případ** klauzule umožňuje tooprovide různých výpočtů, na základě některé kritérií (v našem případě hello počet aut hello v okně agregační hello).
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>Příklad dotazu: odesílání dat do několik výstupů
-**Popis**: posílat data do více cílů výstup z jediné úlohy.
-Například analyzovat data pro upozornění na základě prahové hodnoty a archivaci všechny události do úložiště objektů blob.
+## <a name="query-example-send-data-toomultiple-outputs"></a>Příklad dotazu: Odeslat data toomultiple výstupy
+**Popis**: odesílání dat toomultiple výstup cíle z jediné úlohy.
+Například analyzovat data pro upozornění na základě prahové hodnoty a všechny události tooblob úložiště archivu.
 
 **Vstup**:
 
@@ -173,11 +173,11 @@ Například analyzovat data pro upozornění na základě prahové hodnoty a arc
     HAVING
         [Count] >= 3
 
-**Vysvětlení**: **INTO** klauzule informuje Stream Analytics který výstupy zapsat data do tohoto příkazu.
-První dotazu je průchozí dat jsme dostali výstupu, který jsme pojmenovali **ArchiveOutput**.
-Druhý dotaz nemá některé jednoduché agregace a filtrování a odesílá výsledky na příjem dat výstrah systém.
+**Vysvětlení**: hello **INTO** klauzule informuje Stream Analytics, které hello výstupy toowrite hello data toofrom tohoto prohlášení.
+první dotaz Hello je průchozí hello dat dostali jsme tooan výstupu, který jsme pojmenovali **ArchiveOutput**.
+druhý dotaz Hello nepodporuje některé jednoduché agregace a filtrování a odešle výsledky hello tooa podřízené výstrahy systému.
 
-Všimněte si, že můžete také znovu použít výsledky běžných výrazech tabulky (odkazu Cte) (například **WITH** příkazy) ve více příkazů výstup. Tato možnost má výhodu v podobě otevírání méně uživatelům vstupního zdroje.
+Všimněte si, že můžete také znovu použít hello výsledky hello běžných výrazech tabulky (odkazu Cte) (například **WITH** příkazy) ve více příkazů výstup. Tato možnost je hello dodatečná výhoda otevření méně čtečky toohello vstupní zdroj.
 Například: 
 
     WITH AllRedCars AS (
@@ -192,8 +192,8 @@ Například:
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
 
 ## <a name="query-example-count-unique-values"></a>Příklad dotazu: počet jedinečné hodnoty
-**Popis**: počet jedinečné pole hodnoty, které se zobrazují v datovém proudu v rámci časové okno.
-Například kolik jedinečný díky automobilů předána stánek projedou v okně sekundu 2?
+**Popis**: počet hello jedinečné pole hodnoty, které se zobrazují v datovém proudu hello v rámci časové okno.
+Například kolik jedinečný díky automobilů předána hello projedou stánek v okně sekundu 2?
 
 **Vstup**:
 
@@ -225,11 +225,11 @@ GROUP BY
 
 
 **Vysvětlení:**
-**COUNT (odlišné ověřte)** vrátí počet jedinečných hodnot ve **zkontrolujte** sloupec v rámci časové okno.
+**COUNT (odlišné ověřte)** hello vrátí počet jedinečných hodnot v hello **zkontrolujte** sloupec v rámci časové okno.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Příklad dotazu: určení, pokud byla hodnota změněna
-**Popis**: Podívejte se na předchozí hodnotu k určení, pokud se liší od aktuální hodnotu.
-Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální Auto?
+**Popis**: Podívejte se na předchozí toodetermine hodnotu, pokud se liší od aktuální hodnota hello.
+Je třeba předchozí car hello na hello projedou silniční hello, které stejná jako aktuální car hello provést?
 
 **Vstup**:
 
@@ -254,10 +254,10 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 
-**Vysvětlení**: použití **PRODLEVA** prohlížet do jedné události vstupního datového proudu zpět a získat **zkontrolujte** hodnotu. Pak porovnávají ho do **zkontrolujte** hodnotu na aktuální událost a výstupní událost, pokud se liší.
+**Vysvětlení**: použití **PRODLEVA** toopeek do hello vstupní datový proud zpět jedné události a získat hello **zkontrolujte** hodnotu. Porovnejte je toohello **zkontrolujte** hodnotu na aktuální a výstup hello události hello, pokud se liší.
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>Příklad dotazu: Najít první událost v okně
-**Popis**: Najít první auto v intervalu každých 10 minut.
+## <a name="query-example-find-hello-first-event-in-a-window"></a>Příklad dotazu: najít hello první událost v okně
+**Popis**: najít hello prvního auta v intervalu každých 10 minut.
 
 **Vstup**:
 
@@ -289,7 +289,7 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
     WHERE 
         IsFirst(minute, 10) = 1
 
-Teď umožňuje změnit problém a najít první auto konkrétní značky v intervalu každých 10 minut.
+Teď vytvoříme změnu hello problému a najít hello prvního auta konkrétní třídy v intervalu každých 10 minut.
 
 | LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
@@ -310,8 +310,8 @@ Teď umožňuje změnit problém a najít první auto konkrétní značky v inte
     WHERE 
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>Příklad dotazu: najít poslední událost v okně
-**Popis**: najít poslední car v intervalu každých 10 minut.
+## <a name="query-example-find-hello-last-event-in-a-window"></a>Příklad dotazu: najít hello poslední událost v okně
+**Popis**: najít hello poslední car v intervalu každých 10 minut.
 
 **Vstup**:
 
@@ -353,11 +353,11 @@ Teď umožňuje změnit problém a najít první auto konkrétní značky v inte
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
 
-**Vysvětlení**: existují dva kroky v dotazu. První z nich vyhledá nejnovější časové razítko v systému windows 10 minut. Druhý krok spojí výsledky první dotaz s původní datového proudu a vyhledejte události, které odpovídají poslední časová razítka v každém okně. 
+**Vysvětlení**: existují dva kroky v dotazu hello. Hello první jeden najde hello nejnovější časové razítko v systému windows 10 minut. druhý krok spojení Hello hello výsledky hello první dotaz s hello původní datový proud toofind hello události, které odpovídají hello poslední časová razítka v každém okně. 
 
-## <a name="query-example-detect-the-absence-of-events"></a>Příklad dotazu: zjištění absence událostí
+## <a name="query-example-detect-hello-absence-of-events"></a>Příklad dotazu: zjištění hello absence událostí
 **Popis**: Zkontrolujte, že datový proud má žádná hodnota, která odpovídá určité kritérium.
-Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční projedou v posledních 90 sekund?
+Například 2 po sobě jdoucích automobily od hello stejné provedený zadali hello projedou silniční v rámci hello posledních 90 sekund?
 
 **Vstup**:
 
@@ -387,10 +387,10 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 
-**Vysvětlení**: použití **PRODLEVA** prohlížet do jedné události vstupního datového proudu zpět a získat **zkontrolujte** hodnotu. Porovnat s **ZKONTROLUJTE** hodnoty v aktuálním události a pak výstupní událost, pokud jsou stejné. Můžete také použít **PRODLEVA** k získání dat o předchozí Auto.
+**Vysvětlení**: použití **PRODLEVA** toopeek do hello vstupní datový proud zpět jedné události a získat hello **zkontrolujte** hodnotu. Porovnejte je toohello **ZKONTROLUJTE** hodnota hello aktuální událost a potom výstupní hello událost, pokud jejich jsou stejné hello. Můžete také použít **PRODLEVA** tooget data o předchozí car hello.
 
-## <a name="query-example-detect-the-duration-between-events"></a>Příklad dotazu: zjistit dobu trvání mezi událostmi
-**Popis**: najít trvání dané události. Například zadané webové clickstream, určete čas strávený na funkce.
+## <a name="query-example-detect-hello-duration-between-events"></a>Příklad dotazu: zjistit dobu trvání hello mezi událostmi
+**Popis**: najít hello trvání dané události. Zadané webové clickstream, například určete hello čas strávený na funkce.
 
 **Vstup**:  
 
@@ -415,11 +415,11 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
         Event = 'end'
 ````
 
-**Vysvětlení**: použití **poslední** funkce načíst poslední **čas** hodnota typu události při **spustit**. **Poslední** využívá **PARTITION BY [user]** indikující, že výsledek se počítá na jedinečný uživatele. Dotaz musí maximální prahovou hodnotu 1 hodina časový rozdíl mezi **spustit** a **Zastavit** události, ale je možné konfigurovat podle potřeby **(LIMIT DURATION(hour, 1)**.
+**Vysvětlení**: použití hello **poslední** funkce tooretrieve hello poslední **čas** hodnota při typ události hello **spustit**. Hello **poslední** využívá **PARTITION BY [user]** tooindicate, který hello výsledek se počítá na jedinečný uživatele. dotaz Hello má maximální prahovou hodnotu 1 hodina hello časový rozdíl mezi **spustit** a **Zastavit** události, ale je možné konfigurovat podle potřeby **(LIMIT DURATION(hour, 1)**.
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>Příklad dotazu: zjistit dobu trvání podmínku
+## <a name="query-example-detect-hello-duration-of-a-condition"></a>Příklad dotazu: zjistit dobu trvání hello podmínku
 **Popis**: Najít se na jak dlouho podmínku došlo k chybě.
-Předpokládejme například, že chyby výsledkem všechny aut, které mají nesprávné váhu (nad 20 000 libra). Chceme výpočetní trvání chybě.
+Předpokládejme například, že chyby výsledkem všechny aut, které mají nesprávné váhu (nad 20 000 libra). Chceme toocompute hello trvání hello chyb.
 
 **Vstup**:
 
@@ -461,11 +461,11 @@ Předpokládejme například, že chyby výsledkem všechny aut, které mají ne
         AND previousWeight > 20000
 ````
 
-**Vysvětlení**: použití **PRODLEVA** zobrazení vstupního datového proudu pro 24 hodin a vyhledejte instance kde **StartFault** a **StopFault** jsou předané váhu < 20000.
+**Vysvětlení**: použití **PRODLEVA** tooview hello vstupního datového proudu pro 24 hodin a podívejte se na instance, kde **StartFault** a **StopFault** jsou předané hello Váha < 20000.
 
 ## <a name="query-example-fill-missing-values"></a>Příklad dotazu: vyplnění chybějící hodnoty
-**Popis**: pro datový proud události, které mají chybějící hodnoty, vytvořit datový proud událostí s pravidelných intervalech.
-Například generovat událost každých 5 sekund, která generuje sestavy naposledy zaznamenané datového bodu.
+**Popis**: pro hello datový proud události, které mají chybějící hodnoty, vytvořit datový proud událostí s pravidelných intervalech.
+Například generovat událost každých 5 sekund, který ohlašuje hello naposledy vidět datového bodu.
 
 **Vstup**:
 
@@ -503,13 +503,13 @@ Například generovat událost každých 5 sekund, která generuje sestavy napos
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Vysvětlení**: Tento dotaz vygeneruje události každých 5 sekund a výstupy poslední událost, který jste získali dříve. [Hopping okno](https://msdn.microsoft.com/library/dn835041.aspx "Hopping okno – Azure Stream Analytics") doba trvání Určuje, jak daleko zpětný dotaz vypadá najít nejnovější událost (v tomto příkladu je 300 sekund).
+**Vysvětlení**: Tento dotaz vygeneruje události každých 5 sekund a výstupy hello poslední událost, který jste získali dříve. Hello [Hopping okno](https://msdn.microsoft.com/library/dn835041.aspx "Hopping okno – Azure Stream Analytics") doba trvání Určuje, jak daleko back hello dotazu vypadá toofind hello nejnovější událost (v tomto příkladu je 300 sekund).
 
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)

@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure IoT - lekci 1 Arduino: získat nástroje (Windows) | Microsoft Docs"
-description: "Stáhněte a nainstalujte nezbytné nástroje a software pro první ukázkovou aplikaci pro Adafruit prolnutí M0 Wi-Fi ve Windows 7 a novějších verzích."
+title: "Připojit Arduino tooAzure IoT - lekci 1: získání nástroje (Windows) | Microsoft Docs"
+description: "Stáhněte a nainstalujte hello nezbytné nástroje a software pro hello první ukázkovou aplikaci pro Adafruit prolnutí M0 Wi-Fi ve Windows 7 a novějších verzích."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 5d27c016c4a74e31455e676b3c3070a8e262b21f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4dd946da6c84293987e166fd1d17fac117e94e4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-windows-7-or-later"></a>Získat nástroje (Windows 7 nebo novější)
+# <a name="get-hello-tools-windows-7-or-later"></a>Získat nástroje hello (Windows 7 nebo novější)
 
 > [!div class="op_single_selector"]
 > * [Windows 7 nebo novější][windows]
@@ -32,60 +32,60 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-you-will-do"></a>Co provedete
 
-Stažení nástroje pro vývoj a software pro první ukázkovou aplikaci pro panel Adafruit prolnutí M0 Wi-Fi Arduino.
+Stažení nástroje pro vývoj hello a hello softwaru pro hello první ukázkovou aplikaci pro panel Adafruit prolnutí M0 Wi-Fi Arduino.
 
-Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting].
+Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting].
 
 > [!NOTE]
-> I když programovací jazyk Hlavní logika je Arduino, Node.js nástroje se používají v poznatky sestavení a nasazení ukázkové aplikace.
+> Arduino sice hello programovací jazyk Hlavní logika hello Node.js nástroje se používají v hello lekce toobuild a nasazení ukázkové aplikace.
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
 
-* Jak nainstalovat Git a Node.js.
-  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Ukázkovou aplikaci pro tento článek je uložený na Git.
+* Jak tooinstall Git a Node.js.
+  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Hello ukázkovou aplikaci pro tento článek je uložený na Git.
   * [Node.js](https://nodejs.org/en/) je JavaScript runtime s ekosystém bohaté balíčku.
-* Postup instalace dalších nástrojů pro vývoj Node.js pomocí NPM.
-  * Požadavek na minimální verzi Node.js je 4.5 LTS.
-  * [NPM](https://www.npmjs.com) je jedním z vybraných manažerů balíčku pro Node.js.
+* Jak toouse NPM tooinstall další Node.js nástroje pro vývoj.
+  * požadavky na minimální verzi Hello Node.js je 4.5 LTS.
+  * [NPM](https://www.npmjs.com) je jedním z hello správce balíčku pro Node.js.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Pro dokončení této operace, budete potřebovat:
+toocomplete této operace, budete potřebovat:
 
-* Připojení k Internetu kvůli stahování nástroje pro vývoj a softwaru.
+* Toodownload připojení Internetu hello nástroje pro vývoj a hello softwaru.
 * Počítač, který je spuštěn systém Windows.
 
 ## <a name="install-git-and-nodejs"></a>Nainstalovat Git a Node.js
 
-Kliknutím na odkazy níže stáhnout a nainstalovat Git a LTS Node.js pro systém Windows.
+Klikněte na tlačítko hello najdete pod odkazy níže toodownload a nainstalujte Git a LTS Node.js pro systém Windows.
 
 * [Získat Git pro Windows](https://git-scm.com/download/win/)
 * [Získat Node.js LTS pro Windows](https://nodejs.org/en/)
 
 ## <a name="install-additional-nodejs-development-tools"></a>Instalace dalších nástrojů pro vývoj Node.js
 
-Použití [gulp.js](http://gulpjs.com) k automatizaci nasazení ukázkové aplikace pro panel Arduino.
+Použití [gulp.js](http://gulpjs.com) tooautomate hello nasazení hello ukázkové aplikace tooyour Arduino panelu.
 
-Spusťte příkazový řádek jako správce. Nainstalujte `gulp`, `device-discovery-cli` spuštěním následujícího příkazu v terminálu:
+Spusťte příkazový řádek jako správce. Nainstalujte `gulp`, `device-discovery-cli` tak, že spustíte následující příkaz v terminálu hello hello:
 
 ```bash
 npm install -g gulp device-discovery-cli
 ```
 
-Pokud máte problémy s instalací Node.js a tyto další nástroje pro vývoj Node.js do počítače, přečtěte si téma [Průvodce odstraňováním potíží s] [ troubleshooting] pro řešení běžných potíží.
+Pokud máte problémy s instalací Node.js a tyto další nástroje pro vývoj Node.js do počítače, přečtěte si téma hello [Průvodce odstraňováním potíží s] [ troubleshooting] řešení toocommon problémů.
 
 ## <a name="install-visual-studio-code"></a>Nainstalovat Visual Studio Code
 
-[Stáhněte si](https://code.visualstudio.com/docs/setup/windows) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v tomto kurzu upravte ukázkový kód.
+[Stáhněte si](https://code.visualstudio.com/docs/setup/windows) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v hello kurz tooedit hello ukázkový kód.
 
 ## <a name="summary"></a>Souhrn
 
-Jste nainstalovali nástroje pro vývoj vyžaduje a software pro první ukázkovou aplikaci. Dalším krokem je vytvoření, nasazení a spuštění ukázkové aplikace na panel Arduino.
+Jste nainstalovali nástroje pro vývoj hello vyžaduje a software pro hello první ukázkovou aplikaci. Další úlohou Hello je toocreate, nasazení a spuštění ukázkové aplikace hello na panel Arduino.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření a nasazení ukázkové aplikace blikání][create-and-deploy-the-blink-sample-application]
+[Vytvoření a nasazení ukázkové aplikace hello blikání][create-and-deploy-the-blink-sample-application]
 <!-- Images and links -->
 
 [windows]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md

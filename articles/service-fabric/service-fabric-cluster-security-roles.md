@@ -1,6 +1,6 @@
 ---
 title: "Zabezpečení clusteru Service Fabric: rolí klienta | Microsoft Docs"
-description: "Tento článek popisuje dva klientské role a oprávnění poskytované role."
+description: "Tento článek popisuje hello dva klientské role a oprávnění hello poskytuje toohello role."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 85935e60bba4b27972282700e2e9c9a22b403bdb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4a4a9f93e91ea816005b730bebbcb317f8bab255
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Řízení přístupu na základě rolí pro klienty Service Fabric
-Azure Service Fabric podporuje dva typy ovládacích prvků různý přístup pro klienty, kteří jsou připojené ke clusteru Service Fabric: správce a uživatele. Řízení přístupu umožňuje omezit přístup k určité operace clusteru pro různé skupiny uživatelů, lepší zabezpečení clusteru pomocí Správce clusteru.  
+Azure Service Fabric podporuje dva typy ovládacích prvků různý přístup pro klienty, které jsou připojené tooa cluster Service Fabric: správce a uživatele. Řízení přístupu umožňuje hello toolimit clusteru správce přístup toocertain operace na clusteru pro různé skupiny uživatelů, lepší zabezpečení hello clusteru.  
 
-**Správci** mají úplný přístup k funkcím správy (včetně možnosti pro čtení i zápis). Ve výchozím nastavení **uživatelé** mít pouze pro čtení přístup k možnosti správy (například možnosti dotazu) a možnost řešení aplikace a služby.
+**Správci** mají plný přístup toomanagement funkce (včetně možnosti pro čtení i zápis). Ve výchozím nastavení **uživatelé** mít pouze možnosti toomanagement přístup pro čtení (například použití dotazů) a hello možnost tooresolve aplikací a služeb.
 
-Tím, že poskytuje samostatné certifikáty pro každou zadáte dva klientské role (správce a klient) v době vytváření clusteru. V tématu [zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md) podrobnosti o nastavení zabezpečení clusteru Service Fabric.
+V době vytváření clusteru hello tím, že poskytuje samostatné certifikáty pro každou zadáte hello dva klientské role (správce a klient). V tématu [zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md) podrobnosti o nastavení zabezpečení clusteru Service Fabric.
 
 ## <a name="default-access-control-settings"></a>Výchozí nastavení řízení přístupu
-Typ ovládacího prvku správce přístupu má úplný přístup k rozhraní API FabricClient. Můžete provádět žádné čtení a zápisy na cluster Service Fabric, včetně následujících operací:
+Hello správce přístupu – typ ovládacího prvku má úplný přístup tooall hello FabricClient rozhraní API. Můžete provádět žádné čtení a zápisy na cluster Service Fabric hello, včetně hello následující operace:
 
 ### <a name="application-and-service-operations"></a>Operace služby a aplikace
 * **CreateService**: vytváření služby                             
@@ -41,7 +41,7 @@ Typ ovládacího prvku správce přístupu má úplný přístup k rozhraní API
 * **UpgradeApplication**: spuštění nebo přerušení upgradů aplikací                             
 * **UnprovisionApplicationType**: rušení zajišťování typ aplikace                             
 * **MoveNextUpgradeDomain**: obnovení upgradů aplikací s doménou explicitní aktualizace                             
-* **ReportUpgradeHealth**: obnovení upgradů aplikací s aktuální průběh upgradu                             
+* **ReportUpgradeHealth**: obnovení upgradů aplikací s aktuální průběh upgradu hello                             
 * **ReportHealth**: generování sestav stavu                             
 * **PredeployPackageToNode**: před nasazením rozhraní API                            
 * **CodePackageControl**: restartování balíčky kódu                             
@@ -55,7 +55,7 @@ Typ ovládacího prvku správce přístupu má úplný přístup k rozhraní API
 * **UpgradeFabric**: spouštění upgrade clusteru                             
 * **UnprovisionFabric**: MSI nebo clusteru manifest rušení zajišťování                         
 * **MoveNextFabricUpgradeDomain**: obnovení upgradu clusteru s doménou explicitní aktualizace                             
-* **ReportFabricUpgradeHealth**: obnovení upgradu clusteru s aktuální průběh upgradu                             
+* **ReportFabricUpgradeHealth**: obnovení upgradu clusteru s aktuální průběh upgradu hello                             
 * **StartInfrastructureTask**: spouštění úlohy infrastruktury                             
 * **FinishInfrastructureTask**: dokončení úlohy infrastruktury                             
 * **InvokeInfrastructureCommand**: příkazy pro správu infrastruktury úloh                              
@@ -66,20 +66,20 @@ Typ ovládacího prvku správce přístupu má úplný přístup k rozhraní API
 * **GetNodeDeactivationStatus**: Kontrola stavu deaktivace                             
 * **NodeStateRemoved**: generování sestav stav uzlu odebrat                             
 * **ReportFault**: generování sestav chyb                             
-* **FileContent**: obrázek přenos souborů klienta úložiště (externí do clusteru)                             
-* **FileDownload**: image store klienta soubor stažení spuštění (externí do clusteru)                             
+* **FileContent**: obrázek přenos souborů klienta úložiště (externí toocluster)                             
+* **FileDownload**: image store klienta soubor stažení spuštění (externí toocluster)                             
 * **InternalList**: image store klienta soubor seznamu operaci (interní)                             
 * **Odstranit**: operace odstranění klienta úložiště image                              
 * **Nahrát**: operace nahrávání klienta úložiště image                             
 * **NodeControl**: spuštění, zastavení a restartování uzlů                             
-* **MoveReplicaControl**: přesunutí repliky z jednoho uzlu do jiného                             
+* **MoveReplicaControl**: přechod z jednoho uzlu tooanother repliky                             
 
 ### <a name="miscellaneous-operations"></a>Různým operacím
 * **Příkaz ping**: příkazy ping klienta                             
 * **Dotaz**: všechny dotazy na povoleno
 * **NameExists**: pojmenování URI existence kontroly                             
 
-Typ řízení přístupu uživatele je ve výchozím nastavení omezen na následující operace: 
+Typ řízení přístupu uživatele Hello je ve výchozím nastavení, omezené toohello následující operace: 
 
 * **EnumerateSubnames**: pojmenování URI – výčet                             
 * **EnumerateProperties**: názvy vlastností – výčet                             
@@ -96,10 +96,10 @@ Typ řízení přístupu uživatele je ve výchozím nastavení omezen na násle
 * **ResetPartitionLoad**: resetování zatížení jednotky převzetí služeb při selhání                             
 * **ToggleVerboseServicePlacementHealthReporting**: přepnutím stavu umístění podrobné služby generování sestav                             
 
-Řízení přístupu správce má také přístup k předchozí operace.
+řízení přístupu správce Hello má také přístup toohello předcházející operace.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Změna výchozí nastavení klienta rolí
-V souboru manifestu clusteru můžete zadat možnosti Správce klienta v případě potřeby. Výchozí nastavení můžete změnit tak, že přejdete do **nastavení prostředků infrastruktury** možnost během [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md)a poskytuje předchozí nastavení v **název**,  **správce**, **uživatele**, a **hodnotu** pole.
+V souboru manifestu clusteru hello můžete v případě potřeby zadejte správce možnosti toohello klienta. Můžete změnit výchozí nastavení hello budete toohello **nastavení prostředků infrastruktury** možnost během [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md)a poskytuje hello předcházející nastavení v hello **název**, **správce**, **uživatele**, a **hodnotu** pole.
 
 ## <a name="next-steps"></a>Další kroky
 [Zabezpečení clusteru Service Fabric](service-fabric-cluster-security.md)

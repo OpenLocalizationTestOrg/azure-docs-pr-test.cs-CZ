@@ -1,6 +1,6 @@
 ---
-title: "Úprava předpon adres IP brány místní sítě a adresa brány VPN | Azure | ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Microsoft Docs"
-description: "Tento článek vás provede změna předpony IP adresy pro bránu místní sítě pomocí rozhraní příkazového řádku Azure."
+title: "Úprava předpon adres IP brány místní sítě hello a adresa IP brány VPN hello | Azure | ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Microsoft Docs"
+description: "Tento článek vás provede změna předpony IP adresy pro bránu místní sítě pomocí rozhraní příkazového řádku Azure hello."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 7db1ad970ebb93d46d5a861f9a9b27bf121531a3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4b8bbf3e9d3d42ac2d12f87360fa0a4134c57a21
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Upravit nastavení brány místní sítě pomocí rozhraní příkazového řádku Azure
+# <a name="modify-local-network-gateway-settings-using-hello-azure-cli"></a>Upravit nastavení brány místní sítě pomocí hello rozhraní příkazového řádku Azure
 
-Někdy se změnit nastavení pro bránu místní sítě předpony adres nebo IP adresu brány. Tento článek ukazuje, jak upravit nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí různých metod výběrem jinou možnost z následujícího seznamu:
+Někdy hello nastavení pro bránu místní sítě předpony adres nebo IP adresu brány změnit. Tento článek ukazuje, jak toomodify nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí různých metod výběrem jinou možnost z hello následující seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -34,7 +34,7 @@ Někdy se změnit nastavení pro bránu místní sítě předpony adres nebo IP 
 
 ## <a name="before"></a>Než začnete
 
-Nainstalujte nejnovější verzi rozhraní příkazového řádku příkazy (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nainstalujte nejnovější verzi hello hello rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci hello rozhraní příkazového řádku najdete v tématu [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -42,7 +42,7 @@ Nainstalujte nejnovější verzi rozhraní příkazového řádku příkazy (2.0
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## <a name="gwip"></a>Upravit IP adresu brány
+## <a name="gwip"></a>Upravit IP adresu brány hello
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 

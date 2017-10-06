@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ServiceChannel | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceChannel."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a ServiceChannel."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,138 +13,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 7e1dad18ff0ae9a9102b789b2cb32e7b96ed3d38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 956371a1e99dcba4137c271ecfe8a62b9ec64a99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Azure Active Directory integrace s ServiceChannel
 
-V tomto kurzu zjistěte, jak integrovat ServiceChannel s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate ServiceChannel s Azure Active Directory (Azure AD).
 
-Integrace ServiceChannel s Azure AD poskytuje následující výhody:
+Integrace ServiceChannel s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k ServiceChannel
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k ServiceChannel (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooServiceChannel
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooServiceChannel (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ServiceChannel, potřebujete následující položky:
+Integrace služby Azure AD s ServiceChannel tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - ServiceChannel jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání ServiceChannel z Galerie
+1. Přidání ServiceChannel z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-servicechannel-from-the-gallery"></a>Přidání ServiceChannel z Galerie
-Při konfiguraci integrace ServiceChannel do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS ServiceChannel z galerie.
+## <a name="adding-servicechannel-from-hello-gallery"></a>Přidání ServiceChannel z Galerie hello
+tooconfigure hello integrace ServiceChannel do Azure AD, je nutné tooadd ServiceChannel hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat ServiceChannel z galerie, proveďte následující kroky:**
+**tooadd ServiceChannel z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **ServiceChannel**.
+4. Hello vyhledávacího pole zadejte **ServiceChannel**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_000.png)
 
-5. Na panelu výsledků vyberte **ServiceChannel**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **ServiceChannel**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_2.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s ServiceChannel podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v ServiceChannel je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v ServiceChannel musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v ServiceChannel je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v ServiceChannel musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v ServiceChannel.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v ServiceChannel.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ServiceChannel, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s ServiceChannel, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele ServiceChannel](#creating-a-servicechannel-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele ServiceChannel](#creating-a-servicechannel-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci ServiceChannel.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci ServiceChannel.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s ServiceChannel, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s ServiceChannel, proveďte následující kroky hello:**
 
-1. Na portálu Azure Management portal na **ServiceChannel** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V hello Azure Management portal na hello **ServiceChannel** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
+2. Na hello **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** jednotného přihlašování k tooenable.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_01.png)
 
-3. Na **ServiceChannel domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **ServiceChannel domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu jako:`http://adfs.<domain>.com/adfs/service/trust`
+    a. V hello **identifikátor** textovému poli, hodnota typu hello jako:`http://adfs.<domain>.com/adfs/service/trust`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer domain>.servicechannel.com/saml/acs`
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE] 
-    > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečným identifikátorem a adresa URL odpovědi. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na [tým podpory ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) k získání těchto hodnot.
+    > Upozorňujeme, že tyto nejsou hello skutečné hodnoty. Máte tooupdate tyto hodnoty pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Zde, doporučujeme vám toouse hello jedinečnou hodnotu řetězce v hello identifikátor. Obraťte se na [tým podpory ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) tooget tyto hodnoty.
 
-4. Aplikace ServiceChannel očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tento. **NameIdentifier (identifikátor uživatele)** je povinný jenom deklarace identity a výchozí hodnota je **user.userprincipalname** ale ServiceChannel očekává to nejde mapovat s **user.mail**. Pokud máte v úmyslu povolit zřizování uživatelů jenom v době, by měl jak je uvedeno níže přidejte následující deklarace identity. **Role** deklarace identity musí být namapovaný na **user.assignedroles** obsahující roli uživatele.  
+4. Aplikace ServiceChannel očekává hello SAML kontrolní výrazy ve specifickém formátu, který vyžaduje jste tooadd vlastních atributů mapování tooyour tokenu atributy konfigurace SAML. Hello následující snímek obrazovky ukazuje příklad pro tento. **NameIdentifier (identifikátor uživatele)** hello jenom povinné deklarace identity a hello výchozí hodnota je **user.userprincipalname** ale ServiceChannel očekává tento toobe namapována na **user.mail**. Pokud plánujete zřizování uživatelů jenom v době tooenable, měli byste přidat hello následující deklarace identity, jak je uvedeno níže. **Role** deklarace identity musí toobe namapované příliš**user.assignedroles** obsahující hello role uživatele hello.  
 
     Najdete Průvodce ServiceChannel [sem](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) další pokyny na deklaracích identity.
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 
-    > Kliknutím na [sem](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/) vědět, jak nakonfigurovat **Role** ve službě Azure AD
+    > Kliknutím na [sem](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/) tooknow jak tooconfigure **Role** ve službě Azure AD
 
-5. V **uživatelské atributy** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavit atributy.
+5. V **uživatelské atributy** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavte atributy hello.
 
     | Název atributu | Hodnota atributu |
     | --- | --- |    
     | Role| User.assignedroles |
 
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_04.png)
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_05.png)
     
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
     
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **Ok**
     
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+6. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_05.png) 
 
@@ -152,62 +152,62 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial_general_400.png)
 
-8. Na **ServiceChannel konfigurace** klikněte na tlačítko **konfigurace ServiceChannel** otevřete **konfigurovat přihlášení** okno. Upozorňujeme **SAML Enitity ID** z **Stručná referenční příručka** části.
+8. Na hello **ServiceChannel konfigurace** klikněte na tlačítko **konfigurace ServiceChannel** tooopen **konfigurovat přihlášení** okno. Upozorňujeme hello **SAML Enitity ID** z hello **Stručná referenční příručka** části.
 
-9. Konfigurace jednotného přihlašování na **ServiceChannel** straně, budete muset odeslat stažené **certifikátu (Base64)** a **SAML Entity ID** k [ServiceChannel tým podpory](https://servicechannel.zendesk.com/hc/en-us). Toto se bude nastavení aby bylo možné používat jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+9. tooconfigure jednotného přihlašování na **ServiceChannel** straně, je nutné stáhnout hello toosend **certifikátu (Base64)** a **SAML Entity ID** příliš[ Tým podpory ServiceChannel](https://servicechannel.zendesk.com/hc/en-us). To bude nastavené v pořadí toohave hello jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-servicechannel-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="creating-a-servicechannel-test-user"></a>Vytvoření zkušebního uživatele ServiceChannel
 
-Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele automaticky se vytvoří v aplikaci. Pro úplné uživatelské zřizování, obraťte se na [ServiceChannel tým podpory](https://servicechannel.zendesk.com/hc/en-us)
+Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele budou vytvořeny v hello aplikace automaticky. Pro úplné uživatelské zřizování, obraťte se na [ServiceChannel tým podpory](https://servicechannel.zendesk.com/hc/en-us)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k ServiceChannel Azure jednotné přihlašování.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooServiceChannel svůj přístup.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon ServiceChannel, proveďte následující kroky:**
+**tooassign Britta Simon tooServiceChannel, proveďte následující kroky hello:**
 
-1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **ServiceChannel**.
+2. V seznamu aplikace hello vyberte **ServiceChannel**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_app01.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -215,7 +215,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -223,13 +223,13 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici ServiceChannel na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ServiceChannel.
+Když kliknete na dlaždici ServiceChannel hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour ServiceChannel aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Arduino připojit k Azure IoT - Lekce 1: nasazení aplikace | Microsoft Docs"
-description: "Naklonujte ukázkovou aplikaci Arduino z Githubu a spusťte gulp k nasazení této aplikace na vašem Adafruit prolnutí M0 Wi-Fi. Tato ukázková aplikace bliká GPIO"
+title: "Připojit Arduino tooAzure IoT - lekci 1: nasazení aplikace | Microsoft Docs"
+description: "Klonování hello ukázkovou aplikaci Arduino z Githubu a spusťte gulp toodeploy této aplikace tooyour Adafruit prolnutí M0 Wi-Fi. Tato ukázková aplikace bliká hello GPIO"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,36 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 4431808ac6182d194e841c087c8f89f1a12b1911
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bf8e4ae88e070aeacf34bfc43b8d2daeeb1a2fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Vytvoření a nasazení aplikace blink
+# <a name="create-and-deploy-hello-blink-application"></a>Vytvoření a nasazení aplikace hello blikání
 ## <a name="what-you-will-do"></a>Co provedete
-Naklonujte ukázkovou aplikaci Arduino z Githubu a pomocí nástroje gulp nasadit ukázkovou aplikaci pro panel Adafruit prolnutí M0 Wi-Fi Arduino. Aplikace bliká ukázka GPIO č. 13 na barod VEDLA každé dvě sekundy.
+Klonování hello ukázkovou aplikaci Arduino z Githubu a používat hello gulp nástroj toodeploy hello ukázkové aplikace tooyour Adafruit prolnutí M0 Wi-Fi Arduino panelu. Hello ukázkové aplikace bliká hello GPIO č. 13 barod VEDLA každé dvě sekundy.
 
-Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting-page].
+Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting-page].
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
-* Postup nasazení a spuštění ukázkové aplikace na panel Arduino.
+* Jak toodeploy a spuštění hello ukázkové aplikace na vaší kartě Arduino.
 
 ## <a name="what-you-need"></a>Co potřebujete
-Musíte úspěšně jste dokončili následující operace:
+Musíte úspěšně jste dokončili hello následující operace:
 
 * [Konfigurace zařízení][configure-your-device]
-* [Získat nástroje][get-the-tools]
+* [Získat nástroje hello][get-the-tools]
 
-## <a name="open-the-sample-application"></a>Otevřete ukázkové aplikace
-Chcete-li otevřít ukázkové aplikace, postupujte takto:
+## <a name="open-hello-sample-application"></a>Ukázkové aplikace otevřete hello
+tooopen hello ukázkové aplikace, postupujte takto:
 
-1. Naklonujte úložiště ukázkové z Githubu spuštěním následujícího příkazu:
+1. Klonování úložiště ukázkové hello z Githubu spuštěním hello následující příkaz:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-c-feather-m0-getting-started.git
    ```
-2. Otevřete ukázkovou aplikaci v aplikaci Visual Studio Code spuštěním následujících příkazů:
+2. Otevřete hello ukázkovou aplikaci v aplikaci Visual Studio Code spuštěním hello následující příkazy:
 
    ```bash
    cd iot-hub-c-feather-m0-getting-started
@@ -56,27 +56,27 @@ Chcete-li otevřít ukázkové aplikace, postupujte takto:
 
    ![Struktura úložiště][repo-structure]
 
-`app.ino` v soubor `app` podsložky je klíče zdrojového souboru, který obsahuje kód, který ovládacího prvku Indikátor.
+Hello `app.ino` souboru v hello `app` podsložky je hello klíče zdrojový soubor, který obsahuje hello kód toocontrol hello Indikátor.
 
 ### <a name="install-application-dependencies"></a>Instalace závislostí aplikací
-Nainstalujte v knihovnách a dalších modulů, které potřebujete pro ukázkovou aplikaci tak, že spustíte následující příkaz:
+Nainstalujte hello knihovny a z ostatních modulů, které potřebujete pro ukázkovou aplikaci hello spuštěním hello následující příkaz:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Nakonfigurujte připojení zařízení
-Konfigurace připojení zařízení, postupujte takto:
+## <a name="configure-hello-device-connection"></a>Nakonfigurujte připojení zařízení hello
+tooconfigure hello připojení zařízení, postupujte takto:
 
-1. Získání sériového portu zařízení pomocí rozhraní příkazového řádku zjišťování zařízení:
+1. Získejte hello sériového portu zařízení hello s hello zařízení zjišťování rozhraní příkazového řádku:
 
    ```bash
    devdisco list --usb
    ```
 
-   Měli byste zobrazený výstup, který je podobný následujícímu a najít usb COM port pro panel Arduino: ![zjišťování zařízení][device-discovery]
+   Měli byste zobrazený výstup, který je podobný následující toohello a najít hello usb COM port pro panel Arduino: ![zjišťování zařízení][device-discovery]
 
-2. Otevřete soubor `config.json` ve složce lekce a přidejte hodnotu nalezen číslo portu COM:
+2. Soubor otevřete hello `config.json` v hello lekce složky a přidat hello hodnotu hello najít číslo portu COM:
 
    ```json
    {
@@ -85,45 +85,45 @@ Konfigurace připojení zařízení, postupujte takto:
    ```
    ![Config.JSON][config-json]
    > [!NOTE]
-   > Pro port COM, na platformě Windows má formát `COM1, COM2, ...`. V systému macOS nebo Ubuntu začíná `/dev/`.
+   > Pro port hello COM na platformě Windows má formát hello `COM1, COM2, ...`. V systému macOS nebo Ubuntu začíná `/dev/`.
 
-## <a name="deploy-and-run-the-sample-application"></a>Nasazení a spuštění ukázkové aplikace
-### <a name="install-the-required-tools-for-your-arduino-board"></a>Nainstalujte požadované nástroje pro panel Arduino
+## <a name="deploy-and-run-hello-sample-application"></a>Nasazení a spuštění ukázkové aplikace hello
+### <a name="install-hello-required-tools-for-your-arduino-board"></a>Instalace nástrojů pro hello požadované pro panel Arduino
 
-Nainstalujte sadu SDK Azure IoT Hub pro panel Arduino spuštěním následujícího příkazu:
+Nainstalujte hello sady SDK Azure IoT Hub pro panel Arduino spuštěním hello následující příkaz:
 
 ```bash
 gulp install-tools
 ```
 
-Tato úloha může trvat dlouhou dobu v závislosti na připojení k síti.
+Tato úloha může trvat dlouhou dobu toocomplete, v závislosti na připojení k síti.
 
 > [!NOTE]
-> Při spuštění úlohy gulp prosím Ukončete spuštěnou instanci Arduino IDE: `install-tools`, `run`.
+> Ukončete prosím hello spuštěna instance Arduino IDE při spuštění úlohy gulp: `install-tools`, `run`.
 
-### <a name="deploy-and-run-the-sample-app"></a>Nasazení a spuštění ukázkové aplikace
-Nasazení a spuštění ukázkové aplikace tak, že spustíte následující příkaz:
+### <a name="deploy-and-run-hello-sample-app"></a>Nasazení a spuštění ukázkové aplikace hello
+Nasazení a spuštění ukázkové aplikace hello spuštěním hello následující příkaz:
 
 ```bash
 gulp run
 
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
 gulp run --listen
 ```
 
-### <a name="verify-the-app-works"></a>Ověřte aplikace funguje
-Pokud nevidíte DIODU blikat, najdete v článku [Průvodce odstraňováním potíží s] [ troubleshooting-page] pro řešení běžných potíží.
+### <a name="verify-hello-app-works"></a>Ověřte hello aplikace funguje
+Pokud nevidíte hello DIODU blikat, přečtěte si téma hello [Průvodce odstraňováním potíží s] [ troubleshooting-page] řešení toocommon problémů.
 
 ![Indikátor blikat][led-blinking]
 
 ## <a name="summary"></a>Souhrn
-Nainstalujete požadované nástroje pro práci s panel Arduino a nasadit ukázkovou aplikaci pro panel Arduino blikání Indikátor. Teď můžete vytvořit, nasadit a spustit jinou ukázkovou aplikaci, která panel Arduino se připojuje ke službě Azure IoT Hub odesílat a přijímat zprávy.
+Nainstalujete hello požadované nástroje toowork s panel Arduino a nasadit ukázkové aplikace tooyour Arduino Tabule tooblink hello Indikátor. Teď můžete vytvořit, nasadit a spusťte jinou ukázkovou aplikaci, která se připojí vaše Arduino Tabule tooAzure toosend IoT Hub a příjem zpráv.
 
 ## <a name="next-steps"></a>Další kroky
-[Získat nástroje Azure][get-the-azure-tools]
+[Získat hello Azure nástroje][get-the-azure-tools]
 
 <!-- Images and links -->
 

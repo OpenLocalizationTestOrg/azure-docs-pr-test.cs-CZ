@@ -1,5 +1,5 @@
 ---
-title: "Začínáme s frontami služby Azure Service Bus | Dokumentace Microsoftu"
+title: "aaaGet začít s fronty Azure Service Bus | Microsoft Docs"
 description: "Napíšeme konzolovou aplikaci C# využívající fronty zasílání zpráv služby Service Bus."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: sethm
-ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: eaa362ab0eabd2427977398c1deab5dc00105ae9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
-Tento kurz se zabývá následujícími kroky:
+Tento kurz se zabývá hello následující kroky:
 
-1. Pomocí webu Azure Portal vytvoříme obor názvů služby Service Bus.
-2. Pomocí webu Azure Portal vytvoříme frontu služby Service Bus.
-3. Napíšeme konzolovou aplikaci pro odeslání zprávy.
-4. Napíšeme konzolovou aplikaci pro příjem zpráv odeslaných v předchozím kroku.
+1. Vytvořte obor názvů Service Bus pomocí hello portálu Azure.
+2. Vytvoření fronty Service Bus, pomocí hello portálu Azure.
+3. Zápis konzoly aplikace toosend zprávy.
+4. Zápis konzoly aplikace tooreceive hello zprávy odeslané v předchozím kroku hello.
 
 ## <a name="prerequisites"></a>Požadavky
-1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+1. [Visual Studio 2015 nebo vyšší](http://www.visualstudio.com). Hello příklady v tomto kurzu použít Visual Studio 2017.
 2. Předplatné Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
-Pokud už máte vytvořený obor názvů pro zasílání zpráv služby Service Bus, přejděte k části [Vytvoření fronty pomocí webu Azure Portal](#2-create-a-queue-using-the-azure-portal).
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Vytvoření oboru názvů pomocí hello portálu Azure
+Pokud jste již vytvořili obor názvů zasílání zpráv Service Bus, přeskočit toohello [vytvoření fronty pomocí portálu Azure hello](#2-create-a-queue-using-the-azure-portal) části.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Vytvoření fronty pomocí webu Azure Portal
-Pokud už máte frontu služby Service Bus vytvořenou, přejděte k části [Zasílání zpráv do fronty](#3-send-messages-to-the-queue).
+## <a name="2-create-a-queue-using-hello-azure-portal"></a>2. Vytvoření fronty pomocí hello portálu Azure
+Pokud jste již vytvořili fronty Service Bus, přeskočit toohello [toohello fronty pro odesílání zpráv](#3-send-messages-to-the-queue) části.
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-to-the-queue"></a>3. Zasílání zpráv do fronty
-Abychom mohli do fronty odesílat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
+## <a name="3-send-messages-toohello-queue"></a>3. Odesílat zprávy fronty toohello
+Fronta zpráv toohello toosend, jsme zápisu konzolovou aplikaci C# pomocí sady Visual Studio.
 
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET Framework)**.
 
-### <a name="add-the-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet
-1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-2. Klikněte na kartu **Procházet**, vyhledejte **Microsoft Azure Service Bus** a pak vyberte položku **WindowsAzure.ServiceBus**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
+### <a name="add-hello-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet hello
+1. Klikněte pravým tlačítkem hello nově vytvořený projekt a vyberte **spravovat balíčky NuGet**.
+2. Klikněte na tlačítko hello **Procházet** kartě, vyhledejte **Microsoft Azure Service Bus**a potom vyberte hello **WindowsAzure.ServiceBus** položky. Klikněte na tlačítko **nainstalovat** toocomplete hello instalace a pak zavřete toto dialogové okno.
    
     ![Výběr balíčku NuGet][nuget-pkg]
 
-### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Napsání kódu pro zaslání zprávy do fronty
-1. Na začátek souboru Program.cs přidejte následující příkaz `using`.
+### <a name="write-some-code-toosend-a-message-toohello-queue"></a>Zápis některých kódu toosend toohello fronty zpráv
+1. Přidejte následující hello `using` toohello příkaz na začátku souboru Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Do metody `Main` přidejte následující kód. Nastavte proměnnou `connectionString` na připojovací řetězec, který jste získali při vytváření oboru názvů, a proměnnou `queueName` nastavte na název, který jste použili při vytváření fronty.
+2. Přidejte následující kód toohello hello `Main` metoda. Sada hello `connectionString` proměnné toohello připojovací řetězec, který jste získali při vytváření názvů hello a nastavte `queueName` toohello název fronty, který jste použili při vytvoření fronty hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -79,7 +79,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -109,25 +109,25 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Spusťte program a podívejte se na web Azure Portal: klikněte na název vaší fronty v okně **Přehled** oboru názvů. Zobrazí se okno **Základy** fronty. Všimněte si, že hodnota **Počet aktivních zpráv** by měla nyní být 1. Pokaždé, když spustíte aplikaci odesílatele bez načtení zpráv, se tato hodnota zvýší o 1. Všimněte si také, že se pokaždé, když aplikace přidá zprávu do fronty, zvětší aktuální velikost fronty.
+3. Spuštění programu hello a zkontrolujte hello portálu Azure: klikněte na název hello fronty v oboru názvů hello **přehled** okno. fronty Hello **Essentials** zobrazí se okno. Všimněte si, že hello **počet zpráv aktivní** hodnotu by teď měly být 1. Pokaždé, když spustíte aplikace sender hello bez načítání zpráv hello, tato hodnota se zvýší o 1. Všimněte si, že hello aktuální velikost fronty hello zvýší každé aplikace hello čas také přidá toohello front zpráv.
    
       ![Velikost zpráv][queue-message]
 
-## <a name="4-receive-messages-from-the-queue"></a>4. Přijetí zpráv z fronty
+## <a name="4-receive-messages-from-hello-queue"></a>4. Příjem zpráv z fronty hello
 
-1. Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte novou konzolovou aplikaci a přidejte odkaz na balíček NuGet služby Service Bus, podobně jako předtím u aplikace odesílatele.
-2. Na začátek souboru Program.cs přidejte následující příkaz `using`.
+1. tooreceive hello zprávy, které jste právě zaslali, vytvořte novou konzolovou aplikaci a přidejte odkaz na balíček Service Bus NuGet toohello, podobně jako toohello předchozí odesílatele aplikaci.
+2. Přidejte následující hello `using` toohello příkaz na začátku souboru Program.cs hello.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Do metody `Main` přidejte následující kód. Nastavte proměnnou `connectionString` na připojovací řetězec, který jste získali při vytváření oboru názvů, a proměnnou `queueName` nastavte na název, který jste použili při vytváření fronty.
+3. Přidejte následující kód toohello hello `Main` metoda. Sada hello `connectionString` proměnné toohello připojovací řetězec, který byl získán při vytvoření oboru názvů hello a nastavte `queueName` toohello název fronty, který jste použili při vytvoření fronty hello.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -141,7 +141,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER to exit program");
+    Console.WriteLine("Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -168,13 +168,13 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Aplikace konzoly (.NET F
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER to exit program");   
+          Console.WriteLine("Press ENTER tooexit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Spusťte program a znovu se podívejte na portál. Všimněte si, že hodnoty **Počet aktivních zpráv** a **Aktuální** jsou nyní 0.
+4. Spuštění programu hello a znovu zkontrolujte hello portálu. Všimněte si, že hello **počet zpráv aktivní** a **aktuální** jsou hodnoty 0.
    
     ![Délka fronty][queue-message-receive]
 
@@ -182,7 +182,7 @@ Blahopřejeme! Vytvořili jste frontu, zaslali jste zprávu a přijali jste zpr�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na naše [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples), které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
+Podívejte se na naše [úložiště GitHub se ukázky](https://github.com/Azure/azure-service-bus/tree/master/samples) který předvedli hello pokročilejší funkce zasílání zpráv Service Bus.
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Django a MySQL v Azure s nástroji Python Tools 2.2 pro Visual Studio"
-description: "Naučte se používat nástroje Python Tools pro Visual Studio k vytvoření webové aplikace Django, která ukládá data do instance databáze MySQL, a k nasazení této aplikace do webové aplikace služby Azure App Service Web Apps."
+title: "aaaDjango a MySQL v Azure pomocí nástroje Python Tools 2.2 pro Visual Studio"
+description: "Zjistěte, jak toouse hello Python Tools pro Visual Studio toocreate webové aplikace Django, která ukládá data do instance databáze MySQL a nasaďte ji tooAzure App Service Web Apps."
 services: app-service\web
 documentationcenter: python
 author: huguesv
@@ -14,25 +14,25 @@ ms.devlang: python
 ms.topic: article
 ms.date: 07/07/2016
 ms.author: huvalo
-ms.openlocfilehash: fd85337ecdc638a4c18065a0ce94f697da8197f1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1597c391d20c8e8ef629b4e4d05c9eb64c83bffc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="django-and-mysql-on-azure-with-python-tools-22-for-visual-studio"></a>Django a MySQL v Azure s nástroji Python Tools 2.2 pro Visual Studio
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-V tomto kurzu budete používat nástroje [Python Tools pro Visual Studio](https://www.visualstudio.com/vs/python) k vytvoření jednoduché hlasovací webové aplikace pomocí jedné z ukázkových šablon PTVS. Naučíte se používat službu MySQL hostovanou v Azure, konfigurovat webovou aplikaci k používání MySQL a publikovat webovou aplikaci do služby [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
+V tomto kurzu budete používat [Python Tools pro Visual Studio](https://www.visualstudio.com/vs/python) dotazuje toocreate jednoduchou webovou aplikaci pomocí jednoho z ukázkových šablon PTVS hello. Dozvíte se, jak toouse službu MySQL hostovanou v Azure, jak tooconfigure hello webové aplikace toouse MySQL a jak toopublish hello webovou aplikaci příliš[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 > [!NOTE]
-> Informace obsažené v tomto kurzu jsou také k dispozici v následujícím videu:
+> Hello informace obsažené v tomto kurzu jsou také k dispozici v hello následující video:
 > 
 > [PTVS 2.1: aplikace Django s MySQL][video]
 > 
 > 
 
-Ve [Středisku pro vývojáře Python] naleznete další články týkající se vývoje služby Azure App Service Web Apps s nástroji PTVS pomocí webového rozhraní Bottle, Flask a Django, se službami Azure Table Storage, MySQL a SQL Database. Ačkoli se tento článek zaměřuje na službu App Service, postup při vývoji služeb [Azure Cloud Services] je obdobný.
+V tématu hello [středisku pro vývojáře Python] další články, které se týkají vývoj Azure App Service Web Apps s nástroji PTVS pomocí Bottle, Flask a Django webové rozhraní, se službami Azure Table Storage, MySQL a SQL Database. Když tento článek se zaměřuje na služby App Service, hello postup je podobný jako při vývoji [Azure Cloud Services].
 
 ## <a name="prerequisites"></a>Požadavky
 * Visual Studio 2015
@@ -44,33 +44,33 @@ Ve [Středisku pro vývojáře Python] naleznete další články týkající se
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-<!-- This note should not render as part of the the previous include. -->
+<!-- This note should not render as part of hello hello previous include. -->
 
 > [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není požadována platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Není požadována platební karta a nevzniká žádný závazek.
 > 
 > 
 
-## <a name="create-the-project"></a>Vytvoření projektu
-V této části vytvoříte projekt sady Visual Studio pomocí vzorové šablony. Vytvoříte virtuální prostředí a nainstalujte požadované balíčky. Vytvoříte místní databázi pomocí SQLite. Poté aplikaci místně spustíte.
+## <a name="create-hello-project"></a>Vytvoření projektu hello
+V této části vytvoříte projekt sady Visual Studio pomocí vzorové šablony. Vytvoříte virtuální prostředí a nainstalujte požadované balíčky. Vytvoříte místní databázi pomocí SQLite. Poté místně spustíte aplikaci hello.
 
 1. V sadě Visual Studio vyberte položku **Soubor**, **Nový projekt**.
-2. Šablony projektů z [Python Tools 2.2 pro Visual Studio – ukázky VSIX] jsou dostupné v části **Python**, **Ukázky**. Vyberte položku **Hlasovací webový projekt Django** a kliknutím na tlačítko OK vytvořte projekt.
+2. šablony projektů z hello Hello [Python Tools 2.2 pro Visual Studio – ukázky VSIX] jsou k dispozici v části **Python**, **ukázky**. Vyberte **hlasovací webový projekt Django** a klikněte na tlačítko OK toocreate hello projektu.
    
     ![Dialogové okno Nový projekt](./media/web-sites-python-ptvs-django-mysql/PollsDjangoNewProject.png)
-3. Zobrazí se výzva k instalaci externích balíčků. Vyberte možnost **Instalovat do virtuálního prostředí**.
+3. Bude výzvami tooinstall externí balíčky. Vyberte možnost **Instalovat do virtuálního prostředí**.
    
     ![Dialogové okno Externí balíčky](./media/web-sites-python-ptvs-django-mysql/PollsDjangoExternalPackages.png)
-4. Jako základní překladač vyberte jazyk **Python 2.7** nebo **Python 3.4**.
+4. Vyberte **Python 2.7** nebo **Python 3.4** jako základní překladač hello.
    
     ![Dialogové okno Přidání virtuálního prostředí](./media/web-sites-python-ptvs-django-mysql/PollsCommonAddVirtualEnv.png)
-5. V **Průzkumníku řešení** klikněte pravým tlačítkem na uzel projektu a vyberte položku **Python** a poté položku **Django migrace**.  Pak vyberte možnost **Vytvořit superživatele Django**.
-6. Tím se otevřete Konzola pro správu Django a ve složce projektu se vytvoří databáze SQLite. Postupujte podle výzev a vytvořte uživatele.
-7. Stisknutím klávesy `F5` se ujistěte, zda aplikace pracuje.
-8. V horním navigačním panelu klikněte na možnost **Přihlásit**.
+5. V **Průzkumníku řešení**, klikněte pravým tlačítkem na uzel projektu hello a vyberte **Python**a potom vyberte **Django migrovat**.  Pak vyberte možnost **Vytvořit superživatele Django**.
+6. Tím se otevřete Konzola pro správu Django a ve složce projektu hello se vytvoří databáze sqlite. Postupujte podle výzvy toocreate hello uživatele.
+7. Potvrďte, že hello aplikace funguje tak, že stisknete `F5`.
+8. Klikněte na tlačítko **přihlásit** z hello navigačního panelu v horní části hello.
    
     ![Navigační panel Django](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalMenu.png)
-9. Zadejte přihlašovací údaje uživatele, kterého jste vytvořili při synchronizaci databáze.
+9. Zadejte přihlašovací údaje hello hello uživatele, kterého jste vytvořili při synchronizaci databáze hello.
    
     ![Přihlašovací formulář](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
 10. Klikněte na možnost **Vytvořit ukázková hlasování**.
@@ -81,26 +81,26 @@ V této části vytvoříte projekt sady Visual Studio pomocí vzorové šablony
      ![Hlasování v ukázkových hlasováních](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
 
 ## <a name="create-a-mysql-database"></a>Vytvoření databáze MySQL Database
-Jako databázi vytvoříte databázi ClearDB hostovanou v MySQL v Azure.
+Pro databázi hello vytvoříte databázi ClearDB MySQL hostovanou v Azure.
 
 Alternativně můžete vytvořit svůj vlastní virtuální počítač spuštěný v Azure a poté sami nainstalovat a spravovat MySQL.
 
 Následujícím postupem můžete vytvořit databázi s bezplatným plánem.
 
-1. Přihlaste se k [Azure Portal].
-2. V horní části podokna navigace klikněte na položku **NOVÉ**, **Data + úložiště** a poté na položku **Databáze MySQL**.
-3. Nakonfigurujte novou databázi MySQL tím, že vytvoříte novou skupinu prostředků a vyberte pro ni vhodné umístění.
-4. Po vytvoření databáze MySQL klikněte v okně databáze na možnost **Vlastnosti**.
-5. Tlačítkem kopírování vložte hodnotu **PŘIPOJOVACÍ ŘETĚZEC** do schránky.
+1. Přihlaste se toohello [portálu Azure].
+2. V horní části podokna navigace hello hello, klikněte na položku **nový**, pak klikněte na tlačítko **Data + úložiště**a potom klikněte na **databáze MySQL**.
+3. Nakonfigurujte novou databázi MySQL hello tak, že vytvoříte novou skupinu prostředků a vyberte pro ni vhodné umístění hello.
+4. Po vytvoření databáze MySQL hello klikněte na tlačítko **vlastnosti** v okně databáze hello.
+5. Hello kopie tlačítko tooput hello hodnotu **PŘIPOJOVACÍ řetězec** hello schránky.
 
-## <a name="configure-the-project"></a>Konfigurace projektu
-V této části nakonfigurujete webovou aplikaci k používání databáze MySQL, kterou jste právě vytvořili. Nainstalujete také další balíčky Python, které jsou nezbytné pro používání databází MySQL s rozhraním Django. Poté webovou aplikaci místně spustíte.
+## <a name="configure-hello-project"></a>Konfigurace hello projektu
+V této části nakonfigurujete naše webové aplikace toouse hello databáze MySQL, kterou jste právě vytvořili. Nainstalujete také další databází MySQL požadované toouse balíčků Python s rozhraním Django. Poté místně spustíte hello webové aplikace.
 
-1. V sadě Visual Studio otevřete soubor **settings.py** ze složky *NázevProjektu*. Dočasně vložte připojovací řetězec do editoru. Připojovací řetězec má tento formát:
+1. V sadě Visual Studio otevřete **settings.py**, z hello *ProjectName* složky. Dočasně vložte připojovací řetězec hello v editoru hello. Hello připojovací řetězec je v tomto formátu:
    
         Database=<NAME>;Data Source=<HOST>;User Id=<USER>;Password=<PASSWORD>
    
-    Změňte výchozí parametr databáze **ENGINE** tak, aby používal MySQL, a nastavte hodnoty parametrů **NAME**, **USER**, **PASSWORD** a **HOST** z **CONNECTIONSTRING**.
+    Změna hello výchozí databázi **modul** toouse MySQL a nastavte hodnoty pro hello **název**, **uživatele**, **heslo** a  **HOSTITELE** z hello **CONNECTIONSTRING**.
    
         DATABASES = {
             'default': {
@@ -112,39 +112,39 @@ V této části nakonfigurujete webovou aplikaci k používání databáze MySQL
                 'PORT': '',
             }
         }
-2. V Průzkumníku řešení v části **Prostředí Python** klikněte pravým tlačítkem na virtuální prostředí a vyberte položku **Instalovat balíček Python**.
-3. Nainstalujte balíček `mysqlclient` pomocí funkce **pip**.
+2. V Průzkumníku řešení klikněte v části **prostředí Python**, klikněte pravým tlačítkem na virtuální prostředí hello a vyberte **instalovat balíček Python**.
+3. Instalovat balíček hello `mysqlclient` pomocí **pip**.
    
     ![Dialogové okno instalace balíčku](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
-4. V **Průzkumníku řešení** klikněte pravým tlačítkem na uzel projektu a vyberte položku **Python** a poté položku **Django migrace**.  Pak vyberte možnost **Vytvořit superživatele Django**.
+4. V **Průzkumníku řešení**, klikněte pravým tlačítkem na uzel projektu hello a vyberte **Python**a potom vyberte **Django migrovat**.  Pak vyberte možnost **Vytvořit superživatele Django**.
    
-    Tím se vytvoří tabulky pro databázi MySQL, kterou jste vytvořili v předchozí části. Postupujte podle výzev a vytvořte uživatele, který se nemusí shodovat s uživatelem v databázi SQLite vytvořené v první části tohoto článku.
-5. Spusťte aplikaci klávesou `F5`. Hlasování vytvořená pomocí položky **Vytvořit ukázková hlasování** a data odeslaná při hlasování budou serializována v databázi MySQL.
+    Tím se vytvoří hello tabulky pro databázi MySQL hello, kterou jste vytvořili v předchozí části hello. Postupujte podle toocreate hello vyzve uživatele, který nemá toomatch hello uživatele v databázi sqlite hello vytvořené v první části tohoto článku hello.
+5. Spuštění aplikace hello s `F5`. Hlasování, které jsou vytvořeny pomocí **vytvořit ukázková hlasování** a hello data odeslaná při hlasování budou serializována v databázi MySQL hello.
 
-## <a name="publish-the-web-app-to-azure-app-service"></a>Publikování webové aplikace do služby Azure App Service
-Sada Azure .NET SDK poskytuje snadný způsob, jak nasadit webovou aplikaci do služby Azure App Service.
+## <a name="publish-hello-web-app-tooazure-app-service"></a>Publikování hello webové aplikace tooAzure služby App Service
+Hello .NET SDK služby Azure poskytuje snadno toodeploy tooAzure vaší webové aplikace služby App Service.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na uzel projektu a vyberte možnost **Publikovat**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na uzel projektu hello a vyberte **publikovat**.
    
     ![Dialogové okno Publikování webu](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 2. Klikněte na **Microsoft Azure App Service**.
-3. Kliknutím na možnost **Nové** vytvořte novou webovou aplikaci.
-4. Vyplňte následující pole a klikněte na možnost **Vytvořit**:
+3. Klikněte na **nový** toocreate novou webovou aplikaci.
+4. Vyplňte následující pole hello a klikněte na tlačítko **vytvořit**:
    
    * **Název webové aplikace**
    * **Plán služby App Service**
    * **Skupina prostředků**
    * **Oblast**
-   * Položku **Databázový server** ponechte nastavenou na možnost **Bez databáze**
+   * Nechte **databázový server** nastavit příliš**žádná databáze.**
 5. Přijměte veškerá ostatní výchozí nastavení a klikněte na možnost **Publikovat**.
-6. Automaticky se otevře webový prohlížeč s publikovanou webovou aplikací. Měli byste vidět, že webová aplikace funguje očekávaným způsobem a využívá databázi **MySQL** hostovanou v Azure.
+6. Webový prohlížeč se automaticky otevře toohello publikované webové aplikace. Měli byste vidět hello webové aplikace pracovní podle očekávání, pomocí hello **MySQL** databáze, které jsou hostované v Azure.
    
     ![Webový prohlížeč](./media/web-sites-python-ptvs-django-mysql/PollsDjangoAzureBrowser.png)
    
-    Blahopřejeme! Úspěšně jste publikovali webovou aplikaci založenou na MySQL do Azure.
+    Blahopřejeme! Úspěšně jste publikovali vaší tooAzure založenou na MySQL webové aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-Potřebujete-li další informace o nástrojích Python Tools pro Visual Studio, rozhraní Django a MySQL, použijte tyto odkazy.
+Použijte tyto odkazy toolearn Další informace o nástrojích Python Tools pro Visual Studio, rozhraní Django a MySQL.
 
 * [Dokumentace nástrojů Python Tools pro Visual Studio]
   * [Webové projekty]
@@ -153,16 +153,16 @@ Potřebujete-li další informace o nástrojích Python Tools pro Visual Studio,
 * [Dokumentace rozhraní Django]
 * [MySQL]
 
-Další informace naleznete ve [Středisku pro vývojáře Python](/develop/python/).
+Další informace najdete v tématu hello [středisku pro vývojáře Python](/develop/python/).
 
 <!--Link references-->
 
-[Středisku pro vývojáře Python]: /develop/python/
+[středisku pro vývojáře Python]: /develop/python/
 [Azure Cloud Services]: ../cloud-services/cloud-services-python-ptvs.md
 
 <!--External Link references-->
 
-[Azure Portal]: https://portal.azure.com
+[portálu Azure]: https://portal.azure.com
 [Python Tools for Visual Studio]: https://www.visualstudio.com/vs/python/
 [Python Tools 2.2 pro Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Python Tools 2.2 pro Visual Studio – ukázky VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
