@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure Cosmos: Sestavení aplikace konzoly v jazyce Java s rozhraním API MongoDB | Dokumentace Microsoftu"
-description: "Představuje ukázku kódu Java, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB služby Azure Cosmos DB."
+title: "Azure Cosmos DB: Vytvoření konzolové aplikace v jazyce Java a hello MongoDB API | Microsoft Docs"
+description: "Uvede ukázku kódu Java pomocí dotazu tooand tooconnect hello rozhraní API služby Azure Cosmos DB MongoDB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,55 +15,55 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: f84294d7d324f094d173f7a2ec89759266a74210
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fbe416f6b20ed2bb83a1d41eb70ffc6e3cee2b61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a><span data-ttu-id="b9e49-103">Databáze Azure Cosmos: Sestavení aplikace konzoly v jazyce Java s rozhraním API MongoDB na webu Azure Portal</span><span class="sxs-lookup"><span data-stu-id="b9e49-103">Azure Cosmos DB: Build a MongoDB API console app with Java and the Azure portal</span></span>
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-hello-azure-portal"></a><span data-ttu-id="cdda3-103">Azure Cosmos DB: Sestavení aplikace konzoly MongoDB rozhraní API s Java a hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="cdda3-103">Azure Cosmos DB: Build a MongoDB API console app with Java and hello Azure portal</span></span>
 
-<span data-ttu-id="b9e49-104">Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku.</span><span class="sxs-lookup"><span data-stu-id="b9e49-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="b9e49-105">Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b9e49-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.</span></span> 
+<span data-ttu-id="cdda3-104">Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku.</span><span class="sxs-lookup"><span data-stu-id="cdda3-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="cdda3-105">Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="cdda3-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from hello global distribution and horizontal scale capabilities at hello core of Azure Cosmos DB.</span></span> 
 
-<span data-ttu-id="b9e49-106">Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, databáze dokumentů a kolekce pomocí webu Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="b9e49-106">This quick start demonstrates how to create an Azure Cosmos DB account, document database, and collection using the Azure portal.</span></span> <span data-ttu-id="b9e49-107">Potom sestavíte a nasadíte aplikaci konzoly založenou na [ovladači Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/).</span><span class="sxs-lookup"><span data-stu-id="b9e49-107">You'll then build and deploy a console app built on the [MongoDB Java driver](https://docs.mongodb.com/ecosystem/drivers/java/).</span></span> 
+<span data-ttu-id="cdda3-106">Tento rychlý start předvádí, jak hello toocreate účet Azure Cosmos DB, dokumentu databáze a kolekce pomocí portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="cdda3-106">This quick start demonstrates how toocreate an Azure Cosmos DB account, document database, and collection using hello Azure portal.</span></span> <span data-ttu-id="cdda3-107">Budete pak sestavení a nasazení aplikace konzoly založený na hello [MongoDB Java ovladač](https://docs.mongodb.com/ecosystem/drivers/java/).</span><span class="sxs-lookup"><span data-stu-id="cdda3-107">You'll then build and deploy a console app built on hello [MongoDB Java driver](https://docs.mongodb.com/ecosystem/drivers/java/).</span></span> 
 
-## <a name="prerequisites"></a><span data-ttu-id="b9e49-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b9e49-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="cdda3-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="cdda3-108">Prerequisites</span></span>
 
-* <span data-ttu-id="b9e49-109">Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:</span><span class="sxs-lookup"><span data-stu-id="b9e49-109">Before you can run this sample, you must have the following prerequisites:</span></span>
-   * <span data-ttu-id="b9e49-110">JDK 1.7+ (pokud nemáte JDK, spusťte `apt-get install default-jdk`)</span><span class="sxs-lookup"><span data-stu-id="b9e49-110">JDK 1.7+ (Run `apt-get install default-jdk` if you don't have JDK)</span></span>
-   * <span data-ttu-id="b9e49-111">Maven (pokud nemáte Maven, spusťte `apt-get install maven`)</span><span class="sxs-lookup"><span data-stu-id="b9e49-111">Maven (Run `apt-get install maven` if you don't have Maven)</span></span>
+* <span data-ttu-id="cdda3-109">Před spuštěním této ukázce, musíte mít hello následující požadavky:</span><span class="sxs-lookup"><span data-stu-id="cdda3-109">Before you can run this sample, you must have hello following prerequisites:</span></span>
+   * <span data-ttu-id="cdda3-110">JDK 1.7+ (pokud nemáte JDK, spusťte `apt-get install default-jdk`)</span><span class="sxs-lookup"><span data-stu-id="cdda3-110">JDK 1.7+ (Run `apt-get install default-jdk` if you don't have JDK)</span></span>
+   * <span data-ttu-id="cdda3-111">Maven (pokud nemáte Maven, spusťte `apt-get install maven`)</span><span class="sxs-lookup"><span data-stu-id="cdda3-111">Maven (Run `apt-get install maven` if you don't have Maven)</span></span>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a><span data-ttu-id="b9e49-112">Vytvoření účtu databáze</span><span class="sxs-lookup"><span data-stu-id="b9e49-112">Create a database account</span></span>
+## <a name="create-a-database-account"></a><span data-ttu-id="cdda3-112">Vytvoření účtu databáze</span><span class="sxs-lookup"><span data-stu-id="cdda3-112">Create a database account</span></span>
 
 [!INCLUDE [mongodb-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="add-a-collection"></a><span data-ttu-id="b9e49-113">Přidání kolekce</span><span class="sxs-lookup"><span data-stu-id="b9e49-113">Add a collection</span></span>
+## <a name="add-a-collection"></a><span data-ttu-id="cdda3-113">Přidání kolekce</span><span class="sxs-lookup"><span data-stu-id="cdda3-113">Add a collection</span></span>
 
-<span data-ttu-id="b9e49-114">Novou databázi pojmenujte **db** a novou kolekci **coll**.</span><span class="sxs-lookup"><span data-stu-id="b9e49-114">Name your new database, **db**, and your new collection, **coll**.</span></span>
+<span data-ttu-id="cdda3-114">Novou databázi pojmenujte **db** a novou kolekci **coll**.</span><span class="sxs-lookup"><span data-stu-id="cdda3-114">Name your new database, **db**, and your new collection, **coll**.</span></span>
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-## <a name="clone-the-sample-application"></a><span data-ttu-id="b9e49-115">Klonování ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="b9e49-115">Clone the sample application</span></span>
+## <a name="clone-hello-sample-application"></a><span data-ttu-id="cdda3-115">Klonování hello ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="cdda3-115">Clone hello sample application</span></span>
 
-<span data-ttu-id="b9e49-116">Teď naklonujeme aplikaci rozhraní API MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji.</span><span class="sxs-lookup"><span data-stu-id="b9e49-116">Now let's clone a MongoDB API app from github, set the connection string, and run it.</span></span> <span data-ttu-id="b9e49-117">Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu.</span><span class="sxs-lookup"><span data-stu-id="b9e49-117">You'll see how easy it is to work with data programmatically.</span></span> 
+<span data-ttu-id="cdda3-116">Teď umožňuje nastavit připojovací řetězec hello klonování MongoDB API aplikace z githubu a potom ho spusťte.</span><span class="sxs-lookup"><span data-stu-id="cdda3-116">Now let's clone a MongoDB API app from github, set hello connection string, and run it.</span></span> <span data-ttu-id="cdda3-117">Uvidíte, jak je snadné toowork s daty prostřednictvím kódu programu.</span><span class="sxs-lookup"><span data-stu-id="cdda3-117">You'll see how easy it is toowork with data programmatically.</span></span> 
 
-1. <span data-ttu-id="b9e49-118">Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.</span><span class="sxs-lookup"><span data-stu-id="b9e49-118">Open a git terminal window, such as git bash, and `cd` to a working directory.</span></span>  
+1. <span data-ttu-id="cdda3-118">Otevřete okno terminálu git, jako je například git bash a `cd` tooa pracovní adresář.</span><span class="sxs-lookup"><span data-stu-id="cdda3-118">Open a git terminal window, such as git bash, and `cd` tooa working directory.</span></span>  
 
-2. <span data-ttu-id="b9e49-119">Ukázkové úložiště naklonujete spuštěním následujícího příkazu.</span><span class="sxs-lookup"><span data-stu-id="b9e49-119">Run the following command to clone the sample repository.</span></span> 
+2. <span data-ttu-id="cdda3-119">Spusťte následující příkaz tooclone hello Ukázka úložiště hello.</span><span class="sxs-lookup"><span data-stu-id="cdda3-119">Run hello following command tooclone hello sample repository.</span></span> 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
     ```
 
-3. <span data-ttu-id="b9e49-120">Potom otevřete soubor řešení v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b9e49-120">Then open the solution file in Visual Studio.</span></span> 
+3. <span data-ttu-id="cdda3-120">Poté otevřete soubor řešení hello v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cdda3-120">Then open hello solution file in Visual Studio.</span></span> 
 
-## <a name="review-the-code"></a><span data-ttu-id="b9e49-121">Kontrola kódu</span><span class="sxs-lookup"><span data-stu-id="b9e49-121">Review the code</span></span>
+## <a name="review-hello-code"></a><span data-ttu-id="cdda3-121">Zkontrolujte hello kódu</span><span class="sxs-lookup"><span data-stu-id="cdda3-121">Review hello code</span></span>
 
-<span data-ttu-id="b9e49-122">Ještě jednou se stručně podívejme na to, co se v aplikaci děje.</span><span class="sxs-lookup"><span data-stu-id="b9e49-122">Let's make a quick review of what's happening in the app.</span></span> <span data-ttu-id="b9e49-123">Otevřete soubor `Program.cs` a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos.</span><span class="sxs-lookup"><span data-stu-id="b9e49-123">Open the `Program.cs` file and you'll find that these lines of code create the Azure Cosmos DB resources.</span></span> 
+<span data-ttu-id="cdda3-122">Provedeme jejich stručný přehled o dění v aplikaci hello.</span><span class="sxs-lookup"><span data-stu-id="cdda3-122">Let's make a quick review of what's happening in hello app.</span></span> <span data-ttu-id="cdda3-123">Otevřete hello `Program.cs` souboru a najdete, že tyto řádky kódu vytvořit hello prostředky Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="cdda3-123">Open hello `Program.cs` file and you'll find that these lines of code create hello Azure Cosmos DB resources.</span></span> 
 
-* <span data-ttu-id="b9e49-124">Inicializuje se DocumentClient.</span><span class="sxs-lookup"><span data-stu-id="b9e49-124">The DocumentClient is initialized.</span></span>
+* <span data-ttu-id="cdda3-124">Hello DocumentClient je inicializován.</span><span class="sxs-lookup"><span data-stu-id="cdda3-124">hello DocumentClient is initialized.</span></span>
 
     ```java
     MongoClientURI uri = new MongoClientURI("FILLME");`
@@ -71,7 +71,7 @@ ms.lasthandoff: 07/11/2017
     MongoClient mongoClient = new MongoClient(uri);            
     ```
 
-* <span data-ttu-id="b9e49-125">Vytvoří se nová databáze a kolekce.</span><span class="sxs-lookup"><span data-stu-id="b9e49-125">A new database and collection are created.</span></span>
+* <span data-ttu-id="cdda3-125">Vytvoří se nová databáze a kolekce.</span><span class="sxs-lookup"><span data-stu-id="cdda3-125">A new database and collection are created.</span></span>
 
     ```java
     MongoDatabase database = mongoClient.getDatabase("db");
@@ -79,52 +79,52 @@ ms.lasthandoff: 07/11/2017
     MongoCollection<Document> collection = database.getCollection("coll");
     ```
 
-* <span data-ttu-id="b9e49-126">Pomocí metody `MongoCollection.insertOne` se vloží některé dokumenty.</span><span class="sxs-lookup"><span data-stu-id="b9e49-126">Some documents are inserted using `MongoCollection.insertOne`</span></span>
+* <span data-ttu-id="cdda3-126">Pomocí metody `MongoCollection.insertOne` se vloží některé dokumenty.</span><span class="sxs-lookup"><span data-stu-id="cdda3-126">Some documents are inserted using `MongoCollection.insertOne`</span></span>
 
     ```java
     Document document = new Document("fruit", "apple")
     collection.insertOne(document);
     ```
 
-* <span data-ttu-id="b9e49-127">Pomocí metody `MongoCollection.find` se provedou některé dotazy.</span><span class="sxs-lookup"><span data-stu-id="b9e49-127">Some queries are performed using `MongoCollection.find`</span></span>
+* <span data-ttu-id="cdda3-127">Pomocí metody `MongoCollection.find` se provedou některé dotazy.</span><span class="sxs-lookup"><span data-stu-id="cdda3-127">Some queries are performed using `MongoCollection.find`</span></span>
 
     ```java
     Document queryResult = collection.find(Filters.eq("fruit", "apple")).first();
     System.out.println(queryResult.toJson());       
     ```
 
-## <a name="update-your-connection-string"></a><span data-ttu-id="b9e49-128">Aktualizace připojovacího řetězce</span><span class="sxs-lookup"><span data-stu-id="b9e49-128">Update your connection string</span></span>
+## <a name="update-your-connection-string"></a><span data-ttu-id="cdda3-128">Aktualizace připojovacího řetězce</span><span class="sxs-lookup"><span data-stu-id="cdda3-128">Update your connection string</span></span>
 
-<span data-ttu-id="b9e49-129">Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.</span><span class="sxs-lookup"><span data-stu-id="b9e49-129">Now go back to the Azure portal to get your connection string information and copy it into the app.</span></span>
+<span data-ttu-id="cdda3-129">Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="cdda3-129">Now go back toohello Azure portal tooget your connection string information and copy it into hello app.</span></span>
 
-1. <span data-ttu-id="b9e49-130">V účtu vyberte možnost **Rychlý start**, vyberte jazyk Java a potom zkopírujte připojovací řetězec do schránky.</span><span class="sxs-lookup"><span data-stu-id="b9e49-130">From the Account, select **Quick Start**, select Java, then copy the connection string to your clipboard</span></span>
+1. <span data-ttu-id="cdda3-130">Hello účtu, vyberte **rychlý Start**vyberte Java a pak zkopírujte hello připojovací řetězec tooyour schránky</span><span class="sxs-lookup"><span data-stu-id="cdda3-130">From hello Account, select **Quick Start**, select Java, then copy hello connection string tooyour clipboard</span></span>
 
-2. <span data-ttu-id="b9e49-131">Otevřete soubor `Program.java` a nahraďte argument konstruktoru MongoClientURI připojovacím řetězcem.</span><span class="sxs-lookup"><span data-stu-id="b9e49-131">Open the `Program.java` file, replace the argument to the MongoClientURI constructor with the connection string.</span></span> <span data-ttu-id="b9e49-132">Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos.</span><span class="sxs-lookup"><span data-stu-id="b9e49-132">You've now updated your app with all the info it needs to communicate with Azure Cosmos DB.</span></span> 
+2. <span data-ttu-id="cdda3-131">Otevřete hello `Program.java` souboru, nahraďte hello argument toohello MongoClientURI konstruktor hello připojovací řetězec.</span><span class="sxs-lookup"><span data-stu-id="cdda3-131">Open hello `Program.java` file, replace hello argument toohello MongoClientURI constructor with hello connection string.</span></span> <span data-ttu-id="cdda3-132">Jste nyní aktualizovat vaši aplikaci s všechny údaje hello potřebuje toocommunicate s Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="cdda3-132">You've now updated your app with all hello info it needs toocommunicate with Azure Cosmos DB.</span></span> 
     
-## <a name="run-the-console-app"></a><span data-ttu-id="b9e49-133">Spuštění aplikace konzoly</span><span class="sxs-lookup"><span data-stu-id="b9e49-133">Run the console app</span></span>
+## <a name="run-hello-console-app"></a><span data-ttu-id="cdda3-133">Spusťte konzolovou aplikaci hello</span><span class="sxs-lookup"><span data-stu-id="cdda3-133">Run hello console app</span></span>
 
-1. <span data-ttu-id="b9e49-134">Spusťte v terminálu `mvn package`, aby se nainstalovaly požadované moduly NPM.</span><span class="sxs-lookup"><span data-stu-id="b9e49-134">Run `mvn package` in a terminal to install required npm modules</span></span>
+1. <span data-ttu-id="cdda3-134">Spustit `mvn package` v terminálu tooinstall požadované moduly npm</span><span class="sxs-lookup"><span data-stu-id="cdda3-134">Run `mvn package` in a terminal tooinstall required npm modules</span></span>
 
-2. <span data-ttu-id="b9e49-135">Spuštění v terminálu `mvn exec:java -D exec.mainClass=GetStarted.Program`, aby se spustila aplikace Java.</span><span class="sxs-lookup"><span data-stu-id="b9e49-135">Run `mvn exec:java -D exec.mainClass=GetStarted.Program` in a terminal to start your Java application.</span></span>
+2. <span data-ttu-id="cdda3-135">Spustit `mvn exec:java -D exec.mainClass=GetStarted.Program` v terminálu toostart aplikace v jazyce Java.</span><span class="sxs-lookup"><span data-stu-id="cdda3-135">Run `mvn exec:java -D exec.mainClass=GetStarted.Program` in a terminal toostart your Java application.</span></span>
 
-<span data-ttu-id="b9e49-136">Teď můžete provádět dotazy a úpravy a pracovat s těmito novými daty v prostředí použít [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md).</span><span class="sxs-lookup"><span data-stu-id="b9e49-136">You can now use [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) to query, modify, and work with this new data.</span></span>
+<span data-ttu-id="cdda3-136">Teď můžete použít [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) tooquery, upravit a pracovat s Tato nová data.</span><span class="sxs-lookup"><span data-stu-id="cdda3-136">You can now use [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) tooquery, modify, and work with this new data.</span></span>
 
-## <a name="review-slas-in-the-azure-portal"></a><span data-ttu-id="b9e49-137">Ověření smluv SLA na webu Azure Portal</span><span class="sxs-lookup"><span data-stu-id="b9e49-137">Review SLAs in the Azure portal</span></span>
+## <a name="review-slas-in-hello-azure-portal"></a><span data-ttu-id="cdda3-137">Zkontrolujte SLA v hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="cdda3-137">Review SLAs in hello Azure portal</span></span>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a><span data-ttu-id="b9e49-138">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="b9e49-138">Clean up resources</span></span>
+## <a name="clean-up-resources"></a><span data-ttu-id="cdda3-138">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="cdda3-138">Clean up resources</span></span>
 
-<span data-ttu-id="b9e49-139">Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:</span><span class="sxs-lookup"><span data-stu-id="b9e49-139">If you're not going to continue to use this app, delete all resources created by this quickstart in the Azure portal with the following steps:</span></span>
+<span data-ttu-id="cdda3-139">Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="cdda3-139">If you're not going toocontinue toouse this app, delete all resources created by this quickstart in hello Azure portal with hello following steps:</span></span>
 
-1. <span data-ttu-id="b9e49-140">V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.</span><span class="sxs-lookup"><span data-stu-id="b9e49-140">From the left-hand menu in the Azure portal, click **Resource groups** and then click the name of the resource you created.</span></span> 
-2. <span data-ttu-id="b9e49-141">Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.</span><span class="sxs-lookup"><span data-stu-id="b9e49-141">On your resource group page, click **Delete**, type the name of the resource to delete in the text box, and then click **Delete**.</span></span>
+1. <span data-ttu-id="cdda3-140">V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="cdda3-140">From hello left-hand menu in hello Azure portal, click **Resource groups** and then click hello name of hello resource you created.</span></span> 
+2. <span data-ttu-id="cdda3-141">Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="cdda3-141">On your resource group page, click **Delete**, type hello name of hello resource toodelete in hello text box, and then click **Delete**.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b9e49-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="b9e49-142">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="cdda3-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="cdda3-142">Next steps</span></span>
 
-<span data-ttu-id="b9e49-143">V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníka dat a spuštění aplikace konzoly.</span><span class="sxs-lookup"><span data-stu-id="b9e49-143">In this quickstart, you've learned how to create an Azure Cosmos DB account, create a collection using the Data Explorer, and run a console app.</span></span> <span data-ttu-id="b9e49-144">Teď můžete do účtu databáze Cosmos importovat další data.</span><span class="sxs-lookup"><span data-stu-id="b9e49-144">You can now import additional data to your Cosmos DB account.</span></span> 
+<span data-ttu-id="cdda3-143">V tento rychlý start když jste se naučili jak toocreate účtu Azure Cosmos DB, vytvořte kolekci pomocí hello Průzkumníku dat a spusťte konzolovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="cdda3-143">In this quickstart, you've learned how toocreate an Azure Cosmos DB account, create a collection using hello Data Explorer, and run a console app.</span></span> <span data-ttu-id="cdda3-144">Nyní můžete importovat další data tooyour Cosmos DB účtu.</span><span class="sxs-lookup"><span data-stu-id="cdda3-144">You can now import additional data tooyour Cosmos DB account.</span></span> 
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="b9e49-145">Importování dat MongoDB do databáze Azure Cosmos</span><span class="sxs-lookup"><span data-stu-id="b9e49-145">Import MongoDB data into Azure Cosmos DB</span></span>](mongodb-migrate.md)
+> [<span data-ttu-id="cdda3-145">Importování dat MongoDB do služby Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="cdda3-145">Import MongoDB data into Azure Cosmos DB</span></span>](mongodb-migrate.md)
 
 

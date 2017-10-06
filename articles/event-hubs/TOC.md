@@ -16,8 +16,8 @@
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
 ## Zachycení událostí
-### [Použití webu Azure Portal k povolení funkce Event Hubs Capture](event-hubs-capture-enable-through-portal.md)
-### [Použití šablony Resource Manageru k povolení funkce Event Hubs Capture](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+### [Použití hello Azure portálu tooenable zaznamenat centra událostí](event-hubs-capture-enable-through-portal.md)
+### [Použít tooenable šablony Resource Manageru zaznamenat centra událostí](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [Průvodce programováním](event-hubs-programming-guide.md)
 
 # Postup
@@ -37,7 +37,7 @@
 ### Zachycování
 #### [Event Hubs Capture](event-hubs-capture-overview.md)
 #### [Zachycování dat Event Hubs pomocí Pythonu](event-hubs-capture-python.md)
-### [Použití PowerShellu ke zřizování entit](event-hubs-manage-with-ps.md) 
+### [Pomocí prostředí PowerShell tooprovision entity](event-hubs-manage-with-ps.md) 
 ### [Streamování dat Diagnostiky Azure pomocí Event Hubs](event-hubs-streaming-azure-diags-data.md)
 ### [Vytvoření a nasazení centra událostí pomocí šablony Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md)
 

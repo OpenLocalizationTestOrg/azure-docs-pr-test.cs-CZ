@@ -1,6 +1,6 @@
 ---
-title: "Počasí prognózy pomocí Azure Machine Learning s daty ze služby IoT Hub | Microsoft Docs"
-description: "Použití Azure Machine Learning k předvídání riziko déšť podle služby IoT hub shromažďuje ze senzoru teploty a vlhkosti data."
+title: "aaaWeather prognózy pomocí Azure Machine Learning s daty ze služby IoT Hub | Microsoft Docs"
+description: "Použití Azure Machine Learning toopredict hello riziko déšť založené na hello teploty a vlhkosti data, která shromažďuje služby IoT hub ze senzoru."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,144 +15,144 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04abe97558ccfc152bae2e0d435033433c0023dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a><span data-ttu-id="27df2-104">Počasí prognózy používající senzor data ze služby IoT hub v Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="27df2-104">Weather forecast using the sensor data from your IoT hub in Azure Machine Learning</span></span>
+# <a name="weather-forecast-using-hello-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a><span data-ttu-id="01927-104">Předpověď počasí pomocí hello senzor dat z centra IoT v Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="01927-104">Weather forecast using hello sensor data from your IoT hub in Azure Machine Learning</span></span>
 
 ![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-<span data-ttu-id="27df2-106">Machine learning je technika, kdy vědecké zpracování dat, která pomáhá počítače informace z existující data předpovídat budoucí chování, výsledky a trendy.</span><span class="sxs-lookup"><span data-stu-id="27df2-106">Machine learning is a technique of data science that helps computers learn from existing data to forecast future behaviors, outcomes, and trends.</span></span> <span data-ttu-id="27df2-107">Azure Machine Learning je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako analytická řešení.</span><span class="sxs-lookup"><span data-stu-id="27df2-107">Azure Machine Learning is a cloud predictive analytics service that makes it possible to quickly create and deploy predictive models as analytics solutions.</span></span>
+<span data-ttu-id="01927-106">Machine learning je technika, kdy vědecké zpracování dat, která pomáhá počítače dozvědět se od existujícího data tooforecast budoucí chování, výsledky a trendy.</span><span class="sxs-lookup"><span data-stu-id="01927-106">Machine learning is a technique of data science that helps computers learn from existing data tooforecast future behaviors, outcomes, and trends.</span></span> <span data-ttu-id="01927-107">Azure Machine Learning je Cloudová služba prediktivní analýzy, která je možné tooquickly vytvářet a nasazovat prediktivní modely jako analytická řešení.</span><span class="sxs-lookup"><span data-stu-id="01927-107">Azure Machine Learning is a cloud predictive analytics service that makes it possible tooquickly create and deploy predictive models as analytics solutions.</span></span>
 
-## <a name="what-you-learn"></a><span data-ttu-id="27df2-108">Co se naučíte</span><span class="sxs-lookup"><span data-stu-id="27df2-108">What you learn</span></span>
+## <a name="what-you-learn"></a><span data-ttu-id="01927-108">Co se naučíte</span><span class="sxs-lookup"><span data-stu-id="01927-108">What you learn</span></span>
 
-<span data-ttu-id="27df2-109">Naučte se používat Azure Machine Learning na informace o počasí prognózy (riziko déšť) používající teploty a vlhkosti data ze služby Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-109">You learn how to use Azure Machine Learning to do weather forecast (chance of rain) using the temperature and humidity data from your Azure IoT hub.</span></span> <span data-ttu-id="27df2-110">Riziko déšť je výstup z modelu předpovědi počasí připravené.</span><span class="sxs-lookup"><span data-stu-id="27df2-110">The chance of rain is the output of a prepared weather prediction model.</span></span> <span data-ttu-id="27df2-111">Model je založena na historických dat prognózy riziko déšť vychází z teploty a vlhkosti.</span><span class="sxs-lookup"><span data-stu-id="27df2-111">The model is built upon historic data to forecast chance of rain based on temperature and humidity.</span></span>
+<span data-ttu-id="01927-109">Zjistíte, jak toouse Azure Machine Learning toodo předpověď počasí (riziko déšť) pomocí hello teploty a vlhkosti data ze služby Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-109">You learn how toouse Azure Machine Learning toodo weather forecast (chance of rain) using hello temperature and humidity data from your Azure IoT hub.</span></span> <span data-ttu-id="01927-110">Hello riziko déšť je výstup hello modelu předpovědi počasí připravené.</span><span class="sxs-lookup"><span data-stu-id="01927-110">hello chance of rain is hello output of a prepared weather prediction model.</span></span> <span data-ttu-id="01927-111">Hello model je založena na historických datech tooforecast riziko déšť vychází z teploty a vlhkosti.</span><span class="sxs-lookup"><span data-stu-id="01927-111">hello model is built upon historic data tooforecast chance of rain based on temperature and humidity.</span></span>
 
-## <a name="what-you-do"></a><span data-ttu-id="27df2-112">Co dělat</span><span class="sxs-lookup"><span data-stu-id="27df2-112">What you do</span></span>
+## <a name="what-you-do"></a><span data-ttu-id="01927-112">Co dělat</span><span class="sxs-lookup"><span data-stu-id="01927-112">What you do</span></span>
 
-- <span data-ttu-id="27df2-113">Model předpovědi počasí nasaďte jako webovou službu.</span><span class="sxs-lookup"><span data-stu-id="27df2-113">Deploy the weather prediction model as a web service.</span></span>
-- <span data-ttu-id="27df2-114">Služby IoT hub připravte pro přístup k datům přidáním skupiny příjemců.</span><span class="sxs-lookup"><span data-stu-id="27df2-114">Get your IoT hub ready for data access by adding a consumer group.</span></span>
-- <span data-ttu-id="27df2-115">Vytvořit úlohu služby Stream Analytics a nakonfigurujte úlohy:</span><span class="sxs-lookup"><span data-stu-id="27df2-115">Create a Stream Analytics job and configure the job to:</span></span>
-  - <span data-ttu-id="27df2-116">Čtení dat teploty a vlhkosti ze služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-116">Read temperature and humidity data from your IoT hub.</span></span>
-  - <span data-ttu-id="27df2-117">Volání webové služby, bude mít déšť možnost.</span><span class="sxs-lookup"><span data-stu-id="27df2-117">Call the web service to get the rain chance.</span></span>
-  - <span data-ttu-id="27df2-118">Uložte výsledek do Azure blob storage.</span><span class="sxs-lookup"><span data-stu-id="27df2-118">Save the result to an Azure blob storage.</span></span>
-- <span data-ttu-id="27df2-119">Chcete-li zobrazit předpovědi počasí pomocí Microsoft Azure Storage Explorer.</span><span class="sxs-lookup"><span data-stu-id="27df2-119">Use Microsoft Azure Storage Explorer to view the weather forecast.</span></span>
+- <span data-ttu-id="01927-113">Nasazení modelu předpovědi počasí hello jako webovou službu.</span><span class="sxs-lookup"><span data-stu-id="01927-113">Deploy hello weather prediction model as a web service.</span></span>
+- <span data-ttu-id="01927-114">Služby IoT hub připravte pro přístup k datům přidáním skupiny příjemců.</span><span class="sxs-lookup"><span data-stu-id="01927-114">Get your IoT hub ready for data access by adding a consumer group.</span></span>
+- <span data-ttu-id="01927-115">Vytvořit úlohu služby Stream Analytics a nakonfigurujte hello úlohy:</span><span class="sxs-lookup"><span data-stu-id="01927-115">Create a Stream Analytics job and configure hello job to:</span></span>
+  - <span data-ttu-id="01927-116">Čtení dat teploty a vlhkosti ze služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-116">Read temperature and humidity data from your IoT hub.</span></span>
+  - <span data-ttu-id="01927-117">Volání hello webové služby tooget hello déšť příležitosti.</span><span class="sxs-lookup"><span data-stu-id="01927-117">Call hello web service tooget hello rain chance.</span></span>
+  - <span data-ttu-id="01927-118">Uložte hello výsledek tooan Azure blob storage.</span><span class="sxs-lookup"><span data-stu-id="01927-118">Save hello result tooan Azure blob storage.</span></span>
+- <span data-ttu-id="01927-119">Použít Microsoft Azure Storage Explorer tooview hello počasí prognózu.</span><span class="sxs-lookup"><span data-stu-id="01927-119">Use Microsoft Azure Storage Explorer tooview hello weather forecast.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="27df2-120">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="27df2-120">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="01927-120">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="01927-120">What you need</span></span>
 
-- <span data-ttu-id="27df2-121">Kurz [nastavit vaše zařízení](iot-hub-raspberry-pi-kit-node-get-started.md) dokončit, která zahrnuje následující požadavky:</span><span class="sxs-lookup"><span data-stu-id="27df2-121">Tutorial [Setup your device](iot-hub-raspberry-pi-kit-node-get-started.md) completed which covers the following requirements:</span></span>
-  - <span data-ttu-id="27df2-122">Aktivní předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="27df2-122">An active Azure subscription.</span></span>
-  - <span data-ttu-id="27df2-123">V rámci svého předplatného služby Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-123">An Azure IoT hub under your subscription.</span></span>
-  - <span data-ttu-id="27df2-124">Klientská aplikace, která odesílá zprávy do služby Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-124">A client application that sends messages to your Azure IoT hub.</span></span>
-- <span data-ttu-id="27df2-125">Účet Azure Machine Learning Studio.</span><span class="sxs-lookup"><span data-stu-id="27df2-125">An Azure Machine Learning Studio account.</span></span> <span data-ttu-id="27df2-126">([Zkuste Machine Learning Studio zdarma](https://studio.azureml.net/)).</span><span class="sxs-lookup"><span data-stu-id="27df2-126">([Try Machine Learning Studio for free](https://studio.azureml.net/)).</span></span>
+- <span data-ttu-id="01927-121">Kurz [nastavit vaše zařízení](iot-hub-raspberry-pi-kit-node-get-started.md) dokončit, která zahrnuje hello následující požadavky:</span><span class="sxs-lookup"><span data-stu-id="01927-121">Tutorial [Setup your device](iot-hub-raspberry-pi-kit-node-get-started.md) completed which covers hello following requirements:</span></span>
+  - <span data-ttu-id="01927-122">Aktivní předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="01927-122">An active Azure subscription.</span></span>
+  - <span data-ttu-id="01927-123">V rámci svého předplatného služby Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-123">An Azure IoT hub under your subscription.</span></span>
+  - <span data-ttu-id="01927-124">Klientská aplikace, která odesílá zprávy tooyour Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-124">A client application that sends messages tooyour Azure IoT hub.</span></span>
+- <span data-ttu-id="01927-125">Účet Azure Machine Learning Studio.</span><span class="sxs-lookup"><span data-stu-id="01927-125">An Azure Machine Learning Studio account.</span></span> <span data-ttu-id="01927-126">([Zkuste Machine Learning Studio zdarma](https://studio.azureml.net/)).</span><span class="sxs-lookup"><span data-stu-id="01927-126">([Try Machine Learning Studio for free](https://studio.azureml.net/)).</span></span>
 
-## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a><span data-ttu-id="27df2-127">Model předpovědi počasí nasadit jako webovou službu</span><span class="sxs-lookup"><span data-stu-id="27df2-127">Deploy the weather prediction model as a web service</span></span>
+## <a name="deploy-hello-weather-prediction-model-as-a-web-service"></a><span data-ttu-id="01927-127">Nasazení modelu předpovědi počasí hello jako webovou službu</span><span class="sxs-lookup"><span data-stu-id="01927-127">Deploy hello weather prediction model as a web service</span></span>
 
-1. <span data-ttu-id="27df2-128">Přejděte na [stránky modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).</span><span class="sxs-lookup"><span data-stu-id="27df2-128">Go to the [weather prediction model page](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).</span></span>
-1. <span data-ttu-id="27df2-129">Klikněte na tlačítko **Open in Studio** v Microsoft Azure Machine Learning Studio.</span><span class="sxs-lookup"><span data-stu-id="27df2-129">Click **Open in Studio** in Microsoft Azure Machine Learning Studio.</span></span>
-   <span data-ttu-id="27df2-130">![Otevřete stránku modelu předpovědi počasí v Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)</span><span class="sxs-lookup"><span data-stu-id="27df2-130">![Open the weather prediction model page in Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)</span></span>
-1. <span data-ttu-id="27df2-131">Klikněte na tlačítko **spustit** ověření kroky v modelu.</span><span class="sxs-lookup"><span data-stu-id="27df2-131">Click **Run** to validate the steps in the model.</span></span> <span data-ttu-id="27df2-132">Tento krok může trvat 2 minut.</span><span class="sxs-lookup"><span data-stu-id="27df2-132">This step might take 2 minutes to complete.</span></span>
-   <span data-ttu-id="27df2-133">![Otevřete modelu předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="27df2-133">![Open the weather prediction model in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)</span></span>
-1. <span data-ttu-id="27df2-134">Klikněte na tlačítko **nastavení webové služby** > **prediktivní webové služby**.</span><span class="sxs-lookup"><span data-stu-id="27df2-134">Click **SET UP WEB SERVICE** > **Predictive Web Service**.</span></span>
-   <span data-ttu-id="27df2-135">![Nasazení modelu předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="27df2-135">![Deploy the weather prediction model in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)</span></span>
-1. <span data-ttu-id="27df2-136">V diagramu, přetáhněte **webové služby vstup** modulu někde téměř **Score Model** modulu.</span><span class="sxs-lookup"><span data-stu-id="27df2-136">In the diagram, drag the **Web service input** module somewhere near the **Score Model** module.</span></span>
-1. <span data-ttu-id="27df2-137">Připojení **webové služby vstup** modulu **Score Model** modulu.</span><span class="sxs-lookup"><span data-stu-id="27df2-137">Connect the **Web service input** module to the **Score Model** module.</span></span>
-   <span data-ttu-id="27df2-138">![Připojení dvě moduly v nástroji Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="27df2-138">![Connect two modules in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)</span></span>
-1. <span data-ttu-id="27df2-139">Klikněte na tlačítko **spustit** ověření kroky v modelu.</span><span class="sxs-lookup"><span data-stu-id="27df2-139">Click **RUN** to validate the steps in the model.</span></span>
-1. <span data-ttu-id="27df2-140">Klikněte na tlačítko **nasazení webové služby** nasadit model jako webovou službu.</span><span class="sxs-lookup"><span data-stu-id="27df2-140">Click **DEPLOY WEB SERVICE** to deploy the model as a web service.</span></span>
-1. <span data-ttu-id="27df2-141">Na řídicím panelu modelu Stáhnout **Excel 2010 nebo starší sešitu** pro **požadavků a odpovědí**.</span><span class="sxs-lookup"><span data-stu-id="27df2-141">On the dashboard of the model, download the **Excel 2010 or earlier workbook** for **REQUEST/RESPONSE**.</span></span>
+1. <span data-ttu-id="01927-128">Přejděte toohello [stránky modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).</span><span class="sxs-lookup"><span data-stu-id="01927-128">Go toohello [weather prediction model page](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).</span></span>
+1. <span data-ttu-id="01927-129">Klikněte na tlačítko **Open in Studio** v Microsoft Azure Machine Learning Studio.</span><span class="sxs-lookup"><span data-stu-id="01927-129">Click **Open in Studio** in Microsoft Azure Machine Learning Studio.</span></span>
+   <span data-ttu-id="01927-130">![Otevřete hello počasí předpovědi modelu stránky v Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)</span><span class="sxs-lookup"><span data-stu-id="01927-130">![Open hello weather prediction model page in Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)</span></span>
+1. <span data-ttu-id="01927-131">Klikněte na tlačítko **spustit** toovalidate hello kroky v modelu hello.</span><span class="sxs-lookup"><span data-stu-id="01927-131">Click **Run** toovalidate hello steps in hello model.</span></span> <span data-ttu-id="01927-132">Tento krok může trvat toocomplete 2 minut.</span><span class="sxs-lookup"><span data-stu-id="01927-132">This step might take 2 minutes toocomplete.</span></span>
+   <span data-ttu-id="01927-133">![Model předpovědi počasí otevřete hello v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="01927-133">![Open hello weather prediction model in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)</span></span>
+1. <span data-ttu-id="01927-134">Klikněte na tlačítko **nastavení webové služby** > **prediktivní webové služby**.</span><span class="sxs-lookup"><span data-stu-id="01927-134">Click **SET UP WEB SERVICE** > **Predictive Web Service**.</span></span>
+   <span data-ttu-id="01927-135">![Nasazení modelu předpovědi počasí hello v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="01927-135">![Deploy hello weather prediction model in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)</span></span>
+1. <span data-ttu-id="01927-136">V diagramu hello přetáhněte hello **webové služby vstup** modulu někde téměř hello **Score Model** modulu.</span><span class="sxs-lookup"><span data-stu-id="01927-136">In hello diagram, drag hello **Web service input** module somewhere near hello **Score Model** module.</span></span>
+1. <span data-ttu-id="01927-137">Připojit hello **webové služby vstup** modulu toohello **Score Model** modulu.</span><span class="sxs-lookup"><span data-stu-id="01927-137">Connect hello **Web service input** module toohello **Score Model** module.</span></span>
+   <span data-ttu-id="01927-138">![Připojení dvě moduly v nástroji Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)</span><span class="sxs-lookup"><span data-stu-id="01927-138">![Connect two modules in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)</span></span>
+1. <span data-ttu-id="01927-139">Klikněte na tlačítko **spustit** toovalidate hello kroky v modelu hello.</span><span class="sxs-lookup"><span data-stu-id="01927-139">Click **RUN** toovalidate hello steps in hello model.</span></span>
+1. <span data-ttu-id="01927-140">Klikněte na tlačítko **nasazení webové služby** toodeploy hello model jako webovou službu.</span><span class="sxs-lookup"><span data-stu-id="01927-140">Click **DEPLOY WEB SERVICE** toodeploy hello model as a web service.</span></span>
+1. <span data-ttu-id="01927-141">Na řídicím panelu hello hello modelu, stáhněte si hello **Excel 2010 nebo starší sešitu** pro **požadavků a odpovědí**.</span><span class="sxs-lookup"><span data-stu-id="01927-141">On hello dashboard of hello model, download hello **Excel 2010 or earlier workbook** for **REQUEST/RESPONSE**.</span></span>
 
    > [!Note]
-   > <span data-ttu-id="27df2-142">Ujistěte se, abyste si stáhli **Excel 2010 nebo starší sešitu** i v případě, že používáte novější verzi aplikace Excel ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="27df2-142">Ensure that you download the **Excel 2010 or earlier workbook** even if you are running a later version of Excel on your computer.</span></span>
+   > <span data-ttu-id="01927-142">Ujistěte se, že si stáhnout hello **Excel 2010 nebo starší sešitu** i v případě, že používáte novější verzi aplikace Excel ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="01927-142">Ensure that you download hello **Excel 2010 or earlier workbook** even if you are running a later version of Excel on your computer.</span></span>
 
-   ![Stažení aplikace Excel pro koncový bod REQUEST RESPONSE](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Stáhnout hello aplikace Excel pro koncový bod REQUEST RESPONSE hello](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
-1. <span data-ttu-id="27df2-144">Otevřete sešit aplikace Excel, poznamenejte si **adresa URL webové služby** a **přístupový klíč**.</span><span class="sxs-lookup"><span data-stu-id="27df2-144">Open the Excel workbook, make a note of the **WEB SERVICE URL** and **ACCESS KEY**.</span></span>
+1. <span data-ttu-id="01927-144">Otevřete sešit aplikace Excel hello, poznamenejte si hello **adresa URL webové služby** a **přístupový klíč**.</span><span class="sxs-lookup"><span data-stu-id="01927-144">Open hello Excel workbook, make a note of hello **WEB SERVICE URL** and **ACCESS KEY**.</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="create-configure-and-run-a-stream-analytics-job"></a><span data-ttu-id="27df2-145">Vytvoření, konfigurace a spuštění úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-145">Create, configure, and run a Stream Analytics job</span></span>
+## <a name="create-configure-and-run-a-stream-analytics-job"></a><span data-ttu-id="01927-145">Vytvoření, konfigurace a spuštění úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="01927-145">Create, configure, and run a Stream Analytics job</span></span>
 
-### <a name="create-a-stream-analytics-job"></a><span data-ttu-id="27df2-146">Vytvoření úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-146">Create a Stream Analytics job</span></span>
+### <a name="create-a-stream-analytics-job"></a><span data-ttu-id="01927-146">Vytvoření úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="01927-146">Create a Stream Analytics job</span></span>
 
-1. <span data-ttu-id="27df2-147">V [portál Azure](https://ms.portal.azure.com/), klikněte na tlačítko **nový** > **Internet věcí** > **úlohy služby Stream Analytics**.</span><span class="sxs-lookup"><span data-stu-id="27df2-147">In the [Azure portal](https://ms.portal.azure.com/), click **New** > **Internet of Things** > **Stream Analytics job**.</span></span>
-1. <span data-ttu-id="27df2-148">Zadejte následující informace pro úlohu.</span><span class="sxs-lookup"><span data-stu-id="27df2-148">Enter the following information for the job.</span></span>
+1. <span data-ttu-id="01927-147">V hello [portál Azure](https://ms.portal.azure.com/), klikněte na tlačítko **nový** > **Internet věcí** > **úlohy služby Stream Analytics**.</span><span class="sxs-lookup"><span data-stu-id="01927-147">In hello [Azure portal](https://ms.portal.azure.com/), click **New** > **Internet of Things** > **Stream Analytics job**.</span></span>
+1. <span data-ttu-id="01927-148">Zadejte následující informace pro úlohu hello hello.</span><span class="sxs-lookup"><span data-stu-id="01927-148">Enter hello following information for hello job.</span></span>
 
-   <span data-ttu-id="27df2-149">**Název úlohy**: název úlohy.</span><span class="sxs-lookup"><span data-stu-id="27df2-149">**Job name**: The name of the job.</span></span> <span data-ttu-id="27df2-150">Název musí být globálně jedinečný.</span><span class="sxs-lookup"><span data-stu-id="27df2-150">The name must be globally unique.</span></span>
+   <span data-ttu-id="01927-149">**Název úlohy**: název hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="01927-149">**Job name**: hello name of hello job.</span></span> <span data-ttu-id="01927-150">Název Hello musí být globálně jedinečný.</span><span class="sxs-lookup"><span data-stu-id="01927-150">hello name must be globally unique.</span></span>
 
-   <span data-ttu-id="27df2-151">**Skupina prostředků**: použijte stejnou skupinu prostředků, která používá službu IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-151">**Resource group**: Use the same resource group that your IoT hub uses.</span></span>
+   <span data-ttu-id="01927-151">**Skupina prostředků**: použití hello stejné skupiny prostředků, která používá službu IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-151">**Resource group**: Use hello same resource group that your IoT hub uses.</span></span>
 
-   <span data-ttu-id="27df2-152">**Umístění**: používalo stejné umístění jako vaší skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="27df2-152">**Location**: Use the same location as your resource group.</span></span>
+   <span data-ttu-id="01927-152">**Umístění**: použití hello stejné umístění jako vaší skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="01927-152">**Location**: Use hello same location as your resource group.</span></span>
 
-   <span data-ttu-id="27df2-153">**Připnout na řídicí panel**: zaškrtnete tuto možnost pro snadný přístup do služby IoT hub z řídicího panelu.</span><span class="sxs-lookup"><span data-stu-id="27df2-153">**Pin to dashboard**: Check this option for easy access to your IoT hub from the dashboard.</span></span>
+   <span data-ttu-id="01927-153">**PIN kód toodashboard**: zaškrtnete tuto možnost pro Centrum IoT tooyour snadný přístup z řídicího panelu hello.</span><span class="sxs-lookup"><span data-stu-id="01927-153">**Pin toodashboard**: Check this option for easy access tooyour IoT hub from hello dashboard.</span></span>
 
    ![Vytvořit úlohu služby Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. <span data-ttu-id="27df2-155">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-155">Click **Create**.</span></span>
+1. <span data-ttu-id="01927-155">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="01927-155">Click **Create**.</span></span>
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a><span data-ttu-id="27df2-156">Přidat vstup do úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-156">Add an input to the Stream Analytics job</span></span>
+### <a name="add-an-input-toohello-stream-analytics-job"></a><span data-ttu-id="01927-156">Přidat úloha Stream Analytics vstupní toohello</span><span class="sxs-lookup"><span data-stu-id="01927-156">Add an input toohello Stream Analytics job</span></span>
 
-1. <span data-ttu-id="27df2-157">Spusťte úlohu služby Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="27df2-157">Open the Stream Analytics job.</span></span>
-1. <span data-ttu-id="27df2-158">V části **úlohy topologie**, klikněte na tlačítko **vstupy**.</span><span class="sxs-lookup"><span data-stu-id="27df2-158">Under **Job Topology**, click **Inputs**.</span></span>
-1. <span data-ttu-id="27df2-159">V **vstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="27df2-159">In the **Inputs** pane, click **Add**, and then enter the following information:</span></span>
+1. <span data-ttu-id="01927-157">Úloha Stream Analytics otevřete hello.</span><span class="sxs-lookup"><span data-stu-id="01927-157">Open hello Stream Analytics job.</span></span>
+1. <span data-ttu-id="01927-158">V části **úlohy topologie**, klikněte na tlačítko **vstupy**.</span><span class="sxs-lookup"><span data-stu-id="01927-158">Under **Job Topology**, click **Inputs**.</span></span>
+1. <span data-ttu-id="01927-159">V hello **vstupy** podokně klikněte na tlačítko **přidat**a pak zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="01927-159">In hello **Inputs** pane, click **Add**, and then enter hello following information:</span></span>
 
-   <span data-ttu-id="27df2-160">**Vstupní alias**: jedinečný odkaz pro vstup.</span><span class="sxs-lookup"><span data-stu-id="27df2-160">**Input alias**: The unique alias for the input.</span></span>
+   <span data-ttu-id="01927-160">**Vstupní alias**: hello jedinečný odkaz pro vstup hello.</span><span class="sxs-lookup"><span data-stu-id="01927-160">**Input alias**: hello unique alias for hello input.</span></span>
 
-   <span data-ttu-id="27df2-161">**Zdroj**: vyberte **služby IoT hub**.</span><span class="sxs-lookup"><span data-stu-id="27df2-161">**Source**: Select **IoT hub**.</span></span>
+   <span data-ttu-id="01927-161">**Zdroj**: vyberte **služby IoT hub**.</span><span class="sxs-lookup"><span data-stu-id="01927-161">**Source**: Select **IoT hub**.</span></span>
 
-   <span data-ttu-id="27df2-162">**Skupiny příjemců**: Vyberte skupinu uživatelů, kterou jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="27df2-162">**Consumer group**: Select the consumer group you created.</span></span>
+   <span data-ttu-id="01927-162">**Skupiny příjemců**: Vyberte hello příjemce skupinu, kterou jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="01927-162">**Consumer group**: Select hello consumer group you created.</span></span>
 
-   ![Přidat vstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   ![Přidat úloha Stream Analytics vstupní toohello v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. <span data-ttu-id="27df2-164">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-164">Click **Create**.</span></span>
+1. <span data-ttu-id="01927-164">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="01927-164">Click **Create**.</span></span>
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a><span data-ttu-id="27df2-165">Přidat výstup do úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-165">Add an output to the Stream Analytics job</span></span>
+### <a name="add-an-output-toohello-stream-analytics-job"></a><span data-ttu-id="01927-165">Přidat úloha Stream Analytics toohello výstup</span><span class="sxs-lookup"><span data-stu-id="01927-165">Add an output toohello Stream Analytics job</span></span>
 
-1. <span data-ttu-id="27df2-166">V části **úlohy topologie**, klikněte na tlačítko **výstupy**.</span><span class="sxs-lookup"><span data-stu-id="27df2-166">Under **Job Topology**, click **Outputs**.</span></span>
-1. <span data-ttu-id="27df2-167">V **výstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="27df2-167">In the **Outputs** pane, click **Add**, and then enter the following information:</span></span>
+1. <span data-ttu-id="01927-166">V části **úlohy topologie**, klikněte na tlačítko **výstupy**.</span><span class="sxs-lookup"><span data-stu-id="01927-166">Under **Job Topology**, click **Outputs**.</span></span>
+1. <span data-ttu-id="01927-167">V hello **výstupy** podokně klikněte na tlačítko **přidat**a pak zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="01927-167">In hello **Outputs** pane, click **Add**, and then enter hello following information:</span></span>
 
-   <span data-ttu-id="27df2-168">**Alias pro výstup**: jedinečný alias pro výstup.</span><span class="sxs-lookup"><span data-stu-id="27df2-168">**Output alias**: The unique alias for the output.</span></span>
+   <span data-ttu-id="01927-168">**Alias pro výstup**: hello jedinečný odkaz pro výstup hello.</span><span class="sxs-lookup"><span data-stu-id="01927-168">**Output alias**: hello unique alias for hello output.</span></span>
 
-   <span data-ttu-id="27df2-169">**Jímky**: vyberte **úložiště objektů Blob**.</span><span class="sxs-lookup"><span data-stu-id="27df2-169">**Sink**: Select **Blob Storage**.</span></span>
+   <span data-ttu-id="01927-169">**Jímky**: vyberte **úložiště objektů Blob**.</span><span class="sxs-lookup"><span data-stu-id="01927-169">**Sink**: Select **Blob Storage**.</span></span>
 
-   <span data-ttu-id="27df2-170">**Účet úložiště**: účet úložiště pro úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="27df2-170">**Storage account**: The storage account for your blob storage.</span></span> <span data-ttu-id="27df2-171">Můžete vytvořit účet úložiště nebo použijte existující.</span><span class="sxs-lookup"><span data-stu-id="27df2-171">You can create a storage account or use an existing one.</span></span>
+   <span data-ttu-id="01927-170">**Účet úložiště**: hello účet úložiště pro úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="01927-170">**Storage account**: hello storage account for your blob storage.</span></span> <span data-ttu-id="01927-171">Můžete vytvořit účet úložiště nebo použijte existující.</span><span class="sxs-lookup"><span data-stu-id="01927-171">You can create a storage account or use an existing one.</span></span>
 
-   <span data-ttu-id="27df2-172">**Kontejner**: uložení objektu blob kontejneru.</span><span class="sxs-lookup"><span data-stu-id="27df2-172">**Container**: The container where the blob is saved.</span></span> <span data-ttu-id="27df2-173">Můžete vytvořit kontejner, nebo použijte existující.</span><span class="sxs-lookup"><span data-stu-id="27df2-173">You can create a container or use an existing one.</span></span>
+   <span data-ttu-id="01927-172">**Kontejner**: hello kontejneru uložení objektů blob hello.</span><span class="sxs-lookup"><span data-stu-id="01927-172">**Container**: hello container where hello blob is saved.</span></span> <span data-ttu-id="01927-173">Můžete vytvořit kontejner, nebo použijte existující.</span><span class="sxs-lookup"><span data-stu-id="01927-173">You can create a container or use an existing one.</span></span>
 
-   <span data-ttu-id="27df2-174">**Formát serializace událostí**: vyberte **CSV**.</span><span class="sxs-lookup"><span data-stu-id="27df2-174">**Event serialization format**: Select **CSV**.</span></span>
+   <span data-ttu-id="01927-174">**Formát serializace událostí**: vyberte **CSV**.</span><span class="sxs-lookup"><span data-stu-id="01927-174">**Event serialization format**: Select **CSV**.</span></span>
 
-   ![Přidat výstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![Přidat úloha Stream Analytics toohello výstupu v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. <span data-ttu-id="27df2-176">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-176">Click **Create**.</span></span>
+1. <span data-ttu-id="01927-176">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="01927-176">Click **Create**.</span></span>
 
-### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a><span data-ttu-id="27df2-177">Přidání funkce do úlohy Stream Analytics k volání webové služby, které jste nasadili</span><span class="sxs-lookup"><span data-stu-id="27df2-177">Add a function to the Stream Analytics job to call the web service you deployed</span></span>
+### <a name="add-a-function-toohello-stream-analytics-job-toocall-hello-web-service-you-deployed"></a><span data-ttu-id="01927-177">Přidání funkce toohello Stream Analytics úlohy toocall hello webové služby, které jste nasadili</span><span class="sxs-lookup"><span data-stu-id="01927-177">Add a function toohello Stream Analytics job toocall hello web service you deployed</span></span>
 
-1. <span data-ttu-id="27df2-178">V části **úlohy topologie**, klikněte na tlačítko **funkce** > **přidat**.</span><span class="sxs-lookup"><span data-stu-id="27df2-178">Under **Job Topology**, click **Functions** > **Add**.</span></span>
-1. <span data-ttu-id="27df2-179">Zadejte následující informace:</span><span class="sxs-lookup"><span data-stu-id="27df2-179">Enter the following information:</span></span>
+1. <span data-ttu-id="01927-178">V části **úlohy topologie**, klikněte na tlačítko **funkce** > **přidat**.</span><span class="sxs-lookup"><span data-stu-id="01927-178">Under **Job Topology**, click **Functions** > **Add**.</span></span>
+1. <span data-ttu-id="01927-179">Zadejte hello následující informace:</span><span class="sxs-lookup"><span data-stu-id="01927-179">Enter hello following information:</span></span>
 
-   <span data-ttu-id="27df2-180">**Funkce Alias**: Zadejte `machinelearning`.</span><span class="sxs-lookup"><span data-stu-id="27df2-180">**Function Alias**: Enter `machinelearning`.</span></span>
+   <span data-ttu-id="01927-180">**Funkce Alias**: Zadejte `machinelearning`.</span><span class="sxs-lookup"><span data-stu-id="01927-180">**Function Alias**: Enter `machinelearning`.</span></span>
 
-   <span data-ttu-id="27df2-181">**Typ funkce**: vyberte **Azure ML**.</span><span class="sxs-lookup"><span data-stu-id="27df2-181">**Function Type**: Select **Azure ML**.</span></span>
+   <span data-ttu-id="01927-181">**Typ funkce**: vyberte **Azure ML**.</span><span class="sxs-lookup"><span data-stu-id="01927-181">**Function Type**: Select **Azure ML**.</span></span>
 
-   <span data-ttu-id="27df2-182">**Import možnost**: vyberte **Import z jiného předplatného**.</span><span class="sxs-lookup"><span data-stu-id="27df2-182">**Import option**: Select **Import from a different subscription**.</span></span>
+   <span data-ttu-id="01927-182">**Import možnost**: vyberte **Import z jiného předplatného**.</span><span class="sxs-lookup"><span data-stu-id="01927-182">**Import option**: Select **Import from a different subscription**.</span></span>
 
-   <span data-ttu-id="27df2-183">**Adresa URL**: Zadejte adresu URL webové služby, kterou jste si poznamenali dolů ze sešitu aplikace Excel.</span><span class="sxs-lookup"><span data-stu-id="27df2-183">**URL**: Enter the WEB SERVICE URL that you noted down from the Excel workbook.</span></span>
+   <span data-ttu-id="01927-183">**Adresa URL**: Zadejte hello adresa URL webové služby, kterou jste si poznamenali dolů ze sešitu aplikace Excel hello.</span><span class="sxs-lookup"><span data-stu-id="01927-183">**URL**: Enter hello WEB SERVICE URL that you noted down from hello Excel workbook.</span></span>
 
-   <span data-ttu-id="27df2-184">**Klíč**: Zadejte přístupový klíč, který jste si poznamenali dolů ze sešitu aplikace Excel.</span><span class="sxs-lookup"><span data-stu-id="27df2-184">**Key**: Enter the ACCESS KEY that you noted down from the Excel workbook.</span></span>
+   <span data-ttu-id="01927-184">**Klíč**: Zadejte hello přístupový klíč, který jste si poznamenali dolů ze sešitu aplikace Excel hello.</span><span class="sxs-lookup"><span data-stu-id="01927-184">**Key**: Enter hello ACCESS KEY that you noted down from hello Excel workbook.</span></span>
 
-   ![Přidání funkce do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
+   ![Přidat úloha Stream Analytics toohello funkce v Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. <span data-ttu-id="27df2-186">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-186">Click **Create**.</span></span>
+1. <span data-ttu-id="01927-186">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="01927-186">Click **Create**.</span></span>
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a><span data-ttu-id="27df2-187">Konfigurace dotazu úlohy Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-187">Configure the query of the Stream Analytics job</span></span>
+### <a name="configure-hello-query-of-hello-stream-analytics-job"></a><span data-ttu-id="01927-187">Konfigurace hello dotazu úlohy Stream Analytics hello</span><span class="sxs-lookup"><span data-stu-id="01927-187">Configure hello query of hello Stream Analytics job</span></span>
 
-1. <span data-ttu-id="27df2-188">V části **úlohy topologie**, klikněte na tlačítko **dotazu**.</span><span class="sxs-lookup"><span data-stu-id="27df2-188">Under **Job Topology**, click **Query**.</span></span>
-1. <span data-ttu-id="27df2-189">Existujícího kódu nahraďte následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="27df2-189">Replace the existing code with the following code:</span></span>
+1. <span data-ttu-id="01927-188">V části **úlohy topologie**, klikněte na tlačítko **dotazu**.</span><span class="sxs-lookup"><span data-stu-id="01927-188">Under **Job Topology**, click **Query**.</span></span>
+1. <span data-ttu-id="01927-189">Nahraďte stávající kód hello hello následující kód:</span><span class="sxs-lookup"><span data-stu-id="01927-189">Replace hello existing code with hello following code:</span></span>
 
    ```sql
    WITH machinelearning AS (
@@ -163,33 +163,33 @@ ms.lasthandoff: 08/29/2017
    From machinelearning
    ```
 
-   <span data-ttu-id="27df2-190">Nahraďte `[YourInputAlias]` s alias vstupu úlohy.</span><span class="sxs-lookup"><span data-stu-id="27df2-190">Replace `[YourInputAlias]` with the input alias of the job.</span></span>
+   <span data-ttu-id="01927-190">Nahraďte `[YourInputAlias]` s aliasem hello vstupní hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="01927-190">Replace `[YourInputAlias]` with hello input alias of hello job.</span></span>
 
-   <span data-ttu-id="27df2-191">Nahraďte `[YourOutputAlias]` s aliasem výstupu úlohy.</span><span class="sxs-lookup"><span data-stu-id="27df2-191">Replace `[YourOutputAlias]` with the output alias of the job.</span></span>
+   <span data-ttu-id="01927-191">Nahraďte `[YourOutputAlias]` s alias pro výstup hello hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="01927-191">Replace `[YourOutputAlias]` with hello output alias of hello job.</span></span>
 
-1. <span data-ttu-id="27df2-192">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-192">Click **Save**.</span></span>
+1. <span data-ttu-id="01927-192">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="01927-192">Click **Save**.</span></span>
 
-### <a name="run-the-stream-analytics-job"></a><span data-ttu-id="27df2-193">Spustit úlohu služby Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="27df2-193">Run the Stream Analytics job</span></span>
+### <a name="run-hello-stream-analytics-job"></a><span data-ttu-id="01927-193">Spustit úlohu služby Stream Analytics hello</span><span class="sxs-lookup"><span data-stu-id="01927-193">Run hello Stream Analytics job</span></span>
 
-<span data-ttu-id="27df2-194">V úloze Stream Analytics, klikněte na tlačítko **spustit** > **nyní** > **spustit**.</span><span class="sxs-lookup"><span data-stu-id="27df2-194">In the Stream Analytics job, click **Start** > **Now** > **Start**.</span></span> <span data-ttu-id="27df2-195">Jakmile se úloha úspěšně spustí, stav úlohy změní z **Zastaveno** k **systémem**.</span><span class="sxs-lookup"><span data-stu-id="27df2-195">Once the job successfully starts, the job status changes from **Stopped** to **Running**.</span></span>
+<span data-ttu-id="01927-194">V úloze Stream Analytics hello, klikněte na tlačítko **spustit** > **nyní** > **spustit**.</span><span class="sxs-lookup"><span data-stu-id="01927-194">In hello Stream Analytics job, click **Start** > **Now** > **Start**.</span></span> <span data-ttu-id="01927-195">Jakmile hello úloha úspěšně spustí, změní se stav úlohy hello ze **Zastaveno** příliš**systémem**.</span><span class="sxs-lookup"><span data-stu-id="01927-195">Once hello job successfully starts, hello job status changes from **Stopped** too**Running**.</span></span>
 
-![Spustit úlohu služby Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Spustit úlohu služby Stream Analytics hello](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a><span data-ttu-id="27df2-197">Použít Microsoft Azure Storage Explorer zobrazíte předpovědi počasí</span><span class="sxs-lookup"><span data-stu-id="27df2-197">Use Microsoft Azure Storage Explorer to view the weather forecast</span></span>
+## <a name="use-microsoft-azure-storage-explorer-tooview-hello-weather-forecast"></a><span data-ttu-id="01927-197">Použití Microsoft Azure Storage Explorer tooview hello počasí prognózy</span><span class="sxs-lookup"><span data-stu-id="01927-197">Use Microsoft Azure Storage Explorer tooview hello weather forecast</span></span>
 
-<span data-ttu-id="27df2-198">Spusťte klientskou aplikaci spustit shromažďování a odesílání teploty a vlhkosti dat do služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-198">Run the client application to start collecting and sending temperature and humidity data to your IoT hub.</span></span> <span data-ttu-id="27df2-199">Pro každou zprávu, která přijímá služby IoT hub zavolá úlohu služby Stream Analytics webovou službu předpověď počasí k vytvoření riziko dešti.</span><span class="sxs-lookup"><span data-stu-id="27df2-199">For each message that your IoT hub receives, the Stream Analytics job calls the weather forecast web service to produce the chance of rain.</span></span> <span data-ttu-id="27df2-200">Výsledkem pak je uložena do Azure blob storage.</span><span class="sxs-lookup"><span data-stu-id="27df2-200">The result is then saved to your Azure blob storage.</span></span> <span data-ttu-id="27df2-201">Azure Storage Explorer je nástroj, který můžete použít k zobrazení výsledek.</span><span class="sxs-lookup"><span data-stu-id="27df2-201">Azure Storage Explorer is a tool that you can use to view the result.</span></span>
+<span data-ttu-id="01927-198">Spusťte hello klienta aplikace toostart shromažďování a odesílání teploty a vlhkosti data tooyour IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-198">Run hello client application toostart collecting and sending temperature and humidity data tooyour IoT hub.</span></span> <span data-ttu-id="01927-199">Pro každou zprávu, která přijímá služby IoT hub zavolá úlohy služby Stream Analytics hello hello předpověď počasí webové služby tooproduce hello riziko dešti.</span><span class="sxs-lookup"><span data-stu-id="01927-199">For each message that your IoT hub receives, hello Stream Analytics job calls hello weather forecast web service tooproduce hello chance of rain.</span></span> <span data-ttu-id="01927-200">výsledek Hello pak je uložena tooyour úložiště objektů blob Azure.</span><span class="sxs-lookup"><span data-stu-id="01927-200">hello result is then saved tooyour Azure blob storage.</span></span> <span data-ttu-id="01927-201">Azure Storage Explorer je nástroj, který můžete použít výsledek hello tooview.</span><span class="sxs-lookup"><span data-stu-id="01927-201">Azure Storage Explorer is a tool that you can use tooview hello result.</span></span>
 
-1. <span data-ttu-id="27df2-202">[Stáhněte a nainstalujte Microsoft Azure Storage Explorer](http://storageexplorer.com/).</span><span class="sxs-lookup"><span data-stu-id="27df2-202">[Download and install Microsoft Azure Storage Explorer](http://storageexplorer.com/).</span></span>
-1. <span data-ttu-id="27df2-203">Otevřete Průzkumníka úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="27df2-203">Open Azure Storage Explorer.</span></span>
-1. <span data-ttu-id="27df2-204">Přihlaste se k účtu Azure.</span><span class="sxs-lookup"><span data-stu-id="27df2-204">Sign in to your Azure account.</span></span>
-1. <span data-ttu-id="27df2-205">Vyberte své předplatné.</span><span class="sxs-lookup"><span data-stu-id="27df2-205">Select your subscription.</span></span>
-1. <span data-ttu-id="27df2-206">Klikněte na předplatné > **účty úložiště** > váš účet úložiště > **kontejnery objektů Blob** > vaše kontejneru.</span><span class="sxs-lookup"><span data-stu-id="27df2-206">Click your subscription > **Storage Accounts** > your storage account > **Blob Containers** > your container.</span></span>
-1. <span data-ttu-id="27df2-207">Otevřete soubor .csv zobrazíte výsledek.</span><span class="sxs-lookup"><span data-stu-id="27df2-207">Open a .csv file to see the result.</span></span> <span data-ttu-id="27df2-208">Poslední sloupec zaznamenává riziko dešti.</span><span class="sxs-lookup"><span data-stu-id="27df2-208">The last column records the chance of rain.</span></span>
+1. <span data-ttu-id="01927-202">[Stáhněte a nainstalujte Microsoft Azure Storage Explorer](http://storageexplorer.com/).</span><span class="sxs-lookup"><span data-stu-id="01927-202">[Download and install Microsoft Azure Storage Explorer](http://storageexplorer.com/).</span></span>
+1. <span data-ttu-id="01927-203">Otevřete Průzkumníka úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="01927-203">Open Azure Storage Explorer.</span></span>
+1. <span data-ttu-id="01927-204">Přihlaste se tooyour účet Azure.</span><span class="sxs-lookup"><span data-stu-id="01927-204">Sign in tooyour Azure account.</span></span>
+1. <span data-ttu-id="01927-205">Vyberte své předplatné.</span><span class="sxs-lookup"><span data-stu-id="01927-205">Select your subscription.</span></span>
+1. <span data-ttu-id="01927-206">Klikněte na předplatné > **účty úložiště** > váš účet úložiště > **kontejnery objektů Blob** > vaše kontejneru.</span><span class="sxs-lookup"><span data-stu-id="01927-206">Click your subscription > **Storage Accounts** > your storage account > **Blob Containers** > your container.</span></span>
+1. <span data-ttu-id="01927-207">Otevřete výsledek hello toosee soubor .csv.</span><span class="sxs-lookup"><span data-stu-id="01927-207">Open a .csv file toosee hello result.</span></span> <span data-ttu-id="01927-208">poslední sloupec záznamů Hello hello riziko dešti.</span><span class="sxs-lookup"><span data-stu-id="01927-208">hello last column records hello chance of rain.</span></span>
 
    ![Získání výsledku předpověď počasí pomocí Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
-## <a name="summary"></a><span data-ttu-id="27df2-210">Souhrn</span><span class="sxs-lookup"><span data-stu-id="27df2-210">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="01927-210">Souhrn</span><span class="sxs-lookup"><span data-stu-id="01927-210">Summary</span></span>
 
-<span data-ttu-id="27df2-211">Azure Machine Learning jste úspěšně použili k vytvoření riziko déšť na základě dat teploty a vlhkosti, která přijímá služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="27df2-211">You’ve successfully used Azure Machine Learning to produce the chance of rain based on the temperature and humidity data that your IoT hub receives.</span></span>
+<span data-ttu-id="01927-211">Úspěšně jste použili Azure Machine Learning tooproduce hello riziko déšť na základě dat hello teploty a vlhkosti, která přijímá služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="01927-211">You’ve successfully used Azure Machine Learning tooproduce hello chance of rain based on hello temperature and humidity data that your IoT hub receives.</span></span>
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Transformace XML pomocí map XSLT - Azure Logic Apps | Microsoft Docs"
-description: "Přidat, že XSLT mapuje transformace dat XML s Azure Logic Apps a Enterprise integračního balíčku"
+title: aaaTransform XML s XSLT mapy - Azure Logic Apps | Microsoft Docs
+description: "Přidat, že XSLT mapuje tootransform data XML s Azure Logic Apps a hello Enterprise integračního balíčku"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 720e6f988b8542136dfcc402c3c463fcfb2f23cf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-maps-for-xml-data-transform"></a><span data-ttu-id="3bd4d-103">Přidat mapy pro transformaci dat XML</span><span class="sxs-lookup"><span data-stu-id="3bd4d-103">Add maps for XML data transform</span></span>
+# <a name="add-maps-for-xml-data-transform"></a><span data-ttu-id="8499c-103">Přidat mapy pro transformaci dat XML</span><span class="sxs-lookup"><span data-stu-id="8499c-103">Add maps for XML data transform</span></span>
 
-<span data-ttu-id="3bd4d-104">Integrace organizace používá pro transformaci dat XML mezi formáty mapy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-104">Enterprise integration uses maps to transform XML data between formats.</span></span> <span data-ttu-id="3bd4d-105">Mapu je dokument XML, který definuje data v dokumentu, který by měl být převedeny do jiného formátu.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-105">A map is an XML document that defines the data in a document that should be transformed into another format.</span></span> 
+<span data-ttu-id="8499c-104">Používá integrace Enterprise mapuje data XML tootransform mezi formáty.</span><span class="sxs-lookup"><span data-stu-id="8499c-104">Enterprise integration uses maps tootransform XML data between formats.</span></span> <span data-ttu-id="8499c-105">Mapu je dokument XML, který definuje hello data v dokumentu, který by měl být převedeny do jiného formátu.</span><span class="sxs-lookup"><span data-stu-id="8499c-105">A map is an XML document that defines hello data in a document that should be transformed into another format.</span></span> 
 
-## <a name="why-use-maps"></a><span data-ttu-id="3bd4d-106">Proč používat mapy?</span><span class="sxs-lookup"><span data-stu-id="3bd4d-106">Why use maps?</span></span>
+## <a name="why-use-maps"></a><span data-ttu-id="8499c-106">Proč používat mapy?</span><span class="sxs-lookup"><span data-stu-id="8499c-106">Why use maps?</span></span>
 
-<span data-ttu-id="3bd4d-107">Předpokládejme, že pravidelně zobrazit B2B objednávky nebo faktury z zákazník, který používá formát YYYMMDD mezi daty.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-107">Suppose that you regularly receive B2B orders or invoices from a customer who uses the YYYMMDD format for dates.</span></span> <span data-ttu-id="3bd4d-108">Ale ve vaší organizaci, ukládat data ve formátu MMDDYYY.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-108">However, in your organization, you store dates in the MMDDYYY format.</span></span> <span data-ttu-id="3bd4d-109">Můžete použít mapu, která *transformace* formát data YYYMMDD do MMDDYYY před uložením podrobnosti objednávky nebo faktury v databázi zákazníků aktivity.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-109">You can use a map to *transform* the YYYMMDD date format into the MMDDYYY before storing the order or invoice details in your customer activity database.</span></span>
+<span data-ttu-id="8499c-107">Předpokládejme, že pravidelně zobrazit B2B objednávky nebo faktury z zákazník, který používá formát YYYMMDD hello mezi daty.</span><span class="sxs-lookup"><span data-stu-id="8499c-107">Suppose that you regularly receive B2B orders or invoices from a customer who uses hello YYYMMDD format for dates.</span></span> <span data-ttu-id="8499c-108">Ale ve vaší organizaci, ukládat data ve formátu MMDDYYY hello.</span><span class="sxs-lookup"><span data-stu-id="8499c-108">However, in your organization, you store dates in hello MMDDYYY format.</span></span> <span data-ttu-id="8499c-109">Můžete použít mapování příliš*transformace* hello YYYMMDD formát data do hello MMDDYYY před uložením hello objednávky nebo faktury podrobnosti v databázi zákazníků aktivity.</span><span class="sxs-lookup"><span data-stu-id="8499c-109">You can use a map too*transform* hello YYYMMDD date format into hello MMDDYYY before storing hello order or invoice details in your customer activity database.</span></span>
 
-## <a name="how-do-i-create-a-map"></a><span data-ttu-id="3bd4d-110">Vytvoření mapy</span><span class="sxs-lookup"><span data-stu-id="3bd4d-110">How do I create a map?</span></span>
+## <a name="how-do-i-create-a-map"></a><span data-ttu-id="8499c-110">Vytvoření mapy</span><span class="sxs-lookup"><span data-stu-id="8499c-110">How do I create a map?</span></span>
 
-<span data-ttu-id="3bd4d-111">Můžete vytvořit projekty BizTalk integrace s [Enterprise integračního balíčku](logic-apps-enterprise-integration-overview.md "Další informace o integračního balíčku enterprise") pro Visual Studio 2015.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-111">You can create BizTalk Integration projects with the [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Learn about the enterprise integration pack") for Visual Studio 2015.</span></span> <span data-ttu-id="3bd4d-112">Potom můžete vytvořit soubor mapa integrace pro, který umožňuje vizuálně položky mezi dva soubory schématu XML mapy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-112">You can then create an Integration Map file that lets you visually map items between two XML schema files.</span></span> <span data-ttu-id="3bd4d-113">Po sestavení tohoto projektu, budete mít k dokumentu XSLT.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-113">After you build this project, you will have an XSLT document.</span></span>
+<span data-ttu-id="8499c-111">Můžete vytvořit projekty BizTalk integrace s hello [Enterprise integračního balíčku](logic-apps-enterprise-integration-overview.md "Další informace o hello enterprise integračního balíčku") pro Visual Studio 2015.</span><span class="sxs-lookup"><span data-stu-id="8499c-111">You can create BizTalk Integration projects with hello [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Learn about hello enterprise integration pack") for Visual Studio 2015.</span></span> <span data-ttu-id="8499c-112">Potom můžete vytvořit soubor mapa integrace pro, který umožňuje vizuálně položky mezi dva soubory schématu XML mapy.</span><span class="sxs-lookup"><span data-stu-id="8499c-112">You can then create an Integration Map file that lets you visually map items between two XML schema files.</span></span> <span data-ttu-id="8499c-113">Po sestavení tohoto projektu, budete mít k dokumentu XSLT.</span><span class="sxs-lookup"><span data-stu-id="8499c-113">After you build this project, you will have an XSLT document.</span></span>
 
-## <a name="how-do-i-add-a-map"></a><span data-ttu-id="3bd4d-114">Jak přidat mapu?</span><span class="sxs-lookup"><span data-stu-id="3bd4d-114">How do I add a map?</span></span>
+## <a name="how-do-i-add-a-map"></a><span data-ttu-id="8499c-114">Jak přidat mapu?</span><span class="sxs-lookup"><span data-stu-id="8499c-114">How do I add a map?</span></span>
 
-1. <span data-ttu-id="3bd4d-115">Na portálu Azure vyberte **Procházet**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-115">In the Azure portal, select **Browse**.</span></span>
+1. <span data-ttu-id="8499c-115">V hello portálu Azure, vyberte **Procházet**.</span><span class="sxs-lookup"><span data-stu-id="8499c-115">In hello Azure portal, select **Browse**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
 
-2. <span data-ttu-id="3bd4d-116">Do vyhledávacího pole filtru zadejte **integrace**, pak vyberte **účty pro integraci** ze seznamu výsledků.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-116">In the filter search box, enter **integration**, then select **Integration Accounts** from the results list.</span></span>
+2. <span data-ttu-id="8499c-116">Hello filtru vyhledávacího pole zadejte **integrace**, pak vyberte **účty pro integraci** ze seznamu výsledků hello.</span><span class="sxs-lookup"><span data-stu-id="8499c-116">In hello filter search box, enter **integration**, then select **Integration Accounts** from hello results list.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
 
-3. <span data-ttu-id="3bd4d-117">Vyberte účet integrace, ve které chcete přidat mapy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-117">Select the integration account where you want to add the map.</span></span>
+3. <span data-ttu-id="8499c-117">Vyberte účet integrace hello místo tooadd hello mapy.</span><span class="sxs-lookup"><span data-stu-id="8499c-117">Select hello integration account where you want tooadd hello map.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
-4. <span data-ttu-id="3bd4d-118">Vyberte **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-118">Select the **Maps** tile.</span></span>
+4. <span data-ttu-id="8499c-118">Vyberte hello **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="8499c-118">Select hello **Maps** tile.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/map-1.png)
 
-5. <span data-ttu-id="3bd4d-119">Po otevření okna mapy, zvolte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-119">After the Maps blade opens, choose **Add**.</span></span>
+5. <span data-ttu-id="8499c-119">Po otevření okna mapy hello zvolte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="8499c-119">After hello Maps blade opens, choose **Add**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/map-2.png)  
 
-6. <span data-ttu-id="3bd4d-120">Zadejte **název** pro mapu.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-120">Enter a **Name** for your map.</span></span> <span data-ttu-id="3bd4d-121">Pro nahrání souboru s mapováním, zvolte ikonu složky na pravé straně **mapy** textové pole.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-121">To upload the map file, choose the folder icon on the right side of the **Map** text box.</span></span> <span data-ttu-id="3bd4d-122">Po dokončení procesu nahrávání, zvolte **OK**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-122">After the upload process completes, choose **OK**.</span></span>
+6. <span data-ttu-id="8499c-120">Zadejte **název** pro mapu.</span><span class="sxs-lookup"><span data-stu-id="8499c-120">Enter a **Name** for your map.</span></span> <span data-ttu-id="8499c-121">Mapa hello tooupload souboru, vyberte ikonu složky hello na pravé straně hello hello **mapy** textové pole.</span><span class="sxs-lookup"><span data-stu-id="8499c-121">tooupload hello map file, choose hello folder icon on hello right side of hello **Map** text box.</span></span> <span data-ttu-id="8499c-122">Po dokončení procesu nahrávání hello zvolte **OK**.</span><span class="sxs-lookup"><span data-stu-id="8499c-122">After hello upload process completes, choose **OK**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/map-3.png)
 
-7. <span data-ttu-id="3bd4d-123">Po Azure přidá ke svému účtu integrace mapy, obdržíte zprávu na obrazovce, která uvádí, zda byl přidán souboru mapy, nebo ne.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-123">After Azure adds the map to your integration account, you get an onscreen message that shows whether your map file was added or not.</span></span> <span data-ttu-id="3bd4d-124">Poté, co se vám tato zpráva, vyberte **mapy** dlaždici, aby se dala zobrazit nově přidané mapy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-124">After you get this message, choose the **Maps** tile so you can view the newly added map.</span></span>
+7. <span data-ttu-id="8499c-123">Po Azure přidá hello mapy tooyour integrace účet, obdržíte zprávu na obrazovce, která uvádí, zda byl přidán souboru mapy, nebo ne.</span><span class="sxs-lookup"><span data-stu-id="8499c-123">After Azure adds hello map tooyour integration account, you get an onscreen message that shows whether your map file was added or not.</span></span> <span data-ttu-id="8499c-124">Poté, co se vám tato zpráva, zvolte hello **mapy** dlaždice, aby se dala zobrazit hello nově přidány mapy.</span><span class="sxs-lookup"><span data-stu-id="8499c-124">After you get this message, choose hello **Maps** tile so you can view hello newly added map.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/map-4.png)
 
-## <a name="how-do-i-edit-a-map"></a><span data-ttu-id="3bd4d-125">Jak upravit mapu?</span><span class="sxs-lookup"><span data-stu-id="3bd4d-125">How do I edit a map?</span></span>
+## <a name="how-do-i-edit-a-map"></a><span data-ttu-id="8499c-125">Jak upravit mapu?</span><span class="sxs-lookup"><span data-stu-id="8499c-125">How do I edit a map?</span></span>
 
-<span data-ttu-id="3bd4d-126">Musíte nahrát nový soubor mapy s změny, které chcete.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-126">You must upload a new map file with the changes that you want.</span></span> <span data-ttu-id="3bd4d-127">Nejprve si můžete stáhnout mapy pro úpravy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-127">You can first download the map for editing.</span></span>
+<span data-ttu-id="8499c-126">Musíte nahrát nový soubor s hello změny, které chcete mapy.</span><span class="sxs-lookup"><span data-stu-id="8499c-126">You must upload a new map file with hello changes that you want.</span></span> <span data-ttu-id="8499c-127">Nejprve si můžete stáhnout hello mapy pro úpravy.</span><span class="sxs-lookup"><span data-stu-id="8499c-127">You can first download hello map for editing.</span></span>
 
-<span data-ttu-id="3bd4d-128">Pokud chcete nahrát nový mapu, která nahradí existující mapu, postupujte podle těchto kroků.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-128">To upload a new map that replaces the existing map, follow these steps.</span></span>
+<span data-ttu-id="8499c-128">tooupload nové mapu, která nahradí existující mapu hello, postupujte podle těchto kroků.</span><span class="sxs-lookup"><span data-stu-id="8499c-128">tooupload a new map that replaces hello existing map, follow these steps.</span></span>
 
-1. <span data-ttu-id="3bd4d-129">Vyberte **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-129">Choose the **Maps** tile.</span></span>
+1. <span data-ttu-id="8499c-129">Zvolte hello **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="8499c-129">Choose hello **Maps** tile.</span></span>
 
-2. <span data-ttu-id="3bd4d-130">Po otevření okna mapy, vyberte, kterou chcete upravit mapování.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-130">After the Maps blade opens, select the map that you want to edit.</span></span>
+2. <span data-ttu-id="8499c-130">Po otevření okna mapy hello vyberte hello mapy, které chcete tooedit.</span><span class="sxs-lookup"><span data-stu-id="8499c-130">After hello Maps blade opens, select hello map that you want tooedit.</span></span>
 
-3. <span data-ttu-id="3bd4d-131">Na **mapy** okně zvolte **aktualizace**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-131">On the **Maps** blade, choose **Update**.</span></span>
+3. <span data-ttu-id="8499c-131">Na hello **mapy** okně zvolte **aktualizace**.</span><span class="sxs-lookup"><span data-stu-id="8499c-131">On hello **Maps** blade, choose **Update**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-1.png)
 
-4. <span data-ttu-id="3bd4d-132">V dialogu pro výběr souborů vyberte soubor mapy, který chcete nahrát a pak vyberte **otevřete**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-132">In the file picker, select the map file that you want to upload, then select **Open**.</span></span>
+4. <span data-ttu-id="8499c-132">V hello pro výběr souborů, vyberte soubor s mapováním hello má tooupload a pak vyberte **otevřete**.</span><span class="sxs-lookup"><span data-stu-id="8499c-132">In hello file picker, select hello map file that you want tooupload, then select **Open**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-2.png)
 
-## <a name="how-to-delete-a-map"></a><span data-ttu-id="3bd4d-133">Postup odstranění mapy?</span><span class="sxs-lookup"><span data-stu-id="3bd4d-133">How to delete a map?</span></span>
+## <a name="how-toodelete-a-map"></a><span data-ttu-id="8499c-133">Jak toodelete mapu?</span><span class="sxs-lookup"><span data-stu-id="8499c-133">How toodelete a map?</span></span>
 
-1. <span data-ttu-id="3bd4d-134">Vyberte **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-134">Choose the **Maps** tile.</span></span>
+1. <span data-ttu-id="8499c-134">Zvolte hello **mapy** dlaždici.</span><span class="sxs-lookup"><span data-stu-id="8499c-134">Choose hello **Maps** tile.</span></span>
 
-2. <span data-ttu-id="3bd4d-135">Po otevření okna mapy, vyberte mapování, které chcete odstranit.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-135">After the Maps blade opens, select the map you want to delete.</span></span>
+2. <span data-ttu-id="8499c-135">Po otevření okna mapy hello vyberte mapu hello chcete toodelete.</span><span class="sxs-lookup"><span data-stu-id="8499c-135">After hello Maps blade opens, select hello map you want toodelete.</span></span>
 
-3. <span data-ttu-id="3bd4d-136">Zvolte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-136">Choose **Delete**.</span></span>
+3. <span data-ttu-id="8499c-136">Zvolte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="8499c-136">Choose **Delete**.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/delete.png)
 
-4. <span data-ttu-id="3bd4d-137">Potvrďte, že chcete odstranit mapy.</span><span class="sxs-lookup"><span data-stu-id="3bd4d-137">Confirm that you want to delete the map.</span></span>
+4. <span data-ttu-id="8499c-137">Potvrďte, že chcete toodelete hello mapy.</span><span class="sxs-lookup"><span data-stu-id="8499c-137">Confirm that you want toodelete hello map.</span></span>
 
     ![](./media/logic-apps-enterprise-integration-maps/delete-confirmation-1.png)
 
-## <a name="next-steps"></a><span data-ttu-id="3bd4d-138">Další kroky</span><span class="sxs-lookup"><span data-stu-id="3bd4d-138">Next Steps</span></span>
-* [<span data-ttu-id="3bd4d-139">Další informace o integračního balíčku Enterprise</span><span class="sxs-lookup"><span data-stu-id="3bd4d-139">Learn more about the Enterprise Integration Pack</span></span>](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
-* [<span data-ttu-id="3bd4d-140">Další informace o smlouvy</span><span class="sxs-lookup"><span data-stu-id="3bd4d-140">Learn more about agreements</span></span>](../logic-apps/logic-apps-enterprise-integration-agreements.md "Další informace o integraci smlouvy enterprise")  
-* [<span data-ttu-id="3bd4d-141">Další informace o transformací</span><span class="sxs-lookup"><span data-stu-id="3bd4d-141">Learn more about transforms</span></span>](logic-apps-enterprise-integration-transform.md "Další informace o integraci transformací enterprise")  
+## <a name="next-steps"></a><span data-ttu-id="8499c-138">Další kroky</span><span class="sxs-lookup"><span data-stu-id="8499c-138">Next Steps</span></span>
+* [<span data-ttu-id="8499c-139">Další informace o hello Enterprise integračního balíčku</span><span class="sxs-lookup"><span data-stu-id="8499c-139">Learn more about hello Enterprise Integration Pack</span></span>](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
+* [<span data-ttu-id="8499c-140">Další informace o smlouvy</span><span class="sxs-lookup"><span data-stu-id="8499c-140">Learn more about agreements</span></span>](../logic-apps/logic-apps-enterprise-integration-agreements.md "Další informace o integraci smlouvy enterprise")  
+* [<span data-ttu-id="8499c-141">Další informace o transformací</span><span class="sxs-lookup"><span data-stu-id="8499c-141">Learn more about transforms</span></span>](logic-apps-enterprise-integration-transform.md "Další informace o integraci transformací enterprise")  
 

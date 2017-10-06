@@ -1,5 +1,5 @@
 ---
-title: "Azure hybridní připojení přenosového protokolu Průvodce | Microsoft Docs"
+title: "Hybridní připojení aaaAzure přenosového protokolu Průvodce | Microsoft Docs"
 description: "Azure Průvodce protokol předávání hybridní připojení."
 services: service-bus-relay
 documentationcenter: na
@@ -14,109 +14,109 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm;clemensv
-ms.openlocfilehash: 6b76403ba5fc4d00a625057549c85db59a473898
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d145d919d606ae4722b063e1baf39fb845a600a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Azure hybridní připojení předávací protokol
-Předávání přes Azure je jedním z klíčů schopností pilíře na platformě Azure Service Bus. Nové *hybridní připojení* funkce předávání je zabezpečený, otevřete protokol evolution na základě protokolu HTTP a objekty WebSockets. Nahrazuje dřívějším, stejně s názvem *BizTalk Services* funkce, který byl postavený na vlastnickým protokolem foundation. Integrace hybridní připojení do Azure App Services budou nadále fungovat jako-je.
+Předávání přes Azure je jedním z hello klíče schopností pilíře hello platformy Azure Service Bus. Hello nové *hybridní připojení* funkce předávání je zabezpečený, otevřete protokol evolution na základě protokolu HTTP a objekty WebSockets. Nahrazuje hello dřívějším, stejně s názvem *BizTalk Services* funkce, který byl postavený na vlastnickým protokolem foundation. integrace Hello hybridní připojení do Azure App Services bude pokračovat toofunction jako-je.
 
-Hybridní připojení umožňuje obousměrnou, binární datový proud komunikaci mezi dvěma síťových aplikací, během které může být buď nebo obou stran umístěn za zařízení NAT nebo brány firewall. Tento článek popisuje interakce na straně klienta s předávání hybridní připojení pro připojení klientů v naslouchací proces a odesílatele rolí a jak naslouchací procesy přijímat nová připojení.
+Hybridní připojení umožňuje obousměrnou, binární datový proud komunikaci mezi dvěma síťových aplikací, během které může být buď nebo obou stran umístěn za zařízení NAT nebo brány firewall. Tento článek popisuje interakce na straně klienta hello s hello hybridní připojení přenosu pro připojení klientů v naslouchací proces a odesílatele rolí a jak naslouchací procesy přijímat nová připojení.
 
 ## Interakce modelu
-Předávání hybridní připojení dvě strany připojí tím, že poskytuje bod potkávací v cloudu Azure, která obě strany můžete zjistit a připojte se k z hlediska vlastní síť. Tento bod potkávací se nazývá "Hybridní připojení" v tomto a dalších dokumentaci rozhraní API a také na portálu Azure. Koncový bod služby hybridní připojení se označuje jako "služba" pro zbývající část tohoto článku. Model interakce leans na klasifikace vymezenému mnoho jiná síťová rozhraní API.
+předávání Hello hybridní připojení dvě strany připojí tím, že poskytuje bod potkávací v cloudu Azure, která obou stran můžete vyhledat a připojit vlastní síť perspektivy toofrom hello. Tento bod potkávací se nazývá "Hybridní připojení" v tomto a dalších dokumentace v hello rozhraní API a také v hello portálu Azure. Hello hybridní připojení je koncový bod služby označuje tooas hello "služba" pro hello zbývající části tohoto článku. model interakce Hello leans na hello klasifikace vymezenému mnoho jiná síťová rozhraní API.
 
-Je naslouchací proces, který nejprve znamená připravenosti pro zpracování příchozí připojení a následně je přijímá po doručení. Na druhé straně se připojujícího klienta, který se připojuje ke naslouchací proces, očekává se toto připojení pro navázání obousměrné komunikační cestu.
-"Připojit", "Naslouchání" a "Přijmout" jsou stejné podmínky, které můžete najít v většina soketu rozhraní API.
+Je naslouchací proces, který nejprve znamená připravenosti toohandle příchozí připojení a následně je přijímá po doručení. Na dobrý den druhé straně, je připojování klienta, který se připojuje ke hello naslouchací proces, byla očekávána tohoto připojení toobe přijaté pro navázání obousměrné komunikační cestu.
+"Připojit" "Naslouchání," a "Přijmout" jsou hello stejné podmínky najdete ve většině soketu rozhraní API.
 
-Všechny přenosu komunikační model má buď strany odchozí připojení ke koncovému bodu služby, což usnadňuje "naslouchací proces" i "client" v obecné použití a může také způsobit dalšími přetíženími terminologie. Přesné technologiím, které jsme proto použít pro hybridní připojení je následující:
+Všechny přenosu komunikační model má buď strany odchozí připojení ke koncovému bodu služby, které vytváří naslouchání"hello" i "client" v obecné použití, může také způsobit dalšími přetíženími terminologie. Hello přesné terminologií, které jsme proto použít pro hybridní připojení je následující:
 
-Programy na obou stranách připojení se nazývají "klienty,", vzhledem k tomu, že jsou klienti ke službě. Klienta, která čeká na a přijímá připojení je "naslouchací proces", nebo je uvedená v "naslouchací proces role." Klienta, který iniciuje nové připojení směrem naslouchací proces prostřednictvím služby se označuje jako "sender", nebo je v "odesílatele role."
+vzhledem k tomu, že jsou klienti toohello služby, se nazývají Hello programy na obou stranách připojení "klienty,". Hello klienta, který čeká a přijímá připojení je "naslouchací proces", nebo je uvedená toobe hello "naslouchací proces role." Hello klienta, který iniciuje nové připojení směrem naslouchací proces prostřednictvím služby hello se označuje jako "sender" hello, nebo je v "odesílatele role."
 
 ### Naslouchací proces interakce
-Naslouchací proces má čtyři interakce s službu; všechny podrobnosti přenosová jsou popsané dále v tomto článku v části odkaz.
+Hello naslouchací proces má čtyři interakce s hello služby; všechny podrobnosti přenosová jsou popsané dále v tomto článku v části odkaz hello.
 
 #### Naslouchání
-K označení připravenosti služby, který naslouchací proces je připraven přijmout připojení, vytvoří odchozí připojení protokolu WebSocket. Metoda handshake připojení stejný název hybridní připojení nakonfigurovaná na obor názvů předávání a token zabezpečení, která uděluje "Naslouchání" přímo na tento název.
-Když protokol WebSocket je přijatá službou, registrace je dokončena a zavedených webového protokolu WebSocket se ukládají jako "řídicí kanál" pro povolení všechny následné interakce zachování připojení. Služba umožňuje až pro 25 souběžných moduly pro naslouchání na hybridní připojení. Pokud existují dvě nebo více active naslouchací procesy, jsou mezi nimi rozložit příchozí připojení v náhodném pořadí; správného distribuční není zaručena.
+tooindicate připravenosti služby toohello že naslouchací proces je připraven tooaccept připojení, vytvoří odchozí připojení protokolu WebSocket. metoda handshake připojení Hello představuje název hello hybridní připojení nakonfigurovaná na obor názvů hello předávání a token zabezpečení, která uděluje hello "Naslouchání" přímo na tento název.
+Když hello protokolu WebSocket je přijatá službou hello, hello registrace je dokončena a hello vytvořit web, ke které se ukládají jako hello "řídicí kanál" pro povolení všechny následné interakce zachování připojení protokolu WebSocket. Služba Hello umožňuje až too25 souběžných posluchače na hybridní připojení. Pokud existují dvě nebo více active naslouchací procesy, jsou mezi nimi rozložit příchozí připojení v náhodném pořadí; správného distribuční není zaručena.
 
 #### Přijmout
-Když odesílatele otevře nové připojení na službu, službu vybere a upozorní jednu aktivní naslouchacího procesu na hybridní připojení. Toto oznámení se odesílá do naslouchací proces kanálem otevřít řídicí jako zprávu JSON obsahující adresu URL koncového bodu protokolu WebSocket, který naslouchací proces musí připojit k pro přijetí připojení.
+Při otevření nové připojení služby hello odesílatele hello služby vybere a upozorní jednu aktivní naslouchacího procesu hello na hello hybridní připojení. Toto oznámení se odesílá naslouchací proces toohello přes hello otevřít řídicí kanál jako JSON zprávu, že obsahující hello adresu URL koncového bodu protokolu WebSocket hello, který hello naslouchacího procesu musí připojit toofor přijímá připojení hello.
 
-Adresu URL můžete a musí používat přímo naslouchací proces bez další zátěže.
-Kódovaného informace je platná pouze na krátkou dobu běhu v podstatě po dobu, odesílatel je ochotná počkejte pro připojení k být navázáno začátku do konce, ale až do maximálního počtu 30 sekund. Adresu URL můžete použít pouze pro jeden úspěšného pokusu o připojení. Po vytvoření připojení protokolu WebSocket s adresou URL potkávací všechny další aktivity na tento protokol WebSocket je přes předávací službu z a do odesílatele, bez zásahu nebo interpretace službou.
+Adresa URL Hello můžete a musí používat přímo naslouchací proces hello bez další zátěže.
+informace o Hello kódovaný je platný pouze na krátkou dobu běhu v podstatě po dobu, po jako odesílatele hello ochotná toowait hello připojení toobe navázat klient server, ale až tooa maximálně 30 sekund. Adresa URL Hello dá použít jenom pro jeden úspěšného pokusu o připojení. Co nejdříve hello připojení s hello potkávací adresa URL je stanoveno, všechny další aktivity na tento protokol WebSocket je přes předávací službu z protokolu WebSocket a toohello odesílatele, bez zásahu nebo interpretace službou hello.
 
 #### Obnovit
-Token zabezpečení, která bude použita k registraci naslouchací proces a udržovat řídicí kanál může vyprší během naslouchací proces je aktivní. Vypršení platnosti tokenu nemá vliv na probíhající připojení, ale způsobit řídicí kanál přeruší službou v nebo krátce po v okamžiku vypršení platnosti. Operace "obnovit" je zprávu JSON, který naslouchací proces může odesílat nahradit token přidružené řídicí kanál, takže řídicí kanál je možné udržovat po delší dobu.
+Hello token zabezpečení, který je nutné použít tooregister hello naslouchací proces a údržbu, že řídicí kanál může vyprší během naslouchací proces hello je aktivní. vypršení platnosti tokenu Hello nemá vliv na probíhající připojení, ale způsobit hello řízení kanál toobe vyřadit službou hello v nebo krátce po hello okamžiku vypršení platnosti. operace "obnovit" Hello je, že zprávu JSON, která hello naslouchací proces, můžete odeslat token hello tooreplace přidružené hello řídicí kanál, tak, aby hello řídicí kanál je možné udržovat po delší dobu.
 
 #### Ping
-Je-li řídicí kanál nečinnosti, po dlouhou dobu, prostředníci na cestě, jako je například zatížení vyrovnávání nebo zařízení NAT. může dojít k přerušení připojení TCP. Operace "ping", zabraňuje odesláním malé množství dat, na který upozorní všem uživatelům v síti trasy, která je určené připojení jako aktivní, a slouží také jako "živé" testu pro naslouchací proces kanálu. V případě selhání příkazu ping řídicí kanál by měl být považován za nepoužitelný a naslouchací proces by měl znovu připojit.
+Je-li hello řídicí kanál nečinnosti, po dlouhou dobu, prostředníci na hello způsobem, například zatížení vyrovnávání nebo zařízení NAT. může dojít k přerušení připojení TCP hello. zabraňuje operace "ping" Hello, který odesláním malé množství dat na hello kanálu, který upozorní, všichni členové hello síťovou trasu připojení hello je určen toobe zachování připojení, a slouží také jako "živé" test pro naslouchací proces hello. V případě selhání příkazu ping hello hello řídicí kanál by měl být považován za nepoužitelný a naslouchací proces hello by měl znovu připojit.
 
 ### Odesílatel interakce
-Odesílatel má jenom jeden interakci se službou: připojení.
+Odesílatel Hello má jenom jeden interakce službou hello: připojení.
 
 #### Připojení
-Operace "připojit" otevře protokolu WebSocket ve službě, poskytnou jméno hybridní připojení a (volitelně, ale vyžaduje ve výchozím nastavení) token zabezpečení jejichž základě lze oprávnění "Odeslat" v řetězci dotazu. Služba potom komunikuje s naslouchací proces ve způsobu, jakým popsané a naslouchací proces vytvoří potkávací připojení, který je spojen s Tento protokolu WebSocket. Po přijetí protokol WebSocket, jsou všechny další interakce na tomto protokolu WebSocket připojené naslouchací proces.
+operace "připojit" Hello otevře protokolu WebSocket hello služby, poskytnete hello název hello hybridní připojení a (volitelně, ale vyžaduje ve výchozím nastavení) token zabezpečení udělující oprávnění "Odeslat" v řetězci dotazu hello. Služba Hello potom komunikuje s naslouchací proces hello v hello způsobem popsané a naslouchací proces hello vytvoří potkávací připojení, který je spojen s Tento protokolu WebSocket. Po přijetí hello protokolu WebSocket, jsou všechny další interakce na tomto protokolu WebSocket připojené naslouchací proces.
 
 ### Interakce souhrn
-Výsledkem tohoto modelu interakce je, že klienta odesílatele pochází z metody handshake se "čistou" WebSocket, která je připojená k naslouchací proces a potřebného žádné další preambles nebo přípravy. Tento model umožňuje prakticky jakékoli existující implementace klienta protokolu WebSocket snadno využívat výhod hybridních připojení služby zadáním adresy URL správně vytvořená do jejich vrstvy klienta protokolu WebSocket.
+Výsledkem Hello tohoto modelu interakce je, že tento klient odesílatele hello dodává mimo dohodnout s "čistou" WebSocket, který je připojený tooa naslouchací proces a potřebného žádné další preambles nebo přípravu. Tento model umožňuje prakticky jakékoli existující protokolu WebSocket klienta implementace tooreadily využít výhody hello hybridní připojení služby zadáním adresy URL správně vytvořená do jejich vrstvy klienta protokolu WebSocket.
 
-Potkávací připojení protokolu WebSocket, který získá naslouchací proces prostřednictvím přijmout interakce je taky čistou a můžete předat všechny existující server implementaci protokolu WebSocket pomocí některé minimální navíc abstrakce, která rozlišuje mezi operace hybridní připojení vzdálené "přijmout" a "přijmout" operace v místní síti jejich framework naslouchací procesy.
+Hello potkávací připojení protokolu WebSocket, který hello naslouchací proces získává prostřednictvím přijmout interakce je taky čistou a mohou být předávány tooany existující protokolu WebSocket serveru implementace s některé minimální navíc abstrakce, která rozlišuje mezi "přijmout" operace na jejich framework naslouchací procesy místní sítě a hybridních připojení vzdálené "přijmout" operace.
 
 ## Referenční informace o protokolu
 
-Tato část popisuje podrobnosti protokolu interakce popsané.
+Tato část popisuje hello podrobnosti o interakcích protokol hello popsané.
 
 Všechna připojení protokolu WebSocket probíhají na portu 443 jako upgrade z verze 1.1 HTTPS, který je obvykle abstrahované některé protokolu WebSocket framework nebo rozhraní API. Popis tady je udržováno implementace neutrální, bez návrhy konkrétní rozhraní.
 
 ### Naslouchací proces protokolu
-Naslouchací proces protokolu se skládá z dvě připojení gesta a tři operace zpráv.
+naslouchací proces protokolu Hello se skládá z dvě připojení gesta a tři operace zpráv.
 
 #### Naslouchací proces připojení kanálu ovládací prvek
-Řídicí kanál je otevřené se vytvoření připojení protokolu WebSocket k:
+s vytvoření připojení protokolu WebSocket k otevření Hello řídicí kanál:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...
 ```
 
-`namespace-address` Je plně kvalifikovaný název domény předávání přes Azure oboru názvů, který je hostitelem hybridní připojení, obvykle ve formátu `{myname}.servicebus.windows.net`.
+Hello `namespace-address` je hello plně kvalifikovaný název domény hello předávání přes Azure oboru názvů, hostitelé hello hybridní připojení, obvykle ve formátu hello `{myname}.servicebus.windows.net`.
 
-K dispozici jsou následující možnosti parametr řetězce dotazu.
+Možnosti parametr řetězce dotazu Hello jsou následujícím způsobem.
 
 | Parametr | Požaduje se | Popis |
 | --- | --- | --- |
-| `sb-hc-action` |Ano |Pro roli naslouchacího procesu musí být parametr **sb-hc-action = naslouchání** |
-| `{path}` |Ano |Obor názvů kódovaná adresou URL cesta předkonfigurované hybridní připojení k registraci této naslouchací proces na. Tento výraz se připojí k pevné `$hc/` část adresy obsahující cestu. |
-| `sb-hc-token` |Ano\* |Naslouchací proces musíte zadat platný, kódovaná adresou URL služby sběrnice sdíleného přístupu Token pro obor názvů nebo hybridní připojení, která uděluje **naslouchání** správné. |
+| `sb-hc-action` |Ano |Hello role hello naslouchacího procesu musí být parametr **sb-hc-action = naslouchání** |
+| `{path}` |Ano |Cesta oboru názvů kódovaná adresou URL Hello hello předkonfigurované tooregister hybridní připojení této naslouchací proces na. Tento výraz určen připojením toohello pevné `$hc/` část adresy obsahující cestu. |
+| `sb-hc-token` |Ano\* |Hello naslouchací proces musíte zadat platný, kódovaná adresou URL služby sběrnice sdíleného přístupu Token pro obor názvů hello nebo hybridní připojení, která uděluje hello **naslouchání** správné. |
 | `sb-hc-id` |Ne |Toto volitelné ID klienta zadaný umožňuje začátku do konce diagnostické trasování. |
 
-Pokud připojení protokolu WebSocket nezdaří z důvodu cesta hybridní připojení není zaregistrované, nebo token neplatný nebo chybějící nebo některé jiné chyby, poskytnutí zpětné vazby chyba pomocí regulárních zpětné vazby modelu stav HTTP 1.1. Popis stav obsahuje chyby sledování id, které může být oznamovat pracovníky technické podpory Azure:
+Pokud se hello připojení protokolu WebSocket nezdaří z důvodu toohello hybridní připojení cesta není zaregistrované, nebo token neplatný nebo chybějící nebo některé jiné chyby, poskytnutí zpětné vazby chyba hello pomocí hello regulární HTTP 1.1 Stav zpětné vazby modelu. Popis stav obsahuje chyby sledování id, které může být oznamovat pracovníky technické podpory Azure:
 
 | Kód | Chyba | Popis |
 | --- | --- | --- |
-| 404 |Nebyl nalezen |Hybridní připojení cesta je neplatná nebo je špatná základní adresa URL. |
-| 401 |Neautorizováno |Token zabezpečení je chybějící nebo poškozený nebo neplatný. |
-| 403 |Je zakázané |Token zabezpečení není platný pro tuto cestu pro tuto akci. |
-| 500 |Vnitřní chyba |Došlo k chybě ve službě. |
+| 404 |Nebyl nalezen |Hello hybridní připojení cesta je neplatná nebo je špatná adresa URL základní hello. |
+| 401 |Neautorizováno |token zabezpečení Hello je chybějící nebo poškozený nebo neplatný. |
+| 403 |Je zakázané |token zabezpečení Hello není platný pro tuto cestu pro tuto akci. |
+| 500 |Vnitřní chyba |Došlo k chybě ve službě hello. |
 
-Pokud připojení protokolu WebSocket záměrně ukončení služby po začátku bylo nastaveno tak to tak informace se předávají pomocí odpovídající kód chyby protokolu WebSocket společně s popisný chybová zpráva, která zahrnuje i ID sledování Služba nebude vypnuta řídicí kanál bez zjištění chybový stav. Všechny čistého vypnutí je klient řídí.
+Pokud hello připojení protokolu WebSocket záměrně ukončení služby hello po začátku bylo nastaveno tak hello důvodem tak informace se předávají pomocí odpovídající kód chyby protokolu WebSocket společně s popisný chybová zpráva, která zahrnuje i pro sledování ID. Hello service nebude ukončena řídicí kanál bez zjištění chybový stav. Všechny čistého vypnutí je klient řídí.
 
 | Stav WS | Popis |
 | --- | --- |
-| 1001 |Hybridní připojení cesty byla odstraněna nebo zakázána. |
-| 1008 |Vypršela platnost tokenu zabezpečení, proto porušení zásad autorizace. |
-| 1011 |Došlo k chybě ve službě. |
+| 1001 |Hello hybridní připojení cesty byla odstraněna nebo zakázána. |
+| 1008 |vypršela platnost tokenu zabezpečení Hello, takže porušení zásad autorizace hello. |
+| 1011 |Došlo k chybě ve službě hello. |
 
 ### Přijměte metody handshake
-Oznámení "přijmout" posílá službou naslouchací proces prostřednictvím administrate řídicí kanál jako zprávy JSON v objektu WebSocket. Nepřijde žádná odpověď na tuto zprávu.
+Hello "přijmout" jsou oznámení odesílána tím hello služby toohello naslouchací proces prostřednictvím administrate řídicí kanál jako zprávy JSON v objektu WebSocket. Neexistuje žádné toothis zpráva s odpovědí.
 
-Zpráva obsahuje objekt JSON s názvem "přijmout,", který definuje následující vlastnosti v tuto chvíli:
+Hello zpráva obsahuje objekt JSON s názvem "přijmout,", který definuje hello následující vlastnosti v tuto chvíli:
 
-* **Adresa** – řetězce adresy URL, který se má použít k vytvoření objektu WebSocket ke službě přijmout příchozí připojení.
-* **ID** – jedinečný identifikátor pro toto připojení. Pokud byl klient odesílatele ID, jedná se o odesílateli zadat hodnotu, jinak bude generována hodnota.
-* **connectHeaders** – všechny hlavičky protokolu HTTP, zadaných ke koncovému bodu předávání odesílatelem, také zahrnující protokol WebSocket sekundu a hlavičky Sec. WebSocket rozšíření.
+* **Adresa** – hello toobe řetězce adresy URL použitá pro stanovení hello protokolu WebSocket toothe služby tooaccept příchozí připojení.
+* **ID** – hello jedinečný identifikátor pro toto připojení. Pokud byl hello ID odesílatele klientem hello, je hello odesílatele zadána hodnota, v opačném případě je hodnota vygenerované systémem.
+* **connectHeaders** – všechny hlavičky protokolu HTTP, které byly zadaný koncový bod předávání toohello hello odesílatel, také zahrnující hello protokolu WebSocket sekundu a hlavičky Sec. WebSocket rozšíření.
 
 #### Přijmout zprávu
 
@@ -134,70 +134,70 @@ Zpráva obsahuje objekt JSON s názvem "přijmout,", který definuje následují
 }
 ```
 
-Adresa URL zadaná ve zprávě JSON se používají ke zřízení protokolu WebSocket pro přijetí nebo odmítnutí soketu odesílatele naslouchací proces.
+Adresa URL Hello zadaný v hello je zpráva JSON používají hello naslouchací proces ke zřízení hello protokolu WebSocket pro přijetí nebo odmítnutí hello odesílatele soketu.
 
-#### Přijetí soket
-Přijmout, vytvoří naslouchací proces připojení protokolu WebSocket na zadané adresy.
+#### Přijímání soketu hello
+tooaccept, vytvoří naslouchací proces hello adresu toohello poskytuje připojení protokolu WebSocket.
 
-Pokud zpráva "přijmout" představuje `Sec-WebSocket-Protocol` záhlaví, očekává se, že naslouchací proces lze použít pouze protokol WebSocket pokud ji podporuje tento protokol. Kromě toho nastaví hlavičku, jako je vytvoření objektu WebSocket.
+Pokud hello "přijmout" zpráva má u sebe `Sec-WebSocket-Protocol` záhlaví, očekává se, že naslouchací proces hello přijímá hello protokolu WebSocket pouze, pokud ji podporuje tento protokol. Kromě toho nastaví záhlaví hello jako hello navázání protokolu WebSocket.
 
-Totéž platí i pro `Sec-WebSocket-Extensions` záhlaví. Pokud rozhraní podporuje rozšíření, je potřeba nastavit hlavičku do odpovědi serverové požadovaného `Sec-WebSocket-Extensions` metody handshake pro rozšíření.
+Hello totéž platí i toohello `Sec-WebSocket-Extensions` záhlaví. Pokud hello framework podporuje rozšíření, je potřeba nastavit hello záhlaví toohello serverové odpověď hello požadované `Sec-WebSocket-Extensions` metody handshake pro rozšíření hello.
 
-Adresa URL je nutné použít jako-je pro vytvoření soketu přijmout, ale obsahuje následující parametry:
+Adresa URL Hello je nutné použít jako-jsou pro stanovení hello přijmout soketu, ale obsahuje následující parametry:
 
 | Parametr | Požaduje se | Popis |
 | --- | --- | --- |
-| `sb-hc-action` |Ano |Pro příjem soketu, musí být parametr`sb-hc-action=accept` |
-| `{path}` |Ano |(viz odstavec) |
+| `sb-hc-action` |Ano |Pro příjem soketu, musí být parametr hello`sb-hc-action=accept` |
+| `{path}` |Ano |(viz následující odstavce hello) |
 | `sb-hc-id` |Ne |Viz popis v předchozí **id**. |
 
-`{path}`je cesta k oboru názvů kódovaná adresou URL předkonfigurované hybridní připojení, na které chcete zaregistrovat toto naslouchací proces. Tento výraz se připojí k pevné `$hc/` část adresy obsahující cestu. 
+`{path}`je, že cesta oboru názvů kódovaná adresou URL hello hello předkonfigurované hybridní připojení, na které tooregister tento naslouchací proces. Tento výraz určen připojením toothe pevné `$hc/` část adresy obsahující cestu. 
 
-`path` Výraz může být rozšířena příponu a výrazu řetězec dotazu, který následuje po dělicí lomítkem zaregistrovaný název. To umožňuje klientovi odesílatele předání argumentů odesílání do přijímá naslouchací proces, když není možné zahrnout hlavičky protokolu HTTP. Očekávání je, že rozhraní naslouchací proces analyzuje část adresy obsahující pevné cestu a název registrované z cesty a umožňuje zbývající, které by mohly mít bez argumentů řetězce dotazu předponu `sb-`, k dispozici pro aplikace pro rozhodnutí, jestli se tak, aby přijímal připojení.
+Hello `path` výraz může být rozšířena příponu a výrazu řetězec dotazu, který následuje po dělicí lomítkem hello registrovaný název. To umožňuje hello odesílatele klienta toopass odesílání argumenty toohello přijímá naslouchacího procesu, když není možné tooinclude HTTP hlavičky. Hello očekávání je tento naslouchací proces hello framework analyzuje část adresy obsahující cestu pevné hello a registrovaný název hello z cesty a vytvoří hello zbývající pravděpodobně bez argumentů řetězce dotazu předponu `sb-`, aplikace k dispozici toohello pro rozhodnutí zda tooaccept hello připojení.
 
-Další informace najdete v části následující (odesílatel Protocol).
+Další informace najdete v následující části "Odesílatele protokol" hello.
 
-Pokud dojde k chybě, můžete službu odpovědět následujícím způsobem:
+Pokud dojde k chybě, můžete službu hello odpovědět následujícím způsobem:
 
 | Kód | Chyba | Popis |
 | --- | --- | --- |
-| 403 |Je zakázané |Adresa URL není platný. |
-| 500 |Vnitřní chyba |Došlo k chybě ve službě |
+| 403 |Je zakázané |Adresa URL Hello není platný. |
+| 500 |Vnitřní chyba |Došlo k chybě ve službě hello |
 
-Po navázání připojení k serveru protokol WebSocket vypne, jestliže odesílatel protokolu WebSocket vypne, nebo s následujícím stavem:
+Po navázání připojení hello hello vypnutí serveru hello protokolu WebSocket při hello odesílatele protokolu WebSocket vypne, nebo s hello následující stav:
 
 | Stav WS | Popis |
 | --- | --- |
-| 1001 |Klient pro odesílatele ukončí připojení. |
-| 1001 |Hybridní připojení cesty byla odstraněna nebo zakázána. |
-| 1008 |Vypršela platnost tokenu zabezpečení, proto porušení zásad autorizace. |
-| 1011 |Došlo k chybě ve službě. |
+| 1001 |Hello odesílatele klienta vypne hello připojení. |
+| 1001 |Hello hybridní připojení cesty byla odstraněna nebo zakázána. |
+| 1008 |vypršela platnost tokenu zabezpečení Hello, takže porušení zásad autorizace hello. |
+| 1011 |Došlo k chybě ve službě hello. |
 
-#### Odmítat soket
-Podobné metody handshake odmítat soketu po kontrole zpráva "přijmout" vyžaduje, aby stavový kód a popis stavu komunikace důvod zamítnutí můžete procházet zpět do odesílatele.
+#### Odmítat hello soketů
+Odmítat hello soketu po provádějící kontrolu uvítací zprávu "přijmout" vyžaduje podobné metody handshake proto, aby hello stavový kód a popis stavu komunikaci, že můžete toku důvod zamítnutí hello toohello odesílatele.
 
-Protokol zvolit tento návrh tady je použít ověření typu handshake protokolu WebSocket (která je určená končit definované chybový stav), aby implementacích klienta naslouchací proces můžete nadále závisí na protokolu WebSocket klienta a není nutné využívat navíc, úplné klienta HTTP.
+Hello protokol návrhu volba je toouse ověření typu handshake protokolu WebSocket (který je navrženou tooend ve stavu chyby definované) tak, aby naslouchací proces implementacích klienta na klienta protokolu WebSocket lze dále toorely a není nutné využívat navíc, úplné klienta HTTP.
 
-Klient tak, aby zamítal soket, přebírá adresu URI ze zprávy "přijmout" a připojí dvě parametrů řetězce dotazu, následujícím způsobem:
+tooreject hello soketu, hello klienta přebírá hello adresu URI ze zprávy "přijmout" hello a připojí dvě tooit parametrů řetězce dotazu, následujícím způsobem:
 
 | Param | Požaduje se | Popis |
 | --- | --- | --- |
 | statusCode |Ano |Číselné stavový kód HTTP. |
-| Popis_stavu |Ano |Lidské čitelný důvod zamítnutí. |
+| Popis_stavu |Ano |Lidské čitelný důvod zamítnutí hello. |
 
-Výsledný URI se pak používá k navázání připojení protokolu WebSocket.
+Hello výsledné URI je pak používá tooestablish připojení protokolu WebSocket.
 
-Při dokončení správně, tato metoda handshake záměrně selže, s kódem chyby protokolu HTTP 410, protože žádné protokolu WebSocket. Pokud se něco pokazí, následující kódy popisují chybu:
+Při dokončení správně, tato metoda handshake záměrně selže, s kódem chyby protokolu HTTP 410, protože žádné protokolu WebSocket. Pokud se operace nezdaří, popisují hello následující kódy chyb hello:
 
 | Kód | Chyba | Popis |
 | --- | --- | --- |
-| 403 |Je zakázané |Adresa URL není platný. |
-| 500 |Vnitřní chyba |Došlo k chybě ve službě. |
+| 403 |Je zakázané |Adresa URL Hello není platný. |
+| 500 |Vnitřní chyba |Došlo k chybě ve službě hello. |
 
 ### Naslouchací proces obnovení tokenu
-Pokud token naslouchací proces vyprší, ho můžete nahradit odesláním textovou zprávu rámce ke službě prostřednictvím zavedených řídicí kanál. Zpráva obsahuje objekt JSON s názvem `renewToken`, která v tuto chvíli definuje následující vlastnost:
+Pokud token naslouchací proces hello o tooexpire, ho můžete nahradit odesláním služby textového rámečku zpráva toohello prostřednictvím hello navázat řídicí kanál. Zpráva obsahuje objekt JSON s názvem `renewToken`, která definuje hello v tuto chvíli následující vlastnosti:
 
-* **token** – přístup k službě sběrnice sdílené token platný, kódovaná adresou URL pro obor názvů nebo hybridní připojení, která uděluje **naslouchání** správné.
+* **token** – přístup k službě sběrnice sdílené token platný, kódovaná adresou URL pro obor názvů nebo hybridní připojení, která uděluje hello **naslouchání** správné.
 
 #### zpráva renewToken
 
@@ -209,58 +209,58 @@ Pokud token naslouchací proces vyprší, ho můžete nahradit odesláním texto
 }
 ```
 
-Pokud se nezdaří ověření tokenu, byl odepřen přístup a cloudové služby zavře řídicí kanál protokolu WebSocket s chybou. V opačném případě nepřijde žádná odpověď.
+Pokud se nezdaří ověření tokenu hello, byl odepřen přístup a hello Cloudová služba zavře hello řídicí kanál protokolu WebSocket s chybou. V opačném případě nepřijde žádná odpověď.
 
 | Stav WS | Popis |
 | --- | --- |
-| 1008 |Vypršela platnost tokenu zabezpečení, proto porušení zásad autorizace. |
+| 1008 |vypršela platnost tokenu zabezpečení Hello, takže porušení zásad autorizace hello. |
 
 ## Odesílatel protokolu
-Protokol odesílatele je prakticky shodné s způsob, jakým se vytvořit naslouchací proces.
-Cílem je maximální průhlednost pro začátku do konce protokolu WebSocket. Adresu pro připojení k je stejné jako naslouchací proces, ale liší "action" a token musí různých oprávnění:
+protokol odesílatele Hello je efektivně identické toohello způsob, jakým se vytvořit naslouchací proces.
+cílem Hello je maximální průhlednost pro hello začátku do konce protokolu WebSocket. Hello adresu pro připojení toois hello stejná jako u hello naslouchání, ale hello "action" se liší a token potřebuje různých oprávnění:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-*Obor názvů adresy* je plně kvalifikovaný název domény předávání přes Azure oboru názvů, který je hostitelem hybridní připojení, obvykle ve formátu `{myname}.servicebus.windows.net`.
+Hello *obor názvů adresy* je hello plně kvalifikovaný název domény hello předávání přes Azure oboru názvů, hostitelé hello hybridní připojení, obvykle ve formátu hello `{myname}.servicebus.windows.net`.
 
-Žádost může obsahovat libovolné další hlavičky protokolu HTTP, včetně těch definované aplikací. Všechny zadané hlavičky tok naslouchací proces a nachází se na `connectHeader` objekt **přijmout** řídicí zpráva.
+žádost o Hello může obsahovat libovolné další hlavičky protokolu HTTP, včetně těch definované aplikací. Všechna zadaná hlavičky toku toohello naslouchací proces a můžete najít na hello `connectHeader` objekt hello **přijmout** řídicí zpráva.
 
-Možnosti parametr řetězce dotazu jsou následující:
+Možnosti parametr řetězce dotazu Hello jsou následující:
 
-| Param | Vyžaduje? | Popis |
+| Param | Povinné? | Popis |
 | --- | --- | --- |
-| `sb-hc-action` |Ano |Pro roli odesílatele, musí být parametr `action=connect`. |
-| `{path}` |Ano |(viz odstavec) |
-| `sb-hc-token` |Ano\* |Naslouchací proces musíte zadat platný, kódovaná adresou URL služby sběrnice sdíleného přístupu Token pro obor názvů nebo hybridní připojení, která uděluje **odeslat** správné. |
-| `sb-hc-id` |Ne |Volitelné ID, které umožňuje začátku do konce diagnostické trasování a je k dispozici pro naslouchací proces během metody handshake přijmout. |
+| `sb-hc-action` |Ano |Pro roli hello odesílatele, musí být parametr hello `action=connect`. |
+| `{path}` |Ano |(viz následující odstavce hello) |
+| `sb-hc-token` |Ano\* |Hello naslouchací proces musíte zadat platný, kódovaná adresou URL služby sběrnice sdíleného přístupu Token pro obor názvů hello nebo hybridní připojení, která uděluje hello **odeslat** správné. |
+| `sb-hc-id` |Ne |Volitelné ID, které umožňuje začátku do konce diagnostické trasování a je vytvořen naslouchací proces k dispozici toohello během hello přijmout metody handshake. |
 
-`{path}` Je cesta oboru názvů kódovaná adresou URL předkonfigurované hybridní připojení, na které chcete zaregistrovat toto naslouchací proces. `path` Výraz může být rozšířena příponu a řetězcového výrazu dotazu pro další komunikaci. Pokud hybridní připojení je registrován v cestě `hyco`, `path` výraz může být `hyco/suffix?param=value&...` a potom podle parametrů řetězce dotazu, který je zde definované. Výraz dokončení může být pak následujícím způsobem:
+Hello `{path}` je cesta oboru názvů kódovaná adresou URL hello hello předkonfigurované hybridní připojení, na které tooregister tento naslouchací proces. Hello `path` výraz může být rozšířena příponu a toocommunicate výraz řetězec dotazu další. Pokud hello hybridní připojení je registrován v cestě hello `hyco`, hello `path` výraz může být `hyco/suffix?param=value&...` a potom podle parametrů řetězce dotazu hello zde definované. Výraz dokončení může být pak následujícím způsobem:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-`path` Výraz předána do naslouchací proces adresu URI, které jsou obsažené v řídicí zpráva "přijmout".
+Hello `path` prostřednictvím naslouchací proces toohello hello adresu URI, které jsou obsažené v řídicí zpráva "přijmout" hello je předán výraz.
 
-Pokud připojení protokolu WebSocket nezdaří z důvodu cesta hybridní připojení není zaregistrovaný, token neplatný nebo chybějící nebo některé jiné chyby, poskytnutí zpětné vazby chyba pomocí regulárních zpětné vazby modelu stav HTTP 1.1. Popis stavu obsahuje chybu sledování ID, které mohou být předávány na pracovníky podpory Azure:
+Pokud se hello připojení protokolu WebSocket nezdaří z důvodu toohello hybridní připojení cesta není zaregistrovaný, token neplatný nebo chybějící nebo některé jiné chyby, poskytnutí zpětné vazby chyba hello pomocí hello regulární HTTP 1.1 Stav zpětné vazby modelu. Popis stavu obsahuje chybu sledování ID, které mohou být předávány na pracovníky podpory Azure:
 
 | Kód | Chyba | Popis |
 | --- | --- | --- |
-| 404 |Nebyl nalezen |Hybridní připojení cesta je neplatná nebo je špatná základní adresa URL. |
-| 401 |Neautorizováno |Token zabezpečení je chybějící nebo poškozený nebo neplatný. |
-| 403 |Je zakázané |Token zabezpečení není platný pro tuto cestu a pro tuto akci. |
-| 500 |Vnitřní chyba |Došlo k chybě ve službě. |
+| 404 |Nebyl nalezen |Hello hybridní připojení cesta je neplatná nebo je špatná adresa URL základní hello. |
+| 401 |Neautorizováno |token zabezpečení Hello je chybějící nebo poškozený nebo neplatný. |
+| 403 |Je zakázané |Hello token zabezpečení není platný pro tuto cestu a pro tuto akci. |
+| 500 |Vnitřní chyba |Došlo k chybě ve službě hello. |
 
-Pokud připojení protokolu WebSocket záměrně ukončení služby po počátečním nastavení se to tak informace se předávají pomocí odpovídající kód chyby protokolu WebSocket společně s popisný chybová zpráva, která zahrnuje i ID sledování
+Pokud hello připojení protokolu WebSocket je záměrně vypnout službou hello po jeho byla původně nastavena, hello důvodem tak informace se předávají pomocí odpovídající kód chyby protokolu WebSocket společně s popisný chybová zpráva, která zahrnuje i ID sledování.
 
 | Stav WS | Popis |
 | --- | --- |
-| 1000 |Naslouchací proces vypnout soketu. |
-| 1001 |Hybridní připojení cesty byla odstraněna nebo zakázána. |
-| 1008 |Vypršela platnost tokenu zabezpečení, proto porušení zásad autorizace. |
-| 1011 |Došlo k chybě ve službě. |
+| 1000 |naslouchací proces Hello vypnout hello soketu. |
+| 1001 |Hello hybridní připojení cesty byla odstraněna nebo zakázána. |
+| 1008 |vypršela platnost tokenu zabezpečení Hello, takže porušení zásad autorizace hello. |
+| 1011 |Došlo k chybě ve službě hello. |
 
 ## Další kroky
 * [Přenos – nejčastější dotazy](relay-faq.md)

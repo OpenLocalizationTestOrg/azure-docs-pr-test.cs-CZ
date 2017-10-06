@@ -1,5 +1,5 @@
 ---
-title: "Přijímat události z Azure Event Hubs pomocí Apache Storm | Microsoft Docs"
+title: "aaaReceive události z Azure Event Hubs pomocí Apache Storm | Microsoft Docs"
 description: "Začínáme přijetí ze služby Event Hubs pomocí Apache Storm"
 services: event-hubs
 documentationcenter: 
@@ -14,36 +14,36 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a0ab860ee8d504a28aac380c504c928f0d6dbc1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a><span data-ttu-id="2db97-103">Přijímat události ze služby Event Hubs pomocí Apache Storm</span><span class="sxs-lookup"><span data-stu-id="2db97-103">Receive events from Event Hubs using Apache Storm</span></span>
+# <a name="receive-events-from-event-hubs-using-apache-storm"></a><span data-ttu-id="a648a-103">Přijímat události ze služby Event Hubs pomocí Apache Storm</span><span class="sxs-lookup"><span data-stu-id="a648a-103">Receive events from Event Hubs using Apache Storm</span></span>
 
-<span data-ttu-id="2db97-104">[Apache Storm](https://storm.incubator.apache.org) je distribuované v reálném čase výpočetní systém, který zjednodušuje spolehlivé zpracování bez vazby datových proudů.</span><span class="sxs-lookup"><span data-stu-id="2db97-104">[Apache Storm](https://storm.incubator.apache.org) is a distributed real-time computation system that simplifies reliable processing of unbounded streams of data.</span></span> <span data-ttu-id="2db97-105">Tato část ukazuje způsob použití služby Azure Event Hubs Storm spout přijímat události z centra událostí.</span><span class="sxs-lookup"><span data-stu-id="2db97-105">This section shows how to use an Azure Event Hubs Storm spout to receive events from Event Hubs.</span></span> <span data-ttu-id="2db97-106">Pomocí Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech.</span><span class="sxs-lookup"><span data-stu-id="2db97-106">Using Apache Storm, you can split events across multiple processes hosted in different nodes.</span></span> <span data-ttu-id="2db97-107">Integrace služby Event Hubs s Storm zjednodušuje příjmu událostí tím, že transparentně vytváření kontrolních bodů jejím průběhu pomocí instalace Zookeeper na Storm, spravuje trvalé kontrolní body a paralelní příjemce událostí ze služby Event Hubs.</span><span class="sxs-lookup"><span data-stu-id="2db97-107">The Event Hubs integration with Storm simplifies event consumption by transparently checkpointing its progress using Storm's Zookeeper installation, managing persistent checkpoints and parallel receives from Event Hubs.</span></span>
+<span data-ttu-id="a648a-104">[Apache Storm](https://storm.incubator.apache.org) je distribuované v reálném čase výpočetní systém, který zjednodušuje spolehlivé zpracování bez vazby datových proudů.</span><span class="sxs-lookup"><span data-stu-id="a648a-104">[Apache Storm](https://storm.incubator.apache.org) is a distributed real-time computation system that simplifies reliable processing of unbounded streams of data.</span></span> <span data-ttu-id="a648a-105">Tato část uvádí, jak toouse Azure Event Hubs Storm spout tooreceive události ze služby Event Hubs.</span><span class="sxs-lookup"><span data-stu-id="a648a-105">This section shows how toouse an Azure Event Hubs Storm spout tooreceive events from Event Hubs.</span></span> <span data-ttu-id="a648a-106">Pomocí Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech.</span><span class="sxs-lookup"><span data-stu-id="a648a-106">Using Apache Storm, you can split events across multiple processes hosted in different nodes.</span></span> <span data-ttu-id="a648a-107">Hello Event Hubs integrace s Storm zjednodušuje příjmu událostí tím, že transparentně vytváření kontrolních bodů průběhu pomocí instalace Zookeeper na Storm, spravuje trvalé kontrolní body a paralelní příjemce událostí ze služby Event Hubs.</span><span class="sxs-lookup"><span data-stu-id="a648a-107">hello Event Hubs integration with Storm simplifies event consumption by transparently checkpointing its progress using Storm's Zookeeper installation, managing persistent checkpoints and parallel receives from Event Hubs.</span></span>
 
-<span data-ttu-id="2db97-108">Další informace o službě Event Hubs přijímat vzory najdete [Přehled služby Event Hubs][Event Hubs overview].</span><span class="sxs-lookup"><span data-stu-id="2db97-108">For more information about Event Hubs receive patterns, see the [Event Hubs overview][Event Hubs overview].</span></span>
+<span data-ttu-id="a648a-108">Další informace o službě Event Hubs přijímat vzory najdete v tématu hello [Přehled služby Event Hubs][Event Hubs overview].</span><span class="sxs-lookup"><span data-stu-id="a648a-108">For more information about Event Hubs receive patterns, see hello [Event Hubs overview][Event Hubs overview].</span></span>
 
-## <a name="create-project-and-add-code"></a><span data-ttu-id="2db97-109">Vytvořte projekt a přidejte kód</span><span class="sxs-lookup"><span data-stu-id="2db97-109">Create project and add code</span></span>
+## <a name="create-project-and-add-code"></a><span data-ttu-id="a648a-109">Vytvořte projekt a přidejte kód</span><span class="sxs-lookup"><span data-stu-id="a648a-109">Create project and add code</span></span>
 
-<span data-ttu-id="2db97-110">Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se dodává s funkcí spout Event Hubs, která je již k dispozici.</span><span class="sxs-lookup"><span data-stu-id="2db97-110">This tutorial uses an [HDInsight Storm][HDInsight Storm] installation, which comes with the Event Hubs spout already available.</span></span>
+<span data-ttu-id="a648a-110">Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která se dodává s hello Event Hubs spout již k dispozici.</span><span class="sxs-lookup"><span data-stu-id="a648a-110">This tutorial uses an [HDInsight Storm][HDInsight Storm] installation, which comes with hello Event Hubs spout already available.</span></span>
 
-1. <span data-ttu-id="2db97-111">Postupujte podle [HDInsight Storm - Začínáme](../hdinsight/hdinsight-storm-overview.md) postup pro vytvoření nového clusteru HDInsight a k nim připojit přes vzdálenou plochu.</span><span class="sxs-lookup"><span data-stu-id="2db97-111">Follow the [HDInsight Storm - Get Started](../hdinsight/hdinsight-storm-overview.md) procedure to create a new HDInsight cluster, and connect to it via Remote Desktop.</span></span>
-2. <span data-ttu-id="2db97-112">Kopírování `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` soubor do místní vývojové prostředí.</span><span class="sxs-lookup"><span data-stu-id="2db97-112">Copy the `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` file to your local development environment.</span></span> <span data-ttu-id="2db97-113">Tato položka obsahuje spout storm události.</span><span class="sxs-lookup"><span data-stu-id="2db97-113">This contains the events-storm-spout.</span></span>
-3. <span data-ttu-id="2db97-114">Použijte následující příkaz k instalaci balíčku do místního úložiště Maven.</span><span class="sxs-lookup"><span data-stu-id="2db97-114">Use the following command to install the package into the local Maven store.</span></span> <span data-ttu-id="2db97-115">Umožňuje přidat jako odkaz v projektu Storm v pozdější fázi.</span><span class="sxs-lookup"><span data-stu-id="2db97-115">This enables you to add it as a reference in the Storm project in a later step.</span></span>
+1. <span data-ttu-id="a648a-111">Postupujte podle hello [HDInsight Storm - Začínáme](../hdinsight/hdinsight-storm-overview.md) postup toocreate nové HDInsight clusteru a připojte tooit přes vzdálenou plochu.</span><span class="sxs-lookup"><span data-stu-id="a648a-111">Follow hello [HDInsight Storm - Get Started](../hdinsight/hdinsight-storm-overview.md) procedure toocreate a new HDInsight cluster, and connect tooit via Remote Desktop.</span></span>
+2. <span data-ttu-id="a648a-112">Kopírování hello `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` souboru tooyour místní vývojové prostředí.</span><span class="sxs-lookup"><span data-stu-id="a648a-112">Copy hello `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` file tooyour local development environment.</span></span> <span data-ttu-id="a648a-113">Tato položka obsahuje hello události storm-funkcí spout.</span><span class="sxs-lookup"><span data-stu-id="a648a-113">This contains hello events-storm-spout.</span></span>
+3. <span data-ttu-id="a648a-114">Použijte následující příkaz tooinstall hello balíček do místního úložiště Maven hello hello.</span><span class="sxs-lookup"><span data-stu-id="a648a-114">Use hello following command tooinstall hello package into hello local Maven store.</span></span> <span data-ttu-id="a648a-115">To vám umožní tooadd je jako vodítko při hello Storm v pozdější fázi projektu.</span><span class="sxs-lookup"><span data-stu-id="a648a-115">This enables you tooadd it as a reference in hello Storm project in a later step.</span></span>
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. <span data-ttu-id="2db97-116">V nástroji Eclipse vytvořte nový projekt Maven (klikněte na tlačítko **soubor**, pak **nový**, pak **projektu**).</span><span class="sxs-lookup"><span data-stu-id="2db97-116">In Eclipse, create a new Maven project (click **File**, then **New**, then **Project**).</span></span>
+4. <span data-ttu-id="a648a-116">V nástroji Eclipse vytvořte nový projekt Maven (klikněte na tlačítko **soubor**, pak **nový**, pak **projektu**).</span><span class="sxs-lookup"><span data-stu-id="a648a-116">In Eclipse, create a new Maven project (click **File**, then **New**, then **Project**).</span></span>
    
     ![][12]
-5. <span data-ttu-id="2db97-117">Vyberte **používat výchozí umístění prostoru**, pak klikněte na tlačítko **další**</span><span class="sxs-lookup"><span data-stu-id="2db97-117">Select **Use default Workspace location**, then click **Next**</span></span>
-6. <span data-ttu-id="2db97-118">Vyberte **rychlý start maven archetype** archetype, pak klikněte na tlačítko **další**</span><span class="sxs-lookup"><span data-stu-id="2db97-118">Select the **maven-archetype-quickstart** archetype, then click **Next**</span></span>
-7. <span data-ttu-id="2db97-119">Vložení **GroupId** a **ArtifactId**, pak klikněte na tlačítko **dokončit**</span><span class="sxs-lookup"><span data-stu-id="2db97-119">Insert a **GroupId** and **ArtifactId**, then click **Finish**</span></span>
-8. <span data-ttu-id="2db97-120">V **pom.xml**, přidejte následující závislosti v `<dependency>` uzlu.</span><span class="sxs-lookup"><span data-stu-id="2db97-120">In **pom.xml**, add the following dependencies in the `<dependency>` node.</span></span>
+5. <span data-ttu-id="a648a-117">Vyberte **používat výchozí umístění prostoru**, pak klikněte na tlačítko **další**</span><span class="sxs-lookup"><span data-stu-id="a648a-117">Select **Use default Workspace location**, then click **Next**</span></span>
+6. <span data-ttu-id="a648a-118">Vyberte hello **rychlý start maven archetype** archetype, pak klikněte na tlačítko **další**</span><span class="sxs-lookup"><span data-stu-id="a648a-118">Select hello **maven-archetype-quickstart** archetype, then click **Next**</span></span>
+7. <span data-ttu-id="a648a-119">Vložení **GroupId** a **ArtifactId**, pak klikněte na tlačítko **dokončit**</span><span class="sxs-lookup"><span data-stu-id="a648a-119">Insert a **GroupId** and **ArtifactId**, then click **Finish**</span></span>
+8. <span data-ttu-id="a648a-120">V **pom.xml**, přidejte následující závislé položky ve hello hello `<dependency>` uzlu.</span><span class="sxs-lookup"><span data-stu-id="a648a-120">In **pom.xml**, add hello following dependencies in hello `<dependency>` node.</span></span>
 
     ```xml  
     <dependency>
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/18/2017
     </dependency>
     ```
 
-9. <span data-ttu-id="2db97-121">V **src** složky, vytvořte soubor s názvem **Config.properties** a zkopírujte následující obsah, nahraďte `receive rule key` a `event hub name` hodnoty:</span><span class="sxs-lookup"><span data-stu-id="2db97-121">In the **src** folder, create a file called **Config.properties** and copy the following content, substituting the `receive rule key` and `event hub name` values:</span></span>
+9. <span data-ttu-id="a648a-121">V hello **src** složky, vytvořte soubor s názvem **Config.properties** a kopírování hello následující obsah, nahraďte hello `receive rule key` a `event hub name` hodnoty:</span><span class="sxs-lookup"><span data-stu-id="a648a-121">In hello **src** folder, create a file called **Config.properties** and copy hello following content, substituting hello `receive rule key` and `event hub name` values:</span></span>
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -90,8 +90,8 @@ ms.lasthandoff: 08/18/2017
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    <span data-ttu-id="2db97-122">Hodnota **eventhub.receiver.credits** Určuje, kolik události jsou zpracovat v dávce před uvolněním je do kanálu Storm.</span><span class="sxs-lookup"><span data-stu-id="2db97-122">The value for **eventhub.receiver.credits** determines how many events are batched before releasing them to the Storm pipeline.</span></span> <span data-ttu-id="2db97-123">Tento příklad z důvodu zjednodušení, nastaví tato hodnota 10.</span><span class="sxs-lookup"><span data-stu-id="2db97-123">For the sake of simplicity, this example sets this value to 10.</span></span> <span data-ttu-id="2db97-124">V produkčním prostředí je potřeba obvykle ho nastavit na vyšší hodnoty; například 1024.</span><span class="sxs-lookup"><span data-stu-id="2db97-124">In production, it should usually be set to higher values; for example, 1024.</span></span>
-10. <span data-ttu-id="2db97-125">Vytvořte novou třídu s názvem **LoggerBolt** následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="2db97-125">Create a new class called **LoggerBolt** with the following code:</span></span>
+    <span data-ttu-id="a648a-122">Hello hodnotu **eventhub.receiver.credits** Určuje, kolik události jsou zpracovat v dávce před uvolněním je toohello Storm kanálu.</span><span class="sxs-lookup"><span data-stu-id="a648a-122">hello value for **eventhub.receiver.credits** determines how many events are batched before releasing them toohello Storm pipeline.</span></span> <span data-ttu-id="a648a-123">Tento příklad pro hello zájmu jednoduchost, nastaví too10 tuto hodnotu.</span><span class="sxs-lookup"><span data-stu-id="a648a-123">For hello sake of simplicity, this example sets this value too10.</span></span> <span data-ttu-id="a648a-124">V produkčním prostředí je potřeba obvykle ho nastavit hodnoty toohigher; například 1024.</span><span class="sxs-lookup"><span data-stu-id="a648a-124">In production, it should usually be set toohigher values; for example, 1024.</span></span>
+10. <span data-ttu-id="a648a-125">Vytvořte novou třídu s názvem **LoggerBolt** s hello následující kód:</span><span class="sxs-lookup"><span data-stu-id="a648a-125">Create a new class called **LoggerBolt** with hello following code:</span></span>
     
     ```java
     import java.util.Map;
@@ -130,8 +130,8 @@ ms.lasthandoff: 08/18/2017
     }
     ```
     
-    <span data-ttu-id="2db97-126">Touto funkcí bolt Storm zaznamená obsah přijatých událostí.</span><span class="sxs-lookup"><span data-stu-id="2db97-126">This Storm bolt logs the content of the received events.</span></span> <span data-ttu-id="2db97-127">To lze snadno rozšířit k uložení řazených kolekcí členů v úložišti služby.</span><span class="sxs-lookup"><span data-stu-id="2db97-127">This can easily be extended to store tuples in a storage service.</span></span> <span data-ttu-id="2db97-128">[HDInsight senzor analysis kurzu] používá tento stejný přístup k ukládání dat do HBase.</span><span class="sxs-lookup"><span data-stu-id="2db97-128">The [HDInsight sensor analysis tutorial] uses this same approach to store data into HBase.</span></span>
-11. <span data-ttu-id="2db97-129">Vytvoření třídy s názvem **LogTopology** následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="2db97-129">Create a class called **LogTopology** with the following code:</span></span>
+    <span data-ttu-id="a648a-126">Touto funkcí bolt Storm zaznamená obsah hello hello přijatých událostí.</span><span class="sxs-lookup"><span data-stu-id="a648a-126">This Storm bolt logs hello content of hello received events.</span></span> <span data-ttu-id="a648a-127">To lze snadno rozšířit toostore řazených kolekcí členů v úložišti služby.</span><span class="sxs-lookup"><span data-stu-id="a648a-127">This can easily be extended toostore tuples in a storage service.</span></span> <span data-ttu-id="a648a-128">Hello [HDInsight senzor analysis kurzu] používá tato stejné toostore data přístup do HBase.</span><span class="sxs-lookup"><span data-stu-id="a648a-128">hello [HDInsight sensor analysis tutorial] uses this same approach toostore data into HBase.</span></span>
+11. <span data-ttu-id="a648a-129">Vytvoření třídy s názvem **LogTopology** s hello následující kód:</span><span class="sxs-lookup"><span data-stu-id="a648a-129">Create a class called **LogTopology** with hello following code:</span></span>
     
     ```java
     import java.io.FileReader;
@@ -182,9 +182,9 @@ ms.lasthandoff: 08/18/2017
                     namespaceName, entityPath, partitionCount, zkEndpointAddress,
                     checkpointIntervalInSeconds, receiverCredits);
         
-            // set the number of workers to be the same as partition number.
-            // the idea is to have a spout and a logger bolt co-exist in one
-            // worker to avoid shuffling messages across workers in storm cluster.
+            // set hello number of workers toobe hello same as partition number.
+            // hello idea is toohave a spout and a logger bolt co-exist in one
+            // worker tooavoid shuffling messages across workers in storm cluster.
             numWorkers = spoutConfig.getPartitionCount();
         
             if (args.length > 0) {
@@ -235,19 +235,19 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-    <span data-ttu-id="2db97-130">Tato třída se vytvoří novou funkcí spout Event Hubs pomocí vlastnosti v konfiguračním souboru vytvořit jeho instanci.</span><span class="sxs-lookup"><span data-stu-id="2db97-130">This class creates a new Event Hubs spout, using the properties in the configuration file to instantiate it.</span></span> <span data-ttu-id="2db97-131">Je důležité si uvědomit, že tento příklad vytvoří tolik funkcích spouts úlohy jako počet oddílů v Centru událostí, aby bylo možné používat maximální paralelismus povolenou tohoto centra událostí.</span><span class="sxs-lookup"><span data-stu-id="2db97-131">It is important to note that this example creates as many spouts tasks as the number of partitions in the event hub, in order to use the maximum parallelism allowed by that event hub.</span></span>
+    <span data-ttu-id="a648a-130">Tato třída se vytvoří novou funkcí spout centra událostí pomocí vlastností hello v hello konfigurační soubor tooinstantiate ho.</span><span class="sxs-lookup"><span data-stu-id="a648a-130">This class creates a new Event Hubs spout, using hello properties in hello configuration file tooinstantiate it.</span></span> <span data-ttu-id="a648a-131">Je důležité, že toonote, který tento příklad vytvoří jako mnoho spouts úlohy jako hello počet oddílů v Centru událostí hello v pořadí toouse hello maximální paralelismus povolenou tohoto centra událostí.</span><span class="sxs-lookup"><span data-stu-id="a648a-131">It is important toonote that this example creates as many spouts tasks as hello number of partitions in hello event hub, in order toouse hello maximum parallelism allowed by that event hub.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="2db97-132">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2db97-132">Next steps</span></span>
-<span data-ttu-id="2db97-133">Další informace o službě Event Hubs najdete na následujících odkazech:</span><span class="sxs-lookup"><span data-stu-id="2db97-133">You can learn more about Event Hubs by visiting the following links:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a648a-132">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a648a-132">Next steps</span></span>
+<span data-ttu-id="a648a-133">Další informace o službě Event Hubs návštěvou hello následující odkazy:</span><span class="sxs-lookup"><span data-stu-id="a648a-133">You can learn more about Event Hubs by visiting hello following links:</span></span>
 
-* <span data-ttu-id="2db97-134">[Přehled služby Event Hubs][Event Hubs overview]</span><span class="sxs-lookup"><span data-stu-id="2db97-134">[Event Hubs overview][Event Hubs overview]</span></span>
-* [<span data-ttu-id="2db97-135">Vytvoření centra událostí</span><span class="sxs-lookup"><span data-stu-id="2db97-135">Create an event hub</span></span>](event-hubs-create.md)
-* [<span data-ttu-id="2db97-136">Nejčastější dotazy k Event Hubs</span><span class="sxs-lookup"><span data-stu-id="2db97-136">Event Hubs FAQ</span></span>](event-hubs-faq.md)
+* <span data-ttu-id="a648a-134">[Přehled služby Event Hubs][Event Hubs overview]</span><span class="sxs-lookup"><span data-stu-id="a648a-134">[Event Hubs overview][Event Hubs overview]</span></span>
+* [<span data-ttu-id="a648a-135">Vytvoření centra událostí</span><span class="sxs-lookup"><span data-stu-id="a648a-135">Create an event hub</span></span>](event-hubs-create.md)
+* [<span data-ttu-id="a648a-136">Nejčastější dotazy k Event Hubs</span><span class="sxs-lookup"><span data-stu-id="a648a-136">Event Hubs FAQ</span></span>](event-hubs-faq.md)
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
-<span data-ttu-id="2db97-137">[HDInsight senzor analysis kurzu]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md</span><span class="sxs-lookup"><span data-stu-id="2db97-137">[HDInsight sensor analysis tutorial]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md</span></span>
+[HDInsight senzor analysis kurzu]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 
 <!-- Images -->
 

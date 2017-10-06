@@ -1,6 +1,6 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell - přiřadit vlastní doménu do webové aplikace | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell - přiřadit vlastní doménu do webové aplikace"
+title: "aaaAzure ukázkový skript prostředí PowerShell - přiřadit vlastní domény tooa webové aplikace | Microsoft Docs"
+description: "Azure ukázkový skript prostředí PowerShell - přiřadit vlastní domény tooa webové aplikace"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -15,44 +15,44 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d25fe8098848fc69470c77e3200bee554c1f875
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 10224e800588019626ef25cbba4a926096779920
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-a-custom-domain-to-a-web-app"></a><span data-ttu-id="c3aae-103">Přiřadit vlastní doménu do webové aplikace</span><span class="sxs-lookup"><span data-stu-id="c3aae-103">Assign a custom domain to a web app</span></span>
+# <a name="assign-a-custom-domain-tooa-web-app"></a><span data-ttu-id="de917-103">Přiřadit vlastní domény tooa webové aplikace</span><span class="sxs-lookup"><span data-stu-id="de917-103">Assign a custom domain tooa web app</span></span>
 
-<span data-ttu-id="c3aae-104">Tento ukázkový skript vytvoří webovou aplikaci ve službě App Service se jeho souvisejících prostředků a potom mapuje `www.<yourdomain>` k němu.</span><span class="sxs-lookup"><span data-stu-id="c3aae-104">This sample script creates a web app in App Service with its related resources, and then maps `www.<yourdomain>` to it.</span></span> 
+<span data-ttu-id="de917-104">Tento ukázkový skript vytvoří webovou aplikaci ve službě App Service se jeho souvisejících prostředků a potom mapuje `www.<yourdomain>` tooit.</span><span class="sxs-lookup"><span data-stu-id="de917-104">This sample script creates a web app in App Service with its related resources, and then maps `www.<yourdomain>` tooit.</span></span> 
 
-<span data-ttu-id="c3aae-105">V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure.</span><span class="sxs-lookup"><span data-stu-id="c3aae-105">If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/overview), and then run `Login-AzureRmAccount` to create a connection with Azure.</span></span> <span data-ttu-id="c3aae-106">Navíc musíte mít přístup na stránku konfigurace DNS doménového registrátora.</span><span class="sxs-lookup"><span data-stu-id="c3aae-106">Also, you need to have access to your domain registrar's DNS configuration page.</span></span>
+<span data-ttu-id="de917-105">V případě potřeby nainstalujte prostředí Azure PowerShell pomocí hello instrukce najít v hello hello [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` toocreate připojení s Azure.</span><span class="sxs-lookup"><span data-stu-id="de917-105">If needed, install hello Azure PowerShell using hello instruction found in hello [Azure PowerShell guide](/powershell/azure/overview), and then run `Login-AzureRmAccount` toocreate a connection with Azure.</span></span> <span data-ttu-id="de917-106">Navíc musíte toohave přístup tooyour doménového registrátora na stránku konfigurace služby DNS.</span><span class="sxs-lookup"><span data-stu-id="de917-106">Also, you need toohave access tooyour domain registrar's DNS configuration page.</span></span>
 
-## <a name="sample-script"></a><span data-ttu-id="c3aae-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="c3aae-107">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="de917-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="de917-107">Sample script</span></span>
 
-<span data-ttu-id="c3aae-108">[!code-powershell[hlavní](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "přiřadit vlastní doménu do webové aplikace")]</span><span class="sxs-lookup"><span data-stu-id="c3aae-108">[!code-powershell[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "Assign a custom domain to a web app")]</span></span>
+[!code-powershell[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "Assign a custom domain tooa web app")]
 
-## <a name="clean-up-deployment"></a><span data-ttu-id="c3aae-109">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="c3aae-109">Clean up deployment</span></span> 
+## <a name="clean-up-deployment"></a><span data-ttu-id="de917-108">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="de917-108">Clean up deployment</span></span> 
 
-<span data-ttu-id="c3aae-110">Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="c3aae-110">After the script sample has been run, the following command can be used to remove the resource group, web app, and all related resources.</span></span>
+<span data-ttu-id="de917-109">Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello, webové aplikace a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="de917-109">After hello script sample has been run, hello following command can be used tooremove hello resource group, web app, and all related resources.</span></span>
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="script-explanation"></a><span data-ttu-id="c3aae-111">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="c3aae-111">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="de917-110">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="de917-110">Script explanation</span></span>
 
-<span data-ttu-id="c3aae-112">Tento skript používá následující příkazy.</span><span class="sxs-lookup"><span data-stu-id="c3aae-112">This script uses the following commands.</span></span> <span data-ttu-id="c3aae-113">Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.</span><span class="sxs-lookup"><span data-stu-id="c3aae-113">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="de917-111">Tento skript používá hello následující příkazy.</span><span class="sxs-lookup"><span data-stu-id="de917-111">This script uses hello following commands.</span></span> <span data-ttu-id="de917-112">Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.</span><span class="sxs-lookup"><span data-stu-id="de917-112">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="c3aae-114">Příkaz</span><span class="sxs-lookup"><span data-stu-id="c3aae-114">Command</span></span> | <span data-ttu-id="c3aae-115">Poznámky</span><span class="sxs-lookup"><span data-stu-id="c3aae-115">Notes</span></span> |
+| <span data-ttu-id="de917-113">Příkaz</span><span class="sxs-lookup"><span data-stu-id="de917-113">Command</span></span> | <span data-ttu-id="de917-114">Poznámky</span><span class="sxs-lookup"><span data-stu-id="de917-114">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="c3aae-116">Nový AzureRmResourceGroup</span><span class="sxs-lookup"><span data-stu-id="c3aae-116">New-AzureRmResourceGroup</span></span>](/powershell/module/azurerm.resources/new-azurermresourcegroup) | <span data-ttu-id="c3aae-117">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="c3aae-117">Creates a resource group in which all resources are stored.</span></span> |
-| [<span data-ttu-id="c3aae-118">Nové AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="c3aae-118">New-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/new-azurermappserviceplan) | <span data-ttu-id="c3aae-119">Vytvoří plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="c3aae-119">Creates an App Service plan.</span></span> |
-| [<span data-ttu-id="c3aae-120">Nové AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="c3aae-120">New-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/new-azurermwebapp) | <span data-ttu-id="c3aae-121">Vytvoří webovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="c3aae-121">Creates a web app.</span></span> |
-| [<span data-ttu-id="c3aae-122">Set-AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="c3aae-122">Set-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/set-azurermappserviceplan) | <span data-ttu-id="c3aae-123">Upravuje plán služby App Service změnit jeho cenovou úroveň.</span><span class="sxs-lookup"><span data-stu-id="c3aae-123">Modifies an App Service plan to change its pricing tier.</span></span> |
-| [<span data-ttu-id="c3aae-124">Set-AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="c3aae-124">Set-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/set-azurermwebapp) | <span data-ttu-id="c3aae-125">Upraví konfiguraci webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="c3aae-125">Modifies a web app's configuration.</span></span> |
+| [<span data-ttu-id="de917-115">Nový AzureRmResourceGroup</span><span class="sxs-lookup"><span data-stu-id="de917-115">New-AzureRmResourceGroup</span></span>](/powershell/module/azurerm.resources/new-azurermresourcegroup) | <span data-ttu-id="de917-116">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="de917-116">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="de917-117">Nové AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="de917-117">New-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/new-azurermappserviceplan) | <span data-ttu-id="de917-118">Vytvoří plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="de917-118">Creates an App Service plan.</span></span> |
+| [<span data-ttu-id="de917-119">Nové AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="de917-119">New-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/new-azurermwebapp) | <span data-ttu-id="de917-120">Vytvoří webovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="de917-120">Creates a web app.</span></span> |
+| [<span data-ttu-id="de917-121">Set-AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="de917-121">Set-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/set-azurermappserviceplan) | <span data-ttu-id="de917-122">Upravuje toochange plán App Service jeho cenovou úroveň.</span><span class="sxs-lookup"><span data-stu-id="de917-122">Modifies an App Service plan toochange its pricing tier.</span></span> |
+| [<span data-ttu-id="de917-123">Set-AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="de917-123">Set-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/set-azurermwebapp) | <span data-ttu-id="de917-124">Upraví konfiguraci webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="de917-124">Modifies a web app's configuration.</span></span> |
 
-## <a name="next-steps"></a><span data-ttu-id="c3aae-126">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c3aae-126">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="de917-125">Další kroky</span><span class="sxs-lookup"><span data-stu-id="de917-125">Next steps</span></span>
 
-<span data-ttu-id="c3aae-127">Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="c3aae-127">For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
+<span data-ttu-id="de917-126">Další informace o modulu Azure PowerShell hello najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="de917-126">For more information on hello Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
 
-<span data-ttu-id="c3aae-128">Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="c3aae-128">Additional Azure Powershell samples for Azure App Service Web Apps can be found in the [Azure PowerShell samples](../app-service-powershell-samples.md).</span></span>
+<span data-ttu-id="de917-127">Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v hello [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="de917-127">Additional Azure Powershell samples for Azure App Service Web Apps can be found in hello [Azure PowerShell samples](../app-service-powershell-samples.md).</span></span>

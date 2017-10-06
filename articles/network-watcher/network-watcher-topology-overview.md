@@ -1,6 +1,6 @@
 ---
-title: "Úvod do topologii sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje přehled možností topologie sledovací proces sítě"
+title: "aaaIntroduction tootopology v sledovací proces sítě Azure | Microsoft Docs"
+description: "Tato stránka obsahuje přehled možností topologie hello sledovací proces sítě"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fa1c5518e4a25a5db999d898a9ee19fd0121db7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-topology-in-azure-network-watcher"></a><span data-ttu-id="5523c-103">Úvod do topologii sledovací proces sítě Azure</span><span class="sxs-lookup"><span data-stu-id="5523c-103">Introduction to topology in Azure Network Watcher</span></span>
+# <a name="introduction-tootopology-in-azure-network-watcher"></a><span data-ttu-id="f56ea-103">Úvod tootopology v sledovací proces sítě Azure</span><span class="sxs-lookup"><span data-stu-id="f56ea-103">Introduction tootopology in Azure Network Watcher</span></span>
 
-<span data-ttu-id="5523c-104">Topologie vrátí graf síťovým prostředkům ve virtuální síti.</span><span class="sxs-lookup"><span data-stu-id="5523c-104">Topology returns a graph of network resources in a virtual network.</span></span> <span data-ttu-id="5523c-105">Graf znázorňuje propojení mezi prostředky představující koncové síťové připojení.</span><span class="sxs-lookup"><span data-stu-id="5523c-105">The graph depicts the interconnection between the resources to represent the end to end network connectivity.</span></span>
+<span data-ttu-id="f56ea-104">Topologie vrátí graf síťovým prostředkům ve virtuální síti.</span><span class="sxs-lookup"><span data-stu-id="f56ea-104">Topology returns a graph of network resources in a virtual network.</span></span> <span data-ttu-id="f56ea-105">Hello graf znázorňuje hello propojení mezi hello prostředky toorepresent hello end tooend připojení k síti.</span><span class="sxs-lookup"><span data-stu-id="f56ea-105">hello graph depicts hello interconnection between hello resources toorepresent hello end tooend network connectivity.</span></span>
 
 ![Přehled topologie][1]
 
-<span data-ttu-id="5523c-107">Na portálu, vrátí topologie objektů prostředků v na základě virtuální sítě.</span><span class="sxs-lookup"><span data-stu-id="5523c-107">In the portal, Topology returns the resource objects on a per virtual network basis.</span></span> <span data-ttu-id="5523c-108">Vztahy, jsou použité v ukázkách linkami mezi prostředky prostředky mimo oblast sledovací proces sítě, i když v prostředku skupiny se nezobrazí.</span><span class="sxs-lookup"><span data-stu-id="5523c-108">The relationships are depicted by lines between the resources Resources outside of the Network Watcher region, even if in the resource group will not be displayed.</span></span> <span data-ttu-id="5523c-109">Prostředky, vrátí se v zobrazení portálu, jsou podmnožinou síťové součásti, které vykreslovacích.</span><span class="sxs-lookup"><span data-stu-id="5523c-109">The resources returned in the portal view are a subset of the networking components that are graphed.</span></span> <span data-ttu-id="5523c-110">Pokud chcete zobrazit úplný seznam síťových prostředků, můžete použít [prostředí PowerShell](network-watcher-topology-powershell.md) nebo [REST](network-watcher-topology-rest.md)</span><span class="sxs-lookup"><span data-stu-id="5523c-110">To see the full list of networking resources you can use [PowerShell](network-watcher-topology-powershell.md) or [REST](network-watcher-topology-rest.md)</span></span>
+<span data-ttu-id="f56ea-107">Topologie hello portálu, vrátí hello objektů prostředků v na základě virtuální sítě.</span><span class="sxs-lookup"><span data-stu-id="f56ea-107">In hello portal, Topology returns hello resource objects on a per virtual network basis.</span></span> <span data-ttu-id="f56ea-108">vztahy Hello, jsou použité v ukázkách linkami mezi prostředky hello prostředky mimo oblast hello sledovací proces sítě, i v případě, že v hello prostředku skupiny se nezobrazí.</span><span class="sxs-lookup"><span data-stu-id="f56ea-108">hello relationships are depicted by lines between hello resources Resources outside of hello Network Watcher region, even if in hello resource group will not be displayed.</span></span> <span data-ttu-id="f56ea-109">Hello prostředky, vrátí se v zobrazení portálu hello jsou podmnožinou hello síťové součásti, které vykreslovacích.</span><span class="sxs-lookup"><span data-stu-id="f56ea-109">hello resources returned in hello portal view are a subset of hello networking components that are graphed.</span></span> <span data-ttu-id="f56ea-110">Úplný seznam toosee hello síťové prostředky můžete použít [prostředí PowerShell](network-watcher-topology-powershell.md) nebo [REST](network-watcher-topology-rest.md)</span><span class="sxs-lookup"><span data-stu-id="f56ea-110">toosee hello full list of networking resources you can use [PowerShell](network-watcher-topology-powershell.md) or [REST](network-watcher-topology-rest.md)</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="5523c-111">V každé oblasti, kterou chcete spustit topologie na je vyžadován instanci sledovací proces sítě.</span><span class="sxs-lookup"><span data-stu-id="5523c-111">An instance of Network Watcher is required in each region that you want to run Topology on.</span></span>
+> <span data-ttu-id="f56ea-111">V každé oblasti, které chcete toorun topologie na je vyžadován instanci sledovací proces sítě.</span><span class="sxs-lookup"><span data-stu-id="f56ea-111">An instance of Network Watcher is required in each region that you want toorun Topology on.</span></span>
 
-<span data-ttu-id="5523c-112">Prostředky jsou vrácený připojení mezi nimi jsou modelovat v dva vztahy.</span><span class="sxs-lookup"><span data-stu-id="5523c-112">As resources are returned the connection between them are modeled under two relationships.</span></span>
+<span data-ttu-id="f56ea-112">Prostředky jsou vrácený hello připojení mezi nimi jsou modelovat v dva vztahy.</span><span class="sxs-lookup"><span data-stu-id="f56ea-112">As resources are returned hello connection between them are modeled under two relationships.</span></span>
 
-- <span data-ttu-id="5523c-113">**Členství ve skupině** – příklad: virtuální síť obsahuje podsítě, který obsahuje síťový adaptér</span><span class="sxs-lookup"><span data-stu-id="5523c-113">**Containment** - Example: Virtual Network contains a Subnet which contains a NIC</span></span>
-- <span data-ttu-id="5523c-114">**Související** – příklad: síťový adaptér A je přidružený virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="5523c-114">**Associated** - Example: A NIC is associated with a VM</span></span>
+- <span data-ttu-id="f56ea-113">**Členství ve skupině** – příklad: virtuální síť obsahuje podsítě, který obsahuje síťový adaptér</span><span class="sxs-lookup"><span data-stu-id="f56ea-113">**Containment** - Example: Virtual Network contains a Subnet which contains a NIC</span></span>
+- <span data-ttu-id="f56ea-114">**Související** – příklad: síťový adaptér A je přidružený virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="f56ea-114">**Associated** - Example: A NIC is associated with a VM</span></span>
 
-### <a name="next-steps"></a><span data-ttu-id="5523c-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="5523c-115">Next steps</span></span>
+### <a name="next-steps"></a><span data-ttu-id="f56ea-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="f56ea-115">Next steps</span></span>
 
-<span data-ttu-id="5523c-116">Další informace o použití prostředí PowerShell k načtení zobrazení topologie navštivte stránky [sledovací proces sítě topologie pomocí prostředí PowerShell](network-watcher-topology-powershell.md)</span><span class="sxs-lookup"><span data-stu-id="5523c-116">Learn how to use PowerShell to retrieve the Topology view by visiting [Network Watcher topology with PowerShell](network-watcher-topology-powershell.md)</span></span>
+<span data-ttu-id="f56ea-116">Zjistěte, jak toouse prostředí PowerShell tooretrieve hello topologie zobrazit tak, že navštívíte [sledovací proces sítě topologie pomocí prostředí PowerShell](network-watcher-topology-powershell.md)</span><span class="sxs-lookup"><span data-stu-id="f56ea-116">Learn how toouse PowerShell tooretrieve hello Topology view by visiting [Network Watcher topology with PowerShell](network-watcher-topology-powershell.md)</span></span>
 
 <!--Image references-->
 

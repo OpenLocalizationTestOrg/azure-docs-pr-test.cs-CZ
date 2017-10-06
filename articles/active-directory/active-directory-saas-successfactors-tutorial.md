@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SuccessFactors | Microsoft Docs'
-description: "Další informace o použití SuccessFactors s Azure Active Directory umožňující jednotné přihlašování, automatického zřizování a další!"
+description: "Zjistěte, jak toouse SuccessFactors s Azure Active Directory tooenable jednotné přihlašování, automatického zřizování a další!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,103 +14,103 @@ ms.workload: identity
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3f7895d7d5e26fda27f555ae2f14a1645b50dcba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a><span data-ttu-id="b9edf-103">Kurz: Azure Active Directory integrace s SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="b9edf-103">Tutorial: Azure Active Directory integration with SuccessFactors</span></span>
-<span data-ttu-id="b9edf-104">Cílem tohoto kurzu je ukazují, jak integrovat SuccessFactors s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="b9edf-104">The objective of this tutorial is to show you how to integrate SuccessFactors with Azure Active Directory (Azure AD).</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a><span data-ttu-id="0d4ad-103">Kurz: Azure Active Directory integrace s SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="0d4ad-103">Tutorial: Azure Active Directory integration with SuccessFactors</span></span>
+<span data-ttu-id="0d4ad-104">cílem Hello tohoto kurzu je tooshow můžete jak toointegrate SuccessFactors s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-104">hello objective of this tutorial is tooshow you how toointegrate SuccessFactors with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="b9edf-105">Integrace SuccessFactors s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="b9edf-105">Integrating SuccessFactors with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="0d4ad-105">Integrace SuccessFactors s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-105">Integrating SuccessFactors with Azure AD provides you with hello following benefits:</span></span>
 
-* <span data-ttu-id="b9edf-106">Můžete řídit ve službě Azure AD, který má přístup k SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="b9edf-106">You can control in Azure AD who has access to SuccessFactors</span></span>
-* <span data-ttu-id="b9edf-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k SuccessFactors (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="b9edf-107">You can enable your users to automatically get signed-on to SuccessFactors (Single Sign-On) with their Azure AD accounts</span></span>
-* <span data-ttu-id="b9edf-108">Můžete spravovat vaše účty v jednom centrálním místě – portál Azure classic</span><span class="sxs-lookup"><span data-stu-id="b9edf-108">You can manage your accounts in one central location - the Azure classic portal</span></span>
+* <span data-ttu-id="0d4ad-106">Můžete řídit ve službě Azure AD, který má přístup tooSuccessFactors</span><span class="sxs-lookup"><span data-stu-id="0d4ad-106">You can control in Azure AD who has access tooSuccessFactors</span></span>
+* <span data-ttu-id="0d4ad-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooSuccessFactors (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="0d4ad-107">You can enable your users tooautomatically get signed-on tooSuccessFactors (Single Sign-On) with their Azure AD accounts</span></span>
+* <span data-ttu-id="0d4ad-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portál Azure classic</span><span class="sxs-lookup"><span data-stu-id="0d4ad-108">You can manage your accounts in one central location - hello Azure classic portal</span></span>
 
-<span data-ttu-id="b9edf-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="b9edf-109">If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="0d4ad-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-109">If you want tooknow more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b9edf-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b9edf-110">Prerequisites</span></span>
-<span data-ttu-id="b9edf-111">Konfigurace integrace Azure AD s SuccessFactors, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-111">To configure Azure AD integration with SuccessFactors, you need the following items:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="0d4ad-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="0d4ad-110">Prerequisites</span></span>
+<span data-ttu-id="0d4ad-111">Integrace služby Azure AD s SuccessFactors tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-111">tooconfigure Azure AD integration with SuccessFactors, you need hello following items:</span></span>
 
-* <span data-ttu-id="b9edf-112">Platné předplatné Azure</span><span class="sxs-lookup"><span data-stu-id="b9edf-112">A valid Azure subscription</span></span>
-* <span data-ttu-id="b9edf-113">Klienta v SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="b9edf-113">A tenant in SuccessFactors</span></span>
+* <span data-ttu-id="0d4ad-112">Platné předplatné Azure</span><span class="sxs-lookup"><span data-stu-id="0d4ad-112">A valid Azure subscription</span></span>
+* <span data-ttu-id="0d4ad-113">Klienta v SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="0d4ad-113">A tenant in SuccessFactors</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b9edf-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="b9edf-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="0d4ad-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 > 
 > 
 
-<span data-ttu-id="b9edf-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="b9edf-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="0d4ad-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-* <span data-ttu-id="b9edf-116">Provozním prostředí byste neměli používat, pokud je to nutné.</span><span class="sxs-lookup"><span data-stu-id="b9edf-116">You should not use your production environment, unless this is necessary.</span></span>
-* <span data-ttu-id="b9edf-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="b9edf-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="0d4ad-116">Provozním prostředí byste neměli používat, pokud je to nutné.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-116">You should not use your production environment, unless this is necessary.</span></span>
+* <span data-ttu-id="0d4ad-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="b9edf-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="b9edf-118">Scenario description</span></span>
-<span data-ttu-id="b9edf-119">Cílem tohoto kurzu je vám umožní testování Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="b9edf-119">The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="0d4ad-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="0d4ad-118">Scenario description</span></span>
+<span data-ttu-id="0d4ad-119">cílem Hello tohoto kurzu je tooenable tootest Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-119">hello objective of this tutorial is tooenable you tootest Azure AD single sign-on in a test environment.</span></span>
 
-<span data-ttu-id="b9edf-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="b9edf-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+<span data-ttu-id="0d4ad-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="b9edf-121">Přidání SuccessFactors z Galerie</span><span class="sxs-lookup"><span data-stu-id="b9edf-121">Adding SuccessFactors from the gallery</span></span>
-2. <span data-ttu-id="b9edf-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b9edf-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="0d4ad-121">Přidání SuccessFactors z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="0d4ad-121">Adding SuccessFactors from hello gallery</span></span>
+2. <span data-ttu-id="0d4ad-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="0d4ad-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-successfactors-from-the-gallery"></a><span data-ttu-id="b9edf-123">Přidání SuccessFactors z Galerie</span><span class="sxs-lookup"><span data-stu-id="b9edf-123">Adding SuccessFactors from the gallery</span></span>
-<span data-ttu-id="b9edf-124">Při konfiguraci integrace SuccessFactors do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS SuccessFactors z galerie.</span><span class="sxs-lookup"><span data-stu-id="b9edf-124">To configure the integration of SuccessFactors into Azure AD, you need to add SuccessFactors from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-successfactors-from-hello-gallery"></a><span data-ttu-id="0d4ad-123">Přidání SuccessFactors z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="0d4ad-123">Adding SuccessFactors from hello gallery</span></span>
+<span data-ttu-id="0d4ad-124">tooconfigure hello integrace SuccessFactors do Azure AD, je nutné tooadd SuccessFactors hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-124">tooconfigure hello integration of SuccessFactors into Azure AD, you need tooadd SuccessFactors from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="b9edf-125">**Pokud chcete přidat SuccessFactors z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="b9edf-125">**To add SuccessFactors from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="0d4ad-125">**tooadd SuccessFactors z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="0d4ad-125">**tooadd SuccessFactors from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="b9edf-126">V portálu Azure classic, na levém navigačním panelu klikněte na **služby Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-126">In the Azure classic portal, on the left navigation panel, click **Active Directory**.</span></span>
+1. <span data-ttu-id="0d4ad-126">V hello portál Azure classic, na levém navigačním panelu hello, klikněte na **služby Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-126">In hello Azure classic portal, on hello left navigation panel, click **Active Directory**.</span></span>
    
     ![Konfigurace jednotného přihlašování][1]
-2. <span data-ttu-id="b9edf-128">Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.</span><span class="sxs-lookup"><span data-stu-id="b9edf-128">From the **Directory** list, select the directory for which you want to enable directory integration.</span></span>
-3. <span data-ttu-id="b9edf-129">Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.</span><span class="sxs-lookup"><span data-stu-id="b9edf-129">To open the applications view, in the directory view, click **Applications** in the top menu.</span></span>
+2. <span data-ttu-id="0d4ad-128">Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-128">From hello **Directory** list, select hello directory for which you want tooenable directory integration.</span></span>
+3. <span data-ttu-id="0d4ad-129">Klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-129">tooopen hello applications view, in hello directory view, click **Applications** in hello top menu.</span></span>
    
     ![Konfigurace jednotného přihlašování][2]
-4. <span data-ttu-id="b9edf-131">Klikněte na tlačítko **přidat** v dolní části stránky.</span><span class="sxs-lookup"><span data-stu-id="b9edf-131">Click **Add** at the bottom of the page.</span></span>
+4. <span data-ttu-id="0d4ad-131">Klikněte na tlačítko **přidat** na hello dolní části stránky hello.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-131">Click **Add** at hello bottom of hello page.</span></span>
    
     ![Aplikace][3]
-5. <span data-ttu-id="b9edf-133">Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-133">On the **What do you want to do** dialog, click **Add an application from the gallery**.</span></span>
+5. <span data-ttu-id="0d4ad-133">Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie hello**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-133">On hello **What do you want toodo** dialog, click **Add an application from hello gallery**.</span></span>
    
     ![Konfigurace jednotného přihlašování][4]
-6. <span data-ttu-id="b9edf-135">V **vyhledávacího pole**, typ **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-135">In the **search box**, type **SuccessFactors**.</span></span>
+6. <span data-ttu-id="0d4ad-135">V hello **vyhledávacího pole**, typ **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-135">In hello **search box**, type **SuccessFactors**.</span></span>
    
     ![Konfigurace jednotného přihlašování][5]
-7. <span data-ttu-id="b9edf-137">Na panelu výsledků vyberte **SuccessFactors**a potom klikněte na **Complete** tuto aplikaci přidat.</span><span class="sxs-lookup"><span data-stu-id="b9edf-137">In the results panel, select **SuccessFactors**, and then click **Complete** to add the application.</span></span>
+7. <span data-ttu-id="0d4ad-137">Na panelu výsledků hello vyberte **SuccessFactors**a potom klikněte na **Complete** tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-137">In hello results panel, select **SuccessFactors**, and then click **Complete** tooadd hello application.</span></span>
    
     ![Konfigurace jednotného přihlašování][6]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="b9edf-139">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b9edf-139">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="b9edf-140">Cílem této části je ukazují, jak nakonfigurovat a otestovat Azure AD jednotné přihlašování s SuccessFactors podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="b9edf-140">The objective of this section is to show you how to configure and test Azure AD single sign-on with SuccessFactors based on a test user called "Britta Simon".</span></span>
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="0d4ad-139">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="0d4ad-139">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="0d4ad-140">Hello cílem této části je tooshow vám jak tooconfigure a testování Azure AD jednotné přihlašování s SuccessFactors na základě testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="0d4ad-140">hello objective of this section is tooshow you how tooconfigure and test Azure AD single sign-on with SuccessFactors based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="b9edf-141">Pro jednotné přihlašování pro práci je potřeba vědět, co uživatel protějškem v SuccessFactors pro uživatele ve službě Azure AD je Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b9edf-141">For single sign-on to work, Azure AD needs to know what the counterpart user in SuccessFactors to an user in Azure AD is.</span></span> <span data-ttu-id="b9edf-142">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v SuccessFactors musí navázat.</span><span class="sxs-lookup"><span data-stu-id="b9edf-142">In other words, a link relationship between an Azure AD user and the related user in SuccessFactors needs to be established.</span></span>
+<span data-ttu-id="0d4ad-141">Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel hello protějškem v SuccessFactors tooan uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-141">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in SuccessFactors tooan user in Azure AD is.</span></span> <span data-ttu-id="0d4ad-142">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v SuccessFactors musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-142">In other words, a link relationship between an Azure AD user and hello related user in SuccessFactors needs toobe established.</span></span>
 
-<span data-ttu-id="b9edf-143">Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="b9edf-143">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in SuccessFactors.</span></span>
+<span data-ttu-id="0d4ad-143">Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-143">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in SuccessFactors.</span></span>
 
-<span data-ttu-id="b9edf-144">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SuccessFactors, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-144">To configure and test Azure AD single sign-on with SuccessFactors, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="0d4ad-144">tooconfigure a testu Azure AD jednotné přihlašování s SuccessFactors, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-144">tooconfigure and test Azure AD single sign-on with SuccessFactors, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="b9edf-145">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="b9edf-145">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="b9edf-146">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b9edf-146">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="b9edf-147">**[Vytvoření zkušebního uživatele SuccessFactors](#creating-a-successfactors-test-user)**  – Pokud chcete mít protějšek Britta Simon v SuccessFactors propojeném s Azure AD reprezentace jí.</span><span class="sxs-lookup"><span data-stu-id="b9edf-147">**[Creating a SuccessFactors test user](#creating-a-successfactors-test-user)** - to have a counterpart of Britta Simon in SuccessFactors that is linked to the Azure AD representation of her.</span></span>
-4. <span data-ttu-id="b9edf-148">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b9edf-148">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="b9edf-149">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="b9edf-149">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="0d4ad-145">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-145">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="0d4ad-146">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-146">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="0d4ad-147">**[Vytvoření zkušebního uživatele SuccessFactors](#creating-a-successfactors-test-user)**  -toohave protějšek Britta Simon v SuccessFactors, která je jí reprezentace toohello propojené služby Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-147">**[Creating a SuccessFactors test user](#creating-a-successfactors-test-user)** - toohave a counterpart of Britta Simon in SuccessFactors that is linked toohello Azure AD representation of her.</span></span>
+4. <span data-ttu-id="0d4ad-148">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-148">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="0d4ad-149">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-149">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="b9edf-150">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b9edf-150">Configuring Azure AD single sign-on</span></span>
-<span data-ttu-id="b9edf-151">V této části můžete povolit Azure AD jednotného přihlašování na portálu classic a nakonfigurovat jednotné přihlašování v aplikaci SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="b9edf-151">In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your SuccessFactors application.</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="0d4ad-150">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="0d4ad-150">Configuring Azure AD single sign-on</span></span>
+<span data-ttu-id="0d4ad-151">V této části můžete povolit Azure AD jednotné přihlašování v portálu classic hello a nakonfigurovat jednotné přihlašování v aplikaci SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-151">In this section, you enable Azure AD single sign-on in hello classic portal and configure single sign-on in your SuccessFactors application.</span></span>
 
-<span data-ttu-id="b9edf-152">**Ke konfiguraci Azure AD jednotné přihlašování s SuccessFactors, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="b9edf-152">**To configure Azure AD single sign-on with SuccessFactors, perform the following steps:**</span></span>
+<span data-ttu-id="0d4ad-152">**tooconfigure Azure AD jednotné přihlašování s SuccessFactors, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="0d4ad-152">**tooconfigure Azure AD single sign-on with SuccessFactors, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="b9edf-153">Na portálu Azure classic na **SuccessFactors** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** otevřete **nakonfigurovat jednotné přihlašování** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b9edf-153">In the Azure classic portal, on the **SuccessFactors** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On** dialog.</span></span>
+1. <span data-ttu-id="0d4ad-153">V portálu Azure classic, na hello hello **SuccessFactors** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** tooopen hello **nakonfigurovat jednotné přihlašování** Dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-153">In hello Azure classic portal, on hello **SuccessFactors** application integration page, click **Configure single sign-on** tooopen hello **Configure Single Sign On** dialog.</span></span>
    
     ![Konfigurace jednotného přihlašování][7]
-2. <span data-ttu-id="b9edf-155">Na **jak chcete uživatelům se přihlásit SuccessFactors** vyberte **Microsoft Azure AD Single Sign-On**a potom klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-155">On the **How would you like users to sign on to SuccessFactors** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.</span></span>
+2. <span data-ttu-id="0d4ad-155">Na hello **jak jste by například uživatelé toosign na tooSuccessFactors** vyberte **Microsoft Azure AD Single Sign-On**a potom klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-155">On hello **How would you like users toosign on tooSuccessFactors** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.</span></span>
    
     ![Konfigurace jednotného přihlašování][8]
-3. <span data-ttu-id="b9edf-157">Na **konfigurace adresy URL aplikace** stránky, proveďte následující kroky a pak klikněte na tlačítko **Další**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-157">On the **Configure App URL** page, perform the following steps, and then click **Next**.</span></span>
+3. <span data-ttu-id="0d4ad-157">Na hello **konfigurace adresy URL aplikace** stránky, proveďte hello následující kroky a pak klikněte na tlačítko **Další**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-157">On hello **Configure App URL** page, perform hello following steps, and then click **Next**.</span></span>
    
     ![Konfigurace jednotného přihlašování][9]
    
-    <span data-ttu-id="b9edf-159">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-159">a.</span></span> <span data-ttu-id="b9edf-160">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí jedné z následujících kritérií:</span><span class="sxs-lookup"><span data-stu-id="b9edf-160">In the **Sign On URL** textbox, type a URL using one of the following patterns:</span></span> 
+    <span data-ttu-id="0d4ad-159">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-159">a.</span></span> <span data-ttu-id="0d4ad-160">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí jedné z následujících vzory hello:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-160">In hello **Sign On URL** textbox, type a URL using one of hello following patterns:</span></span> 
    
     |  |
     | --- |
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/03/2017
     | `https://<company name>.successfactors.eu/<company name>` |
     | `https://<company name>.sapsf.eu` |
    
-    <span data-ttu-id="b9edf-161">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-161">b.</span></span> <span data-ttu-id="b9edf-162">V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí jedné z následujících kritérií:</span><span class="sxs-lookup"><span data-stu-id="b9edf-162">In the **Reply URL** textbox, type a URL using one of the following patterns:</span></span> 
+    <span data-ttu-id="0d4ad-161">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-161">b.</span></span> <span data-ttu-id="0d4ad-162">V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí jedné z následujících vzory hello:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-162">In hello **Reply URL** textbox, type a URL using one of hello following patterns:</span></span> 
    
     |  |
     | --- |
@@ -129,171 +129,171 @@ ms.lasthandoff: 08/03/2017
     | `https://<company name>.sapsf.eu` |
     | `https://<company name>.sapsf.eu/<company name>` |
    
-    <span data-ttu-id="b9edf-163">c.</span><span class="sxs-lookup"><span data-stu-id="b9edf-163">c.</span></span> <span data-ttu-id="b9edf-164">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-164">Click **Next**.</span></span> 
+    <span data-ttu-id="0d4ad-163">c.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-163">c.</span></span> <span data-ttu-id="0d4ad-164">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-164">Click **Next**.</span></span> 
 
     > [!NOTE]
-    > <span data-ttu-id="b9edf-165">Upozorňujeme, že tyto nejsou skutečné hodnoty.</span><span class="sxs-lookup"><span data-stu-id="b9edf-165">Please note that these are not the real values.</span></span> <span data-ttu-id="b9edf-166">Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresa URL a adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="b9edf-166">You have to update these values with the actual Sign On URL and Reply URL.</span></span> <span data-ttu-id="b9edf-167">Chcete-li získat tyto hodnoty, obraťte se na [tým podpory SuccessFactors](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="b9edf-167">To get these values, contact [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
+    > <span data-ttu-id="0d4ad-165">Upozorňujeme, že tyto nejsou hello skutečné hodnoty.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-165">Please note that these are not hello real values.</span></span> <span data-ttu-id="0d4ad-166">Máte tooupdate tyto hodnoty pomocí hello skutečné přihlašovací adresa URL a odpovědi adresy URL.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-166">You have tooupdate these values with hello actual Sign On URL and Reply URL.</span></span> <span data-ttu-id="0d4ad-167">Obraťte se na tooget tyto hodnoty [tým podpory SuccessFactors](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-167">tooget these values, contact [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
 
-1. <span data-ttu-id="b9edf-168">Na **nakonfigurovat jednotné přihlašování v SuccessFactors** klikněte na tlačítko **stažení certifikátu**a potom uložte soubor certifikátu místně na vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="b9edf-168">On the **Configure single sign-on at SuccessFactors** page, click **Download certificate**, and then save the certificate file locally on your computer.</span></span>
+1. <span data-ttu-id="0d4ad-168">Na hello **nakonfigurovat jednotné přihlašování v SuccessFactors** klikněte na tlačítko **stažení certifikátu**a potom uložte soubor certifikátu hello místně na vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-168">On hello **Configure single sign-on at SuccessFactors** page, click **Download certificate**, and then save hello certificate file locally on your computer.</span></span>
    
     ![Konfigurace jednotného přihlašování][10]
 
-2. <span data-ttu-id="b9edf-170">V okně prohlížeče jiný web, přihlaste se k vaší **portál pro správu SuccessFactors** jako správce.</span><span class="sxs-lookup"><span data-stu-id="b9edf-170">In a different web browser window, log into your **SuccessFactors admin portal** as an administrator.</span></span>
+2. <span data-ttu-id="0d4ad-170">V okně prohlížeče jiný web, přihlaste se k vaší **portál pro správu SuccessFactors** jako správce.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-170">In a different web browser window, log into your **SuccessFactors admin portal** as an administrator.</span></span>
 
-3. <span data-ttu-id="b9edf-171">Navštivte **zabezpečení aplikací** a nativní pro **jeden znak na funkci**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-171">Visit **Application Security** and native to **Single Sign On Feature**.</span></span> 
+3. <span data-ttu-id="0d4ad-171">Navštivte **zabezpečení aplikací** a nativní příliš**jeden znak na funkci**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-171">Visit **Application Security** and native too**Single Sign On Feature**.</span></span> 
 
-4. <span data-ttu-id="b9edf-172">Umístění všechny hodnoty v **resetovat tokenu** a klikněte na tlačítko **uložit tokenu** umožňující jednotného přihlašování SAML.</span><span class="sxs-lookup"><span data-stu-id="b9edf-172">Place any value in the **Reset Token** and click **Save Token** to enable SAML SSO.</span></span>
+4. <span data-ttu-id="0d4ad-172">Umístění všechny hodnoty v hello **resetovat tokenu** a klikněte na tlačítko **uložit tokenu** tooenable jednotné přihlašování SAML.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-172">Place any value in hello **Reset Token** and click **Save Token** tooenable SAML SSO.</span></span>
    
     ![Konfigurace jednotného přihlašování na straně aplikace][11]
 
     > [!NOTE] 
-    > <span data-ttu-id="b9edf-174">Tato hodnota se právě používá jako přepínač zapnout nebo vypnout.</span><span class="sxs-lookup"><span data-stu-id="b9edf-174">This value is just used as the on/off switch.</span></span> <span data-ttu-id="b9edf-175">Pokud je uloženo žádnou hodnotu, jednotné přihlašování SAML je ON.</span><span class="sxs-lookup"><span data-stu-id="b9edf-175">If any value is saved, the SAML SSO is ON.</span></span> <span data-ttu-id="b9edf-176">Pokud je uloženo na prázdnou hodnotu jednotné přihlašování SAML je VYPNUTÝ.</span><span class="sxs-lookup"><span data-stu-id="b9edf-176">If a blank value is saved the SAML SSO is OFF.</span></span>
+    > <span data-ttu-id="0d4ad-174">Tato hodnota se právě používá jako hello zapnout nebo vypnout přepínače.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-174">This value is just used as hello on/off switch.</span></span> <span data-ttu-id="0d4ad-175">Pokud je uloženo žádnou hodnotu, je hello jednotné přihlašování SAML ON.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-175">If any value is saved, hello SAML SSO is ON.</span></span> <span data-ttu-id="0d4ad-176">Pokud je uloženo na prázdnou hodnotu hello jednotné přihlašování SAML je VYPNUTÝ.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-176">If a blank value is saved hello SAML SSO is OFF.</span></span>
 
-1. <span data-ttu-id="b9edf-177">Nativní na následující snímek obrazovky a proveďte následující akce.</span><span class="sxs-lookup"><span data-stu-id="b9edf-177">Native to below screenshot and perform the following actions.</span></span>
+1. <span data-ttu-id="0d4ad-177">Snímek obrazovky nativní toobelow a proveďte následující akce hello.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-177">Native toobelow screenshot and perform hello following actions.</span></span>
    
     ![Konfigurace jednotného přihlašování na straně aplikace][12]
    
-    <span data-ttu-id="b9edf-179">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-179">a.</span></span> <span data-ttu-id="b9edf-180">Vyberte **jednotné přihlašování SAML v2** přepínač</span><span class="sxs-lookup"><span data-stu-id="b9edf-180">Select the **SAML v2 SSO** Radio Button</span></span>
+    <span data-ttu-id="0d4ad-179">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-179">a.</span></span> <span data-ttu-id="0d4ad-180">Vyberte hello **jednotné přihlašování SAML v2** přepínač</span><span class="sxs-lookup"><span data-stu-id="0d4ad-180">Select hello **SAML v2 SSO** Radio Button</span></span>
    
-    <span data-ttu-id="b9edf-181">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-181">b.</span></span> <span data-ttu-id="b9edf-182">Nastavte Name(e.g. SAml issuer + company name) strany potvrzující SAML.</span><span class="sxs-lookup"><span data-stu-id="b9edf-182">Set the SAML Asserting Party Name(e.g. SAml issuer + company name).</span></span>
+    <span data-ttu-id="0d4ad-181">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-181">b.</span></span> <span data-ttu-id="0d4ad-182">Nastavte hello Name(e.g. SAml issuer + company name) strany potvrzující SAML.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-182">Set hello SAML Asserting Party Name(e.g. SAml issuer + company name).</span></span>
    
-    <span data-ttu-id="b9edf-183">c.</span><span class="sxs-lookup"><span data-stu-id="b9edf-183">c.</span></span> <span data-ttu-id="b9edf-184">V **SAML vystavitele** textbox vložte hodnotu **URL vystavitele** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b9edf-184">In the **SAML Issuer** textbox put the value of **Issuer URL** from Azure AD application configuration wizard.</span></span>
+    <span data-ttu-id="0d4ad-183">c.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-183">c.</span></span> <span data-ttu-id="0d4ad-184">V hello **SAML vystavitele** textbox put hello hodnotu **URL vystavitele** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-184">In hello **SAML Issuer** textbox put hello value of **Issuer URL** from Azure AD application configuration wizard.</span></span>
    
-    <span data-ttu-id="b9edf-185">d.</span><span class="sxs-lookup"><span data-stu-id="b9edf-185">d.</span></span> <span data-ttu-id="b9edf-186">Vyberte **odpovědi (zákazníka generované nebo IdP/přístupový bod)** jako **vyžadují povinné podpis**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-186">Select **Response(Customer Generated/IdP/AP)** as **Require Mandatory Signature**.</span></span>
+    <span data-ttu-id="0d4ad-185">d.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-185">d.</span></span> <span data-ttu-id="0d4ad-186">Vyberte **odpovědi (zákazníka generované nebo IdP/přístupový bod)** jako **vyžadují povinné podpis**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-186">Select **Response(Customer Generated/IdP/AP)** as **Require Mandatory Signature**.</span></span>
    
-    <span data-ttu-id="b9edf-187">e.</span><span class="sxs-lookup"><span data-stu-id="b9edf-187">e.</span></span> <span data-ttu-id="b9edf-188">Vyberte **povoleno** jako **povolit SAML příznak**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-188">Select **Enabled** as **Enable SAML Flag**.</span></span>
+    <span data-ttu-id="0d4ad-187">e.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-187">e.</span></span> <span data-ttu-id="0d4ad-188">Vyberte **povoleno** jako **povolit SAML příznak**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-188">Select **Enabled** as **Enable SAML Flag**.</span></span>
    
-    <span data-ttu-id="b9edf-189">f.</span><span class="sxs-lookup"><span data-stu-id="b9edf-189">f.</span></span> <span data-ttu-id="b9edf-190">Vyberte **ne** jako **podpisu požadavku přihlášení (SF generované/SP/RP)**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-190">Select **No** as **Login Request Signature(SF Generated/SP/RP)**.</span></span>
+    <span data-ttu-id="0d4ad-189">f.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-189">f.</span></span> <span data-ttu-id="0d4ad-190">Vyberte **ne** jako **podpisu požadavku přihlášení (SF generované/SP/RP)**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-190">Select **No** as **Login Request Signature(SF Generated/SP/RP)**.</span></span>
    
-    <span data-ttu-id="b9edf-191">g.</span><span class="sxs-lookup"><span data-stu-id="b9edf-191">g.</span></span> <span data-ttu-id="b9edf-192">Vyberte **profil prohlížeče nebo Pozálohovacího** jako **SAML profil**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-192">Select **Browser/Post Profile** as **SAML Profile**.</span></span>
+    <span data-ttu-id="0d4ad-191">g.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-191">g.</span></span> <span data-ttu-id="0d4ad-192">Vyberte **profil prohlížeče nebo Pozálohovacího** jako **SAML profil**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-192">Select **Browser/Post Profile** as **SAML Profile**.</span></span>
    
-    <span data-ttu-id="b9edf-193">h.</span><span class="sxs-lookup"><span data-stu-id="b9edf-193">h.</span></span> <span data-ttu-id="b9edf-194">Vyberte **ne** jako **vynutit období platný certifikát**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-194">Select **No** as **Enforce Certificate Valid Period**.</span></span>
+    <span data-ttu-id="0d4ad-193">h.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-193">h.</span></span> <span data-ttu-id="0d4ad-194">Vyberte **ne** jako **vynutit období platný certifikát**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-194">Select **No** as **Enforce Certificate Valid Period**.</span></span>
    
-    <span data-ttu-id="b9edf-195">i.</span><span class="sxs-lookup"><span data-stu-id="b9edf-195">i.</span></span> <span data-ttu-id="b9edf-196">Kopírovat obsah souboru stažený certifikát a vložte ji do **ověření certifikátu SAML** textové pole.</span><span class="sxs-lookup"><span data-stu-id="b9edf-196">Copy the content of the downloaded certificate file, and then paste it into the **SAML Verifying Certificate** textbox.</span></span>
+    <span data-ttu-id="0d4ad-195">i.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-195">i.</span></span> <span data-ttu-id="0d4ad-196">Zkopírujte obsah hello hello stažený certifikát souboru a pak ji vložit do hello **ověření certifikátu SAML** textové pole.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-196">Copy hello content of hello downloaded certificate file, and then paste it into hello **SAML Verifying Certificate** textbox.</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="b9edf-197">Obsahu certifikátu musí začínat certifikátu a koncovou značkou certifikátu.</span><span class="sxs-lookup"><span data-stu-id="b9edf-197">The certificate content must have begin certificate and end certificate tags.</span></span>
+    > <span data-ttu-id="0d4ad-197">obsahu certifikátu Hello musí začínat certifikátu a koncovou značkou certifikátu.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-197">hello certificate content must have begin certificate and end certificate tags.</span></span>
 
-1. <span data-ttu-id="b9edf-198">Přejděte do SAML V2 a pak proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-198">Navigate to SAML V2, and then perform the following steps:</span></span>
+1. <span data-ttu-id="0d4ad-198">Přejděte tooSAML V2 a potom proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-198">Navigate tooSAML V2, and then perform hello following steps:</span></span>
    
     ![Konfigurace jednotného přihlašování na straně aplikace][13]
    
-    <span data-ttu-id="b9edf-200">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-200">a.</span></span> <span data-ttu-id="b9edf-201">Vyberte **Ano** jako **podporu spouštěná SP globální odhlášení**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-201">Select **Yes** as **Support SP-initiated Global Logout**.</span></span>
+    <span data-ttu-id="0d4ad-200">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-200">a.</span></span> <span data-ttu-id="0d4ad-201">Vyberte **Ano** jako **podporu spouštěná SP globální odhlášení**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-201">Select **Yes** as **Support SP-initiated Global Logout**.</span></span>
    
-    <span data-ttu-id="b9edf-202">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-202">b.</span></span> <span data-ttu-id="b9edf-203">V **globální odhlášení adresa URL služby (LogoutRequest cíl)** textbox vložte hodnotu **vzdálené adresy URL odhlašovací** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b9edf-203">In the **Global Logout Service URL (LogoutRequest destination)** textbox put the value of **Remote Logout URL** from Azure AD application configuration wizard.</span></span>
+    <span data-ttu-id="0d4ad-202">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-202">b.</span></span> <span data-ttu-id="0d4ad-203">V hello **globální odhlášení adresa URL služby (LogoutRequest cíl)** textbox put hello hodnotu **vzdálené adresy URL odhlašovací** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-203">In hello **Global Logout Service URL (LogoutRequest destination)** textbox put hello value of **Remote Logout URL** from Azure AD application configuration wizard.</span></span>
    
-    <span data-ttu-id="b9edf-204">c.</span><span class="sxs-lookup"><span data-stu-id="b9edf-204">c.</span></span> <span data-ttu-id="b9edf-205">Vyberte **ne** jako **vyžadují sp musí zašifrovat všechny element NameID**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-205">Select **No** as **Require sp must encrypt all NameID element**.</span></span>
+    <span data-ttu-id="0d4ad-204">c.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-204">c.</span></span> <span data-ttu-id="0d4ad-205">Vyberte **ne** jako **vyžadují sp musí zašifrovat všechny element NameID**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-205">Select **No** as **Require sp must encrypt all NameID element**.</span></span>
    
-    <span data-ttu-id="b9edf-206">d.</span><span class="sxs-lookup"><span data-stu-id="b9edf-206">d.</span></span> <span data-ttu-id="b9edf-207">Vyberte **neurčené** jako **NameID formátu**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-207">Select **unspecified** as **NameID Format**.</span></span>
+    <span data-ttu-id="0d4ad-206">d.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-206">d.</span></span> <span data-ttu-id="0d4ad-207">Vyberte **neurčené** jako **NameID formátu**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-207">Select **unspecified** as **NameID Format**.</span></span>
    
-    <span data-ttu-id="b9edf-208">e.</span><span class="sxs-lookup"><span data-stu-id="b9edf-208">e.</span></span> <span data-ttu-id="b9edf-209">Vyberte **Ano** jako **povolit sp iniciované přihlášení (AuthnRequest)**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-209">Select **Yes** as **Enable sp initiated login (AuthnRequest)**.</span></span>
+    <span data-ttu-id="0d4ad-208">e.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-208">e.</span></span> <span data-ttu-id="0d4ad-209">Vyberte **Ano** jako **povolit sp iniciované přihlášení (AuthnRequest)**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-209">Select **Yes** as **Enable sp initiated login (AuthnRequest)**.</span></span>
    
-    <span data-ttu-id="b9edf-210">f.</span><span class="sxs-lookup"><span data-stu-id="b9edf-210">f.</span></span> <span data-ttu-id="b9edf-211">V **odeslán požadavek na jako vydavatel společnosti** textbox vložte hodnotu **vzdálené adresy URL pro přihlášení** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b9edf-211">In the **Send request as Company-Wide issuer** textbox put the value of **Remote Login URL** from Azure AD application configuration wizard.</span></span>
-2. <span data-ttu-id="b9edf-212">Proveďte tyto kroky, pokud chcete, aby uživatelská jména přihlášení malá a velká písmena,.</span><span class="sxs-lookup"><span data-stu-id="b9edf-212">Perform these steps if you want to make the login usernames Case Insensitive, .</span></span>
+    <span data-ttu-id="0d4ad-210">f.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-210">f.</span></span> <span data-ttu-id="0d4ad-211">V hello **odeslán požadavek na jako vydavatel společnosti** textbox put hello hodnotu **vzdálené adresy URL pro přihlášení** z Průvodce konfigurací aplikace Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-211">In hello **Send request as Company-Wide issuer** textbox put hello value of **Remote Login URL** from Azure AD application configuration wizard.</span></span>
+2. <span data-ttu-id="0d4ad-212">Proveďte tyto kroky, pokud chcete, aby uživatelská jména přihlášení hello toomake malá a velká písmena,.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-212">Perform these steps if you want toomake hello login usernames Case Insensitive, .</span></span>
    
-    <span data-ttu-id="b9edf-213">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-213">a.</span></span> <span data-ttu-id="b9edf-214">Navštivte **nastavení společnosti**(u dolního).</span><span class="sxs-lookup"><span data-stu-id="b9edf-214">Visit **Company Settings**(near the bottom).</span></span>
+    <span data-ttu-id="0d4ad-213">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-213">a.</span></span> <span data-ttu-id="0d4ad-214">Navštivte **nastavení společnosti**(téměř hello dole).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-214">Visit **Company Settings**(near hello bottom).</span></span>
    
-    <span data-ttu-id="b9edf-215">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-215">b.</span></span> <span data-ttu-id="b9edf-216">Zaškrtněte políčko téměř **povolit uživatelské jméno bez rozlišování**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-216">select checkbox near **Enable Non-Case-Sensitive Username**.</span></span>
+    <span data-ttu-id="0d4ad-215">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-215">b.</span></span> <span data-ttu-id="0d4ad-216">Zaškrtněte políčko téměř **povolit uživatelské jméno bez rozlišování**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-216">select checkbox near **Enable Non-Case-Sensitive Username**.</span></span>
    
-    <span data-ttu-id="b9edf-217">c.Click **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-217">c.Click **Save**.</span></span>
+    <span data-ttu-id="0d4ad-217">c.Click **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-217">c.Click **Save**.</span></span>
    
     ![Konfigurovat jednotné přihlašování][29]
 
     > [!NOTE] 
-    > <span data-ttu-id="b9edf-219">Pokud se pokusíte povolit tuto funkci, systém zkontroluje, pokud vytvoří duplicitní SAML přihlašovací jméno.</span><span class="sxs-lookup"><span data-stu-id="b9edf-219">If you try to enable this, the system checks if it will create a duplicate SAML login name.</span></span> <span data-ttu-id="b9edf-220">Například pokud zákazník má uživatelských jmen uživatel1 a user1.</span><span class="sxs-lookup"><span data-stu-id="b9edf-220">For example if the customer has usernames User1 and user1.</span></span> <span data-ttu-id="b9edf-221">Pořízení rychle rozlišování umožňuje tyto duplikáty.</span><span class="sxs-lookup"><span data-stu-id="b9edf-221">Taking away case sensitivity makes these duplicates.</span></span> <span data-ttu-id="b9edf-222">Systém vám poskytne chybovou zprávu a neumožní funkci.</span><span class="sxs-lookup"><span data-stu-id="b9edf-222">The system will give you an error message and will not enable the feature.</span></span> <span data-ttu-id="b9edf-223">Zákazník muset změnit jeden z uživatelských jménech, je napsaný ve skutečnosti jiný.</span><span class="sxs-lookup"><span data-stu-id="b9edf-223">The customer will need to change one of the usernames so it’s actually spelled different.</span></span> 
+    > <span data-ttu-id="0d4ad-219">Pokud tooenable zkusíte to, zkontroluje hello systému, pokud vytvoří duplicitní SAML přihlašovací jméno.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-219">If you try tooenable this, hello system checks if it will create a duplicate SAML login name.</span></span> <span data-ttu-id="0d4ad-220">Například pokud hello zákazník má uživatelských jmen uživatel1 a user1.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-220">For example if hello customer has usernames User1 and user1.</span></span> <span data-ttu-id="0d4ad-221">Pořízení rychle rozlišování umožňuje tyto duplikáty.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-221">Taking away case sensitivity makes these duplicates.</span></span> <span data-ttu-id="0d4ad-222">systém Hello získáte chybovou zprávu a neumožní hello funkce.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-222">hello system will give you an error message and will not enable hello feature.</span></span> <span data-ttu-id="0d4ad-223">Hello zákazníka bude nutné toochange mezi hello uživatelských jmen, je ve skutečnosti napsán jiný.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-223">hello customer will need toochange one of hello usernames so it’s actually spelled different.</span></span> 
 
-1. <span data-ttu-id="b9edf-224">Na portálu Azure classic, vyberte potvrzení konfigurace přihlášení a pak klikněte na tlačítko **Complete** zavřete **nakonfigurovat jednotné přihlašování** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b9edf-224">On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.</span></span>
+1. <span data-ttu-id="0d4ad-224">Na hello portál Azure classic, vyberte hello konfigurace přihlášení potvrzení a pak klikněte na tlačítko **Complete** tooclose hello **nakonfigurovat jednotné přihlašování** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-224">On hello Azure classic portal, select hello single sign-on configuration confirmation, and then click **Complete** tooclose hello **Configure Single Sign On** dialog.</span></span>
    
     ![Aplikace][14]
-2. <span data-ttu-id="b9edf-226">Na **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-226">On the **Single sign-on confirmation** page, click **Complete**.</span></span>
+2. <span data-ttu-id="0d4ad-226">Na hello **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-226">On hello **Single sign-on confirmation** page, click **Complete**.</span></span>
    
     ![Aplikace][15]
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="b9edf-228">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="b9edf-228">Creating an Azure AD test user</span></span>
-<span data-ttu-id="b9edf-229">Cílem této části je vytvoření zkušebního uživatele na portálu classic názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b9edf-229">The objective of this section is to create a test user in the classic portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="0d4ad-228">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="0d4ad-228">Creating an Azure AD test user</span></span>
+<span data-ttu-id="0d4ad-229">Hello cílem této části je toocreate testovacího uživatele na portálu classic hello názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-229">hello objective of this section is toocreate a test user in hello classic portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][16]
 
-<span data-ttu-id="b9edf-231">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="b9edf-231">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="0d4ad-231">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="0d4ad-231">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="b9edf-232">V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-232">In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.</span></span>
+1. <span data-ttu-id="0d4ad-232">V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-232">In hello **Azure classic Portal**, on hello left navigation pane, click **Active Directory**.</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][17]
-2. <span data-ttu-id="b9edf-234">Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.</span><span class="sxs-lookup"><span data-stu-id="b9edf-234">From the **Directory** list, select the directory for which you want to enable directory integration.</span></span>
-3. <span data-ttu-id="b9edf-235">Chcete-li zobrazit seznam uživatelů, v nabídce v horní části, klikněte na tlačítko **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-235">To display the list of users, in the menu on the top, click **Users**.</span></span>
+2. <span data-ttu-id="0d4ad-234">Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-234">From hello **Directory** list, select hello directory for which you want tooenable directory integration.</span></span>
+3. <span data-ttu-id="0d4ad-235">Klikněte na tlačítko toodisplay hello seznam uživatelů, v nabídce hello hello nahoře **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-235">toodisplay hello list of users, in hello menu on hello top, click **Users**.</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][18]
-4. <span data-ttu-id="b9edf-237">Chcete-li otevřít **přidat uživatele** dialogovém okně, na panelu nástrojů v dolní části, klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-237">To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.</span></span>
+4. <span data-ttu-id="0d4ad-237">tooopen hello **přidat uživatele** dialogové okno, ve hello nástrojů v dolní části hello, klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-237">tooopen hello **Add User** dialog, in hello toolbar on hello bottom, click **Add User**.</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][19]
-5. <span data-ttu-id="b9edf-239">Na **Povězte nám o tohoto uživatele** dialogové okno proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-239">On the **Tell us about this user** dialog page, perform the following steps:</span></span>
+5. <span data-ttu-id="0d4ad-239">Na hello **Povězte nám o tohoto uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-239">On hello **Tell us about this user** dialog page, perform hello following steps:</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][20]
    
-    <span data-ttu-id="b9edf-241">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-241">a.</span></span> <span data-ttu-id="b9edf-242">Jako typ uživatele vyberte nového uživatele ve vaší organizaci.</span><span class="sxs-lookup"><span data-stu-id="b9edf-242">As Type Of User, select New user in your organization.</span></span>
+    <span data-ttu-id="0d4ad-241">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-241">a.</span></span> <span data-ttu-id="0d4ad-242">Jako typ uživatele vyberte nového uživatele ve vaší organizaci.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-242">As Type Of User, select New user in your organization.</span></span>
    
-    <span data-ttu-id="b9edf-243">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-243">b.</span></span> <span data-ttu-id="b9edf-244">V uživatelské jméno **textbox**, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-244">In the User Name **textbox**, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="0d4ad-243">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-243">b.</span></span> <span data-ttu-id="0d4ad-244">V hello uživatelské jméno **textbox**, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-244">In hello User Name **textbox**, type **BrittaSimon**.</span></span>
    
-    <span data-ttu-id="b9edf-245">c.</span><span class="sxs-lookup"><span data-stu-id="b9edf-245">c.</span></span> <span data-ttu-id="b9edf-246">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-246">Click **Next**.</span></span>
-6. <span data-ttu-id="b9edf-247">Na **profil uživatele** dialogové okno proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-247">On the **User Profile** dialog page, perform the following steps:</span></span>
+    <span data-ttu-id="0d4ad-245">c.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-245">c.</span></span> <span data-ttu-id="0d4ad-246">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-246">Click **Next**.</span></span>
+6. <span data-ttu-id="0d4ad-247">Na hello **profil uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-247">On hello **User Profile** dialog page, perform hello following steps:</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][21]
    
-    <span data-ttu-id="b9edf-249">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-249">a.</span></span> <span data-ttu-id="b9edf-250">V **křestní jméno** textovému poli, typ **Britta**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-250">In the **First Name** textbox, type **Britta**.</span></span>  
+    <span data-ttu-id="0d4ad-249">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-249">a.</span></span> <span data-ttu-id="0d4ad-250">V hello **křestní jméno** textovému poli, typ **Britta**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-250">In hello **First Name** textbox, type **Britta**.</span></span>  
    
-    <span data-ttu-id="b9edf-251">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-251">b.</span></span> <span data-ttu-id="b9edf-252">V **příjmení** textovému poli, typ, **Simon**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-252">In the **Last Name** textbox, type, **Simon**.</span></span>
+    <span data-ttu-id="0d4ad-251">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-251">b.</span></span> <span data-ttu-id="0d4ad-252">V hello **příjmení** textovému poli, typ, **Simon**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-252">In hello **Last Name** textbox, type, **Simon**.</span></span>
    
-    <span data-ttu-id="b9edf-253">c.</span><span class="sxs-lookup"><span data-stu-id="b9edf-253">c.</span></span> <span data-ttu-id="b9edf-254">V **zobrazovaný název** textovému poli, typ **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-254">In the **Display Name** textbox, type **Britta Simon**.</span></span>
+    <span data-ttu-id="0d4ad-253">c.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-253">c.</span></span> <span data-ttu-id="0d4ad-254">V hello **zobrazovaný název** textovému poli, typ **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-254">In hello **Display Name** textbox, type **Britta Simon**.</span></span>
    
-    <span data-ttu-id="b9edf-255">d.</span><span class="sxs-lookup"><span data-stu-id="b9edf-255">d.</span></span> <span data-ttu-id="b9edf-256">V **Role** seznamu, vyberte **uživatele**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-256">In the **Role** list, select **User**.</span></span>
+    <span data-ttu-id="0d4ad-255">d.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-255">d.</span></span> <span data-ttu-id="0d4ad-256">V hello **Role** seznamu, vyberte **uživatele**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-256">In hello **Role** list, select **User**.</span></span>
    
-    <span data-ttu-id="b9edf-257">e.</span><span class="sxs-lookup"><span data-stu-id="b9edf-257">e.</span></span> <span data-ttu-id="b9edf-258">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-258">Click **Next**.</span></span>
-7. <span data-ttu-id="b9edf-259">Na **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-259">On the **Get temporary password** dialog page, click **create**.</span></span>
+    <span data-ttu-id="0d4ad-257">e.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-257">e.</span></span> <span data-ttu-id="0d4ad-258">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-258">Click **Next**.</span></span>
+7. <span data-ttu-id="0d4ad-259">Na hello **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-259">On hello **Get temporary password** dialog page, click **create**.</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][22]
-8. <span data-ttu-id="b9edf-261">Na **získat dočasné heslo** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b9edf-261">On the **Get temporary password** dialog page, perform the following steps:</span></span>
+8. <span data-ttu-id="0d4ad-261">Na hello **získat dočasné heslo** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="0d4ad-261">On hello **Get temporary password** dialog page, perform hello following steps:</span></span>
    
     ![Vytváření testovacího uživatele Azure AD][23]
    
-    <span data-ttu-id="b9edf-263">a.</span><span class="sxs-lookup"><span data-stu-id="b9edf-263">a.</span></span> <span data-ttu-id="b9edf-264">Poznamenejte si hodnotu **nové heslo**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-264">Write down the value of the **New Password**.</span></span>
+    <span data-ttu-id="0d4ad-263">a.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-263">a.</span></span> <span data-ttu-id="0d4ad-264">Poznamenejte si hodnotu hello hello **nové heslo**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-264">Write down hello value of hello **New Password**.</span></span>
    
-    <span data-ttu-id="b9edf-265">b.</span><span class="sxs-lookup"><span data-stu-id="b9edf-265">b.</span></span> <span data-ttu-id="b9edf-266">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-266">Click **Complete**.</span></span>  
+    <span data-ttu-id="0d4ad-265">b.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-265">b.</span></span> <span data-ttu-id="0d4ad-266">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-266">Click **Complete**.</span></span>  
 
-### <a name="creating-a-successfactors-test-user"></a><span data-ttu-id="b9edf-267">Vytvoření zkušebního uživatele SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="b9edf-267">Creating a SuccessFactors test user</span></span>
-<span data-ttu-id="b9edf-268">Pokud chcete povolit uživatelům Azure AD přihlášení do SuccessFactors, musí být zřízená do SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="b9edf-268">In order to enable Azure AD users to log into SuccessFactors, they must be provisioned into SuccessFactors.</span></span>  
-<span data-ttu-id="b9edf-269">V případě SuccessFactors zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="b9edf-269">In the case of SuccessFactors, provisioning is a manual task.</span></span>
+### <a name="creating-a-successfactors-test-user"></a><span data-ttu-id="0d4ad-267">Vytvoření zkušebního uživatele SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="0d4ad-267">Creating a SuccessFactors test user</span></span>
+<span data-ttu-id="0d4ad-268">V pořadí tooenable Azure AD Uživatelé toolog do SuccessFactors musí být zřízená do SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-268">In order tooenable Azure AD users toolog into SuccessFactors, they must be provisioned into SuccessFactors.</span></span>  
+<span data-ttu-id="0d4ad-269">V případě hello SuccessFactors zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-269">In hello case of SuccessFactors, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="b9edf-270">Chcete-li získat uživatelé vytvoření ve SuccessFactors, budete muset kontaktovat [tým podpory SuccessFactors](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="b9edf-270">To get users created in SuccessFactors, you need to contact the [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
+<span data-ttu-id="0d4ad-270">tooget uživatelé vytvoření ve SuccessFactors, je třeba toocontact hello [tým podpory SuccessFactors](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="0d4ad-270">tooget users created in SuccessFactors, you need toocontact hello [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="b9edf-271">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="b9edf-271">Assigning the Azure AD test user</span></span>
-<span data-ttu-id="b9edf-272">Cílem této části je povolení Britta Simon používat tak, že udělíte přístup k SuccessFactors Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b9edf-272">The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to SuccessFactors.</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="0d4ad-271">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="0d4ad-271">Assigning hello Azure AD test user</span></span>
+<span data-ttu-id="0d4ad-272">Hello cílem této části je tooenabling toouse Britta Simon Azure jednotné přihlašování, poskytněte tooSuccessFactors svůj přístup.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-272">hello objective of this section is tooenabling Britta Simon toouse Azure single sign-on by granting her access tooSuccessFactors.</span></span>
 
 ![Přiřadit uživatele][24]
 
-<span data-ttu-id="b9edf-274">**Pokud chcete přiřadit Britta Simon SuccessFactors, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="b9edf-274">**To assign Britta Simon to SuccessFactors, perform the following steps:**</span></span>
+<span data-ttu-id="0d4ad-274">**tooassign Britta Simon tooSuccessFactors, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="0d4ad-274">**tooassign Britta Simon tooSuccessFactors, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="b9edf-275">Na portálu classic k otevření zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.</span><span class="sxs-lookup"><span data-stu-id="b9edf-275">On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.</span></span>
+1. <span data-ttu-id="0d4ad-275">Na portálu classic hello, klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-275">On hello classic portal, tooopen hello applications view, in hello directory view, click **Applications** in hello top menu.</span></span>
    
     ![Přiřadit uživatele][25]
-2. <span data-ttu-id="b9edf-277">V seznamu aplikací vyberte **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-277">In the applications list, select **SuccessFactors**.</span></span>
+2. <span data-ttu-id="0d4ad-277">V seznamu aplikace hello vyberte **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-277">In hello applications list, select **SuccessFactors**.</span></span>
    
     ![Konfigurovat jednotné přihlašování][26]
-3. <span data-ttu-id="b9edf-279">V nabídce v horní části, klikněte na tlačítko **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-279">In the menu on the top, click **Users**.</span></span>
+3. <span data-ttu-id="0d4ad-279">V nabídce hello hello nahoře, klikněte na tlačítko **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-279">In hello menu on hello top, click **Users**.</span></span>
    
     ![Přiřadit uživatele][27]
-4. <span data-ttu-id="b9edf-281">V seznamu uživatelů vyberte **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-281">In the Users list, select **Britta Simon**.</span></span>
-5. <span data-ttu-id="b9edf-282">Na panelu nástrojů v dolní části klikněte na tlačítko **přiřadit**.</span><span class="sxs-lookup"><span data-stu-id="b9edf-282">In the toolbar on the bottom, click **Assign**.</span></span>
+4. <span data-ttu-id="0d4ad-281">V seznamu uživatelé hello vyberte **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-281">In hello Users list, select **Britta Simon**.</span></span>
+5. <span data-ttu-id="0d4ad-282">V panelu nástrojů hello na dolní hello, klikněte na **přiřadit**.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-282">In hello toolbar on hello bottom, click **Assign**.</span></span>
    
     ![Přiřadit uživatele][28]
 
-### <a name="testing-single-sign-on"></a><span data-ttu-id="b9edf-284">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b9edf-284">Testing single sign-on</span></span>
-<span data-ttu-id="b9edf-285">Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="b9edf-285">The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="0d4ad-284">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="0d4ad-284">Testing single sign-on</span></span>
+<span data-ttu-id="0d4ad-285">Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-285">hello objective of this section is tootest your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="b9edf-286">Když kliknete na dlaždici SuccessFactors na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="b9edf-286">When you click the SuccessFactors tile in the Access Panel, you should get automatically signed-on to your SuccessFactors application.</span></span>
+<span data-ttu-id="0d4ad-286">Po kliknutí na tlačítko hello SuccessFactors dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour SuccessFactors aplikace.</span><span class="sxs-lookup"><span data-stu-id="0d4ad-286">When you click hello SuccessFactors tile in hello Access Panel, you should get automatically signed-on tooyour SuccessFactors application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="b9edf-287">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="b9edf-287">Additional resources</span></span>
-* [<span data-ttu-id="b9edf-288">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b9edf-288">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="b9edf-289">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="b9edf-289">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a><span data-ttu-id="0d4ad-287">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="0d4ad-287">Additional resources</span></span>
+* [<span data-ttu-id="0d4ad-288">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="0d4ad-288">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="0d4ad-289">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="0d4ad-289">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

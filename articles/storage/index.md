@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Storage – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat Azure Storage – úložiště pro objekty blob, tabulky, fronty, soubory a disky virtuálních počítačů v cloudu. Kurzy, reference k rozhraní API a další dokumentace"
+title: "aaaAzure úložiště dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse Azure Storage – objekt Blob, tabulky, fronty, souboru a disku virtuálního počítače úložiště v cloudu hello. Kurzy, reference k rozhraní API a další dokumentace"
 services: storage
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: af6bc7cc4245208d2dc92a9b248aa4686cf42272
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7155feb190c8c769eb9c8f8712cca939708d57b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storage-documentation"></a>Dokumentace ke službě Storage
 
-Zjistěte, jak používat Azure Storage, službu cloudového úložiště, která je odolná, dostupná a škálovatelná. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete nastavit a spravovat úložiště pro objekty blob, tabulky, fronty, soubory a disky virtuálních počítačů.
+Zjistěte, jak toouse Azure Storage, cloudového úložiště služby, které je odolné, dostupné a škálovatelné. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooset a Správa úložiště objektů Blob, tabulky, fronty, souboru a disku virtuálního počítače.
 
 <ul class="panelContent cardsFTitle">
     <li>

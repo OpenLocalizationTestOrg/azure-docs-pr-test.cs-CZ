@@ -1,6 +1,6 @@
 ---
-title: "Šablony rozhraní API v Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky rozhraní API v portálu pro vývojáře ve službě Azure API Management."
+title: "aaaAPI šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello obsah stránky hello rozhraní API v hello portál pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 3802868470f0f74cd1f895a00195259861ea16f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdfa76167cfaf3b23b22d6321904f34da077fecb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="api-templates-in-azure-api-management"></a><span data-ttu-id="3e01e-103">Šablony rozhraní API v Azure API Management</span><span class="sxs-lookup"><span data-stu-id="3e01e-103">API templates in Azure API Management</span></span>
-<span data-ttu-id="3e01e-104">Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu.</span><span class="sxs-lookup"><span data-stu-id="3e01e-104">Azure API Management provides you the ability to customize the content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="3e01e-105">Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.</span><span class="sxs-lookup"><span data-stu-id="3e01e-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and the editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility to configure the content of the pages as you see fit using these templates.</span></span>  
+# <a name="api-templates-in-azure-api-management"></a><span data-ttu-id="dcff0-103">Šablony rozhraní API v Azure API Management</span><span class="sxs-lookup"><span data-stu-id="dcff0-103">API templates in Azure API Management</span></span>
+<span data-ttu-id="dcff0-104">Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-104">Azure API Management provides you hello ability toocustomize hello content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="dcff0-105">Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.</span><span class="sxs-lookup"><span data-stu-id="dcff0-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and hello editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility tooconfigure hello content of hello pages as you see fit using these templates.</span></span>  
   
- <span data-ttu-id="3e01e-106">Šablony v této části umožňují přizpůsobit obsah stránky rozhraní API v portálu pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="3e01e-106">The templates in this section allow you to customize the content of the API pages in the developer portal.</span></span>  
+ <span data-ttu-id="dcff0-106">Hello šablony v této části Povolit obsah hello toocustomize hello API stránek v portálu pro vývojáře hello.</span><span class="sxs-lookup"><span data-stu-id="dcff0-106">hello templates in this section allow you toocustomize hello content of hello API pages in hello developer portal.</span></span>  
   
--   [<span data-ttu-id="3e01e-107">Rozhraní API seznamu</span><span class="sxs-lookup"><span data-stu-id="3e01e-107">API list</span></span>](#APIList)  
--   [<span data-ttu-id="3e01e-108">Operace</span><span class="sxs-lookup"><span data-stu-id="3e01e-108">Operation</span></span>](#Product)  
--   [<span data-ttu-id="3e01e-109">Ukázky kódu</span><span class="sxs-lookup"><span data-stu-id="3e01e-109">Code samples</span></span>](#CodeSamples)  
-    -   [<span data-ttu-id="3e01e-110">Curl</span><span class="sxs-lookup"><span data-stu-id="3e01e-110">Curl</span></span>](#Curl)  
-    -   [<span data-ttu-id="3e01e-111">C#</span><span class="sxs-lookup"><span data-stu-id="3e01e-111">C#</span></span>](#CSharp)  
-    -   [<span data-ttu-id="3e01e-112">Java</span><span class="sxs-lookup"><span data-stu-id="3e01e-112">Java</span></span>](#Stub)  
-    -   [<span data-ttu-id="3e01e-113">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3e01e-113">JavaScript</span></span>](#JavaScript)  
-    -   [<span data-ttu-id="3e01e-114">Objective C</span><span class="sxs-lookup"><span data-stu-id="3e01e-114">Objective C</span></span>](#ObjectiveC)  
-    -   [<span data-ttu-id="3e01e-115">PHP</span><span class="sxs-lookup"><span data-stu-id="3e01e-115">PHP</span></span>](#PHP)  
-    -   [<span data-ttu-id="3e01e-116">Python</span><span class="sxs-lookup"><span data-stu-id="3e01e-116">Python</span></span>](#Python)  
-    -   [<span data-ttu-id="3e01e-117">Ruby</span><span class="sxs-lookup"><span data-stu-id="3e01e-117">Ruby</span></span>](#Ruby)  
+-   [<span data-ttu-id="dcff0-107">Rozhraní API seznamu</span><span class="sxs-lookup"><span data-stu-id="dcff0-107">API list</span></span>](#APIList)  
+-   [<span data-ttu-id="dcff0-108">Operace</span><span class="sxs-lookup"><span data-stu-id="dcff0-108">Operation</span></span>](#Product)  
+-   [<span data-ttu-id="dcff0-109">Ukázky kódu</span><span class="sxs-lookup"><span data-stu-id="dcff0-109">Code samples</span></span>](#CodeSamples)  
+    -   [<span data-ttu-id="dcff0-110">Curl</span><span class="sxs-lookup"><span data-stu-id="dcff0-110">Curl</span></span>](#Curl)  
+    -   [<span data-ttu-id="dcff0-111">C#</span><span class="sxs-lookup"><span data-stu-id="dcff0-111">C#</span></span>](#CSharp)  
+    -   [<span data-ttu-id="dcff0-112">Java</span><span class="sxs-lookup"><span data-stu-id="dcff0-112">Java</span></span>](#Stub)  
+    -   [<span data-ttu-id="dcff0-113">JavaScript</span><span class="sxs-lookup"><span data-stu-id="dcff0-113">JavaScript</span></span>](#JavaScript)  
+    -   [<span data-ttu-id="dcff0-114">Objective C</span><span class="sxs-lookup"><span data-stu-id="dcff0-114">Objective C</span></span>](#ObjectiveC)  
+    -   [<span data-ttu-id="dcff0-115">PHP</span><span class="sxs-lookup"><span data-stu-id="dcff0-115">PHP</span></span>](#PHP)  
+    -   [<span data-ttu-id="dcff0-116">Python</span><span class="sxs-lookup"><span data-stu-id="dcff0-116">Python</span></span>](#Python)  
+    -   [<span data-ttu-id="dcff0-117">Ruby</span><span class="sxs-lookup"><span data-stu-id="dcff0-117">Ruby</span></span>](#Ruby)  
 
 > [!NOTE]
->  <span data-ttu-id="3e01e-118">Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení.</span><span class="sxs-lookup"><span data-stu-id="3e01e-118">Sample default templates are included in the following documentation, but are subject to change due to continuous improvements.</span></span> <span data-ttu-id="3e01e-119">Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony.</span><span class="sxs-lookup"><span data-stu-id="3e01e-119">You can view the live default templates in the developer portal by navigating to the desired individual templates.</span></span> <span data-ttu-id="3e01e-120">Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="3e01e-120">For more information about working with templates, see [How to customize the API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
+>  <span data-ttu-id="dcff0-118">Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous.</span><span class="sxs-lookup"><span data-stu-id="dcff0-118">Sample default templates are included in hello following documentation, but are subject toochange due toocontinuous improvements.</span></span> <span data-ttu-id="dcff0-119">Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony.</span><span class="sxs-lookup"><span data-stu-id="dcff0-119">You can view hello live default templates in hello developer portal by navigating toohello desired individual templates.</span></span> <span data-ttu-id="dcff0-120">Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="dcff0-120">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
   
-##  <span data-ttu-id="3e01e-121"><a name="APIList"></a>Rozhraní API seznamu</span><span class="sxs-lookup"><span data-stu-id="3e01e-121"><a name="APIList"></a> API list</span></span>  
- <span data-ttu-id="3e01e-122">**Rozhraní API seznamu** šablona umožňuje přizpůsobit text stránce rozhraní API seznamu v portálu pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="3e01e-122">The **API list** template allows you to customize the body of the API list page in the developer portal.</span></span>  
+##  <span data-ttu-id="dcff0-121"><a name="APIList"></a>Rozhraní API seznamu</span><span class="sxs-lookup"><span data-stu-id="dcff0-121"><a name="APIList"></a> API list</span></span>  
+ <span data-ttu-id="dcff0-122">Hello **rozhraní API seznamu** šablona vám umožní toocustomize hello textu hello rozhraní API seznamu stránky v portálu pro vývojáře hello.</span><span class="sxs-lookup"><span data-stu-id="dcff0-122">hello **API list** template allows you toocustomize hello body of hello API list page in hello developer portal.</span></span>  
   
- <span data-ttu-id="3e01e-123">![Seznam rozhraní API portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM vývojáře portálu šablony rozhraní API seznamu")</span><span class="sxs-lookup"><span data-stu-id="3e01e-123">![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")</span></span>  
+ <span data-ttu-id="dcff0-123">![Seznam rozhraní API portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM vývojáře portálu šablony rozhraní API seznamu")</span><span class="sxs-lookup"><span data-stu-id="dcff0-123">![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="3e01e-124">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-124">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="dcff0-124">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-124">Default template</span></span>  
   
 ```xml  
 <search-control></search-control>  
@@ -75,20 +75,20 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="3e01e-125">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-125">Controls</span></span>  
- <span data-ttu-id="3e01e-126">`API list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-126">The `API list` template may use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="dcff0-125">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-125">Controls</span></span>  
+ <span data-ttu-id="dcff0-126">Hello `API list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-126">hello `API list` template may use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="3e01e-127">ovládací prvek stránkování</span><span class="sxs-lookup"><span data-stu-id="3e01e-127">paging-control</span></span>](api-management-page-controls.md#paging-control)  
+-   [<span data-ttu-id="dcff0-127">ovládací prvek stránkování</span><span class="sxs-lookup"><span data-stu-id="dcff0-127">paging-control</span></span>](api-management-page-controls.md#paging-control)  
   
--   [<span data-ttu-id="3e01e-128">ovládací prvek vyhledávání</span><span class="sxs-lookup"><span data-stu-id="3e01e-128">search-control</span></span>](api-management-page-controls.md#search-control)  
+-   [<span data-ttu-id="dcff0-128">ovládací prvek vyhledávání</span><span class="sxs-lookup"><span data-stu-id="dcff0-128">search-control</span></span>](api-management-page-controls.md#search-control)  
   
-### <a name="data-model"></a><span data-ttu-id="3e01e-129">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-129">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="dcff0-129">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-129">Data model</span></span>  
   
-|<span data-ttu-id="3e01e-130">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="3e01e-130">Property</span></span>|<span data-ttu-id="3e01e-131">Typ</span><span class="sxs-lookup"><span data-stu-id="3e01e-131">Type</span></span>|<span data-ttu-id="3e01e-132">Popis</span><span class="sxs-lookup"><span data-stu-id="3e01e-132">Description</span></span>|  
+|<span data-ttu-id="dcff0-130">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="dcff0-130">Property</span></span>|<span data-ttu-id="dcff0-131">Typ</span><span class="sxs-lookup"><span data-stu-id="dcff0-131">Type</span></span>|<span data-ttu-id="dcff0-132">Popis</span><span class="sxs-lookup"><span data-stu-id="dcff0-132">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="3e01e-133">Rozhraní API</span><span class="sxs-lookup"><span data-stu-id="3e01e-133">apis</span></span>|<span data-ttu-id="3e01e-134">Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-134">Collection of [API summary](api-management-template-data-model-reference.md#APISummary) entities.</span></span>|<span data-ttu-id="3e01e-135">Rozhraní API viditelné pro aktuálního uživatele.</span><span class="sxs-lookup"><span data-stu-id="3e01e-135">The APIs visible to the current user.</span></span>|  
+|<span data-ttu-id="dcff0-133">Rozhraní API</span><span class="sxs-lookup"><span data-stu-id="dcff0-133">apis</span></span>|<span data-ttu-id="dcff0-134">Kolekce [souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-134">Collection of [API summary](api-management-template-data-model-reference.md#APISummary) entities.</span></span>|<span data-ttu-id="dcff0-135">Hello rozhraní API viditelné toohello aktuálního uživatele.</span><span class="sxs-lookup"><span data-stu-id="dcff0-135">hello APIs visible toohello current user.</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="3e01e-136">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-136">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="dcff0-136">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-136">Sample template data</span></span>  
   
 ```json  
 {  
@@ -108,12 +108,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="3e01e-137"><a name="Product"></a>Operace</span><span class="sxs-lookup"><span data-stu-id="3e01e-137"><a name="Product"></a> Operation</span></span>  
- <span data-ttu-id="3e01e-138">**Operace** šablona umožňuje přizpůsobit text stránce operace v portálu pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="3e01e-138">The **Operation** template allows you to customize the body of the operation page in the developer portal.</span></span>  
+##  <span data-ttu-id="dcff0-137"><a name="Product"></a>Operace</span><span class="sxs-lookup"><span data-stu-id="dcff0-137"><a name="Product"></a> Operation</span></span>  
+ <span data-ttu-id="dcff0-138">Hello **operace** šablona vám umožní toocustomize hello textu hello operaci stránky v portálu pro vývojáře hello.</span><span class="sxs-lookup"><span data-stu-id="dcff0-138">hello **Operation** template allows you toocustomize hello body of hello operation page in hello developer portal.</span></span>  
   
- <span data-ttu-id="3e01e-139">![Stránka portálu operaci vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "stránka operace portál pro vývojáře APIM šablony")</span><span class="sxs-lookup"><span data-stu-id="3e01e-139">![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")</span></span>  
+ <span data-ttu-id="dcff0-139">![Stránka portálu operaci vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "stránka operace portál pro vývojáře APIM šablony")</span><span class="sxs-lookup"><span data-stu-id="dcff0-139">![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="3e01e-140">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-140">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="dcff0-140">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-140">Default template</span></span>  
   
 ```xml  
 <h2>{{api.name}}</h2>  
@@ -334,24 +334,24 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="3e01e-141">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-141">Controls</span></span>  
- <span data-ttu-id="3e01e-142">`Operation` Šablona neumožňuje použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-142">The `Operation` template does not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="dcff0-141">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-141">Controls</span></span>  
+ <span data-ttu-id="dcff0-142">Hello `Operation` šablona neumožňuje použití hello libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-142">hello `Operation` template does not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-### <a name="data-model"></a><span data-ttu-id="3e01e-143">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-143">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="dcff0-143">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-143">Data model</span></span>  
   
-|<span data-ttu-id="3e01e-144">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="3e01e-144">Property</span></span>|<span data-ttu-id="3e01e-145">Typ</span><span class="sxs-lookup"><span data-stu-id="3e01e-145">Type</span></span>|<span data-ttu-id="3e01e-146">Popis</span><span class="sxs-lookup"><span data-stu-id="3e01e-146">Description</span></span>|  
+|<span data-ttu-id="dcff0-144">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="dcff0-144">Property</span></span>|<span data-ttu-id="dcff0-145">Typ</span><span class="sxs-lookup"><span data-stu-id="dcff0-145">Type</span></span>|<span data-ttu-id="dcff0-146">Popis</span><span class="sxs-lookup"><span data-stu-id="dcff0-146">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="3e01e-147">ApiId</span><span class="sxs-lookup"><span data-stu-id="3e01e-147">apiId</span></span>|<span data-ttu-id="3e01e-148">Řetězec</span><span class="sxs-lookup"><span data-stu-id="3e01e-148">string</span></span>|<span data-ttu-id="3e01e-149">Id aktuální rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="3e01e-149">The id of the current API.</span></span>|  
-|<span data-ttu-id="3e01e-150">apiName</span><span class="sxs-lookup"><span data-stu-id="3e01e-150">apiName</span></span>|<span data-ttu-id="3e01e-151">Řetězec</span><span class="sxs-lookup"><span data-stu-id="3e01e-151">string</span></span>|<span data-ttu-id="3e01e-152">Název rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="3e01e-152">The name of the API.</span></span>|  
-|<span data-ttu-id="3e01e-153">apiDescription</span><span class="sxs-lookup"><span data-stu-id="3e01e-153">apiDescription</span></span>|<span data-ttu-id="3e01e-154">Řetězec</span><span class="sxs-lookup"><span data-stu-id="3e01e-154">string</span></span>|<span data-ttu-id="3e01e-155">Popis rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="3e01e-155">A description of the API.</span></span>|  
-|<span data-ttu-id="3e01e-156">rozhraní api</span><span class="sxs-lookup"><span data-stu-id="3e01e-156">api</span></span>|<span data-ttu-id="3e01e-157">[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-157">[API summary](api-management-template-data-model-reference.md#APISummary) entity.</span></span>|<span data-ttu-id="3e01e-158">Aktuální rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="3e01e-158">The current API.</span></span>|  
-|<span data-ttu-id="3e01e-159">operace</span><span class="sxs-lookup"><span data-stu-id="3e01e-159">operation</span></span>|[<span data-ttu-id="3e01e-160">Operace</span><span class="sxs-lookup"><span data-stu-id="3e01e-160">Operation</span></span>](api-management-template-data-model-reference.md#Operation)|<span data-ttu-id="3e01e-161">Aktuálně zobrazený operaci.</span><span class="sxs-lookup"><span data-stu-id="3e01e-161">The currently displayed operation.</span></span>|  
-|<span data-ttu-id="3e01e-162">sampleUrl</span><span class="sxs-lookup"><span data-stu-id="3e01e-162">sampleUrl</span></span>|<span data-ttu-id="3e01e-163">Řetězec</span><span class="sxs-lookup"><span data-stu-id="3e01e-163">string</span></span>|<span data-ttu-id="3e01e-164">Adresa URL pro aktuální operaci.</span><span class="sxs-lookup"><span data-stu-id="3e01e-164">The URL for the current operation.</span></span>|  
-|<span data-ttu-id="3e01e-165">operationMenu</span><span class="sxs-lookup"><span data-stu-id="3e01e-165">operationMenu</span></span>|[<span data-ttu-id="3e01e-166">Operace nabídky</span><span class="sxs-lookup"><span data-stu-id="3e01e-166">Operation menu</span></span>](api-management-template-data-model-reference.md#Menu)|<span data-ttu-id="3e01e-167">Nabídka operací pro toto rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="3e01e-167">A menu of operations for this API.</span></span>|  
-|<span data-ttu-id="3e01e-168">consoleUrl</span><span class="sxs-lookup"><span data-stu-id="3e01e-168">consoleUrl</span></span>|<span data-ttu-id="3e01e-169">IDENTIFIKÁTOR URI</span><span class="sxs-lookup"><span data-stu-id="3e01e-169">URI</span></span>|<span data-ttu-id="3e01e-170">Identifikátor URI **vyzkoušet** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="3e01e-170">The URI for the **Try it** button.</span></span>|  
-|<span data-ttu-id="3e01e-171">Ukázky</span><span class="sxs-lookup"><span data-stu-id="3e01e-171">samples</span></span>|<span data-ttu-id="3e01e-172">Kolekce [ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-172">Collection of [Code sample](api-management-template-data-model-reference.md#Sample) entities.</span></span>|<span data-ttu-id="3e01e-173">Ukázky kódu pro aktuální operace...</span><span class="sxs-lookup"><span data-stu-id="3e01e-173">The code samples for the current operation..</span></span>|  
+|<span data-ttu-id="dcff0-147">ApiId</span><span class="sxs-lookup"><span data-stu-id="dcff0-147">apiId</span></span>|<span data-ttu-id="dcff0-148">Řetězec</span><span class="sxs-lookup"><span data-stu-id="dcff0-148">string</span></span>|<span data-ttu-id="dcff0-149">id Hello hello aktuální rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="dcff0-149">hello id of hello current API.</span></span>|  
+|<span data-ttu-id="dcff0-150">apiName</span><span class="sxs-lookup"><span data-stu-id="dcff0-150">apiName</span></span>|<span data-ttu-id="dcff0-151">Řetězec</span><span class="sxs-lookup"><span data-stu-id="dcff0-151">string</span></span>|<span data-ttu-id="dcff0-152">Název Hello hello rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="dcff0-152">hello name of hello API.</span></span>|  
+|<span data-ttu-id="dcff0-153">apiDescription</span><span class="sxs-lookup"><span data-stu-id="dcff0-153">apiDescription</span></span>|<span data-ttu-id="dcff0-154">Řetězec</span><span class="sxs-lookup"><span data-stu-id="dcff0-154">string</span></span>|<span data-ttu-id="dcff0-155">Popis hello rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="dcff0-155">A description of hello API.</span></span>|  
+|<span data-ttu-id="dcff0-156">rozhraní api</span><span class="sxs-lookup"><span data-stu-id="dcff0-156">api</span></span>|<span data-ttu-id="dcff0-157">[Souhrn rozhraní API](api-management-template-data-model-reference.md#APISummary) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-157">[API summary](api-management-template-data-model-reference.md#APISummary) entity.</span></span>|<span data-ttu-id="dcff0-158">Hello aktuální rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="dcff0-158">hello current API.</span></span>|  
+|<span data-ttu-id="dcff0-159">operace</span><span class="sxs-lookup"><span data-stu-id="dcff0-159">operation</span></span>|[<span data-ttu-id="dcff0-160">Operace</span><span class="sxs-lookup"><span data-stu-id="dcff0-160">Operation</span></span>](api-management-template-data-model-reference.md#Operation)|<span data-ttu-id="dcff0-161">operace Hello aktuálně zobrazený.</span><span class="sxs-lookup"><span data-stu-id="dcff0-161">hello currently displayed operation.</span></span>|  
+|<span data-ttu-id="dcff0-162">sampleUrl</span><span class="sxs-lookup"><span data-stu-id="dcff0-162">sampleUrl</span></span>|<span data-ttu-id="dcff0-163">Řetězec</span><span class="sxs-lookup"><span data-stu-id="dcff0-163">string</span></span>|<span data-ttu-id="dcff0-164">Adresa URL Hello pro aktuální operaci hello.</span><span class="sxs-lookup"><span data-stu-id="dcff0-164">hello URL for hello current operation.</span></span>|  
+|<span data-ttu-id="dcff0-165">operationMenu</span><span class="sxs-lookup"><span data-stu-id="dcff0-165">operationMenu</span></span>|[<span data-ttu-id="dcff0-166">Operace nabídky</span><span class="sxs-lookup"><span data-stu-id="dcff0-166">Operation menu</span></span>](api-management-template-data-model-reference.md#Menu)|<span data-ttu-id="dcff0-167">Nabídka operací pro toto rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="dcff0-167">A menu of operations for this API.</span></span>|  
+|<span data-ttu-id="dcff0-168">consoleUrl</span><span class="sxs-lookup"><span data-stu-id="dcff0-168">consoleUrl</span></span>|<span data-ttu-id="dcff0-169">IDENTIFIKÁTOR URI</span><span class="sxs-lookup"><span data-stu-id="dcff0-169">URI</span></span>|<span data-ttu-id="dcff0-170">Hello identifikátor URI pro hello **vyzkoušet** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="dcff0-170">hello URI for hello **Try it** button.</span></span>|  
+|<span data-ttu-id="dcff0-171">Ukázky</span><span class="sxs-lookup"><span data-stu-id="dcff0-171">samples</span></span>|<span data-ttu-id="dcff0-172">Kolekce [ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-172">Collection of [Code sample](api-management-template-data-model-reference.md#Sample) entities.</span></span>|<span data-ttu-id="dcff0-173">Ukázky kódu Hello hello aktuální operace...</span><span class="sxs-lookup"><span data-stu-id="dcff0-173">hello code samples for hello current operation..</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="3e01e-174">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-174">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="dcff0-174">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-174">Sample template data</span></span>  
   
 ```json  
 {  
@@ -376,7 +376,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -456,7 +456,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -480,7 +480,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -504,7 +504,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -528,7 +528,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -552,7 +552,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -576,7 +576,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -600,7 +600,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -624,7 +624,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -638,31 +638,31 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="3e01e-175"><a name="CodeSamples"></a>Ukázky kódu</span><span class="sxs-lookup"><span data-stu-id="3e01e-175"><a name="CodeSamples"></a> Code samples</span></span>  
- <span data-ttu-id="3e01e-176">Následující šablony umožňují přizpůsobit text ukázky jednotlivých kódu na stránce operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-176">The following templates allow you to customize the body of the individual code samples on the operation page.</span></span>  
+##  <span data-ttu-id="dcff0-175"><a name="CodeSamples"></a>Ukázky kódu</span><span class="sxs-lookup"><span data-stu-id="dcff0-175"><a name="CodeSamples"></a> Code samples</span></span>  
+ <span data-ttu-id="dcff0-176">Hello následující šablony umožní toocustomize hello textu hello jednotlivých kód vzorků, které se na stránce Operace hello.</span><span class="sxs-lookup"><span data-stu-id="dcff0-176">hello following templates allow you toocustomize hello body of hello individual code samples on hello operation page.</span></span>  
   
- <span data-ttu-id="3e01e-177">![Ukázky kódu šablony portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "ukázky APIM Developer Portal šablony kódu")</span><span class="sxs-lookup"><span data-stu-id="3e01e-177">![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")</span></span>  
+ <span data-ttu-id="dcff0-177">![Ukázky kódu šablony portálu vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "ukázky APIM Developer Portal šablony kódu")</span><span class="sxs-lookup"><span data-stu-id="dcff0-177">![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")</span></span>  
   
--   [<span data-ttu-id="3e01e-178">Curl</span><span class="sxs-lookup"><span data-stu-id="3e01e-178">Curl</span></span>](#Curl)  
+-   [<span data-ttu-id="dcff0-178">Curl</span><span class="sxs-lookup"><span data-stu-id="dcff0-178">Curl</span></span>](#Curl)  
   
--   [<span data-ttu-id="3e01e-179">C#</span><span class="sxs-lookup"><span data-stu-id="3e01e-179">C#</span></span>](#CSharp)  
+-   [<span data-ttu-id="dcff0-179">C#</span><span class="sxs-lookup"><span data-stu-id="dcff0-179">C#</span></span>](#CSharp)  
   
--   [<span data-ttu-id="3e01e-180">Java</span><span class="sxs-lookup"><span data-stu-id="3e01e-180">Java</span></span>](#Stub)  
+-   [<span data-ttu-id="dcff0-180">Java</span><span class="sxs-lookup"><span data-stu-id="dcff0-180">Java</span></span>](#Stub)  
   
--   [<span data-ttu-id="3e01e-181">JavaScript</span><span class="sxs-lookup"><span data-stu-id="3e01e-181">JavaScript</span></span>](#JavaScript)  
+-   [<span data-ttu-id="dcff0-181">JavaScript</span><span class="sxs-lookup"><span data-stu-id="dcff0-181">JavaScript</span></span>](#JavaScript)  
   
--   [<span data-ttu-id="3e01e-182">Objective C</span><span class="sxs-lookup"><span data-stu-id="3e01e-182">Objective C</span></span>](#ObjectiveC)  
+-   [<span data-ttu-id="dcff0-182">Objective C</span><span class="sxs-lookup"><span data-stu-id="dcff0-182">Objective C</span></span>](#ObjectiveC)  
   
--   [<span data-ttu-id="3e01e-183">PHP</span><span class="sxs-lookup"><span data-stu-id="3e01e-183">PHP</span></span>](#PHP)  
+-   [<span data-ttu-id="dcff0-183">PHP</span><span class="sxs-lookup"><span data-stu-id="dcff0-183">PHP</span></span>](#PHP)  
   
--   [<span data-ttu-id="3e01e-184">Python</span><span class="sxs-lookup"><span data-stu-id="3e01e-184">Python</span></span>](#Python)  
+-   [<span data-ttu-id="dcff0-184">Python</span><span class="sxs-lookup"><span data-stu-id="dcff0-184">Python</span></span>](#Python)  
   
--   [<span data-ttu-id="3e01e-185">Ruby</span><span class="sxs-lookup"><span data-stu-id="3e01e-185">Ruby</span></span>](#Ruby)  
+-   [<span data-ttu-id="dcff0-185">Ruby</span><span class="sxs-lookup"><span data-stu-id="dcff0-185">Ruby</span></span>](#Ruby)  
   
-###  <span data-ttu-id="3e01e-186"><a name="Curl"></a>Curl</span><span class="sxs-lookup"><span data-stu-id="3e01e-186"><a name="Curl"></a> Curl</span></span>  
- <span data-ttu-id="3e01e-187">**DocumentationSamplesCurl** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-187">The **DocumentationSamplesCurl** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-186"><a name="Curl"></a>Curl</span><span class="sxs-lookup"><span data-stu-id="dcff0-186"><a name="Curl"></a> Curl</span></span>  
+ <span data-ttu-id="dcff0-187">Hello **DocumentationSamplesCurl** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-187">hello **DocumentationSamplesCurl** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-188">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-188">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-188">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-188">Default template</span></span>  
   
 ```xml  
 @ECHO OFF  
@@ -677,13 +677,13 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-189">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-189">Controls</span></span>  
- <span data-ttu-id="3e01e-190">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-190">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-189">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-189">Controls</span></span>  
+ <span data-ttu-id="dcff0-190">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-190">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-191">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-191">Data model</span></span>  
- <span data-ttu-id="3e01e-192">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-192">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-191">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-191">Data model</span></span>  
+ <span data-ttu-id="dcff0-192">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-192">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-193">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-193">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-193">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-193">Sample template data</span></span>  
   
 ```json  
 {  
@@ -700,7 +700,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -712,10 +712,10 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-194"><a name="CSharp"></a>C#</span><span class="sxs-lookup"><span data-stu-id="3e01e-194"><a name="CSharp"></a> C#</span></span>  
- <span data-ttu-id="3e01e-195">**DocumentationSamplesCsharp** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-195">The **DocumentationSamplesCsharp** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-194"><a name="CSharp"></a>C#</span><span class="sxs-lookup"><span data-stu-id="dcff0-194"><a name="CSharp"></a> C#</span></span>  
+ <span data-ttu-id="dcff0-195">Hello **DocumentationSamplesCsharp** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-195">hello **DocumentationSamplesCsharp** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-196">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-196">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-196">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-196">Default template</span></span>  
   
 ```xml  
 using System;  
@@ -731,7 +731,7 @@ namespace CSHttpClientSample
         static void Main()  
         {  
             MakeRequest();  
-            Console.WriteLine("Hit ENTER to exit...");  
+            Console.WriteLine("Hit ENTER tooexit...");  
             Console.ReadLine();  
         }  
   
@@ -856,13 +856,13 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-197">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-197">Controls</span></span>  
- <span data-ttu-id="3e01e-198">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-198">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-197">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-197">Controls</span></span>  
+ <span data-ttu-id="dcff0-198">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-198">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-199">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-199">Data model</span></span>  
- <span data-ttu-id="3e01e-200">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-200">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-199">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-199">Data model</span></span>  
+ <span data-ttu-id="dcff0-200">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-200">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-201">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-201">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-201">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-201">Sample template data</span></span>  
   
 ```json  
 {  
@@ -879,7 +879,7 @@ namespace CSHttpClientSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -891,13 +891,13 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-202"><a name="Stub"></a>Java</span><span class="sxs-lookup"><span data-stu-id="3e01e-202"><a name="Stub"></a> Java</span></span>  
- <span data-ttu-id="3e01e-203">**DocumentationSamplesJava** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-203">The **DocumentationSamplesJava** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-202"><a name="Stub"></a>Java</span><span class="sxs-lookup"><span data-stu-id="dcff0-202"><a name="Stub"></a> Java</span></span>  
+ <span data-ttu-id="dcff0-203">Hello **DocumentationSamplesJava** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-203">hello **DocumentationSamplesJava** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-204">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-204">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-204">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-204">Default template</span></span>  
   
 ```xml  
-// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// // This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
@@ -952,13 +952,13 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-205">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-205">Controls</span></span>  
- <span data-ttu-id="3e01e-206">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-206">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-205">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-205">Controls</span></span>  
+ <span data-ttu-id="dcff0-206">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-206">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-207">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-207">Data model</span></span>  
- <span data-ttu-id="3e01e-208">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-208">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-207">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-207">Data model</span></span>  
+ <span data-ttu-id="dcff0-208">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-208">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-209">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-209">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-209">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-209">Sample template data</span></span>  
   
 ```json  
 {  
@@ -975,7 +975,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -987,10 +987,10 @@ public class JavaSample
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-210"><a name="JavaScript"></a>JavaScript</span><span class="sxs-lookup"><span data-stu-id="3e01e-210"><a name="JavaScript"></a> JavaScript</span></span>  
- <span data-ttu-id="3e01e-211">**DocumentationSamplesJs** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-211">The **DocumentationSamplesJs** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-210"><a name="JavaScript"></a>JavaScript</span><span class="sxs-lookup"><span data-stu-id="dcff0-210"><a name="JavaScript"></a> JavaScript</span></span>  
+ <span data-ttu-id="dcff0-211">Hello **DocumentationSamplesJs** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-211">hello **DocumentationSamplesJs** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-212">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-212">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-212">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-212">Default template</span></span>  
   
 ```xml  
 <!DOCTYPE html>  
@@ -1041,13 +1041,13 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-213">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-213">Controls</span></span>  
- <span data-ttu-id="3e01e-214">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-214">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-213">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-213">Controls</span></span>  
+ <span data-ttu-id="dcff0-214">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-214">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-215">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-215">Data model</span></span>  
- <span data-ttu-id="3e01e-216">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-216">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-215">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-215">Data model</span></span>  
+ <span data-ttu-id="dcff0-216">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-216">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-217">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-217">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-217">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-217">Sample template data</span></span>  
   
 ```json  
 {  
@@ -1064,7 +1064,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1076,10 +1076,10 @@ public class JavaSample
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-218"><a name="ObjectiveC"></a>Objective C</span><span class="sxs-lookup"><span data-stu-id="3e01e-218"><a name="ObjectiveC"></a> Objective C</span></span>  
- <span data-ttu-id="3e01e-219">**DocumentationSamplesObjc** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-219">The **DocumentationSamplesObjc** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-218"><a name="ObjectiveC"></a>Objective C</span><span class="sxs-lookup"><span data-stu-id="dcff0-218"><a name="ObjectiveC"></a> Objective C</span></span>  
+ <span data-ttu-id="dcff0-219">Hello **DocumentationSamplesObjc** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-219">hello **DocumentationSamplesObjc** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-220">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-220">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-220">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-220">Default template</span></span>  
   
 ```xml  
 #import <Foundation/Foundation.h>  
@@ -1153,13 +1153,13 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-221">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-221">Controls</span></span>  
- <span data-ttu-id="3e01e-222">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-222">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-221">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-221">Controls</span></span>  
+ <span data-ttu-id="dcff0-222">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-222">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-223">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-223">Data model</span></span>  
- <span data-ttu-id="3e01e-224">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-224">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-223">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-223">Data model</span></span>  
+ <span data-ttu-id="dcff0-224">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-224">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-225">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-225">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-225">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-225">Sample template data</span></span>  
   
 ```json  
 {  
@@ -1176,7 +1176,7 @@ int main(int argc, const char * argv[])
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1188,14 +1188,14 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-226"><a name="PHP"></a>PHP</span><span class="sxs-lookup"><span data-stu-id="3e01e-226"><a name="PHP"></a> PHP</span></span>  
- <span data-ttu-id="3e01e-227">**DocumentationSamplesPhp** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-227">The **DocumentationSamplesPhp** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-226"><a name="PHP"></a>PHP</span><span class="sxs-lookup"><span data-stu-id="dcff0-226"><a name="PHP"></a> PHP</span></span>  
+ <span data-ttu-id="dcff0-227">Hello **DocumentationSamplesPhp** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-227">hello **DocumentationSamplesPhp** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-228">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-228">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-228">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-228">Default template</span></span>  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1243,13 +1243,13 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-229">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-229">Controls</span></span>  
- <span data-ttu-id="3e01e-230">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-230">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-229">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-229">Controls</span></span>  
+ <span data-ttu-id="dcff0-230">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-230">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-231">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-231">Data model</span></span>  
- <span data-ttu-id="3e01e-232">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-232">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-231">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-231">Data model</span></span>  
+ <span data-ttu-id="dcff0-232">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-232">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-233">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-233">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-233">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-233">Sample template data</span></span>  
   
 ```json  
 {  
@@ -1266,7 +1266,7 @@ catch (HttpException $ex)
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1278,10 +1278,10 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-234"><a name="Python"></a>Python</span><span class="sxs-lookup"><span data-stu-id="3e01e-234"><a name="Python"></a> Python</span></span>  
- <span data-ttu-id="3e01e-235">**DocumentationSamplesPython** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-235">The **DocumentationSamplesPython** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-234"><a name="Python"></a>Python</span><span class="sxs-lookup"><span data-stu-id="dcff0-234"><a name="Python"></a> Python</span></span>  
+ <span data-ttu-id="dcff0-235">Hello **DocumentationSamplesPython** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-235">hello **DocumentationSamplesPython** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-236">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-236">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-236">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-236">Default template</span></span>  
   
 ```xml  
 ########### Python 2.7 #############  
@@ -1361,13 +1361,13 @@ except Exception as e:
 ####################################  
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-237">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-237">Controls</span></span>  
- <span data-ttu-id="3e01e-238">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-238">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-237">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-237">Controls</span></span>  
+ <span data-ttu-id="dcff0-238">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-238">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-239">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-239">Data model</span></span>  
- <span data-ttu-id="3e01e-240">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-240">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-239">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-239">Data model</span></span>  
+ <span data-ttu-id="dcff0-240">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-240">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-241">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-241">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-241">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-241">Sample template data</span></span>  
   
 ```json  
 {  
@@ -1384,7 +1384,7 @@ except Exception as e:
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1396,10 +1396,10 @@ except Exception as e:
 }  
 ```  
   
-###  <span data-ttu-id="3e01e-242"><a name="Ruby"></a>Ruby</span><span class="sxs-lookup"><span data-stu-id="3e01e-242"><a name="Ruby"></a> Ruby</span></span>  
- <span data-ttu-id="3e01e-243">**DocumentationSamplesRuby** šablona umožňuje přizpůsobit této ukázce kódu v části Ukázky kódu stránky operace.</span><span class="sxs-lookup"><span data-stu-id="3e01e-243">The **DocumentationSamplesRuby** template allows you to customize that code sample in the code samples section of the operation page.</span></span>  
+###  <span data-ttu-id="dcff0-242"><a name="Ruby"></a>Ruby</span><span class="sxs-lookup"><span data-stu-id="dcff0-242"><a name="Ruby"></a> Ruby</span></span>  
+ <span data-ttu-id="dcff0-243">Hello **DocumentationSamplesRuby** šablona vám umožní toocustomize, který ukázka v části Ukázky kódu hello hello operaci stránky kódu.</span><span class="sxs-lookup"><span data-stu-id="dcff0-243">hello **DocumentationSamplesRuby** template allows you toocustomize that code sample in hello code samples section of hello operation page.</span></span>  
   
-#### <a name="default-template"></a><span data-ttu-id="3e01e-244">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-244">Default template</span></span>  
+#### <a name="default-template"></a><span data-ttu-id="dcff0-244">Výchozí šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-244">Default template</span></span>  
   
 ```xml  
 require 'net/http'  
@@ -1432,13 +1432,13 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a><span data-ttu-id="3e01e-245">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="3e01e-245">Controls</span></span>  
- <span data-ttu-id="3e01e-246">Šablony ukázkový kód zakázat použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-246">The code sample templates do not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+#### <a name="controls"></a><span data-ttu-id="dcff0-245">Ovládací prvky</span><span class="sxs-lookup"><span data-stu-id="dcff0-245">Controls</span></span>  
+ <span data-ttu-id="dcff0-246">Hello šablony ukázkový kód neumožňují hello použití libovolného [stránka ovládací prvky](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-246">hello code sample templates do not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-#### <a name="data-model"></a><span data-ttu-id="3e01e-247">Datový model</span><span class="sxs-lookup"><span data-stu-id="3e01e-247">Data model</span></span>  
- <span data-ttu-id="3e01e-248">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="3e01e-248">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
+#### <a name="data-model"></a><span data-ttu-id="dcff0-247">Datový model</span><span class="sxs-lookup"><span data-stu-id="dcff0-247">Data model</span></span>  
+ <span data-ttu-id="dcff0-248">[Ukázka kódu](api-management-template-data-model-reference.md#Sample) entity.</span><span class="sxs-lookup"><span data-stu-id="dcff0-248">[Code sample](api-management-template-data-model-reference.md#Sample) entity.</span></span>  
   
-#### <a name="sample-template-data"></a><span data-ttu-id="3e01e-249">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="3e01e-249">Sample template data</span></span>  
+#### <a name="sample-template-data"></a><span data-ttu-id="dcff0-249">Ukázková data šablony</span><span class="sxs-lookup"><span data-stu-id="dcff0-249">Sample template data</span></span>  
   
 ```json  
 {  
@@ -1455,7 +1455,7 @@ puts response.body
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1467,5 +1467,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="3e01e-250">Další kroky</span><span class="sxs-lookup"><span data-stu-id="3e01e-250">Next steps</span></span>
-<span data-ttu-id="3e01e-251">Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="3e01e-251">For more information about working with templates, see [How to customize the API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="dcff0-250">Další kroky</span><span class="sxs-lookup"><span data-stu-id="dcff0-250">Next steps</span></span>
+<span data-ttu-id="dcff0-251">Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="dcff0-251">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>

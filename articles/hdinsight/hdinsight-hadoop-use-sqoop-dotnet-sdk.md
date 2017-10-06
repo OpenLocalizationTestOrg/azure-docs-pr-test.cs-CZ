@@ -1,6 +1,6 @@
 ---
-title: "Spuštění úloh Sqoop pomocí rozhraní .NET a HDInsight - Azure | Microsoft Docs"
-description: "Naučte se používat sadu .NET SDK HDInsight Sqoop import a export mezi clusteru Hadoop a Azure SQL database."
+title: "aaaRun Sqoop úloh pomocí rozhraní .NET a HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak HDInsight .NET SDK toorun toouse Sqoop import a export mezi clusteru Hadoop a Azure SQL database."
 keywords: "sqoop úlohy"
 editor: cgronlun
 manager: jhubbard
@@ -17,37 +17,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: afa0a78ba5e5d89c04ba7be4b58dd24aea4f39ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a><span data-ttu-id="a6f7b-104">Spuštění úloh Sqoop pro Hadoop v HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="a6f7b-104">Run Sqoop jobs using .NET SDK for Hadoop in HDInsight</span></span>
+# <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a><span data-ttu-id="2d2d2-104">Spuštění úloh Sqoop pro Hadoop v HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="2d2d2-104">Run Sqoop jobs using .NET SDK for Hadoop in HDInsight</span></span>
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-<span data-ttu-id="a6f7b-105">Naučte se používat sadu .NET SDK HDInsight ke spuštění úloh Sqoop v HDInsight k importu a exportu mezi HDInsight cluster a Azure SQL database nebo databáze systému SQL Server.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-105">Learn how to use HDInsight .NET SDK to run Sqoop jobs in HDInsight to import and export between HDInsight cluster and Azure SQL database or SQL Server database.</span></span>
+<span data-ttu-id="2d2d2-105">Zjistěte, jak HDInsight .NET SDK toorun toouse Sqoop úlohy v prostředí HDInsight tooimport a exportovat mezi HDInsight cluster a Azure SQL database nebo databáze systému SQL Server.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-105">Learn how toouse HDInsight .NET SDK toorun Sqoop jobs in HDInsight tooimport and export between HDInsight cluster and Azure SQL database or SQL Server database.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a6f7b-106">Kroky v tomto článku lze použít s buď Windows nebo Linux cluster HDInsight; ale tyto kroky fungovat pouze z klienta Windows.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-106">The steps in this article can be used with either a Windows-based or Linux-based HDInsight cluster; however, these steps only work from a Windows client.</span></span> <span data-ttu-id="a6f7b-107">Zvolte jiné metody pomocí volič karty nahoře v tomto článku.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-107">Use the tab selector on the top of this article to choose other methods.</span></span>
+> <span data-ttu-id="2d2d2-106">Hello kroky v tomto článku lze použít s buď Windows nebo Linux cluster HDInsight; ale tyto kroky fungovat pouze z klienta Windows.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-106">hello steps in this article can be used with either a Windows-based or Linux-based HDInsight cluster; however, these steps only work from a Windows client.</span></span> <span data-ttu-id="2d2d2-107">Používejte selektor karta hello na hello horní části tohoto článku toochoose jiné metody.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-107">Use hello tab selector on hello top of this article toochoose other methods.</span></span>
 > 
 > 
 
-### <a name="prerequisites"></a><span data-ttu-id="a6f7b-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="a6f7b-108">Prerequisites</span></span>
-<span data-ttu-id="a6f7b-109">Před zahájením tohoto kurzu musíte mít tyto položky:</span><span class="sxs-lookup"><span data-stu-id="a6f7b-109">Before you begin this tutorial, you must have the following items:</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="2d2d2-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="2d2d2-108">Prerequisites</span></span>
+<span data-ttu-id="2d2d2-109">Než začnete tento kurz, musíte mít hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="2d2d2-109">Before you begin this tutorial, you must have hello following items:</span></span>
 
-* <span data-ttu-id="a6f7b-110">**Cluster Hadoop v HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-110">**A Hadoop cluster in HDInsight**.</span></span> <span data-ttu-id="a6f7b-111">V tématu [vytvoření clusteru a databáze SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).</span><span class="sxs-lookup"><span data-stu-id="a6f7b-111">See [Create cluster and SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).</span></span>
+* <span data-ttu-id="2d2d2-110">**Cluster Hadoop v HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-110">**A Hadoop cluster in HDInsight**.</span></span> <span data-ttu-id="2d2d2-111">V tématu [vytvoření clusteru a databáze SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).</span><span class="sxs-lookup"><span data-stu-id="2d2d2-111">See [Create cluster and SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).</span></span>
 
-## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a><span data-ttu-id="a6f7b-112">Použití nástroje Sqoop clustery prostředí HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="a6f7b-112">Use Sqoop on HDInsight clusters using .NET SDK</span></span>
-<span data-ttu-id="a6f7b-113">.NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-113">The HDInsight .NET SDK provides .NET client libraries, which makes it easier to work with HDInsight clusters from .NET.</span></span> <span data-ttu-id="a6f7b-114">V této části vytvoříte konzolovou aplikaci C# pro export hivesampletable do tabulky databáze SQL, kterou jste vytvořili dříve v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-114">In this section, you create a C# console application to export the hivesampletable to the SQL Database table you created earlier in this tutorial.</span></span>
+## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a><span data-ttu-id="2d2d2-112">Použití nástroje Sqoop clustery prostředí HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="2d2d2-112">Use Sqoop on HDInsight clusters using .NET SDK</span></span>
+<span data-ttu-id="2d2d2-113">Hello HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je jednodušší toowork s clustery HDInsight pomocí technologie .NET.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-113">hello HDInsight .NET SDK provides .NET client libraries, which makes it easier toowork with HDInsight clusters from .NET.</span></span> <span data-ttu-id="2d2d2-114">V této části vytvoříte C# konzole aplikace tooexport hello hivesampletable toohello tabulka databáze SQL, kterou jste vytvořili dříve v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-114">In this section, you create a C# console application tooexport hello hivesampletable toohello SQL Database table you created earlier in this tutorial.</span></span>
 
-## <a name="submit-a-sqoop-job"></a><span data-ttu-id="a6f7b-115">Odeslání úlohy Sqoop</span><span class="sxs-lookup"><span data-stu-id="a6f7b-115">Submit a Sqoop job</span></span>
+## <a name="submit-a-sqoop-job"></a><span data-ttu-id="2d2d2-115">Odeslání úlohy Sqoop</span><span class="sxs-lookup"><span data-stu-id="2d2d2-115">Submit a Sqoop job</span></span>
 
-1. <span data-ttu-id="a6f7b-116">Vytvořte konzolovou aplikaci C# v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-116">Create a C# console application in Visual Studio.</span></span>
-2. <span data-ttu-id="a6f7b-117">Z konzoly Správce balíčků Visual Studio spusťte následující příkaz pro import balíčku Nuget.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-117">From the Visual Studio Package Manager Console, run the following Nuget command to import the package.</span></span>
+1. <span data-ttu-id="2d2d2-116">Vytvořte konzolovou aplikaci C# v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-116">Create a C# console application in Visual Studio.</span></span>
+2. <span data-ttu-id="2d2d2-117">Z hello Konzola správce balíčků Visual Studio spusťte následující balíček Nuget příkaz tooimport hello hello.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-117">From hello Visual Studio Package Manager Console, run hello following Nuget command tooimport hello package.</span></span>
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. <span data-ttu-id="a6f7b-118">Použijte následující kód v souboru Program.cs:</span><span class="sxs-lookup"><span data-stu-id="a6f7b-118">Use the following code in the Program.cs file:</span></span>
+3. <span data-ttu-id="2d2d2-118">Použijte následující kód v souboru Program.cs hello hello:</span><span class="sxs-lookup"><span data-stu-id="2d2d2-118">Use hello following code in hello Program.cs file:</span></span>
    
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -67,14 +67,14 @@ ms.lasthandoff: 07/11/2017
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("The application is running ...");
+                    System.Console.WriteLine("hello application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
    
                     SubmitSqoopJob();
    
-                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.WriteLine("Press ENTER toocontinue ...");
                     System.Console.ReadLine();
                 }
    
@@ -101,25 +101,25 @@ ms.lasthandoff: 07/11/2017
                         Command = "export --connect " + connectionString + " --table " + tableName + "_mobile --export-dir " + exportDir + "_mobile --fields-terminated-by \\t -m 1"
                     };
    
-                    System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+                    System.Console.WriteLine("Submitting hello Sqoop job toohello cluster...");
                     var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
-                    System.Console.WriteLine("Validating that the response is as expected...");
+                    System.Console.WriteLine("Validating that hello response is as expected...");
                     System.Console.WriteLine("Response status code is " + response.StatusCode);
-                    System.Console.WriteLine("Validating the response object...");
+                    System.Console.WriteLine("Validating hello response object...");
                     System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
                 }
             }
         }
-4. <span data-ttu-id="a6f7b-119">Stiskněte klávesu **F5** ke spuštění programu.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-119">Press **F5** to run the program.</span></span> 
+4. <span data-ttu-id="2d2d2-119">Stiskněte klávesu **F5** toorun programu hello.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-119">Press **F5** toorun hello program.</span></span> 
 
-## <a name="limitations"></a><span data-ttu-id="a6f7b-120">Omezení</span><span class="sxs-lookup"><span data-stu-id="a6f7b-120">Limitations</span></span>
-* <span data-ttu-id="a6f7b-121">Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor umožňuje exportovat data do systému Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-121">Bulk export - With Linux-based HDInsight, the Sqoop connector used to export data to Microsoft SQL Server or Azure SQL Database does not currently support bulk inserts.</span></span>
-* <span data-ttu-id="a6f7b-122">Dávkování - s HDInsight se systémem Linux, při použití `-batch` přepnout při vložení, Sqoop provádí více vloží místo dávkování operace insert.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-122">Batching - With Linux-based HDInsight, When using the `-batch` switch when performing inserts, Sqoop performs multiple inserts instead of batching the insert operations.</span></span>
+## <a name="limitations"></a><span data-ttu-id="2d2d2-120">Omezení</span><span class="sxs-lookup"><span data-stu-id="2d2d2-120">Limitations</span></span>
+* <span data-ttu-id="2d2d2-121">Hromadně export - s Linuxovým systémem HDInsight, hello Sqoop konektor používaný tooexport data tooMicrosoft systému SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-121">Bulk export - With Linux-based HDInsight, hello Sqoop connector used tooexport data tooMicrosoft SQL Server or Azure SQL Database does not currently support bulk inserts.</span></span>
+* <span data-ttu-id="2d2d2-122">Dávkování - s HDInsight se systémem Linux, při použití hello `-batch` přepnout při vložení, Sqoop provádí více vloží místo dávkování operace insert hello.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-122">Batching - With Linux-based HDInsight, When using hello `-batch` switch when performing inserts, Sqoop performs multiple inserts instead of batching hello insert operations.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="a6f7b-123">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a6f7b-123">Next steps</span></span>
-<span data-ttu-id="a6f7b-124">Nyní jste se naučili postup použití nástroje Sqoop.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-124">Now you have learned how to use Sqoop.</span></span> <span data-ttu-id="a6f7b-125">Další informace naleznete v tématu:</span><span class="sxs-lookup"><span data-stu-id="a6f7b-125">To learn more, see:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="2d2d2-123">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2d2d2-123">Next steps</span></span>
+<span data-ttu-id="2d2d2-124">Nyní jste se naučili, jak toouse Sqoop.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-124">Now you have learned how toouse Sqoop.</span></span> <span data-ttu-id="2d2d2-125">toolearn více, najdete v části:</span><span class="sxs-lookup"><span data-stu-id="2d2d2-125">toolearn more, see:</span></span>
 
-* <span data-ttu-id="a6f7b-126">[Použijte Oozie s HDInsight](hdinsight-use-oozie.md): použití Sqoop akce v pracovním postupu Oozie.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-126">[Use Oozie with HDInsight](hdinsight-use-oozie.md): Use Sqoop action in an Oozie workflow.</span></span>
-* <span data-ttu-id="a6f7b-127">[Analýza dat zpoždění letu pomocí HDInsight](hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a pak pomocí Sqoop exportovat data do Azure SQL database.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-127">[Analyze flight delay data using HDInsight](hdinsight-analyze-flight-delay-data.md): Use Hive to analyze flight delay data, and then use Sqoop to export data to an Azure SQL database.</span></span>
-* <span data-ttu-id="a6f7b-128">[Nahrání dat do HDInsight](hdinsight-upload-data.md): Najít další metody pro odesílání dat do HDInsight nebo Azure Blob storage.</span><span class="sxs-lookup"><span data-stu-id="a6f7b-128">[Upload data to HDInsight](hdinsight-upload-data.md): Find other methods for uploading data to HDInsight/Azure Blob storage.</span></span>
+* <span data-ttu-id="2d2d2-126">[Použijte Oozie s HDInsight](hdinsight-use-oozie.md): použití Sqoop akce v pracovním postupu Oozie.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-126">[Use Oozie with HDInsight](hdinsight-use-oozie.md): Use Sqoop action in an Oozie workflow.</span></span>
+* <span data-ttu-id="2d2d2-127">[Analýza dat zpoždění letu pomocí HDInsight](hdinsight-analyze-flight-delay-data.md): použití Hive letu tooanalyze zpoždění data a pak použijte Sqoop tooexport data tooan Azure SQL database.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-127">[Analyze flight delay data using HDInsight](hdinsight-analyze-flight-delay-data.md): Use Hive tooanalyze flight delay data, and then use Sqoop tooexport data tooan Azure SQL database.</span></span>
+* <span data-ttu-id="2d2d2-128">[Nahrání dat tooHDInsight](hdinsight-upload-data.md): Najít další metody pro odesílání dat tooHDInsight/Azure Blob storage.</span><span class="sxs-lookup"><span data-stu-id="2d2d2-128">[Upload data tooHDInsight](hdinsight-upload-data.md): Find other methods for uploading data tooHDInsight/Azure Blob storage.</span></span>
 

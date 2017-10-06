@@ -1,6 +1,6 @@
 ---
-title: "Analyzovat zabezpečení sítě s Azure sítě sledovacích procesů zabezpečení skupiny zobrazení – 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek popisuje postup použití Azure CLI 2.0 k analýze zabezpečení virtuálních počítačů s zobrazení skupiny zabezpečení."
+title: "zabezpečení sítě aaaAnalyze s Azure sítě sledovacích procesů zabezpečení skupiny zobrazení – 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Tento článek popisuje, jak tooanalyze toouse 2.0 rozhraní příkazového řádku Azure a virtuálních počítačů zabezpečení s zobrazení skupiny zabezpečení."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,60 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 1756e14819e3b7c79361c193413a1fcd7f24a4e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31a4cd628f54d7548f495251fd275f099e79a060
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a><span data-ttu-id="2af8d-103">Analýza zabezpečení vašeho virtuálního počítače s zobrazení skupiny zabezpečení pomocí Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="2af8d-103">Analyze your Virtual Machine security with Security Group View using Azure CLI 2.0</span></span>
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a><span data-ttu-id="c072a-103">Analýza zabezpečení vašeho virtuálního počítače s zobrazení skupiny zabezpečení pomocí Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="c072a-103">Analyze your Virtual Machine security with Security Group View using Azure CLI 2.0</span></span>
 
 > [!div class="op_single_selector"]
-> - [<span data-ttu-id="2af8d-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="2af8d-104">PowerShell</span></span>](network-watcher-security-group-view-powershell.md)
-> - [<span data-ttu-id="2af8d-105">CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="2af8d-105">CLI 1.0</span></span>](network-watcher-security-group-view-cli-nodejs.md)
-> - [<span data-ttu-id="2af8d-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="2af8d-106">CLI 2.0</span></span>](network-watcher-security-group-view-cli.md)
-> - [<span data-ttu-id="2af8d-107">REST API</span><span class="sxs-lookup"><span data-stu-id="2af8d-107">REST API</span></span>](network-watcher-security-group-view-rest.md)
+> - [<span data-ttu-id="c072a-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="c072a-104">PowerShell</span></span>](network-watcher-security-group-view-powershell.md)
+> - [<span data-ttu-id="c072a-105">CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="c072a-105">CLI 1.0</span></span>](network-watcher-security-group-view-cli-nodejs.md)
+> - [<span data-ttu-id="c072a-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="c072a-106">CLI 2.0</span></span>](network-watcher-security-group-view-cli.md)
+> - [<span data-ttu-id="c072a-107">REST API</span><span class="sxs-lookup"><span data-stu-id="c072a-107">REST API</span></span>](network-watcher-security-group-view-rest.md)
 
-<span data-ttu-id="2af8d-108">Zobrazení skupiny zabezpečení vrátí pravidla zabezpečení sítě nakonfigurované a efektivní, která se použijí k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="2af8d-108">Security group view returns configured and effective network security rules that are applied to a virtual machine.</span></span> <span data-ttu-id="2af8d-109">Tato možnost je užitečná k auditování a diagnostice skupin zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači zajistit provoz se správně povolený nebo zakázaný.</span><span class="sxs-lookup"><span data-stu-id="2af8d-109">This capability is useful to audit and diagnose Network Security Groups and rules that are configured on a VM to ensure traffic is being correctly allowed or denied.</span></span> <span data-ttu-id="2af8d-110">V tomto článku jsme ukazují, jak načíst pravidla zabezpečení nakonfigurované a efektivní k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure</span><span class="sxs-lookup"><span data-stu-id="2af8d-110">In this article, we show you how to retrieve the configured and effective security rules to a virtual machine using Azure CLI</span></span>
+<span data-ttu-id="c072a-108">Zobrazení skupiny zabezpečení vrátí pravidla zabezpečení sítě nakonfigurované a efektivní, které jsou použité tooa virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="c072a-108">Security group view returns configured and effective network security rules that are applied tooa virtual machine.</span></span> <span data-ttu-id="c072a-109">Tato funkce je užitečná tooaudit a diagnostikovat skupin zabezpečení sítě, a pravidla, které jsou nakonfigurované na přenosem tooensure virtuálních počítačů se správně povolený nebo zakázaný.</span><span class="sxs-lookup"><span data-stu-id="c072a-109">This capability is useful tooaudit and diagnose Network Security Groups and rules that are configured on a VM tooensure traffic is being correctly allowed or denied.</span></span> <span data-ttu-id="c072a-110">V tomto článku jsme ukážeme, jak tooretrieve hello nakonfigurované a efektivní zabezpečení pravidla tooa virtuálního počítače pomocí rozhraní příkazového řádku Azure</span><span class="sxs-lookup"><span data-stu-id="c072a-110">In this article, we show you how tooretrieve hello configured and effective security rules tooa virtual machine using Azure CLI</span></span>
 
 
-<span data-ttu-id="2af8d-111">Tento článek používá naší nové generace rozhraní příkazového řádku pro model nasazení prostředků management, Azure CLI 2.0, která je dostupná pro Windows, Mac a Linux.</span><span class="sxs-lookup"><span data-stu-id="2af8d-111">This article uses our next generation CLI for the resource management deployment model, Azure CLI 2.0, which is available for Windows, Mac and Linux.</span></span>
+<span data-ttu-id="c072a-111">Tento článek používá naší nové generace rozhraní příkazového řádku pro model nasazení hello prostředků management, Azure CLI 2.0, která je dostupná pro Windows, Mac a Linux.</span><span class="sxs-lookup"><span data-stu-id="c072a-111">This article uses our next generation CLI for hello resource management deployment model, Azure CLI 2.0, which is available for Windows, Mac and Linux.</span></span>
 
-<span data-ttu-id="2af8d-112">Chcete-li provést kroky v tomto článku, je potřeba [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="2af8d-112">To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span></span>
+<span data-ttu-id="c072a-112">tooperform hello kroky v tomto článku, budete potřebovat příliš[instalace hello rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="c072a-112">tooperform hello steps in this article, you need too[install hello Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).</span></span>
 
-## <a name="before-you-begin"></a><span data-ttu-id="2af8d-113">Než začnete</span><span class="sxs-lookup"><span data-stu-id="2af8d-113">Before you begin</span></span>
+## <a name="before-you-begin"></a><span data-ttu-id="c072a-113">Než začnete</span><span class="sxs-lookup"><span data-stu-id="c072a-113">Before you begin</span></span>
 
-<span data-ttu-id="2af8d-114">Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě.</span><span class="sxs-lookup"><span data-stu-id="2af8d-114">This scenario assumes you have already followed the steps in [Create a Network Watcher](network-watcher-create.md) to create a Network Watcher.</span></span>
+<span data-ttu-id="c072a-114">Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě.</span><span class="sxs-lookup"><span data-stu-id="c072a-114">This scenario assumes you have already followed hello steps in [Create a Network Watcher](network-watcher-create.md) toocreate a Network Watcher.</span></span>
 
-## <a name="scenario"></a><span data-ttu-id="2af8d-115">Scénář</span><span class="sxs-lookup"><span data-stu-id="2af8d-115">Scenario</span></span>
+## <a name="scenario"></a><span data-ttu-id="c072a-115">Scénář</span><span class="sxs-lookup"><span data-stu-id="c072a-115">Scenario</span></span>
 
-<span data-ttu-id="2af8d-116">Scénář popsaná v tomto článku načte pravidla nakonfigurované a efektivní zabezpečení pro daný virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="2af8d-116">The scenario covered in this article retrieves the configured and effective security rules for a given virtual machine.</span></span>
+<span data-ttu-id="c072a-116">scénář Hello popsaná v tomto článku načte hello nakonfigurované a pravidla efektivní zabezpečení pro daný virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="c072a-116">hello scenario covered in this article retrieves hello configured and effective security rules for a given virtual machine.</span></span>
 
-## <a name="get-a-vm"></a><span data-ttu-id="2af8d-117">Získat virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="2af8d-117">Get a VM</span></span>
+## <a name="get-a-vm"></a><span data-ttu-id="c072a-117">Získat virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="c072a-117">Get a VM</span></span>
 
-<span data-ttu-id="2af8d-118">Virtuální počítač je potřeba spustit `vm list` rutiny.</span><span class="sxs-lookup"><span data-stu-id="2af8d-118">A virtual machine is required to run the `vm list` cmdlet.</span></span> <span data-ttu-id="2af8d-119">Následující příkaz Seznam virtuálních počítačů ve skupině prostředků:</span><span class="sxs-lookup"><span data-stu-id="2af8d-119">The following command lists the virtual machines in a resource group:</span></span>
+<span data-ttu-id="c072a-118">Virtuální počítač je požadovaná toorun hello `vm list` rutiny.</span><span class="sxs-lookup"><span data-stu-id="c072a-118">A virtual machine is required toorun hello `vm list` cmdlet.</span></span> <span data-ttu-id="c072a-119">Hello následující příkaz vypíše hello virtuální počítače ve skupině prostředků:</span><span class="sxs-lookup"><span data-stu-id="c072a-119">hello following command lists hello virtual machines in a resource group:</span></span>
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-<span data-ttu-id="2af8d-120">Jakmile znáte virtuální počítač, můžete použít `vm show` rutiny jeho Id prostředku:</span><span class="sxs-lookup"><span data-stu-id="2af8d-120">Once you know the virtual machine, you can use the `vm show` cmdlet to get its resource Id:</span></span>
+<span data-ttu-id="c072a-120">Jakmile znáte hello virtuálního počítače, můžete použít hello `vm show` rutiny tooget jeho Id prostředku:</span><span class="sxs-lookup"><span data-stu-id="c072a-120">Once you know hello virtual machine, you can use hello `vm show` cmdlet tooget its resource Id:</span></span>
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
-## <a name="retrieve-security-group-view"></a><span data-ttu-id="2af8d-121">Načtení zobrazení skupiny zabezpečení</span><span class="sxs-lookup"><span data-stu-id="2af8d-121">Retrieve security group view</span></span>
+## <a name="retrieve-security-group-view"></a><span data-ttu-id="c072a-121">Načtení zobrazení skupiny zabezpečení</span><span class="sxs-lookup"><span data-stu-id="c072a-121">Retrieve security group view</span></span>
 
-<span data-ttu-id="2af8d-122">Dalším krokem je načíst výsledky zobrazení skupiny zabezpečení.</span><span class="sxs-lookup"><span data-stu-id="2af8d-122">The next step is to retrieve the security group view result.</span></span>
+<span data-ttu-id="c072a-122">dalším krokem Hello je tooretrieve hello zabezpečení skupiny zobrazení výsledků.</span><span class="sxs-lookup"><span data-stu-id="c072a-122">hello next step is tooretrieve hello security group view result.</span></span>
 
 ```azurecli
 az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
 ```
 
-## <a name="viewing-the-results"></a><span data-ttu-id="2af8d-123">Zobrazení výsledků</span><span class="sxs-lookup"><span data-stu-id="2af8d-123">Viewing the results</span></span>
+## <a name="viewing-hello-results"></a><span data-ttu-id="c072a-123">Zobrazení výsledků hello</span><span class="sxs-lookup"><span data-stu-id="c072a-123">Viewing hello results</span></span>
 
-<span data-ttu-id="2af8d-124">V následujícím příkladu je zkrácení odpověď výsledky vrácené.</span><span class="sxs-lookup"><span data-stu-id="2af8d-124">The following example is a shortened response of the results returned.</span></span> <span data-ttu-id="2af8d-125">Výsledky zobrazit všechna pravidla zabezpečení efektivní a použitých na virtuálním počítači rozdělení v skupiny **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a **EffectiveSecurityRules**.</span><span class="sxs-lookup"><span data-stu-id="2af8d-125">The results show all the effective and applied security rules on the virtual machine broken down in groups of **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, and **EffectiveSecurityRules**.</span></span>
+<span data-ttu-id="c072a-124">Hello následující příklad je zkrácení odpověď vráceny výsledky hello.</span><span class="sxs-lookup"><span data-stu-id="c072a-124">hello following example is a shortened response of hello results returned.</span></span> <span data-ttu-id="c072a-125">Hello výsledky zobrazit všechna pravidla zabezpečení efektivní a použitých hello na virtuálním počítači hello rozdělení v skupiny **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a  **EffectiveSecurityRules**.</span><span class="sxs-lookup"><span data-stu-id="c072a-125">hello results show all hello effective and applied security rules on hello virtual machine broken down in groups of **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, and **EffectiveSecurityRules**.</span></span>
 
 ```json
 {
@@ -157,8 +157,8 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="2af8d-126">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2af8d-126">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c072a-126">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c072a-126">Next steps</span></span>
 
-<span data-ttu-id="2af8d-127">Navštivte [auditování zabezpečení sítě skupiny (NSG) s sledovací proces sítě](network-watcher-nsg-auditing-powershell.md) se dozvíte, jak automatizovat ověření skupin zabezpečení sítě.</span><span class="sxs-lookup"><span data-stu-id="2af8d-127">Visit [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-nsg-auditing-powershell.md) to learn how to automate validation of Network Security Groups.</span></span>
+<span data-ttu-id="c072a-127">Navštivte [auditování zabezpečení sítě skupiny (NSG) s sledovací proces sítě](network-watcher-nsg-auditing-powershell.md) toolearn jak tooautomate ověření skupin zabezpečení sítě.</span><span class="sxs-lookup"><span data-stu-id="c072a-127">Visit [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-nsg-auditing-powershell.md) toolearn how tooautomate validation of Network Security Groups.</span></span>
 
-<span data-ttu-id="2af8d-128">Další informace o zabezpečení pravidla, která se použijí k síťovým prostředkům, navštivte stránky [přehled zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)</span><span class="sxs-lookup"><span data-stu-id="2af8d-128">Learn more about the security rules that are applied to your network resources by visiting [Security group view overview](network-watcher-security-group-view-overview.md)</span></span>
+<span data-ttu-id="c072a-128">Další informace o pravidlech hello zabezpečení, které jsou použité tooyour síťovým prostředkům, navštivte stránky [přehled zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)</span><span class="sxs-lookup"><span data-stu-id="c072a-128">Learn more about hello security rules that are applied tooyour network resources by visiting [Security group view overview](network-watcher-security-group-view-overview.md)</span></span>

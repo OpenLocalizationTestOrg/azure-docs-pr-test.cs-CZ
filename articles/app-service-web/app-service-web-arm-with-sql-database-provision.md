@@ -1,6 +1,6 @@
 ---
-title: "Zřízení webové aplikace, která používá databázi SQL"
-description: "Nasazení webové aplikace, která zahrnuje SQL Database pomocí šablony Azure Resource Manager."
+title: "aaaProvision webovou aplikaci, která používá databázi SQL"
+description: "Použijte toodeploy šablony Azure Resource Manager webovou aplikaci, která obsahuje databázi SQL."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,72 +14,72 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 189c0122d201e88f15013bf241d66652ef23df4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="provision-a-web-app-with-a-sql-database"></a><span data-ttu-id="0690c-103">Zřízení webové aplikace s databází SQL</span><span class="sxs-lookup"><span data-stu-id="0690c-103">Provision a web app with a SQL Database</span></span>
-<span data-ttu-id="0690c-104">V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, nasadí webové aplikace a SQL Database.</span><span class="sxs-lookup"><span data-stu-id="0690c-104">In this topic, you will learn how to create an Azure Resource Manager template that deploys a web app and SQL Database.</span></span> <span data-ttu-id="0690c-105">Se dozvíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení.</span><span class="sxs-lookup"><span data-stu-id="0690c-105">You will learn how to define which resources are deployed and how to define parameters that are specified when the deployment is executed.</span></span> <span data-ttu-id="0690c-106">Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.</span><span class="sxs-lookup"><span data-stu-id="0690c-106">You can use this template for your own deployments, or customize it to meet your requirements.</span></span>
+# <a name="provision-a-web-app-with-a-sql-database"></a><span data-ttu-id="b7dce-103">Zřízení webové aplikace s databází SQL</span><span class="sxs-lookup"><span data-stu-id="b7dce-103">Provision a web app with a SQL Database</span></span>
+<span data-ttu-id="b7dce-104">V tomto tématu se dozvíte, jak toocreate šablonu Azure Resource Manager, které nasadí webovou aplikaci a databázi SQL.</span><span class="sxs-lookup"><span data-stu-id="b7dce-104">In this topic, you will learn how toocreate an Azure Resource Manager template that deploys a web app and SQL Database.</span></span> <span data-ttu-id="b7dce-105">Se dozvíte, jak toodefine prostředky, ke kterým jsou nasazené a jak toodefine parametry, které jsou zadané, když se spustí nasazení hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-105">You will learn how toodefine which resources are deployed and how toodefine parameters that are specified when hello deployment is executed.</span></span> <span data-ttu-id="b7dce-106">Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet vašim požadavkům.</span><span class="sxs-lookup"><span data-stu-id="b7dce-106">You can use this template for your own deployments, or customize it toomeet your requirements.</span></span>
 
-<span data-ttu-id="0690c-107">Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="0690c-107">For more information about creating templates, see [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md).</span></span>
+<span data-ttu-id="b7dce-107">Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="b7dce-107">For more information about creating templates, see [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md).</span></span>
 
-<span data-ttu-id="0690c-108">Další informace o nasazování aplikací najdete v tématu [nasazení komplexní aplikace předvídatelné v Azure](app-service-deploy-complex-application-predictably.md).</span><span class="sxs-lookup"><span data-stu-id="0690c-108">For more information about deploying apps, see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md).</span></span>
+<span data-ttu-id="b7dce-108">Další informace o nasazování aplikací najdete v tématu [nasazení komplexní aplikace předvídatelné v Azure](app-service-deploy-complex-application-predictably.md).</span><span class="sxs-lookup"><span data-stu-id="b7dce-108">For more information about deploying apps, see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md).</span></span>
 
-<span data-ttu-id="0690c-109">Pro úplnou šablonu, najdete v části [šablony webové aplikace s SQL Database](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).</span><span class="sxs-lookup"><span data-stu-id="0690c-109">For the complete template, see [Web App With SQL Database template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).</span></span>
+<span data-ttu-id="b7dce-109">Hello úplnou šablonu, najdete v části [šablony webové aplikace s SQL Database](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).</span><span class="sxs-lookup"><span data-stu-id="b7dce-109">For hello complete template, see [Web App With SQL Database template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).</span></span>
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="what-you-will-deploy"></a><span data-ttu-id="0690c-110">Co budete nasazovat</span><span class="sxs-lookup"><span data-stu-id="0690c-110">What you will deploy</span></span>
-<span data-ttu-id="0690c-111">V této šabloně je nasadit:</span><span class="sxs-lookup"><span data-stu-id="0690c-111">In this template, you will deploy:</span></span>
+## <a name="what-you-will-deploy"></a><span data-ttu-id="b7dce-110">Co budete nasazovat</span><span class="sxs-lookup"><span data-stu-id="b7dce-110">What you will deploy</span></span>
+<span data-ttu-id="b7dce-111">V této šabloně je nasadit:</span><span class="sxs-lookup"><span data-stu-id="b7dce-111">In this template, you will deploy:</span></span>
 
-* <span data-ttu-id="0690c-112">Webové aplikace</span><span class="sxs-lookup"><span data-stu-id="0690c-112">a web app</span></span>
-* <span data-ttu-id="0690c-113">Databáze SQL serveru</span><span class="sxs-lookup"><span data-stu-id="0690c-113">SQL Database server</span></span>
-* <span data-ttu-id="0690c-114">SQL Database</span><span class="sxs-lookup"><span data-stu-id="0690c-114">SQL Database</span></span>
-* <span data-ttu-id="0690c-115">Nastavení automatického škálování</span><span class="sxs-lookup"><span data-stu-id="0690c-115">AutoScale settings</span></span>
-* <span data-ttu-id="0690c-116">Pravidla výstrah</span><span class="sxs-lookup"><span data-stu-id="0690c-116">Alert rules</span></span>
-* <span data-ttu-id="0690c-117">Přehled aplikace</span><span class="sxs-lookup"><span data-stu-id="0690c-117">App Insights</span></span>
+* <span data-ttu-id="b7dce-112">Webové aplikace</span><span class="sxs-lookup"><span data-stu-id="b7dce-112">a web app</span></span>
+* <span data-ttu-id="b7dce-113">Databáze SQL serveru</span><span class="sxs-lookup"><span data-stu-id="b7dce-113">SQL Database server</span></span>
+* <span data-ttu-id="b7dce-114">SQL Database</span><span class="sxs-lookup"><span data-stu-id="b7dce-114">SQL Database</span></span>
+* <span data-ttu-id="b7dce-115">Nastavení automatického škálování</span><span class="sxs-lookup"><span data-stu-id="b7dce-115">AutoScale settings</span></span>
+* <span data-ttu-id="b7dce-116">Pravidla výstrah</span><span class="sxs-lookup"><span data-stu-id="b7dce-116">Alert rules</span></span>
+* <span data-ttu-id="b7dce-117">Přehled aplikace</span><span class="sxs-lookup"><span data-stu-id="b7dce-117">App Insights</span></span>
 
-<span data-ttu-id="0690c-118">Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:</span><span class="sxs-lookup"><span data-stu-id="0690c-118">To run the deployment automatically, click the following button:</span></span>
+<span data-ttu-id="b7dce-118">toorun hello nasazení automaticky, klikněte na následující tlačítko hello:</span><span class="sxs-lookup"><span data-stu-id="b7dce-118">toorun hello deployment automatically, click hello following button:</span></span>
 
-<span data-ttu-id="0690c-119">[![Nasazení do Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)</span><span class="sxs-lookup"><span data-stu-id="0690c-119">[![Deploy to Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)</span></span>
+<span data-ttu-id="b7dce-119">[![Nasazení tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)</span><span class="sxs-lookup"><span data-stu-id="b7dce-119">[![Deploy tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)</span></span>
 
-## <a name="parameters-to-specify"></a><span data-ttu-id="0690c-120">Chcete-li zadat parametry</span><span class="sxs-lookup"><span data-stu-id="0690c-120">Parameters to specify</span></span>
+## <a name="parameters-toospecify"></a><span data-ttu-id="b7dce-120">Parametry toospecify</span><span class="sxs-lookup"><span data-stu-id="b7dce-120">Parameters toospecify</span></span>
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### <a name="administratorlogin"></a><span data-ttu-id="0690c-121">administratorLogin</span><span class="sxs-lookup"><span data-stu-id="0690c-121">administratorLogin</span></span>
-<span data-ttu-id="0690c-122">Název účtu, který se má použít pro správce databáze serveru.</span><span class="sxs-lookup"><span data-stu-id="0690c-122">The account name to use for the database server administrator.</span></span>
+### <a name="administratorlogin"></a><span data-ttu-id="b7dce-121">administratorLogin</span><span class="sxs-lookup"><span data-stu-id="b7dce-121">administratorLogin</span></span>
+<span data-ttu-id="b7dce-122">Hello toouse název účtu správce serveru pro databázi hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-122">hello account name toouse for hello database server administrator.</span></span>
 
     "administratorLogin": {
       "type": "string"
     }
 
-### <a name="administratorloginpassword"></a><span data-ttu-id="0690c-123">administratorLoginPassword</span><span class="sxs-lookup"><span data-stu-id="0690c-123">administratorLoginPassword</span></span>
-<span data-ttu-id="0690c-124">Heslo správce serveru pro databázi.</span><span class="sxs-lookup"><span data-stu-id="0690c-124">The password to use for the database server administrator.</span></span>
+### <a name="administratorloginpassword"></a><span data-ttu-id="b7dce-123">administratorLoginPassword</span><span class="sxs-lookup"><span data-stu-id="b7dce-123">administratorLoginPassword</span></span>
+<span data-ttu-id="b7dce-124">Hello toouse heslo správce serveru pro databázi hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-124">hello password toouse for hello database server administrator.</span></span>
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
-### <a name="databasename"></a><span data-ttu-id="0690c-125">Název databáze</span><span class="sxs-lookup"><span data-stu-id="0690c-125">databaseName</span></span>
-<span data-ttu-id="0690c-126">Název nové databáze k vytvoření.</span><span class="sxs-lookup"><span data-stu-id="0690c-126">The name of the new database to create.</span></span>
+### <a name="databasename"></a><span data-ttu-id="b7dce-125">Název databáze</span><span class="sxs-lookup"><span data-stu-id="b7dce-125">databaseName</span></span>
+<span data-ttu-id="b7dce-126">Hello název nové databáze toocreate hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-126">hello name of hello new database toocreate.</span></span>
 
     "databaseName": {
       "type": "string",
       "defaultValue": "sampledb"
     }
 
-### <a name="collation"></a><span data-ttu-id="0690c-127">Kolace</span><span class="sxs-lookup"><span data-stu-id="0690c-127">collation</span></span>
-<span data-ttu-id="0690c-128">Kolaci databáze pro řídících správné použití znaků.</span><span class="sxs-lookup"><span data-stu-id="0690c-128">The database collation to use for governing the proper use of characters.</span></span>
+### <a name="collation"></a><span data-ttu-id="b7dce-127">Kolace</span><span class="sxs-lookup"><span data-stu-id="b7dce-127">collation</span></span>
+<span data-ttu-id="b7dce-128">Hello databáze kolace toouse pro řízení hello správné použití znaků.</span><span class="sxs-lookup"><span data-stu-id="b7dce-128">hello database collation toouse for governing hello proper use of characters.</span></span>
 
     "collation": {
       "type": "string",
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     }
 
-### <a name="edition"></a><span data-ttu-id="0690c-129">Edice</span><span class="sxs-lookup"><span data-stu-id="0690c-129">edition</span></span>
-<span data-ttu-id="0690c-130">Typ databáze slouží k vytvoření.</span><span class="sxs-lookup"><span data-stu-id="0690c-130">The type of database to create.</span></span>
+### <a name="edition"></a><span data-ttu-id="b7dce-129">Edice</span><span class="sxs-lookup"><span data-stu-id="b7dce-129">edition</span></span>
+<span data-ttu-id="b7dce-130">Typ Hello toocreate databáze.</span><span class="sxs-lookup"><span data-stu-id="b7dce-130">hello type of database toocreate.</span></span>
 
     "edition": {
       "type": "string",
@@ -90,20 +90,20 @@ ms.lasthandoff: 07/11/2017
         "Premium"
       ],
       "metadata": {
-        "description": "The type of database to create."
+        "description": "hello type of database toocreate."
       }
     }
 
-### <a name="maxsizebytes"></a><span data-ttu-id="0690c-131">maxSizeBytes</span><span class="sxs-lookup"><span data-stu-id="0690c-131">maxSizeBytes</span></span>
-<span data-ttu-id="0690c-132">Maximální velikost v bajtech pro databázi.</span><span class="sxs-lookup"><span data-stu-id="0690c-132">The maximum size, in bytes, for the database.</span></span>
+### <a name="maxsizebytes"></a><span data-ttu-id="b7dce-131">maxSizeBytes</span><span class="sxs-lookup"><span data-stu-id="b7dce-131">maxSizeBytes</span></span>
+<span data-ttu-id="b7dce-132">Hello maximální velikost v bajtech hello databáze.</span><span class="sxs-lookup"><span data-stu-id="b7dce-132">hello maximum size, in bytes, for hello database.</span></span>
 
     "maxSizeBytes": {
       "type": "string",
       "defaultValue": "1073741824"
     }
 
-### <a name="requestedserviceobjectivename"></a><span data-ttu-id="0690c-133">requestedServiceObjectiveName</span><span class="sxs-lookup"><span data-stu-id="0690c-133">requestedServiceObjectiveName</span></span>
-<span data-ttu-id="0690c-134">Název odpovídající úroveň výkonu pro edici.</span><span class="sxs-lookup"><span data-stu-id="0690c-134">The name corresponding to the performance level for edition.</span></span> 
+### <a name="requestedserviceobjectivename"></a><span data-ttu-id="b7dce-133">requestedServiceObjectiveName</span><span class="sxs-lookup"><span data-stu-id="b7dce-133">requestedServiceObjectiveName</span></span>
+<span data-ttu-id="b7dce-134">Hello název odpovídající toohello úroveň výkonu pro edici.</span><span class="sxs-lookup"><span data-stu-id="b7dce-134">hello name corresponding toohello performance level for edition.</span></span> 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,12 +118,12 @@ ms.lasthandoff: 07/11/2017
         "P3"
       ],
       "metadata": {
-        "description": "Describes the performance level for Edition"
+        "description": "Describes hello performance level for Edition"
       }
     }
 
-## <a name="variables-for-names"></a><span data-ttu-id="0690c-135">Proměnné pro názvy</span><span class="sxs-lookup"><span data-stu-id="0690c-135">Variables for names</span></span>
-<span data-ttu-id="0690c-136">Tato šablona obsahuje proměnné, které vytvořit názvy použité v šabloně.</span><span class="sxs-lookup"><span data-stu-id="0690c-136">This template includes variables that construct names used in the template.</span></span> <span data-ttu-id="0690c-137">Proměnná hodnoty použít **uniqueString** funkce, která má název vygenerovat z id skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="0690c-137">The variable values use the **uniqueString** function to generate a name from the resource group id.</span></span>
+## <a name="variables-for-names"></a><span data-ttu-id="b7dce-135">Proměnné pro názvy</span><span class="sxs-lookup"><span data-stu-id="b7dce-135">Variables for names</span></span>
+<span data-ttu-id="b7dce-136">Tato šablona obsahuje proměnné, které vytvořit názvů používaných v šabloně hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-136">This template includes variables that construct names used in hello template.</span></span> <span data-ttu-id="b7dce-137">hodnoty proměnné Hello použít hello **uniqueString** funkce toogenerate název z hello id skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="b7dce-137">hello variable values use hello **uniqueString** function toogenerate a name from hello resource group id.</span></span>
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,9 +132,9 @@ ms.lasthandoff: 07/11/2017
     },
 
 
-## <a name="resources-to-deploy"></a><span data-ttu-id="0690c-138">Prostředky k nasazení</span><span class="sxs-lookup"><span data-stu-id="0690c-138">Resources to deploy</span></span>
-### <a name="sql-server-and-database"></a><span data-ttu-id="0690c-139">SQL Server a databáze</span><span class="sxs-lookup"><span data-stu-id="0690c-139">SQL Server and Database</span></span>
-<span data-ttu-id="0690c-140">Vytvoří nový SQL Server a databáze.</span><span class="sxs-lookup"><span data-stu-id="0690c-140">Creates a new SQL Server and database.</span></span> <span data-ttu-id="0690c-141">Je název serveru zadaný v **serverName** parametr a umístění zadané v **serverLocation** parametr.</span><span class="sxs-lookup"><span data-stu-id="0690c-141">The name of the server is specified in the **serverName** parameter and the location specified in the **serverLocation** parameter.</span></span> <span data-ttu-id="0690c-142">Při vytváření nového serveru, musíte zadat přihlašovací jméno a heslo správce databáze serveru.</span><span class="sxs-lookup"><span data-stu-id="0690c-142">When creating the new server, you must provide a login name and password for the database server administrator.</span></span> 
+## <a name="resources-toodeploy"></a><span data-ttu-id="b7dce-138">Toodeploy prostředky</span><span class="sxs-lookup"><span data-stu-id="b7dce-138">Resources toodeploy</span></span>
+### <a name="sql-server-and-database"></a><span data-ttu-id="b7dce-139">SQL Server a databáze</span><span class="sxs-lookup"><span data-stu-id="b7dce-139">SQL Server and Database</span></span>
+<span data-ttu-id="b7dce-140">Vytvoří nový SQL Server a databáze.</span><span class="sxs-lookup"><span data-stu-id="b7dce-140">Creates a new SQL Server and database.</span></span> <span data-ttu-id="b7dce-141">Název Hello hello serveru je zadán v hello **serverName** parametr a hello umístění zadaná v hello **serverLocation** parametr.</span><span class="sxs-lookup"><span data-stu-id="b7dce-141">hello name of hello server is specified in hello **serverName** parameter and hello location specified in hello **serverLocation** parameter.</span></span> <span data-ttu-id="b7dce-142">Při vytváření nového serveru hello, je nutné zadat přihlašovací jméno a heslo správce serveru pro databázi hello.</span><span class="sxs-lookup"><span data-stu-id="b7dce-142">When creating hello new server, you must provide a login name and password for hello database server administrator.</span></span> 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -185,7 +185,7 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="web-app"></a><span data-ttu-id="0690c-143">Webová aplikace</span><span class="sxs-lookup"><span data-stu-id="0690c-143">Web app</span></span>
+### <a name="web-app"></a><span data-ttu-id="b7dce-143">Webová aplikace</span><span class="sxs-lookup"><span data-stu-id="b7dce-143">Web app</span></span>
     {
       "apiVersion": "2015-08-01",
       "name": "[variables('webSiteName')]",
@@ -221,7 +221,7 @@ ms.lasthandoff: 07/11/2017
     },
 
 
-### <a name="autoscale"></a><span data-ttu-id="0690c-144">Automatické škálování</span><span class="sxs-lookup"><span data-stu-id="0690c-144">AutoScale</span></span>
+### <a name="autoscale"></a><span data-ttu-id="b7dce-144">Automatické škálování</span><span class="sxs-lookup"><span data-stu-id="b7dce-144">AutoScale</span></span>
     {
       "apiVersion": "2014-04-01",
       "name": "[concat(variables('hostingPlanName'), '-', resourceGroup().name)]",
@@ -290,7 +290,7 @@ ms.lasthandoff: 07/11/2017
     },
 
 
-### <a name="alert-rules-for-status-codes-403-and-500s-high-cpu-and-http-queue-length"></a><span data-ttu-id="0690c-145">Pravidla výstrah pro stavové kódy 403 a 500's, vysoké využití procesoru a délka fronty HTTP</span><span class="sxs-lookup"><span data-stu-id="0690c-145">Alert rules for status codes 403 and 500's, High CPU, and HTTP Queue Length</span></span>
+### <a name="alert-rules-for-status-codes-403-and-500s-high-cpu-and-http-queue-length"></a><span data-ttu-id="b7dce-145">Pravidla výstrah pro stavové kódy 403 a 500's, vysoké využití procesoru a délka fronty HTTP</span><span class="sxs-lookup"><span data-stu-id="b7dce-145">Alert rules for status codes 403 and 500's, High CPU, and HTTP Queue Length</span></span>
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('ServerErrors ', variables('webSiteName'))]",
@@ -373,7 +373,7 @@ ms.lasthandoff: 07/11/2017
       },
       "properties": {
         "name": "[concat('CPUHigh ', variables('hostingPlanName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', variables('hostingPlanName'))]",
+        "description": "[concat('hello average CPU is high across all hello instances of ', variables('hostingPlanName'))]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -407,7 +407,7 @@ ms.lasthandoff: 07/11/2017
       },
       "properties": {
         "name": "[concat('LongHttpQueue ', variables('hostingPlanName'))]",
-        "description": "[concat('The HTTP queue for the instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
+        "description": "[concat('hello HTTP queue for hello instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -428,7 +428,7 @@ ms.lasthandoff: 07/11/2017
       }
     },
 
-### <a name="app-insights"></a><span data-ttu-id="0690c-146">Přehled aplikace</span><span class="sxs-lookup"><span data-stu-id="0690c-146">App Insights</span></span>
+### <a name="app-insights"></a><span data-ttu-id="b7dce-146">Přehled aplikace</span><span class="sxs-lookup"><span data-stu-id="b7dce-146">App Insights</span></span>
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('AppInsights', variables('webSiteName'))]",
@@ -446,22 +446,22 @@ ms.lasthandoff: 07/11/2017
       }
     }
 
-## <a name="commands-to-run-deployment"></a><span data-ttu-id="0690c-147">Příkazy pro spuštění nasazení</span><span class="sxs-lookup"><span data-stu-id="0690c-147">Commands to run deployment</span></span>
+## <a name="commands-toorun-deployment"></a><span data-ttu-id="b7dce-147">Příkazy toorun nasazení</span><span class="sxs-lookup"><span data-stu-id="b7dce-147">Commands toorun deployment</span></span>
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### <a name="powershell"></a><span data-ttu-id="0690c-148">PowerShell</span><span class="sxs-lookup"><span data-stu-id="0690c-148">PowerShell</span></span>
+### <a name="powershell"></a><span data-ttu-id="b7dce-148">PowerShell</span><span class="sxs-lookup"><span data-stu-id="b7dce-148">PowerShell</span></span>
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### <a name="azure-cli"></a><span data-ttu-id="0690c-149">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="0690c-149">Azure CLI</span></span>
+### <a name="azure-cli"></a><span data-ttu-id="b7dce-149">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="b7dce-149">Azure CLI</span></span>
 
     azure config mode arm
     azure group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### <a name="azure-cli-20"></a><span data-ttu-id="0690c-150">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="0690c-150">Azure CLI 2.0</span></span>
+### <a name="azure-cli-20"></a><span data-ttu-id="b7dce-150">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="b7dce-150">Azure CLI 2.0</span></span>
 
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE]
-> <span data-ttu-id="0690c-151">Obsah souboru JSON parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).</span><span class="sxs-lookup"><span data-stu-id="0690c-151">For content of the parameters JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).</span></span>
+> <span data-ttu-id="b7dce-151">Obsah souboru JSON hello parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).</span><span class="sxs-lookup"><span data-stu-id="b7dce-151">For content of hello parameters JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).</span></span>
 >
 >

@@ -1,6 +1,6 @@
 ---
-title: "Cloud App Discovery. nastavení registru pro Proxy služby | Microsoft Docs"
-description: "Cílem tohoto tématu je poskytnout kroky, které je třeba provést nastavit požadovaný port v počítačích se systémem agenta Cloud App Discovery."
+title: "aaaCloud aplikace zjišťování nastavení registru pro Proxy služby | Microsoft Docs"
+description: "Hello cílem tohoto tématu je tooprovide vám hello kroky je třeba, aby tooperform tooset hello požadované port na počítačích hello s Cloud App Discovery agent hello."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,53 +14,53 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ea15dc9a9f20a296e622c8fb1011f7ee99de3e99
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bb1fe20016459160b4f67cb0125b1781a0260c4b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a><span data-ttu-id="faad1-103">Cloud App Discovery. nastavení registru pro služby Proxy</span><span class="sxs-lookup"><span data-stu-id="faad1-103">Cloud App Discovery Registry Settings for Proxy Services</span></span>
-<span data-ttu-id="faad1-104">Ve výchozím nastavení agenta Cloud App Discovery konfigurován pro použití pouze porty 80 nebo 443.</span><span class="sxs-lookup"><span data-stu-id="faad1-104">By default, the Cloud App Discovery agent is configured to use only the ports 80 or 443.</span></span> <span data-ttu-id="faad1-105">Pokud plánujete instalaci Cloud App Discovery v prostředí s proxy serveru, který používá vlastní port (80 ani 443), budete muset nakonfigurovat agenty na tento port použít.</span><span class="sxs-lookup"><span data-stu-id="faad1-105">If you are planning on installing Cloud App Discovery in an environment with a proxy server that is using a custom port (neither 80 nor 443), you need to configure your agents to use this port.</span></span> <span data-ttu-id="faad1-106">Konfigurace je založena na klíč registru.</span><span class="sxs-lookup"><span data-stu-id="faad1-106">The configuration is based on a registry key.</span></span>
+# <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a><span data-ttu-id="f36f2-103">Cloud App Discovery. nastavení registru pro služby Proxy</span><span class="sxs-lookup"><span data-stu-id="f36f2-103">Cloud App Discovery Registry Settings for Proxy Services</span></span>
+<span data-ttu-id="f36f2-104">Ve výchozím nastavení hello Cloud App Discovery agent je nakonfigurované toouse pouze hello porty 80 nebo 443.</span><span class="sxs-lookup"><span data-stu-id="f36f2-104">By default, hello Cloud App Discovery agent is configured toouse only hello ports 80 or 443.</span></span> <span data-ttu-id="f36f2-105">Pokud plánujete instalaci Cloud App Discovery v prostředí s proxy serveru, který používá vlastní port (80 ani 443), je třeba tooconfigure vaše agenty toouse tento port.</span><span class="sxs-lookup"><span data-stu-id="f36f2-105">If you are planning on installing Cloud App Discovery in an environment with a proxy server that is using a custom port (neither 80 nor 443), you need tooconfigure your agents toouse this port.</span></span> <span data-ttu-id="f36f2-106">Hello konfigurace je založená na klíč registru.</span><span class="sxs-lookup"><span data-stu-id="f36f2-106">hello configuration is based on a registry key.</span></span>
 
-<span data-ttu-id="faad1-107">Cílem tohoto tématu je poskytnout kroky, které je třeba provést nastavit požadovaný port v počítačích se systémem agenta Cloud App Discovery.</span><span class="sxs-lookup"><span data-stu-id="faad1-107">The objective of this topic is to provide you with the steps you need to perform to set the required port on the computers running the Cloud App Discovery agent.</span></span>
+<span data-ttu-id="f36f2-107">Hello cílem tohoto tématu je tooprovide vám hello kroky je třeba, aby tooperform tooset hello požadované port na počítačích hello s Cloud App Discovery agent hello.</span><span class="sxs-lookup"><span data-stu-id="f36f2-107">hello objective of this topic is tooprovide you with hello steps you need tooperform tooset hello required port on hello computers running hello Cloud App Discovery agent.</span></span>
 
-<span data-ttu-id="faad1-108">**Pokud chcete upravit portu používá počítač se spuštěným agentem Cloud App Discovery, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="faad1-108">**To modify the port used by the computer running the Cloud App Discovery agent, perform the following steps:**</span></span>
+<span data-ttu-id="f36f2-108">**toomodify hello port používaný systémem hello počítači agenta Cloud App Discovery hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="f36f2-108">**toomodify hello port used by hello computer running hello Cloud App Discovery agent, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="faad1-109">Spusťte editor registru.</span><span class="sxs-lookup"><span data-stu-id="faad1-109">Start the registry editor.</span></span> <br> ![Spuštění](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
-2. <span data-ttu-id="faad1-111">Přejděte na nebo vytvořte následující klíč registru:</span><span class="sxs-lookup"><span data-stu-id="faad1-111">Navigate to or create the following registry key:</span></span> <br> <span data-ttu-id="faad1-112">**Discovery\Endpoint HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud aplikace**</span><span class="sxs-lookup"><span data-stu-id="faad1-112">**HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint**</span></span> 
-3. <span data-ttu-id="faad1-113">Vytvořte novou **víceřetězcovou** hodnotu s názvem **porty**.</span><span class="sxs-lookup"><span data-stu-id="faad1-113">Create a new **multi-string** value called **Ports**.</span></span> <span data-ttu-id="faad1-114">![Nový](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)</span><span class="sxs-lookup"><span data-stu-id="faad1-114">![New](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)</span></span>
-4. <span data-ttu-id="faad1-115">Chcete-li otevřít **Upravit víceřetězcovou** dialogové okno, dvakrát klikněte na hodnotu porty.</span><span class="sxs-lookup"><span data-stu-id="faad1-115">To open the **Edit Multi-String** dialog, double-click the Ports value.</span></span>
-5. <span data-ttu-id="faad1-116">Do textového pole hodnoty dat zadejte následující hodnoty a přidejte všechny vlastní porty, které se používají ve vaší organizaci:</span><span class="sxs-lookup"><span data-stu-id="faad1-116">In the Value data textbox, type the following values and add all custom ports that are used by your organization:</span></span> <br><br><span data-ttu-id="faad1-117">
-   **80**</span><span class="sxs-lookup"><span data-stu-id="faad1-117">
-   **80**</span></span> <br><span data-ttu-id="faad1-118">
-   **8080**</span><span class="sxs-lookup"><span data-stu-id="faad1-118">
-   **8080**</span></span> <br><span data-ttu-id="faad1-119">
-   **8118**</span><span class="sxs-lookup"><span data-stu-id="faad1-119">
-   **8118**</span></span> <br><span data-ttu-id="faad1-120">
-   **8888**</span><span class="sxs-lookup"><span data-stu-id="faad1-120">
-   **8888**</span></span> <br><span data-ttu-id="faad1-121">
-   **81**</span><span class="sxs-lookup"><span data-stu-id="faad1-121">
-   **81**</span></span> <br><span data-ttu-id="faad1-122">
-   **12080**</span><span class="sxs-lookup"><span data-stu-id="faad1-122">
-   **12080**</span></span> <br><span data-ttu-id="faad1-123">
-   **6999**</span><span class="sxs-lookup"><span data-stu-id="faad1-123">
-**6999**</span></span> <br><span data-ttu-id="faad1-124">
-**30606**</span><span class="sxs-lookup"><span data-stu-id="faad1-124">
-**30606**</span></span> <br><span data-ttu-id="faad1-125">
-**31595**</span><span class="sxs-lookup"><span data-stu-id="faad1-125">
-**31595**</span></span> <br><span data-ttu-id="faad1-126">
-**4080**</span><span class="sxs-lookup"><span data-stu-id="faad1-126">
-**4080**</span></span> <br><span data-ttu-id="faad1-127">
-**443**</span><span class="sxs-lookup"><span data-stu-id="faad1-127">
-**443**</span></span> <br><span data-ttu-id="faad1-128">
-**1110**</span><span class="sxs-lookup"><span data-stu-id="faad1-128">
-**1110**</span></span> <br><br><span data-ttu-id="faad1-129">
-![Upravit víceřetězcovou](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)</span><span class="sxs-lookup"><span data-stu-id="faad1-129">
+1. <span data-ttu-id="f36f2-109">Spusťte editor registru hello.</span><span class="sxs-lookup"><span data-stu-id="f36f2-109">Start hello registry editor.</span></span> <br> ![Spusťte](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+2. <span data-ttu-id="f36f2-111">Přejděte tooor vytvořit hello následující klíč registru:</span><span class="sxs-lookup"><span data-stu-id="f36f2-111">Navigate tooor create hello following registry key:</span></span> <br> <span data-ttu-id="f36f2-112">**Discovery\Endpoint HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud aplikace**</span><span class="sxs-lookup"><span data-stu-id="f36f2-112">**HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint**</span></span> 
+3. <span data-ttu-id="f36f2-113">Vytvořte novou **víceřetězcovou** hodnotu s názvem **porty**.</span><span class="sxs-lookup"><span data-stu-id="f36f2-113">Create a new **multi-string** value called **Ports**.</span></span> <span data-ttu-id="f36f2-114">![Nový](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)</span><span class="sxs-lookup"><span data-stu-id="f36f2-114">![New](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)</span></span>
+4. <span data-ttu-id="f36f2-115">tooopen hello **Upravit víceřetězcovou** dialogové okno, dvakrát klikněte na hodnotu porty hello.</span><span class="sxs-lookup"><span data-stu-id="f36f2-115">tooopen hello **Edit Multi-String** dialog, double-click hello Ports value.</span></span>
+5. <span data-ttu-id="f36f2-116">V hello textové pole hodnoty dat zadejte následující hodnoty hello a přidejte všechny vlastní porty, které se používají ve vaší organizaci:</span><span class="sxs-lookup"><span data-stu-id="f36f2-116">In hello Value data textbox, type hello following values and add all custom ports that are used by your organization:</span></span> <br><br><span data-ttu-id="f36f2-117">
+   **80**</span><span class="sxs-lookup"><span data-stu-id="f36f2-117">
+   **80**</span></span> <br><span data-ttu-id="f36f2-118">
+   **8080**</span><span class="sxs-lookup"><span data-stu-id="f36f2-118">
+   **8080**</span></span> <br><span data-ttu-id="f36f2-119">
+   **8118**</span><span class="sxs-lookup"><span data-stu-id="f36f2-119">
+   **8118**</span></span> <br><span data-ttu-id="f36f2-120">
+   **8888**</span><span class="sxs-lookup"><span data-stu-id="f36f2-120">
+   **8888**</span></span> <br><span data-ttu-id="f36f2-121">
+   **81**</span><span class="sxs-lookup"><span data-stu-id="f36f2-121">
+   **81**</span></span> <br><span data-ttu-id="f36f2-122">
+   **12080**</span><span class="sxs-lookup"><span data-stu-id="f36f2-122">
+   **12080**</span></span> <br><span data-ttu-id="f36f2-123">
+   **6999**</span><span class="sxs-lookup"><span data-stu-id="f36f2-123">
+**6999**</span></span> <br><span data-ttu-id="f36f2-124">
+**30606**</span><span class="sxs-lookup"><span data-stu-id="f36f2-124">
+**30606**</span></span> <br><span data-ttu-id="f36f2-125">
+**31595**</span><span class="sxs-lookup"><span data-stu-id="f36f2-125">
+**31595**</span></span> <br><span data-ttu-id="f36f2-126">
+**4080**</span><span class="sxs-lookup"><span data-stu-id="f36f2-126">
+**4080**</span></span> <br><span data-ttu-id="f36f2-127">
+**443**</span><span class="sxs-lookup"><span data-stu-id="f36f2-127">
+**443**</span></span> <br><span data-ttu-id="f36f2-128">
+**1110**</span><span class="sxs-lookup"><span data-stu-id="f36f2-128">
+**1110**</span></span> <br><br><span data-ttu-id="f36f2-129">
+![Upravit víceřetězcovou](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)</span><span class="sxs-lookup"><span data-stu-id="f36f2-129">
 ![Edit Multi-String](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)</span></span>
-6. <span data-ttu-id="faad1-130">Klikněte na tlačítko **OK** zavřete **Upravit víceřetězcovou** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="faad1-130">Click **OK** to close the **Edit Multi-String** dialog.</span></span>
+6. <span data-ttu-id="f36f2-130">Klikněte na tlačítko **OK** tooclose hello **Upravit víceřetězcovou** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="f36f2-130">Click **OK** tooclose hello **Edit Multi-String** dialog.</span></span>
 
-<span data-ttu-id="faad1-131">**Další zdroje**</span><span class="sxs-lookup"><span data-stu-id="faad1-131">**Additional Resources**</span></span>
+<span data-ttu-id="f36f2-131">**Další zdroje**</span><span class="sxs-lookup"><span data-stu-id="f36f2-131">**Additional Resources**</span></span>
 
-* [<span data-ttu-id="faad1-132">Jak může zjišťovat nedovolené cloudové aplikace, které se používají v rámci Moje organizace</span><span class="sxs-lookup"><span data-stu-id="faad1-132">How can I discover unsanctioned cloud apps that are used within my organization</span></span>](active-directory-cloudappdiscovery-whatis.md) 
+* [<span data-ttu-id="f36f2-132">Jak může zjišťovat nedovolené cloudové aplikace, které se používají v rámci Moje organizace</span><span class="sxs-lookup"><span data-stu-id="f36f2-132">How can I discover unsanctioned cloud apps that are used within my organization</span></span>](active-directory-cloudappdiscovery-whatis.md) 
 

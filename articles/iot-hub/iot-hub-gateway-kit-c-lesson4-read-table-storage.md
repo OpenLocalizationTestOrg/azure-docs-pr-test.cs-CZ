@@ -1,6 +1,6 @@
 ---
 title: "Zařízení SensorTag & brány Azure IoT - Lekce 4: Table storage | Microsoft Docs"
-description: "Ukládat zprávy z Intel NUC do služby IoT hub, zapisuje je do úložiště Azure Table a číst je z cloudu."
+description: "Uložení zpráv ze služby IoT hub Intel NUC tooyour, zapisuje je úložiště Table tooAzure a číst je z cloudu hello."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,56 +17,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 72659ef3a7fd2f6011590d37176fd05503269aff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 29525b084eb4d6e6dfcb16d9b34f78f075d30b7d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="read-messages-persisted-in-azure-table-storage"></a><span data-ttu-id="74576-104">Čtení zprávy uchovávané v úložišti Azure Table</span><span class="sxs-lookup"><span data-stu-id="74576-104">Read messages persisted in Azure Table storage</span></span>
+# <a name="read-messages-persisted-in-azure-table-storage"></a><span data-ttu-id="83663-104">Čtení zprávy uchovávané v úložišti Azure Table</span><span class="sxs-lookup"><span data-stu-id="83663-104">Read messages persisted in Azure Table storage</span></span>
 
-## <a name="what-you-will-do"></a><span data-ttu-id="74576-105">Co provedete</span><span class="sxs-lookup"><span data-stu-id="74576-105">What you will do</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="83663-105">Co provedete</span><span class="sxs-lookup"><span data-stu-id="83663-105">What you will do</span></span>
 
-- <span data-ttu-id="74576-106">Spuštění ukázkové aplikace brány na bránu, která odesílá zprávy do služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="74576-106">Run the gateway sample application on your gateway that sends messages to your IoT hub.</span></span>
-- <span data-ttu-id="74576-107">Potom spusťte ukázkový kód v hostitelském počítači ke čtení zpráv ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="74576-107">Then run a sample code on your host computer to read the messages in your Azure Table storage.</span></span> 
+- <span data-ttu-id="83663-106">Spusťte hello brány ukázkovou aplikaci na bránu, která odesílá zprávy tooyour IoT hub.</span><span class="sxs-lookup"><span data-stu-id="83663-106">Run hello gateway sample application on your gateway that sends messages tooyour IoT hub.</span></span>
+- <span data-ttu-id="83663-107">Spusťte ukázkový kód na vaši hostitele počítače tooread hello zpráv ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="83663-107">Then run a sample code on your host computer tooread hello messages in your Azure Table storage.</span></span> 
 
-<span data-ttu-id="74576-108">Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="74576-108">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
+<span data-ttu-id="83663-108">Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="83663-108">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="74576-109">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="74576-109">What you will learn</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="83663-109">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="83663-109">What you will learn</span></span>
 
-<span data-ttu-id="74576-110">Jak používat nástroj gulp spustit ukázkový kód ke čtení zpráv ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="74576-110">How to use the gulp tool to run the sample code to read messages in your Azure Table storage.</span></span>
+<span data-ttu-id="83663-110">Jak toouse hello gulp nástroj toorun hello ukázkový kód tooread zpráv ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="83663-110">How toouse hello gulp tool toorun hello sample code tooread messages in your Azure Table storage.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="74576-111">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="74576-111">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="83663-111">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="83663-111">What you need</span></span>
 
-<span data-ttu-id="74576-112">Úspěšně jste provést následující úlohy:</span><span class="sxs-lookup"><span data-stu-id="74576-112">You have have successfully done the following tasks:</span></span>
+<span data-ttu-id="83663-112">Úspěšně jste hello následující úlohy:</span><span class="sxs-lookup"><span data-stu-id="83663-112">You have have successfully done hello following tasks:</span></span>
 
-- <span data-ttu-id="74576-113">[Vytvoření účtu úložiště Azure a Azure funkce aplikace](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md).</span><span class="sxs-lookup"><span data-stu-id="74576-113">[Created the Azure function app and the Azure storage account](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md).</span></span>
-- <span data-ttu-id="74576-114">[Spuštění ukázkové aplikace brány](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md).</span><span class="sxs-lookup"><span data-stu-id="74576-114">[Run the gateway sample application](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md).</span></span>
-- <span data-ttu-id="74576-115">[Čtení zpráv z centra IoT](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md).</span><span class="sxs-lookup"><span data-stu-id="74576-115">[Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md).</span></span>
+- <span data-ttu-id="83663-113">[Vytvořit aplikaci Azure funkce hello a účet úložiště Azure hello](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md).</span><span class="sxs-lookup"><span data-stu-id="83663-113">[Created hello Azure function app and hello Azure storage account](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md).</span></span>
+- <span data-ttu-id="83663-114">[Spuštění ukázkové aplikace hello brány](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md).</span><span class="sxs-lookup"><span data-stu-id="83663-114">[Run hello gateway sample application](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md).</span></span>
+- <span data-ttu-id="83663-115">[Čtení zpráv z centra IoT](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md).</span><span class="sxs-lookup"><span data-stu-id="83663-115">[Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md).</span></span>
 
-## <a name="get-your-azure-storage-connection-strings"></a><span data-ttu-id="74576-116">Získat vaše připojovacích řetězců Azure storage</span><span class="sxs-lookup"><span data-stu-id="74576-116">Get your Azure storage connection strings</span></span>
+## <a name="get-your-azure-storage-connection-strings"></a><span data-ttu-id="83663-116">Získat vaše připojovacích řetězců Azure storage</span><span class="sxs-lookup"><span data-stu-id="83663-116">Get your Azure storage connection strings</span></span>
 
-<span data-ttu-id="74576-117">Časná v této lekci úspěšně jste vytvořili účet úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="74576-117">Early in this lesson, you successfully created an Azure storage account.</span></span> <span data-ttu-id="74576-118">Chcete-li získat připojovací řetězec účtu úložiště Azure, spusťte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="74576-118">To get the connection string of the Azure storage account, run the following commands:</span></span>
+<span data-ttu-id="83663-117">Časná v této lekci úspěšně jste vytvořili účet úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="83663-117">Early in this lesson, you successfully created an Azure storage account.</span></span> <span data-ttu-id="83663-118">tooget hello připojovací řetězec hello účtu úložiště Azure, spusťte následující příkazy hello:</span><span class="sxs-lookup"><span data-stu-id="83663-118">tooget hello connection string of hello Azure storage account, run hello following commands:</span></span>
 
-* <span data-ttu-id="74576-119">Zobrazí seznam všech účtů úložišť.</span><span class="sxs-lookup"><span data-stu-id="74576-119">List all your storage accounts.</span></span>
+* <span data-ttu-id="83663-119">Zobrazí seznam všech účtů úložišť.</span><span class="sxs-lookup"><span data-stu-id="83663-119">List all your storage accounts.</span></span>
 
 ```bash
 az storage account list -g iot-gateway --query [].name
 ```
 
-* <span data-ttu-id="74576-120">Získáte připojovací řetězec úložiště azure.</span><span class="sxs-lookup"><span data-stu-id="74576-120">Get azure storage connection string.</span></span>
+* <span data-ttu-id="83663-120">Získáte připojovací řetězec úložiště azure.</span><span class="sxs-lookup"><span data-stu-id="83663-120">Get azure storage connection string.</span></span>
 
 ```bash
 az storage account show-connection-string -g iot-gateway -n {storage name}
 ```
 
-<span data-ttu-id="74576-121">Použít iot brány jako hodnotu `{resource group name}` Pokud nebylo změňte hodnotu v lekci 2.</span><span class="sxs-lookup"><span data-stu-id="74576-121">Use iot-gateway as the value of `{resource group name}` if you didn't change the value in Lesson 2.</span></span>
+<span data-ttu-id="83663-121">Použít iot brány jako hodnotu hello `{resource group name}` Pokud hodnota hello v lekci 2 nebyla změněna.</span><span class="sxs-lookup"><span data-stu-id="83663-121">Use iot-gateway as hello value of `{resource group name}` if you didn't change hello value in Lesson 2.</span></span>
 
-## <a name="configure-the-device-connection"></a><span data-ttu-id="74576-122">Nakonfigurujte připojení zařízení</span><span class="sxs-lookup"><span data-stu-id="74576-122">Configure the device connection</span></span>
+## <a name="configure-hello-device-connection"></a><span data-ttu-id="83663-122">Nakonfigurujte připojení zařízení hello</span><span class="sxs-lookup"><span data-stu-id="83663-122">Configure hello device connection</span></span>
 
-<span data-ttu-id="74576-123">Aktualizace `config-azure.json` tak, aby ukázkový kód, který běží v hostitelském počítači může číst zprávy ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="74576-123">Update the `config-azure.json` file so that the sample code that runs on the host computer can read message in your Azure Table storage.</span></span> <span data-ttu-id="74576-124">Konfigurace připojení zařízení, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="74576-124">To configure the device connection, follow these steps:</span></span>
+<span data-ttu-id="83663-123">Aktualizace hello `config-azure.json` tak, aby hello ukázkový kód, který běží v hostitelském počítači hello může číst zprávy ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="83663-123">Update hello `config-azure.json` file so that hello sample code that runs on hello host computer can read message in your Azure Table storage.</span></span> <span data-ttu-id="83663-124">tooconfigure hello připojení zařízení, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="83663-124">tooconfigure hello device connection, follow these steps:</span></span>
 
-1. <span data-ttu-id="74576-125">Otevřete konfigurační soubor zařízení `config-azure.json` spuštěním následujících příkazů:</span><span class="sxs-lookup"><span data-stu-id="74576-125">Open the device configuration file `config-azure.json` by running the following commands:</span></span>
+1. <span data-ttu-id="83663-125">Soubor konfigurace zařízení otevřete hello `config-azure.json` spuštěním hello následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="83663-125">Open hello device configuration file `config-azure.json` by running hello following commands:</span></span>
 
    ```bash
    # For Windows command prompt
@@ -77,26 +77,26 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
    ![konfigurace](media/iot-hub-gateway-kit-lessons/lesson4/config_azure.png)
 
-2. <span data-ttu-id="74576-127">Nahraďte `[Azure storage connection string]` připojovacím řetězcem úložiště Azure, který jste získali.</span><span class="sxs-lookup"><span data-stu-id="74576-127">Replace `[Azure storage connection string]` with the Azure storage connection string that you obtained.</span></span>
+2. <span data-ttu-id="83663-127">Nahraďte `[Azure storage connection string]` s hello připojovací řetězec úložiště Azure, který jste získali.</span><span class="sxs-lookup"><span data-stu-id="83663-127">Replace `[Azure storage connection string]` with hello Azure storage connection string that you obtained.</span></span>
 
-   <span data-ttu-id="74576-128">`[IoT hub connection string]`by měla být nahrazená již v části [čtení zpráv z Azure IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) v Lesson3.</span><span class="sxs-lookup"><span data-stu-id="74576-128">`[IoT hub connection string]` should already be replaced in section [Read messages from Azure IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) in Lesson3.</span></span>
+   <span data-ttu-id="83663-128">`[IoT hub connection string]`by měla být nahrazená již v části [čtení zpráv z Azure IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) v Lesson3.</span><span class="sxs-lookup"><span data-stu-id="83663-128">`[IoT hub connection string]` should already be replaced in section [Read messages from Azure IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) in Lesson3.</span></span>
 
-## <a name="read-messages-in-your-azure-table-storage"></a><span data-ttu-id="74576-129">Čtení zpráv ve službě Azure Table storage</span><span class="sxs-lookup"><span data-stu-id="74576-129">Read messages in your Azure Table storage</span></span>
+## <a name="read-messages-in-your-azure-table-storage"></a><span data-ttu-id="83663-129">Čtení zpráv ve službě Azure Table storage</span><span class="sxs-lookup"><span data-stu-id="83663-129">Read messages in your Azure Table storage</span></span>
 
-<span data-ttu-id="74576-130">Spuštění ukázkové aplikace brány a čtení zpráv úložiště Azure Table pomocí následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="74576-130">Run the gateway sample application and read Azure Table storage messages by the following command:</span></span>
+<span data-ttu-id="83663-130">Spuštění ukázkové aplikace hello brány a číst zprávy úložiště Azure Table hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="83663-130">Run hello gateway sample application and read Azure Table storage messages by hello following command:</span></span>
 
 ```bash
 gulp run --table-storage
 ```
 
-<span data-ttu-id="74576-131">Služby IoT hub aktivuje aplikaci funkce Azure pro uložení zpráv do úložiště Azure Table, pokud dorazí novou zprávu.</span><span class="sxs-lookup"><span data-stu-id="74576-131">Your IoT hub triggers your Azure Function application to save message into your Azure Table storage when new message arrives.</span></span>
-<span data-ttu-id="74576-132">`gulp run` Příkaz spustí brány ukázkovou aplikaci, která odesílá zprávy do služby IoT hub.</span><span class="sxs-lookup"><span data-stu-id="74576-132">The `gulp run` command runs gateway sample application that sends messages to your IoT hub.</span></span> <span data-ttu-id="74576-133">S `table-storage` parametr, je také vytvoří podřízený proces pro příjem uložené zprávy ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="74576-133">With `table-storage` parameter, it also spawns a child process to receive the saved message in your Azure Table storage.</span></span>
+<span data-ttu-id="83663-131">Služby IoT hub se aktivuje zprávu toosave aplikace funkce Azure do Azure Table storage při přijetí nové zprávy.</span><span class="sxs-lookup"><span data-stu-id="83663-131">Your IoT hub triggers your Azure Function application toosave message into your Azure Table storage when new message arrives.</span></span>
+<span data-ttu-id="83663-132">Hello `gulp run` příkaz spustí brány ukázkovou aplikaci, která odesílá zprávy tooyour IoT hub.</span><span class="sxs-lookup"><span data-stu-id="83663-132">hello `gulp run` command runs gateway sample application that sends messages tooyour IoT hub.</span></span> <span data-ttu-id="83663-133">S `table-storage` parametr, je také vytvoří hello podřízený proces tooreceive uložit zpráv ve službě Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="83663-133">With `table-storage` parameter, it also spawns a child process tooreceive hello saved message in your Azure Table storage.</span></span>
 
-<span data-ttu-id="74576-134">Zprávy, které jsou odesílány a přijaté jsou všechny okamžitě zobrazí v okně konzoly v hostitelském počítači.</span><span class="sxs-lookup"><span data-stu-id="74576-134">The messages that are being sent and received are all displayed instantly on the same console window in the host machine.</span></span> <span data-ttu-id="74576-135">Instance aplikace na ukázkové přeruší automaticky v 40 sekund.</span><span class="sxs-lookup"><span data-stu-id="74576-135">The sample application instance will terminate automatically in 40 seconds.</span></span>
+<span data-ttu-id="83663-134">Hello zprávy, které jsou odesílány a přijaté jsou všechny zobrazené okamžitě na hello stejné konzole okno v hello hostitelský počítač.</span><span class="sxs-lookup"><span data-stu-id="83663-134">hello messages that are being sent and received are all displayed instantly on hello same console window in hello host machine.</span></span> <span data-ttu-id="83663-135">instance aplikace Hello ukázka přeruší automaticky v 40 sekund.</span><span class="sxs-lookup"><span data-stu-id="83663-135">hello sample application instance will terminate automatically in 40 seconds.</span></span>
 
    ![gulp pro čtení](media/iot-hub-gateway-kit-lessons/lesson4/gulp_run_read_table.png)
 
 
-## <a name="summary"></a><span data-ttu-id="74576-137">Souhrn</span><span class="sxs-lookup"><span data-stu-id="74576-137">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="83663-137">Souhrn</span><span class="sxs-lookup"><span data-stu-id="83663-137">Summary</span></span>
 
-<span data-ttu-id="74576-138">Spustíte ukázkový kód ke čtení zpráv ve službě Azure Table storage, uloží prostřednictvím funkce Azure aplikace.</span><span class="sxs-lookup"><span data-stu-id="74576-138">You've run the sample code to read the messages in your Azure Table storage saved by your Azure Function application.</span></span>
+<span data-ttu-id="83663-138">Spustíte jste hello ukázkový kód tooread hello zpráv ve službě Azure Table storage, uloží prostřednictvím funkce Azure aplikace.</span><span class="sxs-lookup"><span data-stu-id="83663-138">You've run hello sample code tooread hello messages in your Azure Table storage saved by your Azure Function application.</span></span>

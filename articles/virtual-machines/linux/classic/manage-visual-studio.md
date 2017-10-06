@@ -1,6 +1,6 @@
 ---
-title: "Vytvářet a spravovat virtuální počítače s Linuxem v sadě Visual Studio | Microsoft Docs"
-description: "Další informace o použití sady Visual Studio vytvářet a spravovat virtuální počítače Azure se systémem Linux"
+title: "aaaCreate a spravovat virtuální počítače s Linuxem v sadě Visual Studio | Microsoft Docs"
+description: "Zjistěte, jak toocreate toouse Visual Studio a spravovat virtuální počítače Azure se systémem Linux"
 services: visual-studio-online,virtual-machines-linux
 documentationcenter: na
 author: kraigb
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: kraigb
-ms.openlocfilehash: fb91e6cf1fd32833d1e9711a55b41dfa410fee5d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44467ba04a98ea7e5bc509677fa7b2654e6d7ab6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-linux-virtual-machines-in-visual-studio"></a><span data-ttu-id="09d8a-103">Vytvářet a spravovat virtuální počítače s Linuxem v sadě Visual Studio</span><span class="sxs-lookup"><span data-stu-id="09d8a-103">Create and manage Linux virtual machines in Visual Studio</span></span>
+# <a name="create-and-manage-linux-virtual-machines-in-visual-studio"></a><span data-ttu-id="5e914-103">Vytvářet a spravovat virtuální počítače s Linuxem v sadě Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5e914-103">Create and manage Linux virtual machines in Visual Studio</span></span>
 [!INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
 

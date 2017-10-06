@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure HDInsight – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat Hadoop v HDInsightu. Z dokumentace se dozvíte, jak pomocí Hadoopu, Sparku, HBase, R-Serveru a dalších technologií zpracovávat, analyzovat a zkoumat velké objemy dat."
+title: "aaaAzure dokumentace prostředí HDInsight - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Naučte se používat Hadoop v HDInsightu. Dokumentace se dozvíte, jak toouse Hadoop, Spark, HBase, R Server a další tooprocess analyzují a získáte přehled o z velkých objemů dat."
 services: hdinsight
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6f16d77f3590bedf9338afc784110c2acff80592
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 592c31863df2e90886c9e9596b1a24edea79e990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Dokumentace ke službě HDInsight
 
-Naučte se používat Hadoop v cloudu v HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím Hadoopu, Sparku, HBase, R-Serveru, Stormu a dalších technologií v ekosystému Hadoop.
+Zjistěte, jak cloudové v hello toouse Hadoop na HDInsight tooanalyze streamování nebo historická data. Kurzy a další dokumentaci ukazují, jak toocreate clusterů, zpracování a analyzují velké objemy dat a vývoj řešení s Hadoop, Spark, HBase, R Server, Storm a dalších technologiích v ekosystému Hadoop hello.
 
 <ul class="panelContent cardsFTitle">
     <li>
