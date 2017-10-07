@@ -1,6 +1,6 @@
 ---
 title: "Simulované zařízení & brány Azure IoT - lekci 2: získání nástroje (Ubuntu) | Microsoft Docs"
-description: "Instalace nástroje a software na hostiteli počítače se spuštěným systémem Ubuntu, vytvoření služby IoT hub a registraci zařízení ve službě IoT hub."
+description: "Nainstalovat nástroje hello a hello software na hostiteli počítače se spuštěným systémem Ubuntu, vytvoření služby IoT hub a registraci zařízení ve hello IoT hub."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 349daf5c3206f7fc20662beebd16928624142a56
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 38c4d5d9cceec47758f0641cc26b631a7b19d37e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Získání nástrojů (Ubuntu 16.04)
+# <a name="get-hello-tools-ubuntu-1604"></a>Získat nástroje hello (Ubuntu 16.04)
 > [!div class="op_single_selector"]
 > * [Windows 7 nebo novější](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
@@ -32,36 +32,36 @@ ms.lasthandoff: 07/11/2017
 ## <a name="what-you-will-do"></a>Co provedete
 
 - Nainstalujte Git, Node.js, Gulp, Python.
-- Nainstalujte rozhraní příkazového řádku Azure (Azure CLI). 
+- Nainstalujte hello rozhraní příkazového řádku Azure (Azure CLI). 
 
-Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 
 V této lekci se dozvíte:
 
-- Jak nainstalovat Git a Node.js.
-  - Git je systém správy verzí distribuované s otevřeným zdrojem. Ukázkové aplikace pro tento účel jsou uloženy na Git.
+- Jak tooinstall Git a Node.js.
+  - Git je systém správy verzí distribuované s otevřeným zdrojem. Ukázková aplikace Hello této lekce jsou uloženy na Git.
   - Platforma Node.js je prostředí JavaScript runtime s ekosystém bohaté balíčku.
-- Postup instalace nástroje pro vývoj Node.js pomocí NPM.
-  - Minimální požadovaná verze Node.js je 4.5 LTS.
-  - NPM je jedním z vybraných manažerů balíčku pro Node.js.
-- Postup instalace Visual Studio Code.
+- Jak toouse NPM tooinstall Node.js nástroje pro vývoj.
+  - minimální požadovaná verze Node.js Hello je 4.5 LTS.
+  - NPM je jedním z hello správce balíčku pro Node.js.
+- Jak tooinstall Visual Studio Code.
   - Visual Studio Code je křížové platformy, editoru lightweight, ale výkonnou zdrojového kódu pro systém Windows, Linux a systému macOS. Má podpory pro ladění, vloženému ovládacímu prvku Git, zvýraznění syntaxe, inteligentního doplňování kódu, fragmenty a také refaktoring kódu.
-- Postup instalace rozhraní příkazového řádku Azure
-  - Rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure. Pracovat přímo z příkazového řádku pro zřizování a správu prostředků.
-- Jak používat rozhraní příkazového řádku Azure k vytvoření služby IoT hub.
+- Jak tooinstall hello rozhraní příkazového řádku Azure
+  - Hello rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure. Práce přímo z příkazového řádku tooprovision a spravovat prostředky.
+- Jak toouse hello toocreate rozhraní příkazového řádku Azure IoT hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-- Připojení k Internetu kvůli stažení nástrojů a softwaru.
+- Toodownload připojení Internetu hello nástrojů a softwaru.
 - Počítač, který používá Ubuntu 16.04 nebo novější.
 
 ## <a name="install-git-and-nodejs"></a>Nainstalovat Git a Node.js
 
-Chcete-li nainstalovat Git a Node.js, postupujte takto:
+tooinstall Git a Node.js, postupujte takto:
 
-1. Stiskněte klávesu `Ctrl + Alt + T` otevřete terminál.
-2. Spusťte následující příkazy:
+1. Stiskněte klávesu `Ctrl + Alt + T` tooopen terminál.
+2. Spusťte následující příkazy hello:
 
    ```bash
    sudo apt-get update
@@ -72,24 +72,24 @@ Chcete-li nainstalovat Git a Node.js, postupujte takto:
 
 ## <a name="install-nodejs-development-tools"></a>Instalace nástrojů pro vývoj Node.js
 
-Používáte [gulp.js](http://gulpjs.com/) k automatizaci nasazení a spouštění skriptů.
+Používáte [gulp.js](http://gulpjs.com/) tooautomate nasazení a spouštění skriptů.
 
-Pokud chcete nainstalovat gulp, spusťte následující příkaz v terminálu:
+gulp tooinstall, spusťte následující příkaz v terminálu hello hello:
 
 ```bash
 sudo npm install -g gulp
 ```
 
-Pokud máte problémy s instalací, najdete v článku [Průvodce odstraňováním potíží s](iot-hub-gateway-kit-c-sim-troubleshooting.md) pro řešení běžných potíží.
+Pokud máte problémy s instalací hello, najdete v části hello [Průvodce odstraňováním potíží s](iot-hub-gateway-kit-c-sim-troubleshooting.md) řešení toocommon problémů.
 
 > [!Note]
-> Uzel, NPM a Gulp jsou nutné ke spuštění skripty pro automatizaci vyvinuté v Node.js.
+> Uzel, NPM a Gulp jsou skripty pro automatizaci požadované toorun vyvinuté v Node.js.
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+## <a name="install-hello-azure-cli"></a>Nainstalujte hello rozhraní příkazového řádku Azure
 
-Pokud chcete nainstalovat rozhraní příkazového řádku Azure, postupujte takto:
+tooinstall hello rozhraní příkazového řádku Azure, postupujte takto:
 
-1. Spusťte následující příkazy v terminálu:
+1. Spusťte následující příkazy v terminálu hello hello:
 
    ```bash
    sudo apt-get update
@@ -101,25 +101,25 @@ Pokud chcete nainstalovat rozhraní příkazového řádku Azure, postupujte tak
    sudo pip install --upgrade azure-cli-iot
    ```
 
-   Instalace může trvat 5 minut.
+   Hello instalace může trvat 5 minut.
 
-2. Ověřte instalaci tak, že spustíte následující příkaz:
+2. Hello instalaci ověřte spuštěním hello následující příkaz:
 
    ```bash
    az iot -h
    ```
-Pokud k úspěšnému dokončení instalace, měli byste vidět následující výstup.
+Měli byste vidět, že hello následující výstup, pokud hello instalace byla úspěšně dokončena.
 ![Ověření instalace rozhraní příkazového řádku Azure](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ### <a name="install-visual-studio-code"></a>Nainstalovat Visual Studio Code
 
-Visual Studio Code použijete později v tomto kurzu upravit konfigurační soubory.
+Visual Studio Code použijete později v hello kurz tooedit konfigurační soubory.
 
 [Stáhněte si](https://code.visualstudio.com/docs/setup/linux) a nainstalujte Visual Studio Code.
 
 ## <a name="summary"></a>Souhrn
 
-Všechny požadované nástroje a softwaru jste nainstalovali v hostitelském počítači. Svůj další úkol je použití rozhraní příkazového řádku Azure k vytvoření služby IoT hub a registraci zařízení ve službě IoT hub.
+Všechny požadované hello nástrojů a softwaru jste nainstalovali v hostitelském počítači. Svůj další úkol je toouse hello rozhraní příkazového řádku Azure toocreate služby IoT hub a registraci zařízení ve službě IoT hub.
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření služby IoT Hub a registrace zařízení](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)

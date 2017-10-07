@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření funkce pro data úložiště objektů blob v Azure pomocí Panda | Microsoft Docs"
-description: "Postup vytvoření funkce pro data, která je uložená v kontejneru objektů blob v Azure s balíčkem Panda Python."
+title: "Funkce aaaCreate pro Azure blob úložiště dat pomocí Panda | Microsoft Docs"
+description: "Jak toocreate funkce pro data, která je uložená v kontejneru objektů blob v Azure s balíček Panda Python hello."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8594046c5d76a36ad87fc77e407752489d30afcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Vytvoření funkcí pro data služby Azure Blob Storage pomocí knihovny Pandas
-Tento dokument ukazuje, jak vytvořit funkcí pro data, která je uložená v pomocí kontejneru objektů blob v Azure [Pandas](http://pandas.pydata.org/) balíček Python. Po osnovy jak načíst data do rámečku data Panda, ukazuje, jak vygenerovat kategorií funkce pomocí skriptů Python s hodnotami indikátoru a přihrádkování funkce.
+Tento dokument ukazuje, jak funkce toocreate pro data, která je uložená v kontejneru objektů blob v Azure pomocí hello [Pandas](http://pandas.pydata.org/) balíček Python. Po osnovy jak tooload hello dat do data rámečku Panda, ukazuje způsob toogenerate kategorií funkce pomocí skriptů Python s hodnotami indikátoru a přihrádkování funkce.
 
 [!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-To **nabídky** odkazy na témata, které popisují, jak vytvořit funkce pro data v různých prostředích. Tato úloha je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To **nabídky** odkazy tootopics, které popisují, jak funkce toocreate pro data v různých prostředích. Tato úloha je krok v hello [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste vytvořili účet úložiště objektů blob v Azure a jsou uloženy vaše data existuje. Pokud budete potřebovat pokyny k nastavení účtu, najdete v části [vytvoření účtu úložiště Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+Tento článek předpokládá, že jste vytvořili účet úložiště objektů blob v Azure a jsou uloženy vaše data existuje. Pokud budete potřebovat pokyny tooset si účet, najdete v části [vytvoření účtu úložiště Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>Načíst data do rámečku Pandas dat
-Abyste mohli prozkoumat a upravit datovou sadu, se musí stáhnout ze zdroje blob do místního souboru, který lze načíst v rámci Pandas data. Tady jsou kroky provést tento postup:
+## <a name="load-hello-data-into-a-pandas-data-frame"></a>Načtení dat hello do rámečku Pandas dat
+V pořadí toodo prozkoumat a upravit datovou sadu, se musí stáhnout z hello blob zdroj tooa místního souboru, který lze načíst v rámci Pandas data. Zde jsou kroky toofollow hello pro tento postup:
 
-1. Stahování dat z Azure blob s následujícím kódem ukázkové Python pomocí služby objektů blob. Nahraďte konkrétní hodnoty proměnné v kódu níže:
+1. Stáhněte si hello data z Azure blob s hello následující ukázkový kód Python pomocí služby objektů blob. Nahraďte konkrétní hodnoty proměnné hello v hello kódu níže:
    
         from azure.storage.blob import BlobService
         import tables
@@ -49,57 +49,57 @@ Abyste mohli prozkoumat a upravit datovou sadu, se musí stáhnout ze zdroje blo
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Načtení dat do data rámeček Pandas ze staženého souboru.
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. Čtení hello dat do data rámečku Pandas z hello stáhli soubor.
    
-        #LOCALFILE is the file path
+        #LOCALFILE is hello file path
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Nyní jste připraveni k data prozkoumat a generování funkce pro tuto datovou sadu.
+Nyní jsou připravené tooexplore hello data a vygenerovat funkce pro tuto datovou sadu.
 
 ## <a name="blob-featuregen"></a>Funkce generování
-V následujících dvou částech ukazují, jak vygenerovat kategorií funkce s hodnotami indikátoru a přihrádkování funkcí pomocí skriptů Python.
+Hello další dvě části vysvětlují, jak toogenerate kategorií funkce s hodnotami indikátoru a přihrádkování funkce pomocí skriptů Python.
 
 ### <a name="blob-countfeature"></a>Hodnota ukazatele na základě funkce generování
 Kategorií funkce lze vytvořit následujícím způsobem:
 
-1. Zkontrolujte distribuci sloupci kategorií:
+1. Zkontrolujte hello distribuční sloupce hello kategorií:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Generování hodnot ukazatele pro jednotlivé hodnoty ve sloupcích
+2. Generování hodnot ukazatele pro jednotlivé hodnoty ve sloupcích hello
    
-        #generate the indicator column
+        #generate hello indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Připojit ukazatel sloupec s původní data rámečku
+3. Připojení k hello indikátor sloupec s hello původní data rámečku
    
-            #Join the dummy variables back to the original data frame
+            #Join hello dummy variables back toohello original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Odeberte původní proměnnou:
+4. Odebrání hello původní proměnná sám sebe:
    
-        #Remove the original column rate_code in df1_with_dummy
+        #Remove hello original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
 ### <a name="blob-binningfeature"></a>Přihrádkování funkce generování
 Pro generování binned funkce, budeme postupovat takto:
 
-1. Přidat posloupnost sloupce, které chcete bin je číselný sloupec
+1. Přidat posloupnost toobin sloupce je číselný sloupec
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Převést přihrádkování pořadí boolean proměnných
+2. Převést přihrádkování tooa pořadí boolean proměnných
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Nakonec připojení fiktivní proměnné zpět na původní data rámečku
+3. Nakonec připojení hello fiktivní proměnné back toohello původní data rámečku
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>Zápis dat zpět do objektu blob Azure a využívají v Azure Machine Learning
-Poté, co jste prozkoumali data a vytvořili nezbytné funkce, můžete nahrát data (vzorkovat nebo featurized) do Azure blob a využívat v Azure Machine Learning pomocí následujících kroků: Další funkce můžete vytvářet v Azure Machine Learning Studio také.
+## <a name="sql-featuregen"></a>Zápis dat zálohovat tooAzure objektů blob a využívání v Azure Machine Learning
+Poté, co jste prozkoumali hello dat a vytvořit hello nezbytné funkce, můžete nahrát hello data (vzorkovat nebo featurized) tooan Azure blob a využívat v Azure Machine Learning pomocí následujících kroků hello: Další funkce můžete vytvářet v hello Azure Machine Learning Studio také.
 
-1. Zápis dat rámečku k místnímu souboru.
+1. Zápis hello dat rámce toolocal souboru
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Nahrajte data do objektů blob v Azure následujícím způsobem:
+2. Nahrajte objekt blob tooAzure data hello následujícím způsobem:
    
         from azure.storage.blob import BlobService
         import tables
@@ -120,7 +120,7 @@ Poté, co jste prozkoumali data a vytvořili nezbytné funkce, můžete nahrát 
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Nyní lze číst data z objektu blob pomocí Azure Machine Learning [importovat Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modulu, jak je znázorněno na obrazovce níže:
+3. Teď můžete číst hello data z hello blob pomocí Azure Machine Learning hello [importovat Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modulu, jak je znázorněno v úvodní obrazovka níže:
 
 ![Čtečka objektů blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 

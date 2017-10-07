@@ -1,6 +1,6 @@
 ---
-title: "Integrace se službou Azure Mobile Engagement Web SDK | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro Web Azure Mobile Engagement SDK"
+title: aaaAzure integrace sady Mobile Engagement Web SDK | Microsoft Docs
+description: "Hello nejnovější aktualizace a postupy pro hello sada SDK webové služby Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99613b68b615bec4ddcfcc8e4e0133ce9d887bad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integrovat Azure Mobile Engagement ve webové aplikaci
 > [!div class="op_single_selector"]
@@ -29,21 +29,21 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-V tomto článku jsou popsány nejjednodušší způsob, jak aktivovat analýzy a monitorování funkcí v Azure Mobile Engagement ve webové aplikaci.
+Hello postupy v tomto článku popisují hello nejjednodušší způsob, jak tooactivate hello analýzy a monitorování funkcí v Azure Mobile Engagement ve webové aplikaci.
 
-Postupujte podle kroků k aktivaci protokolu sestavy, které jsou potřebné k výpočtu všechny statistické údaje o uživatelích, relacích, aktivity, dojde k chybě a technicals. Statistics závislé aplikace, jako jsou události a chyby, úlohy je nutné aktivovat sestavy protokolu ručně pomocí rozhraní API služby Azure Mobile Engagement. Další informace najdete další [jak používat rozšířené Mobile Engagement označování rozhraní API ve webové aplikaci](mobile-engagement-web-use-engagement-api.md).
+Postupujte podle hello kroky tooactivate hello protokolu sestavy, které jsou potřebné toocompute všechny statistické údaje o uživatelích, relacích, aktivity, dojde k chybě a technicals. Statistics závislé aplikace, jako jsou události a chyby, úlohy je nutné aktivovat sestavy protokolu ručně pomocí hello rozhraní API služby Azure Mobile Engagement. Další informace najdete další [jak toouse hello advanced označování rozhraní API ve webové aplikaci Mobile Engagement](mobile-engagement-web-use-engagement-api.md).
 
 ## <a name="introduction"></a>Úvod
-[Stažení na webu Azure Mobile Engagement SDK](http://aka.ms/P7b453).
-Mobile Engagement Web SDK je dodávána jako jeden soubor JavaScript, azure-engagement.js, které je nutné zahrnout v každé stránce webu či webové aplikace.
+[Stáhnout hello sada SDK webové služby Azure Mobile Engagement](http://aka.ms/P7b453).
+Hello Mobile Engagement Web SDK je dodávána jako jeden soubor JavaScript, azure-engagement.js, které jste tooinclude v každé stránce webu či webové aplikace.
 
 > [!IMPORTANT]
-> Před spuštěním tohoto skriptu, je nutné spustit fragment skriptu nebo kód, který zapisovat konfigurace Mobile Engagementu pro vaši aplikaci.
+> Před spuštěním tohoto skriptu, musíte spustit skript nebo kód fragment kódu, který zápisu tooconfigure Mobile Engagementu pro vaši aplikaci.
 > 
 > 
 
 ## <a name="browser-compatibility"></a>Kompatibilita s prohlížeči
-Mobile Engagement Web SDK používá nativní JSON kódování a dekódování kromě požadavky AJAX mezi doménami (spoléhat na specifikace W3C CORS). Je kompatibilní s následujících prohlížečů:
+Hello Mobile Engagement Web SDK používá nativní JSON kódování a dekódování kromě požadavky AJAX toocross domény (přijímající na specifikaci W3C CORS hello). Je kompatibilní s hello následujících prohlížečů:
 
 * Microsoft Edge 12 +
 * Internet Explorer 10 +
@@ -53,7 +53,7 @@ Mobile Engagement Web SDK používá nativní JSON kódování a dekódování k
 * Opera 12 +
 
 ## <a name="configure-mobile-engagement"></a>Konfigurace Mobile Engagement
-Napsat skript, který vytvoří globální konfiguraci `azureEngagement` objekt jazyka JavaScript, jako v následujícím příkladu. Vzhledem k tomu, že váš web může mít násobky stránky, tento příklad předpokládá, že tento skript je zahrnuta v každé stránce. V tomto příkladu je objekt jazyka JavaScript s názvem `azure-engagement-conf.js`.
+Napsat skript, který vytvoří globální konfiguraci `azureEngagement` objekt jazyka JavaScript, stejně jako hello následující ukázka. Vzhledem k tomu, že váš web může mít násobky stránky, tento příklad předpokládá, že tento skript je zahrnuta v každé stránce. V tomto příkladu je název objektu JavaScript hello `azure-engagement-conf.js`.
 
     window.azureEngagement = {
       connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
@@ -61,7 +61,7 @@ Napsat skript, který vytvoří globální konfiguraci `azureEngagement` objekt 
       appVersionCode: 1
     };
 
-`connectionString` Hodnotu pro vaše aplikace se zobrazí na portálu Azure.
+Hello `connectionString` hodnotu pro vaše aplikace je zobrazena v hello portálu Azure.
 
 > [!NOTE]
 > `appVersionName`a `appVersionCode` jsou volitelné. Doporučujeme však, že jste je nakonfigurovat tak, aby analytics může zpracovat informace o verzi.
@@ -69,7 +69,7 @@ Napsat skript, který vytvoří globální konfiguraci `azureEngagement` objekt 
 > 
 
 ## <a name="include-mobile-engagement-scripts-in-your-pages"></a>Zahrnout Mobile Engagement skripty na svých stránkách
-Přidáte skripty Mobile Engagement na stránky v jednom z následujících způsobů:
+Přidání Mobile Engagement skripty tooyour stránky v jednom z následujících způsobů hello:
 
     <head>
       ...
@@ -88,9 +88,9 @@ Nebo to:
     </body>
 
 ## <a name="alias"></a>Alias
-Po načtení skriptu SDK webové služby Mobile Engagement, vytvoří **engagement** alias pro přístup k rozhraní API sady SDK. Tento alias nelze použít k definování konfigurace sady SDK. Tento alias se používá jako odkaz v této dokumentaci.
+Po načtení hello Mobile Engagement Web SDK skript vytvoří hello **engagement** alias tooaccess hello rozhraní API sady SDK. Konfigurace sady SDK hello toodefine tento alias nelze použít. Tento alias se používá jako odkaz v této dokumentaci.
 
-Všimněte si, že pokud výchozí alias je v konfliktu s jinou – globální proměnná ze stránky, můžete upravit ji v konfiguraci takto před načtením Mobile Engagement SDK webové:
+Všimněte si, že pokud alias výchozí hello je v konfliktu s jinou – globální proměnná ze stránky, můžete upravit ho v hello konfigurace takto před načtením hello Mobile Engagement Web SDK:
 
     window.azureEngagement = {
       connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
@@ -105,9 +105,9 @@ Základní vytváření sestav v Mobile Engagementu popisuje statistické údaje
 ### <a name="session-tracking"></a>Sledování relace
 Mobile Engagement relace je rozdělené do posloupnost aktivit, identifikována názvem.
 
-V klasického webu doporučujeme je deklarovat jiné aktivitě na každé stránce vašeho webu. Pro web nebo webovou aplikaci, ve kterém se aktuální stránku nikdy změní můžete chtít sledovat aktivity v menším měřítku, jako třeba v rámci dané stránky.
+V klasického webu doporučujeme je deklarovat jiné aktivitě na každé stránce vašeho webu. Web nebo webovou aplikaci, ve které hello aktuální stránku nikdy změní můžete tootrack hello aktivity v menším měřítku, jako třeba v rámci stránky hello.
 
-V obou případech spustit nebo změnit aktuální aktivity uživatelů, volání `engagement.agent.startActivity` funkce. Například:
+Buď způsobem, toostart nebo změňte hello aktuální aktivity uživatelů, volání hello `engagement.agent.startActivity` funkce. Například:
 
     <body onload="yourOnload()">
 
@@ -118,28 +118,28 @@ V obou případech spustit nebo změnit aktuální aktivity uživatelů, volán�
       engagement.agent.startActivity('welcome');
     };
 
-Mobile Engagement server automaticky ukončí otevřít relaci do tří minut po zavření stránky aplikace.
+Mobile Engagement server Hello automaticky ukončí otevřít relaci do tří minut po zavření stránky aplikace hello.
 
-Alternativně můžete ukončit relaci ručně voláním `engagement.agent.endActivity`. Toto nastaví aktuální aktivity uživatelů na "Nečinnosti."  Relace se ukončí 10 sekund později, pokud nové volání na `engagement.agent.startActivity` obnoví relace.
+Alternativně můžete ukončit relaci ručně voláním `engagement.agent.endActivity`. Toto nastaví hello aktuální uživatel aktivity too'Idle. "  Hello relace bude ukončena 10 sekund později, pokud novou volání příliš`engagement.agent.startActivity` obnoví hello relace.
 
-Prodlevu 10 sekund do objektu globální zapojení, můžete nakonfigurovat následujícím způsobem:
+Prodlevu hello 10 do objektu hello globální zapojení, můžete nakonfigurovat následujícím způsobem:
 
     engagement.sessionTimeout = 2000; // 2 seconds
     // or
-    engagement.sessionTimeout = 0; // end the session as soon as endActivity is called
+    engagement.sessionTimeout = 0; // end hello session as soon as endActivity is called
 
 > [!NOTE]
-> Nemůžete použít `engagement.agent.endActivity` v `onunload` zpětného volání vzhledem k tomu, že nemůžete provádět volání AJAX v této fázi.
+> Nemůžete použít `engagement.agent.endActivity` v hello `onunload` zpětného volání vzhledem k tomu, že nemůžete provádět volání AJAX v této fázi.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Rozšířená tvorba sestav
-Případně pokud chcete ohlásit události specifické pro aplikace, chyb a úlohy, budete muset použít rozhraní API služby Mobile Engagement. Získat přístup k rozhraní API Mobile Engagement prostřednictvím `engagement.agent` objektu.
+Volitelně Pokud chcete události specifické pro aplikaci tooreport, chyb a úlohy, je nutné toouse hello Mobile Engagement API. Přístup k hello Mobile Engagement API prostřednictvím hello `engagement.agent` objektu.
 
-Přístup ke všem rozšířené možnosti v Mobile Engagementu v rozhraní API Mobile Engagement. Rozhraní API je podrobně popsaná v článku [jak používat rozšířené Mobile Engagement označování rozhraní API ve webové aplikaci](mobile-engagement-web-use-engagement-api.md).
+Přístup ke všem hello rozšířené možnosti v Mobile Engagementu v hello Mobile Engagement API. Hello rozhraní API je podrobně popsaná v článku hello [jak toouse hello advanced označování rozhraní API ve webové aplikaci Mobile Engagement](mobile-engagement-web-use-engagement-api.md).
 
-## <a name="customize-the-urls-used-for-ajax-calls"></a>Přizpůsobení adresy URL použít pro volání AJAX
-Můžete přizpůsobit adresy URL, které používá Mobile Engagement Web SDK. Například se znovu definovat adresu URL protokolu (SDK koncový bod pro protokolování), může potlačit konfiguraci takto:
+## <a name="customize-hello-urls-used-for-ajax-calls"></a>Přizpůsobení adresy URL hello použít pro volání AJAX
+Adresy URL můžete přizpůsobit této hello, jaký používá SDK webové služby Mobile Engagement. Například tooredefine hello protokolu adresu URL (hello SDK koncový bod pro protokolování), můžete přepsat konfiguraci hello podobné výjimky:
 
     window.azureEngagement = {
       ...
@@ -151,7 +151,7 @@ Můžete přizpůsobit adresy URL, které používá Mobile Engagement Web SDK. 
       }
     };
 
-Pokud adresa URL funkce vrátí řetězec, který začíná `/`, `//`, `http://`, nebo `https://`, výchozí schéma se nepoužívá. Ve výchozím nastavení `https://` schéma se používá pro tyto adresy URL. Pokud chcete přizpůsobit výchozí schéma, přepište konfiguraci, například takto:
+Pokud adresa URL funkce vrátí řetězec, který začíná `/`, `//`, `http://`, nebo `https://`, výchozí schéma hello nepoužívá. Ve výchozím nastavení, hello `https://` schéma se používá pro tyto adresy URL. Pokud chcete toocustomize hello výchozí schéma, přepište hello konfigurace, například takto:
 
     window.azureEngagement = {
       ...

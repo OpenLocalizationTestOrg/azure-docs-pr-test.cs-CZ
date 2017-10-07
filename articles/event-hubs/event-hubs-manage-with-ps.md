@@ -1,6 +1,6 @@
 ---
-title: "Pomocí prostředí PowerShell ke správě prostředků Azure Event Hubs | Microsoft Docs"
-description: "Modul prostředí PowerShell slouží k vytváření a správě služby Event Hubs"
+title: "prostředky Azure Event Hubs toomanage prostředí PowerShell aaaUse | Microsoft Docs"
+description: "Použít toocreate modulu prostředí PowerShell a spravovat služby Event Hubs"
 services: event-hubs
 documentationcenter: .NET
 author: sethmanheim
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 2b49c01153b1104612e6ebf9c88566fc40d1f635
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d79cb307c2b4a031d059ce6ca67117ffc0b4600b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-manage-event-hubs-resources"></a>Pomocí prostředí PowerShell ke správě prostředků služby Event Hubs
+# <a name="use-powershell-toomanage-event-hubs-resources"></a>Pomocí prostředí PowerShell toomanage Event Hubs prostředky
 
-Microsoft Azure PowerShell je skriptovací prostředí, které můžete řídit a automatizovat nasazení a správu služeb Azure. Tento článek popisuje způsob použití [modulu PowerShell Resource Manager centra událostí](/powershell/module/azurerm.eventhub) a zřizovat a spravovat služby Event Hubs entity (obory názvů, jednotlivé služba event hubs a skupiny uživatelů) pomocí místní konzoly Azure PowerShell nebo skriptu.
+Microsoft Azure PowerShell je skriptovací prostředí, můžete použít toocontrol a automatizovat hello nasazení a správu služeb Azure. Tento článek popisuje, jak toouse hello [modulu PowerShell Resource Manager centra událostí](/powershell/module/azurerm.eventhub) tooprovision a spravovat služby Event Hubs entity (obory názvů, jednotlivé služba event hubs a skupiny uživatelů) pomocí místní konzoly Azure PowerShell nebo skript.
 
-Můžete také spravovat služby Event Hubs prostředků pomocí šablony Azure Resource Manager. Další informace najdete v článku [vytvoření oboru názvů Event Hubs s skupina rozbočovače a příjemce událostí pomocí šablony Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md).
+Můžete také spravovat služby Event Hubs prostředků pomocí šablony Azure Resource Manager. Další informace najdete v článku hello [vytvoření oboru názvů Event Hubs s skupina rozbočovače a příjemce událostí pomocí šablony Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, budete potřebovat následující:
+Než začnete, budete potřebovat následující hello:
 
 * Předplatné Azure. Další informace o získání předplatného najdete v tématu [možností nákupu][purchase options], [nabízí člen][member offers], nebo [bezplatný účet][free account].
 * Počítač s prostředím Azure PowerShell. Pokyny najdete v tématu [Začínáme pomocí rutin prostředí Azure PowerShell](/powershell/azure/get-started-azureps).
-* Obecné znalosti skriptů prostředí PowerShell, balíčků NuGet a rozhraní .NET Framework.
+* Obecné znalosti skriptů prostředí PowerShell, balíčků NuGet a hello rozhraní .NET Framework.
 
 ## <a name="get-started"></a>Začínáme
 
-Prvním krokem je pomocí prostředí PowerShell pro přihlášení k účtu Azure a předplatné Azure. Postupujte podle pokynů v [Začínáme pomocí rutin prostředí Azure PowerShell](/powershell/azure/get-started-azureps) k přihlášení k účtu Azure, pak načíst a přístup k prostředkům ve vašem předplatném Azure.
+prvním krokem Hello je toouse toolog prostředí PowerShell v tooyour účet Azure a předplatné Azure. Postupujte podle pokynů hello v [Začínáme pomocí rutin prostředí Azure PowerShell](/powershell/azure/get-started-azureps) toolog v tooyour účet Azure, pak načíst a přístup k prostředkům hello ve vašem předplatném Azure.
 
 ## <a name="provision-an-event-hubs-namespace"></a>Zřídit na obor názvů služby Event Hubs
 
-Při práci se službou Event Hubs obory názvů, můžete použít [Get-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/get-azurermeventhubnamespace), [New-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/new-azurermeventhubnamespace), [odebrat AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/remove-azurermeventhubnamespace), a [Set-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/set-azurermeventhubnamespace) rutiny.
+Při práci se službou Event Hubs obory názvů, můžete použít hello [Get-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/get-azurermeventhubnamespace), [New-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/new-azurermeventhubnamespace), [odebrat AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/remove-azurermeventhubnamespace) , a [Set-AzureRmEventHubNamespace](/powershell/module/azurerm.eventhub/set-azurermeventhubnamespace) rutiny.
 
-Tento příklad vytvoří pár lokální proměnné ve skriptu; `$Namespace` a `$Location`.
+Tento příklad vytvoří pár lokální proměnné ve skriptu hello; `$Namespace` a `$Location`.
 
-* `$Namespace`je název oboru názvů služby Event Hubs, se kterým chcete pracovat.
-* `$Location`Určuje datové centrum, ve kterém bude jsme zřízení oboru názvů.
-* `$CurrentNamespace`ukládá odkaz na obor názvů, který jsme načíst (nebo ji vytvořte).
+* `$Namespace`je název hello hello Event Hubs oboru názvů, ke kterému má být toowork.
+* `$Location`identifikuje hello datového centra, ve kterém jsme zřizovat hello oboru názvů.
+* `$CurrentNamespace`úložiště hello odkaz na obor názvů, který jsme načíst (nebo ji vytvořte).
 
 Ve skriptu skutečné `$Namespace` a `$Location` lze předat jako parametry.
 
-Tato část skript provede následující akce:
+Tato část skriptu hello hello následující:
 
-1. Pokusí se načíst na obor názvů služby Event Hubs se zadaným názvem.
-2. Pokud je nalezen obor názvů, sestavy, co byl nalezen.
-3. Pokud není nalezen obor názvů, vytvoří obor názvů a pak načte nově vytvořený obor názvů.
+1. Pokusy o tooretrieve na obor názvů služby Event Hubs s hello zadán název.
+2. Pokud je nalezen hello obor názvů, sestavy, co byl nalezen.
+3. Pokud není nalezen hello obor názvů, vytvoří obor názvů hello a pak načte hello nově vytvořený obor názvů.
 
     ```powershell
-    # Query to see if the namespace currently exists
+    # Query toosee if hello namespace currently exists
     $CurrentNamespace = Get-AzureRMEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $Namespace
    
-    # Check if the namespace already exists or needs to be created
+    # Check if hello namespace already exists or needs toobe created
     if ($CurrentNamespace)
     {
-        Write-Host "The namespace $Namespace already exists in the $Location region:"
+        Write-Host "hello namespace $Namespace already exists in hello $Location region:"
         # Report what was found
         Get-AzureRMEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $Namespace
     }
     else
     {
-        Write-Host "The $Namespace namespace does not exist."
-        Write-Host "Creating the $Namespace namespace in the $Location region..."
+        Write-Host "hello $Namespace namespace does not exist."
+        Write-Host "Creating hello $Namespace namespace in hello $Location region..."
         New-AzureRmEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $Namespace -Location $Location
         $CurrentNamespace = Get-AzureRMEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $Namespace
-        Write-Host "The $Namespace namespace in Resource Group $ResGrpName in the $Location region has been successfully created."
+        Write-Host "hello $Namespace namespace in Resource Group $ResGrpName in hello $Location region has been successfully created."
     }
     ```
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Vytvoření centra událostí, proveďte kontrolu oboru názvů pomocí skriptu v předchozí části. Potom použít [New-AzureRmEventHub](/powershell/module/azurerm.eventhub/new-azurermeventhub) rutiny pro vytvoření centra událostí:
+toocreate centra událostí, proveďte kontrolu oboru názvů pomocí skriptu hello v předchozí části hello. Poté použijte hello [New-AzureRmEventHub](/powershell/module/azurerm.eventhub/new-azurermeventhub) centra událostí hello toocreate rutiny:
 
 ```powershell
 # Check if event hub already exists
@@ -87,23 +87,23 @@ $CurrentEH = Get-AzureRMEventHub -ResourceGroupName $ResGrpName -NamespaceName $
 
 if($CurrentEH)
 {
-    Write-Host "The event hub $EventHubName already exists in the $Location region:"
+    Write-Host "hello event hub $EventHubName already exists in hello $Location region:"
     # Report what was found
     Get-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
 }
 else
 {
-    Write-Host "The $EventHubName event hub does not exist."
-    Write-Host "Creating the $EventHubName event hub in the $Location region..."
+    Write-Host "hello $EventHubName event hub does not exist."
+    Write-Host "Creating hello $EventHubName event hub in hello $Location region..."
     New-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -Location $Location -MessageRetentionInDays 3
     $CurrentEH = Get-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
-    Write-Host "The $EventHubName event hub in Resource Group $ResGrpName in the $Location region has been successfully created."
+    Write-Host "hello $EventHubName event hub in Resource Group $ResGrpName in hello $Location region has been successfully created."
 }
 ```
 
 ### <a name="create-a-consumer-group"></a>Vytvořte skupinu uživatelů
 
-Vytvořte skupinu uživatelů v rámci centra událostí, provádět obor názvů a události rozbočovače kontrol pomocí skriptů v předchozí části. Potom použít [New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) vytvořte skupiny uživatelů v rámci centra událostí. Například:
+toocreate skupiny příjemců v Centru událostí provést hello oboru názvů událostí rozbočovače kontroly a pomocí skriptů hello v předchozí části hello. Poté použijte hello [New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) rutiny toocreate hello skupiny uživatelů v rámci centra událostí hello. Například:
 
 ```powershell
 # Check if consumer group already exists
@@ -111,27 +111,27 @@ $CurrentCG = Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -Na
 
 if($CurrentCG)
 {
-    Write-Host "The consumer group $ConsumerGroupName in event hub $EventHubName already exists in the $Location region:"
+    Write-Host "hello consumer group $ConsumerGroupName in event hub $EventHubName already exists in hello $Location region:"
     # Report what was found
     Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
 }
 else
 {
-    Write-Host "The $ConsumerGroupName consumer group does not exist."
-    Write-Host "Creating the $ConsumerGroupName consumer group in the $Location region..."
+    Write-Host "hello $ConsumerGroupName consumer group does not exist."
+    Write-Host "Creating hello $ConsumerGroupName consumer group in hello $Location region..."
     New-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -ConsumerGroupName $ConsumerGroupName
     $CurrentCG = Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName
-    Write-Host "The $ConsumerGroupName consumer group in event hub $EventHubName in Resource Group $ResGrpName in the $Location region has been successfully created."
+    Write-Host "hello $ConsumerGroupName consumer group in event hub $EventHubName in Resource Group $ResGrpName in hello $Location region has been successfully created."
 }
 ```
 
 #### <a name="set-user-metadata"></a>Metadata uživatele sady
 
-Po provedení skripty v předchozí části, můžete použít [Set-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/set-azurermeventhubconsumergroup) rutiny aktualizovat vlastnosti skupiny příjemců, jako v následujícím příkladu:
+Po provedení hello skripty v předchozích částech hello, můžete použít hello [Set-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/set-azurermeventhubconsumergroup) rutiny tooupdate hello vlastnosti skupiny příjemců, stejně jako hello následující ukázka:
 
 ```powershell
-# Set some user metadata on the CG
-Write-Host "Setting the UserMetadata field to 'Testing'"
+# Set some user metadata on hello CG
+Write-Host "Setting hello UserMetadata field too'Testing'"
 Set-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -ConsumerGroupName $ConsumerGroupName -UserMetadata "Testing"
 # Show result
 Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $Namespace -EventHubName $EventHubName -ConsumerGroupName $ConsumerGroupName
@@ -139,7 +139,7 @@ Get-AzureRmEventHubConsumerGroup -ResourceGroupName $ResGrpName -NamespaceName $
 
 ## <a name="remove-event-hub"></a>Odebrat centra událostí
 
-Chcete-li odebrat centra událostí, který jste vytvořili, můžete použít `Remove-*` rutin, jako v následujícím příkladu:
+Služba event hubs hello tooremove jste vytvořili, můžete použít hello `Remove-*` rutiny jako hello následující ukázka:
 
 ```powershell
 # Clean up
@@ -150,8 +150,8 @@ Remove-AzureRmEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $N
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naleznete v dokumentaci k dokončení Powershellu Resource Manager centra událostí modulu [zde](/powershell/module/azurerm.eventhub). Tato stránka obsahuje seznam všech dostupných rutin.
-- Informace o používání šablon Azure Resource Manageru, najdete v článku [vytvoření oboru názvů Event Hubs s skupina rozbočovače a příjemce událostí pomocí šablony Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md).
+- Najdete v dokumentaci hello dokončení Powershellu Resource Manager centra událostí modulu [zde](/powershell/module/azurerm.eventhub). Tato stránka obsahuje seznam všech dostupných rutin.
+- Informace o používání šablon Azure Resource Manageru, najdete v článku hello [vytvoření oboru názvů Event Hubs s skupina rozbočovače a příjemce událostí pomocí šablony Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md).
 - Informace o [knihovny .NET centra událostí správy](event-hubs-management-libraries.md).
 
 [purchase options]: http://azure.microsoft.com/pricing/purchase-options/

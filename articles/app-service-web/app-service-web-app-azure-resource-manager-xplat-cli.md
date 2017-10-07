@@ -1,6 +1,6 @@
 ---
-title: "Webová aplikace Azure založené na správci prostředků mezi rozhraní příkazového řádku nástroje pro Azure | Microsoft Docs"
-description: "Naučte se používat nový na základě Azure Resource Manager napříč platformami příkazového řádku nástroje pro správu webových aplikacích Azure."
+title: "aaaAzure nástroje příkazového řádku založené na správci prostředků a platformy pro webové aplikace Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello nové nástroje příkazového řádku založené na Azure Resource Manager napříč platformami toomanage webových aplikacích Azure."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,113 +14,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
-ms.openlocfilehash: 7a03e1417617453c43edcc3787da10d171359757
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5f5e03edcb01154aef3bd220cd27358f69656ef4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-resource-manager-based-xplat-cli-for-azure-app-service"></a>Pomocí příkazového řádku XPlat založené na správci prostředků Azure pro službu Azure App Service
 > [!div class="op_single_selector"]
 > * [Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
 > * [Azure PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
 
-S vydáním verze nástroje příkazového řádku pro různé platformy Microsoft Azure 0.10.5 byly přidány nové příkazy. Tyto příkazy uživateli přidělit možnost použít příkazy prostředí PowerShell využívající Azure Resource Manager ke správě služby App Service.
+Verze hello nástroje příkazového řádku pro různé platformy Microsoft Azure verze 0.10.5 byly přidány nové příkazy. Tyto příkazy poskytnout hello uživatele hello možnost toouse založené na správci prostředků Azure PowerShell příkazy toomanage služby App Service.
 
-Další informace o správě skupin prostředků, najdete v části [používat rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků](../azure-resource-manager/xplat-cli-azure-resource-manager.md). 
+toolearn o správě skupin prostředků, najdete v části [pomocí rozhraní příkazového řádku Azure toomanage hello Azure skupiny prostředků a prostředky](../azure-resource-manager/xplat-cli-azure-resource-manager.md). 
 
 > [!NOTE] 
-> Také si vyzkoušet [Azure CLI 2.0](https://github.com/Azure/azure-cli), rozhraní příkazového řádku příští generace, napsané v Pythonu pro model nasazení prostředků správy.
+> Také si vyzkoušet [Azure CLI 2.0](https://github.com/Azure/azure-cli), rozhraní příkazového řádku příští generace, napsané v Pythonu pro model nasazení správy prostředků hello.
 >
 >
 
 ## <a name="managing-app-service-plans"></a>Správa služby App Service plány
 ### <a name="create-an-app-service-plan"></a>Vytvořit plán služby App Service
-Chcete-li vytvořit plán služby app service, použijte **vytvořit azure appserviceplan** příkaz.
+toocreate plán služby app service, použijte hello **vytvořit azure appserviceplan** příkaz.
 
-Následují popisy různé parametry:
+Následují popisy hello různé parametry:
 
-* **--resource-group**: skupinu prostředků, která zahrnuje tarifu nově vytvořené aplikace.
-* **– název**: název plánu služby app service.
+* **--resource-group**: skupinu prostředků, která zahrnuje hello nově vytvořený plán služby app service.
+* **– název**: název hello plán služby app service.
 * **--umístění**: umístění plánu služby app.
-* **--sku**: požadovanou cenovou sku (Možnosti jsou: F1 (Free). D1 (sdílené). B1 (základní malá), B2 (základní střední) a B3 (Basic velké). S1 (standardní malé), S2 (standardní střední) a S3 (standardní velké). P1 (malé Premium), P2 (střední Premium) a P3 (velké Premium).)
-* **--instancí**: počet pracovních procesů v aplikaci služby plán (výchozí hodnota je 1).
+* **--sku**: hello potřeby cenovou sku (hello možnosti jsou: F1 (zdarma). D1 (sdílené). B1 (základní malá), B2 (základní střední) a B3 (Basic velké). S1 (standardní malé), S2 (standardní střední) a S3 (standardní velké). P1 (malé Premium), P2 (střední Premium) a P3 (velké Premium).)
+* **--instancí**: hello počet pracovních procesů v plánu služby app hello (výchozí hodnota je 1).
 
-Příklad pro použití této rutiny:
+Příklad toouse tuto rutinu:
 
     azure appserviceplan create --name ContosoAppServicePlan --location "South Central US" --resource-group ContosoAzureResourceGroup --sku P1 --instances 10
 
 #### <a name="create-a-linux-app-service-plan"></a>Vytvoření plánu služby App Service pro Linux
 
-Používající stejný **vytvořit azure appserviceplan** příkazu se speciálním parametrem **– islinux true**. Všimněte si, omezení a oblastí, které jsou popsané v [Úvod do služby App Service v systému Linux](app-service-linux-intro.md)
+Pomocí stejné hello **vytvořit azure appserviceplan** příkazu s hello speciálním parametrem **– islinux true**. Všimněte si hello omezení a oblastí, které jsou popsané v [Úvod tooApp služby v systému Linux](app-service-linux-intro.md)
 
 ### <a name="list-existing-app-service-plans"></a>Seznam existující plán služby App Service
-K zobrazení seznamu existující plány služby aplikace, použijte **seznamu azure appserviceplan** příkaz.
+používat toolist hello existující aplikace služby plány **seznamu azure appserviceplan** příkaz.
 
-K zobrazení seznamu všech plánů služby app podle určité skupiny zdrojů, použijte:
+toolist všechny plány služby app v určité skupiny zdrojů, použijte:
 
     azure appserviceplan list --resource-group ContosoAzureResourceGroup
 
-Plán služby konkrétní aplikaci, použijte **zobrazit azure appserviceplan** příkaz:
+tooget plán služeb konkrétní aplikaci, použijte **zobrazit azure appserviceplan** příkaz:
 
     azure appserviceplan show --name ContosoAppServicePlan --resource-group southeastasia
 
 ### <a name="configure-an-existing-app-service-plan"></a>Konfigurace existující plán služby App Service
-Chcete-li změnit nastavení existujícího plánu služby app, použijte **konfigurace azure appserviceplan** příkaz. Můžete změnit sku a počet pracovních procesů 
+toochange hello nastavení existujícího plánu služby app, použijte hello **konfigurace azure appserviceplan** příkaz. Můžete změnit hello sku a hello počet pracovních procesů 
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1 --instances 9
 
 #### <a name="scaling-an-app-service-plan"></a>Škálování plán služby App Service
-Pokud chcete použít škálování, existující plán služby App Service, použijte:
+tooscale existující plán služby App Service, použijte:
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --instances 9
 
-#### <a name="changing-the-sku-of-an-app-service-plan"></a>Změna skladová položka plán služby App Service
-Chcete-li změnit sku systému existující plán služby App Service, použijte:
+#### <a name="changing-hello-sku-of-an-app-service-plan"></a>Změna hello skladová položka plánu služby App Service
+toochange skladová položka hello existující plán služby App Service, použijte:
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1
 
 
 ### <a name="delete-an-existing-app-service-plan"></a>Odstranit existující plán služby App Service
-Pokud chcete odstranit existující plán služby app service, musí všechny aplikace přiřazené přesunout ani neodstraní. Potom pomocí **odstranit azure webapp** příkaz můžete odstranit plán služby app service.
+toodelete existující plán služby app service, všechny přiřazené aplikace potřeba toobe nepřesunul nebo neodstranil nejdřív. Potom pomocí hello **odstranit azure webapp** příkaz odstraníte hello plán služby app service.
 
     azure appserviceplan delete --name ContosoAppServicePlan --resource-group southeastasia
 
 ## <a name="managing-app-service-apps"></a>Správa aplikací App Service
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
-Chcete-li vytvořit webovou aplikaci, použijte **vytvořit azure webapp** příkaz.
+toocreate webové aplikace, použijte hello **vytvořit azure webapp** příkaz.
 
-Následují popisy různé parametry:
+Následují popisy hello různé parametry:
 
-* **– název**: název webové aplikace.
-* **--plán**: název plánu služby použít k hostování webové aplikace.
-* **--resource-group**: skupinu prostředků, který je hostitelem plán služby App service.
-* **--umístění**: umístění webové aplikace.
+* **– název**: název webové aplikace hello.
+* **--plán**: název pro plán služby hello použít toohost hello webové aplikace.
+* **--resource-group**: skupinu prostředků, který je hostitelem hello plán služby App service.
+* **--umístění**: hello umístění webové aplikace.
 
-Příklad pro použití této rutiny:
+Příklad toouse tuto rutinu:
 
     azure webapp create --name ContosoWebApp --resource-group ContosoAzureResourceGroup --plan ContosoAppServicePlan --location "South Central US"
 
 ### <a name="delete-an-existing-app"></a>Odstraňte existující aplikace
-Chcete-li odstranit existující aplikaci, můžete použít **odstranit azure webapp** příkaz. Je třeba zadat název aplikace a název skupiny prostředků.
+toodelete existující aplikaci, můžete použít hello **odstranit azure webapp** příkaz. Potřebujete toospecify hello název aplikace hello a název skupiny prostředků hello.
 
     azure webapp delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 ### <a name="list-existing-apps"></a>Zobrazí seznam stávajících aplikací
-K zobrazení seznamu existující aplikace, použijte **azure webapp seznamu** příkaz.
+toolist hello existující aplikace, použijte hello **azure webapp seznamu** příkaz.
 
-K zobrazení seznamu všech aplikací v určité skupiny zdrojů, použijte:
+toolist všechny aplikace v určité skupiny zdrojů, použijte:
 
     azure webapp list --resource-group ContosoAzureResourceGroup
 
-Chcete-li získat konkrétní aplikaci, použijte **azure webapp zobrazit** příkaz.
+tooget konkrétní aplikaci, použijte hello **azure webapp zobrazit** příkaz.
 
     azure webapp show --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 ### <a name="configure-an-existing-app"></a>Konfigurace existující aplikace
-Chcete-li změnit nastavení a konfigurace pro existující aplikace, použijte **set config azure webapp** příkaz.
+toochange hello nastavení a konfigurace pro existující aplikace, použijte hello **set config azure webapp** příkaz.
 
-Příklad (1): změňte verzi php aplikace 
+Příklad (1): Změňte hello verzi php aplikace 
 
     azure webapp config set --name ContosoWebApp --resource-group ContosoAzureResourceGroup --phpversion 5.6
 
@@ -128,53 +128,53 @@ Příklad (2): Přidání nebo změna nastavení aplikace
 
     webapp config appsettings set --name ContosoWebApp --resource-group ContosoAzureResourceGroup appsetting1=appsetting1value,appsetting2=appsetting2value
 
-Potřebujete vědět, co může být jiná konfigurace změnit, použijte **konfigurace azure webapp nastavit -h** příkaz.
+tooknow ostatní konfigurace, které je možné změnit, použijte hello **konfigurace azure webapp nastavit -h** příkaz.
 
-### <a name="change-the-state-of-an-existing-app"></a>Změnit stav existující aplikace
+### <a name="change-hello-state-of-an-existing-app"></a>Změnit stav hello existující aplikace
 #### <a name="restart-an-app"></a>Restartujte aplikace
-Pokud chcete restartovat aplikaci, musíte zadat název a prostředek skupiny aplikace.
+toorestart na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.
 
     azure webapp restart --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 #### <a name="stop-an-app"></a>Zastavte aplikaci
-Chcete-li zastavit aplikaci, musíte zadat skupině název a prostředků pro aplikace.
+toostop na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.
 
     azure webapp stop --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 #### <a name="start-an-app"></a>Spuštění aplikace
-Chcete-li spustit aplikaci, musíte zadat skupině název a prostředků pro aplikace.
+toostart na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.
 
     azure webapp start --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 ### <a name="manage-publishing-profiles-of-an-app"></a>Správa profilů publikování aplikace
-Každá aplikace má profil publikování, kterou můžete použít k publikování vašeho kódu.
+Každá aplikace má profil publikování, které můžou být použité toopublish vašeho kódu.
 
 #### <a name="get-publishing-profile"></a>Získat profil publikování
-Profil publikování pro aplikaci, použijte:
+hello tooget publikování pro aplikaci, použijte profil:
 
     azure webapp publishingprofile --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-Tento příkaz vrátí publikování profil uživatelské jméno a heslo na příkazový řádek.
+Tento příkaz vrátí hello publikování profil uživatelské jméno a heslo toohello příkazového řádku.
 
 ### <a name="manage-app-hostnames"></a>Spravovat aplikace názvy hostitelů
-Chcete-li spravovat vazby názvů hostitelů pro vaši aplikaci, použijte **názvy hostitelů konfigurace azure webapp** příkaz  
+vazby názvů hostitelů toomanage pro vaši aplikaci, použijte hello **názvy hostitelů konfigurace azure webapp** příkaz  
 
 #### <a name="list-hostname-bindings"></a>Seznam vazby názvů hostitelů.
-Chcete-li získat aktuální vazby názvů hostitelů, pro aplikaci, použijte:
+tooget hello vazby na aktuální název hostitele pro aplikaci, použijte:
 
     azure webapp config hostnames list --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
 #### <a name="add-hostname-bindings"></a>Přidat vazby názvů hostitelů.
-Chcete-li do aplikace přidat vazby názvů hostitelů, použijte:
+tooadd hostname vazby tooan aplikace, použijte:
 
     azure webapp config hostnames add --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
 #### <a name="delete-hostname-bindings"></a>Odstranit vazby názvů hostitelů.
-Chcete-li odstranit vazby názvů hostitelů, použijte:
+toodelete vazby názvů hostitelů, použijte:
 
     azure webapp config hostnames delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o podpoře Azure Resource Manager CLI, najdete v části [používat rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
-* Další informace o správě služby App Service pomocí prostředí PowerShell najdete v tématu [Using Azure Resource Manager-Based prostředí PowerShell ke správě Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)
-* Další informace o službě Azure App Service v systému Linux najdete v tématu [Úvod do služby App Service v systému Linux](app-service-linux-intro.md)
+* toolearn týkající se podpory rozhraní příkazového řádku Azure Resource Manager, najdete v části [pomocí rozhraní příkazového řádku Azure toomanage hello Azure skupiny prostředků a prostředky.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+* toolearn o správě služby App Service pomocí prostředí PowerShell, najdete v části [tooManage Using Azure Resource Manager-Based prostředí PowerShell Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)
+* toolearn o službě Azure App Service pro systémy Linux, najdete v části [Úvod tooApp služby v systému Linux](app-service-linux-intro.md)

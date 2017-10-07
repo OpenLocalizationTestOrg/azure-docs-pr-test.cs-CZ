@@ -1,5 +1,5 @@
 ---
-title: "Kurzy na integraci aplikací SaaS pro použití s Azure AD | Microsoft Docs"
+title: "aaaSaaS kurzy integrace aplikace pro použití s Azure AD | Microsoft Docs"
 description: "Konfigurace Azure Active Directory jednu přihlašování integrace s různými software jiných výrobců jako aplikace služby."
 services: active-directory
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.date: 06/21/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 5bedead730e0538c4cad464a9aee7f97a5a8c3ef
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d99ec50ac2db52ab0f8547b2caaac19fd3a5a0d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integraci aplikací SaaS s Azure Active Directory
 
-Můžete integrovat vaši povolenou podporu cloudu [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) aplikací s Azure Active Directory, Vyvinuli jsme kolekce návodů, které vás provede procesem konfigurace.
+toohelp integrovat váš povolenou podporu cloudu [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) aplikací s Azure Active Directory, Vyvinuli jsme kolekce návodů, které vás provede procesem konfigurace.
 
-Kam máme zřizování pokyny pro uživatele, jsme zahrnuli kurzu aplikaci pro zřizování uživatelů v pravém sloupci vedle kurz aplikace.
+Kam máme zřizování pokyny pro uživatele, jsme zahrnuli kurzu aplikaci pro zřizování v pravém sloupci hello další kurz aplikace toohello uživatelů.
 
-Kompletní seznam aplikací SaaS, které byly předem integrované do služby Azure AD, najdete v článku [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
+Hello kompletní seznam aplikací SaaS, které byly předem integrované do služby Azure AD, najdete v části hello [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
 ## <a name="saas-tutorials"></a>Kurzy SaaS
 
@@ -68,7 +68,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask](active-directory-saas-autotaskworkplace-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_BambooHR.png)| [Bambus personálního oddělení](active-directory-saas-bamboo-hr-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/saasapp_bambubysproutsocial.png)| [Bambu podle sociálního výhonek](active-directory-saas-bambubysproutsocial-tutorial.md)|
-| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [BC v cloudu](active-directory-saas-bcinthecloud-tutorial.md)
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [BC v hello cloudu](active-directory-saas-bcinthecloud-tutorial.md)
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-beeline-tutorial.png)| [BeeLine](active-directory-saas-beeline-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-benefithub-tutorial.png)| [BenefitHub](active-directory-saas-benefithub-tutorial.md)
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Benefitssolver.png)| [Benefitsolver](active-directory-saas-benefitsolver-tutorial.md)|
@@ -349,7 +349,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/saasapp_teamphoria.png)| [Teamphoria](active-directory-saas-teamphoria-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_TeamSeer.png)| [TeamSeer](active-directory-saas-teamseer-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Teamwork.png)| [Týmovou spolupráci](active-directory-saas-teamwork-tutorial.md)
-| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-thefundingportal-tutorial.png)| [Portálu financování.](active-directory-saas-thefundingportal-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-thefundingportal-tutorial.png)| [Hello financovaní portálu](active-directory-saas-thefundingportal-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-thirdlight-tutorial.png)| [ThirdLight](active-directory-saas-thirdlight-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-thoughtworks-mingle-tutorial.png)| [Thoughtworks Mingle](active-directory-saas-thoughtworks-mingle-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-thousandeyes-tutorial.png)| [ThousandEyes](active-directory-saas-thousandeyes-tutorial.md)|
@@ -403,4 +403,4 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 ## <a name="related-articles"></a>Související články
 
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate aplikace SaaS](active-directory-saas-tutorial-list.md)

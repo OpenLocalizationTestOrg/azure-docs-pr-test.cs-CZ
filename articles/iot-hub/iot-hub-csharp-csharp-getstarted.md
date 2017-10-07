@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se službou Azure IoT Hub (.NET) | Dokumentace Microsoftu"
-description: "Zjistěte, jak odesílat zprávy typu zařízení-cloud do služby Azure IoT Hub pomocí sad IoT SDK pro .NET. Vytvořte simulované zařízení a aplikace služeb pro registraci vašeho zařízení, odesílání zpráv a čtení zpráv ze služby IoT Hub."
+title: "aaaGet spuštění s Azure IoT Hub (.NET) | Microsoft Docs"
+description: "Zjistěte, jak toosend zařízení cloud zprávy tooAzure IoT Hub pomocí sady SDK služby IoT pro .NET. Vytvoření simulovaného zařízení a služby aplikace tooregister zařízení, odesílání zpráv a čtení zpráv ze služby IoT hub."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,66 +15,66 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69296eb9ac2a74a97b632d27733a6a06500b4abd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 56cf14687411898ea0fa4ebb1782e18b3930809c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-net"></a>Připojení zařízení ke službě IoT Hub pomocí .NET
+# <a name="connect-your-device-tooyour-iot-hub-using-net"></a>Připojení zařízení tooyour IoT hub pomocí rozhraní .NET
 
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Na konci tohoto kurzu budete mít tři konzolové aplikace .NET:
+Na konci hello tohoto kurzu máte tři aplikace konzoly .NET:
 
-* **CreateDeviceIdentity** vytváří identitu zařízení a přidružený klíč zabezpečení k připojení aplikace pro zařízení.
-* **ReadDeviceToCloudMessages** zobrazuje telemetrická data odesílaná aplikací pro zařízení.
-* **SimulatedDevice** propojuje službu IoT Hub s dříve vytvořenou identitou zařízení a každou druhou sekundu zasílá telemetrickou zprávu pomocí protokolu MQTT.
+* **CreateDeviceIdentity**, který vytvoří identitu zařízení a přiřazený bezpečnostní klíč tooconnect aplikace zařízení.
+* **ReadDeviceToCloudMessages**, který zobrazuje hello telemetrické zprávy odesílané aplikace zařízení.
+* **SimulatedDevice**, který připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello a odešle zprávu telemetrie každou sekundu pomocí protokolu MQTT hello.
 
-Řešení Visual Studio, které obsahuje tyto tři aplikace z Githubu, si můžete stáhnout nebo naklonovat.
+Můžete stáhnout nebo naklonovat hello řešení sady Visual Studio, který obsahuje tři aplikace hello z Githubu.
 
 ```bash
 git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-client-app.git
 ```
 
 > [!NOTE]
-> Informace o sadách SDK služby Azure IoT Hub, s jejichž pomocí můžete sestavit aplikace, které poběží v zařízení, i back-end vašeho řešení, najdete v tématu [Sady SDK služby IoT Hub][lnk-hub-sdks].
+> Informace o hello SDK služby Azure IoT, které můžete použít toobuild toorun aplikace na zařízení a back-end vašeho řešení, najdete v části [SDK služby Azure IoT][lnk-hub-sdks].
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
 * Visual Studio 2015 nebo Visual Studio 2017.
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Nyní jste vytvořili službu IoT Hub a máte název hostitele a připojovací řetězec služby IoT Hub, které potřebujete k dokončení kurzu.
+Nyní jste vytvořili službu IoT hub a máte název hostitele hello a připojovací řetězec služby IoT Hub, je nutné, aby toocomplete hello zbytek tohoto kurzu.
 
 <a id="DeviceIdentity_csharp"></a>
 [!INCLUDE [iot-hub-get-started-create-device-identity-csharp](../../includes/iot-hub-get-started-create-device-identity-csharp.md)]
 
 <a id="D2C_csharp"></a>
 ## <a name="receive-device-to-cloud-messages"></a>Příjem zpráv typu zařízení-cloud
-V této části vytvoříte konzolovou aplikaci .NET, která čte zprávy typu zařízení-cloud ze služby IoT Hub. Služba IoT Hub zpřístupní koncový bod kompatibilní se službou [Azure Event Hubs][lnk-event-hubs-overview], který vám umožní číst zprávy typu zařízení-cloud. Z důvodu zjednodušení vytvoří tento kurz jednoduchou čtečku, která není vhodná pro vysoce výkonná nasazení. Další informace o tom, jak zpracovávat škálované zprávy typu zařízení-cloud, najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial]. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial]. (Tento kurz se vztahuje na koncové body kompatibilní se službou IoT Hub Event Hub.)
+V této části vytvoříte konzolovou aplikaci .NET, která čte zprávy typu zařízení-cloud ze služby IoT Hub. IoT hub zpřístupní [Azure Event Hubs][lnk-event-hubs-overview]-koncový bod kompatibilní tooenable jste tooread zpráv typu zařízení cloud. věcí tookeep jednoduchý, v tomto kurzu vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení. toolearn jak tooprocess zařízení cloud zpráv ve velkém měřítku, najdete v části hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurzu. Další informace o tom, jak tooprocess zpráv ze služby Event Hubs naleznete v tématu hello [Začínáme se službou Event Hubs] [ lnk-eventhubs-tutorial] kurzu. (V tomto kurzu je koncových bodů použít toohello kompatibilní s centrem událostí služby IoT Hub.)
 
 > [!NOTE]
-> Koncový bod kompatibilní s centrem událostí pro čtení zpráv mezi zařízením a cloudem vždy používá protokol AMQP.
+> Hello koncový bod kompatibilní s centrem událostí pro čtení zpráv typu zařízení cloud vždy používá protokol AMQP hello.
 
-1. V sadě Visual Studio přidejte ke stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)**. Zkontrolujte, zda máte verzi rozhraní .NET Framework 4.5.1 nebo novější. Projekt nazvěte **ReadDeviceToCloudMessages**.
+1. V sadě Visual Studio, přidejte Visual C# Windows klasický desktopový projekt toohello aktuální řešení, pomocí hello **konzolovou aplikaci (rozhraní .NET Framework)** šablona projektu. Zkontrolujte, zda je hello verze rozhraní .NET Framework 4.5.1 nebo novější. Název projektu hello **ReadDeviceToCloudMessages**.
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows][10a]
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt **ReadDeviceToCloudMessages** a potom klikněte na tlačítko **Spravovat balíčky NuGet**.
+2. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ReadDeviceToCloudMessages** projektu a pak klikněte na **spravovat balíčky NuGet**.
 
-3. V okně **Správce balíčků NuGet** vyhledejte **WindowsAzure.ServiceBus**, vyberte možnost **Instalovat** a přijměte podmínky používání. Tímto postupem se stáhne a nainstaluje služba [Azure Service Bus][lnk-servicebus-nuget] a všechny její závislosti a přidá se na ni odkaz. Tento balíček umožní aplikaci připojení ke koncovému bodu kompatibilnímu se službou Event Hubs ve službě IoT Hub.
+3. V hello **Správce balíčků NuGet** vyhledejte **WindowsAzure.ServiceBus**, vyberte **nainstalovat**a přijměte podmínky použití hello. Tento postup stáhne, nainstaluje a přidá odkaz příliš[Azure Service Bus][lnk-servicebus-nuget], se všemi jeho závislostmi. Tento balíček umožní koncový bod hello aplikace tooconnect toohello kompatibilní s centrem událostí ve službě IoT hub.
 
-4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+4. Přidejte následující hello `using` příkazy hello horní části hello **Program.cs** souboru:
 
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     using System.Threading;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem pro službu IoT Hub, kterou jste vytvořili v části Vytvoření služby IoT Hub.
+5. Přidejte následující pole toohello hello **Program** třídy. Nahraďte hodnotu zástupného symbolu hello hello připojovací řetězec služby IoT Hub pro hello rozbočovače, kterou jste vytvořili v části "Vytvoření služby IoT hub" hello.
 
     ```csharp
     static string connectionString = "{iothub connection string}";
@@ -82,7 +82,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která čte zprávy typu z
     static EventHubClient eventHubClient;
     ```
 
-6. Přidejte následující metodu do třídy **Program**:
+6. Přidejte následující metodu toohello hello **Program** třídy:
 
     ```csharp
     private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
@@ -100,12 +100,12 @@ V této části vytvoříte konzolovou aplikaci .NET, která čte zprávy typu z
     }
     ```
 
-    Tato metoda používá instanci **EventHubReceiver** k příjmu zpráv ze všech oddílů pro příjem zpráv typu zařízení-cloud ve službě IoT Hub: Všimněte si, jak při vytváření objektu **EventHubReceiver** předáte parametr `DateTime.Now`, aby objekt přijímal pouze zprávy odeslané po spuštění. Tento filtr je užitečný v testovacím prostředí, protože uvidíte aktuální sadu zpráv. V produkčním prostředí byste se měli ujistit, že váš kód zpracovává všechny zprávy. Další informace najdete v kurzu [Postupy zpracování zpráv typu zařízení-cloud ve službě IoT Hub][lnk-process-d2c-tutorial].
+    Tato metoda používá **EventHubReceiver** instance tooreceive zprávy ze všech hello IoT hub zařízení cloud přijímat oddíly. Všimněte si, jak předat `DateTime.Now` parametr při vytváření hello **EventHubReceiver** objektu, tak, aby přijímal pouze zprávy odeslané po spuštění. Tento filtr je užitečné v testovacím prostředí, takže uvidíte aktuální sadu zpráv hello. V produkčním prostředí měli kód zpracovávat všechny zprávy hello. Další informace najdete v tématu hello kurzu [jak tooprocess zpráv typu zařízení cloud IoT Hub][lnk-process-d2c-tutorial].
 
-7. Nakonec do metody **Main** přidejte následující řádky:
+7. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
 
     ```csharp
-    Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
+    Console.WriteLine("Receive messages. Ctrl-C tooexit.\n");
     eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
 
     var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
@@ -129,24 +129,24 @@ V této části vytvoříte konzolovou aplikaci .NET, která čte zprávy typu z
 
 ## <a name="create-a-device-app"></a>Vytvoření aplikace pro zařízení
 
-V této části vytvoříte konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-cloud do služby IoT Hub.
+V této části vytvoříte konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení cloud tooan IoT hub.
 
-1. V sadě Visual Studio přidejte ke stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)**. Zkontrolujte, zda máte verzi rozhraní .NET Framework 4.5.1 nebo novější. Projekt pojmenujte **SimulatedDevice**.
+1. V sadě Visual Studio, přidejte Visual C# Windows klasický desktopový projekt toohello aktuální řešení, pomocí hello **konzolovou aplikaci (rozhraní .NET Framework)** šablona projektu. Zkontrolujte, zda je hello verze rozhraní .NET Framework 4.5.1 nebo novější. Název projektu hello **SimulatedDevice**.
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows][10b]
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt **SimulatedDevice** a potom klikněte na tlačítko **Spravovat balíčky NuGet**.
+2. V Průzkumníku řešení klikněte pravým tlačítkem na hello **SimulatedDevice** projektu a pak klikněte na **spravovat balíčky NuGet**.
 
-3. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **Microsoft.Azure.Devices.Client**, vyberte možnost **Instalovat**, nainstalujte balíček  **Microsoft.Azure.Devices.Client** a přijměte podmínky používání. Tímto postupem se stáhne a nainstaluje [balíček NuGet sady SDK pro zařízení Azure IoT][lnk-device-nuget] a jeho závislosti a přidá se na něj odkaz.
+3. V hello **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **Microsoft.Azure.Devices.Client**, vyberte **nainstalovat** tooinstall hello **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití hello. Tento postup stáhne, nainstaluje a přidá odkaz toohello [balíček NuGet sady SDK pro zařízení Azure IoT] [ lnk-device-nuget] a jeho závislosti.
 
-4. Do horní části souboru **Program.cs** přidejte následující příkaz `using`:
+4. Přidejte následující hello `using` příkaz hello horní části hello **Program.cs** souboru:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Newtonsoft.Json;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte `{iot hub hostname}` názvem hostitel centra IoT, který jste získali v části Vytvoření centra IoT. Nahraďte `{device key}` klíčem zařízení, který jste získali v části Vytvoření identity zařízení.
+5. Přidejte následující pole toohello hello **Program** třídy. SUBSTITUTE `{iot hub hostname}` hello IoT hub názvem hostitele, který jste získali v části "Vytvoření služby IoT hub" hello. SUBSTITUTE `{device key}` klíčem hello zařízení, který jste získali v části "Vytvoření identity zařízení" hello.
 
     ```csharp
     static DeviceClient deviceClient;
@@ -154,7 +154,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která simuluje zařízen�
     static string deviceKey = "{device key}";
     ```
 
-6. Přidejte následující metodu do třídy **Program**:
+6. Přidejte následující metodu toohello hello **Program** třídy:
 
     ```csharp
     private static async void SendDeviceToCloudMessagesAsync()
@@ -188,9 +188,9 @@ V této části vytvoříte konzolovou aplikaci .NET, která simuluje zařízen�
     }
     ```
 
-    Tato metoda odesílá novou zprávu typu zařízení-cloud každou sekundu. Zpráva obsahuje objekt serializovaný do formátu JSON, s ID zařízení a náhodně generovanými čísly, který simuluje snímač teploty a snímač vlhkosti.
+    Tato metoda odesílá novou zprávu typu zařízení-cloud každou sekundu. Hello zpráva obsahuje objekt serializovaný JSON, s ID zařízení hello a náhodně vygenerované čísla toosimulate senzor teploty a vlhkosti senzoru.
 
-7. Nakonec do metody **Main** přidejte následující řádky:
+7. Nakonec přidejte následující řádky toohello hello **hlavní** metoda:
 
     ```csharp
     Console.WriteLine("Simulated device\n");
@@ -200,40 +200,40 @@ V této části vytvoříte konzolovou aplikaci .NET, která simuluje zařízen�
     Console.ReadLine();
     ```
 
-    Ve výchozím nastavení metoda **Create** v aplikaci .NET Framework vytvoří instanci **DeviceClient**, která se službou IoT Hub komunikuje pomocí protokolu AMQP. Pokud chcete používat protokol MQTT nebo HTTP, použijte přepis metody **Create**, který umožňuje určit protokol. Klienti UPW a PCL ve výchozím nastavení používají protokol HTTP. Pokud používáte protokol HTTP, měli byste do svého projektu přidat také balíček NuGet **Microsoft.AspNet.WebApi.Client**, aby projekt zahrnoval obor názvů **System.Net.Http.Formatting**.
+    Ve výchozím nastavení, hello **vytvořit** metoda v rozhraní .NET Framework aplikace vytvoří **DeviceClient** instanci, která používá toocommunicate protokol AMQP hello službou IoT Hub. hello toouse protokol MQTT nebo HTTP, používat hello přepsání hello **vytvořit** metoda, která vám umožní toospecify hello protokolu. UWP a PCL klienti používat protokol HTTP hello ve výchozím nastavení. Pokud používáte protokol hello HTTP, měli byste také přidat hello **Microsoft.AspNet.WebApi.Client** NuGet balíček tooyour projektu tooinclude hello **System.Net.Http.Formatting** oboru názvů.
 
-Tento kurz vás provede postupem vytvoření aplikace pro zařízení služby IoT Hub. K přidání nezbytného kódu do aplikace zařízení můžete také použít rozšíření [Připojená služba pro službu Azure IoT Hub][lnk-connected-service] sady Visual Studio.
+Tento kurz vás provede kroky toocreate hello služby IoT Hub zařízení aplikaci. Můžete taky hello [připojená služba pro službu Azure IoT Hub] [ lnk-connected-service] tooadd rozšíření sady Visual Studio, hello aplikaci zařízení tooyour nezbytného kódu.
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.
+> věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN hello [přechodných chyb][lnk-transient-faults].
 
-## <a name="run-the-apps"></a>Spouštění aplikací
+## <a name="run-hello-apps"></a>Spuštění aplikace hello
 
-Nyní jste připraveni aplikaci spustit.
+Nyní je připraven toorun hello aplikace.
 
-1. V sadě Visual Studio v Průzkumníku řešení klikněte pravým tlačítkem na řešení a potom klikněte na tlačítko **Nastavit projekty po spuštění**. Vyberte možnost **Více projektů po spuštění** a poté příkaz **Spustit** jako akci pro oba projekty **ReadDeviceToCloudMessages** a **SimulatedDevice**.
+1. V sadě Visual Studio v Průzkumníku řešení klikněte pravým tlačítkem na řešení a potom klikněte na tlačítko **Nastavit projekty po spuštění**. Vyberte **více projektů po spuštění**a potom vyberte **spustit** jako hello akci pro oba hello **ReadDeviceToCloudMessages** a **SimulatedDevice** projekty.
 
     ![Vlastnosti projektu po spuštění][41]
 
-2. Stisknutím klávesy **F5** spusťte obě aplikace. Výstup konzoly z aplikace **SimulatedDevice** zobrazuje zprávy, které aplikace pro zařízení odesílá do služby IoT Hub. Výstup konzoly z aplikace **ReadDeviceToCloudMessages** zobrazuje zprávy, které služba IoT Hub přijímá.
+2. Stiskněte klávesu **F5** toostart obě aplikace. výstup konzoly z hello Hello **SimulatedDevice** zprávy hello aplikace zobrazí vaše aplikace zařízení odesílá tooyour IoT hub. výstup konzoly z hello Hello **ReadDeviceToCloudMessages** aplikace zobrazí hello zprávy, které IoT hub přijímá.
 
     ![Výstup konzoly z aplikací][42]
 
-3. Na dlaždici **Využití** na webu [Azure Portal][lnk-portal] se zobrazuje počet zpráv odeslaných do služby IoT Hub:
+3. Hello **využití** dlaždici v hello [portál Azure] [ lnk-portal] ukazuje hello počet zpráv odeslaných toohello služby IoT hub:
 
     ![Dlaždice Využití na portálu Azure Portal][43]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste na webu Azure Portal nakonfigurovali službu IoT Hub a pak jste v registru identit této služby vytvořili identitu zařízení. Pomocí identity zařízení jste aplikaci pro zařízení povolili odesílání zpráv typu zařízení-cloud do služby IoT Hub. Také jste vytvořili aplikaci, která zobrazuje zprávy přijaté službou IoT Hub.
+V tomto kurzu jste nakonfigurovali služby IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Použili jste toto zařízení identity tooenable hello zařízení aplikaci toosend zpráv typu zařízení cloud toohello Centrum IoT. Můžete také vytvořit aplikaci, která zobrazuje hello zprávy přijaté službou hello IoT hub.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
+toocontinue Začínáme se službou IoT Hub a tooexplore najdete v dalších scénářů platformy IoT:
 
 * [Připojení zařízení][lnk-connect-device]
 * [Začínáme se správou zařízení][lnk-device-management]
 * [Začínáme se službou IoT Edge][lnk-iot-edge]
 
-Další informace o tom, jak rozšířit vaše řešení internetu věcí a zpracovávat škálované zprávy typu zařízení-cloud, najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial].
+toolearn jak tooextend zpráv IoT řešení a proces zařízení cloud ve velkém měřítku, najdete v části hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurzu.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

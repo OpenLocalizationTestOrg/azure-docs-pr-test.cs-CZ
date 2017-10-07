@@ -1,5 +1,5 @@
 ---
-title: "Ukázka skriptu rozhraní příkazového řádku Azure - odstranění Azure Redis Cache | Microsoft Docs"
+title: "Odstranit aaaAzure ukázka skriptu rozhraní příkazového řádku - Azure Redis Cache | Microsoft Docs"
 description: "Ukázka skriptu rozhraní příkazového řádku Azure - odstranění Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: f959823b3a7c5b0262f693ecad1e6efc4eec4f35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 788277f6464d40fedc597ce7f3041130312c07a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="delete-an-azure-redis-cache"></a>Odstranit Azure Redis Cache
 
-V tomto scénáři zjistěte, jak odstranit Azure Redis Cache.
+V tomto scénáři zjistíte, jak toodelete Azure Redis mezipaměti.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli[hlavní](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Redis Cache")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/delete-cache/delete-cache.sh "Azure Redis Cache")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy odstranit instanci služby Azure Redis Cache. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy toodelete instanci služby Azure Redis Cache. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -44,6 +44,6 @@ Tento skript používá následující příkazy odstranit instanci služby Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další ukázky skriptu Azure Redis Cache rozhraní příkazového řádku najdete v [dokumentace k Azure Redis Cache](../cli-samples.md).
+Další ukázky skriptu Azure Redis Cache rozhraní příkazového řádku najdete v hello [dokumentace k Azure Redis Cache](../cli-samples.md).

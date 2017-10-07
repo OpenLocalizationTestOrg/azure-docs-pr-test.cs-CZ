@@ -1,6 +1,6 @@
 ---
-title: "Uložit sestav v Azure Power BI Embedded | Microsoft Docs"
-description: "Informace o ukládání sestavy v rámci Power BI embedded. To vyžaduje příslušná oprávnění, aby bylo možné správně fungovat."
+title: aaaSave sestav v Azure Power BI Embedded | Microsoft Docs
+description: "Zjistěte, jak toosave sestavy v rámci Power BI embedded. To vyžaduje příslušná oprávnění v pořadí toowork úspěšně."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: ad895004cc2972f2ded81566186325a16d401151
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 984537ce1ce1afc787d6c6c9f61ae8d6226d1171
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="save-reports-in-power-bi-embedded"></a>Uložení sestavy v Power BI Embedded
 
-Informace o ukládání sestavy v rámci Power BI embedded. To vyžaduje příslušná oprávnění, aby bylo možné správně fungovat.
+Zjistěte, jak toosave sestavy v rámci Power BI embedded. To vyžaduje příslušná oprávnění v pořadí toowork úspěšně.
 
-V rámci Power BI Embedded můžete upravit existující sestavy a uložíte. Můžete také vytvořit novou sestavu a uložit jako novou sestavu k jeho vytvoření.
+V rámci Power BI Embedded můžete upravit existující sestavy a uložíte. Můžete také vytvořit novou sestavu a uložit jako novou sestavu toocreate, jeden.
 
-Chcete-li uložit sestavu musíte nejprve vytvořit token pro konkrétní sestavu s správné rozsahy:
+V pořadí toosave sestavy je nutné nejprve toocreate token hello konkrétní sestavy s obory správné hello:
 
-* Chcete-li povolit ukládání Report.ReadWrite obor je požadován
-* Chcete-li uložit jako, jsou požadovány Report.Read a Workspace.Report.Copy oborů
-* Chcete-li uložit a uložit jako, Report.ReadWrite a Workspace.Report.Copy jsou vyžadován
+* je vyžadován tooenable uložit Report.ReadWrite oboru
+* tooenable uložit jako, Report.Read a Workspace.Report.Copy obory jsou požadovány
+* Uložit tooenable a uložit jako, Report.ReadWrite a Workspace.Report.Copy jsou vyžadován
 
-V uvedeném pořadí, aby bylo možné povolit právo uložit nebo uložit jako tlačítka v nabídce soubor potřebujete poskytovat správné oprávnění v konfiguraci vložení při vložení sestavy:
+V uvedeném pořadí v pořadí tooenable hello správné uložit nebo uložit jako tlačítek v nabídce Soubor můžete potřebovat tooprovide hello pravým oprávnění v konfiguraci vložení hello když jste vložení hello sestavy:
 
 * modely. Permissions.ReadWrite
 * modely. Permissions.Copy
 * modely. Permissions.All
 
 > [!NOTE]
-> Přístupový token musí také odpovídající obory. Další informace najdete v tématu [obory](power-bi-embedded-app-token-flow.md#scopes).
+> Přístupový token musí také odpovídající obory hello. Další informace najdete v tématu [obory](power-bi-embedded-app-token-flow.md#scopes).
 
 ## <a name="embed-report-in-edit-mode"></a>Vložení sestavy v režimu úprav
 
-Řekněme, že chcete v režimu úprav uvnitř vaší aplikace, Uděláte to tak, aby předat vlastnosti oprávnění v konfiguraci vložení a volání powerbi.embed() vložení sestavy. Budete muset zadat oprávnění a viewMode, chcete-li zobrazit uložení a uložit jako tlačítka, když v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Umožňuje například chcete tooEmbed sestavu v režimu úprav uvnitř vaší aplikace, toodo tak, aby předat vlastnosti oprávnění hello v konfiguraci vložení a volání powerbi.embed(). Budete potřebovat oprávnění toosupply a viewMode v pořadí toosee hello uložit a uložit jako tlačítka v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Například v jazyce JavaScript:
 
@@ -54,7 +54,7 @@ Například v jazyce JavaScript:
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,10 +71,10 @@ Například v jazyce JavaScript:
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
@@ -82,10 +82,10 @@ Nyní sestavy budou vloženy do vaší aplikace v režimu úprav.
 
 ## <a name="save-report"></a>Uloží sestavu
 
-Po Embbeding upravit sestavu v režimu se správné token a oprávnění můžete uložit sestavu v nabídce Soubor nebo z javascript:
+Po upravit Embbeding hello sestavy v režimu se oprávnění a práva tokenu hello hello sestavu můžete uložit z nabídky Soubor hello nebo pomocí jazyka javascript:
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
 
  // Save report
@@ -95,7 +95,7 @@ Po Embbeding upravit sestavu v režimu se správné token a oprávnění můžet
 ## <a name="save-as"></a>Uložit jako
 
 ```
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -107,9 +107,9 @@ Po Embbeding upravit sestavu v režimu se správné token a oprávnění můžet
 ```
 
 > [!IMPORTANT]
-> Až poté, co *uložit jako* je vytvoření nové sestavy. Po uložení se na plátno stále zobrazuje staré sestavu v režimu úprav a není novou sestavu. Musíte vložit novou sestavu, která byla vytvořena. To vyžaduje nový přístupový token, jako jsou vytvořené na sestavu.
+> Až poté, co *uložit jako* je vytvoření nové sestavy. Po uložení hello, plátno hello je stále zobrazující hello původní sestavy v upravit režim a není hello novou sestavu. Budete potřebovat hello tooembed novou se sestavu, která byla vytvořena. To vyžaduje nový přístupový token, jako jsou vytvořené na sestavu.
 
-Pak bude nutné načíst novou sestavu po *uložit jako*. To se podobá vkládání žádnou sestavu.
+Bude nutné tooload hello novou sestavu po *uložit jako*. To je podobné tooembedding žádnou sestavu.
 
 ```
 <div id="reportContainer"></div>
@@ -120,7 +120,7 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
@@ -135,5 +135,5 @@ var embedConfiguration = {
 [Ověřování a autorizace v Power BI Embedded](power-bi-embedded-app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Zkuste hello komunitě Power BI](http://community.powerbi.com/)
 

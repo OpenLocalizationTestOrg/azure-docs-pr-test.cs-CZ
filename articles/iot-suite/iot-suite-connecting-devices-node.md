@@ -1,6 +1,6 @@
 ---
-title: "Připojení zařízení pomocí Node.js | Microsoft Docs"
-description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js."
+title: "aaaConnect zařízení pomocí Node.js | Microsoft Docs"
+description: "Popisuje, jak tooconnect toohello zařízení Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 6459b6196eb7f4a083b67e5a421bcc0d51d39e5c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 80bf2b70f15f539bfce4f135d533c46dd2b3f5a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Node.js)
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-nodejs"></a>Připojit vaše zařízení toohello (Node.js) předkonfigurovanému řešení vzdáleného monitorování
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="create-a-nodejs-sample-solution"></a>Vytvoření ukázkové řešení node.js
 
-Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývojovém počítači. Můžete spustit `node --version` na příkazovém řádku, které chcete zkontrolovat verzi.
+Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývojovém počítači. Můžete spustit `node --version` hello příkazového řádku toocheck hello verzi.
 
-1. Vytvořte složku s názvem **RemoteMonitoring** na vývojovém počítači. Přejděte do této složky ve vašem prostředí příkazového řádku.
+1. Vytvořte složku s názvem **RemoteMonitoring** na vývojovém počítači. Přejděte toothis složky ve vašem prostředí příkazového řádku.
 
-1. Spusťte následující příkazy ke stažení a instalaci balíčků, že které potřebujete k dokončení ukázkovou aplikaci:
+1. Spuštění hello následující příkazy toodownload a nainstalovat balíčky hello potřebujete toocomplete hello ukázkovou aplikaci:
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. V **RemoteMonitoring** složky, vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
+1. V hello **RemoteMonitoring** složky, vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
 
-1. V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:
+1. V hello **remote_monitoring.js** soubor, přidejte následující hello `require` příkazy:
 
     ```nodejs
     'use strict';
@@ -50,14 +50,14 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     var Message = require('azure-iot-device').Message;
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte zástupné hodnoty [Device Id] (ID zařízení) a [Device Key] (Klíč zařízení) hodnotami, které jste si pro své zařízení poznamenali na řídicím panelu řešení vzdáleného monitorování. K nahrazení hodnoty [IoTHub Name] (Název služby IoT Hub) použijte název hostitele služby IoT Hub z řídicího panelu řešení. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
+1. Přidejte následující deklarace proměnných po hello hello `require` příkazy. Nahraďte zástupný symbol hodnoty hello [Id zařízení] a [klíč zařízení] s hodnotami, které jste si poznamenali pro vaše zařízení v panelu řešení vzdáleného monitorování hello. Použijte hello název hostitele centra IoT z tooreplace řídicí panel řešení hello [IoTHub Name]. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
 
     ```nodejs
     var connectionString = 'HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Přidejte následující proměnné na definovat některé základní telemetrická data:
+1. Přidejte následující proměnné toodefine hello některé základní telemetrická data:
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +65,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     var externalTemperature = 55;
     ```
 
-1. Přidejte následující podpůrná funkce Tisknout výsledky operace:
+1. Přidejte následující výsledky operace tooprint pomocné funkce hello:
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +75,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující pomocné funkce sloužící k náhodné telemetrie hodnoty:
+1. Přidejte následující pomocné funkce toouse toorandomize hello telemetrie hodnoty hello:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +83,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující definice pro **DeviceInfo** objektu zařízení odesílá při spuštění:
+1. Přidejte následující definice hello hello **DeviceInfo** objekt hello zařízení odesílá při spuštění:
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +97,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     };
     ```
 
-1. Přidejte následující definice dvojče zařízení hlášené hodnoty. Tato definice obsahuje popisy přímé metod, které podporuje zařízení:
+1. Přidejte následující hello Definice dvojče zařízení hello hlášené hodnoty. Tato definice obsahuje popisy hello přímé metod, které podporuje hello zařízení:
 
     ```nodejs
     var reportedProperties = {
@@ -126,62 +126,62 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
             "Longitude": -122.125497
         },
         "SupportedMethods": {
-            "Reboot": "Reboot the device",
-            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file"
+            "Reboot": "Reboot hello device",
+            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI toospecifiy hello URI of hello firmware file"
         },
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **restartovat** přímé volání metody:
+1. Přidejte následující funkce toohandle hello hello **restartovat** přímé volání metody:
 
     ```nodejs
     function onReboot(request, response) {
         // Implement actual logic here.
         console.log('Simulated reboot...');
 
-        // Complete the response
+        // Complete hello response
         response.send(200, "Rebooting device", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **InitiateFirmwareUpdate** přímé volání metody. Tato metoda přímé používá parametr k určení umístění bitové kopie firmware ke stažení a iniciuje firmwaru v zařízení asynchronní aktualizace:
+1. Přidejte následující funkce toohandle hello hello **InitiateFirmwareUpdate** přímé volání metody. Tato metoda přímé používá parametr toospecify hello umístění ve hello firmware image toodownload a iniciuje asynchronní hello aktualizaci firmwaru na hello zařízení:
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
         console.log('Simulated firmware update initiated, using: ' + request.payload.FwPackageURI);
 
-        // Complete the response
+        // Complete hello response
         response.send(200, "Firmware update initiated", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
 
-        // Add logic here to perform the firmware update asynchronously
+        // Add logic here tooperform hello firmware update asynchronously
     }
     ```
 
-1. Přidejte následující kód k vytvoření instance klienta:
+1. Přidejte následující kód toocreate instanci klienta hello:
 
     ```nodejs
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-1. Přidejte následující kód do:
+1. Přidejte následující kód do hello:
 
-    * Otevření připojení.
-    * Odeslat **DeviceInfo** objektu.
+    * Otevře připojení hello.
+    * Odeslat hello **DeviceInfo** objektu.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
     * Odešlete oznámenou vlastnosti.
-    * Zaregistrujte obslužné rutiny pro přímé metody.
+    * Zaregistrujte obslužné rutiny pro přímé metody hello.
     * Zahájit odesílání telemetrie.
 
     ```nodejs
@@ -242,9 +242,9 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     });
     ```
 
-1. Uložit změny **remote_monitoring.js** souboru.
+1. Uložit změny toohello hello **remote_monitoring.js** souboru.
 
-1. Spusťte následující příkaz na příkazovém řádku spusťte ukázkovou aplikaci:
+1. Spusťte následující příkaz v příkazovém řádku toolaunch hello ukázkové aplikace hello:
    
     ```
     node remote_monitoring.js

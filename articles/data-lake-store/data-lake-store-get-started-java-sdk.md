@@ -1,6 +1,6 @@
 ---
-title: "Vývoj aplikací pro Azure Data Lake Store pomocí Java SDK | Dokumentace Microsoftu"
-description: "Přečtěte si, jak pomocí Azure Data Lake Store Java SDK vytvořit účet Data Lake Store a provádět další základní operace."
+title: aaaUse hello sady Java SDK toodevelop aplikace v Azure Data Lake Store | Microsoft Docs
+description: "Pomocí Azure Data Lake Store Java SDK toocreate účtu Data Lake Store a provádění základních operací v Data Lake Store hello"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 91128b53a2f1cd3ddcbee5b07da0d67668944fb4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3bcee449c2a2a4bd2f7b241af46ecc010b6b62e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-java"></a>Začínáme s Azure Data Lake Store pomocí jazyka Java
 > [!div class="op_single_selector"]
@@ -33,32 +33,32 @@ ms.lasthandoff: 07/11/2017
 >
 > 
 
-Naučte se používat sadu Java SDK pro Azure Data Lake Store k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Store](data-lake-store-overview.md).
+Zjistěte, jak toouse hello Azure Data Lake Store Java SDK tooperform základních operací, jako vytváření složek, nahrávání a stahování datových souborů atd. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Store](data-lake-store-overview.md).
 
-Dokumentaci rozhraní API sady Java SDK pro Azure Data Lake Store najdete v tématu [Dokumentace rozhraní API sady Java SDK pro Azure Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Dostanete hello dokumentace rozhraní API Java SDK pro Azure Data Lake Store v [dokumentace rozhraní API služby Azure Data Lake Store Java](https://azure.github.io/azure-data-lake-store-java/javadoc/).
 
 ## <a name="prerequisites"></a>Požadavky
 * Java Development Kit (JDK 7 nebo vyšší s využitím Java verze 1.7 nebo vyšší)
-* Účet Azure Data Lake Store. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md).
-* [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. I když je možné sestavení vytvářet bez použití systému pro sestavení, jako je Maven a Gradle, tyto systémy podstatně usnadňují správu závislostí.
+* Účet Azure Data Lake Store. Postupujte podle pokynů hello [Začínáme s Azure Data Lake Store pomocí portálu Azure hello](data-lake-store-get-started-portal.md).
+* [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. Přestože je možné toobuild bez použití systém sestavení jako Maven nebo Gradle, zkontrolujte tyto systémy je mnohem snazší toomanage závislosti.
 * (Volitelné) Rozhraní IDE, jako je například [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) nebo [Eclipse](https://www.eclipse.org/downloads/) nebo podobné.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Jak můžu ověřovat pomocí služby Azure Active Directory?
-V tomto kurzu používáme tajný kód klienta aplikace Azure AD k načtení tokenu Azure Active Directory (ověřování mezi službami). Tento token používáme k vytvoření objektu klienta služby Data Lake Store k provádění operací operačních souborů a adresářů. Abychom mohli ukázat postup ověřování pomocí služby Azure Data Lake Store za použití sdíleného tajného kódu klienta, provedeme následující základní kroky:
+V tomto kurzu budeme používat Azure AD aplikace klienta tajný tooretrieve tokenu Azure Active Directory (service-to-service ověřování). Používáme tento token toocreate soubor Data Lake Store klienta objektu tooperform operací a operací directory. Návod, jak tooauthenticate s Azure Data Lake Store pomocí hello tajný klíč klienta jsme proveďte následující postup vysoké úrovně hello:
 
 1. Vytvoření webové aplikace Azure AD
-2. Načtení ID klienta, tajného kódu klienta a koncového bodu tokenu pro webovou aplikaci Azure AD
-3. Konfigurace přístupu pro webovou aplikaci Azure AD pro soubor nebo složku služby Data Lake Store, ke kterým chcete získat přístup z aplikace Java, kterou vytváříte
+2. Načtení ID klienta hello, sdílený tajný klíč klienta a koncový bod tokenu pro hello webové aplikace Azure AD.
+3. Nakonfigurujte přístup pro webovou aplikaci Azure AD hello na hello Data Lake Store soubor nebo složku, která chcete tooaccess z hello aplikaci Java, kterou vytváříte.
 
-Pokyny k provedení těchto kroků najdete v tématu [Vytvoření aplikace služby Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Pokyny, jak tooperform tyto kroky v tématu [vytvoření aplikace Active Directory](data-lake-store-authenticate-using-active-directory.md).
 
-V Azure Active Directory jsou také další možnosti, jak načíst token. Můžete vybírat z mnoha různých ověřovacích mechanismů vhodných pro váš scénář, jako je například spuštění aplikace v prohlížeči, distribuce aplikace jako desktopové aplikace nebo spuštění serverové aplikace místně nebo na virtuálním počítači Azure. Vybírat můžete také z různých typů přihlašovacích údajů, jako jsou hesla, certifikáty, dvojúrovňové ověřování atd. Kromě toho umožňuje Azure Active Directory synchronizaci uživatelů místní služby Active Directory s cloudem. Podrobnosti najdete v tématu [Scénáře ověřování pro Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md). 
+Azure Active Directory poskytuje že další možnosti také tooretrieve token. Můžete si vybrat z mnoha různých ověřovacích mechanismů toosuit váš scénář, například aplikace běží v prohlížeči, aplikace distribuovaných jako desktopová aplikace nebo serverová aplikace spuštěna místně nebo v Azure virtuální počítač. Vybírat můžete také z různých typů přihlašovacích údajů, jako jsou hesla, certifikáty, dvojúrovňové ověřování atd. Kromě toho Azure Active Directory umožňuje toosynchronize vaší místní služby Active Directory uživatele s cloudem hello. Podrobnosti najdete v tématu [Scénáře ověřování pro Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md). 
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/), vás provede procesem vytvoření souborů v úložišti, zřetězení souborů, stažení souboru a nakonec odstranění některých souborů v úložišti. V této části článku se dozvíte o hlavních částech kódu.
+Ukázka kódu Hello k dispozici [na Githubu](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) vás provede procesem vytváření souborů v hello úložišti, zřetězení souborů, stažení souboru a odstranit některé soubory v úložišti hello hello. Tato část hello článek vás provede procesem hello hlavní části kódu, hello.
 
-1. Vytvořte projekt Maven pomocí příkazu [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) z příkazového řádku nebo pomocí rozhraní IDE. Pokyny k vytvoření projektu jazyka Java s použitím IntelliJ najdete [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny k vytvoření projektu s použitím Eclipse najdete [zde](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
-2. Přidejte k souboru Maven **pom.xml** následující závislosti. Přidejte mezi značky **\</version>** a **\</project>** následující fragment textu:
+1. Vytvořte projekt Maven pomocí [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) hello z příkazového řádku nebo pomocí rozhraní IDE. Pokyny jak toocreate Java projektu pomocí IntelliJ, najdete v části [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny najdete v části toocreate a projekt pomocí prostředí Eclipse [zde](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
+2. Přidejte následující závislosti tooyour Maven hello **pom.xml** souboru. Přidejte následující fragment textu mezi hello hello  **\</version >** značky a hello  **\</project >** značky:
    
         <dependencies>
           <dependency>
@@ -73,21 +73,21 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
           </dependency>
         </dependencies>
    
-    První závislostí je použití sady SDK pro Data Lake Store (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí (`slf4j-nop`) je zadání protokolovacího rozhraní, které se pro tuto aplikaci použije. Sada SDK pro službu Data Lake Store používá při protokolování [slf4j](http://www.slf4j.org/), takže máte možnost si vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., nebo nemusíte použít žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
+    první závislost Hello je toouse hello Data Lake Store SDK (`azure-data-lake-store-sdk`) z úložiště maven hello. Hello druhý závislosti (`slf4j-nop`) je toospecify které toouse framework protokolování pro tuto aplikaci. Hello Data Lake Store SDK používá [slf4j](http://www.slf4j.org/) průčelí za protokolování, který vám umožňuje vybrat z řady oblíbených protokolování rozhraní, jako je log4j, Java protokolování, logback atd., nebo žádné protokolování. V tomto příkladu jsme zakáže protokolování, proto použijeme hello **slf4j nop** vazby. toouse další možnosti protokolování v aplikaci, najdete v části [zde](http://www.slf4j.org/manual.html#projectDep).
 
-### <a name="add-the-application-code"></a>Přidání kódu aplikace
-Kód má tři hlavní části.
+### <a name="add-hello-application-code"></a>Přidejte kód aplikace hello
+Existují tři hlavní části toohello kódu.
 
-1. Získání tokenu Azure Active Directory
-2. Použití tokenu k vytvoření klienta služby Data Lake Store
-3. Použití klienta služby Data Lake Store k provedení operací
+1. Získat token služby Azure Active Directory hello
+2. Pomocí tokenu toocreate hello klienta Data Lake Store.
+3. Pomocí operace tooperform klienta Data Lake Store hello.
 
 #### <a name="step-1-obtain-an-azure-active-directory-token"></a>Krok 1: Získání tokenu Azure Active Directory
-V sadě SDK pro Data Lake Store jsou vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem služby Data Lake Store. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
+Hello Data Lake Store SDK poskytuje pohodlné metody, které vám umožní spravovat tokeny zabezpečení hello potřeby tootalk toohello účtu Data Lake Store. Ale hello SDK nenutí použít pouze tyto metody. Můžete použít jakýkoli jiný získání tokenu taky jako hello [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java), nebo vlastní kód.
 
-Pokud chcete k získání tokenu pro webovou aplikaci služby Active Directory, kterou jste vytvořili dříve, použít sadu SDK pro Data Lake Store, použijte jednu z podtříd třídy `AccessTokenProvider` (dále uvedený příklad používá `ClientCredsTokenProvider`). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní podtřídy třídy `AccessTokenProvider`, takže tokeny se získávají pomocí zákaznického kódu, ale pro tentokrát použijeme tu, která je součástí sady SDK.
+toouse hello Data Lake Store SDK tooobtain token pro hello Active Directory webovou aplikaci jste vytvořili dříve, použijte jednu z měly podtřídy hello `AccessTokenProvider` (hello dole uvedený příklad používá `ClientCredsTokenProvider`). Hello zprostředkovatele tokenu mezipamětí hello přihlašovací údaje pro používá tooobtain hello token v paměti a automaticky obnovuje hello token, pokud se jedná o tooexpire. Je možné toocreate vlastní měly podtřídy `AccessTokenProvider` tokeny jsou získány podle kódu zákazníků, takže teď umožňuje právě používá hello jeden součástí hello SDK.
 
-Místo **FILL-IN-HERE** zadejte skutečné hodnoty pro webovou aplikaci Azure Active Directory.
+Nahraďte **doplňovat zde** hello skutečnými hodnotami pro hello Azure Active Directory webové aplikace.
 
     private static String clientId = "FILL-IN-HERE";
     private static String authTokenEndpoint = "FILL-IN-HERE";
@@ -96,15 +96,15 @@ Místo **FILL-IN-HERE** zadejte skutečné hodnoty pro webovou aplikaci Azure Ac
     AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);
 
 #### <a name="step-2-create-an-azure-data-lake-store-client-adlstoreclient-object"></a>Krok 2: Vytvoření objektu klienta služby Azure Data Lake Store (ADLStoreClient)
-Pokud chcete vytvořit objekt [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/), musíte zadat název účtu služby Data Lake Store a poskytovatele tokenu, kterého jste vygenerovali v minulém kroku. Název účtu služby Data Lake Store musí být plně kvalifikovaný název domény. Například **FILL-IN-HERE** nahraďte něčím jako **mydatalakestore.azuredatalakestore.net**.
+Vytvoření [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objekt vyžaduje, abyste toospecify hello Data Lake Store účtu název a hello zprostředkovatele tokenu jste vygenerovali v posledním kroku hello. Všimněte si, že hello účtu Data Lake Store, že název je toobe platný plně kvalifikovaný název domény. Například **FILL-IN-HERE** nahraďte něčím jako **mydatalakestore.azuredatalakestore.net**.
 
-    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
+    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just hello account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-### <a name="step-3-use-the-adlstoreclient-to-perform-file-and-directory-operations"></a>Krok 3: Použití objektu ADLStoreClient k provedení operací souborů a adresářů
-Kód níže obsahuje příklady fragmentů některých běžných operací. Na další operace se můžete podívat v kompletní [Dokumentaci rozhraní API sady Java SDK pro Azure Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/) k objektu **ADLStoreClient**.
+### <a name="step-3-use-hello-adlstoreclient-tooperform-file-and-directory-operations"></a>Krok 3: Použití operace hello ADLStoreClient tooperform souborů a adresářů
+Následující kód Hello obsahuje fragmenty příklad některých běžných operací. Můžete se podívat na úplné hello [dokumentace rozhraní API Data Lake Store Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/) z hello **ADLStoreClient** objektu toosee jiné operace.
 
-Poznámka: Soubory se čtou a do souborů se zapisuje pomocí standardních streamů Java. Znamená to, že kterýkoliv stream Java můžete umístit do vrstvy nad streamy služby Data Lake Store. Díky tomu budete moct využít možností standardních funkcí Java (například streamů tisku pro formátovaný výstup nebo kteréhokoliv ze streamů komprese nebo šifrování pro získání dalších funkcí atd.).
+Poznámka: Soubory se čtou a do souborů se zapisuje pomocí standardních streamů Java. To znamená, že jste žádné hello Java datové proudy nad hello Data Lake Store datové proudy toobenefit z standardní funkce Java (například tisk datové proudy formátovaný výstup, nebo libovolná z hello kompresi nebo šifrování datové proudy další funkce na vrstvy "nahoře, atd.).
 
      // create file and write some content
      String filename = "/a/b/c.txt";
@@ -112,14 +112,14 @@ Poznámka: Soubory se čtou a do souborů se zapisuje pomocí standardních stre
      PrintStream out = new PrintStream(stream);
      for (int i = 1; i <= 10; i++) {
          out.println("This is line #" + i);
-         out.format("This is the same line (%d), but using formatted output. %n", i);
+         out.format("This is hello same line (%d), but using formatted output. %n", i);
      }
      out.close();
     
     // set file permission
     client.setPermission(filename, "744");
 
-    // append to file
+    // append toofile
     stream = client.getAppendStream(filename);
     stream.write(getSampleContent());
     stream.close();
@@ -132,11 +132,11 @@ Poznámka: Soubory se čtou a do souborů se zapisuje pomocí standardních stre
     }
     in.close();
 
-    // concatenate the two files into one
+    // concatenate hello two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
     client.concatenateFiles("/a/b/f.txt", fileList);
 
-    //rename the file
+    //rename hello file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
 
     // list directory contents
@@ -146,15 +146,15 @@ Poznámka: Soubory se čtou a do souborů se zapisuje pomocí standardních stre
         printDirectoryInfo(entry);
     }
 
-    // delete directory along with all the subdirectories and files in it
+    // delete directory along with all hello subdirectories and files in it
     client.deleteRecursive("/a");
 
-#### <a name="step-4-build-and-run-the-application"></a>Krok 4: Sestavení a spuštění aplikace
-1. Pokud chcete aplikaci spustit z rozhraní IDE, stiskněte tlačítko **Spustit**. Pokud ji chcete spustit z Mavenu, použijte příkaz [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Jestliže chcete vytvořit samostatný soubor jar, který budete moct spustit z příkazového řádku, vytvořte ho se všemi závislostmi s použitím [modulu plug-in sestavení Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). U pom.xml v [ukázkovém zdrojovém kódu na githubu](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) najdete příklad, jak to provést.
+#### <a name="step-4-build-and-run-hello-application"></a>Krok 4: Sestavení a spuštění aplikace hello
+1. toorun z v rámci IDE, vyhledejte a stiskněte klávesu hello **spustit** tlačítko. toorun z Maven, použijte [exec: exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
+2. tooproduce samostatné jar, který můžete spustit z příkazového řádku sestavení hello jar s všechny závislosti, které jsou zahrnuty, pomocí hello [Maven sestavení modulu plug-in](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Hello pom.xml v hello [Příklad zdrojového kódu na githubu](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) má příklad toodo to.
 
 ## <a name="next-steps"></a>Další kroky
-* [Prozkoumání JavaDoc k sadě Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+* [Prozkoumat JavaDoc pro hello sady Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics se službou Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight se službou Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

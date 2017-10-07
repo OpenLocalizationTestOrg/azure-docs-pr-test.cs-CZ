@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurujte zásady autorizace klíče obsahu s REST - Azure | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat zásady autorizace pro klíč obsahu pomocí Media Services REST API."
+title: "zásady autorizace klíče obsahu aaaConfigure se zbytkem - Azure | Microsoft Docs"
+description: "Zjistěte, jak tooconfigure zásad autorizace pro klíč obsahu pomocí Media Services REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: ed20fca35070c190bb63925d0a57cf919bcdd96c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c058b7682bcbfb736faba18ec7fce33f2f2acb49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
-Microsoft Azure Media Services umožňuje doručovat obsah (dynamicky) šifrován Standard AES (Advanced Encryption) (s použitím 128bitové šifrování klíče) a PlayReady nebo Widevine DRM. Služba Media Services také poskytuje službu k doručování klíče a licence PlayReady nebo Widevine autorizovaným klientům.
+Microsoft Azure Media Services umožňuje toodeliver můžete obsah (dynamicky) šifrován Standard AES (Advanced Encryption) (s použitím 128bitové šifrování klíče) a PlayReady nebo Widevine DRM. Služba Media Services také poskytuje službu k doručování klíče a licence PlayReady nebo Widevine tooauthorized klientů.
 
-Pokud chcete pro Media Services k šifrování prostředek, je potřeba přidružit šifrovací klíč (**CommonEncryption** nebo **EnvelopeEncryption**) k assetu (jak je popsáno [sem](media-services-rest-create-contentkey.md)) a taky nakonfigurovat zásady autorizace pro klíč (jak je popsáno v tomto článku).
+Pokud chcete pro Media Services tooencrypt prostředek, je nutné tooassociate šifrovací klíč (**CommonEncryption** nebo **EnvelopeEncryption**) s hello asset (jak je popsáno [sem](media-services-rest-create-contentkey.md)) a také nakonfigurovat zásady autorizace pro klíč hello (jak je popsáno v tomto článku).
 
-Datový proud je žádost přehrávač, Media Services používá k zadanému klíči dynamicky šifrovat pomocí šifrování AES nebo PlayReady obsah. K dešifrování datového proudu, bude přehrávač požadovat klíč ze služby doručení klíče. Při rozhodování, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Když přehrávač vyžádá datový proud, služba Media Services použije hello zadané klíče toodynamically šifrování svůj obsah pomocí šifrování AES nebo PlayReady. datový proud hello toodecrypt, hello player bude požadovat hello klíč z hello doručení klíče služby. toodecide, jestli je uživatel hello autorizovaný tooget hello klíč, hello služba vyhodnocuje hello zásady autorizace, které jste zadali pro klíč hello.
 
-Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace klíče obsahu může mít jeden nebo více omezení autorizace: **otevřete** nebo **tokenu** omezení. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve **jednoduchých webových tokenů** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátu a ** webových tokenů JSON **(JWT) formátu.
+Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Hello zásady autorizace klíče obsahu může mít jeden nebo více omezení autorizace: **otevřete** nebo **tokenu** omezení. zásady omezení tokenem Hello musí být doplněny tokenem vydaným podle zabezpečení tokenu služby (STS). Služba Media Services podporuje tokeny ve hello **jednoduchých webových tokenů** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formátu a ** webových tokenů JSON **(JWT) formátu.
 
-Služba Media Services neposkytuje zabezpečení tokenu služby. Můžete vytvořit vlastní službu tokenů zabezpečení nebo využívat Microsoft Azure ACS problém tokeny. Služba tokenů zabezpečení musí být nakonfigurované vytvořit token podepsané zadaný klíč a vystavování deklarací identity, které jste zadali v nastavení omezení s tokenem (jak je popsáno v tomto článku). Doručení klíče služby Media Services bude vrácena klientovi šifrovací klíč, pokud token je platný a deklarace identity v tokenu shodují s těmi, nakonfigurované pro klíč k obsahu.
+Služba Media Services neposkytuje zabezpečení tokenu služby. Můžete vytvořit vlastní službu tokenů zabezpečení nebo využívat Microsoft Azure ACS tooissue tokeny. Hello služby tokenů zabezpečení musí být nakonfigurované toocreate token podepsané hello zadaný klíč a deklarace identity vystavují (jak je popsáno v tomto článku) zadaný v konfiguraci omezení s tokenem hello. Hello doručení klíče služby Media Services vrátí hello šifrovací klíče toohello klienta Pokud hello token je platný a hello deklarace v tokenu hello odpovídají nakonfigurovaným pro klíč obsahu hello.
 
 Další informace najdete v tématu
 
@@ -40,31 +40,31 @@ Další informace najdete v tématu
 
 [Integrace aplikace Azure Media Services OWIN MVC se službou Azure Active Directory a omezit klíče doručování obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-[Pomocí Azure ACS problém tokeny](http://mingfeiy.com/acs-with-key-services).
+[Použití Azure ACS tooissue tokeny](http://mingfeiy.com/acs-with-key-services).
 
 ### <a name="some-considerations-apply"></a>Musí být splněny určité předpoklady:
-* Abyste mohli používat dynamické balení a dynamické šifrování, ujistěte se, že koncový bod streamování, ze kterého chcete Streamovat obsah je v **systémem** stavu.
+* toobe možné toouse dynamické balení a dynamické šifrování, zkontrolujte, zda je hello koncový bod, ze kterého mají být toostream streamování vašeho obsahu v hello **systémem** stavu.
 * Váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí. Další informace najdete v tématu [kódovat asset](media-services-encode-asset.md).
 * Nahrání a kódování vaše prostředky pomocí **AssetCreationOptions.StorageEncrypted** možnost.
-* Pokud budete chtít mít několik klíčů obsahu, které vyžadují stejnou konfiguraci zásad, důrazně doporučujeme vytvořit zásadu jeden autorizace a opakovaně ji používat s více klíčů k obsahu.
-* Službu doručování klíč ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (Možnosti zásad a omezení) pro 15 minut.  Pokud vytvoříte ContentKeyAuthorizationPolicy a nastavení, aby používal "Token" omezení, pak otestovat ji a potom aktualizovat zásady "Otevřené" omezení, bude trvat přibližně 15 minut, než zásady přepne do "Otevřené" verze zásad.
+* Pokud máte v plánu toohave více obsahu klíčů, které vyžadují hello stejné konfigurace zásad, se důrazně doporučuje toocreate zásady jeden autorizace a opakovaně ji používat s více klíčů k obsahu.
+* Hello služba pro přenos klíče ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (Možnosti zásad a omezení) pro 15 minut.  Pokud vytvoříte ContentKeyAuthorizationPolicy a zadejte toouse "Token" omezení, pak otestovat ji a potom aktualizovat zásady hello příliš "Otevřít" omezení, bude trvat přibližně 15 minut před hello zásad přepínače toohello "Otevřené" verze hello zásad.
 * Pokud přidáte nebo aktualizujete zásady pro doručení assetu, musíte odstranit stávající lokátor (pokud existuje) a vytvořit nový.
 * V současné době nelze zašifrovat progresivní stahování.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamické šifrování AES-128
 > [!NOTE]
-> Při práci se službou Media Services REST API, platí následující aspekty:
+> Při práci s hello Media Services REST API hello platí následující aspekty:
 > 
 > Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
 > 
-> Po úspěšném připojení k https://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání nový identifikátor URI. Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+> Po úspěšném připojení toohttps://media.windows.net, obdržíte 301 přesměrování zadání jiném identifikátoru URI Media Services. Je nutné provést následující volání toohello nový identifikátor URI. Informace o tom, jak tooconnect toohello AMS rozhraní API, najdete v části [hello přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 > 
 
 ### <a name="open-restriction"></a>Otevřete omezení
-Otevřete omezení znamená, že systém bude poskytovat klíč všem uživatelům, kteří vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
+Otevřete omezení znamená, že systém hello dodá hello tooanyone klíče, který vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
 
-Následující příklad vytvoří zásadu otevřete autorizace a přidává ji k klíč obsahu.
+Hello následující ukázka vytvoří zásadu otevřete autorizace a přidá ho toohello klíč obsahu.
 
 #### <a id="ContentKeyAuthorizationPolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
 Žádost:
@@ -159,7 +159,7 @@ Odpověď:
 
     HTTP/1.1 204 No Content
 
-#### <a id="AddAuthorizationPolicyToKey"></a>Přidání zásad autorizace pro klíč k obsahu
+#### <a id="AddAuthorizationPolicyToKey"></a>Přidejte klíč obsahu toohello zásad autorizace
 Žádost:
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -181,9 +181,9 @@ Odpověď:
     HTTP/1.1 204 No Content
 
 ### <a name="token-restriction"></a>Omezení s tokenem
-Tato část popisuje, jak vytvořit zásady autorizace klíče obsahu a přidružte ji k klíč obsahu. Zásady autorizace popisuje, jaké autorizace musí být splněny k určení, pokud je uživatel oprávněn přijímat klíč (například nemá seznam "ověřovací klíč" obsahovat klíč, který byl podepsaný token).
+Tato část popisuje, jak toocreate obsahu klíče zásad autorizace a přidružte ji k hello klíč obsahu. zásady autorizace Hello popisuje, jaké požadavky na ověřování musí být nesplnění toodetermine, pokud je uživatel hello autorizovaný tooreceive hello klíč (například seznamu "ověřovací klíč" hello obsahovat hello klíč byl podepsaný token tuto hello).
 
-Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML k popisu tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat následujícím schématu XML.
+možnost omezení s tokenem hello tooconfigure, je nutné toouse XML tokenu hello toodescribe autorizace požadavky. Konfigurace omezení s tokenem Hello XML musí odpovídat toohello následující schématu XML.
 
 #### <a id="schema"></a>Omezení s tokenem schématu
     <?xml version="1.0" encoding="utf-8"?>
@@ -233,12 +233,12 @@ Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Při konfiguraci **tokenu** omezený zásady, je nutné zadat primární ** ověřovací klíč **, **vystavitele** a **cílovou skupinu** parametry. ** Primární ověření klíč ** obsahuje klíč, který byl podepsaný token, **vystavitele** je zabezpečený tokenu služba, která vydá token. **Cílovou skupinu** (někdy nazývané **oboru**) popisuje záměr token nebo token povolí přístup k prostředku. Služba Media Services doručení klíče ověří, jestli tyto hodnoty v tokenu shodují s hodnotami v šabloně. 
+Při konfiguraci hello **tokenu** omezený zásady, je nutné zadat hello primární ** ověřovací klíč **, **vystavitele** a **cílovou skupinu** parametry. Hello ** primární ověření klíč ** obsahuje hello klíč, který hello token byl podepsán, **vystavitele** služby tokenů zabezpečení hello je tento token hello problémy. Hello **cílovou skupinu** (někdy nazývané **oboru**) popisuje hello záměr hello tokenu nebo hello prostředků hello token povolí přístup k. Hello doručení klíče služby Media Services ověří, že tyto hodnoty v tokenu hello shodují s hodnotami hello v šabloně hello. 
 
-Následující příklad vytvoří zásad autorizace pomocí tokenu omezení. V tomto příkladu by klient musel token, který obsahuje k dispozici: podpisový klíč (VerificationKey), vydavatel tokenu a požadované deklarace identity.
+Hello následující ukázka vytvoří token omezení zásad autorizace. V tomto příkladu hello by klient musel předem toopresent token, který obsahuje: podpisový klíč (VerificationKey), vydavatel tokenu a požadované deklarace identity.
 
 ### <a name="create-contentkeyauthorizationpolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
-Vytvořte "Token omezení zásady", jak je znázorněno [zde](#ContentKeyAuthorizationPolicies).
+Vytvořte hello "Token omezení zásady", jak je znázorněno [zde](#ContentKeyAuthorizationPolicies).
 
 ### <a name="create-contentkeyauthorizationpolicyoptions"></a>Vytvoření ContentKeyAuthorizationPolicyOptions
 Žádost:
@@ -279,18 +279,18 @@ Odpověď:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies odkaz s možností
 Odkaz ContentKeyAuthorizationPolicies s možností, jak je znázorněno [zde](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace pro klíč k obsahu
-Přidejte AuthorizationPolicy ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-toohello-content-key"></a>Přidejte klíč obsahu toohello zásad autorizace
+Přidejte AuthorizationPolicy toohello ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
 
 ## <a name="playready-dynamic-encryption"></a>Šifrování PlayReady dynamický
-Služba Media Services umožňuje nakonfigurovat práva a omezení, které chcete použít pro modul runtime PlayReady DRM vynucovat, když uživatel se pokouší o přehrání chráněný obsah. 
+Služba Media Services umožňuje tooconfigure hello práva a omezení, že chcete pro hello tooenforce runtime PlayReady DRM při uživatele, že tooplay zpět chráněného obsahu. 
 
-Při ochraně obsahu pomocí technologie PlayReady, jednou z věcí, je třeba zadat ve vaší zásady autorizace je řetězec XML, který definuje [šablona licence PlayReady](media-services-playready-license-template-overview.md). 
+Při ochraně obsahu pomocí technologie PlayReady, jednou z věcí hello potřebujete toospecify ve vaší zásady autorizace je řetězec XML, který definuje hello [šablona licence PlayReady](media-services-playready-license-template-overview.md). 
 
 ### <a name="open-restriction"></a>Otevřete omezení
-Otevřete omezení znamená, že systém bude poskytovat klíč všem uživatelům, kteří vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
+Otevřete omezení znamená, že systém hello dodá hello tooanyone klíče, který vytváří klíče požadavek. Toto omezení může být užitečná pro účely testování.
 
-Následující příklad vytvoří zásadu otevřete autorizace a přidává ji k klíč obsahu.
+Hello následující ukázka vytvoří zásadu otevřete autorizace a přidá ho toohello klíč obsahu.
 
 #### <a id="ContentKeyAuthorizationPolicies2"></a>Vytvoření ContentKeyAuthorizationPolicies
 Žádost:
@@ -368,11 +368,11 @@ Odpověď:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies odkaz s možností
 Odkaz ContentKeyAuthorizationPolicies s možností, jak je znázorněno [zde](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace pro klíč k obsahu
-Přidejte AuthorizationPolicy ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-toohello-content-key"></a>Přidejte klíč obsahu toohello zásad autorizace
+Přidejte AuthorizationPolicy toohello ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
 
 ### <a name="token-restriction"></a>Omezení s tokenem
-Pokud chcete konfigurovat omezení s tokenem možnost, budete muset použít XML k popisu tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat schématu XML ukazuje [to](#schema) části.
+možnost omezení s tokenem hello tooconfigure, je nutné toouse XML tokenu hello toodescribe autorizace požadavky. Konfigurace omezení s tokenem Hello XML musí odpovídat schématu XML toohello ukazuje [to](#schema) části.
 
 #### <a name="create-contentkeyauthorizationpolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
 Vytvořte ContentKeyAuthorizationPolicies, jak je znázorněno [zde](#ContentKeyAuthorizationPolicies2).
@@ -416,8 +416,8 @@ Odpověď:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies odkaz s možností
 Odkaz ContentKeyAuthorizationPolicies s možností, jak je znázorněno [zde](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace pro klíč k obsahu
-Přidejte AuthorizationPolicy ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-toohello-content-key"></a>Přidejte klíč obsahu toohello zásad autorizace
+Přidejte AuthorizationPolicy toohello ContentKey, jak je znázorněno [zde](#AddAuthorizationPolicyToKey).
 
 ## <a id="types"></a>Typy používané při definování ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -445,5 +445,5 @@ Přidejte AuthorizationPolicy ContentKey, jak je znázorněno [zde](#AddAuthoriz
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, přejděte na [postup konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md) tématu.
+Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, přejděte toohello [jak zásady doručení assetu tooconfigure](media-services-rest-configure-asset-delivery-policy.md) tématu.
 

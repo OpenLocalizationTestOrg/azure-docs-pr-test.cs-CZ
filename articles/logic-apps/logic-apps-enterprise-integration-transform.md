@@ -1,6 +1,6 @@
 ---
-title: "Převést data XML s transformací - Azure Logic Apps | Microsoft Docs"
-description: "Vytvořit transformací nebo mapps převést data XML mezi formáty v logiku aplikace pomocí sady SDK integrace Enterprise"
+title: "data XML aaaConvert s transformací - Azure Logic Apps | Microsoft Docs"
+description: "Vytvořit transformací nebo mapps data XML tooconvert mezi formáty v aplikacích logiky pomocí hello Enterprise integraci sady SDK"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b56ec1072c5058d3aefc7f88ac9b2748ebe56456
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Enterprise integrace s transformace XML
 ## <a name="overview"></a>Přehled
-Konektor Enterprise integrace transformace převádí data z jednoho formátu do jiného formátu. Například můžete mít příchozí zprávy obsahující aktuální datum ve formátu YearMonthDay. Transformace můžete přeformátujte datum ve formátu MonthDayYear.
+Hello Enterprise integrace transformace konektor převádí data z jednoho formátu tooanother formátu. Například můžete mít příchozí zprávy, která obsahuje aktuální datum ve formátu YearMonthDay hello hello. Můžete vytvořit toobe transformace tooreformat hello datum ve formátu MonthDayYear hello.
 
 ## <a name="what-does-a-transform-do"></a>Transformace k čemu slouží?
-Transformace, která je také označována jako mapu, se skládá z schéma XML pro zdroj (vstup) a cíl XML schema (výstup). Různé integrované funkce můžete použít k manipulaci nebo řízení dat, včetně manipulace s řetězci, podmíněného přiřazení, aritmetických výrazech, datum čas formátování a i opakování ve smyčce konstrukce.
+Transformace, která je také označována jako mapu, se skládá z schéma XML pro zdroj (hello vstup) a cíl XML schema (výstup hello). Různé integrované funkce toohelp pracovat s nebo řízení hello data, můžete použít, včetně manipulace s řetězci, podmíněného přiřazení, aritmetických výrazech, datum čas formátování a i opakování ve smyčce konstrukce.
 
-## <a name="how-to-create-a-transform"></a>Postup vytvoření transformace?
-Transformace nebo mapu můžete vytvořit pomocí sady Visual Studio [Enterprise integrace SDK](https://aka.ms/vsmapsandschemas). Po dokončení vytváření a testování pro transformaci nahrajete do účtu integrace pro transformaci. 
+## <a name="how-toocreate-a-transform"></a>Jak toocreate transformace?
+Transformace nebo mapu můžete vytvořit pomocí sady Visual Studio hello [Enterprise integrace SDK](https://aka.ms/vsmapsandschemas). Po dokončení vytváření a testování hello transformace nahrajete do účtu integrace hello transformace. 
 
-## <a name="how-to-use-a-transform"></a>Postup použití transformace
-Po odeslání transformace nebo mapy ke svému účtu integrace, můžete k vytvoření aplikace logiky. Aplikace logiky běží vaše transformace vždy, když se aktivuje aplikaci logiky (a vstupní obsah, který potřebuje k transformaci).
+## <a name="how-toouse-a-transform"></a>Jak toouse transformace
+Po odeslání hello transformace/mapovat do účtu integrace, můžete ji použít toocreate aplikace logiky. aplikace logiky Hello běží vaše transformace vždy, když se aktivuje aplikaci logiky hello (a vstupní obsah, který potřebuje toobe Transformovat).
 
-**Tady jsou kroky při použití transformace**:
+**Tady jsou kroky toouse hello transformace**:
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Vytvoření účtu integrace a přidejte do ní mapy  
+* Vytvoření účtu integrace a přidejte tooit mapy  
 
-Teď, když jste postaráno, požadované součásti, je čas vytvořit svou aplikaci logiky:  
+Teď, když jste postaráno, hello požadavky, je čas toocreate svou aplikaci logiky:  
 
-1. Vytvoření aplikace logiky a [ho propojit se svým účtem integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md "zjistěte, jak lze propojit účet integrace aplikace logiky") obsahující mapy.
-2. Přidat **požadavku** aktivační události do aplikace logiky  
+1. Vytvoření aplikace logiky a [propojit účet integrace tooyour](../logic-apps/logic-apps-enterprise-integration-accounts.md "další toolink aplikace logiky integrace účet tooa") obsahující hello mapy.
+2. Přidat **požadavku** aplikace logiky tooyour aktivační události  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Přidat **transformace XML** akce první výběrem **přidat akci**   
+3. Přidat hello **transformace XML** akce první výběrem **přidat akci**   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. Zadejte slovo *transformace* do vyhledávacího pole vyfiltrujete všechny akce, které ten, který chcete použít  
+4. Zadejte slova hello *transformace* v toofilter pole hledání hello všechny akce toohello, jednu, které chcete toouse hello  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. Vyberte **transformace XML** akce   
-6. Přidání souboru XML **obsahu** , můžete transformace. Můžete použít libovolná data XML, který se zobrazí v požadavku HTTP, jako **obsahu**. V tomto příkladu vyberte textu požadavku HTTP, který aktivoval aplikaci logiky.
-7. Vyberte název **MAPY** , kterou chcete použít k provedení transformace. Mapy již musí být v účtu integrace. V předchozím kroku dáte již logiku aplikace přístup k vašemu účtu integrace, která obsahuje vaše mapy.      
+5. Vyberte hello **transformace XML** akce   
+6. Přidat hello XML **obsahu** , můžete transformace. Můžete použít libovolná data XML, který se zobrazí v žádosti o hello HTTP jako hello **obsahu**. V tomto příkladu vyberte hello textu hello požadavku protokolu HTTP, který aktivoval aplikace logiky hello.
+7. Vyberte hello název hello **MAPY** , které chcete toouse tooperform hello transformace. Mapa Hello již musí být v účtu integrace. V předchozím kroku dáte již vaše logiku aplikace přístup tooyour integrace účet, který obsahuje mapu.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Uložte si práci  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-V tomto okamžiku jste dokončili nastavení mapy. V reálné aplikaci můžete ukládat Transformovaná data obchodní aplikace, například služby SalesForce. Můžete snadno jako akce pro odeslání výstupu transformace do služby Salesforce. 
+V tomto okamžiku jste dokončili nastavení mapy. V reálné aplikaci můžete chtít toostore hello transformovat data obchodní aplikace, například služby SalesForce. Můžete snadno jako výstup hello toosend akce hello transformace tooSalesforce. 
 
-Nyní můžete otestovat váš transformace tak, že požadavek na koncový bod HTTP.  
+Nyní můžete otestovat váš transformace tak, že koncový bod žádosti toohello protokolu HTTP.  
 
 ## <a name="features-and-use-cases"></a>Funkce a případy použití
-* Transformace vytvořené v mapu může být jednoduchý, jako je například kopírování názvu a adresy z jednoho dokumentu do jiného. Nebo můžete vytvořit složitější transformace pomocí operace, které se na pole mapy.  
+* Transformace Hello vytvořené v mapu může být jednoduchý, jako je například kopírování názvu a adresy z jednoho tooanother dokumentu. Nebo můžete vytvořit složitější transformace pomocí operace hello se na pole mapy.  
 * Více mapy operace nebo funkce jsou snadno dostupné, včetně řetězce, datum časové funkce a tak dále.  
-* Můžete to udělat kopii přímá dat mezi schémat. V Mapper zahrnutý v sadě SDK to je jednoduché, kreslení čáry propojující se svými protějšky ve schématu cílové elementy ve schématu zdroje.  
-* Při vytváření mapy, zobrazí se grafické zobrazení mapy, které ukazují vztahy a odkazy, které vytvoříte.
-* Použijte funkci Test mapy přidat ukázkovou zprávu XML. S jediným kliknutím můžete otestovat mapu, kterou jste vytvořili a najdete v části generovaný výstup.  
+* Můžete to udělat kopii přímá dat mezi hello schémat. V hello Mapper součástí hello SDK to je jednoduché, kreslení čáry propojující hello elementy ve schématu zdroje hello se svými protějšky ve schématu cílové hello.  
+* Při vytváření mapy, zobrazí grafické reprezentace hello map, který zobrazuje všechny vztahy hello a odkazy, které vytvoříte.
+* Použijte hello testovací mapy funkce tooadd ukázkovou zprávu XML. S jediným kliknutím můžete otestovat hello mapy jste vytvořili a výstup hello vygenerovat.  
 * Nahrát existující mapy  
-* Zahrnuje podporu pro formát XML.
+* Zahrnuje podporu pro formát XML hello.
 
 ## <a name="learn-more"></a>Další informace
-* [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
+* [Další informace o hello Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
 * [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o enterprise integrace mapy")  
 

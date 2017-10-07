@@ -1,6 +1,6 @@
 ---
-title: "Jak otevřít porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace | Microsoft Docs"
-description: "Zjistěte, jaké porty otevřít pro Azure AD Application Proxy fungovala správně"
+title: "aaaHow tooopen hello porty brány firewall potřebné pro aplikaci Proxy aplikace | Microsoft Docs"
+description: "Zjistěte, jaké porty tooopen pro hello Azure AD Application Proxy toowork správně"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8ecd6d7e666d362194126a4abba7a65f2c7b8b6b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cdc7badb7c15591689a3bfd6bb26da182b00fb3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otevřít porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace
+# <a name="how-tooopen-hello-firewall-ports-required-for-an-application-proxy-application"></a>Jak tooopen hello porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace
 
-Pokud chcete zobrazit úplný seznam požadované porty a funkci každý port, najdete v části Požadavky [Proxy aplikace dokumentaci](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable). Všimněte si, že Proxy aplikace používá jenom Odchozí porty.
+toosee úplný seznam hello požadované porty a hello funkci každý port, najdete v části požadavky hello hello [Proxy aplikace dokumentaci](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable). Všimněte si, že Proxy aplikace používá jenom Odchozí porty.
 
-Můžete také zkontrolovat, jestli máte všechny požadované porty otevřete tak, že otevřete [nástroj pro testování porty konektor](https://aadap-portcheck.connectorporttest.msappproxy.net/) z vaší místní sítě. Další zelené značky zaškrtnutí znamená větší odolnost proti chybám. 
+Můžete také zkontrolovat, jestli máte všechny otevřené porty hello požadované podle otevírání hello [nástroj pro testování porty konektor](https://aadap-portcheck.connectorporttest.msappproxy.net/) z vaší místní sítě. Další zelené značky zaškrtnutí znamená větší odolnost proti chybám. 
 
 ## <a name="app-proxy-regions"></a>Oblasti Proxy aplikace
 
-Pracujeme na způsob, jak umožňují vědět, která z těchto oblastí musí být pro vás. Teď Ujistěte se, že všechny jsou. Také je vyžadována bez ohledu na to, které oblasti jsou ve střed USA.
+Pracujeme na způsob, jak toolet víte, které z těchto oblastí musí toobe zelená za vás. Teď Ujistěte se, že všechny jsou. Také je vyžadována bez ohledu na to, které oblasti jsou ve střed USA.
 
-Pokud chcete mít jistotu, že tento nástroj vám dává správné výsledky, nezapomeňte:
+toomake zda hello nástroj poskytuje hello správné výsledky, nezapomeňte:
 
--   Otevřete nástroj v prohlížeči ze serveru, kam jste nainstalovali konektor.
+-   Nástroj hello v prohlížeči otevřít z hello serveru s nainstalovanou hello konektor.
 
--   Zajistěte, aby všechny proxy nebo brány firewall pro vaše konektor jsou také aplikováno na tuto stránku. To lze provést v aplikaci Internet Explorer tak, že přejdete do **nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **nastavení místní sítě**. Na této stránce se zobrazí pole "Použití Proxy serveru pro vaše místní sítě". Zaškrtněte toto políčko a uveďte adresu proxy serveru do pole "Adresa".
+-   Zajistěte, aby všechny proxy nebo brány firewall použít tooyour konektor jsou také aplikováno toothis stránky. To lze provést v aplikaci Internet Explorer tak, že přejdete příliš**nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **Nastavení místní sítě**. Na této stránce najdete v části hello pole "Použití Proxy serveru pro vaše místní sítě". Zaškrtněte toto políčko a uveďte adresu proxy serveru hello do pole "Address" hello.
 
 ## <a name="next-steps"></a>Další kroky
 [Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md)

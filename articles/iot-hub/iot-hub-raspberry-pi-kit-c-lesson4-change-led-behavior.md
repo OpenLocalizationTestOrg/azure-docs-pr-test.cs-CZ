@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure IoT - Lekce 4 Malinová Pi (C): úpravě aplikace | Microsoft Docs"
-description: "Přizpůsobení zprávy a pokuste se změnit LED zapnout a vypnout chování."
+title: "Connect Raspberry PI (C) tooAzure IoT - Lekce 4: úpravě aplikace | Microsoft Docs"
+description: "Přizpůsobte hello zprávy toochange hello DIODU je zapnout a vypnout chování."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b1e441b20e161f4a03d4c2c300b21aca4fedb2a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4739c4e9a58b4b0fe964b5c3c81e5918982099f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Změnit zapnuto a vypnuto chování Indikátor
+# <a name="change-hello-on-and-off-behavior-of-hello-led"></a>Změnit hello zapnout a vypnout chování hello DIODU
 ## <a name="what-you-will-do"></a>Co provedete
-Přizpůsobení zprávy a pokuste se změnit LED zapnout a vypnout chování. Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+Přizpůsobte hello zprávy toochange hello DIODU je zapnout a vypnout chování. Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
-Na další funkce Node.js můžete změnit LED zapnout a vypnout chování.
+Použijte další Node.js funkce toochange hello DIODU je zapnout a vypnout chování.
 
 ## <a name="what-you-need"></a>Co potřebujete
-Musíte úspěšně jste dokončili [spuštění ukázkové aplikace na malin platformy pro příjem cloudu na zařízení zprávy](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md).
+Musíte úspěšně jste dokončili [spusťte ukázkovou aplikaci v cloudu tooreceive malin pí toodevice zprávy](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md).
 
-## <a name="add-functions-to-mainc-and-gulpfilejs"></a>Přidání funkce do main.c a gulpfile.js
-1. Otevřete ukázkovou aplikaci v sadě Visual Studio kódu spuštěním následujících příkazů:
+## <a name="add-functions-toomainc-and-gulpfilejs"></a>Přidání funkce toomain.c a gulpfile.js
+1. Otevřete hello ukázkovou aplikaci v sadě Visual Studio kódu spuštěním hello následující příkazy:
 
    ```bash
    cd Lesson4
    code .
    ```
-2. Otevřete `main.c` souboru a poté přidejte následující funkce po blinkLED() funkce:
+2. Otevřete hello `main.c` souboru a poté přidejte hello po blinkLED() funkce následující funkce:
 
    ```c
    static void turnOnLED()
@@ -55,7 +55,7 @@ Musíte úspěšně jste dokončili [spuštění ukázkové aplikace na malin pl
    ```
 
    ![soubor Main.c s přidané funkce](media/iot-hub-raspberry-pi-lessons/lesson4/updated_app_c.png)
-3. Přidejte následující podmínky před výchozí nastavení v `if` blokování z `receiveMessageCallback` funkce:
+3. Přidejte následující podmínky před hello výchozí nastavení v hello hello `if` blok hello `receiveMessageCallback` funkce:
 
    ```c
    else if (0 == strcmp((const char*)value, "\"on\""))
@@ -68,8 +68,8 @@ Musíte úspěšně jste dokončili [spuštění ukázkové aplikace na malin pl
    }
    ```
 
-   Nyní jste nakonfigurovali ukázkovou aplikaci reagovat na další pokyny prostřednictvím zprávy. Instrukce "na" zapne Indikátor a instrukce "off" vypne Indikátor.
-4. Otevřete soubor gulpfile.js a pak přidejte novou funkci před funkce `sendMessage`:
+   Nyní jste nakonfigurovali hello ukázkové aplikace toorespond toomore pokyny prostřednictvím zprávy. Hello "na" instrukce zapne hello DIODU a hello "off" instrukce vypne hello Indikátor.
+4. Otevřete soubor gulpfile.js hello a pak přidejte novou funkci před hello funkce `sendMessage`:
 
    ```javascript
    var buildCustomMessage = function (messageId) {
@@ -84,25 +84,25 @@ Musíte úspěšně jste dokončili [spuštění ukázkové aplikace na malin pl
    ```
 
    ![Soubor Gulpfile.js s přidané – funkce](media/iot-hub-raspberry-pi-lessons/lesson4/updated_gulpfile_c.png)
-5. V `sendMessage` fungovat, nahraďte řádku `var message = buildMessage(sentMessageCount);` s novým řádkem uvedené v následující fragment kódu:
+5. V hello `sendMessage` fungovat, nahraďte hello řádku `var message = buildMessage(sentMessageCount);` s hello nový řádek ukazuje hello následující fragment kódu:
 
    ```javascript
    var message = buildCustomMessage(sentMessageCount);
    ```
-6. Změny uložte.
+6. Uložte všechny změny hello.
 
-### <a name="deploy-and-run-the-sample-application"></a>Nasazení a spuštění ukázkové aplikace
-Nasazení a spuštění ukázkové aplikace na platformy spuštěním následujícího příkazu:
+### <a name="deploy-and-run-hello-sample-application"></a>Nasazení a spuštění ukázkové aplikace hello
+Nasazení a spuštění ukázkové aplikace hello na platformy spuštěním hello následující příkaz:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-Měli byste vidět DIODU zapněte na 2 sekundy a poté vypněte pro jiné dvou sekund. Poslední zprávu "stop" zastaví spuštění ukázkové aplikace.
+Měli byste vidět hello DIODU zapněte na 2 sekundy a poté vypněte pro jiné dvou sekund. poslední zprávu "stop" Hello zastaví hello spuštění ukázkové aplikace.
 
 ![Ukázkovou aplikaci s zapnout a vypnout zprávy](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_on_and_off_c.png)
 
-Blahopřejeme! Úspěšně jste přizpůsobili zprávy, které se odesílají do pí ze služby IoT hub.
+Blahopřejeme! Úspěšně jste přizpůsobili hello zpráv, které jsou odeslány tooPi ze služby IoT hub.
 
 ### <a name="summary"></a>Souhrn
-Této volitelné části ukazuje, jak přizpůsobit zpráv tak, aby ukázkovou aplikaci může řídit zapnuto a vypnuto chování Indikátor jiným způsobem.
+V této volitelné části ukážeme, jak toocustomize zpráv tak, že hello ukázkovou aplikaci může řídit hello zapnout a vypnout chování hello DIODU jiným způsobem.

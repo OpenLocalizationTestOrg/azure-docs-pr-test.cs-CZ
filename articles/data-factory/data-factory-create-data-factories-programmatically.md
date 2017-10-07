@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření datových kanálů pomocí sady Azure .NET SDK | Microsoft Docs"
-description: "Naučte se vytvořit prostřednictvím kódu programu, sledovat a spravovat objekty pro vytváření dat Azure pomocí sady SDK Data Factory."
+title: "aaaCreate datových kanálů pomocí sady Azure .NET SDK | Microsoft Docs"
+description: "Zjistěte, jak tooprogrammatically vytvořit, sledovat a spravovat objekty pro vytváření dat Azure pomocí sady SDK Data Factory."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 9d9dac75321c5d4e079f49320d9b7c6f56e48754
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 190b5f99edbb3c27e1e8efb8990b9e601b22458f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvoření, sledovat a spravovat Azure data Factory pomocí .NET SDK služby Azure Data Factory
 ## <a name="overview"></a>Přehled
-Můžete vytvořit, sledovat a spravovat Azure data Factory programově pomocí .NET SDK služby Data Factory. Tento článek obsahuje návod, který můžete přejít k vytvoření ukázkové aplikace konzoly .NET, která vytvoří a sleduje služby data factory. 
+Můžete vytvořit, sledovat a spravovat Azure data Factory programově pomocí .NET SDK služby Data Factory. Tento článek obsahuje návod, který může sledovat toocreate ukázkové aplikace konzoly .NET, která vytvoří a sleduje služby data factory. 
 
 > [!NOTE]
-> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory .NET API – referenční informace](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o .NET API pro Data Factory. 
+> Tento článek nepopisuje všechny hello Data Factory .NET API. V tématu [Data Factory .NET API – referenční informace](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o .NET API pro Data Factory. 
 
 ## <a name="prerequisites"></a>Požadavky
 * Visual Studio 2012 nebo 2013 nebo 2015
 * Stáhněte a nainstalujte [Azure .NET SDK](http://azure.microsoft.com/downloads/).
-* Azure Powershell Podle pokynů v článku [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) si na počítač nainstalujte prostředí Azure PowerShell. K vytvoření aplikace v Azure Active Directory použijete Azure PowerShell.
+* Azure Powershell Postupujte podle pokynů v [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článek tooinstall prostředí Azure PowerShell ve vašem počítači. Používáte prostředí Azure PowerShell toocreate aplikaci Azure Active Directory.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
-Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a přiřaďte ho roli **Přispěvatel Data Factory**.
+Vytvoření aplikace Azure Active Directory, vytvořit objekt služby pro aplikaci hello a přiřaďte ho toohello **Data Factory Přispěvatel** role.
 
 1. Spusťte **PowerShell**.
-2. Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.
+2. Spusťte následující příkaz hello a zadejte hello uživatelské jméno a heslo použít toosign v toohello portálu Azure.
 
     ```PowerShell
     Login-AzureRmAccount
     ```
-3. Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.
+3. Spusťte následující příkaz tooview hello všechny hello předplatná pro tento účet.
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
-4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **&lt;NameOfAzureSubscription**&gt; zadejte název svého předplatného Azure.
+4. Spusťte následující příkaz tooselect hello předplatné, které chcete toowork s hello. Nahraďte  **&lt;NameOfAzureSubscription** &gt; s názvem hello předplatného Azure.
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
 
    > [!IMPORTANT]
-   > Poznamenejte si **SubscriptionId** a **TenantId** z výstupu tohoto příkazu.
+   > Poznamenejte si **SubscriptionId** a **TenantId** z hello výstup tohoto příkazu.
 
-5. Spuštěním následujícího příkazu v PowerShellu vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**.
+5. Vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup** tak, že spustíte následující příkaz v hello prostředí PowerShell hello.
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
-    Pokud skupina prostředků už existuje, určete, jestli se má aktualizovat (Y), nebo ponechat tak, jak je (N).
+    Pokud skupina prostředků hello již existuje, zadejte zda tooupdate ho (Y) nebo jej zachovat jako (ne).
 
-    Pokud používáte jinou skupinu prostředků, použijte v postupech v tomto kurzu místo skupiny ADFTutorialResourceGroup název vaší skupiny prostředků.
+    Pokud používáte jiné skupině prostředků, musíte v tomto kurzu toouse hello název vaší skupiny prostředků místo skupiny ADFTutorialResourceGroup.
 6. Vytvořte aplikaci Azure Active Directory.
 
     ```PowerShell
     $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
-    Pokud se zobrazí následující chyba, zadejte jinou adresu URL a spusťte příkaz znovu.
+    Pokud dojde k následující chybě hello, zadejte jinou adresu URL a znovu spusťte příkaz hello.
     
     ```PowerShell
-    Another object with the same value for property identifierUris already exists.
+    Another object with hello same value for property identifierUris already exists.
     ```
-7. Vytvořte instanční objekt služby AD.
+7. Vytvořte hello objekt služby AD.
 
     ```PowerShell
     New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
-8. Přidejte instanční objekt k roli **Přispěvatel Data Factory**.
+8. Přidání služby hlavní toohello **Data Factory Přispěvatel** role.
 
     ```PowerShell
     New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
-9. Získejte ID aplikace.
+9. Získání ID hello aplikace.
 
     ```PowerShell
     $azureAdApplication 
     ```
-    Poznamenejte si ID aplikace (applicationID) ve výstupu.
+    Poznamenejte si ID aplikace hello (applicationID) z výstupu hello.
 
 Z těchto kroků byste měli mít tyto čtyři hodnoty:
 
 * ID tenanta
 * ID předplatného
 * ID aplikace
-* Heslo (zadané v prvním příkazu)
+* Heslo (zadané v první příkaz hello)
 
 ## <a name="walkthrough"></a>Názorný postup
-V tomto návodu vytvoříte objekt pro vytváření dat kanál, který obsahuje aktivitu kopírování. Aktivita kopírování kopíruje data ze složky ve službě Azure blob storage do jiné složky v stejné úložiště objektů blob. 
+V Průvodci hello vytvoříte objekt pro vytváření dat kanál, který obsahuje aktivitu kopírování. Hello aktivity kopírování kopíruje data ze složky ve složce tooanother úložiště objektů blob v Azure aplikace hello stejné úložiště objektů blob. 
 
-Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).
+Hello aktivita kopírování provádí přesun dat hello v Azure Data Factory. Hello aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelné způsobem. V tématu [aktivity přesunu dat](data-factory-data-movement-activities.md) článku podrobnosti o aktivitě kopírování hello.
 
 1. Pomocí sady Visual Studio 2012/2013/2015 vytvořte konzolovou aplikaci C# .NET.
    1. Spusťte **Visual Studio** 2012/2013/2015.
-   2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.
+   2. Klikněte na tlačítko **soubor**, bod příliš**nový**a klikněte na tlačítko **projektu**.
    3. Rozbalte **Šablony** a vyberte **Visual C#**. V tomto názorném postupu použijete C#, ale mohli byste využít libovolný jazyk .NET.
-   4. V seznamu typů projektů napravo vyberte **Konzolová aplikace**.
-   5. Jako název zadejte **DataFactoryAPITestApp**.
-   6. Jako umístění vyberte **C:\ADFGetStarted**.
-   7. Projekt vytvoříte kliknutím na **OK**.
-2. Klikněte na **Nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola Správce balíčků**.
-3. V **Konzole Správce balíčků** postupujte takto:
-   1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
-   2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Nahraďte obsah **App.config** v projektu s následujícím obsahem: 
+   4. Vyberte **konzolové aplikace** hello seznamu typů projektu na hello správné.
+   5. Zadejte **DataFactoryAPITestApp** pro hello název.
+   6. Vyberte **C:\ADFGetStarted** pro hello umístění.
+   7. Klikněte na tlačítko **OK** toocreate hello projektu.
+2. Klikněte na tlačítko **nástroje**, bod příliš**Správce balíčků NuGet**a klikněte na tlačítko **Konzola správce balíčků**.
+3. V hello **Konzola správce balíčků**, hello následující kroky:
+   1. Spusťte následující příkaz tooinstall Data Factory balíček hello:`Install-Package Microsoft.Azure.Management.DataFactories`
+   2. Spusťte následující příkaz tooinstall Azure Active Directory balíčku (použít Active Directory API v kódu hello) hello:`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
+4. Nahraďte obsah hello **App.config** soubor v projektu hello s hello následující obsah: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -127,14 +127,14 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
             <add key="ApplicationId" value="your application ID" />
-            <add key="Password" value="Password you used while creating the AAD application" />
+            <add key="Password" value="Password you used while creating hello AAD application" />
             <add key="SubscriptionId" value= "Subscription ID" />
             <add key="ActiveDirectoryTenantId" value="Tenant ID" />
         </appSettings>
     </configuration>
     ```
-5. V souboru App.Config aktualizujte hodnoty pro  **&lt;ID aplikace&gt;**,  **&lt;heslo&gt;**,  **&lt;předplatného ID&gt;**, a  **&lt;ID klienta&gt;**  vlastními hodnotami.
-6. Přidejte následující **pomocí** příkazy **Program.cs** v projektu.
+5. V souboru App.Config hello aktualizujte hodnoty pro  **&lt;ID aplikace&gt;**,  **&lt;heslo&gt;**,  **&lt; ID předplatného&gt;**, a  **&lt;ID klienta&gt;**  vlastními hodnotami.
+6. Přidejte následující hello **pomocí** příkazy toohello **Program.cs** soubor v projektu hello.
 
     ```csharp
     using System.Configuration;
@@ -150,15 +150,15 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     ```
-6. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataPipelineManagementClient**. Tento objekt použijete k vytvoření objektu pro vytváření dat, propojené služby, vstupních a výstupních datových sad a kanálu. Použijete ho také k monitorování řezů datových sad při spuštění.
+6. Přidejte následující kód, který vytvoří instanci hello **DataPipelineManagementClient** třída toohello **hlavní** metoda. Tento objekt toocreate použijete objekt pro vytváření dat, propojené služby, vstupní a výstupní datové sady a kanál. Tento objekt toomonitor řezy datové sady se také použít za běhu.
 
     ```csharp
     // create data factory management client
 
-    //IMPORTANT: specify the name of Azure resource group here
+    //IMPORTANT: specify hello name of Azure resource group here
     string resourceGroupName = "ADFTutorialResourceGroup";
 
-    //IMPORTANT: the name of the data factory must be globally unique.
+    //IMPORTANT: hello name of hello data factory must be globally unique.
     // Therefore, update this value. For example:APITutorialFactory05122017
     string dataFactoryName = "APITutorialFactory";
 
@@ -172,10 +172,10 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     ```
 
    > [!IMPORTANT]
-   > Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure. Můžete vytvořit skupinu prostředků pomocí [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny.
+   > Nahraďte hodnotu hello **resourceGroupName** s hello název vaší skupiny prostředků Azure. Můžete vytvořit skupinu prostředků pomocí hello [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny.
    >
-   > Aktualizujte název datové továrny (dataFactoryName) tak, aby byl jedinečný. Název objektu pro vytváření dat musí být globálně jedinečný. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
-7. Do metody **Main** přidejte následující kód, který vytvoří **objekt pro vytváření dat**.
+   > Aktualizujte název hello data factory (dataFactoryName) toobe jedinečný. Název objektu pro vytváření dat hello musí být globálně jedinečný. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
+7. Přidejte následující kód, který vytvoří hello **objekt pro vytváření dat** toohello **hlavní** metoda.
 
     ```csharp
     // create a data factory
@@ -192,7 +192,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     );
     ```
-8. Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**.
+8. Přidejte následující kód, který vytvoří hello **propojená služba Azure Storage** toohello **hlavní** metoda.
 
    > [!IMPORTANT]
    > Položky **storageaccountname** a **accountkey** nahraďte názvem svého účtu Azure Storage a jeho klíčem.
@@ -214,11 +214,11 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     );
     ```
-9. Do metody **Main** přidejte následující kód, který vytvoří **vstupní a výstupní datové sady**.
+9. Přidejte následující kód, který vytvoří hello **vstupní a výstupní datové sady** toohello **hlavní** metoda.
 
-    **FolderPath** vstupního objektu blob je nastavený na **adftutorial /** kde **adftutorial** je název kontejneru ve službě blob storage. Pokud tento kontejner ve službě Azure blob storage neexistuje, vytvořit kontejner s tímto názvem: **adftutorial** a odešlete textový soubor do kontejneru.
+    Hello **FolderPath** hello vstupního objektu blob je nastavený příliš**adftutorial /** kde **adftutorial** je název hello hello kontejneru ve službě blob storage. Pokud tento kontejner ve službě Azure blob storage neexistuje, vytvořit kontejner s tímto názvem: **adftutorial** a nahrát textový soubor toohello kontejner.
 
-    FolderPath pro výstup objektů blob je nastavena na: **adftutorial/apifactoryoutput / {řezu}** kde **řez** je počítáno dynamicky podle hodnotu **SliceStart** () Spusťte každý řez datum a čas.)
+    výstup Hello FolderPath pro hello objektu blob je nastavena na: **adftutorial/apifactoryoutput / {řezu}** kde **řez** je hodnota dynamicky počítané na základě hello **SliceStart**(spustit datum a čas každý řez.)
 
     ```csharp
     // create input and output datasets
@@ -294,9 +294,9 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     });
     ```
-10. Do metody **Main** přidejte následující kód, který **vytvoří a aktivuje kanál**. Tento kanál má aktivitu **CopyActivity**, která jako zdroj používá **BlobSource** a jako jímku používá **BlobSink**.
+10. Přidat hello následující kód, který **vytvoří a aktivuje kanálu** toohello **hlavní** metoda. Tento kanál má aktivitu **CopyActivity**, která jako zdroj používá **BlobSource** a jako jímku používá **BlobSink**.
 
-    Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).
+    Hello aktivita kopírování provádí přesun dat hello v Azure Data Factory. Hello aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelné způsobem. V tématu [aktivity přesunu dat](data-factory-data-movement-activities.md) článku podrobnosti o aktivitě kopírování hello.
 
     ```csharp
     // create a pipeline
@@ -315,7 +315,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
             {
                 Description = "Demo Pipeline for data transfer between blobs",
     
-                // Initial value for pipeline's active period. With this, you won't need to set slice status
+                // Initial value for pipeline's active period. With this, you won't need tooset slice status
                 Start = PipelineActivePeriodStartTime,
                 End = PipelineActivePeriodEndTime,
     
@@ -354,7 +354,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     });
     ```
-12. Do metody **Main** přidejte následující kód pro získání stavu datového řezu výstupní datové sady. Není v této ukázce se očekává pouze jeden řez.
+12. Přidejte následující kód toohello hello **hlavní** metoda tooget hello stav datový řez ze hello výstupní datovou sadu. Není v této ukázce se očekává pouze jeden řez.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -363,8 +363,8 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     
     while (DateTime.Now - start < TimeSpan.FromMinutes(5) && !done)
     {
-        Console.WriteLine("Pulling the slice status");
-        // wait before the next status check
+        Console.WriteLine("Pulling hello slice status");
+        // wait before hello next status check
         Thread.Sleep(1000 * 12);
     
         var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Dataset_Destination,
@@ -389,13 +389,13 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     }
     ```
-13. **(volitelné)**  Přidejte následující kód, který získat podrobnosti o pro datový řez pro spuštění **hlavní** metoda.
+13. **(volitelné)**  Přidat hello následující kód tooget spustit podrobnosti datový řez toohello **hlavní** metoda.
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
     
-    // give it a few minutes for the output slice to be ready
-    Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
+    // give it a few minutes for hello output slice toobe ready
+    Console.WriteLine("\nGive it a few minutes for hello output slice toobe ready and press any key.");
     Console.ReadKey();
     
     var datasliceRunListResponse = client.DataSliceRuns.List(
@@ -418,10 +418,10 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         Console.WriteLine("ErrorMessage: \t{0}", run.ErrorMessage);
     }
     
-    Console.WriteLine("\nPress any key to exit.");
+    Console.WriteLine("\nPress any key tooexit.");
     Console.ReadKey();
     ```
-14. Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**. Tato metoda otevře dialogové okno, který umožňuje zadat **uživatelské jméno** a **heslo** který používáte k přihlášení k portálu Azure.
+14. Přidejte následující metodu helper používané hello hello **hlavní** metoda toohello **Program** třídy. Tato metoda otevře dialogové okno, který umožňuje zadat **uživatelské jméno** a **heslo** použijete toolog tooAzure portálu.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -437,29 +437,29 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         if (result != null)
             return result.AccessToken;
 
-        throw new InvalidOperationException("Failed to acquire token");
+        throw new InvalidOperationException("Failed tooacquire token");
     }
     ```
 
-15. V Průzkumníku řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a klikněte na tlačítko **přidat odkaz na**. Zaškrtněte políčko u `System.Configuration` sestavení a klikněte na tlačítko **OK**.
-15. Sestavte konzolovou aplikaci. Klikněte v nabídce na **Sestavit** a potom klikněte na **Sestavit řešení**.
-16. Potvrďte, že existuje alespoň jeden soubor adftutorial kontejneru ve službě Azure blob storage. Pokud ne, vytvořte soubor Emp.txt v poznámkovém bloku s následujícím obsahem a nahrajte ho do kontejneru adftutorial.
+15. V Průzkumníku řešení hello, rozbalte projekt hello: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a klikněte na tlačítko **přidat odkaz na**. Zaškrtněte políčko u `System.Configuration` sestavení a klikněte na tlačítko **OK**.
+15. Vytvoření konzolové aplikace hello. Klikněte na tlačítko **sestavení** na hello nabídky a klikněte na **sestavit řešení**.
+16. Potvrďte, že existuje alespoň jeden soubor hello adftutorial kontejneru ve službě Azure blob storage. Pokud ne, vytvořte soubor Emp.txt v poznámkovém bloku s hello následující obsahu a nahrajte ho toohello adftutorial kontejneru.
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. Ukázku spusťte kliknutím na **Ladit** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
-18. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
+17. Hello ukázku spustit kliknutím **ladění** -> **spustit ladění** v nabídce hello. Až se zobrazí hello **získávání spustit podrobnosti datový řez**, počkejte několik minut a stiskněte klávesu **ENTER**.
+18. Použití této datové továrně hello hello Azure portálu tooverify **APITutorialFactory** je vytvořena s hello artefakty následující:
     * Propojená služba: **AzureStorageLinkedService**
     * Datová sada: **DatasetBlobSource** a **DatasetBlobDestination**.
     * Kanál: **PipelineBlobSample**
-19. Ověřte, že výstupní soubor je vytvořen v **apifactoryoutput** složku **adftutorial** kontejneru.
+19. Ověřte, že výstupní soubor je vytvořen v hello **apifactoryoutput** složky v hello **adftutorial** kontejneru.
 
 ## <a name="get-a-list-of-failed-data-slices"></a>Získat seznam neúspěšných datové řezy 
 
 ```csharp
-// Parse the resource path
+// Parse hello resource path
 var ResourceGroupName = "ADFTutorialResourceGroup";
 var DataFactoryName = "DataFactoryAPITestApp";
 
@@ -496,6 +496,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na následující příklad k vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z Azure blob storage do Azure SQL database: 
+Viz následující ukázka pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z Azure blob storage tooan Azure SQL database hello: 
 
-- [Vytvoření kanálu pro zkopírování dat z úložiště objektů Blob do databáze SQL](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Vytvoření kanálu toocopy dat z úložiště objektů Blob tooSQL databáze](data-factory-copy-activity-tutorial-using-dotnet-api.md)

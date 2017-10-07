@@ -1,5 +1,5 @@
 ---
-title: "Zdroje dat podporované ve službě Azure Analysis Services | Microsoft Docs"
+title: "podporované v Azure Analysis Services zdroje aaaData | Microsoft Docs"
 description: "Popisuje zdroje dat, které jsou podporovány pro modely dat v Azure Analysis Services."
 services: analysis-services
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: 8bd6c3b5a923ce2f3cd0f60af82e59c5cc27cbb4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2902d7d3c3bcf086419822fa826193bd247bde61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
-Servery Azure Analysis Services podporují připojení ke zdrojům dat v cloudu a místně ve vaší organizaci. Další podporované zdroje dat se přidávají vždy. Vraťte se často. 
+Servery Azure Analysis Services podporují připojování toodata zdroje v hello cloudu a místně ve vaší organizaci. Další podporované zdroje dat se přidávají celou dobu hello. Vraťte se často. 
 
-Aktuálně jsou podporovány následující zdroje dat:
+Hello následující zdroje dat se aktuálně podporují:
 
 | Cloud  |
 |---|
@@ -46,15 +46,15 @@ Aktuálně jsou podporovány následující zdroje dat:
 \*Tabulkové 1400 modely jenom. 
 
 > [!IMPORTANT]
-> Připojení k místním zdrojům dat vyžadují [místní brána dat](analysis-services-gateway.md) nainstalovat do počítače ve vašem prostředí.
+> Tooon místní datové zdroje vyžadují připojení [místní brána dat](analysis-services-gateway.md) nainstalovat do počítače ve vašem prostředí.
 
 ## <a name="data-providers"></a>Zprostředkovatelé dat
 
-Modely dat v Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování k určité zdroje dat. V některých případech může vrátit tabulkové modely služby připojení ke zdrojům dat pomocí nativního zprostředkovatele, jako je například SQL Server Native Client (SQLNCLI11) k chybě.
+Modely dat v Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování zdroje dat toocertain. V některých případech může vrátit tabulkové modely připojení toodata zdroje pomocí nativního zprostředkovatele, jako je například SQL Server Native Client (SQLNCLI11) k chybě.
 
-Zdroje pro datové modely, které se připojují k data v cloudu, například Azure SQL Database, pokud používáte nativní zprostředkovatelé než SQLOLEDB, mohou se zobrazit chybová zpráva: **"Zprostředkovatele 'SQLNCLI11.1' není zaregistrován."** Nebo, pokud máte model DirectQuery připojení k místním zdrojům dat, pokud používáte nativní poskytovatelů, mohou se zobrazit chybová zpráva: **"Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu 'LIMIT' "**.
+Zdroje pro datové modely, které se připojují tooa data v cloudu, jako je například Azure SQL Database, pokud používáte nativní zprostředkovatelé než SQLOLEDB, mohou se zobrazit chybová zpráva: **"hello zprostředkovatele není registrovaný 'SQLNCLI11.1'."** Nebo, pokud máte DirectQuery, model připojování tooon místní zdroje dat, pokud používáte nativní poskytovatelů, mohou se zobrazit chybová zpráva: **"Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu 'LIMIT' "**.
 
-Následující zdroje dat zprostředkovatele jsou podporovány v paměti nebo datové modely DirectQuery při připojování ke zdrojům dat v cloudu nebo místně:
+Hello následující zdroje dat poskytovatelé jsou podporovány v paměti nebo datové modely DirectQuery při připojování toodata zdroje v hello cloudu nebo místně:
 
 ### <a name="cloud"></a>Cloud
 | **Zdroj dat** | **V paměti** | **DirectQuery** |
@@ -79,16 +79,16 @@ Následující zdroje dat zprostředkovatele jsou podporovány v paměti nebo da
 > 
 > 
 
-Při migraci místní SQL Server Analysis Services tabulkový model Azure Analysis Services, může být nutné změnit zprostředkovatele.
+Při migraci tabulkový model tooAzure SQL Server Analysis Services místní služby Analysis Services, může být nutné toochange hello zprostředkovatele.
 
-**Pokud chcete zadat zprostředkovatele zdroje dat**
+**toospecify Zprostředkovatel zdroje dat**
 
 1. V sadě SSDT > **tabulkový Model Explorer** > **zdroje dat**, klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na tlačítko **upravit zdroj dat**.
-2. V **upravit připojení**, klikněte na tlačítko **Upřesnit** a otevřete okno Vlastnosti zálohy.
-3. V **nastavit rozšířené vlastnosti** > **zprostředkovatelé**, pak vyberte příslušného poskytovatele.
+2. V **upravit připojení**, klikněte na tlačítko **Upřesnit** tooopen hello zálohy vlastnosti – okno.
+3. V **nastavit rozšířené vlastnosti** > **zprostředkovatelé**, pak vyberte hello příslušného poskytovatele.
 
 ## <a name="impersonation"></a>Zosobnění
-V některých případech může být nutné zadat účet jiné zosobnění. Účet zosobnění lze zadat v rozšíření SSDT nebo SSMS.
+V některých případech může být nutné toospecify účet jiné zosobnění. Účet zosobnění lze zadat v rozšíření SSDT nebo SSMS.
 
 Pro místní zdroje dat:
 
@@ -100,6 +100,6 @@ Pro cloudové zdroje dat:
 * Pokud používáte ověřování SQL, musí být zosobnění účtu služby.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte místní zdroje dat, je nutné nainstalovat [místní brána](analysis-services-gateway.md).   
-Další informace o správě váš server v rozšíření SSDT nebo SSMS najdete v tématu [správě serveru](analysis-services-manage.md).
+Pokud máte místní zdroje dat, zda text hello tooinstall být [místní brána](analysis-services-gateway.md).   
+toolearn Další informace o serveru v rozšíření SSDT nebo SSMS, najdete v části [správě serveru](analysis-services-manage.md).
 

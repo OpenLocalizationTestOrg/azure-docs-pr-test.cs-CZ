@@ -1,6 +1,6 @@
 ---
-title: "Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET | Microsoft Docs"
-description: "Toto téma ukazuje, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů."
+title: "aaaHow tooperform živé streamování s místními kodéry pomocí rozhraní .NET | Microsoft Docs"
+description: "Toto téma ukazuje, jak toouse .NET tooperform live kódování pomocí místních kodérů."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 3ef6065f5b9e05e0ea5716548699943a2c877bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 332582c9f925f8b9270929b3fa8140fce010bbf9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET
+# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-net"></a>Jak tooperform živé streamování s místními kodéry, pomocí rozhraní .NET
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,46 +28,46 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Tento kurz vás provede kroky vytváření pomocí .NET SDK služby Azure Media Services **kanál** který je nakonfigurován pro průchozí doručování. 
+Tento kurz vás provede kroky hello hello Azure Media Services .NET SDK toocreate **kanál** který je nakonfigurován pro průchozí doručování. 
 
 ## <a name="prerequisites"></a>Požadavky
-K dokončení kurzu potřebujete následující:
+Hello následují požadované toocomplete hello kurzu:
 
 * Účet Azure.
-* Účet Media Services.    Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
+* Účet Media Services.    toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).
 * Nastavení prostředí vývojářů. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
 * Webová kamera. Například [kodér Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
-Doporučujeme přečtení následujících článků:
+Doporučené tooreview hello následující články:
 
 * [Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Příklad
-Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:
+Hello následující příklad kódu ukazuje, jak tooachieve hello následující úkoly:
 
-* Připojení ke službě Media Services
+* Připojení služby tooMedia
 * Vytvoření kanálu
-* Aktualizace kanál
-* Načtěte vstupní koncový bod v kanálu. Místní kodéru za provozu by měly být zadané vstupní koncový bod. Za provozu kodér převede signály z kamery do datových proudů, které se odesílají do tohoto kanálu vstup (ingestování) koncového bodu.
-* Načtení koncového bodu náhledu kanálu
+* Aktualizace hello kanálu
+* Načtěte hello kanál vstupní koncový bod. vstupní koncový bod Hello je třeba poskytnout toohello místní kodér za provozu. Hello za provozu Kodér převádí signály z toostreams hello fotoaparát, odeslaný zadat toohello kanál (ingestování) koncového bodu.
+* Načtení koncového bodu náhledu kanálu hello
 * Vytvořte a spusťte program
-* Vytvořit lokátor potřebné pro přístup k programu
+* Vytvořit lokátor potřeby tooaccess hello programu
 * Vytvoření a spuštění StreamingEndpoint
-* Aktualizace koncového bodu streamování
+* Aktualizovat hello koncový bod streamování
 * Vypnout prostředky
 
 >[!IMPORTANT]
->Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
+>Zkontrolujte, zda text hello, ze kterého chcete obsah toostream koncový bod streamování je v hello **systémem** stavu. 
     
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
-Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora RTMP ve službě Azure Media Services a kodéry Live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Informace o tom najdete v části tooconfigure za provozu encoder [podpora RTMP ve službě Azure Media Services a kodéry Live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
     using System;
     using System.Collections.Generic;
@@ -86,7 +86,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -103,11 +103,11 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
 
             IChannel channel = CreateAndStartChannel();
 
-            // Set the Live Encoder to point to the channel's input endpoint:
+            // Set hello Live Encoder toopoint toohello channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
-            // Use the previewEndpoint to preview and verify
-            // that the input from the encoder is actually reaching the Channel.
+            // Use hello previewEndpoint toopreview and verify
+            // that hello input from hello encoder is actually reaching hello Channel.
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             IProgram program = CreateAndStartProgram(channel);
@@ -120,7 +120,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
 
         public static IChannel CreateAndStartChannel()
         {
-            //If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions’s Output property.
+            //If you want toochange hello Smooth fragments tooHLS segment ratio, you would set hello ChannelCreationOptions’s Output property.
 
             IChannel channel = _context.Channels.Create(
             new ChannelCreationOptions
@@ -130,7 +130,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
             Preview = CreateChannelPreview()
             });
 
-            //Starting and stopping Channels can take some time to execute. To determine the state of operations after calling Start or Stop, query the IChannel.State .
+            //Starting and stopping Channels can take some time tooexecute. toodetermine hello state of operations after calling Start or Stop, query hello IChannel.State .
 
             channel.Start();
 
@@ -150,7 +150,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
                     {
                     Name = "TestChannelInput001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -171,7 +171,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
                     {
                     Name = "TestChannelPreview001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -213,7 +213,7 @@ Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora
         {
             IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
 
-            // Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
+            // Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
             // however each Program must have a unique name within your Media Services account.
             IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
             program.Start();

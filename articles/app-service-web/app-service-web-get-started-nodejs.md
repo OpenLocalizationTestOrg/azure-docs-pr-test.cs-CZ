@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření webové aplikace Node.js ve službě Azure | Dokumentace Microsoftu"
+title: "aaaCreate webové aplikace Node.js v Azure | Microsoft Docs"
 description: "Během několika minut můžete nasadit svou první aplikaci Node.js Hello World pomocí služby Azure App Service Web Apps."
 services: app-service\web
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ce845da09a7c088b8a2ba29b818a46a3b41aa4e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 163edf83b2353755fc9fa2d75aed489038cf7c81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit aplikaci Node.js pomocí služby Azure Web Apps. Vytvoříte webovou aplikaci pomocí rozhraní příkazového řádku [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a pomocí Gitu nasadíte ukázkový kód Node.js do webové aplikace.
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak toodeploy tooAzure aplikace Node.js webové aplikace. Vytvořit webovou aplikaci hello pomocí hello [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), a pomocí Git toodeploy ukázkovou Node.js kód toohello webovou aplikaci.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Následující postup můžete použít v případě počítačů Mac, Windows nebo Linux. Pokud máte nainstalované všechny požadované prostředky, zabere vám tento postup zhruba pět minut.   
+Můžete provést kroky hello níže používání počítačů Mac, Windows nebo Linux. Po instalaci nezbytných součástí hello, trvá asi 5 minut toocomplete hello kroky.   
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-Node-Developers/Create-a-Nodejs-app-in-Azure-Quickstart/player]   
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+toocomplete tento rychlý start:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat Node.js a NPM](https://nodejs.org/).
@@ -43,41 +43,41 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-hello-sample"></a>Stažení ukázky hello
 
-V okně terminálu naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
+Okno terminálu spusťte následující příkaz tooclone hello ukázkové aplikace úložiště tooyour místního počítače hello.
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
-Toto okno terminálu budete používat ke spuštění všech příkazů v tomto kurzu Rychlý start.
+Se používá toto okno terminálu toorun všechny příkazy hello tento rychlý start.
 
-Přejděte do adresáře, který obsahuje vzorový kód.
+Změnit toohello adresář, který obsahuje hello ukázkový kód.
 
 ```bash
 cd nodejs-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Místní spuštění aplikace
+## <a name="run-hello-app-locally"></a>Místní spuštění aplikace hello
 
-Aplikaci spustíte místně tak, že otevřete okno terminálu a pomocí skriptu `npm start` spustíte integrovaný server HTTP aplikace Node.js.
+Místní spuštění aplikace hello otevřete okno terminálu a použitím hello `npm start` skriptu toolaunch hello součástí server Node.js HTTP.
 
 ```bash
 npm start
 ```
 
-Otevřete webový prohlížeč a přejděte na ukázkovou aplikaci na adrese http://localhost:1337.
+Otevřete webový prohlížeč a přejděte toohello ukázkovou aplikaci na adresu http://localhost: 1337.
 
-Na stránce se zobrazí zpráva **Hello World** z ukázkové aplikace.
+Zobrazí hello **Hello, World** zprávu od hello ukázková aplikace zobrazí stránku hello.
 
 ![Ukázková aplikace spuštěná místně](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
 
-V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
+V okně terminálu, stiskněte klávesu **Ctrl + C** tooexit hello webový server.
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -93,11 +93,11 @@ Nyní jste v Azure vytvořili novou prázdnou webovou aplikaci.
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 23, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (21/21), done.
 Writing objects: 100% (23/23), 3.71 KiB | 0 bytes/s, done.
 Total 23 (delta 8), reused 7 (delta 1)
@@ -119,62 +119,62 @@ remote: Copying file: 'process.json'
 remote: Deleting file: 'hostingstart.html'
 remote: Ignoring: .git
 remote: Using start-up script index.js from package.json.
-remote: Node.js versions available on the platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
-remote: Selected node.js version 6.9.1. Use package.json file to choose a different version.
+remote: Node.js versions available on hello platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
+remote: Selected node.js version 6.9.1. Use package.json file toochoose a different version.
 remote: Selected npm version 3.10.8
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net:443/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Přechod do aplikace
+## <a name="browse-toohello-app"></a>Procházet toohello aplikace
 
-V prohlížeči zadejte adresu nasazené aplikace.
+Procházet toohello nasadit aplikaci pomocí webového prohlížeče.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Vzorový kód Node.js je spuštěný ve webové aplikaci služby Azure App Service.
+Ukázkový kód Node.js Hello běží ve webové aplikaci Azure App Service.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**Blahopřejeme!** Nasadili jste svoji první aplikaci Node.js do služby App Service.
+**Blahopřejeme!** Vaše první tooApp aplikace Node.js služby jste nasadili.
 
-## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
+## <a name="update-and-redeploy-hello-code"></a>Aktualizace a znovu nasaďte hello kódu
 
-V textovém editoru otevřete soubor `index.js`, který je součástí aplikace Node.js, a proveďte malou změnu textu u volání `response.end`:
+Pomocí textového editoru otevřete hello `index.js` souboru v aplikaci Node.js hello a proveďte textový toohello malé změny ve volání hello příliš`response.end`:
 
 ```nodejs
 response.end("Hello Azure!");
 ```
 
-Potvrďte změny v Gitu a potom odešlete změny kódu do Azure.
+Potvrdit změny v úložišti Git a pak push tooAzure změny kódu hello.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a stiskněte tlačítko Aktualizovat.
+Po dokončení nasazení přepnout zpět toohello okno prohlížeče, který otevřít v hello **procházet toohello aplikace** kroku a stiskněte tlačítko Aktualizovat.
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Správa vaší nové webové aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte toohello <a href="https://portal.azure.com" target="_blank">portál Azure</a> toomanage hello webovou aplikaci jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce hello, klikněte na **App Services**a potom klikněte na název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
 Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 
 ![Okno App Service na webu Azure Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+levé nabídce Hello obsahuje různé stránky pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

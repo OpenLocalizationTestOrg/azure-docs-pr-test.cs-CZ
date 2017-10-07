@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrovat Azure Active Directory vxMaintain | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vxMaintain."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a vxMaintain."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 937ea276d898986fc5a953c96fddabdc8940309f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>Kurz: Integrovat vxMaintain Azure Active Directory
 
-V tomto kurzu zjistěte, jak integrovat vxMaintain s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate vxMaintain s Azure Active Directory (Azure AD).
 
 Tato integrace poskytuje několik výhod důležité. Můžete:
 
-- Řízení ve službě Azure AD, který má přístup k vxMaintain.
-- Povolte uživatelům automaticky se přihlaste k vxMaintain s jednotné přihlašování (SSO) pomocí svých účtů Azure AD.
-- Spravovat účty v jednom centrálním místě: portál Azure.
+- Ovládací prvek ve službě Azure AD, který má přístup k toovxMaintain.
+- Povolte přihlášení uživatelů tooautomatically toovxMaintain s jednotné přihlašování (SSO) prostřednictvím jejich účty Azure AD.
+- Spravovat účty v jednom centrálním místě: hello portálu Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s vxMaintain, potřebujete následující položky:
+Integrace služby Azure AD s vxMaintain tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - VxMaintain předplatné povolené jednotné přihlašování
 
 > [!NOTE]
-> Při testování kroky v tomto kurzu, doporučujeme vám, nepoužívejte provozním prostředí.
+> Při testování hello kroky v tomto kurzu, doporučujeme vám, nepoužívejte provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle následujících doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,151 +49,151 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících dopor
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. 
 
-Scénář, který tento kurz popisuje se skládá ze dvou hlavních stavebních bloků:
+Hello scénář, který tento kurz popisuje se skládá ze dvou hlavních stavebních bloků:
 
-* Přidání vxMaintain z Galerie
+* Přidání vxMaintain z Galerie hello
 * Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="add-vxmaintain-from-the-gallery"></a>Přidat vxMaintain z Galerie
-Chcete-li nakonfigurovat integraci vxMaintain s Azure AD, přidejte vxMaintain z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-vxmaintain-from-hello-gallery"></a>Přidat vxMaintain z Galerie hello
+integrace hello tooconfigure vxMaintain s Azure AD, je nutné tooadd vxMaintain hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-Pokud chcete přidat vxMaintain z galerie, postupujte takto:
+tooadd vxMaintain z Galerie hello hello následující:
 
-1. V [portál Azure](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** tlačítko. 
+1. V hello [portál Azure](https://portal.azure.com), v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
 2. Vyberte **podnikové aplikace, které** > **všechny aplikace**.
 
-    ![V podokně "Podnikové aplikace"][2]
+    ![podokno "Podnikové aplikace" Hello][2]
     
-3. Chcete-li přidat aplikaci, v **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.
+3. tooadd aplikace, v hello **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.
 
-    !["Nová aplikace" tlačítko][3]
+    ![Hello "Nové aplikace" tlačítko][3]
 
-4. Do vyhledávacího pole zadejte **vxMaintain**.
+4. Hello vyhledávacího pole zadejte **vxMaintain**.
 
-    ![Rozevíracím seznamu "Jednoho přihlašování v režimu"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Hello "Jednoho přihlašování v režimu" rozevíracího seznamu](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. V seznamu výsledků vyberte **vxMaintain**a potom vyberte **přidat**.
+5. V seznamu výsledků hello vyberte **vxMaintain**a potom vyberte **přidat**.
 
-    ![Odkaz vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+    ![odkaz vxMaintain Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD SSO pomocí vxMaintain, podle testovacího uživatele názvem "Britta Simon."
 
-Pro jednotné přihlašování pro práci Azure AD musí znát vxMaintain protějškem uživatele Azure AD. To znamená je potřeba vytvořit vztah propojení mezi uživatele Azure AD a odpovídající vxMaintain uživatele.
+Azure AD pro jednotné přihlašování toowork musí tooknow hello vxMaintain protějšku toohello uživatele Azure AD. To znamená je potřeba vytvořit vztah propojení mezi hello uživatele Azure AD a hello odpovídající vxMaintain uživatele.
 
-Vytvořit vztah odkaz, přiřaďte mu vxMaintain **uživatelské jméno** hodnotu jako Azure AD **uživatelské jméno** hodnotu.
+tooestablish hello odkaz vztah, přiřaďte hello vxMaintain **uživatelské jméno** hodnotu jako hello Azure AD **uživatelské jméno** hodnotu.
 
-Nakonfigurovat a otestovat Azure AD SSO pomocí vxMaintain, dokončete následující stavební bloky.
+tooconfigure a testování Azure AD jednotného přihlašování pomocí vxMaintain, dokončení hello následující stavební bloky.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurovat Azure AD jednotného přihlašování
 
-V této části můžete povolit jednotné přihlašování Azure AD na portálu Azure i nakonfigurovat jednotné přihlašování v aplikaci vxMaintain následujícím způsobem:
+V této části můžete povolit jednotné přihlašování Azure AD v hello portálu Azure i nakonfigurovat jednotné přihlašování v aplikaci vxMaintain díky hello následující:
 
-1. Na portálu Azure na **vxMaintain** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **vxMaintain** stránky integrace aplikací, vyberte **jednotného přihlašování**.
 
-    ![Příkaz "Jednotného přihlašování"][4]
+    ![příkaz "Jednotného přihlašování" Hello][4]
 
-2. Pro povolení jednotného přihlašování, v **režimu přihlašování** rozevíracího seznamu vyberte **na základě SAML přihlašování**.
+2. tooenable jednotné přihlašování, v hello **režimu přihlašování** rozevíracího seznamu vyberte **na základě SAML přihlašování**.
  
-    ![Příkaz "na základě SAML přihlášení"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Hello příkaz "na základě SAML přihlášení"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. V části **vxMaintain domény a adresy URL**, postupujte takto:
+3. V části **vxMaintain domény a adresy URL**, hello následující:
 
-    ![VxMaintain oddílu domény a adresy URL](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Hello vxMaintain oddílu domény a adresy URL](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. V **identifikátor** zadejte adresu URL, která má následující syntaxi:`https://<company name>.verisae.com`
+    a. V hello **identifikátor** pole, zadejte adresu URL, která má hello následující syntaxi:`https://<company name>.verisae.com`
 
-    b. V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. V hello **adresa URL odpovědi** pole, zadejte adresu URL, která má hello následující syntaxi:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem a adresa URL odpovědi. Chcete-li získat hodnoty, obraťte se [tým podpory vxMaintain](http://www.verisae.com/contact-us).
+    > Hello předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem hello a adresa URL odpovědi. tooobtain hello hodnoty, kontaktujte hello [tým podpory vxMaintain](http://www.verisae.com/contact-us).
  
-4. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte soubor metadat pro váš počítač.
+4. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte hello metadata souboru tooyour počítače.
 
-    ![V části "SAML podpisový certifikát"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![Hello část "SAML podpisový certifikát"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
 5. Vyberte **Uložit**.
 
-    ![Tlačítko Uložit](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
+    ![tlačítko Uložit Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci **vxMaintain** jednotné přihlašování, odesílání stažené **soubor XML s metadaty** do souboru [tým podpory vxMaintain](http://www.verisae.com/contact-us).
+6. tooconfigure **vxMaintain** jednotné přihlašování, odeslání hello Stáhnout **soubor XML s metadaty** souboru toohello [tým podpory vxMaintain](http://www.verisae.com/contact-us).
 
 > [!TIP]
-> Jak nastavit aplikaci si můžete přečíst stručným verzi podle předchozích pokynů v [portál Azure](https://portal.azure.com). Po přidání aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě a potom přejdete embedded dokumentace z **konfigurace** části. 
+> Při nastavování aplikace hello, si můžete přečíst stručným verzi hello předchozích pokynů v hello [portál Azure](https://portal.azure.com). Po přidání aplikace hello z hello **služby Active Directory** > **podnikové aplikace, které** části, vyberte hello **jednotné přihlašování** kartě a potom hello přístup vložené dokumentace z hello **konfigurace** části. 
 >
->Další informace o funkci embedded dokumentaci najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://go.microsoft.com/fwlink/?linkid=845985).
+>toolearn Další informace o funkci embedded dokumentace hello, najdete v části [Správa jednotného přihlašování pro podnikové aplikace](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-V této části vytvoříte testovacího uživatele Britta Simon na portálu Azure, následujícím způsobem:
+V této části vytvoříte testovacího uživatele Britta Simon v hello portálu Azure pomocí tohoto postupu hello následující:
 
-![Testovací uživatele Azure AD][100]
+![Hello Azure AD testovacího uživatele][100]
 
-1. V **portál Azure**, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+1. V hello **portál Azure**, v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko.
 
-    ![Tlačítko "Azure Active Directory"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
+    ![tlačítko "Azure Active Directory" Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** > **všichni uživatelé**.
+2. toodisplay seznam uživatelů, přejděte příliš**uživatelů a skupin** > **všichni uživatelé**.
     
-    ![Na odkaz "Všichni uživatelé"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
-    **Všichni uživatelé** otevře se dialogové okno. 
+    ![Hello "Všichni uživatelé" odkaz](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
+    Hello **všichni uživatelé** otevře se dialogové okno. 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat**.
+3. tooopen hello **uživatele** dialogové okno, vyberte **přidat**.
  
-    ![Tlačítko Přidat](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. V **uživatele** dialogové okno pole, postupujte takto:
+4. V hello **uživatele** dialogové okno pole, hello následující:
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. V hello **název** zadejte **BrittaSimon**.
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu testovacího uživatele Britta Simon.
+    b. V hello **uživatelské jméno** pole typu hello e-mailovou adresu testovacího uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a poznamenejte si hodnotu, která byla vygenerována v **heslo** pole.
+    c. Vyberte hello **zobrazit hesla** zaškrtávací políčko a potom Poznámka hello hodnotu, která byla vygenerována v hello **heslo** pole.
 
     d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-vxmaintain-test-user"></a>Vytvoření zkušebního uživatele vxMaintain
 
-V této části vytvoříte testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele v platformě vxMaintain, pracovat [tým podpory vxMaintain](http://www.verisae.com/contact-us). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
+V této části vytvoříte testovacího uživatele Britta Simon v vxMaintain. Uživatelé tooadd hello vxMaintain platformy, pracovat s [tým podpory vxMaintain](http://www.verisae.com/contact-us). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte testovacího uživatele Britta Simon chcete použít k udělení přístupu k vxMaintain jednotného přihlašování k Azure. Chcete-li to provést, postupujte takto:
+V této části povolíte tak, že udělíte přístup toovxMaintain testovacího uživatele Britta Simon toouse jednotného přihlašování k Azure. toodo tedy hello následující:
 
-![Testovací uživatel v seznamu zobrazovaný název][200] 
+![Testovací uživatel v seznamu zobrazovaný název hello][200] 
 
-1. Na portálu Azure **aplikace** zobrazení, přejděte na **Directory** zobrazení > **podnikové aplikace, které** > **všechny aplikace**.
+1. V portálu Azure hello **aplikace** zobrazit, přejděte příliš**Directory** zobrazení > **podnikové aplikace, které** > **všechny aplikace**.
 
-    ![Na odkaz "Všechny aplikace"][201] 
+    ![Hello "Všechny aplikace" odkaz][201] 
 
-2. V **aplikace** seznamu, vyberte **vxMaintain**.
+2. V hello **aplikace** seznamu, vyberte **vxMaintain**.
 
-    ![Odkaz vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+    ![odkaz vxMaintain Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. V levém podokně vyberte **uživatelů a skupin**.
+3. V levém podokně hello vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202] 
+    ![odkaz "Uživatelé a skupiny" Hello][202] 
 
-4. Vyberte **přidat** a pak na **přidat přiřazení** podokně, vyberte **uživatelů a skupin**.
+4. Vyberte **přidat** a pak na hello **přidat přiřazení** podokně, vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][203]
+    ![odkaz "Uživatelé a skupiny" Hello][203]
 
-5. V **uživatelů a skupin** v dialogovém **uživatelé** seznamu, vyberte **Britta Simon**a pak vyberte **vyberte** tlačítko.
+5. V hello **uživatelů a skupin** dialogové okno, v hello **uživatelé** seznamu, vyberte **Britta Simon**a potom vyberte hello **vyberte** tlačítko.
 
-7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
+7. V hello **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Testování vaší služby Azure AD jednotné přihlašování
 
-V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí přístupového panelu.
+V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí hello přístupového panelu.
 
-Výběr **vxMaintain** dlaždice na přístupovém panelu musí přihlásit do aplikace vxMaintain automaticky.
+Výběr hello **vxMaintain** dlaždice v hello Panel přístupu by se měl přihlásit můžete tooyour vxMaintain aplikace automaticky.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="next-steps"></a>Další kroky
 

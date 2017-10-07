@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vlastní image Azure DevTest Labs ze souboru virtuálního pevného disku | Microsoft Docs"
-description: "Naučte se vytvořit vlastní image v Azure DevTest Labs ze souboru virtuálního pevného disku pomocí portálu Azure"
+title: "aaaCreate vlastní obrázek ze souboru virtuálního pevného disku Azure DevTest Labs | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate vlastní image v Azure DevTest Labs ze souboru virtuálního pevného disku pomocí portálu Azure"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 9983ea9b847f44ed18a6169a4bdb224b63626a64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 80af8ea1cb72380f868df0a76c4a0dcd92e63cf5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvořit vlastní image ze souboru virtuálního pevného disku
 
@@ -30,41 +30,41 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující postup vás provede procesem vytvoření vlastní image ze souboru virtuálního pevného disku pomocí portálu Azure:
+Hello následující postup vás provede procesem vytvoření vlastní image ze souboru virtuálního pevného disku pomocí hello portálu Azure:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **Další služby** a poté ze seznamu vyberte **DevTest Labs**.
+1. Vyberte **další služby**a potom vyberte **DevTest Labs** hello seznamu.
 
-1. Ze seznamu labs vyberte požadované testovací prostředí.  
+1. Ze seznamu hello labs vyberte požadované prostředí hello.  
 
-1. V okně v prostředí, vyberte **konfigurace**. 
+1. V okně prostředí hello vyberte **konfigurace**. 
 
-1. V testovacím prostředí **konfigurace** vyberte **vlastní Image (VHD)**.
+1. V testovacím hello **konfigurace** vyberte **vlastní Image (VHD)**.
 
-1. Na **vlastní image** vyberte **+ přidat**.
+1. Na hello **vlastní image** vyberte **+ přidat**.
 
     ![Přidat vlastní obrázek](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Zadejte název pro vlastní image. Tento název se zobrazí v seznamu základní Image při vytváření virtuálního počítače.
+1. Zadejte název hello hello vlastní Image. Tento název se zobrazí v seznamu hello základní Image při vytváření virtuálního počítače.
 
-1. Zadejte popis vlastní image. Tento popis se zobrazí v seznamu základní Image při vytváření virtuálního počítače.
+1. Zadejte popis hello hello vlastní image. Tento popis se zobrazí v seznamu hello základní Image při vytváření virtuálního počítače.
 
 1. Vyberte **virtuálního pevného disku**.
 
-1. Z **virtuálního pevného disku** okně vyberte požadovaný soubor VHD.
+1. Z hello **virtuálního pevného disku** okně, vyberte hello požadovaného souboru virtuálního pevného disku.
 
-1. Vyberte **OK** zavřete **virtuálního pevného disku** okno.
+1. Vyberte **OK** tooclose hello **virtuálního pevného disku** okno.
 
 1. Vyberte **konfigurace operačního systému**.
 
-1. Na **konfigurace operačního systému** , vyberte buď **Windows** nebo **Linux**.
+1. Na hello **konfigurace operačního systému** , vyberte buď **Windows** nebo **Linux**.
 
-1. Pokud **Windows** je vybrána, zadejte prostřednictvím políčka zda *Sysprep* byl spuštěn v počítači. 
+1. Pokud **Windows** je vybrána, zadejte prostřednictvím hello políčko zda *Sysprep* byl spuštěn na počítači hello. 
 
-1. Vyberte **OK** zavřete **konfigurace operačního systému** okno.
+1. Vyberte **OK** tooclose hello **konfigurace operačního systému** okno.
 
-1. Vyberte **OK** vytvořit vlastní image.
+1. Vyberte **OK** toocreate hello vlastní image.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -75,4 +75,4 @@ Následující postup vás provede procesem vytvoření vlastní image ze soubor
 
 ##<a name="next-steps"></a>Další kroky
 
-- [Přidejte virtuální počítač do testovacího prostředí](./devtest-lab-add-vm-with-artifacts.md)
+- [Přidání testovacího prostředí tooyour virtuálních počítačů](./devtest-lab-add-vm-with-artifacts.md)

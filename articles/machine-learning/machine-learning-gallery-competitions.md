@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence Gallery soutěže | Microsoft Docs"
-description: "Zjistit soutěže v Cortana Intelligence Gallery."
+title: "aaaCortana Intelligence Gallery soutěže | Microsoft Docs"
+description: "Zjistit soutěže v hello Cortana Intelligence Gallery."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 25ec625c1f32fd1477685196ea21ad6f582bc7ce
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4631ac21b672b77141023d14e57a1d6523220624
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>Zjistit soutěže v Cortana Intelligence Gallery
+# <a name="discover-competitions-in-hello-cortana-intelligence-gallery"></a>Zjistit soutěže v hello Cortana Intelligence Gallery
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence soutěže
-**[Soutěže](https://gallery.cortanaintelligence.com/competitions)**  nabízejí zajímavých možnost pokouší s komunita datových vědců k dokáže řešit složité problémy pomocí Cortana Intelligence Suite.
+**[Soutěže](https://gallery.cortanaintelligence.com/competitions)**  poskytnout zajímavých toocompete možnost hello komunitě data vědců toosolve složité problémy pomocí Cortana Intelligence Suite.
 
-Odpovědi na nejčastější dotazy týkající se soutěže, naleznete v části [nejčastější dotazy k Microsoft Cortana Intelligence soutěže](machine-learning-competition-faq.md).
+Odpovědi toofrequently-dotazy o soutěže, najdete v části [nejčastější dotazy k Microsoft Cortana Intelligence soutěže](machine-learning-competition-faq.md).
 
 ## <a name="discover"></a>Informace
-  Chcete-li procházet soutěže v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com), přesuňte ukazatel myši na **Další** v horní části Galerie domovskou stránku a vyberte **soutěže**.
+  toobrowse pro soutěže v hello galerie, otevřete hello [Galerie](http://gallery.cortanaintelligence.com), přesuňte ukazatel myši příliš**Další** hello horní části hello Galerie domovskou stránku a vyberte **soutěže**.
 
-![Vyberte soutěže z Galerie domovské stránky](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
+![Vyberte soutěže z hello Galerie domovské stránky](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
 
-  **[Soutěže](https://gallery.cortanaintelligence.com/competitions)**  stránky zobrazí seznam nejčastěji používané soutěže.
-Klikněte na tlačítko **zobrazit všechny** zobrazíte všechny soutěže.
-Z této stránky můžete vyhledat všechny soutěže v galerii. Také můžete hledat výběrem kritéria filtru na levé straně stránky a vstup hledaných termínů v horní části.
+  **[Soutěže](https://gallery.cortanaintelligence.com/competitions)**  stránky zobrazí seznam nejčastěji používané soutěže hello.
+Klikněte na tlačítko **zobrazit všechny** tooview všechny soutěže.
+Z této stránky můžete vyhledat všechny soutěže v hello galerie. Můžete také prohledat výběrem kritéria filtru na levé straně hello hello stránky a hello vstup hledaných termínů v horní části.
 
- Klikněte na možnost žádné soutěže konfliktů na stránce s podrobnostmi o otevřít a přečíst si další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře. Můžete je dokonce sdílet s přátele nebo kolegy pomocí možnosti sdílené složky LinkedIn nebo Twitter. E-mailu odkaz na soutěže pozvaným jiní uživatelé při zobrazení stránky.
+ Klikněte na možnost žádné soutěže tooopen konfliktů na stránce s podrobnostmi o a přečtěte si další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře hello. Můžete ji sdílet i s přátel nebo kolegy pomocí hello sdílenou složkou možnosti LinkedIn nebo Twitter. Můžete také e-mailem na odkaz toothe soutěže tooinvite jinou stránku hello tooview uživatele.
 
 ![Sdílet tuto položku s friends](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="enter-a-competition"></a>Zadejte do soutěže
-Pokud konkurenci je otevřená, je stav na stránce podrobností **Active**. Chcete-li zadat konkurenci, klikněte na tlačítko **zadejte soutěže** a budete mít pokyny na prostředky, které potřebujete a kroky, které je třeba provést.
+Pokud soutěže hello je otevřená, je stav hello na stránce s podrobnostmi o hello **Active**. tooenter hello soutěže, klikněte na tlačítko **zadejte soutěže** a budete mít pokyny na prostředcích hello potřebujete a kroky nutné tootake hello.
 
 ![Soutěže je aktivní](media/machine-learning-gallery-competitions/open-competition.png)
 
-Pokud konkurenci byla dokončena, zobrazí se seznam vítězové.
+Pokud hello soutěže byla dokončena, zobrazí se seznam vítězové.
 
-**[PŘEJÍT DO GALERIE DO >>](http://gallery.cortanaintelligence.com)**
+**[TRVAT mi toohello GALERIE >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

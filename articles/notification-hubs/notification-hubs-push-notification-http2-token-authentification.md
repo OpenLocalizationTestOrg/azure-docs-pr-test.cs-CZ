@@ -1,6 +1,6 @@
 ---
-title: "Ověřování na základě tokenu (HTTP/2) pro služby APN v Azure Notification Hubs | Microsoft Docs"
-description: "Toto téma vysvětluje, jak můžete využít nové tokenu ověřování pro služby APN"
+title: "na základě aaaToken ověřování (HTTP/2) pro služby APN v Azure Notification Hubs | Microsoft Docs"
+description: "Toto téma vysvětluje, jak tooleverage hello nový token ověřování pro služby APN"
 services: notification-hubs
 documentationcenter: .net
 author: kpiteira
@@ -13,67 +13,67 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: kapiteir
-ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3353d7f16033ce0b68edec9ee9aeb98f47faa1fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Ověřování na základě tokenu (HTTP/2) pro služby APN
 ## <a name="overview"></a>Přehled
-Tento článek podrobně popisují pomocí tokenu ověřování založené na nový protokol APNS HTTP/2.
+Tento článek podrobně popisuje, jak ověřování na základě toouse hello nový APNS HTTP/2 protokol s tokenem.
 
-Klíčové výhody použití nového protokolu patří:
--   Generování tokenů je poměrně starosti, (ve srovnání s certifikáty)
+pomocí nového protokolu hello Hello klíčové výhody patří:
+-   Generování tokenů je poměrně jednoduchý volné (porovnání toocertificates)
 -   Žádná další data vypršení – jsou v ovládacím prvku ověřovací tokeny a jejich odvolání
--   Datové části teď může být až 4 KB
+-   Datové části teď může být až too4 KB
 - Synchronní zpětné vazby
--   Jste nejnovější protokol společnosti Apple – certifikátů dál používat binární protokol, který je označen pro vyřazení
+-   Jste nejnovější protokol společnosti Apple – certifikátů dál používat hello binární protokol, který je označen pro vyřazení
 
 Pomocí tohoto nového mechanismu lze provést ve dvou krocích za pár minut:
-1.  Získat informace potřebné z portálu Apple Developer účtu
-2.  Konfigurace centra oznámení s novými informacemi
+1.  Získat informace potřebné hello z portálu Apple Developer účtu hello
+2.  Konfigurace centra oznámení s informací o novém hello
 
-Centra oznámení je nyní všechny nastaven na nový systém ověřování pomocí služby APN. 
+Centra oznámení je nyní všechny sady toouse hello nového ověřování systému pomocí služby APNS. 
 
 Pamatujte, že pokud jste migrovali ze pomocí přihlašovacích údajů certifikát služby APN:
-- token vlastnosti přepsat svůj certifikát v našem systému
-- ale aplikace i nadále bezproblémově přijímat oznámení.
+- token vlastnosti Hello přepsat svůj certifikát v našem systému
+- ale aplikace stále tooreceive oznámení bez problémů.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Získávání informací o ověření od společnosti Apple
-Pokud chcete povolit ověřování na základě tokenu, potřebujete následující vlastnosti z vašeho účtu Apple Developer:
+ověřování na základě tokenu tooenable, je třeba hello následující vlastnosti z vašeho účtu Apple Developer:
 ### <a name="key-identifier"></a>Identifikátor klíče
-Identifikátor klíče můžete získat na stránce "Klíče" ve vašem účtu vývojáře Apple
+Nelze získat identifikátor klíče Hello ze stránky "Klíče" hello ve vašem účtu vývojáře Apple
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier--application-name"></a>Identifikátor aplikace & název aplikace
-Název aplikace je k dispozici prostřednictvím stránky vývojářský účet na ID aplikace. 
+název aplikace Hello je k dispozici prostřednictvím stránku hello ID aplikace hello vývojářský účet. 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-Identifikátor aplikace je k dispozici prostřednictvím stránce s podrobnostmi o členství v vývojářský účet.
+identifikátor aplikace Hello je k dispozici prostřednictvím hello stránce s podrobnostmi o členství v hello vývojářský účet.
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
 
 ### <a name="authentication-token"></a>Ověřovací token
-Ověřovací token si můžete stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak generovat tento token [dokumentaci pro vývojáře Apple](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
+Hello ověřovací token si můžete stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak toogenerate tento token, naleznete v příliš[dokumentaci pro vývojáře Apple](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Konfigurace centra oznámení pro použití ověřování na základě tokenu
-### <a name="configure-via-the-azure-portal"></a>Konfigurování prostřednictvím portálu Azure
-Pokud chcete povolit tokenu ověřování založené na portálu, přihlaste se k portálu Azure a přejděte do vašeho centra oznámení > oznámení služby > panely služby APN. 
+## <a name="configuring-your-notification-hub-toouse-token-based-authentication"></a>Konfigurace oznámení centra toouse na základě tokenu ověřování
+### <a name="configure-via-hello-azure-portal"></a>Nakonfigurovat přes hello portálu Azure
+tooenable token ověřování hello portálu, přihlášení toohello portál Azure a přejděte tooyour centra oznámení > oznámení služby > panely služby APN. 
 
-Existuje nový vlastnost – *režim ověřování*. Výběr Token umožňuje aktualizovat všechny relevantní tokenu vlastnosti vašeho centra.
+Existuje nový vlastnost – *režim ověřování*. Výběr Token vám umožní tooupdate vašeho centra s všech hello relevantní token vlastností.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-- Zadejte vlastnosti, které jste získali z vývojářského účtu Apple 
+- Zadejte vlastnosti hello, který jste získali z účtu vývojáře Apple 
 - Zvolte režim vaší aplikace (produkční nebo izolovaného prostoru) 
-- Kliknutím na Uložit aktualizovat přihlašovací údaje APNS. 
+- Klikněte na Uložit tooupdate vaše přihlašovací údaje APNS. 
 
 ### <a name="configure-via-management-api-rest"></a>Nakonfigurovat přes rozhraní API (REST) pro správu
 
-Můžete použít naše [rozhraní API pro správu](https://msdn.microsoft.com/library/azure/dn495827.aspx) k aktualizaci centra oznámení pro použití ověřování na základě tokenu.
-V závislosti na tom, zda je aplikace, které konfigurujete izolovaného prostoru nebo produkční aplikace (zadané v účtu vývojáře Apple) použijte jednu z odpovídající koncových bodů:
+Můžete použít naše [rozhraní API pro správu](https://msdn.microsoft.com/library/azure/dn495827.aspx) tooupdate oznámení centra toouse na základě tokenu ověřování.
+V závislosti na tom, jestli je hello aplikaci, kterou konfigurujete izolovaného prostoru nebo produkční aplikace (zadané v účtu vývojáře Apple) použijte jednu z hello odpovídající koncové body:
 
 - Koncový bod izolovaného prostoru: [https://api.development.push.apple.com:443, 3 nebo zařízení](https://api.development.push.apple.com:443/3/device)
 - Koncový bod produkční: [https://api.push.apple.com:443, 3 nebo zařízení](https://api.push.apple.com:443/3/device)
@@ -83,7 +83,7 @@ V závislosti na tom, zda je aplikace, které konfigurujete izolovaného prostor
 > 
 > 
 
-Tady je příklad požadavek PUT aktualizovat rozbočovač s ověřováním na základě tokenu:
+Tady je příklad tooupdate požadavek PUT rozbočovač s ověřováním na základě tokenu:
 
 
         PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -100,10 +100,10 @@ Tady je příklad požadavek PUT aktualizovat rozbočovač s ověřováním na z
           }
         
 
-### <a name="configure-via-the-net-sdk"></a>Konfigurovat pomocí sady .NET SDK
-Můžete nakonfigurovat vaše Centrum používat pomocí tokenu ověřování založené na našem [nejnovější verzi klienta SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8). 
+### <a name="configure-via-hello-net-sdk"></a>Nakonfigurovat přes hello .NET SDK
+Můžete nakonfigurovat vaše centra toouse tokenu ověřování založené na našem [nejnovější verzi klienta SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8). 
 
-Zde je ukázka kódu ilustrující správné použití:
+Zde je ukázka kódu ilustrující hello správné použití:
 
 
         NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -111,10 +111,10 @@ Zde je ukázka kódu ilustrující správné použití:
         string keyId = "YOUR KEY ID HERE";
         string appName = "YOUR APP NAME HERE";
         string appId = "YOUR APP ID HERE";
-        NotificationHubDescription desc = new NotificationHubDescription("PATH TO YOUR HUB");
+        NotificationHubDescription desc = new NotificationHubDescription("PATH tooYOUR HUB");
         desc.ApnsCredential = new ApnsCredential(token, keyId, appId, appName);
         desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/device";
         nm.UpdateNotificationHubAsync(desc);
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Návrat k použití ověřování na základě certifikátu
-Kdykoli můžete vrátit zpět k používání ověřování pomocí certifikátů pomocí jakékoli předchozí metody a předání certifikátu, místo token vlastností. Tato akce přepíše dříve uložené přihlašovací údaje.
+## <a name="reverting-toousing-certificate-based-authentication"></a>Ověřování pomocí certifikátů navrácení toousing
+Při ověřování založené na certifikátech toousing čas můžete obnovit pomocí jakékoli předchozí hello certifikátu metoda a předávání místo hello token vlastností. Aby akce přepíše hello dříve uložené přihlašovací údaje.

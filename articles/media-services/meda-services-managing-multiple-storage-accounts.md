@@ -1,6 +1,6 @@
 ---
-title: "Správa Media Services prostředky napříč více účtů úložiště | Microsoft Docs"
-description: "Tento článek poskytují pokyny o tom, jak spravovat media services prostředky v rámci více účtů úložiště."
+title: "aaaManaging Media Services prostředky napříč více účtů úložiště | Microsoft Docs"
+description: "Tento článek získáte informace o tom, jak toomanage služby media services prostředky napříč více účtů úložiště."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
-ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 812f290d91f8d739be1c88db2b612767fda96220
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Services prostředky napříč více účtů úložiště
-Od verze Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště k účtu Media Services poskytuje následující výhody:
+Od verze Microsoft Azure Media Services 2.2, můžete připojit více úložiště účtů tooa jednomu účtu Media Services. Možnost tooattach, více tooa účty úložiště účtu Media Services poskytuje hello následující výhody:
 
 * Vyrovnávání zatížení vaše prostředky napříč více účtů úložiště.
 * Škálování Media Services pro velké objemy zpracování obsahu (jako účet jednoho úložiště aktuálně má maximální limit 500 TB). 
 
-Toto téma ukazuje, jak připojit více účtů úložiště k účtu Media Services pomocí [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media). Také ukazuje, jak při vytváření prostředků pomocí sady Media Services SDK zadat jiným účtům úložiště. 
+Toto téma popisuje, jak tooattach více účtů úložiště tooa účtu Media Services pomocí [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media). Také ukazuje, jak účty toospecify jiného úložiště při vytváření prostředků pomocí sady Media Services SDK hello. 
 
 ## <a name="considerations"></a>Požadavky
-Při připojování více účtů úložiště k účtu Media Services, platí následující aspekty:
+Při připojení více tooyour účty úložiště účtu Media Services, hello platí následující aspekty:
 
-* Všechny účty úložiště připojené k účtu Media Services musí být ve stejném datovém centru jako účet Media Services.
-* V současné době po účet úložiště je připojen k zadaný účet Media Services, nemohou být odstraněny.
-* Je uvedeno v době vytvoření účtu Media Services je účet primárního úložiště. V současné době nelze změnit výchozí účet úložiště. 
-* Aktuálně Pokud chcete přidat účet studeného úložiště k účtu AMS, účet úložiště musí být typu Blob a nastavit na neprimární.
+* Hello všechny účty úložiště připojené tooa účtu Media Services musí být ve stejném datovém centru jako účet Media Services hello.
+* V současné době po účet úložiště je připojen toohello zadaný účet Media Services, nelze odpojit.
+* Hello jeden uvedené během okamžiku vytvoření účtu Media Services je účet primárního úložiště. V současné době nelze změnit hello výchozí účet úložiště. 
+* V současné době Pokud chcete tooadd účet studeného úložiště toohello účtu AMS, hello účet úložiště musí být typu objekt Blob a nastavit toonon primární.
 
 Další důležité informace:
 
-Služba Media Services použije hodnotu **IAssetFile.Name** vlastnost při sestavování adresy URL pro streamování obsah (například http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota vlastnosti Název nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '. " pro příponu názvu souboru.
+Služba Media Services použije hodnotu hello hello **IAssetFile.Name** vlastnost při sestavování adresy URL pro streamování obsahu (například http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ hello streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hello hodnota hello název vlastnosti nemůže mít žádné z následujících hello [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '. " pro hello příponu názvu souboru.
 
-## <a name="to-attach-storage-accounts"></a>Připojit účty úložiště  
+## <a name="tooattach-storage-accounts"></a>účty úložiště tooattach  
 
-Připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media), jak je znázorněno v následujícím příkladu.
+tooyour AMS účet, používání účtů úložiště tooattach [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media), jak ukazuje následující příklad hello.
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,15 +60,15 @@ Připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Spr
 
 ### <a name="support-for-cool-storage"></a>Podpora pro studeného úložiště
 
-Aktuálně Pokud chcete přidat účet studeného úložiště k účtu AMS, účet úložiště musí být typu Blob a nastavit na neprimární.
+V současné době Pokud chcete tooadd účet studeného úložiště toohello účtu AMS, hello účet úložiště musí být typu objekt Blob a nastavit toonon primární.
 
-## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Ke správě prostředků Media Services napříč více účtů úložiště
-Následující kód používá nejnovější sady Media Services SDK k provádění následujících úloh:
+## <a name="toomanage-media-services-assets-across-multiple-storage-accounts"></a>prostředky služby Media Services toomanage napříč více účtů úložiště
+Hello následující kód používá hello nejnovější sady Media Services SDK tooperform hello následující úlohy:
 
-1. Zobrazí všechny účty úložiště přidružené zadaný účet Media Services.
-2. Získat název výchozí účet úložiště.
-3. Vytvoření nového prostředku v výchozí účet úložiště.
-4. Vytvořte prostředek výstup úlohy kódování v zadaný účet úložiště.
+1. Zobrazení všech účtů úložišť hello přidružené hello zadat účet Media Services.
+2. Načíst hello název hello výchozí účet úložiště.
+3. Vytvoření nového prostředku v hello výchozí účet úložiště.
+4. Vytvořit prostředek výstup hello kódování úlohy v hello zadaný účet úložiště.
    
 ```
 using Microsoft.WindowsAzure.MediaServices.Client;
@@ -85,11 +85,11 @@ namespace MultipleStorageAccounts
 {
     class Program
     {
-        // Location of the media file that you want to encode. 
+        // Location of hello media file that you want tooencode. 
         private static readonly string _singleInputFilePath =
             Path.GetFullPath(@"../..\supportFiles\multifile\interview2.wmv");
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -104,30 +104,30 @@ namespace MultipleStorageAccounts
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-            // Display the storage accounts associated with 
-            // the specified Media Services account:
+            // Display hello storage accounts associated with 
+            // hello specified Media Services account:
             foreach (var sa in _context.StorageAccounts)
                 Console.WriteLine(sa.Name);
 
-            // Retrieve the name of the default storage account.
+            // Retrieve hello name of hello default storage account.
             var defaultStorageName = _context.StorageAccounts.Where(s => s.IsDefault == true).FirstOrDefault();
             Console.WriteLine("Name: {0}", defaultStorageName.Name);
             Console.WriteLine("IsDefault: {0}", defaultStorageName.IsDefault);
 
-            // Retrieve the name of a storage account that is not the default one.
+            // Retrieve hello name of a storage account that is not hello default one.
             var notDefaultStroageName = _context.StorageAccounts.Where(s => s.IsDefault == false).FirstOrDefault();
             Console.WriteLine("Name: {0}", notDefaultStroageName.Name);
             Console.WriteLine("IsDefault: {0}", notDefaultStroageName.IsDefault);
 
-            // Create the original asset in the default storage account.
+            // Create hello original asset in hello default storage account.
             IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None,
                 defaultStorageName.Name, _singleInputFilePath);
-            Console.WriteLine("Created the asset in the {0} storage account", asset.StorageAccountName);
+            Console.WriteLine("Created hello asset in hello {0} storage account", asset.StorageAccountName);
 
-            // Create an output asset of the encoding job in the other storage account.
+            // Create an output asset of hello encoding job in hello other storage account.
             IAsset outputAsset = CreateEncodingJob(asset, notDefaultStroageName.Name, _singleInputFilePath);
             if (outputAsset != null)
-                Console.WriteLine("Created the output asset in the {0} storage account", outputAsset.StorageAccountName);
+                Console.WriteLine("Created hello output asset in hello {0} storage account", outputAsset.StorageAccountName);
 
         }
 
@@ -135,7 +135,7 @@ namespace MultipleStorageAccounts
         {
             var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
 
-            // If you are creating an asset in the default storage account, you can omit the StorageName parameter.
+            // If you are creating an asset in hello default storage account, you can omit hello StorageName parameter.
             var asset = _context.Assets.Create(assetName, storageName, assetCreationOptions);
 
             var fileName = Path.GetFileName(singleFilePath);
@@ -155,48 +155,48 @@ namespace MultipleStorageAccounts
         {
             // Declare a new job.
             IJob job = _context.Jobs.Create("My encoding job");
-            // Get a media processor reference, and pass to it the name of the 
-            // processor to use for the specific task.
+            // Get a media processor reference, and pass tooit hello name of hello 
+            // processor toouse for hello specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Create a task with the encoding details, using a string preset.
+            // Create a task with hello encoding details, using a string preset.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
                 "Adaptive Streaming",
                 Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 
-            // Specify the input asset to be encoded.
+            // Specify hello input asset toobe encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset to contain the results of the job. 
+            // Add an output asset toocontain hello results of hello job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means the output asset is not encrypted. 
+            // means hello output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset", storageName,
                 AssetCreationOptions.None);
 
-            // Use the following event handler to check job progress.  
+            // Use hello following event handler toocheck job progress.  
             job.StateChanged += new
                     EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-            // Launch the job.
+            // Launch hello job.
             job.Submit();
 
-            // Check job execution and wait for job to finish. 
+            // Check job execution and wait for job toofinish. 
             Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
             progressJobTask.Wait();
 
             // Get an updated job reference.
             job = GetJob(job.Id);
 
-            // If job state is Error the event handling 
+            // If job state is Error hello event handling 
             // method for job progress should log errors.  Here we check 
             // for error state and exit if needed.
             if (job.State == JobState.Error)
             {
-                Console.WriteLine("\nExiting method due to job error.");
+                Console.WriteLine("\nExiting method due toojob error.");
                 return null;
             }
 
-            // Get a reference to the output asset from the job.
+            // Get a reference toohello output asset from hello job.
             IAsset outputAsset = job.OutputMediaAssets[0];
 
             return outputAsset;
@@ -250,13 +250,13 @@ namespace MultipleStorageAccounts
 
         static IJob GetJob(string jobId)
         {
-            // Use a Linq select query to get an updated 
+            // Use a Linq select query tooget an updated 
             // reference by Id. 
             var jobInstance =
                 from j in _context.Jobs
                 where j.Id == jobId
                 select j;
-            // Return the job reference as an Ijob. 
+            // Return hello job reference as an Ijob. 
             IJob job = jobInstance.FirstOrDefault();
 
             return job;

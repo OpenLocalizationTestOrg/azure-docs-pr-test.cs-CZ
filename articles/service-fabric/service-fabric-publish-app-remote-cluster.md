@@ -1,6 +1,6 @@
 ---
-title: "Publikování aplikace do vzdáleného clusteru pomocí sady Visual Studio | Microsoft Docs"
-description: "Zjistěte, jak publikovat aplikaci, do clusteru s podporou vzdálené služby prostředků infrastruktury pomocí sady Visual Studio."
+title: "aaaPublish aplikace tooa vzdáleného clusteru služby pomocí sady Visual Studio | Microsoft Docs"
+description: "Zjistěte, jak toopublish aplikaci tooa vzdálené služby fabric clusteru pomocí sady Visual Studio."
 services: service-fabric
 documentationcenter: na
 author: cawams
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
-ms.openlocfilehash: c440c520d84fc503ff9e705555449e92555d4721
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0f06f120cc7e22f3f8e73ce0970e1da5823e647
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-remove-applications-using-visual-studio"></a>Nasazení a odebírat aplikace pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -30,82 +30,82 @@ ms.lasthandoff: 07/11/2017
 
 <br/>
 
-Azure Service Fabric rozšíření pro Visual Studio poskytuje snadný, opakovatelné a Skriptovatelná způsob k publikování aplikace do clusteru Service Fabric.
+Hello Azure Service Fabric rozšíření pro Visual Studio poskytuje snadný, opakovatelné a Skriptovatelná způsob toopublish clusteru Service Fabric tooa služby aplikací.
 
-## <a name="the-artifacts-required-for-publishing"></a>Artefakty potřebné pro publikování
+## <a name="hello-artifacts-required-for-publishing"></a>Hello artefakty potřebné pro publikování
 ### <a name="deploy-fabricapplicationps1"></a>Nasazení FabricApplication.ps1
-Toto je skript prostředí PowerShell, který používá cestu k profilu publikování jako parametr pro publikování aplikací Service Fabric. Vzhledem k tomu, že tento skript je součástí aplikace, jste Vítejte upravit podle potřeby pro vaši aplikaci.
+Toto je skript prostředí PowerShell, který používá cestu k profilu publikování jako parametr pro publikování aplikací Service Fabric. Vzhledem k tomu, že tento skript je součástí aplikace, se úvodní toomodify jej podle potřeby pro vaši aplikaci.
 
 ### <a name="publish-profiles"></a>Publikační profily
-Složka v projektu aplikace Service Fabric název **PublishProfiles** obsahuje soubory XML, které obsahují informace nezbytné pro publikování aplikace, jako například:
+Složka v projektu aplikace Service Fabric hello název **PublishProfiles** obsahuje soubory XML, které obsahují informace nezbytné pro publikování aplikace, jako například:
 
 * Parametry připojení clusteru Service Fabric
-* Cesta k souboru aplikace parametr
+* Soubor parametrů aplikace tooan cesta
 * Nastavení upgradu
 
-Ve výchozím nastavení, bude vaše aplikace obsahovat tři publikační profily: Local.1Node.xml, Local.5Node.xml a Cloud.xml. Můžete přidat další profily pomocí kopírování a vkládání mezi výchozí soubory.
+Ve výchozím nastavení, bude vaše aplikace obsahovat tři publikační profily: Local.1Node.xml, Local.5Node.xml a Cloud.xml. Můžete přidat další profily pomocí kopírování a vkládání mezi hello výchozí soubory.
 
 ### <a name="application-parameter-files"></a>Soubory parametrů aplikace
-Složka v projektu aplikace Service Fabric název **ApplicationParameters** obsahuje soubory XML hodnoty parametrů manifestu aplikace definované uživatelem. Soubory manifestu aplikace lze nastavit parametry, takže můžete použít jiné hodnoty pro nastavení nasazení. Další informace o parametrizaci aplikace naleznete v tématu [spravovat prostředí s více v Service Fabric](service-fabric-manage-multiple-environment-app-configuration.md).
+Složka v projektu aplikace Service Fabric hello název **ApplicationParameters** obsahuje soubory XML hodnoty parametrů manifestu aplikace definované uživatelem. Soubory manifestu aplikace lze nastavit parametry, takže můžete použít jiné hodnoty pro nastavení nasazení. toolearn Další informace o Parametrizace vaší aplikace, najdete v části [spravovat prostředí s více v Service Fabric](service-fabric-manage-multiple-environment-app-configuration.md).
 
 > [!NOTE]
-> Pro služby objektu actor by měl sestavení projektu nejprve před pokusu o úpravu souboru v editoru nebo prostřednictvím dialogovém okně Publikovat. To je proto součástí souborů manifestu se budou generovat během sestavení.
+> Pro služby objektu actor, měli byste vytvořit projekt hello nejprve před pokusem o tooedit hello souboru v editoru nebo prostřednictvím hello dialogové okno publikování. To je proto součástí souborů manifestu hello se budou generovat během vytváření sestavení hello.
 
-## <a name="to-publish-an-application-using-the-publish-service-fabric-application-dialog-box"></a>K publikování aplikace pomocí dialogového okna publikovat aplikace Service Fabric
-Následující kroky ukazují, jak publikovat aplikace pomocí **publikovat aplikace Service Fabric** poskytované služby prostředků infrastruktury nástroje sady Visual Studio dialogové okno.
+## <a name="toopublish-an-application-using-hello-publish-service-fabric-application-dialog-box"></a>toopublish aplikaci pomocí dialogového okna publikovat aplikace Service Fabric hello
+Hello následující kroky ukazují, jak toopublish aplikace pomocí hello **publikovat aplikace Service Fabric** dialogové okno poskytované hello prostředků infrastruktury nástroje sady Visual Studio Service.
 
-1. V místní nabídce projektu aplikace Service Fabric, zvolte **publikování...** Chcete-li zobrazit **publikovat aplikace Service Fabric** dialogové okno.
+1. V místní nabídce hello hello projektu aplikace Service Fabric, zvolte **publikování...** tooview hello **publikovat aplikace Service Fabric** dialogové okno.
    
-    ![** Publikování Service Fabric aplikace ** dialogové okno][0]
+    ![Hello ** publikování Service Fabric aplikace ** dialogové okno][0]
    
-    Souboru vybraného v **cíle profil** rozevíracím seznamu je tam, kde všechna nastavení, s výjimkou **Manifest verze**, se uloží. Můžete znovu použít stávající profil nebo vytvořit novou výběrem **< spravovat profily... >** v **cíle profil** rozevíracím seznamu. Pokud vyberete profil publikování, její obsah se zobrazí v odpovídající polích dialogového okna. Pokud chcete uložit provedené změny kdykoli, zvolte **uložit profil** odkaz.    
-2. V **koncového bodu připojení** , určete místního nebo vzdáleného clusteru Service Fabric na publikování koncový bod. Chcete-li přidat nebo změnit koncového bodu připojení, klikněte na **koncového bodu připojení** rozevíracího seznamu. V seznamu jsou uvedeny dostupné cluster Service Fabric koncové body připojení na které můžete publikovat podle vašich předplatných Azure. Všimněte si, že pokud už nejste přihlášeni sadě Visual Studio, vás vyzve k tomu.
+    Hello souboru vybraného v hello **cíle profil** rozevíracím seznamu je tam, kde všechna nastavení hello, s výjimkou **Manifest verze**, se uloží. Můžete znovu použít stávající profil nebo vytvořit novou výběrem **< spravovat profily... >** v hello **cíle profil** rozevíracím seznamu. Pokud vyberete profil publikování, její obsah se zobrazí v hello odpovídající polích dialogového okna hello. toosave změny kdykoli, zvolte hello **uložit profil** odkaz.    
+2. V hello **koncového bodu připojení** , určete místního nebo vzdáleného clusteru Service Fabric na publikování koncový bod. tooadd nebo změňte hello koncového bodu připojení, klikněte na hello **koncového bodu připojení** rozevíracího seznamu. Hello seznamu zobrazuje hello k dispozici Service Fabric clusteru připojení koncové body toowhich, které můžete publikovat v závislosti na vašich předplatných Azure. Všimněte si, že pokud se ještě nepřihlásili tooVisual Studio, bude výzvami toodo tak.
    
-    Vybrat ze sady dostupných předplatných a clusterů použijte dialogové okno Výběr clusteru.
+    Použijte hello clusteru výběr dialogové okno pole toochoose z hello sadu dostupných předplatných a clustery.
    
-    ![** Vyberte Service Fabric clusteru ** dialogové okno][1]
+    ![Hello ** vyberte Service Fabric clusteru ** dialogové okno][1]
    
    > [!NOTE]
-   > Pokud chcete publikovat na libovolný koncový bod (například strany clusteru), najdete v článku **publikování pro koncový bod libovolný clusteru** části níže.
+   > Pokud chcete toopublish tooan libovolný koncový bod (například strany clusteru), přečtěte si téma hello **publikování koncový bod libovolný clusteru tooan** části níže.
    > 
    > 
    
-    Jakmile vyberete koncový bod, Visual Studio ověří připojení k vybraný cluster Service Fabric. Pokud cluster není zabezpečený, Visual Studio k nim mohla připojit okamžitě. Ale pokud clusteru je bezpečné, musíte nainstalovat certifikát v místním počítači, než budete pokračovat. V tématu [jak nakonfigurovat zabezpečené připojení](service-fabric-visualstudio-configure-secure-connections.md) Další informace. Až budete hotoví, vyberte **OK** tlačítko. Vybraný cluster se zobrazí v **publikovat aplikace Service Fabric** dialogové okno.
-3. V **soubor parametrů aplikace** rozevíracího seznamu pole, přejděte na soubor parametr aplikace. Parametr souboru aplikace obsahuje zadán uživatel hodnoty pro parametry v souboru manifestu aplikace. Chcete-li přidat nebo změnit parametr, zvolte **upravit** tlačítko. Zadejte nebo změňte hodnotu parametru v **parametry** mřížky. Až budete hotoví, vyberte **Uložit** tlačítko.
+    Jakmile zvolíte koncového bodu, ověří Visual Studio cluster Service Fabric toohello vybrané připojení hello. Pokud hello cluster není zabezpečený, Visual Studio můžete připojit tooit okamžitě. Ale pokud hello clusteru je bezpečné, budete potřebovat tooinstall certifikát v místním počítači, než budete pokračovat. V tématu [jak tooconfigure zabezpečené připojení](service-fabric-visualstudio-configure-secure-connections.md) Další informace. Až budete hotoví, zvolte hello **OK** tlačítko. vybraný cluster Hello se zobrazí v hello **publikovat aplikace Service Fabric** dialogové okno.
+3. V hello **soubor parametrů aplikace** rozevíracího seznamu pole, najděte soubor parametrů tooan aplikace. Parametr souboru aplikace obsahuje zadán uživatel hodnoty pro parametry v souboru manifestu aplikace hello. tooadd nebo změňte parametr, zvolte hello **upravit** tlačítko. Zadejte nebo změňte hodnotu parametru hello v hello **parametry** mřížky. Až budete hotoví, zvolte hello **Uložit** tlačítko.
    
-    ![** Upravit parametry ** dialogové okno][2]
-4. Použití **upgradu aplikace** zaškrtávacího políčka určete, zda tuto publikování akce je upgrade. Upgrade publikování akce se liší od normální publikování akce. V tématu [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md) seznam rozdíly. Chcete-li nakonfigurovat nastavení upgradu, zvolte **nakonfigurovat nastavení upgradu** odkaz. Zobrazí se editor parametr upgradu. V tématu [konfigurace upgradu aplikace Service Fabric](service-fabric-visualstudio-configure-upgrade.md) Další informace o upgradu parametry.
-5. Vyberte **verze manifestu...** tlačítko Zobrazit **upravit verze** dialogové okno. Je potřeba aktualizovat aplikace a služby verze pro upgrade provést. V tématu [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md) se dozvíte, jak aplikace a verze manifestu služby vliv upgradu.
+    ![Hello ** upravit parametry ** dialogové okno][2]
+4. Použití hello **upgradu hello aplikace** toospecify zaškrtávací políčko, zda tuto publikování akce je upgrade. Upgrade publikování akce se liší od normální publikování akce. V tématu [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md) seznam rozdíly. nastavení upgradu tooconfigure, zvolte hello **nakonfigurovat nastavení upgradu** odkaz. Zobrazí se editor parametr upgradu Hello. V tématu [konfigurovat hello upgrade aplikace Service Fabric](service-fabric-visualstudio-configure-upgrade.md) toolearn Další informace o upgradu parametry.
+5. Zvolte hello **verze manifestu...** tlačítko tooview hello **upravit verze** dialogové okno. Budete potřebovat tooupdate aplikace a verze aktualizace service pro upgradu tootake místo. V tématu [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md) toolearn jak aplikace a verze manifestu služby vliv upgradu.
    
-    ![** Upravit verze ** dialogové okno][3]
+    ![Hello ** upravit verze ** dialogové okno][3]
    
-    Pokud aplikace a verze aktualizace service použít sémantické verze jako je například 1.0.0 nebo číselné hodnoty ve formátu 1.0.0.0, vyberte **automatické aktualizaci aplikace a verze aktualizace service** možnost. Když zvolíte tuto možnost, služby a čísel verzí aplikace se automaticky aktualizují vždy, když verze balíčku kódu, konfigurace nebo data se aktualizuje. Pokud chcete upravit verze ručně, zrušte zaškrtnutí tohoto políčka tuto funkci zakázat.
+    Pokud aplikace hello a verze aktualizace service použít sémantické verze jako je například 1.0.0 nebo číselné hodnoty ve formátu hello 1.0.0.0, vyberte hello **automatické aktualizaci aplikace a verze aktualizace service** možnost. Když zvolíte tuto možnost, služba hello a čísel verzí aplikace se automaticky aktualizují vždy, když kód, konfigurace, nebo verze balíčku dat se aktualizuje. Pokud dáváte přednost tooedit hello verze ručně, zrušte tuto funkci toodisable hello zaškrtávací políčko.
    
    > [!NOTE]
-   > Pro všechny položky balíčku pro projekt objektu actor zobrazení nejprve sestavení projektu pro generování položky v souborech Service Manifest.
+   > Pro všechny položky tooappear balíčků pro projekt objektu actor nejprve vytvořte hello projektu toogenerate hello položek v Service Manifest soubory hello.
    > 
    > 
-6. Po dokončení zadání všechna potřebná nastavení, vyberte **publikovat** tlačítko pro publikování aplikace pro vybraný cluster Service Fabric. Nastavení, která jste zadali, se použijí pro proces publikování.
+6. Po dokončení zadání všechna potřebná nastavení hello, zvolte hello **publikovat** tlačítko toopublish vaší aplikace toohello vybraný cluster Service Fabric. Hello nastavení, které jste zadali, se použijí toohello publikování procesu.
 
-## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>Publikovat do libovolné clusteru koncového bodu (včetně clusterů strany)
-Publikování prostředí sady Visual Studio je optimalizovaná pro publikování vzdálené clustery přiřazený k některé z vašich předplatných Azure. Nicméně je možné publikovat na libovolný koncových bodů (například clusterů Service Fabric strany) přímou úpravou profil publikování XML. Jak je popsáno výše, tři publikační profily jsou dostupné ve výchozím nastavení--**Local.1Node.xml**, **Local.5Node.xml**, a **Cloud.xml**– ale Vítejte vytvořit Další profily pro různá prostředí. Například můžete chtít vytvořit profil pro publikování do clusterů strany, případně s názvem **Party.xml**.
+## <a name="publish-tooan-arbitrary-cluster-endpoint-including-party-clusters"></a>Publikování tooan libovolný clusteru koncového bodu (včetně clusterů strany)
+Hello publikování prostředí sady Visual Studio je optimalizovaná pro publikování tooremote clustery přiřazený k některé z vašich předplatných Azure. Je však možné toopublish tooarbitrary koncových bodů (například clusterů Service Fabric strany) podle přímo úpravy hello Publikovat profil XML. Jak je popsáno výše, tři publikační profily jsou dostupné ve výchozím nastavení--**Local.1Node.xml**, **Local.5Node.xml**, a **Cloud.xml**–, ale jsou úvodní toocreate Další profily pro různá prostředí. Například můžete toocreate profil pro publikování tooparty clusterů, případně s názvem **Party.xml**.
 
-Pokud se připojujete k zabezpečená clusteru, všechny, které je nutné koncového bodu připojení clusteru, je třeba `partycluster1.eastus.cloudapp.azure.com:19000`. V takovém případě koncového bodu připojení v profilu publikování by vypadat přibližně takto:
+Pokud se připojujete tooan nezabezpečenou clusteru, všechny, které je nutné hello koncový bod připojení clusteru, je třeba `partycluster1.eastus.cloudapp.azure.com:19000`. V tomto případě koncového bodu připojení hello v hello Publikovat profil by vypadat přibližně takto:
 
 ```XML
 <ClusterConnectionParameters ConnectionEndpoint="partycluster1.eastus.cloudapp.azure.com:19000" />
 ```
 
-  Pokud se připojujete k zabezpečeným clusteru, bude také muset zadejte podrobnosti o klientský certifikát z místního úložiště, který se má použít pro ověřování. Další podrobnosti najdete v tématu [konfigurace zabezpečení připojení ke clusteru Service Fabric](service-fabric-visualstudio-configure-secure-connections.md).
+  Pokud se připojujete tooa zabezpečené clusteru, musíte se také podrobnosti hello tooprovide hello klientský certifikát z toobe místního úložiště hello používá k ověřování. Další podrobnosti najdete v tématu [cluster Service Fabric tooa konfigurace zabezpečeného připojení](service-fabric-visualstudio-configure-secure-connections.md).
 
-  Až nastavíte svůj profil publikování, můžete odkazovat v dialogovém okně Publikovat jak je uvedeno níže.
+  Až nastavíte svůj profil publikování, který je odkazujete v hello dialogové okno publikování, jak je uvedeno níže.
 
   ![Nový profil publikování v dialogové okno publikování][4]
 
-  Všimněte si, že v tomto případě se nový profil publikování odkazuje na jeden ze souborů parametr výchozí aplikace. To je vhodné, pokud chcete publikovat stejnou konfiguraci aplikace na počet prostředí. Naopak v případech, ve které chcete mít různé konfigurace pro každé prostředí, který chcete publikovat, by mít smysl vytvořit odpovídající soubor parametr aplikace.
+  Všimněte si, že v tomto případě hello nový profil publikování bodů tooone soubory parametrů aplikace hello výchozí. To je vhodné, pokud chcete toopublish hello prostředí stejné číslo tooa konfigurace aplikace. Naopak v případech místo toohave různé konfigurace pro každé prostředí, který chcete toopublish k jeho by mít smysl toocreate odpovídající parametr soubor aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak automatizovat proces publikování v prostředí průběžnou integraci, najdete v tématu [nastavte průběžnou integraci Service Fabric](service-fabric-set-up-continuous-integration.md).
+jak zjistit, proces publikování tooautomate hello v prostředí průběžnou integraci toolearn [nastavte průběžnou integraci Service Fabric](service-fabric-set-up-continuous-integration.md).
 
 [0]: ./media/service-fabric-publish-app-remote-cluster/PublishDialog.png
 [1]: ./media/service-fabric-publish-app-remote-cluster/SelectCluster.png

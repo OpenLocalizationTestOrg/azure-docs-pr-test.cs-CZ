@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace vícefaktorového ověřování Azure | Microsoft Docs"
-description: "Toto je stránka Azure Multi-Factor authentication, která popisuje, jak postupovat pomocí vícefaktorového ověřování.  To zahrnuje sestavy, upozornění na podvod, jednorázové přihlášení, vlastní hlasové zprávy, ukládání do mezipaměti, důvěryhodné IP adresy a aplikaci hesla."
+title: aaaConfigure Azure MFA | Microsoft Docs
+description: "Toto je stránka ověřování Azure Multi-Factor hello, která popisuje co toodo vedle pomocí vícefaktorového ověřování.  To zahrnuje sestavy, upozornění na podvod, jednorázové přihlášení, vlastní hlasové zprávy, ukládání do mezipaměti, důvěryhodné IP adresy a aplikaci hesla."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,230 +14,230 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-ms.openlocfilehash: a470a8bc70365a1891fc57efc6d2d4391162fd17
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7f6d0b0975a2c1da2de9b52e978b84475c79b218
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
-Tento článek usnadňuje správu ověřování Azure Multi-Factor Authentication teď, když jsou spuštěná.  Vysvětluje různé témata, které umožňují využívat naplno Azure Multi-Factor Authentication.  Ne všechny tyto funkce jsou dostupné v každé verzi Azure Multi-Factor Authentication.
+Tento článek usnadňuje správu ověřování Azure Multi-Factor Authentication teď, když jsou spuštěná.  Vysvětluje různé témata, které vám pomůžou tooget hello naplno Azure Multi-Factor Authentication.  Ne všechny tyto funkce jsou dostupné v každé verzi Azure Multi-Factor Authentication.
 
 | Funkce | Popis | 
 |:--- |:--- |
-| [Upozornění na podvod](#fraud-alert) |Upozornění na podvod můžete nakonfigurovat a nastavit tak, aby vaši uživatelé mohou zasílat zprávy podvodné pokouší získat přístup k jejich prostředky. |
-| [Jednorázové přihlášení](#one-time-bypass) |Jednorázové přihlášení umožňuje uživateli jednorázově ověřit pomocí "obcházení" služby Multi-Factor authentication. |
-| [Vlastní hlasové zprávy](#custom-voice-messages) |Vlastní hlasové zprávy umožňují použít vlastní záznamy nebo pozdrav pomocí služby Multi-Factor authentication. |
-| [Ukládání do mezipaměti](#caching-in-azure-multi-factor-authentication) |Ukládání do mezipaměti umožňuje nastavit určité časové období, aby automaticky být úspěšné následné pokusy o ověření. |
-| [Důvěryhodné IP adresy](#trusted-ips) |Správci spravované nebo federované klienta můžete použít důvěryhodné IP adresy obejít dvoustupňové ověření pro uživatele, kteří se přihlašují z místního intranetu společnosti. |
-| [Hesla aplikací](#app-passwords) |Heslo aplikace umožňuje aplikaci, která MFA neví obejít ověřování Multi-Factor authentication a pokračovat v práci. |
-| [Zapamatovat Vícefaktorové ověřování na zapamatovaných zařízeních a prohlížeče](#remember-multi-factor-authentication-for-devices-that-users-trust) |Umožňuje mějte na paměti, zařízení pro sadu počet dnů po uživatel se úspěšně přihlásil pomocí vícefaktorového ověřování. |
-| [Volitelný ověření metody](#selectable-verification-methods) |Umožňuje výběr metod ověřování, které jsou k dispozici pro uživatelům používat. |
+| [Upozornění na podvod](#fraud-alert) |Upozornění na podvod můžete nakonfigurovat a nastavit tak, aby vaši uživatelé mohou zasílat zprávy o tooaccess podvodné pokusy o jejich prostředky. |
+| [Jednorázové přihlášení](#one-time-bypass) |Jednorázové přihlášení umožňuje uživatele tooauthenticate jednorázově "vynecháte" služby Multi-Factor authentication. |
+| [Vlastní hlasové zprávy](#custom-voice-messages) |Vlastní hlasové zprávy umožňují toouse vlastní záznamy nebo pozdrav pomocí služby Multi-Factor authentication. |
+| [Ukládání do mezipaměti](#caching-in-azure-multi-factor-authentication) |Ukládání do mezipaměti můžete tooset za určité časové období, aby automaticky být úspěšné následné pokusy o ověření. |
+| [Důvěryhodné IP adresy](#trusted-ips) |Správci spravované nebo federované klienta můžete použít důvěryhodné IP adresy toobypass dvoustupňové ověřování pro uživatele, kteří se přihlašují z místního intranetu hello společnosti. |
+| [Hesla aplikací](#app-passwords) |Heslo aplikace umožňuje aplikaci, která není podporující vícefaktorové ověřování služby Multi-Factor authentication toobypass a pokračovat v práci. |
+| [Zapamatovat Vícefaktorové ověřování na zapamatovaných zařízeních a prohlížeče](#remember-multi-factor-authentication-for-devices-that-users-trust) |Umožňuje tooremember zařízení pro sadu počet dnů po uživatel se úspěšně přihlásil pomocí vícefaktorového ověřování. |
+| [Volitelný ověření metody](#selectable-verification-methods) |Můžete se metody ověřování hello toochoose, které jsou k dispozici pro uživatele toouse. |
 
-## <a name="access-the-azure-mfa-management-portal"></a>Přístup k portálu pro správu Azure MFA
+## <a name="access-hello-azure-mfa-management-portal"></a>Hello přístup k portálu pro správu Azure MFA
 
-Funkce popsaná v tomto článku jsou nakonfigurované v portálu Azure Multi-Factor Authentication Management Portal. Existují dva způsoby přístup k portálu pro správu MFA prostřednictvím portálu Azure classic. Prvním je přímá správa zprostředkovatel vícefaktorového ověřování. Druhý probíhá přes nastavení služby vícefaktorového ověřování. 
+Hello funkcí, které jsou zahrnuté v tomto článku jsou nakonfigurované v hello Azure Multi-Factor Authentication Management Portal. Existují dva způsoby tooaccess hello portálu pro správu MFA prostřednictvím hello portál Azure classic. Hello, nejprve je Správa zprostředkovatel vícefaktorového ověřování. Hello druhou je přes nastavení služby hello vícefaktorového ověřování. 
 
 ### <a name="use-an-auth-provider"></a>Použít poskytovatele ověřování
 
-Pokud používáte zprostředkovatel vícefaktorového ověřování na základě spotřeby mfa, můžete tuto metodu použijte pro přístup k portálu pro správu.
+Pokud používáte zprostředkovatel vícefaktorového ověřování na základě spotřeby mfa, použijte tento portál metoda tooaccess hello správy.
 
-Pro přístup k portálu pro správu MFA prostřednictvím poskytovatele Azure Multi-Factor Auth, přihlaste se k portálu Azure classic jako správce a vyberte možnost Active Directory. Klikněte na tlačítko **zprostředkovatelé vícefaktorového ověřování** , pak vyberte adresář a klikněte **spravovat** tlačítko dole.
+tooaccess hello portálu pro správu MFA prostřednictvím poskytovatele Azure Multi-Factor Auth, přihlaste se k hello portál Azure classic jako správce a možnost služby Active Directory vyberte hello. Klikněte na tlačítko hello **zprostředkovatelé vícefaktorového ověřování** kartě, pak vyberte adresář a klikněte na tlačítko hello **spravovat** tlačítko dole v hello.
 
-### <a name="use-the-mfa-service-settings-page"></a>Na stránce nastavení služby vícefaktorového ověřování 
+### <a name="use-hello-mfa-service-settings-page"></a>Na stránce nastavení vícefaktorového ověřování služby hello 
 
-Pokud máte zprostředkovatel vícefaktorového ověřování nebo Azure MFA, Azure AD Premium nebo Enterprise Mobility + Security licenci, tuto metodu použijte pro přístup na stránce nastavení vícefaktorového ověřování.
+Pokud máte zprostředkovatel vícefaktorového ověřování nebo Azure MFA, Azure AD Premium nebo Enterprise Mobility + Security licenci, pomocí této metody tooaccess hello vícefaktorového ověřování služby nastavení stránky.
 
-Pro přístup k portálu pro správu MFA prostřednictvím stránky nastavení vícefaktorového ověřování služby, přihlaste se k portálu Azure classic jako správce a vyberte možnost Active Directory. Klikněte na adresáře a pak klikněte na kartu **Konfigurovat**. V části ověřování vícefaktorového ověřování vyberte **Spravovat nastavení služby**. V dolní části stránky nastavení služby MFA klikněte na odkaz **Přejít na portál**.
+tooaccess hello portálu pro správu MFA přes hello stránky nastavení vícefaktorového ověřování služby, přihlaste se k hello portál Azure classic jako správce a vyberte možnost Active Directory hello. Klikněte na adresáře a pak klikněte na tlačítko hello **konfigurace** kartě. V části služby Multi-Factor authentication hello vyberte **spravovat nastavení služby**. V dolní části hello hello nastavení vícefaktorového ověřování služby stránky, klikněte na tlačítko hello **přejděte toohello portál** odkaz.
 
 
 ## <a name="fraud-alert"></a>Upozornění na podvod
-Upozornění na podvod můžete nakonfigurovat a nastavit tak, aby vaši uživatelé mohou zasílat zprávy podvodné pokouší získat přístup k jejich prostředky.  Uživatelé mohou zasílat zprávy podvod pomocí mobilní aplikace nebo přes svůj telefon.
+Upozornění na podvod můžete nakonfigurovat a nastavit tak, aby vaši uživatelé mohou zasílat zprávy o tooaccess podvodné pokusy o jejich prostředky.  Uživatelé mohou zasílat zprávy podvod pomocí mobilní aplikace hello nebo přes svůj telefon.
 
 ### <a name="set-up-fraud-alert"></a>Nastavení upozornění na podvod
-1. Přejděte do portálu pro správu MFA podle pokynů v horní části této stránky.
-2. V portálu Azure Multi-Factor Authentication Management Portal, klikněte na **nastavení** v části konfigurace.
-3. Upozornění na podvod části na stránku nastavení, zkontrolujte **povolit uživatelům odesílat upozornění na podvod** zaškrtávací políčko.
-4. Vyberte **Uložit** proveďte změny. 
+1. Přejděte toohello portálu pro správu MFA podle pokynů hello hello horní části této stránky.
+2. V hello Azure Multi-Factor Authentication Management Portal, klikněte na **nastavení** pod hello část konfigurace.
+3. V části hello upozornění na podvod části hello nastavení stránky, zkontrolujte hello **uživatelům povolit upozornění na podvod toosubmit** zaškrtávací políčko.
+4. Vyberte **Uložit** tooapply změny. 
 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
 - **Blokování uživatele při nahlášení podvodu** – Pokud uživatel sestavy podvod, svůj účet je blokován.
-- **Kód pro sestavu podvod během počáteční s pozdravem** -uživatelé obvykle stisknutím klávesy # potvrzení dvoustupňové ověřování. Pokud chcete ohlásit podvod, jejich zadat kód ještě před stisknutím klávesy #. Tento kód je **0** ve výchozím nastavení, ale můžete jej upravit.
+- **Kód podvodu během počáteční s pozdravem tooReport** -uživatelé obvykle stisknutím klávesy # tooconfirm dvoustupňové ověřování. Pokud chtějí tooreport podvodů, jejich zadat kód ještě před stisknutím klávesy #. Tento kód je **0** ve výchozím nastavení, ale můžete jej upravit.
 
 > [!NOTE]
-> Společnosti Microsoft výchozí hlasový pozdrav uživatele vyzvat, aby stisknutím klávesy 0# odeslat upozornění na možný podvod. Pokud chcete použít kód než 0, měli zaznamenávat a nahrát vlastní vlastní hlasový pozdrav příslušné pokyny.
+> Společnosti Microsoft výchozí hlasový pozdrav vyzvat uživatele toopress 0# toosubmit upozornění na možný podvod. Pokud chcete toouse kódu než 0, měli zaznamenávat a nahrát vlastní vlastní hlasový pozdrav příslušné pokyny.
 
 ![Možnosti upozornění podvod – snímek obrazovky](./media/multi-factor-authentication-whats-next/fraud.png)
 
 ### <a name="how-users-report-fraud"></a>Jak uživatelé nahlášení podvodu 
-Upozornění na podvod mohou být oznámeny dvěma způsoby.  Buď prostřednictvím mobilní aplikace nebo prostřednictvím telefonu.  
+Upozornění na podvod mohou být oznámeny dvěma způsoby.  Buď prostřednictvím hello mobilní aplikace nebo prostřednictvím hello phone.  
 
-#### <a name="report-fraud-with-the-mobile-app"></a>Ohlásit podvod v mobilní aplikaci
-1. Odeslání ověření na váš telefon, vyberte ji otevřít aplikaci Microsoft Authenticator.
-2. Vyberte **Odepřít** na oznámení. 
+#### <a name="report-fraud-with-hello-mobile-app"></a>Ohlásit podvod v mobilní aplikaci hello
+1. Odeslání ověření tooyour telefon, vyberte ho aplikaci Microsoft Authenticator tooopen hello.
+2. Vyberte **Odepřít** na hello oznámení. 
 3. Vyberte **nahlášení podvodu**.
-4. Zavřete aplikaci.
+4. Zavřít hello aplikace.
 
 #### <a name="report-fraud-with-a-phone"></a>Nahlášení podvodu po telefonu
-1. Pokud ověřovací hovor jde telefonu, odpovězte na ni.  
-2. Chcete-li nahlášení podvodu, zadejte kód podvodu (výchozí hodnota je 0) a poté znak #. Budete informováni, že byla odeslána upozornění na možný podvod.
-3. Ukončení hovoru.
+1. Když ověřovací hovor se dodává v telefonu tooyour, odpovězte na ni.  
+2. tooreport podvodů, zadejte kód podvodu hello (výchozí hodnota je 0) a pak hello znak #. Budete informováni, že byla odeslána upozornění na možný podvod.
+3. Ukončení hello volání.
 
 ### <a name="view-fraud-reports"></a>Zobrazit sestavy podvod
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Vlevo vyberte možnost Active Directory.
-3. V horní vyberte **zprostředkovatelé vícefaktorového ověřování**. Tím zobrazíte seznam vaši zprostředkovatelé vícefaktorového ověřování.
-4. Vyberte poskytovatele služby Multi-Factor Auth a klikněte na tlačítko **spravovat** v dolní části stránky. Otevře se Azure Multi-Factor Authentication Management Portal.
-5. Na Azure Multi-Factor Authentication portálu pro správu, v části sestavy A zobrazení, klikněte na tlačítko **upozornění na podvod**.
-6. Zadejte rozsah dat, který chcete zobrazit v sestavě. Můžete také zadat uživatelských jmen, telefonních čísel a stavu uživatele.
-7. Klikněte na **Run** (Spustit). Otevře sestavu upozornění na podvod. Klikněte na tlačítko **exportovat do souboru CSV** Pokud chcete exportovat sestavy.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Na levé straně hello vyberte služby Active Directory.
+3. V horní vyberte hello **zprostředkovatelé vícefaktorového ověřování**. Tím zobrazíte seznam vaši zprostředkovatelé vícefaktorového ověřování.
+4. Vyberte poskytovatele služby Multi-Factor Auth a klikněte na tlačítko **spravovat** v hello dolní části stránky hello. Otevře se Hello Azure Multi-Factor Authentication Management Portal.
+5. Na hello Azure Multi-Factor Authentication Management Portal, v části sestavy A zobrazení, klikněte na tlačítko **upozornění na podvod**.
+6. Zadejte rozsah dat hello chcete tooview v sestavě hello. Můžete také zadat uživatelských jmen, telefonních čísel a stav hello uživatele.
+7. Klikněte na **Run** (Spustit). Otevře sestavu upozornění na podvod. Klikněte na tlačítko **exportovat tooCSV** Pokud chcete sestavu tooexport hello.
 
 ## <a name="one-time-bypass"></a>Jednorázové přihlášení
-Jednorázové přihlášení umožňuje uživateli jednorázově ověřit bez provedení dvoustupňové ověřování. Toto jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund. V situacích, kde mobilní aplikaci nebo phone nepřijímá oznámení nebo telefonní hovor můžete povolit jednorázové přihlášení, má uživatel přístup požadovaný prostředek.
+Jednorázové přihlášení umožňuje uživatele tooauthenticate jednorázově bez provedení dvoustupňové ověřování. Hello jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund. V situacích, kde hello mobilní aplikaci nebo phone nepřijímá oznámení nebo telefonní hovor můžete povolit jednorázové přihlášení, uživatel hello přístup hello požadovaného prostředku.
 
 ### <a name="create-a-one-time-bypass"></a>Vytvoření jednorázové přihlášení
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte do portálu pro správu MFA podle pokynů v horní části této stránky.
-3. V portálu Azure Multi-Factor Authentication Management Portal, pokud se zobrazí název klienta nebo zprostředkovatele Azure MFA na levé straně s  **+**  vedle sebe, klikněte  **+**  najdete v různých skupin replikace MFA Server a Azure výchozí skupiny. Vyberte příslušné skupiny.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello portálu pro správu MFA podle pokynů hello hello horní části této stránky.
+3. V Azure Multi-Factor Authentication Management Portal hello, pokud se zobrazí název hello klienta nebo zprostředkovatele Azure MFA na hello zůstane s ** + ** další tooit, klikněte na tlačítko hello ** + ** Zobrazit různé skupiny replikace MFA serveru a hello Azure výchozí skupiny. Vyberte příslušné skupiny hello.
 4. V části Správa uživatele, vyberte **jednorázové přihlášení**.
-5. Na stránce jednorázové přihlášení, klikněte na **nové jednorázové přihlášení**.
+5. Na stránce jednorázové přihlášení hello, klikněte na **nové jednorázové přihlášení**.
 
   ![Cloud](./media/multi-factor-authentication-whats-next/create1.png)
 
-6. Zadejte uživatelské jméno, počet sekund, po které bude existovat toto jednorázové přihlášení a důvody, proč toto jednorázové přihlášení. Klikněte na tlačítko **nepoužívat**.
-7. Časový limit přejde platit okamžitě, takže uživatel musí k přihlášení, než vyprší platnost jednorázového přihlášení. 
+6. Zadejte uživatelské jméno hello, hello počet sekund, po které hello jednorázové přihlášení bude existovat a hello důvod pro jednorázové přihlášení hello. Klikněte na tlačítko **nepoužívat**.
+7. Hello časový limit vstoupí v platnost okamžitě, tak uživatel hello potřebám toosign v před hello jednorázového přihlášení vyprší platnost. 
 
-### <a name="view-the-one-time-bypass-report"></a>Zobrazit sestavu jednorázové přihlášení
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Vlevo vyberte možnost Active Directory.
-3. V horní vyberte **zprostředkovatelé vícefaktorového ověřování**. Tím zobrazíte seznam vaši zprostředkovatelé vícefaktorového ověřování.
-4. Vyberte poskytovatele služby Multi-Factor Auth a klikněte na tlačítko **spravovat** v dolní části stránky. Otevře se Azure Multi-Factor Authentication Management Portal.
-5. Na portálu Azure Multi-Factor Authentication Management Portal, na levé straně, v části sestavy A zobrazení, klikněte na tlačítko **jednorázové přihlášení**.
-6. Zadejte rozsah dat, který chcete zobrazit v sestavě. Můžete také zadat uživatelských jmen, telefonních čísel a stavu uživatele.
-7. Klikněte na **Run** (Spustit). Otevře sestavu přeskočení. Klikněte na tlačítko **exportovat do souboru CSV** Pokud chcete exportovat sestavy.
+### <a name="view-hello-one-time-bypass-report"></a>Zobrazení hello jednorázové vynechat sestavy
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Na levé straně hello vyberte služby Active Directory.
+3. V horní vyberte hello **zprostředkovatelé vícefaktorového ověřování**. Tím zobrazíte seznam vaši zprostředkovatelé vícefaktorového ověřování.
+4. Vyberte poskytovatele služby Multi-Factor Auth a klikněte na tlačítko **spravovat** v hello dolní části stránky hello. Otevře se Hello Azure Multi-Factor Authentication Management Portal.
+5. Na hello Azure Multi-Factor Authentication Management Portal, na levé straně hello v části sestavy A zobrazení, klikněte na tlačítko **jednorázové přihlášení**.
+6. Zadejte rozsah dat hello chcete tooview v sestavě hello. Můžete také zadat uživatelských jmen, telefonních čísel a stav hello uživatele.
+7. Klikněte na **Run** (Spustit). Otevře sestavu přeskočení. Klikněte na tlačítko **exportovat tooCSV** Pokud chcete sestavu tooexport hello.
 
 ## <a name="custom-voice-messages"></a>Vlastní hlasové zprávy
-Vlastní hlasové zprávy umožňují použít vlastní záznamy nebo přivítání pro dvoustupňové ověření. Ty lze kromě nebo nahradit Microsoft záznamy.
+Vlastní hlasové zprávy umožňují toouse vlastní záznamy nebo přivítání pro dvoustupňové ověření. Ty lze použít v přidání tooor tooreplace hello Microsoft záznamy.
 
-Než začnete mějte z následujících akcí:
+Než začnete zajímat hello následující:
 
-* Podporované formáty souborů jsou ve formátu WAV nebo MP3.
-* Maximální velikost souboru je 5 MB.
-* Ověřování zprávy musí být kratší než 20 sekund. Nic déle, než může dojít k ověření se nezdařila, protože uživatel nemusí odpovídat před zpráva dokončí, způsobuje ověření vypršení časového limitu.
+* Hello podporované formáty souborů jsou ve formátu WAV nebo MP3.
+* maximální velikost souboru Hello je 5 MB.
+* Ověřování zprávy musí být kratší než 20 sekund. Protože hello uživatele nemusí odpovídat před tootime ověření hello zpráva skončí, která způsobila hello se něco delší než tento by mohl způsobit toofail ověření hello.
 
 ### <a name="set-up-a-custom-message"></a>Nastavit vlastní zprávu
 
-Existují dvě části k vytvoření vlastní zprávu. Nejdřív odešlete zprávu a pak můžete zapnout pro vaše uživatele.
+Existují dvě části toocreating vlastní zprávu. Nejprve nahrát uvítací zprávu a pak můžete zapnout pro vaše uživatele.
 
-Chcete-li nahrát vlastní zprávu:
+tooupload vlastní zprávu:
 
-1. Vytvořte vlastní hlasové zprávy pomocí jedné z podporované formáty souborů.
-2. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-3. Přejděte do portálu pro správu MFA podle pokynů v horní části této stránky.
-4. V portálu Azure Multi-Factor Authentication Management Portal, klikněte na **hlasové zprávy** v části konfigurace.
-5. Na konfigurace: hlasové zprávy stránky, klikněte na tlačítko **nové hlasové zprávy**.
+1. Vytvořte vlastní hlasové zprávy pomocí jedné z hello podporované formáty souborů.
+2. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+3. Přejděte toohello portálu pro správu MFA podle pokynů hello hello horní části této stránky.
+4. V hello Azure Multi-Factor Authentication Management Portal, klikněte na **hlasové zprávy** pod hello část konfigurace.
+5. Na hello konfigurace: hlasové zprávy stránky, klikněte na tlačítko **nové hlasové zprávy**.
    ![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)
-6. Na konfigurace: stránka nové hlasové zprávy, klikněte na tlačítko **Správa souborů zvuk**.
+6. Na hello konfigurace: stránka nové hlasové zprávy, klikněte na tlačítko **Správa souborů zvuk**.
    ![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)
-7. Na konfigurace: zvukových souborů stránky, klikněte na tlačítko **nahrát soubor zvuk**.
+7. Na hello konfigurace: zvukových souborů stránky, klikněte na tlačítko **nahrát soubor zvuk**.
    ![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)
-8. Na konfigurace: nahrát soubor zvuku, klikněte na tlačítko **Procházet** a přejděte do hlasové zprávy, klikněte na tlačítko **otevřete**.
+8. Na hello konfigurace: nahrát soubor zvuku, klikněte na tlačítko **Procházet** a přejděte tooyour hlasové zprávy, klikněte na **otevřete**.
 9. Přidejte popis a klikněte na tlačítko **nahrát**.
-10. Po dokončení zprávu potvrdí, že jste úspěšně odeslali soubor.
+10. Po dokončení zprávu potvrdí, že jste úspěšně odeslali hello souboru.
 
-Zapnutí zprávu pro vaše uživatele:
+tooturn uvítací zprávu na pro vaše uživatele:
 
-1. Na levé straně klikněte na tlačítko **hlasové zprávy**.
-2. V části hlasové zprávy, klikněte na tlačítko **nové hlasové zprávy**.
-3. Jazyk rozevíracího seznamu vyberte jazyk.
-4. Pokud se tato zpráva je pro danou aplikaci, zadejte ji do pole aplikace.
-5. Typ zprávy rozevíracího seznamu vyberte typ zprávy k přepsání s novou vlastní zprávu.
-6. Zvukový soubor rozevíracího seznamu vyberte v první části zvukového souboru, který jste nahráli.
+1. Na levé straně hello, klikněte na tlačítko **hlasové zprávy**.
+2. V části hello části hlasové zprávy, klikněte na **nové hlasové zprávy**.
+3. Hello jazyk rozevíracího seznamu vyberte jazyk.
+4. Pokud tato zpráva je pro danou aplikaci, zadejte ji do aplikace hello.
+5. Z rozevíracího seznamu typu zprávy hello vyberte hello zpráva typu toobe přepisu s novou vlastní zprávu.
+6. Z rozevíracího seznamu zvukový soubor hello vyberte v první části hello hello zvukového souboru, který jste nahráli.
 7. Klikněte na možnost **Vytvořit**. Zobrazí se zpráva potvrzující, že jste úspěšně vytvořili hlasové zprávy.
     ![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Ukládání do mezipaměti v Azure Multi-Factor Authentication
-Ukládání do mezipaměti umožňuje nastavit určité časové období, aby automaticky být úspěšné následné pokusy o ověření v tomto časovém období. Používá se především pokud místních systémů, jako je například VPN odesílat více požadavků na ověření při prvním požadavku stále probíhá. To umožňuje následných žádostí úspěšné automaticky po úspěšné uživatele v průběhu prvního ověřování. 
+Ukládání do mezipaměti můžete tooset za určité časové období, aby automaticky být úspěšné následné pokusy o ověření v tomto časovém období. Používá se především pokud místních systémů, jako je například VPN odesílat více požadavků na ověření při první požadavek hello stále probíhá. To umožňuje hello následné žádosti toosucceed automaticky po hello uživatele úspěšné ověření první hello v průběhu. 
 
-Ukládání do mezipaměti není určena pro použití pro přihlášení ke službě Azure AD.
+Ukládání do mezipaměti není určený toobe použít pro přihlášení tooAzure AD.
 
 ### <a name="set-up-caching"></a>Nastavení ukládání do mezipaměti 
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte do portálu pro správu MFA podle pokynů v horní části této stránky.
-3. V portálu Azure Multi-Factor Authentication Management Portal, klikněte na **ukládání do mezipaměti** v části konfigurace.
-4. Na klikněte na ukládání do mezipaměti pro stránku konfigurace **nová mezipaměť**.
-5. Vyberte typ mezipaměti a sekund mezipaměti. Klikněte na možnost **Vytvořit**.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello portálu pro správu MFA podle pokynů hello hello horní části této stránky.
+3. V hello Azure Multi-Factor Authentication Management Portal, klikněte na **ukládání do mezipaměti** pod hello část konfigurace.
+4. Na hello konfigurovat ukládání do mezipaměti stránky klikněte na tlačítko **nová mezipaměť**.
+5. Vyberte typ mezipaměti hello a počet sekund mezipaměti hello. Klikněte na možnost **Vytvořit**.
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
-Důvěryhodné že IP adresy je funkce služby Azure MFA, správci spravované nebo federované klienta můžete vynechat dvoustupňové ověřování pro uživatele, kteří se přihlašují ze společnosti místní intranet. Tato funkce je k dispozici plnou verzi Azure Multi-Factor Authentication není bezplatnou verzi pro správce. Podrobnosti o tom, jak získat plnou verzi Azure Multi-Factor Authentication najdete v tématu [Azure Multi-Factor Authentication](multi-factor-authentication.md).
+Důvěryhodné IP adresy je funkce Azure mfa, kterého spravované nebo federované klienta mohou správci toobypass dvoustupňové ověřování pro uživatele, kteří se přihlašují ze společnosti hello místní intranet. Tato funkce je k dispozici hello plnou verzi Azure Multi-Factor Authentication, ne hello bezplatnou verzi pro správce. Podrobnosti o tom, jak tooget hello plnou verzi Azure Multi-Factor Authentication, naleznete v části [Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
 | Typ klientovi Azure AD | Dostupné možnosti důvěryhodných adres IP |
 |:--- |:--- |
-| Spravované |<li>Určitých rozsahů IP adres – správci mohou určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují z intranetu společnosti.</li> |
-| Federované |<li>Všichni uživatelé federovaný – všechny federovaní uživatelé, kteří se přihlašují z uvnitř organizace bude obejít dvoustupňové ověření pomocí deklarace identity vystavené službou AD FS.</li><br><li>Určitých rozsahů IP adres – správci mohou určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují z intranetu společnosti. |
+| Spravované |<li>Určitých rozsahů IP adres – správci mohou určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze hello firemní intranet.</li> |
+| Federované |<li>Všichni uživatelé federovaný – všechny federovaní uživatelé, kteří se přihlašují v z uvnitř hello organizace bude obejít dvoustupňové ověření pomocí deklarace identity vystavené službou AD FS.</li><br><li>Určitých rozsahů IP adres – správci mohou určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze hello firemní intranet. |
 
-To nepoužívat funguje pouze z uvnitř intranetu společnosti. Například pokud jste vybrali všechny federovaní uživatelé, a uživatel přihlásí z mimo firemní intranet, tento uživatel má k ověření pomocí dvoustupňového ověření i v případě, že uživatel uvede deklaraci identity služby AD FS. 
+To nepoužívat funguje pouze z uvnitř intranetu společnosti. Například pokud jste vybrali všechny federovaní uživatelé, a uživatel přihlásí z mimo hello firemní intranet, tento uživatel má tooauthenticate pomocí dvoustupňového ověření i v případě, že uživatel hello uvede deklaraci identity služby AD FS. 
 
 **Činnost koncového uživatele v podnikové síti:**
 
 Pokud je zakázáno důvěryhodné IP adresy, dvoustupňové ověření je vyžadována pro toky prohlížeče a hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
 
-Pokud je povoleno důvěryhodné IP adresy, dvoustupňové ověření je *není* je požadována pro toky prohlížeče, a hesla aplikací jsou *není* požadované pro starší pokročilé klientské aplikace za předpokladu, že uživatel už nevytvořil heslo aplikace. Jakmile heslo aplikace se používá, zůstane vyžaduje. 
+Pokud je povoleno důvěryhodné IP adresy, dvoustupňové ověření je *není* je požadována pro toky prohlížeče, a hesla aplikací jsou *není* požadované pro starší pokročilé klientské aplikace za předpokladu, že hello uživatele dosud vytvořena heslo aplikace. Jakmile heslo aplikace se používá, zůstane vyžaduje. 
 
 **Činnost koncového uživatele mimo corpnet:**
 
 Zda důvěryhodné IP adresy je povolena, nebo Ne, dvoustupňové ověření je vyžadována pro toky prohlížeče a hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
 
-### <a name="to-enable-trusted-ips"></a>Chcete-li povolit důvěryhodné IP adresy
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte na stránku nastavení vícefaktorového ověřování služby podle pokynů na začátku tohoto článku.
-3. Na stránce nastavení služby v rámci důvěryhodných adres IP máte dvě možnosti:
+### <a name="tooenable-trusted-ips"></a>tooenable důvěryhodné IP adresy
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello stránky nastavení vícefaktorového ověřování služby podle pokynů hello od začátku hello tohoto článku.
+3. Na stránce nastavení služby hello v rámci důvěryhodných adres IP máte dvě možnosti:
    
-   * **Pro žádosti od federovaných uživatelů pocházející z mém intranetu** – zaškrtněte políčko. Všechny federovaní uživatelé, kteří se přihlašují z podnikové sítě bude nepoužívat dvoustupňové ověření pomocí deklarace identity vystavené službou AD FS.
-   * **Pro žádosti od určitého rozsahu veřejné IP adresy** – v textovém poli zadat pomocí notace CIDR zadejte IP adresy. Příklad: xxx.xxx.xxx.0/24 pro IP adresy v rozsahu xxx.xxx.xxx.1 – xxx.xxx.xxx.254 nebo xxx.xxx.xxx.xxx/32 pro jednu IP adresu. Můžete zadat až 50 rozsahy IP adres. Uživatelé, kteří se přihlašují z těchto IP adres nepoužívat dvoustupňové ověřování.
+   * **Pro žádosti od federovaných uživatelů pocházející z mém intranetu** – zaškrtávací políčko hello. Všechny federovaní uživatelé, kteří se přihlašují z podnikové sítě hello se nepoužívat dvoustupňové ověření pomocí deklarace identity vystavené službou AD FS.
+   * **Pro žádosti od určitého rozsahu veřejné IP adresy** – zadat pomocí notace CIDR hello textového pole zadejte hello IP adresy. Příklad: xxx.xxx.xxx.0/24 pro IP adresy v rozsahu xxx.xxx.xxx.1 hello – xxx.xxx.xxx.254 nebo xxx.xxx.xxx.xxx/32 pro jednu IP adresu. Můžete zadat až too50 rozsahy IP adres. Uživatelé, kteří se přihlašují z těchto IP adres nepoužívat dvoustupňové ověřování.
 4. Klikněte na **Uložit**.
-5. Jakmile se aktualizace se aplikovaly, klikněte na **Zavřít**.
+5. Jakmile byly použity hello aktualizace, klikněte na možnost **Zavřít**.
 
 ![Důvěryhodné IP adresy](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
 ## <a name="app-passwords"></a>Hesla aplikací
-Některé aplikace, jako je Office 2010 nebo starší a Apple Mail, nepodporují dvoustupňové ověřování. Nejsou nakonfigurované tak, aby přijímal druhé ověření. Pokud chcete tyto aplikace používat, musíte používat "hesla aplikací" místo tradiční heslo. Heslo aplikace umožňuje aplikaci obejít dvoustupňové ověření a pokračovat v práci.
+Některé aplikace, jako je Office 2010 nebo starší a Apple Mail, nepodporují dvoustupňové ověřování. Nejsou nakonfigurované tooaccept druhé ověření. toouse těchto aplikací, musíte místo tradiční heslo toouse "hesla aplikací". heslo aplikace Hello umožňuje toobypass aplikace hello dvoustupňové ověřování a pokračovat v práci.
 
 > [!NOTE]
-> Moderní ověřování pro klienty Office 2013
+> Moderní ověřování pro hello klientům Office 2013
 > 
-> Klienti Office 2013 (včetně Outlook) a novější podporu moderních ověřovacích protokolů a lze je povolit pro práci s dvoustupňové ověřování. Po povolení nejsou hesla aplikací vyžaduje pro tyto klienty.  Další informace najdete v tématu [Office 2013 veřejné Preview verze moderního ověřování oznámeno](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Klienti Office 2013 (včetně Outlook) a novější podporu moderních ověřovacích protokolů a může být povoleno toowork s dvoustupňové ověřování. Po povolení nejsou hesla aplikací vyžaduje pro tyto klienty.  Další informace najdete v tématu [Office 2013 veřejné Preview verze moderního ověřování oznámeno](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
-### <a name="important-things-to-know-about-app-passwords"></a>Důležité věci vědět o heslech aplikací
-Zde je důležité seznam skutečností, které byste měli vědět o heslech aplikací.
+### <a name="important-things-tooknow-about-app-passwords"></a>Důležité věci tooknow o heslech aplikací
+Následující Hello je důležité seznam věcí, které byste měli vědět o heslech aplikací.
 
-* Hesla aplikací pouhým je třeba zadat jednou jednu aplikaci. Uživatelé nemají sledování a pokaždé, když je zadat.
-* Vlastní heslo se vygeneruje automaticky a není zadané uživatelem. To je proto, že automaticky vygenerované heslo je pro útočníka tak snadno uhodnout obtížnější a je bezpečnější.
+* Hesla aplikací pouhým toobe zadali jednou jednu aplikaci. Uživatelé nemáte tookeep sledovat jejich a pokaždé, když je zadat.
+* Hello vlastní heslo je automaticky vygenerováno a není zadané uživatelem hello. Je to proto, že automaticky vygenerované heslo hello je pro tooguess útočník složitější a je bezpečnější.
 * Existuje omezení 40 hesel na uživatele. 
-* Aplikace, které hesla do mezipaměti a použít ho v místní scénářích mohou začít selhávat, protože heslo aplikace není známo mimo id organizace. Příkladem je e-mailů Exchange, které jsou na místě, ale Archivovaná pošta se nachází v cloudu. Stejné heslo nebude fungovat.
-* Jakmile povolíte službu Multi-Factor authentication na uživatelský účet, hesla aplikací lze použít s většina neprohlížečových klientů, jako je například Outlook a Lync, ale akce správy není možné pomocí hesla aplikací prostřednictvím neprohlížečové aplikace, jako je Windows PowerShell, i v případě, že uživatel má účet správce.  Ujistěte se, vytvořte účet služby s silné heslo ke spouštění skriptů prostředí PowerShell a nepovolujte tohoto účtu pro dvoustupňové ověření.
+* Aplikace, které mezipaměti hesla a používat ho v místní scénářích mohou začít selhávat, protože heslo aplikace hello není známo mimo id organizace hello. Příkladem je e-mailů Exchange, které jsou na místě, ale hello Archivovaná pošta se nachází v cloudu hello. Hello stejné heslo nebude fungovat.
+* Jakmile povolíte službu Multi-Factor authentication na uživatelský účet, hesla aplikací lze použít s většina neprohlížečových klientů, jako je například Outlook a Lync, ale akce správy není možné pomocí hesla aplikací prostřednictvím neprohlížečové aplikace, jako je Windows PowerShell, i v případě, že uživatel má účet správce.  Ujistěte se, vytvoření účtu služby pomocí skriptů prostředí PowerShell silné heslo toorun a nepovolujte tohoto účtu pro dvoustupňové ověření.
 
 > [!WARNING]
-> Hesla aplikací nepodporují v hybridních prostředích, kde klienti komunikaci s místní a cloudové Automatická konfigurace koncových bodů. Je to proto, že hesla domény jsou potřebné k ověření na místě a hesla aplikací jsou potřebné k ověření s cloudem.
+> Hesla aplikací nepodporují v hybridních prostředích, kde klienti komunikaci s místní a cloudové Automatická konfigurace koncových bodů. Je to proto, že hesla domény jsou požadované tooauthenticate na místě a hesla aplikací jsou požadované tooauthenticate hello cloudu.
 
 ### <a name="naming-guidance-for-app-passwords"></a>Pokyny pro hesla aplikací pro pojmenování
-Názvů hesel aplikací vytvořena podle zařízení, na které se používají. Pokud máte přenosný počítač, který má neprohlížečové aplikace, jako je například Outlook, Word a Excel, například vytvořit jedno heslo aplikace s názvem přenosný počítač a používat takové heslo aplikace v těchto aplikacích. Pak vytvořte jiné heslo aplikace s názvem Desktop pro stejné aplikace ve stolním počítači. 
+Názvů hesel aplikací by měla odpovídat hello zařízení, na které se používají. Pokud máte přenosný počítač, který má neprohlížečové aplikace, jako je například Outlook, Word a Excel, například vytvořit jedno heslo aplikace s názvem přenosný počítač a používat takové heslo aplikace v těchto aplikacích. Pak vytvořte jiné heslo aplikace s názvem Desktop pro hello stejné aplikace ve stolním počítači. 
 
 Společnost Microsoft doporučuje vytvoření jednoho hesla aplikace na zařízení, není jedno heslo aplikace na aplikaci.
 
 ### <a name="federated-sso-app-passwords"></a>Hesla aplikací federované (SSO)
-Azure AD podporuje federation (jednotné přihlášení) s místními systému Windows Server Active Directory Domain Services (AD DS). Pokud je vaše organizace Federovaná pomocí Azure AD a chcete používat Azure Multi-Factor Authentication, je důležité, abyste tyto informace o heslech aplikací. Tato část platí jenom pro federované zákazníků (SSO).
+Azure AD podporuje federation (jednotné přihlášení) s místními systému Windows Server Active Directory Domain Services (AD DS). Pokud je vaše organizace Federovaná pomocí Azure AD a budou toobe používání ověřování Azure Multi-Factor Authentication, pak hello je důležité si následující informace o heslech aplikací. Tato část se týká pouze zákazníků toofederated (SSO).
 
 * Hesla aplikací jsou ověřit pomocí služby Azure AD a proto obcházet federace. Federace se používá aktivně pouze při nastavování hesla aplikací.
-* Pro federované uživatele (SSO) jsme nikdy přejděte k poskytovateli Identity (IdP) na rozdíl od pasivního toku. Hesla jsou uložena v id organizace. Pokud uživatel odejde ze společnosti, že informace o musí přejít do id organizace pomocí služby DirSync v reálném čase. Zakázání/odstranění účtu může trvat až tři hodiny k synchronizaci, přičemž dojde ke zpoždění zakázání/odstranění hesla aplikace ve službě Azure AD.
+* Pro federované uživatele (SSO) jsme nikdy přejděte toohello zprostředkovatele Identity (IdP) na rozdíl od pasivního toku hello. Hello hesla jsou uložena v id organizace hello. Pokud hello uživatel odejde hello společnosti, má tento informace id tooorganizational tooflow pomocí služby DirSync v reálném čase. Zakázání/odstranění účtu může trvat hodiny toosync toothree, přičemž dojde ke zpoždění zakázání/odstranění hesla aplikace ve službě Azure AD.
 * Místní nastavení služby Access Control klienta není dodrženo heslem aplikace.
 * Bez ověřování místní protokolování nebo auditování funkce je k dispozici u hesla aplikace.
-* Některé pokročilé architektury návrhů může vyžadovat kombinaci organizační uživatelského jména a hesla aplikace při použití s klienty, v závislosti na tom, kde ověřují dvoustupňové ověřování. Pro klienty, kteří se ověřují se na místní infrastrukturu byste použili organizační uživatelské jméno a heslo. Pro klienty, kteří se ověřují se Azure AD použijete heslo aplikace.
+* Některé pokročilé architektury návrhů může vyžadovat kombinaci organizační uživatelského jména a hesla aplikace při použití s klienty, v závislosti na tom, kde ověřují dvoustupňové ověřování. Pro klienty, kteří se ověřují se na místní infrastrukturu byste použili organizační uživatelské jméno a heslo. Pro klienty, kteří se ověřují se Azure AD použijete heslo aplikace hello.
 
-  Předpokládejme například, že máte architekturu, která se skládá z následujících akcí:
+  Předpokládejme například, že máte architekturu, která se skládá z následujících hello:
 
   * Federujete místní instanci služby Active Directory s Azure AD
   * Používáte Exchange online
@@ -246,47 +246,47 @@ Azure AD podporuje federation (jednotné přihlášení) s místními systému W
 
   ![Ověření](./media/multi-factor-authentication-whats-next/federated.png)
 
-  V takové situaci postupujte takto:
+  V těchto případech je nutné provést následující hello:
 
-  * Při přihlášení do aplikace Lync, použijte uživatelské jméno a heslo vaší organizace.
-  * Při pokusu o přístup k adresáři prostřednictvím klienta aplikace Outlook, která se připojuje k Exchange online, používejte heslo aplikace.
+  * Při podepisování – v tooLync, použít uživatelské jméno a heslo vaší organizace.
+  * Při pokusu o tooaccess hello adresáře prostřednictvím klienta aplikace Outlook, která se připojuje tooExchange online, používejte heslo aplikace.
 
 ### <a name="allow-app-password-creation"></a>Povolit vytváření heslo aplikace
-Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Tato funkce musí být povolená. Povolit uživatelům možnost vytvářet hesla aplikací, použijte následující postup:
+Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Tato funkce musí být povolená. Uživatelé tooallow hello hesla aplikací toocreate možnost, použijte následující postup hello:
 
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte na stránku nastavení vícefaktorového ověřování služby podle pokynů na začátku tohoto článku.
-3. Klepněte na přepínač vedle **povolit uživatelům vytvářet hesla aplikací pro přihlášení do neprohlížečových aplikací**.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello stránky nastavení vícefaktorového ověřování služby podle pokynů hello od začátku hello tohoto článku.
+3. Vyberte přepínač hello vedle příliš**povolit uživatelům toocreate aplikace hesla toosign do neprohlížečových aplikací**.
 
 ![Vytvoření hesel aplikací](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
 ### <a name="create-app-passwords"></a>Vytvoření hesel aplikací
-Uživatelé mohou vytvářet hesla aplikací během jejich počáteční registrace. Získá možnost na konci procesu registrace, který vám umožní vytvořit hesla aplikací.
+Uživatelé mohou vytvářet hesla aplikací během jejich počáteční registrace. Získá možnost na konci hello hello procesu registrace, která by jim umožnila toocreate hesla aplikací.
 
-Uživatelé mohou také vytvářet hesla aplikací po registraci můžete změnit jejich nastavení v portálu Azure nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication](./end-user/multi-factor-authentication-end-user-app-passwords.md).
+Uživatelé mohou také vytvářet hesla aplikací po registraci můžete změnit jejich nastavení v hello Azure portal nebo hello portál Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication](./end-user/multi-factor-authentication-end-user-app-passwords.md).
 
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>Pro zařízení, které důvěřují uživatelům zapamatovat Vícefaktorové ověřování
-Zapamatování Multi-Factor Authentication na zařízení a prohlížeče, že uživatelé důvěryhodnosti je volné funkce pro všechny uživatele vícefaktorového ověřování. Umožňuje uživatelům udělit možnost obejít MFA pro sadu počet dnů po provedení úspěšně přihlašování pomocí MFA. To může zlepšují použitelnost minimalizací počet, kolikrát může uživatel provést dvoustupňové ověřování na stejné zařízení.
+Zapamatování Multi-Factor Authentication na zařízení a prohlížeče, že uživatelé důvěryhodnosti je volné funkce pro všechny uživatele vícefaktorového ověřování. Umožňuje toogive uživatelé hello možnost tooby průchodu MFA pro sadu počet dnů po provedení úspěšně přihlašování pomocí MFA. To můžete pomocí minimalizace hello počet, kolikrát může uživatel provést dvoustupňové ověřování na hello zlepšují použitelnost stejné zařízení.
 
-Ale pokud účtu nebo zařízení ohrožení, pak zapamatování MFA pro důvěryhodná zařízení může ovlivnit zabezpečení. Pokud podnikové účty nebo ztráty nebo odcizení důvěryhodné zařízení, měli byste [obnovit Multi-Factor Authentication na všech zařízeních](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user). Tato akce odvolá důvěryhodný stav ze všech zařízení a uživatele je potřeba provést dvoustupňové ověření znovu. Můžete také požádejte své uživatele k obnovení MFA na jejich vlastní zařízení s pokyny uvedenými v [spravovat nastavení pro dvoustupňové ověření](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)
+Ale pokud účtu nebo zařízení ohrožení, pak zapamatování MFA pro důvěryhodná zařízení může ovlivnit zabezpečení. Pokud podnikové účty nebo ztráty nebo odcizení důvěryhodné zařízení, měli byste [obnovit Multi-Factor Authentication na všech zařízeních](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user). Tato akce odvolá hello důvěryhodné stav ze všech zařízení a uživatele hello je požadovaná tooperform dvoustupňové ověření znovu. Můžete také určit, aby uživatelé toorestore MFA na jejich vlastní zařízení hello pokyny v [spravovat nastavení pro dvoustupňové ověření](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)
 
 ### <a name="how-it-works"></a>Jak to funguje
 
-Zapamatování Multi-Factor Authentication funguje tak, že když uživatel kontroluje nastavení trvalého souboru cookie v prohlížeči "nezobrazovat dotaz dalších **X** dní" pole při přihlášení. Uživatel nebude výzva k MFA znovu z tohoto broswer do vypršení platnosti souboru cookie. Pokud uživatel otevře jiný prohlížeč na stejné zařízení nebo vymaže jejich souborů cookie, budou vyzváni k ověření znovu. 
+Zapamatování Multi-Factor Authentication funguje tak, že když uživatel kontroluje hello nastavení trvalého souboru cookie v prohlížeči hello "nezobrazovat dotaz dalších **X** dní" pole při přihlášení. Hello uživatel nebude vyzván pro MFA znovu z tohoto broswer až vyprší platnost souboru cookie hello. Pokud uživatel hello otevře jiný prohlížeč na hello stejné zařízení nebo zruší své soubory cookie jsou výzvami tooverify znovu. 
 
-"Nezobrazovat dotaz dalších **X** dní" zaškrtávací políčko se nezobrazí na neprohlížečové aplikace, jestli podporují moderní ověřování. Tyto aplikace použít tokeny obnovení, které poskytují nové přístupové tokeny každou hodinu. Pokud token obnovení je ověřen, Azure AD kontroly, aby byla provedena poslední čas dvoustupňové ověření byla v rámci zadaného počtu dnů. 
+Hello "nezobrazovat dotaz dalších **X** dní" zaškrtávací políčko se nezobrazí na neprohlížečové aplikace, jestli podporují moderní ověřování. Tyto aplikace použít tokeny obnovení, které poskytují nové přístupové tokeny každou hodinu. Po ověření se token obnovení, byl kontroly Azure AD, které hello poslední čas dvoustupňové ověření provést byla v rámci hello nakonfigurovaný počet dnů. 
 
-Proto nezapomeňte vícefaktorového ověřování na důvěryhodných zařízeních snižuje počet ověření na webové aplikace (které obvykle výzvu pokaždé, když) ale zvyšuje počet ověření pro klienty ověřování, (které obvykle výzvu každých 90 dní).
+Proto nezapomeňte vícefaktorového ověřování na důvěryhodných zařízeních snižuje hello počet ověření na webové aplikace (které obvykle výzvu pokaždé, když) ale zvyšuje hello počet ověření pro klienty ověřování, (které obvykle výzvu každých 90 dní).
 
 > [!NOTE]
->Tato funkce není kompatibilní s "Zůstat přihlášeni" funkce služby AD FS, když uživatelé provádět dvoustupňové ověřování pro službu AD FS pomocí Azure MFA serveru nebo řešení třetí strany vícefaktorového ověřování. Pokud uživatelé ve službě AD FS vyberte možnost "Zůstat přihlášeni" a také označit jako důvěryhodné zařízení pro MFA, by nebylo možné ověřit po vypršení platnosti "Zapamatovat MFA" počet dnů. Azure AD požadavky čerstvé dvoustupňové ověření, ale služby AD FS vrátí token s původní vícefaktorového ověřování deklarací identity a datum namísto provádění dvoustupňové ověření znovu. Toto nastaví mimo smyčku ověření mezi Azure AD a služby AD FS. 
+>Tato funkce není kompatibilní s hello "Zůstat přihlášeni" funkce služby AD FS, když uživatelé provádět dvoustupňové ověřování pro službu AD FS pomocí Azure MFA serveru hello nebo řešení třetí strany vícefaktorového ověřování. Pokud uživatelé ve službě AD FS vyberte možnost "Zůstat přihlášeni" a také označit jako důvěryhodné zařízení pro MFA, nebudou moct tooverify po vypršení platnosti hello "Zapamatovat MFA" počet dní. Azure AD požadavky čerstvé dvoustupňové ověření, ale služby AD FS vrátí token s hello původní vícefaktorového ověřování deklarací identity a datum namísto provádění dvoustupňové ověření znovu. Toto nastaví mimo smyčku ověření mezi Azure AD a služby AD FS. 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Povolit zapamatovat vícefaktorové ověřování
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte na stránku nastavení vícefaktorového ověřování služby podle pokynů na začátku tohoto článku.
-3. Na stránce nastavení služby ve správě uživatelských nastavení zařízení, zkontrolujte **povolit uživatelům zapamatovat vícefaktorové ověřování u zařízení, které důvěřují** pole.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello stránky nastavení vícefaktorového ověřování služby podle pokynů hello od začátku hello tohoto článku.
+3. Na stránce nastavení služby hello, v části Správa nastavení zařízení uživatele, zkontrolujte hello **povolit uživatelům tooremember služby Multi-Factor authentication na zařízení, které důvěřují** pole.
    ![Mějte na paměti, zařízení](./media/multi-factor-authentication-whats-next/remember.png)
-4. Nastavte počet dní, které chcete povolit důvěryhodná zařízení obejít dvoustupňové ověření. Výchozí hodnota je 14 dnů.
+4. Nastavte hello počet dní, které chcete tooallow hello důvěryhodné zařízení toobypass dvoustupňové ověřování. Výchozí hodnota Hello je 14 dnů.
 5. Klikněte na **Uložit**.
 6. Klikněte na **Zavřít**.
 
@@ -297,21 +297,21 @@ Po povolení této funkce, uživatelé mohou označit zařízení jako důvěryh
 ![Dotaz již nezobrazovat – snímek obrazovky](./media/multi-factor-authentication-whats-next/trusted.png)
 
 ## <a name="selectable-verification-methods"></a>Volitelný ověření metody
-Můžete zvolit, které metody ověřování jsou k dispozici pro vaše uživatele. Následující tabulka obsahuje stručný přehled jednotlivých metod.
+Můžete zvolit, které metody ověřování jsou k dispozici pro vaše uživatele. Následující tabulka Hello poskytuje stručný přehled jednotlivých metod.
 
-Když uživatelé zaregistrují svoje účty pro MFA, vybírá jejich metoda upřednostňované ověření mimo možnosti, které jste povolili. Pokyny k jejich registraci, najdete v článku [nastavit účtu pro dvoustupňové ověření](multi-factor-authentication-end-user-first-time.md)
+Když uživatelé zaregistrují svoje účty pro MFA, vybírá jejich metoda upřednostňované ověření mimo hello možnosti, které jste povolili. Hello pokyny k jejich registraci, najdete v článku [nastavit účtu pro dvoustupňové ověření](multi-factor-authentication-end-user-first-time.md)
 
 | Metoda | Popis |
 |:--- |:--- |
-| Telefonní hovor |Umístí automatický hlasový hovor. Uživatel přijme hovor a stiskem tlačítka # na klávesnici telefonu provede ověření. Toto telefonní číslo není synchronizován do místní služby Active Directory. |
-| Textová zpráva na telefon |Odešle textovou zprávu s ověřovacím kódem. Uživatel je vyzván k odpovědi na textovou zprávu s ověřovacím kódem a zadejte ověřovací kód do rozhraní přihlášení. |
-| Oznámení pomocí mobilních aplikací |Odešle nabízených oznámení do telefonu nebo zaregistrovaného zařízení. Zobrazení oznámení a vybere uživatele **ověřte** k dokončení ověření. <br>Je k dispozici pro aplikaci Microsoft Authenticator [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
-| Ověřovací kód z mobilní aplikace |Aplikace Microsoft Authenticator generuje každých 30 sekund nový ověřovací kód OATH. Tento ověřovací kód, uživatel zadá do rozhraní přihlášení.<br>Je k dispozici pro aplikaci Microsoft Authenticator [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Volání toophone |Umístí automatický hlasový hovor. Hello uživatele odpovědi hello hovor a stiskem tlačítka # na tooauthenticate klávesnici telefonu hello. Toto telefonní číslo není synchronizovaná tooon místní služby Active Directory. |
+| Text zprávy toophone |Odešle textovou zprávu s ověřovacím kódem. uživatel Hello je výzvami tooeither odpověď toohello textovou zprávu s hello ověřovací kód nebo tooenter hello ověřovací kód do hello přihlašovací rozhraní. |
+| Oznámení pomocí mobilních aplikací |Odešle nabízená oznámení tooyour telefonu nebo zaregistrovaného zařízení. Hello uživatele zobrazení hello oznámení a vybere **ověřte** toocomplete ověření. <br>je k dispozici pro aplikaci Microsoft Authenticator Hello [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Ověřovací kód z mobilní aplikace |aplikace Microsoft Authenticator Hello generuje každých 30 sekund nový ověřovací kód OATH. Hello uživatel zadá tento ověřovací kód do hello přihlašovací rozhraní.<br>je k dispozici pro aplikaci Microsoft Authenticator Hello [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 
-### <a name="how-to-enabledisable-authentication-methods"></a>Povolení nebo zakázání metody ověřování
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Přejděte na stránku nastavení vícefaktorového ověřování služby podle pokynů na začátku tohoto článku.
-3. Na stránce nastavení služby v rámci možnosti ověření výběrem nebo zrušením výběru možnosti, které chcete použít.
+### <a name="how-tooenabledisable-authentication-methods"></a>Jak tooenable nebo zakázat metody ověřování
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello stránky nastavení vícefaktorového ověřování služby podle pokynů hello od začátku hello tohoto článku.
+3. Na stránce nastavení služby hello, v části Možnosti ověření výběrem nebo zrušením výběru možnosti hello chcete toouse.
    ![Požadované možnosti ověření](./media/multi-factor-authentication-whats-next/authmethods.png)
 4. Klikněte na **Uložit**.
 5. Klikněte na **Zavřít**.

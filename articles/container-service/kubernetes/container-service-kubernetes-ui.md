@@ -1,6 +1,6 @@
 ---
-title: "Správě Azure Kubernetes clusteru pomocí webového uživatelského rozhraní | Microsoft Docs"
-description: "V Azure Container Service pomocí Kubernetes webového uživatelského rozhraní"
+title: "aaaManage Azure Kubernetes cluster s webového uživatelského rozhraní | Microsoft Docs"
+description: "Pomocí hello Kubernetes webové uživatelské rozhraní v Azure Container Service"
 services: container-service
 documentationcenter: 
 author: bburns
@@ -17,29 +17,29 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: e31f90d61fc61f17582372fe9f491a1e21f628b0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e24ea0b82c94d2fd4610e4442699ef756590e6bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Pomocí Azure Container Service Kubernetes webového uživatelského rozhraní
+# <a name="using-hello-kubernetes-web-ui-with-azure-container-service"></a>Pomocí hello Kubernetes webové uživatelské rozhraní s Azure Container Service
 
 ## <a name="prerequisites"></a>Požadavky
 Tento návod předpokládá, že máte [vytvořit Kubernetes clusteru Azure Container Service pomocí](container-service-kubernetes-walkthrough.md).
 
 
-Také předpokládá, že máte Azure CLI 2.0 a `kubectl` nástroje nainstalované.
+Také předpokládá, že máte hello Azure CLI 2.0 a `kubectl` nástroje nainstalované.
 
-Můžete otestovat, pokud máte `az` nainstalovaná, spuštěním nástroje:
+Pokud máte hello můžete otestovat `az` nainstalovaná, spuštěním nástroje:
 
 ```console
 $ az --version
 ```
 
-Pokud nemáte `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).
+Pokud nemáte hello `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).
 
-Můžete otestovat, pokud máte `kubectl` nainstalovaná, spuštěním nástroje:
+Pokud máte hello můžete otestovat `kubectl` nainstalovaná, spuštěním nástroje:
 
 ```console
 $ kubectl version
@@ -53,83 +53,83 @@ $ az acs kubernetes install-cli
 
 ## <a name="overview"></a>Přehled
 
-### <a name="connect-to-the-web-ui"></a>Připojit k serveru webového uživatelského rozhraní
-Spuštěním můžete spustit Kubernetes webového uživatelského rozhraní:
+### <a name="connect-toohello-web-ui"></a>Připojit toohello webového uživatelského rozhraní
+Spuštěním můžete spustit hello Kubernetes webového uživatelského rozhraní:
 
 ```console
 $ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-To by měla otevřít webový prohlížeč nakonfigurován tak, aby obraťte se na proxy server zabezpečené připojení místního počítače k Kubernetes webového uživatelského rozhraní.
+To by měla otevřít webový prohlížeč nakonfigurován tootalk tooa zabezpečené proxy server připojení místního počítače toohello Kubernetes webového uživatelského rozhraní.
 
 ### <a name="create-and-expose-a-service"></a>Vytvoření a vystavení služby
-1. V Kubernetes webového uživatelského rozhraní, klikněte na **vytvořit** tlačítko v horním pravém okně.
+1. V hello Kubernetes webového uživatelského rozhraní, klikněte na **vytvořit** tlačítko v pravém horním hello.
 
     ![Kubernetes vytvoření uživatelského rozhraní](./media/container-service-kubernetes-ui/create.png)
 
     Otevře se dialogové okno kde můžete začít vytvářet aplikace.
 
-2. Poskytněte název `hello-nginx`. Použití [ `nginx` kontejneru z Docker](https://hub.docker.com/_/nginx/) a nasadit tři repliky této webové služby.
+2. Pojmenujte ji hello `hello-nginx`. Použití hello [ `nginx` kontejneru z Docker](https://hub.docker.com/_/nginx/) a nasadit tři repliky této webové služby.
 
     ![Dialogové okno Vytvořit Kubernetes Pod](./media/container-service-kubernetes-ui/nginx.png)
 
 3. V části **služby**, vyberte **externí** a zadejte port 80.
 
-    Toto nastavení zatížení zůstatky provoz na tři repliky.
+    Toto nastavení zatížení zůstatky provoz toohello tři repliky.
 
     ![Dialogové okno Vytvořit Kubernetes služby](./media/container-service-kubernetes-ui/service.png)
 
-4. Klikněte na tlačítko **nasadit** k nasazení těchto kontejnerů a služeb.
+4. Klikněte na tlačítko **nasadit** toodeploy tyto kontejnery a služby.
 
     ![Kubernetes nasazení](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Zobrazit vaše kontejnery
-Po kliknutí na tlačítko **nasadit**, uživatelské rozhraní zobrazí zobrazení vaší služby jako nasazení:
+Po kliknutí na tlačítko **nasadit**, hello uživatelského rozhraní ukazuje zobrazení vaší služby jako nasazení:
 
 ![Stav Kubernetes](./media/container-service-kubernetes-ui/status.png)
 
-Stav každého objektu Kubernetes na zobrazený na levé straně uživatelského rozhraní, můžete zobrazit v části **pracovními stanicemi soustředěnými kolem**. Pokud je částečně úplné kruh, objekt stále nasazení. Po nasazení objekt zobrazí zelená značka zaškrtnutí:
+Hello stav každého objektu Kubernetes v kruhu hello na levé straně hello uživatelského rozhraní, můžete zobrazit v části **pracovními stanicemi soustředěnými kolem**. Pokud je částečně úplné kruh, objekt hello stále nasazení. Po nasazení objekt zobrazí zelená značka zaškrtnutí:
 
 ![Kubernetes nasazení](./media/container-service-kubernetes-ui/deployed.png)
 
-Jakmile všechno běží, klikněte na jednu z vaší pracovními stanicemi soustředěnými kolem zobrazíte podrobnosti o webové službě spuštěné.
+Jakmile všechno běží, klikněte na jednu z vaší pracovními stanicemi soustředěnými kolem toosee podrobnosti o hello spuštění webové služby.
 
 ![Kubernetes pracovními stanicemi soustředěnými kolem](./media/container-service-kubernetes-ui/pods.png)
 
-V **pracovními stanicemi soustředěnými kolem** zobrazení, se zobrazí informace o kontejnery v pod, jakož i prostředky procesoru a paměti používané těchto kontejnerů:
+V hello **pracovními stanicemi soustředěnými kolem** zobrazení, se zobrazí informace o hello kontejnery v hello pod, jakož i prostředků procesoru a paměti hello používá těchto kontejnerů:
 
 ![Kubernetes prostředky](./media/container-service-kubernetes-ui/resources.png)
 
-Pokud nevidíte prostředky, musíte Počkejte několik minut pro data sledování rozšíření.
+Pokud nevidíte hello prostředky, může pro hello monitorování toopropagate dat potřebovat toowait několik minut.
 
-Chcete-li zobrazit protokoly pro váš kontejner, klikněte na tlačítko **zobrazit protokoly**.
+toosee hello protokoly pro kontejner, klikněte na tlačítko **zobrazit protokoly**.
 
 ![Protokoly Kubernetes](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>Zobrazení služby
-Kromě spuštění kontejnerů, rozhraní Kubernetes vytvořil externí `Service` která zřizuje Vyrovnávání zatížení, aby provoz do kontejnerů v clusteru.
+V přidání toorunning kontejnerů, hello uživatelského rozhraní Kubernetes vytvořil externí `Service` která zřizuje zatížení vyrovnávání toobring provoz toohello kontejnery v clusteru.
 
-V levém navigačním podokně klikněte na tlačítko **služby** zobrazíte všechny služby (měla by existovat pouze jedna).
+V levém navigačním podokně hello, klikněte na **služby** tooview všechny služby (měla by existovat pouze jedna).
 
 ![Kubernetes služby](./media/container-service-kubernetes-ui/service-deployed.png)
 
-V tomto zobrazení měli byste vidět externí koncový bod (IP adresa) přiřazené k službě.
+V tomto zobrazení měli byste vidět externí koncový bod (IP adresa) přiřazené tooyour služby.
 Pokud kliknete na tuto IP adresu, měli byste vidět vaše kontejner nginx a sváže s za nástrojem pro vyrovnávání zatížení.
 
 ![nginx zobrazení](./media/container-service-kubernetes-ui/nginx-page.png)
 
 ### <a name="resizing-your-service"></a>Změna velikosti služby
-Kromě zobrazování vašich objektů v uživatelském rozhraní, můžete upravit a aktualizovat objekty Kubernetes rozhraní API.
+V přidání tooviewing vašich objektů v hello uživatelského rozhraní, můžete upravit a aktualizovat objekty rozhraní API Kubernetes hello.
 
-Nejprve, klikněte na tlačítko **nasazení** v levém navigačním podokně zobrazíte nasazení pro vaši službu.
+Nejprve, klikněte na tlačítko **nasazení** v hello levé navigační podokně toosee hello nasazení pro vaši službu.
 
-Až se v tomto zobrazení, klikněte na sady replik a pak klikněte na tlačítko **upravit** v horním navigačním panelu:
+Až se v tomto zobrazení, klikněte na hello sady replik a pak klikněte na tlačítko **upravit** v horním navigačním panelu hello:
 
 ![Upravit Kubernetes](./media/container-service-kubernetes-ui/edit.png)
 
-Upravit `spec.replicas` pole, které chcete být `2`a klikněte na tlačítko **aktualizace**.
+Upravit hello `spec.replicas` pole toobe `2`a klikněte na tlačítko **aktualizace**.
 
-To způsobí, že počet replik odpojení ke dvěma odstraněním vaší pracovními stanicemi soustředěnými kolem.
+To způsobí, že hello počet replik toodrop tootwo odstraněním vaší pracovními stanicemi soustředěnými kolem.
 
  
 

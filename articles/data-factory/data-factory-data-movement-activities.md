@@ -1,5 +1,5 @@
 ---
-title: "Přesun dat pomocí aktivity kopírování | Microsoft Docs"
+title: "aaaMove dat pomocí aktivity kopírování | Microsoft Docs"
 description: "Další informace o přesun dat v kanálů služby Data Factory: migrace dat mezi cloudové úložiště a mezi úložišti místního a cloudového úložiště. Pomocí aktivity kopírování."
 keywords: "kopírování dat, přesunu dat, data migrace, přenos dat"
 services: data-factory
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 29b74154b9006795ead3b0ee9638a3dbf2c5d831
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 ## <a name="overview"></a>Přehled
-V Azure Data Factory můžete aktivitu kopírování ke kopírování dat mezi místními a cloudovými datová úložiště. Po zkopírování dat, může být další transformovat a analyzovat. Aktivita kopírování můžete taky publikovat transformaci a analýzu výsledky pro business intelligence (BI) a využití aplikace.
+V Azure Data Factory, můžete data toocopy aktivity kopírování mezi místními a cloudovými datová úložiště. Po zkopírování dat hello může být další transformovat a analyzovat. Aktivita kopírování toopublish transformaci a výsledky analýzy můžete použít také pro business intelligence (BI) a využití aplikace.
 
 ![Role aktivity kopírování](media/data-factory-data-movement-activities/copy-activity.png)
 
@@ -32,62 +32,62 @@ Aktivita kopírování používá technologii zabezpečený, spolehlivou a šká
 Nejprve si ukážeme, jak dojde k migraci dat mezi dvě úložiště dat cloudu a mezi místnímu úložišti dat a úložiště dat cloudu.
 
 > [!NOTE]
-> Obecné informace o aktivitách najdete v tématu [Principy kanály a aktivity](data-factory-create-pipelines.md).
+> Obecně platí, najdete v části toolearn o aktivitách [Principy kanály a aktivity](data-factory-create-pipelines.md).
 >
 >
 
 ### <a name="copy-data-between-two-cloud-data-stores"></a>Kopírovat data mezi dvěma cloudové úložiště dat
-Pokud jsou zdrojový a podřízený datová úložiště v cloudu, aktivity kopírování projde těchto fází ke zkopírování dat ze zdroje do jímky. Služba, která pohání aktivity kopírování:
+Pokud jsou zdroj a jímka datová úložiště v cloudu hello, aktivity kopírování projde hello následujících fázích toocopy data z hello zdroj toohello jímky. Hello služba, která pohání aktivity kopírování:
 
-1. Čte data z úložiště dat zdroje.
-2. Provede serializaci nebo deserializaci, kompresi nebo dekompresi, mapování sloupců a typ – převod. Dělá tyto operace na základě konfigurací vstupní datové sady, výstupní datovou sadu a kopie aktivity.
-3. Zapisuje data do cílového úložiště dat.
+1. Přečte data ze zdrojového úložiště dat hello.
+2. Provede serializaci nebo deserializaci, kompresi nebo dekompresi, mapování sloupců a typ – převod. Dělá tyto operace na základě hello konfigurací hello vstupní datové sady, výstupní datovou sadu a kopie aktivity.
+3. Zapíše data toohello cílového úložiště dat.
 
-Služba automaticky vybere optimální oblasti, kterou chcete provést přesun dat. Tato oblast je obvykle nejblíže k úložišti dat podřízený jeden.
+Služba Hello automaticky zvolí přesun dat hello optimální oblast tooperform hello. Tato oblast je obvykle hello jeden nejbližší toohello podřízený datové úložiště.
 
 ![Cloud cloudové kopírování](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi úložišti dat místní a cloudové úložiště dat
-Bezpečně přesun dat mezi úložišti dat místní a cloudové úložiště dat, nainstalujte Brána pro správu dat na místním počítači. Brána pro správu dat je agenta, který umožňuje přesun dat hybridní a zpracování. Nainstalujete ho na stejném počítači jako data uložit sám sebe, nebo na samostatný počítač, má přístup k úložišti dat.
+toosecurely přesun dat mezi úložišti dat místní a cloudové úložiště dat, nainstalujte Brána pro správu dat na místním počítači. Brána pro správu dat je agenta, který umožňuje přesun dat hybridní a zpracování. Můžete ho nainstalovat na stejný počítač jako úložiště dat hello samotné hello nebo na samostatný počítač, který má přístup k datům toohello uložit.
 
-V tomto scénáři Brána pro správu dat provede serializaci nebo deserializaci, kompresi nebo dekompresi, mapování sloupců a typ – převod. Není toku dat pomocí služby Azure Data Factory. Místo toho brána pro správu dat přímo zapisuje data do cílové úložiště.
+V tomto scénáři Brána pro správu dat provede serializaci nebo deserializaci hello, kompresi nebo dekompresi, mapování sloupců a typ – převod. Data nejsou procházet skrz hello služby Azure Data Factory. Místo toho brána pro správu dat přímo zapíše hello data toohello cílové úložiště.
 
 ![Kopírování na místní--cloud](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
 
 V tématu [přesun dat mezi místní a cloudové úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) úvod a návod. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) podrobné informace o tohoto agenta.
 
-Také můžete přesunout data z/do podporované úložiště dat, které jsou hostované na virtuální počítače Azure IaaS (VM) s použitím brány pro správu dat. Brána pro správu dat je v takovém případě můžete nainstalovat na stejný virtuální počítač jako data uložit sám sebe, nebo na samostatný virtuální počítač, má přístup k úložišti dat.
+Také můžete přesunout data z / úložiště toosupported dat, které jsou hostované na virtuální počítače Azure IaaS (VM) s použitím brány pro správu dat. V takovém případě můžete nainstalovat brána pro správu dat na hello stejného virtuálního počítače jako úložiště dat hello sám sebe nebo na samostatný virtuální počítač, který má přístup k datům toohello uložit.
 
 ## <a name="supported-data-stores-and-formats"></a>Podporované datové úložiště a formáty
-Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového úložiště dat do úložiště dat jímky. Data Factory podporuje následující typy úložišť dat. Data z libovolného zdroje lze zapsat do libovolné jímky. Kliknutím na úložiště dat se dozvíte, jak kopírovat data z a do daného úložiště.
+Aktivita kopírování v datové továrně zkopíruje data z úložiště zdroje dat úložiště tooa podřízený data. Objekt pro vytváření dat podporuje hello následující datová úložiště. Data z jakéhokoli zdroje může být napsán tooany jímky. Klikněte na tlačítko data store toolearn jak toocopy tooand data z tohoto úložiště.
 
 > [!NOTE] 
-> Pokud potřebujete přesunout data do nebo z úložiště dat, které aktivita kopírování nepodporuje, použijte ke kopírování nebo přesunu **vlastní aktivitu** ve službě Data Factory s vaší vlastní logikou. Podrobnosti o vytvoření a používání vlastní aktivity najdete v tématu [Použití vlastních aktivit v kanálu služby Azure Data Factory](data-factory-use-custom-activities.md).
+> Pokud potřebujete toomove data do nebo z úložiště dat, která nepodporuje aktivity kopírování, použijte **vlastní aktivity** v objektu pro vytváření dat s vlastní logikou pro kopírování nebo přesunutí data. Podrobnosti o vytvoření a používání vlastní aktivity najdete v tématu [Použití vlastních aktivit v kanálu služby Azure Data Factory](data-factory-use-custom-activities.md).
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Úložiště dat s * mohou být místní nebo v Azure IaaS a vyžadují nainstalování [Brány správy dat](data-factory-data-management-gateway.md) na místním počítači nebo na počítači Azure IaaS.
+> Úložiště dat, s * může být místní nebo v Azure IaaS a vyžadují tooinstall [Brána pro správu dat](data-factory-data-management-gateway.md) na počítači v místní nebo Azure IaaS.
 
 ### <a name="supported-file-formats"></a>Podporované formáty souborů
-Můžete použít aktivitu kopírování **zkopírujte soubory jako-je** mezi dvě souborové úložiště dat, můžete přeskočit [formátovat oddíl](data-factory-create-datasets.md) v definicích vstupní a výstupní datové sady. Data budou zkopírována efektivně bez serializaci nebo deserializaci.
+Můžete použít aktivitu kopírování příliš**zkopírujte soubory jako-je** mezi dvě souborové úložiště dat, můžete přeskočit hello [formátovat oddíl](data-factory-create-datasets.md) v hello vstupní i výstupní datovou sadu definice. Hello data se zkopírují efektivně bez serializaci nebo deserializaci.
 
-Aktivita kopírování také čte z a zapíše do souborů v zadané formáty: **Text JSON, Avro, ORC a Parquet**a kompresní kodek **GZip, Deflate, BZip2 a ZipDeflate** jsou podporovány. V tématu [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
+Aktivita kopírování také čte z a zapíše toofiles v zadané formáty: **Text JSON, Avro, ORC a Parquet**a kompresní kodek **GZip, Deflate, BZip2 a ZipDeflate** jsou podporovány. V tématu [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
 
-Například můžete provést následující kopie aktivity:
+Například můžete provést následující hello zkopírujte aktivity:
 
-* Kopírování dat na místním serveru SQL a zapisovat do Azure Data Lake Store ve formátu ORC.
-* Zkopírujte soubory ve formátu textu (CSV) z místní systém souborů a zápis do objektu Blob Azure ve formátu Avro.
-* Kopírování komprimované soubory ze systému souborů na místě a pak dekomprimovat krajině do Azure Data Lake Store.
-* Kopírování dat z Azure Blob ve formátu GZip komprimované textu (CSV) a zapsat do databáze SQL Azure.
+* Kopírování dat na místním serveru SQL a zápisu ve formátu ORC tooAzure Data Lake Store.
+* Zkopírujte soubory ve formátu textu (CSV) z místní systém souborů a zápis tooAzure objektů Blob ve formátu Avro.
+* Kopírování komprimované soubory ze systému souborů na místě a dekomprese poté zobrazovat tooAzure Data Lake Store.
+* Kopírování dat z Azure Blob ve formátu GZip komprimované textu (CSV) a zápis tooAzure databáze SQL.
 
 ## <a name="global"></a>Přesun globálně dostupnou dat
-Azure Data Factory je k dispozici pouze v oblastech severní Evropa, západní USA a východní USA. Službu, která pohání aktivity kopírování je však k dispozici globálně v následujících oblastech a zeměpisných oblastí. Globálně dostupnou topologie zajišťuje přesun efektivní dat, která obvykle zabraňuje směrování mezi oblastmi. V tématu [služby podle oblasti](https://azure.microsoft.com/regions/#services) dostupnost služby Data Factory a přesun dat v oblasti.
+Azure Data Factory je k dispozici pouze v oblastech severní Evropa, západní USA a východní USA hello. Však je k dispozici globálně v hello hello služby, která pohání aktivity kopírování oblasti a zeměpisných oblastí. globálně dostupnou topologie Hello zajišťuje přesun efektivní dat, která obvykle zabraňuje směrování mezi oblastmi. V tématu [služby podle oblasti](https://azure.microsoft.com/regions/#services) dostupnost služby Data Factory a přesun dat v oblasti.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Kopírování dat mezi úložišti dat cloudu
-Pokud jsou zdrojový a podřízený datová úložiště v cloudu, objekt pro vytváření dat používá nasazení služby v oblasti, které je nejblíže jímky ve stejné geography přesouvat data. Naleznete v následující tabulce pro mapování:
+Pokud jsou zdroj a jímka datová úložiště v cloudu hello, objekt pro vytváření dat používá nasazení služby v oblasti hello, který je nejblíže podřízený toohello v hello stejná geography toomove hello data. Viz následující tabulka pro mapování toohello:
 
-| Geography cílového úložiště dat | Oblast cílového úložiště dat | Oblast pro přesun dat |
+| Geography hello cílové datová úložiště | Oblast hello cílového úložiště dat | Oblast pro přesun dat |
 |:--- |:--- |:--- |
 | Spojené státy | Východ USA | Východ USA |
 | &nbsp; | Východní USA 2 | Východní USA 2 |
@@ -114,27 +114,27 @@ Pokud jsou zdrojový a podřízený datová úložiště v cloudu, objekt pro vy
 | &nbsp; | Indie – západ | Střed Indie |
 | &nbsp; | Indie – jih | Střed Indie |
 
-Alternativně můžete explicitně určit oblasti služby Data Factory, který se má použít k provedení kopie zadáním `executionLocation` vlastnost v aktivitě kopírování `typeProperties`. Podporované hodnoty této vlastnosti jsou nahoře uvedené v **používá oblast pro přesun dat** sloupce. Všimněte si, že vaše data prochází danou oblast přenášených v síti během kopírování. Například pro kopírování mezi Azure ukládá v Koreji, můžete zadat `"executionLocation": "Japan East"` trasu prostřednictvím Japonsko oblast (najdete v části [ukázkové JSON](#by-using-json-scripts) jako odkaz).
+Alternativně můžete explicitně určit hello oblast toobe služby Data Factory používá tooperform hello kopie zadáním `executionLocation` vlastnost v aktivitě kopírování `typeProperties`. Podporované hodnoty této vlastnosti jsou nahoře uvedené v **používá oblast pro přesun dat** sloupce. Všimněte si, že vaše data procházejí v této oblasti průběhu hello přenosová během kopírování. Například toocopy mezi Azure ukládá v Koreji, můžete zadat `"executionLocation": "Japan East"` tooroute prostřednictvím Japonsko oblast (najdete v části [ukázkové JSON](#by-using-json-scripts) jako odkaz).
 
 > [!NOTE]
-> Pokud oblast cílového úložiště dat není v předchozím seznamu nebo nezjistitelný, ve výchozím nastavení aktivity kopírování selže místo alternativní oblast, pokud `executionLocation` je zadán. Rozbalí se seznamu podporovaných oblastí v čase.
+> Pokud hello oblast hello cílového úložiště dat není v předchozím seznamu nebo nezjistitelný, ve výchozím nastavení aktivity kopírování selže místo alternativní oblast, pokud `executionLocation` je zadán. Rozbalí se seznam Hello podporované oblasti v čase.
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi úložišti dat místní a cloudové úložiště dat
-Při kopírování dat mezi místními (nebo Azure virtuální počítače nebo IaaS) a cloudových úložišť [Brána pro správu dat](data-factory-data-management-gateway.md) provádí přesun dat na místní počítač nebo virtuální počítač. Data nejsou procházet skrz služba v cloudu, pokud nechcete použít [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) schopností. V takovém případě toky dat prostřednictvím pracovní úložiště objektů Azure Blob před zápisem do úložiště dat jímky.
+Při kopírování dat mezi místními (nebo Azure virtuální počítače nebo IaaS) a cloudových úložišť [Brána pro správu dat](data-factory-data-management-gateway.md) provádí přesun dat na místní počítač nebo virtuální počítač. Hello není toku dat prostřednictvím služby hello v cloudu hello, pokud nechcete použít hello [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) schopností. V takovém případě toky dat prostřednictvím hello před zápisem do úložiště dat podřízený hello pracovní úložiště objektů Blob v Azure.
 
 ## <a name="create-a-pipeline-with-copy-activity"></a>Vytvoření kanálu s aktivitou kopírování
 Vytvoření kanálu s aktivitou kopírování v několika způsoby:
 
-### <a name="by-using-the-copy-wizard"></a>Pomocí Průvodce kopírováním
-Průvodce kopírováním objekt pro vytváření dat umožňuje vytvoření kanálu s aktivitou kopírování. Tento kanál umožňuje zkopírování dat z podporovaných zdrojů do cíle *bez nutnosti psaní JSON* definice pro propojené služby, datové sady a kanály. V tématu [Průvodce kopírováním služby Data Factory](data-factory-copy-wizard.md) podrobnosti o průvodce.  
+### <a name="by-using-hello-copy-wizard"></a>Pomocí Průvodce kopírováním hello
+Průvodce kopírováním služby Data Factory Hello vám pomůže toocreate kanál s aktivitou kopírování. Tento kanál vám umožní toocopy data z podporovaných zdrojů toodestinations *bez nutnosti psaní JSON* definice pro propojené služby, datové sady a kanály. V tématu [Průvodce kopírováním služby Data Factory](data-factory-copy-wizard.md) podrobnosti o hello průvodce.  
 
 ### <a name="by-using-json-scripts"></a>Pomocí skriptů JSON
-Editoru služby Data Factory můžete v portálu Azure, Visual Studio nebo Azure PowerShell k vytvoření definice JSON pro kanál (pomocí aktivity kopírování). Pak můžete nasadit v Data Factory vytvořit kanál. V tématu [kurz: použijte aktivitu kopírování v kanál služby Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
+Můžete použít Editor služby Data Factory v hello portálu Azure, Visual Studio nebo Azure PowerShell toocreate definici JSON pro kanál (pomocí aktivity kopírování). Pak můžete nasadit toocreate hello kanál v datové továrně. V tématu [kurz: použijte aktivitu kopírování v kanál služby Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
 
-Jsou dostupné pro všechny typy aktivit JSON vlastnosti (například název, popis, vstupní a výstupní tabulky a zásady). Vlastnosti, které jsou k dispozici v `typeProperties` části aktivity se liší podle každý typ aktivity.
+Jsou dostupné pro všechny typy aktivit JSON vlastnosti (například název, popis, vstupní a výstupní tabulky a zásady). Vlastnosti, které jsou k dispozici v hello `typeProperties` části hello aktivity se liší podle každý typ aktivity.
 
-Pro aktivitu kopírování `typeProperties` části se liší v závislosti na typech zdrojů a jímky. Klikněte na tlačítko zdroj/jímka v [podporované zdroje a jímky](#supported-data-stores-and-formats) části nabízejí informace o typu vlastnosti, které aktivity kopírování podporuje pro toto datové úložiště.
+Pro aktivitu kopírování, hello `typeProperties` části se liší v závislosti na typech hello zdrojů a jímky. Klikněte na tlačítko zdroj/jímka v hello [podporované zdroje a jímky](#supported-data-stores-and-formats) toolearn část o typu vlastnosti, které aktivity kopírování podporuje pro toto datové úložiště.
 
 Zde je ukázka definice JSON:
 
@@ -142,7 +142,7 @@ Zde je ukázka definice JSON:
 {
   "name": "ADFTutorialPipeline",
   "properties": {
-    "description": "Copy data from Azure blob to Azure SQL table",
+    "description": "Copy data from Azure blob tooAzure SQL table",
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
@@ -179,30 +179,30 @@ Zde je ukázka definice JSON:
   }
 }
 ```
-Určuje plán, který je definován v výstupní datovou sadu při spuštění aktivity (například: **denní**, frekvence jako **den**a intervalu jako **1**). Aktivity kopíruje data ze vstupní datové sady (**zdroj**) do výstupní datové sady (**podřízený**).
+Hello plán, který je definován v hello výstupní datovou sadu Určuje spuštění aktivity hello (například: **denní**, frekvence jako **den**a intervalu jako **1**). Hello aktivity kopíruje data ze vstupní datové sady (**zdroj**) tooan výstupní datovou sadu (**podřízený**).
 
-Můžete zadat více než jednu vstupní datovou sadu, která aktivita kopírování. Používají se k ověření závislosti před spuštěním aktivity. Ale pouze data z první datovou sadu zkopírován do cílové datové sadě. Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).  
+Můžete zadat více než jeden vstupní datové sady tooCopy aktivity. Před spuštěním hello aktivity jsou použité tooverify hello závislosti. Jenom hello data z první datovou sadu hello je však zkopírovaný toohello cílové datové sadě. Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).  
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-Najdete v článku [výkonu kopie aktivity a vyladění průvodce](data-factory-copy-activity-performance.md), který popisuje klíčové faktory ovlivňující výkon přesun dat (aktivita kopírování) v Azure Data Factory. Také uvádí pozorovaný výkon při interním testování a popisuje různé způsoby za účelem optimalizace výkonu kopie aktivity.
+V tématu hello [výkonu kopie aktivity a vyladění průvodce](data-factory-copy-activity-performance.md), který popisuje klíčové faktory ovlivňující výkon hello přesun dat (aktivita kopírování) v Azure Data Factory. Také uvádí hello zjištěnými výkon při interním testování a popisuje různé způsoby toooptimize hello výkonu kopie aktivity.
 
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
-Ve výchozím nastavení, bude aktivity kopírování zastavíte kopírování dat a vraťte se selhání když dojde k nekompatibilní data mezi zdroj a jímka; explicitně nakonfigurovat přeskočit a protokolování nekompatibilní řádků a pouze kopie těchto kompatibilní data tak, aby kopie bylo úspěšně dokončeno. Najdete v článku [aktivity kopírování odolnost proti chybám](data-factory-copy-activity-fault-tolerance.md) na další podrobnosti.
+Ve výchozím nastavení, bude aktivity kopírování zastavíte kopírování dat a vraťte se selhání když dojde k nekompatibilní data mezi zdroj a jímka; explicitně nakonfigurovat tooskip a protokolu hello nekompatibilní řádky a pouze kopie těchto kopírování hello toomake kompatibilní dat bylo úspěšně dokončeno. V tématu hello [aktivity kopírování odolnost proti chybám](data-factory-copy-activity-fault-tolerance.md) na další podrobnosti.
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
-Najdete v článku [aspekty zabezpečení](data-factory-data-movement-security-considerations.md), který popisuje infrastrukturu zabezpečení, která pomocí služby pro přesun dat v Azure Data Factory zabezpečit data.
+V tématu hello [aspekty zabezpečení](data-factory-data-movement-security-considerations.md), který popisuje, infrastruktura zabezpečení pomocí služby pro přesun dat v Azure Data Factory toosecure dat.
 
 ## <a name="scheduling-and-sequential-copy"></a>Plánování a sekvenčních kopie
-V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) podrobné informace o plánování a provádění fungování ve službě Data Factory. Je možné spustit více operací kopírování jedna po druhé způsobem sekvenční/řazení. Najdete v článku [zkopírujte postupně](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) části.
+V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) podrobné informace o plánování a provádění fungování ve službě Data Factory. Ho je možné toorun více operací kopírování jedna po druhé způsobem sekvenční/řazení. V tématu hello [zkopírujte postupně](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) části.
 
 ## <a name="type-conversions"></a>Převody typu
-Různé datové úložiště mají jiný typ nativní systémy. Aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup ve dvou krocích:
+Různé datové úložiště mají jiný typ nativní systémy. Aktivita kopírování provádí automatické typ převody z typů toosink typy zdroje s hello dvoustupňový přístup následující:
 
-1. Převeďte na typ .NET typy nativní zdrojů.
-2. Typ formátu .NET převeďte na typ nativní jímky.
+1. Převod typu .NET tooa typy nativní zdroje.
+2. Převeďte z typu nativní podřízený tooa typ rozhraní .NET.
 
-Mapování z nativní typ systému na typ .NET pro úložiště dat, které je v článku příslušných dat úložiště. (Klikněte na odkaz v [podporovanými úložišti dat](#supported-data-stores) tabulky). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, tak, aby aktivita kopírování provádí převody správné.
+Hello mapování z typu nativní typ systému tooa .NET pro úložiště dat, které je v článku úložiště příslušných dat hello. (Klikněte na konkrétním propojení hello v hello [podporovanými úložišti dat](#supported-data-stores) tabulky). Při vytváření tabulky, můžete použít tyto typy odpovídající toodetermine mapování, tak, aby aktivita kopírování provádí převody správné hello.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o aktivitě kopírování najdete v tématu [kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Další informace o přesouvání dat z místního úložiště dat do úložiště dat cloudu najdete v tématu [přesun dat z cloudových úložišť dat místní](data-factory-move-data-between-onprem-and-cloud.md).
+* toolearn o hello více aktivitě kopírování najdete v části [kopírování dat z tooAzure úložiště objektů Blob v Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* toolearn o přesun dat z místní data store tooa cloudu dat úložiště, najdete v části [přesun dat z úložiště dat toocloud místní](data-factory-move-data-between-onprem-and-cloud.md).

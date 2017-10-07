@@ -1,6 +1,6 @@
 ---
-title: "Dotazování indexu (REST API – Azure Search) | Dokumentace Microsoftu"
-description: "Sestavení vyhledávacího dotazu ve službě Azure Search a použití parametrů hledání k filtrování a řazení výsledků vyhledávání."
+title: "AAA \"dotazování indexu (rozhraní REST - API Azure Search) | Microsoft Docs\""
+description: "Sestavení vyhledávacího dotazu ve službě Azure search a pomocí vyhledávání parametrů toofilter a řazení výsledků vyhledávání."
 services: search
 documentationcenter: 
 manager: jhubbard
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2f12238b8f4b045f536489cfc8766fb68307bbe2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="query-your-azure-search-index-using-the-rest-api"></a>Dotazování indexu Azure Search pomocí REST API
+# <a name="query-your-azure-search-index-using-hello-rest-api"></a>Dotazování indexu Azure Search pomocí REST API hello
 > [!div class="op_single_selector"]
 >
 > * [Přehled](search-query-overview.md)
@@ -29,37 +29,37 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-Tento článek vám ukáže postup dotazování indexu pomocí [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
+Tento článek ukazuje, jak tooquery indexu pomocí hello [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
 
 Před zahájením tohoto názorného průvodce byste již měli mít [vytvořený index Azure Search](search-what-is-an-index.md) a ten by měl být [naplněný daty](search-what-is-data-import.md). Rozšiřující informace najdete v tématu popisujícím [způsob fungování fulltextového vyhledávání ve službě Azure Search](search-lucene-query-architecture.md).
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Zjistěte klíč api-key správce služby Azure Search
-Klíčovou komponentou každé operace vyhledávání na REST API služby Azure Search je klíč *api-key*, který byl vygenerován pro službu, kterou jste zřídili. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Klíčovou součástí každé operace vyhledávání na hello REST API služby Azure Search je hello *klíč api-key* který byl vygenerován pro službu hello jste zřídili. Platný klíč vytváří na základě žádosti mezi hello aplikace odesílání hello požadavku a hello služby, která ji zpracovává vztah důvěryhodnosti.
 
-1. Pokud chcete najít klíče api-key svojí služby, přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do okna služby Azure Search.
-3. Klikněte na ikonu klíčů.
+1. toofind klíče služby api Key, se můžete přihlásit toohello [portálu Azure](https://portal.azure.com/)
+2. Okno služby Azure Search přejděte tooyour
+3. Klikněte na ikonu hello "klíčů.
 
 Vaše služba má *klíče správce* a *klíče dotazů*.
 
-* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
-* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
+* Primární a sekundární *klíče správce* udělit úplná práva tooall operace, včetně hello možnost toomanage hello služby, vytvářet a odstraňovat indexy, indexery a zdroje dat.. Existují dva klíče, aby mohl pokračovat toouse hello sekundární klíč, pokud se rozhodnete tooregenerate hello primární klíč a naopak.
+* Vaše *klíče dotazů* udělit oprávnění jen pro čtení tooindexes a dokumentům a obvykle distribuované tooclient aplikace, které vydávají požadavky hledání.
 
-Pro účely dotazování indexu můžete použít jeden z klíčů dotazů. Pro dotazy lze použít i klíče správce, ale ve svých aplikacích byste měli používat klíče dotazů, což lépe odpovídá [Principu minimálního oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Pro účely hello dotazování indexu můžete použít jeden z klíčů dotazů. Pro dotazy lze také použít klíče správce, ale byste měli používat klíče dotazů v kódu aplikace, což lépe odpovídá hello [Princip nejnižších nutných oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 ## <a name="formulate-your-query"></a>Formulování dotazu
-Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
+Existují dva způsoby příliš[vyhledávání v indexu pomocí REST API hello](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Jedním ze způsobů je tooissue požadavek HTTP POST, kde jsou definovány parametry dotazu v objektu JSON v textu žádosti hello. Hello jiný způsob je tooissue požadavek HTTP GET, kde jsou definovány parametry dotazu v adrese URL žádosti hello. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) na hello velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
-U metody POST i GET budete muset v URL požadavku poskytnout *název služby*, *název indexu* a správnou *verzi rozhraní API* (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2016-09-01`). U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
+U metody POST i GET budete potřebovat tooprovide vaše *název služby*, *název indexu*a hello správné *verze rozhraní API* (aktuální verze rozhraní API hello je `2016-09-01` v době hello publikování tohoto dokumentu) v hello adresa URL požadavku. U metody GET hello *řetězec dotazu* v hello je konec hello adresu URL, kde zadáte parametry dotazu hello. Formát adresy URL hello jsou uvedeny níže:
 
     https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2016-09-01
 
-Formát pro metodu POST je stejný, ale jako parametr řetězce dotazu obsahuje pouze api-version.
+Hello formátu pro POST je hello stejné, ale pouze api-version hello parametrů řetězce dotazu.
 
 #### <a name="example-queries"></a>Ukázky dotazů
 Zde naleznete několik ukázky dotazů na index s názvem „hotels“. Dotazy jsou ukázané ve formátech GET i POST.
 
-Vyhledat výraz „budget“ v celém indexu a vrátit pouze pole `hotelName`:
+Vyhledejte hello výraz "budget" hello celý index a vrátí pouze hello `hotelName` pole:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2016-09-01
@@ -71,7 +71,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Použít na index filtr pro nalezení hotelů levnějších než 150 dolarů za noc a vrátit pole `hotelId` a `description`:
+Použít filtru toohello index toofind hotelů levnějších než 150 dolarů za noc a vrátit hello `hotelId` a `description`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01
@@ -84,7 +84,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Prohledat celý index, seřadit podle určitého pole (`lastRenovationDate`) v sestupném pořadí, vzít první dva výsledky a zobrazit pouze pole `hotelName` a `lastRenovationDate`:
+Hledání hello celý index, řadit podle určitého pole (`lastRenovationDate`) v sestupném pořadí, vzít první dva výsledky hello a zobrazit pouze `hotelName` a `lastRenovationDate`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2016-09-01
@@ -104,11 +104,11 @@ Nyní, když jste formulovali dotaz jako součást URL požadavku HTTP (pro meto
 #### <a name="request-and-request-headers"></a>Požadavek a hlavičky požadavku
 Musíte definovat dvě hlavičky požadavku pro metodu GET, nebo tři hlavičky pro metodu POST.
 
-1. Hlavičku `api-key` je nutné nastavit na klíč dotazu, který jste získali v kroku I. Jako hlavičku `api-key` můžete použít i klíč správce, ale doporučujeme používat klíč dotazů, protože uděluje přístup k indexům a dokumentům výhradně pouze pro čtení.
-2. Hlavička `Accept` musí být nastavená na `application/json`.
-3. U metody POST by měla být hlavička `Content-Type` také nastavená na `application/json`.
+1. Hello `api-key` záhlaví musí být nastaven klíč dotazu toohello jste získali v kroku I výše. Můžete také použít klíč správce jako hello `api-key` záhlaví, ale doporučuje se používat klíče dotazů, protože výhradně uděluje oprávnění jen pro čtení tooindexes a dokumenty.
+2. Hello `Accept` záhlaví musí být nastaven příliš`application/json`.
+3. U metody POST, hello `Content-Type` záhlaví měli nastavit také příliš`application/json`.
 
-Níže vidíte požadavek HTTP GET s jednoduchým dotazem, který vyhledá výraz „motel“ v indexu „hotels“ pomocí REST API služby Azure Search:
+Níže najdete metody GET protokolu HTTP žádosti toosearch hello "hotels" indexu pomocí REST API služby Azure Search, s jednoduchým dotazem, který vyhledá hello výraz "motel" hello:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2016-09-01
@@ -116,7 +116,7 @@ Accept: application/json
 api-key: [query key]
 ```
 
-Zde je stejný vzorový dotaz, tentokrát pomocí HTTP POST:
+Tady je hello stejný vzorový dotaz, tentokrát pomocí HTTP POST:
 
 ```
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
@@ -129,7 +129,7 @@ api-key: [query key]
 }
 ```
 
-Po úspěšném požadavku dotazu nastane stavový kód `200 OK` a výsledky vyhledávání se vrátí jako JSON v textu odpovědi. Zde vidíte, jak vypadají výsledky dotazů pro výše uvedený kód za předpokladu, že je index „hotels“ naplněný vzorovými daty v tématu [Import Dat do služby Azure Search pomocí REST API](search-import-data-rest-api.md) (všimněte si, že byl JSON pro přehlednost zformátován):
+Po úspěšném požadavku dotazu bude mít za následek stavový kód `200 OK` a hello výsledky vyhledávání se vrátí jako JSON v textu odpovědi hello. Tady je co hello výsledky pro hello výše dotazu vypadají, za předpokladu, že je index "hello"hotels"naplněný hello vzorovými daty v [hello Import dat do služby Azure Search pomocí REST API](search-import-data-rest-api.md) (Všimněte si, že hello JSON pro přehlednost zformátován).
 
 ```JSON
 {
@@ -162,4 +162,4 @@ Po úspěšném požadavku dotazu nastane stavový kód `200 OK` a výsledky vyh
 }
 ```
 
-Zjistěte více v sekci „Odpověď“ tématu [Vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+toolearn víc, navštivte část "Odpověď" hello [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).

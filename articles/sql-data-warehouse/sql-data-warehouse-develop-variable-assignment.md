@@ -1,5 +1,5 @@
 ---
-title: "Přiřazení proměnné v SQL Data Warehouse | Microsoft Docs"
+title: "proměnné aaaAssign v SQL Data Warehouse | Microsoft Docs"
 description: "Tipy pro přiřazení proměnné jazyka Transact-SQL v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,26 +15,26 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9de48739bb0af80ff2a117704b31512c680f78d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="assign-variables-in-sql-data-warehouse"></a>Přiřazení proměnné v SQL Data Warehouse
-Jsou nastaveny proměnné v SQL Data Warehouse pomocí `DECLARE` příkaz nebo `SET` příkaz.
+Jsou nastaveny proměnné v SQL Data Warehouse pomocí hello `DECLARE` příkaz nebo hello `SET` příkaz.
 
-Všechny tyto způsoby perfektně platný nastavte hodnotu proměnné:
+Jsou všechny následující hello perfektně platné způsoby tooset hodnotu proměnné:
 
 ## <a name="setting-variables-with-declare"></a>Nastavení proměnné s DECLARE
-Inicializace proměnných s DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
+Inicializace proměnných s DECLARE je jedním z hello nejpružnější způsoby tooset hodnotu proměnné v SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE můžete také nastavit více než jednu proměnnou najednou. Nemůžete použít `SELECT` nebo `UPDATE` k tomu:
+Současně můžete také použít DECLARE tooset více než jednu proměnnou. Nemůžete použít `SELECT` nebo `UPDATE` toodo toto:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +42,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použití proměnné v příkazu DECLARE stejné. Pro ilustraci bodem následující příklad je **není** povolena jako @p1 jak inicializovat a použít v příkazu DECLARE stejné. To bude mít za následek chybu.
+Nelze inicializovat a použití proměnné v hello stejné příkazu DECLARE. tooillustrate hello bodu hello následující příklad je **není** povolena jako @p1 jak inicializovat a použít v hello stejné příkazu DECLARE. To bude mít za následek chybu.
 
 ```sql
 DECLARE @p1 int = 0
@@ -53,7 +53,7 @@ DECLARE @p1 int = 0
 ## <a name="setting-values-with-set"></a>Nastavení hodnot sadou
 Sada je velmi běžné metody pro nastavení jednu proměnnou.
 
-Všechny následující příklady jsou platné způsoby nastavení proměnné sadou:
+Všechny hello příklady jsou platné způsoby nastavení proměnné sadou:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);

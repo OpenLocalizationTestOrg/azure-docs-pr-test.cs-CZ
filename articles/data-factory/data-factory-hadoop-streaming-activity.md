@@ -1,6 +1,6 @@
 ---
-title: "Transformace dat pomocí streamované aktivitě Hadoop - Azure | Microsoft Docs"
-description: "Zjistěte, jak můžete pomocí streamované aktivitě Hadoop v objektu pro vytváření dat Azure pro transformaci dat spuštěním streamování Hadoop programy na na vyžádání nebo vaše vlastní cluster HDInsight."
+title: "aaaTransform dat pomocí streamované aktivitě Hadoop - Azure | Microsoft Docs"
+description: "Zjistěte, jak můžete pomocí hello streamované aktivitě Hadoop ve model služby Azure data factory tootransform data spuštěním streamování Hadoop programy na na vyžádání nebo vaše vlastní cluster HDInsight."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: bfe62aa60f5a0ff339e1d495d22a5fdfac10d5dc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a7ddb7268f47162709a9c8136ccd69e0b7d4ad7d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí streamované aktivitě Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,15 +33,15 @@ ms.lasthandoff: 08/18/2017
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
-Můžete použít HDInsightStreamingActivity aktivity vyvolání úlohu streamování Hadoop z kanál služby Azure Data Factory. Následující fragment kódu JSON ukazuje syntaxi pro použití HDInsightStreamingActivity v souboru JSON kanálu. 
+Můžete použít hello HDInsightStreamingActivity aktivity vyvolání úlohu streamování Hadoop z kanál služby Azure Data Factory. Hello následující fragment kódu JSON ukazuje hello syntaxe pro používání hello HDInsightStreamingActivity v souboru JSON kanálu. 
 
-HDInsight streamované aktivitě v datové továrně [kanálu](data-factory-create-pipelines.md) provede streamování Hadoop programy na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight se systémem Windows nebo Linux. Tento článek vychází [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace.
+Hello HDInsight streamované aktivitě v datové továrně [kanálu](data-factory-create-pipelines.md) provede streamování Hadoop programy na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight se systémem Windows nebo Linux cluster. Tento článek vychází hello [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který poskytne Obecné přehled o transformaci dat a aktivit transformace hello podporována.
 
 > [!NOTE] 
-> Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a proveďte kurz: [sestavit svůj první kanál dat](data-factory-build-your-first-pipeline.md) před přečtení tohoto článku. 
+> Pokud jste tooAzure nový objekt pro vytváření dat, pročtěte [Úvod tooAzure Data Factory](data-factory-introduction.md) a hello kurz: [sestavit svůj první kanál dat](data-factory-build-your-first-pipeline.md) před přečtení tohoto článku. 
 
 ## <a name="json-sample"></a>Ukázka JSON
-HDInsight cluster se automaticky zadá příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení je název kontejneru, který je používán clusteru HDInsight název samotného clusteru. Například pokud je název clusteru myhdicluster, bude název kontejneru objektu blob přidruženého myhdicluster. 
+Hello clusteru HDInsight se automaticky zadá příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení je název hello kontejneru, který je používán clusteru HDInsight hello hello název samotného clusteru hello. Například pokud je název clusteru myhdicluster, bude název kontejneru objektu blob hello přidruženého myhdicluster. 
 
 ```JSON
 {
@@ -89,30 +89,30 @@ HDInsight cluster se automaticky zadá příklad programy (wc.exe a cat.exe) a d
 }
 ```
 
-Je třeba počítat s následujícím:
+Všimněte si hello následující body:
 
-1. Nastavte **linkedServiceName** název propojené služby, která odkazuje na vaše HDInsight clusteru na úlohu streamování mapreduce běží.
-2. Nastavte typ aktivity na **HDInsightStreaming**.
-3. Pro **mapper** vlastnost, zadejte název spustitelného souboru mapper. V příkladu je cat.exe mapper spustitelný soubor.
-4. Pro **reduktorem** vlastnost, zadejte název spustitelného souboru reduktorem. V příkladu je wc.exe reduktorem spustitelný soubor.
-5. Pro **vstupní** zadejte vlastnost, zadejte vstupní soubor (včetně umístění) pro mapper. Příklad: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample je kontejner objektů blob, například/data/Gutenberg je složka, a davinci.txt je objekt blob.
-6. Pro **výstup** zadejte vlastnost, pro reduktorem zadejte výstupní soubor (včetně umístění). Výstup úlohy streamování Hadoop je zapsán do umístění zadané pro tuto vlastnost.
-7. V **filePaths** části, zadejte cesty pro spustitelné soubory mapper a reduktorem. Příklad: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob, příklad nebo aplikací je složka a wc.exe je spustitelný soubor.
-8. Pro **fileLinkedService** vlastnost, zadejte služby Azure Storage, propojené, který představuje službu Azure storage, který obsahuje soubory zadané v části filePaths.
-9. Pro **argumenty** vlastnost, zadejte argumenty pro úlohu streamování.
-10. **Getdebuginfo –** vlastnost je volitelná elementu. Pokud je nastavena k chybě, protokoly se stáhnou pouze při selhání. Pokud je nastavený na vždy, protokoly budou staženy vždy bez ohledu na stav spuštění.
+1. Sada hello **linkedServiceName** toohello název hello propojené služby, který odkazuje clusteru HDInsight tooyour které hello streamování mapreduce se spustí úloha.
+2. Nastavte typ hello hello aktivity příliš**HDInsightStreaming**.
+3. Pro hello **mapper** vlastnost, zadejte název spustitelného souboru mapper hello. V příkladu hello je cat.exe hello mapper spustitelný soubor.
+4. Pro hello **reduktorem** vlastnost, zadejte název spustitelného souboru reduktorem hello. V příkladu hello je wc.exe hello reduktorem spustitelný soubor.
+5. Pro hello **vstupní** zadejte vlastnost, zadejte hello vstupní soubor (včetně umístění hello) pro hello mapper. V příkladu hello: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample je kontejner objektů blob hello, například/data/Gutenberg je složka hello a davinci.txt je hello blob.
+6. Pro hello **výstup** zadejte vlastnost, zadejte pro hello reduktorem hello výstupního souboru (včetně hello umístění). výstup Hello úlohy streamování Hadoop hello je zapsán toohello umístění zadané pro tuto vlastnost.
+7. V hello **filePaths** části, zadejte cesty hello hello mapper a reduktorem spustitelných souborů. V příkladu hello: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob hello, příklad nebo aplikací je složka hello a wc.exe je hello spustitelný soubor.
+8. Pro hello **fileLinkedService** vlastnost, zadejte hello Azure Storage, propojené služby, která představuje hello úložiště Azure, který obsahuje soubory hello zadané v části filePaths hello.
+9. Pro hello **argumenty** vlastnost, zadejte hello argumenty pro hello streamování úlohy.
+10. Hello **getdebuginfo –** vlastnost je volitelná elementu. Pokud je nastavené tooFailure, protokoly hello se stáhnou pouze při selhání. Pokud je nastavené tooAlways, protokoly budou staženy vždy bez ohledu na stav spuštění hello.
 
 > [!NOTE]
-> Jak je znázorněno v příkladu, zadáte pro streamované aktivitě Hadoop pro datovou sadu výstupů **výstupy** vlastnost. Tato datová sada je právě fiktivní datovou sadu, která je potřeba jednotka plán kanálu. Není potřeba zadat aktivity pro všechny vstupní datové sady **vstupy** vlastnost.  
+> Jak je znázorněno v příkladu hello, zadáte výstupní datovou sadu pro hello streamované aktivitě Hadoop pro hello **výstupy** vlastnost. Tato datová sada je právě fiktivní datovou sadu, která je požadovaná toodrive hello kanálu plán. Není nutné toospecify všechny vstupní datovou sadu aktivity hello pro hello **vstupy** vlastnost.  
 > 
 > 
 
 ## <a name="example"></a>Příklad
-Kanál v tomto návodu se spustí program streamování mapy nebo snižte počet slov v clusteru Azure HDInsight. 
+Hello kanál v tomto návodu spustí hello počet slov streamování mapy nebo snižte program v clusteru Azure HDInsight. 
 
 ### <a name="linked-services"></a>Propojené služby
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Nejdřív vytvoříte propojené služby Azure Storage, který se používá cluster Azure HDInsight do Azure data factory propojení. Pokud jste zkopírujte a vložte následující kód, nezapomeňte nahradit název účtu a klíč účtu název a klíč vašeho úložiště Azure. 
+Nejprve je třeba vytvořit hello toolink propojené služby Azure Storage, který je používán hello Azure HDInsight clusteru toohello Azure data factory. Pokud jste zkopírujte a vložte následující kód hello, nevynechali tooreplace název účtu a účet klíč s názvem hello a klíč vašeho úložiště Azure. 
 
 ```JSON
 {
@@ -127,7 +127,7 @@ Nejdřív vytvoříte propojené služby Azure Storage, který se používá clu
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure propojené služby HDInsight
-Dále vytvoříte propojené služby propojení clusteru Azure HDInsight do Azure data factory. Pokud jste zkopírujte a vložte následující kód, nahraďte název clusteru HDInsight s názvem clusteru HDInsight a změňte hodnoty uživatelské jméno a heslo. 
+V dalším kroku vytvoření propojené služby toolink vaše Azure HDInsight clusteru toohello Azure data factory. Pokud jste zkopírujte a vložte následující kód hello, nahraďte název clusteru HDInsight hello názvem clusteru HDInsight a změňte hodnoty uživatelské jméno a heslo. 
 
 ```JSON
 {
@@ -146,7 +146,7 @@ Dále vytvoříte propojené služby propojení clusteru Azure HDInsight do Azur
 
 ### <a name="datasets"></a>Datové sady
 #### <a name="output-dataset"></a>Výstupní datové sady
-Kanál v tomto příkladu nevyžaduje žádné vstupy. Zadáte datovou sadu výstupů aktivity HDInsight streamování. Tato datová sada je právě fiktivní datovou sadu, která je potřeba jednotka plán kanálu. 
+Hello kanálu v tomto příkladu nevyžaduje žádné vstupy. Zadáte výstupní datovou sadu pro hello HDInsight streamované aktivitě. Tato datová sada je právě fiktivní datovou sadu, která je požadovaná toodrive hello kanálu plán. 
 
 ```JSON
 {
@@ -171,9 +171,9 @@ Kanál v tomto příkladu nevyžaduje žádné vstupy. Zadáte datovou sadu výs
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál v tomto příkladu má jenom jedna aktivita, která je typu: **HDInsightStreaming**. 
+Hello kanálu v tomto příkladu má jenom jedna aktivita, která je typu: **HDInsightStreaming**. 
 
-HDInsight cluster se automaticky zadá příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení je název kontejneru, který je používán clusteru HDInsight název samotného clusteru. Například pokud je název clusteru myhdicluster, bude název kontejneru objektu blob přidruženého myhdicluster.  
+Hello clusteru HDInsight se automaticky zadá příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení je název hello kontejneru, který je používán clusteru HDInsight hello hello název samotného clusteru hello. Například pokud je název clusteru myhdicluster, bude název kontejneru objektu blob hello přidruženého myhdicluster.  
 
 ```JSON
 {

@@ -1,5 +1,5 @@
 ---
-title: "Nejčastější dotazy týkající se vytváření připojení Azure IoT Suite | Microsoft Docs"
+title: "Nejčastější dotazy týkající se vytváření připojení aaaAzure IoT Suite | Microsoft Docs"
 description: "Nejčastější dotazy pro připojené vytváření IoT Suite"
 services: 
 suite: iot-suite
@@ -15,74 +15,74 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.openlocfilehash: 35cf824210a14410d7ea2aedddde0040309901f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4ae9beb0daf1b0578850cd652eaca7635b0d039d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Nejčastější dotazy pro IoT Suite připojené vytváření předkonfigurovaného řešení
 
-Viz také Obecné [– nejčastější dotazy](iot-suite-faq.md) pro IoT Suite.
+Viz také, hello Obecné [– nejčastější dotazy](iot-suite-faq.md) pro IoT Suite.
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>Kde najdu zdrojový kód pro předkonfigurované řešení?
+### <a name="where-can-i-find-hello-source-code-for-hello-preconfigured-solution"></a>Kde najdu hello zdrojového kódu pro hello předkonfigurované řešení?
 
-Zdrojový kód je uložen v úložišti GitHub následující:
+Hello zdrojového kódu se ukládají v hello následující úložiště GitHub:
 
 * [Připojené objekt pro vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Co je OPC UA?
 
-OPC Unified architektura (uživatelský Agent), vydané v 2008, je nezávislý na platformě, orientované na služby interoperabilita standardní. OPC UA používají různé průmyslových systémů a zařízení, jako jsou odvětví počítačů, plc a snímače. OPC UA funkce OPC Classic specifikace integruje do jednoho rozšiřitelná architektura integrované zabezpečení. Je standard, který doprovází OPC Foundation. [OPC Foundation](http://opcfoundation.org/) je pro neziskové organizace s víc než 440 členy. Cílem organizace je používat OPC specifikace usnadňuje interoperabilitu více dodavatele, více platformami, zabezpečený a spolehlivý prostřednictvím:
+OPC Unified architektura (uživatelský Agent), vydané v 2008, je nezávislý na platformě, orientované na služby interoperabilita standardní. OPC UA používají různé průmyslových systémů a zařízení, jako jsou odvětví počítačů, plc a snímače. OPC UA hello funkce OPC Classic specifikace hello integruje do jednoho rozšiřitelná architektura integrované zabezpečení. Je standard, který doprovází hello OPC Foundation. Hello [OPC Foundation](http://opcfoundation.org/) je pro neziskové organizace s víc než 440 členy. cílem Hello hello organizace je OPC toouse specifikace toofacilitate více dodavatele, více platformami, zabezpečený a spolehlivý interoperabilita prostřednictvím:
 
 * Infrastruktura
 * Specifikace
 * Technologie
 * Procesy
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Proč Microsoft zvolit OPC UA pro připojené objekt pro vytváření předkonfigurovaného řešení?
+### <a name="why-did-microsoft-choose-opc-ua-for-hello-connected-factory-preconfigured-solution"></a>Proč Microsoft zvolit, že OPC UA pro hello připojen objekt pro vytváření předkonfigurovaného řešení?
 
-Microsoft zvolili OPC UA, protože je otevřený, bez chráněné, platformu nezávislé, oborových rozpoznána a osvědčené standardem. Je požadavek na Industrie 4.0 (RAMI4.0) referenční Architektura řešení zajistit interoperabilitu mezi širokou škálu výrobní procesy a vybavení. Microsoft setkává vyžádání od našich zákazníků k sestavení řešení Industrie 4.0. Podpora OPC UA pomáhá snížit bariéry pro zákazníky, abyste dosáhli svých cílů a poskytuje okamžité obchodní hodnotu k nim.
+Microsoft zvolili OPC UA, protože je otevřený, bez chráněné, platformu nezávislé, oborových rozpoznána a osvědčené standardem. Je požadavek na Industrie 4.0 (RAMI4.0) referenční Architektura řešení zajistit interoperabilitu mezi širokou škálu výrobní procesy a vybavení. Microsoft setkává vyžádání z našich zákazníků toobuild Industrie 4.0 řešení. Podpora OPC UA pomáhá nižší hello bariéry pro zákazníky tooachieve svých cílů a poskytuje toothem okamžitou obchodní hodnotu.
 
-### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Jak přidat veřejnou IP adresu pro simulaci virtuálního počítače?
+### <a name="how-do-i-add-a-public-ip-address-toohello-simulation-vm"></a>Jak přidat veřejné simulace toohello IP adresu virtuálního počítače?
 
-Máte dvě možnosti, které chcete přidat IP adresu:
+Máte dvě možnosti tooadd hello IP adresu:
 
-* Pomocí skriptu prostředí PowerShell `Simulation/Factory/Add-SimulationPublicIp.ps1` v [úložiště](https://github.com/Azure/azure-iot-connected-factory). Název nasazení předat jako parametr. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. Skript vypíše adresu IP virtuálního počítače.
+* Pomocí skriptu prostředí PowerShell hello `Simulation/Factory/Add-SimulationPublicIp.ps1` v hello [úložiště](https://github.com/Azure/azure-iot-connected-factory). Název nasazení předat jako parametr. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. skript Hello vytiskne hello IP adresu hello virtuálních počítačů.
 
-* Na portálu Azure vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místní nasazení skupiny prostředků má název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu buildu, název skupiny prostředků je `<your username>ConnFactoryLocal`. Nyní přidejte nový **veřejnou IP adresu** prostředků do skupiny prostředků.
+* V hello portálu Azure vyhledejte skupinu prostředků hello vašeho nasazení. S výjimkou místní nasazení skupiny prostředků hello má hello název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu buildu hello hello název skupiny prostředků hello je `<your username>ConnFactoryLocal`. Nyní přidejte nový **veřejnou IP adresu** skupiny prostředků toohello prostředků.
 
 > [!NOTE]
-> V obou případech zajistěte instalaci nejnovějších oprav podle pokynů [Ubuntu webu](https://wiki.ubuntu.com/Security/Upgrades). Aktuálnost instalace pro tak dlouho, dokud virtuální počítač je přístupný prostřednictvím veřejnou IP adresu.
+> V obou případech zajistěte instalaci nejnovějších oprav hello podle pokynů hello na hello [Ubuntu webu](https://wiki.ubuntu.com/Security/Upgrades). Zachovat hello instalace si toodate pro tak dlouho, dokud virtuální počítač je přístupný prostřednictvím veřejnou IP adresu.
 
-### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Odebrání veřejnou IP adresu pro simulaci virtuálních počítačů
+### <a name="how-do-i-remove-hello-public-ip-address-toohello-simulation-vm"></a>Odebrání hello veřejnou IP adresu toohello simulace virtuálních počítačů
 
-Máte dvě možnosti pro IP adresu odeberte:
+Máte dvě možnosti tooremove hello IP adresu:
 
-* Použití skriptu prostředí PowerShell Simulation/Factory/Remove-SimulationPublicIp.ps1 z [úložiště](https://github.com/Azure/azure-iot-connected-factory). Název nasazení předat jako parametr. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. Skript vypíše adresu IP virtuálního počítače.
+* Pomocí skriptu prostředí PowerShell hello Simulation/Factory/Remove-SimulationPublicIp.ps1 hello [úložiště](https://github.com/Azure/azure-iot-connected-factory). Název nasazení předat jako parametr. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. skript Hello vytiskne hello IP adresu hello virtuálních počítačů.
 
-* Na portálu Azure vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místní nasazení skupiny prostředků má název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu buildu, název skupiny prostředků je `<your username>ConnFactoryLocal`. Nyní odebrat **veřejnou IP adresu** prostředků ze skupiny prostředků.
+* V hello portálu Azure vyhledejte skupinu prostředků hello vašeho nasazení. S výjimkou místní nasazení skupiny prostředků hello má hello název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu buildu hello hello název skupiny prostředků hello je `<your username>ConnFactoryLocal`. Nyní odebrat hello **veřejnou IP adresu** prostředků ze skupiny prostředků hello.
 
-### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Jak se mohu přihlásit k simulaci virtuálního počítače?
+### <a name="how-do-i-sign-in-toohello-simulation-vm"></a>Registrace v simulaci toohello virtuálních počítačů
 
-Přihlášení k simulaci virtuálního počítače je podporována, pouze pokud jste nasadili řešení pomocí skriptu prostředí PowerShell `build.ps1` v [úložiště](https://github.com/Azure/azure-iot-connected-factory).
+Přihlášení toohello simulace virtuálního počítače je podporována, pouze pokud jste nasadili řešení pomocí skriptu prostředí PowerShell hello `build.ps1` v hello [úložiště](https://github.com/Azure/azure-iot-connected-factory).
 
-Pokud jste nasadili řešení od www.azureiotsuite.com, nemůžete se přihlásit k virtuálnímu počítači. Nemůžete se přihlásit, protože je náhodně vygenerované heslo a nelze ho obnovit.
+Pokud jste nasadili hello řešení z www.azureiotsuite.com, nemůžete se přihlásit toohello virtuálních počítačů. Nemůžete se přihlásit, protože je náhodně vygenerované heslo hello a nelze ho obnovit.
 
-1. Přidejte veřejnou IP adresu do virtuálního počítače. V tématu [jak přidám veřejnou IP adresu pro simulaci virtuálního počítače?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
-1. Vytvořte relace SSH do virtuálního počítače pomocí IP adresy virtuálního počítače.
-1. Je uživatelské jméno používané k: `docker`.
-1. K použití hesla, závisí na verzi, kterou jste použili k nasazení:
-    * Pro řešení nasazuje pomocí skriptu build.ps1 před 1. června 2017, je heslo: `Passw0rd`.
-    * Řešení nasazuje pomocí skriptu build.ps1 po 1. června 2017, můžete najít v heslo `<name of your deployment>.config.user` souboru. Heslo je uloženo v **VmAdminPassword** nastavení. Heslo je generována náhodně v době nasazení nezadáte pomocí `build.ps1` skript parametr`-VmAdminPassword`
+1. Přidejte veřejný toohello adresu IP virtuálního počítače. V tématu [jak přidat veřejné simulace toohello IP adresu virtuálního počítače?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
+1. Vytvoření tooyour relace SSH virtuálních počítačů pomocí IP adresy hello hello virtuálních počítačů.
+1. je uživatelské jméno toouse Hello: `docker`.
+1. Hello heslo toouse závisí na verzi hello, které že jste použili toodeploy:
+    * Pro řešení nasazuje pomocí skriptu build.ps1 hello před 1. června 2017, je heslo hello: `Passw0rd`.
+    * Řešení nasazuje pomocí skriptu build.ps1 hello po 1. června 2017, můžete najít hello heslo v hello `<name of your deployment>.config.user` souboru. Hello heslo je uloženo v hello **VmAdminPassword** nastavení. Hello hesla je generována náhodně v době nasazení nezadáte pomocí hello `build.ps1` skript parametr`-VmAdminPassword`
 
-### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Jak zastavení a spuštění všech procesů docker v simulaci virtuálního počítače?
+### <a name="how-do-i-stop-and-start-all-docker-processes-in-hello-simulation-vm"></a>Jak zastavení a spuštění všech procesů docker v simulaci hello virtuálního počítače?
 
-1. Přihlaste se k simulaci virtuálních počítačů. V tématu [jak se přihlásím k simulaci virtuálního počítače?](#how-do-i-sign-in-to-the-simulation-vm)
-1. Chcete-li zkontrolovat, které kontejnery jsou aktivní, spusťte: `docker ps`.
-1. Chcete-li ukončit všechny kontejnery simulace, spusťte: `./stopsimulation`.
-1. Chcete-li spustit všechny kontejnery simulace:
-    * Export proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu **IotHubOwnerConnectionString** nastavení v `<name of your deployment>.config.user` souboru. Například:
+1. Přihlaste se toohello simulace virtuálních počítačů. V tématu [jak přihlásím toohello simulace virtuálního počítače?](#how-do-i-sign-in-to-the-simulation-vm)
+1. toocheck kontejnery, které jsou aktivní, spusťte: `docker ps`.
+1. spustit všechny kontejnery simulace toostop: `./stopsimulation`.
+1. toostart všechny kontejnery simulace:
+    * Export proměnnou prostředí s názvem hello **IOTHUB_CONNECTIONSTRING**. Hello hodnotu hello **IotHubOwnerConnectionString** nastavení v hello `<name of your deployment>.config.user` souboru. Například:
 
         ```
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -90,19 +90,19 @@ Pokud jste nasadili řešení od www.azureiotsuite.com, nemůžete se přihlási
 
     * Spusťte `./startsimulation`.
 
-### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Jak aktualizovat simulace ve virtuálním počítači?
+### <a name="how-do-i-update-hello-simulation-in-hello-vm"></a>Jak aktualizovat hello simulace v hello virtuálního počítače?
 
-Pokud jste udělali změny simulace, můžete použít skript prostředí PowerShell `build.ps1` v [úložiště](https://github.com/Azure/azure-iot-connected-factory) pomocí `updatedimulation` příkaz. Tento skript vytvoří všechny součásti simulace, zastaví simulace ve virtuálním počítači, odešle, nainstaluje a spustí je.
+Pokud jste provedli změny toohello simulace, můžete použít skript prostředí PowerShell hello `build.ps1` v hello [úložiště](https://github.com/Azure/azure-iot-connected-factory) pomocí hello `updatedimulation` příkaz. Tento skript vytvoří všechny součásti hello simulace, zastaví hello simulace v hello virtuálních počítačů, odešle, nainstaluje a spustí je.
 
-### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Jak zjistím připojovací řetězec služby IoT hub používá mém řešení?
+### <a name="how-do-i-find-out-hello-connection-string-of-hello-iot-hub-used-by-my-solution"></a>Jak zjistím hello připojovací řetězec služby IoT hub hello používá mém řešení?
 
-Pokud jste nasadili s řešením `build.ps1` skript v [úložiště](https://github.com/Azure/azure-iot-connected-factory), připojovací řetězec je hodnota **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru.
+Pokud jste nasadili řešení pomocí hello `build.ps1` skript v hello [úložiště](https://github.com/Azure/azure-iot-connected-factory), hello připojovací řetězec je hodnota hello **IotHubOwnerConnectionString** v hello `<name of your deployment>.config.user` souboru.
 
-Můžete také získat připojovací řetězec pomocí portálu Azure. V rámci služby IoT Hub prostředku ve skupině prostředků vašeho nasazení vyhledejte nastavení připojovacího řetězce.
+Můžete také získat hello připojovací řetězec pomocí hello portálu Azure. V hello IoT Hub prostředků ve skupině prostředků hello vašeho nasazení vyhledejte hello nastavení připojovacího řetězce.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Zařízení IoT Hub, která používá simulace připojené vytváření?
+### <a name="which-iot-hub-devices-does-hello-connected-factory-simulation-use"></a>Zařízení IoT Hub, která hello připojené factory simulace použít?
 
-Simulace vlastní zaregistruje následující zařízení:
+Hello simulace vlastní zaregistruje hello následující zařízení:
 
 * proxy.Beijing.corp.contoso
 * proxy.capetown.corp.contoso
@@ -117,23 +117,23 @@ Simulace vlastní zaregistruje následující zařízení:
 * Publisher.Rio.corp.contoso
 * Publisher.SEATTLE.corp.contoso
 
-Pomocí [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/azure/iothub-explorer) nástroj, můžete zkontrolovat zařízení, která jsou zaregistrovaná v centru IoT používá vaše řešení. Tyto nástroje používat, budete potřebovat připojovací řetězec pro službu IoT hub ve vašem nasazení.
+Pomocí hello [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/azure/iothub-explorer) nástroj, můžete zkontrolovat zařízení, která jsou zaregistrována hello IoT hub používá vaše řešení. Tyto nástroje toouse, musíte pro hello IoT hub ve vašem nasazení hello připojovací řetězec.
 
-### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Načtení dat protokolu z komponenty simulace?
+### <a name="how-can-i-get-log-data-from-hello-simulation-components"></a>Načtení dat protokolu z hello simulace součásti?
 
-Všechny součásti v simulaci přihlášení informace do souborů protokolu. Tyto soubory můžete najít ve virtuálním počítači ve složce `home/docker/Logs`. Pokud chcete načíst protokoly, můžete použít skript prostředí PowerShell `Simulation/Factory/Get-SimulationLogs.ps1` v [úložiště](https://github.com/Azure/azure-iot-connected-factory).
+Všechny součásti v simulaci hello protokolování informací v souborech toolog. Tyto soubory naleznete v hello virtuálních počítačů ve složce hello `home/docker/Logs`. protokoly hello tooretrieve, můžete použít skript prostředí PowerShell hello `Simulation/Factory/Get-SimulationLogs.ps1` v hello [úložiště](https://github.com/Azure/azure-iot-connected-factory).
 
-Tento skript, musí se přihlásit k virtuálnímu počítači. Musíte zadat přihlašovací údaje pro přihlášení. V tématu [jak se přihlásím k simulaci virtuální počítač?](#how-do-i-sign-in-to-the-simulation-vm) najít přihlašovací údaje.
+Tento skript musí toosign v toohello virtuálních počítačů. Může být nutné tooprovide přihlašovací údaje pro přihlášení hello. V tématu [jak přihlásím toohello simulace virtuální počítač?](#how-do-i-sign-in-to-the-simulation-vm) toofind hello pověření.
 
-Skript přidá nebo odebere veřejnou IP adresu pro virtuální počítač, pokud ho ještě nemá a odstraní ji. Skript vloží všech souborů protokolů v rámci archivu a stáhne archivu na stanici vývoje.
+Hello skript přidá nebo odebere toohello veřejnou adresu IP virtuálního počítače, pokud ho ještě nemá a odstraní ji. skript Hello vloží všech souborů protokolů v rámci archivu a stáhne hello archivu tooyour pracovní stanici.
 
-Případně Přihlaste se k virtuálnímu počítači pomocí protokolu SSH a zkontrolujte soubory protokolu v době běhu.
+Můžete taky přihlásit toohello virtuálních počítačů pomocí protokolu SSH a zkontrolujte soubory protokolu hello za běhu.
 
-### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak můžete zkontrolovat, pokud simulaci odesílá data do cloudu?
+### <a name="how-can-i-check-if-hello-simulation-is-sending-data-toohello-cloud"></a>Jak můžete zkontrolovat, pokud hello simulace odesílá toohello dat v cloudu?
 
-S [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/azure/iothub-explorer) nástroj, si můžete prohlédnout data odeslaná do služby IoT Hub z některých zařízení. Tyto nástroje používat, musíte znát připojovací řetězec pro službu IoT hub ve vašem nasazení. V tématu [Jak zjistím připojovací řetězec služby IoT hub používá mém řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+S hello [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo hello [iothub-explorer](https://github.com/azure/iothub-explorer) nástroj, si můžete prohlédnout hello data odeslaná tooIoT centra z určitých zařízení. Tyto nástroje toouse, musíte pro hello IoT hub ve vašem nasazení tooknow hello připojovací řetězec. V tématu [Jak zjistím hello připojovací řetězec služby IoT hub hello používá mém řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
-Zkontrolujte data odeslaná vydavatele zařízení:
+Zkontrolujte hello data odeslaná pomocí jedné z hello vydavatele zařízení:
 
 * Publisher.Beijing.corp.contoso
 * Publisher.capetown.corp.contoso
@@ -142,12 +142,12 @@ Zkontrolujte data odeslaná vydavatele zařízení:
 * Publisher.Rio.corp.contoso
 * Publisher.SEATTLE.corp.contoso
 
-Pokud se žádná data, odeslané do služby IoT Hub, nastane problém s simulace. Jako první krok analysis byste měli provést analýzu souborů protokolu součásti simulace. V tématu [načtení dat protokolu z komponenty simulace?](#how-can-i-get-log-data-from-the-simulation-components) V dalším kroku pokusí zastavit a spustit simulaci a v případě stále nejsou žádná data odesílá, aktualizujte simulaci úplně. V tématu [jak aktualizovat simulace ve virtuálním počítači?](#how-do-i-update-the-simulation-in-the-vm)
+Pokud se žádná data odeslaná tooIoT rozbočovače, je problém s hello simulace. Jako první krok analysis byste měli provést analýzu soubory protokolu hello součástí simulace hello. V tématu [načtení dat protokolu z hello simulace součásti?](#how-can-i-get-log-data-from-the-simulation-components) V dalším kroku zkuste toostop a spustit simulaci hello a pokud nebude probíhat žádná data odeslaná, aktualizovat hello simulace úplně. V tématu [jak aktualizovat hello simulace v hello virtuálního počítače?](#how-do-i-update-the-simulation-in-the-vm)
 
 ### <a name="next-steps"></a>Další kroky
 
-Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
+Můžete také prozkoumat některé hello další funkce a možnosti hello předkonfigurovaná řešení IoT Suite:
 
 * [Přehled řešení předkonfigurované prediktivní údržby](iot-suite-predictive-overview.md)
 * [Přehled připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-overview.md)
-* [Zabezpečení IoT od základů](securing-iot-ground-up.md)
+* [Zabezpečení IoT z hello pozadí](securing-iot-ground-up.md)

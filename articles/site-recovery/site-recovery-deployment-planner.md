@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu"
-description: "Toto je uživatelská příručka k Azure Site Recovery Deployment Planneru."
+title: "Plánovač nasazení Site Recovery aaaAzure pro VMware do Azure | Microsoft Docs"
+description: "Toto je hello Azure Site Recovery nasazení planner uživatelské příručce."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,157 +14,157 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a8c13cd47850575769e0186528807bc525bdeec7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
+Tento článek je hello Azure Site Recovery nasazení Planner uživatelské příručce pro nasazení v produkčním prostředí VMware do Azure.
 
 ## <a name="overview"></a>Přehled
 
-Než začnete chránit jakékoli virtuální počítače VMware pomocí Site Recovery, přidělte dostatečnou šířku pásma v závislosti na vaší denní frekvenci změn dat, abyste dosáhli požadovaného cíle bodu obnovení (RPO). Nezapomeňte místně nasadit správný počet konfiguračních serverů a procesových serverů.
+Než začnete chránit všechny virtuální počítače VMware (VM) pomocí Site Recovery, přidělit dostatečnou šířku pásma, podle vašeho denní míry změny dat, toomeet vaše cíl bodu požadované obnovení (RPO). Být jisti toodeploy hello správné číslo konfigurační servery a proces servery místně.
 
-Také je nutné vytvořit správný typ a počet cílových účtů služby Azure Storage. Vytvoříte účty služby Storage úrovně Standard nebo Premium, které budou zohledňovat nárůst počtu vašich zdrojových produkčních serverů způsobený zvyšováním využití v průběhu času. Typ úložiště zvolíte pro každý virtuální počítač na základě charakteristik úloh (jako je počet vstupně-výstupních operací [IOPS] čtení a zápisu za sekundu nebo četnost změn dat) a omezení Site Recovery.
+Musíte taky toocreate hello správný typ a počet cílový účet úložiště Azure. Vytvoříte účty služby Storage úrovně Standard nebo Premium, které budou zohledňovat nárůst počtu vašich zdrojových produkčních serverů způsobený zvyšováním využití v průběhu času. Zvolte typ hello úložiště na virtuální počítač, na základě charakteristik zatížení (například pro čtení a zápis vstupně-výstupních operací za sekundu [IOPS] nebo mísení dat) a omezuje Site Recovery.
 
-Site Recovery Deployment Planner Public Preview je nástroj příkazového řádku aktuálně dostupný pouze pro scénář nasazení VMware do Azure. Pomocí tohoto nástroje můžete vzdáleně profilovat virtuální počítače VMware (bez jakéhokoli dopadu na produkční prostředí) a porozumět tak požadavkům na šířku pásma a službu Azure Storage pro úspěšnou replikaci a testovací převzetí služeb při selhání. Nástroj můžete spustit místně bez nutnosti instalace jakýchkoli komponent Site Recovery. Nicméně pro získání přesných výsledků dosažené propustnosti se doporučuje spustit Deployment Planner na Windows Serveru splňujícím minimální požadavky konfiguračního serveru Azure Site Recovery, který časem budete muset nasadit v jednom z prvních kroků produkčního nasazení.
+Hello Site Recovery nasazení planner ve verzi public preview je nástroj příkazového řádku, který je aktuálně dostupné jen pro scénář hello VMware do Azure. Můžete vzdáleně profil virtuální počítače VMware s použitím tento nástroj (bez jakéhokoli produkční dopadu jakkoli) toounderstand hello šířky pásma a požadavky na úložiště Azure pro úspěšná replikace a testovací převzetí služeb při selhání. Hello nástroj můžete spustit bez jakékoli Site Recovery součásti místní instalace. Ale tooget přesné dosáhnout propustnosti výsledků, doporučujeme vám spustit hello planner v systému Windows Server, který splňuje hello je minimální požadavky hello Site Recovery konfigurační server, nakonec potřebovali byste toodeploy jako jeden z kroků první hello v produkčním nasazení.
 
-Nástroj poskytuje následující podrobnosti:
+Nástroj pro Hello poskytuje hello následující podrobnosti:
 
 **Posouzení kompatibility**
 
 * Vyhodnocení způsobilosti virtuálního počítače na základě počtu disků, velikosti disků, počtu vstupně-výstupních operací za sekundu (IOPS, četnosti změn a typu spuštění (EFI nebo BIOS)
-* Odhadovaná šířka pásma sítě potřebná pro rozdílovou replikaci
+* Hello odhadované šířku pásma sítě, které je nutné pro rozdílová replikace
 
 **Srovnání šířky pásma sítě a posouzení cíle bodu obnovení**
 
-* Odhadovaná šířka pásma sítě potřebná pro rozdílovou replikaci
-* Propustnost z místního prostředí do Azure, které Site Recovery může dosáhnout
-* Počet virtuálních počítačů pro dávku na základě odhadované šířky pásma pro dokončení prvotní replikace v daném čase
+* Hello odhadované šířku pásma sítě, které je nutné pro rozdílová replikace
+* Hello propustnost, kterou Site Recovery můžete získat z místní tooAzure
+* Hello počet virtuálních počítačů toobatch, podle hello odhadované šířky pásma toocomplete počáteční replikace v dané množství času
 
 **Požadavky na infrastrukturu Azure**
 
-* Požadovaný typ úložiště (účet služby Storage úrovně Standard nebo Premium) pro každý virtuální počítač
-* Celkový počet účtů služby Storage úrovně Standard a Premium, které se mají nastavit pro replikaci
+* požadavky na úložiště typu (účet úložiště standard nebo premium) Hello pro každý virtuální počítač
+* Celkový počet toobe účty úložiště standard a premium nastaven pro replikaci Hello
 * Návrhy pojmenování účtů úložiště na základě pokynů pro Azure Storage
-* Umístění jednotlivých virtuálních počítačů v účtech úložiště
-* Počet jader systému Azure, která se mají zřídit před testovacím převzetím služeb při selhání nebo převzetím služeb při selhání v rámci předplatného
-* Doporučená velikost virtuálního počítače Azure pro každý místní virtuální počítač
+* Hello umístění účtu úložiště pro všechny virtuální počítače
+* nastavit několik Hello Azure jader toobe před testovacího převzetí služeb při selhání nebo převzetí služeb při selhání na základě předplatného hello
+* Hello velikost virtuálního počítače Azure doporučujeme pro každý místní virtuální počítač
 
 **Požadavky na místní infrastrukturu**
-* Požadovaný počet konfiguračních serverů a procesových serverů, které se mají místně nasadit
+* Hello požadovaný počet konfigurační servery a servery toobe proces nasazení místní
 
 >[!IMPORTANT]
 >
->Protože se využití časem bude pravděpodobně zvyšovat, všechny předchozí výpočty jsou provedeny s předpokladem 30% faktoru růstu v charakteristikách úloh a používají hodnoty 95. percentilu všech metrik profilace (počet vstupně-výstupních operací čtení a zápisu za sekundu [R/W IOPS], četnost změn atd.). Oba tyto elementy (faktor růstu a výpočet percentilu) je možné konfigurovat. Další informace o faktoru růstu najdete v části Aspekty faktoru růstu. Další informace o hodnotě percentilu najdete v části Hodnota percentilu používaná k výpočtu.
+>Využití je pravděpodobně tooincrease v čase, a proto všechny hello předchozí nástroj výpočty se provádí za předpokladu, že koeficient růstu 30 procent v charakteristiky zatížení a pomocí 95. hodnotu percentilu všechny hello profilace metriky (pro čtení a zápis IOPS, změn a tak stanovilo). Oba tyto elementy (faktor růstu a výpočet percentilu) je možné konfigurovat. Další informace o koeficient růstu toolearn najdete v části "koeficient růstu aspekty" hello. toolearn Další informace o percentilem, najdete v části "Hodnota percentilu použít pro výpočet hello" hello.
 >
 
 ## <a name="requirements"></a>Požadavky
-Nástroj má dvě hlavní fáze: profilace a generování sestav. Existuje také třetí možnost – výpočet pouze propustnosti. Požadavky na server, ze kterého se spouští profilace a měření propustnosti, jsou uvedené v následující tabulce:
+Nástroj Hello má dvě hlavní fáze: generování profilování a sestavy. Je také třetí možnost toocalculate propustností jenom. v následující tabulce hello jsou uvedeny požadavky Hello hello serveru, ze které hello měření profilace a propustnost spouští:
 
 | Požadavek na server | Popis|
 |---|---|
-|Profilace a měření propustnosti| <ul><li>Operační systém: Microsoft Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Úroveň statistiky VMware vCenter musí být nastavená na hodnotu 2 nebo vysokou úroveň.</li><li>Povolený port 443: ASR Deployment Planner se přes tento port připojuje k serveru vCenter nebo hostiteli ESXi.</ul></ul>|
+|Profilace a měření propustnosti| <ul><li>Operační systém: Microsoft Windows Server 2012 R2<br>(v ideálním případě odpovídající alespoň hello [velikost doporučení pro konfigurační server hello](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>TooAzure přístup k Internetu z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Práva správce na serveru hello</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Nastavení úrovně statistiky VMware vCenter měli nastavit too2 nebo vysokou úroveň</li><li>Povolte 443 port: Planner nasazení automatické obnovení systému používá tento port tooconnect toovCenter nebo hostiteli ESXi,</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |
-| Uživatelská oprávnění | Oprávnění jen ke čtení pro uživatelský účet používaný pro přístup k serveru VMware vCenter nebo k hostiteli VMware vSphere ESXi během profilace |
+| Uživatelská oprávnění | Oprávnění jen pro čtení pro hello uživatelský účet, který byl použit tooaccess hello VMware vCenter server nebo VMware vSphere ESXi hostitele během vytváření profilů |
 
 > [!NOTE]
 >
->Nástroj může profilovat pouze virtuální počítače s disky VMDK a RDM. Nemůže profilovat virtuální počítače s disky iSCSI nebo NFS. Site Recovery podporuje disky iSCSI a NFS pro servery VMware, ale Deployment Planner nesídlí v hostu a profilaci provádí pouze pomocí čítačů výkonu vCenter, proto do těchto typů disků nevidí.
+>Nástroj Hello můžete profil jenom virtuální počítače s VMDK a RDM disky. Nemůže profilovat virtuální počítače s disky iSCSI nebo NFS. Site Recovery podporuje iSCSI a NFS disky pro servery VMware, ale protože planner hello nasazení není uvnitř hostovaného hello a jeho profily pouze pomocí čítačů výkonu vCenter, nástroj hello nemá přehled těchto typů disku.
 >
 
-## <a name="download-and-extract-the-public-preview"></a>Stažení a rozbalení verze Public Preview
-1. Stáhněte si nejnovější verzi nástroje [Site Recovery Deployment Planner Public Preview](https://aka.ms/asr-deployment-planner).  
-Nástroje je zabalený ve složce .zip. Aktuální verze nástroje podporuje pouze scénář nasazení VMware do Azure.
+## <a name="download-and-extract-hello-public-preview"></a>Stažení a extrakci hello verzi public preview
+1. Stáhněte si nejnovější verzi hello hello [verzi public preview služby Site Recovery nasazení planner](https://aka.ms/asr-deployment-planner).  
+Nástroj Hello je zabalené do složky .zip. Hello aktuální verze nástroje hello podporuje jenom scénář hello VMware do Azure.
 
-2. Zkopírujte složku .zip na Windows Server, ze kterého chcete nástroj spustit.  
-Nástroj můžete spustit z Windows Serveru 2012 R2, pokud má server přístup k internetu pro připojení k serveru vCenter nebo k hostiteli vSphere ESXi, na kterém sídlí virtuální počítače určené k profilaci. Doporučujeme však spustit nástroj na serveru, jehož konfigurace hardwaru odpovídá [pokynům k nastavení velikosti konfiguračního serveru](https://aka.ms/asr-v2a-on-prem-components). Pokud jste již místně nasadili komponenty Site Recovery, spusťte nástroj z konfiguračního serveru.
+2. Zkopírujte hello .zip složky toohello systému Windows server ze kterého chcete, aby nástroj toorun hello.  
+Hello nástroj můžete spustit z Windows serveru 2012 R2, pokud má hello server síťový přístup tooconnect toohello vCenter server vSphere ESXi hostitele, který obsahuje hello virtuální počítače toobe profilovaným. Doporučujeme však můžete spustit nástroj hello na serveru, jehož konfigurace hardwaru splňuje hello [konfigurace serveru pro změnu velikosti platí](https://aka.ms/asr-v2a-on-prem-components). Pokud už jste nasadili Site Recovery součásti místně, spusťte nástroj hello z hello konfigurační server.
 
- Doporučujeme, abyste měli stejnou konfiguraci hardwaru konfiguračního serveru (který obsahuje integrovaný procesový server) a serveru, na kterém nástroj spouštíte. Taková konfigurace zajistí, že dosažená propustnost, kterou nástroj hlásí, bude odpovídat skutečné propustnosti, které může Site Recovery dosáhnout během replikace. Výpočet propustnosti závisí na dostupné šířce pásma sítě na serveru a na konfiguraci hardwaru (CPU, úložiště atd.) serveru. Pokud nástroj spustíte z nějakého jiného serveru, vypočítá se propustnost z tohoto serveru do Microsoft Azure. Navíc se může lišit konfigurace hardwaru tohoto serveru a konfiguračního serveru, proto dosažená propustnost, kterou nástroj hlásí, nemusí odpovídat skutečnosti.
+ Doporučujeme, abyste měli hello stejnou hardwarovou konfiguraci jako hello konfigurační server (což je serveru v vytvořená proces) na serveru hello kterém jste spustili nástroj hello. Taková konfigurace zajistí, že hello dosáhnout propustnosti této hello nástroj sestavy odpovídá hello Skutečná propustnost, Site Recovery můžete dosáhnout během replikace. Výpočet propustnost Hello závisí na dostupnou šířku pásma sítě na serveru hello a konfigurace hardwaru (procesoru, úložiště a tak dále) hello serveru. Pokud spustíte nástroj hello z druhý server, propustnost hello se počítá z tohoto serveru tooMicrosoft Azure. Navíc vzhledem k tomu, že konfigurace hardwaru hello hello serveru může lišit od hello konfigurace serveru, hello dosáhnout propustnosti, kterou hello nástroj sestavy mohou být nepřesné.
 
-3. Rozbalte složku .zip.  
-Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
+3. Rozbalte složku hello .zip.  
+Hello obsahuje více soubory a podsložky. spustitelný soubor Hello je ASRDeploymentPlanner.exe v hello nadřazené složky.
 
     Příklad:  
-    Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej.
+    Zkopírujte tooE soubor .zip hello: \ jednotek a rozbalte ho.
    E:\ASR Deployment Planner-Preview_v1.2.zip
 
     E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>Možnosti
-Nástroj příkazového řádku (ASRDeploymentPlanner.exe) můžete spustit v některém z následujících tří režimů:
+V žádném z hello následující tři režimy můžete spustit nástroj příkazového řádku hello (ASRDeploymentPlanner.exe):
 
 1. Profilace  
 2. Generování sestav
 3. Zjištění propustnosti
 
-Nejprve spusťte nástroj v režimu profilace, aby shromáždil četnost změn dat a počet IOPS virtuálních počítačů. Dále spusťte nástroj v režimu generování sestav, abyste zjistili požadavky na šířku pásma sítě a na úložiště.
+Nejprve spusťte nástroj hello v profilaci mísení dat virtuálních počítačů toogather režimu a IOPS. V dalším kroku spuštění hello nástroj toogenerate hello sestavy toofind hello šířky pásma a úložiště požadavky na síť.
 
 ## <a name="profiling"></a>Profilace
-V režimu profilace se Deployment Planner připojí k serveru vCenter nebo k hostiteli vSphere ESXi za účelem shromáždění dat o výkonu virtuálního počítače.
+V profilaci režimu připojí hello nasazení planner nástroj toohello vCenter server vSphere ESXi hostitele toocollect výkonu data o hello virtuálních počítačů.
 
-* Profilace nemá vliv na výkon produkčních virtuálních počítačů, protože se k nim nevytváří žádné přímé připojení. Veškerá data o výkonu se shromažďují ze serveru vCenter nebo z hostitele vSphere ESXi.
-* Aby se zajistilo, že profilace bude mít na server zanedbatelný dopad, nástroj provádí dotazování serveru vCenter nebo hostitele vSphere ESXi každých 15 minut. Tento interval dotazování však nesnižuje přesnost profilace, protože nástroj ukládá data čítače výkonu pro každou minutu.
+* Profilace nemá vliv na výkon hello hello provozních virtuálních počítačů, protože žádné přímé připojení se vytvoří toothem. Všechny údaje o výkonu se shromažďují z hostitele ESXi server vSphere vCenter hello.
+* tooensure se mělo pouze nepatrný dopad na hello serveru z důvodu profilace hello nástroj dotazy hello vCenter server ESXi hostitelů vSphere jednou za 15 minut. Tento interval dotazu není ohrožení profilování přesnost, protože nástroj hello ukládá data čítače výkonu každou minutu.
 
-### <a name="create-a-list-of-vms-to-profile"></a>Vytvoření seznamu virtuálních počítačů určených k profilaci
-Nejprve potřebujete seznam virtuálních počítačů určených k profilaci. Všechny názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi můžete získat pomocí příkazů rozhraní VMware vSphere PowerCLI v následujícím postupu. Případně můžete v souboru ručně vytvořit seznam popisných názvů nebo IP adres virtuálních počítačů, které chcete profilovat.
+### <a name="create-a-list-of-vms-tooprofile"></a>Vytvoří seznam tooprofile virtuální počítače
+Nejprve je třeba seznam hello virtuální počítače toobe profilovaným. Všechny názvy hello virtuálních počítačů můžete získat na hostiteli ESXi server vSphere vCenter pomocí hello VMware vSphere PowerCLI příkazů v hello následující postup. Alternativně můžete vytvořit seznam v souboru popisné názvy hello nebo hello IP adresy virtuálních počítačů, které chcete tooprofile ručně.
 
-1. Přihlaste se k virtuálnímu počítači, na kterém je nainstalované rozhraní VMware vSphere PowerCLI.
-2. Otevřete konzolu VMware vSphere PowerCLI.
-3. Zkontrolujte, že jsou pro skript povolené zásady spouštění. Pokud jsou zakázané, spusťte konzolu VMware vSphere PowerCLI v režimu správce a povolte je spuštěním následujícího příkazu:
+1. Přihlaste se toohello virtuálních počítačů této VMware vSphere PowerCLI je nainstalována v.
+2. Otevřete hello VMware vSphere PowerCLI konzolu.
+3. Ujistěte se, zda je povoleno hello zásady spouštění skriptu hello. Pokud je zakázána, spusťte hello VMware vSphere PowerCLI konzolu v režimu správce a poté ji spuštěním hello následující příkaz:
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Možná bude potřeba spustit následující příkaz, pokud Connect-VIServer nebude rozpoznán jako název rutiny.
+4. Vám může hello toorun optionly třeba následující příkaz, pokud připojení VIServer nebyl rozpoznán jako název hello rutiny.
  
             Add-PSSnapin VMware.VimAutomation.Core 
 
-5. Chcete-li získat všechny názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi a jejich seznam uložit do souboru .txt, spusťte zde uvedené dva příkazy.
+5. tooget hello názvy všech virtuálních počítačů ve vCenter server vSphere ESXi hostitelů a uložit do souboru TXT, spuštění hello dva příkazy tady hello seznamu.
 Nahraďte zástupné hodnoty &lsaquo;server name&rsaquo; (název serveru), &lsaquo;user name&rsaquo; (uživatelské jméno), &lsaquo;password&rsaquo; (heslo) a &lsaquo;outputfile.txt&rsaquo; (výstupní soubor) vlastními hodnotami.
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-6. Otevřete výstupní soubor v Poznámkovém bloku a zkopírujte názvy všech virtuálních počítačů, které chcete profilovat, do jiného souboru (například ProfileVMList.txt), přičemž každý název virtuálního počítače musí být na samostatném řádku. Tento soubor se použije jako vstup pro parametr *-VMListFile* nástroje příkazového řádku.
+6. Otevřete soubor výstup hello v programu Poznámkový blok a zkopírujte hello názvy všechny virtuální počítače, který má tooprofile tooanother souboru (například ProfileVMList.txt), jeden název virtuálního počítače na každý řádek. Tento soubor je používán jako vstupní toohello *- VMListFile* parametr příkazového řádku nástroje hello.
 
-    ![Seznam názvů virtuálních počítačů v Deployment Planneru](./media/site-recovery-deployment-planner/profile-vm-list.png)
+    ![Seznam názvů virtuálních počítačů v nasazení planner hello](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
 ### <a name="start-profiling"></a>Spuštění profilace
-Jakmile budete mít seznam virtuálních počítačů určených k profilaci, můžete nástroj spustit v režimu profilace. Zde je seznam povinných a volitelných parametrů pro spuštění nástroje v režimu profilace.
+Až budete mít hello seznam profilovaným toobe virtuální počítače, můžete spustit nástroj hello v profilaci režimu. Tady je seznam hello parametrů povinné a nepovinné hello nástroj toorun v profilaci režimu.
 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 | Název parametru | Popis |
 |---|---|
 | -Operation | StartProfiling |
-| -Server | Plně kvalifikovaný název domény nebo IP adresa serveru vCenter nebo hostitele vSphere ESXi, které obsahují virtuální počítače určené k profilaci.|
-| -User | Uživatelské jméno pro připojení k serveru vCenter nebo hostiteli vSphere ESXi. Uživatel musí mít alespoň přístup jen ke čtení.|
-| -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci. Cesta k souboru může být absolutní nebo relativní. Soubor musí na každém řádku obsahovat jeden název nebo IP adresu virtuálního počítače. Název virtuálního počítače zadaný v souboru se musí shodovat s názvem virtuálního počítače na serveru vCenter nebo hostiteli vSphere ESXi.<br>Například soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
-| -NoOfDaysToProfile | Počet dní, po které má být profilace spuštěna. Doporučujeme profilaci spouštět na více než 15 dnů, během kterých se zjistí vzorce úloh ve vašem prostředí a s jejich pomocí nástroj poskytne přesná doporučení. |
-| -Directory | (Volitelné) Název UNC (Universal Naming Convention) nebo cesta k místnímu adresáři, do kterého se během profilace budou ukládat data profilace. Pokud název adresáře není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě. |
-| -Password | (Volitelné) Heslo, které se použije pro připojení k serveru vCenter nebo hostiteli vSphere ESXi. Pokud heslo nezadáte teď, budete k tomu vyzváni při spuštění příkazu.|
-| -StorageAccountName | (Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data.|
-| -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1 (nebo primární přístupový klíč v případě klasického účtu úložiště). |
-| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou cloudy Azure US Government nebo Azure China. |
+| -Server | Hello plně kvalifikovaný název domény nebo IP adresu hello vCenter server vSphere hostitele ESXi virtuální počítače, jejichž jsou toobe profilovaným.|
+| -User | Hello uživatele název tooconnect toohello vCenter server ESXi hostitelů vSphere. Hello uživatel potřebuje toohave jen pro čtení přístup alespoň.|
+| -VMListFile | Hello soubor, který obsahuje seznam hello profilovaným toobe virtuálních počítačů. Cesta k souboru Hello může být absolutní nebo relativní. Hello soubor by měl obsahovat jeden název nebo IP adresy virtuálních počítačů na každém řádku. Název virtuálního počítače zadaný v souboru hello by měl být hello stejný jako název virtuálního počítače hello hostiteli ESXi server vSphere vCenter hello.<br>Například soubor hello VMList.txt obsahuje hello následující virtuální počítače:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -NoOfDaysToProfile | Hello počet dní, pro které profilace je toobe spustit. Doporučujeme spustit profilování pro více než 15 dní, po které tooensure, který hello vzor zatížení ve vašem prostředí přes hello zadané období je zachytit a využívat tooprovide přesné doporučení. |
+| -Directory | (Volitelné) hello universal zásady vytváření názvů (UNC) nebo místního adresáře cesta toostore profilace údaje získané v průběhu vytváření profilů. Není-li název adresáře, hello adresář s názvem 'ProfiledData' v aktuální cestě hello se použije jako výchozí adresář hello. |
+| -Password | (Volitelné) hello heslo toouse tooconnect toohello vCenter server ESXi hostitelů vSphere. Pokud nezadáte jeden nyní, budete vyzváni k ho když se spustí příkaz hello.|
+| -StorageAccountName | Název účtu úložiště hello (volitelné), který je použité toofind hello propustnost dosažitelné pro replikaci dat z místní tooAzure. Hello nástroj nahrávání testovací data toothis účet toocalculate propustnost úložiště.|
+| -StorageAccountKey | (Volitelné) hello klíč účtu úložiště, který se používá účet úložiště tooaccess hello. Přejděte toohello portálu Azure > účty úložiště ><*název účtu úložiště*>> Nastavení > přístupové klíče > Key1 (nebo primární přístupový klíč pro účet úložiště classic). |
+| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Pokud vaše cílem oblast Azure Azure US Government nebo Azure China cloudy, pomocí parametru hello. |
 
 
-Doporučujeme profilovat virtuální počítače po dobu alespoň 15 až 30 dnů. Během období profilace je ASRDeploymentPlanner.exe stále spuštěný. Nástroj na vstupu přijímá zadání času profilace ve dnech. Pokud chcete nástroj rychle otestovat spuštěním profilace na několik hodin nebo minut, ve verzi Public Preview budete muset tento čas převést na odpovídající zlomek dne. Pokud například chcete profilovat po dobu 30 minut, vstup musí být 30/(60×24) = 0,021 dnů. Minimální povolený čas profilace je 30 minut.
+Doporučujeme, abyste profil virtuální počítače pro alespoň 15 dnů too30. Během hello profilace období neustále běží ASRDeploymentPlanner.exe. Nástroj Hello přijímá profilování vstup času ve dnech. Pokud chcete použít pro několik hodin nebo minut pro rychlé test hello nástroje tooprofile ve verzi public preview hello, budete potřebovat tooconvert hello čas do hello ekvivalentní měr dní. Například tooprofile 30 minut, musí být vstup hello 30/(60*24) = 0.021 dnů. Hello minimální povolená profilace doba je 30 minut.
 
-Během profilace můžete volitelně předat název a klíč účtu úložiště a zjistit tak propustnost, které může Site Recovery dosáhnout v době replikace z konfiguračního serveru nebo procesového serveru do Azure. Pokud název a klíč účtu úložiště během profilace nepředáte, nástroj dosažitelnou propustnost počítat nebude.
+Při vytváření profilu, můžete volitelně předat název účtu úložiště a klíč toofind hello propustnosti, kterou můžete dosáhnout Site Recovery v době hello replikace z hello konfigurační server nebo server tooAzure procesu. Pokud během profilace nejsou předány hello název účtu úložiště a klíč, nástroj hello neobsahuje výpočet možná propustnost.
 
-Můžete spouštět více instancí nástroje pro různé sady virtuálních počítačů. Zkontrolujte, že se názvy virtuálních počítačů v sadách profilace neopakují. Pokud například profilujete deset virtuálních počítačů (VM1–VM10) a po několika dnech chcete profilovat dalších pět virtuálních počítačů (VM11–VM15), můžete nástroj spustit z jiné konzoly příkazového řádku pro druhou sadu virtuálních počítačů (VM11–VM15). Zajistěte, aby druhá sada virtuálních počítačů neobsahovala žádné názvy virtuálních počítačů z první instance profilace, nebo pro druhé spuštění použijte jiný výstupní adresář. Pokud se k profilování stejných virtuálních počítačů používají dvě instance nástroje a stejný výstupní adresář, vygenerovaná sestava bude nepřesná.
+Můžete spustit víc instancí hello nástroje pro různé sady virtuálních počítačů. Ujistěte se, že nejsou v některém z hello profilace nastaví opakuje hello názvy virtuálních počítačů. Například, pokud mají profilovaným deset virtuálních počítačů (VM1 prostřednictvím VM10) a po několik dní chcete tooprofile jiné pět virtuálních počítačů (VM11 prostřednictvím VM15), hello nástroj můžete spustit z jiné konzolu příkazového řádku pro hello druhé sadě virtuálních počítačů (VM11 prostřednictvím VM15). Zkontrolujte, že hello druhé sadě virtuálních počítačů nemají žádné názvy virtuálních počítačů z první instance profilování hello nebo používáte jiný výstupního adresáře pro hello druhý spustit. Pokud chcete použít dvě instance hello nástroje pro profilaci hello stejné virtuální počítače a použít Dobrý den stejné výstupního adresáře, hello generuje sestavy budou nesprávné.
 
-Konfigurace virtuálních počítačů se zachytí jednou na začátku operace profilace a uloží se do souboru VMDetailList.xml. Tyto informace se použijí při generování sestavy. Žádné změny v konfiguraci virtuálních počítačů (například navýšení počtu jader, disků nebo síťových adaptérů) od začátku do konce profilace se nezachytí. Pokud se během profilace změnila konfigurace některého profilovaného virtuálního počítače, ve verzi Public Preview existuje alternativní řešení, pomocí kterého můžete získat nejnovější podrobnosti o virtuálním počítači bez nutnosti generovat sestavu:
+Konfigurace virtuálního počítače zachycení jednou na začátku hello hello profilování operace a uložené v souboru s názvem VMDetailList.xml. Tyto informace se používá při generování sestavy hello. Všechny změny v konfiguraci virtuálního počítače (například vyšší počet jader, disky nebo síťové adaptéry) od hello začátku toohello konce profilace není zachycena. Pokud došlo ke změně PROFILOVANÉHO konfigurace virtuálního počítače během postupu hello profilace ve verzi public preview hello tady je alternativní řešení hello tooget nejnovější virtuálních počítačů podrobnosti při generování sestavy hello:
 
-* Zálohujte soubor VMdetailList.xml a odstraňte ho z aktuálního umístění.
-* V okamžiku generování sestav předejte argumenty -User a -Password.
+* Zálohování VMdetailList.xml a hello soubor odstraňte z jeho aktuálního umístění.
+* Předání - a - hesla uživatele argumentů v době hello generování sestav.
 
-Příkaz profilace vygeneruje v adresáři profilace několik souborů. Žádný z těchto souborů neodstraňujte, jinak to bude mít dopad na generování sestav.
+Hello profilace příkaz generuje několik souborů v hello profilace adresáře. Neodstraňujte žádný hello souborů, protože to nepříznivě ovlivňuje, generování sestav.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Příklad 1: Profilování virtuálních počítačů po dobu 30 dnů a zjištění propustnosti z místního prostředí do Azure
+#### <a name="example-1-profile-vms-for-30-days-and-find-hello-throughput-from-on-premises-tooazure"></a>Příklad 1: Profil virtuálních počítačů pro 30 dnů a propustnost hello najít z místní tooAzure
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
@@ -175,63 +175,63 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>Příklad 3: Rychlé otestování nástroje profilováním virtuálních počítačů po dobu 1 hodiny
+#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-hello-tool"></a>Příklad 3: Profil virtuální počítače 1 hodinu pro rychlé testu nástroj hello
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  0.04  -User vCenterUser1
 ```
 
 >[!NOTE]
 >
->* Pokud se server, na kterém je nástroj spuštěný, restartuje nebo na něm dojde k chybě, nebo pokud nástroj zavřete stisknutím kombinace kláves Ctrl + C, profilovaná data se zachovají. Může se však stát, že kvůli tomu bude chybět posledních 15 minut profilovaných dat. V takové situaci po restartování serveru znovu spusťte nástroj v režimu profilace.
->* Pokud předáte název a klíč účtu úložiště, nástroj bude měřit propustnost v posledním kroku profilace. Pokud bude nástroj zavřen před dokončením profilace, propustnost se nevypočítá. Pokud chcete zjistit propustnost před generováním sestavy, můžete z konzoly příkazového řádku spustit operaci GetThroughput. Jinak vygenerovaná sestava nebude obsahovat informace o propustnosti.
+>* Pokud je tento nástroj hello hello server systémem se restartoval nebo došlo k chybě, nebo pokud zavřete hello nástroj pomocí kombinace kláves Ctrl + C, hello profilovaným dat se zachová. Existuje však riziko chybějící hello PROFILOVANÉHO data za posledních 15 minut. V takové instance znovu spusťte nástroj hello v profilaci režimu po restartování serveru hello.
+>* Když hello název účtu úložiště a klíč jsou předány, hello nástroj míry hello propustnost na poslední krok hello profilace. Pokud nástroj hello je ukončeno před dokončením profilace, se nevypočte hello propustnost. propustnost hello toofind před vygenerováním hello sestavy, hello GetThroughput operace můžete spustit z příkazového řádku konzoly hello. Hello vygenerovat sestavu, jinak nebude obsahovat hello propustnost informace.
 
 
 ## <a name="generate-a-report"></a>Generování sestav
-Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_<*jedinečný číselný identifikátor*>.xlsm a je umístěná v zadaném adresáři.
+Hello Nástroj generuje soubor Microsoft Excel s podporou maker (soubor XLSM) jako výstup hello sestavy, které shrnuje všechny doporučení pro nasazení hello. Sestava Hello jmenuje DeploymentPlannerReport_ <*jedinečný číselný identifikátor*> .xlsm a umístěný v hello zadán adresář.
 
-Po dokončení profilace můžete nástroj spustit v režimu generování sestav. Následující tabulka obsahuje seznam povinných a volitelných parametrů nástroje pro spuštění v režimu generování sestav.
+Po dokončení profilace můžete spustit nástroj hello v režimu generování sestav. Hello následující tabulka obsahuje seznam toorun parametrů povinné a nepovinné nástroj v režimu generování sestav.
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
 |Název parametru | Popis |
 |-|-|
 | -Operation | GenerateReport |
-| -Server |  Plně kvalifikovaný název domény nebo IP adresa serveru vCenter nebo vSphere (použijte stejný název nebo IP adresu, jako jste použili při profilaci), na němž jsou umístěné profilované virtuální počítače, pro které se má vygenerovat sestava. Všimněte si, že pokud jste při profilaci použili server vCenter, nemůžete pro generování sestav použít server vSphere a naopak.|
-| -VMListFile | Soubor se seznamem profilovaných virtuálních počítačů, pro které se má vygenerovat sestava. Cesta k souboru může být absolutní nebo relativní. Soubor musí na každém řádku obsahovat jeden název nebo IP adresu virtuálního počítače. Názvy virtuálních počítačů zadané v tomto souboru musí být stejné jako názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi a musí se shodovat s názvy, které jste použili při profilaci.|
-| -Directory | (Volitelné) Název UNC nebo cesta k místnímu adresáři, ve kterém jsou uložena profilovaná data (soubory vytvořené během profilace). Tato data jsou vyžadovaná k vygenerování sestavy. Pokud název nezadáte, použije se adresář ProfiledData. |
-| -GoalToCompleteIR | (Volitelné) Počet hodin, během kterých je potřeba dokončit prvotní replikaci profilovaných virtuálních počítačů. Vygenerovaná sestava obsahuje počet virtuálních počítačů, pro které lze v zadaném čase dokončit prvotní replikaci. Výchozí hodnota je 72 hodin. |
-| -User | (Volitelné) Uživatelské jméno pro připojení k serveru vCenter nebo vSphere. Uživatelské jméno slouží k načtení nejnovějších informací o konfiguraci virtuálních počítačů (např. počet disků, počet jader a počet síťových adaptérů), které se použijí v sestavě. Pokud uživatelské jméno nezadáte, použijí se informace o konfiguraci shromážděné na začátku profilace. |
-| -Password | (Volitelné) Heslo, které se použije pro připojení k serveru vCenter nebo hostiteli vSphere ESXi. Pokud heslo nezadáte jako parametr, budete k jeho zadání vyzváni později při spuštění příkazu. |
-| -DesiredRPO | (Volitelné) Požadovaný cíl bodu obnovení v minutách. Výchozí hodnota je 15 minut.|
-| -Bandwidth | Šířka pásma v Mb/s. Tento parametr se použije k výpočtu cíle bodu obnovení, kterého lze pro zadanou šířku pásma dosáhnout. |
-| -StartDate | (Volitelné) Počáteční datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *StartDate* je nutné zadat společně s parametrem *EndDate*. Pokud zadáte parametr StartDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
-| -EndDate | (Volitelné) Koncové datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *EndDate* je nutné zadat společně s parametrem *StartDate*. Pokud zadáte parametr EndDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
-| -GrowthFactor | (Volitelné) Faktor růstu vyjádřený v procentech. Výchozí hodnota je 30 procent. |
-| -UseManagedDisks | (Volitelné) UseManagedDisks – Yes/No (Ano/Ne). Výchozí hodnota je Yes (Ano). Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se vypočítá s ohledem na to, že převzetí služeb při selhání nebo testovací převzetí služeb při selhání virtuálních počítačů se provádí na spravovaný disk namísto nespravovaného disku. |
+| -Server |  server vCenter/vSphere Hello plně kvalifikovaný název domény nebo IP adresu (hello použijte stejný název nebo IP adresu, která jste použili v době hello profilace) kde hello profilovaným virtuálních počítačů, jejichž sestava je toobe generované nacházejí. Všimněte si, že pokud jste použili vCenter server v době hello profilace, nemůžete použít vSphere server pro generování sestav a naopak.|
+| -VMListFile | Hello soubor, který obsahuje seznam hello PROFILOVANÉHO virtuálních počítačů, které hello sestavy je toobe vygenerované. Cesta k souboru Hello může být absolutní nebo relativní. Hello soubor by měl obsahovat jeden název virtuálního počítače nebo IP adresa na každém řádku. Hello názvy virtuálních počítačů, které jsou určené v souboru hello by měl být hello stejné jako názvy hello virtuálních počítačů na hostiteli ESXi server vSphere vCenter hello a shoda, co byl použit při vytváření profilu.|
+| -Directory | (Volitelné) hello UNC nebo cestu místního adresáře, kde hello profilovaným data (soubory generované během profilace) je uložen. Tato data jsou požadovány pro generování sestavy hello. Pokud název nezadáte, použije se adresář ProfiledData. |
+| -GoalToCompleteIR | (Volitelné) hello počet hodin, ve které hello počáteční replikace hello profilovaným virtuální počítače musí toobe byla dokončena. Sestava Hello generované obsahuje hello počet virtuálních počítačů, pro které dá dokončit počáteční replikaci hello zadaný čas. Výchozí hodnota Hello je 72 hodin. |
+| -User | (Volitelné) hello uživatele název toouse tooconnect toohello vCenter vSphere server. Název Hello je použité toofetch hello nejnovější informace o konfiguraci hello virtuálních počítačů, jako je například hello počet disků, počet jader a počet síťových adaptérů, toouse v sestavě hello. Pokud není zadán název hello, použije se na začátku hello hello profilace kickoff shromážděné informace o konfiguraci hello. |
+| -Password | (Volitelné) hello heslo toouse tooconnect toohello vCenter server ESXi hostitelů vSphere. Pokud hello heslo není zadané jako parametr, budete vyzváni k ho později když se spustí příkaz hello. |
+| -DesiredRPO | (Volitelné) hello požadovaný cíl bodu obnovení, v minutách. Hello výchozí hodnota je 15 minut.|
+| -Bandwidth | Šířka pásma v Mb/s. Hello parametr toouse toocalculate hello plánovaný bod obnovení, který jde dosáhnout pro hello zadat šířku pásma. |
+| -StartDate | (Volitelné) hello počáteční datum a čas v MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *StartDate* je nutné zadat společně s parametrem *EndDate*. Pokud je zadána počátečním, sestava hello se generuje pro hello profilovaným data, která se shromažďují mezi počátečním a koncovým datem. |
+| -EndDate | (Volitelné) hello koncové datum a čas v MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *EndDate* je nutné zadat společně s parametrem *StartDate*. Pokud je zadána koncovým datem, sestava hello se generuje pro hello profilovaným data, která se shromažďují mezi počátečním a koncovým datem. |
+| -GrowthFactor | Koeficient růstu (volitelné) hello vyjádřený v procentech. Hello výchozí hodnota je 30 procent. |
+| -UseManagedDisks | (Volitelné) UseManagedDisks – Yes/No (Ano/Ne). Výchozí hodnota je Yes (Ano). Hello počet virtuálních počítačů, které se dají umístit do jednoho úložiště účet se počítá vzhledem k tomu, jestli je na spravovaných disků na místo nespravované disku provádět převzetí služeb při selhání a testovací převzetí služeb při selhání virtuálních počítačů. |
 
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Příklad 1: Generování sestavy s použitím výchozích hodnot pro profilovaná data umístěná na místním disku
+#### <a name="example-1-generate-a-report-with-default-values-when-hello-profiled-data-is-on-hello-local-drive"></a>Příklad 1: Vygenerování sestavy s výchozími hodnotami, když hello profilovaným data na místním disku hello
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Příklad 2: Generování sestavy pro profilovaná data umístěná na vzdáleném serveru
-Ke vzdálenému adresáři musíte mít přístup ke čtení a zápisu.
+#### <a name="example-2-generate-a-report-when-hello-profiled-data-is-on-a-remote-server"></a>Příklad 2: Vygenerování sestavy, když je hello profilovaným dat na vzdáleném serveru
+Měli byste mít přístup pro čtení a zápis na hello vzdáleného adresáře.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Příklad 3: Generování sestavy s použitím konkrétní šířky pásma a cíle dokončení prvotní replikace v zadaném čase
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-toocomplete-ir-within-specified-time"></a>Příklad 3: Vygenerování sestavy s konkrétní šířky pásma a cílem toocomplete reakcí na Incidenty v rámci určeného časového
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Příklad 4: Generování sestavy s použitím 5% faktoru růstu namísto výchozích 30 %
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-hello-default-30-percent"></a>Příklad 4: Vygenerování sestavy s koeficient růstu 5 procent místo hello výchozí 30 procent
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
 #### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>Příklad 5: Generování sestavy s použitím podmnožiny profilovaných dat
-Máte například profilovaná data za 30 dnů a chcete vygenerovat sestavu pouze pro 20 dnů.
+Například máte 30 dní od data PROFILOVANÉHO a chcete toogenerate sestavy pouze 20 dní.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
@@ -241,12 +241,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-## <a name="percentile-value-used-for-the-calculation"></a>Hodnota percentilu používaná k výpočtu
-**Jakou výchozí hodnotu percentilu metrik výkonu shromážděných během profilace nástroj používá při generování sestavy?**
+## <a name="percentile-value-used-for-hello-calculation"></a>Hodnota percentilu použít pro výpočet hello
+**Jaké výchozí hodnotu percentilu hello metriky výkonu shromážděných během profilace nemá hello nástroj pro použití při generování sestavy?**
 
-Nástroj ve výchozím nastavení používá hodnoty 95. percentilu počtu R/W IOPS, vstupně-výstupních operací zápisu za sekundu a četnosti změn dat shromážděných během profilace všech virtuálních počítačů. Tato metrika zajišťuje, že se k určení požadavků na cílový účet úložiště a zdrojovou šířku pásma nepoužijí hodnoty 100. percentilu (špičky), které se můžou objevovat na virtuálních počítačích následkem dočasných událostí. Příkladem dočasné události může být úloha zálohování spouštěná jednou denně, pravidelné indexování databáze, aktivita generování analytických sestav nebo další podobné krátkodobé a jednorázové události.
+Hello nástroj výchozí toohello 95. percentil hodnot pro čtení a zápis IOPS, zapisovat IOPS a změn dat, které jsou shromážděny během profilace všechny virtuální počítače hello. Tato metrika zajistí, že hello 100 percentilu Špička virtuálních počítačů může dojít z důvodu dočasného události je nepoužívá toodetermine požadavků cílový účet úložiště a zdroje šířkou pásma. Příkladem dočasné události může být úloha zálohování spouštěná jednou denně, pravidelné indexování databáze, aktivita generování analytických sestav nebo další podobné krátkodobé a jednorázové události.
 
-Použitím hodnot 95. percentilu získáte pravdivou představu o skutečných charakteristikách úloh a nejlepší výkon při spouštění těchto úloh v Azure. Neočekáváme, že byste toto číslo potřebovali měnit. Pokud tuto hodnotu přesto změníte (například na 90. percentil), můžete upravit konfigurační soubor *ASRDeploymentPlanner.exe.config* ve výchozí složce a uložit jej. Tím vygenerujete novou sestavu pro existující profilovaná data.
+Pomocí 95. percentil hodnot true přehled o skutečné pracovní zátěže charakteristiky a vám nabízí hello nejlepší výkon při zatížení hello běží v Azure. Jsme není předpokládá, že by to musíte toochange toto číslo. Pokud změníte hodnotu hello (toohello 90. percentil, např.), můžete aktualizovat konfigurační soubor hello *ASRDeploymentPlanner.exe.config* v hello výchozí složku a uložte ho na hello existující profilovaným toogenerate nové sestavy data.
 ```
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
@@ -256,22 +256,22 @@ Použitím hodnot 95. percentilu získáte pravdivou představu o skutečných c
 ## <a name="growth-factor-considerations"></a>Aspekty faktoru růstu
 **Proč bych při plánování nasazení měl brát v úvahu faktor růstu?**
 
-Je důležité počítat s nárůstem v charakteristikách vašich úloh v důsledku možného zvýšení využití v průběhu času. Pokud se charakteristiky vašich úloh změní po zapnutí ochrany, nebudete moci přepnout na ochranu pod jiným účtem úložiště bez nutnosti ochranu zakázat a znovu povolit.
+Je důležité tooaccount pro růst v vaše charakteristiky zatížení, za předpokladu, že potenciální zvýšení využití v čase. Po ochrany na místě, je-li změnit váš charakteristiky zatížení si nelze přepnout tooa jiný účet úložiště pro ochranu bez zakázat a znovu povolíte ochranu hello.
 
-Řekněme například, že dnes se váš virtuální počítač vejde do účtu replikace služby Storage úrovně Standard. Během následujících tří měsíců pravděpodobně dojde k několika změnám:
+Řekněme například, že dnes se váš virtuální počítač vejde do účtu replikace služby Storage úrovně Standard. Přes hello následující tři měsíce, několik změn se pravděpodobně toooccur:
 
-* Zvýší se počet uživatelů aplikace spuštěné na virtuálním počítači.
-* Výsledná zvýšená četnost změn na virtuálním počítači bude vyžadovat přesun virtuálního počítače do účtu služby Storage úrovně Premium, aby replikace Site Recovery mohla s četností změn držet krok.
-* V důsledku toho budete muset zakázat a znovu povolit ochranu účtu služby Storage úrovně Premium.
+* zvýší počet Hello uživatelům hello aplikace, která běží na hello virtuálních počítačů.
+* Výsledný vyšší změn Hello na hello virtuálních počítačů bude vyžadovat úložiště toopremium toogo hello virtuálního počítače tak, aby Site Recovery replikace můžete držet krok.
+* V důsledku toho budou mít toodisable a znovu povolte ochranu tooa prémiový účet úložiště.
 
-Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem, a přestože je jeho hodnota ve výchozím nastavení 30 %, sami nejlépe znáte vzorce používání vaší aplikace a očekávaný růst a během generování sestav můžete toto číslo odpovídajícím způsobem měnit. Kromě toho můžete generovat více sestav s použitím různých faktorů růstu pro stejná profilovaná data a určit, jaká doporučení ohledně cílového úložiště a zdrojové šířky pásma jsou pro vás nejvhodnější.
+Důrazně doporučujeme, abyste naplánovali pro růst při plánování nasazení a při hello výchozí hodnota je 30 procent. Jsou hello odborné na projekce vaší aplikace využití vzoru a růst, a toto číslo můžete změnit odpovídajícím způsobem při generování sestavy. Kromě toho můžete generovat sestavy několika různými faktory růst s hello stejné profilovaným dat a zjistit, jaké doporučení pro šířku pásma úložiště a zdroj cílové nejvhodnější pro vás.
 
-Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující informace:
+Sestava Hello vygenerované Microsoft Excel obsahuje hello následující informace:
 
 * [Input](site-recovery-deployment-planner.md#input) (Vstup)
 * [Recommendations](site-recovery-deployment-planner.md#recommendations-with-desired-rpo-as-input) (Doporučení)
 * [Recommendations-Bandwidth Input](site-recovery-deployment-planner.md#recommendations-with-available-bandwidth-as-input) (Doporučení – Vstupní šířka pásma)
-* [VM<->Storage Placement](site-recovery-deployment-planner.md#vm-storage-placement) (Umístění virtuálních počítačů ve službě Storage)
+* [VM&lt;-&gt;Storage Placement](site-recovery-deployment-planner.md#vm-storage-placement) (Umístění virtuálních počítačů ve službě Storage)
 * [Compatible VMs](site-recovery-deployment-planner.md#compatible-vms) (Kompatibilní virtuální počítače)
 * [Incompatible VMs](site-recovery-deployment-planner.md#incompatible-vms) (Nekompatibilní virtuální počítače)
 
@@ -279,24 +279,24 @@ Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující informace
 
 ## <a name="get-throughput"></a>Zjištění propustnosti
 
-Pokud chcete odhadnout propustnost, které může Site Recovery dosáhnout během replikace z místního prostředí do Azure, spusťte nástroj v režimu GetThroughput. Nástroj vypočítá propustnost ze serveru, na kterém je spuštěný. Ideálně je tento server vytvořený podle pokynů k nastavení konfiguračního serveru. Pokud jste již místně nasadili komponenty infrastruktury Site Recovery, spusťte nástroj na konfiguračním serveru.
+propustnost hello tooestimate, Site Recovery můžete dosáhnout místní tooAzure během replikace, spusťte nástroj hello v GetThroughput režimu. Nástroj Hello vypočítá hello propustnost ze serveru hello hello nástroj běží na. V ideálním případě by tento server je založený na velikost příručce hello konfigurace serveru. Pokud už jste nasadili Site Recovery součásti místní infrastrukturou, spusťte nástroj hello na hello konfiguračním serveru.
 
-Otevřete konzolu příkazového řádku a přejděte do složky nástroje pro plánování nasazení Site Recovery. Spusťte ASRDeploymentPlanner.exe s použitím následujících parametrů.
+Otevřete konzolu příkazového řádku a přejděte plánování složka nástroj pro nasazení Site Recovery toohello. Spusťte ASRDeploymentPlanner.exe s použitím následujících parametrů.
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
 |Název parametru | Popis |
 |-|-|
 | -Operation | GetThroughput |
-| -Directory | (Volitelné) Název UNC nebo cesta k místnímu adresáři, ve kterém jsou uložena profilovaná data (soubory vytvořené během profilace). Tato data jsou vyžadovaná k vygenerování sestavy. Pokud název adresáře není zadaný, použije se adresář ProfiledData. |
-| -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. |
-| -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1 (nebo primární přístupový klíč v případě klasického účtu úložiště). |
-| -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Soubor musí na každém řádku obsahovat jeden název nebo IP adresu virtuálního počítače. Názvy virtuálních počítačů zadané v souboru se musí shodovat s názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi.<br>Například soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou cloudy Azure US Government nebo Azure China. |
+| -Directory | (Volitelné) hello UNC nebo cestu místního adresáře, kde hello profilovaným data (soubory generované během profilace) je uložen. Tato data jsou požadovány pro generování sestavy hello. Pokud název adresáře není zadaný, použije se adresář ProfiledData. |
+| -StorageAccountName | název účtu úložiště Hello, který byl použit toofind hello šířky pásma použít pro replikaci dat z místní tooAzure. Hello nástroj nahrávání testovací data toothis úložiště účet toofind hello spotřebovanou šířku pásma. |
+| -StorageAccountKey | Hello klíč účtu úložiště, který se používá účet úložiště tooaccess hello. Přejděte toohello portálu Azure > účty úložiště ><*název účtu úložiště*>> Nastavení > přístupové klíče > Key1 (nebo primární přístupový klíč pro účet úložiště classic). |
+| -VMListFile | Hello soubor, který obsahuje seznam hello profilovaným pro výpočet šířky pásma hello spotřebované toobe virtuálních počítačů. Cesta k souboru Hello může být absolutní nebo relativní. Hello soubor by měl obsahovat jeden název nebo IP adresy virtuálních počítačů na každém řádku. názvy virtuálních počítačů Hello zadané v souboru hello by měl být hello stejné jako názvy hello virtuálních počítačů na hostiteli ESXi server vSphere vCenter hello.<br>Například soubor hello VMList.txt obsahuje hello následující virtuální počítače:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Pokud vaše cílem oblast Azure Azure US Government nebo Azure China cloudy, pomocí parametru hello. |
 
-Nástroj vytvoří v zadaném adresáři několik souborů „asrvhdfile<#>.vhd“ (kde # je počet souborů) o velikosti 64 MB. Nástroj tyto soubory nahraje do účtu úložiště a tak zjistí propustnost. Po změření propustnosti nástroj všechny tyto soubory odstraní z účtu úložiště i z místního serveru. Pokud se nástroj z nějakého důvodu během výpočtu propustnosti ukončí, z úložiště ani z místního serveru tyto soubory neodstraní. Budete je muset odstranit ručně.
+Nástroj Hello vytvoří několik 64 MB asrvhdfile <> # VHD soubory na hello zadaný adresář (kde "#" je hello počet souborů). Nástroj Hello ukládání hello soubory toohello úložiště účet toofind hello propustnost. Po hello propustnost je měřena, nástroj hello odstraní všechny soubory hello z účtu úložiště hello a z místního serveru hello. Pokud nástroj hello je ukončeno z jakéhokoli důvodu při jeho je výpočet propustnost, nedojde k odstranění hello soubory z úložiště hello nebo místního serveru hello. Budete mít toodelete je ručně.
 
-Propustnost se měří k určitému bodu v čase a je to maximální propustnost, které Site Recovery může během replikace dosáhnout za předpokladu, že všechny ostatní okolnosti budou stejné. Například pokud ve stejné síti nějaká aplikace začne využívat větší šířku pásma, skutečná propustnost během replikace se bude lišit. Pokud spustíte příkaz GetThroughput z konfiguračního serveru, nástroj nebude vědět o žádných chráněných virtuálních počítačích ani probíhajících replikacích. Výsledná naměřená propustnost se bude lišit, když operaci GetThroughput spustíte v době vysoké četnosti změn dat na chráněných virtuálních počítačích. Doporučujeme spouštět nástroj během profilace v různých okamžicích, abyste zjistili, jaké úrovně propustnosti můžete dosáhnout v různou dobu. V sestavě zobrazí nástroj poslední naměřenou propustnost.
+Hello propustnosti se měří v určitém bodě v čase a je hello maximální propustnost, Site Recovery můžete dosáhnout během replikace, za předpokladu, že zůstanou jinými faktory hello stejné. Například pokud se všechny aplikace spustí využívání větší šířku pásma na hello, které se liší podle stejné síti, Skutečná propustnost hello během replikace. Pokud používáte hello GetThroughput příkaz z konfigurace serveru, nástroj hello ne všechny chráněné virtuální počítače a probíhající replikace. Hello výsledek měřená propustnost hello se liší, pokud hello GetThroughput operaci je spustit, když hello chráněné virtuální počítače mají vysokou data změn. Doporučujeme spustit nástroj hello v různých okamžicích v době profilace toounderstand jakou propustnost úrovně jde dosáhnout v různé časy. V sestavě hello hello nástroj zobrazí poslední měřená propustnost hello.
 
 ### <a name="example"></a>Příklad
 ```
@@ -305,98 +305,98 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 >[!NOTE]
 >
-> Spouštějte nástroj na serveru, který má stejné charakteristiky úložiště a procesoru jako konfigurační server.
+> Spusťte nástroj hello na server, který má hello stejné úložiště a rychlost procesoru jako hello konfigurační server.
 >
-> Pro účely replikace nastavte šířku pásma doporučenou pro splnění cíle bodu obnovení 100 % času. Pokud se po nastavení správné šířky pásma nezvýší dosažená propustnost, kterou nástroj hlásí, proveďte následující:
+> Pro replikaci nastavte hello doporučené šířky pásma toomeet hello RPO 100 procent času hello. Po nastavení hello správné šířky pásma, pokud nevidíte zvýšit propustnost hello dosáhnout hlášené hello nástroj hello následující:
 >
->  1. Zkontrolujte, jestli v síti není nastavená technologie QoS (Quality of Service), která by omezovala propustnost Site Recovery.
+>  1. Toodetermine zkontrolujte, zda jsou všechny sítě služby (QoS Quality Service), je omezení propustnosti Site Recovery.
 >
->  2. Zkontrolujte, jestli je váš trezor Site Recovery v nejbližší podporované fyzické oblasti Microsoft Azure kvůli minimalizaci latence sítě.
+>  2. Toodetermine zkontrolujte, zda je váš trezor Site Recovery v hello nejbližší fyzicky podporované latence sítě toominimize oblast Microsoft Azure.
 >
->  3. Zkontrolujte charakteristiky vašeho místního úložiště a zjistěte, jestli můžete vylepšit hardware (například použít jednotky SSD místo HDD).
+>  3. Vaše místní úložiště vlastností toodetermine zkontrolujte, zda se může zlepšit hello hardwaru (například tooSSD HDD).
 >
->  4. Změňte nastavení Site Recovery na procesovém serveru a [zvětšete šířku pásma sítě používanou k replikaci](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+>  4. Změnit nastavení Site Recovery hello hello procesový server příliš[zvýšit hello šířku pásma sítě používané pro replikaci](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
 ## <a name="recommendations-with-desired-rpo-as-input"></a>Doporučení s možností zadat požadovaný cíl bodu obnovení jako vstup
 
 ### <a name="profiled-data"></a>Profilovaná data
 
-![Zobrazení profilovaných dat v Deployment Planneru](./media/site-recovery-deployment-planner/profiled-data-period.png)
+![zobrazení profilovaným dat Hello v nasazení planner hello](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
-**Profiled data period:** Doba, po kterou byla profilace spuštěná. Nástroj ve výchozím nastavení do výpočtu zahrnuje všechna profilovaná data, pokud sestavu negeneruje pro konkrétní období díky použití možností StartDate a EndDate během generování sestavy.
+**Období PROFILOVANÉHO dat**: hello období, během které hello profilace byla spuštěna. Ve výchozím nastavení nástroj hello zahrnuje všechna PROFILOVANÉHO data výpočtu hello, pokud generuje sestavy hello za určité období pomocí možnosti počátečním a koncovým datem během generování sestavy.
 
-**Server Name:** Název nebo IP adresa hostitele ESXi nebo VMware vCenter, pro jehož virtuální počítače se sestava generuje.
+**Název serveru**: hello název nebo IP adresu hello VMware vCenter nebo hostiteli ESXi, jejichž virtuálních počítačů je sestava vygenerována.
 
-**Desired RPO:** Požadovaný cíl bodu obnovení pro vaše nasazení. Ve výchozím nastavení se požadovaná šířka pásma sítě počítá pro hodnoty cíle bodu obnovení 15, 30 a 60 minut. V závislosti na výběru se na listu aktualizují ovlivněné hodnoty. Pokud jste při generování sestavy použili parametr *DesiredRPOinMin*, jako výsledný požadovaný cíl bodu obnovení se zobrazí použitá hodnota.
+**Požadovaného RPO**: hello plánovaného bodu obnovení pro vaše nasazení. Ve výchozím nastavení hello požadované šířky pásma sítě je vypočtena pro hodnoty RPO 15, 30 až 60 minut. Na základě hello výběru, hello vliv hodnoty jsou aktualizovány na listu hello. Pokud jste použili hello *DesiredRPOinMin* parametr při generování sestavy hello, které hodnoty se zobrazí v hello potřeby RPO výsledek.
 
 ### <a name="profiling-overview"></a>Přehled profilace
 
-![Výsledky profilace v Deployment Planneru](./media/site-recovery-deployment-planner/profiling-overview.png)
+![Profilace má za následek planner nasazení hello](./media/site-recovery-deployment-planner/profiling-overview.png)
 
-**Total Profiled Virtual Machines:** Celkový počet virtuálních počítačů, jejichž profilovaná data jsou k dispozici. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nebude se na takové virtuální počítače brát ohled při generování sestav a nezahrnou se do celkového počtu profilovaných virtuálních počítačů.
+**Celkový počet virtuálních počítačů profilovaným**: hello celkový počet virtuálních počítačů, jejichž PROFILOVANÉHO data nejsou k dispozici. Pokud hello VMListFile názvy všech virtuálních počítačů, které nebyly profilovaným, tyto virtuální počítače nejsou zahrnuty do hello generování sestav a jsou vyloučeny z počtu virtuálních počítačů celkový PROFILOVANÉHO hello.
 
-**Compatible Virtual Machines:** Počet virtuálních počítačů, které lze chránit v Azure pomocí Site Recovery. Je to celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, počet jader Azure a počet konfiguračních serverů a dalších procesových serverů. Podrobnosti o každém kompatibilním virtuálním počítači jsou dostupné v části Compatible VMs.
+**Kompatibilní virtuální počítače**: hello počet virtuálních počítačů, které můžou být chráněné tooAzure pomocí Site Recovery. Je celkový počet kompatibilní virtuální počítače, pro které hello jsou vypočítávány požadované šířky pásma sítě, počet účtů úložiště, počet jader, Azure a počet konfigurační servery a servery pro další proces hello. nejsou k dispozici v části "Kompatibilní virtuální počítače" hello Hello podrobnosti každých kompatibilní virtuálního počítače.
 
-**Incompatible Virtual Machines:** Počet profilovaných virtuálních počítačů, které jsou nekompatibilní s ochranou pomocí Site Recovery. Důvody nekompatibility jsou uvedené v části Incompatible VMs. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nezahrnou se do celkového počtu nekompatibilních virtuálních počítačů. Takové virtuální počítače jsou uvedené jako „Data not found“ (Data nenalezena) na konci části Incompatible VMs.
+**Kompatibilní virtuální počítače**: hello počet PROFILOVANÉHO virtuálních počítačů, které jsou kompatibilní pro ochranu pomocí Site Recovery. Hello důvody nekompatibilita jsou uvedené v části "Nekompatibilní VMs" hello. Pokud hello VMListFile názvy všech virtuálních počítačů, které nebyly profilovaným, tyto virtuální počítače jsou vyloučeny z hello nekompatibilní počet virtuálních počítačů. Tyto virtuální počítače jsou uvedeny jako "Dat nebyl nalezen" na konci hello hello "nekompatibilní VMs" oddílu.
 
-**Desired RPO:** Požadovaný cíl bodu obnovení v minutách. Sestava se generuje pro tři hodnoty cíle bodu obnovení: 15 (výchozí), 30 a 60 minut. Doporučení šířky pásma v sestavě se mění v závislosti na výběru možnosti v rozevíracím seznamu Desired RPO v pravé horní části listu. Pokud jste sestavu vygenerovali s použitím parametru *-DesiredRPO* s vlastní hodnotou, v rozevíracím seznamu Desired RPO se tato vlastní hodnota zobrazí jako výchozí možnost.
+**Desired RPO:** Požadovaný cíl bodu obnovení v minutách. Sestava Hello je generována pro tři hodnoty RPO: 15 (výchozí), 30 až 60 minut. doporučení Hello šířky pásma v sestavě hello se změní podle vašeho výběru v hello potřeby RPO rozevíracím seznamu v pravém horním hello hello stylů. Pokud vygenerování sestavy hello pomocí hello *- DesiredRPO* parametr s hodnotou vlastní tato vlastní hodnota zobrazí jako výchozí hello hello potřeby RPO rozevíracího seznamu.
 
 ### <a name="required-network-bandwidth-mbps"></a>Požadovaná šířka pásma sítě (Mb/s)
 
-![Požadovaná šířka pásma sítě v Deployment Planneru](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
+![Požadované šířky pásma sítě v nasazení planner hello](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
 
-**To meet RPO 100 percent of the time** (Pro splnění cíle bodu obnovení 100 % času): Doporučená šířka pásma v Mb/s, kterou je potřeba přidělit pro splnění požadovaného cíle bodu obnovení 100 % času. Šířka pásma musí být vyhrazená pro zajištění stálé rozdílové replikace všech kompatibilních virtuálních počítačů, aby se předešlo jakémukoli narušení cíle bodu obnovení.
+**toomeet RPO 100 procent času hello:** hello doporučená šířka pásma v MB/s toobe přidělené toomeet vaše požadované RPO 100 procent času hello. Toto množství šířky pásma musí být vyhrazený pro stabilního stavu rozdílové replikace všechny vaše kompatibilní tooavoid virtuální počítače veškerá porušení zásad plánovaný bod obnovení.
 
-**To meet RPO 90 percent of the time** (Pro splnění cíle bodu obnovení 90 % času): Pokud kvůli cenám širokopásmového připojení nebo z jiného důvodu nemůžete nastavit šířku pásma potřebnou ke splnění požadovaného cíle bodu obnovení 100 % času, můžete se rozhodnout pro nastavení menší šířky pásma, která může splňovat požadovaný cíl bodu obnovení 90 % času. Abyste porozuměli dopadům nastavení menší šířky pásma, sestava poskytuje analýzu „co kdyby“ očekávaného počtu a trvání narušení cíle bodu obnovení.
+**toomeet RPO 90 procent času hello**: z důvodu ceny širokopásmové připojení nebo z jiného důvodu, pokud nelze nastavit hello šířka pásma potřebná toomeet vaše požadované RPO 100 procent času hello můžete toogo s menší šířkou pásma, která nastavení můžete splňují vaše požadované RPO 90 procent času hello. toounderstand důsledky hello nastavení této menší šířkou pásma, hello sestava obsahuje analýz na hello počet a dobu trvání RPO porušení tooexpect.
 
-**Achieved Throughput** (Dosažená propustnost): Propustnost ze serveru, na kterém jste spustili příkaz GetThroughput, do oblasti Microsoft Azure, ve které je umístěný účet úložiště. Tato hodnota propustnosti označuje odhadovanou úroveň propustnosti, které můžete dosáhnout při ochraně kompatibilních virtuálních počítačů pomocí Site Recovery za předpokladu, že charakteristiky sítě a úložiště konfiguračního serveru nebo procesového serveru budou stejné jako u serveru, ze kterého jste nástroj spustili.
+**Dosažených propustnost:** hello propustnost ze hello serveru, na kterém jste spustili hello GetThroughput příkaz toohello Microsoft Azure oblast, kde hello účet úložiště se nachází. Toto číslo propustnost, bude hladina hello odhadované, můžete dosáhnout při ochraně hello kompatibilní virtuální počítače pomocí Site Recovery za předpokladu, že konfigurační server nebo server proces úložiště a síť charakteristiky zůstanou text hello, stejně jako u Hello server, ze kterého jste spustili nástroj hello.
 
-Pro účely replikace byste měli nastavit šířku pásma doporučenou pro splnění cíle bodu obnovení 100 % času. Pokud se po nastavení šířky pásma nezvýší dosažená propustnost, kterou nástroj hlásí, proveďte následující:
+Pro replikaci byste měli nastavit hello doporučené šířky pásma toomeet hello RPO 100 procent času hello. Po nastavení šířky pásma hello, pokud nevidíte všechny zvýšit propustnost hello dosáhnout vykazované hello nástroj, proveďte následující hello:
 
-1. Zkontrolujte, jestli v síti není nastavená technologie QoS (Quality of Service), která by omezovala propustnost Site Recovery.
+1. Toosee zkontrolujte, zda jsou všechny sítě služby (QoS Quality Service), je omezení propustnosti Site Recovery.
 
-2. Zkontrolujte, jestli je váš trezor Site Recovery v nejbližší podporované fyzické oblasti Microsoft Azure kvůli minimalizaci latence sítě.
+2. Toosee zkontrolujte, zda je váš trezor Site Recovery v hello nejbližší fyzicky podporované latence sítě toominimize oblast Microsoft Azure.
 
-3. Zkontrolujte charakteristiky vašeho místního úložiště a zjistěte, jestli můžete vylepšit hardware (například použít jednotky SSD místo HDD).
+3. Vaše místní úložiště vlastností toodetermine zkontrolujte, zda se může zlepšit hello hardwaru (například tooSSD HDD).
 
-4. Změňte nastavení Site Recovery na procesovém serveru a [zvětšete šířku pásma sítě používanou k replikaci](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+4. Změnit nastavení Site Recovery hello hello procesový server příliš[zvýšit hello velikost šířky pásma sítě používané pro replikaci](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-Pokud nástroj spouštíte na konfiguračním serveru nebo procesovém serveru, na kterém již jsou chráněné virtuální počítače, spusťte nástroj několikrát. Hodnota dosažené propustnosti se mění v závislosti na četnosti změn, které se v daném okamžiku zpracovávají.
+Pokud používáte nástroj hello na konfigurační server nebo server proces, který už je chráněný virtuální počítače, spusťte nástroj hello několikrát. Hello dosáhnout propustnosti číslo změny v závislosti na hello množství změn, které jsou zpracovávány v tomto bodě v čase.
 
 Pro všechna podniková nasazení Site Recovery doporučujeme použít [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Požadované účty úložiště
-Následující graf znázorňuje celkový počet účtů služby Storage (úrovně Standard a Premium) požadovaných k ochraně všech kompatibilních virtuálních počítačů. Informace o tom, jaký účet úložiště použít pro jednotlivé virtuální počítače, najdete v části VM-storage placement.
+Následující graf ukazuje, které hello celkový počet úložiště účtů (standard a premium), které jsou všechny požadované tooprotect Hello hello kompatibilní virtuální počítače. toolearn které úložiště účet toouse pro každý virtuální počítač, najdete v části "umístění úložiště virtuálního počítače" hello.
 
-![Požadované účty úložiště v Deployment Planneru](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
+![Účty požadované úložiště v nasazení planner hello](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
 
 ### <a name="required-number-of-azure-cores"></a>Požadovaný počet jader Azure
-Tento výsledek je celkový počet jader, která se mají nastavit před převzetím služeb při selhání nebo testovacím převzetím služeb při selhání všech kompatibilních virtuálních počítačů. Pokud v rámci předplatného není k dispozici dostatečný počet jader, Site Recovery během testovacího převzetí služeb při selhání nebo převzetí služeb při selhání nebude moci vytvořit virtuální počítače.
+Tento výsledek je hello celkový počet jader toobe nastavit před převzetí služeb při selhání nebo testovací převzetí služeb při selhání všech hello kompatibilní virtuální počítače. Pokud jsou k dispozici v rámci předplatného hello příliš málo jader, Site Recovery selže toocreate virtuální počítače v době hello testovací převzetí služeb při selhání nebo převzetí služeb při selhání.
 
-![Požadovaný počet jader Azure v Deployment Planneru](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
+![Počet jader Azure v nasazení planner hello](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Požadovaná místní infrastruktura
-Toto číslo je celkový počet konfiguračních serverů a dalších procesových serverů, které se mají nakonfigurovat a které budou stačit k zajištění ochrany všech kompatibilních virtuálních počítačů. V závislosti na podporované [doporučené velikosti pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components) může nástroj doporučit přidání dalších serverů. Doporučení je založeno na větší z hodnot denní četnosti změn a maximálního počtu chráněných virtuálních počítačů (za předpokladu, že každý z nich obsahuje průměrně tři disky), podle toho, čeho konfigurační server nebo další procesový server dosáhne dříve. Podrobnosti o celkové denní četnosti změn a celkovém počtu chráněných disků najdete v části Input.
+Na tomto obrázku je celkový počet hello konfigurační servery a další proces servery toobe nakonfigurována, bude stačit tooprotect všechny hello kompatibilní virtuální počítače. V závislosti na hello podporované [velikost doporučení pro konfigurační server hello](https://aka.ms/asr-v2a-on-prem-components), hello nástroj může doporučit dalších serverů. Hello doporučení je založeno na hello větší hello denní změn nebo hello maximální počet chráněných virtuálních počítačů (za předpokladu, že v průměru tři disky na virtuální počítač), podle toho, co je dosáhl první na konfigurační server hello nebo hello další procesový server. Podrobnosti o hello celkového objemu změn každý den a celkový počet chráněných disků najdete v části "Vstup" hello.
 
-![Požadovaná místní infrastruktura v Deployment Planneru](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
+![Místní infrastruktury v nasazení planner hello](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
 
 ### <a name="what-if-analysis"></a>Analýza „co kdyby“
-Tato analýza ukazuje, ke kolika narušením by mohlo dojít během období profilace, pokud nastavíte menší šířku pásma pro splnění požadovaného cíle bodu obnovení pouze 90 % času. Každý den může dojít k jednomu nebo několika narušením cíle bodu obnovení. Graf ukazuje pro každý den špičku cíle bodu obnovení.
-Na základě této analýzy se můžete rozhodnout, jestli je se zadanou menší šířkou pásma přijatelný počet narušení cíle bodu obnovení ve všech dnech a denní dosažená špička cíle bodu obnovení. Pokud je to přijatelné, můžete pro replikaci přidělit menší šířku pásma, jinak podle návrhu přidělte větší šířku pásma pro splnění požadovaného cíle bodu obnovení 100 % času.
+Tato analýza popisuje, kolik porušení mohlo dojít během hello profilace období když nastavíte, menší šířku pásma pro potřeby hello RPO toobe splněné pouze 90 procent času hello. Každý den může dojít k jednomu nebo několika narušením cíle bodu obnovení. Hello graf znázorňuje hello ve špičce plánovaný bod obnovení hello den.
+Na základě této analýzy, můžete rozhodnout, pokud je přijatelné s hello počet porušení RPO ve všech dnů a ve špičce RPO přístupů za den hello zadán menší šířkou pásma. Pokud je přijatelné, že kterou můžete přidělit hello menší šířkou pásma pro replikaci, jinak přidělte hello vyšší šířku pásma, jakou navrhované toomeet hello potřeby RPO 100 procent času hello.
 
-![Analýza „co kdyby“ v Deployment Planneru](./media/site-recovery-deployment-planner/what-if-analysis.png)
+![Analýz v nasazení planner hello](./media/site-recovery-deployment-planner/what-if-analysis.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Doporučená velikost dávky virtuálních počítačů pro prvotní replikaci
-V této části najdete doporučený počet virtuálních počítačů, které lze paralelně chránit, pro dokončení prvotní replikace během 72 hodin, a navrhovanou šířku pásma pro splnění požadovaného cíle bodu obnovení 100 % času. Tato hodnota je konfigurovatelná. Můžete ji změnit při generování sestavy pomocí parametru *GoalToCompleteIR*.
+V této části doporučujeme, abyste hello počet virtuálních počítačů, které se dají chránit v paralelní toocomplete hello počáteční replikace v rámci 72 hodin s hello navrhované, že šířku pásma toomeet potřeby RPO 100 procent času hello Probíhá nastavení. Tato hodnota je konfigurovatelná. toochange ji během generování sestav, použijte hello *GoalToCompleteIR* parametr.
 
-Zde uvedený graf na základě průměrné zjištěné velikosti kompatibilních virtuálních počítačů ukazuje rozsah hodnot šířky pásma a vypočítaného počtu virtuálních počítačů v dávce pro dokončení prvotní replikace během 72 hodin.
+Hello zde graf zobrazuje rozsah hodnot šířky pásma a počítané virtuálních počítačů batch velikost počet toocomplete počáteční replikace za 72 hodin, na základě průměru hello zjistila virtuálních počítačů velikost napříč všemi hello kompatibilní virtuální počítače.
 
-Ve verzi Public Preview sestava neudává, které virtuální počítače by měly být zahrnuté v dávce. Virtuální počítače pro dávku můžete vybrat na základě známých charakteristik úloh nebo podle velikosti jednotlivých virtuálních počítačů – tu můžete zjistit pomocí velikostí disků zobrazených v části Compatible VMs. Čas dokončení prvotní replikace se úměrně mění v závislosti na skutečné velikosti disku virtuálního počítače, využitém místu na disku a dostupné propustnosti sítě.
+Ve verzi public preview hello hello sestavy není určit, které virtuální počítače mají být zahrnuty v dávce. Můžete použít velikost disku hello uvedené v části toofind hello "kompatibilní virtuální počítače" velikost každého virtuálního počítače a je vybrat pro dávky, nebo můžete vybrat hello virtuálních počítačů na základě zatížení známých charakteristik. čas dokončení Hello hello počáteční replikace změn úměrně, podle hello skutečná velikost disku virtuálního počítače, používá místo na disku a propustnost sítě k dispozici.
 
 ![Doporučená velikost dávky virtuálních počítačů](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Použitý faktor růstu a hodnoty percentilu
-Tato oblast v dolní části listu ukazuje hodnotu percentilu použitou pro všechny čítače výkonu profilovaných virtuálních počítačů (výchozí je 95. percentil) a faktor růstu (výchozí hodnota je 30 %), který se používá ve všech výpočtech.
+Tato část dole hello hello list ukazuje hello percentilu hodnota používaná pro všechny čítače výkonu hello hello profilovaným virtuálních počítačů (výchozí hodnota je 95. percentil) a hello koeficient růstu (výchozí hodnota je 30 procent), který se používá v všech výpočtů hello.
 
 ![Použitý faktor růstu a hodnoty percentilu](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
 
@@ -404,129 +404,129 @@ Tato oblast v dolní části listu ukazuje hodnotu percentilu použitou pro vše
 
 ![Doporučení s možností zadat dostupnou šířku pásma jako vstup](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
 
-Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemůžete nastavit šířku pásma větší než x Mb/s. Tento nástroj umožňuje zadat dostupnou šířku pásma (pomocí parametru -Bandwidth během generování sestavy) a zjistit dosažitelný cíl bodu obnovení v minutách. Na základě této hodnoty dosažitelného cíle bodu obnovení se můžete rozhodnout, jestli potřebujete nastavit větší šířku pásma, nebo vám vyhovuje řešení zotavení po havárii s tímto cílem bodu obnovení.
+Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemůžete nastavit šířku pásma větší než x Mb/s. Nástroj Hello vám umožní tooinput dostupnou šířku pásma (pomocí hello - parametr šířky pásma při generování sestavy) a získání hello dosažitelné RPO v minutách. Pomocí této dosažitelné hodnoty RPO můžete rozhodnout, jestli potřebujete tooset až dodatečnou šířku pásma nebo jsou OK s nutnosti řešení zotavení po havárii s Tento plánovaný bod obnovení.
 
 ![Dosažitelný cíl bodu obnovení pro šířku pásma 500 Mb/s](./media/site-recovery-deployment-planner/achievable-rpos.png)
 
 ## <a name="input"></a>Vstup
-List Input (Vstup) poskytuje přehled profilovaného prostředí VMware.
+Hello vstup listu poskytuje že přehled hello profilovaným prostředí VMware.
 
-![Přehled profilovaného prostředí VMware](./media/site-recovery-deployment-planner/Input.png)
+![Přehled hello profilovaným prostředí VMware](./media/site-recovery-deployment-planner/Input.png)
 
-**Start Date** a **End Date**: Počáteční a koncové datum dat profilace zahrnutých do generování sestavy. Ve výchozím nastavení je počátečním datem datum zahájení profilace a koncovým datem je datum zastavení profilace. Můžou to být hodnoty StartDate a EndDate, pokud se sestava generuje s použitím těchto parametrů.
+**Počáteční datum** a **koncové datum**: hello počátečním a koncovým datem hello profilace data považována za pro generování sestav. Ve výchozím nastavení, hello počáteční datum je datum hello profilace při spuštění, a hello koncové datum je hello datum, kdy profilace zastaví. To může být hello 'Počátečním' a 'koncovým datem, hodnoty, pokud hello je sestava vygenerována s těmito parametry.
 
-**Total number of profiling days:** Celkový počet dnů profilace mezi počátečním a koncovým datem, pro které se generuje sestava.
+**Celkový počet dnů profilace**: Celkový počet dnů, za které profilace mezi hello hello počátečního a koncového data, pro které hello je sestava vygenerována.
 
-**Number of compatible virtual machines:** Celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, počet jader Microsoft Azure a konfiguračních serverů a dalších procesových serverů.
+**Počet virtuálních počítačů kompatibilní**: hello celkový počet kompatibilní virtuální počítače, pro které hello požadované šířky pásma sítě, požadovaný počet úložiště účtů, Microsoft Azure jádra, konfigurační servery a servery další proces Vypočítat.
 
-**Total number of disks across all compatible virtual machines** (Celkový počet disků ve všech kompatibilních virtuálních počítačích): Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
+**Celkový počet disků všech virtuálních počítačů kompatibilní**: hello číslo, které se používá jako jedna z hello vstup toodecide hello počet konfigurační servery a další proces servery toobe používá při nasazení hello.
 
-**Average number of disks per compatible virtual machine:** Průměrný počet disků ve všech kompatibilních virtuálních počítačích.
+**Průměrný počet disků na kompatibilní virtuální počítač**: vypočítat hello průměrný počet disků mezi všechny virtuální počítače kompatibilní.
 
-**Average disk size (GB):** Průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
+**Průměrná velikost disku (GB)**: vypočítat velikost průměrné hello mezi všechny virtuální počítače kompatibilní.
 
-**Desired RPO (minutes):** Buď výchozí cíl bodu obnovení, nebo hodnota předaná v parametru DesiredRPO při generování sestavy, sloužící k odhadu požadované šířky pásma.
+**Požadovaného plánovaný bod obnovení (minuty)**: buď hello výchozí hodnota bodu obnovení cíl nebo hello předaná pro parametr 'DesiredRPO' hello v době hello tooestimate generování sestav vyžaduje šířky pásma.
 
-**Desired bandwidth (Mbps):** Hodnota, kterou jste předali v parametru Bandwidth při generování sestavy, sloužící k odhadu dosažitelného cíle bodu obnovení.
+**Požadovaného šířky pásma (Mbps)**: hello hodnotu, která mají předaná pro parametr "Šířky pásma" hello v době hello tooestimate generování sestav dosažitelné plánovaný bod obnovení.
 
-**Observed typical data churn per day (GB):** Průměrná denní četnost změn dat vypozorovaná během všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
+**Mísení zjištěnou typické dat za den (GB)**: průměr dat změn hello vysledovat v všechny profilování dnů. Toto číslo se používá jako jedna hello vstupy toodecide hello počet konfigurační servery a další proces servery toobe používá při nasazení hello.
 
 
 ## <a name="vm-storage-placement"></a>Umístění virtuálních počítačů v účtech úložiště
 
 ![Umístění virtuálních počítačů v účtech úložiště](./media/site-recovery-deployment-planner/vm-storage-placement.png)
 
-**Disk Storage Type:** Účet služby Storage úrovně Standard nebo Premium, který slouží k replikaci všech odpovídajících virtuálních počítačů uvedených ve sloupci **VMs to Place** (Virtuální počítače k umístění).
+**Typ úložiště disku**: buď standard nebo premium účtu úložiště, což je použité tooreplicate všechny hello odpovídající virtuální počítače uveden v hello **virtuální počítače tooPlace** sloupce.
 
-**Suggested Prefix:** Navrhovaná tříznaková předpona, kterou můžete použít k pojmenování účtu úložiště. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
+**Navrhované předponu**: hello navrhované třech znacích předponu, která lze použít pro pojmenování hello účet úložiště. Můžete použít vlastní předpony, ale nástroj hello návrhu následuje hello [oddílu zásady vytváření názvů pro účty úložiště](https://aka.ms/storage-performance-checklist).
 
-**Suggested Account Name:** Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
+**Navrhované název účtu**: název účtu úložiště hello po zahrnete hello navrhované předponu. Nahraďte název hello v rámci hello lomené závorky (< a >) s váš vlastní vstup.
 
-**Log Storage Account:** Všechny protokoly replikace se ukládají v účtu služby Storage úrovně Standard. Pro virtuální počítače, které se replikují do účtu služby Storage úrovně Premium, nastavte další účet služby Storage úrovně Standard pro ukládání protokolů. Jeden účet úložiště protokolů úrovně Standard může využívat více účtů úložiště replikace úrovně Premium. Virtuální počítače replikované do účtů úložiště úrovně Standard používají stejný účet i k ukládání protokolů.
+**Přihlaste se účet úložiště**: všechny protokoly replikace hello se ukládají do standardní účet úložiště. Pro virtuální počítače, které se replikují tooa prémiový účet úložiště nastavení účtu další standardní úložiště pro úložiště protokolů. Jeden účet úložiště protokolů úrovně Standard může využívat více účtů úložiště replikace úrovně Premium. Virtuální počítače, které jsou replikované toostandard úložiště využívají účty hello stejný účet úložiště pro protokoly.
 
-**Suggested Log Account Name:** Název účtu úložiště protokolů po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
+**Navrhované název účtu protokolu**: protokolu názvem svého účtu úložiště po zahrnete hello navrhované předponu. Nahraďte název hello v rámci hello lomené závorky (< a >) s váš vlastní vstup.
 
-**Placement Summary:** Souhrn celkové zátěže virtuálních počítačů na účet úložiště v době replikace a testovacího převzetí služeb při selhání nebo převzetí služeb při selhání. Zahrnuje celkový počet virtuálních počítačů namapovaných na účet úložiště, celkový počet R/W IOPS ve všech virtuálních počítačích umístěných v tomto účtu úložiště, celkový počet vstupně-výstupních operací zápisu (replikace) za sekundu, celkovou nastavenou velikost všech disků a celkový počet disků.
+**Souhrn umístění**: Souhrn hello celkové zatížení virtuálních počítačů na účet úložiště hello během hello replikace a testovací převzetí služeb při selhání nebo převzetí služeb při selhání. Obsahuje hello celkový počet virtuálních počítačů namapované toohello účet úložiště, celkový počet čtení/zápisu mezi všechny virtuální počítače, které je umístěn v rámci tohoto účtu úložiště, celkový počet IOPS zápisu (replikace) IOPS, celkový počet nastavení velikosti pro všechny disky a celkový počet disků.
 
-**Virtual Machines to Place:** Seznam všech virtuálních počítačů, které by se měly umístit do daného účtu úložiště pro zajištění optimálního výkonu a využití.
+**Virtuální počítače tooPlace**: seznam všech hello virtuálních počítačů, které musí být umístěny na hello zadaný účet úložiště pro zajištění optimálního výkonu a využití.
 
 ## <a name="compatible-vms"></a>Kompatibilní virtuální počítače
 ![Tabulka aplikace Excel s kompatibilními virtuálními počítači](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
+**Název virtuálního počítače**: hello název virtuálního počítače nebo IP adresu, která se používá v hello VMListFile při vygenerování sestavy. Tento sloupec uvádí také hello disky (VMDKs), které jsou připojené toohello virtuálních počítačů. vCenter toodistinguish virtuální počítače s duplicitními názvy nebo IP adresy, názvy hello patří název hostitele ESXi hello. Hello uvedené hostitele ESXi je hello jeden kde hello virtuálního počítače byl umístěn při zjištění hello nástroj během hello profilace období.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Yes**\* je pro situace, kdy je virtuální počítač vhodný pro službu [Azure Storage úrovně Premium](https://aka.ms/premium-storage-workload). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Storage úrovně Premium se disk bude mapovat, na základě jeho velikosti. Například:
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano** \* je pro instance v které hello virtuálního počítače je přizpůsobit pro [Azure Premium Storage](https://aka.ms/premium-storage-workload). Zde hello profilovaným vysokou změn nebo disku se vejde hello P20 nebo P30 kategorii, ale hello velikost disku hello způsobí, že ji namapovat dolů tooa P10 nebo P20 toobe. účet úložiště Hello, rozhodne se disku, který úložiště premium zadejte toomap disk, na základě jeho velikosti. Například:
 * Menší než 128 GB je P10.
-* 128 GB až 512 GB je P20.
-* 512 GB až 1 024 GB je P30.
-* 1 025 GB až 2 048 GB je P40.
-* 2 049 GB až 4 095 GB je P50.
+* 128 GB too512 GB je P20.
+* 512 GB too1024 GB je P30.
+* 1025 GB too2048 GB je P40.
+* 2049 GB too4095 GB je P50.
 
-Pokud se díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Storage úrovně Premium, nástroj virtuální počítač označí jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Storage úrovně Premium, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Pokud charakteristiky zatížení hello disku pro něj hello P20 nebo P30 kategorii, ale jeho velikost hello mapuje dolů typ disku úložiště nižší úrovně premium tooa, nástroj hello označí tohoto virtuálního počítače jako **Ano**\*. Nástroj Hello taky doporučuje změníte hello zdroj disku velikost toofit do hello doporučená typ disku úložiště premium nebo změnit hello cílový disk typu post-převzetí služeb při selhání.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 
-**Suggested Prefix:** Tříznaková předpona účtu úložiště.
+**Navrhované předponu**: hello předpona účtu úložiště tři znaky.
 
-**Storage Account** (Účet služby Storage): Název s použitím navrhované předpony účtu úložiště.
+**Účet úložiště**: hello název, který používá předpona hello navrhované účet úložiště.
 
-**R/W IOPS (with Growth Factor):** Počet R/W IOPS na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
+**R/W IOPS (s koeficient růstu)**: hello ve špičce úloh pro čtení a zápis IOPS na disku hello (výchozí hodnota je 95. percentil), včetně budoucí koeficient růstu hello (výchozí hodnota je 30 procent). Všimněte si, že hello celkový pro čtení a zápis IOPS virtuálního počítače není vždy hello součet hello Virtuálního počítače jednotlivé disky pro čtení a zápis IOPS, protože hello ve špičce pro čtení a zápis IOPS hello virtuální počítač je ve špičce hello hello Sum jeho jednotlivých disků pro čtení a zápis IOPS během každou minutu hello profilace období.
 
-**Data Churn in Mbps (with Growth Factor):** Četnost změn dat na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Data změn v MB/s (s koeficient růstu)**: hello ve špičce klidové vytížení na disku hello (výchozí hodnota je 95. percentil), včetně budoucí koeficient růstu hello (výchozí hodnota je 30 procent). Všimněte si, že hello mísení dat celkový Dobrý den virtuálního počítače není vždy hello součet hello Virtuálního počítače jednotlivé disky změn dat, protože změn dat ve špičce hello Dobrý den virtuální počítač je ve špičce hello hello Sum z jeho jednotlivé disky změn během každou minutu hello profilace období.
 
-**Azure VM Size:** Ideální velikost mapovaného virtuálního počítače Azure Cloud Services pro tento místní virtuální počítač. Mapování vychází z velikosti paměti, počtu disků, jader nebo síťových adaptérů a počtu R/W IOPS místního virtuálního počítače. Doporučení vždy představuje nejmenší velikost virtuálního počítače Azure, která odpovídá všem charakteristikám místního virtuálního počítače.
+**Velikost virtuálního počítače Azure**: hello ideální namapované velikost virtuálního počítače Azure Cloud Services pro to místní počítač. mapování Hello je založena na paměť virtuálního hello místní počítače, počet disků nebo jader nebo síťové adaptéry a IOPS pro čtení a zápis. Hello doporučení je vždy hello nejnižší velikost virtuálního počítače Azure odpovídající všechny vlastnosti virtuálního počítače místní hello.
 
-**Number of Disks:** Celkový počet disků (VMDK) ve virtuálním počítači.
+**Počet disků**: hello celkový počet disky virtuálního počítače (VMDKs) na hello virtuálních počítačů.
 
-**Disk size (GB):** Celková nastavená velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Velikost (GB) na disku**: hello celkový počet nastavení velikosti všech disků hello virtuálních počítačů. Nástroj Hello také ukazuje hello velikost disku pro jednotlivé disky hello v hello virtuálních počítačů.
 
-**Cores:** Počet procesorových jader ve virtuálním počítači.
+**Jader**: hello počet procesoru jader hello virtuálních počítačů.
 
-**Memory (MB):** Velikost paměti RAM ve virtuálním počítači.
+**Paměť (MB)**: hello paměti RAM na hello virtuálních počítačů.
 
-**NICs:** Počet síťových adaptérů ve virtuálním počítači.
+**Síťové adaptéry**: hello počet síťových adaptérů na hello virtuálních počítačů.
 
-**Boot Type:** Jedná se o typ spuštění virtuálního počítače. Může to být buď BIOS, nebo EFI. Azure Site Recovery aktuálně podporuje pouze typ spuštění BIOS. Všechny virtuální počítače s typem spuštění EFI jsou uvedené na listu Nekompatibilní virtuální počítače.
+**Spouštěcí typ**: je spouštěcí typ hello virtuálních počítačů. Může to být buď BIOS, nebo EFI. Azure Site Recovery aktuálně podporuje pouze typ spuštění BIOS. Všechny virtuální počítače hello EFI spouštěcí typu jsou uvedeny v listu kompatibilní virtuální počítače.
 
-**OS Type:** Jedná se o typ operačního systému virtuálního počítače. Může to být Windows, Linux, nebo jiný.
+**Typ operačního systému**: hello je typ OS hello virtuálních počítačů. Může to být Windows, Linux, nebo jiný.
 
 ## <a name="incompatible-vms"></a>Nekompatibilní virtuální počítače
 
 ![Tabulka aplikace Excel s nekompatibilními virtuálními počítači](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky VMDK připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
+**Název virtuálního počítače**: hello název virtuálního počítače nebo IP adresu, která se používá v hello VMListFile při vygenerování sestavy. Tento sloupec uvádí také hello VMDKs, které jsou připojené toohello virtuálních počítačů. vCenter toodistinguish virtuální počítače s duplicitními názvy nebo IP adresy, názvy hello patří název hostitele ESXi hello. Hello uvedené hostitele ESXi je hello jeden kde hello virtuálního počítače byl umístěn při zjištění hello nástroj během hello profilace období.
 
-**VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
+**Virtuální počítač kompatibility**: označuje, proč hello zadaný virtuální počítač není kompatibilní pro použití službou Site Recovery. Hello důvodů jsou popsané pro každý nekompatibilní disk hello virtuálních počítačů a, na základě na publikované [limity úložiště](https://aka.ms/azure-storage-scalbility-performance), může být hello následující:
 
 * Disk je větší než 4 095 GB. Azure Storage v současné době nepodporuje disky větší než 4 095 GB.
 * Disk s operačním systémem je větší než 2 048 GB. Azure Storage v současné době nepodporuje disky s operačním systémem větší než 2 048 GB.
 * Typ spuštění je EFI. Azure Site Recovery aktuálně podporuje pouze virtuální počítač s typem spuštění BIOS.
 
-* Total VM size (replication + TFO) exceeds the supported storage-account size limit (35 TB) (Celková velikost virtuálního počítače (replikace + testovací převzetí služeb při selhání) překračuje omezení podporované velikosti účtu úložiště (35 TB)). K této nekompatibilitě obvykle dochází, když je ve virtuálním počítači jeden disk, jehož některé charakteristiky výkonu překračují maximální podporovaná omezení systému Azure nebo Site Recovery pro účet služby Storage úrovně Standard. V takové situaci se virtuální počítač dostává do zóny účtu služby Storage úrovně Premium. Nicméně maximální podporovaná velikost účtu služby Storage úrovně Premium je 35 TB a jeden virtuální počítač nemůže být chráněn v rámci několika účtů úložiště. Všimněte si také, že testovací převzetí služeb při selhání spuštěné na chráněném virtuálním počítači poběží v rámci stejného účtu úložiště, ve kterém probíhá replikace. V takovém případě nastavte dvojnásobnou velikost disku, aby paralelně mohla probíhat replikace a úspěšné testovací převzetí služeb při selhání.
+* Celková velikost virtuálního počítače (replikace + TFO) přesahuje omezení velikosti účet úložiště hello podporované (35 TB). Tato nekompatibilita obvykle dochází, když jediný disk v hello virtuálních počítačů má funkční vlastnost, která překračuje hello maximální podporovaný Azure nebo Site Recovery limit pro standardní úložiště. Tyto instance doručí hello virtuální počítač do zóny úložiště premium hello. Ale hello maximální podporovaná velikost prémiový účet úložiště je 35 TB a jeden chráněný virtuální počítač nelze chránit napříč více účtů úložiště. Všimněte si, že pokud je na chráněný virtuální počítač je provést testovací převzetí služeb, běží v hello stejný účet úložiště, kde je pokročíte replikace. V tomto případě nastavte 2 x hello velikost hello disku pro replikaci tooprogress a testovací převzetí služeb při selhání toosucceed paralelně.
 * Source IOPS exceeds supported storage IOPS limit of 5000 per disk (Počet zdrojových IOPS překračuje podporované omezení úložiště – 5 000 IOPS na disk).
 * Source IOPS exceeds supported storage IOPS limit of 80,000 per VM (Počet zdrojových IOPS překračuje podporované omezení úložiště – 80 000 IOPS na virtuální počítač).
-* Average data churn exceeds supported Site Recovery data churn limit of 10 MBps for average I/O size for the disk (Průměrná četnost změn dat překračuje podporované omezení Site Recovery pro četnost změn dat – průměrná velikost vstupně-výstupních operací disku 10 Mb/s).
-* Total data churn across all disks on the VM exceeds the maximum supported Site Recovery data churn limit of 54 MBps per VM (Celková četnost změn dat na všech discích virtuálního počítače překračuje maximální podporované omezení Site Recovery pro četnost změn dat – 54 Mb/s na virtuální počítač).
-* Average effective write IOPS exceeds the supported Site Recovery IOPS limit of 840 for disk (Průměrný počet efektivních vstupně-výstupních operací zápisu za sekundu překračuje podporované omezení Site Recovery pro počet IOPS – 840 na disk).
-* Calculated snapshot storage exceeds the supported snapshot storage limit of 10 TB (Vypočtená velikost úložiště snímků překračuje podporované omezení velikosti úložiště snímků – 10 TB).
+* Průměr dat změn překračuje podporovaný limit změn dat Site Recovery 10 MB/s pro průměrnou velikost vstupně-výstupních operací pro hello disk.
+* Celková data změn na všech discích na hello virtuálního počítače překračuje limit o Site Recovery data změn hello maximální podporované 54 Mb/s na virtuální počítač.
+* Průměrná efektivní zápisu IOPS překračuje limit IOPS obnovení lokality hello podporované 840 pro disk.
+* Ukládání počítané snímků překračuje limit úložiště snímků hello podporované 10 TB.
 
-**R/W IOPS (with Growth Factor):** Počet IOPS na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
+**R/W IOPS (s koeficient růstu)**: hello zatížení ve špičce IOPS na disku hello (výchozí hodnota je 95. percentil), včetně budoucí koeficient růstu hello (výchozí hodnota je 30 procent). Všimněte si, že hello celkový pro čtení a zápis IOPS hello virtuálního počítače není vždy hello součet hello Virtuálního počítače jednotlivé disky pro čtení a zápis IOPS, protože hello ve špičce pro čtení a zápis IOPS hello virtuální počítač je ve špičce hello hello Sum jeho jednotlivých disků pro čtení a zápis IOPS během každou minutu hello profilace období.
 
-**Data Churn in Mbps (with Growth Factor):** 4etnost změn dat na disku ve špičce (výchozí 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Data změn v MB/s (s koeficient růstu)**: hello ve špičce klidové vytížení na disku hello (výchozí 95. percentil) včetně hello budoucí růst faktor (výchozí 30 procent). Všimněte si, že hello mísení dat celkový Dobrý den virtuálního počítače není vždy hello součet hello Virtuálního počítače jednotlivé disky změn dat, protože změn dat ve špičce hello Dobrý den virtuální počítač je ve špičce hello hello Sum z jeho jednotlivé disky změn během každou minutu hello profilace období.
 
-**Number of Disks:** Celkový počet disků VMDK ve virtuálním počítači.
+**Počet disků**: hello celkový počet VMDKs na hello virtuálních počítačů.
 
-**Disk size (GB):** Celková nastavená velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Velikost (GB) na disku**: hello celkový počet nastavení velikosti všech disků hello virtuálních počítačů. Nástroj Hello také ukazuje hello velikost disku pro jednotlivé disky hello v hello virtuálních počítačů.
 
-**Cores:** Počet procesorových jader ve virtuálním počítači.
+**Jader**: hello počet procesoru jader hello virtuálních počítačů.
 
-**Memory (MB):** Velikost paměti RAM ve virtuálním počítači.
+**Paměť (MB)**: hello množství paměti RAM na hello virtuálních počítačů.
 
-**NICs:** Počet síťových adaptérů ve virtuálním počítači.
+**Síťové adaptéry**: hello počet síťových adaptérů na hello virtuálních počítačů.
 
-**Boot Type:** Jedná se o typ spuštění virtuálního počítače. Může to být buď BIOS, nebo EFI. Azure Site Recovery aktuálně podporuje pouze typ spuštění BIOS. Všechny virtuální počítače s typem spuštění EFI jsou uvedené na listu Nekompatibilní virtuální počítače.
+**Spouštěcí typ**: je spouštěcí typ hello virtuálních počítačů. Může to být buď BIOS, nebo EFI. Azure Site Recovery aktuálně podporuje pouze typ spuštění BIOS. Všechny virtuální počítače hello EFI spouštěcí typu jsou uvedeny v listu kompatibilní virtuální počítače.
 
-**OS Type:** Jedná se o typ operačního systému virtuálního počítače. Může to být Windows, Linux, nebo jiný.
+**Typ operačního systému**: hello je typ OS hello virtuálních počítačů. Může to být Windows, Linux, nebo jiný.
 
 
 ## <a name="site-recovery-limits"></a>Omezení Site Recovery
@@ -540,28 +540,28 @@ Disk úrovně Premium P10 | 32 kB nebo větší | 8 Mb/s | 672 GB na disk
 Disk úrovně Premium P20 nebo P30 | 8 kB  | 5 Mb/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 | 16 kB nebo větší |10 Mb/s | 842 GB na disk
 
-Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
+Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Hello předchozí čísla předpokládají typické nevyřízené položky přibližně pět minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 
-Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Pro dosažení co nejlepších výsledků i po naplánování nasazení vždy doporučujeme provádět rozsáhlá testování aplikace pomocí testovacího převzetí služeb při selhání, abyste získali skutečnou představu o výkonu.
+Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Nejlepších výsledků dosáhnete i po plánování nasazení vždy doporučujeme provést rozsáhlé aplikace testování s využitím obrázku true výkonu hello tooget testovací převzetí služeb při selhání.
 
-## <a name="updating-the-deployment-planner"></a>Aktualizace Deployment Planneru
-Pokud chcete aktualizovat Deployment Planner, proveďte následující:
+## <a name="updating-hello-deployment-planner"></a>Aktualizace nasazení planner hello
+tooupdate hello nasazení planner, hello následující:
 
-1. Stáhněte si nejnovější verzi nástroje [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).
+1. Stáhněte si nejnovější verzi hello hello [planner nasazení Azure Site Recovery](https://aka.ms/asr-deployment-planner).
 
-2. Zkopírujte složku .zip na server, na kterém chcete nástroj spustit.
+2. Kopírování hello .zip tooa server složky, které chcete toorun ho na.
 
-3. Rozbalte složku .zip.
+3. Rozbalte složku hello .zip.
 
-4. Proveďte jednu z následujících akcí:
- * Pokud nejnovější verze neobsahuje opravu profilace a ve vaší stávající verzi Deployment Planneru již profilace probíhá, pokračujte v ní.
- * Pokud nejnovější verze obsahuje opravu profilace, doporučujeme zastavit profilaci ve stávající verzi a znovu ji spustit v nové verzi.
+4. Proveďte jednu z následujících hello:
+ * Pokud nejnovější verzi hello neobsahuje profilování opravu a profilace již probíhá na vaší aktuální verzí hello planner, pokračujte profilace hello.
+ * Pokud nejnovější verzi hello neobsahuje profilování opravu, doporučujeme zastavit profilování v aktuální verzi a restartujte hello profilace s novou verzí hello.
 
   >[!NOTE]
   >
-  >Při spuštění profilace v nové verzi předejte stejnou cestu k výstupnímu adresáři, aby nástroj připojil data profilu k existujícím souborům. K vygenerování sestavy se použije úplná sada dat profilace. Pokud předáte jiný výstupní adresář, vytvoří se nové soubory a stará data profilace se k vygenerování sestavy nepoužijí.
+  >Při spuštění profilace s hello nové verze, pass hello že stejnou výstupní cesta k adresáři, tak, aby hello nástroj připojí data profilu na hello existující soubory. Kompletní sadu PROFILOVANÉHO dat bude použit toogenerate hello sestavy. Pokud předáte adresář odlišný výstup, se vytváří nové soubory a starý profilovaným data nepoužívá toogenerate hello sestavy.
   >
-  >Každý nový Deployment Planner je kumulativní aktualizací souboru .zip. Nemusíte kopírovat nejnovější soubory do předchozí složky. Můžete vytvořit a použít novou složku.
+  >Každé nové nasazení planner je kumulativní aktualizace souboru .zip hello. Nepotřebujete toocopy hello nejnovější toohello předchozí složce se soubory. Můžete vytvořit a použít novou složku.
 
 
 ## <a name="version-history"></a>Historie verzí
@@ -571,7 +571,7 @@ Aktualizováno: 19. července 2017
 
 Je přidána následující nová funkce:
 
-* Přidána podpora velkých disků (větších než 1 TB) v generování sestav. Nyní můžete pomocí nástroje Deployment Planner plánovat replikaci virtuálních počítačů s disky většími než 1 TB (až do 4 095 GB).
+* Přidána podpora velkých disků (větších než 1 TB) v generování sestav. Teď můžete nasazení planner tooplan replikace pro virtuální počítače, které mají velikost disku větší než 1 TB (maximálně 4095 GB).
 Další informace o [podpoře velkých disků v Azure Site Recovery](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)
 
 
@@ -580,7 +580,7 @@ Aktualizováno: 9. května 2017
 
 Je přidána následující nová funkce:
 
-* Přidána podpora spravovaného disku v generování sestav. Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se počítá na základě toho, jestli je pro převzetí služeb při selhání nebo testovací převzetí služeb při selhání vybrán spravovaný disk.        
+* Přidána podpora spravovaného disku v generování sestav. Hello počet virtuálních počítačů se může tooa jedno úložiště je účet pro převzetí služeb při selhání a testovací převzetí služeb při selhání je vybrán počítanou na základě Pokud spravovaného disku.        
 
 
 ### <a name="12"></a>1.2
@@ -588,26 +588,26 @@ Aktualizace: 7. duben 2017
 
 Byly přidány následující opravy:
 
-* Pro každý virtuální počítač byla přidána kontrola typu spuštění (BIOS nebo EFI), aby se určilo, jestli je virtuální počítač kompatibilní nebo nekompatibilní z hlediska ochrany.
-* Pro každý virtuální počítač byla přidána informace o typu operačního systému do listů kompatibilních a nekompatibilních virtuálních počítačů.
-* Operace GetThroughput je nyní podporována v oblastech Microsoft Azure US Government a Čína.
+* Přidání spouštěcí typ kontroly (systému BIOS nebo EFI) pro každý virtuální počítač toodetermine, zda hello virtuálního počítače není kompatibilní nebo není kompatibilní pro ochranu hello.
+* Přidání OS zadejte informace pro každý virtuální počítač v hello kompatibilní virtuální počítače a listů kompatibilní virtuální počítače.
+* Hello GetThroughput operace se teď podporuje v oblastech hello US Government a Číně Microsoft Azure.
 * Bylo přidáno několik dalších kontrol požadovaných součástí pro vCenter a ESXi Server.
-* Při nastavení národního prostředí na jiné než anglické se generovala nesprávná sestava.
+* Nesprávné sestavy bylo generováno při nastavení národního prostředí nastavena toonon angličtina.
 
 
 ### <a name="11"></a>1.1
 Aktualizováno: 9. března 2017
 
-Opravené následující problémy:
+Opravené hello následující problémy:
 
-* Nástroj nemůže profilovat virtuální počítače, pokud server vCenter obsahuje dva nebo více virtuálních počítačů se stejným názvem nebo stejnou IP adresou v různých hostitelích ESXi.
-* Kopírování a vyhledávání je pro listy kompatibilních a nekompatibilních virtuálních počítačů zakázáno.
+* Nástroj Hello nelze profilů virtuálních počítačů, pokud hello vCenter má dva nebo více virtuálních počítačů s hello stejný název nebo IP adresu ve různých hostitelích ESXi.
+* Kopírování a vyhledávání je pro listů hello kompatibilní virtuální počítače a kompatibilní virtuální počítače zakázané.
 
 ### <a name="10"></a>1.0
 Aktualizováno: 23. února 2017
 
-Azure Site Recovery Deployment Planner Public Preview 1.0 má následující známé problémy (které se budou řešit v budoucích aktualizacích):
+Azure Site Recovery nasazení Planner verzi public preview 1.0 má hello následující známé problémy (toobe řešit v budoucích aktualizacích):
 
-* Nástroj funguje pouze pro scénáře nasazení VMware do Azure, nikoli pro nasazení Hyper-V do Azure. Pro scénáře nasazení Hyper-V do Azure použijte [nástroj Hyper-V Capacity Planner](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-* Operace GetThroughput není podporována v oblastech Microsoft Azure US Government a Čína.
-* Nástroj nemůže profilovat virtuální počítače, pokud server vCenter obsahuje dva nebo více virtuálních počítačů se stejným názvem nebo stejnou IP adresou v různých hostitelích ESXi. V této verzi nástroj při zjištění duplicitních výskytů názvů nebo IP adres virtuálních počítačů v souboru VMListFile profilaci takových virtuálních počítačů přeskočí. Alternativním řešením je profilování virtuálních počítačů pomocí hostitele ESXi namísto serveru vCenter. Pro každého hostitele ESXi je nutné spustit jednu instanci.
+* Nástroj Hello funguje jenom pro scénáře VMware do Azure, ne pro nasazení technologie Hyper-V-do Azure. Technologie Hyper-V-do Azure scénářů použití hello [nástroje Plánovač kapacity technologie Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+* Hello GetThroughput operace není podporována v oblastech hello US Government a Číně Microsoft Azure.
+* Nástroj Hello nelze profilů virtuálních počítačů, pokud hello vCenter server má dva nebo více virtuálních počítačů s hello stejný název nebo IP adresu ve různých hostitelích ESXi. V této verzi nástroje hello přeskočí profilace pro duplicitní názvy virtuálních počítačů nebo IP adresy v hello VMListFile. alternativní řešení Hello je tooprofile hello virtuálních počítačů pomocí hostiteli ESXi namísto hello vCenter serveru. Pro každého hostitele ESXi je nutné spustit jednu instanci.

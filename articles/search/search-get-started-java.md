@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Search v Javě | Dokumentace Microsoftu"
-description: "Jak vytvořit hostovanou cloudovou vyhledávací aplikaci v Azure pomocí programovacího jazyka Java."
+title: "aaaGet začít s Azure Search v Javě | Microsoft Docs"
+description: "Jak toobuild hostovaného cloudu vyhledat aplikaci v Azure pomocí programovacího jazyka Java."
 services: search
 documentationcenter: 
 author: EvanBoyle
@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5476a2103f3b60fe6ec78ff3d3fdba9fcff55c37
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -27,54 +27,54 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Naučte se sestavit vlastní vyhledávací aplikaci Java, která k hledání používá službu Azure Search. V tomto kurzu se pomocí [rozhraní REST API služby Azure Search](https://msdn.microsoft.com/library/dn798935.aspx) vytvoří objekty a operace, které se použijí v tomto cvičení.
+Zjistěte, jak toobuild vlastní Java Hledat aplikace, která používá službu Azure Search své zkušenosti vyhledávání. Tento kurz používá hello [rozhraní REST API služby Azure Search](https://msdn.microsoft.com/library/dn798935.aspx) tooconstruct hello objekty a operace, na které se použijí v tomto cvičení.
 
-Pokud chcete tuto ukázku spustit, musíte mít službu Azure Search, ke které se můžete zaregistrovat na webu [Azure Portal](https://portal.azure.com). Podrobné pokyny najdete v tématu [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
+toorun této ukázky musíte mít službu Azure Search, které se můžete zaregistrovat si v hello [portálu Azure](https://portal.azure.com). V tématu [vytvoření služby Azure Search na portálu hello](search-create-service-portal.md) podrobné pokyny.
 
-Pro vytvoření a testování tohoto příkladu jsme použili následující software:
+Můžeme použít hello následující software toobuild a testování tohoto příkladu:
 
-* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar) Ujistěte se, že jste stáhli verzi EE. Jeden z kroků ověření vyžaduje funkci, která se nachází pouze v této edici.
+* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar) Být jisti verzi EE toodownload hello. Jeden z kroků ověření hello vyžaduje funkci, která se nachází pouze v této edici.
 * [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-## <a name="about-the-data"></a>Informace o datech
-Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
+## <a name="about-hello-data"></a>O datech hello
+Tato ukázková aplikace používá data z hello [Spojených států Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná na velikost datové sady hello státu Rhode Island tooreduce hello. Použijeme tato data toobuild vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou datové proudy, jezera a vrcholy.
 
-Program **SearchServlet.java** v této aplikaci sestaví a načte index pomocí konstruktoru [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx), přičemž načte filtrovanou sadu dat USGS z veřejné databáze Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
+V této aplikaci hello **SearchServlet.java** program sestaví a zatížením hello index pomocí [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukce, načítání hello filtrovat sadu dat USGS z veřejné databáze Azure SQL Database. Předdefinované přihlašovací údaje a připojení informace toohello online zdroji dat jsou uvedené v kódu programu hello. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
 
 > [!NOTE]
-> U této sady dat jsme použili filtr, abychom dodrželi omezení 10 000 dokumentů pro cenovou úroveň Free. Pokud používáte úroveň Standard, toto omezení se na vás nevztahuje a můžete upravit tento kód, aby používal větší datovou sadu. Podrobnosti týkající se kapacity u jednotlivých cenových úrovní najdete v tématu [Omezení](search-limits-quotas-capacity.md).
+> Jsme použili filtr na tuto datovou sadu toostay pod hello 10 000 dokumentů limit hello volné cenová úroveň. Pokud používáte úroveň standard hello, toto omezení se nevztahuje a můžete upravit tento kód toouse větší datovou sadu. Podrobnosti týkající se kapacity u jednotlivých cenových úrovní najdete v tématu [Omezení](search-limits-quotas-capacity.md).
 > 
 > 
 
-## <a name="about-the-program-files"></a>O souborech programu
-Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
+## <a name="about-hello-program-files"></a>O souborech programu hello
+Hello následující seznam popisuje hello soubory, které jsou relevantní toothis ukázka.
 
-* Search.jsp: Poskytuje uživatelské rozhraní.
-* SearchServlet.java: Poskytuje metody (podobně jako řadič v MVC).
+* Search.jsp: Poskytuje uživatelské rozhraní hello
+* SearchServlet.java: Poskytuje metody (podobně jako tooa řadič v MVC)
 * SearchServiceClient.java: Zpracovává požadavky HTTP.
 * SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody.
-* Document.java: Poskytuje datový model.
-* config.properties: Nastavuje adresu URL služby Search a klíč api-key.
+* Document.Java: Poskytuje datový model hello
+* config.Properties: Nastavuje adresu URL služby Search hello a klíč api-key
 * Pom.xml: Závislost Maven
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Nalezení názvu služby a klíče api-key služby Azure Search
-Všechna volání rozhraní API REST služby Azure Search vyžadují, abyste zadali adresu URL služby a klíč api-key. 
+## <a name="find-hello-service-name-and-api-key-of-your-azure-search-service"></a>Nalezení názvu služby hello a klíč api-key služby Azure Search
+Všechna volání rozhraní REST API Azure Search vyžaduje, aby vám poskytla hello adresa URL služby a klíč rozhraní api. 
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
-2. Na panelu odkazů klikněte na **Služba Search** a zobrazte výpis všech služeb Azure Search zřízených pro předplatné.
-3. Vyberte službu, kterou chcete použít.
-4. Na řídicím panelu služby uvidíte dlaždice se základními informacemi a ikonu klíče pro přístup ke klíčům správce.
+1. Přihlaste se toohello [portálu Azure](https://portal.azure.com).
+2. Hello přechod panelu klikněte na **služby vyhledávání** toolist všechny hello služby Azure Search zřízených pro předplatné.
+3. Vyberte službu hello chcete toouse.
+4. Na hello panelu služby uvidíte dlaždice se základními informacemi a ikonu hello klíče pro přístup ke klíčům správce hello.
    
       ![][3]
-5. Zkopírujte adresu URL služby a klíč správce. Budete je potřebovat později, až je budete přidávat do souboru **config.properties**.
+5. Zkopírujte adresu URL hello služby a klíč správce. Budete je potřebovat později, až je budete přidávat toohello **config.properties** souboru.
 
-## <a name="download-the-sample-files"></a>Stažení ukázkových souborů
-1. Přejděte na [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) na GitHubu.
-2. Klikněte na **Stáhnout ZIP**, uložte soubor .zip na disk a potom z něj extrahujte všechny soubory. Zvažte extrahování souborů do pracovního prostoru Java, aby bylo později snazší projekt najít.
-3. Ukázkové soubory jsou jen pro čtení. Klikněte pravým tlačítkem na vlastnosti složky a vymažte atribut jen pro čtení.
+## <a name="download-hello-sample-files"></a>Stažení ukázkových souborů hello
+1. Přejděte příliš[AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) na Githubu.
+2. Klikněte na tlačítko **stáhnout ZIP**, uložte toodisk soubor .zip hello a pak extrahujte všechny soubory hello obsahuje. Zvažte extrahování hello souborů do vašeho pracovního prostoru toomake Java snazší projekt toofind hello později.
+3. Hello ukázkové soubory jsou jen pro čtení. Klikněte pravým tlačítkem na složku vlastnosti a zrušte hello atribut jen pro čtení.
 
 Všechny následné úpravy souborů a spouštěné příkazy se budou provádět na souborech v této složce.  
 
@@ -82,74 +82,74 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 1. V prostředí Eclipse zvolte **Soubor** > **Import** > **Obecné** > **Existující projekty do pracovního prostoru**.
    
     ![][4]
-2. V okně **Vybrat kořenový adresář** přejděte do složky obsahující ukázkové soubory. Vyberte složku, která obsahuje složku .project. Projekt by se měl zobrazit v seznamu **Projekty** jako vybraná položka.
+2. V **vybrat kořenový adresář**, procházet toohello složky obsahující ukázkové soubory. Vyberte složku hello, která obsahuje složku .project hello. Hello projekt by se měla objevit v hello **projekty** seznamu vybranou položku.
    
     ![][12]
 3. Klikněte na **Dokončit**.
-4. Pomocí **Prohlížeče projektu** můžete zobrazit a upravit soubory. Pokud ještě není otevřený, klikněte na **Okno** > **Zobrazit zobrazení** > **Prohlížeč projektu** nebo ho otevřete pomocí klávesové zkratky.
+4. Použití **Project Exploreru** tooview a úpravy souborů hello. Pokud již není otevřený, klikněte na tlačítko **okno** > **zobrazit zobrazení** > **Project Exploreru** nebo pomocí zástupce tooopen hello ho.
 
-## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a klíče api-key
-1. V **Prohlížeči projektu**, dvakrát klikněte na soubor **config.properties**, abyste upravili nastavení konfigurace obsahující název serveru a klíč api-key.
-2. Podívejte se na postup uvedený dříve v tomto článku, kde jste našli adresu URL služby a klíč api-key v [webu Azure Portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do souboru **config.properties**.
-3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Název služby (první komponenta adresy URL http://název_služby.search.windows.net) dále nahrazuje položku „service name“ ve stejném souboru.
+## <a name="configure-hello-service-url-and-api-key"></a>Konfigurace hello adresa URL služby a klíč api-key
+1. V **Project Exploreru**, dvakrát klikněte na **config.properties** nastavení konfigurace hello tooedit obsahující hello název serveru a klíč api-key.
+2. Odkazovat toohello postup uvedený dříve v tomto článku, kde jste našli hello adresa URL služby a klíč api-key v hello [portálu Azure](https://portal.azure.com), tooget hello hodnoty, které nyní zadáte do **config.properties**.
+3. V **config.properties**, nahraďte "Api Key" hello api-key pro vaši službu. V dalším kroku název služby (hello první komponenta adresy URL http://servicename.search.windows.net hello) nahradí "název služby" v hello stejného souboru.
    
     ![][5]
 
-## <a name="configure-the-project-build-and-runtime-environments"></a>Konfigurace prostředí projektu, buildu a běhového prostředí
-1. V prostředí Eclipse v Prohlížeči projektu klikněte pravým tlačítkem myši na projekt > **Vlastnosti** > **Omezující vlastnosti projektu**.
+## <a name="configure-hello-project-build-and-runtime-environments"></a>Konfigurovat hello projektu, buildu a běhového prostředí
+1. V prostředí Eclipse v prohlížeči projektu klikněte pravým tlačítkem na projekt hello > **vlastnosti** > **omezující vlastnosti projektu**.
 2. Vyberte **Dynamic Web Module**, **Java** a **JavaScript**.
    
     ![][6]
 3. Klikněte na **Použít**.
 4. Vyberte **Okno** > **Předvolby** > **Server** > **Běhová prostředí** > **Přidat**.
-5. Rozbalte položku Apache a vyberte verzi serveru Apache Tomcat, kterou jste dříve nainstalovali. V našem systému jsme nainstalovali verzi 8.
+5. Apache rozbalte a vyberte server Apache Tomcat hello, které jste dříve nainstalovali verzi hello. V našem systému jsme nainstalovali verzi 8.
    
     ![][7]
-6. Na další stránce zadejte instalační adresář Tomcat. V počítači s Windows to bude pravděpodobně C:\Program Files\Apache Software Foundation\Tomcat *verze*.
+6. Na další stránku hello zadejte instalační adresář Tomcat hello. V počítači s Windows to bude pravděpodobně C:\Program Files\Apache Software Foundation\Tomcat *verze*.
 7. Klikněte na **Dokončit**.
 8. Vyberte **Okno** > **Předvolby** > **Java** > **Nainstalovaná prostředí JRE** > **Přidat**.
 9. V okně **Přidat prostředí JRE**, vyberte **Standardní virtuální počítač**.
 10. Klikněte na **Další**.
 11. V definici prostředí JRE v kořenovém adresáři JRE klikněte na **Adresář**.
-12. Přejděte do adresáře **Program Files** > **Java** a vyberte sadu JDK, kterou jste dříve nainstalovali. Je důležité vybrat jako prostředí JRE sadu JDK.
-13. V okně Nainstalovaná prostředí JRE zvolte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.
+12. Přejděte příliš**Program Files** > **Java** a vyberte hello JDK jste dříve nainstalovali. Je důležité tooselect hello JDK jako prostředí JRE hello.
+13. V okně nainstalovaná prostředí JRE, zvolte hello **JDK**. Vaše nastavení by měla vypadat podobně jako toohello následující snímek obrazovky.
     
     ![][9]
-14. Volitelně vyberte **Okno** > **Webový prohlížeč** > **Internet Explorer**, aby se aplikaci spustila v okně externího prohlížeče. Použití externího prohlížeče poskytuje lepší uživatelské prostředí webové aplikace.
+14. Volitelně vyberte **okno** > **webový prohlížeč** > **Internet Explorer** aplikace hello tooopen v okně externího prohlížeče. Použití externího prohlížeče poskytuje lepší uživatelské prostředí webové aplikace.
     
     ![][8]
 
-Nyní jste dokončili úlohy konfigurace. V dalším kroku sestavíte a spustíte projekt.
+Teď jste dokončili úlohy konfigurace hello. V dalším kroku sestavíte a spusťte projekt hello.
 
-## <a name="build-the-project"></a>Sestavení projektu
-1. V Prohlížeči projektu klikněte pravým tlačítkem na název projektu a zvolte **Spustit jako** > **Build Maven...**, abyste nakonfigurovali projekt.
+## <a name="build-hello-project"></a>Sestavení projektu hello
+1. V prohlížeči projektu klikněte pravým tlačítkem na název projektu hello a zvolte **spustit jako** > **sestavení Maven...**  tooconfigure hello projektu.
    
     ![][10]
 2. V okně Upravit konfiguraci v části Cíle zadejte „clean install“ a pak klikněte na **Spustit**.
 
-Stavové zprávy se zobrazují v okně konzoly. Měli byste vidět zprávu o úspěšném sestavení, která oznamuje sestavení projektu bez chyb.
+Stavové zprávy se výstup okna konzoly toohello. Měli byste vidět naznačuje projektu hello ÚSPĚŠNOSTI sestavení vytvořené bez chyb.
 
-## <a name="run-the-app"></a>Spusťte aplikaci
-V tomto posledním kroku spustíte aplikaci v běhovém prostředí místního serveru.
+## <a name="run-hello-app"></a>Spuštění aplikace hello
+V tomto posledním kroku spustíte hello aplikace v prostředí runtime místní server.
 
-Pokud jste v prostředí Eclipse ještě neurčili běhové prostředí serveru, budete to muset učinit nyní.
+Pokud jste v prostředí Eclipse ještě neurčili běhové prostředí serveru, budete potřebovat toodo nyní.
 
 1. V Prohlížeči projektu rozbalte položku **WebContent**.
-2. Klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Spustit na serveru**. Vyberte server Apache Tomcat a potom klikněte na **Spustit**.
+2. Klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Spustit na serveru**. Vyberte server Apache Tomcat hello a pak klikněte na tlačítko **spustit**.
 
 > [!TIP]
-> Pokud jste k uložení projektu použili jiný pracovní prostor než výchozí, budete muset upravit **Konfiguraci spuštění**, aby odkazovala na umístění projektu a nedošlo k chybě při spuštění serveru. V Prohlížeči projektu klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Konfigurace spuštění**. Vyberte server Apache Tomcat. Klikněte na **Argumenty**. Klikněte na **Pracovní prostor** nebo **Systém souborů**, abyste nastavili složku obsahující projekt.
+> Pokud jste použili toostore prostoru jiné než výchozí projekt, budete potřebovat toomodify **konfigurace spustit** toopoint toohello projektu umístění tooavoid chybě při spuštění serveru. V Prohlížeči projektu klikněte pravým tlačítkem na **Search.jsp** > **Spustit jako** > **Konfigurace spuštění**. Vyberte server Apache Tomcat hello. Klikněte na **Argumenty**. Klikněte na tlačítko **prostoru** nebo **systém souborů** tooset hello složku obsahující projekt hello.
 > 
 > 
 
-Při spuštění aplikace by se mělo zobrazit okno prohlížeče, které poskytuje vyhledávací pole pro zadání termínů.
+Při spuštění aplikace hello, měli byste vidět okno prohlížeče, poskytuje vyhledávací pole pro zadání termínů.
 
-Před kliknutím na tlačítko **Hledat** počkejte přibližně jednu minutu, aby měla služba čas na vytvoření a načtení indexu. Pokud se zobrazí chyba HTTP 404, bude třeba před dalším pokusem ještě chvíli počkat.
+Počkejte přibližně jednu minutu před kliknutím na tlačítko **vyhledávání** toogive hello služby čas toocreate a zatížení hello index. Pokud se zobrazí chyba HTTP 404, bude třeba jen toowait trochu déle, než to zkusíte znovu.
 
 ## <a name="search-on-usgs-data"></a>Hledání v datech USGS
-Sada dat USGS obsahuje záznamy, které se vztahují ke státu Rhode Island. Pokud u prázdného vyhledávacího pole kliknete na tlačítko **Hledat**, obdržíte prvních 50 položek, což je výchozí nastavení.
+Hello sada dat USGS obsahuje záznamy, které jsou relevantní toohello státu Rhode Island. Pokud kliknete na tlačítko **vyhledávání** na prázdného vyhledávacího pole, obdržíte prvních 50 položek hello, což je výchozí hello.
 
-Když zadáte hledaný výraz, vyhledávací web bude mít s čím pracovat. Zkuste zadat místní název. Roger Williams byl prvním guvernérem státu Rhode Island. Je po něm pojmenovaná celá řada parků, budov a škol.
+Zadat hledaný termín získáte hello vyhledávacího webu něco toogo na. Zkuste zadat místní název. "Roger Williams" byla hello prvním guvernérem státu Rhode Island. Je po něm pojmenovaná celá řada parků, budov a škol.
 
 ![][11]
 
@@ -160,11 +160,11 @@ Může taky zkusit kterýkoli z těchto výrazů:
 * goose +cape
 
 ## <a name="next-steps"></a>Další kroky
-Toto je první kurz služby Azure Search založený na Javě a sadě dat USGS. Postupně ho budeme rozšiřovat o ukázky dalších vyhledávacích funkcí, které by se vám ve vlastních řešeních mohly hodit.
+Toto je hello první kurz služby Azure Search založený na Javě a hello sadu dat USGS. V čase budete rozšiřujeme tento kurz toodemonstrate dalších vyhledávacích funkcí, které můžete chtít toouse ve vlastních řešeních.
 
-Pokud již máte základní vědomosti o službě Azure Search, můžete tuto ukázku použít jako odrazový můstek pro další experimentování, případně rozšíření [stránky vyhledávání](search-pagination-page-layout.md) nebo implementaci [fasetové navigace](search-faceted-navigation.md). Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
+Pokud již máte základní ve službě Azure Search, můžete tuto ukázku jako odrazový můstek pro další experimentování, případně rozšířit hello [stránky hledání](search-pagination-page-layout.md), nebo implementaci [Fasetové navigace](search-faceted-navigation.md). Můžete taky zdokonalit stránku výsledků hledání hello přidáním počtů a dávkování dokumenty tak, aby hello výsledky procházet po stránkách.
 
-Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). Přístup k dalším informacím vám poskytnou taky odkazy v [Seznamu videí a kurzů](search-video-demo-tutorial-list.md).
+Nové tooAzure hledání? Doporučujeme vyzkoušet ostatní kurzy toodevelop představu o co můžete vytvořit. Navštivte naše [stránky dokumentace, která](https://azure.microsoft.com/documentation/services/search/) toofind více prostředků. Můžete také zobrazit hello odkazy v našem [seznamu videí a kurzů](search-video-demo-tutorial-list.md) tooaccess Další informace.
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG

@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: Principy deklarativní zřizování | Microsoft Docs"
-description: "Vysvětluje deklarativní zřizování konfigurační model v Azure AD Connect."
+description: "Vysvětluje hello deklarativní zřizování konfigurační model v Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,145 +14,145 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7497ec2ca658c3790227c56ef1755d9a1cb74e0a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f11e078f0aafacf94d69f0726ae41629a8470336
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativní zřizování
-Toto téma vysvětluje konfigurační model v Azure AD Connect. Model se nazývá deklarativní zřizování a umožňuje snadno změníte konfiguraci. Celou řadu věcí, které jsou popsané v tomto tématu jsou rozšířené a není potřeba pro většinu scénářů zákazníka.
+Toto téma vysvětluje hello konfigurační model v Azure AD Connect. Hello model se nazývá deklarativní zřizování a umožňuje toomake snadno změně konfigurace. Celou řadu věcí, které jsou popsané v tomto tématu jsou rozšířené a není potřeba pro většinu scénářů zákazníka.
 
 ## <a name="overview"></a>Přehled
-Deklarativní zřizování je zpracování objektů brzo ze zdrojového adresáře připojené a určuje, jak tento objekt a atributy by měly transformaci ze zdroje na cíl. Objekt je zpracovat v kanálu synchronizace a kanál je stejný pro příchozí a odchozí pravidla. Příchozí pravidlo je od prostoru konektoru do úložiště metaverse a odchozí pravidlo je z úložiště metaverse na prostoru konektoru.
+Deklarativní zřizování je zpracování objektů brzo ze zdrojového připojení adresáře a určuje, jak hello objektů a atributů by měl být transformovat z cíl tooa zdroje. Objekt je zpracovat v kanálu synchronizace a hello kanálu je hello stejné pro příchozí a odchozí pravidla. Příchozí pravidlo je úložiště metaverse konektoru místo toohello a odchozí pravidlo je z prostoru konektoru tooa hello úložiště metaverse.
 
 ![Synchronizace kanálu](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/sync1.png)  
 
-Kanál má několik různých modulů. Každé z nich je zodpovědná za jeden koncept objekt synchronizace.
+Hello kanálu má několik různých modulů. Každé z nich je zodpovědná za jeden koncept objekt synchronizace.
 
 ![Synchronizace kanálu](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/pipeline.png)  
 
-* Zdroj zdrojového objektu
+* Zdroje, hello zdrojového objektu
 * [Obor](#scope), vyhledá všechna pravidla synchronizace, které jsou v oboru
 * [Připojení k](#join), určuje vztah mezi prostoru konektoru a úložiště metaverse
 * [Transformace](#transform), jak by měl být atributy transformovat vypočte a toku
 * [Priorita](#precedence), vyřeší konfliktní atribut příspěvky
-* Cíl, cílový objekt
+* Cíl, hello cílový objekt
 
 ## <a name="scope"></a>Rozsah
-Modul obor je vyhodnocení objekt a určí, pravidla, která jsou v oboru a musí být obsažena ve zpracování. V závislosti na hodnoty atributů pro objekt jsou různé synchronizační pravidla vyhodnocena jako v oboru. Zakázaný uživatel se žádné poštovní schránky Exchange například mít různá pravidla než v případě povoleného uživatele s poštovní schránku.  
+modul oboru Hello je vyhodnocení objekt a určuje hello pravidla, která jsou v oboru a by měl být součástí hello zpracování. V závislosti na hello hodnot atributů hello objekt jsou různé synchronizační pravidla vyhodnotí toobe v oboru. Zakázaný uživatel se žádné poštovní schránky Exchange například mít různá pravidla než v případě povoleného uživatele s poštovní schránku.  
 ![Rozsah](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
 
-Rozsah je definován jako skupiny a klauzule. Klauzulích jsou uvnitř skupiny. Logické a se používá mezi všechny klauzule ve skupině. Například (oddělení IT a země = = Dánsko). Logické nebo se používá mezi skupinami.
+obor Hello je definován jako skupiny a klauzule. klauzule Hello jsou uvnitř skupiny. Logické a se používá mezi všechny klauzule ve skupině. Například (oddělení IT a země = = Dánsko). Logické nebo se používá mezi skupinami.
 
 ![Rozsah](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
-Obor na tomto obrázku byste si měli přečíst jako (oddělení IT a země = = Dánsko) nebo (země = Švédsko). Pokud skupina 1 nebo skupinu 2 je vyhodnocena jako true, bude toto pravidlo je v oboru.
+Hello oboru na tomto obrázku byste si měli přečíst jako (oddělení IT a země = = Dánsko) nebo (země = Švédsko). Pokud skupina 1 nebo skupinu 2 vyhodnotí tootrue, hello pravidlo je v oboru.
 
-Modul oboru podporuje následující operace.
+Hello oboru modul podporuje hello následující operace.
 
 | Operace | Popis |
 | --- | --- |
-| ROVNÁ NOTEQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota rovna hodnotě atributu. Více hodnot atributů najdete v části ISIN a ISNOTIN. |
-| LESSTHAN LESSTHAN_OR_EQUAL |Porovnat řetězec, který vyhodnotí, jestli je hodnota menší než hodnota hodnoty v atributu. |
-| OBSAHUJE, NOTCONTAINS |Porovnat řetězec, která vyhodnotí Pokud hodnotu lze nalézt někde uvnitř hodnotu v atributu. |
-| STARTSWITH, NOTSTARTSWITH |Porovnat řetězec, který se vyhodnotí jako, pokud hodnota je na začátku hodnotu v atributu. |
-| ENDSWITH, NOTENDSWITH |Porovnat řetězec, který se vyhodnotí jako, pokud hodnota je na konci hodnotu v atributu. |
-| GREATERTHAN GREATERTHAN_OR_EQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota vyšší než hodnota atributu. |
-| ISNULL ISNOTNULL |Vyhodnotí, jestli je chybí atribut z objektu. Pokud atribut není přítomen a proto hodnotu null, pravidlo je v oboru. |
-| ISIN ISNOTIN |Vyhodnotí, pokud je hodnota v definovaný atribut. Tato operace je více hodnot variantu ROVNO a NOTEQUAL. Atribut by měl být více hodnot atributů a pokud hodnotu lze najít na žádném ze hodnoty atributu, pak toto pravidlo je v oboru. |
-| ISBITSET ISNOTBITSET |Vyhodnotí, pokud je konkrétní bit nastavený. Například můžete použít k vyhodnocení bity v userAccountControl chcete zobrazit, pokud uživatel povolený nebo zakázaný. |
-| ISMEMBEROF ISNOTMEMBEROF |Hodnota by měla obsahovat rozlišující název pro skupinu v prostoru konektoru. Pokud se objekt členem skupiny zadán, je pravidlo v oboru. |
+| ROVNÁ NOTEQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota rovna toohello hodnotu v atributu hello. Více hodnot atributů najdete v části ISIN a ISNOTIN. |
+| LESSTHAN LESSTHAN_OR_EQUAL |Porovnat řetězec, který vyhodnotí, jestli je hodnota menší než hodnota hello hodnoty v atributu hello. |
+| OBSAHUJE, NOTCONTAINS |Porovnat řetězec, která vyhodnotí, pokud hodnota může být uvnitř hodnotu v atributu hello nalezena někde. |
+| STARTSWITH, NOTSTARTSWITH |Porovnat řetězec, který se vyhodnotí, jestli je hodnota v hello začátku hello hodnotu v atributu hello. |
+| ENDSWITH, NOTENDSWITH |Porovnat řetězec, který vyhodnotí, jestli je hodnota v hello konec hello hodnoty v atributu hello. |
+| GREATERTHAN GREATERTHAN_OR_EQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota vyšší než hodnota hello v atributu hello. |
+| ISNULL ISNOTNULL |Vyhodnotí chybí-li hello atribut z objektu hello. Pokud atribut hello není k dispozici a proto hodnotu null, hello pravidlo je v oboru. |
+| ISIN ISNOTIN |Vyhodnotí, pokud hodnota hello nachází v hello definován atribut. Tato operace je více hodnot varianta hello je ROVNO a NOTEQUAL. Hello atribut by měl toobe více hodnot atributů a pokud hodnota hello naleznete v některé z hodnot atributů hello, pak hello pravidlo je v oboru. |
+| ISBITSET ISNOTBITSET |Vyhodnotí, pokud je konkrétní bit nastavený. Například může být použité tooevaluate hello bitů userAccountControl toosee Pokud uživatel povolený nebo zakázaný. |
+| ISMEMBEROF ISNOTMEMBEROF |Hello hodnota by měla obsahovat skupinu rozlišující název tooa v prostoru konektoru hello. Pokud se objekt hello členem zadané skupiny hello, hello pravidlo je v oboru. |
 
 ## <a name="join"></a>Spojit
-Připojení k modulu v kanálu synchronizace je zodpovědná za hledání vztah mezi objektem ve zdroji a objekt na cíli. Tento vztah na příchozí pravidlo, bude objekt v prostoru konektoru, hledání vztah k objektu v úložišti metaverse.  
+Hello připojení k modulu v kanálu synchronizace hello je zodpovědná za vyhledávání hello vztah mezi objektem hello ve zdroji hello a objekt v cílové hello. Tento vztah na příchozí pravidlo, bude objekt v prostoru konektoru, hledání tooan objekt relace v úložišti metaverse hello.  
 ![Připojení mezi cs a mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join1.png)  
-Cílem je zobrazit, že pokud je objekt již v úložišti metaverse, vytvořené jiný konektor by měl být spojené s. Například v doménové struktuře prostředku účet by měl být uživatele z doménové struktury účtu připojené s uživatelem z doménové struktury prostředku.
+cílem Hello je toosee, pokud objekt již existuje v úložišti metaverse hello, vytvořené jiný konektor, by měl přidružen. Například prostředek účet doménové struktury hello uživatele z doménové struktury hello účet by měl být připojený hello uživatele z doménové struktury prostředku hello.
 
-Spojení se používají převážně na příchozí pravidla ke spojení objekty konektoru místo ke stejnému objektu úložiště metaverse.
+Spojení se používají převážně na příchozích pravidel toojoin konektoru místo objekty společně toohello stejný objekt úložiště metaverse.
 
-Že spojení jsou definovány jako jednu nebo více skupin. Uvnitř skupiny máte klauzule. Logické a se používá mezi všechny klauzule ve skupině. Logické nebo se používá mezi skupinami. Skupiny jsou zpracovány v pořadí od shora dolů. Když jedna skupina nalezl přesně jednu shodu s objektem na cíli, se vyhodnocují žádná další pravidla spojení. Pokud nula nebo více než jeden objekt nenajde, bude pokračovat na další skupinu pravidel zpracování. Z tohoto důvodu pravidla musí být vytvořený v pořadí nejvíce explicitní první a více přibližné na konci.  
+Hello spojení jsou definovány jako jednu nebo více skupin. Uvnitř skupiny máte klauzule. Logické a se používá mezi všechny klauzule ve skupině. Logické nebo se používá mezi skupinami. skupiny Hello se zpracovávají v pořadí od nejvyšší toobottom. Když jedna skupina má v cílové hello najde přesně jednu shodu s objektem, se vyhodnocují žádná další pravidla spojení. Pokud v počtu nula či více, než jeden objekt, pokračuje zpracování toohello další skupiny pravidel. Z tohoto důvodu by se vytvořit pravidla hello v hello pořadí nejvíce explicitní první a více přibližné na konci hello.  
 ![Připojení k definici](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join2.png)  
-Spojení na tomto obrázku se zpracovávají shora dolů. První synchronizace kanál uvidí, pokud je shoda s employeeID. Pokud ne, druhé pravidlo se zobrazí, pokud název účtu můžete použít ke spojení objekty. Pokud není nalezena shoda buď, je pravidlo třetí a finální více přibližné shody pomocí jméno uživatele.
+spojení Hello na tomto obrázku jsou zpracovávány z horní toobottom. První kanál synchronizace hello se zobrazí, pokud je shoda s employeeID. V opačném případě druhého pravidla text hello se zobrazí, pokud název účtu hello lze použít toojoin hello objekty společně. Pokud není nalezena shoda buď, je pravidlo třetí a finální hello více přibližné shody pomocí hello jméno uživatele.
 
-Pokud byly vyhodnoceny všechna pravidla spojení a je přesně jednu shodu, **typu propojení** na **popis** stránky se používá. Pokud je tato možnost nastavena na **zřídit**, pak se vytvoří nový objekt v cíl.  
+Pokud byly vyhodnoceny všechna pravidla spojení a je přesně jednu shodu, hello **typu propojení** na hello **popis** stránky se používá. Pokud je tato možnost nastavená příliš**zřídit**, pak se vytvoří nový objekt v cílové hello.  
 ![Zřízení nebo připojení k](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join3.png)  
 
-Objekt by měl mít pouze jedno pravidlo jedním synchronizačním s pravidly spojení v oboru. Pokud existují více pravidel synchronizace kterých byla definována spojení, dojde k chybě. Priorita se nepoužije se vyřešit konflikty spojení. Objekt musí mít připojení k pravidlo v oboru pro atributy s stejné příchozí nebo odchozí směr toku. Pokud potřebujete toku atributů příchozí i odchozí ke stejnému objektu, musí mít příchozí i pravidlo odchozí synchronizace s spojení.
+Objekt by měl mít pouze jedno pravidlo jedním synchronizačním s pravidly spojení v oboru. Pokud existují více pravidel synchronizace kterých byla definována spojení, dojde k chybě. Priorita není použité tooresolve spojení konflikty. Objekt musí mít připojení k pravidlo v oboru pro atributy tooflow s hello stejné příchozí nebo odchozí směr. Pokud potřebujete tooflow atributy příchozí a odchozí toohello stejný objekt musí mít příchozí i pravidlo odchozí synchronizace s spojení.
 
-Odchozí spojení má zvláštní chování při pokusu o zřízení objektu do prostoru konektoru na cílový. Atribut rozlišující název se používá první vyzkoušení zpětného spojení. Pokud v prostoru konektoru cíl s stejné rozlišující název již existuje objekt, jsou připojené objekty.
+Odchozí spojení je speciální chování, když se ho pokusí tooprovision prostoru konektoru cíl tooa k objektu. Hello rozlišující název atributu je zkuste použít toofirst zpětného spojení. Pokud již existuje objekt v prostoru konektoru hello cíl s hello stejné rozlišující název, hello, které jsou připojené objekty.
 
-Připojení k modulu je Vyhodnocená jenom po při přechodu do oboru dojde nové pravidlo synchronizace. Pokud objekt má připojený, není to odpojování i v případě, že již nesplňuje kritéria spojení. Pokud chcete odpojte objekt, musí se synchronizační pravidlo, které připojený objekty dostala mimo rozsah.
+připojení k modulu Hello je Vyhodnocená jenom po při přechodu do oboru dojde nové pravidlo synchronizace. Pokud objekt má připojený, není to odpojování i v případě, že již nesplňuje kritéria spojení hello. Pokud chcete toodisjoin objektu, se musí hello synchronizační pravidlo, které připojený hello objekty dostala mimo rozsah.
 
 ### <a name="metaverse-delete"></a>Odstranění úložiště Metaverse
-Zůstane, pokud je v oboru s jedno pravidlo synchronizace objektu úložiště metaverse **typu propojení** nastavena na **zřídit** nebo **StickyJoin**. StickyJoin se používá, pokud není povoleno zřídit nový objekt, který úložiště metaverse konektoru, ale v případě, že se má propojit, je třeba jej odstranit ve zdroji, než je odstraněn objekt úložiště metaverse.
+Zůstane, pokud je v oboru s jedno pravidlo synchronizace objektu úložiště metaverse **typu propojení** nastavit příliš**zřídit** nebo **StickyJoin**. StickyJoin se používá, pokud konektor není povoleno tooprovision nový objekt úložiště metaverse toohello, ale pokud se má propojit, je třeba jej odstranit v hello zdroji předtím, než je odstraněn objekt úložiště metaverse hello.
 
 Při odstranění objektu úložiště metaverse všechny objekty přidružené pravidlo odchozí synchronizace označen pro **zřídit** jsou označena pro odstranění.
 
 ## <a name="transformations"></a>Transformace
-Transformace slouží k určení, jak by měl toku atributů ze zdroje do cíle. Tyto toky může mít jednu z následujících **toku typy**: přímo, konstanta nebo výraz. Hodnota atributu jako tok přímé tok,-je bez další transformací. Konstantní hodnotu Nastaví zadanou hodnotu. Výraz používá deklarativní zřizování jazyk výrazů k express, jak by měla být transformace. Podrobnosti o výraz jazyka najdete v [pochopení deklarativní zřizování jazyk výrazů](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) tématu.
+Transformace Hello jsou použité toodefine, jak by měla toku atributů z hello zdroj toohello cíle. Hello toky může mít jednu z následujících hello **toku typy**: přímo, konstanta nebo výraz. Hodnota atributu jako tok přímé tok,-je bez další transformací. Nastaví hello konstantní hodnotu zadané hodnotě. Výraz používá hello deklarativní zřizování výrazu jazyka tooexpress jak by měla být hello transformace. Hello podrobnosti pro jazyk výrazů hello lze nalézt v hello [pochopení deklarativní zřizování jazyk výrazů](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) tématu.
 
 ![Zřízení nebo připojení k](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/transformations1.png)  
 
-**Použít jednou** políčko definuje, že atribut by měl být nastavena pouze při vytvoření objektu. Například tato konfigurace slouží k nastavení počátečního hesla pro nový objekt uživatele.
+Hello **použít jednou** políčko definuje tento hello atribut by měl lze nastavit pouze při vytvoření objektu hello. Tato konfigurace může být například použít tooset počátečního hesla pro nový objekt uživatele.
 
 ### <a name="merging-attribute-values"></a>Slučování hodnoty atributu
-V toky atributů je nastavení určující, pokud by měly být sloučeny více hodnot atributů z několika různých konektorů. Výchozí hodnota je **aktualizace**, což naznačuje, že by měl win synchronizační pravidlo s nejvyšší prioritou.
+V toky atributů hello je nastavení toodetermine Pokud více hodnot atributů by měly být sloučeny z několika různých konektorů. Hello výchozí hodnota je **aktualizace**, což znamená, že hello synchronizační pravidlo s nejvyšší prioritou by měla win.
 
 ![Merge – typy](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/mergetype.png)  
 
-K dispozici je také **sloučení** a **MergeCaseInsensitive**. Tyto možnosti umožňují sloučení hodnoty z různých zdrojů. Například může sloužit ke sloučení atributu proxyAddresses nebo člena z několika různých doménových struktur. Pokud použijete tuto možnost, všechna pravidla synchronizace v oboru pro objekt musí používat stejný typ sloučení. Nelze definovat **aktualizace** z jeden konektor a **sloučení** z jiné. Pokud se pokusíte, obdržíte chybu.
+K dispozici je také **sloučení** a **MergeCaseInsensitive**. Tyto možnosti Povolit toomerge hodnoty z různých zdrojů. Například lze atribut člen nebo proxyAddresses hello použité toomerge z několika různých doménových struktur. Pokud použijete tuto možnost, všechny synchronizace pravidla v oboru pro objekt musí používat hello stejný typ sloučení. Nelze definovat **aktualizace** z jeden konektor a **sloučení** z jiné. Pokud se pokusíte, obdržíte chybu.
 
-Rozdíl mezi **sloučení** a **MergeCaseInsensitive** je postupy zpracování duplicitními hodnotami atributů. Synchronizační modul je zajištěno, že duplicitní hodnoty nejsou vloženy do atribut target. S **MergeCaseInsensitive**, duplicitní hodnoty s pouze rozdíly v případě, že nebudete nacházet. Například byste neměli vidět obě "SMTP:bob@contoso.com"a"smtp:bob@contoso.com" v atribut target. **Sloučení** je jenom prohlížení přesné hodnoty a více hodnot tam, kde existuje jenom rozdíl v případě může být k dispozici.
+Hello rozdíl mezi **sloučení** a **MergeCaseInsensitive** je, jak tooprocess duplicitní hodnoty atributu. synchronizační modul Hello zajistí, že duplicitní hodnoty nejsou vloženy do atribut target hello. S **MergeCaseInsensitive**, duplicitní hodnoty s pouze rozdíly v případě, že nebudete toobe přítomen. Například byste neměli vidět obě "SMTP:bob@contoso.com"a"smtp:bob@contoso.com" v atribut target hello. **Sloučení** je jenom prohlížení hello přesné hodnoty a více hodnot tam, kde existuje jenom rozdíl v případě může být k dispozici.
 
-Možnost **nahradit** je stejný jako **aktualizace**, ale se nepoužívá.
+Hello možnost **nahradit** je stejný jako hello **aktualizace**, ale se nepoužívá.
 
-### <a name="control-the-attribute-flow-process"></a>Řízení procesu toku atributů
-Pokud více pravidel příchozí synchronizace jsou nakonfigurovaná pro podílet se na stejný atribut úložiště metaverse, přednost se používá přednost. Pravidlo synchronizace s nejvyšší prioritou (nejnižší číselnou hodnotu) se bude podílet se hodnota. Stejné se stane pro odchozí pravidla. Synchronizace pravidla pomocí služby wins nejvyšší prioritu a přispívat hodnota, která má připojený adresář.
+### <a name="control-hello-attribute-flow-process"></a>Proces řízení hello atribut toku
+Když více pravidel příchozí synchronizace jsou nakonfigurované toocontribute toohello stejný atribut úložiště metaverse a pak přednost je použité toodetermine Vítěz hello. Pravidlo synchronizace Hello s nejvyšší prioritou (nejnižší číselnou hodnotu) bude toocontribute hello hodnotu. Hello stejné se stane, že pro odchozí pravidla. Pravidlo synchronizace Hello s nejvyšší prioritou wins a přispívat hello hodnota toohello připojený adresář.
 
-V některých případech místo přispívat hodnotu, pravidlo synchronizace měli určit chování ostatní pravidla. Existují některé speciální literály použít pro tento případ.
+V některých případech místo přispívat hodnotu, pravidlo synchronizace hello měli určit chování ostatní pravidla. Existují některé speciální literály použít pro tento případ.
 
-Pro příchozí pravidla synchronizace, skutečné **NULL** slouží k označení, že tok nemá žádnou hodnotu přispívat. Jiné pravidlo s nižší prioritou můžete přispívat hodnotu. Pokud žádné pravidlo podílí hodnotu, pak se odebere atribut úložiště metaverse. Odchozí pravidla Pokud **NULL** konečná hodnota je po zpracování všech pravidel synchronizace, pak se hodnota odebere v adresáři připojené.
+Pro příchozí pravidla synchronizace hello literálu **NULL** lze použít tooindicate, že tok hello má toocontribute žádná hodnota. Jiné pravidlo s nižší prioritou můžete přispívat hodnotu. Pokud žádné pravidlo podílí hodnotu, pak se odebere atribut úložiště metaverse hello. Odchozí pravidla Pokud **NULL** je konečná hodnota hello po zpracování všech pravidel synchronizace, pak hodnota hello odebere v hello připojený adresář.
 
-Literálové **AuthoritativeNull** je podobná **NULL** , ale s tím rozdílem, že žádná nižší prioritu pravidla můžete přispívat hodnotu.
+Hello literálu **AuthoritativeNull** je příliš podobné**NULL** s hello rozdílem, že žádná nižší prioritu pravidla můžete přispívat hodnotu.
 
-Tok atributů použít také **IgnoreThisFlow**. Je to podobné na hodnotu NULL v tom smyslu, že znamená, že není nic přispívat. Rozdíl je v ji neodebere již existující hodnoty na cíli. Je jako toku atributů nebylo nikdy existuje.
+Tok atributů použít také **IgnoreThisFlow**. Je podobné tooNULL v hello smyslu, že ukazuje nic toocontribute. Hello rozdílem je, se neodebere již existující hodnoty v cílové hello. Je jako toku atributů hello nebyla nikdy existuje.
 
 Zde naleznete příklad:
 
-V *Out do AD - Exchange uživatele hybridní* naleznete následující postup:  
+V *Out tooAD - Exchange uživatele hybridní* naleznete hello následující postup:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Tento výraz byste si měli přečíst jako: Pokud je poštovní schránka uživatele ve službě Azure AD, pak toku atributů z Azure AD k AD. Pokud ne, není nic zpět do služby Active Directory toku. V takovém případě by se zachovat existující hodnotu v AD.
+Tento výraz byste si měli přečíst jako: Pokud je poštovní schránka hello uživatele ve službě Azure AD, toku atributů hello z tooAD Azure AD. Pokud ne, není toku cokoli back tooActive adresáře. V takovém případě ponechá hello existující hodnotu v AD.
 
 ### <a name="importedvalue"></a>ImportedValue
-Vzhledem k tomu, že název atributu musí být uzavřena v uvozovkách, nikoli hranaté závorky, se liší od dalších funkcí funkce ImportedValue:  
+vzhledem k tomu, že název atributu hello musí být uzavřena v uvozovkách, nikoli hranaté závorky se liší od dalších funkcí Funkce Hello ImportedValue:  
 `ImportedValue("proxyAddresses")`.
 
-Obvykle během synchronizace používá atribut očekávané hodnotě, i když nebyla dosud exportovat nebo došlo k chybě při exportu ("top věž"). Příchozí synchronizace se předpokládá, že atribut, který ještě nedosáhla připojený adresář nakonec nedosáhne. V některých případech je potřeba pouze synchronizovat hodnotu, která byla potvrzena připojený adresář ("hologram a rozdílový import věž").
+Obvykle během synchronizace používá atribut hello očekávaná hodnota, i když nebyla dosud exportovat nebo došlo k chybě při exportu ("top věž hello"). Příchozí synchronizace se předpokládá, že atribut, který ještě nedosáhla připojený adresář nakonec nedosáhne. V některých případech je důležité tooonly synchronizovat hodnotu, která byla potvrzena hello připojený adresář ("hologram a rozdílový import věž").
 
-Příklad této funkce lze nalézt v synchronizační pravidlo out-of-box *v ze služby Active Directory – běžné uživatele ze serveru Exchange*. V hybridní Exchange přidané systémem Exchange online pouze synchronizovat při bylo potvrzeno, že byl úspěšně exportován hodnotu:  
+Příklad této funkce lze nalézt v hello out-of-box synchronizační pravidlo *v ze služby Active Directory – běžné uživatele ze serveru Exchange*. V hybridní Exchange hello přidané systémem Exchange online pouze synchronizovat při bylo potvrzeno, že byl úspěšně exportován hello hodnotu:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## <a name="precedence"></a>Priorita
-Při pokusu o několik pravidel synchronizace přispívat stejnou hodnotu atributu na cíl, hodnotu priority, která se používá přednost. Pravidlo s nejvyšší prioritou, nejnižší číselnou hodnotu, bude přispívat atribut v konfliktu.
+Při pokusu o několik pravidel synchronizace toocontribute hello stejný cíl toohello hodnotu atributu, hello přednost hodnota použitých toodetermine hello Vítěz. pravidlo Hello s nejvyšší prioritou, nejnižší číselnou hodnotu, bude atribut hello toocontribute v konfliktu.
 
 ![Merge – typy](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/precedence1.png)  
 
-Toto uspořádání lze použít k definování přesnější toky atributů pro malou podmnožinu objektů. Například out z – pole pravidla ujistěte se, které atributy z aktivovaný účet (**uživatele AccountEnabled**) mají přednost před z jiné účty.
+Toto uspořádání může být použité toodefine přesnější atribut toky pro malou podmnožinu objektů. Například, ujistěte se, který atributy z aktivovaný účet hello out--pole pravidel (**uživatele AccountEnabled**) mají přednost před z jiné účty.
 
-Mezi konektory lze definovat prioritu. Konektory, který umožňuje lepší daty přispívání hodnoty.
+Mezi konektory lze definovat prioritu. Nejprve umožňující konektory s lepší toocontribute hodnotami data.
 
-### <a name="multiple-objects-from-the-same-connector-space"></a>Více objektů ze stejné prostoru konektoru
-Pokud máte několik objektů ve stejném připojený ke stejnému objektu úložiště metaverse prostoru konektoru, je třeba upravit prioritu. Pokud několik objektů v oboru stejného pravidla synchronizace, není synchronizační modul schopní určit prioritu. Ho je nejednoznačný, které zdrojový objekt musí přispívat hodnotu do úložiště metaverse. Tato konfigurace se hlásí jako nejednoznačný i v případě, že atributy ve zdroji mají stejnou hodnotu.  
-![Více objektů spojeno do stejného objektu mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple1.png)  
+### <a name="multiple-objects-from-hello-same-connector-space"></a>Více objektů z hello stejné prostoru konektoru
+Pokud máte několik objektů v hello stejné konektoru místo toohello připojený k objektu stejné úložiště metaverse, musí být upravena prioritu. Pokud několik objekty jsou v oboru z hello stejné pravidlo synchronizace a potom hello synchronizační modul není možné toodetermine přednost. Ho je nejednoznačný, které zdrojový objekt musí přispívat hello hodnota toohello metaverse. Tato konfigurace je hlášené jako nejednoznačný, i když hello atributy ve zdroji hello hello stejnou hodnotu.  
+![Více objektů připojený toohello stejného objektu mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple1.png)  
 
-Pro tento scénář potřebujete změnit obor pravidel synchronizace, takže zdrojové objekty mají různé synchronizační pravidla v oboru. Který umožňuje definovat jinou prioritu.  
-![Více objektů spojeno do stejného objektu mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
+V tomto scénáři musíte toochange hello obor pravidel synchronizace hello tak hello zdroj objekty mají různé synchronizační pravidla v oboru. Což vám umožní toodefine různých priorit.  
+![Více objektů připojený toohello stejného objektu mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o jazyk výrazů v [Principy deklarativní zřizování výrazy](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
-* Najdete v tématu Jak deklarativní zřizování je použité out-of-box v [Principy výchozí konfigurace](active-directory-aadconnectsync-understanding-default-configuration.md).
-* Informace o tom, praktické změnit pomocí deklarativní zřizování v [jak provést změnu výchozí konfigurace](active-directory-aadconnectsync-change-the-configuration.md).
-* Dál číst, jak uživatelů a kontaktů spolupracují [Principy uživatelů a kontaktů](active-directory-aadconnectsync-understanding-users-and-contacts.md).
+* Další informace o hello výrazu jazyka v [Principy deklarativní zřizování výrazy](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+* Najdete v tématu Jak deklarativní zřizování je použité out-of-box v [Principy hello výchozí konfigurace](active-directory-aadconnectsync-understanding-default-configuration.md).
+* V tématu Jak toomake praktická změnit pomocí deklarativní zřizování v [jak toomake toohello změnu výchozí konfigurace](active-directory-aadconnectsync-change-the-configuration.md).
+* Pokračovat tooread jak uživatelů a kontaktů spolupracují v [Principy uživatelů a kontaktů](active-directory-aadconnectsync-understanding-users-and-contacts.md).
 
 **Témata s přehledem**
 

@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace Azure Redis Cache | Microsoft Docs
-description: "Rady pro pochopení výchozí konfiguraci Redis pro Azure Redis Cache a informace o konfiguraci vaší instance služby Azure Redis Cache"
+title: aaaHow tooconfigure Azure Redis Cache | Microsoft Docs
+description: "Rady pro pochopení hello výchozí konfiguraci Redis pro Azure Redis Cache a zjistěte, jak tooconfigure vaší služby Azure Redis instancích mezipaměti"
 services: redis-cache
 documentationcenter: na
 author: steved0x
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: sdanie
-ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 46bffb74cdf40e0e0a99c3a83dbe06d6fe1ea65b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-azure-redis-cache"></a>Postup konfigurace Azure Redis Cache
-Toto téma popisuje, jak zkontrolovat a aktualizovat konfiguraci pro vaše instance služby Azure Redis Cache a obsahuje výchozí konfiguraci serveru Redis pro instance služby Azure Redis Cache.
+# <a name="how-tooconfigure-azure-redis-cache"></a>Jak tooconfigure Azure mezipaměti Redis
+Toto téma popisuje, jak tooreview a aktualizace hello konfigurace pro vaše instance služby Azure Redis Cache a konfigurace serveru zahrnuje hello výchozí Redis pro instance služby Azure Redis Cache.
 
 > [!NOTE]
-> Další informace o konfiguraci a použití prémiových funkcí mezipaměti najdete v tématu [postup konfigurace trvalosti](cache-how-to-premium-persistence.md), [postup konfigurace clusterů](cache-how-to-premium-clustering.md), a [postup konfigurace podpory služby Virtual Network ](cache-how-to-premium-vnet.md).
+> Další informace o konfiguraci a použití prémiových funkcí mezipaměti najdete v tématu [jak trvalost tooconfigure](cache-how-to-premium-persistence.md), [jak tooconfigure clustering](cache-how-to-premium-clustering.md), a [jak podporují tooconfigure virtuální sítě ](cache-how-to-premium-vnet.md).
 > 
 > 
 
 ## <a name="configure-redis-cache-settings"></a>Konfigurace nastavení mezipaměti Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Nastavení Azure Redis Cache jsou zobrazit a konfigurovat na **Redis Cache** okno pomocí **prostředků nabídky**.
+Nastavení Azure Redis Cache jsou zobrazit a konfigurovat na hello **Redis Cache** okno pomocí hello **prostředků nabídky**.
 
 ![Nastavení mezipaměti redis](./media/cache-configure/redis-cache-settings.png)
 
-Můžete zobrazit a nakonfigurovat následující nastavení pomocí **prostředků nabídky**.
+Můžete zobrazit a konfigurovat následující nastavení pomocí hello hello **prostředků nabídky**.
 
 * [Přehled](#overview)
 * [Protokol aktivit](#activity-log)
@@ -75,25 +75,25 @@ Můžete zobrazit a nakonfigurovat následující nastavení pomocí **prostřed
 
 ### <a name="activity-log"></a>Protokol aktivit
 
-Klikněte na tlačítko **protokol aktivit** zobrazíte akcích provedených v mezipaměti. Můžete také pomocí filtrování rozbalte toto zobrazení zahrnout další prostředky. Další informace o práci s protokoly auditu najdete v tématu [auditovat operace s Resource Managerem](../azure-resource-manager/resource-group-audit.md). Další informace o sledování událostí Azure Redis Cache najdete v tématu [operace a výstrahy](cache-how-to-monitor.md#operations-and-alerts).
+Klikněte na tlačítko **protokol aktivit** tooview akce provádět v mezipaměti. Můžete také použít filtrování tooexpand tato zobrazení tooinclude jiné prostředky. Další informace o práci s protokoly auditu najdete v tématu [auditovat operace s Resource Managerem](../azure-resource-manager/resource-group-audit.md). Další informace o sledování událostí Azure Redis Cache najdete v tématu [operace a výstrahy](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
-**Přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) na portálu Azure, které pomůžou organizacím, které splňují požadavky na správu jejich přístup, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-configure.md).
+Hello **přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) v hello Azure portálu toohelp organizace splňují požadavky na správu jejich přístup jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě Role v portálu Azure hello](../active-directory/role-based-access-control-configure.md).
 
 ### <a name="tags"></a>Značky
 
-**Značky** část umožňuje uspořádání prostředků. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
+Hello **značky** část umožňuje uspořádání prostředků. Další informace najdete v tématu [pomocí značky tooorganize vašich prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
 
 
 ### <a name="diagnose-and-solve-problems"></a>Diagnostikovat a řešit problémy
 
-Klikněte na tlačítko **Diagnostikujte a řešení problémů** poskytované s běžné problémy a strategie pro jejich řešení.
+Klikněte na tlačítko **Diagnostikujte a řešení problémů** toobe součástí běžné problémy a strategie pro jejich řešení.
 
 
 
 ## <a name="settings"></a>Nastavení
-**Nastavení** část vám pomůže přístup a nakonfigurujte následující nastavení pro mezipaměť.
+Hello **nastavení** části vám umožní tooaccess a nakonfigurujte následující nastavení pro mezipaměť hello.
 
 * [Přístupové klávesy](#access-keys)
 * [Upřesnit nastavení](#advanced-settings)
@@ -112,31 +112,31 @@ Klikněte na tlačítko **Diagnostikujte a řešení problémů** poskytované s
 
 
 ### <a name="access-keys"></a>Přístupové klíče
-Klikněte na tlačítko **přístupové klíče** k zobrazení nebo opětovné vygenerování přístupových klíčů pro mezipaměť. Tyto klíče používají připojení klientů k mezipaměti.
+Klikněte na tlačítko **přístupové klíče** tooview nebo znovu vygenerovat hello přístupových klíčů pro mezipaměť. Tyto klíče jsou používány hello klienti připojení tooyour mezipaměti.
 
 ![Přístupové klíče mezipaměti redis](./media/cache-configure/redis-cache-manage-keys.png)
 
 ### <a name="advanced-settings"></a>Upřesnit nastavení
-Následující nastavení se konfigurují na **upřesňující nastavení** okno.
+Hello se konfiguruje následující nastavení na hello **upřesňující nastavení** okno.
 
 * [Přístupové porty](#access-ports)
 * [Zásady paměti](#memory-policies)
 * [Oznámení keyspace (rozšířené nastavení)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Přístupové porty
-Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. Chcete-li povolit port bez SSL, klikněte na tlačítko **ne** pro **povolit přístup jen přes SSL** na **upřesňující nastavení** okna a potom klikněte na **Uložit**.
+Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. tooenable hello bez SSL port, klikněte na tlačítko **ne** pro **povolit přístup jen přes SSL** na hello **upřesňující nastavení** okna a pak klikněte na tlačítko **Uložit**.
 
 ![Přístupové porty mezipaměti redis](./media/cache-configure/redis-cache-access-ports.png)
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Zásady paměti
-**Maxmemory zásad**, **vyhrazené maxmemory**, a **vyhrazené maxfragmentationmemory** nastavení na **upřesňující nastavení** okno nakonfigurovat zásady paměť pro mezipaměť.
+Hello **Maxmemory zásad**, **vyhrazené maxmemory**, a **vyhrazené maxfragmentationmemory** nastavení na hello **upřesňující nastavení**okno nakonfigurovat zásady hello paměť pro mezipaměť hello.
 
 ![Zásady Maxmemory mezipaměti redis](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-**Zásady Maxmemory** nakonfiguruje zásady vyřazení mezipaměti a umožňuje zvolit z následujících zásad vyřazení:
+**Zásady Maxmemory** nakonfiguruje zásady vyřazení hello hello mezipaměti a umožňuje vám toochoose z hello následující zásady vyřazení:
 
-* `volatile-lru`-Toto je výchozí.
+* `volatile-lru`-Toto je výchozí hello.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -145,47 +145,47 @@ Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. 
 
 Další informace o `maxmemory` zásady, najdete v části [zásady vyřazení](http://redis.io/topics/lru-cache#eviction-policies).
 
-**Maxmemory vyhrazené** nastavení konfiguruje množství paměti v MB, která je vyhrazena pro operace bez mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty můžete mít více konzistentního prostředí serveru Redis, pokud se liší podle zatížení. Tato hodnota je třeba nastavit vyšší pro úlohy, které jsou zapsat náročné. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
+Hello **maxmemory vyhrazené** nastavení konfiguruje hello množství paměti v MB, která je vyhrazena pro operace bez mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty můžete toohave více konzistentního prostředí serveru Redis při zatížení se liší. Tato hodnota je třeba nastavit vyšší pro úlohy, které jsou zapsat náročné. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
 
-**Maxfragmentationmemory vyhrazené** nastavení konfiguruje množství paměti v MB, která je vyhrazena pro přizpůsobení pro fragmentace paměti. Nastavení této hodnoty můžete mít více konzistentní serveru Redis dojít, pokud je mezipaměť plná nebo blízko úplné a fragmentaci poměr je také vysoká. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
+Hello **maxfragmentationmemory vyhrazené** nastavení konfiguruje hello množství paměti v MB, který je vyhrazený tooaccommodate pro fragmentace paměti. Nastavení této hodnoty můžete toohave více konzistentního prostředí serveru Redis při je hello mezipaměť plná nebo zavřít toofull a hello fragmentace poměr je také vysokou. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
 
-Jednou z věcí vzít v úvahu při výběru novou hodnotu rezervace paměti (**vyhrazené maxmemory** nebo **vyhrazené maxfragmentationmemory**) je, jak tato změna může ovlivnit mezipaměti, která je již spuštěn s velké objemy dat v něm. Například pokud jste 53 GB mezipaměti s 49 GB dat, pak změňte hodnotu rezervace na 8 GB, bude vyřadit maximální dostupná paměť systému dolů 45 GB. Pokud buď vaše aktuální `used_memory` , vaše `used_memory_rss` hodnoty jsou vyšší, než nový limit 45 GB a pak systému bude mít vyřazení dat dokud `used_memory` a `used_memory_rss` jsou pod 45 GB. Vyřazení může zvýšit fragmentace zatížení a paměti serveru. Další informace o metrikách mezipaměti jako `used_memory` a `used_memory_rss`, najdete v části [k dostupným metrikám a vytváření sestav intervaly](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Jednou z věcí tooconsider při výběru novou hodnotu rezervace paměti (**vyhrazené maxmemory** nebo **vyhrazené maxfragmentationmemory**) je, jak tato změna může ovlivnit mezipaměti, která je již spuštěn s velké objemy dat v něm. Například pokud mají mezipaměť 53 GB s 49 GB dat, pak změňte hello rezervace hodnota too8 GB, bude vyřadit hello maximální dostupné paměti pro systém hello dolů too45 GB. Pokud buď vaše aktuální `used_memory` , vaše `used_memory_rss` hodnoty jsou vyšší, než nový limit hello 45 GB a pak hello systému budou mít tooevict data dokud `used_memory` a `used_memory_rss` jsou pod 45 GB. Vyřazení může zvýšit fragmentace zatížení a paměti serveru. Další informace o metrikách mezipaměti jako `used_memory` a `used_memory_rss`, najdete v části [k dostupným metrikám a vytváření sestav intervaly](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
-> **Vyhrazené maxmemory** a **maxfragmentationmemory vyhrazené** nastavení jsou dostupná jenom pro Standard a Premium ukládá do mezipaměti.
+> Hello **vyhrazené maxmemory** a **maxfragmentationmemory vyhrazené** nastavení jsou dostupná jenom pro Standard a Premium ukládá do mezipaměti.
 > 
 > 
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Oznámení keyspace (rozšířené nastavení)
-Redis keyspace oznámení se konfigurují na **upřesňující nastavení** okno. Oznámení keyspace umožňují klientům přijímat upozornění, když dojde k určitým událostem.
+Redis keyspace oznámení jsou nakonfigurované na hello **upřesňující nastavení** okno. Oznámení keyspace umožňují klienti tooreceive oznámení při určité události.
 
 ![Upřesňující nastavení mezipaměti redis](./media/cache-configure/redis-cache-advanced-settings.png)
 
 > [!IMPORTANT]
-> Oznámení keyspace a **oznámení události keyspace** nastavení jsou dostupná jenom pro Cache úrovní Standard a Premium.
+> Keyspace oznámení a hello **oznámení události keyspace** nastavení jsou dostupná jenom pro Cache úrovní Standard a Premium.
 > 
 > 
 
-Další informace najdete v tématu [Redis oznámení Keyspace](http://redis.io/topics/notifications). Ukázkový kód, najdete v článku [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) v soubor [Hello, world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ukázka.
+Další informace najdete v tématu [Redis oznámení Keyspace](http://redis.io/topics/notifications). Ukázkový kód, najdete v části hello [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) souboru v hello [Hello, world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ukázka.
 
 
 <a name="recommendations"></a>
 ## <a name="redis-cache-advisor"></a>Advisor mezipaměti redis
-**Redis Cache Advisor** zobrazuje doporučení pro mezipaměť. Během normálních operací zobrazí se žádná doporučení. 
+Hello **Redis Cache Advisor** zobrazuje doporučení pro mezipaměť. Během normálních operací zobrazí se žádná doporučení. 
 
 ![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)
 
-Pokud jakékoliv podmínky, ke kterým došlo během operace svojí mezipaměti, jako je například velké množství paměti, šířky pásma sítě nebo zatížení serveru, upozornění se zobrazí na **Redis Cache** okno.
+Pokud jakékoliv podmínky, ke kterým došlo během operace hello svojí mezipaměti, jako je například velké množství paměti, šířky pásma sítě nebo zatížení serveru, zobrazí se výstraha na hello **Redis Cache** okno.
 
 ![Doporučení](./media/cache-configure/redis-cache-recommendations-alert.png)
 
-Další informace naleznete na **doporučení** okno.
+Další informace naleznete na hello **doporučení** okno.
 
 ![Doporučení](./media/cache-configure/redis-cache-recommendations.png)
 
-Tyto metriky můžete sledovat na [tabulek sledování](cache-how-to-monitor.md#monitoring-charts) a [využití grafy](cache-how-to-monitor.md#usage-charts) části **Redis Cache** okno.
+Můžete sledovat tyto metriky na hello [tabulek sledování](cache-how-to-monitor.md#monitoring-charts) a [využití grafy](cache-how-to-monitor.md#usage-charts) části hello **Redis Cache** okno.
 
-Každá cenová úroveň má jiné limity pro připojení klientů, paměti a šířky pásma. Pokud vaše mezipaměť blíží maximální kapacity pro tyto metriky po dobu delší dobu, vytvoří se doporučení. Další informace o metriky a omezení zkontrolovány uživatelem **doporučení** nástroj, najdete v následující tabulce:
+Každá cenová úroveň má jiné limity pro připojení klientů, paměti a šířky pásma. Pokud vaše mezipaměť blíží maximální kapacity pro tyto metriky po dobu delší dobu, vytvoří se doporučení. Další informace o hello metriky a omezení zkontrolovány uživatelem hello **doporučení** nástroje najdete v tématu hello následující tabulka:
 
 | Metrika mezipaměti redis | Další informace |
 | --- | --- |
@@ -194,38 +194,38 @@ Každá cenová úroveň má jiné limity pro připojení klientů, paměti a š
 | Zatížení serveru |[Použití grafů – zatížení serveru Redis](cache-how-to-monitor.md#usage-charts) |
 | Využití paměti |[Výkon mezipaměti - velikost](cache-faq.md#cache-performance) |
 
-Chcete-li upgradovat mezipaměti, klikněte na tlačítko **upgradovat nyní** změnit cenovou úroveň a [škálování](#scale) svojí mezipaměti. Další informace o výběru cenovou úroveň, najdete v části [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+tooupgrade mezipaměti, klikněte na tlačítko **upgradovat nyní** toochange hello cenová úroveň a [škálování](#scale) svojí mezipaměti. Další informace o výběru cenovou úroveň, najdete v části [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 
 ### <a name="scale"></a>Měřítko
-Klikněte na tlačítko **škálování** chcete zobrazit nebo změnit jeho cenovou úroveň mezipaměti. Další informace o škálování najdete v tématu [postup škálování Azure Redis Cache](cache-how-to-scale.md).
+Klikněte na tlačítko **škálování** tooview nebo změňte hello cenovou úroveň pro mezipaměť. Další informace o škálování najdete v tématu [jak tooScale Azure mezipaměti Redis](cache-how-to-scale.md).
 
 ![Cenová úroveň mezipaměti redis](./media/cache-configure/pricing-tier.png)
 
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Velikost clusteru redis
-Klikněte na tlačítko **velikost clusteru Redis (PREVIEW)** Chcete-li změnit velikost clusteru pro spuštěný premium mezipaměti s povoleným clusteringem.
+Klikněte na tlačítko **velikost clusteru Redis (PREVIEW)** toochange hello velikost clusteru pro spuštěné premium mezipaměti s povoleným clusteringem.
 
 > [!NOTE]
-> Všimněte si, že při obecné dostupnosti bylo vydáno Azure Redis Cache na úrovni Premium, velikost clusteru Redis funkce je aktuálně ve verzi preview.
+> Všimněte si, že při hello Azure Redis Cache Premium vrstvy byl vydané tooGeneral dostupnosti, hello Redis velikost clusteru funkce je aktuálně ve verzi preview.
 > 
 > 
 
 ![Velikost clusteru redis](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-Chcete-li změnit velikost clusteru, posuvníkem nebo zadejte číslo mezi 1 a 10 v **počet horizontálních** textového pole a klikněte na tlačítko **OK** uložit.
+velikost clusteru hello toochange, použijte hello posuvníku nebo zadejte číslo mezi 1 a 10 hello **počet horizontálních** textového pole a klikněte na tlačítko **OK** toosave.
 
 > [!IMPORTANT]
-> Redis clustering je dostupná jenom pro prémiových mezipamětí. Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
+> Redis clustering je dostupná jenom pro prémiových mezipamětí. Další informace najdete v tématu [jak tooconfigure clusteringu pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
 > 
 > 
 
 
 ### <a name="redis-data-persistence"></a>Trvalosti dat redis
-Klikněte na tlačítko **trvalosti dat Redis** povolit, zakázat nebo konfigurace trvalosti dat pro mezipaměť premium. Azure Redis Cache nabízí buď pomocí trvalosti Redis [RDB trvalost](cache-how-to-premium-persistence.md#configure-rdb-persistence) nebo [AOF trvalost](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klikněte na tlačítko **trvalosti dat Redis** tooenable, zakázat nebo konfigurace trvalosti dat pro mezipaměť premium. Azure Redis Cache nabízí buď pomocí trvalosti Redis [RDB trvalost](cache-how-to-premium-persistence.md#configure-rdb-persistence) nebo [AOF trvalost](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
-Další informace najdete v tématu [postup konfigurace trvalosti pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-persistence.md).
+Další informace najdete v tématu [jak tooconfigure trvalosti pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-persistence.md).
 
 
 > [!IMPORTANT]
@@ -234,33 +234,33 @@ Další informace najdete v tématu [postup konfigurace trvalosti pro mezipamě�
 > 
 
 ### <a name="schedule-updates"></a>Aktualizace plánu
-**Naplánovat aktualizace** okno umožňuje určit časové období údržby pro aktualizace serveru Redis ke svojí mezipaměti. 
+Hello **naplánovat aktualizace** okno vám umožní toodesignate údržby pro aktualizace serveru Redis ke svojí mezipaměti. 
 
 > [!IMPORTANT]
-> Pro správu a údržbu platí jenom pro Redis serveru aktualizací a tak, aby všechny Azure aktualizace nebo aktualizace operačního systému virtuálních počítačů, které jsou hostiteli mezipaměti.
+> Hello časové období údržby platí pouze tooRedis serveru aktualizace a ne tooany Azure aktualizace nebo aktualizace operačního systému toohello hello virtuálních počítačů, které jsou hostiteli hello mezipaměti.
 > 
 > 
 
 ![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
 
-Zadejte časové období údržby, zkontrolujte požadované dny a zadejte hodina spouštění údržby okna pro každý den a klikněte na tlačítko **OK**. Všimněte si, že časového období údržby se ve standardu UTC. 
+toospecify údržby, zkontrolujte hello potřeby dnů hodina spouštění údržby okno hello za každý den, zadejte a klikněte na tlačítko **OK**. Všimněte si, že hello časového období údržby se ve standardu UTC. 
 
 > [!IMPORTANT]
-> **Naplánovat aktualizace** funkce je dostupná jenom pro prémiových mezipamětí vrstvy. Další informace a pokyny najdete v tématu [správy Azure Redis Cache - naplánovat aktualizace](cache-administration.md#schedule-updates).
+> Hello **naplánovat aktualizace** funkce je dostupná jenom pro prémiových mezipamětí vrstvy. Další informace a pokyny najdete v tématu [správy Azure Redis Cache - naplánovat aktualizace](cache-administration.md#schedule-updates).
 > 
 > 
 
 ### <a name="geo-replication"></a>Geografická replikace
 
-**Geografická replikace** okno poskytuje mechanismus pro propojení dvě instance vrstvy Azure Redis Cache Premium. Jeden mezipaměti je určený jako primární propojené mezipaměti a druhý jako sekundární propojené mezipaměti. Sekundární propojené mezipaměti se stane, jen pro čtení a data zapsat do mezipaměti. primární se replikují do sekundární propojené mezipaměti. Tato funkce slouží k replikaci mezipaměti mezi oblastmi Azure.
+Hello **geografická replikace** okno poskytuje mechanismus pro propojení dvě instance vrstvy Azure Redis Cache Premium. Jeden mezipaměti je určený jako primární propojené mezipaměti hello a hello jiných jako sekundární propojené mezipaměti hello. Hello sekundární propojené mezipaměti se stane, jen pro čtení a data napsané toohello primární mezipaměť je replikují toohello sekundární propojené mezipaměti. Tuto funkci lze použít tooreplicate mezipaměti nad oblastmi Azure.
 
 > [!IMPORTANT]
-> **Geografická replikace** je dostupná jenom u prémiových mezipamětí vrstvy. Další informace a pokyny najdete v tématu [konfiguraci geografická replikace pro Azure Redis Cache](cache-how-to-geo-replication.md).
+> **Geografická replikace** je dostupná jenom u prémiových mezipamětí vrstvy. Další informace a pokyny najdete v tématu [jak tooconfigure geografická replikace pro Azure Redis Cache](cache-how-to-geo-replication.md).
 > 
 > 
 
 ### <a name="virtual-network"></a>Virtual Network
-**Virtuální sítě** část vám pomůže nakonfigurovat nastavení virtuální sítě pro mezipaměť. Informace týkající se vytváření cache ve verzi premium se virtuální síť podporovat a aktualizuje jeho nastavení, najdete v tématu [konfiguraci virtuální sítě podporu pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-vnet.md).
+Hello **virtuální sítě** část vám tooconfigure hello nastavení virtuální sítě pro mezipaměť. Informace týkající se vytváření cache ve verzi premium se virtuální síť podporovat a aktualizuje jeho nastavení, najdete v tématu [jak tooconfigure podpora virtuální sítě pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
 > Nastavení virtuální sítě jsou dostupné pouze pro prémiových mezipamětí, které byly nakonfigurovány s podporou virtuální sítě během vytváření mezipaměti. 
@@ -269,11 +269,11 @@ Zadejte časové období údržby, zkontrolujte požadované dny a zadejte hodin
 
 ### <a name="firewall"></a>Brána firewall
 
-Klikněte na tlačítko **brány Firewall** k zobrazení a konfigurace pravidel brány firewall pro vaše mezipaměť Azure Redis Cache Premium.
+Klikněte na tlačítko **brány Firewall** tooview a konfigurace pravidel brány firewall pro vaše mezipaměť Azure Redis Cache Premium.
 
 ![Brána firewall](./media/cache-configure/redis-firewall-rules.png)
 
-Pravidla brány firewall můžete zadat s počáteční a koncové rozsah IP adres. Pokud jsou nakonfigurovaná pravidla brány firewall, připojení klienta pouze z zadaných rozsazích IP adres může připojit k mezipaměti. Při uložení pravidlo brány firewall není chvíli trvat, než pravidlo je platná. Toto opoždění je obvykle méně než jedna minuta.
+Pravidla brány firewall můžete zadat s počáteční a koncové rozsah IP adres. Pokud jsou nakonfigurovaná pravidla brány firewall, připojení klienta pouze z hello zadané rozsahy IP adres můžete připojit toohello mezipaměti. Při uložení pravidlo brány firewall není chvíli trvat, než pravidla hello je platná. Toto opoždění je obvykle méně než jedna minuta.
 
 > [!IMPORTANT]
 > Připojení z Azure Redis Cache monitorování systémů jsou vždy povoleny, i když jsou nakonfigurovaná pravidla brány firewall.
@@ -283,19 +283,19 @@ Pravidla brány firewall můžete zadat s počáteční a koncové rozsah IP adr
 > 
 
 ### <a name="properties"></a>Vlastnosti
-Klikněte na tlačítko **vlastnosti** zobrazíte informace o mezipaměti, včetně koncový bod mezipaměti a portů.
+Klikněte na tlačítko **vlastnosti** tooview informace o mezipaměti, včetně hello koncový bod mezipaměti a portů.
 
 ![Vlastnosti mezipaměti redis](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>Zámky
-**Zamkne** části umožňuje zamknout předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
+Hello **zamkne** část vám toolock předplatné, skupinu prostředků nebo prostředek tooprevent jiných uživatelů ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
 
 ### <a name="automation-script"></a>Skriptu pro automatizaci
 
-Klikněte na tlačítko **skriptu pro automatizaci** sestavení a exportovat šablonu vaše nasazené prostředky pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Klikněte na tlačítko **skriptu pro automatizaci** toobuild a exportovat šablonu vaše nasazené prostředky pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="administration-settings"></a>Nastavení správy
-Nastavení v **správy** části umožňují provádět následující úlohy správy pro mezipaměť. 
+Hello nastavení v hello **správy** části umožňují tooperform hello následující úlohy správy pro mezipaměť. 
 
 ![Správa](./media/cache-configure/redis-cache-administration.png)
 
@@ -305,11 +305,11 @@ Nastavení v **správy** části umožňují provádět následující úlohy sp
 
 
 ### <a name="importexport"></a>Import/export
-Import a Export je operace Azure Redis Cache dat správy, který umožňuje importovat a exportovat data v mezipaměti import a Export snímku databáze Redis Cache (RDB) z mezipaměti premium do objektů blob stránky v účtu úložiště Azure. Import a Export umožňuje migraci mezi různými instancemi Azure Redis Cache nebo naplnění mezipaměti s daty před použitím.
+Import a Export je operace správy Azure Redis Cache data, která vám umožní tooimport a export dat v mezipaměti hello import a Export snímku databáze Redis Cache (RDB) ze stránky premium mezipaměti tooa blob v účtu úložiště Azure. Import a Export vám umožní toomigrate mezi různými instancemi Azure Redis Cache nebo naplňte hello mezipaměť s daty před použitím.
 
-Import umožňuje přinést si Redis kompatibilní RDB soubory z jakéhokoli Redis serveru se systémem v libovolném cloudu nebo prostředí, včetně Redis systémem Linux, Windows nebo kteréhokoli poskytovatele cloudových služeb jako Amazon Web Services a dalších. Import dat je snadný způsob, jak vytvořit mezipaměti s předem vyplněná data. Během procesu importu Azure Redis Cache načte RDB soubory z úložiště Azure do paměti a vloží klíčů do mezipaměti.
+Import lze použít toobring Redis kompatibilní RDB soubory z jakéhokoli Redis serveru se systémem v libovolném cloudu nebo prostředí, včetně Redis systémem Linux, Windows nebo kteréhokoli poskytovatele cloudových služeb jako Amazon Web Services a dalších. Import dat se snadný způsob toocreate mezipaměti s předem vyplněná daty. Během procesu importu hello Azure Redis Cache načte hello RDB soubory z úložiště Azure do paměti a pak vloží hello klíčů do mezipaměti hello.
 
-Export umožňuje exportovat data uložená ve službě Azure Redis Cache k Redis kompatibilní soubory RDB. Tato funkce slouží pro přesun dat z jedné instance Azure Redis Cache do jiné nebo jinému serveru Redis. Během procesu exportu ve virtuálním počítači, který je hostitelem instance serveru Azure Redis Cache je vytvořit dočasný soubor a soubor je odeslán k účtu úložiště určený. Po dokončení operace exportu se stavem úspěch nebo selhání dočasný soubor bude odstraněn.
+Export umožňuje tooexport hello data uložená v Azure Redis Cache tooRedis kompatibilní RDB soubory. Můžete použít tuto funkci toomove data tooanother instanci Azure Redis Cache či tooanother serveru Redis. Během procesu exportu hello dočasný soubor vytvořen na hello virtuálních počítačů, hostitelů hello instanci serveru Azure Redis Cache a soubor hello je nahrané toohello určený účet úložiště. Po dokončení operace exportu hello se stavem úspěch nebo selhání hello dočasný soubor bude odstraněn.
 
 > [!IMPORTANT]
 > Import a Export je dostupná jenom pro prémiových mezipamětí vrstvy. Další informace a pokyny najdete v tématu [importu a exportu dat ve službě Azure Redis Cache](cache-how-to-import-export-data.md).
@@ -317,15 +317,15 @@ Export umožňuje exportovat data uložená ve službě Azure Redis Cache k Redi
 > 
 
 ### <a name="reboot"></a>Restartování
-**Restartovat** okno umožňuje restartovat uzly mezipaměti. Tato možnost restartování umožňuje otestovat aplikaci pro odolnost proti chybám, pokud dojde k selhání uzlu mezipaměti.
+Hello **restartovat** okno vám umožní tooreboot hello uzly svojí mezipaměti. Tato možnost restartování umožňuje vám tootest Pokud dojde k selhání uzlu mezipaměti aplikace pro odolnost proti chybám.
 
 ![Restartování](./media/cache-configure/redis-cache-reboot.png)
 
-Pokud máte s povoleným clusteringem cache ve verzi premium, můžete vybrat které horizontálních oddílů mezipaměti restartovat.
+Pokud máte s povoleným clusteringem cache ve verzi premium, můžete vybrat které horizontálních tooreboot mezipaměti hello.
 
 ![Restartování](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Restartovat jeden nebo více uzlů svojí mezipaměti, vyberte požadovaný uzel a klikněte na tlačítko **restartovat**. Pokud máte cache ve verzi premium s povoleným clusteringem, vyberte shard(s) restartovat a pak klikněte na tlačítko **restartovat**. Po několika minutách restartování vybrané uzly a jsou zpět do režimu online několik minut později.
+tooreboot jeden nebo více uzlů vaší mezipaměti, vyberte uzel hello potřeby a klikněte na tlačítko **restartovat**. Pokud máte cache ve verzi premium s povoleným clusteringem, vyberte hello shard(s) tooreboot a pak klikněte na **restartovat**. Po několika minutách hello restartování vybrané uzly a jsou zpět do režimu online několik minut později.
 
 > [!IMPORTANT]
 > Restart je nyní k dispozici pro všechny cenové úrovně. Další informace a pokyny najdete v tématu [správy Azure Redis Cache - restartování](cache-administration.md#reboot).
@@ -335,7 +335,7 @@ Restartovat jeden nebo více uzlů svojí mezipaměti, vyberte požadovaný uzel
 
 ## <a name="monitoring"></a>Monitorování
 
-**Monitorování** část vám pomůže nakonfigurovat monitorování pro mezipaměť Redis Cache a diagnostiky. Další informace o Azure Redis Cache monitorování a Diagnostika, najdete v části [jak monitorovat Azure Redis Cache](cache-how-to-monitor.md).
+Hello **monitorování** část vám tooconfigure diagnostiky a monitorování pro mezipaměť Redis Cache. Další informace o Azure Redis Cache monitorování a Diagnostika, najdete v části [jak toomonitor Azure mezipaměti Redis](cache-how-to-monitor.md).
 
 ![Diagnostika](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -344,23 +344,23 @@ Restartovat jeden nebo více uzlů svojí mezipaměti, vyberte požadovaný uzel
 * [Diagnostika](#diagnostics)
 
 ### <a name="redis-metrics"></a>Metriky pro redis
-Klikněte na tlačítko **Redis metriky** k [metriky zobrazit](cache-how-to-monitor.md#view-cache-metrics) ke svojí mezipaměti.
+Klikněte na tlačítko **Redis metriky** příliš[metriky zobrazit](cache-how-to-monitor.md#view-cache-metrics) ke svojí mezipaměti.
 
 ### <a name="alert-rules"></a>Pravidla výstrah
 
-Klikněte na tlačítko **výstrah pravidla** můžete konfigurovat upozornění na základě metriky pro Redis Cache. Další informace najdete v tématu [výstrahy](cache-how-to-monitor.md#alerts).
+Klikněte na tlačítko **výstrah pravidla** tooconfigure výstrahy založené na metriky pro Redis Cache. Další informace najdete v tématu [výstrahy](cache-how-to-monitor.md#alerts).
 
 ### <a name="diagnostics"></a>Diagnostika
 
-Ve výchozím nastavení, mezipaměti metriky v Azure monitorování jsou [uchovávají po dobu 30 dnů](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) a odstraní. Chcete-li zachovat metriky vaší mezipaměti po dobu delší než 30 dní, klikněte na tlačítko **diagnostiky** k [konfigurace účtu úložiště](cache-how-to-monitor.md#export-cache-metrics) používá k ukládání diagnostiku mezipaměti.
+Ve výchozím nastavení, mezipaměti metriky v Azure monitorování jsou [uchovávají po dobu 30 dnů](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) a odstraní. Klikněte na tlačítko toopersist metriky vaší mezipaměti po dobu delší než 30 dní, **diagnostiky** příliš[konfigurace účtu úložiště hello](cache-how-to-monitor.md#export-cache-metrics) používá toostore diagnostiku mezipaměti.
 
 >[!NOTE]
->Kromě archivace vaše mezipaměť metriky pro úložiště, můžete také [stream je do centra událostí nebo poslat k analýze protokolů](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics).
+>V přidání tooarchiving toostorage vaší mezipaměti metriky, můžete také [stream je centra událostí tooan nebo poslat tooLog Analytics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics).
 >
 >
 
 ## <a name="support--troubleshooting-settings"></a>Podporovat & řešení potíží s nastavení
-Nastavení v **podpory a řešení potíží s** části poskytují možnosti pro řešení problémů s mezipamětí.
+Hello nastavení v hello **podpory a řešení potíží s** části poskytují možnosti pro řešení problémů s mezipamětí.
 
 ![Podpora + řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
@@ -368,64 +368,64 @@ Nastavení v **podpory a řešení potíží s** části poskytují možnosti pr
 * [Nová žádost o podporu](#new-support-request)
 
 ### <a name="resource-health"></a>Stav prostředků
-**Stav prostředku** sleduje prostředku a zjistíte, zda je spuštěn podle očekávání. Další informace o službě stavu prostředků Azure najdete v tématu [přehled stavu prostředků Azure](../resource-health/resource-health-overview.md).
+**Stav prostředku** sleduje prostředku a zjistíte, zda je spuštěn podle očekávání. Další informace o hello služby stavu prostředků Azure najdete v tématu [přehled stavu prostředků Azure](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
-> Stav prostředku je momentálně nelze vytvořit sestavu stavu instance služby Azure Redis Cache hostované ve virtuální síti. Další informace najdete v tématu [všechny funkce mezipaměti fungují při hostování mezipaměti ve virtuální síti?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> Stav prostředku je momentálně nemůže tooreport na dobrý stav instance služby Azure Redis Cache hostované ve virtuální síti. Další informace najdete v tématu [všechny funkce mezipaměti fungují při hostování mezipaměti ve virtuální síti?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 > 
 > 
 
 ### <a name="new-support-request"></a>Nová žádost o podporu
-Klikněte na tlačítko **nová žádost o podporu** otevřete žádost o podporu pro mezipaměť.
+Klikněte na tlačítko **nová žádost o podporu** tooopen žádost o podporu pro mezipaměť.
 
 
 
 
 
 ## <a name="default-redis-server-configuration"></a>Výchozí konfigurace serveru Redis
-Nové instance služby Azure Redis Cache jsou nakonfigurovány s následující výchozí hodnoty konfigurace Redis.
+Nové instance služby Azure Redis Cache jsou nakonfigurovány s následující výchozí hodnoty konfigurace Redis hello.
 
 > [!NOTE]
-> Nastavení v této části nelze změnit pomocí `StackExchange.Redis.IServer.ConfigSet` metoda. Pokud tato metoda je volána s příkazy v této části, je vyvolána výjimka podobný následujícímu:  
+> Hello nastavení v této části nelze změnit pomocí hello `StackExchange.Redis.IServer.ConfigSet` metoda. Pokud tato metoda je volána s jedním z hello příkazy v této části, je vyvolána následující výjimce podobné toohello:  
 > 
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 > 
-> Všechny hodnoty, které se dají konfigurovat jako **max paměti policy**, se dají konfigurovat prostřednictvím portálu Azure nebo nástroje příkazového řádku pro správu například Azure CLI nebo prostředí PowerShell.
+> Všechny hodnoty, které se dají konfigurovat jako **max paměti policy**, se dají konfigurovat prostřednictvím hello portál Azure nebo nástroje příkazového řádku pro správu, například Azure CLI nebo prostředí PowerShell.
 > 
 > 
 
 | Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
-| `databases` |16 |Výchozí počet databází je 16, ale můžete nakonfigurovat různé počty podle cenové úrovně. <sup>1</sup> výchozí databáze je databáze 0, můžete vybrat jinou na základě jednotlivých připojení pomocí `connection.GetDatabase(dbid)` kde `dbid` je číslo v rozsahu od `0` a `databases - 1`. |
-| `maxclients` |Závisí na cenovou úroveň<sup>2</sup> |Toto je maximální počet připojených klientů, které jsou povoleny ve stejnou dobu. Po dosažení limitu Redis zavře všechna nová připojení, a vrátí chybu bylo dosaženo maximální počet klientů. |
-| `maxmemory-policy` |`volatile-lru` |Maxmemory zásady je nastavení pro jak Redis vybere co při odebrání `maxmemory` je dosaženo (velikost mezipaměti nabídky, jste vybrali při vytvoření mezipaměti). S Azure Redis Cache ve výchozím nastavení je `volatile-lru`, které odebere klíče s vypršení platnosti nastavit pomocí algoritmu hodnoty nejdelšího Nepoužití. Toto nastavení můžete nakonfigurovat na portálu Azure. Další informace najdete v tématu [paměti zásady](#memory-policies). |
-| `maxmemory-samples` |3 |Uložit paměti, jsou přibližně algoritmy místo přesné algoritmy LRU a minimální hodnota TTL algoritmy. Ve výchozím nastavení Redis tři klíče kontroly a vyskladnění ten, který byl použit méně nedávno. |
-| `lua-time-limit` |5,000 |Maximální doba provádění skriptu Lua v milisekundách. Pokud je dosaženo maximální dobu spuštění, zaprotokoluje Redis, je stále v provádění po maximální povolenou dobu skript a spustí odpoví na dotazy s chybou. |
+| `databases` |16 |Hello výchozí počet databází je 16, ale můžete nakonfigurovat různých čísel na základě hello cenová úroveň. <sup>1</sup> hello výchozí databáze je databáze 0, můžete vybrat jinou na základě jednotlivých připojení pomocí `connection.GetDatabase(dbid)` kde `dbid` je číslo v rozsahu od `0` a `databases - 1`. |
+| `maxclients` |Závisí na hello cenová úroveň<sup>2</sup> |Toto je hello maximální počet připojených klientů, které jsou povolené v hello stejný čas. Po dosažení limitu hello Redis zavře všechny hello nová připojení, vrátíte k chybě 'maximální počet klientů dosaženo'. |
+| `maxmemory-policy` |`volatile-lru` |Zásady Maxmemory je hello nastavení pro jak Redis vybere co tooremove při `maxmemory` je dosaženo (hello velikost mezipaměti hello nabídky, jste vybrali při vytvoření mezipaměti hello). S Azure Redis Cache hello výchozí nastavení je `volatile-lru`, které odebere hello klíče s vypršení platnosti nastavit pomocí algoritmu hodnoty nejdelšího Nepoužití. Toto nastavení můžete nakonfigurovat v hello portálu Azure. Další informace najdete v tématu [paměti zásady](#memory-policies). |
+| `maxmemory-samples` |3 |paměť toosave, LRU a minimální hodnota TTL algoritmy jsou přibližný algoritmy místo přesné algoritmy. Ve výchozím nastavení Redis kontroly tři klíče a vyskladnění hello jeden použitou méně nedávno. |
+| `lua-time-limit` |5,000 |Maximální doba provádění skriptu Lua v milisekundách. Když je dosaženo maximální dobu spuštění hello, zaznamená Redis, je stále v provádění po hello maximální povolená doba skript a tooreply tooqueries začíná k chybě. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupní klienta lze vynutit odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (obvyklým důvodem je, že klient Pub nebo Sub nemůže využívat zprávy rychle, jak můžete vytvořit vydavatele, je). Další informace najdete v tématu [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Hello klienta výstupní vyrovnávací paměť omezení může být použit tooforce odpojení klientů, které nejsou čtení dat ze serveru hello dostatečně rychle z nějakého důvodu (obvyklým důvodem je, že klienta Pub nebo Sub tak rychle, jak je může vytvořit vydavatele hello nelze využívat zprávy). Další informace najdete v tématu [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
-<sup>1</sup>tento limit pro `databases` se liší pro každý Azure Redis Cache cenová úroveň a můžete nastavit při vytváření mezipaměti. Pokud žádné `databases` nastavení zadat během vytváření mezipaměti, výchozí hodnota je 16.
+<sup>1</sup>hello limit pro `databases` se liší pro každý Azure Redis Cache cenová úroveň a můžete nastavit při vytváření mezipaměti. Pokud žádné `databases` nastavení zadat během vytváření mezipaměti hello výchozí hodnota je 16.
 
 * Základní a standardní mezipaměti
-  * C0 (250 MB) mezipaměti - až 16 databáze
-  * C1 mezipaměti (1 GB) - až 16 databáze
-  * C2 mezipaměti (2,5 GB) - až 16 databáze
-  * C3 (6 GB) mezipaměti - až 16 databáze
-  * C4 (13 GB) mezipaměti - až 32 databáze
-  * C5 (26 GB) mezipaměti - až 48 databáze
-  * C6 (53 GB) mezipaměti - až 64 databáze
+  * C0 (250 MB) mezipaměti - až too16 databáze
+  * C1 mezipaměti (1 GB) – až too16 databáze
+  * C2 mezipaměti (2,5 GB) – až too16 databáze
+  * C3 (6 GB) mezipaměti - až too16 databáze
+  * C4 (13 GB) mezipaměti - až too32 databáze
+  * C5 (26 GB) mezipaměti - až too48 databáze
+  * C6 (53 GB) mezipaměti - až too64 databáze
 * Ukládá do mezipaměti Premium
-  * P1 (6 GB - 60 GB) - až 16 databáze
-  * P2 (13 GB - 130 GB) – až 32 databáze
-  * P3 (26 GB - 260 GB) – až 48 databáze
-  * P4 (53 GB - 530 GB) – až 64 databáze
-  * Všechny prémiových mezipamětí s clusterem Redis povoleny – Redis cluster podporuje jenom používání databáze 0 proto `databases` omezení pro všechny premium mezipaměť Redis clusteru povolena efektivně 1 a [vyberte](http://redis.io/commands/select) není povolen příkaz. Další informace najdete v tématu [muset provést jakékoli změny Moje aplikace klienta použít clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * P1 (6 GB - 60 GB) – až too16 databáze
+  * P2 (13 GB - 130 GB) – až too32 databáze
+  * P3 (26 GB - 260 GB) – až too48 databáze
+  * P4 (53 GB - 530 GB) – až too64 databáze
+  * Všechny prémiových mezipamětí s clusterem Redis povoleny – Redis clusteru podporuje použití databáze 0 tak hello `databases` omezení pro všechny premium mezipaměť Redis clusteru povolena je efektivně 1 a hello [vyberte](http://redis.io/commands/select) není povolen příkaz. Další informace najdete v tématu [potřebuji toomake žádné změny toomy klienta aplikace toouse clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Další informace o databáze najdete v tématu [co jsou databáze Redis?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> `databases` Nastavení může být nakonfigurovaný jenom během vytváření mezipaměti a pouze pomocí prostředí PowerShell, rozhraní příkazového řádku nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell, najdete v části [New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
+> Hello `databases` nastavení může být nakonfigurovaný jenom během vytváření mezipaměti a pouze pomocí prostředí PowerShell, rozhraní příkazového řádku nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell, najdete v části [New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
 > 
 > 
 
@@ -433,21 +433,21 @@ Další informace o databáze najdete v tématu [co jsou databáze Redis?](cache
 <sup>2</sup> `maxclients` se liší pro každý Azure Redis Cache cenová úroveň.
 
 * Základní a standardní mezipaměti
-  * C0 (250 MB) mezipaměti - až 256 připojení
-  * C1 mezipaměti (1 GB) – až 1 000 připojení
-  * C2 mezipaměti (2,5 GB) – až 2 000 připojení
-  * C3 (6 GB) mezipaměti - až 5 000 připojení
-  * C4 (13 GB) mezipaměti - až 10 000 připojení
-  * C5 (26 GB) mezipaměti - až 15 000 připojení
-  * C6 (53 GB) mezipaměti - až 20 000 připojení
+  * C0 (250 MB) mezipaměti - až too256 připojení
+  * C1 mezipaměti (1 GB) – až too1, 000 připojení
+  * C2 mezipaměti (2,5 GB) – až too2, 000 připojení
+  * C3 (6 GB) mezipaměti - až too5, 000 připojení
+  * C4 (13 GB) mezipaměti - až too10, 000 připojení
+  * C5 (26 GB) mezipaměti - až too15, 000 připojení
+  * C6 (53 GB) mezipaměti - až too20, 000 připojení
 * Ukládá do mezipaměti Premium
-  * P1 (6 GB - 60 GB) – až 7500 připojení
-  * P2 (13 GB - 130 GB) – až 15 000 připojení
-  * P3 (26 GB - 260 GB) – až 30 000 připojení
-  * P4 (53 GB - 530 GB) – až 40 000 připojení
+  * P1 (6 GB - 60 GB) – až too7, 500 připojení
+  * P2 (13 GB - 130 GB) – až too15 000 připojení
+  * P3 (26 GB - 260 GB) – až too30 000 připojení
+  * P4 (53 GB - 530 GB) – až too40 000 připojení
 
 > [!NOTE]
-> Při každém velikost mezipaměti umožňuje *až* určitý počet připojení, každé připojení k Redis má režie spojená s ním spojená. Příkladem takových režie může být využití procesoru a paměti v důsledku šifrování pomocí protokolu TLS/SSL. Připojení maximální limit pro velikost daného mezipaměti předpokládá lehkým načíst mezipaměti. Pokud načíst z režijní náklady na připojení *plus* zatížení z klientské operace překročí kapacitu pro systém, mezipaměti můžete mít problémy kapacitu, i pokud nebyl překročen limit připojení pro aktuální velikost mezipaměti.
+> Při každém velikost mezipaměti umožňuje *až* určitý počet připojení, každý tooRedis připojení má režie spojená s ním spojená. Příkladem takových režie může být využití procesoru a paměti v důsledku šifrování pomocí protokolu TLS/SSL. Hello připojení maximální limit pro velikost daného mezipaměti předpokládá lehkým načíst mezipaměti. Pokud načíst z režijní náklady na připojení *plus* zatížení z klientské operace překročí kapacitu pro systém hello, hello mezipaměti můžete mít problémy kapacity, i pokud nebyl překročen limit pro aktuální velikost mezipaměti hello hello připojení.
 > 
 > 
 
@@ -455,7 +455,7 @@ Další informace o databáze najdete v tématu [co jsou databáze Redis?](cache
 
 ## <a name="redis-commands-not-supported-in-azure-redis-cache"></a>Redis příkazy nejsou podporované ve službě Azure Redis Cache
 > [!IMPORTANT]
-> Vzhledem k tomu, že konfigurace a Správa instance služby Azure Redis Cache spravuje Microsoft, jsou zakázány následující příkazy. Pokud se pokusíte je vyvolat, zobrazí chybová zpráva podobná `"(error) ERR unknown command"`.
+> Vzhledem k tomu, že konfigurace a Správa instance služby Azure Redis Cache spravuje Microsoft, hello následující příkazy jsou zakázány. Pokud se pokusíte tooinvoke je příliš zobrazí chybová zpráva`"(error) ERR unknown command"`.
 > 
 > * BGREWRITEAOF
 > * BGSAVE
@@ -472,45 +472,45 @@ Další informace o databáze najdete v tématu [co jsou databáze Redis?](cache
 Další informace o příkazech Redis najdete v tématu [http://redis.io/commands](http://redis.io/commands).
 
 ## <a name="redis-console"></a>Konzola redis
-Bezpečně vydávat příkazy vaší instancí Azure Redis Cache pomocí **konzola Redis**, která je k dispozici na webu Azure portal pro všechny úrovně mezipaměti.
+Můžete bezpečně vydávat příkazy tooyour instancí Azure Redis Cache pomocí hello **konzola Redis**, která je dostupná v hello portál Azure pro všechny úrovně mezipaměti.
 
 > [!IMPORTANT]
-> - Konzola Redis nefunguje s [VNET](cache-how-to-premium-vnet.md). Pokud vaše mezipaměť je součástí virtuální sítě, jenom pro klienty ve virtuální síti přístup do mezipaměti. Protože se spouští konzola Redis v prohlížeči místní, což je mimo síť VNET, se nemůže připojit ke své mezipaměti.
-> - Ne všechny příkazy Redis jsou podporovány ve službě Azure Redis Cache. Seznam Redis příkazy, které jsou pro Azure Redis Cache zakázán, najdete v předchozí [Redis příkazy nejsou podporované ve službě Azure Redis Cache](#redis-commands-not-supported-in-azure-redis-cache) části. Další informace o příkazech Redis najdete v tématu [http://redis.io/commands](http://redis.io/commands).
+> - Hello Redis konzola nefunguje s [VNET](cache-how-to-premium-vnet.md). Pokud vaše mezipaměť je součástí virtuální sítě, můžete přístup jenom pro klienty v hello virtuální síť hello mezipaměti. Vzhledem k tomu konzola Redis běží v prohlížeči místní, což je mimo hello virtuální sítě, se nemůže připojit tooyour mezipaměti.
+> - Ne všechny příkazy Redis jsou podporovány ve službě Azure Redis Cache. Seznam příkazů Redis, kteří jsou zakázáni pro Azure Redis Cache najdete v tématu hello předchozí [Redis příkazy nejsou podporované ve službě Azure Redis Cache](#redis-commands-not-supported-in-azure-redis-cache) části. Další informace o příkazech Redis najdete v tématu [http://redis.io/commands](http://redis.io/commands).
 > 
 > 
 
-Přístup ke konzole Redis, klikněte na tlačítko **konzoly** z **Redis Cache** okno.
+Klikněte na tlačítko tooaccess hello konzola Redis **konzoly** z hello **Redis Cache** okno.
 
 ![Konzola redis](./media/cache-configure/redis-console-menu.png)
 
-K vydání příkazů proti instance mezipaměti, jednoduše zadejte požadovaný příkaz do konzoly.
+příkazy tooissue proti instance mezipaměti, jednoduše zadejte hello požadovaný příkaz do konzoly hello.
 
 ![Konzola redis](./media/cache-configure/redis-console.png)
 
 
-### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Pomocí konzole Redis cache ve verzi premium clusteru
+### <a name="using-hello-redis-console-with-a-premium-clustered-cache"></a>Pomocí hello konzola Redis se prémiový mezipaměť clusteru
 
-Když mezipaměť Redis konzoly pomocí prémiový clusteru, můžete vydávat příkazy jeden horizontálního oddílu mezipaměti. Příkaz pro konkrétní horizontálního oddílu, nejprve připojí k požadované horizontálního oddílu kliknutím na výběr horizontálního oddílu.
+Když mezipaměť hello konzola Redis pomocí prémiový clusteru, můžete použít příkazy tooa jeden horizontálních hello mezipaměti. tooissue příkaz tooa konkrétní horizontálního oddílu, nejdřív připojit požadované horizontálního oddílu toohello kliknutím na výběr hello horizontálního oddílu.
 
 ![Konzola redis](./media/cache-configure/redis-console-premium-cluster.png)
 
-Pokud budete chtít získat přístup ke klíči, který je uložen v různých horizontálního oddílu než připojené horizontálního oddílu, zobrazí chybová zpráva, která je podobná následující zpráva.
+Když zkusíte tooaccess klíč, který je uložen v různých horizontálního oddílu než hello připojené horizontálního oddílu, obdržíte chybové zprávy podobné toohello následující zprávou.
 
 ```
 shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-V předchozím příkladu je ID horizontálního oddílu 1 vybrané horizontálního oddílu, ale `myKey` se nachází v horizontálního oddílu 0, jak `(shard 0)` část chybové zprávy. V tomto příkladu se pro přístup k `myKey`, vyberte horizontálního oddílu 0 pomocí nástroje pro výběr horizontálního oddílu a potom vydat příkaz požadované.
+V předchozím příkladu hello horizontálního oddílu 1 je hello vybrané horizontálního oddílu, ale `myKey` se nachází v horizontálního oddílu 0, jak je indikován hello `(shard 0)` část hello chybová zpráva. V tomto příkladu tooaccess `myKey`, vyberte pomocí horizontálního oddílu 0 hello horizontálního oddílu výběr a potom příkaz hello potřeby problém.
 
 
-## <a name="move-your-cache-to-a-new-subscription"></a>Vaše mezipaměť přesunout do nového předplatného
-Mezipaměti můžete přesunout do nového předplatného kliknutím **přesunout**.
+## <a name="move-your-cache-tooa-new-subscription"></a>Přesunout nového předplatného tooa mezipaměti
+Kliknutím můžete přesunout nového předplatného tooa mezipaměti **přesunout**.
 
 ![Přesunout mezipaměti Redis](./media/cache-configure/redis-cache-move.png)
 
-Informace o přesun prostředků z jedné skupiny prostředků do jiné a z jedno předplatné do druhého, najdete v části [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Informace o přesun prostředků z jednoho prostředku skupiny tooanother a z tooanother jedno předplatné, najdete v části [přesunout skupiny prostředků toonew prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o práci s příkazy Redis najdete v tématu [jak můžete spouštět příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)

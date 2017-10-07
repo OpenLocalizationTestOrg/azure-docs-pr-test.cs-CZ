@@ -1,6 +1,6 @@
 ---
-title: "Nastavit zdroje a cíle pro fyzický server replikaci do Azure s Azure Site Recovery | Microsoft Docs"
-description: "Shrnuje kroky k zadání nastavení zdroje a cíle replikace fyzických serverů do úložiště Azure se službou Azure Site Recovery"
+title: "aaaSet hello zdroj a cíl pro fyzický server tooAzure replikace s Azure Site Recovery | Microsoft Docs"
+description: "Shrnuje kroky tooset hello nastavení zdroj a cíl pro replikaci úložiště tooAzure fyzických serverů s hello služba Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e75ef23174d77509bf54380eba8f251a7337a45f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>Krok 7: Nastavte zdroj a cíl pro fyzický server replikaci do Azure.
+# <a name="step-7-set-up-hello-source-and-target-for-physical-server-replication-tooazure"></a>Krok 7: Nastavení hello zdroj a cíl pro tooAzure replikace fyzického serveru
 
-Tento článek popisuje, jak nakonfigurovat nastavení zdrojové a cílové během replikace místní fyzických serverů do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) službu na portálu Azure.
+Tento článek popisuje, jak tooconfigure zdrojové a cílové nastavení při replikaci místně tooAzure fyzických serverů pomocí hello [Azure Site Recovery](site-recovery-overview.md) služby v hello portálu Azure.
 
-POST dotazy a na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+POST dotazy a na konci hello tohoto článku nebo na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
+## <a name="set-up-hello-source-environment"></a>Nastavit hello zdrojové prostředí
 
-Nastavení konfigurace serveru, registrace v trezoru a zjistit počítače.
+Nastavení konfigurace serveru hello, zaregistrovat v trezoru hello a zjistit počítače.
 
 1. Klikněte na tlačítko **lokality obnovení** > **krok 1: Příprava infrastruktury** > **zdroj**.
 2. Pokud nemáte konfigurační server, klikněte na tlačítko **+ konfigurační server**.
 3. V **přidat Server**, zkontrolujte, zda **konfigurační Server** se zobrazí v **typ serveru**.
-4. Stáhněte instalační soubor nástroje Unified instalace nástroje Site Recovery.
-5. Stáhnout registrační klíč trezoru Tuto funkci potřebujete po spuštění Unified instalace. Klíč je platný pět dní od jeho vygenerování.
+4. Stáhněte si soubor instalace hello Unified instalace nástroje Site Recovery.
+5. Stáhněte si registrační klíč trezoru hello. Tuto funkci potřebujete po spuštění Unified instalace. Hello klíč je platný pět dní od jeho vygenerování.
 
    ![Nastavení zdroje](./media/vmware-walkthrough-source-target/set-source2.png)
 
 
-## <a name="register-the-configuration-server-in-the-vault"></a>Zaregistrujte konfigurační server v trezoru
+## <a name="register-hello-configuration-server-in-hello-vault"></a>Zaregistrujte konfigurační server hello v trezoru hello
 
-Předtím, než můžete spustit, a potom spuštěním Unified instalačního programu nainstalujte konfigurační server, procesový server a hlavní cílový server, postupujte takto. Video popisuje nastavení součásti pro virtuální počítač VMware do Azure replikace. Stejný postup je však platný pro fyzický server na Azure replikaci.
+Následující hello před start a potom spusťte tooinstall hello konfigurační server, hello procesový server a hlavní cílový server hello sjednocený instalační program. Hello video popisuje vytvoření hello komponenty pro virtuální počítač VMware tooAzure replikace. Hello stejný postup je však platný pro replikaci tooAzure fyzický server.
 
-- Na serveru, konfigurace virtuálního počítače, zkontrolujte, jestli se systémové hodiny synchronizované se [čas serveru](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Měla by se shodovat. Pokud je 15 minut před nebo za instalace může selhat.
-- Spusťte instalační program jako místní správce na serveru, konfigurace.
-- Ujistěte se, že je povolená TLS 1.0 ve virtuálním počítači.
+- Ujistěte se, že hello systémové hodiny synchronizované s na konfigurační server hello virtuálních počítačů, [čas serveru](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Měla by se shodovat. Pokud je 15 minut před nebo za instalace může selhat.
+- Spusťte instalační program jako místní správce na počítači serveru konfigurace hello.
+- Ujistěte se, že je povolená TLS 1.0 na hello virtuálních počítačů.
 
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server lze také nainstalovat [z příkazového řádku](http://aka.ms/installconfigsrv).
+> Hello konfigurační server lze také nainstalovat [z příkazového řádku hello](http://aka.ms/installconfigsrv).
 
 
 
 
-## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
+## <a name="set-up-hello-target-environment"></a>Nastavení cílového prostředí hello
 
-Než nastavíte cílovém prostředí, ujistěte se, že máte účet úložiště Azure a virtuální sítě nastavit.
+Než nastavíte hello cílové prostředí, ujistěte se, že máte účet úložiště Azure a virtuální sítě nastavit.
 
-1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte předplatné Azure, které chcete použít.
+1. Klikněte na tlačítko **připravit infrastrukturu** > **cíl**, a vyberte hello chcete toouse předplatného Azure.
 2. Určit, jestli je váš model nasazení cílového využívající Resource Manager a classic.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
    ![cíl](./media/physical-walkthrough-source-target/gs-target.png)
 
-4. Pokud jste dosud nevytvořili účet úložiště nebo sítě, klikněte na tlačítko **+ účet úložiště** nebo **+ síť**, abyste mohli vytvořit účet správce prostředků nebo sítě vložené.
+4. Pokud jste dosud nevytvořili účet úložiště nebo sítě, klikněte na tlačítko **+ účet úložiště** nebo **+ síť**, toocreate správce prostředků účtu nebo síti vložené.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte na [krok 8: nastavení zásad replikace](physical-walkthrough-replication.md)
+Přejděte příliš[krok 8: nastavení zásad replikace](physical-walkthrough-replication.md)

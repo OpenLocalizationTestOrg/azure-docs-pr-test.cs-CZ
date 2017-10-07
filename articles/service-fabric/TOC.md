@@ -8,7 +8,7 @@
 # Kurzy
 ## Nasazení aplikace .NET
 ### [1. Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md)
-### [2. Nasazení aplikace](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+### [2 – nasazení aplikace hello](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3. Konfigurace CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## Migrace aplikace metodou „lift and shift“
@@ -79,7 +79,7 @@
 
 ## Správa aplikací
 ### [Přehled](service-fabric-application-lifecycle.md)
-### [Nastavení ImageStoreConnectionString](service-fabric-image-store-connection-string.md)
+### [Parametr ImageStoreConnectionString nastavení Hello](service-fabric-image-store-connection-string.md)
 ### Upgrade aplikací
 #### [Přehled](service-fabric-application-upgrade.md)
 #### [Konfigurace](service-fabric-visualstudio-configure-upgrade.md)
@@ -121,7 +121,7 @@
 ### [Diagnostika ve stavovém modelu Reliable Services](service-fabric-reliable-services-diagnostics.md)
 ### [Diagnostika v Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 
-# Průvodce postupy
+# Jak tooGuides
 ## Nastavení vývojového prostředí
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
@@ -185,7 +185,7 @@
 #### [Konfigurace nastavení komunikace](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [Konfigurace ReliableDictionaryActorStateProvider](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
-### [Migrace staré aplikace v Javě pro podporu Mavenu](service-fabric-migrate-old-javaapp-to-use-maven.md)
+### [Migrace starého aplikace v jazyce Java toosupport Maven](service-fabric-migrate-old-javaapp-to-use-maven.md)
 
 ### [Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci](service-fabric-reverseproxy-configure-secure-communication.md)
 
@@ -214,7 +214,7 @@
 
 ## Migrace ze služby Cloud Services
 ### [Porovnání služby Cloud Services se Service Fabric](service-fabric-cloud-services-migration-differences.md)
-### [Migrace do Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+### [Migrace tooService prostředků infrastruktury](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 ### [Doporučené postupy](/azure/architecture/service-fabric/migrate-from-cloud-services)
 
 ## Správa životního cyklu aplikace
@@ -239,7 +239,7 @@
 ##### [Pomocí testovacích akcí](service-fabric-testability-actions.md)
 ##### [Během úloh](service-fabric-testability-workload-tests.md)
 ##### [Pomocí testovacích scénářů](service-fabric-testability-scenarios.md)
-##### [Pomocí rozhraní API pro přechod uzlů](service-fabric-node-transition-apis.md)
+##### [Pomocí uzlu přechod hello rozhraní API](service-fabric-node-transition-apis.md)
 #### [Zátěžový test aplikace](service-fabric-vso-load-test.md)
 
 ### Nastavení průběžné integrace
@@ -258,7 +258,7 @@
 #### [Upgrade](service-fabric-cluster-upgrade.md)
 #### [Nastavení řízení přístupu](service-fabric-cluster-security-roles.md)
 #### [Konfigurace](service-fabric-cluster-fabric-settings.md)
-#### [Otevření portu v nástroji pro vyrovnávání zatížení](create-load-balancer-rule.md)
+#### [Otevření portu v hello nástroj pro vyrovnávání zatížení](create-load-balancer-rule.md)
 #### [Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)
 #### [Odstranění](service-fabric-cluster-delete.md)
 
@@ -269,14 +269,14 @@
 ##### [Místní vytvoření](service-fabric-cluster-creation-for-windows-server.md)
 ##### [Zabezpečení pomocí certifikátů](service-fabric-windows-cluster-x509-security.md)  
 ##### [Zabezpečení pomocí zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md)
-##### [Obsah samostatného balíčku](service-fabric-cluster-standalone-package-contents.md)
+##### [Obsah balíčku samostatné hello](service-fabric-cluster-standalone-package-contents.md)
 #### [Škálování](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Nastavení řízení přístupu](service-fabric-cluster-security-roles.md)
 #### [Konfigurace](service-fabric-cluster-manifest.md)
 #### [Upgrade](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [Vizualizace clusteru](service-fabric-visualizing-your-cluster.md)
-### [Připojení k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md)
+### [Připojte tooa zabezpečené cluster](service-fabric-connect-to-secure-cluster.md)
 
 ### [Správa clusteru pomocí rozhraní příkazového řádku Service Fabric](service-fabric-cli.md)
 ### [Oprava uzlů clusteru](service-fabric-patch-orchestration-application.md)

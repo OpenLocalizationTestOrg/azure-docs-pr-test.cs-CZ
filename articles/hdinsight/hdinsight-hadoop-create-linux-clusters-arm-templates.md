@@ -1,6 +1,6 @@
 ---
-title: "Vytváření clusterů systému Hadoop pomocí šablon - Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet clustery pro HDInsight pomocí šablony Resource Manageru"
+title: "aaaCreate Hadoop clusterů pomocí šablon - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate clusterů pro HDInsight pomocí šablony Resource Manageru"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: jgao
-ms.openlocfilehash: b2cdc954530daea2a641599c946ce3787149e762
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 92a6c1d888e401a11537dba34f188245ac17f448
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvoření clusterů systému Hadoop v HDInsight pomocí šablony Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-V tomto článku se dozvíte několik způsobů, jak vytvořit clustery se Azure HDInsight pomocí šablony Azure Resource Manager. Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Další informace o dalších funkcí a nástrojů pro vytváření clusteru, klikněte na tlačítko volič karty v horní této stránce nebo v tématu [metody vytváření clusterů](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+V tomto článku se dozvíte několik způsobů toocreate Azure HDInsight clustery s šablon Azure Resource Manageru. Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). toolearn o jiných nástrojů pro vytvoření clusteru a funkcí, klikněte na tlačítko hello karta selektor na hello horní části této stránky nebo najdete [metody vytváření clusterů](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 ## <a name="prerequisites"></a>Požadavky
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Podle pokynů v tomto článku, budete potřebovat:
+toofollow hello pokyny v tomto článku, budete potřebovat:
 
 * [Předplatné](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Prostředí Azure PowerShell nebo Azure CLI.
@@ -38,42 +38,42 @@ Podle pokynů v tomto článku, budete potřebovat:
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
-Šablonu Resource Manager umožňuje snadné vytváření následující pro vaši aplikaci v rámci jediné koordinované operace:
-* Clustery prostředí HDInsight a jejich závislé prostředky (například výchozí účet úložiště)
-* Další prostředky (například Azure SQL Database k použití Apache Sqoop)
+Šablonu Resource Manager umožňuje snadno toocreate hello následující pro vaši aplikaci v rámci jediné koordinované operace:
+* Clustery prostředí HDInsight a jejich závislé prostředky (například hello výchozí účet úložiště)
+* Další prostředky (například Azure SQL Database toouse Apache Sqoop)
 
-V šabloně definujete prostředky, které jsou potřebné pro aplikaci. Můžete určit taky parametry nasazení pro vstupní hodnoty pro různá prostředí. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení.
+V šabloně hello definujete hello prostředky, které jsou potřebné pro aplikace hello. Je také zadat hodnoty tooinput parametry nasazení pro různá prostředí. Šablona Hello se skládá z JSON a výrazy, že používáte tooconstruct hodnoty pro vaše nasazení.
 
-Můžete najít ukázky šablony HDInsight v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/?term=hdinsight). Použít napříč platformami [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) s [Resource Manager rozšíření](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovém editoru a uložit šablonu do souboru na pracovní stanici. Zjistíte, jak volat šablony pomocí různých metod.
+Můžete najít ukázky šablony HDInsight v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/?term=hdinsight). Použít napříč platformami [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) s hello [Resource Manager rozšíření](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textový editor toosave hello šablony do souboru na pracovní stanici. Zjistíte, jak toocall hello šablony pomocí různých metod.
 
-Další informace o šablonách Resource Manager najdete v následujících článcích:
+Další informace o šablonách Resource Manager najdete v části hello následující články:
 
 * [Vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 
 ## <a name="generate-templates"></a>Generování šablon
 
-Pomocí portálu Azure, můžete konfigurovat vlastnosti clusteru a potom uložte šablonu ještě před nasazením. Pak můžete znovu použít šablonu.
+Pomocí hello portálu Azure můžete nakonfigurovat všechny vlastnosti hello clusteru a potom uložte hello šablonu ještě před nasazením. Můžete je znovu hello šablony.
 
-**Ke generování šablony pomocí portálu Azure**
+**toogenerate a šablony pomocí hello portálu Azure**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na tlačítko **nový** v levé nabídce klikněte na tlačítko **Intelligence + analýzy**a potom klikněte na **HDInsight**.
-3. Postupujte podle pokynů a zadejte vlastnosti. Můžete použít buď **rychle vytvořit** nebo **vlastní** možnost.
-4. Na **Souhrn** , klikněte na **stáhnout šablonu a parametry**:
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Klikněte na tlačítko **nový** v levé nabídce hello, klikněte na tlačítko **Intelligence + analýzy**a potom klikněte na **HDInsight**.
+3. Postupujte podle vlastnosti tooenter pokyny hello. Můžete použít buď hello **rychle vytvořit** nebo hello **vlastní** možnost.
+4. Na hello **Souhrn** , klikněte na **stáhnout šablonu a parametry**:
 
     ![Vytvoření stažení šablony správce prostředků clusteru HDInsight Hadoop](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download.png)
 
-    Zobrazí seznam soubor šablony, soubor parametrů a ukázky kódu, které jsou používány k nasazení šablony:
+    Zobrazí seznam hello soubor šablony, soubor parametrů a kódu ukázky používá toodeploy hello šablonu:
 
     ![HDInsight Hadoop vytvoření clusteru možnosti stahování šablony Resource Manageru](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download-options.png)
 
-    Tady můžete šablonu stáhnout, uložit do knihovny šablony nebo nasazení šablony.
+    Tady můžete stáhnout hello šablonu, uložit knihovna šablon tooyour nebo nasazení šablony hello.
 
-    Chcete-li získat přístup k šabloně v knihovně, klikněte na tlačítko **další služby** z levé nabídce a pak klikněte na tlačítko **šablony** (v části **jiných** kategorie).
+    tooaccess šablonu v knihovně, klikněte na tlačítko **další služby** z levé nabídce hello a pak klikněte na tlačítko **šablony** (v části hello **jiných** kategorie).
 
     > [!Note]
-    > Soubor šablony a parametry se musí použít společně. Jinak můžete získat neočekávané výsledky. Například výchozí **clusterKind** hodnota vlastnosti je vždy **hadoop**, bez ohledu na tom, co jste zadejte před stažením šablony.
+    > soubor šablony a parametry Hello musí použít společně. Jinak můžete získat neočekávané výsledky. Například hello výchozí **clusterKind** hodnota vlastnosti je vždy **hadoop**, bez ohledu na tom, co jste zadejte před stažením šablony hello.
 
 
 
@@ -81,9 +81,9 @@ Pomocí portálu Azure, můžete konfigurovat vlastnosti clusteru a potom uložt
 
 Tento postup vytvoří Hadoop cluster v HDInsight.
 
-1. Uložení souboru JSON v [příloha](#appx-a-arm-template) do pracovní stanice. Ve skriptu prostředí PowerShell, je název souboru `C:\HDITutorials-ARM\hdinsight-arm-template.json`.
-2. V případě potřeby nastavte parametry a proměnné.
-3. Spustíte šablonu pomocí následujícího skriptu prostředí PowerShell:
+1. Uložte soubor JSON hello v hello [příloha](#appx-a-arm-template) tooyour pracovní stanice. V hello skript prostředí PowerShell, je název souboru hello `C:\HDITutorials-ARM\hdinsight-arm-template.json`.
+2. V případě potřeby nastavte hello parametry a proměnné.
+3. Spusťte hello šablony pomocí hello následující skript prostředí PowerShell:
 
         ####################################
         # Set these variables
@@ -110,10 +110,10 @@ Tento postup vytvoří Hadoop cluster v HDInsight.
         #endregion
 
         ####################################
-        # Connect to Azure
+        # Connect tooAzure
         ####################################
-        #region - Connect to Azure subscription
-        Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+        #region - Connect tooAzure subscription
+        Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
         try{Get-AzureRmContext}
         catch{Login-AzureRmAccount}
         #endregion
@@ -121,7 +121,7 @@ Tento postup vytvoří Hadoop cluster v HDInsight.
         # Create a resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
 
-        # Create cluster and the dependent storage account
+        # Create cluster and hello dependent storage account
         $parameters = @{clusterName="$hdinsightClusterName"}
 
         New-AzureRmResourceGroupDeployment `
@@ -133,53 +133,53 @@ Tento postup vytvoří Hadoop cluster v HDInsight.
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
 
-    Skript prostředí PowerShell lze konfigurovat pouze název clusteru. Název účtu úložiště je pevně zakódovaná v šabloně. Zobrazí se výzva k zadání hesla uživatele clusteru. (Výchozí uživatelské jméno **správce**.) Také budete vyzváni k zadání hesla uživatele SSH. (Výchozí uživatelské jméno SSH **sshuser**.)  
+    Hello skript prostředí PowerShell lze konfigurovat pouze hello název clusteru. název účtu úložiště Hello je pevně zakódovaná v šabloně hello. Jste heslo uživatele clusteru výzvami tooenter hello. (výchozí uživatelské jméno hello **správce**.) Také jste heslo uživatele SSH výzvami tooenter hello. (uživatelské jméno SSH výchozí hello **sshuser**.)  
 
 Další informace najdete v tématu [nasadit v prostředí PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template).
 
 ## <a name="deploy-with-cli"></a>Nasazení pomocí rozhraní příkazového řádku
-Následující příklad používá rozhraní příkazového řádku Azure (CLI). Vytvoří cluster a jeho účet závislého úložiště a kontejneru voláním šablony Resource Manageru:
+Následující ukázka Hello používá rozhraní příkazového řádku Azure (CLI). Vytvoří cluster a jeho účet závislého úložiště a kontejneru voláním šablony Resource Manageru:
 
     azure login
     azure config mode arm
     azure group create -n hdi1229rg -l "East US"
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
 
-Zobrazí se výzva k zadání:
-* Název clusteru.
-* Heslo uživatele clusteru. (Výchozí uživatelské jméno **správce**.)
-* Heslo uživatele SSH. (Výchozí uživatelské jméno SSH **sshuser**.)
+Jste tooenter výzvami:
+* Název clusteru Hello.
+* heslo uživatele Hello clusteru. (výchozí uživatelské jméno hello **správce**.)
+* heslo uživatele SSH Hello. (uživatelské jméno SSH výchozí hello **sshuser**.)
 
-Následující kód obsahuje vložené parametry:
+Hello následující kód obsahuje vložené parametry:
 
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
 
-## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
-V tématu [nasazení pomocí rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
+## <a name="deploy-with-hello-rest-api"></a>Nasazení s hello REST API
+V tématu [nasadit s hello REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
 ## <a name="deploy-with-visual-studio"></a>Nasazení s využitím sady Visual Studio
- Pomocí sady Visual Studio vytvořte projekt skupiny prostředků a nasaďte ho do Azure v uživatelském rozhraní. Vyberete typ zdroje, které chcete zahrnout do projektu. Tyto prostředky se automaticky přidají do šablony Resource Manageru. Projekt také obsahuje skript prostředí PowerShell k nasazení šablony.
+ Pomocí sady Visual Studio toocreate projekt skupiny prostředků a nasadit tooAzure hello uživatelském rozhraní. Vyberete typ hello tooinclude prostředky ve vašem projektu. Tyto prostředky se automaticky přidají toohello šablony Resource Manageru. projekt Hello také poskytuje šablony hello toodeploy skript prostředí PowerShell.
 
-Úvod do skupiny prostředků pomocí sady Visual Studio, najdete v části [vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Úvod toousing Visual Studio se skupinami prostředků, najdete v části [vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili několik způsobů, jak vytvořit cluster služby HDInsight. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili několik způsobů toocreate clusteru služby HDInsight. toolearn více, najdete v části hello následující články:
 
-* Příklad nasazení prostředků prostřednictvím klientské knihovny .NET, naleznete v části [nasadit prostředky pomocí knihovny .NET a šablonu](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Příklad nasazení prostředků prostřednictvím klientské knihovny hello .NET, naleznete v části [nasadit prostředky pomocí knihovny .NET a šablonu](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Podrobný příklad nasazení aplikace naleznete v tématu [zřídit a nasadit mikroslužeb předvídatelné v Azure](../app-service-web/app-service-deploy-complex-application-predictably.md).
-* Pokyny pro nasazení řešení do různých prostředí najdete v článku věnovaném [testovacím a vývojovým prostředím v Microsoft Azure](../solution-dev-test-environments.md).
-* Další informace o části šablony Azure Resource Manageru najdete v tématu [vytváření šablon](../azure-resource-manager/resource-group-authoring-templates.md).
-* Seznam funkcí v šablonu Azure Resource Manager můžete použít, najdete v části [funkce šablon](../azure-resource-manager/resource-group-template-functions.md).
+* Pokyny k nasazení vašeho prostředí toodifferent řešení najdete v tématu [vývojová a testovací prostředí v Microsoft Azure](../solution-dev-test-environments.md).
+* toolearn o hello části hello šablony Azure Resource Manageru, najdete v části [vytváření šablon](../azure-resource-manager/resource-group-authoring-templates.md).
+* Seznam funkcí hello v šablonu Azure Resource Manager můžete použít, najdete v části [funkce šablon](../azure-resource-manager/resource-group-template-functions.md).
 
-## <a name="appendix-resource-manager-template-to-create-a-hadoop-cluster"></a>Dodatek: Šablony Resource Manageru k vytvoření clusteru Hadoop
-Následující šablony Azure Resource Manager vytvoří cluster systémem Linux Hadoop se účet závislého úložiště Azure.
+## <a name="appendix-resource-manager-template-toocreate-a-hadoop-cluster"></a>Dodatek: Resource Manager šablony toocreate clusteru Hadoop
+Hello následující šablony Azure Resource Manager vytvoří cluster systémem Linux Hadoop se účet závislého úložiště Azure hello.
 
 > [!NOTE]
-> Tato ukázka obsahuje informace o konfiguraci pro metaúložiště Hive a metaúložiště Oozie. Odebrat oddíl nebo nakonfigurujte části před použitím šablony.
+> Tato ukázka obsahuje informace o konfiguraci pro metaúložiště Hive a metaúložiště Oozie. Odebrání oddílu hello nebo nakonfigurujte hello části před použitím šablony hello.
 >
 >
 
@@ -190,33 +190,33 @@ Následující šablony Azure Resource Manager vytvoří cluster systémem Linux
         "clusterName": {
         "type": "string",
         "metadata": {
-            "description": "The name of the HDInsight cluster to create."
+            "description": "hello name of hello HDInsight cluster toocreate."
         }
         },
         "clusterLoginUserName": {
         "type": "string",
         "defaultValue": "admin",
         "metadata": {
-            "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+            "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
         }
         },
         "clusterLoginPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "sshUserName": {
         "type": "string",
         "defaultValue": "sshuser",
         "metadata": {
-            "description": "These credentials can be used to remotely access the cluster."
+            "description": "These credentials can be used tooremotely access hello cluster."
         }
         },
         "sshPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+            "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "location": {
@@ -238,7 +238,7 @@ Následující šablony Azure Resource Manager vytvoří cluster systémem Linux
             "Australia Southeast"
         ],
         "metadata": {
-            "description": "The location where all azure resources will be deployed."
+            "description": "hello location where all azure resources will be deployed."
         }
         },
         "clusterType": {
@@ -251,14 +251,14 @@ Následující šablony Azure Resource Manager vytvoří cluster systémem Linux
             "spark"
         ],
         "metadata": {
-            "description": "The type of the HDInsight cluster to create."
+            "description": "hello type of hello HDInsight cluster toocreate."
         }
         },
         "clusterWorkerNodeCount": {
         "type": "int",
         "defaultValue": 2,
         "metadata": {
-            "description": "The number of nodes in the HDInsight cluster."
+            "description": "hello number of nodes in hello HDInsight cluster."
         }
         }
     },
@@ -382,11 +382,11 @@ Následující šablony Azure Resource Manager vytvoří cluster systémem Linux
     }
     }
 
-## <a name="appendix-resource-manager-template-to-create-a-spark-cluster"></a>Dodatek: Šablony Resource Manageru k vytvoření clusteru Spark
+## <a name="appendix-resource-manager-template-toocreate-a-spark-cluster"></a>Dodatek: Resource Manager šablony toocreate clusteru Spark
 
-Tato část obsahuje šablonu Resource Manager, který můžete použít k vytvoření clusteru HDInsight Spark. Tato šablona zahrnuje konfigurace pro `spark-defaults` a `spark-thrift-sparkconf` (pro clustery Spark 1.6) a `spark2-defaults` a `spark2-thrift-sparkconf` (pro clustery Spark 2). Kromě toho HDInsight vypočítá a nastaví konfigurace, jako `spark.executor.instances`, `spark.executor.memory`, a `spark.executor.cores` na základě velikosti clusteru. 
+Tato část obsahuje šablony Resource Manageru, které můžete použít toocreate clusteru HDInsight Spark. Tato šablona zahrnuje konfigurace pro `spark-defaults` a `spark-thrift-sparkconf` (pro clustery Spark 1.6) a `spark2-defaults` a `spark2-thrift-sparkconf` (pro clustery Spark 2). Kromě toho toothis, HDInsight vypočítá a nastaví konfigurace, jako `spark.executor.instances`, `spark.executor.memory`, a `spark.executor.cores` na základě velikosti clusteru hello. 
 
-Pokud nastavíte všechny jeden parametr v části v rámci samotné šablony, HDInsight nepodporuje výpočtu a nastavit další parametry do stejné části. Například parametr `spark.executor.instances` probíhá `spark-defaults` konfigurace. Pokud nastavíte parametr jiné (například `spark.yarn.exector.memoryOverhead`) v `spark-defaults` konfigurace, HDInsight nepodporuje výpočtu a nastavit `spark.executor.instances` také parametr.
+Pokud nastavíte všechny jeden parametr v části v rámci samotné hello šablony, HDInsight nepodporuje výpočtu a nastavit další parametry hello hello stejné části. Například parametr `spark.executor.instances` v hello `spark-defaults` konfigurace. Pokud nastavíte parametr jiné (například `spark.yarn.exector.memoryOverhead`) v hello `spark-defaults` konfigurace, HDInsight nepodporuje výpočtu a nastavit hello `spark.executor.instances` také parametr.
 
     {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -395,27 +395,27 @@ Pokud nastavíte všechny jeden parametr v části v rámci samotné šablony, H
         "clusterName": {
             "type": "string",
             "metadata": {
-                "description": "The name of the HDInsight cluster to create."
+                "description": "hello name of hello HDInsight cluster toocreate."
             }
         },
         "clusterLoginUserName": {
             "type": "string",
             "defaultValue": "admin",
             "metadata": {
-                "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+                "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
             }
         },
         "clusterLoginPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
             }
         },
         "location": {
             "type": "string",
             "defaultValue": "southcentralus",
             "metadata": {
-                "description": "The location where all azure resources will be deployed."
+                "description": "hello location where all azure resources will be deployed."
             }
         },
         "clusterVersion": {
@@ -429,27 +429,27 @@ Pokud nastavíte všechny jeden parametr v části v rámci samotné šablony, H
             "type": "int",
             "defaultValue": 4,
             "metadata": {
-                "description": "The number of nodes in the HDInsight cluster."
+                "description": "hello number of nodes in hello HDInsight cluster."
             }
         },
         "clusterKind": {
             "type": "string",
             "defaultValue": "SPARK",
             "metadata": {
-                "description": "The type of the HDInsight cluster to create."
+                "description": "hello type of hello HDInsight cluster toocreate."
             }
         },
         "sshUserName": {
             "type": "string",
             "defaultValue": "sshuser",
             "metadata": {
-                "description": "These credentials can be used to remotely access the cluster."
+                "description": "These credentials can be used tooremotely access hello cluster."
             }
         },
         "sshPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
             }
         }
     },

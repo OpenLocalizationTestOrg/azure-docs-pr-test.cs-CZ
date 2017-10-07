@@ -1,6 +1,6 @@
 ---
-title: "Vystavení šablon ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky problém v portálu pro vývojáře ve službě Azure API Management."
+title: "aaaIssue šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello obsah stránky hello problém v hello portál pro vývojáře ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e13344df198bca4f73c75fa58221436b94e2f258
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e12902e52c164f73902a97f15ea550790dfecf1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky problém v portálu pro vývojáře.  
+ Hello šablony v této části Povolit obsah hello toocustomize hello problém stránek v portálu pro vývojáře hello.  
   
 -   [Seznam problémů](#IssueList)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).  
   
 ##  <a name="IssueList"></a>Seznam problémů  
- **Seznam problémů** šablona umožňuje přizpůsobení textu stránky seznamu problém v portálu pro vývojáře.  
+ Hello **seznam problémů** šablona vám umožní toocustomize hello textu hello problém seznamu stránky v portálu pro vývojáře hello.  
   
  ![Vystavení portál pro vývojáře seznamu](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "portál pro vývojáře APIM problém seznamu")  
   
@@ -88,7 +88,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Issue list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Issue list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -96,10 +96,10 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Problémy|Kolekce [problém](api-management-template-data-model-reference.md#Issue) entity.|Problémy, které jsou viditelné pro aktuálního uživatele.|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekce aplikací.|  
-|IsAuthenticated|Logická hodnota|Jestli má aktuální uživatel je přihlášený k portálu pro vývojáře.|  
-|CanReportIssues|Logická hodnota|Jestli má aktuální uživatel oprávnění k souboru problém.|  
+|Problémy|Kolekce [problém](api-management-template-data-model-reference.md#Issue) entity.|Hello problémy viditelné toohello aktuálního uživatele.|  
+|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|informace o stránkování Hello pro kolekci aplikace hello.|  
+|IsAuthenticated|Logická hodnota|Jestli hello aktuální uživatel je přihlášený toohello portál pro vývojáře.|  
+|CanReportIssues|Logická hodnota|Tom, zda text hello aktuální uživatel nemá oprávnění toofile problém.|  
 |Search|Řetězec|Tato vlastnost je zastaralá a by se neměla používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
@@ -110,8 +110,8 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
         {  
             "Id": "5702b68bb16653124c8f9ba7",  
             "ApiId": "570275f1b16653124c8f9ba3",  
-            "Title": "I couldn't figure out how to connect my application to the API",  
-            "Description": "I'm having trouble connecting my application to the backend API.",  
+            "Title": "I couldn't figure out how tooconnect my application toohello API",  
+            "Description": "I'm having trouble connecting my application toohello backend API.",  
             "SubscriptionDeveloperName": "Clayton",  
             "IssueState": "Proposed",  
             "ReportedOn": "2016-04-04T18:46:35.64",  
@@ -134,4 +134,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

@@ -1,6 +1,6 @@
 ---
-title: "Umožňuje importovat data do nástroje Machine Learning Studio | Microsoft Docs"
-description: "Jak importovat data do Azure Machine Learning Studio z různých zdrojů dat.. Zjistěte, jaké datové typy a formáty dat jsou podporovány."
+title: "aaaImport data do nástroje Machine Learning Studio | Microsoft Docs"
+description: "Jak tooimport data do Azure Machine Learning Studio z různých zdrojů dat.. Zjistěte, jaké datové typy a formáty dat jsou podporovány."
 keywords: "Importujte dat, formát dat, datové typy, zdroje dat, Cvičná data"
 services: machine-learning
 documentationcenter: 
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: garye;bradsev
-ms.openlocfilehash: b92b480e62f4ce4f4836dc5d0f6afbe80c6b664a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 830dcdde9d43809900c520a41d6d94a65731ca3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
-Chcete-li použít vlastní data v nástroji Machine Learning Studio pro vývoj a cvičení řešení prediktivní analýzy, můžete: 
+toouse svoje vlastní data v Machine Learning Studio toodevelop a train řešení prediktivní analýzy, můžete: 
 
-* nahrání dat z **místního souboru** předem z pevného disku pro vytvoření datové sady modulu v pracovním prostoru
-* přístup k datům z jednoho z několika **zdroje dat online** experimentu je spuštěn pomocí [importovat Data] [ import-data] modulu 
+* nahrání dat z **místního souboru** dříve času z vašeho pevného disku toocreate datovou sadu modulu v pracovním prostoru
+* přístup k datům z jednoho z několika **zdroje dat online** experimentu je spuštěn pomocí hello [importovat Data] [ import-data] modulu 
 * použít data z jiného Azure Machine learning **experimentovat** uložit jako datové sady
 * použít data z místního **databáze systému SQL Server**
 
-Každá z těchto možností je popsán v tématech v nabídce níže. Tato témata ukazují, jak importovat data z různých zdrojů dat pro použití v Machine Learning Studio. 
+Každá z těchto možností je popsán v tématech hello v nabídce hello níže. Tato témata ukazují, jak tooimport dat od těchto různé zdroje toouse v nástroji Machine Learning Studio. 
 
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 > [!NOTE]
-> Nejsou k dispozici v Machine Learning Studio, který můžete použít pro Cvičná data několik ukázkových datových sad. Informace naleznete v tématu [pomocí ukázkových datových sad v nástroji Azure Machine Learning Studio](machine-learning-use-sample-datasets.md)).
+> Nejsou k dispozici v Machine Learning Studio, který můžete použít pro Cvičná data několik ukázkových datových sad. Informace naleznete v tématu [použít hello ukázkových datových sad v nástroji Azure Machine Learning Studio](machine-learning-use-sample-datasets.md)).
 > 
 > 
 
-Toto úvodní téma také popisuje, jak získat data připravená k použití v nástroji Machine Learning Studio a popisuje, jaké formáty dat a datové typy jsou podporovány. 
+Toto úvodní téma také popisuje, jak tooget dat připravené pro použití v nástroji Machine Learning Studio a popisuje, jaké formáty dat a datové typy jsou podporovány. 
 
 > [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 > 
 > 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Příprava dat pro použití v nástroji Azure Machine Learning Studio
-Machine Learning Studio je navržen pro práci s daty obdélníková nebo tabulkovém, jako je například textová data, která má oddělený nebo strukturovaná data z databáze, i když se v některých případech může použít obdélníkový data.
+Machine Learning Studio je navrženou toowork obdélníková nebo tabulkovém daty, jako je například textová data, která má oddělený nebo strukturovaná data z databáze, i když se v některých případech může použít obdélníkový data.
 
-Je nejvhodnější Pokud vaše data jsou relativně vyčistit. To znamená, že budete chtít postará problémy, jako jsou třeba nekotovaných řetězce před nahráním dat do experimentu.
+Je nejvhodnější Pokud vaše data jsou relativně vyčistit. To znamená budete muset tootake péče o problémy, jako jsou třeba nekotovaných řetězce před nahráním dat hello do experimentu.
 
-Však nejsou k dispozici v Machine Learning Studio, které umožňují některé manipulaci s daty v rámci experimentu moduly. V závislosti na algoritmů strojového učení, které budete používat, musíte se rozhodnout, jak budete pracovat strukturální problémy dat, například chybějící hodnoty a zhuštěných dat a jsou moduly, které mohou pomoci s které. Oblast hledání **transformaci dat** části palety modulů pro moduly, které provádějí tyto funkce.
+Však nejsou k dispozici v Machine Learning Studio, které umožňují některé manipulaci s daty v rámci experimentu moduly. V závislosti na tom, které budete používat algoritmů strojového učení hello, může být nutné toodecide jak budete zpracovávají data strukturální problémy, například chybějící hodnoty a zhuštěných dat a jsou moduly, které mohou pomoci s které. Hledat v hello **transformaci dat** části palety modulů hello pro moduly, které provádějí tyto funkce.
 
-V libovolném bodě v experimentu můžete zobrazit nebo stáhnout data, která je produkovaný modul kliknutím na výstupní port. V závislosti na modulu, je možné možnosti různých stahování k dispozici, nebo bude pravděpodobně možné k vizualizaci dat webového prohlížeče v nástroji Machine Learning Studio.
+V libovolném bodě v experimentu můžete zobrazit nebo stáhnout hello data, která je produkovaný modul kliknutím na výstupní port hello. V závislosti na modulu hello je možné možnosti různých stahování k dispozici, nebo může být schopný toovisualize hello dat webového prohlížeče v nástroji Machine Learning Studio.
 
 ## <a name="data-formats-and-data-types-supported"></a>Data formátů a datové typy podporované
-Můžete importovat do experimentu několik typů dat, v závislosti na tom, jaký mechanismus použijete k importu dat a odkud pocházejí z:
+Můžete importovat do experimentu několik typů dat, v závislosti na tom, jaký mechanismus používáte tooimport dat a odkud pocházejí z:
 
 * Prostý text (TXT)
 * Hodnot oddělených čárkami (CSV) s hlavičkou (CSV) nebo bez (. nh.csv)
@@ -64,18 +64,18 @@ Můžete importovat do experimentu několik typů dat, v závislosti na tom, jak
 * Tabulku Hive
 * Tabulka databáze SQL
 * Hodnoty OData
-* Data SVMLight (.svmlight) (najdete v článku [SVMLight definice](http://svmlight.joachims.org/) formátu informace)
-* Atribut dat vztah soubor formátu (ARFF) (.arff) (najdete v článku [ARFF definice](http://weka.wikispaces.com/ARFF) formátu informace)
+* Data SVMLight (.svmlight) (viz hello [SVMLight definice](http://svmlight.joachims.org/) formátu informace)
+* Atribut dat vztah soubor formátu (ARFF) (.arff) (viz hello [ARFF definice](http://weka.wikispaces.com/ARFF) formátu informace)
 * Soubor ZIP (.zip)
 * R objekt nebo prostoru souboru (. RData)
 
-Pokud importujete data ve formátu, například ARFF, který obsahuje metadata, Machine Learning Studio používá tato metadata zadat záhlaví a datový typ jednotlivých sloupců.
+Pokud importujete data ve formátu, například ARFF, který obsahuje metadata, Machine Learning Studio používá tento nadpis hello toodefine metadata a datový typ jednotlivých sloupců.
 
-Pokud importujete data, jako jsou TSV nebo CSV formátu, který neobsahuje tato metadata, Machine Learning Studio odvodí datový typ pro každý sloupec vzorkováním data. Pokud data také nemá záhlaví sloupců, Machine Learning Studio obsahuje výchozí názvy.
+Pokud importujete data, jako jsou TSV nebo CSV formátu, který neobsahuje tato metadata, Machine Learning Studio odvodí hello datový typ pro každý sloupec vzorkováním hello data. Pokud hello data také nemá záhlaví sloupců, Machine Learning Studio obsahuje výchozí názvy.
 
-Můžete explicitně zadat nebo změnit hlavičky a datové typy pro sloupce pomocí [upravit Metadata][edit-metadata].
+Můžete explicitně zadat nebo změnit hello záhlaví a datové typy pro sloupce pomocí hello [upravit Metadata][edit-metadata].
 
-Následující **datové typy** rozpoznává Machine Learning Studio:
+Následující Hello **datové typy** rozpoznává Machine Learning Studio:
 
 * Řetězec
 * Integer
@@ -84,12 +84,12 @@ Následující **datové typy** rozpoznává Machine Learning Studio:
 * Data a času
 * Časový interval
 
-Machine Learning Studio používá typ interních datových názvem ***tabulky dat*** k předávání dat mezi moduly. Můžete explicitně převést svá data pomocí formátu Data tabulky [převést na datovou sadu] [ convert-to-dataset] modulu.
+Machine Learning Studio používá typ interních datových názvem ***tabulky dat*** toopass dat mezi moduly. Data můžete explicitně převést do formátu dat tabulky pomocí hello [převést tooDataset] [ convert-to-dataset] modulu.
 
-Libovolný modul, který přijímá formáty než tabulky datového převede data do tabulky Data bez upozornění před jeho odesláním další modul.
+Libovolný modul, který přijímá formáty než tabulky datového převede hello data tooData tabulky bez upozornění před jeho odesláním toohello další modul.
 
 V případě potřeby můžete převést formát Data tabulky zpět do sdíleného svazku clusteru, TSV, ARFF nebo SVMLight formátu pomocí převodu z ostatních modulů.
-Oblast hledání **převody formát dat** části palety modulů pro moduly, které provádějí tyto funkce.
+Hledat v hello **převody formát dat** části palety modulů hello pro moduly, které provádějí tyto funkce.
 
 <!-- Module References -->
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/

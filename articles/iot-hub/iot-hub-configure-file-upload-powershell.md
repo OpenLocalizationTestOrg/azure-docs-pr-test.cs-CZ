@@ -1,6 +1,6 @@
 ---
-title: "Pomocí prostředí Azure PowerShell ke konfiguraci nahrávání souborů | Microsoft Docs"
-description: "Postup použití rutin prostředí Azure PowerShell ke konfiguraci služby IoT hub, aby soubor ukládání z připojených zařízení. Obsahuje informace o konfiguraci cílového účtu úložiště Azure."
+title: "nahrávání souborů aaaUse hello prostředí Azure PowerShell tooconfigure | Microsoft Docs"
+description: "Jak tooconfigure rutin prostředí Azure PowerShell hello toouse souboru IoT hub tooenable ukládání z připojených zařízení. Obsahuje informace o konfiguraci hello, cílový účet úložiště Azure."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: a72bda794b2da3e044c46249559610d06b1f1843
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9dcdc41693c09cece411921b30c91d7b3db47395
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace centra IoT nahrávání souborů pomocí prostředí PowerShell
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Použít [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve přidružit účet úložiště Azure službou IoT hub. Můžete použít existující účet úložiště nebo vytvořte novou.
+toouse hello [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve přidružit účet úložiště Azure službou IoT hub. Můžete použít existující účet úložiště nebo vytvořte novou.
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 * [Rutiny Azure PowerShell][lnk-powershell-install].
-* Centrum Azure IoT. Pokud nemáte Centrum IoT, můžete použít [rutiny New-AzureRmIoTHub] [ lnk-powershell-iothub] vytvořit nebo použít portálu [vytvoření služby IoT hub][lnk-portal-hub].
-* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete použít [rutin Azure Powershellu úložiště] [ lnk-powershell-storage] vytvořit nebo použít portálu [vytvořit účet úložiště][lnk-portal-storage].
+* Centrum Azure IoT. Pokud nemáte Centrum IoT, můžete použít hello [rutiny New-AzureRmIoTHub] [ lnk-powershell-iothub] toocreate jednu, nebo použijte hello portál příliš[vytvoření služby IoT hub] [ lnk-portal-hub].
+* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete použít hello [rutin Azure Powershellu úložiště] [ lnk-powershell-storage] toocreate jednu, nebo použijte hello portál příliš[vytvořit účet úložiště] [ lnk-portal-storage].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavit váš účet Azure
 
-Přihlaste se k účtu Azure a vybrat své předplatné.
+Přihlaste se tooyour účet Azure a vybrat své předplatné.
 
-1. V řádku prostředí PowerShell, spusťte **Login-AzureRmAccount** rutiny:
+1. V příkazovém řádku prostředí PowerShell text hello, spusťte hello **Login-AzureRmAccount** rutiny:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
+1. Pokud máte víc předplatných Azure, přihlášení tooAzure uděluje přístup tooall hello předplatná Azure přidružená přihlašovacích údajů. Použijte následující příkaz toolist hello předplatná Azure k dispozici pro vás toouse hello:
 
     ```powershell
     Get-AzureRMSubscription
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Použijte následující příkaz tooselect předplatné, že budete chtít toouse toorun hello příkazy toomanage služby IoT hub hello. Název odběru hello nebo ID můžete použít z hello výstup hello předchozí příkaz:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -58,9 +58,9 @@ Přihlaste se k účtu Azure a vybrat své předplatné.
 
 ## <a name="retrieve-your-storage-account-details"></a>Načtení podrobností o účtu úložiště
 
-Následující postup předpokládá, že jste vytvořili pomocí účtu úložiště **Resource Manager** model nasazení a ne **Classic** modelu nasazení.
+Hello následující kroky Předpokládejme, že váš účet úložiště pomocí hello **Resource Manager** modelu nasazení a ne hello **Classic** modelu nasazení.
 
-Pokud chcete konfigurovat nahrávání souborů ze zařízení, musíte připojovací řetězec pro účet úložiště Azure. Účet úložiště musí být ve stejném předplatném jako služby IoT hub. Musíte také název kontejneru objektů blob v účtu úložiště. Použijte následující příkaz k načtení klíče účtu úložiště:
+nahrávání souborů tooconfigure z vašich zařízení, musíte hello připojovací řetězec pro účet úložiště Azure. účet úložiště Hello musí být v hello stejnému předplatnému jako služby IoT hub. Budete také potřebovat hello název kontejneru objektů blob v účtu úložiště hello. Použijte následující příkaz tooretrieve hello klíče účtu úložiště:
 
 ```powershell
 Get-AzureRmStorageAccountKey `
@@ -68,11 +68,11 @@ Get-AzureRmStorageAccountKey `
   -ResourceGroupName {your storage account resource group}
 ```
 
-Poznamenejte si **key1** hodnotu klíče účtu úložiště. Musíte ho v následujících krocích.
+Poznamenejte si hello **key1** hodnotu klíče účtu úložiště. Musíte ho v hello následující kroky.
 
 Můžete použít existující kontejner objektů blob pro vaše nahrávání souborů nebo vytvořte nové:
 
-* K zobrazení seznamu existující kontejnery objektů blob v účtu úložiště, použijte následující příkazy:
+* toolist hello existující objekt blob kontejnery v účtu úložiště používají hello následující příkazy:
 
     ```powershell
     $ctx = New-AzureStorageContext `
@@ -81,7 +81,7 @@ Můžete použít existující kontejner objektů blob pro vaše nahrávání so
     Get-AzureStorageContainer -Context $ctx
     ```
 
-* Pokud chcete vytvořit kontejner objektů blob v účtu úložiště, použijte následující příkazy:
+* toocreate kontejner objektů blob v účtu úložiště, hello použijte následující příkazy:
 
     ```powershell
     $ctx = New-AzureStorageContext `
@@ -95,21 +95,21 @@ Můžete použít existující kontejner objektů blob pro vaše nahrávání so
 
 ## <a name="configure-your-iot-hub"></a>Konfigurace centra IoT
 
-Teď můžete nakonfigurovat službu IoT hub, chcete-li povolit [souboru nahrávání funkce] [ lnk-upload] pomocí údaje o vašem účtu úložiště.
+Teď můžete nakonfigurovat vaše IoT hub tooenable [souboru nahrávání funkce] [ lnk-upload] pomocí údaje o vašem účtu úložiště.
 
-Následující konfigurace vyžaduje následující hodnoty:
+Konfigurace Hello vyžaduje hello následující hodnoty:
 
-**Kontejner úložiště**: kontejner objektů blob v účtu úložiště Azure v aktuálním předplatném Azure přidružit služby IoT hub. Můžete načíst informace o účtu potřeby úložiště v předchozí části. IoT Hub automaticky vygeneruje identifikátory URI SAS s oprávněními k zápisu do tohoto kontejneru objektů blob pro zařízení se má použít při odesílají soubory.
+**Kontejner úložiště**: kontejner objektů blob v účtu úložiště Azure ve vaší aktuální předplatné tooassociate službou IoT hub. Můžete načíst informace o účtu úložiště potřebné hello v předcházející části hello. Identifikátory URI SAS služby IoT Hub automaticky generuje s zápisu oprávnění toothis kontejner objektů blob pro toouse zařízení, když odesílají soubory.
 
 **Přijímat oznámení pro nahraném soubory**: povolení nebo zakázání oznámení o odeslání souboru.
 
-**Hodnota TTL SAS**: Toto nastavení je time-to-live identifikátorů URI SAS, vrácený do zařízení IoT Hub. Ve výchozím nastavení má jednu hodinu.
+**Hodnota TTL SAS**: Toto nastavení je hello time-to-live z hello identifikátory URI SAS vrácený toohello zařízení IoT Hub. Ve výchozím nastavení tooone hodinu.
 
-**Upozornění na nastavení výchozí hodnota TTL souboru**: time-to-live souboru odeslat oznámení, než vyprší jejich platnost. Ve výchozím nastavení má jeden den.
+**Upozornění na nastavení výchozí hodnota TTL souboru**: hello time-to-live oznámení nahrávání souboru předtím, než vyprší jejich platnost. Ve výchozím nastavení tooone den.
 
-**Soubor doručení maximální počet oznámení**: počet, kolikrát se Centrum IoT pokusí doručit soubor odeslat oznámení. Ve výchozím nastavení má 10.
+**Soubor doručení maximální počet oznámení**: hello kolikrát hello toodeliver pokusy o IoT Hub oznámení nahrávání souboru. Ve výchozím nastavení too10.
 
-Pomocí následující rutiny prostředí PowerShell můžete nakonfigurovat soubor nahrát nastavení ve službě IoT hub:
+Použijte následující nastavení nahrávání souborů hello tooconfigure pro rutiny prostředí PowerShell ve službě IoT hub hello:
 
 ```powershell
 Set-AzureRmIotHub `
@@ -125,19 +125,19 @@ Set-AzureRmIotHub `
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech nahrávání souboru Centrum IoT najdete v tématu [nahrání souborů ze zařízení][lnk-upload].
+Další informace o možnostech nahrávání souboru hello Centrum IoT najdete v tématu [nahrání souborů ze zařízení][lnk-upload].
 
-Další informace o správě Azure IoT Hub na následujících odkazech:
+Použijte tyto odkazy toolearn informace o správě Azure IoT Hub:
 
 * [Hromadné spravovat zařízení IoT][lnk-bulk]
 * [Metriky služby IoT Hub][lnk-metrics]
 * [Monitorování operací][lnk-monitor]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 * [Simulaci zařízení s hranou IoT][lnk-iotedge]
-* [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
+* [Zabezpečení řešení IoT z hello pozadí][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md
 

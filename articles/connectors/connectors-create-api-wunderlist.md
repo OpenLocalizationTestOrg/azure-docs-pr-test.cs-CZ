@@ -1,6 +1,6 @@
 ---
-title: Konektor Wunderlist i n Azure logic apps | Microsoft Docs
-description: "Umožňuje vytvořit připojení k Wunderlist a používají toto připojení k vytvoření pracovního postupu v aplikacích logiky."
+title: konektor aaaWunderlist i n Azure logic apps | Microsoft Docs
+description: "Vytváření tooWunderlist připojení a používání tohoto připojení toobuild pracovní postup v aplikace logiky."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 899110992cc52ca5edf1706320fd5570473de784
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b960a0bd8a16d51933dfc75e7291c8a0ae0f923
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-wunderlist-connector"></a>Začínáme s konektorem Wunderlist
-Wunderlist zadejte manager todo seznamu a úlohy umožníte uživatelům získat jejich věcem Hotovo.  Zda sdílíte s blízkým jeden seznam na nákup, práci na projektu nebo plánování dovolenou, Wunderlist snadno zachycení, sdílet a dokončit vaše to¬dos. Wunderlist se okamžitě synchronizuje mezi telefon, tablet a počítači, všechny úlohy nabízí přístup odkudkoli.
+# <a name="get-started-with-hello-wunderlist-connector"></a>Začínáme s konektorem Wunderlist hello
+Wunderlist zadejte seznam úkolů a osoby toohelp Správce úloh získat jejich věcem Hotovo.  Ať už jste sdílení seznam na nákup s blízkým jeden, práci na projektu nebo plánování dovolenou, Wunderlist umožňuje snadno toocapture, sdílet a dokončete vaší to¬dos. Wunderlist se okamžitě synchronizuje mezi telefon, tablet a počítači, všechny úlohy nabízí přístup odkudkoli.
 
 Začněte vytvořením aplikace logiky nyní; v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-wunderlist"></a>Umožňuje vytvořit připojení k Wunderlist
-Postup vytvoření aplikace logiky se Wunderlist, musíte nejdřív vytvořit **připojení** pak zadejte podrobnosti pro následující vlastnosti:
+## <a name="create-a-connection-toowunderlist"></a>Vytvoření připojení tooWunderlist
+aplikace logiky toocreate s Wunderlist, musíte nejdřív vytvořit **připojení** pak zadejte hello podrobnosti pro hello následující vlastnosti:
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | Token |Ano |Zadejte přihlašovací údaje Wunderlist |
 
-Po vytvoření připojení, můžete ke spouštění akcí a naslouchat aktivačních událostí.
+Po vytvoření připojení hello, můžete ho použít tooexecute hello akce a naslouchat hello aktivační události.
 
-> [!INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
+> [!INCLUDE [Steps toocreate a connection tooWunderlist](../../includes/connectors-create-api-wunderlist.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/wunderlist/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/wunderlist/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).

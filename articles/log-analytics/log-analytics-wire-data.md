@@ -1,6 +1,6 @@
 ---
-title: "Propojit řešení dat v Log Analytics | Microsoft Docs"
-description: "Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager a agenti připojená k systému Windows. Data sítě spolu s daty protokolu ke korelaci data."
+title: "aaaWire řešení dat v Log Analytics | Microsoft Docs"
+description: "Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager a agenti připojená k systému Windows. Data sítě je v kombinaci s vaší toohelp data protokolu korelovat data."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: banders
-ms.openlocfilehash: eb8ae80f91b9ecad666ab7a2257d99e5669f5b88
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: adafdf98dfbda9d87759643a1a606a84eafd1348
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení přenosu dat 2.0 (Preview) v analýzy protokolů
 
 ![Přenosová datový symbol](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager, připojení systému Windows a Linux agenty. Data sítě spolu s další data protokolu ke korelaci data.
+Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager, připojení systému Windows a Linux agenty. Data sítě je v kombinaci s vaší jiných toohelp data protokolu korelovat data.
 
-Kromě OMS agentů používá Data kabelové sítě řešení Microsoft Dependency agentů, které můžete nainstalovat na počítače ve vaší infrastruktuře IT. Závislost agenti monitorují síťová data odesílaná do a z vašich počítačů pro síť úrovně 2 – 3 [OSI model](https://en.wikipedia.org/wiki/OSI_model), včetně různých protokoly a porty používané. Data se pak posílají do analýzy protokolů pomocí agentů.
+Kromě toho tooOMS agenti hello řešení přenosu dat používá Microsoft Dependency agentů, které můžete nainstalovat na počítače ve vaší infrastruktuře IT. Závislost agenty monitorování sítě data odeslaná tooand z počítačů pro síť úrovně 2 – 3 v hello [OSI model](https://en.wikipedia.org/wiki/OSI_model), včetně hello různé protokoly a porty používané. Data se pak odešlou tooLog analýzy využití agentů.
 
 > [!NOTE]
-> V předchozí verzi řešení přenosu dat nelze přidat do nové pracovní prostory. Pokud máte v původním řešení Data kabelové sítě povolené, můžete ji použít. Však použít přenosu dat 2.0, je nutné nejprve odebrat původní verze.
+> Nelze přidat hello předchozí verze hello Data kabelové sítě řešení toonew pracovních prostorů. Pokud máte hello původní Data kabelové sítě povolené žádné řešení, můžete dál toouse ho. Ale toouse přenosu dat 2.0, je nutné nejprve odebrat hello původní verze.
 
-Ve výchozím nastavení analýzy protokolů shromažďuje data protokolu pro procesoru, paměti, disku a data výkonu sítě z čítačů, které jsou součástí systému Windows. Sítě a jiných shromažďování dat se provádí v v reálném čase pro každého agenta, včetně podsítě a úrovni aplikace protokoly používá pro počítač. Na stránce nastavení na kartě protokoly můžete přidat další čítače výkonu.
+Ve výchozím nastavení analýzy protokolů shromažďuje data protokolu pro procesoru, paměti, disku a data výkonu sítě z čítačů, které jsou součástí systému Windows. Sítě a jiných shromažďování dat se provádí v v reálném čase pro každého agenta, včetně podsítě a úrovni aplikace protokoly hello počítače. Na stránce nastavení hello na kartě hello protokoly můžete přidat další čítače výkonu.
 
-Pokud jste použili [sFlow](http://www.sflow.org/) nebo jiný software s [společnosti Cisco NetFlow protokol](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), pak bude povědomé statistiky a data se zobrazí z data kabelové sítě.
+Pokud jste použili [sFlow](http://www.sflow.org/) nebo jiný software s [společnosti Cisco NetFlow protokol](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), pak hello statistiky a data se zobrazí z data kabelové sítě budou známé tooyou.
 
-Některé typy předdefinované dotazy vyhledávání protokolu patří:
+Mezi typy hello předdefinované dotazy vyhledávání protokolu patří:
 
 - Agenti poskytující data kabelové sítě
 - IP adresy agentů poskytujících data kabelové sítě
@@ -48,48 +48,48 @@ Některé typy předdefinované dotazy vyhledávání protokolu patří:
 - Počítač, aby iniciovaly nebo přijaly síťový provoz zpracovává
 - Objem síťového přenosu pro zpracování
 
-Při hledání pomocí data kabelové sítě, můžete filtrovat a data skupiny k zobrazení informací o nejvyšší agentů a horní protokoly. Nebo můžete zobrazit, kdy některé počítače (IP adresy MAC adresy) přenášená mezi sebou, jak dlouho a kolik data byla odeslána – v zásadě platí, zobrazit metadata o síťovém provozu, který je na základě hledání.
+Při hledání pomocí data kabelové sítě, můžete filtrovat a skupiny dat tooview informace o hello nejvyšší agenty a horní protokoly. Nebo můžete zobrazit, kdy některé počítače (IP adresy MAC adresy) přenášená mezi sebou, jak dlouho a kolik data byla odeslána – v zásadě platí, zobrazit metadata o síťovém provozu, který je na základě hledání.
 
-Ale vzhledem k tomu, že zobrazíte metadata, není nutně užitečné pro odstraňování potíží. Data kabelové sítě v Log Analytics není úplná sběru dat v síti. Ano rozhraní není určeno pro řešení potíží s hloubky úrovni paketů. Výhodou použití agenta ve srovnání s jinými metodami kolekci, je, že nemusíte instalovat zařízení, konfigurovat síťové přepínače nebo preform složitá konfigurace. Data kabelové sítě je jednoduše založené na agentovi – nainstalujte agenta na počítači a monitorovat vlastní síťový provoz. Další výhodou je, když chcete monitorovat úlohy běžící v cloudu poskytovatelů nebo poskytovatel hostitelských služeb nebo Microsoft Azure, kde uživatel nemá vlastní vrstvě prostředků infrastruktury.
+Ale vzhledem k tomu, že zobrazíte metadata, není nutně užitečné pro odstraňování potíží. Data kabelové sítě v Log Analytics není úplná sběru dat v síti. Ano rozhraní není určeno pro řešení potíží s hloubky úrovni paketů. Dobrý den výhodou použití hello agenta, porovnání metod kolekcí tooother, je, že nebudete mít tooinstall zařízení, konfigurovat síťové přepínače nebo preform složitá konfigurace. Data kabelové sítě je jednoduše založené na agentovi – nainstalujte agenta hello v počítači a jeho bude monitorování vlastní síťového provozu. Další výhodou je, když chcete, aby toomonitor úlohy běžící v cloudu poskytovatelů nebo poskytovatel hostitelských služeb nebo Microsoft Azure, kde uživatel hello není vlastníkem vrstvy hello prostředků infrastruktury.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Data kabelové sítě získává data od agenta nástroje Microsoft závislostí. Agent závislostí závisí na agenta OMS pro připojení k analýze protokolů. To znamená, že server musí mít agenta OMS nainstalovaný a nakonfigurovaný nejprve a pak nainstalujte agenta závislostí. Následující tabulka popisuje připojených zdrojů, které podporuje řešení Data kabelové sítě.
+Data kabelové sítě získá data z hello Agent služby Dependency společnosti Microsoft. Hello Agent služby Dependency závisí na hello agenta OMS pro jeho připojení tooLog Analytics. To znamená, že server musí mít hello agenta OMS nainstalovaný a nakonfigurovaný první, a pak nainstalujte hello Agent služby Dependency. Hello následující tabulka popisuje hello připojené zdroje, které podporuje hello Data kabelové sítě řešení.
 
 | **Připojené zdroje** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br> Kromě [agenta OMS](log-analytics-windows-agents.md), Agent služby Microsoft Dependency vyžadují agentů v systému Windows. Najdete v článku [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Agenti systému Linux | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Linux agent.<br><br> Kromě [agenta OMS](log-analytics-linux-agents.md), agenty Linux vyžadují Microsoft Agent závislostí. Najdete v článku [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Analyzuje Data kabelové sítě a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Je nutné přímé připojení z počítače agenta System Center Operations Manager k analýze protokolů. K analýze protokolů se předají data ze skupiny pro správu. |
-| Účet služby Azure Storage | Ne | Data kabelové sítě shromažďuje data z počítačů agentů, takže není žádná data z něj shromažďovat ze služby Azure Storage. |
+| Agenti systému Windows | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br> V přidání toohello [agenta OMS](log-analytics-windows-agents.md), vyžadují hello Agent služby Microsoft Dependency agentů v systému Windows. V tématu hello [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
+| Agenti systému Linux | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Linux agent.<br><br> V přidání toohello [agenta OMS](log-analytics-linux-agents.md), agenty Linux vyžadují hello Agent služby Dependency společnosti Microsoft. V tématu hello [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Analyzuje Data kabelové sítě a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Přímé připojení z tooLog počítače agenta System Center Operations Manager hello Analytics je požadovaná. Z hello správy skupiny tooLog Analytics se předají data. |
+| Účet služby Azure Storage | Ne | Data kabelové sítě shromažďuje data z počítačů agentů, takže není žádná data z něj toocollect ze služby Azure Storage. |
 
-V systému Windows Microsoft Monitoring Agent (MMA) použít System Center Operations Manager a analýzy protokolů shromažďovat a odesílat data. V závislosti na kontextu se nazývá agenta agenta System Center Operations Manager, OMS Agent, Agent analýzy protokolů, MMA nebo přímé agenta. System Center Operations Manager a analýzy protokolů poskytují mírně různé verze MMA. Tyto verze lze každou sestavu System Center Operations Manager, analýzy protokolů nebo do obou.
+V systému Windows hello Microsoft Monitoring Agent (MMA) je používána toogather System Center Operations Manager a analýzy protokolů a odesílat data. V závislosti na kontextu hello se nazývá hello agenta hello agenta System Center Operations Manager, OMS Agent, Agent analýzy protokolů, MMA nebo přímé agenta. System Center Operations Manager a analýzy protokolů poskytují mírně různých verzích hello MMA. Tyto verze lze každou zprávu tooSystem Center Operations Manager, tooLog analýzy nebo tooboth.
 
-V systému Linux OMS agenta pro Linux shromažďuje a odesílá data k analýze protokolů. Data kabelové sítě můžete použít na serverech s agenty přímé OMS nebo na servery, které jsou připojené k analýze protokolů prostřednictvím skupin pro správu System Center Operations Manager.
+V systému Linux hello OMS agenta pro Linux shromažďuje a odesílá data tooLog Analytics. Data kabelové sítě můžete použít na serverech s agenty přímé OMS nebo na servery, které jsou připojené tooLog analýzy prostřednictvím skupin pro správu System Center Operations Manager.
 
-V tomto článku, odkazuje na všechny agenty, zda Linux nebo Windows, ať už připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics se říká _agenta OMS_. Název konkrétní nasazení agenta použijeme jenom v případě, že je potřeba pro kontext.
+V tomto článku odkazuje tooall agentů, jestli Linux nebo Windows, zda tooa připojené skupiny pro správu System Center Operations Manager, nebo přímo tooLog Analytics se říká hello _agenta OMS_. Název konkrétní nasazení hello hello agenta použijeme jenom v případě, že je potřeba pro kontext.
 
-Agent závislostí nepřenáší samotná data a nevyžaduje žádné změny brány firewall nebo porty. Data v Data kabelové sítě vždy přenášená agentem OMS k analýze protokolů, buď přímo nebo pomocí brány OMS.
+Hello Agent služby Dependency nepřenáší samotná data a nevyžaduje žádné změny toofirewalls nebo porty. Hello dat v Data kabelové sítě je vždy přenášených v rámci hello OMS agenta tooLog analýzy, buď přímo nebo pomocí hello OMS brány.
 
 ![diagram agenta](./media/log-analytics-wire-data/agents.png)
 
-Pokud jste uživatele System Center Operations Manager, který má skupinu pro správu připojené k analýze protokolů:
+Pokud jste uživatele System Center Operations Manager s tooLog připojené skupiny správy Analytics:
 
-- Pokud agenty nástroje System Center Operations Manager můžete přístup k Internetu, aby se připojení k analýze protokolů, není nutná žádná další konfigurace.
-- Budete muset nakonfigurovat bránu OMS fungovat s nástrojem System Center Operations Manager, když agenty nástroje System Center Operations Manager nelze získat přístup k analýze protokolů přes Internet.
+- V případě agenty nástroje System Center Operations Manager můžete přístup hello Internet tooconnect tooLog analýzy, není nutná žádná další konfigurace.
+- Musíte tooconfigure hello OMS brány toowork nástrojem System Center Operations Manager, když agenty nástroje System Center Operations Manager nelze přistoupit k analýze protokolů přes hello Internet.
 
-Pokud používáte přímé Agent, musíte nakonfigurovat agenta OMS připojit se k analýze protokolů nebo k bráně OMS. Si můžete stáhnout z brány OMS [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud používáte hello přímé agenta, je třeba tooconfigure hello OMS vlastní agent tooconnect tooLog analýzy nebo tooyour OMS brány. Hello OMS brány si můžete stáhnout z hello [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vyžaduje [přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) nabídka řešení.
-- Pokud používáte předchozí verzi řešení Data kabelové sítě, je nutné ji odebrat. Všechna data zaznamenaná v původní Data kabelové sítě řešení je ale stále k dispozici v přenosu dat 2.0 a hledání protokolů.
-- Pro instalaci nebo odinstalaci agenta závislosti jsou vyžadována oprávnění správce.
-- Závislost agenta musí být nainstalován na počítači s 64bitový operační systém.
+- Vyžaduje hello [přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) nabídka řešení.
+- Pokud používáte předchozí verzi hello hello Data kabelové sítě řešení, je nutné ji odebrat. Všechna data zaznamenaná prostřednictvím hello původní Data kabelové sítě řešení je ale stále k dispozici v přenosu dat 2.0 a hledání protokolů.
+- Oprávnění správce se vyžaduje tooinstall nebo odinstalovat hello Agent služby Dependency.
+- Hello Agent služby Dependency musí být nainstalován na počítači s 64bitový operační systém.
 
 ### <a name="operating-systems"></a>Operační systémy
 
-Následující části uvádějí podporované operační systémy pro agenta závislostí. Data kabelové sítě nepodporuje 32bitové architektury pro všechny operační systémy.
+Hello následující části uvádějí hello podporované operační systémy pro hello Agent služby Dependency. Data kabelové sítě nepodporuje 32bitové architektury pro všechny operační systémy.
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -108,7 +108,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 #### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (s RHEL jádra)
 
 - Podporovány jsou pouze výchozí a verze SMP Linux jádra.
-- Nestandardní jádra uvolní, například PAE a Xen, nejsou podporovány pro všechny distribuci systému Linux. Například systém s řetězec verze _2.6.16.21-0.8-xen_ není podporován.
+- Nestandardní jádra uvolní, například PAE a Xen, nejsou podporovány pro všechny distribuci systému Linux. Například systém s řetězec verze hello _2.6.16.21-0.8-xen_ není podporován.
 - Vlastní jádra, včetně opakovaných kompilací standardní jádra, nejsou podporovány.
 - CentOSPlus jádra není podporována.
 - Oracle nedělitelné Enterprise jádra (UEK) je popsaná v další části tohoto článku.
@@ -195,50 +195,50 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 ## <a name="configuration"></a>Konfigurace
 
-Proveďte následující postup pro konfiguraci řešení Data kabelové sítě pro vaše pracovní prostory.
+Proveďte následující kroky tooconfigure hello Data kabelové sítě řešení pro vaše pracovní prostory hello.
 
-1. Povolit řešení analýzy protokolů aktivity z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
-2. Nainstalujte agenta závislost na každém počítači, ve které chcete načíst data. Závislost agenta můžete monitorovat připojení k okamžité Sousedé BGP, proto musíte nemusí agenta na každý počítač.
+1. Povolit hello analýzy protokolů aktivity řešení z hello [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí hello procesu popsaného v tématu [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
+2. Nainstalujte hello Agent služby Dependency na každém počítači, kde chcete tooget data. Hello Agent služby Dependency můžete sledovat okolí tooimmediate připojení, takže nemusí potřebovat agenta, v každém počítači.
 
-### <a name="install-the-dependency-agent-on-windows"></a>Nainstalujte agenta závislostí v systému Windows
+### <a name="install-hello-dependency-agent-on-windows"></a>Nainstalujte hello Agent služby Dependency na systému Windows
 
-Pro instalaci nebo odinstalaci agenta jsou vyžadována oprávnění správce.
+Oprávnění správce se vyžaduje tooinstall nebo odinstalujte agenta hello.
 
-Je závislost Agent nainstalován v počítačích se systémem Windows prostřednictvím InstallDependencyAgent Windows.exe. Pokud spustíte tento spustitelný soubor, bez jakékoli možnosti, spustí průvodce, který vám pomůžou při interaktivní instalaci.
+Hello Agent služby Dependency nainstalovaný na počítačích se systémem Windows prostřednictvím InstallDependencyAgent Windows.exe. Pokud spustíte tento spustitelný soubor, bez jakékoli možnosti, spustí průvodce, můžete postupovat podle tooinstall interaktivně.
 
-Použijte následující kroky pro instalaci agenta závislost na každém počítači se systémem Windows:
+Použijte následující postup tooinstall hello Agent služby Dependency na každém počítači se systémem Windows hello:
 
-1. Nainstalovat agenta OMS pomocí pokynů v [počítače se systémem Windows se připojit ke službě Analýza protokolů v Azure](log-analytics-windows-agents.md).
-2. Stáhnout agenta pro Windows pomocí odkazu v předchozí části a spusťte jej pomocí následujícího příkazu: InstallDependencyAgent Windows.exe
-3. Postupujte podle pokynů průvodce k instalaci agenta.
-4. Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. Na agenty se systémem Windows k adresáři protokolu není %Programfiles%\Microsoft Agent\logs závislostí.
+1. Instalace agenta OMS hello pomocí pokynů hello [toohello počítače připojit Windows analýzy protokolů služby ve službě Azure](log-analytics-windows-agents.md).
+2. Stáhnout agenta pro Windows hello pomocí hello odkaz v předchozí části hello a spusťte jej pomocí hello následující příkaz: InstallDependencyAgent Windows.exe
+3. Postupujte podle hello Průvodce tooinstall hello agenta.
+4. V případě selhání toostart hello Agent služby Dependency protokolech hello podrobné informace o chybě. Na agentech Windows hello adresář protokolu je %Programfiles%\Microsoft Agent\logs závislostí.
 
 #### <a name="windows-command-line"></a>Příkazový řádek systému Windows
 
-Nainstalujte z příkazového řádku pomocí možnosti z v následující tabulce. Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program pomocí /? Příznak následujícím způsobem.
+Použijte možnosti hello následující tabulky tooinstall z příkazového řádku. toosee seznam hello instalace příznaky, spusťte instalační program hello pomocí hello /? Příznak následujícím způsobem.
 
 InstallDependencyAgent Windows.exe /?
 
 | **Příznak** | **Popis** |
 | --- | --- |
-| <code>/?</code> | Získejte seznam možností příkazového řádku. |
+| <code>/?</code> | Získejte seznam možností příkazového řádku hello. |
 | <code>/S</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
 
-Soubory pro Windows Agent závislosti jsou umístěny v Agent služby Dependency C:\Program Files\Microsoft ve výchozím nastavení.
+Soubory pro hello Agent služby Dependency Windows jsou umístěny v Agent služby Dependency C:\Program Files\Microsoft ve výchozím nastavení.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Nainstalujte agenta závislostí v systému Linux
+### <a name="install-hello-dependency-agent-on-linux"></a>Instalace hello Agent služby Dependency na platformě Linux
 
-Kořenový přístup je nutný k instalaci nebo konfiguraci agenta.
+Kořenový přístup je požadovaná tooinstall nebo konfiguraci agenta hello.
 
-Agent závislostí je nainstalován na počítače se systémem Linux prostřednictvím InstallDependencyAgent-Linux64.bin, skript prostředí s samorozbalující binární. Soubor můžete spustit pomocí _dílet_ nebo přidejte oprávnění ke samotném souboru.
+Hello Agent služby Dependency nainstalovaný na počítače se systémem Linux prostřednictvím InstallDependencyAgent-Linux64.bin, skript prostředí s samorozbalující binární. Soubor hello můžete spustit pomocí _dílet_ nebo přidejte provést samotný soubor toohello oprávnění.
 
-Použijte následující kroky pro instalaci agenta závislost na každý počítač se systémem Linux:
+Použijte následující postup tooinstall hello Agent služby Dependency na každý počítač se systémem Linux hello:
 
-1. Nainstalovat agenta OMS pomocí pokynů v [shromažďování a správě dat z počítače se systémem Linux](log-analytics-agent-linux.md).
-2. Stáhnout agenta závislostí Linux pomocí odkazu v předchozí části a potom ji nainstalovat jako kořenového adresáře pomocí následujícího příkazu: dílet InstallDependencyAgent Linux64.bin
-3. Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. V agentech Linux, k adresáři protokolu není: /var/opt/microsoft/dependency-agent/log.
+1. Instalace agenta OMS hello pomocí pokynů hello [shromažďování a správě dat z počítače se systémem Linux](log-analytics-agent-linux.md).
+2. Agent služby Linux Dependency hello pomocí hello odkaz v předchozí části hello stáhněte a nainstalujte ji jako kořenová pomocí hello následující příkaz: dílet InstallDependencyAgent Linux64.bin
+3. V případě selhání toostart hello Agent služby Dependency protokolech hello podrobné informace o chybě. Na agentech Linux adresář protokolu hello je: /var/opt/microsoft/dependency-agent/log.
 
-Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program s `-help` příznak následujícím způsobem.
+toosee seznam hello instalace příznaky, spustit instalační program hello s hello `-help` příznak následujícím způsobem.
 
 ```
 InstallDependencyAgent-Linux64.bin -help
@@ -246,11 +246,11 @@ InstallDependencyAgent-Linux64.bin -help
 
 | **Příznak** | **Popis** |
 | --- | --- |
-| <code>-help</code> | Získejte seznam možností příkazového řádku. |
+| <code>-help</code> | Získejte seznam možností příkazového řádku hello. |
 | <code>-s</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
-| <code>--check</code> | Zkontrolujte oprávnění a operační systém, ale není nainstalovaný agent. |
+| <code>--check</code> | Zkontrolujte oprávnění a hello operačního systému, ale není nainstalovaný hello agent. |
 
-Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
+Soubory pro hello Agent služby Dependency jsou umístěny v hello následující adresáře:
 
 | **Soubory** | **Umístění** |
 | --- | --- |
@@ -262,7 +262,7 @@ Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
 
 ### <a name="installation-script-examples"></a>Příklady skriptů instalace
 
-Chcete-li snadno nasadit agenta závislosti na počtu serverů najednou, je dobré pomocí skriptu. Následující příklady skriptu můžete použít ke stažení a instalaci závislostí agenta v systému Windows nebo Linux.
+tooeasily nasadit hello Agent služby Dependency na mnoha serverech najednou, pomáhá toouse skriptu. Můžete použít následující skript příklady toodownload hello a nainstalovat hello Agent služby Dependency na systému Windows nebo Linux.
 
 #### <a name="powershell-script-for-windows"></a>Skript prostředí PowerShell pro systém Windows
 
@@ -286,7 +286,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
 
-Nasazení agenta nástroje závislostí prostřednictvím konfigurace požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration a bit kódu takto:
+toodeploy hello Agent služby Dependency prostřednictvím konfigurace požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration hello a bit kódu jako hello následující:
 
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -299,7 +299,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install hello Dependency Agent
 
     xRemoteFile DAPackage
 
@@ -338,19 +338,19 @@ Node $NodeName
 }
 
 ```
-### <a name="uninstall-the-dependency-agent"></a>Odinstalujte agenta závislostí
+### <a name="uninstall-hello-dependency-agent"></a>Odinstalujte hello Agent služby Dependency
 
-Pomocí následujících částí můžete odebrat agenta závislostí.
+Použijte následující oddíly toohelp odebrat hello Agent služby Dependency hello.
 
-#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalujte agenta závislostí v systému Windows
+#### <a name="uninstall-hello-dependency-agent-on-windows"></a>Odinstalujte hello Agent služby Dependency v systému Windows
 
-Správce můžete odinstalovat závislostí agenta pro Windows pomocí ovládacích panelů.
+Správce můžete odinstalovat hello závislostí agenta pro Windows pomocí ovládacích panelů.
 
-Správce můžete také spouštět %Programfiles%\Microsoft závislostí Agent\Uninstall.exe odinstalace agenta závislostí.
+Správce můžete také spouštět %Programfiles%\Microsoft závislostí Agent\Uninstall.exe toouninstall hello Agent služby Dependency.
 
-#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalujte agenta závislostí v systému Linux
+#### <a name="uninstall-hello-dependency-agent-on-linux"></a>Odinstalujte hello Agent služby Dependency na systému Linux
 
-Úplně odinstalujte agenta závislostí ze systému Linux, je nutné odebrat vlastní agent a konektor, který je automaticky nainstalován s agentem. Můžete odinstalovat i pomocí následujících jeden příkaz:
+Odinstalace toocompletely hello Agent služby Dependency ze systému Linux, je nutné odstranit vlastní agent hello a hello konektor, který se instaluje automaticky s agentem hello. Můžete odinstalovat i pomocí hello následující jeden příkaz:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -358,99 +358,99 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Po aktivaci Data kabelové sítě v pracovním prostoru analýzy protokolů 300 KB management pack je odeslány na všechny servery Windows v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](log-analytics-om-agents.md), z System Center Operations Manager je nasazena sada management pack monitorování závislostí. Pokud jsou připojeny přímo agentů, analýzy protokolů přináší sadu management pack.
+Po aktivaci Data kabelové sítě v pracovním prostoru analýzy protokolů 300 KB management pack se odesílají servery Windows hello tooall v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](log-analytics-om-agents.md), z System Center Operations Manager je nasazena hello sady management pack monitorování závislostí. Pokud jsou připojeny přímo hello agentů, analýzy protokolů přináší hello sady management pack.
 
-Sada management pack je s názvem Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do: %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management balíčky. Zdroj dat, který používá sada management pack je: % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Sada management pack Hello jmenuje Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do: %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management balíčky. Hello zdroj dat, který používá sada management pack hello je: % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources&lt;AutoGeneratedID&gt;\ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
-## <a name="using-the-solution"></a>Použití řešení
+## <a name="using-hello-solution"></a>Pomocí řešení hello
 
-**Instalace a konfigurace řešení**
+**Instalace a konfigurace řešení hello**
 
-Použijte následující informace k instalaci a konfiguraci řešení.
+Použijte následující informace tooinstall hello a nakonfigurujte hello řešení.
 
-- Řešení Data kabelové sítě operace čtení dat z počítačů se systémem Windows Server 2012 R2, Windows 8.1 a novější operační systémy.
-- Na počítačích, ve které chcete získat data kabelové sítě z se vyžaduje rozhraní Microsoft .NET Framework 4.0 nebo novější.
-- Přidat řešení přenosu dat do pracovního prostoru analýzy protokolů pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
-- Pokud chcete zobrazit data kabelové sítě pro konkrétní řešení, budete muset mít řešení již přidán do pracovního prostoru.
+- Hello Data kabelové sítě řešení operace čtení dat z počítačů se systémem Windows Server 2012 R2, Windows 8.1 a novější operační systémy.
+- Na počítačích, kam chcete data kabelové sítě tooacquire z se vyžaduje rozhraní Microsoft .NET Framework 4.0 nebo novější.
+- Přidat hello Data kabelové sítě řešení tooyour pracovní prostor analýzy protokolů pomocí hello procesu popsaného v tématu [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
+- Pokud chcete data kabelové sítě tooview pro konkrétní řešení, je nutné řešení hello toohave již přidán tooyour prostoru.
 
-Po mají nainstalovat agenti a nainstalovat řešení, dlaždice 2.0 přenosu dat se zobrazí v pracovním prostoru.
+Po mají nainstalovat agenti a instalaci hello řešení, dlaždice hello 2.0 přenosu dat se zobrazí v pracovním prostoru.
 
 > [!NOTE]
-> V současné době vyžaduje použití portálu OMS Chcete-li zobrazit data kabelové sítě. Chcete-li zobrazit data kabelové sítě nelze pomocí portálu Azure.
+> V současné době je nutné použít data kabelové sítě portálu tooview hello OMS. Nelze použít data kabelové sítě Azure portálu tooview hello.
 
 ![Dlaždice Data kabelové sítě](./media/log-analytics-wire-data/wire-data-tile.png)
 
-## <a name="using-the-wire-data-20-solution"></a>Pomocí řešení přenosu dat 2.0
+## <a name="using-hello-wire-data-20-solution"></a>Pomocí řešení hello 2.0 přenosu dat
 
-Na portálu OMS, klikněte **přenosu dat 2.0** dlaždici otevřete řídicí panel Data kabelové sítě. Řídicí panel obsahuje okna v následující tabulce. Každý okno uvádí až 10 položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Můžete spustit vyhledávání protokolu, který vrátí všechny záznamy kliknutím **zobrazit všechny** v dolní části okna, nebo kliknutím na záhlaví okna.
+Na portálu OMS hello, klikněte na tlačítko hello **přenosu dat 2.0** řídicí panel dlaždice tooopen hello Data kabelové sítě. řídicí panel Hello zahrnuje hello oken v hello následující tabulka. Každý okno uvádí až too10 položky odpovídající, aby na okno kritéria pro hello zadán oboru a časový rozsah. Můžete spustit vyhledávání protokolu, který vrátí všechny záznamy kliknutím **zobrazit všechny** dole hello v okně hello nebo kliknutím na záhlaví okna hello.
 
 | **Okno** | **Popis** |
 | --- | --- |
-| Agenti zachytávající síťový přenos | Zobrazuje počet agentů, kteří jsou zachytávání síťového provozu a uvádí top 10 počítačů, které jsou zachycení provozu. Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Klikněte na počítač, v seznamu ke spuštění vyhledávání protokolu vrátí celkový počet bajtů zaznamenat. |
-| Místní podsítě | Zobrazuje počet místní podsítě, které byly zjištěny agenty.  Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> , obsahuje seznam všech podsítí s počet bajtů odeslaných přes každé z nich. Klikněte na podsíť v seznamu ke spuštění vyhledávání protokolu vrátí celkový počet bajtů odeslaných přes podsíť. |
-| Protokoly na úrovni aplikace | Zobrazuje počet protokoly na úrovni aplikace používána, při zjištění agenty. Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Klikněte na protokol spuštění vyhledávání protokolu vrátí celkový počet bajtů odeslaných pomocí protokolu. |
+| Agenti zachytávající síťový přenos | Zobrazuje hello počet agentů, kteří jsou zachytávání síťového provozu a uvádí hello top 10 počítačů, které jsou zachycení provozu. Klikněte na číslo toorun hello protokolu vyhledejte <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Klikněte na počítač, v seznamu toorun hello protokolu vyhledávání vrací hello celkový počet bajtů zaznamenat. |
+| Místní podsítě | Zobrazuje počet hello místní podsítě, které byly zjištěny agenty.  Klikněte na číslo toorun hello protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> , obsahuje seznam všech podsítí s hello počet bajtů odeslaných přes každé z nich. Klikněte na podsíť v seznamu toorun hello protokolu vyhledávání vrací hello celkový počet bajtů odeslaných přes hello podsítě. |
+| Protokoly na úrovni aplikace | Zobrazuje hello počet protokoly na úrovni aplikace používána, při zjištění agenty. Klikněte na číslo toorun hello protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Klikněte na protokol toorun protokolu vyhledávání vrací hello celkový počet bajtů odeslaných pomocí protokolu hello. |
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Řídicí panel přenosu dat](./media/log-analytics-wire-data/wire-data-dash.png)
 
-Můžete použít **agenti zachytávající síťový přenos** okno a určit, jaký poměr šířky pásma sítě je spotřebovávanou počítače. Toto okno vám může pomoci snadno najít _chattiest_ počítač ve vašem prostředí. Tyto počítače může být přetížený, funguje neobvyklým způsobem, nebo pomocí více síťových prostředků, než normální.
+Můžete použít hello **agenti zachytávající síťový přenos** okno toodetermine, jaký poměr šířky pásma sítě je spotřebovávanou počítače. Toto okno můžete snadno najít hello _chattiest_ počítač ve vašem prostředí. Tyto počítače může být přetížený, funguje neobvyklým způsobem, nebo pomocí více síťových prostředků, než normální.
 
 ![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example01.png)
 
-Podobně můžete použít **místní podsítě** okno a zjistit, kolik síťový provoz přesunutí prostřednictvím podsítě. Uživatelé jsou často definovat podsítě kolem důležité oblasti pro své aplikace. Toto okno nabízí zobrazení do těchto oblastí.
+Podobně můžete použít hello **místní podsítě** okno toodetermine kolik síťový provoz je procházení podsítě. Uživatelé jsou často definovat podsítě kolem důležité oblasti pro své aplikace. Toto okno nabízí zobrazení do těchto oblastí.
 
 ![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example02.png)
 
-**Protokoly na úrovni aplikace** okno je užitečné, protože je užitečné vědět, co protokoly jsou používány. Například by se dalo očekávat SSH, zda se nepoužívá v prostředí vaší sítě. Zobrazení informací, které jsou k dispozici v okně můžete rychle potvrďte nebo disprove vaše očekávání.
+Hello **protokoly na úrovni aplikace** okno je užitečné, protože je užitečné vědět, co protokoly jsou používány. Například by se dalo očekávat SSH toonot má v použít v prostředí vaší sítě. Zobrazení informací, které jsou k dispozici v okně hello můžete rychle potvrďte nebo disprove vaše očekávání.
 
 ![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example03.png)
 
-V tomto příkladu může přejít k podrobnostem podrobností SSH a zjistit, které počítače používají SSH a mnoho dalších podrobností o komunikaci.
+V tomto příkladu může přejít k podrobnostem počítače, které používají SSH a mnoho dalších podrobností komunikace programem SSH podrobnosti toosee.
 
 ![Zo výsledky hledání](./media/log-analytics-wire-data/ssh-details.png)
 
-Je také užitečné vědět, pokud je provozu protokolu zvýšením nebo snížením v čase. Například pokud roste množství dat přenášených aplikací, který může být něco, co byste měli vědět, nebo že můžete zjistit pozoruhodné.
+Je také užitečné tooknow Pokud provozu protokolu se zvýšením nebo snížením v čase. Například pokud je zvýšení množství hello data přenesená aplikací, který může být něco, co byste měli vědět, nebo že můžete zjistit pozoruhodné.
 
 ## <a name="input-data"></a>Vstupní data
 
-Data kabelové sítě shromažďuje metadata o síťovém provozu pomocí agentů, které jste povolili. Každý agent odesílá data o každých 15 sekund.
+Data kabelové sítě shromažďuje metadata o síťovém provozu pomocí hello agentů, které jste povolili. Každý agent odesílá data o každých 15 sekund.
 
 ## <a name="output-data"></a>výstupní data
 
-Záznam s typem _WireData_ se vytvoří pro každý typ vstupní data. WireData záznamy mají vlastnosti zobrazené v následující tabulce:
+Záznam s typem _WireData_ se vytvoří pro každý typ vstupní data. WireData záznamy mají vlastnosti zobrazené v následující tabulce hello:
 
 | Vlastnost | Popis |
 |---|---|
 | Počítač | Název počítače, kde nebyla shromážděna data |
-| TimeGenerated | Čas záznamu |
-| LocalIP | IP adresa místního počítače |
+| TimeGenerated | Čas záznamu hello |
+| LocalIP | IP adresa místního počítače hello |
 | SessionState | Připojení nebo odpojení |
 | ReceivedBytes | Počet přijatých bajtů |
-| ProtocolName | Název sítě protokol použitý |
+| ProtocolName | Název používá protokol sítě hello |
 | Parametr IPVersion | Verze protokolu IP |
 | Směr | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známé škodlivé zdroje |
 | Závažnost | Závažnost možného malwaru |
-| RemoteIPCountry | Země vzdálené IP adresy |
-| ManagementGroupName | Název skupiny pro správu nástroje Operations Manager |
+| RemoteIPCountry | Země hello vzdálené IP adresy |
+| ManagementGroupName | Název skupiny pro správu nástroje Operations Manager hello |
 | SourceSystem | Zdroj, kde nebyla shromážděna data |
 | SessionStartTime | Čas spuštění relace |
 | SessionEndTime | Čas ukončení relace |
 | LocalSubnet | Podsíť, kde nebyla shromážděna data |
 | LocalPortNumber | Číslem místního portu |
-| Vzdálená adresa IP | Vzdálené IP adresy používané vzdáleného počítače |
-| RemotePortNumber | Číslo portu použité podle vzdálené IP adresy |
+| Vzdálená adresa IP | Vzdálené IP adresy používané hello vzdáleného počítače |
+| RemotePortNumber | Číslo portu použité podle vzdálené IP adresy hello |
 | ID relace | Jednoznačná hodnota, která identifikuje relace komunikace mezi dvě IP adresy |
 | SentBytes | Počet bajtů odeslaných |
 | TotalBytes | Celkový počet bajtů odeslaných během relace |
 | ApplicationProtocol | Typ protokolu sítě používá   |
 | ID procesu | ID procesu systému Windows |
-| Název_procesu | Cesta a název souboru procesu |
+| Název_procesu | Cesta a název souboru procesu hello |
 | RemoteIPLongitude | Zeměpisná délka IP |
 | RemoteIPLatitude | Zeměpisná šířka IP |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [V protokolech Hledat](log-analytics-log-searches.md) zobrazíte podrobné přenosu dat vyhledávání záznamů.
+- [V protokolech Hledat](log-analytics-log-searches.md) tooview podrobné záznamy přenosu dat hledání.

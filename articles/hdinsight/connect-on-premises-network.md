@@ -1,6 +1,6 @@
 ---
-title: "Připojit k místní síti - Azure HDInsight HDInsight | Microsoft Docs"
-description: "Zjistěte, jak vytvořit cluster služby HDInsight ve virtuální síti Azure a připojte ho k síti na pracovišti. Zjistěte, jak nakonfigurovat překlad mezi HDInsight a místní sítí pomocí vlastního serveru DNS."
+title: "místní síť aaaConnect HDInsight tooyour – Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate HDInsight cluster v Azure Virtual Network a připojte ho tooyour do místní sítě. Zjistěte, jak tooconfigure překlad mezi HDInsight a místní sítí pomocí vlastního serveru DNS."
 documentationcenter: 
 author: Blackmist
 manager: jhubbard
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/21/2017
 ms.author: larryfr
-ms.openlocfilehash: 6fc863010cc59e20e7d86ea9344489e574be75f2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8a3adf0e3df7726d8e6566d723700506baaf89a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-hdinsight-to-your-on-premise-network"></a>Připojit k místní síti HDInsight
+# <a name="connect-hdinsight-tooyour-on-premise-network"></a>Připojení HDInsight tooyour místní sítě
 
-Zjistěte, jak připojit HDInsight k místní síti pomocí virtuální sítě Azure a brány VPN. Tento dokument obsahuje informace o plánování na:
+Zjistěte, jak tooconnect HDInsight tooyour místní sítě pomocí virtuální sítě Azure a brány VPN. Tento dokument obsahuje informace o plánování na:
 
-* Pomocí HDInsight ve virtuální síti Azure, která se připojuje k síti na pracovišti.
+* Pomocí HDInsight ve virtuální síti Azure, která se připojuje tooyour místní sítě.
 
-* Konfigurace překlad názvu DNS mezi virtuální sítí a v místní síti.
+* Konfigurace překladu názvů DNS mezi hello virtuální sítě a v místní síti.
 
-* Konfigurace skupin zabezpečení sítě pro omezení přístupu k Internetu do HDInsight.
+* Konfigurace sítě zabezpečení skupiny toorestrict internet přístup tooHDInsight.
 
-* Porty poskytovaných v HDInsight ve virtuální síti.
+* Porty poskytovaných v HDInsight ve virtuální síti hello.
 
-## <a name="create-the-virtual-network-configuration"></a>Vytvoření konfigurace virtuální sítě
+## <a name="create-hello-virtual-network-configuration"></a>Vytvoření konfigurace virtuální sítě hello
 
 > [!IMPORTANT]
-> Pokud hledáte pokyny krok za krokem k připojení HDInsight do místní sítě pomocí virtuální síť Azure, najdete v článku [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
+> Pokud hledáte pokyny krok za krokem k připojování HDInsight tooyour místní sítě pomocí virtuální síť Azure, naleznete v tématu hello [připojit HDInsight tooyour místní sítě](connect-on-premises-network.md) dokumentu.
 
-Naučte se vytvořit virtuální síť Azure, která je připojena k místní síti pomocí v následujících dokumentech:
+Použití hello následující dokumenty toolearn jak toocreate virtuální síť Azure, který je připojený tooyour místní sítě:
     
-* [Pomocí webu Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Pomocí hello portálu Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
 * [Použití Azure PowerShellu](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -46,100 +46,100 @@ Naučte se vytvořit virtuální síť Azure, která je připojena k místní s�
 
 ## <a name="configure-name-resolution"></a>Konfigurování překladu
 
-Chcete-li povolit HDInsight a prostředky v připojené k síti komunikovat podle názvu, musíte provést následující akce:
+tooallow HDInsight a prostředky v toocommunicate hello připojený k síti podle názvu, je třeba provést hello následující akce:
 
-* Vytvoření vlastního serveru DNS ve virtuální síti Azure.
+* Vytvoření vlastního serveru DNS v hello Azure Virtual Network.
 
-* Konfigurace virtuální sítě pro použití vlastního serveru DNS místo výchozího Azure rekurzivní překladač.
+* Nakonfigurujte hello virtuální sítě toouse hello vlastního serveru DNS místo výchozí hello Azure rekurzivní překladač.
 
-* Konfigurace předávání mezi vlastního serveru DNS a serveru DNS na místě.
+* Konfigurace předávání mezi hello vlastního serveru DNS a serveru DNS na místě.
 
-Tato konfigurace umožňuje následující chování:
+Tato konfigurace umožňuje hello následující chování:
 
-* Požadavky pro plně kvalifikované názvy domény které mají příponu DNS __pro virtuální síť__ se předávají do vlastního serveru DNS. Tyto požadavky vlastního serveru DNS potom předává do překladače rekurzivní Azure, která vrátí hodnotu IP adresu.
+* Požadavky pro plně kvalifikované názvy domény které mají příponu DNS hello __pro virtuální síť hello__ se předávají toohello vlastního serveru DNS. Hello vlastního serveru DNS potom předává tyto požadavky toohello rekurzivní překladač Azure, která vrátí hodnotu hello IP adresu.
 
-* Všechny ostatní požadavky jsou předávány na místní server DNS. I požadavky na veřejné internetové prostředky, jako je například microsoft.com jsou předány na místním serveru DNS pro rozlišení názvu.
+* Všechny ostatní požadavky jsou předávány toohello místní DNS server. I požadavky na veřejné internetové prostředky, jako je například microsoft.com jsou předávány toohello na místním serveru DNS pro rozlišení názvu.
 
-Zelená řádky v následujícím diagramu jsou požadavky na prostředky, které končí příponou DNS virtuální sítě. Modré řádky jsou požadavky na prostředky v místní síti nebo na veřejného Internetu.
+Zelená řádky v následujícím diagramu hello, jsou požadavky na prostředky, které končí příponu DNS hello hello virtuální sítě. Modré řádky jsou požadavky na prostředky v místní síti hello nebo na hello veřejného Internetu.
 
-![Diagram způsob řešení požadavky na DNS v konfiguraci v tomto dokumentu](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagram způsob řešení požadavky na DNS v hello konfigurace použitá v tomto dokumentu](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ### <a name="create-a-custom-dns-server"></a>Vytvoření vlastního serveru DNS
 
 > [!IMPORTANT]
-> Musíte vytvořit a nakonfigurovat DNS server před instalací HDInsight do virtuální sítě.
+> Musíte vytvořit a nakonfigurovat hello DNS server před instalací HDInsight do virtuální sítě hello.
 
-Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](https://www.isc.org/downloads/bind/) DNS software, použijte následující postup:
+toocreate Linux virtuálního počítače, který používá hello [vazby](https://www.isc.org/downloads/bind/) DNS softwaru, hello použijte následující kroky:
 
 > [!NOTE]
-> Následující postup použijte [portál Azure](https://portal.azure.com) vytvořit virtuální počítač Azure. Další způsoby vytvoření virtuálního počítače, najdete v článku [vytvoření virtuálního počítače – rozhraní příkazového řádku Azure](../virtual-machines/linux/quick-create-cli.md) a [vytvoření virtuálního počítače - prostředí Azure PowerShell](../virtual-machines/linux/quick-create-portal.md) dokumenty.
+> Hello následující postup použijte hello [portál Azure](https://portal.azure.com) toocreate virtuální počítač Azure. Jiné způsoby toocreate virtuálního počítače najdete v části hello [vytvoření virtuálního počítače – rozhraní příkazového řádku Azure](../virtual-machines/linux/quick-create-cli.md) a [vytvoření virtuálního počítače - prostředí Azure PowerShell](../virtual-machines/linux/quick-create-portal.md) dokumenty.
 
-1. Z [portál Azure](https://portal.azure.com), vyberte  __+__ , __výpočetní__, a __Ubuntu Server 16.04 LTS__.
+1. Z hello [portál Azure](https://portal.azure.com), vyberte  __+__ , __výpočetní__, a __Ubuntu Server 16.04 LTS__.
 
     ![Vytvoření virtuálního počítače Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
-2. Z __Základy__ části, zadejte následující informace:
+2. Z hello __Základy__ zadejte hello následující informace:
 
     * __Název__: popisný název, který identifikuje tento virtuální počítač. Například __DNSProxy__.
-    * __Uživatelské jméno__: název účtu SSH.
-    * __Veřejný klíč SSH__ nebo __heslo__: metody ověřování pro účet SSH. Doporučujeme používat veřejných klíčů, protože se jedná o bezpečnější. Další informace najdete v tématu [vytvoření a použití klíče SSH pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentu.
-    * __Skupina prostředků__: vyberte __použít existující__a pak vyberte skupinu prostředků, která obsahuje virtuální síť vytvořili dříve.
-    * __Umístění__: Vybrat stejné umístění jako virtuální síť.
+    * __Uživatelské jméno__: název hello hello účtu SSH.
+    * __Veřejný klíč SSH__ nebo __heslo__: hello metody ověřování pro hello účtu SSH. Doporučujeme používat veřejných klíčů, protože se jedná o bezpečnější. Další informace najdete v tématu hello [vytvoření a použití klíče SSH pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentu.
+    * __Skupina prostředků__: vyberte __použít existující__a pak vyberte skupinu prostředků hello, který obsahuje hello virtuální sítě vytvořené dříve.
+    * __Umístění__: Vyberte hello stejné umístění jako virtuální síť hello.
 
     ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/vm-basics.png)
 
-    Nechte ostatní položky na výchozí hodnoty a potom vyberte __OK__.
+    Jiné položky v hello nechte výchozí hodnoty a potom vyberte __OK__.
 
-3. Z __zvolte velikost__ vyberte velikost virtuálního počítače. V tomto kurzu vyberte možnost nejmenší a nejnižší náklady. Chcete-li pokračovat, použijte __vyberte__ tlačítko.
+3. Z hello __zvolte velikost__ část, vyberte hello velikost virtuálního počítače. V tomto kurzu vyberte hello nejmenší a nejnižší náklady možnost. toocontinue, použijte hello __vyberte__ tlačítko.
 
-4. Z __nastavení__ části, zadejte následující informace:
+4. Z hello __nastavení__ zadejte hello následující informace:
 
-    * __Virtuální síť__: vyberte virtuální síť, kterou jste vytvořili dříve.
+    * __Virtuální síť__: Vyberte hello virtuální síť, kterou jste vytvořili dříve.
 
-    * __Podsíť__: Vyberte výchozí podsíť virtuální sítě. Proveďte __není__ vyberte podsíť používá bránu sítě VPN.
+    * __Podsíť__: Vyberte výchozí hello podsíť pro virtuální síť hello. Proveďte __není__ vyberte hello podsítě používané hello VPN Gateway.
 
     * __Účet úložiště diagnostiky__: Vyberte existující účet úložiště, nebo vytvořte novou.
 
     ![Nastavení virtuální sítě](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    Nechte ostatní položky na výchozí hodnotu a pak vyberte __OK__ pokračujte.
+    Nechat hello jiné položky v hello výchozí hodnotu a pak vyberte __OK__ toocontinue.
 
-5. Z __nákupu__ vyberte __nákupu__ tlačítko pro vytvoření virtuálního počítače.
+5. Z hello __nákupu__ části, vyberte hello __nákupu__ tlačítko toocreate hello virtuálního počítače.
 
-6. Po vytvoření virtuálního počítače, jeho __přehled__ části se zobrazí. V seznamu na levé straně vyberte __vlastnosti__. Uložit __veřejnou IP adresu__ a __privátní IP adresa__ hodnoty. Použije se v další části.
+6. Po vytvoření virtuálního počítače hello jeho __přehled__ části se zobrazí. Hello seznamu na levé straně hello vyberte __vlastnosti__. Uložit hello __veřejnou IP adresu__ a __privátní IP adresa__ hodnoty. Použije se v další části hello.
 
     ![Veřejné a privátní IP adresy](./media/connect-on-premises-network/vm-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Instalace a konfigurace vazby (DNS software)
 
-1. Použití SSH se připojit k __veřejnou IP adresu__ virtuálního počítače. Následující příklad se připojí k virtuálnímu počítači na 40.68.254.142:
+1. Použití SSH tooconnect toohello __veřejnou IP adresu__ hello virtuálního počítače. Následující ukázka Hello připojí tooa virtuálního počítače v 40.68.254.142:
 
     ```bash
     ssh sshuser@40.68.254.142
     ```
 
-    Nahraďte `sshuser` k uživatelskému účtu SSH, který jste zadali při vytváření clusteru.
+    Nahraďte `sshuser` s hello SSH uživatelský účet, jste zadali při vytváření clusteru hello.
 
     > [!NOTE]
-    > Existuje mnoho různých způsobů, jak získat `ssh` nástroj. Na systému Linux, Unix a systému macOS je poskytována jako součást operačního systému. Pokud používáte systém Windows, zvažte jednu z následujících možností:
+    > Existují různé způsoby tooobtain hello `ssh` nástroj. Na systému Linux, Unix a systému macOS je poskytována jako součást hello operačního systému. Pokud používáte systém Windows, zvažte jednu hello následující možnosti:
     >
     > * [Prostředí cloudu Azure](../cloud-shell/quickstart.md)
     > * [Bash na Ubuntu na Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
-2. Chcete-li nainstalovat vazby, použijte následující příkazy z relace SSH:
+2. tooinstall vazby, použijte následující příkazy z relace SSH hello hello:
 
     ```bash
     sudo apt-get update -y
     sudo apt-get install bind9 -y
     ```
 
-3. Ke konfiguraci vazby k předávání žádostí o překlad názvu na místní server DNS, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. tooconfigure vazby tooforward název řešení požadavky tooyour místní server DNS, použijte následující text jako hello obsah hello hello `/etc/bind/named.conf.options` souboru:
 
         acl goodclients {
-            10.0.0.0/16; # Replace with the IP address range of the virtual network
-            10.1.0.0/16; # Replace with the IP address range of the on-premises network
+            10.0.0.0/16; # Replace with hello IP address range of hello virtual network
+            10.1.0.0/16; # Replace with hello IP address range of hello on-premises network
             localhost;
             localnets;
         };
@@ -152,66 +152,66 @@ Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](http
                 allow-query { goodclients; };
 
                 forwarders {
-                192.168.0.1; # Replace with the IP address of the on-premises DNS server
+                192.168.0.1; # Replace with hello IP address of hello on-premises DNS server
                 };
 
                 dnssec-validation auto;
 
-                auth-nxdomain no;    # conform to RFC1035
+                auth-nxdomain no;    # conform tooRFC1035
                 listen-on { any; };
         };
 
     > [!IMPORTANT]
-    > Nahraďte hodnoty v `goodclients` části s použitým rozsahem IP adres virtuální sítě i místní sítě. Tento oddíl definuje adresy, které tento server DNS přijímá požadavky od.
+    > Nahraďte hodnoty hello v hello `goodclients` oddíl s rozsah IP adres hello hello virtuální sítě a místní sítě. Tento oddíl definuje hello adresy, které tento server DNS přijímá požadavky od.
     >
-    > Nahraďte `192.168.0.1` položku v `forwarders` část s IP adresou serveru DNS na místě. Tato položka směruje požadavky DNS na serveru místní DNS pro rozlišení.
+    > Nahraďte hello `192.168.0.1` položku v hello `forwarders` oddíl s hello IP adresu serveru DNS na místě. Tato položka trasy DNS požadavky tooyour místní server DNS pro rozlišení.
 
-    K úpravě tohoto souboru, použijte následující příkaz:
+    tooedit tento soubor hello použijte následující příkaz:
 
     ```bash
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+    toosave hello soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
 
-4. Z relace SSH použijte následující příkaz:
+4. Z relace SSH hello použijte následující příkaz hello:
 
     ```bash
     hostname -f
     ```
 
-    Tento příkaz vrátí hodnotu podobná následující text:
+    Tento příkaz vrátí hodnotu podobné toohello následující text:
 
         dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __příponu DNS__ pro tuto virtuální síť. Tato hodnota, uložte, protože se později používá.
+    Hello `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` text je hello __příponu DNS__ pro tuto virtuální síť. Tato hodnota, uložte, protože se později používá.
 
-5. Ke konfiguraci vazby k překladu názvů DNS pro prostředky v rámci virtuální sítě, použijte následující text jako obsah `/etc/bind/named.conf.local` souboru:
+5. tooconfigure vazby tooresolve názvy DNS pro prostředky v rámci hello virtuální sítě, použijte následující text jako hello obsah hello hello `/etc/bind/named.conf.local` souboru:
 
-        // Replace the following with the DNS suffix for your virtual network
+        // Replace hello following with hello DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
             type forward;
-            forwarders {168.63.129.16;}; # The Azure recursive resolver
+            forwarders {168.63.129.16;}; # hello Azure recursive resolver
         };
 
     > [!IMPORTANT]
-    > Musíte `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` s příponou DNS, který jste získali dříve.
+    > Je třeba nahradit hello `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` s příponou hello DNS, který jste získali dříve.
 
-    K úpravě tohoto souboru, použijte následující příkaz:
+    tooedit tento soubor hello použijte následující příkaz:
 
     ```bash
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+    toosave hello soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
 
-6. Pokud chcete spustit vazby, použijte následující příkaz:
+6. toostart vazby, hello použijte následující příkaz:
 
     ```bash
     sudo service bind9 restart
     ```
 
-7. Pokud chcete ověřit, že vazby může překládat názvy zdrojů v síti na pracovišti, použijte následující příkazy:
+7. tooverify, který vazbu můžete vyřešit hello názvy zdrojů v síti na pracovišti, hello použijte následující příkazy:
 
     ```bash
     sudo apt install dnsutils
@@ -219,11 +219,11 @@ Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](http
     ```
 
     > [!IMPORTANT]
-    > Nahraďte `dns.mynetwork.net` s plně kvalifikovaný název domény (FQDN) prostředku v síti na pracovišti.
+    > Nahraďte `dns.mynetwork.net` s hello plně kvalifikovaný název domény (FQDN) prostředku v síti na pracovišti.
     >
-    > Nahraďte `10.0.0.4` s __interní IP adresu__ vašeho vlastního serveru DNS ve virtuální síti.
+    > Nahraďte `10.0.0.4` s hello __interní IP adresu__ vašeho vlastního serveru DNS ve virtuální síti hello.
 
-    Odpověď se zobrazí podobná následující text:
+    Hello odpovědi, zobrazí se podobné toohello následující text:
 
         Server:         10.0.0.4
         Address:        10.0.0.4#53
@@ -232,79 +232,79 @@ Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](http
         Name:   dns.mynetwork.net
         Address: 192.168.0.4
 
-### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Konfigurace virtuální sítě pro použití vlastního serveru DNS
+### <a name="configure-hello-virtual-network-toouse-hello-custom-dns-server"></a>Konfigurace hello virtuální sítě toouse hello vlastního serveru DNS
 
-Ke konfiguraci virtuální sítě pro použití vlastního serveru DNS místo Azure rekurzivní překladač, použijte následující kroky:
+tooconfigure hello virtuální sítě toouse hello vlastního serveru DNS místo hello Azure rekurzivní překladač použijte hello následující kroky:
 
-1. V [portál Azure](https://portal.azure.com), vyberte virtuální síť a potom vyberte __servery DNS__.
+1. V hello [portál Azure](https://portal.azure.com), vyberte hello virtuální sítě a pak vyberte __servery DNS__.
 
-2. Vyberte __vlastní__a zadejte __interní IP adresu__ vlastního serveru DNS. Nakonec vyberte __Uložit__.
+2. Vyberte __vlastní__a zadejte hello __interní IP adresu__ hello vlastního serveru DNS. Nakonec vyberte __Uložit__.
 
-    ![Nastavení vlastního serveru DNS pro síť](./media/connect-on-premises-network/configure-custom-dns.png)
+    ![Nastavit hello vlastního serveru DNS pro síť hello](./media/connect-on-premises-network/configure-custom-dns.png)
 
-### <a name="configure-the-on-premises-dns-server"></a>Konfigurace serveru DNS na místě
+### <a name="configure-hello-on-premises-dns-server"></a>Nakonfigurujte server DNS místní hello
 
-V předchozí části že jste nakonfigurovali vlastního serveru DNS pro předávání požadavků na místním serveru DNS. Dále musíte nakonfigurovat na místním serveru DNS pro předávání požadavků na vlastního serveru DNS.
+V předchozí části hello že jste nakonfigurovali hello vlastní DNS server tooforward požadavky toohello místní server DNS. Dále je nutné nakonfigurovat hello místní DNS server tooforward požadavky toohello vlastního serveru DNS.
 
-Konkrétní kroky pro konfiguraci serveru DNS najdete v dokumentaci pro software serveru DNS. Vyhledejte kroky pro konfiguraci __pro podmíněné předávání__.
+Postup pro konkrétní tooconfigure vašeho serveru DNS, najdete v dokumentaci hello software serveru DNS. Vyhledejte hello postup tooconfigure __pro podmíněné předávání__.
 
-Podmíněné dopředného pouze předá požadavky pro konkrétní příponu DNS. V takovém případě musíte nakonfigurovat server pro předávání pro příponu DNS virtuální sítě. Požadavky pro tuto příponu předáte vlastního serveru DNS na IP adresu. 
+Podmíněné dopředného pouze předá požadavky pro konkrétní příponu DNS. V takovém případě musíte nakonfigurovat server pro předávání pro příponu DNS hello hello virtuální sítě. Požadavky pro tuto příponu mají předávat toohello IP adresu hello vlastního serveru DNS. 
 
-Tento text je příklad konfigurace pro podmíněné předávání pro **vazby** DNS softwaru:
+Hello následující text je příklad konfigurace pro podmíněné předávání pro hello **vazby** DNS softwaru:
 
     zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
         type forward;
-        forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
+        forwarders {10.0.0.4;}; # hello custom DNS server's internal IP address
     };
 
-Informace o použití DNS na **systému Windows Server 2016**, najdete v článku [přidat DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) dokumentace...
+Informace o použití DNS na **systému Windows Server 2016**, najdete v části hello [přidat DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) dokumentace...
 
-Jakmile jste nakonfigurovali na místním serveru DNS, můžete použít `nslookup` z místní sítě chcete-li ověřit, zda je možné přeložit názvy ve virtuální síti. Následující příklad 
+Jakmile jste nakonfigurovali server DNS místní hello, můžete použít `nslookup` z hello místní sítě tooverify, abyste mohli vyřešit názvy ve virtuální síti hello. Následující ukázka Hello 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Tento příklad používá místní server DNS v 196.168.0.4 pro překlad názvu vlastního serveru DNS. Nahraďte IP adresu pro místní server DNS. Nahraďte `dnsproxy` adresa se plně kvalifikovaný název domény vlastního serveru DNS.
+Tento příklad používá hello na místním serveru DNS na 196.168.0.4 tooresolve hello název hello vlastního serveru DNS. Nahraďte text hello, jeden pro server DNS místní hello hello IP adresu. Nahraďte hello `dnsproxy` adresu s hello plně kvalifikovaný název domény hello vlastního serveru DNS.
 
 ## <a name="optional-control-network-traffic"></a>Volitelné: Řízení síťového provozu
 
-Skupiny zabezpečení sítě (NSG) nebo trasy definované uživatelem (UDR) můžete použít k řízení síťových přenosů. Skupiny Nsg umožňují filtrovat příchozí a odchozí přenosy a povolit nebo odepřít provoz. Udr umožňují řídit tok přenosů mezi prostředky ve virtuální síti, internet a místní sítě.
+Můžete použít skupiny zabezpečení sítě (NSG) nebo trasy definované uživatelem (UDR) toocontrol síťový provoz. Skupiny Nsg umožňují toofilter příchozí a odchozí přenos dat a povolí nebo zakážou provoz hello. Udr umožňují toocontrol tok přenosů mezi prostředky ve virtuální síti hello hello internet a hello do místní sítě.
 
 > [!WARNING]
-> HDInsight vyžaduje příchozí přístup z konkrétní IP adresy v cloudu Azure a neomezený přístup pro odchozí připojení. Pokud používáte skupiny Nsg nebo udr k řízení provozu, je třeba provést následující kroky:
+> HDInsight vyžaduje příchozí přístup z konkrétní IP adresy v hello cloudu Azure a neomezený přístup pro odchozí připojení. Pokud používáte skupiny Nsg nebo udr toocontrol provoz, je třeba provést hello následující kroky:
 >
-> 1. Najít IP adresy pro umístění, které obsahuje virtuální síť. Seznam požadované IP adresy podle umístění najdete v tématu [požadované IP adresy](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+> 1. Najde hello IP adresy pro hello umístění, která obsahuje virtuální síť. Seznam požadované IP adresy podle umístění najdete v tématu [požadované IP adresy](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
 >
-> 2. Povolí příchozí provoz z IP adresy.
+> 2. Povolí příchozí provoz z hello IP adres.
 >
->    * __Skupina NSG__: Povolit __příchozí__ přenosy na portu __443__ z __Internet__.
->    * __UDR__: nastavte __další směrování__ typ trasy k __Internet__.
+>    * __Skupina NSG__: Povolit __příchozí__ přenosy na portu __443__ z hello __Internet__.
+>    * __UDR__: Sada hello __další směrování__ typ too__Internet__ hello trasy.
 
-Příklad použití Azure PowerShell nebo rozhraní příkazového řádku Azure k vytvoření skupin Nsg, naleznete v části [rozšířit HDInsight s virtuálními sítěmi Azure](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) dokumentu.
+Příklad použití Azure PowerShell nebo rozhraní příkazového řádku Azure toocreate hello skupin Nsg, naleznete v části hello [rozšířit HDInsight s virtuálními sítěmi Azure](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) dokumentu.
 
-## <a name="create-the-hdinsight-cluster"></a>Vytvoření clusteru HDInsight
+## <a name="create-hello-hdinsight-cluster"></a>Vytvoření clusteru HDInsight se hello
 
 > [!WARNING]
-> Před instalací HDInsight ve virtuální síti musíte nakonfigurovat vlastního serveru DNS.
+> Před instalací HDInsight ve virtuální síti hello je nutné nakonfigurovat hello vlastního serveru DNS.
 
-Postupujte podle kroků v [vytvoření clusteru HDInsight pomocí portálu Azure](./hdinsight-hadoop-create-linux-clusters-portal.md) dokument k vytvoření clusteru HDInsight.
+Hello použijte kroky v hello [vytvoření clusteru HDInsight pomocí portálu Azure hello](./hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu toocreate clusteru služby HDInsight.
 
 > [!WARNING]
-> * Při vytváření clusteru musíte zvolit umístění, které obsahuje virtuální síť.
+> * Při vytváření clusteru musíte zvolit hello umístění, která obsahuje virtuální síť.
 >
-> * V __upřesňující nastavení__ část konfigurace, musíte vybrat virtuální síť a podsíť, kterou jste vytvořili dříve.
+> * V hello __upřesňující nastavení__ část konfigurace, je nutné vybrat hello virtuální síť a podsíť, kterou jste vytvořili dříve.
 
-## <a name="connecting-to-hdinsight"></a>Připojení k HDInsight
+## <a name="connecting-toohdinsight"></a>Připojení tooHDInsight
 
-Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. Pro příklad, který můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
+Většina dokumentace v HDInsight předpokládá, že máte přístup toohello clusteru přes hello Internetu. Například, že se můžete připojit toohello clusteru https://CLUSTERNAME.azurehdinsight.net. Tuto adresu používá hello veřejné bránu, která není k dispozici, pokud jste použili skupiny Nsg nebo hello udr toorestrict přístupu z Internetu.
 
-K přímému připojení k HDInsight prostřednictvím virtuální sítě, použijte následující postup:
+toodirectly připojení tooHDInsight přes hello virtuální síť, použijte hello následující kroky:
 
-1. Pokud chcete zjistit, interní plně kvalifikované názvy domény uzlů clusteru HDInsight, použijte jednu z následujících metod:
+1. toodiscover hello interní plně kvalifikované názvy domény hello uzly clusteru HDInsight, použijte jednu z následujících metod hello:
 
     ```powershell
-    $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
+    $resourceGroupName = "hello resource group that contains hello virtual network used with HDInsight"
 
     $clusterNICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
 
@@ -323,18 +323,18 @@ K přímému připojení k HDInsight prostřednictvím virtuální sítě, použ
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Ke zjištění portu, která je dostupná na služby, najdete v článku [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+2. toodetermine hello port, který služba je k dispozici, najdete v části hello [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
     > [!IMPORTANT]
-    > Některé služby hostované o hlavních uzlech aktivní pouze na jednom uzlu současně. Pokud se pokusíte přístup k službě jeden hlavního uzlu a ona selže, přepněte do jiného hlavního uzlu.
+    > Některé služby hostované v uzlech head hello aktivní pouze na jednom uzlu současně. Pokud se pokusíte přístup k službě jeden hlavního uzlu a ona selže, přepínače toohello jiných hlavního uzlu.
     >
-    > Například Ambari je aktivní pouze jeden hlavního uzlu současně. Pokud se pokusíte přístup k Ambari na jeden hlavní uzel a vrátí chybu 404, je spuštěna z hlavního uzlu.
+    > Například Ambari je aktivní pouze jeden hlavního uzlu současně. Pokud se pokusíte přístup k Ambari na jeden hlavní uzel a vrátí chybu 404, pak je spuštěn na hello jiných hlavního uzlu.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o používání HDInsight ve virtuální síti, najdete v části [rozšířit HDInsight pomocí virtuálních sítí Azure](./hdinsight-extend-hadoop-virtual-network.md).
 
-* Další informace o virtuálních sítí Azure, najdete v článku [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
+* Další informace o virtuálních sítí Azure, najdete v části hello [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
 
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
 

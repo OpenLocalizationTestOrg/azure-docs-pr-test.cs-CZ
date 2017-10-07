@@ -1,6 +1,6 @@
 ---
-title: "Postup použití řízení přístupu na základě Role ve službě Azure API Management | Microsoft Docs"
-description: "Naučte se používat předdefinované role a vytvářet vlastní role v Azure API Management"
+title: "aaaHow tooUse řízení přístupu na základě rolí v Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toouse hello předdefinované role a vytvářet vlastní role v Azure API Management"
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,50 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: apimpm
-ms.openlocfilehash: fa757a591d788f52d759bc24accedd3c55149ae7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c51da2ff6886ebcaf796022e3a759c67f36670a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Postup použití řízení přístupu na základě Role ve službě Azure API Management
-Azure API Management spoléhá na řízení řízení přístupu (RBAC) Chcete-li povolit vyladění správy přístupu pro služby API Management a entit (například rozhraní API, zásady). Tento článek obsahuje přehled rolí předdefinované a vlastní ve službě API Management. Pokud chcete další informace o řízení přístupu na portálu Azure, najdete v části [Začínáme se správou přístupu na portálu Azure](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
+# <a name="how-toouse-role-based-access-control-in-azure-api-management"></a>Jak tooUse na základě rolí řízení přístupu ve službě Azure API Management
+Azure API Management spoléhá na řízení řízení přístupu (RBAC) tooenable vyladění správy přístupu pro služby API Management a entit (například rozhraní API, zásady). Tento článek nabízí přehled hello předdefinované a vlastní rolí ve službě API Management. Pokud chcete další informace o řízení přístupu v hello portálu Azure, najdete v části [Začínáme se správou přístupu v hello portálu Azure](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
 
 ## <a name="built-in-roles"></a>Předdefinované role
-API Management aktuálně poskytuje 3 předdefinovaných rolí a přidá 2 více rolí v blízké budoucnosti. Tyto role mohou být přiřazeny na různých místech včetně předplatné, skupinu prostředků a jednotlivé instance služby API Management. Například pokud "Azure API Management Service čtečky" role je přiřazená uživateli na úrovni skupiny prostředků, pak bude mít uživatel pro čtení přístup na všechny instance API Management uvnitř skupiny prostředků. 
+API Management aktuálně poskytuje 3 předdefinovaných rolí a přidá 2 více rolí v blízké budoucnosti hello. Tyto role mohou být přiřazeny na různých místech včetně předplatné, skupinu prostředků a jednotlivé instance služby API Management. Například pokud hello "Azure API Management Service čtečky" role je přiřazená tooan uživatel na úrovni skupiny prostředků hello, pak hello uživatele bude mít přístup pro čtení instance API Management tooall uvnitř skupiny prostředků hello. 
 
-Následující tabulka obsahuje stručný popis předdefinovaných rolí. Tyto role pomocí portálu Azure nebo jiných nástrojů, včetně Azure můžete přiřadit [prostředí PowerShell](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-powershell)Azure [rozhraní příkazového řádku](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-azure-cli), a [REST API](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-rest). Podrobnosti o tom, jak přiřadit předdefinovaných rolí najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/).
+Hello následující tabulka obsahuje stručný popis hello předdefinované role. Tyto role pomocí hello portálu Azure nebo jiných nástrojů, včetně Azure můžete přiřadit [prostředí PowerShell](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-powershell)Azure [rozhraní příkazového řádku](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-azure-cli), a [REST API](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-manage-access-rest). Podrobnosti o tooassign předdefinovaných rolí, najdete v části [používat roli přiřazení toomanage přístup tooyour předplatného Azure prostředky](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/).
 
-| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření služby, odstranění, změny velikosti, VPN a konfigurace vlastní domény | Přístup k portálu starší verze Publsiher | Popis
+| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření služby, odstranění, změny velikosti, VPN a konfigurace vlastní domény | Přístup k toolegacy Publsiher portálu | Popis
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Přispěvatel služby Azure API Management | ✓ | ✓ | ✓ | ✓ | Superuživatele. Má úplný přístup CRUD služby API Management a entit (například rozhraní API, zásady). Má přístup k portálu starší verze vydavatele. |
-| Čtecí modul služby Azure API Management | ✓ | | || Má přístup jen pro čtení k služby API Management a entity. |
+| Přispěvatel služby Azure API Management | ✓ | ✓ | ✓ | ✓ | Superuživatele. Má úplná CRUD přístup tooAPI Správa služby a entit (například rozhraní API, zásady). Má portál starší verze vydavatele toohello přístup. |
+| Čtecí modul služby Azure API Management | ✓ | | || Má oprávnění jen pro čtení tooAPI Správa služby a entity. |
 | Operátor služby Azure API Management | ✓ | | ✓ | | Můžete spravovat služby API Management, ale není entity.|
 | Azure API Management Service editoru<sup>*</sup> | ✓ | ✓ | |  | Můžete spravovat, ale není služby API Management entity.|
-| Azure API Management Content Manager<sup>*</sup> | ✓ | | | ✓ | Můžete spravovat portál pro vývojáře. Jen pro čtení přístup ke službám a entity.|
+| Azure API Management Content Manager<sup>*</sup> | ✓ | | | ✓ | Můžete spravovat portál pro vývojáře. Tooservices oprávnění jen pro čtení a entity.|
 
-<sup>[1] přístup pro čtení služby API Management a entit (například rozhraní API, zásady)</sup>
+<sup>[1] přístup pro čtení tooAPI Správa služby a entit (například rozhraní API, zásady)</sup>
 
-<sup>[2] oprávnění k zápisu do služby API Management a entity s výjimkou opeartions následující: 1) Instance vytvoření, odstranění a škálování nastavení název domény 3) vlastní konfigurace sítě VPN 2)</sup>
+<sup>[2] oprávnění k zápisu tooAPI Správa služby a entity s výjimkou opeartions následující: 1) Instance vytvoření, odstranění a škálování nastavení název domény 3) vlastní konfigurace sítě VPN 2)</sup>
 
-<sup>\*Role služby Editor bude k dispozici po jsme migrovat všechny správce uživatelského rozhraní na portálu vydavatele existující k portálu Azure. Role správce obsahu bude k dispozici po portálu vydavatele je teď vyčleněný, aby obsahovala pouze funkce související se správou portálu pro vývojáře.</sup>  
+<sup>\*role služby Editor Hello bude k dispozici po migraci jsme všechny správce uživatelského rozhraní ze hello, existující vydavatele, portálu, toohello portálu Azure. Hello role správce obsahu bude k dispozici po hello portálu vydavatele je teď vyčleněný tooonly obsahovat portál pro vývojáře funkce související toomanaging hello.</sup>  
 
 
 ## <a name="custom-roles"></a>Vlastní role
-Pokud žádná z předdefinovaných rolí splňovat specifické potřeby, lze vytvořit vlastní role a zajistit tak podrobnější správu přístupu pro API Management entity. Například můžete vytvořit vlastní roli, která má přístup jen pro čtení do služby API Management, ale pouze oprávnění k zápisu pro jedno konkrétní rozhraní API. Další informace o vlastních rolích naleznete v tématu [vlastní role v Azure RBAC](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles). 
+Pokud žádná z předdefinovaných rolí hello splňovat specifické potřeby, vlastní role lze vytvořit tooprovide podrobnější access management pro API Management entity. Například můžete vytvořit vlastní roli, který má oprávnění jen pro čtení tooan služba API Management, ale má pouze oprávnění k zápisu tooone konkrétní API. Podrobnosti o vlastních rolích toolearn najdete v části [vlastní role v Azure RBAC](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles). 
 
-Když vytvoříte vlastní roli, je snazší začít s některou z předdefinovaných rolí. Upravit atributy, které se přidání akce, NotActions nebo AssignableScopes a potom uložte změny jako novou roli. Následující příklad začíná roli "Azure API Management Service čtečky" a vytvoří vlastní role s názvem "Editor rozhraní API kalkulačky". Vlastní role lze přiřadit pouze konkrétní rozhraní API proto bude má přístup pouze k toto rozhraní API. 
+Když vytvoříte vlastní roli, je snazší toostart s některou z předdefinovaných rolí hello. Upravit atributy tooadd hello hello akce, NotActions nebo AssignableScopes a potom hello změny uložit jako novou roli. Hello následující příklad začíná textem hello "Azure API Management Service čtečky" role a vytvoří vlastní role s názvem "Editor rozhraní API kalkulačky". vlastní role Hello lze přiřadit pouze tooa, které konkrétní API proto bude pouze má toothat přístup k rozhraní API. 
 
 ```
 $role = Get-AzureRmRoleDefinition "API Management Service Reader Role"
 $role.Id = $null
 $role.Name = 'Calculator API Contributor'
-$role.Description = 'Has read access to Contoso APIM instance and write access to the Calculator API.'
+$role.Description = 'Has read access tooContoso APIM instance and write access toohello Calculator API.'
 $role.Actions.Add('Microsoft.ApiManagement/service/apis/write')
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add('/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>')
 New-AzureRmRoleDefinition -Role $role
-New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
+New-AzureRmRoleAssignment -ObjectId <object ID of hello user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
 ```
 
 ## <a name="watch-a-video-overview"></a>Podívejte se na Video s přehledem
@@ -69,6 +69,6 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o řízení přístupu na základě rolí v Azure
-  * [Začínáme se správou přístupu na webu Azure Portal](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
-  * [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
+  * [Začínáme se správou přístupu v hello portálu Azure](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
+  * [Používat roli přiřazení toomanage přístup tooyour předplatného Azure prostředky](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-what-is/)
   * [Vlastní role v Azure RBAC](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles)

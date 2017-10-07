@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Azure Machine Learning parametry webové služby | Microsoft Docs"
-description: "Jak používat parametry webové služby Azure Machine Learning Pokud chcete změnit chování modelu při přístupu k webové službě."
+title: "aaaUse parametry webové služby Azure Machine Learning | Microsoft Docs"
+description: "Jak toouse parametry webové služby Azure Machine Learning toomodify hello chování modelu při přístupu k hello webové služby."
 services: machine-learning
 documentationcenter: 
 author: raymondlaghaeian
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye
-ms.openlocfilehash: 482726c1dae5385964e08b720e529817d5907537
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 214711eb819a6cea34db905abdf015da11e846d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
-Webové služby Azure Machine Learning je vytvořen publikování experimentu, který obsahuje moduly, které se dají konfigurovat parametry. V některých případech můžete změnit chování modulu je spuštěn webovou službu. *Parametry webové služby* umožňují tuto úlohu. 
+Webové služby Azure Machine Learning je vytvořen publikování experimentu, který obsahuje moduly, které se dají konfigurovat parametry. V některých případech můžete toochange hello modulu chování při spuštění hello webové služby. *Parametry webové služby* umožňují toodo této úlohy. 
 
-Běžným příkladem je nastavení [importovat Data] [ reader] modulu tak, aby uživatel publikované webové služby můžete zadat jiný zdroj dat, při přístupu k webové službě. Nebo konfigurace [Export dat] [ writer] modulu tak, aby lze zadat jiný cíl. Mezi další příklady patří změna počtu bitů pro [Hashování] [ feature-hashing] modul, nebo počet požadovaných funkcí pro [na základě filtru výběr funkce] [ filter-based-feature-selection] modulu. 
+Běžným příkladem je nastavení hello [importovat Data] [ reader] modulu tak daného uživatele a hello hello publikované webové služby můžete zadat jiný zdroj dat, při přístupu k hello webové služby. Nebo konfigurace hello [Export dat] [ writer] modulu tak, aby lze zadat jiný cíl. Mezi další příklady patří změna hello počet bitů pro hello [Hashování] [ feature-hashing] modulu nebo hello počet požadovaných funkcí pro hello [na základě filtru výběr funkce] [ filter-based-feature-selection] modulu. 
 
-Můžete nastavit parametry webové služby a je přidružit jeden nebo více parametrů modulu v experimentu a můžete určit, jestli jsou požadované nebo volitelné. Uživatel webové služby můžete poté zadejte hodnoty pro tyto parametry při volání webové služby. 
+Můžete nastavit parametry webové služby a je přidružit jeden nebo více parametrů modulu v experimentu a můžete určit, jestli jsou požadované nebo volitelné. uživatel Hello hello webové služby můžete poté zadejte hodnoty pro tyto parametry při volání webové služby hello. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="how-to-set-and-use-web-service-parameters"></a>Jak nastavit a používat parametry webové služby
-Kliknutím na ikonu vedle parametru pro modul a výběrem "Nastavit jako parametr webové služby" definujete parametr webové služby. Tím se vytvoří nový parametr webové služby a připojí k této parametr modulu. Potom při přístupu k webové službě, může uživatel zadat hodnotu pro parametr webové služby a použije se parametr modulu.
+## <a name="how-tooset-and-use-web-service-parameters"></a>Jak tooset a použijte parametry webové služby
+Parametr webové služby můžete definovat na hello ikonu další toohello parametru pro modul a výběrem "Nastavit jako parametr webové služby". Tím se vytvoří nový parametr webové služby a připojí ho toothat modulu parametr. Potom při přístupu k webové službě hello hello uživatele můžete zadat hodnotu pro hello parametr webové služby a je použité toohello modulu parametr.
 
-Jakmile definujete parametr webové služby, je k dispozici pro všechny ostatní parametry modulu v experimentu. Pokud definujete webové služby parametr spojený s parametrem pro jeden modul, můžete použít tento stejný parametr webové služby pro ostatní moduly, tak dlouho, dokud parametr očekává hodnoty stejného typu. Například pokud parametr webové služby je číselná hodnota, pak lze být použít pouze pro parametry modulu, které očekávají číselná hodnota. Pokud uživatel nastaví hodnotu pro parametr webové služby, se použijí všechny parametry přidružené modulu.
+Jakmile definujete parametr webové služby, je k dispozici tooany druhý parametr modulu v experimentu hello. Pokud definujete webové služby parametr spojený s parametrem pro jeden modul, můžete použít tento stejný parametr webové služby pro ostatní moduly, tak dlouho, dokud hello parametr očekává hello stejný typ hodnoty. Například pokud hello parametr webové služby je číselná hodnota, pak lze být použít pouze pro parametry modulu, které očekávají číselná hodnota. Když uživatel hello nastaví hodnotu pro hello parametr webové služby, bude použité tooall přidružené parametry modulu.
 
-Můžete se rozhodnout, zda chcete zadat výchozí hodnotu pro parametr webové služby. V takovém případě je parametr volitelný pro uživatele webové služby. Pokud nechcete zadat výchozí hodnotu, uživatel je potřeba zadat hodnotu, při přístupu k webové službě.
+Můžete rozhodnout, zda tooprovide výchozí hodnoty pro hello parametr webové služby. Pokud provedete, pak hello je parametr volitelný pro uživatele hello hello webové služby. Pokud nechcete zadat výchozí hodnotu, pak uživatel hello je požadované tooenter hodnotu, při přístupu k hello webové služby.
 
-Dokumentaci rozhraní API pro webovou službu obsahuje informace o uživateli služby webu na tom, jak zadat parametr webové služby prostřednictvím kódu programu při přístupu k webové službě.
+Hello dokumentaci k rozhraní API pro webovou službu hello obsahuje informace pro uživatele hello webové služby na tom, jak toospecify hello parametr webové služby prostřednictvím kódu programu při přístupu k hello webové služby.
 
 > [!NOTE]
-> Dokumentaci rozhraní API pro classic webové služby je zajišťováno prostřednictvím **stránku nápovědy rozhraní API** odkaz ve webové službě **řídicí panel** v nástroji Machine Learning Studio. Dokumentaci k rozhraní API pro novou webovou službu je zajišťováno prostřednictvím [webové služby Azure Machine Learning](https://services.azureml.net/Quickstart) portál **spotřebě** a **rozhraní API Swaggeru** stránky pro webovou službu.
+> Hello dokumentaci k rozhraní API pro classic webové služby je poskytována prostřednictvím hello **stránku nápovědy rozhraní API** odkaz v hello webové služby **řídicí panel** v nástroji Machine Learning Studio. Hello dokumentaci k rozhraní API pro novou webovou službu je poskytována prostřednictvím hello [webové služby Azure Machine Learning](https://services.azureml.net/Quickstart) portál hello **spotřebě** a **rozhraní API Swaggeru** stránky pro vaše webové služby.
 > 
 > 
 
 ## <a name="example"></a>Příklad
-Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul, který odesílá informace do Azure blob storage. Budeme definovat parametr webové služby s názvem "Blob cestu", který umožňuje uživateli webové služby změnit cestu k úložišti objektů blob při přístupu k službě.
+Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul, který odešle úložiště objektů blob tooAzure informace. Budeme definovat parametr webové služby s názvem "Blob cestu", který umožňuje hello webové služby uživatele toochange hello cesta toohello úložiště objektů blob při přístupu služby hello.
 
-1. V nástroji Machine Learning Studio, klikněte na tlačítko [Export dat] [ writer] modul a vyberte ji. Jeho vlastnosti jsou uvedené v podokně vlastností napravo od plátna experimentu.
-2. Zadejte typ úložiště:
+1. V nástroji Machine Learning Studio, klikněte na tlačítko hello [Export dat] [ writer] modulu tooselect ho. Jeho vlastnosti jsou uvedené v hello vlastnosti podokně toohello napravo od plátna experimentu hello.
+2. Zadejte typ úložiště hello:
    
    * V části **zadejte cíl dat**, vyberte "Azure Blob Storage".
    * V části **zadejte typ ověřování**, vyberte "Účet".
-   * Zadejte informace o účtu pro úložiště objektů blob v Azure. 
+   * Zadejte informace o účtu hello pro hello úložiště objektů blob Azure. 
      <p />
-3.Klikněte na ikonu napravo **cesta k objektu blob počínaje kontejneru parametr**. Vypadá takto:
+3.Klikněte na ikonu toohello hello napravo od hello **cesta tooblob počínaje kontejneru parametr**. Vypadá takto:
    
    ![Ikona webové služby parametr][icon]
    
    Vyberte "Nastavit jako parametr webové služby".
    
-   Položka se přidají pod **parametry webové služby** dole v podokně vlastností s názvem "Cesta k objektu blob počínaje kontejneru". Toto je parametr webové služby, který je teď přidružený k tomuto [Export dat] [ writer] parametr modulu.
-4. Chcete-li přejmenovat parametr webové služby, klikněte na název, zadejte "Blob cestu" a stiskněte klávesu **Enter** klíč. 
-5. Zadejte výchozí hodnotu pro parametr webové služby, klikněte na ikonu vpravo od názvu, vyberte možnost "Zadejte výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **Enter** klíč.
+   Položka se přidají pod **parametry webové služby** dole hello v podokně Vlastnosti hello s hello název "cesta tooblob začíná kontejneru". Toto je hello parametr webové služby, který je teď přidružený k tomuto [Export dat] [ writer] parametr modulu.
+4. toorename hello parametr webové služby, klikněte na název hello, zadejte "Blob cestu" a stiskněte klávesu hello **Enter** klíč. 
+5. tooprovide výchozí hodnota pro hello parametr webové služby, klikněte na ikonu toohello hello napravo od hello název, vyberte "Zadejte výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu hello **Enter** klíč.
    
    ![Parametr webové služby][parameter]
 6. Klikněte na **Run** (Spustit). 
-7. Klikněte na tlačítko **nasazení webové služby** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webové služby** nasadit webovou službu.
+7. Klikněte na tlačítko **nasazení webové služby** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webové služby** toodeploy hello webové služby.
 
 > [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](machine-learning-manage-new-webservice.md). 
+> toodeploy novou webovou službu, musíte mít dostatečná oprávnění v toowhich hello předplatné můžete nasazení hello webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning hello](machine-learning-manage-new-webservice.md). 
 
-Uživatel webovou službu nyní můžete určit na nové umístění pro [Export dat] [ writer] modulu při přístupu k webové službě.
+uživatel Hello hello webové služby teď můžete zadat do nového cíle pro hello [Export dat] [ writer] modulu při přístupu k hello webové služby.
 
 ## <a name="more-information"></a>Další informace
-Podrobnější příklad najdete v tématu [parametry webové služby](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) položku [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Více podrobný příklad najdete v tématu hello [parametry webové služby](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) položku v hello [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Další informace o přístupu k webové službě Machine Learning najdete v tématu [využívání Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
+Další informace o přístupu k webové službě Machine Learning najdete v tématu [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 
 <!-- Images -->
 [icon]: ./media/machine-learning-web-service-parameters/icon.png

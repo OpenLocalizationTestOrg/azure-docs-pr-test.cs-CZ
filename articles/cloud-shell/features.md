@@ -1,5 +1,5 @@
 ---
-title: "Funkce Azure Cloud prostředí (Preview) | Microsoft Docs"
+title: "Funkce aaaAzure prostředí cloudu (Preview) | Microsoft Docs"
 description: "Přehled funkcí Azure cloudové prostředí"
 services: 
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: juluk
-ms.openlocfilehash: 67f03d5857e37b253ac57536e289b5468d69e9b5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 65482ca6caeac01dda18a6b12eabe943e3d68a96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="features-and-tools-for-azure-cloud-shell"></a>Funkce a nástroje pro prostředí cloudu Azure
-Prostředí Azure Cloud je prostředí založené na prohlížeči prostředí pro správu a vývoj prostředků Azure.
+Prostředí Azure Cloud je toomanage prostředí prostředí založené na prohlížeči a vyvíjet prostředků Azure.
 
-Cloudové prostředí nabízí prostředí přístupných prohlížeče, předem nakonfigurovaná prostředí pro správu prostředků Azure bez nutnosti instalace, Správa verzí a údržba počítače s sami.
+Cloudové prostředí nabízí přístupných na prohlížeč, předem nakonfigurované prostředí prostředí pro správu prostředků Azure bez režie hello instalaci, správu verzí, a musí jí spravovat počítač s sami.
 
 Prostředí cloudu se zřizuje počítače na základě požadavků a proto nebude stav počítače zachová napříč relacemi. Vzhledem k tomu, že pro interaktivní relace je integrované cloudové prostředí, prostředí shell automaticky ukončit po 20 minutách nečinnosti prostředí.
 
@@ -50,14 +50,14 @@ Prostředí cloudu se zřizuje počítače na základě požadavků a proto nebu
 |Python     |2.7 a 3.5 (výchozí)|
 
 ## <a name="secure-automatic-authentication"></a>Zabezpečení automatické ověřování
-Cloudové prostředí bezpečně a automaticky ověřuje přístup k účtu pro Azure CLI 2.0.
+Cloudové prostředí bezpečně a automaticky ověřuje přístup k účtu pro hello 2.0 rozhraní příkazového řádku Azure.
 
 ## <a name="azure-files-persistence"></a>Azure trvalost soubory
 Vzhledem k tomu, že cloudové prostředí je přidělena na základě požadavků pomocí dočasného počítače, nejsou soubory mimo vašemu $Home a počítač stavu trvalé napříč relacemi.
-Pro soubory zachová napříč relacemi, cloudové prostředí vás provede procesem připojení sdílenou složku Azure při prvním spuštění.
+soubory toopersist napříč relacemi, cloudové prostředí nevystavíte slabé stránky zabezpečení prostřednictvím připojení Azure file sdílíte při prvním spuštění.
 Po dokončení cloudové prostředí automaticky připojí úložiště pro všechny budoucí relace.
 
-[Další informace o připojení sdílené složky Azure pro cloudové prostředí.](persisting-shell-storage.md)
+[Další informace o připojení tooCloud sdílené složky Azure file prostředí.](persisting-shell-storage.md)
 
 ## <a name="next-steps"></a>Další kroky
 [Rychlý start cloudové prostředí](quickstart.md) <br>

@@ -1,6 +1,6 @@
 ---
-title: "Udělení oprávnění ke mnoho aplikací pro přístup Azure trezoru klíčů | Microsoft Docs"
-description: "Zjistěte, jak chcete udělit oprávnění k mnoha aplikace pro přístup k trezoru klíčů"
+title: "aaaGrant oprávnění toomany aplikace tooaccess klíče trezoru služby Azure | Microsoft Docs"
+description: "Zjistěte, jak toogrant oprávnění toomany aplikace tooaccess klíč trezoru"
 services: key-vault
 documentationcenter: 
 author: amitbapat
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: f58b633de2e4b5702ff2df9b3722662b09510200
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5258149f939856f91b3848fc50399e58e5894f0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udělit oprávnění k mnoha aplikace pro přístup k trezoru klíčů
+# <a name="grant-permission-toomany-applications-tooaccess-a-key-vault"></a>Udělení oprávnění toomany aplikace tooaccess trezoru klíčů
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>Otázka: je nutné několik (více než 16) aplikace, které potřebují přístup k trezoru klíčů. Vzhledem k tomu, že Key Vault umožňuje pouze 16 položky řízení přístupu, jak lze toho dosáhnout?
+## <a name="q-i-have-several-over-16-applications-that-need-tooaccess-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>Otázka: je nutné několik (více než 16) aplikace, které potřebují tooaccess trezoru klíčů. Vzhledem k tomu, že Key Vault umožňuje pouze 16 položky řízení přístupu, jak lze toho dosáhnout?
 
-Zásada řízení přístupu Key Vault podporuje pouze 16 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny objekty přidružené služby do této skupiny zabezpečení a pak udělují přístup k této skupině zabezpečení Key Vault.
+Zásada řízení přístupu Key Vault podporuje pouze 16 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny hello přidružené skupiny zabezpečení toothis objekty služby, pak udělují přístup toothis zabezpečení skupiny tooKey trezoru.
 
-Tady jsou požadavky:
+Tady jsou požadavky hello:
 * [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30).
 * [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-* Pokud chcete spustit následující příkazy, potřebujete oprávnění k vytvoření nebo úpravě skupin v klientovi služby Azure Active Directory. Pokud nemáte oprávnění, budete muset obraťte se na správce služby Azure Active Directory.
+* toorun hello následující příkazy, potřebujete oprávnění toocreate či upravit skupiny v hello klienta Azure Active Directory. Pokud nemáte oprávnění, musíte toocontact správce Azure Active Directory.
 
-Nyní spusťte následující příkazy v prostředí PowerShell.
+Nyní spusťte následující příkazy v prostředí PowerShell hello.
 
 ```powershell
-# Connect to Azure AD 
+# Connect tooAzure AD 
 Connect-AzureAD 
  
 # Create Azure Active Directory Security Group 
 $aadGroup = New-AzureADGroup -Description "Contoso App Group" -DisplayName "ContosoAppGroup" -MailEnabled 0 -MailNickName none -SecurityEnabled 1 
  
-# Find and add your applications (ServicePrincipal ObjectID) as members to this group 
+# Find and add your applications (ServicePrincipal ObjectID) as members toothis group 
 $spn = Get-AzureADServicePrincipal –SearchString "ContosoApp1" 
 Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId 
  
-# You can add several members to this group, in this fashion. 
+# You can add several members toothis group, in this fashion. 
  
-# Set the Key Vault ACLs 
+# Set hello Key Vault ACLs 
 Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionToKeys all –PermissionToSecrets all –PermissionToCertificates all 
  
-# Of course you can adjust the permissions as required 
+# Of course you can adjust hello permissions as required 
 ```
 
-Pokud potřebujete udělit jinou sadu oprávnění pro skupinu aplikací, vytvořte samostatnou skupinu zabezpečení služby Azure Active Directory pro tyto aplikace.
+Pokud potřebujete toogrant jinou sadu oprávnění tooa skupinu aplikací, vytvořte samostatnou skupinu zabezpečení služby Azure Active Directory pro tyto aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak [zabezpečit váš trezor klíčů](key-vault-secure-your-key-vault.md).
+Další informace o příliš[zabezpečit váš trezor klíčů](key-vault-secure-your-key-vault.md).

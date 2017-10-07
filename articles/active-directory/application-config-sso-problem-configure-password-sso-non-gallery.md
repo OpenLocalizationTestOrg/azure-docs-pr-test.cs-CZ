@@ -1,6 +1,6 @@
 ---
-title: "Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie | Microsoft Docs"
-description: "Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro vlastní aplikace bez galerie, které nejsou uvedené v galerii aplikací Azure AD"
+title: "Konfigurace hesla jednotné přihlašování pro aplikace bez Galerie aaaProblem | Microsoft Docs"
+description: "Pochopení hello běžné problémy uživatelé setkávají při konfiguraci hesla jednotné přihlašování pro vlastní aplikace bez galerie, které nejsou uvedené v hello Azure AD Application Gallery"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9c76b6f3495e2dd759a156fcef97b57aece8d632
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3aee0a4c525bb3da338da2da0882ec572cf0e5e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie
 
-Tento článek vám pomůže lépe porozumět tučné osoby běžné problémy při konfiguraci **heslo jednotné přihlašování** s aplikací bez galerie.
+Tento článek vám pomůže toounderstand hello běžné problémy uživatelé setkávají při konfiguraci **heslo jednotné přihlašování** s aplikací bez galerie.
 
-## <a name="how-to-capture-sign-in-fields-for-an-application"></a>Jak zachytit pole přihlášení pro aplikaci
+## <a name="how-toocapture-sign-in-fields-for-an-application"></a>Jak přihlášení toocapture polí pro aplikaci
 
 Zachycení pole přihlášení je podporována pouze pro podporujících formát HTML přihlašovací stránky a je **není podporováno pro nestandardní přihlašovací stránky**, jako jsou ty, které používáte Flash nebo jiné technologie nepodporujícím HTML.
 
@@ -33,228 +33,228 @@ Existují dva způsoby, můžete zaznamenávat pole přihlašování pro vaše v
 
 -   Zachycení pole Ruční přihlášení
 
-**Automatické přihlášení pole zachycení** funguje dobře u většiny podporujících formát HTML přihlašovací stránky, pokud používají **dobře známé DIV ID pro uživatelské jméno a heslo zadejte** pole. Tento postup funguje způsob je oškrabávání HTML na stránce Najít DIV ID, které splňují určitá kritéria a potom uložení aby metadata pro tuto aplikaci, můžete opětovným přehráním hesla k němu později.
+**Automatické přihlášení pole zachycení** funguje dobře u většiny podporujících formát HTML přihlašovací stránky, pokud používají **dobře známé identifikátory DIV hello uživatelské jméno a heslo zadejte** pole. Hello tak, jak to funguje je oškrabávání hello HTML na stránce toofind hello DIV ID, které splňují určitá kritéria a potom uložení aby metadata pro tuto aplikaci, tak opětovným přehráním hesla tooit později.
 
-**Ruční pole přihlášení zachycení** lze použít v případě, který aplikace **dodavatele neoznačí** vstupních polí použitých pro přihlášení. Zachycení ruční přihlášení pole lze také v případě, že při **dodavatele vykreslí více polí** který nemůže být automaticky nalezeny. Azure AD můžete ukládat data pro libovolný počet polí na přihlašovací stránce, tak dlouho, dokud Řekněte nám kde tato pole jsou na stránce.
+**Ruční pole přihlášení zachycení** lze použít v případě hello, který hello aplikace **dodavatele neoznačí** hello vstupních polí použitých pro přihlášení. Zachycení ruční přihlášení pole lze také v případě hello při hello **dodavatele vykreslí více polí** který nemůže být automaticky nalezeny. Azure AD můžete ukládat data pro jako počet polí na hello přihlašovací stránky, tak dlouho, dokud Řekněte nám kde tato pole jsou na stránce hello.
 
-Obecně platí **Pokud pole Automatické přihlášení zachycení nefunguje, vždy doporučujeme při ruční.**
+Obecně platí **Pokud pole Automatické přihlášení zachycení nefunguje, doporučujeme vždy snažíme hello ruční.**
 
-### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>Jak automaticky zachytit pole přihlášení pro aplikaci
+### <a name="how-tooautomatically-capture-sign-in-fields-for-an-application"></a>Jak zachytit tooautomatically pole přihlášení pro aplikaci
 
-Ke konfiguraci **založené na heslech jednotné přihlašování** pro aplikace pomocí **pole Automatické přihlášení zachycení**, postupujte podle následujících kroků:
+tooconfigure **založené na heslech jednotné přihlašování** pro aplikace pomocí **pole Automatické přihlášení zachycení**, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Vyberte režim **založené na heslech přihlášení.**
+8.  Vyberte hello režimu **založené na heslech přihlášení.**
 
-9.  Zadejte **přihlašovací adresa URL**. Toto je adresa URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci. **Ujistěte se, přihlášení pole jsou viditelné na adrese URL je zadat**.
+9.  Zadejte hello **přihlašovací adresa URL**. Toto je hello URL, kde uživatelé zadat toosign své uživatelské jméno a heslo v k. **Ujistěte se, hello přihlášení pole jsou viditelné na adrese URL hello zadáte**.
 
-10. Klikněte na tlačítko **Uložit**.
+10. Klikněte na tlačítko hello **Uložit** tlačítko.
 
-11. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a vám umožní používat Azure AD bezpečně přenést hesla k dané aplikaci pomocí rozšíření přístup k panelu prohlížeče.
+11. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a umožňují toouse Azure AD toosecurely přenášet hesla toothat aplikace pomocí rozšíření prohlížeče panely hello přístup.
 
-## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>Jak ručně zachytit pole přihlášení pro aplikaci
+## <a name="how-toomanually-capture-sign-in-fields-for-an-application"></a>Jak zachytit toomanually pole přihlášení pro aplikaci
 
-Pokud chcete zaznamenat ručně přihlášení pole, nejprve musí mít rozšíření přístup k panelu prohlížeče, nainstalovat a **nebyla spuštěna v režimu se službou inPrivate, incognito nebo soukromé.** K instalaci rozšíření prohlížeče, postupujte podle kroků v [postup instalace rozšíření přístup k panelu prohlížeče](#i-cannot-manually-detect-sign-in-fields-for-my-application) části.
+zachycení přihlašovací toomanually pole, je nejdříve nutné rozšíření přístup k panelu prohlížeče hello nainstalovat a **nebyla spuštěna v režimu se službou inPrivate, incognito nebo soukromé.** rozšíření prohlížeče tooinstall hello, postupujte podle kroků hello v hello [jak tooinstall hello rozšíření přístup k panelu prohlížeče](#i-cannot-manually-detect-sign-in-fields-for-my-application) části.
 
-Ke konfiguraci **založené na heslech jednotné přihlašování** pro aplikace pomocí **ruční pole přihlášení zachycení**, postupujte podle následujících kroků:
+tooconfigure **založené na heslech jednotné přihlašování** pro aplikace pomocí **ruční pole přihlášení zachycení**, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Vyberte režim **založené na heslech přihlášení.**
+8.  Vyberte hello režimu **založené na heslech přihlášení.**
 
-9.  Zadejte **přihlašovací adresa URL**. Toto je adresa URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci. **Ujistěte se, přihlášení pole jsou viditelné na adrese URL je zadat**.
+9.  Zadejte hello **přihlašovací adresa URL**. Toto je hello URL, kde uživatelé zadat toosign své uživatelské jméno a heslo v k. **Ujistěte se, hello přihlášení pole jsou viditelné na adrese URL hello zadáte**.
 
-10. Klikněte na tlačítko **Uložit**.
+10. Klikněte na tlačítko hello **Uložit** tlačítko.
 
-11. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a vám umožní používat Azure AD bezpečně přenést hesla k dané aplikaci pomocí rozšíření přístup k panelu prohlížeče. V případě, že tato možnost selže, můžete **změnit režim přihlášení k ruční pole přihlášení zaznamenáte** podle pokračovat v kroku 12.
+11. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a umožňují toouse Azure AD toosecurely přenášet hesla toothat aplikace pomocí rozšíření prohlížeče panely hello přístup. V případě hello, který tato možnost selže, můžete **změnit hello přihlášení režimu toouse ruční pole přihlášení zachycení** pokračováním toostep 12.
 
 12. Klikněte na tlačítko **konfigurace &lt;appname&gt; nastavení hesla jednotného přihlašování**.
 
-13. Vyberte **ručně zjistit přihlášení pole** možnosti konfigurace.
+13. Vyberte hello **ručně zjistit přihlášení pole** možnosti konfigurace.
 
 14. Klikněte na tlačítko **OK**.
 
 15. Klikněte na **Uložit**.
 
-16. Postupujte podle pokynů na obrazovce a použít na přístupovém panelu.
+16. Postupujte podle hello na obrazovce pokyny toouse hello přístupového panelu.
 
 ## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Zobrazuje chybu "Jsme nenašli žádná pole přihlášení na této adrese URL."
 
-Tato chyba zobrazí při automatické zjišťování pole přihlášení selže. Chcete-li vyřešit tento problém, zkuste detekce pole Ruční přihlášení pomocí následujících kroků v [ručně zaznamenání pole přihlášení pro aplikaci](#how-to-manually-capture-sign-in-fields-for-an-application) části.
+Tato chyba zobrazí při automatické zjišťování pole přihlášení selže. Tento problém, zkuste detekce pole Ruční přihlášení pomocí následujících hello kroky hello tooresolve [jak toomanually zaznamenat pole přihlášení pro aplikaci](#how-to-manually-capture-sign-in-fields-for-an-application) části.
 
-## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>Najdete v části "Nelze pro uložení konfigurace jednotného přihlašování" Chyba
+## <a name="i-see-an-unable-toosave-single-sign-on-configuration-error"></a>Zobrazuje chybu "nelze toosave jednotné přihlašování konfigurace"
 
-V některých výjimečných případech aktualizuje se konfigurace přihlášení může selhat. Chcete-li vyřešit, vyzkoušejte ukládání jedné přihlašování konfiguraci znovu.
+V některých výjimečných případech může selhat aktualizace hello jeden přihlašování konfigurace. tooresolve, vyzkoušejte ukládání hello jeden přihlašování konfiguraci znovu.
 
-Pokud tento postup se opakuje selhání konzistentně, otevřete případu podpory a poskytnout informace shromážděné ve [postup najdete v části Podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak získat nápovědu zasláním oznámení podrobnosti pracovníkovi podpory](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) oddíly.
+Pokud tento postup se opakuje toofail konzistentně, otevřete případu podpory a zadejte hello informace získané v hello [jak toosee hello podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak pomoci tooget zasláním oznámení podrobnosti tooa pracovník odborné pomoci](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) oddíly.
 
 ## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>I nelze detekovat ručně přihlašovací v polích pro Moje aplikace
 
-Některá chování, které se můžete setkat při nepracuje ruční detekce patří:
+Mezi hello chování, mohou být zobrazeny při nepracuje ruční detekce patří:
 
--   Proces ručního zachycení zobrazovaly pracovat, ale pole zachytit nebyla správná
+-   Proces ručního zachycení Hello zobrazovaly toowork, ale pole hello zachytit nebyla správná
 
--   Pole pravé nemáte získat zvýrazněná při provádění proces zachycení
+-   pole pravé Hello nemáte získat zvýrazněná při provádění proces zachycení hello
 
--   Proces zachycení trvá mi na přihlašovací stránku aplikace podle očekávání, ale nic nestane
+-   Proces zachycení Hello trvá mi toohello na přihlašovací stránku aplikace podle očekávání, ale nic nestane
 
--   Ruční zachycení pravděpodobně fungovat, ale jednotného přihlašování nemá dojít v případě, že moje uživatelé přejdou do aplikace na přístupovém panelu.
+-   Ruční zachycení zobrazí toowork, ale jednotného přihlašování nemá dojít v případě, že moje uživatelé přejdou toohello aplikace hello přístupového panelu.
 
-Pokud narazíte na některý z těchto problémů zkontrolujte následující:
+Zkontrolujte následující hello, pokud dojde k některé z těchto problémů:
 
--   Zajistěte, abyste měli nejnovější verzi rozšíření přístup k panelu prohlížeče **nainstalován** a **povoleno** podle kroků v [postup instalace rozšíření přístup k panelu prohlížeče](#how-to-install-the-access-panel-browser-extension) části.
+-   Zajistěte, abyste měli nejnovější verzi rozšíření prohlížeče panely přístup hello hello **nainstalován** a **povoleno** podle následujících kroků hello v hello [jak tooinstall hello prohlížeče Panel přístupu rozšíření](#how-to-install-the-access-panel-browser-extension) části.
 
--   Ujistěte se, že proces zachycení neprovádíte při prohlížeč v **privátní, se službou inPrivate nebo incognito režimu**. Rozšíření přístup k panelu v těchto režimech nepodporuje.
+-   Ujistěte se, že proces zachycení hello neprovádíte při prohlížeč v **privátní, se službou inPrivate nebo incognito režimu**. v těchto režimech nepodporuje rozšíření panely Hello přístup.
 
--   Ujistěte se, že uživatelé nejsou pokouší přihlásit k aplikaci na přístupovém panelu při v **privátní, se službou inPrivate nebo incognito režimu**. Rozšíření přístup k panelu v těchto režimech nepodporuje.
+-   Ujistěte se, že uživatelé nejsou při toosign v aplikaci toohello z hello přístupového panelu při v **privátní, se službou inPrivate nebo incognito režimu**. v těchto režimech nepodporuje rozšíření panely Hello přístup.
 
--   Zkuste ruční proces zachycení znovu, zajištění, že red značky jsou přes správná pole.
+-   Proces ručního zachycení hello zkusit znovu, zajistíte hello red značek přes hello správná pole.
 
--   Pokud proces ruční zachycení zdá se, že zablokuje nebo stránku pro přihlášení neprovádí proces ruční zachycení nic (případě 3 výše), opakujte akci. Ale tentokrát po dokončení procesu, stiskněte **F12** tlačítko otevřete konzolu pro vývojáře v prohlížeči. Jednou existuje, otevřete **konzoly** a typ **window.location= "&lt;zadejte přihlašovací v adrese url, které jste zadali při konfiguraci aplikace&gt;"** a potom stiskněte klávesu **Enter**. Tato síla stránka přesměrování, které končí proces zachycení a uložení pole, která byla zachycena.
+-   Pokud proces ruční zachycení hello zdá, že toohang nebo neprovádí hello přihlašovací stránku hello proces ruční zachycení nic (případě 3 výše), opakujte akci. Ale tentokrát po dokončení procesu hello, stiskněte klávesu hello **F12** tlačítko tooopen vývojářské konzole prohlížeče. Jednou existuje, otevřete hello **konzoly** a typ **window.location= "&lt;zadejte přihlašovací hello v adrese url, které jste zadali při konfiguraci aplikace hello&gt;"** a potom stiskněte klávesu  **Zadejte**. Tato síla na stránce přesměrování, který ukončit proces zachycení hello a ukládání hello pole, která byla zachycena.
 
-Pokud žádný z těchto postupů fungovat pro vás, pomůžeme vám. Otevření případu podpory podrobnosti co jste se pokusili, a také informace shromážděné ve [postup najdete v části Podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak získat nápovědu zasláním oznámení podrobnosti pracovníkovi podpory](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) částech (pokud existuje).
+Pokud žádný z těchto postupů fungovat pro vás, pomůžeme vám. Otevře případu podpory s podrobnostmi hello jste zkusili, jakož i hello informace získané v hello [jak toosee hello podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak pomoci tooget zasláním oznámení podrobnosti tooa podpory pracovník](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) částech (pokud existuje).
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření přístup k panelu prohlížeče
+## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>Jak tooinstall hello rozšíření přístup k panelu prohlížeče
 
-Chcete-li nainstalovat rozšíření přístup k panelu prohlížeče, postupujte následujícím způsobem:
+tooinstall hello rozšíření prohlížeče panely přístup, postupujte podle kroků hello níže:
 
-1.  Otevřete [přístupový Panel](https://myapps.microsoft.com) v jednom z podporovaných prohlížečích a přihlaste se jako **uživatele** ve službě Azure AD.
+1.  Otevřete hello [přístupový Panel](https://myapps.microsoft.com) v jednom z hello podporované prohlížeče a přihlaste se jako **uživatele** ve službě Azure AD.
 
-2.  Klikněte na tlačítko **SSO heslo aplikace** na přístupovém panelu.
+2.  Klikněte na tlačítko **SSO heslo aplikace** v hello přístupového panelu.
 
-3.  V řádku, požádá o instalaci softwaru, vyberte **instalovat nyní**.
+3.  V hello výzva s dotazem tooinstall hello softwaru, vyberte **instalovat nyní**.
 
-4.  Založené na prohlížeči budete přesměrováni na odkaz ke stažení. **Přidat** rozšíření do prohlížeče.
+4.  Založené na prohlížeči, je možné směrovanou toohello odkaz ke stažení. **Přidat** hello rozšíření tooyour prohlížeče.
 
-5.  Pokud prohlížeč zobrazí dotaz, vyberte buď **povolit** nebo **povolit** rozšíření.
+5.  Pokud prohlížeč zobrazí dotaz, vyberte tooeither **povolit** nebo **povolit** hello rozšíření.
 
 6.  Po instalaci **restartujte** relaci prohlížeče.
 
-7.  Přihlaste se do přístupového panelu a zobrazit, pokud můžete **spusťte** SSO hesla aplikací.
+7.  Přihlaste se do hello přístupového panelu a zobrazit, pokud můžete **spusťte** SSO hesla aplikací.
 
-Rozšíření pro Chrome a Firefox může také stáhnout z přímé odkazy níže:
+Může také stáhnout hello rozšíření pro Chrome a Firefox z hello přímé odkazy níže:
 
 -   [Rozšíření pro Chrome přístup panely](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Rozšíření panelu Firefox přístup](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>Postup najdete v části Podrobnosti o portálu oznámení
+## <a name="how-toosee-hello-details-of-a-portal-notification"></a>Jak toosee hello podrobnosti o portálu oznámení
 
-Pomocí následujícího postupu můžete zobrazit podrobnosti o portálu oznámení:
+Podle následujících kroků hello, můžete zjistit podrobnosti o hello všechna portálu oznámení:
 
-1.  klikněte **oznámení** ikonu (zvonku) v pravém horním rohu stránky na portálu Azure
+1.  Klikněte na tlačítko hello **oznámení** ikonu (hello zvonku) v pravé horní hello části hello portálu Azure
 
-2.  Vyberte všechna oznámení v **chyba** stavu (ty se zobrazí červený (!) vedle je).
+2.  Vyberte všechna oznámení v **chyba** stavu (ty s další toothem červený (!)).
 
   >! Všimněte si] je nelze kliknout oznámení v **úspěšné** nebo **probíhá** stavu.
   >
   >
 
-3.  Tento otevřený **podrobnosti oznámení** okno.
+3.  Tento otevřený hello **podrobnosti oznámení** okno.
 
-4.  Tyto informace použít sami, abyste porozuměli další podrobnosti o problému.
+4.  Tyto informace použijte sami toounderstand další podrobnosti o problému hello.
 
-5.  Pokud stále potřebujete pomoc, můžete také sdílet tyto informace se pracovníka podpory nebo product group získat pomoc s váš problém.
+5.  Pokud stále potřebujete pomoc, můžete také sdílet tyto informace se na podporu pracovníka nebo hello skupiny tooget Nápověda k produktu s váš problém.
 
-6.  Klikněte na tlačítko **kopie** **ikonu** napravo od **Chyba kopírování** textbox zkopírovat všechny podrobnosti oznámení sdílet s skupiny pracovník podpory nebo produktu.
+6.  Klikněte na tlačítko hello **kopie** **ikonu** toohello napravo od hello **Chyba kopírování** textbox toocopy všechny hello tooshare podrobnosti oznámení s skupiny pracovník podpory nebo produktu.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Získání nápovědy poslat podrobnosti oznámení na pracovníka podpory
+## <a name="how-tooget-help-by-sending-notification-details-tooa-support-engineer"></a>Jak pomoci tooget odesláním pracovníka podpory tooa podrobnosti oznámení
 
-To je velmi důležité, že můžete sdílet **všechny níže uvedené podrobnosti** s pracovníka podpory, pokud potřebujete pomoc, tak, aby se vám může pomoct rychle. Můžete to provést pomocí snadno **uděláte snímek,** nebo kliknutím **ikona chyby kopie**, který se nachází vpravo od **Chyba kopírování** textové pole.
+To je velmi důležité, že můžete sdílet **všechny níže uvedené podrobnosti o hello** s pracovníka podpory, pokud potřebujete pomoc, tak, aby se vám může pomoct rychle. Můžete to provést pomocí snadno **uděláte snímek,** nebo kliknutím hello **ikona chyby kopie**, najít toohello napravo od hello **Chyba kopírování** textové pole.
 
 ## <a name="notification-details-explained"></a>Vysvětlení podrobnosti oznámení
 
-Níže se dozvíte více co každý oznámení položky znamená a jsou uvedeny příklady každý z nich.
+Hello níže vysvětluje více co každý hello oznámení položek znamená a poskytuje příklady každého z nich.
 
 ### <a name="essential-notification-items"></a>Základní oznámení položky
 
--   **Název** – popisný název oznámení.
+-   **Název** – hello popisný název hello oznámení
 
     -   Příklad – **nastavení proxy aplikace**
 
--   **Popis** – popis co došlo k chybě v důsledku operaci
+-   **Popis** – hello popis co došlo k chybě v důsledku operace hello
 
     -   Příklad – **zadaná interní adresa url je již používán jinou aplikací**
 
--   **Id oznámení** – jedinečné id oznámení.
+-   **Id oznámení** – hello jedinečné id oznámení hello
 
     -   Příklad – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Id žádosti klienta** – id konkrétní žádosti provedené prohlížeč
+-   **Id žádosti klienta** – id konkrétního požadavku hello provedené prohlížeč
 
     -   Příklad – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Čas UTC razítko** – časové razítko, během které oznámení došlo k chybě, v UTC
+-   **Čas UTC razítko** – hello časové razítko, během které hello oznámení došlo k chybě, v UTC
 
     -   Příklad – **2017-03-23T19:50:43.7583681Z**
 
--   **Interní Id transakce** – interní ID můžeme použít k vyhledání Chyba v našem systému
+-   **Interní Id transakce** – hello interní ID můžeme použít toolook hello Chyba v našem systému
 
     -   Příklad – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Hlavní název uživatele** – uživatel, který provedl operaci
+-   **Hlavní název uživatele** – hello uživatele, který provedl operaci hello
 
     -   Příklad –**tperkins@f128.info**
 
--   **Id klienta** – jedinečné ID klienta, který uživatel, který provedl operaci byl uživatel členem
+-   **Id klienta** – hello jedinečné ID klienta hello, který hello uživatele, který provedl operaci hello byl členem
 
     -   Příklad – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Objekt uživatele Id** – jedinečné ID uživatele, který provádí operaci
+-   **Objekt uživatele Id** – hello jedinečné ID hello uživatele, který provedl operaci hello
 
     -   Příklad – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Podrobné oznámení položky
 
--   **Zobrazovaný název** – **(nesmí být prázdné)** podrobnější zobrazovaný název chyby
+-   **Zobrazovaný název** – **(nesmí být prázdné)** podrobnější zobrazovaný název pro chybu hello
 
     -   Příklad * – **nastavení proxy aplikace**
 
--   **Stav** – konkrétní stav oznámení.
+-   **Stav** – hello konkrétní stav hello oznámení
 
     -   Příklad * – **se nezdařilo**
 
--   **Id objektu** – **(nesmí být prázdné)** ID objektu, pro kterou byla provedena operace
+-   **Id objektu** – **(nesmí být prázdné)** hello ID objektu, podle které hello byla provedena operace
 
     -   Příklad – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Podrobnosti o** – podrobný popis co došlo k chybě v důsledku operaci
+-   **Podrobnosti o** – hello podrobný popis co došlo k chybě v důsledku operace hello
 
     -   Příklad – **interní adresa url, http://bing.com/' je neplatná, protože je již používán**
 
--   **Chyba při kopírování** – klikněte na tlačítko **ikona kopírování** napravo od **Chyba kopírování** textbox zkopírovat všechny podrobnosti oznámení sdílet s skupiny pracovník podpory nebo produkt
+-   **Chyba při kopírování** – klikněte na tlačítko hello **ikona kopírování** toohello napravo od hello **Chyba kopírování** textbox toocopy všechny hello tooshare podrobnosti oznámení s skupiny pracovník podpory nebo produkt
 
     -   Příklad –```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Další kroky
-[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
+[Zadejte tooyour přihlašování aplikací pomocí Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
 

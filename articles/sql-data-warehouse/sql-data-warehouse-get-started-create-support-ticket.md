@@ -1,6 +1,6 @@
 ---
-title: "Jak vytvořit lístek podpory pro SQL Data Warehouse | Dokumentace Microsoftu"
-description: "Jak vytvořit lístek podpory v Azure SQL Data Warehouse"
+title: "aaaHow toocreate lístek podpory pro SQL Data Warehouse | Microsoft Docs"
+description: "Jak toocreate podporu lístek v Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,70 +15,70 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 058ff1229acee5d03db7c0305c5565ae95a85758
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72f7eac82112fb7f1bfb05abca4ce40aeb3c828c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Jak vytvořit lístek podpory pro SQL Data Warehouse
+# <a name="how-toocreate-a-support-ticket-for-sql-data-warehouse"></a>Jak toocreate podporu lístek pro datový sklad SQL
 Pokud máte se službou SQL Data Warehouse nějaké problémy, můžete si vytvořit lístek podpory, aby vám mohl náš technický tým pomoct.
 
 > [!NOTE] 
-> Od 20. 12. 2016 je kontrola stavu prostředků na webu Azure Portal nepřesná. Na vyřešení tohoto problému aktivně pracujeme. 
+> Od 12/20/2016 není přesný hello Kontrola stavu prostředků v hello portálu Azure. Aktivně pracujeme toofix tento problém. 
 
 
 ## <a name="create-a-support-ticket"></a>Vytvoření lístku podpory
-1. Otevřete [Azure Portal][Azure portal].
-2. Na domovské obrazovce klikněte na dlaždici **Nápovědy a podpora**.
+1. Otevřete hello [portál Azure][Azure portal].
+2. Na domovské obrazovce hello, klikněte na tlačítko hello **Nápověda a podpora** dlaždici.
    
     ![Nápověda a podpora](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
-3. V okně Nápověda a podpora klikněte na **Vytvořit žádost o podporu**.
+3. Na hello nápovědy + podporu okno, klikněte na tlačítko **vytvořit žádost o podporu**.
    
     ![Nová žádost o podporu](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
    
     <a name="request-quota-change"></a> 
-4. Vyberte **Typ žádosti**.
+4. Vyberte hello **typ žádosti**.
    
     ![Typ žádosti](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
    
    > [!NOTE]
-   > Ve výchozím nastavení obsahuje každý server SQL (např. myserver.database.windows.net) **kvóty DTU** o hodnotě 45 000. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit vytvořením lístku podpory a výběrem *kvóty* jako typu požadavku. Chcete-li vypočítat potřebné DTU, vynásobte celkové potřebné [DWU][DWU] číslem 7,5. Pokud například chcete hostovat dvě DW6000 na jednom serveru SQL, měli byste požadovat kvóty DTU o hodnotě 90 000.  Vaši aktuální spotřebu DTU z okna serveru SQL můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. 
+   > Ve výchozím nastavení obsahuje každý server SQL (např. myserver.database.windows.net) **kvóty DTU** o hodnotě 45 000. Tato kvóta je jednoduše bezpečnostní omezení. Vytvoření lístku podpory a výběrem může zvýšení kvóty *kvóty* jako typ požadavku hello. toocalculate potřebuje, vynásobte vaší DTU hello 7.5 pomocí hello celkový [DWU] [ DWU] potřeby. Například byste chtěli toohost dva DW6000s na jednom SQL serveru a pak měli požádat o kvótě DTU z 90,000.  Vaše aktuální spotřeba DTU z okna hello SQL serveru můžete zobrazit na portálu hello. Databáze pozastavený a zrušení pozastavený započítávat hello kvóty DTU. 
    > 
    > 
-5. Vyberte **předplatné**, pod které spadá databáze s problémem, který chcete nahlásit.
+5. Vyberte hello **předplatné** , hostitelé hello databáze s problémem hello podávají zprávy.
    
     ![Předplatné](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
-6. Jako prostředek vyberte **SQL Data Warehouse**.
+6. Vyberte **SQL Data Warehouse** jako hello prostředků.
    
     ![Prostředek](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 7. Vyberte svůj [plán podpory Azure][Azure support plan].
    
    * **Podpora k fakturaci, správě kvót a předplatného** je k dispozici na všech úrovních podpory.
-   * Podpora k problémům vyžadujícím **opravu** je poskytována prostřednictvím plánů podpory [Developer Support][Developer], [Standard Support][Standard], [Professional Direct][Professional Direct] nebo [Premier Support][Premier]. Problémy vyžadující opravu jsou problémy, které mají zákazníci při používání Azure a u kterých se dá předpokládat, že je způsobila společnosti Microsoft.
-   * V rámci podpory na úrovni plánů [Professional Direct][Professional Direct] a [Premier Support][Premier] jsou k dispozici služby **mentorování vývojářů** a **poradenské služby**. 
+   * Podpora k problémům vyžadujícím **opravu** je poskytována prostřednictvím plánů podpory [Developer Support][Developer], [Standard Support][Standard], [Professional Direct][Professional Direct] nebo [Premier Support][Premier]. Opravu jsou problémy, které mají zákazníci při použití Azure tam, kde existuje se dá předpokládat tohoto problému hello způsobila společnosti Microsoft.
+   * **Mentorování vývojářů** a **poradenské služby** jsou k dispozici na hello [Professional Direct] [ Professional Direct] a [úrovně Premier] [ Premier] úrovních podpory. 
      
-     Pokud máte plán podpory Premier Support, můžete také problémy týkající se služby SQL Data Warehouse nahlásit na [online portálu Microsoft Premier][Microsoft Premier online portal].  Další informace o různých plánech podpory, včetně rozsahu, doby odezvy, cen atd. najdete v tématu věnovaném [plánům podpory Azure][Azure support plan].  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších dotazech týkajících se podpory k Azure][Azure support FAQs].  
+     Pokud máte plán podpory Premier Support, můžete SQL Data Warehouse nahlásit na hello problémy související s [online portálu Microsoft Premier][Microsoft Premier online portal].  V tématu [plánům podpory Azure] [ Azure support plan] toolearn Další informace o různých podporovat plány, včetně rozsahu, doby odezvy, cen, hello atd.  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších dotazech týkajících se podpory k Azure][Azure support FAQs].  
      
      ![Plán podpory](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. Vyberte **typ problému** a **kategorii**. V tomto příkladu jsme vybrali typ problému „Nástroje“ a kategorii „Klientské nástroje“. 
+8. Vyberte hello **typ problému** a **kategorie**. V tomto příkladu jsme vybrali "Nástroje" jako hello typ problému a "Client tools" jako hello kategorie. 
    
     ![Kategorie typu problému](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
-9. Popište problém a zvolte úroveň dopadu na chod firmy.
+9. Popište problém hello a zvolte hello úroveň dopadu na firmu.
    
     ![Popis problému](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
 10. Předvyplní se vaše **kontaktní údaje** pro tento lístek podpory. V případě potřeby je aktualizujte.
     
     ![Kontaktní údaje](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
-11. Kliknutím na **Vytvořit** odešlete žádost o podporu.
+11. Klikněte na tlačítko **vytvořit** žádost o podporu toosubmit hello.
 
 ## <a name="monitor-a-support-ticket"></a>Monitorování lístku podpory
-Po odeslání žádosti o podporu vás bude kontaktovat tým podpory Azure. Pokud chcete zkontrolovat stav a podrobnosti žádosti, klikněte na řídicím panelu na **Spravovat žádosti o podporu**.
+Po odeslání žádosti o podporu hello tým podpory Azure hello vás kontaktovat. toocheck vaše stav a podrobnosti žádosti, klikněte na tlačítko **spravovat žádosti o podporu** na řídicím panelu hello.
 
 ![Zkontrolování stavu](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
 ## <a name="other-resources"></a>Další prostředky
-Kromě toho se můžete spojit s komunitou SQL Data Warehouse na [Stack Overflow][Stack Overflow] nebo na [fóru pro Azure SQL Data Warehouse na webu MSDN][Azure SQL Data Warehouse MSDN forum].
+Kromě toho můžete propojit s hello komunitou SQL Data Warehouse na [Stack Overflow] [ Stack Overflow] nebo na hello [fórum Azure SQL Data Warehouse na MSDN] [ Azure SQL Data Warehouse MSDN forum].
 
 <!--Image references--> 
 

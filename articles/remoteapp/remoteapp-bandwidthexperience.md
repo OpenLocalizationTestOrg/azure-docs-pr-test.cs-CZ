@@ -1,5 +1,5 @@
 ---
-title: "Azure RemoteApp – jak šířku pásma sítě a kvalitu prostředí pracovní společně? | Dokumentace Microsoftu"
+title: "aaaAzure vzdálené aplikace RemoteApp – jak šířku pásma sítě a kvalitu prostředí pracovní společně? | Dokumentace Microsoftu"
 description: "Zjistěte, jak šířku pásma sítě v Azure RemoteApp může mít vliv na kvalitu vaše uživatelské prostředí."
 services: remoteapp
 documentationcenter: 
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 74116902e973fba440b3c662fdf76202d052b4c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 62b0caadf63359eceb63d27fae6ad289b682ff63
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-remoteapp---how-do-network-bandwidth-and-quality-of-experience-work-together"></a>Azure RemoteApp – jak šířku pásma sítě a kvalitu prostředí pracovní společně?
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Při hledání na [celková šířka pásma sítě,](remoteapp-bandwidth.md) požadováno pro Azure RemoteApp, mějte na paměti následující faktory – jsou všechny součástí dynamické systém, který má dopad na celkové činnost koncového uživatele. 
+Při hledání v hello [celková šířka pásma sítě,](remoteapp-bandwidth.md) požadováno pro Azure RemoteApp, mějte na paměti hello následující faktory – jsou všechny součástí dynamický systém, ovlivňuje hello celkové uživatelské prostředí. 
 
-* **Dostupná šířka pásma sítě a aktuálním stavu sítě** -sadu parametrů (ztrátě, latenci, kolísání) ve stejné síti v daném okamžiku může ovlivnit aplikaci streamování prostředí, což znamená snížený celkové činnost koncového uživatele. Ve vaší síti dostupné šířky pásma je funkce zahlcení, náhodné ztrátě, latence, protože všechny tyto parametry mají vliv mechanismu řízení zahlcení, které se v změní ovládací prvky přenosové rychlosti, aby se zabránilo kolizí.  Například míru ztrát síť nebo síť s vysokou latencí bude uživatelské prostředí chybný i v síti s 1 000 MB šířky pásma. Ztráta a latence lišit v závislosti na počtu uživatelů, kteří jsou ve stejné síti a tyto činnosti uživatelů (například učíte při sledování videa, stahování nebo nahrávání velkých souborů, tisku).
-* **Scénáře použití** -možnosti závisí na co uživatelé dělají v jako jednotlivce a jako skupinu ve stejné síti. Například čtení jeden snímek vyžaduje jen jeden snímek aktualizovat; Pokud uživatel skims a posune přes obsah textu dokumentu, které potřebují vyšší počet snímků za sekundu aktualizovat. Komunikace a zpět na server v tomto scénáři bude nakonec využívat větší šířku pásma sítě. Také zvážit příklad extrémně: více uživatelů jsou učíte při sledování videa vysokým rozlišením (například řešení 4 kB), která uchovává HD konferenční hovory, hraní her 3D video nebo práci v systémech CAD. Všechny tyto může způsobit nepoužitelnost i síť skutečně velkou šířku pásma prakticky.
-* **Obrazovky řešení a počet obrazovky** -větší šířku pásma sítě je potřeba úplné aktualizace obrazovky větší než menších obrazovkách. Základní technologii nemá poměrně dobrý úlohy kódování a přenos pouze ty oblasti obrazovky, které byly aktualizovány, ale jednou za čas, celé obrazovky je třeba aktualizovat. Pokud má uživatel vyšší rozlišení obrazovky (například řešení 4 kB), že aktualizace vyžaduje větší šířku pásma sítě než obrazovky s nižší rozlišení (např. 1024x768px). Tato stejná logika platí, pokud používáte více než jednu obrazovku pro přesměrování. Šířka pásma je potřeba zvýšit počet obrazovky.
-* **Přesměrování schránky a zařízení** – jedná se o problém velmi zřejmé, ale v mnoha případech Pokud uživatel ukládá velké bloku dat do schránky, jak dlouho trvá bit času pro tyto informace k přenosu z klienta vzdálené plochy k serveru. Podřízené prostředí může být ovlivněno možností zasílání daného obsahu schránky proti proudu. Totéž platí pro přesměrování zařízení – Pokud skener nebo webové kamery vytváří velké množství dat, který potřebuje k odeslání nadřazeného na server, nebo tiskárnu potřebuje pro příjem velkého dokumentu nebo místní úložiště musí být k dispozici pro spouštění v cloudu pro kopírování velkého souboru aplikace , mohou si uživatelé všimnout vynechání snímků nebo dočasně "ukotvené" video protože data potřebná pro přesměrování zařízení zvětšuje šířku pásma sítě musí. 
+* **Dostupná šířka pásma sítě a aktuálním stavu sítě** -sadu parametrů (ztrátě, latenci, kolísání) na hello stejné sítě v daném okamžiku může mít vliv na aplikace hello streamování prostředí, což znamená snížený celkové uživatelské prostředí. ve vaší síti dostupné šířky pásma Hello je funkce zahlcení, náhodné ztrátě, latenci, protože tyto parametry ovlivnit mechanismu řízení zahlcení hello, které v ovládacích prvcích zapnout hello kolizí tooavoid rychlost přenosu.  Například míru ztrát síť nebo síť s vysokou latencí budou hello uživatelské prostředí chybný i v síti s 1 000 MB šířky pásma. ztráta Hello a latence lišit v závislosti na hello počet uživatelů, kteří jsou na hello stejné síti a tyto činnosti uživatelů (například učíte při sledování videa, stahování nebo nahrávání velkých souborů, tisku).
+* **Scénáře použití** -hello prostředí závisí na jaké hello uživatelé dělají jako jednotlivce a jako skupiny na hello stejné síti. Například čtení jeden snímek vyžaduje pouze toobe jeden snímek aktualizovat; Pokud uživatel hello skims a posune přes hello obsah textu dokumentu, potřebují vyšší počet snímků toobe aktualizovat za sekundu. Hello komunikace zpět a stanovilo toohello serveru v tomto scénáři nakonec využívat větší šířku pásma sítě. Také zvážit příklad extrémně: více uživatelů jsou učíte při sledování videa vysokým rozlišením (například řešení 4 kB), která uchovává HD konferenční hovory, hraní her 3D video nebo práci v systémech CAD. Všechny tyto může způsobit nepoužitelnost i síť skutečně velkou šířku pásma prakticky.
+* **Obrazovky řešení a hello počet obrazovky** -větší šířku pásma sítě je požadovaná toofull aktualizace větší obrazovky než menších obrazovkách. základní technologii Hello nemá poměrně dobrý úlohy kódování a přenos pouze hello oblasti hello obrazovky, které byly aktualizovány, ale jednou za čas, celé úvodní obrazovka musí toobe aktualizovat. Pokud má uživatel hello vyšší rozlišení obrazovky (například řešení 4 kB), že aktualizace vyžaduje větší šířku pásma sítě než obrazovky s nižší rozlišení (např. 1024x768px). Tato stejná logika platí, pokud používáte více než jednu obrazovku pro přesměrování. Šířka pásma musí tooincrease s počtem hello obrazovky.
+* **Přesměrování schránky a zařízení** – jedná se o problém velmi zřejmé, ale v mnoha případech Pokud uživatel ukládá velké bloku dat schránky toohello, jak dlouho trvá bit času pro tento tootransfer informace z klienta vzdálené plochy hello toohello serveru. Hello podřízené prostředí může mít vliv hello činnost odesílání obsahu schránky hello proti proudu. Hello totéž platí pro přesměrování zařízení – Pokud skener nebo webová kamera vytváří velké množství dat, který potřebuje toobe odeslané toohello nadřazeného serveru, nebo tiskárnu tooreceive velké dokumentu, nebo která místní úložiště toobe dostupné tooan aplikaci spuštěnou v cloudu toocopy hello velkých souborů, mohou uživatelé všimnout vynechání snímků nebo dočasně "ukotvené" video protože hello data potřebná pro přesměrování zařízení hello roste hello šířku pásma sítě musí. 
 
-Při hodnocení potřeb šířky pásma sítě, ujistěte se, že jste zvážit všechny tyto faktory, které fungují jako systém.
+Při hodnocení potřeb šířky pásma sítě, ujistěte se, že tooconsider všechny tyto faktory, které fungují jako systém.
 
-Nyní, přejděte zpět na [článku šířky pásma sítě hlavní](remoteapp-bandwidth.md), nebo přejít k testování vaší [šířku pásma sítě](remoteapp-bandwidthtests.md).
+Nyní, přejděte zpět toohello [článku šířky pásma sítě hlavní](remoteapp-bandwidth.md), nebo přesunout na tootesting vaše [šířku pásma sítě](remoteapp-bandwidthtests.md).
 
 ## <a name="learn-more"></a>Další informace
 * [Odhadnout využití šířky pásma sítě Azure RemoteApp](remoteapp-bandwidth.md)

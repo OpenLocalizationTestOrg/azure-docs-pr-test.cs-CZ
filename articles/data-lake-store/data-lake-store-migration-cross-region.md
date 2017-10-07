@@ -1,5 +1,5 @@
 ---
-title: Migrace mezi oblastmi Azure Data Lake Store | Microsoft Docs
+title: aaaAzure migrace mezi oblastmi Data Lake Store | Microsoft Docs
 description: "Další informace o migraci mezi oblastmi pro Azure Data Lake Store."
 services: data-lake-store
 documentationcenter: 
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 650e1ea1a5e768ac72afc49435e4c4ab318a464a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 561ac821c1bd555886035867678cb685997564eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Migrovat Data Lake Store v oblastech
 
-Jakmile Azure Data Lake Store k dispozici v nové oblastech, můžete provést jednorázovou migraci, abyste mohli využívat nové oblasti. Zjistěte, co je potřeba zvážit při plánování a provedení migrace.
+Jakmile Azure Data Lake Store k dispozici v nové oblastech, můžete zvolit toodo jednorázové migrace, tootake výhod hello novou oblast. Jaké tooconsider zjistěte, jak naplánovat a dokončení migrace hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Další informace najdete v tématu [vytvořit účet Azure zdarma Dnes](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Data Lake Store ve dvou různých oblastech**. Další informace najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md).
-* **Azure Data Factory**. Další informace najdete v tématu [Úvod do Azure Data Factory](../data-factory/data-factory-introduction.md).
+* **Azure Data Factory**. Další informace najdete v tématu [Úvod tooAzure Data Factory](../data-factory/data-factory-introduction.md).
 
 
 ## <a name="migration-considerations"></a>Posouzení migrace
 
-Nejdřív určete strategii migrace, která je nejvhodnější pro aplikace, který zapíše, čte nebo dat v Data Lake Store. Když zvolíte strategie, zvažte požadavky dostupnosti vaší aplikace a výpadek, k níž dojde během migrace. Nejjednodušším přístupem může třeba použít model migrace "navýšení a shift" cloudu. V tomto přístupu pozastavení při všechna data budou zkopírována do nové oblasti aplikace ve vaší stávající oblasti. Po dokončení procesu kopírování se obnovit svoji aplikaci v nové oblasti a pak odstraňte starý účet Data Lake Store. Je nutná odstávka během migrace.
+Nejdřív určete hello strategii migrace, která je nejvhodnější pro aplikace, který zapíše, čte nebo dat v Data Lake Store. Když zvolíte strategie, zvažte požadavky na dostupnosti vaší aplikace a hello výpadek, k níž dojde během migrace. Nejjednodušším přístupem může být například toouse hello "navýšení a shift" cloudu migrace modelu. V tomto přístupu pozastavení při všechna vaše data jsou zkopírovány toohello novou oblast hello aplikace ve vaší stávající oblasti. Po dokončení kopírování hello obnovit svoji aplikaci v nové oblasti hello a pak odstraňte starý účet Data Lake Store hello. Je nutná odstávka během migrace hello.
 
-Chcete-li zkrátit dobu prostojů, může být okamžitě začít, příjem nová data v oblasti nové. Pokud máte minimální dat potřebných, spusťte aplikaci v nové oblasti. Na pozadí nadále zkopírujte starší data z existující účet Data Lake Store v oblasti nové na nový účet Data Lake Store. Když použijete tuto metodu, můžete provést přepínač do nové oblasti s malým množstvím výpadky. Pokud byl zkopírován starší data, odstraňte starý účet Data Lake Store.
+tooreduce výpadku, můžete okamžitě začít příjem nová data v oblasti nové hello. Až budete mít hello minimální dat potřebných, spusťte aplikaci v nové oblasti hello. Hello pozadí pokračujte v nové oblasti hello toocopy starší data z hello existující Data Lake Store účtu toohello nový účet Data Lake Store. Když použijete tuto metodu, můžete provést novou oblast toohello hello přepínače s malým množstvím výpadky. Pokud byl zkopírován všechny hello starší data, odstraňte starý účet Data Lake Store hello.
 
-Další důležité podrobnosti vzít v úvahu při plánování migrace jsou:
+Další důležité podrobnosti tooconsider při plánování migrace jsou:
 
-* **Datový svazek**. Objem dat (v gigabajtech, počet souborů a složek a tak dále) má vliv na čas a prostředky, které potřebujete k migraci.
+* **Datový svazek**. hello čas a prostředky, které potřebujete k hello migrace má vliv Hello objem dat (v gigabajtech, počet hello soubory a složky a tak dále).
 
-* **Název účtu data Lake Store**. Název nového účtu v nové oblasti musí být globálně jedinečný. Contosoeastus2.azuredatalakestore.net může být například název starý účet Data Lake Store v oblasti Východ USA 2. Může být název nového účtu Data Lake Store v Severní Evropa contosonortheu.azuredatalakestore.net.
+* **Název účtu data Lake Store**. název nového účtu Hello v nové oblasti hello musí být globálně jedinečný. Název hello starý účet Data Lake Store v oblasti Východ USA 2 může být například contosoeastus2.azuredatalakestore.net. Může být název nového účtu Data Lake Store v Severní Evropa contosonortheu.azuredatalakestore.net.
 
-* **Nástroje pro**. Doporučujeme vám, že používáte [aktivita služby Azure Data Factory kopie](../data-factory/data-factory-azure-datalake-connector.md) kopírovat soubory Data Lake Store. Objekt pro vytváření dat podporuje přesun dat s vysokým výkonem a spolehlivostí. Uvědomte si, že objekt pro vytváření dat zkopíruje pouze hierarchii složek a obsahu souborů. Budete muset použít ručně všech seznamech (ACL) používaných v starý účet nový účet. Další informace, včetně cíle výkonnosti pro nejlepší možný scénáře, najdete v článku [výkonu kopie aktivity a vyladění průvodce](../data-factory/data-factory-copy-activity-performance.md). Pokud chcete data zkopírovat rychleji, možná budete muset používat další jednotky přesun dat v cloudu. Některé nástroje, jako je AdlCopy, nepodporují kopírování dat mezi oblastmi.  
+* **Nástroje pro**. Doporučujeme použít hello [aktivita služby Azure Data Factory kopie](../data-factory/data-factory-azure-datalake-connector.md) soubory toocopy Data Lake Store. Objekt pro vytváření dat podporuje přesun dat s vysokým výkonem a spolehlivostí. Uvědomte si, že objekt pro vytváření dat zkopíruje pouze hello hierarchii složek a obsah souborů hello. Je třeba toomanually použít seznamů řízení zprávy všechny přístupu (ACL), které použijete v hello starý účet toohello nový účet. Další informace, včetně cíle výkonnosti pro nejlepší možný scénáře, najdete v části hello [výkonu kopie aktivity a vyladění průvodce](../data-factory/data-factory-copy-activity-performance.md). Pokud chcete data zkopírovat rychleji, bude pravděpodobně nutné toouse další jednotky přesun dat v cloudu. Některé nástroje, jako je AdlCopy, nepodporují kopírování dat mezi oblastmi.  
 
 * **Šířka pásma poplatky**. [Šířka pásma poplatky](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) použít, protože data se přenáší z oblasti Azure.
 
-* **Seznamy ACL na vaše data**. Zabezpečení dat v nové oblasti s použitím seznamů řízení přístupu k souborům a složkám. Další informace najdete v tématu [zabezpečení dat uložených v Azure Data Lake Store](data-lake-store-secure-data.md). Doporučujeme vám, že používáte migraci k aktualizaci a upravit vaše seznamy ACL. Můžete chtít použít nastavení podobná aktuální nastavení. Seznamy ACL, které se použijí na všechny soubory pomocí portálu Azure můžete zobrazit [rutiny prostředí PowerShell](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), nebo sady SDK.  
+* **Seznamy ACL na vaše data**. Zabezpečení dat v oblasti nové hello použitím seznamů řízení přístupu toofiles a složky. Další informace najdete v tématu [zabezpečení dat uložených v Azure Data Lake Store](data-lake-store-secure-data.md). Doporučujeme použít hello migrace tooupdate a upravit vaše seznamy ACL. Můžete chtít toouse podobné tooyour aktuální nastavení. Můžete zobrazit hello seznamy ACL, které jsou použité tooany souboru pomocí hello portál Azure, [rutiny prostředí PowerShell](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), nebo sady SDK.  
 
-* **Umístění služby analytics**. Pro nejlepší výkon analytické služby, jako je Azure Data Lake Analytics nebo Azure HDInsight, musí být ve stejné oblasti jako vaše data.  
+* **Umístění služby analytics**. Pro nejlepší výkon, analytické služby, jako je Azure Data Lake Analytics nebo Azure HDInsight, musí být v hello stejné oblasti jako vaše data.  
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)

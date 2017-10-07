@@ -1,5 +1,5 @@
 ---
-title: Azure Mobile Engagement iOS SDK obsahu
+title: aaaAzure Mobile Engagement iOS SDK obsahu
 description: "Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,19 +14,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bdc96cd47ece6054184d167192ebec4cd4bd081c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9f735226b98431cf0a68d0cbe8f9112f4c8df019
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sdk-content"></a>Obsah sady SDK
-Tento dokument uvádí a popisuje obsah archivu SDK.
+Tento dokument uvádí a popisuje obsah hello hello SDK archivu.
 
 ## <a name="engagement-sdk"></a>Engagement SDK
 `EngagementSDK`
 
-> Hlavičky obsahující základní sady Engagement SDK, knihovny a další třídu zadali jako zdrojový kód, který povolí či zakáže shromažďování IDFA.
+> Dobrý den záhlaví obsahující základní sady Engagement SDK, knihovny a další třída zadali jako zdrojový kód tooenable nebo zakázat shromažďování IDFA.
 > 
 > 
 
@@ -46,7 +46,7 @@ Tento dokument uvádí a popisuje obsah archivu SDK.
 
 `src`Složka
 
-> Řadiče zobrazení engagement a Reach SDK zdrojový kód (pro power uživatele, kteří chtějí přizpůsobit Engagement třídy pro jejich potřeb).
+> Řadiče zobrazení engagement a Reach SDK zdrojový kód (pro pokročilé uživatele, kteří chtějí tooadapt Engagement třídy tootheir potřeby).
 > 
 > 
 

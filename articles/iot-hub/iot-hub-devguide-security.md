@@ -1,6 +1,6 @@
 ---
-title: "Porozumět zabezpečení služby Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – řízení přístupu ke službě IoT Hub pro aplikace pro zařízení a back-end aplikace. Obsahuje informace o tokeny zabezpečení a podporu pro certifikáty X.509."
+title: "aaaUnderstand zabezpečení Azure IoT Hub | Microsoft Docs"
+description: "Průvodce - vývojáře přístupu toocontrol tooIoT rozbočovače pro aplikace pro zařízení a back-end aplikace. Obsahuje informace o tokeny zabezpečení a podporu pro certifikáty X.509."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,135 +14,135 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 717726328a6bb5c5c334a123d0abfed711b2c3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
+# <a name="control-access-tooiot-hub"></a>Řízení přístupu tooIoT rozbočovače
 
-Tento článek popisuje možnosti pro zabezpečení služby IoT hub. IoT Hub používá *oprávnění* k udělení přístupu k každý koncový bod centra IoT. Oprávnění omezit přístup do služby IoT hub, v závislosti na funkcích.
+Tento článek popisuje možnosti hello pro zabezpečení služby IoT hub. IoT Hub používá *oprávnění* toogrant koncový bod centra IoT přístup tooeach. Oprávnění omezit hello přístup tooan IoT hub závislosti na funkcích.
 
 Tento článek popisuje:
 
-* Jiná oprávnění, že můžete udělit do zařízení nebo back-end aplikace pro přístup k službě IoT hub.
-* Proces ověřování a tokenů se používá k ověření oprávnění.
-* Postup určení oboru přihlašovací údaje k omezení přístupu ke konkrétním prostředkům.
+* Hello jiná oprávnění, můžete udělit nebo back-end aplikačním tooaccess tooa zařízení služby IoT hub.
+* Hello proces a hello tokeny ověřování používá tooverify oprávnění.
+* Jak tooscope pověření toolimit přístup k toospecific prostředkům.
 * Podpora služby IoT Hub pro certifikáty X.509.
 * Mechanismy ověřování vlastní zařízení, které používají existující registrech identity zařízení nebo schémat ověřování.
 
-### <a name="when-to-use"></a>Kdy je použít
+### <a name="when-toouse"></a>Když toouse
 
-Musí mít příslušná oprávnění pro přístup k libovolnému koncové body centra IoT. Zařízení musí obsahovat třeba token obsahující zabezpečovací pověření společně s každou zprávu, kterou odešle do služby IoT Hub.
+Musí mít příslušná oprávnění tooaccess žádné koncové body centra IoT hello. Zařízení musí obsahovat třeba token obsahující zabezpečovací pověření společně s každou zprávu, že odešle tooIoT rozbočovače.
 
 ## <a name="access-control-and-permissions"></a>Řízení přístupu a oprávnění
 
-Můžete udělit [oprávnění](#iot-hub-permissions) následujícími způsoby:
+Můžete udělit [oprávnění](#iot-hub-permissions) v hello následující způsoby:
 
-* **IoT hub úrovni sdílených zásad přístupu**. Zásady sdíleného přístupu můžete udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [portál Azure][lnk-management-portal], nebo programově pomocí [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis]. Nově vytvořený IoT hub má následující výchozích zásad:
+* **IoT hub úrovni sdílených zásad přístupu**. Zásady sdíleného přístupu můžete udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Zásady můžete definovat v hello [portál Azure][lnk-management-portal], nebo programově pomocí hello [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis]. Nově vytvořený IoT hub má hello následující výchozí zásady:
 
   * **iothubowner**: zásada se všechna oprávnění.
   * **Služba**: zásada se **ServiceConnect** oprávnění.
   * **zařízení**: zásada se **DeviceConnect** oprávnění.
   * **registryRead**: zásada se **RegistryRead** oprávnění.
   * **registryReadWrite**: zásada se **RegistryRead** a RegistryWrite oprávnění.
-  * **Podle zařízení zabezpečovací pověření**. Každé centrum IoT obsahuje [registru identit][lnk-identity-registry]. Pro každé zařízení v registru této identity můžete nakonfigurovat zabezpečovací pověření, která udělují **DeviceConnect** oprávnění obor ke koncovým bodům odpovídající zařízení.
+  * **Podle zařízení zabezpečovací pověření**. Každé centrum IoT obsahuje [registru identit][lnk-identity-registry]. Pro každé zařízení v registru této identity můžete nakonfigurovat zabezpečovací pověření, která udělují **DeviceConnect** oprávnění oboru toohello koncové body odpovídající zařízení.
 
 Například v typického řešení IoT:
 
-* Komponenty správy zařízení používá *registryReadWrite* zásad.
-* Součástí procesoru událostí se používá *služby* zásad.
-* Používá komponentu spuštění zařízení obchodní logiku *služby* zásad.
-* Jednotlivých zařízení se připojují přes přihlašovací údaje uložené v registru identit služby IoT hub.
+* komponenty správy zařízení Hello používá hello *registryReadWrite* zásad.
+* součástí procesoru událostí Hello používá hello *služby* zásad.
+* Hello spuštění zařízení obchodní logiky součást používá hello *služby* zásad.
+* Jednotlivých zařízení se připojují přes přihlašovací údaje uložené v registru identit služby IoT hub hello.
 
 > [!NOTE]
 > V tématu [oprávnění](#iot-hub-permissions) podrobné informace.
 
 ## <a name="authentication"></a>Authentication
 
-Azure IoT Hub uděluje přístup ke koncovým bodům kontrolou token proti zásady sdíleného přístupu a identit registru zabezpečovací pověření.
+Azure IoT Hub uděluje přístup tooendpoints kontrolou token proti hello sdílené zásady přístupu a identit registru zabezpečovací pověření.
 
-Zabezpečovací přihlašovací údaje, jako jsou symetrického klíče, se nikdy odeslány prostřednictvím sítě.
+Zabezpečovací přihlašovací údaje, jako jsou symetrického klíče, se nikdy odešlou přes přenosu hello.
 
 > [!NOTE]
-> Poskytovatel prostředků Azure IoT Hub je zabezpečená vašeho předplatného Azure, jsou všechny zprostředkovatele v [Azure Resource Manager][lnk-azure-resource-manager].
+> Hello poskytovatel prostředků Azure IoT Hub je zabezpečená vašeho předplatného Azure, jako jsou všechny zprostředkovatele v hello [Azure Resource Manager][lnk-azure-resource-manager].
 
-Další informace o tom, jak vytvořit a používat tokeny zabezpečení najdete v tématu [tokeny zabezpečení služby IoT Hub][lnk-sas-tokens].
+Další informace o tom, najdete v části tooconstruct a použití tokenů zabezpečení [tokeny zabezpečení služby IoT Hub][lnk-sas-tokens].
 
 ### <a name="protocol-specifics"></a>Protokol podrobností
 
 Každý podporovaný protokol, například MQTT, AMQP a HTTP, je určena k přenosu tokeny různými způsoby.
 
-Při použití MQTT, připojení paketu má ID zařízení jako ClientId, {iothubhostname} / {deviceId} v poli uživatelské jméno a do pole pro heslo tokenu SAS. {iothubhostname} by měla být úplná CName služby IoT hub (například contoso.azure-devices.net).
+Při použití MQTT, hello připojení paketu má hello deviceId jako hello ClientId, {iothubhostname} / {deviceId} v hello pole pro uživatelské jméno a do pole heslo hello tokenu SAS. {iothubhostname} by měl být hello úplné CName hello IoT hub (například contoso.azure-devices.net).
 
 Při použití [AMQP][lnk-amqp], podporuje IoT Hub [SASL prostý] [ lnk-sasl-plain] a [AMQP deklarace identity – zabezpečení na základě-] [ lnk-cbs].
 
-Pokud používáte AMQP deklarace identity – zabezpečení na základě-, standardní Určuje, jak přenést tyto tokeny.
+Pokud používáte AMQP deklarace identity – zabezpečení na základě-, určuje hello standardní jak tootransmit tyto tokeny.
 
-Pro SASL prostý **uživatelské jméno** může být:
+SASL prostý text hello **uživatelské jméno** může být:
 
 * `{policyName}@sas.root.{iothubName}`Pokud se používá tokeny úrovni centra IoT.
 * `{deviceId}@sas.{iothubname}`Pokud používáte zařízení obor tokeny.
 
-V obou případech pole pro heslo obsahuje token, jak je popsáno v [tokeny zabezpečení služby IoT Hub][lnk-sas-tokens].
+V obou případech pole hesla hello obsahuje hello token, jak je popsáno v [tokeny zabezpečení služby IoT Hub][lnk-sas-tokens].
 
-HTTP implementuje ověřování zahrnutím platný token v **autorizace** hlavičky žádosti.
+HTTP implementuje ověřování zahrnutím platný token v hello **autorizace** hlavičky žádosti.
 
 #### <a name="example"></a>Příklad
 
 Uživatelské jméno (DeviceId je malá a velká písmena):`iothubname.azure-devices.net/DeviceId`
 
-Heslo (Generovat SAS token s [explorer zařízení] [ lnk-device-explorer] nástroj):`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+Heslo (Generovat SAS token s hello [explorer zařízení] [ lnk-device-explorer] nástroj):`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
-> [SDK služby Azure IoT] [ lnk-sdks] automaticky generovat tokeny při připojování ke službě. V některých případech nepodporují SDK služby Azure IoT všechny protokoly nebo všechny metody ověřování.
+> Hello [SDK služby Azure IoT] [ lnk-sdks] automaticky generovat tokeny při připojování toohello služby. V některých případech nepodporují hello SDK služby Azure IoT všechny protokoly hello nebo všechny metody ověřování hello.
 
 ### <a name="special-considerations-for-sasl-plain"></a>Zvláštní upozornění pro SASL prostý
 
-Při použití SASL prostý s AMQP, klient připojení do služby IoT hub můžete použít jeden token pro každé připojení TCP. Když vyprší platnost tokenu, připojení TCP odpojí od služby a aktivuje o obnovení. Toto chování, když není problematické pro back-end aplikačním je poškození pro aplikace na zařízení z následujících důvodů:
+Při použití SASL prostý s AMQP, klient připojení tooan IoT hub můžete použít jeden token pro každé připojení TCP. Když vyprší platnost tokenu hello, hello připojení TCP odpojí od hello služby a aktivuje o obnovení. Toto chování, když není problematické pro back-end aplikačním je poškození aplikace zařízení pro hello následujících důvodů:
 
-* Brány obvykle jménem mnoho zařízení připojit. Pokud používáte SASL prostý, mají vytvořit odlišné připojení protokolu TCP pro každé zařízení připojení do služby IoT hub. Tento scénář také výrazně zvyšuje spotřeby energie a síťové prostředky a latence každé připojení zařízení.
-* Zařízení s omezenými zdroji jsou nevyhovělo vyšší využití prostředků se znovu připojit po každém vypršení platnosti tokenu.
+* Brány obvykle jménem mnoho zařízení připojit. Pokud používáte SASL prostý, mají toocreate odlišné připojení TCP pro každé zařízení připojení tooan IoT hub. Tento scénář také výrazně zvyšuje hello spotřeba energie a síťových prostředků a hello latence každé připojení zařízení.
+* Zařízení s omezenými zdroji jsou negativně ovlivněn pomocí hello vyšší prostředky tooreconnect po každém vypršení platnosti tokenu.
 
 ## <a name="scope-iot-hub-level-credentials"></a>Přihlašovací údaje úrovni centra IoT oboru
 
-Můžete určit obor zásad zabezpečení na úrovni centra IoT tak, že vytvoříte tokeny pomocí identifikátoru URI prostředku s omezeným přístupem. Koncový bod k odesílání zpráv typu zařízení cloud ze zařízení, je třeba **/devices/ {deviceId} / zprávy/události**. Můžete taky zásady sdíleného přístupu úrovně rozbočovače IoT s **DeviceConnect** oprávnění pro přihlášení token je jejichž resourceURI **/devices/ {deviceId}**. Tento postup vytvoří token, který lze použít k odeslání zprávy jménem zařízení pouze **deviceId**.
+Můžete určit obor zásad zabezpečení na úrovni centra IoT tak, že vytvoříte tokeny pomocí identifikátoru URI prostředku s omezeným přístupem. Například hello koncový bod toosend zařízení cloud zprávy ze zařízení je **/devices/ {deviceId} / zprávy/události**. Můžete taky zásady sdíleného přístupu úrovně rozbočovače IoT s **DeviceConnect** oprávnění toosign token je jejichž resourceURI **/devices/ {deviceId}**. Tento postup vytvoří token, který je pouze použitelné toosend zprávy jménem zařízení **deviceId**.
 
-Tento mechanismus je podobná [zásad vydavatele Event Hubs][lnk-event-hubs-publisher-policy]a umožňuje implementovat vlastní metody ověřování.
+Tento mechanismus je podobné toohello [zásad vydavatele Event Hubs][lnk-event-hubs-publisher-policy]a umožní vám tooimplement vlastní metody ověřování.
 
 ## <a name="security-tokens"></a>Tokeny zabezpečení
 
-IoT Hub používá tokeny zabezpečení k ověřování zařízení a služby se odesílání klíče v drátové síti. Kromě toho mají omezenou dobu platnosti a obor tokeny zabezpečení. [Sady SDK služby Azure IoT] [ lnk-sdks] automaticky generovat tokeny bez nutnosti žádnou zvláštní konfiguraci. Některé scénáře vyžadují, abyste generovat a používat přímo tokeny zabezpečení. Mezi tyto scénáře patří:
+Zabezpečení služby IoT Hub používá tokeny tooauthenticate zařízení a služeb tooavoid odesílání klíčů na hello přenosu. Kromě toho mají omezenou dobu platnosti a obor tokeny zabezpečení. [Sady SDK služby Azure IoT] [ lnk-sdks] automaticky generovat tokeny bez nutnosti žádnou zvláštní konfiguraci. Některé scénáře vyžadují toogenerate a používat přímo tokeny zabezpečení. Mezi tyto scénáře patří:
 
-* Přímé použití ploch MQTT, AMQP a HTTP.
-* Implementace vzoru služba tokenu, jak je popsáno v [ověřování zařízení vlastní][lnk-custom-auth].
+* Hello přímého použití ploch hello MQTT, AMQP a HTTP.
+* Hello implementace vzoru hello služba tokenu, jak je popsáno v [ověřování zařízení vlastní][lnk-custom-auth].
 
-Centrum IoT také umožňuje zařízení k ověření službou IoT Hub pomocí [certifikáty X.509][lnk-x509].
+Centrum IoT také umožňuje zařízení tooauthenticate službou IoT Hub pomocí [certifikáty X.509][lnk-x509].
 
 ### <a name="security-token-structure"></a>Struktura tokenu zabezpečení
 
-Pomocí tokenů zabezpečení udělte přístup k zařízením s ohraničenou čas a služeb na určité funkce IoT hub. Získat autorizaci k připojení ke službě IoT Hub, zařízení a služby, musí poslat tokeny zabezpečení, které jsou podepsané sdíleného přístupu nebo symetrického klíče. Tyto klíče jsou uloženy s identitu zařízení v registru identit.
+Použijte zabezpečení tokeny toogrant ohraničenou čas přístup toodevices a služby toospecific funkci v IoT Hub. tooget autorizace tooconnect tooIoT rozbočovače, zařízení a služeb musí odesílat tokeny zabezpečení, které jsou podepsané sdíleného přístupu nebo symetrického klíče. Tyto klíče jsou uloženy s identitu zařízení v registru identit hello.
 
-Token podepsán sdílený přístupový klíč uděluje přístup k všechny funkce související s oprávněními zásady sdíleného přístupu. Podepsaný token pomocí identity zařízení symetrického klíče pouze uděluje **DeviceConnect** oprávnění pro identitu související zařízení.
+Token podepsán sdílený přístupový klíč uděluje přístup tooall hello funkcí spojených s oprávnění zásad hello sdíleného přístupu. Token podepsaný pomocí identity zařízení symetrického klíče pouze uděluje hello **DeviceConnect** oprávnění pro hello přidružené identitu zařízení.
 
-Token zabezpečení má následující formát:
+token zabezpečení Hello má hello následující formát:
 
 `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
 
-Zde jsou očekávaných hodnot:
+Zde jsou hello očekávaných hodnot:
 
 | Hodnota | Popis |
 | --- | --- |
-| {podpis} |Řetězec podpisu HMAC SHA256 ve tvaru: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč je dekódovat z formátu base64 a použít jako klíč, aby prováděly výpočty HMAC SHA256. |
-| {resourceURI} |Předpony identifikátoru URI (podle segmentu) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádné protocol). Například `myHub.azure-devices.net/devices/device1`. |
-| {vypršení platnosti} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epoch na 1. ledna pod hodnotou 1970. |
-| {Adresu URL-kódovaný resourceURI} |Nižší případ kódování URL prostředku malá identifikátor URI |
-| {policyName} |Název zásady sdíleného přístupu, na který odkazuje tento token. Chybějící Pokud token odkazuje na přihlašovací údaje registru zařízení. |
+| {podpis} |Řetězec podpisu HMAC SHA256 formuláře hello: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč hello je dekódovat z formátu base64 a použít jako výpočetní klíče tooperform hello HMAC SHA256. |
+| {resourceURI} |Předpony identifikátoru URI (podle segmentu) hello koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele centra IoT hello (žádné protocol). Například `myHub.azure-devices.net/devices/device1`. |
+| {vypršení platnosti} |Řetězce UTF8 pro počet sekund od hello epoch 00:00:00 UTC na 1. ledna pod hodnotou 1970. |
+| {Adresu URL-kódovaný resourceURI} |Nižší případ kódování URL prostředku malá hello identifikátor URI |
+| {policyName} |Název Hello hello sdílené toowhich zásady přístupu, který odkazuje tento token. Chybějící Pokud hello token odkazuje toodevice registru přihlašovací údaje. |
 
-**Poznámka: na předponě**: předpony identifikátoru URI se počítá podle segmentu a ne serverem znak. Například `/a/b` předpona pro `/a/b/c` , ale ne pro `/a/bc`.
+**Poznámka: na předponě**: předpony identifikátoru URI hello se počítá podle segmentu a ne serverem znak. Například `/a/b` předpona pro `/a/b/c` , ale ne pro `/a/bc`.
 
-Následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , vypočítá token zabezpečení ze vstupních údajů `resourceUri, signingKey, policyName, expiresInMins`. V dalších oddílech jsou upřesněny postupy k chybě při inicializaci jiné vstupy pro případy použití v odlišných tokenu.
+Hello následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , výpočtů hello tokenu z hello vstupy `resourceUri, signingKey, policyName, expiresInMins`. Další části Hello podrobnosti, jak tooinitialize hello různé vstupy pro různé token hello případy použití.
 
 ```nodejs
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -166,7 +166,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 };
 ```
 
-Jako porovnání je ekvivalentní kód Python pro vygenerování tokenu zabezpečení:
+Ke srovnání hello ekvivalentní toogenerate kód Python, je token zabezpečení:
 
 ```python
 from base64 import b64encode, b64decode
@@ -194,36 +194,36 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 ```
 
 > [!NOTE]
-> Vzhledem k tomu, že doba platnosti tokenu se ověří na počítačích IoT Hub, musí být minimální odlišily v hodinách na počítač, který generuje token.
+> Vzhledem k tomu, že hello doba platnosti tokenu hello se ověří na počítačích IoT Hub, musí být vypnuté hello hello hodiny hello počítače, který generuje hello token minimální.
 
 ### <a name="use-sas-tokens-in-a-device-app"></a>Použití tokeny SAS v aplikaci pro zařízení
 
-Existují dva způsoby, jak získat **DeviceConnect** oprávnění službou IoT Hub s tokeny zabezpečení: pomocí [zařízení symetrického klíče z registru identit](#use-a-symmetric-key-in-the-identity-registry), nebo použijte [sdílený přístupový klíč](#use-a-shared-access-policy).
+Existují dva způsoby tooobtain **DeviceConnect** oprávnění službou IoT Hub s tokeny zabezpečení: pomocí [zařízení symetrického klíče z registru identit hello](#use-a-symmetric-key-in-the-identity-registry), nebo použijte [sdílený přístupový klíč](#use-a-shared-access-policy).
 
 Mějte na paměti, že všechny funkce, které jsou přístupné ze zařízení je zveřejněný prostřednictvím návrhu na koncové body s předponou `/devices/{deviceId}`.
 
 > [!IMPORTANT]
-> Jediným způsobem, že IoT Hub ověřuje určité zařízení používá symetrický klíč identity zařízení. V případech, pokud zásady sdíleného přístupu slouží k přístupu funkce zařízení, musí řešení zvažte komponentu vydání tokenu zabezpečení důvěryhodné komponentu.
+> Hello jediným způsobem, že IoT Hub ověřuje určité zařízení používá hello zařízení identity symetrického klíče. V případech, když se zásada sdíleného přístupu použité tooaccess funkce zařízení, musí řešení hello zvažte hello součástí vydání tokenu zabezpečení hello důvěryhodné komponentu.
 
-Zařízení přístupem koncových bodů jsou (bez ohledu na protokol):
+Hello zařízení přístupem koncových bodů jsou (bez ohledu na protokol hello):
 
 | Koncový bod | Funkce |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Odesílání zpráv typu zařízení cloud. |
 | `{iot hub host name}/devices/{deviceId}/devicebound` |Příjem zpráv typu cloud zařízení. |
 
-### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Použít symetrického klíče v registru identit
+### <a name="use-a-symmetric-key-in-hello-identity-registry"></a>Použít symetrického klíče v registru identit hello
 
-Při použití identitu zařízení symetrický klíč pro vygenerování tokenu, policyName (`skn`) element tokenu je vynechán.
+Pokud používáte identitu zařízení symetrického klíče toogenerate token, hello policyName (`skn`) element hello tokenu je vynechán.
 
-Například pro přístup ke všem funkcím zařízení vytvoří token musí mít následující parametry:
+Například token vytvořen tooaccess všechny funkce zařízení by měl mít hello následující parametry:
 
 * identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices/{device id}`,
-* podpisového klíče: pro všechny symetrický klíč `{device id}` identitu,
+* podpisový klíč: žádné symetrický klíč pro hello `{device id}` identitu,
 * žádný název zásady
 * kdykoli vypršení platnosti.
 
-Příkladem pomocí funkce předchozí Node.js může být:
+Příkladem použití předchozích funkce Node.js hello může být:
 
 ```nodejs
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -232,32 +232,32 @@ var deviceKey ="...";
 var token = generateSasToken(endpoint, deviceKey, null, 60);
 ```
 
-Výsledek, který uděluje přístup ke všem funkcím pro device1, bude:
+Hello výsledek, který uděluje přístup tooall funkce pro device1, bude:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vytvořit token SAS pomocí .NET [explorer zařízení] [ lnk-device-explorer] nástroje nebo a platformy, na základě uzlu [iothub-explorer] [ lnk-iothub-explorer]nástroj příkazového řádku.
+> Ho je možné toogenerate token SAS pomocí rozhraní .NET hello [explorer zařízení] [ lnk-device-explorer] nástroje nebo hello různé platformy, na základě uzlu [iothub-explorer] [ lnk-iothub-explorer] nástroj příkazového řádku.
 
 ### <a name="use-a-shared-access-policy"></a>Použijte zásady sdíleného přístupu
 
-Při vytváření tokenu z zásady sdíleného přístupu, nastavení `skn` pole na název zásady. Tato zásada musí udělit **DeviceConnect** oprávnění.
+Při vytváření tokenu z zásady sdíleného přístupu, nastavení hello `skn` název pole toohello hello zásad. Tato zásada musí udělit hello **DeviceConnect** oprávnění.
 
-Jsou dva základní scénáře pro přístup k zařízení funkce pomocí zásady sdíleného přístupu:
+Hello dva základní scénáře pomocí funkce zařízení tooaccess zásady sdíleného přístupu jsou:
 
 * [cloudové brány protokolu][lnk-endpoints],
-* [token služby] [ lnk-custom-auth] použít k implementaci schémat vlastní ověřování.
+* [token služby] [ lnk-custom-auth] používá schémat tooimplement vlastní ověřování.
 
-Vzhledem k tomu, že zásady sdíleného přístupu může potenciálně udělit přístup k připojení jako jakékoli zařízení, je důležité použít správný identifikátor URI, při vytváření tokenů zabezpečení. Toto nastavení je obzvláště důležité pro token služby, které mají k určení rozsahu token k určitému zařízení pomocí identifikátoru URI prostředku. Tento bod je méně relevantní pro protokol brány jako jejich jsou již jehož prostřednictvím je umožněn přenos pro všechna zařízení.
+Od hello zásady sdíleného přístupu může potenciálně udělit přístup tooconnect jako jakékoli zařízení, že je důležité toouse hello správný identifikátor URI prostředku při vytváření tokenů zabezpečení. Toto nastavení je obzvláště důležité pro token služby, které mají tooscope hello tokenu tooa konkrétní zařízení pomocí hello identifikátor URI. Tento bod je méně relevantní pro protokol brány jako jejich jsou již jehož prostřednictvím je umožněn přenos pro všechna zařízení.
 
-Jako příklad tokenu služby pomocí předem vytvořené sdílené zásady přístupu volat **zařízení** by vytvořit token s následujícími parametry:
+Jako příklad tokenu služby pomocí hello předem vytvořené sdílené zásady přístupu volat **zařízení** by vytvořit token s hello následující parametry:
 
 * identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices/{device id}`,
-* podpisový klíč: jeden z klíčů `device` zásad
+* podpisový klíč: jeden z klíčů hello Dobrý den `device` zásad
 * Název zásady: `device`,
 * kdykoli vypršení platnosti.
 
-Příkladem pomocí funkce předchozí Node.js může být:
+Příkladem použití předchozích funkce Node.js hello může být:
 
 ```nodejs
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -267,17 +267,17 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Výsledek, který uděluje přístup ke všem funkcím pro device1, bude:
+Hello výsledek, který uděluje přístup tooall funkce pro device1, bude:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697&skn=device`
 
-Brána protokolu pro všechna zařízení, jednoduše nastavení identifikátoru URI prostředku použít stejný token do `myhub.azure-devices.net/devices`.
+Brána protokolu může používat stejný token pro všechna zařízení, jednoduše nastavení hello identifikátor URI příliš hello`myhub.azure-devices.net/devices`.
 
 ### <a name="use-security-tokens-from-service-components"></a>Použít tokeny zabezpečení ze součásti služby
 
-Součásti služby můžete vygenerovat pouze tokeny zabezpečení pomocí udělení příslušných oprávnění, jak je popsáno dříve zásady sdíleného přístupu.
+Součásti služby můžete vygenerovat pouze tokeny zabezpečení pomocí udělení hello příslušná oprávnění, jak je popsáno dříve zásady sdíleného přístupu.
 
-Tady je funkce služby, které jsou zveřejněné na koncové body:
+Tady je funkce služby hello zveřejněné na koncové body hello:
 
 | Koncový bod | Funkce |
 | --- | --- |
@@ -286,10 +286,10 @@ Tady je funkce služby, které jsou zveřejněné na koncové body:
 | `{iot hub host name}/servicebound/feedback` |Přijímat zpětnou vazbu pro zprávy typu cloud zařízení. |
 | `{iot hub host name}/devicebound` |Odesílání zpráv typu cloud zařízení. |
 
-Jako příklad služby generování použití předem vytvořené sdílené zásady přístupu volat **registryRead** by vytvořit token s následujícími parametry:
+Jako příklad služby generování pomocí hello předem vytvořené sdílené zásady přístupu volat **registryRead** by vytvořit token s hello následující parametry:
 
 * identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices`,
-* podpisový klíč: jeden z klíčů `registryRead` zásad
+* podpisový klíč: jeden z klíčů hello Dobrý den `registryRead` zásad
 * Název zásady: `registryRead`,
 * kdykoli vypršení platnosti.
 
@@ -301,32 +301,32 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Výsledek, který by udělit přístup ke čtení všech identit zařízení, bude:
+Hello výsledek, který by udělit přístup tooread všechny identity zařízení, bude:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=registryRead`
 
 ## <a name="supported-x509-certificates"></a>Podporované certifikáty X.509
 
-K ověření zařízení IoT Hub můžete použít libovolný certifikát X.509. Certifikáty patří:
+Službou IoT Hub můžete použít všechny tooauthenticate certifikát X.509 zařízení. Certifikáty patří:
 
-* **Existující certifikát X.509**. Zařízení již pravděpodobně certifikát X.509 s ním spojená. Zařízení můžete použít tento certifikát k ověření službou IoT Hub.
-* **A samoobslužné generované a X-509 certifikátu podepsaného svým držitelem**. Výrobce zařízení nebo interní nástroje pro nasazení můžete generovat tyto certifikáty a uložení odpovídající privátní klíč (a certifikátu) na zařízení. Můžete použít nástroje, jako [OpenSSL] [ lnk-openssl] a [Windows SelfSignedCertificate] [ lnk-selfsigned] nástroj pro tento účel.
-* **Certifikační Autority podepsané certifikát X.509**. K identifikaci zařízení a ověřování službou IoT Hub, můžete certifikát X.509, generovány a podepsaný pomocí certifikační autority (CA). IoT Hub pouze ověřuje, že kryptografický otisk uvedené shoduje má nakonfigurovaný kryptografický otisk. IotHub nelze ověřit řetěz certifikátů.
+* **Existující certifikát X.509**. Zařízení již pravděpodobně certifikát X.509 s ním spojená. Hello zařízení můžete použít tento certifikát tooauthenticate službou IoT Hub.
+* **A samoobslužné generované a X-509 certifikátu podepsaného svým držitelem**. Výrobce zařízení nebo interní nástroje pro nasazení můžete generovat tyto certifikáty a ukládat hello odpovídající privátní klíč (a certifikátu) na zařízení hello. Můžete použít nástroje, jako [OpenSSL] [ lnk-openssl] a [Windows SelfSignedCertificate] [ lnk-selfsigned] nástroj pro tento účel.
+* **Certifikační Autority podepsané certifikát X.509**. tooidentify zařízení a pro ověření službou IoT Hub, můžete použít certifikát X.509, generovány a podepsaný pomocí certifikační autority (CA). IoT Hub pouze ověřuje, že hello kryptografický otisk uvedené odpovídá hello nakonfigurovaný kryptografický otisk. IotHub nelze ověřit řetěz certifikátů hello.
 
 Zařízení může použít certifikát X.509 nebo token zabezpečení pro ověřování, ale ne obojí.
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrovat certifikát X.509 pro zařízení.
 
-[Sady SDK služby Azure IoT pro jazyk C#] [ lnk-service-sdk] (verze 1.0.8+) podporuje registraci zařízení, které používá certifikátu X.509. certifikát pro ověřování. Jiná rozhraní API, jako je například importu a exportu zařízení také podporují certifikáty X.509.
+Hello [sady SDK služby Azure IoT pro jazyk C#] [ lnk-service-sdk] (verze 1.0.8+) podporuje registraci zařízení, které používá certifikátu X.509. certifikát pro ověřování. Jiná rozhraní API, jako je například importu a exportu zařízení také podporují certifikáty X.509.
 
 ### <a name="c-support"></a>C\# podpory
 
-**RegistryManager** třída poskytuje programový způsob, jak registrovat zařízení. Konkrétně **AddDeviceAsync** a **UpdateDeviceAsync** metody umožňují zaregistrovat a aktualizujte zařízení v registru identit služby IoT Hub. Tyto dvě metody přijímají **zařízení** instance jako vstup. **Zařízení** třída zahrnuje **ověřování** vlastnost, která vám umožní určit primární a sekundární X.509 kryptografické otisky certifikátu. Kryptografický otisk představuje hodnotu hash SHA-1 (uložené pomocí binární kódování DER) X.509 certifikátu. Máte možnost určení primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. Primární a sekundární kryptografické otisky jsou podporovány pro zpracování scénáře výměnu certifikátů.
+Hello **RegistryManager** třída poskytuje programový způsob tooregister zařízení. Konkrétně hello **AddDeviceAsync** a **UpdateDeviceAsync** metody umožňují tooregister a aktualizujte zařízení v registru identit služby IoT Hub hello. Tyto dvě metody přijímají **zařízení** instance jako vstup. Hello **zařízení** třída zahrnuje **ověřování** vlastnost, která vám umožní toospecify primární a sekundární X.509 kryptografické otisky certifikátu. Kryptografický otisk Hello představuje hodnotu hash SHA-1 certifikátu X.509 hello (uložené pomocí binární kódování DER). Máte možnost hello zadání primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. Primární a sekundární kryptografické otisky jsou podporované toohandle certifikát výměny scénáře.
 
 > [!NOTE]
-> IoT Hub nevyžaduje ani uložit celý certifikát X.509 pouze kryptografický otisk.
+> IoT Hub nevyžaduje ani hello celý certifikát X.509, pouze kryptografický otisk hello uložit.
 
-Zde je ukázka C\# fragment kódu registrovat zařízení pomocí certifikátu X.509. certifikát:
+Zde je ukázka C\# code zařízení pomocí certifikátu X.509 tooregister fragment kódu:
 
 ```csharp
 var device = new Device(deviceId)
@@ -345,11 +345,11 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>Použít certifikát X.509 během spuštění operací
 
-[Zařízení Azure IoT SDK pro .NET] [ lnk-client-sdk] (verze 1.0.11+) podporuje použití certifikátů X.509.
+Hello [zařízení Azure IoT SDK pro .NET] [ lnk-client-sdk] (verze 1.0.11+) podporuje hello certifikáty X.509.
 
 ### <a name="c-support"></a>C\# podpory
 
-Třída **DeviceAuthenticationWithX509Certificate** podporuje vytváření **DeviceClient** instance, používá certifikát X.509. Certifikát X.509 musí být ve formátu PFX (také nazývané PKCS #12), který obsahuje soukromý klíč.
+Hello třída **DeviceAuthenticationWithX509Certificate** podporuje hello vytvoření **DeviceClient** instance, používá certifikát X.509. certifikát X.509 Hello musí být ve formátu PFX (také nazývané PKCS #12) hello, která zahrnuje hello privátní klíč.
 
 Zde je fragment kódu ukázka:
 
@@ -361,68 +361,68 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-authentication"></a>Ověřování vlastní zařízení
 
-Můžete použít Centrum IoT [registru identit] [ lnk-identity-registry] ke konfiguraci zařízení zabezpečovací pověření a přistupovat pomocí ovládacího prvku [tokeny][lnk-sas-tokens]. Pokud řešení IoT už má vlastní identitu registru nebo ověřování schématu, zvažte vytvoření *token služby* integrovat do této infrastruktury službou IoT Hub. Tímto způsobem můžete další funkce IoT ve vašem řešení.
+Můžete použít hello IoT Hub [registru identit] [ lnk-identity-registry] tooconfigure podle zařízení zabezpečovací přihlašovací údaje a řízení přístupu pomocí [tokeny] [ lnk-sas-tokens] . Pokud řešení IoT už má vlastní identitu registru nebo ověřování schématu, zvažte vytvoření *token služby* toointegrate Tato infrastruktura službou IoT Hub. Tímto způsobem můžete další funkce IoT ve vašem řešení.
 
-Token služby je vlastní Cloudová služba. Používá služby IoT Hub *sdílené zásady přístupu* s **DeviceConnect** oprávnění k vytvoření *obor zařízení* tokeny. Tyto tokeny povolit zařízení pro připojení do služby IoT hub.
+Token služby je vlastní Cloudová služba. Používá služby IoT Hub *sdílené zásady přístupu* s **DeviceConnect** oprávnění toocreate *obor zařízení* tokeny. Tyto tokeny umožňují zařízení tooconnect tooyour IoT hub.
 
-![Kroky vzoru služby tokenů][img-tokenservice]
+![Kroky hello služby tokenů vzor][img-tokenservice]
 
-Zde jsou hlavní kroky vzoru tokenu služby:
+Zde jsou hlavní kroky hello hello služby tokenů vzoru:
 
-1. Vytvoření služby IoT Hub sdílených zásad přístupu s **DeviceConnect** oprávnění pro službu IoT hub. Můžete vytvořit v tyto zásady [portál Azure] [ lnk-management-portal] nebo prostřednictvím kódu programu. Službu token tuto zásadu používá k podepisování tokenů, který vytváří.
-1. Pokud zařízení potřebuje přístup k službě IoT hub, vyžádá podepsaný token ze služby tokenu. Zařízení můžete ověřit se schématem registru nebo ověření vaše vlastní identity k určení identity zařízení, která služba token používá k vytvoření tohoto tokenu.
-1. Služba tokenu vrátí token. Token je vytvořená pomocí `/devices/{deviceId}` jako `resourceURI`, s `deviceId` jako ověřovaného zařízení. Služba tokenu použije k vytvoření tokenu zásady sdíleného přístupu.
-1. Zařízení na základě tokenu přímo službou IoT hub.
+1. Vytvoření služby IoT Hub sdílených zásad přístupu s **DeviceConnect** oprávnění pro službu IoT hub. Tyto zásady můžete vytvořit v hello [portál Azure] [ lnk-management-portal] nebo prostřednictvím kódu programu. token služba Hello používá tento tokeny hello toosign zásad, který vytváří.
+1. Když se zařízení potřebuje tooaccess služby IoT hub, vyžádá podepsaný token ze služby tokenu. Hello zařízení můžete ověřit pomocí vaše vlastní identitu registru nebo ověřování schématu toodetermine hello identitu zařízení, že služba tokenu hello používá toocreate hello token.
+1. Služba tokenu Hello vrátí token. Hello token je vytvořená pomocí `/devices/{deviceId}` jako `resourceURI`, s `deviceId` jako zařízení hello ověřovaného. Služba tokenu Hello používá hello sdíleného přístupu zásad tooconstruct hello token.
+1. zařízení Hello používá hello token přímo službou hello IoT hub.
 
 > [!NOTE]
-> Můžete použít třídu .NET [SharedAccessSignatureBuilder] [ lnk-dotnet-sas] nebo třída Java [IotHubServiceSasToken] [ lnk-java-sas] k vytvoření tokenu ve vaší Služba tokenu.
+> Můžete použít třídu .NET hello [SharedAccessSignatureBuilder] [ lnk-dotnet-sas] nebo hello třída jazyka Java [IotHubServiceSasToken] [ lnk-java-sas] toocreate token ve službě tokenu.
 
-Služba tokenu můžete podle potřeby nastavit vypršení platnosti tokenu. Když vyprší platnost tokenu, servery služby IoT hub připojení zařízení. Potom zařízení musíte požádat o nový token od služby tokenů. Čas vypršení platnosti krátké zvyšuje zatížení zařízení a služby tokenů.
+Služba tokenu Hello můžete nastavit vypršení platnosti tokenu hello podle potřeby. Když vyprší platnost tokenu hello, servery hello IoT hub hello připojení zařízení. Potom hello zařízení musíte požádat o nový token od služby tokenů hello. Čas vypršení platnosti krátký zvyšuje zatížení hello hello zařízení a služby tokenů hello.
 
-U zařízení pro připojení do vašeho centra, musí stále ho přidáte do registru identit služby IoT Hub – i když zařízení používá token a klíč zařízení pro připojení. Proto můžete nadále používat řízení přístupu podle zařízení povolením nebo zakázáním identit zařízení ve [registru identit][lnk-identity-registry]. Tento přístup snižuje rizika tokeny pomocí vypršení platnosti dlouhou dobu.
+Pro zařízení tooconnect tooyour rozbočovače, je třeba stále přidat ji toohello registru identit služby IoT Hub – Přestože hello zařízení používá token a ne tooconnect klíče o zařízení. Proto můžete pokračovat v řízení přístupu podle zařízení toouse povolením nebo zakázáním identit zařízení ve hello [registru identit][lnk-identity-registry]. Tento přístup snižuje rizika spojená hello tokeny pomocí vypršení platnosti dlouhou dobu.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porovnání s vlastní bránu
 
-Vzor token služby je doporučeným způsobem, jak implementovat vlastní identitu schéma registru nebo ověřování službou IoT Hub. Tento vzor je doporučená, protože nadále zpracovávat většina dat řešení IoT Hub. Ale pokud schéma vlastní ověřování tak vzájemně propojeny s protokolem, možná budete potřebovat *vlastní brány* zpracovat veškerý provoz. Příkladem takové situaci je pomocí[zabezpečení TLS (Transport Layer) a předsdílených klíčů (PSKs)][lnk-tls-psk]. Další informace najdete v tématu [brány protokolu] [ lnk-protocols] tématu.
+vzor služby tokenů Hello je, že hello doporučená tooimplement způsob schéma vlastní identitu registru nebo ověřování službou IoT Hub. Tento vzor je doporučená, protože IoT Hub pokračuje toohandle většina hello řešení provozu. Ale pokud schéma vlastní ověřování hello tak vzájemně propojeny s protokolem hello, možná budete potřebovat *vlastní brány* tooprocess všechny hello provoz. Příkladem takové situaci je pomocí[zabezpečení TLS (Transport Layer) a předsdílených klíčů (PSKs)][lnk-tls-psk]. Další informace najdete v tématu hello [brány protokolu] [ lnk-protocols] tématu.
 
 ## <a name="reference-topics"></a>Témata odkazů:
 
-Následující referenční témata poskytují další informace o řízení přístupu ke službě IoT hub.
+Hello následující odkazy na témata poskytují další informace o řízení přístupu tooyour IoT hub.
 
 ## <a name="iot-hub-permissions"></a>IoT Hub oprávnění
 
-Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT hub.
+Hello následující tabulka uvádí hello oprávnění můžete použít Centrum IoT tooyour toocontrol přístup.
 
 | Oprávnění | Poznámky |
 | --- | --- |
-| **RegistryRead** |Uděluje přístup do registru identit pro čtení. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
-| **RegistryReadWrite** |Uděluje přístup čtení a zápisu do registru identit. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
-| **ServiceConnect** |Uděluje přístup do cloudu komunikace a sledování koncových bodů služby přístupem. <br/>Udělí oprávnění přijímat zprávy typu zařízení cloud, odesílání zpráv typu cloud zařízení a načíst odpovídající potvrzování doručení. <br/>Uděluje oprávnění k načtení potvrzení o doručení pro soubor odešle. <br/>Uděluje oprávnění k přístupu k dvojčata zařízení, které chcete aktualizovat požadované vlastnosti a značky, načíst hlášené vlastnosti a spouštět dotazy. <br/>Toto oprávnění je používán back-end cloudové služby. |
-| **DeviceConnect** |Uděluje přístup k zařízení přístupem koncových bodů. <br/>Uděluje oprávnění k odesílání zpráv typu zařízení cloud a příjem zpráv typu cloud zařízení. <br/>Uděluje oprávnění k provedení nahrávání souborů ze zařízení. <br/>Uděluje oprávnění k přijímání oznámení vlastnost twin požadovaného zařízení a aktualizaci dvojče zařízení hlášené vlastnosti. <br/>Uděluje oprávnění k provedení soubor odešle. <br/>Toto oprávnění je používán zařízení. |
+| **RegistryRead** |Registr identit toohello uděluje přístup pro čtení. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
+| **RegistryReadWrite** |Uděluje oprávnění ke čtení a zápisu toohello registru identit. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
+| **ServiceConnect** |Uděluje přístup ke komunikaci služby směřujících toocloud a sledování koncových bodů. <br/>Uděluje oprávnění tooreceive zařízení cloud zprávy, odesílání zpráv typu cloud zařízení a načtení hello odpovídající potvrzování doručení. <br/>Uděluje oprávnění tooretrieve doručení potvrzení pro soubor odešle. <br/>Uděluje oprávnění tooaccess zařízení dvojčata tooupdate značky a požadované vlastnosti načíst hlášené vlastnosti a spouštět dotazy. <br/>Toto oprávnění je používán back-end cloudové služby. |
+| **DeviceConnect** |Uděluje přístup k toodevice přístupem koncových bodů. <br/>Uděluje oprávnění toosend zařízení cloud zpráv a příjem zpráv typu cloud zařízení. <br/>Uděluje oprávnění tooperform nahrávání souborů ze zařízení. <br/>Uděluje oprávnění tooreceive zařízení twin potřeby vlastnost oznámení a aktualizace zařízení twin hlášené vlastnosti. <br/>Uděluje oprávnění tooperform soubor odešle. <br/>Toto oprávnění je používán zařízení. |
 
 ## <a name="additional-reference-material"></a>Odkaz na další materiály
 
-Další témata referenční příručka vývojáře IoT Hub patří:
+Další témata referenční příručka vývojáře pro službu IoT Hub hello patří:
 
-* [Koncové body centra IoT] [ lnk-endpoints] popisuje různé koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
-* [Omezování a kvóty] [ lnk-quotas] popisuje kvóty a omezení chování, které se vztahují ke službě IoT Hub.
-* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] uvádí různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
-* [IoT Hub dotazovací jazyk] [ lnk-query] popisuje dotazovací jazyk, můžete použít k načtení informací ze služby IoT Hub o úlohách a dvojčata zařízení.
-* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT.
+* [Koncové body centra IoT] [ lnk-endpoints] popisuje hello různých koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
+* [Omezování a kvóty] [ lnk-quotas] popisuje hello kvót a omezování chování, které se vztahují toohello služby IoT Hub.
+* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] seznamy hello různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
+* [IoT Hub dotazovací jazyk] [ lnk-query] popisuje hello dotazovací jazyk tooretrieve informace ze služby IoT Hub o úlohách a dvojčata zařízení můžete použít.
+* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili řízení přístupu služby IoT Hub, může zajímat v následujících tématech Příručka vývojáře IoT Hub:
+Nyní jste se naučili, jak toocontrol přístup IoT Hub, může být zájem o hello následující témata Průvodce vývojáře IoT Hub:
 
-* [Pomocí dvojčata zařízení synchronizovat stavu a konfigurace][lnk-devguide-device-twins]
+* [Používání stavu toosynchronize dvojčata zařízení a konfigurací][lnk-devguide-device-twins]
 * [Volání metody přímé na zařízení][lnk-devguide-directmethods]
 * [Plánování úloh na několika zařízeních][lnk-devguide-jobs]
 
-Pokud chcete vyzkoušet některé konceptů popsaných v tomto článku, může zajímat v následujících kurzech IoT Hub:
+Pokud chcete tootry některé z hello konceptů popsaných v tomto článku, může být zájem o hello následující kurzy IoT Hub:
 
 * [Začínáme s Azure IoT Hub][lnk-getstarted-tutorial]
-* [Odesílání zpráv typu cloud zařízení s centrem IoT][lnk-c2d-tutorial]
-* [Postupy zpracování zpráv typu zařízení cloud IoT Hub][lnk-d2c-tutorial]
+* [Jak toosend cloud zařízení zprávy s centrem IoT][lnk-c2d-tutorial]
+* [Jak tooprocess zpráv typu zařízení cloud IoT Hub][lnk-d2c-tutorial]
 
 <!-- links and images -->
 

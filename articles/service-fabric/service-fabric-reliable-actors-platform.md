@@ -1,6 +1,6 @@
 ---
-title: Reliable Actors v Service Fabric | Microsoft Docs
-description: "Popisuje, jak jsou vrstvu na spolehlivé služby Reliable Actors a pomocí funkcí platformy Service Fabric."
+title: "aaaReliable aktéři v Service Fabric | Microsoft Docs"
+description: "Popisuje, jak jsou vrstvu na spolehlivé služby Reliable Actors a používat funkce hello platformy Service Fabric hello."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: vturecek
-ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecffb54139f1171c7839b77fed0be60950881198
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
-Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní, které je hostován v implementaci stavové spolehlivé služby Reliable Actors názvem *služby objektu actor*. Služby objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odeslání pro vaše aktéři zpráva:
+# <a name="how-reliable-actors-use-hello-service-fabric-platform"></a>Jak používat Reliable Actors hello platformy Service Fabric
+Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric hello. Reliable Actors spustit v rozhraní, které je hostován v implementaci stavová spolehlivá služba s názvem hello *služby objektu actor*. služby objektu actor Hello obsahuje všechny hello součásti potřebné toomanage hello životního cyklu a odeslání pro vaše aktéři zpráva:
 
-* Modul Runtime objektu Actor spravuje životní cyklus, uvolňování paměti a vynucuje jednovláknové přístup.
-* Naslouchací proces vzdálené komunikace služby objektu actor přijímá volání aktéři vzdáleného přístupu a je odešle do dispečera směrovat na příslušné objektu actor instanci.
-* Zprostředkovatel stavu objektu Actor zabalí zprostředkovatelů stavu (např. zprostředkovatele stavu spolehlivé kolekce) a poskytuje adaptér pro správu stavu objektu actor.
+* Hello objektu Actor Runtime spravuje životní cyklus, uvolňování paměti a vynucuje jednovláknové přístup.
+* Naslouchací proces vzdálené komunikace služby objektu actor přijímá tooactors volání vzdáleného přístupu a odešle je tooa dispečera tooroute toohello příslušné objektu actor instance.
+* Hello zprostředkovatele stavu objektu Actor zabalí zprostředkovatelů stavu (např. zprostředkovatele stavu spolehlivé kolekce hello) a poskytuje adaptér pro správu stavu objektu actor.
 
-Tyto součásti společně tvoří spolehlivé objektu Actor framework.
+Tyto součásti společně formuláře hello spolehlivé objektu Actor framework.
 
 ## <a name="service-layering"></a>Služba vrstvení
-Protože samotné služby objektu actor je spolehlivá služba, všechny [aplikačního modelu](service-fabric-application-model.md), životního cyklu, [balení](service-fabric-package-apps.md), [nasazení](service-fabric-deploy-remove-applications.md), upgrade a škálování koncepty spolehlivé služby použít stejným způsobem jako do služby objektu actor. 
+Protože samotné služby objektu actor hello je spolehlivá služba, všechny hello [aplikačního modelu](service-fabric-application-model.md), životního cyklu, [balení](service-fabric-package-apps.md), [nasazení](service-fabric-deploy-remove-applications.md), upgrade a škálování koncepty Spolehlivé služby použít hello služby tooactor stejným způsobem. 
 
 ![Rozvrstvení služby objektu actor][1]
 
-Předchozí diagram znázorňuje vztah mezi architektury aplikace Service Fabric a uživatelského kódu. Modré elementy reprezentují rozhraní spolehlivé služby, oranžová představuje rozhraní objektu Actor spolehlivé a zelená představuje uživatelského kódu.
+Hello předchozí diagram znázorňuje hello vztah mezi hello Service Fabric aplikační architektury a uživatelského kódu. Modré elementy reprezentují hello spolehlivé služby aplikační architektury, oranžová představuje spolehlivé objektu Actor framework hello a zelená představuje uživatelského kódu.
 
-V spolehlivé služby, služby dědí `StatefulService` třídy. Tato třída je sám odvozené od `StatefulServiceBase` (nebo `StatelessService` pro bezstavové služby). V Reliable Actors pomocí služby objektu actor. Je na různé implementace služby objektu actor `StatefulServiceBase` třídu, která implementuje vzor objektu actor, kde vaše aktéři spustit. Protože je právě implementací samotné služby objektu actor `StatefulServiceBase`, můžete napsat vlastní službu, která je odvozena z `ActorService` a implementovat funkce úrovně služeb stejným způsobem jako při dědění `StatefulService`, jako například:
+V spolehlivé služby, služby dědí hello `StatefulService` třídy. Tato třída je sám odvozené od `StatefulServiceBase` (nebo `StatelessService` pro bezstavové služby). V Reliable Actors pomocí služby objektu actor hello. služby objektu actor Hello je na různé implementace hello `StatefulServiceBase` třídy této implementuje vzor objektu actor hello kde vaše aktéři spustit. Protože samotné služby objektu actor hello je právě implementací `StatefulServiceBase`, můžete napsat vlastní službu, která je odvozena z `ActorService` a funkce na úrovni služby implementace hello stejný způsobem, jakým byste při dědění `StatefulService`, jako například:
 
 * Služba zálohování a obnovení.
 * Sdílené funkce pro všechny účastníky, například jistič.
-* Vzdálená volání procedur v samotné služby objektu actor a v každé jednotlivé objektu actor.
+* Vzdálená volání procedur v samotné služby objektu actor hello a v každé jednotlivé objektu actor.
 
 > [!NOTE]
 > Stavové služby nejsou aktuálně podporované v jazyce Java nebo Linux.
 
-### <a name="using-the-actor-service"></a>Pomocí služby objektu actor
-Instance objektu actor mít přístup ke službě objektu actor, ve kterém běží. Prostřednictvím služby objektu actor instancí objektu actor prostřednictvím kódu programu získat kontext služby. Kontext služby má ID oddílu, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
+### <a name="using-hello-actor-service"></a>Pomocí služby objektu actor hello
+Instance objektu actor mít služby objektu actor toohello přístup, ve kterém běží. Prostřednictvím služby objektu actor hello můžete získat instancí objektu actor prostřednictvím kódu programu hello kontext služby. kontext služby Hello má ID oddílu hello, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
 
 ```csharp
 Task MyActorMethod()
@@ -68,7 +68,7 @@ CompletableFuture<?> MyActorMethod()
 ```
 
 
-Podobně jako všechny spolehlivé služby musí být zaregistrován služby objektu actor s typem služby v modulu runtime Service Fabric. Služby objektu actor ke spuštění vaše instance objektu actor musí být typu vašeho objektu actor také zaregistrován u služby objektu actor. `ActorRuntime` Metoda registrace provede tuto práci pro aktéři. V nejjednodušším případě zaregistrujete na typ vašeho objektu actor a služby objektu actor s výchozím nastavením se implicitně použije:
+Podobně jako všechny spolehlivé služby musí být zaregistrován hello objektu actor služby s typem služby v modulu runtime Service Fabric hello. Pro služby objektu actor hello, toorun vaše instance objektu actor, musí váš typ objektu actor také zaregistrován u služby objektu actor hello. Hello `ActorRuntime` metoda registrace provede tuto práci pro aktéři. V nejjednodušším případě hello zaregistrujete na typ vašeho objektu actor a hello služby objektu actor s výchozím nastavením se implicitně použije:
 
 ```csharp
 static class Program
@@ -82,7 +82,7 @@ static class Program
 }
 ```
 
-Alternativně můžete lambda poskytované registrace metoda služby objektu actor vytvořit sami. Můžete pak nakonfigurovat služby objektu actor a explicitně vytvořit vaše objektu actor instance, kde můžete vložit závislosti na vaší objektu actor prostřednictvím jeho konstruktoru:
+Alternativně můžete použít lambda poskytovaný službou hello registrace metoda tooconstruct hello objektu actor sami. Můžete pak nakonfigurovat služby objektu actor hello a explicitně vytvořit vaše objektu actor instance, kde můžete vložit objektu actor tooyour závislosti prostřednictvím jeho konstruktoru:
 
 ```csharp
 static class Program
@@ -113,10 +113,10 @@ static class Program
 ```
 
 ### <a name="actor-service-methods"></a>Metody služby objektu actor
-Implementuje služby objektu Actor `IActorService` (C#) nebo `ActorService` (Java), který naopak implementuje `IService` (C#) nebo `Service` (Java). Toto je rozhraní používá vzdálenou komunikaci spolehlivé služby, které umožňuje vzdálené volání procedur u metod služby. Obsahuje metody úrovni služby, které je možné volat vzdáleně přes vzdálenou komunikaci služby.
+Hello implementuje služby objektu Actor `IActorService` (C#) nebo `ActorService` (Java), který naopak implementuje `IService` (C#) nebo `Service` (Java). Toto je rozhraní hello používá vzdálenou komunikaci spolehlivé služby, které umožňuje vzdálené volání procedur u metod služby. Obsahuje metody úrovni služby, které je možné volat vzdáleně přes vzdálenou komunikaci služby.
 
 #### <a name="enumerating-actors"></a>Vytváření výčtu actors
-Služby objektu actor umožňuje klientovi výčet metadata o aktéři, která je hostitelem služby. Protože služby objektu actor oddílů stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho aktéři, výčtu se vrátí jako sadu stránkových výsledků. Na stránkách jsou smyčce přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech active aktéři v jednom oddílu služby objektu actor:
+služby objektu actor Hello umožňuje klientům tooenumerate metadata o hello aktéři, která je hostitelem služby hello. Vzhledem k tomu, že je služba objektu actor hello oddílů stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho aktéři, výčet hello se vrátí jako sadu stránkových výsledků. Hello stránky jsou smyčce přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak Hello toocreate seznam všech active aktéři v jednom oddílu služby objektu actor:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -160,7 +160,7 @@ while (continuationToken != null);
 ```
 
 #### <a name="deleting-actors"></a>Odstranění actors
-Služby objektu actor také poskytuje funkce pro odstranění aktéři:
+služby objektu actor Hello také poskytuje funkce pro odstranění aktéři:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -179,10 +179,10 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Další informace o odstranění aktéři a jejich stavu najdete v tématu [objektu actor životního cyklu dokumentaci](service-fabric-reliable-actors-lifecycle.md).
+Další informace o odstranění aktéři a jejich stavu najdete v tématu hello [objektu actor životního cyklu dokumentaci](service-fabric-reliable-actors-lifecycle.md).
 
 ### <a name="custom-actor-service"></a>Služba vlastní objektu actor
-Pomocí lambda registrace objektu actor můžete zaregistrovat vlastní vlastní objektu actor služba, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). V rámci této služby objektu actor vlastní můžete implementovat vlastní úroveň služby funkce napsáním třídu služby, který dědí `ActorService` (C#) nebo `FabricActorService` (Java). Služby objektu actor vlastní dědí všechny funkcionalita modulu runtime objektu actor z `ActorService` (C#) nebo `FabricActorService` (Java) a lze použít k implementaci vlastních metod služby.
+Pomocí hello objektu actor registrace lambda, můžete zaregistrovat vlastní vlastní objektu actor služba, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). V rámci této služby objektu actor vlastní můžete implementovat vlastní úroveň služby funkce napsáním třídu služby, který dědí `ActorService` (C#) nebo `FabricActorService` (Java). Služby objektu actor vlastní dědí všechny funkcionalita modulu runtime objektu actor hello z `ActorService` (C#) nebo `FabricActorService` (Java) a může být použité tooimplement vlastní metody služeb.
 
 ```csharp
 class MyActorService : ActorService
@@ -230,7 +230,7 @@ public class Program
 ```
 
 #### <a name="implementing-actor-backup-and-restore"></a>Implementace objektu actor zálohování a obnovení
- V následujícím příkladu služby objektu actor vlastní zpřístupní metodu zálohování dat objektu actor využívat výhod naslouchacího procesu vzdálené komunikace, která je již v `ActorService`:
+ V následujícím příkladu hello, zpřístupní služby objektu actor vlastní hello tooback metoda objektu actor data a využívají k naslouchání vzdálené komunikace hello již existuje v `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -253,7 +253,7 @@ class MyActorService : ActorService, IMyActorService
     {
         try
         {
-           // store the contents of backupInfo.Directory
+           // store hello contents of backupInfo.Directory
            return true;
         }
         finally
@@ -285,7 +285,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
     {
         try
         {
-           // store the contents of backupInfo.Directory
+           // store hello contents of backupInfo.Directory
            return true;
         }
         finally
@@ -307,7 +307,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 ```
 
 
-V tomto příkladu `IMyActorService` je Vzdálená komunikace kontrakt, který implementuje `IService` (C#) a `Service` (Java) a pak je implementováno modulem `MyActorService`. Přidáním této smlouvy vzdálenou komunikaci, metody na `IMyActorService` jsou nyní k dispozici také ke klientovi vytvořením proxy vzdálenou komunikaci prostřednictvím `ActorServiceProxy`:
+V tomto příkladu `IMyActorService` je Vzdálená komunikace kontrakt, který implementuje `IService` (C#) a `Service` (Java) a pak je implementováno modulem `MyActorService`. Přidáním této smlouvy vzdálenou komunikaci, metody na `IMyActorService` jsou nyní také k dispozici tooa klienta tak, že vytvoříte proxy vzdálenou komunikaci prostřednictvím `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -323,31 +323,31 @@ myActorServiceProxy.backupActorsAsync();
 ```
 
 ## <a name="application-model"></a>Aplikační model
-Služby objektu actor jsou spolehlivé služby, takže aplikačního modelu je stejný. Však nástroje sestavení objektu actor framework generovat některé soubory modelu aplikace za vás.
+Služby objektu actor jsou spolehlivé služby, takže hello aplikačního modelu je hello stejné. Však hello objektu actor framework sestavovací nástroje generovat některé soubory modelu aplikace hello za vás.
 
 ### <a name="service-manifest"></a>Manifest služby
-Nástroje sestavení objektu actor framework automaticky generovat obsah souboru ServiceManifest.xml služby objektu actor. Tento soubor obsahuje:
+Nástroje pro sestavení Hello objektu actor framework automaticky generovat hello obsah souboru ServiceManifest.xml služby objektu actor. Tento soubor obsahuje:
 
-* Typ služby objektu actor. Název typu je vytvořen na základě názvu objektu actor projektu. Založená na atributu trvalost na vaše objektu actor, je HasPersistedState také nastavený příznak odpovídajícím způsobem.
+* Typ služby objektu actor. Název typu Hello je vytvořen na základě názvu objektu actor projektu. Na základě hello trvalost atributu na vaše objektu actor, hello HasPersistedState příznak nastavený i odpovídajícím způsobem.
 * Balíček kódu.
 * Konfigurační balíček.
 * Koncové body a prostředky.
 
 ### <a name="application-manifest"></a>Manifest aplikace
-Nástroje sestavení objektu actor framework automaticky vytvoří definici výchozí služby pro služby objektu actor. Nástroje pro sestavení naplnit výchozí vlastnosti služby:
+Nástroje pro sestavení Hello objektu actor framework automaticky vytvoří definici výchozí služby pro služby objektu actor. Nástroje pro sestavení Hello naplnit hello výchozí služby vlastnosti:
 
-* Počet sady replik je určen podle atribut trvalost na vaše objektu actor. Pokaždé, když trvalost atribut na vaše objektu actor mění, počet sady replik v definici výchozí služby se resetuje odpovídajícím způsobem.
-* Schéma oddílu a rozsah jsou nastaveny na Uniform Int64 s plný rozsah klíče Int64.
+* Počet sady replik je určen podle hello trvalost atribut na vaše objektu actor. Každý atribut trvalost hello čas na vaše objektu actor mění, počet sadu hello repliky v definici služby výchozí hello se resetuje odpovídajícím způsobem.
+* Schéma oddílu a rozsah se nastavují tooUniform Int64 s hello plný Int64 klíče rozsah.
 
 ## <a name="service-fabric-partition-concepts-for-actors"></a>Koncepty oddílu Service Fabric actors
 Služby objektu actor jsou oddílů stavové služby. Každý oddíl služby objektu actor obsahuje sadu aktéři. Oddílů služby je automaticky distribuovaná přes více uzlů v Service Fabric. Instance objektu actor jsou distribuovány v důsledku.
 
 ![Objekt actor vytváření oddílů a distribuci][5]
 
-Spolehlivé služby můžete vytvořit s schémata jiný oddíl a oddíl rozsahy klíčů. Služby objektu actor používá schéma rozdělení oddílů Int64 s plný rozsah klíče Int64 k mapování aktéři na oddíly.
+Spolehlivé služby můžete vytvořit s schémata jiný oddíl a oddíl rozsahy klíčů. služby objektu actor Hello používá schéma rozdělení oddílů Int64 hello s hello úplné Int64 klíče rozsah toomap aktéři toopartitions.
 
 ### <a name="actor-id"></a>ID objektu actor
-Každý objekt actor, který se vytvoří ve službě má jedinečné ID přidružený reprezentována `ActorId` třídy. `ActorId`je neprůhledné hodnoty ID, které je možné pro rovnoměrné aktéři mezi oddílů služby tak, že generuje náhodné ID:
+Každý objektu actor, který je vytvořen v hello služby má jedinečné ID přidružený reprezentována hello `ActorId` třídy. `ActorId`je neprůhledné hodnoty ID, které je možné pro rovnoměrné aktéři mezi oddílů služby hello vygenerováním náhodné ID:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -357,7 +357,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Každý `ActorId` se rozdělí na datovém typu Int64. Z tohoto důvodu služby objektu actor musí používat schéma rozdělení oddílů Int64 s plný rozsah klíče Int64. Však můžete použít vlastní hodnoty ID pro `ActorID`, včetně GUID/UUID, řetězce a Int64s.
+Každý `ActorId` je hash tooan Int64. Z tohoto důvodu služby objektu actor hello musí používat schéma rozdělení oddílů Int64 s hello plný Int64 klíče rozsah. Však můžete použít vlastní hodnoty ID pro `ActorID`, včetně GUID/UUID, řetězce a Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -370,7 +370,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Pokud používáte GUID/UUID a řetězce, hodnoty rozdělí na datovém typu Int64. Ale když explicitně zadáváte Int64 pro `ActorId`, Int64 se mapování přímo na oddíl bez další algoritmu hash. Tento postup na ovládací prvek oddíl, který aktéři jsou umístěny v můžete použít.
+Pokud používáte GUID/UUID a řetězce, jsou hello hodnoty hash tooan Int64. Ale když explicitně zadáváte Int64 tooan `ActorId`, hello Int64 bude přímo mapovat tooa oddílu bez další algoritmu hash. Můžete použít tento toocontrol technika, který aktéři hello oddílu jsou umístěny v.
 
 ## <a name="next-steps"></a>Další kroky
 * [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)

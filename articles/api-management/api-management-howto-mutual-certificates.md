@@ -1,6 +1,6 @@
 ---
-title: "Back endové služby pomocí klienta Secure certifikát ověřování – Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit back endové služby pomocí ověření klientského certifikátu ve službě Azure API Management."
+title: "aaaSecure back endové služby pomocí ověření klientského certifikátu – Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak toosecure back endové služby pomocí klientského certifikátu ověřování ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 565bb61044fed1158944202c36e8abe30edf5729
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu ve službě Azure API Management
-API Management poskytuje možnost zabezpečený přístup ke službě back endové rozhraní API pomocí klientských certifikátů. Tato příručka ukazuje, jak ke správě certifikátů v rozhraní API portálu vydavatele a postup konfigurace rozhraní API používat certifikát pro přístup k jeho back endové službě.
+# <a name="how-toosecure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak toosecure back endové služby pomocí klientského certifikátu ověřování ve službě Azure API Management
+Služba API Management nabízí hello schopností toosecure přístup toohello back endové službě rozhraní API pomocí klientských certifikátů. Tato příručka ukazuje, jak toomanage certifikáty hello rozhraní API portálu vydavatele a jak tooconfigure rozhraní API toouse tooaccess certifikát jeho back endové službě.
 
-Informace o správě certifikátů pomocí rozhraní API REST API správy najdete v tématu [Azure API Management REST API certifikát entity][Azure API Management REST API Certificate entity].
+Informace o správě certifikátů pomocí hello rozhraní API REST API správy najdete v tématu [Azure API Management REST API certifikát entity][Azure API Management REST API Certificate entity].
 
 ## <a name="prerequisites"></a>Požadavky
-Tento průvodce vám ukáže, jak nakonfigurovat instanci služby API Management používat ověřování pomocí certifikátu klienta pro přístup k službě back-end pro rozhraní API. Před provedením postupu v tomto tématu, byste měli mít služby back-end, který je nakonfigurován pro ověřování pomocí certifikátu klienta ([konfigurace ověřování pomocí certifikátu v weby Azure najdete v tomto článku] [ to configure certificate authentication in Azure WebSites refer to this article]), a mít přístup k certifikátu a heslo pro certifikát pro odesílání v portál vydavatele služby API Management.
+Tento průvodce vám ukáže, jak tooconfigure vaše rozhraní API správy služby instance toouse klienta certifikát ověřování tooaccess hello back-end službu pro rozhraní API. Než hello následující kroky v tomto tématu, měli byste služby back-end, který je nakonfigurován pro ověřování pomocí certifikátu klienta ([tooconfigure certifikát ověřování v weby Azure najdete v článku toothis] [ tooconfigure certificate authentication in Azure WebSites refer toothis article]), a máte heslo certifikátu a hello toohello přístup pro hello certifikát pro odesílání v portálu vydavatele hello API Management.
 
 ## <a name="step1"></a>Nahrát certifikát klienta
-Začněte tak, že na webu Azure Portal dané služby API Management kliknete na **Portál vydavatele**. Tím přejdete na portál vydavatele služby API Management.
+tooget začít, klikněte na tlačítko **portál vydavatele** v hello portál Azure pro služby API Management. Tím přejdete portál vydavatele toohello API Management.
 
 ![Portál vydavatele rozhraní API][api-management-management-console]
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si článek [Vytvoření instance API Management][Create an API Management service instance] v kurzu [Začínáme se službou Azure API Management][Get started with Azure API Management].
+> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management] [ Get started with Azure API Management] kurzu.
 > 
 > 
 
-Klikněte na tlačítko **zabezpečení** z **API Management** nabídky na levé straně a klikněte na **klientské certifikáty**.
+Klikněte na tlačítko **zabezpečení** z hello **API Management** nabídky na levé straně hello a klikněte na **klientské certifikáty**.
 
 ![Klientské certifikáty][api-management-security-client-certificates]
 
-Chcete-li nahrát nový certifikát, klikněte na tlačítko **nahrání certifikátu**.
+tooupload nový certifikát, klikněte na tlačítko **nahrání certifikátu**.
 
 ![Nahrání certifikátu][api-management-upload-certificate]
 
-Přejděte na svůj certifikát a pak zadejte heslo pro certifikát.
+Procházet tooyour certifikát a potom zadejte hello heslo pro certifikát hello.
 
-> Certifikát musí být v **.pfx** formátu. Certifikáty podepsané svým držitelem jsou povoleny.
+> Hello certifikát musí být ve **.pfx** formátu. Certifikáty podepsané svým držitelem jsou povoleny.
 > 
 > 
 
 ![Nahrání certifikátu][api-management-upload-certificate-form]
 
-Klikněte na tlačítko **nahrát** na kterou odešlete certifikát.
+Klikněte na tlačítko **nahrát** tooupload hello certifikátu.
 
-> V tuto chvíli je ověřit heslo certifikátu. Chybová zpráva se zobrazí, pokud je nesprávná.
+> v tuto chvíli je ověřen Hello heslo certifikátu. Chybová zpráva se zobrazí, pokud je nesprávná.
 > 
 > 
 
 ![Nahrát certifikát][api-management-certificate-uploaded]
 
-Po nahrání certifikátu se zobrazí na **klientské certifikáty** kartě. Pokud máte víc certifikátů, zajistěte, aby poznámku o předmět nebo poslední čtyři znaky kryptografický otisk, které se používají k výběru certifikátu, při konfiguraci rozhraní API používat certifikáty, jak je popsané v následující [konfigurace rozhraní API pro použití klientský certifikát pro ověřování brány] [ Configure an API to use a client certificate for gateway authentication] části.
+Po nahrání certifikátu hello se zobrazí na hello **klientské certifikáty** kartě. Pokud máte víc certifikátů, poznamenejte hello předmět nebo text hello poslední čtyři znaky hello kryptografický otisk, které jsou používané tooselect hello certifikátu, při konfiguraci rozhraní API toouse certifikáty, jak je popsané v následující hello [konfigurace Rozhraní API toouse klientský certifikát pro ověřování brány] [ Configure an API toouse a client certificate for gateway authentication] části.
 
-> Chcete-li vypnout ověřování řetězu certifikátů při použití, například certifikát podepsaný svým držitelem, postupujte podle kroků popsaných v této – nejčastější dotazy [položky](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
+> tooturn vypnout ověřování řetězu certifikátů, pokud například používáte certifikát podepsaný svým držitelem, postupujte podle kroků hello popsaných v této – nejčastější dotazy [položky](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
 > 
 > 
 
 ## <a name="step1a"></a>Odstranit certifikát klienta
-Pokud chcete odstranit certifikát, klikněte na tlačítko **odstranit** vedle požadovaný certifikát.
+toodelete certifikát, klikněte na tlačítko **odstranit** vedle hello požadovaný certifikát.
 
 ![Odstranění certifikátu][api-management-certificate-delete]
 
-Klikněte na tlačítko **Ano, odstraňte jej** k potvrzení.
+Klikněte na tlačítko **Ano, odstraňte jej** tooconfirm.
 
 ![Potvrzení odstranění][api-management-confirm-delete]
 
-Pokud se certifikát používá rozhraní API, se zobrazí obrazovka upozornění. Chcete-li odstranit certifikát nutno nejprve odstranit certifikát z jakékoli rozhraní API, které jsou nakonfigurovány pro použití.
+Pokud je certifikát hello používá rozhraní API, se zobrazí obrazovka upozornění. toodelete hello certifikátu, je nutné nejprve odebrat hello certifikátu z jakékoli rozhraní API, které jsou nakonfigurované toouse ho.
 
 ![Potvrzení odstranění][api-management-confirm-delete-policy]
 
-## <a name="step2"></a>Konfigurace rozhraní API používat klientský certifikát pro ověřování brány
-Klikněte na tlačítko **rozhraní API** z **API Management** nabídky na levé straně klikněte na název požadované rozhraní API a klikněte na tlačítko **zabezpečení** kartě.
+## <a name="step2"></a>Nakonfigurovat rozhraní API toouse klientský certifikát pro ověřování brány
+Klikněte na tlačítko **rozhraní API** z hello **API Management** levé nabídce na hello, klikněte na název hello hello potřeby rozhraní API a klikněte na hello **zabezpečení** kartě.
 
 ![Zabezpečení rozhraní API][api-management-api-security]
 
-Vyberte **klientské certifikáty** z **s přihlašovacími údaji** rozevíracího seznamu.
+Vyberte **klientské certifikáty** z hello **s přihlašovacími údaji** rozevíracího seznamu.
 
 ![Klientské certifikáty][api-management-mutual-certificates]
 
-Vyberte požadovaný certifikát z **klientský certifikát** rozevíracího seznamu. Pokud máte víc certifikátů, že můžete se podívat na předmět nebo poslední čtyři znaky kryptografický otisk, jak je uvedeno v předchozí části zjistit správný certifikát.
+Vyberte hello požadovaný certifikát z hello **klientský certifikát** rozevíracího seznamu. Pokud máte víc certifikátů můžete prohlížet hello předmět nebo hello poslední čtyři znaky hello kryptografický otisk, jak jsme uvedli v hello předchozí část toodetermine hello správný certifikát.
 
 ![Vyberte certifikát][api-management-select-certificate]
 
-Klikněte na tlačítko **Uložit** se uložit změnu konfigurace rozhraní API.
+Klikněte na tlačítko **Uložit** toosave hello konfigurace změnu toohello rozhraní API.
 
-> Tuto změnu je hned platná, a volání operace tohoto rozhraní API bude používat certifikát k ověření na serveru back-end.
+> Tuto změnu je hned platná, a volání, které budou používat toooperations toto rozhraní API hello tooauthenticate certifikát na hello back-end serverů.
 > 
 > 
 
 ![Uložit změny rozhraní API][api-management-save-api]
 
-> Pokud je zadán pro ověřování brány pro back endové službě rozhraní API, se stane součástí zásad pro toto rozhraní API a lze zobrazit v editoru zásad.
+> Pokud je zadán pro ověřování brány pro back-end službu hello rozhraní API, se stane součástí hello zásady pro toto rozhraní API a lze zobrazit v editoru zásad hello.
 > 
 > 
 
 ![Zásady certifikátu][api-management-certificate-policy]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o jiných způsobech zabezpečení službě back-end, jako je například ověřování protokolu HTTP základní nebo sdílený tajný najdete v následujícím videu.
+Další informace o dalších způsobů toosecure službě back-end, jako je například ověřování protokolu HTTP základní nebo sdílený tajný, najdete v části hello následující videa.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Last-mile-Security/player]
 > 
@@ -130,10 +130,10 @@ Další informace o jiných způsobech zabezpečení službě back-end, jako je 
 
 
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -142,13 +142,13 @@ Další informace o jiných způsobech zabezpečení službě back-end, jako je 
 
 [Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[to configure certificate authentication in Azure WebSites refer to this article]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[tooconfigure certificate authentication in Azure WebSites refer toothis article]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
 [Delete a client certificate]: #step1a
-[Configure an API to use a client certificate for gateway authentication]: #step2
-[Test the configuration by calling an operation in the Developer Portal]: #step3
+[Configure an API toouse a client certificate for gateway authentication]: #step2
+[Test hello configuration by calling an operation in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 
 

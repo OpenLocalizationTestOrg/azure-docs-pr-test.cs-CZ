@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření první aplikace Service Fabric v jazyce C# | Microsoft Docs"
-description: "Úvod do vytváření aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami."
+title: "aaaCreate vaší první aplikace Service Fabric v jazyce C# | Microsoft Docs"
+description: "Úvod toocreating aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: vturecek
-ms.openlocfilehash: 813021d6239ae3cf79bb84b78f77e39c9e0783f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e95e67cc84be1b83c936b250cae9112ddc77b963
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 > [!div class="op_single_selector"]
@@ -27,36 +27,36 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Aplikace Azure Service Fabric obsahuje jednu nebo více služeb, které spustíte kód. Tento průvodce vám ukáže, jak vytvořit bezzstavovými i stavovými aplikací Service Fabric pomocí [spolehlivé služby](service-fabric-reliable-services-introduction.md).  Video tento Microsoft Virtual Academy také ukazuje postup vytvoření bezstavové spolehlivé služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
+Aplikace Azure Service Fabric obsahuje jednu nebo více služeb, které spustíte kód. Tento průvodce vám ukáže, jak toocreate bezzstavovými i stavovými aplikací Service Fabric pomocí [spolehlivé služby](service-fabric-reliable-services-introduction.md).  Toto video Microsoft Virtual Academy také ukazuje, jak toocreate bezstavové spolehlivé služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="basic-concepts"></a>Základní koncepty
-Pokud chcete začít se službami Reliable Services, potřebujete jenom pochopit několik základní koncepty:
+spuštění se službami Reliable Services, můžete pouze tooget potřebovat toounderstand pár základních konceptech:
 
-* **Typ služby**: Toto je implementace služby. Je definována v třídě napíšete, který rozšiřuje `StatelessService` a ostatní kódu nebo v něm, použít název a číslo verze závislosti.
-* **S názvem instance služby**: ke spuštění služby, vytvoříte pojmenované instance typu služby mnohem jako vytvoření instance objektu typu třídy. Instance služby má název ve formě identifikátoru URI pomocí "fabric: /", jako například scheme "fabric: / MyApp/Moje_služba".
-* **Hostitel služby**: pojmenované instance vytvoříte muset spustit v hostitelském procesu. Hostitel služby je právě proces, kde můžete spustit instance služby.
-* **Registrace služby**: registrace soustřeďuje všechny informace dohromady. Typ služby musí být zaregistrován u modulu runtime Service Fabric v hostitele služby umožňující Service Fabric k vytvoření instance ho spustit.  
+* **Typ služby**: Toto je implementace služby. Je definována pomocí třídy hello napíšete, která rozšiřuje `StatelessService` a ostatní kódu nebo v něm, použít název a číslo verze závislosti.
+* **S názvem instance služby**: toorun vaší služby, vytvoříte pojmenované instance typu služby mnohem jako vytvoření instance objektu typu třídy. Instance služby má název v podobě hello identifikátoru URI pomocí hello "fabric: /", jako například scheme "fabric: / MyApp/Moje_služba".
+* **Hostitel služby**: hello s názvem instance služby vytvoříte toorun nutné v hostitelském procesu. Hostitel služby Hello je právě proces, kde můžete spustit instance služby.
+* **Registrace služby**: registrace soustřeďuje všechny informace dohromady. Hello typ služby musí být zaregistrován s hello Service Fabric runtime ve službě hostitele tooallow Service Fabric toocreate instance ho toorun.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
-Bezstavové služby je typ služby, který je aktuálně norm v cloudových aplikacích. Považuje bezstavové, protože samotné služby neobsahuje data, která musí být uložené spolehlivě nebo vysoké dostupnosti. Pokud dojde instanci bezstavové služby, všechny jeho vnitřní stav bude ztracena. V tomto typu služby musí být stav ukládaný na externí úložiště, jako jsou tabulky Azure nebo databázi SQL, mohla provést vysoce dostupné a spolehlivé.
+Bezstavové služby je typ služby, který je aktuálně hello norm v cloudových aplikacích. Považuje bezstavové, protože samotnou službu hello neobsahuje data, která potřebují toobe uložené spolehlivě nebo vysoké dostupnosti. Pokud dojde instanci bezstavové služby, všechny jeho vnitřní stav bude ztracena. V tomto typu služby stavu musí být trvalý tooan externí úložiště, jako je Azure tabulky nebo databázi SQL pro něj toobe provedené vysoce dostupné a spolehlivé.
 
 Spusťte Visual Studio 2015 nebo 2017 Visual Studio jako správce a vytvořit nový projekt aplikace Service Fabric s názvem *HelloWorld*:
 
-![Pomocí dialogového okna Nový projekt pro vytvoření nové aplikace Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![Použít hello nový projekt dialogové okno pole toocreate nové aplikace Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
 Pak vytvořte bezstavové služby projektu s názvem *HelloWorldStateless*:
 
-![V dialogovém okně druhý vytvořte projekt bezstavové služby](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![V hello druhé dialogové okno vytvořte projekt bezstavové služby](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
 Řešení nyní obsahuje dva projekty:
 
-* *Hello World*. Toto je *aplikace* projekt, který obsahuje vaše *služby*. Obsahuje taky manifest aplikace, která popisuje aplikace a také řadu skriptů prostředí PowerShell, které pomáhají při nasazení aplikace.
-* *HelloWorldStateless*. Toto je projekt služby. Obsahuje implementace bezstavové služby.
+* *Hello World*. Toto je hello *aplikace* projekt, který obsahuje vaše *služby*. Obsahuje taky hello manifest aplikace, která popisuje hello aplikace a také řadu skriptů prostředí PowerShell, které vám pomůžou toodeploy vaší aplikace.
+* *HelloWorldStateless*. Toto je projekt služby hello. Obsahuje implementace hello bezstavové služby.
 
-## <a name="implement-the-service"></a>Tuto službu implementovat
-Otevřete **HelloWorldStateless.cs** souboru v projektu služby. V Service Fabric můžete službu spustit veškeré obchodní logiky. Rozhraní API služby obsahuje dvě vstupní body pro váš kód:
+## <a name="implement-hello-service"></a>Implementace služby hello
+Otevřete hello **HelloWorldStateless.cs** souboru v projektu služby hello. V Service Fabric můžete službu spustit veškeré obchodní logiky. rozhraní API služby Hello poskytuje dva vstupní body kódu:
 
 * Metodu zprostředkovává vstupního bodu, názvem *RunAsync*, kde můžete začít provádění jakékoli úlohy, včetně dlouho běžící výpočetních úloh.
 
@@ -76,11 +76,11 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-V tomto kurzu se zaměříme na `RunAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
-Šablona projektu obsahuje ukázkové provádění `RunAsync()` který zvětší kumulativní počet.
+V tomto kurzu se zaměříme na hello `RunAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
+Šablona projektu Hello obsahuje ukázkové provádění `RunAsync()` který zvětší kumulativní počet.
 
 > [!NOTE]
-> Podrobnosti o tom, jak pracovat s komunikačního balíku najdete v tématu [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md)
+> Podrobnosti o způsobu toowork s komunikaci ve formě zásobníku najdete v tématu [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md)
 > 
 > 
 
@@ -88,7 +88,7 @@ V tomto kurzu se zaměříme na `RunAsync()` metody vstupní bod. Toto je, kde m
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic
+    // TODO: Replace hello following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     long iterations = 0;
@@ -104,44 +104,44 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Platforma volá tuto metodu, když je umístěný a připravené ke spuštění instance služby. Bezstavové služby, která jednoduše znamená, když je otevřen v instanci služby. Token zrušení je k dispozici pro koordinaci při instanci služby musí být uzavřen. V Service Fabric tento cyklus otevření nebo uzavření instance služby může docházet k tolikrát, kolikrát za dobu existence služby jako celek. Toto může nastat z různých důvodů, včetně:
+Platforma Hello volá tuto metodu, pokud instance služby je umístěný a připravené tooexecute. Bezstavové služby, která jednoduše znamená po otevření hello instance služby. Token zrušení získáte toocoordinate při instanci služby musí toobe uzavřen. V Service Fabric může tento cyklus otevření nebo uzavření instance služby k mnohokrát průběhu životnosti hello hello služby jako celek. Toto může nastat z různých důvodů, včetně:
 
-* Systém přesune vaší instance služby pro vyrovnávání prostředků.
+* Hello systém přesune vaší instance služby pro vyrovnávání prostředků.
 * K chybám dochází v kódu.
-* Aplikace nebo systému byla upgradována.
-* Základní hardware dojde k výpadku.
+* Hello aplikace nebo systému byla upgradována.
+* základní hardware Hello dojde k výpadku.
 
-Tato orchestration je spravován systémem vysoce dostupné a správně vyrovnáváním zachovat služby.
+Tato orchestration spravuje hello systému tookeep služby vysoce dostupné a správně vyrovnáváním.
 
-`RunAsync()`by neměly blokovat synchronně. Implementaci RunAsync by měla vrátit úlohu nebo await na jakékoli operace dlouhotrvající nebo blokování umožňující pokračovat modulu runtime. Poznámka: v `while(true)` smyčky v předchozím příkladu, úloha vrácení `await Task.Delay()` se používá. Pokud vaše úlohy musí blokovat synchronně, měli byste naplánovat novou úlohu s `Task.Run()` ve vaší `RunAsync` implementace.
+`RunAsync()`by neměly blokovat synchronně. Implementaci RunAsync by měla vrátit úlohu nebo await na všechny operace dlouho běžící nebo blokování tooallow hello runtime toocontinue. Poznámka: v hello `while(true)` smyčky v předchozí příklad hello úloh vrácení `await Task.Delay()` se používá. Pokud vaše úlohy musí blokovat synchronně, měli byste naplánovat novou úlohu s `Task.Run()` ve vaší `RunAsync` implementace.
 
-Zrušení úlohy je spolupráci úsilí řízená token poskytnutý zrušení. Systém bude počkejte na ukončení (podle úspěšné dokončení, zrušení nebo selhání), než ji přesune vaše úlohy. Je důležité respektovat token zrušení, Dokončit veškerou práci a ukončete `RunAsync()` provést co nejrychleji, pokud systém požadavky zrušení.
+Zrušení úlohy je spolupráci úsilí řízená hello zadaný token zrušení. Hello systém bude čekat vaše úloha tooend (podle úspěšné dokončení, zrušení nebo selhání) předtím, než ji přesune. Je důležité toohonor hello zrušení tokenu, dokončit všechny fungovat a ukončete `RunAsync()` provést co nejrychleji při hello systému požadavky zrušení.
 
-V tomto příkladu bezstavové služby je počet uložené v místní proměnné. Ale protože je bezstavové služby, hodnotu, která je uložená existuje pouze pro aktuální životní cyklus jeho instanci služby. Pokud službu přesune nebo restartuje, hodnota je ztraceny.
+V tomto příkladu bezstavové služby je počet hello uložené v místní proměnné. Ale protože je bezstavové služby, hello hodnotu, která je uložená existuje pouze pro hello aktuální životní cyklus jeho instanci služby. Když služba hello přesune nebo restartování, dojde ke ztrátě hello hodnoty.
 
 ## <a name="create-a-stateful-service"></a>Vytvoření stavové služby
-Service Fabric zavádí nový typ služby, která je stavový. Stavové služby můžete udržovat stav spolehlivě v rámci služby samostatně, umístěn společně s kód, který se používá. Stav je vysoké dostupnosti pomocí Service Fabric bez nutnosti zachování stavu na externím obchodu.
+Service Fabric zavádí nový typ služby, která je stavový. Stavové služby můžete udržovat stav spolehlivě v rámci služby hello, samostatně, umístěn společně s hello kód, který se používá. Stav je vysoké dostupnosti pomocí Service Fabric bez hello nutné toopersist stavu tooan externím obchodu.
 
-Chcete-li převést hodnotu čítače bezstavové na vysoce dostupné a trvalé, i když služba přesune nebo restartování, je třeba stavové služby.
+tooconvert hodnota čítače z bezstavové toohighly dostupné a trvalé, i když služba hello přesune nebo restartuje, musíte stavové služby.
 
-Ve stejném *HelloWorld* aplikace, můžete přidat nové služby tak, že kliknete pravým tlačítkem na službách odkazů v projektu aplikace a výběr **Přidat -> Nový Service Fabric Service**.
+V hello stejné *HelloWorld* aplikace, můžete přidat novou službu kliknutím pravým tlačítkem na hello služby odkazů v projektu aplikace hello a výběr **Přidat -> Nový Service Fabric Service**.
 
-![Přidání služby do aplikace Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
+![Přidání služby tooyour aplikace Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
 Vyberte **stavové služby** a pojmenujte ji *HelloWorldStateful*. Klikněte na **OK**.
 
-![Pomocí dialogového okna Nový projekt pro vytvoření nové stavové služby Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![Použít hello nový projekt dialogové okno pole toocreate nové stavové služby Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-Aplikace musí mít teď dvě služby: bezstavové služby *HelloWorldStateless* a stavové služby *HelloWorldStateful*.
+Aplikace musí mít teď dvě služby: hello bezstavové služby *HelloWorldStateless* a stavové služby hello *HelloWorldStateful*.
 
-Stavová služba má stejné vstupní body jako bezstavové služby. Hlavní rozdíl je dostupnost *zprostředkovatele stavu* který spolehlivě uložení stavu. Service Fabric se dodává s implementace zprostředkovatele stav názvem [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), což umožňuje vytváření replikované datové struktury prostřednictvím spolehlivé správce stavu. Stavové spolehlivé služby pomocí zprostředkovatele stavu ve výchozím nastavení.
+Stavová služba má hello stejné vstupní body jako bezstavové služby. Hlavní rozdíl Hello je hello dostupnost *zprostředkovatele stavu* který spolehlivě uložení stavu. Service Fabric se dodává s implementace zprostředkovatele stav názvem [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), která vám umožňuje vytvořit struktury replikovaná data prostřednictvím hello spolehlivé správce stavu. Stavové spolehlivé služby pomocí zprostředkovatele stavu ve výchozím nastavení.
 
-Otevřete **HelloWorldStateful.cs** v *HelloWorldStateful*, který obsahuje následující metodě RunAsync:
+Otevřete **HelloWorldStateful.cs** v *HelloWorldStateful*, který obsahuje následující metodě RunAsync hello:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic
+    // TODO: Replace hello following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
@@ -159,8 +159,8 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
             await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
 
-            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are
-            // discarded, and nothing is saved to the secondary replicas.
+            // If an exception is thrown before calling CommitAsync, hello transaction aborts, all changes are
+            // discarded, and nothing is saved toohello secondary replicas.
             await tx.CommitAsync();
         }
 
@@ -169,23 +169,23 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`funguje podobně jako v stavová a Bezstavová služby. Ale v stavové služby platformy provede další práci vaším jménem předtím, než se provede `RunAsync()`. Tento pracovní mohou zahrnovat kontrolu, spolehlivé správce stavu a spolehlivé kolekce jsou připravené k použití.
+`RunAsync()`funguje podobně jako v stavová a Bezstavová služby. Však v stavové služby platformy hello provede další práci vaším jménem předtím, než se provede `RunAsync()`. Tento pracovní může obsahovat zajistit, že hello spolehlivé správce stavu a spolehlivé kolekce jsou připravené toouse.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a spolehlivé správce stavu
+### <a name="reliable-collections-and-hello-reliable-state-manager"></a>Spolehlivé kolekce a hello spolehlivé správce stavu
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) je implementace slovník, který můžete použít k spolehlivě uložení stavu ve službě. Service Fabric a spolehlivé kolekcí mohou ukládat data přímo ve službě bez nutnosti externí trvalého úložiště. Spolehlivé kolekce dají vašim datům vysoce dostupný. Service Fabric dosahuje tak, že vytváření a správu více *repliky* služby za vás. Také poskytuje rozhraní API, které abstrahuje rychle složitosti správy tyto repliky a jejich přechodů mezi stavy.
+[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) je slovník implementace, které můžete použít tooreliably ukládání stavu ve službě hello. Service Fabric a spolehlivé kolekcí mohou ukládat data přímo ve službě bez nutnosti hello externí trvalého úložiště. Spolehlivé kolekce dají vašim datům vysoce dostupný. Service Fabric dosahuje tak, že vytváření a správu více *repliky* služby za vás. Také poskytuje rozhraní API, které abstrahuje tokeny hello složitosti správy tyto repliky a jejich přechodů mezi stavy.
 
 Spolehlivé kolekce můžete ukládat jakýkoli typ rozhraní .NET, včetně vlastních typů, pomocí několika upozornění:
 
-* Service Fabric umožňuje vašemu stavu vysoce dostupné podle *replikace* stavu napříč uzly a spolehlivé kolekce ukládat data na místní disk na jednotlivé repliky. To znamená, že vše, co je uložen v spolehlivé kolekce musí být *serializovatelný*. Ve výchozím nastavení, použijte spolehlivé kolekce [kontraktu](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) pro serializaci, proto je důležité se ujistit, že jsou vaše typy [nepodporuje serializátor kontraktu dat](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) při použití výchozí serializátor.
-* Objekty jsou replikovány pro zajištění vysoké dostupnosti při potvrzení transakce na spolehlivé kolekce. Objekty uložené v kolekcích spolehlivé udržovaly v místní paměti ve službě. To znamená, že máte místní odkaz na objekt.
+* Service Fabric umožňuje vašemu stavu vysoce dostupné podle *replikace* úložiště stavu napříč uzly a spolehlivé kolekce datový disk toolocal na jednotlivé repliky. To znamená, že vše, co je uložen v spolehlivé kolekce musí být *serializovatelný*. Ve výchozím nastavení, použijte spolehlivé kolekce [kontraktu](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) pro serializaci, proto je důležité toomake se, že jsou vaše typy [nepodporuje hello serializátor kontraktu dat](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) při použití výchozí hello serializátor.
+* Objekty jsou replikovány pro zajištění vysoké dostupnosti při potvrzení transakce na spolehlivé kolekce. Objekty uložené v kolekcích spolehlivé udržovaly v místní paměti ve službě. To znamená, že máte toohello místní referenční objekt.
   
-   Je důležité, neprovádějte místní instancí těchto objektů bez provádění operace aktualizace na kolekci spolehlivé v transakci. To je proto nebude automaticky replikovat změny místní instance objektů. Musíte znovu vložit objekt zpět do slovníku nebo použijte jednu z *aktualizace* metody ve slovníku.
+   Je důležité, neprovádějte místní instancí těchto objektů bez provádění operace aktualizace na hello spolehlivé kolekce v transakci. To je proto nebude automaticky replikovat změny toolocal instance objektů. Musíte znovu vložit objekt hello zpět do slovníku hello nebo použijte jednu z hello *aktualizace* metody na hello slovníku.
 
-Spolehlivé správce stavu spravuje spolehlivé kolekce za vás. Můžete jednoduše pokládat spolehlivé správce stavu pro kolekci spolehlivé podle názvu kdykoli a kdekoli v službě. Spolehlivé správce stavu zajišťuje, získejte odkaz na zpět. Doporučujeme si uložit odkazy na spolehlivé kolekci instancí v člen třídy, proměnné nebo vlastnosti. Musí dát zvláštní pozor zajistit, že je odkaz nastavený na instanci za všech okolností v průběhu životního cyklu služby. Spolehlivé správce stavu zpracuje tato práce pro uživatele a je optimalizovaný pro opakování návštěvách.
+Hello spolehlivé správce stavu spravuje spolehlivé kolekce za vás. Můžete jednoduše pokládat hello spolehlivé správce stavu pro kolekci spolehlivé podle názvu kdykoli a kdekoli v službě. Hello spolehlivé správce stavu zajišťuje, získejte odkaz na zpět. Není vhodné uložit odkazy tooreliable kolekci instancí třídy členské proměnné nebo vlastnosti. Musí dát zvláštní pozor tooensure nastavený hello odkaz tooan instance v případech, v průběhu životního cyklu služby hello. Hello spolehlivé správce stavu zpracuje tato práce pro uživatele a je optimalizovaný pro opakování návštěvách.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transakční a asynchronní operace
 ```C#
@@ -199,17 +199,17 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Spolehlivé kolekce mají mnoho z operací, která jejich `System.Collections.Generic` a `System.Collections.Concurrent` svými protějšky, s výjimkou LINQ. Operace na spolehlivé kolekce jsou asynchronní. Je to proto, že operace zápisu ke kolekcím, spolehlivé provádění vstupně-výstupních operací se budou replikovat a zachovat data na disk.
+Spolehlivé kolekce mají mnoho hello stejné operace, jejich `System.Collections.Generic` a `System.Collections.Concurrent` svými protějšky, s výjimkou LINQ. Operace na spolehlivé kolekce jsou asynchronní. Je to proto, že operace zápisu ke kolekcím, spolehlivé provádění vstupně-výstupní operace tooreplicate a zachovat data toodisk.
 
-Spolehlivé operace kolekce jsou *transakcí*, takže můžete zachovat stav konzistentní napříč více spolehlivé kolekce a operace. Může například dequeue – pracovní položky z fronty spolehlivé, proveďte operaci na něm a výsledek uložit jako slovník spolehlivé, vše v rámci jedné transakce. To je považován za atomická operace, a zaručuje, že buď celé operace proběhne úspěšně, nebo celou operaci vrátíte zpět. Pokud dojde k chybě po dequeue položku, ale před uložením výsledek, celá transakce bude vrácena zpět a položka zůstane ve frontě pro zpracování.
+Spolehlivé operace kolekce jsou *transakcí*, takže můžete zachovat stav konzistentní napříč více spolehlivé kolekce a operace. Může například dequeue – pracovní položky z fronty spolehlivé, proveďte operaci na něm a uložit výsledek hello slovník spolehlivé, vše v rámci jedné transakce. To je považován za atomická operace, a zaručuje, že buď hello celé operace proběhne úspěšně nebo celou operaci hello vrátíte zpět. Pokud dojde k chybě po dequeue hello položku, ale před uložením hello výsledek, hello celá transakce bude vrácena zpět a hello položka zůstane ve frontě hello ke zpracování.
 
-## <a name="run-the-application"></a>Spuštění aplikace
-Nemůžeme se teď vrátit do *HelloWorld* aplikace. Teď můžete sestavit a nasazení služeb. Po stisknutí klávesy **F5**, vaše aplikace bude vytvořené a nasazené na místním clusteru.
+## <a name="run-hello-application"></a>Spuštění aplikace hello
+Nemůžeme se teď vrátit toohello *HelloWorld* aplikace. Teď můžete sestavit a nasazení služeb. Po stisknutí klávesy **F5**, bude vaše aplikace vytvořené a nasazené tooyour místní cluster.
 
-Po službu spustit, můžete zobrazit vygenerované události trasování událostí pro Windows (ETW) v **diagnostických událostí** okno. Všimněte si, že zobrazených událostí z službu bezstavové a stavové služby v aplikaci. Datový proud je možné pozastavit kliknutím **pozastavit** tlačítko. Poté můžete prozkoumat podrobnosti zprávy rozbalením této zprávě.
+Po hello služby spuštění, spuštění, můžete zobrazit události trasování událostí pro Windows (ETW) hello vygenerované v **diagnostických událostí** okno. Upozorňujeme, že zobrazených událostí hello jsou z hello bezstavové služby i hello stavové služby v aplikaci hello. Je možné pozastavit datový proud hello kliknutím hello **pozastavit** tlačítko. Poté můžete prozkoumat hello podrobnosti zprávy rozbalením této zprávě.
 
 > [!NOTE]
-> Než spustíte aplikaci, ujistěte se, že máte místního vývojového clusteru se systémem. Podívejte se [Příručka Začínáme](service-fabric-get-started.md) informace o nastavení vašeho místního prostředí.
+> Před spuštěním aplikace hello, ujistěte se, že máte místního vývojového clusteru se systémem. Podívejte se na hello [Příručka Začínáme](service-fabric-get-started.md) informace o nastavení vašeho místního prostředí.
 > 
 > 
 

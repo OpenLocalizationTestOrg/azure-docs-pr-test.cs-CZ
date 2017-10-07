@@ -1,12 +1,12 @@
 ---
 title: "Simulované zařízení & brány Azure IoT - Lekce 3: spuštění ukázkové aplikace | Microsoft Docs"
-description: "Spuštění ukázkové aplikace simulovaného zařízení k odesílání dat teploty do služby IoT hub"
+description: "Spustit rozbočovači simulované zařízení ukázkové aplikace toosend teploty data tooyour IoT"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: data do cloudu
+keywords: toocloud dat
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 5d051d99-9749-4150-b3c8-573b0bda9c52
@@ -17,26 +17,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 7df2d730c38a9f715e0fd57b4d436724a5727760
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc2c97919e95e4e3977a8b6ac75162bf2b5017be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-and-run-a-simulated-device-sample-app"></a>Nakonfigurujte a spusťte ukázkovou aplikaci simulovaného zařízení
 
 ## <a name="what-you-will-do"></a>Co provedete
 
-- Naklonujte úložiště ukázka.
-- Použijte rozhraní příkazového řádku Azure k získání IoT hub a informace o logické zařízení pro ukázkovou aplikaci simulovaného zařízení. Nakonfigurujte a spusťte ukázkovou aplikaci simulovaného zařízení.
+- Klon hello Ukázka úložiště.
+- Použijte tooget hello rozhraní příkazového řádku Azure IoT hub a informace o logické zařízení pro ukázkovou aplikaci simulovaného zařízení. Nakonfigurujte a spusťte ukázkové aplikace hello simulované zařízení.
 
-Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 
 V tomto článku se dozvíte:
 
-- Postup konfigurace a pak spusťte ukázkovou aplikaci simulovaného zařízení.
+- Jak tooconfigure a spuštění hello simulované zařízení ukázkovou aplikaci.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
@@ -44,21 +44,21 @@ Musí byl úspěšně dokončen
 
 - [Vytvoření služby IoT Hub a registrace zařízení](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
-## <a name="clone-the-sample-repository-to-the-host-computer"></a>Naklonujte úložiště ukázkové k hostitelskému počítači
+## <a name="clone-hello-sample-repository-toohello-host-computer"></a>Klon hello Ukázka úložiště toohello hostitelském počítači
 
-Klonovat úložiště ukázkové, postupujte takto na hostitelském počítači:
+tooclone hello Ukázka úložiště, postupujte podle těchto kroků v hostitelském počítači hello:
 
 1. Otevřete příkazový řádek v systému Windows nebo otevřete terminál v systému macOS nebo Ubuntu.
-2. Spusťte následující příkazy:
+2. Spusťte následující příkazy hello:
 
    ```bash
    git clone https://github.com/Azure-samples/iot-hub-c-intel-nuc-gateway-getting-started
    cd iot-hub-c-intel-nuc-gateway-getting-started
    ```
 
-## <a name="configure-the-simulated-device-and-your-nuc"></a>Konfigurace simulované zařízení a vaše NUC
+## <a name="configure-hello-simulated-device-and-your-nuc"></a>Konfigurace hello simulované zařízení a vaše NUC
 
-1. Otevřete konfigurační soubor `config.json` ve Visual Studio Code spuštěním následujícího příkazu:
+1. Konfigurační soubor otevřete hello `config.json` ve Visual Studio Code spuštěním hello následující příkaz:
 
    ```bash
    code config.json
@@ -68,7 +68,7 @@ Klonovat úložiště ukázkové, postupujte takto na hostitelském počítači:
 
    ![Nemáte zařízení TI SensorTag konfigurace](media/iot-hub-gateway-kit-lessons/lesson3/config_no_sensortag.png)
 
-3. Inicializace konfiguračního souboru spuštěním následujících příkazů:
+3. Inicializovat konfigurační soubor hello spuštěním hello následující příkazy:
 
    ```bash
    cd Lesson3
@@ -76,7 +76,7 @@ Klonovat úložiště ukázkové, postupujte takto na hostitelském počítači:
    gulp init
    ```
 
-4. Otevřete `config-gateway.json` ve Visual Studio Code spuštěním následujícího příkazu:
+4. Otevřete `config-gateway.json` ve Visual Studio Code spuštěním hello následující příkaz:
 
    ```bash
    # For Windows command prompt
@@ -85,24 +85,24 @@ Klonovat úložiště ukázkové, postupujte takto na hostitelském počítači:
    code ~/.iot-hub-getting-started/config-gateway.json
    ```
 
-5. Vyhledejte následující řádek kódu a nahraďte `[device hostname or IP address]` se IP adresa nebo název hostitele Intel NUC.
+5. Vyhledejte následující řádek kódu hello a nahraďte `[device hostname or IP address]` se IP adresa nebo název hostitele hello Intel NUC.
    ![snímek obrazovky konfigurace brány](media/iot-hub-gateway-kit-lessons/lesson3/config_gateway.png)
 
-## <a name="get-the-connection-string-of-your-iot-hub-logical-device"></a>Získat připojovací řetězec logické zařízení IoT hub
+## <a name="get-hello-connection-string-of-your-iot-hub-logical-device"></a>Získat připojovací řetězec hello logické zařízení IoT hub
 
-Chcete-li získat Azure IoT hub připojovací řetězec logického zařízení, spusťte následující příkaz na hostitelském počítači:
+tooget hello Azure IoT hub připojovací řetězec logické zařízení, spusťte následující příkaz v hostitelském počítači hello hello:
 
 ```bash
 az iot device show-connection-string --hub-name {IoT hub name} --device-id mydevice --resource-group iot-gateway
 ```
 
-`{IoT hub name}`je název centra IoT, které jste použili. Použít iot brány jako hodnotu `{resource group name}` a použít jako hodnotu mydevice `{device id}` Pokud nebylo změňte hodnotu v lekci 2.
+`{IoT hub name}`je název centra IoT hello, který jste použili. Použít iot brány jako hodnotu hello `{resource group name}` a použijte mydevice jako hodnota hello `{device id}` Pokud hodnota hello v lekci 2 nebyla změněna.
 
-## <a name="configure-the-simulated-device-cloud-upload-sample-application"></a>Nakonfigurujte ukázkovou aplikaci simulovaného zařízení cloudu nahrávání
+## <a name="configure-hello-simulated-device-cloud-upload-sample-application"></a>Konfigurace hello simulované zařízení cloudu nahrávání ukázkovou aplikaci
 
-Pro konfiguraci a spuštění ukázkové aplikace simulovaného zařízení cloudu nahrávání, postupujte podle těchto kroků na hostitelském počítači:
+tooconfigure a spuštění hello simulované zařízení cloud nahrát ukázková aplikace, postupujte podle těchto kroků v hostitelském počítači hello:
 
-1. Otevřete `config-sensortag.json` ve Visual Studio Code spuštěním následujícího příkazu:
+1. Otevřete `config-sensortag.json` ve Visual Studio Code spuštěním hello následující příkaz:
 
    ```bash
    # For Windows command prompt
@@ -113,29 +113,29 @@ Pro konfiguraci a spuštění ukázkové aplikace simulovaného zařízení clou
 
    ![snímek obrazovky konfigurace sensortag](media/iot-hub-gateway-kit-lessons/lesson3/config_simulated_device.png)
 
-2. Zkontrolujte následující nahrazení v kódu:
-   - Nahraďte `[IoT hub name]` názvem IoT hub.
-   - Nahraďte `[IoT device connection string]` připojovacím řetězcem logické zařízení IoT hub.
+2. Ujistěte se, hello následující nahrazení v hello kódu:
+   - Nahraďte `[IoT hub name]` názvem hello IoT hub.
+   - Nahraďte `[IoT device connection string]` s hello připojovací řetězec logické zařízení IoT hub.
 
-3. Spusťte aplikaci.
+3. Spusťte aplikaci hello.
 
-   Nasazení a spuštění aplikace tak, že spustíte následující příkaz:
+   Nasazení a spuštění aplikace hello spuštěním hello následující příkaz:
 
    ```bash
    gulp run
    ```
 
-## <a name="verify-the-sample-application-works"></a>Ověřte ukázkové aplikace pracuje
+## <a name="verify-hello-sample-application-works"></a>Ověřte hello ukázkové aplikace funguje
 
-Teď byste měli vidět výstup podobný tomuto:
+Teď byste měli vidět výstup podobný hello následující:
 
 ![výstupu ukázkové aplikace simulovaného zařízení](media/iot-hub-gateway-kit-lessons/lesson3/gulp_run_simudev.png)
 
-Aplikace odešle teploty data do služby IoT hub, která trvá po dobu 40 sekund.
+aplikace Hello odešle teploty data tooyour IoT hub, která trvá po dobu 40 sekund.
 
 ## <a name="summary"></a>Souhrn
 
-Úspěšně jste nakonfigurované a spusťte simulované zařízení cloudu nahrávání ukázkové aplikace, který odesílá data do služby IoT hub s simulované zařízení.
+Úspěšně jste nakonfigurovali a spuštění hello simulované zařízení cloudu nahrávání ukázkovou aplikaci, který odesílá data tooyour IoT hub s simulované zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 [Čtení zpráv ze služby IoT Hub](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)

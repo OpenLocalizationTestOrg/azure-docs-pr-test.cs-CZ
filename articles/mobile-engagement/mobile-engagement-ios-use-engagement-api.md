@@ -1,6 +1,6 @@
 ---
-title: "Jak používat rozhraní API Engagement v systému iOS"
-description: "Nejnovější iOS SDK - použití rozhraní API Engagement v systému iOS"
+title: "aaaHow tooUse hello Engagement rozhraní API v systému iOS"
+description: "Nejnovější iOS SDK – jak tooUse hello Engagement rozhraní API v systému iOS"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fb9b95ad319cf3b1e2de81b5d6aee5b30266069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-engagement-api-on-ios"></a>Jak používat rozhraní API Engagement v systému iOS
-Tento dokument je doplněk k dokumentu jak integrovat Engagement v systému iOS: poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
+# <a name="how-toouse-hello-engagement-api-on-ios"></a>Jak tooUse hello Engagement rozhraní API v systému iOS
+Tento dokument je dokument toohello rozšíření jak tooIntegrate Engagement v systému iOS: poskytuje v hloubka podrobnosti o tom, jak toouse hello Engagement API tooreport statistik vaší aplikace.
 
-Mějte na paměti, že pokud chcete pouze Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak nejjednodušší způsob, jak je aby vaše vlastní `UIViewController` objekty dědí odpovídající `EngagementViewController` třídy.
+Mějte na paměti, pouze pokud chcete tooreport zapojení vaší aplikace relací, aktivit, dojde k chybě a technické informace, pak hello nejjednodušší způsob je toomake všechny vaše vlastní `UIViewController` objekty dědí hello odpovídající `EngagementViewController` – třída .
 
-Pokud chcete informace, například pokud je třeba ohlásit určité události aplikace, chyb a úlohy, nebo pokud máte k hlášení aktivitami aplikace jiným způsobem než ten, implementované v `EngagementViewController` třídy, pak budete muset použít rozhraní API zapojení.
+Pokud chcete, aby toodo další, např. Pokud potřebujete tooreport aplikace konkrétní události, chyb a úlohy, nebo pokud máte tooreport aktivitami aplikace jiným způsobem než jednu implementaci hello hello `EngagementViewController` třídy, pak je nutné toouse hello Zapojení rozhraní API.
 
-Rozhraní API Engagement poskytuje `EngagementAgent` třídy. Instance této třídy může načíst volání `[EngagementAgent shared]` statickou metodu (Všimněte si, že `EngagementAgent` objekt vrácený je typu singleton).
+Hello rozhraní API Engagement poskytuje hello `EngagementAgent` třídy. Instance této třídy může načíst volání hello `[EngagementAgent shared]` statickou metodu (Všimněte si, že hello `EngagementAgent` objekt vrácený je typu singleton).
 
-Před všechny volání rozhraní API `EngagementAgent` objekt je nutné inicializovat pomocí volání metody`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Předtím, než všechny volání rozhraní API, hello `EngagementAgent` objekt je nutné inicializovat voláním metody hello`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Koncepty engagementu
-Následující části Upřesnit nejběžnější [koncepty Mobile Engagementu](mobile-engagement-concepts.md) pro platformu iOS.
+Hello následujících částí Upřesnit hello běžné [koncepty Mobile Engagementu](mobile-engagement-concepts.md) pro platformu iOS hello.
 
 ### <a name="session-and-activity"></a>`Session` a `Activity`
-*Aktivity* je obvykle spojovány s jednu obrazovku aplikace, to znamená *aktivity* spustí, když se zobrazí na obrazovce a zastaví, když je uzavřený obrazovky: to je případ, kdy je sady Engagement SDK integrovaná pomocí `EngagementViewController` třídy.
+*Aktivity* obvykle souvisí s jeden obrazovky aplikace hello, který je toosay hello *aktivity* spustí, když se zobrazí úvodní obrazovka a zastaví, když je uzavřený úvodní obrazovka: Toto je hello případ, kdy Hello Engagement SDK je integrovaná s použitím hello `EngagementViewController` třídy.
 
-Ale *aktivity* můžete ručně kontrolovat také pomocí rozhraní API zapojení. To umožňuje rozdělit dané obrazovky v několik částí Sub – Chcete-li získat další podrobnosti o použití této obrazovky (například jak často známé a jak dlouho se používají dialogová okna v rámci této obrazovce).
+Ale *aktivity* můžete ručně kontrolovat také pomocí hello Engagement rozhraní API. To umožňuje toosplit dané obrazovky v několika dílčí části tooget hello další podrobnosti o použití této obrazovce (například jak často tooknown a jak dlouho se používají dialogová okna v rámci této obrazovce).
 
 ## <a name="reporting-activities"></a>Sestavy aktivit
 ### <a name="user-starts-a-new-activity"></a>Uživatel spustí novou aktivitu
             [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
-Je třeba volat `startActivity()` pokaždé, když změny aktivity uživatelů. První volání této funkce spustí novou relaci uživatele.
+Je třeba toocall `startActivity()` Každá aktivita uživatele hello čas změny. Hello první volání funkce toothis spustí novou relaci uživatele.
 
 ### <a name="user-ends-his-current-activity"></a>Uživatel končí jeho aktuální aktivita
             [[EngagementAgent shared] endActivity];
 
 > [!WARNING]
-> Měli byste **nikdy** volání této funkce samotnými, s výjimkou, pokud chcete rozdělit jedno použití aplikace do několik relací: volání této funkce by ukončení aktuální relace okamžitě, tedy následných volání `startActivity()` by zahájit novou relaci. Tato funkce je automaticky volána sadou SDK, při zavření aplikace.
+> Měli byste **nikdy** volání této funkce samotnými, s výjimkou, pokud chcete, aby toosplit jedno použití aplikace do několik relací: volání funkce toothis by ale ukončilo hello okamžitě, aktuální relace tak následných volání příliš`startActivity()`by zahájit novou relaci. Tato funkce je automaticky volána hello SDK při zavření aplikace.
 > 
 > 
 
 ## <a name="reporting-events"></a>Události vytváření sestav
 ### <a name="session-events"></a>Události relací
-Relace události se obvykle používají k hlášení akcí prováděná uživatelem během jeho relace.
+Relace události jsou obvykle použité tooreport hello akce prováděné uživatelem během jeho relace.
 
 **Příklad bez doplňující data:**
 
@@ -89,7 +89,7 @@ Relace události se obvykle používají k hlášení akcí prováděná uživat
     }
 
 ### <a name="standalone-events"></a>Samostatné události
-Rozporu s touto relace události lze použít samostatné události mimo kontext relace.
+Jinak zvláštní toosession události, samostatné události lze použít mimo kontext hello relace.
 
 **Příklad:**
 
@@ -97,16 +97,16 @@ Rozporu s touto relace události lze použít samostatné události mimo kontext
 
 ## <a name="reporting-errors"></a>Zasílání zpráv o chybách
 ### <a name="session-errors"></a>Chyby relace
-Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, které mají vliv uživatele.
+Relace chyby jsou obvykle použité tooreport hello chyby během jeho relace, které mají vliv hello uživatele.
 
 **Příklad:**
 
-    /** The user has entered invalid data in a form */
+    /** hello user has entered invalid data in a form */
     @implementation MyViewController {
       [...]
       -(void)onMyFormSubmitted:(MyForm*)form {
         [...]
-        /* The user has entered an invalid email address */
+        /* hello user has entered an invalid email address */
         [[EngagementAgent shared] sendSessionError:@"sign_up_email" extras:nil]
         [...]
       }
@@ -114,7 +114,7 @@ Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, kte
     }
 
 ### <a name="standalone-errors"></a>Samostatné chyby
-Rozporu s touto relací chyby samostatné chyby lze mimo kontext relace.
+Jinak zvláštní toosession chyb, chyb samostatné lze použít mimo kontext hello relace.
 
 **Příklad:**
 
@@ -123,7 +123,7 @@ Rozporu s touto relací chyby samostatné chyby lze mimo kontext relace.
 ## <a name="reporting-jobs"></a>Úlohy sestav
 **Příklad:**
 
-Předpokládejme, že chcete nahlásit trvání přihlašovací proces:
+Předpokládejme, že chcete tooreport hello trvání přihlašovací proces:
 
     [...]
     -(void)signIn
@@ -139,11 +139,11 @@ Předpokládejme, že chcete nahlásit trvání přihlašovací proces:
     [...]
 
 ### <a name="report-errors-during-a-job"></a>Sestava chyb během úlohy
-Chyby může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
+Chyby může být spuštěna úloha namísto související tooa související toohello se aktuální uživatelská relace.
 
 **Příklad:**
 
-Předpokládejme, že chcete vykázat chybu během procesu přihlášení:
+Předpokládejme, že chcete tooreport chybu během procesu přihlášení:
 
     [...]
     -(void)signin
@@ -153,7 +153,7 @@ Předpokládejme, že chcete vykázat chybu během procesu přihlášení:
 
       BOOL success = NO;
       while (!success) {
-        /* Try to sign in */
+        /* Try toosign in */
         NSError* error = nil;
         [self trySigin:&error];
         success = error == nil;
@@ -176,11 +176,11 @@ Předpokládejme, že chcete vykázat chybu během procesu přihlášení:
     [...]
 
 ### <a name="events-during-a-job"></a>Události během úlohy
-Události může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
+Události může být spuštěna úloha namísto související tooa související toohello se aktuální uživatelská relace.
 
 **Příklad:**
 
-Předpokládejme, že máme sociálních sítí, a úlohu do sestavy používáme celkovou dobu, během kterého uživatel se připojí k serveru. Uživatel může přijímat zprávy z jeho přátel, jedná se o událost úlohy.
+Předpokládejme, že máme sociálních sítí a používáme úlohy tooreport hello celkový čas během které hello je uživatel připojený toohello serveru. Hello uživatel může přijímat zprávy z jeho přátel, jedná se o událost úlohy.
 
     [...]
     - (void) signin
@@ -203,18 +203,18 @@ Předpokládejme, že máme sociálních sítí, a úlohu do sestavy používám
     [...]
 
 ## <a name="extra-parameters"></a>Další parametry
-Libovolná data lze připojit k události, chyb, aktivity a úlohy.
+Libovolná data může být připojené tooevents, chyb, aktivity a úlohy.
 
 Tato data mohou být strukturovaná, používá třída NSDictionary pro iOS.
 
 Všimněte si, že funkce může obsahovat `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber class)`, `strings(NSString, NSMutableString)`, `urls(NSURL)`, `data(NSData, NSMutableData)` či jiné `NSDictionary` instance.
 
 > [!NOTE]
-> Speciálním parametrem je serializováno ve formátu JSON. Pokud chcete předat různé objekty než ty, které jsou popsané výše, je nutné implementovat metodu v třídě:
+> Hello speciálním parametrem je serializováno ve formátu JSON. Pokud chcete různé objekty toopass než hello ty, které jsou popsané výše, je nutné implementovat následující metodu v třídě hello:
 > 
 > -(NSString*) JSONRepresentation;
 > 
-> Metoda by měla vrátit reprezentaci JSON objektu.
+> Hello metoda by měla vrátit reprezentaci JSON objektu.
 > 
 > 
 
@@ -226,25 +226,25 @@ Všimněte si, že funkce může obsahovat `arrays(NSArray, NSMutableArray)`, `n
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v `NSDictionary` musí odpovídat následujícímu regulárnímu výrazu:
+Každý klíč v hello `NSDictionary` musí odpovídat hello následující regulární výraz:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Funkce jsou omezeny na **1024** znaků na jednu volání (po zakódování ve formátu JSON pomocí agenta Engagement).
+Funkce omezeny příliš**1024** znaků na jednu volání (po zakódování ve formátu JSON hello Engagement agenta).
 
-V předchozím příkladu je JSON odeslat na server 58 znaků:
+Předchozí příklad, hello JSON odeslán toohello serveru v hello je 58 znaků:
 
     {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
 ## <a name="reporting-application-information"></a>Informace o vytváření sestav aplikace
-Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí `sendAppInfo:` funkce.
+Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace konkrétní informace) pomocí hello `sendAppInfo:` funkce.
 
-Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení.
+Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze hello nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení.
 
-Události funkce, jako `NSDictionary` třída se používá k abstraktní informace o aplikaci, Všimněte si, že pole nebo dílčí slovník bude považována za plochý řetězce (pomocí serializace JSON).
+Jako funkce událostí hello `NSDictionary` třída je použité tooabstract informace o aplikaci, Všimněte si, že maticových nebo dílčí slovníky, budou považovány za plochý řetězce (pomocí serializace JSON).
 
 **Příklad:**
 
@@ -255,15 +255,15 @@ Události funkce, jako `NSDictionary` třída se používá k abstraktní inform
 
 ### <a name="limits"></a>Omezení
 #### <a name="keys"></a>Klíče
-Každý klíč v `NSDictionary` musí odpovídat následujícímu regulárnímu výrazu:
+Každý klíč v hello `NSDictionary` musí odpovídat hello následující regulární výraz:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Znamená to, že klíče musí začínat aspoň jedním písmenem, za nímž následuje písmena, číslice nebo podtržítka (\_).
 
 #### <a name="size"></a>Velikost
-Informace o aplikaci jsou omezeny na **1024** znaků na jednu volání (po zakódování ve formátu JSON pomocí agenta Engagement).
+Informace o aplikaci jsou omezené příliš**1024** znaků na jednu volání (po zakódování ve formátu JSON hello Engagement agenta).
 
-V předchozím příkladu je JSON odeslat na server 44 znaků:
+Předchozí příklad, hello JSON odeslán toohello serveru v hello je 44 znaků:
 
     {"birthdate":"1983-12-07","gender":"female"}

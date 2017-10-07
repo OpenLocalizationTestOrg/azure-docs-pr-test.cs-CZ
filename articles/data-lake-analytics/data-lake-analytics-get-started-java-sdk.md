@@ -1,6 +1,6 @@
 ---
-title: "Použití Data Lake Analytics Java SDK k vývoji aplikací | Microsoft Docs"
-description: "Použití sady Java SDK Azure Data Lake Analytics k vývoji aplikací"
+title: aaaUse Data Lake Analytics Java SDK toodevelop aplikace | Microsoft Docs
+description: "Použití sady Java SDK Azure Data Lake Analytics toodevelop aplikace"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d975812fe659ed34ee9befd37ee7c0bf50d3414
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Začínáme s Azure Data Lake Analytics s využitím sady Java SDK
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Naučte se používat Azure Data Lake Analytics Java SDK k vytvoření účtu Azure Data Lake a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu a pracovat s úlohami. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Zjistěte, jak toouse hello Azure Data Lake Analytics Java SDK toocreate účtu Azure Data Lake a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu a pracovat s úlohami. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
-V tomto kurzu budete vyvíjet konzolovou aplikaci Java, obsahující ukázky běžné úkoly správy a vytváření testovacích dat a odeslání úlohy.  Pokud chcete použít jiné podporované nástroje a absolvovat stejný kurz, klikněte na karty nahoře v této části.
+V tomto kurzu budete vyvíjet konzolovou aplikaci Java, obsahující ukázky běžné úkoly správy a vytváření testovacích dat a odeslání úlohy.  toogo prostřednictvím hello podporované stejný kurz pomocí jiných nástrojů, klikněte na karty hello na hello začátku této části.
 
 ## <a name="prerequisites"></a>Požadavky
 * Java Development Kit (JDK) 8 (využívající jazyk Java verze 1.8).
-* IntelliJ nebo jiné vhodné vývojové prostředí Java. Tato položka je nepovinná, ale doporučuje se. Níže uvedené pokyny používají IntelliJ.
+* IntelliJ nebo jiné vhodné vývojové prostředí Java. Tato položka je nepovinná, ale doporučuje se. Hello níže uvedené pokyny používají IntelliJ.
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Identifikátor URI odpovědi a klíč budou také k dispozici z portálu, jakmile vytvoříte aplikaci vygenerujete klíč.
+* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o AAD aplikace a pokyny o tom, najdete v části tooget ID klienta, [vytvoření aplikace Active Directory a objektu zabezpečení pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Hello Reply URI a klíč bude dostupná taky z portálu hello až budete mít hello aplikace vytvořené a generování klíče.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Jak můžu ověřovat pomocí služby Azure Active Directory?
-Následující fragment kódu obsahuje kód pro **neinteraktivní** ověřování, kdy aplikace poskytuje svoje vlastní přihlašovací údaje.
+Následující fragment kódu Hello obsahuje kód pro **neinteraktivní** ověřování, kde hello aplikace poskytuje svoje vlastní přihlašovací údaje.
 
-Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytváření prostředků v Azure. **Důrazně doporučujeme**, abyste této aplikaci pro účely tohoto kurzu udělili oprávnění Přispěvatel jenom k nové, nepoužité a prázdné skupině prostředků v předplatném Azure.
+Budete potřebovat toogive vašich prostředků toocreate oprávnění aplikace v Azure pro tento kurz toowork. Je **důrazně doporučujeme** pouze poskytnout této skupiny aplikací Přispěvatel oprávnění tooa nové, nepoužité a prázdné prostředků ve vašem předplatném Azure pro účely tohoto kurzu hello.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-1. Otevřete IntelliJ a pomocí šablony **aplikace příkazového řádku** vytvořte nový projekt v jazyce Java.
-2. Klikněte pravým tlačítkem na projekt na levé straně obrazovky a klikněte na možnost **Přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
-3. Otevřete nově vytvořený soubor **pom.xml** a mezi značky **\</version>** a **\</project>** přidejte následující fragment textu:
+1. Otevřete IntelliJ a vytvoření nového projektu Java pomocí hello **aplikace příkazového řádku** šablony.
+2. Klikněte pravým tlačítkem na projekt hello na hello levé straně obrazovky a klikněte na tlačítko **přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
+3. Otevřete hello nově vytvořený **"pom.xml"** souboru a přidejte následující fragment textu mezi hello hello  **\</version >** značky a hello  **\< /project >** značky:
 
     >[!NOTE]
-    >Tento krok je dočasný, dokud nebude k dispozici v nástroji Maven SDK služby Azure Data Lake Analytics. Jakmile bude sada SDK dostupná v nástroji Maven, tento článek budeme aktualizovat. Všechny budoucí aktualizace této sady SDK budou dostupné prostřednictvím nástroje Maven.
+    >Tento krok je dočasný, dokud nebude k dispozici v nástroji Maven hello Azure Data Lake Analytics SDK. Tento článek bude aktualizován, jakmile hello SDK je dostupná v nástroji Maven. Všechny budoucí aktualizace toothis SDK budou dostupné prostřednictvím nástroje Maven.
     >
 
         <repositories>
@@ -95,13 +95,13 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
-4. Přejděte na **soubor**, pak **nastavení**, pak **sestavení**, **provádění**, **nasazení**. Vyberte **nástroje sestavení**, **Maven**, **import**. Zkontrolujte **automaticky importovat projekty Maven**.
-5. Otevřete **Main.java** a stávající blok kódu nahraďte následujícím kódem. Zadejte také hodnoty parametrů ve fragmentu kódu, například **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_ Název skupiny prostředků** a nahraďte zástupné symboly pro **CLIENT-ID**, **tajný klíč klienta**, **ID klienta**, a  **ID PŘEDPLATNÉHO**.
+4. Přejděte příliš**soubor**, pak **nastavení**, pak **sestavení**, **provádění**, **nasazení**. Vyberte **nástroje sestavení**, **Maven**, **import**. Zkontrolujte **automaticky importovat projekty Maven**.
+5. Otevřete **Main.java** a nahraďte hello stávající blok kódu s hello následující kód. Zadejte také hodnoty hello parametrů ve fragmentu kódu hello, jako například **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_ Název skupiny prostředků** a nahraďte zástupné symboly pro **CLIENT-ID**, **tajný klíč klienta**, **ID klienta**, a  **ID PŘEDPLATNÉHO**.
 
-    Tento kód projde procesem vytváření účtů Data Lake Store a Data Lake Analytics, vytvoření souborů v úložišti, spuštění úlohy, získávání stavu úlohy, výstup úlohy stahování a nakonec odstranění účtu.
+    Tento kód přejde prostřednictvím hello proces vytváření účtů Data Lake Store a Data Lake Analytics, vytvoření souborů v úložišti hello, spuštění úlohy, získávání stavu úlohy, výstup úlohy stahování a nakonec odstranění účtu hello.
 
    > [!NOTE]
-   > Momentálně je známý problém se službou Azure Data Lake.  Pokud je vzorová aplikace přerušena nebo dojde k chybě, může být nutné ruční odstranění účtů Data Lake Store a Data Lake Analytics, které skript vytvoří.  Pokud nejste obeznámeni s portálem, začněte pomocí průvodce [Správa analýz Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md).
+   > Není aktuálně známý problém s hello služby Azure Data Lake.  Pokud dojde k přerušení hello ukázkové aplikace, nebo dojde k chybě, může být nutné toomanually odstranění hello Data Lake Store & Data Lake Analytics účty, které vytvoří skript hello.  Pokud si nejste obeznámeni s hello portál, hello [Správa Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md) příručky vám pomůžou začít.
    >
    >
 
@@ -149,9 +149,9 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
                 _subId =  "<SUBSCRIPTION-ID>";
                 _clientId = "<CLIENT-ID>";
 
-                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring the application client secret, rather than hard-coding it in the source code.
+                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring hello application client secret, rather than hard-coding it in hello source code.
 
-                String localFolderPath = "C:\\local_path\\"; // TODO: Change this to any unused, new, empty folder on your local machine.
+                String localFolderPath = "C:\\local_path\\"; // TODO: Change this tooany unused, new, empty folder on your local machine.
 
                 // Authenticate
                 ApplicationTokenCredentials creds = new ApplicationTokenCredentials(_clientId, _tenantId, _clientSecret, null);
@@ -176,14 +176,14 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
                 WaitForNewline("Accounts displayed.", "Creating files.");
 
                 // Create a file in Data Lake Store: input1.csv
-                // TODO: these change order in the next patch
+                // TODO: these change order in hello next patch
                 byte[] bytesContents = "123,abc".getBytes();
                 _adlsFileSystemClient.getFileSystemOperations().create(_adlsAccountName, "/input1.csv", bytesContents, true);
 
                 WaitForNewline("File created.", "Submitting a job.");
 
-                // Submit a job to Data Lake Analytics
-                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob");
+                // Submit a job tooData Lake Analytics
+                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob");
                 WaitForNewline("Job submitted.", "Getting job status.");
 
                 // Wait for job completion and output job status
@@ -219,13 +219,13 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
                 _adlaClient.setSubscriptionId(_subId);
             }
 
-            // Helper function to show status and wait for user input
+            // Helper function tooshow status and wait for user input
             public static void WaitForNewline(String reason, String nextAction)
             {
                 if (nextAction == null)
                     nextAction = "";
 
-                System.out.println(reason + "\r\nPress ENTER to continue...");
+                System.out.println(reason + "\r\nPress ENTER toocontinue...");
                 try{System.in.read();}
                 catch(Exception e){}
 
@@ -262,12 +262,12 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
                 adlaParameters.setName(_adlaAccountName);
                 adlaParameters.setProperties(adlaProperties);
 
-                    /* If this line generates an error message like "The deep update for property 'DataLakeStoreAccounts' is not supported", please delete the ADLS and ADLA accounts via the portal and re-run your script. */
+                    /* If this line generates an error message like "hello deep update for property 'DataLakeStoreAccounts' is not supported", please delete hello ADLS and ADLA accounts via hello portal and re-run your script. */
 
                 _adlaClient.getAccountOperations().create(_resourceGroupName, _adlaAccountName, adlaParameters);
             }
 
-            //todo: this changes in the next version of the API
+            //todo: this changes in hello next version of hello API
             public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException {
                 byte[] bytesContents = contents.getBytes();
 
@@ -307,7 +307,7 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
             }
 
             // Submit a U-SQL job by providing script contents.
-            // Returns the job ID
+            // Returns hello job ID
             public static UUID SubmitJobByScript(String script, String jobName) throws IOException, CloudException {
                 UUID jobId = java.util.UUID.randomUUID();
                 USqlJobProperties properties = new USqlJobProperties();
@@ -340,12 +340,12 @@ Pro účely tohoto kurzu je nutné, abyste aplikaci udělili oprávnění k vytv
             }
         }
 
-1. Postupujte podle výzev a spusťte a dokončete aplikaci.
+1. Postupujte podle pokynů toorun hello a dokončení hello aplikace.
 
 ## <a name="see-also"></a>Viz také
-* Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
-* Pokud chcete zobrazit komplexnější dotaz, přejděte k tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Pokud chcete začít s vývojem aplikací U-SQL, přejděte k tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
-* Informace týkající se úloh správy najdete v tématu [Správa Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
-* Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+* toosee hello stejný kurz pomocí jiných nástrojů, klikněte na selektory karet hello na hello horní části stránky hello.
+* toosee komplexnější dotaz, najdete v části [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* tooget práce s vývojem aplikací U-SQL najdete v části [skriptů vyvíjet U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md), a [referenční příručka jazyka U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
+* Informace týkající se úloh správy najdete v tématu [Správa Azure Data Lake Analytics pomocí Portálu Azure](data-lake-analytics-manage-use-portal.md).
+* tooget uvádí přehled Data Lake Analytics najdete v části [přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).

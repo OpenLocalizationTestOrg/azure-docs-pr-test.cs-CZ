@@ -1,6 +1,6 @@
 ---
-title: "Migrace kódu SQL do SQL Data Warehouse | Microsoft Docs"
-description: "Tipy k migraci kódu SQL Azure SQL Data Warehouse na vývoj řešení."
+title: "aaaMigrate vaše tooSQL kódu SQL Data Warehouse | Microsoft Docs"
+description: "Tipy pro migraci vaší SQL kódu tooAzure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/23/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7a16d579d068e9df9aba3dc61e4a09bcaa551588
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrace do SQL Data Warehouse kódu SQL
-Tento článek vysvětluje změny kódu, které bude pravděpodobně třeba, aby při migraci kódu z jiné databáze SQL Data Warehouse. Některé funkce SQL Data Warehouse může výrazně zlepšit výkon, jako jsou navrženy pro práci v distribuované způsobem. Ale pokud chcete zachovat, výkonu a možností škálování, některé funkce nejsou také k dispozici.
+# <a name="migrate-your-sql-code-toosql-data-warehouse"></a>Migrace vaší tooSQL kódu SQL datového skladu
+Tento článek vysvětluje změny kódu, pravděpodobně bude třeba toomake při migraci kódu z jiné databáze tooSQL datového skladu. Některé funkce SQL Data Warehouse může výrazně zlepšit výkon, protože se jedná o navrženou toowork distribuované způsobem. Ale toomaintain výkonu a možností škálování, některé funkce nejsou také k dispozici.
 
 ## <a name="common-t-sql-limitations"></a>Běžné omezení T-SQL
-Následující seznam shrnuje nejběžnější funkcí, které SQL Data Warehouse nepodporuje. Uvedené odkazy vedou k řešení nepodporované funkce:
+Hello následující seznam shrnuje hello nejběžnější funkce, které SQL Data Warehouse nepodporuje. Hello odkazy obsahují tooworkarounds pro hello nepodporované funkce:
 
 * [ANSI spojení na aktualizace][ANSI joins on updates]
 * [ANSI spojení na odstranění][ANSI joins on deletes]
@@ -52,10 +52,10 @@ Následující seznam shrnuje nejběžnější funkcí, které SQL Data Warehous
 * [použití vyberte pro přiřazení proměnné][use of select for variable assignment]
 * [žádné maximální datový typ pro dynamické řetězce SQL][no MAX data type for dynamic SQL strings]
 
-Naštěstí můžete být kolem fungovala většinu těchto omezení. Vysvětlení najdete v článcích relevantní vývoj výše uvedené.
+Naštěstí můžete být kolem fungovala většinu těchto omezení. Vysvětlení najdete v článcích relevantní vývoj hello výše uvedené.
 
 ## <a name="supported-cte-features"></a>Podporované funkce CTE
-Běžných výrazech tabulky (odkazu Cte) jsou podporovány jen částečně v SQL Data Warehouse.  Aktuálně jsou podporovány následující funkce CTE:
+Běžných výrazech tabulky (odkazu Cte) jsou podporovány jen částečně v SQL Data Warehouse.  aktuálně jsou podporovány následující funkce CTE Hello:
 
 * CTE lze zadat v příkazu SELECT.
 * CTE lze zadat v příkazu CREATE VIEW.
@@ -70,17 +70,17 @@ Běžných výrazech tabulky (odkazu Cte) jsou podporovány jen částečně v S
 Běžných výrazech tabulky mají určitá omezení v SQL Data Warehouse, včetně:
 
 * CTE musí následovat jediný příkaz SELECT. Příkaz INSERT, UPDATE, DELETE a MERGE příkazy nejsou podporovány.
-* Výraz běžné tabulky, který obsahuje odkazy na sebe sama (rekurzivní výraz běžné tabulky) nepodporuje (viz níže části).
+* Výraz běžné tabulky, který obsahuje odkazy na tooitself (rekurzivní výraz běžné tabulky) nepodporuje (viz níže části).
 * Určení více než jeden s klauzulí v CTE není povoleno. Například pokud CTE_query_definition obsahuje poddotaz, že poddotazu nesmí obsahovat vnořený s klauzulí, která definuje jiné CTE.
-* Klauzuli ORDER BY nelze použít v CTE_query_definition, s výjimkou, když je zadané klauzuli TOP.
-* Pokud CTE se používá v příkazu, který je součástí dávky, příkaz dříve, než se musí následovat středníkem.
-* Pokud se použije v příkazech připravené sp_prepare, bude odkazu Cte chovají stejným způsobem jako ostatní příkazů SELECT v PDW. Ale pokud odkazu Cte se používají jako součást CETAS připravené sp_prepare, chování můžete odložit ze systému SQL Server a další příkazy PDW kvůli způsob, jakým vazba je implementována pro sp_prepare. Pokud vyberte odkazů CTE je pomocí nesprávného sloupce, který neexistuje v CTE, sp_prepare předá bez zjišťování chyba, že chyba bude vyvolána při proceduře sp_execute místo.
+* Klauzuli ORDER BY nelze použít v hello CTE_query_definition, s výjimkou, když je zadané klauzuli TOP.
+* Pokud CTE se používá v příkazu, který je součástí dávky, příkaz hello dříve, než se musí následovat středníkem.
+* Pokud se použije v příkazech připravené sp_prepare, odkazu Cte budou chovat hello stejným způsobem jako ostatní příkazů SELECT v PDW. Ale pokud odkazu Cte se používají jako součást CETAS připravené sp_prepare, hello chování můžete odložit ze systému SQL Server a další příkazy PDW kvůli hello způsob, jakým vazba je implementována pro sp_prepare. Pokud vyberte odkazů CTE je pomocí nesprávného sloupce, který neexistuje v CTE, hello sp_prepare předá bez zjišťování hello chyba, že hello bude vyvolána chyba při proceduře sp_execute místo.
 
 ## <a name="recursive-ctes"></a>Rekurzivního odkazu Cte
-Rekurzivního odkazu Cte nejsou podporovány v SQL Data Warehouse.  Migrace rekurzivní CTE může být poněkud složité a proces nejlepší je rozdělit na několik kroků. Obvykle můžete použít smyčku a podle iterace v rekurzivní dotazy dočasné naplňte dočasné tabulky. Jakmile se naplní dočasné tabulky můžete vrátí data jako jednu výslednou sadu. Podobný postup se používá ke vyřešit `GROUP BY WITH CUBE` v [s kumulativní klauzule group by / datové krychle / nastaví možnosti seskupení] [ group by clause with rollup / cube / grouping sets options] článku.
+Rekurzivního odkazu Cte nejsou podporovány v SQL Data Warehouse.  migrace Hello rekurzivní CTE může být poněkud složité a nejlepší proces hello je toobreak do více kroků. Obvykle můžete použít smyčku a podle iterace v mezičase dotazy hello rekurzivní naplňte dočasné tabulky. Jakmile se naplní hello dočasné tabulky můžete pak vrátit hello data jako jednu výslednou sadu. Podobný postup bylo použité toosolve `GROUP BY WITH CUBE` v hello [s kumulativní klauzule group by / datové krychle / nastaví možnosti seskupení] [ group by clause with rollup / cube / grouping sets options] článku.
 
 ## <a name="unsupported-system-functions"></a>Funkce nepodporované systému
-Existují také některé funkce systému, které nejsou podporovány. Mezi hlavní ty, které obvykle je možné použít v datových skladů, patří:
+Existují také některé funkce systému, které nejsou podporovány. Některé z hello hlavní ty, které jsou obvykle je možné použít v datových skladů jsou:
 
 * NEWSEQUENTIALID()
 * @@NESTLEVEL()
@@ -92,7 +92,7 @@ Existují také některé funkce systému, které nejsou podporovány. Mezi hlav
 Některé z těchto problémů můžete fungovala kolem.
 
 ## <a name="rowcount-workaround"></a>@@ROWCOUNT alternativní řešení
-Chcete-li vyřešit nedostatečná podpora pro @@ROWCOUNT, vytvoření uložené procedury, která bude načítat poslední počet řádků z sys.dm_pdw_request_steps a potom spusťte `EXEC LastRowCount` po příkaz DML.
+toowork kolem nedostatečná podpora pro @@ROWCOUNT, vytvoření uložené procedury, která bude načítat hello poslední počet řádků z sys.dm_pdw_request_steps a potom spusťte `EXEC LastRowCount` po příkaz DML.
 
 ```sql
 CREATE PROCEDURE LastRowCount AS

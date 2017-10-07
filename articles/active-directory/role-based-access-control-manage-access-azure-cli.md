@@ -1,6 +1,6 @@
 ---
-title: "Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se spravovat na základě rolí řízení přístupu (RBAC) pomocí rozhraní příkazového řádku Azure tak, že uvedete role a role akce a přiřazení rolí k oborům předplatné a aplikace."
+title: "aaaManage na základě rolí řízení přístupu (RBAC) pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak rozhraní toomanage na základě rolí řízení přístupu (RBAC) pomocí příkazového řádku Azure hello seznam rolí a rolí akce a přiřazení rolí obory toohello předplatné a aplikace."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,33 +14,33 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: ad644de6d23950e699d99042d27381336626caab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 438418e5f6ee9b98908c9c264d516eb722a4e26d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure
+# <a name="manage-role-based-access-control-with-hello-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure hello
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-Řízení přístupu na základě Role (RBAC) na portálu Azure a rozhraní API služby Azure Resource Manager můžete použít ke správě přístupu k vaše předplatné a prostředky na velice přesné úrovni. Pomocí této funkce můžete udělit přístup pro uživatele, skupiny nebo objekty služby Active Directory přiřazením některé role je v určitém rozsahu.
+Řízení přístupu na základě Role (RBAC) můžete použít v hello portál Azure a rozhraní API služby Azure Resource Manager toomanage přístup tooyour předplatného a prostředky na velice přesné úrovni. Pomocí této funkce můžete udělit přístup pro uživatele, skupiny nebo objekty služby Active Directory přiřazením některé role toothem v určitém rozsahu.
 
-Ke správě RBAC mohli používat rozhraní příkazového řádku Azure (CLI), musíte mít následující požadavky:
+Než budete moci použít hello rozhraní příkazového řádku Azure (CLI) toomanage RBAC, musíte mít hello následující požadavky:
 
-* Azure CLI verze 0.8.8 nebo novější. Nainstalujte nejnovější verzi a přidružit ho ke svému předplatnému Azure, najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
-* Azure Resource Manager v rozhraní příkazového řádku Azure. Přejděte na [pomocí rozhraní příkazového řádku Azure s Resource Managerem](../xplat-cli-azure-resource-manager.md) další podrobnosti.
+* Azure CLI verze 0.8.8 nebo novější. tooinstall hello nejnovější verzi a přidružit ho ke svému předplatnému Azure, najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md).
+* Azure Resource Manager v rozhraní příkazového řádku Azure. Přejděte příliš[hello pomocí rozhraní příkazového řádku Azure s hello Resource Manager](../xplat-cli-azure-resource-manager.md) další podrobnosti.
 
 ## <a name="list-roles"></a>Seznam rolí
 ### <a name="list-all-available-roles"></a>Zobrazí seznam všech dostupných rolí
-K zobrazení seznamu všech dostupných rolí, použijte:
+toolist všechny dostupné role, použijte:
 
         azure role list
 
-Následující příklad ukazuje seznam *všechny dostupné role*.
+Hello následující příklad ukazuje hello seznam *všechny dostupné role*.
 
 ```
 azure role list --json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
@@ -49,11 +49,11 @@ azure role list --json | jq '.[] | {"roleName":.properties.roleName, "descriptio
 ![RBAC Azure příkazového řádku - azure role seznamu – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
 
 ### <a name="list-actions-of-a-role"></a>Seznam akcí role
-K zobrazení seznamu akce role, použijte:
+Akce hello toolist role, použijte:
 
     azure role show "<role name>"
 
-Následující příklad ukazuje akce *Přispěvatel* a *Přispěvatel virtuálních počítačů* role.
+Hello následující příklad ukazuje hello akce hello *Přispěvatel* a *Přispěvatel virtuálních počítačů* role.
 
 ```
 azure role show "contributor" --json | jq '.[] | {"Actions":.properties.permissions[0].actions,"NotActions":properties.permissions[0].notActions}'
@@ -65,11 +65,11 @@ azure role show "virtual machine contributor" --json | jq '.[] | .properties.per
 
 ## <a name="list-access"></a>Přístup k seznamu
 ### <a name="list-role-assignments-effective-on-a-resource-group"></a>Přiřazení rolí seznamu efektivní ve skupině prostředků.
-K zobrazení seznamu přiřazení rolí, které existují ve skupině prostředků, použijte:
+přiřazení rolí hello toolist které existují ve skupině prostředků, použijte:
 
     azure role assignment list --resource-group <resource group name>
 
-Následující příklad ukazuje přiřazení rolí v *pharma. prodej projecforcast* skupiny.
+Hello následující příklad ukazuje hello přiřazení rolí v hello *pharma. prodej projecforcast* skupiny.
 
 ```
 azure role assignment list --resource-group pharma-sales-projecforcast --json | jq '.[] | {"DisplayName":.properties.aADObject.displayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
@@ -78,15 +78,15 @@ azure role assignment list --resource-group pharma-sales-projecforcast --json | 
 ![RBAC Azure příkazového řádku - azure role přiřazení seznamu podle skupiny – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
 ### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
-K zobrazení seznamu přiřazení rolí pro konkrétního uživatele a přiřazení, které jsou přiřazeny k skupin uživatelů, použijte:
+přiřazení rolí hello toolist pro konkrétního uživatele a přiřazení hello, které jsou přiřazeny skupiny tooa uživatelů, použijte:
 
     azure role assignment list --signInName <user email>
 
-Můžete také zjistit přiřazení rolí, které se dědí z skupin změnou příkaz:
+Můžete také zjistit přiřazení rolí, které se dědí z skupin změnou hello příkaz:
 
     azure role assignment list --expandPrincipalGroups --signInName <user email>
 
-Následující příklad ukazuje, kterým je uděleno oprávnění k přiřazení rolí  *sameert@aaddemo.com*  uživatele. To zahrnuje role, které jsou přiřazeny přímo na uživatele a role, které se dědí z skupin.
+Hello následující příklad ukazuje hello přiřazení role, kterým je uděleno oprávnění toohello  *sameert@aaddemo.com*  uživatele. To zahrnuje role, které jsou přiřazeny přímo toohello uživatele a role, které se dědí z skupin.
 
 ```
 azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
@@ -97,89 +97,89 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure příkazového řádku - azure role přiřazení seznamu uživatelem – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
 ## <a name="grant-access"></a>Udělení přístupu
-Po zjištění roli, kterou chcete přiřadit udělit přístup, použijte:
+toogrant přístup po zjištění hello role, které chcete tooassign, použijte:
 
     azure role assignment create
 
-### <a name="assign-a-role-to-group-at-the-subscription-scope"></a>Přiřazení role do skupiny v oboru předplatného
-K přiřazení role do skupiny v oboru předplatné, použijte:
+### <a name="assign-a-role-toogroup-at-hello-subscription-scope"></a>Přiřazení role toogroup v oboru předplatné hello
+tooassign skupinu tooa role v hello obor předplatného, použijte:
 
     azure role assignment create --objectId  <group object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
-Následující příklad přiřadí *čtečky* role *Jana Koch Team* na *předplatné* oboru.
+Hello následující příklad přiřadí hello *čtečky* role příliš*Jana Koch Team* v hello *předplatné* oboru.
 
 ![Příkaz Azure RBAC - přiřazení role v azure vytvořit skupiny – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>Přiřazení role k aplikaci v oboru předplatného
-K přiřazení role k aplikaci v oboru předplatné, použijte:
+### <a name="assign-a-role-tooan-application-at-hello-subscription-scope"></a>Přiřadit k aplikaci tooan role v oboru předplatné hello
+tooassign aplikace tooan role za hello obor předplatného, použijte:
 
     azure role assignment create --objectId  <applications object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
-Následující příklad povolí *Přispěvatel* role *Azure AD* aplikace na vybraném předplatném.
+Hello následující příklad uděluje hello *Přispěvatel* role tooan *Azure AD* aplikace na hello vybrané předplatné.
 
  ![Příkaz Azure RBAC - přiřazení role v azure vytvořit aplikací](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>Přiřazení role uživatele v oboru skupiny prostředků
-Pokud chcete přiřadit role pro uživatele v oboru skupiny prostředků, použijte:
+### <a name="assign-a-role-tooa-user-at-hello-resource-group-scope"></a>Přiřazení role uživatele tooa v oboru skupiny prostředků hello
+tooassign tooa role uživatele v oboru skupiny hello prostředků, použijte:
 
     azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
-Následující příklad povolí *Přispěvatel virtuálních počítačů* role  *samert@aaddemo.com*  uživatel na *Pharma. prodej ProjectForcast* oboru skupiny prostředků.
+Hello následující příklad uděluje hello *Přispěvatel virtuálních počítačů* role příliš *samert@aaddemo.com*  uživatel na hello *Pharma. prodej ProjectForcast* oboru skupiny prostředků.
 
 ![Příkaz Azure RBAC - přiřazení role v azure vytvořit uživatele – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>Přiřazení role do skupiny v oboru prostředků
-K přiřazení role do skupiny v oboru prostředků, použijte:
+### <a name="assign-a-role-tooa-group-at-hello-resource-scope"></a>Přiřadit role tooa skupinu v oboru prostředků hello
+tooassign skupinu tooa role v oboru hello prostředků, použijte:
 
     azure role assignment create --objectId <group id> --role "<name of role>" --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
-Následující příklad povolí *Přispěvatel virtuálních počítačů* role *Azure AD* na *podsítě*.
+Hello následující příklad uděluje hello *Přispěvatel virtuálních počítačů* role tooan *Azure AD* na *podsítě*.
 
 ![Příkaz Azure RBAC - přiřazení role v azure vytvořit skupiny – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-4.png)
 
 ## <a name="remove-access"></a>Odebrání přístupu
-Chcete-li odebrat přiřazení role, použijte:
+tooremove přiřazení role, použijte:
 
-    azure role assignment delete --objectId <object id to from which to remove role> --roleName "<role name>"
+    azure role assignment delete --objectId <object id toofrom which tooremove role> --roleName "<role name>"
 
-Následující příklad odebere *Přispěvatel virtuálních počítačů* přiřazení role z  *sammert@aaddemo.com*  uživatele na *Pharma. prodej ProjectForcast* prostředků Skupina.
-Přiřazení role v příkladu pak odebere ze skupiny v odběru.
+Hello následující příklad odebere hello *Přispěvatel virtuálních počítačů* přiřazení role z hello  *sammert@aaddemo.com*  uživatele na hello *Pharma. prodej ProjectForcast* Skupina prostředků.
+přiřazení role hello Hello příklad pak odebere ze skupiny v předplatném hello.
 
 ![RBAC Azure příkazového řádku - azure role přiřazení odstranění – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
 
 ## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
-Chcete-li vytvořit vlastní roli, použijte:
+toocreate vlastní roli, použijte:
 
     azure role create --inputfile <file path>
 
-Následující příklad vytvoří vlastní role s názvem *virtuální počítač operátor*. Tato vlastní role uděluje přístup ke všem operacím čtení z *Microsoft.Compute*, *Microsoft.Storage*, a *Microsoft.Network* zprostředkovatelé prostředků a uděluje přístup k spuštění, restartování a monitorování virtuálních počítačů. Tuto vlastní roli můžete použít ve dvou předplatných. Tento příklad používá soubor JSON jako vstup.
+Hello následující příklad vytvoří vlastní role s názvem *virtuální počítač operátor*. Tato vlastní role uděluje přístup tooall číst operace *Microsoft.Compute*, *Microsoft.Storage*, a *Microsoft.Network* prostředků poskytovatelů a uděluje přístup toostart, restartování a monitorování virtuálních počítačů. Tuto vlastní roli můžete použít ve dvou předplatných. Tento příklad používá soubor JSON jako vstup.
 
 ![JSON – definice vlastních rolí – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-1.png)
 
 ![RBAC Azure příkazového řádku - azure role vytvořit – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>Upravit vlastní roli
-Chcete-li upravit vlastní roli, nejprve pomocí `azure role show` příkaz načíst definici role. Za druhé proveďte požadované změny do souboru definice role. Nakonec použijte `azure role set` se uložit definici upravené role.
+toomodify vlastní role, nejprve použijte hello `azure role show` příkaz tooretrieve definice role. Druhý zkontrolujte soubor definice role toohello požadované změny hello. Nakonec použijte `azure role set` toosave hello změnil definici role.
 
     azure role set --inputfile <file path>
 
-Následující příklad přidá *Microsoft.Insights/diagnosticSettings/* operace **akce**a předplatné Azure k **AssignableScopes** z Vlastní role operátora virtuálního počítače.
+Hello následující příklad přidá hello *Microsoft.Insights/diagnosticSettings/* operace toohello **akce**a předplatnému Azure toohello **AssignableScopes**vlastní role virtuálního počítače operátor hello.
 
 ![JSON - upravit definice vlastních rolí – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set-1.png)
 
 ![Snímek obrazovky příkazového řádku - azure roli set - RBAC Azure](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>Odstranit vlastní roli
-Chcete-li odstranit vlastní roli, nejprve pomocí `azure role show` příkaz, abyste zjistili **ID** role. Potom použít `azure role delete` příkaz k odstranění role zadáním **ID**.
+toodelete vlastní role, nejprve použijte hello `azure role show` příkaz toodetermine hello **ID** hello role. Poté použijte hello `azure role delete` příkaz toodelete hello role zadáním hello **ID**.
 
-Následující příklad odebere *virtuální počítač operátor* vlastní role.
+Hello následující příklad odebere hello *virtuální počítač operátor* vlastní role.
 
 ![RBAC Azure příkazového řádku - azure role odstranění – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-delete.png)
 
 ## <a name="list-custom-roles"></a>Vlastní role seznamu
-K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, použijte `azure role list` příkaz.
+toolist hello role, které jsou k dispozici pro přiřazení v oboru, které používají hello `azure role list` příkaz.
 
-Následující příkaz vypíše všechny role, které jsou k dispozici pro přiřazení ve vybraném předplatném.
+Hello následující příkaz vypíše všechny role, které jsou k dispozici pro přiřazení v hello vybrané předplatné.
 
 ```
 azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
@@ -187,7 +187,7 @@ azure role list --json | jq '.[] | {"name":.properties.roleName, type:.propertie
 
 ![RBAC Azure příkazového řádku - azure role seznamu – snímek obrazovky](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
 
-V následujícím příkladu *operátor virtuálního počítače* vlastní role není k dispozici v *Production4* předplatné vzhledem k tomu, že toto předplatné není v **AssignableScopes** role.
+V následujícím příkladu hello, hello *virtuální počítač operátor* vlastní role není k dispozici v hello *Production4* předplatné vzhledem k tomu, že toto předplatné není v hello  **AssignableScopes** hello role.
 
 ```
 azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'

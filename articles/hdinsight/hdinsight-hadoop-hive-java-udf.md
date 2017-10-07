@@ -1,6 +1,6 @@
 ---
-title: "Java uživatelem definované funkce (UDF) s Hive v HDInsight - Azure | Microsoft Docs"
-description: "Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF), funguje s Hive. Tento příklad UDF převede tabulku textové řetězce na malá písmena."
+title: "aaaJava uživatelem definované funkce (UDF) s Hive v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate založené na jazyce Java uživatelem definované funkce (UDF), který funguje s Hive. Tento příklad UDF převede tabulku toolowercase textového řetězce."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 392b4cfb73299d2f6c1e8e825a4201b48d501388
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Použít Java UDF s Hive v HDInsight
 
-Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF), funguje s Hive. Java UDF v tomto příkladu převede tabulku textové řetězce na malá všechny znaky.
+Zjistěte, jak toocreate založené na jazyce Java uživatelem definované funkce (UDF), který funguje s Hive. v tomto příkladu Hello Java UDF převede tabulku textových řetězců tooall malá znaků.
 
 ## <a name="requirements"></a>Požadavky
 
 * Cluster služby HDInsight 
 
     > [!IMPORTANT]
-    > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-    Většina kroky v tomto dokumentu fungovat na obou clusterech se systémem Windows a Linux. Nicméně jsou specifické pro clustery se systémem Linux s postupem nahrání kompilované UDF do clusteru a potom ho spusťte. Jsou uvedeny odkazy na informace, které lze použít s clustery se systémem Windows.
+    Většina kroky v tomto dokumentu fungovat na obou clusterech se systémem Windows a Linux. Ale hello postupem tooupload hello zkompilovat UDF toohello clusteru a spusťte ho jsou konkrétní clustery založené na tooLinux. Tooinformation, který lze použít s clustery se systémem Windows jsou k dispozici odkazy.
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, jako je například OpenJDK)
 
@@ -41,24 +41,24 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
 * Textového editoru nebo Java IDE
 
     > [!IMPORTANT]
-    > Pokud vytvoříte soubory Python v klientovi Windows, musíte použít editor, který používá LF jako ukončování řádků. Pokud si nejste jisti, zda vaše editor používá LF nebo Line FEED, přečtěte si téma [Poradce při potížích s](#troubleshooting) na odebrání znak CR kroky v sekci.
+    > Pokud vytvoříte soubory Python v klientovi Windows hello, musíte použít editor, který používá LF jako ukončování řádků. Pokud si nejste jisti, zda vaše editor používá LF nebo Line FEED, přečtěte si téma hello [Poradce při potížích s](#troubleshooting) části pro postup odebrání hello CR znak.
 
 ## <a name="create-an-example-java-udf"></a>Vytvořte například Java UDF 
 
-1. Z příkazového řádku použijte následující postupy k vytvoření nového projektu Maven:
+1. Z příkazového řádku použijte následující toocreate nový projekt Maven hello:
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > Pokud používáte prostředí PowerShell, je nutné umístit parametry v uvozovkách. Například, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
+   > Pokud používáte prostředí PowerShell, je nutné umístit hello parametry v uvozovkách. Například, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
 
-    Tento příkaz vytvoří adresář s názvem **exampleudf**, který obsahuje projekt Maven.
+    Tento příkaz vytvoří adresář s názvem **exampleudf**, který obsahuje projekt Maven hello.
 
-2. Po vytvoření projektu odstranit **exampleudf/src/testování** adresář, který byl vytvořen jako součást projektu.
+2. Po vytvoření projektu hello odstranit hello **exampleudf/src/testování** adresář, který byl vytvořen jako součást hello projektu.
 
-3. Otevřete **exampleudf/pom.xml**a nahradit existující `<dependencies>` položka se následující kód XML:
+3. Otevřete hello **exampleudf/pom.xml**a nahradit stávající hello `<dependencies>` položka se hello následující XML:
 
     ```xml
     <dependencies>
@@ -77,9 +77,9 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
     </dependencies>
     ```
 
-    Tyto položky zadejte verzi systému Hadoop a Hive součástí HDInsight 3.5. Informace o verzích Hadoop a Hive s HDInsight z můžete najít [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
+    Tyto položky zadejte hello verzi systému Hadoop a Hive součástí HDInsight 3.5. Můžete najít informace o verzích hello Hadoop a Hive s HDInsight získané z hello [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
-    Přidat `<build>` části před `</project>` řádek na konec souboru. V této části by měl obsahovat následující kód XML:
+    Přidat `<build>` část před syntaxí hello `</project>` řádku na konci hello hello souboru. V této části by měl obsahovat hello následující XML:
 
     ```xml
     <build>
@@ -133,13 +133,13 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
     </build>
     ```
 
-    Tyto položky definovat, jak sestavte projekt. Konkrétně verze Java, která používá projektu a jak sestavit uberjar pro nasazení do clusteru.
+    Tyto položky definovat, jak toobuild hello projektu. Konkrétně hello verzi jazyka Java, která hello používá projektu a jak toobuild uberjar pro cluster toohello nasazení.
 
-    Po provedení změn uložte soubor.
+    Uložte soubor hello po provedení změn hello.
 
-4. Přejmenování **exampleudf/src/main/java/com/microsoft/examples/App.java** k **ExampleUDF.java**a pak otevřete soubor ve svém editoru.
+4. Přejmenování **exampleudf/src/main/java/com/microsoft/examples/App.java** příliš**ExampleUDF.java**a pak otevřete soubor hello ve svém editoru.
 
-5. Nahraďte obsah **ExampleUDF.java** soubor s následující a pak soubor uložte.
+5. Nahraďte obsah hello hello **ExampleUDF.java** soubor s hello následující a potom uložte soubor hello.
 
     ```java
     package com.microsoft.examples;
@@ -148,45 +148,45 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
     import org.apache.hadoop.hive.ql.exec.UDF;
     import org.apache.hadoop.io.*;
 
-    // Description of the UDF
+    // Description of hello UDF
     @Description(
         name="ExampleUDF",
-        value="returns a lower case version of the input string.",
+        value="returns a lower case version of hello input string.",
         extended="select ExampleUDF(deviceplatform) from hivesampletable limit 10;"
     )
     public class ExampleUDF extends UDF {
         // Accept a string input
         public String evaluate(String input) {
-            // If the value is null, return a null
+            // If hello value is null, return a null
             if(input == null)
                 return null;
-            // Lowercase the input string and return it
+            // Lowercase hello input string and return it
             return input.toLowerCase();
         }
     }
     ```
 
-    Tento kód implementuje UDF, který přijímá hodnotu řetězce a vrátí malá verzi řetězce.
+    Tento kód implementuje UDF, který přijímá hodnotu řetězce a vrátí malá verzi hello řetězec.
 
-## <a name="build-and-install-the-udf"></a>Sestavení a nainstalujte UDF
+## <a name="build-and-install-hello-udf"></a>Sestavení a nainstalujte hello UDF
 
-1. Pro zkompilování a balíček UDF použijte následující příkaz:
+1. Použijte následující příkaz toocompile hello a balíček hello UDF:
 
     ```bash
     mvn compile package
     ```
 
-    Tento příkaz vytvoří a balíčky UDF do `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souboru.
+    Tento příkaz vytvoří a balíčky hello UDF do hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souboru.
 
-2. Použití `scp` příkaz pro kopírování souboru do clusteru HDInsight.
+2. Použití hello `scp` příkaz toocopy hello souboru toohello clusteru HDInsight.
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    Nahraďte `myuser` pomocí uživatelského účtu SSH pro váš cluster. Nahraďte `mycluster` se název clusteru. Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla. Pokud jste použili certifikát, budete možná muset použít `-i` parametr k určení souboru privátního klíče.
+    Nahraďte `myuser` s hello účtu uživatele SSH pro váš cluster. Nahraďte `mycluster` s názvem clusteru hello. Pokud jste použili hello toosecure a heslo účtu SSH, jste výzvami tooenter hello heslo. Pokud jste použili certifikát, pravděpodobně bude třeba toouse hello `-i` parametr toospecify hello soubor privátního klíče.
 
-3. Připojte se ke clusteru pomocí protokolu SSH.
+3. Připojte toohello clusteru pomocí protokolu SSH.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
@@ -194,23 +194,23 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-4. Z relace SSH zkopírujte soubor jar do úložiště HDInsight.
+4. Z relace SSH hello zkopírujte úložiště tooHDInsight souborů jar hello.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Použití UDF z Hive
+## <a name="use-hello-udf-from-hive"></a>Použít hello UDF z Hive
 
-1. Použijte následující spuštění klienta Beeline z relace SSH.
+1. Použijte následující toostart hello Beeline klienta z relace SSH hello hello.
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-    Tento příkaz předpokládá, že jste použili výchozí **správce** pro přihlašovací účet pro váš cluster.
+    Tento příkaz předpokládá, že jste použili výchozí hello **správce** pro hello přihlašovací účet pro váš cluster.
 
-2. Až přijedete do `jdbc:hive2://localhost:10001/>` výzva, zadejte následující příkaz a přidejte UDF do Hive a vystavit jako funkce.
+2. Až přijedete do hello `jdbc:hive2://localhost:10001/>` výzva, zadejte následující tooadd hello UDF tooHive hello a vystavit jako funkce.
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -218,15 +218,15 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
     ```
 
     > [!NOTE]
-    > Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro cluster. Pokud váš cluster používá místo Data Lake Store, změňte `wasb:///` hodnotu `adl:///`.
+    > Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro hello cluster. Pokud váš cluster používá místo Data Lake Store, změňte hello `wasb:///` hodnota příliš`adl:///`.
 
-3. Použijte UDF k převedení hodnoty získané z tabulky na řetězce na malá písmena.
+3. Použijte hello UDF tooconvert hodnoty získané z řetězce případu tabulky toolower.
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    Tento dotaz vybere platforem zařízení (Android, Windows, iOS, atd.) z tabulky, převést řetězec, který má nižší případ a jejich zobrazení. Výstup se zobrazí podobná následující text:
+    Tento dotaz, vybere hello platforem zařízení (Android, Windows, iOS, atd.) z tabulky hello převést hello řetězec toolower případ a jejich zobrazení. Zobrazí výstup Hello podobné toohello následující text:
 
         +----------+--+
         |   _c0    |
@@ -245,6 +245,6 @@ Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak pracovat s Hive, najdete v části [používání Hive s HDInsight](hdinsight-use-hive.md).
+Jiné způsoby toowork s Hive, najdete v části [používání Hive s HDInsight](hdinsight-use-hive.md).
 
-Další informace týkající se Hive User-Defined funkcí najdete v tématu [Hive operátory a funkce definované uživatelem](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) části wiki Hive na apache.org.
+Další informace týkající se Hive User-Defined funkcí najdete v tématu [Hive operátory a funkce definované uživatelem](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) části hello wiki Hive na apache.org.

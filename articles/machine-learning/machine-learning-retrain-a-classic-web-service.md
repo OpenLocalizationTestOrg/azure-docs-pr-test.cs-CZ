@@ -1,6 +1,6 @@
 ---
-title: "Přeučování Classic webové služby | Microsoft Docs"
-description: "Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu v Azure Machine Learning."
+title: "aaaRetrain Classic webové služby | Microsoft Docs"
+description: "Zjistěte, jak tooprogrammatically přeučování modelu a aktualizace hello webové služby toouse hello nově trained model v Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,74 +14,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 3f9f4cd5ed36262845f7a3139073ccd4e49f472a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3ba21ed75f02868535cb2fcac607643303a9554
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>Přeučování webové služby Classic
-Prediktivní webové služby, které jste nasadili je výchozí vyhodnocovací koncový bod. Výchozí koncové body jsou synchronizovány s původní školení a vyhodnocování experimenty, a proto nelze nahradit pro cvičný model pro výchozí koncový bod. Chcete-li přeučování webovou službu, je nutné přidat nový koncový bod k webové službě. 
+Hello prediktivní webové služby, které jste nasadili je výchozí hello vyhodnocovací koncový bod. Výchozí koncové body jsou synchronizovány s hello původní školení a vyhodnocování experimenty, a proto hello trained model pro výchozí koncový bod hello nejde nahradit. tooretrain hello webové služby, je nutné přidat novou webovou službu toohello koncový bod. 
 
 ## <a name="prerequisites"></a>Požadavky
 Musí mít nastavíte výukový experiment a prediktivní experiment jak je znázorněno v [Machine Learning Přeučování modelů prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md). 
 
 > [!IMPORTANT]
-> Prediktivní experiment musí být nasazený jako Classic strojového učení webové služby. 
+> Prediktivní experiment Hello musí být nasazený jako Classic strojového učení webové služby. 
 > 
 > 
 
 Další informace o nasazení webové služby, najdete v části [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Přidat nový koncový bod
-Prediktivní webové služby, která jste nasadili obsahuje výchozí vyhodnocovací koncový bod, který je uložen synchronizována s původní školení a vyhodnocování experimenty trained model. Pokud chcete aktualizovat webovou službu, která se nový trained model, musíte vytvořit nový koncový bod vyhodnocování. 
+Hello prediktivní webové služby, který jste nasadili obsahuje výchozí vyhodnocovací koncový bod, který je uložen synchronizována s hello původní školení a vyhodnocování experimenty trained model. tooupdate vaše toowith nového modulu trained model služby web musíte vytvořit nový koncový bod vyhodnocování. 
 
-Chcete-li vytvořit nový koncový bod vyhodnocování, na prediktivní webové služby, která mohou být aktualizovány s trénovaného modelu:
+toocreate nový vyhodnocovací koncový bod, na hello prediktivní webová služba, která mohou být aktualizovány s hello trained model:
 
 > [!NOTE]
-> Ujistěte se, že přidáváte koncový bod do prediktivní webové služby není školení webovou službu. Pokud jste nasadili správně školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby, které jsou uvedené. Prediktivní webové služby musí končit "[prediktivní exp.]".
+> Ujistěte se, že přidáváte hello koncový bod toohello prediktivní webové služby, hello školení webové služby. Pokud jste nasadili správně školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby, které jsou uvedené. Hello prediktivní webové služby musí končit "[prediktivní exp.]".
 > 
 > 
 
-Existují tři způsoby, ve které můžete přidat nový koncový bod webové služby:
+Existují tři způsoby, ve které můžete přidat novou webovou službu tooa koncového bodu:
 
 1. Prostřednictvím kódu programu
-2. Použití portálu Microsoft Azure webové služby
-3. Použití portálu Azure classic
+2. Pomocí portálu služby Microsoft Azure Web hello
+3. Hello použijte portál Azure classic
 
 ### <a name="programmatically-add-an-endpoint"></a>Přidání koncového bodu prostřednictvím kódu programu
-Můžete přidat vyhodnocování koncové body pomocí ukázkový kód zadaný v tomto [úložiště github](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
+Můžete přidat vyhodnocování koncové body pomocí hello ukázkový kód zadaný v tomto [úložiště github](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
 
-### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Přidání koncového bodu pomocí portálu Microsoft Azure webové služby
-1. Machine Learning Studio v levém navigačním sloupec, klikněte na možnost webové služby.
-2. V dolní části řídicího panelu webové služby, klikněte na tlačítko **spravovat koncové body preview**.
+### <a name="use-hello-microsoft-azure-web-services-portal-tooadd-an-endpoint"></a>Použití portálu Microsoft Azure Web Services hello – tooadd koncový bod
+1. Machine Learning Studio v levém navigačním sloupec hello, klikněte na možnost webové služby.
+2. V dolní části hello řídicího panelu, hello webové služby, klikněte na tlačítko **spravovat koncové body preview**.
 3. Klikněte na tlačítko **Přidat**.
-4. Zadejte název a popis pro nový koncový bod. Vyberte úroveň protokolování a určuje, jestli je povolená ukázková data. Další informace o protokolování naleznete v tématu [povolení protokolování pro webové služby Machine Learning](machine-learning-web-services-logging.md).
+4. Zadejte název a popis pro nový koncový bod hello. Vyberte úroveň protokolování hello a určuje, jestli je povolená ukázková data. Další informace o protokolování naleznete v tématu [povolení protokolování pro webové služby Machine Learning](machine-learning-web-services-logging.md).
 
-### <a name="use-the-azure-classic-portal-to-add-an-endpoint"></a>Použití portálu Azure classic k přidání koncového bodu
-1. Přihlaste se k [portál Azure classic](https://manage.windowsazure.com).
-2. V nabídce vlevo klikněte na **Machine Learning**.
+### <a name="use-hello-azure-classic-portal-tooadd-an-endpoint"></a>Použití hello Azure classic portálu tooadd koncový bod
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. V levé nabídce hello, klikněte na **Machine Learning**.
 3. Pod názvem, klikněte na pracovní prostor a potom klikněte na **webové služby**.
 4. Pod názvem, klikněte na **modelu sčítání [prediktivní exp.]** .
-5. V dolní části stránky klikněte na tlačítko **přidat koncový bod**. Další informace o přidání koncové body, najdete v části [vytváření koncových bodů](machine-learning-create-endpoint.md). 
+5. V dolní části hello hello stránky, klikněte na tlačítko **přidat koncový bod**. Další informace o přidání koncové body, najdete v části [vytváření koncových bodů](machine-learning-create-endpoint.md). 
 
-## <a name="update-the-added-endpoints-trained-model"></a>Aktualizovat Trained Model přidání koncového bodu
-Dokončete proces retraining, je třeba aktualizovat pro cvičný model nový koncový bod, který jste přidali.
+## <a name="update-hello-added-endpoints-trained-model"></a>Aktualizace hello přidat Trained Model pro koncový bod
+toocomplete hello retraining procesu, je nutné aktualizovat hello trained model nový koncový bod hello, kterou jste přidali.
 
-* Pokud jste přidali nový koncový bod pomocí portálu Azure classic, můžete kliknout na nový koncový bod název na portálu, pak se **operace UpdateResource** odkaz získat adresu URL, budete muset aktualizovat model pro koncový bod.
-* Pokud jste přidali koncový bod pomocí ukázkový kód, jedná se o umístění adresa URL nápovědy identifikovaný *HelpLocationURL* hodnotu ve výstupu.
+* Pokud jste přidali hello nový koncový bod pomocí portálu Azure classic hello, můžete kliknutím na hello nový název koncového bodu na portálu hello a pak hello **operace UpdateResource** odkaz tooget hello – adresa URL potřebovali byste tooupdate hello endpoint modelu.
+* Pokud jste přidali hello koncového bodu pomocí hello ukázkový kód, jedná se o umístění adresa URL nápovědy hello identifikovaný hello *HelpLocationURL* hodnotu ve výstupu hello.
 
-Načíst cestu adresy URL:
+tooretrieve hello cestu adresy URL:
 
-1. Zkopírujte a vložte adresu URL do prohlížeče.
-2. Klikněte na odkaz aktualizace prostředků.
-3. Zkopírujte adresu URL POST požadavku PATCH. Například:
+1. Zkopírujte a vložte adresu URL hello do prohlížeče.
+2. Kliknutím na odkaz aktualizace prostředků hello.
+3. Zkopírujte hello POST URL požadavku PATCH hello. Například:
    
      ADRESA URL OPRAVY: HTTPS://MANAGEMENT.AZUREML.NET/WORKSPACES/00BF70534500B34REBFA1843D6/WEBSERVICES/AF3ER32AD393852F9B30AC9A35B/ENDPOINTS/NEWENDPOINT2
 
-Nyní můžete trénovaného modelu k aktualizaci vyhodnocování koncového bodu, který jste předtím vytvořili.
+Teď můžete použít hello trained model tooupdate hello vyhodnocovací koncový bod, který jste vytvořili dříve.
 
-Následující vzorový kód ukazuje, jak používat *BaseLocation*, *RelativeLocation*, *SasBlobToken*a oprava adresu URL pro aktualizaci koncového bodu.
+Hello následující vzorový kód ukazuje, jak toouse hello *BaseLocation*, *RelativeLocation*, *SasBlobToken*a oprava URL tooupdate hello koncového bodu.
 
     private async Task OverwriteModel()
     {
@@ -95,8 +95,8 @@ Následující vzorový kód ukazuje, jak používat *BaseLocation*, *RelativeLo
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from hello output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
+                        SasBlobToken = "your endpoint SAS blob token" //from hello output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
                     }
                 }
             }
@@ -121,28 +121,28 @@ Následující vzorový kód ukazuje, jak používat *BaseLocation*, *RelativeLo
         }
     }
 
-*ApiKey* a *endpointUrl* pro volání můžete získat z řídicího panelu koncový bod.
+Hello *apiKey* a hello *endpointUrl* pro volání hello můžete získat z řídicího panelu koncový bod.
 
-Hodnota *název* parametr v *prostředky* by měl odpovídat názvu prostředku uložené Trained Model prediktivní experiment. Pokud chcete získat název prostředku:
+Hello hodnotu hello *název* parametr v *prostředky* mají shodu hello název prostředků hello uloženy Trained Model prediktivní experiment hello. tooget hello název prostředku:
 
-1. Přihlaste se k [portál Azure classic](https://manage.windowsazure.com).
-2. V nabídce vlevo klikněte na **Machine Learning**.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. V levé nabídce hello, klikněte na **Machine Learning**.
 3. Pod názvem, klikněte na pracovní prostor a potom klikněte na **webové služby**.
 4. Pod názvem, klikněte na **modelu sčítání [prediktivní exp.]** .
-5. Klikněte na tlačítko Nový koncový bod, který jste přidali.
-6. Na řídicím panelu endpoint, klikněte na tlačítko **aktualizace prostředků**.
-7. Na stránce dokumentace rozhraní API aktualizace prostředků pro webovou službu, můžete najít **název prostředku** pod **aktualizovat prostředky**.
+5. Klikněte na tlačítko Nový koncový bod hello, které jste přidali.
+6. Na řídicím panelu endpoint hello, klikněte na tlačítko **aktualizace prostředků**.
+7. Na stránce dokumentace k API prostředku aktualizace hello hello webové služby, můžete najít hello **název prostředku** pod **aktualizovat prostředky**.
 
-Pokud váš token SAS vyprší dokončení aktualizace koncový bod, je třeba provést GET s Id úlohy získat nový token.
+Pokud před dokončíte, aktualizuje se koncový bod hello vyprší platnost vašeho tokenu SAS, je třeba provést GET s Id úlohy tooobtain hello nový token.
 
-Při kód byl úspěšně spuštěn, začněte nový koncový bod pomocí retrained modelu v přibližně 30 sekund.
+Při hello kód byl úspěšně spuštěn, začněte hello nový koncový bod pomocí modelu hello retrained přibližně 30 sekund.
 
 ## <a name="summary"></a>Souhrn
-Pomocí rozhraní Retraining API, můžete aktualizovat pro cvičný model prediktivní povolení scénáře, jako webové služby:
+Pomocí hello Retraining API, můžete aktualizovat hello trained model prediktivní webové služby, například povolení scénáře:
 
 * Pravidelné model retraining s nová data.
-* Distribuce modelu pro zákazníky s cílem aby přeučování modelu s použitím svá vlastní data.
+* Distribuce toocustomers modelu s cílem hello aby přeučování hello model pomocí svá vlastní data.
 
 ## <a name="next-steps"></a>Další kroky
-[Řešení potíží s retraining classic webové služby Azure Machine Learning](machine-learning-troubleshooting-retraining-models.md)
+[Řešení potíží s hello retraining classic webové služby Azure Machine Learning](machine-learning-troubleshooting-retraining-models.md)
 

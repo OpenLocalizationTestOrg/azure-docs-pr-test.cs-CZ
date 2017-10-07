@@ -1,6 +1,6 @@
 ---
-title: "Simulovat zařízení s Azure IoT hranou (Windows) | Microsoft Docs"
-description: "Jak používat Azure IoT Edge v systému Windows k vytvoření simulovaného zařízení, které odesílá telemetrická data prostřednictvím Azure IoT vstupní brána do služby IoT hub."
+title: "aaaSimulate zařízení s Azure IoT okraj (Windows) | Microsoft Docs"
+description: "Jak toouse Azure IoT Edge na Windows toocreate simulované zařízení, odesílá telemetrická data prostřednictvím služby Azure IoT hraniční brány tooan IoT hub."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: andbuc
-ms.openlocfilehash: e7eb2931993daf3f0aecbd4a43d27ebd5adc10b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddbe85eb956e9934e80e2e80e09f77b24cf54856
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-windows"></a>Azure IoT Edge používat k odesílání zpráv typu zařízení cloud s simulované zařízení (Windows)
+# <a name="use-azure-iot-edge-toosend-device-to-cloud-messages-with-a-simulated-device-windows"></a>Použití Azure IoT Edge toosend zařízení cloud zprávy s simulované zařízení (Windows)
 
 [!INCLUDE [iot-hub-iot-edge-simulated-selector](../../includes/iot-hub-iot-edge-simulated-selector.md)]
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>Spuštění ukázky
+## <a name="how-toorun-hello-sample"></a>Jak toorun hello ukázka
 
-**Build.cmd** skript generuje jeho výstup v **sestavení** složky ve vaší místní kopii **iot hranou** úložiště. Tento výstup zahrnuje čtyři IoT Edge moduly používané v této ukázce.
+Hello **build.cmd** skript generuje jeho výstup v hello **sestavení** složky ve vaší místní kopii hello **iot hranou** úložiště. Tento výstup zahrnuje hello čtyři IoT Edge moduly používané v této ukázce.
 
-Sestavení skriptu místa:
+Hello sestavení skriptu míst:
 
-* **Logger.dll** v **sestavení\\moduly\\protokolovač\\ladění** složky.
-* **iothub.dll** v **sestavení\\moduly\\iothub\\ladění** složky.
-* **identity\_map.dll** v **sestavení\\moduly\\identitymap\\ladění** složky.
-* **Simulované\_device.dll** v **sestavení\\moduly\\simulované\_zařízení\\ladění** složky.
+* **Logger.dll** v hello **sestavení\\moduly\\protokolovač\\ladění** složky.
+* **iothub.dll** v hello **sestavení\\moduly\\iothub\\ladění** složky.
+* **identity\_map.dll** v hello **sestavení\\moduly\\identitymap\\ladění** složky.
+* **Simulované\_device.dll** v hello **sestavení\\moduly\\simulované\_zařízení\\ladění** složky.
 
-Použít tyto cesty pro **modulu cesta** hodnoty, jak je znázorněno v následujícím nastavení souboru JSON:
+Použít tyto cesty pro hello **modulu cesta** hodnoty, jak je znázorněno v následující soubor JSON nastavení hello:
 
-Simulovaném\_zařízení\_cloudu\_nahrát\_ukázka proces má cestu k konfigurační soubor JSON jako argument příkazového řádku. Následující příklad souboru JSON je součástí sady SDK úložiště na **ukázky\\simulované\_zařízení\_cloudu\_nahrát\_ukázka\\src\\simulované\_zařízení\_cloudu\_nahrát\_ukázka\_win.json**. Tento konfigurační soubor funguje, jako je nezměníte skriptu buildu umístit IoT Edge moduly nebo ukázka spustitelné soubory v jiné než výchozí umístění.
+Hello simulated\_zařízení\_cloudu\_nahrát\_ukázka proces trvá hello konfigurační soubor JSON tooa cestu jako argument příkazového řádku. Hello následující příklad souboru JSON je součástí sady SDK úložiště hello na **ukázky\\simulované\_zařízení\_cloudu\_nahrát\_ukázka\\src\\ Simulované\_zařízení\_cloudu\_nahrát\_ukázka\_win.json**. Tato konfigurace soubor funguje jako je nezměníte hello vytvořit skript tooplace hello IoT Edge moduly nebo ukázkové spustitelné soubory v jiné než výchozí umístění.
 
 > [!NOTE]
-> Jsou modulu cesty relativní k adresáři kde simulované\_zařízení\_cloudu\_nahrát\_sample.exe nachází. Vzorový konfigurační soubor JSON výchozí zápis do 'deviceCloudUploadGatewaylog.log' v aktuální pracovní adresář.
+> Hello modulu cest relativní toohello adresáře, kde hello simulated\_zařízení\_cloudu\_nahrát\_sample.exe nachází. Výchozí konfigurační soubor JSON ukázka Hello toowriting too'deviceCloudUploadGatewaylog.log se v aktuální pracovní adresář.
 
-V textovém editoru otevřete soubor **ukázky\\simulované\_zařízení\_cloudu\_nahrát\_ukázka\\src\\simulované\_zařízení\_cloudu\_nahrát\_win.json** ve vaší místní kopii **iot hranou** úložiště. Tento soubor konfiguruje moduly IoT hraniční brány ukázka:
+V textovém editoru otevřete soubor hello **ukázky\\simulované\_zařízení\_cloudu\_nahrát\_ukázka\\src\\simulované\_zařízení \_cloudu\_nahrát\_win.json** ve vaší místní kopii hello **iot hranou** úložiště. Tento soubor konfiguruje hello IoT Edge moduly v bráně ukázka hello:
 
-* **IoTHub** modulu připojuje ke službě IoT hub. Je třeba nakonfigurovat odesílat data do služby IoT hub. Konkrétně nastavit **IoTHubName** hodnoty na název své služby IoT hub a nastavte **IoTHubSuffix** hodnotu **azure devices.net**. Nastavte **přenosu** hodnotu pro jeden z: **HTTP**, **AMQP**, nebo **MQTT**. V současné době pouze **HTTP** sdílí jedno připojení protokolu TCP pro všechny zprávy zařízení. Pokud nastavíte hodnotu na **AMQP**, nebo **MQTT**, bránu udržuje samostatného připojení TCP ke službě IoT Hub pro každé zařízení.
-* **Mapování** modulu mapuje adresy MAC Simulovaná zařízení na vaše ID zařízení IoT Hub. Ujistěte se, že **deviceId** hodnoty odpovídají identifikátory ID dvě zařízení, které jste přidali do služby IoT hub a že **deviceKey** hodnoty obsahovat klíče ze dvou zařízení.
-* **BLE1** a **BLE2** moduly jsou Simulovaná zařízení. Všimněte si, jak adresy MAC modulu shodovat s adresami v **mapování** modulu.
-* **Protokolovač** modulu ukládá informace o vaší brány činnosti do souboru.
-* **Modulu cesta** hodnoty zobrazené v následujícím příkladu jsou relativní vzhledem k adresáři kde simulované\_zařízení\_cloudu\_nahrát\_sample.exe nachází.
-* **Odkazy** pole v dolní části souboru JSON připojí **BLE1** a **BLE2** moduly, které **mapování** modul a **mapování** modulu **IoTHub** modulu. Také zajistí, že všechny zprávy v protokolu **Protokolovač** modulu.
+* Hello **IoTHub** modulu připojí tooyour IoT hub. Můžete ji nakonfigurovat toosend data tooyour IoT hub. Konkrétně sadu hello **IoTHubName** toohello název služby IoT hub hodnoty a nastavte hello **IoTHubSuffix** hodnota příliš**azure devices.net**. Sada hello **přenosu** tooone hodnotu z: **HTTP**, **AMQP**, nebo **MQTT**. V současné době pouze **HTTP** sdílí jedno připojení protokolu TCP pro všechny zprávy zařízení. Pokud nastavíte hodnotu hello příliš**AMQP**, nebo **MQTT**, brány hello udržuje samostatné TCP připojení tooIoT rozbočovače pro každé zařízení.
+* Hello **mapování** modulu mapování adresy MAC hello ID zařízení IoT Hub tooyour vaše Simulovaná zařízení. Ujistěte se, že **deviceId** ID hello shody hodnoty hello dvě zařízení, které jste přidali tooyour IoT hub a že hello **deviceKey** hodnoty obsahovat hello klíče ze dvou zařízení.
+* Hello **BLE1** a **BLE2** moduly jsou hello simulované zařízení. Všimněte si, jak adresy MAC modulu hello odpovídat hello adresy v hello **mapování** modulu.
+* Hello **Protokolovač** modulu protokoly souboru tooa aktivity brány.
+* Hello **modulu cesta** hodnoty zobrazené v následující ukázka hello jsou relativní toohello adresáře, kde hello simulated\_zařízení\_cloudu\_nahrát\_sample.exe nachází.
+* Hello **odkazy** pole v dolní části hello souboru JSON hello připojí hello **BLE1** a **BLE2** moduly toohello **mapování** modulu a hello **mapování** modulu toohello **IoTHub** modulu. Také zajistí, že všechny zprávy v hello protokolu **Protokolovač** modulu.
 
 ```json
 {
@@ -138,17 +138,17 @@ V textovém editoru otevřete soubor **ukázky\\simulované\_zařízení\_cloudu
 }
 ```
 
-Uložte změny, které jste do konfiguračního souboru.
+Uložte změny hello provedené toohello konfigurační soubor.
 
-Spustit ukázku:
+Ukázka toorun hello:
 
-1. Na příkazovém řádku přejděte do **sestavení** složky ve vaší místní kopii **iot hranou** úložiště.
-2. Spusťte následující příkaz:
+1. Na příkazovém řádku přejděte toohello **sestavení** složky ve vaší místní kopii hello **iot hranou** úložiště.
+2. Spusťte následující příkaz hello:
    
     ```cmd
     samples\simulated_device_cloud_upload\Debug\simulated_device_cloud_upload_sample.exe ..\samples\simulated_device_cloud_upload\src\simulated_device_cloud_upload_win.json
     ```
-3. Můžete použít [explorer zařízení] [ lnk-device-explorer] nebo [iothub-explorer] [ lnk-iothub-explorer] nástroje ke sledování zprávy, které Centrum IoT získává z brány. Například pomocí iothub-explorer můžete monitorovat zpráv typu zařízení cloud pomocí následujícího příkazu:
+3. Můžete použít hello [explorer zařízení] [ lnk-device-explorer] nebo [iothub-explorer] [ lnk-iothub-explorer] nástroj toomonitor hello zprávy, které Centrum IoT získává z hello brána. Například pomocí iothub-explorer můžete monitorovat zpráv typu zařízení cloud pomocí hello následující příkaz:
 
     ```cmd
     iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={Your IoT Hub key}"
@@ -156,15 +156,15 @@ Spustit ukázku:
 
 ## <a name="next-steps"></a>Další kroky
 
-Získání rozsáhlejšími znalostmi IoT okraj a Experimentujte s příklady kódu, najdete následujících kurzech developer a prostředky:
+toogain rozsáhlejšími znalostmi IoT okraj a experimentu s příklady kódu navštívit hello následující kurzy developer a prostředky:
 
 * [Odesílání zpráv typu zařízení cloud z fyzického zařízení s hranou IoT][lnk-physical-device]
 * [Azure IoT Edge][lnk-iot-edge]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
+* [Zabezpečení řešení IoT z hello pozadí][lnk-securing]
 
 <!-- Links -->
 [lnk-iot-edge]: https://github.com/Azure/iot-edge/

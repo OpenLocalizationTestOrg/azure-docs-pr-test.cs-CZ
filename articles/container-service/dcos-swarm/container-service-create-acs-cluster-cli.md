@@ -1,5 +1,5 @@
 ---
-title: "Nasazení clusteru kontejneru Dockeru – Azure CLI | Dokumentace Microsoftu"
+title: "aaaDeploy cluster kontejner Docker - rozhraní příkazového řádku Azure | Microsoft Docs"
 description: "Nasazení řešení Kubernetes, DC/OS nebo Docker Swarm ve službě Azure Container Service pomocí Azure CLI 2.0"
 services: container-service
 documentationcenter: 
@@ -17,36 +17,36 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ecac5c255735b588ebb512b183e8a8bbbdcc905f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cdfa4ce69de343dcc7070bc2c58b5132c4062084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a>Nasazení řešení hostování kontejnerů Dockeru pomocí Azure CLI 2.0
+# <a name="deploy-a-docker-container-hosting-solution-using-hello-azure-cli-20"></a>Nasazení řešení pomocí Azure CLI 2.0 hello hostování kontejner Docker
 
-Pomocí příkazů `az acs` v Azure CLI 2.0 můžete vytvořit a spravovat clustery ve službě Azure Container Service. Cluster Azure Container Service můžete také nasadit pomocí webu [Azure Portal](container-service-deployment.md) nebo rozhraní API služby Azure Container Service.
+Použití hello `az acs` příkazů v toocreate hello Azure CLI 2.0 a spravovat clustery v Azure Container Service. Můžete také nasazení clusteru Azure Container Service pomocí hello [portál Azure](container-service-deployment.md) nebo hello rozhraní API Správce Azure Container Service.
 
-Nápovědu k příkazům `az acs` získáte předáním parametru `-h` příslušnému příkazu. Například: `az acs create -h`.
+Nápovědu k `az acs` příkazy, předat hello `-h` parametr tooany příkaz. Například: `az acs create -h`.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
-K vytvoření clusteru Azure Container Service pomocí Azure CLI 2.0 musíte mít:
+toocreate clusteru Azure Container Service pomocí hello 2.0 rozhraní příkazového řádku Azure, musíte:
 * účet Azure ([získejte bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)),
-* nainstalované a nastavené [Azure CLI 2.0](/cli/azure/install-az-cli2)
+* instalaci a nastavení hello [2.0 rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2)
 
 ## <a name="get-started"></a>Začínáme 
-### <a name="log-in-to-your-account"></a>Přihlášení k účtu
+### <a name="log-in-tooyour-account"></a>Přihlaste se tooyour účtu
 ```azurecli
 az login 
 ```
 
-Postupujte podle zobrazených výzev a interaktivně se přihlaste. Další způsoby přihlášení najdete v tématu [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).
+Postupujte podle pokynů toolog hello v interaktivně. Ostatní metody toolog v, najdete v části [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).
 
 ### <a name="set-your-azure-subscription"></a>Nastavení předplatného Azure
 
-Pokud máte více než jedno předplatné Azure, nastavte výchozí předplatné. Například:
+Pokud máte více než jedno předplatné, nastavte hello výchozí předplatné. Například:
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
@@ -59,44 +59,44 @@ Doporučujeme vytvořit skupinu prostředků pro každý cluster. Zadejte oblast
 ```azurecli
 az group create -n acsrg1 -l "westus"
 ```
-Výstup je podobný tomuto:
+Výstup je podobné toohello následující:
 
 ![Vytvoření skupiny prostředků](./media/container-service-create-acs-cluster-cli/rg-create.png)
 
 
 ## <a name="create-an-azure-container-service-cluster"></a>Vytvoření clusteru Azure Container Service
 
-K vytvoření clusteru použijte příkaz `az acs create`.
-Název clusteru a název skupiny prostředků vytvořené v předchozím kroku jsou povinné parametry. 
+toocreate cluster, použijte `az acs create`.
+Název pro hello cluster a hello název skupiny prostředků hello vytvořili v předchozím kroku hello jsou povinné parametry. 
 
-Ostatní vstupy jsou nastavené na výchozí hodnoty (viz následující obrazovku), pokud nejsou přepsané pomocí příslušných přepínačů. Například orchestrátor je standardně nastaven na DC/OS. A pokud nezadáte předponu názvu DNS, vytvoří se na základě názvu clusteru.
+Další vstupní hodnoty jsou nastavené hodnoty toodefault (viz následující obrazovka hello) není-li přepsat pomocí jejich odpovídajících přepínačů. Hello orchestrator je třeba nastavit ve výchozím nastavení tooDC/OS. A pokud nezadáte jeden, předpony názvu DNS je vytvořena na základě názvu clusteru hello.
 
 ![použití příkazu az acs create](./media/container-service-create-acs-cluster-cli/create-help.png)
 
 
 ### <a name="quick-acs-create-using-defaults"></a>Rychlý příkaz `acs create` s využitím výchozích hodnot
-Pokud máte soubor s veřejným klíčem SSH RSA `id_rsa.pub` ve výchozím umístění (nebo jste jej vytvořili pro [OS X a Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../../virtual-machines/linux/ssh-from-windows.md)), použijte příkaz podobný tomuto:
+Pokud máte soubor veřejného klíče SSH RSA `id_rsa.pub` ve výchozím umístění hello (nebo jeden pro vytvoření [OS X a Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../../virtual-machines/linux/ssh-from-windows.md)), použijte příkaz jako hello následující:
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
 ```
-Pokud veřejný klíč SSH nemáte, použijte druhý příkaz. Tento příkaz ho pro vás pomocí přepínače `--generate-ssh-keys` vytvoří.
+Pokud veřejný klíč SSH nemáte, použijte druhý příkaz. Tento příkaz s hello `--generate-ssh-keys` přepínač vytvoří za vás.
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys
 ```
 
-Po zadání příkazu počkejte asi 10 minut, než se cluster vytvoří. Výstup příkazu zahrnuje plně kvalifikované názvy domén hlavních i agentských uzlů a příkaz SSH pro připojení k prvnímu hlavnímu uzlu. Tady je zkrácený výstup:
+Po zadání příkazu hello, Počkejte přibližně 10 minut pro toobe hello clusteru vytvořen. výstup příkazu Hello zahrnuje plně kvalifikované názvy domény (FQDN) hello hlavní a uzly agenta a SSH příkaz tooconnect toohello prvního hlavního serveru. Tady je zkrácený výstup:
 
 ![Obrázek s příkazem ACS create](./media/container-service-create-acs-cluster-cli/cluster-create.png)
 
 > [!TIP]
-> [Názorný průvodce pro Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md) ukazuje, jak pomocí příkazu `az acs create` s použitím výchozích hodnot vytvořit cluster Kubernetes.
+> Hello [Kubernetes návod](../kubernetes/container-service-kubernetes-walkthrough.md) ukazuje, jak toouse `az acs create` s toocreate výchozí hodnoty Kubernetes clusteru.
 >
 
 ## <a name="manage-acs-clusters"></a>Správa clusterů ACS
 
-Cluster můžete spravovat pomocí dalších příkazů `az acs`. Zde je několik příkladů:
+Použití další `az acs` příkazy toomanage vašeho clusteru. Zde je několik příkladů:
 
 ### <a name="list-clusters-under-a-subscription"></a>Výpis clusterů v rámci předplatného
 
@@ -122,8 +122,8 @@ az acs show -g acsrg1 -n acs-cluster --output list
 ![příkaz acs show](./media/container-service-create-acs-cluster-cli/acs-show.png)
 
 
-### <a name="scale-the-cluster"></a>Škálování clusteru
-Je povolené horizontální navýšení i snížení kapacity agentských uzlů. Parametr `new-agent-count` určuje nový počet agentů v clusteru ACS.
+### <a name="scale-hello-cluster"></a>Škálování hello clusteru
+Je povolené horizontální navýšení i snížení kapacity agentských uzlů. Hello parametr `new-agent-count` je hello nový počet agentů v clusteru hello služby ACS.
 
 ```azurecli
 az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
@@ -135,12 +135,12 @@ az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
 ```azurecli
 az acs delete -g acsrg1 -n acs-cluster 
 ```
-Tento příkaz neodstraní všechny prostředky (sítě a úložiště), které byly vytvořené během vytváření služby Container Service. Pokud chcete jednoduše odstranit všechny prostředky, doporučujeme, abyste každý cluster nasadili do jiné skupiny prostředků. Když už cluster nebudete potřebovat, odstraňte příslušnou skupinu prostředků.
+Tento příkaz neodstraní všechny prostředky (sítě a úložiště), které jsou vytvořené během vytváření služby kontejneru hello. toodelete všechny prostředky snadno, je doporučeno, nasadíte každý cluster ve skupině prostředků jedinečné. Potom odstraňte skupinu prostředků hello při hello clusteru se už nevyžaduje.
 
 ## <a name="next-steps"></a>Další kroky
 Nyní když máte funkční cluster, nahlédněte do těchto dokumentů, kde naleznete podrobnosti týkající se připojení a správy:
 
-* [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
+* [Připojení clusteru Azure Container Service tooan](../container-service-connect.md)
 * [Práce se službou Azure Container Service a DC/OS](container-service-mesos-marathon-rest.md)
 * [Práce se službou Azure Container Service a nástrojem Docker Swarm](container-service-docker-swarm.md)
 * [Práce s Azure Container Service a Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md)

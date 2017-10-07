@@ -1,6 +1,6 @@
 ---
-title: "Sledování toku v aplikaci služby cloudu s Azure Diagnostics | Microsoft Docs"
-description: "Přidání trasování zprávy do Azure aplikace usnadňuje ladění, měření výkonu, monitorování, analýza provozu a další."
+title: "tok hello aaaTrace v cloudových služeb aplikací s Azure Diagnostics | Microsoft Docs"
+description: "Přidejte trasování zprávy tooan aplikaci Azure toohelp ladění, měření výkonu, monitorování, analýza provozu a další."
 services: cloud-services
 documentationcenter: .net
 author: rboucher
@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: robb
-ms.openlocfilehash: 35b4a4270846c54a1ca760e803ef7adba60cf03b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2ed7b5997ae1d298115b4ce593bb5051a9a0c75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Trasování toku aplikace cloudových služeb s Azure Diagnostics
-Trasování je způsob, jak můžete monitorovat aplikace, když je spuštěná. Můžete použít [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), a [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) třídy k zaznamenání informací o chybách a spuštění aplikace v protokolech, textové soubory nebo jiné zařízení pro pozdější analýzu. Další informace o trasování najdete v tématu [trasování a instrumentace aplikací](https://msdn.microsoft.com/library/zs6s4h68.aspx).
+# <a name="trace-hello-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Sledování toku hello aplikace cloudových služeb s Azure Diagnostics
+Trasování je způsob, jak můžete toomonitor hello provádění aplikace, když je spuštěná. Můžete použít hello [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), a [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) třídy toorecord informace o chybách a spuštění aplikace v protokolech, textové soubory nebo jiné zařízení pro pozdější analýzu. Další informace o trasování najdete v tématu [trasování a instrumentace aplikací](https://msdn.microsoft.com/library/zs6s4h68.aspx).
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Pomocí příkazů trasování a trasování – přepínače
-Implementace trasování v aplikaci cloudové služby tak, že přidáte [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) konfiguraci aplikace a volání System.Diagnostics.Trace nebo System.Diagnostics.Debug v kódu aplikace. Použití konfiguračního souboru *app.config* pro role pracovního procesu a *web.config* pro webové role. Když vytvoříte novou hostovanou službu pomocí šablony sady Visual Studio, Azure Diagnostics se automaticky přidá do projektu a DiagnosticMonitorTraceListener je přidán do příslušné konfiguračního souboru pro role, které přidáte.
+Implementace trasování v aplikaci cloudové služby přidáním hello [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) toohello konfiguraci aplikací a provádění volá tooSystem.Diagnostics.Trace nebo System.Diagnostics.Debug ve vaší kód aplikace. Použití hello konfigurační soubor *app.config* rolí pracovního procesu a hello *web.config* pro webové role. Když vytvoříte novou hostovanou službu pomocí šablony sady Visual Studio, Azure Diagnostics se automaticky přidá toohello projektu a hello DiagnosticMonitorTraceListener je přidána toohello odpovídající konfigurační soubor pro hello role, které přidáte.
 
-Informace o umístění trasovacích příkazů najdete v tématu [postupy: Přidání příkazů trasování do kódu aplikace](https://msdn.microsoft.com/library/zd83saa2.aspx).
+Informace o umístění trasovacích příkazů najdete v tématu [postupy: Přidání příkazů trasování tooApplication kód](https://msdn.microsoft.com/library/zd83saa2.aspx).
 
-Tím, že umístíte [trasování – přepínače](https://msdn.microsoft.com/library/3at424ac.aspx) ve vašem kódu můžete ovládat, zda dojde k trasování a jak rozsáhlé je. To vám umožňuje monitorovat stav aplikace v provozním prostředí. To je obzvláště důležité v obchodní aplikace, která používá několik součástí běžící na více počítačích. Další informace najdete v tématu [postupy: Konfigurace trasování – přepínače](https://msdn.microsoft.com/library/t06xyy08.aspx).
+Tím, že umístíte [trasování – přepínače](https://msdn.microsoft.com/library/3at424ac.aspx) ve vašem kódu můžete ovládat, zda dojde k trasování a jak rozsáhlé je. To vám umožňuje monitorovat stav hello vaší aplikace v provozním prostředí. To je obzvláště důležité v obchodní aplikace, která používá několik součástí běžící na více počítačích. Další informace najdete v tématu [postupy: Konfigurace trasování – přepínače](https://msdn.microsoft.com/library/t06xyy08.aspx).
 
-## <a name="configure-the-trace-listener-in-an-azure-application"></a>Konfigurace trasování modulu naslouchání v aplikaci Azure
-Trasování ladění a TraceSource, musíte nastavit "naslouchací procesy" ke sběru a zaznamenejte zprávy, které se odesílají. Naslouchací procesy shromažďování, ukládání a směrovat trasovací zprávy. Jejich přesměrujte výstup trasování do příslušné cílové, jako je například protokol, okno nebo textového souboru. Používá Azure Diagnostics [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) třídy.
+## <a name="configure-hello-trace-listener-in-an-azure-application"></a>Konfigurace naslouchací proces trasování hello v aplikaci Azure
+Trasování ladění a TraceSource, musíte nastavit toocollect "naslouchací procesy" a záznamů hello zpráv, které jsou odeslány. Naslouchací procesy shromažďování, ukládání a směrovat trasovací zprávy. Budou směrovat hello trasování výstup tooan příslušná cílová, jako je například protokol, okno nebo textového souboru. Azure Diagnostics používá hello [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) třídy.
 
-Před provedením následujícího postupu, je nutné inicializovat Azure monitorování diagnostiky. Chcete-li to provést, přečtěte si téma [povolení diagnostiky v Microsoft Azure](cloud-services-dotnet-diagnostics.md).
+Ještě před dokončením hello postupem je nutné inicializovat hello Azure monitorování diagnostiky. toodo, najdete v tématu [povolení diagnostiky v Microsoft Azure](cloud-services-dotnet-diagnostics.md).
 
-Všimněte si, že pokud používáte šablony, které jsou k dispozici Visual Studio, konfiguraci naslouchacího procesu se automaticky přidá za vás.
+Všimněte si, že pokud používáte hello šablony, které jsou k dispozici Visual Studio, konfigurace hello hello naslouchacího procesu se automaticky přidá za vás.
 
 ### <a name="add-a-trace-listener"></a>Přidejte naslouchací proces trasování
-1. Otevřete soubor web.config nebo app.config pro vaši roli.
-2. Přidejte následující kód do souboru. Změňte atribut verze používat číslo verze sestavení, ve kterém je odkazováno na. Verze sestavení nezmění nutně při každém vydání sady Azure SDK Pokud existují aktualizace.
+1. Otevřete soubor web.config nebo app.config hello pro vaši roli.
+2. Přidejte následující kód toohello soubor hello. Změňte hello atribut toouse hello verze číslo verze sestavení hello, na které je odkazováno na. verze sestavení Hello nezmění nutně při každém vydání sady Azure SDK Pokud tooit aktualizace.
    
     ```
     <system.diagnostics>
@@ -58,21 +58,21 @@ Všimněte si, že pokud používáte šablony, které jsou k dispozici Visual S
     </system.diagnostics>
     ```
    > [!IMPORTANT]
-   > Ujistěte se, že máte projektu odkaz na sestavení Microsoft.WindowsAzure.Diagnostics. Aktualizujte číslo verze ve výše uvedené xml tak, aby odpovídala verzi odkazované sestavení Microsoft.WindowsAzure.Diagnostics.
+   > Ujistěte se, že máte projektu odkaz toohello Microsoft.WindowsAzure.Diagnostics sestavení. Číslo verze aktualizace hello v xml hello výše toomatch hello verzi hello odkazovat Microsoft.WindowsAzure.Diagnostics sestavení.
    > 
    > 
-3. Uložte do konfiguračního souboru.
+3. Uložte soubor konfigurace hello.
 
 Další informace o naslouchací procesy najdete v tématu [trasování – moduly naslouchání](https://msdn.microsoft.com/library/4y5y10s7.aspx).
 
-Po dokončení kroků pro přidání naslouchací proces, je přidání příkazů trasování do kódu.
+Po dokončení hello kroky tooadd hello naslouchací proces, můžete přidat kód tooyour příkazy trasování.
 
-### <a name="to-add-trace-statement-to-your-code"></a>Chcete-li přidat příkaz trasování do kódu
-1. Otevřete zdrojový soubor pro vaši aplikaci. Například <RoleName>.cs soubor pro roli pracovního procesu, nebo webové role.
-2. Přidejte následující pomocí příkazu, pokud již nebyly přidané:
+### <a name="tooadd-trace-statement-tooyour-code"></a>kód pro příkaz tooyour tooadd trasování
+1. Otevřete zdrojový soubor pro vaši aplikaci. Například hello <RoleName>soubor cs pro roli pracovního procesu hello nebo webové role.
+2. Přidejte následující hello pomocí příkazu, pokud již nebyly přidané:
     ```
         using System.Diagnostics;
     ```
-3. Přidání příkazů trasování, kde chcete zaznamenat informace o stavu vaší aplikace. K formátování výstupu příkazu trasování můžete použít různé metody. Další informace najdete v tématu [postupy: Přidání příkazů trasování do kódu aplikace](https://msdn.microsoft.com/library/zd83saa2.aspx).
-4. Zdrojový soubor uložte.
+3. Přidání příkazů trasování, kam chcete toocapture informace o stavu hello vaší aplikace. Můžete použít různé metody tooformat hello výstup hello příkaz trasování. Další informace najdete v tématu [postupy: Přidání příkazů trasování tooApplication kód](https://msdn.microsoft.com/library/zd83saa2.aspx).
+4. Uložte hello zdrojový soubor.
 

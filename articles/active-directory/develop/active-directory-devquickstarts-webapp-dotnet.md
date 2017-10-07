@@ -1,5 +1,5 @@
 ---
-title: "Webové aplikace Azure AD .NET Začínáme | Microsoft Docs"
+title: "webové aplikace .NET aaaAzure AD Začínáme | Microsoft Docs"
 description: "Vytvoření webové aplikace .NET MVC, která se integruje se službou Azure AD pro přihlášení."
 services: active-directory
 documentationcenter: .net
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 7ac5d3e5cc28ead993e159d003244e6451acb0cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d3098c9e3d7e1916ccb110c703f501ae52e788f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>Webové aplikace ASP.NET přihlášení a odhlášení s Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Tím, že poskytuje jeden přihlášení a odhlášení jenom pár řádků kódu, Azure Active Directory (Azure AD) umožňuje snadno můžete využít Správa identit pro webové aplikace k. Uživatelé a deaktivovat webové aplikace ASP.NET můžete přihlásit pomocí implementace Microsoft Open Web Interface pro .NET (OWIN) middleware. Rozhraní .NET Framework 4.5 je součástí komunitou vytvářený middleware OWIN. Tento článek ukazuje, jak používat OWIN na:
+Tím, že poskytuje jeden přihlášení a odhlášení jenom pár řádků kódu, Azure Active Directory (Azure AD) umožňuje snadno můžete toooutsource webové aplikace správy identit. Uživatelé a deaktivovat webové aplikace ASP.NET můžete přihlásit pomocí implementace Microsoft hello Open Web Interface pro .NET (OWIN) middleware. Rozhraní .NET Framework 4.5 je součástí komunitou vytvářený middleware OWIN. Tento článek ukazuje, jak toouse OWIN na:
 
-* Přihlášení uživatelů k webové aplikace pomocí Azure AD jako zprostředkovatele identity.
+* Přihlášení uživatelů tooweb aplikace pomocí Azure AD jako zprostředkovatele identity hello.
 * Zobrazí některé informace o uživateli.
-* Přihlášení uživatelů z aplikace.
+* Přihlášení uživatelů ze hello aplikací.
 
 ## <a name="before-you-get-started"></a>Než začnete
-* Stažení [kostru aplikace](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) nebo stáhnout [hotová ukázka](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip).
-* Musíte taky klient služby Azure AD, ve kterém pro registraci aplikace. Pokud ještě nemáte klient služby Azure AD [zjistěte, jak získat](active-directory-howto-tenant.md).
+* Stáhnout hello [kostru aplikace](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) nebo stáhnout hello [hotová ukázka](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip).
+* Musíte taky klient služby Azure AD, ve které tooregister hello aplikace. Pokud ještě nemáte klient služby Azure AD [zjistěte, jak tooget jeden](active-directory-howto-tenant.md).
 
-Až budete připravení, postupujte podle pokynů v další čtyři části.
+Až budete připravení, postupujte podle pokynů hello v hello další čtyři části.
 
-## <a name="step-1-register-the-new-app-with-azure-ad"></a>Krok 1: Zaregistrujte novou aplikaci s Azure AD
-Chcete-li nastavit aplikaci pro ověřování uživatelů, nejprve zaregistrovat ve vašem klientovi provedením následujících akcí:
+## <a name="step-1-register-hello-new-app-with-azure-ad"></a>Krok 1: Zaregistrujte hello novou aplikaci s Azure AD
+tooset si uživatelé tooauthenticate aplikace hello, nejprve zaregistrovat ve vašem klientovi pomocí tohoto postupu hello následující:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na horním panelu klikněte na název účtu. V části **Directory** vyberte klienta služby Active Directory, ve které chcete zaregistrovat aplikaci.
-3. Klikněte na tlačítko **více služeb** v levém podokně a potom vyberte **Azure Active Directory**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Na horním panelu hello klikněte na název účtu. V části hello **Directory** seznamu, vyberte hello klienta služby Active Directory místo tooregister hello aplikace.
+3. Klikněte na tlačítko **více služeb** v levém podokně text hello a potom vyberte **Azure Active Directory**.
 4. Klikněte na tlačítko **registrace aplikace**a potom vyberte **přidat**.
-5. Postupujte podle výzev a vytvořte novou **webové aplikace nebo WebAPI**.
-  * **Název** popis aplikace pro uživatele.
-  * **Adresa URL přihlašování** je základní adresu URL aplikace. Výchozí adresa URL kostru je https://localhost:44320 /.
-6. Po dokončení registrace Azure AD přiřadí aplikace ID jedinečný aplikace. Zkopírujte hodnotu na stránce aplikace používat v dalších částech.
-7. Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro aplikaci. Zásady vytváření názvů je `https://<tenant-domain>/<app-name>` (například `https://contoso.onmicrosoft.com/my-first-aad-app`).
+5. Postupujte podle hello vyzve toocreate nový **webové aplikace nebo WebAPI**.
+  * **Název** popisuje toousers aplikace hello.
+  * **Adresa URL přihlašování** je hello základní adresu URL aplikace hello. kostru Hello výchozí adresa URL je https://localhost:44320 /.
+6. Po dokončení registrace hello, Azure AD přiřadí aplikace hello ID jedinečný aplikace. Zkopírujte hodnotu hello z toouse stránku hello aplikace v dalších částech hello.
+7. Z hello **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte hello identifikátor ID URI aplikace. Hello **identifikátor ID URI aplikace** je jedinečný identifikátor pro aplikaci hello. Hello nazevspolecnosti.technologickaoblast.nazevproduktu.funkcnioblast.nazev `https://<tenant-domain>/<app-name>` (například `https://contoso.onmicrosoft.com/my-first-aad-app`).
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení aplikace pro použití ověřovacího kanálu OWIN
-V tomto kroku nakonfigurujete middleware OWIN pro použití ověřovacího protokolu OpenID Connect. OWIN slouží k vydávání požadavků na přihlášení a odhlášení, správě uživatelských relací, získání informací o uživateli a tak dále.
+## <a name="step-2-set-up-hello-app-toouse-hello-owin-authentication-pipeline"></a>Krok 2: Nastavení hello aplikace toouse hello OWIN ověřovacího kanálu
+V tomto kroku nakonfigurujete hello OWIN middleware toouse hello ověřovacího protokolu OpenID Connect. Použití požadavků na přihlášení a odhlášení tooissue OWIN, správě uživatelských relací, získání informací o uživateli a tak dále.
 
-1. Pokud chcete začít, přidejte do projektu pomocí konzoly Správce balíčků balíčky NuGet middlewaru OWIN.
+1. toobegin, přidejte hello OWIN middleware NuGet balíčky toohello projekt pomocí hello Konzola správce balíčků.
 
      ```
      PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -60,8 +60,8 @@ V tomto kroku nakonfigurujete middleware OWIN pro použití ověřovacího proto
      PM> Install-Package Microsoft.Owin.Host.SystemWeb
      ```
 
-2. Přidat třídu OWIN při spuštění projektu názvem `Startup.cs`, klikněte pravým tlačítkem na projekt, vyberte **přidat**, vyberte **nová položka**a poté vyhledejte **OWIN**. Vyvolá middlewaru OWIN, který **Configuration(...)**  metoda při spuštění aplikace.
-3. Změňte deklaraci třídy k `public partial class Startup`. Již implementovali jsme součástí této třídy pro vás v jiném souboru. V **Configuration(...)**  metoda, zkontrolujte zavolá **ConfgureAuth(...)**  nastavení ověřování pro aplikaci.  
+2. tooadd projekt toohello – třída aplikace OWIN při spuštění nazývá `Startup.cs`, klikněte pravým tlačítkem na projekt hello, vyberte **přidat**, vyberte **nová položka**a poté vyhledejte **OWIN**. Hello OWIN middleware vyvolá hello **Configuration(...)**  metoda při spuštění aplikace hello.
+3. Změňte deklaraci třídy hello příliš`public partial class Startup`. Již implementovali jsme součástí této třídy pro vás v jiném souboru. V hello **Configuration(...)**  metody se volat příliš**ConfgureAuth(...)**  tooset až ověřování pro aplikaci hello.  
 
      ```C#
      public partial class Startup
@@ -73,7 +73,7 @@ V tomto kroku nakonfigurujete middleware OWIN pro použití ověřovacího proto
      }
      ```
 
-4. Otevřete soubor App_Start\Startup.Auth.cs a potom implementovat **ConfigureAuth(...)**  metoda. Parametry, zadejte v *OpenIDConnectAuthenticationOptions* sloužit jako souřadnice aplikace komunikovat s Azure AD. Musíte taky nastavit ověřování souborů cookie, protože middleware OpenID Connect používá soubory cookie na pozadí.
+4. Otevřete soubor App_Start\Startup.Auth.cs hello a potom implementovat hello **ConfigureAuth(...)**  metoda. Hello parametry, které zadáte v *OpenIDConnectAuthenticationOptions* sloužit jako souřadnice toocommunicate aplikace hello s Azure AD. Musíte taky tooset až ověřování souborů cookie, protože middleware OpenID Connect hello používá soubory cookie v pozadí hello.
 
      ```C#
      public void ConfigureAuth(IAppBuilder app)
@@ -101,15 +101,15 @@ V tomto kroku nakonfigurujete middleware OWIN pro použití ověřovacího proto
      }
      ```
 
-5. Otevřete soubor web.config v kořenovém adresáři projektu a potom zadejte hodnoty konfigurace v `<appSettings>` oddílu.
-  * `ida:ClientId`: Identifikátor GUID, které jste zkopírovali z portálu Azure v "krok 1: Zaregistrujte novou aplikaci s Azure AD."
-  * `ida:Tenant`: Název klienta služby Azure AD (například contoso.onmicrosoft.com).
-  * `ida:PostLogoutRedirectUri`: Indikátoru, která říká službě Azure AD, kde by měl být uživatel přesměrován po úspěšném dokončení žádost o odhlášení.
+5. Otevřete soubor web.config hello v kořenovém hello hello projektu a potom zadejte hodnoty konfigurace hello v hello `<appSettings>` části.
+  * `ida:ClientId`: hello GUID, které jste zkopírovali ze hello portál Azure "krok 1: registrace hello novou aplikaci s Azure AD."
+  * `ida:Tenant`: hello název klienta služby Azure AD (například contoso.onmicrosoft.com).
+  * `ida:PostLogoutRedirectUri`: hello indikátoru, která říká službě Azure AD, kde by měl být uživatel přesměrován po úspěšném dokončení žádost o odhlášení.
 
-## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Krok 3: Použití OWIN pro zasílání požadavků na přihlášení a odhlášení do Azure AD
-Aplikace je nyní správně nakonfigurován pro komunikaci se službou Azure AD pomocí ověřovacího protokolu OpenID Connect. OWIN má zpracovává všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací. Už jen zbývá umožnit uživatelům způsob, jak přihlášení a odhlášení.
+## <a name="step-3-use-owin-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>Krok 3: Použití tooAzure AD požadavky OWIN tooissue přihlášení a odhlášení
+Hello aplikace je nyní správně nakonfigurované toocommunicate s Azure AD pomocí ověřovacího protokolu OpenID Connect hello. OWIN má zpracovává všechny podrobnosti hello věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací. Všechno, co zůstane je toogive vaši uživatelé odhlaste se a způsob toosign v.
 
-1. Můžete použít autorizovat značky v řadičích budou muset uživatelé přihlásit před přístupem k určité stránky. Uděláte to tak, otevřete Controllers\HomeController.cs a pak přidejte `[Authorize]` značky o řadiče.
+1. Můžete použít autorizovat značky v vaše řadiče toorequire uživatelé toosign v před přístupem k určité stránky. toodo Ano, otevřete Controllers\HomeController.cs a pak přidejte hello `[Authorize]` značky toohello o řadiče.
 
      ```C#
      [Authorize]
@@ -118,7 +118,7 @@ Aplikace je nyní správně nakonfigurován pro komunikaci se službou Azure AD 
        ...
      ```
 
-2. Můžete taky OWIN přímo vydání žádosti o ověření z vašeho kódu. Chcete-li to provést, otevřete Controllers\AccountController.cs. Potom v SignIn() a SignOut() akce, vydávat OpenID Connect výzvy a odhlášení požadavky.
+2. Můžete taky OWIN toodirectly problém žádosti o ověření z vašeho kódu. toodo tak, že otevřete Controllers\AccountController.cs. Potom v hello SignIn() a SignOut() akce vydávat OpenID Connect výzvy a odhlášení požadavky.
 
      ```C#
      public void SignIn()
@@ -137,7 +137,7 @@ Aplikace je nyní správně nakonfigurován pro komunikaci se službou Azure AD 
      }
      ```
 
-3. Otevřete Views\Shared\_LoginPartial.cshtml se uživateli zobrazí aplikace přihlášení a odhlášení odkazy a vytiskněte uživatelské jméno v zobrazení.
+3. Otevřete Views\Shared\_LoginPartial.cshtml tooshow hello uživatele hello aplikace přihlášení a odhlášení odkazy a tooprint out hello uživatelské jméno v zobrazení.
 
     ```HTML
     @if (Request.IsAuthenticated)
@@ -162,9 +162,9 @@ Aplikace je nyní správně nakonfigurován pro komunikaci se službou Azure AD 
     ```
 
 ## <a name="step-4-display-user-information"></a>Krok 4: Zobrazit informace o uživateli
-Během ověřování uživatelů s OpenID Connect, Azure AD vrátí požadavku id_token na aplikaci, která obsahuje "deklarace identity" a tvrzením o uživateli. Tyto deklarace můžete použít k přizpůsobení funkcí aplikace následujícím způsobem:
+Během ověřování uživatelů s OpenID Connect, Azure AD vrátí požadavku id_token toohello aplikaci, která obsahuje "deklarace identity" nebo tvrzení o hello uživatele. Můžete tyto deklarace identity toopersonalize hello aplikaci pomocí tohoto postupu hello následující:
 
-1. Otevřete soubor Controllers\HomeController.cs. Dostanete deklaracích identity uživatele v řadičích prostřednictvím `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
+1. Otevřete soubor Controllers\HomeController.cs hello. Deklarace identity uživatelů hello dostanete v řadičích prostřednictvím hello `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
 
  ```C#
  public ActionResult About()
@@ -179,17 +179,17 @@ Během ověřování uživatelů s OpenID Connect, Azure AD vrátí požadavku i
  }
  ```
 
-2. Sestavte a spusťte aplikaci. Pokud již jste dosud nevytvořili nového uživatele ve vašem klientovi s doméně onmicrosoft.com, nyní je čas Uděláte to tak. Zde je uveden postup:
+2. Sestavení a spuštění aplikace hello. Pokud již jste dosud nevytvořili nového uživatele ve vašem klientovi s doméně onmicrosoft.com, teď proto je toodo čas hello. Zde je uveden postup:
 
-  a. Přihlaste se pomocí tohoto uživatele a Všimněte si, jak identitu uživatele se projeví na horním panelu.
+  a. Přihlaste se pomocí tohoto uživatele a Všimněte si, jak se identita uživatele hello projeví na horním panelu hello.
 
   b. Odhlásit se a přihlaste se zpět jako jiný uživatel ve vašem klientovi.
 
   c. Pokud se cítíte zvlášť ambiciózní, zaregistrujte a spustit jiná instance této aplikace (pomocí vlastní clientId) a podívejte se na jednom přihlášení v akci.
 
 ## <a name="next-steps"></a>Další kroky
-Odkaz, najdete v části [je hotová ukázka](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip) (bez vašich hodnot nastavení).
+Odkaz, najdete v části [hello dokončit ukázka](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip) (bez vašich hodnot nastavení).
 
-Nyní se můžete přesunout k pokročilejším tématům. Zkuste například [zabezpečení webového rozhraní API s Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Nyní se můžete přesunout na toomore advanced témata. Zkuste například [zabezpečení webového rozhraní API s Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

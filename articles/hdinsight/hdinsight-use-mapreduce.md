@@ -1,6 +1,6 @@
 ---
-title: MapReduce s Hadoop v HDInsight | Microsoft Docs
-description: "Informace o spouštění úloh MapReduce systému Hadoop v clusterech HDInsight."
+title: aaaMapReduce s Hadoop v HDInsight | Microsoft Docs
+description: "Zjistěte, jak toorun MapReduce úlohy systému Hadoop v clusterech HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,56 +16,56 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: df8ac578a56de72df667b1fa7f90f981c79d9999
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0cf7ad0e6769e678be64f9e4ec8ed7a214ab7af2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>Používání nástroje MapReduce v Hadoop v HDInsight
 
-Informace o spouštění úloh MapReduce clustery prostředí HDInsight. Následující tabulku použijte ke zjištění různých způsobů, jak lze MapReduce s HDInsight:
+Zjistěte, jak toorun MapReduce úlohy v clusterech prostředí HDInsight. Použijte následující tabulku toodiscover hello různé způsoby, že lze použít MapReduce s HDInsight hello:
 
-| **Použít**... | **.. .a tomu** | .. při to **clusteru operačního systému** | .. .from to **klientský operační systém** |
+| **Použít**... | **.. .toodo to** | .. při to **clusteru operačního systému** | .. .from to **klientský operační systém** |
 |:--- |:--- |:--- |:--- |
-| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |Použijte příkaz Hadoop prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [REST](hdinsight-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** (příklady použití cURL) |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
-| [Prostředí Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
-| [Vzdálená plocha](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 a 3.3) |Použijte příkaz Hadoop prostřednictvím **vzdálené plochy** |Windows |Windows |
+| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |Použijte příkaz Hadoop hello prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X nebo systému Windows |
+| [REST](hdinsight-hadoop-use-mapreduce-curl.md) |Odeslat úlohu hello vzdáleně pomocí **REST** (příklady použití cURL) |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
+| [Prostředí Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |Odeslat úlohu hello vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
+| [Vzdálená plocha](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 a 3.3) |Použijte příkaz Hadoop hello prostřednictvím **vzdálené plochy** |Windows |Windows |
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="whatis"></a>Co je MapReduce
 
-Hadoop MapReduce je framework software pro zápis úlohy, které zpracovávají velké množství dat. Vstupní data je rozdělená do nezávislé bloků, které se pak zpracovávají paralelně mezi uzly v clusteru. Úloha MapReduce se skládá z dvě funkce:
+Hadoop MapReduce je framework software pro zápis úlohy, které zpracovávají velké množství dat. Vstupní data je rozdělená do nezávislé bloků, které se pak zpracovávají paralelně mezi hello uzly v clusteru. Úloha MapReduce se skládá z dvě funkce:
 
 * **Mapovač**: spotřebovává vstupních dat, analyzuje (obvykle s filtrování a řazení operations) a vysílá řazených kolekcí členů (páry klíč hodnota)
 
-* **Reduktorem**: využívá řazených kolekcí členů vygenerované mapovačem a provádí operaci souhrn, která vytvoří výsledek menší, kombinované z Mapovač dat
+* **Reduktorem**: využívá řazených kolekcí členů vysílaných hello Mapper a provádí operaci souhrn, která vytvoří výsledek menší, kombinované z hello Mapovač dat
 
-V příkladu úlohy MapReduce počet základní word je znázorněno v následujícím diagramu:
+V příkladu úlohy MapReduce počet základní word je znázorněno v následujícím diagramu hello:
 
 ![HDI. WordCountDiagram][image-hdi-wordcountdiagram]
 
-Výstup této úlohy je počet kolikrát jednotlivých slov došlo k chybě v textu, který byl analyzován.
+výstup Hello této úlohy je počet kolikrát jednotlivých slov došlo k chybě v textu hello, který byl analyzován.
 
-* Mapper trvá každý řádek ze vstupního textu jako vstup a dělí na slova. Ho vysílá klíč/hodnota pár pokaždé, když dojde k slovo aplikace word následuje 1. Výstup je řazen před odesláním reduktorem.
-* Reduktorem sčítá tyto počty jednotlivých pro každou aplikaci word a vysílá pár jeden klíč/hodnota obsahující slovo a součet jeho výskytů.
+* Mapovač Hello používá každý řádek ze vstupního textu hello jako vstup a dělí na slova. Ho vysílá klíč/hodnota pár pokaždé, když slovo dojde v aplikaci hello word následuje 1. výstup Hello je řazen před odesláním tooreducer.
+* Hello reduktorem sčítá tyto počty jednotlivých pro každou aplikaci word a vysílá pár jeden klíč/hodnota obsahující slovo hello a hello součet jeho výskytů.
 
-MapReduce můžou se implementovat v různých jazycích. Java nejběžnější implementace a slouží pro účely ukázky v tomto dokumentu.
+MapReduce můžou se implementovat v různých jazycích. Java hello nejběžnější implementace a slouží pro účely ukázky v tomto dokumentu.
 
 ## <a name="development-languages"></a>Programovacích jazyků
 
-Jazyky nebo rozhraní, které jsou založeny na jazyce Java a virtuální počítač Java můžete spustili přímo jako úlohu MapReduce. V příkladu v tomto dokumentu je aplikace Java MapReduce. Jazyky Java jiného typu, jako je C#, Python nebo samostatné spustitelné soubory, musíte použít, streamování Hadoop.
+Jazyky nebo rozhraní, které jsou založené na jazyce Java a hello virtuální počítač Java můžete spustili přímo jako úlohu MapReduce. Hello příkladu v tomto dokumentu je aplikace Java MapReduce. Jazyky Java jiného typu, jako je C#, Python nebo samostatné spustitelné soubory, musíte použít, streamování Hadoop.
 
-Streamování Hadoop komunikuje s mapper a reduktorem pomocí standardního vstupu a výstupu STDOUT. Mapovač a reduktorem číst data řádku současně z stdin – a zapisovat výstup STDOUT. Každý řádek čtení nebo vysílaných mapper a reduktorem musí být ve formátu pár klíč hodnota oddělená tabulátorem:
+Streamování Hadoop komunikuje s hello mapper a reduktorem pomocí standardního vstupu a výstupu STDOUT. Mapovač Hello reduktorem číst data řádku současně z stdin – a zápisu tooSTDOUT výstup hello. Každý řádek čtení nebo vysílaných hello mapper a reduktorem musí být ve formátu hello dvojic klíč hodnota oddělená tabulátorem:
 
     [key]/t[value]
 
 Další informace najdete v tématu [streamování Hadoop](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
-Příklady použití streamování s HDInsight Hadoop najdete v následujících dokumentech:
+Příklady použití streamování s HDInsight Hadoop najdete v části hello následující dokumenty:
 
 * [Vývoj úloh MapReduce C#](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
@@ -73,13 +73,13 @@ Příklady použití streamování s HDInsight Hadoop najdete v následujících
 
 ## <a id="data"></a>Příklad dat
 
-HDInsight poskytuje různé příklad datových sad, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro cluster. V tomto dokumentu budeme používat `/example/data/gutenberg/davinci.txt` souboru. Tento soubor obsahuje poznámkových bloků Leonardo Da Vinci.
+HDInsight poskytuje různé příklad datových sad, které jsou uloženy v hello `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou hello výchozí úložiště pro cluster. V tomto dokumentu používáme hello `/example/data/gutenberg/davinci.txt` souboru. Tento soubor obsahuje poznámkových bloků hello z Leonardo Da Vinci.
 
 ## <a id="job"></a>Příklad MapReduce
 
-Příklad počet dokumentů aplikace word MapReduce je součástí clusteru HDInsight. V tomto příkladu je umístěn v `/example/jars/hadoop-mapreduce-examples.jar` na výchozí úložiště pro cluster.
+Příklad počet dokumentů aplikace word MapReduce je součástí clusteru HDInsight. V tomto příkladu je umístěn v `/example/jars/hadoop-mapreduce-examples.jar` na hello výchozí úložiště pro cluster.
 
-Následující kód Java je zdrojem MapReduce aplikace součástí `hadoop-mapreduce-examples.jar` souboru:
+Následující kód v jazyce Java Hello je hello zdroj hello MapReduce aplikace obsažené v hello `hadoop-mapreduce-examples.jar` souboru:
 
 ```java
 package org.apache.hadoop.examples;
@@ -153,29 +153,29 @@ public class WordCount {
 }
 ```
 
-Pokyny pro zápis aplikace MapReduce najdete v následujících dokumentech:
+Vaše vlastní aplikace MapReduce, najdete pokyny toowrite hello následující dokumenty:
 
 * [Vývoj aplikací Java MapReduce pro HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)
 
 * [Vývoj aplikací Python MapReduce pro HDInsight](hdinsight-hadoop-streaming-python.md)
 
-## <a id="run"></a>Spuštění MapReduce
+## <a id="run"></a>Spustit hello MapReduce
 
-HDInsight HiveQL úlohy můžete spustit pomocí různých metod. Následující tabulku použijte k rozhodování, jakou metodu je pro vás nejvhodnější a potom klepněte na odkaz návod.
+HDInsight HiveQL úlohy můžete spustit pomocí různých metod. Pomocí hello následující toodecide tabulku, která metoda je pro vás nejvhodnější a potom postupujte podle hello odkaz návod.
 
-| **Použít**... | **.. .a tomu** | .. při to **clusteru operačního systému** | .. .from to **klientský operační systém** |
+| **Použít**... | **.. .toodo to** | .. při to **clusteru operačního systému** | .. .from to **klientský operační systém** |
 |:--- |:--- |:--- |:--- |
-| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |Použijte příkaz Hadoop prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [Curl](hdinsight-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
-| [Prostředí Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
-| [Vzdálená plocha](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 a 3.3) |Použijte příkaz Hadoop prostřednictvím **vzdálené plochy** |Windows |Windows |
+| [SSH](hdinsight-hadoop-use-mapreduce-ssh.md) |Použijte příkaz Hadoop hello prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X nebo systému Windows |
+| [Curl](hdinsight-hadoop-use-mapreduce-curl.md) |Odeslat úlohu hello vzdáleně pomocí **REST** |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
+| [Prostředí Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |Odeslat úlohu hello vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
+| [Vzdálená plocha](hdinsight-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 a 3.3) |Použijte příkaz Hadoop hello prostřednictvím **vzdálené plochy** |Windows |Windows |
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="nextsteps"></a>Další kroky
 
-Další informace o práci s daty v HDInsight, najdete v následujících dokumentech:
+toolearn Další informace o práci s daty v HDInsight, najdete v části hello následující dokumenty:
 
 * [Vývoj aplikací Java MapReduce pro HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)
 

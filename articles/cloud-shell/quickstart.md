@@ -1,6 +1,6 @@
 ---
-title: "Azure rychlý start prostředí cloudu (Preview) | Microsoft Docs"
-description: "Rychlý úvodní kurz pro Azure cloudové prostředí"
+title: "Rychlý start aaaAzure prostředí cloudu (Preview) | Microsoft Docs"
+description: "Rychlý start pro hello prostředí cloudu Azure"
 services: 
 documentationcenter: 
 author: jluk
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
-ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e60700b92c10c331910dd8bb3c627fe1a024091c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quickstart-for-using-the-azure-cloud-shell"></a>Rychlý úvodní kurz pro používání prostředí cloudové služby Azure
+# <a name="quickstart-for-using-hello-azure-cloud-shell"></a>Rychlý úvodní kurz pro používání hello prostředí cloudu Azure
 
-Tento dokument podrobně popisuje postup používání prostředí cloudové služby Azure v [portál Azure](https://ms.portal.azure.com/).
+Tento dokument podrobně popisuje, jak toouse hello prostředí cloudu Azure v hello [portál Azure](https://ms.portal.azure.com/).
 
 ## <a name="start-cloud-shell"></a>Spusťte prostředí cloudu
-1. Spusťte **cloudové prostředí** z horním navigačním panelu portálu Azure <br>
+1. Spusťte **cloudové prostředí** z hello horním navigačním panelu hello portálu Azure <br>
 ![](media/shell-icon.png)
-2. Vyberte předplatné, chcete-li vytvořit účet úložiště a sdílenou složku Azure
+2. Vyberte předplatné toocreate účet úložiště a sdílenou složku Azure
 3. Vyberte "Vytvoření úložiště"
 
 > [!TIP]
@@ -47,21 +47,21 @@ Vytvořte novou skupinu prostředků v WestUS s názvem "MyRG": <br>
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
-Vytvoření virtuálního počítače s Ubuntu v nové skupiny prostředků. Azure CLI 2.0 bude vytvoření klíčů SSH a instalace virtuálních počítačů s nimi. <br>
+Vytvoření virtuálního počítače s Ubuntu v nové skupiny prostředků. Hello 2.0 rozhraní příkazového řádku Azure vytvoří klíčů SSH a instalační program hello virtuálních počítačů s nimi. <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> Veřejné a soukromé klíče používá k ověření svého virtuálního počítače jsou umístěny v `/User/.ssh/id_rsa` a `/User/.ssh/id_rsa.pub` pomocí Azure CLI 2.0 ve výchozím nastavení. Vaše složky .ssh je trvalé připojené Azure sdílené složky na obrázku 5 GB.
+> Hello veřejné a soukromé klíče používá tooauthenticate virtuálního počítače jsou umístěny v `/User/.ssh/id_rsa` a `/User/.ssh/id_rsa.pub` pomocí Azure CLI 2.0 ve výchozím nastavení. Vaše složky .ssh je trvalé připojené Azure sdílené složky na obrázku 5 GB.
 
 Vaše uživatelské jméno pro tento virtuální počítač bude vaše uživatelské jméno použité v prostředí cloudu ($User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálním počítačům s Linuxem
-1. Vyhledejte název virtuálního počítače v panelu vyhledávání v portálu Azure
+1. Vyhledejte název virtuálního počítače v panelu vyhledávání v portálu Azure hello
 2. Klikněte na tlačítko "Připojit" a spusťte:`ssh username@ipaddress`
 
 ![](media/sshcmd-copy.png)
 
-Při navazování připojení SSH, měli byste vidět úvodní řádku Ubuntu.
+Při navazování připojení SSH hello, měli byste vidět hello Ubuntu úvodní řádku.
 ![](media/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Čištění 

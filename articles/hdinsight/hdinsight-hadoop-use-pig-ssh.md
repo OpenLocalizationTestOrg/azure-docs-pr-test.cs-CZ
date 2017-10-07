@@ -1,6 +1,6 @@
 ---
-title: "Použijte Hadoop Pig pomocí protokolu SSH v clusteru HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak připojit do clusteru se systémem Linux Hadoop s SSH a pak použijte příkaz Pig ke spuštění příkazů Pig Latin interaktivně, nebo jako dávkovou úlohu."
+title: "aaaUse Hadoop Pig pomocí protokolu SSH v clusteru HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak připojit tooa systémem Linux Hadoop clusteru pomocí protokolu SSH a pak použijte hello Pig příkaz toorun Pig Latin příkazy interaktivně, nebo prostřednictvím dávky úlohy."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,89 +16,89 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: e4c893ef4bfa573dd9fbc9c9b0ae296720769842
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1da303e239b537e6b331b1d33010058582718c90
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Spuštění úlohy Pig na cluster se systémem Linux pomocí příkazu Pig (SSH)
+# <a name="run-pig-jobs-on-a-linux-based-cluster-with-hello-pig-command-ssh"></a>Spuštění úlohy Pig na cluster se systémem Linux s hello příkaz Pig (SSH)
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Zjistěte, jak interaktivně spouštět úlohy Pig ze připojení SSH ke svému clusteru HDInsight. Programovací jazyk Pig Latin můžete k popisu transformace, které se použijí u vstupních dat k vytvoření požadované výstup.
+Zjistěte, jak toointeractively spouštět úlohy Pig z clusteru služby HDInsight tooyour připojení SSH. Hello programovacího jazyka Pig Latin můžete toodescribe transformace, které jsou použité toohello vstupní data tooproduce hello potřeby výstup.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Linux. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="ssh"></a>Připojení pomocí protokolu SSH
 
-Použití SSH se připojit ke svému clusteru HDInsight. Následující příklad se připojí ke clusteru s názvem **myhdinsight** jako účet s názvem **sshuser**:
+Použití clusteru HDInsight tooyour tooconnect SSH. Hello následující příklad se připojí tooa clusteru s názvem **myhdinsight** jako hello účet s názvem **sshuser**:
 
     ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
-**Pokud jste zadali klíč certifikátu pro ověřování SSH** při vytváření clusteru HDInsight, možná muset zadat umístění privátní klíč klientského systému.
+**Pokud jste zadali klíč certifikátu pro ověřování SSH** při vytvoření clusteru HDInsight hello budete potřebovat toospecify hello umístění hello privátní klíč klientského systému.
 
     ssh sshuser@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-**Pokud jste zadali heslo pro ověřování SSH** při vytváření clusteru HDInsight, zadejte po zobrazení výzvy.
+**Pokud jste zadali heslo pro ověřování SSH** při vytváření clusteru HDInsight hello, zadejte heslo hello po zobrazení výzvy.
 
 Další informace o používání SSH s HDInsight, naleznete v části [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="pig"></a>Použijte příkaz Pig
+## <a id="pig"></a>Použijte příkaz Pig hello
 
-1. Po připojení pomocí následujícího příkazu spusťte Pig rozhraní příkazového řádku (CLI):
+1. Po připojení, spusťte hello Pig rozhraní příkazového řádku (CLI) pomocí hello následující příkaz:
 
         pig
 
     Po chvíli, měli byste vidět `grunt>` řádku.
 
-2. Zadejte následující příkaz:
+2. Zadejte hello následující příkaz:
 
         LOGS = LOAD '/example/data/sample.log';
 
-    Tento příkaz načte obsah souboru sample.log do PROTOKOLŮ. Pomocí následujícího příkazu můžete zobrazit obsah souboru:
+    Tento příkaz načte hello obsah souboru sample.log hello do PROTOKOLŮ. Hello obsah souboru hello můžete zobrazit pomocí hello následující příkaz:
 
         DUMP LOGS;
 
-3. V dalším kroku transformaci dat s použitím regulárních výrazů k extrakci pouze úroveň protokolování z každý záznam pomocí následujícího příkazu:
+3. V dalším kroku transformovat hello data použitím úroveň protokolování hello pouze tooextract regulární výraz z jednotlivých záznamů pomocí hello následující příkaz:
 
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
-    Můžete použít **DUMP** chcete zobrazit data po transformaci. V takovém případě použijte `DUMP LEVELS;`.
+    Můžete použít **DUMP** tooview hello dat po transformaci hello. V takovém případě použijte `DUMP LEVELS;`.
 
-4. Pokračujte v použití transformací pomocí příkazy v následující tabulce:
+4. Pokračujte v použití transformací pomocí hello příkazy v hello následující tabulka:
 
-    | Pig Latin – příkaz | Jaké jsou příkaz |
+    | Pig Latin – příkaz | Jaké příkaz hello nemá |
     | ---- | ---- |
-    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | Odebere řádky, které obsahují hodnotu null pro úroveň protokolu a ukládá výsledky do `FILTEREDLEVELS`. |
-    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | Skupiny řádků a úroveň protokolu a ukládá výsledky do `GROUPEDLEVELS`. |
-    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Vytvoří sadu dat, která obsahuje každý jedinečný protokolu dojde k hodnota úrovně a jak často se. Datová sada ukládána do `FREQUENCIES`. |
-    | `RESULT = order FREQUENCIES by COUNT desc;` | Řadí úrovní záznamu do protokolu podle počtu (sestupně) a ukládá do `RESULT`. |
+    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | Odebere řádky, které obsahují hodnotu null pro úroveň protokolu hello a ukládá výsledky hello do `FILTEREDLEVELS`. |
+    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | Hello skupiny řádků podle úrovně protokolu a ukládá výsledky hello do `GROUPEDLEVELS`. |
+    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Vytvoří sadu dat, která obsahuje každý jedinečný protokolu dojde k hodnota úrovně a jak často se. Hello datové sady je uložena do `FREQUENCIES`. |
+    | `RESULT = order FREQUENCIES by COUNT desc;` | Řadí hello protokolu úrovně podle počtu (sestupně) a ukládá do `RESULT`. |
 
     > [!TIP]
-    > Použití `DUMP` zobrazíte výsledek transformace po dokončení každého kroku.
+    > Použití `DUMP` tooview hello výsledek hello transformace po dokončení každého kroku.
 
-5. Můžete také uložit výsledky transformace pomocí `STORE` příkaz. Například následující příkaz uloží `RESULT` k `/example/data/pigout` adresář na výchozí úložiště pro cluster:
+5. Můžete také uložit hello výsledky transformace pomocí hello `STORE` příkaz. Například následující příkaz hello uloží hello `RESULT` toohello `/example/data/pigout` v hello výchozí úložiště pro cluster:
 
         STORE RESULT into '/example/data/pigout';
 
    > [!NOTE]
-   > Jsou data uložena v adresáři zadané v souborech s názvem `part-nnnnn`. Pokud adresář již existuje, obdržíte chybu.
+   > Hello data jsou uložena v hello zadaný adresář v souborech s názvem `part-nnnnn`. Pokud hello adresář již existuje, obdržíte chybu.
 
-6. Chcete-li ukončit řádku grunt, zadejte následující příkaz:
+6. tooexit hello grunt řádku, zadejte následující příkaz hello:
 
         QUIT;
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin dávkové soubory
 
-Můžete také použít příkaz Pig ke spuštění Pig Latin obsaženého v načítaném souboru.
+Můžete také použít hello Pig příkaz toorun Pig Latin obsaženého v načítaném souboru.
 
-1. Po ukončení řádku grunt, použijte následující příkaz k kanálu STDIN do souboru s názvem `pigbatch.pig`. Tento soubor je vytvořen v domovském adresáři pro uživatelský účet SSH.
+1. Po ukončení řádku hello grunt, použijte následující hello příkaz toopipe STDIN do souboru s názvem `pigbatch.pig`. Tento soubor je vytvořen v hello domovský adresář pro hello SSH uživatelský účet.
 
         cat > ~/pigbatch.pig
 
-2. Zadejte nebo vložte následující řádky a potom pomocí kombinace kláves Ctrl + D po dokončení.
+2. Zadejte nebo vložte hello následující řádky a potom pomocí kombinace kláves Ctrl + D po dokončení.
 
         LOGS = LOAD '/example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -108,11 +108,11 @@ Můžete také použít příkaz Pig ke spuštění Pig Latin obsaženého v na�
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
 
-3. Použijte následující příkaz ke spuštění `pigbatch.pig` souboru pomocí příkazu Pig.
+3. Použití hello následující příkaz toorun hello `pigbatch.pig` souboru pomocí příkazu Pig hello.
 
         pig ~/pigbatch.pig
 
-    Po dokončení úlohy batch, zobrazí se následující výstup:
+    Po dokončení úlohy batch hello zobrazí hello následující výstup:
 
         (TRACE,816)
         (DEBUG,434)
@@ -124,11 +124,11 @@ Můžete také použít příkaz Pig ke spuštění Pig Latin obsaženého v na�
 
 ## <a id="nextsteps"></a>Další kroky
 
-Obecné informace o Pig v HDInsight najdete v následujícím dokumentu:
+Obecné informace o Pig v HDInsight najdete v části hello následujícím dokumentu:
 
 * [Použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md)
 
-Další informace o další způsoby, jak pracovat s Hadoop v HDInsight najdete v následujících dokumentech:
+Další informace o dalších způsobů toowork s Hadoop v HDInsight naleznete v tématu hello následující dokumenty:
 
 * [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
 * [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)

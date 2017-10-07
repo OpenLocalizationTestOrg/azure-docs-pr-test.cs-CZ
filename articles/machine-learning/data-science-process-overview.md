@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure proces vědecké účely dat Team | Microsoft Docs"
-description: "Poskytuje data metodika vědecké účely k poskytování řešení prediktivní analýzy a inteligentní aplikací."
+title: "Přehled procesu vědecké účely Data Team aaaAzure | Microsoft Docs"
+description: "Poskytuje data vědecké účely metodika toodeliver prediktivní analýzy řešení a inteligentní aplikace."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev;
-ms.openlocfilehash: 006a1465a7cdced1878111beee709c8da4bc310f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2ba03585a6f6f855faaa3b5c0c75149cad0a88bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="team-data-science-process-overview"></a>Přehled procesu vědecké účely Data Team
 
-Proces pro vědecké účely Data Team (TDSP) je metodika vědecké účely agilní, iterativní data k poskytování efektivní řešení prediktivní analýzy a inteligentní aplikací. TDSP pomáhá zlepšit týmovou spolupráci a získávání informací. Obsahuje destilace osvědčené postupy a struktury od společnosti Microsoft a ostatní v odvětví které usnadňují úspěšné dokončení implementace iniciativy vědecké účely data. Cílem je pomoct společnosti plně pochopit výhody jejich analýzy programu.
+Hello tým datové vědy procesu (TDSP) je agilní, řešení prediktivní analýzy toodeliver metodika vědecké účely iterativní dat a inteligentní aplikace efektivně. TDSP pomáhá zlepšit týmovou spolupráci a získávání informací. Obsahuje destilace hello osvědčené postupy a struktury od společnosti Microsoft a ostatní v odvětví hello které usnadňují hello úspěšné dokončení implementace iniciativy vědecké účely data. Hello cílem je, že toohelp společnosti plně mějte na paměti hello výhod programu jejich analýzy.
 
-Tento článek obsahuje přehled TDSP a jeho hlavní součásti. Poskytujeme obecný popis zde procesu, který může být implementováno s celou řadu nástrojů. Podrobnější popis projektu úlohy a role zahrnutých v životním cyklu procesu najdete v další související témata. K dispozici jsou také pokyny o tom, jak implementovat TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastrukturu, která jsme použít k implementaci TDSP v našimi týmy.
+Tento článek obsahuje přehled TDSP a jeho hlavní součásti. Poskytujeme obecný popis zde hello procesu, který může být implementováno s celou řadu nástrojů. Podrobnější popis hello projektu úlohy a role zahrnutých v průběhu životního cyklu hello hello procesu najdete v další související témata. Pokyny jak také zajišťuje tooimplement hello TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastruktury, že používáme tooimplement hello TDSP našimi týmy.
 
-## <a name="key-components-of-the-tdsp"></a>Klíčové komponenty TDSP
+## <a name="key-components-of-hello-tdsp"></a>Klíčové komponenty hello TDSP
 
-TDSP se skládá z následujících součástí klíče:
+TDSP se skládá ze hello následující klíčové komponenty:
 
 - A **datové vědy cyklu** definice
 - A **standardizované struktura projektu**
@@ -38,13 +38,13 @@ TDSP se skládá z následujících součástí klíče:
 
 ## <a name="data-science-lifecycle"></a>Životní cyklus dat vědecké účely
 
-Proces pro vědecké účely Data Team (TDSP) poskytuje životního cyklu do struktury vývoj projekty vědecké účely data. Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění.
+Hello tým datové vědy procesu (TDSP) poskytuje hello vývoji toostructure životního cyklu vědecké účely projektů data. životní cyklus Hello popisuje hello kroky, z toofinish spuštění, který projekty obvykle postupujte při jejich spuštění.
 
-Pokud použijete jiný vědecké účely životního cyklu data, jako [OSTRÉ DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vaše organizace vlastní proces založený na úlohách TDSP můžete dál používat v rámci těchto vývojové životní cykly. Na vysoké úrovni tyto různé metody mají hodně společné. 
+Pokud použijete jiný vědecké účely životního cyklu data, jako [OSTRÉ DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vaše organizace vlastní proces, můžete dál používat hello založený na úlohách TDSP v kontextu hello těchto vývoje životní cykly. Na vysoké úrovni tyto různé metody mají hodně společné. 
 
-Pro projekty vědecké účely dat, které se dodávají jako součást inteligentní aplikace byl navržen tak tohoto životního cyklu. Tyto aplikace nasadit machine learning nebo umělé intelligence modely pro prediktivní analýzy. Projekty vědecké účely nahodilého dat nebo ad hoc analytics projekty mohou také těžit z pomocí tohoto procesu. Ale v takovém případě některé z kroků popsaných nemusí být potřeba.    
+Pro projekty vědecké účely dat, které se dodávají jako součást inteligentní aplikace byl navržen tak tohoto životního cyklu. Tyto aplikace nasadit machine learning nebo umělé intelligence modely pro prediktivní analýzy. Projekty vědecké účely nahodilého dat nebo ad hoc analytics projekty mohou také těžit z pomocí tohoto procesu. Ale v takových případech některé hello postupu nemusí být potřeba.    
 
-TDSP životní cyklus se skládá z pěti hlavních fází, které jsou spouštěny interaktivně:
+Hello TDSP životní cyklus se skládá z pěti hlavních fází, které jsou spouštěny interaktivně:
 
 * **Pochopení obchodních**
 * **Získávání dat a principy**
@@ -52,36 +52,36 @@ TDSP životní cyklus se skládá z pěti hlavních fází, které jsou spoušt�
 * **Nasazení**
 * **Přijetí zákazníka**
 
-Tady je vizuální reprezentace **procesu vědecké účely Team datového cyklu**. 
+Tady je vizuální reprezentace hello **procesu vědecké účely Team datového cyklu**. 
 
 ![TDSP cyklu](./media/data-science-process-overview/tdsp-lifecycle.png) 
 
-Cíle, úlohy a artefakty dokumentace pro každé fáze životního cyklu v TDSP jsou popsané v [procesu vědecké účely Team datového cyklu](data-science-process-lifecycle.md) tématu. Tyto úlohy a artefaktů jsou přidruženy role projektu:
+Hello cíle, úlohy a artefakty dokumentace pro každé fáze životního cyklu hello v TDSP jsou popsané v hello [procesu vědecké účely Team datového cyklu](data-science-process-lifecycle.md) tématu. Tyto úlohy a artefaktů jsou přidruženy role projektu:
 
 - Architekt řešení
 - Správce projektu
-- Vědecký pracovník dat
+- Odborník přes data
 - Vedoucí projektu 
 
-Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně) přidružené každé fáze životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
+Hello následující diagram představuje zobrazení mřížky hello úloh (modře) a artefakty (zeleně) přidružené každé fáze životního cyklu hello (na vodorovné ose hello) pro tyto role (na svislé ose hello). 
 
 ![TDSP-role a úlohy](./media/data-science-process-overview/tdsp-tasks-by-roles.png)
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
-Všechny projekty sdílet adresářovou strukturu a použití šablon projektu dokumentů s usnadňuje členové týmu najít informace o jejich projektů. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, sady TFS nebo Subversion umožňují týmovou spolupráci. Sledování úloh a funkce v projektu agilní sledování systému jako Jira, technologie Rally, Visual Studio Team Services umožňuje blíže sledování kód pro jednotlivé funkce. Takové sledování taky umožňuje týmy a získat lepší odhadované náklady. TDSP doporučuje vytvoření samostatné úložiště pro každý projekt na VC Správa verzí, informace o zabezpečení a spolupráci. Standardizovaná strukturu pro všechny projekty pomáhá vytvářet institucionální znalost celé organizace.
+Všechny projekty sdílet adresářovou strukturu a použití šablon projektu dokumentů s usnadňuje hello team členy toofind informace o jejich projektů. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, sady TFS nebo Subversion tooenable týmovou spolupráci. Sledování úloh a funkce v projektu agilní sledování systému jako Jira, technologie Rally, Visual Studio Team Services umožňuje blíže sledování hello kódu pro jednotlivé funkce. Takové sledování taky umožňuje lépe náklady odhady tooobtain týmy. TDSP doporučuje vytvoření samostatné úložiště pro každý projekt na hello VC Správa verzí, informace o zabezpečení a spolupráci. Hello standardizované strukturu pro všechny projekty pomáhá sestavení institucionální znalostní báze napříč hello organizace.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty standardní umístění. Tato struktura složek umožňuje uspořádat soubory obsahující kód pro zkoumání dat a funkce extrakce, a který záznam modelu iterací. Tyto šablony usnadňují členové týmu, abyste pochopili práci jinými uživateli a přidat nové členy do týmů. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Použití šablon poskytnout klíčové otázky pro každý projekt zajistit, že problém je dobře definovaný a že výsledek splňují kvality očekávaný kontrolní seznamy. Příklady obsahují:
+Poskytujeme šablony pro strukturu složek hello a požadované dokumenty standardní umístění. Tato struktura složek organizuje hello soubory obsahující kód pro zkoumání dat a funkce extrakce, a který zaznamenejte modelu iterací. Tyto šablony usnadňují team členy toounderstand objem práce jinými uživateli a tooadd nové členy tooteams. Je snadno tooview a aktualizace šablony dokumentů ve formátu markdown. Použijte kontrolní seznamy tooprovide šablony s klíčové otázky pro každý projekt tooinsure, problém hello je dobře definovaný a že výsledek splňovat hello kvality očekává. Příklady obsahují:
 
-- Projekt titulů do dokumentů obchodního problému a rozsah projektu
-- sestavy dat dokumentu strukturu a statistiky nezpracovaná data
-- model sestavy do odvozené funkce dokumentů
+- Projekt titulů toodocument hello obchodního problému a rozsah projektu hello
+- Struktura hello toodocument dat sestavy a statistiky hello nezpracovaná data
+- model sestavy toodocument hello odvozené funkce
 - metriky výkonu modelu například křivek ROC nebo MSE
 
 
 ![TDSP adresáře](./media/data-science-process-overview/tdsp-dir-structure.png)
 
-Strukturu adresáře můžete klonovat z [Githubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+struktura adresářů Hello dají klonovat z [Githubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
 ## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastruktury a prostředky pro projekty data vědecké účely
 
@@ -92,7 +92,7 @@ TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úlo
 - velké objemy dat (Hadoop nebo Spark) clustery 
 - služby Machine learning. 
 
-Infrastruktura analýzy a úložiště může být v cloudu nebo místně. Toto je, kde jsou uložené datové sady nezpracovaná a zpracovány. Tato infrastruktura umožňuje reprodukovatelnou analýzu. Ho také předejdete duplikace, což může vést k nekonzistenci a náklady na infrastrukturu zbytečné. Nástroje jsou k dispozici a zřizovat sdílené prostředky, je sledovat a povolit každý člen týmu pro zabezpečené připojení k prostředkům. Je také vhodné mít členy projektu vytvořit konzistentní výpočetním prostředí. Členové týmu různých můžete replikovat a ověřit experimenty.
+Hello analytics infrastruktury a infrastruktury úložiště může být v hello cloudu nebo místně. Toto je, kde jsou uložené datové sady nezpracovaná a zpracovány. Tato infrastruktura umožňuje reprodukovatelnou analýzu. Ho také předejdete duplikace, což může vést tooinconsistencies a náklady na infrastrukturu zbytečné. Nástroje jsou k dispozici tooprovision hello sdílené prostředky, je sledovat a povolit každé tooconnect člen týmu toothose prostředky bezpečně. Je také vhodné mít členy projektu vytvořit konzistentní výpočetním prostředí. Členové týmu různých můžete replikovat a ověřit experimenty.
 
 Tady je příklad týmu pracující na více projektů a sdílení různých součástí infrastruktury cloudu analytics.
 
@@ -101,9 +101,9 @@ Tady je příklad týmu pracující na více projektů a sdílení různých sou
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje pro spuštění projektu
 
-Představení procesy v většina organizací je náročná. Nástroje poskytované implementace nápovědy proces a životního cyklu vědecké účely data nižší se překážek a zvýšit konzistence jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skripty, které vám pomohou rychle začít přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy v životním cyklu vědecké účely data například zkoumání dat a modelování směrného plánu. Není dobře nastavené struktury zadaný pro jednotlivce přispívání sdílené nástrojů a pomůcek do úložiště sdíleného kódu jejich tým. Tyto prostředky lze poté využít další projekty v rámci tým nebo organizace. TDSP také plány povolit příspěvky nástrojů a pomůcek celé komunitě. Nástroje TDSP dají klonovat z [Githubu](https://github.com/Azure/Azure-TDSP-Utilities).
+Představení procesy v většina organizací je náročná. Nástroje, pokud proces tooimplement hello dat vědy a životního cyklu pomohou nižší tooand překážek hello zvýšit hello konzistence jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů toojump počáteční přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy hello v hello datové vědy životního cyklu například zkoumání dat a modelování směrného plánu. Zadaný pro jednotlivce toocontribute sdílené nástrojů a pomůcek do úložiště sdíleného kódu jejich tým není dobře nastavené struktury. Tyto prostředky můžete využít pak další projekty v rámci hello tým nebo organizace hello. TDSP také plány tooenable hello příspěvky ze strany komunity celou toohello, nástrojů a pomůcek. Hello TDSP nástrojů můžete klonovat z [Githubu](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Proces vědecké účely dat Team: Rolí a úloh](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) popisuje role klíče pracovníky a jejich přidružených úloh pro data tým vědecké účely, standardizující tohoto postupu. 
+[Proces vědecké účely dat Team: Rolí a úloh](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) popisuje role hello klíče pracovníky a jejich přidružených úloh pro data tým vědecké účely, standardizující tohoto postupu. 

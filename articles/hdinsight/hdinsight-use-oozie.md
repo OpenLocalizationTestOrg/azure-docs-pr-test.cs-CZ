@@ -1,6 +1,6 @@
 ---
-title: "Použít Hadoop Oozie v HDInsight | Microsoft Docs"
-description: "Použijte Hadoop Oozie v HDInsight, Cloudová služba velkých dat. Zjistěte, jak definovat pracovním postupu Oozie a odeslat úlohu Oozie."
+title: aaaUse Hadoop Oozie v HDInsight | Microsoft Docs
+description: "Použijte Hadoop Oozie v HDInsight, Cloudová služba velkých dat. Zjistěte, jak toodefine pracovním postupu Oozie a odešlete úlohu Oozie."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -17,31 +17,31 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 36fe3e4220ec92699b6d52cba47cd6b83f361d66
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 12d0cf1a01838ab0f4e699c384ce2fb18f85cbad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Oozie se systémem Hadoop k definování a spuštění workflowu v HDInsight
+# <a name="use-oozie-with-hadoop-toodefine-and-run-a-workflow-in-hdinsight"></a>Pomocí Oozie Hadoop toodefine a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Další informace o použití Apache Oozie definovat pracovní postup a spuštění pracovního postupu v HDInsight. Další informace o Oozie coordinator najdete v tématu [použijte založené na čase Hadoop Oozie Coordinator s HDInsight][hdinsight-oozie-coordinator-time]. Další služby Azure Data Factory najdete v tématu [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
+Zjistěte, jak toouse Apache Oozie toodefine pracovního postupu a spusťte hello pracovního postupu v HDInsight. toolearn o hello Oozie coordinator, najdete v části [použijte založené na čase Hadoop Oozie Coordinator s HDInsight][hdinsight-oozie-coordinator-time]. toolearn Azure Data Factory najdete v části [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
 
-Apache Oozie je pracovní postup nebo koordinaci systém, který spravuje úloh Hadoop. Je integrován do zásobníku Hadoop, a podporuje úloh Hadoop pro Apache MapReduce, Apache Pig, Apache Hive a Apache Sqoop. Můžete se také používají k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
+Apache Oozie je pracovní postup nebo koordinaci systém, který spravuje úloh Hadoop. Je integrován se hello zásobníku Hadoop a podporuje úloh Hadoop pro Apache MapReduce, Apache Pig, Apache Hive a Apache Sqoop. Lze také použít tooschedule úlohy, které jsou specifické tooa systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
-Pracovní postup, který můžete implementovat podle pokynů v tomto kurzu obsahuje dvě akce:
+Hello pracovního postupu, které můžete implementovat podle pokynů hello v tomto kurzu obsahuje dvě akce:
 
 ![Diagram pracovního postupu][img-workflow-diagram]
 
-1. Akce Hive spouští skript HiveQL k určení počtu výskytů každý typ úroveň protokolu v souboru log4j. Každý soubor log4j se skládá z řádku pole, která obsahuje pole [úroveň protokolu], který popisuje typ a závažnost, například:
+1. Akce Hive spouští hello toocount skript HiveQL výskyty každý typ úroveň protokolu v souboru log4j. Každý soubor log4j se skládá z řádku pole, které obsahuje pole [úroveň protokolu], který ukazuje hello typ a závažnost hello, například:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
    
-    Výstup skriptu Hive je podobná:
+    je podobná Hello výstup skriptu Hive:
    
         [DEBUG] 434
         [ERROR] 3
@@ -51,15 +51,15 @@ Pracovní postup, který můžete implementovat podle pokynů v tomto kurzu obsa
         [WARN]  4
    
     Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
-2. Akce Sqoop Exportuje výstup HiveQL do tabulky v databázi Azure SQL. Další informace o Sqoop najdete v tématu [Sqoop pomocí Hadoop v prostředí HDInsight][hdinsight-use-sqoop].
+2. Akce Sqoop exportuje hello HiveQL výstupní tooa tabulku v databázi Azure SQL. Další informace o Sqoop najdete v tématu [Sqoop pomocí Hadoop v prostředí HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Podporované verze Oozie v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů systému Hadoop poskytovaných prostředím HDInsight?] [hdinsight-versions].
+> Podporované verze Oozie v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů systému Hadoop hello poskytovaných v HDInsight?] [hdinsight-versions].
 > 
 > 
 
 ### <a name="prerequisites"></a>Požadavky
-Než začnete tento kurz, musíte mít následující položky:
+Než začnete tento kurz, musíte mít hello následující položky:
 
 * **Pracovní stanice s prostředím Azure PowerShell**. 
   
@@ -67,11 +67,11 @@ Než začnete tento kurz, musíte mít následující položky:
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
   
 
-## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definovat Oozie pracovního postupu a související skript HiveQL
-Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition Language). Výchozí název souboru pracovního postupu je *workflow.xml*. Zde je soubor pracovního postupu, které můžete použít v tomto kurzu.
+## <a name="define-oozie-workflow-and-hello-related-hiveql-script"></a>Definice pracovního postupu Oozie a hello související skript HiveQL
+Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition Language). Hello výchozí název souboru pracovního postupu je *workflow.xml*. Hello následuje hello soubor pracovního postupu, které používáte v tomto kurzu.
 
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
-        <start to = "RunHiveScript"/>
+        <start too= "RunHiveScript"/>
 
         <action name="RunHiveScript">
             <hive xmlns="uri:oozie:hive-action:0.2">
@@ -125,80 +125,80 @@ Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition La
         <end name="end"/>
     </workflow-app>
 
-Existují dvě akce, které jsou definovány v pracovním postupu. Tato akce spuštění *RunHiveScript*. Pokud akce úspěšně proběhne, je další akce *RunSqoopExport*.
+Existují dvě akce definované v pracovním postupu hello. je Hello start-tooaction *RunHiveScript*. Pokud hello akce úspěšně proběhne, je další akce hello *RunSqoopExport*.
 
-RunHiveScript má několik proměnné. Při odesílání úlohy Oozie z pracovní stanice pomocí prostředí Azure PowerShell, předat hodnoty.
+Hello RunHiveScript má několik proměnné. Při odesílání úlohy Oozie hello z pracovní stanice pomocí prostředí Azure PowerShell předáte hello hodnoty.
 
 <table border = "1">
 <tr><th>Proměnné pracovního postupu</th><th>Popis</th></tr>
-<tr><td>${jobTracker}</td><td>Určuje adresu URL ke sledovacímu modulu úlohy Hadoop. Použití <strong>jobtrackerhost:9010</strong> v HDInsight verze 3.0 a 2.1.</td></tr>
-<tr><td>${nameNode}</td><td>Určuje adresu URL Hadoop název uzlu. Použít výchozí adresu systému souborů, například <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>Určuje název fronty, který je úloha odeslána do. Použití <strong>výchozí</strong>.</td></tr>
+<tr><td>${jobTracker}</td><td>Určuje adresu URL hello sledovací modul úlohy Hadoop hello. Použití <strong>jobtrackerhost:9010</strong> v HDInsight verze 3.0 a 2.1.</td></tr>
+<tr><td>${nameNode}</td><td>Určuje adresu URL hello hello Hadoop název uzlu. Použije hello výchozí adresu systému souborů, například <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
+<tr><td>${queueName}</td><td>Určuje, že název fronty hello, který hello úlohy odeslání. Použití hello <strong>výchozí</strong>.</td></tr>
 </table>
 
 <table border = "1">
 <tr><th>Hive proměnné akce</th><th>Popis</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Určuje zdrojový adresář pro příkaz Hive Create Table.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Určuje výstupní složky pro příkaz INSERT PŘEPSAT.</td></tr>
-<tr><td>${hiveTableName}</td><td>Určuje název tabulky Hive, která odkazuje na log4j datových souborů.</td></tr>
+<tr><td>${hiveDataFolder}</td><td>Určuje hello zdrojový adresář pro hello příkaz Hive Create Table.</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Určuje složku výstup hello hello příkaz INSERT PŘEPSAT.</td></tr>
+<tr><td>${hiveTableName}</td><td>Určuje název hello hello tabulku Hive, který odkazuje na hello log4j datových souborů.</td></tr>
 </table>
 
 <table border = "1">
 <tr><th>Sqoop proměnné akce</th><th>Popis</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Určuje připojovací řetězec databáze Azure SQL.</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>Určuje, kde se data se exportují do tabulky databáze Azure SQL.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Určuje výstupní složky pro příkaz Hive vložit PŘEPSAT. Toto je stejné složce, Sqoop export (export-dir).</td></tr>
+<tr><td>${sqlDatabaseConnectionString}</td><td>Určuje připojovací řetězec databáze Azure SQL hello.</td></tr>
+<tr><td>${sqlDatabaseTableName}</td><td>Určuje, kde hello data se exportují do databázové tabulky Azure SQL pro hello.</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Určuje složku výstup hello hello Hive vložit PŘEPSAT příkaz. Toto je hello stejné složce, hello Sqoop export (export-dir).</td></tr>
 </table>
 
 Další informace o pracovním postupu Oozie a pomocí akce pracovního postupu najdete v tématu [dokumentaci Apache Oozie 4.0] [ apache-oozie-400] (pro HDInsight verze 3.0) nebo [dokumentaci Apache Oozie 3.3.2] [ apache-oozie-332] (pro HDInsight verze 2.1).
 
-Akce Hive v pracovním postupu volá soubor skriptu HiveQL. Tento soubor skriptu obsahuje tři příkazy HiveQL:
+Hello Hive akce v pracovním postupu hello volá soubor skriptu HiveQL. Tento soubor skriptu obsahuje tři příkazy HiveQL:
 
     DROP TABLE ${hiveTableName};
     CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-1. **Příkaz DROP TABLE** odstraní tabulku Hive log4j, pokud existuje.
-2. **Příkaz CREATE TABLE** vytvoří externí tabulku log4j Hive, která odkazuje na umístění souboru protokolu log4j. Oddělovač polí je ",". Oddělovač řádku výchozí je "\n". Externí tabulku Hive se používá předejdete datového souboru odebírán z původního umístění, pokud chcete spustit Oozie workflow vícekrát.
-3. **Příkaz INSERT PŘEPSAT** počet výskytů každý typ úroveň protokolu z tabulky Hive log4j a uloží výstup do objektu blob ve službě Azure Storage.
+1. **příkaz DROP TABLE Hello** odstranění hello tabulku Hive log4j, pokud existuje.
+2. **příkaz CREATE TABLE Hello** vytvoří externí tabulku log4j Hive, který odkazuje toohello umístění souboru protokolu log4j hello. Oddělovač polí Hello je ",". oddělovač řádku výchozí Hello je "\n". Externí tabulku Hive je použité tooavoid hello datový soubor odebírán z původního umístění hello, pokud chcete pracovní postup Oozie hello toorun vícekrát.
+3. **Hello vložit PŘEPSAT příkaz** počítá hello výskyty každý typ úroveň protokolu z tabulky Hive log4j hello a uloží hello výstup tooa blob ve službě Azure Storage.
 
-Existují tři proměnné používané ve skriptu:
+Existují tři proměnné používané ve skriptu hello:
 
 * ${hiveTableName}
 * ${hiveDataFolder}
 * ${hiveOutputFolder}
 
-Soubor definice pracovního postupu (workflow.xml v tomto kurzu) předává tyto hodnoty tento skript HiveQL v době běhu.
+Soubor definice pracovního postupu Hello (workflow.xml v tomto kurzu) předá tyto hodnoty toothis skript HiveQL v době běhu.
 
-Soubor pracovního postupu a soubor HiveQL jsou uloženy v kontejneru objektů blob.  Powershellový skript, který použijete později v tomto kurzu zkopíruje oba soubory na výchozí účet úložiště. 
+Soubor hello pracovního postupu a soubor HiveQL hello jsou uloženy v kontejneru objektů blob.  Hello Powershellový skript, který použijete později v tomto kurzu zkopíruje oba soubory toohello výchozí účet úložiště. 
 
 ## <a name="submit-oozie-jobs-using-powershell"></a>Odesílání úloh Oozie pomocí prostředí PowerShell
-Prostředí Azure PowerShell aktuálně neposkytuje žádné rutiny pro definování Oozie úloh. Můžete použít **Invoke-RestMethod** rutiny k vyvolání Oozie webové služby. Oozie webového rozhraní API služby je JSON rozhraní HTTP REST API. Další informace o rozhraní API Oozie webových služeb najdete v tématu [dokumentaci Apache Oozie 4.0] [ apache-oozie-400] (pro HDInsight verze 3.0) nebo [dokumentaci Apache Oozie 3.3.2] [ apache-oozie-332] (pro HDInsight verze 2.1).
+Prostředí Azure PowerShell aktuálně neposkytuje žádné rutiny pro definování Oozie úloh. Můžete použít hello **Invoke-RestMethod** rutiny tooinvoke Oozie webové služby. rozhraní API webových služeb Oozie Hello je JSON rozhraní HTTP REST API. Další informace o rozhraní API hello Oozie webových služeb najdete v tématu [dokumentaci Apache Oozie 4.0] [ apache-oozie-400] (pro HDInsight verze 3.0) nebo [dokumentaci Apache Oozie 3.3.2] [ apache-oozie-332] (pro HDInsight verze 2.1).
 
-Skript prostředí PowerShell v této části provede následující kroky:
+Hello skript prostředí PowerShell v této části provádí hello následující kroky:
 
-1. Připojte k Azure.
+1. Připojte tooAzure.
 2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
-3. Vytvoření serveru Azure SQL Database, Azure SQL database a dvě tabulky. Ty se používají Sqoop akce v pracovním postupu.
+3. Vytvoření serveru Azure SQL Database, Azure SQL database a dvě tabulky. Tyto jsou používány hello Sqoop akce v pracovním postupu hello.
    
-    Název tabulky je *log4jLogCount*.
-4. Vytvoření clusteru HDInsight používá ke spouštění úloh Oozie.
+    Název tabulky Hello je *log4jLogCount*.
+4. Vytvořte cluster, který používá toorun HDInsight Oozie úlohy.
    
-    K prozkoumání clusteru, můžete portál Azure nebo Azure PowerShell.
-5. Zkopírujte soubor oozie pracovního postupu a soubor skriptu HiveQL do výchozí systém souborů.
+    tooexamine hello clusteru, můžete použít hello portál Azure nebo Azure PowerShell.
+5. Zkopírujte soubor pracovního postupu oozie hello a hello HiveQL skriptu souboru toohello výchozí systém souborů.
    
     Oba soubory jsou uloženy ve veřejném kontejneru Blob.
    
-   * Zkopírujte skript HiveQL (useoozie.hql) do služby Azure Storage (wasb:///tutorials/useoozie/useoozie.hql).
-   * Zkopírujte workflow.xml wasb:///tutorials/useoozie/workflow.xml.
-   * Zkopírujte datový soubor (nebo example/data/sample.log) k wasb:///tutorials/useoozie/data/sample.log.
+   * Zkopírujte hello HiveQL skriptu (useoozie.hql) tooAzure úložiště (wasb:///tutorials/useoozie/useoozie.hql).
+   * Zkopírujte workflow.xml toowasb:///tutorials/useoozie/workflow.xml.
+   * Kopírování hello datového souboru (/ example/data/sample.log) toowasb:///tutorials/useoozie/data/sample.log.
 6. Odešlete úlohu Oozie.
    
-    Chcete-li podívejte se na výsledky úlohy OOzie, použijte Visual Studio nebo jiné nástroje pro připojení k databázi SQL Azure.
+    výsledky tooexamine hello OOzie úlohy, použijte Visual Studio nebo jiných nástrojů tooconnect toohello Azure SQL Database.
 
-Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebujete nakonfigurovat nejprve 7 proměnné.
+Zde je skript hello.  Hello skript můžete spustit z Windows PowerShell ISE. Potřebujete jenom tooconfigure hello nejprve 7 proměnné.
 
-    #region - provide the following values
+    #region - provide hello following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
 
@@ -207,7 +207,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
     # HDInsight cluster HTTP user credential used for creating and connectin
-    $httpUserName = "admin"  # The default name is "admin"
+    $httpUserName = "admin"  # hello default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
     # Used for creating Azure service names
@@ -240,8 +240,8 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     # Treat all errors as terminating
     $ErrorActionPreference = "Stop"
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{
         Login-AzureRmAccount
@@ -285,8 +285,8 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
             -StartIpAddress $workstationIPAddress `
             -EndIpAddress $workstationIPAddress
 
-        #To allow other Azure services to access the server add a firewall rule and set both the StartIpAddress and EndIpAddress to 0.0.0.0. 
-        #Note that this allows Azure traffic from any Azure subscription to access the server.
+        #tooallow other Azure services tooaccess hello server add a firewall rule and set both hello StartIpAddress and EndIpAddress too0.0.0.0. 
+        #Note that this allows Azure traffic from any Azure subscription tooaccess hello server.
         New-AzureRmSqlServerFirewallRule `
             -ResourceGroupName $resourceGroupName `
             -ServerName $sqlDatabaseServerName `
@@ -316,7 +316,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     #endregion
 
     #region - Create SQL database tables
-    Write-Host "Creating the log4jlogs table  ..." -ForegroundColor Green
+    Write-Host "Creating hello log4jlogs table  ..." -ForegroundColor Green
 
     $sqlDatabaseTableName = "log4jLogsCount"
     $cmdCreateLog4jCountTable = " CREATE TABLE [dbo].[$sqlDatabaseTableName](
@@ -332,7 +332,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     $conn.ConnectionString = $sqlDatabaseConnectionString
     $conn.Open()
 
-    # Create the log4jlogs table and index
+    # Create hello log4jlogs table and index
     $cmd = New-Object System.Data.SqlClient.SqlCommand
     $cmd.Connection = $conn
     $cmd.CommandText = $cmdCreateLog4jCountTable
@@ -343,16 +343,16 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
 
     #region - Create HDInsight cluster
 
-    Write-Host "Creating the HDInsight cluster and the dependent services ..." -ForegroundColor Green
+    Write-Host "Creating hello HDInsight cluster and hello dependent services ..." -ForegroundColor Green
 
-    # Create the default storage account
+    # Create hello default storage account
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
         -Location $location `
         -Type Standard_LRS
 
-    # Create the default Blob container
+    # Create hello default Blob container
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
@@ -363,7 +363,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
         -Name $defaultBlobContainerName `
         -Context $defaultStorageAccountContext 
 
-    # Create the HDInsight cluster
+    # Create hello HDInsight cluster
     $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
     $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 
@@ -379,7 +379,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
         -DefaultStorageAccountKey $defaultStorageAccountKey `
         -DefaultStorageContainer $defaultBlobContainerName 
 
-    # Validate the cluster
+    # Validate hello cluster
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
     #endregion
 
@@ -390,8 +390,8 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     # Both files are stored in a public Blob
     $publicBlobContext = New-AzureStorageContext -StorageAccountName "hditutorialdata" -Anonymous
 
-    # WASB folder for storing the Oozie tutorial files.
-    $destFolder = "tutorials/useoozie"  # Do NOT use the long path here
+    # WASB folder for storing hello Oozie tutorial files.
+    $destFolder = "tutorials/useoozie"  # Do NOT use hello long path here
 
     Start-CopyAzureStorageBlob `
         -Context $publicBlobContext `
@@ -411,7 +411,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
         -DestBlob "$destFolder/workflow.xml" `
         -Force
 
-    #validate the copy
+    #validate hello copy
     Get-AzureStorageBlob `
         -Context $defaultStorageAccountContext `
         -Container $defaultBlobContainerName `
@@ -424,9 +424,9 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
 
     #endregion
 
-    #region - copy the sample.log file
+    #region - copy hello sample.log file
 
-    Write-Host "Make a copy of the sample.log file ... " -ForegroundColor Green
+    Write-Host "Make a copy of hello sample.log file ... " -ForegroundColor Green
 
     Start-CopyAzureStorageBlob `
         -Context $defaultStorageAccountContext `
@@ -436,7 +436,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
         -DestContainer $defaultBlobContainerName `
         -destBlob "$destFolder/data/sample.log" 
 
-    #validate the copy
+    #validate hello copy
     Get-AzureStorageBlob `
         -Context $defaultStorageAccountContext `
         -Container $defaultBlobContainerName `
@@ -451,7 +451,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     $oozieJobName = $namePrefix + "OozieJob"
 
     #Oozie WF variables
-    $oozieWFPath="$storageUri/tutorials/useoozie"  # The default name is workflow.xml. And you don't need to specify the file name.
+    $oozieWFPath="$storageUri/tutorials/useoozie"  # hello default name is workflow.xml. And you don't need toospecify hello file name.
     $waitTimeBetweenOozieJobStatusCheck=10
 
     #Hive action variables
@@ -539,7 +539,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     Write-Host "Oozie server status is $oozieServerSatus."
 
     # create Oozie job
-    Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
+    Write-Host "Sending hello following Payload toohello cluster:" -ForegroundColor Green
     Write-Host "`n--------`n$OoziePayload`n--------"
     $clusterUriCreateJob = "https://$hdinsightClusterName.azurehdinsight.net:443/oozie/v2/jobs"
     $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $httpCredential -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName #-debug
@@ -549,15 +549,15 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     Write-Host "Oozie job id is $oozieJobId..."
 
     # start Oozie job
-    Write-Host "Starting the Oozie job $oozieJobId..." -ForegroundColor Green
+    Write-Host "Starting hello Oozie job $oozieJobId..." -ForegroundColor Green
     $clusterUriStartJob = "https://$hdinsightClusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=start"
     $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $httpCredential | Format-Table -HideTableHeaders #-debug
 
     # get job status
-    Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..." -ForegroundColor Green
+    Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until hello job metadata is populated in hello Oozie metastore..." -ForegroundColor Green
     Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
 
-    Write-Host "Getting job status and waiting for the job to complete..." -ForegroundColor Green
+    Write-Host "Getting job status and waiting for hello job toocomplete..." -ForegroundColor Green
     $clusterUriGetJobStatus = "https://$hdinsightClusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?show=info"
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $httpCredential
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -565,7 +565,7 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
 
     while($JobStatus -notmatch "SUCCEEDED|KILLED")
     {
-        Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for the job to complete..."
+        Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for hello job toocomplete..."
         Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
         $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $httpCredential
         $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -578,12 +578,12 @@ Zde je skript.  Tento skript můžete spustit z Windows PowerShell ISE. Potřebu
     #endregion
 
 
-**Chcete-li znovu spustit tohoto kurzu**
+**kurz toore spustit hello**
 
-Chcete-li znovu spustit pracovní postup, musíte odstranit následující položky:
+hello toore spustit pracovní postup, je nutné odstranit hello následující položky:
 
-* Výstupní soubor skriptu Hive
-* Data v tabulce log4jLogsCount
+* Hello výstupní soubor skriptu Hive
+* Hello data v tabulce log4jLogsCount hello
 
 Tady je ukázkový skript prostředí PowerShell, který můžete použít:
 
@@ -599,14 +599,14 @@ Tady je ukázkový skript prostředí PowerShell, který můžete použít:
     $sqlDatabaseName = "<SQLDatabaseName>"
     $sqlDatabaseTableName = "log4jLogsCount"
 
-    Write-host "Delete the Hive script output file ..." -ForegroundColor Green
+    Write-host "Delete hello Hive script output file ..." -ForegroundColor Green
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
                                 -Name $defaultStorageAccountName)[0].Value
     $destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
     Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $defaultBlobContainerName
 
-    Write-host "Delete all the records from the log4jLogsCount table ..." -ForegroundColor Green
+    Write-host "Delete all hello records from hello log4jLogsCount table ..." -ForegroundColor Green
     $conn = New-Object System.Data.SqlClient.SqlConnection
     $conn.ConnectionString = "Data Source=$sqlDatabaseServerName.database.windows.net;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabasePassword;Encrypt=true;Trusted_Connection=false;"
     $conn.open()
@@ -618,10 +618,10 @@ Tady je ukázkový skript prostředí PowerShell, který můžete použít:
     $conn.close()
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se dozvěděli, jak definovat pracovním postupu Oozie a jak spustit úlohu Oozie pomocí prostředí PowerShell. Další informace naleznete v následujících článcích:
+V tomto kurzu jste se naučili jak toodefine Oozie pracovního postupu a jak toorun Oozie úlohy pomocí prostředí PowerShell. toolearn více, najdete v části hello následující články:
 
 * [Použijte založené na čase Oozie Coordinator s HDInsight][hdinsight-oozie-coordinator-time]
-* [Začínáme používat Hadoop s Hive v HDInsight k analýze používání mobilního telefonu][hdinsight-get-started]
+* [Začínáme používat Hadoop s Hive v HDInsight tooanalyze mobilního telefonu použití][hdinsight-get-started]
 * [Používat úložiště objektů Azure Blob s HDInsight][hdinsight-storage]
 * [Spravovat HDInsight pomocí prostředí PowerShell][hdinsight-admin-powershell]
 * [Nahrání dat pro úlohy Hadoop v HDInsight][hdinsight-upload-data]

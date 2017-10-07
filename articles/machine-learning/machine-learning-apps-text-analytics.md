@@ -1,6 +1,6 @@
 ---
 title: "Rozhraní API pro Machine Learning: Analýza textu | Microsoft Docs"
-description: "Společnosti Microsoft Machine Learning Text Analytics rozhraní API slouží k analýze nestrukturovaných text pro analýzu postojích, klíče frázi extrakce, zjišťování jazyka a detekce tématu."
+description: "Rozhraní API společnosti Microsoft Machine Learning Text Analytics může být použité tooanalyze nestrukturovaných text pro analýzu postojích, klíče frázi extrakce, zjišťování jazyka a detekce tématu."
 services: machine-learning
 documentationcenter: 
 author: onewth
@@ -16,50 +16,50 @@ ms.date: 04/04/2017
 ms.author: onewth
 ROBOTS: NOINDEX
 redirect_url: ../cognitive-services/cognitive-services-text-analytics-quick-start
-redirect_document_id: TRUE
-ms.openlocfilehash: 10eae2ff5624dcb57de1cf72b326147f35bc2a0b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 49380c83849c5d5fdd8dce4f3899ebcb3d6870f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="machine-learning-apis-text-analytics-for-sentiment-key-phrase-extraction-language-detection-and-topic-detection"></a>API pro Machine Learning: Analýza textu pro zjištění mínění, Extrakce klíčových frází, Rozpoznávání jazyka a Rozpoznávání témat
 > [!NOTE]
-> Tento průvodce je pro rozhraní API verze 1. Verze 2 [ **odkazovat na tento dokument**](../cognitive-services/cognitive-services-text-analytics-quick-start.md). Verze 2 je nyní upřednostňované verzi toto rozhraní API.
+> Tento průvodce je verze 1 hello rozhraní API. Verze 2 [ **naleznete v dokumentu toothis**](../cognitive-services/cognitive-services-text-analytics-quick-start.md). Verze 2 je nyní hello upřednostňované verzi toto rozhraní API.
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Rozhraní API Analytics textu je sada Analýza textu [webové služby](https://datamarket.azure.com/dataset/amla/text-analytics) vytvořené s nástroji Azure Machine Learning. Rozhraní API slouží k analýze nestrukturovaných text pro úlohy, jako je postojích analýzy, klíče frázi extrakce, zjišťování jazyka a detekce tématu. Žádná Cvičná data je potřeba k použití toto rozhraní API: právě Oživte svoje data textu. Toto rozhraní API používá pokročilé přirozeného jazyka zpracování techniky dodávat nejlépe ve třída předpovědi.
+Hello Text Analytics API je sada Analýza textu [webové služby](https://datamarket.azure.com/dataset/amla/text-analytics) vytvořené s nástroji Azure Machine Learning. Hello rozhraní API lze použít tooanalyze nestrukturovaných text pro úlohy, jako je postojích analýzy, klíče frázi extrakce, zjišťování jazyka a detekce tématu. Žádné školení dat je potřeba toouse toto rozhraní API: právě Oživte svoje data textu. Toto rozhraní API používá pokročilé přirozeného jazyka zpracování techniky toodeliver nejlépe v třída předpovědi.
 
-Analýza textu v akci uvidíte na našich [ukázku lokality](https://text-analytics-demo.azurewebsites.net/), kde taky najdete [ukázky](https://text-analytics-demo.azurewebsites.net/Home/SampleCode) o tom, jak implementovat Analýza textu v C# a Python.
+Analýza textu v akci uvidíte na naše [ukázku lokality](https://text-analytics-demo.azurewebsites.net/), kde taky najdete [ukázky](https://text-analytics-demo.azurewebsites.net/Home/SampleCode) o tom, analýza textu tooimplement v C# a Python.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 - - -
 ## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
-Rozhraní API vrátí číselný skóre mezi 0 a 1. Skóre blíží 1 znamenat kladné postojích, zatímco skóre blízko 0 označuje záporné postojích. Hodnocení zabarvení se generuje pomocí klasifikačních technik. Vstupní funkce na třídění zahrnují n gram, funkce, které generují z části řeči značky a vkládaných aplikace word. V současné době pouze podporovaných jazykem je angličtina.
+Hello rozhraní API vrátí číselný skóre mezi 0 a 1. Zavřít too1 skóre znamenat kladné postojích, zatímco zavřít too0 skóre znamenat záporné postojích. Hodnocení zabarvení se generuje pomocí klasifikačních technik. Klasifikátor toohello Hello vstupní funkce zahrnují n gram, funkce, které generují z části řeči značky a vkládaných aplikace word. V současné době je angličtina, že hello pouze podporovaný jazyk.
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
-Rozhraní API vrátí seznam řetězců označujících klíčová témata ve vstupním textu. Využíváme techniky z propracované sady nástrojů pro zpracování přirozeného jazyka v systému Microsoft Office. V současné době pouze podporovaných jazykem je angličtina.
+Hello rozhraní API vrátí seznam řetězců, které označuje hello klíčové čtených body vstupního textu hello. Využíváme techniky z propracované sady nástrojů pro zpracování přirozeného jazyka v systému Microsoft Office. V současné době je angličtina, že hello pouze podporovaný jazyk.
 
 ## <a name="language-detection"></a>Detekce jazyka
-Rozhraní API vrátí zjištěný jazyk a číselné skóre mezi 0 a 1. Hodnocení blížící se 1 značí 100% jistotu správné identifikace jazyka. Celkem se podporuje 120 jazyků.
+Hello rozhraní API vrátí hello zjistil jazyk a číselné skóre mezi 0 a 1. Zavřít too1 skóre znamenat 100 % jistoty platí hello identifikovat jazyk. Celkem se podporuje 120 jazyků.
 
 ## <a name="topic-detection"></a>Detekce témat
-Toto je nově vydaných rozhraní API, která vrátí horní zjistil témata seznam odeslána text záznamy. Téma se určuje podle klíčové fráze, což může být jedno slovo nebo více souvisejících slov. Toto rozhraní API vyžaduje odeslání minimálně 100 textových záznamů, ale je navržené k detekování témat napříč stovkami tisíc záznamů. Pamatujte, že toto rozhraní API účtuje 1 transakci za každý odeslaný textový záznam. Rozhraní API slouží k fungují dobře u krátký, lidské napsané text, například recenze a zpětnou vazbu od uživatelů.
+Toto je nově vydaných rozhraní API, která vrátí hodnotu hello nejvyšší zjištěné tématech seznam záznamů odeslaná text. Téma se určuje podle klíčové fráze, což může být jedno slovo nebo více souvisejících slov. Toto rozhraní API vyžaduje nejméně 100 text zaznamenává toobe odeslání, ale je navrženou toodetect témata na mnoha toothousands záznamů. Pamatujte, že toto rozhraní API účtuje 1 transakci za každý odeslaný textový záznam. Hello rozhraní API je navrženou toowork dobře u short, lidské zapisovat text například recenze a zpětnou vazbu od uživatelů.
 
 - - -
 ## <a name="api-definition"></a>Definice rozhraní API.
 ### <a name="headers"></a>Záhlaví
-Ujistěte se, jestli jste zahrnuli správné hlavičky ve vaší žádosti, které by měl vypadat takto:
+Ujistěte se, jestli jste zahrnuli správné hlavičky hello ve vaší žádosti, které by měl vypadat takto:
 
     Authorization: Basic <creds>
     Accept: application/json
 
     Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
 
-Můžete najít klíč účtu z vašeho účtu v [Azure dat trhu](https://datamarket.azure.com/account/keys). Všimněte si, že je aktuálně jedinou JSON přijímán pro vstupní a výstupní formáty. XML není podporován.
+Klíče účtu z vašeho účtu můžete najít v hello [Azure dat trhu](https://datamarket.azure.com/account/keys). Všimněte si, že je aktuálně jedinou JSON přijímán pro vstupní a výstupní formáty. XML není podporován.
 
 - - -
 ## <a name="single-response-apis"></a>Odpověď jedné rozhraní API
@@ -70,7 +70,7 @@ Můžete najít klíč účtu z vašeho účtu v [Azure dat trhu](https://datama
 
 **Příklad požadavku**
 
-Ve volání níže jsme žádají o postojích analýzy pro frázi "Hello World":
+Ve volání hello níže jsme žádají o postojích analýza hello frázi "Hello, World":
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment?Text=hello+world
 
@@ -89,7 +89,7 @@ Tato možnost vrátí odpověď následujícím způsobem:
 
 **Příklad požadavku**
 
-Ve volání níže jsme žádají o klíč frází, naleznete v textu "Je vynikající hotelů zůstane v, s vnitřní jedinečný a popisný pracovníci":
+Ve volání hello níže jsme žádají o hello klíče frází, naleznete v textu hello "Je vynikající toostay hotelů v, s vnitřní jedinečný a popisný pracovníci":
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases?
     Text=It+was+a+wonderful+hotel+to+stay+at,+with+unique+decor+and+friendly+staff
@@ -113,7 +113,7 @@ Tato možnost vrátí odpověď následujícím způsobem:
 
 **Příklad požadavku**
 
-V níže uvedené volání GET jsme požaduje pro postojích pro klíče frází v textu *Hello World*
+Ve volání GET hello níže, jsme požaduje pro hello postojích hello klíče vět v textu hello *Hello, World*
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguages?
     Text=Hello+World
@@ -131,13 +131,13 @@ Tato možnost vrátí odpověď následujícím způsobem:
 
 **Volitelné parametry**
 
-`NumberOfLanguagesToDetect`je volitelný parametr. Výchozí hodnota je 1.
+`NumberOfLanguagesToDetect`je volitelný parametr. Hello výchozí hodnota je 1.
 
 - - -
 ## <a name="batch-apis"></a>Rozhraní API služby batch
-Analýza textu služba umožňuje udělat postojích a klíč frázi extrakce v dávkovém režimu. Všimněte si, že každý záznam skóre počty jedné transakci. Jako příklad Pokud si vyžádáte postojích 1000 záznamů v jediném volání 1000 transakce bude odečtena.
+Hello Analýza textu služby umožňuje toodo postojích a klíč frázi extrakce v dávkovém režimu. Všimněte si, že každý záznam hello skóre počty jedné transakci. Jako příklad Pokud si vyžádáte postojích 1000 záznamů v jediném volání 1000 transakce bude odečtena.
 
-Všimněte si, že zadané ID do systému jsou ID vrácené systému. Webovou službu nekontroluje, že jsou tyto identifikátory jedinečné. Je zodpovědností volajícího, aby ověření jedinečnosti. 
+Všimněte si, že zadané ID hello do systému hello jsou hello ID vrácené hello systému. Hello webová služba nekontroluje, že jsou tyto identifikátory jedinečné. Je zodpovědností hello hello volající tooverify jedinečnost. 
 
 ### <a name="getsentimentbatch"></a>GetSentimentBatch
 **ADRESA URL**    
@@ -146,7 +146,7 @@ Všimněte si, že zadané ID do systému jsou ID vrácené systému. Webovou sl
 
 **Příklad požadavku**
 
-Ve volání POST níže jsme požaduje pro chráněny frází "Hello World", "Foo Vítáme" a "Hello Moje World" v textu žádosti:
+V hello POST volejte níže, jsme požaduje pro hello chráněny frází hello "Hello, World", "Foo Hello, World" a "Hello Moje World" v textu hello hello žádosti:
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch 
 
@@ -159,7 +159,7 @@ Text žádosti:
         {"Id":"3","Text":"hello my world"},
     ]}
 
-V níže uvedené odpovědi získat seznam skóre přidružené text ID:
+V odpovědi hello níže získat hello seznam skóre přidružené text ID:
 
     {
       "odata.metadata":"<url>", 
@@ -181,13 +181,13 @@ V níže uvedené odpovědi získat seznam skóre přidružené text ID:
 
 **Příklad požadavku**
 
-V tomto příkladu jsme žádají o seznam chráněny pro klíče frází v těchto údajů: 
+V tomto příkladu jsme žádají o hello seznam chráněny hello klíče vět v hello následující texty: 
 
-* "Je vynikající hotelů zůstane v, s vnitřní jedinečný a popisný pracovníci"
+* "Je vynikající toostay hotelů v, s vnitřní jedinečný a popisný pracovníci"
 * "Je úžasné konference build, s velmi zajímavé rozhovory"
-* "Provoz byl strašlivých, I stráví tři hodiny, přejdete na letišti"
+* "hello provoz byl strašlivých, I stráví tři hodiny, budete toohello letiště"
 
-Tato žádost jako volání POST do koncového bodu:
+Tento požadavek se provádí jako koncový bod toohello volání POST:
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrasesBatch
 
@@ -195,12 +195,12 @@ Text žádosti:
 
     {"Inputs":
     [
-        {"Id":"1","Text":"It was a wonderful hotel to stay at, with unique decor and friendly staff"},
+        {"Id":"1","Text":"It was a wonderful hotel toostay at, with unique decor and friendly staff"},
         {"Id":"2","Text":"It was an amazing build conference, with very interesting talks"},
-        {"Id":"3","Text":"The traffic was terrible, I spent three hours going to the airport"}
+        {"Id":"3","Text":"hello traffic was terrible, I spent three hours going toohello airport"}
     ]}
 
-V odpovědi níže zobrazí se seznam klíčů frází přidružené text ID:
+V odpovědi hello níže zobrazí se seznam hello klíče frází přidružené text ID:
 
     { "odata.metadata":"<url>",
          "KeyPhrasesBatch":
@@ -215,7 +215,7 @@ V odpovědi níže zobrazí se seznam klíčů frází přidružené text ID:
 - - -
 ### <a name="getlanguagebatch"></a>GetLanguageBatch
 
-Ve volání POST níže jsme žádají o zjišťování jazyka pro dva vstupy text:
+Ve volání POST hello níže jsme žádají o zjišťování jazyka pro dva vstupy text:
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguageBatch
 
@@ -228,7 +228,7 @@ Text žádosti:
       ]
     }
 
-Vrátí následující odpověď, kde je angličtina zjištěna v první vstup a francouzštinu v druhý vstup:
+Tento příkaz vrátí hello následující odpověď, kde je angličtina zjištěna v hello první vstup a francouzštinu v hello druhý vstup:
 
     {
        "LanguageBatch": [{
@@ -254,9 +254,9 @@ Vrátí následující odpověď, kde je angličtina zjištěna v první vstup a
 
 - - -
 ## <a name="topic-detection-apis"></a>Rozhraní API pro rozpoznávání tématu
-Toto je nově vydaných rozhraní API, která vrátí horní zjistil témata seznam odeslána text záznamy. Téma se určuje podle klíčové fráze, což může být jedno slovo nebo více souvisejících slov. Pamatujte, že toto rozhraní API účtuje 1 transakci za každý odeslaný textový záznam.
+Toto je nově vydaných rozhraní API, která vrátí hodnotu hello nejvyšší zjištěné tématech seznam záznamů odeslaná text. Téma se určuje podle klíčové fráze, což může být jedno slovo nebo více souvisejících slov. Pamatujte, že toto rozhraní API účtuje 1 transakci za každý odeslaný textový záznam.
 
-Toto rozhraní API vyžaduje odeslání minimálně 100 textových záznamů, ale je navržené k detekování témat napříč stovkami tisíc záznamů.
+Toto rozhraní API vyžaduje nejméně 100 text zaznamenává toobe odeslání, ale je navrženou toodetect témata na mnoha toothousands záznamů.
 
 ### <a name="topics--submit-job"></a>Témata – odeslání úlohy
 **ADRESA URL**
@@ -265,29 +265,29 @@ Toto rozhraní API vyžaduje odeslání minimálně 100 textových záznamů, al
 
 **Příklad požadavku**
 
-V níže uvedené volání POST jsme žádají o tématech sadu 100 články, kde jsou uvedeny v prvním a posledním vstupní článcích a dvě StopPhrases jsou zahrnuty.
+Ve volání POST hello níže jsme žádají o tématech sadu 100 články, kde hello první a poslední vstup se zobrazí články a dvě StopPhrases jsou zahrnuty.
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection HTTP/1.1
 
 Text žádosti:
 
     {"Inputs":[
-        {"Id":"1","Text":"I loved the food at this restaurant"},
+        {"Id":"1","Text":"I loved hello food at this restaurant"},
         ...,
-        {"Id":"100","Text":"I hated the decor"}
+        {"Id":"100","Text":"I hated hello decor"}
     ],
     "StopPhrases":[
         "restaurant", “visitor"
     ]}
 
-V níže uvedené odpovědi získat JobId odeslaná úlohy:
+V odpovědi hello níže získat hello JobId hello odeslaná úlohy:
 
     {
         "odata.metadata":"<url>",
         "JobId":"<JobId>"
     }
 
-Seznam jednoho slova či více fráze slovo, které by neměly být vrácen jako témata. Mohou být použity k filtrování se velmi obecná témata. Například v datové sadě o hotelů recenze "ubytovací" a "hostel" může být rozumný zastavení frází.  
+Seznam jednoho slova či více fráze slovo, které by neměly být vrácen jako témata. Lze použít toofilter se velmi obecná témata. Například v datové sadě o hotelů recenze "ubytovací" a "hostel" může být rozumný zastavení frází.  
 
 ### <a name="topics--poll-for-job-results"></a>Témata – dotazování pro výsledky úlohy
 **ADRESA URL**
@@ -296,12 +296,12 @@ Seznam jednoho slova či více fráze slovo, které by neměly být vrácen jako
 
 **Příklad požadavku**
 
-Předejte JobId vrácená z kroku 'Odeslání úlohy' Chcete-li načíst výsledky. Doporučujeme, abyste volání tento koncový bod každou minutu až stav = 'Dokončit' v odpovědi. Dokončení nebo delší dobu, úlohy se mnoho tisíc záznamů bude trvat přibližně 10 minut pro úlohu.
+Předejte hello JobId vrácena z hello "Odeslání úlohy" krok toofetch hello výsledků. Doporučujeme, abyste volání tento koncový bod každou minutu až do stavu v odpovědi hello = 'Dokončit'. To bude trvat přibližně 10 minut toocomplete úlohy nebo delší dobu, úlohy s mnoha tisíce záznamů.
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult?JobId=<JobId>
 
 
-Během zpracování, odpověď bude vypadat takto:
+Během zpracování, hello odpověď bude vypadat takto:
 
     {
         "odata.metadata":"<url>",
@@ -312,7 +312,7 @@ Během zpracování, odpověď bude vypadat takto:
     }
 
 
-Rozhraní API vrátí výstup ve formátu JSON v následujícím formátu:
+Hello rozhraní API vrátí výstup ve formátu JSON v hello následující formát:
 
     {
         "odata.metadata":"<url>",
@@ -346,21 +346,21 @@ Rozhraní API vrátí výstup ve formátu JSON v následujícím formátu:
         "Errors":[]
 
 
-Vlastnosti pro každou část odpovědi jsou následující:
+Hello vlastnosti pro každou část hello odpovědi jsou následující:
 
 **Vlastnosti TopicInfo**
 
 | Klíč | Popis |
 |:--- |:--- |
 | TopicId |Jedinečný identifikátor každého tématu. |
-| Hodnocení |Počet záznamů, které jsou přiřazeny k tématu. |
-| KeyPhrase |Summarizing slovo nebo frázi pro téma. Může být 1 nebo více slova. |
+| Hodnocení |Počet záznamů přiřadit tootopic. |
+| KeyPhrase |Summarizing slovo nebo frázi pro téma hello. Může být 1 nebo více slova. |
 
 **Vlastnosti TopicAssignment**
 
 | Klíč | Popis |
 |:--- |:--- |
-| ID |Identifikátor záznamu. Rovná ID součástí vstupu. |
-| TopicId |ID tématu, která byla přiřazena záznamu. |
-| Vzdálenost |Jistotu, že záznam patří do tématu. Vzdálenost blíž nule označuje vyšší spolehlivosti. |
+| ID |Identifikátor záznamu hello. Znamená zároveň toohello ID součástí hello vstup. |
+| TopicId |byl přiřazen ID Hello téma, které hello záznamu. |
+| Vzdálenost |Jistotu, že záznam hello patří toohello tématu. Vzdálenost blíže toozero označuje vyšší spolehlivosti. |
 

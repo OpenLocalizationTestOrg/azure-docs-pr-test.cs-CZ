@@ -1,6 +1,6 @@
 ---
-title: "Shromažďovat a analyzovat zprávy Syslog v OMS Log Analytics | Microsoft Docs"
-description: "Syslog je protokol protokolování událostí, které je běžné Linux. Tento článek popisuje, jak nakonfigurovat kolekce zprávy Syslog v analýzy protokolů a podrobnosti záznamů, které vytvoří v úložišti OMS."
+title: "aaaCollect a analyzovat zprávy Syslog v OMS Log Analytics | Microsoft Docs"
+description: "Syslog je protokol protokolování událostí, který je běžné tooLinux. Tento článek popisuje, jak tooconfigure kolekce zprávy Syslog v analýzy protokolů a podrobnosti záznamů hello vytvoří v úložišti OMS hello."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 7513f405d5c7c05a8e6e2b7b0e6313f23a319c84
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8bfa0bca3f2f18287d1352c98bbaa2a70e41e276
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog zdroje dat v analýzy protokolů
-Syslog je protokol protokolování událostí, které je běžné Linux.  Aplikace bude odesílat zprávy, které mohou být uloženy v místním počítači nebo doručit do kolekce Syslog.  Pokud je nainstalován Agent OMS pro Linux, nakonfiguruje místní démon procesu Syslog předávání zpráv do agenta.  Agent pak odešle zprávu k analýze protokolů, které se vytvoří odpovídající záznam v úložišti OMS.  
+Syslog je protokol protokolování událostí, který je běžné tooLinux.  Aplikace bude odesílat zprávy, které může být uložené na místním počítači hello nebo doručit tooa Syslog kolekce.  Pokud je nainstalovaná hello OMS agenta pro Linux, nakonfiguruje hello místní Syslog démon tooforward zprávy toohello agenta.  Hello agent pak odešle zpráva tooLog hello Analytics kde se vytvoří odpovídající záznam v úložišti OMS hello.  
 
 > [!NOTE]
-> Analýzy protokolů podporuje kolekce zprávy odeslané rsyslog nebo syslog ng, kde je rsyslog démon výchozí. Démon procesu syslog výchozí na verze 5 Red Hat Enterprise Linux a CentOS, Oracle Linux verze (sysklog) není podporována pro shromažďování událostí syslog. Ke shromažďování dat syslog z této verze těchto distribuce [rsyslog démon](http://rsyslog.com) musí být nainstalovaná a nakonfigurovaná nahradit sysklog.
+> Analýzy protokolů podporuje kolekce zprávy odeslané rsyslog nebo syslog ng, kde je rsyslog démon výchozí hello. Démon procesu syslog výchozí Hello na verze 5 Red Hat Enterprise Linux a CentOS, Oracle Linux verze (sysklog) není podporována pro shromažďování událostí syslog. hello toocollect syslog data z této verze těchto distribuce [rsyslog démon](http://rsyslog.com) by měl být nainstalován a nakonfigurován tooreplace sysklog.
 >
 >
 
 ![Kolekce Syslog](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Konfigurace procesu Syslog
-OMS agenta pro Linux bude pouze shromažďovat události se zařízením a závažnosti, které jsou určené v konfiguraci.  Můžete nakonfigurovat Syslog prostřednictvím portálu OMS nebo Správa konfiguračních souborů na agenty systému Linux.
+Hello OMS agenta pro Linux bude shromažďovat jenom události s hello zařízení a závažnosti, které jsou určené v konfiguraci.  Syslog můžete nakonfigurovat přes portál OMS hello nebo Správa konfiguračních souborů na agenty systému Linux.
 
-### <a name="configure-syslog-in-the-oms-portal"></a>Konfigurovat Syslog na portálu OMS
-Konfigurace Syslog z [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).  Tato konfigurace se doručí do konfiguračního souboru na každého agenta systému Linux.
+### <a name="configure-syslog-in-hello-oms-portal"></a>Konfigurace Syslog na portálu OMS hello
+Nakonfigurovat Syslog z hello [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).  Tato konfigurace se doručí toohello konfigurační soubor na každého agenta systému Linux.
 
-Můžete přidat nové zařízení zadáním v jeho název a kliknutím na tlačítko  **+** .  Pro každé zařízení budou shromažďovány pouze zprávy s vybranou závažnosti.  Zkontrolujte závažnosti pro konkrétní zařízení, které chcete shromažďovat.  Nelze poskytnout žádná další kritéria filtru zpráv.
+Můžete přidat nové zařízení zadáním v jeho název a kliknutím na tlačítko  **+** .  Pro každé zařízení budou shromažďovány pouze zprávy s hello vybrané závažnosti.  Zkontrolujte hello závažnosti pro hello konkrétní zařízení, které chcete toocollect.  Žádné další kritéria nemůžete zadat toofilter zprávy.
 
 ![Konfigurace procesu Syslog](media/log-analytics-data-sources-syslog/configure.png)
 
-Ve výchozím nastavení všechny změny konfigurace automaticky odesílají na všechny agenty.  Pokud chcete ručně nakonfigurovat Syslog na každého agenta systému Linux, poté zrušte zaškrtnutí políčka *použít dole uvedenou konfiguraci u mých Linuxových počítačů*.
+Standardně jsou všechny změny konfigurace automaticky instaluje tooall agenty.  Pokud chcete tooconfigure Syslog ručně na každý agenta systému Linux, poté zrušte zaškrtnutí políčka hello *použít následující konfigurace počítačů se systémem Linux toomy*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta systému Linux
-Když [Linux klienta je nainstalován OMS agent](log-analytics-linux-agents.md), nainstaluje výchozí syslog konfiguračního souboru, který definuje zařízením a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na tom, který se klient nainstaloval démon procesu Syslog.
+Když hello [Linux klienta je nainstalován OMS agent](log-analytics-linux-agents.md), nainstaluje výchozí syslog konfiguračního souboru, který definuje hello zařízení a závažnost hello zprávy, které se shromažďují.  Tato konfigurace hello toochange soubor můžete upravit.  Hello konfigurační soubor se liší v závislosti na hello Syslog nainstaloval démon procesu, který hello klienta.
 
 > [!NOTE]
-> Pokud chcete upravit konfiguraci syslog, je nutné restartovat démon procesu syslog změny se projeví.
+> Pokud chcete upravit konfiguraci hello syslog, je nutné restartovat hello démon procesu syslog pro hello změny tootake vliv.
 >
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Konfigurační soubor pro rsyslog se nachází v **/etc/rsyslog.d/95-omsagent.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
+Hello konfiguračního souboru pro rsyslog se nachází v **/etc/rsyslog.d/95-omsagent.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta hello pro všechna zařízení s úrovní varování nebo vyšší.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -71,13 +71,13 @@ Konfigurační soubor pro rsyslog se nachází v **/etc/rsyslog.d/95-omsagent.co
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení úpravou položky tohoto zařízení.  Chcete-li omezit uživatele zařízení pro zprávy o závažnosti chyby nebo vyšší je by upravit daného řádku konfiguračního souboru pro následující:
+Budovy můžete odebrat odstraněním jeho části hello konfigurační soubor.  Můžete omezit hello závažnosti, které se shromažďují pro konkrétní zařízení úpravou položky tohoto zařízení.  Například toolimit hello uživatele zařízení toomessages s závažnosti chyby nebo vyšší byste upravili daného řádku hello konfigurační soubor toohello následující:
 
     user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>Syslog ng
-Konfigurační soubor pro syslog ng je umístění v **/etc/syslog-ng/syslog-ng.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
+Hello konfigurační soubor pro syslog ng je umístění v **/etc/syslog-ng/syslog-ng.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje zpráv odeslaných z místního agenta hello všech zařízení a všechny závažnosti.   
 
     #
     # Warnings (except iptables) in one file:
@@ -128,7 +128,7 @@ Konfigurační soubor pro syslog ng je umístění v **/etc/syslog-ng/syslog-ng.
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení jejich vyjmutím ze seznamu.  Chcete-li omezit uživatele zařízení pro právě upozornění a kritickou zprávy, je by upravit tento oddíl konfiguračního souboru pro následující:
+Budovy můžete odebrat odstraněním jeho části hello konfigurační soubor.  Můžete omezit hello závažnosti, které se shromažďují pro konkrétní zařízení jejich vyjmutím ze seznamu.  Například toolimit hello uživatele zařízení toojust zprávy upozornění a kritickou byste upravili této části hello konfigurační soubor toohello následující:
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -136,14 +136,14 @@ Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního so
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Shromažďování dat z další porty Syslog
-Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud je nainstalován agent nástroje, použít výchozí konfigurace syslog a najít v následujícím umístění:
+Hello OMS agent přijímají zprávy Syslog v místním klientovi hello na portu 25224.  Pokud je nainstalován hello agent, použít výchozí konfigurace syslog a najít v hello následující umístění:
 
 * Rsyslog:`/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng:`/etc/syslog-ng/syslog-ng.conf`
 
-Číslo portu můžete změnit tak, že vytvoříte dvě konfigurační soubory: soubor konfigurace FluentD a soubor rsyslog nebo syslog ng v závislosti na instalaci démon procesu Syslog.  
+Číslo portu hello můžete změnit tak, že vytvoříte dvě konfigurační soubory: soubor konfigurace FluentD a soubor rsyslog nebo syslog ng v závislosti na instalaci hello démon procesu Syslog.  
 
-* Soubor konfigurace FluentD by měl být nový soubor umístěný ve: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahraďte hodnotu v **port** položka se vaše vlastní číslo portu.
+* Hello FluentD konfigurační soubor by měl být nový soubor umístěný ve: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahraďte hodnotu hello v hello **port** položka se vaše vlastní číslo portu.
 
         <source>
           type syslog
@@ -156,10 +156,10 @@ Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud
           type filter_syslog
         </filter>
 
-* Pro rsyslog, měli vytvořit nový soubor konfigurace umístěný v: `/etc/rsyslog.d/` a nahraďte hodnotu % SYSLOG_PORT % vaše vlastní číslo portu.  
+* Pro rsyslog, měli vytvořit nový soubor konfigurace umístěný v: `/etc/rsyslog.d/` a hello hodnota % SYSLOG_PORT % nahraďte váš vlastní číslo portu.  
 
     > [!NOTE]
-    > Pokud změníte tuto hodnotu v konfiguračním souboru `95-omsagent.conf`, pokud agent použije výchozí konfiguraci bude přepsán.
+    > Pokud změníte tuto hodnotu v konfiguračním souboru hello `95-omsagent.conf`, kdy hello agent platí výchozí konfiguraci bude přepsán.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -168,34 +168,34 @@ Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Konfigurace syslog ng by měl být upraven tak, že zkopírujete následující příklad konfigurace a přidání vlastní změny nastavení na konec syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`.  Proveďte **není** použít výchozí štítek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek k lepšímu odlišení změny.  
+* Hello syslog ng konfigurace by měl být upraven tak, že zkopírujete následující hello příklad konfigurace a přidání hello vlastní upravené nastavení toohello konec hello syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`.  Proveďte **není** použít výchozí štítek hello **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek toohelp rozlišit změny.  
 
     > [!NOTE]
-    > Pokud změníte výchozí hodnoty v konfiguračním souboru, budou při agent použije výchozí konfigurace přepsány.
+    > Pokud změníte výchozí hodnoty hello v konfiguračním souboru hello, budou při hello agent použije výchozí konfigurace přepsány.
     >
 
         filter f_custom_filter { level(warning) and facility(auth; };
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-Po dokončení změny, Syslog a OMS agent služba musí restartovat, aby se že projevily změny konfigurace.   
+Po dokončení změny hello, hello Syslog a hello služba agent OMS musí toobe restartovat tooensure hello konfigurace změny vstoupí v platnost.   
 
 ## <a name="syslog-record-properties"></a>Vlastnosti záznamu Syslog
-Zaznamenává Syslog mít typ **Syslog** a mít vlastnosti v následující tabulce.
+Zaznamenává Syslog mít typ **Syslog** a mít hello vlastnosti v hello následující tabulka.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost nebyla shromážděna z. |
-| Zařízení |Definuje část systému, který vygeneroval zprávu. |
-| HostIP |IP adresa systému odeslání zprávy. |
-| Název hostitele |Název systému odeslání zprávy. |
-| Úroveň závažnosti |Úroveň závažnosti události. |
-| SyslogMessage |Text zprávy. |
-| ID procesu |ID procesu, který vygeneroval zprávu. |
-| eventTime |Datum a čas, která byla vygenerována událost. |
+| Počítač |Počítač, který hello událost nebyla shromážděna z. |
+| Zařízení |Definuje hello součást hello systému, který vygeneroval zprávu hello. |
+| HostIP |IP adresa systému hello odesílání zprávy hello. |
+| Název hostitele |Název systému hello odesílání zprávy hello. |
+| Úroveň závažnosti |Úroveň závažnosti události hello. |
+| SyslogMessage |Text zprávy hello. |
+| ID procesu |ID procesu hello generovaný uvítací zprávu. |
+| eventTime |Datum a čas, který hello událostí byl vygenerován. |
 
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy Syslog
-Následující tabulka obsahuje různé příklady dotazů protokolu, která načítají záznamy Syslog.
+Hello následující tabulka obsahuje různé příklady dotazů protokolu, která načítají záznamy Syslog.
 
 | Dotaz | Popis |
 |:--- |:--- |
@@ -205,7 +205,7 @@ Následující tabulka obsahuje různé příklady dotazů protokolu, která na�
 | Typ = Syslog &#124; míra count() podle zařízení |Počet Syslog záznamy podle budovy. |
 
 >[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](log-analytics-log-search-upgrade.md), výše uvedené dotazy se změní na následující.
+> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak změní následující toohello hello výše dotazy.
 
 > | Dotaz | Popis |
 |:--- |:--- |
@@ -215,6 +215,6 @@ Následující tabulka obsahuje různé příklady dotazů protokolu, která na�
 | Syslog &#124; shrnout AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle budovy. |
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.
-* Použití [vlastní pole](log-analytics-custom-fields.md) k analýze dat z syslog záznamů do jednotlivých polí.
-* [Konfigurace agentů Linux](log-analytics-linux-agents.md) ke shromažďování dalších typů dat.
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) tooanalyze hello data budou shromažďovat ze zdroje dat a řešení.
+* Použití [vlastní pole](log-analytics-custom-fields.md) tooparse data z syslog záznamů do jednotlivých polí.
+* [Konfigurace agentů Linux](log-analytics-linux-agents.md) toocollect jiné datové typy.

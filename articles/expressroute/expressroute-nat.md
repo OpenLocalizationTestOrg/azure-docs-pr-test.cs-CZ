@@ -1,5 +1,5 @@
 ---
-title: "Požadavky na překlad adres (NAT) pro okruhy ExpressRoute | Dokumentace Microsoftu"
+title: "aaaNAT požadavky pro okruhy ExpressRoute | Microsoft Docs"
 description: "Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu překladu adres (NAT) pro okruhy ExpressRoute."
 documentationcenter: na
 services: expressroute
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09a0e841235de3f6b85e32172d7f99f20b5baf54
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-nat-requirements"></a>Požadavky na překlad adres (NAT) služby ExpressRoute
-Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat překlady adres (NAT). Někteří poskytovatelé připojení nabízejí nastavení a správu NAT jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit požadavky popsané dál. 
+cloudové služby tooMicrosoft tooconnect pomocí služby ExpressRoute, budete potřebovat tooset nahoru a spravovat zařízení NAT. Někteří poskytovatelé připojení nabízejí nastavení a správu NAT jako spravovanou službu. Pokud nabízejí těchto služeb, obraťte se na vaše toosee poskytovatele připojení. Pokud ne, je nutné splnit toohello požadavky popsané dál. 
 
-Přehled různých domén směrování získáte na stránce [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md). Pokud chcete splnit požadavky na veřejné IP adresy pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu, doporučujeme mezi vaší sítí a Microsoftem zřídit překlad adres NAT. Tato část poskytuje podrobný popis infrastruktury NAT, kterou je potřeba nastavit.
+Zkontrolujte hello [ExpressRoute okruhy a domény směrování](expressroute-circuit-peerings.md) stránka tooget hello přehled různých domén směrování. toomeet hello veřejnou IP adresu požadavky pro veřejný Azure a partnerský vztah Microsoftu, doporučujeme, abyste nastavili NAT mezi vaší sítí a Microsoftem. Tato část obsahuje podrobný popis infrastruktury NAT hello, potřebujete tooset nahoru.
 
 ## <a name="nat-requirements-for-azure-public-peering"></a>Požadavky NAT pro veřejný partnerský vztah Azure
-Cesta veřejného partnerského vztahu Azure vám umožňuje připojení ke všem službám, které jsou hostovány v Azure, přes jejich veřejné IP adresy. Sem patří služby uvedené v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) a všechny služby hostované nezávislými dodavateli softwaru v Microsoft Azure. 
+Hello cesty veřejného partnerského vztahu Azure umožňuje vám tooconnect tooall služby hostované v Azure přes jejich veřejné IP adresy. Mezi ně patří služby uvedené v hello [Expressroute – nejčastější dotazy](expressroute-faqs.md) a veškeré služby hostované nezávislými dodavateli softwaru v Microsoft Azure. 
 
 > [!IMPORTANT]
-> Připojení ke službám Microsoft Azure ve veřejném partnerském vztahu je vždycky iniciováno z vaší sítě do sítě Microsoftu. Proto relace nelze inicializovat ze služeb Microsoft Azure směrem k vaší síti přes ExpressRoute. Pokud dojde k takovému pokusu, pakety odeslané na tyto inzerované IP adresy použijí internet místo ExpressRoute.
+> Připojení tooMicrosoft Azure služby na veřejného partnerského vztahu je vždycky iniciováno z vaší sítě do sítě Microsoft hello. Relace nelze inicializovat z sítě tooyour služby Microsoft Azure, tedy přes ExpressRoute. Pokud pokus, inzerované toothese odeslaných paketů IP adresy používat hello internet místo ExpressRoute.
 > 
 
-Přenosy určené do Microsoft Azure ve veřejném partnerském vztahu musí být před jejich vstupem do sítě Microsoftu platné IPv4 adresy přeložené pomocí překladu SNAT. Následující obrázek poskytuje základní přehled o způsobu nastavení překladu síťových adres NAT, aby splňoval předchozí požadavek.
+Přenosy určené tooMicrosoft Azure ve veřejném partnerském vztahu musí být vstupem toovalid, veřejné IPv4 adresy před vstupem do sítě Microsoft hello. Následující obrázek Hello poskytuje základní přehled o tom, jak hello NAT může nastavit toomeet hello výše požadavek.
 
 ![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
 ### <a name="nat-ip-pool-and-route-advertisements"></a>Inzerování tras a fondu IP adres NAT
-Je nutné zajistit, aby provoz vstupující do cesty veřejného partnerského vztahu Azure měl platnou veřejnou IPv4 adresu. Microsoft musí být schopný ověřit vlastnictví fondu IPv4 adres NAT proti regionálnímu registru RIR nebo registru IRR. Kontrola bude provedená na základě čísla AS s partnerským vztahem a adres IP použitých pro NAT. Informace o registrech směrování najdete na stránce [Požadavky na směrování služby ExpressRoute](expressroute-routing.md).
+Musíte zajistit, aby provoz vstupující hello veřejné cesty partnerského vztahu Azure měl platnou veřejnou IPv4 adresu. Microsoft musí být schopný toovalidate hello vlastnictví hello fondu IPv4 adres NAT proti regionálnímu registru (RIR) nebo Internetu směrování registru IRR. Kontrola se provede podle hello jako číslo s partnerským a hello adres IP použitých pro hello adres (NAT) Odkazovat toohello [požadavky na směrování služby ExpressRoute](expressroute-routing.md) informace o registrech směrování.
 
-Neexistují žádná omezení délky předpon adres IP pro NAT inzerovaných prostřednictvím tohoto partnerského vztahu. Musíte monitorovat fond NAT a zajistit, že nemáte nedostatek relací NAT.
+Neexistují žádná omezení délky hello hello předpony adres IP pro NAT inzerovaných prostřednictvím tohoto partnerského vztahu. Musíte monitorovat fond NAT hello a ujistěte se, že nemáte nedostatek relací NAT..
 
 > [!IMPORTANT]
-> Fond IP adres NAT inzerovaný Microsoftu nesmí být inzerovaný do internetu. Tím by došlo k přerušení připojení k jiným službám Microsoftu.
+> Hello fond IP adres NAT inzerovaný tooMicrosoft nesmí být inzerovaný toohello Internetu. Tím dojde k přerušení služby Microsoft tooother připojení.
 > 
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Požadavky NAT pro partnerský vztah Microsoftu
-Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu, které nejsou podporované prostřednictvím cesty veřejného partnerského vztahu Azure. Mezi tyto služby patří služby Office 365, jako je Exchange Online, SharePoint Online, Skype pro firmy nebo Dynamics 365. Microsoft v partnerském vztahu Microsoftu očekává podporu obousměrného připojení. Přenosy určené cloudovým službám Microsoftu musí být před jejich vstupem do sítě Microsoftu platné IPv4 adresy přeložené pomocí překladu SNAT. Přenosy určené do vaší sítě z cloudových služeb Microsoftu musí být před vstupem do vaší sítě z internetu přeložené pomocí překladu SNAT, aby se zabránilo [asymetrickému směrování](expressroute-asymmetric-routing.md). Následující obrázek poskytuje základní přehled o způsobu nastavení překladu síťových adres NAT pro partnerský vztah Microsoftu.
+Cesta partnerského vztahu Microsoftu Hello vám umožní připojit se tooMicrosoft cloudové služby, které nejsou podporované prostřednictvím cesty veřejného partnerského vztahu Azure hello. Hello služby patří služby Office 365, jako je Exchange Online, SharePoint Online, Skype pro firmy a Dynamics 365. Microsoft očekává toosupport obousměrné připojení na partnerský vztah Microsoftu hello. Přenosy určené tooMicrosoft cloudové služby musí být vstupem toovalid, veřejné IPv4 adresy před vstupem do sítě Microsoft hello. Přenosy určené tooyour sítě z cloudových služeb Microsoftu musí být vstupem ve vaší hraniční tooprevent Internet [asymetrické směrování](expressroute-asymmetric-routing.md). Následující obrázek Hello poskytuje základní přehled o tom, jak hello NAT by měla být instalační program pro partnerský vztah Microsoftu.
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
-### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>Přenosy pocházející z vaší sítě určené do Microsoftu
-* Je nutné zajistit, aby provoz vstupující do cesty partnerského vztahu Microsoftu měl platnou veřejnou IPv4 adresu. Microsoft musí být schopný ověřit vlastníka fondu IPv4 adres NAT proti regionálnímu registru RIR nebo registru IRR. Kontrola bude provedená na základě čísla AS s partnerským vztahem a adres IP použitých pro NAT. Informace o registrech směrování najdete na stránce [Požadavky na směrování služby ExpressRoute](expressroute-routing.md).
-* Adresy IP použité pro nastavení veřejného partnerského vztahu Azure a jiné okruhy ExpressRoute nesmí být inzerované Microsoftu prostřednictvím relace protokolu BGP. Neexistuje žádné omezení délky předpon adres IP pro NAT inzerovaných prostřednictvím tohoto partnerského vztahu.
+### <a name="traffic-originating-from-your-network-destined-toomicrosoft"></a>Přenosy pocházející z vaší sítě určené tooMicrosoft
+* Musíte zajistit, aby provoz vstupující hello cesty partnerského vztahu Microsoftu měl platnou veřejnou IPv4 adresu. Microsoft musí být schopný toovalidate hello vlastník hello fondu IPv4 adres NAT proti hello regionálnímu registru (RIR) nebo Internetu směrování registru IRR. Kontrola se provede podle hello jako číslo s partnerským a hello adres IP použitých pro hello adres (NAT) Odkazovat toohello [požadavky na směrování služby ExpressRoute](expressroute-routing.md) informace o registrech směrování.
+* Použít IP adresy pro hello instalace nástroje Azure veřejného partnerského vztahu a jiné okruhy ExpressRoute nesmí být inzerovaný tooMicrosoft prostřednictvím relace protokolu BGP hello. Neexistuje žádné omezení délky hello hello předpony adres IP pro NAT inzerovaných prostřednictvím tohoto partnerského vztahu.
   
   > [!IMPORTANT]
-  > Fond IP adres NAT inzerovaný Microsoftu nesmí být inzerovaný do internetu. Tím by došlo k přerušení připojení k jiným službám Microsoftu.
+  > Hello fond IP adres NAT inzerovaný tooMicrosoft nesmí být inzerovaný toohello Internetu. Tím dojde k přerušení služby Microsoft tooother připojení.
   > 
   > 
 
-### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Přenosy pocházející z Microsoftu určené do vaší sítě
-* Některé scénáře vyžadují, aby Microsoft zahájil připojení ke koncovým bodům služby hostovaným v rámci vaší sítě. Typickým příkladem takového scénáře je připojení k serverům služby AD FS hostovaným ve vaší síti ze služeb Office 365. V takových případech musíte nechat uniknout příslušné předpony z vaší sítě do partnerského vztahu Microsoftu. 
-* Přenosy z Microsoftu je nutné před vstupem z internetu do koncových bodů služby v rámci vaší sítě přeložit pomocí překladu SNAT, aby se zabránilo [asymetrickému směrování](expressroute-asymmetric-routing.md). Požadavky **a odpovědi** s cílovou IP adresou, která odpovídá trase obdržené prostřednictvím ExpressRoute, se vždy odešlou přes ExpressRoute. K asymetrickému směrování dochází v případě, že je požadavek obdržen přes internet a odpověď odeslaná přes ExpressRoute. Překlad příchozích přenosů z Microsoftu před vstupem z internetu do vaší sítě pomocí překladu SNAT tento problém řeší tím, že vynutí odeslání přenosu s odpovědí zpět do internetu.
+### <a name="traffic-originating-from-microsoft-destined-tooyour-network"></a>Přenosy pocházející z Microsoftu určené tooyour sítě
+* Některé scénáře vyžadují Microsoft tooinitiate připojení tooservice koncové body hostované ve vaší síti. Typickým příkladem takového scénáře hello by připojení tooADFS servery hostované ve vaší síti ze služeb Office 365. V takových případech musíte nechat uniknout příslušné předpony z vaší sítě do partnerského vztahu Microsoft hello. 
+* Musí překládat pomocí SNAT Microsoft provoz na hello hraniční sítě Internet pro koncové body služby v rámci vaší sítě tooprevent [asymetrické směrování](expressroute-asymmetric-routing.md). Požadavky **a odpovědi** s cílovou IP adresou, která odpovídá trase obdržené prostřednictvím ExpressRoute, se vždy odešlou přes ExpressRoute. Asymetrické směrování existuje, pokud obdrží požadavek hello prostřednictvím Internetu hello s hello odpověď odeslaná přes ExpressRoute. SNATing hello příchozí Microsoft provoz na hello Internet edge vynutí odpověď provoz back toohello Internet okraji a vyřešení problému hello.
 
 ![Asymetrické směrování s ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si požadavky pro [směrování](expressroute-routing.md) a [technologii QoS](expressroute-qos.md).
+* Odkazovat toohello požadavky pro [směrování](expressroute-routing.md) a [QoS](expressroute-qos.md).
 * Informace o pracovním postupu najdete v tématu [Pracovní postupy zřizování okruhů ExpressRoute a stavy okruhu](expressroute-workflows.md).
 * Nakonfigurujte připojení ExpressRoute.
   
   * [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md)
   * [Konfigurace směrování](expressroute-howto-routing-classic.md)
-  * [Propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-classic.md)
+  * [Propojení virtuální sítě tooan okruh ExpressRoute](expressroute-howto-linkvnet-classic.md)
 

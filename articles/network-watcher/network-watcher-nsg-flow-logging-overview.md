@@ -1,6 +1,6 @@
 ---
-title: "Úvod do toku protokolování pro skupiny zabezpečení sítě s sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak pomocí protokolů NSG tok funkce sledovací proces sítě Azure"
+title: "aaaIntroduction tooflow protokolování pro skupiny zabezpečení sítě s sledovací proces sítě Azure | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak protokoly toouse NSG tok funkce sledovací proces sítě Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: b7a9162d6c6219b6b1c51a49cd34b9616e9d3e8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: da85e946147b14717144cb47d1c742057c6dfa24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do toku protokolování pro skupiny zabezpečení sítě
+# <a name="introduction-tooflow-logging-for-network-security-groups"></a>Úvod tooflow protokolování pro skupiny zabezpečení sítě
 
-Skupina zabezpečení sítě toku protokoly jsou funkce sledovací proces sítě, která vám umožní zobrazit informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě. Tyto protokoly toku jsou zapsané ve formátu json a zobrazit příchozí a odchozí toky na základě pravidla na síťový adaptér tok se vztahuje na 5 řazené kolekce členů informace o toku (protokol IP zdroj nebo cíl, zdrojový nebo cílový Port), a pokud se povoluje nebo odepírá provoz.
+Skupina zabezpečení sítě toku protokoly jsou funkce sledovací proces sítě, který vám umožní tooview informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě. Tyto protokoly toku jsou zapsané ve formátu json a zobrazit odchozí a příchozí tok na základě za pravidlo hello toku hello síťový adaptér se vztahuje na 5 řazené kolekce členů informace o toku hello (zdroj nebo cíl, zdrojový nebo cílový Port, protokol IP) a pokud hello bylo povolené přenosy nebo byl odepřen.
 
 ![Přehled protokoly toku][1]
 
-I když toku protokoluje cílové skupiny zabezpečení sítě, nejsou zobrazí stejné jako další protokoly. Tok protokoly se ukládají pouze v rámci účtu úložiště a následující cesta pro protokolování, jak je znázorněno v následujícím příkladu:
+Při toku protokoluje cílové skupiny zabezpečení sítě, nejsou zobrazeny hello stejné jako hello další protokoly. Tok protokoly se ukládají pouze v rámci účtu úložiště a cesta pro následující hello protokolování, jak je znázorněno v hello následující ukázka:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
 ```
 
-Do protokolů toku použít stejné zásady uchovávání informací jako zobrazené na další protokoly. Protokoly mít zásady uchovávání informací, můžete nastavit od 1 den do 365 dní. Pokud zásady uchovávání nejsou nastavené, protokoly se ukládají navždy.
+Hello stejné zásady uchovávání informací, jak je vidět další záznamy použít tooflow protokoly. Protokoly mít zásady uchovávání informací, můžete nastavit od 1 den too365 dnů. Pokud není nastavena zásady uchovávání informací, jsou navždy udržovat hello protokoly.
 
 ## <a name="log-file"></a>Soubor protokolu
 
-Tok protokolů mají více vlastností. V následujícím seznamu je seznam vlastností, které jsou vráceny v protokolu toku NSG:
+Tok protokolů mají více vlastností. Hello následujícím seznamu jsou uvedeny v seznamu hello vlastnosti, které jsou vráceny v hello NSG toku protokolu:
 
-* **čas** – čas při protokolu byla zaznamenána událost
+* **čas** – čas, kdy byla zaznamenána událost hello
 * **ID systému** -skupiny zabezpečení sítě ID prostředku.
-* **kategorie** – kategorie události, je vždy jednat NetworkSecurityGroupFlowEvent
-* **ResourceId** – prostředek Id NSG
+* **kategorie** -hello kategorie hello události, je vždy jednat NetworkSecurityGroupFlowEvent
+* **ResourceId** – prostředek Id hello NSG hello
 * **operationName** -vždy NetworkSecurityGroupFlowEvents
-* **vlastnosti** -kolekci vlastností toku
-    * **Verze** -číslo verze schématu toku protokolu událostí
+* **vlastnosti** -kolekci vlastností hello toku
+    * **Verze** -číslo verze schématu hello toku protokolu události
     * **toky** -kolekce toků. Tato vlastnost má několik záznamů pro různá pravidla
-        * **pravidlo** -pravidla pro tyto toky jsou uvedeny
+        * **pravidlo** -pravidlo, pro které hello jsou uvedeny toky
             * **toky** -kolekce toků
-                * **Mac** – adresa MAC síťového adaptéru pro virtuální počítač, kde byl shromážděn toku
-                * **flowTuples** -řetězec, který obsahuje více vlastností řazené kolekce členů toku ve formátu čárkami
-                    * **Časové razítko** – tato hodnota je časové razítko, když toku došlo k chybě ve formátu UNIX EPOCH
-                    * **Zdrojová adresa IP** -zdrojové IP adresy
-                    * **Cílové IP** -cílovou IP adresu
-                    * **Zdrojový Port** -zdrojový port
-                    * **Cílový Port** – cílový Port
-                    * **Protokol** -protokol toku. Platné hodnoty jsou **T** pro TCP a **U** pro UDP
-                    * **Tok provozu** -směr toku přenosu. Platné hodnoty jsou **I** pro příchozí a **O** pro odchozí.
+                * **Mac** -hello adresu MAC hello síťovou kartu pro hello virtuálního počítače, kde byl shromážděn hello toku
+                * **flowTuples** -řetězec, který obsahuje více vlastností hello toku řazené kolekce členů ve formátu čárkami
+                    * **Časové razítko** – tato hodnota je hello časového razítka, když hello toku došlo k chybě ve formátu UNIX EPOCH
+                    * **Zdrojová adresa IP** – hello zdrojová adresa IP
+                    * **Cílové IP** -hello cílovou IP adresu
+                    * **Zdrojový Port** – hello zdrojový port
+                    * **Cílový Port** -hello cílový Port
+                    * **Protokol** -hello protokol hello toku. Platné hodnoty jsou **T** pro TCP a **U** pro UDP
+                    * **Tok provozu** -hello směr toku provozu hello. Platné hodnoty jsou **I** pro příchozí a **O** pro odchozí.
                     * **Provoz** – ať povolené nebo zakázané přenosy. Platné hodnoty jsou **A** pro povolené a **D** pro odepřen.
 
 
-Následuje příklad toku protokolu. Jak vidíte, že existuje více záznamů, které následují seznam vlastností, které jsou popsané v předchozí části. 
+Hello následuje příklad toku protokolu. Jak vidíte, že existuje více záznamů, které následují hello seznam vlastností popsaných v předcházející části hello. 
 
 > [!NOTE]
-> Hodnoty ve vlastnosti flowTuples jsou seznam oddělený čárkami.
+> Hodnoty ve vlastnosti flowTuples hello jsou seznam oddělený čárkami.
  
 ```json
 {
@@ -102,7 +102,7 @@ Následuje příklad toku protokolu. Jak vidíte, že existuje více záznamů, 
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o povolení toku protokoly navštivte stránky [povolení toku protokolování](network-watcher-nsg-flow-logging-portal.md).
+Zjistěte, jak tooenable toku protokoly navštivte stránky [povolení toku protokolování](network-watcher-nsg-flow-logging-portal.md).
 
 Další informace o NSG protokolování, navštivte stránky [protokolu analýzy pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md).
 

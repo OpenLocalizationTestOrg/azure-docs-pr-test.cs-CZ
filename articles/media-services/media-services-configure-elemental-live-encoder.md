@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace kodér elementární za provozu na odesílat živý datový proud s jednou přenosovou rychlostí | Microsoft Docs"
-description: "Toto téma ukazuje, jak nakonfigurovat kodér elementární za provozu k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase."
+title: "aaaConfigure hello elementární Live toosend kodér živý datový proud s jednou přenosovou rychlostí | Microsoft Docs"
+description: "Toto téma ukazuje, jak tooconfigure hello elementární Live toosend kodér jednou přenosovou rychlostí datového proudu tooAMS kanály, které jsou povolené pro kódování v reálném čase."
 services: media-services
 documentationcenter: 
 author: cenkdin
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-ms.openlocfilehash: 668a3ab46a70c0ee25fa87031d27c0f4333ec89c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9a5de6189bfb123768a9da038b8c8db69cf85e91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>Pomocí kodéru elementární Live odesílat živý datový proud s jednou přenosovou rychlostí
+# <a name="use-hello-elemental-live-encoder-toosend-a-single-bitrate-live-stream"></a>Použít hello elementární Live kodér toosend živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
 > * [Elemental za provozu](media-services-configure-elemental-live-encoder.md)
 > * [Čase](media-services-configure-tricaster-live-encoder.md)
@@ -29,53 +29,53 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Toto téma ukazuje, jak nakonfigurovat [elementární Live](http://www.elementaltechnologies.com/products/elemental-live) ke odesílat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.  Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Toto téma ukazuje, jak tooconfigure hello [elementární Live](http://www.elementaltechnologies.com/products/elemental-live) kodér toosend tooAMS kanály, které jsou povolené kódování v reálném čase datového proudu s jednou přenosovou rychlostí.  Další informace najdete v tématu [práce s kanály, že jsou povolené tooPerform živé kódování službou Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítačích s Windows. Pokud jste na Mac nebo Linux, použijte portál Azure k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
+Tento kurz ukazuje, jak toomanage Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítačích s Windows. Pokud jste na Mac nebo Linux, použijte hello Azure portálu toocreate [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* Musí mít praktické znalosti použití elementární Live webové rozhraní pro vytváření živé události.
+* Musí mít praktické znalosti pomocí elementární Live webové rozhraní toocreate živé události.
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [spravovat koncové body streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md).
-* Nainstalujte nejnovější verzi [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
-* Spusťte nástroj a připojte se ke svému účtu AMS.
+* Nainstalujte nejnovější verzi hello hello [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
+* Spusťte nástroj hello a připojte se účet tooyour AMS.
 
 ## <a name="tips"></a>Tipy
 * Pokud je to možné, použijte standardní kabelové internetové připojení.
-* Obvykle při určování nároky na šířku pásma je dvakrát streamování přenosových rychlostí. Přestože není povinný požadavek, pomůže omezit účinek zahlcení sítě.
+* Obvykle při určování nároky na šířku pásma je toodouble hello streamování přenosových rychlostí. Přestože není povinný požadavek, pomůže zmírnit dopad hello zahlcení sítě.
 * Při použití softwaru na základě kodéry, zavřete se všechny nepotřebné programy.
 
 ## <a name="elemental-live-with-rtp-ingest"></a>Ingestování elementární živé s RTP
-V této části ukazuje, jak nakonfigurovat kodéru elementární za provozu, který odešle datový proud s jednou přenosovou rychlostí za provozu přes protokol RTP.  Další informace najdete v tématu [stream MPEG-TS využívající RTP](media-services-manage-live-encoder-enabled-channels.md#channel).
+Tato část uvádí, jak tooconfigure hello elementární Live kodér, který odešle s jednou přenosovou rychlostí živý datový proud využívající RTP.  Další informace najdete v tématu [stream MPEG-TS využívající RTP](media-services-manage-live-encoder-enabled-channels.md#channel).
 
 ### <a name="create-a-channel"></a>Vytvoření kanálu
 
-1. V nástroj AMSE, přejděte na **živé** kartě a klikněte pravým tlačítkem v oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
+1. Přejděte v hello nástroj AMSE, toohello **živé** kartě a klikněte pravým tlačítkem v rámci oblasti kanál hello. Vyberte **vytvořit kanál...** v nabídce hello.
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
 
-2. Zadejte název kanálu, pole popisu je volitelné. V části Nastavení kanál, vyberte **standardní** pro Live Encoding možnost s protokolem vstup nastavena na **RTP (MPEG-TS)**. Všechna ostatní nastavení jako je můžete nechat.
+2. Zadejte název kanálu, hello pole popisu je volitelné. V části Nastavení kanál, vyberte **standardní** pro hello Live Encoding možnost s hello vstupní protokol nastaven příliš**RTP (MPEG-TS)**. Všechna ostatní nastavení jako je můžete nechat.
 
-    Zajistěte, aby **nyní spustit nový kanál** je vybrána.
+    Ujistěte se, zda text hello **počáteční hello nový kanál teď** je vybrána.
 
 3. Klikněte na tlačítko **vytvořit kanál**.
 
    ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
 > [!NOTE]
-> Kanál může trvat až 20 minut před spuštěním.
+> Hello kanálu může trvat stejně dlouho jako toostart 20 minut.
 >
 >
 
-Při spouštění kanál můžete [nakonfigurovat kodér](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp).
+Při spouštění hello kanál můžete [konfigurace hello kodér](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp).
 
 > [!IMPORTANT]
 > Všimněte si, že fakturace začne hned, jak kanál přejde do stavu Připraveno. Další informace najdete v tématu [kanálu stavy](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-### <a id=configure_elemental_rtp></a>Konfigurace kodér elementární za provozu
-V tomto kurzu se používají následující nastavení výstup. Zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
+### <a id=configure_elemental_rtp></a>Konfigurace kodér hello elementární za provozu
+V tento kurz hello se používají následující výstup nastavení. Hello zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
 
 **Video**:
 
@@ -92,22 +92,22 @@ V tomto kurzu se používají následující nastavení výstup. Zbývající č
 * Vzorkovací frekvence: 44,1 kHz
 
 #### <a name="configuration-steps"></a>Kroky konfigurace
-1. Přejděte na **elementární Live** webové rozhraní a nastavení kodéru pro **UDP/TS** streamování.
-2. Jakmile dojde k vytvoření nové události, posuňte se dolů a výstup skupiny a přidat **UDP/TS** skupiny výstupu.
+1. Přejděte toohello **elementární Live** webové rozhraní a nastavte hello kodéru pro **UDP/TS** streamování.
+2. Jakmile dojde k vytvoření nové události, posuňte se dolů toohello výstup skupiny a přidejte hello **UDP/TS** skupiny výstupu.
 3. Vytvořit nový výstupní výběrem **nového datového proudu** a pak levým na **přidat výstup**.  
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
 
    > [!NOTE]
-   > Doporučuje se, že elementární událost má záznamy typu časového kódu nastavit na "Systémové hodiny" pomohou kodér znovu připojit v případě selhání datového proudu.
+   > Doporučujeme tuto událost elementární hello má časový kód hello nastavit také "Systémové hodiny" toohelp hello kodér znovu připojit v případě hello selhání datového proudu.
    >
    >
-4. Teď, když byla vytvořena výstup, klikněte na tlačítko **přidat datový proud**. Můžete teď konfigurovat nastavení výstup.
-5. Posuňte se dolů "Datový proud 1" kterou jste právě vytvořili, klikněte **Video** na levé straně a rozbalte **Upřesnit** v oddílu nastavení.
+4. Teď, když hello výstup byl vytvořen, klikněte na tlačítko **přidat datový proud**. nastavení výstupní Hello se teď dá nakonfigurovat.
+5. Posuňte se dolů toohello "Stream 1", kterou jste právě vytvořili, klikněte na tlačítko hello **Video** na levé straně hello a rozbalte hello **Upřesnit** v oddílu nastavení.
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental4.png)
 
-    Zatímco elementární Live obsahuje širokou škálu dostupné přizpůsobení, doporučujeme následující nastavení pro zahájení práce s streamování AMS.
+    Zatímco elementární Live obsahuje širokou škálu dostupné přizpůsobení, hello, doporučujeme následující nastavení pro zahájení práce s streamování tooAMS.
 
    * Řešení: 1280 × 720
    * Kmitočet snímků: 30
@@ -117,56 +117,56 @@ V tomto kurzu se používají následující nastavení výstup. Zbývající č
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental5.png)
 
-1. Získáte vstupní adresa URL kanálu.
+1. Získáte vstupní adresa URL kanálu hello.
 
-    Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile se stav změnil ze **počáteční** k **systémem**, můžete získat vstupní adresa URL.
+    Přejděte zpět toohello nástroj AMSE a zkontrolovat stav dokončení kanálu hello. Jakmile hello stav se změnil z **počáteční** příliš**systémem**, můžete získat hello vstupní adresa URL.
 
-    Při spuštění je kanál, klikněte pravým tlačítkem na název kanálu, přejděte dolů hover přes **adresa URL vstupu kopírování do schránky** a pak vyberte **primární adresa URL vstupu**.  
+    Když běží hello kanál, klikněte pravým tlačítkem na název kanálu hello, přejděte dolů toohover přes **kopie vstupu URL tooclipboard** a pak vyberte **primární adresa URL vstupu**.  
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental6.png)
-2. Tyto informace v vložit **primární cílové** pole z elementární. Všechna ostatní nastavení může zůstat výchozí.
+2. Tyto informace vložte hello **primární cílové** pole z hello Elemental. Všechna ostatní nastavení může zůstat výchozí hello.
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental14.png)
 
-    Pro další redundanci opakujte tyto kroky s adresou URL sekundární vstup tak, že vytvoříte samostatné kartě "Výstupní" pro streamování UDP/TS.
-3. Klikněte na tlačítko **vytvořit** (Pokud byla vytvořena novou událost) nebo **aktualizace** (Pokud úpravy existující událostí) a pak pokračujte spustit kodér.
+    Pro další redundanci opakujte tyto kroky s hello sekundární adresa URL vstupu tak, že vytvoříte samostatné kartě "Výstupní" pro streamování UDP/TS.
+3. Klikněte na tlačítko **vytvořit** (Pokud byla vytvořena novou událost) nebo **aktualizace** (Pokud úpravy existující událostí) a poté pokračujte toostart hello kodér.
 
 > [!IMPORTANT]
-> Před kliknutím na **spustit** na webové rozhraní elementární za provozu je **musí** Ujistěte se, že kanál je připravený.
-> Ujistěte se také, nechcete ponechat kanál ve stavu Připraveno bez události po dobu delší než > 15 minut.
+> Před kliknutím na **spustit** na hello elementární Live webové rozhraní, můžete **musí** zajistěte, aby byl kanál hello připraven.
+> Ujistěte se také, není tooleave hello kanál ve stavu Připraveno bez události po dobu delší než > 15 minut.
 >
 >
 
-Po spuštění datového proudu pro 30 sekund, přejděte zpět na AMSE nástroj a testování přehrávání.  
+Po spuštění hello datového proudu pro 30 sekund, přejděte zpět toohello AMSE nástroj a testování přehrávání.  
 
 ### <a name="test-playback"></a>Přehrávání testu
 
-Přejděte do nástroj AMSE, a klikněte pravým tlačítkem na kanál, který má být testována. V nabídce pozastavte ukazatel myši nad **přehrávání ve verzi Preview** a vyberte **s Azure Media Player**.  
+Nástroj AMSE toohello přejděte a klikněte pravým tlačítkem na toobe kanál hello testována. V nabídce hello, najeďte myší na **přehrávání hello Preview** a vyberte **s Azure Media Player**.  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
-Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
+Pokud datový proud hello objeví v hello player, hello kodér bylo správně nakonfigurované tooconnect tooAMS.
 
-Je-li k chybě, kanál bude nutné resetovat a upravit nastavení kodéru. Podrobnosti najdete [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.   
+Je-li k chybě, bude nutné hello kanál toobe resetování a kodér nastavení upravit. Najdete v tématu hello [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.   
 
 ### <a name="create-a-program"></a>Vytvořit program
-1. Po potvrzení kanálu přehrávání vytvořte program. V části **živé** v nástroj AMSE, klikněte v oblasti program pravým tlačítkem a vyberte **vytvořit nový Program**.  
+1. Po potvrzení kanálu přehrávání vytvořte program. V části hello **živé** v nástroj AMSE hello, klikněte v oblasti programu hello pravým tlačítkem a vyberte **vytvořit nový Program**.  
 
     ![Elementární](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
-2. Název programu a v případě potřeby upravit **délka archivačního okna** (výchozí 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
-3. Zkontrolujte **nyní spustit Program** pole.
+2. Název programu hello a v případě potřeby upravit hello **délka archivačního okna** (které hodiny too4 výchozí nastavení). Můžete také určit umístění úložiště nebo ponechte jako výchozí hello.  
+3. Zkontrolujte hello **počáteční hello teď Program** pole.
 4. Klikněte na tlačítko **vytvořit Program**.  
 
     >[!NOTE]
     > Vytváření programu trvá kratší dobu, než vytvoření kanálu.   
       
-5. Jakmile program běží, potvrďte přehrávání tak, že kliknete program pravým tlačítkem a přejdete na **přehrávání programech** a potom vyberete **s Azure Media Player**.  
-6. Po potvrzení, klikněte pravým tlačítkem na program znovu a vyberte **zkopírujte adresu URL výstup do schránky** (nebo načtení těchto informací z **programu informace a nastavení** možnost v nabídce).
+5. Jakmile hello aplikaci, potvrďte přehrávání tak, že kliknete pravým tlačítkem programu hello a navigace příliš**přehrávání hello programech** a potom vyberete **s Azure Media Player**.  
+6. Po potvrzení, klikněte pravým tlačítkem na programu hello znovu a vyberte **zkopírujte tooClipboard URL výstup hello** (nebo načtení těchto informací z hello **programu informace a nastavení** možnost nabídce hello).
 
-Datový proud je nyní připravena vložených v přehrávač, nebo distribuovány do cílovou skupinu pro zobrazení za provozu.  
+datový proud Hello je nyní připraven toobe vložených v přehrávač nebo cílovou skupinu distribuované tooan live zobrazení.  
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Podrobnosti najdete [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.
+Najdete v tématu hello [řešení potíží s](media-services-troubleshooting-live-streaming.md) tématu pokyny.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure službách a technologiích | Microsoft Docs"
-description: "Tento článek poskytuje kurátorované seznam zabezpečení Azure službách a technologiích."
+title: "aaaAzure zabezpečení službách a technologiích | Microsoft Docs"
+description: "Hello článek obsahuje seznam spravovaných služeb zabezpečení Azure a technologie."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
-ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 100b7bba46dce5f989bde2f6d930f298beb901a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Zabezpečení Azure službách a technologiích
-V našem diskuze s aktuálním a budoucím Azure zákazníků jsme se často dotaz "máte seznam všech zabezpečení souvisejících službách a technologiích, které Azure nabízí?"
+V našem diskuze s aktuálním a budoucím Azure zákazníků jsme se často dotaz "máte seznam všech hello zabezpečení souvisejících službách a technologiích, že Azure má toooffer?"
 
-Jsme uvědomit, že když vyhodnocujete technické možnosti poskytovatele cloudové služby, je vhodné mít tento seznam k dispozici, můžete proniknout dolů hlubší Pokud je pro vás správný čas.
+Jsme uvědomit, že když vyhodnocujete technické možnosti poskytovatele cloudové služby, je užitečné toohave tohoto seznamu k dispozici, které můžete použít toodig dolů hlubší Pokud je pro vás správný čas hello.
 
-Toto je naše počáteční úsilí na poskytování seznamu. Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. V seznamu je zařazený do kategorie a seznamu kategorií se taky zvýší v čase. Ujistěte se, že zkontrolujte tuto stránku v pravidelných intervalech zůstane aktuální na našem související se zabezpečením službách a technologiích.
+Hello následuje našeho počáteční úsilí na poskytování seznamu. Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. seznam Hello je zařazený do kategorie a hello seznamu kategorií se taky zvýší v čase. Ujistěte se, že toocheck tuto stránku v pravidelných intervalech toostay aktuální na našem související se zabezpečením službách a technologiích.
 
 ## <a name="azure-security---general"></a>Azure Security – obecné
 * [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/)

@@ -1,6 +1,6 @@
 ---
-title: "Plánování kapacity a škálování pro replikaci virtuálních počítačů technologie Hyper-V (bez VMM) do Azure s Azure Site Recovery | Microsoft Docs"
-description: "Použijte tento článek k plánování kapacity a škálování při replikaci virtuálních počítačů Hyper-V do Azure s Azure Site Recovery"
+title: "aaaPlan kapacity a škálování pro virtuální počítač Hyper-V tooAzure replikace (bez VMM) s Azure Site Recovery | Microsoft Docs"
+description: "Použijte tento článek tooplan kapacity a škálování při replikaci virtuálních počítačů Hyper-V tooAzure s Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.openlocfilehash: c7891c188c2cecbbf056fa79672a13bb16fa7fcf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f5b029f273e51c01c7d918d176832f6d1735b5f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-3-plan-capacity-and-scaling-for-hyper-v-to-azure-replication"></a>Krok 3: Plánování kapacity a škálování pro Hyper-V na Azure replikaci
+# <a name="step-3-plan-capacity-and-scaling-for-hyper-v-tooazure-replication"></a>Krok 3: Plánování kapacity a škálování tooAzure replikaci technologie Hyper-V
 
-Pomocí tohoto článku a pokuste se zjistit plánování kapacity a škálování, při replikaci virtuálních počítačů technologie Hyper-V v místě (bez System Center VMM) do Azure s [Azure Site Recovery](site-recovery-overview.md).
+Použijte tento článek toofigure plánování kapacity a škálování při replikaci virtuálních počítačů technologie Hyper-V (bez System Center VMM) tooAzure místní s [Azure Site Recovery](site-recovery-overview.md).
 
-Po přečtení tohoto článku, post jakékoli komentáře v dolní části, nebo požádat technické dotazy na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Po přečtení tohoto článku, post jakékoli komentáře v dolní části hello, nebo požádat technické dotazy na hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="how-do-i-start-capacity-planning"></a>Jak spustit plánování kapacity?
 
 
-Shromážděte informace o prostředí replikace a pak plánování kapacity, na základě těchto informací, společně s aspekty zvýrazněných v tomto článku.
+Shromážděte informace o prostředí replikace a pak plánování kapacity, na základě těchto informací, společně s hello aspekty zvýrazněných v tomto článku.
 
 
 ## <a name="gather-information"></a>Shromážděte informace
 
 1. Získat informace o prostředí replikace, včetně virtuální počítačů, disků na virtuální počítač a úložišti na disk.
-2. Určete vaše denní míry změn s ohledem pro replikovaná data. Stažení [nástroj plánování kapacity služby technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) získat míru změn. Doporučujeme, aby že tento nástroj spustíte přes týden k zachycení průměry.
+2. Určete vaše denní míry změn s ohledem pro replikovaná data. Stáhnout hello [nástroj plánování kapacity služby technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) míru změn tooget hello. Doporučujeme, aby že tento nástroj spustíte přes toocapture týden průměry.
  
 
 ## <a name="figure-out-capacity"></a>Zjistěte, kapacity
 
-Na základě informací jste shromáždění, spusťte [nástroje Plánovač kapacity obnovení lokality](http://aka.ms/asr-capacity-planner-excel) analyzovat vaše zdrojové prostředí a úlohy, odhadnout požadavky na šířku pásma a prostředky serveru pro umístění zdroje a prostředky (virtuální počítače a úložiště atd), které je třeba v cílovém umístění. Nástroj můžete spustit v několika režimy:
+Na základě informací hello jste shromáždění spustíte hello [nástroje Plánovač kapacity obnovení lokality](http://aka.ms/asr-capacity-planner-excel) tooanalyze vaše zdrojové prostředí a úlohy, odhadnout požadavky na šířku pásma a server pro umístění zdroje hello a hello prostředky (virtuální počítače a úložiště atd), které je třeba v cílovém umístění hello. Hello nástroj můžete spustit v několika způsoby:
 
-- Rychlé plánování: spuštění nástroje v tomto režimu získat sítě a serveru projekce založené na průměrném počtu virtuálních počítačů, disků, úložiště a míru změn.
-- Podrobné plánování: Spusťte nástroj v tomto režimu a uveďte podrobné informace o každé zatížení na úrovni virtuálního počítače. Analýza kompatibility virtuálních počítačů a získat projekce sítě a serveru.
+- Rychlé plánování: Spusťte nástroj hello v tomto režimu tooget sítě a serveru projekce založené na průměrném počtu virtuálních počítačů, disků, úložiště a míru změn.
+- Podrobné plánování: Spusťte nástroj hello v tomto režimu a uveďte podrobné informace o každé zatížení na úrovni virtuálního počítače. Analýza kompatibility virtuálních počítačů a získat projekce sítě a serveru.
 
-Nyní spusťte nástroj:
+Nyní spusťte nástroj hello:
 
-1. Stažení [nástroj](http://aka.ms/asr-capacity-planner-excel)
-2. Chcete-li spustit Rychlý planner, postupujte podle [tyto pokyny](site-recovery-capacity-planner.md#run-the-quick-planner)a vyberte scénáři **technologie Hyper-V do Azure**.
-3. Chcete-li spustit podrobné planner, postupujte podle [tyto pokyny](site-recovery-capacity-planner.md#run-the-detailed-planner)a vyberte scénáři **technologie Hyper-V do Azure**.
+1. Stáhnout hello [nástroj](http://aka.ms/asr-capacity-planner-excel)
+2. toorun hello rychlé planner, postupujte podle [tyto pokyny](site-recovery-capacity-planner.md#run-the-quick-planner)a vyberte hello scénář **tooAzure technologie Hyper-V**.
+3. toorun hello podrobné planner, postupujte podle [tyto pokyny](site-recovery-capacity-planner.md#run-the-detailed-planner)a vyberte hello scénář **technologie Hyper-V tooAzure**.
 
 ## <a name="control-network-bandwidth"></a>Řídí šířku pásma sítě
 
-Poté, co jste vypočítat šířku pásma, které potřebujete, máte několik možností pro řízení šířky pásma sítě používané pro replikaci:
+Poté, co jste počítané hello šířky pásma, které potřebujete, máte několik možností pro ovládání hello objemu šířky pásma používané pro replikaci:
 
-* **Omezení šířky pásma**: přenos Hyper-V, která se replikují do Azure prochází konkrétního hostitele technologie Hyper-V. Šířku pásma na hostitelském serveru můžete omezit.
-* **Ovlivnění šířky pásma**: můžete ovlivnit šířku pásma používanou pro replikaci pomocí několika klíčů registru.
+* **Omezení šířky pásma**: přenos Hyper-V, která se replikují tooAzure prochází konkrétního hostitele technologie Hyper-V. Můžete omezit šířku pásma na hostitelském serveru hello.
+* **Ovlivnění šířky pásma**: můžete ovlivnit hello pásma sítě používané pro replikaci pomocí několika klíčů registru.
 
 ### <a name="throttle-bandwidth"></a>Omezení šířky pásma
-1. Otevřete modul snap-in Microsoft Azure Backup konzoly MMC na hostitelském serveru Hyper-V. Ve výchozím nastavení je na ploše nebo v umístění C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin zástupce služby Microsoft Azure Backup.
-2. V modulu snap-in klikněte na **Změnit vlastnosti**.
-3. Na kartě **Omezování** vyberte **Povolit omezování šířky pásma internetu u operací zálohování** a nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou 512 kB/s až 102 MB/s.
+1. Otevřete hello Microsoft Azure Backup konzoly MMC modul snap-in na serveru hostitele technologie Hyper-V hello. Ve výchozím nastavení je k dispozici na ploše hello nebo v C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin zástupce služby Microsoft Azure Backup.
+2. V modulu snap-in hello klikněte na **změnit vlastnosti**.
+3. Na hello **omezování** vyberte **povolit využití šířky pásma Internetu u operací zálohování omezení**a nastavte hello limity pro pracovní a nepracovní dobu. Platné rozsahy jsou 512 kB/s too102 MB/s za sekundu.
 
     ![Omezení šířky pásma](./media/hyper-v-site-walkthrough-capacity/throttle2.png)
 
-Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx). Tady je ukázkový skript:
+Můžete taky hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) rutiny tooset omezení. Tady je ukázkový skript:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -75,11 +75,11 @@ Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting]
 **Set-OBMachineSetting -NoThrottle** označuje, že není požadováno žádné omezování.
 
 ### <a name="influence-network-bandwidth"></a>Ovlivnění šířky pásma sítě
-1. V registru přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * K ovlivnění šířky pásma provoz na replikaci disku, změňte hodnotu **UploadThreadsPerVM**, nebo vytvořte klíč, pokud neexistuje.
-   * K ovlivnění šířky pásma pro přenosy navrácení služeb po obnovení z Azure, změňte hodnotu **DownloadThreadsPerVM**.
-2. Výchozí hodnota je 4. V síti s „nadměrným zřízením“ je třeba tyto klíče registru změnit z výchozích hodnot. Maximum je 32. Monitorováním provozu hodnotu optimalizujte.
+1. V registru hello přejděte příliš**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+   * tooinfluence hello šířky pásma provoz na replikaci disku, upravte hodnotu hello hello **UploadThreadsPerVM**, nebo vytvořte klíč hello, pokud neexistuje.
+   * tooinfluence hello šířky pásma pro přenosy navrácení služeb po obnovení z Azure, upravte hodnotu hello **DownloadThreadsPerVM**.
+2. Hello výchozí hodnota je 4. V síti "nadměrným zřízením" tyto klíče registru by mělo být změněno z hello výchozí hodnoty. maximální Hello je 32. Monitorování přenosů toooptimize hello hodnotu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte na [krok 4: plánování sítě](hyper-v-site-walkthrough-network.md).
+Přejděte příliš[krok 4: plánování sítě](hyper-v-site-walkthrough-network.md).

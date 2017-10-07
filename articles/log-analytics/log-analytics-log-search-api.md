@@ -1,6 +1,6 @@
 ---
-title: "Analýzy protokolů protokolu vyhledávání REST API | Microsoft Docs"
-description: "Tato příručka obsahuje základní kurz popisující, jak můžete použít vyhledávání analýzy protokolů REST API v Operations Management Suite (OMS) a poskytuje příklady, které ukazují, jak používat příkazy."
+title: "hledání aaaLog analýzy protokolů REST API | Microsoft Docs"
+description: "Tato příručka poskytuje základní kurz popisující, jak je možné používat hello analýzy protokolů hledání rozhraní API REST v hello Operations Management Suite (OMS) a poskytuje příklady, které ukazují, jak toouse hello příkazy."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 78afb2f065dde4a3e7a3ab787c939b3c52b72cc6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dafe5eeb8cc11a339f2cbf78cec657e344d87cac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Hledání protokolu analýzy protokolů REST API
-Tato příručka obsahuje základní kurz, včetně příkladů, jak můžete pomocí rozhraní REST API Log Analytics Search. Analýzy protokolů je součástí Operations Management Suite (OMS).
+Tato příručka obsahuje základní kurz, včetně příkladů, jak lze použít hello Log Analytics vyhledávání REST API. Analýzy protokolů je součástí hello Operations Management Suite (OMS).
 
 > [!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak by měly být nadále používat starší verze dotazovací jazyk s hledání protokolů rozhraní API, jak je popsáno v tomto článku.  Nové rozhraní API, budou vydané pro upgradovaný pracovní prostory, a v dokumentaci budou aktualizovány v daném čase. 
+> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak by měly pokračovat toouse hello starší verze dotazovací jazyk s hledání protokolů hello rozhraní API, jak je popsáno v tomto článku.  Nové rozhraní API, budou vydané pro upgradovaný pracovních prostorů a dokumentaci hello budou aktualizovány v daném čase. 
 
 > [!NOTE]
-> Analýzy protokolů volala dřív Operational Insights, proto je název používaný v poskytovatele prostředků.
+> Analýzy protokolů volala dřív Operational Insights, proto je hello název používaný v hello poskytovatele prostředků.
 >
 >
 
-## <a name="overview-of-the-log-search-rest-api"></a>Přehled protokolu hledání rozhraní REST API
-Rozhraní REST API Log Analytics Search je dosáhl standardu RESTful a je přístupný prostřednictvím rozhraní API služby Azure Resource Manager. Tento článek obsahuje příklady přístup k rozhraní API prostřednictvím [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku s otevřeným zdrojem, který zjednodušuje volání rozhraní API služby Azure Resource Manager. Použití ARMClient je jedním z mnoha možností pro přístup k rozhraní API pro vyhledávání Analytics protokolu. Další možností je použít modul Azure PowerShell pro OperationalInsights, který obsahuje rutiny pro přístup k vyhledávání. Pomocí těchto nástrojů můžete využít rozhraní API služby Azure Resource Manager provádět volání do OMS pracovních prostorů a provádět příkazy vyhledávání v nich. Rozhraní API výstupy výsledků vyhledávání ve formátu JSON, budete moci použít výsledky hledání v mnoha různými způsoby prostřednictvím kódu programu.
+## <a name="overview-of-hello-log-search-rest-api"></a>Přehled hello protokolu vyhledávání REST API
+Hello Log Analytics vyhledávání REST API je dosáhl standardu RESTful a je přístupný prostřednictvím hello rozhraní API Správce prostředků Azure. Tento článek obsahuje příklady přístup k API hello prostřednictvím [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku s otevřeným zdrojem, který zjednodušuje vyvolání hello rozhraní API Správce prostředků Azure. použití Hello ARMClient je jedním z mnoha možností tooaccess hello Log Analytics vyhledávání API. Další možností je modul Azure PowerShell hello toouse pro OperationalInsights, který obsahuje rutiny pro přístup k vyhledávání. Pomocí těchto nástrojů můžete využívat pracovní prostory hello rozhraní API služby Azure Resource Manager toomake volání tooOMS a provádět příkazy vyhledávání v nich. Hello API výstupy výsledky hledání ve formátu JSON, což vám výsledky hledání hello toouse mnoha různými způsoby prostřednictvím kódu programu.
 
-Azure Resource Manager je možné prostřednictvím [knihovna pro .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) a [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx). Další informace, zkontrolujte propojené webové stránky.
+Hello Azure Resource Manager je možné prostřednictvím [knihovna pro .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) a hello [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx). toolearn víc, přečtěte si hello propojené webové stránky.
 
 > [!NOTE]
-> Pokud například použijete příkaz agregace `|measure count()` nebo `distinct`, každé volání hledání může vrátit maximálně 500 000 záznamů. Hledání, které neobsahují příkaz agregace vrátit maximálně 5 000 záznamů.
+> Pokud například použijete příkaz agregace `|measure count()` nebo `distinct`, každé volání toosearch může vrátit maximálně 500 000 záznamů. Hledání, které neobsahují příkaz agregace vrátit maximálně 5 000 záznamů.
 >
 >
 
 ## <a name="basic-log-analytics-search-rest-api-tutorial"></a>Základní kurz Log Analytics vyhledávání REST API
-### <a name="to-use-armclient"></a>Chcete-li použít ARMClient
-1. Nainstalujte [Chocolatey](https://chocolatey.org/), což je otevřete Správce balíčků zdroje pro systém Windows. Otevřete okno příkazového řádku jako správce a spusťte následující příkaz:
+### <a name="toouse-armclient"></a>toouse ARMClient
+1. Nainstalujte [Chocolatey](https://chocolatey.org/), což je otevřete Správce balíčků zdroje pro systém Windows. Otevřete okno příkazového řádku jako správce a spusťte následující příkaz hello:
 
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     ```
-2. Instalace ARMClient spuštěním následujícího příkazu:
+2. Instalace ARMClient spuštěním hello následující příkaz:
 
     ```
     choco install armclient
     ```
 
-### <a name="to-perform-a-search-using-armclient"></a>K provedení vyhledávání pomocí ARMClient
+### <a name="tooperform-a-search-using-armclient"></a>tooperform a vyhledávání pomocí ARMClient
 1. Přihlaste se pomocí účtu Microsoft nebo pracovní nebo školní účet:
 
     ```
     armclient login
     ```
 
-    Úspěšné přihlášení zobrazí všechny odběry vázaný na daný účet:
+    Úspěšné přihlášení uvádí všechny odběry svázané toohello zadaný účet:
 
     ```
     PS C:\Users\SampleUserName> armclient login
@@ -72,13 +72,13 @@ Azure Resource Manager je možné prostřednictvím [knihovna pro .NET](https://
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 2)
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 3)
     ```
-2. Získáte pracovní prostory služby Operations Management Suite:
+2. Získáte pracovní prostory hello Operations Management Suite:
 
     ```
     armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20
     ```
 
-    Úspěšné volání Get by výstup všechny pracovní prostory, které jsou vázané na předplatné:
+    Úspěšné volání Get by výstup, že všechny pracovní prostory svázané toohello předplatného:
 
     ```
     {
@@ -108,7 +108,7 @@ Azure Resource Manager je možné prostřednictvím [knihovna pro .NET](https://
     ```
 
 ## <a name="log-analytics-search-rest-api-reference-examples"></a>Příklady referenční dokumentace rozhraní API REST Analytics vyhledávání protokolu
-Následující příklady ukazují, jak můžete použít rozhraní API služby Search.
+Hello následující příklady ukazují, jak je možné používat hello rozhraní API pro hledání.
 
 ### <a name="search---actionread"></a>Hledání - akce/čtení
 **Ukázka adresa Url:**
@@ -133,17 +133,17 @@ Následující příklady ukazují, jak můžete použít rozhraní API služby 
     }
     armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2015-03-20 $searchParametersJson
 ```
-Následující tabulka popisuje vlastnosti, které jsou k dispozici.
+Hello následující tabulka popisuje hello vlastnosti, které jsou k dispozici.
 
 | **Vlastnost** | **Popis** |
 | --- | --- |
-| Horní |Maximální počet výsledků vrátit. |
+| Horní |Hello maximální počet výsledků tooreturn. |
 | Zvýrazněte |Obsahuje předběžné a post parametry, obvykle použité pro zvýraznění odpovídající pole |
-| Před |Předpony daný řetězec, který má vaše odpovídající pole. |
-| POST |Daný řetězec připojí k vaší odpovídající pole. |
-| query |Vyhledávací dotaz, použít ke shromažďování a vrátí výsledky. |
-| start |Začátek časový interval, který chcete výsledky, která se má najít z. |
-| End |Konec časový interval, který chcete výsledky, která se má najít z. |
+| Před |Předpony hello zadaný řetězec tooyour shodná pole. |
+| POST |Připojí zadaný řetězec tooyour shodná pole hello. |
+| query |vyhledávací dotaz Hello používá toocollect a vrátí výsledky. |
+| start |Hello začátek časového okna hello chcete výsledky toobe nalezených v. |
+| End |Hello konec časového okna hello chcete výsledky toobe nalezených v. |
 
 **Odpověď:**
 
@@ -197,14 +197,14 @@ Následující tabulka popisuje vlastnosti, které jsou k dispozici.
 ```
 
 ### <a name="searchid---actionread"></a>Hledání / {ID} - akce/čtení
-**Požadavek na obsah uložené výsledky hledání:**
+**Žádost o obsah hello uložené výsledky hledání:**
 
 ```
     armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2015-03-20
 ```
 
 > [!NOTE]
-> Pokud hledání vrátí se stavem "Čekající na vyřízení", pak dotazování aktualizované výsledky lze provést prostřednictvím tohoto rozhraní API. Po 6 minimum výsledek hledání budou odstraněna z mezipaměti a zmizel HTTP bude vrácen. Pokud požadavek počáteční vyhledávání vrátí, úspěšné, stav okamžitě, výsledky nejsou přidány do mezipaměti způsobuje toto rozhraní API vrátit zmizel HTTP, pokud dotaz. Obsah výsledek HTTP 200 jsou ve stejném formátu jako počáteční vyhledávání požadavek právě s aktualizovanými hodnotami.
+> Pokud hello vyhledávání vrací se stavem 'Čekající', dotazování hello aktualizovat výsledky můžete to provést prostřednictvím tohoto rozhraní API. Po 6 min hello výsledky hledání hello budou odstraněna z mezipaměti hello a zmizel HTTP bude vrácen. Pokud požadavek počáteční hledání hello vrátí 'úspěšné, stav okamžitě, výsledky hello nebyly přidány toohello mezipaměti způsobuje toto rozhraní API tooreturn zmizel HTTP, pokud dotaz. obsah Hello výsledek HTTP 200 jsou hello stejný formát jako požadavku počáteční hledání hello právě s aktualizovanými hodnotami.
 >
 >
 
@@ -219,18 +219,18 @@ Podporované metody: GET, PUT odstranit
 
 Podporované metody kolekce: získání
 
-Následující tabulka popisuje vlastnosti, které jsou k dispozici.
+Hello následující tabulka popisuje hello vlastnosti, které jsou k dispozici.
 
 | Vlastnost | Popis |
 | --- | --- |
-| ID |Jedinečný identifikátor. |
-| Značka Etag |**Vyžaduje se pro opravu**. Server aktualizaci na každý zápis. Hodnota musí být stejná jako aktuální hodnota uložené nebo ' *' aktualizovat. 409 vrátil hodnoty starý nebo neplatná. |
-| Properties.Query |**Požadované**. Vyhledávací dotaz. |
-| properties.displayName |**Požadované**. Uživatelem definované zobrazovaný název dotazu. |
-| Properties.category |**Požadované**. Uživatelem definované kategorie dotaz. |
+| ID |Jedinečný identifikátor Hello. |
+| Značka Etag |**Vyžaduje se pro opravu**. Server aktualizaci na každý zápis. Hodnota musí být rovna toohello aktuální uložené hodnoty nebo ' *' tooupdate. 409 vrátil hodnoty starý nebo neplatná. |
+| Properties.Query |**Požadované**. Hello vyhledávací dotaz. |
+| properties.displayName |**Požadované**. uživatelem definované zobrazovaný název Hello hello dotazu. |
+| Properties.category |**Požadované**. Hello uživatelem definované kategorie hello dotazu. |
 
 > [!NOTE]
-> Rozhraní API pro vyhledávání analýzy protokolů aktuálně vrací hodnotu vytvořené uživatelem uložená hledání při dotazování pro uložená hledání v pracovním prostoru. Rozhraní API nevrací uložená hledání poskytované řešení.
+> Hello rozhraní API pro vyhledávání analýzy protokolů aktuálně vrací hodnotu vytvořené uživatelem uložená hledání při dotazování pro uložená hledání v pracovním prostoru. Hello API nevrací uložená hledání poskytované řešení.
 >
 >
 
@@ -243,7 +243,7 @@ Následující tabulka popisuje vlastnosti, které jsou k dispozici.
 ```
 
 > [!NOTE]
-> Název pro všechny uložená hledání, plány a akce, které jsou vytvořené pomocí rozhraní API Log Analytics musí být malými písmeny.
+> Název Hello všechna uložená hledání, plány a akce, které jsou vytvořené pomocí hello Log Analytics API musí být malými písmeny.
 
 ### <a name="delete-saved-searches"></a>Odstraňte uložená hledání
 **Žádost:**
@@ -261,7 +261,7 @@ Následující tabulka popisuje vlastnosti, které jsou k dispozici.
 ```
 
 ### <a name="metadata---json-only"></a>Metadata – pouze JSON
-Tady je způsob, jak je uvedeno v poli pro všechny typy protokolu pro data shromážděná v pracovním prostoru. Například pokud chcete, že znáte, pokud má tento typ události pole s názvem počítače, pak tento dotaz je jeden způsob kontroly.
+Zde je způsob toosee hello pole pro všechny typy protokolu pro hello data shromážděná v pracovním prostoru. Například pokud chcete, že víte, že pokud hello typ události obsahuje pole s názvem počítače, pak tento dotaz je jedním ze způsobů toocheck.
 
 **Žádost o pole:**
 
@@ -300,25 +300,25 @@ Tady je způsob, jak je uvedeno v poli pro všechny typy protokolu pro data shro
     }
 ```
 
-Následující tabulka popisuje vlastnosti, které jsou k dispozici.
+Hello následující tabulka popisuje hello vlastnosti, které jsou k dispozici.
 
 | **Vlastnost** | **Popis** |
 | --- | --- |
 | jméno |Název pole. |
-| displayName |Zobrazovaný název pole. |
-| type |Typ v poli hodnota. |
+| displayName |Hello zobrazovaný název pole hello. |
+| type |Typ hodnoty pole hello Hello. |
 | facetable (kategorizovatelné) |Kombinace aktuální 'indexované', ' uložené ' a 'omezující vlastnost' vlastnosti. |
 | Zobrazení |Aktuální vlastnost 'display'. Hodnota TRUE, pokud pole je viditelné ve vyhledávání. |
-| ownerType |Snížit na pouze typy, které patří do zařazený nemá IP. |
+| ownerType |Typy snížené tooonly patřící tooonboarded IP. |
 
 ## <a name="optional-parameters"></a>Volitelné parametry
-Následující informace popisují volitelné parametry, které jsou k dispozici.
+Následující informace Hello popisuje volitelné parametry, které jsou k dispozici.
 
 ### <a name="highlighting"></a>Zvýraznění
-"Zvýraznění" parametr je volitelný parametr, který můžete použít k vyžádání subsystém hledání obsahují sadu značek v odpovědi.
+Hello "Highlight" parametr je volitelný parametr můžete použít toorequest hello vyhledávání subsystému obsahují sadu značek v odpovědi.
 
-Tyto značky upozornění na zahájení a ukončení zvýrazněný text, který odpovídá podmínky uvedené v vyhledávací dotaz.
-Můžete určit počáteční a koncové značky, které jsou používány vyhledávání obtékat zvýrazněná termín.
+Tyto značky upozornění hello zahájení a ukončení zvýrazněný text, který odpovídá hello podmínky uvedené v vyhledávací dotaz.
+Může zadat hello počáteční a koncovou značek, které jsou používány hledaný termín hello zvýrazněná toowrap.
 
 **Příklad vyhledávací dotaz.**
 
@@ -361,10 +361,10 @@ Můžete určit počáteční a koncové značky, které jsou používány vyhle
     }
 ```
 
-Všimněte si, že předchozí výsledek obsahuje chybovou zprávu, která má předponu a připojí.
+Všimněte si, že hello předchozí výsledek obsahuje chybovou zprávu, která má předponu a připojí.
 
 ## <a name="computer-groups"></a>Skupiny počítačů
-Skupiny počítačů jsou speciální uložená hledání, které vrátí sadu počítačů.  Skupina počítačů můžete použít v jiné dotazy omezit výsledky do počítače ve skupině.  Skupina počítačů je implementovaný jako uložené hledání se skupiny značku s hodnotou počítače.
+Skupiny počítačů jsou speciální uložená hledání, které vrátí sadu počítačů.  Můžete vytvořit skupinu počítačů v jiných dotazy toolimit hello výsledky toohello počítačů ve skupině hello.  Skupina počítačů je implementovaný jako uložené hledání se skupiny značku s hodnotou počítače.
 
 Následuje ukázková odpověď pro skupinu počítačů.
 
@@ -383,18 +383,18 @@ Následuje ukázková odpověď pro skupinu počítačů.
 ```
 
 ### <a name="retrieving-computer-groups"></a>Načítání skupin počítačů
-Chcete-li načíst skupinu počítačů, použijte metodu Get s ID skupiny.
+ID tooretrieve skupinu počítačů použijte hello metodu Get s hello skupiny.
 
 ```
 armclient get /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Group ID}`?api-version=2015-03-20
 ```
 
 ### <a name="creating-or-updating-a-computer-group"></a>Vytváření nebo aktualizaci skupinu počítačů
-Chcete-li vytvořit skupinu počítačů, použijte metodu Put s ID jedinečný uloženého hledání. Pokud chcete použít existující skupinu ID počítače, než je upravit. Když vytvoříte skupinu počítačů na portálu analýzy protokolů, ID je vytvořen ze skupiny a název.
+toocreate skupinu počítačů použijte hello metodu Put s ID jedinečný uloženého hledání. Pokud chcete použít existující skupinu ID počítače, než je upravit. Když vytvoříte skupinu počítačů v portálu Analýza protokolů hello, hello ID je vytvořeno ze skupiny hello a název.
 
-Dotaz, použít pro definice skupiny musí vrátit sadu počítačů pro skupinu ke správnému fungování.  Doporučuje se, že vám stát, že váš dotaz s `| Distinct Computer` zajistit správné data jsou vrácena.
+Hello dotaz byl použit pro definice skupiny hello musí vrátit sadu počítačů pro hello skupiny toofunction správně.  Doporučuje se, že vám stát, že váš dotaz s `| Distinct Computer` tooensure hello správná data jsou vrácena.
 
-Definice uloženého hledání musí obsahovat značku s hodnotou počítače pro hledání být označeny jako skupinu počítačů s názvem skupiny.
+definice Hello hello uložené hledání musí obsahovat značku s hodnotou počítače pro toobe vyhledávání hello jsou klasifikovány jako skupinu počítačů s názvem skupiny.
 
 ```
     $etag=Get-Date -Format yyyy-MM-ddThh:mm:ss.msZ
@@ -409,7 +409,7 @@ Definice uloženého hledání musí obsahovat značku s hodnotou počítače pr
 ```
 
 ### <a name="deleting-computer-groups"></a>Odstranění skupiny počítačů
-Chcete-li odstranit skupinu počítačů, použijte metodu Delete s ID skupiny.
+ID toodelete skupinu počítačů použijte hello metodu Delete s hello skupiny.
 
 ```
 armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/$groupId`?api-version=2015-03-20
@@ -417,4 +417,4 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) k vytvoření dotazů pomocí vlastních polí pro kritéria.
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) toobuild dotazy pomocí vlastních polí pro kritéria.

@@ -1,6 +1,6 @@
 ---
-title: "Postup dotazování dat v tabulce v Azure Cosmos DB? | Dokumentace Microsoftu"
-description: "Naučte se tabulka dotaz na data v Azure Cosmos DB"
+title: "aaaHow tooquery data tabulky v databázi Cosmos Azure? | Dokumentace Microsoftu"
+description: "Další informace tooquery dat v tabulce v Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: kanshiG
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: govindk
-ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 32526c3488c589c5be3a4a2f174aa769570f0c0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: Jak dotazovat data tabulky pomocí rozhraní API tabulky (preview)?
+# <a name="azure-cosmos-db-how-tooquery-table-data-by-using-hello-table-api-preview"></a>Azure Cosmos DB: Jak tooquery data tabulky pomocí hello tabulky rozhraní API (preview)?
 
-Azure Cosmos DB [tabulky API](table-introduction.md) (preview) podporuje OData a [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) dotazy na data klíč hodnota (tabulky).  
+Hello Azure Cosmos DB [tabulky API](table-introduction.md) (preview) podporuje OData a [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) dotazy na data klíč hodnota (tabulky).  
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá hello následující úlohy: 
 
 > [!div class="checklist"]
-> * Dotazování na data s rozhraním API pro tabulky
+> * Dotazování na data s hello tabulky rozhraní API
 
-Dotazy v tomto článku použijte následující příklad `People` tabulky:
+Hello dotazy v tomto článku použít hello následující ukázka `People` tabulky:
 
 | Klíč oddílu | RowKey | E-mail | Telefonní číslo |
 | --- | --- | --- | --- |
@@ -38,16 +38,16 @@ Dotazy v tomto článku použijte následující příklad `People` tabulky:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Protože Azure Cosmos DB není kompatibilní s rozhraním API Azure Table storage, najdete v části [dotazování tabulky a entity] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) podrobnosti o tom, jak dotaz podle následující tabulky ROZHRANÍ API. 
+Protože Azure Cosmos DB není kompatibilní s hello rozhraním API Azure Table storage, najdete v části [dotazování tabulky a entity] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) podrobnosti o tom, jak tooquery pomocí hello Tabulka rozhraní API. 
 
-Další informace o možnosti premium, které nabízí Azure Cosmos DB najdete v tématu [Cosmos databázi Azure: Tabulka API](table-introduction.md) a [vývoj s rozhraním API pro tabulky v rozhraní .NET](tutorial-develop-table-dotnet.md). 
+Další informace o možnosti hello premium, které nabízí Azure Cosmos DB najdete v tématu [Cosmos databázi Azure: Tabulka API](table-introduction.md) a [vývoj s hello rozhraní API pro tabulky v rozhraní .NET](tutorial-develop-table-dotnet.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tyto dotazy pro práci musí mít účet Azure Cosmos DB a mít data entity v kontejneru. Nemáte žádné těchto? Dokončení [rychlý start pětiminutovou](https://aka.ms/acdbtnetqs) nebo [vývojáře kurzu](https://aka.ms/acdbtabletut) k vytvoření účtu a naplnit databázi.
+Pro tyto dotazy toowork musíte mít účet Azure Cosmos DB a mít data entity v kontejneru hello. Nemáte žádné těchto? Dokončení hello [rychlý start pětiminutovou](https://aka.ms/acdbtnetqs) nebo hello [vývojáře kurzu](https://aka.ms/acdbtabletut) toocreate účet a naplnit databázi.
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>Dotaz na klíč oddílu a RowKey
-Protože vlastnosti PartitionKey a RowKey formuláři primární klíč entity, můžete k identifikaci entity speciální syntaxe: 
+Důvodu, že vlastnosti PartitionKey a RowKey hello primární klíč entity, můžete použít následující zvláštní syntaxe tooidentify hello entity hello: 
 
 **Dotaz**
 
@@ -60,17 +60,17 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 | --- | --- | --- | --- |
 | Tuleňů grónských | Walter | Walter@contoso.com| 425-555-0104 |
 
-Alternativně můžete tyto vlastnosti v rámci `$filter` možnost, jak je znázorněno v následující části. Všimněte si, že názvů vlastností klíče a hodnoty konstant jsou malá a velká písmena. Vlastnosti PartitionKey i RowKey jsou typu řetězec. 
+Alternativně můžete tyto vlastnosti jako součást hello `$filter` možnost, jak je znázorněno v následující části hello. Všimněte si, že hello názvů vlastností klíče a hodnoty konstant jsou malá a velká písmena. Hello PartitionKey i RowKey vlastnosti jsou typu řetězec. 
 
 ## <a name="query-by-using-an-odata-filter"></a>Dotazovat pomocí filtru OData
 Když jste vytváření řetězec filtru, berte v úvahu tato pravidla: 
 
-* Logické operátory definované specifikací protokolu OData slouží k porovnání vlastnosti a hodnotu. Všimněte si, že nelze porovnat vlastnost, která má dynamické hodnoty. Jedna strana výrazu musí být konstanta. 
-* Název vlastnosti, operátor a hodnotu konstanty musí být odděleny prostory kódovaná adresou URL. Mezeru je kódovaná jako adresa URL jako `%20`. 
-* Všechny části řetězec filtru rozlišují velká a malá písmena. 
-* Hodnota konstanty musí být stejného typu dat jako vlastnost v pořadí pro filtr vracet výsledky platný. Další informace o typech podporovaných vlastnost najdete v tématu [Principy datového modelu služby Table](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
+* Logické operátory hello použití definované hello specifikace protokolu OData toocompare tooa hodnotu vlastnosti. Všimněte si, že nelze porovnat hodnotu vlastnosti tooa dynamické. Jedna strana hello výrazu musí být konstanta. 
+* Název vlastnosti Hello, operátor a hodnotu konstanty musí být oddělené mezerami kódovaná adresou URL. Mezeru je kódovaná jako adresa URL jako `%20`. 
+* Všechny části řetězec filtru hello rozlišují velká a malá písmena. 
+* Hello konstantní hodnota musí být hello stejný datový typ jako vlastnost hello v pořadí hello filtru tooreturn platný výsledků. Další informace o typech podporovaných vlastnost najdete v tématu [hello Principy datového modelu služby Table](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
 
-Tady je příklad dotazu, který ukazuje, jak filtrovat podle vlastnosti PartitionKey a e-mailu pomocí OData `$filter`.
+Tady je příklad dotazu, který ukazuje, jak toofilter podle hello PartitionKey a e-mailu vlastnosti pomocí OData `$filter`.
 
 **Dotaz**
 
@@ -78,7 +78,7 @@ Tady je příklad dotazu, který ukazuje, jak filtrovat podle vlastnosti Partiti
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-Další informace o tom, jak vytvořit filtr výrazů pro různé typy dat najdete v tématu [dotazování tabulky a entity](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
+Další informace o tom, jak filtrovat tooconstruct výrazy pro různé typy dat najdete v tématu [dotazování tabulky a entity](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
 **Výsledky**
 
@@ -87,7 +87,7 @@ Další informace o tom, jak vytvořit filtr výrazů pro různé typy dat najde
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>Dotazu pomocí LINQ 
-Také můžete dotazovat pomocí LINQ, což znamená, že je odpovídající výrazy dotazu OData. Tady je příklad toho, jak vytvořit dotazy pomocí .NET SDK:
+Také můžete dotazovat pomocí LINQ, který překládá toohello odpovídající výrazy dotazu OData. Tady je příklad jak hello toobuild dotazy pomocí .NET SDK:
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
@@ -106,12 +106,12 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
-> * Dozvěděli, jak dotazovat pomocí rozhraní API tabulky (preview) 
+> * Naučili, jak tooquery pomocí hello tabulky rozhraní API (preview) 
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
+Nyní můžete přejít toohello další kurz toolearn jak toodistribute data globálně.
 
 > [!div class="nextstepaction"]
 > [Globálně distribuci dat](tutorial-global-distribution-documentdb.md)

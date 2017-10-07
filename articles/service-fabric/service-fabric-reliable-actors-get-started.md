@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vaší první na základě objektu actor Azure mikroslužbu v jazyce C# | Microsoft Docs"
-description: "Tento kurz vás provede kroky při vytváření, ladění a nasazení jednoduchého službu založenou na objektu actor pomocí Service Fabric Reliable Actors."
+title: "aaaCreate vaše první na základě objektu actor Azure mikroslužbu v jazyce C# | Microsoft Docs"
+description: "Tento kurz vás provede kroky hello při vytváření, ladění a nasazení jednoduchého službu založenou na objektu actor pomocí Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ab4f75bef0adb6e70f0ead587475b3fb51e6e6a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -27,24 +27,24 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Tento článek vysvětluje základy Azure Service Fabric Reliable Actors a provede vás vytváření, ladění a nasazování jednoduchou aplikaci spolehlivé objektu Actor v sadě Visual Studio.
+Tento článek vysvětluje základy hello Azure Service Fabric Reliable Actors a provede vás vytváření, ladění a nasazování jednoduchou aplikaci spolehlivé objektu Actor v sadě Visual Studio.
 
 ## <a name="installation-and-setup"></a>Instalace a nastavení
-Než začnete, ujistěte se, abyste měli vývojového prostředí Service Fabric na váš počítač.
-Pokud potřebujete nastavit tak, najdete podrobné pokyny na [postup nastavení vývojového prostředí](service-fabric-get-started.md).
+Než začnete, ujistěte se, zda máte na počítači nastavit hello Service Fabric vývojové prostředí.
+Pokud potřebujete tooset ho, najdete podrobné pokyny na [jak tooset hello vývojového prostředí](service-fabric-get-started.md).
 
 ## <a name="basic-concepts"></a>Základní koncepty
-Začít s Reliable Actors, potřebujete jenom pochopit několik základní koncepty:
+tooget začít s Reliable Actors, můžete pouze potřebovat toounderstand několik základní koncepty:
 
-* **Služby objektu actor**. Spolehlivé služby, které můžou být nasazené v Service Fabric infrastruktury jsou součástí Reliable Actors. Instance objektu actor aktivují v instanci služby s názvem.
-* **Registrace objektu actor**. Jako se službami Reliable Services spolehlivé objektu Actor služby musí být registrováno v modulu runtime Service Fabric. Typ objektu actor kromě toho musí být registrováno s modulem runtime objektu Actor.
-* **Rozhraní objektu actor**. Rozhraní objektu actor se používá k definování silného typu veřejné rozhraní objektu actor. Rozhraní objektu actor v terminologii modelu objektu Actor spolehlivé, definuje typy zprávy, které můžete porozumět objektu actor a proces. Rozhraní objektu actor slouží ostatní aktéři a klientské aplikace "Odeslat" (asynchronně) zpráv do objektu actor. Reliable Actors můžete implementovat více rozhraní.
-* **Třída ActorProxy**. Třída ActorProxy se používá klientskými aplikacemi volat metody vystavenou přes rozhraní objektu actor. Třída ActorProxy poskytuje dvě důležité funkce:
+* **Služby objektu actor**. Spolehlivé služby, které můžou být nasazené v infrastruktuře Service Fabric hello jsou součástí Reliable Actors. Instance objektu actor aktivují v instanci služby s názvem.
+* **Registrace objektu actor**. Jako služba spolehlivé objektu Actor potřebuje se službami Reliable Services toobe zaregistrována modulu runtime Service Fabric hello. Typ objektu actor hello kromě toho musí toobe zaregistrována hello objektu Actor runtime.
+* **Rozhraní objektu actor**. rozhraní objektu actor Hello je použité toodefine silného typu veřejné rozhraní objektu actor. Rozhraní objektu actor hello v hello terminologie modelu objektu Actor spolehlivé, definuje hello typy zpráv, které hello objektu actor můžete pochopit a zpracovat. rozhraní objektu actor Hello používá jiné aktéři a klientské aplikace příliš "Odeslat" (asynchronně) objektu actor toohello zprávy. Reliable Actors můžete implementovat více rozhraní.
+* **Třída ActorProxy**. používá Hello ActorProxy třídy klienta aplikace tooinvoke hello metody vystavenou přes rozhraní objektu actor hello. Hello ActorProxy třída poskytuje dvě důležité funkce:
   
-  * Překlad názvů: je možné najít objektu actor v clusteru (Najít uzlu clusteru, který je hostitelem).
-  * Zpracování selhání: mohou zkuste volání metod a znovu přeložit umístění objektu actor po, například selhání vyžadující objektu actor pro přemístit do jiného uzlu v clusteru.
+  * Překlad názvů: je možné toolocate hello objektu actor v clusteru hello (Najít hello uzel hello clusteru, který je hostitelem).
+  * Zpracování selhání: můžete opakujte volání metod a znovu přeložit umístění objektu actor hello po, například selhání, který vyžaduje hello objektu actor toobe přemístění tooanother uzlu v clusteru hello.
 
-Následující pravidla, které se týkají objektu actor rozhraní jsou důležité zmínit:
+Hello následující pravidla, které se týkají tooactor rozhraní jsou důležité zmínit:
 
 * Metody rozhraní objektu actor nemohou být přetíženy.
 * Rozhraní objektu actor, které se nesmí mít metody, ref nebo volitelné parametry.
@@ -55,21 +55,21 @@ Spusťte Visual Studio 2015 nebo 2017 Visual Studio jako správce a vytvořit no
 
 ![Service Fabric nástrojů pro Visual Studio – nový projekt][1]
 
-V dialogovém okně Další můžete si zvolit typ projektu, který chcete vytvořit.
+V hello další dialogové okno můžete si zvolit hello typ projektu, které chcete toocreate.
 
 ![Šablony projektů Service Fabric][5]
 
-Pro projekt HelloWorld použijeme služby Service Fabric Reliable Actors.
+Pro projekt Hello World hello použijeme služby Service Fabric Reliable Actors hello.
 
-Po vytvoření řešení, byste měli vidět následující strukturou:
+Po vytvoření hello řešení, měli byste vidět hello strukturu:
 
 ![Struktura projektu Service Fabric][2]
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Spolehlivé aktéři základních stavebních bloků
 Typické Reliable Actors řešení se skládá ze tří projektů:
 
-* **Projekt aplikace (MyActorApplication)**. Toto je projekt, který balíčky všechny společně služby pro nasazení. Obsahuje *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace.
-* **Rozhraní projektu (MyActor.Interfaces)**. Toto je projekt, který obsahuje definici rozhraní objektu actor. V projektu MyActor.Interfaces můžete definovat rozhraní, která se použije aktéři v řešení. Lze definovat vašich rozhraní objektu actor v jakékoli projektu s libovolným názvem, ale rozhraní definuje kontrakt objektu actor, který sdílí implementace objektu actor a klienti volání objektu actor, proto obvykle má smysl definovat v sestavení, které jsou oddělené od objektu actor implementaci a může být sdílen více další projekty.
+* **projekt aplikace Hello (MyActorApplication)**. Toto je hello projekt, který balíčky všechny společně hello služby pro nasazení. Obsahuje hello *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace hello.
+* **Hello rozhraní projektu (MyActor.Interfaces)**. Toto je hello projekt, který obsahuje definici rozhraní hello objektu actor hello. V projektu MyActor.Interfaces hello můžete definovat hello rozhraní, které se použijí hello aktéři v řešení hello. Vašich rozhraní objektu actor lze definovat v jakékoli projektu s libovolným názvem, ale hello rozhraní definuje kontrakt objektu actor hello, který sdílí implementace objektu actor hello a hello klientům volání objektu actor hello, takže obvykle má smysl toodefine v sestavení, které je oddělené od implementace objektu actor hello a může být sdílen více další projekty.
 
 ```csharp
 public interface IMyActor : IActor
@@ -78,7 +78,7 @@ public interface IMyActor : IActor
 }
 ```
 
-* **Projekt služby objektu actor (MyActor)**. Toto je používá k definování služba Service Fabric, která bude hostitelem objektu actor projektu. Obsahuje implementace objektu actor. Implementace objektu actor je třída, která je odvozena ze základního typu `Actor` a implementuje alespoň jedno rozhraní, která jsou definována v MyActor.Interfaces projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je základní `Actor` třídy. To umožňuje vkládání závislostí konstruktor platformy závislostí.
+* **projekt služby objektu actor Hello (MyActor)**. Toto je hello projektu používá toodefine hello Service Fabric služba, která se má toohost hello objektu actor. Obsahuje hello implementace objektu actor hello. Implementace objektu actor je třída, která je odvozena od základního typu hello `Actor` a implementuje hello alespoň jedno rozhraní, která jsou definována v projektu MyActor.Interfaces hello. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předá je toohello základní `Actor` třídy. To umožňuje vkládání závislostí konstruktor platformy závislostí.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -96,7 +96,7 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-Služby objektu actor musí být zaregistrován s typem služby v modulu runtime Service Fabric. V pořadí pro službu objektu Actor ke spuštění vaše instance objektu actor musí být typu vašeho objektu actor také zaregistrován u služby objektu Actor. `ActorRuntime` Metoda registrace provede tuto práci pro aktéři.
+služby objektu actor Hello musí být zaregistrován s typem služby v modulu runtime Service Fabric hello. V pořadí pro hello služby objektu Actor toorun vaše instance objektu actor, vašeho typu objektu actor musí být zaregistrovaná taky hello služby objektu Actor. Hello `ActorRuntime` metoda registrace provede tuto práci pro aktéři.
 
 ```csharp
 internal static class Program
@@ -120,7 +120,7 @@ internal static class Program
 
 ```
 
-Pokud spustíte z nový projekt v sadě Visual Studio a máte jenom jednu definici objektu actor, registrace je zahrnuta ve výchozím nastavení v kódu, který generuje Visual Studio. Pokud definujete jiných aktéři ve službě, budete muset přidat objektu actor registraci pomocí:
+Pokud spustíte z nový projekt v sadě Visual Studio a máte jenom jednu definici objektu actor, hello registrace je zahrnuta ve výchozím nastavení v hello kód, který generuje Visual Studio. Pokud definujete jiných aktéři v hello služby, je třeba tooadd hello objektu actor registrace pomocí:
 
 ```csharp
  ActorRuntime.RegisterActorAsync<MyOtherActor>();
@@ -128,19 +128,19 @@ Pokud spustíte z nový projekt v sadě Visual Studio a máte jenom jednu defini
 ```
 
 > [!TIP]
-> Modul runtime Service Fabric aktéři vysílá některé [události a čítače výkonu související s metody objektu actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné v Diagnostika a sledování výkonu.
+> Hello modulu runtime Service Fabric aktéři vysílá některé [události a čítače výkonu související metody tooactor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné v Diagnostika a sledování výkonu.
 > 
 > 
 
 ## <a name="debugging"></a>Ladění
-Service Fabric tools pro Visual Studio podporují ladění na místním počítači. Můžete začít relaci ladění pomocí stiskne klávesu F5. Visual Studio vytvoří (v případě potřeby) balíčky. Také nasadí aplikaci na místní cluster Service Fabric a připojí ladicí program.
+Hello Service Fabric tools pro Visual Studio podporují ladění na místním počítači. Můžete začít relaci ladění pomocí hello stiskne klávesu F5. Visual Studio vytvoří (v případě potřeby) balíčky. Také nasadí aplikaci hello na místní cluster Service Fabric hello a připojí ladicí program hello.
 
-Během procesu nasazení můžete sledovat průběh v **výstup** okno.
+Během procesu nasazení hello, uvidíte průběh hello hello **výstup** okno.
 
 ![Service Fabric ladicích výstup – okno][3]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [jak Reliable Actors pomocí platformy Service Fabric](service-fabric-reliable-actors-platform.md).
+Další informace o [jak Reliable Actors pomocí platformy Service Fabric hello](service-fabric-reliable-actors-platform.md).
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG

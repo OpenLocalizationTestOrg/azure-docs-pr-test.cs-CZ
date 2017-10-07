@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s centrem oznámení pro aplikace Xamarin Android | Dokumentace Microsoftu"
-description: "V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Xamarin Android."
+title: "aaaGet začít s Notification Hubs pro aplikace pro Xamarin.Android | Microsoft Docs"
+description: "V tomto kurzu zjistíte, jak Azure Notification Hubs toosend toouse nabízená oznámení tooa aplikace Xamarin Android."
 author: ysxu
 manager: erikre
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5c7ead9a9381ab9fb6bbe86e930a8a9254813d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-notification-hubs-with-xamarin-for-android"></a>Začínáme s centry oznámení se sadou Xamarin pro Android
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému Xamarin.Android.
-Vytvoříte prázdnou aplikaci systému Xamarin.Android, která bude přijímat nabízená oznámení pomocí služby GCM (Google Cloud Messaging). Jakmile budete hotovi, budete moci používat vaše centra oznámení k vysílání nabízených oznámení pro všechna zařízení používající vaši aplikaci. Dokončený kód je k dispozici v ukázce [aplikace NotificationHubs][GitHub].
+Tento kurz ukazuje, jak Azure Notification Hubs toosend toouse nabízená oznámení tooa Xamarin.Android aplikace.
+Vytvoříte prázdnou aplikaci systému Xamarin.Android, která bude přijímat nabízená oznámení pomocí služby GCM (Google Cloud Messaging). Jakmile budete hotovi, budete moct toouse vaše toobroadcast centra oznámení nabízená oznámení tooall hello zařízení používající vaši aplikaci. Hello Dokončený kód je k dispozici v hello [aplikace NotificationHubs] [ GitHub] ukázka.
 
-Tento kurz představuje scénář jednoduchého vysílání přes centra oznámení.
+Tento kurz představuje scénář jednoduchého vysílání hello přes centra oznámení.
 
 ## <a name="before-you-begin"></a>Než začnete
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
-Dokončený kód v tomto kurzu lze najít v části Github [zde](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid).
+Hello dokončit kód v tomto kurzu lze nalézt na Githubu [zde](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid).
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto kurzu budete potřebovat následující:
+Tento kurz vyžaduje hello následující:
 
 * Visual Studio s Xamarinem v systému Windows nebo Xamarin Studio v systému Mac OS X. Úplné pokyny k instalaci najdete v tématu [Instalační program a instalace Visual Studia a Xamarinu](https://msdn.microsoft.com/library/mt613162.aspx).
 * Aktivní účet Google
@@ -45,7 +45,7 @@ V tomto kurzu budete potřebovat následující:
 Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notification Hubs pro Xamarin.Android Apps.
 
 > [!IMPORTANT]
-> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F).
+> toocomplete tento kurz, musíte mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F).
 > 
 > 
 
@@ -57,55 +57,55 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
 <ol start="7">
 
-<li><p>Klikněte na kartu <b>Konfigurovat</b>, zadejte hodnotu <b>Klíč rozhraní API</b> získanou v předchozí části a pak klikněte na tlačítko <b>Uložit</b>.</p>
+<li><p>Klikněte na tlačítko hello <b>konfigurace</b> hello horní, zadejte hello <b>klíč rozhraní API</b> hodnotou, kterou jste získali v předchozí části hello a pak klikněte na <b>Uložit</b>.</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
 
-Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Zároveň máte připojovací řetězce, pomocí kterých můžete svou aplikaci zaregistrovat pro příjem oznámení a odesílání nabízených oznámení.
+Vaše centrum oznámení je teď nakonfigurovaná toowork s GCM a máte hello připojovací řetězce tooboth zaregistrovat aplikaci tooreceive oznámení a toosend nabízená oznámení.
 
-## <a name="connect-your-app-to-the-notification-hub"></a>Připojte aplikaci k centru oznámení
+## <a name="connect-your-app-toohello-notification-hub"></a>Připojit vaše Centrum oznámení toohello aplikace
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 1. V Xamarin Studiu klikněte na tlačítko **Nové řešení**, klikněte na tlačítko **Aplikace pro Android** a klikněte na tlačítko **Další**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
 
-2. Zadejte **Název aplikace** a **Identifikátor**. Klikněte na tlačítko **Cílové plaformy**, které chcete podporovat, a pak klikněte na tlačítko **Další** a **Vytvořit**.
+2. Zadejte **Název aplikace** a **Identifikátor**. Klikněte na tlačítko hello **cílové plaformy** toosupport a pak klikněte na **Další** a **vytvořit**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     Dojde k vytvoření nového projektu pro Android.
 
-1. Otevřete vlastnosti projektu kliknutím pravým tlačítkem myši na nový projekt v zobrazení Řešení a zvolte **Možnosti**. Vyberte položku **Aplikace pro Android** v části **Sestavení**.
+1. Otevřete vlastnosti projektu hello tak, že kliknete pravým tlačítkem na nový projekt v hello zobrazení řešení a zvolte **možnosti**. Vyberte hello **aplikace pro Android** položky v hello **sestavení** části.
    
-    Zajistěte, aby první písmeno **Názvu balíčku** bylo malé písmeno.
+    Ujistěte se, že hello první písmeno vaše **název balíčku** je malá písmena.
    
    > [!IMPORTANT]
-   > První písmeno názvu balíčku musí být malé. Jinak se zobrazí chyby manifestu aplikace při registraci vašeho **BroadcastReceiver** a **IntentFilter** pro nabízená oznámení níže.
+   > první písmeno názvu balíčku hello Hello musí být malé. Jinak se zobrazí chyby manifestu aplikace při registraci vašeho **BroadcastReceiver** a **IntentFilter** pro nabízená oznámení níže.
    > 
    > 
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
-2. Volitelně můžete nastavit **Minimální verzi systému Android** na jinou úroveň rozhraní API.
-3. Volitelně můžete nastavit **Cílovou verzi systému Android** na jinou verzi rozhraní API, kterou chcete zacílit (musí se jednat o úroveň rozhraní API 8 nebo vyšší).
+2. Volitelně můžete sadu hello **minimální verzi systému Android** tooanother úroveň rozhraní API.
+3. Volitelně můžete sadu hello **cílovou verzi systému Android** toohello jinou verzi rozhraní API, které chcete tootarget (musí být úroveň rozhraní API 8 nebo vyšší).
 
-Klikněte na tlačítko **OK** a zavřete dialogové okno Možnosti projektu.
+Klikněte na tlačítko **OK** a dialogové okno Možnosti projektu zavřít hello.
 
-### <a name="add-the-required-components-to-your-project"></a>Přidejte do projektu požadované součásti
-Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí Xamarin zjednodušuje proces podpory nabízených oznámení v Xamarin.Android.
+### <a name="add-hello-required-components-tooyour-project"></a>Přidání hello požadované součásti tooyour projektu
+Hello Google Cloud zasílání zpráv klienta k dispozici na hello úložišti součástí Xamarin zjednodušuje proces podpory nabízených oznámení v Xamarin.Android hello.
 
-1. Klikněte pravým tlačítkem na složku Komponenty v aplikaci Xamarin.Android a vyberte možnost **Získat více komponent**.
-2. Vyhledejte komponentu **Zasílání zpráv Azure** a přidejte ji do projektu.
-3. Vyhledejte komponentu **Klient služby GCM (Google Cloud Messaging)** a přidejte ji do projektu.
+1. Klikněte pravým tlačítkem na složku komponenty hello v aplikaci Xamarin.Android a vyberte **získat více komponent**.
+2. Vyhledejte hello **zasílání zpráv Azure** součástí a přidejte ji toohello projektu.
+3. Vyhledejte hello **klient Google Cloud Messaging** součástí a přidejte ji toohello projektu.
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>Nastavte centra oznámení v projektu
-1. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
+1. Shromážděte následující informace pro vaše aplikace a oznámení Android Centrum hello:
    
-   * **GoogleProjectNumber**: tuto hodnotu čísla projektu získáte z přehledu své aplikace na portálu pro vývojáře Google. Poznámku o této hodnotě jste vytvořili dříve při vytvoření aplikace na portálu.
-   * **Připojovací řetězec naslouchání**: na řídicím panelu na [portál Azure Classic] klikněte na tlačítko **Zobrazit připojovací řetězce**. Zkopírujte připojovací řetězec *DefaultListenSharedAccessSignature* pro tuto hodnotu.
-   * **Název centra**: Toto je název centra z [portál Azure Classic]. Například *mynotificationhub2*.
+   * **GoogleProjectNumber**: získat tuto hodnotu čísla projektu z hello přehledu své aplikace na hello portál pro vývojáře Google. Jste si poznamenali tuto hodnotu dříve při vytvoření aplikace hello na portálu hello.
+   * **Připojovací řetězec naslouchání**: na řídicím panelu hello v hello [portálu Azure Classic], klikněte na tlačítko **zobrazit připojovací řetězce**. Kopírování hello *DefaultListenSharedAccessSignature* připojovací řetězec pro tuto hodnotu.
+   * **Název centra**: Toto je název centra z hello hello [portálu Azure Classic]. Například *mynotificationhub2*.
      
-     Vytvořte třídu **Constants.cs** pro váš projekt Xamarin a definujte následující hodnoty konstant ve třídě. Nahraďte zástupné symboly vašimi hodnotami.
+     Vytvoření **Constants.cs** třídy pro váš projekt Xamarin a definujte následující hodnoty konstant ve třídě hello hello. Nahraďte zástupné symboly hello svoje hodnoty.
      
        public static class Constants   {
      
@@ -113,18 +113,18 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
            public const string ListenConnectionString = "<Listen connection string>";
            public const string NotificationHubName = "<hub name>";
        }
-2. Přidejte následující hodnoty pomocí příkazů do souboru **MainActivity.cs**:
+2. Přidat hello následující příkazy using příliš**MainActivity.cs**:
    
         using Android.Util;
         using Gcm.Client;
-3. Přidejte proměnnou instance do třídy `MainActivity`, která se použije k zobrazení dialogového okna výstrah při spuštění aplikace:
+3. Přidat proměnné toohello instance `MainActivity` třídu, která bude použité tooshow dialogového okna výstrah při spuštěné aplikaci hello:
    
         public static MainActivity instance;
-4. Vytvořte následující metodu v třídě **MainActivity**:
+4. Vytvořte následující metodu v hello hello **MainActivity** třídy:
    
         private void RegisterWithGCM()
         {
-            // Check to ensure everything's set up right
+            // Check tooensure everything's set up right
             GcmClient.CheckDevice(this);
             GcmClient.CheckManifest(this);
    
@@ -132,7 +132,7 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderID);
         }
-5. V metodě `OnCreate` souboru **MainActivity.cs** inicializujte proměnnou `instance` a přidejte volání do `RegisterWithGCM`:
+5. V hello `OnCreate` metodu **MainActivity.cs**, inicializovat hello `instance` proměnnou a přidejte volání příliš`RegisterWithGCM`:
    
         protected override void OnCreate (Bundle bundle)
         {
@@ -140,11 +140,11 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
    
             base.OnCreate (bundle);
    
-            // Set your view from the "main" layout resource
+            // Set your view from hello "main" layout resource
             SetContentView (Resource.Layout.Main);
    
-            // Get your button from the layout resource,
-            // and attach an event to it
+            // Get your button from hello layout resource,
+            // and attach an event tooit
             Button button = FindViewById<Button> (Resource.Id.myButton);
    
             RegisterWithGCM();
@@ -152,10 +152,10 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
 6. Vytvořte novou třídu **MyBroadcastReceiver**.
    
    > [!NOTE]
-   > Projdeme s vámi vytvoření třídy **BroadcastReceiver** od začátku níže. Rychlou alternativou k ručnímu vytváření souboru **MyBroadcastReceiver.cs** je použít soubor **GcmService.cs** nacházející se v ukázkovém projektu Xamarin.Android, který je součástí [ukázek NotificationHubs][GitHub]. Duplikování souboru **GcmService.cs** a změna názvů tříd může být skvělým místem, kde lze také začít.
+   > Projdeme s vámi vytvoření třídy **BroadcastReceiver** od začátku níže. Ale rychlé alternativní toomanually vytváření **MyBroadcastReceiver.cs** je toorefer toohello **GcmService.cs** nacházející se v projektu vzorku Xamarin.Android hello součástí hello [Vzorků NotificationHubs][GitHub]. Duplikování **GcmService.cs** a změna názvů tříd může být také toostart skvělým místem.
    > 
    > 
-7. Přidejte následující možnosti pomocí příkazů do souboru **MyBroadcastReceiver.cs** (odkazující na komponentu a sestavení, které jste přidali dříve):
+7. Přidat hello následující příkazy using příliš**MyBroadcastReceiver.cs** (odkazující toohello komponentu a sestavení, které jste přidali dříve):
    
         using System.Collections.Generic;
         using System.Text;
@@ -164,7 +164,7 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
         using Android.Util;
         using Gcm.Client;
         using WindowsAzure.Messaging;
-8. V souboru **MyBroadcastReceiver.cs** přidejte následující žádosti oprávnění mezi příkazy **pomocí** a prohlášením **obor názvů**:
+8. V **MyBroadcastReceiver.cs**, přidejte následující žádosti oprávnění mezi hello hello **pomocí** příkazů a hello **obor názvů** deklarace:
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -174,7 +174,7 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-9. V souboru **MyBroadcastReceiver.cs** změňte třídu **MyBroadcastReceiver** tak, aby odpovídala následující:
+9. V **MyBroadcastReceiver.cs**, změňte hello **MyBroadcastReceiver** toomatch hello následující třídy:
    
         [BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
@@ -189,9 +189,9 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
    
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
-10. Přidejte jinou třídu do souboru **MyBroadcastReceiver.cs** s názvem **PushHandlerService**, která je odvozena z **GcmServiceBase**. Nezapomeňte použít atribut **Služby** na třídu:
+10. Přidejte jinou třídu do souboru **MyBroadcastReceiver.cs** s názvem **PushHandlerService**, která je odvozena z **GcmServiceBase**. Ujistěte se, zda text hello tooapply **služby** toohello třídy atributů:
     
-         [Service] // Must use the service tag
+         [Service] // Must use hello service tag
          public class PushHandlerService : GcmServiceBase
          {
              public static string RegistrationID { get; private set; }
@@ -202,8 +202,8 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
                  Log.Info(MyBroadcastReceiver.TAG, "PushHandlerService() constructor");
              }
          }
-11. **GcmServiceBase** implementuje metody **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** a **OnError()**. Naše třída implementace **PushHandlerService** musí přepsat tyto metody a tyto metody se aktivují v odezvě na interakci s centrem oznámení.
-12. Potlačte metodu **OnRegistered()** v **PushHandlerService** pomocí následujícího kódu:
+11. **GcmServiceBase** implementuje metody **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** a **OnError()**. Naše **PushHandlerService** třída implementace musí přepsat tyto metody a tyto metody se aktivují v odpovědi toointeracting hello centra oznámení.
+12. Přepsání hello **OnRegistered()** metoda v **PushHandlerService** pomocí hello následující kód:
     
          protected override void OnRegistered(Context context, string registrationId)
          {
@@ -211,7 +211,7 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
              RegistrationID = registrationId;
     
              createNotification("PushHandlerService-GCM Registered...",
-                                 "The device has been Registered!");
+                                 "hello device has been Registered!");
     
              Hub = new NotificationHub(Constants.NotificationHubName, Constants.ListenConnectionString,
                                          context);
@@ -238,10 +238,10 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
          }
     
     > [!NOTE]
-    > V kódu **OnRegistered()** výše si všimněte schopnosti určit značky pro registraci do konkrétních kanálů zasílání zpráv.
+    > V hello **OnRegistered()** kódu výše, nezapomeňte hello možnost toospecify značky tooregister konkrétních kanálů zasílání zpráv.
     > 
     > 
-13. Potlačte metodu **OnMessage()** v **PushHandlerService** pomocí následujícího kódu:
+13. Přepsání hello **OnMessage** metoda v **PushHandlerService** pomocí hello následující kód:
     
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -265,10 +265,10 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
                 createNotification ("Unknown message details", msg.ToString ());
             }
         }
-14. Přidejte následující metody **createNotification** a **dialogNotify** do **PushHandlerService** pro upozornění uživatelů při obdržení oznámení.
+14. Přidejte následující hello **createNotification** a **dialogNotify** metody příliš**PushHandlerService** pro upozornění uživatelů při obdržení oznámení.
     
     > [!NOTE]
-    > Návrh oznámení v systému Android verze 5.0 a novější představuje významné odchýlení od předchozích verzí. Pokud toto vyzkoušíte v systému Android 5.0 nebo novějším, aplikaci bude nutné spouštět pro příjem oznámení. Další informace naleznete v tématu [Oznámení systému Android](http://go.microsoft.com/fwlink/?LinkId=615880).
+    > Návrh oznámení v systému Android verze 5.0 a novější představuje významné odchýlení od předchozích verzí. Pokud testujete to v systému Android 5.0 nebo novější, bude nutné aplikace hello toobe spuštěny tooreceive hello oznámení. Další informace naleznete v tématu [Oznámení systému Android](http://go.microsoft.com/fwlink/?LinkId=615880).
     > 
     > 
     
@@ -277,21 +277,21 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
             //Create notification
             var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
     
-            //Create an intent to show UI
+            //Create an intent tooshow UI
             var uiIntent = new Intent(this, typeof(MainActivity));
     
-            //Create the notification
+            //Create hello notification
             var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
     
-            //Auto-cancel will remove the notification once the user touches it
+            //Auto-cancel will remove hello notification once hello user touches it
             notification.Flags = NotificationFlags.AutoCancel;
     
-            //Set the notification info
-            //we use the pending intent, passing our ui intent over, which will get called
-            //when the notification is tapped.
+            //Set hello notification info
+            //we use hello pending intent, passing our ui intent over, which will get called
+            //when hello notification is tapped.
             notification.SetLatestEventInfo(this, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
     
-            //Show the notification
+            //Show hello notification
             notificationManager.Notify(1, notification);
             dialogNotify (title, desc);
         }
@@ -316,7 +316,7 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
         {
             Log.Verbose(MyBroadcastReceiver.TAG, "GCM Unregistered: " + registrationId);
     
-            createNotification("GCM Unregistered...", "The device has been unregistered!");
+            createNotification("GCM Unregistered...", "hello device has been unregistered!");
         }
     
         protected override bool OnRecoverableError(Context context, string errorId)
@@ -331,11 +331,11 @@ Klient služby GCM (Google Cloud Messaging) dostupný na úložišti součástí
             Log.Error(MyBroadcastReceiver.TAG, "GCM Error: " + errorId);
         }
 
-## <a name="run-your-app-in-the-emulator"></a>Spusťte aplikaci v emulátoru
-Pokud spustíte tuto aplikaci v emulátoru, ujistěte se, že používáte virtuální zařízení Android (AVD) podporující rozhraní API Google.
+## <a name="run-your-app-in-hello-emulator"></a>Spusťte aplikaci v emulátoru hello
+Pokud spustíte tuto aplikaci v emulátoru hello, ujistěte se, že používáte virtuální zařízení Android (AVD) podporující rozhraní API Google.
 
 > [!IMPORTANT]
-> Aby bylo možné přijímat nabízená oznámení, musíte vytvořit účet Google na virtuálním zařízení se systémem Android. (V emulátoru přejděte na **Nastavení** a klikněte na tlačítko **Přidat účet**.) Ujistěte se také, že je emulátor připojen k internetu.
+> V pořadí tooreceive nabízená oznámení musíte nastavit účet Google na virtuální zařízení se systémem Android. (V emulátoru hello přejděte příliš**nastavení** a klikněte na tlačítko **přidat účet**.) Taky se ujistěte, že hello emulátor je připojený toohello Internetu.
 > 
 > [!NOTE]
 > Návrh oznámení v systému Android verze 5.0 a novější představuje významné odchýlení od předchozích verzí. Další informace naleznete v tématu [Oznámení systému Android](http://go.microsoft.com/fwlink/?LinkId=615880).
@@ -348,24 +348,24 @@ Pokud spustíte tuto aplikaci v emulátoru, ujistěte se, že používáte virtu
 2. Vyberte **rozhraní API Google** v části **Cíl** a pak klikněte na tlačítko **OK**.
    
       ![][19]
-3. Na horním panelu nástrojů klikněte na tlačítko **Spustit** a pak vyberte svou aplikaci. Spustí se emulátor a pak se spustí aplikace.
+3. Na horním panelu nástrojů hello, klikněte na tlačítko **spustit**a pak vyberte svou aplikaci. To spustí hello emulátor a spustí aplikace hello.
    
-   Aplikace načte *registrationId* z GCM a zaregistruje se pomocí centra oznámení.
+   aplikace Hello načte hello *registrationId* z GCM a zaregistruje se pomocí centra oznámení hello.
 
 ## <a name="send-notifications-from-your-backend"></a>Odesílání oznámení z backendu
-Příjem oznámení ve vaší aplikaci můžete otestovat zasláním oznámení na [portál Azure Classic] prostřednictvím karty ladění v centru oznámení, jak je znázorněno na obrazovce níže.
+Příjem oznámení ve vaší aplikaci odesláním oznámení hello můžete otestovat [portálu Azure Classic] prostřednictvím hello ladění karty v centru oznámení hello, jak je znázorněno níže úvodní obrazovka.
 
 ![][30]
 
-Nabízená oznámení se většinou posílají ve službě backend, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Můžete také použít rozhraní API REST k přímému zasílání oznámení, pokud pro vaše prostředí backend není dostupná žádná knihovna.
+Nabízená oznámení se většinou posílají ve službě backend, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Můžete taky hello REST API přímo toosend oznámení zpráv, pokud není žádná knihovna k dispozici pro váš back-end.
 
-Tady je seznam některých dalších kurzů, které se týkají zasílání oznámení:
+Tady je seznam některých dalších kurzů, které bude pravděpodobně třeba tooreview pro zasílání oznámení:
 
-* ASP.NET: Viz [Použití centra oznámení pro nabízená oznámení uživatelům].
-* Sada Azure Notification Hubs Java SDK: Informace o odesílání oznámení z Javy najdete v článku [Jak používat Notification Hubs z Javy](notification-hubs-java-push-notification-tutorial.md). Tato metoda prošla pro potřeby vývoje pro Android testováním v Eclipse.
-* PHP: Viz [Jak používat Notification Hubs z PHP](notification-hubs-php-push-notification-tutorial.md).
+* ASP.NET: Viz [použití centra oznámení toopush oznámení toousers].
+* Azure Notification Hubs Java SDK: najdete v části [jak toouse centra oznámení z Java](notification-hubs-java-push-notification-tutorial.md) pro odesílání oznámení z Java. Tato metoda prošla pro potřeby vývoje pro Android testováním v Eclipse.
+* PHP: Viz [jak toouse Notification Hubs z PHP](notification-hubs-php-push-notification-tutorial.md).
 
-V dalším pododdílu kurzu odešlete oznámení pomocí konzolové aplikace .NET a pomocí mobilních služeb prostřednictvím skriptu uzlu.
+V dalším pododdílu hello hello kurzu odesílání oznámení pomocí konzolové aplikace .NET a pomocí mobilních služeb prostřednictvím skriptu uzlu.
 
 #### <a name="optional-send-notifications-by-using-a-net-app"></a>(Volitelné) Odesílání oznámení pomocí aplikace .NET
 V této části si ukážeme odesílání oznámení pomocí konzolové aplikace .NET.
@@ -375,43 +375,43 @@ V této části si ukážeme odesílání oznámení pomocí konzolové aplikace
       ![][20]
 2. Ve Visual Studiu klikněte na položku **Nástroje**, klikněte na **Správce balíčků NuGet** a pak klikněte na **Konzola Správce balíčků**.
    
-    Tím se zobrazí Konzola Správce balíčků ve Visual Studiu.
-3. V okně konzoly Správce balíčků nastavte **Výchozí projekt** na nový projekt konzolové aplikace a pak v okně konzoly spusťte následující příkaz:
+    V sadě Visual Studio se zobrazí hello Konzola správce balíčků.
+3. V okně konzoly Správce balíčků hello, nastavte hello **výchozí projekt** tooyour nové konzoly projekt aplikace a potom v okně konzoly hello, spusťte následující příkaz hello:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    Ten přidá odkaz na sadu SDK centra oznámení Azure pomocí <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku Microsoft.Azure.Notification Hubs NuGet</a>.
+    Tento postup přidá odkaz toohello SDK centra oznámení Azure pomocí hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku Microsoft.Azure.Notification Hubs NuGet</a>.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-4. Otevřete soubor Program.cs a přidejte následující příkaz `using`:
+4. Otevřete soubor Program.cs hello a přidejte následující hello `using` příkaz:
    
         using Microsoft.Azure.NotificationHubs;
-5. Do třídy `Program` přidejte následující metodu: Aktualizujte zástupný text pomocí připojovacího řetězce *DefaultFullSharedAccessSignature* a názvu centra z [portál Azure Classic].
+5. Ve vašem `Program` třídy, přidejte následující metodu hello. Aktualizujte zástupný text hello s vaší *DefaultFullSharedAccessSignature* připojovací řetězec a názvu centra z hello [portálu Azure Classic].
    
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
             await hub.SendGcmNativeNotificationAsync("{ \"data\" : {\"message\":\"Hello from Azure!\"}}");
         }
-6. Přidejte následující řádky do vaší **Hlavní** metody:
+6. Přidejte následující řádky do hello vaše **hlavní** metoda:
    
          SendNotificationAsync();
          Console.ReadLine();
-7. Stiskněte klávesu F5 a spusťte aplikaci. Měli byste obdržet oznámení v aplikaci.
+7. Stisknutím klávesy hello F5 klíče toorun hello aplikace. Měli byste obdržet oznámení v aplikaci hello.
    
       ![][21]
 
 #### <a name="optional-send-notifications-by-using-a-mobile-service"></a>(Volitelné) Odesílání oznámení pomocí mobilní služby
 1. Sledujte [Začínáme používat Mobile Services]
-2. Přihlaste se do [portál Azure Classic] a vyberte mobilní služby.
-3. Vyberte kartu **Plánovač** nahoře.
+2. Přihlaste se toohello [portálu Azure Classic]a vyberte mobilní služby.
+3. Vyberte hello **Plánovač** karty v horní části hello.
    
       ![][22]
 4. Vytvořte novou naplánovanou úlohu, vložte název a vyberte **Na vyžádání**.
    
       ![][23]
-5. Po vytvoření úlohy klikněte na název úlohy. Klikněte na kartu **Skript** v horním panelu.
-6. Vložte následující skript dovnitř funkce plánovače. Ujistěte se, zda jste nahradili zástupné symboly pomocí názvu centra oznámení a připojovacího řetězce pro *DefaultFullSharedAccessSignature* získaného dříve. Klikněte na **Uložit**.
+5. Když se vytvoří úloha hello, klikněte na název úlohy hello. Pak klikněte na tlačítko hello **skriptu** karty na horním panelu hello.
+6. Vložte následující skript dovnitř funkce plánovače hello. Ujistěte se, že tooreplace zástupné symboly hello oznámení centra název a hello připojovacím řetězcem pro *DefaultFullSharedAccessSignature* kterou jste získali dříve. Klikněte na **Uložit**.
    
         var azure = require('azure');
         var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -427,16 +427,16 @@ V této části si ukážeme odesílání oznámení pomocí konzolové aplikace
             }
           }
         );
-7. Klikněte na tlačítko **Spustit jednou** na dolním panelu. Měli byste obdržet oznámení informační zprávy.
+7. Klikněte na tlačítko **spustit jednou** na dolním panelu hello. Měli byste obdržet oznámení informační zprávy.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto jednoduchém příkladu jste vysílali oznámení pro všechna zařízení Android. Chcete-li se zaměřit na konkrétní uživatele, využijte kurz [Použití centra oznámení pro nabízená oznámení uživatelům]. Pokud chcete segmentovat uživatele podle zájmových skupin, můžete si přečíst kurz [Používání centra oznámení k odesílání novinek]. Další informace o tom, jak používat centra oznámení, naleznete v tématu [Průvodce centry oznámení] a v tématu [Centra oznámení s postupy pro Android].
+V tomto jednoduchém příkladu jste vysílali oznámení tooall vaše zařízení se systémem Android. V pořadí tootarget konkrétní uživatele, najdete v kurzu toohello [použití centra oznámení toopush oznámení toousers]. Pokud chcete toosegment uživatele podle zájmových skupin, můžete si přečíst [toosend použití centra oznámení nejnovější zprávy přes]. Další informace o Notification Hubs toouse v [pokyny centra oznámení] a v hello [Android toofor postupy centra oznámení].
 
 <!-- Anchors. -->
 [Enable Google Cloud Messaging]: #register
 [Configure your Notification Hub]: #configure-hub
-[Connecting your app to the Notification Hub]: #connecting-app
-[Run your app with the emulator]: #run-app
+[Connecting your app toohello Notification Hub]: #connecting-app
+[Run your app with hello emulator]: #run-app
 [Send notifications from your back-end]: #send
 [Next steps]:#next-steps
 
@@ -465,13 +465,13 @@ V tomto jednoduchém příkladu jste vysílali oznámení pro všechna zařízen
 [Začínáme používat Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[portál Azure Classic]: https://manage.windowsazure.com/
+[Portál Azure Classic]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Průvodce centry oznámení]: http://msdn.microsoft.com/library/jj927170.aspx
-[Centra oznámení s postupy pro Android]: http://msdn.microsoft.com/library/dn282661.aspx
+[Android toofor postupy centra oznámení]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[Použití centra oznámení pro nabízená oznámení uživatelům]: /manage/services/notification-hubs/notify-users-aspnet
-[Používání centra oznámení k odesílání novinek]: /manage/services/notification-hubs/breaking-news-dotnet
+[Použití centra oznámení toopush oznámení toousers]: /manage/services/notification-hubs/notify-users-aspnet
+[Použít nejnovější zprávy přes toosend centra oznámení]: /manage/services/notification-hubs/breaking-news-dotnet
 [GCMClient Component page]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329

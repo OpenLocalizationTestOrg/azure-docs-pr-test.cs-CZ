@@ -1,6 +1,6 @@
 ---
-title: "Ukázka skriptu Azure CLI - vyrovnávat zatížení více webů pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - vyrovnávat zatížení více webů na jednom virtuálním počítači"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - vyrovnávat zatížení více webů s hello rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Ukázka skriptu Azure CLI - vyrovnávat zatížení více webů toohello stejného virtuálního počítače"
 services: load-balancer
 documentationcenter: load-balancer
 author: KumudD
@@ -15,15 +15,15 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c5a584b33025122033b930822ae0a0864a7ec1cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 136da5d1783fb9f9dc87f1ffad8eec7b95c6bd7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balance-multiple-websites"></a>Vyrovnávat zatížení více webů
 
-Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítače (VM), které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení bude směrovat provoz pro dva samostatné IP adresy na dva virtuální počítače. Po spuštění skriptu, můžete nasadit software webového serveru do virtuálních počítačů a hostitelů více webových serverů, každý s vlastní IP adresu.
+Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítače (VM), které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje přenosy pro dva samostatné IP adres toohello dva virtuální počítače. Po spouštění skriptu hello můžete nasadit webový server softwaru toohello virtuální počítače a hostování více webů, každou s vlastní IP adresu.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -32,11 +32,11 @@ Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítač
 ## <a name="sample-script"></a>Ukázkový skript
 
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.sh  "vyrovnávat zatížení více webových serverů")]
+[!code-azurecli-interactive[main](../../../cli_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.sh  "Load balance multiple web sites")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spusťte následující příkaz tooremove hello prostředků skupiny virtuálních počítačů a všechny související prostředky hello.
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální sítě, Vyrovnávání zatížení a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy toocreate skupinu prostředků virtuální sítě, zatížení vyrovnávání a všechny související prostředky. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -52,18 +52,18 @@ Tento skript používá následující příkazy k vytvoření skupiny prostřed
 | [Vytvoření sítě vnet az](https://docs.microsoft.com/cli/azure/network/vnet#create) | Vytvoří virtuální síť Azure a podsíť. |
 | [Vytvoření veřejné sítě az-ip](https://docs.microsoft.com/cli/azure/network/public-ip#create) | Vytvoří veřejnou IP adresu se statickou IP adresu a přidružené název DNS. |
 | [Vytvoření sítě lb az](https://docs.microsoft.com/cli/azure/network/lb#create) | Vytvoří k nástroji pro vyrovnávání zatížení Azure. |
-| [Vytvoření az sítě lb testu](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Vytvoří sondu nástroje pro vyrovnávání zatížení. Sondu nástroje pro vyrovnávání zatížení se používá k monitorování jednotlivých virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Pokud žádné virtuální počítače bude nedostupné, není provoz směruje na virtuální počítač. |
-| [Vytvořit pravidlo lb az sítě](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Vytvoří pravidlo Vyrovnávání zatížení. V této ukázce se vytvoří pravidlo pro port 80. Jako HTTP přenos dorazí na nástroje pro vyrovnávání zatížení, se směruje na portu 80 mezi virtuálními počítači v sadě nástroje pro vyrovnávání zatížení. |
-| [Vytvoření az sítě lb ip front-endu-](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create) | Vytvoření IP adresy front-endu nástroje pro vyrovnávání zatížení. |
+| [Vytvoření az sítě lb testu](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Vytvoří sondu nástroje pro vyrovnávání zatížení. Sondu nástroje pro vyrovnávání zatížení je použité toomonitor každý virtuální počítač v sadě nástroje pro vyrovnávání zatížení hello. Pokud žádné virtuální počítače bude nedostupné, není provoz směruje toohello virtuálních počítačů. |
+| [Vytvořit pravidlo lb az sítě](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Vytvoří pravidlo Vyrovnávání zatížení. V této ukázce se vytvoří pravidlo pro port 80. HTTP přenos dorazí na hello nástroj pro vyrovnávání zatížení, je směrované tooport 80 jeden hello virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení hello. |
+| [Vytvoření az sítě lb ip front-endu-](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create) | Vytvoření front-endovou IP adresy pro hello nástroj pro vyrovnávání zatížení. |
 | [Vytvoření az sítě lb fond adres](https://docs.microsoft.com/cli/azure/network/lb/address-pool#create) | Vytvoří fond back-end adresy. |
-| [Vytvoření az síťových adaptérů sítě](https://docs.microsoft.com/cli/azure/network/nic#create) | Vytvoří virtuální síťové karty a připojí jej virtuální sítě a podsítě. |
-| [Vytvoření virtuálního počítače az sady dostupnosti.](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajistěte doba provozu aplikací tak, že se virtuální počítače napříč fyzické prostředky tak, že pokud dojde k selhání, není provedena celou sadu. |
-| [Seskupování síťových az ip-config vytvořit](https://docs.microsoft.com/cli/azure/network/nic/ip-config#create) | Vytvoří confiuration IP. Musí mít funkci Microsoft.Network/AllowMultipleIpConfigurationsPerNic pro vaše předplatné povolený. Konfiguraci pouze jednoho může být určen jako primární konfiguraci IP adresy pro síťový adaptér, pomocí--příznak změnit na primární. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Vytvoří virtuální počítač a připojí jej k síťové karty, virtuální sítě, podsítě a NSG. Tento příkaz také určuje image virtuálního počítače jako přihlašovací údaje použité a správu.  |
+| [Vytvoření az síťových adaptérů sítě](https://docs.microsoft.com/cli/azure/network/nic#create) | Vytvoří virtuální síťové karty a připojí jej toohello virtuální síť a podsíť. |
+| [Vytvoření virtuálního počítače az sady dostupnosti.](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajistěte doba provozu aplikací tak, že se hello virtuální počítače napříč fyzické prostředky tak, že pokud dojde k selhání, není provedena hello celou sadu. |
+| [Seskupování síťových az ip-config vytvořit](https://docs.microsoft.com/cli/azure/network/nic/ip-config#create) | Vytvoří confiuration IP. Musíte mít hello Microsoft.Network/AllowMultipleIpConfigurationsPerNic funkce pro vaše předplatné povolený. Konfiguraci pouze jednoho může být určen jako hello primární konfiguraci IP adresy pro síťový adaptér, pomocí hello – příznak změnit na primární. |
+| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Vytvoří hello virtuální počítač a připojí ho toohello síťové karty, virtuální síť, podsíť a NSG. Tento příkaz také určuje toobe bitové kopie virtuálního počítače hello používá a pověření pro správu.  |
 | [Odstranění skupiny az](https://docs.microsoft.com/cli/azure/vm/extension#set) | Odstraní skupinu prostředků, včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další síťové ukázky skriptu rozhraní příkazového řádku najdete v [přehled sítě Azure dokumentaci](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Další síťové rozhraní příkazového řádku skriptu ukázky lze nalézt v hello [přehled sítě Azure dokumentaci](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

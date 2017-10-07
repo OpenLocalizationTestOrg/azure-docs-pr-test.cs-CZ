@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Multi-Factor Authentication – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se nasazovat vícefaktorové ověřování pomocí široké škály metod ověřování, které poskytují jednoduchý přihlašovací proces. Kurzy, sada SDK a další zdroje informací"
+title: "aaaAzure dokumentace k vícefaktorového ověřování – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toodeploy služby Multi-Factor authentication s rozsahem metod ověřování, zadejte jednoduchý proces přihlášení. Kurzy, sada SDK a další zdroje informací"
 services: multi-factor-authentication
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c4aaa14007bf441f99ef6599bda411bcaed92a92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0ede2ad48a3d4e756aeb0b1f6bc0e07e4e7b1fcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="multi-factor-authentication-documentation"></a>Dokumentace ke službě Multi-factor Authentication
 
-Naučte se nasazovat a spravovat Azure Multi-Factor Authentication, systém pro ověřování identit ve dvou krocích. Kurzy, sada SDK a další dokumentace ukazují, jak poskytovat silné ověřování pomocí široké škály metod ověřování a současně přitom zajistit jednoduchý přihlašovací proces.
+Zjistěte, jak toodeploy a spravovat Azure Multi-Factor Authentication systému dvoustupňové ověření identity. Kurzy, sady SDK a další dokumentaci ukazují, jak toodeliver silné ověřování s rozsahem metody ověření při současném poskytování jednoduchý proces přihlášení.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Naučte se nasazovat a spravovat Azure Multi-Factor Authentication, systém pro 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou Azure Multi-Factor Authentication v cloudu</h3>
+                        <h3>Začínáme s Azure Multi-Factor Authentication v cloudu hello</h3>
                     </div>
                 </div>
             </div>

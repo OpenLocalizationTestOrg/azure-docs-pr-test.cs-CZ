@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s Image předávání | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a předávací bitové kopie."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a předávací bitové kopie."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0bfbbaee7a74df6508584b7c8846fd07c2dc15c9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: baf39e4437b85c2de5b524984ad5ca39badbab63
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Azure Active Directory integrace s předávání bitové kopie
 
-V tomto kurzu zjistěte, jak integrovat předávání bitové kopie s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate předávání bitové kopie s Azure Active Directory (Azure AD).
 
-Integrace předávání bitové kopie s Azure AD poskytuje následující výhody:
+Integrace předávání bitové kopie s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k předávání bitové kopie
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k předávání bitové kopie (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooImage předávání
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooImage předávání (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s předávání bitové kopie, potřebujete následující položky:
+tooconfigure integrace Azure AD s předávání bitové kopie, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Předávání Image jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání bitové kopie předávání z Galerie
+1. Přidání bitové kopie předávání z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-image-relay-from-the-gallery"></a>Přidání bitové kopie předávání z Galerie
-Při konfiguraci integrace předávání bitové kopie do služby Azure AD potřebujete přidat bitovou kopii předávání z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-image-relay-from-hello-gallery"></a>Přidání bitové kopie předávání z Galerie hello
+tooconfigure hello integrace předávání bitové kopie do Azure AD, je nutné tooadd předávání bitové kopie z hello Galerie tooyour seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat bitovou kopii předávání z galerie, proveďte následující kroky:**
+**tooadd předávání bitové kopie z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Image předávání**.
+4. Hello vyhledávacího pole zadejte **Image předávání**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_search.png)
 
-5. Na panelu výsledků vyberte **Image předávání**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **Image předávání**a pak klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s předávání bitové kopie založené na testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku Relay bitové kopie je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské Image Relay musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel protějšku hello Relay bitové kopie je tooa uživatelem ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello Relay Image musí toobe navázat.
 
-Obrázek Relay přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V předávání bitové kopie, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s předávání bitové kopie, musíte dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s předávání bitové kopie, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele předávání Image](#creating-an-image-relay-test-user)**  – Pokud chcete mít protějšek Britta Simon Relay bitové kopie, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření testovacího uživatele předávání Image](#creating-an-image-relay-test-user)**  -toohave protějšek Britta Simon Relay bitovou kopii, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci předávání bitové kopie.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci předávání bitové kopie.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s předávání bitové kopie, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s předávání bitové kopie, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **Image předávání** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Image předávání** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_samlbase.png)
 
-3. Na **Image předávání domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **Image předávání domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.imagerelay.com/`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.imagerelay.com/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.imagerelay.com/sso/metadata`
+    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.imagerelay.com/sso/metadata`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Image předávání klienta](http://support.imagerelay.com/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Image předávání klienta](http://support.imagerelay.com/) tooget tyto hodnoty. 
  
 
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_certificate.png) 
 
@@ -127,13 +127,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_general_400.png)
 
-6. Na **konfigurace přenosového Image** klikněte na tlačítko **konfigurace přenosového bitové kopie** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresa URL služby a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**
+6. Na hello **konfigurace přenosového Image** klikněte na tlačítko **konfigurace přenosového bitové kopie** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresa URL služby a SAML jeden přihlašování adresu URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_configure.png) 
 
-7. V jiném okně prohlížeče Přihlaste se k serveru vaší společnosti předávání bitové kopie jako správce.
+7. V jiném okně prohlížeče Přihlaste se jako správce na webu společnosti tooyour předávání bitové kopie.
 
-8. Na panelu nástrojů v horní části klikněte **uživatelé a oprávnění** zatížení.
+8. V panelu nástrojů hello hello nahoře, klikněte na tlačítko hello **uživatelé a oprávnění** zatížení.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
@@ -141,118 +141,118 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-10. V **jeden znak v nastavení** úlohy, vyberte **tato skupina může pouze přihlášení přes jednotné přihlašování** zaškrtněte políčko a potom klikněte na **Uložit**.
+10. V hello **jeden znak v nastavení** úlohy, vyberte hello **tato skupina může pouze přihlášení přes jednotné přihlašování** zaškrtněte políčko a potom klikněte na **Uložit**.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-11. Přejděte na **nastavení účtu**.
+11. Přejděte příliš**nastavení účtu**.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
-12. Přejděte na **jeden znak v nastavení** zatížení.
+12. Přejděte toohello **jeden znak v nastavení** zatížení.
     
      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_11.png)
 
-13. Na **SAML nastavení** dialogové okno, proveďte následující kroky:
+13. Na hello **SAML nastavení** dialogové okno, proveďte následující kroky hello:
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)
     
-    a. V **přihlašovací adresa URL** textovému poli, vložte hodnotu **jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    a. V **přihlašovací adresa URL** textovému poli, vložte hodnotu hello **jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
 
-    b. V **adresy URL odhlašovací** textovému poli, vložte hodnotu **jednu adresu URL služby Sign-Out** který jste zkopírovali z portálu Azure.
+    b. V **adresy URL odhlašovací** textovému poli, vložte hodnotu hello **jednu adresu URL služby Sign-Out** který jste zkopírovali z portálu Azure.
 
     c. Jako **formát Id názvu**, vyberte **urn: oasis: názvy: tc: SAML:1.1:nameid-formátu: emailAddress**.
 
-    d. Jako **vazby možnosti pro žádosti od poskytovatele služeb (Image relé)**, vyberte **POST vazby**.
+    d. Jako **vazby možnosti pro žádosti od hello poskytovatele služeb (Image relé)**, vyberte **POST vazby**.
 
     e. V části **x.509 Certificate**, klikněte na tlačítko **aktualizace certifikátu**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)
 
-    f. V poznámkovém bloku otevřete stažený certifikát, kopírovat obsah a pak ji vložit do textového pole certifikátu x.509.
+    f. V poznámkovém bloku otevřete hello stáhnout certifikát, zkopírujte hello obsah a pak ji vložit do textového pole certifikátu x.509 hello.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_18.png)
 
-    g. V **zřizování uživatelů JIT** vyberte **povolit zřizování uživatelů JIT**.
+    g. V **zřizování uživatelů JIT** části, vyberte hello **povolit zřizování uživatelů JIT**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_19.png)
 
-    h. Vyberte skupinu oprávnění (například **jednotného přihlašování k základní**) povolený se přihlásit pouze pomocí jednotného přihlašování.
+    h. Vyberte hello skupině oprávnění (například **jednotného přihlašování k základní**) povolený toosign v pouze prostřednictvím jednotného přihlašování.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-image-relay-test-user"></a>Vytváření testovacího uživatele předávání bitové kopie
 
-Cílem této části je vytvoření uživatele volat Britta Simon Relay bitové kopie.
+Hello cílem této části je toocreate uživatel volal Britta Simon v předávání bitové kopie.
 
-**Pokud chcete vytvořit uživateli volat Britta Simon Relay bitové kopie, proveďte následující kroky:**
+**toocreate uživatel volal Britta Simon v předávání bitové kopie, proveďte následující kroky hello:**
 
-1. Přihlášení k serveru vaší společnosti předávání bitové kopie jako správce.
+1. Web společnosti předávání bitové kopie tooyour přihlášení jako správce.
 
-2. Přejděte na **uživatelé a oprávnění** a vyberte **vytvořit jednotné přihlašování uživatele**.
+2. Přejděte příliš**uživatelé a oprávnění** a vyberte **vytvořit jednotné přihlašování uživatele**.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. Zadejte **e-mailu**, **křestní jméno**, **příjmení**, a **společnosti** chcete zřídit a vyberte skupinu oprávnění (pro uživatele Příklad: základní jednotné přihlašování) kterého je skupina, která může přihlásit pouze pomocí jednotného přihlašování.
+3. Zadejte hello **e-mailu**, **křestní jméno**, **příjmení**, a **společnosti** hello uživatele chcete tooprovision a vyberte hello oprávnění skupiny (například jednotného přihlašování k základní) tedy hello skupinu, která může přihlásit pouze pomocí jednotného přihlašování.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) 
 
 4. Klikněte na možnost **Vytvořit**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k předávání bitové kopie.
+V této části povolíte tak, že udělíte přístup tooImage předávání Britta Simon toouse Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon Relay bitové kopie, proveďte následující kroky:**
+**tooassign tooImage Britta Simon předávání, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Image předávání**.
+2. V seznamu aplikace hello vyberte **Image předávání**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -260,7 +260,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -268,14 +268,14 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.    
+Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.    
 
-Když kliknete na dlaždici předávání bitové kopie na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci předávání bitové kopie.
+Když kliknete na dlaždici hello předávání bitové kopie v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour předávání Image aplikace.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

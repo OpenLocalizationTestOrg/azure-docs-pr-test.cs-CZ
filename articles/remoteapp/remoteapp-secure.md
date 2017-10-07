@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení aplikacím a prostředkům v Azure Remoteappu | Microsoft Docs"
-description: "Zjistěte, jak zamknout aplikacím a prostředkům v Azure Remoteappu"
+title: "aaaSecure aplikacím a prostředkům v Azure Remoteappu | Microsoft Docs"
+description: "Zjistěte, jak toolock dolů aplikacím a prostředkům v Azure Remoteappu"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1c052906788f0f4fe4ca9fd6d3af63336245174a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 26325826e92855a12a0087f19a3e32cbe1116449
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-apps-and-resources-in-azure-remoteapp"></a>Zabezpečení aplikacím a prostředkům v Azure Remoteappu
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Azure RemoteApp poskytuje uživatelům přístup k centrálně spravované aplikace pro Windows, který vám umožňuje řídit, co uživatelé uvidí a nelze provést.  To je zvlášť užitečné, když se uživatel připojuje z nespravovaných zařízení (jako jsou jejich osobní Macbook) a chcete řídit přístup uživatele nebo prostředí.
+Azure RemoteApp poskytuje uživatelům přístup toocentrally spravované aplikace pro Windows, který vám umožňuje řídit, co uživatelé uvidí a nelze provést.  To je zvlášť užitečné, když uživatel hello připojení z nespravovaném zařízení (jako jsou jejich osobní Macbook) a vy chcete toocontrol hello uživatelský přístup nebo prostředí.
 
-Například pokud používáte k ověřování uživatelů služby Active Directory a chcete zabránit uživatelům v kopírování dat z aplikace, můžete nakonfigurovat zásady skupiny Vzdálená plocha pro blokování uživatele z kopírování dat.
+Například pokud používáte k ověřování uživatelů služby Active Directory a chcete tooprevent uživatelé z kopírování dat z aplikace, můžete nakonfigurovat zásady skupiny Vzdálená plocha tooblock uživatelů z kopírování dat.
 
-Dalším příkladem je, pokud chcete blokovat přístup k Internetu pro konkrétní aplikace v kolekci. Můžete vytvořit pravidlo brány Windows Firewall, které blokuje přístup při vytvoření bitové kopie pro vaše kolekce.
+Dalším příkladem je, pokud chcete přístup k Internetu tooblock pro konkrétní aplikace v kolekci. Můžete vytvořit pravidlo brány Windows Firewall blokuje při vytváření bitové kopie hello kolekce text hello přístup.
 
 ## <a name="implementation-options"></a>Možnosti implementace
-  Zde jsou možnosti klíče implementace, které můžete použít samostatně nebo v kombinaci podle potřeby:
+  Zde jsou možnosti hello klíče implementace, které můžete použít samostatně nebo v kombinaci podle potřeby:
 
-1. Pokud vaše kolekce vzdálené aplikace RemoteApp je připojený k doméně můžete vynutit žádné [zásad skupiny](https://technet.microsoft.com/library/cc725828.aspx) (s výjimkou zásady časový limit nečinnosti a odpojení popsané [sem](../azure-subscription-service-limits.md)).
-2. Jako alternativu k zásad skupiny (Pokud kolekce není připojený k doméně, nebo nemáte správná oprávnění ve službě AD), můžete nakonfigurovat [místní zásady](https://technet.microsoft.com/library/cc775702.aspx) do image šablony.  Všimněte si, že tuto skupinu zásady trumfy místní zásady, když dojde ke konfliktu.
-3. Některá nastavení operačního systému nebo aplikace se nedají konfigurovat prostřednictvím zásad, ale mohou být prostřednictvím pomocí klíče registru [nástroj RegEdit](remoteapp-hybridtrouble.md) při konfiguraci image šablony.
-4. Můžete použít [brány Windows Firewall](http://windows.microsoft.com/en-US/windows-8/Windows-Firewall-from-start-to-finish) do ovládacího prvku do a z počítače, na kterém je spuštěna aplikace přístup k síti. Ujistěte se, že nedošlo k blokování adres URL a portů, které jsou definované v tomto poli.
-5. Můžete použít [AppLocker](https://technet.microsoft.com/library/hh831440.aspx) řídit, kteří uživatelé aplikací a souborů můžete spustit. Uživatele můžete například zjistit, jak spouštět aplikace, aby nemohl publikovat, ale které jsou k dispozici v bitové kopii, kterou jste použili k vytvoření kolekce – nástroje AppLocker můžete blokovat to.
+1. Pokud vaše kolekce vzdálené aplikace RemoteApp je připojený k doméně můžete vynutit žádné [zásad skupiny](https://technet.microsoft.com/library/cc725828.aspx) (s výjimkou hello hello nečinnosti a odpojení časový limit zásad popsané [sem](../azure-subscription-service-limits.md)).
+2. Jako alternativní tooGroup zásady (Pokud kolekce není připojený k doméně, nebo nemáte správná oprávnění hello ve službě AD), můžete nakonfigurovat [místní zásady](https://technet.microsoft.com/library/cc775702.aspx) do image šablony.  Všimněte si, že tuto skupinu zásady trumfy místní zásady, když dojde ke konfliktu.
+3. Některá nastavení operačního systému nebo aplikace se nedají konfigurovat prostřednictvím zásad, ale může být pomocí klíče registru pomocí hello [nástroj RegEdit](remoteapp-hybridtrouble.md) při konfiguraci image šablony.
+4. Můžete použít [brány Windows Firewall](http://windows.microsoft.com/en-US/windows-8/Windows-Firewall-from-start-to-finish) toocontrol síťový přístup tooand z hello počítače, kde je spuštěna aplikace hello. Ujistěte se, že nedošlo k blokování hello adresy URL a portů, které jsou definované v tomto poli.
+5. Můžete použít [Applockeru](https://technet.microsoft.com/library/hh831440.aspx) toocontrol, který můžete spustit aplikace a soubory uživatele. Například můžete zjistit, jak toorun aplikace, které jste nepublikoval, ale které jsou k dispozici v hello image jste použili toocreate hello kolekce uživatele – nástroje AppLocker můžete blokovat to.
 
 ## <a name="detailed-information"></a>Podrobné informace
-* Tyto zásady vzdálené plochy by mohly být velmi užitečné:
+* Hello následující zásady vzdálené plochy se pravděpodobně toobe nejužitečnější:
   * [Zařízení a prostředků](https://technet.microsoft.com/library/ee791794.aspx)
   * [Přesměrování tiskárny](https://technet.microsoft.com/library/ee791784.aspx)
   * [Profily](https://technet.microsoft.com/library/ee791865.aspx).
-* Všimněte si, že konfigurace přesměrování přes modul vzdálené aplikace RemoteApp PowerShell (jak je vidět [sem](remoteapp-redirection.md)) závisí na klientském počítači. Chcete-li tyto zásady vynutit, aby primární cílem je zabezpečení budete chtít vynutit zásady prostřednictvím image šablony místní zásady nebo prostřednictvím zásad skupiny.
+* Všimněte si, že konfigurace přesměrování prostřednictvím hello modulu PowerShell vzdálené aplikace RemoteApp (jak je vidět [sem](remoteapp-redirection.md)) závisí na hello klientský počítač tooenforce hello zásady, takže pokud hello hlavním cílem je zabezpečení můžete zásady hello tooenforce prostřednictvím Hello místní zásady image šablony nebo prostřednictvím zásad skupiny.
 * [Windows Server 2012 R2 zásady](https://technet.microsoft.com/library/hh831791.aspx).
-* [Office 2013 zásady](https://technet.microsoft.com/library/cc178969.aspx) (včetně [postup přizpůsobení panelu nástrojů Office](https://technet.microsoft.com/library/cc179143.aspx)).
+* [Office 2013 zásady](https://technet.microsoft.com/library/cc178969.aspx) (včetně [jak toocustomize hello nástrojů Office](https://technet.microsoft.com/library/cc179143.aspx)).
 

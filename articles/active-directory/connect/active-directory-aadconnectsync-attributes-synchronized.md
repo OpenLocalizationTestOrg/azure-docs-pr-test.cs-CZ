@@ -1,6 +1,6 @@
 ---
 title: "Atributy se synchronizují přes Azure AD Connect | Microsoft Docs"
-description: "Obsahuje seznam atributy, které jsou synchronizovány do Azure Active Directory."
+description: "Seznamy hello atributy, které jsou synchronizovány tooAzure služby Active Directory."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 85878cbccf76e9f6faf523b89218d058fd24904b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2fe5b944a7fc832f245631416c265fb82eedeb15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory
-Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
-Atributy jsou seskupené podle Azure související aplikace AD.
+# <a name="azure-ad-connect-sync-attributes-synchronized-tooazure-active-directory"></a>Synchronizace Azure AD Connect: atributy synchronizované tooAzure služby Active Directory
+Toto téma uvádí hello atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
+Hello atributy jsou seskupené podle hello související s aplikací Azure AD.
 
-## <a name="attributes-to-synchronize"></a>Atributy pro synchronizaci
-Je běžné otázky *co je v seznamu minimální atributů k synchronizaci*. Výchozí a doporučený postup je potřeba zachovat výchozí atributy, takže konstruovat úplné GAL (seznamu pro globální adresa) v cloudu a získat všechny funkce v úlohami Office 365. V některých případech jsou některé atributy, které vaše organizace nechce synchronizované do cloudu vzhledem k tomu, že tyto atributy obsahují citlivé nebo PII data (identifikovatelné osobní údaje), jako jsou v tomto příkladu:  
+## <a name="attributes-toosynchronize"></a>Atributy toosynchronize
+Je běžné otázky *co je hello seznam minimální atributy toosynchronize*. Hello výchozí a doporučený postup je tookeep hello výchozí atributy tak úplné GAL (seznamu pro globální adresa) lze sestavit v hello cloudu a tooget všem funkcím v úlohami Office 365. V některých případech jsou některé atributy, vaše organizace nechce synchronizované toohello cloudu vzhledem k tomu, že tyto atributy obsahují citlivé nebo PII data (identifikovatelné osobní údaje), jako jsou v tomto příkladu:  
 ![Chybný atributy](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
 
-V takovém případě začínat v seznamu atributů v tomto tématu a identifikujte ty atributy, které by obsahovat velká a malá písmena nebo PII data a nelze synchronizovat. Poté zrušte výběr těchto atributů během instalace pomocí [aplikaci Azure AD a filtrování atributů](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering).
+V takovém případě začínat hello seznam atributů v tomto tématu a identifikujte ty atributy, které by obsahovat velká a malá písmena nebo PII data a nelze synchronizovat. Poté zrušte výběr těchto atributů během instalace pomocí [aplikaci Azure AD a filtrování atributů](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering).
 
 > [!WARNING]
-> Při výběru atributy, by měl buďte opatrní a pouze zrušte výběr těchto atributů absolutně není možné synchronizovat. Ostatní atributy unselecting může mít negativní dopad na funkce.
+> Při výběru atributy, by měl buďte opatrní a pouze zrušte výběr těchto atributů toosynchronize absolutně není možné. Ostatní atributy unselecting může mít negativní dopad na funkce.
 >
 >
 
@@ -41,11 +41,11 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | accountEnabled |X |Určuje, zda je povoleno účet. |
 | CN |X | |
 | displayName |X | |
-| objectSID |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
-| pwdLastSet |X |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
-| sourceAnchor |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
-| usageLocation |X |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| objectSID |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
+| pwdLastSet |X |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
+| sourceAnchor |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
+| usageLocation |X |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 
 ## <a name="exchange-online"></a>Exchange Online
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
@@ -60,7 +60,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
 | Oddělení |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -141,7 +141,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | msExchTeamMailboxSharePointUrl |X | | | |
 | msExchUserHoldPolicies |X | | | |
 | msOrg IsOrganizational | | |X | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
@@ -151,12 +151,12 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | PSČ |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
 | St |X |X | | |
 | StreetAddress |X |X | | |
 | targetAddress |X |X | | |
@@ -165,9 +165,9 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | thumbnailphoto |X |X | | |
 | Název |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
 | userCertificate |X |X | | |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 | userSMIMECertificates |X |X | | |
 | wWWHomePage |X |X | | |
 
@@ -182,7 +182,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
 | Oddělení |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -220,7 +220,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | msExchTeamMailboxOwners |X | | | |
 | msExchTeamMailboxSharePointLinkedBy |X | | | |
 | msExchTeamMailboxSharePointUrl |X | | | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
@@ -234,12 +234,12 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | postOfficeBox |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
 | St |X |X | | |
 | StreetAddress |X |X | | |
 | targetAddress |X |X | | |
@@ -249,8 +249,8 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Název |X |X | | |
 | unauthOrig |X |X |X | |
 | Adresa URL |X |X | | |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online"></a>Aplikace Lync Online
@@ -262,7 +262,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | co |X |X | | |
 | Společnosti |X |X | | |
 | Oddělení |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -283,40 +283,40 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | msRTCSIP-OwnerUrn |X | | | |
 | msRTCSIP-PrimaryUserAddress |X |X | | |
 | msRTCSIP-UserEnabled |X |X | | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | PSČ |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
 | St |X |X | | |
 | StreetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | Název |X |X | | |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
-| CN |X | |X |Běžné jméno nebo alias. Předpona, nejčastěji [e-mailu] hodnoty. |
-| displayName |X |X |X |Řetězec, který představuje název často zobrazené jako popisný název (křestní jméno příjmení). |
+| CN |X | |X |Běžné jméno nebo alias. Nejčastěji hello předpona [e-mailu] hodnoty. |
+| displayName |X |X |X |Řetězec, který představuje název hello často zobrazené jako popisný název hello (křestní jméno příjmení). |
 | E-mailu |X |X |X |úplné e-mailovou adresu. |
 | Člen | | |X | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
-| proxyAddresses |X |X |X |mechanických vlastnost. Používá Azure AD. Obsahuje všechny sekundární e-mailové adresy pro uživatele. |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
+| proxyAddresses |X |X |X |mechanických vlastnost. Používá Azure AD. Obsahuje všechny sekundární e-mailové adresy pro uživatele hello. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. |
 | securityEnabled | | |X |Odvozená od groupType. |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |Tento název UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |Tento název UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 
 ## <a name="intune"></a>Intune
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
@@ -324,18 +324,18 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
 | C |X |X | | |
 | CN |X | |X | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
 | Člen | | |X | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | securityEnabled | | |X |Odvozené z groupType |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
@@ -346,7 +346,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
-| Popis |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -355,28 +355,28 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Správce |X |X | | |
 | Člen | | |X | |
 | mobilní |X |X | | |
-| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | physicalDeliveryOfficeName |X |X | | |
 | PSČ |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
 | St |X |X | | |
 | StreetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | Název |X |X | | |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 
 ## <a name="3rd-party-applications"></a>3. stran aplikace
-Tato skupina je sada atributy používané jako minimální atributy, které jsou potřebné pro obecné zatížení nebo aplikace. Můžete použít pro úlohu není uvedený v jinou část nebo pro aplikaci jiného výrobce než Microsoftu. Použije se explicitně pro následující:
+Tato skupina je sada atributy používané jako hello minimální atributy, které jsou potřebné pro obecné zatížení nebo aplikace. Můžete použít pro úlohu není uvedený v jinou část nebo pro aplikaci jiného výrobce než Microsoftu. Použije se explicitně pro hello následující:
 
 * Yammer (pouze uživatele se využívá)
 * [Hybridní Business-to-Business (B2B) mezi org spolupráce scénáře nabízené prostředkům, jako jsou služby SharePoint](http://go.microsoft.com/fwlink/?LinkId=747036)
 
-Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD se nepoužije pro podporu Office 365, Dynamics nebo Intune. Má malou sadu atributů jádra.
+Tato skupina je, že sada atributů, které lze použít, pokud není adresář Azure AD hello používá toosupport Office 365, Dynamics, nebo Intune. Má malou sadu atributů jádra.
 
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
@@ -388,16 +388,16 @@ Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD se
 | Spravované | | |X | |
 | mailNickName |X |X |X | |
 | Člen | | |X | |
-| objectSID |X | | |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
+| objectSID |X | | |mechanických vlastnost. Identifikátor uživatele AD používá toomaintain synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Použít tooknow při tooinvalidate už byly vystavené tokeny. Používat synchronizaci hesla i federací. |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
-| usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
-| UserPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
+| sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor toomaintain vztah mezi přidá a Azure AD. |
+| usageLocation |X | | |mechanických vlastnost. země Hello uživatele. Použít pro přiřazení licence. |
+| UserPrincipalName |X | | |UPN je hello přihlašovacího ID pro uživatele hello. Nejčastěji hello totéž jako hodnota [e-mailu]. |
 
 ## <a name="windows-10"></a>Windows 10
-Windows 10 připojených k doméně computer(device) synchronizuje některých atributů do služby Azure AD. Další informace o scénářích najdete v tématu [připojení zařízení připojených k doméně ke službě Azure AD pro Windows 10 vyskytne](../active-directory-azureadjoin-devices-group-policy.md). Tyto atributy provádět synchronizaci a Windows 10 se nezobrazí jako aplikace, které můžete zrušit zaškrtnutí. Počítač připojený k doméně Windows 10 bude označen tak, že userCertificate atribut naplněno.
+Windows 10 připojených k doméně computer(device) synchronizuje některé atributy tooAzure AD. Další informace o scénářích hello najdete v tématu [připojení zařízení připojených k doméně tooAzure AD pro Windows 10 vyskytne](../active-directory-azureadjoin-devices-group-policy.md). Tyto atributy provádět synchronizaci a Windows 10 se nezobrazí jako aplikace, které můžete zrušit zaškrtnutí. Počítač připojený k doméně Windows 10 bude označen tak, že userCertificate atribut hello naplněno.
 
 | Název atributu | Zařízení | Komentář |
 | --- |:---:| --- |
@@ -411,7 +411,7 @@ Windows 10 připojených k doméně computer(device) synchronizuje některých a
 | operatingSystemVersion |X |Také se nazývá deviceOSVersion. |
 | userCertificate |X | |
 
-Tyto atributy pro **uživatele** jsou kromě dalších aplikací, které jste vybrali.  
+Tyto atributy pro **uživatele** jsou kromě toohello jiné aplikace, které jste vybrali.  
 
 | Název atributu | Uživatel | Komentář |
 | --- |:---:| --- |
@@ -419,22 +419,22 @@ Tyto atributy pro **uživatele** jsou kromě dalších aplikací, které jste vy
 | domainNetBios |X |Volá se také název pro rozhraní NetBIOS. Například CONTOSO. |
 
 ## <a name="exchange-hybrid-writeback"></a>Zpětný zápis hybridní Exchange
-Tyto atributy se zapisují zpět z Azure AD do místní služby Active Directory při výběru povolit **Exchange hybridní**. V závislosti na vaší verzi Exchange méně atributy synchronizováni.
+Tyto atributy se zapisují zpět z Azure AD tooon místní služby Active Directory při výběru tooenable **Exchange hybridní**. V závislosti na vaší verzi Exchange méně atributy synchronizováni.
 
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
 | msDS-ExternalDirectoryObjectID |X | | |Odvozená od cloudAnchor ve službě Azure AD. Tento atribut je nového v Exchange 2016 a Windows Server 2016 AD. |
-| msExchArchiveStatus |X | | |Online archivu: Umožňuje zákazníkům k archivaci e-mailu. |
+| msExchArchiveStatus |X | | |Online archivu: Umožňuje zákazníkům tooarchive e-mailu. |
 | msExchBlockedSendersHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
 | msExchSafeRecipientsHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
 | msExchSafeSendersHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
-| msExchUCVoiceMailSettings |X | | |Povolit Unified Messaging (UM) – Online hlasová pošta: Microsoft Lync Server používá integrace a informuje Lync serveru místní, že má uživatel hlasová pošta v online službách. |
-| msExchUserHoldPolicies |X | | |Uchování soudního sporu: Umožňuje cloudové služby k určení uživatelů, kteří jsou pod uložení soudního sporu. |
-| proxyAddresses |X |X |X |Pouze x500 vloží adresu z Exchange Online. |
-| publicDelegates |X | | |Umožňuje poštovní schránku systému Exchange Online k udělení oprávnění SendOnBehalfTo uživatelům s místní poštovní schránka systému Exchange. Vyžaduje Azure AD Connect sestavení 1.1.552.0 nebo po. |
+| msExchUCVoiceMailSettings |X | | |Povolit Unified Messaging (UM) – Online hlasová pošta: používá Microsoft Lync Server integrace tooindicate tooLync místní Server hello má hlasová pošta v online službách. |
+| msExchUserHoldPolicies |X | | |Uchování soudního sporu: Umožňuje toodetermine cloudové služby, které uživatelé jsou v rámci udržení soudního sporu. |
+| proxyAddresses |X |X |X |Vloží se pouze hello x500 adresa z Exchange Online. |
+| publicDelegates |X | | |Umožňuje že Exchange Online poštovní schránky toobe udělena práva toousers SendOnBehalfTo s místní poštovní schránka systému Exchange. Vyžaduje Azure AD Connect sestavení 1.1.552.0 nebo po. |
 
 ## <a name="exchange-mail-public-folder"></a>Veřejné složky e-mailu Exchange
-Tyto atributy se synchronizují z místní služby Active Directory do Azure AD, když vyberete volbu Povolit **veřejné složky e-mailu Exchange**.
+Tyto atributy se synchronizují z místní služby Active Directory tooAzure AD, když vyberete tooenable **veřejné složky e-mailu Exchange**.
 
 | Název atributu | PublicFolder | Komentář |
 | --- | :---:| --- |
@@ -446,7 +446,7 @@ Tyto atributy se synchronizují z místní služby Active Directory do Azure AD,
 | targetAddress | X |  |
 
 ## <a name="device-writeback"></a>Zpětný zápis zařízení
-Objekty zařízení jsou vytvořeny ve službě Active Directory. Tyto objekty lze zařízení připojených ke službě Azure AD nebo připojený k doméně počítače s Windows 10.
+Objekty zařízení jsou vytvořeny ve službě Active Directory. Tyto objekty může být, že zařízení připojena tooAzure AD nebo připojený k doméně počítače s Windows 10.
 
 | Název atributu | Zařízení | Komentář |
 | --- |:---:| --- |
@@ -466,10 +466,10 @@ Objekty zařízení jsou vytvořeny ve službě Active Directory. Tyto objekty l
 | msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Poznámky
-* Při použití atributu alternativní ID, místní atribut userPrincipalName je synchronizován s onPremisesUserPrincipalName atributů Azure AD. Atributu alternativní ID, například e-mailu, je synchronizován s Azure AD atribut userPrincipalName.
-* V seznamu výš, typ objektu **uživatele** platí také pro typ objektu **iNetOrgPerson**.
+* Při použití atributu alternativní ID hello místní atribut userPrincipalName je synchronizován s onPremisesUserPrincipalName atribut hello Azure AD. Dobrý den atributu alternativní ID, například poštovní, je synchronizován se službou hello Azure AD atribut userPrincipalName.
+* V seznamech hello výše, hello typ objektu **uživatele** platí také typ objektu toohello **iNetOrgPerson**.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

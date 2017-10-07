@@ -1,6 +1,6 @@
 ---
-title: "Určit pokročilou analýzu scénáře pro Azure Machine Learning | Microsoft Docs"
-description: "Vyberte odpovídající scénáře pro to advanced prediktivní analýzy v procesu Team Data vědecké účely."
+title: "aaaIdentify pokročilé analýzy scénáře pro Azure Machine Learning | Microsoft Docs"
+description: "Vyberte odpovídající scénáře hello to advanced prediktivní analýzy s hello proces vědecké účely dat Team."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: fe4f74f2e0602d13eedb6ca186480291a9a5724f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 52c6bb10d6df4f640a4f66cf17cf4993cc1067b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
-Tento článek popisuje řadu ukázkových zdrojů dat a cílové scénáře, které mohou být zpracována [tým datové vědy procesu (TDSP)](data-science-process-overview.md). TDSP poskytuje systematicky pro týmy spolupracovat na vytváření inteligentní aplikace. Scénáře, které jsou uvedeny v tomto tématu ilustrují možnosti dostupné v pracovním postupu zpracování dat, které jsou závislé na vlastností dat, umístění zdrojového a cílového úložiště v Azure.
+Tento článek popisuje různé hello ukázkových zdrojů dat a cílové scénáře, které mohou být zpracována hello [tým datové vědy procesu (TDSP)](data-science-process-overview.md). Hello TDSP poskytuje systematicky pro týmy toocollaborate na budování inteligentní aplikace. scénáře Hello uvedeny v tomto tématu ilustrují možnosti dostupné v pracovním postupu hello zpracování dat, které jsou závislé na vlastností hello dat, umístění zdrojových souborů a cílové úložiště v Azure.
 
-**Rozhodovací strom** pro výběr ukázkových scénářů, které jsou vhodné pro vaše data a cíl se zobrazí v poslední části.
+Hello **rozhodovací strom** pro výběr hello ukázkových scénářů, které jsou vhodné pro vaše data a cíl se zobrazí v poslední části hello.
 
 > [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 > 
 > 
 
-Každý z těchto částí uvede vzorový scénář. Pro každý scénář, vědecké zpracování možných dat nebo pokročilou analýzu jsou uvedeny toku a podpůrné prostředků Azure.
+Každý z následujících částí hello uvede vzorový scénář. Pro každý scénář, vědecké zpracování možných dat nebo pokročilou analýzu jsou uvedeny toku a podpůrné prostředků Azure.
 
 > [!NOTE]
-> **Pro všechny z následujících scénářů budete muset:**
+> **Pro všechny hello následující scénáře budete muset:**
 > <br/>
 > 
 > * [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md)
@@ -41,25 +41,25 @@ Každý z těchto částí uvede vzorový scénář. Pro každý scénář, věd
 > 
 > 
 
-## <a name="smalllocal"></a>Scénář \#1: malé a střední tabulkové datovou sadu v místních souborů
-![Malé a střední místních souborů][1]
+## <a name="smalllocal"></a>Scénář \#1: malý toomedium tabulkové datovou sadu v místních souborů
+![Malé toomedium místních souborů][1]
 
 #### <a name="additional-azure-resources-none"></a>Další prostředky Azure: žádné
-1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
 2. Nahrání datové sady.
 3. Vytvoření experimentu tok Azure Machine Learning, počínaje nahrané datových sad.
 
-## <a name="smalllocalprocess"></a>Scénář \#2: malé a střední datové sady místních souborů, které vyžadují zpracování
-![Malé a střední místních souborů s zpracování][2]
+## <a name="smalllocalprocess"></a>Scénář \#2: malé toomedium datové sady místních souborů, které vyžadují zpracování
+![Malé toomedium místních souborů s zpracování][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (server IPython Poznámkový blok)
 1. Vytvořte virtuální počítač Azure s IPython Poznámkový blok.
-2. Nahrání dat do kontejner úložiště Azure.
+2. Nahrajte kontejner dat tooan úložiště Azure.
 3. Předběžně zpracovat a vyčistit data v poznámkovém bloku IPython, přístup k datům z kontejneru úložiště Azure.
-4. Transformace dat do domény, vyčistit formě tabulky.
+4. Transformace dat toocleaned, formě tabulky.
 5. Uložte Transformovaná data do objektů BLOB Azure.
-6. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-7. Čtení dat z Azure BLOB pomocí [importovat Data] [ import-data] modulu.
+6. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+7. Čtení dat hello z Azure BLOB pomocí hello [importovat Data] [ import-data] modulu.
 8. Vytvoření experimentu tok Azure Machine Learning, počínaje ingestovaný datových sad.
 
 ## <a name="largelocal"></a>Scénář \#3: velké datové sady místních souborů, cílení objektů BLOB služby Azure
@@ -67,132 +67,132 @@ Každý z těchto částí uvede vzorový scénář. Pro každý scénář, věd
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (server IPython Poznámkový blok)
 1. Vytvořte virtuální počítač Azure s IPython Poznámkový blok.
-2. Nahrání dat do kontejner úložiště Azure.
+2. Nahrajte kontejner dat tooan úložiště Azure.
 3. Předběžně zpracovat a vyčistit data v poznámkovém bloku IPython, přístup k datům z Azure BLOB.
-4. Transformace dat do domény, vyčistit formě tabulky, v případě potřeby.
+4. Transformace dat toocleaned, formě tabulky, v případě potřeby.
 5. Prozkoumejte data a podle potřeby vytvářet funkce.
 6. Extrahujte vzorku dat. malé a střední.
-7. Uložte jen Vzorkovaná data do objektů BLOB Azure.
-8. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-9. Čtení dat z Azure BLOB pomocí [importovat Data] [ import-data] modulu.
+7. Uložení hello vzorků dat v Azure BLOB.
+8. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+9. Čtení dat hello z Azure BLOB pomocí hello [importovat Data] [ import-data] modulu.
 10. Sestavení Azure Machine Learning experimentu toku počínaje ingestovaný datových sad.
 
-## <a name="smalllocaltodb"></a>Scénář \#4: malé a střední datové sady místních souborů, cílení na SQL Server virtuálním počítači Azure
-![Malé a střední místních souborů k databázi SQL v Azure][4]
+## <a name="smalllocaltodb"></a>Scénář \#4: malá toomedium datové sady místních souborů, cílení na SQL Server virtuálním počítači Azure
+![Malé toomedium místních souborů tooSQL DB v Azure][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server nebo server IPython Poznámkový blok)
 1. Vytvořte virtuální počítač Azure systémem SQL Server + IPython Poznámkový blok.
-2. Nahrání dat do kontejner úložiště Azure.
+2. Nahrajte kontejner dat tooan úložiště Azure.
 3. Předběžně zpracovat a vyčistit data v kontejneru úložiště Azure pomocí IPython Poznámkový blok.
-4. Transformace dat do domény, vyčistit formě tabulky, v případě potřeby.
-5. Uložení dat do souborů virtuálního počítače – místní (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky odkazovat na disky virtuálních počítačů).
-6. Načíst data do databáze systému SQL Server spuštěna na virtuálním počítači Azure.
+4. Transformace dat toocleaned, formě tabulky, v případě potřeby.
+5. Uložte soubory tooVM místní data (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky získáte tooVM jednotek).
+6. Načtěte data tooSQL serveru databázi spuštěna na virtuálním počítači Azure.
    
    Možnost \#1: pomocí nástroje SQL Server Management Studio.
    
-   * Přihlášení k systému SQL Server virtuálního počítače
+   * Přihlášení tooSQL virtuální počítač Server
    * Spusťte SQL Server Management Studio.
    * Vytváření tabulek databáze a cíle.
-   * Používají jeden z hromadného importu metody k načítání dat z virtuálního počítače – místní soubory.
+   * Použijte jeden z hello hromadné importovat metody tooload hello data z virtuálního počítače – místní soubory.
    
    Možnost \#2: pomocí IPython poznámkového bloku – není vhodné pro střední a větší datové sady
    
    <!-- -->    
-   * Použijte připojovací řetězec ODBC pro přístup k systému SQL Server na virtuálním počítači.
+   * Pomocí rozhraní ODBC připojovací řetězec tooaccess systému SQL Server na virtuálním počítači.
    * Vytváření tabulek databáze a cíle.
-   * Používají jeden z hromadného importu metody k načítání dat z virtuálního počítače – místní soubory.
-7. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce nemusí být materializována v tabulkách databáze. Mějte na paměti pouze nezbytné dotaz k jejich vytvoření.
+   * Použijte jeden z hello hromadné importovat metody tooload hello data z virtuálního počítače – místní soubory.
+7. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce hello nemusí toobe materializována v tabulkách databáze hello. Pouze Všimněte si toocreate nezbytné dotazu hello je.
 8. Vyberte velikost vzorku dat, pokud potřebné a/nebo potřeby.
-9. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-10. Číst data přímo ze systému SQL Server pomocí [importovat Data] [ import-data] modulu. Vložte nezbytné dotaz, který extrahuje pole, vytvoří funkce a ukázky data v případě potřeby přímo v [importovat Data] [ import-data] dotazu.
+9. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+10. Čtení hello data přímo z hello systému SQL Server pomocí hello [importovat Data] [ import-data] modulu. Hello vložení nezbytné se dotaz, který extrahuje pole, vytvoří funkce a v případě potřeby přímo v hello – ukázky data [importovat Data] [ import-data] dotazu.
 11. Sestavení Azure Machine Learning experimentu toku počínaje ingestovaný datových sad.
 
 ## <a name="largelocaltodb"></a>Scénář \#5: velké datové sady v místních souborů cíle systému SQL Server ve virtuálním počítači Azure
-![Velké místních souborů k databázi SQL v Azure][5]
+![TooSQL velké místních souborů databáze v Azure][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server nebo server IPython Poznámkový blok)
 1. Vytvořte virtuální počítač Azure systémem SQL Server a server IPython Poznámkový blok.
-2. Nahrání dat do kontejner úložiště Azure.
+2. Nahrajte kontejner dat tooan úložiště Azure.
 3. (Volitelné) Předběžně zpracovat a vyčistit data.
    
    a.  Předběžně zpracovat a vyčistit data v poznámkovém bloku IPython, přístup k datům z Azure
    
        blobs.
    
-   b.  Transformace dat do domény, vyčistit formě tabulky, v případě potřeby.
+   b.  Transformace dat toocleaned, formě tabulky, v případě potřeby.
    
-   c.  Uložení dat do souborů virtuálního počítače – místní (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky odkazovat na disky virtuálních počítačů).
-4. Načíst data do databáze systému SQL Server spuštěna na virtuálním počítači Azure.
+   c.  Uložte soubory tooVM místní data (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky získáte tooVM jednotek).
+4. Načtěte data tooSQL serveru databázi spuštěna na virtuálním počítači Azure.
    
-   a.  Přihlášení k systému SQL Server virtuálního počítače.
+   a.  Přihlášení tooSQL virtuální počítač Server.
    
    b.  Pokud data nebyla uložena již, stahování datových souborů z Azure
    
-       storage container to local-VM folder.
+       storage container toolocal-VM folder.
    
    c.  Spusťte SQL Server Management Studio.
    
    d.  Vytváření tabulek databáze a cíle.
    
-   e.  Některý z hromadného importu metody chcete načíst data.
+   e.  Použijte jeden z hello hromadně importovat data hello tooload metody.
    
-   f.  Pokud je potřeba spoje tabulky platná, vytvořte indexy urychlit spojení.
+   f.  Pokud spoje tabulky platná, vytvořte spojení tooexpedite indexy.
    
    > [!NOTE]
-   > Rychlejší načítání velikostí velkých objemů dat, se doporučuje, můžete vytvořit dělené tabulky a hromadně importovat data paralelně. Další informace najdete v tématu [paralelní Import dat do tabulek SQL rozdělena na oddíly](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+   > Rychlejší načítání velikostí velkých objemů dat, se doporučuje vytvořit dělené tabulky a hromadně importovat data hello paralelně. Další informace najdete v tématu [Parallel Data importovat tooSQL rozdělena na oddíly tabulky](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
    > 
    > 
-5. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce nemusí být materializována v tabulkách databáze. Mějte na paměti pouze nezbytné dotaz k jejich vytvoření.
+5. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce hello nemusí toobe materializována v tabulkách databáze hello. Pouze Všimněte si toocreate nezbytné dotazu hello je.
 6. Vyberte velikost vzorku dat, pokud potřebné a/nebo potřeby.
-7. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-8. Číst data přímo ze systému SQL Server pomocí [importovat Data] [ import-data] modulu. Vložte nezbytné dotaz, který extrahuje pole, vytvoří funkce a ukázky data v případě potřeby přímo v [importovat Data] [ import-data] dotazu.
+7. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+8. Čtení hello data přímo z hello systému SQL Server pomocí hello [importovat Data] [ import-data] modulu. Hello vložení nezbytné se dotaz, který extrahuje pole, vytvoří funkce a v případě potřeby přímo v hello – ukázky data [importovat Data] [ import-data] dotazu.
 9. Jednoduchý experiment toku Azure Machine Learning počínaje nahrané datové sady
 
 ## <a name="largedbtodb"></a>Scénář \#6: velké datové sady v SQL Server databáze místní, cílení na SQL Server virtuálním počítači Azure
-![Velké SQL DB místní k databázi SQL v Azure][6]
+![TooSQL velké místní databáze SQL DB v Azure][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server nebo server IPython Poznámkový blok)
 1. Vytvořte virtuální počítač Azure systémem SQL Server a server IPython Poznámkový blok.
-2. Použijte jeden z data exportovat metody pro export dat z SQL serveru do souborů výpisu paměti.
+2. Použijte jeden z datových hello exportovat metody tooexport hello data z toodump soubory systému SQL Server.
    
    > [!NOTE]
-   > Pokud se rozhodnete přesouvání všech dat z databáze místní, alternativní metodu (rychlejší) přesunout databázi úplné instanci systému SQL Server v Azure. Přeskočte kroky pro export dat, vytvoření databáze a zatížení nebo importovat data na cílovou databázi a postupujte podle alternativní metodu.
+   > Pokud se rozhodnete toomove všechna data z hello místní databázi, alternativní (rychlejší) metoda toomove hello úplné databáze toothe instanci systému SQL Server v Azure. Přeskočit hello kroky tooexport dat, vytvoření databáze a zatížení nebo importovat data toohello cílovou databázi a postupujte podle alternativní metodu hello.
    > 
    > 
-3. Nahrání souborů výpisu paměti do kontejneru úložiště Azure.
-4. Načtěte data do databáze systému SQL Server spuštěna na virtuální počítač Azure.
+3. Nahrajte kontejner úložiště tooAzure odkládacích souborů.
+4. Načíst hello data tooa databáze systému SQL Server spuštěna na virtuální počítač Azure.
    
-   a.  Přihlášení k systému SQL Server virtuálního počítače.
+   a.  Přihlášení toohello virtuální počítač SQL Server.
    
-   b.  Stahování datových souborů z kontejner úložiště Azure do složky, místní počítač.
+   b.  Stahování datových souborů ze složky místní VM toohello kontejneru úložiště Azure.
    
    c.  Spusťte SQL Server Management Studio.
    
    d.  Vytváření tabulek databáze a cíle.
    
-   e.  Některý z hromadného importu metody chcete načíst data.
+   e.  Použijte jeden z hello hromadně importovat data hello tooload metody.
    
-   f.  Pokud je potřeba spoje tabulky platná, vytvořte indexy urychlit spojení.
+   f.  Pokud spoje tabulky platná, vytvořte spojení tooexpedite indexy.
    
    > [!NOTE]
-   > Pro rychlejší načítání velikostí velkých objemů dat, vytváření oddílů tabulek a k hromadnému importu dat paralelně. Další informace najdete v tématu [paralelní Import dat do tabulek SQL rozdělena na oddíly](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+   > Pro rychlejší načítání velikostí velkých objemů dat, vytvoření oddílů tabulky a toobulk importovat hello data paralelně. Další informace najdete v tématu [Parallel Data importovat tooSQL rozdělena na oddíly tabulky](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
    > 
    > 
-5. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce nemusí být materializována v tabulkách databáze. Mějte na paměti pouze nezbytné dotaz k jejich vytvoření.
+5. Prozkoumejte data, podle potřeby vytvářet funkce. Všimněte si, že funkce hello nemusí toobe materializována v tabulkách databáze hello. Pouze Všimněte si toocreate nezbytné dotazu hello je.
 6. Vyberte velikost vzorku dat, pokud potřebné a/nebo potřeby.
-7. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-8. Číst data přímo ze systému SQL Server pomocí [importovat Data] [ import-data] modulu. Vložte nezbytné dotaz, který extrahuje pole, vytvoří funkce a ukázky data v případě potřeby přímo v [importovat Data] [ import-data] dotazu.
+7. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+8. Čtení hello data přímo z hello systému SQL Server pomocí hello [importovat Data] [ import-data] modulu. Hello vložení nezbytné se dotaz, který extrahuje pole, vytvoří funkce a v případě potřeby přímo v hello – ukázky data [importovat Data] [ import-data] dotazu.
 9. Jednoduché Azure Machine Learning experimentu toku počínaje nahrané datovou sadu.
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternativní metoda pro kopírování úplné databáze z místního serveru SQL do Azure SQL Database
-![Místní databáze odpojit a připojit k databázi SQL v Azure][7]
+### <a name="alternate-method-toocopy-a-full-database-from-an-on-premises--sql-server-tooazure-sql-database"></a>Alternativní metoda toocopy úplné databáze z SQL serveru tooAzure místní databáze SQL
+![Místní databáze odpojit a připojit tooSQL DB v Azure][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server nebo server IPython Poznámkový blok)
-Replikovat celou databázi SQL serveru ve vaší virtuální počítač SQL Server, měli byste zkopírovat databázi z jednoho umístění nebo serveru na jiný, za předpokladu, že databáze můžete provedeny dočasně offline. Můžete to udělat v Průzkumník objektů systému SQL Server Management Studio nebo pomocí ekvivalentní příkazy jazyka Transact-SQL.
+tooreplicate hello celou databázi SQL serveru ve vaší virtuální počítač SQL Server, měli byste zkopírovat databázi z jednoho serveru nebo umístění tooanother, za předpokladu, že hello databázi můžete provedeny dočasně offline. Můžete to udělat v hello Průzkumník objektů systému SQL Server Management Studio nebo pomocí hello ekvivalentní příkazy jazyka Transact-SQL.
 
-1. Odpojení databáze v umístění zdroje. Další informace najdete v tématu [odpojení databáze](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
-2. V okně Průzkumníka Windows nebo příkazového řádku systému Windows zkopírujte soubor odpojit databáze nebo soubory a soubor protokolu nebo soubory do cílového umístění na virtuální počítač SQL Server v Azure.
-3. Připojte zkopírované soubory v cílové instanci systému SQL Server. Další informace najdete v tématu [připojit databázi](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
+1. Odpojení databáze hello v umístění zdroje hello. Další informace najdete v tématu [odpojení databáze](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
+2. V okně Průzkumníka Windows nebo příkazového řádku Windows hello kopie odpojit soubor databáze nebo soubory a soubor protokolu nebo soubory toohello cílové umístění na hello virtuální počítač s SQL serverem v Azure.
+3. Připojte instanci systému SQL Server hello zkopírovat soubory toohello cíl. Další informace najdete v tématu [připojit databázi](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
 
 [Přesuňte databázi pomocí odpojit a připojit (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
@@ -208,46 +208,46 @@ Replikovat celou databázi SQL serveru ve vaší virtuální počítač SQL Serv
    
        blobs.
    
-   b.  Transformace dat do domény, vyčistit formě tabulky, v případě potřeby.
+   b.  Transformace dat toocleaned, formě tabulky, v případě potřeby.
    
-   c.  Uložení dat do souborů virtuálního počítače – místní (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky odkazovat na disky virtuálních počítačů).
-4. Nahrání dat do výchozí kontejner clusteru Hadoop vybrali v kroku 2.
-5. Načíst data do databáze Hive v clusteru Azure HDInsight Hadoop.
+   c.  Uložte soubory tooVM místní data (IPython poznámkového bloku běží na virtuálním počítači, místní jednotky získáte tooVM jednotek).
+4. Nahrání dat toohello výchozí kontejner clusteru Hadoop hello vybrali v kroku hello 2.
+5. Načíst data tooHive databázi v clusteru Azure HDInsight Hadoop.
    
-   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop
+   a.  Přihlaste se toohello hlavního uzlu v clusteru Hadoop hello
    
-   b.  Otevřete příkazový řádek Hadoop.
+   b.  Otevřete hello Hadoop příkazového řádku.
    
-   c.  Zadejte kořenový adresář Hive pomocí příkazu `cd %hive_home%\bin` v Hadoop příkazového řádku.
+   c.  Zadejte kořenový adresář hello Hive pomocí příkazu `cd %hive_home%\bin` v Hadoop příkazového řádku.
    
-   d.  Spouštění dotazů Hive k vytvoření databáze a tabulky a načtení dat z úložiště objektů blob do tabulek Hive.
+   d.  Spusťte hello Hive dotazy toocreate databáze a tabulky a načtení dat z tabulky tooHive úložiště objektů blob.
    
    > [!NOTE]
-   > Pokud je velkých objemů dat, uživatelé mohou vytvářet tabulku Hive s oddíly. Uživatelé pak mohou používat `for` smyčky v Hadoop příkazový řádek z hlavního uzlu pro načtení dat do tabulky Hive rozdělena na oddíly oddílem.
+   > Pokud je velkých objemů dat hello, uživatelé mohou vytvářet hello Hive tabulky s oddíly. Uživatelé pak mohou používat `for` smyčky v hello Hadoop příkazového řádku na hello hlavního uzlu tooload data do tabulky Hive hello rozdělena na oddíly oddílem.
    > 
    > 
-6. Prozkoumejte data a vytvářet funkcí podle potřeby v Hadoop příkazového řádku. Všimněte si, že funkce nemusí být materializována v tabulkách databáze. Mějte na paměti pouze nezbytné dotaz k jejich vytvoření.
+6. Prozkoumejte data a vytvářet funkcí podle potřeby v Hadoop příkazového řádku. Všimněte si, že funkce hello nemusí toobe materializována v tabulkách databáze hello. Pouze Všimněte si toocreate nezbytné dotazu hello je.
    
-   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop
+   a.  Přihlaste se toohello hlavního uzlu v clusteru Hadoop hello
    
-   b.  Otevřete příkazový řádek Hadoop.
+   b.  Otevřete hello Hadoop příkazového řádku.
    
-   c.  Zadejte kořenový adresář Hive pomocí příkazu `cd %hive_home%\bin` v Hadoop příkazového řádku.
+   c.  Zadejte kořenový adresář hello Hive pomocí příkazu `cd %hive_home%\bin` v Hadoop příkazového řádku.
    
-   d.  Spouštění dotazů Hive v Hadoop příkazový řádek z hlavního uzlu clusteru Hadoop data prozkoumat a vytvořit funkcí podle potřeby.
-7. Pokud potřebné a/nebo potřeby, ukázková data, aby se vešla do Azure Machine Learning Studio.
-8. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-9. Číst data přímo z `Hive Queries` pomocí [importovat Data] [ import-data] modulu. Vložte nezbytné dotaz, který extrahuje pole, vytvoří funkce a ukázky data v případě potřeby přímo v [importovat Data] [ import-data] dotazu.
+   d.  Spouštění dotazů Hive hello v Hadoop příkazového řádku hello hlavního uzlu hello Hadoop clusteru tooexplore hello dat a vytvořte funkcí podle potřeby.
+7. Pokud potřebné a/nebo potřeby, ukázkové hello toofit dat v Azure Machine Learning Studio.
+8. Přihlaste se toohello [Azure Machine Learning Studio](https://studio.azureml.net/).
+9. Čtení dat hello přímo z hello `Hive Queries` pomocí hello [importovat Data] [ import-data] modulu. Hello vložení nezbytné se dotaz, který extrahuje pole, vytvoří funkce a v případě potřeby přímo v hello – ukázky data [importovat Data] [ import-data] dotazu.
 10. Jednoduché Azure Machine Learning experimentu toku počínaje nahrané datovou sadu.
 
 ## <a name="decisiontree"></a>Rozhodovací strom pro výběr scénář
 - - -
-Následující diagram shrnuje výše popsané scénáře a pokročilé analýzy proces a výběr technologie, která vás zavedou na každý z rozepsané scénářů. Všimněte si, že může trvat zpracování dat, průzkum, funkce inženýrství a vzorkování umístit do jednoho nebo více metoda prostředí – ve zdroji zprostředkující, nebo cílové prostředí – a může pokračovat interaktivně, podle potřeby. Diagram pouze slouží jako ilustraci některé možné toků a neposkytuje vyčerpávající výčet.
+Hello následující diagram shrnuje hello scénáře popsané výše a hello pokročilé analýzy proces a technologie možnosti zvolené vyžadující tooeach hello uvedeno scénáře. Všimněte si, že může trvat zpracování dat, průzkum, funkce inženýrství a vzorkování umístit do jednoho nebo více metoda prostředí – u hello zdroje, zprostředkující, nebo cílové prostředí – a může pokračovat interaktivně, podle potřeby. Hello diagram pouze slouží jako ilustraci některé možné toků a neposkytuje vyčerpávající výčet.
 
 ![Vzorové DS proces návod scénáře][8]
 
 ### <a name="advanced-analytics-in-action-examples"></a>Pokročilé analýzy v akci příklady
-Návody začátku do konce Azure Machine Learning, která využívají pokročilé analýzy proces a technologie pomocí veřejné datové sady najdete v části:
+Pro návody začátku do konce Azure Machine Learning, která využívají hello pokročilé analýzy proces a technologie pomocí veřejné datové sady najdete v tématu:
 
 * [Tým proces vědecké účely dat v akci: pomocí SQL serveru](machine-learning-data-science-process-sql-walkthrough.md).
 * [Tým proces vědecké účely dat v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md).

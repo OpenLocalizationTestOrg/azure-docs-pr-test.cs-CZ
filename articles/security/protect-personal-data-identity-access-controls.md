@@ -1,6 +1,6 @@
 ---
-title: "Ochrana osobních údajů s ovládacími prvky Azure identit a přístupu | Microsoft Docs"
-description: "Pomocí Azure identit a přístupu k ochraně vašich osobních údajů ovládací prvky"
+title: "aaaProtect osobních dat s ovládacími prvky Azure přístupu a identit | Microsoft Docs"
+description: "Pomocí Azure přístupu a identit a ovládací prvky toohelp ochrana vašich osobních údajů"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,49 +15,49 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: b43754efd207679dbe08710f44f56454a5fd20ab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3132c2af25f86662668e5b555eab1d81de7f2e6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory a služby Multi-Factor Authentication: ochrana osobních dat s ovládacími prvky identit a přístupu
 
-Tento článek obsahuje informace a postupy, které můžete použít k ochraně osobní data pomocí Azure Active Directory a službou Multi-Factor authentication zabezpečení funkcích a službách.
+Tento článek obsahuje informace a postupy tooprotect osobní data pomocí Azure Active Directory a službou Multi-Factor authentication zabezpečení funkcích a službách, můžete použít.
 
 ## <a name="scenario"></a>Scénář
 
-Velké výletních společnosti, centrálou ve Spojených státech amerických, je rozšířit jeho operací a nabídnout itineráře v Středomoří, Jaderského a baltský moři, jakož i Britské ostrovy. Pro podporu těchto úsilí, získala menší výletních Víceřádkový na základě v Itálii, Německo, Dánsko a Spojeném království 
+Velké výletních společnosti, centrálou ve Spojených státech amerických hello je rozšířit jeho itineráře toooffer operace v hello Středozemního, Jaderského a baltský moři, jakož i hello Britské ostrovy. toosupport těchto úsilí získala menší výletních Víceřádkový na základě v Itálii Německo, Dánsko a hello Spojené království 
 
-Společnost používá Microsoft Azure k ukládání firemních dat v cloudu. To zahrnuje osobní identifikovatelné údaje, například jména, adresy, telefonních čísel a informace o kreditní kartě z jeho základní globální zákazníka. Ve všech umístěních zahrnuje také tradiční informace lidských zdrojů, jako jsou adresy, telefonních čísel, daň identifikačními čísly a lékařské informace o zaměstnance společnosti. Na řádku výletních také udržuje velké databáze potřebu a věrnost program členů, která zahrnuje osobní údaje ke sledování vztahů se zákazníky aktuální a starší.
+Hello společnost používá Microsoft Azure toostore firemní data v cloudu hello. To zahrnuje osobní identifikovatelné údaje, například jména, adresy, telefonních čísel a informace o kreditní kartě z jeho základní globální zákazníka. Ve všech umístěních zahrnuje také tradiční informace lidských zdrojů, jako jsou adresy, telefonních čísel, daň identifikačními čísly a lékařské informace o zaměstnance společnosti. Hello výletních řádku také udržuje velké databáze potřebu a věrnost program členů, která zahrnuje osobní údaje tootrack vztahů se zákazníky aktuální a starší.
 
-Zaměstnanci společnosti přístup k síti ze vzdálených pobočkách společnosti a agenty cesta umístěné po celém světě mají přístup k některým prostředkům společnosti.
+Zaměstnanci společnosti přístupu hello síti ze vzdálených pobočkách a agenty cesta hello společnosti nachází kolem hello, world mít přístup k prostředkům společnosti toosome.
 
 ## <a name="problem-statement"></a>Popis problému
 
-Společnosti musí ochrany osobních údajů zaměstnanců a zákazníků osobních údajů z útočníci snaží používat ohroženými identity k získání přístupu. Se taky musí zajistěte, aby byl přístup k osobním údajům oprávněným uživatelům s omezeným přístupem jenom na ty, kteří potřebují ho pro svou práci.
+Hello společnosti musí ochrany osobních údajů hello zaměstnanců a zákazníků osobních údajů z útočníci, kteří přístup toogain identity toouse ohrožení zabezpečení. Také musí zajistit tento přístup toopersonal, které se data podle oprávněných uživatelů je omezena pouze na ty, kteří ho potřebují toodo svou práci.
 
 ## <a name="company-goal"></a>Cílem společnosti
 
-Cílem společnosti je potřeba zajistit přísnou kontrolu přístupu k osobním datům. Je nezbytné, aby identit uživatelů s přístupem k osobním údajům chráněn silné ověřování. Zásady [nejnižší oprávnění] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musí být vynucená tak, aby oprávněných uživatelů pouze úroveň přístupu, které potřebují a žádné další.
+Cílem společnosti Hello je, že tooensure, který přístup k datům toopersonal přísnou kontrolu. Je nezbytné, aby identit uživatelů s přístup k datům toopersonal chráněn silné ověřování. Zásady [nejnižší oprávnění] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musí být vynucená tak, aby oprávněných uživatelů pouze hello úroveň přístupu, které potřebují a žádné další.
 
 ## <a name="solutions"></a>Řešení
 
-Microsoft Azure poskytuje nástroje pro správu identit a přístupu ke společnosti určovat, kdo má přístup k prostředkům, které obsahují osobní údaje.
+Microsoft Azure poskytuje nástroje pro správu identit a přístupu toohelp společností určovat, kdo má přístup tooresources, které obsahují osobní údaje.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (AAD) spravuje identit a řídí přístup k Azure stejně jako další místní a dalších prostředků cloudu, datům a aplikacím. [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access) pomáhá správcům Azure, chcete-li minimalizovat počet lidí, kteří mají přístup k určité informace, jako je například osobní údaje. Umožňuje jejich k zjištění, omezte a monitorujte privilegované identity a jejich přístup k prostředkům a k přiřazení dočasné, JIT (JIT) práva správce na oprávněné uživatele. Také poskytuje přehled o uživatelů, kteří mají oprávnění správce AAD.
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (AAD) spravuje identit a řídí přístup tooAzure stejně jako další místní a dalších prostředků cloudu, datům a aplikacím. [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access) pomáhá Azure správci toominimize hello počet lidí, kteří mají přístup toocertain informace, jako je osobní data. Umožňuje jim toodiscover, omezte a monitorujte privilegované identity a jejich přístup tooresources a tooassign dočasné, JIT (JIT) právy tooeligible uživatelů. Také poskytuje přehled o uživatelů, kteří mají oprávnění správce AAD.
 
-Činnosti spojené s použitím AAD PIM, patří:
+Hello činnosti spojené s použitím AAD PIM, patří:
 
 - Povolení Privileged Identity Management pro svůj adresář
 
-- Pomocí řídicího panelu Správce Privileged Identity Management důležité informace na první pohled
+- Použití Privileged Identity Management správce řídicího panelu toosee důležité informace na první pohled
 
-- Správa privilegovaných identit (administrators) přidáním nebo odebráním trvalé nebo oprávněné správce ke každé roli
+- Správa identit hello privilegovaný (administrators) přidáním nebo odebráním rolí tooeach trvalé nebo oprávněné správce
 
-- Konfigurace nastavení aktivace role
+- Konfigurace nastavení aktivace role hello
 
 - Aktivace role
 
@@ -65,17 +65,17 @@ Microsoft Azure poskytuje nástroje pro správu identit a přístupu ke společn
 
 #### <a name="how-do-i-enable-aad-pim"></a>Povolení AAD PIM
 
-Chcete-li začít používat PIM pro váš adresář, postupujte takto:
+toostart pomocí PIM pro váš adresář hello následující:
 
-1. Přihlaste se k portálu Azure jako globální správce adresáře.
+1. Přihlaste se toohello portálu Azure jako globální správce adresáře.
 
-2. Pokud má vaše organizace víc než jeden adresář, vyberte své uživatelské jméno v pravém horním rohu webu Azure Portal. Vyberte adresář, kde budete používat Azure AD Privileged Identity Management.
+2. Pokud má vaše organizace více než jeden adresář, vyberte své uživatelské jméno v hello pravém horním rohu hello portálu Azure. Vyberte adresář hello, kde budete používat Azure AD Privileged Identity Management.
 
-3. Vyberte **další služby** a použít **filtru** textové pole pro vyhledávání Azure AD Privileged Identity Management.
+3. Vyberte **další služby** a používat hello **filtru** toosearch textové pole pro Azure AD Privileged Identity Management.
 
-4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
+4. Zkontrolujte **Pin toodashboard** a pak klikněte na **vytvořit**. Otevře se Hello aplikace Privileged Identity Management.
 
-Po nastavení Azure AD Privileged Identity Management se vždy, když aplikaci otevřete, zobrazí navigační okno.
+Jakmile Azure AD Privileged Identity Management nastavená, zobrazí se při každém otevření aplikace hello hello navigačním okně.
 
 ![](media/protect-personal-data-identity-access-controls/azure-pim.png)
 
@@ -83,15 +83,15 @@ Další informace a pokyny, Začínáme se službou AAD PIM najdete v tématu [s
 
 ### <a name="azure-role-based-access-control"></a>Řízení přístupu Azure na základě rolí
 
-[Řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) pomáhá Azure správcům spravovat přístup k prostředkům Azure povolením udělení přístupu na základě role přiřazené uživatele. Můžete povinnosti v rámci týmu oddělit a poskytnout pouze takovou úroveň přístupu pro uživatele, skupiny a aplikace, které potřebují k provádění svých úloh.
+[Řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) pomáhá Azure správcům spravovat přístup k prostředkům tooAzure povolením hello udělení přístupu na základě role přiřazené hello uživatele. Můžete povinnosti v rámci týmu oddělit a udělit pouze hello množství toousers přístup, skupiny nebo aplikace, které potřebují tooperform svou práci.
 
-Přístup na základě role můžete udělit uživatelům, kteří používají portál Azure, nástroje příkazového řádku Azure nebo rozhraní API pro správu Azure.
+Toousers pomocí hello portálu Azure, nástroje příkazového řádku Azure nebo rozhraní API pro správu Azure můžete udělit přístup na základě rolí.
 
-Další informace o základní informace o Azure RBAC najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure.](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)
+Další informace o základní informace o Azure RBAC najdete v tématu [Začínáme s řízením přístupu na základě rolí v hello portálu Azure.](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>Jak lze spravovat Azure RBAC pomocí prostředí PowerShell?
 
-Rutiny prostředí PowerShell můžete použít ke správě Azure RBAC, včetně těchto úloh správy:
+Můžete použít toomanage rutiny prostředí PowerShell Azure RBAC, včetně hello následující úlohy správy:
 
 - Seznam rolí
 
@@ -111,19 +111,19 @@ Rutiny prostředí PowerShell můžete použít ke správě Azure RBAC, včetně
 
 - Vlastní role seznamu
 
-Pokyny o tom, jak spravovat Azure RBAC pomocí prostředí PowerShell najdete v tématu [přístupu na základě Role spravovat pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
+Pokyny, jak toomanage Azure RBAC v prostředí PowerShell najdete v části [přístupu na základě Role spravovat pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/) (MFA) je řešení dvoustupňové ověření, která pomáhá zabezpečit přístup k datům a aplikacím, při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování prostřednictvím celé řady metod ověřování, včetně ověřování pomocí telefonních hovorů, textových zpráv nebo mobilních aplikací.
+[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/) (MFA) je řešení dvoustupňové ověření, které pomáhá chránit přístup toodata a aplikace, při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování prostřednictvím celé řady metod ověřování, včetně ověřování pomocí telefonních hovorů, textových zpráv nebo mobilních aplikací.
 
-Pokud chcete nasadit MFA v cloudu Azure, musíte nejprve povolte a potom zapnout dvoustupňové ověřování pro uživatele.
+toodeploy MFA v cloudu Azure hello, budete potřebovat toofirst ji povolit a potom zapnout dvoustupňové ověřování pro uživatele.
 
-#### <a name="how-do-i-enable-azure-to-use-mfa"></a>Povolení Azure a použít vícefaktorové ověřování?
+#### <a name="how-do-i-enable-azure-toouse-mfa"></a>Povolení Azure toouse MFA?
 
-Pokud mají vaši uživatelé licencí, které zahrnují Azure Multi-Factor Authentication, není nic, které potřebujete udělat, aby zapnout Azure MFA. Pokud ne, musíte vytvořit poskytovatele vícefaktorového ověřování ve vašem adresáři. Chcete-li to provést, postupujte takto:
+Pokud mají vaši uživatelé licencí, které zahrnují Azure Multi-Factor Authentication, není nic, je nutné, aby toodo tooturn na Azure MFA. Pokud ne, je nutné toocreate poskytovatele vícefaktorového ověřování ve vašem adresáři. toodo, postupujte takto:
 
-1. Vyberte **služby Active Directory** na portálu Azure classic (přihlášeni jako správce).
+1. Vyberte **služby Active Directory** v hello portál Azure classic (přihlášeni jako správce).
 
 2. Vyberte **poskytovatelé služby Multi-Factor Authentication.**
 
@@ -131,52 +131,52 @@ Pokud mají vaši uživatelé licencí, které zahrnují Azure Multi-Factor Auth
 
 4. Vyberte **rychle vytvořit.**
 
-5. Vyplňte pole název a vyberte modelu využití (za ověření nebo za povoleného uživatele).
+5. Vyplňte pole s názvem hello a vyberte modelu využití (za ověření nebo za povoleného uživatele).
 
-6. Určíte adresář, ke kterému je přiřazeno zprostředkovatele vícefaktorového ověřování.
+6. Určíte adresář, ke které hello je přiřazeno zprostředkovatele vícefaktorového ověřování.
 
-7. Klikněte na tlačítko **Vytvořit**.
+7. Klikněte na tlačítko hello **vytvořit** tlačítko.
 
 ![](media/protect-personal-data-identity-access-controls/quick-create.png)
 
-Další pokyny o tom, jak spravovat vaše zprostředkovatel vícefaktorového ověřování najdete v tématu [Začínáme s poskytovatele Azure Multi-Factor Auth.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
+Další pokyny toomanage vaše zprostředkovatel vícefaktorového ověřování najdete v části [Začínáme s poskytovatele Azure Multi-Factor Auth.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
 
 #### <a name="how-do-i-turn-on-two-step-verification-for-users"></a>Jak lze zapnout dvoustupňové ověřování pro uživatele?
 
-Můžete vynutit dvoustupňové ověřování pro všechny přihlášení, nebo můžete vytvořit zásady podmíněného přístupu tak, aby vyžadovala dvoustupňové ověřování jenom v případě, že určité podmínky.
+Můžete vynutit dvoustupňové ověřování pro všechny přihlášení nebo podmíněného přístupu zásady toorequire dvoustupňové ověření můžete vytvořit pouze v případě, že určité podmínky.
 
-Povolení Azure MFA změnou stavů uživatele je tradiční přístup pro vyžádání dvoustupňové ověřování. Všechny uživatele, kteří povolíte, bude mít stejný požadavek k provedení dvoustupňové ověřování při každém přihlášení. Povolení uživatele potlačí všechny zásady podmíněného přístupu, které může mít vliv na tohoto uživatele.
+Povolení Azure MFA změnou stavů uživatele je hello tradiční přístup pro vyžádání dvoustupňové ověřování. Budou mít všichni uživatelé hello, které povolíte hello stejné požadavek tooperform dvoustupňové ověřování při každém přihlášení. Povolení uživatele potlačí všechny zásady podmíněného přístupu, které může mít vliv na tohoto uživatele.
 
-Povolení Azure MFA se zásadami podmíněného přístupu je flexibilnější přístup pro vyžádání dvoustupňové ověřování. Můžete vytvořit zásady podmíněného přístupu, které platí pro skupiny, jakož i jednotlivé uživatele. S vysokým rizikem skupiny je možné přidělit další omezení než nízkým rizikem skupiny nebo dvoustupňové ověřování můžete vyžaduje se jenom pro vysoce rizikové cloudové aplikace a pro ty, které jsou nízkým rizikem přeskočeno. Podmíněný přístup je však placené funkce služby Azure Active Directory.
+Povolení Azure MFA se zásadami podmíněného přístupu je flexibilnější přístup pro vyžádání dvoustupňové ověřování. Můžete vytvořit zásady podmíněného přístupu, které se vztahují toogroups, jakož i jednotlivé uživatele. S vysokým rizikem skupiny je možné přidělit další omezení než nízkým rizikem skupiny nebo dvoustupňové ověřování můžete vyžaduje se jenom pro vysoce rizikové cloudové aplikace a pro ty, které jsou nízkým rizikem přeskočeno. Podmíněný přístup je však placené funkce služby Azure Active Directory.
 
-Pokud chcete povolit MFA změnou stavu uživatele, postupujte takto:
+tooenable MFA změnou stavu uživatele, hello následující:
 
-1. Přihlaste se k portálu Azure jako správce.
-2. Přejděte na **Azure Active Directory \> uživatelů a skupin \> všichni uživatelé**.
+1. Přihlaste se toohello portálu Azure jako správce.
+2. Přejděte příliš**Azure Active Directory \> uživatelů a skupin \> všichni uživatelé**.
 3. Vyberte **služby Multi-Factor Authentication**.
-4. Vyhledejte uživatele, který chcete povolit pro Azure MFA. Možná bude třeba změnit zobrazení v horní části.
-5. Zaškrtněte políčko vedle jména uživatele.
-6. Na pravé straně v části Rychlé kroky, zvolte **povolit**.
+4. Najít hello uživatele, že chcete tooenable pro Azure MFA. Může být nutné toochange hello zobrazení v horní části hello.
+5. Zkontrolujte název hello pole Další toohello uživatele.
+6. Na pravé straně v části Rychlé kroky hello, zvolte **povolit**.
 
    ![](media/protect-personal-data-identity-access-controls/quick-create.png)
 
-7. Potvrďte výběr v místním okně, které se otevře.  Uživatelé, pro které bylo povoleno vícefaktorové ověřování vyzve k registraci při příštím přihlášení.
+7. Potvrďte výběr v hello místní okno, které se otevře.  Uživatelé, pro které bylo povoleno vícefaktorové ověřování vyzve tooregister hello při příštím přihlášení.
 
-Pokud chcete povolit Azure MFA se zásadami podmíněného přístupu, postupujte takto:
+tooenable Azure MFA se zásadami podmíněného přístupu, hello následující:
 
-1. Přihlaste se k portálu Azure jako správce.
+1. Přihlaste se toohello portálu Azure jako správce.
 
-2. Přejděte na **Azure Active Directory \> podmíněného přístupu**.
+2. Přejděte příliš**Azure Active Directory \> podmíněného přístupu**.
 
 3. Vyberte **nové zásady**.
 
-4. V části **přiřazení**, vyberte **uživatelů a skupin**. Použití **zahrnout** a **vyloučit** karty se můžete určit, kteří uživatelé a skupiny bude spravovat zásady.
+4. V části **přiřazení**, vyberte **uživatelů a skupin**. Použití hello **zahrnout** a **vyloučit** karty toospecify, kteří uživatelé a skupiny bude spravovat zásady hello.
 
-5. V části **přiřazení**, vyberte **cloudových aplikací.** Zvolit **zahrnují všechny cloudové aplikace**.
+5. V části **přiřazení**, vyberte **cloudových aplikací.** Zvolte příliš**zahrnují všechny cloudové aplikace**.
 6.  V části **přístup k ovládacím prvkům**, vyberte **Grant**. Zvolte **vyžadovat vícefaktorové ověřování**.
-7.  Zapnout **povolit zásady** k **na** a pak vyberte **Uložit**.
+7.  Zapnout **povolit zásady** příliš**na** a pak vyberte **Uložit**.
 
-Informace o tom, jak nakonfigurovat nastavení Azure MFA k nastavení upozornění na podvod, vytvořit jednorázové přihlášení, použijte vlastní hlasové zprávy, konfigurovat ukládání do mezipaměti, zadejte důvěryhodné IP adresy, vytvoření hesel aplikací, povolte zapamatování vícefaktorového ověřování pro zařízení tématu uživatelé důvěryhodnosti a vyberte možnost ověření metody [konfigurace nastavení Azure Multi-Factor Authentication.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
+Informace o způsobu vytvoření tooset nastavení Azure MFA tooconfigure si upozornění na podvod, jednorázové přihlášení, použít vlastní hlasové zprávy, konfigurovat ukládání do mezipaměti, zadejte důvěryhodné IP adresy, vytvoření hesel aplikací, povolte zapamatování vícefaktorového ověřování pro zařízení, které důvěřují uživatele, vyberte metody ověřování, najdete v části [konfigurace nastavení Azure Multi-Factor Authentication.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
 
 ## <a name="next-steps"></a>Další kroky
 

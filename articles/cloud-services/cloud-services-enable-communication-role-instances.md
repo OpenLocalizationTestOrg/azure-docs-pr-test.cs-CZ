@@ -1,6 +1,6 @@
 ---
-title: "Komunikace pro role v cloudové služby | Microsoft Docs"
-description: "Instance role v cloudové služby může mít koncové body (http, https, tcp, udp) definované pro ně komunikující s vnější nebo mezi dalších instancí rolí."
+title: "aaaCommunication rolí v cloudových služeb | Microsoft Docs"
+description: "Instance role v cloudové služby může mít koncové body (http, https, tcp, udp) definované pro ně komunikující s hello mimo nebo mezi dalších instancí rolí."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1fb39215ceb8a3f0381ef5e108c1149de115ff8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Povolit komunikaci pro instance rolí v azure
-Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení se nazývají **vstupní koncové body** při se označují jako vnitřní připojení **vnitřních koncových bodů**. Toto téma popisuje postup úpravy [služby definice](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.
+Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení se nazývají **vstupní koncové body** při se označují jako vnitřní připojení **vnitřních koncových bodů**. Toto téma popisuje, jak toomodify hello [služby definice](cloud-services-model-and-package.md#csdef) toocreate koncové body.
 
 ## <a name="input-endpoint"></a>Vstupní koncový bod
-Vstupní koncový bod se používá, když chcete vystavit port ven. Určete typ protokol a port koncového bodu, který pak platí pro externí i interní porty pro koncový bod. Pokud chcete, můžete zadat jiný interní port koncového bodu se [Místní_port](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) atribut.
+Hello vstupní koncový bod se používá, když chcete tooexpose port toohello mimo. Určete typ hello protokolu a portu hello hello koncového bodu, který pak platí pro obě hello externí i interní porty pro koncový bod hello. Pokud chcete, můžete zadat jiný interní port pro koncový bod hello s hello [Místní_port](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) atribut.
 
-Vstupní koncový bod můžete použít následující protokoly: **http, https, tcp, udp**.
+vstupní koncový bod Hello můžete použít následující protokoly hello: **http, https, tcp, udp**.
 
-Chcete-li vytvořit vstupní koncový bod, přidejte **InputEndpoint** podřízený element pro **koncové body** element role web nebo worker.
+toocreate vstupní koncový bod, přidejte hello **InputEndpoint** podřízený element toohello **koncové body** element role web nebo worker.
 
 ```xml
 <Endpoints>
@@ -37,11 +37,11 @@ Chcete-li vytvořit vstupní koncový bod, přidejte **InputEndpoint** podříze
 ```
 
 ## <a name="instance-input-endpoint"></a>Vstupní koncový bod instance
-Instance vstupní koncové body jsou podobná vstupních koncových bodů ale můžete namapovat konkrétní veřejné porty pro každou jednotlivou roli instanci pomocí přesměrování portu v nástroji pro vyrovnávání zatížení. Můžete zadat jediný port veřejné, nebo rozsah portů.
+Vstupní koncových bodů instance jsou podobné tooinput koncové body, ale můžete namapovat konkrétní veřejné porty pro každou jednotlivou roli instanci pomocí přesměrování portu na Vyrovnávání zatížení hello. Můžete zadat jediný port veřejné, nebo rozsah portů.
 
-Vstupní koncový bod instanci lze použít pouze **tcp** nebo **udp** jako protokol.
+lze použít pouze vstupní koncový bod instance Hello **tcp** nebo **udp** jako protokol pro hello.
 
-Chcete-li vytvořit instanci vstupní koncový bod, přidejte **InstanceInputEndpoint** podřízený element pro **koncové body** element role web nebo worker.
+toocreate vstupní koncový bod instance, přidejte hello **InstanceInputEndpoint** podřízený element toohello **koncové body** element role web nebo worker.
 
 ```xml
 <Endpoints>
@@ -54,11 +54,11 @@ Chcete-li vytvořit instanci vstupní koncový bod, přidejte **InstanceInputEnd
 ```
 
 ## <a name="internal-endpoint"></a>Vnitřní koncový bod
-Vnitřních koncových bodů jsou k dispozici pro komunikaci instance instance. Port je volitelný a pokud tento parametr vynechán, je dynamický port přiřazené ke koncovému bodu. Rozsah portů lze použít. Existuje limit pět vnitřních koncových bodů podle příslušné role.
+Vnitřních koncových bodů jsou k dispozici pro komunikaci instance instance. Hello port je volitelný a pokud tento parametr vynechán, je dynamický port přiřazen toohello koncový bod. Rozsah portů lze použít. Existuje limit pět vnitřních koncových bodů podle příslušné role.
 
-Vnitřní koncový bod můžete použít následující protokoly: **http, tcp, udp, všechny**.
+vnitřní koncový bod Hello můžete použít následující protokoly hello: **http, tcp, udp, všechny**.
 
-Chcete-li vytvořit interní vstupní koncový bod, přidejte **InternalEndpoint** podřízený element pro **koncové body** element role web nebo worker.
+toocreate interní vstupní koncový bod, přidejte hello **InternalEndpoint** podřízený element toohello **koncové body** element role web nebo worker.
 
 ```xml
 <Endpoints>
@@ -78,39 +78,39 @@ Můžete také použít rozsah portů.
 
 
 ## <a name="worker-roles-vs-web-roles"></a>Vs role pracovního procesu. Webové role
-Při práci s worker a webové role je jeden dílčí rozdíl s koncovými body. Webové role musí mít alespoň jeden vstupní koncový bod pomocí **HTTP** protokolu.
+Při práci s worker a webové role je jeden dílčí rozdíl s koncovými body. Hello webové role musí mít alespoň jeden vstupní koncový bod pomocí hello **HTTP** protokolu.
 
 ```xml
 <Endpoints>
   <InputEndpoint name="StandardWeb" protocol="http" port="80" localPort="80" />
-  <!-- more endpoints may be declared after the first InputEndPoint -->
+  <!-- more endpoints may be declared after hello first InputEndPoint -->
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Pomocí sady .NET SDK pro přístup k koncový bod
-Spravované knihovny Azure poskytuje metody pro instance rolí pro komunikaci za běhu. Z kódu spuštěné v instanci role můžete načíst informace o existenci další instance rolí a jejich koncových bodů, a také informace o aktuální instance role.
+## <a name="using-hello-net-sdk-tooaccess-an-endpoint"></a>Pomocí sady .NET SDK tooaccess hello koncový bod
+Hello spravované knihovny Azure poskytuje metody pro role instance toocommunicate za běhu. Z kódu spuštěné v instanci role můžete načíst informace o existenci hello další instance rolí a jejich koncových bodů, a také informace o aktuální instance role hello.
 
 > [!NOTE]
 > Pouze můžete načíst informace o instancích role běží v cloudové služby, které definují aspoň jeden vnitřní koncový bod. Nelze získat data o instancích role spuštěné v jinou službu.
 > 
 > 
 
-Můžete použít [instance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) vlastnost načtení instancí role. Prvním použití [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) vrátíte odkaz na aktuální instanci role, a potom pomocí [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) vlastnost vrací odkaz k roli sám sebe.
+Můžete použít hello [instance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) vlastnost tooretrieve instancí role. Prvním použití hello [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) tooreturn odkaz na aktuální role toohello instance a potom pomocí hello [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) vlastnost tooreturn roli toohello odkaz sám sebe.
 
-Při připojení k instanci role programově pomocí .NET SDK je poměrně snadné pro přístup k informacím koncový bod. Například po již připojení k prostředí konkrétní roli, můžete získat port konkrétní koncový bod s tímto kódem:
+Jakmile se připojíte přes hello .NET SDK tooa role instance prostřednictvím kódu programu, je informace koncového bodu je poměrně snadné tooaccess hello. Například po již připojení tooa určité role prostředí, můžete získat hello port konkrétní koncový bod s tímto kódem:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-**Instance** vlastnost vrátí kolekci **RoleInstance** objekty. Tato kolekce vždy obsahuje aktuální instance. Pokud roli nedefinuje vnitřní koncový bod, kolekce zahrnuje aktuální instance, ale žádné jiné instance. Počet instancí role v kolekci bude vždy 1 v případě, kde je definován žádný vnitřní koncový bod pro roli. Pokud role definuje vnitřní koncový bod, její instance jsou zjistitelný za běhu, a počet instancí v kolekci odpovídá počtu instancí zadaný pro roli v konfiguračním souboru služby.
+Hello **instance** vlastnost vrátí kolekci **RoleInstance** objekty. Tato kolekce vždy obsahuje hello aktuální instance. Pokud hello role nedefinuje vnitřní koncový bod, zahrnuje kolekce hello hello aktuální instance, ale žádné jiné instance. Hello počet instancí role v kolekci hello bude vždy 1 v případě hello kterých byla definována žádná vnitřní koncový bod pro roli hello. Pokud hello role definuje vnitřní koncový bod, její instance jsou zjistitelný za běhu a hello počet instancí v kolekci hello bude odpovídat toohello počet instancí zadaný pro roli hello v konfiguračním souboru služby hello.
 
 > [!NOTE]
-> Spravované knihovny Azure neposkytuje způsob určování stavu další instance rolí, ale pokud vaše služba musí tuto funkci budete moct implementovat sami takové vyhodnocování stavu. Můžete použít [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) získat informace o spuštění instancí role.
+> Hello spravované knihovny Azure neposkytuje prostředek k určování stavu hello další instance rolí, ale pokud vaše služba musí tuto funkci budete moct implementovat sami takové vyhodnocování stavu. Můžete použít [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) tooobtain informace o spuštění instancí role.
 > 
 > 
 
-Chcete-li zjistit číslo portu pro vnitřní koncový bod na instanci role, můžete použít [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) vlastnost vrátit objekt slovník, který obsahuje názvy koncových bodů a jejich odpovídající IP adresy a porty. [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) vlastnost vrací IP adresu a port pro zadaný koncový bod. **PublicIPEndpoint** vlastnost vrací port pro koncový bod Vyrovnávání zatížení. Část adresy IP **PublicIPEndpoint** vlastnost nepoužívá.
+číslo portu hello toodetermine pro vnitřní koncový bod na instanci role, můžete použít hello [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) tooreturn vlastnost objekt slovník, který obsahuje názvy koncových bodů a jejich odpovídající IP adresy a porty. Hello [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) vlastnost vrací hello IP adresu a port pro zadaný koncový bod. Hello **PublicIPEndpoint** vlastnost vrací hello port pro koncový bod Vyrovnávání zatížení. část adresy IP Hello hello **PublicIPEndpoint** vlastnost nepoužívá.
 
 Tady je příklad, který iteruje instancí rolí.
 
@@ -125,10 +125,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Tady je příklad role pracovního procesu, který získá koncový bod vystavený prostřednictvím definice služby a začne naslouchat pro připojení.
+Tady je příklad role pracovního procesu, který získá hello koncový bod vystavený prostřednictvím definice služby hello a začne naslouchat pro připojení.
 
 > [!WARNING]
-> Tento kód bude fungovat pouze pro nasazené služby. Při spouštění v emulátoru výpočetní Azure, služby konfigurační prvky, které vytvoření přímé port koncových bodů (**InstanceInputEndpoint** elementy) jsou ignorovány.
+> Tento kód bude fungovat pouze pro nasazené služby. Při spuštění v hello výpočetní emulátor Azure, služby konfigurační prvky, které vytvoření přímé port koncových bodů (**InstanceInputEndpoint** elementy) jsou ignorovány.
 > 
 > 
 
@@ -167,7 +167,7 @@ namespace WorkerRole1
         var listener = new Socket(
           myInternalEp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-        // Bind socket listener to internal endpoint and listen
+        // Bind socket listener toointernal endpoint and listen
         listener.Bind(myInternalEp);
         listener.Listen(10);
         Trace.TraceInformation("Listening on IP:{0},Port: {1}",
@@ -175,7 +175,7 @@ namespace WorkerRole1
 
         while (true)
         {
-          // Block the thread and wait for a client request
+          // Block hello thread and wait for a client request
           Socket handler = listener.Accept();
           Trace.TraceInformation("Client request received.");
 
@@ -205,23 +205,23 @@ namespace WorkerRole1
 
     public override bool OnStart()
     {
-      // Set the maximum number of concurrent connections 
+      // Set hello maximum number of concurrent connections 
       ServicePointManager.DefaultConnectionLimit = 12;
 
       // For information on handling configuration changes
-      // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+      // see hello MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
       return base.OnStart();
     }
   }
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Pravidla pro provoz sítě pro řízení komunikace role
-Po definování vnitřních koncových bodů, můžete přidat pravidla pro provoz sítě (založené na koncových bodů, které jste vytvořili) řídit, jak můžete instance rolí vzájemně komunikovat. Následující diagram znázorňuje některé běžné scénáře pro řízení komunikace role:
+## <a name="network-traffic-rules-toocontrol-role-communication"></a>Síťová komunikace pravidla toocontrol role
+Po definování vnitřních koncových bodů, můžete přidat síťový provoz pravidla (podle hello koncové body, které jste vytvořili) toocontrol jak může instance rolí vzájemně komunikovat. Hello následující diagram ukazuje některé běžné scénáře pro řízení komunikace role:
 
 ![Síťový provoz pravidla scénáře](./media/cloud-services-enable-communication-role-instances/scenarios.png "síťový provoz pravidla scénáře")
 
-Následující příklad kódu ukazuje definice rolí u rolí vidět na předchozím obrázku. Každý definice role obsahuje alespoň jeden interní koncového bodu definovaného:
+Hello následující příklad kódu ukazuje definice rolí pro role hello uvedené v předchozí diagram hello. Každý definice role obsahuje alespoň jeden interní koncového bodu definovaného:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -257,10 +257,10 @@ Následující příklad kódu ukazuje definice rolí u rolí vidět na předcho
 > 
 > 
 
-Ve výchozím nastavení po definování vnitřní koncový bod komunikace můžete procházet z žádné role, do vnitřní koncový bod role bez jakýchkoli omezení. Pokud chcete omezit komunikaci, je nutné přidat **NetworkTrafficRules** elementu, který chcete **ServiceDefinition** element v souboru definice služby.
+Ve výchozím nastavení po definování vnitřní koncový bod může komunikace obtékat ze všech rolí toohello vnitřní koncový bod role bez jakýchkoli omezení. toorestrict komunikaci, je nutné přidat **NetworkTrafficRules** element toohello **ServiceDefinition** element v souboru definice služby hello.
 
 ### <a name="scenario-1"></a>Scénář 1
-Povolit pouze provoz sítě z **WebRole1** k **WorkerRole1**.
+Povolit pouze provoz sítě z **WebRole1** příliš**WorkerRole1**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -279,7 +279,7 @@ Povolit pouze provoz sítě z **WebRole1** k **WorkerRole1**.
 ```
 
 ### <a name="scenario-2"></a>Scénář 2
-Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1** a **WorkerRole2**.
+Umožňuje použití jenom provoz sítě z **WebRole1** příliš**WorkerRole1** a **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -298,7 +298,7 @@ Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1** a **Wo
 ```
 
 ### <a name="scenario-3"></a>Scénář 3
-Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1**, a **WorkerRole1** k **WorkerRole2**.
+Umožňuje použití jenom provoz sítě z **WebRole1** příliš**WorkerRole1**, a **WorkerRole1** příliš**WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -327,7 +327,7 @@ Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1**, a **W
 ```
 
 ### <a name="scenario-4"></a>Scénář 4
-Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1**, **WebRole1** k **WorkerRole2**, a **WorkerRole1** k **WorkerRole2**.
+Umožňuje použití jenom provoz sítě z **WebRole1** příliš**WorkerRole1**, **WebRole1** příliš**WorkerRole2**, a  **WorkerRole1** příliš**WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -367,8 +367,8 @@ Umožňuje použití jenom provoz sítě z **WebRole1** k **WorkerRole1**, **Web
 </ServiceDefinition>
 ```
 
-Odkaz na schéma XML pro prvky používané výše naleznete [zde](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Odkaz na schéma XML pro hello prvky používané výše naleznete [zde](https://msdn.microsoft.com/library/azure/gg557551.aspx).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o cloudové službě [modelu](cloud-services-model-and-package.md).
+Další informace o hello Cloudová služba [modelu](cloud-services-model-and-package.md).
 

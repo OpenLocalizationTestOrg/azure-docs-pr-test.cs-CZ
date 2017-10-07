@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s izolovaného prostoru Salesforce | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a izolovaného prostoru služby Salesforce."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a izolovaného prostoru služby Salesforce."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,97 +13,97 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d3c655a754f83284c386d2007c604a731367814
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 06ff50050845383a602b0edd6fca953ddd37cebd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce izolovaného prostoru pro zřizování automatické uživatelů
 
-Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v izolovaného prostoru Salesforce a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do izolovaného prostoru služby Salesforce.
+cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v izolovaného prostoru Salesforce a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z Azure AD tooSalesforce izolovaného prostoru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
 
 *   Klienta služby Azure Active directory.
 *   Pro služby Salesforce izolovaného prostoru pro pracovní nebo Salesforce izolovaného prostoru pro vzdělávací organizace musí mít platný klienta. Bezplatný zkušební účet můžete použít buď služby.
 *   Uživatelský účet v izolovaném prostoru Salesforce s oprávněními správce týmu.
 
-## <a name="assigning-users-to-salesforce-sandbox"></a>Přiřazování uživatelů do izolovaného prostoru Salesforce
+## <a name="assigning-users-toosalesforce-sandbox"></a>Přiřazení uživatelů tooSalesforce izolovaného prostoru
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu jsou synchronizovány pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele jsou synchronizovány pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD.
 
-Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Salesforce izolovaného prostoru. Jakmile se rozhodli, můžete přiřadit tito uživatelé do izolovaného prostoru Salesforce aplikace podle pokynů tady:
+Před konfigurací a povolení hello zřizování služby, musíte toodecide jaké uživatelů nebo skupin ve službě Azure AD představují hello uživatele, kteří potřebují přístup k tooyour aplikace Salesforce izolovaného prostoru. Jakmile se rozhodli, můžete přiřadit tyto uživatele tooyour aplikace Salesforce izolovaného prostoru podle pokynů hello tady:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřadit uživatele nebo skupinu tooan firemní aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Důležité tipy pro přiřazování uživatelů do izolovaného prostoru Salesforce
+### <a name="important-tips-for-assigning-users-toosalesforce-sandbox"></a>Důležité tipy pro přiřazení uživatelů tooSalesforce izolovaného prostoru
 
-* Dále je doporučeno jednoho uživatele Azure AD se přiřadí ke izolovaného prostoru Salesforce a otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
+* Dále je doporučeno jednoho uživatele Azure AD je přiřazen tooSalesforce izolovaného prostoru tootest hello zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
 
-* Při přiřazení uživatele k izolovanému prostoru služby Salesforce, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
+* Při přiřazování uživatelů tooSalesforce izolovaného prostoru, musíte vybrat platné uživatelské role. role "Výchozí přístup" Hello nefunguje pro zřizování.
 
 > [!NOTE]
-> Tato aplikace importuje vlastní role ze služby Salesforce izolovaného prostoru v rámci procesu zřizování, který může zákazník vyberte při přiřazování uživatelů.
+> Tato aplikace importuje vlastní role ze služby Salesforce izolovaného prostoru v rámci hello zřizování, který hello může zákazník tooselect při přiřazování uživatelů.
 
 ## <a name="enable-automated-user-provisioning"></a>Povolit automatické zřizování uživatelů
 
-Tato část vás provede připojení k Salesforce izolovaného uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v izolovaném prostoru Salesforce podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením izolovaného vaší služby Azure AD tooSalesforce uživatelský účet zřizování rozhraní API a konfiguraci hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v izolovaném prostoru Salesforce na základě uživatele a skupiny přiřazení ve službě Azure AD.
 
 >[!Tip]
->Můžete také pro izolovaný prostor Salesforce povoleno na základě SAML jednotné přihlašování, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+>Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro izolovaný prostor Salesforce, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurace automatického uživatele zřizování účtu:
+### <a name="tooconfigure-automatic-user-account-provisioning"></a>tooconfigure automatické uživatel účet zřizování:
 
-Cílem této části se popisují postup povolení zřizování uživatelů služby Active Directory uživatelských účtů do izolovaného prostoru služby Salesforce.
+Hello cílem této části je toooutline jak tooenable zřizování uživatelů služby Active Directory uživatele účtů tooSalesforce izolovaného prostoru.
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali Salesforce izolovaného prostoru pro jednotné přihlašování, vyhledávání pro instanci služby Salesforce izolovaného prostoru pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **izolovaného prostoru Salesforce** v galerii aplikací. Vyberte Salesforce izolovaného prostoru ve výsledcích hledání a přidejte ji do seznamu aplikací.
+2. Pokud jste již nakonfigurovali Salesforce izolovaného prostoru pro jednotné přihlašování, vyhledávání pro instanci služby Salesforce izolovaného prostoru pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **izolovaného prostoru Salesforce** v galerii aplikací hello. Vyberte izolovaného prostoru Salesforce z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
 
-3. Vyberte instanci služby Salesforce izolovaného prostoru a pak vyberte **zřizování** kartě.
+3. Vyberte instanci služby Salesforce izolovaného prostoru a pak vyberte hello **zřizování** kartě.
 
-4. Nastavte **režimu zřizování** k **automatické**. 
+4. Sada hello **režimu zřizování** příliš**automatické**. 
     ![Zřizování](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace:
+5. V části hello **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace hello:
    
-    a. V **uživatelské jméno správce** textovému poli, zadejte název, který má účet služby Salesforce izolovaném prostoru **správce systému** profil v Salesforce.com přiřazen.
+    a. V hello **uživatelské jméno správce** textovému poli, zadejte název, který má hello účtu Salesforce izolovaného **správce systému** profil v Salesforce.com přiřazen.
    
-    b. V **heslo správce** textovému poli, zadejte heslo pro tento účet.
+    b. V hello **heslo správce** textovému poli, zadejte hello heslo pro tento účet.
 
-6. Se získat token zabezpečení izolovaného prostoru služby Salesforce, otevřete novou kartu a přihlášení do stejného účtu správce izolovaného prostoru služby Salesforce. V pravém horním rohu stránky klikněte na své jméno a potom klikněte **Moje nastavení**.
+6. tooget vašem tokenu zabezpečení izolovaného prostoru služby Salesforce, otevřete novou kartu a přihlásit hello stejný účet správce izolovaného prostoru služby Salesforce. Na hello pravém horním rohu stránky hello, klikněte na své jméno a potom klikněte na **Moje nastavení**.
 
      ![Povolit automatické uživatele zajišťování](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "povolit zřizování automatické uživatelů")
-7. V levém navigačním podokně klikněte na tlačítko **osobní** rozbalte související část, a potom klikněte na **resetovat Moje zabezpečení tokenu**.
+7. V levém navigačním podokně hello, klikněte na tlačítko **osobní** tooexpand hello související části a pak klikněte na **resetovat Moje zabezpečení tokenu**.
   
     ![Povolit automatické uživatele zajišťování](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "povolit zřizování automatické uživatelů")
-8. Na **resetovat Moje zabezpečení tokenu** klikněte na tlačítko **resetovat tokenu zabezpečení** tlačítko.
+8. Na hello **resetovat Moje zabezpečení tokenu** klikněte na tlačítko hello **resetovat tokenu zabezpečení** tlačítko.
 
     ![Povolit automatické uživatele zajišťování](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "povolit zřizování automatické uživatelů")
-9. Zkontrolujte e-mailovou schránku spojené s tímto účtem správce. Vyhledejte e-mailu ze služby Salesforce Sandbox.com, který obsahuje nový token zabezpečení.
-10. Zkopírujte token, přejděte do okna vaší služby Azure AD a vložte ji do **soketu tokenu** pole.
+9. Zkontrolujte e-mailovou schránku hello spojené s tímto účtem správce. Vyhledejte e-mailu ze služby Salesforce Sandbox.com, který obsahuje hello nový token zabezpečení.
+10. Zkopírujte hello tokenu, přejděte tooyour okno Azure AD a vložte ho do hello **soketu tokenu** pole.
 
-11. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Salesforce izolovaného prostoru.
+11. V hello portálu Azure, klikněte na **Test připojení** tooensure Azure AD můžete připojit tooyour izolovaného prostoru Salesforce aplikace.
 
-12. V **e-mailové oznámení** pole, zadejte e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko.
+12. V hello **e-mailové oznámení** zadejte hello e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko hello.
 
 13. Klikněte na tlačítko **uložit.**  
     
-14.  V části mapování vyberte **synchronizaci Azure Active Directory Users do izolovaného prostoru služby Salesforce.**
+14.  V části hello části mapování, vyberte **synchronizaci uživatelů Azure Active Directory tooSalesforce izolovaného prostoru.**
 
-15. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD izolovaného prostoru služby Salesforce. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Salesforce izolovaného prostoru pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+15. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z Azure AD tooSalesforce izolovaného prostoru. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v Salesforce izolovaného prostoru pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
 
-16. Povolit zřizování služby pro izolovaný prostor Salesforce Azure AD, změňte **Stav zřizování** k **na** v části Nastavení
+16. tooenable hello zřizování služby Azure AD pro izolovaný prostor Salesforce, změna hello **Stav zřizování** příliš**na** v části Nastavení hello
 
 17. Klikněte na tlačítko **uložit.**
 
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Salesforce izolovaného prostoru v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce, které provádí službu zřizování na aplikaci Salesforce izolovaného prostoru.
+Spustí počáteční synchronizaci hello všechny uživatele nebo skupiny přiřazené tooSalesforce izolovaného prostoru v části Uživatelé a skupiny hello. počáteční synchronizace Hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizování služby v aplikaci Salesforce izolovaného prostoru.
 
-Nyní můžete vytvořit testovací účet. Chcete-li ověřit, že účet umístění byl synchronizován do služby salesforce Počkejte až 20 minut.
+Nyní můžete vytvořit testovací účet. Počkejte, až minut too20 tooverify, který hello účet byl synchronizován toosalesforce.
 
 ## <a name="additional-resources"></a>Další zdroje
 

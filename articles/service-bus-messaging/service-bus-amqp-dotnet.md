@@ -1,5 +1,5 @@
 ---
-title: Service Bus s .NET a AMQP 1.0 | Microsoft Docs
+title: aaaService Bus s .NET a protokolu AMQP 1.0 | Microsoft Docs
 description: "Pomocí protokolu AMQP Azure Service Bus pomocí technologie .NET"
 services: service-bus-messaging
 documentationcenter: na
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: sethm
-ms.openlocfilehash: e089a7d772b51194d8300beb99797bf40a8611b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8b40f92ba29058951556fa3db1adcf9383ee69f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-service-bus-from-net-with-amqp-10"></a>Service Bus pomocí technologie .NET pomocí protokolu AMQP 1.0
 
-## <a name="downloading-the-service-bus-sdk"></a>Stahování služby Service Bus SDK
+## <a name="downloading-hello-service-bus-sdk"></a>Stahování hello Service Bus SDK
 
-Podpora protokolu AMQP 1.0 je k dispozici v Service Bus SDK verze 2.1 nebo vyšší. Zajistíte tak, že stáhnete bits Service Bus z máte nejnovější verzi [NuGet][NuGet].
+Podpora protokolu AMQP 1.0 je k dispozici v hello Service Bus SDK verze 2.1 nebo vyšší. Můžete zajistit, máte nejnovější verzi hello stažením hello Service Bus bits z [NuGet][NuGet].
 
-## <a name="configuring-net-applications-to-use-amqp-10"></a>Konfigurace aplikací .NET pro použití protokolu AMQP 1.0
+## <a name="configuring-net-applications-toouse-amqp-10"></a>Konfigurace toouse aplikace .NET protokolu AMQP 1.0
 
-Ve výchozím nastavení klientské knihovny Service Bus .NET komunikuje se službou Service Bus pomocí vyhrazené protokolu, který je založený na protokolu SOAP. Pro použití protokolu AMQP 1.0 místo výchozí vyžaduje protokol explicitní konfiguraci na připojovací řetězec sběrnice služeb, jak je popsáno v následující části. Než tuto změnu zůstává beze změny kódu aplikace, při použití protokolu AMQP 1.0.
+Ve výchozím nastavení Klientská knihovna pro Service Bus .NET hello komunikuje s hello služby Service Bus pomocí vyhrazené protokol založený na protokolu SOAP. toouse protokolu AMQP 1.0 místo hello výchozím protokolem vyžaduje explicitní konfiguraci na hello připojovací řetězec sběrnice služeb, jak je popsáno v další části hello. Než tuto změnu zůstává beze změny kódu aplikace, při použití protokolu AMQP 1.0.
 
-V aktuální verzi existuje několik funkcí rozhraní API, které nejsou podporována při použití protokolu AMQP. Tyto nepodporovaných funkcích jsou uvedené dále v části [nepodporované funkce, omezení a chování rozdíly](#unsupported-features-restrictions-and-behavioral-differences). Některá nastavení pokročilou konfiguraci také mít jiný význam při použití protokolu AMQP.
+V aktuální verzi hello existuje několik funkcí rozhraní API, které nejsou podporována při použití protokolu AMQP. Tyto nepodporovaných funkcích jsou uvedené dále v části hello [nepodporované funkce, omezení a chování rozdíly](#unsupported-features-restrictions-and-behavioral-differences). Některé pokročilé nastavení konfigurace hello také mít jiný význam při použití protokolu AMQP.
 
 ### <a name="configuration-using-appconfig"></a>Konfigurace pomocí souboru App.config
 
-Je vhodné pro použití konfiguračního souboru App.config k ukládání nastavení aplikacemi. U aplikací, Service Bus můžete použít App.config k uložení připojovací řetězec sběrnice služeb. Příklad souboru App.config vypadá takto:
+Je dobrým zvykem toostore nastavení souboru App.config Konfigurace aplikace toouse hello. U aplikací, Service Bus můžete použít App.config toostore hello Service Bus připojovací řetězec. Příklad souboru App.config vypadá takto:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -46,21 +46,21 @@ Je vhodné pro použití konfiguračního souboru App.config k ukládání nasta
 </configuration>
 ```
 
-Hodnota `Microsoft.ServiceBus.ConnectionString` nastavení je připojovací řetězec sběrnice služeb, který slouží ke konfiguraci připojení k Service Bus. Formát vypadá takto:
+Hello hodnotu hello `Microsoft.ServiceBus.ConnectionString` nastavení je hello připojovací řetězec sběrnice služeb, který je použité tooconfigure hello připojení tooService sběrnice. Formát Hello je následující:
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-Kde `[namespace]` a `SharedAccessKey` jsou získávány z [portál Azure] [ Azure portal] při vytváření oboru názvů Service Bus. Další informace najdete v tématu [vytvoření oboru názvů Service Bus pomocí portálu Azure][Create a Service Bus namespace using the Azure portal].
+Kde `[namespace]` a `SharedAccessKey` jsou získávány z hello [portál Azure] [ Azure portal] při vytváření oboru názvů Service Bus. Další informace najdete v tématu [vytvoření oboru názvů Service Bus pomocí portálu Azure hello][Create a Service Bus namespace using hello Azure portal].
 
-Při použití protokolu AMQP, připojit připojovacího řetězce s `;TransportType=Amqp`. Tento zápis dá pokyn, aby jeho připojení k Service Bus pomocí protokolu AMQP 1.0 klientské knihovny.
+Při použití protokolu AMQP, připojit hello připojovací řetězec s `;TransportType=Amqp`. Tento zápis dá pokyn hello klienta knihovny toomake jeho tooService připojení sběrnice pomocí protokolu AMQP 1.0.
 
 ## <a name="message-serialization"></a>Zpráva serializace
 
-Pokud používáte protokol výchozí, výchozí chování serializace klientské knihovny .NET je použití [DataContractSerializer] [ DataContractSerializer] typ k serializaci [BrokeredMessage] [ BrokeredMessage] instance pro přenos mezi klientské knihovny a službou Service Bus. Pokud používáte režim přenosu protokolu AMQP, Klientská knihovna používá systém typů AMQP za účelem serializace [zprostředkované zprávy] [ BrokeredMessage] do zprávy protokolu AMQP. Serializace umožňuje zprávy přijímají a interpretovat přijímající aplikace, která potenciálně běží na různých platformách, například aplikaci Java, která používá rozhraní API JMS pro přístup k Service Bus.
+Při použití protokolu výchozí hello, hello výchozí serializace chování klientské knihovny .NET hello je toouse hello [DataContractSerializer] [ DataContractSerializer] zadejte tooserialize [BrokeredMessage ] [ BrokeredMessage] instance pro přenos mezi hello klientské knihovny a službou Service Bus hello. Při použití režim přenosu protokolu AMQP hello, hello Klientská knihovna používá systém typů AMQP hello za účelem serializace hello [zprostředkované zprávy] [ BrokeredMessage] do zprávy protokolu AMQP. Serializace umožňuje hello zpráva toobe přijaty a interpretovat přijímací aplikace, která potenciálně běží na jiné platformě, například aplikaci Java, která používá rozhraní API JMS tooaccess hello Service Bus.
 
-Když vytvoříte [BrokeredMessage] [ BrokeredMessage] instance, objekt .NET. můžete zadat jako parametr konstruktoru, která bude sloužit jako text zprávy. Pro objekty, které lze mapovat na primitivní typy AMQP je text serializován do AMQP datových typů. Pokud objekt nelze mapovat přímo do AMQP primitivní typ; který je definován vlastní typ aplikace a pak je objekt serializován pomocí [DataContractSerializer][DataContractSerializer], a odesílání serializovaných bajtů dat zprávy protokolu AMQP.
+Když vytvoříte [BrokeredMessage] [ BrokeredMessage] instance, můžete zadat objekt .NET jako parametr toohello konstruktor tooserve jako text hello hello zprávy. Pro objekty, které se dají mapovat tooAMQP primitivní typy je text hello serializován do AMQP datových typů. Pokud objekt hello nelze mapovat přímo do AMQP primitivní typ; To znamená, vlastního typu definované hello aplikace a pak hello objekt serializován pomocí hello [DataContractSerializer][DataContractSerializer], a jsou odesílány bajty hello serializovat data zprávy protokolu AMQP.
 
-Pro usnadnění funkční spolupráce s klienty rozhraní .NET, použijte pouze typy .NET, které lze serializovat přímo do AMQP typy pro tělo zprávy. V následující tabulce jsou tyto typy a odpovídající mapování na systém typů AMQP.
+toofacilitate vzájemnou spolupráci s klienty rozhraní .NET, použít pouze typy .NET, které lze serializovat přímo do AMQP typy hello tělo zprávy hello. Následující tabulka Hello podrobnosti tyto typy a hello odpovídající mapování toohello AMQP typ systému.
 
 | Typ objektu textu rozhraní .NET | Typ namapované AMQP | Typ oddílu AMQP textu |
 | --- | --- | --- |
@@ -81,14 +81,14 @@ Pro usnadnění funkční spolupráce s klienty rozhraní .NET, použijte pouze 
 | Identifikátor GUID |UUID |Hodnota AMQP |
 | Byte] |Binární |Hodnota AMQP |
 | Řetězec |Řetězec |Hodnota AMQP |
-| System.Collections.IList |seznam |Hodnota AMQP: položek obsažených v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| System.Array |Pole |Hodnota AMQP: položek obsažených v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| System.Collections.IDictionary |mapy |Hodnota AMQP: položek obsažených v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězcových klíčů. |
-| identifikátor URI |Popisuje řetězec (viz následující tabulka) |Hodnota AMQP |
-| Datový typ DateTimeOffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
-| Časový interval |Popisuje dlouho (viz následující) |Hodnota AMQP |
-| Datový proud |Binární |Data protokolu AMQP (může být více). Datové části obsahují nezpracovaná Bajty čtení z datového proudu objektu. |
-| Druhý objekt |Binární |Data protokolu AMQP (může být více). Obsahuje serializovaných binárního souboru objektu, který používá objektu DataContractSerializer nebo serializátor poskytl aplikace. |
+| System.Collections.IList |seznam |Hodnota AMQP: položek obsažených v kolekci hello lze pouze ty, které jsou definovány v této tabulce. |
+| System.Array |Pole |Hodnota AMQP: položek obsažených v kolekci hello lze pouze ty, které jsou definovány v této tabulce. |
+| System.Collections.IDictionary |mapy |Hodnota AMQP: položek obsažených v kolekci hello lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězcových klíčů. |
+| identifikátor URI |Popisuje řetězec (viz následující tabulka hello) |Hodnota AMQP |
+| Datový typ DateTimeOffset |Popisuje dlouho (viz následující tabulka hello) |Hodnota AMQP |
+| Časový interval |Popisuje dlouho (viz následující hello) |Hodnota AMQP |
+| Datový proud |Binární |Data protokolu AMQP (může být více). Hello datové části obsahují hello nezpracovaná bajtů přečtených z datového proudu hello. |
+| Druhý objekt |Binární |Data protokolu AMQP (může být více). Obsahuje binární hello serializovat hello objektu, který používá hello DataContractSerializer nebo serializátor poskytl aplikace hello. |
 
 | Typ formátu .NET | Mapovat AMQP popisuje typ | Poznámky |
 | --- | --- | --- |
@@ -98,35 +98,35 @@ Pro usnadnění funkční spolupráce s klienty rozhraní .NET, použijte pouze 
 
 ## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>Nepodporované funkce, omezení a rozdíly v chování
 
-Následující funkce rozhraní API služby Service Bus .NET nejsou aktuálně podporovány při použití protokolu AMQP:
+Následující funkce hello Service Bus .NET API Hello nejsou aktuálně podporovány při použití protokolu AMQP:
 
 * Transakce
 * Odesílání prostřednictvím cíl přenosu
 
-Existují zde také některé malé rozdíly v chování rozhraní API služby Service Bus .NET při použití protokolu AMQP, porovnání s výchozím protokolem:
+Existují zde také některé malé rozdíly v chování hello hello rozhraní API služby Service Bus .NET při použití protokolu AMQP, porovnání toohello výchozí protokol:
 
-* [OperationTimeout] [ OperationTimeout] vlastnost je ignorována.
+* Hello [OperationTimeout] [ OperationTimeout] vlastnost je ignorována.
 * `MessageReceiver.Receive(TimeSpan.Zero)`je implementovaný jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
-* Dokončení zprávy pomocí tokenů zámku lze provést pouze příjemci zprávy, které původně přijaté zprávy.
+* Dokončení zprávy pomocí tokenů zámku lze provést pouze hello příjemci zprávy, které původně přijaté zprávy hello.
 
 ## <a name="controlling-amqp-protocol-settings"></a>Nastavení protokolu AMQP řízení
 
-[Rozhraní API technologie .NET](/dotnet/api/) vystavit několik nastavení, které řídí chování protokolu AMQP:
+Hello [rozhraní API technologie .NET](/dotnet/api/) vystavit toocontrol nastavení několik hello chování hello protokolu AMQP:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Určuje počáteční kredit u odkaz. Výchozí hodnota je 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: ovládací prvky maximální velikost protokolu AMQP rámec nabízená při vyjednávání na připojení otevřete čas. Výchozí hodnota je 65 536 bajtů.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Pokud batchable přenosů se tato hodnota určuje maximální zpoždění pro odesílání potížemi. Ve výchozím nastavení dědí odesílatelé nebo příjemci. Jednotlivé odesílatel/příjemce můžete přepsat výchozí, což je 20 milisekund.
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Určuje, zda jsou připojení AMQP navázat připojení přes protokol SSL. Výchozí hodnota je **true**.
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: ovládací prvky hello počáteční Dal použít tooa odkaz. Hello výchozí hodnota je 0.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: ovládací prvky hello maximální AMQP rámce velikost nabízená při vyjednávání hello v době otevřené připojení. Hello výchozí hodnota je 65 536 bajtů.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Pokud batchable přenosů se tato hodnota určuje maximální zpoždění hello k odeslání potížemi. Ve výchozím nastavení dědí odesílatelé nebo příjemci. Jednotlivé odesílatel/příjemce můžete přepsat výchozí hello, což je 20 milisekundách.
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Určuje, zda jsou připojení AMQP navázat připojení přes protokol SSL. Výchozí hodnota Hello je **true**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Připraveni na další informace? Získáte pomocí následujících odkazů:
+Připraveno toolearn další? Hello najdete na následující odkazy:
 
 * [Přehled protokolu AMQP Service Bus]
 * [Podpora protokolu AMQP 1.0 témata a fronty Service Bus rozdělena na oddíly]
 * [AMQP v Service Bus pro systém Windows Server]
 
-[Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
+[Create a Service Bus namespace using hello Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession

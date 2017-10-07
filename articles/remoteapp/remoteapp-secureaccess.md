@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení přístupu k Azure Remoteappu a mimo ni | Microsoft Docs"
-description: "Zjistěte, jak zabezpečený přístup k Azure RemoteApp pomocí podmíněného přístupu v Azure Active Directory"
+title: "aaaSecuring přístup tooAzure vzdálené aplikace RemoteApp, a dále | Microsoft Docs"
+description: "Zjistěte, jak zabezpečeného přístupu tooAzure vzdálené aplikace RemoteApp pomocí podmíněného přístupu v Azure Active Directory"
 services: remoteapp
 documentationcenter: 
 author: piotrci
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 28ee4698515d11964e5371628d21dbc00687c861
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98dfe69e2f5fa5014b6eb3157e01f131c287134d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="securing-access-to-azure-remoteapp-and-beyond"></a>Zabezpečení přístupu k Azure Remoteappu a mimo ni
+# <a name="securing-access-tooazure-remoteapp-and-beyond"></a>Zabezpečení přístupu tooAzure vzdálené aplikace RemoteApp, a dále
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-V tomto článku jsme vám poskytne přehled o tom, jak může správce nastavit zabezpečený přístup kanál od koncového uživatele pomocí Azure Remoteappu a konče zabezpečené prostředků, jako je například SQL database nebo jiné aplikace back-end. Cílem je zajistit, že jenom oprávnění uživatelé splňující požadované podmínky přístup k vzdálené aplikace a zabezpečení back-end lze přistupovat pouze v z řízené prostředí Azure Remoteappu a nikoli z jiných umístění.
+V tomto článku jsme vám poskytne přehled o tom, jak může správce nastavit zabezpečený přístup kanál od prostřednictvím Azure RemoteApp hello koncovým uživatelům a konče zabezpečené prostředků, jako je například SQL database nebo jiné aplikace back-end. cílem Hello je toomake jistotu, že jenom oprávnění uživatelé, které schůzku hello požadovaných podmínek přístup k vzdálené aplikace a který hello zabezpečené back-end lze přistupovat pouze z prostředí Azure RemoteApp hello kontrolovat a nikoli z jiných umístění.
 
-Existují 3 hlavní oblasti, které správce potřebuje k podívejte se na:
+Existují 3 hlavní oblasti, které Dobrý den, správce potřebuje toolook na:
 
 ![Aspekty podmíněného přístupu Azure RemoteApp](./media/remoteapp-secureaccess/ra-conditionalenvironment.png)
 
-Pro čtení na informace a odpovědi na tyto otázky.
+Přečtěte si informace a odpovědi toothese dotazy.
 
-## <a name="who-can-access-the-collection"></a>Kdo může přistupovat ke kolekci?
-Správce zvolí uživatelé, kteří mohou přistupovat ke vzdálené aplikace v kolekci. Můžete použít Azure Active Directory (Azure AD) pracovní nebo školní účty (dříve nazývané, "účty organizace") nebo účty Microsoft (například @outlook.com). Většina podnikové scénáře použití účty Azure AD; umožňují vám používat podmíněný přístup funkce popsané později a jsou také pouze volbou pro kolekce připojený k doméně. Zbývající části článku předpokládá, že používáte účty Azure AD s Azure Remoteappem.
+## <a name="who-can-access-hello-collection"></a>Kdo má přístup k hello kolekce?
+Hello správce zvolí hello uživatelé, kteří mohou přistupovat ke vzdálené aplikace v kolekci hello. Můžete použít Azure Active Directory (Azure AD) pracovní nebo školní účty (dříve nazývané, "účty organizace") nebo účty Microsoft (například @outlook.com). Většina podnikové scénáře použití účty Azure AD; Tyto vám umožňují používat funkce podmíněného přístupu, které jsou popsané později a jsou také hello pouze volbou pro kolekce připojený k doméně. Hello zbytek hello článku předpokládá, že používáte účty Azure AD s Azure Remoteappem.
 
 **Co jsme mají udělat:**
 
-Použití účtů Azure AD k řízení přístupu k Azure RemoteApp nám poskytuje dvě věci:
+Pomocí Azure AD účty toocontrol přístup tooAzure vzdálené aplikace RemoteApp udává nám dvě věci:
 
-1. Vždy vědět kdo má přístup k aplikacím jsme publikovali a získat přístup k žádnému back EndY tyto aplikace se připojit k.
-2. Jsme řídit základní Azure AD, můžeme vytvořit a odstranit uživatelské účty, zásady pro hesla sady, použijte službu Multi-Factor authentication, atd. 
+1. Vždy vědět, kdo má přístup k hello aplikace, které jsme publikovali a přístup k back EndY tyto aplikace se připojují k.
+2. Jsme řídit hello základní Azure AD, můžeme vytvořit a odstranit uživatelské účty, zásady pro hesla sady, použijte službu Multi-Factor authentication, atd. 
 
-## <a name="how-is-the-collection-accessed-from-where"></a>Způsob přístupu k kolekce? Odkud?
-Běžně chtějí správci definovat zásady pro přístup k veřejné internetové prostředí, například Azure RemoteApp. Například chtějí zajistit uživatelům přístup k prostředí z mimo firemní síť k používání služby Multi-Factor authentication (MFA) pro získání přístupu; nebo možná budou zablokovány úplně.
+## <a name="how-is-hello-collection-accessed-from-where"></a>Způsob přístupu k hello kolekce? Odkud?
+Správci často chtít toodefine zásad pro přístup k veřejné internetové prostředí, například Azure RemoteApp. Například chtějí tooensure, aby uživatele, kteří používají hello prostředí z mimo hello podnikové sítě měly přístup toogain vícefaktorové ověřování (MFA) toouse; nebo možná budou zablokovány úplně.
 
-Azure RemoteApp mohou správci funkce, která je k dispozici prostřednictvím Azure AD Premium nastavit zásady podmíněného přístupu pro jejich prostředí Azure RemoteApp. Vytváření sestav a výstrahy funkce lze také použít ke sledování, jak je přistupuje prostředí.
+Azure RemoteApp mohou správci hello funkce je k dispozici prostřednictvím zásad podmíněného přístupu tooset Azure AD Premium pro svoje prostředí Azure RemoteApp. Může také používat rozšířené funkce vytváření sestav a výstrah funkce toomonitor jak hello prostředí přistupuje.
 
-### <a name="how-to-set-up-conditional-access-for-azure-remoteapp"></a>Jak nastavit podmíněný přístup pro Azure RemoteApp
-Přidáme provede ukázkový scénář – Azure RemoteApp správce chce blokovat přístup k prostředí, pokud jsou uživatelé mimo firemní síť.
+### <a name="how-tooset-up-conditional-access-for-azure-remoteapp"></a>Jak tooset až podmíněného přístupu pro Azure RemoteApp
+Snažíme se probíhající toowalk prostřednictvím ukázkový scénář – hello Azure RemoteApp správce chce prostředí toohello tooblock přístupu, pokud jsou uživatelé mimo podnikovou síť hello.
 
 > [!NOTE]
-> Předpokladu, že jste provedli upgrade na vrstvě | Premium Azure AD a že jste vytvořili aspoň jednu kolekci Azure RemoteApp.
+> Předpokladu, že jste provedli upgrade toohello Azure AD Premium vrstvy a že jste vytvořili aspoň jednu kolekci Azure RemoteApp.
 > 
 > 
 
-1. V portálu Azure klikněte **služby Active Directory** kartě. Klikněte na adresář, který chcete nakonfigurovat.
+1. Na portálu Azure klikněte na tlačítko hello **služby Active Directory** kartě. Klikněte na tlačítko chcete tooconfigure directory hello.
    
-   Mějte na paměti: Podmíněného přístupu je vlastnost adresáře a nikoli instanci Azure Remoteappu, aby všechny konfigurace se provádí na úrovni adresáře. Také to znamená, že musíte být správce adresáře k provedení těchto změn.
-2. Klikněte na tlačítko **aplikace**a potom klikněte na **Microsoft Azure RemoteApp** k nastavení podmíněného přístupu. Všimněte si, že můžete nastavit podmíněný přístup pro každou aplikaci "software jako služba" v adresáři samostatně.
+   Mějte na paměti: Podmíněného přístupu je vlastnost adresáře a nikoli instanci Azure Remoteappu, aby všechny konfigurace se provádí na úrovni služby directory hello. Také to znamená, že potřebujete toobe hello directory správce toomake tyto změny.
+2. Klikněte na tlačítko **aplikace**a potom klikněte na **Microsoft Azure RemoteApp** tooset až podmíněného přístupu. Všimněte si, že můžete nastavit podmíněný přístup pro každou aplikaci "software jako služba" v adresáři samostatně.
    ![Nastavení podmíněného přístupu pro Azure RemoteApp](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
-3. Na **konfigurace** nastavte **povolit pravidla přístupu k** na hodnotu ON.
+3. Na hello **konfigurace** nastavte **povolit pravidla přístupu k** tooON.
    ![Povolení pravidel přístupu pro Azure RemoteApp](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
-4. Teď můžete nakonfigurovat různá pravidla a zvolte, kteří mají použít:
+4. Teď můžete nakonfigurovat různá pravidla a zvolte, kteří tooapply je:
    
-   1. Zvolte **zablokovat přístup, když není v práci** úplně zabránit uživatelům v přístupu k Azure RemoteApp mimo síťové prostředí, které zadáte.
-   2. Klikněte na níže uvedenou možnost definovat rozsahy IP adres, které tvoří "důvěryhodné síti." Všechno, co mimo těch, které budou odmítnuty.
-5. Otestujte vaši konfiguraci spuštěním klientovi Azure Remoteappu z IP adresy mimo zadaný rozsah. Po registraci se pomocí přihlašovacích údajů Azure AD měla zobrazit zpráva takto:
+   1. Zvolte **zablokovat přístup, když není v práci** toocompletely zabránit uživatelům v přístupu k Azure RemoteApp mimo prostředí sítě hello zadáte.
+   2. Klikněte na možnost hello níže toodefine rozsahů adres IP v hello, které tvoří "důvěryhodné síti." Všechno, co mimo těch, které budou odmítnuty.
+5. Spuštěním klientovi Azure Remoteappu hello z IP adresy mimo zadaný rozsah hello otestujte vaši konfiguraci. Po registraci se pomocí přihlašovacích údajů Azure AD měla zobrazit zpráva takto:
 
-![Odepření přístupu k Azure RemoteApp](./media/remoteapp-secureaccess/ra-accessdenied.png)
+![Odepření přístupu tooAzure vzdálené aplikace RemoteApp](./media/remoteapp-secureaccess/ra-accessdenied.png)
 
 ### <a name="future-conditional-access-features"></a>Funkce budoucí podmíněného přístupu
-Tým služby Azure Active Directory pracuje na nové funkce podmíněného přístupu. Správci můžou k vytvoření nových typů pravidel mimo síť umístění na základě pravidel. Veřejné preview nové funkce by měla být brzy dostupná.
+tým služby Azure Active Directory Hello pracuje na nové funkce podmíněného přístupu. Správci budou mít možnost toocreate nové typy pravidel nad rámec pravidla na základě umístění sítě. Veřejné náhled hello nové funkce by měla být brzy dostupná.
 
-### <a name="how-to-monitor-access-to-azure-remoteapp"></a>Postup sledování přístup k Azure RemoteApp
-Skvělé funkce, která použít spolu s podmíněného přístupu je funkce vytváření sestav Azure Active Directory Premium. Můžete použít sestavy monitorování, který přistupuje k prostředí a detekovat podezřelé aktivity.
+### <a name="how-toomonitor-access-tooazure-remoteapp"></a>Jak toomonitor přistupovat k tooAzure vzdálené aplikace RemoteApp
+Skvělé funkce toouse spolu s podmíněného přístupu je funkce vytváření sestav Azure Active Directory Premium hello. Můžete použít toomonitor sestavy, který přistupuje k prostředí a detekovat podezřelé aktivity.
 
-Například můžete zobrazit názvy uživatelů, kteří získat přístup k Azure Remoteappu, kolikrát se jako a kdy.
+Například můžete zobrazit názvy hello hello uživatelů, kteří získat přístup k Azure Remoteappu, kolikrát tomu bylo ho a kdy.
 
 1. Na portálu Azure, klikněte na tlačítko **služby Active Directory**a pak klikněte na tlačítko adresáře.
-2. Přejděte na **sestavy** kartě.
-3. V seznamu sestav vyberte **využití aplikace** pod **integrovaných aplikací**.
+2. Přejděte toohello **sestavy** kartě.
+3. Hello seznamu sestav vyberte **využití aplikace** pod **integrovaných aplikací**.
    
    Zobrazí se některé souhrnných statistik pro Azure RemoteApp. 
    ![Souhrnné statistiky přístup k Azure RemoteApp](./media/remoteapp-secureaccess/ra-accessstats.png)
-4. Klikněte na aplikaci na nich informace o uživatele, kteří používají Azure RemoteApp.
+4. Klikněte na tlačítko hello aplikace tooreveal informace o uživatele, kteří používají Azure RemoteApp.
    ![Statistiky přístup uživatelů pro Azure RemoteApp](./media/remoteapp-secureaccess/ra-userstats.png)
 
 ### <a name="summary"></a>Souhrn
-S Azure Active Directory Premium můžete nastavit pravidla přístupu k Azure RemoteApp (a další software jako služba aplikace, který je k dispozici prostřednictvím služby Azure AD). Pravidla jsou aktuálně omezená na umístění na základě zásad sítě, ale bude v budoucnu rozšířit na další aspekty enterprise Management.
+S Azure Active Directory Premium můžete nastavit přístup pravidla tooAzure vzdálené aplikace RemoteApp (a další software jako služba aplikace, který je k dispozici prostřednictvím služby Azure AD). Pravidla jsou aktuálně omezená toonetwork umístění na základě zásad, ale bude v budoucí hello rozšířeno tooother aspekty enterprise Management.
 
-Azure AD Premium nabízí také vytváření sestav a monitorování funkce, které rozšiřují další ovládací prvek správce má v jejich prostředí Azure RemoteApp.
+Azure AD Premium nabízí také vytváření sestav a monitorování funkce, které dále rozšířit hello řízení Dobrý den, správce má v jejich prostředí Azure RemoteApp.
 
 ## <a name="how-do-i-make-sure-my-secure-resource-is-accessible-only-from-my-azure-remoteapp-environment"></a>Jak se ujistěte se, že moje zabezpečený prostředek je dostupný jenom z mé prostředí Azure RemoteApp?
-V předchozích částech tohoto článku jsme zaměřené na zabezpečení přístupu k prostředí Azure Remoteappu. Budeme mít udělat, výběr uživatelů, kteří mají povolen přístup a nastavení pravidel přístupu pro další ovládání, jak mohou používat službu.
+V předchozích částech tohoto článku jsme zaměřené na zabezpečení prostředí Azure RemoteApp toohello přístupu. Jsme mají udělat, výběr hello uživatelů, kteří mají povolen přístup a nastavení řízení toofurther pravidla přístupu, jak mohou používat službu hello.
 
-Běžný scénář pro nasazení Azure RemoteApp je, že vzdálené aplikace potřebují ke komunikaci s back-end prostředku, třeba databázi SQL. Tento prostředek je hostována místně (např. v podnikové síti) nebo v cloudu (např. v Azure IaaS). Správci často chtějí Ujistěte se, že prostředek back-end lze přistupovat pouze prostřednictvím aplikace nasazené prostřednictvím Azure Remoteappu a není třeba aplikace spuštěna přímo na počítači uživatele a přístupu k prostřednictvím veřejného Internetu. Azure RemoteApp dochází často jako centrálně spravované a zabezpečené prostředí a proto pouze cestu, přes který by uživatelé komunikovat s back-end prostředků.
+Běžný scénář pro nasazení Azure RemoteApp je, že vzdálené aplikace hello nutné toocommunicate s back-end prostředku, třeba databázi SQL. Tento prostředek je hostována místně (např. v podnikové síti) nebo v cloudu hello (např. v Azure IaaS). Správci často chtít toomake jistotu, že hello back-end prostředků lze přistupovat pouze aplikace nasazené prostřednictvím Azure Remoteappu a není třeba aplikace spuštěna přímo na počítači uživatele a přístupu k prostřednictvím veřejného Internetu. Azure RemoteApp dochází často jako hello centrálně spravovat a zabezpečené prostředí a proto hello pouze cestu, přes který by uživatelé komunikovat s hello prostředků back-end.
 
-Řešení je umístit prostředí Azure Remoteappu a zabezpečení prostředků v stejnou Azure virtuální sítě (virtuální síť). Pokud je v jiné lokalitě, můžete vytvořit připojení site-to-site VPN, třeba chcete vytvořit síť VNet rozložení datového centra Azure a místního prostředí zákazníků.
+řešení Hello je tooplace obě hello prostředí Azure RemoteApp a hello zabezpečení prostředků v hello virtuální sítě stejné Azure (VNET). Pokud je prostředkem hello v jiné lokalitě, můžete vytvořit připojení VPN typu site-to-site, například toocreate Azure datového centra STA hello virtuální sítě a hello zákazníka v místním prostředí.
 
 Azure RemoteApp podporuje dva typy nasazení kolekce, kde můžete zadat své vlastní virtuální sítě:
 
-* Non-připojené k doméně: aplikace bude mít "směrem pohledu" Další prostředky ve virtuální síti. Například může sloužit k připojení aplikace k databázi SQL, která používá ověřování systému SQL (aplikace ověření uživatele přímo v databázi)
-* Připojený k doméně: virtuální počítače používané Azure RemoteApp připojeni k řadiči domény ve virtuální síti. To je užitečné, když je aplikace, které jsou potřeba ověřují řadiči domény systému Windows, aby bylo možné získat přístup k prostředku back-end.
+* Non-připojené k doméně: hello aplikace bude mít "směrem pohledu" Dobrý den další prostředky ve hello virtuální sítě. Například to může být použité tooconnect aplikace tooa SQL database, která používá ověřování systému SQL (aplikace ověření uživatele hello přímo na databázi hello)
+* Připojený k doméně: hello virtuální počítače používané Azure RemoteApp jsou připojené k tooa řadiče domény v hello virtuální sítě. To je užitečné, když aplikace hello potřebují tooauthenticate vůči řadiči domény systému Windows v pořadí tooget přístup tooa back-end prostředku.
   ![Kolekce připojený k doméně v Azure Remoteappu](./media/remoteapp-secureaccess/ra-domainjoined.png)
 
-### <a name="how-to-create-a-secure-connection-between-azure-and-my-on-premises-environment"></a>Postup vytvoření bezpečného připojení mezi Azure a Moje místního prostředí
-Existuje několik možností konfigurace pro připojení vašich Azure a místních prostředích. Zde jsou k dispozici pěkný přehled možností.
+### <a name="how-toocreate-a-secure-connection-between-azure-and-my-on-premises-environment"></a>Jak toocreate zabezpečené připojení mezi Azure a Moje místního prostředí
+Existuje několik možností konfigurace pro připojení vašich Azure a místních prostředích. Zde jsou k dispozici pěkný přehled možností hello.
 
-S Azure Remoteappem musíte nejprve nakonfigurovat virtuální síť a pak jeho pomocí během procesu vytváření vaší kolekce. 
+S Azure Remoteappem potřebovat tooconfigure virtuální síť nejprve a pak použít během procesu vytváření hello vaší kolekce. 
 
-## <a name="the-complete-solution"></a>Úplné řešení
-Následující diagram ukazuje úplného řešení, kde jsme jste vytvořili kanál zabezpečeného přístupu z koncového uživatele, prostřednictvím Azure Remoteappu (ARA), do prostředku back-end.
-![Zabezpečení Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ve fázi 1 jsme vybrali uživatele a vytvořit pravidla přístupu, které řídí, jak ARA přístupná. V níže uvedeném příkladu jsme pouze umožňují přístup uživatelů, kteří pracují z podnikové sítě. Nekompatibilní uživatelé nebudou mít přístup k prostředí ARA vůbec.
-Na fáze 2 jsme mít přístup k back-end prostředku pouze prostřednictvím o konfiguraci virtuální sítě a sítě VPN, které jsme řízení. Azure RemoteApp byl umístěn ve stejné virtuální síti. Konečným výsledkem je, že prostředek lze přistupovat pouze prostřednictvím prostředí ARA.
+## <a name="hello-complete-solution"></a>úplné řešení Hello
+Hello obrázek ukazuje hello kompletního řešení, kde jsme jste vytvořili kanál zabezpečeného přístupu z hello koncového uživatele prostřednictvím Azure Remoteappu (ARA), do prostředků hello back-end.
+![Zabezpečení Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ve fázi 1 jsme vybraných uživatelů hello a vytvořit pravidla přístupu, které řídí, jak ARA přístupná. V následujícím příkladu hello jsme pouze povolit přístup pro uživatelů, kteří pracují z podnikové sítě hello. Nekompatibilní uživatelé nebudou moct tooaccess hello ARA prostředí vůbec.
+Na fázi 2 jsme mají přístup hello back-end prostředků pouze prostřednictvím hello konfigurace virtuální sítě a sítě VPN, který jsme řízení. Azure RemoteApp byla uložena do umístění hello stejné virtuální síti. Hello konečným výsledkem je, že hello prostředků lze přistupovat pouze prostřednictvím prostředí ARA hello.
 

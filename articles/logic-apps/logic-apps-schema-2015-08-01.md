@@ -1,5 +1,5 @@
 ---
-title: "Schéma se aktualizuje srpen-1-2015 preview – Azure Logic Apps | Microsoft Docs"
+title: "aaaSchema aktualizace srpen-1-2015 preview – Azure Logic Apps | Microsoft Docs"
 description: "Vytvoření definice JSON pro Azure Logic Apps pomocí schématu verze 2015-08-01-preview"
 author: stepsic-microsoft-com
 manager: anneta
@@ -15,38 +15,38 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 950cd18a27aa1859c4f0b6116de3fb8699d746c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizace schématu pro Azure Logic Apps - 1. srpna 2015 preview
 
-Toto nové schéma a rozhraní API verze pro Azure Logic Apps zahrnuje klíčových vylepšení, které aplikace logiky spolehlivější a jednodušší použít:
+Toto nové schéma a rozhraní API verze pro Azure Logic Apps zahrnuje klíčových vylepšení, které aplikace logiky více spolehlivé a snadnější toouse:
 
-*   **APIApp** typ akce se aktualizuje na nový [ **APIConnection** ](#api-connections) typ akce.
-*   **Opakujte** je přejmenován na [ **Foreach**](#foreach).
-*   [ **Naslouchací proces protokolu HTTP** aplikace API](#http-listener) už nepotřebujete.
+*   Hello **APIApp** typ akce je aktualizovaný tooa nové [ **APIConnection** ](#api-connections) typ akce.
+*   **Opakujte** příliš přejmenován[**Foreach**](#foreach).
+*   Hello [ **naslouchací proces protokolu HTTP** aplikace API](#http-listener) už nepotřebujete.
 *   Volání metody podřízené pracovní postupy používá [nové schéma](#child-workflows).
 
 <a name="api-connections"></a>
-## <a name="move-to-api-connections"></a>Přesunout do rozhraní API připojení
+## <a name="move-tooapi-connections"></a>Přesunout tooAPI připojení
 
-Největší změnou je, že už máte k nasazení aplikace API do vašeho předplatného Azure, abyste mohli používat rozhraní API. Zde jsou způsoby, které můžete použít rozhraní API:
+největší změnou Hello je mít toodeploy API Apps do vašeho předplatného Azure už, abyste mohli používat rozhraní API. Tady jsou hello způsoby, které můžete použít rozhraní API:
 
 * Spravovaná rozhraní API
 * Vlastní webová rozhraní API.
 
-Každý způsob je zpracovávané trochu jinak, protože jejich správy a hostování modely se liší. Jednou z výhod tohoto modelu je, že jste se k prostředkům, které jsou nasazeny ve vaší skupině prostředků Azure už omezená. 
+Každý způsob je zpracovávané trochu jinak, protože jejich správy a hostování modely se liší. Jednou z výhod tento model je již máte omezené tooresources, která jsou nasazena ve vaší skupině prostředků Azure. 
 
 ### <a name="managed-apis"></a>Spravovaná rozhraní API
 
 Microsoft spravuje některé rozhraní API vaším jménem, jako je například Office 365, Salesforce, Twitter a FTP. Můžete použít některé spravovaná rozhraní API jako-je třeba Bing přeložit, zatímco jiné vyžadují konfiguraci. Tato konfigurace se nazývá *připojení*.
 
-Například pokud používáte Office 365, musí vytvořit připojení, který obsahuje znaménko token Office 365. Tento token je bezpečně uložená a aktualizovat tak, aby aplikace logiky můžete vždy volat rozhraní API Office 365. Případně pokud se chcete připojit k serveru SQL nebo FTP, musí vytvořit připojení, který má připojovací řetězec. 
+Například pokud používáte Office 365, musí vytvořit připojení, který obsahuje znaménko token Office 365. Tento token je bezpečně uložená a aktualizovat tak, aby aplikace logiky můžete vždy volat hello rozhraní API Office 365. Případně pokud chcete tooconnect tooyour SQL Server nebo server FTP, musíte vytvořit připojení, který má hello připojovací řetězec. 
 
-V této definici, se nazývají tyto akce `APIConnection`. Tady je příklad připojení, která volá Office 365 odeslat e-mail:
+V této definici, se nazývají tyto akce `APIConnection`. Tady je příklad připojení, která volá toosend Office 365 e-mailu:
 
 ```
 {
@@ -75,17 +75,17 @@ V této definici, se nazývají tyto akce `APIConnection`. Tady je příklad př
 }
 ```
 
-`host` Objekt je část vstupy, kterou je jedinečné pro připojení k rozhraní API a obsahuje tažení částí: `api` a `connection`.
+Hello `host` objekt je část vstupy, kterou je jedinečný tooAPI připojení a obsahuje tažení částí: `api` a `connection`.
 
-`api` Má modul runtime je adresa URL, kde spravované rozhraní API hostovaná. Zobrazí všechny dostupné spravované rozhraní API voláním `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
+Hello `api` má runtime hello je adresa URL, kde spravované rozhraní API hostovaná. Zobrazí všechny dostupné hello spravuje volání rozhraní API `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
 
-Pokud používáte rozhraní API, rozhraní API může nebo nemusí mít žádný *parametrů připojení* definované. Pokud není rozhraní API, žádné *připojení* je vyžadován. Pokud je rozhraní API, musíte vytvořit připojení. Vytvořené připojení má název, který zvolíte. Pak odkazovat na název v `connection` objektu uvnitř `host` objektu. Chcete-li vytvořit připojení ve skupině prostředků, volejte:
+Pokud používáte rozhraní API, hello rozhraní API může nebo nemusí mít žádný *parametrů připojení* definované. Pokud není hello rozhraní API, žádné *připojení* je vyžadován. Pokud nemá hello rozhraní API, musíte vytvořit připojení. Hello vytvořili připojení má hello název, který zvolíte. Pak odkazovat hello název v hello `connection` objekt uvnitř hello `host` objektu. toocreate připojení ve skupině prostředků, volání:
 
 ```
 PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.Web/connections/{name}?api-version=2015-08-01-preview
 ```
 
-Spolu s následujícím textem:
+S hello následující text:
 
 ```
 {
@@ -94,7 +94,7 @@ Spolu s následujícím textem:
       "id": "/subscriptions/{subid}/providers/Microsoft.Web/managedApis/azureblob"
     },
     "parameterValues": {
-        "accountName": "{The name of the storage account -- the set of parameters is different for each API}"
+        "accountName": "{hello name of hello storage account -- hello set of parameters is different for each API}"
     }
   },
   "location": "{Logic app's location}"
@@ -104,7 +104,7 @@ Spolu s následujícím textem:
 ### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Nasadit spravované rozhraní API v šablonu Azure Resource Manager
 
 Celou aplikaci můžete vytvořit v šablonu Azure Resource Manager, dokud interaktivní přihlašování není povinné.
-Pokud přihlášení je potřeba, můžete nastavit všechno pomocí šablony Azure Resource Manager, ale máte přejděte na portál pro autorizaci připojení. 
+Pokud přihlášení je potřeba, můžete nastavit všechno pomocí šablony Azure Resource Manager hello, ale máte pořád toovisit hello portálu tooauthorize hello připojení. 
 
 ```
     "resources": [{
@@ -194,13 +194,13 @@ Pokud přihlášení je potřeba, můžete nastavit všechno pomocí šablony Az
     }]
 ```
 
-Zobrazí se v tomto příkladu, že připojení jsou jenom prostředky, které za provozu ve vaší skupině prostředků. Jejich referenční spravovaná rozhraní API k dispozici v rámci vašeho předplatného.
+Zobrazí se v tomto příkladu, zda text hello připojení jsou jenom prostředky, které za provozu ve vaší skupině prostředků. Jejich referenční hello spravované rozhraní API k dispozici tooyou ve vašem předplatném.
 
 ### <a name="your-custom-web-apis"></a>Vlastní webová rozhraní API.
 
-Pokud používáte vlastní rozhraní API, není spravovaný společností Microsoft ty použít integrované **HTTP** akce je volat. Pro ideální prostředí by měl vystavit koncový bod Swagger pro vaše rozhraní API. Tento koncový bod umožňuje návrháře logiku aplikace k vykreslení vstupy a výstupy pro vaše rozhraní API. Bez Swagger návrháře lze zobrazit pouze vstupy a výstupy jako neprůhledné objekty JSON.
+Pokud používáte vlastní rozhraní API, není spravovaný společností Microsoft ty použít předdefinované hello **HTTP** toocall akce je. Pro ideální prostředí by měl vystavit koncový bod Swagger pro vaše rozhraní API. Tento koncový bod umožňuje hello návrhář aplikace na základě logiky toorender hello vstupy a výstupy pro vaše rozhraní API. Bez Swagger Návrhář hello lze zobrazit pouze hello vstupy a výstupy jako neprůhledné objekty JSON.
 
-Tady je příklad zobrazuje nové `metadata.apiDefinitionUrl` vlastnost:
+Tady je hello příklad zobrazuje nové `metadata.apiDefinitionUrl` vlastnost:
 
 ```
 {
@@ -219,13 +219,13 @@ Tady je příklad zobrazuje nové `metadata.apiDefinitionUrl` vlastnost:
 }
 ```
 
-Pokud hostujete webové rozhraní API v Azure App Service, Web API se automaticky zobrazí v seznamu akcí, které jsou k dispozici v návrháři. Pokud ne, je nutné vložit v adrese URL přímo. Koncový bod Swagger musí neověřené možné používat v návrháři aplikace logiky, i když můžete zabezpečit samotné rozhraní API pomocí jakékoli metody, které podporuje Swagger.
+Pokud hostujete webové rozhraní API v Azure App Service, Web API se automaticky zobrazí v hello seznam akcí, které jsou k dispozici v Návrháři hello. Pokud ne, máte toopaste v adrese URL hello přímo. koncový bod Swagger Hello musí být neověřená toobe použitelné v hello návrhář aplikace na základě logiky, i když můžete zabezpečit API hello, samotné jakékoli metody, které podporuje Swagger.
 
 ### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Volání nasazené aplikace API s 2015-08-01-preview
 
-Pokud jste nasadili aplikace API, můžete zavolat aplikaci pomocí **HTTP** akce.
+Pokud jste nasadili aplikace API, můžete zavolat hello aplikace pomocí hello **HTTP** akce.
 
-Pokud používáte Dropbox seznam souborů, například vaše **2014-12-01-preview** definice schématu verze může mít něco podobného jako:
+Pokud použijete Dropbox toolist soubory, například vaše **2014-12-01-preview** definice schématu verze může mít něco podobného jako:
 
 ```
 {
@@ -266,7 +266,7 @@ Pokud používáte Dropbox seznam souborů, například vaše **2014-12-01-previ
 }
 ```
 
-Ekvivalentní akci HTTP, jako je například můžete vytvořit při části Parametry definici aplikace logiky zůstává beze změny:
+Hello ekvivalentní HTTP akcí, jako je například můžete vytvořit při hello parametry části hello definici aplikace logiky zůstává beze změny:
 
 ```
 {
@@ -298,18 +298,18 @@ Tyto vlastnosti po jednom s návodem:
 | Vlastnosti akce. | Popis |
 | --- | --- |
 | `type` |`Http`Namísto`APIapp` |
-| `metadata.apiDefinitionUrl` |Pokud chcete používat tuto akci v návrháři aplikace logiky, patří koncový bod metadat, které se vytvářejí na základě:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` |Vytvářejí na základě:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `metadata.apiDefinitionUrl` |toouse tato akce v hello návrhář aplikace na základě logiky, patří koncový bod metadat hello, které se vytvářejí na základě:`{api app host.gateway}/api/service/apidef/{last segment of hello api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` |Vytvářejí na základě:`{api app host.gateway}/api/service/invoke/{last segment of hello api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` |Vždy`POST` |
-| `inputs.body` |Stejný jako parametry aplikace API |
-| `inputs.authentication` |Shodné s ověřováním aplikace API |
+| `inputs.body` |Parametry aplikace identické toohello rozhraní API |
+| `inputs.authentication` |Identické toohello ověřování aplikace API |
 
-Tento postup by měly fungovat pro všechny akce aplikace API. Nezapomeňte však, že tato předchozí aplikace API již nejsou podporovány. Proto byste měli přesunout do jednoho z následujících dvou dalších předchozích možností, spravované rozhraní API nebo hostující vaše vlastní webové rozhraní API.
+Tento postup by měly fungovat pro všechny akce aplikace API. Nezapomeňte však, že tato předchozí aplikace API již nejsou podporovány. Proto byste měli přesunout tooone hello dvě předchozí možnosti, spravované rozhraní API nebo hostující vaše vlastní webové rozhraní API.
 
 <a name="foreach"></a>
-## <a name="renamed-repeat-to-foreach"></a>Přejmenovat 'opakovat' do 'foreach.
+## <a name="renamed-repeat-tooforeach"></a>Přejmenovat, opakujte too'foreach.
 
-Pro předchozí verze schématu dostali jsme mnohem názory zákazníků, **opakovat** bylo matoucí a nebyla zachycení správně, **opakujte** je skutečně pro každou smyčku. V důsledku toho jsme přejmenovaná `repeat` k `foreach`. Například dříve jste by zápisu:
+Pro předchozí verze schématu hello dostali jsme mnohem názory zákazníků, **opakovat** bylo matoucí a nebyla zachycení správně, **opakujte** je skutečně pro každou smyčku. V důsledku toho jsme přejmenovaná `repeat` příliš`foreach`. Například dříve jste by zápisu:
 
 ```
 {
@@ -343,11 +343,11 @@ Teď by zápisu:
 }
 ```
 
-Funkce `@repeatItem()` byl dříve používán k odkazování s aktuální položkou. probíhá přes vstupní. Tato funkce je nyní zjednodušenou `@item()`. 
+Hello funkce `@repeatItem()` byla dříve použitých tooreference hello aktuální položky se vstupní přes. Tato funkce je teď jednodušší příliš`@item()`. 
 
 ### <a name="reference-outputs-from-foreach"></a>Referenční dokumentace výstupy z 'foreach.
 
-Pro zjednodušení, výstupy z `foreach` akce nejsou uzavřen do objektu s názvem `repeatItems`. Při výstupy z předchozí `repeat` byly příklad:
+Pro zjednodušení, hello výstupy z `foreach` akce nejsou uzavřen do objektu s názvem `repeatItems`. Při hello výstupy z předchozí hello `repeat` byly příklad:
 
 ```
 {
@@ -387,7 +387,7 @@ Nyní jsou tyto výstupy:
 ]
 ```
 
-Dříve Chcete-li získat k tělu akce při odkazování na těchto výstupů:
+Dříve tooget hello akce při odkazování na těchto výstupů textu toohello:
 
 ```
 {
@@ -423,19 +423,19 @@ Teď můžete místo toho provést:
 }
 ```
 
-Tyto změny funkce `@repeatItem()`, `@repeatBody()`, a `@repeatOutputs()` se odeberou.
+Tyto změny hello funkce `@repeatItem()`, `@repeatBody()`, a `@repeatOutputs()` se odeberou.
 
 <a name="http-listener"></a>
 ## <a name="native-http-listener"></a>Nativní naslouchací proces protokolu HTTP
 
-Možnosti naslouchací proces protokolu HTTP jsou teď součástí. Proto již nepotřebujete k nasazení aplikace API naslouchací proces protokolu HTTP. V tématu [úplné podrobnosti o tom váš koncový bod aplikace logiky s zde](../logic-apps/logic-apps-http-endpoint.md). 
+Hello možnosti jsou teď integrované v naslouchací proces protokolu HTTP. Proto musíte už toodeploy aplikace API naslouchací proces protokolu HTTP. V tématu [hello úplné podrobnosti o tom toomake s zde vaše logiku aplikace koncového bodu](../logic-apps/logic-apps-http-endpoint.md). 
 
-Tyto změny, jsme odebrali `@accessKeys()` funkce, které bylo nahrazeno `@listCallbackURL()` funkce pro získání koncového bodu, pokud je to nezbytné. Navíc je nutné nyní zadat nejméně jedna aktivační událost v aplikaci logiky. Pokud chcete `/run` pracovní postup, musí mít jednu z těchto aktivační události: `manual`, `apiConnectionWebhook`, nebo `httpWebhook`.
+Tyto změny, jsme odebrali hello `@accessKeys()` funkce, které bylo nahrazeno hello `@listCallbackURL()` funkce pro získání hello koncový bod, pokud je to nezbytné. Navíc je nutné nyní zadat nejméně jedna aktivační událost v aplikaci logiky. Pokud chcete příliš`/run` hello pracovního postupu, musí mít jednu z těchto aktivační události: `manual`, `apiConnectionWebhook`, nebo `httpWebhook`.
 
 <a name="child-workflows"></a>
 ## <a name="call-child-workflows"></a>Volat podřízené pracovní postupy
 
-Volání podřízených pracovních požadované dříve, přejdete do pracovního postupu, získání tokenu přístupu a vkládání token v definici aplikace logiky, kde chcete volat podřízené postupu. S tímto schématem modul Logic Apps automaticky vygeneruje SAS v době běhu pro podřízené pracovní postup, nemusíte vložte všech tajných klíčů do definice. Zde naleznete příklad:
+Volání metody podřízené pracovní postupy dříve, vyžaduje, budete toohello pracovního postupu, získávání hello přístupový token a vkládání hello token v definici aplikace logiky hello místo toocall tento pracovní postup podřízené. S hello nové schéma hello hello Logic Apps modul automaticky vygeneruje SAS v době běhu pro podřízený pracovní postup, nebudete mít příliš vkládání všech tajných klíčů do definice hello. Zde naleznete příklad:
 
 ```
 "mynestedwf": {
@@ -461,20 +461,20 @@ Volání podřízených pracovních požadované dříve, přejdete do pracovní
 }
 ```
 
-Druhý zlepšování je že nabízíme podřízených pracovních úplný přístup k příchozího požadavku. To znamená, že můžete předat parametry v *dotazy* části a v *hlavičky* objekt a že můžete definovat plně celého obsahu.
+Druhý zlepšování je že nabízíme hello podřízených pracovních úplný přístup toohello příchozího požadavku. To znamená, že lze předat parametry v hello *dotazy* části a v hello *hlavičky* objekt a že je plně definovat hello celého obsahu.
 
-Nakonec nejsou požadované změny pro podřízený pracovní postup. Při podřízený pracovní postup může volat dříve přímo, nyní je nutné definovat koncový bod aktivační událost v pracovním postupu pro nadřazený prvek volat. Obecně platí, měli byste přidat aktivační událost, která má `manual` zadejte a potom pomocí této aktivační události v nadřazené definici. Poznámka: `host` vlastnost konkrétně má `triggerName` vzhledem k tomu, že musíte určit které aktivační událost je vyvolán.
+Nakonec jsou požadované změny toohello podřízený pracovní postup. Při podřízený pracovní postup může volat dříve přímo, nyní je nutné definovat koncový bod aktivační událost v pracovním postupu hello pro toocall nadřazené hello. Obecně platí, měli byste přidat aktivační událost, která má `manual` zadejte a potom pomocí této aktivační události v definici nadřazeného hello. Poznámka: hello `host` vlastnost konkrétně má `triggerName` vzhledem k tomu, že musíte určit které aktivační událost je vyvolán.
 
 ## <a name="other-changes"></a>Další změny
 
 ### <a name="new-queries-property"></a>Nové vlastnosti 'dotazy.
 
-Všechny typy akcí teď podporují nové vstup názvem `queries`. Tento vstup může být strukturovaný objekt, místo nutnosti ke kompilaci řetězec ručně.
+Všechny typy akcí teď podporují nové vstup názvem `queries`. Tento vstup může být strukturovaný objekt, místo nutnosti tooassemble hello řetězec ručně.
 
-### <a name="renamed-parse-function-to-json"></a>Funkce přejmenován 'parse()' 'json().
+### <a name="renamed-parse-function-toojson"></a>Přejmenovat too'json() funkce 'parse()'.
 
-Přidáváme další obsah typy brzy, takže jsme přejmenován `parse()` funkci, aby se `json()`.
+Přidáváme další obsah typy brzy, takže jsme přejmenovat hello `parse()` funkce příliš`json()`.
 
 ## <a name="coming-soon-enterprise-integration-apis"></a>Připravuje se: Enterprise integrace rozhraní API
 
-Nemáme spravované verze ještě Enterprise integrace rozhraní API, jako je AS2. Mezitím můžete vaší existující nasazené API BizTalk pomocí akce HTTP. Podrobnosti najdete v tématu "Použití již nasazené aplikace API" v [integrace plán](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Nemáme spravované verze ještě hello Enterprise integrace rozhraní API, jako je AS2. Mezitím můžete svých stávajících nasazené BizTalk rozhraní API prostřednictvím hello akce HTTP. Podrobnosti najdete v tématu "Použití již nasazené aplikace API" v hello [integrace plán](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

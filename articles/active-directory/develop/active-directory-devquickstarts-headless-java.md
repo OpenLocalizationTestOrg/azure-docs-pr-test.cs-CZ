@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se službou Azure AD Java příkazového řádku | Microsoft Docs"
-description: "Jak vytvořit aplikaci Java příkazového řádku, který se přihlásí uživatele pro přístup k rozhraní API."
+title: "aaaAzure AD Java příkazového řádku Začínáme | Microsoft Docs"
+description: "Jak toobuild Java příkazového řádku aplikace, která podepisuje uživatele v tooaccess rozhraní API."
 services: active-directory
 documentationcenter: java
 author: navyasric
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 91e4a7b2ac454465d5cce4948a4d5f0b542d2b55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ba1d1e794928a39ca1f091bd0e6eba57ce3d6aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Pomocí aplikace v jazyce Java příkazového řádku pro přístup k rozhraní API s Azure AD
+# <a name="using-java-command-line-app-tooaccess-an-api-with-azure-ad"></a>Aplikace příkazového řádku v jazyce Java tooAccess k rozhraní API pomocí Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure AD je jednoduchá a přímočará využít Správa identit pro webové aplikace, k poskytování jednoho přihlášení a odhlášení jenom pár řádků kódu.  V jazyce Java webové aplikace můžete to provést pomocí implementace ADAL4J komunitou vytvářený společnosti Microsoft.
+Díky Azure AD je jednoduchá a přímočará toooutsource Správa identit vaší webové aplikace, poskytuje jednotné přihlašování a odhlašování jenom pár řádků kódu.  V jazyce Java webové aplikace můžete to provést pomocí implementace hello komunitou vytvářený ADAL4J společnosti Microsoft.
 
   Zde použijeme ADAL4J na:
 
-* Přihlášení uživatele do aplikace pomocí Azure AD jako zprostředkovatele identity.
-* Zobrazí některé informace o uživateli.
-* Přihlášení uživatele mimo aplikaci.
+* Uživatel hello přihlášení do aplikace hello pomocí služby Azure AD jako zprostředkovatele identity hello.
+* Zobrazí některé informace o uživateli hello.
+* Přihlašovací hello uživatele mimo aplikaci hello.
 
-Chcete-li to provést, budete muset:
+V pořadí toodo to, budete muset:
 
 1. Zaregistrovat aplikaci s Azure AD
-2. Nastavte aplikaci pro použití knihovny ADAL4J.
-3. V knihovně ADAL4J pro zasílání požadavků na přihlášení a odhlášení do Azure AD.
-4. Tisknout data o uživateli.
+2. Nastavte své aplikace toouse hello ADAL4J knihovny.
+3. Použijte hello ADAL4J knihovny tooissue přihlášení a odhlášení požadavky tooAzure AD.
+4. Data o uživateli hello vytiskněte.
 
-Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) nebo [stažení je hotová ukázka](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Budete také potřebovat klient služby Azure AD, do kterého chcete registrace vaší aplikace.  Pokud již, nemáte [zjistěte, jak získat](active-directory-howto-tenant.md).
+spuštění, tooget [stáhnout kostru aplikace hello](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) nebo [stažení ukázky hello Dokončit](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Musíte také klienta služby Azure AD, ve které tooregister vaší aplikace.  Pokud již, nemáte [zjistěte, jak tooget jeden](active-directory-howto-tenant.md).
 
 ## <a name="1--register-an-application-with-azure-ad"></a>1.  Zaregistrovat aplikaci s Azure AD
-Pokud chcete povolit aplikaci k ověřování uživatelů, budete nejprve muset zaregistrujte novou aplikaci v klientovi.
+tooenable tooauthenticate uživatelům aplikace, je nutné nejdříve tooregister novou aplikaci v klientovi.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na horním panelu klikněte na tlačítko na vašem účtu a v části **Directory** vyberte klienta služby Active Directory, kam chcete registrace vaší aplikace.
-3. Klikněte na **více služeb** v navigaci vlevo a zvolte **Azure Active Directory**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Na horním panelu hello, klikněte na tlačítko na vašem účtu a v části hello **Directory** vyberte klienta hello služby Active Directory, kde chcete tooregister vaší aplikace.
+3. Klikněte na **více služeb** v hello navigaci vlevo a zvolte **Azure Active Directory**.
 4. Klikněte na **registrace aplikace** a zvolte **přidat**.
-5. Postupujte podle výzev a vytvořte novou **webové aplikace nebo WebAPI**.
-  * **Název** aplikace popíše aplikaci pro koncové uživatele
-  * **Přihlašovací adresa URL** je základní adresu URL aplikace.  Výchozí hodnota kostru je `http://localhost:8080/adal4jsample/`.
-6. Po dokončení registrace AAD přiřadí vaší aplikace, jedinečné ID aplikace  Tuto hodnotu budete potřebovat v další části, zkopírujte jej na kartě aplikace.
-7. Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci.  Konvence, je použít `https://<tenant-domain>/<app-name>`, například `http://localhost:8080/adal4jsample/`.
+5. Postupujte podle pokynů hello a vytvořte novou **webové aplikace nebo WebAPI**.
+  * Hello **název** z hello aplikace popíše aplikaci tooend uživatelé
+  * Hello **přihlašovací adresa URL** je hello základní adresu URL aplikace.  kostru Hello výchozí hodnota je `http://localhost:8080/adal4jsample/`.
+6. Po dokončení registrace AAD přiřadí vaší aplikace, jedinečné ID aplikace  Tuto hodnotu budete potřebovat v dalších částech hello, takže zkopírujte jej z karty aplikace hello.
+7. Z hello **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte hello identifikátor ID URI aplikace. Hello **identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci.  konvence Hello je toouse `https://<tenant-domain>/<app-name>`, například `http://localhost:8080/adal4jsample/`.
 
-Jednou na portálu pro vaši aplikaci vytvořit **klíč** z **nastavení** stránky pro aplikace a zkopírujte ho dolů.  Budete ho potřebovat za chvíli.
+Po vytvoření hello portálu pro vaši aplikaci **klíč** z hello **nastavení** stránky pro aplikace a zkopírujte ho dolů.  Budete ho potřebovat za chvíli.
 
-## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisites-using-maven"></a>2. Nastavit aplikaci používat knihovny ADAL4J a požadavky pomocí nástroje Maven
-Zde nakonfigurujeme ADAL4J pro použití ověřovacího protokolu OpenID Connect.  ADAL4J se použije k vydávání požadavků na přihlášení a odhlášení, spravovat relace uživatele a získat informace o uživateli, mimo jiné.
+## <a name="2-set-up-your-app-toouse-adal4j-library-and-prerequisites-using-maven"></a>2. Nastavení aplikace toouse ADAL4J knihovny a požadavky pomocí nástroje Maven
+Zde nakonfigurujeme ADAL4J toouse hello ověřovacího protokolu OpenID Connect.  ADAL4J bude použité tooissue požadavků na přihlášení a odhlášení, spravovat hello uživatelské relace a získat informace o uživateli hello, mimo jiné.
 
-* V kořenovém adresáři projektu, otevírání nebo vytváření `pom.xml` a najděte `// TODO: provide dependencies for Maven` a nahraďte následujícím kódem:
+* V kořenovém adresáři hello projektu, otevírání nebo vytváření `pom.xml` a vyhledejte hello `// TODO: provide dependencies for Maven` a nahraďte hello následující:
 
 ```Java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -181,10 +181,10 @@ Zde nakonfigurujeme ADAL4J pro použití ověřovacího protokolu OpenID Connect
 
 
 
-## <a name="3-create-the-java-publicclient-file"></a>3. Vytvoření souboru Java PublicClient
-Jak je uvedeno výše, použijeme rozhraní Graph API k získání dat o přihlášeného uživatele. To měla být pro nás měli vytvoříme i soubor představují **objektu adresáře** a soubor představují **uživatele** tak, aby bylo možné použít vzor ú jazyka Java.
+## <a name="3-create-hello-java-publicclient-file"></a>3. Vytvoření souboru Java PublicClient hello
+Jak je uvedeno výše, použijeme hello rozhraní Graph API tooget data o hello přihlášeného uživatele. Pro tento toobe snadno nám jsme měli vytvořit i soubor toorepresent **objektu adresáře** a jednotlivých souborů toorepresent hello **uživatele** tak, aby hello ú vzor Java lze použít.
 
-* Vytvořte soubor s názvem `DirectoryObject.java` které použijete k uložení základní data o žádné DirectoryObject (obav později využít pro jiné dotazy grafu, může provádět). Vám může vyjímání a vkládání toto z následujícího seznamu:
+* Vytvořte soubor s názvem `DirectoryObject.java` který použijeme toostore základní data o žádné DirectoryObject (můžete být volné toouse to později pro jiné dotazy grafu, může provádět). Vám může vyjímání a vkládání toto z následujícího seznamu:
 
 ```Java
 import java.io.BufferedReader;
@@ -248,24 +248,24 @@ public class PublicClient {
 ```
 
 
-## <a name="compile-and-run-the-sample"></a>Zkompilování a spuštění vzorku
-Přejděte zpět na kořenového adresáře a spusťte následující příkaz k sestavit ukázku, můžete zadat pouze společně s použitím `maven`. Tímto dojde k použití `pom.xml` soubor jste napsali závislosti.
+## <a name="compile-and-run-hello-sample"></a>Zkompilování a spuštění ukázkových hello
+Změňte zpět na tooyour kořenového adresáře a spusťte následující příkaz toobuild hello ukázka můžete zadat pouze společně s použitím hello `maven`. Tímto dojde k použití hello `pom.xml` soubor jste napsali závislosti.
 
 `$ mvn package`
 
-Teď byste měli mít `adal4jsample.war` ve vaší `/targets` adresáře. Můžete nasadit, v kontejneru vaší Tomcat a navštívíte adresu 
+Teď byste měli mít `adal4jsample.war` ve vaší `/targets` adresáře. Může nasazení, v kontejneru vaší Tomcat a navštivte adresu URL hello 
 
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Je velmi snadno nasadit WAR s nejnovější serverů Tomcat. Jednoduše přejděte na `http://localhost:8080/manager/` a postupujte podle pokynů na odesílání vašeho '' adal4jsample.war' souboru. Autodeploy ho bude pro vás správný koncový bod.
+> Je velmi snadné toodeploy WAR s nejnovější serverů Tomcat hello. Jednoduše přejděte příliš`http://localhost:8080/manager/` a postupujte podle pokynů hello na odesílání vašeho '' adal4jsample.war' souboru. Zruší autodeploy pro vás správný koncový bod hello.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Teď máte funkční aplikaci Java, která má schopnost ověřovat uživatele bezpečně volání webového rozhraní API pomocí OAuth 2.0 a získat základní informace o uživateli.  Pokud jste to ještě neudělali, nyní je čas k naplnění vašeho klienta s některými uživateli.
+Blahopřejeme! Teď máte funkční aplikaci Java, která má hello možnost tooauthenticate uživatelé, bezpečně volání webového rozhraní API pomocí OAuth 2.0 a získat základní informace o uživateli hello.  Pokud jste to ještě neudělali, nyní je čas toopopulate hello vašeho klienta s některými uživateli.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), nebo ji můžete klonovat z Githubu:
+Pro referenci hello dokončit ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), nebo ji můžete klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 

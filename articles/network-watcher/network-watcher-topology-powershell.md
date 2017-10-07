@@ -1,6 +1,6 @@
 ---
-title: "Zobrazit topologii sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
-description: "Tento článek popisuje, jak k dotazování vaší topologie sítě pomocí prostředí PowerShell."
+title: "sledovací proces sítě Azure topologii aaaView – prostředí PowerShell | Microsoft Docs"
+description: "Tento článek popisuje jak toouse prostředí PowerShell tooquery topologii vaší sítě."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 40e01a7a6a2ea6127ab725f04649cec47b9d9422
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bc0ecf5baa81a68be53f55c74f362a7bc97116f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-network-watcher-topology-with-powershell"></a>Zobrazit sledovací proces sítě topologie pomocí prostředí PowerShell
 
@@ -28,37 +28,37 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-Topologie funkci sledovací proces sítě poskytuje vizuální reprezentace síťových prostředků v předplatném. Na portálu pro tuto vizualizaci se zobrazují automaticky. Informace pro zobrazení topologie na portálu se dají získat pomocí prostředí PowerShell.
-Díky této vlastnosti je rozmanitější jako data mohou být spotřebovávána další nástroje pro sestavení se vizualizaci informací o topologii.
+Funkce topologie Hello sledovací proces sítě poskytuje vizuální reprezentace hello síťových prostředků v předplatném. V portálu hello tuto vizualizaci zobrazí tooyou automaticky. informace o Hello za zobrazení topologie hello portálu hello se dají získat pomocí prostředí PowerShell.
+Díky této vlastnosti je informace o topologii hello rozmanitější jako hello data mohou být spotřebovávána jiné nástroje toobuild out hello vizualizace.
 
-Propojení je modelován v dva vztahy.
+propojení Hello je modelován v dva vztahy.
 
 - **Členství ve skupině** – příklad: obsahuje podsíť virtuální sítě obsahuje síťový adaptér
 - **Související** – příklad: síťový adaptér je přidružený virtuální počítač
 
-V následujícím seznamu je vlastnosti, které jsou vráceny při dotazování topologie REST API.
+Hello následujícím seznamu jsou uvedeny vlastnosti, které jsou vráceny při dotazování hello topologie REST API.
 
-* **název** -název prostředku
-* **ID** – identifikátor uri prostředku.
-* **umístění** -umístění, kde existuje prostředek.
-* **přidružení** – seznam přidružení k odkazovaného objektu.
-    * **název** -název odkazovaného prostředku.
-    * **resourceId** -resourceId je identifikátor uri prostředku, kterou se odkazuje v přidružení.
-    * **Třída associationType** – tato hodnota se odkazuje vztah mezi podřízený objekt a nadřazený. Platné hodnoty jsou **obsahuje** nebo **přidružené**.
+* **název** – hello název prostředku hello
+* **ID** -hello identifikátor uri prostředku hello.
+* **umístění** -hello umístění, kde existuje prostředek hello.
+* **přidružení** – seznam přidružení toohello odkazuje objekt.
+    * **název** -hello název hello odkazuje prostředků.
+    * **resourceId** -hello resourceId je identifikátor uri hello hello prostředku, kterou se odkazuje v hello přidružení.
+    * **Třída associationType** – tato hodnota se odkazuje hello vztah mezi hello podřízený objekt a nadřazené hello. Platné hodnoty jsou **obsahuje** nebo **přidružené**.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři použijete `Get-AzureRmNetworkWatcherTopology` rutiny k načtení informací o topologii. O tom, jak je také článek [načíst topologie sítě pomocí rozhraní REST API](network-watcher-topology-rest.md).
+V tomto scénáři použijete hello `Get-AzureRmNetworkWatcherTopology` informace o topologii rutiny tooretrieve hello. K dispozici je také článek o příliš[načíst topologie sítě pomocí rozhraní REST API](network-watcher-topology-rest.md).
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář popsaná v tomto článku načte odpověď topologie pro danou skupinu prostředků.
+scénář Hello popsaná v tomto článku načte odpověď hello topologie pro danou skupinu prostředků.
 
 ## <a name="retrieve-network-watcher"></a>Načtení sledovací proces sítě
 
-Prvním krokem je pro získání instance sledovací proces sítě. `$networkWatcher` Proměnné je předána `Get-AzureRmNetworkWatcherTopology` rutiny.
+prvním krokem Hello je tooretrieve hello sledovací proces sítě instance. Hello `$networkWatcher` proměnné je předán toohello `Get-AzureRmNetworkWatcherTopology` rutiny.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -67,7 +67,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="retrieve-topology"></a>Načtení topologie
 
-`Get-AzureRmNetworkWatcherTopology` Rutina načte topologie pro danou skupinu prostředků.
+Hello `Get-AzureRmNetworkWatcherTopology` rutina načte hello topologie pro danou skupinu prostředků.
 
 ```powershell
 Get-AzureRmNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourceGroupName testrg
@@ -75,7 +75,7 @@ Get-AzureRmNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourc
 
 ## <a name="results"></a>Výsledky
 
-Výsledky vrácené mít vlastnost name "zdroje", které obsahuje těla odpovědi json pro `Get-AzureRmNetworkWatcherTopology` rutiny.  Odpověď obsahuje prostředky ve skupině zabezpečení sítě a jejich přidružení (který je obsahuje, přidružené).
+Hello výsledky vrácené mít vlastnost název "prostředky", které obsahuje hello těla odpovědi json pro hello `Get-AzureRmNetworkWatcherTopology` rutiny.  Hello odpovědi obsahuje hello prostředky v hello skupinu zabezpečení sítě a jejich přidružení (který je obsahuje, přidružené).
 
 ```json
 Id              : 00000000-0000-0000-0000-000000000000
@@ -135,6 +135,6 @@ Resources       : [
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak toku protokolů NSG s Power BI vizualizovat navštivte stránky [vizualizovat NSG toků protokoly s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Zjistěte, jak toovisualize vaše skupina NSG toku protokoly s Power BI navštivte stránky [vizualizovat NSG toků protokoly s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 

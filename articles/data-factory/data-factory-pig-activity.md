@@ -1,6 +1,6 @@
 ---
-title: "Transformace dat pomocí Pig aktivity v Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak můžete pomocí aktivity Pig v objektu pro vytváření dat Azure ke spouštění skriptů Pig na na vyžádání nebo vaše vlastní cluster HDInsight."
+title: "aaaTransform dat pomocí Pig aktivity v Azure Data Factory | Microsoft Docs"
+description: "Zjistěte, jak můžete pomocí hello Pig aktivity v skriptů Pig toorun Azure data factory na na vyžádání nebo vaše vlastní cluster HDInsight."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: 182a637ab98955129d269e2afc3ba581aa1a7c03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3ad096c4a9e8603b09f574f6d129b4339a75d381
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí Pig aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/11/2017
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
-Aktivita HDInsight Pig v datové továrně [kanálu](data-factory-create-pipelines.md) provádí Pig dotazy na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight se systémem Windows nebo Linux. Tento článek vychází [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace.
+Hello aktivity HDInsight Pig v datové továrně [kanálu](data-factory-create-pipelines.md) provádí Pig dotazy na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight se systémem Windows nebo Linux. Tento článek vychází hello [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který poskytne Obecné přehled o transformaci dat a aktivit transformace hello podporována.
 
 > [!NOTE] 
-> Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a proveďte kurz: [sestavit svůj první kanál dat](data-factory-build-your-first-pipeline.md) před přečtení tohoto článku. 
+> Pokud jste tooAzure nový objekt pro vytváření dat, pročtěte [Úvod tooAzure Data Factory](data-factory-introduction.md) a hello kurz: [sestavit svůj první kanál dat](data-factory-build-your-first-pipeline.md) před přečtení tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -79,20 +79,20 @@ Aktivita HDInsight Pig v datové továrně [kanálu](data-factory-create-pipelin
 ## <a name="syntax-details"></a>Syntaxe podrobnosti
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název aktivity |Ano |
-| Popis |Text popisující, co se používá aktivitu pro |Ne |
+| jméno |Název aktivity hello |Ano |
+| description |Popisuje, jaké aktivity hello se používá pro text |Ne |
 | type |HDinsightPig |Ano |
-| Vstupy |Jeden nebo více vstupů spotřebovávané aktivitou Pig |Ne |
-| Výstupy |Jeden nebo více výstupů produkované aktivitou Pig |Ano |
-| linkedServiceName |Referenční dokumentace ke clusteru HDInsight registrován jako propojené služby v datové továrně |Ano |
-| Skript |Zadejte vložený skript Pig |Ne |
-| cestu ke skriptu |Uložte skript Pig v Azure blob storage a zadejte cestu k souboru. Pomocí vlastnosti 'skript' nebo 'scriptPath'. Obě nelze použít společně. Název souboru je malá a velká písmena. |Ne |
-| definuje |Zadejte parametry dvojic klíč/hodnota pro odkazování v rámci skript Pig |Ne |
+| Vstupy |Jeden nebo více vstupů spotřebovávají hello Pig aktivity |Ne |
+| Výstupy |Jeden nebo více výstupů vyprodukované hello Pig aktivity |Ano |
+| linkedServiceName |Odkaz na clusteru HDInsight toohello registrován jako propojené služby v datové továrně |Ano |
+| Skript |Zadejte vloženého skriptu Pig hello |Ne |
+| cestu ke skriptu |Uložte skript Pig hello v Azure blob storage a zadejte toohello hello cestě k souboru. Pomocí vlastnosti 'skript' nebo 'scriptPath'. Obě nelze použít společně. Název souboru Hello je malá a velká písmena. |Ne |
+| definuje |Zadejte parametry dvojic klíč/hodnota pro odkazování v rámci hello skript Pig |Ne |
 
 ## <a name="example"></a>Příklad
-Zvažte příklad herní protokolů analýzy, kam chcete identifikovat čas strávený hráči, hraní her spuštění ve vaší společnosti.
+Zvažte například ve hře protokoly analýzy, kam chcete tooidentify hello času spotřebovaného přehrávače hraní her spuštění ve vaší společnosti.
 
-Následující příklad herní protokolu je soubor oddělených čárkou (,). Obsahuje následující pole – ProfileID, SessionStart, doba trvání, SrcIPAddress a GameType.
+Následující příklad protokolu o herní Hello je soubor oddělených čárkou (,). Obsahuje následující pole – ProfileID, SessionStart, doba trvání, SrcIPAddress a GameType hello.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -102,7 +102,7 @@ Následující příklad herní protokolu je soubor oddělených čárkou (,). O
 .....
 ```
 
-**Vepřových skriptu** zpracovat tato data:
+Hello **vepřových skriptu** tooprocess tato data:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -114,18 +114,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Spustit tento skript Pig v objektu pro vytváření dat kanál, proveďte následující kroky:
+tooexecute tento Pig skript v kanálu pro vytváření dat, hello následující kroky:
 
-1. Vytvoření propojené služby k registraci [vlastní HDInsight výpočetní cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurovat [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Umožňuje volání Tato propojená služba **HDInsightLinkedService**.
-2. Vytvoření [propojená služba](data-factory-azure-blob-connector.md) ke konfiguraci připojení k hostování dat úložiště objektů Blob v Azure. Umožňuje volání Tato propojená služba **StorageLinkedService**.
-3. Vytvoření [datové sady](data-factory-create-datasets.md) odkazující na vstupní a výstupní data. Umožňuje volání vstupní datové sady **PigSampleIn** a výstupní datovou sadu **PigSampleOut**.
-4. Zkopírujte tento dotaz Pig v souboru Azure Blob Storage, nakonfigurovali v kroku #2. Pokud službu Azure storage, který je hostitelem dat se liší od ten, který je hostitelem soubor dotazů, vytvořte samostatné propojenou službu úložiště Azure. Naleznete propojené služby v konfiguraci aktivity. Použijte ** scriptPath ** zadat cestu k souboru skriptu pig a **scriptLinkedService**. 
+1. Vytvoření propojené služby tooregister [vlastní HDInsight výpočetní cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurovat [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Umožňuje volání Tato propojená služba **HDInsightLinkedService**.
+2. Vytvoření [propojená služba](data-factory-azure-blob-connector.md) tooconfigure hello připojení tooAzure úložiště objektů Blob hostování hello data. Umožňuje volání Tato propojená služba **StorageLinkedService**.
+3. Vytvoření [datové sady](data-factory-create-datasets.md) ukazují toohello vstup a hello výstupní data. Umožňuje volání vstupní datové sady hello **PigSampleIn** a hello výstupní datovou sadu **PigSampleOut**.
+4. Zkopírujte soubor hello Azure Blob Storage nakonfigurovali v kroku #2 hello Pig dotazu. Pokud hello úložiště Azure, který je hostitelem hello dat se liší od hello jeden, který je hostitelem hello soubor dotazů, vytvořte samostatné propojenou službu úložiště Azure. Naleznete toohello propojené služby v rámci konfigurace aktivit hello. Použijte ** scriptPath ** hello toospecify, cestu souboru skriptu toopig a **scriptLinkedService**. 
    
    > [!NOTE]
-   > Vložený skript Pig v definici aktivity můžete zadat taky pomocí **skriptu** vlastnost. Ale nedoporučujeme jako všechny speciální znaky v je nutné skript nutné uvést tento přístup a může způsobit problémy ladění. Osvědčeným postupem je postupujte podle kroku #4.
+   > Vložený skript Pig hello v definici aktivity hello můžete zadat taky pomocí hello **skriptu** vlastnost. Však není doporučeno tento přístup jako všechny speciální znaky ve skriptu hello potřebuje toobe uvozené a může způsobit problémy ladění. Hello osvědčeným postupem je toofollow krok #4.
    > 
    > 
-5. Vytvoření kanálu s aktivitou HDInsightPig. Tato aktivita zpracovává vstupní data tak, že spustíte skript Pig na clusteru HDInsight.
+5. Vytvoření kanálu hello s hello HDInsightPig aktivity. Tato aktivita zpracovává hello vstupní data tak, že spustíte skript Pig na clusteru HDInsight.
 
     ```JSON   
     {
@@ -159,15 +159,15 @@ Spustit tento skript Pig v objektu pro vytváření dat kanál, proveďte násle
       }
     } 
     ```
-6. Nasaďte kanál. V tématu [vytváření kanálů](data-factory-create-pipelines.md) článku. 
-7. Monitorování pomocí zobrazení monitorování a správu objekt pro vytváření dat kanál. V tématu [monitorování a Správa kanálů služby Data Factory](data-factory-monitor-manage-pipelines.md) článku.
+6. Nasaďte hello kanálu. V tématu [vytváření kanálů](data-factory-create-pipelines.md) článku. 
+7. Monitorování kanálu hello pomocí hello data objektu pro vytváření monitorování a zobrazení správy. V tématu [monitorování a Správa kanálů služby Data Factory](data-factory-monitor-manage-pipelines.md) článku.
 
 ## <a name="specifying-parameters-for-a-pig-script"></a>Zadání parametrů pro skript Pig
-Podívejte se na následující příklad: herní protokoly jsou požity denně do Azure Blob Storage a uložena ve složce oddílů na základě datum a čas. Chcete Parametrizace skript Pig a předat vstupní složky dynamicky za běhu a také vytvořit několik výstup rozdělený do oddílů pomocí data a času.
+Vezměte v úvahu hello následující ukázka: herní protokoly jsou požity denně do Azure Blob Storage a uložena ve složce oddílů na základě datum a čas. Chcete skript Pig hello tooparameterize a předat hello vstupní složky dynamicky za běhu a také vytvořit několik výstup hello rozděleny do oddílů s datem a časem.
 
-Pokud chcete používat parametrizované skript Pig, postupujte takto:
+skript Pig s parametry toouse, proveďte následující hello:
 
-* Zadejte parametry v **definuje**.
+* Definujte parametry hello v **definuje**.
 
     ```JSON  
     {
@@ -205,7 +205,7 @@ Pokud chcete používat parametrizované skript Pig, postupujte takto:
       }
     }
     ```  
-* Ve skriptu Pig odkazování na parametry pomocí '**$parameterName**, jak je znázorněno v následujícím příkladu:
+* V hello skript Pig, označují toohello parametry s využitím '**$parameterName**, jak je znázorněno v hello následující ukázka:
 
     ```  
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);    

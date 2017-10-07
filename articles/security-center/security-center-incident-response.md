@@ -1,6 +1,6 @@
 ---
-title: "Reakce na bezpečnostní incidenty v Azure Security Center | Dokumentace Microsoftu"
-description: "Tento dokument popisuje, jak využívat Azure Security Center ve scénáři reakce na incidenty."
+title: aaaRespond toosecurity incidenty s Azure Security Center | Microsoft Docs
+description: "Tento dokument popisuje, jak toouse Azure Security Center scénář reakcí na incidenty."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaf50c0c7e774d03d517c3fd11686dbae48dd29b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Využití Azure Security Center při reakci na incidenty
-Mnoho organizací se naučí reagovat na incidenty zabezpečení teprve když se stanou obětí útoku. Kvůli snížení nákladů a minimalizaci škod je důležité mít hotový plán reakce na incidenty ještě před tím, než k útoku dojde. Azure Security Center můžete využít v různých fázích reakce na incidenty.
+Mnoho organizací informace jak toorespond toosecurity incidenty až po souvisejících s narušením útoku. tooreduce náklady a poškození, je důležité toohave odpověď incidentu plánování na místě před útokem probíhá. Azure Security Center můžete využít v různých fázích reakce na incidenty.
 
 ## <a name="incident-response-planning"></a>Plánování reakce na incidenty
-Efektivní plán závisí na třech základních schopnostech: chránit se před hrozbami, zjišťovat je a reagovat na ně. Účelem ochrany je předcházet incidentům, detekce slouží k včasné identifikaci hrozeb a schopnost reagovat umožňuje vyhnání útočníka a obnovení systému pro zmírnění dopadů porušení zabezpečení.
+Efektivní plán závisí na tři základní možnosti: je možné tooprotect, zjistit a reagovat toothreats. Ochrana je o brání incidenty, zjišťování se o identifikaci hrozby již v rané fázi a odpověď je o vyřazení hello útočník a obnovení systémy toomitigate hello ovlivňuje narušení.
 
-V tomto článku se budou používat fáze reakce na incidenty zabezpečení z článku [Reakce zabezpečení Microsoft Azure v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678), jak je znázorněno na následujícím diagramu:
+Tento článek použije fázích reakcí na incidenty zabezpečení hello z hello [odpověď zabezpečení společnosti Microsoft Azure v cloudu hello](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) článek, jak je znázorněno v následujícím diagramu hello:
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig1.png)
 
-Security Center můžete použít během fází Zjištění, Posouzení a Diagnostika. Zde jsou příklady toho, jak může být Security Center užitečná během těchto tří počátečních fází reakce na incidenty:
+Security Center můžete použít během fáze detekovat, hodnocení a Diagnostikujte hello. Zde jsou příklady jak Security Center může být užitečné při tři fáze počáteční reakce na incidenty hello:
 
-* **Zjištění**: Přezkoumání první indikace vyšetřování události.
-  * Příklad: Přezkoumání počátečního ověření, že v řídicím panelu Security Center došlo k vydání výstrahy zabezpečení s vysokou prioritou.
-* **Posouzení**: Počáteční zhodnocení a získávání dalších informací o podezřelé aktivitě.
-  * Příklad: Získání dalších informací o dané výstraze zabezpečení.
+* **Zjištění**: Přečtěte si první indikace hello šetření událostí.
+  * Příklad: Zkontrolujte hello počáteční ověření, že byla vyvolána výstraha zabezpečení s vysokou prioritou na řídicím panelu Security Center hello.
+* **Vyhodnocení**: provedení počáteční assessment tooobtain hello Další informace o hello podezřelou aktivitu.
+  * Příklad: získáte další informace o výstraha zabezpečení hello.
 * **Diagnostika**: Provedení technického vyšetřování a určení strategií pro zadržení, zmírnění škod a alternativní řešení.
-  * Příklad: Postupujte podle nápravných kroků, které Security Center popisuje v konkrétní výstraze zabezpečení.
+  * Příklad: postupujte podle kroků nápravy hello popsaného v konkrétní zabezpečení výstrahy Security Center.
 
-Následující scénář vám ukáže, jak můžete využít Security Center během fází incidentu zabezpečení Zjištění, Posouzení a Diagnostika/Reakce. V Security Center představuje [incident zabezpečení](security-center-incident.md) souhrn všech výstrah pro určitý prostředek, které odpovídají schématům modelu [Kill Chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Incidenty se zobrazí na dlaždici a v okně [Výstrahy zabezpečení](security-center-managing-and-responding-alerts.md). Incident odhalí seznam souvisejících výstrah, který vám umožní získat další informace o každém výskytu. V Security Center jsou k dispozici také samostatné výstrahy zabezpečení, které lze použít k vysledování podezřelé aktivity.
+Hello scénář, který následuje ukazuje, jak tooleverage Security Center během hello detekovat, hodnocení a Diagnostikujte nebo reakce fázích incidentu zabezpečení. V Security Center představuje [incident zabezpečení](security-center-incident.md) souhrn všech výstrah pro určitý prostředek, které odpovídají schématům modelu [Kill Chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Incident se zobrazí v hello [výstrahy zabezpečení](security-center-managing-and-responding-alerts.md) dlaždice a okno. Incident odhalí hello seznamu související výstrahy, což umožňuje tooobtain můžete další informace o každém výskytu. Security Center přináší to také samostatné výstrahy zabezpečení, které může být také použít tootrack dolů podezřelou aktivitu.
 
 ## <a name="scenario"></a>Scénář
-Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure, včetně některých databází SQL a úloh obchodního systému založených na virtuálních počítačích. Nyní má Hlavní tým reakce na incidenty zabezpečení počítačů (CSIRT) společnosti Contoso problém s vyšetřováním problémů zabezpečení kvůli tomu, že analytické funkce zabezpečení nejsou integrované se současnými nástroji reakce na incidenty. Tato nedostatečná integrace představuje problém během fáze Zjištění (příliš mnoho falešných poplachů) a také během fází Posouzení a Diagnostika. Jako součást této migrace se rozhodli vyjádřit výslovný souhlas s tím, aby jim Security Center pomohl vyřešit tento problém.
+Contoso nedávno migrace některé z jejich tooAzure místní prostředky, včetně některých úloh obchodní založené na virtuální počítač a databází SQL. Nyní má Hlavní tým reakce na incidenty zabezpečení počítačů (CSIRT) společnosti Contoso problém s vyšetřováním problémů zabezpečení kvůli tomu, že analytické funkce zabezpečení nejsou integrované se současnými nástroji reakce na incidenty. Tento kvůli nedostupnosti integrace se objevuje problém během hello zjistit fázi (příliš mnoho chybných přijetí), a také během hello hodnocení a Diagnostikujte fázích. V rámci této migrace se rozhodli tooopt v pro toohelp Security Center je řešení tohoto problému.
 
-První fáze migrace byla dokončena po připojení všech prostředků a vyřešení všech doporučení zabezpečení od Security Center. CSIRT společnosti Contoso je ústředním bodem řešení incidentů zabezpečení počítačů. Tým se skládá ze skupiny lidí, kteří mají odpovědnost za řešení všech incidentů zabezpečení. Členové týmu mají jasně určené povinnosti, aby se zajistilo, že jsou pokryté všechny oblasti reakce.
+Hello první fáze této migrace dokončení po jejich zařazený nemá všechny prostředky a řešit všechny hello doporučení zabezpečení ze služby Security Center. Contoso CSIRT je hello ústředním bodem pro práci s incidenty zabezpečení počítače. tým Hello se skládá z ve skupině uživatelů s odpovědnosti pro práci s incidentu zabezpečení. Členové týmu Hello jasně tooensure povinností, který se nechá žádné oblasti odpovědi zjištěných definovali.
 
-Pro účely tohoto scénáře se soustředíme na role následujících osob, které jsou součástí týmu CSIRT společnosti Contoso:
+Za účelem hello tohoto scénáře vytvoříme toofocus na hello role hello osoby, které jsou součástí Contoso CSIRT následující:
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
 Judy pracuje v oddělení zabezpečení. Mezi její oblasti odpovědnosti patří:
 
-* Nepřetržité monitorování a reagování na ohrožení zabezpečení.
-* Předávání řešení ohrožení vlastníkovi cloudových úloh nebo analytikovi zabezpečení (podle potřeby).
+* Monitorování a reagovat na hrozby toosecurity kolem hello hodiny.
+* Narůstajícím toohello vlastník úloh v cloudu nebo analytik zabezpečení podle potřeby.
 
 Sam je analytik zabezpečení a mezi jeho povinnosti patří:
 
 * Vyšetřování útoků.
 * Napravování výstrah.
-* Práce s vlastníky úloh na určování a aplikaci nápravných kroků.
+* Práce s toodetermine vlastníky úloh a použití způsoby zmírnění rizik.
 
-Jak vidíte, Judy a Sam mají rozdílné povinnosti a musí spolupracovat na sdílení informací ze Security Center.
+Jak vidíte, Monika a Sam mají různé odpovědnosti a musí fungují společně tooshare Security Center informace.
 
 ## <a name="recommended-solution"></a>Doporučené řešení
-Vzhledem k tomu, že Judy a Sam mají rozdílné role, budou k získávání relevantních informací pro své denní aktivity používat různé části Security Center. Judy bude používat jako součást denního monitorování **Výstrahy zabezpečení**.
+Vzhledem k tomu, že Monika a Sam mají různé role, že budete používat různé oblasti Security Center tooobtain důležité informace pro jejich denní aktivity. Judy bude používat jako součást denního monitorování **Výstrahy zabezpečení**.
 
 ![Výstrahy zabezpečení](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Judy bude používat Výstrahy zabezpečení během fází Detekce a Vyhodnocení. Když Judy dokončí počáteční vyhodnocení, může v případě potřeby dalšího vyšetřování předat problém Samovi. V tomto okamžiku Sam použije informace, které obdržel ze Security Center, někdy i ve spojení s dalšími zdroji dat, a přejde k fázi Diagnostika.
+Monika použije výstrahy zabezpečení během hello rozpoznat a fáze hodnocení. Po dokončení počáteční assessment hello Monika Jana může eskalovat hello problém tooSam Pokud je potřeba další šetření. V tomto okamžiku Sam použije hello informací poskytnutých pomocí služby Security Center, někdy ve spojení s jinými zdroji dat. toomove toohello Diagnostikujte fáze.
 
-## <a name="how-to-implement-this-solution"></a>Postup implementace tohoto řešení
-Pro ukázku toho, jak byste použili Azure Security Center ve scénáři reakce na incident, budeme sledovat kroky Judy ve fázích Detekce a Vyhodnocení. Následně se podíváme, co udělá Sam, aby problém diagnostikoval.
+## <a name="how-tooimplement-this-solution"></a>Jak tooimplement toto řešení
+toosee způsob, jakým byste použili Azure Security Center ve scénáři s reakcí na incidenty, jsme budete postupujte podle kroků Monika je ve fázích hello detekovat a hodnocení a zjistěte, jaké Sam toodiagnose hello problém.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Fáze reakce na incidenty Detekce a Vyhodnocení
-Judy se přihlásila k portálu Azure Portal a pracuje v konzole Security Center. Jako součást denních aktivit monitorování začala kontrolovat výstrahy zabezpečení s vysokou prioritou provedením následujících kroků:
+Monika přihlášení toohello portál Azure a funguje v konzole hello Security Center. V rámci jeho denně monitorování aktivit Jana spuštěna kontrola zabezpečení s vysokou prioritou hello výstrahy provedením následujících kroků:
 
-1. Kliknutím na dlaždici **Výstrahy zabezpečení** otevřete okno **Výstrahy zabezpečení**.
+1. Klikněte na tlačítko hello **výstrahy zabezpečení** dlaždice a přístup hello **výstrahy zabezpečení** okno.
     ![Okno Výstrahy zabezpečení](./media/security-center-incident-response/security-center-incident-response-fig4.png)
 
    > [!NOTE]
-   > Pro účely tohoto scénáře provede Judy vyhodnocení výstrahy Škodlivá aktivita SQL, jak je znázorněno na předchozím obrázku.
+   > Za účelem hello tohoto scénáře je Monika probíhající tooperform posouzení na výstraha aktivity hello škodlivý SQL, jak je vidět v předchozích obrázek hello.
    >
    >
-2. Klikněte na tlačítko **škodlivý SQL aktivity** výstrahy a zkontrolujte attacked prostředky v **škodlivý SQL aktivity** okno: ![podrobnosti incidentu](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Klikněte na tlačítko hello **škodlivý SQL aktivity** výstrahy a zkontrolujte prostředky hello napadení v hello **škodlivý SQL aktivity** okno: ![podrobnosti incidentu](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
-    V tomto okně si Judy může dělat poznámky týkající se napadených prostředků, četnosti útoku a době jeho zjištění.
-3. Kliknutím na **napadený prostředek** získáte další informace o daném útoku.
+    V tomto okně Monika trvat poznámky týkající se prostředků hello napadení, jak se stalo mnohokrát tento útok, a pokud byla zjištěna.
+3. Klikněte na tlačítko hello **napadení prostředků** tooobtain Další informace o tento útok.
 
-Po přečtení popisu je Judy přesvědčená, že se nejedná o falešný poplach, a že by měla předat tento případ Samovi.
+Po přečtení hello popis, Monika přesvědčeni, že to není falešně pozitivní a že Jana by měl Eskalovat tento případu tooSam.
 
 ### <a name="diagnose-incident-response-stage"></a>Fáze reakce na incidenty Diagnostika
-Sam od Judy obdržel případ a začíná s kontrolováním nápravných kroků, které navrhuje Security Center.
+SAM obdrží hello případ od Monika a spustí kontrola hello nápravy kroky, které navrhované Security Center.
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>Další zdroje
-Tým, který reaguje na incidenty, může využívat i výhody možnosti [zabezpečení Center Power BI](security-center-powerbi.md) a zobrazovat různé typy sestav. Tyto sestavy mu mohou pomoci při dalším šetření, protože doporučení a výstrahy zabezpečení je možné vizualizovat, analyzovat a filtrovat. V případě společnosti, které při procesu šetření používají jeho řešení správy událostí a informací o zabezpečení (SIEM), může také [integrovat Security Center s vlastním řešením](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokoly auditu a události zabezpečení virtuálních počítačů Azure pomocí [nástroje pro integraci protokolů Azure](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). Při vyšetřování útoku můžete tyto informace použít ve spojení s informacemi, které poskytuje Security Center.
+Hello reakcí na incidenty team můžete také využít výhod hello [Security Center Power BI](security-center-powerbi.md) schopností toosee různé typy sestav. Tyto sestavy můžete mu pomoct při další šetření toovisualize, analyzovat a filtrovat doporučení a výstrahy zabezpečení. Pro společnosti, které používají své informace o zabezpečení a řešení pro správu (SIEM) událost během procesu šetření hello, mohou také [Security Center integrovat řešení pro jejich](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokolů auditu Azure a virtuální počítač (VM) událostí zabezpečení pomocí hello [nástroj integrace Azure protokol](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). tooinvestigate útoku, tyto informace můžete použít ve spojení s hello informace, které poskytuje Security Center.
 
 ## <a name="conclusion"></a>Závěr
-Sestavení týmu dříve, než dojde k incidentu, je pro vaši organizaci velmi důležité a pozitivně to ovlivní způsob zpracování incidentů. Dostupnost správných nástrojů pro monitorování prostředků může tomuto týmu pomoci s výběrem správného postupu k napravení incidentu zabezpečení. [Funkce detekce](security-center-detection-capabilities.md) v Security Center mohou IT oddělení pomoci s rychlou reakcí na incidenty zabezpečení a s nápravou problémů zabezpečení.
+Ty tým, než dojde k incidentu je velmi důležité tooyour organizace a ovlivní pozitivně zpracování incidentů. Který hello nástroje toomonitor prostředků může pomoci tento tým tootake přesné kroky tooremediate incidentu zabezpečení. Security Center [možností detekce](security-center-detection-capabilities.md) můžete pomůže IT tooquickly reakce toosecurity incidenty a problémy se zabezpečením.

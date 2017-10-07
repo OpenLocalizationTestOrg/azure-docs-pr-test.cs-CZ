@@ -1,5 +1,5 @@
 ---
-title: "Architektura Push Notification Hubs – Enterprise"
+title: "aaaNotification centra – architektura Push Enterprise"
 description: "Pokyny k používání Azure Notification Hubs v podnikovém prostředí"
 services: notification-hubs
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3afb83de1ba0882bf99e10f38cca40cb42d07a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
-Podniky jsou dnes postupně přesunutí směrem vytváření mobilních aplikací buď pro své koncové uživatele (externí) nebo pro zaměstnance (interní). Mají existující back-end systémy zavedené je jej sálové počítače nebo některé obchodní aplikace, které musí být integrován do architektury mobilních aplikací. Tato příručka se mluvit o tom, jak vhodné provést této integrace doporučujeme možná řešení pro běžné scénáře.
+Podniky jsou dnes postupně přesunutí směrem vytváření mobilních aplikací buď pro své koncové uživatele (externí) nebo pro zaměstnance hello (interní). Mají existující back-end systémy zavedené je jej sálové počítače nebo některé obchodní aplikace, které musí být integrován do hello Architektura mobilní aplikace. Tento průvodce bude komunikovat o tom, jak nejlepší toodo této integrace doporučujeme možných řešení toocommon scénáře.
 
-Časté požadavek je pro odesílání nabízených oznámení uživatelům prostřednictvím jejich mobilních aplikací při výskytu události týkající se v systémech back-end. Například Banka zákazníkovi, který má tato banka bankovní aplikace na svém zařízení iPhone chce být upozorněni, když MD přišla nad určitou míru z svůj účet nebo scénářem intranetu, kde zaměstnanci z finančního oddělení, který má aplikace schválení na nároky na jeho Windows Phone chce být upozorněni, když mu získá žádost o schválení.
+Časté požadavek je pro odesílání nabízených oznámení uživateli toohello prostřednictvím jejich mobilních aplikací při výskytu události týkající se v systémech hello back-end. Například Banka zákazníkům, kteří používají hello bank bankovní aplikace na svém zařízení iPhone chce toobe upozorněni, když MD přišla nad určitou míru z svůj účet nebo kde zaměstnanci z finančního oddělení, který má aplikace schválení na nároky na jeho Windows Phone chce toobe scénáře intranetu upozorněni, když mu získá žádost o schválení.
 
-Bankovní účet nebo zpracování schválení je pravděpodobné, v některých systém back-end, který musí inicializovat oznámení pro uživatele. Může existovat více takové back-end systémy, které musíte sestavit stejný druh logiku pro implementaci nabízená oznámení se aktivuje událost. Složitost zde spočívá v integraci několik systémů back-end společně s jeden nabízené systému, kde koncoví uživatelé mohou mít předplatné jiný oznámení a může i více mobilních aplikací, například v případě mobilních aplikací na intranetu ve může jeden mobilních aplikací chcete oznámení dostávat, více takového systému back-end. Back-end systémy neznáte nebo potřebujete vědět nabízené sémantiku/technologie tak běžné řešení tradičně byl zavádět komponentu, který posuzuje systémy back-end pro všechny události, které vás zajímají a je odpovědná za zasílání zpráv nabízené klientovi.
-Zde se věnuje ještě lepší řešení pomocí Azure Service Bus - model téma/odběr, který se sníží složitost při vytváření škálovatelné řešení.
+Hello bankovní účet nebo zpracování schválení je pravděpodobně toobe v některé back-end systému, které musí spustit uživatel toohello push. Může být více takové back-end systémy, které musí všechny sestavení hello stejný druh logiku tooimplement nabízené, když událost se aktivuje oznámení. složitost Hello zde spočívá v integraci několik systémů back-end společně s jeden nabízené systému, kde hello koncoví uživatelé mohou mít odběru oznámení toodifferent a i může být více mobilních aplikací, například v případě hello intranetu mobilních aplikací kde jeden mobilní aplikace může být vhodné tooreceive oznámení z více takového systému back-end. Hello back-end systémy vědět, nebo potřebují tooknow nabízené sémantiku/technologie, aby se běžné řešení tradičně byl toointroduce komponentu, který posuzuje hello back-end systémy pro všechny události, které vás zajímají a je odpovědná za zasílání zpráv nabízené hello toohello klienta.
+Zde se věnuje ještě lepší řešení pomocí Azure Service Bus - model téma/odběr, který se sníží složitost hello při vytváření škálovatelné řešení hello.
 
-Tady je obecné architektuře řešení (zobecněný s více mobilních aplikací, ale platí po jenom jedna mobilní aplikace)
+Tady je hello obecné architektuře řešení hello (zobecněný s více mobilních aplikací, ale platí po jenom jedna mobilní aplikace)
 
 ## <a name="architecture"></a>Architektura
 ![][1]
 
-Klíčovou do tohoto diagramu, architektury je Azure Service Bus, která poskytuje témata nebo odběry programovací model (Další informace o jeho v [Service Bus Pub nebo Sub programování]). Příjemce, který v tomto případě je mobilního back-endu (obvykle [Azure Mobile Service], která zahájí oznámení na mobilní aplikace) nejsou doručovány zprávy přímo z back-end systémy, ale místo toho máme zprostředkující abstraktní vrstvu poskytované [Azure Service Bus] což umožňuje mobilní back-end pro příjem zpráv z jednoho nebo více systémů back-end. Téma sběrnice je potřeba vytvořit pro každou z back-end systémy například účet oddělení lidských zdrojů, Finance, které jsou v podstatě "témata", které vás zajímají, která zahájí zpráv k odeslání jako nabízené oznámení. Back-end systémy bude odesílat zprávy na tato témata. Back-end Mobile se mohou přihlásit na jeden nebo více těchto témata vytvořením odběru služby Service Bus. To bude získat mobilní back-end pro příjem oznámení z back-end serveru odpovídající oprávnění. Mobilní back-end i nadále přijímat zprávy o svých předplatných a ihned po doručení zprávy změní zpět a odešle ji jako oznámení jeho centra oznámení. Centra oznámení potom nakonec doručení zprávy do mobilní aplikace. Proto to Shrneme klíčové komponenty, jsme provedli následující:
+část klíče Hello do tohoto diagramu, architektury je Azure Service Bus, která poskytuje témata nebo odběry programovací model (Další informace o jeho v [Service Bus Pub nebo Sub programování]). Hello příjemce, který v tomto případě je mobilního back-endu hello (obvykle [Azure Mobile Service], která zahájí nabízené mobilní aplikace toohello) nejsou doručovány zprávy přímo z hello back-end systémy, ale místo toho máme zprostředkující abstraktní vrstvu poskytované [Azure Service Bus] což umožňuje mobilního back-endu tooreceive zprávy z jednoho nebo více systémů back-end. Téma sběrnice musí toobe vytvořené pro každou z hello back-end systémy například účet oddělení lidských zdrojů, Finance, které jsou v podstatě "témata", které vás zajímají, která zahájí toobe zprávy odeslané jako nabízené oznámení. Hello back-end systémy bude odesílat zprávy toothese témata. Back-end Mobile se mohou přihlásit tooone nebo více těchto témat vytvořením odběru služby Service Bus. To bude opravňují hello mobilního back-endu tooreceive oznámení z back-end systému odpovídající hello. Mobilní back-end pokračuje toolisten pro zprávy o svých předplatných a ihned po doručení zprávy změní zpět a odešle ji jako centra oznámení tooits oznámení. Centra oznámení potom nakonec přináší hello zpráva toohello mobilní aplikace. Klíčové komponenty hello toosummarize máme:
 
 1. Back-end systémy (systémy LoB nebo starší)
    * Vytvoří téma sběrnice
@@ -41,47 +41,47 @@ Klíčovou do tohoto diagramu, architektury je Azure Service Bus, která poskytu
 2. Mobilní back-end
    * Vytvoří předplatné služby
    * Přijme zprávu (z back-end systému)
-   * Odešle oznámení klientům (prostřednictvím centra oznámení Azure)
+   * Odešle oznámení tooclients (prostřednictvím centra oznámení Azure)
 3. Mobilní aplikace
    * Přijímá a zobrazovat oznámení
 
 ### <a name="benefits"></a>Výhody:
-1. Oddělení mezi příjemce (mobilní aplikaci nebo službě prostřednictvím centra oznámení) a odesílatele (back-end systémy) umožňuje další back-end systémy, kterou je prováděna integrace s minimální změny.
-2. Také díky tomu scénář více mobilních aplikací, bude možné přijímat události z jednoho nebo více systémů back-end.  
+1. Hello oddělení mezi hello příjemce (mobilní aplikaci nebo službě prostřednictvím centra oznámení) a odesílatele (back-end systémy) umožňuje další back-end systémy, kterou je prováděna integrace s minimální změny.
+2. Také díky tomu hello scénář více mobilních aplikací, které je možné tooreceive události z jednoho nebo více systémů back-end.  
 
 ## <a name="sample"></a>Ukázka:
 ### <a name="prerequisites"></a>Požadavky
-Musíte provést následující kurzy seznamte s koncepty a také běžné vytvoření & kroky konfigurace:
+Musíte provést následující kurzy toofamiliarize s koncepty hello, jakož i běžné kroky pro vytvoření a konfigurace hello:
 
-1. [Service Bus Pub nebo Sub programování] – Tato část popisuje podrobnosti o práci s Service Bus témata nebo předplatných, postup vytvoření oboru názvů tak, aby obsahovala témata nebo předplatného, jak odesílat a přijímat zprávy z nich.
-2. [Kurzu centra oznámení – Windows Universal] – Tato část popisuje postup nastavení aplikace pro Windows Store a používat Notification Hubs k registraci a pak přijímat oznámení.
+1. [Service Bus Pub nebo Sub programování] – Tato část popisuje hello podrobnosti o práci s Service Bus témata nebo předplatného, jak toocreate obor názvů toocontain témata nebo předplatného, jak toosend & příjem zpráv z nich.
+2. [Kurzu centra oznámení – Windows Universal] – Tato část popisuje, jak tooset až aplikace pro Windows Store a používat Notification Hubs tooregister a pak přijímat oznámení.
 
 ### <a name="sample-code"></a>Ukázka kódu
-Úplný ukázkový kód je k dispozici na [ukázky centra oznámení]. Ho je rozdělená do tří součástí:
+Hello úplný ukázkový kód je k dispozici na [ukázky centra oznámení]. Ho je rozdělená do tří součástí:
 
 1. **EnterprisePushBackendSystem**
    
-    a. Používá tento projekt *WindowsAzure.ServiceBus* balíček Nuget a je založena na [Service Bus Pub nebo Sub programování].
+    a. Tento projekt používá hello *WindowsAzure.ServiceBus* balíček Nuget a je založena na [Service Bus Pub nebo Sub programování].
    
-    b. Toto je jednoduchá C# konzole aplikace k simulaci s LoB systémem, který zahájí zprávu, která se bude doručen do mobilní aplikace.
+    b. Toto je jednoduchý C# konzole aplikace toosimulate s LoB systémem, který zahájí toobe zpráva hello doručit toohello mobilní aplikace.
    
         static void Main(string[] args)
         {
             string connectionString =
                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the topic where we will send notifications
+            // Create hello topic where we will send notifications
             CreateTopic(connectionString);
    
             // Send message
             SendMessage(connectionString);
         }
    
-    c. `CreateTopic`se používá k vytvoření tématu Service Bus kde bude odesílat zprávy.
+    c. `CreateTopic`je tématu Service Bus hello použité toocreate, kde bude odesílat zprávy.
    
         public static void CreateTopic(string connectionString)
         {
-            // Create the topic if it does not exist already
+            // Create hello topic if it does not exist already
    
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
@@ -92,19 +92,19 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
             }
         }
    
-    d. `SendMessage`se používá k odeslání zprávy do tohoto tématu Service Bus. Zde jsme se jednoduše odeslat sadu náhodné zprávy do tématu pravidelně pro účely ukázky. Obvykle bude systém back-end, který bude odesílat zprávy, když dojde k události.
+    d. `SendMessage`je použité toosend hello zprávy toothis témata sběrnice. Nemůžeme tady jednoduše odesílají sadu náhodné zprávy toohello tématu pravidelně za účelem hello hello ukázky. Obvykle bude systém back-end, který bude odesílat zprávy, když dojde k události.
    
         public static void SendMessage(string connectionString)
         {
             TopicClient client =
                 TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
    
-            // Sends random messages every 10 seconds to the topic
+            // Sends random messages every 10 seconds toohello topic
             string[] messages =
             {
                 "Employee Id '{0}' has joined.",
                 "Employee Id '{0}' has left.",
-                "Employee Id '{0}' has switched to a different team."
+                "Employee Id '{0}' has switched tooa different team."
             };
    
             while (true)
@@ -124,27 +124,27 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
         }
 2. **ReceiveAndSendNotification**
    
-    a. Používá tento projekt *WindowsAzure.ServiceBus* a *Microsoft.Web.WebJobs.Publish* Nuget balíčků a je založena na [Service Bus Pub nebo Sub programování].
+    a. Tento projekt používá hello *WindowsAzure.ServiceBus* a *Microsoft.Web.WebJobs.Publish* Nuget balíčků a je založena na [Service Bus Pub nebo Sub programování].
    
-    b. Toto je jiný C# konzole aplikace, která jsme se spustit jako [webové úlohy Azure] vzhledem k tomu, že je spouštět nepřetržitě přijímat zprávy ze systémů LoB nebo back-end. Bude součástí mobilního back-endu.
+    b. Toto je jiný C# konzole aplikace, která jsme se spustit jako [webové úlohy Azure] vzhledem k tomu, že má toorun nepřetržitě toolisten pro zprávy od hello LoB nebo back-end systémy. Bude součástí mobilního back-endu.
    
         static void Main(string[] args)
         {
             string connectionString =
                      CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the subscription which will receive messages
+            // Create hello subscription which will receive messages
             CreateSubscription(connectionString);
    
             // Receive message
             ReceiveMessageAndSendNotification(connectionString);
         }
    
-    c. `CreateSubscription`slouží k vytvoření odběru služby Service Bus pro téma kde systému back-end bude odesílat zprávy. V závislosti na podnikový scénář bude tato součást vytvořit jeden nebo více odběrů na odpovídající témata (například některé může být přijímání zpráv ze systému oddělení lidských zdrojů, některé z finančního systému a tak dále)
+    c. `CreateSubscription`předplatné služby Service Bus pro téma hello je použité toocreate, u kterých hello back-end systému bude odesílat zprávy. V závislosti na scénáři hello firmy tato součást bude vytvořit jeden nebo více odběrů toocorresponding témata (například některé může být přijímání zpráv ze systému oddělení lidských zdrojů, některé z finančního systému a tak dále)
    
         static void CreateSubscription(string connectionString)
         {
-            // Create the subscription if it does not exist already
+            // Create hello subscription if it does not exist already
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
    
@@ -154,11 +154,11 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
             }
         }
    
-    d. ReceiveMessageAndSendNotification se používá k tuto zprávu přečíst v tématu pomocí svého předplatného a pokud čtení úspěšné potom vytvořit oznámení (v ukázkovém scénáři Windows nativní informační) k odeslání do mobilní aplikace pomocí Azure Notification Hubs.
+    d. ReceiveMessageAndSendNotification je použité tooread uvítací zprávu z tématu hello pomocí svého předplatného a je-li hello číst úspěšně vytvořit toohello toobe odeslat oznámení (v ukázkovém scénáři hello Windows nativní informační), která je mobilní aplikace pomocí Azure Notification Hubs.
    
         static void ReceiveMessageAndSendNotification(string connectionString)
         {
-            // Initialize the Notification Hub
+            // Initialize hello Notification Hub
             string hubConnectionString = CloudConfigurationManager.GetSetting
                     ("Microsoft.NotificationHub.ConnectionString");
             hub = NotificationHubClient.CreateClientFromConnectionString
@@ -170,7 +170,7 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
    
             Client.Receive();
    
-            // Continuously process messages received from the subscription
+            // Continuously process messages received from hello subscription
             while (true)
             {
                 BrokeredMessage message = Client.Receive();
@@ -204,24 +204,24 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
             await hub.SendWindowsNativeNotificationAsync(message);
         }
    
-    e. Pro publikování jako **webové úlohy**, klikněte pravým tlačítkem na řešení v sadě Visual Studio a vyberte **publikovat jako webová úloha**
+    e. Pro publikování jako **webové úlohy**, klikněte pravým tlačítkem na hello řešení v sadě Visual Studio a vyberte **publikovat jako webová úloha**
    
     ![][2]
    
-    f. Vyberte svůj profil publikování a vytvoření nového webu Azure, pokud ji už neexistuje, který bude hostitelem této webové úlohy, a až pak máte na webu **publikovat**.
+    f. Vyberte svůj profil publikování a vytvoření nového webu Azure, pokud ji už neexistuje, který bude hostitelem této webové úlohy, a až pak máte hello web **publikovat**.
    
     ![][3]
    
-    g. Nakonfigurujte úlohu, která má být "Spouštět nepřetržitě" tak, aby při přihlášení do [portálu Azure Classic] měli byste vidět nějak takto:
+    g. Nakonfigurujte hello úlohy "Spouštět nepřetržitě" toobe tak, aby při přihlášení toohello [portálu Azure Classic] měli byste vidět něco podobného jako hello následující:
    
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a. Toto je aplikace Windows Store, která bude přijímat oznámení informačního nápisu z webová úloha spuštěna jako součást mobilního back-endu a zobrazit ji. To je založené na [Kurzu centra oznámení – Windows Universal].  
+    a. Toto je aplikace Windows Store, která bude přijímat oznámení informačního nápisu z hello webová úloha běží jako součást mobilního back-endu a zobrazit ji. To je založené na [kurzu centra oznámení – Windows Universal].  
    
-    b. Ujistěte se, že aplikace je povoleno přijímat oznámení informačního nápisu.
+    b. Zajistěte, aby vaše aplikace povoleno tooreceive informační zprávy.
    
-    c. Ujistěte se, že následující Notification Hubs registrační kód je volána v aplikaci spuštění (po nahrazení *HubName* a *DefaultListenSharedAccessSignature*:
+    c. Ujistěte se, že hello následující kód registrace Notification Hubs je volána při spuštění aplikace hello (po nahrazení hello *HubName* a *DefaultListenSharedAccessSignature*:
    
         private async void InitNotificationsAsync()
         {
@@ -230,7 +230,7 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
             var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
             var result = await hub.RegisterNativeAsync(channel.Uri);
    
-            // Displays the registration ID so you know it was successful
+            // Displays hello registration ID so you know it was successful
             if (result.RegistrationId != null)
             {
                 var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
@@ -240,12 +240,12 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
         }
 
 ### <a name="running-sample"></a>Spuštění ukázkové:
-1. Zajistěte, aby vaše webová úloha pracuje správně a naplánované "Nepřetržitě spustit".
-2. Spustit **EnterprisePushMobileApp** který se spustí aplikace pro Windows Store.
-3. Spustit **EnterprisePushBackendSystem** konzolovou aplikaci, která bude simulovat LoB back-end a spustí odesílání zpráv a měli byste vidět informační zprávy, které jsou uvedeny jako následující:
+1. Zajistěte, aby vaše webová úloha pracuje správně a naplánováno příliš "spouštět nepřetržitě".
+2. Spustit hello **EnterprisePushMobileApp** který se spustí aplikace pro Windows Store hello.
+3. Spustit hello **EnterprisePushBackendSystem** konzolovou aplikaci, která bude simulovat hello LoB back-end a spustí odesílání zpráv a měli byste vidět informační zprávy zobrazí jako hello následující:
    
     ![][5]
-4. Zprávy byly původně odeslána do témat Service Bus, které byl monitorován odběry služby Service Bus ve webové úlohy. Jakmile byla přijata zpráva, oznámení se vytváří a odesílají do mobilní aplikace. Můžete zobrazit prostřednictvím protokolů webové úlohy potvrďte zpracování při přechodu na odkaz protokoly v [portálu Azure Classic] pro webové úlohy:
+4. témata sběrnice tooService, které byl monitorován odběry služby Service Bus ve webové úlohy původně odeslaných zpráv Hello. Jakmile byla přijata zpráva, oznámení se vytváří a odesílají toohello mobilní aplikace. Můžete zobrazit prostřednictvím hello webové úlohy protokoly tooconfirm hello zpracování při přechodu toohello protokoly na odkaz v [portálu Azure Classic] pro webové úlohy:
    
     ![][6]
 
@@ -258,10 +258,10 @@ Musíte provést následující kurzy seznamte s koncepty a také běžné vytvo
 [6]: ./media/notification-hubs-enterprise-push-architecture/WebJobsLog.png
 
 <!-- Links -->
-[ukázky centra oznámení]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
+[Ukázky centra oznámení]: https://github.com/Azure/azure-notificationhubs-samples
+[Mobilní služby Azure]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [Service Bus Pub nebo Sub programování]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[webové úlohy Azure]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
-[Kurzu centra oznámení – Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[portálu Azure Classic]: https://manage.windowsazure.com/
+[Webová úloha Azure]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
+[Centra oznámení – kurz pro univerzální aplikace Windows]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Portál Azure Classic]: https://manage.windowsazure.com/

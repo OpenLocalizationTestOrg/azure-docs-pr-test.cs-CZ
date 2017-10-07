@@ -1,6 +1,6 @@
 ---
-title: "Krok 6: Přístup ke službě Machine Learning Web | Microsoft Docs"
-description: "Krok 6 vývoj prediktivního řešení návod: přístup k Azure Machine Learning webové služby aktivní."
+title: "Krok 6: Přístup k hello Machine Learning webové služby | Microsoft Docs"
+description: "Krok 6 hello vývoj prediktivního řešení návod: přístup k Azure Machine Learning webové služby aktivní."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: d309f6c4749a80c81859b693a2bd5927e8fe0e54
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 211de0294092c6a6b5e6eb608d5d3b88107674c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Krok 6 průvodce: Přístup k webové službě Azure Machine Learning
+# <a name="walkthrough-step-6-access-hello-azure-machine-learning-web-service"></a>Návod krok 6: Přístup k webové službě Azure Machine Learning hello
 
-Toto je poslední krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+Toto je poslední krok hello hello návod [vývoj řešení prediktivní analýzy v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Vytvoření pracovního prostoru Machine Learning](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Nahrání existujících dat](machine-learning-walkthrough-2-upload-data.md)
 3. [Vytvoření nového experimentu](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Natrénování a vyhodnocení modelů](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Nasazení webové služby](machine-learning-walkthrough-5-publish-web-service.md)
-6. **Přístup k webové službě**
+4. [Natrénování a vyhodnocení modelů hello](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Nasazení webové služby hello](machine-learning-walkthrough-5-publish-web-service.md)
+6. **Přístup k webové službě hello**
 
 - - -
-V předchozím kroku v tomto návodu jsme nasadili webová služba, která používá našeho úvěrové riziko předpovědi modelu. Uživatelé jsou nyní může odesílat data a přijímat výsledky. 
+V předchozím kroku hello v tomto návodu jsme nasadili webová služba, která používá našeho úvěrové riziko předpovědi modelu. Uživatelé nyní jsou možné toosend data tooit a příjem výsledků. 
 
-Webová služba je Azure webové služby, který může přijímat a vrátit data pomocí rozhraní API REST v jednom ze dvou způsobů:  
+Hello webové služby je Azure webové služby, který může přijímat a vrátit data pomocí rozhraní API REST v jednom ze dvou způsobů:  
 
-* **Požadavek a odpověď** – uživatel odesílá jeden nebo více řádků platební dat ve službě s použitím protokolu HTTP a službu odpoví jednu nebo více sad výsledků.
-* **Spuštění dávky** – uživatel uloží jednu nebo více řádky platební dat v Azure blob a poté odešle umístění objektu blob ve službě. Tato služba skóre všechny řádky dat v vstupního objektu blob, uloží výsledky v jiném objektu blob a vrátí adresu URL tohoto kontejneru.  
+* **Požadavek a odpověď** – hello uživatel odešle jednu nebo více řádky dat toohello platební služby s použitím protokolu HTTP a hello služby odpoví jednu nebo více sad výsledků.
+* **Spuštění dávky** – hello uživatel uloží jednu nebo více řádky platební dat v Azure blob a poté odešle služby toohello umístění objektu blob hello. skóre Hello služby, které všechny hello řádky dat v hello vstupního objektu blob, úložiště hello výsledkem jiného objektu blob a vrátí hello adresu URL tohoto kontejneru.  
 
-Nejrychlejší a nejsnazší způsob pro přístup k webové službě Classic je prostřednictvím [webové aplikace Azure ML požadavků a odpovědí Service](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) nebo [Azure ML dávky spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
+Hello tooaccess nejrychlejší a nejjednodušší způsob je webová služba Classic prostřednictvím hello [webové aplikace Azure ML požadavků a odpovědí Service](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) nebo [Azure ML dávky spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
 
-Tyto šablony webové aplikace můžete vytvořit vlastní webové aplikace, kterou zná vstupní data a co vrátí webové služby. Jediné, co musíte udělat je poskytnout přístup k webové služby a data a šablona nemá rest.
+Tyto šablony webové aplikace můžete vytvořit vlastní webové aplikace, kterou zná vstupní data a co vrátí webové služby. Stačí toodo je poskytnout přístup tooyour webové služby a data a šablony hello hello rest.
 
-Další informace o použití šablony webové aplikace, najdete v části [využívat Azure Machine Learning webové služby pomocí šablony webové aplikace](machine-learning-consume-web-service-with-web-app-template.md).
+Další informace o používání hello webové aplikace šablony najdete v tématu [využívat Azure Machine Learning webové služby pomocí šablony webové aplikace](machine-learning-consume-web-service-with-web-app-template.md).
 
-Také lze vytvářet vlastní aplikaci pro přístup k webové službě pomocí počáteční kód stanovené v R, C# a Python programovací jazyky.
+Také lze vytvářet vlastní aplikaci tooaccess hello webové službě pomocí počáteční kód stanovené v R, C# a Python programovacích jazyků.
 
-Najdete kompletní informace v [využívání Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
+Najdete kompletní informace v [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 

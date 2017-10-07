@@ -1,6 +1,6 @@
 ---
-title: "Použít existující přehrávače k přehrávání obsahu – Azure | Microsoft Docs"
-description: "Toto téma obsahuje seznam existující přehrávače, můžete použít k přehrávání obsahu."
+title: "aaaUse existující přehrávače tooplayback obsah - Azure | Microsoft Docs"
+description: "Toto téma obsahuje existující přehrávače, které můžete použít tooplayback svůj obsah."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: juliako
-ms.openlocfilehash: 48f373b013b1192c353352b801876d706d91dd28
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 54817345a19a9d3b18f1e7b352c3342043a569b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu s existující hráči
-Azure Media Services podporuje mnoho oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma vám ukazuje na existující přehrávačů, které můžete použít k testování vaše datové proudy.
+Azure Media Services podporuje mnoho oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma bodů tooexisting přehrávače, které můžete použít tootest vaše datové proudy.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure portálu Media Services obsahu přehrávač.
-**Azure** portál nabízí přehrávač obsahu, který můžete použít k testování videa.
+### <a name="hello-azure-portal-media-services-content-player"></a>obsahu Hello portál Azure Media Services player
+Hello **Azure** portál nabízí přehrávač obsahu, které můžete použít tootest videa.
 
-Klikněte na požadované video (zajistěte, aby byl [publikovaná](media-services-portal-publish.md)) a klikněte na tlačítko **přehrání** tlačítko v dolní části portálu.
+Klikněte na hello požadovaného video (zajistěte, aby byl [publikovaná](media-services-portal-publish.md)) a klikněte na tlačítko hello **přehrání** tlačítko dolnímu hello hello portálu.
 
 Musí být splněny určité předpoklady:
 
-* Přehrávač **MEDIA SERVICES CONTENT PLAYER** přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozích koncového bodu streamování, použijte jiný přehrávač. Například [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Hello **MEDIA SERVICES CONTENT PLAYER** přehrává z výchozího hello koncového bodu streamování. Pokud chcete tooplay z jiného než výchozího koncového bodu streamování, použijte jiný přehrávač. Například [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Přehrávač médií Azure
-Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) k přehrávání obsahu (Vymazat nebo chráněného) v některém z následujících formátů:
+Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) tooplayback obsah (Vymazat nebo chráněného) v některém z následujících formátů hello:
 
 * Technologie Smooth Streaming
 * MPEG DASH
@@ -59,13 +59,13 @@ Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplay
 [http://dashif.org](http://dashif.org)
 
 ### <a name="other"></a>Ostatní
-K testování HLS adresy URL můžete použít také:
+tootest HLS adresy URL můžete použít také:
 
 * **Safari** na zařízení s iOS nebo
 * **Přehrávač HLS 3ivx** v systému Windows.
 
 ## <a name="developing-video-players"></a>Vývoj přehrávačů videa
-Informace o tom, jak vyvíjet vlastní přehrávače najdete v tématu [vývoj přehrávačů videa](media-services-develop-video-players.md)
+Informace o tom, jak toodevelop vlastní přehrávače, najdete v části [vývoj přehrávačů videa](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření aplikace .NET databáze Azure Cosmos využívající rozhraní Graph API | Dokumentace Microsoftu"
-description: "Obsahuje ukázku kódu .NET, kterou můžete použít pro připojení a dotazování databáze Azure Cosmos."
+title: "hello aaaBuild aplikace Azure Cosmos DB .NET pomocí rozhraní Graph API | Microsoft Docs"
+description: "Uvede ukázku kódu rozhraní .NET, můžete použít tooconnect tooand dotaz na databázi Azure Cosmos"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/28/2017
 ms.author: denlee
-ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f28790fcb8c9f57c7bb3d844d8276fa04abcc39c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Databáze Azure Cosmos: Vytvoření aplikace .NET využívající rozhraní Graph API
+# <a name="azure-cosmos-db-build-a-net-application-using-hello-graph-api"></a>Azure Cosmos DB: Vytvoření aplikace .NET pomocí hello rozhraní Graph API
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, databáze a grafu (kontejneru) pomocí webu Azure Portal. Potom sestavíte a spustíte aplikaci konzoly založenou na [rozhraní Graph API](graph-sdk-dotnet.md) (verze Preview).  
+Tento rychlý start předvádí, jak hello toocreate účet Azure Cosmos DB, databáze a graf (kontejner) pomocí portálu Azure. Potom sestavení a spuštění konzoly aplikace založená na hello [rozhraní Graph API](graph-sdk-dotnet.md) (preview).  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+Pokud ještě nemáte nainstalované Visual Studio 2017, můžete stáhnout a použít hello **volné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ujistěte se, že povolíte **Azure development** při instalaci sady Visual Studio hello.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,25 +41,25 @@ Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+## <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Teď naklonujeme aplikaci rozhraní Graph API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď umožňuje nastavit připojovací řetězec hello klonování rozhraní Graph API aplikace z githubu a potom ho spusťte. Uvidíte, jak je snadné toowork s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+1. Otevřete okno terminálu git, jako je například git bash a `cd` tooa pracovní adresář.  
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+2. Spusťte následující příkaz tooclone hello Ukázka úložiště hello. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. Potom otevřete sadu Visual Studio a otevřete soubor řešení. 
+3. Poté otevřete Visual Studio a hello otevřete soubor řešení. 
 
-## <a name="review-the-code"></a>Kontrola kódu
+## <a name="review-hello-code"></a>Zkontrolujte hello kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor Program.cs a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos. 
+Provedeme jejich stručný přehled o dění v aplikaci hello. Hello otevřete soubor Program.cs a najdete, že tyto řádky kódu vytvořit hello prostředky Azure Cosmos DB. 
 
-* Inicializuje se DocumentClient. Ve verzi Preview jsme do klienta Azure Cosmos DB přidali rozhraní API s rozšířením grafu. Pracujeme na samostatném klientovi pro grafy, který bude oddělený od klienta a prostředků Azure Cosmos DB.
+* Hello DocumentClient je inicializován. Ve verzi preview hello jsme přidali grafu rozšíření rozhraní API v klientovi Azure Cosmos DB hello. Pracujeme na klientovi samostatný graf odpojená od klienta Azure Cosmos DB hello a prostředky.
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -82,10 +82,10 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
         new DocumentCollection { Id = "graph" },
         new RequestOptions { OfferThroughput = 1000 });
     ```
-* Pomocí metody `CreateGremlinQuery` se provede série kroků konzoly Gremlin.
+* Sérii kroků Gremlin jsou spouštěny pomocí hello `CreateGremlinQuery` metoda.
 
     ```csharp
-    // The CreateGremlinQuery method extensions allow you to execute Gremlin queries and iterate
+    // hello CreateGremlinQuery method extensions allow you tooexecute Gremlin queries and iterate
     // results asychronously
     IDocumentQuery<dynamic> query = client.CreateGremlinQuery<dynamic>(graph, "g.V().count()");
     while (query.HasMoreResults)
@@ -100,64 +100,64 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.
 
-1. V sadě Visual Studio 2017 otevřete soubor App.config. 
+1. V aplikaci Visual Studio 2017 otevřete soubor App.config hello. 
 
-2. Na webu Azure Portal v účtu služby Azure Cosmos DB klikněte v levém navigačním panelu na **Klíče**. 
+2. V hello portál Azure, v účtu Azure Cosmos DB, klikněte na **klíče** v levé navigační hello. 
 
-    ![Zobrazení a zkopírování primárního klíče na webu Azure Portal na stránce Klíče](./media/create-graph-dotnet/keys.png)
+    ![Zobrazení a zkopírujte primární klíč v hello portál Azure, na stránce klíče hello](./media/create-graph-dotnet/keys.png)
 
-3. Z portálu zkopírujte hodnotu identifikátoru **URI** a nastavte ji jako hodnotu klíče koncového bodu v souboru App.config. Hodnotu můžete zkopírovat pomocí tlačítka Kopírovat, jak ukazuje předchozí snímek obrazovky.
+3. Kopie vašeho **URI** hodnoty z portálu hello a nastavit jej jako hello hodnotu klíče hello koncový bod v souboru App.config. Můžete použít tlačítko Kopírovat hello, jak je uvedeno v předchozím snímku obrazovky toocopy hello hodnota hello.
 
     `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
 
-4. Z portálu zkopírujte hodnotu **PRIMÁRNÍHO KLÍČE**, nastavte ji jako hodnotu klíče AuthKey v souboru App.config a potom uložte změny. 
+4. Kopie vašeho **primární klíč** hodnoty z portálu hello a nastavit jej jako hello hodnota hello AuthKey klíče v souboru App.config a potom uložte změny. 
 
     `<add key="AuthKey" value="FILLME" />`
 
-Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+Jste nyní aktualizovat vaši aplikaci s všechny údaje hello potřebuje toocommunicate s Azure Cosmos DB. 
 
-## <a name="run-the-console-app"></a>Spuštění aplikace konzoly
+## <a name="run-hello-console-app"></a>Spusťte konzolovou aplikaci hello
 
-1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt **GraphGetStarted** a potom klikněte na možnost **Spravovat balíčky NuGet**. 
+1. V sadě Visual Studio, klikněte pravým tlačítkem na hello **GraphGetStarted** projektu v **Průzkumníku řešení** a pak klikněte na **spravovat balíčky NuGet**. 
 
-2. Do pole **Procházet** v NuGetu zadejte *WindowsAzure.Graphs* a zaškrtněte políčko **Zahrnout předběžné verze**. 
+2. V hello NuGet **Procházet** zadejte *Microsoft.Azure.Graphs* a zkontrolujte hello **zahrnuje předběžné verze** pole. 
 
-3. Z výsledků nainstalujte knihovnu **Microsoft.Azure.Graphs**. Tím se nainstaluje balíček knihovny rozšíření grafů databáze Azure Cosmos a všechny závislosti.
+3. Z výsledků hello nainstalovat hello **Microsoft.Azure.Graphs** knihovny. Tím se nainstaluje balíček knihovny hello Azure Cosmos DB grafu rozšíření a všechny závislosti.
 
-    Pokud se vám zobrazí zpráva týkající se kontroly změn řešení, klikněte na **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
+    Pokud se zobrazí zpráva o Kontrola řešení toohello změny, klikněte na tlačítko **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
 
-4. Spusťte aplikaci stisknutím CTRL+F5.
+4. Klikněte na kombinaci kláves CTRL + F5 toorun hello aplikace.
 
-   V okně konzoly se zobrazí vrcholy a hrany, které se přidávají do grafu. Po dokončení skriptu dvojím stisknutím klávesy ENTER zavřete okno konzoly. 
+   okno konzoly Hello zobrazí bodů uchycení hello a okrajů přidávané toohello grafu. Když hello dokončení skriptu, stiskněte klávesu ENTER dvakrát tooclose okna konzoly hello. 
 
-## <a name="browse-using-the-data-explorer"></a>Procházení pomocí Průzkumníku dat
+## <a name="browse-using-hello-data-explorer"></a>Procházet pomocí hello Průzkumníku dat
 
-Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet nová data grafu a zadávat na ně dotazy.
+Teď můžete přejít zpět tooData Explorer v hello portál Azure a procházet a dotaz na nová data grafu.
 
-1. V Průzkumníku dat se nová databáze zobrazí v podokně Graphs (Grafy). Rozbalte položky **graphdb** a **graphcollz** a potom klikněte na **Graph**.
+1. V Průzkumníku dat hello nové databáze se zobrazí v podokně grafy hello. Rozbalte položky **graphdb** a **graphcollz** a potom klikněte na **Graph**.
 
-2. Kliknutím na tlačítko **Použít filtr** použijte výchozí dotaz k zobrazení vrcholů v grafu. V podokně Graphs (Grafy) se zobrazí data vygenerovaná ukázkovou aplikací.
+2. Klikněte na tlačítko hello **použít filtr** tlačítko toouse hello výchozí dotaz tooview všechny verticies hello v grafu hello. Hello data generována hello ukázkové aplikace se zobrazí v podokně grafy hello.
 
-    Graf můžete přiblížit nebo oddálit, můžete rozšířit prostor pro zobrazení grafu, přidat další vrcholy a přesouvat vrcholy na zobrazovacím povrchu.
+    Oddálit hello grafu, můžete zvětšit místo zobrazení grafu hello, přidat další verticies a přesunout verticies na hello zobrazit prostor.
 
-    ![Zobrazení grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-dotnet/graph-explorer.png)
+    ![Zobrazit graf hello v Průzkumníku dat v hello portálu Azure](./media/create-graph-dotnet/graph-explorer.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Zkontrolujte SLA v hello portálu Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu: 
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky: 
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tento rychlý start když jste se naučili toocreate účet Azure Cosmos DB vytvoření grafu pomocí hello Průzkumníku dat a spusťte aplikaci. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

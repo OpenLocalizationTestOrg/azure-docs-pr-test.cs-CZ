@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager funkce šablon - logické | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manager k určení logické hodnoty."
+title: "aaaAzure Resource Manager šablony funkce – logické | Microsoft Docs"
+description: "Popisuje funkce toouse hello v toodetermine šablony Azure Resource Manageru pro logické hodnoty."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 313601ad99cdc12c4b50f5469959d37a9fa70d35
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aec6341fbde00b4eba3b4539ff9a9aec774333fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manager
 
@@ -39,8 +39,8 @@ Kontroluje, zda jsou true obě hodnoty parametru.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Logická hodnota |První hodnota ke kontrole zda hodnotu true. |
-| arg2 |Ano |Logická hodnota |Druhá hodnota, která má zkontrolujte, zda je true. |
+| arg1 |Ano |Logická hodnota |tom, zda text Hello toocheck první hodnota je true. |
+| arg2 |Ano |Logická hodnota |tom, zda text Hello druhý toocheck hodnota je true. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -48,7 +48,7 @@ Vrátí **True** Pokud jsou obě hodnoty true; v opačném **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak použít logické funkce.
+Následující příklad ukazuje, jak Hello toouse logické funkce.
 
 ```json
 {
@@ -72,7 +72,7 @@ Následující příklad ukazuje, jak použít logické funkce.
 }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -84,20 +84,20 @@ Výstup z předchozího příkladu je:
 ## <a name="bool"></a>BOOL
 `bool(arg1)`
 
-Parametr převede na booleovskou hodnotu.
+Převede hello parametr tooa logická hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo celá čísla |Hodnota převést na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo celá čísla |Hello tooa tooconvert hodnota logická hodnota. |
 
 ### <a name="return-value"></a>Návratová hodnota
-Logická hodnota převedená hodnota.
+Logická hodnota Dobrý den převést hodnotu.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat bool s řetězec nebo celé číslo.
+Následující příklad ukazuje, jak Hello bool toouse řetězec nebo celé číslo.
 
 ```json
 {
@@ -125,7 +125,7 @@ Následující příklad ukazuje, jak používat bool s řetězec nebo celé č�
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -143,9 +143,9 @@ Vrátí hodnotu, podle toho, zda je podmínka true nebo false.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Podmínka |Ano |Logická hodnota |Hodnota, zkontrolujte, zda se jedná o hodnotu true. |
-| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota vrácené v případě, že je podmínka vyhodnocena jako true. |
-| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota vrácené v případě, že je podmínka vyhodnocena jako false. |
+| Podmínka |Ano |Logická hodnota |Hodnota toocheck Hello, jestli je true. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota tooreturn Hello, pokud je splněna podmínka hello. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hello hodnota tooreturn při hello podmínka vyhodnocena jako false. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -153,7 +153,7 @@ Vrátí druhý parametr, pokud je první parametr **True**, jinak vrátí třet�
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce slouží k podmíněně nastavení vlastnosti prostředku. V následujícím příkladu není kompletní šablonu, ale zobrazuje části relevantní pro podmíněně nastavení skupiny dostupnosti.
+Tato sada tooconditionally funkce můžete použít vlastnost prostředku. Hello následující příklad není kompletní šablonu, ale zobrazuje hello příslušné části pro skupinu dostupnosti hello podmíněně nastavení.
 
 ```json
 {
@@ -199,7 +199,7 @@ Tato funkce slouží k podmíněně nastavení vlastnosti prostředku. V násled
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak používat `if` funkce.
+Následující příklad ukazuje, jak Hello toouse hello `if` funkce.
 
 ```json
 {
@@ -220,7 +220,7 @@ Následující příklad ukazuje, jak používat `if` funkce.
 }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -231,13 +231,13 @@ Výstup z předchozího příkladu je:
 ## <a name="not"></a>není
 `not(arg1)`
 
-Převede logickou hodnotu na opačnou hodnotu.
+Převede logickou hodnotu tooits opačným hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Logická hodnota |Hodnota k převedení. |
+| arg1 |Ano |Logická hodnota |Hodnota tooconvert Hello. |
 
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -246,7 +246,7 @@ Vrátí **True** po parametr **False**. Vrátí **False** po parametr **True**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak použít logické funkce.
+Následující příklad ukazuje, jak Hello toouse logické funkce.
 
 ```json
 {
@@ -270,7 +270,7 @@ Následující příklad ukazuje, jak použít logické funkce.
 }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -278,7 +278,7 @@ Výstup z předchozího příkladu je:
 | orExampleOutput | BOOL | True |
 | notExampleOutput | BOOL | False |
 
-Následující příklad používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
+Hello následující příklad používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -294,7 +294,7 @@ Následující příklad používá **není** s [rovná](resource-group-template
     }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -310,8 +310,8 @@ Zkontroluje, zda je buď parametr hodnotu true.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Logická hodnota |První hodnota ke kontrole zda hodnotu true. |
-| arg2 |Ano |Logická hodnota |Druhá hodnota, která má zkontrolujte, zda je true. |
+| arg1 |Ano |Logická hodnota |tom, zda text Hello toocheck první hodnota je true. |
+| arg2 |Ano |Logická hodnota |tom, zda text Hello druhý toocheck hodnota je true. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -319,7 +319,7 @@ Vrátí **True** Pokud buď hodnota je true; v opačném **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak použít logické funkce.
+Následující příklad ukazuje, jak Hello toouse logické funkce.
 
 ```json
 {
@@ -343,7 +343,7 @@ Následující příklad ukazuje, jak použít logické funkce.
 }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -353,8 +353,8 @@ Výstup z předchozího příkladu je:
 
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

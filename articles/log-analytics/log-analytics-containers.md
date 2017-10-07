@@ -1,6 +1,6 @@
 ---
-title: "Kontejner monitorování řešení v Azure Log Analytics | Microsoft Docs"
-description: "Řešení monitorování kontejneru v analýzy protokolů umožňuje zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě."
+title: "aaaContainer monitorování řešení v Azure Log Analytics | Microsoft Docs"
+description: "Hello monitorování kontejneru řešení v analýzy protokolů umožňuje zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: b2e03531ee401f4552198e5dd50fbfe1d970f0e5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2eed1dd81c22faef78a375fca3ebece9e5300c09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení monitorování kontejneru v analýzy protokolů
 
 ![Kontejnery – symbol](./media/log-analytics-containers/containers-symbol.png)
 
-Tento článek popisuje, jak nastavit a použít řešení monitorování kontejneru v analýzy protokolů, která slouží k zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě. Docker je systém virtualizační software používá k vytvoření kontejnerů, které automatizují nasazení softwaru na počítačovou infrastrukturu.
+Tento článek popisuje, jak tooset nahoru a používání hello monitorování kontejneru řešení v analýzy protokolů, která slouží k zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě. Docker je použit systém virtualizační software toocreate kontejnery, které automatizují tootheir nasazení softwaru IT infrastruktury.
 
-Řešení ukazuje jsou kontejnery, které běží, jaké kontejneru image se používáte, a kde kontejnery běží. Můžete zobrazit podrobné informace o auditování zobrazující příkazy používané s kontejnery. A kontejnery můžete vyřešit tak, že zobrazení a hledání centralizované protokoly bez nutnosti Chcete-li zobrazit hostitelů Docker nebo systému Windows. Můžete najít kontejnery, které může být aktivní nebo využívání nadbytečné prostředky na hostiteli. A lze je zobrazit centralizované procesoru, paměti, úložiště a využití a výkonu informace o síti pro kontejnery. V počítačích se systémem Windows, můžete centralizovat a porovnání protokoly ze systému Windows Server, technologie Hyper-V a Docker kontejnerů. Řešení podporuje následující orchestrators kontejneru:
+Hello řešení zobrazuje, který kontejnery běží, jaké kontejneru bitové kopie, že používáte systém, a kde kontejnery běží. Můžete zobrazit podrobné informace o auditování zobrazující příkazy používané s kontejnery. A kontejnery můžete vyřešit tak, že zobrazení a hledání centralizované protokoly bez nutnosti tooremotely zobrazení Docker nebo hostitelů systému Windows. Můžete najít kontejnery, které může být aktivní nebo využívání nadbytečné prostředky na hostiteli. A lze je zobrazit centralizované procesoru, paměti, úložiště a využití a výkonu informace o síti pro kontejnery. V počítačích se systémem Windows, můžete centralizovat a porovnání protokoly ze systému Windows Server, technologie Hyper-V a Docker kontejnerů. řešení Hello podporuje hello následující orchestrators kontejneru:
 
 - Docker Swarm
 - DC/OS
@@ -35,16 +35,16 @@ Tento článek popisuje, jak nastavit a použít řešení monitorování kontej
 - Red Hat OpenShift
 
 
-Následující diagram znázorňuje vztahy mezi různými hostiteli kontejneru a agentů v OMS.
+Hello následující diagram znázorňuje hello vztahy mezi různými hostiteli kontejneru a agentů v OMS.
 
 ![Diagram kontejnery](./media/log-analytics-containers/containers-diagram.png)
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
-Než začnete, zkontrolujte následující podrobnosti k ověření, že splňujete požadavky.
+Než začnete, zkontrolujte následující podrobnosti tooverify splňujete požadavky hello hello.
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Podpora řešení monitorování kontejneru pro platformy Docker Orchestrator a verze operačního systému
-Následující tabulka popisuje Docker orchestration a monitorování podporu kontejneru inventáře, výkonu a protokoly s analýzy protokolů operačního systému.   
+Hello následující tabulka obsahuje přehled hello Docker orchestration a operační systém monitorování podporu kontejneru inventáře, výkonu a protokoly s analýzy protokolů.   
 
 | | ACS | Linux | Windows | Kontejner<br>Inventáře | Image<br>Inventáře | Node<br>Inventáře | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -59,7 +59,7 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 
 ### <a name="docker-versions-supported-on-linux"></a>Verze docker podporované v systému Linux
 
-- Docker 1.11 k 1.13
+- Docker 1.11 too1.13
 - V17.06 docker CE a EE
 
 ### <a name="x64-linux-distributions-supported-as-container-hosts"></a>x64 Linuxových distribucích podporovány jako hostitele kontejneru
@@ -73,8 +73,8 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 - SLES 12
 - RHEL 7.2 a 7.3
 - Red Hat OpenShift kontejneru platformy (OCP) 3.4 a 3.5
-- Služba ACS Mesosphere DC/OS 1.7.3 až 1.8.8
-- Služba ACS Kubernetes 1.4.5 na 1.6
+- Too1.8.8 DC/OS 1.7.3 Mesosphere služby ACS
+- Služba ACS Kubernetes 1.4.5 too1.6
 - Služba ACS Docker Swarm
 
 ### <a name="supported-windows-operating-system"></a>Podporovaný operační systém Windows
@@ -87,41 +87,41 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 - Docker 1.12 a 1.13
 - Docker 17.03.0 a novější
 
-## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
-Použijte následující informace k instalaci a konfiguraci řešení.
+## <a name="installing-and-configuring-hello-solution"></a>Instalace a konfigurace řešení hello
+Použijte následující informace tooinstall hello a nakonfigurujte hello řešení.
 
-1. Přidat kontejner monitorování řešení do pracovního prostoru OMS z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+1. Přidat hello monitorování kontejneru řešení tooyour pracovním prostorem OMS z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí hello procesu popsaného v tématu [řešení přidat analýzy protokolů z hello řešení Galerie](log-analytics-add-solutions.md).
 
-2. Nainstalovat a používat Docker s agentem OMS.  V závislosti na použitém operačním systému, můžete vybrat z následujících metod:
+2. Nainstalovat a používat Docker s agentem OMS.  V závislosti na použitém operačním systému, můžete vybrat z hello následující metody:
 
-  * Na podporovaných operačních systémů Linux, nainstalujte a spusťte Docker a poté nainstalujte a nakonfigurujte [OMS agenta pro Linux](log-analytics-agent-linux.md).  
-  * Na jádro operačního systému nelze spustit agenta OMS pro Linux. Místo toho spustíte kontejnerizované verzi agenta OMS pro Linux. Zkontrolujte [Linux kontejneru hostitele, včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitele kontejner Azure Government Linux včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
-  * V systému Windows Server 2016 a Windows 10 nainstalujte modul Docker a klienta pak připojit agenta pro shromažďování informací a odeslat ho k analýze protokolů.  
+  * Na podporovaných operačních systémů Linux, nainstalujte a spusťte Docker a poté nainstalujte a nakonfigurujte hello [OMS agenta pro Linux](log-analytics-agent-linux.md).  
+  * Na jádro operačního systému nelze spustit hello OMS agenta pro Linux. Místo toho spustíte kontejnerizované verzi hello OMS agenta pro Linux. Zkontrolujte [Linux kontejneru hostitele, včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitele kontejner Azure Government Linux včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
+  * V systému Windows Server 2016 a Windows 10 instalaci hello modulu Docker a klienta pak připojit agenta toogather informace a odeslat tooLog Analytics.  
 
 ### <a name="container-services"></a>Služby kontejneru
 
 - Pokud máte Red Hat OpenShift prostředí, přečtěte si [konfigurace agenta OMS pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
-- Pokud máte Kubernetes clusteru Azure Container Service pomocí, přečtěte si [monitorování clusteru Azure Container Service s Operations Management Suite (OMS)](../container-service/kubernetes/container-service-kubernetes-oms.md).
+- Pokud máte cluster Kubernetes pomocí hello Azure Container Service, přečtěte si [monitorování clusteru Azure Container Service s Operations Management Suite (OMS)](../container-service/kubernetes/container-service-kubernetes-oms.md).
 - Pokud máte cluster Azure Container Service DC/OS, přečtěte si informace v [monitorování clusteru Azure Container Service DC/OS s Operations Management Suite](../container-service/dcos-swarm/container-service-monitoring-oms.md).
 - Pokud máte prostředí režimu Docker Swarm, další informace v [konfigurace agenta OMS pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
 - Pokud používáte kontejnery s Service Fabric, další informace v [přehled Azure Service Fabric](../service-fabric/service-fabric-overview.md).
-- Zkontrolujte [modulu Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) článek Další informace o tom, jak nainstalovat a nakonfigurovat vaše Docker moduly v počítačích se systémem Windows.
+- Zkontrolujte hello [modulu Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) Další informace o tom, najdete v článku tooinstall a konfigurace vašeho Docker moduly v počítačích se systémem Windows.
 
 > [!IMPORTANT]
-> Docker musí být spuštěna **před** nainstalujete [OMS agenta pro Linux](log-analytics-agent-linux.md) v hostitelích kontejneru. Pokud jste již nainstalovali agenta před instalací Docker, budete muset znovu nainstalujte agenta OMS pro Linux. Další informace o Docker najdete v tématu [Docker webu](https://www.docker.com).
+> Docker musí být spuštěna **před** nainstalujete hello [OMS agenta pro Linux](log-analytics-agent-linux.md) v hostitelích kontejneru. Pokud jste již nainstalovali agenta hello před instalací Docker, musíte tooreinstall hello OMS agenta pro Linux. Další informace o Docker najdete v tématu hello [Docker webu](https://www.docker.com).
 
 
 ## <a name="linux-container-hosts"></a>Linux kontejneru hostitele
 
-Po instalaci Docker, použijte následující nastavení pro svého hostitele kontejneru konfigurace agenta pro použití s Docker. Je třeba nejprve vaše OMS ID a klíč, který můžete najít na portálu Azure. V pracovním prostoru, klikněte na tlačítko **rychlý Start** > **počítače** zobrazíte vaše **ID pracovního prostoru** a **primární klíč**.  Zkopírujte a vložte do vašeho oblíbeného editoru.
+Po instalaci Docker, použijte následující nastavení pro agenta kontejneru hostitele tooconfigure hello pro použití s nástrojem Docker hello. Je třeba nejprve vaše OMS ID a klíč, který můžete najít v hello portálu Azure. V pracovním prostoru, klikněte na tlačítko **rychlý Start** > **počítače** tooview vaše **ID pracovního prostoru** a **primární klíč**.  Zkopírujte a vložte do vašeho oblíbeného editoru.
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>Pro všechny hostitele kontejneru Linux s výjimkou CoreOS
 
-- Další informace a kroky k instalaci agenta OMS pro Linux najdete v tématu [připojení počítačů Linux k Operations Management Suite (OMS)](log-analytics-agent-linux.md).
+- Další informace a kroky na tom, jak tooinstall hello OMS agenta pro Linux najdete v tématu [připojit vaše počítače se systémem Linux tooOperations Management Suite (OMS)](log-analytics-agent-linux.md).
 
 ### <a name="for-all-linux-container-hosts-including-coreos"></a>Pro všechny hostitele Linux kontejneru, včetně CoreOS
 
-Spusťte kontejner OMS, který chcete monitorovat. Upravit a použít v následujícím příkladu:
+Spusťte kontejner hello OMS, které chcete toomonitor. Upravit a použít hello následující ukázka:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
@@ -129,36 +129,36 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 ### <a name="for-all-azure-government-linux-container-hosts-including-coreos"></a>Pro všechny hostitele kontejner Azure Government Linux včetně CoreOS
 
-Spusťte kontejner OMS, který chcete monitorovat. Upravit a použít v následujícím příkladu:
+Spusťte kontejner hello OMS, které chcete toomonitor. Upravit a použít hello následující ukázka:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
-### <a name="switching-from-using-an-installed-linux-agent-to-one-in-a-container"></a>Přepínání z pomocí nainstalovaného agenta systému Linux na jednu v kontejneru
-Pokud dříve použít agenta přímo nainstalovat a chcete místo toho použít agenta spuštěného v kontejneru, je nutné nejprve odebrat agenta OMS pro Linux. V tématu [odinstalování agenta OMS pro Linux](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux) pochopit, jak úspěšně odinstalace agenta.  
+### <a name="switching-from-using-an-installed-linux-agent-tooone-in-a-container"></a>Přepínání z pomocí nainstalovaného agenta tooone Linux v kontejneru
+Pokud dříve používá hello přímo nainstalovat agenta a chcete tooinstead použijte agenta spuštěného v kontejneru, musíte nejdřív odebrat hello OMS agenta pro Linux. V tématu [hello odinstalace agenta OMS pro Linux](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux) toounderstand, jak odinstalovat toosuccessfully hello agenta.  
 
 ### <a name="configure-an-oms-agent-for-docker-swarm"></a>Konfigurace agenta OMS pro Docker Swarm
 
-Spuštěním agenta OMS jako globální služby v nástroji Docker Swarm. Použijte následující informace pro vytvoření služby OMS Agent. Je třeba vložit ID pracovního prostoru OMS a primární klíč.
+Jako globální služby můžete spustit hello agenta OMS na Docker Swarm. Použijte následující informace toocreate služby agenta OMS hello. Je třeba tooinsert ID pracovního prostoru OMS a primární klíč.
 
-- Spusťte následující na hlavní uzel.
+- Spusťte následující hello na hlavní uzel hello.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
 ### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Konfigurace agenta OMS pro OpenShift Red Hat
-Existují tři způsoby, jak přidat agenta OMS na Red Hat OpenShift spustit shromažďování dat monitorování kontejneru.
+Existují tři způsoby tooadd hello agenta OMS tooRed Hat OpenShift toostart shromažďování kontejner dat monitorování.
 
-* [Nainstalovat agenta OMS pro Linux](log-analytics-agent-linux.md) přímo na každém uzlu OpenShift  
+* [Instalace hello OMS agenta pro Linux](log-analytics-agent-linux.md) přímo na každém uzlu OpenShift  
 * [Povolit rozšíření virtuálního počítače Log Analytics](log-analytics-azure-vm-extension.md) na každém uzlu OpenShift umístěných v Azure  
-* Nainstalovat agenta OMS jako OpenShift démon sada  
+* Nainstalovat agenta OMS hello jako OpenShift démon sadu  
 
-V této části nabídneme kroky potřebné k instalaci agenta OMS jako démon OpenShift-set.  
+V této části nabídneme hello kroky požadované tooinstall hello agenta OMS jako démon OpenShift-set.  
 
-1. Přihlaste se k hlavní uzel OpenShift a zkopírujte soubor yaml [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z webu GitHub na hlavní uzel a změňte hodnotu s vaše ID pracovního prostoru OMS a primární klíč.
-2. Spusťte následující příkazy pro vytvoření projektu pro OMS a nastavení uživatelského účtu.
+1. Přihlášení toohello OpenShift hlavní uzel a zkopírujte hello yaml soubor [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z Githubu tooyour hlavní uzel a měnit hodnotu hello s vaše ID pracovního prostoru OMS a primární klíč.
+2. Spusťte následující příkazy toocreate hello projektu pro OMS a nastavte hello uživatelský účet.
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -168,15 +168,15 @@ V této části nabídneme kroky potřebné k instalaci agenta OMS jako démon O
     oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-4. Chcete-li nasadit sadu démon, spusťte následující:
+4. toodeploy hello démon set, spusťte následující hello:
 
     `oc create -f ocp-omsagent.yaml`
 
-5. Ověřte, zda že je nakonfigurován a funguje správně, zadejte následující příkaz:
+5. tooverify, který je nakonfigurován a že fungují správně, zadejte následující hello:
 
     `oc describe daemonset omsagent`  
 
-    a měl by vypadat jako výstup:
+    a měl by vypadat jako výstup hello:
 
     ```
     [ocpadmin@khm-0 ~]$ oc describe ds oms  
@@ -194,10 +194,10 @@ V této části nabídneme kroky potřebné k instalaci agenta OMS jako démon O
     No events.  
     ```
 
-Pokud chcete použít k zabezpečení ID pracovního prostoru OMS a primární klíč při použití souboru démon set yaml agenta OMS tajné klíče, proveďte následující kroky.
+Pokud chcete toouse tajné klíče toosecure ID pracovního prostoru OMS a primární klíč při použití souboru démon set yaml agenta OMS hello, proveďte následující kroky hello.
 
-1. Přihlaste se k hlavní uzel OpenShift a zkopírujte soubor yaml [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný klíč generování skriptu [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z Githubu.  Tento skript vygeneruje soubor yaml tajné klíče pro ID pracovního prostoru OMS a primární klíč zabezpečit vaše secrete informace.  
-2. Spusťte následující příkazy pro vytvoření projektu pro OMS a nastavení uživatelského účtu. Tajný klíč generování skriptu požádá o vaše ID pracovního prostoru OMS <WSID> a primární klíč <KEY> a po dokončení zpracování se vytvoří soubor ocp-secret.yaml.  
+1. Přihlášení toohello OpenShift hlavní uzel a zkopírujte hello yaml soubor [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný klíč generování skriptu [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z Githubu.  Tento skript vygeneruje soubor yaml hello tajné klíče pro ID pracovního prostoru OMS a primární klíč toosecure vaše secrete informace.  
+2. Spusťte následující příkazy toocreate hello projektu pro OMS a nastavte hello uživatelský účet. tajný klíč Hello generování skriptu požádá o vaše ID pracovního prostoru OMS <WSID> a primární klíč <KEY> a po dokončení zpracování se vytvoří soubor ocp secret.yaml hello.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -207,15 +207,15 @@ Pokud chcete použít k zabezpečení ID pracovního prostoru OMS a primární k
     oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-4. Nasaďte soubor tajný spuštěním následujícího:
+4. Nasaďte soubor tajný hello spuštěním hello následující:
 
     `oc create -f ocp-secret.yaml`
 
-5. Ověření nasazení tak, že spustíte následující:
+5. Ověření nasazení tak, že spustíte následující hello:
 
     `oc describe secret omsagent-secret`  
 
-    a měl by vypadat jako výstup:  
+    a měl by vypadat jako výstup hello:  
 
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
@@ -233,15 +233,15 @@ Pokud chcete použít k zabezpečení ID pracovního prostoru OMS a primární k
     No events.  
     ```
 
-6. Nasaďte soubor démon set yaml OMS agenta spuštěním následujícího:
+6. Nasaďte soubor démon set yaml agenta OMS hello spuštěním hello následující:
 
     `oc create -f ocp-ds-omsagent.yaml`  
 
-7. Ověření nasazení tak, že spustíte následující:
+7. Ověření nasazení tak, že spustíte následující hello:
 
     `oc describe ds oms`
 
-    a měl by vypadat jako výstup:
+    a měl by vypadat jako výstup hello:
 
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
@@ -264,9 +264,9 @@ Pro Docker Swarm a Kubernetes kontejneru služby můžete zabezpečit tajný ID 
 
 #### <a name="secure-secrets-for-docker-swarm"></a>Zabezpečené tajné klíče pro Docker Swarm
 
-Pro Docker Swarm Jakmile se vytvoří tajný klíč pro ID pracovního prostoru a primární klíč, můžete spustit vytvořením službu Docker OMSagent. Použijte následující informace pro vytvoření tajných informací.
+Pro Docker Swarm, jakmile se vytvoří hello tajný klíč pro ID pracovního prostoru a primární klíč, můžete spustit hello vytvořte službu Docker hello OMSagent. Použijte následující informace toocreate hello tajné informace.
 
-1. Spusťte následující na hlavní uzel.
+1. Spusťte následující hello na hlavní uzel hello.
 
     ```
     echo "WSID" | docker secret create WSID -
@@ -285,7 +285,7 @@ Pro Docker Swarm Jakmile se vytvoří tajný klíč pro ID pracovního prostoru 
     l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
     ```
 
-3. Spusťte následující příkaz připojit tajné klíče kontejnerizované Agent OMS.
+3. Spuštění hello následující příkaz toomount hello tajné klíče toohello kontejnerizované OMS Agent.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
@@ -293,16 +293,16 @@ Pro Docker Swarm Jakmile se vytvoří tajný klíč pro ID pracovního prostoru 
 
 #### <a name="secure-secrets-for-kubernetes-with-yaml-files"></a>Zabezpečené tajné klíče pro Kubernetes s yaml soubory
 
-Pro Kubernetes pomocí skriptu pro generování souboru yaml tajné klíče pro ID pracovního prostoru a primární klíč. Na [OMS Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) stránky, jsou soubory, které můžete použít s nebo bez tajné informace.
+Pro Kubernetes použijete soubor skriptu toogenerate hello tajné klíče yaml ID pracovního prostoru a primární klíč. V hello [OMS Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) stránky, jsou soubory, které můžete použít s nebo bez tajné informace.
 
-- DaemonSet výchozí agenta OMS nemá tajné informace (omsagent.yaml)
-- Soubor yaml DaemonSet agenta OMS používá tajné informace (omsagent – ds-secrets.yaml) s tajný generování skriptů pro generování souboru yaml (omsagentsecret.yaml) tajných klíčů.
+- Hello výchozí DaemonSet agenta OMS nemá tajné informace (omsagent.yaml)
+- soubor yaml DaemonSet agenta OMS Hello používá tajné informace (omsagent – ds-secrets.yaml) s tajný generování skriptů toogenerate hello tajné klíče yaml (omsagentsecret.yaml) souboru.
 
-Můžete vytvořit omsagent DaemonSets s nebo bez tajných klíčů.
+Můžete zvolit toocreate omsagent DaemonSets s nebo bez tajných klíčů.
 
 ##### <a name="default-omsagent-daemonset-yaml-file-without-secrets"></a>Výchozí soubor yaml OMSagent DaemonSet bez tajné klíče
 
-- Výchozí DaemonSet agenta OMS yaml souboru, nahraďte `<WSID>` a `<KEY>` WSID a klíč. Zkopírujte soubor do hlavní uzel a spusťte následující:
+- Hello výchozí DaemonSet agenta OMS yaml souboru, nahraďte hello `<WSID>` a `<KEY>` tooyour WSID a klíč. Zkopírujte hlavní uzel tooyour hello souboru a spuštění hello následující:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -310,22 +310,22 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných klíčů.
 
 ##### <a name="default-omsagent-daemonset-yaml-file-with-secrets"></a>Výchozí OMSagent DaemonSet yaml soubor obsahující tajné údaje
 
-1. Pokud chcete používat DaemonSet agenta OMS pomocí tajné informace, nejprve vytvořte těchto tajných klíčů.
-    1. Zkopírujte skript a soubor tajný šablony a ujistěte se, že jsou ve stejném adresáři.
+1. toouse DaemonSet agenta OMS tajné informace, pomocí tajných klíčů hello nejprve vytvořit.
+    1. Zkopírujte skript hello a soubor tajný šablony a ujistěte se, že jsou na hello stejný adresář.
         - Generování skriptu - tajný klíč gen.sh tajný klíč
         - Šablona tajné – template.yaml tajný klíč
-    2. Spusťte skript, jako v následujícím příkladu. Skript vyzve k zadání ID pracovního prostoru OMS a primární klíč a po zadání je skript vytvoří soubor tajný yaml, můžete ji spustit.   
+    2. Spusťte skript hello, jako je hello následující ukázka. skript Hello požádá o hello ID pracovního prostoru OMS a primární klíč a po zadání je skript hello vytvoří soubor tajný yaml, můžete ji spustit.   
 
         ```
         #> sudo bash ./secret-gen.sh
         ```
 
-    3. Vytvoření tajných klíčů pod spuštěním následujícího:
+    3. Vytvořte hello tajné klíče pod spuštěním hello následující:
         ```
         sudo kubectl create -f omsagentsecret.yaml
         ```
 
-    4. Pokud chcete ověřit, spusťte následující:
+    4. tooverify spustit hello následující:
 
         ```
         keiko@ubuntu16-13db:~# sudo kubectl get secrets
@@ -361,7 +361,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných klíčů.
 
     5. Vytvoření vaší omsagent démon set spuštěním``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
 
-2. Ověřte, zda DaemonSet agenta OMS je spuštěna, podobný následujícímu:
+2. Ověřte, že hello, které běží DaemonSet agenta OMS, podobně jako toohello následující:
 
     ```
     keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
@@ -373,7 +373,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných klíčů.
     ```
 
 
-Pro Kubernetes pomocí skriptu pro generování souboru yaml tajné klíče pro ID pracovního prostoru a primární klíč. Následující příklad informace s [omsagent yaml souboru](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) zabezpečit vaše tajné informace.
+Pro Kubernetes použijte soubor skriptu toogenerate hello tajné klíče yaml pro ID pracovního prostoru a primární klíč. Hello použijte následující informace z příkladu s hello [omsagent yaml soubor](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) toosecure tajné informace.
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -394,11 +394,11 @@ KEY:    88 bytes
 
 ### <a name="preparation-before-installing-windows-agents"></a>Příprava před instalací agentů v systému Windows
 
-Před instalací agentů do počítačů se systémem Windows, musíte nakonfigurovat službu Docker. Konfigurace umožňuje agent služby Windows nebo analýzy protokolů rozšíření virtuálního počítače používat soketu Docker TCP tak agentů můžete přistupovat vzdáleně démon Docker a k zaznamenání dat pro monitorování.
+Před instalací agentů do počítačů se systémem Windows, musíte tooconfigure hello Docker služby. Konfigurace Hello umožňuje hello Windows agenta nebo hello analýzy protokolů virtuálního počítače rozšíření toouse hello soketu Docker TCP tak, aby hello agentů můžete přistupovat vzdáleně hello Docker démon a toocapture data monitorování.
 
-#### <a name="to-start-docker-and-verify-its-configuration"></a>Spuštění Docker a ověřte jeho konfiguraci
+#### <a name="toostart-docker-and-verify-its-configuration"></a>toostart Docker a ověřte jeho konfiguraci
 
-Je třeba kroky potřebné k nastavení TCP pojmenovaný kanál pro systém Windows Server:
+Existují kroky tooset až TCP pojmenovaný kanál pro systém Windows Server:
 
 1. V prostředí Windows PowerShell povolte kanálu TCP a pojmenovaný kanál.
 
@@ -409,9 +409,9 @@ Je třeba kroky potřebné k nastavení TCP pojmenovaný kanál pro systém Wind
     Start-Service docker
     ```
 
-2. Konfigurace Docker pomocí konfiguračního souboru pro TCP kanálu a pojmenovaný kanál. Konfigurační soubor se nachází v C:\ProgramData\docker\config\daemon.json.
+2. Nakonfigurujte Docker hello konfiguračního souboru pro TCP kanálu a pojmenovaný kanál. Hello konfigurační soubor se nachází v C:\ProgramData\docker\config\daemon.json.
 
-    V souboru daemon.json budete potřebovat následující:
+    V souboru daemon.json hello budete potřebovat následující hello:
 
     ```
     {
@@ -419,28 +419,28 @@ Je třeba kroky potřebné k nastavení TCP pojmenovaný kanál pro systém Wind
     }
     ```
 
-Další informace o konfiguraci démon Docker použít s kontejnery Windows najdete v tématu [modulu Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Další informace o konfiguraci démon Docker hello používá s kontejnery Windows najdete v tématu [modulu Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 
 ### <a name="install-windows-agents"></a>Instalace agentů v systému Windows
 
-Chcete-li povolit monitorování kontejneru systému Windows a technologie Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) na počítačích s Windows, které jsou hostiteli kontejneru. Pro počítače se systémem Windows v místním prostředí, najdete v části [počítače se systémem Windows se připojit k analýze protokolů](log-analytics-windows-agents.md). Pro virtuální počítače běžící v Azure, připojte je k analýze protokolů pomocí [rozšíření virtuálního počítače](log-analytics-azure-vm-extension.md).
+tooenable Windows a monitorování, technologie Hyper-V kontejneru nainstalovat na počítačích s Windows, které jsou hostiteli kontejneru hello Microsoft Monitoring Agent (MMA). Pro počítače se systémem Windows v místním prostředí, najdete v části [tooLog počítače připojit Windows Analytics](log-analytics-windows-agents.md). Pro virtuální počítače běžící v Azure, připojte je tooLog analýzy pomocí hello [rozšíření virtuálního počítače](log-analytics-azure-vm-extension.md).
 
 Můžete monitorovat kontejnery Windows spuštěné v Service Fabric. Ale pouze [virtuální počítače běžící v Azure](log-analytics-azure-vm-extension.md) a [počítačů se systémem Windows v místním prostředí](log-analytics-windows-agents.md) jsou aktuálně podporovány pro Service Fabric.
 
-Můžete ověřit, jestli je řešení monitorování kontejneru správně nastavené pro systém Windows. Chcete-li zkontrolovat, jestli byla sada management pack správně ke stažení, vyhledejte *ContainerManagement.xxx*. Soubory musí být ve složce C:\Program Files\Microsoft Monitoring Agent\Agent\Health služby State\Management balíčky.
+Můžete ověřit, jestli je že tento hello řešením pro monitorování kontejneru správně nastavený pro systém Windows. toocheck zda hello management pack nebyla stažení správně, vyhledejte *ContainerManagement.xxx*. Hello soubory musí být ve složce C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management SP hello.
 
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Pokud používáte agenty se systémem Windows, je při přidání tohoto řešení následující sady management pack nainstalované na každém počítači s agentem. Je požadován pro sadu management pack bez konfigurace nebo údržby.
+Pokud používáte agenty se systémem Windows, potom hello následující sady management pack je nainstalována na každém počítači s agentem při přidání tohoto řešení. Je požadován pro sadu management pack hello žádná konfigurace nebo údržby.
 
 - *ContainerManagement.xxx* nainstalované v C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management SP
 
 ## <a name="container-data-collection-details"></a>Kontejner dat kolekce podrobnosti
-Řešení monitorování kontejneru shromažďuje různé metriky a protokolu údaje o výkonu z kontejneru hostitelů a kontejnery pomocí agentů, které povolíte.
+Hello řešením pro monitorování kontejneru shromažďuje různé metriky a protokolu údaje o výkonu z kontejneru hostitelů a kontejnery pomocí agentů, které povolíte.
 
-Data jsou shromažďována každé tři minuty následující typy agenta.
+Shromažďuje data každé tři minuty hello následující typy agenta.
 
 - [OMS agenta pro Linux](log-analytics-linux-agents.md)
 - [Agent služby Windows](log-analytics-windows-agents.md)
@@ -449,7 +449,7 @@ Data jsou shromažďována každé tři minuty následující typy agenta.
 
 ### <a name="container-records"></a>Záznamů kontejneru
 
-V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením pro monitorování kontejneru a datové typy, které se zobrazí ve výsledcích hledání protokolu.
+Hello následující tabulka uvádí příklady záznamů shromážděných řešením pro monitorování kontejneru hello a hello datové typy, které se zobrazí ve výsledcích hledání protokolu.
 
 | Datový typ | Datový typ v hledání protokolů | Pole |
 | --- | --- | --- |
@@ -463,85 +463,85 @@ V následující tabulce jsou uvedeny příklady záznamů shromážděných ře
 | Proces kontejneru | `Type=ContainerProcess_CL` | TimeGenerated, počítače, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
 | Kubernetes události | `Type=KubeEvents_CL` | TimeGenerated, počítače, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, zprávy |
 
-Popisky připojenou k *PodLabel* datové typy jsou vlastní štítky. Připojením PodLabel popisky uvedené v tabulce jsou uvedeny příklady. Ano `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` se liší v sadě dat vaše prostředí a obecně vypadat jako `PodLabel_yourlabel_s`.
+Popisky připojeno příliš*PodLabel* datové typy jsou vlastní štítky. Hello připojením PodLabel popisky uvedené v tabulce hello jsou příklady. Ano `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` se liší v sadě dat vaše prostředí a obecně vypadat jako `PodLabel_yourlabel_s`.
 
 
 ## <a name="monitor-containers"></a>Monitorování kontejnery
-Až budete mít řešení povoleno na portálu OMS **kontejnery** dlaždice se zobrazí souhrnné informace o kontejneru hostitelů a kontejnerů, které jsou spuštěné v hostitelích.
+Až budete mít povoleno na portálu OMS hello řešení hello, hello **kontejnery** dlaždice se zobrazí souhrnné informace o kontejneru hostitelů a spuštěné v hostitelích kontejnery hello.
 
 ![Dlaždice kontejnery](./media/log-analytics-containers/containers-title.png)
 
-Na dlaždici ukazuje přehled o tom, kolik kontejnery, které máte v prostředí a jestli se nezdařila, spuštěná nebo zastavená.
+dlaždice Hello ukazuje přehled o tom, kolik kontejnery, které máte v prostředí hello a jestli se nezdařila, spuštěná nebo zastavená.
 
-### <a name="using-the-containers-dashboard"></a>Pomocí řídicího panelu kontejnery
-Klikněte **kontejnery** dlaždici. Zde se zobrazí zobrazení uspořádané podle:
+### <a name="using-hello-containers-dashboard"></a>Pomocí řídicího panelu hello kontejnery
+Klikněte na tlačítko hello **kontejnery** dlaždici. Zde se zobrazí zobrazení uspořádané podle:
 
 - **Události kontejneru** -zobrazuje stav kontejneru a počítače s kontejnery se nezdařilo.
-- **Kontejner protokoly** – zobrazuje graf soubory protokolu kontejneru vygeneroval přes čas a seznam počítačů s nejvyšší počet souborů protokolu.
-- **Události Kubernetes** – zobrazuje graf Kubernetes události generované přes čas a seznam důvodů, proč pracovními stanicemi soustředěnými kolem vygenerované události. *Tato datová sada se používá jenom v prostředích Linux.*
-- **Kubernetes Namespace inventáře** – zobrazuje počet obory názvů a pracovními stanicemi soustředěnými kolem a zobrazí jejich hierarchie. *Tato datová sada se používá jenom v prostředích Linux.*
-- **Uzel inventáře kontejneru** – zobrazuje počet orchestration typy používané v kontejneru uzly nebo hostitele. Uzly počítače nebo hostitelé jsou také uvedeny podle počet kontejnerů. *Tato datová sada se používá jenom v prostředích Linux.*
-- **Kontejner Imagí inventáře** -zobrazuje celkový počet kontejneru obrázků použitých a počet typů bitové kopie. Počet bitových kopií jsou také uvedené podle značky obrázku.
-- **Kontejnery stav** -zobrazuje celkový počet kontejneru uzly nebo hostitelské počítače, které mají spuštěných kontejnerů. Počítače jsou také uvedeny podle počet probíhajících hostitele.
+- **Kontejner protokoly** – zobrazuje graf soubory protokolu kontejneru vygeneroval přes čas a seznam počítačů s hello nejvyšší počet souborů protokolu.
+- **Události Kubernetes** – zobrazuje graf Kubernetes události generované přes čas a seznamu hello důvodů, proč pracovními stanicemi soustředěnými kolem vygeneruje hello události. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Kubernetes Namespace inventáře** – zobrazuje počet hello obory názvů a pracovními stanicemi soustředěnými kolem a zobrazí jejich hierarchie. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Uzel inventáře kontejneru** – zobrazuje počet hello orchestration typy používané v kontejneru uzly nebo hostitele. počítač Hello uzly nebo hostuje jsou také uvedeny podle hello počet kontejnerů. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Kontejner Imagí inventáře** -zobrazuje celkový počet hello kontejneru obrázků použitých a počet typy obrázků. Hello počet bitových kopií, jsou také uvedené podle značky obrázku hello.
+- **Kontejnery stav** -zobrazuje celkový počet kontejneru hello uzly nebo hostitelské počítače, které mají spuštěných kontejnerů. Počítače jsou také uvedeny podle hello počet spuštěných hostitele.
 - **Kontejner proces** -zobrazuje spojnicový graf kontejneru procesů spuštěných v čase. Kontejnery také uvádí spuštěním příkazu/procesu v rámci kontejnerů. *Tato datová sada se používá jenom v prostředích Linux.*
-- **Výkon procesoru kontejneru** – zobrazuje graf řádku průměrné využití procesoru v čase pro počítač uzly nebo hostitele. Také seznamy počítače uzly nebo hostitelů na základě průměrné využití procesoru.
+- **Výkon procesoru kontejneru** – zobrazuje graf řádku hello průměrné využití procesoru v čase pro počítač uzly nebo hostitele. Také seznamy hello počítače uzly nebo hostitelů na základě průměrné využití procesoru.
 - **Kontejner výkonu paměti** -znázorňuje spojnicový graf využití paměti v průběhu času. Také uvádí na název instance na základě využití paměti počítače.
-- **Výkon počítače** -znázorňuje spojnicových grafů procent výkonu procesoru v čase, procentuální využití paměti nad čas a MB volného místa na disku v průběhu času. Pozastavte ukazatel myši nad kterýkoli řádek v grafu zobrazíte další podrobnosti.
+- **Výkon počítače** -znázorňuje spojnicových grafů hello procent výkonu procesoru v čase, procentuální využití paměti nad čas a MB volného místa na disku v průběhu času. Můžete ukazatel myši přesunete kterýkoli řádek v grafu tooview další podrobnosti.
 
 
-Každou oblast řídicí panel je vizuální reprezentace hledání, které běží na shromážděná data.
+Každou oblast hello řídicí panel je vizuální reprezentace hledání, které běží na shromážděná data.
 
 ![Řídicí panel kontejnery](./media/log-analytics-containers/containers-dash01.png)
 
 ![Řídicí panel kontejnery](./media/log-analytics-containers/containers-dash02.png)
 
-V **stav kontejneru** oblast, klikněte na hlavní oblasti, jak je uvedeno níže.
+V hello **stav kontejneru** oblast, klikněte na tlačítko hello hlavní oblasti, jak je uvedeno níže.
 
 ![Stav kontejnery](./media/log-analytics-containers/containers-status.png)
 
-Protokol hledání se otevře, zobrazení informací o stavu kontejnerů.
+Protokol hledání se otevře, zobrazení informací o stavu hello kontejnerů.
 
 ![Hledání protokolů pro kontejnery](./media/log-analytics-containers/containers-log-search.png)
 
-Zde můžete upravit vyhledávací dotaz jak v hotové najít konkrétní informace, že vás zajímá. Další informace o protokolu hledání najdete v tématu [přihlásit analýzy protokolů hledání](log-analytics-log-searches.md).
+Zde můžete upravit hello vyhledávání dotazu toomodify ho toofind hello konkrétní informace, co vás zajímá. Další informace o protokolu hledání najdete v tématu [přihlásit analýzy protokolů hledání](log-analytics-log-searches.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Řešení potíží s tak, že najdete kontejner se nezdařilo
 
-Analýzy protokolů označí kontejneru jako **se nezdařilo** Pokud byl ukončen s nenulový ukončovací kód. Zobrazí se přehled chyb nebo selhání v prostředí v **se nezdařilo kontejnery** oblasti.
+Analýzy protokolů označí kontejneru jako **se nezdařilo** Pokud byl ukončen s nenulový ukončovací kód. Zobrazí se přehled hello chyb nebo selhání v prostředí hello hello **se nezdařilo kontejnery** oblasti.
 
-### <a name="to-find-failed-containers"></a>K vyhledání chybných kontejnery
-1. Klikněte **stav kontejneru** oblasti.  
+### <a name="toofind-failed-containers"></a>kontejnery toofind se nezdařilo
+1. Klikněte na tlačítko hello **stav kontejneru** oblasti.  
    ![Stav kontejnery](./media/log-analytics-containers/containers-status.png)
-2. Protokol hledání se zobrazí stav kontejnery, podobný následujícímu.  
+2. Protokol hledání se zobrazí stav hello kontejnerů, podobně jako toohello následující.  
    ![kontejnery stavu](./media/log-analytics-containers/containers-log-search.png)
-3. Klikněte na tlačítko agregovaná hodnota selhání kontejnery zobrazíte další informace. Rozbalte položku **zobrazit další** zobrazíte ID obrázku.  
+3. Klikněte na tlačítko hello agregovat hodnotu neúspěšné kontejnery tooview Další informace. Rozbalte položku **zobrazit další** ID tooview hello obrázku.  
    ![Neúspěšné kontejnery](./media/log-analytics-containers/containers-state-failed.png)  
-4. Potom zadejte následující příkaz v vyhledávací dotaz. `Type=ContainerInventory <ImageID>`Chcete-li zobrazit podrobnosti o bitovou kopii například velikost bitové kopie a počet zastaven a k selhání bitové kopie.  
+4. Potom zadejte následující hello hello vyhledávací dotaz. `Type=ContainerInventory <ImageID>`toosee údaje o hello image, jako je například velikost bitové kopie a počet zastaven a k selhání bitové kopie.  
    ![Neúspěšné kontejnery](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Hledání protokoly pro kontejner dat
-Pokud se řešení potíží s konkrétní chyby, může pomoct zobrazíte, kde je vznikl ve vašem prostředí. Následující typy protokolu vám pomůže vytvořit dotazy k vrácení informací, že chcete.
+Pokud se řešení potíží s konkrétní chyby, může pomoct toosee, kde je vznikl ve vašem prostředí. následující typy protokolu Hello vám pomůže vytvořit dotazy tooreturn hello informace, které chcete.
 
 
-- **ContainerImageInventory** – tento typ použijte, když se pokoušíte najít informace o uspořádané podle bitové kopie a chcete-li zobrazit informace o obrázku například image ID nebo velikosti.
+- **ContainerImageInventory** – tento typ použijte, když se pokoušíte toofind informace uspořádané podle bitové kopie a tooview informace o obrázku jako ID bitové kopie nebo velikosti.
 - **ContainerInventory** – tento typ použijte, pokud chcete informace o umístění kontejneru, jaké jsou jejich názvy a co bitové kopie, že používáte.
-- **ContainerLog** – tento typ použijte, pokud chcete najít informace o konkrétní chybě protokolu a položky.
-- **ContainerNodeInventory_CL** tento typ můžete použít informace o uzlu hostitele nebo kde je umístěný kontejnery. Poskytuje Docker verze, typ orchestration, úložiště a informace o síti.
-- **ContainerProcess_CL** pomocí tohoto typu lze rychle zobrazit proces, který běží v kontejneru.
-- **ContainerServiceLog** – tento typ použijte, když se pokoušíte najít informace protokolu auditu pro démona Docker, jako je například spuštění, zastavení, odstraňovat nebo příkazy pro vyžádání obsahu.
-- **KubeEvents_CL** použít tento typ sledovat Kubernetes události.
-- **KubePodInventory_CL** tento typ použijte, pokud chcete zjistit informace o clusteru hierarchie.
+- **ContainerLog** – tento typ použijte, pokud chcete informace o protokolu konkrétní chybě toofind a položky.
+- **ContainerNodeInventory_CL** tento typ můžete použít hello informace o uzlu hostitele nebo kde je umístěný kontejnery. Poskytuje Docker verze, typ orchestration, úložiště a informace o síti.
+- **ContainerProcess_CL** použít tento typ tooquickly najdete v části hello proces, který běží v rámci kontejneru hello.
+- **ContainerServiceLog** – tento typ použijte, pokud se pokoušíte toofind informace protokolu auditu pro hello Docker démona, jako je například spuštění, zastavení, odstraňovat nebo příkazy pro vyžádání obsahu.
+- **KubeEvents_CL** použít tento typ toosee hello Kubernetes události.
+- **KubePodInventory_CL** tento typ použijte, pokud chcete informace o hierarchii toounderstand hello clusteru.
 
 
-### <a name="to-search-logs-for-container-data"></a>K vyhledání protokoly pro kontejner dat
-* Vyberte obrázek, který znáte selhával a najít v souborech protokolů chyb pro ni. Začněte tím, že název kontejneru, který běží této bitové kopie s hledání **ContainerInventory** vyhledávání. Například vyhledejte`Type=ContainerInventory ubuntu Failed`  
+### <a name="toosearch-logs-for-container-data"></a>toosearch protokoly pro kontejner dat
+* Vyberte obrázek, který znáte selhával a vyhledání protokolů chyb hello pro ni. Začněte tím, že název kontejneru, který běží této bitové kopie s hledání **ContainerInventory** vyhledávání. Například vyhledejte`Type=ContainerInventory ubuntu Failed`  
     ![Hledat kontejnery Ubuntu](./media/log-analytics-containers/search-ubuntu.png)
 
-  Název kontejneru Další **název**a vyhledejte tyto protokoly. V tomto příkladu je to `Type=ContainerLog cranky_stonebreaker`.
+  Hello název kontejneru hello vedle příliš**název**a vyhledejte tyto protokoly. V tomto příkladu je to `Type=ContainerLog cranky_stonebreaker`.
 
 **Informace o zobrazení výkonu**
 
-Pokud jste od vytvořit dotazy, může pomoct vidět co je možné nejprve. Například pokud chcete zobrazit všechny údaje o výkonu, zkuste široký dotaz zadáním následujících vyhledávací dotaz.
+Pokud jste od tooconstruct dotazy, může pomoct toosee co je možné nejprve. Například toosee, které vyhledávání všechny údaje o výkonu, zkuste široký dotazu zadáním hello následující dotaz.
 
 ```
 Type=Perf
@@ -549,18 +549,18 @@ Type=Perf
 
 ![kontejnery výkonu](./media/log-analytics-containers/containers-perf01.png)
 
-Data výkonu, která se zobrazuje v určitém kontejneru zadáním názvu je napravo od dotazu, můžete určit obor.
+Data výkonu hello se zobrazuje specifický kontejner tooa zadáním názvu hello je toohello napravo od dotazu, můžete určit obor.
 
 ```
 Type=Perf <containerName>
 ```
 
-Který zobrazí seznam metriky výkonu, které se shromažďují pro jednotlivé kontejneru.
+Který zobrazuje hello seznam metriky výkonu, které se shromažďují pro jednotlivé kontejneru.
 
 ![kontejnery výkonu](./media/log-analytics-containers/containers-perf03.png)
 
 ## <a name="example-log-search-queries"></a>Příklad protokolu vyhledávací dotazy
-Je často užitečné k vytvoření dotazů počínaje příklad nebo dva a pak úpravy, aby odpovídaly vašemu prostředí. Jako počáteční bod, můžete vyzkoušet **ukázkové dotazy** oblasti, které vám umožní vytvořit složitější dotazy.
+Často užitečné toobuild dotazuje počínaje příklad nebo dva a úpravou těchto toofit prostředí. Jako počáteční bod, můžete experimentovat s hello **ukázkové dotazy** oblasti toohelp sestavení složitější dotazy.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
@@ -570,7 +570,7 @@ Je často užitečné k vytvoření dotazů počínaje příklad nebo dva a pak 
 ## <a name="saving-log-search-queries"></a>Uložení protokolu vyhledávacích dotazů
 Uložení dotazů je standardní funkce v analýzy protokolů. Je uložíte, budete mít ty, které jste najít užitečné užitečný pro budoucí použití.
 
-Jakmile vytvoříte dotaz, který pro vás užitečné, uložte kliknutím na **Oblíbené** v horní části stránky hledání protokolu. Potom ho později snadno přístup **vlastní řídicí panel** stránky.
+Jakmile vytvoříte dotaz, který pro vás užitečné, uložte kliknutím na **Oblíbené** hello horní části stránky hledání protokolu hello. Potom můžete snadno k němu přístup později z hello **vlastní řídicí panel** stránky.
 
 ## <a name="next-steps"></a>Další kroky
-* [V protokolech Hledat](log-analytics-log-searches.md) zobrazíte podrobné kontejneru datových záznamů.
+* [V protokolech Hledat](log-analytics-log-searches.md) tooview podrobné záznamy dat kontejneru.
