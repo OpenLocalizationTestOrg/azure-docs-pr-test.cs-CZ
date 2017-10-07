@@ -1,5 +1,5 @@
 ---
-title: "Přehled zpětné DNS v Azure | Microsoft Docs"
+title: "aaaOverview zpětné DNS v Azure | Microsoft Docs"
 description: "Zjistěte, jak zpětné funguje DNS a jeho použití v Azure"
 services: dns
 documentationcenter: na
@@ -12,38 +12,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 687663fb83469ab8e696bb714649d0856915bad6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled zpětné DNS a podpory v Azure
 
-Tento článek přináší přehled funguje jak zpětné DNS a zpětného DNS scénáře podporované v Azure.
+Tento článek poskytuje přehled o tom, jak zpětné funguje DNS a hello zpětné DNS scénáře podporované v Azure.
 
 ## <a name="what-is-reverse-dns"></a>Co je zpětné DNS?
 
-Konvenční záznamy DNS povolíte mapování z názvu DNS (např 'www.contoso.com) na IP adresu (například 64.4.6.100).  Zpětné DNS umožňuje překlad IP adresy (64.4.6.100) zpět do název (www.contoso.com).
+Konvenční záznamy DNS povolte mapování z DNS název (např 'www.contoso.com) tooan IP adresu (například 64.4.6.100).  Zpětné DNS umožňuje hello překlad IP adres (64.4.6.100) back tooa názvu (www.contoso.com).
 
-Zpětné záznamy DNS se používají v různých situacích. Zpětné záznamy DNS se často používá v boje proti spamu e-mailu kontrolou odesílatele e-mailové zprávy.  Přijímající poštovního serveru načte zpětné záznam DNS serveru odesílání IP adresy a ověřuje, zda tohoto hostitele je oprávněn k odesílání e-mailu z původní doméně. 
+Zpětné záznamy DNS se používají v různých situacích. Zpětné záznamy DNS se často používá v boje proti spamu e-mailu kontrolou hello odesílatele e-mailové zprávy.  Hello příjmu e-mailu serveru načte hello zpětné záznam hello odesílání IP adresu serveru DNS a ověřuje, pokud hostitele, který je autorizovaný toosend e-mailu z hello pocházející domény. 
 
 ## <a name="how-reverse-dns-works"></a>Jak zpětné funguje DNS
 
-Zpětné záznamy DNS jsou hostované v speciální zóny DNS, označuje jako 'ARPA' zóny.  Tyto zóny formuláři samostatné hierarchie DNS paralelně s normální hierarchii hostování domény, jako je například "contoso.com".
+Zpětné záznamy DNS jsou hostované v speciální zóny DNS, označuje jako 'ARPA' zóny.  Tyto zóny formuláři samostatné hierarchie DNS paralelně s normální hierarchie hello hostování domény, jako je například "contoso.com".
 
-Například DNS záznam "www.contoso.com" je implementovaná pomocí záznam DNS "A" s název "www" v zóně "contoso.com".  Tento záznam A odkazuje na odpovídající IP adresu v tomto případě 64.4.6.100.  Zpětného vyhledávání je implementovaná samostatně pomocí záznamu, PTR, s názvem '100' v zóně '6.4.64.in-addr.arpa' (Upozorňujeme, že jsou v zóny ARPA obrácený IP adresy.)  Tento záznam PTR, pokud byla nakonfigurována správně, odkazuje na název www.contoso.com.
+Například hello záznam DNS "www.contoso.com" je implementovaná pomocí záznam DNS "A" s název hello "www" v zóně hello "contoso.com".  Tento záznam A body toohello odpovídající IP adresy v tomto případě 64.4.6.100.  Hello zpětného vyhledávání je implementovaná samostatně pomocí záznamu, PTR, s názvem '100' v zóně hello '6.4.64.in-addr.arpa' (Upozorňujeme, že jsou v zóny ARPA obrácený IP adresy.)  Tento záznam PTR, pokud byla nakonfigurována správně, body toohello název "www.contoso.com".
 
-Pokud organizace přiřazen blok IP adres, budou také získat právo spravovat odpovídající zóny ARPA. Zóny ARPA odpovídající bloky IP adres, používají v Azure jsou hostované a spravované společností Microsoft. Poskytovatel internetových služeb může hostitel zóny ARPA pro vlastní IP adresy pro vás, nebo může povolit hostitel zóny ARPA ve službě DNS podle vaší volby, například Azure DNS.
+Pokud organizace přiřazen blok IP adres, získat jejich hello správné toomanage hello odpovídající ARPA zónu. Hello zóny ARPA odpovídající toohello IP adresu bloky, na které se používají v Azure jsou hostované a spravované společností Microsoft. Poskytovatel internetových služeb může hostovat hello zóny ARPA pro vlastní IP adresy pro vás, nebo může povolíte tooyou hostitele zóny ARPA hello ve službě DNS podle vaší volby, například Azure DNS.
 
 > [!NOTE]
-> Dopředného vyhledávání DNS a zpětného vyhledávání DNS jsou implementované v samostatné, paralelní hierarchiích DNS. Zpětné vyhledávání pro "www.contoso.com" je **není** hostované v zóně "contoso.com", spíše je hostovaná v zóny ARPA pro odpovídající blok IP adres. Samostatné zóny jsou používány pro bloky adres IPv4 a IPv6.
+> Dopředného vyhledávání DNS a zpětného vyhledávání DNS jsou implementované v samostatné, paralelní hierarchiích DNS. Hello zpětného vyhledávání pro "www.contoso.com" je **není** hostované v hello zóně "contoso.com", spíše je hostovaná v hello zóny ARPA pro hello odpovídající blok IP adres. Samostatné zóny jsou používány pro bloky adres IPv4 a IPv6.
 
 ### <a name="ipv4"></a>IPv4
 
-Název zóny zpětného vyhledávání IPv4 musí být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Název Hello zóny zpětného vyhledávání IPv4 by měl být ve formátu hello: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Například při vytváření zóny zpětného vyhledávání pro záznamy hostitele pro hostitele pomocí IP adresy, které jsou v předponu 192.0.2.0/24, název zóny by se vytvořily izolace sítě předponu adresy (192.0.2) a pak obrácení směru (2.0.192) a přidáním přípona `.in-addr.arpa`.
+Například při vytváření zóny zpětného vyhledávání toohost záznamů pro hostitele pomocí IP adresy, které jsou v hello 192.0.2.0/24 předponu, název zóny hello by se vytvořily tak, že izoluje hello sítě předponu adresy hello (192.0.2) a pak obrácení směru hello (2.0.192) a přidání hello přípona `.in-addr.arpa`.
 
 |Podsíť – třída|Předpona sítě  |Předpona odstínech sítě  |Standardní příponu  |Název zóny zpětného vyhledávání |
 |-------|----------------|------------|-----------------|---------------------------|
@@ -53,13 +53,13 @@ Například při vytváření zóny zpětného vyhledávání pro záznamy hosti
 
 ### <a name="classless-ipv4-delegation"></a>Notace delegování IPv4
 
-V některých případech je menší než třídy C rozsah IP adres přidělené organizace (/ 24) rozsahu. V takovém případě rozsah IP adres nespadá na hranici zóny v rámci `.in-addr.arpa` zón hierarchii a proto není možné delegovat jako podřízenou zónu.
+V některých případech je menší než třídy C hello rozsah IP adres přidělené tooan organizace (/ 24) rozsahu. V takovém případě rozsah IP hello nespadá na hranici zóny v rámci hello `.in-addr.arpa` zón hierarchii a proto není možné delegovat jako podřízenou zónu.
 
-Místo toho jiný mechanismus se používá k přenosu řízení záznamů jednotlivých zpětného vyhledávání (PTR) vyhrazené zóny DNS. Tento mechanismus deleguje podřízenou zónu pro každý rozsah IP adres a potom mapuje jednotlivě každou IP adresu v rozsahu tohoto podřízenou zónu pomocí záznamů CNAME.
+Místo toho se používá jiný mechanismus řízení tootransfer jednotlivých zpětného vyhledávání (PTR) zaznamenává tooa vyhrazené zóny DNS. Tento mechanismus deleguje podřízenou zónu pro každý rozsah IP adres a potom mapy jednotlivých IP adres v hello rozsahu jednotlivě toothat podřízenou zónu pomocí záznamů CNAME.
 
-Předpokládejme například, že organizace je udělit 192.0.2.128/26 rozsah IP pomocí jeho poskytovatele internetových služeb. To představuje 64 IP adresy, od 192.0.2.128 k 192.0.2.191. Zpětné DNS pro tento rozsah je implementována následujícím způsobem:
-- Organizace vytvoří zónu zpětného vyhledávání názvem 128-26.2.0.192.in-addr.arpa. Předpona se 128-26' představuje segmentu sítě přiřazená k organizaci v rámci třídy C (/ 24) rozsahu.
-- Poskytovatel internetových služeb vytvoří záznamy NS nastavit delegování DNS pro výše uvedené zónu ze třídy C nadřazené zóny. Vytvoří také záznamy CNAME v zóně zpětného vyhledávání nadřazené (třída C), mapování každou IP adresu v rozsahu IP do nové zóny vytvořené v organizaci:
+Předpokládejme například, že organizace je udělují 192.0.2.128/26 rozsah IP hello jeho poskytovatele internetových služeb. To představuje 64 IP adresy, od 192.0.2.128 too192.0.2.191. Zpětné DNS pro tento rozsah je implementována následujícím způsobem:
+- organizace Hello vytvoří zónu zpětného vyhledávání názvem 128-26.2.0.192.in-addr.arpa. Předpona Hello ' 128-26' představuje hello sítě segment přiřazený toohello organizace v rámci hello třídy C (/ 24) rozsahu.
+- Hello poskytovatele internetových služeb vytvoří tooset záznamy NS až hello delegování DNS pro hello výše zóny z hello třídy C nadřazené zóny. Vytvoří také záznamy CNAME v zóně zpětného vyhledávání hello nadřazené (třída C), mapování každou IP adresu v hello IP rozsah toohello nové zóny vytvořené hello organizace:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -72,7 +72,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- Organizace pak spravuje jednotlivých záznamů PTR v rámci jejich podřízené zóny.
+- potom Hello organizace spravuje hello jednotlivých záznamů PTR v rámci jejich podřízené zóny.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -82,13 +82,13 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-Zpětné vyhledávání pro IP adresu, 192.0.2.129' dotazy pro záznam PTR s názvem '129.2.0.192.in-addr.arpa'. Tento dotaz přeloží prostřednictvím CNAME v nadřazené zóně záznam PTR v podřízené zóně.
+Zpětné vyhledávání pro dotazy na IP adresu, 192.0.2.129' hello pro záznam PTR s názvem '129.2.0.192.in-addr.arpa'. Tento dotaz přeloží prostřednictvím hello CNAME v záznam PTR hello nadřazené zóny toohello v hello podřízenou zónu.
 
 ### <a name="ipv6"></a>IPv6
 
-Název zóny zpětného vyhledávání IPv6 by měl být ve tvaru:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Název Hello zóny zpětného vyhledávání IPv6 by měl být v hello následující formulář:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Například. Při vytvoření zóny zpětného vyhledávání pro záznamy hostitele pro hostitele pomocí IP adresy, jsou 2001:db8:1000:abdc:: / 64 předpona, název zóny, by se vytvořily s izolace sítě předponu adresy (2001:db8:abdc::). Potom rozbalte předponu IPv6 sítě odebrat [nula komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud byl použit tak, aby zkrátil předpona adresy IPv6 (2001:0db8:abdc:0000::). Pořadí, pomocí dobou jako oddělovače mezi každou hexadecimální číslo předponu, k vytvoření předponu odstínech sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidat příponu `.ip6.arpa`.
+Například. Při vytváření zóny zpětného vyhledávání toohost záznamů pro hostitele pomocí IP adresy, které jsou v hello 2001:db8:1000:abdc:: / 64 předpona, název zóny hello by se vytvořily tak, že izoluje hello sítě předponu adresy hello (2001:db8:abdc::). Potom rozbalte hello IPv6 sítě předponu tooremove [nula komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud se jednalo o předpona adresy používané tooshorten hello IPv6 (2001:0db8:abdc:0000::). Reverse hello pořadí, použití tečky jako hello oddělovač mezi každou šestnáctkové číslo v hello předponu, toobuild hello změněn na opačný předpony sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidejte příponu hello `.ip6.arpa`.
 
 
 |Předpona sítě  |Předpona rozšířené a odstínech sítě |Standardní příponu |Název zóny zpětného vyhledávání  |
@@ -99,18 +99,18 @@ Například. Při vytvoření zóny zpětného vyhledávání pro záznamy hosti
 
 ## <a name="azure-support-for-reverse-dns"></a>Podpora Azure pro zpětné DNS
 
-Azure podporuje dva samostatné scénáře týkající se reverse DNS:
+Azure podporuje dva samostatné scénáře týkající se tooreverse DNS:
 
-**Hostuje zóny zpětného vyhledávání odpovídající vaší blok IP adres.**
-Azure DNS lze provádět [hostování vaší zóny zpětného vyhledávání a spravovat záznamy PTR pro každý zpětného vyhledávání DNS](dns-reverse-dns-hosting.md)pro oba protokoly IPv4 a IPv6.  Proces vytváření zóny zpětného vyhledávání (ARPA), nastavení delegování a konfiguraci záznamů PTR je stejné jako regulární zóny DNS.  Pouze rozdíly jsou delegování musí být nakonfigurované přes vašeho poskytovatele internetových služeb, nikoli registrátora DNS, a slouží pouze záznamů typu PTR.
+**Hostování hello zpětného vyhledávání zóny odpovídající tooyour blok IP adres.**
+Azure DNS je možné příliš[hostovat vaše zóny zpětného vyhledávání a spravovat záznamy hello PTR pro každý zpětného vyhledávání DNS](dns-reverse-dns-hosting.md)pro oba protokoly IPv4 a IPv6.  Hello proces vytváření zóny zpětného vyhledávání (ARPA) hello, hello delegování, nastavení a konfigurace PTR záznamů je hello stejné jako u regulární zóny DNS.  Hello pouze rozdíly mezi nimi jsou hello delegování musí být nakonfigurované přes vašeho poskytovatele internetových služeb, nikoli registrátora DNS, a slouží pouze hello záznamů typu PTR.
 
-**Konfigurace zpětné záznam DNS pro adresu IP přiřazenou k vaší službě Azure.** Azure vám umožní [konfigurace zpětného vyhledávání pro IP adresy přidělené k službě Azure](dns-reverse-dns-for-azure-services.md).  Tato zpětného vyhledávání je nakonfigurovaný v Azure jako záznam PTR v odpovídající zóny ARPA.  Tyto zóny ARPA odpovídající všechny rozsahy IP používají v Azure, jsou hostovaná společností Microsoft
+**Nakonfigurujte hello zpětné záznam DNS pro adresu IP hello přiřazenou tooyour služby Azure.** Azure umožňuje příliš[konfigurovat hello zpětného vyhledávání pro hello IP adresy přidělené tooyour služba Azure](dns-reverse-dns-for-azure-services.md).  Tato zpětného vyhledávání je nakonfigurovaný v Azure jako záznam PTR v odpovídající zóny ARPA hello.  Tyto zóny ARPA odpovídající rozsahy IP hello tooall používají v Azure, jsou hostovaná společností Microsoft
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o zpětné DNS najdete v tématu [zpětného vyhledávání DNS na webu Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Zjistěte, jak [hostitel zóny zpětného vyhledávání pro váš rozsah poskytovatele internetových služeb přiřadit IP v Azure DNS](dns-reverse-dns-for-azure-services.md).
+Zjistěte, jak příliš[zóny zpětného vyhledávání hello hostitele pro rozsah vašeho poskytovatele internetových služeb přiřadit IP v Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Zjistěte, jak [zpětné záznamy DNS pro služeb Azure spravovat](dns-reverse-dns-for-azure-services.md).
+Zjistěte, jak příliš[zpětné záznamy DNS pro služeb Azure spravovat](dns-reverse-dns-for-azure-services.md).
 

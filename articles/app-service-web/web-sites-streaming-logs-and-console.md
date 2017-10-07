@@ -1,5 +1,5 @@
 ---
-title: "Protokoly streamování a konzoly"
+title: protokoly aaaStreaming a konzoly
 description: "Protokoly streamování a přehled konzole"
 author: btardif
 manager: erikre
@@ -14,24 +14,24 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: byvinyal
-ms.openlocfilehash: 120ce6b115820728b9f853e9ff349beb0ef29c9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb4b8ce5358da12041e164dfff8f43790dd67924
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="streaming-logs-and-the-console"></a>Protokoly streamování a konzoly
+# <a name="streaming-logs-and-hello-console"></a>Protokoly streamování a hello konzoly
 ## <a name="streaming-logs"></a>Protokoly streamování
-**Portál Azure** poskytuje integrované streamování protokolu prohlížeče, který umožňuje zobrazit události trasování z vaší **služby App Service** aplikace v reálném čase.  
+Hello **portál Azure** poskytuje integrované streamování protokolu prohlížeče, který umožňuje zobrazit události trasování z vaší **služby App Service** aplikace v reálném čase.  
 
 Nastavení této funkce vyžaduje pár jednoduchých kroků:
 
 * Zapsat trasování do vašeho kódu
 * Povolit aplikaci **diagnostické protokoly** pro vaši aplikaci.
-* Zobrazení datového proudu z integrovaného **streamování protokoly** uživatelského rozhraní v **portál Azure**.
+* Datový proud hello zobrazení z předdefinovaných hello **streamování protokoly** uživatelského rozhraní v hello **portál Azure**.
 
-### <a name="how-to-write-traces-in-your-code"></a>Jak napsat trasování v kódu
-Zápis trasování ve vašem kódu je snadné.  V jazyce C# je stejně snadná jako zápis následující kód:
+### <a name="how-toowrite-traces-in-your-code"></a>Jak toowrite trasování v kódu
+Zápis trasování ve vašem kódu je snadné.  V jazyce C# je stejně snadná jako zápis hello následující kód:
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -45,34 +45,34 @@ Trace.TraceWarning("My warning statement");
 Trace.TraceError("My error statement");
 `````````````````````````
 
-Třída trasování je umístěn v oboru názvů System.Diagnostics.
+Hello trasování třída žije v oboru názvů System.Diagnostics hello.
 
-V aplikaci node.js můžete napsat tento kód k dosažení stejného výsledku:
+V aplikaci node.js můžete tento kód napsat tooachieve hello stejný výsledek:
 
 `````````````````````````
 console.log("My trace statement").
 `````````````````````````
 
-### <a name="how-to-enable-and-view-the-streaming-logs"></a>Povolení a zobrazení, streamování protokolů
-![][BrowseSitesScreenshot]Diagnostika jsou povolené na základě na aplikaci. Spustit tak, že přejde k lokalitě, kterou chcete povolit tuto funkci na.  
+### <a name="how-tooenable-and-view-hello-streaming-logs"></a>Jak tooenable a zobrazení hello datový proud protokolů
+![][BrowseSitesScreenshot]Diagnostika jsou povolené na základě na aplikaci. Spustit procházení webu toohello tooenable chcete tuto funkci na.  
 
-![][DiagnosticsLogs]Z nabídky nastavení, přejděte dolů k položce **monitorování** části a klikněte na **(1) diagnostické protokoly**. Potom **(2) povolte** **protokolování aplikace (systém souborů)** nebo **protokolování aplikace (binární rozsáhlý objekt)** **úroveň** možnost vám umožňuje změnit úroveň závažnosti trasování pro zachycení. Pokud jste právě se seznamte se s funkcí, nastavení úrovně na **podrobné** zajistit jsou shromažďovány všechny trasovacích příkazů.
+![][DiagnosticsLogs]Z nabídky nastavení, posuňte se dolů toohello **monitorování** části a klikněte na **(1) diagnostické protokoly**. Potom **(2) povolte** **protokolování aplikace (systém souborů)** nebo **protokolování aplikace (binární rozsáhlý objekt)** hello **úroveň** možnost umožňuje změnit hello úroveň závažnosti toocapture trasování. Pokud zkoušíte právě tooget obeznámeni s funkcí hello, nastavte úroveň hello příliš**podrobné** tooensure jsou shromažďovány všechny trasovacích příkazů.
 
-Klikněte na tlačítko **Uložit** v horní části okna a jste připraveni k zobrazení protokolů.
+Klikněte na tlačítko **Uložit** hello horní části okna hello a vy máte připravené tooview protokoly.
 
 > [!NOTE]
-> Vyšší **úroveň závažnosti** do protokolu se spotřebovávají více prostředků a vytváří další trasování. Zajistěte, aby **úroveň závažnosti** nakonfigurovaný tak, aby správné podrobností pro produkční nebo intenzivní provoz lokality. 
+> vyšší hello Hello **úroveň závažnosti** hello jsou další prostředky spotřebované toolog a hello vytváří další trasování. Zajistěte, aby **úroveň závažnosti** je nakonfigurované toohello správné podrobností pro produkční nebo intenzivní provoz lokality. 
 > 
 > 
 
-![][StreamingLogsScreenshot]Chcete-li zobrazit **protokoly streamování** z portálu Azure, klikněte na **(1) datový proud protokolu** taky ve **monitorování** části nabídky nastavení. Pokud vaše aplikace je aktivně psaní příkazů trasování, pak byste měli vidět v **(2) streamování protokoly uživatelského rozhraní** skoro v reálném čase.
+![][StreamingLogsScreenshot]tooview hello **protokoly streamování** z v rámci hello portál Azure, klikněte na **(1) datový proud protokolu** i v hello **monitorování** části nabídky nastavení hello. Pokud vaše aplikace je aktivně psaní příkazů trasování, pak byste měli vidět v hello **(2) streamování protokoly uživatelského rozhraní** skoro v reálném čase.
 
 ## <a name="console"></a>Konzola
-**Portál Azure** poskytuje přístup ke konzole do vaší aplikace. Vám umožní zkoumat systém souborů vaší aplikace a spouštění skriptů prostředí powershell nebo cmd. Jsou vázány stejná oprávnění nastavená jako spuštěného kódu aplikace při provádění příkazů konzoly. Přístup k chráněné adresáře nebo spouštění skriptů, které vyžadují oprávnění vyšší úrovně je blokovaný.  
+Hello **portál Azure** poskytuje konzolovou aplikaci tooyour přístup. Vám umožní zkoumat systém souborů vaší aplikace a spouštění skriptů prostředí powershell nebo cmd. Jsou vázány hello stejná oprávnění nastavit jako spuštěného kódu aplikace při provádění příkazů konzoly. Je blokován přístup tooprotected adresáře nebo spuštěné skripty, které vyžadují oprávnění vyšší úrovně.  
 
-![][ConsoleScreenshot]Z nabídky nastavení, přejděte dolů k položce **nástroje pro vývoj** části a klikněte na **(1) konzoly** a **(2) konzoly** uživatelského rozhraní se otevře napravo.
+![][ConsoleScreenshot]Z nabídky nastavení, posuňte se dolů příliš**nástroje pro vývoj** části a klikněte na **(1) konzoly** a hello **(2) konzoly** uživatelského rozhraní otevře toohello vpravo.
 
-Abyste se seznámili s **konzoly**, zkuste základní příkazy, jako je:
+tooget obeznámeni s hello **konzoly**, zkuste základní příkazy, jako je:
 
 `````````````````````````
 dir

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření skupiny pro uživatele v Azure Active Directory | Microsoft Docs"
-description: "Postup vytvoření skupiny ve službě Azure Active Directory a přidání členů do skupiny"
+title: "aaaCreate skupinu pro uživatele v Azure Active Directory | Microsoft Docs"
+description: "Jak toocreate skupinu v Azure Active Directory a přidání členů skupiny toohello"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d3d37761a9fdf9bd9801396d45f2fcd47efb0be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: fc583a7f02ce50e7f3b2c8f97a9c032a3e2dc33a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Vytvořte skupinu a přidejte členy v Azure Active Directory
 > [!div class="op_single_selector"]
@@ -29,25 +29,25 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Tento článek vysvětluje, jak vytvořit a naplnit nové skupiny v Azure Active Directory. Použijte skupinu k provádění úloh správy, jako je například přiřazení licence nebo oprávnění k počtu uživatelů nebo zařízení najednou.
+Tento článek vysvětluje, jak toocreate a naplnit nové skupiny v Azure Active Directory. Použití úlohy správy skupiny tooperform tak, jako je například přiřazení licence nebo oprávnění tooa počtu uživatelů nebo zařízení najednou.
 
 ## <a name="how-do-i-create-a-group"></a>Vytvoření skupiny
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatele a skupiny** v textovém poli a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatele a skupiny** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. Na **uživatelů a skupin** vyberte **všechny skupiny**.
+3. Na hello **uživatelů a skupin** vyberte **všechny skupiny**.
 
-   ![Otevření okna skupiny](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. Na **uživatelé a skupiny - všechny skupiny** okně, vyberte **přidat** příkaz.
+   ![Okno skupiny otevírání hello](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
+4. Na hello **uživatelé a skupiny - všechny skupiny** okně, vyberte hello **přidat** příkaz.
 
-   ![Použití příkazu Přidat](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. Na **skupiny** okně Přidat název a popis skupiny.
-6. Vyberte členy, které chcete přidat do skupiny, vyberte **přiřazeno** v **typ členství** a pak vyberte **členy**. Další informace o tom, jak dynamicky spravovat členství ve skupině najdete v tématu [vytváření rozšířených pravidel pro členství ve skupině pomocí atributů](active-directory-groups-dynamic-membership-azure-portal.md).
+   ![Výběrem příkazu přidat hello](./media/active-directory-groups-create-azure-portal/add-group-command.png)
+5. Na hello **skupiny** okně Přidat název a popis skupiny hello.
+6. tooselect členy tooadd toohello skupiny, vyberte **přiřazeno** v hello **typ členství** a pak vyberte **členy**. Další informace o tom, jak toomanage dynamicky hello členství ve skupině najdete v tématu [pomocí atributů toocreate advanced pravidla pro členství ve skupině](active-directory-groups-dynamic-membership-azure-portal.md).
 
-   ![Výběr členů pro přidání](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. Na **členy** okně, vyberte jeden nebo více uživatelů nebo zařízení přidáte do skupiny a vyberte **vyberte** tlačítko v dolní části okna je přidejte do skupiny. **Uživatele** pole filtry zobrazení na základě shody zadání vašeho jakékoliv části názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
-8. Po dokončení přidávání členů do skupiny, vyberte **vytvořit** na **skupiny** okno.    
+   ![Výběr členů tooadd](./media/active-directory-groups-create-azure-portal/select-members.png)
+7. Na hello **členy** okně, vyberte jednu nebo více uživatelů nebo zařízení tooadd toohello skupinu a vyberte hello **vyberte** tlačítko hello dolní části okna tooadd hello je toohello skupiny. Hello **uživatele** pole filtry hello zobrazení na základě shody se vaše vstupní tooany součástí názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
+8. Po dokončení přidávání členů toohello skupiny, vyberte **vytvořit** na hello **skupiny** okno.    
 
    ![Vytvoření skupiny potvrzení](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 

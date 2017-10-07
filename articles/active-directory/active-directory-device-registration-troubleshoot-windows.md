@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s automatickou registraci Azure AD domain k počítačům připojeným k pro Windows 10 a Windows Server 2016 | Microsoft Docs"
-description: "Řešení potíží s automatickou registraci Azure AD domain k počítačům připojeným k pro Windows 10 a Windows Server 2016."
+title: "aaaTroubleshooting hello automatickou registraci Azure AD domény k počítačům připojeným k pro Windows 10 a Windows Server 2016 | Microsoft Docs"
+description: "Řešení potíží s hello automatickou registraci Azure AD domény k počítačům připojeným k pro Windows 10 a Windows Server 2016."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5b7f95f302f716d9221b5fae59aa2df5c956a524
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3795323ce9392368b412b3e1208868431e59a74b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>Řešení potíží s automatickou registraci domény k počítačům připojeným k Azure AD – Windows 10 a Windows Server 2016
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-tooazure-ad--windows-10-and-windows-server-2016"></a>Řešení potíží s automatickou registraci domény připojené počítače tooAzure AD – Windows 10 a Windows Server 2016
 
-Toto téma se vztahuje na následující klienty:
+Toto téma se vztahuje toohello následující klienty:
 
 -   Windows 10
 -   Windows Server 2016
 
-Pro ostatní klienty systému Windows najdete v části [řešení potíží s automatickou registraci domény k počítačům připojeným k Azure AD pro klienty nižší úrovně Windows](active-directory-device-registration-troubleshoot-windows-legacy.md).
+Pro ostatní klienty systému Windows najdete v části [řešení potíží s automatickou registraci domény připojené počítače tooAzure AD pro klienty nižší úrovně Windows](active-directory-device-registration-troubleshoot-windows-legacy.md).
 
-Toto téma předpokládá, že jste nakonfigurovali automatické registrace zařízení připojených k doméně jak je uvedeno v popsané v [postup konfigurace automatické registrace zařízení se systémem Windows připojených k doméně se službou Azure Active Directory](active-directory-device-registration-get-started.md) k podporují následující scénáře:
+Toto téma předpokládá, že jste nakonfigurovali automatické registrace zařízení připojených k doméně jak je uvedeno v popsané v [jak tooconfigure automatické registrace Windows připojených k doméně zařízení s Azure Active Directory](active-directory-device-registration-get-started.md) hello toosupport následující scénáře:
 
 - [Podmíněný přístup využívající zařízení](active-directory-conditional-access-automatic-device-registration-setup.md)
 
@@ -38,16 +38,16 @@ Toto téma předpokládá, že jste nakonfigurovali automatické registrace zař
 - [Windows Hello pro firmy](active-directory-azureadjoin-passport-deployment.md)
 
 
-Tento dokument obsahuje pokyny k odstraňování problémů, o tom, jak vyřešit potenciální problémy. 
+Tento dokument obsahuje pokyny k odstraňování problémů na tom, jak tooresolve potenciální problémy. 
 
-Registrace je podporována v systému Windows 10. listopadu 2015 aktualizace a vyšší.  
-Doporučujeme používat výročí aktualizace pro povolení výše uvedených scénářích.
+Hello registrace je podporované v systému Windows hello aktualizace 10 listopad 2015 a vyšší.  
+Doporučujeme používat hello výročí aktualizace pro povolení výše hello scénáře.
 
-## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
+## <a name="step-1-retrieve-hello-registration-status"></a>Krok 1: Načíst stav registrace hello 
 
-**Načíst stav registrace:**
+**Stav registrace tooretrieve hello:**
 
-1. Otevřete příkazový řádek jako správce.
+1. Otevřete hello příkazový řádek jako správce.
 
 2. Typ   **/dsregcmd status**
 
@@ -57,7 +57,7 @@ Doporučujeme používat výročí aktualizace pro povolení výše uvedených s
    | Stav zařízení |+----------------------------------------------------------------------+
     
         AzureAdJoined : YES
-     EnterpriseJoined: Žádné DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 kryptografický otisk: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected zprostředkovatele kryptografických platformy společnosti Microsoft: Ano KeySignTest:: musí spouštět se zvýšenými oprávněními k testování.
+     EnterpriseJoined: Žádné DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 kryptografický otisk: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected zprostředkovatel kryptografických služeb platformy Microsoft: Ano KeySignTest:: musíte spustit zvýšenými tootest.
                   Rozšíření IDP: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl: eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ == JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn: ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0 KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn: ms-drs:enterpriseregistration.windows.net DomainJoined: Ano DomainName: CONTOSO
     
     +----------------------------------------------------------------------+
@@ -71,53 +71,53 @@ Doporučujeme používat výročí aktualizace pro povolení výše uvedených s
 
 
 
-## <a name="step-2-evaluate-the-registration-status"></a>Krok 2: Vyhodnoťte stav registrace 
+## <a name="step-2-evaluate-hello-registration-status"></a>Krok 2: Vyhodnoťte stav registrace hello 
 
-Zkontrolujte následující pole a ujistěte se, že mají očekávaných hodnot:
+Prohlédněte si hello následující pole a ujistěte se, že mají hello očekávaných hodnot:
 
 ### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano  
 
-Toto pole ukazuje, jestli je zařízení zaregistrované v Azure AD. Pokud je hodnota zobrazena jako "Ne", registrace nebyla dokončena. 
+Toto pole ukazuje, zda text hello zařízení zaregistrované v Azure AD. Pokud hodnota hello zobrazí jako "Ne", registrace nebyla dokončena. 
 
 **Možné příčiny:**
 
-- Ověřování počítače pro registraci se nezdařilo.
+- Ověřování počítače hello, registrace se nezdařila.
 
-- V organizaci, která nemůže být zjištěny počítače je proxy server HTTP
+- V organizaci hello, která nemůže být zjištěny hello počítače je proxy server HTTP
 
-- Počítač se nemůže připojit, Azure AD pro ověřování nebo Azure DRS pro registraci
+- Hello počítače nebudou moci připojit Azure AD pro ověřování nebo Azure DRS pro registraci
 
-- Počítač nemusí být v interní síti organizace nebo na VPN s přímé směrem pohledu na místní řadič domény AD.
+- Hello počítač nemusí být v interní síti organizace hello nebo na VPN s přímé směrem pohledu tooan místní řadič domény AD.
 
-- Pokud má počítač čip TPM, je ve špatném stavu.
+- Pokud má počítač hello čip TPM, je ve špatném stavu.
 
-- Je možné chybnou konfigurací v služby v dokumentu si předtím poznamenali, budete muset znovu ověřit. Běžných příkladů:
+- Je možné chybnou konfigurací v služby v dokumentu hello si předtím poznamenali, budete potřebovat tooverify znovu. Běžných příkladů:
 
     - Federační server nemá WS-Trust koncových bodů povoleno
 
     - Federační server nemusí umožňovat příchozí ověřování z počítačů ve vaší síti použití integrovaného ověřování systému Windows.
 
-    - Neexistuje žádný objekt spojovací bod služby, který odkazuje na název ověřené domény ve službě Azure AD v doménové struktuře AD, kam počítač patří do
+    - Neexistuje žádný objekt spojovací bod služby, který odkazuje tooyour název ověřené domény ve službě Azure AD v doménové struktuře hello AD kde hello počítač patří do
 
 ---
 
 ### <a name="domainjoined--yes"></a>DomainJoined: Ano  
 
-Toto pole ukazuje, zda je připojení zařízení do služby Active Directory v místě nebo ne. Pokud je hodnota zobrazena jako **ne**, zařízení nelze automaticky registrace s Azure AD. Nejdřív zkontrolujte, že zařízení připojí ke službě Active Directory v místě, než můžete zaregistrovat s Azure AD. Pokud hledáte připojování počítače k Azure AD přímo, přejděte na další informace o možnostech Azure Active Directory Join.
+Toto pole ukazuje, jestli hello zařízení je připojené k tooan místní služby Active Directory, nebo ne. Pokud hodnota hello zobrazí jako **ne**, hello zařízení nelze automaticky registrace s Azure AD. Nejdřív zkontrolujte, že hello zařízení spojení toohello místní služby Active Directory předtím, než můžete zaregistrovat s Azure AD. Pokud chcete pro připojení hello tooAzure počítače AD přímo, přejděte prosím tooLearn o možnostech Azure Active Directory Join.
 
 ---
 
 ### <a name="workplacejoined--no"></a>WorkplaceJoined: Ne  
 
-Toto pole ukazuje, jestli je zařízení zaregistrované s Azure AD, ale jako osobní zařízení (označen jako připojené k síti na pracovišti). Pokud tato hodnota by měla zobrazit jako "Ne" pro počítači připojeném k doméně zaregistrován s Azure AD, ale pokud se zobrazí jako Ano znamená, že pracovní nebo školní účet byl přidán před počítače dokončení registrace. Účet v tomto případě bude ignorován, pokud používáte verzi výročí aktualizace Windows 10 (1607 při spuštění WinVer příkazu v okně "Spustit" nebo okna příkazového řádku).
+Toto pole ukazuje, zda text hello zařízení je zaregistrované s Azure AD, ale jako osobní zařízení (označen jako připojené k síti na pracovišti). Pokud tato hodnota by měla zobrazit jako "Ne" pro počítač připojený k doméně zaregistrován s Azure AD, ale pokud se zobrazí na hodnotu Ano, znamená to, že pracovní nebo školní účet byl přidaný předchozí toohello počítač dokončuje registraci. Hello účet v tomto případě bude ignorován, pokud používáte verzi hello výročí aktualizace Windows 10 (1607 při spuštění příkazu hello WinVer hello "Spustit" okno nebo okna příkazového řádku).
 
 ---
 
 ### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Ano a AzureADPrt: Ano
   
-Tato pole ukazují, že uživatel byl úspěšně ověřen do služby Azure AD při přihlášení k zařízení. Pokud se zobrazí "Ne", že toto jsou možné příčiny:
+Tato pole ukazují, že tento uživatel hello úspěšně ověřen tooAzure AD při přihlášení toohello zařízení. Pokud se zobrazí "Žádný" hello Toto jsou možné příčiny:
 
-- Klíč chybný úložiště (STK) v čipu TPM, které jsou přidružené k zařízení na základě zápisu (Kontrola KeySignTest při spuštění, které se zvýšenými oprávněními).
+- Klíč chybný úložiště (STK) v čipu TPM přidružené hello zařízení při registraci (hello kontrola KeySignTest při spuštění, které se zvýšenými oprávněními).
 
 - Alternativním přihlašovacím ID
 
@@ -125,4 +125,4 @@ Tato pole ukazují, že uživatel byl úspěšně ověřen do služby Azure AD p
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Automatická registrace zařízení – nejčastější dotazy](active-directory-device-registration-faq.md) 
+Další informace najdete v tématu hello [Automatická registrace zařízení – nejčastější dotazy](active-directory-device-registration-faq.md) 

@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit rozhraní REST API v Azure pomocí technologie ASP.NET a SQL DB | Microsoft Docs"
-description: "Kurz, který se naučíte, jak nasadit aplikaci, která používá rozhraní ASP.NET Web API pro webové aplikace Azure pomocí sady Visual Studio."
+title: "aaaCreate rozhraní REST API v Azure pomocí technologie ASP.NET a databáze SQL | Microsoft Docs"
+description: "Kurz, se naučíte, jak toodeploy aplikaci, která používá hello tooan rozhraní ASP.NET Web API webové aplikace Azure pomocí sady Visual Studio."
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
@@ -15,63 +15,63 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
-ms.openlocfilehash: 64c18f2cfabbb7af6ffd89b4c2a9095fca1cf799
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1ef45dd1582bfda367e53c39f863164422ad678b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-rest-service-using-aspnet-web-api-and-sql-database-in-azure-app-service"></a>Vytvoření služby pomocí rozhraní ASP.NET Web API a databázi SQL v Azure App Service
-Tento kurz ukazuje, jak nasadit webové aplikace ASP.NET do [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) pomocí Průvodce Publikovat Web v sadě Visual Studio 2013 nebo Visual Studio 2013 Community Edition. 
+Tento kurz ukazuje, jak toodeploy technologie ASP.NET webové aplikace tooan [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) pomocí Průvodce publikování webu hello v sadě Visual Studio 2013 nebo Visual Studio 2013 Community Edition. 
 
-Můžete otevřít účet Azure zdarma a pokud ještě nemáte Visual Studio 2013, sady SDK automaticky nainstaluje Visual Studio 2013 pro produkt Web Express. Proto můžete spustit vývoj pro Azure zcela zdarma.
+Můžete otevřít účet Azure zdarma a pokud ještě nemáte Visual Studio 2013, hello SDK automaticky nainstaluje Visual Studio 2013 pro produkt Web Express. Proto můžete spustit vývoj pro Azure zcela zdarma.
 
-Tento kurz předpokládá, že máte žádné předchozí zkušenosti s používáním Azure. Po dokončení tohoto kurzu, budete mít jednoduché webové aplikace nahoru a běží v cloudu.
+Tento kurz předpokládá, že máte žádné předchozí zkušenosti s používáním Azure. Po dokončení tohoto kurzu, budete mít jednoduché webové aplikace nahoru a spouštění v cloudu hello.
 
 Naučíte se:
 
-* Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
-* Postup vytvoření projektu Visual Studio ASP.NET MVC 5 a publikujete ho v aplikaci Azure.
-* Jak používat rozhraní ASP.NET Web API umožňující volání rozhraní Restful API.
-* Jak používat databázi SQL pro ukládání dat v Azure.
-* Jak publikovat aplikaci aktualizací do Azure.
+* Jak tooenable počítači pro vývoj pro Azure nainstalováním hello Azure SDK.
+* Jak toocreate Visual Studio ASP.NET MVC 5 projektu a publikujete ho v tooan aplikace Azure.
+* Jakým způsobem volá toouse hello rozhraní ASP.NET Web API tooenable rozhraní Restful API.
+* Jak toouse SQL databáze toostore data v Azure.
+* Jak aplikace toopublish aktualizuje tooAzure.
 
-Budete vytvářet jednoduché seznamu kontaktů webovou aplikaci, která je založená na technologii ASP.NET MVC 5 a používá ADO.NET Entity Framework pro přístup k databázi. Na následujícím obrázku je vidět hotová aplikace:
+Budete vytvářet jednoduché seznamu kontaktů webovou aplikaci, která je založená na technologii ASP.NET MVC 5 a používá hello ADO.NET Entity Framework pro přístup k databázi. Následující obrázek ukazuje hello Hello dokončil aplikace:
 
 ![snímek obrazovky webové stránky][intro001]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-### <a name="create-the-project"></a>Vytvoření projektu
+### <a name="create-hello-project"></a>Vytvoření projektu hello
 1. Spusťte Visual Studio 2013.
-2. Z **soubor** nabídce klikněte na tlačítko **nový projekt**.
-3. V **nový projekt** dialogové okno, rozbalte seznam **Visual C#** a vyberte **webové** a pak vyberte **webové aplikace ASP.NET**. Název aplikace **ContactManager** a klikněte na tlačítko **OK**.
+2. Z hello **soubor** nabídce klikněte na tlačítko **nový projekt**.
+3. V hello **nový projekt** dialogové okno, rozbalte seznam **Visual C#** a vyberte **webové** a pak vyberte **webové aplikace ASP.NET**. Název aplikace hello **ContactManager** a klikněte na tlačítko **OK**.
    
     ![Dialogové okno Nový projekt](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.png)
-4. V **nový projekt ASP.NET** dialogové okno, vyberte **MVC** šablony, zkontrolujte **webového rozhraní API** a pak klikněte na **změna ověřování**.
-5. V dialogovém okně **Změna ověřování** klikněte na možnost **Bez ověřování** a poté klikněte na tlačítko **OK**.
+4. V hello **nový projekt ASP.NET** dialogové okno, vyberte hello **MVC** šablony, zkontrolujte **webového rozhraní API** a pak klikněte na **změna ověřování**.
+5. V hello **změna ověřování** dialogové okno, klikněte na tlačítko **bez ověřování**a potom klikněte na **OK**.
    
     ![Bez ověřování](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/GS13noauth.png)
    
-    Ukázkovou aplikaci, kterou vytváříte, nebude mít funkcí, které vyžadují přihlášení uživatelů. Informace o tom, jak implementovat ověřování a autorizace funkce najdete v tématu [další kroky](#nextsteps) na konci tohoto kurzu. 
-6. V **nový projekt ASP.NET** dialogové okno zkontrolujte, zda **hostitel v cloudu** je zaškrtnuté políčko a klikněte na tlačítko **OK**.
+    Funkce, které vyžadují toolog uživatelé v nebude mít Hello ukázkovou aplikaci, kterou vytváříte. Informace o tooimplement funkce ověřování a autorizace, najdete v části hello [další kroky](#nextsteps) oddíl hello konce tohoto kurzu. 
+6. V hello **nový projekt ASP.NET** dialogové okno, ujistěte se, že hello **hostitel v cloudu hello** je zaškrtnuté políčko a klikněte na tlačítko **OK**.
 
-Pokud nejste přihlášeni dříve do Azure, budete vyzváni k přihlášení.
+Pokud nejste přihlášeni dříve tooAzure, bude výzvami toosign v.
 
-1. Průvodce konfigurací navrhne jedinečný název založený na *ContactManager* (viz následující obrázek). Vyberte oblast okolo vás. Můžete použít [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") najít datovém centru nejnižší latenci. 
+1. Průvodce konfigurací Hello navrhne jedinečný název založený na *ContactManager* (viz následující obrázek hello). Vyberte oblast okolo vás. Můžete použít [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") toofind hello nejnižší latenci datového centra. 
 2. Pokud jste dosud nevytvořili databázový server před, vyberte **vytvořit nový server**, zadejte jméno uživatele databáze a heslo.
    
     ![Konfigurace webu Azure](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configAz.PNG)
 
-Pokud máte databázový server, použijte k vytvoření nové databáze. Databázové servery jsou drahocenný prostředků a chcete obecně vytvořit více databází na stejném serveru pro testování a vývoj, nikoli databázový server na databázi. Ujistěte se, že webový server a databáze jsou ve stejné oblasti.
+Pokud máte databázový server, použijte tento toocreate novou databázi. Databázové servery jsou drahocenný prostředků a obvykle mají toocreate několik databází hello stejný server pro testování a vývoj, nikoli databázový server na databázi. Zkontrolujte, zda webový server a databáze jsou v hello stejné oblasti.
 
 ![Konfigurace webu Azure](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configWithDB.PNG)
 
-### <a name="set-the-page-header-and-footer"></a>Nastavit záhlaví a zápatí stránky
-1. V **Průzkumníku řešení**, rozbalte *Views\Shared* složky a otevřete *_Layout.cshtml* souboru.
+### <a name="set-hello-page-header-and-footer"></a>Nastavit hello záhlaví a zápatí stránky
+1. V **Průzkumníku řešení**, rozbalte položku hello *Views\Shared* složku a otevřete hello *_Layout.cshtml* souboru.
    
     ![_Layout.cshtml v Průzkumníku řešení][newapp004]
-2. Nahraďte obsah *Views\Shared_Layout.cshtml* soubor s následujícím kódem:
+2. Nahraďte obsah hello hello *Views\Shared_Layout.cshtml* soubor s hello následující kód:
 
         <!DOCTYPE html>
         <html lang="en">
@@ -109,46 +109,46 @@ Pokud máte databázový server, použijte k vytvoření nové databáze. Datab�
         </body>
         </html>
 
-Výše uvedený kód změní název aplikace z "Moje aplikace technologie ASP.NET" na "Obraťte se na správce" a odebere odkazy na **Domů**, **o** a **kontaktujte**.
+Hello značek výše název aplikace hello změny z "Moje aplikace technologie ASP.NET" příliš "obraťte se na správce" a odebere odkazy hello příliš**Domů**, **o** a **kontaktujte**.
 
-### <a name="run-the-application-locally"></a>Místní spuštění aplikace
-1. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
-   Domovská stránka aplikace se zobrazí výchozí prohlížeč.
-    ![Seznam úkolů domovskou stránku](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
+### <a name="run-hello-application-locally"></a>Místní spuštění aplikace hello
+1. Stisknutím kombinace kláves CTRL + F5 toorun hello aplikace.
+   domovskou stránku Hello aplikace se zobrazí v hello výchozí prohlížeč.
+    ![tooDo seznamu domovskou stránku](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
 
-To je vše, je potřeba udělat teď k vytvoření aplikace, které nasadíte do Azure. Později přidáte funkce databáze.
+To je vše, že je nutné toodo pro nyní toocreate hello aplikaci nasadíte tooAzure. Později přidáte funkce databáze.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt v **Průzkumníku řešení** a vyberte **publikovat** v místní nabídce.
+## <a name="deploy-hello-application-tooazure"></a>Nasazení aplikace tooAzure hello
+1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt hello v **Průzkumníku řešení** a vyberte **publikovat** hello místní nabídce.
    
     ![Publikování v kontextové nabídce projektu][PublishVSSolution]
    
-    **Publikovat Web** otevře se průvodce.
+    Hello **Publikovat Web** otevře se průvodce.
 2. Klikněte na **Publikovat**.
 
 ![Karta nastavení](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
 
-Visual Studio spustí proces kopírování souborů na Azure server. **Výstup** okno zobrazuje, jaké akce nasazení byly provedeny a hlásí úspěšné dokončení nasazení.
+Sada Visual Studio spustí proces hello kopírování hello soubory toohello Azure server. Hello **výstup** okno zobrazuje, jaké akce nasazení byly provedeny a hlásí úspěšné dokončení nasazení hello.
 
-1. Na adresu URL nasazené lokality se automaticky otevře výchozí prohlížeč.
+1. Adresa URL toohello hello nasazené lokality se automaticky otevře v Hello výchozí prohlížeč.
    
-   Aplikace, kterou jste vytvořili je nyní spuštěna v cloudu.
+   Hello aplikaci, kterou jste vytvořili je nyní spuštěna v cloudu hello.
    
-   ![Seznam úkolů domovskou stránku běžící v Azure][rxz2]
+   ![tooDo seznamu domovskou stránku běžící v Azure][rxz2]
 
-## <a name="add-a-database-to-the-application"></a>Přidání databáze do aplikace
-Dále budete aktualizovat aplikaci MVC přidáte možnost zobrazit a aktualizovat kontakty a uložení dat v databázi. Aplikace bude používat rozhraní Entity Framework k vytvoření databáze a k číst a aktualizovat data v databázi.
+## <a name="add-a-database-toohello-application"></a>Přidání aplikace toohello databáze
+Dále budete aktualizovat hello MVC aplikace tooadd hello možnost toodisplay a aktualizovat kontakty a uložení hello dat v databázi. aplikace Hello použije hello Entity Framework toocreate hello databáze a tooread a aktualizovat data v databázi hello.
 
-### <a name="add-data-model-classes-for-the-contacts"></a>Přidání třídy modelu dat pro kontaktů
+### <a name="add-data-model-classes-for-hello-contacts"></a>Přidání třídy modelu dat pro kontakty hello
 Začněte vytvořením jednoduchého datového modelu v kódu.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na složku modely, klikněte na **přidat**a potom **třída**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na složku modely hello, klikněte na **přidat**a potom **třída**.
    
     ![Přidání třídy v kontextové nabídce složku modely][adddb001]
-2. V **přidat novou položku** dialogové okno, název nového souboru třídy *Contact.cs*a potom klikněte na **přidat**.
+2. V hello **přidat novou položku** dialogové okno, název hello nový soubor třídy *Contact.cs*a potom klikněte na **přidat**.
    
     ![Přidat novou položku – dialogové okno][adddb002]
-3. Nahraďte obsah souboru Contacts.cs následujícím kódem.
+3. Nahraďte hello obsah souboru Contacts.cs hello hello následující kód.
    
         using System.Globalization;
         namespace ContactManager.Models
@@ -172,49 +172,49 @@ Začněte vytvořením jednoduchého datového modelu v kódu.
             }
         }
 
-**Obraťte se na** třídy definují data, která se uloží pro každý kontakt a primární klíč, KódKontaktu, který je nutný pro databázi. Můžete získat další informace o datových modelech v [další kroky](#nextsteps) na konci tohoto kurzu.
+Hello **obraťte se na** třída definuje hello dat, které se uloží pro každý kontakt a primární klíč, KódKontaktu, která je potřeba hello databáze. Můžete získat další informace o datových modelech v hello [další kroky](#nextsteps) oddíl hello konce tohoto kurzu.
 
-### <a name="create-web-pages-that-enable-app-users-to-work-with-the-contacts"></a>Vytvoření webové stránky, které umožňují uživatelům aplikace pro práci s kontaktů
-ASP.NET MVC funkci generování uživatelského rozhraní můžete automaticky generovat kód, který provádí vytvářet, číst, aktualizovat a odstraňovat akcemi (CRUD).
+### <a name="create-web-pages-that-enable-app-users-toowork-with-hello-contacts"></a>Vytvoření webové stránky, které umožňují uživatelům toowork aplikace s kontakty hello
+Hello funkce generování uživatelského rozhraní ASP.NET MVC hello může automaticky vygenerovat kód, který provádí vytvářet, číst, aktualizovat a odstraňovat akcemi (CRUD).
 
-## <a name="add-a-controller-and-a-view-for-the-data"></a>Přidání Kontroleru a zobrazení dat
-1. V **Průzkumníku**, rozbalte složku řadiče.
-2. Sestavení projektu **(Ctrl + Shift + B)**. (Před použitím mechanismus generování uživatelského rozhraní musí sestavte projekt.) 
-3. Klikněte pravým tlačítkem na složku řadiče a klikněte na tlačítko **přidat**a potom klikněte na **řadič**.
+## <a name="add-a-controller-and-a-view-for-hello-data"></a>Přidání Kontroleru a zobrazení pro hello data
+1. V **Průzkumníku**, rozbalte složku řadiče hello.
+2. Sestavení projektu hello **(Ctrl + Shift + B)**. (Před použitím mechanismus generování uživatelského rozhraní musí sestavte projekt hello.) 
+3. Klikněte pravým tlačítkem na složku hello řadiče a klikněte na tlačítko **přidat**a potom klikněte na **řadič**.
    
     ![Přidat řadič v kontextové nabídce řadiče složky][addcode001]
-4. V **přidat vygenerované uživatelské rozhraní** dialogové okno, vyberte **kontroler MVC se zobrazeními s využitím nástroje Entity Framework** a klikněte na tlačítko **přidat**.
+4. V hello **přidat vygenerované uživatelské rozhraní** dialogové okno, vyberte **kontroler MVC se zobrazeními s využitím nástroje Entity Framework** a klikněte na tlačítko **přidat**.
    
    ![Přidání kontroleru](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.png)
-5. Nastavte název řadiče na **HomeController**. Vyberte **kontaktujte** jako třídu modelu. Klikněte **nový kontext dat** tlačítko a přijměte výchozí nastavení "ContactManager.Models.ContactManagerContext" pro **nový typ kontextu dat**. Klikněte na tlačítko **Přidat**.
+5. Nastavte název řadiče hello příliš**HomeController**. Vyberte **kontaktujte** jako třídu modelu. Klikněte na tlačítko hello **nový kontext dat** tlačítko a přijměte výchozí hello "ContactManager.Models.ContactManagerContext" pro hello **nový typ kontextu dat**. Klikněte na tlačítko **Přidat**.
 
-    Dialogové okno zobrazí výzvu: "soubor s názvem HomeController již ukončí. Chcete ho nahradit? ". Klikněte na **Ano**. Přepisování jsme řadič Domů, který byl vytvořen nový projekt. Nový řadič Domů budeme používat pro naše seznamu kontaktů.
+    Dialogové okno zobrazí výzvu: "soubor s názvem hello HomeController již ukončí. Chcete, aby tooreplace ho? ". Klikněte na **Ano**. Přepisování jsme hello Domů řadiče, který byl vytvořen s hello nový projekt. Použijeme hello nové Domů řadiče pro naše seznamu kontaktů.
 
     Visual Studio vytvoří metody kontroleru a zobrazení pro operace CRUD databáze pro **kontaktujte** objekty.
 
-## <a name="enable-migrations-create-the-database-add-sample-data-and-a-data-initializer"></a>Povolit migrace a vytvořit databázi, Přidání ukázkových dat a inicializátoru dat
-Dalším krokem je povolit [migrace Code First](http://curah.microsoft.com/55220) funkci pro vytvoření databáze založené na datový model, který jste vytvořili.
+## <a name="enable-migrations-create-hello-database-add-sample-data-and-a-data-initializer"></a>Povolit migrace a vytvořit databázi hello, Přidání ukázkových dat a inicializátoru dat
+Další úlohou Hello je tooenable hello [migrace Code First](http://curah.microsoft.com/55220) funkce v pořadí toocreate hello databáze založené na datový model hello jste vytvořili.
 
-1. V **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** a potom **Konzola správce balíčků**.
+1. V hello **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** a potom **Konzola správce balíčků**.
    
     ![Konzola správce balíčků v nabídce Nástroje][addcode008]
-2. V **Konzola správce balíčků** okno, zadejte následující příkaz:
+2. V hello **Konzola správce balíčků** okno, zadejte následující příkaz hello:
    
         enable-migrations 
    
-    **Enable-migrations se** příkaz vytvoří *migrace* složku a její uloží je v této složce *Configuration.cs* soubor, který můžete upravit konfigurace migrací. 
-3. V **Konzola správce balíčků** okno, zadejte následující příkaz:
+    Hello **enable-migrations se** příkaz vytvoří *migrace* složku a její uloží je v této složce *Configuration.cs* souboru, můžete upravit tooconfigure migrace. 
+3. V hello **Konzola správce balíčků** okno, zadejte následující příkaz hello:
    
         add-migration Initial
    
-    **Přidat migrace počáteční** příkaz vygeneruje třídy s názvem  **&lt;date_stamp&gt;počáteční** vytvářející databáze. První parametr ( *počáteční* ) je libovolný a slouží k vytvoření názvu souboru. Zobrazí se nové soubory tříd v **Průzkumníku řešení**.
+    Hello **přidat migrace počáteční** příkaz vygeneruje třídy s názvem  **&lt;date_stamp&gt;počáteční** vytvářející hello databáze. první parametr Hello ( *počáteční* ) je libovolný a slouží toocreate hello název souboru hello. Uvidíte hello nové třídy soubory ve **Průzkumníku řešení**.
    
-    V **počáteční** třídy, **až** metoda vytvoří tabulku kontaktů a **dolů** – metoda (používá, pokud chcete vrátit do předchozího stavu) se zahodí.
-4. Otevřete *Migrations\Configuration.cs* souboru. 
-5. Přidejte následující obory názvů. 
+    V hello **počáteční** třídy, hello **až** metoda vytvoří tabulku kontaktů hello a hello **dolů** – metoda (používá, když chcete, aby tooreturn toohello předchozí stav) se zahodí.
+4. Otevřete hello *Migrations\Configuration.cs* souboru. 
+5. Přidejte následující obory názvů hello. 
    
          using ContactManager.Models;
-6. Nahraďte *počáteční hodnoty* metoda následujícím kódem:
+6. Nahraďte hello *počáteční hodnoty* metoda s hello následující kód:
    
         protected override void Seed(ContactManager.Models.ContactManagerContext context)
         {
@@ -272,23 +272,23 @@ Dalším krokem je povolit [migrace Code First](http://curah.microsoft.com/55220
                 );
         }
    
-    Tento kód výše inicializuje databázi s kontaktní informace. Další informace o synchronizace replik indexů databáze najdete v tématu [ladění Entity Framework (EF) databází](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
-7. V **Konzola správce balíčků** zadejte příkaz:
+    Tento kód výše inicializuje hello databáze s hello kontaktní informace. Další informace o synchronizace replik indexů databáze hello najdete v tématu [ladění Entity Framework (EF) databází](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
+7. V hello **Konzola správce balíčků** zadejte příkaz hello:
    
         update-database
    
     ![Konzola správce balíčků příkazy][addcode009]
    
-    **Update-database** spustí první migrace, která vytvoří databázi. Databáze je ve výchozím nastavení vytvoří jako databáze SQL serveru Express LocalDB.
-8. Stiskněte klávesy CTRL+F5 a spusťte aplikaci. 
+    Hello **update-database** spustí hello první migrace, která vytvoří databázi hello. Ve výchozím nastavení je databáze hello vytvoří jako databáze SQL serveru Express LocalDB.
+8. Stisknutím kombinace kláves CTRL + F5 toorun hello aplikace. 
 
-Aplikace zobrazuje počáteční hodnoty data a poskytuje odkazy upravit, podrobnosti a odstranění.
+aplikace Hello zobrazuje hello počáteční hodnoty data a poskytuje úpravy, podrobnosti a odkazy odstranit.
 
 ![Zobrazení MVC dat][rxz3]
 
-## <a name="edit-the-view"></a>Upravit zobrazení
-1. Otevřete *Views\Home\Index.cshtml* souboru. V dalším kroku, jsme nahradí generovaný kód s kódem, který používá [jQuery](http://jquery.com/) a [Knockout.js](http://knockoutjs.com/). Tento nový kód načte seznam kontaktů pomocí webového rozhraní API a JSON a pak uživatelského rozhraní pomocí knockout.js sváže kontaktní údaje. Další informace najdete v tématu [další kroky](#nextsteps) na konci tohoto kurzu. 
-2. Obsah souboru nahraďte následujícím kódem.
+## <a name="edit-hello-view"></a>Upravit hello zobrazení
+1. Otevřete hello *Views\Home\Index.cshtml* souboru. V dalším kroku hello jsme nahradí hello vygeneruje kód s kódem, který používá [jQuery](http://jquery.com/) a [Knockout.js](http://knockoutjs.com/). Tento nový kód načte hello seznamu kontaktů pomocí webového rozhraní API a JSON a pak vazby hello kontaktovat toohello data uživatelského rozhraní pomocí knockout.js. Další informace najdete v tématu hello [další kroky](#nextsteps) oddíl hello konce tohoto kurzu. 
+2. Nahraďte obsah souboru hello hello hello následující kód.
    
         @model IEnumerable<ContactManager.Models.Contact>
         @{
@@ -377,12 +377,12 @@ Aplikace zobrazuje počáteční hodnoty data a poskytuje odkazy upravit, podrob
                 <input type="submit" value="Add" />
             </fieldset>
         </form>
-3. Klikněte pravým tlačítkem na složku obsahu a klikněte na tlačítko **přidat**a pak klikněte na tlačítko **novou položku...** .
+3. Klikněte pravým tlačítkem na složku obsahu hello a klikněte na tlačítko **přidat**a pak klikněte na tlačítko **novou položku...** .
    
     ![Přidání šablony stylů v kontextové nabídce složky obsahu][addcode005]
-4. V **přidat novou položku** dialogovém okně zadejte **styl** v horní pravé pole pro vyhledávání a pak vyberte **list stylu**.
+4. V hello **přidat novou položku** dialogovém okně zadejte **styl** v horním pravém vyhledávacího pole text hello a potom vyberte **list stylu**.
     ![Přidat novou položku – dialogové okno][rxStyle]
-5. Název souboru *Contacts.css* a klikněte na tlačítko **přidat**. Obsah souboru nahraďte následujícím kódem.
+5. Název souboru hello *Contacts.css* a klikněte na tlačítko **přidat**. Nahraďte obsah souboru hello hello hello následující kód.
    
         .column {
             float: left;
@@ -438,14 +438,14 @@ Aplikace zobrazuje počáteční hodnoty data a poskytuje odkazy upravit, podrob
             text-decoration: none;
         }
    
-    Budeme používat tuto šablonu stylů pro rozložení, barvy a styly využívané v aplikaci kontaktujte správce.
-6. Otevřete *App_Start\BundleConfig.cs* souboru.
-7. Přidejte následující kód k registraci [Knockout](http://knockoutjs.com/index.html "KO") modulu plug-in.
+    Budeme používat tuto šablonu stylů pro hello rozložení, barvy a styly využívané v aplikaci hello kontaktujte správce.
+6. Otevřete hello *App_Start\BundleConfig.cs* souboru.
+7. Přidejte následující kód tooregister hello hello [Knockout](http://knockoutjs.com/index.html "KO") modulu plug-in.
    
         bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                     "~/Scripts/knockout-{version}.js"));
-    Tato ukázka pomocí knockout zjednodušit dynamické kódu jazyka JavaScript, která zpracovává šablony obrazovky.
-8. Upravit obsah nebo šablon stylů css položka registrace *contacts.css* šabloně stylů. Změňte následující řádek:
+    Tato ukázka pomocí knockout toosimplify dynamické JavaScript kód, který zpracovává šablony obrazovky hello.
+8. Upravit hello obsah nebo šablon stylů css položka tooregister hello *contacts.css* šabloně stylů. Změna hello následující řádek:
    
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
@@ -456,52 +456,52 @@ Aplikace zobrazuje počáteční hodnoty data a poskytuje odkazy upravit, podrob
                    "~/Content/bootstrap.css",
                    "~/Content/contacts.css",
                    "~/Content/site.css"));
-9. V konzole Správce balíčků, spusťte následující příkaz k instalaci Knockout.
+9. Hello Konzola správce balíčků spusťte následující příkaz tooinstall Knockout hello.
    
         Install-Package knockoutjs
 
-## <a name="add-a-controller-for-the-web-api-restful-interface"></a>Přidat řadič pro rozhraní Restful webové rozhraní API
+## <a name="add-a-controller-for-hello-web-api-restful-interface"></a>Přidání kontroleru rozhraní Web API Restful hello
 1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na řadiče a klikněte na **přidat** a potom **řadiče...** 
-2. V **přidat vygenerované uživatelské rozhraní** dialogovém okně zadejte **webové 2 kontroler API s akcemi používající rozhraní Entity Framework** a pak klikněte na **přidat**.
+2. V hello **přidat vygenerované uživatelské rozhraní** dialogovém okně zadejte **webové 2 kontroler API s akcemi používající rozhraní Entity Framework** a pak klikněte na **přidat**.
    
     ![Přidat kontroler API](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.png)
-3. V **přidat kontroler** dialogovém okně zadejte "ContactsController" jako název řadiče. Vyberte "Kontakt (ContactManager.Models)" pro **třída modelu**.  Ponechte výchozí hodnotu pro **třída kontextu dat**. 
+3. V hello **přidat kontroler** dialogovém okně zadejte "ContactsController" jako název řadiče. Vyberte "Kontakt (ContactManager.Models)" pro hello **třída modelu**.  Ponechte výchozí hodnotu hello pro hello **třída kontextu dat**. 
 4. Klikněte na tlačítko **Přidat**.
 
-### <a name="run-the-application-locally"></a>Místní spuštění aplikace
-1. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
+### <a name="run-hello-application-locally"></a>Místní spuštění aplikace hello
+1. Stisknutím kombinace kláves CTRL + F5 toorun hello aplikace.
    
     ![Indexová stránka][intro001]
-2. Zadejte kontakt a klikněte na **přidat**. Aplikace vrací na domovskou stránku a zobrazí kontaktu, které jste zadali.
+2. Zadejte kontakt a klikněte na **přidat**. aplikace Hello vrátí toohello domovské stránce a zobrazí hello kontaktu, které jste zadali.
    
     ![Index stránky s položkami seznamu úkolů][addwebapi004]
-3. V prohlížeči připojit **/api/contacts** na adresu URL.
+3. V prohlížeči hello připojit **/api/contacts** toohello adresy URL.
    
-    Výsledná adresa URL bude vypadat http://localhost:1234/api/contacts. RESTful jste přidali webové rozhraní API vrátí uložené kontakty. Firefox) a Chrome (se zobrazí data ve formátu XML.
+    Výsledná adresa URL Hello bude vypadat http://localhost:1234/api/contacts. Hello RESTful webová rozhraní API, které jste přidali vrátí hello uložené kontakty. Firefox) a Chrome (zobrazí hello data ve formátu XML.
    
     ![Index stránky s položkami seznamu úkolů][rxFFchrome]
 
-    IE vás vyzve k otevření nebo uložení kontaktů.
+    Aplikace Internet Explorer bude výzvu tooopen nebo ukládat kontakty hello.
 
     ![Dialogové okno Uložit webového rozhraní API][addwebapi006]
 
 
-    Vrácený kontakty můžete otevřít v programu Poznámkový blok nebo prohlížeče.
+    Můžete otevřít hello kontakty, vrátí se v programu Poznámkový blok nebo prohlížeče.
 
     Tento výstup mohou být spotřebovávána jiná aplikace, jako je například mobilní webové stránky nebo aplikace.
 
     ![Dialogové okno Uložit webového rozhraní API][addwebapi007]
 
-    **Upozornění zabezpečení**: V tomto okamžiku aplikace je nezabezpečené a odolné vůči útoku proti útokům CSRF. Později v tomto kurzu jsme se odebrat toto ohrožení zabezpečení. Další informace najdete v části [útoky brání webů požadavku padělání (proti útokům CSRF)][prevent-csrf-attacks].
+    **Upozornění zabezpečení**: V tomto okamžiku je vaše aplikace tooCSRF nezabezpečené a stát terčem útoku. Později v kurzu hello jsme se odebrat toto ohrožení zabezpečení. Další informace najdete v části [útoky brání webů požadavku padělání (proti útokům CSRF)][prevent-csrf-attacks].
 ## <a name="add-xsrf-protection"></a>Přidat ochranu XSRF
-Padělání požadavku posílaného mezi weby (také označované jako XSRF nebo proti útokům CSRF) je útok na hostované webové aplikace, které škodlivou webovou stránku můžete ovlivnit interakce mezi prohlížeče klienta a web důvěryhodný tento prohlížeč. Tyto útoky jsou možné, protože webových prohlížečů bude odesílat tokeny ověřování automaticky s každou žádost na web. V kanonickém tvaru příkladu je soubor cookie ověřování, jako je například ASP. Lístek ověřování pomocí formulářů pro Asp.net. Tyto útoky však může být cílem weby, které použít žádné trvalé ověřovací mechanismus (například ověřování systému Windows, Basic a tak dále).
+Padělání požadavku posílaného mezi weby (také označované jako XSRF nebo proti útokům CSRF) je útok na hostované webové aplikace, které škodlivou webovou stránku můžete ovlivnit hello interakce mezi prohlížeče klienta a důvěřují prohlížeč tohoto webu. Tyto útoky jsou možné, protože webových prohlížečů bude odesílat tokeny ověřování automaticky s každou žádost tooa webu. Příklad kanonický Hello je soubor cookie ověřování, jako je například ASP. Lístek ověřování pomocí formulářů pro Asp.net. Tyto útoky však může být cílem weby, které použít žádné trvalé ověřovací mechanismus (například ověřování systému Windows, Basic a tak dále).
 
-Útok XSRF se liší od útoky phishing. Útoky phishing vyžadovat interakci z napadeného. V rámci útoku phishing škodlivou webovou stránku bude napodobovat cílového webu a napadené je oklamat do poskytování útočník citlivé informace. Při útoku XSRF není často žádná interakce potřebné z napadeného. Místo toho je útočník spoléhat na prohlížeči všechny relevantní soubory cookie automaticky odesílání do cílového webu.
+Útok XSRF se liší od útoky phishing. Útoky phishing nevyžadovaly interakci postižené hello. V rámci útoku phishing škodlivou webovou stránku bude napodobovat hello cílového webu a postižené hello je oklamat do poskytování útočník toohello citlivé informace. Při útoku XSRF není často žádná interakce potřebné z postižené hello. Místo toho je hello útočník spoléhat na hello prohlížeče automaticky odesílat všechny relevantní soubory cookie toohello cílového webu.
 
-Další informace najdete v tématu [otevřete projekt webové aplikace zabezpečení](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_\(CSRF\)).
+Další informace najdete v tématu hello [otevřete projekt webové aplikace zabezpečení](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_\(CSRF\)).
 
 1. V **Průzkumníku řešení**, vpravo **ContactManager** projektu a klikněte na tlačítko **přidat** a pak klikněte na **třída**.
-2. Název souboru *ValidateHttpAntiForgeryTokenAttribute.cs* a přidejte následující kód:
+2. Název souboru hello *ValidateHttpAntiForgeryTokenAttribute.cs* a přidejte následující kód hello:
    
         using System;
         using System.Collections.Generic;
@@ -570,15 +570,15 @@ Další informace najdete v tématu [otevřete projekt webové aplikace zabezpe�
                 }
             }
         }
-3. Přidejte následující *pomocí* příkaz kontrakty řadiče, abyste získali přístup k **[ValidateHttpAntiForgeryToken]** atribut.
+3. Přidejte následující hello *pomocí* toohello příkaz měnící řadiče, abyste získali přístup toohello **[ValidateHttpAntiForgeryToken]** atribut.
    
         using ContactManager.Filters;
-4. Přidat **[ValidateHttpAntiForgeryToken]** atribut metody Post **ContactsController** k ochraně před hrozbami XSRF. Přidá k "PutContact", "PostContact" a **DeleteContact** metody akce.
+4. Přidat hello **[ValidateHttpAntiForgeryToken]** atribut metody Post toohello hello **ContactsController** tooprotect z XSRF hrozeb. Můžete ho přidá toohello "PutContact", "PostContact" a **DeleteContact** metody akce.
    
         [ValidateHttpAntiForgeryToken]
             public IHttpActionResult PutContact(int id, Contact contact)
             {
-5. Aktualizace *skripty* části *Views\Home\Index.cshtml* souboru kódu na získat tokeny XSRF.
+5. Aktualizace hello *skripty* části hello *Views\Home\Index.cshtml* souboru tooinclude kód tooget hello XSRF tokeny.
    
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -633,59 +633,59 @@ Další informace najdete v tématu [otevřete projekt webové aplikace zabezpe�
             </script>
          }
 
-## <a name="publish-the-application-update-to-azure-and-sql-database"></a>Publikovat aktualizaci aplikace na Azure a SQL Database
-Publikování aplikace, opakujte postup, který jste postupovali podle dříve.
+## <a name="publish-hello-application-update-tooazure-and-sql-database"></a>Publikovat tooAzure aktualizace aplikace hello a databáze SQL
+aplikace hello toopublish, opakujte hello postupu, který jste postupovali podle dříve.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a vyberte **publikovat**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt hello a vyberte **publikovat**.
    
     ![Publikování][rxP]
-2. Klikněte na kartu **Nastavení**.
-3. V části **ContactsManagerContext(ContactsManagerContext)**, klikněte na tlačítko **v** ikonu změníte *vzdáleného připojovací řetězec* do připojovacího řetězce pro databázi kontaktu. Klikněte na tlačítko **ContactDB**.
+2. Klikněte na tlačítko hello **nastavení** kartě.
+3. V části **ContactsManagerContext(ContactsManagerContext)**, klikněte na tlačítko hello **v** ikonu toochange *vzdáleného připojovací řetězec* toohello připojovací řetězec získáte hello databáze. Klikněte na tlačítko **ContactDB**.
    
     ![Nastavení](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
-4. Zaškrtněte políčko pro **spustit migrace Code First (spuštěno při spuštění aplikace)**.
-5. Klikněte na tlačítko **Další** a pak klikněte na **Preview**. Visual Studio zobrazí seznam souborů, které bude přidán nebo aktualizován.
+4. Zaškrtněte políčko hello pro **spustit migrace Code First (spuštěno při spuštění aplikace)**.
+5. Klikněte na tlačítko **Další** a pak klikněte na **Preview**. Visual Studio zobrazí seznam hello souborů, které bude přidán nebo aktualizován.
 6. Klikněte na **Publikovat**.
-   Po dokončení nasazení otevře prohlížeč na domovskou stránku aplikace.
+   Po dokončení nasazení hello hello prohlížeči se otevře toohello domovskou stránku hello aplikace.
    
     ![Index stránky s žádné kontakty.][intro001]
    
-    Visual Studio publikovat proces automaticky nakonfigurované připojovací řetězec v nasazené *Web.config* souboru tak, aby odkazoval na databázi SQL. Také nakonfigurovat migrace Code First automaticky upgradu databáze na nejnovější verzi aplikace přistupovat k databázi po nasazení poprvé.
+    Hello Visual Studio publikovat proces automaticky nakonfiguruje hello připojovací řetězec v hello nasazené *Web.config* soubor toopoint toohello SQL database. Také nakonfigurovat migrace Code First tooautomatically upgradu hello toohello nejnovější verze databáze, že hello první čas hello aplikace přistupuje k databázi hello po nasazení.
    
-    V důsledku této konfiguraci Code First vytvořené databáze spuštěním kódu **počáteční** třídu, která jste vytvořili dříve. Stejně to při prvním pokusu o přístup k databázi po nasazení aplikace.
-7. Zadejte kontakt, jako jste to udělali při spuštění aplikace místně, chcete-li ověřit, že nasazení databáze bylo úspěšné.
+    V důsledku této konfiguraci Code First vytvořené databáze hello spuštěním kódu hello v hello **počáteční** třídu, která jste vytvořili dříve. Tato hello první čas hello aplikace se pokusila tooaccess hello databáze se nespustil po nasazení.
+7. Zadejte kontakt, jako jste to udělali při spuštění místně, aplikace hello tooverify o úspěšném nasazení databáze.
 
-Až uvidíte, že položku, kterou zadáte je uložena a zobrazí se na stránce kontaktujte správce, víte, že byla uložena v databázi.
+Až uvidíte, že hello položku, kterou zadáte je uložena a zobrazí se na stránku hello kontaktujte správce, víte, že byla uložena v databázi hello.
 
 ![Index stránky s kontakty][addwebapi004]
 
-Aplikace je nyní spuštěna v cloudu, uložení svá data pomocí databáze SQL. Po dokončení testování aplikace v Azure, odstraňte jej. Aplikace je veřejný a nemá žádný mechanismus pro omezení přístupu.
+Hello aplikace je nyní spuštěna v cloudu hello pomocí SQL Database toostore jeho data. Po dokončení testování hello aplikace v Azure, odstraňte jej. aplikace Hello je veřejný a nemá přístup k toolimit mechanismus.
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Jiný způsob ukládání dat v aplikaci Azure je použití úložiště Azure, které poskytují úložiště nerelační data ve formě objekty BLOB a tabulek. Následující odkazy poskytují další informace o webového rozhraní API, rozhraní ASP.NET MVC a okno Azure.
+Jiný způsob toostore dat v aplikaci Azure je toouse úložiště Azure, které poskytují úložiště nerelační data ve formuláři hello objekty BLOB a tabulek. Následující odkazy Hello poskytují další informace o webového rozhraní API, rozhraní ASP.NET MVC a okno Azure.
 
 * [Začínáme s MVC pomocí rozhraní Entity Framework][EFCodeFirstMVCTutorial]
-* [Úvod do architektury ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [Úvod tooASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [První rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
 * [Ladění WAWS](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-Tento kurz a ukázkové aplikace byla zapsána pomocí [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [ @RickAndMSFT ](https://twitter.com/RickAndMSFT)) s požádat o pomoc tní Dykstra a Jiří Dorrans (Twitter [ @blowdart ](https://twitter.com/blowdart)). 
+Ukázkovou aplikaci tohoto kurzu a hello napsal [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [ @RickAndMSFT ](https://twitter.com/RickAndMSFT)) s požádat o pomoc tní Dykstra a Jiří Dorrans (Twitter [ @blowdart ](https://twitter.com/blowdart)). 
 
-Prosím ponechejte zpětná vazba týkající se vám líbilo nebo co chcete najdete v části zlepšila, jenom o samotné kurz, ale taky o produkty, které ukazuje. Vaše zpětná vazba pomůže stanovení priorit vylepšení. Zejména zajímá zjistit kolik zájmu v další automatizace procesu konfigurace a nasazení databáze členství. 
+Na co líbilo nebo co chcete toosee zlepšila, jenom o hello kurzu sám sebe, ale taky o hello produkty, které ukazuje prosím sdělit svůj názor. Vaše zpětná vazba pomůže stanovení priorit vylepšení. Zejména zajímá zjistit, kolik vás zajímají je v další automatizace procesu hello konfigurace a nasazení databáze členství hello. 
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
-[Add Roles to the Membership Database]:#mbrDB
+[Add Roles toohello Membership Database]:#mbrDB
 [Create a Data Deployment Script]:#ppd
-[Update the Membership Database]:#ppd2
+[Update hello Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app

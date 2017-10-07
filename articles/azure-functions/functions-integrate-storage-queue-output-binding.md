@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření funkce aktivované zprávami ve frontě v Azure | Dokumentace Microsoftu"
-description: "Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolávají zprávy odeslané do fronty služby Azure Storage."
+title: "aaaCreate funkce v Azure aktivovány zprávy fronty | Microsoft Docs"
+description: "Použití Azure Functions toocreate bez serveru funkce, které je vyvolána zprávy odeslané tooan fronty Azure Storage."
 services: azure-functions
 documentationcenter: na
 author: ggailey777
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 08/17/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 57c59273a9da55f3e357764c522b444ae2d73cb5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44db90fa80bf77e31bf53dddabd7136de5800b11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
+# <a name="add-messages-tooan-azure-storage-queue-using-functions"></a>Přidat fronty Azure Storage tooan zprávy pomocí funkce
 
-Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní způsob připojení k datům externí služby z funkce. V tomto tématu zjistíte, jak aktualizovat existující funkci přidáním výstupní vazby, která odesílá zprávy do Azure Queue Storage.  
+V Azure Functions poskytují vstupní a výstupní vazby dat deklarativní způsob tooconnect tooexternal služby z funkce. V tomto tématu zjistěte, jak tooupdate existující funkce přidáním výstup vazby, která odesílá zprávy tooAzure Queue storage.  
 
-![Zobrazte si zprávy v protokolech.](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
+![Zobrazení zpráv v protokolech hello.](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
 ## <a name="prerequisites"></a>Požadavky 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
-* Nainstalujte [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+* Nainstalujte hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 ## <a name="add-binding"></a>Přidání výstupní vazby
  
@@ -40,27 +40,27 @@ Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní
 
 2. Vyberte **integrací** a **+ nový výstupní**, zvolte **Azure Queue storage** a zvolte **vyberte**.
     
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
+    ![Přidejte funkci tooa vazby výstupní fronty úložiště v hello portálu Azure.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Použijte nastavení uvedená v tabulce: 
+3. Použijte hello nastavení uvedeného v tabulce hello: 
 
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
+    ![Přidejte funkci tooa vazby výstupní fronty úložiště v hello portálu Azure.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Název fronty**   | myqueue-items    | Název fronty, ke které se připojíte ve svém účtu úložiště. |
-    | **Připojení k účtu úložiště** | AzureWebJobStorage | Můžete použít připojení k účtu úložiště, které už používá vaše aplikace Function App, nebo můžete vytvořit nové.  |
-    | **Název parametru zprávy** | outputQueueItem | Název výstupního parametru vazby. | 
+    | **Název fronty**   | myqueue-items    | Název Hello hello fronty tooconnect tooin účtu úložiště. |
+    | **Připojení k účtu úložiště** | AzureWebJobStorage | Můžete použít připojení účtu úložiště hello již používá aplikace funkce nebo vytvořte novou.  |
+    | **Název parametru zprávy** | outputQueueItem | Název Hello hello výstupní parametr vazby. | 
 
-4. Kliknutím na **Uložit** přidejte vazbu.
+4. Klikněte na tlačítko **Uložit** tooadd hello vazby.
  
-Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby tuto vazbu využíval k přidávání zpráv do fronty.  
+Teď, když máte vazbu výstup, který je definován, je nutné tooupdate hello kód toouse hello vazby tooadd tooa fronty zpráv.  
 
-## <a name="update-the-function-code"></a>Aktualizace kódu funkce
+## <a name="update-hello-function-code"></a>Aktualizovat kód funkce hello
 
-1. Vybráním určité funkce zobrazíte kód této funkce v editoru. 
+1. Vyberte funkce toodisplay hello funkce kódu v editoru hello. 
 
-2. Pro C# funkci, aktualizovat svou definici funkce následujícím způsobem, aby přidat **outputQueueItem** úložiště parametr vazby. V případě funkce v jazyce JavaScript tento krok přeskočte.
+2. Pro C# funkci, aktualizovat svou definici funkce takto tooadd hello **outputQueueItem** úložiště parametr vazby. V případě funkce v jazyce JavaScript tento krok přeskočte.
 
     ```cs   
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
@@ -70,48 +70,48 @@ Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby
     }
     ```
 
-3. Těsně před vrácením hodnoty touto metodou přidejte do funkce následující kód. Použijte fragment kódu odpovídající jazyku vaší funkce.
+3. Přidejte následující kód toohello funkce těsně před hello metoda vrátí hello. Použití hello odpovídající fragment kódu pro jazyk hello funkce.
 
     ```javascript
-    context.bindings.outputQueueItem = "Name passed to the function: " + 
+    context.bindings.outputQueueItem = "Name passed toohello function: " + 
                 (req.query.name || req.body.name);
     ```
 
     ```cs
-    outputQueueItem.Add("Name passed to the function: " + name);     
+    outputQueueItem.Add("Name passed toohello function: " + name);     
     ```
 
-4. Změny uložíte tak, že vyberete **Uložit**.
+4. Vyberte **Uložit** toosave změny.
 
-Hodnota předaná aktivační události HTTP je součástí zprávy přidané do fronty.
+Aktivace protokolu HTTP toohello předaná hodnota Hello je součástí přidané toohello front zpráv.
  
-## <a name="test-the-function"></a>Testování funkce 
+## <a name="test-hello-function"></a>Testování funkce hello 
 
-1. Po uložení změn kódu vyberte **Spustit**. 
+1. Po uložení změn kódu hello vyberte **spustit**. 
 
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
+    ![Přidejte funkci tooa vazby výstupní fronty úložiště v hello portálu Azure.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-2. Zkontrolujte protokoly a zkontrolujte, jestli se spuštění funkce zdařilo. Při prvním použití výstupní vazby vytvoří modul runtime Functions v účtu úložiště novou frontu s názvem **outqueue**.
+2. Zkontrolujte toomake protokoly hello se, zda text hello funkce proběhla úspěšně. Novou frontu s názvem **outqueue** hello runtime Functions při hello výstup vazby se používá nejprve vytvoří ve vašem účtu úložiště.
 
-Teď se můžete připojit ke svému účtu úložiště a zkontrolovat novou frontu i zprávy, které jste do ní přidali. 
+V dalším kroku se můžete připojit tooyour úložiště účet tooverify hello novou frontu a uvítací zprávu, že jste přidali tooit. 
 
-## <a name="connect-to-the-queue"></a>Připojení k frontě
+## <a name="connect-toohello-queue"></a>Připojit toohello fronty
 
-Pokud jste už nainstalovali Storage Explorer a připojili ho ke svému účtu úložiště, přeskočte první tři kroky.    
+Přeskočit hello první tři kroky, pokud je již nainstalován Storage Explorer a připojení se účet úložiště tooyour.    
 
-1. Ve funkci, zvolte **integrací** a nové **Azure Queue storage** výstup vazby, pak rozbalte **dokumentaci**. Zkopírujte nastavení **Název účtu** i **Klíč účtu**. Tyto přihlašovací údaje použijte k připojení k účtu úložiště.
+1. Ve funkci, zvolte **integrací** a hello nové **Azure Queue storage** výstup vazby, pak rozbalte **dokumentaci**. Zkopírujte nastavení **Název účtu** i **Klíč účtu**. Používáte účet úložiště toohello tooconnect tyto přihlašovací údaje.
  
-    ![Získejte přihlašovací údaje účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
+    ![Účet hello úložiště získáte přihlašovací údaje pro připojení.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
-2. Spusťte [Microsoft Azure Storage Explorer](http://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
+2. Spustit hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/) nástroj, vyberte hello připojit ikonu na levé straně hello, zvolte **použít název účtu úložiště a klíč**a vyberte **Další**.
 
-    ![Spusťte nástroj Průzkumník účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
+    ![Spusťte nástroj hello Průzkumníka účet úložiště.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
     
-3. Do příslušných polí vložte **Název účtu** a **Klíč účtu** z kroku 1 a pak vyberte **Další** a **Připojit**. 
+3. Vložení hello **název účtu** a **klíč účtu** z kroku 1 do jejich odpovídající pole a pak vyberte **Další**, a **Connect**. 
   
-    ![Vložte přihlašovací údaje úložiště a připojte se.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
+    ![Vložte hello úložiště přihlašovací údaje a připojení.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. Rozbalte účet připojené úložiště, rozbalte položku **fronty** a ověřte, že frontu s názvem **Moje_fronta položky** existuje. Fronta už by taky měla obsahovat zprávu.  
+4. Rozbalte účet úložiště hello připojené, rozbalte položku **fronty** a ověřte, že frontu s názvem **Moje_fronta položky** existuje. Měli byste taky vidět zprávu již ve frontě hello.  
  
     ![Vytvořte frontu úložiště.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
@@ -122,11 +122,11 @@ Pokud jste už nainstalovali Storage Explorer a připojili ho ke svému účtu �
 
 ## <a name="next-steps"></a>Další kroky
 
-Přidali jste k existující funkci výstupní vazbu. 
+Jste přidali tooan vazby výstup pro existující funkce. 
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Další informace o vazbách do úložiště front najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md). 
+Další informace o vazby tooQueue úložiště najdete v tématu [vazby fronty Azure Storage funkce](functions-bindings-storage-queue.md). 
 
 
 

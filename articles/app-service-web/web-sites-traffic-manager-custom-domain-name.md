@@ -1,5 +1,5 @@
 ---
-title: "Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service, která používá Traffic Manager pro vyrovnávání zatížení."
+title: "aaaConfigure vlastní název domény pro webovou aplikaci v Azure App Service, která používá Traffic Manager pro vyrovnávání zatížení."
 description: "Vlastní název domény pro použití webové aplikace ve službě Azure App Service, která zahrnuje Traffic Manager pro vyrovnávání zatížení."
 services: app-service\web
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 5f099201d9018a6f8577cb3daf127d09560fb94b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfde5fc6b445b30b10e03dcb03e8d072130d9377
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -45,25 +45,25 @@ Tento článek obsahuje obecné pokyny pro používání vlastního názvu domé
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>Přidejte záznam DNS pro vaši vlastní doménu.
 > [!NOTE]
-> Pokud jste zakoupili domény prostřednictvím Azure App Service Web Apps přeskočit následující kroky a odkazovat na posledním kroku [koupit domény pro webové aplikace](custom-dns-web-site-buydomains-web-app.md) článku.
+> Pokud jste zakoupili domény prostřednictvím Azure App Service Web Apps přeskočit následující kroky a najdete v posledním kroku toohello [koupit domény pro webové aplikace](custom-dns-web-site-buydomains-web-app.md) článku.
 > 
 > 
 
-Pokud chcete přiřadit vlastní domény webové aplikace ve službě Azure App Service, musí přidáte nový záznam v tabulce DNS pro vaši vlastní doménu pomocí nástrojů poskytovaných registrátora domény, které jste zakoupili název domény z. Použijte následující postup pro vyhledání a pomocí nástrojů DNS.
+tooassociate vaše vlastní doména se webové aplikace ve službě Azure App Service musí přidáte nový záznam v tabulce hello DNS pro vaši vlastní doménu pomocí nástrojů poskytovaných hello doménového registrátora, které jste zakoupili název domény z. Použijte následující kroky toolocate hello a pomocí nástrojů DNS hello.
 
-1. Přihlaste se ke svému účtu u registrátora domény a vyhledejte stránku pro správu záznamy DNS. Vyhledejte odkazy nebo oblasti lokality označený jako **název domény**, **DNS**, nebo **název serveru správy**. Často můžete najít odkaz na tuto stránku zobrazení informací o vašem účtu a podívat se na odkaz, jako **mé domény**.
-2. Jakmile naleznete na stránce Správa pro název domény, vyhledejte odkaz, který slouží k úpravě záznamů DNS. To může být uveden jako **souboru zóny**, **záznamy DNS**, nebo jako **Upřesnit** odkazu na konfiguraci.
+1. Přihlašovací účet tooyour u doménového registrátora a vyhledejte stránku pro správu záznamy DNS. Vyhledejte odkazy nebo oblasti lokality hello označený jako **název domény**, **DNS**, nebo **název serveru správy**. Často se odkaz toothis stránku můžete najít zobrazení informací o vašem účtu a pak hledá odkaz, jako **mé domény**.
+2. Jakmile naleznete stránku hello správy pro název domény, vyhledejte odkaz, který vám umožní záznamy DNS tooedit hello. To může být uveden jako **souboru zóny**, **záznamy DNS**, nebo jako **Upřesnit** odkazu na konfiguraci.
    
-   * Stránky bude mít pravděpodobně několik záznamů, které jsou již vytvořeny, jako je například přidružení vstupního '**@**'nebo'\*' 'domény parkovací' stránky. Záznamy pro běžné dílčím doménám domény může obsahovat také jako **www**.
-   * Bude zmínili stránce **záznamy CNAME**, nebo zadejte rozevíracího seznamu vyberte typ záznamu. Například je může další záznamy také zmínili **záznamy A** a **záznamů MX**. V některých případech záznamy CNAME bude volat jiné názvy, jako **záznam aliasu**.
-   * Stránky bude mít i pole, které vám umožní **mapy** z **název hostitele** nebo **název domény** na jiný název domény.
-3. Když jsou specifikace každý Registrátor liší, obecně namapujete *z* vlastního názvu domény (například **contoso.com**,) *k* název domény Traffic Manageru (**contoso.trafficmanager.net**) používané pro vaši webovou aplikaci.
+   * stránku Hello bude mít pravděpodobně několik záznamů, které jsou již vytvořeny, jako je například přidružení vstupního '**@**'nebo'\*' 'domény parkovací' stránky. Záznamy pro běžné dílčím doménám domény může obsahovat také jako **www**.
+   * bude zmínili stránku Hello **záznamy CNAME**, nebo zadejte rozevíracího seznamu tooselect typu záznamu. Například je může další záznamy také zmínili **záznamy A** a **záznamů MX**. V některých případech záznamy CNAME bude volat jiné názvy, jako **záznam aliasu**.
+   * stránku Hello bude mít i pole, které vám umožňují příliš**mapy** z **název hostitele** nebo **název domény** tooanother název domény.
+3. Při hello specifikace každý Registrátor liší, obecně namapujete *z* vlastního názvu domény (například **contoso.com**,) *k* název domény Traffic Manageru hello (**contoso.trafficmanager.net**) používané pro vaši webovou aplikaci.
    
    > [!NOTE]
-   > Pokud záznam se už používá a je nutné ho preventivně svázat aplikace k němu, případně můžete vytvořit další záznam CNAME. Například ho preventivně vazby **www.contoso.com** do webové aplikace, vytvořte záznam CNAME z **awverify.www** k **contoso.trafficmanager.net**. Potom můžete přidat "www.contoso.com" do vaší webové aplikace beze změny záznam CNAME "www". Další informace najdete v tématu [záznamy DNS vytvořit pro webové aplikace ve vlastní doménu][CREATEDNS].
+   > Případně pokud záznam se už používá a je nutné toopreemptively vazby tooit vaší aplikace, můžete vytvořit další záznam CNAME. Například toopreemptively vazby **www.contoso.com** tooyour webové aplikace, vytvořte záznam CNAME z **awverify.www** příliš**contoso.trafficmanager.net**. Poté můžete přidat "www.contoso.com" tooyour webové aplikace beze změny záznam CNAME hello "www". Další informace najdete v tématu [záznamy DNS vytvořit pro webové aplikace ve vlastní doménu][CREATEDNS].
    > 
    > 
-4. Po dokončení přidávání nebo úpravě záznamů DNS u registrátora uložte změny.
+4. Po dokončení přidávání nebo úpravě záznamů DNS u registrátora uložte změny hello.
 
 <a name="enabledomain"></a>
 
@@ -71,7 +71,7 @@ Pokud chcete přiřadit vlastní domény webové aplikace ve službě Azure App 
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete ve [Středisku pro vývojáře Node.js](/develop/nodejs/).
+Další informace najdete v tématu hello [středisku pro vývojáře Node.js](/develop/nodejs/).
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

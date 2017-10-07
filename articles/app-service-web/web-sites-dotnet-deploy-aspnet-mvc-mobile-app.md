@@ -1,6 +1,6 @@
 ---
-title: "Nasazení mobilní webové aplikace ASP.NET MVC 5 v Azure App Service"
-description: "Kurz, který se naučíte, jak nasadit webovou aplikaci do služby Azure App Service pomocí funkce mobilní webové aplikace ASP.NET MVC 5."
+title: "aaaDeploy ASP.NET MVC 5 mobilní webové aplikace v Azure App Service"
+description: "Kurz, který se naučíte, jak toodeploy tooAzure webové aplikace služby App Service pomocí mobilní funkce v architektuře ASP.NET MVC 5 webové aplikace."
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
-ms.openlocfilehash: c98e9b485c52a82e5be5c0f6b0b67912d1e890b9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 01119c07246c0252fd357562774a2e90b3ef77d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-an-aspnet-mvc-5-mobile-web-app-in-azure-app-service"></a>Nasazení mobilní webové aplikace ASP.NET MVC 5 v Azure App Service
-V tomto kurzu naučit základní informace o tom, jak sestavit webové aplikace ASP.NET MVC 5, který je mobilní zařízení a nasadíte ho do Azure App Service. V tomto kurzu budete potřebovat [Visual Studio Express 2013 pro Web] [ Visual Studio Express 2013] nebo edice sady Visual Studio, pokud již máte, professional. Můžete použít [Visual Studio 2015] , ale snímky obrazovky se bude lišit a je nutné použít šablony ASP.NET 4.x.
+V tomto kurzu se naučit hello základní informace o tom, jak toobuild ASP.NET MVC 5 webové aplikaci, která je mobilní zařízení a nasadit tooAzure služby App Service. V tomto kurzu budete potřebovat [Visual Studio Express 2013 pro Web] [ Visual Studio Express 2013] nebo edice professional hello sady Visual Studio, pokud již máte který. Můžete použít [Visual Studio 2015] , ale snímky obrazovky hello se bude lišit a je nutné použít hello ASP.NET 4.x šablony.
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-youll-build"></a>Co budete sestavení
-V tomto kurzu přidáte mobilní funkce pro jednoduchou aplikaci seznamu konference, která je součástí [starter projektu][StarterProject]. Následující snímek obrazovky ukazuje relace ASP.NET v hotová aplikace, jak je vidět v emulátoru prohlížeče v Internet Exploreru 11 F12 nástroje pro vývojáře.
+V tomto kurzu přidáte mobilní funkce toohello jednoduchou konferenční výpis aplikaci, která je k dispozici v hello [starter projektu][StarterProject]. Hello následující snímek obrazovky ukazuje relací ASP.NET hello v aplikaci hello dokončit, jak je vidět v emulátoru hello prohlížeče v Internet Exploreru 11 F12 nástroje pro vývojáře.
 
 ![][FixedSessionsByTag]
 
-Můžete použít nástroje pro vývojáře Internet Explorer 11 F12 a [nástroj Fiddler] [ Fiddler] pomoci při ladění aplikace. 
+Můžete použít nástroje pro vývojáře hello Internet Explorer 11 F12 a hello [nástroj Fiddler] [ Fiddler] toohelp ladění aplikace. 
 
 ## <a name="skills-youll-learn"></a>Dovedností, které se dozvíte
 Zde je, co se dozvíte:
 
-* Postup publikování webové aplikace přímo do webové aplikace v Azure App Service pomocí sady Visual Studio 2013.
-* Jak šablony ASP.NET MVC 5 pomocí rozhraní šablon stylů CSS Bootstrap zlepšit zobrazení na mobilních zařízeních
-* Postup vytvoření zobrazení mobile specifické pro konkrétní mobilní prohlížeče, jako je iPhone a Android
-* Postup vytvoření přizpůsobivý zobrazení (zobrazení, které reagují na různé prohlížeče na zařízeních)
+* Jak toouse Visual Studio 2013 toopublish webové aplikace přímo tooa webové aplikace v Azure App Service.
+* Jak hello ASP.NET MVC 5 šablony pomocí šablon stylů CSS Bootstrap framework hello zlepšit zobrazení na mobilních zařízeních
+* Jak toocreate specifické mobilní zobrazení tootarget konkrétní mobilní prohlížeče, jako je hello iPhone a Android
+* Jak toocreate přizpůsobivý zobrazení (zobrazení, které reagují na zařízeních toodifferent prohlížeče)
 
-## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
-Nastavení vývojového prostředí instalací sady Azure SDK pro .NET 2.5.1 nebo novější. 
+## <a name="set-up-hello-development-environment"></a>Nastavit hello vývojového prostředí
+Nastavení vývojového prostředí instalací hello Azure SDK pro .NET 2.5.1 nebo novější. 
 
-1. Chcete-li nainstalovat sadu Azure SDK pro .NET, klikněte na níže uvedený odkaz. Pokud nemáte dosud nainstalován Visual Studio 2013, bude nainstalována ve odkaz. Tento kurz vyžaduje Visual Studio 2013. [Azure SDK pro Visual Studio 2013][AzureSDKVs2013]
-2. V okně webové platformy, klikněte na **nainstalovat** a pokračujte v instalaci.
+1. tooinstall hello Azure SDK pro platformu .NET, klikněte na níže uvedený odkaz hello. Pokud nemáte Visual Studio 2013 ještě nainstalované, nainstaluje se podle hello propojení. Tento kurz vyžaduje Visual Studio 2013. [Azure SDK pro Visual Studio 2013][AzureSDKVs2013]
+2. V okně hello instalačního programu webové platformy, klikněte na tlačítko **nainstalovat** a pokračovat v instalaci hello.
 
-Budete také potřebovat emulátoru prohlížeč pro mobilní zařízení. Bude fungovat některé z následujících:
+Budete také potřebovat emulátoru prohlížeč pro mobilní zařízení. Některé z následujících hello bude fungovat:
 
 * Emulátor prohlížeče v [nástroje pro vývojáře aplikace Internet Explorer 11 F12] [ EmulatorIE11] (používá se v všechny snímky obrazovky prohlížeč pro mobilní zařízení). Má přednastavení řetězec uživatelského agenta pro Windows Phone 8, Windows Phone 7 a Apple iPad.
 * Emulátor prohlížeče v [Google Chrome DevTools][EmulatorChrome]. Obsahuje přednastavení množství zařízení se systémem Android, a také Apple iPhone, Apple iPad a Amazon Kindle ještě efektivněji. Emuluje také touch události.
 * [Emulátoru mobilního Opera][EmulatorOpera]
 
-Projekty Visual Studio s C\# zdrojového kódu jsou k dispozici v tomto tématu:
+Projekty Visual Studio s C\# zdrojového kódu jsou k dispozici tooaccompany v tomto tématu:
 
 * [Stažení Starter projektu][StarterProject]
 * [Dokončení stažení projektu][CompletedProject]
 
-## <a name="bkmk_DeployStarterProject"></a>Nasazení projektu starter do webové aplikace Azure
-1. Stažení aplikace konferenční výpis [starter projektu][StarterProject].
-2. Potom v Průzkumníku Windows, klikněte pravým tlačítkem na stažený soubor ZIP a zvolte *vlastnosti*.
-3. V **vlastnosti** dialogovém okně vyberte **Odblokovat** tlačítko. (Odblokování brání upozornění zabezpečení, která nastane, když se pokusíte použít *.zip* souboru, který jste stáhli z webu.)
-4. Klikněte pravým tlačítkem na soubor ZIP a vyberte **Extrahovat vše** soubor rozbalit. 
-5. V sadě Visual Studio, otevřete *C#\Mvc5Mobile.sln* souboru.
-6. V Průzkumníku řešení klikněte pravým tlačítkem na projekt a klikněte na tlačítko **publikovat**.
+## <a name="bkmk_DeployStarterProject"></a>Nasazení hello starter projektu tooan Azure webové aplikace
+1. Stažení aplikace hello konferenční výpis [starter projektu][StarterProject].
+2. Potom v Průzkumníku Windows, klikněte pravým tlačítkem na soubor ZIP hello stáhli a zvolte *vlastnosti*.
+3. V hello **vlastnosti** dialogovém okně vyberte hello **Odblokovat** tlačítko. (Odblokování brání upozornění zabezpečení, která nastane, když toouse *.zip* souboru, který jste stáhli z webové hello.)
+4. Klikněte pravým tlačítkem na soubor ZIP hello a vyberte **Extrahovat vše** dekomprimovat soubor hello. 
+5. V sadě Visual Studio otevřete hello *C#\Mvc5Mobile.sln* souboru.
+6. V Průzkumníku řešení klikněte pravým tlačítkem na projekt hello a klikněte na tlačítko **publikovat**.
    
    ![][DeployClickPublish]
 7. V Publikovat Web, klikněte na **Microsoft Azure App Service**.
@@ -72,44 +72,44 @@ Projekty Visual Studio s C\# zdrojového kódu jsou k dispozici v tomto tématu:
 8. Pokud již jste přihlášeni do Azure, klikněte na tlačítko **přidat účet**.
    
    ![][DeploySignIn]
-9. Postupujte podle pokynů pro přihlášení k účtu Azure.
-10. Dialogovém okně App Service, by měl nyní může zobrazit můžete jako přihlášení. Klikněte na možnost **Nové**.
+9. Postupujte podle pokynů toolog hello ke svému účtu Azure.
+10. Hello dialogovém okně App Service, by měl nyní může zobrazit můžete jako přihlášení. Klikněte na možnost **Nové**.
     
     ![][DeployNewWebsite]  
-11. V **název webové aplikace** pole, zadejte předponu aplikace jedinečný název. Váš název plně kvalifikovaný webové aplikace bude  *&lt;předpony >*. azurewebsites.net. Také vyberte nebo zadejte nový název skupiny prostředků v **skupiny prostředků**. Potom klikněte na **nový** vytvořit nový plán aplikační služby.
+11. V hello **název webové aplikace** pole, zadejte předponu aplikace jedinečný název. Váš název plně kvalifikovaný webové aplikace bude  *&lt;předpony >*. azurewebsites.net. Také vyberte nebo zadejte nový název skupiny prostředků v **skupiny prostředků**. Potom klikněte na **nový** toocreate nový plán aplikační služby.
     
     ![][DeploySiteSettings]
-12. Nakonfigurujte nový plán aplikační služby a klikněte na **OK**. 
+12. Nakonfigurujte hello nový plán aplikační služby a klikněte na **OK**. 
     
     ![](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-7a.png)
-13. Zpět v dialogovém okně vytvořit službu App Service, klikněte na tlačítko **vytvořit**.
+13. Zpět v dialogovém okně vytvořit službu App Service hello, klikněte na tlačítko **vytvořit**.
     
     ![](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-7b.png) 
-14. Po Azure prostředky jsou vytvořeny, Publikovat Web dialogové okno bude vyplněn nastavení pro novou aplikaci. Klikněte na **Publikovat**.
+14. Po hello prostředků Azure jsou vytvoření dialogového okna Publikovat Web hello bude vyplněn hello nastavení pro novou aplikaci. Klikněte na **Publikovat**.
     
     ![][DeployPublishSite]
     
-    Jakmile sady Visual Studio dokončí publikování starter projektu do webové aplikace Azure, otevře prohlížeč pro stolní počítač se živou webovou aplikaci.
-15. Spusťte emulátor váš prohlížeč pro mobilní zařízení, zkopírujte adresu URL pro aplikaci konferenční (*<prefix>*. azurewebsites.net) do emulátoru a pak klikněte na tlačítko pravém horním a vyberte **Procházet podle značky**. Pokud používáte Internet Explorer 11 jako výchozího prohlížeče, bude třeba jen na typ `F12`, pak `Ctrl+8`a poté změňte prohlížeče profil, který se **Windows Phone**. Obrázek níže znázorňuje *AllTags* zobrazení v režimu na výšku (z výběru **Procházet podle značky**).
+    Po dokončení publikování hello úvodní projektu toohello Azure webovou aplikaci Visual Studio otevře prohlížeč pro stolní počítač hello toodisplay hello živou webovou aplikaci.
+15. Spusťte emulátor váš prohlížeč pro mobilní zařízení, zkopírujte adresu URL aplikace hello konferenční hello (*<prefix>*. azurewebsites.net) do hello emulátoru a pak klikněte na tlačítko pravém horním a vyberte **Procházet podle značky**. Pokud používáte Internet Explorer 11 jako hello výchozí prohlížeč, bude třeba jen tootype `F12`, pak `Ctrl+8`a poté změňte hello prohlížeče profil příliš**Windows Phone**. Následující obrázek ukazuje hello *AllTags* zobrazení v režimu na výšku (z výběru **Procházet podle značky**).
     
     ![][AllTags]
 
 > [!TIP]
-> Zatímco lze ladit aplikace MVC 5 v sadě Visual Studio, můžete publikovat webovou aplikaci do Azure znovu k ověření živou webovou aplikaci přímo z prohlížeče emulátoru nebo prohlížeč pro mobilní zařízení.
+> Zatímco lze ladit aplikace MVC 5 v sadě Visual Studio, můžete publikovat vaší webové aplikace tooAzure znovu tooverify hello živou webovou aplikaci přímo z prohlížeče emulátoru nebo prohlížeč pro mobilní zařízení.
 > 
 > 
 
-Zobrazení je velmi čitelná na mobilním zařízení. Můžete také již zobrazit některé vizuální efekty použít rámcem Bootstrap šablon stylů CSS.
-Klikněte **ASP.NET** odkaz.
+zobrazení Hello je velmi čitelná na mobilním zařízení. Můžete také již zobrazit některé vizuální efekty hello použít rámcem hello Bootstrap šablon stylů CSS.
+Klikněte na tlačítko hello **ASP.NET** odkaz.
 
 ![][SessionsByTagASP.NET]
 
-Zobrazení značek ASP.NET je přiblížení namontováno k obrazovce, která zajišťuje Bootstrap pro vás automaticky. Však může zvýšit toto zobrazení tak, aby lépe vyhovoval prohlížeč pro mobilní zařízení. Například **datum** sloupec je obtížné číst. Později v tomto kurzu budete změníte *AllTags* zobrazení, aby bylo mobilní zařízení.
+zobrazení značek ASP.NET Hello je namontováno přiblížení toohello obrazovce, která nemá Bootstrap pro vás automaticky. Však může zvýšit tento zobrazení toobetter barvy hello prohlížeč pro mobilní zařízení. Například hello **datum** sloupec je obtížné číst. Později v kurzu hello změníte hello *AllTags* zobrazení toomake je mobilní zařízení.
 
 ## <a name="bkmk_bootstrap"></a>Framework Bootstrap šablon stylů CSS
-V MVC 5 nová šablona je integrovanou podporu zavedení. Jste už viděli, jak okamžitě vylepšuje různá zobrazení ve vaší aplikaci. Navigační panel v horní části je například automaticky sbalitelné po menší šířku prohlížeče. Na ploše prohlížeč zkuste upravit velikost okna prohlížeče a najdete v části Jak navigační panel změní jeho vzhled a chování. Toto je návrh přizpůsobivý webu, který je součástí Bootstrap.
+V hello MVC 5 nová šablona je integrovanou podporu zavedení. Jste už viděli, jak okamžitě vylepšuje hello různá zobrazení ve vaší aplikaci. Navigační panel hello v horní části hello je například automaticky sbalitelné po menší šířka prohlížeče hello. Na prohlížeč pro stolní počítač hello pokuste se změna velikosti hello okno prohlížeče a v tématu Jak hello navigační panel změní jeho vzhled a chování. Toto je návrh hello přizpůsobivý webu, který je součástí Bootstrap.
 
-Chcete-li zjistit, jak by bez Bootstrap zobrazovat webové aplikace, otevřete *aplikace\_spustit\\BundleConfig.cs* a Odkomentujte řádky, které obsahují *bootstrap.js* a  *Bootstrap.CSS*. Následující kód ukazuje posledních dvou prohlášení o `RegisterBundles` metoda po provedení změny:
+toosee jak webová aplikace hello vypadat bez Bootstrap, otevřete *aplikace\_spustit\\BundleConfig.cs* a Odkomentujte hello řádky, které obsahují *bootstrap.js* a *bootstrap.css*. Hello následující kód ukazuje hello poslední dva příkazy hello `RegisterBundles` metoda po změně hello:
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -119,29 +119,29 @@ Chcete-li zjistit, jak by bez Bootstrap zobrazovat webové aplikace, otevřete *
               //"~/Content/bootstrap.css",
               "~/Content/site.css"));
 
-Stiskněte klávesu `Ctrl+F5` ke spuštění aplikace.
+Stiskněte klávesu `Ctrl+F5` toorun hello aplikace.
 
-Sledujte sbalitelné navigačním panelu je teď právě obyčejnou neuspořádaný seznam. Klikněte na tlačítko **Procházet podle značky** znovu, pak klikněte na tlačítko **ASP.NET**.
-V emulátoru mobilního zobrazení uvidíte teď, když je už přiblížení namontováno na obrazovku a musí přejděte do stran Chcete-li zobrazit pravé tabulky.
+Zkontrolujte, že tento hello sbalitelné navigační panel je teď právě obyčejnou neuspořádaný seznam. Klikněte na tlačítko **Procházet podle značky** znovu, pak klikněte na tlačítko **ASP.NET**.
+V zobrazení emulátoru mobilního hello uvidíte nyní, když je už namontováno přiblížení toohello obrazovky a musí ze strany posouvání pořadí toosee hello pravé straně hello tabulky.
 
 ![][SessionsByTagASP.NETNoBootstrap]
 
-Vrátit zpět změny a aktualizujte prohlížeč pro mobilní zařízení k ověření, že byla obnovena zobrazení mobilní zařízení.
+Vrátit zpět změny a aktualizujte hello prohlížeč pro mobilní zařízení tooverify obnovila zobrazení hello mobilní zařízení.
 
-Bootstrap není specifické pro ASP.NET MVC 5 a můžete využít výhod těchto funkcí v jakékoli webové aplikace. Ale nyní integrovaná do šablony projektu ASP.NET MVC 5, tak, aby MVC 5 webové aplikace mohou využít výhod Bootstrap ve výchozím nastavení.
+Bootstrap není konkrétní tooASP.NET MVC 5 a můžete využít výhod těchto funkcí v jakékoli webové aplikace. Ale nyní integrovaná do šablony projektu ASP.NET MVC 5, tak, aby MVC 5 webové aplikace mohou využít výhod Bootstrap ve výchozím nastavení.
 
-Další informace o Bootstrap, přejděte na [Bootstrap] [ BootstrapSite] lokality.
+Další informace o Bootstrap přejděte toothe [Bootstrap] [ BootstrapSite] lokality.
 
-V další části se zobrazí, jak poskytnout konkrétní zobrazení mobilní prohlížeče.
+V další části hello uvidíte jak tooprovide mobilní prohlížeče konkrétní zobrazení.
 
-## <a name="bkmk_overrideviews"></a>Přepsání, zobrazení, rozložení a částečné zobrazení
-Pro mobilní prohlížeče obecně pro jednotlivé mobilního prohlížeče nebo pro jakékoli konkrétní prohlížeč můžete přepsat všechna zobrazení (včetně rozložení a částečné zobrazení). Abyste si mohli zobrazit konkrétní mobilní, můžete zkopírovat soubor zobrazení a přidat *. Mobilní* k názvu souboru. Chcete-li například vytvořit mobilních *Index* zobrazení, můžete zkopírovat *zobrazení\\Domů\\Index.cshtml* k *zobrazení\\Domů\\ Index.Mobile.cshtml*.
+## <a name="bkmk_overrideviews"></a>Přepsání hello zobrazení, rozložení a částečné zobrazení
+Pro mobilní prohlížeče obecně pro jednotlivé mobilního prohlížeče nebo pro jakékoli konkrétní prohlížeč můžete přepsat všechna zobrazení (včetně rozložení a částečné zobrazení). Zobrazit tooprovide konkrétního mobile, můžete zkopírovat soubor zobrazení a přidat *. Mobilní* toohello název souboru. Například toocreate mobilních *Index* zobrazení, můžete zkopírovat *zobrazení\\Domů\\Index.cshtml* k *zobrazení\\Domů\\ Index.Mobile.cshtml*.
 
 V této části vytvoříte soubor specifické mobilní rozložení.
 
-Chcete-li začít, zkopírujte *zobrazení\\sdílené\\\_Layout.cshtml* k *zobrazení\\sdílené\\\_Layout.Mobile.cshtml*. Otevřete  *\_Layout.Mobile.cshtml* a změňte název od **MVC5 aplikace** k **MVC5 aplikace (mobilní)**.
+toostart kopie *zobrazení\\sdílené\\\_Layout.cshtml* k *zobrazení\\sdílené\\\_Layout.Mobile.cshtml* . Otevřete  *\_Layout.Mobile.cshtml* a změňte název hello z **MVC5 aplikace** příliš**MVC5 aplikace (mobilní)**.
 
-V každé `Html.ActionLink` volání pro navigační panel, odeberte "Procházet podle" v každé propojení *ActionLink*. Následující kód ukazuje dokončené `<ul class="nav navbar-nav">` značky mobilní rozložení souboru.
+V každé `Html.ActionLink` volání pro hello navigačním panelu, odeberte "Procházet podle" v každé propojení *ActionLink*. Hello následující kód ukazuje hello Dokončit `<ul class="nav navbar-nav">` značky hello mobilní rozložení souboru.
 
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -150,22 +150,22 @@ V každé `Html.ActionLink` volání pro navigační panel, odeberte "Procházet
         <li>@Html.ActionLink("Tag", "AllTags", "Home")</li>
     </ul>
 
-Kopírování *zobrazení\\Domů\\AllTags.cshtml* do souboru *zobrazení\\Domů\\AllTags.Mobile.cshtml*. Otevřete nový soubor a změňte `<h2>` element z "Značky" na "značky (M)":
+Kopírování hello *zobrazení\\Domů\\AllTags.cshtml* do souboru *zobrazení\\Domů\\AllTags.Mobile.cshtml*. Otevřete nový soubor hello a změňte `<h2>` element z "Značky" příliš "značky (M)":
 
     <h2>Tags (M)</h2>
 
-Přejděte na stránku značky pomocí prohlížeč pro stolní počítač a pomocí emulátoru prohlížeč pro mobilní zařízení. Emulátor mobilní prohlížeče ukazuje dva provedené změny (titul z  *\_Layout.Mobile.cshtml* a titul z *AllTags.Mobile.cshtml*).
+Procházet toohello značky stránky pomocí prohlížeč pro stolní počítač a pomocí emulátoru prohlížeč pro mobilní zařízení. Hello prohlížeč pro mobilní zařízení emulátoru ukazuje hello dvě změny (hello titul z  *\_Layout.Mobile.cshtml* a hello titul z *AllTags.Mobile.cshtml*).
 
 ![][AllTagsMobile_LayoutMobile]
 
-Naproti tomu nedošlo ke změně zobrazení plochy (s názvy z  *\_Layout.cshtml* a *AllTags.cshtml*).
+Naproti tomu nedošlo ke změně zobrazení plochy hello (s názvy z  *\_Layout.cshtml* a *AllTags.cshtml*).
 
 ![][AllTagsMobile_LayoutMobileDesktop]
 
 ## <a name="bkmk_browserviews"></a>Vytvoření vlastních zobrazení
-Kromě zobrazení specifická pro mobilní a desktop můžete vytvořit zobrazení pro jednotlivé prohlížeče. Můžete například vytvořit zobrazení, které jsou speciálně určené pro iPhone nebo prohlížeč systému Android. V této části vytvoříte rozložení pro prohlížeč iPhone a na zařízení iPhone verzi *AllTags* zobrazení.
+Kromě toho toomobile-desktop specifické a zobrazení, můžete vytvořit zobrazení pro jednotlivé prohlížeče. Můžete například vytvořit zobrazení, které jsou speciálně určené pro hello iPhone nebo hello prohlížeč systému Android. V této části vytvoříte rozložení pro prohlížeč hello iPhone a na zařízení iPhone verzi hello *AllTags* zobrazení.
 
-Otevřete *Global.asax* souboru a přidejte následující kód k dolnímu okraji `Application_Start` metoda.
+Otevřete hello *Global.asax* souboru a přidejte následující kód toohello dolní části hello `Application_Start` metoda.
 
     DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("iPhone")
     {
@@ -173,51 +173,51 @@ Otevřete *Global.asax* souboru a přidejte následující kód k dolnímu okraj
             ("iPhone", StringComparison.OrdinalIgnoreCase) >= 0)
     });
 
-Tento kód definuje nový režim zobrazení s názvem "iPhone", který bude porovnání jednotlivých příchozích požadavků. Pokud příchozí požadavek odpovídá podmínku, kterou jste definovali (Pokud uživatelský agent obsahuje řetězec "iPhone"), rozhraní ASP.NET MVC bude hledat zobrazení, jejíž název obsahuje příponu "iPhone".
+Tento kód definuje nový režim zobrazení s názvem "iPhone", který bude porovnání jednotlivých příchozích požadavků. Pokud hello příchozí požadavek odpovídá podmínku, kterou jste definovali (to znamená, pokud uživatelský agent hello obsahuje řetězec hello "iPhone"), rozhraní ASP.NET MVC bude hledat zobrazení, jejíž název obsahuje příponu "iPhone".
 
 > [!NOTE]
-> Při přidávání režimy mobilní zobrazení specifické pro prohlížeč, například konkrétní iPhone a Android, nezapomeňte nastavit první argument `0` (Vložit v horní části seznamu) a ujistěte se, specifické pro prohlížeč režim má přednost před mobilní šablony (*. Mobile.cshtml). Pokud mobilní šablona je k dispozici místo v horní části seznamu, bude vybrána přes vaše režim určený zobrazení (první shodu wins a mobilní šablonu odpovídá všechny mobilní prohlížeče). 
+> Při přidávání mobilní prohlížeče specifické pro režimy zobrazení, například pro iPhone a Android, že tooset hello první argument je příliš`0` toomake (vložení hello horní části seznamu hello), že tento režim specifické pro prohlížeč hello má přednost před hello mobilní šablony (*. Mobile.cshtml). Pokud mobilní šablony hello hello seznamu hello první místo, bude vybrána přes vaše režim určený zobrazení (hello první shodu wins a mobilní šablona hello odpovídá všechny mobilní prohlížeče). 
 > 
 > 
 
-V kódu, klikněte pravým tlačítkem na `DefaultDisplayMode`, zvolte **vyřešit**a potom vyberte `using System.Web.WebPages;`. Tento postup přidá odkaz na `System.Web.WebPages` názvů, který je tam, kde `DisplayModeProvider` a `DefaultDisplayMode` typy jsou definované.
+V kódu hello, klikněte pravým tlačítkem na `DefaultDisplayMode`, zvolte **vyřešit**a potom vyberte `using System.Web.WebPages;`. Tento postup přidá odkaz toothe `System.Web.WebPages` názvů, který je tam, kde `DisplayModeProvider` a `DefaultDisplayMode` typy jsou definované.
 
 ![][ResolveDefaultDisplayMode]
 
-Alternativně můžete právě ručně přidejte následující řádek na `using` část souboru.
+Alternativně můžete právě ručně přidat hello následující řádek toothe `using` hello souboru.
 
     using System.Web.WebPages;
 
-Uložte změny. Kopírování *zobrazení\\sdílené\\\_Layout.Mobile.cshtml* do souboru *zobrazení\\sdílené\\\_Layout.iPhone.cshtml*. Otevřete nový soubor a potom změňte název od `MVC5 Application (Mobile)` k `MVC5 Application (iPhone)`.
+Uložte změny hello. Kopírování *zobrazení\\sdílené\\\_Layout.Mobile.cshtml* do souboru *zobrazení\\sdílené\\\_Layout.iPhone.cshtml*. Otevřete nový soubor hello a potom změňte název hello z `MVC5 Application (Mobile)` k `MVC5 Application (iPhone)`.
 
-Kopírování *zobrazení\\Domů\\AllTags.Mobile.cshtml* do souboru *zobrazení\\Domů\\AllTags.iPhone.cshtml*. Nový soubor, změňte `<h2>` element z "značky (M)" pro "Značky (iPhone)".
+Kopírování hello *zobrazení\\Domů\\AllTags.Mobile.cshtml* do souboru *zobrazení\\Domů\\AllTags.iPhone.cshtml*. V novém souboru hello změnit hello `<h2>` element z "značky (M)" příliš "značky (iPhone)".
 
-Spusťte aplikaci. Spustit prohlížeč pro mobilní zařízení emulátoru, ujistěte se jeho uživatelský agent je nastavena na "iPhone" a přejděte do *AllTags* zobrazení. Pokud používáte emulátor serveru v Internet Exploreru 11 F12 nástroje pro vývojáře, konfigurace emulace s následujícím:
+Spusťte aplikaci hello. Spustit prohlížeč pro mobilní zařízení emulátoru, ujistěte se, jeho uživatelský agent je nastaven příliš "iPhone" a vyhledejte toohello *AllTags* zobrazení. Pokud používáte emulátor hello v Internet Exploreru 11 F12 nástroje pro vývojáře, konfigurace emulace toohello následující:
 
 * Profil Browser = **Windows Phone**
 * Řetězec uživatelského agenta = **vlastní**
 * Vlastní řetězec = **Apple-iPhone5C1/1001.525**
 
-Následující snímek obrazovky ukazuje *AllTags* zobrazení vykreslen v emulátoru v Internet Exploreru 11 F12 nástroje pro vývojáře s vlastní identifikační řetězec prohlížeče (jedná se řetězec iPhone 5 C uživatelského agenta).
+Hello následující snímek obrazovky ukazuje hello *AllTags* zobrazení vykreslen v emulátoru v Internet Exploreru 11 F12 nástroje pro vývojáře řetězcem hello vlastního uživatelského agenta (jedná se řetězec iPhone 5 C uživatelského agenta).
 
 ![][AllTagsIPhone_LayoutIPhone]
 
-Mobilní prohlížeče, vyberte **Řečníci** odkaz. Protože mobilní zobrazení není (*AllSpeakers.Mobile.cshtml*), zobrazit výchozí mluvčí (*AllSpeakers.cshtml*) je vykreslen pomocí mobilních rozložení zobrazení ( *\_ Layout.Mobile.cshtml*). Jak je uvedeno níže, název **MVC5 aplikace (mobilní)** je definována v  *\_Layout.Mobile.cshtml*.
+V hello prohlížeč pro mobilní zařízení, vyberte hello **Řečníci** odkaz. Protože mobilní zobrazení není (*AllSpeakers.Mobile.cshtml*), zobrazit výchozí mluvčí hello (*AllSpeakers.cshtml*) je vykreslen pomocí zobrazení mobilní rozložení hello ( *\_ Layout.Mobile.cshtml*). Jak je uvedeno níže, název hello **MVC5 aplikace (mobilní)** je definována v  *\_Layout.Mobile.cshtml*.
 
 ![][AllSpeakers_LayoutMobile]
 
-Výchozí zobrazení (jiných než mobilních) z vykreslování uvnitř mobilní rozložení můžete zakázat globálně nastavením `RequireConsistentDisplayMode` k `true` v *zobrazení\\\_ViewStart.cshtml* souboru, například takto:
+Výchozí zobrazení (jiných než mobilních) z vykreslování uvnitř mobilní rozložení můžete zakázat globálně nastavením `RequireConsistentDisplayMode` k `true` v hello *zobrazení\\\_ViewStart.cshtml* souboru, například takto:
 
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
         DisplayModeProvider.Instance.RequireConsistentDisplayMode = true;
     }
 
-Když `RequireConsistentDisplayMode` je nastaven na `true`, mobilní rozložení (*\_Layout.Mobile.cshtml*) se používá pouze pro mobilní zobrazení (tj. Po zobrazení souboru ve formátu  ***ViewName**. Mobile.cshtml*). Můžete chtít nastavit `RequireConsistentDisplayMode` k `true` Pokud vaše mobilní rozložení nebude fungovat dobře u jiných než mobilních zobrazení. Na snímku obrazovky níže znázorňuje jak *Řečníci* stránka vykresluje při `RequireConsistentDisplayMode` je nastaven na `true` (bez řetězec "(mobilní)" v navigační panel v horní části).
+Když `RequireConsistentDisplayMode` je nastaven příliš`true`, mobilní rozložení hello (*\_Layout.Mobile.cshtml*) se používá pouze pro mobilní zobrazení (tj. Po zobrazení souboru ve formátu hello  ***ViewName** . Mobile.cshtml*). Můžete chtít tooset `RequireConsistentDisplayMode` příliš`true` Pokud vaše mobilní rozložení nebude fungovat dobře u jiných než mobilních zobrazení. Hello – snímek obrazovky níže znázorňuje způsob hello *Řečníci* stránka vykresluje při `RequireConsistentDisplayMode` je nastaven příliš`true` (bez hello řetězec "(mobilní)" hello navigační panel v horní části hello).
 
 ![][AllSpeakers_LayoutMobileOverridden]
 
-Konzistentní režim zobrazení v určitém zobrazení můžete zakázat nastavením `RequireConsistentDisplayMode` k `false` v souboru zobrazení. Následující kód v *zobrazení\\Domů\\AllSpeakers.cshtml* souboru nastaví `RequireConsistentDisplayMode` k `false`:
+Konzistentní režim zobrazení v určitém zobrazení můžete zakázat nastavením `RequireConsistentDisplayMode` příliš`false` v souboru zobrazení hello. Následující kód v hello *zobrazení\\Domů\\AllSpeakers.cshtml* souboru nastaví `RequireConsistentDisplayMode` příliš`false`:
 
     @model IEnumerable<string>
 
@@ -226,13 +226,13 @@ Konzistentní režim zobrazení v určitém zobrazení můžete zakázat nastave
         DisplayModeProvider.Instance.RequireConsistentDisplayMode = false;
     }
 
-V této části jsme viděli postup vytvoření mobilní rozložení a zobrazení a postup vytvoření zobrazení pro konkrétní zařízení, jako je iPhone a rozložení.
-Hlavní výhodou rozhraní Bootstrap šablon stylů CSS je však přizpůsobivé rozložení, což znamená, že jeden šablony stylů mohou být použity u plochy, phone a prohlížeče tabletu k vytvoření konzistentního vzhledu a chování. V další části se zobrazí, jak využít Bootstrap vytvořte zobrazení mobilní zařízení.
+V této části jsme viděli jak toocreate mobilní rozložení a zobrazení a jak toocreate rozložení a zobrazení pro konkrétní zařízení, jako hello iPhone.
+Hlavní výhodou hello Bootstrap CSS framework hello je však přizpůsobivé rozložení, což znamená, že jeden šablony stylů mohou být použity u plochy, phone a tablet prohlížeče toocreate konzistentní vzhled a chování. V další části hello uvidíte, jak tooleverage Bootstrap mobilní zařízení toocreate zobrazení.
 
-## <a name="bkmk_Improvespeakerslist"></a>Zlepšení seznamu mluvčí
-Protože jste právě viděli, *mluvčí* zobrazení je čitelná, ale odkazy jsou malé a obtížně se klepnout na mobilní zařízení. V této části, budete mít *AllSpeakers* zobrazit mobilní zařízení, která zobrazuje velké, snadno klepněte odkazy a obsahuje vyhledávací pole a rychle tak najít mluvčí.
+## <a name="bkmk_Improvespeakerslist"></a>Zlepšení hello mluvčí seznamu
+Protože jste právě viděli, hello *Řečníci* zobrazení je čitelná, ale hello odkazy jsou malé a jsou těžko tootap na mobilním zařízení. V této části, budete mít hello *AllSpeakers* zobrazení mobilní zařízení, která zobrazuje velké, snadno klepněte odkazy a obsahuje tooquickly pole hledání najít mluvčí.
 
-Můžete použít službou Bootstrap nástroje [skupiny odkazovaného seznamu] [ linked list group] stylů ke zlepšení *Řečníci* zobrazení. V *zobrazení\\Domů\\AllSpeakers.cshtml*, nahraďte obsah souboru Razor kód níže.
+Můžete použít hello Bootstrap [skupiny odkazovaného seznamu] [ linked list group] stylů ke zlepšení hello *Řečníci* zobrazení. V *zobrazení\\Domů\\AllSpeakers.cshtml*, hello obsah souboru nástroje Razor hello nahraďte hello kód níže.
 
      @model IEnumerable<string>
 
@@ -249,17 +249,17 @@ Můžete použít službou Bootstrap nástroje [skupiny odkazovaného seznamu] [
         }
     </div>
 
-`class="list-group"` Atribut `<div>` značky platí Bootstrap seznamu stylu a `class="input-group-item"` atribut platí stylů položky Bootstrap seznamu pro každý odkaz.
+Hello `class="list-group"` atribut v hello `<div>` značky platí Bootstrap seznamu stylů a hello `class="input-group-item"` atribut platí Bootstrap seznamu položky stylů tooeach odkaz.
 
-Aktualizujte prohlížeč pro mobilní zařízení. Aktualizovaná zobrazení vypadá takto:
+Aktualizujte hello mobilní prohlížeče. Hello aktualizovat zobrazení vypadá takto:
 
 ![][AllSpeakersFixed]
 
-Službou Bootstrap nástroje [skupiny odkazovaného seznamu] [ linked list group] stylů díky celé pole pro každý odkaz můžete kliknout, což je mnohem lepší prostředí. Přepněte do zobrazení plochy a sledovat konzistentní vzhled a chování.
+Hello Bootstrap [skupiny odkazovaného seznamu] [ linked list group] stylů díky hello celé pole pro každý odkaz můžete kliknout, což je mnohem lepší prostředí. Přepněte zobrazení plochy toothe a sledovat hello konzistentní vzhled a chování.
 
 ![][AllSpeakersFixedDesktop]
 
-I když se zlepšila zobrazení prohlížeč pro mobilní zařízení, je obtížné přejděte dlouhý seznam mluvčí. Bootstrap neposkytuje hledání filtru funkce out-of-the-box, ale můžete jej přidat pár řádků kódu. Nejprve bude přidejte vyhledávací pole k zobrazení a pak propojte s kód jazyka JavaScript pro funkci filtru. V *zobrazení\\Domů\\AllSpeakers.cshtml*, přidejte \<formuláře\> hned za značkami \<h2\> značka, jak je uvedeno níže:
+I když se zlepšila zobrazení hello prohlížeč pro mobilní zařízení, je obtížné přejděte hello dlouhý seznam mluvčí. Bootstrap neposkytuje hledání filtru funkce out-of-the-box, ale můžete jej přidat pár řádků kódu. Nejprve bude přidejte zobrazení toohello pole hledání a pak propojte s hello kódu jazyka JavaScript pro funkci filtru hello. V *zobrazení\\Domů\\AllSpeakers.cshtml*, přidejte \<formuláře\> značky bezprostředně za hello \<h2\> značka, jak je uvedeno níže:
 
     @model IEnumerable<string>
 
@@ -284,23 +284,23 @@ I když se zlepšila zobrazení prohlížeč pro mobilní zařízení, je obtí�
         }
     </div>
 
-Všimněte si, že `<form>` a `<input>` značky oba mají Bootstrap stylů na ně použity. `<span>` Element přidá Bootstrap [glyphicon] [ glyphicon] do vyhledávacího pole.
+Všimněte si, že hello `<form>` a `<input>` značky oba mají toothem Bootstrap styly použít hello. Hello `<span>` element přidá Bootstrap [glyphicon] [ glyphicon] toothe vyhledávacího pole.
 
-V *skripty* složky, přidejte do souboru JavaScript s názvem *filter.js*. Otevřete soubor a vložte do něj následující kód:
+V hello *skripty* složky, přidejte do souboru JavaScript s názvem *filter.js*. Otevřete soubor hello a vložte následující kód do ní hello:
 
     $(function () {
 
-        // reset the search form when the page loads
+        // reset hello search form when hello page loads
         $("form").each(function () {
             this.reset();
         });
 
-        // wire up the events to the <input> element for search/filter
+        // wire up hello events toohello <input> element for search/filter
         $("input").bind("keyup change", function () {
             var searchtxt = this.value.toLowerCase();
             var items = $(".list-group-item");
 
-            // show all speakers that begin with the typed text and hide others
+            // show all speakers that begin with hello typed text and hide others
             for (var i = 0; i < items.length; i++) {
                 var val = items[i].text.toLowerCase();
                 val = val.substring(0, searchtxt.length);
@@ -314,41 +314,41 @@ V *skripty* složky, přidejte do souboru JavaScript s názvem *filter.js*. Otev
         });
     });
 
-Musíte taky zahrnout filter.js registrovaných sad. Otevřete *aplikace\_spustit\\BundleConfig.cs* a změňte první sady. Změnit první `bundles.Add` – příkaz (pro **jquery** sady) zahrnout *skripty\\filter.js*, a to takto:
+Budete také potřebovat tooinclude filter.js v registrovaných sad. Otevřete *aplikace\_spustit\\BundleConfig.cs* a změňte hello první sady. Změnit první `bundles.Add` – příkaz (pro hello **jquery** sady) tooinclude *skripty\\filter.js*, a to takto:
 
      bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/filter.js"));
 
-**Jquery** sady je již vykreslen pomocí výchozí  *\_rozložení* zobrazení. Později můžete použít stejný kód JavaScript pro použití funkce filtru s dalšími zobrazeními seznamu.
+Hello **jquery** sady vykreslením již ve výchozím nastavení hello  *\_rozložení* zobrazení. Později, můžete využít hello stejné JavaScript code tooapply zobrazení seznamu tooother funkce filtru.
 
-Aktualizujte mobilní prohlížeče a přejděte na *AllSpeakers* zobrazení. Do vyhledávacího pole zadejte "sc". Seznamu mluvčí by měl být nyní filtrovaných podle hledanému řetězci.
+Aktualizujte hello mobilní prohlížeče a přejděte toohello *AllSpeakers* zobrazení. Do vyhledávacího pole zadejte "sc". seznam mluvčí Hello by měl být nyní filtrovaný podle tooyour hledaný řetězec.
 
 ![][AllSpeakersFixedSearchBySC]
 
-## <a name="bkmk_improvetags"></a>Zlepšení seznam klíčových slov
-Jako *Řečníci* zobrazení, *značky* zobrazení je čitelná, ale jsou odkazy na malé a obtížně se klepnout na mobilní zařízení. Můžete je vyřešit *značky* zobrazení stejným způsobem jako neopravíte *Řečníci* zobrazit, je-li použít změny kódu popsané výše, ale s následujícími službami `Html.ActionLink` syntaxe využívající metody v *zobrazení\\ Domů\\AllTags.cshtml*:
+## <a name="bkmk_improvetags"></a>Zlepšení hello seznam značek
+Jako hello *Řečníci* zobrazit, hello *značky* zobrazení je čitelná, ale hello odkazy jsou malé a obtížně tootap na mobilním zařízení. Můžete je vyřešit hello *značky* zobrazení hello stejný způsob, jak opravit hello *Řečníci* zobrazit, je-li použít změny kódu hello popsané výše, ale s následující hello `Html.ActionLink` syntaxe využívající metody v  *Zobrazení\\Domů\\AllTags.cshtml*:
 
     @Html.ActionLink(tag, 
                      "SessionsByTag", 
                      new { tag }, 
                      new { @class = "list-group-item" })
 
-Aktualizovat prohlížeč pro stolní počítač vypadá takto:
+Hello aktualizovat prohlížeč pro stolní počítač vypadá takto:
 
 ![][AllTagsFixedDesktop]
 
-A aktualizovat mobilní prohlížeče vypadá takto: 
+A hello aktualizují prohlížeč pro mobilní zařízení vypadá takto: 
 
 ![][AllTagsFixed]
 
 > [!NOTE]
-> Pokud si všimnete, že původní formátování seznamu stále existuje v prohlížeč pro mobilní zařízení a zajímat, co se stalo s vaší dobrý Bootstrap stylů, jde artefakt starší akci k vytvoření mobilní konkrétní zobrazení. Teď, když používáte framework Bootstrap CSS k vytvoření návrhu přizpůsobivý webu, přejděte head a odebrat tyto specifické mobilní zobrazení a rozložení specifické pro mobilní zobrazení. Po dokončení tak aktualizovat mobilní prohlížeče zobrazí Bootstrap stylů.
+> Pokud si všimnete, že hello původní formátování seznamu je stále existuje v hello prohlížeč pro mobilní zařízení a zajímat, co se stalo tooyour dobrý Bootstrap stylů, to je artefakt starší akce toocreate mobilní konkrétní zobrazení. Teď, když používáte hello Bootstrap CSS framework toocreate návrhu přizpůsobivý webu, přejděte head a odebrat tyto specifické mobilní zobrazení a zobrazení konkrétní mobilní rozložení hello. Po dokončení tak hello aktualizovat prohlížeč pro mobilní zařízení se zobrazí hello Bootstrap stylů.
 > 
 > 
 
-## <a name="bkmk_improvedates"></a>Zlepšení seznamu kalendářních dat
-Můžete zvýšit *data* zobrazit stejně, jako je vylepšená *Řečníci* a *značky* zobrazení, je-li použít změny kódu popsané výše, ale s následujícími službami `Html.ActionLink` Syntaxe využívající metody v *zobrazení\\Domů\\AllDates.cshtml*:
+## <a name="bkmk_improvedates"></a>Zlepšení hello seznamu kalendářních dat
+Můžete zvýšit hello *data* zobrazit jako vylepšené hello *Řečníci* a *značky* zobrazení, pokud používáte hello změn kódu popsané výše, ale s hello následující `Html.ActionLink` syntaxe využívající metody v *zobrazení\\Domů\\AllDates.cshtml*:
 
     @Html.ActionLink(date.ToString("ddd, MMM dd, h:mm tt"), 
                      "SessionsByDate", 
@@ -359,7 +359,7 @@ Zobrazí se zobrazení aktualizovat prohlížeč pro mobilní zařízení takto:
 
 ![][AllDatesFixed]
 
-Lze dále zvýšit *data* zobrazení uspořádání hodnoty data a času podle data. To lze provést pomocí Bootstrap [panelů] [ panels] styly. Nahraďte obsah *zobrazení\\Domů\\AllDates.cshtml* soubor s následujícím kódem:
+Lze dále zvýšit hello *data* zobrazení uspořádání hello hodnoty data a času podle data. To lze provést pomocí hello Bootstrap [panelů] [ panels] styly. Nahraďte obsah hello hello *zobrazení\\Domů\\AllDates.cshtml* soubor s následujícím kódem:
 
     @model IEnumerable<DateTime>
 
@@ -387,26 +387,26 @@ Lze dále zvýšit *data* zobrazení uspořádání hodnoty data a času podle d
         </div>
     }
 
-Tento kód vytvoří samostatné `<div class="panel panel-primary">` značky pro každé odlišné datum v seznamu a použije [skupiny odkazovaného seznamu] [ linked list group] pro příslušné odkazy jako předtím. Tady je prohlížeč pro mobilní zařízení, které bude vypadat takto spuštění tento kód:
+Tento kód vytvoří samostatné `<div class="panel panel-primary">` značky pro každý odlišné datum v seznamu hello a hello používá [skupiny odkazovaného seznamu] [ linked list group] pro příslušné odkazy jako předtím. Tady je co hello mobilní prohlížeče vypadá jako při spuštění tohoto kódu:
 
 ![][AllDatesFixed2]
 
-Přepnout na prohlížeč pro stolní počítač. Znovu si všimněte konzistentní vzhled.
+Přepínač toohello prohlížeč pro stolní počítač. Znovu si všimněte konzistentní vzhled hello.
 
 ![][AllDatesFixed2Desktop]
 
-## <a name="bkmk_improvesessionstable"></a>Zlepšení SessionsTable zobrazení
-V této části, budete mít *SessionsTable* zobrazit další mobilní zařízení. Tuto změnu je rozsáhlejší předchozí změny.
+## <a name="bkmk_improvesessionstable"></a>Zlepšení hello SessionsTable zobrazení
+V této části, budete mít hello *SessionsTable* zobrazit další mobilní zařízení. Tuto změnu je rozsáhlejší hello předchozí změny.
 
-Mobilní prohlížeče, klepněte na **značka** tlačítko a potom zadejte `asp` do vyhledávacího pole.
+V hello prohlížeč pro mobilní zařízení, klepněte na hello **značka** tlačítko a potom zadejte `asp` do vyhledávacího pole.
 
 ![][AllTagsFixedSearchByASP]
 
-Klepněte **ASP.NET** odkaz.
+Klepněte na hello **ASP.NET** odkaz.
 
 ![][SessionsTableTagASP.NET]
 
-Jak vidíte, zobrazení je naformátován jako tabulku, který je aktuálně určený lze zobrazit v prohlížeči počítače. Je však chvíli obtížné číst na prohlížeč pro mobilní zařízení. Chcete-li odstranit tento problém, otevřete *zobrazení\\Domů\\SessionsTable.cshtml* a obsah souboru nahraďte následujícím kódem:
+Jak vidíte, zobrazení hello je naformátován jako tabulku, která je aktuálně navrženou toobe zobrazit v prohlížeči počítače hello. Je však chvíli obtížné tooread na prohlížeč pro mobilní zařízení. toofix tuto, otevřete *zobrazení\\Domů\\SessionsTable.cshtml* a hello obsah souboru nahraďte hello následující kód:
 
     @model IEnumerable<Mvc5Mobile.Models.Session>
 
@@ -439,40 +439,40 @@ Jak vidíte, zobrazení je naformátován jako tabulku, který je aktuálně ur�
         </div>
     </div>
 
-Kód provádí 3 věci:
+Kód Hello provádí 3 věci:
 
-* používá službou Bootstrap nástroje [skupiny vlastní odkazovaného seznamu] [ custom linked list group] k formátování informací o relaci ve svislém směru, aby tyto informace je čitelná na prohlížeč pro mobilní zařízení (pomocí třídy, jako je seznam skupiny položek textu)
-* se vztahuje [mřížky systému] [ grid system] k rozložení, tak, aby položek relací toku vodorovně v desktopového prohlížeče a svisle mobilní prohlížeče (pomocí třídy sloupec md-4)
-* používá [přizpůsobivý nástroje] [ responsive utilities] skrýt značky relace v mobilní prohlížeče (pomocí třídy skryté xs)
+* používá hello Bootstrap [skupiny vlastní odkazovaného seznamu] [ custom linked list group] tooformat hello informací o relaci ve svislém směru, aby tyto informace je čitelná na prohlížeč pro mobilní zařízení (pomocí třídy, jako seznam skupiny--text položky)
+* platí hello [mřížky systému] [ grid system] toothe rozložení, takže této relaci hello položky tok v prohlížeč pro stolní počítač hello vodorovně a svisle ve hello prohlížeč pro mobilní zařízení (pomocí třídy hello sloupec md-4)
+* hello používá [přizpůsobivý nástroje] [ responsive utilities] ke skrytí hello relace značky v hello prohlížeč pro mobilní zařízení (pomocí třídy skryté xs hello)
 
-Taky můžou klepnout na odkaz title přejděte na příslušné relace. Následující obrázek zobrazuje změny kódu.
+Klepnutím na název odkazu toogo toohello příslušné relace. Následující obrázek Hello odráží změny kódu hello.
 
 ![][FixedSessionsByTag]
 
-Zavedení mřížky systém, který můžete použít automaticky uspořádá relací svisle v prohlížeč pro mobilní zařízení. Všimněte si také, že nejsou zobrazeny značek. Přepnout na prohlížeč pro stolní počítač.
+Hello Bootstrap mřížky systém, který můžete použít automaticky uspořádá relací svisle v hello prohlížeč pro mobilní zařízení. Všimněte si také, že nejsou zobrazeny hello značky. Přepínač toohello prohlížeč pro stolní počítač.
 
 ![][SessionsTableFixedTagASP.NETDesktop]
 
-V prohlížeči počítače Všimněte si, že značky se teď zobrazují. Zkontrolujte také, že systém Bootstrap mřížky, které jste provedli Uspořádá položky relace v dva sloupce. V případě zvětšení v prohlížeči, zobrazí se, že změní uspořádání na tři sloupce.
+V hello prohlížeč pro stolní počítač Všimněte si, že hello značky se teď zobrazují. Zkontrolujte také, že hello Bootstrap mřížky systému, který jste použili uspořádá hello relace položky v dva sloupce. V případě zvětšení v prohlížeči, zobrazí se, že změní uspořádání hello toothree sloupce.
 
-## <a name="bkmk_improvesessionbycode"></a>Zlepšení SessionByCode zobrazení
-Nakonec budete opravit *SessionByCode* zobrazení, aby bylo mobilní zařízení.
+## <a name="bkmk_improvesessionbycode"></a>Zlepšení hello SessionByCode zobrazení
+Nakonec budete opravte hello *SessionByCode* zobrazení toomake je mobilní zařízení.
 
-Mobilní prohlížeče, klepněte na **značka** tlačítko a potom zadejte `asp` do vyhledávacího pole.
+V hello prohlížeč pro mobilní zařízení, klepněte na hello **značka** tlačítko a potom zadejte `asp` do vyhledávacího pole.
 
 ![][AllTagsFixedSearchByASP]
 
-Klepněte **ASP.NET** odkaz. Relace pro značku ASP.NET se zobrazí.
+Klepněte na hello **ASP.NET** odkaz. Zobrazí se relace značky ASP.NET hello.
 
 ![][FixedSessionsByTag]
 
-Vyberte **vytváření jedné stránky aplikace s ASP.NET a AngularJS** odkaz.
+Zvolte hello **vytváření jedné stránky aplikace s ASP.NET a AngularJS** odkaz.
 
 ![][SessionByCode3-644]
 
-Zobrazení plochy výchozí je v pořádku, ale můžete zlepšit vzhled snadno pomocí některé součásti Bootstrap grafického uživatelského rozhraní.
+zobrazení plochy výchozí Hello je v pořádku, ale můžete zlepšit vzhled hello snadno pomocí některé součásti Bootstrap grafickým uživatelským rozhraním.
 
-Otevřete *zobrazení\\Domů\\SessionByCode.cshtml* a nahraďte jeho obsah s následující kód:
+Otevřete *zobrazení\\Domů\\SessionByCode.cshtml* a nahraďte obsah hello hello následující kód:
 
     @model Mvc5Mobile.Models.Session
 
@@ -512,20 +512,20 @@ Otevřete *zobrazení\\Domů\\SessionByCode.cshtml* a nahraďte jeho obsah s ná
         }
     </div>
 
-Nový kód používá Bootstrap panelů styly ke zlepšení mobilní zobrazení. 
+nový kód Hello používá Bootstrap panelů styly tooimprove hello mobilní zobrazení. 
 
-Aktualizujte prohlížeč pro mobilní zařízení. Následující obrázek zobrazuje změny kódu, které jste právě vytvořili:
+Aktualizujte hello mobilní prohlížeče. Hello následující obrázek zobrazuje hello změn kódu, které jste právě vytvořili:
 
 ![][SessionByCodeFixed3-644]
 
 ## <a name="wrap-up-and-review"></a>Zabalení a zkontrolovat
-Tento kurz vám ukázal jak vyvíjet webové aplikace pro mobilní zařízení pomocí ASP.NET MVC 5. Mezi ně patří:
+Tento kurz vám ukázal jak toouse ASP.NET MVC 5 toodevelop mobilní zařízení webových aplikací. Mezi ně patří:
 
-* Nasazení aplikace ASP.NET MVC 5 do webové aplikace služby App Service
-* Použít Bootstrap k vytvoření rozložení přizpůsobivý webové stránky v aplikaci MVC 5
+* Nasazení tooan aplikace ASP.NET MVC 5 webové aplikace App Service
+* Použít rozložení Bootstrap toocreate přizpůsobivý webové stránky v aplikaci MVC 5
 * Přepsání částečné zobrazení, zobrazení a rozložení globálně i pro jednotlivé zobrazení
 * Rozložení ovládacích prvků a částečné přepsat pomocí vynucení `RequireConsistentDisplayMode` vlastnost
-* Vytvoření zobrazení, které cílí určité prohlížeče, jako je třeba iPhone prohlížeč
+* Vytvoření zobrazení, které cílí určité prohlížeče, jako je třeba hello iPhone prohlížeč
 * Použít Bootstrap stylů v kódu Razor
 
 ## <a name="see-also"></a>Viz také
@@ -533,23 +533,23 @@ Tento kurz vám ukázal jak vyvíjet webové aplikace pro mobilní zařízení p
 * [Bootstrap][BootstrapSite]
 * [Oficiální Blog zavedení][Official Bootstrap Blog]
 * [Twitter Bootstrap kurzu z kurzu republika][Twitter Bootstrap Tutorial from Tutorial Republic]
-* [Zavedení Playground][The Bootstrap Playground]
+* [Hello Bootstrap Playground][hello Bootstrap Playground]
 * [Osvědčené postupy W3C doporučení mobilní webové aplikace][W3C Recommendation Mobile Web Application Best Practices]
 * [W3C Candidate doporučení pro dotazy na média][W3C Candidate Recommendation for media queries]
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- Internal Links -->
-[Deploy the starter project to an Azure web app]: #bkmk_DeployStarterProject
+[Deploy hello starter project tooan Azure web app]: #bkmk_DeployStarterProject
 [Bootstrap CSS Framework]: #bkmk_bootstrap
-[Override the Views, Layouts, and Partial Views]: #bkmk_overrideviews
+[Override hello Views, Layouts, and Partial Views]: #bkmk_overrideviews
 [Create Browser-Specific Views]:#bkmk_browserviews
-[Improve the Speakers List]: #bkmk_Improvespeakerslist
-[Improve the Tags List]: #bkmk_improvetags
-[Improve the Dates List]: #bkmk_improvedates
-[Improve the SessionsTable View]: #bkmk_improvesessionstable
-[Improve the SessionByCode View]: #bkmk_improvesessionbycode
+[Improve hello Speakers List]: #bkmk_Improvespeakerslist
+[Improve hello Tags List]: #bkmk_improvetags
+[Improve hello Dates List]: #bkmk_improvedates
+[Improve hello SessionsTable View]: #bkmk_improvesessionstable
+[Improve hello SessionByCode View]: #bkmk_improvesessionbycode
 
 <!-- External Links -->
 [Visual Studio Express 2013]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
@@ -571,7 +571,7 @@ Tento kurz vám ukázal jak vyvíjet webové aplikace pro mobilní zařízení p
 [responsive utilities]: http://getbootstrap.com/css/#responsive-utilities
 [Official Bootstrap Blog]: http://blog.getbootstrap.com/
 [Twitter Bootstrap Tutorial from Tutorial Republic]: http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
-[The Bootstrap Playground]: http://www.bootply.com/
+[hello Bootstrap Playground]: http://www.bootply.com/
 [W3C Recommendation Mobile Web Application Best Practices]: http://www.w3.org/TR/mwabp/
 [W3C Candidate Recommendation for media queries]: http://www.w3.org/TR/css3-mediaqueries/
 

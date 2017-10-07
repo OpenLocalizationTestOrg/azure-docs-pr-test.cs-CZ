@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení služby Azure App Service"
-description: "Zjistěte, jak zabezpečit webové, mobilní aplikace, rozhraní API a Logic apps v Azure App Service."
+title: "aaaAzure zabezpečení služby aplikace"
+description: "Zjistěte, jak toosecure webových, mobilních a rozhraní API a Logic apps v Azure App Service."
 services: app-service
 documentationcenter: 
 author: naziml
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2015
 ms.author: naziml
-ms.openlocfilehash: 7d26d52ad04bd4158a1450ae0f49fc7c1f8a04e8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8a0bff7d9665abadd70c1cfd07dca265ea057596
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-security"></a>Zabezpečení služby Azure App Service
-Azure App Services splňuje klíče oborové standardy zabezpečení a spolehlivost k poskytování zabezpečeného platformy našich zákazníků. Máme několik snadno použitelné funkce, které pomáhají zabezpečit příchozí a odchozí přenosy pro vaši aplikaci. Můžeme také pomoci zákazníkům zabezpečené svůj kód aplikace poskytnutím externě poskytuje funkce ke kontrole chyb zabezpečení webové aplikace.
+Azure App Services splňuje hello klíče oborových standardů pro zabezpečení a spolehlivost tooprovide naše zákazníky zabezpečené platformy. Máme několik snadno použitelné funkce toohelp zabezpečit příchozí a odchozí přenosy pro vaši aplikaci. Můžeme také pomoci zákazníkům zabezpečené svůj kód aplikace poskytnutím externě poskytuje funkce tooscan webové aplikace pro chyby zabezpečení.
 
 [!INCLUDE [app-service-blueprint-security](../../includes/app-service-blueprint-security.md)]
 
-Aplikační služba Azure používá stejné Antimalwarové řešení používá Azure Cloud Services a virtuálních počítačů. Další informace o tom najdete v tématu naše [antimalwarových dokumentaci](../security/azure-security-antimalware.md). 
+Azure App Service používá hello stejné Antimalwarové řešení používá Azure Cloud Services a virtuálních počítačů. toolearn Další informace najdete v tooour [antimalwarových dokumentaci](../security/azure-security-antimalware.md). 
 

@@ -1,6 +1,6 @@
 ---
 title: "Generování sestav Azure Active Directory: Začínáme | Dokumentace Microsoftu"
-description: "Obsahuje seznam různých dostupných sestav generovaných v Azure Active Directory"
+description: "Seznamy hello různých dostupných sestav generovaných v generování sestav Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 5cd1ae6196d9cd63f97dc9d302442280ece23e40
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f47875708398391dd7f3efdc56a741fdba273b76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-active-directory-reporting"></a>Začínáme s generováním sestav v Azure Active Directory
 ## <a name="what-it-is"></a>Co to je
-Azure Active Directory (Azure AD) obsahuje různé sestavy zabezpečení, aktivit a auditu pro váš adresář. Zde je seznam zahrnutých sestav:
+Azure Active Directory (Azure AD) obsahuje různé sestavy zabezpečení, aktivit a auditu pro váš adresář. Tady je seznam hello sestavy zahrnuté:
 
 ### <a name="security-reports"></a>Sestavy zabezpečení
 * Přihlášení z neznámých zdrojů
@@ -54,18 +54,18 @@ Azure Active Directory (Azure AD) obsahuje různé sestavy zabezpečení, aktivi
 
 ## <a name="how-it-works"></a>Jak to funguje
 ### <a name="reporting-pipeline"></a>Kanál generování sestav
-Kanál generování sestav zahrnuje tři hlavní kroky. Pokaždé, když se uživatel přihlásí nebo je provedeno ověření, stane se toto:
+Hello kanál generování sestav zahrnuje tři hlavní kroky. Pokaždé, když se uživatel přihlásí nebo je provedeno ověření, se stane hello následující:
 
-* Nejprve je uživatel ověřen (úspěšně nebo neúspěšně) a výsledek je uložen do databází služby Azure Active Directory.
+* Nejprve hello uživatel ověřen (úspěšně nebo neúspěšně) a hello výsledek je uložen do databází služby Azure Active Directory hello.
 * V pravidelných intervalech jsou zpracovávána všechna poslední přihlášení. V tom okamžiku naše algoritmy zabezpečení a neobvyklých aktivit vyhledávají a zkouší identifikovat podezřelé aktivity ve všech posledních přihlášeních.
-* Po zpracování jsou vytvořeny sestavy, které jsou uloženy a poskytovány na portálu Azure Classic.
+* Po zpracování hello sestavy jsou zapsány, do mezipaměti a zpracuje v hello portál Azure classic.
 
 ### <a name="report-generation-times"></a>Časy generování sestav
-Vzhledem k velkému objemu ověření a přihlášení zpracovávaných platformou Azure AD jsou nejnověji zpracovaná přihlášení v průměru hodinu stará. Ve výjimečných případech může zpracování nejnovějších přihlášení trvat až 8 hodin.
+Z důvodu velkého objemu toohello ověřování a přihlašování, že in zpracovává hello platformě Azure AD hello nejnovější zpracovaná přihlášení se v průměru hodinu stará. Ve výjimečných případech to může trvat až too8 hodin tooprocess hello poslední přihlášení.
 
-Nejnovější zpracované přihlášení zjistíte v pomocném textu v horní části každé sestavy.
+Hello nejnovější zpracované přihlášení najdete tak, že prověří textu hello nápovědy hello horní části každé sestavy.
 
-![Pomocný text v horní části každé sestavy](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
+![Pomocný text v hello horní části každé sestavy](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
 
 > [!TIP]
 > Další dokumentaci k sestavám Azure AD najdete v článku o [zobrazení sestav přístupu a využití](active-directory-view-access-usage-reports.md).
@@ -73,25 +73,25 @@ Nejnovější zpracované přihlášení zjistíte v pomocném textu v horní �
 > 
 
 ## <a name="getting-started"></a>Začínáme
-### <a name="sign-into-the-azure-classic-portal"></a>Přihlášení k portálu Azure Classic
-Nejprve se budete muset přihlásit k [portálu Azure Classic](https://manage.windowsazure.com) jako globální správce nebo správce dodržování předpisů. Musíte také být správce či spolusprávce služby předplatného Azure nebo používat předplatné Azure „Přístup k Azure AD“ .
+### <a name="sign-into-hello-azure-classic-portal"></a>Přihlaste se k hello portál Azure classic
+Nejprve budete potřebovat toosign do hello [portál Azure classic](https://manage.windowsazure.com) jako dodržování předpisů nebo globální správce. Musí být také předplatné služby správce nebo spolusprávce nebo používat hello "přístup tooAzure AD" předplatného Azure.
 
-### <a name="navigate-to-reports"></a>Přechod na Sestavy
-Chcete-li zobrazit sestavy, přejděte na kartu Sestavy v horní části adresáře.
+### <a name="navigate-tooreports"></a>Přejděte tooReports
+Sestavy tooview přejděte kartě sestavy toohello hello horní části adresáře.
 
-Pokud si sestavy zobrazujete poprvé, musíte před jejich zobrazením potvrdit souhlas v dialogovém okně. Je to z toho důvodu, abyste potvrdili, že je ve vaší organizaci přijatelné, aby správci zobrazovali tato data. Ta mohou být v některých zemích považována za osobní údaje.
+Pokud je to poprvé prohlížení sestav hello, budete potřebovat dialogové okno tooa tooagree před zobrazením sestavy hello. Toto je tooensure, že je přijatelné pro správce ve vaší organizaci tooview tato data, která lze považovat za soukromé informace v některých zemích.
 
 ![Dialogové okno](./media/active-directory-reporting-getting-started/dialogBox.png)
 
 ### <a name="explore-each-report"></a>Zkoumání jednotlivých sestav
-Přejděte na sestavu, která vás zajímá, a uvidíte shromážděná data a zpracovaná přihlášení. Zde můžete najít [seznam všech sestav](active-directory-reporting-guide.md).
+Přejděte na každý shromažďovaných dat toosee hello sestavy a zpracovat hello přihlášení. Můžete najít [seznam všech sestav hello zde](active-directory-reporting-guide.md).
 
 ![Všechny sestavy](./media/active-directory-reporting-getting-started/reportsMain.png)
 
-### <a name="download-the-reports-as-csv"></a>Stažení sestavy ve formátu souboru CSV
-Každou sestavu lze stáhnout jako soubor CSV (hodnoty oddělené čárkami). Tyto soubory můžete použít v aplikacích Excel, PowerBI nebo analytických programech třetích stran k další analýze dat.
+### <a name="download-hello-reports-as-csv"></a>Stáhnout hello sestavy jako sdílený svazek clusteru
+Každou sestavu lze stáhnout jako soubor CSV (hodnoty oddělené čárkami). Můžete použít tyto soubory v aplikaci Excel, PowerBI nebo programy toofurther analyzovat data analysis třetích stran.
 
-Pokud chcete některou sestavu stáhnout jako soubor CSV, přejděte na sestavu a klikněte na tlačítko „Stáhnout“ v dolní části.
+toodownload všechny sestavy jako sdílený svazek clusteru, přejděte toohello sestavy a klikněte na tlačítko "Stáhnout" v dolní části hello.
 
 ![Tlačítko Stáhnout](./media/active-directory-reporting-getting-started/downloadButton.png)
 
@@ -102,23 +102,23 @@ Pokud chcete některou sestavu stáhnout jako soubor CSV, přejděte na sestavu 
 
 ## <a name="next-steps"></a>Další kroky
 ### <a name="customize-alerts-for-anomalous-sign-in-activity"></a>Přizpůsobení upozornění na neobvyklé přihlašovací aktivity
-Přejděte na kartu „Konfigurace“ adresáře.
+Přejděte toohello "Konfigurace" kartě adresáře.
 
-Přejděte do části „Oznámení“.
+Posuňte se toohello části "Oznámení".
 
-Povolte nebo zakažte sekci „E-mailová oznámení neobvyklých přihlášení“.
+Povolit nebo zakázat část "E-mailová oznámení neobvyklých přihlášení" hello.
 
-![Sekce Oznámení](./media/active-directory-reporting-getting-started/notificationsSection.png)
+![Hello sekce oznámení](./media/active-directory-reporting-getting-started/notificationsSection.png)
 
-### <a name="integrate-with-the-azure-ad-reporting-api"></a>Integrace s rozhraním API pro generování sestav Azure AD
-Viz [Začínáme s rozhraním API pro generování sestav](active-directory-reporting-api-getting-started.md).
+### <a name="integrate-with-hello-azure-ad-reporting-api"></a>Integrovat hello rozhraní API pro vytváření sestav Azure AD
+V tématu [Začínáme s hello Reporting rozhraní API](active-directory-reporting-api-getting-started.md).
 
 ### <a name="engage-multi-factor-authentication-on-users"></a>Povolení služby Multi-Factor Authentication pro uživatele
 Vyberte uživatele v sestavě.
 
-Klikněte na tlačítko „Povolit MFA“ v dolní části obrazovky.
+Klikněte na tlačítko "Povolit MFA" hello v hello dolní části obrazovky hello.
 
-![Tlačítko služby Multi-Factor Authentication v dolní části obrazovky](./media/active-directory-reporting-getting-started/mfaButton.png)
+![tlačítko služby Multi-Factor Authentication Hello v hello dolní části obrazovky hello](./media/active-directory-reporting-getting-started/mfaButton.png)
 
 > [!TIP]
 > Další dokumentaci k sestavám Azure AD najdete v článku o [zobrazení sestav přístupu a využití](active-directory-view-access-usage-reports.md).
@@ -127,10 +127,10 @@ Klikněte na tlačítko „Povolit MFA“ v dolní části obrazovky.
 
 ## <a name="learn-more"></a>Další informace
 ### <a name="audit-events"></a>Auditování událostí
-Informace o událostech, které jsou v adresáři auditovány, získáte v článku o [auditovaných událostech pro generování sestav Azure Active Directory](active-directory-reporting-audit-events.md).
+Další informace o událostech, které jsou v adresáři hello v auditovat [Azure Active Directory Reporting událostí auditu](active-directory-reporting-audit-events.md).
 
 ### <a name="api-integration"></a>Integrace rozhraní API
-Viz [Začínáme s rozhraním API pro generování sestav](active-directory-reporting-api-getting-started.md) a [referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/azure/mt126081.aspx).
+V tématu [Začínáme s hello Reporting rozhraní API](active-directory-reporting-api-getting-started.md) a hello [referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/azure/mt126081.aspx).
 
 ### <a name="get-in-touch"></a>Kontakt
 Pro zpětnou vazbu, pomoc a případné dotazy slouží e-mailová adresa [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com).

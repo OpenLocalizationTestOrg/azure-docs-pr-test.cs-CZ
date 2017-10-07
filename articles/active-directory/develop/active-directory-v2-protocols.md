@@ -1,6 +1,6 @@
 ---
-title: "Další informace o protokoly autorizace podporované službou Azure AD v2.0 | Microsoft Docs"
-description: "Průvodce protokolů podporovaných koncového bodu v2.0 Azure AD."
+title: "aaaLearn o hello autorizace protokoly podporované službou Azure AD v2.0 | Microsoft Docs"
+description: "Průvodce tooprotocols, který nepodporuje koncového bodu v2.0 hello Azure AD."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,69 +15,69 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3750f975600575349e5ea9de249cf4521636fd2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f90511b1880ff223f725c1f79df9f79bddccc7bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # v2.0 protokoly - OAuth 2.0 & OpenID Connect
-Koncový bod v2.0, můžete použít Azure AD pro identity jako služba pomocí standardních protokolů, OpenID Connect a OAuth 2.0.  Služba je kompatibilní se standardy, může být drobné rozdíly mezi jakékoli dvě implementace těchto protokolů.  Zde uvedené informace budou užitečné, pokud zvolíte možnost zápisu kódu přímo zasláním & zpracování požadavků HTTP nebo použití 3. stran otevřete Knihovna zdrojů, nikoli pomocí jednoho z našich opensourcové knihovny.
-<!-- TODO: Need link to libraries above -->
+koncový bod v2.0 Hello můžete použít Azure AD pro identity jako služba pomocí standardních protokolů, OpenID Connect a OAuth 2.0.  Sice standardům hello service, může být drobné rozdíly mezi jakékoli dvě implementace těchto protokolů.  Zde Hello informace budou užitečné, pokud zvolíte kódu pro toowrite přímo zasláním & zpracování požadavků HTTP nebo použití 3. stran otevřete Knihovna zdrojů, nikoli pomocí jednoho z našich opensourcové knihovny.
+<!-- TODO: Need link toolibraries above -->
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 >
 
-## Základní informace
-V téměř všechny toky OAuth a OpenID Connect existují čtyři strany účastnící se exchange:
+## Hello základy
+V téměř všechny toky OAuth a OpenID Connect existují čtyři strany účastnící se hello exchange:
 
 ![Role OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
 
-* **Serveru ověřování** je koncovým bodem v2.0.  Je zodpovědná za zajištění identitu uživatele, udělení a odvolání přístupu k prostředkům a vystavování tokenů.  Je také označován jako zprostředkovatele identity – bezpečně zpracovává nic dělat s informací o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v tok.
-* **Vlastník prostředku** je obvykle koncový uživatel.  Je stranu, která je vlastníkem dat a má možnost povolit třetím stranám přistupovat k datům, nebo na prostředek.
-* **Klienta OAuth** je aplikaci identifikovanou pomocí jeho ID aplikace.  Je obvykle stranu, která koncový uživatel komunikuje se službou a požaduje tokeny ze serveru ověřování.  Klient musí udělit oprávnění pro přístup k prostředku vlastníka prostředku.
-* **Server prostředků** je, kde se nachází prostředků nebo data.  Vztahy důvěryhodnosti serveru ověřování k bezpečně ověřování a autorizaci klientů OAuth a používá access_tokens nosiče k zajištění, že lze udělit přístup k prostředku.
+* Hello **serveru ověřování** je koncový bod v2.0 hello.  Je zodpovědná za zajištění identitu uživatele hello, udělení a odvolání přístupu tooresources a vystavování tokenů.  Je také označován jako zprostředkovatele identity hello – bezpečně zpracovává nic toodo s hello uživatele informace, jejich přístup a vztahy důvěryhodnosti hello mezi stranami v tok.
+* Hello **vlastník prostředku** je obvykle hello koncového uživatele.  Je, že hello stranu, která vlastní hello dat a má hello power tooallow třetími stranami tooaccess dat, nebo na prostředek.
+* Hello **klienta OAuth** je aplikaci identifikovanou pomocí jeho ID aplikace.  Je obvykle hello strany koncového uživatele hello komunikuje se službou, a požaduje tokeny ze serveru ověřování hello.  Hello klienta musí mít udělen, že oprávnění tooaccess hello prostředků vlastníkem prostředku hello.
+* Hello **Server prostředků** je, kde se nachází hello prostředků nebo data.  Vztahy důvěryhodnosti hello serveru ověřování toosecurely ověřování a autorizaci hello klienta OAuth a používá tooensure access_tokens, který přístup tooa prostředku můžete udělit nosiče.
 
 ## Registrace aplikací
-Každá aplikace používající koncového bodu v2.0 potřeba registrovat u [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) předtím, než může komunikovat pomocí účtu OAuth nebo OpenID Connect.  Proces registrace aplikace bude shromažďovat & přiřadit aplikaci několik hodnot:
+Každá aplikace používající koncového bodu v2.0 hello potřebovat toobe registrovat u [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) předtím, než může komunikovat pomocí účtu OAuth nebo OpenID Connect.  proces registrace aplikace Hello bude shromažďovat & přiřadit několik hodnot tooyour aplikace:
 
 * **Id aplikace** jednoznačně identifikuje vaši aplikaci
-* A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** který lze použít k cílení odpovědí zpět do aplikace
+* A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** který lze použít toodirect odpovědí zpět tooyour aplikace
 * Pár dalších hodnot konkrétní scénáře.
 
-Pro další informace si přečtěte, jak [zaregistrovat aplikaci](active-directory-v2-app-registration.md).
+Další podrobnosti získáte další informace jak příliš[zaregistrovat aplikaci](active-directory-v2-app-registration.md).
 
 ## Koncové body
-Po registraci aplikace komunikuje se službou Azure AD pomocí zasílání požadavků do koncového bodu v2.0:
+Po registraci aplikace hello komunikuje s Azure AD odesláním koncového bodu v2.0 toohello požadavky:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
+Kde hello `{tenant}` může trvat jednu ze čtyř různých hodnot:
 
 | Hodnota | Popis |
 | --- | --- |
-| `common` |Umožňuje uživatelům s osobní účty Microsoft i pracovní nebo školní účty ze služby Azure Active Directory pro přihlášení do aplikace. |
-| `organizations` |Umožňuje pouze uživatelé s pracovní nebo školní účty ze služby Azure Active Directory pro přihlášení do aplikace. |
-| `consumers` |Umožňuje pouze uživatelé s osobní účty Microsoft (MSA) pro přihlášení do aplikace. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` |Povolí pouze uživatelé s pracovní nebo školní účty z konkrétní klienta Azure Active Directory pro přihlášení do aplikace.  Můžete použít buď domény popisný název klienta Azure AD, nebo identifikátor guid klienta. |
+| `common` |Umožňuje uživatelům s osobní účty Microsoft i pracovní nebo školní účty z Azure Active Directory toosign do aplikace hello. |
+| `organizations` |Umožňuje pouze uživatelé s pracovní nebo školní účty z Azure Active Directory toosign do aplikace hello. |
+| `consumers` |Umožňuje pouze uživatelé s osobní účty (MSA) toosign Microsoft do aplikace hello. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` |Umožňuje pouze uživatelé s pracovní nebo školní účty z konkrétní toosign klienta Azure Active Directory do aplikace hello.  Buď hello domény popisný název hello klienta Azure AD, nebo můžete použít identifikátor guid klienta hello. |
 
-Další informace o tom, jak pracovat s těmito koncovými body zvolte jeden z následujících typů konkrétní aplikace.
+Další informace o tom, toointeract s těmito koncovými body, zvolte jeden z následujících typů konkrétní aplikace.
 
 ## Tokeny
-Implementace v2.0 OAuth 2.0 a OpenID Connect využívají rozsáhlé nosné tokeny, včetně nosné tokeny vyjádřené tokeny Jwt. Je token nosiče tokenu lightweight zabezpečení, který uděluje přístup "nosiče" k chráněnému prostředku. V tomto smyslu je "nosiče" libovolné strany, který může být token. I když může strana musí nejprve ověřit pomocí Azure AD pro příjem token nosiče, nebudou přijata požadované kroky k zabezpečení token v přenos a ukládání, může být zachyceny a použity nezamýšleným strana. I když některé tokeny zabezpečení má integrovanou mechanismus, který brání neoprávněným stranám jejich používání, nosné tokeny nemají tento mechanismus a musí být přenosu v zabezpečený kanál, jako je například transport layer security (HTTPS). Pokud token nosiče je přenesen v nešifrované podobě, man-in střední útok lze škodlivý stranou získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití platí stejné zásady zabezpečení. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny zabezpečeným způsobem. Další aspekty zabezpečení na nosné tokeny, najdete v části [RFC 6750 část 5](http://tools.ietf.org/html/rfc6750).
+implementace v2.0 Hello OAuth 2.0 a OpenID Connect využívají rozsáhlé nosné tokeny, včetně nosné tokeny vyjádřené tokeny Jwt. Token lightweight zabezpečení, že uděluje hello "nosiče" přístup tooa chráněný prostředek, je token nosiče. V tomto smyslu je hello "nosiče" libovolné strany, který může být hello token. I když může strana musí nejprve ověřit pomocí služby Azure AD tooreceive hello nosný token, zda text hello požadované kroky nejsou přijata toosecure hello token v přenos a ukládání, může být zachyceny a použity nezamýšleným strana. I když některé tokeny zabezpečení má integrovanou mechanismus, který brání neoprávněným stranám jejich používání, nosné tokeny nemají tento mechanismus a musí být přenosu v zabezpečený kanál, jako je například transport layer security (HTTPS). Pokud token nosiče je přenesen v hello jasné, střední útok man-in hello mohou být využívána token škodlivý strany tooacquire hello a použít jej pro prostředek tooa chráněné neoprávněného přístupu. Hello stejné zabezpečení zásady platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny zabezpečeným způsobem. Další aspekty zabezpečení na nosné tokeny, najdete v části [RFC 6750 část 5](http://tools.ietf.org/html/rfc6750).
 
-Další podrobnosti o různých typů tokeny, které jsou používány koncového bodu v2.0 je k dispozici v [odkaz tokenu koncový bod v2.0](active-directory-v2-tokens.md).
+Další podrobnosti o různých typů tokeny, které jsou používány koncového bodu v2.0 hello je k dispozici v [hello odkaz tokenu koncový bod v2.0](active-directory-v2-tokens.md).
 
 ## Protokoly
-Pokud jste připraveni zobrazíte některých požadavků příklad, začít pracovat s jedním z následující kurzy.  Každé z nich odpovídá konkrétní ověřovacím scénáři.  Pokud potřebujete pomoc při rozhodování, což je správné toku za vás, podívejte se na [s typy aplikací můžete vytvořit pomocí v2.0](active-directory-v2-flows.md).
+Pokud jste připravené toosee požádá o několik příkladů, začít pracovat s jedním z hello níže kurzy.  Každé z nich odpovídá tooa konkrétní ověřovacím scénáři.  Pokud potřebujete pomoc při rozhodování, což je hello správné toku za vás, podívejte se na [hello typy aplikací můžete vytvořit s hello v2.0](active-directory-v2-flows.md).
 
 * [Vytvoření mobilní a nativní aplikace s OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
 * [Vytvoření webové aplikace s Open ID Connect](active-directory-v2-protocols-oidc.md)
-* [Sestavení jednostránkové aplikace pomocí implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md)
-* [Sestavení démoni nebo serverové straně procesy pomocí přihlašovacích údajů klienta OAuth 2.0 toku](active-directory-v2-protocols-oauth-client-creds.md)
-* [Získat tokeny v rozhraní Web API s tok On jménem Of OAuth 2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [Vývoj aplikací pro jednu stránku s hello implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md)
+* [Sestavení démoni nebo serverové straně procesy s hello toku OAuth 2.0 klienta přihlašovací údaje](active-directory-v2-protocols-oauth-client-creds.md)
+* [Získat tokeny v rozhraní Web API s hello tok On jménem Of OAuth 2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)

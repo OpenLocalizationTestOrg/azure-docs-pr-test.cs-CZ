@@ -1,6 +1,6 @@
 ---
-title: "Azure fakturace rozhraní API Enterprise – souhrn a vyrovnávat | Microsoft Docs"
-description: "Další informace o využití fakturace Azure a RateCard rozhraní API, které poskytují přehled o využívání prostředků Azure a trendy."
+title: "aaaAzure fakturace Enterprise rozhraní API – souhrn a vyrovnávat | Microsoft Docs"
+description: "Další informace o využití fakturace Azure a RateCard rozhraní API, které jsou používané tooprovide přehled o využívání prostředků Azure a trendy."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b031de2c347e5abeacd11743cc96024434518918
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>Rozhraní API pro vytváření sestav pro podnikové zákazníky – souhrn a vyrovnávat
 
-Vyrovnávat a souhrn rozhraní API nabízí měsíční souhrnné informace na zůstatky, nové nákupy, poplatky za služby Azure Marketplace, úpravy a Nadlimitní poplatky.
+Hello vyrovnávat a souhrn rozhraní API nabízí měsíční souhrnné informace na zůstatky, nové nákupy, poplatky za služby Azure Marketplace, úpravy a Nadlimitní poplatky.
 
 
 ##<a name="request"></a>Žádost 
-Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, je vrácena data pro aktuální fakturační období.
+Nejsou zadány společných vlastností hlavičky, které je třeba přidat toobe [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, pak data pro aktuální fakturaci hello období vrácena.
 
 |Metoda | Identifikátor URI požadavku|
 |-|-|
@@ -35,7 +35,7 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 |GET| /billingPeriods/ https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} {billingPeriod} / balancesummary|
 
 > [!Note]
-> Pokud chcete používat verzi preview rozhraní API, nahraďte v2 v1 v výše uvedenou adresu URL.
+> verze preview hello toouse rozhraní API, nahraďte v2 v1 v hello výše adresy URL.
 >
 
 ## <a name="response"></a>Odpověď
@@ -77,11 +77,11 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 
 |Název vlastnosti| Typ| Popis
 |-|-|-|
-|id|Řetězec|Jedinečné Id pro konkrétní fakturační období a registrace|
-|billingPeriodId|Řetězec |Fakturační období Id|
-|Kód měny|Řetězec |Kód měny|
-|beginningBalance|Decimal| Počáteční zůstatek za fakturační období|
-|endingBalance|Decimal| Konečný zůstatek za fakturační období (pro otevřete období, které to se budou denně aktualizovat)|
+|id|Řetězec|Hello jedinečné Id pro konkrétní fakturační období a registrace|
+|billingPeriodId|Řetězec |Hello fakturační období Id|
+|Kód měny|Řetězec |Kód měny Hello|
+|beginningBalance|Decimal| Hello počáteční zůstatek pro fakturační období hello|
+|endingBalance|Decimal| Hello konečný zůstatek hello fakturační období (pro otevřete období, které to se budou denně aktualizovat)|
 |newPurchases|Decimal| Celková velikost nového nákupu|
 |úpravy|Decimal| Množství celkový počet nastavení|
 |využité|Decimal| Celkové využití závazků|

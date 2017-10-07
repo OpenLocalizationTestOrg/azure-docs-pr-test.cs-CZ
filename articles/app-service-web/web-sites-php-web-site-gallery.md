@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace WordPress ve službě Azure App Service | Dokumentace Microsoftu"
-description: "Naučte se vytvořit novou webovou aplikaci Azure pro blog WordPress pomocí webu Azure Portal."
+title: "aaaCreate webové aplikace WordPress v Azure App Service | Microsoft Docs"
+description: "Zjistěte, jak toocreate nový Azure webové aplikace pro blog WordPress pomocí portálu Azure hello."
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
@@ -14,102 +14,102 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 460afdabed947fb4018a9ea8a7a5bc7dc5bc89c7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3a95fcb6732c15a8200921ce474b6dde2298dec3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-wordpress-web-app-in-azure-app-service"></a>Vytvoření webové aplikace WordPress ve službě Azure App Service
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-V tomto kurzu se dozvíte, jak nasadit web blogu WordPress z Azure Marketplace.
+Tento kurz ukazuje, jak lokality toodeploy blogu WordPress z Azure Marketplace hello.
 
-Po dokončení kurzu budete mít vlastní funkční web blogu WordPress spuštěný v cloudu.
+Když jste hotovi s hello kurzu budete mít vlastní funkční web blogu WordPress a spouštění v cloudu hello.
 
 ![Web WordPress](./media/web-sites-php-web-site-gallery/wpdashboard.png)
 
-Co se dozvíte:
+Naučíte se:
 
-* Postup nalezení šablony aplikace v Azure Marketplace.
-* Postup vytvoření webové aplikace založené na šabloně ve službě Azure App Service.
-* Postup konfigurace nastavení služby Azure App Service pro novou webovou aplikaci a databázi.
+* Jak toofind šablony aplikace v hello Azure Marketplace.
+* Jak toocreate webové aplikace v Azure aplikaci služby, který je založený na šabloně hello.
+* Jak tooconfigure nastavení služby Azure App Service pro hello nové webové aplikace a databáze.
 
-Azure Marketplace nabízí širokou škálu oblíbených webových aplikací vyvinutých společností Microsoft, jinými společnostmi a iniciativami v oblasti softwaru Open Source. Webové aplikace jsou postaveny na široké škále oblíbených rozhraní, jako je [PHP](/develop/nodejs/) v tomto příkladu aplikace WordPress, [.NET](/develop/net/), [Node.js](/develop/nodejs/), [Java](/develop/java/), [Python](/develop/python/) a další. K vytvoření webové aplikace v Azure Marketplace nepotřebujete žádný software, kromě prohlížeče, který používáte pro [web Azure Portal](https://portal.azure.com/). 
+Hello Azure Marketplace zpřístupní širokou škálu oblíbených webových aplikací vyvinutých společností Microsoft, jinými společnostmi a iniciativami v oblasti softwaru s otevřeným zdrojem. Hello webové aplikace jsou postaveny na široké škále oblíbených rozhraní, jako například [PHP](/develop/nodejs/) v tomto příkladu aplikace WordPress, [.NET](/develop/net/), [Node.js](/develop/nodejs/), [Java](/develop/java/), a [Python](/develop/python/), tooname a několika. toocreate webové aplikace z Azure Marketplace hello pouze softwaru je nutné je hello prohlížeče, který používáte pro hello hello [portálu Azure](https://portal.azure.com/). 
 
-Web WordPress, který nasazujete v tomto kurzu, využívá jako databázi MySQL. Chcete-li jako databázi raději použít SQL Database, informace naleznete v [Projektu Nami](http://projectnami.org/). **Projekt Nami** je rovněž k dispozici prostřednictvím Azure Marketplace.
+Hello web WordPress, který nasazujete v tomto kurzu využívá hello databázi MySQL. Pokud chcete použít tooinstead databázi SQL pro databázi hello, najdete v části [Project Nami](http://projectnami.org/). **Projekt Nami** je také k dispozici prostřednictvím hello Marketplace.
 
 > [!NOTE]
-> K absolvování tohoto kurzu potřebujete účet Microsoft Azure. Pokud nemáte účet, můžete si [aktivovat výhody předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) nebo se [zaregistrovat k bezplatné zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> toocomplete tohoto kurzu potřebujete účet Microsoft Azure. Pokud nemáte účet, můžete si [aktivovat výhody předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) nebo se [zaregistrovat k bezplatné zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
-> Chcete-li začít se službou Azure App Service dříve, než se zaregistrujete k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/). Zde můžete ihned vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service – aniž by byla požadována platební karta a bez jakýchkoli závazků.
+> Pokud chcete, aby tooget začít s Azure App Service, ještě než si zaregistrujete účet Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/). Zde můžete ihned vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service – aniž by byla požadována platební karta a bez jakýchkoli závazků.
 > 
 > 
 
 ## <a name="select-wordpress-and-configure-for-azure-app-service"></a>Výběr aplikace WordPress a konfigurace pro službu Azure App Service
-1. Přihlaste se k [webu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se toohello [portálu Azure](https://portal.azure.com/).
 2. Klikněte na možnost **Nové**.
    
     ![Vytvořit nové][5]
-3. Vyhledejte **WordPress** a klikněte na možnost **WordPress**. Chcete-li namísto MySQL použít SQL Database, vyhledejte **Projekt Nami**.
+3. Vyhledejte **WordPress** a klikněte na možnost **WordPress**. Pokud chcete toouse SQL Database namísto MySQL, vyhledejte **Project Nami**.
    
     ![WordPress ze seznamu][7]
-4. Přečtěte si popis aplikace WordPress a klikněte na možnost **Vytvořit**.
+4. Po přečtení hello popis aplikace WordPress hello, klikněte na tlačítko **vytvořit**.
    
     ![Vytvořit](./media/web-sites-php-web-site-gallery/create.png)
-5. Zadejte název webové aplikace do pole **Webová aplikace**.
+5. Zadejte název webové aplikace hello v hello **webové aplikace** pole.
    
-    Tento název musí být v doméně azurewebsites.net jedinečný, protože webová aplikace bude mít adresu URL {název}.azurewebsites.net. Není-li zadaný název jedinečný, v textovém poli se zobrazí červený vykřičník.
-6. Máte-li více předplatných, zvolte to, které chcete použít. 
+    Tento název musí být jedinečný v doméně azurewebsites.net hello, protože adresa URL hello hello webové aplikace bude {name}. azurewebsites.net. Pokud není jedinečný název hello, kterou zadáte, se zobrazí červený vykřičník hello textového pole.
+6. Pokud máte více než jedno předplatné, zvolte hello, kterou chcete toouse. 
 7. Vyberte **skupinu prostředků** nebo vytvořte novou.
    
     Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 8. Vyberte **umístění/plán služby App Service** nebo vytvořte nové.
    
     Podrobnější informace o plánech služby App Service naleznete v tématu [Přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).    
-9. Klikněte na možnost **Databáze** a poté v okně **Nová databáze MySQL** zadejte požadované hodnoty pro konfiguraci databáze MySQL.
+9. Klikněte na tlačítko **databáze**a potom v hello **nová databáze MySQL** okno Zadejte hello požadované hodnoty pro konfiguraci databáze MySQL.
    
-    a. Zadejte nový název nebo ponechte výchozí název.
+    a. Zadejte nový název nebo ponechte výchozí název hello.
    
-    b. Položku **Typ databáze** ponechte nastavenou na možnost **Shared**.
+    b. Nechte hello **typ databáze** nastavit příliš**sdílené**.
    
-    c. Zvolte totéž umístění, které jste zvolili pro webovou aplikaci.
+    c. Zvolte hello, které stejné umístění jako hello ten, který jste zvolili pro webovou aplikaci hello.
    
     d. Zvolte cenovou úroveň. Mercury (bezplatná úroveň s minimálním počtem povolených připojení a místem na disku) je vhodná pro tento kurz.
-10. V okně **Nová databáze MySQL** klikněte na tlačítko **OK**. 
-11. V okně **WordPress** přijměte právní podmínky a klikněte na možnost **Vytvořit**. 
+10. V hello **nová databáze MySQL** okně klikněte na tlačítko **OK**. 
+11. V hello **WordPress** přijměte právní podmínky hello a pak klikněte na tlačítko **vytvořit**. 
     
      ![Konfigurace webové aplikace](./media/web-sites-php-web-site-gallery/configure.png)
     
-     Služba Azure App Service vytvoří webovou aplikaci, což obvykle trvá méně než minutu. Průběh můžete sledovat kliknutím na ikonu zvonu v horní části stránky portálu.
+     Aplikační služba Azure vytvoří hello webové aplikace, obvykle v méně než minutu. Kliknutím na ikonu zvonku hello hello horní části stránky portálu hello můžete sledovat průběh hello.
     
      ![Ukazatel průběhu](./media/web-sites-php-web-site-gallery/progress.png)
 
 ## <a name="launch-and-manage-your-wordpress-web-app"></a>Spuštění a správa webové aplikace WordPress
-1. Až budete s vytvářením webové aplikace hotovi, přejděte na webu Azure Portal do skupiny prostředků, v níž jste aplikaci vytvořili, a zde se zobrazí webová aplikace a databáze.
+1. Po dokončení vytvoření webové aplikace hello přejděte v hello portálu Azure toohello skupině prostředků ve které jste vytvořili hello aplikace, a uvidíte hello webovou aplikaci a databázi hello.
    
-    Dodatečný prostředek s ikonou žárovky je služba [Application Insights](/services/application-insights/), která pro vaši webovou aplikaci zajišťuje služby monitorování.
-2. V okně **Skupina prostředků** klikněte na řádek webové aplikace.
+    Hello dodatečný prostředek s ikonou žárovky hello je [Application Insights](/services/application-insights/), která zajišťuje služby monitorování pro webovou aplikaci.
+2. V hello **skupiny prostředků** okně klikněte na řádek webové aplikace hello.
    
     ![Konfigurace webové aplikace](./media/web-sites-php-web-site-gallery/resourcegroup.png)
-3. V okně webové aplikace klikněte na tlačítko **Procházet**.
+3. V okně webové aplikace hello, klikněte na **Procházet**.
    
     ![adresa URL webu][browse]
-4. Na **úvodní** stránce WordPress zadejte informace o konfiguraci vyžadované aplikací WordPress a klikněte na možnost **Instalovat WordPress**.
+4. V hello WordPress **úvodní** zadejte informace o konfiguraci hello vyžadované aplikací WordPress a pak klikněte na tlačítko **instalovat WordPress**.
    
     ![Konfigurace WordPress](./media/web-sites-php-web-site-gallery/wpconfigure.png)
-5. Přihlaste se pomocí přihlašovacích údajů, které jste vytvořili na **úvodní** stránce.  
+5. Přihlaste se pomocí přihlašovacích údajů hello jste vytvořili na hello **úvodní** stránky.  
 6. Otevře se stránka řídicího panelu webu.    
    
     ![Web WordPress](./media/web-sites-php-web-site-gallery/wpdashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
-Seznámili jste se s postupem vytvoření a nasazení webové aplikace PHP z galerie. Další informace o použití PHP v Azure naleznete ve [Středisku pro vývojáře PHP](/develop/php/).
+Už víte, jak toocreate a nasazení webové aplikace PHP z Galerie hello. Další informace o použití PHP v Azure najdete v tématu hello [středisku pro vývojáře PHP](/develop/php/).
 
-Další informace týkající se práce s webovými aplikacemi App Service Web Apps naleznete prostřednictvím odkazů v levé části stránky (máte-li široké okno prohlížeče) nebo v horní části stránky (máte-li úzké okno prohlížeče). 
+Další informace o tom, toowork s App Service Web Apps, najdete v části hello odkazy na levé straně stránky hello (pro široké okno prohlížeče) hello nebo hello horní části stránky hello (pro úzké okno prohlížeče). 
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714).
+* Průvodce toohello změnu z tooApp weby služby, najdete v části [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png

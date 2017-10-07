@@ -1,83 +1,66 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 2: Získání dat | Dokumentace Microsoftu"
-description: "Popisuje, jak získat a importovat data v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 06/01/2017
-ms.author: owend
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+Title: aaa "Azure Analysis Services kurz Lekce 2: získání dat | Microsoft Docs"Popis: Popisuje, jak hello tooget a import dat v kurzu projektu Azure Analysis Services. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
+
+MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 01/06/2017 ms.author: owend
 ---
+
 # <a name="lesson-2-get-data"></a>Lekce 2: Získání dat
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci se pomocí funkce Získání dat v SSDT připojíte k ukázkové databázi AdventureWorksDW2014, vyberete data, zobrazíte jejich náhled, použijete filtr a potom je naimportujete do pracovního prostoru modelu.  
+V této lekci použijete načíst Data v rozšíření SSDT tooconnect toohello AdventureWorksDW2014 ukázkovou databázi, vyberte data, náhled a filtr a potom importovat do pracovního prostoru modelu.  
   
 Pomocí funkce Získání dat můžete importovat data z celé řady zdrojů: Azure SQL Database, Oracle, Sybase, kanál OData, Teradata, soubory a další. Data umožňují také dotazy pomocí výrazu se vzorci Power Query M.
   
-Odhadovaný čas dokončení této lekce: **10 minut**  
+Odhadovaný čas toocomplete této lekci: **10 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [lekci 1: vytvoření nového projektu tabulkový model](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Vytvoření připojení  
   
-#### <a name="to-create-a-connection-to-the-adventureworksdw2014-database"></a>Vytvoření připojení k databázi AdventureWorksDW2014  
+#### <a name="toocreate-a-connection-toohello-adventureworksdw2014-database"></a>toocreate databázi toohello AdventureWorksDW2014 připojení  
   
 1.  V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Zdroje dat** > **Importovat ze zdroje dat**.  
   
-    Spustí se funkce Získání dat, která vás provede připojením ke zdroji dat. Pokud se Průzkumník tabelárních modelů nezobrazuje, v **Průzkumníku řešení** dvakrát klikněte na **Model.bim** a otevřete model v návrháři. 
+    Spustí se získat Data, která vás provede připojování zdroje dat tooa. Pokud nevidíte v tabulkovém modelu Průzkumníku **Průzkumníku řešení**, dvakrát klikněte na **Model.bim** tooopen hello modelu v Návrháři hello. 
     
     ![aas-lesson2-getdata](../tutorials/media/aas-lesson2-getdata.png)
   
 2.  Ve funkci Získání dat klikněte na **Databáze** > **Databáze SQL Serveru** > **Připojit**.  
   
-3.  V dialogovém okně **Databáze SQL Serveru** v části **Server** zadejte název serveru, na který jste nainstalovali databázi AdventureWorksDW2014, a klikněte na **Připojit**.  
+3.  V hello **databáze systému SQL Server** dialogové okno, v **Server**, zadejte název hello hello serveru, kam jste nainstalovali hello AdventureWorksDW2014 databáze a pak klikněte na tlačítko **Connect**.  
 
-4.  Po zobrazení výzvy k zadání přihlašovacích údajů je potřeba zadat přihlašovací údaje, pomocí kterých se služba Analysis Services připojuje ke zdroji dat při importu a zpracování dat. V části **Režim zosobnění** vyberte **Zosobnit účet**, zadejte přihlašovací údaje a klikněte na **Připojit**. Doporučujeme použít účet, u kterého nedochází k vypršení platnosti hesla.
+4.  Po zobrazení výzvy tooenter přihlašovací údaje, je nutné toospecify hello pověření služby Analysis Services používá tooconnect toohello zdroj dat při importu a zpracování dat. V části **Režim zosobnění** vyberte **Zosobnit účet**, zadejte přihlašovací údaje a klikněte na **Připojit**. Doporučuje se, že používáte účet, kde není hello heslo vyprší.
 
     ![aas-lesson2-account](../tutorials/media/aas-lesson2-account.png)
   
     > [!NOTE]  
-    > Nejbezpečnější metodu připojení ke zdroji dat poskytuje použití uživatelského účtu a hesla systému Windows.
+    > Pomocí uživatelského účtu systému Windows a hesla poskytuje nejbezpečnější metodou hello připojování zdroje dat tooa.
   
-5.  V části Navigátor vyberte databázi **AdventureWorksDW2014** a klikněte na **OK**. Tím se vytvoří připojení k databázi. 
+5.  V tabulce dat, vyberte hello **AdventureWorksDW2014** databáze a potom klikněte na **OK**. Tím se vytvoří databáze toohello hello připojení. 
   
-6.  V části Navigátor zaškrtněte políčka u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** a **FactInternetSales**.  
+6.  V tabulce dat, vyberte hello zaškrtávací políčko pro hello následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, a **FactInternetSales**.  
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Po kliknutí na OK se otevře Editor dotazů. V další části vyberete jenom data, která chcete importovat.
+Po kliknutí na OK se otevře Editor dotazů. V další části hello vyberte pouze hello data, která chcete tooimport.
 
   
-## <a name="filter-the-table-data"></a>Filtrování tabulkových dat  
-Tabulky v ukázkové databázi AdventureWorksDW2014 obsahují data, která není nutné zahrnout do modelu. Pokud je to možné, nepotřebná data byste měli vyfiltrovat, abyste ušetřili místo v paměti využívané modelem. Vyfiltrujete z tabulek některé ze sloupců, aby se neimportovaly do databáze pracovního prostoru nebo databáze modelu, až bude nasazena. 
+## <a name="filter-hello-table-data"></a>Filtrování dat v tabulce hello  
+Tabulky v ukázkové databázi AdventureWorksDW2014 hello mají data, která není nutné tooinclude v modelu. Pokud je to možné, budete chtít toofilter se místo v paměti toosave nepotřebných dat používaný modelem hello. Můžete filtrovat některé z hello sloupce z tabulky, aby nejsou importovány do databáze pracovního prostoru hello hello model databáze, nebo po jeho nasazení. 
   
-#### <a name="to-filter-the-table-data-before-importing"></a>Filtrování tabulkových dat před importem  
+#### <a name="toofilter-hello-table-data-before-importing"></a>data tabulky hello toofilter před importem  
   
-1.  V Editoru dotazů vyberte tabulku **DimCustomer**. Otevře se zobrazení tabulky DimCustomer ve zdroji dat (vaše ukázková databáze AdventureWorksDWQ2014). 
+1.  V editoru dotazů vyberte hello **DimCustomer** tabulky. Hello DimCustomer tabulky na zdroj dat hello (ukázkové databázi AdventureWorksDWQ2014) se zobrazí. 
   
 2.  Vyberte (Ctrl + kliknutí) sloupce **SpanishEducation**, **FrenchEducation**, **SpanishOccupation** a **FrenchOccupation**, klikněte pravým tlačítkem a potom klikněte na **Odebrat sloupce**. 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
-    Vzhledem k tomu, že tyto sloupce nejsou pro analýzu prodejů přes internet relevantní, není nutné je importovat. Díky odstranění nepotřebných sloupců bude váš model menší a efektivnější.  
+    Vzhledem k tomu, že hello hodnoty pro tyto sloupce nejsou relevantní tooInternet prodejní analýzy, není tooimport bez nutnosti tyto sloupce. Díky odstranění nepotřebných sloupců bude váš model menší a efektivnější.  
   
-4.  Filtrujte zbývající tabulky odebráním následujících sloupců v každé z nich:  
+4.  Filtrovat hello zbývající tabulky odebráním hello následující sloupce v každé tabulce:  
     
     **DimDate**
     
@@ -134,12 +117,12 @@ Tabulky v ukázkové databázi AdventureWorksDW2014 obsahují data, která není
       |**DueDateKey**|  
       |**ShipDateKey**|   
   
-## <a name="Import"></a>Import vybraných tabulek a dat sloupců  
-Teď, když jste zobrazili náhled a vyfiltrovali nepotřebná data, můžete importovat zbývající požadovaná data. Průvodce importuje kromě tabulkových dat také případné relace mezi tabulkami. V modelu se vytvoří nové tabulky a sloupce a data, která jste vyfiltrovali, se neimportují.  
+## <a name="Import"></a>Import hello vybrané tabulky a sloupce dat  
+Teď, když jste náhled a odfiltrovat nepotřebná data, můžete importovat hello zbytek hello data, která ho. Hello Průvodce naimportuje data tabulky hello společně s všechny vztahy mezi tabulkami. Nové tabulky a sloupce, které jsou vytvořené v modelu hello a data, která můžete odfiltrovat není importován.  
   
-#### <a name="to-import-the-selected-tables-and-column-data"></a>Import vybraných tabulek a dat sloupců  
+#### <a name="tooimport-hello-selected-tables-and-column-data"></a>tooimport hello vybrané tabulky a sloupce dat  
   
-1.  Zkontrolujte váš výběr. Pokud vše vypadá v pořádku, klikněte na **Importovat**. V dialogovém okně Zpracování dat se zobrazí stav importování dat ze zdroje dat do databáze pracovního prostoru.
+1.  Zkontrolujte váš výběr. Pokud vše vypadá v pořádku, klikněte na **Importovat**. Dialogové okno Hello zpracování dat se zobrazuje stav hello dat importovaných z zdroj dat do databáze pracovního prostoru.
   
     ![aas-lesson2-success](../tutorials/media/aas-lesson2-success.png) 
   
@@ -147,9 +130,9 @@ Teď, když jste zobrazili náhled a vyfiltrovali nepotřebná data, můžete im
 
   
 ## <a name="save-your-model-project"></a>Uložení projektu s modelem  
-Je důležité projekt s modelem často ukládat.  
+Je důležité toofrequently uložit projektu modelu.  
   
-#### <a name="to-save-the-model-project"></a>Uložení projektu s modelem  
+#### <a name="toosave-hello-model-project"></a>projekt modelu toosave hello  
   
 -   Klikněte na **Soubor** > **Uložit vše**.  
   

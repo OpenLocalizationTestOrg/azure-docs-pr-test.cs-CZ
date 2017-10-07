@@ -1,6 +1,6 @@
 ---
-title: "Práce s triggerů a vazeb v Azure Functions | Microsoft Docs"
-description: "Další informace o použití triggerů a vazeb v Azure Functions k připojení vašeho provádění kódu k online události a cloudové služby."
+title: "aaaWork s triggerů a vazeb v Azure Functions | Microsoft Docs"
+description: "Zjistěte, jak toouse aktivuje a vazeb v Azure Functions tooconnect události tooonline spuštění kódu a cloudové služby."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,56 +16,56 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
-ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eb2ebfca172fcc8c0f479adbcfec99e90fc33615
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkce triggerů a vazeb koncepty
-Azure Functions umožňuje psaní kódu v reakci na události v Azure a dalším službám prostřednictvím *aktivační události* a *vazby*. Tento článek obsahuje přehled služby aktivačních událostí a vazby pro všechny podporované programovací jazyky. Tady jsou popsané funkce, které jsou společné pro všechny vazby.
+Azure Functions umožňuje toowrite kód odpovědi tooevents v Azure a dalším službám prostřednictvím *aktivační události* a *vazby*. Tento článek obsahuje přehled služby aktivačních událostí a vazby pro všechny podporované programovací jazyky. Funkce, které jsou společné tooall vazby jsou zde popsány.
 
 ## <a name="overview"></a>Přehled
 
-Triggerů a vazeb jsou deklarativní způsob, jak definovat, jak je volána funkce a co data funguje s. A *aktivační událost* definuje způsob volání funkce. Funkce musí mít přesně jeden aktivační události. Aktivační události mají související data, která je obvykle datové části, která aktivuje funkce. 
+Triggerů a vazeb jsou deklarativní způsob toodefine způsob volání funkce a jaká data funguje s. A *aktivační událost* definuje způsob volání funkce. Funkce musí mít přesně jeden aktivační události. Aktivační události mají související data, která je obvykle hello datové části, která aktivuje funkce hello. 
 
-Vstup a výstup *vazby* poskytnout deklarativní způsob, jak se připojit k datům z vašeho kódu. Podobně jako u aktivačních událostí, je zadat připojovací řetězce a další vlastnosti v konfiguraci funkce. Vazby jsou volitelné a funkci můžete mít více vstup a výstup vazby. 
+Vstup a výstup *vazby* zadejte toodata deklarativní způsob tooconnect z vašeho kódu. Podobně jako tootriggers zadáte připojovací řetězce a další vlastnosti v konfiguraci funkce. Vazby jsou volitelné a funkci můžete mít více vstup a výstup vazby. 
 
-Pomocí triggerů a vazeb, můžete napsat kód, který je instalace a další obecná závislé podrobnosti o službách, pomocí které komunikuje. Dat pocházejících z služby jednoduše stát vstupní hodnoty kódu funkce. Chcete-li výstupní data do jiné služby (jako je vytvoření nového řádku v Azure Table Storage), použijte návratovou hodnotu metody. Nebo pokud potřebujete výstup více hodnot, použijte pomocný objekt. Mít triggerů a vazeb **název** vlastnost, která je identifikátor používáte ve vašem kódu pro přístup k vazby.
+Pomocí triggerů a vazeb, můžete napsat kód, který je více obecné a nemá závislé hello podrobnosti hello služeb, se kterými komunikuje. Dat pocházejících z služby jednoduše stát vstupní hodnoty kódu funkce. Služba tooanother toooutput data (jako je vytvoření nového řádku v Azure Table Storage), použijte hello návratovou hodnotu metody hello. Nebo pokud potřebujete toooutput více hodnot, použijte pomocný objekt. Mít triggerů a vazeb **název** vlastnost, která je identifikátor použijete v vazbě hello tooaccess vašeho kódu.
 
-Můžete nakonfigurovat triggerů a vazeb v **integrací** na portálu Azure Functions. V pozadí, uživatelské rozhraní upraví soubor s názvem *function.json* soubor v adresáři funkce. Tento soubor můžete upravit změnou na **pokročilé editor**.
+Můžete nakonfigurovat triggerů a vazeb v hello **integrací** karta na portálu Azure Functions hello. V části hello zahrnuje hello uživatelského rozhraní upraví soubor s názvem *function.json* soubor v adresáři funkce hello. Tento soubor můžete upravit změnou toohello **pokročilé editor**.
 
-V následující tabulce jsou uvedeny triggerů a vazeb, které jsou podporovány Azure Functions. 
+Hello následující tabulka uvádí hello triggerů a vazeb, které jsou podporovány Azure Functions. 
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>Příklad: Aktivace fronty a tabulky Výstupní vazby
 
-Předpokládejme, že chcete k zápisu nového řádku do Azure Table Storage, vždy, když v Azure Queue Storage se objeví nová zpráva. Tento scénář může být implementovaná pomocí Azure Queue aktivační události a tabulku výstupní vazby. 
+Předpokládejme, že chcete toowrite nový řádek tooAzure Table Storage vždy, když v Azure Queue Storage se objeví nová zpráva. Tento scénář může být implementovaná pomocí Azure Queue aktivační události a tabulku výstupní vazby. 
 
-Aktivační procedury fronty vyžaduje následující informace v **integrací** karty:
+Aktivační procedury fronty vyžaduje následující informace v hello hello **integrací** karty:
 
-* Název nastavení aplikace, který obsahuje připojovací řetězec pro účet úložiště pro frontu
-* Název fronty
-* Identifikátor ve vašem kódu číst obsah zprávy ve frontě, jako například `order`.
+* Název nastavení aplikace hello, který obsahuje připojovací řetězec účet hello úložiště pro frontu hello Hello
+* Název fronty Hello
+* Hello identifikátor v váš kód tooread hello obsah uvítací zprávu fronty, jako například `order`.
 
-Zapsat do Azure Table Storage, použijte vazbu výstup s následujícími podrobnostmi:
+toowrite tooAzure Table Storage, použít vazbu výstup hello následující podrobnosti:
 
-* Název nastavení aplikace, který obsahuje připojovací řetězec pro účet úložiště pro tabulku
-* Název tabulky
-* Identifikátor ve vašem kódu k vytvoření výstupní položky nebo návratovou hodnotou z funkce.
+* Název nastavení aplikace hello, který obsahuje připojovací řetězec účet hello úložiště pro tabulku hello Hello
+* Název tabulky Hello
+* identifikátor Hello v váš kód toocreate výstupní položky nebo hello návratovou hodnotou z funkce hello.
 
-Vazby nastavení pomocí aplikace pro připojovací řetězce k vynucení nejlepší praxi, který *function.json* neobsahuje tajné klíče služby.
+Vazby používat nastavení aplikace pro připojovací řetězce tooenforce hello nejlepší praxi, který *function.json* neobsahuje tajné klíče služby.
 
-Potom pomocí identifikátorů, které jste zadali pro integraci s Azure Storage v kódu.
+Poté použijte hello identifikátory, které jste zadali toointegrate s Azure Storage v kódu.
 
 ```cs
 #r "Newtonsoft.Json"
 
 using Newtonsoft.Json.Linq;
 
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The method return value creates a new row in Table Storage
+// From an incoming queue message that is a JSON object, add fields and write tooTable Storage
+// hello method return value creates a new row in Table Storage
 public static Person Run(JObject order, TraceWriter log)
 {
     return new Person() { 
@@ -85,8 +85,8 @@ public class Person
 ```
 
 ```javascript
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The second parameter to context.done is used as the value for the new row
+// From an incoming queue message that is a JSON object, add fields and write tooTable Storage
+// hello second parameter toocontext.done is used as hello value for hello new row
 module.exports = function (context, order) {
     order.PartitionKey = "Orders";
     order.RowKey = generateRandomId(); 
@@ -100,7 +100,7 @@ function generateRandomId() {
 }
 ```
 
-Tady je *function.json* odpovídající předchozí kód. Všimněte si, že stejnou konfiguraci můžete použít, bez ohledu na jazyk implementace funkce.
+Tady je hello *function.json* odpovídající toohello předcházející kódu. Všimněte si, že hello, je možné použít stejnou konfiguraci, bez ohledu na jazyk hello implementace funkce hello.
 
 ```json
 {
@@ -122,7 +122,7 @@ Tady je *function.json* odpovídající předchozí kód. Všimněte si, že ste
   ]
 }
 ```
-K zobrazení a úprava obsahu *function.json* na portálu Azure klikněte na tlačítko **pokročilé editor** možnost **integrací** kartě funkce.
+tooview a úpravy hello obsah *function.json* v hello portálu Azure, klikněte na tlačítko hello **pokročilé editor** možnost na hello **integrací** kartě funkce.
 
 Další příklady kódu a informace o integraci s Azure Storage najdete v tématu [Azure Functions triggerů a vazeb pro Azure Storage](functions-bindings-storage.md).
 
@@ -130,13 +130,13 @@ Další příklady kódu a informace o integraci s Azure Storage najdete v téma
 
 Mají všechny triggerů a vazeb `direction` vlastnost:
 
-- Pro aktivační události směr je vždy`in`
+- Pro aktivační události je vždy směr hello`in`
 - Vstupní a výstupní vazby používat `in` a`out`
-- Některé vazby podporují speciální směr `inout`. Pokud používáte `inout`, jenom **pokročilé editor** je k dispozici v **integrací** kartě.
+- Některé vazby podporují speciální směr `inout`. Pokud používáte `inout`, pouze hello **pokročilé editor** je k dispozici v hello **integrací** kartě.
 
-## <a name="using-the-function-return-type-to-return-a-single-output"></a>Použití návratový typ funkce pro vrácení jediného výstupu
+## <a name="using-hello-function-return-type-tooreturn-a-single-output"></a>Pomocí tooreturn návratový typ funkce hello jediného výstupu
 
-Předchozí příklad ukazuje, jak používat funkce návratovou hodnotu k poskytování výstup vazbu, což je dosaženo pomocí parametru speciální název `$return`. (Toto je jediná hodnota podporovaná v jazycích, které mají návratovou hodnotu, například C#, JavaScript a F #.) Pokud funkce má několik vazeb výstup, použijte `$return` pouze pro jeden z výstupu vazby. 
+Hello předchozí příklad ukazuje, jak toouse hello funkce návratovou hodnotu tooprovide výstup tooa vazby, což je dosaženo pomocí hello speciální název parametru `$return`. (Toto je jediná hodnota podporovaná v jazycích, které mají návratovou hodnotu, například C#, JavaScript a F #.) Pokud funkce má několik vazeb výstup, použijte `$return` pouze pro jeden z vazby výstup hello. 
 
 ```json
 // excerpt of function.json
@@ -148,7 +148,7 @@ Předchozí příklad ukazuje, jak používat funkce návratovou hodnotu k posky
 }
 ```
 
-Příklady níže ukazují jak návratové typy se používají s výstup vazeb v C#, JavaScript a F #.
+Příklady Hello níže ukazují jak návratové typy se používají s výstup vazeb v C#, JavaScript a F #.
 
 ```cs
 // C# example: use method return value for output binding
@@ -171,7 +171,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 ```
 
 ```javascript
-// JavaScript: return a value in the second parameter to context.done
+// JavaScript: return a value in hello second parameter toocontext.done
 module.exports = function (context, input) {
     var json = JSON.stringify(input);
     context.log('Node.js script processed queue message', json);
@@ -189,9 +189,9 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>Vlastnost dataType vazby
 
-V rozhraní .NET použijte k definování datový typ pro vstupní data typy. Například použijte `string` k vytvoření vazby na text aktivační procedury fronty a bajtové pole přečíst jako binární.
+V rozhraní .NET použijte hello typy toodefine hello datový typ pro vstupní data. Například použijte `string` toobind toohello text aktivační procedury fronty a bajtové pole tooread jako binární.
 
-Pro jazyky, které jsou zadány dynamicky například JavaScript, použijte `dataType` vlastnost v definici vazby. Například pokud chcete číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
+Pro jazyky, které jsou zadány dynamicky například JavaScript, použijte hello `dataType` vlastnost v definici vazby hello. Například tooread hello obsahu požadavku HTTP v binárním formátu, použijte typ hello `binary`:
 
 ```json
 {
@@ -205,13 +205,13 @@ Pro jazyky, které jsou zadány dynamicky například JavaScript, použijte `dat
 Další možnosti pro `dataType` jsou `stream` a `string`.
 
 ## <a name="resolving-app-settings"></a>Řešení nastavení aplikace
-Jako osvědčený postup tajné klíče a připojovací řetězce musí být řízen pomocí nastavení aplikace, nikoli konfigurační soubory. To omezuje přístup na těchto tajných klíčů a umožňuje bezpečné uložení *function.json* v úložišti veřejné zdroj ovládacího prvku.
+Jako osvědčený postup tajné klíče a připojovací řetězce musí být řízen pomocí nastavení aplikace, nikoli konfigurační soubory. To omezuje přístup toothese tajných klíčů a umožňuje bezpečné toostore *function.json* v úložišti veřejné zdroj ovládacího prvku.
 
-Nastavení aplikace jsou užitečné také vždy, když chcete změnit konfiguraci na základě prostředí. Například v testovacím prostředí, můžete monitorovat jiný kontejner fronty nebo objekt blob úložiště.
+Nastavení aplikace jsou užitečné také vždy, když chcete toochange konfigurace na základě hello prostředí. Například v testovacím prostředí, můžete toomonitor jiný kontejner fronty nebo objekt blob úložiště.
 
-Nastavení aplikace jsou vyřešeny vždy, když hodnota je uzavřena mezi znaky procenta, jako například `%MyAppSetting%`. Všimněte si, že `connection` vlastnost triggerů a vazeb je zvláštní případ a automaticky vyřeší hodnoty jako nastavení aplikace. 
+Nastavení aplikace jsou vyřešeny vždy, když hodnota je uzavřena mezi znaky procenta, jako například `%MyAppSetting%`. Všimněte si, že hello `connection` vlastnost triggerů a vazeb je zvláštní případ a automaticky vyřeší hodnoty jako nastavení aplikace. 
 
-Následující příklad je fronty aktivační událost, která používá nastavení aplikace `%input-queue-name%` k definování fronty k aktivaci na.
+Hello následující příklad je fronty aktivační událost, která používá nastavení aplikace `%input-queue-name%` toodefine hello fronty tootrigger na.
 
 ```json
 {
@@ -229,9 +229,9 @@ Následující příklad je fronty aktivační událost, která používá nasta
 
 ## <a name="trigger-metadata-properties"></a>Metadata vlastnosti aktivační události
 
-Kromě datová poskytované aktivační událost (například zprávy ve frontě, která aktivuje funkci) zadejte mnoho aktivační události hodnoty dalších metadat. Tyto hodnoty lze použít jako vstupní parametry v C# a F # nebo vlastnosti na `context.bindings` objektu v jazyce JavaScript. 
+V přidání toohello datovou poskytované aktivační událost (například uvítací zprávu fronty, který aktivoval funkci) zadejte aktivační události mnoho dalších metadat hodnoty. Tyto hodnoty lze použít jako vstupní parametry v C# a F # nebo vlastnosti hello `context.bindings` objektu v jazyce JavaScript. 
 
-Například aktivační procedury fronty podporuje následující vlastnosti:
+Například aktivační procedury fronty podporuje hello následující vlastnosti:
 
 * QueueTrigger - aktivován obsah zprávy, pokud platný řetězec
 * DequeueCount
@@ -241,9 +241,9 @@ Například aktivační procedury fronty podporuje následující vlastnosti:
 * NextVisibleTime
 * Vlastnosti PopReceipt
 
-Podrobnosti o vlastnosti metadat pro jednotlivé aktivační události jsou popsané v odpovídajícího tématu. Je také dostupná v dokumentaci **integrací** karta portálu v **dokumentace** části níže oblast konfigurace vazby.  
+Podrobnosti o vlastnosti metadat pro jednotlivé aktivační události jsou popsané v hello odpovídající referenční téma. Dokumentace je také dostupná v hello **integrací** kartě hello portálu hello **dokumentace** části níže oblast konfigurace vazby hello.  
 
-Například vzhledem k tomu, že aktivační události objektu blob mají některé zpoždění, můžete použít aktivační procedury fronty ke spuštění funkce (viz [aktivační událost úložiště objektů Blob](functions-bindings-storage-blob.md#storage-blob-trigger). Zprávy ve frontě by obsahovat název souboru objektů blob k aktivaci na. Pomocí `queueTrigger` vlastnost metadat, toto chování můžete zadat všechny v konfiguraci, nikoli kódu.
+Například vzhledem k tomu, že aktivační události objektu blob mají některé zpoždění, můžete použít frontě aktivační události toorun funkce (viz [aktivační události objektu Blob úložiště](functions-bindings-storage-blob.md#storage-blob-trigger). uvítací zprávu fronty by obsahovat hello blob filename tootrigger na. Pomocí hello `queueTrigger` vlastnost metadat, toto chování můžete zadat všechny v konfiguraci, nikoli kódu.
 
 ```json
   "bindings": [
@@ -263,15 +263,15 @@ Například vzhledem k tomu, že aktivační události objektu blob mají někte
   ]
 ```
 
-Metadata vlastnosti aktivační události lze také v *vazby výraz* pro jiné vazbu, jak je popsáno v následující části.
+Metadata vlastnosti aktivační události lze také v *vazby výraz* pro jiné vazbu jako následující části popisují hello.
 
 ## <a name="binding-expressions-and-patterns"></a>Výrazy vazba a vzory
 
-Jedním z nejúčinnějších funkce triggerů a vazeb je *vazby výrazy*. V rámci vaší vazba, můžete definovat vzor výrazy, které lze poté použít v jiné vazby nebo kódu. Aktivační událost metadata mohou sloužit také v vazby výrazy, jak je vidět v ukázce v předchozí části.
+Jedním z nejúčinnějších funkce hello triggerů a vazeb je *vazby výrazy*. V rámci vaší vazba, můžete definovat vzor výrazy, které lze poté použít v jiné vazby nebo kódu. Aktivační událost metadata mohou sloužit také v vazby výrazy, jak je vidět v ukázce hello v předcházející části hello.
 
-Předpokládejme například, kterou chcete změnit velikost bitové kopie v kontejneru konkrétní objektu blob úložiště, podobně jako **Úprava velikosti obrázku** šablony v **novou funkci** stránky. Přejděte na **novou funkci** -> jazyka **C#** -> scénář **ukázky** -> **ImageResizer CSharp**. 
+Předpokládejme například, že chcete tooresize bitové kopie v kontejneru konkrétní objektu blob úložiště, podobně jako toohello **Úprava velikosti obrázku** šablony v hello **novou funkci** stránky. Přejděte příliš**novou funkci** -> jazyka **C#** -> scénář **ukázky** -> **ImageResizer CSharp**. 
 
-Tady je *function.json* definice:
+Tady je hello *function.json* definice:
 
 ```json
 {
@@ -294,10 +294,10 @@ Tady je *function.json* definice:
 }
 ```
 
-Všimněte si, že `filename` parametr se používá v definici aktivační události objektu blob jak objektu blob výstup vazby. Tento parametr můžete použít také v kódu funkce.
+Všimněte si, že hello `filename` parametr se používá v definici objektu blob aktivace hello jak hello blob výstup vazby. Tento parametr můžete použít také v kódu funkce.
 
 ```csharp
-// C# example of binding to {filename}
+// C# example of binding too{filename}
 public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
 {
     log.Info($"Blob trigger processing: {filename}");
@@ -310,7 +310,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, TraceWr
 
 
 ### <a name="random-guids"></a>Náhodné identifikátory GUID
-Azure Functions nabízí pohodlí syntaxe pro generování identifikátory GUID v vazby, prostřednictvím `{rand-guid}` vazby výraz. Následující příklad používá ke generování objektů blob jedinečný název toto: 
+Azure Functions nabízí pohodlí syntaxe pro generování identifikátory GUID v vazby, prostřednictvím hello `{rand-guid}` vazby výraz. Hello následující příklad používá tento toogenerate název jedinečný objektů blob: 
 
 ```json
 {
@@ -323,7 +323,7 @@ Azure Functions nabízí pohodlí syntaxe pro generování identifikátory GUID 
 
 ### <a name="current-time"></a>Aktuální čas
 
-Můžete použít výraz vazby `DateTime`, který přeloží na `DateTime.UtcNow`.
+Můžete použít výraz vazby hello `DateTime`, který přeloží příliš`DateTime.UtcNow`.
 
 ```json
 {
@@ -334,11 +334,11 @@ Můžete použít výraz vazby `DateTime`, který přeloží na `DateTime.UtcNow
 }
 ```
 
-## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>Vytvoření vazby na vlastní vstupní vlastnosti ve výrazu vazby
+## <a name="bind-toocustom-input-properties-in-a-binding-expression"></a>Vytvoření vazby vlastnosti vstupu toocustom ve výrazu vazby
 
-Vazba výrazy můžete taky odkazovat vlastnosti, které jsou definovány v datové části aktivační událost sám sebe. Například můžete dynamicky vázat na soubor úložiště objektů blob ze součástí webhook, jehož název souboru.
+Vazba výrazy můžete taky odkazovat vlastnosti, které jsou definovány v datové části hello aktivační událost, sám sebe. Například můžete soubor úložiště toodynamically vazby tooa objektů blob z uvedených v webhook, jehož název souboru.
 
-Například následující *function.json* používá vlastnost s názvem `BlobName` z datové části aktivační události:
+Například hello následující *function.json* používá vlastnost s názvem `BlobName` z datové části hello aktivační události:
 
 ```json
 {
@@ -365,7 +365,7 @@ Například následující *function.json* používá vlastnost s názvem `BlobN
 }
 ```
 
-K tomu v C# a F #, je nutné zadat objektů POCO, která definuje pole, která bude deserializovat v datové části aktivační události.
+tooaccomplish tento v C# a F #, je nutné definovat objektů POCO, definující hello pole, která bude deserializovat v datové části hello aktivační události.
 
 ```csharp
 using System.Net;
@@ -387,7 +387,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-V jazyce JavaScript se provádí automaticky deserializaci JSON a vlastností lze používat přímo.
+V jazyce JavaScript se provádí automaticky deserializaci JSON a hello vlastnosti můžete používat přímo.
 
 ```javascript
 module.exports = function (context, info) {
@@ -407,10 +407,10 @@ module.exports = function (context, info) {
 
 ## <a name="configuring-binding-data-at-runtime"></a>Konfigurace vazba dat za běhu
 
-V jazyce C# a jinými jazyky rozhraní .NET, můžete použít imperativní vazby vzoru oproti deklarativní vazeb v *function.json*. Imperativní vazba je užitečné, když vázané parametry muset počítaný v době běhu spíše než návrhu. Další informace najdete v tématu [vazby za běhu prostřednictvím imperativní vazby](functions-reference-csharp.md#imperative-bindings) v referenci vývojáře jazyka C#.
+V jazyce C# a jinými jazyky rozhraní .NET, můžete použít vzor imperativní vazby jako názvem na rozdíl od toohello deklarativní vazeb v *function.json*. Imperativní vazba je užitečné, když vázané parametry potřebovat toobe počítaný v době běhu spíše než návrhu. Další, najdete v části toolearn [vazby za běhu prostřednictvím imperativní vazby](functions-reference-csharp.md#imperative-bindings) v referenční informace pro vývojáře hello C#.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o konkrétní vazbu najdete v následujících článcích:
+Další informace o konkrétní vazbu najdete v části hello následující články:
 
 - [HTTP a webhooky](functions-bindings-http-webhook.md)
 - [Časovač](functions-bindings-timer.md)

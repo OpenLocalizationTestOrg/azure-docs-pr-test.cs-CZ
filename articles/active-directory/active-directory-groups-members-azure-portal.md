@@ -1,6 +1,6 @@
 ---
-title: "Spravovat členy skupiny ve službě Azure Active Directory | Microsoft Docs"
-description: "Postup přidání nebo odebrání uživatelů a zařízení ze skupiny ve službě Azure Active Directory"
+title: "aaaManage hello členy skupiny ve službě Azure Active Directory | Microsoft Docs"
+description: "Jak tooadd nebo odebrat uživatele a zařízení ze skupiny ve službě Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4cb16ee63828003da251423a04736f7174dd4896
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Správa členství ve skupině pro uživatele v klientovi služby Azure Active Directory
-Tento článek vysvětluje, jak spravovat členy skupiny ve službě Azure Active Directory (Azure AD).
+Tento článek vysvětluje, jak toomanage hello členy skupiny ve službě Azure Active Directory (Azure AD).
 
-## <a name="how-do-i-find-the-members-and-manage-them"></a>Jak najít členy a spravovat?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="how-do-i-find-hello-members-and-manage-them"></a>Jak najít hello členy a spravovat?
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-groups-members-azure-portal/search-user-management.png)
-3. Na **uživatelů a skupin** vyberte **všechny skupiny**.
+3. Na hello **uživatelů a skupin** vyberte **všechny skupiny**.
 
-   ![Otevření okna skupiny](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
-4. Na **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
-5. Na **skupiny - *groupname***  vyberte **členy**.
+   ![Okno skupiny otevírání hello](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
+4. Na hello **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
+5. Na hello **skupiny - *groupname***  vyberte **členy**.
 
-   ![Otevření okna členy](./media/active-directory-groups-members-azure-portal/view-group-members.png)
-6. Chcete-li přidat členy do skupiny, na **skupiny - Členové** vyberte **přidat členy**.
+   ![Otevírání hello členy okno](./media/active-directory-groups-members-azure-portal/view-group-members.png)
+6. tooadd členy toohello skupiny, na hello **skupiny - Členové** vyberte **přidat členy**.
 
    ![Přidat členy – příkaz](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
-7. Na **členy** okně, vyberte jeden nebo více uživatelů nebo zařízení přidáte do skupiny a vyberte **vyberte** tlačítko v dolní části okna je přidejte do skupiny. **Uživatele** pole filtry zobrazení na základě shody zadání vašeho jakékoliv části názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
-8. Možnost odebrání členů ze skupiny, na **skupiny - Členové** okně vyberte člena.
-9. Na ***membername*** okně, vyberte **odebrat** příkazů a potvrďte svou volbu příkazového řádku.
+7. Na hello **členy** okně, vyberte jednu nebo více uživatelů nebo zařízení tooadd toohello skupinu a vyberte hello **vyberte** tlačítko hello dolní části okna tooadd hello je toohello skupiny. Hello **uživatele** pole filtry hello zobrazení na základě shody se vaše vstupní tooany součástí názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
+8. tooremove členy ze skupiny hello na hello **skupiny - Členové** okně vyberte člena.
+9. Na hello ***membername*** okně, vyberte hello **odebrat** příkazů a potvrďte svou volbu příkazového řádku hello.
 
    ![odebrat členy příkaz](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
-10. Po dokončení změn členy do skupiny, vyberte **Uložit**.
+10. Po dokončení změn členy hello skupiny, vyberte **Uložit**.
 
 ## <a name="additional-information"></a>Další informace
 Následující články poskytují další informace o službě Azure Active Directory.

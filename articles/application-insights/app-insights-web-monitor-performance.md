@@ -1,5 +1,5 @@
 ---
-title: "Monitorovat stav a využití pomocí Application Insights vaší aplikace"
+title: "aaaMonitor stavu a využití pomocí služby Application Insights vaší aplikace"
 description: "Začínáme s Application Insights. Analýza využití, dostupnosti a výkonu místního nebo aplikace Microsoft Azure."
 services: application-insights
 documentationcenter: 
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2015
 ms.author: bwren
-ms.openlocfilehash: 5b7b1f4a53cd2624ee8e2ab684ba6ba63252674f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9230a6e65e5afb00c36122ff1d1de01ba19cd7f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
 
-Ujistěte se, že aplikace je výkon na dobré a rychle zjistěte informace o případných selhání. [Application Insights] [ start] bude vás informovat o žádné problémy s výkonem a výjimkami a můžete najít a diagnostikovat základní příčiny.
+Ujistěte se, že aplikace je výkon na dobré a rychle zjistěte informace o případných selhání. [Application Insights] [ start] bude vás informovat o žádné problémy s výkonem a výjimkami a pomáhají najít a diagnostikovat hello hlavní příčiny.
 
 Application Insights můžete monitorovat webové aplikace Java a ASP.NET a služby, služby WCF. Mohou být hostovaná místně, virtuálními počítači, nebo jako weby Microsoft Azure. 
 
-Na straně klienta může trvat Application Insights telemetrie z webových stránek a širokou škálu zařízení se systémy iOS, Android a aplikací pro Windows Store.
+Na straně klienta hello Application Insights může trvat telemetrie z webových stránek a širokou škálu zařízení se systémy iOS, Android a aplikací pro Windows Store.
 
 >[!Note]
-> Provedli jsme nové prostředí pro vyhledání pomalé, provádění stránky ve vaší webové aplikaci k dispozici. Pokud nemáte přístup k němu, povolení konfigurací možnosti preview s [Preview okno](app-insights-previews.md). Přečtěte si informace o toto nové prostředí v [najít a opravit kritická místa výkonu s interaktivní zkoumání výkonu](#Find-and-fix-performance-bottlenecks-with-an-interactive-Performance-investigation).
+> Provedli jsme nové prostředí pro vyhledání pomalé, provádění stránky ve vaší webové aplikaci k dispozici. Pokud nemáte přístup tooit, povolte ji tak, že konfigurace možností preview s hello [Preview okno](app-insights-previews.md). Přečtěte si informace o toto nové prostředí v [najít a opravit kritická místa výkonu s hello interaktivní výkon šetření](#Find-and-fix-performance-bottlenecks-with-an-interactive-Performance-investigation).
 
 ## <a name="setup"></a>Nastavení monitorování výkonu
-Pokud jste ještě nepřidali Application Insights do projektu (to znamená, pokud nemá soubor ApplicationInsights.config), vyberte jednu z těchto způsobů, jak začít:
+Pokud jste ještě nepřidali Application Insights tooyour projektu (to znamená, pokud nemá soubor ApplicationInsights.config), vyberte jednu z těchto způsobů tooget spuštění:
 
 * [Webové aplikace ASP.NET](app-insights-asp-net.md)
   * [Přidat monitorování výjimek](app-insights-asp-net-exceptions.md)
@@ -41,37 +41,37 @@ Pokud jste ještě nepřidali Application Insights do projektu (to znamená, pok
   * [Přidat monitorování závislostí](app-insights-java-agent.md)
 
 ## <a name="view"></a>Zkoumání metriky výkonu
-V [portálu Azure](https://portal.azure.com), procházejte do zdroje Application Insights, které jste nastavili pro vaši aplikaci. V okně Přehled zobrazuje data výkonu základní:
+V [hello portál Azure](https://portal.azure.com), procházet toohello prostředek Application Insights, které jste nastavili pro vaši aplikaci. okno Přehled Hello ukazuje údaje o výkonu základní:
 
-Klikněte na libovolný graf zobrazíte další podrobnosti a zobrazit výsledky delší dobu. Například klikněte na dlaždici požadavků a pak vyberte časové rozmezí:
+Klikněte na libovolný graf toosee podrobněji a toosee výsledky delší dobu. Například klikněte na dlaždici hello požadavků a pak vyberte časový interval:
 
-![Proklikejte se k více dat a vyberte časový rozsah](./media/app-insights-web-monitor-performance/appinsights-48metrics.png)
+![Klikněte na tlačítko prostřednictvím toomore dat a vyberte časový rozsah](./media/app-insights-web-monitor-performance/appinsights-48metrics.png)
 
-Klikněte na graf vybrat metriky, které se zobrazí, nebo přidejte nový graf a vyberte jeho metriky:
+Klikněte na graf toochoose metriky, které se zobrazí, nebo přidejte nový graf a vyberte jeho metriky:
 
-![Klikněte na graf vybrat metriky](./media/app-insights-web-monitor-performance/appinsights-61perfchoices.png)
+![Klikněte na tlačítko metriky toochoose grafu](./media/app-insights-web-monitor-performance/appinsights-61perfchoices.png)
 
 > [!NOTE]
-> **Zrušte zaškrtnutí políčka všechny metriky** zobrazíte úplné výběru, která je k dispozici. Metriky lze rozdělit do skupin; Pokud je vybraná kteréhokoli člena skupiny, zobrazí se pouze ostatní členové této skupiny.
+> **Zrušte zaškrtnutí políčka všechny metriky hello** hello toosee úplné se výběru, která je k dispozici. metriky Hello spadají do skupiny; Pokud je vybraná kteréhokoli člena skupiny, objeví jenom tehdy hello ostatní členové této skupiny.
 
 ## <a name="metrics"></a>Jaké jsou všechny střední? Dlaždice výkonu a sestavy
-Existují různé metriky výkonu, které můžete získat. Začněme s těmi, které se ve výchozím nastavení v okně aplikace.
+Existují různé metriky výkonu, které můžete získat. Začněme s těmi, které se ve výchozím nastavení v okně aplikace hello.
 
 ### <a name="requests"></a>Požadavky
-Počet požadavků HTTP přijaté v zadaném období. Výsledky porovnejte s výsledky v jiných sestavách zobrazíte chování vaší aplikace jako zatížení se liší.
+Hello počet požadavků HTTP přijaté v zadaném období. Toto porovnání s výsledky hello na jiné sestavy toosee chování vaší aplikace jako zatížení hello liší.
 
 Požadavky HTTP zahrnují všechny požadavky GET nebo POST pro stránky, data a bitové kopie.
 
-Klikněte na dlaždici získat počty pro konkrétní adresy URL.
+Klikněte na hello dlaždice tooget počty pro konkrétní adresy URL.
 
 ### <a name="average-response-time"></a>Průměrná doba odezvy
-Měří čas mezi zadání vaší aplikace a odpovědi nevrátila webového požadavku.
+Míry hello čas mezi zadáním vaše aplikace a hello odpověď nevrátila webového požadavku.
 
-Body zobrazit klouzavý průměr. Pokud je celá řada požadavků, mohou existovat některé, který odchylují od průměr bez zřejmé ve špičce nebo ponořit v grafu.
+body Hello zobrazit klouzavý průměr. Pokud je celá řada požadavků, mohou existovat některé, který odchylují od hello průměr bez zřejmé ve špičce nebo ponořit v grafu hello.
 
-Podívejte se na neobvyklé vrcholů. Obecně platí očekávané doby odezvy roste s nárůstem požadavky. Pokud zvýšení nesoustředil příliš velký, může aplikace nedosáhli limitu prostředků, například CPU, kapacitu služby, kterou používá.
+Podívejte se na neobvyklé vrcholů. Obecně platí očekávejte toorise čas odpovědi s nárůstem požadavky. Pokud zvýšení hello nesoustředil příliš velký, může být aplikace nedosáhli limitu prostředků, jako je kapacita procesoru nebo hello služby, kterou používá.
 
-Klikněte na dlaždici získat časy pro konkrétní adresy URL.
+Klikněte na tlačítko hello dlaždice tooget časy pro konkrétní adresy URL.
 
 ![](./media/app-insights-web-monitor-performance/appinsights-42reqs.png)
 
@@ -85,70 +85,70 @@ Zobrazuje, které požadavky může být nutné optimalizace výkonu.
 
 Počet požadavků, které vyvolala nezachycená výjimek.
 
-Klikněte na dlaždici pro podrobné informace o specifických chybách a vyberte individuální žádosti zobrazíte její podrobnosti. 
+Klikněte hello dlaždice toosee hello podrobnosti o konkrétní selhání a vyberte individuální žádosti toosee její podrobnosti. 
 
 Pro jednotlivé kontroly se uchovávají pouze reprezentativní vzorek chyb.
 
 ### <a name="other-metrics"></a>Další metriky
-Pokud chcete zjistit, co nastavit další metriky můžete zobrazit, klikněte na graf a poté zrušte všechny metriky zobrazíte kompletní k dispozici. Viz definice jednotlivé metriky kliknutím (i).
+toosee jaké další metriky, můžete zobrazit, klikněte na graf a potom zrušte výběr všech hello metriky toosee hello veškerou dostupnou sadu. Klikněte na tlačítko (i) toosee definice jednotlivé metriky.
 
-![Zrušte výběr všechny metriky zobrazíte celé sady](./media/app-insights-web-monitor-performance/appinsights-62allchoices.png)
+![Zrušte výběr všech metriky toosee hello celé sady](./media/app-insights-web-monitor-performance/appinsights-62allchoices.png)
 
-Výběr všech metrika zakáže ostatní, které se nesmí objevit na stejném grafu.
+Výběr všechny metriky zakáže hello ostatní, které se nesmí objevit na stejném grafu hello.
 
 ## <a name="set-alerts"></a>Nastavení upozornění
-Mají být informování tímto e-mailu neobvyklou hodnot všechny metriky, přidáte oznámení. Můžete buď k odeslání e-mailu pro účet správce, nebo na konkrétní e-mailové adresy.
+toobe oznámení e-mailem neobvyklou hodnot všechny metriky přidat oznámení. Můžete buď toosend hello e-mailu toohello účet správce, nebo toospecific e-mailové adresy.
 
 ![](./media/app-insights-web-monitor-performance/appinsights-413setMetricAlert.png)
 
-Nastavte prostředků než ostatní vlastnosti. Nemáte zvolte zdroje, testu webu, pokud chcete nastavit výstrahy na metriky výkonu a využití.
+Nastavte další vlastnosti prostředku hello před hello. Hello testu webu prostředky nemáte zvolte, pokud chcete generovat výstrahy tooset na výkon nebo metriky využití.
 
-Pečlivě si uvědomit a jednotky, ve kterých budete vyzváni k zadání prahovou hodnotu.
+Být opatrní toonote hello jednotky, ve kterých se dotaz tooenter hello prahovou hodnotu.
 
-*Tlačítko Přidat oznámení se nezobrazí.* -Je tato skupina účet, ke které máte oprávnění jen pro čtení? Obraťte se na správce účtu.
+*Výstrahy tlačítko Přidat hello se nezobrazí.* -Jedná toowhich účet skupiny mají oprávnění jen pro čtení? Zeptejte se správce účtu hello.
 
 ## <a name="diagnosis"></a>Diagnostika problémů
 Zde je několik tipů pro hledání a diagnostice problémů s výkonem.
 
-* Nastavit [webové testy] [ availability] výstrahy, pokud váš web z umístění ocitne mimo provoz nebo reaguje pomalu nebo nesprávně. 
-* Porovnejte počtu žádostí o s další metriky pro případ selhání nebo pomalé odezvy se vztahují k načtení.
-* [Vložení a vyhledávací příkazy trasování] [ diagnostic] ve svém kódu pro pomoci přesně určit problémy.
+* Nastavit [webové testy] [ availability] toobe zobrazí výstraha, pokud váš web z umístění ocitne mimo provoz nebo reaguje pomalu nebo nesprávně. 
+* Porovnání počtu žádostí o hello s další metriky toosee, pokud jsou související tooload selhání nebo pomalé odezvy.
+* [Vložení a vyhledávací příkazy trasování] [ diagnostic] v váš kód toohelp přesné problémy.
 * Monitorování webové aplikace v operaci s [živý datový proud metriky][livestream].
-* Zaznamenat stav aplikace .net s [ladicí program snímku][snapshot].
+* Zaznamenat stav hello aplikace .net s [ladicí program snímku][snapshot].
 
 ## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>Najít a opravit kritická místa výkonu s šetření interaktivní výkon
 
-Nové šetření interaktivní výkonu Application Insights můžete použít k vyhledání oblasti vaší webové aplikace, které jsou zpomalení celkový výkon. Můžete rychle najít konkrétní stránky, které jsou zpomalení a použít [profilování nástroj](app-insights-profiler.md) chcete zobrazit, pokud existuje korelace mezi tyto stránek.
+Oblasti lze použít hello nové Application Insights interaktivní výkon šetření toolocate vaší webové aplikace, které jsou zpomalení celkový výkon. Můžete rychle najít konkrétní stránky, které jsou zpomaluje a použijte hello [profilování nástroj](app-insights-profiler.md) toosee, pokud existuje korelace mezi tyto stránek.
 
 ### <a name="create-a-list-of-slow-performing-pages"></a>Vytvoří seznam pomalé provádění stránky 
 
-Prvním krokem pro hledání problémy s výkonem je získat seznam pomalé odpovídá stránky. Následující kopie obrazovky ukazuje, jak získat seznam potenciální na stránkách prošetřily pomocí okno výkon. Rychle uvidíte z této stránky, že došlo zpomalování doby odezvy aplikace v přibližně 6:00 PM a znovu přibližně 22: 00. Můžete také zjistit, že zákazník nebo podrobnosti o operaci GET měl některé dlouhotrvající operace s dobou odezvy střední 507.05 milisekundách. 
+prvním krokem Hello naleznou problémy s výkonem je tooget seznam hello pomalé zpracování stránky. úvodní obrazovka snímek níže ukazuje, jak pomocí hello výkonu okno tooget seznam další potenciální tooinvestigate stránky. Rychle uvidíte z této stránky, že došlo zpomalování doby odezvy hello aplikace hello v přibližně 6:00 PM a znovu přibližně 22: 00. Můžete také zjistit, že operace zákazníka nebo podrobnosti o získání hello měl některé dlouho běžící operace s střední odezvu 507.05 milisekund. 
 
 ![Interaktivní výkon statistiky aplikace](./media/app-insights-web-monitor-performance/performance1.png)
 
 ### <a name="drill-down-on-specific-pages"></a>Přejděte na konkrétní stránky
 
-Jakmile máte snímek výkon vaší aplikace, můžete získat podrobnosti o konkrétních zpomalit provádění operací. Klikněte na všechny operace v seznamu a zobrazit podrobnosti, jak je uvedeno níže. Z grafu se zobrazí, pokud byl výkon podle závislost. Můžete také zjistit, kolik uživatelů došlo různé doby odezvy. 
+Jakmile máte snímek výkon vaší aplikace, můžete získat podrobnosti o konkrétních zpomalit provádění operací. Klikněte na všechny operace v hello seznamu toosee hello podrobnosti jak je uvedeno níže. Z hello grafu se zobrazí, pokud byl hello výkonu podle závislost. Uvidíte také kolik uživatelů zkušeného hello různé doby odezvy. 
 
 ![Okna operations Statistika aplikací](./media/app-insights-web-monitor-performance/performance5.png)
 
 ### <a name="drill-down-on-a-specific-time-period"></a>Přejděte na určitém časovém období
 
-Po zjištění bod v čase k prozkoumání, podrobnostem a i podívejte se na konkrétní operace, které mohly způsobit zpomalování výkonu. Po kliknutí na tlačítko k určitému bodu v čase získání podrobností o stránce jak je uvedeno níže. V příkladu níže můžete zobrazit činnosti uvedené pro dané časové období spolu s kódy odpovědí serveru a doba trvání operace. Máte také adresu url pro otevření pracovní položky sady TFS, pokud je potřeba odesílat tyto informace váš vývojový tým.
+Poté, co jste našli bod v časové tooinvestigate, k podrobnostem i další toolook v hello konkrétních operací, které mohly způsobit zpomalování výkonu hello. Po kliknutí na tlačítko k určitému bodu v čase získáte podrobnosti o hello hello stránky, jak je uvedeno níže. V hello najdete příklad níže uvedené pro dané časové období spolu s kódy odpovědí serveru hello a doba trvání operace hello operations hello. Adresa url hello máte také můžete otevřít pracovní položky sady TFS, pokud potřebujete toosend tato informace tooyour vývojový tým.
 
 ![Application Insights časovém intervalu](./media/app-insights-web-monitor-performance/performance2.png)
 
 ### <a name="drill-down-on-a-specific-operation"></a>Přejděte na konkrétní operaci
 
-Po zjištění bod v čase k prozkoumání, podrobnostem a i podívejte se na konkrétní operace, které mohly způsobit zpomalování výkonu. Klikněte na operace ze seznamu a zobrazit podrobnosti operace, jak je uvedeno níže. V tomto příkladu uvidíte, že operace se nezdařila a Application Insights poskytl podrobnosti, které aplikace vyvolala výjimku. V tomto okně znovu, můžete snadno vytvořit pracovní položky sady TFS.
+Poté, co jste našli bod v časové tooinvestigate, k podrobnostem i další toolook v hello konkrétních operací, které mohly způsobit zpomalování výkonu hello. Klikněte na operace z hello seznamu toosee hello podrobnosti hello operace, jak je uvedeno níže. V tomto příkladu, které se zobrazí hello operace se nezdařila, a Application Insights poskytl hello podrobnosti o hello aplikace hello výjimka vyvolala. V tomto okně znovu, můžete snadno vytvořit pracovní položky sady TFS.
 
 ![Application Insights operaci okno](./media/app-insights-web-monitor-performance/performance3.png)
 
 
 ## <a name="next"></a>Další kroky
-[Webové testy] [ availability] -mít webové požadavky odeslané do vaší aplikace v pravidelných intervalech z po celém světě.
+[Webové testy] [ availability] -webových požadavků odeslali tooyour aplikace v pravidelných intervalech z kolem hello, world.
 
-[Zaznamenání a hledání diagnostické trasování] [ diagnostic] – vložení trasovacího volání a analyzovat výsledky ke kotvícímu bodu problémy.
+[Zaznamenání a hledání diagnostické trasování] [ diagnostic] – vložení trasovacího volání a analyzovat problémy toopinpoint výsledky hello.
 
 [Sledování využití] [ usage] – zjistěte, jak lidé používat vaši aplikaci.
 

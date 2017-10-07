@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace Docker Python a PostgreSQL v Azure | Microsoft Docs"
-description: "Další informace o získání a Docker Python aplikaci v Azure, funguje s připojením k databázi PostgreSQL."
+title: "aaaBuild Docker Pythonu a PostgreSQL webové aplikace v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooget Docker Python aplikace v Azure funguje s připojení tooa PostgreSQL databáze."
 services: app-service\web
 documentationcenter: python
 author: berndverst
@@ -15,23 +15,23 @@ ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: e70f85a1eb4a6e1a81e0ca4fae228ca97deca6fe
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e594ef9ec8c04ef2bf725e5f998691f3fb8cf815
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Docker Python a PostgreSQL v Azure
 
-Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby. Tento kurz ukazuje, jak vytvořit základní webovou aplikaci Docker Python v Azure. Tuto aplikaci budete připojit k databázi PostgreSQL. Když jste hotovi, budete mít k aplikaci Python Flask systémem v rámci kontejner Docker [Azure App Service Web Apps](app-service-web-overview.md).
+Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby. Tento kurz ukazuje, jak toocreate základní Python Docker webové aplikace v Azure. Budete připojit databázi PostgreSQL tooa této aplikace. Když jste hotovi, budete mít k aplikaci Python Flask systémem v rámci kontejner Docker [Azure App Service Web Apps](app-service-web-overview.md).
 
 ![Docker Python Flask aplikace v Azure App Service](./media/app-service-web-tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
-Postupujte podle těchto kroků v systému macOS. Pokyny pro Linux a Windows jsou stejné ve většině případů, ale rozdíly nejsou popsané v tomto kurzu.
+V systému macOS můžete provést následující postup hello. Pokyny pro Linux a Windows jsou stejné hello ve většině případů, ale hello rozdíly nejsou popsané v tomto kurzu.
  
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete v tomto kurzu:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 1. [Nainstalovat Python](https://www.python.org/downloads/).
@@ -42,38 +42,38 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>Testování místní instalaci PostgreSQL a vytvořit databázi
 
-Otevřete okno terminálu a spusťte `psql postgres` pro připojení k místní server PostgreSQL.
+Otevřete okno terminálu hello a spusťte `psql postgres` tooconnect tooyour místní PostgreSQL server.
 
 ```bash
 psql postgres
 ```
 
-Pokud připojení úspěšné, je databáze PostgreSQL spuštěna. Pokud ne, ujistěte se, zda je spuštěná místní databázi PostgresQL podle kroků v [stáhne - PostgreSQL základní distribuční](https://www.postgresql.org/download/).
+Pokud připojení úspěšné, je databáze PostgreSQL spuštěna. Pokud ne, ujistěte se, zda je spuštěná místní databázi PostgresQL podle následujících kroků hello v [stáhne - PostgreSQL základní distribuční](https://www.postgresql.org/download/).
 
 Vytvoření databáze názvem *eventregistration* a nastavení uživatele samostatné databáze s názvem *manager* heslem *supersecretpass*.
 
 ```bash
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE eventregistration toomanager;
 ```
-Typ *\q* ukončíte klienta PostgreSQL. 
+Typ *\q* tooexit hello PostgreSQL klienta. 
 
 <a name="step2"></a>
 
 ## <a name="create-local-python-flask-application"></a>Vytvořit místní aplikace Python Flask
 
-V tomto kroku nastavíte místní projekt Python Flask.
+V tomto kroku nastavíte místní projekt Python Flask hello.
 
-### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+### <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Otevřete okno terminálu a `CD` do pracovního adresáře.  
+Hello otevřete okno terminálu, a `CD` tooa pracovní adresář.  
 
-Spusťte následující příkazy a klonovat úložiště v ukázkové přejít na *0,1 initialapp* verzi.
+Hello spusťte následující příkazy tooclone hello Ukázka úložiště a přejděte toohello *0,1 initialapp* verzi.
 
 ```bash
 git clone https://github.com/Azure-Samples/docker-flask-postgres.git
@@ -83,12 +83,12 @@ git checkout tags/0.1-initialapp
 
 Tato ukázka úložiště obsahuje [Flask](http://flask.pocoo.org/) aplikace. 
 
-### <a name="run-the-application"></a>Spuštění aplikace
+### <a name="run-hello-application"></a>Spuštění aplikace hello
 
 > [!NOTE] 
-> Později tento proces zjednodušit podle budovy kontejner Docker pro použití s produkční databázi.
+> Později tento proces zjednodušit podle budovy toouse kontejner Docker s hello produkční databázi.
 
-Nainstalujte požadované balíčky a spusťte aplikaci.
+Instalace hello požadované balíčky a spuštění aplikace hello.
 
 ```bash
 pip install virtualenv
@@ -100,31 +100,31 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-Po úplným načtením aplikace se zobrazí podobná následující zpráva:
+Když je aplikace hello úplným načtením, uvidíte něco podobné toohello následující zprávou:
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
  * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C tooquit)
 ```
 
-Přejděte do http://127.0.0.1:5000 v prohlížeči. Klikněte na tlačítko **zaregistrovat!** a vytvoření zkušebního uživatele.
+Přejděte toohttp://127.0.0.1:5000 v prohlížeči. Klikněte na tlačítko **zaregistrovat!** a vytvoření zkušebního uživatele.
 
 ![Aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 
-Ukázkovou aplikaci Flask ukládá data uživatele v databázi. Pokud jste úspěšné při registraci uživatele, je vaše aplikace zápisu dat do místní databázi PostgreSQL.
+Hello Flask ukázkové aplikace ukládá data uživatele v databázi hello. Pokud jste úspěšné při registraci uživatele, aplikace je zápis dat toohello místní databázi PostgreSQL.
 
-Kdykoli zastavit Flask server kdykoli, zadejte Ctrl + C v terminálu. 
+server Flask hello toostop v kdykoli, zadejte Ctrl + C hello terminálu. 
 
 ## <a name="create-a-production-postgresql-database"></a>Vytvořit databázi PostgreSQL výroby
 
-V tomto kroku vytvoříte databázi PostgreSQL v Azure. Při nasazení aplikace do Azure, použije tuto databázi cloudu.
+V tomto kroku vytvoříte databázi PostgreSQL v Azure. Pokud je vaše aplikace nasazené tooAzure, použije tuto databázi cloudu.
 
-### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+### <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Nyní se chystáte použít 2.0 rozhraní příkazového řádku Azure k vytvoření prostředky potřebné k hostování vaší aplikace Python ve službě Azure App Service.  Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce. 
+Jste nyní probíhající toouse hello Azure CLI 2.0 toocreate hello prostředky potřebné toohost aplikace Python ve službě Azure App Service.  Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů. 
 
 ```azurecli
 az login 
@@ -132,29 +132,29 @@ az login
    
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte pomocí příkazu [az group create](/cli/azure/group#create) [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). 
+Vytvoření [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) s hello [vytvořit skupinu az](/cli/azure/group#create). 
 
 [!INCLUDE [Resource group intro](../../includes/resource-group.md)]
 
-Následující příklad vytvoří skupinu prostředků v oblasti západní USA:
+Hello následující příklad vytvoří skupinu prostředků v oblasti západní USA hello:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West US"
 ```
 
-Použití [az služby App Service seznamu umístění](/cli/azure/appservice#list-locations) příkaz rozhraní příkazového řádku Azure k seznamu dostupných umístění.
+Použití hello [míst seznamu služby App Service az](/cli/azure/appservice#list-locations) rozhraní příkazového řádku Azure příkaz toolist dostupná umístění.
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
-Vytvoření serveru PostgreSQL s [az postgres server vytvořit](/cli/azure/documentdb#create) příkaz.
+Vytvoření serveru PostgreSQL s hello [az postgres server vytvořit](/cli/azure/documentdb#create) příkaz.
 
-V následujícím příkazu nahraďte název jedinečný serveru  *\<postgresql_name >* zástupný symbol a uživatel název  *\<admin_username >* zástupný symbol. Název serveru slouží jako součást váš koncový bod PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže název musí být jedinečný v rámci všech serverech v Azure. Uživatelské jméno je pro uživatelský účet správce počáteční databáze. Zobrazí se výzva k vyberte heslo pro tohoto uživatele.
+V hello následující příkaz, nahraďte název jedinečný server hello  *\<postgresql_name >* zástupný symbol a uživatelské jméno pro hello  *\<admin_username >* zástupný symbol . název serveru Hello se používá jako součást váš koncový bod PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže název hello musí toobe jedinečné ve všech serverech v Azure. Hello uživatelské jméno je hello počáteční databáze správce uživatelského účtu. Jste výzvami toopick heslo pro tohoto uživatele.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>
 ```
 
-Při vytvoření databáze Azure PostgreSQL server pro rozhraní příkazového řádku Azure obsahuje informace o podobně jako v následujícím příkladu:
+Při vytvoření hello Azure databáze pro PostgreSQL server je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:
 
 ```json
 {
@@ -180,15 +180,15 @@ Při vytvoření databáze Azure PostgreSQL server pro rozhraní příkazového 
 }
 ```
 
-### <a name="create-a-firewall-rule-for-the-azure-database-for-postgresql-server"></a>Vytvoření pravidla firewallu pro databázi Azure pro PostgreSQL serveru
+### <a name="create-a-firewall-rule-for-hello-azure-database-for-postgresql-server"></a>Vytvořte pravidlo brány firewall pro hello Azure databáze PostgreSQL serveru
 
-Spusťte následující příkaz rozhraní příkazového řádku Azure pro povolení přístupu k databázi z všechny IP adresy.
+Spusťte následující příkaz příkazového řádku Azure CLI, tooallow databázi toohello access ze všech IP adres hello.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=255.255.255.255 --name AllowAllIPs
 ```
 
-Rozhraní příkazového řádku Azure potvrdí vytvoření pravidla brány firewall se výstup podobný v následujícím příkladu:
+Hello rozhraní příkazového řádku Azure potvrdí hello vytvoření pravidla brány firewall se výstup podobný toohello následující ukázka:
 
 ```json
 {
@@ -201,69 +201,69 @@ Rozhraní příkazového řádku Azure potvrdí vytvoření pravidla brány fire
 }
 ```
 
-## <a name="connect-your-python-flask-application-to-the-database"></a>Připojení k databázi aplikace Python Flask
+## <a name="connect-your-python-flask-application-toohello-database"></a>Připojit databáze toohello aplikace Python Flask
 
-V tomto kroku připojíte vaši ukázkovou aplikaci Python Flask pro Azure databázi PostgreSQL serveru, který jste vytvořili.
+V tomto kroku připojíte vaší Python Flask ukázkové aplikace toohello Azure databáze PostgreSQL serveru, který jste vytvořili.
 
 ### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a>Vytvořit prázdnou databázi a nastavení nového uživatele databáze aplikace
 
-Vytvořte uživatele databáze s přístupem k jedné databáze. Tyto přihlašovací údaje použijete k neudělujte aplikace úplný přístup k serveru.
+Vytvořte uživatele databáze s tooa jedné databáze access jenom. Tyto přihlašovací údaje tooavoid poskytnutí hello aplikační úplný přístup toohello server budete používat.
 
-Připojení k databázi (se zobrazí výzva k zadání hesla správce).
+Připojte databáze toohello (se zobrazí výzva k zadání hesla správce).
 
 ```bash
 psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
 ```
 
-Vytvoření databáze a uživatele z příkazového řádku PostgreSQL.
+Vytvoření databáze hello a uživatele z hello PostgreSQL rozhraní příkazového řádku.
 
 ```bash
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE eventregistration toomanager;
 ```
 
-Typ *\q* ukončíte klienta PostgreSQL.
+Typ *\q* tooexit hello PostgreSQL klienta.
 
-### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a>Testování aplikace místně v databázi Azure PostgreSQL 
+### <a name="test-hello-application-locally-against-hello-azure-postgresql-database"></a>Testování aplikace hello místně na databázi Azure PostgreSQL hello 
 
-Po návratu teď do *aplikace* složky klonovaný úložiště Github, můžete spustit aplikace Python Flask aktualizací proměnné prostředí databáze.
+Návratem teď toohello *aplikace* složky hello klonovat úložiště Github, můžete spustit aplikace Python Flask hello aktualizací proměnné prostředí hello databáze.
 
 ```bash
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-Po úplným načtením aplikace se zobrazí podobná následující zpráva:
+Když je aplikace hello úplným načtením, uvidíte něco podobné toohello následující zprávou:
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
  * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C tooquit)
 ```
 
-Přejděte do http://127.0.0.1:5000 v prohlížeči. Klikněte na tlačítko **zaregistrovat!** a vytvořit testovací registrace. Jsou nyní zápis dat do databáze v Azure.
+Přejděte toohttp://127.0.0.1:5000 v prohlížeči. Klikněte na tlačítko **zaregistrovat!** a vytvořit testovací registrace. Databáze toohello data jsou nyní zápisu v Azure.
 
 ![Aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 
-### <a name="running-the-application-from-a-docker-container"></a>Spuštění aplikace z kontejner Docker
+### <a name="running-hello-application-from-a-docker-container"></a>Spuštění aplikace hello z kontejner Docker
 
-Sestavení Docker kontejneru bitové kopie.
+Sestavení bitové kopie kontejner Docker hello.
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 ```
 
-Docker zobrazí potvrzení, že úspěšně vytvořil kontejneru.
+Docker zobrazí potvrzení tohoto kontejneru hello it byl úspěšně vytvořen.
 
 ```bash
 Successfully built 7548f983a36b
 ```
 
-Přidání proměnné prostředí databáze do souboru proměnné prostředí *db.env*. Aplikace se připojí k produkční databázi PostgreSQL v Azure.
+Přidání databáze prostředí proměnné tooan prostředí proměnné souboru *db.env*. aplikace Hello připojí produkční databázi PostgreSQL toohello v Azure.
 
 ```text
 DBHOST="<postgresql_name>.postgres.database.azure.com"
@@ -272,32 +272,32 @@ DBNAME="eventregistration"
 DBPASS="supersecretpass"
 ```
 
-Spusťte aplikaci v rámci kontejner Docker. Následující příkaz určuje soubor proměnných prostředí a Flask výchozí port 5000 se mapuje na místní port 5000.
+Spuštění aplikace hello z v rámci kontejner Docker hello. Hello následující příkaz určuje hello souboru proměnných prostředí a mapuje hello výchozí Flask port 5000 toolocal port 5000.
 
 ```bash
 docker run -it --env-file db.env -p 5000:5000 flask-postgresql-sample
 ```
 
-Výstup se podobá jste viděli dříve. Ale migrace počáteční databáze už je nutné provést a proto bude přeskočena.
+výstup Hello je podobné toowhat, které jste viděli dříve. Migrace počáteční databáze hello však již nepotřebuje toobe provést a proto se přeskočí.
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
  * Serving Flask app "app"
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C tooquit)
 ```
 
-Databáze již obsahuje registrace, kterou jste vytvořili dříve.
+Hello databáze již obsahuje hello registrace, které jste vytvořili dříve.
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-docker.png)
 
-## <a name="upload-the-docker-container-to-a-container-registry"></a>Odešlete do kontejneru registru kontejner Docker
+## <a name="upload-hello-docker-container-tooa-container-registry"></a>Nahrát hello Docker kontejneru tooa kontejneru registru
 
-V tomto kroku nahrajte kontejner Docker do registru kontejneru. Budete používat Azure kontejneru registru, ale můžete také použít další oblíbených těch, jako je například Docker Hub.
+V tomto kroku nahrát hello Docker kontejneru tooa kontejneru registru. Budete používat Azure kontejneru registru, ale můžete také použít další oblíbených těch, jako je například Docker Hub.
 
 ### <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
 
-V následujícím příkazu k vytvoření kontejneru registru nahradit  *\<registry_name >* s názvem registru jedinečný kontejner Azure podle svého výběru.
+V následující příkaz toocreate registru kontejneru hello nahraďte  *\<registry_name >* s názvem registru jedinečný kontejner Azure podle svého výběru.
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
@@ -325,16 +325,16 @@ Výstup
 }
 ```
 
-### <a name="retrieve-the-registry-credentials-for-pushing-and-pulling-docker-images"></a>Načtení registru přihlašovací údaje pro vkládání a stahování imagí Dockeru
+### <a name="retrieve-hello-registry-credentials-for-pushing-and-pulling-docker-images"></a>Načíst hello registru pověření pro vkládání a stahování imagí Dockeru
 
-Zobrazíte registru přihlašovací údaje, nejprve povolte režim správce.
+přihlašovací údaje tooshow registru, nejprve povolte režim správce.
 
 ```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
 
-Zobrazí dvě hesla. Poznamenejte si uživatelské jméno a heslo první.
+Zobrazí dvě hesla. Poznamenejte si hello uživatelské jméno a heslo první hello.
 
 ```json
 {
@@ -352,7 +352,7 @@ Zobrazí dvě hesla. Poznamenejte si uživatelské jméno a heslo první.
 }
 ```
 
-### <a name="upload-your-docker-container-to-azure-container-registry"></a>Nahrát váš kontejner Docker do registru kontejner Azure
+### <a name="upload-your-docker-container-tooazure-container-registry"></a>Nahrát váš tooAzure kontejner Docker registru kontejneru
 
 ```bash
 docker login <registry_name>.azurecr.io -u <registry_name> -p "<registry_password>"
@@ -360,23 +360,23 @@ docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-s
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
 ```
 
-## <a name="deploy-the-docker-python-flask-application-to-azure"></a>Nasaďte aplikaci Docker Python Flask do Azure
+## <a name="deploy-hello-docker-python-flask-application-tooazure"></a>Nasazení tooAzure aplikace Docker Python Flask hello
 
-V tomto kroku nasadíte Docker na základě kontejneru aplikace Python Flask do služby Azure App Service.
+V tomto kroku nasadíte vaší Docker na základě kontejneru Python Flask aplikace tooAzure služby App Service.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#create) vytvořte plán služby App Service. 
+Vytvořte plán služby App Service s hello [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) příkaz. 
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Následující příklad vytvoří plán aplikační služby se systémem Linux s názvem *myAppServicePlan* pomocí S1 cenová úroveň:
+Hello následující příklad vytvoří plán aplikační služby se systémem Linux s názvem *myAppServicePlan* pomocí hello S1 cenové úrovně:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
-Když je vytvořen plán služby App Service, rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu:
+Při vytvoření hello plán služby App Service je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:
 
 ```json 
 {
@@ -416,17 +416,17 @@ Když je vytvořen plán služby App Service, rozhraní příkazového řádku A
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Vytvoření webové aplikace v *myAppServicePlan* plán služby App Service pomocí [az webapp vytvořit](/cli/azure/webapp#create) příkaz. 
+Vytvoření webové aplikace v hello *myAppServicePlan* plán služby App Service se hello [az webapp vytvořit](/cli/azure/webapp#create) příkaz. 
 
-Webová aplikace získáte hostování místa k nasazení kódu a poskytuje adresu URL zobrazení nasazené aplikace. Použijte k vytvoření webové aplikace. 
+Hello webové aplikace poskytuje můžete hostování místo toodeploy kódu a poskytuje adresu URL pro vás tooview hello nasazené aplikace. Použití toocreate hello webové aplikace. 
 
-V následujícím příkazu nahraďte  *\<app_name >* zástupný symbol s jedinečným názvem aplikace. Tento název je součástí výchozí adresa URL pro webovou aplikaci, tak název musí být jedinečný v rámci všech aplikací v Azure App Service. 
+Následující příkaz a nahraďte v hello hello  *\<app_name >* zástupný symbol s jedinečným názvem aplikace. Tento název je součástí hello výchozí adresa URL pro webovou aplikaci hello, takže název hello musí toobe jedinečný mezi všechny aplikace v Azure App Service. 
 
 ```azurecli
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
+Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka: 
 
 ```json 
 {
@@ -443,13 +443,13 @@ Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI 
 }
 ```
 
-### <a name="configure-the-database-environment-variables"></a>Konfigurace databáze proměnné prostředí
+### <a name="configure-hello-database-environment-variables"></a>Nakonfigurujte proměnné prostředí databáze hello
 
-V tomto kurzu definované proměnné prostředí pro připojení k vaší databázi PostgreSQL.
+V kurzu hello jste definovali databázi PostgreSQL tooyour tooconnect proměnné prostředí.
 
-Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí [az webapp konfigurace appsettings sadu](/cli/azure/webapp/config#set) příkaz. 
+Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí hello [az webapp konfigurace appsettings sadu](/cli/azure/webapp/config#set) příkaz. 
 
-Následující příklad určuje podrobnosti připojení databáze jako nastavení aplikace. Používá také *PORT* proměnnou mapu PORT 5000 z vaší kontejner Docker pro příjem provozu HTTP na portu 80.
+Hello následující příklad určuje hello podrobnosti připojení databáze jako nastavení aplikace. Používá také hello *PORT* proměnné toomap PORT 5000 z provozu kontejner Docker tooreceive HTTP na portu 80.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
@@ -463,23 +463,23 @@ Služby App Service může automaticky stáhnout a spusťte kontejner Docker.
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-custom-image-name "<registry_name>.azurecr.io/flask-postgresql-sample" --docker-registry-server-url "https://<registry_name>.azurecr.io"
 ```
 
-Kdykoli aktualizovat kontejner Docker nebo změnit nastavení, restartujte aplikaci. Restartování zajišťuje, že všechna nastavení použita a kontejneru nejnovější pocházejí z registru.
+Vždy, když se aktualizovat kontejner Docker hello nebo změnit nastavení hello, restartujte aplikace hello. Restartování zajišťuje, že všechna nastavení použita a nejnovější kontejneru hello pocházejí z registru hello.
 
 ```azurecli-interactive
 az webapp restart --resource-group myResourceGroup --name <app_name>
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Přejděte do webové aplikace Azure 
+### <a name="browse-toohello-azure-web-app"></a>Procházet toohello webové aplikace Azure 
 
-Přejděte do nasazené webové aplikace pomocí webového prohlížeče. 
+Procházet toohello nasadit webovou aplikaci pomocí webového prohlížeče. 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
 ```
 > [!NOTE]
-> Webové aplikace trvá déle, načíst, protože má kontejneru se stáhnou a spustí po změně konfigurace kontejneru.
+> webové aplikace Hello využívá delší tooload, protože hello kontejneru má toobe stáhnou a spustí po změně konfigurace kontejneru hello.
 
-Zobrazí dříve zaregistrovaný hosté, které byly uloženy do Azure produkční databázi v předchozím kroku.
+Zobrazí dříve zaregistrovaný hosté, uložené v předchozím kroku hello toohello Azure produkční databázi.
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/docker-app-deployed.png)
 
@@ -487,15 +487,15 @@ Zobrazí dříve zaregistrovaný hosté, které byly uloženy do Azure produkčn
 
 ## <a name="update-data-model-and-redeploy"></a>Aktualizace datový model a znovu ho zaveďte
 
-V tomto kroku přidáte počtu účastníků k registraci jednotlivých událostí aktualizací modelu hosta.
+V tomto kroku přidáte hello počet registrace události tooeach účastníci aktualizací hello hosta modelu.
 
-Podívejte se *0,2 Migrace* verzi pomocí následujícího příkazu git:
+Podívejte se na hello *0,2 Migrace* verzi s hello následující příkaz git:
 
 ```bash
 git checkout tags/0.2-migration
 ```
 
-Tato verze již provedli nezbytné změny zobrazení, řadiče a modelu. Zahrnuje také migrace databáze generované prostřednictvím *destilační přístroj* (`flask db migrate`). Zobrazí všechny změny provedené pomocí následujícího příkazu git:
+Tato verze už provedených hello tooviews potřebné změny, řadiče a modelu. Zahrnuje také migrace databáze generované prostřednictvím *destilační přístroj* (`flask db migrate`). Zobrazí všechny změny provedené pomocí následujícího příkazu git hello:
 
 ```bash
 git diff 0.1-initialapp 0.2-migration
@@ -503,7 +503,7 @@ git diff 0.1-initialapp 0.2-migration
 
 ### <a name="test-your-changes-locally"></a>Otestujte provedené změny místně
 
-Spusťte následující příkazy k testování změny místně spuštěním flask server.
+Spusťte následující příkazy tootest hello změny místně používají server flask hello.
 
 Mac / Linux:
 ```bash
@@ -513,13 +513,13 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-Přejděte do http://127.0.0.1:5000 v prohlížeči a prohlédněte si změny. Vytvořte testovací registrace.
+Přejděte v prohlížeči tooview hello změny toohttp://127.0.0.1:5000. Vytvořte testovací registrace.
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app-v2.png)
 
-### <a name="publish-changes-to-azure"></a>Publikování změn do Azure
+### <a name="publish-changes-tooazure"></a>Publikování změn tooAzure
 
-Vytvořit novou bitovou kopii docker, push registru kontejneru a restartujte aplikaci.
+Sestavení hello novou bitovou kopii docker, poslat ho toohello kontejneru registru a restartujte aplikaci hello.
 
 ```bash
 docker build -t flask-postgresql-sample .
@@ -528,7 +528,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 az appservice web restart --resource-group myResourceGroup --name <app_name>
 ```
 
-Přejděte do vaší webové aplikace Azure a znovu vyzkoušet nové funkce. Vytvořte další registrace události.
+Přejděte tooyour webové aplikace Azure a znovu vyzkoušet nové funkce hello. Vytvořte další registrace události.
 
 ```bash 
 http://<app_name>.azurewebsites.net 
@@ -538,19 +538,19 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="manage-your-azure-web-app"></a>Správa Azure webové aplikace
 
-Přejděte na [portál Azure](https://portal.azure.com) zobrazíte webové aplikace, které jste vytvořili.
+Přejděte toohello [portál Azure](https://portal.azure.com) toosee hello webovou aplikaci jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce hello, klikněte na **App Services**, pak klikněte na název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-docker-python-postgresql-app/app-resource.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-tutorial-docker-python-postgresql-app/app-resource.png)
 
-Ve výchozím nastavení, zobrazí na portálu vaší webové aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky zobrazí stránek jinou konfiguraci, že můžete otevřít.
+Ve výchozím nastavení, hello portál zobrazuje vaší webové aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Hello karty na levé straně stránky hello hello zobrazit stránky hello jinou konfiguraci, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/app-service-web-tutorial-docker-python-postgresql-app/app-mgmt.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přechodu na dalším kurzu se dozvíte, jak namapovat vlastní název DNS do vaší webové aplikace.
+Posunutí toohello další kurz toolearn jak toomap vlastní DNS název tooyour webové aplikace.
 
 > [!div class="nextstepaction"] 
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapovat existující vlastní DNS název tooAzure webové aplikace](app-service-web-tutorial-custom-domain.md)

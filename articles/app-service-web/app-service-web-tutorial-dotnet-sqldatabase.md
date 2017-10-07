@@ -1,6 +1,6 @@
 ---
-title: "Sestavení aplikace ASP.NET v Azure SQL Database | Microsoft Docs"
-description: "Další informace o získání aplikace ASP.NET, v Azure, funguje s připojením k databázi SQL."
+title: aaaBuild aplikace ASP.NET v Azure SQL Database | Microsoft Docs
+description: "Zjistěte, jak tooget ASP.NET aplikace v Azure, funguje s tooa připojení databáze SQL."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c22b8ef4866fe2f1ae32c7cb9158fc7866788b26
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d21c2bc404bfe038608c17e5a94d96847153002c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Sestavení aplikace ASP.NET v Azure SQL Database
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak nasadit datové webové aplikace ASP.NET v Azure a propojte jej s [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Jakmile budete hotovi, máte aplikaci ASP.NET spuštěná [Azure App Service](../app-service/app-service-value-prop-what-is.md) a připojení k databázi SQL.
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje, jak toodeploy ASP.NET se datové webové aplikace v Azure a připojte ho příliš[Azure SQL Database](../sql-database/sql-database-technical-overview.md). Jakmile budete hotovi, máte aplikaci ASP.NET spuštěná [Azure App Service](../app-service/app-service-value-prop-what-is.md) a připojené tooSQL databáze.
 
 ![Publikované aplikace ASP.NET ve službě Azure web app](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -31,17 +31,17 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření databáze SQL v Azure
-> * Připojení k databázi SQL aplikace ASP.NET
-> * Nasazení aplikace do Azure
-> * Aktualizovat datový model a aplikaci znovu nasaďte
-> * Datový proud protokolů z Azure terminálu
-> * Spravovat aplikaci na portálu Azure
+> * Připojit tooSQL aplikace ASP.NET databáze
+> * Nasazení aplikace tooAzure hello
+> * Aktualizovat hello datový model a znovu nasaďte aplikace hello
+> * Datový proud protokolů z Azure tooyour terminálu
+> * Spravovat aplikace hello v hello portálu Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+toocomplete v tomto kurzu:
 
-* Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+* Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/downloads/) s hello následující úlohy:
   - **Vývoj pro ASP.NET a web**
   - **Azure – vývoj**
 
@@ -49,29 +49,29 @@ K provedení kroků v tomto kurzu je potřeba:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-hello-sample"></a>Stažení ukázky hello
 
-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+[Stáhněte si ukázkový projekt hello](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 
-Extrahování (rozbalte) *dotnet-sqldb kurzu master.zip* souboru.
+Extrahování (rozbalte) hello *dotnet-sqldb kurzu master.zip* souboru.
 
-Ukázkový projekt obsahuje základní [ASP.NET MVC](https://www.asp.net/mvc) CRUD (vytvoření čtení aktualizace odstranění) aplikace pomocí [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+Hello ukázkový projekt obsahuje základní [ASP.NET MVC](https://www.asp.net/mvc) CRUD (vytvoření čtení aktualizace odstranění) aplikace pomocí [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
-### <a name="run-the-app"></a>Spuštění aplikace
+### <a name="run-hello-app"></a>Spuštění aplikace hello
 
-Otevřete *dotnet-sqldb – kurz – hlavní/DotNetAppSqlDb.sln* souborů v sadě Visual Studio. 
+Otevřete hello *dotnet-sqldb – kurz – hlavní/DotNetAppSqlDb.sln* souborů v sadě Visual Studio. 
 
-Typ `Ctrl+F5` a spusťte aplikaci bez ladění. Aplikace se zobrazí ve výchozím prohlížeči. Vyberte **vytvořit nový** propojit a vytvořit pár *úkolů* položky. 
+Typ `Ctrl+F5` toorun hello aplikace bez ladění. Hello aplikace se zobrazí ve výchozím prohlížeči. Vyberte hello **vytvořit nový** propojit a vytvořit pár *úkolů* položky. 
 
 ![Dialogové okno Nový projekt ASP.NET](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Testovací **upravit**, **podrobnosti**, a **odstranit** odkazy.
+Test hello **upravit**, **podrobnosti**, a **odstranit** odkazy.
 
-Aplikace používá pro připojení k databázi kontext databáze. V této ukázce kontext databáze používá připojovací řetězec s názvem `MyDbConnection`. Připojovací řetězec je nastavena v *Web.config* souborů a v odkazuje *Models/MyDatabaseContext.cs* souboru. Název připojovacího řetězce se později v tomto kurzu používá pro připojení k databázi SQL Azure webové aplikace Azure. 
+aplikace Hello používá tooconnect kontextu databáze s databází hello. V této ukázce kontext databáze hello používá připojovací řetězec s názvem `MyDbConnection`. Hello připojovací řetězec je nastavena v hello *Web.config* souborové služby a odkazovaná v hello *Models/MyDatabaseContext.cs* souboru. název připojovacího řetězce Hello se používá novější v hello kurz tooconnect hello službě Azure web app tooan Azure SQL Database. 
 
-## <a name="publish-to-azure-with-sql-database"></a>Publikování v Azure SQL Database
+## <a name="publish-tooazure-with-sql-database"></a>Publikování tooAzure s databází SQL
 
-V **Průzkumníku řešení**, klikněte pravým tlačítkem na vaše **DotNetAppSqlDb** projektu a vyberte **publikovat**.
+V hello **Průzkumníku řešení**, klikněte pravým tlačítkem na vaše **DotNetAppSqlDb** projektu a vyberte **publikovat**.
 
 ![Publikování z Průzkumníka řešení](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
@@ -79,19 +79,19 @@ Zkontrolujte, že je vybraná možnost **Microsoft Azure App Service** a klikně
 
 ![Publikování ze stránky přehledu projektu](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-Publikování se otevře **vytvořit službu App Service** dialog, který vám pomůže vytvořit všechny prostředky Azure budete muset spustit webové aplikace ASP.NET v Azure.
+Publikování otevře hello **vytvořit službu App Service** dialogové okno, které vám pomůže vytvořit všechny hello prostředky Azure, budete potřebovat toorun webové aplikace ASP.NET v Azure.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-tooazure"></a>Přihlaste se tooAzure
 
-V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet.
+V hello **vytvořit službu App Service** dialogové okno, klikněte na tlačítko **přidat účet**a potom se přihlaste tooyour předplatného Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud hello přihlášeného účtu Microsoft nemá vašeho předplatného Azure, klikněte na něj tooadd hello správný účet.
    
-![Přihlášení k Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+![Přihlaste se tooAzure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
-Až se přihlásíte, můžete v tomto okně vytvořit všechny prostředky, které potřebujete pro vaši webovou aplikaci Azure.
+Jakmile se přihlásíte, jste připravené toocreate všechny prostředky, které potřebujete k Azure webové aplikace v tomto dialogovém okně hello.
 
-### <a name="configure-the-web-app-name"></a>Nakonfigurujte název webové aplikace
+### <a name="configure-hello-web-app-name"></a>Nakonfigurujte název webové aplikace hello
 
-Můžete ponechat název vygenerovaný webové aplikace, nebo ho změnit na jiný jedinečný název (platnými znaky jsou `a-z`, `0-9`, a `-`). Název webové aplikace se používá jako součást výchozí adresa URL pro aplikaci (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace). Název webové aplikace musí být jedinečný v rámci všech aplikací v Azure. 
+Můžete ponechat hello vygeneruje název webové aplikace, nebo ho změnit jedinečný název tooanother (platnými znaky jsou `a-z`, `0-9`, a `-`). Název webové aplikace Hello se používá jako součást hello výchozí adresa URL pro aplikaci (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace). Název webové aplikace Hello musí toobe jedinečný mezi všechny aplikace v Azure. 
 
 ![Vytvoření dialogovém okně app service](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
@@ -99,22 +99,22 @@ Můžete ponechat název vygenerovaný webové aplikace, nebo ho změnit na jin�
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-Vedle pole **Skupina prostředků** klikněte na tlačítko **Nová**.
+Další příliš**skupiny prostředků**, klikněte na tlačítko **nový**.
 
-![Vedle skupinu prostředků klikněte na tlačítko Nový.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
+![Další tooResource skupiny, klepněte na tlačítko Nový.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-Název skupiny prostředků **myResourceGroup**.
+Název skupiny prostředků hello **myResourceGroup**.
 
 > [!NOTE]
-> Neklikejte na **vytvořit**. Nejprve je třeba nastavit vytvářet databáze SQL v pozdější fázi.
+> Neklikejte na **vytvořit**. Je nutné nejprve tooset vytvářet databáze SQL v pozdější fázi.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Vedle pole **Plán služby App Service** klikněte na **Nový**. 
+Další příliš**plán služby App Service**, klikněte na tlačítko **nový**. 
 
-V dialogovém okně **Konfigurace plánu služby App Service** nastavte nový plán takto:
+V hello **nakonfigurovat plán služby App Service** dialogu Nový plán aplikační služby hello nakonfigurovat hello následující nastavení:
 
 ![Vytvoření plánu služby App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
@@ -132,35 +132,35 @@ Vyberte **Objevte další služby Azure**.
 
 ![Nastavení názvu webové aplikace](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-V **služby** , klikněte na  **+**  ikonu vedle **SQL Database**. 
+V hello **služby** , klikněte na hello  **+**  ikonu další příliš**SQL Database**. 
 
-![Na kartě služby klikněte + Ikona vedle databáze SQL.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![V kartě hello služeb, klikněte na ikonu + hello další tooSQL databáze.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
 
-V **nakonfigurovat databázi SQL** dialogové okno, klikněte na tlačítko **nový** vedle **systému SQL Server**. 
+V hello **nakonfigurovat databázi SQL** dialogové okno, klikněte na tlačítko **nový** další příliš**systému SQL Server**. 
 
-Generuje se název jedinečný serveru. Tento název se používá jako součást výchozí adresa URL logického serveru, `<server_name>.database.windows.net`. Musí být ve všech instancích logický server v Azure jedinečný. Můžete změnit název serveru, ale pro účely tohoto kurzu zachovat generované hodnoty.
+Generuje se název jedinečný serveru. Tento název se používá jako součást výchozí adresa URL hello logického serveru, `<server_name>.database.windows.net`. Musí být ve všech instancích logický server v Azure jedinečný. Můžete změnit název serveru hello, ale pro účely tohoto kurzu, ponechte hodnotu hello vygenerovat.
 
 Přidat správce uživatelské jméno a heslo a potom vyberte **OK**. Požadavky na složitost hesla, najdete v části [zásady hesel](/sql/relational-databases/security/password-policy).
 
-Mějte na paměti Toto uživatelské jméno a heslo. Je potřebujete spravovat instanci logického serveru později.
+Mějte na paměti Toto uživatelské jméno a heslo. Musíte je logický server hello toomanage instance později.
 
 ![Vytvoření instance systému SQL Server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 ### <a name="create-a-sql-database"></a>Vytvoření databáze SQL
 
-V **nakonfigurovat databázi SQL** dialogové okno: 
+V hello **nakonfigurovat databázi SQL** dialogové okno: 
 
-* Ponechat výchozí generovaný **název databáze**.
-* V **název připojovacího řetězce**, typ *MyDbConnection*. Tento název musí odpovídat připojovací řetězec, který se odkazuje v *Models/MyDatabaseContext.cs*.
+* Ponechat výchozí hello generovaný **název databáze**.
+* V **název připojovacího řetězce**, typ *MyDbConnection*. Tento název musí odpovídat hello připojovací řetězec, který se odkazuje v *Models/MyDatabaseContext.cs*.
 * Vyberte **OK**.
 
 ![Konfigurace databáze SQL](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-**Vytvořit službu App Service** dialog zobrazuje prostředky jste vytvořili. Klikněte na možnost **Vytvořit**. 
+Hello **vytvořit službu App Service** dialog zobrazuje hello prostředky jste vytvořili. Klikněte na možnost **Vytvořit**. 
 
-![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+![Hello prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-Až průvodce dokončí vytváření prostředků Azure, publikuje aplikace ASP.NET do Azure. Spuštění výchozího prohlížeče s adresou URL nasazené aplikace. 
+Po dokončení Průvodce hello hello vytváření prostředků Azure, publikuje vaše tooAzure aplikace ASP.NET. Výchozí prohlížeč se spustí s hello URL toohello nasazené aplikace. 
 
 Přidejte několik položek úkolů.
 
@@ -168,53 +168,53 @@ Přidejte několik položek úkolů.
 
 Blahopřejeme! Vaše aplikace ASP.NET řízené daty je spuštěna za provozu v Azure App Service.
 
-## <a name="access-the-sql-database-locally"></a>Přístup k databázi SQL místně
+## <a name="access-hello-sql-database-locally"></a>Přístup k místně hello databáze SQL
 
-Visual Studio umožňuje prozkoumat a spravovat snadno v nové databáze SQL **Průzkumník objektů systému SQL Server**.
+Visual Studio umožňuje prozkoumat a spravovat nové databáze SQL snadno v hello **Průzkumník objektů systému SQL Server**.
 
 ### <a name="create-a-database-connection"></a>Vytvoření připojení k databázi
 
-Z **zobrazení** nabídce vyberte možnost **Průzkumník objektů systému SQL Server**.
+Z hello **zobrazení** nabídce vyberte možnost **Průzkumník objektů systému SQL Server**.
 
-V horní části **Průzkumník objektů systému SQL Server**, klikněte **přidat SQL Server** tlačítko.
+Na začátku hello **Průzkumník objektů systému SQL Server**, klikněte na tlačítko hello **přidat SQL Server** tlačítko.
 
-### <a name="configure-the-database-connection"></a>Konfigurace připojení k databázi
+### <a name="configure-hello-database-connection"></a>Konfigurace připojení k databázi hello
 
-V **připojit** dialogové okno, rozbalte **Azure** uzlu. Všechny instance databáze SQL v Azure jsou zde uvedeny.
+V hello **připojit** dialogové okno, rozbalte položku hello **Azure** uzlu. Všechny instance databáze SQL v Azure jsou zde uvedeny.
 
-Vyberte `DotNetAppSqlDb` databáze SQL. V dolní části se automaticky vyplní připojení, které jste vytvořili dříve.
+Vyberte hello `DotNetAppSqlDb` databáze SQL. v dolní části hello se vyplní automaticky Hello připojení, které jste vytvořili dříve.
 
-Zadejte heslo správce databáze, který jste dříve vytvořili a klikněte na tlačítko **Connect**.
+Zadejte heslo správce databáze hello jste dříve vytvořili a klikněte na **Connect**.
 
 ![Konfigurace připojení k databázi ze sady Visual Studio](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
 
 ### <a name="allow-client-connection-from-your-computer"></a>Povolit připojení klienta z vašeho počítače
 
-**Vytvořit nové pravidlo brány firewall** se otevře dialogové okno. Ve výchozím nastavení umožňuje vaší instanci služby SQL Database pouze připojení ze služby Azure, jako je například Azure webové aplikace. Pro připojení k databázi, vytvořte pravidlo brány firewall v instanci databáze SQL. Pravidlo brány firewall umožňuje veřejnou IP adresu místního počítače.
+Hello **vytvořit nové pravidlo brány firewall** se otevře dialogové okno. Ve výchozím nastavení umožňuje vaší instanci služby SQL Database pouze připojení ze služby Azure, jako je například Azure webové aplikace. tooconnect tooyour databáze, vytvořte pravidlo brány firewall v instanci služby SQL Database hello. pravidlo brány firewall Hello umožňuje hello veřejnou IP adresu místního počítače.
 
-Dialogové okno je již vyplněn veřejná IP adresa vašeho počítače.
+Dialogové okno Hello je již vyplněn veřejná IP adresa vašeho počítače.
 
 Ujistěte se, že **přidat Moje IP adresa klienta** je vybrána a klikněte na tlačítko **OK**. 
 
 ![Nastavení brány firewall pro instanci databáze SQL](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
-Jakmile sady Visual Studio dokončí vytváření nastavení brány firewall pro instanci SQL databáze, připojení se zobrazí v **Průzkumník objektů systému SQL Server**.
+Jakmile sady Visual Studio dokončí vytváření hello nastavení brány firewall pro instanci SQL databáze, připojení se zobrazí v **Průzkumník objektů systému SQL Server**.
 
-Zde můžete provádět nejběžnější databázových operací, jako je například spouštění dotazů, vytvořit zobrazení a uložených procedur a další. 
+Zde můžete provádět hello nejběžnější databázových operací, například spuštění dotazů, vytvořit zobrazení a uložených procedur a další. 
 
-Klikněte pravým tlačítkem na `Todoes` tabulky a vyberte **Data zobrazení**. 
+Klikněte pravým tlačítkem na hello `Todoes` tabulky a vyberte **Data zobrazení**. 
 
 ![Prozkoumejte objekty databáze SQL](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
 ## <a name="update-app-with-code-first-migrations"></a>Aktualizovat aplikaci migrace Code First
 
-Známých nástrojů v sadě Visual Studio slouží k aktualizaci databáze a webové aplikace v Azure. V tomto kroku použijete migrace Code First v Entity Framework k provedení změny svého schématu databáze a publikujete ho v Azure.
+Můžete vytvořit hello známých nástrojů v sadě Visual Studio tooupdate databáze a webové aplikace v Azure. V tomto kroku použijete migrace Code First v Entity Framework toomake schéma databáze tooyour změn a publikujete ji tooAzure.
 
 Další informace o použití migrace Entity Framework Code First najdete v tématu [Začínáme s Entity Framework 6 Code First pomocí MVC 5](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### <a name="update-your-data-model"></a>Aktualizovat data modelu
 
-Otevřete _Models\Todo.cs_ v editoru kódu. Přidejte následující vlastnosti, která má `ToDo` třídy:
+Otevřete _Models\Todo.cs_ v editoru kódu hello. Přidejte následující vlastnost toohello hello `ToDo` třídy:
 
 ```csharp
 public bool Done { get; set; }
@@ -222,11 +222,11 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>Spustit migrace Code First místně
 
-Spusťte několik příkazy provádění aktualizací místní databázi. 
+Spusťte několik příkazů toomake aktualizace tooyour místní databáze. 
 
-Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet** > **Konzola správce balíčků**.
+Z hello **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet** > **Konzola správce balíčků**.
 
-V okně konzoly Správce balíčků povolení migrace Code First:
+V okně konzoly Správce balíčků hello povolte migrace Code First:
 
 ```PowerShell
 Enable-Migrations
@@ -238,23 +238,23 @@ Přidejte migrace:
 Add-Migration AddProperty
 ```
 
-Aktualizace místní databázi:
+Aktualizujte místní databázi hello:
 
 ```PowerShell
 Update-Database
 ```
 
-Typ `Ctrl+F5` a spusťte aplikaci. Upravit podrobnosti, otestovat a vytvořit odkazy.
+Typ `Ctrl+F5` toorun hello aplikace. Test hello upravit podrobnosti a vytvoření odkazů.
 
-Pokud aplikace načte bez chyb, proběhla úspěšně migrace Code First. Ale stránku stále vypadá stejně protože aplikační logiku ještě nepoužívá tuto novou vlastnost. 
+Pokud aplikace hello načte bez chyb, proběhla úspěšně migrace Code First. Však stále vypadá vaše stránka hello stejné protože aplikační logiku ještě nepoužívá tuto novou vlastnost. 
 
-### <a name="use-the-new-property"></a>Použít nové vlastnosti
+### <a name="use-hello-new-property"></a>Použít novou vlastnost hello
 
-Některé změny v kódu k použití `Done` vlastnost. Pro zjednodušení v tomto kurzu se pouze chystáte změnit `Index` a `Create` zobrazení naleznete ve vlastnosti v akci.
+Provedeme některé změny v váš kód toouse hello `Done` vlastnost. Pro zjednodušení v tomto kurzu pouze budete toochange hello `Index` a `Create` zobrazení vlastnost hello toosee v akci.
 
 Otevřete _Controllers\TodosController.cs_.
 
-Najít `Create()` metoda a přidejte `Done` do seznamu vlastností v `Bind` atribut. Když jste hotovi, vaše `Create()` podpis metody vypadá jako následující kód:
+Najde hello `Create()` metoda a přidejte `Done` toohello seznam vlastností v hello `Bind` atribut. Když jste hotovi, vaše `Create()` podpis metody vypadá hello následující kód:
 
 ```csharp
 public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] Todo todo)
@@ -262,7 +262,7 @@ public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] T
 
 Otevřete _Views\Todos\Create.cshtml_.
 
-V kódu Razor, měli byste vidět `<div class="form-group">` element, který používá `model.Description`a pak další `<div class="form-group">` element, který používá `model.CreatedDate`. Hned za tyto dva prvky, přidejte další `<div class="form-group">` element, který používá `model.Done`:
+V hello kódu Razor, měli byste vidět `<div class="form-group">` element, který používá `model.Description`a pak další `<div class="form-group">` element, který používá `model.CreatedDate`. Hned za tyto dva prvky, přidejte další `<div class="form-group">` element, který používá `model.Done`:
 
 ```csharp
 <div class="form-group">
@@ -278,7 +278,7 @@ V kódu Razor, měli byste vidět `<div class="form-group">` element, který pou
 
 Otevřete _Views\Todos\Index.cshtml_.
 
-Vyhledejte prázdné `<th></th>` elementu. Nad tento element přidejte následující kód Razor:
+Vyhledejte hello prázdný `<th></th>` elementu. Nad tento element přidejte následující kódu Razor hello:
 
 ```csharp
 <th>
@@ -286,7 +286,7 @@ Vyhledejte prázdné `<th></th>` elementu. Nad tento element přidejte následuj
 </th>
 ```
 
-Najít `<td>` elementu, který obsahuje `Html.ActionLink()` pomocné metody. Nad tento element přidejte následující kód Razor:
+Najde hello `<td>` elementu, který obsahuje hello `Html.ActionLink()` pomocné metody. Nad tento element přidejte následující kódu Razor hello:
 
 ```csharp
 <td>
@@ -294,25 +294,25 @@ Najít `<td>` elementu, který obsahuje `Html.ActionLink()` pomocné metody. Nad
 </td>
 ```
 
-To je všechno potřebujete zobrazit změny v `Index` a `Create` zobrazení. 
+To je všechno potřebujete toosee hello změny v hello `Index` a `Create` zobrazení. 
 
-Typ `Ctrl+F5` a spusťte aplikaci.
+Typ `Ctrl+F5` toorun hello aplikace.
 
-Teď můžete přidat položku seznamu úkolů a zkontrolujte **provádí**. Potom ho měli zobrazí v domovské stránce jako dokončené položka. Nezapomeňte, že `Edit` zobrazení nezobrazí `Done` pole, protože nebyla změní `Edit` zobrazení.
+Teď můžete přidat položku seznamu úkolů a zkontrolujte **provádí**. Potom ho měli zobrazí v domovské stránce jako dokončené položka. Mějte na paměti, že hello `Edit` zobrazení nezobrazí hello `Done` pole, protože jste nezměnili hello `Edit` zobrazení.
 
 ### <a name="enable-code-first-migrations-in-azure"></a>Povolení migrace Code First v Azure
 
-Teď, když kód změnit funguje, včetně databáze migrace jej publikujte do vaší webové aplikace Azure a příliš aktualizace databáze SQL se migrace Code First.
+Teď, když kód změnit funguje, včetně migrace databáze, můžete ji publikovat tooyour webové aplikace Azure a příliš aktualizace databáze SQL se migrace Code First.
 
 Podobně jako před, klikněte pravým tlačítkem na projekt a vyberte **publikovat**.
 
-Klikněte na tlačítko **nastavení** otevřete Průvodce Publikovat.
+Klikněte na tlačítko **nastavení** Průvodce publikováním tooopen hello.
 
 ![Otevřete nastavení publikování](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
-V průvodci klikněte na tlačítko **Další**.
+V Průvodci hello, klikněte na tlačítko **Další**.
 
-Ujistěte se, že je připojovací řetězec pro vaši databázi SQL vložené do **MyDatabaseContext (MyDbConnection)**. Je nutné vybrat **myToDoAppDb** databáze z rozevíracího seznamu. 
+Zajistěte, aby tento hello připojovací řetězec pro databáze SQL se naplní v **MyDatabaseContext (MyDbConnection)**. Může být nutné tooselect hello **myToDoAppDb** databáze z rozevíracího seznamu hello. 
 
 Vyberte **spustit migrace Code First (spuštěno při spuštění aplikace)**, pak klikněte na tlačítko **Uložit**.
 
@@ -322,59 +322,59 @@ Vyberte **spustit migrace Code First (spuštěno při spuštění aplikace)**, p
 
 Teď, když jste povolili migrace Code First ve vaší webové aplikace Azure, publikování změn kódu.
 
-Na stránce publikování klikněte na **Publikovat**.
+V hello publikovat stránku, klikněte na tlačítko **publikovat**.
 
 Přidejte položkami seznamu úkolů znovu a vyberte **provádí**, a měli objeví v domovské stránce jako dokončené položka.
 
 ![Webové aplikace Azure po migraci první kódu](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
-Všechny vaše existující položky seznamu úkolů se pořád zobrazí. Při opětovném aplikace ASP.NET, není stávající data v databázi SQL ztraceny. Migrace Code First také, pouze změní schéma dat a svoje existující data zůstanou zachovány.
+Všechny vaše existující položky seznamu úkolů se pořád zobrazí. Při opětovném aplikace ASP.NET, není stávající data v databázi SQL ztraceny. Navíc migrace Code First pouze změní schéma dat hello a svoje existující data zůstanou zachovány.
 
 
 ## <a name="stream-application-logs"></a>Protokoly aplikací datového proudu
 
-Trasování zprávy můžete přímo z vaší webové aplikace Azure datového proudu k sadě Visual Studio.
+Přímo z vaší službě Azure web app tooVisual Studio dá Streamovat trasování zpráv.
 
 Otevřete _Controllers\TodosController.cs_.
 
-Každá akce začíná `Trace.WriteLine()` metoda. Tento kód se přidá do ukazují, jak přidat trasování zprávy do vaší webové aplikace Azure.
+Každá akce začíná `Trace.WriteLine()` metoda. Tento kód se přidá tooshow můžete jak tooadd trasování zprávy tooyour webové aplikace Azure.
 
 ### <a name="open-server-explorer"></a>V Průzkumníku serveru otevřete
 
-Z **zobrazení** nabídce vyberte možnost **Průzkumníka serveru**. Můžete nakonfigurovat protokolování pro Azure webové aplikace v **Průzkumníka serveru**. 
+Z hello **zobrazení** nabídce vyberte možnost **Průzkumníka serveru**. Můžete nakonfigurovat protokolování pro Azure webové aplikace v **Průzkumníka serveru**. 
 
 ### <a name="enable-log-streaming"></a>Povolení protokolu streamování
 
 V **Průzkumníka serveru**, rozbalte položku **Azure** > **služby App Service**.
 
-Rozbalte **myResourceGroup** skupinu prostředků, jste vytvořili při prvním vytvoření webové aplikace Azure.
+Rozbalte hello **myResourceGroup** skupinu prostředků, jste vytvořili při prvním vytvoření hello webové aplikace Azure.
 
 Klikněte pravým tlačítkem na vaší webové aplikace Azure a vyberte **zobrazit protokoly streamování**.
 
 ![Povolení protokolu streamování](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-Protokoly jsou nyní streamování do **výstup** okno. 
+Hello protokoly jsou nyní datového proudu do hello **výstup** okno. 
 
 ![V okně výstupu datový proud protokolu](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-Ale nezobrazí žádná trasování zpráv ještě. To je vzhledem k tomu, že pokud nejprve vybrat **zobrazit protokoly streamování**, vaší webové aplikace Azure nastaví na úrovni trasování `Error`, který jenom protokoluje události chyby (s `Trace.TraceError()` metoda).
+Ale nezobrazí žádná hello trasování zpráv ještě. To je proto když nejprve vyberete **zobrazit protokoly streamování**, vaší webové aplikace Azure nastaví úroveň trasování hello příliš`Error`, který jenom protokoluje události chyby (s hello `Trace.TraceError()` metoda).
 
 ### <a name="change-trace-levels"></a>Změna úrovně trasování
 
-Pokud chcete změnit úrovně trasování do výstupního další zprávy trasování, přejděte zpět na **Průzkumníka serveru**.
+trasování hello toochange úrovně toooutput dalších trasování zpráv, přejděte zpět příliš**Průzkumníka serveru**.
 
 Znovu klikněte pravým tlačítkem Azure webové aplikace a vyberte **nastavení**.
 
-V **protokolování aplikace (systém souborů)** rozevíracího seznamu vyberte **podrobné**. Klikněte na **Uložit**.
+V hello **protokolování aplikace (systém souborů)** rozevíracího seznamu vyberte **podrobné**. Klikněte na **Uložit**.
 
-![Změňte úroveň trasování Verbose](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
+![Změna úrovně tooVerbose trasování](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
 > [!TIP]
-> Můžete experimentovat s úrovněmi různých trasování chcete zobrazit, jaké typy zprávy se zobrazují pro každou úroveň. Například **informace** úroveň zahrnuje všechny protokoly, které jsou vytvořené `Trace.TraceInformation()`, `Trace.TraceWarning()`, a `Trace.TraceError()`, ale není protokoly vytvořené `Trace.WriteLine()`.
+> Můžete experimentovat s jinou trasování úrovně toosee jaké typy zprávy se zobrazují pro každou úroveň. Například hello **informace** úroveň zahrnuje všechny protokoly, které jsou vytvořené `Trace.TraceInformation()`, `Trace.TraceWarning()`, a `Trace.TraceError()`, ale není protokoly vytvořené `Trace.WriteLine()`.
 >
 >
 
-V prohlížeči zkuste klepnout kolem aplikaci seznamu úkolů v Azure. Trasovací zprávy jsou nyní streamování na **výstup** oken v sadě Visual Studio.
+V prohlížeči zkuste klepnout kolem hello aplikaci seznamu úkolů v Azure. Hello trasovací zprávy jsou nyní streamování toohello **výstup** oken v sadě Visual Studio.
 
 ```
 Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
@@ -387,23 +387,23 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ### <a name="stop-log-streaming"></a>Zastavit streamování protokolu
 
-Zastavit službu protokolu streamování, klikněte na tlačítko **zastavit monitorování** v tlačítko **výstup** okno.
+toostop hello vysílání datového proudu protokolu služby, klikněte na tlačítko hello **zastavit monitorování** tlačítka na hello **výstup** okno.
 
 ![Zastavit streamování protokolu](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
 ## <a name="manage-your-azure-web-app"></a>Správa Azure webové aplikace
 
-Přejděte na [portál Azure](https://portal.azure.com) zobrazíte webové aplikace, které jste vytvořili. 
+Přejděte toohello [portál Azure](https://portal.azure.com) toosee hello webovou aplikaci jste vytvořili. 
 
 
 
-V levé nabídce klikněte na **App Service** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce hello, klikněte na **služby App Service**, pak klikněte na název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
 Dostali jste na stránce vaší webové aplikace. 
 
-Ve výchozím nastavení, zobrazí na portálu **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky zobrazí stránek jinou konfiguraci, že můžete otevřít. 
+Ve výchozím nastavení, hello portál zobrazuje hello **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Hello karty na levé straně stránky hello hello zobrazit stránky hello jinou konfiguraci, které můžete otevřít. 
 
 ![Stránka služby App Service na webu Azure Portal](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png)
 
@@ -417,13 +417,13 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření databáze SQL v Azure
-> * Připojení k databázi SQL aplikace ASP.NET
-> * Nasazení aplikace do Azure
-> * Aktualizovat datový model a aplikaci znovu nasaďte
-> * Datový proud protokolů z Azure terminálu
-> * Spravovat aplikaci na portálu Azure
+> * Připojit tooSQL aplikace ASP.NET databáze
+> * Nasazení aplikace tooAzure hello
+> * Aktualizovat hello datový model a znovu nasaďte aplikace hello
+> * Datový proud protokolů z Azure tooyour terminálu
+> * Spravovat aplikace hello v hello portálu Azure
 
-Přechodu na dalším kurzu se dozvíte, jak namapovat vlastní název DNS do webové aplikace.
+Posunutí toohello další kurz toolearn jak toomap vlastní DNS název toohello webové aplikace.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapovat existující vlastní DNS název tooAzure webové aplikace](app-service-web-tutorial-custom-domain.md)

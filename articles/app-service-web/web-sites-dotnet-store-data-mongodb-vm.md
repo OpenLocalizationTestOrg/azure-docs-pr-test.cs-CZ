@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace v Azure, která se připojuje k MongoDB na virtuálním počítači"
-description: "Kurz, který se naučíte, jak pomocí Git Nasaďte aplikaci ASP.NET do služby Azure App Service, připojený k MongoDB na virtuální počítač Azure."
+title: "aaaCreate webové aplikace v Azure, která se připojuje tooMongoDB spuštěny na virtuálním počítači"
+description: "Kurz, který se naučíte, jak toouse Git toodeploy tooAzure aplikace ASP.NET služby App Service, připojení tooMongoDB na virtuální počítač Azure."
 tags: azure-portal
 services: app-service\web, virtual-machines
 documentationcenter: .net
@@ -15,26 +15,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: cephalin
-ms.openlocfilehash: a3f289ed9c764d0859573de4f834e042d0f103c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1f5f42c28c3c294d92c9ebf1499374931d47c010
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-web-app-in-azure-that-connects-to-mongodb-running-on-a-virtual-machine"></a>Vytvoření webové aplikace v Azure, která se připojuje k MongoDB na virtuálním počítači
-Pomocí Git, můžete nasadit aplikaci ASP.NET do Azure App Service Web Apps. V tomto kurzu vytvoříte jednoduchý front-endové rozhraní ASP.NET MVC aplikaci seznamu úkolů, která se připojuje k databázi MongoDB spuštěny na virtuálním počítači v Azure.  [MongoDB] [ MongoDB] je populární open source, vysoký výkon databáze NoSQL. Po spuštění a testování aplikace ASP.NET ve svém vývojovém počítači, bude nahrávat aplikace App Service Web Apps pomocí Git.
+# <a name="create-a-web-app-in-azure-that-connects-toomongodb-running-on-a-virtual-machine"></a>Vytvoření webové aplikace v Azure, která se připojuje tooMongoDB spuštěny na virtuálním počítači
+Pomocí Git, můžete nasadit tooAzure aplikace ASP.NET App Service Web Apps. V tomto kurzu vytvoříte jednoduchý front-endové rozhraní ASP.NET MVC aplikaci seznamu úkolů, která připojí databázi MongoDB tooa spuštěny na virtuálním počítači v Azure.  [MongoDB] [ MongoDB] je populární open source, vysoký výkon databáze NoSQL. Po spuštění a testování aplikace ASP.NET hello ve svém vývojovém počítači, bude nahrávat aplikace tooApp hello Service Web Apps pomocí Git.
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 ## <a name="background-knowledge"></a>Znalostní báze pozadí
-V tomto kurzu, přestože není povinný je užitečné znalosti o následující:
+V tomto kurzu, přestože není povinný je užitečné znalosti hello následující:
 
-* C# ovladačů pro MongoDB. Další informace o vývoji aplikace C# pro MongoDB, najdete v článku MongoDB [CSharp jazyk Center][MongoC#LangCenter]. 
-* Rozhraní ASP .NET webové aplikace. Se dozvíte v [webu ASP.net][ASP.NET].
-* Architektura webových aplikací ASP .NET MVC. Se dozvíte v [webové stránky ASP.NET MVC][MVCWebSite].
+* Hello C# ovladačů pro MongoDB. Další informace o vývoji aplikace C# pro MongoDB, najdete v části hello MongoDB [CSharp jazyk Center][MongoC#LangCenter]. 
+* Architektura Hello ASP .NET webových aplikací. Se dozvíte v hello [webu ASP.net][ASP.NET].
+* Architektura Hello ASP .NET MVC webových aplikací. Se dozvíte v hello [webové stránky ASP.NET MVC][MVCWebSite].
 * Azure. Abyste mohli začít, čtení v [Azure][WindowsAzure].
 
 ## <a name="prerequisites"></a>Požadavky
@@ -47,58 +47,58 @@ V tomto kurzu, přestože není povinný je užitečné znalosti o následujíc�
 <a id="virtualmachine"></a> 
 
 ## <a name="create-a-virtual-machine-and-install-mongodb"></a>Vytvoření virtuálního počítače a nainstalujte MongoDB
-Tento kurz předpokládá, že jste vytvořili virtuální počítač v Azure. Po vytvoření virtuálního počítače je potřeba na virtuálním počítači nainstalujte MongoDB:
+Tento kurz předpokládá, že jste vytvořili virtuální počítač v Azure. Po vytvoření hello virtuálního počítače je nutné tooinstall MongoDB hello virtuálního počítače:
 
-* Vytvoření virtuálního počítače s Windows a nainstalujte MongoDB, přečtěte si téma [nainstalujte MongoDB ve virtuálním počítači s Windows serverem v Azure][InstallMongoOnWindowsVM].
+* toocreate virtuálního počítače s Windows a nainstalujte MongoDB, najdete v části [nainstalujte MongoDB ve virtuálním počítači s Windows serverem v Azure][InstallMongoOnWindowsVM].
 
-Po vytvoření virtuálního počítače v Azure a nainstalován MongoDB, je nutné pamatovat název DNS virtuálního počítače ("testlinuxvm.cloudapp.net", např.) a externí port pro MongoDB, který jste zadali v koncovém bodě.  Tyto informace později v tomto kurzu budete potřebovat.
+Po vytvoření hello virtuálního počítače v Azure a nainstalován MongoDB, být jisti tooremember hello název DNS hello virtuálního počítače ("testlinuxvm.cloudapp.net", např.) a hello externí port pro MongoDB, který jste zadali v hello koncový bod.  Budete potřebovat později v kurzu hello tyto informace.
 
 <a id="createapp"></a>
 
-## <a name="create-the-application"></a>Vytvoření aplikace
-V této části vytvoříte aplikaci ASP.NET s názvem "Moje seznam úkolů" pomocí sady Visual Studio a provedení počátečního nasazení do Azure App Service Web Apps. Spustí aplikaci místně, ale bude připojení k virtuálnímu počítači na platformě Azure a pomocí instance MongoDB, kterou jste vytvořili existuje.
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
+V této části vytvoříte aplikaci ASP.NET s názvem "Moje seznam úkolů" pomocí sady Visual Studio a provedení počáteční nasazení tooAzure App Service Web Apps. Spustí hello aplikaci místně, ale bude připojení tooyour virtuálního počítače na Azure a pomocí instance hello MongoDB, kterou jste vytvořili existuje.
 
 1. V sadě Visual Studio, klikněte na tlačítko **nový projekt**.
    
     ![Spuštění nového projektu stránky][StartPageNewProject]
-2. V **nový projekt** okno, v levém podokně vyberte **Visual C#**a potom vyberte **webové**. V prostředním podokně vyberte **webové aplikace ASP.NET**. V dolní části, pojmenujte svůj projekt "MyTaskListApp" a pak klikněte na **OK**.
+2. V hello **nový projekt** okno, v hello levém podokně vyberte **Visual C#**a potom vyberte **webové**. V prostředním podokně hello vyberte **webové aplikace ASP.NET**. V dolní části hello, pojmenujte svůj projekt "MyTaskListApp" a pak klikněte na **OK**.
    
     ![Dialogové okno Nový projekt][NewProjectMyTaskListApp]
-3. V **nový projekt ASP.NET** dialogové okno, vyberte **MVC**a potom klikněte na **OK**.
+3. V hello **nový projekt ASP.NET** dialogové okno, vyberte **MVC**a potom klikněte na **OK**.
    
     ![Vyberte šablonu MVC][VS2013SelectMVCTemplate]
-4. Pokud už nejste do Microsoft Azure, budete vyzváni k přihlášení. Postupujte podle pokynů pro přihlášení do Azure.
-5. Jakmile se přihlásíte, můžete začít konfigurace webové aplikace služby App Service. Zadejte **název webové aplikace**, **plán služby App Service**, **skupiny prostředků**, a **oblast**, pak klikněte na tlačítko **vytvořit**.
+4. Pokud už nejste do Microsoft Azure, bude výzvami toosign v. Postupujte podle pokynů toosign hello do Azure.
+5. Jakmile se přihlásíte, můžete začít konfigurace webové aplikace služby App Service. Zadejte hello **název webové aplikace**, **plán služby App Service**, **skupiny prostředků**, a **oblast**, pak klikněte na tlačítko **vytvořit**.
    
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSConfigureWebAppSettings.png)
-6. Po vytvoření projektu webové aplikace, které mají být vytvořeny ve službě Azure App Service, jak je uvedeno v počkejte **aktivita služby Azure App Service** okno. Potom klikněte na **MyTaskListApp publikovat do této webové aplikace teď**.
+6. Po dokončení vytváření projektu hello počkejte hello webové aplikace toobe vytvořené v Azure App Service, jak je uvedeno v hello **aktivita služby Azure App Service** okno. Potom klikněte na **nyní publikování MyTaskListApp toothis webové aplikace**.
 7. Klikněte na **Publikovat**.
    
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSPublishWeb.png)
    
-    Jakmile výchozí aplikace ASP.NET je publikována do Azure App Service Web Apps, spustí se v prohlížeči.
+    Jakmile vaše aplikace ASP.NET výchozí publikované tooAzure App Service Web Apps, spustí se v prohlížeči hello.
 
-## <a name="install-the-mongodb-c-driver"></a>Nainstalujte ovladač MongoDB C#
-MongoDB nabízí podporu na straně klienta pro C# aplikace prostřednictvím ovladače, které je potřeba nainstalovat na svém místním vývojovém počítači. Je k dispozici prostřednictvím balíčku NuGet ovladač C#.
+## <a name="install-hello-mongodb-c-driver"></a>Nainstalujte hello ovladač MongoDB C#
+MongoDB nabízí podporu na straně klienta pro C# aplikace prostřednictvím ovladače, které budete potřebovat tooinstall ve svém místním vývojovém počítači. je k dispozici prostřednictvím balíčku NuGet Hello C# ovladač.
 
-K instalaci ovladačů MongoDB C#:
+hello tooinstall MongoDB C# ovladače:
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši **MyTaskListApp** projektu a vyberte **spravovat NuGetPackages**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **MyTaskListApp** projektu a vyberte **spravovat NuGetPackages**.
    
     ![Správa balíčků NuGet][VS2013ManageNuGetPackages]
-2. V **spravovat balíčky NuGet** okno, v levém podokně klikněte na tlačítko **Online**. V **Online hledání** pole na pravé straně, zadejte "mongodb.driver".  Klikněte na tlačítko **nainstalovat** instalace ovladače.
+2. V hello **spravovat balíčky NuGet** klikněte na okno, v levém podokně hello **Online**. V hello **Online hledání** pole na hello správné, zadejte "mongodb.driver".  Klikněte na tlačítko **nainstalovat** tooinstall hello ovladačů.
    
     ![Vyhledejte MongoDB C# ovladačů][SearchforMongoDBCSharpDriver]
-3. Klikněte na tlačítko **souhlasím** tak, aby přijímal 10gen, Inc. licenční podmínky.
-4. Klikněte na tlačítko **Zavřít** po nainstaloval ovladač.
+3. Klikněte na tlačítko **souhlasím** tooaccept hello 10gen, Inc. licenční podmínky.
+4. Klikněte na tlačítko **Zavřít** po nainstalován ovladač hello.
     ![MongoDB C# ovladač nainstalován][MongoDBCsharpDriverInstalled]
 
-Nyní je nainstalován ovladač MongoDB C#.  Odkazuje na **MongoDB.Bson**, **MongoDB.Driver**, a **MongoDB.Driver.Core** projektu přidané knihovny.
+Nyní je nainstalována Hello MongoDB C# ovladačů.  Odkazy na toohello **MongoDB.Bson**, **MongoDB.Driver**, a **MongoDB.Driver.Core** knihovny přidané toohello projektu.
 
 ![Odkazy na MongoDB C# ovladačů][MongoDBCSharpDriverReferences]
 
 ## <a name="add-a-model"></a>Přidání modelu
-V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *modely* složky a **přidat** nový **– třída** a pojmenujte ji *TaskModel.cs*.  V *TaskModel.cs*, existujícího kódu nahraďte následujícím kódem:
+V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello *modely* složky a **přidat** nový **– třída** a pojmenujte ji *TaskModel.cs* .  V *TaskModel.cs*, nahraďte existující kód hello hello následující kód:
 
     using System;
     using System.Collections.Generic;
@@ -130,8 +130,8 @@ V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *modely* slo�
         }
     }
 
-## <a name="add-the-data-access-layer"></a>Přidat vrstva přístupu k datům
-V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *MyTaskListApp* projektu a **přidat** **novou složku** s názvem *DAL*.  Klikněte pravým tlačítkem myši *DAL* složky a **přidat** nový **třída**. Název souboru třídy *Dal.cs*.  V *Dal.cs*, existujícího kódu nahraďte následujícím kódem:
+## <a name="add-hello-data-access-layer"></a>Přidat hello vrstva
+V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello *MyTaskListApp* projektu a **přidat** **novou složku** s názvem *DAL*.  Klikněte pravým tlačítkem na hello *DAL* složky a **přidat** nový **třída**. Název souboru třída hello *Dal.cs*.  V *Dal.cs*, nahraďte existující kód hello hello následující kód:
 
     using System;
     using System.Collections.Generic;
@@ -150,13 +150,13 @@ V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *MyTaskListAp
             private MongoServer mongoServer = null;
             private bool disposed = false;
 
-            // To do: update the connection string with the DNS name
+            // toodo: update hello connection string with hello DNS name
             // or IP address of your server. 
             //For example, "mongodb://testlinux.cloudapp.net"
             private string connectionString = "mongodb://mongodbsrv20151211.cloudapp.net";
 
             // This sample uses a database named "Tasks" and a 
-            //collection named "TasksList".  The database and collection 
+            //collection named "TasksList".  hello database and collection 
             //will be automatically created if they don't already exist.
             private string dbName = "Tasks";
             private string collectionName = "TasksList";
@@ -166,7 +166,7 @@ V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *MyTaskListAp
             {
             }
 
-            // Gets all Task items from the MongoDB server.        
+            // Gets all Task items from hello MongoDB server.        
             public List<MyTask> GetAllTasks()
             {
                 try
@@ -180,7 +180,7 @@ V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *MyTaskListAp
                 }
             }
 
-            // Creates a Task and inserts it into the collection in MongoDB.
+            // Creates a Task and inserts it into hello collection in MongoDB.
             public void CreateTask(MyTask task)
             {
                 var collection = GetTasksCollectionForEdit();
@@ -239,7 +239,7 @@ V **Průzkumníku řešení**, klikněte pravým tlačítkem myši *MyTaskListAp
     }
 
 ## <a name="add-a-controller"></a>Přidání kontroleru
-Otevřete *Controllers\HomeController.cs* souboru v **Průzkumníku řešení** a existujícího kódu nahraďte následujícím kódem:
+Otevřete hello *Controllers\HomeController.cs* souboru v **Průzkumníku řešení** a nahraďte existující kód hello hello následující:
 
     using System;
     using System.Collections.Generic;
@@ -319,12 +319,12 @@ Otevřete *Controllers\HomeController.cs* souboru v **Průzkumníku řešení** 
         }
     }
 
-## <a name="set-up-the-styles"></a>Nastavení stylů
-Chcete-li změnit název v horní části stránky, otevřete *Views\Shared\\_Layout.cshtml* souboru v **Průzkumníku řešení** a nahraďte "Název aplikace" v hlavičce navigační panel "Moje seznamu úloh Aplikace"tak, že to vypadá, například tato:
+## <a name="set-up-hello-styles"></a>Nastavení stylů hello
+toochange hello nadpis v horní části hello hello stránky, otevřete hello *Views\Shared\\_Layout.cshtml* souboru v **Průzkumníku řešení** a nahraďte "Název aplikace" v záhlaví navigační panel hello "Moje úloh Seznam aplikací"tak, aby vypadá takto:
 
      @Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
-Pokud chcete nastavit v nabídce seznam úloh, otevřete *\Views\Home\Index.cshtml* a existujícího kódu nahraďte následujícím kódem:
+V pořadí tooset nabídka hello seznam úloh, otevřete hello *\Views\Home\Index.cshtml* a nahraďte existující kód hello hello následující kód:
 
     @model IEnumerable<MyTaskListApp.Models.MyTask>
 
@@ -361,7 +361,7 @@ Pokud chcete nastavit v nabídce seznam úloh, otevřete *\Views\Home\Index.csht
     <div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-Chcete-li přidat možnost vytvořit novou úlohu, klikněte pravým tlačítkem *Views\Home\\*  složky a **přidat** **zobrazení**.  Název zobrazení *vytvořit*. Nahraďte kód tímto:
+tooadd hello možnost toocreate novou úlohu, klikněte pravým tlačítkem na hello *Views\Home\\*  složky a **přidat** **zobrazení**.  Název zobrazení hello *vytvořit*. Nahraďte kód hello hello následující:
 
     @model MyTaskListApp.Models.MyTask
 
@@ -408,42 +408,42 @@ Chcete-li přidat možnost vytvořit novou úlohu, klikněte pravým tlačítkem
 
 ![Průzkumník řešení][SolutionExplorerMyTaskListApp]
 
-## <a name="set-the-mongodb-connection-string"></a>Nastavení připojovacího řetězce MongoDB
-V **Průzkumníku řešení**, otevřete *DAL/Dal.cs* souboru. Vyhledejte následující řádek kódu:
+## <a name="set-hello-mongodb-connection-string"></a>Nastavit hello MongoDB připojovací řetězec
+V **Průzkumníku řešení**, otevřete hello *DAL/Dal.cs* souboru. Najde hello následující řádek kódu:
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-Nahraďte `<vm-dns-name>` s DNS názvem virtuálního počítače spuštěného MongoDB, které jste vytvořili v [vytvořit virtuální počítač a nainstalujte MongoDB] [ Create a virtual machine and install MongoDB] krok tohoto kurzu.  Chcete-li najít název DNS virtuálního počítače, přejděte na portálu Azure, vyberte **virtuální počítače**a najít **název DNS**.
+Nahraďte `<vm-dns-name>` s názvem DNS hello hello virtuální počítač se systémem MongoDB, které jste vytvořili v hello [vytvořit virtuální počítač a nainstalujte MongoDB] [ Create a virtual machine and install MongoDB] krok tohoto kurzu.  název DNS hello toofind virtuálního počítače, přejděte toohello portálu Azure, vyberte **virtuální počítače**a najít **název DNS**.
 
-Pokud název DNS virtuálního počítače je "testlinuxvm.cloudapp.net" a MongoDB naslouchá na výchozím portu 27017, bude vypadat připojovací řetězec řádek kódu:
+Pokud název DNS hello hello virtuálního počítače je "testlinuxvm.cloudapp.net" a MongoDB naslouchá na portu výchozí hello 27017, bude vypadat hello připojovací řetězec řádek kódu:
 
     private string connectionString = "mongodb://testlinuxvm.cloudapp.net";
 
-Pokud koncový bod virtuálního počítače určuje jiný externí port pro MongoDB, můžete zadejte port v připojovacím řetězci:
+Pokud koncový bod virtuálního počítače hello určuje jiný externí port pro MongoDB, můžete zadejte hello port v hello připojovací řetězec:
 
      private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
 Další informace o MongoDB připojovacích řetězcích najdete v tématu [připojení][MongoConnectionStrings].
 
-## <a name="test-the-local-deployment"></a>Testování místní nasazení
-Chcete-li spustit aplikaci na vývojovém počítači, vyberte **spustit ladění** z **ladění** nabídky nebo stiskněte klávesu **F5**. Služba IIS Express se spustí a v prohlížeči se otevře a spustí na domovskou stránku aplikace.  Můžete přidat nové úlohy, které budou přidány do databáze MongoDB spuštěný ve virtuálním počítači v Azure.
+## <a name="test-hello-local-deployment"></a>Testovací nasazení pro místní hello
+Vyberte aplikaci na vývojovém počítači, toorun **spustit ladění** z hello **ladění** nabídky nebo stiskněte klávesu **F5**. Služba IIS Express se spustí a v prohlížeči se otevře a spustí domovskou stránku hello aplikace.  Můžete přidat nové úlohy, které se přidají databázi MongoDB toohello běžící na virtuálním počítači v Azure.
 
 ![Moje aplikace seznamu úkolů][TaskListAppBlank]
 
-## <a name="publish-to-azure-app-service-web-apps"></a>Publikování do služby Azure App Service Web Apps
-V této části publikujete změny do Azure App Service Web Apps.
+## <a name="publish-tooazure-app-service-web-apps"></a>Publikování tooAzure App Service Web Apps
+V této části budete publikovat vaše změny tooAzure App Service Web Apps.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **MyTaskListApp** znovu a klikněte na tlačítko **publikovat**.
 2. Klikněte na **Publikovat**.
    
-    Teď byste měli vidět vaší webové aplikace spuštěné v Azure App Service a přístup k databázi MongoDB v Azure Virtual Machines.
+    Teď byste měli vidět vaší webové aplikace spuštěné v Azure App Service a přístup k databázi MongoDB hello v Azure Virtual Machines.
 
 ## <a name="summary"></a>Souhrn
-Teď úspěšně jste nasadili aplikace ASP.NET Azure App Service Web Apps. Chcete-li zobrazit webové aplikace:
+Teď úspěšně jste nasadili vaší tooAzure aplikace ASP.NET App Service Web Apps. tooview hello webové aplikace:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k portálu Azure hello.
 2. Klikněte na tlačítko **webové aplikace**. 
-3. Vyberte webové aplikace v **webové aplikace** seznamu.
+3. Vyberte webové aplikace v hello **webové aplikace** seznamu.
 
 Další informace o vývoji aplikace C# pro MongoDB, najdete v části [CSharp jazyk Center][MongoC#LangCenter]. 
 
@@ -483,6 +483,6 @@ Další informace o vývoji aplikace C# pro MongoDB, najdete v části [CSharp j
 
 <!-- TOC BOOKMARKS -->
 [Create a virtual machine and install MongoDB]: #virtualmachine
-[Create and run the My Task List ASP.NET application on your development computer]: #createapp
+[Create and run hello My Task List ASP.NET application on your development computer]: #createapp
 [Create an Azure web site]: #createwebsite
-[Deploy the ASP.NET application to the web site using Git]: #deployapp
+[Deploy hello ASP.NET application toohello web site using Git]: #deployapp

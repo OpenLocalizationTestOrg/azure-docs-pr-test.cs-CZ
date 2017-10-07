@@ -1,6 +1,6 @@
 ---
-title: Azure Authenticator pro Android | Microsoft Docs
-description: "Aplikace Microsoft Azure Authenticator lze použít k přihlášení pro přístup k pracovním prostředkům. Aplikace Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením upozornění na vaše mobilní zařízení."
+title: aaaAzure Authenticator pro Android | Microsoft Docs
+description: "Aplikace Microsoft Azure Authenticator se dá použít toosign tooaccess pracovním prostředkům. Hello aplikaci Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením výstrah tooyour zařízení."
 services: active-directory
 documentationcenter: 
 author: femila
@@ -15,107 +15,107 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d6cc5c2f6a3a67847ae4076424746f73d7f48411
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator pro Android
-Váš správce IT vám možná doporučil vám používat Microsoft Azure Authenticator k přihlášení pro přístup k prostředkům na pracovišti. Tuto aplikaci nabízí tyto dvě možnosti, přihlášení:
+Váš správce IT vám možná doporučil jste toouse hello Microsoft Azure Authenticator toosign v tooaccess prostředkům na pracovišti. Tuto aplikaci nabízí tyto dvě možnosti, přihlášení:
 
-* Služba Multi-Factor Authentication umožňuje zabezpečit váš pracovní nebo školní účty s dvoustupňové ověřování. Přihlášení pomocí něco znáte (například heslo) a ochráníte účet ještě více něčím máte (klíč z této aplikace zabezpečení). Aplikace Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením upozornění na vaše mobilní zařízení. Budete muset jednoduše zobrazení požadavku v aplikaci a klepněte na tlačítko ověřit nebo zrušit. Případně zobrazí se výzva k zadání hesla zobrazí v aplikaci.
-* Pracovní účet vám umožňuje zapnout Android telefonu nebo tabletu na důvěryhodné zařízení a poskytovat jednotné přihlašování (SSO) k aplikacím společnosti. Váš správce IT může vyžadovat můžete přidat pracovní účet pro přístup k prostředkům společnosti. Jednotné přihlašování umožňuje přihlásit se jednou a automaticky jednotnému přihlášení na všechny aplikace, které vaše společnost vám zpřístupnil.
+* Služba Multi-Factor Authentication vám umožní toosecure pracovní nebo školní účty s dvoustupňové ověřování. Přihlášení pomocí něco znáte (například heslo) a chránit hello účet ještě více něčím máte (klíč z této aplikace zabezpečení). Hello aplikaci Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením výstrah tooyour zařízení. Je třeba toosimply zobrazení hello požadavku v hello aplikaci a klepněte na tlačítko ověřit nebo zrušit. Alternativně může být heslo hello výzvami tooenter zobrazují v aplikaci hello.
+* Pracovní účet vám umožní tooturn Android telefon nebo tablet na důvěryhodné zařízení a aplikacím toocompany jednotné přihlašování (SSO). Váš správce IT může vyžadovat tooadd pracovní účet v pořadí tooaccess firemním prostředkům. Jednotné přihlašování umožňuje přihlášení v jednou a automaticky avail podepisování rámci všech aplikací vaše společnost provedla k dispozici tooyou.
 
-## <a name="installing-the-azure-authenticator-app"></a>Instalace aplikace Azure Authenticator
-Můžete nainstalovat aplikaci Azure Authenticator z Google Play Storu.
-Pokynů přidejte pracovní účet z zařízení vs Samsung Android zařízení Samsung Android se mírně liší. Pokyny, jak jsou uvedeny níže.
+## <a name="installing-hello-azure-authenticator-app"></a>Instalace aplikace Azure Authenticator hello
+Můžete nainstalovat hello aplikaci Azure Authenticator z Google Play Storu.
+Hello pokyny tooadd pracovní účet z vs zařízení Samsung Android zařízení Samsung Android se mírně liší. Hello pokyny, jak jsou uvedeny níže.
 
-## <a name="adding-the-work-account-from-samsung-android-device"></a>Přidání pracovní účet ze zařízení Samsung Android
-### <a name="adding-the-work-account-through-the-app-home-screen"></a>Přidání pracovní účet prostřednictvím domovskou obrazovku aplikace
-Následující pokyny se dají použít k Samsung GS3 a výše telefony nebo Poznámka 2 a vyšší tablety.
+## <a name="adding-hello-work-account-from-samsung-android-device"></a>Přidání hello pracovní účet ze zařízení Samsung Android
+### <a name="adding-hello-work-account-through-hello-app-home-screen"></a>Přidání hello pracovní účet prostřednictvím domovské obrazovky aplikace hello
+Hello následující pokyny jsou příslušné tooSamsung GS3 a výše telefony nebo Poznámka 2 a vyšší tablety.
 
-1. Na domovské obrazovce aplikace přijměte licenční smlouvu s koncovým uživatelem (EULA).
-2. Na obrazovce aktivovat účet, klikněte na tlačítko v místní nabídce v pravé a vyberte **pracovní účet**.
-3. Na Přidat účet obrazovce vyberte ** pracovní účet **.
+1. Na domovské obrazovce hello aplikace hello přijměte licenční smlouvu konečného uživatele hello (uživatelem EULA).
+2. Na úvodní obrazovka aktivovat účet, klikněte na hello kontextové nabídky na hello vpravo a vyberte **pracovní účet**.
+3. Na úvodní přidat účet obrazovka, vyberte ** pracovní účet **.
 4. Na obrazovce Správce zařízení aktivovat, klikněte na tlačítko **aktivovat**.
-5. Na obrazovce zásady ochrany osobních údajů, zaškrtněte políčko a klikněte na tlačítko **potvrdit**.
-6. Na obrazovce připojení k pracovní ploše, zadejte ID uživatele zadané ve vaší organizaci a klikněte na **připojení**.
-7. Přihlaste se k aplikaci Azure Authenticator, zadejte vaší organizace *** et a heslo a klikněte na **přihlášení**.
-8. Na další obrazovce, která zobrazuje informace o funkci vícefaktorového ověřování (MFA) pro přidání zabezpečení a je volitelný. Tato obrazovka se zobrazí, pokud vaše škola nebo pracoviště vyžaduje dvoufaktorové ověřování pro vytvoření pracovní účet. Poskytuje pokyny pro další ověření vašeho účtu.
-9. Na obrazovce připojení k pracovní ploše zobrazí se zpráva "**připojení vaší síti na pracovišti**". Aplikace Azure Authenticator se pokouší o připojení zařízení k pracovní ploše.
-10. Měli byste vidět zprávu připojený k síti na pracovišti na další obrazovce.
+5. Na úvodní obrazovka zásady ochrany osobních údajů, zaškrtněte políčko hello a klikněte na tlačítko **potvrdit**.
+6. Na úvodní obrazovka k síti na pracovišti, zadejte ID uživatele hello poskytované vaší organizace a klikněte na **připojení**.
+7. toosign v aplikaci Azure Authenticator toohello, zadejte vaší organizace *** et a heslo a klikněte na **přihlášení**.
+8. úvodní obrazovka další, který zobrazí informace o funkci vícefaktorového ověřování (MFA) pro přidání zabezpečení a je volitelný. Tato obrazovka se zobrazí, pokud vaše škola nebo pracoviště vyžaduje dvoufaktorové ověřování pro vytvoření pracovní účet. Poskytuje pokyny toofurther ověřit váš účet.
+9. Hello k síti na pracovišti obrazovce zobrazí uvítací zprávu "**připojení vaší síti na pracovišti**". aplikaci Azure authenticator Hello se pokouší toojoin tooyour pracovišti zařízení.
+10. Měli byste vidět hello připojený k síti na pracovišti zprávu na hello další obrazovky.
 
 > [!NOTE]
 > Jeden pracovní účet jsou povoleny ve vašem zařízení.
 > 
 > 
 
-### <a name="adding-the-work-account-from-the-settings-menu"></a>Přidání pracovní účet z nabídky nastavení
-Poté, co jste nainstalovali aplikaci Azure Authenticator, můžete také vytvořit pracovní účet správce účtů Android.
+### <a name="adding-hello-work-account-from-hello-settings-menu"></a>Přidávání hello pracovní účet z nabídky nastavení hello
+Poté, co jste nainstalovali aplikaci Azure Authenticator hello, můžete také vytvořit pracovní účet z hello Android účet správce.
 
-1. V nabídce nastavení, přejděte na **účty** a klikněte na tlačítko **přidat účet**.
-2. Postupujte podle kroků 3 až 10 v postupu přidání pracovní účet prostřednictvím aplikace domovské obrazovce, chcete-li přidat pracovní účet.
+1. V nabídce nastavení hello přejděte příliš**účty** a klikněte na tlačítko **přidat účet**.
+2. Postupujte podle kroků 3 až 10 v hello postupu přidání hello pracovní účet prostřednictvím hello aplikace domovskou obrazovku, tooadd pracovní účet.
 
-## <a name="adding-the-work-account-from-a-non-samsung-android-device"></a>Přidání pracovní účet ze zařízení Samsung Android
-### <a name="adding-the-work-account-through-the-app-home-screen"></a>Přidání pracovní účet prostřednictvím domovskou obrazovku aplikace
-1. Na domovské obrazovce aplikace přijměte licenční smlouvu s koncovým uživatelem (EULA).
-2. Na obrazovce aktivovat účet, klikněte na tlačítko v místní nabídce v pravé a vyberte **pracovní účet**.
-3. Na obrazovce účty, klikněte na tlačítko **přidat účet**.
-4. Pokud se zobrazí na obrazovce účty, klikněte na tlačítko **přidejte účet**. Pokud pracovní účet je již dříve vytvořili, zobrazí se synchronizace obrazovky zobrazující existující pracovní účet. Je-li zachovat pracovní účet, jednoduše klepnutím na šipku zpět na domovskou obrazovku. Alternativně můžete vybrat účet, který chcete odebrat a znovu vytvořte nové pracovní účet na připojení k pracovní ploše obrazovky, zadejte ID uživatele poskytla vaše organizace a klikněte na připojit.
-5. Pro přihlášení k aplikaci Azure Authenticator, zadejte účet organizace a heslo a klikněte na tlačítko **přihlášení**.
-6. Na další obrazovce, která zobrazuje informace o funkci vícefaktorového ověřování (MFA) pro přidání zabezpečení a je volitelný. Tato obrazovka se zobrazí, pokud vaše škola nebo pracoviště vyžaduje dvoufaktorové ověřování pro vytvoření pracovní účet. Poskytuje pokyny pro další ověření vašeho účtu.
-7. Klikněte na tlačítko **OK** na další obrazovce. Neměňte název certifikátu.
-   zpráva "Připojení k pracovišti". Aplikace Azure Authenticator se pokouší o připojení zařízení k pracovní ploše.
-   Měli byste vidět zprávu připojený k síti na pracovišti na další obrazovce.
+## <a name="adding-hello-work-account-from-a-non-samsung-android-device"></a>Přidání hello pracovní účet ze zařízení Samsung Android
+### <a name="adding-hello-work-account-through-hello-app-home-screen"></a>Přidání hello pracovní účet prostřednictvím domovské obrazovky aplikace hello
+1. Na domovské obrazovce hello aplikace hello přijměte licenční smlouvu konečného uživatele hello (uživatelem EULA).
+2. Na úvodní obrazovka aktivovat účet, klikněte na hello kontextové nabídky na hello vpravo a vyberte **pracovní účet**.
+3. Na úvodní obrazovka účty, klikněte na tlačítko **přidat účet**.
+4. Pokud se zobrazí úvodní obrazovka účty, klikněte na tlačítko **přidejte účet**. Pokud pracovní účet je již dříve vytvořili, zobrazí se synchronizace obrazovky zobrazující hello existující pracovní účet. Je-li zachovat hello pracovní účet, jednoduše klepnutím hello šipku zpět toohello domovskou obrazovku. Můžete alternativně vybrat hello účet tooremove a znovu vytvořte nové pracovní účet na úvodní obrazovka k síti na pracovišti, zadejte ID uživatele hello poskytla vaše organizace a klikněte na tlačítko Připojit.
+5. toosign v aplikaci Azure Authenticator toohello, zadejte účet organizace a heslo a klikněte na tlačítko **přihlášení**.
+6. úvodní obrazovka další, který zobrazí informace o funkci vícefaktorového ověřování (MFA) pro přidání zabezpečení a je volitelný. Tato obrazovka se zobrazí, pokud vaše škola nebo pracoviště vyžaduje dvoufaktorové ověřování pro vytvoření pracovní účet. Poskytuje pokyny toofurther ověřit váš účet.
+7. Klikněte na tlačítko **OK** na další obrazovce hello. Neměňte hello název certifikátu.
+   uvítací zprávu "Připojení k pracovišti". aplikaci Azure authenticator Hello se pokouší toojoin tooyour pracovišti zařízení.
+   Měli byste vidět hello připojený k síti na pracovišti zprávu na hello další obrazovky.
 
 > [!NOTE]
 > Jeden pracovní účet jsou povoleny ve vašem zařízení.
 > 
 > 
 
-Poté, co jste nainstalovali aplikaci Azure Authenticator, můžete také vytvořit pracovní účet správce účtů Android.
+Poté, co jste nainstalovali aplikaci Azure Authenticator hello, můžete také vytvořit pracovní účet z hello Android účet správce.
 
-1. Z **nastavení** nabídky, přejděte k účtům a klikněte na tlačítko **přidat účet**.
-2. Postupujte podle kroků 2 – 7 v postupu přidání účtu pracovní prostřednictvím aplikace domovské obrazovky **, chcete-li přidat pracovní účet.
+1. Z hello **nastavení** nabídky, přejděte tooAccounts a klikněte na tlačítko **přidat účet**.
+2. Postupujte podle kroků 2 – 7 v hello postupu přidání hello pracovní účet prostřednictvím hello aplikace domovské obrazovky **, tooadd pracovní účet.
 
-### <a name="how-to-find-out-which-version-is-installed"></a>Jak zjistit, která verze je nainstalovaná
-1. Můžete zjistit, která verze aplikace Azure Authenticator a verze přidružená služba jsou nainstalované ve vašem zařízení.
-2. V zobrazeném nabídky, klikněte na **o**.
-3. Na obrazovce o zobrazí služby, aplikace a verze nainstalované v zařízení.
+### <a name="how-toofind-out-which-version-is-installed"></a>Instalace toofind, se kterou verzi
+1. Můžete zjistit, která verze aplikace Azure Authenticator hello a verze přidružená služba jsou nainstalované ve vašem zařízení.
+2. Z hello otevíraném nabídky, klikněte na tlačítko **o**.
+3. Hello o obrazovce zobrazí hello služby aplikace hello a hello verze nainstalované v zařízení.
 
-### <a name="sending-log-files-to-report-issues"></a>Odesílání souborů protokolů a problémy sestavy
-1. Postupujte podle pokynů na Microsoft Support nahlásit incident s aplikaci Azure Authenticator, získat incident číslo a odesílat soubory protokolů proti číslo přiřazené incidentu následujícím způsobem:
-2. V zobrazeném nabídky, klikněte na **protokolování**.
-3. Pokud máte otevřeného incidentu s Microsoft Support, poznamenejte si číslo incidentu (pro později budete je potřebovat). Pokud jste ještě nevytvořili na základě incidentu podpory a chcete pomoc, postupujte podle pokynů v [Microsoft Support](https://support.microsoft.com/en-us/contactus) otevřete nový incident.
-4. Na obrazovce protokolování, klikněte na tlačítko **odeslat**.
-5. Vyberte poskytovatele e-mailu, který chcete použít.
-6. Pokud je již otevřeného incidentu Microsoft Support, obraťte se na pracovníka podpory, které jsou přiřazené k vašemu problému a zjistěte, jak odesílat data protokolu a její přidružené vašeho incidentu. Pracovník podpory vám poskytne informace pro řádek adresy a předmětu e-mailu. Pokud jste ještě není na základě incidentu podpory, postupujte podle pokynů v Microsoft Support otevřete nový incident.
-7. Upravit **k** řádku a **subjektu** řádek s informacemi, které jste dostali od společnosti Microsoft Support.
-8. Aplikace Azure Authenticator připojí k e-mailu, odesílání souboru protokolu. Popište problém, ke kterým dochází, aktualizujte seznam příjemců (volitelné) a odeslat e-mailu.
+### <a name="sending-log-files-tooreport-issues"></a>Odeslání souborů protokolu tooreport problémy
+1. Postupujte podle pokynů hello na Microsoft Support tooreport incidentu s hello aplikaci Azure Authenticator, získat incident číslo a odesílat soubory protokolů proti hello přiřazen incident číslo následujícím způsobem:
+2. Z hello otevíraném nabídky, klikněte na tlačítko **protokolování**.
+3. Pokud máte otevřeného incidentu s Microsoft Support, poznamenejte si počet incidentů hello (pro později budete je potřebovat). Pokud jste ještě nevytvořili na základě incidentu podpory a chcete pomoc, postupujte podle pokynů hello v [Microsoft Support](https://support.microsoft.com/en-us/contactus) tooopen nový incident.
+4. Na úvodní obrazovka protokolování, klikněte na tlačítko **odeslat**.
+5. Vyberte poskytovatele e-mailu hello chcete toouse.
+6. Pokud jste již otevřeného incidentu Microsoft Support, obraťte se na hello pracovníka podpory přiřazené tooyour problém toofind jak toosend hello protokolovat data a jej přidružené vašeho incidentu. Hello pracovníka podpory vám poskytne informace o hello e-mailové adresy a předmětu řádku. Pokud jste ještě není na základě incidentu podpory, postupujte podle hello dokumentaci na webu Microsoft Support tooopen nový incident.
+7. Upravit hello **k** řádku a **subjektu** souladu se zásadami hello informace, které jste dostali od společnosti Microsoft Support.
+8. aplikaci Azure Authenticator Hello připojí hello protokolu souboru toohello e-mailu odesílání. Popisují hello problém, ke kterým dochází, aktualizujte seznam příjemců (volitelné) a odeslání e-mailu hello.
 
-### <a name="deleting-the-work-account-and-leaving-your-workplace"></a>Odstraní pracovní účet a nechá vaše pracoviště
-Můžete odebrat pracovní účet, který jste vytvořili kdykoli následujícím způsobem:
+### <a name="deleting-hello-work-account-and-leaving-your-workplace"></a>Odstraní hello pracovní účet a nechá vaše pracoviště
+Můžete odebrat hello pracovní účet, který jste vytvořili kdykoli následujícím způsobem:
 
-**Chcete-li odstranit pracovní účet z nabídky nastavení**
+**toodelete hello pracovní účet z nabídky nastavení hello**
 
-1. Správce účtů vyberte **pracovní účet**.
-2. Na obrazovce pracovní účet v **obecné nastavení**, vyberte **nastavení účtu – nechte síti vaší organizace**.
-3. Vyberte **nechte** na **k síti na pracovišti** obrazovky.
-4. Klikněte na tlačítko **OK** když se zobrazí zpráva "Jste si jisti, že chcete opustit pracovní místo".
+1. Správce účtů hello, vyberte **pracovní účet**.
+2. Na úvodní obrazovka pracovní účet v **obecné nastavení**, vyberte **nastavení účtu – nechte síti vaší organizace**.
+3. Vyberte **nechte** na hello **k síti na pracovišti** obrazovky.
+4. Klikněte na tlačítko **OK** hello zprávy "Opravdu chcete síti na pracovišti tooleave" se zobrazí.
 5. Tím se zajistí, že jste odstranili svůj pracovní účet ze svého pracoviště.
 
 > [!NOTE]
-> Doporučujeme odebrat účet možnost nepoužívejte odstranit pracovní účet, jak tato možnost nemusí fungovat v některé starší verze systému Android.
+> Doporučujeme, nepoužívejte toodelete možnost odebrat účet hello pracovní účet jako tato možnost nemusí fungovat v některé starší verze systému Android.
 > 
 > 
 
-## <a name="uninstalling-the-app"></a>Odinstalace aplikace
-Na zařízení Samsung Android oprávnění správce zařízení musí být odebrány takto před odinstalací 
+## <a name="uninstalling-hello-app"></a>Odinstalace aplikace hello
+Na zařízení Samsung Android oprávnění správce zařízení musí být odebrána takto předchozí toouninstalling hello 
 
 1. Z **nastavení**v části **systému**, vyberte **zabezpečení**.
-2. V rámci D**evice správy**, klikněte na tlačítko **Správci zařízení**. Ujistěte se, že políčko vedle **Azure Authenticator** se vymaže.
+2. V rámci D**evice správy**, klikněte na tlačítko **Správci zařízení**. Ujistěte se, že hello zaškrtněte políčko vedle příliš**Azure Authenticator** se vymaže.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud se zobrazí **chyba úložiště klíčů**, může to být proto, že nemáte zámek obrazovky sadu si PIN kód. Tento problém obejít, odinstalovat aplikaci Azure Authenticator, konfigurace PIN kódu pro zamykací obrazovku a znovu nainstalovat aplikaci.
+Pokud se zobrazí hello **chyba úložiště klíčů**, to může být způsobeno nemáte hello zámek obrazovky sadu si PIN kód. toowork tento problém odstranit, odinstalujte aplikaci Azure Authenticator hello, konfigurace PIN kódu pro zamykací obrazovka a znovu nainstalujte aplikaci hello.
 

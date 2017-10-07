@@ -1,6 +1,6 @@
 ---
-title: "Zřizování aplikace s filtry oborů | Microsoft Docs"
-description: "Další informace o použití oboru filtrů objekty v aplikacích, které podporují zřizování automatizované uživatelů z ve skutečnosti se zřídí Pokud objekt nemá splňují vaše podnikové požadavky."
+title: "aaaProvisioning aplikace s filtry oborů | Microsoft Docs"
+description: "Zjistěte, jak toouse rozsahu filtry tooprevent objektů v aplikace, které podporují zřizování automatizované uživatelů z ve skutečnosti se zřídí Pokud objekt nemá splňují vaše podnikové požadavky."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 109635052e2ded33831b050eb12d50745944091b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f0299390dc3fdb70aa9d271e835069a08827d635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikace na základě atributů s filtry oborů
-Cílem této části se popisují, jak se oboru filtrů umožňují definovat pravidla na základě atributů, které určují, kteří uživatelé jsou zřízené do aplikace.
+Hello cílem této části je, že tooexplain jak toouse rozsahu filtry na základě atributů pravidla toodefine, které určují, kteří uživatelé mají zřízený toohello aplikace.
 
 ## <a name="clauses-and-scope-groups"></a>Klauzule a obor skupiny
 ![Filtr vytváření oboru][1] 
 
-Oboru filtry jsou definované za jeden nebo více **obor skupiny**, každý z které obsahovat jednu nebo více **klauzule**. Zobrazíte klauzule pro konkrétní obor skupiny, rozbalte ho kliknutím na šipku nalevo od názvu skupiny.
+Oboru filtry jsou definované za jeden nebo více **obor skupiny**, každý z které obsahovat jednu nebo více **klauzule**. klauzule hello toosee pro konkrétní obor skupiny, rozbalte ho kliknutím hello šipku toohello nalevo od názvu skupiny hello.
 
-A **klauzule** Určuje, kteří uživatelé mohou předávat oboru filtru vyhodnocením atributy každého uživatele. Například můžete mít jednu klauzuli, která vyžaduje, aby atribut 'stav' uživatele rovnat New Yorku, tak jenom uživatelé v New Yorku jsou zřízené do aplikace.
+A **klauzule** Určuje, kteří uživatelé mohou toopass prostřednictvím hello filtr vytváření oboru vyhodnocením atributy každého uživatele. Například můžete mít jednu klauzuli, která vyžaduje, aby uživatele 'stav' atribut rovna New Yorku, takže jsou pouze uživatelé v New Yorku zřízené do aplikace hello.
 
 ![Název oboru skupiny][2] 
 
-Každý **oboru skupiny** začíná jeden povinné **klauzule**, jak je znázorněno v výše uvedený snímek obrazovky. Tuto klauzuli jednoduše stavy, že uživatel musí nejprve přiřadit k aplikaci předtím, než je vyhodnocena podle oboru filtry. Tuto klauzuli nemůže být odstraněna nebo upravena.
+Každý **oboru skupiny** začíná jeden povinné **klauzule**, jak je znázorněno v výše uvedený snímek obrazovky hello. Tuto klauzuli jednoduše stavy, že tento uživatel hello musí být přiřazena toohello aplikace předtím, než je vyhodnocena podle oboru filtry. Tuto klauzuli nemůže být odstraněna nebo upravena.
 
-Stisknutím kombinace kláves na příslušné tlačítko můžete přidat nové klauzule nebo nové oboru skupiny. Můžete udělit každou skupinu oboru název tak, že upravíte jeho **název oboru skupiny** vlastnost.
+Stisknutím tlačítka odpovídající hello můžete přidat nové klauzule nebo nové oboru skupiny. Můžete udělit každou skupinu oboru název tak, že upravíte jeho **název oboru skupiny** vlastnost.
 
 ## <a name="how-scoping-filters-are-evaluated"></a>Jak se vyhodnocují filtry oborů
-Při zřizování, abychom otestovat všechny přiřazené uživatele vůči oboru filtry k určení, pokud se tento uživatel si zaslouží přístup k aplikaci. Si můžete představit jako test, který musí být předán v pořadí pro uživatele, aby se zabránilo získávání odfiltrovat každý klauzule. 
+Při zřizování, jsme vyzkoušejte každých přiřazený uživatel proti vaší oboru toodetermine filtry, pokud je tento uživatel si zaslouží přístup toohello aplikace. Si můžete představit jako test, který musí být předán tooavoid uživatele hello získávání odfiltrovat, aby každý klauzule. 
 
-Pokud máte více skupin oboru definován, každý uživatel musí projít alespoň jeden z nich pro přístup k aplikaci. V rámci jednotlivých skupin oboru ale uživatel musí projít každých klauzule předat této konkrétní obor skupiny. 
+Pokud máte více skupin oboru definován, každý uživatel musí projít alespoň jeden z nich tooaccess aplikace hello. V rámci jednotlivých skupin oboru však hello uživatel musí projít každých toopass klauzule této konkrétní obor skupiny. 
 
-Jinými slovy, si můžete představit oboru skupiny, že by společně nebo si můžete představit jako klauzulích v nich a společně by. Představte si třeba oboru filtru níže:
+Jinými slovy, si můžete představit oboru skupiny, že by společně nebo si můžete představit hello klauzule v nich jako a společně by. Představte si třeba hello obor filtru níže:
 
 ![Název oboru skupiny][3]  
 
-Podle tohoto oboru filtru uživatelé musí splňovat následující kritéria, které se má zřídit:
+Podle toothis filtr vytváření oboru, uživatelé musí splňovat následující hello kritérií, toobe zřízené:
 
-1. Je třeba je přiřadit k aplikaci.
-2. Musí pracují v oddělení inženýrství
+1. Musí být přiřazena toohello aplikace.
+2. Musí pracují v oddělení inženýrství hello
 3. Musí být práce v síti San Franciscu nebo Kanadě.
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS](active-directory-saas-app-provisioning.md)
+* [Automatizace zřizování uživatelů a jeho rušení tooSaaS aplikace](active-directory-saas-app-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Účet zřizování oznámení](active-directory-saas-account-provisioning-notifications.md)
-* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](active-directory-scim-provisioning.md)
-* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
+* [Pomocí SCIM tooenable automatické zřizování uživatelů a skupin ze služby Azure Active Directory tooapplications](active-directory-scim-provisioning.md)
+* [Seznam kurzů tooIntegrate aplikace SaaS](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png

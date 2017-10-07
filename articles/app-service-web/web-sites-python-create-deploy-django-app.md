@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace pomocí rozhraní Django v Azure"
-description: "Tento kurz vás seznámí s postupem spuštění webové aplikace v jazyce Python ve službě Azure App Service Web Apps."
+title: "aaaCreating webové aplikace pomocí rozhraní Django v Azure"
+description: "Kurz vás seznámí s toorunning webové aplikace Python v Azure App Service Web Apps."
 services: app-service\web
 documentationcenter: python
 tags: python
@@ -15,21 +15,21 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2016
 ms.author: huvalo
-ms.openlocfilehash: 388a2db21dd1669b48b3204aaa322d7915905506
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 26a131da358748bd6fe4ee5c114d0a8f91b83cfe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-web-apps-with-django-in-azure"></a>Vytvoření webové aplikace pomocí rozhraní Django v Azure
-Tento kurz popisuje, jak začít a spustit jazyk Python ve službě [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Služba Web Apps poskytuje omezené bezplatné hostování a rychlé nasazení, a navíc můžete používat jazyk Python! Souběžně s růstem aplikace můžete přejít na placené hostování a můžete také integrovat se všemi ostatními službami Azure.
+Tento kurz popisuje, jak tooget spuštění Python [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Služba Web Apps poskytuje omezené bezplatné hostování a rychlé nasazení, a navíc můžete používat jazyk Python! Jak vaše aplikace bude rozšiřovat, můžete přepnout toopaid hostování a můžete také integrovat se všemi hello jinými službami Azure.
 
-Vytvoříte aplikaci pomocí webového rozhraní Django (pro rozhraní [Flask](web-sites-python-create-deploy-flask-app.md) a [Bottle](web-sites-python-create-deploy-bottle-app.md) jsou k dispozici alternativní verze tohoto kurzu). Vytvoříte webovou aplikaci z Azure Marketplace, nastavíte nasazení Git a místně naklonujete úložiště. Poté místně spustíte aplikaci, provedete změny, potvrdíte je a nuceně vložíte do Azure. V tomto kurzu se dozvíte, jak to provést ze systému Windows nebo Mac/Linux.
+Vytvoříte aplikaci pomocí hello Django webová architektura (viz alternativní verze tohoto kurzu pro [Flask](web-sites-python-create-deploy-flask-app.md) a [Bottle](web-sites-python-create-deploy-bottle-app.md)). Vytvoření webové aplikace hello hello Azure Marketplace, nastavíte nasazení Git a klonovat úložiště hello místně. Bude potom místní spuštění aplikace hello, proveďte změny, potvrzení a vložit je tooAzure. Hello kurzu se dozvíte, jak toodo to ze systému Windows nebo Mac/Linux.
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
@@ -43,27 +43,27 @@ Vytvoříte aplikaci pomocí webového rozhraní Django (pro rozhraní [Flask](w
 **Poznámka**: Publikování TFS není u projektů v jazyce Python aktuálně podporováno.
 
 ### <a name="windows"></a>Windows
-Nemáte-li ještě nainstalován jazyk Python 2.7 nebo 3.4 (32bitová verze), doporučujeme pomocí instalačního programu webové platformy nainstalovat [Azure SDK pro Python 2.7] nebo sadu [Azure SDK pro Python 3.4]. Tím se nainstaluje 32bitová verze jazyka Python, setuptools, pip, virtualenv atd. (32bitová verze jazyka Python je nainstalována v hostitelských počítačích Azure). Alternativně můžete získat jazyk Python z webu [python.org].
+Nemáte-li ještě nainstalován jazyk Python 2.7 nebo 3.4 (32bitová verze), doporučujeme pomocí instalačního programu webové platformy nainstalovat [Azure SDK pro Python 2.7] nebo sadu [Azure SDK pro Python 3.4]. Tím se nainstaluje hello 32bitovou verzi jazyka Python, setuptools, pip, virtualenv atd (32bitová verze jazyka Python je nainstalovaných v hello hostitelských počítačích Azure). Alternativně můžete získat jazyk Python z webu [python.org].
 
-V případě Git doporučujeme [Git pro Windows] nebo [GitHub pro Windows]. Pokud používáte Visual Studio, můžete použít integrovanou podporu Git.
+V případě Git doporučujeme [Git pro Windows] nebo [GitHub pro Windows]. Pokud používáte Visual Studio, můžete použít integrované hello podporu Git.
 
-Doporučujeme také nainstalovat nástroje [Python Tools 2.2 pro Visual Studio]. Tato položka je volitelná, ale pokud máte sadu [Visual Studio], včetně bezplatné sady Visual Studio Community 2013 nebo Visual Studio Express 2013 pro Web, tato položka vám poskytne skvělé rozhraní IDE pro jazyk Python.
+Doporučujeme také nainstalovat nástroje [Python Tools 2.2 pro Visual Studio]. Tato položka je nepovinná, ale pokud máte [Visual Studio], včetně hello volné Visual Studio Community 2013 nebo Visual Studio Express 2013 pro Web, pak tato položka vám poskytne skvělé rozhraní IDE Python.
 
 ### <a name="maclinux"></a>Mac/Linux
 Již byste měli mít nainstalován jazyk Python a Git, ale ujistěte se, zda máte Python 2.7 nebo 3.4.
 
 ## <a name="web-app-creation-on-portal"></a>Vytvoření webové aplikace v portálu
-Prvním krokem při vytváření aplikace je vytvoření webové aplikace pomocí [Azure Portal](https://portal.azure.com).
+Hello prvním krokem při vytváření aplikace je toocreate hello webové aplikace pomocí hello [portálu Azure](https://portal.azure.com).
 
-1. Přihlaste se k portálu Azure a v levém dolním rohu klikněte na tlačítko **NOVÉ**.
-2. Do vyhledávacího pole zadejte „python“.
-3. Ve výsledcích hledání vyberte položku **Django** (publikováno PTVS) a klikněte na **Vytvořit**.
-4. Nakonfigurujte novou aplikaci Django, například pro ni vytvořte nový plán služby App Service a novou skupinu prostředků. Poté klikněte na možnost **Vytvořit**.
-5. Pro nově vytvořenou webovou aplikaci nakonfigurujte publikování Git podle pokynů uvedených v tématu [Místní nasazení GIT ve službě Azure App Service](app-service-deploy-local-git.md).
+1. Přihlaste se k hello portálu Azure a klikněte na tlačítko hello **nový** tlačítko v levém dolním rohu hello.
+2. Hello vyhledávacího pole zadejte "python".
+3. Ve výsledcích hledání hello, vyberte **Django** (publikováno PTVS), pak klikněte na tlačítko **vytvořit**.
+4. Nakonfigurujte hello novou aplikaci Django, jako je například vytváření nového plánu služby App Service a novou skupinu prostředků pro ni. Poté klikněte na možnost **Vytvořit**.
+5. Nakonfigurujte publikování Git pro nově vytvořenou webovou aplikaci pomocí následujících pokynů hello [místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md).
 
 ## <a name="application-overview"></a>Přehled aplikace
 ### <a name="git-repository-contents"></a>Obsah úložiště Git
-Zde je uveden přehled souborů, které naleznete v počátečním úložišti Git, jež budeme v následující části klonovat.
+Zde je uveden přehled hello soubory, které se nachází ve hello počátečním úložišti Git, které jsme klonovat v další části hello.
 
     \app\__init__.py
     \app\forms.py
@@ -84,15 +84,15 @@ Zde je uveden přehled souborů, které naleznete v počátečním úložišti G
     \DjangoWebProject\urls.py
     \DjangoWebProject\wsgi.py
 
-Hlavní zdroje pro aplikaci. Skládá se ze 3 stran (index, about, contact) s rozložením předlohy. Statický obsah a skripty obsahují položky bootstrap, jquery, modernizr a respond.
+Hlavní zdroje pro aplikaci hello. Skládá se ze 3 stran (index, about, contact) s rozložením předlohy. Statický obsah a skripty obsahují položky bootstrap, jquery, modernizr a respond.
 
     \manage.py
 
-Serverová podpora místní správy a vývoje. Tuto položku použijte k místnímu spuštění aplikace, synchronizaci databáze atd.
+Serverová podpora místní správy a vývoje. Pomocí této aplikace hello toorun místně, synchronizaci databáze hello atd.
 
     \db.sqlite3
 
-Výchozí databáze. Obsahuje nezbytné tabulky pro spuštění aplikace, ale neobsahuje žádné uživatele (chcete-li vytvořit uživatele, synchronizujte databázi).
+Výchozí databáze. Zahrnuje hello nezbytné tabulky pro toorun aplikace hello, ale neobsahuje žádné uživatele (synchronizovat hello databáze toocreate uživatele).
 
     \DjangoWebProject.pyproj
     \DjangoWebProject.sln
@@ -105,12 +105,12 @@ Proxy server služby IIS pro virtuální prostředí a podpora vzdáleného lad�
 
     \requirements.txt
 
-Externí balíčky vyžadované touto aplikací. Skript nasazení nainstaluje nástrojem pip balíčky uvedené v tomto souboru.
+Externí balíčky vyžadované touto aplikací. skript nasazení Hello nástrojem pip instalaci hello balíčky uvedené v tomto souboru.
 
     \web.2.7.config
     \web.3.4.config
 
-Konfigurační soubory služby IIS. Skript nasazení použije příslušný soubor web.x.y.config a zkopíruje jej jako soubor web.config.
+Konfigurační soubory služby IIS. Hello skript nasazení použije příslušný soubor web.x.y.config hello a zkopírujte ho jako soubor web.config.
 
 ### <a name="optional-files---customizing-deployment"></a>Volitelné soubory – přizpůsobení nasazení
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
@@ -119,7 +119,7 @@ Konfigurační soubory služby IIS. Skript nasazení použije příslušný soub
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>Další soubory na serveru
-Na serveru existují některé soubory, které nejsou přidány do úložiště git. Tyto soubory jsou vytvořeny skriptem nasazení.
+Některé soubory existují na serveru hello, ale nebyly přidány toohello úložiště git. Tyto soubory jsou vytvořeny skriptem nasazení hello.
 
     \web.config
 
@@ -127,92 +127,92 @@ Konfigurační soubor služby IIS. Tento soubor je vytvořen ze souboru web.x.y.
 
     \env\
 
-Virtuální prostředí Python. Toto prostředí je vytvořeno během nasazení, pokud ve webové aplikaci ještě neexistuje kompatibilní virtuální prostředí. Balíčky uvedené v souboru requirements.txt jsou nainstalovány nástrojem pip, avšak nástroj pip instalaci přeskočí, pokud jsou dané balíčky již nainstalovány.
+Virtuální prostředí Python. Vytvoří se během nasazení, pokud ještě neexistuje kompatibilní virtuální prostředí na hello webové aplikace. Balíčky uvedené v souboru requirements.txt jsou nainstalovány nástrojem pip, ale pip instalaci přeskočí, pokud hello balíčky jsou už nainstalované.
 
-Následující 3 části popisují postup při vývoji webové aplikace ve 3 různých prostředích:
+Hello následující 3 části popisují, jak tooproceed s hello vývoj webových aplikací ve 3 různých prostředích:
 
 * Windows s nástroji Python Tools pro Visual Studio
 * Windows s příkazovým řádkem
 * Mac/Linux s příkazovým řádkem
 
 ## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Vývoj webových aplikací – Windows – nástroje Python Tools pro Visual Studio
-### <a name="clone-the-repository"></a>Klonování úložiště
-Nejprve naklonujte úložiště pomocí adresy URL poskytnuté na portálu Azure. Další informace naleznete v tématu [Místní nasazení přes Git do Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klon hello úložiště
+Nejprve naklonujte úložiště hello pomocí hello adresy URL poskytnuté na portálu Azure hello. Další informace najdete v tématu [místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md).
 
-Otevřete soubor řešení (.sln), který je zahrnut v kořenovém adresáři úložiště.
+Otevřete soubor řešení hello (.sln), který je součástí hello kořenovém hello úložiště.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-solution-django.png)
 
 ### <a name="create-virtual-environment"></a>Vytvoření virtuálního prostředí
 Nyní vytvoříme virtuální prostředí pro místní vývoj. Klikněte pravým tlačítkem na položku **Prostředí Python** a vyberte možnost **Přidat virtuální prostředí...**.
 
-* Ujistěte se, zda název prostředí je `env`.
-* Vyberte základní překladač. Nezapomeňte použít stejnou verzi jazyka Python, jaká byla vybrána pro webovou aplikaci (v souboru runtime.txt nebo v okně **Nastavení aplikace** webové aplikace na portálu Azure).
-* Ujistěte se, zda je zaškrtnutá možnost stažení a instalace balíčků.
+* Zkontrolujte, zda je název hello hello prostředí `env`.
+* Vyberte základní překladač hello. Zajistěte, aby toouse hello stejnou verzi jazyka Python, který je vybraný pro vaši webovou aplikaci (v souboru runtime.txt nebo hello **nastavení aplikace** okně vaší webové aplikace v hello portál Azure).
+* Zkontrolujte, že je zaškrtnuté hello možnost toodownload a nainstalovat balíčky.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-add-virtual-env-27.png)
 
-Klikněte na možnost **Vytvořit**. Tím dojde k vytvoření virtuálního prostředí a instalaci závislostí uvedených v souboru requirements.txt.
+Klikněte na možnost **Vytvořit**. Tato akce vytvoří hello virtuální prostředí a instalaci závislostí uvedených v souboru requirements.txt.
 
 ### <a name="create-a-superuser"></a>Vytvoření superuživatele
-V databázi, která je součástí aplikace, není definován žádný superuživatel. Chcete-li používat funkci přihlašování v aplikaci nebo rozhraní správce Django (pokud se jej rozhodnete povolit), bude nutné vytvořit superuživatele.
+součástí aplikace hello databáze Hello nemá definován žádný superuživatel. V pořadí toouse hello funkce přihlašování v aplikaci hello nebo rozhraní správce Django hello (Pokud se rozhodnete tooenable ho), budete potřebovat toocreate superuživatele.
 
-Spusťte tento příkaz z příkazového řádku ze složky projektu:
+Spusťte z hello příkazového řádku ze složky projektu:
 
     env\scripts\python manage.py createsuperuser
 
-Postupujte podle výzev a nastavte uživatelské jméno, heslo atd.
+Postupujte podle hello výzvy tooset hello uživatelské jméno, heslo atd.
 
 ### <a name="run-using-development-server"></a>Spuštění pomocí vývojového serveru
-Stisknutím klávesy F5 spusťte ladění, čímž se automaticky otevře webový prohlížeč s místně spuštěnou stránkou.
+Stisknutím klávesy F5 toostart ladění a webový prohlížeč se automaticky otevře s místně spuštěnou stránkou toohello.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-Můžete nastavit zarážky ve zdrojích, používat okna kukátka atd. Další informace o jednotlivých funkcích naleznete v části [Dokumentace nástrojů Python Tools pro Visual Studio].
+Můžete nastavit zarážky v hello zdrojů, používání hello sledování systému windows, atd. V tématu hello [Python Tools pro Visual Studio dokumentaci] Další informace o hello různých funkcí.
 
 ### <a name="make-changes"></a>Provedení změn
-Nyní můžete experimentovat tím, že budete provádět změny zdrojů a/nebo šablon aplikace.
+Nyní můžete experimentovat tím, že změny toohello aplikace zdrojů a/nebo šablon.
 
-Jakmile změny otestujete, potvrďte je do úložiště Git:
+Jakmile změny otestujete, potvrďte je toohello úložiště Git:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-commit-django.png)
 
 ### <a name="install-more-packages"></a>Instalace dalších balíčků
 Aplikace může mít kromě jazyka Python a rozhraní Django také další závislosti.
 
-Další balíčky můžete nainstalovat pomocí nástroje pip. Chcete-li nainstalovat balíček, klikněte pravým tlačítkem na virtuální prostředí a vyberte možnost **Instalovat balíček Python**.
+Další balíčky můžete nainstalovat pomocí nástroje pip. tooinstall balíčku, klikněte pravým tlačítkem myši na virtuální prostředí hello a vyberte **instalovat balíček Python**.
 
-Chcete-li nainstalovat sadu Azure SDK pro Python, která umožňuje přístup k úložišti Azure, sběrnici Service Bus a dalším službám Azure, zadejte `azure`:
+Například tooinstall hello Azure SDK pro Python, která dává vám přístup tooAzure úložiště, služby service bus a dalším službám Azure, zadejte `azure`:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-install-package-dialog.png)
 
-Klikněte pravým tlačítkem na virtuální prostředí a výběrem možnosti **Generovat soubor requirements.txt** aktualizujte soubor requirements.txt.
+Klikněte pravým tlačítkem na virtuální prostředí hello a vyberte **generovat soubor requirements.txt** tooupdate requirements.txt.
 
-Poté potvrďte změny souboru requirements.txt do úložiště Git.
+Poté potvrďte úložiště Git toohello toorequirements.txt změny hello.
 
-### <a name="deploy-to-azure"></a>Nasazení do Azure
-Chcete-li aktivovat nasazení, klikněte na možnost **Synchronizovat** nebo **Vložit změny (push)**. Synchronizace provádí vložení změn (push) i přijetí změn (pull).
+### <a name="deploy-tooazure"></a>Nasazení tooAzure
+tootrigger nasazení, klikněte na **synchronizace** nebo **Push**. Synchronizace provádí vložení změn (push) i přijetí změn (pull).
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-git-push.png)
 
-První nasazení bude určitou dobu trvat, neboť bude vytvářet virtuální prostředí, instalovat balíčky atd.
+Hello první nasazení bude určitou dobu trvat, neboť bude vytvářet virtuální prostředí, instalovat balíčky atd.
 
-Sada Visual Studio nezobrazuje průběh nasazení. Chcete-li překontrolovat výstup, informace naleznete v tématu [Řešení potíží – nasazení](#troubleshooting-deployment).
+Sada Visual Studio nezobrazuje průběh hello hello nasazení. Pokud chcete výstup hello tooreview, najdete v tématu hello na [řešení potíží – nasazení](#troubleshooting-deployment).
 
-Chcete-li zobrazit změny, přejděte na adresu URL Azure.
+Procházejte toohello adresy URL Azure tooview změny.
 
 ## <a name="web-app-development---windows---command-line"></a>Vývoj webových aplikací – Windows – příkazový řádek
-### <a name="clone-the-repository"></a>Klonování úložiště
-Nejprve naklonujte úložiště pomocí adresy URL poskytnuté na portálu Azure a přidejte úložiště Azure jako vzdálené. Další informace naleznete v tématu [Místní nasazení přes Git do Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klon hello úložiště
+Nejprve naklonujte úložiště hello pomocí hello adresy URL poskytnuté na portálu Azure hello a přidat hello úložiště Azure jako vzdálené. Další informace najdete v tématu [místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
 ### <a name="create-virtual-environment"></a>Vytvoření virtuálního prostředí
-Vytvoříme nové virtuální prostředí pro účely vývoje (nepřidávejte jej do úložiště). Virtuální prostředí v jazyce Python nejsou přemístitelná, a proto si každý vývojář pracující na aplikaci vytvoří místně své vlastní virtuální prostředí.
+Vytvoříme nové virtuální prostředí pro účely vývoje (nepřidávejte jej toohello úložiště). Virtuální prostředí v Python nejsou přemístitelná, takže každý vývojář pracující na aplikaci hello vytvoří vlastní místně.
 
-Nezapomeňte použít stejnou verzi jazyka Python, jaká byla vybrána pro webovou aplikaci (v souboru runtime.txt nebo v okně Nastavení aplikace webové aplikace na portálu Azure).
+Zajistěte, aby toouse hello stejnou verzi jazyka Python, který je vybraný pro vaši webovou aplikaci (v souboru runtime.txt nebo hello okně Nastavení aplikace webové aplikace v hello portál Azure).
 
 Pro jazyk Python 2.7:
 
@@ -222,36 +222,36 @@ Pro jazyk Python 3.4:
 
     c:\python34\python.exe -m venv env
 
-Nainstalujte veškeré případné externí balíčky požadované aplikací. Můžete použít soubor requirements.txt v kořenovém adresáři úložiště k instalaci balíčků ve virtuálním prostředí:
+Nainstalujte veškeré případné externí balíčky požadované aplikací. Můžete použít soubor requirements.txt hello na nejnižší hello hello úložiště tooinstall hello balíčků ve virtuálním prostředí:
 
     env\scripts\pip install -r requirements.txt
 
 ### <a name="create-a-superuser"></a>Vytvoření superuživatele
-V databázi, která je součástí aplikace, není definován žádný superuživatel. Chcete-li používat funkci přihlašování v aplikaci nebo rozhraní správce Django (pokud se jej rozhodnete povolit), bude nutné vytvořit superuživatele.
+součástí aplikace hello databáze Hello nemá definován žádný superuživatel. V pořadí toouse hello funkce přihlašování v aplikaci hello nebo rozhraní správce Django hello (Pokud se rozhodnete tooenable ho), budete potřebovat toocreate superuživatele.
 
-Spusťte tento příkaz z příkazového řádku ze složky projektu:
+Spusťte z hello příkazového řádku ze složky projektu:
 
     env\scripts\python manage.py createsuperuser
 
-Postupujte podle výzev a nastavte uživatelské jméno, heslo atd.
+Postupujte podle hello výzvy tooset hello uživatelské jméno, heslo atd.
 
 ### <a name="run-using-development-server"></a>Spuštění pomocí vývojového serveru
-Následujícím příkazem můžete aplikaci spustit v rámci vývojového serveru:
+Hello aplikace v rámci vývojového serveru můžete spustit s hello následující příkaz:
 
     env\scripts\python manage.py runserver
 
-Konzola zobrazí adresa URL a port, jimž server naslouchá:
+Hello konzola zobrazí adresa URL hello a port hello server naslouchá:
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-run-local-django.png)
 
-Poté tuto adresu URL otevřete ve webovém prohlížeči.
+Potom otevřete adresu URL toothat webového prohlížeče.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
 ### <a name="make-changes"></a>Provedení změn
-Nyní můžete experimentovat tím, že budete provádět změny zdrojů a/nebo šablon aplikace.
+Nyní můžete experimentovat tím, že změny toohello aplikace zdrojů a/nebo šablon.
 
-Jakmile změny otestujete, potvrďte je do úložiště Git:
+Jakmile změny otestujete, potvrďte je toohello úložiště Git:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
@@ -259,40 +259,40 @@ Jakmile změny otestujete, potvrďte je do úložiště Git:
 ### <a name="install-more-packages"></a>Instalace dalších balíčků
 Aplikace může mít kromě jazyka Python a rozhraní Django také další závislosti.
 
-Další balíčky můžete nainstalovat pomocí nástroje pip. Chcete-li nainstalovat sadu Azure SDK pro Python, která umožňuje přístup k úložišti Azure, sběrnici Service Bus a dalším službám Azure, zadejte:
+Další balíčky můžete nainstalovat pomocí nástroje pip. Například tooinstall hello Azure SDK pro Python, která umožňuje přístup k tooAzure úložiště, služby service bus a dalším službám Azure, zadejte:
 
     env\scripts\pip install azure
 
-Nezapomeňte aktualizovat soubor requirements.txt:
+Ujistěte se, že tooupdate requirements.txt:
 
     env\scripts\pip freeze > requirements.txt
 
-Potvrďte změny:
+Potvrzení změn hello:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### <a name="deploy-to-azure"></a>Nasazení do Azure
-Chcete-li aktivovat nasazení, nuceně vložte (push) změny do Azure:
+### <a name="deploy-tooazure"></a>Nasazení tooAzure
+tootrigger nasazení nabízené hello změní tooAzure:
 
     git push azure master
 
-Zobrazí se výstup skriptu nasazení, včetně vytvoření virtuálního prostředí, instalace balíčků, vytvoření souboru web.config.
+Zobrazí se výstup hello hello skriptu nasazení, včetně vytvoření virtuálního prostředí, instalace balíčků, vytvoření souboru web.config.
 
-Chcete-li zobrazit změny, přejděte na adresu URL Azure.
+Procházejte toohello adresy URL Azure tooview změny.
 
 ## <a name="web-app-development---maclinux---command-line"></a>Vývoj webových aplikací – Mac/Linux – příkazový řádek
-### <a name="clone-the-repository"></a>Klonování úložiště
-Nejprve naklonujte úložiště pomocí adresy URL poskytnuté na portálu Azure a přidejte úložiště Azure jako vzdálené. Další informace naleznete v tématu [Místní nasazení přes Git do Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klon hello úložiště
+Nejprve naklonujte úložiště hello pomocí hello adresy URL poskytnuté na portálu Azure hello a přidat hello úložiště Azure jako vzdálené. Další informace najdete v tématu [místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
 ### <a name="create-virtual-environment"></a>Vytvoření virtuálního prostředí
-Vytvoříme nové virtuální prostředí pro účely vývoje (nepřidávejte jej do úložiště). Virtuální prostředí v jazyce Python nejsou přemístitelná, a proto si každý vývojář pracující na aplikaci vytvoří místně své vlastní virtuální prostředí.
+Vytvoříme nové virtuální prostředí pro účely vývoje (nepřidávejte jej toohello úložiště). Virtuální prostředí v Python nejsou přemístitelná, takže každý vývojář pracující na aplikaci hello vytvoří vlastní místně.
 
-Nezapomeňte použít stejnou verzi jazyka Python, jaká byla vybrána pro webovou aplikaci (v souboru runtime.txt nebo v okně Nastavení aplikace webové aplikace na portálu Azure).
+Zajistěte, aby toouse hello stejnou verzi jazyka Python, který je vybraný pro vaši webovou aplikaci (v souboru runtime.txt nebo hello okně Nastavení aplikace webové aplikace v hello portál Azure).
 
 Pro jazyk Python 2.7:
 
@@ -306,36 +306,36 @@ nebo
 
     pyvenv env
 
-Nainstalujte veškeré případné externí balíčky požadované aplikací. Můžete použít soubor requirements.txt v kořenovém adresáři úložiště k instalaci balíčků ve virtuálním prostředí:
+Nainstalujte veškeré případné externí balíčky požadované aplikací. Můžete použít soubor requirements.txt hello na nejnižší hello hello úložiště tooinstall hello balíčků ve virtuálním prostředí:
 
     env/bin/pip install -r requirements.txt
 
 ### <a name="create-a-superuser"></a>Vytvoření superuživatele
-V databázi, která je součástí aplikace, není definován žádný superuživatel. Chcete-li používat funkci přihlašování v aplikaci nebo rozhraní správce Django (pokud se jej rozhodnete povolit), bude nutné vytvořit superuživatele.
+součástí aplikace hello databáze Hello nemá definován žádný superuživatel. V pořadí toouse hello funkce přihlašování v aplikaci hello nebo rozhraní správce Django hello (Pokud se rozhodnete tooenable ho), budete potřebovat toocreate superuživatele.
 
-Spusťte tento příkaz z příkazového řádku ze složky projektu:
+Spusťte z hello příkazového řádku ze složky projektu:
 
     env/bin/python manage.py createsuperuser
 
-Postupujte podle výzev a nastavte uživatelské jméno, heslo atd.
+Postupujte podle hello výzvy tooset hello uživatelské jméno, heslo atd.
 
 ### <a name="run-using-development-server"></a>Spuštění pomocí vývojového serveru
-Následujícím příkazem můžete aplikaci spustit v rámci vývojového serveru:
+Hello aplikace v rámci vývojového serveru můžete spustit s hello následující příkaz:
 
     env/bin/python manage.py runserver
 
-Konzola zobrazí adresa URL a port, jimž server naslouchá:
+Hello konzola zobrazí adresa URL hello a port hello server naslouchá:
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-run-local-django.png)
 
-Poté tuto adresu URL otevřete ve webovém prohlížeči.
+Potom otevřete adresu URL toothat webového prohlížeče.
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-browser-django.png)
 
 ### <a name="make-changes"></a>Provedení změn
-Nyní můžete experimentovat tím, že budete provádět změny zdrojů a/nebo šablon aplikace.
+Nyní můžete experimentovat tím, že změny toohello aplikace zdrojů a/nebo šablon.
 
-Jakmile změny otestujete, potvrďte je do úložiště Git:
+Jakmile změny otestujete, potvrďte je toohello úložiště Git:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
@@ -343,27 +343,27 @@ Jakmile změny otestujete, potvrďte je do úložiště Git:
 ### <a name="install-more-packages"></a>Instalace dalších balíčků
 Aplikace může mít kromě jazyka Python a rozhraní Django také další závislosti.
 
-Další balíčky můžete nainstalovat pomocí nástroje pip. Chcete-li nainstalovat sadu Azure SDK pro Python, která umožňuje přístup k úložišti Azure, sběrnici Service Bus a dalším službám Azure, zadejte:
+Další balíčky můžete nainstalovat pomocí nástroje pip. Například tooinstall hello Azure SDK pro Python, která umožňuje přístup k tooAzure úložiště, služby service bus a dalším službám Azure, zadejte:
 
     env/bin/pip install azure
 
-Nezapomeňte aktualizovat soubor requirements.txt:
+Ujistěte se, že tooupdate requirements.txt:
 
     env/bin/pip freeze > requirements.txt
 
-Potvrďte změny:
+Potvrzení změn hello:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### <a name="deploy-to-azure"></a>Nasazení do Azure
-Chcete-li aktivovat nasazení, nuceně vložte (push) změny do Azure:
+### <a name="deploy-tooazure"></a>Nasazení tooAzure
+tootrigger nasazení nabízené hello změní tooAzure:
 
     git push azure master
 
-Zobrazí se výstup skriptu nasazení, včetně vytvoření virtuálního prostředí, instalace balíčků, vytvoření souboru web.config.
+Zobrazí se výstup hello hello skriptu nasazení, včetně vytvoření virtuálního prostředí, instalace balíčků, vytvoření souboru web.config.
 
-Chcete-li zobrazit změny, přejděte na adresu URL Azure.
+Procházejte toohello adresy URL Azure tooview změny.
 
 ## <a name="troubleshooting---package-installation"></a>Řešení potíží – instalace balíčku
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
@@ -372,80 +372,80 @@ Chcete-li zobrazit změny, přejděte na adresu URL Azure.
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
 ## <a name="troubleshooting---static-files"></a>Řešení potíží – statické soubory
-Rozhraní Django obsahuje koncepci shromažďování statických souborů. Tato akce kopíruje veškeré statické soubory z původního umístění do jediné složky. V případě této aplikace jsou kopírovány do složky `/static`.
+Rozhraní Django obsahuje koncepci shromažďování statických souborů hello. To trvá všechny hello statické soubory z původního umístění a zkopíruje je tooa jedna složka. Pro tuto aplikaci se kopírují příliš`/static`.
 
-Tato akce se provádí proto, že statické soubory mohou pocházet z různých „aplikací“ Django. Statické soubory z rozhraní správce Django jsou například umístěny v podsložce knihovny Django ve virtuálním prostředí. Statické soubory definované touto aplikací jsou umístěny ve složce `/app/static`. Při používání vícero „aplikací“ Django se statické soubory nacházejí na více místech.
+Tato akce se provádí proto, že statické soubory mohou pocházet z různých „aplikací“ Django. Například hello statické soubory z rozhraní správce Django hello jsou umístěny v podsložce knihovny Django ve virtuálním prostředí hello. Statické soubory definované touto aplikací jsou umístěny ve složce `/app/static`. Při používání vícero „aplikací“ Django se statické soubory nacházejí na více místech.
 
-Při spuštění aplikace v režimu ladění obsluhuje aplikace statické soubory z původního umístění.
+Při spuštění aplikace hello v režimu ladění, slouží hello aplikace hello statické soubory z původního umístění.
 
-Při spuštění aplikace v režimu vydání aplikace statické soubory **neobsluhuje**. Za obsluhu souborů je odpovědný webový server. U této aplikace bude služba IIS obsluhovat statické soubory z adresáře `/static`.
+Při spuštění v režimu vydání aplikace hello, nemá aplikace hello **není** obsluhovat statické soubory hello. Je zodpovědností hello hello webový server tooserve hello soubory. Pro tuto aplikaci, služba IIS bude poskytovat hello statické soubory z `/static`.
 
-Shromažďování statických souborů je prováděno automaticky v rámci skriptu nasazení, přičemž dříve shromážděné soubory jsou vymazány. To znamená, že shromažďování probíhá při každém nasazení, čímž nasazení mírně zpomaluje, ale současně zajišťuje, aby nebyly dostupné zastaralé soubory, a předchází tak potenciálním potížím se zabezpečením.
+Hello shromažďování statických souborů je prováděno automaticky v rámci hello skriptu nasazení, přičemž dříve shromážděné soubory. To znamená hello shromažďování probíhá při každém nasazení zpomalení nasazení trochu, ale zajišťuje, že zastaralé soubory nebudete mít k dispozici, zabraňující potenciálním potížím se zabezpečením.
 
-Chcete-li u aplikace rozhraní Django přeskočit shromažďování statických souborů:
+Pokud chcete u aplikace rozhraní Django tooskip shromažďování statických souborů:
 
     \.skipDjango
 
-Potom bude nutné provést shromažďování ručně v místním počítači:
+Potom budete potřebovat toodo hello kolekce ručně na místním počítači:
 
     env\scripts\python manage.py collectstatic
 
-Potom odeberte složku `\static` z `.gitignore` a přidejte ji do úložiště Git.
+Pak odeberte hello `\static` složky z `.gitignore` a přidejte ji toohello úložiště Git.
 
 ## <a name="troubleshooting---settings"></a>Řešení potíží – nastavení
-Různá nastavení aplikace lze změnit v souboru `DjangoWebProject/settings.py`.
+Různá nastavení pro aplikace hello lze změnit v `DjangoWebProject/settings.py`.
 
-Z důvodu usnadnění práce vývojářů je povolen režim ladění. Díky tomu je například možné při místním spuštění zobrazit obrázky a další statický obsah, aniž by bylo nutné shromažďovat statické soubory.
+Z důvodu usnadnění práce vývojářů je povolen režim ladění. Jeden dobrý vedlejším účinkem této je, že budete mít toosee obrázky a další statický obsah při spuštění místně, bez nutnosti toocollect statické soubory.
 
-Chcete-li zakázat režim ladění:
+režim ladění toodisable:
 
     DEBUG = False
 
-Když je zakázáno ladění, hodnotu položky `ALLOWED_HOSTS` je nutné aktualizovat tak, aby obsahovala název hostitele Azure. Příklad:
+Pokud je zakázáno ladění, hello hodnotu `ALLOWED_HOSTS` toobe potřeby aktualizovat název hostitele Azure tooinclude hello. Například:
 
     ALLOWED_HOSTS = (
         'pythonapp.azurewebsites.net',
     )
 
-Případně lze povolit všechny hostitele:
+nebo tooenable žádné:
 
     ALLOWED_HOSTS = (
         '*',
     )
 
-Je pravděpodobné, že v praxi budete chtít získávání názvu hostitele a přepínání mezi režimem ladění a vydání vyřešit komplexněji.
+V praxi může být vhodné toodo něco složitější toodeal s přepínání mezi ladění a vydání režimu a získávání názvu hostitele hello.
 
-Můžete nastavit proměnné prostředí prostřednictvím stránky **KONFIGURACE** portálu Azure, a to v části **nastavení aplikace**.  To může být užitečné pro nastavení hodnot, které nechcete zobrazit ve zdrojích (připojovací řetězce, hesla atd.) nebo které chcete v Azure a v místním počítači nastavit odlišně. V souboru `settings.py` můžete dotazem zjišťovat proměnné prostředí pomocí `os.getenv`.
+Můžete nastavit proměnné prostředí prostřednictvím portálu Azure hello **konfigurace** stránku hello **nastavení aplikace** části.  To může být užitečné pro nastavení hodnot, nemusí chcete tooappear v hello zdrojích (připojovací řetězce, hesla atd.), nebo zda chcete tooset jinak mezi Azure a v místním počítači. V `settings.py`, se můžete dotazovat pomocí proměnné prostředí hello `os.getenv`.
 
 ## <a name="using-a-database"></a>Používání databáze
-Databáze, která je součástí aplikace, je databáze SQLite. Jedná se o praktickou a užitečnou výchozí databázi pro použití při vývoji, protože nevyžaduje téměř žádné nastavení. Databáze je uložena v souboru db.sqlite3 ve složce projektu.
+Hello databáze, která je součástí aplikace hello je databáze sqlite. Toto je toouse praktickou a užitečnou výchozí databázi pro vývoj, protože nevyžaduje téměř žádné nastavení. Hello databáze je uložena v souboru db.sqlite3 hello ve složce projektu hello.
 
-Azure poskytuje databázové služby, které lze snadno použít z aplikace Django. Kurzy zaměřené na používání databáze [SQL Database] a [MySQL] z aplikace Django vysvětlují postup vytvoření databázové služby, změny nastavení databáze v souboru `DjangoWebProject/settings.py` a popisují knihovny, které je nutné nainstalovat.
+Azure poskytuje databázové služby, které jsou snadno toouse z aplikace Django. Kurzy zaměřené na používání [SQL Database] a [MySQL] z aplikace Django zobrazení hello kroky nezbytné toocreate hello databáze služby, změnit nastavení databáze hello v `DjangoWebProject/settings.py`a hello požadované tooinstall knihovny.
 
-Samozřejmě, pokud raději spravujete své vlastní databázové servery, můžete k tomu použít virtuální počítače se systémem Windows nebo Linux spuštěné v Azure.
+Samozřejmě pokud dáváte přednost toomanage své vlastní databázové servery, můžete provést tak pomocí systému Windows nebo Linux virtuální počítače běžící v Azure.
 
 ## <a name="django-admin-interface"></a>Rozhraní správce Django
-Jakmile začnete vytvářet modely, budete chtít databázi naplnit určitými daty. Jedním ze snadných způsobů, jak interaktivně přidávat a upravovat obsah, je použít rozhraní pro správu Django.
+Jakmile začnete vytvářet modely, budete muset toopopulate hello databáze s některá data. Snadný způsob toodo přidávat a upravovat obsah interaktivně je rozhraní pro správu Django toouse hello.
 
-Kód rozhraní pro správu je uveden jako komentář ve zdrojích aplikace, ale je přehledně označen tak, abyste jej mohli snadno povolit (vyhledejte „admin“).
+Hello kód pro rozhraní správce hello je označeno jako komentář ve zdrojích aplikace hello, ale je přehledně označen tak je možné snadno povolit (vyhledejte "admin").
 
-Po jeho povolení synchronizujte databázi, spusťte aplikaci a přejděte do `/admin`.
+Když je tato funkce povolená, synchronizovat hello databáze, spusťte aplikaci hello a přejděte příliš`/admin`.
 
 ## <a name="next-steps"></a>Další kroky
-Potřebujete-li další informace o rozhraní Django a nástrojích Python Tools pro Visual Studio, použijte tyto odkazy:
+Použijte tyto odkazy toolearn Další informace o rozhraní Django a nástrojích Python Tools pro sadu Visual Studio:
 
 * [Dokumentace rozhraní Django]
-* [Dokumentace nástrojů Python Tools pro Visual Studio]
+* [Python Tools pro Visual Studio dokumentaci]
 
 Informace týkající se použití databáze SQL Database a MySQL naleznete v tématech:
 
 * [Django a MySQL v Azure s nástroji Python Tools pro Visual Studio]
 * [Django a SQL Database v Azure s nástroji Python Tools pro Visual Studio]
 
-Další informace naleznete ve [Středisku pro vývojáře Python](/develop/python/).
+Další informace najdete v tématu hello [středisku pro vývojáře Python](/develop/python/).
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!--Link references-->
 [Django a MySQL v Azure s nástroji Python Tools pro Visual Studio]: web-sites-python-ptvs-django-mysql.md
@@ -462,5 +462,5 @@ Další informace naleznete ve [Středisku pro vývojáře Python](/develop/pyth
 [Python Tools pro Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 pro Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[Dokumentace nástrojů Python Tools pro Visual Studio]: http://aka.ms/ptvsdocs
+[Python Tools pro Visual Studio dokumentaci]: http://aka.ms/ptvsdocs
 [Dokumentace rozhraní Django]: https://www.djangoproject.com/

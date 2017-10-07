@@ -1,5 +1,5 @@
 ---
-title: "Zásady uchování sestav Azure Active Directory | Microsoft Docs"
+title: "Zásady uchování sestav služby Active Directory aaaAzure | Microsoft Docs"
 description: "Zásady uchovávání informací na data sestavy ve vašem Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ffeba8a6c32a21c75af21f948bbd6ea88dd9278c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c46a68198cb34e9c92662b2f8461010745392c04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
 
-Toto téma poskytuje odpovědi na nejčastější dotazy ve spojení s uchovávání dat pro sestavy jinou aktivitu v Azure Active Directory. 
+Toto téma vám poskytne odpovědi toohello nejčastější dotazy ve spojení s hello uchovávání dat pro sestavy hello jiné aktivitě v Azure Active Directory. 
 
-**Otázka: jak můžete získat shromažďování dat aktivity spustit?**
+**Otázka: jak můžete získat hello shromažďování dat aktivity spustit?**
 
 **ODPOVĚĎ:**
 
 | Edice Azure AD | Počáteční kolekce |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | Při registraci pro předplatné |
-| Azure AD Free | Při prvním spuštění [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použít [reporting rozhraní API](https://aka.ms/aadreports)  |
+| Azure AD Free | Při prvním spuštění hello Hello [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použijte hello [reporting rozhraní API](https://aka.ms/aadreports)  |
 
 ---
-**Otázka: Pokud je vaše data aktivity k dispozici na portálu Azure?**
+**Otázka: Pokud je vaše data aktivity k dispozici v hello portál Azure?**
 
 **ODPOVĚĎ:**
 
-- **Okamžitě** – Pokud již pracujete s sestav na portálu Azure classic
-- **V rámci 2 hodiny** – Pokud jste nezapnuli generování sestav na portálu Azure classic
+- **Okamžitě** – Pokud již pracujete se sestavami v hello portál Azure classic
+- **V rámci 2 hodiny** – Pokud jste nezapnuli vytváření sestav v hello portál Azure classic
 
 ---
-**Otázka: jak můžete získat kolekce signálů zabezpečení spustit?**  
+**Otázka: jak můžete získat hello kolekce signálů zabezpečení spustit?**  
 
-**Odpověď:** signálů zabezpečení, se proces shromažďování spustí, když jste přihlásit k centru pro ochranu Identity použít. 
+**Odpověď:** signálů zabezpečení, se proces shromažďování hello spustí, když jste souhlas toouse hello Identity Protection Center. 
 
 
 ---
-**Otázka: jak dlouho shromážděná data ukládají?**
+**Otázka: jak dlouho hello shromážděná data ukládají?**
 
 **ODPOVĚĎ:**
 

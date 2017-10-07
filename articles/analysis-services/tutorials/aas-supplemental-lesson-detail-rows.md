@@ -1,63 +1,46 @@
 ---
-title: "Kurz služby Azure Analysis Services – Doplňková lekce: Řádky podrobností | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit výraz řádků podrobností v kurzu služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: fde5cd9a9efc3a13e731a91962ced5c086a72355
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+Title: aaa "kurz dodatečné lekce Azure Analysis Services: řádky s podrobnostmi | Microsoft Docs"Popis: Popisuje, jak toocreate a výraz řádky podrobností v hello kurz služby Azure Analysis Services.
+služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
+
+MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Doplňková lekce – Řádky podrobností
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této doplňkové lekci použijete Editor DAX k definici vlastního výrazu řádků podrobností. Výraz řádků podrobností je vlastnost míry, která koncovým uživatelům poskytuje další informace o agregovaných výsledcích míry. 
+V této další lekci použijete hello toodefine DAX Editor vlastního výrazu řádky podrobností. Výraz řádky podrobností je vlastnost na míru, poskytuje koncovým uživatelům další informace o výsledcích hello agregovat míry. 
   
-Odhadovaný čas dokončení této lekce: **10 minut**  
+Odhadovaný čas toocomplete této lekci: **10 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma doplňkové lekce je součástí kurzu tabulkového modelování. Než začnete provádět úkoly v této doplňkové lekci, měli byste mít dokončené všechny předchozí lekce nebo mít dokončený ukázkový projekt modelu Adventure Works Internet Sales.  
+Toto téma doplňkové lekce je součástí kurzu tabulkového modelování. Před provedením úlohy hello v této další lekci, by byly dokončeny všechny předchozí lekce nebo máte dokončený projekt modelu ukázkové společnosti Adventure Works Internet prodej.  
   
-## <a name="what-do-we-need-to-solve"></a>Co je potřeba vyřešit?
-Než přidáme výraz řádků podrobností, podívejme se na podrobnosti naší míry InternetTotalSales.
+## <a name="what-do-we-need-toosolve"></a>Co dělat, potřebujeme toosolve?
+Podívejme se na podrobnosti hello míry naše InternetTotalSales před přidáním výraz řádky podrobností.
 
-1.  V sadě SSDT klikněte na nabídku **Model** > **Analyzovat v aplikaci Excel**, otevřete Excel a vytvořte prázdnou kontingenční tabulku.
+1.  V sadě SSDT, klikněte na tlačítko hello **modelu** nabídky > **analyzovat v aplikaci Excel** tooopen aplikace Excel a vytvořit prázdnou kontingenční tabulku.
   
-2.  V části **Pole kontingenční tabulky** přidejte míru **InternetTotalSales** z tabulky FactInternetSales do **Hodnoty**, **CalendarYear** z tabulky DimDate do **Sloupce** a **EnglishCountryRegionName** do **Řádky**. Naše kontingenční tabulka nám teď poskytuje výsledky míry InternetTotalSales podle oblastí a roku. 
+2.  V **pole kontingenční tabulky**, přidejte hello **InternetTotalSales** měření z tabulka FactInternetSales hello příliš**hodnoty**, **CalendarYear**z hello DimDate tabulky příliš**sloupce**, a **EnglishCountryRegionName** příliš**řádky**. Naše kontingenční tabulky nyní umožňuje nám agregované výsledky z měr InternetTotalSales hello oblasti a roku. 
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. V kontingenční tabulce poklikejte na agregovanou hodnotu pro rok a název oblasti. My jsme poklikali na hodnotu pro Austrálii a rok 2014. Otevře se nový list, který obsahuje data. Tato data ale nejsou moc užitečná.
+3. V hello kontingenční tabulky klikněte dvakrát na agregované hodnoty pro název oblasti a roce. Zde jsme dvakrát kliknuli hello hodnotu pro Austrálii a hello rok 2014. Otevře se nový list, který obsahuje data. Tato data ale nejsou moc užitečná.
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-Rádi bychom viděli tabulku obsahující sloupce a řádky dat přispívající k agregovanému výsledku naší míry InternetTotalSales. Za tímto účelem můžeme přidat výraz řádků podrobností jako vlastnost míry.
+Co jsme chcete toosee tady je tabulku obsahující sloupce a řádky dat, která přispívat toohello agregován výsledek naše InternetTotalSales míry. toodo, že jsme přidat výraz řádky podrobností jako vlastnost míry hello.
 
 ## <a name="add-a-detail-rows-expression"></a>Přidání výrazu řádků podrobností
 
-#### <a name="to-create-a-detail-rows-expression"></a>Vytvoření výrazu řádků podrobností 
+#### <a name="toocreate-a-detail-rows-expression"></a>toocreate výraz řádky podrobností 
   
-1. V sadě SSDT klikněte v mřížce měr tabulky FactInternetSales na míru **InternetTotalSales**. 
+1. V sadě SSDT, v mřížce měr tabulka FactInternetSales hello, klikněte na tlačítko hello **InternetTotalSales** měr. 
 
-2. V části **Vlastnosti** > **Výraz řádků podrobností** klikněte na tlačítko editoru a otevřete Editor DAX.
+2. V **vlastnosti** > **výraz řádky podrobností**, klikněte na tlačítko hello editor tlačítko tooopen hello editoru jazyka DAX.
 
     ![aas-lesson-detail-rows-ellipse](../tutorials/media/aas-lesson-detail-rows-ellipse.png)
 
-3. V Editoru DAX zadejte následující výraz:
+3. V editoru jazyka DAX, zadejte následující výraz hello:
 
     ```
     SELECTCOLUMNS(
@@ -72,9 +55,9 @@ Rádi bychom viděli tabulku obsahující sloupce a řádky dat přispívající
 
     ```
 
-    Tento výraz určuje názvy a sloupce a výsledky měr z tabulky FactInternetSales a souvisejících tabulky se vrátí, když uživatel pokliká na agregovaný výsledek v kontingenční tabulce nebo sestavě.
+    Tento výraz určuje názvy sloupců a měr výsledky z tabulka FactInternetSales hello a související tabulky se vrátí při poklepání výsledek agregované v kontingenční tabulce nebo sestavy.
 
-4. Zpět v aplikaci Excel odstraňte list vytvořený v kroku 3, pak poklikejte na agregovanou hodnotu. Teď s nadefinovanou vlastností výrazu řádků vlastností pro míru se otevře nový list obsahující užitečnější data.
+4. Zpět v aplikaci Excel odstranit list hello vytvořili v kroku 3, pak poklikejte na agregovaná hodnota. Tentokrát s výraz řádky podrobností vlastnost definovanou pro míru hello, nový list otevře obsahující mnoho užitečnější data.
 
     ![aas-lesson-detail-rows-detailsheet](../tutorials/media/aas-lesson-detail-rows-detailsheet.png)
 

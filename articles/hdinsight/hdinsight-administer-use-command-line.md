@@ -1,6 +1,6 @@
 ---
-title: "Správa clusterů systému Hadoop pomocí rozhraní příkazového řádku Azure - Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat rozhraní příkazového řádku pro správu clusterů systému Hadoop v prostředí Azure HDInsight. Rozhraní příkazového řádku Azure funguje v systému Windows, Mac a Linux."
+title: "aaaManage clusterů systému Hadoop pomocí rozhraní příkazového řádku Azure - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toouse hello rozhraní příkazového řádku Azure toomanage Hadoop clusterů v Azure HDInsight. Hello rozhraní příkazového řádku Azure funguje v systému Windows, Mac a Linux."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,44 +16,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 0ee9f2f28978b207dcaf8f77950bd82a897d3fd1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 03b0cff9331c1c581095b80cc6d1177d843ffa83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Správa clusterů systému Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure
+# <a name="manage-hadoop-clusters-in-hdinsight-using-hello-azure-cli"></a>Správa clusterů systému Hadoop v HDInsight pomocí hello rozhraní příkazového řádku Azure
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Další informace o použití [rozhraní příkazového řádku Azure](../cli-install-nodejs.md) ke správě clusterů systému Hadoop v prostředí Azure HDInsight. Rozhraní příkazového řádku Azure je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux.
+Zjistěte, jak toouse hello [rozhraní příkazového řádku Azure](../cli-install-nodejs.md) toomanage Hadoop clusterů v Azure HDInsight. Hello rozhraní příkazového řádku Azure je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux.
 
-Tento článek se týká jenom používání rozhraní příkazového řádku Azure s HDInsight. Obecné informace o tom, jak používat rozhraní příkazového řádku Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure][azure-command-line-tools].
+Tento článek se týká jenom používání hello rozhraní příkazového řádku Azure s HDInsight. Obecné informace o tom, toouse používáte Azure CLI, najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure][azure-command-line-tools].
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto článku měli tyto položky:
+Před zahájením tohoto článku, musíte mít následující hello:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Rozhraní příkazového řádku Azure** – Informace týkající se instalace a konfigurace najdete v tématu [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
-* **Připojit k Azure**, pomocí následujícího příkazu:
+* **Rozhraní příkazového řádku Azure** -najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) informace týkající se instalace a konfigurace.
+* **Připojit tooAzure**pomocí hello následující příkaz:
   
         azure login
   
-    Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](../xplat-cli-connect.md).
-* **Přepněte do režimu Azure Resource Manager**, a to pomocí následujícího příkazu:
+    Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [připojit tooan předplatného Azure z rozhraní příkazového řádku Azure hello](../xplat-cli-connect.md).
+* **Přepínač režimu Azure Resource Manager toohello**pomocí hello následující příkaz:
   
         azure config mode arm
 
-Chcete-li získat nápovědu, použijte **-h** přepínače.  Například:
+tooget nápovědy použijte hello **-h** přepínače.  Například:
 
     azure hdinsight cluster create -h
 
-## <a name="create-clusters-with-the-cli"></a>Vytvoření clusterů pomocí rozhraní příkazového řádku
-V tématu [Vytvoření clusterů v HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+## <a name="create-clusters-with-hello-cli"></a>Vytvoření clusterů s hello rozhraní příkazového řádku
+V tématu [hello vytvořit clusterů v HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ## <a name="list-and-show-cluster-details"></a>Seznam a zobrazit podrobnosti o clusteru
-Použijte následující příkazy na seznamu a zobrazit podrobnosti o clusteru:
+Použijte následující příkazy toolist hello a zobrazit podrobnosti o clusteru:
 
     azure hdinsight cluster list
     azure hdinsight cluster show <Cluster Name>
@@ -61,16 +61,16 @@ Použijte následující příkazy na seznamu a zobrazit podrobnosti o clusteru:
 ![Příkazového řádku zobrazení seznamu clusteru][image-cli-clusterlisting]
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
-Pokud chcete odstranit cluster použijte následující příkaz:
+Použijte následující příkaz toodelete cluster hello:
 
     azure hdinsight cluster delete <Cluster Name>
 
-Odstraněním skupiny prostředků, která obsahuje clusteru můžete také odstranit cluster. Poznámka: Tato akce odstraní všechny prostředky ve skupině, včetně výchozí účet úložiště.
+Můžete také odstranit cluster odstraněním hello skupinu prostředků, který obsahuje hello clusteru. Poznámka: Tato akce odstraní všechny hello prostředky ve skupině hello včetně hello výchozí účet úložiště.
 
     azure group delete <Resource Group Name>
 
 ## <a name="scale-clusters"></a>Škálování clusterů
-Chcete-li změnit velikost clusteru Hadoop:
+toochange hello velikost clusteru Hadoop:
 
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
 
@@ -85,12 +85,12 @@ Chcete-li změnit velikost clusteru Hadoop:
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili, jak provádět různé úlohy správy clusteru HDInsight. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili jak tooperform různé HDInsight clusteru úlohy správy. toolearn více, najdete v části hello následující články:
 
-* [Spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal]
+* [Spravovat HDInsight pomocí hello portálu Azure][hdinsight-admin-portal]
 * [Spravovat HDInsight pomocí prostředí Azure PowerShell][hdinsight-admin-powershell]
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Jak používat rozhraní příkazového řádku Azure][azure-command-line-tools]
+* [Jak toouse hello rozhraní příkazového řádku Azure][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

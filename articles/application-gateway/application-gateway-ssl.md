@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace protokolu SSL snižování zátěže - Azure Application Gateway - PowerShell classic | Microsoft Docs"
-description: "Tento článek poskytuje pokyny pro vytvoření služby application gateway pomocí protokolu SSL, přesměrování zpracování úloh pomocí modelu nasazení Azure classic."
+title: "aaaConfigure SSL snižování zátěže prostředí PowerShell – Azure Application Gateway - classic | Microsoft Docs"
+description: "Tento článek obsahuje pokyny hello toocreate přesměrování zpracování úloh služby application gateway pomocí protokolu SSL pomocí modelu nasazení Azure classic."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: 2eba6fb24c11add12ac16d04d3445e19a3486216
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5cb128015747ed4b71802cf751c80b60634601a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí modelu nasazení classic
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-hello-classic-deployment-model"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí modelu nasazení classic hello
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-ssl-portal.md)
@@ -28,34 +28,34 @@ ms.lasthandoff: 08/18/2017
 > * [Azure Classic PowerShell](application-gateway-ssl.md)
 > * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
-Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secure Sockets Layer (SSL) v bráně, vyhnete se tak nákladným úlohám dešifrování SSL na webové serverové farmě. Přesměrování zpracování SSL zjednodušuje i nastavení a správu front-end serverů webových aplikací.
+Služba Azure Application Gateway může být relace Secure Sockets Layer (SSL) nakonfigurované tooterminate hello v hello brány tooavoid nákladná SSL dešifrování úlohy toohappen v hello webové farmy. Přesměrování zpracování SSL zjednodušuje i nastavení serveru front-end hello a Správa webové aplikace hello.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí instalační služby webové platformy. Nejnovější verzi můžete stáhnout a nainstalovat v části **Windows PowerShell** na stránce [Položky ke stažení](https://azure.microsoft.com/downloads/).
-2. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že žádné virtuální počítače nebo cloudová nasazení nepoužívají podsíť. Služba Application Gateway musí být sama o sobě v podsíti virtuální sítě.
-3. Servery, které nakonfigurujete pro použití služby Application Gateway, musí existovat nebo mít své koncové body vytvořené buď ve virtuální síti, nebo s přiřazenou veřejnou IP adresou nebo virtuální IP adresou.
+1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell hello hello pomocí hello instalačního programu webové platformy. Můžete stáhnout a nainstalovat nejnovější verzi hello z hello **prostředí Windows PowerShell** části hello [položky ke stažení](https://azure.microsoft.com/downloads/).
+2. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že hello podsíť nepoužívají žádné virtuální počítače ani Cloudová nasazení. Hello Aplikační brána musí být sám o sobě v podsíti virtuální sítě.
+3. Hello servery nakonfigurovat toouse hello Aplikační brána musí existovat nebo přiřadili své koncové body vytvořené ve virtuální síti hello nebo s veřejnou IP nebo virtuální IP.
 
-Pokud chcete konfigurovat přesměrování zpracování SSL na aplikační brány, proveďte následující kroky v uvedeném pořadí:
+tooconfigure SSL přesměrování zpracování úloh na aplikační brány, text hello, proveďte kroky v uvedeném pořadí hello:
 
 1. [Vytvoření služby application gateway](#create-an-application-gateway)
 2. [Nahrát certifikáty SSL](#upload-ssl-certificates)
-3. [Konfigurace brány](#configure-the-gateway)
-4. [Nastavení konfigurace brány](#set-the-gateway-configuration)
-5. [Spusťte bránu](#start-the-gateway)
-6. [Ověřte stav brány.](#verify-the-gateway-status)
+3. [Konfigurace brány hello](#configure-the-gateway)
+4. [Konfigurace brány hello sady](#set-the-gateway-configuration)
+5. [Spusťte bránu hello](#start-the-gateway)
+6. [Ověření stavu brány hello](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Pokud chcete vytvořit bránu, použijte rutinu `New-AzureApplicationGateway` a zadejte vlastní hodnoty. Fakturace brány se nespustí v tomhle okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány.
+toocreate hello brány, použijte hello `New-AzureApplicationGateway` rutinu a nahraďte hello hodnoty vlastními. Fakturace hello brány se nespustí v tomto okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány hello.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Pokud chcete ověřit vytvoření brány, můžete použít rutinu `Get-AzureApplicationGateway`.
+byl vytvořen toovalidate, který hello brány, můžete použít hello `Get-AzureApplicationGateway` rutiny.
 
-V ukázce *popis*, *InstanceCount*, a *GatewaySize* jsou volitelné parametry. Výchozí hodnota *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Malých a velkých jsou ostatní dostupné hodnoty. Hodnoty *VirtualIPs* a *DnsName* se zobrazují jako prázdné, protože se brána ještě nespustila. Tyto hodnoty se vytvoří, jakmile je brána v běžícím stavu.
+V ukázce hello *popis*, *InstanceCount*, a *GatewaySize* jsou volitelné parametry. Výchozí hodnota pro Hello *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota pro Hello *GatewaySize* je střední. Malých a velkých jsou ostatní dostupné hodnoty. *Rezervovaná* a *DnsName* se zobrazují jako prázdné, protože hello brána ještě nespustila. Tyto hodnoty se vytvoří, jakmile hello brána v běžícím stavu hello.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -63,17 +63,17 @@ Get-AzureApplicationGateway AppGwTest
 
 ## <a name="upload-ssl-certificates"></a>Nahrát certifikáty SSL
 
-Použití `Add-AzureApplicationGatewaySslCertificate` nahrát certifikát serveru ve *pfx* formátu aplikační brány. Název certifikátu je název vybrané uživatelem a musí být jedinečný v rámci služby application gateway. Tento certifikát se označuje s tímto názvem v všechny operace správy certifikátů ve službě application gateway.
+Použití `Add-AzureApplicationGatewaySslCertificate` tooupload hello certifikátu serveru v *pfx* formát toohello aplikační brány. název certifikátu Hello je název vybrané uživatelem a musí být jedinečný v rámci hello aplikační brány. Tento certifikát je tooby označují název v všechny operace správy certifikátů ve hello application gateway.
 
-Tento následující příklad ukazuje rutinu, nahraďte hodnotami v ukázce vlastní.
+Tento následující příklad ukazuje rutinu hello nahraďte hello hodnoty v ukázce hello vlastní.
 
 ```powershell
-Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
+Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path toopfx file>
 ```
 
-Dále ověřte nahrávání certifikátu. Použití `Get-AzureApplicationGatewayCertificate` rutiny.
+Dále ověřte nahrávání certifikátu hello. Použití hello `Get-AzureApplicationGatewayCertificate` rutiny.
 
-Tento příklad ukazuje rutinu na prvním řádku, následovanou výstupem.
+Tento příklad ukazuje rutinu hello na prvním řádku hello, následuje výstup hello.
 
 ```powershell
 Get-AzureApplicationGatewaySslCertificate AppGwTest
@@ -90,28 +90,28 @@ State..........: Provisioned
 ```
 
 > [!NOTE]
-> Heslo certifikátu musí být mezi 4 až 12 znaků, písmen nebo číslic. Speciální znaky nejsou přijata.
+> heslo certifikátu Hello má toobe mezi 4 too12 znaky, písmena nebo číslice. Speciální znaky nejsou přijata.
 
-## <a name="configure-the-gateway"></a>Konfigurace brány
+## <a name="configure-hello-gateway"></a>Konfigurace brány hello
 
-Konfigurace brány aplikace se skládá z více hodnot. Může být vázáno hodnoty společně k vytvoření konfigurace.
+Konfigurace brány aplikace se skládá z více hodnot. může být vázáno Hello hodnoty společně tooconstruct hello konfigurace.
 
-Hodnoty jsou:
+Hello hodnoty jsou:
 
-* **Fond back-end serverů:** Seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do podsítě virtuální sítě, nebo by měly být veřejnými nebo virtuálními IP adresami.
-* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end port:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, ke kterému fondu back-end serverů se má provoz směrovat při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
+* **Fond back-end serverů:** hello seznam IP adres hello back-end serverů. uvedené Hello IP adresy by měly buď patřit toohello podsíť virtuální sítě nebo by měla být veřejné IP Adrese nebo VIP.
+* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení jsou vázané tooa fond a jsou použité tooall servery v rámci fondu hello.
+* **Front-end port:** tento port je hello veřejný port, který se otevírá ve hello aplikační brány. Provoz volá Tenhle port a potom získá přesměruje tooone hello back-end serverů.
+* **Naslouchací proces:** hello naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL hello (Pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** hello pravidlo váže naslouchací proces hello a hello fond back-end serverů a definuje, jaký provoz hello fond back-end serverů by měla být směrovanou toowhen volání příslušného naslouchacího procesu. V současné době pouze hello *základní* pravidel je podporována. Hello *základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
 **Další poznámky ke konfiguraci**
 
-Pro konfiguraci certifikátů SSL by se měl změnit protokol v **HttpListener** na *Https* (rozlišování velkých a malých písmen). **SslCert** prvek přidán na **HttpListener** hodnota nastavena na stejný název jako použít v odesílání předcházející SSL certifikáty části. Front-end port se musí aktualizovat na hodnotu 443.
+Pro konfiguraci certifikátů SSL, hello protokol v **HttpListener** by se měl změnit příliš*Https* (malá a velká písmena). Hello **SslCert** prvek přidán příliš**HttpListener** s hello nastavena hodnota toohello stejný název jako použít v odesílání hello předcházející části certifikáty SSL. Hello front-end port musí být aktualizované too443.
 
-**Když chcete povolit spřažení na základě souborů cookie**: aplikační brána se může nakonfigurovat tak, aby se žádost od klientské relace vždy směrovala na stejný virtuální počítač v prostředí webové serverové farmy. Takový scénář se provádí injektáží souboru cookie relace, který bráně umožňuje řídit provoz odpovídajícím způsobem. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na *Povoleno* v elementu **BackendHttpSettings**.
+**spřažení na základě souborů cookie tooenable**: služby application gateway může být nakonfigurované tooensure, zda je žádost o od klientské relace vždy směrovanou toohello stejný virtuální počítač v hello webové farmy. Tento scénář se provádí injektáží souboru cookie relace, které umožňuje přenos toodirect hello brány správně. Nastavení spřažení na základě souborů cookie tooenable **CookieBasedAffinity** příliš*povoleno* v hello **BackendHttpSettings** element.
 
 Konfiguraci můžete vytvořit buď pomocí vytvoření objektu konfigurace, nebo pomocí konfiguračního souboru XML.
-Chcete-li vytvořit konfiguraci pomocí konfiguračního souboru XML, použijte následující ukázka:
+použít konfiguraci pomocí konfigurační soubor XML, tooconstruct hello následující ukázka:
 
 **Ukázkový kód XML konfigurace**
 
@@ -162,20 +162,20 @@ Chcete-li vytvořit konfiguraci pomocí konfiguračního souboru XML, použijte 
 </ApplicationGatewayConfiguration>
 ```
 
-## <a name="set-the-gateway-configuration"></a>Nastavení konfigurace brány
+## <a name="set-hello-gateway-configuration"></a>Konfigurace brány hello sady
 
-Dále nastavte aplikační bránu. Můžete použít `Set-AzureApplicationGatewayConfig` rutiny buď objekt konfigurace nebo s konfiguračním souborem XML.
+Dále nastavte aplikační bránu hello. Můžete použít hello `Set-AzureApplicationGatewayConfig` rutiny buď objekt konfigurace nebo s konfiguračním souborem XML.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 ```
 
-## <a name="start-the-gateway"></a>Spusťte bránu
+## <a name="start-hello-gateway"></a>Spusťte bránu hello
 
-Jakmile se brána nakonfiguruje, pomocí rutiny `Start-AzureApplicationGateway` ji spusťte. Fakturace aplikační brány se spustí až po úspěšném spuštění brány.
+Jakmile se nakonfiguruje brána hello, použijte hello `Start-AzureApplicationGateway` rutiny toostart hello brány. Fakturace aplikační brány se spustí po úspěšném spuštění brány hello.
 
 > [!NOTE]
-> Dokončení rutiny `Start-AzureApplicationGateway` může trvat 15 až 20 minut.
+> Hello `Start-AzureApplicationGateway` rutiny může trvat až toofinish too15-20 minut.
 >
 >
 
@@ -183,11 +183,11 @@ Jakmile se brána nakonfiguruje, pomocí rutiny `Start-AzureApplicationGateway` 
 Start-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="verify-the-gateway-status"></a>Ověřte stav brány.
+## <a name="verify-hello-gateway-status"></a>Ověření stavu brány hello
 
-Pomocí rutiny `Get-AzureApplicationGateway` zkontrolujte stav brány. Pokud `Start-AzureApplicationGateway` úspěšné v předchozím kroku, *stavu* by měl být spuštěn, a *rezervovaná* a *DnsName* musí obsahovat platné položky.
+Použití hello `Get-AzureApplicationGateway` rutiny toocheck hello stav hello brány. Pokud `Start-AzureApplicationGateway` úspěšné v předchozím kroku hello *stavu* by měl být spuštěn, a *rezervovaná* a *DnsName* musí obsahovat platné položky.
 
-Tento příklad ukazuje aplikační bránu, která je v provozu, spuštěna a je připraven přijmout provoz.
+Tento příklad ukazuje aplikační bránu, která je, spuštěna a je připravený tootake provoz.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest

@@ -1,5 +1,5 @@
 ---
-title: "Konfigurace aplikací SaaS pro spolupráci B2B ve službě Azure Active Directory | Microsoft Docs"
+title: "aplikace SaaS aaaConfigure pro spolupráci B2B ve službě Azure Active Directory | Microsoft Docs"
 description: "Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce"
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3f22f81567c04ac23ef2316c09de718ecb15d26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -27,86 +27,86 @@ Spolupráce Azure Active Directory (Azure AD) s B2B pracuje s většinu aplikac�
 
 Předtím, než se podíváte na konkrétní aplikaci pokyny, zde jsou některé zásady:
 
-* Pro většinu aplikací musí dojít ručně nastavení uživatele. To znamená uživatelé musí být vytvořeny ručně v aplikaci také.
+* Pro většinu aplikací hello nastavení uživatele musí toohappen ručně. To znamená uživatelé musí být vytvořeny ručně v aplikaci hello také.
 
-* Pro aplikace, které podporují automatické nastavení, jako je Dropbox jsou vytvořeny samostatné pozvánek z aplikací. Uživatelé musí být jisti tak, aby přijímal každý pozvánku.
+* Pro aplikace, které podporují automatické nastavení, jako je Dropbox jsou vytvořeny samostatné pozvánek z aplikace hello. Uživatelé musí být jisti tooaccept každý pozvánku.
 
-* Atributy uživatele na zmírnit problémy s disk profilu pozměnění uživatele (UPD) v uživatele typu Host, vždy nastavte **uživatelský identifikátor** k **user.mail**.
+* V hello uživatelské atributy toomitigate všechny problémy s disk profilu pozměnění uživatele (UPD) v uživatele typu Host, vždy nastavená **uživatelský identifikátor** příliš**user.mail**.
 
 
 ## <a name="dropbox-business"></a>Obchodní dropbox
 
-Pokud chcete povolit uživatelům přihlášení pomocí účtu organizace, je nutné ručně nakonfigurovat Dropbox obchodní používat Azure AD jako zprostředkovatele identity Security (Assertion Markup Language SAML). Pokud obchodní Dropbox nebyl nakonfigurován k tomu, nemůže výzvu nebo jinak umožňují uživatelům přihlásit se pomocí služby Azure AD.
+tooenable toosign uživatele pomocí svého účtu organizace, je nutné ručně nakonfigurovat Dropbox obchodní toouse Azure AD jako zprostředkovatele identity Security (Assertion Markup Language SAML). Pokud obchodní Dropbox nebyl nakonfigurovaný toodo tedy nemůže výzvu nebo jinak povolit toosign uživatelů v používání služby Azure AD.
 
-1. Chcete-li přidat Dropbox obchodní aplikace do služby Azure AD, vyberte **podnikové aplikace, které** v levém podokně a pak klikněte na tlačítko **přidat**.
+1. tooadd hello Dropbox obchodní aplikace do služby Azure AD, vyberte **podnikové aplikace, které** v levém podokně text hello a potom klikněte na **přidat**.
 
-  ![Tlačítko "Přidat" na stránce podnikových aplikací](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
+  ![tlačítko "Přidat" Hello na stránce aplikace hello Enterprise](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
 
-2. V **přidat aplikaci** okno, zadejte **dropbox** v vyhledávacího pole a potom vyberte **Dropbox pro firmy** v seznamu výsledků.
+2. V hello **přidat aplikaci** okno, zadejte **dropbox** v hello vyhledávacího pole a pak vyberte **Dropbox pro firmy** v seznamu výsledků hello.
 
-  ![Vyhledejte "dropbox" na Přidat stránky aplikace](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
+  ![Vyhledejte "dropbox" na hello přidání stránky aplikace](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
 
-3. Na **jednotného přihlašování** vyberte **jednotného přihlašování** v levém podokně a potom zadejte **user.mail** v **uživatelský identifikátor** pole. (Je nastavený jako UPN ve výchozím nastavení.)
+3. Na hello **jednotného přihlašování** vyberte **jednotného přihlašování** v levém podokně text hello a potom zadejte **user.mail** v hello **uživatelský identifikátor** pole. (Je nastavený jako UPN ve výchozím nastavení.)
 
-  ![Konfigurace jednotného přihlašování pro aplikace](media/active-directory-b2b-configure-saas-apps/configure-app-sso.png)
+  ![Konfigurace jednotného přihlašování pro aplikace hello](media/active-directory-b2b-configure-saas-apps/configure-app-sso.png)
 
-4. Chcete-li stáhnout certifikát, který chcete použít pro konfiguraci Dropbox, vyberte **konfigurace DropBox**a potom vyberte **SAML jeden znak na adresu URL služby** v seznamu.
+4. Vyberte toodownload hello certifikát toouse pro konfiguraci Dropbox, **konfigurace DropBox**a potom vyberte **SAML jeden znak na adresu URL služby** v seznamu hello.
 
-  ![Stáhnout certifikát pro Dropbox konfigurace](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
+  ![Stahování hello certifikát pro Dropbox konfigurace](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
 
-5. Přihlaste se k Dropboxu s adresou URL přihlašování z **jednotného přihlašování** stránky.
+5. Přihlášení tooDropbox s hello přihlašování adresu URL z hello **jednotného přihlašování** stránky.
 
-  ![Na přihlašovací stránce Dropbox](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
+  ![stránku Hello přihlášení Dropbox](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
 
-6. V nabídce vyberte **konzoly pro správu**.
+6. V nabídce hello vyberte **konzoly pro správu**.
 
-  !["Konzoly pro správu" odkaz v nabídce Dropbox](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
+  ![Hello "Konzoly pro správu" odkaz v nabídce Dropbox hello](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
 
-7. V **ověřování** dialogové okno, vyberte **Další**, odešlete certifikát a potom na **přihlašovací adresa URL** zadejte SAML jeden přihlašovací adresa URL.
+7. V hello **ověřování** dialogové okno, vyberte **Další**, nahrajte certifikát hello a pak na hello **přihlašovací adresa URL** zadejte adresu URL hello SAML jednotné přihlašování.
 
-  ![Odkaz "Informace" v dialogovém okně sbalené ověřování](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
+  !["Informace" odkaz v dialogovém okně ověřování hello sbalené Hello](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
 
-  !["Podepsat v adrese URL" v dialogovém okně Rozšířená ověřování](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
+  ![Hello "Přihlášení v URL" v hello rozšířit ověřování, dialogové okno](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
 
-8. Chcete-li konfigurovat nastavení automatické uživatele na portálu Azure, vyberte **zřizování** v levém podokně vyberte **automatické** v **režimu zřizování** a pak vyberte **Autorizovat**.
+8. nastavení automatického uživatele tooconfigure v hello portál Azure, vyberte **zřizování** v levém podokně hello vyberte **automatické** v hello **režimu zřizování** a potom vyberte **Autorizovat**.
 
-  ![Konfiguraci zřizování automatické uživatelů na portálu Azure](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
+  ![Konfiguraci zřizování automatické uživatelů v hello portálu Azure](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
 
-Po hosta nebo člen uživatelů nastavili v aplikaci Dropbox, obdrží samostatné pozvánku z Dropbox. Pokud chcete používat Dropbox jednotné přihlašování, musí pozvaným uživatelům přijmout pozvání kliknutím na odkaz v ní.
+Po hosta nebo člen uživatelů nastavili v aplikaci hello Dropbox, obdrží samostatné pozvánku z Dropbox. toouse Dropbox jednotné přihlašování, budou pozvaní uživatelé musí přijmout pozvánku hello kliknutím na odkaz v ní.
 
 ## <a name="box"></a>Box
-Můžete povolit uživatelům ověřovat uživatele typu Host pole ke svému účtu Azure AD pomocí federace, která je založená na protokolu SAML. V tomto postupu nahrajte Box.com metadat.
+Uživatelé tooauthenticate pole uživatele typu Host ke svému účtu Azure AD můžete povolit pomocí federace, která je založená na hello protokolu SAML. V tomto postupu nahrajte tooBox.com metadat.
 
-1. Přidáte aplikaci Box z podnikové aplikace.
+1. Přidáte aplikaci Box hello z hello podnikové aplikace.
 
-2. Konfigurovat jednotné přihlašování v následujícím pořadí:
+2. Nakonfigurujte jednotné přihlašování v hello následující pořadí:
 
   ![Konfigurace pole jednotné přihlašování](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
- a. V **přihlásit na adrese URL** pole, zkontrolujte, že adresa URL přihlašování je správně nastavená pro pole na portálu Azure. Tato adresa URL je adresa URL vaší Box.com klienta. Měl by splňovat zásady vytváření názvů *https://.box.com*.  
- **Identifikátor** nelze použít u této aplikace, ale stále zobrazuje jako povinné pole.
+ a. V hello **přihlásit na adrese URL** pole, zkontrolujte, že hello přihlašovací adresa URL je správně nastavená pro pole v hello portálu Azure. Tato adresa URL je adresa URL hello klienta služby Box.com. Měl by splňovat zásady vytváření názvů hello *https://.box.com*.  
+ Hello **identifikátor** doporučení se netýká toothis aplikace, ale stále se zobrazí jako povinné pole.
 
- b. V **uživatelský identifikátor** zadejte **user.mail** (pro jednotné přihlašování pro účet hosta).
+ b. V hello **uživatelský identifikátor** zadejte **user.mail** (pro jednotné přihlašování pro účet hosta).
 
  c. V části **SAML podpisový certifikát**, klikněte na tlačítko **vytvořit nový certifikát**.
 
- d. Chcete-li zahájit konfiguraci vašeho klienta Box.com používat Azure AD jako zprostředkovatele identity, stažení souboru metadat a ukládat ho do místního disku.
+ d. toobegin konfigurace vaší toouse Box.com klienta Azure AD jako zprostředkovatele identity, stažení souboru metadat hello a pak ho uložte tooyour místní disk.
 
- e. Soubor metadat do pole dál podporovat týmu, který nakonfiguruje jednotné přihlašování pro vás.
+ e. Předat dál hello metadata souboru toohello pole tým podpory, který nakonfiguruje jednotné přihlašování pro vás.
 
-3. Nastavení automatického uživatele Azure AD, v levém podokně, vyberte **zřizování**a potom vyberte **Authorize**.
+3. Nastavení automatického uživatele Azure AD, v levém podokně hello vyberte **zřizování**a potom vyberte **Authorize**.
 
-  ![Autorizace Azure AD pro připojení k poli](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+  ![Autorizovat tooBox tooconnect Azure AD](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-Jako budou pozvaní uživatelé Dropbox musí pozvaným uživatelům pole uplatnit jejich pozvánku z pole aplikace.
+Jako budou pozvaní uživatelé Dropbox musí pozvaným uživatelům pole uplatnit jejich pozvání aplikaci Box hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-Na spolupráci Azure AD B2B najdete v následujících článcích:
+Najdete v následujících článcích na spolupráci Azure AD B2B hello:
 
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
+* [Přidání role uživatele tooa spolupráce B2B](active-directory-b2b-add-guest-to-role.md)
 * [Delegovat pozvánek spolupráce B2B](active-directory-b2b-delegate-invitations.md)
 * [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
 * [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)

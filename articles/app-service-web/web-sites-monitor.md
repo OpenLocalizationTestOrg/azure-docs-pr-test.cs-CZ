@@ -1,6 +1,6 @@
 ---
-title: "Monitorování aplikací v Azure App Service | Microsoft Docs"
-description: "Informace o monitorování aplikací v Azure App Service pomocí portálu Azure."
+title: aaaMonitor aplikace v Azure App Service | Microsoft Docs
+description: "Zjistěte, jak hello toomonitor aplikace v Azure App Service pomocí portálu Azure."
 services: app-service
 documentationcenter: 
 author: btardif
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 80d5a466102a894a49d04ae35aa54cc1d05a58df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Postupy: monitorování aplikací v Azure App Service
-[Služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované monitorování funkce v [portálu Azure](https://portal.azure.com).
-To zahrnuje možnost zkontrolovat **kvóty** a **metriky** pro aplikace, jakož i plán služby App Service, nastavení **výstrahy** a i **škálování**automaticky v závislosti na tyto metriky.
+[Služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované monitorování funkce v hello [portálu Azure](https://portal.azure.com).
+To zahrnuje možnost tooreview hello **kvóty** a **metriky** pro aplikaci, jakož i hello plán služby App Service, nastavení **výstrahy** a i **škálování** automaticky v závislosti na tyto metriky.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="understanding-quotas-and-metrics"></a>Principy kvóty a metriky
 ### <a name="quotas"></a>Kvóty
-Aplikace hostované ve službě App Service se vztahují určité *omezení* s prostředky, které mohou používat. Omezení jsou definovány **plán služby App Service** přidružené aplikaci.
+Aplikace hostované ve službě App Service jsou subjektu toocertain *omezení* s prostředky, které mohou používat. Hello omezení jsou definovány hello **plán služby App Service** spojená s aplikací hello.
 
-Pokud je aplikace hostovaná v **volné** nebo **sdílené** plánu, a omezení pro aplikace může používat prostředky jsou definovány **kvóty**.
+Pokud aplikace hello je hostována v **volné** nebo **sdílené** plánu, pak jsou definovány hello omezení pro aplikace hello může používat prostředky hello **kvóty**.
 
-Pokud je aplikace hostovaná v **základní**, **standardní** nebo **Premium** plánu, omezení pro mohou používat prostředky jsou nastavena **velikost**(Malé, střední, velký) a **instance počet** (1, 2, 3,...) z **plán služby App Service**.
+Pokud aplikace hello je hostována v **základní**, **standardní** nebo **Premium** plánu, pak hello omezení mohou používat prostředky hello se nastavují hello **velikost** (Malé, střední, velký) a **instance počet** (1, 2, 3,...) z hello **plán služby App Service**.
 
 **Kvóty** pro **volné** nebo **sdílené** aplikace jsou:
 
@@ -48,35 +48,35 @@ Pokud je aplikace hostovaná v **základní**, **standardní** nebo **Premium** 
 * **Systém souborů**
   * Celková velikost úložiště, které jsou povoleny.
 
-Pouze kvótu pro aplikace hostované na **základní**, **standardní** a **Premium** plány je **Filesystem**.
+Hello jenom kvóta použít tooapps hostované na **základní**, **standardní** a **Premium** plány je **Filesystem**.
 
-Další informace o konkrétní kvót, omezení a funkce, které jsou k dispozici pro jiné služby SKU aplikace naleznete zde: [omezení předplatné služby Azure](../azure-subscription-service-limits.md#app-service-limits)
+Další informace o hello konkrétní kvót, omezení a funkce, které jsou k dispozici pro různé identifikátory SKU služby aplikace hello naleznete zde: [omezení předplatné služby Azure](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Vynucení kvót
-Pokud aplikace v jeho využití překročí **procesoru (krátký)**, **procesoru (den)**, nebo **šířky pásma** kvóty a aplikace bude zastaven, dokud nebude znovu nastaví kvótu. Během této doby bude výsledkem všechny příchozí požadavky **HTTP 403**.
+Pokud aplikace v jeho využití překročí hello **procesoru (krátký)**, **procesoru (den)**, nebo **šířky pásma** kvóty pak hello aplikace bude zastaven, dokud nebude znovu nastaví kvóty hello. Během této doby bude výsledkem všechny příchozí požadavky **HTTP 403**.
 ![][http403]
 
-Pokud aplikace **paměti** dojde k překročení kvóty a aplikace se nebude znovu spuštěna.
+Pokud aplikace hello **paměti** dojde k překročení kvóty a pak aplikace hello se nebude znovu spuštěna.
 
-Pokud **Filesystem** dojde k překročení kvóty, pak všechny zápisu se nezdaří, jedná se o zápis do protokolů.
+Pokud hello **Filesystem** dojde k překročení kvóty, pak všechny zápisu se nezdaří, včetně zápis toologs.
 
 Kvóty můžete zvýšit nebo odebrat z vaší aplikace, že si upgradujete plán služby App Service.
 
 ### <a name="metrics"></a>Metriky
-**Metriky** poskytují informace o aplikaci nebo chování plán služby App Service.
+**Metriky** poskytují informace o aplikaci hello nebo chování plán služby App Service.
 
-Pro **aplikace**, jsou dostupné metriky:
+Pro **aplikace**, jsou dostupné metriky hello:
 
 * **Průměrná doba odezvy**
-  * Průměrná doba pro aplikaci obsluhovat požadavky v ms.
+  * Hello Průměrná doba hello aplikace tooserve požadavky v ms.
 * **Průměrná paměti pracovní sady**
-  * Průměrná velikost paměti v MIB používané aplikace.
+  * Hello Průměrná velikost paměti v MIB používané aplikace hello.
 * **Čas procesoru**
-  * Množství procesoru v sekundách spotřebovávají aplikace. Další informace o této metriky najdete: [procento vs procesoru čas procesoru](#cpu-time-vs-cpu-percentage)
+  * Hello nároky na výkon procesoru v sekundách spotřebovávají aplikace hello. Další informace o této metriky najdete: [procento vs procesoru čas procesoru](#cpu-time-vs-cpu-percentage)
 * **Data v**
-  * Množství příchozích šířky pásma spotřebovávají aplikace v MIB.
+  * Hello množství příchozích šířky pásma spotřebovávají aplikace hello v MIB.
 * **Data**
-  * Množství odchozí šířky pásma spotřebovávají aplikace v MIB.
+  * Hello množství odchozí šířky pásma spotřebovávají aplikace hello v MIB.
 * **Http 2xx**
   * Počet požadavků, které jsou výsledkem stavový kód protokolu http > = 200 ale < 300.
 * **Http 3xx**
@@ -94,11 +94,11 @@ Pro **aplikace**, jsou dostupné metriky:
 * **Chyby protokolu HTTP serveru**
   * Počet požadavků, které jsou výsledkem stavový kód protokolu http > = 500, ale < 600.
 * **Paměť pracovní sady**
-  * Aktuální velikost paměti, které aplikace v MIB.
+  * Aktuální velikost paměti, které aplikace hello v MIB.
 * **Požadavky**
   * Celkový počet požadavků bez ohledu na jejich výsledné stavový kód HTTP.
 
-Pro **plán služby App Service**, jsou dostupné metriky:
+Pro **plán služby App Service**, jsou dostupné metriky hello:
 
 > [!NOTE]
 > Metriky plánu služby App Service jsou k dispozici pro plány v pouze **základní**, **standardní** a **Premium** SKU.
@@ -106,58 +106,58 @@ Pro **plán služby App Service**, jsou dostupné metriky:
 > 
 
 * **Procento využití procesoru**
-  * Průměrná procesoru použít napříč všemi instancemi plánu.
+  * CPU průměrné Hello použít napříč všemi instancemi plánu hello.
 * **Procento paměti**
-  * Průměrná paměť použitá napříč všemi instancemi plánu.
+  * Průměrná paměti Hello používá napříč všemi instancemi plánu hello.
 * **Data v**
-  * Průměrná příchozí šířku pásma používanou ve všech instancích plánu.
+  * Hello průměrná příchozí šířky pásma použít napříč všemi instancemi plánu hello.
 * **Data**
-  * Průměr odchozí šířky pásma použít napříč všemi instancemi plánu.
+  * průměr Hello odchozí šířky pásma použít napříč všemi instancemi plánu hello.
 * **Délka fronty disku**
-  * Průměrný počet čtení i zápis požadavků, které byly zařazeny do fronty na úložiště. Délka fronty vysoké disku je údajem o aplikaci, která může být zpomalením z důvodu nadměrného diskových operací.
+  * Průměrný počet k Hello číst a zapisovat požadavků, které byly zařazeny do fronty pro úložiště. Délka fronty vysoké disku je údajem o aplikaci, která může být zpomalením z důvodu tooexcessive diskové vstupně-výstupních operací.
 * **Délka fronty http**
-  * Průměrný počet požadavků HTTP, které musely nacházejí na fronty před splnění. Vysoká nebo roste délka fronty HTTP je příznakem plánu v případě velkého zatížení.
+  * Hello průměrný počet požadavků HTTP, které měl toosit na hello fronty před splnění. Vysoká nebo roste délka fronty HTTP je příznakem plánu v případě velkého zatížení.
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>Procentuální hodnota vs procesoru času procesoru
-<!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
+<!-- toodo: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
 Existují 2 metriky, které odpovídají využití procesoru. **Čas procesoru** a **procento využití procesoru**
 
-**Čas procesoru** je užitečné pro aplikace hostované v **volné** nebo **sdílené** plány, protože jeden z jejich kvóty je definována v minutách procesoru používané aplikace.
+**Čas procesoru** je užitečné pro aplikace hostované v **volné** nebo **sdílené** plány, protože jeden z jejich kvóty je definována v minutách procesoru používané aplikace hello.
 
-**Procento využití procesoru** na druhé straně je užitečné pro aplikace hostované v **základní**, **standardní** a **premium** plány vzhledem k tomu může být škálovat na více systémů a tato metrika je Dobrá indikace toho celkové využití v rámci všech instancí.
+**Procento využití procesoru** na hello druhé straně je užitečné, pro aplikace hostované v **základní**, **standardní** a **premium** plány vzhledem k tomu může být škálovat na více systémů a tato metrika je dobrá indikace toho Dobrý den celkové využití v rámci všech instancí.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Metriky Členitosti a zásady uchovávání informací
-Metriky pro aplikace a plán služby app service se protokolují a agregovat služba s následující členitostí a zásady uchovávání informací:
+Metriky pro plán služby aplikace a aplikace jsou protokolovány a agregovat služba hello s hello členitostí a zásady uchovávání informací:
 
 * **Minutu** členitosti metriky se zachovají pro **48 hodin**
 * **Hodina** členitosti metriky se zachovají pro **30 dnů**
 * **Den** členitosti metriky se zachovají pro **90 dnů**
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování, kvóty a metriky na portálu Azure.
-Můžete zkontrolovat stav různých **kvóty** a **metriky** ovlivnění aplikace [portálu Azure](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-hello-azure-portal"></a>Monitorování kvóty a metriky v hello portálu Azure.
+Můžete zkontrolovat stav hello hello různých **kvóty** a **metriky** ovlivnění aplikace v hello [portálu Azure](https://portal.azure.com).
 
 ![][quotas]
-**Kvóty** naleznete v části Nastavení >**kvóty**. Uživatelského umožňuje zkontrolovat: (1) název kvóty, (2) jeho interval resetování, (3) jeho aktuální limit a (4) aktuální hodnotu.
+**Kvóty** naleznete v části Nastavení >**kvóty**. Hello UX umožňuje zkontrolovat: název kvóty hello (1), (2) jeho interval resetování, (3) jeho aktuální limit a (4) aktuální hodnotu.
 
 ![][metrics]
-**Metriky** může být přístup přímo z okna prostředků. Můžete také upravit graf podle: (1) **klikněte na tlačítko** na a vyberte (2) **upravit graf**.
-Odsud můžete změnit (3) **čas rozsah**, (4) **typ grafu**a (5) **metriky** k zobrazení.  
+**Metriky** může být přístup přímo z okna prostředků hello. Můžete také upravit graf hello podle: (1) **klikněte na tlačítko** na a vyberte (2) **upravit graf**.
+Odsud můžete změnit hello (3) **čas rozsah**, (4) **typ grafu**a (5) **metriky** toodisplay.  
 
 Další informace o metrikách zde: [monitorovat metriky služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a škálování
-Metriky plán aplikace nebo služby App Service může být připojených k výstrahy, další informace o tom, najdete v části [přijímat oznámení výstrah](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+Metriky pro plán aplikace nebo služby App Service může být připojili tooalerts, toolearn více informací o to, najdete v části [přijímat oznámení výstrah](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-Aplikace služby App Service hostované v basic, standard nebo premium plány služby App Service podporují **škálování**. To umožňuje můžete nakonfigurovat pravidla monitorování metriky plánu služby App Service a můžete zvýšit nebo snížit počet instancí, že poskytuje další zdroje informací, podle potřeby nebo ukládání peníze, když je aplikace přečerpání zřizování. Další informace o automatické škálování zde: [postup škálování](../monitoring-and-diagnostics/insights-how-to-scale.md) a zde [osvědčené postupy pro automatické škálování Azure monitorování](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Aplikace služby App Service hostované v basic, standard nebo premium plány služby App Service podporují **škálování**. To vám umožní tooconfigure pravidla, která monitorování metriky plánu služby App Service a můžete zvýšit nebo snížit počet instancí hello poskytuje další zdroje informací, podle potřeby nebo ukládání peníze přečerpání zřídit po hello aplikace. Další informace o automatické škálování zde: [jak tooScale](../monitoring-and-diagnostics/insights-how-to-scale.md) a zde [osvědčené postupy pro automatické škálování Azure monitorování](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169

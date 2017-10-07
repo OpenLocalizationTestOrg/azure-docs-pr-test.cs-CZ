@@ -1,5 +1,5 @@
 ---
-title: "Správa vlastních názvů domén v Azure Active Directory | Microsoft Docs"
+title: "aaaManaging vlastních názvů domén v Azure Active Directory | Microsoft Docs"
 description: "Koncepty správy a postupy pro správu název domény v Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: curtand;jeffsta
-ms.openlocfilehash: 402c1be07b8ee885ee5341128fb3f419611b924d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4719524c4e972f6c981db39f016729da13b37670
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
-Název domény, je důležitou součástí identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část adresy pro skupinu a můžou být součástí identifikátor ID URI aplikace pro aplikaci. Prostředek v Azure Active Directory (Azure AD) může zahrnovat název domény, který už je ověřený jako vlastníkem adresáře, která obsahuje daný prostředek. Globální správce můžete provádět úlohy správy domény ve službě Azure AD.
+Název domény, je důležitou součástí hello identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část hello adresy pro skupinu a můžou být součástí identifikátor ID URI aplikace hello pro aplikaci. Název domény, který už je ověřený jako vlastníkem hello adresáře, která obsahuje hello prostředků může obsahovat prostředků v Azure Active Directory (Azure AD). Globální správce můžete provádět úlohy správy domény ve službě Azure AD.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Nastavte název primární domény pro váš adresář Azure AD
-Při vytváření adresáře, název domény, jako je například 'contoso.onmicrosoft.com', je také název primární doménu. Primární doména je výchozí název domény pro nového uživatele při vytváření nového uživatele. Nastavení primární doménu zjednodušuje proces pro správce k vytváření nových uživatelů na portálu. Chcete-li změnit název primární domény:
+## <a name="set-hello-primary-domain-name-for-your-azure-ad-directory"></a>Nastavte název hello primární domény pro váš adresář Azure AD
+Při vytváření adresáře hello počáteční název domény, jako je například 'contoso.onmicrosoft.com', je také název primární doménu hello. Při vytváření nového uživatele, je primární doménu Hello hello výchozí název domény pro nového uživatele. Nastavení primární doménu zjednodušuje proces hello správce toocreate noví uživatelé portálu hello. název primární domény toochange hello:
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **Azure Active Directory** v hello textového pole a pak vyberte **Enter**.
    
    ![Správa uživatelů otevírání](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. Na ***název adresáře*** vyberte **názvy domén**.
-4. Na  ***název adresáře* -názvy domén** okně, vyberte možnost názvu domény, kterou chcete nastavit název primární domény.
-5. Na ***název domény*** okno (to znamená, v okně otevřeném obsahující v názvu nový název domény), vyberte **nastavit jako primární** příkaz. Potvrďte volbu po zobrazení výzvy.
+3. Na hello ***název adresáře*** vyberte **názvy domén**.
+4. Na hello  ***název adresáře* -názvy domén** okně, vyberte hello název domény, například název primární domény toomake hello.
+5. Na hello ***název domény*** okno (to znamená, hello okno, které se otevře s nový název domény v hlavě hello), vyberte hello **nastavit jako primární** příkaz. Potvrďte volbu po zobrazení výzvy.
    
    ![Zkontrolujte název domény, primární](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
-Můžete změnit název primární domény pro váš adresář na všechny ověřené vlastní doménu, která není federovaný. Změna primární domény pro váš adresář nedojde ke změně uživatelská jména pro všechny stávající uživatele.
+Můžete změnit název hello primární domény pro váš adresář toobe všechny ověřené vlastní doménu, která není federovaný. Změna hello primární domény pro váš adresář nedojde ke změně hello uživatelská jména pro všechny stávající uživatele.
 
-## <a name="add-custom-domain-names-to-your-azure-ad"></a>Přidat vlastní názvy domén do služby Azure AD
-Pro každý adresář Azure AD můžete přidat až 900 názvy vlastních domén. Proces [, přidejte další vlastní domény název](add-custom-domain.md) je stejný pro první vlastní název domény.
+## <a name="add-custom-domain-names-tooyour-azure-ad"></a>Přidat vlastní doménu názvy tooyour Azure AD
+Můžete přidat až adresář Azure AD tooeach názvy vlastních domén too900. Hello proces příliš[, přidejte další vlastní domény název](add-custom-domain.md) hello stejné pro hello první vlastní název domény.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Přidat subdomény vlastní domény
-Pokud chcete přidat název domény třetí úrovně například 'europe.contoso.com' do vašeho adresáře, měli byste nejprve přidat a ověřit domény druhé úrovně, například contoso.com. Subdoméně bude automaticky ověřit pomocí služby Azure AD. Pokud chcete zjistit, zda byla ověřena subdomény, kterou jste právě přidali, aktualizujte stránku v prohlížeči, který obsahuje seznam domén.
+Pokud chcete tooadd názvu domény třetí úrovně, třeba directory tooyour 'europe.contoso.com', měli byste nejprve přidat a ověřit hello domény druhé úrovně, jako je například contoso.com. Hello subdomény bude automaticky ověřit pomocí služby Azure AD. ověření, toosee, který hello subdomény, kterou jste právě přidali, aktualizace hello stránku hello prohlížeč, který obsahuje seznam domén hello.
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co dělat, když změníte registrátora DNS pro vlastní název domény
-Pokud změníte registrátora DNS pro vlastní název domény, můžete nadále používat vlastní název domény se službou Azure AD samotné bez přerušení a bez další konfigurace úlohy. Pokud používáte vlastní název domény pro Office 365, Intune nebo jiné služby, které jsou závislé na vlastních názvů domén ve službě Azure AD, naleznete v dokumentaci pro tyto služby.
+## <a name="what-toodo-if-you-change-hello-dns-registrar-for-your-custom-domain-name"></a>Jaké toodo, pokud změníte hello registrátora DNS pro vlastní název domény
+Pokud změníte hello registrátora DNS pro vlastní název domény, můžete dál toouse vlastního názvu domény se službou Azure AD samotné bez přerušení a bez další konfigurace úlohy. Pokud používáte vlastní název domény pro Office 365, Intune nebo jiné služby, které jsou závislé na vlastních názvů domén ve službě Azure AD, naleznete v dokumentaci toohello pro tyto služby.
 
 ## <a name="delete-a-custom-domain-name"></a>Odstranit vlastní název domény
-Vlastní název domény můžete odstranit ze služby Azure AD, pokud vaše organizace už používá název domény, nebo pokud budete muset použít název domény s jinou Azure AD.
+Vlastní název domény můžete odstranit ze služby Azure AD, pokud vaše organizace už používá název domény, nebo pokud potřebujete toouse název domény s jinou Azure AD.
 
-Chcete-li odstranit vlastní název domény, musíte nejdřív zkontrolovat, že žádné prostředky ve vašem adresáři spoléhají na název domény. Název domény nelze odstranit z adresáře, pokud:
+toodelete vlastní název domény, musíte napřed zajistit, aby žádné prostředky ve vašem adresáři spoléhají na název domény hello. Název domény nelze odstranit z adresáře, pokud:
 
-* Každý uživatel má uživatelské jméno, e-mailovou adresu nebo adresu proxy serveru, který zahrnuje název domény.
-* Všechny skupiny má e-mailovou adresu nebo adresu proxy serveru, který zahrnuje název domény.
-* Všechny aplikace ve službě Azure AD má aplikaci identifikátor ID URI, který zahrnuje název domény.
+* Každý uživatel má uživatelské jméno, e-mailovou adresu nebo adresu proxy serveru, která zahrnuje název domény hello.
+* Všechny skupiny má e-mailovou adresu nebo adresu proxy serveru, která zahrnuje název domény hello.
+* Všechny aplikace ve službě Azure AD má aplikaci identifikátor ID URI, který zahrnuje název domény hello.
 
-Musíte změnit nebo odstranit takových prostředků v adresáři služby Azure AD, chcete-li odstranit vlastní název domény.
+Musíte změnit nebo odstranit takových prostředků v adresáři služby Azure AD, než budete moct odstranit hello vlastní název domény.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Použijte PowerShell nebo rozhraní Graph API, které slouží ke správě názvů domén
+## <a name="use-powershell-or-graph-api-toomanage-domain-names"></a>Pomocí prostředí PowerShell nebo rozhraní Graph API názvů domén toomanage
 Většinu úloh správy pro názvy domén v Azure Active Directory je možné dokončit také pomocí Microsoft PowerShell nebo programově pomocí rozhraní Azure AD Graph API.
 
-* [Použití Powershellu ke správě názvů domén ve službě Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-* [Pomocí rozhraní Graph API ke správě názvů domén ve službě Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Pomocí názvů domén toomanage prostředí PowerShell ve službě Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+* [Pomocí názvů domén toomanage rozhraní Graph API v Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>Další kroky
 * [Přidat vlastní názvy domén](add-custom-domain.md)

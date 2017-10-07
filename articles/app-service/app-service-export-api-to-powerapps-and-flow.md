@@ -1,6 +1,6 @@
 ---
-title: "Export rozhraní API Azure hostovaná PowerApps a Microsoft toku | Microsoft Docs"
-description: "Přehled o tom, jak vystavit rozhraní API hostované ve službě App Service PowerApps a Flow Microsoft"
+title: "aaaExporting služby hostované v Azure API tooPowerApps a Microsoft Flow | Microsoft Docs"
+description: "Přehled o tom, jak tooexpose rozhraní API hostovaná v tooPowerApps služby App Service a Flow Microsoft"
 services: app-service
 documentationcenter: 
 author: mattchenderson
@@ -14,21 +14,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: mahender
-ms.openlocfilehash: 0d166a2e5b60c3b9f911f9fc3ad49ad7f252abb4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 285b6efa3af5b0feac1ee2f617c0dc56dc3fd198
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Export rozhraní API Azure hostovaná PowerApps a Microsoft toku
+# <a name="exporting-an-azure-hosted-api-toopowerapps-and-microsoft-flow"></a>Export služby hostované v Azure API tooPowerApps a Flow Microsoft
 
 ## <a name="creating-custom-connectors-for-powerapps-and-microsoft-flow"></a>Vytvoření vlastních konektorů pro PowerApps a Flow Microsoft
 
-[PowerApps](https://powerapps.com) je služba pro vytváření a používání vlastní obchodní aplikace, které se připojují ke svým datům a fungovat na všech platformách. [Microsoft Flow](https://flow.microsoft.com) usnadňuje automatizovat pracovní postupy a obchodní procesy mezi vaše oblíbené aplikace a služby. Jak PowerApps a Flow Microsoft obsahují celou řadu předdefinovaných konektory ke zdrojům dat, jako je například Office 365, Dynamics 365, Salesforce a další. Ale uživatelé také musí být schopné využít zdroje dat a rozhraní API sestavuje organizace.
+[PowerApps](https://powerapps.com) je služba pro vytváření a používání vlastní obchodní aplikace, které se připojují tooyour dat a fungovat na všech platformách. [Microsoft Flow](https://flow.microsoft.com) umožňuje snadno tooautomate pracovní postupy a obchodní procesy mezi vaše oblíbené aplikace a služby. PowerApps a Microsoft Flow obsahují celou řadu předdefinovaných konektory toodata zdrojů například Office 365, Dynamics 365, Salesforce a další. Uživatelé však také potřebovat zdroje dat nemůže tooleverage toobe a rozhraní API sestavuje organizace.
 
-Podobně vývojáře, která chcete vystavit příslušných rozhraní API více široce v rámci organizace chtít zpřístupnit příslušných rozhraní API uživatelům PowerApps a Flow společnosti Microsoft. Toto téma vám ukáže, jak vystavit rozhraní API vytvořené s Azure App Service nebo Azure Functions PowerApps a Flow společnosti Microsoft. [Aplikační služba Azure](https://azure.microsoft.com/services/app-service/) je nabídku platforma jako služba, která umožňuje vývojářům snadno a rychle vytvářet podnikové úrovni webové, mobilní a aplikacích API. [Azure Functions](https://azure.microsoft.com/services/functions/) je založený na událostech bez serveru výpočetních řešení, které umožňuje rychle vytvořit kód, který může reagovat na dalších částí systému a škálování na základě poptávky.
+Podobně vývojáři, kteří mají tooexpose další široce v rámci hello organizace chtít toomake jejich dostupné tooPowerApps rozhraní API a uživatelé Microsoft Flow příslušných rozhraní API. Toto téma vám ukáže, jak tooexpose rozhraní API vytvořených pomocí služby Azure App Service nebo Azure Functions tooPowerApps a Flow společnosti Microsoft. [Aplikační služba Azure](https://azure.microsoft.com/services/app-service/) je nabídku platforma jako služba, která umožňuje vývojářům tooquickly a snadno sestavení podnikové úrovni webové, mobilní a aplikacích API. [Azure Functions](https://azure.microsoft.com/services/functions/) je založený na událostech bez serveru výpočetních řešení, které vám umožní tooquickly Autor kód, který může reagovat tooother části systému a škálování na základě poptávky.
 
-Další informace o těchto službách najdete v tématu:
+toolearn více o těchto službách najdete v části:
 - [PowerApps na základě učení](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 
 - [Microsoft toku na základě učení](https://flow.microsoft.com/guided-learning/learning-introducing-flow/)
 - [Co je App Service?](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
@@ -36,80 +36,80 @@ Další informace o těchto službách najdete v tématu:
 
 ## <a name="sharing-an-api-definition"></a>Sdílení definice rozhraní API
 
-Rozhraní API jsou často popsané pomocí [OpenAPI dokumentu](https://www.openapis.org/) (někdy označované jako dokument "Swagger"). Tato položka obsahuje všechny informace o jaké operace jsou k dispozici a jak by měla být strukturovaná data. PowerApps a Flow Microsoft můžete vytvořit vlastní konektory pro každý dokument, OpenAPI 2.0. Po vytvoření vlastní konektor, mohou být používány stejným způsobem jako jeden z předdefinovaných konektory a lze snadno integrovat do aplikace.
+Rozhraní API jsou často popsané pomocí [OpenAPI dokumentu](https://www.openapis.org/) (někdy označovaná tooas dokumentu "Swagger"). Tato položka obsahuje všechny informace hello o jaké operace jsou k dispozici a jak by měla být hello data strukturu. PowerApps a Flow Microsoft můžete vytvořit vlastní konektory pro každý dokument, OpenAPI 2.0. Po vytvoření vlastní konektor, lze použít v přesně hello stejným způsobem jako jeden z předdefinovaných konektory hello a lze snadno integrovat do aplikace.
 
-Azure App Service a Azure Functions mají [integrovanou podporu](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata) pro vytváření, hostování a správu dokument OpenAPI. Chcete-li vytvořit vlastní konektor pro webové, mobilní, rozhraní API nebo funkce aplikace, PowerApps a toku musí mít kopii definici.
+Azure App Service a Azure Functions mají [integrovanou podporu](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata) pro vytváření, hostování a správu dokument OpenAPI. V pořadí toocreate vlastní konektor pro webové, mobilní, rozhraní API nebo funkce aplikace PowerApps a toku nutné toobe zadané kopie hello definice.
 
 > [!NOTE]
-> Protože je použita kopii definice rozhraní API, PowerApps a Flow Microsoft nebude vědět okamžitě o aktualizace nebo nejnovější změny do aplikace. Pokud je k dispozici nová verze rozhraní API, tyto kroky je potřeba zopakovat pro novou verzi. 
+> Protože je použita kopii hello definice rozhraní API, PowerApps a Flow Microsoft nebude vědět okamžitě o aktualizace nebo aplikace toohello narušující změny. Pokud je k dispozici nová verze rozhraní API hello, tyto kroky je potřeba zopakovat pro novou verzi hello. 
 
-PowerApps a Microsoft Flow poskytnout hostované definice rozhraní API pro vaši aplikaci, postupujte takto:
+tooprovide PowerApps a Flow Microsoft s hello hostované definice rozhraní API pro aplikace, postupujte takto:
 
-1. Otevřete [portálu Azure](https://portal.azure.com) a přejděte do aplikace služby App Service nebo Azure Functions.
+1. Otevřete hello [portálu Azure](https://portal.azure.com) a přejděte tooyour aplikace služby App Service nebo Azure Functions.
 
-    Pokud používáte Azure App Service, vyberte **definice rozhraní API** ze seznamu nastavení. 
+    Pokud používáte Azure App Service, vyberte **definice rozhraní API** hello nastavení seznamu. 
     
-    Pokud používáte Azure Functions, vyberte svou aplikaci funkce a potom zvolte **funkce**a potom **definice rozhraní API**. Může se také rozhodnout otevřít **definice rozhraní API (preview)** kartě místo.
+    Pokud používáte Azure Functions, vyberte svou aplikaci funkce a potom zvolte **funkce**a potom **definice rozhraní API**. Může také zvolit tooopen hello **definice rozhraní API (preview)** kartě místo.
 
-2. Pokud bylo zadáno definice rozhraní API, zobrazí se **exportovat do PowerApps + Microsoft Flow** tlačítko. Kliknutím na toto tlačítko k zahájení procesu exportu.
+2. Pokud bylo zadáno definice rozhraní API, zobrazí se **exportovat tooPowerApps + Microsoft Flow** tlačítko. Klikněte na toto tlačítko toobegin hello export proces.
 
-3. Vyberte **Export režimu**. Určuje, kroky, které budete muset provést, pokud chcete vytvořit konektor. Služby App Service nabízí dvě možnosti pro poskytování vaší definice rozhraní API PowerApps a Flow Microsoft:
+3. Vyberte hello **Export režimu**. Tato hodnota určuje hello kroků budete potřebovat toofollow toocreate konektor. Služby App Service nabízí dvě možnosti pro poskytování vaší definice rozhraní API PowerApps a Flow Microsoft:
 
-    **Express** se dá vytvořit vlastní konektor z portálu Azure. To vyžaduje, aby si přihlášený uživatel má oprávnění k vytváření konektory v cílovém prostředí. Toto je doporučený postup, pokud tento požadavek můžete splnit. Pokud při použití tohoto režimu, postupujte podle kroků [Express export](#express) podle následujících pokynů.
+    **Express** hello se dá vytvořit vlastní konektor hello z v rámci portálu Azure. To vyžaduje, že tento hello asi přihlášený uživatel má oprávnění toocreate konektory v hello cílovém prostředí. Toto je hello doporučenému přístupu, pokud tento požadavek můžete splnit. Pokud při použití tohoto režimu, postupujte podle hello [Express export](#express) podle následujících pokynů.
 
-    **Ruční** umožňuje exportovat kopii linkové rozhraní API, který lze importovat používání portálů PowerApps nebo Flow společnosti Microsoft. Toto je doporučený postup, pokud uživatel Azure a uživatel s oprávněním k vytvoření konektory jsou jiné osoby nebo pokud konektor musí být vytvořen v jiného klienta. Pokud při použití tohoto režimu, postupujte podle kroků [ruční export a import](#manual) podle následujících pokynů.
+    **Ruční** umožňuje exportovat kopii linkové hello rozhraní API, který lze importovat pomocí hello PowerApps nebo Microsoft Flow portálů. Toto je hello doporučenému přístupu, pokud hello Azure uživatele a hello uživatele s konektory toocreate oprávnění jsou jiné osoby nebo pokud hello konektor musí toobe vytvořené v jiného klienta. Pokud při použití tohoto režimu, postupujte podle hello [ruční export a import](#manual) podle následujících pokynů.
 
 <a name="express"></a>
 ## <a name="express-export"></a>Express exportu
 
-V této části vytvoříte novou vlastní konektor z portálu Azure. Musíte být přihlášeni do klienta, ke které chcete exportovat, a musí mít oprávnění k vytvoření vlastní konektor v cílovém prostředí.
+V této části vytvoříte novou vlastní konektor z v rámci hello portálu Azure. Musíte být přihlášeni do hello klienta toowhich chcete tooexport a musíte mít oprávnění toocreate vlastní konektor v cílovém prostředí hello.
 
-1. Vyberte prostředí, ve kterém chcete vytvořit konektor. Potom zadejte název pro vlastní konektor.
+1. Vyberte hello prostředí, ve kterém chcete toocreate hello konektor. Potom zadejte název pro vlastní konektor.
 
-2. Pokud vaše definice rozhraní API obsahuje všechny definice zabezpečení, tyto volaná v kroku #2. V případě potřeby zadejte podrobnosti konfigurace zabezpečení potřebné pro uživatelům uděluje přístup k vašemu rozhraní API. Další informace najdete v tématu [ověřování](#auth) níže. 
+2. Pokud vaše definice rozhraní API obsahuje všechny definice zabezpečení, tyto volaná v kroku #2. V případě potřeby zadejte hello zabezpečení podrobnosti konfigurace potřeby toogrant uživatelé přístup k rozhraní API tooyour. Další informace najdete v tématu [ověřování](#auth) níže. 
 
-3. Klikněte na tlačítko **OK** vytvořit vaše vlastní konektor.
+3. Klikněte na tlačítko **OK** toocreate vlastní konektor.
 
 
 <a name="manual"></a>
 ## <a name="manual-export-and-import"></a>Ruční export a import
 
-Chcete-li vytvořit vlastní konektor pro webové, mobilní, rozhraní API nebo funkce aplikace, bude potřeba dva kroky:
+V pořadí toocreate vlastní konektor pro webové, mobilní, rozhraní API nebo funkce aplikace bude potřeba dva kroky:
 
-1. [Načítání definice rozhraní API z aplikace služby nebo funkce Azure](#export)
-2. [Import definice rozhraní API do PowerApps a Flow Microsoft](#import)
+1. [Načítání definice rozhraní API hello ze služby App Service nebo Azure Functions](#export)
+2. [Import definice rozhraní API hello do PowerApps a Flow Microsoft](#import)
 
-Je možné, že tyto dva kroky muset prováděné samostatné jednotlivce v organizaci, jak se daného uživatele nemusí mít oprávnění k provádění obou akcí. V takovém případě vývojáři, který má Přispěvatel přístup k aplikaci služby App Service nebo Azure Functions muset získat definice rozhraní API (jeden soubor JSON) nebo odkaz na něj. Pak bude muset poskytují této definici PowerApps nebo Microsoft Flow vlastníka. Daného vlastníka můžete použít k vytvoření vlastní konektor metadata.
+Je možné, že tyto dva kroky potřebovat toobe prováděné samostatné jednotlivce v organizaci, protože daného uživatele nemusí mít oprávnění tooperform obě akce. V takovém případě vývojář, který má přístup toohello Přispěvatel aplikace služby App Service nebo Azure Functions potřebovat tooobtain hello rozhraní API definice (jeden soubor JSON) nebo tooit odkaz. Tooprovide se pak musí vlastník této definici tooa PowerApps nebo Flow Microsoft. Daného vlastníka můžete použít hello metadata toocreate hello vlastní konektor.
 
 <a name="export"></a>
-### <a name="retrieving-the-api-definition-from-app-service-or-azure-functions"></a>Načítání definice rozhraní API z aplikace služby nebo funkce Azure
+### <a name="retrieving-hello-api-definition-from-app-service-or-azure-functions"></a>Načítání definice rozhraní API hello ze služby App Service nebo Azure Functions
 
-V této části budete exportovat definice rozhraní API pro vaše rozhraní API App Service, který se má použít později na portálu PowerApps nebo Flow Microsoft.
+V této části budete exportovat hello definice rozhraní API pro App Service API, toobe použít později v hello PowerApps nebo Microsoft Flow na portálu.
 
-1. Buď můžete **stáhnout definice rozhraní API** nebo **získejte odkaz**. Podle toho, co si zvolíte, výsledkem bude k dispozici v další části. Vyberte jednu z těchto možností a postupujte podle pokynů.
+1. Můžete zvolit tooeither **stáhnout definice hello rozhraní API** nebo **získejte odkaz**. Podle toho, co vyberete, bude k dispozici hello výsledek v další části hello. Vyberte jednu z těchto možností a postupujte podle pokynů hello.
  
-2. Pokud vaše definice rozhraní API obsahuje všechny definice zabezpečení, tyto volaná v kroku #2. Během importu PowerApps a Flow Microsoft tyto zjistí a zobrazí výzvu pro informace o zabezpečení. Získat přihlašovací údaje související s každou definici pro použití v další části. Další informace najdete v tématu [ověřování](#auth) níže. 
+2. Pokud vaše definice rozhraní API obsahuje všechny definice zabezpečení, tyto volaná v kroku #2. Během importu PowerApps a Flow Microsoft tyto zjistí a zobrazí výzvu pro informace o zabezpečení. Shromážděte hello přihlašovací údaje související tooeach definice pro použití v další části hello. Další informace najdete v tématu [ověřování](#auth) níže. 
 
 <a name="import"></a>
-### <a name="importing-the-api-definition-into-powerapps-and-microsoft-flow"></a>Import definice rozhraní API do PowerApps a Flow Microsoft
+### <a name="importing-hello-api-definition-into-powerapps-and-microsoft-flow"></a>Import definice rozhraní API hello do PowerApps a Flow Microsoft
 
-V této části vytvoříte vlastní konektor v PowerApps a Microsoft Flow pomocí definice rozhraní API dříve získali. Vlastní konektory jsou sdílené mezi dvě služby, takže potřebujete importovat definici jednou. Další informace o vlastních konektorů najdete v tématu [zaregistrovat a použít vlastní konektory v PowerApps] a [zaregistrovat a použít vlastní konektory v Microsoft Flow].
+V této části vytvoříte vlastní konektor v PowerApps a Microsoft Flow pomocí dříve získali definice hello rozhraní API. Vlastní konektory jsou sdílené mezi hello dvě služby, proto musíte pouze jednou tooimport hello definice. Další informace o vlastních konektorů najdete v tématu [zaregistrovat a použít vlastní konektory v PowerApps] a [zaregistrovat a použít vlastní konektory v Microsoft Flow].
 
-1. Otevřete [Powerapps webový portál](https://web.powerapps.com) nebo [webový portál Microsoft Flow](https://flow.microsoft.com/)a přihlaste se. 
+1. Otevřete hello [Powerapps webový portál](https://web.powerapps.com) nebo hello [webový portál Microsoft Flow](https://flow.microsoft.com/)a přihlaste se. 
 
-2. Klikněte **nastavení** tlačítko (ikona ozubené kolečko) v pravém horním rohu stránky na stránku a vyberte **vlastní konektory**. 
+2. Klikněte na tlačítko hello **nastavení** tlačítko (ikona hello ozubené kolečko) v pravé horní hello hello stránku a vyberte **vlastní konektory**. 
 
 3. Klikněte na tlačítko **vytvořte vlastní konektor**.
 
-4. Na **Obecné** kartě, zadejte název pro rozhraní API a potom odeslat definici OpenAPI nebo vložte adresu URL metadat. Klikněte na tlačítko **pokračovat**.
+4. Na hello **Obecné** kartě, zadejte název pro rozhraní API a pak nahrajte hello OpenAPI definice nebo vložte adresu URL metadat hello. Klikněte na tlačítko **pokračovat**.
 
-4. Na **zabezpečení** kartě, pokud se zobrazí výzva k zadejte podrobnosti o ověřování, zadejte hodnoty získané v předchozím oddílu. V opačném případě přejděte k dalšímu kroku.
+4. Na hello **zabezpečení** kartě, pokud jsou podrobnosti výzvami tooprovide ověřování, zadejte hodnoty hello získanou v předchozí části hello. Pokud tomu tak není, pokračujte dalším krokem toohello.
 
-5. Na **definice** , všechny operace, které jsou definované v souboru OpenAPI jsou automaticky vyplněna. Pokud jsou definovány všechny požadované operace, můžete přejít k dalšímu kroku. Pokud ne, můžete přidat a upravit operations sem.
+5. Na hello **definice** , všechny operace hello definované v souboru OpenAPI jsou automaticky vyplněna. Pokud jsou definovány všechny požadované operace, můžete přejít toohello další krok. Pokud ne, můžete přidat a upravit operations sem.
 
-6. Klikněte na tlačítko **vytvořit konektor**. Pokud chcete testovat volání rozhraní API, přejděte k dalšímu kroku.
+6. Klikněte na tlačítko **vytvořit konektor**. Pokud chcete, aby tootest volání rozhraní API, přejděte toohello další krok.
 
-7. Na **testování** vytvořit připojení, vyberte na testovací operace a zadejte všechna data vyžadovanou operaci.
+7. Na hello **Test** kartě, vytvořit připojení, vyberte tootest operaci a zadejte všechna data hello operace.
 
 8. Klikněte na tlačítko **testovací operace**.
 
@@ -117,40 +117,40 @@ V této části vytvoříte vlastní konektor v PowerApps a Microsoft Flow pomoc
 <a name="auth"></a>
 ## <a name="authentication"></a>Authentication
 
-PowerApps a Microsoft Flow nativně podporují kolekci zprostředkovatelů identity, které se dají použít k přihlášení uživatelé vlastní konektor. Pokud vaše rozhraní API vyžaduje ověření, ujistěte se, že se zaznamená jako _zabezpečení definice_ v OpenAPI dokumentu. Během exportu musíte zadat hodnoty konfigurace, které umožňují PowerApps Flow Microsoft k provádění akcí přihlášení.
+PowerApps a Microsoft Flow nativně podporují kolekci zprostředkovatelů identity, které můžou být použité toolog v uživatelé vlastní konektor. Pokud vaše rozhraní API vyžaduje ověření, ujistěte se, že se zaznamená jako _zabezpečení definice_ v OpenAPI dokumentu. Během exportu budete potřebovat tooprovide konfigurační hodnoty, které umožňují PowerApps Microsoft Flow tooperform přihlášení akce.
 
-Tato část popisuje typy ověřování, které podporuje rychlé toku: klíč rozhraní API, Azure Active Directory a obecné OAuth 2.0. Úplný seznam poskytovatelů a každý vyžaduje přihlašovací údaje, najdete v části [zaregistrovat a použít vlastní konektory v PowerApps] a [zaregistrovat a použít vlastní konektory v Microsoft Flow].
+Tato část popisuje hello typy ověřování, které jsou podporovány produktem express toku hello: klíč rozhraní API, Azure Active Directory a obecné OAuth 2.0. Úplný seznam poskytovatelů a přihlašovací údaje hello každé vyžaduje, najdete v části [zaregistrovat a použít vlastní konektory v PowerApps] a [zaregistrovat a použít vlastní konektory v Microsoft Flow].
 
 ### <a name="api-key"></a>Klíč rozhraní API
-Pokud se používá toto schéma zabezpečení, uživatelé konektoru budou vyzváni k zadání klíč při vytváření připojení. Můžete zadat název klíče pomáhá jim vědět, který klíč je potřeba rozhraní API. Pro Azure Functions obvykle bude jeden z klíčů hostitele, pokrývajících několik funkcí v rámci funkce aplikace.
+Pokud se používá toto schéma zabezpečení, budou uživatelé hello konektoru výzvami tooprovide hello klíč při vytváření připojení. Můžete zadat toohelp název klíče rozhraní API je vědět, které je zapotřebí. Pro Azure Functions obvykle bude jeden z klíčů hostitele hello, pokrývajících několik funkcí v rámci aplikace hello funkce.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Při konfiguraci vlastní konektor, který vyžaduje přihlášení AAD, jsou požadovány dva registrace AAD aplikace: jeden pro modelování back-end rozhraní API a jeden pro modelování konektor v PowerApps a toku.
+Při konfiguraci vlastní konektor, který vyžaduje přihlášení AAD, jsou požadovány dva registrace AAD aplikace: jedno toomodel hello back-end rozhraní API a jeden konektor hello toomodel v PowerApps a toku.
 
-Rozhraní API by měl být nakonfigurovaný pro práci s první registraci, a to bude již postarat Pokud jste použili [ověřování/autorizace služby App Service](https://docs.microsoft.com/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication) funkce.
+Rozhraní API by měl být nakonfigurovaný toowork s registrací první hello, a to bude již postarat Pokud jste použili hello [ověřování/autorizace služby App Service](https://docs.microsoft.com/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication) funkce.
 
-Budete muset ručně vytvořit druhý registrace pro tento konektor, pomocí kroků v [přidání aplikace AAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Registrace je potřeba mít Delegovaný přístup k rozhraní API a adresa URL odpovědi z `https://msmanaged-na.consent.azure-apim.net/redirect`. Najdete v tématu [v tomto příkladu](
-https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) podrobněji, nahraďte vaše rozhraní API pro Azure Resource Manager.
+Budete mít toomanually vytvořte druhý registrace hello hello konektor, pomocí hello kroky popsané v [přidání aplikace AAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Hello registrace musí mít toohave Delegovaný přístup tooyour rozhraní API a adresa URL odpovědi z `https://msmanaged-na.consent.azure-apim.net/redirect`. Najdete v tématu [v tomto příkladu](
+https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) další podrobnosti, nahraďte vaše rozhraní API pro hello Azure Resource Manager.
 
-Jsou tyto hodnoty konfigurace vyžaduje:
-- **ID klienta** -ID klienta konektoru registrace AAD
-- **Tajný klíč klienta** -tajný klíč klienta konektoru registrace AAD
-- **Adresa URL pro přihlášení** – základní adresu URL pro AAD. Ve veřejné Azure, bude obvykle jednat `https://login.windows.net`.
-- **ID klienta** -ID klienta, který se má použít pro přihlášení. Měl by být "běžné" nebo ID klienta, ve kterém se vytváří konektor.
-- **Adresa URL prostředku** – prostředek URL registrace AAD rozhraní API back-end
+vyžadují se Hello následující hodnoty konfigurace:
+- **ID klienta** -hello ID klienta konektoru registrace AAD
+- **Tajný klíč klienta** -tajný klíč klienta hello konektoru registrace AAD
+- **Adresa URL pro přihlášení** – hello základní adresu URL pro AAD. Ve veřejné Azure, bude obvykle jednat `https://login.windows.net`.
+- **ID klienta** -hello ID toobe hello klienta použít pro přihlášení hello. To by měla být "běžné" nebo hello ID hello klienta, ve které hello konektor vytvořen.
+- **Adresa URL prostředku** -hello URL prostředku registrace AAD back-end vašeho rozhraní API
 
 > [!IMPORTANT]
-> Pokud jiné fyzické budete importovat definici rozhraní API do PowerApps a Flow Microsoft jako součást Ruční postup, musíte jim poskytnout ID klienta a tajný klíč klienta **registrace konektoru**, a také na adresu URL zdroje rozhraní API. Ujistěte se, že těchto tajných klíčů spravuje bezpečně. **Nesdílí pověření zabezpečení rozhraní API, sám sebe.**
+> Pokud jiné fyzické budete importovat definici hello rozhraní API do PowerApps a Flow Microsoft jako součást ruční toku hello, budete potřebovat tooprovide je s hello ID a klienta tajný klíč klienta **registrace konektoru hello**, také jako adresa URL prostředku hello rozhraní API. Ujistěte se, že těchto tajných klíčů spravuje bezpečně. **Nesdílí hello bezpečnostních pověření hello rozhraní API, sám sebe.**
 
 ### <a name="generic-oauth-20"></a>Obecné OAuth 2.0
-Obecné podpory OAuth 2.0 umožňuje integraci se službou kteréhokoli poskytovatele služeb, OAuth 2.0. To umožňuje přinést si všechny vlastní poskytovatele, který není nativně podporované.
+Hello obecné podpory OAuth 2.0 umožňuje toointegrate s kteréhokoli poskytovatele služeb, OAuth 2.0. To vám umožní toobring v žádné vlastní poskytovatele, který není nativně podporované.
 
-Jsou tyto hodnoty konfigurace vyžaduje:
-- **ID klienta** -ID klienta OAuth 2.0
-- **Tajný klíč klienta** -tajný klíč klienta OAuth 2.0
-- **URL pro autorizaci** -URL pro autorizaci OAuth 2.0
-- **Token URL** -adresy URL tokenu OAuth 2.0
-- **Aktualizujte adresu URL** – adresa URL aktualizace OAuth 2.0
+vyžadují se Hello následující hodnoty konfigurace:
+- **ID klienta** -hello ID klienta OAuth 2.0
+- **Tajný klíč klienta** -tajný klíč klienta hello OAuth 2.0
+- **URL pro autorizaci** -hello URL pro autorizaci OAuth 2.0
+- **Token URL** -hello adresy URL tokenu OAuth 2.0
+- **Aktualizujte adresu URL** -hello URL aktualizace OAuth 2.0
 
 
 

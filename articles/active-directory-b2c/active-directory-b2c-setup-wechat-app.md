@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: Konfigurace WeChat | Microsoft Docs'
-description: "Zadejte registrace a přihlášení k příjemce s WeChat účty v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C."
+description: "Registrace a přihlášení tooconsumers poskytněte WeChat účty v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
-ms.openlocfilehash: a54aec23d951610118246e9f70cdd27752ef39a6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 92cc3579d818d2379a503ccc695138b33a34466d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s WeChat účty
+# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-tooconsumers-with-wechat-accounts"></a>Azure Active Directory B2C: Poskytnout účty WeChat tooconsumers registrace a přihlášení
 
 > [!NOTE]
 > Tato funkce je ve verzi preview.
@@ -28,24 +28,24 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="create-a-wechat-application"></a>Vytvoření aplikace WeChat
 
-Pokud chcete použít WeChat jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci WeChat a zadat se správné parametry. Potřebujete účet WeChat k tomu. Pokud nemáte, můžete jej získat registrací prostřednictvím jednoho z jejich mobilních aplikací nebo pomocí své QQ číslo. Potom získáte váš účet zaregistrována WeChat programu pro vývojáře. Další informace můžete najít [zde](http://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
+toouse WeChat jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, potřebujete toocreate WeChat aplikace a přiřaďte mu hello správné parametry. Tuto funkci potřebujete toodo WeChat účtu. Pokud nemáte, můžete jej získat registrací prostřednictvím jednoho z jejich mobilních aplikací nebo pomocí své QQ číslo. Potom získáte vašeho účtu zaregistrovat pomocí programu pro vývojáře WeChat hello. Další informace můžete najít [zde](http://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
 
 ### <a name="register-a-wechat-application"></a>Registrace aplikace WeChat
 
-1. Přejděte na [https://open.weixin.qq.com/](https://open.weixin.qq.com/) a přihlaste se.
+1. Přejděte příliš[https://open.weixin.qq.com/](https://open.weixin.qq.com/) a přihlaste se.
 2. Klikněte na**管理中心**(management center).
-3. Postupujte podle potřeby kroky pro registraci novou aplikaci.
-4. Pro**授权回调域**(zpětného volání URL), zadejte `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp`. Například pokud vaše `tenant_name` je contoso.onmicrosoft.com, nastavte adresu URL jako `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
-5. Najít a zkopírovat **ID aplikace** a **klíč aplikace**. Budete potřebovat později.
+3. Postupujte podle hello potřebné kroky tooregister novou aplikaci.
+4. Pro**授权回调域**(zpětného volání URL), zadejte `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp`. Například pokud vaše `tenant_name` je contoso.onmicrosoft.com, toobe adresu URL sady hello `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+5. Najít a zkopírujte hello **ID aplikace** a **klíč aplikace**. Budete potřebovat později.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>Konfigurace WeChat jako zprostředkovatele identity ve vašem klientovi
-1. Postupujte podle těchto kroků [přejděte do okna s funkcemi B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na portálu Azure.
-2. Na okno s funkcemi B2C, klikněte na tlačítko **zprostředkovatelů Identity**.
-3. Klikněte na **Přidat** v horní části okna.
-4. Zadejte popisný **název** pro konfiguraci poskytovatele identity. Zadejte například "WeChat".
+1. Postupujte podle těchto kroků příliš[přejděte okno s funkcemi toohello B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na hello portálu Azure.
+2. V okně funkce hello B2C, klikněte na tlačítko **zprostředkovatelů Identity**.
+3. Klikněte na tlačítko **+ přidat** hello horní části okna hello.
+4. Zadejte popisný **název** pro konfiguraci poskytovatele identity hello. Zadejte například "WeChat".
 5. Klikněte na tlačítko **typ zprostředkovatele Identity**, vyberte **WeChat**a klikněte na tlačítko **OK**.
 6. Klikněte na tlačítko **nastavení tohoto zprostředkovatele identity**
-7. Zadejte **klíč aplikace** který jste zkopírovali dříve, jako **ID klienta**.
-8. Zadejte **tajný klíč aplikace** který jste zkopírovali dříve, jako **tajný klíč klienta**.
-9. Klikněte na tlačítko **OK** a pak klikněte na **vytvořit** uložte konfiguraci WeChat.
+7. Zadejte hello **klíč aplikace** který jste zkopírovali dříve jako hello **ID klienta**.
+8. Zadejte hello **tajný klíč aplikace** který jste zkopírovali dříve jako hello **tajný klíč klienta**.
+9. Klikněte na tlačítko **OK** a pak klikněte na **vytvořit** toosave WeChat konfiguraci.
 

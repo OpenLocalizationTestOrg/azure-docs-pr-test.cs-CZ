@@ -1,6 +1,6 @@
 ---
-title: "Autorizovat vývojářským účtům pomocí Azure Active Directory B2C - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak mají autorizovat uživatelé pomocí Azure Active Directory B2C ve službě API Management."
+title: "aaaAuthorize vývojářským účtům pomocí Azure Active Directory B2C - Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak uživatelé tooauthorize pomocí Azure Active Directory B2C ve službě API Management."
 services: api-management
 documentationcenter: API Management
 author: miaojiang
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: eb7deb1a79d9db9ac5cfbea69b8d3c564eb55577
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28f7cae53138938dbbc848b4afcbf08b72690e37
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak se mají autorizovat vývojářským účtům pomocí Azure Active Directory B2C ve službě Azure API Management
+# <a name="how-tooauthorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak tooauthorize vývojáře účtů pomocí Azure Active Directory B2C ve službě Azure API Management
 ## <a name="overview"></a>Přehled
-Azure Active Directory B2C je cloudové řešení správy identity pro určených webové a mobilní aplikace. Můžete ho použít ke správě přístupu na portálu pro vývojáře. Tento průvodce vám ukáže konfigurací, která je vyžadována ve službě API Management k integraci s Azure Active Directory B2C. Informace o povolení přístup k portálu pro vývojáře pomocí klasického Azure Active Directory najdete v tématu [autorizace vývojářským účtům pomocí služby Azure Active Directory].
+Azure Active Directory B2C je cloudové řešení správy identity pro určených webové a mobilní aplikace. Můžete ji použít portál pro vývojáře tooyour toomanage přístup. Tato příručka obsahuje hello konfigurací, která je vyžadována ve vaší toointegrate služby API Management s Azure Active Directory B2C. Informace o povolení portál pro vývojáře toohello přístup pomocí klasického Azure Active Directory najdete v tématu [jak tooauthorize vývojáře účtů pomocí služby Azure Active Directory].
 
 > [!NOTE]
-> Pokud chcete provést kroky v této příručce, musí mít první klienta služby Azure Active Directory B2C vytvořit aplikaci v. Také je potřeba mít registrace a přihlášení zásady, které jsou připravené. Další informace najdete v tématu [přehled Azure Active Directory B2C].
+> toocomplete hello kroky v tomto průvodci, musíte nejprve mít toocreate klienta Azure Active Directory B2C aplikace. Navíc musíte zásady registrace a přihlášení toohave připraven. Další informace najdete v tématu [přehled Azure Active Directory B2C].
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Autorizovat vývojářským účtům pomocí Azure Active Directory B2C
 
-1. Chcete-li začít, klikněte na tlačítko **portál vydavatele** na portálu Azure pro služby API Management. Tím přejdete na portál vydavatele služby API Management.
+1. tooget začít, klikněte na tlačítko **portál vydavatele** v hello portál Azure pro služby API Management. Tím přejdete portál vydavatele toohello API Management.
 
    ![Portál vydavatele][api-management-management-console]
 
    > [!NOTE]
-   > Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v [Začínáme s Azure API Management kurzu] [Get started with Azure API Management].
+   > Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v hello [Začínáme s Azure API Management kurzu][Get started with Azure API Management].
 
-2. Na **API Management** nabídky, klikněte na tlačítko **zabezpečení**. Na **identity** , zvolte **Azure Active Directory B2C**.
+2. Na hello **API Management** nabídky, klikněte na tlačítko **zabezpečení**. Na hello **identity** , zvolte **Azure Active Directory B2C**.
 
   ![Externí identity 1][api-management-howto-aad-b2c-security-tab]
 
-3. Poznamenejte si **adresy URL pro přesměrování** a přepnout na Azure Active Directory B2C na portálu Azure.
+3. Poznamenejte si hello **adresy URL pro přesměrování** a přepnout tooAzure Active Directory B2C v hello portálu Azure.
 
   ![Externí identity 2][api-management-howto-aad-b2c-security-tab-reply-url]
 
-4. Klikněte **aplikace** tlačítko.
+4. Klikněte na tlačítko hello **aplikace** tlačítko.
 
   ![Zaregistrujte novou aplikaci 1][api-management-howto-aad-b2c-portal-menu]
 
-5. Klikněte **přidat** tlačítko vytvořte novou aplikaci Azure Active Directory B2C.
+5. Klikněte na tlačítko hello **přidat** tlačítko aplikace toocreate nové Azure Active Directory B2C.
 
   ![Zaregistrujte novou aplikaci 2][api-management-howto-aad-b2c-add-button]
 
-6. V **novou aplikaci** okno, zadejte název aplikace. Zvolte **Ano** pod **webové aplikaci nebo webové rozhraní API**a zvolte **Ano** pod **povolit implicitní tok**. Zkopírujte **adresy URL pro přesměrování** z **Azure Active Directory B2C** části **identity** v portálu vydavatele a vložte ji do **odpovědi Adresa URL** textové pole.
+6. V hello **novou aplikaci** okno, zadejte název aplikace hello. Zvolte **Ano** pod **webové aplikaci nebo webové rozhraní API**a zvolte **Ano** pod **povolit implicitní tok**. Potom kopie hello **adresy URL pro přesměrování** z hello **Azure Active Directory B2C** části hello **identity** v hello portálu vydavatele a vložte jej do hello **Adresa URL odpovědi** textové pole.
 
   ![Zaregistrujte novou aplikaci 3][api-management-howto-aad-b2c-app-details]
 
-7. Klikněte na tlačítko **Vytvořit**. Při vytvoření aplikace se zobrazí v **aplikace** okno. Klikněte na název aplikace zobrazíte její podrobnosti.
+7. Klikněte na tlačítko hello **vytvořit** tlačítko. Když aplikace hello je vytvořen, zobrazí se v hello **aplikace** okno. Klikněte na tlačítko toosee název aplikace hello její podrobnosti.
 
   ![Zaregistrujte novou aplikaci 4][api-management-howto-aad-b2c-app-created]
 
-8. Z **vlastnosti** zkopírujte **ID aplikace** do schránky.
+8. Z hello **vlastnosti** okno, kopie hello **ID aplikace** toohello schránky.
 
   ![ID aplikace 1][api-management-howto-aad-b2c-app-id]
 
-9. Přepněte zpět na portál vydavatele a ID do vložte **Id klienta** textové pole.
+9. Přepnout zpět toohello portál vydavatele a hello ID vložte do hello **Id klienta** textové pole.
 
   ![ID aplikace 2][api-management-howto-aad-b2c-client-id]
 
-10. Přepněte zpět na portálu Azure, klikněte na tlačítko **klíče** tlačítko a potom klikněte na **vygenerovat klíč**. Klikněte na tlačítko **Uložit** k uložení konfigurace a zobrazení **klíč aplikace**. Klíč zkopírujte do schránky.
+10. Přepnout zpět toohello portálu Azure, klikněte na tlačítko hello **klíče** tlačítko a potom klikněte na **vygenerovat klíč**. Klikněte na tlačítko **Uložit** toosave hello konfiguraci a zobrazení hello **klíč aplikace**. Kopírování hello klíče toohello schránky.
 
   ![Aplikace klíč 1][api-management-howto-aad-b2c-app-key]
 
-11. Přepněte zpět na portál vydavatele a vložte klíč do **tajný klíč klienta** textové pole.
+11. Přepínač back toohello vydavatele portál a vložit hello klíč do hello **tajný klíč klienta** textové pole.
 
   ![Klíč aplikace 2][api-management-howto-aad-b2c-client-secret]
 
-12. Zadejte název domény klienta Azure Active Directory B2C v **povolené klienta**.
+12. Zadejte název domény hello klienta hello Azure Active Directory B2C v **povolené klienta**.
 
   ![Povolené klienta][api-management-howto-aad-b2c-allowed-tenant]
 
-13. Zadejte **zásady registrace** a **přihlášení zásady**. Volitelně můžete zadat také **zásady úpravy profilu** a **zásady resetování hesel**.
+13. Zadejte hello **zásady registrace** a **přihlášení zásady**. Volitelně můžete zadat taky hello **zásady úpravy profilu** a **zásady resetování hesel**.
 
   ![Zásady][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
   > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: rozšiřitelný rámec zásad].
 
-14. Po zadání požadované konfigurace, klikněte na tlačítko **Uložit**.
+14. Po zadání hello požadované konfigurace, klikněte na tlačítko **Uložit**.
 
-  Po uložení změn se vývojáři bude moct vytvářet nové účty a přihlaste se k portálu pro vývojáře pomocí Azure Active Directory B2C.
+  Po uložení změn hello vývojáři bude možné toocreate nové účty a přihlaste se pomocí Azure Active Directory B2C toohello portál pro vývojáře.
 
 ## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Zaregistrujte si účet pro vývojáře pomocí Azure Active Directory B2C
 
-1. Zaregistrujte si účet pro vývojáře pomocí Azure Active Directory B2C, otevřete nové okno prohlížeče a přejděte na portál pro vývojáře. Klikněte **zaregistrovat** tlačítko.
+1. toosign službu vývojářského účtu pomocí Azure Active Directory B2C, otevřete nové okno prohlížeče a přejděte toohello portál pro vývojáře. Klikněte na tlačítko hello **zaregistrovat** tlačítko.
 
    ![Portál pro vývojáře 1][api-management-howto-aad-b2c-dev-portal]
 
-2. Zvolte se zaregistrovat **Azure Active Directory B2C**.
+2. Zvolte toosign nahoru s **Azure Active Directory B2C**.
 
    ![Portál pro vývojáře 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 
-3. Budete přesměrováni na zásady registrace, který jste nakonfigurovali v předchozím oddílu. Můžete přihlásit pomocí e-mailovou adresu nebo jeden z vaší účtů na sociálních.
+3. Jste přesměrovaného toohello zásady registrace, který jste nakonfigurovali v předchozím oddílu hello. Pomocí e-mailovou adresu nebo jeden z vaší účtů na sociálních zvolte toosign.
 
    > [!NOTE]
-   > Pokud Azure Active Directory B2C je jedinou možností, které je zapnutá **identity** karta na portálu vydavatele je budete přesměrováni na zásady registrace přímo.
+   > Pokud Azure Active Directory B2C je hello pouze možnost, která je povolena na hello **identity** kartě hello portálu vydavatele, budete mít zásady registrace přesměrovaného toohello přímo.
 
    ![Portál pro vývojáře][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
-   Po dokončení registrace budete přesměrováni zpět na portál pro vývojáře. Jste teď přihlášení na portál pro vývojáře pro instanci služby API Management.
+   Po dokončení registrace hello jste přesměrovaného back toohello portál pro vývojáře. Portál pro vývojáře toohello jste teď přihlášení pro instanci služby API Management.
 
     ![Registrace je dokončena.][api-management-registration-complete]
 
@@ -172,10 +172,10 @@ Azure Active Directory B2C je cloudové řešení správy identity pro určenýc
 [api-management-groups]: ./media/api-management-howto-aad/api-management-groups.png
 [api-management-edit-group]: ./media/api-management-howto-aad/api-management-edit-group.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -184,9 +184,9 @@ Azure Active Directory B2C je cloudové řešení správy identity pro určenýc
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing hello Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [přehled Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-[autorizace vývojářským účtům pomocí služby Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
+[jak tooauthorize vývojáře účtů pomocí služby Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
 [Azure Active Directory B2C: rozšiřitelný rámec zásad]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Použít účet Microsoft jako poskytovatel identit v Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Použít účet Google jako poskytovatel identit v Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
@@ -195,8 +195,8 @@ Azure Active Directory B2C je cloudové řešení správy identity pro určenýc
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1
-[Configure an API to use OAuth 2.0 user authorization]: #step2
-[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Configure an API toouse OAuth 2.0 user authorization]: #step2
+[Test hello OAuth 2.0 user authorization in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+[Log in toohello Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account

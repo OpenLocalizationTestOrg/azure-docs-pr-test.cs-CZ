@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření identity pro aplikaci Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a objektu zabezpečení a jí udělit přístup k prostředkům prostřednictvím řízení přístupu na základě rolí. Ukazuje, jak k ověření aplikace pomocí hesla nebo certifikátu."
+title: "aaaCreate identitu pro aplikace Azure pomocí prostředí PowerShell | Microsoft Docs"
+description: "Popisuje, jak řídit toouse prostředí Azure PowerShell toocreate aplikaci Azure Active Directory a objektu služby a udělte ho tooresources přístup prostřednictvím přístupu na základě rolí. Ukazuje, jak tooauthenticate aplikace pomocí hesla nebo certifikátu."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 55e83b0742652abbb42100a11a468bc13a7a8aed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c534360799b590054a051e4426e5e27dccb559b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell
+# <a name="use-azure-powershell-toocreate-a-service-principal-tooaccess-resources"></a>Použití Azure PowerShell toocreate hlavní tooaccess prostředky služby
 
-Pokud máte aplikace nebo skriptu, která potřebuje přístup k prostředkům, můžete nastavit identity aplikace a ověřit aplikaci s svoje vlastní přihlašovací údaje. Tato identita se označuje jako hlavní název služby. Tento přístup umožňuje:
+Pokud máte aplikace nebo skript, který potřebuje tooaccess prostředků, můžete nastavit identity aplikace hello a ověřit hello aplikaci s svoje vlastní přihlašovací údaje. Tato identita se označuje jako hlavní název služby. Tento přístup umožňuje:
 
-* Přiřadíte oprávnění k identitě aplikace, která se liší od vlastní oprávnění. Tato oprávnění jsou obvykle omezené na přesně co aplikaci je třeba provést.
+* Přiřazení oprávnění toohello identita aplikace, která se liší od vlastní oprávnění. Obvykle se tato oprávnění se s omezeným přístupem tooexactly jaké aplikace hello musí toodo.
 * Při provádění bezobslužného skriptu, použijte certifikát pro ověřování.
 
-Toto téma ukazuje, jak používat [prostředí Azure PowerShell](/powershell/azure/overview) nastavit všechno, co potřebujete pro spuštění pod svou vlastní pověření a identity aplikace.
+Toto téma ukazuje, jak toouse [prostředí Azure PowerShell](/powershell/azure/overview) tooset až všechno, co potřebujete pro toorun aplikaci v části vlastní pověření a identity.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-K dokončení tohoto tématu, musíte mít dostatečná oprávnění v Azure Active Directory a vašeho předplatného Azure. Konkrétně musí být schopná vytvořit aplikaci ve službě Azure Active Directory a přiřazení objektu služby roli. 
+toocomplete tohoto tématu, musíte mít dostatečná oprávnění v Azure Active Directory a vašeho předplatného Azure. Konkrétně musí být schopný toocreate aplikace v hello Azure Active Directory a přiřadit role hlavní tooa služby hello. 
 
-Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. V tématu [zkontrolujte požadované oprávnění](resource-group-create-service-principal-portal.md#required-permissions).
+Hello bylo jestli váš účet má odpovídající oprávnění je prostřednictvím portálu hello nejjednodušší toocheck způsobem. V tématu [zkontrolujte požadované oprávnění](resource-group-create-service-principal-portal.md#required-permissions).
 
-Nyní přejděte k části k ověřování:
+Nyní pokračujte tooa části k ověřování:
 
 * [heslo](#create-service-principal-with-password)
 * [certifikát podepsaný svým držitelem](#create-service-principal-with-self-signed-certificate)
@@ -42,17 +42,17 @@ Nyní přejděte k části k ověřování:
 
 ## <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
-Chcete-li nastavit hlavní název služby, použijte:
+tooset až objekt služby, použijte:
 
 | Příkaz | Popis |
 | ------- | ----------- | 
 | [Nové AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Vytvoří objekt služby Azure Active Directory |
-| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | Zadaná role RBAC přiřadí objekt zadaný v zadaném oboru. |
+| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | Přiřadí hello zadaný RBAC role toohello zadaný objekt, na hello zadaný obor. |
 
 
 ## <a name="create-service-principal-with-password"></a>Vytvoření instančního objektu s heslem
 
-Chcete-li vytvořit objekt služby k roli Přispěvatel pro vaše předplatné, použijte: 
+toocreate objekt služby s hello role Přispěvatel pro vaše předplatné, použijte: 
 
 ```powershell
 Login-AzureRmAccount
@@ -61,18 +61,18 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-V příkladu v režimu spánku 20 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři."
+Příklad Hello v režimu spánku 20 sekund tooallow nějakou dobu hello nové služby hlavní toopropagate v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři hello."
 
-Následující skript umožňuje určit obor než výchozí předplatné a opakuje přiřazení role, pokud dojde k chybě:
+Hello následující skript vám umožní toospecify obor než hello výchozí předplatné a opakování hello přiřazení role, pokud dojde k chybě:
 
 ```powershell
 Param (
 
- # Use to set scope to resource group. If no value is provided, scope is set to subscription.
+ # Use tooset scope tooresource group. If no value is provided, scope is set toosubscription.
  [Parameter(Mandatory=$false)]
  [String] $ResourceGroup,
 
- # Use to set subscription. If no value is provided, default subscription is used. 
+ # Use tooset subscription. If no value is provided, default subscription is used. 
  [Parameter(Mandatory=$false)]
  [String] $SubscriptionId,
 
@@ -105,7 +105,7 @@ Param (
  }
 
  
- # Create Service Principal for the AD app
+ # Create Service Principal for hello AD app
  $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
@@ -113,7 +113,7 @@ Param (
  $Retries = 0;
  While ($NewRole -eq $null -and $Retries -le 6)
  {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    # Sleep here for a few seconds tooallow hello service principal application toobecome active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
@@ -121,24 +121,24 @@ Param (
  }
 ```
 
-Několik položek si uvědomit o skriptu:
+Několik položek toonote o hello skriptu:
 
-* K udělení přístupu identity k výchozí předplatné, není potřeba zadat parametry ResourceGroup nebo ID předplatného.
-* Zadejte parametr ResourceGroup pouze v případě, že chcete omezit rozsah přiřazení role do skupiny prostředků.
-*  V tomto příkladu přidáte objektu služby roli Přispěvatel. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
-* Skript v režimu spánku 15 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři."
-* Pokud potřebujete udělit přístup k hlavní službě pro další skupiny prostředků nebo předplatných, spusťte `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
+* toogrant hello identity přístup toohello výchozí předplatné, není nutné tooprovide parametry ResourceGroup nebo ID předplatného.
+* Zadejte parametr ResourceGroup hello pouze v případě, že chcete toolimit hello obor skupiny prostředků tooa přiřazení role hello.
+*  V tomto příkladu přidáte roli Přispěvatel hlavní toohello služby hello. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
+* Hello skriptu v režimu spánku 15 sekund tooallow nějakou dobu hello nové služby hlavní toopropagate v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři hello."
+* Pokud potřebujete toogrant hello služby hlavní přístup toomore odběry nebo skupiny prostředků, spusťte hello `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
 
 
 ### <a name="provide-credentials-through-powershell"></a>Zadejte přihlašovací údaje pomocí prostředí PowerShell
-Nyní budete muset přihlásit jako aplikace k provádění operací. Uživatelské jméno, použijte `ApplicationId` kterou jste vytvořili pro aplikaci. Heslo použijte ten, který jste zadali při vytváření účtu. 
+Nyní musíte toolog v jako operace tooperform aplikace hello. Pro hello uživatelské jméno, použijte hello `ApplicationId` kterou jste vytvořili pro aplikace hello. Hello heslo použijte hello jeden, který jste zadali při vytváření účtu hello. 
 
 ```powershell   
 $creds = Get-Credential
 Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId {tenant-id}
 ```
 
-ID klienta nerozlišuje malá písmena, takže jej můžete vložit přímo ve vašem skriptu. Pokud potřebujete zjistit ID klienta, použijte:
+ID klienta Hello nerozlišuje malá písmena, takže jej můžete vložit přímo ve vašem skriptu. Pokud potřebujete ID klienta hello tooretrieve, použijte:
 
 ```powershell
 (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
@@ -146,7 +146,7 @@ ID klienta nerozlišuje malá písmena, takže jej můžete vložit přímo ve v
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu se certifikát podepsaný svým držitelem
 
-Chcete-li vytvořit objekt služby se certifikát podepsaný svým držitelem a role Přispěvatel pro vaše předplatné, použijte: 
+toocreate hlavní název služby pomocí certifikátu podepsaného svým držitelem a hello role Přispěvatel pro vaše předplatné, použijte: 
 
 ```powershell
 Login-AzureRmAccount
@@ -158,18 +158,18 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-V příkladu v režimu spánku 20 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři."
+Příklad Hello v režimu spánku 20 sekund tooallow nějakou dobu hello nové služby hlavní toopropagate v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři hello."
 
-Následující skript umožňuje určit obor než výchozí předplatné a opakuje přiřazení role, pokud dojde k chybě. Pokud nemáte Azure PowerShell 2.0 na Windows 10 nebo Windows Server 2016.
+Hello následující skript vám umožní toospecify obor než hello výchozí předplatné a opakování hello přiřazení role, pokud dojde k chybě. Pokud nemáte Azure PowerShell 2.0 na Windows 10 nebo Windows Server 2016.
 
 ```powershell
 Param (
 
- # Use to set scope to resource group. If no value is provided, scope is set to subscription.
+ # Use tooset scope tooresource group. If no value is provided, scope is set toosubscription.
  [Parameter(Mandatory=$false)]
  [String] $ResourceGroup,
 
- # Use to set subscription. If no value is provided, default subscription is used. 
+ # Use tooset subscription. If no value is provided, default subscription is used. 
  [Parameter(Mandatory=$false)]
  [String] $SubscriptionId,
 
@@ -208,7 +208,7 @@ Param (
  $Retries = 0;
  While ($NewRole -eq $null -and $Retries -le 6)
  {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    # Sleep here for a few seconds tooallow hello service principal application toobecome active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
@@ -216,22 +216,22 @@ Param (
  }
 ```
 
-Několik položek si uvědomit o skriptu:
+Několik položek toonote o hello skriptu:
 
-* K udělení přístupu identity k výchozí předplatné, není potřeba zadat parametry ResourceGroup nebo ID předplatného.
-* Zadejte parametr ResourceGroup pouze v případě, že chcete omezit rozsah přiřazení role do skupiny prostředků.
-* V tomto příkladu přidáte objektu služby roli Přispěvatel. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
-* Skript v režimu spánku 15 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři."
-* Pokud potřebujete udělit přístup k hlavní službě pro další skupiny prostředků nebo předplatných, spusťte `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
+* toogrant hello identity přístup toohello výchozí předplatné, není nutné tooprovide parametry ResourceGroup nebo ID předplatného.
+* Zadejte parametr ResourceGroup hello pouze v případě, že chcete toolimit hello obor skupiny prostředků tooa přiřazení role hello.
+* V tomto příkladu přidáte roli Přispěvatel hlavní toohello služby hello. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
+* Hello skriptu v režimu spánku 15 sekund tooallow nějakou dobu hello nové služby hlavní toopropagate v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři hello."
+* Pokud potřebujete toogrant hello služby hlavní přístup toomore odběry nebo skupiny prostředků, spusťte hello `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
 
-Pokud jste **nemají Windows 10 nebo Windows Server 2016 Technical Preview**, budete muset stáhnout [certifikát podepsaný svým držitelem generátor](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) z webu Microsoft Script Center. Rozbalte obsah a importovat rutiny, které potřebujete.
+Pokud jste **nemají Windows 10 nebo Windows Server 2016 Technical Preview**, budete potřebovat toodownload hello [certifikát podepsaný svým držitelem generátor](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) z webu Microsoft Script Center. Rozbalte obsah a importovat hello rutiny, které potřebujete.
 
 ```powershell  
 # Only run if you could not use New-SelfSignedCertificate
 Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
 ```
   
-Ve skriptu nahraďte následující dva řádky, které se vygeneruje certifikát.
+Ve skriptu hello nahraďte hello následující dva řádky toogenerate hello certifikátu.
   
 ```powershell
 New-SelfSignedCertificateEx  -StoreLocation CurrentUser -StoreName My -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
@@ -239,7 +239,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Zadejte certifikát pomocí automatizované skript prostředí PowerShell
-Vždy, když se přihlásíte jako hlavní název služby, je třeba zadat id klienta adresáře pro vaši aplikaci AD. Klient je instance služby Azure Active Directory. Pokud máte pouze jedno předplatné, můžete použít:
+Vždy, když se přihlásíte jako hlavní název služby, musíte pro vaši aplikaci AD id klienta hello tooprovide hello adresáře. Klient je instance služby Azure Active Directory. Pokud máte pouze jedno předplatné, můžete použít:
 
 ```powershell
 Param (
@@ -258,20 +258,20 @@ Param (
  Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -TenantId $TenantId
 ```
 
-ID aplikace a ID klienta nejsou písmena, takže je můžete vložit přímo ve vašem skriptu. Pokud potřebujete zjistit ID klienta, použijte:
+aplikace Hello ID a ID klienta nejsou písmena, takže je můžete vložit přímo ve vašem skriptu. Pokud potřebujete ID klienta hello tooretrieve, použijte:
 
 ```powershell
 (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 ```
 
-Pokud potřebujete zjistit ID aplikace, použijte:
+Pokud potřebujete ID aplikace hello tooretrieve, použijte:
 
 ```powershell
 (Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Vytvoření instančního objektu pomocí certifikátu od certifikační autority
-Pokud chcete použít certifikát vydaný certifikační autority vytvoření instančního objektu, použijte následující skript:
+toouse certifikátu vydaného certifikační autority toocreate hlavní název služby, použijte hello následující skript:
 
 ```powershell
 Param (
@@ -311,7 +311,7 @@ Param (
  $Retries = 0;
  While ($NewRole -eq $null -and $Retries -le 6)
  {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
+    # Sleep here for a few seconds tooallow hello service principal application toobecome active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
@@ -321,15 +321,15 @@ Param (
  $NewRole
 ```
 
-Několik položek si uvědomit o skriptu:
+Několik položek toonote o hello skriptu:
 
-* Přístup je vymezen k předplatnému.
-* V tomto příkladu přidáte objektu služby roli Přispěvatel. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
-* Skript v režimu spánku 15 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři."
-* Pokud potřebujete udělit přístup k hlavní službě pro další skupiny prostředků nebo předplatných, spusťte `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
+* Přístup je vymezená toohello předplatné.
+* V tomto příkladu přidáte roli Přispěvatel hlavní toohello služby hello. Jiné role, naleznete v části [RBAC: předdefinované role](../active-directory/role-based-access-built-in-roles.md).
+* Hello skriptu v režimu spánku 15 sekund tooallow nějakou dobu hello nové služby hlavní toopropagate v rámci Azure Active Directory. Pokud váš skript nečeká dost dlouho, zobrazí chybová zpráva: "PrincipalNotFound: hlavní {id} neexistuje v adresáři hello."
+* Pokud potřebujete toogrant hello služby hlavní přístup toomore odběry nebo skupiny prostředků, spusťte hello `New-AzureRMRoleAssignment` rutinu znovu s různými obory.
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Zadejte certifikát pomocí automatizované skript prostředí PowerShell
-Vždy, když se přihlásíte jako hlavní název služby, je třeba zadat id klienta adresáře pro vaši aplikaci AD. Klient je instance služby Azure Active Directory.
+Vždy, když se přihlásíte jako hlavní název služby, musíte pro vaši aplikaci AD id klienta hello tooprovide hello adresáře. Klient je instance služby Azure Active Directory.
 
 ```powershell
 Param (
@@ -354,13 +354,13 @@ Param (
  Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -TenantId $TenantId
 ```
 
-ID aplikace a ID klienta nejsou písmena, takže je můžete vložit přímo ve vašem skriptu. Pokud potřebujete zjistit ID klienta, použijte:
+aplikace Hello ID a ID klienta nejsou písmena, takže je můžete vložit přímo ve vašem skriptu. Pokud potřebujete ID klienta hello tooretrieve, použijte:
 
 ```powershell
 (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 ```
 
-Pokud potřebujete zjistit ID aplikace, použijte:
+Pokud potřebujete ID aplikace hello tooretrieve, použijte:
 
 ```powershell
 (Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
@@ -368,57 +368,57 @@ Pokud potřebujete zjistit ID aplikace, použijte:
 
 ## <a name="change-credentials"></a>Změnit pověření
 
-Můžete změnit pověření pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti pověření [odebrat AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) rutiny.
+přihlašovací údaje hello toochange pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti pověření použít hello [odebrat AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) rutiny.
 
-Chcete-li odebrat všechny přihlašovací údaje pro aplikaci, použijte:
+tooremove všechny hello přihlašovací údaje pro aplikaci, použijte:
 
 ```powershell
 Remove-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -All
 ```
 
-Chcete-li přidat heslo, použijte:
+tooadd heslo, použijte:
 
 ```powershell
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -Password p@ssword!
 ```
 
-Přidání certifikátu hodnoty, vytvořte certifikát podepsaný svým držitelem, jak je znázorněno v tomto tématu. Pak použijte:
+tooadd hodnotu certifikát vytvořit certifikát podepsaný svým držitelem, jak je znázorněno v tomto tématu. Pak použijte:
 
 ```powershell
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
 ```
 
-## <a name="save-access-token-to-simplify-log-in"></a>Uložit přístupový token pro zjednodušení přihlášení
-Abyste se vyhnuli poskytování pověření hlavní služby pokaždé, když se musí se přihlásit, můžete uložit přístupový token.
+## <a name="save-access-token-toosimplify-log-in"></a>Uložit přístup tokenu toosimplify přihlášení
+tooavoid poskytnete hello služby hlavní přihlašovací údaje pokaždé, když je nutné toolog v, můžete uložit hello přístupový token.
 
-Pokud chcete používat aktuální přístupový token v jiné relaci, uložení profilu.
+toouse hello aktuální přístupový token v jiné relaci, uložte profil hello.
    
 ```powershell
 Save-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 ```
    
-Otevřete profil a zkontrolujte jeho obsah. Všimněte si, že obsahuje přístupový token. Místo ručně přihlášení znovu jednoduše načíst profil.
+Otevřete profil hello a zkontrolujte jeho obsah. Všimněte si, že obsahuje přístupový token. Místo ručně přihlášení znovu načíst jednoduše hello profilu.
    
 ```powershell
 Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 ```
 
 > [!NOTE]
-> Vyprší platnost přístupového tokenu, takže pomocí uloženého profilu funguje výhradně u tak dlouho, dokud token je platný.
+> Hello přístupovému tokenu vyprší platnost, takže pomocí uloženého profilu funguje výhradně u tak dlouho, dokud hello token je platný.
 >  
 
-Alternativně můžete vyvolat operace REST z prostředí PowerShell k přihlášení. Z odpovědi ověřování může získat přístupový token pro použití s dalšími operacemi. Příklad získání tokenu přístupu vyvoláním operace REST, naleznete v části [generování tokenu přístupu](resource-manager-rest-api.md#generating-an-access-token).
+Alternativně můžete vyvolat operace REST z prostředí PowerShell toolog v. Z hello odpověď ověřování můžete načíst hello přístupový token pro použití s dalšími operacemi. Příklad získání tokenu přístupu hello vyvoláním operace REST, naleznete v části [generování tokenu přístupu](resource-manager-rest-api.md#generating-an-access-token).
 
 ## <a name="debug"></a>Ladění
 
-Při vytváření objektu služby se můžete setkat s následujícími chybami:
+Můžete setkat s následujícím chybám při vytváření objektu služby hello:
 
-* **"Authentication_Unauthorized"** nebo **"žádné předplatné nalezena v kontextu."** -Se zobrazí tato chyba, pokud váš účet nemá [požadovaná oprávnění](#required-permissions) v Azure Active Directory pro registraci aplikace. Obvykle se zobrazí tato chyba při jenom správci ve vašem Azure Active Directory můžete zaregistrovat aplikace a váš účet není správce. Požádejte správce buď můžete přiřadit role správce nebo umožňuje uživatelům registrovat aplikace.
+* **"Authentication_Unauthorized"** nebo **"žádné předplatné nalezena v kontextu hello".** -Se zobrazí tato chyba, pokud váš účet nemá hello [požadovaná oprávnění](#required-permissions) na Azure Active Directory tooregister hello aplikace. Obvykle se zobrazí tato chyba při jenom správci ve vašem Azure Active Directory můžete zaregistrovat aplikace a váš účet není správce. Požádejte vašeho správce tooeither přiřadit můžete tooan roli správce, nebo tooenable uživatelé tooregister aplikace.
 
-* Váš účet **"nemá oprávnění k provedení akce 'Microsoft.Authorization/roleAssignments/write' u rozsahu: /subscriptions/ {guid}'."**  -Zobrazí tato chyba, pokud se váš účet nemá dostatečná oprávnění k přiřazení role identity. Požádejte správce předplatného můžete přidat do role správce přístupu uživatelů.
+* Váš účet **"nemá autorizace tooperform akce 'Microsoft.Authorization/roleAssignments/write' u rozsahu: /subscriptions/ {guid}'."**  -Zobrazí tato chyba, pokud se váš účet nemá dostatečná oprávnění tooassign identitu tooan role. Požádejte správce tooadd vaše předplatné můžete tooUser přístupu k roli správce.
 
 ## <a name="sample-applications"></a>Ukázkové aplikace
-Informace o protokolování jako aplikace prostřednictvím různých platforem najdete v tématu:
+Informace o protokolování jako aplikace hello prostřednictvím různých platforem najdete v tématu:
 
 * [.NET](/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
 * [Java](/java/azure/java-sdk-azure-authenticate)
@@ -427,8 +427,8 @@ Informace o protokolování jako aplikace prostřednictvím různých platforem 
 * [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ## <a name="next-steps"></a>Další kroky
-* Podrobné pokyny k integraci aplikace do Azure pro správu prostředků najdete v tématu [Příručka pro vývojáře k autorizaci s rozhraním API pro Azure Resource Manager](resource-manager-api-authentication.md).
+* Podrobné pokyny k integraci aplikace do Azure pro správu prostředků najdete v tématu [tooauthorization Příručka pro vývojáře s hello rozhraní API služby Azure Resource Manager](resource-manager-api-authentication.md).
 * Podrobnější vysvětlení aplikací a objekty služby najdete v tématu [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md). 
 * Další informace o ověřování Azure Active Directory najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/active-directory-authentication-scenarios.md).
-* Seznam dostupných akcí, které může být povolen nebo odepřen uživatelům najdete v tématu [poskytovatel prostředků Azure Resource Manager operations](../active-directory/role-based-access-control-resource-provider-operations.md).
+* Seznam dostupných akcí, které může být povolen nebo odepřen toousers najdete v tématu [poskytovatel prostředků Azure Resource Manager operations](../active-directory/role-based-access-control-resource-provider-operations.md).
 

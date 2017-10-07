@@ -1,6 +1,6 @@
 ---
-title: "Seznam aktualizací u hostovaného operačního systému Azure | Microsoft Docs"
-description: "Seznam aktualizací, které jsou použity na vydání hostovaného operačního systému"
+title: "aaaList toohello aktualizace použít Azure hostovaného operačního systému | Microsoft Docs"
+description: "uvolní Hello seznam aktualizací, které jsou použity tooGuest operačního systému"
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/24/2017
 ms.author: raiye
-ms.openlocfilehash: 09c433ccf54c84ee2ae40c3ba3ccd84e7462124c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac604bc8ea6a0c4aa9a9e0ae01ecde2f92a04e15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
-Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačního systému Azure v následujících tabulkách. Vyhledávání, zjistěte, pokud konkrétní aktualizace se týká hostovaného operačního systému, kterou používáte. Aktualizace vždy obsahují dál pro konkrétní [rodiny] [ family-explain] byly zavedeny v.
+Hello následující tabulky ukazují, že hello aktualizací Microsoft Security Response Center (MSRC) použít toohello Azure hostovaného operačního systému. Tento článek toodetermine hledat, v případě, že konkrétní aktualizace určeny toohello hostovaného operačního systému, kterou používáte. Aktualizace vždy obsahují dál pro konkrétní hello [rodiny] [ family-explain] byly zavedeny v.
 
 ## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -173,7 +173,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS16 134 |[3193706] |Aktualizace zabezpečení pro běžné ovladač systému souborů protokolu |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
 | MS16 135 |[3199135] |Aktualizace zabezpečení pro ovladače režimu jádra |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
 | MS16 137 |[3199173]   |Aktualizace zabezpečení pro metody ověřování systému Windows |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
-| MS16 138 |[3199647] |Aktualizace zabezpečení Microsoft virtuální pevný disk |5.3, 4.38, 3.45 |8 listopadu 2016 |
+| MS16 138 |[3199647] |Zabezpečení aktualizace tooMicrosoft virtuální pevný disk |5.3, 4.38, 3.45 |8 listopadu 2016 |
 | MS16 139 |[3199720] |Aktualizace zabezpečení pro jádro systému Windows |2.57 |Listopadu 8.2016 |
 | MS16 140 |[3193479] |Aktualizace zabezpečení pro správce spouštění |5.3, 4.38, 3.45 |8 listopadu 2016 |
 | MS16 142 |[3198467] |Kumulativní aktualizace zabezpečení pro Internet Explorer |2.57, 4.38, 5.3 |8 listopadu 2016 |
@@ -253,8 +253,8 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="june-guest-os"></a>Červen hostovaný operační systém
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| MS16-035 |[3141780] |Aktualizace zabezpečení pro rozhraní .NET Framework, chcete-li vyřešit Nepoužívat funkce zabezpečení |4.33, 3.40, 2.52 |14. června 2016 |
-| Informační zpravodaj |[3155527] |Aktualizace sady šifer pro FalseStart |4.33, 3.40 |14. června 2016 |
+| MS16-035 |[3141780] |Aktualizace zabezpečení pro rozhraní .NET Framework tooAddress Nepoužívat funkce zabezpečení |4.33, 3.40, 2.52 |14. června 2016 |
+| Informační zpravodaj |[3155527] |Aktualizace sad tooCipher pro FalseStart |4.33, 3.40 |14. června 2016 |
 | MS16-063 |[3163649] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.33, 3.40, 2.52 |14. června 2016 |
 | MS16-069 |[3163640] |Kumulativní aktualizace zabezpečení pro JScript a VBScript |2.52 |14. června 2016 |
 | MS16-071 |[3164065] |Aktualizace zabezpečení pro Microsoft Windows Server DNS |4.33, 3.40 |14. června 2016 |
@@ -268,9 +268,9 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS16 081 |[3160352] |Aktualizace zabezpečení pro službu Active Directory |4.33, 3.40, 2.52 |14. června 2016 |
 | Není k dispozici |[2922223] |Systémový čas nelze změnit, pokud je povolená položka registru RealTimeIsUniversal v systému Windows |2.52 |14. června 2016 |
 | Není k dispozici |[3121255] |Chyba stop "0x00000024" v souboru FsRtlNotifyFilterReportChange a zkopírujte může selhat v systému Windows |2.52 |14. června 2016 |
-| Není k dispozici |[3125424] |Služba LSASS zablokování způsobit Windows Server 2012 R2 nebo Windows Server 2012, aby nereagovaly |4.33, 3.40 |14. června 2016 |
+| Není k dispozici |[3125424] |Služba LSASS zablokování způsobit Windows Server 2012 R2 nebo Windows Server 2012 není toorespond |4.33, 3.40 |14. června 2016 |
 | Není k dispozici |[3125574] |Usnadnění práce kumulativní aktualizaci pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.52 |14. června 2016 |
-| Není k dispozici |[3140245] |Aktualizace k povolení TLS 1.1 a TLS 1.2 jako výchozí zabezpečené protokoly v WinHTTP v systému Windows |3.40, 2.52 |14. června 2016 |
+| Není k dispozici |[3140245] |Aktualizace tooenable protokolu TLS 1.1 a TLS 1.2 jako výchozí zabezpečené protokoly v WinHTTP v systému Windows |3.40, 2.52 |14. června 2016 |
 | Není k dispozici |[3146604] |Služba WMI spadne náhodně v systému Windows Server 2012 R2 nebo Windows Server 2012 |4.33, 3.40 |14. června 2016 |
 | Není k dispozici |[3149157] |Vylepšení spolehlivosti a škálovatelnosti v protokolu TCP/IP pro Windows 8.1 a Windows Server 2012 R2 |4.33 |14. června 2016 |
 | Není k dispozici |[3156416] |Může 2016 kumulativní aktualizace pro Windows Server 2012 |3.40 |14. června 2016 |
@@ -285,13 +285,13 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS16-055 |[3156754] |Aktualizace zabezpečení pro součást Microsoft grafiky |4.32, 3.39, 2.51 |10. května 2016 |
 | MS16 057 |[3156987] |Aktualizace zabezpečení pro prostředí systému Windows |4.32 |10. května 2016 |
 | MS16 060 |[3154846] |Aktualizace zabezpečení pro jádro systému Windows |4.32, 3.39, 2.51 |10. května 2016 |
-| MS16 061 |[3155520] |Aktualizace zabezpečení RPC |4.32, 3.39, 2.51 |10. května 2016 |
+| MS16 061 |[3155520] |TooRPC aktualizace zabezpečení |4.32, 3.39, 2.51 |10. května 2016 |
 | MS16 062 |[3158222] |Aktualizace zabezpečení pro ovladače režimu jádra |4.32, 3.39, 2.51 |10. května 2016 |
 | MS16 065 |[3156757] |Aktualizace zabezpečení pro rozhraní .net Framework |4.32, 3.39, 2.51 |10. května 2016 |
 | MS16 067 |[3155784] |Aktualizace zabezpečení pro správce svazků ovladačů |4.32, 3.39 |10. května 2016 |
 | Není k dispozici |[3148851] |Změny časové pásmo pro Rusko v systému Windows  |4.32, 3.39, 2.51 |10. května 2016 |
 | Není k dispozici |[3133977] |Nástroj BitLocker nelze zašifrovat jednotek z důvodu dojde k chybě služby v procesu svchost.exe ve Windows 7 nebo Windows Server 2008 R2  |2.51 |10. května 2016 |
-| Není k dispozici |[3133681] |Virtuální počítače nejsou reagovat na vaši operaci v SCVMM ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
+| Není k dispozici |[3133681] |Virtuální počítače neodpovídejte tooyour operace v SCVMM ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
 | Není k dispozici |[3123245] |Aktualizace zlepšuje identifikace vyčerpání portů ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
 | Není k dispozici |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: aktualizace pro zákazu RC4  |4.32, 3.39, 2.51 |10. května 2016 |
 
@@ -310,40 +310,40 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16-026 |[3143148] |Aktualizace zabezpečení na grafický písma, chcete-li vyřešit vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16-027 |[3143146] |Zabezpečení aktualizace pro program Windows Media Player adresu vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16 028 |[3143081] |Aktualizace zabezpečení pro Microsoft Windows PDF knihovny vyřešit vzdálené spuštění kódu |4.30, 3.37 |8. března 2016 |
-| MS16-030 |[3143136] |Aktualizace zabezpečení systému Windows OLE vyřešit vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16 031 |[3140410] |Aktualizace zabezpečení pro Microsoft Windows k vyřešení zvýšení úrovně oprávnění |2.49 |8. března 2016 |
-| MS16-032 |[3143141] |Aktualizace zabezpečení pro sekundární přihlašování adres zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16-033 |[3143142] |Aktualizace zabezpečení do třídy ovladač velkokapacitního paměťového zařízení USB k vyřešení zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
-| MS16-034 |[3143145] |Aktualizace zabezpečení pro ovladač režimu jádra adresu zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16-026 |[3143148] |Zabezpečení aktualizace tooGraphic písem tooAddress vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16-027 |[3143146] |Aktualizace pro program Windows Media Player tooaddress zabezpečení vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16 028 |[3143081] |Aktualizace zabezpečení pro Microsoft Windows PDF knihovny tooAddress vzdálené spuštění kódu |4.30, 3.37 |8. března 2016 |
+| MS16-030 |[3143136] |Zabezpečení aktualizace pro Windows OLE tooAddress vzdálené spuštění kódu |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16 031 |[3140410] |Aktualizace zabezpečení pro Microsoft Windows tooAddress zvýšení úrovně oprávnění |2.49 |8. března 2016 |
+| MS16-032 |[3143141] |Zabezpečení aktualizace tooSecondary přihlášení tooAddress zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16-033 |[3143142] |Zabezpečení aktualizace tooUSB ovladač třídy úložiště velkokapacitních tooAddress zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
+| MS16-034 |[3143145] |Aktualizace zabezpečení pro ovladač režimu jádra tooaddress zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
 
 ## <a name="february-guest-os"></a>Února hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16-013 |[3134811] |Aktualizace zabezpečení do deníku Windows vyřešit vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16-014 |[3134228] |Aktualizace zabezpečení Microsoft Windows k provádění kódu Vzdálená adresa |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16 016 |[3136041] |Aktualizace zabezpečení do protokolu WebDAV vyřešit zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16-018 |[3136082] |Aktualizace zabezpečení pro ovladač režimu jádra systému Windows k vyřešení zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16-019 |[3137893] |Aktualizace zabezpečení pro rozhraní .NET Framework, chcete-li vyřešit vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
-| MS16-021 |[3133043] |Aktualizace zabezpečení pro Server RADIUS serveru NPS k vyřešení odmítnutí služby |4.29, 3.36, 2.48 |9. února 2016 |
-| Zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace pro zlepšení TLS Interoperability |4.29, 3.36 |9. února 2016 |
+| MS16-013 |[3134811] |Zabezpečení aktualizace tooWindows deníku tooAddress vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
+| MS16-014 |[3134228] |TooMicrosoft aktualizaci zabezpečení Windows tooAddress vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
+| MS16 016 |[3136041] |Zabezpečení aktualizace tooWebDAV tooAddress zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
+| MS16-018 |[3136082] |TooAddress aktualizace ovladač režimu jádra pro Windows zabezpečení zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
+| MS16-019 |[3137893] |Aktualizace zabezpečení pro rozhraní .NET Framework tooAddress vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
+| MS16-021 |[3133043] |Aktualizace zabezpečení pro Server RADIUS serveru NPS tooAddress odmítnutí služby |4.29, 3.36, 2.48 |9. února 2016 |
+| Zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace tooImprove TLS Interoperability |4.29, 3.36 |9. února 2016 |
 | Opakované vydání-MS15 101 |[3089662] |Chyby zabezpečení v rozhraní .NET Framework umožňují zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
-| Opakované vydání-MS15 118 |[3104507] |Aktualizace zabezpečení pro rozhraní .NET Framework, chcete-li vyřešit zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
-| Opakované vydání-MS15-128 |[3104503] |Aktualizace zabezpečení pro součást Microsoft grafiky vyřešit vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
+| Opakované vydání-MS15 118 |[3104507] |Aktualizace zabezpečení pro rozhraní .NET Framework tooAddress zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
+| Opakované vydání-MS15-128 |[3104503] |Aktualizace zabezpečení pro Microsoft grafiky součást tooAddress vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
 
 ## <a name="january-guest-os"></a>Leden hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS16 001 |[3124903] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.28, 3.35, 2.47 |12. ledna 2016 |
 | MS16 003 |[3125540] |Kumulativní aktualizace zabezpečení pro JScript a VBScript |2.47 |12. ledna 2016 |
-| MS16 005 |[3124584] |Aktualizace zabezpečení pro ovladače režimu jádra systému Windows k vyřešení vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
-| MS16 007 |[3124901] |Aktualizace zabezpečení pro Microsoft Windows k vyřešení vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
-| MS16-008 |[3124605] |Aktualizace zabezpečení pro jádra k vyřešení zvýšení úrovně oprávnění |4.28, 3.35, 2.47 |12. ledna 2016 |
+| MS16 005 |[3124584] |TooAddress aktualizace ovladače režimu jádra pro Windows zabezpečení vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
+| MS16 007 |[3124901] |Aktualizace zabezpečení pro Microsoft Windows tooAddress vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
+| MS16-008 |[3124605] |Aktualizace zabezpečení pro jádra tooAddress zvýšení úrovně oprávnění |4.28, 3.35, 2.47 |12. ledna 2016 |
 | Revize informační zpravodaj zabezpečení společnosti Microsoft |[2755801] |Aktualizace pro chyby zabezpečení v Adobe Flash Playeru v aplikaci Internet Explorer (balíček KB: bude Doplněn)-poradní zástupný symbol |4.28, 3.35 |12. ledna 2016 |
-| Zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace pro zlepšení TLS Interoperability |4.28, 3.35 |12. ledna 2016 |
+| Zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace tooImprove TLS Interoperability |4.28, 3.35 |12. ledna 2016 |
 | Zpravodaj zabezpečení společnosti Microsoft |[3123479] |Vyřazení algoritmus hash SHA-1 pro Microsoft Root Certificate Program |4.28, 3.35, 2.47 |12. ledna 2016 |
 | Zpravodaj zabezpečení společnosti Microsoft |[2736233] |Aktualizace pro službu Bits ActiveX Kill |4.28, 3.35, 2.47 |12. ledna 2016 |
 
@@ -351,36 +351,36 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS15 124 |[3116180] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15 126 |[3116178] |Aktualizace zabezpečení pro Microsoft VBScript a JScript vyřešit vzdálené spuštění kódu |2.46 |8 prosince 2015 |
-| MS15 127 |[3100465] |Aktualizace zabezpečení systému Microsoft Windows DNS vyřešit vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15-128 |[3104503] |Aktualizace zabezpečení pro součást Microsoft grafiky vyřešit vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15 132 |[3116162] |Aktualizace zabezpečení systému Windows k vyřešení vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15 133 |[3116130] |Aktualizace zabezpečení systému Windows protokol PGM. Chcete-li vyřešit zvýšení úrovně oprávnění |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15 134 |[3108669] |Aktualizace zabezpečení pro aplikace Windows Media Center k vyřešení vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
-| MS15 135 |[3119075] |Aktualizace zabezpečení pro ovladače režimu jádra systému Windows k vyřešení zvýšení úrovně oprávnění |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15 126 |[3116178] |Aktualizace zabezpečení pro Microsoft VBScript a JScript tooAddress vzdálené spuštění kódu |2.46 |8 prosince 2015 |
+| MS15 127 |[3100465] |Aktualizace zabezpečení pro Microsoft Windows DNS tooAddress vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15-128 |[3104503] |Aktualizace zabezpečení pro Microsoft grafiky součást tooAddress vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15 132 |[3116162] |Aktualizace pro systém Windows tooAddress zabezpečení vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15 133 |[3116130] |Aktualizace pro Windows PGM tooAddress zabezpečení zvýšení úrovně oprávnění |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15 134 |[3108669] |Aktualizace pro Windows Media Center tooAddress zabezpečení vzdálené spuštění kódu |4.27, 3.34, 2.46 |8 prosince 2015 |
+| MS15 135 |[3119075] |Aktualizace pro Windows ovladačů v režimu jádra tooAddress zabezpečení zvýšení úrovně oprávnění |4.27, 3.34, 2.46 |8 prosince 2015 |
 
 ## <a name="november-guest-os"></a>Listopad hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS15 112 |[3104517] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.26, 3.33, 2.45 |10. listopadu 2015 |
-| MS15 114 |[3100213] |Aktualizace zabezpečení pro deník Windows vyřešit vzdálené spuštění kódu |2.45 |10. listopadu 2015 |
-| MS15 115 |[3105864] |Aktualizace zabezpečení pro Microsoft Windows k vyřešení vzdálené spuštění kódu |4.26, 3.33, 2.45 |10. listopadu 2015 |
-| MS15 117 |[3101722] |Aktualizace zabezpečení pro NDIS vyřešit zvýšení úrovně oprávnění |2.45 |10. listopadu 2015 |
-| MS15 118 |[3104507] |Aktualizace zabezpečení pro rozhraní .NET Framework, chcete-li vyřešit zvýšení úrovně oprávnění |4.26, 3.33, 2.45 |10. listopadu 2015 |
-| MS15 119 |[3104521] |Aktualizace zabezpečení pro rozhraní Winsock adres zvýšení úrovně oprávnění |4.26, 3.33, 2.45 |10. listopadu 2015 |
-| MS15 120 |[3102939] |Aktualizace zabezpečení pro protokol IPSec, chcete-li vyřešit odmítnutí služby |4.26, 3.33 |10. listopadu 2015 |
-| MS15 121 |[3081320] |Aktualizace zabezpečení Schannel pro falšování adresy |4.26, 3.33, 2.45 |10. listopadu 2015 |
-| MS15 122 |[3105256] |Aktualizace zabezpečení pro ověřování pomocí protokolu Kerberos adres Nepoužívat funkce zabezpečení |4.26, 3.33, 2.45 |10. listopadu 2015 |
+| MS15 114 |[3100213] |Aktualizace pro Windows deníku tooAddress zabezpečení vzdálené spuštění kódu |2.45 |10. listopadu 2015 |
+| MS15 115 |[3105864] |Aktualizace zabezpečení pro Microsoft Windows tooAddress vzdálené spuštění kódu |4.26, 3.33, 2.45 |10. listopadu 2015 |
+| MS15 117 |[3101722] |Aktualizace zabezpečení pro NDIS tooAddress zvýšení úrovně oprávnění |2.45 |10. listopadu 2015 |
+| MS15 118 |[3104507] |Aktualizace zabezpečení pro rozhraní .NET Framework tooAddress zvýšení úrovně oprávnění |4.26, 3.33, 2.45 |10. listopadu 2015 |
+| MS15 119 |[3104521] |Aktualizace zabezpečení pro rozhraní Winsock tooAddress zvýšení úrovně oprávnění |4.26, 3.33, 2.45 |10. listopadu 2015 |
+| MS15 120 |[3102939] |Aktualizace zabezpečení pro protokol IPSec tooAddress odmítnutí služby |4.26, 3.33 |10. listopadu 2015 |
+| MS15 121 |[3081320] |Zabezpečení aktualizace tooSchannel tooAddress falšování |4.26, 3.33, 2.45 |10. listopadu 2015 |
+| MS15 122 |[3105256] |Aktualizace zabezpečení pro tooAddress Kerberos Nepoužívat funkce zabezpečení |4.26, 3.33, 2.45 |10. listopadu 2015 |
 | Zpravodaj zabezpečení společnosti Microsoft |[3097966] |Falšování identity nechtěně známou digitální certifikáty by se mohl |4.26, 3.33, 2.45 |10. listopadu 2015 |
 
 ## <a name="october-guest-os"></a>Říjen hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
 | MS15 106 |[3096441] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.25, 3.32, 2.44 |13. října 2015 |
-| MS15 108 |[3089659] |Aktualizace zabezpečení pro JScript a VBScript, chcete-li vyřešit potenciální vzdálené spuštění kódu |2.44 |13. října 2015 |
-| MS15 109 |[3096443] |Aktualizace zabezpečení pro prostředí Windows, aby adres vzdálené spuštění kódu |4.25, 3.32, 2.44 |13. října 2015 |
-| MS15 111 |[3096447] |Aktualizace zabezpečení pro jádro systému Windows k vyřešení zvýšení úrovně oprávnění |4.25, 3.32, 2.44 |13. října 2015 |
-| Zpravodaj zabezpečení společnosti Microsoft |[3092627] |Aktualizace září 2015 opravit Windows nebo aplikace se zablokuje, po instalaci aktualizace zabezpečení 3076895 |4.25, 3.32, 2.44 |13. října 2015 |
+| MS15 108 |[3089659] |Aktualizace zabezpečení pro JScript a VBScript tooAddress potenciální vzdálené spuštění kódu |2.44 |13. října 2015 |
+| MS15 109 |[3096443] |TooAddress prostředí systému Windows pro aktualizace zabezpečení vzdálené spuštění kódu |4.25, 3.32, 2.44 |13. října 2015 |
+| MS15 111 |[3096447] |TooAddress jádro systému Windows pro aktualizace zabezpečení zvýšení úrovně oprávnění |4.25, 3.32, 2.44 |13. října 2015 |
+| Zpravodaj zabezpečení společnosti Microsoft |[3092627] |Aktualizace – září 2015 toofix Windows nebo aplikace se zablokuje, po instalaci aktualizace zabezpečení 3076895 |4.25, 3.32, 2.44 |13. října 2015 |
 
 ## <a name="september-guest-os"></a>Září hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -421,7 +421,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS15 075 |[3072633] |Chyby zabezpečení v prostředí OLE umožňují zvýšení úrovně oprávnění |4.22, 3.29, 2.41 |14. července 2015 |
 | MS15 076 |[3067505] |Chyba zabezpečení v systému Windows vzdáleného volání procedur umožňuje zvýšení úrovně oprávnění |4.22, 3.29, 2.41 |14. července 2015 |
 | MS15 077 |[3077657] |Chyba zabezpečení ovladač ATM písma umožňuje zvýšení úrovně oprávnění |4.22, 3.29, 2.41 |14. července 2015 |
-| Není k dispozici |[3057154] |Aktualizace k omezení použití šifrování DES |4.22, 3.29, 2.41 |14. července 2015 |
+| Není k dispozici |[3057154] |Aktualizace tooRestrict použití šifrování DES |4.22, 3.29, 2.41 |14. července 2015 |
 
 ## <a name="june-guest-os"></a>Červen hostovaný operační systém
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -454,7 +454,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS15-040 |[3045711] |Chyba zabezpečení služby AD FS může umožnit vyzrazení informací |4.20, 3.27, 2.39 |17. dubna 2015 |
 | MS15 041 |[3048010] |Chyba zabezpečení v rozhraní .NET Framework může umožnit vyzrazení informací |4.20, 3.27, 2.39 |17. dubna 2015 |
 | MS15 042 |[3047234] |Chyba zabezpečení v systému Windows technologie Hyper-V umožňuje odmítnutí služby |4.20, 3.27, 2.39 |17. dubna 2015 |
-| Není k dispozici |[3045755] |Aktualizace pro zlepšení protokolu PKU2U ověřování |4.20, 3.27, 2.39 |17. dubna 2015 |
+| Není k dispozici |[3045755] |Aktualizace tooImprove protokolu PKU2U ověřování |4.20, 3.27, 2.39 |17. dubna 2015 |
 
 ## <a name="april-guest-os"></a>Duben hostovaný operační systém
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -477,7 +477,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS15-030 |[3039976] |Chyba zabezpečení protokolu vzdálené plochy umožňuje odmítnutí služby |4.18, 3.25, 2.37 |Není k dispozici |
 
 > [!NOTE]
-> Bulletin MS15-031 se mohou objevit, jak odinstalovat. Ale nevztahuje se na tuto verzi hostovaného operačního systému.
+> Bulletin MS15-031 se mohou objevit, jak odinstalovat. Nevztahuje však toothis, které verze hostovaného operačního systému.
 >
 >
 
@@ -490,7 +490,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS15-014 |[3004361] |Chyba zabezpečení v protokolu SMB umožňuje vynechat funkce zabezpečení |4.17, 3.24, 2.36 |Není k dispozici |
 | MS15-015 |[3031432] |Chyba zabezpečení v systému Windows umožňuje zvýšení úrovně oprávnění |4.17, 3.24, 2.36 |Není k dispozici |
 | MS15 016 |[3029944] |Ohrožení zabezpečení v komponentě Microsoft grafiky může umožnit vyzrazení informací |4.17, 3.24, 2.36 |Není k dispozici |
-| Není k dispozici |[3004375] |Aktualizace pro zlepšení Windows příkazového řádku auditování<p/>**Poznámka:**: to je nainstalován, ale klíč registru a povolit ji je vypnutý. |4.17, 3.24, 2.36 |Není k dispozici |
+| Není k dispozici |[3004375] |Aktualizace tooImprove auditování spouštění příkazového řádku systému Windows<p/>**Poznámka:**: to je nainstalován, ale tooenable klíče registru hello je vypnutý |4.17, 3.24, 2.36 |Není k dispozici |
 
 ## <a name="january-guest-os"></a>Leden hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -511,17 +511,17 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="december-guest-os"></a>Prosinec hostovaného operačního systému
 | ID bulletinu | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Není k dispozici |[3013776] |Systém se zablokuje, pokud používáte účet domény ke spuštění aplikace |4.15, 3.22, 2.34 |Jan 13 2015 |
+| Není k dispozici |[3013776] |Systém se zablokuje, pokud používáte účet toostart domény aplikace |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[3013043] |Na počítači se systémem Windows, který má více než jeden uzel NUMA je poškozený dat systému souborů |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[3012712] |Nové datové bloky inicializaci nesprávně, když je rozšířena Rozdílový virtuální pevný disk |4.15, 3.22, 2.34 |201 13. ledna |
 | Není k dispozici |[3004905] |Zlepšování Windows Hyper-V pro virtuální počítače s Linuxem, které mají systémy souborů, které jsou větší než 2 TB |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[3004394] |Aktualizace z prosince 2014 pro Windows Root Certificate Program v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
-| Není k dispozici |[2999323] |Text pro událost ID 17 se změnilo. |4.15, 3.22, 2.34 |Jan 13 2015 |
-| Není k dispozici |[3013488] |Dlouhého čekání na serveru WSUS resetování při importu souborů CSA ve Windows serveru 2012 R2 nebo Windows Server 2012 |4.15, 3.22, 2.34 |Jan 13 2015 |
+| Není k dispozici |[2999323] |mění Hello text pro událost ID 17 |4.15, 3.22, 2.34 |Jan 13 2015 |
+| Není k dispozici |[3013488] |Server WSUS tooreset dlouhého čekání při importu souborů CSA v systému Windows Server 2012 R2 nebo Windows Server 2012 |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[3012325] |Aktualizace položky databáze Windows APN pro DIGI, Vodafone a Telekom mobilní operátory ve Windows 8.1 a Windows 8 |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[3007054] |Chráněný PIN KÓDEM tisk možnost vždy zobrazí při tisku dokumentu v aplikaci Windows Store ve Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
 | Není k dispozici |[2999802] |Plné čáry místo čáry s koncovými body jsou vytištěn v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
-| Není k dispozici |[2896881] |Dlouhé doby přihlášení při použití příkazu AddPrinterConnection VBScript mapovat tiskárny pro uživatele během procesu přihlášení v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
+| Není k dispozici |[2896881] |Dlouhé doby přihlášení při použití hello AddPrinterConnection VBScript příkaz toomap tiskárny pro uživatele během procesu přihlášení v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
 
 
 [4034658]: http://support.microsoft.com/kb/4034658

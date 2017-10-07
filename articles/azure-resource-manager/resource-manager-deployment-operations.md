@@ -1,6 +1,6 @@
 ---
-title: "Operace nasazení s Azure Resource Manager | Microsoft Docs"
-description: "Popisuje postup zobrazení operace nasazení Azure Resource Manager s portálem, prostředí PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API."
+title: "operace aaaDeployment pomocí Azure Resource Manageru | Microsoft Docs"
+description: "Popisuje, jak se operace nasazení Azure Resource Manager tooview s hello portál, prostředí PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API."
 services: azure-resource-manager,virtual-machines
 documentationcenter: 
 tags: top-support-issue
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba4823ca73caca83dfc07c99d736344ef8b7b54d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Operace nasazení zobrazení pomocí Azure Resource Manageru
 
 
-Můžete zobrazit činnosti pro nasazení prostřednictvím portálu Azure. Můžete mít nejvíc zajímat zobrazení operace, když jste obdrželi chybu během nasazení, tento článek zaměřuje na zobrazení operace, které selhaly. Na portálu poskytuje rozhraní, které vám umožňuje snadno najít chyby a zjistit potenciální opravy.
+Můžete zobrazit hello operací pro nasazení prostřednictvím hello portálu Azure. Můžete mít nejvíc zajímat zobrazení hello operations, pokud obdržíte chybu během nasazení, tento článek zaměřuje na zobrazení operace, které selhaly. portál Hello poskytuje rozhraní, které vám umožní tooeasily najít hello chyby a zjistit potenciální opravy.
 
 [!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## <a name="portal"></a>Portál
-Pokud chcete zobrazit operace nasazení, použijte následující kroky:
+operace nasazení hello toosee, použijte hello následující kroky:
 
-1. Pro skupinu prostředků zahrnutých v nasazení Všimněte si, stav posledního nasazení. Můžete vybrat tento stav zobrazíte další podrobnosti.
+1. Pro skupinu prostředků hello zahrnutých v hello nasazení Všimněte si hello stav posledního nasazení hello. Tento stav tooget můžete vybrat další podrobnosti.
    
     ![Stav nasazení](./media/resource-manager-deployment-operations/deployment-status.png)
-2. Uvidíte nedávné historii nasazení. Vyberte nasazení, které se nezdařilo.
+2. Zobrazí informace o nedávné historii nasazení hello. Vyberte hello nasazení, který selhal.
    
     ![Stav nasazení](./media/resource-manager-deployment-operations/select-deployment.png)
-3. Vyberte na odkaz zobrazíte popis nezdaru nasazení. Na obrázku níže záznam DNS není jedinečný.  
+3. Vyberte toosee odkaz hello popis důvod, proč hello nasazení se nezdařilo. Záznam DNS hello v bitové kopii hello níže, není jedinečný.  
    
     ![Zobrazit neúspěšné nasazení](./media/resource-manager-deployment-operations/view-error.png)
    
-    Tato chybová zpráva by vám měly dostatečně pro vámi na zahájení odstraňování potíží. Pokud potřebujete další podrobnosti o úkoly, které byly dokončeny, můžete zobrazit činnosti, jak je znázorněno v následujícím postupu.
-4. Můžete zobrazit všechny operace nasazení ve **nasazení** okno. Vyberte všechny operace zobrazíte další podrobnosti.
+    Tato chybová zpráva by vám měly dostatečně pro vás toobegin řešení potíží. Ale pokud potřebujete další informace o tom, kterým byly dokončeny úlohy, můžete zobrazit operace hello jak je znázorněno v hello následující kroky.
+4. Všechny operace nasazení hello si můžete prohlédnout v hello **nasazení** okno. Vyberte všechny operace toosee další podrobnosti.
    
     ![Zobrazit operace](./media/resource-manager-deployment-operations/view-operations.png)
    
-    V takovém případě uvidíte, že účet úložiště, virtuální sítě a skupina dostupnosti byly úspěšně vytvořeny. Veřejné IP adresy se nezdařilo a dalším prostředkům nebyly uplatněny.
-5. Události pro nasazení můžete zobrazit výběrem **události**.
+    V takovém případě uvidíte, že byly úspěšně vytvořeny hello účet úložiště, virtuální sítě a skupinu dostupnosti. Hello veřejné IP adresy se nezdařilo a dalším prostředkům nebyly uplatněny.
+5. Události pro hello nasazení můžete zobrazit výběrem **události**.
    
     ![zobrazení událostí](./media/resource-manager-deployment-operations/view-events.png)
-6. Zobrazit všechny události pro nasazení a vyberte všechny další podrobnosti. Všimněte si příliš ID korelace. Tato hodnota může být užitečné při práci se službou technické podpory k řešení nasazení.
+6. Zobrazit všechny události hello hello nasazení a vyberte všechny další podrobnosti. Všimněte si, příliš hello ID korelace. Tato hodnota může být užitečné při práci s tootroubleshoot se na technickou podporu nasazení.
    
     ![Zobrazit události](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. Chcete-li získat celkový stav nasazení, použijte **Get-AzureRmResourceGroupDeployment** příkaz. 
+1. Celkový stav nasazení, použijte hello hello tooget **Get-AzureRmResourceGroupDeployment** příkaz. 
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
-   Nebo můžete filtrovat výsledky pro jenom nasazení, které selhaly.
+   Nebo můžete filtrovat výsledky hello pouze nasazení, které selhaly.
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. Každé nasazení obsahuje více operací. Každé operace představuje krokem v procesu nasazení. Pokud chcete zjistit, kde došlo k chybě s nasazením, budete muset obvykle zobrazit podrobnosti o operace nasazení. Zobrazí stav operace s **Get-AzureRmResourceGroupDeploymentOperation**.
+2. Každé nasazení obsahuje více operací. Každé operace představuje krok v procesu nasazení hello. toodiscover, co se pokazilo k nasazení, musíte obvykle toosee podrobnosti o hello operace nasazení. Zobrazí se stav hello hello operací s **Get-AzureRmResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
-    Která vrací více operací s každým z nich v následujícím formátu:
+    Která vrací více operací s každým z nich v hello následující formát:
 
   ```powershell
   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -85,13 +85,13 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. Chcete-li získat další informace o neúspěšné operace, se načíst vlastnosti pro operace s **se nezdařilo** stavu.
+3. tooget Další informace o neúspěšné operace načtení hello vlastnosti pro operace s **se nezdařilo** stavu.
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
-    Která vrací všechny neúspěšné operace s každým z nich v následujícím formátu:
+    Které vrátí že všechny hello neúspěšné operace s každé z nich v hello následující formát:
 
   ```powershell
   provisioningOperation : Create
@@ -107,8 +107,8 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
   ```
 
-    Poznámka: serviceRequestId a trackingId pro operaci. ServiceRequestId může být užitečné při práci se službou technické podpory k řešení nasazení. Použijete trackingId a zaměřit se na konkrétní operace v dalším kroku.
-4. Chcete-li získat stavové zprávy konkrétní operace se nezdařila, použijte následující příkaz:
+    Poznámka: hello serviceRequestId a hello trackingId pro operaci hello. Hello serviceRequestId může být užitečné při práci s tootroubleshoot se na technickou podporu nasazení. Použijete hello trackingId v hello další krok toofocus na konkrétní operace.
+4. tooget hello stavovou zprávu konkrétní operace se nezdařila, hello použijte následující příkaz:
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,9 +121,9 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Všechny operace nasazení v Azure zahrnuje obsah žádosti a odpovědi. Obsah žádosti je, co jste poslali do Azure během nasazení (například vytvořit virtuální počítač, disk operačního systému a další prostředky). Obsah odpovědi je Azure odeslána zpět ze svého požadavku nasazení. Během nasazení, můžete použít **DeploymentDebugLogLevel** paramenter k určení, že požadavku nebo odpovědi jsou uchovány v protokolu. 
+4. Všechny operace nasazení v Azure zahrnuje obsah žádosti a odpovědi. obsah žádosti Hello je, co jste poslali tooAzure během nasazení (například vytvořit virtuální počítač, disk operačního systému a další prostředky). obsah odpovědi Hello je Azure odeslána zpět ze svého požadavku nasazení. Během nasazení, můžete použít **DeploymentDebugLogLevel** toospecify paramenter, který hello požadavku nebo odpovědi jsou uchovány v protokolu hello. 
 
-  Získat tyto informace z protokolu a uložit ho místně pomocí následujících příkazů prostředí PowerShell:
+  Získat tyto informace z protokolu hello a uložit ho místně pomocí hello následující příkazy prostředí PowerShell:
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -133,13 +133,13 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
 
 ## <a name="azure-cli"></a>Azure CLI
 
-1. Získat celkový stav nasazení pomocí **skupiny azure nasazení zobrazit** příkaz.
+1. Získat hello celkový stav nasazení s hello **skupiny azure nasazení zobrazit** příkaz.
 
   ```azurecli
   azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
   ```
   
-  Jedna z hodnot vrácených je **correlationId**. Tato hodnota se používá ke sledování související události a může být užitečné při práci se službou technické podpory k řešení nasazení.
+  Jeden z hello vrátil hodnoty je hello **correlationId**. Tato hodnota se používá tootrack souvisejících událostí a může být užitečné při práci s tootroubleshoot se na technickou podporu nasazení.
 
   ```azurecli
   "properties": {
@@ -147,7 +147,7 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
     "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
   ```
 
-2. Pokud chcete zobrazit operace pro nasazení, použijte:
+2. operace hello toosee pro nasazení, použijte:
 
   ```azurecli
   azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
@@ -155,13 +155,13 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
 
 ## <a name="rest"></a>REST
 
-1. Získat informace o nasazení pomocí [získat informace o nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) operaci.
+1. Získat informace o nasazení s hello [získat informace o nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) operaci.
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
   ```
 
-    V odpovědi, Všimněte si, zejména **provisioningState**, **correlationId**, a **chyba** elementy. **CorrelationId** slouží ke sledování související události a může být užitečné při práci se službou technické podpory k řešení nasazení.
+    V odpovědi hello, Všimněte si, zejména hello **provisioningState**, **correlationId**, a **chyba** elementy. Hello **correlationId** slouží tootrack souvisejících událostí a může být užitečné při práci s tootroubleshoot se na technickou podporu nasazení.
 
   ```json
   { 
@@ -178,13 +178,13 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
   }
   ```
 
-2. Získat informace o operacích nasazení se [výpisu všech operací nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) operaci. 
+2. Získat informace o operacích nasazení se hello [výpisu všech operací nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) operaci. 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
   ```
    
-    Odpověď obsahuje požadavku nebo odpovědi informace, které jsou založené na co jste zadali v **debugSetting** vlastnost během nasazení.
+    Hello odpověď obsahuje informace o požadavku nebo odpovědi na co jste zadali v hello základě **debugSetting** vlastnost během nasazení.
 
   ```json
   {
@@ -213,7 +213,7 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
 
 
 ## <a name="next-steps"></a>Další kroky
-* Nápovědu k řešení chyb při konkrétní nasazení naleznete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Další informace o použití protokoly aktivity monitorování jiné typy akcí, najdete v části [zobrazit protokoly aktivity ke správě prostředků Azure](resource-group-audit.md).
-* K ověření vašeho nasazení, než ho spustíte, najdete v části [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Nápovědu k řešení chyb při konkrétní nasazení naleznete v tématu [řešení běžných chyb při nasazování tooAzure prostředků pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+* toolearn o používání hello aktivity v protokolech toomonitor jiné typy akcí, najdete v části [zobrazení aktivity protokoly toomanage Azure prostředky](resource-group-audit.md).
+* v tématu nasazení před provedením, toovalidate [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

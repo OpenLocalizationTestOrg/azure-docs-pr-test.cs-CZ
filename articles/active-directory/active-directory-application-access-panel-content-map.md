@@ -1,6 +1,6 @@
 ---
-title: "Problémy při používání aplikace přístup k panelu webu nebo mobilní aplikace\""
-description: "Problémy při používání aplikace přístup k panelu webu nebo mobilní aplikace\""
+title: "pomocí aplikace hello aaaProblems přístup k panelu webu nebo mobilní aplikace\""
+description: "Problémy při použití aplikace hello přístup k panelu webu nebo mobilní aplikace\""
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,29 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d78f9c59c069664fa77bdf9a16a48bb3745b1224
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bbec5bcc4200e26dd825e64529651e4d4974747d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-using-the-application-access-panel-website-or-mobile-application"></a>Problémy při použití webu přístupového panelu aplikací nebo mobilní aplikace
+# <a name="problems-using-hello-application-access-panel-website-or-mobile-application"></a>Problémy při použití aplikace hello přístup k panelu webu nebo mobilní aplikace
 
 
-## <a name="i-do-not-see-the-applications-i-expect-on-the-application-access-panel"></a>Nevidím aplikace očekávaný na panel přístupu aplikace
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, proč se přiřazená aplikace nezobrazuje na přístupovém panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-not-appearing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Nevím, proč se aplikace zobrazuje na přístupovém panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-appears/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="i-do-not-see-hello-applications-i-expect-on-hello-application-access-panel"></a>Nevidím aplikace hello, očekávaný na panel přístupu aplikace hello
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nevíte, proč se aplikace, které jsou přiděleny nezobrazují hello přístupového panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-not-appearing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Nevíte, proč se zobrazuje aplikace na panel přístupu hello](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-appears/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-signing-in-to-the-application-access-panel"></a>Mám potíže při přihlašování k přístupovému panelu aplikací
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nemůžu se přihlásit k webu přístupového panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-web-sign-in-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-signing-in-toohello-application-access-panel"></a>Došlo k potížím přihlášení toohello aplikace přístupového panelu
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nelze se přihlásit toohello přístup k panelu webu](https://docs.microsoft.com/azure/active-directory/application-access-panel-web-sign-in-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-using-the-application-access-panel-browser-extension"></a>Došlo k potížím pomocí rozšíření prohlížeče aplikace přístup k panelu
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Při instalaci rozšíření prohlížeče přístupového panelu aplikací se zobrazila chyba](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-using-hello-application-access-panel-browser-extension"></a>Došlo k potížím pomocí rozšíření prohlížeče hello aplikace přístup k panelu
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Zobrazilo k chybě při instalaci rozšíření prohlížeče hello aplikace přístup k panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-with-a-feature-on-the-application-access-panel"></a>Došlo k potížím s funkcí na panel přístupu aplikace
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, jak používat samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-with-a-feature-on-hello-application-access-panel"></a>Došlo k potížím s funkcí na panel přístupu aplikace hello
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nevíte, jak přistupovat k toouse samoobslužné služby aplikace](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Při používání samoobslužného přístupu k aplikacím se zobrazila chyba](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

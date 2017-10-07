@@ -1,6 +1,6 @@
 ---
-title: "Přiřadit uživatele k vlastní doméně v Azure Active Directory | Microsoft Docs"
-description: "Postup naplnění vlastní doménu v Azure Active Directory s uživatelskými účty."
+title: "vlastní domény tooa aaaAssign uživatele v Azure Active Directory | Microsoft Docs"
+description: "Jak toopopulate vlastní doménu v Azure Active Directory s uživatelskými účty."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,42 +16,42 @@ ms.date: 07/13/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 39cb54a6637088c35c6aef864a804c24803f48ba
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 23c338a361a90fddf42d4df90db94c9774305886
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-users-to-a-custom-domain"></a>Přiřazení uživatelů k vlastní doméně
-Po jste přidali vlastní domény do Azure Active Directory, je nutné přidat uživatelské účty pro tuto doménu tak, abyste ji mohli začít, je ověřování.
+# <a name="assign-users-tooa-custom-domain"></a>Přiřazení uživatelů tooa vlastní domény
+Po přidání tooAzure vaši vlastní doménu služby Active Directory, je nutné přidat hello uživatelské účty pro tuto doménu tak, abyste ji mohli začít, je ověřování.
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek. Jak spravovat názvy domén v Centru správy služby Azure AD, najdete v článku [Správa vlastních názvů domén v Azure Active Directory](active-directory-domains-manage-azure-portal.md).
+> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku. Jak toomanage vaše názvů domén v Centru pro správu hello Azure AD, najdete v části [Správa vlastních názvů domén v Azure Active Directory](active-directory-domains-manage-azure-portal.md).
 
 ## <a name="users-synced-from-a-on-premises-directory"></a>Synchronizované z místního adresáře uživatelů
-Pokud jste již vytvořili připojení mezi místní služby Active Directory a Azure Active Directory, může synchronizace vyplnit účty. Další informace o tom, jak synchronizovat Azure Active Directory s vaší místní Active Directory najdete v tématu [integrace místních identit s Azure Active Directory](active-directory-aadconnect.md).
+Pokud jste již vytvořili připojení mezi místní služby Active Directory a Azure Active Directory, může synchronizace vyplnit hello účty. Další informace o tom, jak toosynchronize Azure Active Directory s vaší místní služby Active Directory, najdete v části [integrace místních identit s Azure Active Directory](active-directory-aadconnect.md).
 
-## <a name="users-added-and-managed-in-the-cloud"></a>Uživatelé přidat a spravovat v cloudu
-Chcete-li změnit doménu pro existující účet uživatele:
+## <a name="users-added-and-managed-in-hello-cloud"></a>Uživatelé přidat a spravovat v cloudu hello
+doména hello toochange pro existující účet uživatele:
 
-1. Otevřete portál Azure classic pomocí účtu, který je globální správce nebo správce uživatele.
+1. Otevřete hello portál Azure classic pomocí účtu, který je globální správce nebo správce uživatele.
 2. Otevřete svůj adresář.
-3. Vyberte kartu **Uživatelé**.
-4. Vyberte uživatele ze seznamu.
-5. Změnit doménu pro uživatele a pak vyberte **Uložit**.
+3. Vyberte hello **uživatelé** kartě.
+4. Vyberte hello uživatele ze seznamu hello.
+5. Změnit doménu hello hello uživatele a pak vyberte **Uložit**.
 
-To můžete také provést pomocí [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) nebo [rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations).
+To můžete také provést pomocí [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) nebo hello [rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations).
 
 ## <a name="select-a-custom-domain-when-creating-a-new-user"></a>Vyberte vlastní domény při vytváření nového uživatele
-1. Otevřete portál Azure classic pomocí účtu, který je globální správce nebo správce uživatele.
+1. Otevřete hello portál Azure classic pomocí účtu, který je globální správce nebo správce uživatele.
 2. Otevřete svůj adresář.
-3. Vyberte kartu **Uživatelé**.
-4. Na panelu příkazů vyberte **přidat**.
-5. Když přidáte uživatelské jméno, zvolte ze seznamu domény vlastní doménu.
+3. Vyberte hello **uživatelé** kartě.
+4. V řádku nabídek hello vyberte **přidat**.
+5. Když přidáte hello uživatelské jméno, zvolte vlastní domény hello hello domény seznamu.
 6. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-* [Pomocí vlastních názvů domén ke zjednodušení přihlašování pro vaše uživatele](active-directory-add-domain.md)
+* [Použití vlastní doménu názvy toosimplify hello přihlašování pro vaše uživatele](active-directory-add-domain.md)
 * [Správa vlastních názvů domén](active-directory-add-manage-domain-names.md)
 * [Další informace o konceptech správy domén ve službě Azure AD](active-directory-add-domain-concepts.md)
 

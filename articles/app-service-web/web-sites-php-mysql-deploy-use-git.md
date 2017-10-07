@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace v PHP-MySQL ve službě Azure App Service a nasazení přes Git"
-description: "Kurz ukazuje, jak vytvořit webovou aplikaci PHP, která ukládá data v MySQL a používat Git nasazení do Azure."
+title: "aaaCreate PHP-MySQL, webová aplikace ve službě Azure App Service a nasazení pomocí Git"
+description: "Kurz, který ukazuje, jak webová aplikace, která ukládá data v MySQL toocreate PHP a použít tooAzure nasazení Git."
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
@@ -15,36 +15,36 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: aa845eb474dbd42ae2c31880690d4ced059eb448
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c22946777598cc973cd9dfc8d2a258bd08cc39a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>Vytvoření webové aplikace v PHP-MySQL ve službě Azure App Service a nasazení přes Git
-Tento kurz ukazuje, jak k vytvoření webové aplikace PHP MySQL a jak ho nasadit do [služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714) pomocí Git. Budete používat [PHP][install-php], nástroje příkazového řádku MySQL (součástí [MySQL][install-mysql]), a [Git] [ install-git] v počítači nainstalována. Pokyny v tomto kurzu platí pro všechny operační systémy, včetně systému Windows, Mac a Linux. Po dokončení tohoto průvodce, budete mít webovou aplikaci PHP nebo MySQL běžící v Azure.
+Tento kurz ukazuje, jak toocreate PHP-MySQL, webová aplikace a jak toodeploy je příliš[služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714) pomocí Git. Budete používat [PHP][install-php], hello MySQL nástroj příkazového řádku (součástí [MySQL][install-mysql]), a [Git] [ install-git] v počítači nainstalována. Hello pokyny v tomto kurzu platí pro všechny operační systémy, včetně systému Windows, Mac a Linux. Po dokončení tohoto průvodce, budete mít webovou aplikaci PHP nebo MySQL běžící v Azure.
 
 Co se dozvíte:
 
-* Jak vytvořit webovou aplikaci a pomocí databáze MySQL [portálu Azure][management-portal]. Protože je v PHP [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) ve výchozím nastavení, nic speciální se vyžaduje ke spuštění kódu PHP.
-* Postup publikování a znovu publikovat svoji aplikaci do Azure pomocí Git.
-* Postup povolení rozšíření autora autora automatizovat úlohy v každé `git push`.
+* Jak se toocreate webovou aplikaci a MySQL databáze, pomocí hello [portálu Azure][management-portal]. Protože je v PHP [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) ve výchozím nastavení, nic speciální je požadovaná toorun kódu PHP.
+* Jak toopublish a znovu publikovat tooAzure vaší aplikace pomocí Git.
+* Jak tooenable hello autora rozšíření tooautomate autora úloh v každé `git push`.
 
-Podle tohoto kurzu vytvoříte registrace jednoduché webové aplikace v jazyce PHP. Aplikace hostované ve webové aplikace. Zde je snímek obrazovky dokončené aplikace:
+Podle tohoto kurzu vytvoříte registrace jednoduché webové aplikace v jazyce PHP. Hello aplikace hostované ve webové aplikace. Zde je snímek obrazovky aplikace hello dokončena:
 
 ![Azure webu PHP][running-app]
 
-## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
-Tento kurz předpokládá, že máte [PHP][install-php], nástroje příkazového řádku MySQL (součástí [MySQL][install-mysql]), a [Git] [ install-git] v počítači nainstalována.
+## <a name="set-up-hello-development-environment"></a>Nastavit hello vývojového prostředí
+Tento kurz předpokládá, že máte [PHP][install-php], hello MySQL nástroj příkazového řádku (součástí [MySQL][install-mysql]), a [Git] [ install-git] v počítači nainstalována.
 
 <a id="create-web-site-and-set-up-git"></a>
 
 ## <a name="create-a-web-app-and-set-up-git-publishing"></a>Vytvoření webové aplikace a nastavení publikování Git
-Postupujte podle těchto kroků můžete vytvořit webovou aplikaci a databáze MySQL:
+Webové aplikace a databáze MySQL, postupujte podle těchto kroků toocreate:
 
-1. Přihlášení k [portál Azure][management-portal].
-2. Klikněte **nový** ikonu.
-3. Klikněte na tlačítko **najdete v článku všechny** vedle **Marketplace**. 
+1. Přihlášení toohello [portálu Azure][management-portal].
+2. Klikněte na tlačítko hello **nový** ikonu.
+3. Klikněte na tlačítko **najdete v článku všechny** další příliš**Marketplace**. 
 4. Klikněte na tlačítko **Web + mobilní**, pak **Web app + MySQL**. Poté klikněte na možnost **Vytvořit**.
 5. Zadejte platný název skupiny prostředků.
    
@@ -52,53 +52,53 @@ Postupujte podle těchto kroků můžete vytvořit webovou aplikaci a databáze 
 6. Zadejte hodnoty pro novou webovou aplikaci.
    
     ![Vytvoření webové aplikace][new-web-app]
-7. Zadejte hodnoty pro novou databázi, včetně, kterým Odsouhlasíte právní podmínky.
+7. Zadejte hodnoty pro novou databázi, včetně, kterým Odsouhlasíte toohello právní podmínky.
    
     ![Vytvořit novou databázi MySQL][new-mysql-db]
-8. Po vytvoření webové aplikace, zobrazí se nové okno webové aplikace.
+8. Po vytvoření hello webové aplikace, zobrazí se okno hello nové webové aplikace.
 9. V **nastavení** klikněte na **průběžné nasazování**, potom klikněte na *konfigurovat požadované nastavení*.
    
     ![Nastavit publikování Git][setup-publishing]
-10. Vyberte **místní úložiště Git** zdroje.
+10. Vyberte **místní úložiště Git** zdroje hello.
     
      ![Nastavení úložiště Git][setup-repository]
-11. Povolit publikování Git, je nutné zadat uživatelské jméno a heslo. Poznamenejte si uživatelské jméno a heslo, které vytvoříte. (Pokud jste nastavili úložiště Git před, bude přeskočen tento krok.)
+11. tooenable publikování Git, je nutné zadat uživatelské jméno a heslo. Poznamenejte si hello uživatelské jméno a heslo, které vytvoříte. (Pokud jste nastavili úložiště Git před, bude přeskočen tento krok.)
     
      ![Vytvořit přihlašovací údaje pro publikování][credentials]
 
 ## <a name="get-remote-mysql-connection-information"></a>Získat informace o připojení k vzdálené MySQL
-Pro připojení k databázi MySQL, která běží ve službě Web Apps, vaše bude potřebovat informace o připojení. Chcete-li získat informace o připojení databáze MySQL, postupujte takto:
+databáze MySQL toohello tooconnect, které běží ve službě Web Apps, vaše bude potřebovat hello informace o připojení. tooget informace o připojení databáze MySQL, postupujte takto:
 
-1. Od vaší skupiny prostředků klikněte na databázi:
+1. Od vaší skupiny prostředků klikněte na databázi hello:
    
     ![Vyberte databázi][select-database]
-2. Z databáze **nastavení**, vyberte **vlastnosti**.
+2. Z databáze hello **nastavení**, vyberte **vlastnosti**.
    
     ![Výběr vlastností][select-properties]
-3. Poznamenejte si hodnoty pro `Database`, `Host`, `User Id`, a `Password`.
+3. Poznamenejte si hodnoty hello `Database`, `Host`, `User Id`, a `Password`.
    
     ![Poznámka: vlastnosti][note-properties]
 
 ## <a name="build-and-test-your-app-locally"></a>Vytvoření a testování vaší aplikace místně
 Teď, když jste vytvořili webovou aplikaci, můžete vyvíjet aplikaci místně a pak ho nasadit po testování.
 
-Registrace aplikace je jednoduchou aplikaci PHP, která umožňuje zaregistrovat pro událost tím, že poskytuje vaše jméno a e-mailovou adresu. Zobrazí se informace o předchozích rejstříkem v tabulce. Registrační informace jsou uloženy v databázi MySQL. Aplikace se skládá z jednoho souboru (zkopírujte a vložte kód je k dispozici níže):
+Registrace aplikace Hello je jednoduchou aplikaci PHP, která vám umožní tooregister pro událost tím, že poskytuje vaše jméno a e-mailovou adresu. Zobrazí se informace o předchozích rejstříkem v tabulce. Registrační informace jsou uloženy v databázi MySQL. Hello aplikace se skládá z jednoho souboru (zkopírujte a vložte kód je k dispozici níže):
 
 * **index.php**: Zobrazí formulář pro registraci a tabulku obsahující informace osob žádajících o registraci.
 
-Sestavení a spuštění aplikace místně, postupujte podle následujících kroků. Všimněte si, že tento postup předpokládá, máte PHP a databáze MySQL nástroj příkazového řádku (součást MySQL) nastavit na místním počítači a pokud jste povolili [PDO rozšíření pro databázi MySQL][pdo-mysql].
+toobuild a spuštění hello aplikaci místně, postupujte podle následujících kroků hello. Všimněte si, že tento postup předpokládá, máte hello PHP a databáze MySQL nástroj příkazového řádku (součást MySQL) nastavit na místním počítači, a že je povoleno hello [PDO rozšíření pro databázi MySQL][pdo-mysql].
 
-1. Připojit ke vzdálenému serveru MySQL, pomocí hodnoty pro `Data Source`, `User Id`, `Password`, a `Database` , který jste získali dříve:
+1. Připojit toohello vzdálené MySQL serveru, použijte hodnotu hello `Data Source`, `User Id`, `Password`, a `Database` , který jste získali dříve:
    
         mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
-2. MySQL příkazového řádku se zobrazí:
+2. Zobrazí se Hello MySQL příkazového řádku:
    
         mysql>
-3. Vložte následující `CREATE TABLE` příkazu vytvořte `registration_tbl` tabulky v databázi:
+3. Vložte následující hello `CREATE TABLE` příkaz toocreate hello `registration_tbl` tabulky v databázi:
    
         CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
-4. V kořenové složce místní aplikace vytvořte **index.php** souboru.
-5. Otevřete **index.php** soubor v textovém editoru nebo IDE a přidejte následující kód a provést potřebné změny, které jsou označené jako `//TODO:` komentáře.
+4. V kořenové složce místní aplikace hello vytvořte **index.php** souboru.
+5. Otevřete hello **index.php** soubor v textovém editoru nebo IDE a přidejte hello následující kód a dokončení hello potřebné změny označené jako `//TODO:` komentáře.
 
         <html>
         <head>
@@ -119,7 +119,7 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         </head>
         <body>
         <h1>Register here!</h1>
-        <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+        <p>Fill in your name and email address, then click <strong>Submit</strong> tooregister.</p>
         <form method="post" action="index.php" enctype="multipart/form-data" >
               Name  <input type="text" name="name" id="name"/></br>
               Email <input type="text" name="email" id="email"/></br>
@@ -127,13 +127,13 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         </form>
         <?php
             // DB connection info
-            //TODO: Update the values for $host, $user, $pwd, and $db
-            //using the values you retrieved earlier from the Azure Portal.
+            //TODO: Update hello values for $host, $user, $pwd, and $db
+            //using hello values you retrieved earlier from hello Azure Portal.
             $host = "value of Data Source";
             $user = "value of User Id";
             $pwd = "value of Password";
             $db = "value of Database";
-            // Connect to database.
+            // Connect toodatabase.
             try {
                 $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
                 $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -184,22 +184,22 @@ Sestavení a spuštění aplikace místně, postupujte podle následujících kr
         </body>
         </html>
 
-1. V terminálu přejděte do složky aplikace a zadejte následující příkaz:
+1. V terminálu přejděte tooyour aplikace složku a typ hello následující příkaz:
    
        php -S localhost:8000
 
-Nyní můžete procházet k **http://localhost: 8000 /** k testování aplikace.
+Nyní můžete procházet příliš**http://localhost: 8000 /** tootest hello aplikace.
 
 ## <a name="publish-your-app"></a>Publikování aplikace
-Po testování vaší aplikace místně, můžete ji publikovat pomocí Git webové aplikace. Bude inicializovat místní úložiště Git a publikování aplikace.
+Po testování vaší aplikace místně, můžete ho publikovat tooWeb aplikací pomocí Git. Bude inicializovat místní úložiště Git a publikování aplikace hello.
 
 > [!NOTE]
-> Toto jsou stejné kroky uvedené na portálu Azure na konci vytvořit webovou aplikaci a sadu až publikování Git část výše.
+> Tyto jsou hello stejné kroky uvedené v portálu Azure na konci hello hello vytvořit webovou aplikaci a sadu hello až publikování Git část výše.
 > 
 > 
 
-1. (Volitelné)  Pokud jste zapomněli, nebo k jejich chybnému umístění URL vzdálené repostitory Git, přejděte do vlastností webové aplikace na portálu Azure.
-2. Otevřete Git Bash (nebo terminál, pokud Git je ve vaší `PATH`), změňte adresáře na kořenový adresář aplikace a spusťte následující příkazy:
+1. (Volitelné)  Pokud jste zapomněli, nebo k jejich chybnému umístění URL vzdálené repostitory Git, přejděte toohello webové aplikace vlastnosti hello portálu Azure.
+2. Otevřete Git Bash (nebo terminál, pokud Git je ve vaší `PATH`), změňte adresáře toohello kořenový adresář aplikace a spusťte následující příkazy hello:
    
         git init
         git add .
@@ -207,58 +207,58 @@ Po testování vaší aplikace místně, můžete ji publikovat pomocí Git webo
         git remote add azure [URL for remote repository]
         git push azure master
    
-    Zobrazí se výzva k zadání hesla, které jste vytvořili dříve.
+    Jste vyzváni k hello heslo, které jste vytvořili dříve.
    
-    ![Počáteční nabízené Azure prostřednictvím Git][git-initial-push]
-3. Přejděte do **http://[site name].azurewebsites.net/index.php** začít používat aplikace (tyto informace se uloží na řídicím panelu účet):
+    ![Počáteční tooAzure nabízené prostřednictvím Git][git-initial-push]
+3. Procházet příliš**http://[site name].azurewebsites.net/index.php** toobegin pomocí aplikace hello (tyto informace se uloží na řídicím panelu účet):
    
     ![Azure webu PHP][running-app]
 
-Po publikování aplikace, můžete začít, provedení změn a publikovat je pomocí Git.
+Po publikování aplikace, můžete začít vytvářet tooit změny a použít Git toopublish je.
 
-## <a name="publish-changes-to-your-app"></a>Publikování změn do vaší aplikace
-Při publikování změn do vaší aplikace, postupujte takto:
+## <a name="publish-changes-tooyour-app"></a>Publikování aplikace tooyour změny
+toopublish změny tooyour aplikace, postupujte takto:
 
-1. Proveďte změny aplikace místně.
-2. Otevřete Git Bash (nebo terminál, it Git je ve vaší `PATH`), změňte adresáře na kořenový adresář aplikace a spusťte následující příkazy:
+1. Zkontrolujte změny tooyour aplikace místně.
+2. Otevřete Git Bash (nebo terminál, it Git je ve vaší `PATH`), změňte adresáře toohello kořenový adresář aplikace a spusťte následující příkazy hello:
    
         git add .
         git commit -m "comment describing changes"
         git push azure master
    
-    Zobrazí se výzva k zadání hesla, které jste vytvořili dříve.
+    Jste vyzváni k hello heslo, které jste vytvořili dříve.
    
-    ![Vkládání změn lokalit k Azure přes Git][git-change-push]
-3. Přejděte do **http://[site name].azurewebsites.net/index.php** vaší aplikace a všechny změny provedené:
+    ![Vkládání tooAzure změny webu prostřednictvím Git][git-change-push]
+3. Procházet příliš**http://[site name].azurewebsites.net/index.php** toosee vaší aplikace a veškeré změny provedené:
    
     ![Azure webu PHP][running-app]
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 
 <a name="composer"></a>
 
-## <a name="enable-composer-automation-with-the-composer-extension"></a>Povolit automatickou autora s příponou autora
-Ve výchozím nastavení proces nasazení git ve službě App Service nic se neděje s composer.json, pokud máte ve vašem projektu PHP. Můžete povolit composer.json zpracování během `git push` povolením rozšíření autora.
+## <a name="enable-composer-automation-with-hello-composer-extension"></a>Povolit automatickou autora s hello rozšíření autora
+Ve výchozím nastavení proces nasazení git hello ve službě App Service nic se neděje s composer.json, pokud máte ve vašem projektu PHP. Můžete povolit composer.json zpracování během `git push` povolením rozšíření autora hello.
 
-1. Ve vašem PHP webové okně aplikace v [portál Azure][management-portal], klikněte na tlačítko **nástroje** > **rozšíření**.
+1. Ve vašem PHP webové okně aplikace v hello [portál Azure][management-portal], klikněte na tlačítko **nástroje** > **rozšíření**.
    
     ![Nastavení rozšíření autora][composer-extension-settings]
 2. Klikněte na tlačítko **přidat**, pak klikněte na tlačítko **autora**.
    
     ![Přidání rozšíření autora][composer-extension-add]
-3. Klikněte na tlačítko **OK** přijměte právní podmínky. Klikněte na tlačítko **OK** přidat rozšíření.
+3. Klikněte na tlačítko **OK** tooaccept právní podmínky. Klikněte na tlačítko **OK** znovu tooadd hello rozšíření.
    
-    **Nainstalovaná rozšíření** okno se nyní zobrazí rozšíření autora.  
+    Hello **nainstalovaná rozšíření** okno se nyní zobrazí rozšíření autora hello.  
     ![Zobrazení rozšíření autora][composer-extension-view]
-4. Teď, provádět `git add`, `git commit`, a `git push` jako v předchozí části. Nyní se zobrazí, autora je instalování závislostí, které jsou definované v composer.json.
+4. Teď, provádět `git add`, `git commit`, a `git push` jako v předchozím oddílu hello. Nyní se zobrazí, autora je instalování závislostí, které jsou definované v composer.json.
    
     ![Úspěch rozšíření autora][composer-extension-success]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu hello [středisku pro vývojáře PHP](/develop/php/).
 
 <!-- URL List -->
 

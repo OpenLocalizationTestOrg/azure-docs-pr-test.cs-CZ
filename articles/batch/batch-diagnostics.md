@@ -1,5 +1,5 @@
 ---
-title: "Povolit protokolování diagnostiky pro Batch události - Azure | Microsoft Docs"
+title: "aaaEnable diagnostické protokolování pro události Batch - Azure | Microsoft Docs"
 description: "Zaznamenávat a analyzovat události protokolů diagnostiky pro prostředkům účet Azure Batch, jako jsou fondy a úkoly."
 services: batch
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9d03303a3e857e9303f40cc6de5c32b5a51d8f8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Události protokolu diagnostiky hodnocení a sledování řešení Batch
 
-Stejně jako u řadou služeb Azure, služba Batch vysílá události protokolu určitých prostředků během doby platnosti prostředku. Můžete povolení diagnostických protokolů Azure Batch zaznamenat události pro prostředkům, jako jsou fondy a úkoly a pak použít protokoly diagnostiky hodnocení a sledování. Vytvořit událostmi, jako je fondu, fond odstranit, spuštění úloh, úloha ukončena a jiné jsou součástí Batch diagnostické protokoly.
+Stejně jako u řadou služeb Azure, hello služba Batch vysílá události protokolu pro některé prostředky během hello doba platnosti prostředku hello. Můžete povolit Azure Batch diagnostické protokoly událostí toorecord prostředkům, jako jsou fondy a úkoly a pak použít hello protokolů diagnostiky hodnocení a sledování. Vytvořit událostmi, jako je fondu, fond odstranit, spuštění úloh, úloha ukončena a jiné jsou součástí Batch diagnostické protokoly.
 
 > [!NOTE]
-> Tento článek popisuje protokolování událostí pro prostředky na účtu Batch, sami, není úloh a úloh výstupní data. Informace o ukládání výstupních dat úloh a úloh, najdete v tématu [zachovat Azure Batch výstup úlohy a úkolů](batch-task-output.md).
+> Tento článek popisuje protokolování událostí pro prostředky na účtu Batch, sami, není úloh a úloh výstupní data. Informace o ukládání hello výstupních dat úloh a úloh, najdete v tématu [zachovat Azure Batch výstup úlohy a úkolů](batch-task-output.md).
 > 
 > 
 
@@ -34,22 +34,22 @@ Stejně jako u řadou služeb Azure, služba Batch vysílá události protokolu 
 * [Účet Azure Batch](batch-account-create-portal.md)
 * [účet služby Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
-  Udržení diagnostické protokoly Batch, musíte vytvořit účet úložiště Azure, kde Azure ukládat protokoly. Zadejte účet úložiště při jste [povolit protokolování diagnostiky](#enable-diagnostic-logging) vašeho účtu Batch. Účet úložiště, který zadáte, když povolíte protokol kolekce není stejný jako propojený účet úložiště uvedené v [balíčky aplikací](batch-application-packages.md) a [úloh výstup trvalost](batch-task-output.md) články.
+  diagnostické protokoly toopersist Batch, musíte vytvořit účet úložiště Azure, kde Azure ukládat protokoly hello. Zadejte účet úložiště při jste [povolit protokolování diagnostiky](#enable-diagnostic-logging) vašeho účtu Batch. Hello účet úložiště, které zadáte, když povolíte protokol kolekce není hello stejné jako propojené úložiště účet odkazované tooin hello [balíčky aplikací](batch-application-packages.md) a [úloh výstup trvalost](batch-task-output.md) články.
   
   > [!WARNING]
-  > Jste **účtovat** data uložená v účtu úložiště Azure. To zahrnuje diagnostických protokolů, které jsou popsané v tomto článku. Mějte na paměti při navrhování vaší [protokolu zásady uchovávání informací](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
+  > Jste **účtovat** hello data uložená v účtu úložiště Azure. To zahrnuje hello diagnostické protokoly popsané v tomto článku. Mějte na paměti při navrhování vaší [protokolu zásady uchovávání informací](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
   > 
   > 
 
 ## <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
-Ve výchozím nastavení vašeho účtu Batch není povoleno protokolování diagnostiky. Je potřeba explicitně povolit protokolování diagnostiky pro každého účtu Batch, kterou chcete sledovat:
+Ve výchozím nastavení vašeho účtu Batch není povoleno protokolování diagnostiky. Je potřeba explicitně povolit protokolování diagnostiky pro každý účet Batch, že chcete toomonitor:
 
-[Postup povolení shromažďování diagnostických protokolů](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
+[Jak tooenable shromažďování diagnostických protokolů](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
 
-Doporučujeme, abyste si přečetli celý [přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) článku získat představu o není pouze to, jak povolit protokolování, ale kategorií protokolu podporuje různé služby Azure. Například Azure Batch aktuálně podporuje jednu kategorii protokolu: **protokoly služby**.
+Doporučujeme, abyste si přečetli hello úplné [přehled o Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) toogain článku pochopení nejen jak tooenable protokolování, ale hello protokolu kategorií nepodporuje hello různé služby Azure. Například Azure Batch aktuálně podporuje jednu kategorii protokolu: **protokoly služby**.
 
 ## <a name="service-logs"></a>Protokoly služby
-Protokoly služby Azure Batch obsahovat události vygenerované službou Azure Batch po dobu životnosti prostředků Batch jako fondu nebo úloh. Každá událost vysílaných Batch je uložený v zadaném účtu úložiště ve formátu JSON. To je třeba do těla ukázku **fondu vytvoření události**:
+Protokoly služby Azure Batch obsahovat události vygenerované službou Azure Batch hello během doby života hello prostředku Batch jako fondu nebo úloh. Každá událost vysílaných Batch je uložen v hello zadaný účet úložiště ve formátu JSON. To je třeba textu hello ukázkové **fondu vytvoření události**:
 
 ```json
 {
@@ -73,10 +73,10 @@ Protokoly služby Azure Batch obsahovat události vygenerované službou Azure B
 }
 ```
 
-Každé události textu se nachází v soubor .json v zadaném účtu úložiště Azure. Pokud chcete získat přímo přístup k protokoly, můžete zkontrolovat [schéma diagnostických protokolů v účtu úložiště](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Každé události textu se nachází v .json souboru v hello zadaný účet úložiště Azure. Pokud chcete tooaccess hello protokoly přímo, můžete tooreview hello [schéma diagnostických protokolů v účtu úložiště hello](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
 ## <a name="service-log-events"></a>Služba Protokol událostí
-Služba Batch aktuálně vysílá následující události služby protokolu. Tento seznam nemusí být kompletní, protože další události mohly být přidány od poslední aktualizace v tomto článku.
+Hello služba Batch aktuálně vysílá hello následující služby protokolu událostí. Tento seznam nemusí být kompletní, protože další události mohly být přidány od poslední aktualizace v tomto článku.
 
 | **Služba Protokol událostí** |
 | --- |
@@ -90,14 +90,14 @@ Služba Batch aktuálně vysílá následující události služby protokolu. Te
 | [Selhání úlohy][task_fail] |
 
 ## <a name="next-steps"></a>Další kroky
-Kromě ukládání diagnostických protokolů událostí v účtu Azure Storage, můžete také stream události protokolu služby Batch [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md)a pošlete je [Azure Log Analytics](../log-analytics/log-analytics-overview.md).
+Přidání toostoring protokolů diagnostiky událostem v účtu Azure Storage, můžete také stream tooan události protokolu služby Batch [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md)a odešlete je příliš[Azure Log Analytics](../log-analytics/log-analytics-overview.md).
 
-* [Stream Azure diagnostických protokolů do centra událostí](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Datový proud diagnostických protokolů Azure tooEvent rozbočovače](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
-  Stream diagnostických událostí Batch ke službě příjem příchozích dat vysoce škálovatelné datového centra událostí. Centra událostí můžete přijímat miliony událostí za sekundu, které můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýzu v reálném čase.
+  Stream diagnostických událostí toohello vysoce škálovatelné data příjem příchozích dat služby Batch, do centra událostí. Centra událostí můžete přijímat miliony událostí za sekundu, které můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýzu v reálném čase.
 * [Analýza Azure diagnostických protokolů pomocí analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
   
-  Odesílání diagnostických protokolů k analýze protokolů, kde můžete analyzovat na portálu Operations Management Suite (OMS), nebo exportovat pro analýzu v Power BI nebo Excelu.
+  Odeslání vašeho tooLog diagnostické protokoly analýzy, kde můžete analyzovat, portálu hello Operations Management Suite (OMS), nebo exportovat pro analýzu v Power BI nebo Excelu.
 
 [pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
 [pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx

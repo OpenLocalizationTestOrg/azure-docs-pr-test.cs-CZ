@@ -1,6 +1,6 @@
 ---
-title: "Automatizovat nasazení prostředků pro funkce aplikace v Azure Functions | Microsoft Docs"
-description: "Naučte se vytvářet šablonu Azure Resource Manager, která nasadí aplikaci funkce."
+title: "aaaAutomate nasazení prostředků pro funkce aplikace v Azure Functions | Microsoft Docs"
+description: "Zjistěte, jak toobuild šablonu Azure Resource Manager, která nasadí aplikaci funkce."
 services: Functions
 documtationcenter: na
 author: lindydonna
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 15496e4ab2858b2aa319d53f1c438a259a3d5e49
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b0df0d4ef9fe93213f7b1cb1d1e6b4e14f8b3a30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizovat nasazení prostředků pro funkce aplikace v Azure Functions
 
-Šablonu Azure Resource Manager můžete použít k nasazení aplikace funkce. Tento článek popisuje požadované prostředky a parametry, jak to udělat. Možná budete muset nasadit další prostředky, v závislosti na [triggerů a vazeb](functions-triggers-bindings.md) ve vaší aplikaci funkce.
+Můžete použít toodeploy šablony Azure Resource Manager aplikaci funkce. Tento článek popisuje hello požadované prostředky a parametry, jak to udělat. Budete potřebovat další prostředky toodeploy, v závislosti na hello [triggerů a vazeb](functions-triggers-bindings.md) ve vaší aplikaci funkce.
 
 Další informace o vytváření šablon najdete v tématu [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -56,9 +56,9 @@ Funkce aplikace vyžaduje tyto prostředky:
 }
 ```
 
-Kromě toho vlastnosti `AzureWebJobsStorage` a `AzureWebJobsDashboard` musí být zadány jako nastavení aplikace v konfiguraci lokality. Modul runtime Azure Functions používá `AzureWebJobsStorage` připojovací řetězec k vytvoření interní front. Připojovací řetězec `AzureWebJobsDashboard` se používá k přihlášení k Azure Table storage a power **monitorování** na portálu.
+Kromě toho hello vlastnosti `AzureWebJobsStorage` a `AzureWebJobsDashboard` musí být zadány jako nastavení aplikace v konfiguraci lokality hello. modulu runtime Azure Functions Hello používá hello `AzureWebJobsStorage` připojovací řetězec toocreate vnitřní fronty. Hello připojovací řetězec `AzureWebJobsDashboard` je použité toolog tooAzure tabulky úložiště a power hello **monitorování** kartě hello portálu.
 
-Tyto vlastnosti jsou určené v `appSettings` kolekce `siteConfig` objektu:
+Tyto vlastnosti jsou určené v hello `appSettings` kolekce v hello `siteConfig` objektu:
 
 ```json
 "appSettings": [
@@ -74,11 +74,11 @@ Tyto vlastnosti jsou určené v `appSettings` kolekce `siteConfig` objektu:
 
 ### <a name="hosting-plan"></a>Hostování plán
 
-Definice hostingový plán se liší v závislosti na tom, zda používáte plánu spotřeby nebo služby App Service. V tématu [nasazení funkce aplikace plánu spotřeby](#consumption) a [nasazení funkce aplikace na plán služby App Service](#app-service-plan).
+definice Hello hello hostování plán se liší v závislosti na tom, zda používáte plánu spotřeby nebo služby App Service. V tématu [nasazení funkce aplikace v plánu spotřeby hello](#consumption) a [nasazení funkce aplikace na hello plán služby App Service](#app-service-plan).
 
 ### <a name="function-app"></a>Funkce aplikace
 
-Prostředek aplikace funkce se definuje pomocí prostředek typu **Microsoft.Web/Site** a typ **functionapp**:
+prostředek aplikace Hello funkce se definuje pomocí prostředek typu **Microsoft.Web/Site** a typ **functionapp**:
 
 ```json
 {
@@ -95,15 +95,15 @@ Prostředek aplikace funkce se definuje pomocí prostředek typu **Microsoft.Web
 
 <a name="consumption"></a>
 
-## <a name="deploy-a-function-app-on-the-consumption-plan"></a>Nasazení aplikace funkce plánu spotřeby
+## <a name="deploy-a-function-app-on-hello-consumption-plan"></a>Nasazení funkce aplikace v plánu spotřeby hello
 
-Funkce aplikace můžete spustit ve dvou různých režimech: plánování využívání a plán služby App Service. Plánu spotřeby automaticky přiděluje výpočetní výkon, když kód běží, horizontálně navýší kapacitu podle potřeby pro zpracování zatížení a potom škáluje, pokud kód není spuštěna. Ano nemusíte zaplatit nečinnosti virtuálních počítačů a nemusíte předem záložní kapacita. Další informace o hostování plány, najdete v části [využívání funkce Azure a služby App Service plány](functions-scale.md).
+Funkce aplikace můžete spustit ve dvou různých režimech: hello plánu spotřeby a hello plán služby App Service. plánu spotřeby Hello automaticky přiděluje výpočetní výkon, pokud váš kód běží, horizontálně navýší kapacitu jako nezbytné toohandle zatížení a pak škáluje, pokud kód není spuštěna. Ano nemáte toopay nečinnosti virtuálních počítačů a nemáte dostatečnou kapacitu tooreserve předem. toolearn Další informace o hostování plány, najdete v části [využívání funkce Azure a služby App Service plány](functions-scale.md).
 
 Vzorové šablony Azure Resource Manager, najdete v části [funkce aplikace v plánu spotřeby].
 
 ### <a name="create-a-consumption-plan"></a>Vytvoření plánu spotřeby
 
-Plán spotřeba je speciální typ prostředku "serverovou farmu". Můžete zadat pomocí `Dynamic` hodnota `computeMode` a `sku` vlastnosti:
+Plán spotřeba je speciální typ prostředku "serverovou farmu". Můžete zadat pomocí hello `Dynamic` hodnotu hello `computeMode` a `sku` vlastnosti:
 
 ```json
 {
@@ -121,7 +121,7 @@ Plán spotřeba je speciální typ prostředku "serverovou farmu". Můžete zada
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
-Kromě toho plán spotřeby vyžaduje další dvě nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE`. Tyto vlastnosti nakonfigurovat cesta k úložišti účtu a soubor kde jsou uložené funkce kódu aplikace a konfigurace.
+Kromě toho plán spotřeby vyžaduje další dvě nastavení v konfiguraci lokality hello: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE`. Tyto vlastnosti nakonfigurovat hello úložiště účet a cestu k souboru kde jsou uloženy kód aplikace hello funkce a konfigurace.
 
 ```json
 {
@@ -166,9 +166,9 @@ Kromě toho plán spotřeby vyžaduje další dvě nastavení v konfiguraci loka
 
 <a name="app-service-plan"></a> 
 
-## <a name="deploy-a-function-app-on-the-app-service-plan"></a>Nasazení aplikace funkce na plán služby App Service
+## <a name="deploy-a-function-app-on-hello-app-service-plan"></a>Nasazení aplikace funkce na hello plán služby App Service
 
-V plánu služby App Service které běží vaše aplikace funkce na vyhrazených virtuálních počítačích na Basic, Standard a Premium SKU, podobně jako webové aplikace. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+V hello plán služby App Service které běží vaše aplikace funkce na vyhrazených virtuálních počítačích na Basic, Standard a Premium SKU, podobně jako tooweb aplikace. Podrobnosti o tom, jak funguje hello plán služby App Service najdete v tématu hello [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 Vzorové šablony Azure Resource Manager, najdete v části [funkce aplikace na plán služby Azure App Service].
 
@@ -192,12 +192,12 @@ Vzorové šablony Azure Resource Manager, najdete v části [funkce aplikace na 
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App 
 
-Poté, co jste vybrali volbu změny měřítka, vytvořte aplikaci funkce. Tato aplikace je kontejner, který obsahuje všechny funkce.
+Poté, co jste vybrali volbu změny měřítka, vytvořte aplikaci funkce. aplikace Hello je hello kontejner, který obsahuje všechny funkce.
 
-Funkce aplikace má mnoho podřízené prostředky, které můžete použít ve vašem nasazení, včetně nastavení aplikace a možnosti řízení zdroje. Můžete také zvolit odebrat **sourcecontrols** podřízených prostředků a použijte jiné [možnost nasazení](functions-continuous-deployment.md) místo.
+Funkce aplikace má mnoho podřízené prostředky, které můžete použít ve vašem nasazení, včetně nastavení aplikace a možnosti řízení zdroje. Můžete také vybrat tooremove hello **sourcecontrols** podřízených prostředků a použijte jiné [možnost nasazení](functions-continuous-deployment.md) místo.
 
 > [!IMPORTANT]
-> K úspěšnému nasazení vaší aplikace pomocí Azure Resource Manager, je důležité pochopit, jak jsou prostředky nasazené v Azure. V následujícím příkladu jsou použita nejvyšší úrovně konfigurace pomocí **siteConfig**. Je důležité nastavit tyto konfigurace na nejvyšší úrovni, protože jejich předání informací o tom informace k modulu runtime a nasazení funkce. Informace na nejvyšší úrovni je vyžadována před podřízená **sourcecontrols nebo webové** prostředků se použije. I když je možné nakonfigurovat tato nastavení na podřízené úrovni **config/appSettings** prostředku, v některých případech aplikace funkce musí být nasazený *před* **config/appSettings** platí. Například při použití funkce s [Logic Apps](../logic-apps/index.md), funkcí jsou závislost jiný prostředek.
+> toosuccessfully nasazení vaší aplikace pomocí Azure Resource Manager, je důležité toounderstand, jak jsou prostředky nasazené v Azure. V následujícím příkladu hello, jsou použita nejvyšší úrovně konfigurace pomocí **siteConfig**. Je důležité tooset tyto konfigurace horní úrovni, protože jejich předání informací o tom modul runtime a nasazení toohello funkce informace. Informace na nejvyšší úrovni je vyžadována před hello podřízené **sourcecontrols nebo webové** prostředků se použije. I když je možné tooconfigure tato nastavení v hello podřízenou **config/appSettings** prostředku, v některých případech aplikace funkce musí být nasazený *před* **config/appSettings**  platí. Například při použití funkce s [Logic Apps](../logic-apps/index.md), funkcí jsou závislost jiný prostředek.
 
 ```json
 {
@@ -252,25 +252,25 @@ Funkce aplikace má mnoho podřízené prostředky, které můžete použít ve 
 }
 ```
 > [!TIP]
-> Tato šablona používá [projektu](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) hodnotu nastavení aplikace, která nastaví základního adresáře, ve které funkce modul pro nasazení (Kudu) hledá nasadit kódu. V našem úložišti naše funkce jsou v podsložce **src** složky. Ano, v předchozím příkladu jsme hodnotu aplikaci nastavení `src`. Pokud jsou funkcí v kořenovém adresáři úložiště nebo pokud nejsou nasazení od správy zdrojového kódu, můžete odebrat tuto hodnotu nastavení aplikace.
+> Tato šablona používá hello [projektu](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) hodnotu nastavení aplikace, která nastaví hello základního adresáře, ve které hello modul nasazení funkce (Kudu) hledá nasadit kódu. V našem úložišti naše funkce jsou v podsložce hello **src** složky. Ano, v předchozím příkladu hello, nastaví hodnotu nastavení aplikace hello příliš`src`. Pokud jsou funkcí v hello kořenového úložiště nebo pokud nejsou nasazení od správy zdrojového kódu, můžete odebrat tuto hodnotu nastavení aplikace.
 
 ## <a name="deploy-your-template"></a>Nasazení šablony
 
-Můžete použít některou z následujících způsobů k nasazení vaší šablony:
+Můžete použít některou z následujících způsobů toodeploy hello šablony:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-### <a name="deploy-to-azure-button"></a>Nasazení do Azure tlačítko
+### <a name="deploy-tooazure-button"></a>TooAzure tlačítko nasadit
 
-Nahraďte ```<url-encoded-path-to-azuredeploy-json>``` s [kódovaná adresou URL](https://www.bing.com/search?q=url+encode) verzi nezpracovaná cesta vaší `azuredeploy.json` souboru na Githubu.
+Nahraďte ```<url-encoded-path-to-azuredeploy-json>``` s [kódovaná adresou URL](https://www.bing.com/search?q=url+encode) verzi hello nezpracovaná cesta vaší `azuredeploy.json` souboru na Githubu.
 
 Tady je příklad, který používá markdownu:
 
 ```markdown
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
+[![Deploy tooAzure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
 ```
 
 Tady je příklad, který používá HTML:
@@ -281,10 +281,10 @@ Tady je příklad, který používá HTML:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak vyvíjet a konfigurovat Azure Functions.
+Další informace o toodevelop a konfigurace Azure Functions.
 
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
-* [Postup konfigurace nastavení aplikace Azure – funkce](functions-how-to-use-azure-function-app-settings.md)
+* [Jak tooconfigure Azure fungovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md)
 * [Vytvoření první funkce Azure](functions-create-first-azure-function.md)
 
 <!-- LINKS -->

@@ -1,6 +1,6 @@
 ---
-title: "Použití prostředí PowerShell k nastavení Application Insights v Azure | Dokumentace Microsoftu"
-description: "Automatizujte konfiguraci kanálu Azure Diagnostics pro službu Application Insights."
+title: "prostředí PowerShell toosetup aaaUsing Application Insights v Azure | Microsoft Docs"
+description: Automatizovat konfiguraci Azure Diagnostics toopipe tooApplication statistiky.
 services: application-insights
 documentationcenter: .net
 author: sbtron
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: bwren
-ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c48a5d8eb23df162522860935af876063aaa6976
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Použití prostředí PowerShell k nastavení Application Insights pro webovou aplikaci v Azure
-[Microsoft Azure](https://azure.com) může být [konfigurované k odesílání Azure Diagnostics](app-insights-azure-diagnostics.md) do [Azure Application Insights](app-insights-overview.md). Diagnostika se týká cloudových služeb Azure a virtuálních počítačů Azure. Doplňují telemetrii, kterou odesíláte z aplikace pomocí Application Insights SDK. Jako součást automatizace procesu vytváření nových prostředků v Azure můžete nakonfigurovat diagnostiku pomocí prostředí PowerShell.
+# <a name="using-powershell-tooset-up-application-insights-for-an-azure-web-app"></a>Pomocí prostředí PowerShell tooset až Application Insights pro webové aplikace Azure
+[Microsoft Azure](https://azure.com) může být [nakonfigurované toosend Azure Diagnostics](app-insights-azure-diagnostics.md) příliš[Azure Application Insights](app-insights-overview.md). Hello Diagnostika se týká tooAzure cloudových služeb a virtuálních počítačích Azure. Doplňují telemetrii hello, kterou odesíláte z aplikace hello pomocí hello Application Insights SDK. Jako součást automatizace procesu hello vytváření nových prostředků v Azure, můžete nakonfigurovat diagnostiku pomocí prostředí PowerShell.
 
 ## <a name="azure-template"></a>Šablony Azure
-Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šablony správce prostředků Azure, můžete nakonfigurovat Application Insights přidáním tohoto uzlu prostředků:
+Pokud webová aplikace hello je v Azure a vy vytvoříte své prostředky pomocí šablony Azure Resource Manager, můžete nakonfigurovat Application Insights přidáním tohoto uzlu prostředků toohello:
 
     {
       resources: [
@@ -42,11 +42,11 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
        ]
      } 
 
-* `nameOfAIAppResource` – název prostředku Application Insights
-* `myWebAppName` – ID webové aplikace
+* `nameOfAIAppResource`-Název hello prostředek Application Insights
+* `myWebAppName`-id hello hello webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
+Hello `New-AzureDeployment` rutina má parametr `ExtensionConfiguration`, který přijímá pole Konfigurace diagnostiky. Ty lze vytvořit pomocí hello `New-AzureServiceDiagnosticsExtensionConfig` rutiny. Například:
 
 ```ps
 
@@ -123,9 +123,9 @@ Na existující službu použijte `Set-AzureServiceDiagnosticsExtension`.
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Pokud jste povolili rozšíření diagnostiky pomocí `Set-AzureServiceDiagnosticsExtension` nebo `New-AzureServiceDiagnosticsExtensionConfig` bez parametru Role můžete rozšíření odebrat pomocí `Remove-AzureServiceDiagnosticsExtension` bez parametru Role. Pokud byl použit parametr role při povolování rozšíření, pak musí být rovněž použit při odebírání rozšíření.
+Pokud jste povolili rozšíření diagnostiky hello pomocí `Set-AzureServiceDiagnosticsExtension` nebo `New-AzureServiceDiagnosticsExtensionConfig` bez parametru Role hello, můžete odebrat pomocí rozšíření hello `Remove-AzureServiceDiagnosticsExtension` bez parametru Role hello. Pokud byl použit parametr Role hello při povolování rozšíření hello pak musíte také ho použít při odebírání rozšíření hello.
 
-Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
+rozšíření diagnostiky tooremove hello každou jednotlivou roli:
 
 ```ps
 
@@ -135,6 +135,6 @@ Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 
 ## <a name="see-also"></a>Viz také
 * [Monitorování aplikací v Azure Cloud Services službou Application Insights](app-insights-cloudservices.md)
-* [Odesílání Diagnostiky Azure do Application Insights](app-insights-azure-diagnostics.md)
+* [Odesílání Azure Diagnostics tooApplication statistiky](app-insights-azure-diagnostics.md)
 * [Automatizace konfigurace výstrah](app-insights-powershell-alerts.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs funkce vazby | Microsoft Docs
-description: "Pochopit, jak používat Azure Event Hubs vazby v Azure Functions."
+title: vazby funkce Event Hubs aaaAzure | Microsoft Docs
+description: Pochopit, jak vazeb Azure Event Hubs toouse v Azure Functions.
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -16,55 +16,55 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/20/2017
 ms.author: wesmc
-ms.openlocfilehash: 19021bef8b7156b3049f43b0275c0ed0c6b22514
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e864f032ad5ac58d318c9843c3844b5642733a70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-event-hubs-bindings"></a>Azure Event Hubs funkce vazby
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje, jak konfigurovat a používat [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) vazby pro Azure Functions.
+Tento článek vysvětluje, jak tooconfigure a používat [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) vazby pro Azure Functions.
 Azure Functions podporuje aktivaci a výstupní vazeb pro služby Event Hubs.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Pokud nový Azure Event Hubs, podívejte se [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md).
+Pokud jste nový tooAzure Event Hubs, najdete v části hello [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md).
 
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>Aktivační událost rozbočovače
-Použijte aktivační událost Event Hubs reagovat na událost odeslaná datového proudu událostí centra událostí. Musíte mít přístup pro čtení do centra událostí vytvořit aktivační událost.
+Použití centra událostí hello aktivovat toorespond tooan událostí odeslaných tooan datového proudu událostí centra událostí. Musíte mít přístup pro čtení toohello události rozbočovače tooset až hello aktivační události.
 
-Aktivační událost Event Hubs funkce používá následující objekt JSON v `bindings` pole function.json:
+Aktivace funkce služby Event Hubs Hello používá následující objekt JSON v hello hello `bindings` pole function.json:
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the event hub>",
-    "consumerGroup": "Consumer group to use - see below",
+    "path": "<Name of hello event hub>",
+    "consumerGroup": "Consumer group toouse - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
 ```
 
-`consumerGroup`je volitelná vlastnost lze nastavit [skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá přihlásit k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů slouží.  
-`connection`musí být název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů.
-Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, ne samotný centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivační událost.
+`consumerGroup`je hello tooset volitelná vlastnost použít [skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá toosubscribe tooevents v centru hello. Pokud tento parametr vynechán, hello `$Default` skupina uživatelů slouží.  
+`connection`musí být hello název nastavení aplikace obsahující hello připojovací řetězec toohello Centrum událostí je obor názvů.
+Zkopírujte tento připojovací řetězec kliknutím hello **informace o připojení** tlačítko hello *obor názvů*, není centra událostí hello, sám sebe. Tento připojovací řetězec musí mít alespoň čtení oprávnění tooactivate hello aktivační události.
 
-[Další nastavení](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) lze zadat do souboru host.json další vyladění aktivační události Event Hubs.  
+[Další nastavení](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) může být zadaný v host.json souboru toofurther jemné vyladění aktivační události Event Hubs.  
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Aktivační události využití
-Když se aktivuje funkce aktivační událost Event Hubs, zprávu, která ji spouští je předán do funkce jako řetězec.
+Při aktivaci Event Hubs aktivační funkce uvítací zprávu, která ji spouští je předán do funkce hello jako řetězec.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Ukázka aktivační události
-Předpokládejme, že máte následující služby Event Hubs aktivovat v `bindings` pole function.json:
+Předpokládejme, že máte následující Event Hubs aktivovat v hello hello `bindings` pole function.json:
 
 ```json
 {
@@ -76,7 +76,7 @@ Předpokládejme, že máte následující služby Event Hubs aktivovat v `bindi
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který zaznamenává tělo zprávy aktivační události rozbočovače.
+V tématu vzorku hello konkrétní jazyk, který je protokoly tělo zprávy hello hello event hub aktivační události.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -95,7 +95,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Můžete také získat událost jako [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objekt, který umožňuje přístup k metadatům událostí.
+Můžete také získat hello událostí jako [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objekt, který umožňuje získat přístup k metadatům toohello událostí.
 
 ```cs
 #r "Microsoft.ServiceBus"
@@ -108,7 +108,7 @@ public static void Run(EventData myEventHubMessage, TraceWriter log)
 }
 ```
 
-Chcete-li přijímat události v dávce, změňte podpis metody k `string[]` nebo `EventData[]`.
+události tooreceive v dávce, změnit podpis metody hello příliš`string[]` nebo `EventData[]`.
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -143,9 +143,9 @@ module.exports = function (context, myEventHubMessage) {
 <a name="output"></a>
 
 ## <a name="event-hubs-output-binding"></a>Služba Event Hubs výstup vazby
-Použijte službu Event Hubs výstup vytvoření vazby na zapsat události do datového proudu událostí centra událostí. Musíte mít oprávnění odesílat do centra událostí zapsat události do ní.
+Použití hello Event Hubs Výstupní vazba toowrite události tooan události rozbočovače datového proudu událostí. Musíte mít oprávnění odesílání tooan události rozbočovače toowrite události tooit.
 
-Vazba výstup používá následující objekt JSON v `bindings` pole function.json:
+Hello výstup vazba používá následující objekt JSON v hello hello `bindings` pole function.json:
 
 ```json
 {
@@ -157,22 +157,22 @@ Vazba výstup používá následující objekt JSON v `bindings` pole function.j
 }
 ```
 
-`connection`musí být název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů.
-Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, ne samotný centra událostí. Tento připojovací řetězec musí mít oprávnění pro odesílání k odeslání zprávy do datového proudu událostí.
+`connection`musí být hello název nastavení aplikace obsahující hello připojovací řetězec toohello Centrum událostí je obor názvů.
+Zkopírujte tento připojovací řetězec kliknutím hello **informace o připojení** tlačítko hello *obor názvů*, není centra událostí hello, sám sebe. Tento připojovací řetězec musí mít odesílání oprávnění toosend hello toohello události datového proudu zpráv.
 
 ## <a name="output-usage"></a>Využití výstupní
-V této části se dozvíte, jak používat službu Event Hubs výstupu vazby v kódu funkce.
+Tato část uvádí, jak toouse Event Hubs výstup vazby v kódu funkce.
 
-Výstup můžete zprávy do centra událostí nakonfigurované s následujícími typy parametrů:
+Výstup centra událostí toohello nakonfigurované zprávy můžete s hello následující typy parametrů:
 
 * `out string`
-* `ICollector<string>`(pro výstup více zpráv)
+* `ICollector<string>`(toooutput více zpráv)
 * `IAsyncCollector<string>`(asynchronní verzi `ICollector<T>`)
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ukázkový výstup
-Předpokládejme, že máte následující služby Event Hubs výstup vazby v `bindings` pole function.json:
+Předpokládejme, že máte následující hello Event Hubs výstup vazby v hello `bindings` pole function.json:
 
 ```json
 {
@@ -184,7 +184,7 @@ Předpokládejme, že máte následující služby Event Hubs výstup vazby v `b
 }
 ```
 
-Naleznete v ukázce konkrétní jazyk, který zapíše se událost do i datový proud.
+V tématu vzorku hello konkrétní jazyk, který zapíše toohello i datového proudu událostí.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -205,7 +205,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
-Nebo, chcete-li vytvořit více zpráv:
+Nebo toocreate více zpráv:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
@@ -241,7 +241,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Nebo, pokud chcete odeslat více zpráv
+Nebo toosend více zpráv
 
 ```javascript
 module.exports = function(context) {

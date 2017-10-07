@@ -1,6 +1,6 @@
 ---
-title: "Správa webové aplikace Azure pomocí Azure Automation | Microsoft Docs"
-description: "Další informace o používání služby Azure Automation ke správě webové aplikace Azure."
+title: "aaaManage webové aplikace Azure pomocí Azure Automation | Microsoft Docs"
+description: "Informace o tom, jak hello služby Azure Automation lze použít toomanage webové aplikace Azure."
 services: app-service\web, automation
 documentationcenter: 
 author: mgoedtel
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: a96332346747114620ee6ebd2a2d0c4417d4a213
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6d80351a2927f26753cfbaead6e1c0c3c94e86e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-azure-web-app-using-azure-automation"></a>Správa webové aplikace Azure pomocí Azure Automation.
-Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy webové aplikace Azure.
+Tento průvodce vás seznámí toohello služba Azure Automation a jak může být použité toosimplify Správa webové aplikace Azure.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Služby Azure Automation](../automation/automation-intro.md) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, ruční, opakované, dlouhotrvajících a k chybám úloh je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
+[Služby Azure Automation](../automation/automation-intro.md) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, může být ruční, opakované, dlouhotrvajících a náchylné úlohy automatizované tooincrease spolehlivost, efektivitu a toovalue čas pro vaši organizaci.
 
-Azure Automation nabízí modul provádění vysoce spolehlivou a vysokou dostupností pracovního postupu, který rozšiřuje podle vašich potřeb. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
+Azure Automation nabízí modulu provádění vysoce spolehlivou a vysokou dostupností pracovního postupu, která je škálovatelná toomeet vašim potřebám. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
 
-Snížit provozní režie a uvolněte IT a zaměstnanci DevOps a zaměřit se na práci, kterou přidá obchodní hodnotu přesunutím vašeho cloudu spuštění úloh správy se automaticky automatizace Azure.
+Snížit provozní režie a uvolněte IT a spustit automaticky DevOps zaměstnanci toofocus na práci, kterou přidá obchodní hodnotu přesunutím vaší toobe úlohy správy cloudu Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-web-app"></a>Jak Azure Automation pomoci spravovat webové aplikace Azure?
-Webové aplikace lze spravovat ve službě Azure Automation pomocí rutin prostředí PowerShell, které jsou k dispozici v [modulů prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs). Můžete [nainstalovat tyto rutiny prostředí PowerShell webové aplikace ve službě Azure Automation](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/), aby mohli provést všechny úkoly správy webové aplikace v rámci služby. Může také párovat tyto rutiny ve službě Azure Automation pomocí rutin pro jinými službami Azure k automatizují komplexní úlohy v služeb Azure a systémech 3. stran.
+Webové aplikace lze spravovat ve službě Azure Automation pomocí rutin prostředí PowerShell text hello, které jsou k dispozici v hello [modulů prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs). Můžete [nainstalovat tyto rutiny prostředí PowerShell webové aplikace ve službě Azure Automation](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/), aby mohli provést všechny úkoly správy webové aplikace v rámci služby hello. Tyto rutiny ve službě Azure Automation pomocí hello rutin pro ostatní služby Azure tooautomate složité úlohy může také párovat napříč službami Azure a systémech 3. stran.
 
 Tady jsou některé příklady App Services s automatizací správy:
 
 * [Skripty pro správu webových aplikací](https://azure.microsoft.com/documentation/scripts/)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě webové aplikace Azure, postupujte podle následujících odkazech na další informace o Azure Automation.
+Teď, když jste se naučili základy hello Azure Automation a jak může být použité toomanage webové aplikace Azure, použijte tyto odkazy toolearn Další informace o Azure Automation.
 
-* Najdete v části služby Azure Automation [kurz Začínáme](../automation/automation-first-runbook-graphical.md)
+* V tématu hello Azure Automation [kurzu Začínáme](../automation/automation-first-runbook-graphical.md)
 

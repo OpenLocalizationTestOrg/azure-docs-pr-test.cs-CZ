@@ -1,6 +1,6 @@
 ---
-title: "Nastavení Windows 10 zařízení s Azure AD z nastavení | Microsoft Docs"
-description: "Vysvětluje, jak mohou uživatelé připojit k Azure AD pomocí nabídky nastavení."
+title: "aaaSet se zařízením s Windows 10 s Azure AD z nastavení | Microsoft Docs"
+description: "Vysvětluje, jak uživatelé se můžete zapojit do tooAzure AD pomocí nabídky nastavení hello."
 services: active-directory
 documentationcenter: 
 author: femila
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 5a3963f16b471ad1ca8681b22a1a027935400465
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d6485228338db571cc01f913c99fbba49e0bb74a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-a-windows-10-device-with-azure-ad-from-settings"></a>Nastavení Windows 10 zařízení s Azure AD z nastavení
-Pokud už používáte systém Windows 7 nebo Windows 8 a počítač nebo zařízení byl upgradován na verzi Windows 10, můžete pomocí nabídky nastavení připojení k Azure Active Directory (Azure AD).
+Pokud jste už pomocí Windows 7 nebo Windows 8 a počítač nebo zařízení byla upgradovaná tooWindows 10, se můžete připojit pomocí nabídky nastavení hello tooAzure služby Active Directory (Azure AD).
 
-## <a name="to-join-to-azure-ad-from-the-settings-menu"></a>V nabídce nastavení připojení k Azure AD
-1. Z **spustit** nabídky, klikněte na tlačítko **nastavení** tlačítka.
+## <a name="toojoin-tooazure-ad-from-hello-settings-menu"></a>toojoin tooAzure AD z nabídky nastavení hello
+1. Z hello **spustit** nabídky, klikněte na tlačítko hello **nastavení** tlačítka.
 2. Z **nastavení**, vyberte **systému**->**o**->**připojení k Azure AD**.
    
    <center>
-   ![Připojení k Azure AD v nabídce nastavení](./media/active-directory-azureadjoin/active-directory-azureadjoin-settings.png)</center>
-3. Klikněte na tlačítko **pokračovat** v okně zprávy připojení ke službě Azure AD.
+   ![Připojení k Azure AD z nabídky nastavení hello](./media/active-directory-azureadjoin/active-directory-azureadjoin-settings.png)</center>
+3. Klikněte na tlačítko **pokračovat** v okně zprávy připojení ke službě Azure AD hello.
    
    <center>
    ![Okno zprávy připojení k Azure AD](./media/active-directory-azureadjoin/active-directory-azureadjoin-message.png)</center>
-4. Zadejte přihlašovací údaje. Toto přihlášení bude obsahovat všechny kroky, které jsou požadovány pro dokončení ověřování. Pokud jste součástí federovaného klienta, váš správce vám poskytne federační prostředí, které hostuje vaše organizace.
+4. Zadejte přihlašovací údaje. Toto přihlášení bude obsahovat všechny hello kroky, které jsou požadované toocomplete ověřování. Pokud jste součástí federovaného klienta, váš správce vám poskytne hello federační prostředí, které hostuje vaše organizace.
    <center>
    ![Zadejte přihlašovací údaje](./media/active-directory-azureadjoin/active-directory-azureadjoin-sign-in.png)</center>
-5. Pokud vaše organizace nakonfiguroval Azure Multi-Factor Authentication pro připojení ke službě Azure AD, zadejte druhý faktor než budete pokračovat.
-6. Klikněte na tlačítko **přijmout** na **povolit toto zařízení ke správě** obrazovky.
-7. Měli byste vidět zprávu "zařízení je teď připojené k vaší organizaci ve službě Azure AD".
+5. Pokud vaše organizace nakonfigurovány pro připojení tooAzure AD Azure Multi-Factor Authentication, zadejte hello druhý faktor než budete pokračovat.
+6. Klikněte na tlačítko **přijmout** na hello **povolit toobe toto zařízení spravované** obrazovky.
+7. Měli byste vidět hello zpráva "zařízení je teď připojený k tooyour organizace ve službě Azure AD".
 
 ## <a name="additional-information"></a>Další informace
 * [Další informace o scénářích použití pro službu Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Připojení zařízení k doméně služby Azure AD ve Windows 10 – ukázky z praxe](active-directory-azureadjoin-devices-group-policy.md)
+* [Připojení zařízení připojených k doméně tooAzure AD pro prostředí Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [Nastavení služby Azure AD Join](active-directory-azureadjoin-setup.md)
 * [Ověřování identit bez hesel pomocí Microsoft Passport](active-directory-azureadjoin-passport.md)
 

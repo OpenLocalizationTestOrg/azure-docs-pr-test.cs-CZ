@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 Windows Desktop získávání spuštěno – testování | Microsoft Docs"
+title: "aaaAzure AD v2 Windows Desktop Začínáme - Test | Microsoft Docs"
 description: "Jak aplikace Windows Desktop .NET (XAML) můžete volat rozhraní API, které vyžadují přístupové tokeny bodem v2 Azure Active Directory"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,42 +15,42 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 972cc48057c13271d725b0c973c3ccf651ad27c4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0ae9612e1585c54a3fe35ba9d18f92554099b2c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 ## <a name="test-your-code"></a>Otestujte svůj kód
 
-Chcete-li otestovat aplikaci, stiskněte klávesu `F5` spustit projekt v sadě Visual Studio. Hlavní okno by měl zobrazit:
+V pořadí tootest vaší aplikace, stiskněte klávesu `F5` toorun projektu v sadě Visual Studio. Hlavní okno by měl zobrazit:
 
 ![Snímek obrazovky](media/active-directory-mobileanddesktopapp-windowsdesktop-test/samplescreenshot.png)
 
-Až budete připraveni k testování, klikněte na tlačítko *volání Microsoft Graph API* a přihlaste se pomocí Microsoft Azure Active Directory (účet organizace) nebo účet Account Microsoft (live.com, outlook.com). Ho je poprvé, zobrazí se okno s výzvou, uživatel k přihlášení:
+Když jste připravené tootest, klikněte na tlačítko *volání Microsoft Graph API* a používat službu Microsoft Azure Active Directory (účet organizace) nebo účet toosign Account Microsoft (live.com, outlook.com) v. Ho je hello poprvé, zobrazí se okno s dotazem, toosign uživatele v:
 
 ![Přihlášení](media/active-directory-mobileanddesktopapp-windowsdesktop-test/signinscreenshot.png)
 
 ### <a name="consent"></a>Vyjádřit souhlas.
-Při prvním přihlášení do aplikace, zobrazí obrazovka podobná souhlasu s níže, kde je potřeba explicitně přijmout:
+Hello při prvním přihlášení tooyour aplikace, zobrazí se souhlasu obrazovky podobné toohello níže, kde je nutné přijmout tooexplicitly:
 
 ![Souhlas obrazovky](media/active-directory-mobileanddesktopapp-windowsdesktop-test/consentscreen.png)
 
 ### <a name="expected-results"></a>Očekávané výsledky
-Měli byste vidět informace o profilu uživatele vrácený Microsoft Graph API volání na obrazovce výsledky volání rozhraní API.
+Měli byste vidět informace o profilu uživatele vrácený hello Microsoft Graph API volání na úvodní obrazovka výsledky volání rozhraní API.
 
-Měli byste taky vidět základní informace o tokenu získaných prostřednictvím `AcquireTokenAsync` nebo `AcquireTokenSilentAsync` informace o tokenu pole:
+Měli byste taky vidět základní informace o tokenu hello získaných prostřednictvím `AcquireTokenAsync` nebo `AcquireTokenSilentAsync` hello informace o tokenu pole:
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
-|Name (Název) | {Úplné uživatelské jméno} |Jméno a příjmení uživatele|
-|Uživatelské jméno |<span>user@domain.com</span> |Uživatelské jméno používá k identifikaci uživatele|
-|Platnost tokenu vyprší |{{Data a času}         |Čas, kdy vyprší platnost tokenu. MSAL bude prodloužit datum vypršení platnosti pro vás obnovením token, pokud je to nezbytné|
-|Přístupový token |{Řetězec}         |Řetězec tokenu odeslány, budou odeslány na požadavky HTTP, které vyžadují hlavičku autorizace|
+|Name (Název) | {Úplné uživatelské jméno} |Hello uživatelské jméno a příjmení|
+|Uživatelské jméno |<span>user@domain.com</span> |uživatelské jméno Hello používá tooidentify hello uživatele|
+|Platnost tokenu vyprší |{{Data a času}         |Hello čas, na které hello vyprší platnost tokenu. MSAL bude prodloužit datum vypršení platnosti hello vám obnovením hello token, pokud je to nezbytné|
+|Přístupový token |{Řetězec}         |řetězec tokenu Hello odeslány, odešle tooHTTP požadavky, které vyžadují hlavičku autorizace|
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a přidělená oprávnění
-Rozhraní Graph API vyžaduje `user.read` obory a čtení profilu uživatele. Tento obor je automaticky přidán ve výchozím nastavení každá aplikace na náš portál registrace registrována. Některé jiné rozhraní Graph API a také vlastní rozhraní API pro back-end serveru vyžadovat další obory. Například pro graf `Calendars.Read` je vyžadován ke kalendářům uživatele seznamu. Chcete-li získat přístup k kalendáře uživatele v kontextu aplikace, budete muset přidat `Calendars.Read` delegovat informace o registraci aplikace a pak přidejte `Calendars.Read` k `AcquireTokenAsync` volání. Zvýšit počet oborů, může být uživatel vyzván pro další souhlas všech uživatelů.
+Rozhraní Graph API vyžaduje hello `user.read` obor tooread uživatelský profil. Tento obor je automaticky přidán ve výchozím nastavení každá aplikace na náš portál registrace registrována. Některé jiné rozhraní Graph API a také vlastní rozhraní API pro back-end serveru vyžadovat další obory. Například pro graf `Calendars.Read` je kalendářích požadované toolist uživatele. V pořadí tooaccess hello kalendáře uživatele v kontextu aplikace, musíte tooadd `Calendars.Read` delegovat informace o registraci aplikace a pak přidejte `Calendars.Read` toohello `AcquireTokenAsync` volání. Zvýšit číslo hello oborů, může být uživatel vyzván pro další souhlas všech uživatelů.
 
 <!--end-collapse-->
 

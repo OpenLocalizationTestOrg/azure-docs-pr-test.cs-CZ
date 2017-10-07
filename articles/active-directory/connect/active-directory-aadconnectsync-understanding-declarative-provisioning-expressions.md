@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: Výrazů deklarativního zřizování | Microsoft Docs"
-description: "Vysvětluje výrazů deklarativního zřizování."
+description: "Vysvětluje výrazů deklarativního zřizování hello."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 516bcf1991c608d33aefc19551254d8b2bfc024f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativní zřizování
-Synchronizace Azure AD Connect je založený na deklarativní zřizování poprvé dostupné ve verzi produktu Forefront Identity Manager 2010. Umožňuje implementovat obchodní logiku integrace kompletní identity bez nutnosti napsat zkompilovaný kód.
+Synchronizace Azure AD Connect je založený na deklarativní zřizování poprvé dostupné ve verzi produktu Forefront Identity Manager 2010. Umožňuje tooimplement obchodní logiky integrace kompletní identity bez nutnosti toowrite hello zkompilovaný kód.
 
-Nedílnou součást vámi vyžádaných deklarativní zřizování je výraz jazyk použitý v toky atributů. Použitý jazyk je podmnožinou Microsoft® Visual Basic for Applications (VBA). Tento jazyk slouží v aplikaci Microsoft Office a uživatelé s prostředím jazyka VBScript také rozpozná ho. Výraz jazyka deklarativní zřizování je jenom pomocí funkce a není strukturovaných jazyk. Neexistují žádné metody nebo příkazy. Na toku express programu místo toho jsou vnořené funkce.
+Nedílnou součást vámi vyžádaných deklarativní zřizování je hello výraz jazyk použitý v toky atributů. Hello použitý jazyk je podmnožinou Microsoft® Visual Basic for Applications (VBA). Tento jazyk slouží v aplikaci Microsoft Office a uživatelé s prostředím jazyka VBScript také rozpozná ho. Hello jazyk výrazů deklarativního zřizování je pouze pomocí funkcí a není strukturovaných jazyk. Neexistují žádné metody nebo příkazy. Místo toho jsou vnořené funkce tooexpress programu toku.
 
-Další podrobnosti najdete v tématu [Vítá vás Visual Basic pro aplikace referenční příručka jazyka pro Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Další podrobnosti najdete v tématu [Vítejte toohello jazyka Visual Basic pro aplikace referenční příručka jazyka pro Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
 
-Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. Je také malá a velká písmena. Názvy funkcí a názvy atributů musí mít správná velká a malá písmena nebo dojde k chybě.
+Hello atributy jsou silného typu. Funkce přijímá pouze atributy hello správného typu. Je také malá a velká písmena. Názvy funkcí a názvy atributů musí mít správná velká a malá písmena nebo dojde k chybě.
 
 ## <a name="language-definitions-and-identifiers"></a>Jazyk definic a identifikátory
 * Funkce mít název, za nímž následují argumenty v závorce: %{FunctionName/ (argument 1, argument N).
 * Atributy jsou určeny hranaté závorky: [attributeName]
 * Parametry jsou určeny znaky procenta: % ParameterName %
 * Řetězcové konstanty jsou uzavřeny do uvozovek: například "Contoso" (Poznámka: musíte použít rovné uvozovky "" a není inteligentní uvozovky "")
-* Číselné hodnoty jsou vyjádřené bez uvozovek a očekává se decimal. Hexadecimální hodnoty mají předponu & H. Například 98052 & HFF
+* Číselné hodnoty jsou vyjádřeny bez uvozovek a očekávané toobe decimal. Hexadecimální hodnoty mají předponu & H. Například 98052 & HFF
 * Logické hodnoty jsou vyjádřeny pomocí konstant: True, False.
 * Předdefinované konstanty a literály jsou vyjádřeny se pouze jejich název: NULL, Line FEED, IgnoreThisFlow
 
 ### <a name="functions"></a>Funkce
-Chcete-li povolit možnost transformace hodnot atributů deklarativní zřizování používá mnoho funkcí. Tyto funkce mohou být vnořené, takže výsledek z jednoho funkce je předán v jiné funkci.
+Deklarativní zřizování používá mnoho funkcí tooenable hello možnost tootransform hodnoty atributu. Tyto funkce mohou být vnořené tak hello výsledek z jednoho funkce je předán v tooanother funkce.
 
 `Function1(Function2(Function3()))`
 
-Úplný seznam funkcí najdete v [funkce odkaz](active-directory-aadconnectsync-functions-reference.md).
+Hello úplný seznam funkcí najdete v hello [funkce odkaz](active-directory-aadconnectsync-functions-reference.md).
 
 ### <a name="parameters"></a>Parametry
-Parametr je definována pomocí konektoru nebo pomocí správce pomocí prostředí PowerShell. Parametry obvykle obsahují hodnoty, které se liší na systému, například název domény uživatele nachází v. Tyto parametry můžete použít v toky atributů.
+Parametr je definována pomocí konektoru nebo pomocí správce pomocí prostředí PowerShell. Parametry obvykle obsahují hodnoty, které se liší od toosystem systému, například název hello hello domény hello uživatele nachází v. Tyto parametry můžete použít v toky atributů.
 
-Konektor služby Active Directory k dispozici následující parametry pro příchozí pravidla synchronizace:
+Hello konektor služby Active Directory zadaný hello následující parametry pro příchozí pravidla synchronizace:
 
 | Název parametru | Komentář |
 | --- | --- |
-| Domain.Netbios |Formát pro rozhraní NetBIOS domény aktuálně importována, například FABRIKAMSALES |
-| Domain.FQDN |Plně kvalifikovaný název domény formát domény aktuálně importována, například sales.fabrikam.com |
-| Domain.LDAP |Formát LDAP domény aktuálně importována, například řadič domény = prodej, DC = fabrikam, DC = com |
-| Forest.Netbios |Formát názvu doménové struktury aktuálně importována, například FABRIKAMCORP pro rozhraní NetBIOS |
-| Forest.FQDN |Formát názvu doménové struktury aktuálně importována, třeba fabrikam.com plně kvalifikovaný název domény |
-| Forest.LDAP |LDAP formát názvu doménové struktury aktuálně importována, například DC = fabrikam, DC = com |
+| Domain.Netbios |Formát pro rozhraní NetBIOS domény hello aktuálně importována, například FABRIKAMSALES |
+| Domain.FQDN |Plně kvalifikovaný název domény formát domény hello aktuálně importována, například sales.fabrikam.com |
+| Domain.LDAP |Formát LDAP hello domény aktuálně importována, například řadič domény = prodej, DC = fabrikam, DC = com |
+| Forest.Netbios |Formát pro rozhraní NetBIOS hello název doménové struktury aktuálně importována, například FABRIKAMCORP |
+| Forest.FQDN |Plně kvalifikovaný název domény formát hello název doménové struktury aktuálně importována, třeba fabrikam.com |
+| Forest.LDAP |LDAP formát hello název doménové struktury aktuálně importována, například DC = fabrikam, DC = com |
 
-Systém poskytuje následující parametr, který se použije k získání identifikátor konektoru aktuálně spuštěna:  
+Hello systém poskytuje hello následující parametr, který použité tooget hello identifikátor hello konektor běží v současné době:  
 `Connector.ID`
 
-Tady je příklad, který naplní atribut úložiště metaverse domény s názvem netbios domény, kde se uživatel nachází:  
+Tady je příklad, který naplní domény atribut úložiště metaverse hello s názvem netbios hello hello domény, kde se nachází hello uživatele:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operátory
-Můžete použít následující operátory:
+dá se Hello následující operátory:
 
 * **Porovnání**: <, < =, <>, =, >, > =
 * **Matematika**: +, -, \*, -
@@ -74,20 +74,20 @@ Můžete použít následující operátory:
 * **Logické**: & & (a), || (nebo)
 * **Pořadí vyhodnocení**:)
 
-Operátory se vyhodnocují zleva doprava a se stejnou prioritou vyhodnocení. To znamená \* (násobitel), nebude hodnocen před - (odčítání). 2\*(5 + 3) není stejný jako 2\*5 + 3. Chcete-li změnit pořadí vyhodnocení při zleva na pořadí správné vyhodnocení není vhodné se používají hranatých závorek ().
+Operátory jsou vyhodnotí levém tooright a mají hello stejnou prioritou vyhodnocení. To znamená, hello \* (násobitel), nebude hodnocen před - (odčítání). 2\*(5 + 3) není hello stejné jako 2\*5 + 3. Hello hranatých závorek () se používají toochange hello vyhodnocení pořadí při zbývajících pořadí vyhodnocení tooright není vhodné.
 
 ## <a name="multi-valued-attributes"></a>Více hodnot atributů
-Funkce mohou pracovat s jednou hodnotou i více hodnot atributů. Pro více hodnot atributů funkce funguje v každé hodnotě a platí stejnou funkci ke každé hodnotě.
+Funkce Hello mohou pracovat s jednou hodnotou i více hodnot atributů. Pro více hodnot atributů hello funkce funguje v každé hodnotě a použije hello stejné funkce tooevery hodnotu.
 
 Například:  
-`Trim([proxyAddresses])`Proveďte operace Trim každé hodnoty v atributu proxyAddress.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Pro každou hodnotu s @-sign, nahraďte doméně s @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte adresu SIP a odebere ji z hodnot.
+`Trim([proxyAddresses])`Proveďte operace Trim každé hodnoty v atributu proxyAddress hello.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`Pro každou hodnotu s @-sign, nahraďte hello domény s @contoso.com.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte hello adresy SIP a odebere ji z hodnot hello.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o konfiguraci modelu v [Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
-* Najdete v tématu Jak deklarativní zřizování je použité out-of-box v [Principy výchozí konfigurace](active-directory-aadconnectsync-understanding-default-configuration.md).
-* Informace o tom, praktické změnit pomocí deklarativní zřizování v [jak provést změnu výchozí konfigurace](active-directory-aadconnectsync-change-the-configuration.md).
+* Další informace o hello konfigurační model v [Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
+* Najdete v tématu Jak deklarativní zřizování je použité out-of-box v [Principy hello výchozí konfigurace](active-directory-aadconnectsync-understanding-default-configuration.md).
+* V tématu Jak toomake praktická změnit pomocí deklarativní zřizování v [jak toomake toohello změnu výchozí konfigurace](active-directory-aadconnectsync-change-the-configuration.md).
 
 **Témata s přehledem**
 

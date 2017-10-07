@@ -1,6 +1,6 @@
 ---
-title: "Zálohování aplikace v Azure"
-description: "Naučte se vytvářet zálohy aplikací ve službě Azure App Service."
+title: "aaaBack vaší aplikaci v Azure"
+description: "Zjistěte, jak toocreate zálohování aplikací ve službě Azure App Service."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 77e983afaaba8e944ab1f337e1c28ced83b63205
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e41d93d322bbc48b45b28eeaa817928d83c2b9d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
-Back up a obnovení funkce v [Azure App Service](../app-service/app-service-value-prop-what-is.md) umožňuje snadno vytvářet zálohy aplikaci ručně nebo podle plánu. Aplikace můžete obnovit do snímku do předchozího stavu pomocí přepsal stávající aplikace nebo při obnovování jiné aplikaci. 
+Hello zálohování a obnovení funkce v [Azure App Service](../app-service/app-service-value-prop-what-is.md) umožňuje snadno vytvářet zálohy aplikaci ručně nebo podle plánu. Přepisování stávající aplikace hello nebo obnovení tooanother aplikace můžete obnovit hello aplikace tooa snímku do předchozího stavu. 
 
 Informace o obnovení ze zálohy aplikace najdete v tématu [obnovení aplikace v Azure](web-sites-restore.md).
 
 <a name="whatsbackedup"></a>
 
 ## <a name="what-gets-backed-up"></a>Co se zálohuje
-Služby App Service můžete zálohovat na účtu úložiště Azure a kontejner, který jste nakonfigurovali v aplikaci použijte následující informace. 
+Služby App Service můžete zálohovat hello následující informace o účtu úložiště Azure tooan a kontejnerů, které jste nakonfigurovali toouse vaší aplikace. 
 
 * Konfigurace aplikací
 * Obsah souboru
-* Databáze připojenou k aplikaci
+* Databáze připojené tooyour aplikace
 
-Funkce zálohování podporuje následující databáze řešení: 
+Funkce zálohování podporuje Hello následující databáze řešení: 
    - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
    - [Azure databáze pro databázi MySQL (Preview)](https://azure.microsoft.com/en-us/services/mysql)
    - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/en-us/services/postgres)
@@ -49,116 +49,116 @@ Funkce zálohování podporuje následující databáze řešení:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Požadavky a omezení
-* Zálohování a obnovení funkce vyžaduje plán služby App Service ve **standardní** vrstvy nebo **Premium** vrstvy. Další informace o škálování používat vyšší úroveň plánu služby App Service najdete v tématu [škálování aplikace v Azure](web-sites-scale.md).  
+* Hello zálohování a obnovení funkce vyžaduje hello toobe plán služby App Service v hello **standardní** vrstvy nebo **Premium** vrstvy. Další informace o škálování vašeho toouse plán služby App Service vyšší úroveň najdete v tématu [škálování aplikace v Azure](web-sites-scale.md).  
   **Premium** úroveň umožňuje větší počet denní zálohování ups než **standardní** vrstvy.
-* Budete potřebovat účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, které chcete zálohovat. Další informace o účtech Azure storage, najdete v článku [odkazy](#moreaboutstorage) na konci tohoto článku.
-* Zálohování může být až 10 GB aplikaci a databázi obsahu. Pokud velikost zálohování překračuje tento limit, dojde k chybě.
+* Budete potřebovat účet úložiště Azure a kontejneru v hello stejnému předplatnému jako hello aplikace, které chcete toobackup. Další informace o účtech Azure storage najdete v tématu hello [odkazy](#moreaboutstorage) na konci hello tohoto článku.
+* Zálohování může být až too10 GB aplikaci a databázi obsahu. Pokud velikost hello zálohování překračuje tento limit, dojde k chybě.
 
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Vytvoření ruční zálohy
-1. V [portálu Azure](https://portal.azure.com), přejděte do okna vaší aplikace, vyberte **zálohování**. **Zálohování** zobrazí se okno.
+1. V hello [portálu Azure](https://portal.azure.com)přejděte okně tooyour aplikace, vyberte **zálohování**. Hello **zálohování** zobrazí se okno.
    
     ![Stránka zálohy][ChooseBackupsPage]
    
    > [!NOTE]
-   > Pokud se zobrazí následující zpráva, klikněte na něj upgradovat plán služby App Service, abyste mohli pokračovat v zálohování.
+   > Pokud se zobrazí zpráva hello níže, klikněte na něj tooupgrade plán služby App Service předtím, než můžete pokračovat v zálohování.
    > V tématu [škálování aplikace v Azure](web-sites-scale.md) Další informace.  
    > ![Zvolte účet úložiště](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
 
-2. V **zálohování** okně klikněte na tlačítko **konfigurace**
+2. V hello **zálohování** okně klikněte na tlačítko **konfigurace**
 ![klikněte na tlačítko Konfigurovat.](./media/web-sites-backup/ClickConfigure1.png)
-3. V **konfigurace zálohování** okně klikněte na tlačítko **úložiště: není nakonfigurováno** ke konfiguraci účtu úložiště.
+3. V hello **konfigurace zálohování** okně klikněte na tlačítko **úložiště: není nakonfigurováno** tooconfigure účet úložiště.
    
     ![Zvolte účet úložiště][ChooseStorageAccount]
-4. Vyberte cíl zálohování tak, že vyberete **účet úložiště** a **kontejneru**. Účet úložiště musí patřit do stejného předplatného jako aplikace, které chcete zálohovat. Pokud chcete, můžete vytvořit nový účet úložiště nebo nový kontejner v odpovídajících podoken. Když jste hotovi, klikněte na tlačítko **vyberte**.
+4. Vyberte cíl zálohování tak, že vyberete **účet úložiště** a **kontejneru**. účet úložiště Hello musí patřit toohello stejnému předplatnému jako aplikace hello chcete tooback nahoru. Pokud chcete, můžete vytvořit nový účet úložiště nebo nový kontejner v odpovídajících podoken hello. Když jste hotovi, klikněte na tlačítko **vyberte**.
    
     ![Zvolte účet úložiště](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. V **konfigurace zálohování** okno, které je stále ponechány otevřené, můžete nakonfigurovat **příkaz Backup Database**, vyberte databáze, které chcete zahrnout do zálohy (databáze SQL nebo MySQL) a pak klikněte na tlačítko **OK**.  
+5. V hello **konfigurace zálohování** okno, které je stále ponechány otevřené, můžete nakonfigurovat **příkaz Backup Database**, pak vyberte hello databází, které tooinclude v hello zálohování (databáze SQL nebo MySQL), a potom klikněte na **OK**.  
    
     ![Zvolte účet úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Pro databázi se objeví v tomto seznamu, musí existovat jeho připojovací řetězec v **připojovací řetězce** části **nastavení aplikace** okno pro vaši aplikaci.
+   > Pro databáze tooappear v tomto seznamu, musí existovat jeho připojovací řetězec v hello **připojovací řetězce** části hello **nastavení aplikace** okno pro vaši aplikaci.
    > 
    > 
-6. V **konfigurace zálohování** okně klikněte na tlačítko **Uložit**.    
-7. V **zálohování** okně klikněte na tlačítko **zálohování**.
+6. V hello **konfigurace zálohování** okně klikněte na tlačítko **Uložit**.    
+7. V hello **zálohování** okně klikněte na tlačítko **zálohování**.
    
     ![Tlačítko BackUpNow][BackUpNow]
    
-    Zobrazí zprávu o průběhu během procesu zálohování.
+    Zobrazí zprávu o průběhu během procesu zálohování hello.
 
-Jakmile nakonfigurovaný účet úložiště a kontejneru můžete kdykoli spustit ruční zálohy.  
+Po hello účtu úložiště a kontejneru konfigurace můžete kdykoli spustit ruční zálohy.  
 
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Konfigurace automatického zálohování
-1. V **konfigurace zálohy** okně nastavit **naplánovaná zálohování** k **na**. 
+1. V hello **konfigurace zálohy** okně nastavit **naplánovaná zálohování** příliš**na**. 
    
     ![Zvolte účet úložiště](./media/web-sites-backup/05ScheduleBackup1.png)
-2. Nastavte plán zálohování, které se zobrazí možnosti, **naplánované zálohování** k **na**, podle potřeby nakonfigurujte plán zálohování a klikněte na **OK**.
+2. Nastavte plán zálohování, které se zobrazí možnosti, **naplánované zálohování** příliš**na**, podle potřeby nakonfigurujte plán zálohování hello a klikněte na **OK**.
    
     ![Povolit automatické zálohování][SetAutomatedBackupOn]
 
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>Nakonfigurujte částečné zálohy
-Někdy nechcete zálohování všechno ve vaší aplikaci. Tady je pár příkladů:
+V některých případech nechcete, aby toobackup všechno, co ve vaší aplikaci. Tady je pár příkladů:
 
 * Můžete [nastavení týdenní zálohování](web-sites-backup.md#configure-automated-backups) vaší aplikace, který obsahuje statický obsah, který nikdy změny, jako starý příspěvcích na blogu nebo bitové kopie.
-* Vaše aplikace obsahuje více než 10 GB obsahu (který je maximální velikost, můžete zálohovat v čase).
-* Nechcete zálohování souborů protokolu.
+* Vaše aplikace obsahuje více než 10 GB obsahu (který je hello maximální velikost, můžete zálohovat v čase).
+* Nechcete, aby soubory protokolu toobackup hello.
 
-Částečné zálohy umožňuje zvolit přesně který souborů, které jste chcete zálohovat.
+Částečné zálohy umožňuje zvolit přesně který souborů, které jste má toobackup.
 
 ### <a name="exclude-files-from-your-backup"></a>Vyloučit soubory ze zálohy
-Předpokládejme, že máte aplikaci, která obsahuje soubory protokolu a statické bitové kopie, které byly zálohování jednou a nebudete změnit. V takových případech můžete vyloučit tyto soubory a složky z ukládají v budoucí zálohy. Vyloučit soubory a složky ze záloh, vytváření `_backup.filter` v soubor `D:\home\site\wwwroot` složky vaší aplikace. Zadejte seznam souborů a složek, které chcete vyloučit v tomto souboru. 
+Předpokládejme, že máte aplikaci, která obsahuje soubory protokolu a statické bitové kopie, které byly zálohování jednou a nebudete toochange. V takových případech můžete vyloučit tyto soubory a složky z ukládají v budoucí zálohy. tooexclude soubory a složky ze záloh, vytváření `_backup.filter` souboru v hello `D:\home\site\wwwroot` složky vaší aplikace. Zadejte hello seznam souborů a složek, které chcete tooexclude v tomto souboru. 
 
-Snadný způsob, jak přístup k souborům je použití Kudu. Klikněte na tlačítko **Rozšířené nástroje -> – přejděte** nastavení pro vaši webovou aplikaci pro přístup k modulu Kudu.
+Snadný způsob tooaccess toouse Kudu je vaše soubory. Klikněte na tlačítko **Rozšířené nástroje -> – přejděte** nastavení pro vaše webové aplikace tooaccess Kudu.
 
 ![Kudu pomocí portálu][kudu-portal]
 
-Identifikujte složky, které chcete vyloučit ze zálohy.  Například chcete filtrovat zvýrazněné složky a soubory.
+Identifikujte složky hello chcete tooexclude ze zálohy.  Například chcete toofilter hello zvýrazněné složky a soubory.
 
 ![Složky bitových kopií][ImagesFolder]
 
-Vytvořte soubor s názvem `_backup.filter` a put v seznamu nahoře v souboru, ale odebrat `D:\home`. Zobrazí seznam jeden adresář nebo soubor na každém řádku. Takže obsah souboru by mělo být:
+Vytvořte soubor s názvem `_backup.filter` a do souboru hello umístit hello výše uvedeného seznamu, ale odebrat `D:\home`. Zobrazí seznam jeden adresář nebo soubor na každém řádku. Proto musí být hello obsah souboru hello:
  ```bash
     \site\wwwroot\Images\brand.png
     \site\wwwroot\Images\2014
     \site\wwwroot\Images\2013
 ```
 
-Nahrát `_backup.filter` do souboru `D:\home\site\wwwroot\` adresáři vašeho webu pomocí [ftp](web-sites-deploy.md#ftp) nebo jiné metody. Pokud chcete, můžete vytvořit soubor přímo pomocí modulu Kudu `DebugConsole` a vložit obsah existuje.
+Nahrát `_backup.filter` souboru toohello `D:\home\site\wwwroot\` adresáři vašeho webu pomocí [ftp](web-sites-deploy.md#ftp) nebo jiné metody. Pokud chcete, můžete vytvořit soubor hello přímo pomocí modulu Kudu `DebugConsole` a vložit obsah hello existuje.
 
-Spuštění zálohování stejným způsobem, obvyklým způsobem [ručně](#create-a-manual-backup) nebo [automaticky](#configure-automated-backups). Nyní, všechny soubory a složky, které jsou určené v `_backup.filter` je vyloučen z budoucí zálohy plánované nebo ručně spustit. 
+Spuštění zálohování hello stejný způsob, obvyklým způsobem [ručně](#create-a-manual-backup) nebo [automaticky](#configure-automated-backups). Nyní, všechny soubory a složky, které jsou určené v `_backup.filter` je vyloučen z hello budoucí zálohy plánované nebo ručně spustit. 
 
 > [!NOTE]
-> Obnovit částečné zálohy lokality stejně jako kdybyste [obnovit zálohu regulární](web-sites-restore.md). Proces obnovení nemá správné věci.
+> Obnovení částečné zálohy vaší lokality hello stejným způsobem, jakým byste [obnovit zálohu regulární](web-sites-restore.md). proces obnovení Hello hello správné věci.
 > 
-> Po obnovení úplné zálohy, veškerý obsah na webu se nahradí ať je v záloze. Pokud je soubor v lokalitě, ale není v zálohování získá odstranit. Ale když se obnoví částečné zálohy veškerý obsah, který se nachází v jedné z zakázané adresářů nebo všechny zakázané souboru, je ponechán beze.
+> Po obnovení úplné zálohy, veškerý obsah na webu hello se nahradí ať je hello zálohování. Pokud je soubor na hello lokality, ale není v zálohování hello získá odstranit. Ale když se obnoví částečné zálohy veškerý obsah, který se nachází v jedné adresářů hello zakázáno, nebo jakékoli zakázané souboru, je ponechán beze.
 > 
 
 
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Ukládání záloh
-Po provedení jednoho nebo více zálohování pro aplikaci Zálohování, se zobrazují **kontejnery** okno účtu úložiště a vaše aplikace. V účtu úložiště, každá záloha se skládá z`.zip` soubor, který obsahuje data záloh a `.xml` soubor, který obsahuje manifest z `.zip` souboru obsahu. Můžete rozbalte a procházet tyto soubory, pokud chcete přístup k zálohování bez ve skutečnosti provádí obnovení aplikaci.
+Po provedení jednoho nebo více zálohování pro aplikaci Zálohování hello jsou viditelné na hello **kontejnery** okno účtu úložiště a vaše aplikace. V účtu úložiště hello, každá záloha se skládá z`.zip` soubor, který obsahuje hello zálohovaná data a `.xml` soubor, který obsahuje manifest hello `.zip` souboru obsahu. Můžete rozbalte a procházet tyto soubory, pokud chcete, aby tooaccess zálohování bez ve skutečnosti obnovení aplikace.
 
-V kořenovém souboru the.zip je uložena záloha databáze pro aplikaci. Pro databázi SQL je soubor souboru BACPAC (bez přípony souboru) a mohou být naimportovány. Vytvoření databáze SQL podle export souboru BACPAC naleznete v tématu [Import souboru BACPAC soubor, který chcete vytvořit novou databázi uživatele](http://technet.microsoft.com/library/hh710052.aspx).
+Hello zálohy databáze aplikace hello je uložená v kořenovém hello the.zip souboru. Pro databázi SQL je soubor souboru BACPAC (bez přípony souboru) a mohou být naimportovány. toocreate databázi SQL podle hello export souboru BACPAC najdete v tématu [importovat soubor souboru BACPAC tooCreate novou databázi uživatele](http://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
-> Změna některý ze souborů ve vaší **websitebackups** kontejner může způsobit zálohování stane neplatnou a proto není – obnovitelné.
+> Změna žádné soubory hello ve vaší **websitebackups** kontejner může způsobit hello zálohování toobecome neplatný a proto není – obnovitelné.
 > 
 > 
 
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Informace o obnovení ze zálohy aplikace najdete v tématu [obnovení aplikace v Azure](web-sites-restore.md). Také lze zálohovat a obnovovat aplikace služby App Service pomocí rozhraní REST API (v tématu [použití REST pro zálohování a obnovení služby App Service aplikace](websites-csm-backup.md)).
+Informace o obnovení ze zálohy aplikace najdete v tématu [obnovení aplikace v Azure](web-sites-restore.md). Také lze zálohovat a obnovovat aplikace služby App Service pomocí rozhraní REST API (v tématu [aplikace pomocí REST toobackup a obnovení služby App Service](websites-csm-backup.md)).
 
 
 <!-- IMAGES -->

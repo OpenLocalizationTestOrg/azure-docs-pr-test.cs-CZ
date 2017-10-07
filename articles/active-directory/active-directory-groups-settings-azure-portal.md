@@ -1,6 +1,6 @@
 ---
-title: "Spravovat vlastnosti skupiny ve službě Azure Active Directory | Microsoft Docs"
-description: "Postup úpravy vlastností a dalších nastavení konfigurace pro skupinu v Azure Active Directory"
+title: Vlastnosti skupiny aaaManage v Azure Active Directory | Microsoft Docs
+description: "Jak tooedit hello vlastnosti a dalších nastavení konfigurace pro skupinu v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,28 +16,28 @@ ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: b4baccafc0a9178223dbf64c664fc34ab9f7f916
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: aa17c62b4824e5c2de8adc1d34cd9618f3e722f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Spravovat nastavení pro skupinu v Azure Active Directory
-Tento článek vysvětluje, jak změnit nastavení pro skupinu v Azure Active Directory (Azure AD).
+# <a name="manage-hello-settings-for-a-group-in-azure-active-directory"></a>Spravovat nastavení hello pro skupinu v Azure Active Directory
+Tento článek vysvětluje, jak toochange hello nastavení pro skupinu v Azure Active Directory (Azure AD).
 
-## <a name="how-do-i-find-and-change-the-settings"></a>Jak najít a změnit nastavení?
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="how-do-i-find-and-change-hello-settings"></a>Jak najít a změnit nastavení hello?
+1. Přihlaste se toohello [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Otevírání uživatelů a skupin okno](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
-3. Na **uživatelů a skupin** vyberte **všechny skupiny**.
+3. Na hello **uživatelů a skupin** vyberte **všechny skupiny**.
 
-   ![Otevření okna všechny skupiny](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
-4. Na **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
-5. Na **skupina – *groupname***  vyberte **vlastnosti**.
+   ![Otevírání hello všechna okna skupiny](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+4. Na hello **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
+5. Na hello **skupiny - *groupname***  vyberte **vlastnosti**.
 
-   ![Otevření okna vlastností](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
-6. Po dokončení změn vlastností pro skupinu, vyberte **Uložit**.    
+   ![Otevírání hello vlastnosti okna](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
+6. Po dokončení změn vlastností hello skupiny, vyberte **Uložit**.    
 
    ![Ukládají se změny vlastnosti](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
 

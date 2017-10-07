@@ -1,6 +1,6 @@
 ---
-title: "Představení služby Azure Active Directory"
-description: "Pomocí Azure Active Directory rozšířit vaše stávající místních identit do cloudu, nebo vyvíjet aplikace, integraci služby Azure AD."
+title: aaaWhat je Azure Active Directory?
+description: "Použití Azure Active Directory tooextend vaše stávající místních identit do hello cloudu nebo vývoj Azure AD integrovaných aplikací."
 services: active-directory
 documentationcenter: 
 author: jeffgilb
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.custom: it-pro
-ms.openlocfilehash: b6746afd508832afbd54153851b6f2ae404af147
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b470d7d8f0e733fe9363bd46ed2c2d143d5b3982
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
-Azure Active Directory (Azure AD) je Microsoft je více klientů, cloudu na základě adresáře a identity management service. Azure AD kombinuje základní adresářové služby, pokročilé identity zásad správného řízení a správa přístupu aplikací. Azure AD také nabízí bohatou a založených na standardech platformu, která umožňuje vývojářům k poskytování řízení přístupu k jejich aplikacím na základě centralizovaných zásad a pravidla. 
+Azure Active Directory (Azure AD) je Microsoft je více klientů, cloudu na základě adresáře a identity management service. Azure AD kombinuje základní adresářové služby, pokročilé identity zásad správného řízení a správa přístupu aplikací. Azure AD také nabízí bohatou a založených na standardech platformu, která umožňuje vývojářům toodeliver přístup řízení tootheir aplikace, na základě centralizovaných zásad a pravidla. 
 
-Pro správce IT, Azure AD poskytuje cenově dostupné a snadno použitelný řešení poskytnout zaměstnancům a obchodními partnery jednotné přihlašování (SSO) přístup [tisíce cloudové aplikace SaaS](active-directory-saas-tutorial-list.md) , jako třeba Office 365, Salesforce.com, DropBox a Concur.
+Pro správce IT, Azure AD poskytuje řešení cenově dostupné, snadno toouse toogive zaměstnanci a obchodní partnery jednotné přihlašování (SSO) přístup k příliš[tisíce cloudové aplikace SaaS](active-directory-saas-tutorial-list.md) , například Office 365, Salesforce.com, DropBox, a Vyústit.
 
-Pro vývojáře aplikací Azure AD vám umožní soustředit na budování aplikaci tím, že rychlé a jednoduché integrovat řešení správy identity – třída world používané miliony organizací po celém světě.
+Pro vývojáře aplikací Azure AD vám umožní soustředit na vytváření aplikace tak, že je rychlé a jednoduché toointegrate řešení pro správu identity world třídy používané miliony organizací kolem hello world.
 
 Azure AD také zahrnuje úplná sada funkcí správy identit, včetně vícefaktorového ověřování, registrace zařízení, správu hesla pomocí samoobslužné služby, Samoobslužná správa skupin, správu privilegovaného účtu, řízení přístupu, sledování využití aplikací, bohaté auditování a zabezpečení monitorování a výstrahy na základě role. Tyto možnosti můžete pomůže zabezpečené cloudové aplikace, zjednodušit procesy IT, snížit náklady a ujistěte se, zda jsou splněny dodržování podnikových předpisů cíle.
 
-Kromě toho se právě [čtyři kliknutí](./connect/active-directory-aadconnect-get-started-express.md), Azure AD se dá integrovat s existující Windows Server Active Directory, což umožní využít svých stávajících místních organizace investice identity můžete spravovat přístup do cloudu na základě aplikací SaaS.
+Kromě toho se právě [čtyři kliknutí](./connect/active-directory-aadconnect-get-started-express.md), Azure AD se dá integrovat s existující Windows Server Active Directory, udělíte organizace hello možnost tooleverage své stávající místní identity investice toomanage přístup toocloud na základě aplikací SaaS.
 
-Pokud jste zákazník Office 365, Azure nebo Dynamics CRM Online, nemusí Uvědomte si, že už používáte Azure AD. Každému klientovi Office 365, Azure a Dynamics CRM je ve skutečnosti již klient služby Azure AD. Vždy, když chcete, že můžete začít používat ke správě tohoto klienta přístup k tisícům jiných cloudových aplikací Azure AD se integruje se službou!
+Pokud jste zákazník Office 365, Azure nebo Dynamics CRM Online, nemusí Uvědomte si, že už používáte Azure AD. Každému klientovi Office 365, Azure a Dynamics CRM je ve skutečnosti již klient služby Azure AD. Vždy, když chcete, že můžete začít používat tento klient toomanage přístup toothousands jiných cloudových aplikací Azure AD se integruje se službou!
 
 ![Sada komponent Azure AD Connect](./media/active-directory-whatis/Azure_Active_Directory.png)
 
 ## <a name="how-reliable-is-azure-ad"></a>Jak spolehlivé je Azure AD?
-Návrh víceklientské, zeměpisné polohy, vysokou dostupnost služby Azure AD znamená, že můžete spoléhat na pro vaše nejdůležitější obchodní potřeby. Systém mimo 28 datových centrech po celém světě s automatické převzetí služeb při selhání, budete mít pohodlí zároveň budete vědět, že Azure AD je vysoce spolehlivé a to i v případě, že datové centrum ocitne mimo provoz kopie adresáře data jsou v za provozu alespoň dva další regionální rozptýlená v datových centrech a k dispozici pro okamžitý přístup.
+návrh Hello víceklientské, zeměpisné polohy, vysokou dostupnost služby Azure AD znamená, že můžete spoléhat na pro vaše nejdůležitější obchodní potřeby. Systém mimo 28 datového centra kolem hello, world s automatické převzetí služeb při selhání, budete mít hello pohodlí zároveň budete vědět, že Azure AD je vysoce spolehlivé a že i v případě, že datové centrum ocitne mimo provoz, kopií vašich dat adresáře jsou nasazeny v alespoň dvě více regionální rozmístěnými dat Zarovná na střed a k dispozici pro okamžitý přístup.
 
 Další podrobnosti najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="choose-an-edition"></a>Zvolte edice
-Všechny firemní služby Microsoft Online spoléhají na Azure Active Directory (Azure AD) pro přihlášení a je třeba další identity. Pokud se přihlásíte k některému z firemní služby Microsoft Online (například Office 365 nebo Microsoft Azure), bude docházet k Azure AD s přístupem ke všem funkcím volné. S edice Azure Active Directory Free můžete spravovat uživatele a skupiny, proveďte synchronizaci s místních adresářů, získat jednotné přihlašování v Azure, Office 365 a tisícům oblíbených aplikací SaaS jako Salesforce, Workday, Concur, DocuSign, Google Apps, pole, ServiceNow, Dropbox a další. 
+Všechny firemní služby Microsoft Online spoléhají na Azure Active Directory (Azure AD) pro přihlášení a je třeba další identity. Pokud se přihlásíte tooany firemních služeb Microsoft Online (například Office 365 nebo Microsoft Azure), získáte Azure AD s tooall přístup hello volné funkcí. S Azure Active Directory bezplatná edice hello můžete spravovat uživatele a skupiny, proveďte synchronizaci s místních adresářů, získat jednotné přihlašování v Azure, Office 365 a tisícům oblíbených aplikací SaaS Salesforce, Workday, Concur, DocuSign, Google Apps, pole, ServiceNow, Dropbox a další. 
 
-K vylepšení služby Azure Active Directory, můžete přidat placené možnosti pomocí edice Azure Active Directory Basic, Premium P1 a Premium P2. Azure Active Directory placené edice jsou postavená na adresáře existující volné poskytování podnikové třídy pokrývání uzlů samoobslužné služby, rozšířené monitorování, vytváření sestav zabezpečení, služba Multi-Factor Authentication (MFA) a zabezpečený přístup pro mobilních pracovníků.
+tooenhance služby Azure Active Directory, můžete přidat placené možnosti pomocí Azure Active Directory Basic, Premium P1 a Premium P2 edice hello. Azure Active Directory placené edice jsou postavená na adresáře existující volné poskytování podnikové třídy pokrývání uzlů samoobslužné služby, rozšířené monitorování, vytváření sestav zabezpečení, služba Multi-Factor Authentication (MFA) a zabezpečený přístup pro mobilních pracovníků.
 
 > [!NOTE]
-> Cenová možnosti tyto edice najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/). Azure Active Directory Premium P1, Premium P2 a Azure Active Directory Basic v Číně aktuálně nepodporují. Kontaktujte nás na fóru Azure Active Directory pro další informace.
+> Hello ceny možnosti tyto edice, najdete v části [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/). Azure Active Directory Premium P1, Premium P2 a Azure Active Directory Basic v Číně aktuálně nepodporují. Kontaktujte nás na hello fóru služby Azure Active Directory pro další informace.
 >
 
-* **Azure Active Directory Basic** -navržený pro úkolové pracovníky s potřebami cloudu první, tato edice poskytuje cloudové řešení správy identity zaměřená na aplikace pro přístup a samoobslužné služby. Azure Active Directory ve verzi Basic vám poskytne funkce pro zvýšení produktivity a snížení nákladů, jako je správa přístupu na základě skupin, samoobslužné obnovení hesel pro cloudové aplikace a aplikační proxy Azure Active Directory (aby se pomocí Azure Active Directory daly publikovat místní webové aplikace), a to všechno se smlouvou SLA na podnikové úrovni s 99,9procentní dostupností.
-* **Azure Active Directory Premium P1** – navržené pro organizace s náročnější umožnit správu identit a přístupu musí, Azure Active Directory Premium edition přidá funkce pro správu identit podnikové úrovni bohaté funkce a umožňuje uživatelům hybridní bezproblémově přistupovat k místnímu a funkce v cloudu. Tato verze obsahuje všechno, co informační pracovníci a správci identit potřebují v hybridním prostředí k zajištění přístupu k aplikacím, samoobslužné správě identit a přístupu (IAM), ochraně identit a zabezpečení v cloudu. Podporuje rozšířené správy a delegování prostředky jako dynamických skupin a samoobslužnou správu skupin. Zahrnuje Microsoft Identity Manager (místní přístupu a identit a správy sady) a poskytuje cloudu zpětný zápis funkce povolení řešení, jako jsou samoobslužné resetování hesla pro místní uživatele.
-* **Azure Active Directory Premium P2** -navržený s rozšířenou ochranu pro všechny uživatele a správce, tato nová nabídka zahrnuje všechny funkce v Azure AD Premium P1 a také naše nové Identity Protection a Privileged Identity Management. Azure Active Directory Identity Protection využívá až miliardy signály, které poskytují podmíněného přístupu na základě riziko k vašim aplikacím a důležitá firemní data. Nám také pomáhají spravovat a chránit privilegovaných účtů s Azure Active Directory Privileged Identity Management, můžete zjistit, omezit a sledovat správci a jejich přístup k prostředkům a poskytují přístup za běhu v případě potřeby.  
+* **Azure Active Directory Basic** -navržený pro úkolové pracovníky s potřebami cloudu první, tato edice poskytuje cloudové řešení správy identity zaměřená na aplikace pro přístup a samoobslužné služby. S hello Základní edice služby Azure Active Directory získat, zvýšení produktivity a funkce jako je Správa přístupu na základě skupiny, samoobslužné resetování hesla pro cloudové aplikace a Proxy Azure Active Directory aplikace (toopublish snižuje náklady místní webové aplikace pomocí Azure Active Directory), všechny založenou na podnikové úrovni SLA 99,9 % doby provozu.
+* **Azure Active Directory Premium P1** -určené tooempower organizace s náročnější správu identit a přístupu musí, Azure Active Directory Premium edition přidá funkce pro správu identit podnikové úrovni bohaté funkce a Umožňuje hybridní uživatelé tooseamlessly přístupu k místní i cloudové funkce. Tato edice zahrnuje vše, co potřebujete k pracovník s informacemi a správci identity v hybridních prostředích napříč přístup k aplikaci, samoobslužné služby správu identit a přístupu (IAM), ochrany identit a zabezpečení v cloudu hello. Podporuje rozšířené správy a delegování prostředky jako dynamických skupin a samoobslužnou správu skupin. Zahrnuje Microsoft Identity Manager (místní přístupu a identit a správy sady) a poskytuje cloudu zpětný zápis funkce povolení řešení, jako jsou samoobslužné resetování hesla pro místní uživatele.
+* **Azure Active Directory Premium P2** -navržený s rozšířenou ochranu pro všechny uživatele a správce, tato nová nabídka zahrnuje všechny možnosti hello v Azure AD Premium P1 a také naše nové Identity Protection a privilegovaných identit Správa. Azure Active Directory Identity Protection využívá až miliardy signály tooprovide podmíněného přístupu na základě riziko tooyour aplikací a důležitá firemní data. Nám také pomáhají spravovat a chránit privilegovaných účtů s Azure Active Directory Privileged Identity Management, můžete zjistit, omezit a sledovat správci a jejich přístup tooresources a poskytují přístup za běhu v případě potřeby.  
 
 > [!NOTE]
 > Počet možností Azure Active Directory jsou k dispozici prostřednictvím "platím průběžně" edice:
 >
-> * Active Directory B2C je řešení správy identit a přístupu pro aplikace určených. Další podrobnosti najdete v tématu [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
+> * Active Directory B2C je hello identit a přístupu řešení pro správu aplikacích určených uživatelům. Další podrobnosti najdete v tématu [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
 > * Azure Multi-Factor Authentication umožňuje použít pro uživatele, nebo v zprostředkovatele ověřování. Další podrobnosti najdete v tématu [co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 >
 
@@ -71,9 +71,9 @@ K vylepšení služby Azure Active Directory, můžete přidat placené možnost
 
 **Pokud jste vývojář:**
  
-* Podívejte se na naše [Příručka pro vývojáře](active-directory-developers-guide.md) do Azure Active Directory
+* Podívejte se na naše [Příručka pro vývojáře](active-directory-developers-guide.md) tooAzure služby Active Directory
 
 * [Spuštění zkušební verze](https://azure.microsoft.com/trial/get-started-active-directory/) – zaregistrujte se ke bezplatné 30denní zkušební verze dnes a spusťte integrace aplikací s Azure AD
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o základní informace o Azure správu identit a přístupu](https://docs.microsoft.com/azure/active-directory/identity-fundamentals)
+[Další informace o hello základy Azure správu identit a přístupu](https://docs.microsoft.com/azure/active-directory/identity-fundamentals)

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s TeamSeer | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TeamSeer."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a TeamSeer."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a5e8f6d1443681c43db95da5cef0b7f2ef92291
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 876d13e446115acd50b01c7f44db99357045e429
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Kurz: Azure Active Directory integrace s TeamSeer
 
-V tomto kurzu zjistěte, jak integrovat TeamSeer s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate TeamSeer s Azure Active Directory (Azure AD).
 
-Integrace TeamSeer s Azure AD poskytuje následující výhody:
+Integrace TeamSeer s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k TeamSeer
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k TeamSeer (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooTeamSeer
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooTeamSeer (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s TeamSeer, potřebujete následující položky:
+Integrace služby Azure AD s TeamSeer tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - TeamSeer jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání TeamSeer z Galerie
+1. Přidání TeamSeer z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-teamseer-from-the-gallery"></a>Přidání TeamSeer z Galerie
-Chcete-li nakonfigurovat integraci TeamSeer v do Azure AD, přidejte TeamSeer z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-teamseer-from-hello-gallery"></a>Přidání TeamSeer z Galerie hello
+tooconfigure hello integrace TeamSeer v tooAzure AD, je nutné tooadd TeamSeer hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat TeamSeer z galerie, proveďte následující kroky:**
+**tooadd TeamSeer z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **TeamSeer**.
+4. Hello vyhledávacího pole zadejte **TeamSeer**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_search.png)
 
-5. Na panelu výsledků vyberte **TeamSeer**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **TeamSeer**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s TeamSeer podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v TeamSeer je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v TeamSeer musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v TeamSeer je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v TeamSeer musí toobe navázat.
 
-V TeamSeer, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V TeamSeer, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TeamSeer, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s TeamSeer, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele TeamSeer](#creating-a-teamseer-test-user)**  – Pokud chcete mít protějšek Britta Simon v TeamSeer propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele TeamSeer](#creating-a-teamseer-test-user)**  -toohave protějšek Britta Simon v TeamSeer, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci TeamSeer.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci TeamSeer.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s TeamSeer, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s TeamSeer, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **TeamSeer** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **TeamSeer** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_samlbase.png)
 
-3. Na **TeamSeer domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **TeamSeer domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_url.png)
 
-     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.teamseer.com/<companyid>`
+     V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > Hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory TeamSeer klienta](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) k získání hodnoty. 
+    > Hodnota Hello není skutečné. Aktualizace hello hodnotu s hello skutečná adresa URL přihlašování. Obraťte se na [tým podpory TeamSeer klienta](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) tooget hello hodnotu. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
@@ -123,13 +123,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_general_400.png)
 
-6. Na **TeamSeer konfigurace** klikněte na tlačítko **konfigurace TeamSeer** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **TeamSeer konfigurace** klikněte na tlačítko **konfigurace TeamSeer** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_configure.png)
 
-7. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti TeamSeer jako správce.
+7. V okně prohlížeče jiný web Přihlaste se jako správce na webu společnosti TeamSeer tooyour.
 
-8. Přejděte na **HR správce**.
+8. Přejděte příliš**HR správce**.
    
     ![Správce HR](./media/active-directory-saas-teamseer-tutorial/ic789634.png "HR správce")
 
@@ -141,105 +141,105 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Nastavení SAML](./media/active-directory-saas-teamseer-tutorial/ic789636.png "nastavení SAML")
 
-11. V oddílu Podrobnosti zprostředkovatele SAML proveďte následující kroky:
+11. V hello v části Podrobnosti o zprostředkovatele SAML proveďte hello následující kroky:
    
     ![Nastavení SAML](./media/active-directory-saas-teamseer-tutorial/ic789637.png "nastavení SAML")   
 
-    a. Vložení **jeden přihlašování adresa URL služby** hodnotu v **URL** textové pole.
+    a. Vložení hello **jeden přihlašování adresa URL služby** hodnota v toohello **URL** textové pole.
           
-    b. V poznámkovém bloku otevřete kódovaného certifikátu vaší kódování base-64, obsah ho zkopírujte do schránky a vložte jej do **veřejný certifikát IdP** textové pole.
+    b. Otevřete váš kódování base-64 kódovaného certifikátu v poznámkovém bloku hello kopírování obsahu ho do schránky tooyour a pak ji vložit toohello **veřejný certifikát IdP** textové pole.
 
-12. K dokončení konfigurace zprostředkovatele SAML, proveďte následující kroky:
+12. toocomplete hello zprostředkovatele konfigurace SAML, proveďte následující kroky hello:
     
     ![Nastavení SAML](./media/active-directory-saas-teamseer-tutorial/ic789638.png "nastavení SAML") 
 
-    a. V **testovací e-mailové adresy**, zadejte testovacího uživatele e-mailovou adresu. 
+    a. V hello **testovací e-mailové adresy**, zadejte hello testovacího uživatele e-mailovou adresu. 
   
-    b. V **vystavitele** textovému poli, zadejte adresu URL vystavitele poskytovatele služeb. 
+    b. V hello **vystavitele** textovému poli, typ hello URL vystavitele hello poskytovatele služeb. 
   
     c. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-teamseer-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-teamseer-test-user"></a>Vytvoření zkušebního uživatele TeamSeer
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k TeamSeer, se musí být zřízená v k ShiftPlanning. V případě TeamSeer zřizování je ruční úloha.
+Uživatelé toolog tooenable Azure AD v tooTeamSeer, se musí být zřízená v tooShiftPlanning. V případě hello TeamSeer zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**tooprovision uživatelský účet, proveďte následující kroky hello:**
 
-1. Přihlaste se k vaší **TeamSeer** společnosti lokality jako správce.
+1. Přihlaste se tooyour **TeamSeer** společnosti lokality jako správce.
 
-2. Proveďte následující kroky:
+2. Proveďte hello následující kroky:
    
     ![Správce HR](./media/active-directory-saas-teamseer-tutorial/ic789640.png "HR správce")  
  
-    a. Přejděte na **HR správce \> uživatelé**.
+    a. Přejděte příliš**HR správce \> uživatelé**.
   
-    b. Klikněte na tlačítko **spustit Průvodce novým uživatelem**.
+    b. Klikněte na tlačítko **spusťte Průvodce nového uživatele hello**.
 
-3. V **podrobné informace o uživateli** část, proveďte následující kroky:
+3. V hello **podrobné informace o uživateli** část, proveďte následující kroky hello:
    
     ![Podrobné informace o uživateli](./media/active-directory-saas-teamseer-tutorial/ic789641.png "podrobné informace o uživateli")
 
-    a. Typ **křestní jméno**, **Přezdívka**, **uživatelské jméno (e-mailovou adresu)** platného účtu AAD chcete zřídit v k související textových polí.
+    a. Typ hello **křestní jméno**, **Přezdívka**, **uživatelské jméno (e-mailovou adresu)** z platný účet AAD chcete tooprovision v toohello související textových polí.
   
     b. Klikněte na **Další**.
 
-4. Postupujte podle na obrazovce pokyny pro přidání nového uživatele a klikněte na tlačítko **Dokončit**.
+4. Postupujte podle hello na obrazovce pokyny pro přidání nového uživatele a klikněte na tlačítko **Dokončit**.
 
 >[!NOTE]
->Můžete použít všechny ostatní TeamSeer uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované TeamSeer ke zřízení uživatelských účtů Azure AD. 
+>Můžete použít všechny ostatní TeamSeer uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované TeamSeer tooprovision uživatelské účty Azure AD. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu TeamSeer.
+V této části povolíte tak, že udělíte přístup tooTeamSeer toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon TeamSeer, proveďte následující kroky:**
+**tooassign Britta Simon tooTeamSeer, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **TeamSeer**.
+2. V seznamu aplikace hello vyberte **TeamSeer**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -247,7 +247,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -255,11 +255,11 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Pokud chcete tootest vaše nastavení jednotného přihlašování, otevřete hello přístupového panelu. Další podrobnosti o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Testování runbooku ve službě Azure Automation | Microsoft Docs"
-description: "Před publikováním runbooku ve službě Azure Automation, můžete otestovat k zajištění, že to funguje podle očekávání.  Tento článek popisuje postup testování sady runbook a zobrazíte jeho výsledek."
+title: "aaaTesting sady runbook ve službě Azure Automation | Microsoft Docs"
+description: "Před publikováním runbooku ve službě Azure Automation, můžete ji otestovat tooensure, který funguje podle očekávání.  Tento článek popisuje, jak tootest sady runbook a zobrazíte jeho výsledek."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 5186eb8f1732d533cbceb397b4d8b5224ad773cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8c531f702699d586f8215d4c171cb0ecf94732b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Testování runbooku ve službě Azure Automation
-Při testování sady runbook [koncept](automation-creating-importing-runbook.md#publishing-a-runbook) se spustí a všechny akce, které provádí se dokončí. Nevytvoří se žádné historie úlohy, ale [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) datové proudy, které se zobrazují v testovací podokno výstup. Zprávy pro [podrobný datový proud](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstupu pouze tehdy, pokud [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) je nastaven na pokračovat.
+Při testování runbooku hello [koncept](automation-creating-importing-runbook.md#publishing-a-runbook) se spustí a všechny akce, které provádí se dokončí. Historie úlohy je vytvořen, avšak hello [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) datových proudů se zobrazují v hello výstup testovacího podokna. Zprávy toohello [podrobný datový proud](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstup hello pouze v případě hello [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) tooContinue nastavena.
 
-I když je právě spuštěna verze konceptu, runbook dál normálně spouští pracovní postup a dělá všechny akce u prostředků v prostředí. Z tohoto důvodu jste měli runbooky testovat jenom na prostředky mimo produkční.
+I když je právě spuštěna verze konceptu hello, hello runbook dál normálně spouští pracovní postup hello a dělá všechny akce u prostředků v prostředí hello. Z tohoto důvodu jste měli runbooky testovat jenom na prostředky mimo produkční.
 
-Postup testování jednotlivých [typ runbooku](automation-runbook-types.md) je stejné a že je žádné rozdíly při testování mezi textový editor a grafický editor na webu Azure portal.  
+Hello postup tootest [typ runbooku](automation-runbook-types.md) hello stejné, a není žádný rozdíl ve testování mezi hello textový editor a hello grafický editor v hello portálu Azure.  
 
-## <a name="to-test-a-runbook-in-the-azure-portal"></a>Otestování sady runbook na portálu Azure
-Můžete spolupracovat s kterýmkoli [typ runbooku](automation-runbook-types.md) na portálu Azure.
+## <a name="tootest-a-runbook-in-hello-azure-portal"></a>tootest sady runbook v hello portálu Azure
+Můžete spolupracovat s kterýmkoli [typ runbooku](automation-runbook-types.md) v hello portálu Azure.
 
-1. Otevřete jeho koncept runbooku buď [textový editor](automation-edit-textual-runbook.md) nebo [grafický editor](automation-graphical-authoring-intro.md).
-2. Klikněte **Test** tlačítko otevřete okno Test.
-3. Pokud sada runbook obsahuje parametry, budou uvedené v levém podokně, kde můžete zadat hodnoty má být použit pro test.
-4. Pokud chcete spustit test [hybridní pracovní proces Runbooku](automation-hybrid-runbook-worker.md), pak změňte **spustit nastavení** k **hybridní pracovní proces** a vyberte název cílové skupiny.  Jinak použijte výchozí **Azure** ke spuštění testu v cloudu.
-5. Klikněte **spustit** tlačítko spuštění testu.
-6. Pokud je sada runbook [pracovního postupu Powershellu](automation-runbook-types.md#powershell-workflow-runbooks) nebo [grafický](automation-runbook-types.md#graphical-runbooks), pak můžete zastavit nebo pozastavit ji, pokud se testuje tlačítky pod podoknem výstupu. Když runbook pozastavíte, dokončí aktuální aktivitu teprve pak se pozastaví. Jakmile je pozastavená sada runbook, můžete případně ji zastavte nebo ho restartovat.
-7. Zkontrolujte výstup z runbooku v podokně výstup.
+1. Otevřete hello koncept runbooku hello buď hello [textový editor](automation-edit-textual-runbook.md) nebo [grafický editor](automation-graphical-authoring-intro.md).
+2. Klikněte na tlačítko hello **Test** tlačítko tooopen hello testovací okno.
+3. Pokud hello runbook obsahuje parametry, budou uvedené v levém podokně hello, kde můžete zadat hodnoty toobe používá pro hello test.
+4. Pokud chcete testovací hello toorun na [hybridní pracovní proces Runbooku](automation-hybrid-runbook-worker.md), pak změňte **spustit nastavení** příliš**hybridní pracovní proces** a vyberte hello název hello cílovou skupinu.  Jinak použijte výchozí hello **Azure** toorun hello testování v cloudu hello.
+5. Klikněte na tlačítko hello **spustit** tlačítko toostart hello testu.
+6. Pokud je hello runbook [pracovního postupu Powershellu](automation-runbook-types.md#powershell-workflow-runbooks) nebo [grafický](automation-runbook-types.md#graphical-runbooks), pak můžete zastavit nebo pozastavit ji, pokud se testuje u tlačítka hello pod hello podokno výstup. Při hello runbook pozastavíte, dokončí aktuální aktivitu hello teprve pak se pozastaví. Jakmile hello runbook pozastavena, můžete případně ji zastavte nebo ho restartovat.
+7. Zkontrolujte výstup hello hello runbook v podokně výstup hello.
 
 ## <a name="next-steps"></a>Další kroky
-* Další postupy k vytvoření nebo import sady runbook najdete v tématu [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
-* Další informace o vytváření grafického obsahu najdete v článku [Vytváření grafického obsahu v Azure Automation](automation-graphical-authoring-intro.md).
-* První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
-* Další informace o konfiguraci runboks vrátí stavové zprávy a chyby, včetně doporučené postupy, najdete v části [Runbook výstup a zprávy v Azure Automation.](automation-runbook-output-and-messages.md)
+* toolearn jak toocreate nebo import runbooku, najdete v části [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
+* toolearn Další informace o vytváření grafického obsahu, najdete v části [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md)
+* tooget kroky s runbooky pracovních postupů Powershellu, najdete v části [Můj první runbook pracovního postupu Powershellu](automation-first-runbook-textual.md)
+* toolearn Další informace o konfiguraci runboks tooreturn stavových zpráv a chyby, včetně doporučené postupy, najdete v části [Runbook výstup a zprávy v Azure Automation.](automation-runbook-output-and-messages.md)
 

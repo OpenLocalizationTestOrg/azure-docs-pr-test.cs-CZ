@@ -1,6 +1,6 @@
 ---
-title: "Přihlášení z neznámých zdrojů"
-description: "Sestava, která označuje, uživatelé, kteří úspěšně přihlášení do vašeho adresáře z anonymních proxy IP adresu."
+title: "aaaSign in z neznámých zdrojů"
+description: "Sestava, která označuje, uživatelé, kteří úspěšně zaregistrovali v adresáři tooyour z anonymních proxy IP adresu."
 services: active-directory
 documentationcenter: 
 author: SSalahAhmed
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: 90006121e4b3392f6e3ecffb4a56aca330feb02f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b9d16274c0f8d21fc3bdf1ad8b564532d3b02be2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-ins-from-unknown-sources"></a>Přihlášení z neznámých zdrojů
-Tato sestava označuje uživatele, kteří mají úspěšném přihlášení do vašeho adresáře při přiřadit IP adresu, která byla rozpoznána společností Microsoft jako IP adresu (například Tor IP adresu) anonymního proxy serveru klienta. Uživatelé, kteří mají být skryty IP adresu svého počítače a mohou být použity pro zlými úmysly se často používají tyto servery proxy.
+Tato sestava označuje uživatele, kteří úspěšně přihlásil tooyour adresář přiřadit IP adresu, která byla rozpoznána společností Microsoft jako IP adresu (například Tor IP adresu) anonymního proxy serveru klienta. Tyto servery proxy se často používá uživatelé, kteří mají toohide IP adresu svého počítače a mohou být použity pro zlými úmysly.
 
-Výsledky z Tato sestava zobrazí počet, kolikrát se uživatel úspěšně přihlásil k vašemu adresáři z této adresy a IP adresy k proxy serveru.
+Výsledky z této sestavy se zobrazí hello počet úspěšně podepsal uživatele v adresáři tooyour z této adresy a IP adresy hello proxy.
 
 ![Přihlášení z neznámých zdrojů](./media/active-directory-reporting-sign-ins-from-unknown-sources/signInsFromUnknownSources.PNG)
 

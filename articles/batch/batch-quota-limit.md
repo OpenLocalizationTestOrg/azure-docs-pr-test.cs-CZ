@@ -1,6 +1,6 @@
 ---
-title: "Služba kvóty a omezení pro Azure Batch | Microsoft Docs"
-description: "Další informace o výchozích Azure Batch kvót, omezení a omezení a zvyšuje jak požádat o kvótu"
+title: "aaaService kvóty a omezení pro Azure Batch | Microsoft Docs"
+description: "Další informace o výchozích Azure Batch kvót, omezení a omezení a jak zvyšuje toorequest kvóty"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6035d1c7618cfe97ebca3780e02a4ee34f54e534
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
-Jako s jinými službami Azure neexistují omezení na některé prostředky spojené s touto službou Batch. Mnoho z těchto omezení je výchozí kvóty používané službou Azure na úrovni účet nebo předplatné. Tento článek popisuje tyto výchozí hodnoty a jak můžete vyžádat kvóty zvyšuje.
+Jako s jinými službami Azure neexistují omezení na některé prostředky přidružené k hello služby Batch. Mnoho z těchto omezení je výchozí kvóty používané službou Azure na úrovni účtu nebo hello předplatného. Tento článek popisuje tyto výchozí hodnoty a jak můžete vyžádat kvóty zvyšuje.
 
-Pamatujte na tyto kvóty při navrhování a škálování zatížení vašich úloh Batch. Například pokud váš fond není dosažení cílovým počtem výpočetních uzlů, které jste určili, může bylo dosaženo maximální kvóta základní pro vašeho účtu Batch nebo regionální kvóta jader virtuálních počítačů pro vaše předplatné.
+Pamatujte na tyto kvóty při navrhování a škálování zatížení vašich úloh Batch. Například pokud váš fond není dosažení hello cílovým počtem výpočetních uzlů, které jste určili, může bylo dosaženo maximální kvóta základní hello vašeho účtu Batch nebo regionální kvóta jader virtuálních počítačů pro vaše předplatné.
 
-Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch najednou, nebo můžete úlohy rozložit mezi více účtů Batch, které jsou v jednom předplatném, ale v různých oblastech Azure.
+Můžete spustit několik úloh služby Batch v jednom účtu Batch nebo úlohy distribuovat mezi účty Batch, které jsou v hello stejného předplatného, ale v různých oblastech Azure.
 
-Pokud plánujete spouštět úlohy v produkčním prostředí ve službě Batch, musíte zvýšit jeden nebo více kvót nad výchozí. Pokud chcete kvótu zvýšit, můžete otevřít online [zákazníka žádost o podporu](#increase-a-quota) zdarma.
+Pokud máte v plánu úlohy v produkčním prostředí toorun v dávce, musíte tooincrease jeden nebo více hello kvóty nad výchozí hello. Pokud chcete tooraise kvótu, můžete otevřít online [zákazníka žádost o podporu](#increase-a-quota) zdarma.
 
 > [!NOTE]
 > Kvótu je limit platební, není záruku kapacity. Pokud máte požadavků na kapacitu ve velkém měřítku, obraťte se na podporu Azure.
@@ -41,9 +41,9 @@ Pokud plánujete spouštět úlohy v produkčním prostředí ve službě Batch,
 
 ## <a name="quotas-in-user-subscription-mode"></a>Kvóty v uživatelském režimu předplatného
 
-Pro účet Batch se režim přidělení fondu nastavený na **uživatele předplatné**, dávky virtuální počítače a další prostředky, například účty úložiště, jsou vytvořené přímo v rámci vašeho předplatného, když je vytvořen fond. Kvóta jader Azure Batch se nevztahuje na účet je vytvořen v tomto režimu. Místo toho kvóty pro vaše předplatné pro místní výpočetní jader a dalším prostředkům se použijí. Další informace o těchto kvót v [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
+Pro účet Batch s režimem přidělení fondu nastavit příliš**uživatele předplatné**, dávky virtuální počítače a další prostředky, například účty úložiště, jsou vytvořené přímo v rámci vašeho předplatného, když je vytvořen fond. kvóta jader Azure Batch Hello nevztahuje tooan účet vytvořený v tomto režimu. Místo toho se použijí hello kvóty ve vašem předplatném pro místní výpočetní jader a dalším prostředkům. Další informace o těchto kvót v [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
 
-Při plánování využití prostředků pro účet je vytvořen v uživatelském režimu předplatné, Všimněte si, že v následujících zdrojích informací Batch (kromě výpočetní jádra) jsou vyžadovány pro každých 40 virtuální počítače s Linuxem nebo 20 virtuálních počítačů Windows:
+Při plánování využití prostředků pro účet je vytvořen v uživatelském režimu předplatné, jsou vyžadovány pro každých 40 virtuální počítače s Linuxem nebo 20 virtuálních počítačů Windows hello Poznámka následující prostředky Batch (v přidání toocompute jádra):
 
 | Prostředek | Kvóta | Poskytovatel |
 | --- | ---| --- |
@@ -54,7 +54,7 @@ Při plánování využití prostředků pro účet je vytvořen v uživatelské
 | Jeden škálovací sadu virtuálních počítačů | Škálovací sady virtuálních počítačů | Microsoft.Compute | 
 | Jedna služba Vyrovnávání zatížení | Nástroje pro vyrovnávání zatížení | Microsoft.Network | 
 
-Kvóta jader na místní úrovni nebo na virtuální počítač rodiny měli nastavit podle velikosti virtuálního počítače, které jsou vyžadovány pro fondu Batch nebo fondy:
+Hello jader kvóta na místní úrovni nebo na virtuální počítač rodiny by měla být sada podle toohello velikost virtuálního počítače vyžaduje pro fondu Batch nebo fondy:
 
 | Kvóta | Poskytovatel |
 | --- | ---- |
@@ -76,32 +76,32 @@ Kvóta jader na místní úrovni nebo na virtuální počítač rodiny měli nas
 <sup>2</sup> zahrnuje soubory prostředků a proměnných prostředí
 
 ## <a name="view-batch-quotas"></a>Zobrazení dávky kvóty
-Zobrazení vaší kvóty účtu Batch [portál Azure][portal].
+Zobrazení vaší kvóty účtu Batch v hello [portál Azure][portal].
 
-1. Vyberte **účty Batch** na portálu, pak vyberte účet Batch, co vás zajímá.
-2. Vyberte **vlastnosti** v okně účtu Batch nabídky.
-3. Zobrazí v okně Vlastnosti **kvóty** aktuálně použité k účtu Batch
+1. Vyberte **účty Batch** hello portálu, pak vyberte účet Batch hello vás zajímá.
+2. Vyberte **vlastnosti** v okně účtu Batch hello nabídky.
+3. Zobrazí okno Vlastnosti Hello hello **kvóty** aktuálně použité toohello účtu Batch
    
     ![Kvóty účtu batch][account_quotas]
 
-Pro účet Batch vytvořit v uživatelském režimu předplatné můžete zobrazte kvóty související předplatné na portálu Azure.
+Pro účet Batch vytvořit v uživatelském režimu předplatné hello zobrazení související s kvóty předplatného v hello portálu Azure.
 
-1. Vyberte **odběry**a vyberte odběr, který používáte pro účet Batch.
+1. Vyberte **odběry**a vyberte hello předplatné, který používáte pro hello účtu Batch.
 
-2. Na **předplatné** vyberte **využití + kvóty**.
+2. Na hello **předplatné** vyberte **využití + kvóty**.
 
 
 
 ## <a name="increase-a-quota"></a>Navýšení kvóty
-Postupujte podle těchto kroků k vyžádání kvótu zvýšit vašeho účtu Batch nebo předplatnému pomocí [portál Azure][portal]. Typ zvýšení kvóty závisí na režimu přidělení fondu vašeho účtu Batch.
+Postupujte podle těchto kroků toorequest zvýšit kvótu pro vašeho účtu Batch nebo předplatné pomocí hello [portál Azure][portal]. Typ Hello zvýšení kvóty závisí na režimu přidělení fondu hello účtu Batch.
 
 ### <a name="increase-a-batch-cores-quota"></a>Navýšení kvóty jader Batch 
 
-Pokud je váš účet Batch vytvořený v **služba Batch** režim, postupujte podle těchto kroků k vyžádání Batch jader kvótu zvýšit:
+Pokud je váš účet Batch vytvořený v **služba Batch** režimu, postupujte podle těchto kroků toorequest zvýšení kvóty jader Batch:
 
-1. Vyberte **Nápověda a podpora** dlaždici řídicího panelu portálu nebo otazník (**?**) v pravém horním rohu portálu.
+1. Vyberte hello **Nápověda a podpora** dlaždici na řídicím panelu portálu nebo hello otazník (**?**) v pravém horním rohu hello hello portálu.
 2. Vyberte **nová žádost o podporu** > **Základy**.
-3. Na **Základy** okno:
+3. Na hello **Základy** okno:
    
     a. **Vydávání typu** > **kvóty**
    
@@ -112,22 +112,22 @@ Pokud je váš účet Batch vytvořený v **služba Batch** režim, postupujte p
     d. **Podporují plán** > **kvóty podporu - zahrnuté**
    
     Klikněte na **Další**.
-4. Na **problém** okno:
+4. Na hello **problém** okno:
    
-    a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
+    a. Vyberte **závažnost** podle tooyour [dopad na chod firmy][support_sev].
    
-    b. V **podrobnosti**, zadejte každé kvóty, které chcete změnit, název účtu Batch a nový limit.
+    b. V **podrobnosti**, zadejte každé kvótu chcete toochange, název účtu Batch hello a hello nový limit.
    
     Klikněte na **Další**.
-5. Na **kontaktní informace** okno:
+5. Na hello **kontaktní informace** okno:
    
     a. Vyberte **způsob kontaktu preferované**.
    
-    b. Zkontrolujte a zadejte požadované kontaktní údaje.
+    b. Zkontrolujte a zadejte požadované hello kontaktní údaje.
    
-    Kliknutím na **Vytvořit** odešlete žádost o podporu.
+    Klikněte na tlačítko **vytvořit** žádost o podporu toosubmit hello.
 
-Jakmile jste odeslali vaši žádost o podporu, bude vás kontaktovat podporu Azure. Všimněte si, že dokončení požadavku může trvat až 2 pracovních dnů.
+Jakmile jste odeslali vaši žádost o podporu, bude vás kontaktovat podporu Azure. Všimněte si, že dokončení požadavku hello může trvat až too2 pracovních dnů.
 
 ### <a name="increase-a-subscription-cores-quota"></a>Navýšení kvóty předplatného jader
 
@@ -136,7 +136,7 @@ Pokud váš účet Batch byl vytvořen v **uživatele předplatné** režimu a p
 
 
 ## <a name="related-topics"></a>Související témata
-* [Vytvoření účtu Azure Batch pomocí portálu Azure](batch-account-create-portal.md)
+* [Vytvoření účtu Azure Batch pomocí hello portálu Azure](batch-account-create-portal.md)
 * [Přehled funkcí Azure Batch](batch-api-basics.md)
 * [Předplatné Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md)
 

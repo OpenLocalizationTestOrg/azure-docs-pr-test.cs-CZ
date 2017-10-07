@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory, vytváření sestav – nejčastější dotazy | Microsoft Docs"
+title: "aaaAzure Active Directory Reporting – nejčastější dotazy | Microsoft Docs"
 description: "Nejčastější dotazy týkající se vytváření sestav Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -14,98 +14,98 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: be65a05574ea3b5b190cd02a96b211c571ba70bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Nejčastější dotazy týkající se vytváření sestav Azure Active Directory.
 
-Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o vytváření sestav Azure Active Directory.  
+Tento článek obsahuje odpovědi toofrequently kladené dotazy (FAQ) o vytváření sestav Azure Active Directory.  
 Další podrobnosti najdete v tématu [generování sestav Azure Active Directory](active-directory-reporting-azure-portal.md). 
 
-**Otázka: co je uchovávání dat protokoly aktivity (auditu a přihlášení) na portálu Azure?** 
+**Otázka: co je uchovávání dat hello protokoly aktivity (auditu a přihlášení) v hello portál Azure?** 
 
-**Odpověď:** poskytujeme 7 dnů dat pro naše zákazníky volné a přepnutím do Azure AD Premium 1 nebo Premium 2 licenci, můžete přístup k datům po dobu 30 dnů. Další informace o uchovávání dat v [zásady uchování sestav Azure Active Directory](active-directory-reporting-retention.md)
+**Odpověď:** poskytujeme 7 dnů dat pro naše zákazníky volné a přepnutím tooan Azure AD Premium 1 nebo Premium 2 licenci, přistupujete k datům pro až too30 dnů. Další informace o uchovávání dat v [zásady uchování sestav Azure Active Directory](active-directory-reporting-retention.md)
 
 --- 
 
-**Otázka: jak dlouho trvá až po dokončení Moje úloh data aktivit uvidí?**
+**Otázka: jak dlouho trvá až po dokončení Moje úloh data aktivit hello uvidí?**
 
-**Odpověď:** protokoly auditu aktivity, jejichž latence od 15 minut až hodinu. Protokoly přihlašovací aktivity, jejichž latence od 15 minut pro většinu záznamů a až 2 hodiny pro několik záznamů.
-
----
-
-**Otázka: nutné být globálním správcem zobrazíte aktivity protokoly na portálu Azure a získat data prostřednictvím rozhraní API?**
-
-**Odpověď:** Ne. Může být buď **zabezpečení čtečky**, **správce zabezpečení** nebo **globálního správce** chcete zobrazit data na portálu Azure nebo k ní přistupují přes rozhraní API pro vytváření sestav.
+**Odpověď:** protokoly auditu aktivity, jejichž latence od hodinu tooan 15 minut. Protokoly přihlašovací aktivity, jejichž latence od 15 minut pro většinu záznamů a v provozu too2 hodin pro několik záznamů.
 
 ---
 
-**Otázka: je možné získat informace o protokolu činnosti Office 365 prostřednictvím portálu Azure?**
+**Otázka: je nutné toobe protokoly aktivitu globálního správce toosee hello hello portálu Azure nebo tooget data prostřednictvím hello rozhraní API?**
 
-**Odpověď:** i když aktivita Office 365 a Azure AD aktivity protokoly sdílení velké množství prostředků adresáře, pokud chcete, aby ucelený pohled na protokoly aktivity Office 365, by měl přejdete do do centra pro správu Office 365 se získat informace o protokolu Office 365 aktivity.
+**Odpověď:** Ne. Může být buď **zabezpečení čtečky**, **správce zabezpečení** nebo **globálního správce** toosee data na portálu Azure nebo k ní přistupují prostřednictvím hello rozhraní API pro vytváření sestav.
+
+---
+
+**Otázka: je možné získat informace o protokolu činnosti Office 365 prostřednictvím hello portál Azure?**
+
+**Odpověď:** i když aktivita Office 365 a Azure AD aktivity protokoly sdílení velké množství prostředků directory hello, pokud chcete, aby ucelený pohled na dobrý den protokoly aktivity Office 365, měli byste toohello Centrum pro správu Office 365 tooget Office 365 aktivity protokolu informace.
 
 ---
 
 
-**Otázka: které rozhraní API se používá k načtení informací o protokoly aktivity Office 365?**
+**Otázka: rozhraní API se který používám tooget informace o protokoly aktivity Office 365?**
 
-**Odpověď:** používat pro přístup k rozhraní API pro správu Office 365 [Office 365 aktivity protokoly prostřednictvím rozhraní API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).
+**Odpověď:** použití hello rozhraní API pro správu Office 365 tooaccess hello [Office 365 aktivity protokoly prostřednictvím rozhraní API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).
 
 ---
 
 **Otázka: počet záznamů, můžete stáhnout z portálu Azure?**
 
-**Odpověď:** až 120 kB záznamy si můžete stáhnout z portálu Azure. Záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, můžete získat nejnovější záznamy 120 kB. 
+**Odpověď:** si můžete stáhnout si too120K záznamy ze hello portálu Azure. Hello záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, získáte záznamy hello nejnovější 120 kB. 
 
 ---
 
-**Otázka: počet záznamů, můžete dotazovat pomocí aktivity rozhraní API?**
+**Otázka: počet záznamů, můžete dotazovat pomocí aktivity hello rozhraní API?**
 
-**Odpověď:** můžete dát dotaz na záznamy až 1 milion (Pokud nechcete použít operátor top, která seřadí záznam většina poslední). Pokud používáte operátor "top", se můžete dotazovat až 500 kB záznamy. Můžete najít ukázkové dotazy týkající se používání rozhraní API zde [zde](active-directory-reporting-api-getting-started.md).
+**Odpověď:** až too1 mil. záznamy se můžete dotazovat (Pokud nechcete použít operátor top hello, která seřadí hello záznam většina poslední). Pokud se rozhodnete použít operátor "top" hello, se můžete dotazovat až too500K záznamy. Ukázkové dotazy na tom, jak toouse hello API Zde můžete najít [zde](active-directory-reporting-api-getting-started.md).
 
 ---
 
 **Otázka: jak lze získat licenci premium?**
 
-**Odpověď:** najdete v části [Začínáme s Azure Active Directory Premium](active-directory-get-started-premium.md) pro odpověď na tuto otázku.
+**Odpověď:** najdete v části [Začínáme s Azure Active Directory Premium](active-directory-get-started-premium.md) pro otázku toothis odpovědí.
 
 ---
 
 **Otázka: jak brzy by měl zobrazit data aktivity po získání licence premium?**
 
-**Odpověď:** Pokud již máte data aktivity, jako volné licenci, pak můžete zobrazit stejná data. Pokud nemáte k dispozici žádná data, pak bude trvat jeden nebo dva dny.
+**Odpověď:** Pokud již máte data aktivity, jako volné licenci, pak se zobrazí hello stejná data. Pokud nemáte k dispozici žádná data, pak bude trvat jeden nebo dva dny.
 
 ---
 
 **Otázka: Po získání licenci Azure AD premium zobrazit data poslední měsíc?**
 
-**Odpověď:** Pokud Přepnuli jste nedávno na verzi Premium (včetně zkušební verzi), zobrazí se data až do 7 dnů původně. Když se data hromadí, zobrazí se až 30 dnů.
+**Odpověď:** Pokud Přepnuli jste nedávno tooa verze Premium (včetně zkušební verzi), můžete zobrazit data si too7 dnů původně. Když se data hromadí, zobrazí se až too30 dnů.
 
 ---
 
-**Otázka: je riziko událostí v ochrany identit, ale nejsou zobrazeny odpovídající přihlášení v všechny přihlášení. Je to očekávané?**
+**Otázka: je riziko událostí v ochrany identit, ale odpovídající přihlášení v hello nejsou zobrazeny všechny přihlášení. Je to očekávané?**
 
-**Odpověď:** Ano, Identity Protection vyhodnotí riziko pro všechny toky ověřování jestli-li být interaktivní nebo neinteraktivní. Ale všechny přihlášení pouze sestava zobrazí jenom interaktivní přihlášení.
-
----
-
-**Otázka: jak můžete stáhnout "Uživatelé označení příznakem rizik" sestav na portálu Azure?**
-
-**Odpověď:** možnost stažení *uživatelé označení příznakem rizik* sestavy přidá brzy.
+**Odpověď:** Ano, Identity Protection vyhodnotí riziko pro všechny toky ověřování jestli-li být interaktivní nebo neinteraktivní. Ale všechny přihlášení pouze sestava zobrazí jenom hello interaktivní přihlašování.
 
 ---
 
-**Otázka: Jak poznám, proč přihlášení, nebo pro uživatele byla příznakem rizikové na portálu Azure?**
+**Otázka: jak můžete stáhnout hello "Uživatelé označení příznakem rizik" sestav na portálu Azure?**
 
-**Odpověď:** Premium edition zákazníkům další informace o základní rizikových událostech kliknutím na uživatele v "Uživatelé označení příznakem rizik" nebo kliknutím na "rizikové přihlášení". Zákazníci volné a Základní edice získat zobrazíte rizikové uživatele a přihlášení bez základní informace o události riziko.
+**Odpověď:** hello možnost toodownload *uživatelé označení příznakem rizik* sestavy přidá brzy.
 
 ---
 
-**Otázka: jak jsou vypočítávány IP adresy v sestavě rizikové přihlášení a přihlášení??**
+**Otázka: Jak poznám, proč přihlášení, nebo pro uživatele byla příznakem rizikové v hello portál Azure?**
 
-**Odpověď:** IP adresy vydávají tak, že není spolehlivý připojení mezi IP adresu a kde se fyzicky nacházejí počítači s touto adresou. To ztěžuje faktorech například mobilní poskytovatelů a vydání z Centrální fondy IP adres velmi často daleko od skutečně použití klientské zařízení sítě VPN. Z výše uvedených převodu IP adresu na fyzické umístění je nejlepší úsilí na základě trasování, data registru, zpětné vyhledání a další informace. 
+**Odpověď:** zákazníkům edice Premium můžete další informace o hello základní rizikových událostech kliknutím na uživatele hello v "Uživatelé označení příznakem rizik" nebo kliknutím na hello "Rizikové přihlášení". Zákazníci volné a Základní edice získání bez hello základní informace o události riziko toosee hello rizikové uživatelů a přihlášení.
+
+---
+
+**Otázka: jak jsou vypočítávány IP adresy v sestavě rizikové přihlášení a přihlášení hello??**
+
+**Odpověď:** IP adresy vydávají tak, že není spolehlivý připojení mezi IP adresu a kde hello s touto adresou se fyzicky nacházejí. To ztěžuje faktorech například mobilní poskytovatelů a vydání z Centrální fondy IP adres velmi často daleko od skutečně použití hello klientské zařízení sítě VPN. Zadané hello výše, převod IP adres tooa fyzické umístění je nejlepší úsilí na základě trasování, data registru, zpětné vyhledání a další informace. 
 
 ---

@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b3fab99ff9fab5bc67fa70113dc5b06fac775b09
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d04a9efeb3b35421aa605cadb2aa25f656a4d515
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy se správou hesel
 
-Níže jsou uvedeny některé nejčastější dotazy pro všechny věci týkající se vytvoření nového hesla.
+Hello následující jsou některé nejčastější dotazy pro všechny věci týkající se toopassword resetovat.
 
-Pokud máte obecný dotaz týkající se Azure AD a hesla pomocí samoobslužné služby resetování, která není zde zodpovězena, můžete požádat komunitou o pomoc na [fóra Azure Ad](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Členové komunity služby zahrnují Engineers, správce produktu, MVP a hlavě nehodí Odborníci v oblasti IT.
+Pokud máte obecný dotaz týkající se Azure AD a samoobslužné služby heslo resetovat, která není zde zodpovězena, můžete požádat hello komunity pro pomoc na hello [fóra Azure Ad](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Členové komunity hello zahrnují Engineers, správce produktu, MVP a hlavě nehodí Odborníci v oblasti IT.
 
-Tyto nejčastější dotazy je rozdělená do následujících částí:
+Tyto nejčastější dotazy se rozdělí do hello následující části:
 
 * [**Dotazy o registraci k resetování hesla**](#password-reset-registration)
 * [**Dotazy o resetování hesla**](#password-reset)
@@ -39,12 +39,12 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
 ## <a name="password-reset-registration"></a>Registrace pro resetování hesla
 * **Otázka: je možné mé uživatelé registrovat svá vlastní data resetování hesla?**
 
-  > **Odpověď:** Ano, jak dlouho, dokud je povoleno obnovení hesla a udělení licence, mohou přejít na portál registraci pro resetování hesla na adrese http://aka.ms/ssprsetup k registraci jejich informace o ověřování. Uživatelé mohou také registrovat přejdete k přístupovému panelu na adrese http://myapps.microsoft.com, kliknutím na kartu profil a kliknutím na registrace pro resetování hesla možnost.
+  > **Odpověď:** Ano, jak dlouho, dokud je povoleno obnovení hesla a udělení licence, mohou přejít portálu toohello registraci pro resetování hesla na http://aka.ms/ssprsetup tooregister své informace o ověřování. Uživatelé mohou také registrovat pomocí budete toohello přístupového panelu v http://myapps.microsoft.com, klikněte na kartu profil hello a příkaz hello registrace pro resetování hesla možnost.
   >
   >
 * **Otázka: je možné definovat data resetování hesel jménem Moje uživatelů?**
 
-  > **Odpověď:** Ano, můžete tak učinit službou Azure AD Connect, prostředí PowerShell [portál Azure](https://portal.azure.com), nebo portál pro správu Office. Další informace najdete v článku [dat používá Azure AD funkce samoobslužného resetování hesla](active-directory-passwords-data.md).
+  > **Odpověď:** Ano, můžete tak učinit pomocí Azure AD Connect, prostředí PowerShell, hello [portál Azure](https://portal.azure.com), nebo portál pro správu Office hello. Další informace najdete v článku hello [dat používá Azure AD funkce samoobslužného resetování hesla](active-directory-passwords-data.md).
   >
   >
 * **Otázka: je možné synchronizovat data pro bezpečnostní otázky z místně?**
@@ -54,57 +54,57 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   >
 * **Otázka: je možné zaregistrovat vlastní uživatelé dat tak, že další uživatelé nemohou zobrazit tato data?**
 
-  > **Odpověď:** Ano, když uživatelé zaregistrovat dat pomocí registrace portálu pro resetování hesel je uložen do polí privátní ověřování, která viditelné pouze globální správce a uživatele.
+  > **Odpověď:** Ano, když uživatelé zaregistrovat dat pomocí hello registrace portálu pro resetování hesel je uložen do polí privátní ověřování, která viditelné pouze globální správci a hello uživatelem.
     >
     > [!NOTE]
-    > Pokud **účet správce Azure** zaregistruje jejich číslo telefonu pro ověření ní se importují také do pole mobilní telefon a je viditelný.
+    > Pokud **účet správce Azure** zaregistruje jejich číslo telefonu pro ověření ní se importují také do pole hello mobilní telefon a je viditelný.
     >
   >
   >
-* **Otázka: Moji uživatelé mají k registraci, aby mohli používat resetování hesla?**
+* **Otázka: Moji uživatelé mají toobe zaregistrován před použitím resetování hesla?**
 
-  > **Odpověď:** Ne, pokud jejich jménem definujete dostatek informací, ověřování, uživatelé nebudou mít k registraci. Tak dlouho, dokud máte správně naformátovaná data uložená v odpovídající pole v adresáři, resetování hesla funguje.
+  > **Odpověď:** Ne, pokud jejich jménem definujete dostatek informací, ověřování, uživatelé nebudou mít tooregister. Tak dlouho, dokud máte správně naformátovaná data uložená v hello odpovídající pole v adresáři hello resetování hesla funguje.
   >
   >
-* **Otázka: je možné synchronizovat nebo nastavit telefon pro ověření, ověření e-mailu nebo alternativní telefon pro ověření pole jménem Moje uživatelů?**
+* **Otázka: je možné synchronizovat nebo nastavte pole Telefon pro ověření, ověření e-mailu nebo alternativní telefon pro ověření hello jménem Moje uživatelů?**
 
   > **Odpověď:** to není možné ještě dnes.
   >
   >
-* **Otázka: jak na portál pro registraci vědět, které možnosti zobrazíte Moji uživatelé?**
+* **Otázka: jak portálu pro registraci hello vědět, jaké možnosti tooshow Moji uživatelé?**
 
-  > **Odpověď:** zobrazí pouze portálu registrace resetování hesel možností, že je povoleno pro vaše uživatele. Tyto možnosti se nacházejí v části zásady resetování hesel uživateli svého adresáře na kartě konfigurace. Například to znamená, že pokud nepovolíte bezpečnostní otázky, pak nebudou se uživatelé moct zaregistrovat pro tuto možnost.
+  > **Odpověď:** resetování hesla hello portálu pro registraci jen ukazuje hello možnosti, které jste povolili pro vaše uživatele. Tyto možnosti se nacházejí v rámci hello zásady resetování hesel uživateli část svého adresáře na kartě konfigurace. Například to znamená, že pokud nepovolíte bezpečnostní otázky, pak uživatelé nebudou moct tooregister pro tuto možnost.
   >
   >
 * **Otázka: když se považuje za uživatele registrované?**
 
-  > **Odpověď:** uživatel se považuje zaregistrovat pro SSPR, když registrace alespoň **několik metod, které jsou nutná k obnovení** , kterou jste nastavili [portál Azure](https://portal.azure.com).
+  > **A:** uživatel se považuje zaregistrovat pro SSPR, když registrace alespoň hello **počet požadovaných tooreset metody** , kterou jste nastavili v hello [portál Azure](https://portal.azure.com).
   >
   >
 ## <a name="password-reset"></a>Resetování hesla
-* **Otázka: jak dlouho má čekat pro příjem e-mailem, SMS nebo telefonní hovor z resetování hesla?**
+* **Otázka: jak dlouho má čekat tooreceive e-mailem, SMS nebo telefonní hovor z resetování hesla?**
 
-  > **Odpověď:** e-mailu, zpráv SMS, a telefonních hovorů by měl přicházející do části jednu minutu, normální případem 5-20 sekund.
-    >Pokud tento časový rámec neobdrží oznámení:
+  > **Odpověď:** e-mailu, zpráv SMS, a telefonní hovory by měl přicházející do v části jedna minuta, 5-20 sekund normální případem hello.
+    >Pokud tento časový rámec neobdrží oznámení hello:
         > * Zkontrolujte své složky s nevyžádanou poštou.
-        > * Číslo nebo e-mailu kontaktovaný je ta, kterou byste měli zkontrolovat.
-        > * Zkontrolujte, zda že je správně naformátován ověřování dat v adresáři.
+        > * Kontrola hello číslo nebo e-mailu kontaktovaný je hello jeden, které očekáváte.
+        > * Zkontrolujte, zda je správně naformátován hello ověřování dat v adresáři hello.
                 >     * Příklad: "+ 1 4255551234" nebo "user@contoso.com"
   >
   >
 * **Otázka: jaké jazyky jsou podporovány resetování hesla?**
 
-  > **Odpověď:** heslo resetovat uživatelského rozhraní, zpráv SMS a hlasové hovory jsou lokalizované do stejné jazyky, které jsou podporovány v Office 365.
+  > **Odpověď:** hello resetování hesla uživatelského rozhraní, zpráv SMS a hlasové hovory jsou lokalizované do hello stejné jazyky, které jsou podporovány v Office 365.
   >
   >
-* **Otázka: jaký částí prostředí resetování hesla získat značky po nastavení organizační brandingu v adresáře Moje aktivity karta Konfigurace?**
+* **Otázka: co částí prostředí resetování hesla hello získat značky po nastavení organizační brandingu v adresáře Moje aktivity karta Konfigurace?**
 
-  > **Odpověď:** portálu pro resetování hesla zobrazí logo vaší organizace a umožňuje vám nakonfigurovat kontakt odkaz na vaši správce tak, aby odkazovalo vlastní e-mailu nebo adresa URL. E-mailu, která se odešlou resetování hesla zahrnuje loga vaší organizace, barvy, název v textu e-mailu a přizpůsobit z názvu.
+  > **Odpověď:** portálu pro resetování hesel hello zobrazuje logo vaší organizace a umožňuje vám tooconfigure hello obraťte se na správce odkaz toopoint tooa vlastní e-mailu nebo adresa URL. E-mailu, která se odešlou resetování hesla zahrnuje loga vaší organizace, barvy, název v textu hello hello e-mailů a přizpůsobit z názvu.
   >
   >
-* **Otázka: jak můžete naučit Moje uživatele o tom, kde přejděte k resetování hesla?**
+* **Otázka: jak můžete naučit Moje uživatele o tom, kde toogo tooreset hesla?**
 
-  > **Odpověď:** můžete odeslat uživatelům https://passwordreset.microsoftonline.com přímo, nebo můžete určit, aby mohly klikněte na tlačítko **nemůže získat přístup k účtu odkaz na vaši** nalezen na libovolné pracovní nebo školní přihlašovací stránce. Tyto odkazy můžete také publikovat na místě, které jsou snadno přístupné pro vaše uživatele.
+  > **Odpověď:** toohttps://passwordreset.microsoftonline.com vaši uživatelé můžete odeslat přímo, nebo můžete určit, aby je tooclick hello **nemůže získat přístup k účtu odkaz na vaši** nalezen na libovolné pracovní nebo školní přihlašovací stránce. Tyto odkazy můžete také publikovat v místě snadno dostupný tooyour uživatelů.
   >
   >
 * **Otázka: je možné pomocí této stránky z mobilního zařízení?**
@@ -119,7 +119,7 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   >
 * **Otázka: jak můžete integrovat přímo do daného uživatele plochy přihlašování resetování hesla?**
 
-  > **Odpověď:** Pokud jste zákazník Azure AD Premium, můžete nainstalovat Microsoft Identity Manager bez dalších poplatků a nasazení v případě místních řešení resetování hesla ke splnění tohoto požadavku.
+  > **Odpověď:** Pokud jste zákazník Azure AD Premium, můžete nainstalovat Microsoft Identity Manager bez dalších poplatků a nasadit hello místní heslo resetovat řešení toomeet tento požadavek.
   >
   >
 * **Otázka: je možné nastavit různé bezpečnostní otázky pro různá národní prostředí?**
@@ -127,9 +127,9 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   > **Odpověď:** to není možné ještě dnes.
   >
   >
-* **Otázka: jak tolik otázek jsme nakonfigurovat pro možnost ověření bezpečnostních otázek?**
+* **Otázka: jak tolik otázek jsme nakonfigurovat pro možnost ověření bezpečnostních otázek hello?**
 
-  > **Odpověď:** můžete nakonfigurovat až 20 vlastní bezpečnostních otázek v [portál Azure](https://portal.azure.com).
+  > **Odpověď:** můžete nakonfigurovat až too20 vlastní bezpečnostních otázek v hello [portál Azure](https://portal.azure.com).
   >
   >
 * **Otázka: jak dlouho může bezpečnostní otázky být?**
@@ -137,105 +137,105 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   > **Odpověď:** bezpečnostní otázky může být 3 až 200 znaků.
   >
   >
-* **Otázka: jak dlouho může odpovědi na bezpečnostní otázky být?**
+* **Otázka: jak dlouho může odpovědi toosecurity otázky být?**
 
-  > **Odpověď:** odpovědi může mít délku 3 až 40 znaků.
+  > **Odpověď:** odpovědi může mít 3 too40 znaků.
   >
   >
-* **Otázka: je duplicitní odpovědi na bezpečnostní otázky odmítl?**
+* **Otázka: jsou duplicitní odpovědi toosecurity otázky odmítnuta?**
 
-  > **Odpověď:** Ano, jsme odmítnout duplicitní odpovědi na bezpečnostní otázky.
+  > **Odpověď:** Ano, jsme odmítnout otázky toosecurity duplicitní odpovědi.
   >
   >
-* **Otázka: může uživatel na stejné bezpečnostní otázku zaregistrovat více než jednou?**
+* **Otázka: může uživatel zaregistrovat stejné bezpečnostní otázku hello více než jednou?**
 
   > **Odpověď:** Ne, jakmile se uživatel zaregistruje na určitou otázku, se nemusí zaregistrovat pro tento dotaz ještě jednou.
   >
   >
-* **Otázka: je možné nastavit minimální limit bezpečnostní otázky pro registraci a resetování?**
+* **Otázka: je možné tooset minimální limit bezpečnostní otázky pro registraci a resetování?**
 
   > **Odpověď:** Ano, lze nastavit jeden limit pro registraci a druhý pro obnovení. bezpečnostní otázky 3 až 5 může být potřeba k registraci a 3 až 5 může být nutný pro obnovení.
   >
   >
-* **Otázka: Pokud uživatel má více než maximální počet otázek vyžadovaných k resetování registrované, jak jsou bezpečnostní otázky vybrané během obnovení?**
+* **Otázka: Pokud uživatel má více než maximální počet otázek požadované tooreset hello registrované, jak jsou bezpečnostní otázky vybrané během obnovení?**
 
-  > **Odpověď:** N bezpečnostní otázky jsou náhodně vybrané mimo celkový počet otázek, které uživatel zaregistroval, kde N je **počet otázek vyžadovaných k resetování**. Například pokud má uživatel zaregistrován 5 bezpečnostní otázky, ale jenom 3 jsou nutná k obnovení, 3 5 jsou vybrán náhodně a uvedené v resetování. Pokud uživatel získá nesprávné odpovědi na otázky, aby se zabránilo ražením otázku opakovat procesu výběru.
+  > **Odpověď:** N bezpečnostní otázky jsou náhodně vybírány mimo hello celkový počet otázek a uživatel zaregistroval, kde N je hello **počet otázek požadované tooreset**. Například pokud má uživatel zaregistrován 5 bezpečnostní otázky, ale jenom 3 jsou požadované tooreset, 3 hello 5 jsou vybrán náhodně a uvedené v resetování. Pokud hello uživatel získá hello odpovědi toohello otázky nesprávný, procesu výběru hello vyskytovat i nadále ražením tooprevent otázku.
   >
   >
 * **Otázka: můžete zabránit uživatelům v pokusu o mnohokrát v krátkého časového období pro vytvoření nového hesla?**
 
-  > **Odpověď:** Ano, jsou funkce zabezpečení, které jsou součástí pro ochranu před zneužitím pro vytvoření nového hesla. Uživatelé mohou zkuste jenom 5 resetování pokusů o zadání hesla v rámci jednu hodinu před uzamknutí 24 hodin. Uživatelé mohou pouze pokusí se ověřit telefonní číslo 5krát v rámci jednu hodinu před uzamknutí 24 hodin. Uživatelé mohou pouze pokusí metoda ověření jednotného 5krát v rámci jednu hodinu před uzamknutí 24 hodin.
+  > **Odpověď:** Ano, jsou součástí tooprotect resetování hesla před zneužitím funkce zabezpečení. Uživatelé mohou zkuste jenom 5 resetování pokusů o zadání hesla v rámci jednu hodinu před uzamknutí 24 hodin. Uživatelé pouze mohou zkuste toovalidate telefonní číslo 5krát v rámci jednu hodinu před uzamknutí 24 hodin. Uživatelé mohou pouze pokusí metoda ověření jednotného 5krát v rámci jednu hodinu před uzamknutí 24 hodin.
   >
   >
-* **Otázka: po tom, jak dlouho jsou e-mailu a SMS jednorázovým heslem platné?**
+* **Otázka: jak dlouho měly hello e-mailu a SMS jednorázové heslo platné?**
 
-  > **Odpověď:** dobu platnosti relace pro resetování hesla je 105 minut. Od začátku operace resetování hesla, uživatel má 105 minut resetovat heslo. E-mailu a SMS jednorázové heslo jsou neplatné po vypršení tohoto časového období.
+  > **Odpověď:** hello dobu platnosti relace pro resetování hesla je 105 minut. Od začátku hello hello resetování hesla operace, má uživatel hello 105 minut tooreset své heslo. Hello e-mailu a SMS jednorázové heslo jsou neplatné po vypršení tohoto časového období.
   >
   >
 
 ## <a name="password-change"></a>Změna hesla
-* **Otázka: kde by měli Moji uživatelé přejít ke změně hesla?**
+* **Otázka: kde by měl mé uživatelé toochange hesla?**
 
-  > **A:** uživatelé mohou změnit své heslo kdekoli uvidí jejich profilový obrázek nebo ikonu (jako v pravém horním rohu jejich [Office 365](https://portal.office.com) nebo [přístupový Panel](https://myapps.microsoft.com) dojde. Uživatelé mohou změnit své heslo z [stránka přístupového panelu profil](https://account.activedirectory.windowsazure.com/r#/profile). Uživatelé mohou také vyzváni ke změně hesla na přihlašovací obrazovce Azure AD automaticky, pokud vypršela platnost hesla. Nakonec mohou uživatelé přejdou [portál změn hesel služby Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) přímo Pokud chtějí změnit své heslo.
+  > **A:** uživatelé mohou změnit své heslo kdekoli uvidí jejich profilový obrázek nebo ikonu (stejně jako v nástroji hello pravého horního rohu jejich [Office 365](https://portal.office.com) nebo [přístupový Panel](https://myapps.microsoft.com) dojde. Uživatelé mohou změnit své heslo z hello [stránka přístupového panelu profil](https://account.activedirectory.windowsazure.com/r#/profile). Uživatelé mohou být také vyzváni toochange hesla na přihlašovací obrazovce hello Azure AD automaticky, pokud vypršela platnost hesla. Nakonec mohou uživatelé přejdou toohello [portál změn hesel služby Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) přímo Pokud si přejí toochange jejich hesla.
   >
   >
-* **Otázka: je možné se svým uživatelům a upozornění na portálu Office, když vyprší platnost hesla pro místní?**
+* **Otázka: je možné se svým uživatelům a upozornění v hello portál Office, když vyprší platnost hesla pro místní?**
 
-  > **Odpověď:** to je možné ještě dnes Pokud používáte služby AD FS podle pokynů tady: [odesílání deklarace zásady hesel se službou AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Pokud používáte synchronizaci hodnoty hash hesla, to není možné ještě dnes. Je to proto, že jsme není synchronizována zásady hesel z místní, takže není možné, že nám odeslat oznámení o vypršení platnosti do prostředí cloudu. V obou případech je také možné [upozorněte uživatele, jejichž hesla se vyprší pomocí prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **Odpověď:** to je možné ještě dnes Pokud používáte služby AD FS podle pokynů hello zde: [odesílání deklarace zásady hesel se službou AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Pokud používáte synchronizaci hodnoty hash hesla, to není možné ještě dnes. Důvodem je, že jsme není synchronizována zásady hesel z místní, takže není možné, že nám toopost vypršení platnosti oznámení toocloud dojde. V obou případech je také možné příliš[upozorněte uživatele, jejichž hesla se o tooexpire pomocí prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 
 ## <a name="password-management-reports"></a>Sestavy správy hesel
-* **Otázka: jak dlouho trvá pro data objeví na sestavy správy heslo?**
+* **Otázka: jak dlouho trvá pro data tooshow až na sestavy správy hello heslo?**
 
-  > **Odpověď:** Data by se zobrazit na sestav správy hesel v rámci 5 až 10 minut. Ho některých případech může trvat jednu hodinu, než se objeví.
+  > **Odpověď:** Data by se zobrazit na sestavy správy hello heslo v rámci 5 až 10 minut. Ho některých případech to může trvat až hodinu tooappear tooan.
   >
   >
-* **Otázka: jak můžete filtrovat sestavy správy heslo?**
+* **Otázka: jak můžete filtrovat sestavy správy hello heslo?**
 
-  > **Odpověď:** sestav správy hesel můžete filtrovat kliknutím malé lupy extrémně napravo od popisky sloupců, do horní části sestavy. Pokud chcete provádět bohatší filtrování, můžete si stáhnout sestavu, aby se v aplikaci excel a vytvoření kontingenční tabulky.
+  > **Odpověď:** hello heslo správy sestavy můžete filtrovat kliknutím hello lupy malé toohello extrémně napravo od hello popisky sloupců, v horní hello hello sestavy. Pokud chcete toodo bohatší filtrování, můžete stáhnout tooexcel hello sestavy a vytvoření kontingenční tabulky.
   >
   >
-* **Otázka: co je maximální počet událostí, které jsou uloženy v sestavy správy heslo?**
+* **Otázka: co je hello maximální počet událostí, které jsou uloženy v sestavy správy hello heslo?**
 
-  > **Odpověď:** až než 75 000 resetování nebo heslo registraci k resetování hesla události jsou uložené v sestav správy hesel, pokrývání uzlů zpět až 30 dnů.  Pracujeme na rozbalte tento počet na obsahovat další události.
+  > **Odpověď:** až too75, 000 heslo resetovat heslo resetovat registrace události nebo ukládají do sestavy správy hello heslo pokrývání uzlů zálohování too30 dnů.  Pracujeme tooexpand toto číslo tooinclude další události.
   >
   >
-* **Otázka: jak daleko zpět sestav správy hesel přejděte?**
+* **Otázka: jak daleko zpět sestav správy hesel hello přejděte?**
 
-  > **Odpověď:** Správa hesel sestavy zobrazit operace, ke kterým došlo během posledních 30 dnů. Teď Pokud budete potřebovat k archivaci tato data můžete stáhnout sestavy pravidelně a uložit je do samostatných umístění.
+  > **Odpověď:** Správa hesel hello sestavy zobrazit operací, které se provádí v rámci hello posledních 30 dnů. Teď Pokud potřebujete tooarchive tato data můžete stáhnout hello sestavy pravidelně a uložit je do samostatných umístění.
   >
   >
-* **Otázka: je maximální počet řádků, které se mohou objevit v sestavy správy heslo?**
+* **Otázka: je maximální počet řádků, které se mohou objevit v sestavy správy hello heslo?**
 
-  > **Odpověď:** Ano, nesmí být delší než 75 000 řádků mohou být na buď sestavy správy hesel, jestli se zobrazí v uživatelském rozhraní nebo stahování.
+  > **Odpověď:** Ano, může se zobrazit nesmí být delší než 75 000 řádků na buď hello sestav správy hesel, jestli jsou uvedené v hello uživatelského rozhraní nebo stahování.
   >
   >
-* **Otázka: je rozhraní API pro přístup k resetování hesla nebo registrační data pro vytváření sestav?**
+* **Otázka: je k dispozici rozhraní API tooaccess hello heslo resetovat nebo registrační data pro generování sestav?**
 
-  > **Odpověď:** Ano, naleznete v následující dokumentaci se dozvíte, jak přistupovat k resetování hesla, vytváření sestav datového proudu.  [Další informace o přístupu k resetování hesla události vytváření sestav prostřednictvím kódu programu](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **Odpověď:** Ano, najdete v části hello následující dokumentaci toolearn přístupu hello heslo resetovat vytváření sestav datového proudu.  [Zjistěte, jak tooaccess resetování hesla události vytváření sestav prostřednictvím kódu programu](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
   >
   >
 
 ## <a name="password-writeback"></a>Zpětný zápis hesla
-* **Otázka: jak zpětný zápis hesla funguje na pozadí?**
+* **Otázka: jak zpětný zápis hesla funguje pozadí hello?**
 
-  > **Odpověď:** najdete v části [jak zpětný zápis hesla funguje](active-directory-passwords-writeback.md) pro vysvětlení, co se stane, když zapnete zpětný zápis hesla a jak se data proudí prostřednictvím systému zpět do místního prostředí.
+  > **Odpověď:** najdete v části [jak zpětný zápis hesla funguje](active-directory-passwords-writeback.md) pro vysvětlení, co se stane, když zapnete zpětný zápis hesla a jak se data proudí prostřednictvím systému hello zpět do místního prostředí.
   >
   >
-* **Otázka: jak dlouho zpětný zápis hesla trvá fungovat?  Je k dispozici ke zpoždění synchronizace jako se synchronizací hodnoty hash hesla?**
+* **Otázka: jak dlouho trvá zpětný zápis hesla toowork?  Je k dispozici ke zpoždění synchronizace jako se synchronizací hodnoty hash hesla?**
 
-  > **Odpověď:** zpětný zápis hesla je rychlé. Je synchronní kanál, který funguje zásadně jinak než synchronizaci hodnoty hash hesla. Zpětný zápis hesla umožňuje uživatelům získat v reálném čase zpětnou vazbu o úspěšnosti jejich resetování hesla nebo změňte operaci. Průměrná doba pro úspěšné zpětný zápis hesla je v části 500 ms.
+  > **Odpověď:** zpětný zápis hesla je rychlé. Je synchronní kanál, který funguje zásadně jinak než synchronizaci hodnoty hash hesla. Zpětný zápis hesla umožňuje uživatelům tooget v reálném čase názor hello úspěch své heslo resetovat nebo změnit operaci. Průměrná doba Hello pro úspěšné zpětný zápis hesla je v části 500 ms.
   >
   >
 * **Otázka: Pokud Můj účet místní je, jak je můj účet nebo přístup do cloudu zneužitím?**
 
-  > **Odpověď:** Pokud vaše místní ID je zakázaná, cloudu ID nebo přístup budou rovněž zakázány na další interval synchronizace prostřednictvím AAD Connect výchozí byt je to každých 30 minut.
+  > **Odpověď:** Pokud vaše místní ID je zakázaná, cloudu ID nebo přístup budou rovněž zakázány na další interval synchronizace hello prostřednictvím AAD Connect výchozí byt je to každých 30 minut.
   >
   >
-* **Otázka: Pokud je omezené Můj účet místní zásady hesel místní služby Active Directory, SSPR orientují tuto zásadu po změně hesla?**
+* **Otázka: Pokud je omezené Můj účet místní zásady hesel místní služby Active Directory, SSPR orientují tuto zásadu po změně hesla hello?**
 
-  > **Odpověď:** Ano, spoléhá na SSPR a dodržuje místní zásady hesel služby AD, včetně typické zásady hesel služby AD domény, stejně jako jakoukoli definované zásady podrobné heslo pro daného uživatele.
+  > **Odpověď:** Ano, spoléhá na SSPR a dodržuje hello místní zásady hesel služby AD, včetně typické domény zásady hesel služby AD, a také všechny definované zásady podrobné heslo cílové tooa zadaný uživatel.
   >
   >
 * **Otázka: jaký typy účtů zpětný zápis hesla funguje pro?**
@@ -250,21 +250,21 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   >
 * **Otázka: je zpětný zápis hesla zabezpečení?  Jak se může být jistí, že nebude získat hacker I?**
 
-  > **Odpověď:** Ano, jsou zabezpečené zpětný zápis hesla. Číst informace o čtyři vrstvy zabezpečení implementované službu zpětný zápis hesla, podívejte se [model zabezpečení zpětný zápis hesla](active-directory-passwords-writeback.md#password-writeback-security-model) část v tom, jak zpětný zápis hesla funguje.
+  > **Odpověď:** Ano, jsou zabezpečené zpětný zápis hesla. tooread Další informace o hello čtyři vrstvy zabezpečení implementované hello služba zpětný zápis hesel, podívejte se na hello [model zabezpečení zpětný zápis hesla](active-directory-passwords-writeback.md#password-writeback-security-model) část v tom, jak zpětný zápis hesla funguje.
   >
   >
 
 ## <a name="next-steps"></a>Další kroky
 
-Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
+Hello následující odkazy obsahují další informace o resetování hesla pomocí služby Azure AD
 
 * [**Rychlý Start**](active-directory-passwords-getting-started.md) – Zprovozněte samoobslužné resetování hesla Azure AD. 
 * [**Správa licencí**](active-directory-passwords-licensing.md) – Konfigurujte licencování Azure AD.
-* [**Data**](active-directory-passwords-data.md) – Pochopte požadovaná data a jejich použití pro správu hesel.
-* [**Uvedení**](active-directory-passwords-best-practices.md) – Naplánujte a nasaďte pro své uživatele samoobslužné resetování hesla pomocí zde uvedených pokynů.
-* [**Přizpůsobení**](active-directory-passwords-customize.md) – Přizpůsobte vzhled a chování samoobslužného resetování hesla pro vaši společnost.
+* [**Data** ](active-directory-passwords-data.md) – pochopit hello data, která je požadována a jak se používají pro správu hesel
+* [**Zavedení** ](active-directory-passwords-best-practices.md) -plánování a nasazení SSPR tooyour uživatelů podle pokynů hello je zde uveden
+* [**Přizpůsobení** ](active-directory-passwords-customize.md) -přizpůsobit hello vzhledu a chování hello SSPR prostředí pro vaši společnost.
 * [**Vytváření sestav**](active-directory-passwords-reporting.md) – Zjistěte, jestli, kdy a kde vaši uživatelé používají funkci samoobslužného resetování hesla.
 * [**Zásady**](active-directory-passwords-policy.md) – Pochopte a nastavte zásady hesel Azure AD.
 * [**Zpětný zápis hesla**](active-directory-passwords-writeback.md) – Způsob fungování zpětného zápisu hesla v místním adresáři.
-* [**Podrobné technické informace**](active-directory-passwords-how-it-works.md) – Nahlédněte za oponu a pochopte, jak to funguje.
-* [**Řešení potíží**](active-directory-passwords-troubleshoot.md) – Zjistěte, jak řešit běžné problémy, ke kterým dochází u samoobslužného resetování hesla.
+* [**Podrobné technické informace** ](active-directory-passwords-how-it-works.md) -přejděte za hello závěsem toounderstand, jak to funguje
+* [**Řešení potíží s** ](active-directory-passwords-troubleshoot.md) – zjistěte, jak tooresolve běžné problémy, že vidíte s SSPR

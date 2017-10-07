@@ -1,6 +1,6 @@
 ---
-title: "Porozumět Azure podrobné používání | Microsoft Docs"
-description: "Zjistěte, jak ke čtení a pochopení v částech vaší podrobné informace o použití sdíleného svazku clusteru pro vaše předplatné Azure"
+title: "aaaUnderstand vaše Azure podrobné využití | Microsoft Docs"
+description: "Zjistěte, jak tooread a pochopit hello části vaší podrobné informace o použití sdíleného svazku clusteru pro vaše předplatné Azure"
 services: 
 documentationcenter: 
 author: tonguyen10
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: tonguyen
-ms.openlocfilehash: 0d4f2e19ec3417b7ca111f777e34b1ce66ddb32d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9284bf94bfa9f36cdd5d39e653a35def7c1aa34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Pochopit podmínky na vaše poplatky Azure podrobné informace o použití Microsoftu 
-Soubor CSV poplatky podrobné informace o použití obsahuje denně a měření poplatky za používání úrovně pro aktuální fakturační období. 
+Hello podrobné informace o použití, který obsahuje soubor CSV poplatky za každý den a úrovni využití měření poplatky za hello aktuální fakturační období. 
 
-Chcete-li získat podrobné informace o použití souboru, přečtěte si téma [jak získat vaše Azure fakturace faktury a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
-Je k dispozici ve formátu souboru hodnot oddělených čárkami (.csv), který můžete otevřít v aplikaci tabulky. Pokud se zobrazují dvě verze, které jsou k dispozici, stáhněte si verze 2. Který je formátem aktuálního souboru.
+tooget souboru podrobné informace o použití najdete v části [jak tooget vaše Azure fakturace fakturace a dat o denním využití](billing-download-azure-invoice-daily-usage-date.md).
+Je k dispozici ve formátu souboru hodnot oddělených čárkami (.csv), který můžete otevřít v aplikaci tabulky. Pokud se zobrazují dvě verze, které jsou k dispozici, stáhněte si verze 2. Který je hello nejnovější formát souboru.
 
-Poplatky za používání jsou celkový počet **měsíční** poplatky na předplatném. Poplatky za používání nemáte vzít v úvahu žádné kredity ani slevy.
+Poplatky za používání jsou hello celkový **měsíční** poplatky na předplatném. Poplatky za používání nemáte vzít v úvahu žádné kredity ani slevy.
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Podrobné podmínky a popisy podrobné informace o použití souboru
-Následující části popisují důležité termíny ukazuje verze 2 podrobné informace o použití souboru.
+Hello následující části popisují důležité termíny hello ukazuje verze 2 hello podrobné informace o použití souboru.
 
 ### <a name="statement"></a>Příkaz
-V horní části ze souboru CSV podrobné informace o použití zobrazí služby, které jste použili při v měsíci fakturačního období. V následující tabulce jsou uvedeny podmínky a popisy uvedené v této sekci.
+Hello horní části hello podrobné použití sdíleného svazku clusteru souboru ukazuje hello služby, které jste použili při hello měsíc fakturačního období. Hello následující tabulka uvádí hello podmínky a popisy uvedené v této sekci.
 
 | Označení | Popis |
 | --- | --- |
-|Fakturační období |Fakturační období, kdy byly použity měřidla |
-|Kategorie měření |Identifikuje nejvyšší úrovně služby využití |
-|Podkategorie měření |Definuje typ služba Azure, která může mít vliv na rychlost |
-|Název měření |Identifikuje pro měření spotřebovávanou měrné jednotky |
-|Oblast měření |Určuje umístění datového centra pro určité služby, které jsou za cenu na základě umístění datového centra |
-|Skladová jednotka (SKU) |Určuje identifikátor jedinečný systému pro každou Azure měření |
-|Jednotka |Určuje jednotky, ve kterých se služba účtuje. Například GB, hodin, 10 000 s. |
-|Spotřebované množství |Množství měření používá během fakturačního období |
-|Zahrnuté množství |Množství monitorování, která je zahrnutá ve vaší aktuální fakturační období bez poplatku |
-|Překročené množství |Ukazuje rozdíl mezi množství spotřebované a množství zahrnuty. Fakturuje se toto množství. Průběžné platby nabídky se žádné zahrnuté množství s nabídkou tato hodnota je stejný jako objemu spotřebovaného. |
-|V rámci závazku |Zobrazuje měření poplatky, které jsou odečten od vaší závazků částky přidružené vaši nabídku 6 nebo 12 měsíců. Měřicí poplatky jsou odčítat v chronologickém pořadí. |
-|Měna |Měny používanou ve vaší aktuální fakturační období |
-|Překročení |Zobrazuje měření poplatky, které překračují velikost vašeho závazků přidružené vaši nabídku 6 nebo 12 měsíců |
-|Sazba závazku |Zobrazuje míru závazků založenou na velikosti celkový závazků přidružené vaši nabídku 6 nebo 12 měsíců |
-|Sazba |Rychlost, kterou jste se vám účtovat na jednotku fakturovatelného času |
-|Hodnota |Zobrazuje výsledek násobení sloupci Nadlimitní množství podle sloupce míry. Pokud množství spotřebované není překročit množství zahrnuty, je bezplatná v tomto sloupci. |
+|Fakturační období |Pokud jste použili hello měřidla fakturační období Hello |
+|Kategorie měření |Identifikuje hello nejvyšší úrovně služby pro použití hello |
+|Podkategorie měření |Definuje typ hello služba Azure, která může mít vliv na rychlost hello |
+|Název měření |Identifikuje hello měrné jednotky pro měření hello spotřebovávanou |
+|Oblast měření |Určuje umístění hello hello datacenter pro určité služby, které jsou za cenu na základě umístění datového centra |
+|Skladová jednotka (SKU) |Určuje identifikátor hello jedinečných systémových pro každý Azure měření |
+|Jednotka |Identifikuje hello jednotku, která je účtován hello služby v. Například GB, hodin, 10 000 s. |
+|Spotřebované množství |Hello množství měření hello používá během fakturačního období hello |
+|Zahrnuté množství |Hello množství hello monitorování, která je zahrnutá ve vaší aktuální fakturační období bez poplatku |
+|Překročené množství |Ukazuje hello rozdíl mezi hello objemu spotřebovaného a hello zahrnuté množství. Fakturuje se toto množství. Průběžné platby nabídky se žádné zahrnuté množství s nabídkou hello je tato celková hello stejná hodnota jako hello spotřebované množství. |
+|V rámci závazku |Zobrazuje hello měření poplatky, které jsou odečten od vaší závazků částky přidružené vaši nabídku 6 nebo 12 měsíců. Měřicí poplatky jsou odčítat v chronologickém pořadí. |
+|Měna |Hello měny používanou ve vaší aktuální fakturační období |
+|Překročení |Zobrazuje hello měření poplatky, které překračují velikost vašeho závazků přidružené vaši nabídku 6 nebo 12 měsíců |
+|Sazba závazku |Zobrazuje rychlost závazků hello na základě hello celkový závazků částky přidružené vaši nabídku 6 nebo 12 měsíců |
+|Sazba |Hello sazba, která se vám účtovat na jednotku fakturovatelného času |
+|Hodnota |Zobrazuje výsledek hello součin hodnot hello Nadlimitní množství sloupec podle sloupce míry hello. Pokud hello objemu spotřebovaného nepřekročí hello zahrnuté množství, není nijak zpoplatněn v tomto sloupci. |
 
 ### <a name="daily-usage"></a>Denní využití
 
-Denní využití části ze souboru CSV se zobrazují podrobnosti o použití, které ovlivňují fakturační sazby. V následující tabulce jsou uvedeny podmínky a popisy uvedené v této sekci.
+Hello denní využití části ze souboru CSV hello zobrazuje podrobnosti o použití ovlivňující hello fakturační sazby. Hello následující tabulka uvádí hello podmínky a popisy uvedené v této sekci.
 
 | Označení | Popis |
 | --- | --- |
-|Datum využití |Datum, kdy byl použit měřidla |
-|Kategorie měření |Identifikuje nejvyšší úrovně služby, pro kterou toto použití patří |
-|ID měření |Identifikátor fakturovaná měření, který se používá k cena fakturace využití |
-|Podkategorie měření |Definuje typ služby Azure, který může mít vliv na rychlost |
-|Název měření |Identifikuje pro měření spotřebovávanou měrné jednotky |
-|Oblast měření |Určuje umístění datového centra pro určité služby, které jsou za cenu na základě umístění datového centra |
-|Jednotka |Identifikuje jednotka, ve které je účtován měřidla v. Například GB, hodin, 10 000 s. |
-|Spotřebované množství |Množství monitorování, které bylo spotřebováno pro daný den |
-|Umístění prostředku |Identifikuje datacenter, kde je spuštěna měřidla |
-|Spotřebovaná služba |Služba Azure platform, který jste použili |
-|Skupina prostředků |Skupinu prostředků, ve které je nasazený měření spuštěný v. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-|ID instance | Identifikátor pro měřidla. <br/><br/> Identifikátor obsahuje název, který jste zadali pro měřidla v okamžiku vytvoření. Je buď v názvu prostředku nebo plně kvalifikovaný ID prostředku. Další informace najdete v tématu [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). |
-|Značky | Značky, který přiřadíte měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Můžete například značky k distribuci náklady oddělení, který používá měřidla. Služby, které podporují generování značek jsou virtuální počítače, úložiště a síťové služby, které jsou zajišťované pomocí [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Datum využití |Hello datum, kdy byl použit hello měření |
+|Kategorie měření |Identifikuje hello nejvyšší úrovně služby, pro kterou toto použití patří |
+|ID měření |Hello účtují měření identifikátor, který byl použit tooprice fakturace využití |
+|Podkategorie měření |Definuje typ hello služby Azure, který může mít vliv na rychlost hello |
+|Název měření |Identifikuje hello měrné jednotky pro měření hello spotřebovávanou |
+|Oblast měření |Určuje umístění hello hello datacenter pro určité služby, které jsou za cenu na základě umístění datového centra |
+|Jednotka |Určuje jednotku hello tohoto měřidla hello je účtován v. Například GB, hodin, 10 000 s. |
+|Spotřebované množství |Hello množství hello monitorování, které bylo spotřebováno pro daný den |
+|Umístění prostředku |Identifikuje hello datacenter se spuštěným systémem měření hello |
+|Spotřebovaná služba |Hello služby platformy Azure, který jste použili |
+|Skupina prostředků |v které hello nasazené měření běží ve skupině prostředků Hello. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
+|ID instance | identifikátor Hello hello měření. <br/><br/> identifikátor Hello obsahuje hello název, který jste zadali pro měření hello při vytváření. Je název prostředku hello buď hello nebo hello plně kvalifikovaný ID prostředku. Další informace najdete v tématu [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). |
+|Značky | Značka přiřadit toohello měření. Pomocí značky toogroup fakturace záznamů.<br/><br/>Můžete například značky toodistribute náklady hello oddělení, který používá hello měření. Služby, které podporují generování značek jsou virtuální počítače, úložiště a síťové služby, které jsou zajišťované pomocí hello [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
 |Další informace |Metadata specifická pro služby. Například bitové kopie typ pro virtuální počítač. |
-|Informace o službě 1 |Název projektu, který služba patří vaše předplatné |
+|Informace o službě 1 |název projektu Hello patří služby hello tooon vaše předplatné |
 |Informace o službě 2 |Starší verze pole, které jsou zaznamenány volitelná metadata specifickou pro službu |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>Jak mohu učinit se, že poplatky v mé podrobné informace o použití souboru jsou správné?
+## <a name="how-do-i-make-sure-that-hello-charges-in-my-detailed-usage-file-are-correct"></a>Jak mohu učinit se, že poplatky hello v mé podrobné informace o použití souboru jsou správné?
 Pokud je v souboru podrobné informace o použití, která chcete podrobnosti na zpoplatněny, přečtěte si téma [porozumět vaší faktuře pro Microsoft Azure.](./billing-understand-your-bill.md)
 
 ## <a name="external"></a>Co externí poplatky za služby?
-Externích služeb (také označované jako Marketplace objednávky) jsou k dispozici nezávislé služby dodavatelé a se účtují samostatně. Poplatků nezobrazovat Azure faktury. Další informace najdete v tématu [pochopit Azure externí poplatky za](billing-understand-your-azure-marketplace-charges.md).
+Externích služeb (také označované jako Marketplace objednávky) jsou k dispozici nezávislé služby dodavatelé a se účtují samostatně. poplatky za Hello nezobrazovat hello Azure faktury. Další, najdete v části toolearn [pochopit Azure externí poplatky za](billing-understand-your-azure-marketplace-charges.md).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?) získat rychle vyřešit problém.

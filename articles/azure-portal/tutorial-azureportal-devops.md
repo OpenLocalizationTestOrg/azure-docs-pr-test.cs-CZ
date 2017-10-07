@@ -1,6 +1,6 @@
 ---
-title: "Kurz:  DevOps s portálem Azure Portal | Dokumentace Microsoftu"
-description: "Poznejte různé pracovní postupy pro DevOps v portálu Azure."
+title: "Kurz: DevOps s hello portálu Azure | Microsoft Docs"
+description: "Další informace hello různých pracovních postupů DevOps v hello portálu Azure."
 services: azure-portal
 documentationcenter: 
 author: mlearned
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: eec7d1402bdea4e5433c473dd713eed23aa80464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c32dbbd4e4b1c3809ef4b01e1496e350183ebde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps s portálem Azure
-Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu poznáte, jak můžete využít možnosti portálu Azure pro vývoj, testování, nasazení, ladění, sledování a správu běžících aplikací. Tento kurz se zaměřuje na:
+# <a name="tutorial-devops-with-hello-azure-portal"></a>Kurz: DevOps s hello portálu Azure
+Hello platformy Azure je plná flexibilní DevOps pracovních postupů. V tomto kurzu zjistíte, jak tooleverage hello možnosti hello toodevelop portálu Azure, testování, nasazení, řešení potíží s, sledovat a spravovat aplikace spuštěné. Tento kurz se zaměřuje na hello následující:
 
 1. Vytvoření webové aplikace a povolení průběžného nasazování
 2. Vývoj a testování aplikace
@@ -29,119 +29,119 @@ Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurz
 4. Úlohy správy obecné aplikace
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Vytvoření webové aplikace a povolení průběžného nasazování
-Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.microsoft.com/services/app-service/), budete ji používat v dalších částech tohoto kurzu. Na začátku povolíte průběžné nasazování z úložiště zdrojového kódu do našeho spuštěného prostředí Azure.
+Vytvoření webové aplikace s [Azure App Service](https://azure.microsoft.com/services/app-service/), které budete používat v hello zbytek tohoto kurzu. Na začátku povolíte průběžné nasazování z úložiště zdrojového kódu do našeho spuštěného prostředí Azure.
 
-1. Přihlaste se k portálu Azure
-2. Vyberte **App Services** &gt; **Přidat ikonu** a zadejte název, vyberte předplatné a vytvořte novou skupinu prostředků, která bude sloužit jako kontejner pro službu.
+1. Přihlaste se k portálu Azure hello
+2. Zvolte **App Services** &gt; **ikonu Přidat** a zadejte název, vyberte předplatné a vytvořte nové tooserve skupiny prostředků jako hello kontejneru služby hello.
    
-   Skupiny prostředků umožňují spravovat různé aspekty řešení, jako třeba fakturaci, nasazení a sledování všeho jako jedné skupiny pomocí [Správce prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+   Skupiny prostředků můžete povolit toomanage různé aspekty řešení hello například k fakturaci, nasazení a sledování všech jako jednu skupinu prostřednictvím [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
    
    ![image1][image1]
-3. Za malou chvíli se vytvoří vaše aplikační služba. Projděte si různé nabídky a možnosti, které jsou v portálu pro službu dostupné. Dejte tomu několik minut.
+3. Za malou chvíli se vytvoří vaše aplikační služba. Trvat několik minut tooexplore hello různé možnosti nabídky služby hello hello portálu.
    
    ![image2][image2]    
-4. Klikněte na adresu URL. Všimněte si, že jsou pro nástroje a úložiště dostupné různé možnosti. Můžete taky použít jazyky a rozhraní, které chcete, včetně .NET, Java a Ruby.
+4. Klikněte na adresu URL hello. Všimněte si hello různé dostupné možnosti nástroje a úložiště. Můžete také použít hello jazyků a rozhraní zvoleného včetně .NET, Java a Ruby.
    
    ![image3][image3]    
-5. S portálem Azure je nasazování jednoduchý proces s několika málo kroky. Na portálu Azure z ikony aplikace služby, kterou jste právě vytvořili, vyberte nastavení.
+5. Hello portál Azure umožňuje průběžné nasazování jednoduchý proces, který zahrnuje několik jednoduchých kroků. V hello portálu Azure zvolte nastavení z hello ikony pro hello app service, kterou jste právě vytvořili.
    
    ![image4][image4]
    
-   Z okna, které se otevře na pravé straně, přejděte do části publikování.
+   V okně hello, které se otevře na hello správné posuňte toohello publikování části.
    
    ![image5][image5]
-6. Teď změníte některá nastavení a povolíte pro aplikaci průběžné nasazení. Klikněte na Zdroj nasazení a potom klikněte na tlačítko Vybrat zdroj. Všimněte si, že si můžete vybrat z různých úložišť zdroje.
+6. V dalším kroku nakonfigurujte některé nastavení tooenable průběžné nasazování pro aplikaci hello. Klikněte na Zdroj nasazení a potom klikněte na tlačítko Vybrat zdroj. Všimněte si hello různé možnosti, které máte pro úložiště zdroje.
    
    ![image6][image6]
-7. V tomto příkladu vyberte GitHub. Jinak si samozřejmě můžete vybrat jiné úložiště. Potom nastavte přihlašovací údaje pro ověření.
+7. V tomto příkladu vyberte GitHub. Volitelně vyberte hello úložiště podle vašeho výběru a nastavit přihlašovací údaje pro autorizaci hello.
    
    ![image7][image7]
-8. Po ověření přístupu úložiště pak můžete vybrat projekt a větev, kterou chcete nasadit. Dole je několik smyšlených příkladů.
+8. Po povolení tooyour úložiště pak můžete projekt a chcete toodeploy firemní pobočky. Dole je několik smyšlených příkladů.
    
    ![image8][image8]
-9. Když si vyberete projekt a větev, klikněte na OK. Měla by se vám začít objevovat upozornění na nasazení.
+9. Když si vyberete projekt a větev, klikněte na OK. Měli byste začít toosee oznámení o nasazení.
    
    ![image9][image9]
-10. Přejděte zpět na GitHub, kde uvidíte webhook vytvořený pro integraci úložiště správy zdrojového kódu s Azure. Azure Portal umožňuje integraci s GitHubem v několika jednoduchých krocích.
+10. Přejděte zpět tooGitHub toosee hello webhooku, který byl vytvořený toointegrate hello zdroj ovládacího prvku úložišti Azure. Hello portálu Azure umožňuje integraci s Githubu se jenom pár jednoduchých kroků.
     
     ![image10][image10]
-11. Abychom si ukázali průběžné nasazování, rychle do úložiště přidáte nějaký obsah. Snadné je třeba přidání ukázkového textového souboru do úložiště GitHub. Se službou App Service můžete použít aplikaci .NET, Ruby, Python nebo i jiný druh. Do vybraného úložiště můžete přidat textový soubor nebo aplikaci napsanou v ASP.NET MVC, Javě nebo Ruby.
+11. průběžné nasazování toodemonstrate, rychle přidáte některé obsahu toohello úložiště. Jednoduchý příklad přidejte úložiště GitHub tooa ukázkový textový soubor. Jste volné toouse .NET, Ruby, Python nebo jiný typ aplikace se App Service. Myslíte, že volné tooadd s textovým souborem, ASP.NET MVC, Java nebo Ruby úložišti toohello aplikace podle vašeho výběru.
     
     ![image11][image11]
-12. Po potvrzení změn do úložiště uvidíte, že se v oblasti upozornění portálu oznámí zahájení nasazení. Pokud do několika chvil po odeslání do úložiště, neuvidíte změny, klikněte na Synchronizovat.
+12. Po potvrzení změn tooyour úložiště, uvidíte nový zahájit nasazení v oblasti portálu oznámení hello. Pokud se nezobrazí rychle změny po potvrzení tooyour úložiště, klikněte na tlačítko synchronizovat.
     
     ![image12][image12]
-13. Pokud se teď pokusíte načíst stránku pro službu aplikace, může se zobrazit chyba 403. V tomto příkladu to nastalo, protože pro tuto stránku nejsou dostupná výchozí nastavení dokumentů, jako je třeba soubor index.htm nebo default.html. To můžete rychle napravit pomocí nástrojů na portálu Azure.  Na portálu Azure vyberte Nastavení &gt; Nastavení aplikace.
+13. V tomto okamžiku Pokud akci a načíst stránku hello hello aplikace služby, může se zobrazit Chyba 403. V tomto příkladu je vzhledem k tomu, že žádné nastavení typický výchozí dokument pro stránku hello jako soubor jako index.htm nebo default.html. Můžete to rychle napravit s hello tooling v hello portálu Azure.  V hello portálu Azure vyberte nastavení &gt; nastavení aplikace.
     
      ![image13][image13]
-14. Otevře se okno s nastavením aplikace. Zadejte název stránky „SamplePage.html“ a klikněte na Uložit. Podívejte se i na další nastavení, dejte tomu několik minut.
+14. Otevře se okno s nastavením aplikace. Zadejte název hello hello stránky "SamplePage.html" a klikněte na Uložit. Trvat několik minut tooexplore hello další nastavení.
     
     ![image14][image14]
-15. Pokud chcete, můžete v prohlížeči obnovit stránku a zkontrolovat, že se zobrazí očekávané změny. V tomto případě se teď na stránce zobrazí jednoduchý text. S každou další změnou v úložišti by se mělo automaticky provést nové nasazení.
+15. Volitelně můžete aktualizujte vaše tooensure adresu URL prohlížeče zobrazí hello očekává změny. V takovém případě není jednoduchý text teď naplnění stránku hello. Každý další změny toohello úložiště by způsobilo nové automatického nasazení.
     
     ![image15][image15]
     
-    S portálem Azure je povolení průběžného nasazení snadná záležitost. Pro nasazení do Azure můžete vytvořit i složitější kanály pro vydávání a použít spoustu jiných postupů s existující správou zdrojového kódu a systémů průběžné integrace, jako je například využití automatizovaných systémů správy sestavení a vydávání.
+    Povolení průběžné nasazování pomocí hello portál Azure je snadný prostředí. Můžete také vytvořit složitější kanálů verze a použít mnoho jinými technikami s existující zdrojového kódu a průběžnou integraci tooAzure toodeploy systémy, jako je například využití automatizované sestavení a systémy správy verzí.
 
 ## <a name="develop-and-test-an-app"></a>Vývoj a testování aplikace
-Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadíme. Také pro webovou aplikaci připravíte testování výkonnosti.
+V dalším kroku provedeme některé změny kódu toohello základní a rychle nasadit tyto změny. Bude také nastavit některé testování výkonu pro hello webové aplikace.
 
-1. Na portálu Azure v navigačním podokně vyberte App Services a vyhledejte svoji aplikační službu.
+1. V hello portálu Azure App Services vybírat hello navigačním podokně a vyhledejte App Service.
    
    ![image16][image16]
 2. Klikněte na Nástroje
    
    ![image17][image17]
-3. Všimněte si kategorie vývoje v části Nástroje. Je tu několik užitečných nástrojů, které nám umožňují pracovat s aplikacemi bez toho, abychom museli portál Azure opustit. Klikněte na Konzolu.
+3. Všimněte si hello vyvíjet kategorie v nabídce Nástroje. Existuje několik užitečné nástroje zde která nám umožňují toowork s aplikací bez opuštění hello portálu Azure. Klikněte na Konzolu.
    
    ![image18][image18]
-4. V okně konzoly může v reálném čase zadávat příkazy pro svoji aplikaci. Zadejte příkaz dir a stiskněte enter. Všimněte si, že příkazy, které potřebují zvýšená oprávnění, nebudou fungovat.
+4. V okně konzoly hello můžete vydávat za provozu příkazy pro vaši aplikaci. Typ hello dir příkaz a stiskněte klávesu enter. Všimněte si, že příkazy, které potřebují zvýšená oprávnění, nebudou fungovat.
    
    ![image19][image19]
-5. Přejděte zpět do kategorie Vývoj a vyberte Visual Studio Online. Poznámka: Visual Studio Online je teď jmenuje Visual Studio Team Services.
+5. Přesunout zpět toohello vývoj kategorie a zvolte Visual Studio Online. Poznámka: Visual Studio Online je teď jmenuje Visual Studio Team Services.
    
    ![image20][image20]
-6. Ve své aplikaci zapněte prostředí pro úpravy v prohlížeči.
+6. Přepnutí na hello prostředí úprav v prohlížeči pro vaši aplikaci.
    
    ![image21][image21]
-7. Nainstaluje se webové rozšíření pro vaši aplikaci. Rozšíření můžou rychle a snadno přidat funkce do aplikací v Azure. Na snímku obrazovky dole si všimněte některých dalších dostupných typů rozšíření.
+7. Nainstaluje se webové rozšíření pro vaši aplikaci. Rozšíření rychle a snadno přidat funkce tooapps v Azure. Všimněte si některé hello jiné typy rozšíření k dispozici v následující snímek obrazovky hello.
    
    ![image22][image22]
-8. Až se rozšíření Visual Studio Online nainstaluje, klikněte na Přejít.
+8. Po instalaci sady Visual Studio Online rozšíření hello kliknutím na Přejít.
    
    ![image23][image23]
-9. V prohlížeči se otevře karta, kde přímo v prohlížeči uvidíte integrované vývojové prostředí. Všimněte si, že dole je použitý prohlížeč Chrome.
+9. Prohlížeč kartě otevře, kde uvidíte vývoj IDE přímo v prohlížeči hello. V prohlížeči Chrome je prostředí hello oznámení níže.
    
    ![image24][image24]
-10. Můžete provádět několik různých akcí, jako třeba upravit soubory, přidat soubory a složky a stahovat obsah z živého webu. Udělejte pár rychlých změn v souboru SamplePage.html.
+10. Můžete provést několik aktivity, například upravit soubory, přidat soubory a složky a stahovat obsah z hello živý web. Zkontrolujte soubor SamplePage.html toohello rychlé upravit.
     
     ![image25][image25]
-11. Za chvíli se změny automaticky uloží. Když přejdete na zpět stránku, uvidíte změny. Nezapomeňte, že takovéto živé úpravy, nejspíš nejsou vhodné pro produkční prostředí. Tyto nástroje ale výrazně usnadňují provádění rychlé změn pro vývojové a testovací prostředí.
+11. Ve chvíli se automaticky uloží změny hello. Pokud přejdete zpět toohello stránky, uvidíte hello změny. Nezapomeňte, že takovéto živé úpravy, nejspíš nejsou vhodné pro produkční prostředí. Nástroje hello však provádějte je velmi snadné toomake rychlé změny pro vývojáře a testovací prostředí.
     
     ![image26][image26]
     
     ![image27][image27]
-12. Přejděte zpět do okna nástrojů a v kategorii Vývoj klikněte na Test výkonnosti.
+12. Přesunout zpět toohello okno nástroje a v kategorii hello vývoj, klikněte na Test výkonnosti.
     
     ![image28][image28]
-13. Musíte nastavit účet služby Team Services. Podrobnosti najdete tady: [Vytvoření účtu služby Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-14. Klikněte na Nový, tím vytvoříte test výkonnosti.
+13. Je nutné tooset účet team services. Podrobnosti najdete tady: [Vytvoření účtu služby Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+14. Klikněte na nový toocreate testu výkonnosti.
     
     ![image29][image29]
     
-    Nakonfigurujte různé hodnoty a klikněte na Spustit Test v dolní části dialogu spuštění testu výkonnosti.
+    Konfigurace hello různé hodnoty a klikněte na tlačítko Spustit Test dole hello hello dialogu tooinitiate testu výkonnosti.
     
     ![image30][image30]
     
     ![image31][image31]
-15. Když se test spustí, můžete sledovat stav.
+15. Jakmile hello testovací spuštění, můžete monitorovat stav hello.
     
     ![image32][image32]
     
-    Když test skončí, klikněte na výsledek, tak zobrazíte další podrobnosti.
+    Po dokončení testu hello kliknutím na hello výsledek obsahuje další podrobnosti.
     
     ![image33][image33]
-16. V tomto příkladu jste vytvořili malý testovací běh, takže k analýze máte jen omezené množství dat, ale můžete se podívat na různé metriky a z tohoto zobrazení test spustit znovu. S portálem Azure je vytváření, spouštění a analýza testů výkonnosti webu jednoduchý proces. Dole na snímcích jsou vidět výkonnostní data.
+16. V tomto příkladu jste vytvořili malý test spustit, je omezený data tooanalyze, takže je může zobrazit různé metriky, stejně jako znovu spustit test z tohoto zobrazení. Hello portálu Azure umožňuje vytváření, provádění a analýza testy výkonnosti webu jednoduchý proces. snímky obrazovky Hello níže zobrazte údaje o výkonu hello.
     
     ![image34][image34]
     
@@ -152,13 +152,13 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Sledování a řešení potíží s aplikací
 Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěnými aplikacemi.
 
-1. Na portálu Azure pro naši webovou aplikaci vyberte Nástroje.
+1. V hello portál Azure pro webovou aplikaci příkaz nástroje.
    
    ![image37][image37]
-2. V kategorii Řešení potíží si všimněte si různých možností pro řešení potíží s potenciální problémy se spuštěnými aplikacemi. Můžete třeba monitorovat živé přenosy HTTP, povolit samoopravování, zobrazit protokoly a další.
+2. V kategorii hello Poradce při potížích Všimněte si hello různé možnosti pro použití nástroje tootroubleshoot potenciální problémy s spuštěné aplikaci. Můžete třeba monitorovat živé přenosy HTTP, povolit samoopravování, zobrazit protokoly a další.
    
    ![image38][image38]
-3. Vyberte Metriku lokality a uvidíte rychlé zobrazení některých kódů HTTP.
+3. Vyberte zobrazení některé kódy HTTP get tooquickly metriky lokality.
    
    ![image39][image39]
 4. Vyberte Diagnostics as a Service. Vyberte typ své aplikace, pak klikněte na tlačítko Spustit.
@@ -168,102 +168,102 @@ Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěn
    Začne sběr.
    
    ![image41][image41]
-5. Můžete vybrat odpovídající protokol a diagnostikovat potenciální potíže. Abyste mohli vidět všechny možnosti pro data, jako je například Budete muset povolit protokolování zobrazíte všechny možnosti dostupných dat, jako například Protokoly HTTP.
+5. Můžete se rozhodnout hello příslušný protokol toodiagnose potenciální problémy. Je nutné toosee protokolování tooenable všechna dostupná data hello možnosti, jako jsou protokoly HTTP.
    
    ![image42][image42]
    
-   Kliknutím na soubor Výpis stavu paměti můžete stáhnout a analyzovat sestavu analýzy nástroje DebugDiag, která vám pomůže najít potenciální problémy.
+   Kliknutím na soubor výpis stavu paměti hello můžete stáhnout a analyzovat nástroj DebugDiag toohelp sestavy analýzy najít potenciální problémy.
    
    ![image43][image43]
-6. Pokud chcete zobrazit víc dat, musíte povolit další protokolování. Na portálu Azure přejděte na webovou aplikaci a vyberte Nastavení.
+6. tooview více dat, budete potřebovat další protokolování tooenable. V hello portálu Azure přejděte toohello webové aplikace a zvolte nastavení.
    
    ![image44][image44]
-7. Přejděte dolů do kategorie funkcí a vyberte Diagnostické protokoly.
+7. Posuňte se dolů toohello funkce kategorie a zvolte diagnostické protokoly.
    
       ![image45][image45]
-8. Všimněte si, že jsou různé možností pro protokolování. Zapněte protokolování webového serveru a klikněte na Uložit.
+8. Všimněte si, hello různé možnosti pro protokolování. Zapněte protokolování webového serveru a klikněte na Uložit.
    
    ![image46][image46]
-9. Přejděte zpět do oblasti nástroje pro aplikaci, vyberte Diagnostics as a service a klikněte na Spustit, tím znovu spustíte shromažďování dat.
+9. Přesunout zpět toohello nástroje oblast pro hello aplikace a zvolte diagnostiky jako službu a klikněte na shromažďování dat hello toorerun spustit.
    
    ![image47][image47]
-10. Když je protokolování HTTP povolené, uvidíte data shromážděná pro protokoly HTTP.
+10. S povoleným nastavením protokolování hello HTTP, zobrazí data shromážděná pro protokoly HTTP.
     
     ![image48][image48]
-11. Kliknutím na soubor protokolu HTML můžete vytvářet bohaté sestavy na bázi prohlížeče pro další zkoumání.
+11. Kliknutím na soubor protokolu hello HTML, vytvořit bohaté sestavy založené na prohlížeči pro další šetření.
     
     ![image49][image49]
-12. Přejděte zpět do části nástroje na portálu Azure pro aplikaci. Přejděte do části Nástroje a vyberte Process Explorer.
+12. Přesun toohello nástroje kapitoly hello portál Azure pro aplikaci hello. Posuňte toohello nástroje oddílu a vyberte Průzkumníka procesů.
     
     ![image50][image50]
-13. Když vyberete Process Explorer, můžete se podívat na podrobnosti o spuštěných procesech. Na snímku obrazovky dole si všimněte, že můžete procházet podrobné informace o procesech a dokonce je ukončit, a to všechno v portálu Azure.
+13. Když vyberete Process Explorer, můžete se podívat na podrobnosti o spuštěných procesech. Všimněte si níže můžete přejít k podrobnostem procesy a i ukončit procesy z hello portálu Azure.
     
     ![image51][image51]
     
     ![image52][image52]
-14. Přejděte zpět do levého okna nastavení. Klikněte na Novou žádost o podporu.
+14. Přesunete okno nastavení toohello zpět na levé straně hello. Klikněte na Novou žádost o podporu.
     
     ![image53][image53]
-15. V pravém okně můžete zadat podrobnosti o problémech, kontaktní informace a dokonce odeslat diagnostická data. S portálem Azure jde spolupráce s podporou společnosti Microsoft úplně hladce.
+15. V okně hello na hello správné můžete vyplnit podrobnosti o problémech s hello, zadejte kontaktní informace a i odeslání diagnostických dat. Hello portálu Azure umožňuje práce s podporu společnosti Microsoft integrované prostředí.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Portál Azure poskytuje výkonné a povědomé nástroje a prostředí, které vám pomůžou sledovat naše spuštěné aplikace a řešit potíže s nimi. Můžete taky rychle provádět různé akce pomocí úloh, jako je například recyklace procesů, povolování a zakazování různých sběrů dat a dokonce integrace s profesionální podporou společnosti Microsoft.
+    Hello portálu Azure pomáhá zajistit výkonný a známých nástrojů prostředí toohelp monitorování a řešení potíží s naše spuštěné aplikace. Jste také možné tootake akce rychle provedením úloh, jako je například recyklace procesů, povolování a zakazování různých kolekcí dat a i integrace s profesionální podporu společnosti Microsoft.
 
 ## <a name="general-application-management"></a>Obecná správa aplikací
-Při správě aplikací často potřebujete provádět množství různých činností, jako je například konfigurace strategií zálohování, implementace a správa poskytovatelů identit a konfigurace řízení přístupu na základě rolí. Stejně jiná prostředí DevOps i platforma Azure integruje tyto úlohy přímo do portálu.
+Při správě aplikací, často potřebují tooperform širokou škálu aktivity, například konfigurace strategii zálohování, implementace a Správa poskytovatelů identit a konfigurace řízení přístupu na základě rolí. Jako s hello dalších činnostech DevOps, hello platformy Azure integruje přímo do portálu hello tyto úlohy.
 
-1. Pokud chcete zajistit, že nemůže dojít ke ztrátě dat webové aplikace, musíte nastavit zálohování. Přejděte do oblasti Nastavení pro webovou aplikaci.
+1. tooensure se udržuje hello webové aplikace před únikem potřebujete tooconfigure zálohy. Přejděte toohello nastavení oblast pro vaši webovou aplikaci.
    
    ![image56][image56]
-2. V pravém okně přejděte v kategorie Funkce.
+2. V okně hello hello správné posuňte se dolů toohello funkce kategorie.
    
     ![image57][image57]
-3. Vyberte Zálohy. Na pravé straně se otevře okno.
+3. Vyberte zálohování; Otevře se okno na hello správné.
    
    ![image58][image58]
-4. Klikněte na Konfigurovat a v pravém okně vyberte účet úložiště.
+4. Kliknutím na tlačítko Konfigurovat, vyberte účet úložiště v okně hello na hello správné.
    
    ![image59][image59]
-5. Teď vytvořte a vyberte kontejner úložiště pro uložení záloh. Dole na formuláři klikněte na Vytvořit. Potom vyberte kontejner.
+5. Teď vytvořte a vyberte toohold kontejneru úložiště záloh. Kliknutím na vytvořit dole hello v okně hello. Pak vyberte kontejner hello.
    
    ![image60][image60]
-6. Když vyberete kontejner, můžete nakonfigurovat plány a vytvářet zálohy databází. V tomto scénáři, klikněte na ikonu Uložit.
+6. Po zvolení hello kontejneru, můžete nakonfigurovat plány, stejně jako nastavení zálohy pro vaše databáze. Pro tento scénář klikněte na tlačítko hello uložit ikonu.
    
     ![image61][image61]
-7. Po uložení přejděte zpět do levého okna pro Zálohy. Klikněte na Zálohovat a aplikace se zazálohuje.
+7. Po uložení, posuňte se zpět toohello okně na levém hello pro zálohy. Klikněte na tlačítko Zálohovat nyní tooback hello aplikace.
    
     ![image62][image62]
-8. Za chvíli uvidíte, že se vytvořila záloha. Na snímku obrazovky dole si všimněte možnosti Obnovit.
+8. Za chvíli uvidíte, že se vytvořila záloha. Všimněte si hello obnovit nyní možnost na hello snímek obrazovky níže.
    
     ![image63][image63]
-9. Klikněte na Obnovit a podívejte se na možnosti v pravém okně. Můžete vybrat zálohu, kterou chcete, a podle potřeby snadno obnovit předchozí stav. Portál Azure nám pomohl pro aplikaci jednoduše povolit strategie obnovení po havárii.
+9. Klikněte na obnovit a prozkoumat hello možnosti toohello okně hello správné. Je možné, že že příslušné zálohování a snadno tooan obnovení dříve stavu podle potřeby. Hello portál Azure pomůže nám snadno povolit strategie obnovení po havárii jednoduché aplikace hello.
    
     ![image64][image64]
-10. Přejděte zpět do levého okna nastavení a v části Funkce vyberte možnost Ověřování / autorizace.
+10. Přesunout zpět okno nastavení toohello na levé straně hello a v části funkce a zvolte ověřování/autorizace.
     
      ![image65][image65]
-11. V pravém okně vyberte Ověřování pomocí služby App Service. Všimněte si, že máte na výběr různé možnosti, které můžete konfigurovat pro oblíbené zprostředkovatele.
+11. V okně hello na pravém hello vyberte aplikaci služby ověřování. Všimněte si hello různé možnosti, které můžete konfigurovat pomocí Oblíbené zprostředkovatele.
     
      ![image66][image66]
-12. Vyberte poskytovatele, kterého chcete, a všimněte si možností pro obor. Můžete zadat ID aplikace a Tajný klíč aplikace a snadno pro aplikaci povolit ověření na Facebooku. Portál Azure pro aplikace umožňuje ověřování jako řešení na klíč.
+12. Vyberte poskytovatele správy hello podle svého výběru a Všimněte si hello možnosti oboru hello. Můžete zadejte ID aplikace a tajný klíč aplikace a rychle povolit ověřování Facebook pro aplikaci hello. Hello portálu Azure umožňuje ověřování, jako to řešení na klíč pro aplikace.
     
      ![image67][image67]
-13. Přejděte zpět do okna Nastavení a v kategorii Správa prostředků vyberte možnost Uživatelé.
+13. Okno nastavení toohello přesunout zpět a vyberte uživatele v kategorii Správa prostředků hello.
     
      ![image68][image68]
-14. V pravém okně se podívejte na různé možnosti pro přidávání rolí a uživatelů. Portál Azure vám umožňuje snadno ovládat RBAC (řízení přístupu na základě role) pro aplikaci.
+14. V okně hello na pravém hello zkontrolujte hello různé možnosti pro přidání rolí a uživatelů. Hello portálu Azure můžete snadno nastavit RBAC (řízení přístupu na základě rolí) pro aplikace hello.
     
      ![image69][image69]
 
 ## <a name="summary"></a>Souhrn
-V tomto kurzu jsme vám ukázali některé schopnosti platformy Azure – rychlé zapnutí průběžného nasazování pro webovou aplikaci, provádění různých činností souvisejících s vývojem a testováním, sledování a řešení potíží s živou aplikací, a nakonec správu klíčových strategií, jako je zotavení po havárii, identita a řízení přístupu na základě rolí. Platforma Azure poskytuje integrované prostředí pro tyto pracovní postupy DevOps a vy můžete efektivně pracovat, protože budete mít přehled a všechny potřebné úkoly po ruce.
+V tomto kurzu ukázán některé hello výkonu hello platformy Azure rychle povolením průběžné nasazování pro webovou aplikaci, provádění různých vývoj a testování aktivity, monitorování a řešení potíží s živé aplikace a nakonec správě klíče strategie například zotavení po havárii, identity a řízení přístupu na základě rolí. Hello platformy Azure umožňuje integrované možnosti pro tyto pracovní postupy DevOps a můžou pracovat efektivně protože zůstává v kontextu pro hello úlohy po ruce.
 
 ## <a name="next-steps"></a>Další kroky
-* Azure Resource Manager je důležitý k tomu, aby DevOps mohl fungovat na platformě Azure.  Další informace najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
-* Další informace o nasazování do Azure App Service najdete v tématu [Nasazení vaší aplikace do Azure App Service](../app-service-web/web-sites-deploy.md)
+* Azure Resource Manager je důležité pro povolení DevOps na hello platformy Azure.  toolearn více navštivte [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+* informace o nasazení služby Azure App Service najdete toolearn [nasazení vaší aplikace tooAzure služby App Service](../app-service-web/web-sites-deploy.md)
 
 [image1]: ./media/tutorial-azureportal-devops/image1.png
 [image2]: ./media/tutorial-azureportal-devops/image2.png

@@ -1,6 +1,6 @@
 ---
-title: "Synchronizace obsahu ze složky cloudu do služby Azure App Service"
-description: "Informace o nasazení aplikace do služby Azure App Service prostřednictvím synchronizace obsahu ze složky cloudu."
+title: "aaaSync obsah ze složky tooAzure cloudové služby App Service"
+description: "Zjistěte, jak toodeploy aplikace tooAzure služby App Service přes obsah synchronizovat ze složky cloudu."
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 010e7dc492abefaa3afe814c0322af9f6fe5acd2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e1c6d53a427c36126d9cdb33cc21b4126b9d9c2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizace obsahu ze složky cloudu do služby Azure App Service
-V tomto kurzu se dozvíte, jak nasadit do [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) podle synchronizuje svůj obsah z oblíbených cloudových úložiště služby, jako je Dropbox a OneDrive. 
+# <a name="sync-content-from-a-cloud-folder-tooazure-app-service"></a>Synchronizace obsahu ze složky tooAzure cloudové služby App Service
+Tento kurz ukazuje, jak toodeploy příliš[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) podle synchronizuje svůj obsah z oblíbených cloudových úložiště služby, jako je Dropbox a OneDrive. 
 
 ## <a name="overview"></a>Přehled nasazení obsahu synchronizace
-Používá technologii nasazení synchronizace obsahu na vyžádání [modul nasazení Kudu](https://github.com/projectkudu/kudu/wiki) integrované se službou App Service. V [portálu Azure](https://portal.azure.com), můžete určit složku v cloudovém úložišti, pracovat s kódu aplikace a obsah v této složce a kliknutím tlačítko Synchronizovat do služby App Service. Synchronizace obsahu využívá pro proces Kudu pro sestavení a nasazení. 
+nasazení synchronizace obsahu na vyžádání Hello používá technologii hello [modul nasazení Kudu](https://github.com/projectkudu/kudu/wiki) integrované se službou App Service. V hello [portálu Azure](https://portal.azure.com), lze určit složku v cloudovém úložišti, pracovat s kódu aplikace a obsah v této složce a tooApp synchronizační službu s hello klikněte tlačítko. Synchronizace obsahu využívá pro proces hello Kudu pro sestavení a nasazení. 
 
-## <a name="contentsync"></a>Postup povolení nasazení obsahu synchronizace
-Povolit synchronizaci obsahu z [portálu Azure](https://portal.azure.com), postupujte takto:
+## <a name="contentsync"></a>Jak obsah tooenable synchronizovat nasazení
+tooenable obsahu sync z hello [portálu Azure](https://portal.azure.com), postupujte takto:
 
-1. V okně vaší aplikace na portálu Azure, klikněte na tlačítko **nastavení** > **zdroj nasazení**. Klikněte na tlačítko **zvolit zdroj**, pak vyberte **OneDrive** nebo **Dropbox** jako zdroj pro nasazení. 
+1. V okně vaší aplikace v hello portálu Azure, klikněte na tlačítko **nastavení** > **zdroj nasazení**. Klikněte na tlačítko **zvolit zdroj**, pak vyberte **OneDrive** nebo **Dropbox** jako hello zdroj pro nasazení. 
    
     ![Synchronizace obsahu](./media/app-service-deploy-content-sync/deployment_source.png)
    
    > [!NOTE]
-   > Kvůli základním rozdílům v rozhraní API **Onedrivu pro firmy** v tuto chvíli není podporován. 
+   > Kvůli základním rozdílům v hello rozhraní API **Onedrivu pro firmy** v tuto chvíli není podporován. 
    > 
    > 
-2. Dokončení autorizace pracovního postupu povolení aplikaci služby pro přístup k cestě určené pro konkrétní předem definovaná pro OneDrive nebo Dropbox, kde veškerý obsah vaší služby App Service bude uložena.  
-    Po autorizace služby App Service platformy získáte možnost vytvořit složku obsahu v určené cestě obsahu, nebo vybrat existující složku obsahu v této cestě určené obsahu. Určené cesty obsahu v rámci vaší cloudové úložiště účty používané pro synchronizaci služby App Service jsou následující:  
+2. Dokončení hello autorizace pracovního postupu tooenable služby App Service tooaccess definovány konkrétní předem určenou cestu pro OneDrive nebo Dropbox, kde veškerý obsah vaší služby App Service bude uložena.  
+    Po hello autorizace služby App Service platformy získáte možnost toocreate hello složku obsahu v rámci hello určené cestu obsahu nebo toochoose existující složku obsahu v této cestě určené obsahu. cesty obsahu Hello uvedených v části vaší cloudové úložiště účty používané pro synchronizaci služby App Service jsou hello následující:  
    
    * **OneDrive**:`Apps\Azure Web Apps` 
    * **Dropbox**:`Dropbox\Apps\Azure`
-3. Po počáteční synchronizaci obsahu lze inicializovat synchronizace obsahu na vyžádání z portálu Azure. Historie nasazení je k dispozici **nasazení** okno.
+3. Po hello lze inicializovat obsahu synchronizace hello počáteční synchronizace obsahu na vyžádání z portálu Azure hello. Historie nasazení je k dispozici s hello **nasazení** okno.
    
     ![Historie nasazení](./media/app-service-deploy-content-sync/onedrive_sync.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Jak používat sendgrid vám umožňuje v Azure Functions | Microsoft Docs"
-description: "Ukazuje, jak používat sendgrid vám umožňuje v Azure Functions"
+title: "aaaHow toouse sendgrid vám umožňuje v Azure Functions | Microsoft Docs"
+description: "Ukazuje, jak toouse sendgrid vám umožňuje v Azure Functions"
 services: functions
 documentationcenter: na
 author: rachelappel
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: rachelap
-ms.openlocfilehash: 05c9f4e4a4351219da68af8b702c25f21d7d4d02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a0ffdae04e5924c773d2d26427626fc1f570f7ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-sendgrid-in-azure-functions"></a>Jak používat sendgrid vám umožňuje v Azure Functions
+# <a name="how-toouse-sendgrid-in-azure-functions"></a>Jak toouse sendgrid vám umožňuje v Azure Functions
 
 ## <a name="sendgrid-overview"></a>Přehled sendgrid vám umožňuje
 
-Azure Functions podporuje sendgrid vám umožňuje výstupní vazby funkcí k odesílání e-mailové zprávy s několika řádků kódu a sendgrid vám umožňuje účet povolit.
+Azure Functions podporuje sendgrid vám umožňuje výstupní vazby tooenable funkce e-mailové zprávy toosend zadání několika řádků kódu a účet sendgrid vám umožňuje.
 
-Chcete-li použít rozhraní API sendgrid vám umožňuje v funkci Azure, musíte mít [sendgrid vám umožňuje účet](http://SendGrid.com). Kromě toho musí mít klíč rozhraní API sendgrid vám umožňuje. Přihlaste se ke svému účtu sendgrid vám umožňuje a klikněte na tlačítko **nastavení** pak **klíč rozhraní API** vygenerovat klíč rozhraní API. Uchovávejte tento klíč k dispozici při používání v nadcházející kroku.
+toouse rozhraní API hello sendgrid vám umožňuje v funkci Azure, musíte mít [sendgrid vám umožňuje účet](http://SendGrid.com). Kromě toho musí mít klíč rozhraní API sendgrid vám umožňuje. Přihlaste se tooyour sendgrid vám umožňuje účet a klikněte na tlačítko **nastavení** pak **klíč rozhraní API** klíč toogenerate rozhraní API. Uchovávejte tento klíč k dispozici při používání v nadcházející kroku.
 
-Nyní jste připraveni vytvořit aplikaci funkce Azure.
+Nyní je připraven toocreate funkce Azure aplikace.
 
 ## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App 
 
-Aplikace Azure funkce jsou kontejnery pro jeden nebo více Azure functions. Řešení Azure functions se právě který – funkce. Jednotlivé funkce Azure je vázaný na jedna aktivační událost, která je událost, která způsobí, že funkce spustit.
-Jednotlivé funkce může obsahovat libovolný počet vstup nebo výstup vazby. Vazby jsou služby, které můžete použít ve funkci. Sendgrid vám umožňuje je vazbu výstup, které můžete použít k odesílání e-mailu. 
+Aplikace Azure funkce jsou kontejnery pro jeden nebo více Azure functions. Řešení Azure functions se právě který – funkce. Jednotlivé funkce Azure je vázané tooone aktivační události, které je událost, která způsobí, že funkce toorun hello.
+Jednotlivé funkce může obsahovat libovolný počet vstup nebo výstup vazby. Vazby jsou služby, které můžete použít ve funkci. Sendgrid vám umožňuje je výstup vazby, které můžete použít toosend e-mailu. 
 
-1. Přihlaste se k portálu Azure a [vytvoření aplikace Azure funkce](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) nebo otevřete stávající funkce aplikace. 
-2. Vytvoření Azure funkce. Chcete-li jednoduchost, zvolte ruční aktivační události a C#. 
+1. Přihlaste se toohello portál Azure a [vytvoření aplikace Azure funkce](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) nebo otevřete stávající funkce aplikace. 
+2. Vytvoření Azure funkce. tookeep to jednoduché, zvolte ruční aktivační události a C#. 
 
  ![Vytvoření Azure funkce](./media/functions-how-to-use-sendgrid/functions-new-function-manual-trigger-page.png)
 
 ## <a name="configure-sendgrid-for-use-in-an-azure-function-app"></a>Sendgrid vám umožňuje nakonfigurovat pro použití v aplikaci Azure – funkce
 
-Musíte si klíč rozhraní API sendgrid vám umožňuje uložit jako nastavení aplikace pro použití ve funkci. Pole ApiKey není klíč skutečné sendgrid vám umožňuje rozhraní API, ale definovat nastavení aplikace, které představuje skutečný klíč rozhraní API. Ukládání klíče tímto způsobem je pro zabezpečení, protože je oddělená od žádné kódu nebo soubory, které může zkontrolovat do správy zdrojového kódu.
+Musíte si klíč rozhraní API sendgrid vám umožňuje uložit jako toouse nastavení aplikace je ve funkci. pole ApiKey Hello není klíč skutečné sendgrid vám umožňuje rozhraní API, ale definovat nastavení aplikace, které představuje skutečný klíč rozhraní API. Ukládání klíče tímto způsobem je pro zabezpečení, protože je oddělená od žádné kódu nebo soubory, které může zkontrolovat do správy zdrojového kódu.
 
 - Vytvoření **AppSettings** klíče v aplikaci funkce **nastavení aplikace**.
 
@@ -48,15 +48,15 @@ Musíte si klíč rozhraní API sendgrid vám umožňuje uložit jako nastavení
 
 ## <a name="configure-sendgrid-output-bindings"></a>Konfigurovat sendgrid vám umožňuje výstup vazby
 
-Je k dispozici jako Azure sendgrid vám umožňuje funkce výstup vazby. Chcete-li vytvořit sendgrid vám umožňuje výstup vazby:
+Je k dispozici jako Azure sendgrid vám umožňuje funkce výstup vazby. toocreate sendgrid vám umožňuje výstup vazby:
 
-1. Přejděte na **integrací** karta funkce na portálu Azure.
-2. Klikněte na tlačítko **nový výstupní** sendgrid vám umožňuje vytvořit výstup vazby.
-3. Vyplňte **klíč rozhraní API** a **název parametru zpráva** vlastnosti. Pokud chcete, můžete zadat další vlastnosti nyní, nebo místo toho je kód. Tato nastavení mohou být použity jako výchozí.
+1. Přejděte toohello **integrací** kartě hello funkce v hello portálu Azure.
+2. Klikněte na tlačítko **nový výstupní** toocreate sendgrid vám umožňuje výstup vazby.
+3. Vyplňte hello **klíč rozhraní API** a **název parametru zpráva** vlastnosti. Pokud chcete, můžete zadat nyní hello další vlastnosti, nebo místo toho je code. Tato nastavení mohou být použity jako výchozí.
 
  ![Konfigurovat sendgrid vám umožňuje výstup vazby](./media/functions-how-to-use-sendgrid/functions-configure-sendgrid-output-bindings.png)
 
-Přidání vazbu na funkci vytvoří soubor s názvem **function.json** ve složce vaší funkce. Tento soubor obsahuje všechny stejné informace, které se zobrazí v Azure funkce **integrací** kartě, ale ve formátu Json formátu. Nastavení **ApiKey**, **zpráva**, a **z** pole vytvořit následující záznamy v **function.json** souboru: 
+Přidání funkce tooa vazby vytvoří soubor s názvem **function.json** ve složce vaší funkce. Tento soubor obsahuje všechny hello stejné informace, který se zobrazí v hello Azure funkce **integrací** kartě, ale ve formátu Json formátu. Nastavení hello **ApiKey**, **zpráva**, a **z** pole vytvořit následující záznamy v hello hello **function.json** souboru: 
 
 ```json
 {
@@ -75,13 +75,13 @@ Přidání vazbu na funkci vytvoří soubor s názvem **function.json** ve slož
 
 Pokud dáváte přednost, můžete to upravovat soubor sami přímo.
 
-Teď, když jste vytvořili a nakonfigurovali aplikaci funkce a funkce, můžete napsat kód odeslat e-mail.
+Teď, když je vytvořen a nakonfigurován hello aplikaci funkce a funkce, můžete napsat kód toosend hello e-mailu.
 
 ## <a name="write-code-that-creates-and-sends-email"></a>Psaní kódu, které vytváří a odesílá e-mailu
 
-Rozhraní API sendgrid vám umožňuje obsahuje všechny příkazy, které potřebujete k vytvoření a odeslání e-mailu.  
+Hello sendgrid vám umožňuje rozhraní API obsahuje všechny hello příkazy potřebujete toocreate a e-mailovou zprávu.  
 
-- Nahraďte kód ve funkci s následujícím kódem:
+- Nahraďte kód hello ve funkci hello hello následující kód:
 
 ```cs
 #r "SendGrid"
@@ -96,7 +96,7 @@ public static void Run(TraceWriter log, string input, out Mail message)
     };
 
     var personalization = new Personalization();
-    // change to email of recipient
+    // change tooemail of recipient
     personalization.AddTo(new Email("MoreEmailPlease@contoso.com"));   
 
     Content content = new Content
@@ -109,20 +109,20 @@ public static void Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-Všimněte si první řádek obsahuje ```#r``` direktiva, která odkazuje na sestavení sendgrid vám umožňuje. Potom můžete použít ```using``` příkaz více snadný přístup k objektům v daném oboru názvů. V kódu, vytváření instancí ```Mail```, ```Personalization```, a ```Content``` objekty z rozhraní API Sendgridu, které tvoří e-mailu. Při návratu zprávy, přináší sendgrid vám umožňuje ho. 
+Všimněte si hello první řádek obsahuje hello ```#r``` direktiva, která odkazuje na sestavení sendgrid vám umožňuje hello. Potom můžete použít ```using``` toomore příkaz snadný přístup k hello objekty v daném oboru názvů. V kódu hello vytvoření instancí ```Mail```, ```Personalization```, a ```Content``` objekty z hello sendgrid vám umožňuje rozhraní API, které tvoří hello e-mailu. Při návratu uvítací zprávu, přináší sendgrid vám umožňuje ho. 
 
-Podpis funkce je také obsahuje další parametr typu out ```Mail``` s názvem ```message```. Obě vstup a výstup vazby express sami jako parametry funkce v kódu. 
+Hello funkce podpis také obsahuje další parametr typu out ```Mail``` s názvem ```message```. Obě vstup a výstup vazby express sami jako parametry funkce v kódu. 
 
-2. Otestujte svůj kód kliknutím **Test** a zadání zprávy do **text žádosti** pole, pak levým na **spustit** tlačítko.
+2. Otestujte svůj kód kliknutím **Test** a zadání zprávy do hello **text žádosti** pole a pak kliknete na hello **spustit** tlačítko.
 
  ![Otestujte svůj kód](./media/functions-how-to-use-sendgrid/functions-develop-test-sendgrid.png)
 
-3. Zkontrolujte e-mailu, chcete-li ověřit, že sendgrid vám umožňuje odeslat e-mailu. Měl by přejděte na adresu v kódu z kroku 1 a obsahovat zprávu od **text žádosti**.
+3. Zkontrolujte, že sendgrid vám umožňuje odeslat e-mailu hello tooverify e-mailu. Měl by přejděte toohello adresu v kódu hello z kroku 1 a obsahovat uvítací zprávu z hello **text žádosti**.
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek vám ukázal, jak pomocí služby sendgrid vám umožňuje vytvořit a odeslat e-mailu. Další informace o používání služby Azure Functions ve svých aplikacích najdete v následujících tématech: 
+Tento článek vám ukázal, jak toouse hello toocreate služby sendgrid vám umožňuje a odeslání e-mailu. toolearn Další informace o použití Azure Functions v aplikacích, najdete v části hello následující témata: 
 
-- [Osvědčené postupy pro Azure Functions](functions-best-practices.md) uvádí některé osvědčené postupy pro použití při vytváření Azure Functions.
+- [Osvědčené postupy pro Azure Functions](functions-best-practices.md) uvádí některé osvědčené postupy toouse při vytváření Azure Functions.
 
 - [Referenční informace pro vývojáře Azure Functions](functions-reference.md) referenční informace pro programátory pro kódování funkcí a definování triggerů a vazeb.
 

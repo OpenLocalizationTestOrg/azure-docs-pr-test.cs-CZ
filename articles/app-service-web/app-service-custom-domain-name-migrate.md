@@ -1,6 +1,6 @@
 ---
-title: "Migrovat název DNS active do služby Azure App Service | Microsoft Docs"
-description: "Zjistěte, jak migrovat vlastní název domény DNS, který je již přiřazen k lokalitě v za provozu do služby Azure App Service bez odstávky."
+title: "aaaMigrate active DNS název tooAzure služby App Service | Microsoft Docs"
+description: "Zjistěte, jak toomigrate vlastní název domény DNS, který je již přiřazen tooa live lokality tooAzure služby App Service bez odstávky."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: 89308c1c684a639950467b72d26703cc07c50c14
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fbc4cc30dcb87efb2e867cb65c5404b667661e62
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrovat název DNS active do služby Azure App Service
+# <a name="migrate-an-active-dns-name-tooazure-app-service"></a>Migrace aktivní tooAzure název DNS služby App Service
 
-Tento článek ukazuje, jak migrovat active názvu DNS, aby [Azure App Service](../app-service/app-service-value-prop-what-is.md) bez odstávky.
+Tento článek ukazuje, jak toomigrate active DNS název příliš[Azure App Service](../app-service/app-service-value-prop-what-is.md) bez odstávky.
 
-Když provádíte migraci za provozu lokality a jeho název domény DNS do služby App Service, tento název DNS je již obsluhující provoz za provozu. Výpadek při překlad DNS během migrace vyhnete tak, že ho preventivně vazby active název DNS do aplikace služby App Service.
+Při migraci za provozu lokality a jeho DNS domény název tooApp služby, je tento název DNS obsluhující již provoz za provozu. Výpadek při překlad DNS během migrace hello vyhnete tak, že ho preventivně vazby hello active DNS název tooyour aplikaci služby App Service.
 
-Pokud si nejste obavy o výpadek při překlad názvů DNS, najdete v části [mapovat existující vlastní název DNS pro službu Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+Pokud si nejste obavy o výpadek při překlad názvů DNS, najdete v části [mapovat existující vlastní DNS název tooAzure webové aplikace](app-service-web-tutorial-custom-domain.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést tento postup:
+toocomplete tento postup:
 
 - [Ujistěte se, že aplikaci aplikační služby není v úrovni FREE](app-service-web-tutorial-custom-domain.md#checkpricing).
 
-## <a name="bind-the-domain-name-preemptively"></a>Název domény ho preventivně vazby
+## <a name="bind-hello-domain-name-preemptively"></a>Název domény hello ho preventivně vazby
 
-Pokud jste ho preventivně vytvořit vazbu vlastní doménu, musíte provést obě tyto před provedením jakýchkoli změn se záznamy DNS:
+Pokud jste ho preventivně vytvořit vazbu vlastní doménu, musíte provést obě následující hello před provedením jakýchkoli změn se záznamy DNS:
 
 - Ověřit vlastnictví domény
-- Povolit název domény pro vaši aplikaci.
+- Povolit hello název domény pro vaši aplikaci.
 
-Při migraci nakonec váš vlastní název DNS ze staré lokality do aplikace služby App Service, budou v překlad DNS existovat nedojde k žádnému výpadku.
+Při migraci nakonec váš vlastní název DNS ze staré lokality toohello hello aplikaci služby App Service, budou v překlad DNS existovat nedojde k žádnému výpadku.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-domain-verification-record"></a>Vytvořit záznam ověření domény
 
-Pokud chcete ověřit vlastnictví domény, přidejte záznam TXT. Záznam TXT mapuje z _awverify.&lt; subdoména >_ k  _&lt;appname >. azurewebsites.net_. 
+vlastnictví domény s tooverify, zaznamenejte přidat TXT. Hello záznam TXT mapuje z _awverify.&lt; subdoména >_ too_&lt;appname >. azurewebsites.net_. 
 
-Záznam TXT, které potřebujete, závisí na záznam DNS, kterou chcete migrovat. Příklady, najdete v následující tabulce (`@` obvykle představuje kořenové domény):  
+Hello záznam TXT, které potřebujete, závisí na hello chcete toomigrate záznam DNS. Příklady najdete v tématu hello následující tabulka (`@` obvykle představuje hello kořenové domény):  
 
 | Příklad záznamu DNS | TXT hostitele | Hodnota TXT |
 | - | - | - |
@@ -58,73 +58,73 @@ Záznam TXT, které potřebujete, závisí na záznam DNS, kterou chcete migrova
 | WWW (pod) | _awverify.www_ | _&lt;AppName >. azurewebsites.net_ |
 | \*(zástupný znak) | _awverify.\*_ | _&lt;AppName >. azurewebsites.net_ |
 
-Na stránce záznamy DNS Všimněte si, typ záznamu DNS název, který chcete migrovat. App Service podporuje mapování z CNAME a záznamy.
+Poznamenejte si hello typ záznamu hello název DNS, které chcete toomigrate v stránku záznamů DNS. App Service podporuje mapování z CNAME a záznamy.
 
-### <a name="enable-the-domain-for-your-app"></a>Povolit domény pro vaši aplikaci.
+### <a name="enable-hello-domain-for-your-app"></a>Povolit hello domény pro vaši aplikaci.
 
-V [portál Azure](https://portal.azure.com), v levém navigačním panelu stránku aplikace, vyberte **vlastní domény**. 
+V hello [portál Azure](https://portal.azure.com), v levém navigačním stránky aplikace hello hello, vyberte **vlastní domény**. 
 
 ![Nabídky vlastní doménu.](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-V **vlastní domény** vyberte  **+**  ikonu vedle **přidat název hostitele**.
+V hello **vlastní domény** stránky, vyberte hello  **+**  ikonu další příliš**přidat název hostitele**.
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte název plně kvalifikované domény přidat záznam TXT, jako například `www.contoso.com`. Pro doménu zástupných znaků (například \*. contoso.com), můžete použít libovolný název DNS, který odpovídá zástupné domény. 
+Typ hello plně kvalifikovaný název domény přidali hello záznam TXT, jako například `www.contoso.com`. Pro doménu zástupných znaků (například \*. contoso.com), můžete použít libovolný název DNS, který odpovídá hello zástupné domény. 
 
 Vyberte **ověření**.
 
-**Přidat název hostitele** se aktivuje tlačítko. 
+Hello **přidat název hostitele** se aktivuje tlačítko. 
 
-Ujistěte se, že **typ záznamu Hostname** nastavená na typ záznamu DNS, kterou chcete migrovat.
+Ujistěte se, že **typ záznamu Hostname** je nastaven typ záznamu toohello DNS chcete toomigrate.
 
 Vyberte **přidat název hostitele**.
 
-![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+![Přidat aplikaci toohello název DNS](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Může trvat nějakou dobu, než nový název hostitele v aplikaci projeví **vlastní domény** stránky. Aktualizujte prohlížeč aktualizovat data.
+Může trvat nějakou dobu hello nový název hostitele toobe promítnuta aplikace hello **vlastní domény** stránky. Aktualizujte data hello tooupdate hello prohlížeče.
 
 ![Přidat záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 Váš vlastní název DNS je teď povolené v aplikaci Azure. 
 
-## <a name="remap-the-active-dns-name"></a>Přemapování active název DNS
+## <a name="remap-hello-active-dns-name"></a>Přemapování název DNS služby active hello
 
-Pouze vlevo věc udělat je přemapování vaše active záznam DNS tak, aby odkazoval na službu App Service. Pravé teď stále odkazuje na vaše staré lokality.
+Hello pouze jedinou levém toodo je přemapování vaše active tooApp toopoint záznamů DNS služby. Pravé teď stále odkazuje tooyour staré lokality.
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address-a-record-only"></a>Zkopírujte adresu IP aplikace (jenom záznam)
+### <a name="copy-hello-apps-ip-address-a-record-only"></a>Zkopírujte aplikace hello IP adresu (pouze záznam)
 
 Pokud jsou přemapování záznam CNAME, tuto část přeskočte. 
 
-Přemapování záznam A, musíte aplikace App Service externí IP adresu, která se zobrazí v **vlastní domény** stránky.
+záznam tooremap A, musíte aplikace App Service hello externí IP adresu, která se zobrazí v hello **vlastní domény** stránky.
 
-Zavřít **přidat název hostitele** stránky tak, že vyberete **X** v pravém horním rohu. 
+Zavřít hello **přidat název hostitele** stránky tak, že vyberete **X** v pravém horním rohu hello. 
 
-V **vlastní domény** stránky, zkopírujte aplikace IP adresu.
+V hello **vlastní domény** stránky, zkopírujte aplikace hello IP adresu.
 
-![Portál navigace do aplikace Azure](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+![Aplikace tooAzure portálu](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="update-the-dns-record"></a>Aktualizace záznamu DNS
+### <a name="update-hello-dns-record"></a>Aktualizace záznamu DNS hello
 
-Zpět na stránce záznamy DNS vaší domény poskytovatele, vyberte záznam DNS, který chcete přemapovat.
+Zpět v hello stránky záznamů DNS vaší domény poskytovatele vyberte tooremap záznamů DNS hello.
 
-Pro `contoso.com` kořen domény příklad, přemapovat záznam CNAME nebo A jako příklady v následující tabulce: 
+Pro hello `contoso.com` kořen domény příklad, přemapovat hello záznam CNAME nebo A jako příklady hello v hello následující tabulka: 
 
 | Příklad plně kvalifikovaný název domény | Typ záznamu | Hostitel | Hodnota |
 | - | - | - | - |
-| contoso.com (uživatel root) | A | `@` | IP adresu z [zkopírujte aplikace IP adresu](#info) |
+| contoso.com (uživatel root) | A | `@` | IP adresu z [aplikace hello kopie IP adresu](#info) |
 | www.contoso.com (pod) | CNAME | `www` | _&lt;AppName >. azurewebsites.net_ |
 | \*. contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;AppName >. azurewebsites.net_ |
 
 Uložte nastavení.
 
-Dotazy DNS by se měl spustit řešení do aplikace služby App Service hned se stane šíření záznamů DNS.
+Dotazy DNS by se měl spustit okamžitě po šíření záznamů DNS se stane řešení tooyour aplikaci služby App Service.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se vytvořit vazbu vlastní certifikát SSL služby App Service.
+Zjistěte, jak toobind vlastní SSL certifikát tooApp služby.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vazby stávající vlastní certifikát SSL pro službu Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Vytvořit vazbu existující vlastní SSL certifikát tooAzure webové aplikace](app-service-web-tutorial-custom-ssl.md)

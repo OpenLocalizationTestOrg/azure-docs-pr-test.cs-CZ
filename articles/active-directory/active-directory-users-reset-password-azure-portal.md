@@ -1,6 +1,6 @@
 ---
-title: "V Azure Active Directory resetování hesla | Microsoft Docs"
-description: "Vysvětluje, jak resetování hesla pro uživatele v Azure Active Directory"
+title: "aaaPassword resetování v Azure Active Directory | Microsoft Docs"
+description: "Vysvětluje, jak tooreset hello heslo pro uživatele v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,36 +16,36 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e7c38c7f0d40a310dd0b6bd0e866d2d55115550
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4bb201803ffc50bcc937a309ae4f0d613da2ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Resetování hesla pro uživatele v Azure Active Directory
+# <a name="reset-hello-password-for-a-user-in-azure-active-directory"></a>Resetovat hello heslo pro uživatele v Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 > * [Portál Azure Classic](active-directory-create-users-reset-password.md)
 >
 >
 
-## <a name="how-to-reset-the-password-for-a-user"></a>Obnovení hesla pro uživatele
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="how-tooreset-hello-password-for-a-user"></a>Jak tooreset hello heslo pro uživatele
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. Na **uživatelů a skupin** vyberte **uživatelé**.
+3. Na hello **uživatelů a skupin** vyberte **uživatelé**.
 
-   ![Otevřete okno Uživatelé](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-4. V okně **Uživatelé a skupiny – Uživatelé** vyberte uživatele ze seznamu.
-5. V okně pro vybraného uživatele vyberte **Přehled** a potom na panelu příkazů vyberte **Resetovat heslo**.
+   ![Okno Uživatelé otevírání hello](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+4. Na hello **uživatelé a skupiny - Uživatelé** okně vyberte uživatele ze seznamu hello.
+5. V okně hello hello vybraného uživatele, vyberte **přehled**a pak v řádku nabídek hello vyberte **resetovat heslo**.
 
-    ![Výběrem příkazu resetování hesla](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
-6. Na **resetovat heslo** vyberte **resetovat heslo**.
+    ![Výběr hello resetovat heslo příkaz](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+6. Na hello **resetovat heslo** vyberte **resetovat heslo**.
 
 ## <a name="next-steps"></a>Další kroky
 * [Přidat uživatele](active-directory-users-create-azure-portal.md)
-* [Přiřazení uživatele k roli ve službě Azure AD](active-directory-users-assign-role-azure-portal.md)
+* [Přiřadit roli tooa uživatele ve službě Azure AD](active-directory-users-assign-role-azure-portal.md)
 * [Změnit informace o práci uživatele](active-directory-users-work-info-azure-portal.md)
 * [Správa uživatelských profilů](active-directory-users-profile-azure-portal.md)
 * [Odstranění uživatele ve službě Azure AD](active-directory-users-delete-user-azure-portal.md)

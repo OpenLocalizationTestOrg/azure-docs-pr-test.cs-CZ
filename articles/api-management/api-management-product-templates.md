@@ -1,6 +1,6 @@
 ---
-title: "Šablony produktu v Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky produktu v portálu pro vývojáře Azure API Management."
+title: "aaaProduct šablon ve službě Azure API Management | Microsoft Docs"
+description: "Zjistěte, jak se obsah hello toocustomize produktu hello stránky v portálu pro vývojáře Azure API Management hello."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ddbb9860b437cb3e7334bdf5891f2fba1cffb76
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60600299287aad87f9b621782ab5ceb866601d03
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktu v Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje že Hello možnost toocustomize hello obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a hello editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a zadané sadu lokalizované [řetězce prostředků](api-management-template-resources.md#strings), [ Prostředky glyfy](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu tooconfigure hello obsah hello stránek podle potřeby pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky produktu v portálu pro vývojáře.  
+ Hello šablony v této části Povolit toocustomize hello obsah stránky produktu hello na portál pro vývojáře hello.  
   
 -   [Seznam produktů](#ProductList)  
   
 -   [Produktu](#Product)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci hello, ale jsou toochange subjektu z důvodu vylepšení toocontinuous. Hello za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře hello přechodem toohello potřeby jednotlivých šablony. Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a>Seznam produktů  
- **Seznam produktů** šablona umožňuje přizpůsobit text stránky seznam produktu v portálu pro vývojáře.  
+ Hello **seznam produktů** šablona vám umožní toocustomize hello textu hello produktu seznamu stránky v portálu pro vývojáře hello.  
   
  ![Seznam produktů](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
@@ -66,7 +66,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Product list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -76,9 +76,9 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci produkty.|  
-|Filtrování|[Filtrování](api-management-template-data-model-reference.md#Filtering) entity.|Filtrování informace pro stránku seznam produktů.|  
-|Produkty|Kolekce [produktu](api-management-template-data-model-reference.md#Product) entity.|Produkty viditelné pro aktuálního uživatele.|  
+|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|informace o stránkování Hello pro kolekci produkty hello.|  
+|Filtrování|[Filtrování](api-management-template-data-model-reference.md#Filtering) entity.|filtrování informace hello produkty seznam stránku Hello.|  
+|Produkty|Kolekce [produktu](api-management-template-data-model-reference.md#Product) entity.|Hello produkty viditelné toohello aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -99,7 +99,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
         {  
             "Id": "56f9445ffaf7560049060001",  
             "Title": "Starter",  
-            "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "Terms": "",  
             "ProductState": 1,  
             "AllowMultipleSubscriptions": false,  
@@ -108,7 +108,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
         {  
             "Id": "56f9445ffaf7560049060002",  
             "Title": "Unlimited",  
-            "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "Description": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "Terms": null,  
             "ProductState": 1,  
             "AllowMultipleSubscriptions": false,  
@@ -119,7 +119,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ##  <a name="Product"></a>Produktu  
- **Produktu** šablona umožňuje přizpůsobení textu stránky produktu v portálu pro vývojáře.  
+ Hello **produktu** šablona vám umožní toocustomize hello textu hello produktu stránky v portálu pro vývojáře hello.  
   
  ![Stránka portálu produktu vývojáře](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
@@ -193,7 +193,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ Hello `Product list` šablona může používat následující hello [stránka ovládací prvky](api-management-page-controls.md).  
   
 -   [přihlášení k odběru tlačítko](api-management-page-controls.md#subscribe-button)  
   
@@ -201,17 +201,17 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
-|IsDeveloperSubscribed|Logická hodnota|Jestli má aktuální uživatel je přihlášen k tohoto produktu.|  
-|Hodnotu SubscriptionState|Číslo|Stav odběru. Je možné stavy:<br /><br /> -   `0 - suspended`– předplatného je zablokovaný a odběrateli nelze volat všechny rozhraní API produktu.<br />-   `1 - active`– je předplatné aktivní.<br />-   `2 - expired`– předplatné dosaženo datum vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádosti o odběr byl proveden vývojáře, ale má ještě schválení nebo odmítnutí.<br />-   `4 - rejected`– žádosti o odběr byl odepřen správcem.<br />-   `5 - cancelled`– předplatné zrušil vývojáře nebo správce.|  
+|Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt Hello.|  
+|IsDeveloperSubscribed|Logická hodnota|Jestli hello aktuální uživatel je přihlášený toothis produktu.|  
+|Hodnotu SubscriptionState|Číslo|Stav Hello hello předplatného. Je možné stavy:<br /><br /> -   `0 - suspended`– hello předplatného je zablokovaná, a hello odběratele nelze volat všechny rozhraní API produktu hello.<br />-   `1 - active`– hello předplatné je aktivní.<br />-   `2 - expired`– hello předplatné dosaženo datum vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádosti o odběr hello nebylo provedeno hello developer, ale má ještě schválení nebo odmítnutí.<br />-   `4 - rejected`– hello předplatné požadavek byl odmítnut správcem.<br />-   `5 - cancelled`– hello předplatné zrušil správce nebo vývojáře hello.|  
 |Omezení|Pole|Tato vlastnost je zastaralá a by se neměla používat.|  
 |DelegatedSubscriptionEnabled|Logická hodnota|Jestli [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) je pro toto předplatné povolená.|  
-|DelegatedSubscriptionUrl|Řetězec|Pokud je povoleno delegování, adresu URL delegované předplatného.|  
-|IsAgreed|Logická hodnota|Pokud produkt má podmínky, zda má aktuální uživatel souhlas s podmínkami.|  
-|Předplatná|Kolekce [předplatné Souhrn](api-management-template-data-model-reference.md#SubscriptionSummary) entity.|Odběry produktu.|  
-|Rozhraní API|Kolekce [rozhraní API](api-management-template-data-model-reference.md#API) entity.|Rozhraní API v tomto produktu.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|Logická hodnota|Jestli má aktuální uživatel nemá oprávnění k odběru tohoto produktu s ohledem na limitu předplatného.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|Logická hodnota|Jestli má aktuální uživatel nemá oprávnění k odběru tohoto produktu s ohledem na více předplatných, nebo není povolené.|  
+|DelegatedSubscriptionUrl|Řetězec|Pokud je povoleno delegování, hello delegována adresu URL odběru.|  
+|IsAgreed|Logická hodnota|Pokud produkt hello podmínky, jestli aktuální uživatel hello souhlasila toohello podmínky.|  
+|Předplatná|Kolekce [předplatné Souhrn](api-management-template-data-model-reference.md#SubscriptionSummary) entity.|Hello odběry toohello produktu.|  
+|Rozhraní API|Kolekce [rozhraní API](api-management-template-data-model-reference.md#API) entity.|Hello rozhraní API v tomto produktu.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|Logická hodnota|Jestli hello aktuální uživatel je vhodné toosubscribe toothis produktu s ohledem toohello předplatné limit.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|Logická hodnota|Jestli hello aktuální uživatel je vhodné toosubscribe toothis produktu s ohledem na toomultiple odběry nebo není povolené.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -220,7 +220,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
     "Product": {  
         "Id": "56f9445ffaf7560049060001",  
         "Title": "Starter",  
-        "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+        "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
         "Terms": "",  
         "ProductState": 1,  
         "AllowMultipleSubscriptions": false,  
@@ -258,4 +258,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [jak toocustomize hello portál pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

@@ -1,6 +1,6 @@
 ---
-title: "Co je nového v koncového bodu v2.0 Azure AD? | Dokumentace Microsoftu"
-description: "Porovnání mezi původní Azure AD v2.0 koncové body a."
+title: "aaaWhat se liší v koncového bodu v2.0 hello Azure AD? | Dokumentace Microsoftu"
+description: "Porovnání hello původní Azure AD a hello v2.0 koncové body."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 81de65b0e825dec64383f52b02c5ee56c9434807
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e7ed196f9053fc21db799cd6bc513ba5c2b92885
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="whats-different-about-the-v20-endpoint"></a>Co se liší o koncový bod v2.0?
-Pokud jste se seznámili s Azure Active Directory nebo aplikací mít integrované s Azure AD v minulosti, může být určité rozdíly v koncový bod v2.0, které by uživatel očekával.  Tento dokument se volá na těchto rozdílů za pochopení.
+# <a name="whats-different-about-hello-v20-endpoint"></a>Co se liší o koncového bodu v2.0 hello?
+Pokud jste se seznámili s Azure Active Directory nebo aplikací mít integrované s Azure AD v posledních hello, může být určité rozdíly v koncového bodu v2.0 hello, které by uživatel očekával.  Tento dokument se volá na těchto rozdílů za pochopení.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 
 ## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Účty Microsoft a účty Azure AD
-Koncový bod v2.0 umožňují vývojářům zápisu aplikace, které přijímají přihlášení z účtů Microsoft Accounts i Azure AD, pomocí koncový bod jedné ověřování.  To vám dává možnost zapisovat aplikaci zcela účet bez ohledu na; může být typu účtu, který uživatel přihlásí, které ignorují.  Samozřejmě můžete *můžete* zvýšit vaši aplikaci vědět, typ účtu se používá v konkrétní relace, ale není nutné.
+koncový bod v2.0 Hello umožňují vývojářům toowrite aplikace, které přijímají přihlášení z účtů Microsoft Accounts i Azure AD, koncový bod jedné ověřování pomocí.  Tato poskytuje hello možnost toowrite aplikaci zcela účet bez ohledu na; může být hello typu účtu, který hello uživatel se přihlásí, které ignorují.  Samozřejmě můžete *můžete* zvýšit vaši aplikaci využívající hello typu účtu se používá v konkrétní relace, ale nemusíte.
 
-Například pokud aplikace zavolá [Microsoft Graph](https://graph.microsoft.io), některé další funkce a dat budou k dispozici uživatelům enterprise, jako jsou jejich weby SharePoint nebo dat adresáře.  Ale pro mnoho akce jako například [čtení e-mailu uživatele](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), kód může být napsán stejně pro účty Microsoft Accounts a Azure AD.  
+Například pokud aplikace zavolá hello [Microsoft Graph](https://graph.microsoft.io), některé další funkce a dat budou k dispozici tooenterprise uživatele, například svých webech služby SharePoint nebo dat adresáře.  Ale pro mnoho akce například [čtení e-mailu uživatele](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), hello kódu je možné zapisovat přesně hello stejné pro účty Microsoft Accounts i Azure AD.  
 
-Integrace aplikace s Accounts Microsoft a účty Azure AD je nyní jeden jednoduchý proces.  K získání přístupu k příjemce i enterprise světů můžete použít jednu sadu koncové body, jeden knihovny a registrace jediné aplikaci.  Další informace o koncový bod v2.0, podívejte se na [přehledu](active-directory-appmodel-v2-overview.md).
+Integrace aplikace s Accounts Microsoft a účty Azure AD je nyní jeden jednoduchý proces.  Můžete použít jednu sadu koncové body, jeden knihovny a jediné aplikaci registrace toogain přístup tooboth hello spotřebních a podnikových světů.  Další informace o hello koncového bodu v2.0, podívejte se na toolearn [hello přehled](active-directory-appmodel-v2-overview.md).
 
 ## <a name="new-app-registration-portal"></a>Nový portál pro registraci aplikace
-Chcete-li zaregistrovat aplikaci, která funguje s koncovým bodem v2.0, musíte použít nové portálu pro registraci aplikace: [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).  Toto je portál, kde lze získat ID aplikace přizpůsobení vzhledu přihlašovací stránku vaší aplikace a další.  Všechny potřebné pro přístup k portálu je účet používá technologii Microsoft - osobní nebo pracovní nebo školní účet.
+tooregister aplikaci, která funguje s koncovým bodem v2.0 hello, musíte použít nové portálu pro registraci aplikace: [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).  Toto je hello portál, kde lze získat ID aplikace přizpůsobit vzhled hello přihlašovací stránku vaší aplikace a další.  Stačí tooaccess hello portál je účet používá technologii Microsoft - osobní nebo pracovní nebo školní účet.
 
 ## <a name="one-app-id-for-all-platforms"></a>ID jednu aplikaci pro všechny platformy
-Pokud jste použili Azure Active Directory, pravděpodobně jste registrováni několik různých aplikací pro jeden projekt.  Například pokud jste vytvořili web a aplikaci pro iOS, museli jste samostatně, zaregistrujte je použití dvou různých ID aplikace. Portálu pro registraci aplikace Azure AD vynutit vám umožní provádět na těchto rozdílech během registrace:
+Pokud jste použili Azure Active Directory, pravděpodobně jste registrováni několik různých aplikací pro jeden projekt.  Například pokud jste vytvořili web a aplikaci pro iOS, musíte tooregister je samostatně pomocí dvou různých ID aplikace. portál pro registraci aplikace Hello Azure AD vynutit toomake můžete tento rozdíl během registrace:
 
 ![Původní registrace aplikace uživatelského rozhraní](../../media/active-directory-v2-flows/old_app_registration.PNG)
 
-Podobně pokud jste měli web a back-endové webové rozhraní api, může jste si zaregistrovali každý jako samostatnou aplikaci ve službě Azure AD.  Nebo pokud jste měli k aplikaci pro iOS a aplikace pro Android, můžete také může mít registrovaný dvě různé aplikace.  Registrace jednotlivých součástí aplikace vedla k některé neočekávané chování pro vývojáře a zákazníkům:
+Podobně pokud jste měli web a back-endové webové rozhraní api, může jste si zaregistrovali každý jako samostatnou aplikaci ve službě Azure AD.  Nebo pokud jste měli k aplikaci pro iOS a aplikace pro Android, můžete také může mít registrovaný dvě různé aplikace.  Registrace jednotlivých součástí aplikace vedla toosome neočekávané chování pro vývojáře a zákazníkům:
 
-* Jednotlivé komponenty zobrazovaly jako samostatnou aplikaci v klientovi služby Azure Active Directory z každého zákazníka.
-* Při pokusu o použití zásad ke správě přístupu k nebo odstranit aplikaci správce klienta, mají by k tomu pro jednotlivé součásti aplikace.
-* Když zákazníci dá souhlas k aplikaci, jednotlivé komponenty se zobrazí na obrazovce souhlasu jako různých aplikací.
+* Jednotlivé komponenty zobrazovaly jako samostatnou aplikaci v klientovi služby Azure Active Directory hello jednotlivých zákazníků.
+* Správce klienta se pokus o tooapply zásad, spravovat přístup k, nebo odstranit aplikaci, byste mají toodo Ano pro jednotlivé součásti aplikace hello.
+* Když zákazníci dá souhlas tooan aplikace, by jednotlivé komponenty zobrazí se v úvodní obrazovka souhlasu jako odlišné aplikace.
 
-S koncovým bodem v2.0 teď můžete zaregistrovat všechny součásti projektu jako registrace jedna aplikace a použít jeden Id aplikace pro celý projekt.  Můžete přidat několik "platforem" pro každý projekt a zadejte příslušná data pro každou platformu, kterou přidáte.  Samozřejmě můžete vytvořit libovolný počet aplikací, jako třeba v závislosti na požadavcích, ale pro většině případů musí být nutné jenom jeden Id aplikace.
+S koncovým bodem v2.0 hello teď můžete zaregistrovat všechny součásti projektu jako registrace jedna aplikace a použít jeden Id aplikace pro celý projekt.  Můžete přidat několik tooa "platformy" každý projekt a zadejte pro každou platformu, kterou přidáte hello příslušná data.  Samozřejmě můžete vytvořit libovolný počet aplikací, jako třeba v závislosti na požadavcích, ale pro hello většině případů musí být pouze jedno Id aplikace potřebné.
 
-Naše cílem je, že to vést k více zjednodušené správy aplikací a vývojové prostředí a vytvořit více konsolidované zobrazení jeden projekt, který je možné, že pracujete na.
+Naše cílem je, že to vést tooa další zjednodušené správy aplikací a vývojové prostředí a vytvořit více konsolidované zobrazení jeden projekt, který je možné, že pracujete na.
 
 ## <a name="scopes-not-resources"></a>Obory, ne prostředky
-V Azure Active Directory, můžete aplikaci chovat jako **prostředků**, nebo příjemce tokenů.  Prostředek můžete definovat několika **obory** nebo **oAuth2Permissions** , že rozumí, umožňuje tak klientským aplikace k žádosti o tokeny pro tento prostředek pro určitou oborů.  Vezměte v úvahu Azure AD Graph API jako příklad prostředku:
+V Azure Active Directory, můžete aplikaci chovat jako **prostředků**, nebo příjemce tokenů.  Prostředek můžete definovat několika **obory** nebo **oAuth2Permissions** , že rozumí, povolení toorequest tokeny toothat prostředku pro určitou sadu obory klientské aplikace.  Vezměte v úvahu hello Azure AD Graph API jako příklad prostředku:
 
 * Identifikátor prostředku nebo `AppID URI`:`https://graph.windows.net/`
 * Obory, nebo `OAuth2Permissions`: `Directory.Read`, `Directory.Write`atd.  
 
-Všechny tyto platí pro koncový bod v2.0.  Aplikace může stále chovat jako prostředek, definovat obory a identifikovat podle identifikátoru URI.  Klientské aplikace může stále požádat o přístup k tyto obory.  Ale způsob, ve kterém klient požaduje tato oprávnění se změnila.  V minulosti autorizace OAuth 2.0 požadavek do služby Azure AD může mít hledá jako:
+Všechny tyto platí pro koncový bod v2.0 hello hello.  Aplikace může stále chovat jako prostředek, definovat obory a identifikovat podle identifikátoru URI.  Klientské aplikace může stále požádat o přístup toothose obory.  Ale hello způsob, ve kterém klient požaduje tato oprávnění se změnil.  V posledních hello autorizace OAuth 2.0 tooAzure žádosti, které může mít hledá AD jako:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/authorize?
@@ -68,7 +68,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-kde **prostředků** parametr uvedené, který prostředek se klientská aplikace požaduje autorizaci pro.  Azure AD vypočtená oprávnění požadovaná aplikace na základě statické konfigurace na portálu Azure a vystavené tokeny odpovídajícím způsobem.  Nyní stejné OAuth 2.0 autorizace požadavku vypadá jako:
+kde hello **prostředků** parametr uvedené, které prostředků hello klientská aplikace požaduje autorizaci pro.  Azure AD vypočtená hello oprávněních hello aplikace na základě statické konfigurace v hello portálu Azure a vystavené tokeny odpovídajícím způsobem.  Nyní hello stejné OAuth 2.0 autorizace požadavku vypadá jako:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -77,20 +77,20 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-kde **oboru** parametr určuje, který prostředek a oprávnění aplikace požaduje autorizaci pro. Požadovaný prostředek je stále velmi přítomné v žádosti – jednoduše je zahrnut v jednotlivých hodnot parametru oboru.  Pomocí parametru oboru tímto způsobem umožňuje koncového bodu v2.0 být více kompatibilní se specifikací OAuth 2.0 a přesněji zarovnaná s obvyklé postupy odvětví.  Umožňuje také aplikace k provedení [přírůstkové souhlasu](#incremental-and-dynamic-consent), který je popsaný v následující části.
+kde hello **oboru** parametr určuje, které aplikace hello prostředků a oprávnění požaduje autorizaci pro. Hello požadovaných prostředků je stále velmi součástí požadavku hello – jednoduše je zahrnut v každém hello hodnot parametru oboru hello.  Pomocí parametru oboru hello tímto způsobem umožňuje toobe koncový bod v2.0 hello více kompatibilní se specifikací hello OAuth 2.0 a přesněji zarovnaná s obvyklé postupy odvětví.  Umožňuje také aplikace tooperform [přírůstkové souhlasu](#incremental-and-dynamic-consent), který je popsán v další části hello.
 
 ## <a name="incremental-and-dynamic-consent"></a>Přírůstkové a dynamické souhlasu
-Aplikace zaregistrované ve službě Azure AD dříve potřeby k zadání jejich požadovaná oprávnění OAuth 2.0 na portálu Azure při vytváření aplikace:
+Aplikace registrované v Azure AD dříve potřeby toospecify jejich požadovaná oprávnění OAuth 2.0 v hello portálu Azure, v okamžiku vytvoření aplikace:
 
 ![Registrace oprávnění uživatelského rozhraní](../../media/active-directory-v2-flows/app_reg_permissions.PNG)
 
-Oprávnění požadované aplikace byla nakonfigurována **staticky**.  Když to povoleno konfigurace aplikace existovat v portálu Azure a uchovávat kód dobrý a jednoduché, uvede několik problémů pro vývojáře:
+požadované aplikace byla nakonfigurována oprávnění Hello **staticky**.  Zatímco to povoleno konfigurace tooexist aplikace hello v hello portálu Azure a uchovávat hello kód dobrý a jednoduché, uvede několik problémů pro vývojáře:
 
-* Aplikace se museli vědět všechna oprávnění, která se někdy potřebovat při vytváření aplikace.  Přidání oprávnění v čase bylo obtížné procesu.
-* Aplikace musela všechny prostředky, ke kterým by někdy přístup předem znát.  Bylo obtížné vytvářet aplikace, které mají přístup libovolný počet prostředků.
-* Aplikace musí požádat o všechna oprávnění, která by někdy potřebovat při uživatele první přihlášení.  V některých případech to vedlo k velmi dlouhý seznam oprávnění, která se nedoporučuje. koncoví uživatelé z schválení aplikace přístup na počáteční přihlášení.
+* Aplikace měla tooknow všechna oprávnění hello někdy potřebovat při vytváření aplikace.  Přidání oprávnění v čase bylo obtížné procesu.
+* Aplikace měla tooknow všechny prostředky hello by někdy přístup předem.  Bylo obtížné toocreate aplikace, které mají přístup libovolný počet prostředků.
+* Aplikace měla toorequest všechna oprávnění hello, které někdy potřebovat při hello na prvním přihlášení uživatele.  V některých případech to vedlo tooa velmi dlouhý seznam oprávnění, která se nedoporučuje. koncoví uživatelé z schválení aplikace hello přístup na počáteční přihlášení.
 
-S koncovým bodem v2.0, můžete zadat oprávnění vašim potřebám aplikace **dynamicky**, v době běhu během regulární využití vaší aplikace.  Uděláte to tak, můžete zadat obory, vaše aplikace, musí v libovolném bodě v čase zahrnutím je do `scope` parametr požadavku ověřování:
+S koncovým bodem v2.0 hello, můžete zadat oprávnění hello vašim potřebám aplikace **dynamicky**, v době běhu během regulární využití vaší aplikace.  toodo Ano, můžete zadat hello rozsahy vašim potřebám aplikace v libovolném bodě v čase zahrnutím v hello `scope` parametr požadavku ověřování:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -99,29 +99,29 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Výše uvedené požadavky oprávnění pro aplikaci pro čtení dat adresáře uživatele Azure AD, stejně jako zapsat data do svého adresáře.  Pokud uživatel souhlasí s tato oprávnění v minulosti pro tuto konkrétní aplikaci, bude jednoduše zadat své přihlašovací údaje a být přihlášeni k aplikaci.  Pokud uživatel nebyla přijata některé z těchto oprávnění, koncový bod v2.0 požádá uživatele o souhlas těchto oprávnění.  Další informace si můžete přečíst na [oprávnění, souhlasu a obory](active-directory-v2-scopes.md).
+Hello výše uvedených požadavků oprávnění pro tooread aplikace hello uživatele Azure AD data adresáře a také adresáře tootheir dat zápisu.  Pokud uživatel hello souhlasí toothose oprávnění v hello posledních pro tuto konkrétní aplikaci, bude jednoduše zadat své přihlašovací údaje a být přihlášeni k aplikace hello.  Pokud uživatel hello nedala souhlas tooany těchto oprávnění, koncového bodu v2.0 hello požádá uživatele hello souhlasu toothose oprávnění.  Další toolearn, můžete si přečíst na [oprávnění, souhlasu a obory](active-directory-v2-scopes.md).
 
-Povolení aplikace a požádat o oprávnění dynamicky prostřednictvím `scope` parametr získáte plnou kontrolu nad možnosti pro uživatele.  Pokud chcete, můžete frontload vašeho souhlasu prostředí a požádat o všechna oprávnění v jedné žádosti počáteční autorizace.  Nebo pokud vaše aplikace vyžaduje velký počet oprávnění, můžete získat tato oprávnění od uživatele postupně, jak se pokus o použití některých funkcí aplikace v čase.
+Umožňuje aplikaci oprávnění toorequest dynamicky prostřednictvím hello `scope` parametr získáte plnou kontrolu nad možnosti pro uživatele.  Pokud chcete, můžete toofrontload vašeho souhlasu prostředí a požádat o všechna oprávnění v jedné žádosti počáteční autorizace.  Nebo pokud vaše aplikace vyžaduje velký počet oprávnění, můžete zvolit toogather tato oprávnění od uživatele hello postupně, jak pokoušejí určité funkce vaší aplikace pro toouse v čase.
 
 ## <a name="well-known-scopes"></a>Známé oborů
 #### <a name="offline-access"></a>Přístup v režimu offline
-Aplikace používající koncového bodu v2.0 může vyžadovat použití nové dobře známé oprávnění pro aplikace - `offline_access` oboru.  Všechny aplikace bude muset požádat o toto oprávnění, pokud je nutné pro přístup k prostředkům jménem uživatele delší dobu dobu, i když uživatel nemusí být používá aktivně aplikace.  `offline_access` Obor se zobrazí uživateli v dialogových oknech souhlasu jako "Přístup k datům v režimu offline", který uživatel musí vyjádřit souhlas s.  Požaduje `offline_access` oprávnění umožní vaší webové aplikace na příjem OAuth 2.0 refresh_tokens z koncového bodu v2.0.  Refresh_tokens je dlouhodobé a může být vyměňují pro nové access_tokens OAuth 2.0 po delší dobu přístupu.  
+Aplikace pomocí koncového bodu v2.0 hello může vyžadovat použití hello nové dobře známé oprávnění pro aplikace - hello `offline_access` oboru.  Všechny aplikace bude nutné toorequest toto oprávnění, pokud potřebují tooaccess prostředkům jménem hello uživatele pro delší dobu, i když uživatel hello nemusí být aplikaci aktivně hello.  Hello `offline_access` obor se zobrazí uživateli toohello v souhlas v dialogových oknech jako "Přístup k datům v režimu offline", které hello uživatel musí vyjádřit souhlas s.  Vyžádání hello `offline_access` oprávnění umožní vaší webové aplikace tooreceive OAuth 2.0 refresh_tokens z koncového bodu v2.0 hello.  Refresh_tokens je dlouhodobé a může být vyměňují pro nové access_tokens OAuth 2.0 po delší dobu přístupu.  
 
-Pokud vaše aplikace neuvede v požadavku `offline_access` oboru, neobdrží refresh_tokens.  To znamená, že po uplatníte authorization_code v toku kódu autorizace OAuth 2.0, se pouze zobrazí zpět access_token z `/token` koncový bod.  Tento access_token zůstane platná, a to krátkou dobu (obvykle jedna hodina), ale nakonec vyprší.  AT, který bod v čase, vaše aplikace bude potřeba přesměruje uživatele zpět na `/authorize` koncový bod k načtení nové authorization_code.  Během této přesměrování, uživatel může nebo nemusí být nutné znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění, v závislosti na typu aplikace.
+Pokud aplikace nevyžaduje hello `offline_access` oboru, neobdrží refresh_tokens.  To znamená, že pokud uplatníte authorization_code v toku kódu autorizace hello OAuth 2.0, pouze obdržíte zpět access_token z hello `/token` koncový bod.  Tento access_token zůstane platná, a to krátkou dobu (obvykle jedna hodina), ale nakonec vyprší.  V tomto bodě v čase, vaše aplikace bude potřebovat tooredirect hello uživatele zpět toohello `/authorize` tooretrieve koncový bod nové authorization_code.  Během této přesměrování hello uživatel může nebo nemusí potřebovat tooenter jejich přihlašovací údaje znovu nebo znovu souhlas toopermissions, v závislosti na typu hello hello aplikace.
 
-Další informace o protokolu OAuth 2.0, refresh_tokens a access_tokens, podívejte se [referenci na protokol v2.0](active-directory-v2-protocols.md).
+Další informace o protokolu OAuth 2.0, refresh_tokens a access_tokens, podívejte se na hello toolearn [referenci na protokol v2.0](active-directory-v2-protocols.md).
 
 #### <a name="openid-profile-and-email"></a>OpenID, profil a e-mailu
-Nejzákladnější tok OpenID Connect přihlášení s Azure Active Directory v minulosti by poskytují množství informací o uživateli ve výsledné požadavku id_token.  Deklarací identity ve požadavku id_token může obsahovat uživatele název, upřednostňované uživatelské jméno, e-mailovou adresu, ID objektu a další.
+V minulosti by hello nejzákladnější tok OpenID Connect přihlášení s Azure Active Directory poskytují množství informací o hello uživatele v požadavku id_token výsledné hello.  deklarace identity Hello v požadavku id_token může obsahovat uživatele hello název, upřednostňované uživatelské jméno, e-mailovou adresu, ID objektu a další.
 
-Nemůžeme se teď omezení informace, `openid` oboru dává vám přístup aplikace k.  Obor, openid, bude pouze povolit přihlášení uživatele ve vaší aplikaci a přijímat identifikátor specifický pro aplikace pro uživatele.  Pokud chcete získat identifikovatelné osobní údaje (PII) o uživateli ve vaší aplikaci, vaše aplikace bude muset požádat o další oprávnění od uživatele.  Představujeme dva nové obory – `email` a `profile` obory – které umožňují učinit.
+Snažíme se teď omezení hello informace, že hello `openid` oboru dává vám přístup aplikace k.  obor, openid, Hello bude pouze povolit vaší aplikace toosign hello uživateli v a přijímat identifikátor specifický pro aplikace pro uživatele hello.  Pokud chcete tooobtain identifikovatelné osobní údaje (PII) o hello uživateli ve vaší aplikaci, vaše aplikace bude potřebovat další oprávnění toorequest od uživatele hello.  Představujeme dva nové obory – hello `email` a `profile` obory – které umožňují toodo tak.
 
-`email` Obor je velmi jednoduchá – umožňuje vám přístup aplikace k primární e-mailovou adresu uživatele prostřednictvím `email` deklarací identity v požadavku id_token.  `profile` Oboru poskytuje přístup k vaší aplikaci pro všechny ostatní základní informace o uživateli – jejich název, upřednostňované uživatelské jméno, ID objektu a tak dále.
+Hello `email` obor je velmi jednoduchá – umožňuje vaší aplikace přístup toohello primární e-mailovou adresu uživatele prostřednictvím hello `email` deklarací identity v požadavku id_token hello.  Hello `profile` oboru poskytuje tooall přístup k vaší aplikaci další základní informace o uživateli hello – jejich název, upřednostňované uživatelského jména, ID objektu a tak dále.
 
-To umožňuje kód aplikace způsobem minimální zpřístupnění – můžete požádat uživatele jenom pro sadu informací, že vaše aplikace vyžaduje pro své práci.  Další informace o těchto oborů, najdete v části [odkaz oboru v2.0](active-directory-v2-scopes.md).
+To vám umožní toocode aplikace způsobem minimální zpřístupnění – můžete pouze požádat hello uživatele pro sadu hello informací, že vaše aplikace vyžaduje toodo úlohy.  Další informace o těchto oborů, najdete v části příliš[hello odkaz oboru v2.0](active-directory-v2-scopes.md).
 
 ## <a name="token-claims"></a>Token deklarací identity
-Deklarace identity v tokenech vystavený koncového bodu v2.0 nebudou shodovat s tokeny vydané obecně dostupná koncové body Azure AD – aplikace migraci na nové služby by neměl předpokládá konkrétní deklaraci identity bude existovat v id_tokens nebo access_tokens. Další informace o konkrétní vygenerované v v2.0 tokeny deklarací identity najdete v tématu [odkaz tokenu v2.0](active-directory-v2-tokens.md).
+Hello deklarace identity v tokenech vystavený koncového bodu v2.0 hello nebudou identické tootokens vydaný koncové body hello všeobecně dostupná Azure AD – aplikace migraci toohello nové služby by neměl Předpokládejme, že konkrétní deklaraci identity, budou v id_tokens nebo access_tokens existovat. toolearn o hello specifických deklarací vygenerované v v2.0 tokeny, najdete v části hello [odkaz tokenu v2.0](active-directory-v2-tokens.md).
 
 ## <a name="limitations"></a>Omezení
-Existuje několik omezení, která má být vědět, když používáte bod v2.0.  Naleznete [v2.0 omezení doc](active-directory-v2-limitations.md) chcete zobrazit, pokud žádné z těchto omezení platí pro konkrétní scénář.
+Existuje několik omezení toobe vědět, když používáte bod v2.0 hello.  Naleznete toohello [v2.0 omezení doc](active-directory-v2-limitations.md) toosee, pokud platí některé z těchto omezení tooyour určitého scénáře.

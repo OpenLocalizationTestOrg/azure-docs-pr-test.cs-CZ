@@ -1,5 +1,5 @@
 ---
-title: "Podrobný přehled plánů služby Azure App Service | Microsoft Docs"
+title: "podrobný přehled plánů služby App Service aaaAzure | Microsoft Docs"
 description: "Zjistěte, jak plánů služby App Service pro pracovní Azure App Service a jak budou využívat vaše prostředí pro správu."
 keywords: "app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service"
 services: app-service
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b384790d9e69b234ca69ac591164c48a4b6ed210
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Podrobný přehled plánů Azure App Service
 
-Plány aplikační služby představují kolekci fyzické prostředky, které jsou použity k hostování vaší aplikace.
+Plány aplikační služby představují hello kolekce toohost fyzické prostředky, které používá vaše aplikace.
 
 Plány služby App Service definují:
 
@@ -32,45 +32,45 @@ Plány služby App Service definují:
 - Velikost instance (malé, střední, velké)
 - SKU (Free, Shared, Basic, Standard, Premium)
 
-Webové aplikace, mobilní aplikace, aplikace API, funkce aplikace (nebo funkce), v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) všechny spuštění v rámci plánu služby App Service.  Plán služby App Service můžete sdílet aplikací ve stejném předplatném a oblast. 
+Webové aplikace, mobilní aplikace, aplikace API, funkce aplikace (nebo funkce), v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) všechny spuštění v rámci plánu služby App Service.  Aplikace v hello stejném předplatném, oblasti můžete sdílet plán služby App Service. 
 
-Všechny aplikace, které jsou přiřazené **plán služby App Service** sdílet prostředky definované ho. Tato sdílení úsporu nákladů při hostování více aplikacemi v jednom plánu služby App Service.
+Všechny aplikace přiřazené tooan **plán služby App Service** sdílet prostředky hello definovaná tímto. Tato sdílení úsporu nákladů při hostování více aplikacemi v jednom plánu služby App Service.
 
-Váš **plán služby App Service** se může škálovat od skladových jednotek (SKU) úrovní **Free** a **Shared** po SKU úrovní **Basic**, **Standard** a **Premium** a vy při tom získáte přístup k dalším prostředkům a funkcím.
+Vaše **plán služby App Service** možné škálovat od **volné** a **sdílené** SKU příliš**základní**, **standardní**, a **Premium** SKU, která poskytuje přístup k prostředkům toomore a funkcí společně hello způsobem.
 
-Pokud váš plán služby App Service je nastavený na **základní** SKU nebo vyšší, pak můžete řídit **velikost** a škálování počtu virtuálních počítačů.
+Pokud váš plán služby App Service je nastaven příliš**základní** SKU nebo vyšší, pak můžete řídit hello **velikost** a škálovat počet hello virtuálních počítačů.
 
-Například pokud váš plán je nakonfigurovaný na použití dvě "malá" instance ve vrstvě služby na úrovni standard, všechny aplikace, které jsou přidruženy tento plán spustit na obou instancí. Aplikace také mají přístup k funkcím vrstvy služby na úrovni standard. Instancích plánu, na kterých běží aplikace jsou plně spravovaná a vysoce dostupné.
+Například pokud váš plán je nakonfigurované toouse dva "malá" instance ve vrstvě služby na úrovni standard hello, všechny aplikace, které jsou přidruženy tento plán spustit na obou instancí. Aplikací mít také funkce úrovně služby na úrovni standard toohello přístup. Instancích plánu, na kterých běží aplikace jsou plně spravovaná a vysoce dostupné.
 
 > [!IMPORTANT]
-> **SKU** a **Škálování** plánu služby App Service určují cenu, ne počet aplikací hostovaných ve službě.
+> Hello **SKU** a **škálování** z hello služby App Service určuje plán hello náklady a není hello počet aplikací, které jsou v ní umístěné.
 
-Tento článek popisuje klíčové vlastnosti, například vrstvy a škále plán služby App Service a jak se do play při správě aplikací.
+Tento článek popisuje hello klíčové vlastnosti, například vrstvy a škále plán služby App Service a jak se do play při správě aplikací.
 
 ## <a name="apps-and-app-service-plans"></a>Aplikace a plány služby App Service
 
 Aplikace ve službě App Service může být přidružen pouze jeden plán služby App Service v daném okamžiku.
 
-Aplikace a plány jsou součástí **skupiny prostředků**. Skupiny prostředků slouží jako hranice životního cyklu pro každý prostředek, který je v něm. Skupiny prostředků můžete spravovat všechny součásti aplikace společně.
+Aplikace a plány jsou součástí **skupiny prostředků**. Skupiny prostředků slouží jako hranice životního cyklu hello každý prostředek, který je v něm. Můžete použít toomanage skupiny prostředků všechny hello částí aplikace společně.
 
-Vzhledem k tomu, že jedna skupina prostředků může mít víc plány služby App Service, kterou můžete přidělit různé aplikace na různé fyzické prostředky.
+Vzhledem k tomu, že jedna skupina prostředků může mít víc plány služby App Service, kterou můžete přidělit různé aplikace toodifferent fyzické prostředky.
 
-Například můžete oddělit prostředků mezi vývoj, testování a provozním prostředí. S samostatných prostředí pro provoz a vývoj nebo testování umožňuje izolovat prostředky. Tímto způsobem není testování proti nové verze aplikace zatížení pokouší o stejné prostředky jako produkční aplikací, které slouží skutečnou zákazníků.
+Například můžete oddělit prostředků mezi vývoj, testování a provozním prostředí. S samostatných prostředí pro provoz a vývoj nebo testování umožňuje izolovat prostředky. Tímto způsobem zatížení testování proti nové verze aplikace není pokouší o hello stejné prostředky jako produkční aplikací, které slouží skutečnou zákazníků.
 
 Pokud máte více plánů v jedna skupina prostředků, můžete také definovat aplikaci, která přesahuje zeměpisné oblasti.
 
-Například vysokou dostupností aplikaci spuštěnou ve dvou oblastech obsahuje alespoň dva plánům, jeden pro každou oblast a jedna aplikace, které jsou spojené s každou plánu. V takovém případě jsou všechny kopie aplikace pak obsažené v jedna skupina prostředků. Skupinu prostředků s více schématy a víc aplikací mít usnadňuje správu, řízení a zobrazení stavu aplikace.
+Například vysokou dostupností aplikaci spuštěnou ve dvou oblastech obsahuje alespoň dva plánům, jeden pro každou oblast a jedna aplikace, které jsou spojené s každou plánu. V takovém případě jsou všechny kopie hello aplikace hello pak obsažené v jedna skupina prostředků. Skupinu prostředků s více schématy a víc aplikací mít umožňuje snadno toomanage, řízení a zobrazit stav hello aplikace hello.
 
 ## <a name="create-an-app-service-plan-or-use-existing-one"></a>Vytvořit plán služby App Service nebo použít existující
 
-Když vytvoříte aplikaci, měli byste zvážit vytvoření skupiny prostředků. Na druhé straně Pokud je tato aplikace součástí větší aplikace, vytvořte ho v rámci skupiny prostředků, který je přidělen pro větší aplikace.
+Když vytvoříte aplikaci, měli byste zvážit vytvoření skupiny prostředků. Na hello druhé straně, pokud je tato aplikace součástí větší aplikace, vytvořte ji v rámci skupiny prostředků hello, který je přidělen pro větší aplikace.
 
-Zda aplikace je zcela nové aplikace nebo součást většího, můžete použít existující plán ji hostovat nebo vytvořte novou. Toto rozhodnutí se více dotaz kapacitu a očekávané zatížení.
+Zda je aplikace hello zcela nové aplikace nebo součást většího, můžete toouse existující plán toohost ji nebo vytvořte novou. Toto rozhodnutí se více dotaz kapacitu a očekávané zatížení.
 
 Doporučujeme, abyste izoluje aplikace do nové služby App Service při plánování:
 
 - Aplikace je náročná.
-- Aplikace má různých faktorech škálování z jiných aplikací hostovaná v existující plán.
+- Aplikace má různých faktorech škálování z hello jiné aplikace hostované v existující plán.
 - Aplikace musí prostředků v jiné zeměpisné oblasti.
 
 Tímto způsobem můžete přidělit novou sadu prostředků pro vaši aplikaci a získáte větší kontrolu nad vaší aplikace.
@@ -78,80 +78,80 @@ Tímto způsobem můžete přidělit novou sadu prostředků pro vaši aplikaci 
 ## <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
 > [!TIP]
-> Pokud máte služby App Service Environment, najdete v dokumentaci specifické pro prostředí App Service zde: [vytvořit plán služby App Service ve službě App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)
+> Pokud máte služby App Service Environment, můžete zkontrolovat hello dokumentace konkrétní tooApp prostředí Service zde: [vytvořit plán služby App Service ve službě App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)
 
-Prázdný plán služby App Service můžete vytvořit z prostředí procházení plán aplikační služby nebo jako součást vytváření aplikace.
+Prázdný plán služby App Service můžete vytvořit z hello prostředí procházení plán aplikační služby nebo jako součást vytváření aplikace.
 
-V [portál Azure](https://portal.azure.com), klikněte na tlačítko **nový** > **Web + mobilní**a potom vyberte **webové aplikace** nebo jiného typu aplikace služby App Service.
+V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **nový** > **Web + mobilní**a potom vyberte **webové aplikace** nebo jiného typu aplikace služby App Service.
 
-![Vytvoření aplikace v portálu Azure.][createWebApp]
+![Vytvoření aplikace v hello portálu Azure.][createWebApp]
 
-Pak můžete vybrat nebo vytvořit plán služby App Service pro novou aplikaci.
+Pak můžete vybrat nebo vytvořit hello plán služby App Service pro novou aplikaci hello.
 
  ![Vytvořte plán služby App Service.][createASP]
 
-Chcete-li vytvořit plán služby App Service, klikněte na tlačítko **[+] vytvořit nové**, typ **plán služby App Service** název a potom vyberte odpovídající **umístění**. Klikněte na tlačítko **cenová úroveň**a potom vyberte příslušné cenovou úroveň pro službu. Vyberte **zobrazit všechny** do zobrazení více ceny možnosti, jako například **volné** a **sdílené**. Až vyberete cenovou úroveň, klikněte na **vyberte** tlačítko.
+Klikněte na tlačítko toocreate plán služby App Service **[+] vytvořit nové**, typ hello **plán služby App Service** název a potom vyberte odpovídající **umístění**. Klikněte na tlačítko **cenová úroveň**a potom vyberte příslušné cenovou úroveň služby hello. Vyberte **zobrazit všechny** tooview více ceny možnosti, jako například **volné** a **sdílené**. Po výběru hello cenové úrovně, klikněte na tlačítko hello **vyberte** tlačítko.
 
-## <a name="move-an-app-to-a-different-app-service-plan"></a>Přesuňte aplikace na jiný plán služby App Service
+## <a name="move-an-app-tooa-different-app-service-plan"></a>Přesunutí aplikace tooa jiný plán služby App Service
 
-Aplikace můžete přesunout na jiný plán služby App Service v [portál Azure](https://portal.azure.com). Aplikace můžete přesouvat mezi plány také plány jsou ve stejné skupině prostředků a geografické oblasti.
+Aplikace tooa jiný plán služby App Service můžete přesunout v hello [portál Azure](https://portal.azure.com). Aplikace můžete přesunout mezi plány také plány hello jsou v hello stejnou skupinu prostředků a geografické oblasti.
 
-Přesunutí aplikace do jiného plánu:
+toomove plán tooanother aplikace:
 
-- Přejděte do aplikace, který chcete přesunout.
-- V **nabídky**, vyhledejte **plán služby App Service** části.
-- Vyberte **plán služby App Service změnu** ke spuštění procesu.
+- Přejděte toohello aplikace, které chcete toomove.
+- V hello **nabídky**, vyhledejte hello **plán služby App Service** části.
+- Vyberte **plán služby App Service změnu** toostart hello procesu.
 
-**Plán služby App Service změnu** otevře **plán služby App Service** selektor. V tomto okamžiku můžete vybrat existující plán přesunout do této aplikace.
+**Plán služby App Service změnu** otevře hello **plán služby App Service** selektor. V tomto okamžiku můžete vybrat existující plán toomove do této aplikace.
 
 > [!IMPORTANT]
-> Vyberte plán služby App Service uživatelského rozhraní se filtrují podle následujících kritérií:
-> - Existuje v rámci stejné skupiny prostředků
-> - Existuje ve stejné zeměpisné oblasti
-> - Existuje v rámci stejné webový prostor
+> plán služby App Service vyberte Hello uživatelského rozhraní se filtrují podle hello následující kritéria:
+> - Existuje v rámci hello stejné skupiny prostředků
+> - Existuje v hello stejné zeměpisné oblasti
+> - Existuje v rámci hello stejný webový prostor
 >
-> Webový prostor je logická konstrukce v App Service, která definuje seskupení prostředků serveru. Geografické oblasti (například západní USA) obsahuje mnoho Webspaces aby bylo možné přidělit zákazníky používající službu aplikace. V současné době není možné přesunout mezi Webspaces prostředky služby App Service.
+> Webový prostor je logická konstrukce v App Service, která definuje seskupení prostředků serveru. Geografické oblasti (například západní USA) obsahuje mnoho Webspaces v pořadí tooallocate zákazníky používající službu aplikace. V současné době prostředky služby App Service nejsou možné toobe přesouvat mezi Webspaces.
 >
 
 ![Selektor plán služby App Service.][change]
 
-Každý plán má svou vlastní cenová úroveň. Například přesun lokalitu z úrovně Free plán úrovně Standard, umožňuje všechny aplikace, které jsou přiřazené k použití funkcí a prostředků na plán úrovně Standard.
+Každý plán má svou vlastní cenová úroveň. Přesun lokalitu z úrovně Standard tooa úroveň Free, například umožňuje všechny aplikace, které jsou přiřazeny tooit toouse hello funkce a prostředky hello úrovně Standard.
 
-## <a name="clone-an-app-to-a-different-app-service-plan"></a>Klonování aplikace na jiný plán služby App Service
+## <a name="clone-an-app-tooa-different-app-service-plan"></a>Klonování aplikace tooa jiný plán služby App Service
 
-Pokud chcete přesunout aplikace v jiné oblasti, jeden alternativou je aplikace klonování. Klonování zhotoví kopii aplikaci v nové nebo existující plán služby App Service v libovolné oblasti.
+Pokud chcete toomove hello aplikace tooa jiné oblasti, jeden alternativou je aplikace klonování. Klonování zhotoví kopii aplikaci v nové nebo existující plán služby App Service v libovolné oblasti.
 
-Můžete najít **klonování aplikace** v **nástroje pro vývoj** části nabídky.
+Můžete najít **klonování aplikace** v hello **nástroje pro vývoj** hello nabídky.
 
 > [!IMPORTANT]
 > Klonování má určitá omezení, které si můžete přečíst o na [klonování aplikace Azure App Service pomocí portálu Azure](../app-service-web/app-service-web-app-cloning-portal.md).
 
 ## <a name="scale-an-app-service-plan"></a>Škálovat plán služby App Service
 
-Existují tři způsoby, jak škálovat plán:
+Existují tři způsoby tooscale plánu:
 
-- **Změna plánu je cenová úroveň**. Plán v základní vrstvě lze převést na Standard a všechny aplikace, které jsou přiřazené k použití funkcí na plán úrovně Standard.
-- **Změňte velikost instance plánu**. Jako příklad můžete změnit plán v základní vrstvě, který používá malé instance na používání velké instancí. Všechny aplikace, které jsou přidruženy plán teď můžete použít další paměť a prostředky procesoru, které nabízí větší velikost instance.
-- **Změnit počet instancí plánu**. Například standardní plán, který je na tři instance škálovat na více systémů můžete škálovat na 10 instancí. Plán Premium můžete škálovat na více systémů na 20 instance (přičemž podléhá dostupnosti). Všechny aplikace, které jsou přidruženy plán teď můžete použít další paměť a prostředky procesoru, které nabízí větší počet instancí.
+- **Změnit plán hello je cenová úroveň**. Plán v základní vrstvě hello může být převedená tooStandard a všechny aplikace přiřazené tooit toouse hello funkce úrovně Standard hello.
+- **Změňte velikost instance plánu hello**. Jako příklad plán v základní vrstvě hello, který používá malé instance může být změněné toouse velké instancí. Všechny aplikace, které jsou přidruženy plán teď můžete použít další paměť hello a prostředky procesoru, které hello větší velikost nabídky instanci.
+- **Změnit počet instancí plánu hello**. Například standardní plán, který je škálovat instance toothree lze škálovat too10 instance. Plán Premium můžete škálovat instance too20 (subjektu tooavailability). Všechny aplikace, které jsou přidruženy plán teď můžete použít další paměť hello a prostředky procesoru, které hello větší počet nabídky instanci.
 
-Můžete změnit cenovou úroveň a instance velikost klepnutím **vertikálně navýšit kapacitu** položky v části nastavení pro aplikace nebo plán služby App Service. Změny použít na plán služby App Service a ovlivňují všechny aplikace, které je hostitelem.
+Můžete změnit hello cenové úrovně a instance velikosti kliknutím hello **vertikálně navýšit kapacitu** položky v části nastavení pro aplikace hello nebo hello plán služby App Service. Změny použít toohello plán služby App Service a ovlivňují všechny aplikace, které ji hostuje.
 
- ![Nastavte hodnoty škálování aplikace.][pricingtier]
+ ![Nastavte hodnoty tooscale aplikaci.][pricingtier]
 
 ## <a name="app-service-plan-cleanup"></a>Vyčištění plán služby App Service
 
 > [!IMPORTANT]
-> **Plánů služby App Service** mají žádné aplikace přidružené k je stále platit poplatky vzhledem k tomu, že budou nadále záložní kapacita výpočty.
+> **Plánů služby App Service** mají žádné aplikace přidružené k toothem stále platit poplatky vzhledem k tomu, že budou pokračovat v práci tooreserve hello výpočetní kapacitu.
 
-Nechcete neočekávané poplatky, když se odstraní poslední aplikace hostovaná v plán služby App Service, je taky odstranit výsledné prázdný plán služby App Service.
+tooavoid neočekávané poplatky, když se odstraní poslední aplikace hello hostovaná v plán služby App Service hello výsledné prázdný, je taky odstranit plán služby App Service.
 
 ## <a name="summary"></a>Souhrn
 
-Plány aplikační služby představují sadu funkcí a kapacity, které můžete sdílet mezi aplikacemi. Plány služby App Service poskytují flexibilitu pro přidělovat konkrétní aplikace sadu prostředků a dále optimalizovat využití vaší prostředků Azure. Tímto způsobem, pokud chcete ušetřit peníze u svého testovacího prostředí, můžete plán sdílet mezi více aplikacemi. Pomocí příjmu v několika oblastech a plány a také můžete maximalizovat propustnost pro produkční prostředí.
+Plány aplikační služby představují sadu funkcí a kapacity, které můžete sdílet mezi aplikacemi. Udělte hello flexibilitu tooallocate konkrétní aplikace tooa sadu prostředků a dále optimalizovat využití vaší prostředků Azure plánů služby App Service. Tímto způsobem, pokud chcete toosave peníze u svého testovacího prostředí, můžete plán sdílet mezi více aplikacemi. Pomocí příjmu v několika oblastech a plány a také můžete maximalizovat propustnost pro produkční prostředí.
 
 ## <a name="whats-changed"></a>Co se změnilo
 
-- Průvodce změnou z webů na službu App Service, najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+- Průvodce toohello změnu z tooApp weby služby, najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
 [assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png

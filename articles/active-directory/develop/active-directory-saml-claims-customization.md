@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory | Microsoft Docs"
-description: "Naučte se přizpůsobovat deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory"
+title: "aaaCustomizing deklarace identity vystavené v tokenu hello SAML pro předběžně integrované aplikace v Azure Active Directory | Microsoft Docs"
+description: "Další způsob vystavování deklarací identity hello toocustomize v hello tokenu SAML pro předběžně integrované aplikace v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6d232759630fcc567788a8326b566b659f89d17a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a376318929472403e799f02fdd3fbddc91d0a70c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>Přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory
-Dnes Azure Active Directory podporuje tisícům předem integrovaných aplikací v Azure AD galerii aplikací, včetně přes 360, které podporují jednotné přihlašování pomocí protokolu SAML 2.0. Když se uživatel přihlásí k aplikaci prostřednictvím služby Azure AD pomocí SAML, Azure AD odešle token do aplikace (přes HTTP POST). A pak aplikaci ověří a použije token k přihlásit uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli známé jako "deklarace identity".
+# <a name="customizing-claims-issued-in-hello-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>Přizpůsobují se deklarace identity vystavené v hello tokenu SAML pro předběžně integrované aplikace v Azure Active Directory
+Dnes Azure Active Directory podporuje tisícům předem integrovaných aplikací v hello Azure AD Application Gallery, včetně přes 360, které podporují jednotné přihlašování pomocí protokolu hello SAML 2.0. Když se uživatel ověřuje tooan aplikací prostřednictvím služby Azure AD pomocí SAML, Azure AD odešle token toohello aplikaci (přes HTTP POST). A pak aplikace hello ověří a použije hello tokenu toolog hello uživatele v místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli hello známé jako "deklarace identity".
 
-Ve vztahu identity Předčítání, "deklarace identity" je informace, které stavy zprostředkovatele identity o uživateli uvnitř tokenu vydaného pro tohoto uživatele. V [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tato data je obvykle součástí příkaz atribut SAML. Jedinečné ID uživatele je obvykle reprezentována v předmětu SAML také nazývané jako název identifikátor.
+Ve vztahu identity Předčítání, "deklarace identity" je informace, které stavy zprostředkovatele identity o uživateli uvnitř tokenu hello, vydaného pro tohoto uživatele. V [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tato data je obvykle součástí hello příkaz atribut SAML. Hello jedinečné ID uživatele je obvykle reprezentována hello SAML subjektu také nazývané jako název identifikátor.
 
-Ve výchozím nastavení Azure Active Directory vystaví SAML token do vaší aplikace, která obsahuje deklaraci NameIdentifier s hodnotou uživatelské jméno (hlavní název uživatele NEBOLI) ve službě Azure AD. Tato hodnota může jednoznačné identifikaci uživatele. SAML token také obsahuje další deklarace obsahující uživatele e-mailová adresa, jméno a příjmení.
+Ve výchozím nastavení vydá Azure Active Directory aplikaci tooyour tokenu SAML, která obsahuje deklaraci NameIdentifier s hodnotou hello uživatelské jméno uživatele (hlavní název uživatele NEBOLI) ve službě Azure AD. Tato hodnota může jedinečně identifikovat hello uživatele. Hello SAML token také obsahuje další deklarace obsahující hello uživatele e-mailová adresa, jméno a příjmení.
 
-Chcete-li zobrazit nebo upravit deklarace identity vystavené v tokenu SAML k aplikaci, otevřete aplikaci na portálu Azure. Vyberte **zobrazení a upravovat všechny ostatní atributy uživatele** zaškrtnout políčko **uživatelské atributy** část aplikace.
+tooview nebo upravit hello deklarací identity vystavené v hello SAML token toohello aplikace, otevřete hello aplikace na portálu Azure. Potom vyberte hello **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtnout políčko hello **uživatelské atributy** oddílu aplikace hello.
 
 ![Uživatelské atributy oddílu][1]
 
-Existují dvě možné důvody, proč je potřeba upravit deklarace identity vystavené v tokenu SAML:
-* Aplikace byla zapsána vyžadují jinou sadu deklarací identity identifikátory URI nebo hodnot deklarací identity.
-* Aplikace byly nasazeny způsobem, který vyžaduje NameIdentifier deklarace identity na něco jiného než uživatelské jméno (hlavní název uživatele NEBOLI) uložené ve službě Azure Active Directory.
+Existují dvě možné důvody, proč může být nutné tooedit hello deklarace identity vystavené v tokenu SAML hello:
+* aplikace Hello byla zapsána toorequire jinou sadu deklarací identity identifikátory URI nebo hodnot deklarací identity.
+* nasazení aplikace Hello způsobem, který vyžaduje hello NameIdentifier deklarace identity toobe něco jiného než hello uživatelské jméno (hlavní název uživatele NEBOLI) uložené ve službě Azure Active Directory.
 
-Můžete upravit všechny výchozí hodnoty deklarace identity. Vyberte řádek pro deklarace identity v tabulce atributy tokenu SAML. Tím se otevře **Upravit atribut** části a pak můžete upravit název deklarace identity, hodnotu a přidružený k deklaraci oboru názvů.
+Můžete upravit všechny hodnoty deklarací výchozí hello. Vyberte řádek hello deklarace identity v tabulce atributy tokenu SAML hello. Tím se otevře hello **Upravit atribut** části a pak můžete upravit název deklarace identity, hodnotu a přidružený hello deklaraci oboru názvů.
 
 ![Upravit atribut uživatele][2]
 
-Rovněž můžete odebrat deklarace (jiné než NameIdentifier) pomocí místní nabídky, otevře se kliknutím na **...**  ikonu.  Můžete také přidat nové deklarace, pomocí **přidat atribut** tlačítko.
+Rovněž můžete odebrat deklarace (jiné než NameIdentifier) pomocí hello kontextové nabídky, otevře se kliknutím na hello **...**  ikonu.  Můžete také přidat nové deklarace pomocí hello **přidat atribut** tlačítko.
 
 ![Upravit atribut uživatele][3]
 
-## <a name="editing-the-nameidentifier-claim"></a>Úpravy NameIdentifier deklarace identity
-K vyřešení problému, kde byla aplikace nasazená pomocí jiné uživatelské jméno, klikněte na **uživatelský identifikátor** rozevírací nabídky **uživatelské atributy** části. Tato akce poskytuje dialogové okno s několik možností:
+## <a name="editing-hello-nameidentifier-claim"></a>Úpravy hello NameIdentifier deklarace identity
+toosolve hello problém, kde byla nasazena aplikace hello pomocí jiné uživatelské jméno, klikněte na hello **uživatelský identifikátor** rozevírací nabídku v hello **uživatelské atributy** části. Tato akce poskytuje dialogové okno s několik možností:
 
 ![Upravit atribut uživatele][4]
 
-V rozevíracím seznamu vyberte **user.mail** nastavit NameIdentifier deklarace identity jako e-mailovou adresu uživatele v adresáři. Nebo vyberte **user.onpremisessamaccountname** nastavení pro uživatele je název účtu SAM, které se synchronizovaly z místní služby Azure AD.
+V hello rozevíracího seznamu vyberte **user.mail** tooset hello NameIdentifier deklarace identity e-mailovou adresu uživatele hello toobe v adresáři hello. Nebo vyberte **user.onpremisessamaccountname** název účtu SAM tooset toohello uživatele, který se synchronizovaly z místní služby Azure AD.
 
-Můžete také použít speciální **ExtractMailPrefix()** funkce odebrat příponu domény z e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje pouze první část předávány prostřednictvím uživatelské jméno (například "joe_smith" místo joe_smith@contoso.com).
+Můžete také použít speciální hello **ExtractMailPrefix()** funkce tooremove hello příponu domény z hello e-mailovou adresu, název účtu SAM nebo hlavní název uživatele hello. To vyextrahuje pouze první část hello hello uživatele název předávány prostřednictvím (například "joe_smith" místo joe_smith@contoso.com).
 
 ![Upravit atribut uživatele][5]
 
-Jsme nyní jste také přidali **join()** funkce pro připojení k doméně ověřené s hodnotou identifikátoru uživatele. Když vyberete funkci join() v **uživatelský identifikátor** nejprve vybrat identifikátor uživatele jako jako e-mailovou adresu nebo uživatele hlavní název a potom v druhé rozevíracího seznamu vyberte ověřené domény. Pokud vyberete e-mailovou adresu s ověřenou doménu, pak Azure AD extrahuje uživatelské jméno z první hodnota joe_smith z joe_smith@contoso.com a jeho připojení s contoso.onmicrosoft.com. Podívejte se na následující příklad:
+Jsme nyní jste také přidali hello **join()** funkce toojoin hello ověřené doméně s hello hodnota identifikátoru uživatele. Když vyberete funkce join() hello hello **uživatelský identifikátor** vyberte nejdřív hello uživatelský identifikátor jako jako e-mailovou adresu nebo uživatele hlavní název a potom hello druhý rozevírací nabídky vyberte ověřené domény. Pokud vyberete hello e-mailovou adresu s hello ověřené domény, pak Azure AD extrahuje hello uživatelského jména z hello první hodnota joe_smith z joe_smith@contoso.com a jeho připojení s contoso.onmicrosoft.com. Viz následující ukázka hello:
 
 ![Upravit atribut uživatele][6]
 
 ## <a name="adding-claims"></a>Přidání deklarace identity
-Při přidání deklarace identity, můžete zadat název atributu (která nepotřebuje striktně dodržovat vzor URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři.
+Při přidání deklarace identity, můžete zadat název atributu hello, (která nepotřebuje výhradně toofollow vzor URI podle specifikace SAML hello). Nastavte hello hodnota tooany uživatele atribut, který je uložen v adresáři hello.
 
 ![Přidat atribut uživatele][7]
 
-Například budete muset poslat oddělení, které uživatel patří do jejich organizace jako deklarace identity (například prodej). Zadejte název deklarace podle očekávání aplikací a potom vyberte **user.department** jako hodnotu.
+Například můžete potřebovat toosend hello oddělení, které hello uživatele patří tooin organizace jako deklarace identity (například prodej). Zadejte název deklarací hello podle očekávání hello aplikací a potom vyberte **user.department** jako hodnota hello.
 
 > [!NOTE]
-> Pokud pro daného uživatele neexistuje žádná hodnota uložené pro vybraný atribut, není právě této deklarace identity vystavené v tokenu.
+> Pokud pro daného uživatele neexistuje žádná hodnota uložené pro vybraný atribut, není se této deklarace identity vystavené v tokenu hello.
 
 > [!TIP]
-> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** podporují jenom při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../active-directory-aadconnect.md).
+> Hello **user.onpremisesecurityidentifier** a **user.onpremisesamaccountname** podporují jenom při synchronizaci dat uživatele z místní služby Active Directory pomocí hello [Azure Nástroje služby AD Connect](../active-directory-aadconnect.md).
 
 ## <a name="restricted-claims"></a>Deklarace identity s omezeným přístupem
 
-Existují některé s omezeným přístupem deklarace identity v SAML. Pokud přidáte tyto deklarace, Azure AD, nebude odesílat tyto deklarace identity. Následují sadě deklarací identity SAML omezený:
+Existují některé s omezeným přístupem deklarace identity v SAML. Pokud přidáte tyto deklarace, Azure AD, nebude odesílat tyto deklarace identity. Následují hello SAML omezená sada deklarací identity:
 
     | Typ deklarace identity (URI) |
     | ------------------- |
@@ -127,7 +127,7 @@ Existují některé s omezeným přístupem deklarace identity v SAML. Pokud př
 
 ## <a name="next-steps"></a>Další kroky
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../active-directory-saas-custom-apps.md)
+* [Konfigurace jednoho přihlášení tooapplications které nejsou v galerii aplikací Azure Active Directory hello](../active-directory-saas-custom-apps.md)
 * [Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md)
 
 <!--Image references-->

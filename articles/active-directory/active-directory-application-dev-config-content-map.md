@@ -1,5 +1,5 @@
 ---
-title: "Problémy s konfigurací nebo registrace Moje aplikace\""
+title: aaaProblems konfigurace nebo registrace Moje aplikace"
 description: "Problémy s konfigurací nebo registrace Moje aplikace\""
 services: active-directory
 documentationcenter: 
@@ -12,35 +12,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 573fa7e9017e0b7746e40639370e68a2b7bb8548
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9a3a971c3f2873e581fae907c22ddf4dff304d0c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problems-configuring-or-registering-my-application"></a>Problémy s konfigurací nebo registrací aplikace
 
 
 
-## <a name="i-dont-know-how-to-configure-my-application"></a>I nevíte jak nakonfigurovat Moje aplikace
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, jaké jsou koncové body ověřování pro aplikaci](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nevím, jak nakonfigurovat jednotné přihlašování pro aplikaci](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-sso-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nevím, jak vyplnit konkrétní pole objektu aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-specific-application-property-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+## <a name="i-dont-know-how-tooconfigure-my-application"></a>Nevíte, jak tooconfigure Moje aplikace
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nevíte, jaké jsou koncové body hello ověřování pro Moje aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Nevíte, jak tooconfigure jednotného přihlašování toomy aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-sso-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Nevíte, jak toofill na určitém poli u objektu aplikace hello](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-specific-application-property-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
 
-## <a name="i-dont-know-how-to-create-and-configure-a-multi-tenant-application"></a>I nemusíte vědět, jak vytvořit a konfigurovat víceklientské aplikace
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, jak nastavit aplikaci s více tenanty](https://docs.microsoft.com/azure/active-directory/application-dev-setup-multi-tenant-app/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nevím, jak přidat aplikaci s více tenanty do galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+## <a name="i-dont-know-how-toocreate-and-configure-a-multi-tenant-application"></a>Nevíte, jak toocreate a konfigurovat víceklientské aplikace
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nevíte, jak tooset až víceklientské aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-setup-multi-tenant-app/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Nevíte, jak tooadd galerii aplikací Moje aplikace víceklientské toohello Azure AD](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
 
-## <a name="i-dont-know-how-to-select-or-manage-permissions-for-my-application"></a>I nevíte jak vyberte nebo spravovat oprávnění pro Moje aplikace
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, která oprávnění vybrat pro dané rozhraní API](https://docs.microsoft.com/azure/active-directory/application-dev-perms-for-given-api/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+## <a name="i-dont-know-how-tooselect-or-manage-permissions-for-my-application"></a>Nevíte, jak tooselect nebo spravovat oprávnění pro Moje aplikace
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nevíte, které tooselect oprávnění pro dané rozhraní API](https://docs.microsoft.com/azure/active-directory/application-dev-perms-for-given-api/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
 
 ## <a name="im-having-a-problem-using-or-finding-a-specific-api"></a>Došlo potížím pomocí nebo nalezení konkrétní rozhraní API
-  Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nemůžu najít rozhraní API potřebné pro mou aplikaci](https://docs.microsoft.com/azure/active-directory/application-dev-api-find-an-api-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nevím, jak změnit výchozí nastavení životnosti tokenu pro svoji aplikaci](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-change-token-lifetime-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  Hello následující dokumenty vám může pomoct tooresolve některé z nejběžnějších problémů hello v této kategorii.
+  * [Nelze najít hello API potřebuji toouse pro Moje aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-api-find-an-api-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Nevíte, jak životnost tokenu hello toochange výchozí hodnoty pro Moje aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-change-token-lifetime-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
   * [Nerozumím fungování povolení spuštění aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-consent-framework/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nevím, jak udělit oprávnění ke své aplikaci](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-grant-permissions-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
-  * [Nerozumím rozdílu mezi delegovanými oprávněními a oprávněními aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-delegated-and-app-perms/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Nevíte, jak toogrant oprávnění toomy aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-registration-config-grant-permissions-how-to/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)
+  * [Rozumím nemáte hello rozdíl mezi oprávnění pro delegovanou a aplikace](https://docs.microsoft.com/azure/active-directory/application-dev-delegated-and-app-perms/?/?WT.mc_id=DMC_AAD_Develop_Apps_Troubleshooting_Nav)

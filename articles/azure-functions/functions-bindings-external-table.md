@@ -1,5 +1,5 @@
 ---
-title: "Externí tabulky funkcí vazby Azure (Preview) | Microsoft Docs"
+title: "Vazba funkce externí tabulky aaaAzure (Preview) | Microsoft Docs"
 description: "Používání vazeb externí tabulky v Azure Functions"
 services: functions
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 716438e5ea490f6716999813112305499dbe61a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf19d7d377232edc91087d5f4110602bb82c67ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Externí tabulky funkcí vazby Azure (Preview)
-Tento článek ukazuje, jak k manipulaci s tabulková data v poskytovatelů SaaS (například služby Sharepoint, Dynamics) v rámci funkce s integrovanou vazby. Azure Functions podporuje vstupní a výstupní vazby pro externí tabulky.
+Tento článek ukazuje, jak toomanipulate tabulková data v poskytovatelů SaaS (například služby Sharepoint, Dynamics) v rámci funkce s integrovanou vazby. Azure Functions podporuje vstupní a výstupní vazby pro externí tabulky.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="api-connections"></a>Připojení rozhraní API
 
-Tabulka vazby využívat externí rozhraní API připojení k ověření pomocí poskytovatelů SaaS 3. stran. 
+Tabulka vazby využívat externí rozhraní API připojení tooauthenticate zprostředkovatelům SaaS 3. stran. 
 
-Při přiřazování vazbu můžete buď vytvořit nové připojení rozhraní API, nebo použít stávající připojení k rozhraní API v rámci stejné skupiny prostředků
+Při přiřazování vazbu můžete buď vytvořit nové připojení rozhraní API, nebo použít stávající připojení k rozhraní API v rámci hello stejnou skupinu prostředků
 
 ### <a name="supported-api-connections-tables"></a>Připojení podporované rozhraní API (tabulky) s
 
@@ -62,14 +62,14 @@ Při přiřazování vazbu můžete buď vytvořit nové připojení rozhraní A
 1. Scénář `Experimental`  >  `ExternalTable-CSharp` šablony > vytvořit novou `External Table connection` 
  ![vstupní šablonu vybrat tabulky](./media/functions-bindings-storage-table/create-template-table.jpg)
 1. Vyberte poskytovatele SaaS > vyberte nebo vytvořte připojení ![připojení SaaS konfigurace](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
-1. Vyberte připojení k rozhraní API > vytvořit funkci ![vytvořit tabulku – funkce](./media/functions-bindings-storage-table/table-template-options.jpg)
+1. Vyberte připojení k rozhraní API > vytvořit funkci hello ![vytvořit tabulku – funkce](./media/functions-bindings-storage-table/table-template-options.jpg)
 1. Vyberte`Integrate` > `External Table`
-    1. Nakonfigurujte připojení používat, cílová tabulka. Tato nastavení budou velmi mezi poskytovatelů SaaS. Jsou outline níže v [nastavení zdroje dat](#datasourcesettings)
+    1. Nakonfigurujte připojení toouse hello cílová tabulka. Tato nastavení budou velmi mezi poskytovatelů SaaS. Jsou outline níže v [nastavení zdroje dat](#datasourcesettings)
 ![konfigurace tabulky](./media/functions-bindings-storage-table/configure-API-connection.jpg)
 
 ## <a name="usage"></a>Využití
 
-Tento příklad se připojí k tabulku s názvem "Kontakt" s Id, FirstName a LastName sloupce. Kód zobrazí entity kontaktů v tabulce a protokoly první a poslední názvy.
+Tento příklad se připojí tooa tabulku s názvem "Kontakt" s Id, FirstName a LastName sloupce. Kód Hello uvádí hello entity kontaktů v tabulce hello a protokoly hello jména a příjmení.
 
 ### <a name="bindings"></a>Vazby
 ```json
@@ -95,9 +95,9 @@ Tento příklad se připojí k tabulku s názvem "Kontakt" s Id, FirstName a Las
 ```
 `entityId`musí být u vazeb tabulky prázdný.
 
-`ConnectionAppSettingsKey`Určuje nastavení aplikace, která ukládá připojovací řetězec rozhraní API. Nastavení aplikace je vytvořena automaticky při přidání připojení k rozhraní API v integrací uživatelského rozhraní.
+`ConnectionAppSettingsKey`identifikuje hello nastavení aplikace, která ukládá hello API připojovací řetězec. Hello nastavení aplikace je vytvořena automaticky při přidání rozhraní API připojení v hello integrovat uživatelského rozhraní.
 
-Tabulkové konektor poskytuje datových sad a každé datové sady obsahuje tabulky. Název výchozí sadu dat je "default". Názvy pro datovou sadu a tabulky v různých zprostředkovatelů SaaS jsou uvedeny níže:
+Tabulkové konektor poskytuje datových sad a každé datové sady obsahuje tabulky. Název Hello hello výchozí datové sady je "default". Hello názvy pro datovou sadu a tabulky v různých zprostředkovatelů SaaS jsou uvedeny níže:
 
 |konektor|Datová sada|Table|
 |:-----|:---|:---| 
@@ -107,7 +107,7 @@ Tabulkové konektor poskytuje datových sad a každé datové sady obsahuje tabu
 |**Excel**|Soubor aplikace Excel|List 
 
 <!--
-See the language-specific sample that copies the input file to the output file.
+See hello language-specific sample that copies hello input file toohello output file.
 
 * [C#](#incsharp)
 * [Node.js](#innodejs)
@@ -125,7 +125,7 @@ using System;
 using Microsoft.Azure.ApiHub;
 
 //Variable name must match column type
-//Variable type is dynamically bound to the incoming data
+//Variable type is dynamically bound toohello incoming data
 public class Contact
 {
     public string Id { get; set; }
@@ -135,7 +135,7 @@ public class Contact
 
 public static async Task Run(string input, ITable<Contact> table, TraceWriter log)
 {
-    //Iterate over every value in the source table
+    //Iterate over every value in hello source table
     ContinuationToken continuationToken = null;
     do
     {   
@@ -172,7 +172,7 @@ module.exports = function(context) {
 
 ### <a name="sql-server"></a>SQL Server
 
-Skript, který chcete vytvořit a naplnit tabulky Kontakt je níže. dataSetName je "default".
+Hello toocreate skriptu a naplnění tabulky Kontakt hello je nižší než. dataSetName je "default".
 
 ```sql
 CREATE TABLE Contact
@@ -192,7 +192,7 @@ GO
 ```
 
 ### <a name="google-sheets"></a>Tabulky Google
-V Google dokumentace, vytvořit tabulku s názvem list `Contact`. Zobrazovaný název tabulky nelze použít konektor. Interní název (tučným písmem) potřebám má být použit jako dataSetName, například: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  přidat názvy sloupců `Id`, `LastName`, `FirstName` na první řádek, pak naplnění dat na Další řádky.
+V Google dokumentace, vytvořit tabulku s názvem list `Contact`. konektor Hello nelze použít hello tabulky zobrazovaný název. interní název Hello (tučným písmem) musí toobe použít jako dataSetName, například: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  přidat názvy sloupců hello `Id`, `LastName`, `FirstName` toohello první řádek a potom na naplnění dat Další řádky.
 
 ### <a name="salesforce"></a>Salesforce
 dataSetName je "default".

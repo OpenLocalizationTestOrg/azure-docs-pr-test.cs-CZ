@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Data Lake Analytics pomocí portálu Azure Portal | Dokumentace Microsoftu"
-description: "Naučte se používat Azure Portal k vytvoření účtu Data Lake Analytics, vytvoření úlohy Data Lake Analytics pomocí U-SQL a odeslání úlohy. "
+title: "aaaGet Začínáme s Azure Data Lake Analytics pomocí portálu Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello Azure toocreate portálu účtu Data Lake Analytics, vytvoření úlohy Data Lake Analytics pomocí U-SQL a odeslání úlohy hello. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6bb54404fa42cfed25b18bc2bfb7c72e6c361149
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Začínáme s Azure Data Lake Analytics s využitím webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Naučte se používat Azure Portal k vytváření účtů Azure Data Lake Analytics, definování úloh v [U-SQL](data-lake-analytics-u-sql-get-started.md) a odesílání úloh do služby Data Lake Analytics. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Zjistěte, jak toouse hello Azure toocreate portálu účtů Azure Data Lake Analytics, definování úloh v [U-SQL](data-lake-analytics-u-sql-get-started.md)a odeslání úlohy toohello Data Lake Analytics služby. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,23 +31,23 @@ Než začnete tento kurz, musíte mít **předplatné Azure**. Viz [Získání b
 
 ## <a name="create-a-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 
-Teď zároveň vytvoříte účet Data Lake Analytics a Data Lake Store.  Tento krok je jednoduchý a trvá jen asi 60 vteřin.
+Nyní vytvoříte Data Lake Analytics a účet Data Lake Store v hello stejný čas.  Tento krok je jednoduchý a trvá jenom o toofinish 60 sekund.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
 2. Klikněte na **Nový** >  **Data a analýzy** > **Data Lake Analytics**.
-3. Vyberte hodnoty pro následující položky:
+3. Vyberte hodnoty pro hello následující položky:
    * **Název:** Pojmenujte svůj účet Data Lake Analytics (povolena jsou pouze malá písmena a číslice).
-   * **Předplatné**: Zvolte předplatné Azure použité pro účet Analytics.
+   * **Předplatné**: Zvolte předplatné Azure použité pro účet Analytics hello hello.
    * **Skupina prostředků**. Vyberte některou z existujících skupin prostředků Azure nebo vytvořte novou.
-   * **Umístění**. Vyberte datové centrum Azure pro účet Data Lake Analytics.
-   * **Data Lake Store**: Postupujte podle pokynů a vytvořte nový účet Data Lake Store nebo vyberte některý z existujících. 
+   * **Umístění**. Vyberte datové centrum Azure pro účet Data Lake Analytics hello.
+   * **Data Lake Store**: postupujte podle instrukcí toocreate hello nový účet Data Lake Store, nebo vyberte nějaký existující. 
 4. Volitelně vyberte cenovou úroveň pro svůj účet Data Lake Analytics.
 5. Klikněte na možnost **Vytvořit**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Váš první skript U-SQL
 
-Následující text je velmi jednoduchý skript U-SQL. Celá jeho úloha spočívá v definování malé datové sady v rámci skriptu a následném zapsání této datové sady do výchozího úložiště Data Lake Store jako soubor s názvem `/data.csv`.
+Následující text Hello je velmi jednoduchý skript U-SQL. Všechny dělá je definovat na malou datovou sadu v rámci skriptu hello a zapište si tuto datovou sadu se toohello výchozí Data Lake Store jako soubor s názvem `/data.csv`.
 
 ```
 @a  = 
@@ -58,21 +58,21 @@ Následující text je velmi jednoduchý skript U-SQL. Celá jeho úloha spočí
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 ```
 
 ## <a name="submit-a-u-sql-job"></a>Odeslání úlohy U-SQL
 
-1. V účtu Data Lake Analytics klikněte na možnost **Nová úloha**.
-2. Vložte výše uvedený text skriptu U-SQL. 
+1. Z hello účtu Data Lake Analytics, klikněte na tlačítko **nová úloha**.
+2. Vložte hello textu hello skript U-SQL, které jsou uvedené výše. 
 3. Klikněte na **Odeslat úlohu**.   
-4. Počkejte, až se stav úlohy změní na **Úspěch**.
-5. Pokud úloha nebyla úspěšná, přejděte na téma [Sledování úloh Data Lake Analytics a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
-6. Klikněte na kartu **Výstup** a potom na `data.csv`. 
+4. Počkejte na změny stavu úlohy hello příliš**úspěšné**.
+5. Pokud hello úloha se nezdařila, přečtěte si téma [sledování úloh Data Lake Analytics a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
+6. Klikněte na tlačítko hello **výstup** a pak klikněte `data.csv`. 
 
 ## <a name="see-also"></a>Viz také
 
-* Pokud chcete začít s vývojem aplikací U-SQL, přejděte k tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
+* tooget práce s vývojem aplikací U-SQL najdete v části [skriptů vyvíjet U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).

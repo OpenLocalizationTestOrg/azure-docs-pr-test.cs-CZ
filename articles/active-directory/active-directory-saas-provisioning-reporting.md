@@ -1,6 +1,6 @@
 ---
-title: "Vytváření sestav v Azure Active Directory zřizování účtu automatické uživatelů pro aplikace SaaS | Microsoft Docs"
-description: "Zjistěte, jak zkontrolovat stav zřizování úlohy automatické uživatelského účtu a řešení potíží s zřizování jednotlivé uživatele."
+title: "Vytváření sestav v Azure Active Directory automatické uživatelský účet zřizování aplikace tooSaaS | Microsoft Docs"
+description: "Zjistěte, jak toocheck hello Stav zřizování úlohy automatické uživatelský účet a jak tootroubleshoot hello zřizování jednotlivé uživatele."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,120 +14,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 86b9a3d93745045904c6038583b9bc6ebac5667e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5dcf9e5dbaacf3a2c81183c5d81e331858671b86
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Generování sestav na uživatele automatické zřizování účtu
 
 
-Azure Active Directory zahrnuje [uživatelský účet zřizování služby](active-directory-saas-app-provisioning.md) která pomáhá automatizovat zřizování zrušte zřizování uživatelské účty v aplikace SaaS a dalšími systémy, pro účely identity začátku do konce – Správa životního cyklu. Azure AD podporuje zřizování konektory pro všechny aplikace a systémy v části "Doporučený" předem integrovaných uživatelů [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Azure Active Directory zahrnuje [uživatelský účet zřizování služby](active-directory-saas-app-provisioning.md) která pomáhá automatizovat hello zřizování zrušte zřizování uživatelských účtů v aplikace SaaS a jiných systémů, za účelem hello identity začátku do konce cyklu Správa. Azure AD podporuje zřizování konektory pro všechny aplikace hello a systémy v části "Doporučený" hello hello předem integrovaných uživatelů [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
-Tento článek popisuje, jak zkontrolovat stav zajišťování úlohy po byly nastaveny a řešení potíží s zřizování jednotlivých uživatelů a skupin.
+Tento článek popisuje, jak toocheck hello Stav zřizování úlohy po byl nastaven a jak tootroubleshoot hello zřizování jednotlivých uživatelů a skupin.
 
 ## <a name="overview"></a>Přehled
 
-Zřizování konektory jsou primárně nastavit a konfigurovat pomocí [portál pro správu Azure](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](active-directory-saas-tutorial-list.md) pro aplikaci, kde je žádoucí zřizování účtu uživatele. Jakmile nakonfigurovaná a spuštěná, mohou být zřizování úlohy pro aplikaci oznámeny na pomocí jedné ze dvou způsobů:
+Zřizování konektory jsou primárně nastavit a konfigurovat pomocí hello [portál pro správu Azure](https://portal.azure.com), pomocí následujících hello [poskytuje dokumentaci](active-directory-saas-tutorial-list.md) aplikace hello kde uživatelský účet zřizování se požaduje. Jakmile nakonfigurovaná a spuštěná, mohou být zřizování úlohy pro aplikaci oznámeny na pomocí jedné ze dvou způsobů:
 
-* **Portál pro správu Azure** – Tento článek popisuje především načítání informací ze sestavy z [portál pro správu Azure](https://portal.azure.com), který poskytuje protokoly pro danou aplikaci zřizování souhrnnou sestavu jak podrobné zřizování auditu.
+* **Portál pro správu Azure** – Tento článek popisuje především načítání informací sestavy z hello [portál pro správu Azure](https://portal.azure.com), která nabízí zřizování souhrnnou sestavu jak podrobné zřizování protokoly pro danou aplikaci auditu.
 
-* **Audit rozhraní API** – Azure Active Directory také poskytuje rozhraní API auditu, který umožňuje programový načtení podrobné zřizování protokoly auditu. V tématu [auditování Azure Active Directory referenční dokumentace rozhraní API](active-directory-reporting-api-audit-reference.md) pro dokumentaci týkající se použití toto rozhraní API. Když tento článek nepopisuje používání rozhraní API konkrétně, podrobnosti typy zřizování události, které se zaznamenávají v protokolu auditu.
+* **Audit rozhraní API** – Azure Active Directory také poskytuje auditu rozhraní API, že umožňuje programový načtení hello podrobné zřizování protokoly auditu. V tématu [auditování Azure Active Directory referenční dokumentace rozhraní API](active-directory-reporting-api-audit-reference.md) pro konkrétní toousing dokumentace toto rozhraní API. Když tento článek nepopisuje konkrétně jak toouse hello rozhraní API, podrobnosti hello typy zřizování události, které se zaznamenávají do protokolu auditování hello.
 
 ### <a name="definitions"></a>Definice
 
-Tento článek používá následující podmínky, definovaná níže:
+Tento článek používá hello následující podmínky, definovaná níže:
 
-* **Zdroj systému** -úložiště uživatelů, které provádí synchronizaci ze služby Azure AD zřizováním služby. Azure Active Directory je zdrojovém systému pro většinu předem integrovaných zřizování konektory, ale existují některé výjimky (Příklad: Workday příchozí synchronizace).
+* **Zdroj systému** -hello úložiště uživatelů, kteří hello zřizování služby Azure AD se synchronizuje z. Azure Active Directory je hello zdrojovém systému pro většinu hello předem integrovaných zřizování konektory, ale existují některé výjimky (Příklad: Workday příchozí synchronizace).
 
-* **Cíl systému** -úložiště uživatelů, kteří zřizování služby Azure AD synchronizuje k. To je obvykle SaaS aplikace (příklady: Salesforce, ServiceNow, Google Apps, Dropbox pro firmy), ale v některých případech může být v místním systému, jako je Active Directory (Příklad: Workday příchozí synchronizace služby Active Directory).
+* **Cíl systému** -hello úložiště uživatelů, kteří hello zřizování služby Azure AD synchronizuje k. To je obvykle SaaS aplikace (příklady: Salesforce, ServiceNow, Google Apps, Dropbox pro firmy), ale v některých případech může být v místním systému, jako je Active Directory (Příklad: tooActive Workday příchozí synchronizace adresáře).
 
 
-## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Získávání zřizování sestavy z portálu správy Azure
+## <a name="getting-provisioning-reports-from-hello-azure-management-portal"></a>Získávání zřizování sestavy z portálu správy Azure hello
 
-Chcete-li získat zřizování informací sestavy pro danou aplikaci, spusťte spuštěním [portál pro správu Azure](https://portal.azure.com) a procházení pro podnikové aplikace, pro který je nakonfigurovaný zřizování. Například pokud zřizujete uživatelům LinkedIn zvýšení oprávnění, je cesta navigace k podrobností o aplikaci:
+tooget zřizování informací sestavy pro danou aplikaci, počáteční spuštěním hello [portál pro správu Azure](https://portal.azure.com) a procházení toohello podniková aplikace, pro který je nakonfigurovaný zřizování. Například pokud zřizujete uživatelé tooLinkedIn zvýšení, je hello navigační cesta toohello podrobností o aplikaci:
 
 **Azure Active Directory > podnikové aplikace, které > všechny aplikace > LinkedIn zvýšení oprávnění**
 
-Tady souhrnnou sestavu zřizování a zřizování protokoly auditu jsou k dispozici, i popsané dole.
+Tady hello zřizování souhrnnou sestavu a zřizování protokoly auditu hello k dispozici, i popsané dole.
 
 
 ### <a name="provisioning-summary-report"></a>Zřizování souhrnnou sestavu
 
-Zřizování souhrnnou sestavu se zobrazí na **zřizování** kartě pro danou aplikaci. Je umístěn v oddílu podrobnosti synchronizace pod **nastavení**a obsahuje následující informace:
+Hello zřizování souhrnné sestavy se zobrazí na hello **zřizování** kartě pro danou aplikaci. Nachází se v části Podrobnosti o synchronizaci hello pod **nastavení**a poskytuje hello následující informace:
 
-* Celkový počet uživatelů a / skupiny, byly synchronizované a jsou momentálně v oboru pro zřizování mezi systémem zdrojového a cílového systému.
+* Hello celkový počet uživatelů a / skupiny, byly synchronizované a jsou momentálně v oboru pro zřizování mezi systémem hello zdrojový a cílový systém hello.
 
-* Čas poslední synchronizace byla spuštěna. Synchronizace většinou dochází každých 20 40 minut, po dokončení úplné synchronizace.
+* Hello poslední čas hello synchronizace byla spuštěna. Synchronizace většinou dochází každých 20 40 minut, po dokončení úplné synchronizace.
 
 * Zda byla dokončena počáteční úplná synchronizace.
 
-* Proces zřizování, jestli má byly umístěny do karantény a co důvod stavu umístění do karantény je třeba (Chyba ke komunikaci s cílovým systémem z důvodu neplatné správce přihlašovacích údajů)
+* Hello procesu zřizování, jestli má byly umístěny do karantény a jaké hello důvod stavu karantény hello je například (selhání toocommunicate s cílovým systémem kvůli tooinvalid přihlašovací údaje správce)
 
-Zřizování souhrnnou sestavu musí být první vzhledu místní správci zkontrolovat na provozní stav úlohy zřizování.
+Hello zřizování souhrnnou sestavu by měl být hello první místní správci vzhled toocheck na hello provozní stav úlohy zřizování hello.
 
  ![Souhrnná sestava](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
 ### <a name="provisioning-audit-logs"></a>Protokoly auditu a zřizování
-Všechny aktivity provedené zřizování služby se zaznamenávají do protokolů auditu Azure AD, které lze zobrazit v **protokoly auditu** v části **zřizování účtu** kategorie. Typy událostí protokolu aktivit patří:
+Všechny aktivity provedené hello zřizování služby se zaznamenávají do protokolů auditu hello Azure AD, které lze zobrazit v hello **protokoly auditu** kartě pod hello **zřizování účtu** kategorie. Typy událostí protokolu aktivit patří:
 
-* **Import události** – událost "import" se zaznamenává pokaždé, když zřizování služby Azure AD načte informace o jednotlivé uživatele nebo skupinu ze zdrojového systému nebo cílového systému. Při synchronizaci uživatelů se načítají ze zdrojového systému nejprve s výsledky zaznamenávají jako "import" události. Odpovídající ID načtené uživatelů jsou potom dotaz proti cílovém systému, aby zaškrtněte, pokud existují, s výsledky taky zaznamená jako "importovat" události. Tyto události zaznamenejte všechny atributy mapovat uživatele a jejich hodnoty, které se zobrazily službou Azure AD zřizování služby v době události. 
+* **Import události** – událost "import" se zaznamenává pokaždé, když služba zřizování hello Azure AD načte informace o jednotlivé uživatele nebo skupiny ze zdrojového systému nebo cílového systému. Při synchronizaci uživatelů se načítají z hello zdrojovém systému nejprve s hello výsledky. zaznamenává jako "import" události. Hello odpovídající ID hello načíst uživatelů jsou potom dotaz proti hello cílový systém toocheck, pokud existují, s hello výsledky. zaznamenává taky jako "import" události. Tyto události zaznamenejte všechny atributy mapovat uživatele a jejich hodnoty, které se zobrazily zřizování službou hello Azure AD během hello hello události. 
 
-* **Události pravidlo synchronizace** – tyto události sestav o výsledcích pravidla mapování atributů a žádné nakonfigurované oboru filtrů, po importu a vyhodnocují na základě zdrojové a cílové systémy dat uživatele. Například pokud je uživatel ve zdrojovém systému zjistí, že se v oboru pro zřizování a zjistí, že neexistuje v cílovém systému, pak tato událost zaznamenává, který se zřídí uživatele v cílovém systému. 
+* **Události pravidlo synchronizace** – tyto události sestav o výsledcích hello hello atribut mapování pravidel a žádné nakonfigurované oboru filtrů, po importu a vyhodnocují na základě zdrojové a cílové systémy hello dat uživatele. Například pokud uživatel ve zdrojovém systému se považují za toobe v oboru pro zřizování a domnělého toonot existovat v cílovém systému hello, pak tato událost zaznamenává, hello uživatele se zřídí v cílovém systému hello. 
 
-* **Export události** -"export" událost se zaznamená pokaždé, když zřizování služby Azure AD zapíše objekt uživatelského účtu nebo skupiny do cílového systému. Tyto události zaznamenejte všechny atributy uživatelů a jejich hodnoty, které byly napsané pomocí Azure AD zřizování služby v době události. Pokud došlo k chybě při zápisu objektu účet nebo skupinu uživatele do cílového systému, zobrazí se zde.
+* **Export události** -pokaždé, když uživatel účet nebo skupinu objekt tooa cílový systém zapíše zřizování služby hello Azure AD se zaznamená událost "export". Tyto události zaznamenejte všechny atributy uživatelů a jejich hodnoty, které byly sepsány podle hello zřizování služby Azure AD během hello hello události. Pokud došlo k chybě při zápisu hello uživatelského účtu nebo skupiny objekt toohello cílového systému, zobrazí se zde.
 
-* **Zpracování událostí úschově** -escrows proces dojít, když dojde k chybě při pokusu o operaci zřizování služby a začne opakujte operaci na back vypnout interval času. Operace zřizování vyřazenou pokaždé, když se zaznamená událost "úschově".
+* **Zpracování událostí úschově** -proces escrows dojít, když hello zřizování služby dojde k chybě při pokusu o operaci a zahájí operaci hello tooretry na intervalu back mimo dobu. Operace zřizování vyřazenou pokaždé, když se zaznamená událost "úschově".
 
-Při pohledu zřizování události pro jednotlivé uživatele, dochází k události obvykle v tomto pořadí:
+Při prohlížení zřizování události pro jednotlivé uživatele, dojde k událostem hello normálně v tomto pořadí:
 
-1. Import událostí: uživatel se načítají ze zdrojového systému.
+1. Import událostí: uživatel se načítají ze zdrojového systému hello.
 
-2. Import událostí: cílovém systému je dotazován Zkontrolujte existenci načtené uživatele.
+2. Import událostí: cílovém systému je předmětem dotazu toocheck hello existence hello načíst uživatele.
 
-3. Událost pravidlo synchronizace: uživatelská data ze zdrojové a cílové systémy jsou porovnán s nakonfigurovaných atributů mapování pravidla a filtry k určení, jaké akce, pokud existuje, je třeba provést oborů.
+3. Událost pravidlo synchronizace: uživatelská data ze zdrojové a cílové systémy jsou porovnán s atribut hello nakonfigurovaná pravidla mapování a rozsahu toodetermine filtry, jaké akce, pokud existuje, je třeba provést.
 
-4. Export událostí: Pokud událost pravidlo synchronizace závisí, že má být akce provést (např. přidat, Update, Delete), pak výsledky akce se zaznamenávají v události Export.
+4. Export událostí: Pokud hello synchronizační pravidlo událostí závisí, že má být akce provést (např. přidat, Update, Delete), pak výsledky hello hello akce se zaznamenávají v události Export.
 
 ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
 
 ### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Vyhledávání zřizování události pro konkrétního uživatele
 
-Nejběžnější případ použití pro zřizování protokoly auditu je zkontrolovat stav zřizování individuální uživatelský účet. K vyhledání poslední události zřizování pro konkrétního uživatele:
+Hello nejběžnější případ použití pro hello zřizování protokoly auditu je toocheck hello zřizování stav jednotlivých uživatelských účtů. toolook hello poslední zřizování událostí pro konkrétního uživatele:
 
-1. Přejděte na **protokoly auditu** části.
+1. Přejděte toohello **protokoly auditu** části.
 
-2. Z **kategorie** nabídce vyberte možnost **zřizování účtu**.
+2. Z hello **kategorie** nabídce vyberte možnost **zřizování účtu**.
 
-3. V **rozsah** nabídce vyberte rozsah dat, kterou chcete vyhledat,
+3. V hello **rozsah** nabídky, vyberte hello rozsah chcete toosearch,
 
-4. V **vyhledávání** panel, zadejte ID uživatele chcete hledat uživatele. Formát hodnoty ID by měl odpovídat ať jste vybrali jako primární odpovídající ID v mapování atributů (například userPrincipalName nebo ID číslo zaměstnance). Na požadovanou hodnotu ID se nebude zobrazovat ve sloupci cíle (cílů).
+4. V hello **vyhledávání** panel, zadejte ID uživatele hello hello uživatele chcete toosearch pro. Hodnota ID Hello formát by měl odpovídat ať jste vybrali jako hello primární odpovídající ID v mapování atributů hello (například userPrincipalName nebo ID číslo zaměstnance). požadovanou hodnotu ID Hello budou viditelné ve sloupci hello cíle (cílů).
 
-5. Stiskněte klávesu Enter pro vyhledávání. Zřizování nejaktuálnějších událostí, bude vrácena jako první.
+5. Toosearch stiskněte klávesu Enter. Hello nejnovější zřizování události bude vrácena jako první.
 
-6. Pokud jsou vráceny události, poznamenejte si typy aktivit a jestli byla úspěšná nebo neúspěšná. Pokud se žádné výsledky, pak znamená uživatel buď neexistuje, nebo nebylo dosud byl zjištěn procesu zřizování Pokud zatím není dokončený úplnou synchronizaci.
+6. Pokud jsou vráceny události, poznamenejte si typy aktivit hello a jestli byla úspěšná nebo neúspěšná. Pokud se žádné výsledky, pak znamená hello uživatel buď neexistuje, nebo nebylo dosud zjištěno hello procesu zřizování, pokud zatím není dokončený úplnou synchronizaci.
 
-7. Kliknutím na jednotlivé události zobrazíte Rozšířené podrobnosti, včetně všech vlastnosti uživatele, které byly načteny, vyhodnotí nebo zapsat jako součást události.
+7. Kliknutím na jednotlivé události tooview Rozšířené podrobnosti, včetně všech vlastnosti uživatele, které byly načteny, vyhodnotí nebo zapsat jako součást hello událostí.
 
 
-### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tipy pro zobrazení zřizování protokoly auditu
+### <a name="tips-for-viewing-hello-provisioning-audit-logs"></a>Tipy pro zobrazení hello zřizování protokoly auditu
 
-Pro nejlepší čitelnost na portálu Azure, vyberte **sloupce** tlačítko a vyberte tyto sloupce:
+Nejlepší čitelnější v hello portálu Azure vyberte hello **sloupce** tlačítko a vyberte tyto sloupce:
 
-* **Datum** – zobrazuje datum, kdy došlo k události.
-* **Cíle (cílů)** – zobrazuje aplikaci název a uživatelské ID, které jsou témata události.
-* **Aktivita** – typ aktivity, jak je popsáno výše.
-* **Stav** – ať událost byla úspěšná, nebo ne.
-* **Důvod stavu** – souhrn co se stalo v zřizování události.
+* **Datum** -ukazuje hello datum hello událostí došlo k chybě.
+* **Cíle (cílů)** -ukazuje hello aplikaci název a uživatelské ID, které jsou témata hello hello události.
+* **Aktivita** -hello typ aktivity, jak je popsáno výše.
+* **Stav** – ať hello událostí bylo úspěšné, nebo ne.
+* **Důvod stavu** – souhrn co se stalo v hello zřizování událostí.
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Zřizování souhrnné sestavy a auditu protokoly hrát klíčovou roli pomáhá správci řešení potíží s různými uživatelský účet zřizování problémy.
+Hello zřizování souhrnné sestavy a auditu protokoly hrát klíčovou roli pomáhá správci řešení potíží s různými uživatelský účet zřizování problémy.
 
-Na základě scénáře pokyny, jak řešit zřizování automatické uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů k aplikaci](active-directory-application-provisioning-content-map.md).
+Na základě scénáře návod tootroubleshoot automatické zřizování uživatelů, najdete v části [problémy konfigurace a zřizování uživatelů tooan aplikace](active-directory-application-provisioning-content-map.md).
 
 
 ## <a name="additional-resources"></a>Další zdroje

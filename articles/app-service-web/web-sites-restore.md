@@ -1,6 +1,6 @@
 ---
-title: "Obnovení aplikace v Azure"
-description: "Zjistěte, jak vaše aplikace obnovit ze zálohy."
+title: aaaRestore aplikace v Azure
+description: "Zjistěte, jak toorestore aplikace ze zálohy."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,73 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5fe74d992edb7028fa4a2500e427013d98ebc250
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4b54029a9197064f990f29a3c4558c8322668714
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
-Tento článek ukazuje, jak obnovit aplikace v [Azure App Service](../app-service/app-service-value-prop-what-is.md) který jste dříve zálohovali (viz [zálohování aplikace v Azure](web-sites-backup.md)). Můžete obnovit do předchozího stavu vaší aplikace pomocí jeho propojené databází na vyžádání nebo vytvořit novou aplikaci na základě jedné z původní aplikaci zálohování. Aplikační služba Azure podporuje následující databáze pro zálohování a obnovení:
+Tento článek ukazuje, jak toorestore na aplikace v [Azure App Service](../app-service/app-service-value-prop-what-is.md) který jste dříve zálohovali (najdete v části [zálohování aplikace v Azure](web-sites-backup.md)). Dokáže obnovit vaší aplikace pomocí předchozího stavu na vyžádání tooa propojené databáze nebo vytvořit novou aplikaci na základě jedné z původní aplikaci zálohování. Aplikační služba Azure podporuje následující databáze pro zálohování a obnovení hello:
 - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
 - [Azure databáze pro databázi MySQL (Preview)](https://azure.microsoft.com/en-us/services/mysql)
 - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/en-us/services/postgres)
 - [Databáze MySQL cleardb –](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview)
 - [MySQL v aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
-Obnovení ze zálohy je k dispozici pro aplikace běžící **standardní** a **Premium** vrstvy. Informace o vertikálním navýšení kapacity aplikace naleznete v tématu [škálování aplikace v Azure](web-sites-scale.md). **Premium** úroveň umožňuje větší počet denní zálohování než **standardní** vrstvy.
+Obnovení ze zálohy je k dispozici tooapps spuštěné v **standardní** a **Premium** vrstvy. Informace o vertikálním navýšení kapacity aplikace naleznete v tématu [škálování aplikace v Azure](web-sites-scale.md). **Premium** úroveň umožňuje větší počet denní zálohy toobe provést než **standardní** vrstvy.
 
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Obnovení aplikace z existující zálohy
-1. Na **nastavení** vaší aplikace na portálu Azure klikněte na **zálohování** zobrazíte **zálohování** okno. Pak klikněte na tlačítko **obnovení**.
+1. Na hello **nastavení** okna aplikace na hello portálu Azure, klikněte na tlačítko **zálohování** toodisplay hello **zálohování** okno. Pak klikněte na tlačítko **obnovení**.
    
     ![Zvolte teď obnovení][ChooseRestoreNow]
-2. V **obnovení** okno, nejprve vyberte zálohování zdroj.
+2. V hello **obnovení** okno, první zálohování zdroj vyberte hello.
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
-    **Zálohování aplikace** možnost ukazuje všechny stávající zálohy aktuální aplikaci, a můžete snadno vybrat jednu.
-    **Úložiště** možnost umožňuje vybrat všechny záložní soubor ZIP z jakékoli existující účet služby Azure Storage a kontejner v rámci vašeho předplatného.
-    Pokud se pokoušíte obnovit zálohu jiné aplikaci, použijte **úložiště** možnost.
-3. Zadejte cíl pro obnovení aplikace v **cíl obnovení**.
+    Hello **zálohování aplikace** možnost uvádí všechny hello existující zálohy hello aktuální aplikaci, a můžete snadno vybrat jednu.
+    Hello **úložiště** možnost umožňuje vybrat všechny záložní soubor ZIP z jakékoli existující účet služby Azure Storage a kontejner v rámci vašeho předplatného.
+    Pokud se snažíte toorestore zálohu jiné aplikaci, použijte hello **úložiště** možnost.
+3. Potom můžete určit hello cíl pro obnovení aplikace hello v **cíl obnovení**.
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > Pokud se rozhodnete **přepsat**, všechny je vymazat a přepsat existující data v aktuální aplikaci. Před kliknutím na **OK**, ujistěte se, že je přesně co chcete udělat.
+   > Pokud se rozhodnete **přepsat**, všechny je vymazat a přepsat existující data v aktuální aplikaci. Před kliknutím na **OK**, ujistěte se, že je přesně co chcete toodo.
    > 
    > 
    
-    Můžete vybrat **stávající aplikace** obnovení zálohy aplikace do jiné aplikace ve stejné skupině provedena. Než použijete tuto možnost, měli jste již vytvořili jiné aplikace ve vaší skupině prostředků s zrcadlení konfigurace databáze na jednu definované v aplikaci zálohování. Můžete také vytvořit **nový** obnovit svůj obsah do aplikace.
+    Můžete vybrat **stávající aplikace** toorestore hello aplikaci Zálohování tooanother aplikace v hello stejnou skupinu provedena. Než použijete tuto možnost, měli jste již vytvořili jiné aplikace ve vaší skupině prostředků s zrcadlení databáze konfigurace toohello, definovaná v zálohování aplikace hello. Můžete také vytvořit **nový** toorestore aplikace svůj obsah do.
 
 4. Klikněte na **OK**.
 
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Stáhnout nebo odstranit zálohy z účtu úložiště
-1. Z hlavní **Procházet** okno portálu Azure, vyberte **účty úložiště**. Zobrazí se seznam existující účty úložiště.
-2. Vyberte účet úložiště, který obsahuje zálohu, kterou chcete stáhnout nebo odstranit. Zobrazí se okno pro účet úložiště.
-3. V okně účtu úložiště vyberte kontejner, který chcete
+1. Z hlavní hello **Procházet** okno hello portál Azure, vyberte **účty úložiště**. Zobrazí se seznam existující účty úložiště.
+2. Vyberte účet úložiště hello, který obsahuje hello zálohování, který chcete, zobrazí se okno toodownload nebo delete.hello pro účet úložiště hello.
+3. V okně účtu úložiště hello vyberte hello kontejner, který chcete
    
     ![Zobrazení kontejnery][ViewContainers]
-4. Vyberte záložní soubor, který chcete stáhnout nebo odstranit.
+4. Vyberte soubor zálohy mají toodownload nebo odstranit.
    
     ![ViewContainers](./media/web-sites-restore/03ViewFiles.png)
-5. Klikněte na tlačítko **Stáhnout** nebo **odstranit** v závislosti na tom, co chcete udělat.  
+5. Klikněte na tlačítko **Stáhnout** nebo **odstranit** v závislosti na tom, co jste má toodo.  
 
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>Monitorování operací obnovení
-Chcete-li zobrazit podrobnosti o úspěchu nebo neúspěchu operace obnovení aplikace, přejděte na **protokol aktivit** okno na portálu Azure.  
+toosee podrobnosti o hello úspěšné nebo neúspěšné operace obnovení hello aplikace, přejděte toohello **protokol aktivit** okno v hello portálu Azure.  
  
 
-Přejděte dolů a najděte požadovanou operaci obnovení a klikněte na tlačítko ji vyberte.
+Přejděte dolů tooselect toofind hello potřeby obnovení operaci a klikněte na tlačítko ji.
 
-V okně podrobností zobrazuje dostupné informace související s operací obnovení.
+Hello podrobnosti okno zobrazí hello k dispozici informace týkající se toohello operace obnovení.
 
 ## <a name="next-steps"></a>Další kroky
-Lze zálohovat a obnovovat aplikace služby App Service pomocí rozhraní REST API (viz [REST použít k zálohování a obnovení služby App Service aplikace](websites-csm-backup.md)).
+Lze zálohovat a obnovovat aplikace služby App Service pomocí rozhraní REST API (viz [tooback pomocí REST a obnovení služby App Service aplikace](websites-csm-backup.md)).
 
 
 <!-- IMAGES -->

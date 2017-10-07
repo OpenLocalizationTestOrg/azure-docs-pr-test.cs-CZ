@@ -1,5 +1,5 @@
 ---
-title: "Azure AD vrstvené heslo zabezpečení | Microsoft Docs"
+title: "aaaAzure AD vrstvené heslo zabezpečení | Microsoft Docs"
 description: "Vysvětluje, jak Azure AD vynucuje silná hesla a chrání hesla uživatelů z zločinci,"
 services: active-directory
 documentationcenter: 
@@ -13,77 +13,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: joflore
-ms.openlocfilehash: 32464307ccb082b25538eaa522c1cdedef1ca555
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10d8b600d9f4c02355b2cd8c5dccf8505aaf210d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Víceúrovňová způsob zabezpečení hesel Azure AD
+# <a name="a-multi-tiered-approach-tooazure-ad-password-security"></a>Zabezpečení přístupu víceúrovňových tooAzure AD heslo
 
-Tento článek popisuje některé z osvědčených postupů můžete provést jako uživatel, nebo jako správce k ochraně služby Azure Active Directory (Azure AD) nebo Account Microsoft.
+Tento článek popisuje některé z osvědčených postupů můžete postupovat podle uživatele nebo tooprotect správce Azure Active Directory (Azure AD) nebo Account Microsoft.
 
  > [!NOTE]
- > Správci služby Azure AD můžete resetovat hesla uživatelů pomocí pokynů v článku [resetování hesla pro uživatele v Azure Active Directory](active-directory-users-reset-password-azure-portal.md).
+ > Správci služby Azure AD můžete resetovat hesla uživatelů podle pokynů hello v článku hello [resetovat hello heslo pro uživatele v Azure Active Directory](active-directory-users-reset-password-azure-portal.md).
  >
- > Uživatelům můžete resetovat vlastní hesla pomocí pokynů v článku [nápovědy zapomenuté heslo Azure AD](active-directory-passwords-update-your-own-password.md).
+ > Uživatelům můžete resetovat vlastní heslo pomocí hello pokyny v článku hello [nápovědy zapomenuté heslo Azure AD](active-directory-passwords-update-your-own-password.md).
  >
 
 ## <a name="password-requirements"></a>Požadavky na heslo
 
-Azure AD zahrnuje následující běžné přístupy k zabezpečení hesel:
+Azure AD zahrnuje hello následující běžné přístupy toosecuring hesla:
 
 * Požadavky na délku hesla
 * Požadavky na složitost hesla
 * Pravidelné a opakované vypršení platnosti hesla
 
-Informace o vytvoření nového ve službě Azure Active Directory, naleznete v tématu [Azure AD samoobslužného resetování hesla pro IT profesionály](active-directory-passwords.md).
+Informace o vytvoření nového ve službě Azure Active Directory najdete v tématu hello [Azure AD samoobslužného resetování hesla pro odborníky v oblasti IT hello](active-directory-passwords.md).
 
 ## <a name="azure-ad-password-protections"></a>Ochrana hesla služby Azure AD
 
-Azure AD a systémem účtů Microsoft používat odvětví ověřené přístupy k zajištění zabezpečení ochranu uživatele a správce hesel, včetně:
+Azure AD a hello systémem účtů Microsoft použít odvětví ověřené blíží tooensure zabezpečení ochranu uživatele a správce hesel, včetně:
 
 * Dynamicky zakázaná hesla
 * Inteligentní uzamčení hesla
 
-Informace o správě hesel podle aktuální research, najdete v dokumentu White Paper [heslo pokyny](http://aka.ms/passwordguidance).
+Informace o správě hesel podle aktuální research, najdete v dokumentu White Paper hello [heslo pokyny](http://aka.ms/passwordguidance).
 
 ### <a name="dynamically-banned-passwords"></a>Dynamicky zakázaná hesla
 
-Azure AD a Accounts Microsoft ochrana heslem zabezpečit pomocí dynamicky zakazování běžně používané hesla. Tým Azure AD Identity Protection pravidelně analyzuje seznamy zakázaných hesel, aby bránil uživatelům ve zvolení běžně používaných hesel. Tato služba je k dispozici pro zákazníky Azure AD a Microsoft Account Service.
+Azure AD a Accounts Microsoft ochrana heslem zabezpečit pomocí dynamicky zakazování běžně používané hesla. tým ochrany identit Azure ID Hello pravidelně analyzuje seznamů zakázaných heslo, brání uživatelům v výběr běžně používané hesla. Tato služba je k dispozici tooAzure AD a Zákazníci využívající službu účet Microsoft hello.
 
-Při vytváření hesel, je důležité pro správce k podpoře uživatelům zvolit frází heslo, které zahrnují jedinečnou kombinaci písmena, čísla, znaky nebo slova. Tento přístup umožňuje, aby téměř možné být ohrožené ale usnadňuje uživatelům mějte na paměti, aby uživatelská hesla.
+Při vytváření hesel, je důležité správci tooencourage uživatelé toochoose heslo vět, které zahrnují jedinečnou kombinaci písmena, čísla, znaky nebo slova. Tento přístup pomáhá téměř nemožné toobe ohrožení zabezpečení, ale usnadňuje uživatelům tooremember toomake uživatelská hesla.
 
 #### <a name="password-breaches"></a>Narušení heslo
 
-Společnost Microsoft pracuje vždy zůstala krok před zločinci.
+Společnost Microsoft pracuje vždy toostay jeden krok před zločinci.
 
-Tým Azure AD Identity Protection průběžně analyzuje hesla, která se běžně používají. Kybernetičtí zločinci také používají podobné strategie k úpravě svých útoků, jako je například vytváření [duhové tabulky](https://en.wikipedia.org/wiki/Rainbow_table) pro prolamování hodnot hash hesel.
+tým Azure AD Identity Protection Hello průběžně analyzuje hesla, které se běžně používají. Zločinci také použít podobné tooinform strategie jejich útoky, jako je například vytváření [duhové tabulky](https://en.wikipedia.org/wiki/Rainbow_table) pro krakování hodnot hash hesel.
 
-Microsoft průběžně analyzuje [úniky dat](https://www.privacyrights.org/data-breaches) a udržuje dynamicky aktualizovaný seznam zakázaných hesel, který zajišťuje, že citlivá hesla jsou zakázána dřív, než se stanou skutečnou hrozbou zákazníkům služby Azure AD. Další informace o našem aktuálním úsilí týkajícím se zabezpečení najdete ve zprávě [Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx).
+Společnost Microsoft průběžně analyzuje [úniky dat](https://www.privacyrights.org/data-breaches) toomaintain seznam dynamicky aktualizované zakázaného heslo, které zajišťuje, že citlivé hesla jsou zakázané dřív, než narostou reálné hrozby tooAzure AD zákazníků. Další informace o našich aktuální úsilí zabezpečení najdete v tématu hello [sestavy Intelligence zabezpečení Microsoft](https://www.microsoft.com/security/sir/default.aspx).
 
 ### <a name="smart-password-lockout"></a>Inteligentní uzamčení hesla
 
-Když Azure AD zjistí, že potenciální kybernetický zločinec se snaží o prolomení uživatelského hesla, uživatelský účet se uzamkne pomocí inteligentního uzamčení hesla. Azure AD vyhodnocuje riziko spojené s konkrétními přihlašovacími relacemi. Potom pomocí nejnovější data zabezpečení použijeme uzamčení sémantiku zastavit internetových hrozeb.
+Pokud Azure AD zjistí potenciální snažíme toohack internetový trestního do heslo uživatele, jsme uzamčení hello uživatelský účet s inteligentní uzamčení heslo. Azure AD je navržený tak, toodetermine hello riziko spojené s konkrétní přihlašovací relace. Potom pomocí hello nejaktuálnější data zabezpečení, použijeme uzamčení sémantiku toostop internetových hrozeb.
 
-Pokud se uživatel uzamkne mimo Azure AD, jejich obrazovky vypadá podobně jako následující:
+Pokud se uživatel uzamkne mimo Azure AD, jejich obrazovky vypadá podobně jako toohello, ten, který následuje:
 
   ![Uzamčení a vyloučení z Azure AD](./media/active-directory-secure-passwords/locked-out-azuread.png)
 
-Pro ostatní účty Microsoft jejich obrazovky vypadá podobně jako následující:
+Pro ostatní účty Microsoft jejich obrazovky vypadá podobně jako toohello, ten, který následuje:
 
   ![Uzamčení a vyloučení z účtu Microsoft](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Informace o vytvoření nového ve službě Azure Active Directory, naleznete v tématu [Azure AD samoobslužného resetování hesla pro IT profesionály](active-directory-passwords.md).
+Informace o vytvoření nového ve službě Azure Active Directory najdete v tématu hello [Azure AD samoobslužného resetování hesla pro odborníky v oblasti IT hello](active-directory-passwords.md).
 
   >[!NOTE]
-  >Pokud jste správce Azure AD, můžete chtít použít [Windows Hello](https://www.microsoft.com/windows/windows-hello), aby vaši uživatelé přestali vytvářet tradiční hesla úplně.
+  >Pokud jste správce Azure AD, může být vhodné toouse [Windows Hello](https://www.microsoft.com/windows/windows-hello) tooavoid s uživatelům vytvářet zcela tradiční hesla.
   >
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Postup aktualizace vlastního hesla](active-directory-passwords-update-your-own-password.md)
-* [Základy správy identit Azure](fundamentals-identity.md)
+* [Jak tooupdate své vlastní heslo](active-directory-passwords-update-your-own-password.md)
+* [Hello základy Azure identity management.](fundamentals-identity.md)
 * [Aktivita resetování zprávu o heslo](active-directory-passwords-reporting.md)
 
 

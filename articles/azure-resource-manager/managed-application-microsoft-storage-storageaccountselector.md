@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace StorageAccountSelector elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Storage.StorageAccountSelector uživatelského rozhraní pro spravované aplikace Azure"
+title: "element uživatelského rozhraní StorageAccountSelector spravované aplikace aaaAzure | Microsoft Docs"
+description: "Popisuje hello elementu Microsoft.Storage.StorageAccountSelector uživatelského rozhraní pro spravované aplikace Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 15e69c0deb4bce64b7413b557eb69db5165bde73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2c9545feed4c4afb3c64b30b42c94d5382a108d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Element Microsoft.Storage.StorageAccountSelector uživatelského rozhraní
 Ovládací prvek pro výběr účtu nový nebo existující úložiště. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](managed-application-publishing.md).
@@ -48,11 +48,11 @@ Ovládací prvek pro výběr účtu nový nebo existující úložiště. Pomoc�
 ```
 
 ## <a name="remarks"></a>Poznámky
-- -Li zadána, `defaultValue.name` dojde k automatickému ověření jedinečnosti. Pokud název účtu úložiště není jedinečný, musí uživatel zadejte jiný název nebo vybrat existující účet úložiště.
-- Výchozí hodnota pro `defaultValue.type` je **Premium_LRS**.
+- -Li zadána, `defaultValue.name` dojde k automatickému ověření jedinečnosti. Pokud název účtu úložiště hello není jedinečný, musí uživatel hello zadejte jiný název nebo vybrat existující účet úložiště.
+- Výchozí hodnota pro Hello `defaultValue.type` je **Premium_LRS**.
 - Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí.
 `constraints.allowedTypes`a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
-- Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat existující účet úložiště. Výchozí hodnota je **false**.
+- Pokud `options.hideExisting` je **true**, uživatel hello nelze vybrat existující účet úložiště. Hello výchozí hodnota je **false**.
 
 
 ## <a name="sample-output"></a>Ukázkový výstup
@@ -66,6 +66,6 @@ Ovládací prvek pro výběr účtu nový nebo existující úložiště. Pomoc�
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](managed-application-overview.md).
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Úvod toomanaged aplikace naleznete v [Azure spravovaných aplikací – přehled](managed-application-overview.md).
+* Úvod toocreating uživatelského rozhraní definice naleznete v tématu [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](managed-application-createuidefinition-elements.md).

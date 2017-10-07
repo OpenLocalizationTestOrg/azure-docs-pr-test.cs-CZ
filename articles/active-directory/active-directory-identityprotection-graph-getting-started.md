@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Active Directory Identity Protection a Microsoft Graph | Microsoft Docs"
-description: "Poskytuje úvod do dotazů Microsoft Graph seznam rizikových událostech a přidružené informace ze služby Azure Active Directory."
+title: "aaaGet začít s Azure Active Directory Identity Protection a Microsoft Graph | Microsoft Docs"
+description: "Poskytuje úvod tooquery Microsoft Graph seznam rizikových událostech a přidružené informace ze služby Azure Active Directory."
 services: active-directory
 keywords: "ochrany identit Azure active directory, riziko událostí, ohrožení zabezpečení, zásady zabezpečení, Microsoft Graph"
 documentationcenter: 
@@ -15,60 +15,60 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9b01ff86da6a1fd4a439a6ba59ea15ed6480cdad
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 75b8b7629a0120d8101f6fde0d9163122503d276
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
-Microsoft Graph je Microsoft unified koncový bod rozhraní API a součástí [Azure Active Directory Identity Protection](active-directory-identityprotection.md) rozhraní API. Rozhraní API first **identityRiskEvents**, umožňuje dotazování Microsoft Graph seznam [rizik události](active-directory-identityprotection-risk-events-types.md) a související informace. Tento článek vám pomůže začít dotazování toto rozhraní API. Podrobný úvod, úplnou dokumentaci a přístup do Průzkumníka grafu naleznete v tématu [Microsoft Graph lokality](https://graph.microsoft.io/).
+Microsoft Graph je hello Microsoft unified koncový bod rozhraní API a hello domácí z [Azure Active Directory Identity Protection](active-directory-identityprotection.md) rozhraní API. Hello prvního rozhraní API, **identityRiskEvents**, vám umožní tooquery Microsoft Graph seznam z [rizik události](active-directory-identityprotection-risk-events-types.md) a související informace. Tento článek vám pomůže začít dotazování toto rozhraní API. Podrobný úvod, úplnou dokumentaci a přístup toohello grafu Explorer najdete v tématu hello [Microsoft Graph lokality](https://graph.microsoft.io/).
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek.
+> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku.
 
-Přístup k datům ochrany identit pomocí Microsoft Graph tři kroky:
+Existují tři kroky tooaccessing Identity Protection data prostřednictvím Microsoft Graph:
 
 1. Přidáte aplikaci s tajný klíč klienta. 
-2. Tento tajný klíč a několik další požadované informace můžete použijte k ověření do aplikace Microsoft Graph, kterou budete dostávat ověřovací token. 
-3. Pomocí tohoto tokenu provádět požadavky na koncový bod rozhraní API a vrátit data pro ochranu Identity.
+2. Použijte tento tajný klíč a několik dalších informace tooauthenticate tooMicrosoft grafu, kterou budete dostávat ověřovací token. 
+3. Použijte tento koncový bod tokenu toomake požadavky toohello rozhraní API a vrátit data pro ochranu Identity.
 
 Než začnete, budete potřebovat:
 
-* Oprávnění správce k vytvoření aplikace ve službě Azure AD
-* Název domény vašeho klienta (například contoso.onmicrosoft.com)
+* Správce oprávnění toocreate hello aplikace ve službě Azure AD
+* Hello název domény vašeho klienta (například contoso.onmicrosoft.com)
 
 ## <a name="add-an-application-with-a-client-secret"></a>Přidat aplikaci s tajný klíč klienta
-1. [Přihlaste se](https://manage.windowsazure.com) na portálu Azure classic jako správce. 
-2. V klikněte v levém navigačním podokně na **služby Active Directory**. 
+1. [Přihlaste se](https://manage.windowsazure.com) tooyour portál Azure classic jako správce. 
+2. V klikněte v levém navigačním podokně hello na **služby Active Directory**. 
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_01.png)
-3. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
-4. V nabídce v horní části, klikněte na tlačítko **aplikace**.
+3. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+4. V nabídce hello hello nahoře, klikněte na tlačítko **aplikace**.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_02.png)
-5. Klikněte na tlačítko **přidat** v dolní části stránky.
+5. Klikněte na tlačítko **přidat** na hello dolní části stránky hello.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_03.png)
-6. Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci, kterou vyvíjí Moje organizace**.
+6. Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci, kterou vyvíjí Moje organizace**.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_04.png)
-7. Na **Řekněte nám o své aplikaci** dialogové okno, proveďte následující kroky:
+7. Na hello **Řekněte nám o své aplikaci** dialogové okno, proveďte následující kroky hello:
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_05.png)
    
-    a. V **název** textovému poli, zadejte název vaší aplikace (např: aplikace AADIP riziko událostí rozhraní API).
+    a. V hello **název** textovému poli, zadejte název vaší aplikace (např: aplikace AADIP riziko událostí rozhraní API).
    
     b. Jako **typ**, vyberte **webové aplikace nebo webové rozhraní API**.
    
     c. Klikněte na **Další**.
-8. Na **vlastností aplikace** dialogové okno, proveďte následující kroky:
+8. Na hello **vlastností aplikace** dialogové okno, proveďte následující kroky hello:
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_06.png)
    
-    a. V **přihlašovací adresa URL** textovému poli, typ `http://localhost`.
+    a. V hello **přihlašovací adresa URL** textovému poli, typ `http://localhost`.
    
-    b. V **identifikátor ID URI aplikace** textovému poli, typ `http://localhost`.
+    b. V hello **identifikátor ID URI aplikace** textovému poli, typ `http://localhost`.
    
     c. Klikněte na **Dokončit**.
 
@@ -76,14 +76,14 @@ Můžete teď konfigurovat vaší aplikace.
 
 ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_07.png)
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Udělit oprávnění vaše aplikace k používání rozhraní API
-1. Na stránce vaší aplikace, v nabídce v horní části klikněte na **konfigurace**. 
+## <a name="grant-your-application-permission-toouse-hello-api"></a>Udělení oprávnění vaší aplikace toouse hello rozhraní API
+1. Na stránce vaší aplikace, v nabídce hello hello nahoře, klikněte na **konfigurace**. 
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
-2. V **oprávnění k ostatním aplikacím** klikněte na tlačítko **přidat aplikaci**.
+2. V hello **oprávnění tooother aplikace** klikněte na tlačítko **přidat aplikaci**.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_09.png)
-3. Na **oprávnění k ostatním aplikacím** dialogové okno, proveďte následující kroky:
+3. Na hello **oprávnění tooother aplikace** dialogové okno, proveďte následující kroky hello:
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_10.png)
    
@@ -93,35 +93,35 @@ Můžete teď konfigurovat vaší aplikace.
 4. Klikněte na tlačítko **oprávnění aplikací: 0**a potom vyberte **čtení informací o události riziko všechny identity**.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_11.png)
-5. V dolní části stránky klikněte na **Uložit**.
+5. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
 ## <a name="get-an-access-key"></a>Získání přístupového klíče
-1. Na stránce vaší aplikace v **klíče** vyberte 1 rok jako doba trvání.
+1. Na stránce vaší aplikace v hello **klíče** vyberte 1 rok jako doba trvání.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_13.png)
-2. V dolní části stránky klikněte na **Uložit**.
+2. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
-3. v části klíče hodnotu nově vytvořený klíč zkopírujte a vložte jej do bezpečného umístění.
+3. v části klíče hello hello hodnotu nově vytvořený klíč zkopírujte a vložte jej do bezpečného umístění.
    
     ![Vytváření aplikací](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_14.png)
    
    > [!NOTE]
-   > Pokud tento klíč ztratíte, budete muset vraťte do této části a vytvořte nový klíč. Zachovat tento klíč tajný klíč: každý, kdo je přístup ke svým datům.
+   > Pokud tento klíč ztratíte, bude mít tooreturn toothis části a vytvořte nový klíč. Zachovat tento klíč tajný klíč: každý, kdo je přístup ke svým datům.
    > 
    > 
-4. V **vlastnosti** část, zkopírujte **ID klienta**a pak ji vložit do bezpečného umístění. 
+4. V hello **vlastnosti** část, kopie hello **ID klienta**a pak ji vložit do bezpečného umístění. 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Ověřování do aplikace Microsoft Graph a dotaz rozhraní API Identity riziko události
+## <a name="authenticate-toomicrosoft-graph-and-query-hello-identity-risk-events-api"></a>Ověření tooMicrosoft grafu a dotaz hello Identity riziko události rozhraní API
 V tomto okamžiku byste měli mít:
 
-* ID klienta, které jste zkopírovali výše
-* Klíč, který jste zkopírovali výše
-* Název domény vašeho klienta
+* ID klienta Hello, které jste zkopírovali výše
+* Hello klíče, který jste zkopírovali výše
+* Hello název domény vašeho klienta
 
-K ověření, odeslat požadavek post do `https://login.microsoft.com` s následujícími parametry v textu:
+tooauthenticate, odeslání a post požadavku příliš`https://login.microsoft.com` s hello následující parametry v textu hello:
 
 * grant_type: "**client_credentials**"
 * prostředek: "**https://graph.microsoft.com**"
@@ -129,23 +129,23 @@ K ověření, odeslat požadavek post do `https://login.microsoft.com` s násled
 * tajný klíč client_secret:<your key>
 
 > [!NOTE]
-> Je nutné zadat hodnoty **client_id** a **tajný klíč client_secret** parametr.
+> Potřebujete tooprovide hodnoty pro hello **client_id** a hello **tajný klíč client_secret** parametr.
 > 
 > 
 
 V případě úspěchu vrátí ověřovací token.  
-Pro volání rozhraní API, vytvoří hlavičku s následující parametr:
+hello toocall rozhraní API, vytvoří hlavičku s hello následující parametr:
 
     `Authorization`=”<token_type> <access_token>"
 
 
-Při ověřování, můžete najít typ tokenu a přístupový token v vrácený tokenu.
+Při ověřování, můžete najít typ tokenu hello a přístupový token v hello vrátil tokenu.
 
-Odeslat tuto hlavičku jako požadavek na následující adresu URL rozhraní API:`https://graph.microsoft.com/beta/identityRiskEvents`
+Odesílat hlavičku jako požadavek toohello, následující adresy URL rozhraní API:`https://graph.microsoft.com/beta/identityRiskEvents`
 
-Odpověď, a to v případě úspěchu je kolekce identity rizikových událostech a přidružená data ve formátu OData JSON, který lze analyzovat a zpracovávají podle svých potřeb.
+odpověď Hello, pokud bylo úspěšné, je kolekce identity rizikových událostech a související data ve formátu OData JSON, který lze analyzovat a zpracovávají podle svých potřeb hello.
 
-Tady je ukázkový kód pro ověřování a volání rozhraní API pomocí prostředí Powershell.  
+Tady je ukázkový kód pro ověřování a volání rozhraní API hello pomocí prostředí Powershell.  
 Stačí přidat vaše ID klienta, klíče a klienta domény.
 
     $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
@@ -178,10 +178,10 @@ Stačí přidat vaše ID klienta, klíče a klienta domény.
 
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme, jste právě provedli vaše první volání Microsoft Graph.  
-Nyní můžete dotaz identity rizikových událostech a použije data, ale svých potřeb.
+Blahopřejeme, jste právě provedli první volání tooMicrosoft grafu.  
+Nyní můžete dotazovat identity rizikových událostech a používat hello data, ale svých potřeb.
 
-Další informace o Microsoft Graph a jak vytvářet aplikace, které používají rozhraní Graph API, podívejte se [dokumentace](https://graph.microsoft.io/docs) zdaleka na [Microsoft Graph lokality](https://graph.microsoft.io/). Také si nezapomeňte bookmark [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) stránky, která obsahuje seznam všech dostupných v grafu Identity ochrany pro rozhraní API. Jak jsme přidat nové způsoby, jak pracovat s ochranou Identity prostřednictvím rozhraní API, uvidíte je na této stránce.
+toolearn Další informace o Microsoft Graph a jak hello toobuild aplikací pomocí rozhraní Graph API, projděte si hello [dokumentace](https://graph.microsoft.io/docs) zdaleka na hello [Microsoft Graph lokality](https://graph.microsoft.io/). Zajistěte také, zda text hello toobookmark [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) stránky, která obsahuje seznam všech hello API ochrany Identity k dispozici v grafu. Jak jsme přidat nové způsoby toowork s ochranou Identity prostřednictvím rozhraní API, uvidíte je na této stránce.
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)

@@ -1,6 +1,6 @@
 ---
-title: "Povolit protokolování diagnostiky pro webové aplikace v Azure App Service"
-description: "Zjistěte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu."
+title: "protokolování diagnostiky aaaEnable pro webové aplikace v Azure App Service"
+description: "Zjistěte, jak protokolování diagnostiky tooenable a přidejte instrumentace aplikací tooyour, a jak tooaccess hello informací zaznamenaných v Azure."
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,275 +14,275 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 7b125aeb9c0ee1dcbb199da98b0ce079820ea85c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4b2903ff31cc93180552cf51196c33505ffbaf07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
-Azure poskytuje integrované diagnostiky vám pomůže při ladění [webové aplikace App Service](http://go.microsoft.com/fwlink/?LinkId=529714). V tomto článku se dozvíte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu.
+Azure poskytuje integrované diagnostiky tooassist s laděním [webové aplikace App Service](http://go.microsoft.com/fwlink/?LinkId=529714). V tomto článku se dozvíte jak protokolování diagnostiky tooenable a přidejte instrumentace aplikací tooyour, a jak tooaccess hello informací zaznamenaných v Azure.
 
-Tento článek používá [portálu Azure](https://portal.azure.com), Azure PowerShell a rozhraní příkazového řádku Azure (Azure CLI) pro práci s diagnostické protokoly. Informace o práci s diagnostických protokolů pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+Tento článek používá hello [portálu Azure](https://portal.azure.com), Azure PowerShell a rozhraní příkazového řádku Azure (Azure CLI) toowork hello diagnostické protokoly. Informace o práci s diagnostických protokolů pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="whatisdiag"></a>Webový server diagnostics a application diagnostics
-Webové aplikace služby App Service poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělené do **webový server diagnostiky** a **rozhraní application diagnostics**.
+Webové aplikace služby App Service poskytují diagnostické funkce pro protokolování informací z hello webový server a hello webové aplikace. Tyto jsou logicky rozdělené do **webový server diagnostiky** a **rozhraní application diagnostics**.
 
 ### <a name="web-server-diagnostics"></a>Diagnostika webového serveru
-Můžete povolit nebo zakázat následující typy protokolů:
+Můžete povolit nebo zakázat hello následující typy protokolů:
 
-* **Podrobné protokolování chyb** -podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (kód stavu 400 nebo vyšší). To může obsahovat informace, které vám mohou pomoci určit, proč server vrátil kód chyby.
-* **Se nezdařilo, trasování požadavku** -podrobné informace o chybných žádostech, včetně trasování pro součásti služby IIS používá ke zpracování žádostí a doba trvání v jednotlivých součástí. To může být užitečné, pokud se pokoušíte zvýšit výkon webu nebo izolovat, co ho způsobuje. konkrétní chyba protokolu HTTP, který se má vrátit.
-* **Webový Server protokolování** -informace o transakcích HTTP pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). To je užitečné, když chcete určit celkový metriky lokality, jako je počet požadavků zpracovaných nebo je počet požadavků z konkrétní IP adresu.
+* **Podrobné protokolování chyb** -podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (kód stavu 400 nebo vyšší). To může obsahovat informace, které vám mohou pomoci určit, proč hello server vrátil kód chyby hello.
+* **Se nezdařilo, trasování požadavku** -podrobné informace o chybných žádostech, včetně trasování hello IIS komponenty používané tooprocess hello požadavku a hello doba v jednotlivých součástí. To může být užitečné, pokud se pokoušíte výkonu webu tooincrease nebo izolovat, co ho způsobuje konkrétní toobe chyby HTTP vrátil.
+* **Webový Server protokolování** -informace o transakcích HTTP pomocí hello [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). To je užitečné, když chcete určit celkový metriky lokality, jako je například hello počet požadavků zpracovaných nebo je počet požadavků z konkrétní IP adresu.
 
 ### <a name="application-diagnostics"></a>Rozhraní Application diagnostics
-Rozhraní Application diagnostics umožňuje zaznamenat informace o vytvořil webovou aplikací. Aplikace ASP.NET můžete použít [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) třída do protokolu informace o protokolu diagnostiky aplikace. Například:
+Rozhraní Application diagnostics můžete informace o toocapture vytvořil webovou aplikací. Aplikace ASP.NET můžete použít hello [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) rozhraní application diagnostics třída toolog informace toohello protokolu. Například:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-V době běhu může načíst tyto protokoly, které pomáhají při řešení potíží. Další informace najdete v tématu [řešení potíží s Azure webové aplikace v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+V době běhu může načíst tyto protokoly toohelp při řešení problémů. Další informace najdete v tématu [řešení potíží s Azure webové aplikace v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
-Webové aplikace služby App Service také protokolu informace o nasazení, při publikování obsahu do webové aplikace. K tomu dojde automaticky a nejsou žádné nastavení konfigurace pro nasazení protokolování. Nasazení protokolování umožňuje určit, proč nasazení se nezdařilo. Například pokud používáte vlastní nasazení skriptu, můžete použít nasazení protokolování určit, proč se skript selhává.
+Webové aplikace služby App Service také protokolu informace o nasazení, při publikování obsahu tooa webové aplikace. K tomu dojde automaticky a nejsou žádné nastavení konfigurace pro nasazení protokolování. Protokolování nasazení vám umožní toodetermine, proč nasazení se nezdařilo. Například pokud používáte vlastní nasazení skriptu, můžete použít nasazení protokolování toodetermine proč selhává hello skriptu.
 
-## <a name="enablediag"></a>Postup povolení diagnostiky
-Povolí se Diagnostika v [portálu Azure](https://portal.azure.com), přejděte do okna pro vaši webovou aplikaci a klikněte na tlačítko **Nastavení > diagnostické protokoly**.
+## <a name="enablediag"></a>Jak tooenable diagnostiky
+Diagnostika tooenable v hello [portálu Azure](https://portal.azure.com), přejděte toohello okno pro vaši webovou aplikaci a klikněte na tlačítko **Nastavení > diagnostické protokoly**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Část protokoly](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Když povolíte **rozhraní application diagnostics** také vybrat **úroveň**. Toto nastavení umožňuje filtrovat informace zachycen **informační**, **upozornění** nebo **chyba** informace. Toto nastavení na **podrobné** bude protokolovat všechny informace o vytvořil aplikací.
+Když povolíte **rozhraní application diagnostics** zvolíte hello **úroveň**. Toto nastavení můžete informace hello toofilter zachytit příliš**informační**, **upozornění** nebo **chyba** informace. Toto nastavení příliš**podrobné** bude protokolovat všechny informace o vytvořil hello aplikací.
 
 > [!NOTE]
-> Na rozdíl od změny v souboru web.config, povolení rozhraní Application diagnostics nebo změna úrovně protokolů diagnostiky není recyklujte doménu aplikace, která je aplikace spuštěná v rámci.
+> Na rozdíl od změna hello web.config soubor povolení rozhraní Application diagnostics nebo změna úrovně protokolů diagnostiky není recyklujte hello doménu aplikace, která hello aplikace běží v rámci.
 >
 >
 
-V [portálu classic](https://manage.windowsazure.com) webové aplikace **konfigurace** kartě můžete vybrat **úložiště** nebo **systém souborů** pro **protokolování webového serveru**. Výběr **úložiště** vám umožní vybrat účet úložiště a kontejner objektů blob, který budou zapisovat do protokolů. Všechny protokoly pro **lokality diagnostiky** se zapisují do systému souborů.
+V hello [portálu classic](https://manage.windowsazure.com) webové aplikace **konfigurace** kartě můžete vybrat **úložiště** nebo **systém souborů** pro **webového serveru protokolování**. Výběr **úložiště** vám umožní tooselect účet úložiště a potom kontejner objektů blob, který hello protokoly byly zapsány do. Všechny protokoly pro **lokality diagnostiky** zapisují toohello pouze v systému souborů.
 
-[Portálu classic](https://manage.windowsazure.com) webové aplikace **konfigurace** karta má také další nastavení pro rozhraní application diagnostics:
+Hello [portálu classic](https://manage.windowsazure.com) webové aplikace **konfigurace** karta má také další nastavení pro rozhraní application diagnostics:
 
-* **Systém souborů** – ukládá informace o diagnostiky aplikace do systému souborů webové aplikace. Tyto soubory můžete získat přístup pomocí protokolu FTP, nebo stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure (Azure CLI).
-* **Tabulka úložiště** – ukládá informace o aplikaci diagnostiky v zadaný název účtu úložiště Azure a tabulku.
-* **Úložiště objektů blob** – ukládá informace diagnostiky aplikace v zadaném kontejneru účtu úložiště Azure a objektů blob.
-* **Doba uchování** – ve výchozím nastavení, nejsou automaticky odstraněny protokoly z **úložiště objektů blob**. Vyberte **nastavení ukládání** a zadejte počet dní, aby protokoly, pokud chcete automaticky odstranit protokoly.
+* **Systém souborů** -úložiště hello aplikace diagnostické informace systému souborů toohello webové aplikace. Tyto soubory můžete získat přístup pomocí protokolu FTP, nebo stáhnout jako archivu Zip pomocí hello prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure (Azure CLI).
+* **Tabulka úložiště** -úložiště hello aplikace diagnostické informace v hello zadaný účet úložiště Azure a název tabulky.
+* **Úložiště objektů blob** -úložiště hello aplikace diagnostické informace v hello zadaný účet úložiště Azure a objektů blob kontejneru.
+* **Doba uchování** – ve výchozím nastavení, nejsou automaticky odstraněny protokoly z **úložiště objektů blob**. Vyberte **nastavení ukládání** a zadejte hello počet dní tookeep protokoly, pokud chcete tooautomatically odstranění protokolů.
 
 > [!NOTE]
-> Pokud jste [opět vytvořit přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte nastavit konfiguraci příslušných protokolování používali aktualizované klíče. Použijte následující postup:
+> Pokud jste [opět vytvořit přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), je nutné obnovit hello příslušných protokolování konfigurace toouse hello aktualizovat klíče. toodo toto:
 >
-> 1. V **konfigurace** kartě, nastavte funkce příslušných protokolování na **vypnout**. Uložte vaše nastavení.
-> 2. Povolte protokolování na účtu úložiště objektů blob nebo table znovu. Uložte vaše nastavení.
+> 1. V hello **konfigurace** nastavte hello příslušných protokolování funkce příliš**vypnout**. Uložte vaše nastavení.
+> 2. Povolte protokolování toohello úložiště účet blob nebo table znovu. Uložte vaše nastavení.
 >
 >
 
-Libovolnou kombinaci systému souborů, úložiště table nebo úložiště objektů blob může být povoleno ve stejnou dobu a mají vlastní protokol úrovni konfigurace. Například můžete chtít protokolovat chyby a upozornění do úložiště objektů blob jako dlouhodobé řešení protokolování, při povolování protokolování systému souborů s úrovní verbose.
+Hello stejný čas a mají úroveň konfigurace jednotlivých protokolových lze povolit libovolnou kombinaci systému souborů, úložiště table nebo úložiště objektů blob. Například můžete toolog chyby a upozornění tooblob úložiště jako dlouhodobé řešení protokolování, při povolování protokolování systému souborů s úrovní verbose.
 
-Zatímco všech tří umístění úložiště poskytují stejnou základní informace o protokolu událostí, **tabulky úložiště** a **úložiště objektů blob** protokolu Další informace, jako je instance ID, ID vlákna a časové razítko podrobnější (formát značek) než protokolování, aby se **systém souborů**.
+Zatímco všech tří umístění úložiště poskytují hello stejné základní informace o protokolu událostí, **tabulky úložiště** a **úložiště objektů blob** protokolu Další informace, jako je hello instance ID, ID vlákna a dalších Podrobné časové razítko (formát značek) než protokolování příliš**systém souborů**.
 
 > [!NOTE]
-> Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těchto systémů úložiště. Například Visual Studio 2013 obsahuje Průzkumníka úložiště, který slouží k prozkoumání tabulky nebo objekt blob úložiště a HDInsight můžete přístup k datům uloženým v úložišti objektů blob. Je také možné zapsat aplikaci, která přistupuje k službě Azure Storage pomocí jednoho z [sady Azure SDK](/downloads/#).
+> Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těchto systémů úložiště. Například Visual Studio 2013 obsahuje Průzkumníka úložiště, které můžou být použité tooexplore tabulky nebo objekt blob úložiště a HDInsight můžete přístup k datům uloženým v úložišti objektů blob. Je také možné zapsat aplikaci, která přistupuje k službě Azure Storage pomocí jednoho z hello [sady Azure SDK](/downloads/#).
 >
 > [!NOTE]
-> Diagnostika se dá taky povolit z prostředí Azure PowerShell pomocí **Set-AzureWebsite** rutiny. Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [jak používat Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Diagnostika se dá taky povolit z prostředí Azure PowerShell pomocí hello **Set-AzureWebsite** rutiny. Pokud nebyly Azure PowerShell nainstalovali, nebo ji nenakonfigurovali toouse vašeho předplatného Azure, najdete v části [jak tooUse prostředí Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
 ## <a name="download"></a>Postupy: stažení protokolů
-Diagnostické informace uložené na systém souborů webové aplikace lze přistupovat přímo pomocí protokolu FTP. Lze ji také stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Systém souborů diagnostické informace uložené toohello webové aplikace lze přistupovat přímo pomocí protokolu FTP. Lze ji také stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo hello rozhraní příkazového řádku Azure.
 
-Strukturu adresáře, které protokoly jsou uložené v vypadá takto:
+Hello adresářovou strukturu, která hello protokoly jsou uloženy v vypadá takto:
 
 * **Protokoly aplikací** -/LogFiles/aplikace /. Tato složka obsahuje jeden nebo více souborů textu obsahujícího informace o vyprodukované protokolování aplikací.
-* **Trasování požadavku se nezdařilo** -/ LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se, stáhněte soubor XSL do stejného adresáře jako soubor XML souborům, protože soubor XSL poskytuje funkce pro formátování a filtrování obsah soubory XML, pokud v prohlížeči Internet Explorer.
+* **Trasování požadavku se nezdařilo** -/ LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se, abyste si stáhli soubor XSL hello do stejného adresáře jako hello XML souborům, protože soubor XSL hello poskytuje funkce pro formátování a filtrování hello obsah hello XML souborům v Internet Exploreru hello.
 * **Podrobné protokoly chyb** -/LogFiles/DetailedErrors /. Tato složka obsahuje jeden nebo více souborů HTM, které poskytují podrobné informace pro chyby protokolu HTTP, ke kterým došlo.
-* **Webový Server protokoly** -/LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů formátován pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
-* **Protokoly nasazení** -/ LogFiles/Git. Tato složka obsahuje protokoly interní nasazení procesy používané modulem webové aplikace Azure, jakož i protokoly pro nasazení Git.
+* **Webový Server protokoly** -/LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více souborů text formátován pomocí hello [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Protokoly nasazení** -/ LogFiles/Git. Tato složka obsahuje protokoly hello interní nasazení procesy používané modulem webové aplikace Azure, jakož i protokoly pro nasazení Git.
 
 ### <a name="ftp"></a>FTP
-Chcete-li získat přístup k diagnostických informací s použitím FTP, navštivte **řídicí panel** vaší webové aplikace v [portálu classic](https://manage.windowsazure.com). V **rychlého přehledu** pomocí **diagnostické protokoly FTP** odkaz pro přístup k souborům protokolu pomocí protokolu FTP. **Nasazení nebo FTP uživatele** položka uvádí uživatelské jméno, které se má použít pro přístup k serveru FTP.
+diagnostické informace tooaccess pomocí protokolu FTP, navštivte hello **řídicí panel** vaší webové aplikace v hello [portálu classic](https://manage.windowsazure.com). V hello **rychlého přehledu** pomocí hello **diagnostické protokoly FTP** odkaz tooaccess hello protokolu souborů pomocí protokolu FTP. Hello **nasazení nebo FTP uživatele** položka uvádí hello uživatelské jméno, které by měl být použité tooaccess hello FTP lokality.
 
 > [!NOTE]
-> Pokud **uživatele nasazení nebo FTP** položka není nastavena, nebo jste zapomněli heslo pro tohoto uživatele, můžete vytvořit nového uživatele a heslo pomocí **resetovat přihlašovací údaje nasazení** odkaz v **rychlého přehledu** části **řídicí panel**.
+> Pokud hello **nasazení nebo FTP uživatele** položka není nastavena, nebo jste zapomněli heslo hello pro tohoto uživatele, můžete vytvořit nového uživatele a heslo pomocí hello **resetovat přihlašovací údaje nasazení** odkaz v hello **rychlého přehledu** části hello **řídicí panel**.
 >
 >
 
 ### <a name="download-with-azure-powershell"></a>Stáhnout pomocí prostředí Azure PowerShell
-Chcete-li stáhnout soubory protokolů, spustit novou instanci třídy Azure PowerShell a použijte následující příkaz:
+soubory protokolu hello toodownload, spustit novou instanci třídy Azure PowerShell a použít hello následující příkaz:
 
     Save-AzureWebSiteLog -Name webappname
 
-Tato akce uloží protokoly pro webovou aplikaci určeného **-název** parametr do souboru s názvem **logs.zip** v aktuálním adresáři.
+Tato akce uloží hello protokoly pro webovou aplikaci hello určeného hello **-název** parametr tooa soubor s názvem **logs.zip** v aktuálním adresáři hello.
 
 > [!NOTE]
-> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [jak používat Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Pokud nebyly Azure PowerShell nainstalovali, nebo ji nenakonfigurovali toouse vašeho předplatného Azure, najdete v části [jak tooUse prostředí Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
 ### <a name="download-with-azure-command-line-interface"></a>Stáhnout pomocí rozhraní příkazového řádku Azure
-Chcete-li stáhnout soubory protokolů pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci Terminálové služby a zadejte následující příkaz:
+soubory protokolů hello toodownload pomocí hello rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci terminálu a zadejte hello následující příkaz:
 
     azure site log download webappname
 
-Tato akce uloží protokoly pro webovou aplikaci s názvem "webappname" do souboru s názvem **diagnostics.zip** v aktuálním adresáři.
+Tato akce uloží hello protokoly pro hello webovou aplikaci s názvem 'webappname' tooa soubor s názvem **diagnostics.zip** v aktuálním adresáři hello.
 
 > [!NOTE]
-> Pokud jste nenainstalovali rozhraní příkazového řádku Azure (Azure CLI), nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postup pomocí příkazového řádku Azure CLI](../cli-install-nodejs.md).
+> Pokud jste nenainstalovali hello rozhraní příkazového řádku Azure (Azure CLI), nebo ji nenakonfigurovali toouse vašeho předplatného Azure, najdete v části [jak tooUse rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
 >
 >
 
 ## <a name="how-to-view-logs-in-application-insights"></a>Postupy: zobrazení protokolů ve službě Application Insights
-Visual Studio Application Insights poskytuje nástroje pro filtrování a vyhledávání protokolů a korelace protokoly s požadavky a další události.
+Visual Studio Application Insights poskytuje nástroje pro filtrování a vyhledávání protokolů a korelace protokolů hello s požadavky a další události.
 
-1. Přidejte Application Insights SDK do projektu v sadě Visual Studio.
+1. Přidáte hello Application Insights SDK tooyour projekt v sadě Visual Studio.
    * V Průzkumníku řešení klikněte pravým tlačítkem na projekt a zvolte Přidat službu Application Insights. Budete se zobrazil pokyn provede kroky, které zahrnují vytváření prostředek Application Insights. [Další informace](../application-insights/app-insights-asp-net.md)
-2. Do projektu přidejte balíček naslouchací proces trasování.
+2. Přidáte hello naslouchací proces trasování balíček tooyour projekt.
    * Klikněte pravým tlačítkem na projekt a zvolte spravovat balíčky NuGet. Vyberte `Microsoft.ApplicationInsights.TraceListener` [Další informace](../application-insights/app-insights-asp-net-trace-logs.md)
-3. Odeslání projektu a spusťte ji k vygenerování dat protokolu.
-4. V [portálu Azure](https://portal.azure.com/), přejděte na váš nový prostředek Application Insights a otevřete **vyhledávání**. Zobrazí se data protokolu, spolu s požadavku, použití a další telemetrií. Nějaké telemetrie může trvat několik minut příchod: klikněte na tlačítko Aktualizovat. [Další informace](../application-insights/app-insights-diagnostic-search.md)
+3. Odeslání projektu a spusťte ji toogenerate data protokolu.
+4. V hello [portálu Azure](https://portal.azure.com/), procházet tooyour nový prostředek Application Insights a otevřete **vyhledávání**. Zobrazí se data protokolu, spolu s požadavku, použití a další telemetrií. Nějaké telemetrie může trvat několik minut tooarrive: klikněte na tlačítko Aktualizovat. [Další informace](../application-insights/app-insights-diagnostic-search.md)
 
 [Další informace o s Application Insights pro sledování výkonu](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a>Postupy: Stream protokoly
-Při vývoji aplikace, je často užitečné informace protokolování v skoro v reálném čase. To můžete udělat streamování informace o protokolování do vývojového prostředí pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Při vývoji aplikace, je často užitečné toosee protokolování informací v skoro v reálném čase. To můžete udělat streamování protokolování informace tooyour vývojového prostředí pomocí prostředí Azure PowerShell nebo hello rozhraní příkazového řádku Azure.
 
 > [!NOTE]
-> Některé typy protokolování vyrovnávací paměť k zápisu do souboru protokolu, což může vést k události mimo pořadí v datovém proudu. Například položku protokolu aplikace, která nastane, když uživatel navštíví stránky nemusí být zobrazeny v datovém proudu před odpovídající záznam protokolu HTTP pro požadavek na stránku.
+> Některé typy protokolování vyrovnávací paměti zápisu toohello souboru protokolu, což může vést k události mimo pořadí v datovém proudu hello. Například položku protokolu aplikace, která nastane, když uživatel navštíví stránky nemusí být zobrazeny v datovém proudu hello před hello odpovídající HTTP protokolu záznam pro požadavek na stránku hello.
 >
 > [!NOTE]
-> Vysílání datového proudu protokolu bude také stream informace zapsané na libovolný textový soubor, který je uložen v **D:\\domácí\\LogFiles\\**  složky.
+> Vysílání datového proudu protokolu bude také stream informace zapsané tooany textový soubor uložený v hello **D:\\domácí\\LogFiles\\**  složky.
 >
 >
 
 ### <a name="streaming-with-azure-powershell"></a>Streamování pomocí prostředí Azure PowerShell
-Informace o protokolování datového proudu, spustit novou instanci třídy Azure PowerShell a použijte následující příkaz:
+informace o protokolování toostream, spustit novou instanci třídy Azure PowerShell a použijte hello následující příkaz:
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-To připojí do webové aplikace určeného **-název** parametr a začít streamování informace do okna prostředí PowerShell jako protokolu událostí, ke kterým došlo u webové aplikace. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) bude Streamovat do místní konzoly.
+To připojí toohello webové aplikace určeného hello **-název** parametr a začít streamování okno PowerShell toohello informace, jako protokol událostí, ke kterým došlo u hello webové aplikace. Všechny informace zapsané toofiles končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles hello (d: nebo Domovská nebo soubory protokolů) bude Streamovat toohello místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– zpráva** parametr. Například:
+toofilter konkrétními událostmi, například chyby, použijte hello **– zpráva** parametr. Například:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Message Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-cesta** parametr. Například:
+toofilter konkrétní typy, jako je například HTTP, používat hello **-cesta** parametr. Například:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Path http
 
-Pokud chcete zobrazit seznam dostupných cesty, použijte parametr - ListPath.
+toosee seznam cest k dispozici, použijte hello - ListPath parametr.
 
 > [!NOTE]
-> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [jak používat Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Pokud nebyly Azure PowerShell nainstalovali, nebo ji nenakonfigurovali toouse vašeho předplatného Azure, najdete v části [jak tooUse prostředí Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
 ### <a name="streaming-with-azure-command-line-interface"></a>Streamování pomocí rozhraní příkazového řádku Azure
-Stream informace o protokolování, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci terminálu a zadejte následující příkaz:
+informace o protokolování toostream, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci Terminálové služby a zadejte hello následující příkaz:
 
     azure site log tail webappname
 
-To bude připojení k webové aplikaci s názvem 'webappname' a začít streamování informace do okna události protokolu jsou prováděny ve webové aplikaci. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) bude Streamovat do místní konzoly.
+To připojí toohello webovou aplikaci s názvem 'webappname' a začít streamování okno toohello informace, jako protokol událostí, ke kterým došlo u hello webové aplikace. Všechny informace zapsané toofiles končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles hello (d: nebo Domovská nebo soubory protokolů) bude Streamovat toohello místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– filtru** parametr. Například:
+toofilter konkrétními událostmi, například chyby, použijte hello **– filtru** parametr. Například:
 
     azure site log tail webappname --filter Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– cesta** parametr. Například:
+toofilter konkrétní typy, jako je například HTTP, používat hello **– cesta** parametr. Například:
 
     azure site log tail webappname --path http
 
 > [!NOTE]
-> Pokud jste nenainstalovali rozhraní příkazového řádku Azure nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postupy pro použití rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
+> Pokud jste nenainstalovali hello rozhraní příkazového řádku Azure, nebo ji nenakonfigurovali toouse vašeho předplatného Azure, najdete v části [jak tooUse rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
 >
 >
 
 ## <a name="understandlogs"></a>Postupy: pochopení protokolů diagnostiky
 ### <a name="application-diagnostics-logs"></a>Diagnostické protokoly aplikací
-Rozhraní Application diagnostics ukládá informace v konkrétním formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů systému souborů, úložiště table nebo úložiště objektů blob. Základní sada dat uložených je stejná napříč všechny tři typy úložiště - datum a čas výskytu události, ID procesu, který vytváří událost, typu události (informace, upozornění, chyby) a zprávy událostí.
+Rozhraní Application diagnostics ukládá informace v konkrétním formátu pro aplikace .NET, v závislosti na tom, jestli ukládání systém souborů protokolů toohello, úložiště table nebo úložiště objektů blob. Hello základní sadu uložených dat je stejný hello všech tří typů úložiště – došlo k události hello hello datum a čas, ID procesu hello, který vytváří hello událostí, typ události hello (informace, upozornění, chyby) a zpráva události hello.
 
 **Systém souborů**
 
-Každý řádek přihlášení k systému souborů nebo pomocí vysílání datového proudu bude v následujícím formátu:
+Každý řádek protokolu toohello systému souborů nebo pomocí vysílání datového proudu bude mít hello následující formát:
 
     {Date}  PID[{process id}] {event type/level} {message}
 
-Například událost chyby by se zobrazí podobná této:
+Událost chyby by například zobrazit podobné toohello následující:
 
-    2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
+    2014-01-30T16:36:59  PID[3096] Error       Fatal error on hello page!
 
-Protokolování do systému souborů poskytuje nejzákladnější informace tři dostupné metody poskytnutí jenom čas, id procesu, úroveň události a zprávy.
+Protokolování systému souborů toohello poskytuje hello nejzákladnější informace hello tři dostupné metod, které poskytují jenom hello čas, id procesu, úroveň události a zprávy.
 
 **Table Storage**
 
-Při přihlašování do úložiště table, další vlastnosti se používají pro usnadnění hledání data uložená v tabulce a také podrobnější informace o události. U každé entity (řádek) uložené v tabulce se používají následující vlastnosti (sloupce).
+Při přihlašování tootable úložiště, jsou další vlastnosti používané toofacilitate hledání hello data uložená v tabulce hello a také podrobnější informace o události hello. Hello (sloupce) se používají následující vlastnosti pro každou entitu (řádek) uložené v tabulce hello.
 
 | Název vlastnosti | Hodnota nebo formátu |
 | --- | --- |
-| Klíč oddílu |Datum a čas ve formátu yyyyMMddHH události |
+| Klíč oddílu |Datum a čas události hello ve formátu yyyyMMddHH |
 | RowKey |Hodnota identifikátoru GUID, který jedinečně identifikuje tuto entitu |
-| časové razítko |Datum a čas, kdy došlo k události |
-| EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
-| ApplicationName |Název webové aplikace |
+| časové razítko |Hello datum a čas, který hello událostí došlo k chybě |
+| EventTickCount |Hello datum a čas, který hello událostí došlo k chybě, ve formátu značky (větší přesnost) |
+| ApplicationName |Název webové aplikace Hello |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
-| ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
-| identifikátor instanceId |Instanci webové aplikace, které i došlo |
+| ID události |ID události Hello této události<p><p>Výchozí nastavení too0, pokud není specifikována. |
+| identifikátor instanceId |Došlo k chybě instanci hello webové aplikace, která hello i na |
 | PID |ID procesu |
-| TID |ID vlákna vlákna, která vytváří událost |
+| TID |ID vlákna Hello hello vlákno, které vytváří hello událostí |
 | Zpráva |Podrobná zpráva události |
 
 **Blob Storage**
 
-Při přihlašování do úložiště objektů blob, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Úložiště table, podobně jako další pole jsou protokolovány k poskytnutí podrobnější informace o události. Pro každý řádek ve sdíleném svazku clusteru se používají následující vlastnosti:
+Při přihlašování tooblob úložiště, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Podobně jako tootable úložiště a další pole jsou zaznamenané tooprovide podrobnější informace o události hello. Hello se používají následující vlastnosti pro každý řádek v hello CSV:
 
 | Název vlastnosti | Hodnota nebo formátu |
 | --- | --- |
-| Datum |Datum a čas, kdy došlo k události |
+| Datum |Hello datum a čas, který hello událostí došlo k chybě |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
-| ApplicationName |Název webové aplikace |
-| identifikátor instanceId |Instanci webové aplikace, které došlo k události |
-| EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
-| ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
+| ApplicationName |Název webové aplikace Hello |
+| identifikátor instanceId |Instanci hello webové aplikace, která hello událostí došlo k chybě na |
+| EventTickCount |Hello datum a čas, který hello událostí došlo k chybě, ve formátu značky (větší přesnost) |
+| ID události |ID události Hello této události<p><p>Výchozí nastavení too0, pokud není specifikována. |
 | PID |ID procesu |
-| TID |ID vlákna vlákna, která vytváří událost |
+| TID |ID vlákna Hello hello vlákno, které vytváří hello událostí |
 | Zpráva |Podrobná zpráva události |
 
-Data uložená v objektu blob by vypadat podobně jako následující:
+Hello data uložená v objektu blob vypadat podobně jako toohello následující:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> První řádek protokolu, který bude obsahovat záhlaví sloupců, reprezentovaný v tomto příkladu.
+> první řádek Hello hello protokolu bude obsahovat záhlaví sloupců hello reprezentovaný v tomto příkladu.
 >
 >
 
 ### <a name="failed-request-traces"></a>Trasování požadavku se nezdařilo
-Trasování chybných požadavků, které jsou uložené v soubory XML s názvem **fr ### .xml**. Aby bylo snazší zaznamenané informace zobrazit, s názvem šablony stylů XSL **freb.xsl** ve stejném adresáři jako soubory XML. Otevření jedné ze souborů XML v aplikaci Internet Explorer bude používat šablony stylů XSL zajistit formátovaný zobrazení informací o trasování. Ta se zobrazí podobná této:
+Trasování chybných požadavků, které jsou uložené v soubory XML s názvem **fr ### .xml**. toomake je snazší tooview hello protokolovat informace, šablony stylů XSL s názvem **freb.xsl** je součástí hello stejný adresář jako hello soubory XML. Otevření jedné ze souborů XML hello v aplikaci Internet Explorer použije hello XSL šablony stylů tooprovide formátovaný zobrazení informací trasování hello. Zobrazí se podobné toohello následující:
 
-![Zobrazit v prohlížeči chybných požadavků](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![Zobrazit v prohlížeči hello chybných požadavků](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 ### <a name="detailed-error-logs"></a>Podrobné protokoly chyb
 Podrobné protokoly chyb jsou dokumenty HTML, které poskytují podrobnější informace o chyby protokolu HTTP, které mají došlo k chybě. Vzhledem k tomu, že se jednoduše dokumentů HTML, bylo možné zobrazit pomocí webového prohlížeče.
 
 ### <a name="web-server-logs"></a>Protokoly webového serveru
-Protokoly webového serveru jsou formátovány pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako třeba [analyzátoru protokolů](http://go.microsoft.com/fwlink/?LinkId=246619).
+Hello protokolů webového serveru jsou formátovány pomocí hello [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako třeba [analyzátoru protokolů](http://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
-> Nepodporuje protokol vytváří ve službě Azure web apps **s-computername**, **s-ip**, nebo **cs-version** pole.
+> Hello protokoly vytvořeného ve službě Azure web apps nepodporují hello **s-computername**, **s-ip**, nebo **cs-version** pole.
 >
 >
 
 ## <a name="nextsteps"></a> Další kroky
-* [Postup monitorování webové aplikace](http://docs.microsoft.com/en-us/azure/app-service-web/web-sites-monitor)
+* [Jak tooMonitor webové aplikace](http://docs.microsoft.com/en-us/azure/app-service-web/web-sites-monitor)
 * [Řešení potíží s aplikací Azure web apps v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [Analýza protokolů webové aplikace v prostředí HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 >
 >
 
 ## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
-* Průvodce změnou starý portál na nový portál najdete v tématu: [referenční informace pro navigace na portálu Azure](http://go.microsoft.com/fwlink/?LinkId=529715)
+* Průvodce toohello změnu z tooApp weby služby najdete v tématu: [Azure App Service a její vliv na stávající služby Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Průvodce toohello změnu hello starý portál toohello nového portálu najdete v tématu: [odkaz pro navigaci hello portálu Azure](http://go.microsoft.com/fwlink/?LinkId=529715)

@@ -1,6 +1,6 @@
 ---
-title: "Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Dokumentace Microsoftu"
-description: "Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory"
+title: "aaaUsers příznakem pro sestavu riziko zabezpečení Azure Active Directory portálu hello | Microsoft Docs"
+description: "Další informace o hello uživatelé označení příznakem pro sestavu riziko zabezpečení Azure Active Directory portálu hello"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -13,59 +13,59 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5077cd61d6119745a85ed712623904633a151331
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
+# <a name="users-flagged-for-risk-security-report-in-hello-azure-active-directory-portal"></a>Uživatelé označení příznakem pro sestavu riziko zabezpečení Azure Active Directory portálu hello
 
-Sestavy zabezpečení v Azure Active Directory (Azure AD) umožňují získat přehled o pravděpodobnosti ohrožení uživatelských účtů ve vašem prostředí. 
+Pomocí sestavy zabezpečení hello v hello Azure Active Directory (Azure AD) je možné získat přehled o hello pravděpodobnost ohroženými uživatelskými účty ve vašem prostředí. 
 
-Azure Active Directory detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Pro každou zjištěnou akci se vytvoří záznam nazvaný *riziková událost*. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](active-directory-identity-protection-risk-events.md). 
+Azure Active Directory zjistí podezřelou akce, které jsou související tooyour uživatelské účty. Pro každou zjištěnou akci se vytvoří záznam nazvaný *riziková událost*. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](active-directory-identity-protection-risk-events.md). 
 
-Zjištěné rizikové události se použijí k výpočtu těchto údajů:
+Hello zjistila rizikových událostí jsou použité toocalculate:
 
-- **Riziková přihlášení** – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další informace najdete v tématu popisujícím [riziková přihlášení](active-directory-identityprotection.md#risky-sign-ins). 
+- **Rizikové přihlášení** -rizikové přihlášení je indikátorem pro pokusu přihlášení, který se možná prováděly uživatelem, který není vlastníkem legitimní hello uživatelského účtu. Další informace najdete v tématu popisujícím [riziková přihlášení](active-directory-identityprotection.md#risky-sign-ins). 
 
 - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další informace najdete v tématu popisujícím [uživatele označené příznakem rizika](active-directory-identityprotection.md#users-flagged-for-risk).  
 
-Na webu Azure Portal najdete sestavy zabezpečení v okně **Azure Active Directory** v části **Zabezpečení**.  
+V hello portálu Azure, můžete najít hello zabezpečení hlásí hello **Azure Active Directory** okno v hello **zabezpečení** části.  
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/10.png)
 
 
 
-## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?  
+## <a name="what-azure-ad-license-do-you-need-tooaccess-a-security-report"></a>Jaké licence Azure AD potřebujete tooaccess sestavy zabezpečení?  
 
 Sestavy uživatelů označených příznakem rizika nabízí všechny edice Azure Active Directory.  
-Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
+Ale hello úroveň členitost liší hello edice: 
 
-- **Edice Azure Active Directory Free a Basic** již nabízí seznam uživatelů označených příznakem rizika. 
+- V hello **edice Basic a Azure Active Directory volné**, již získat seznam uživatelů, které jsou označeny k riziko. 
 
-- Edice **Azure Active Directory Premium 1** tento model rozšiřuje tím, že umožňuje také prozkoumávat některé ze základních rizikových událostí, které byly v každé sestavě rozpoznány. 
+- Hello **Azure Active Directory Premium 1** edice rozšiřuje tohoto modelu tím, že také umožňuje tooexamine, některé základní riziko události, které pro každou sestavu nebyla zjištěna hello. 
 
-- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních rizikových událostech a umožňuje konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- Hello **Azure Active Directory Premium 2** edice nabízí hello nejvíce podrobné informace o všech základní rizikových událostech a umožní vám tooconfigure zásady zabezpečení, které automaticky odpovídat tooconfigured rizik úrovně.
 
 
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Edice Free a Basic služby Azure Active Directory
 
-Edice Free a Basic služby Azure Active Directory poskytuje sestavu uživatelů označených příznakem rizika, která obsahuje seznam uživatelských účtů, které můžou být ohrožené. 
+Hello uživatelé označení příznakem pro sestavu riziko v edicích volné a basic služby Azure Active Directory hello vám poskytne seznam uživatelské účty, které může být ohrožena. 
 
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/03.png)
 
-Kliknutím na uživatele otevřete okno se souvisejícími uživatelskými daty.
-U ohrožených uživatelů můžete zkontrolovat historii jejich přihlášení a v případě potřeby resetovat heslo.
+Výběr uživatele, otevře se okno data související uživatelské hello.
+Pro uživatele, kteří jsou v ohrožení můžete zkontrolovat historie přihlašování hello uživatelů a resetování hesla hello v případě potřeby.
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/46.png)
 
 
 V tomto dialogovém okně máte možnost:
 
-- Stáhnout sestavu
+- Stažení sestavy hello
 
 - Vyhledávat uživatele
 
@@ -74,34 +74,34 @@ V tomto dialogovém okně máte možnost:
 
 ## <a name="azure-active-directory-premium-editions"></a>Edice Premium služby Azure Active Directory
 
-Sestava uživatelů označených příznakem rizika v edicích Premium služby Azure Active Directory vám nabízí:
+Hello uživatelé označení příznakem pro sestavu riziko v edicích hello Azure Active Directory premium nabízí:
 
 - [Seznam uživatelských účtů](active-directory-identityprotection.md#users-flagged-for-risk), které mohly být napadeny nebo vyzrazeny 
 
-- Agregované informace o [typech rizikových událostí](active-directory-identity-protection-risk-events.md), které byly zjištěné
+- Agregovat informace o hello [rizik typů událostí](active-directory-identity-protection-risk-events.md) , o kterých bylo zjištěno
 
-- Možnost stažení sestavy
+- Zprávu o možnost toodownload hello
 
-- Možnost konfigurace [zásad odstraňování rizik uživatelů](active-directory-identityprotection.md#user-risk-security-policy)  
+- Možnost tooconfigure [uživatele riziko nápravy zásad](active-directory-identityprotection.md#user-risk-security-policy)  
 
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/71.png)
 
 Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživatele, které vám umožňuje:
 
-- Otevřít zobrazení Všechna přihlášení
+- Zobrazit všechny přihlášení otevřete hello
 
-- Resetovat heslo uživatele
+- Resetování hesla hello uživatele
 
 - Zavřít všechny události
 
-- Vyšetřit rizikové události oznámené pro uživatele 
+- Prozkoumejte hlášené riziko události pro uživatele hello. 
 
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/324.png)
 
 
-Pokud chcete vyšetřit rizikovou událost, vyberte některou ze seznamu a otevře se okno **Podrobnosti** pro danou rizikovou událost. V okně **Podrobnosti** můžete zvolit [ruční zavření rizikové události](active-directory-identityprotection.md#closing-risk-events-manually) nebo reaktivaci ručně zavřené rizikové události. 
+tooinvestigate riziko události, vyberte jednu z hello seznamu tooopen hello **podrobnosti** okno pro tuto událost riziko. Na hello **podrobnosti** okno, máte možnost tooeither hello [ruční zavření riziko událostí](active-directory-identityprotection.md#closing-risk-events-manually) nebo znovu aktivovat ručně uzavřené riziko událostí. 
 
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-user-at-risk/325.png)

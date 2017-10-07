@@ -1,5 +1,5 @@
 ---
-title: "Diagnostikovat chyby a výjimky v webové aplikace pomocí služby Azure Application Insights | Microsoft Docs"
+title: "aaaDiagnose chyby a výjimky v webové aplikace pomocí služby Azure Application Insights | Microsoft Docs"
 description: "Zachytit výjimky z aplikací ASP.NET společně s telemetrická žádost."
 services: application-insights
 documentationcenter: .net
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: 7eeacdc6677ccdebb1653e94a163ecb47090b7ee
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8930e6d2b29f83ea635c4ecb7afd11fc1d97d085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights
-Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insights-overview.md). Neúspěšných požadavků mohou korelovat s výjimky a dalších událostí na klienta a serveru, takže můžete rychle diagnostikovat příčin.
+Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insights-overview.md). Neúspěšných požadavků mohou korelovat s výjimkami a další události v hello klient i server, takže můžete rychle diagnostikovat hello příčiny.
 
 ## <a name="set-up-exception-reporting"></a>Nastavit generování sestav výjimky
-* Mít výjimky nahlášené z vaší aplikace. server:
+* výjimky toohave nahlášené z vaší aplikace. server:
   * Nainstalujte [Application Insights SDK](app-insights-asp-net.md) v kódu aplikace, nebo
   * Webové servery služby IIS: Spusťte [agenta Application Insights](app-insights-monitor-performance-live-website-now.md); nebo
-  * Službě Azure web apps: Přidat [rozšíření Application Insights](app-insights-azure-web-apps.md)
-  * Webové aplikace v jazyce Java: Nainstalujte [agenta Java](app-insights-java-agent.md)
-* Nainstalujte [fragment kódu JavaScript](app-insights-javascript.md) na webových stránkách zachycení výjimky v prohlížeči.
-* Některé architektury aplikace nebo s některými nastaveními budete muset provést některé další kroky pro zachycení více výjimek:
+  * Službě Azure web apps: přidejte hello [rozšíření Application Insights](app-insights-azure-web-apps.md)
+  * Webové aplikace v jazyce Java: instalace hello [agenta Java](app-insights-java-agent.md)
+* Nainstalujte hello [fragment kódu JavaScript](app-insights-javascript.md) ve vaší webové stránky toocatch prohlížeče výjimky.
+* V některých aplikační architektury, nebo s některými nastaveními, musíte tootake některé dodatečné kroky toocatch více výjimek:
   * [Webové formuláře](#web-forms)
   * [MVC](#mvc)
   * [1.* webové rozhraní API](#web-api-1)
@@ -37,77 +37,77 @@ Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insi
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostikování výjimky pomocí sady Visual Studio
-Otevřete aplikaci řešení v sadě Visual Studio, které pomáhají při ladění.
+Otevřete v sadě Visual Studio toohelp s laděním řešení aplikace hello.
 
-Spusťte aplikaci na vašem serveru nebo na počítači pro vývoj pomocí F5.
+Spusťte aplikaci hello na vašem serveru nebo na počítači pro vývoj pomocí F5.
 
-Otevřete okno hledání Application Insights v sadě Visual Studio a nastavte ji chcete zobrazit události z vaší aplikace. Při ladění, můžete k tomu jednoduše kliknutím na tlačítko Application Insights.
+Otevřete okno hello hledání Application Insights v sadě Visual Studio a nastavte ji toodisplay události z vaší aplikace. Při ladění, můžete k tomu jenom kliknutím na tlačítko Application Insights hello.
 
-![Klikněte pravým tlačítkem na projekt a vyberte Application Insights, otevřete.](./media/app-insights-asp-net-exceptions/34.png)
+![Klikněte pravým tlačítkem na projekt hello a vyberte Application Insights, otevřete.](./media/app-insights-asp-net-exceptions/34.png)
 
-Všimněte si, že můžete filtrovat sestavě zobrazily jenom výjimky.
+Všimněte si, že můžete filtrovat pouze výjimky tooshow hello sestavy.
 
 *Žádné výjimky zobrazující? V tématu [zachycení výjimky](#exceptions).*
 
-Klikněte na sestavu výjimky a zobrazit jeho trasování zásobníku.
-Klikněte na odkaz řádku v trasování zásobníku, otevřete soubor odpovídající kód.  
+Klikněte na jeho trasování zásobníku tooshow sestavy k výjimce.
+Klikněte na odkaz řádku v trasování zásobníku hello, tooopen hello relevantní kódu souborů.  
 
-V kódu Všimněte si, že Codelensu zobrazuje data o výjimky:
+V kódu hello Všimněte si, že Codelensu zobrazuje data o výjimkách hello:
 
 ![Oznámení Codelensu výjimek.](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostikování chyb pomocí portálu Azure
-Z přehledu nástroje Application Insights vaší aplikace dlaždici selhání ukazuje grafy výjimek a neúspěšné požadavky HTTP, společně s seznam požadavek adresy URL, které způsobí selhání nejčastěji se vyskytující.
+## <a name="diagnosing-failures-using-hello-azure-portal"></a>Diagnostikování chyb pomocí hello portálu Azure
+Z přehledu Application Insights hello vaší aplikace dlaždici selhání hello ukazuje grafy výjimek a k selhání požadavků HTTP, společně s seznam hello žádosti adresy URL, které způsobí selhání nejčastěji se vyskytující hello.
 
 ![Vyberte nastavení, selhání](./media/app-insights-asp-net-exceptions/012-start.png)
 
-Klikněte na prostřednictvím jednoho z typů selhání výjimka v seznamu získat u jednotlivých výskytů výjimky, kde můžete zobrazit podrobnosti a trasováním zásobníku:
+Klikněte na tlačítko prostřednictvím jednoho z hello se nezdařilo typy výjimek v hello seznamu tooget tooindividual výskytů hello výjimky, kde můžete zobrazit podrobnosti hello a trasování zásobníku:
 
-![Vyberte instanci chybné žádosti a v části Podrobnosti o výjimce, získat na instance výjimky.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![Vyberte instanci chybné žádosti a v části Podrobnosti o výjimce, získat tooinstances hello výjimky.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**Alternativně** můžete spustit ze seznamu požadavků a najít výjimky s ním souvisejí.
+**Alternativně** můžete spustit z hello seznam požadavků a najít související tooit výjimky.
 
 *Žádné výjimky zobrazující? V tématu [zachycení výjimky](#exceptions).*
 
 
 ## <a name="custom-tracing-and-log-data"></a>Vlastní trasování a data protokolu
-K získání diagnostických dat specifické pro vaši aplikaci, můžete vložit kódu pro odeslání vlastní telemetrická data. Toto zobrazí ve vyhledávání diagnostiky společně se žádosti, zobrazení stránky a další automaticky shromažďovat data.
+tooget diagnostických dat konkrétní tooyour aplikace, můžete vložit toosend kód vlastní telemetrická data. Toto zobrazí ve vyhledávání diagnostiky spolu s hello požadavku, zobrazení stránky a další automaticky shromažďovat data.
 
 Máte několik možností:
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) se obvykle používá ke sledování vzorů využití, ale také odesílá data se zobrazí v části vlastní události ve vyhledávání diagnostiky. Události jsou pojmenované a přenášet vlastnosti řetězce a číselné metriky, ve kterém můžete [filtrovat diagnostických hledání](app-insights-diagnostic-search.md).
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) se obvykle používá ke sledování vzorů využití, ale také odesílá data se zobrazí v části vlastní události ve vyhledávání diagnostiky hello. Události jsou pojmenované a přenášet vlastnosti řetězce a číselné metriky, ve kterém můžete [filtrovat diagnostických hledání](app-insights-diagnostic-search.md).
 * [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) umožňuje odesílat delší data, jako jsou informace o POST.
 * [TrackException()](#exceptions) odešle trasování zásobníku. [Další informace o výjimky](#exceptions).
 * Pokud už používáte rozhraní protokolování, jako je Log4Net nebo NLog, můžete [zaznamenat tyto protokoly](app-insights-asp-net-trace-logs.md) a zobrazovat ve vyhledávání diagnostiky společně se data požadavku a výjimky.
 
-Pokud chcete zobrazit tyto události, otevřete [vyhledávání](app-insights-diagnostic-search.md), otevřete filtr a potom vyberte vlastní události, trasování nebo výjimky.
+Otevřete tyto události toosee [vyhledávání](app-insights-diagnostic-search.md), otevřete filtr a potom vyberte vlastní události, trasování nebo výjimky.
 
 ![Procházení](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které jsou součástí stejné operace bude vybraná nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](app-insights-sampling.md)
+> Pokud vaše aplikace generuje mnoho telemetrie, hello modul adaptivního vzorkování automaticky sníží hello svazek, který je odeslán toohello portál odesláním pouze reprezentativní části události. Události, které jsou součástí hello stejné operace bude vybrán nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](app-insights-sampling.md)
 >
 >
 
-### <a name="how-to-see-request-post-data"></a>Jak zjistit, data požadavku POST
-Podrobnosti požadavku neobsahují data odeslaná do vaší aplikace v volání POST. Aby tato data nahlášené:
+### <a name="how-toosee-request-post-data"></a>Jak toosee POST data žádosti
+Podrobnosti požadavku zahrnutí hello data jsou odeslaná aplikace tooyour volání POST. toohave nahlášené tato data:
 
-* [Instalace sady SDK](app-insights-asp-net.md) ve vašem projektu aplikace.
-* Vložení kódu v aplikaci k volání [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Odesílání dat POST v parametru zprávy. Neexistuje omezení povolenou velikost, takže pokuste odeslat jenom základní data.
-* Pokud byste prozkoumat chybných požadavků, najdete přidružené trasování.  
+* [Nainstalujte hello SDK](app-insights-asp-net.md) ve vašem projektu aplikace.
+* Vložení kódu do vaší aplikace toocall [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). V parametru hello zprávy odesílat hello POST data. Neexistuje omezení toohello povolená velikost, takže vyzkoušejte toosend jenom hello základní data.
+* Při řešení chybné žádosti najdete hello přidružené trasování.  
 
 ![Procházení](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
 ## <a name="exceptions"></a>Zachytávání výjimek a související diagnostických dat
-Na první pohled neuvidíte na portálu všechny výjimky, které způsobí selhání ve vaší aplikaci. Zobrazí všechny výjimky prohlížeče (Pokud používáte [JavaScript SDK](app-insights-javascript.md) na webových stránkách). Ale většina serveru výjimky jsou zachyceny službou IIS a máte k zápisu verze kódu k jejich zobrazení.
+Na první pohled neuvidíte portálu hello všechny hello výjimky, které způsobí selhání ve vaší aplikaci. Zobrazí všechny výjimky prohlížeče (Pokud používáte hello [JavaScript SDK](app-insights-javascript.md) na webových stránkách). Ale většina serveru výjimky jsou zachyceny službou IIS a máte toowrite kousek toosee kód je.
 
 Můžete:
 
-* **Protokolování výjimek explicitně** vložením kódu do obslužné rutiny výjimek nahlásit výjimky.
-* **Zachytit výjimky automaticky** nakonfigurováním požadované rozhraní ASP.NET. Potřebné dodatky se liší pro různé typy framework.
+* **Protokolování výjimek explicitně** vložením kódu ve výjimce obslužné rutiny tooreport hello výjimky.
+* **Zachytit výjimky automaticky** nakonfigurováním požadované rozhraní ASP.NET. potřebné dodatky Hello se liší pro různé typy framework.
 
 ## <a name="reporting-exceptions-explicitly"></a>Explicitně Reporting výjimky
-Nejjednodušší způsob, jak se má vložit volání pro TrackException() do obslužné rutiny výjimek.
+Hello nejjednodušší způsob je tooinsert tooTrackException() volání v obslužné rutiny výjimek.
 
 JavaScript
 
@@ -137,7 +137,7 @@ C#
        var measurements = new Dictionary <string, double>
          {{"Users", currentGame.Users.Count}};
 
-       // Send the exception telemetry:
+       // Send hello exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
 
@@ -155,21 +155,21 @@ JAZYKA VISUAL BASIC
       Dim measurements = New Dictionary (Of String, Double)
       measurements.Add("Users", currentGame.Users.Count)
 
-      ' Send the exception telemetry:
+      ' Send hello exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-Vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filtrování a přidání](app-insights-diagnostic-search.md) doplňující informace. Například pokud máte aplikaci, která můžete spustit několik hry, může najít všechny sestavy výjimky související s konkrétní hru. Můžete přidat libovolný počet položek, jako má každý slovníku.
+Hello vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filtrování a přidání](app-insights-diagnostic-search.md) doplňující informace. Například pokud máte aplikaci, která můžete spustit několik hry, může najít všechny hello výjimka sestavy související tooa konkrétní hra. Můžete přidat libovolný počet položek jako jste jako slovník tooeach.
 
 ## <a name="browser-exceptions"></a>Výjimky prohlížečů
 Většina prohlížeče výjimek jsou hlášeny.
 
-Pokud vaše webová stránka obsahuje soubory skriptu ze sítě pro doručování obsahu nebo v jiných doménách, ujistěte se, vaše značky script má atribut ```crossorigin="anonymous"```, a že server odešle [hlavičky CORS](http://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
+Pokud vaše webová stránka obsahuje soubory skriptu ze sítě pro doručování obsahu nebo v jiných doménách, ujistěte se, vaše značky script má atribut hello ```crossorigin="anonymous"```, a odešle tento server hello [hlavičky CORS](http://enable-cors.org/). To vám umožní tooget trasování zásobníku a podrobností pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
 
 ## <a name="web-forms"></a>Webové formuláře
-U webových formulářů bude možné ke shromažďování výjimky, když nejsou žádné přesměrování nakonfigurované CustomErrors modulu protokolu HTTP.
+Pro webové formuláře hello modulu HTTP bude možné toocollect hello výjimky Pokud nejsou žádné přesměrování nakonfigurované CustomErrors.
 
-Ale pokud máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error Global.asax.cs. (Pokud jste ještě nemáte, přidejte souboru Global.asax.)
+Ale pokud máte aktivní přesměrování, přidejte následující řádky toohello Application_Error funkce v Global.asax.cs hello. (Pokud jste ještě nemáte, přidejte souboru Global.asax.)
 
 *C#*
 
@@ -185,7 +185,7 @@ Ale pokud máte aktivní přesměrování, přidejte následující řádky do f
 
 
 ## <a name="mvc"></a>MVC
-Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Ale pokud je `RemoteOnly` (výchozí), nebo `On`, bude výjimka nezaškrtnuté a nejsou k dispozici pro službu Application Insights automaticky shromažďovat. Můžete to opravíme přepsáním [System.Web.Mvc.HandleErrorAttribute – třída](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použití přepsaného třídu, jak je uvedeno pro různé verze MVC níže ([githubu zdroj](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Pokud hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro hello výjimky [modulu HTTP](https://msdn.microsoft.com/library/ms178468.aspx) toocollect. Ale pokud je `RemoteOnly` (výchozí), nebo `On`, výjimka hello se odstraní a není k dispozici pro službu Application Insights tooautomatically shromažďovat. Můžete to opravíme přepsáním hello [System.Web.Mvc.HandleErrorAttribute třída](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použití třídy hello přepsat, jak je uvedeno pro hello různé MVC verze níže ([githubu zdroj](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
     using System;
     using System.Web.Mvc;
@@ -200,7 +200,7 @@ Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigura
         {
             if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
             {
-                //If customError is Off, then AI HTTPModule will report the exception
+                //If customError is Off, then AI HTTPModule will report hello exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
@@ -213,7 +213,7 @@ Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigura
     }
 
 #### <a name="mvc-2"></a>MVC 2
-Atribut HandleError nahraďte váš nový atribut v řadičů.
+Atribut HandleError hello nahraďte váš nový atribut v řadičů.
 
     namespace MVC2App.Controllers
     {
@@ -244,7 +244,7 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr ve funkci FilterConfi
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
       {
-        // Default replaced with the override to track unhandled exceptions
+        // Default replaced with hello override tootrack unhandled exceptions
         filters.Add(new AiHandleErrorAttribute());
       }
     }
@@ -273,7 +273,7 @@ Přepište System.Web.Http.Filters.ExceptionFilterAttribute:
       }
     }
 
-Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho přidat do konfigurace globálních filtrů v třídy WebApiConfig:
+Můžete přidat tento atribut přepsaného toospecific řadiče, nebo jeho přidání konfigurace globálních filtrů toohello do třídy WebApiConfig hello:
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -297,7 +297,7 @@ Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho př
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Existuje několik případů, které nelze zpracovat filtry výjimek. Například:
+Existuje několik případů, které filtry výjimek hello nelze zpracovat. Například:
 
 * Výjimky vydané z konstruktorů řadiče.
 * Výjimek vyvolaných z obslužné rutiny zpráv.
@@ -326,7 +326,7 @@ Přidání implementace IExceptionLogger:
       }
     }
 
-Přidejte tuto pro služby WebApiConfig:
+Přidejte tuto toohello služby WebApiConfig:
 
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
@@ -357,8 +357,8 @@ Přidejte tuto pro služby WebApiConfig:
 
 Jako alternativy které může:
 
-1. Nahraďte pouze ExceptionHandler vlastní implementaci IExceptionHandler. Volá se, jenom když rozhraní je možné zvolit které zprávu odpovědi na odeslání (při připojení není přerušena pro instanci)
-2. Filtry výjimek (jak je popsáno v části na řadičích 1.x webového rozhraní API výše) – ve všech případech není volána.
+1. Nahraďte text hello pouze ExceptionHandler s vlastní implementaci IExceptionHandler. Volá se, jenom když hello framework je stále možné toochoose které odpovědi zprávy toosend (ne, pokud pro instanci přerušena hello připojení)
+2. Filtry výjimek (jak je popsáno v části hello na řadičích 1.x webového rozhraní API výše) – ve všech případech není volána.
 
 ## <a name="wcf"></a>WCF
 Přidejte třídu, která rozšiřuje atribut a implementuje IErrorHandler a IServiceBehavior.
@@ -412,7 +412,7 @@ Přidejte třídu, která rozšiřuje atribut a implementuje IErrorHandler a ISe
       }
     }
 
-Přidejte atribut do implementace služby:
+Přidání implementace služby toohello atribut hello:
 
     namespace WcfService4
     {
@@ -424,19 +424,19 @@ Přidejte atribut do implementace služby:
 [Ukázka](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Čítače výkonu výjimky
-Pokud máte [nainstalovat agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serveru, můžete získat graf míry výjimky měří v rozhraní .NET. To zahrnuje zpracovávaný i neošetřené výjimky .NET.
+Pokud máte [nainstalován hello agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serveru, můžete získat graf výjimky míry hello měří v rozhraní .NET. To zahrnuje zpracovávaný i neošetřené výjimky .NET.
 
 Otevřete okno Průzkumníka metrika, přidejte nový graf a vyberte **výjimka míra**, uvedené v části čítače výkonu.
 
-Rozhraní .NET framework vypočítá rychlost počítání počet výjimek v intervalu a vydělí délku intervalu.
+rozhraní .NET framework Hello vypočítá hello rychlost počítání hello počet výjimek v intervalu a vydělí hello délka intervalu hello.
 
-Všimněte si, že bude liší od počtu "Výjimky" vypočítána pomocí portálu služby Application Insights počítání TrackException sestavy. Během intervalů vzorkování se liší a sady SDK neodešle TrackException sestavy pro všechny zpracovat a neošetřené výjimky.
+Všimněte si, že bude liší od počtu hello výjimky vypočítána portálem Application Insights hello počítání TrackException sestavy. během intervalů vzorkování Hello se liší a hello SDK neodešle TrackException sestavy pro všechny zpracovávaný a neošetřené výjimky.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Další kroky
-* [Sledování REST, SQL a jiné volání závislosti](app-insights-asp-net-dependencies.md)
+* [Sledování REST, SQL a jiné toodependencies volání](app-insights-asp-net-dependencies.md)
 * [Monitorování časů načtení stránky, výjimek prohlížeče a volání AJAX](app-insights-javascript.md)
 * [Čítače sledování výkonu](app-insights-performance-counters.md)

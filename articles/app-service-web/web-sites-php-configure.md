@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurovat PHP ve službě Azure App Service Web Apps | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat výchozí instalace PHP nebo přidat vlastní instalace PHP pro webové aplikace v Azure App Service."
+title: aaaConfigure PHP v Azure App Service Web Apps | Microsoft Docs
+description: "Zjistěte, jak tooconfigure hello výchozí instalace PHP a přidat vlastní instalace PHP pro webové aplikace v Azure App Service."
 services: app-service
 documentationcenter: php
 author: rmcmurray
@@ -14,61 +14,61 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e461e4a269a4ce5614f5f05560f38bc53066251
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Nakonfigurovat PHP ve službě Azure App Service Web Apps
 ## <a name="introduction"></a>Úvod
-Tento průvodce vám ukáže, jak konfigurovat předdefinované modulu PHP runtime pro webové aplikace v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)zadejte vlastní modul runtime PHP a povolit rozšíření. Pokud chcete používat služby App Service, zaregistrujte si [bezplatnou zkušební verzi]. Pokud chcete nejvíce z této příručky, měli nejprve vytvořit webové aplikace PHP ve službě App Service.
+Tento průvodce vám ukáže, jak tooconfigure hello předdefinované modulu PHP runtime pro webové aplikace v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)zadejte vlastní modul runtime PHP a povolit rozšíření. toouse App Service, zaregistrujte si hello [bezplatnou zkušební verzi]. tooget hello nejvíce z této příručky, je vhodné nejdříve vytvořit webové aplikace PHP ve službě App Service.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-built-in-php-version"></a>Postupy: Změna předdefinované verzi PHP
-Ve výchozím nastavení PHP 5.5 je nainstalovaná a okamžitě k dispozici pro použití při vytváření webové aplikace služby App Service. Nejlepší způsob, jak zobrazit dostupné verze revize, jeho výchozí konfigurace a povolené rozšíření je pro nasazení skript, který volá [phpinfo()] funkce.
+## <a name="how-to-change-hello-built-in-php-version"></a>Postupy: Změna hello předdefinované verzi PHP
+Ve výchozím nastavení PHP 5.5 je nainstalovaná a okamžitě k dispozici pro použití při vytváření webové aplikace služby App Service. Hello nejlepší způsob, jak toosee hello k dispozici verze revize jeho výchozí konfigurace a hello povolené rozšíření je toodeploy skript, který volá hello [phpinfo()] funkce.
 
-Verze PHP 5.6 a PHP 7.0 jsou také k dispozici, ale není povoleno ve výchozím nastavení. Pokud chcete aktualizovat verzi PHP, postupujte podle jednu z těchto metod:
+Verze PHP 5.6 a PHP 7.0 jsou také k dispozici, ale není povoleno ve výchozím nastavení. hello tooupdate verze PHP, postupujte podle jednoho z těchto metod:
 
 ### <a name="azure-portal"></a>Azure Portal
-1. Přejděte do webové aplikace v [portálu Azure](https://portal.azure.com) a klikněte na **nastavení** tlačítko.
+1. Procházet tooyour webové aplikace ve hello [portálu Azure](https://portal.azure.com) a klikněte na hello **nastavení** tlačítko.
    
     ![Nastavení webové aplikace][settings-button]
-2. Z **nastavení** okně vyberte **nastavení aplikace** a vyberte novou verzi PHP.
+2. Z hello **nastavení** okně vyberte **nastavení aplikace** a vyberte novou verzi PHP hello.
    
     ![Nastavení aplikace][application-settings]
-3. Klikněte **Uložit** tlačítka v horní části **webové nastavení aplikace** okno.
+3. Klikněte na tlačítko hello **Uložit** tlačítko hello horní části hello **webové nastavení aplikace** okno.
    
     ![Uložit nastavení konfigurace][save-button]
 
 ### <a name="azure-powershell-windows"></a>Prostředí Azure PowerShell (Windows)
-1. Otevřete prostředí Azure PowerShell a přihlásit k účtu:
+1. Otevřete prostředí Azure PowerShell a účet přihlášení tooyour:
    
         PS C:\> Login-AzureRmAccount
-2. Nastavte verzi PHP pro webovou aplikaci.
+2. Nastavit verzi PHP hello pro hello webovou aplikaci.
    
         PS C:\> Set-AzureWebsite -PhpVersion {5.5 | 5.6 | 7.0} -Name {app-name}
-3. Verze PHP je teď nastavená. Můžete potvrdit, tato nastavení:
+3. verze PHP Hello je teď nastavená. Můžete potvrdit, tato nastavení:
    
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
 ### <a name="azure-command-line-interface-linux-mac-windows"></a>Rozhraní příkazového řádku Azure (Linux, Mac, Windows)
-Chcete-li používat rozhraní příkazového řádku Azure, musíte mít **Node.js** v počítači nainstalována.
+toouse hello rozhraní příkazového řádku Azure, musíte mít **Node.js** v počítači nainstalována.
 
-1. Otevřete terminál a přihlášení k vašemu účtu.
+1. Otevřete terminál a tooyour účet pro přihlášení.
    
         azure login
-2. Nastavte verzi PHP pro webovou aplikaci.
+2. Nastavit verzi PHP hello pro hello webovou aplikaci.
    
         azure site set --php-version {5.5 | 5.6 | 7.0} {app-name}
 
-3. Verze PHP je teď nastavená. Můžete potvrdit, tato nastavení:
+3. verze PHP Hello je teď nastavená. Můžete potvrdit, tato nastavení:
    
         azure site show {app-name}
 
 > [!NOTE] 
-> [Azure CLI 2.0](https://github.com/Azure/azure-cli) jsou příkazy, které jsou ekvivalentem výše:
+> Hello [Azure CLI 2.0](https://github.com/Azure/azure-cli) jsou příkazy, které jsou ekvivalentní toohello výše:
 >
 >
 
@@ -76,113 +76,113 @@ Chcete-li používat rozhraní příkazového řádku Azure, musíte mít **Node
     az appservice web config update --php-version {5.5 | 5.6 | 7.0} -g {resource-group-name} -n {app-name}
     az appservice web config show -g {resource-group-name} -n {app-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Postupy: Změna předdefinovaných konfigurací PHP
-Pro žádné předdefinované modul runtime PHP můžete změnit některé možnosti konfigurace podle následujících kroků. (Informace o souboru php.ini direktivy najdete v tématu [seznam php.ini direktivy].)
+## <a name="how-to-change-hello-built-in-php-configurations"></a>Postupy: Změna hello předdefinovaných konfigurací PHP
+Pro žádné předdefinované modul runtime PHP můžete změnit některé možnosti konfigurace hello podle následujících kroků hello. (Informace o souboru php.ini direktivy najdete v tématu [seznam php.ini direktivy].)
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Změna PHP\_INI\_uživatele, PHP\_INI\_PERDIR, PHP\_INI\_všechna nastavení konfigurace
-1. Přidat [. user.ini] soubor pro kořenový adresář.
-2. Přidat nastavení konfigurace `.user.ini` pomocí stejnou syntaxi, kterou použijete v souboru `php.ini` souboru. Například, pokud chcete zapnout `display_errors` nastavení a nastavte `upload_max_filesize` nastavení na 10 MB, vaše `.user.ini` soubor bude obsahovat tento text:
+1. Přidat [. user.ini] souboru tooyour kořenový adresář.
+2. Přidat konfiguraci nastavení toohello `.user.ini` souboru pomocí hello stejnou syntaxi, kterou použijete v `php.ini` souboru. Například pokud byste chtěli tooturn hello `display_errors` nastavení a nastavte `upload_max_filesize` nastavení too10M, vaše `.user.ini` soubor bude obsahovat tento text:
    
         ; Example Settings
         display_errors=On
         upload_max_filesize=10M
    
-        ; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
+        ; OPTIONAL: Turn this on toowrite errors tood:\home\LogFiles\php_errors.log
         ; log_errors=On
 3. Nasazení webové aplikace.
-4. Restartování webové aplikace. (Restartování je nutné, protože frekvenci, se kterou PHP čte `.user.ini` se řídí soubory `user_ini.cache_ttl` nastavení, což je úrovně nastavení systému a ve výchozím nastavení je 300 sekund (5 minut). Restartování webové aplikace PHP číst nové nastavení vynutí `.user.ini` souboru.)
+4. Restartujte hello webové aplikace. (Restartování je nutné, protože hello četnost PHP, který čte `.user.ini` soubory se řídí hello `user_ini.cache_ttl` nastavení, což je úrovně nastavení systému a ve výchozím nastavení je 300 sekund (5 minut). Restartování webové aplikace hello vynutí nové nastavení PHP tooread hello v hello `.user.ini` souboru.)
 
-Jako alternativu k použití `.user.ini` souboru, můžete použít [ini_set()] funkce ve skriptech, chcete-li nastavit možnosti konfigurace, které nejsou direktivy úrovni systému.
+Jako alternativní toousing `.user.ini` souboru, můžete použít hello [ini_set()] funkce v možnosti konfigurace tooset skripty, které nejsou direktivy úrovni systému.
 
 ### <a name="changing-phpinisystem-configuration-settings"></a>Změna PHP\_INI\_nastavení konfigurace systému
-1. Přidat nastavení aplikace do webové aplikace s klíčem `PHP_INI_SCAN_DIR` a hodnotu`d:\home\site\ini`
-2. Vytvoření `settings.ini` souboru pomocí konzole Kudu (http://&lt;název lokality&gt;. scm.azurewebsite.net) v `d:\home\site\ini` directory.
-3. Přidat nastavení konfigurace `settings.ini` soubor pomocí stejné syntaxe byste použili v souboru php.ini. Například, pokud jste chtěli bodu `curl.cainfo` nastavení `*.crt` souborů a nastavení 'wincache.maxfilesize' na 512 kB, vaše `settings.ini` soubor bude obsahovat tento text:
+1. Přidat nastavení aplikace tooyour webové aplikace s klíčem hello `PHP_INI_SCAN_DIR` a hodnotu`d:\home\site\ini`
+2. Vytvoření `settings.ini` souboru pomocí konzole Kudu (http://&lt;název lokality&gt;. scm.azurewebsite.net) v hello `d:\home\site\ini` adresáře.
+3. Přidat konfiguraci nastavení toohello `settings.ini` souboru pomocí hello stejnou syntaxi, kterou použijete v souboru php.ini. Například pokud byste chtěli toopoint hello `curl.cainfo` nastavení tooa `*.crt` souboru a nastavit wincache.maxfilesize nastavení too512K, vaše `settings.ini` soubor bude obsahovat tento text:
    
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
         wincache.maxfilesize=512
-4. Restartování webové aplikace načíst změny.
+4. Restartujte změny hello tooload webové aplikace.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Postupy: povolení rozšíření v modulu runtime PHP výchozí
-Jak je uvedeno v předchozí části, je nejlepší způsob, jak zobrazit výchozí verze PHP, jeho výchozí konfigurace a povolené rozšíření nasazení skriptu, který volá [phpinfo()]. Povolit další rozšíření, postupujte podle následujících kroků:
+## <a name="how-to-enable-extensions-in-hello-default-php-runtime"></a>Postupy: povolení rozšíření v hello výchozí PHP runtime
+Jak jsme uvedli v předchozí části hello hello nejlepší způsob, jak toosee hello výchozí jazyk PHP verze, jeho výchozí konfigurace a hello povolené rozšíření je toodeploy skript, který volá [phpinfo()]. tooenable další rozšíření, postupujte podle následujících kroků hello:
 
 ### <a name="configure-via-ini-settings"></a>Konfigurovat pomocí nastavení ini
-1. Přidat `ext` do adresáře `d:\home\site` adresáře.
-2. Uveďte `.dll` soubory s příponou `ext` directory (například `php_xdebug.dll`). Ujistěte se, že rozšíření jsou kompatibilní se výchozí verze PHP a jsou VC9 a kompatibilní bez bezpečného přístupu (nts).
-3. Přidat nastavení aplikace do webové aplikace s klíčem `PHP_INI_SCAN_DIR` a hodnotu`d:\home\site\ini`
+1. Přidat `ext` directory toohello `d:\home\site` adresáře.
+2. Uveďte `.dll` soubory rozšíření v hello `ext` directory (například `php_xdebug.dll`). Ujistěte se, že jsou kompatibilní se výchozí verze PHP a jsou VC9 a bez bezpečného přístupu (nts) kompatibilní hello rozšíření.
+3. Přidat nastavení aplikace tooyour webové aplikace s klíčem hello `PHP_INI_SCAN_DIR` a hodnotu`d:\home\site\ini`
 4. Vytvoření `ini` souboru v `d:\home\site\ini` názvem `extensions.ini`.
-5. Přidat nastavení konfigurace `extensions.ini` soubor pomocí stejné syntaxe byste použili v souboru php.ini. Například, pokud chcete povolit rozšíření MongoDB a nástroje XDebug vaše `extensions.ini` soubor bude obsahovat tento text:
+5. Přidat konfiguraci nastavení toohello `extensions.ini` souboru pomocí hello stejnou syntaxi, kterou použijete v souboru php.ini. Například pokud byste chtěli MongoDB a nástroje XDebug rozšíření hello tooenable vaše `extensions.ini` soubor bude obsahovat tento text:
    
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
         zend_extension=d:\home\site\ext\php_xdebug.dll
-6. Restartování webové aplikace načíst změny.
+6. Restartujte změny hello tooload webové aplikace.
 
 ### <a name="configure-via-app-setting"></a>Konfigurovat pomocí nastavení aplikace
-1. Přidat `bin` adresář na kořenový adresář.
-2. Uveďte `.dll` soubory s příponou `bin` directory (například `php_xdebug.dll`). Ujistěte se, že rozšíření jsou kompatibilní se výchozí verze PHP a jsou VC9 a kompatibilní bez bezpečného přístupu (nts).
+1. Přidat `bin` directory toohello kořenový adresář.
+2. Uveďte `.dll` soubory rozšíření v hello `bin` directory (například `php_xdebug.dll`). Ujistěte se, že jsou kompatibilní se výchozí verze PHP a jsou VC9 a bez bezpečného přístupu (nts) kompatibilní hello rozšíření.
 3. Nasazení webové aplikace.
-4. Přejděte na webovou aplikaci na portálu Azure a klikněte na **nastavení** tlačítko.
+4. Procházet tooyour webové aplikace ve hello portálu Azure a klikněte na hello **nastavení** tlačítko.
    
     ![Nastavení webové aplikace][settings-button]
-5. Z **nastavení** okně vyberte **nastavení aplikace** a přejděte k položce **nastavení aplikace** části.
-6. V **nastavení aplikace** , vytvořte **PHP_EXTENSIONS** klíč. Hodnota tohoto klíče by být cesta relativní vůči kořenovému adresáři webu: **bin\your přípona souboru**.
+5. Z hello **nastavení** okně vyberte **nastavení aplikace** a posuňte se toohello **nastavení aplikace** části.
+6. V hello **nastavení aplikace** , vytvořte **PHP_EXTENSIONS** klíč. Hello hodnota pro tento klíč bude kořenová cesta relativní toowebsite: **bin\your přípona souboru**.
    
     ![Povolit rozšíření v nastavení aplikace][php-extensions]
-7. Klikněte **Uložit** tlačítka v horní části **webové nastavení aplikace** okno.
+7. Klikněte na tlačítko hello **Uložit** tlačítko hello horní části hello **webové nastavení aplikace** okno.
    
     ![Uložit nastavení konfigurace][save-button]
 
-Zend rozšíření jsou podporovány také pomocí **PHP_ZENDEXTENSIONS** klíč. Chcete-li několik rozšíření, zahrnují obsahuje čárkami oddělený seznam `.dll` soubory pro hodnotu nastavení aplikace.
+Zend rozšíření jsou podporovány také pomocí **PHP_ZENDEXTENSIONS** klíč. tooenable více rozšíření, zahrnují obsahuje čárkami oddělený seznam `.dll` soubory pro hodnotu nastavení aplikace hello.
 
 ## <a name="how-to-use-a-custom-php-runtime"></a>Postupy: použití vlastního modulu PHP runtime
-App Service Web Apps můžete místo výchozí modul runtime PHP, použít modul runtime PHP, který zadáte ke spuštění skripty PHP. Dají se nakonfigurovat modul runtime, který zadáte `php.ini` soubor, který je taky zadat. Vlastní modul runtime PHP s webovými aplikacemi, postupujte podle následujících kroků.
+App Service Web Apps můžete místo rozšíření modulu PHP runtime výchozí hello použít modulu PHP runtime poskytují tooexecute skripty PHP. dají se nakonfigurovat Hello modul runtime, který zadáte `php.ini` soubor, který je taky zadat. toouse vlastní modulu PHP runtime s webovými aplikacemi, postupujte podle následujících kroků hello.
 
-1. Získejte není bezpečná pro přístup z více vláken, VC9 nebo VC11 kompatibilní verzi PHP pro systém Windows. Poslední verze PHP pro systém Windows naleznete zde: [http://windows.php.net/download/]. Starší verze najdete v archivu zde: [http://windows.php.net/downloads/releases/archives/].
-2. Změnit `php.ini` soubor pro vaše runtime. Všimněte si, že všechna nastavení, které jsou systému úroveň jen direktivy budou ignorovány webové aplikace. (Informace o systému úroveň jen direktivy najdete v tématu [seznam php.ini direktivy]).
-3. Volitelně můžete přidat rozšíření do vaší runtime PHP a povolte je do `php.ini` souboru.
-4. Přidat `bin` do kořenového adresáře a put adresář, který obsahuje vaše modulu PHP runtime v ní adresáře (například `bin\php`).
+1. Získejte není bezpečná pro přístup z více vláken, VC9 nebo VC11 kompatibilní verzi PHP pro systém Windows. Poslední verze PHP pro systém Windows naleznete zde: [http://windows.php.net/download/]. Starší verze najdete v archivu hello zde: [http://windows.php.net/downloads/releases/archives/].
+2. Upravit hello `php.ini` soubor pro vaše runtime. Všimněte si, že všechna nastavení, které jsou systému úroveň jen direktivy budou ignorovány webové aplikace. (Informace o systému úroveň jen direktivy najdete v tématu [seznam php.ini direktivy]).
+3. Volitelně můžete přidat rozšíření tooyour PHP runtime a je povolit v hello `php.ini` souboru.
+4. Přidat `bin` directory tooyour kořenový adresář a put hello adresář, který obsahuje vaše modulu PHP runtime v ní (například `bin\php`).
 5. Nasazení webové aplikace.
-6. Přejděte na webovou aplikaci na portálu Azure a klikněte na **nastavení** tlačítko.
+6. Procházet tooyour webové aplikace ve hello portálu Azure a klikněte na hello **nastavení** tlačítko.
    
     ![Nastavení webové aplikace][settings-button]
-7. Z **nastavení** okně vyberte **nastavení aplikace** a přejděte k položce **mapování obslužných rutin** části. Přidat `*.php` rozšíření pole a přidejte cestu k `php-cgi.exe` spustitelný soubor. Když vložíte vaší modulu PHP runtime `bin` adresáře v kořenovém adresáři aplikace, bude cesta `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+7. Z hello **nastavení** okně vyberte **nastavení aplikace** a posuňte se toohello **mapování obslužných rutin** části. Přidat `*.php` toohello rozšíření pole a přidejte hello cesta toohello `php-cgi.exe` spustitelný soubor. Když vložíte vaší modulu PHP runtime v hello `bin` directory hello kořenové aplikace, bude cesta hello `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
    
     ![Zadejte rutinu mapování obslužné rutiny][handler-mappings]
-8. Klikněte **Uložit** tlačítka v horní části **webové nastavení aplikace** okno.
+8. Klikněte na tlačítko hello **Uložit** tlačítko hello horní části hello **webové nastavení aplikace** okno.
    
     ![Uložit nastavení konfigurace][save-button]
 
 <a name="composer" />
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>Postupy: povolení autora automation v Azure
-Ve výchozím nastavení služby App Service nic se neděje s composer.json, pokud máte ve vašem projektu PHP. Pokud používáte [nasazení Git](app-service-deploy-local-git.md), můžete povolit composer.json zpracování během `git push` povolením rozšíření autora.
+Ve výchozím nastavení služby App Service nic se neděje s composer.json, pokud máte ve vašem projektu PHP. Pokud používáte [nasazení Git](app-service-deploy-local-git.md), můžete povolit composer.json zpracování během `git push` povolením rozšíření autora hello.
 
 > [!NOTE]
 > Můžete [hlas podpora prvotřídní autora ve službě App Service zde](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)!
 > 
 > 
 
-1. Ve vašem PHP webové okně aplikace v [portál Azure](https://portal.azure.com), klikněte na tlačítko **nástroje** > **rozšíření**.
+1. Ve vašem PHP webové okně aplikace v hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **nástroje** > **rozšíření**.
    
-    ![Okno nastavení Azure Portal povolit autora automation v Azure](./media/web-sites-php-configure/composer-extension-settings.png)
+    ![Azure Portal nastavení okno tooenable autora automation v Azure](./media/web-sites-php-configure/composer-extension-settings.png)
 2. Klikněte na tlačítko **přidat**, pak klikněte na tlačítko **autora**.
    
-    ![Přidání rozšíření autora jak povolit automatizaci autora v Azure](./media/web-sites-php-configure/composer-extension-add.png)
-3. Klikněte na tlačítko **OK** přijměte právní podmínky. Klikněte na tlačítko **OK** přidat rozšíření.
+    ![Přidat autora rozšíření tooenable autora automation v Azure](./media/web-sites-php-configure/composer-extension-add.png)
+3. Klikněte na tlačítko **OK** tooaccept právní podmínky. Klikněte na tlačítko **OK** znovu tooadd hello rozšíření.
    
-    **Nainstalovaná rozšíření** okno se nyní zobrazí rozšíření autora.  
-    ![Přijměte právní podmínky, jak povolit automatizaci autora v Azure](./media/web-sites-php-configure/composer-extension-view.png)
-4. Teď, provádět `git add`, `git commit`, a `git push` jako v předchozí části. Nyní se zobrazí, autora je instalování závislostí, které jsou definované v composer.json.
+    Hello **nainstalovaná rozšíření** okno se nyní zobrazí rozšíření autora hello.  
+    ![Přijměte právní podmínky tooenable autora automation v Azure](./media/web-sites-php-configure/composer-extension-view.png)
+4. Teď, provádět `git add`, `git commit`, a `git push` jako v předchozím oddílu hello. Nyní se zobrazí, autora je instalování závislostí, které jsou definované v composer.json.
    
     ![Nasazení Git s autora automation v Azure](./media/web-sites-php-configure/composer-extension-success.png)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu hello [středisku pro vývojáře PHP](/develop/php/).
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete, aby tooget začít s Azure App Service před registrací účtu Azure, přejděte příliš[vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci ve službě App Service. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
 > 
 > 
 

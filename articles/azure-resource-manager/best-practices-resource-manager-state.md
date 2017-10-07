@@ -1,6 +1,6 @@
 ---
-title: "Předejte komplexní hodnoty mezi šablony Azure | Microsoft Docs"
-description: "Zobrazí doporučená přístupy k používání komplexních objektů ke sdílení dat o stavu pomocí šablon Azure Resource Manager a propojených šablon."
+title: "komplexní hodnoty aaaPass mezi šablony Azure | Microsoft Docs"
+description: "Zobrazí doporučená přístupy k pomocí šablony Azure Resource Manager a propojená data o stavu tooshare komplexních objektů."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
-ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72df1dee351446cea6ce15269e6db288b1f1db79
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="share-state-to-and-from-azure-resource-manager-templates"></a>Sdílená složka stavu do a z šablon Azure Resource Manageru
-Toto téma ukazuje osvědčené postupy pro správu a sdílení stavu v rámci šablony. Parametry a proměnné, které jsou uvedené v tomto tématu jsou příklady typu objektů můžete definovat pohodlně uspořádání požadavků vašeho nasazení. V těchto příkladech můžete implementovat vlastní objekty s hodnoty vlastností, které dávají smysl pro vaše prostředí.
+# <a name="share-state-tooand-from-azure-resource-manager-templates"></a>Sdílená složka stavu tooand ze šablon Azure Resource Manager
+Toto téma ukazuje osvědčené postupy pro správu a sdílení stavu v rámci šablony. Hello parametry a proměnné, které jsou uvedené v tomto tématu jsou příklady typu hello objektů můžete definovat tooconveniently uspořádání požadavků vašeho nasazení. V těchto příkladech můžete implementovat vlastní objekty s hodnoty vlastností, které dávají smysl pro vaše prostředí.
 
-Toto téma je součástí větší dokument White Paper. Číst úplnou dokumentu, stáhněte si [World Třída prostředků Manager šablony požadavky a osvědčené postupy](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf).
+Toto téma je součástí větší dokument White Paper. Stáhnout tooread hello úplné papír [World Třída prostředků Manager šablony požadavky a osvědčené postupy](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf).
 
 ## <a name="provide-standard-configuration-settings"></a>Zadejte standardní konfigurace nastavení
-Místo nabízí šablonu, která poskytuje celkový flexibilitu a obrovském množství variant, je běžné vzor poskytnout výběr známé konfigurace. V důsledku toho mohou uživatelé vybrat standardní velikosti tričko například izolovaného prostoru, malé, střední a velké. Další příklady tričko velikosti jsou nabídky produktů, jako je například community edition nebo enterprise edition. V jiných případech může být určeného pro konkrétní úlohy konfigurace technologii – například mapy snížit nebo žádné sql.
+Místo nabízí šablonu, která poskytuje celkový flexibilitu a obrovském množství variant, je běžné vzor tooprovide výběr známé konfigurace. V důsledku toho mohou uživatelé vybrat standardní velikosti tričko například izolovaného prostoru, malé, střední a velké. Další příklady tričko velikosti jsou nabídky produktů, jako je například community edition nebo enterprise edition. V jiných případech může být určeného pro konkrétní úlohy konfigurace technologii – například mapy snížit nebo žádné sql.
 
-S komplexních objektů můžete vytvářet proměnné, které obsahují kolekcí dat, někdy označovanou jako "kontejnery vlastností" a tato data použít k řízení deklaraci prostředků ve vaší šabloně. Tento přístup poskytuje dobrý, známé konfigurace různou velikost předem konfigurovaných pro zákazníky. Bez známé konfigurace musí uživatelé šablony určit cluster pro změnu velikosti na své vlastní, zohlednit v omezení prostředků platformy a provést matematické k identifikaci výsledné oddíly účty úložiště a dalším prostředkům (z důvodu omezení velikosti a prostředek clusteru). Kromě vytváření lepší podmínky pro zákazníka, několik známé konfigurace se snadněji podporovat a můžete poskytovat vyšší úroveň hustotou.
+S komplexních objektů můžete vytvářet proměnné, které obsahují kolekcí dat, někdy označovanou jako "kontejnery vlastností" a použít tuto deklaraci data toodrive hello prostředků ve vaší šabloně. Tento přístup poskytuje dobrý, známé konfigurace různou velikost předem konfigurovaných pro zákazníky. Bez známé konfigurace, musí uživatelé hello šablony určit velikost clusteru na své vlastní, faktorem omezení prostředků platformy a provádět matematické tooidentify hello výsledná oddíly účty úložiště a dalším prostředkům (z důvodu toocluster velikost a omezení zdrojů). Kromě toho toomaking lepší prostředí pro zákazníka hello několik známé konfigurace jsou jednodušší toosupport a mohou vám pomoci poskytovat vyšší úroveň hustotu.
 
-Následující příklad ukazuje, jak k definování proměnné, které obsahují pro představující kolekce dat na komplexní objekty. Kolekce definovat hodnoty, které se používají pro velikost virtuálního počítače, nastavení sítě, nastavení operačního systému a nastavení dostupnosti.
+Následující příklad ukazuje, jak Hello toodefine proměnné, které obsahují pro představující kolekce dat na komplexní objekty. kolekce Hello definovat hodnoty, které se používají pro velikost virtuálního počítače, nastavení sítě, nastavení operačního systému a nastavení dostupnosti.
 
     "variables": {
       "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
@@ -109,9 +109,9 @@ Následující příklad ukazuje, jak k definování proměnné, které obsahuj�
       }
     }
 
-Všimněte si, že **tshirtSize** zřetězí velikost trička zadaný pomocí parametru (**malé**, **střední**, **velké**) na text **tshirtSize**. Pomocí této proměnné načíst proměnnou přidružené komplexní objekt pro tento tričko velikost.
+Všimněte si, že hello **tshirtSize** zřetězí velikost trička hello zadaný pomocí parametru (**malé**, **střední**, **velké**) toohello text **tshirtSize**. Tato proměnná proměnné tooretrieve hello přidružené komplexní objekt se používá pro tato velikost tričko.
 
-Pak můžete odkazovat tyto proměnné později v šabloně. Možnost k odkazování proměnné s názvem a jejich vlastnosti zjednodušuje syntaxi šablony a umožňuje snadno pochopit kontextu. V následujícím příkladu definuje zdroj nasazení pomocí objekty zobrazené dříve nastavit hodnoty. Například je velikost virtuálního počítače nastavit načtením hodnota `variables('tshirtSize').vmSize` při hodnotu pro velikost disku je načtena z `variables('tshirtSize').diskSize`. Kromě toho je nastaven identifikátor URI pro šablonu propojené s hodnotou pro `variables('tshirtSize').vmTemplate`.
+Pak můžete odkazovat tyto proměnné později v šabloně hello. zjednodušuje hello syntaxi šablony a umožňuje snadno toounderstand kontextu, Hello možnost tooreference s názvem proměnné a jejich vlastnosti. Následující ukázka Hello definuje toodeploy prostředků pomocí objektů hello uvedený výše tooset hodnoty. Například je hello velikost virtuálního počítače nastavit načtením hello hodnotu `variables('tshirtSize').vmSize` při hello hodnotu pro velikost disku hello se načítají z `variables('tshirtSize').diskSize`. Kromě toho hello URI propojené šablony je nastavený s hodnotou hello `variables('tshirtSize').vmTemplate`.
 
     "name": "master-node",
     "type": "Microsoft.Resources/deployments",
@@ -166,23 +166,23 @@ Pak můžete odkazovat tyto proměnné později v šabloně. Možnost k odkazov�
       }
     }
 
-## <a name="pass-state-to-a-template"></a>Předat stavu do šablony
+## <a name="pass-state-tooa-template"></a>Předat stavu tooa šablony
 Sdílíte stavu do šablony prostřednictvím parametrů, které poskytují přímo během nasazení.
 
-Následující tabulka uvádí běžně používané parametry v šablonách.
+Hello následující parametry tabulky seznamy běžně používané v šablonách.
 
 | Name (Název) | Hodnota | Popis |
 | --- | --- | --- |
-| location |Řetězec z omezené seznam oblastí Azure |Umístění, kde jsou nasazené prostředky. |
-| storageAccountNamePrefix |Řetězec |Jedinečný název DNS pro účet úložiště, kde jsou umístěné disky Virtuálního počítače |
-| domainName |Řetězec |Název domény veřejně přístupná jumpbox virtuálních počítačů ve formátu: **{domainName}. { umístění}.cloudapp.com** například: **mydomainname.westus.cloudapp.azure.com** |
-| adminUsername |Řetězec |Uživatelské jméno pro virtuální počítače |
-| adminPassword |Řetězec |Heslo pro virtuální počítače |
-| tshirtSize |Řetězec, ze seznamu omezené nabízí tričko velikosti |Velikost jednotky škálování s názvem zřídit. Například "Malá", "střední", "Velké" |
-| virtualNetworkName |Řetězec |Název virtuální sítě, které chce příjemce použít. |
-| enableJumpbox |Řetězec omezené seznamu (povoleno nebo zakázáno) |Parametr, který určuje, jestli se má povolit jumpbox pro prostředí. Hodnoty: "povoleno", "Zakázat" |
+| location |Řetězec z omezené seznam oblastí Azure |Hello umístění, kde jsou nasazené prostředky hello. |
+| storageAccountNamePrefix |Řetězec |Jedinečný název DNS pro hello účet úložiště, kde jsou umístěné disky hello Virtuálního počítače |
+| domainName |Řetězec |Název domény hello veřejně přístupná jumpbox virtuálních počítačů ve formátu hello: **{domainName}. { umístění}.cloudapp.com** například: **mydomainname.westus.cloudapp.azure.com** |
+| adminUsername |Řetězec |Uživatelské jméno pro hello virtuální počítače |
+| adminPassword |Řetězec |Heslo pro hello virtuální počítače |
+| tshirtSize |Řetězec, ze seznamu omezené nabízí tričko velikosti |Hello s názvem tooprovision velikost jednotky škálování. Například "Malá", "střední", "Velké" |
+| virtualNetworkName |Řetězec |Název hello virtuální síť, která hello příjemce chce toouse. |
+| enableJumpbox |Řetězec omezené seznamu (povoleno nebo zakázáno) |Parametr, který identifikuje zda tooenable jumpbox hello prostředí. Hodnoty: "povoleno", "Zakázat" |
 
-**TshirtSize** parametr použitý v předchozí části je definován jako:
+Hello **tshirtSize** parametr použitý v předchozí části hello je definován jako:
 
     "parameters": {
       "tshirtSize": {
@@ -194,21 +194,21 @@ Následující tabulka uvádí běžně používané parametry v šablonách.
           "Large"
         ],
         "metadata": {
-          "Description": "T-shirt size of the MongoDB deployment"
+          "Description": "T-shirt size of hello MongoDB deployment"
         }
       }
     }
 
 
-## <a name="pass-state-to-linked-templates"></a>Stav předat propojených šablon
-Při připojování k propojených šablon, můžete často použít kombinaci statických a vygeneruje proměnné.
+## <a name="pass-state-toolinked-templates"></a>Předat stavu toolinked šablony
+Při připojování toolinked šablony, můžete často použít kombinaci statických a vygeneruje proměnné.
 
 ### <a name="static-variables"></a>Statické proměnné
-Statické proměnné se často používá k poskytování základní hodnoty, například adresy URL, které se používají v rámci šablony.
+Statické proměnné jsou často používané tooprovide základní hodnoty, například adresy URL, které se používají v rámci šablony.
 
-V následující výňatek ze šablony `templateBaseUrl` Určuje kořenový adresář pro danou šablonu v Githubu. Na další řádek vytvoří novou proměnnou `sharedTemplateUrl` který zřetězí základní adresu URL s známý název šablony sdílených prostředků. Níže daného řádku proměnnou komplexní objekt se používá k ukládání velikost trička, kde je zřetězen do umístění šablony známé konfigurace a uložené v základní adresu URL `vmTemplate` vlastnost.
+V následující výňatek ze šablony, hello `templateBaseUrl` určuje hello kořenový adresář pro šablonu hello v Githubu. Další řádek Hello vytvoří novou proměnnou `sharedTemplateUrl` který zřetězí hello základní adresu URL s hello známý název šablony hello sdílených prostředků. Níže daného řádku proměnnou komplexní objekt je použité toostore velikost trička, kde základní adresu URL hello zřetězených toohello označuje umístění konfigurace šablon a uloženy v hello `vmTemplate` vlastnost.
 
-Výhodou tohoto přístupu je, pokud se změní umístění šablon, potřebujete jenom statické proměnné na jednom místě, které vyhovují v propojených šablon změnit.
+Hello výhody tohoto přístupu je, že pokud se změní umístění šablon hello pouze toochange hello statické proměnné na jednom místě, které vyhovují v rámci hello propojené šablony.
 
     "variables": {
       "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
@@ -230,13 +230,13 @@ Výhodou tohoto přístupu je, pokud se změní umístění šablon, potřebujet
     }
 
 ### <a name="generated-variables"></a>Vygenerovaný proměnné
-Kromě statické proměnné několika proměnných generována dynamicky. Tato část popisuje některé běžné typy generovaného proměnných.
+Několik proměnné přidání toostatic proměnné, jsou generována dynamicky. Tato část popisuje některé běžné typy hello generovaného proměnných.
 
 #### <a name="tshirtsize"></a>tshirtSize
-Jste obeznámeni s Tato proměnná generovaný z výše uvedených příkladech.
+Jste obeznámeni s Tato proměnná generovaný z výše uvedených příkladech hello.
 
 #### <a name="networksettings"></a>networkSettings
-V kapacitu, schopností nebo šablona vymezená řešení začátku do konce propojených šablon obvykle vytvořit prostředky, které existují v síti. Jeden Nejjednodušším způsobem je použití komplexní objekt pro uložení nastavení sítě a předat propojených šablon.
+V kapacitu, schopností nebo oboru řešení začátku do konce šablony hello propojených šablon obvykle vytvořit prostředky, které existují v síti. Jeden Nejjednodušším způsobem je toouse nastavení sítě toostore komplexní objekt a předat je toolinked šablony.
 
 Níže najdete příklad komunikaci nastavení sítě.
 
@@ -258,7 +258,7 @@ Níže najdete příklad komunikaci nastavení sítě.
     }
 
 #### <a name="availabilitysettings"></a>availabilitySettings
-Prostředky vytvořené v propojených šablon jsou často umístěny v nastavení dostupnosti. V následujícím příkladu je zadána název sady dostupnosti a také počet doména selhání a aktualizace domény použít.
+Prostředky vytvořené v propojených šablon jsou často umístěny v nastavení dostupnosti. V následujícím příkladu hello název sady dostupnosti hello je zadána a také hello doména selhání a aktualizace domény počet toouse.
 
     "availabilitySetSettings": {
       "name": "pgsqlAvailabilitySet",
@@ -266,10 +266,10 @@ Prostředky vytvořené v propojených šablon jsou často umístěny v nastaven
       "udCount": 5
     }
 
-Pokud potřebujete více skupiny dostupnosti (například jeden pro hlavní uzly) a druhý pro datové uzly, můžete použít název jako předpony, zadejte několik skupin dostupnosti nebo postupujte podle modelu uvedené výše pro vytvoření proměnné pro konkrétní velikost trička.
+Pokud potřebujete více skupiny dostupnosti (například jeden pro hlavní uzly) a druhý pro datové uzly, můžete použít název jako předpony, zadejte několik skupin dostupnosti nebo postupujte podle modelu hello uvedené výše pro vytvoření proměnné pro konkrétní velikost trička.
 
 #### <a name="storagesettings"></a>storageSettings
-Podrobnosti o úložiště jsou často sdílet s propojených šablon. V příkladu níže *storageSettings* objektu obsahuje podrobné informace o názvu účtu a kontejner úložiště.
+Podrobnosti o úložiště jsou často sdílet s propojených šablon. V následujícím příkladu hello *storageSettings* objekt poskytuje podrobnosti o hello názvy účtů a kontejner úložiště.
 
     "storageSettings": {
         "vhdStorageAccountName": "[parameters('storageAccountName')]",
@@ -278,9 +278,9 @@ Podrobnosti o úložiště jsou často sdílet s propojených šablon. V příkl
     }
 
 #### <a name="ossettings"></a>osSettings
-S propojených šablon musíte předat nastavení operačního systému na různé typy uzlů napříč jinou konfiguraci známé typy. Komplexní objekt je snadný způsob, jak ukládat a sdílet informace o operačním systému a také usnadňuje podporují více možností operačního systému pro nasazení.
+S propojených šablon může být nutné typy uzlů toopass operačního systému nastavení toovarious typů jiné známé konfigurace. Komplexní objekt operačního systému informace snadný způsob, toostore a sdílené složky a také umožňuje snazší toosupport více možností operačního systému pro nasazení.
 
-Následující příklad ukazuje objekt pro *osSettings*:
+Hello následující příklad ukazuje objekt pro *osSettings*:
 
     "osSettings": {
       "imageReference": {
@@ -292,7 +292,7 @@ Následující příklad ukazuje objekt pro *osSettings*:
     }
 
 #### <a name="machinesettings"></a>machineSettings
-Proměnnou generovaného *machineSettings* je komplexní objekt obsahující směs základní proměnných pro vytvoření virtuálního počítače. Proměnné zahrnují správce uživatelské jméno a heslo, předpona pro názvy virtuálních počítačů a odkaz na bitovou kopii operačního systému.
+Proměnnou generovaného *machineSettings* je komplexní objekt obsahující směs základní proměnných pro vytvoření virtuálního počítače. proměnné Hello zahrnují správce uživatelské jméno a heslo, předpona pro názvy virtuálních počítačů hello a odkaz na bitovou kopii operačního systému.
 
     "machineSettings": {
         "adminUsername": "[parameters('adminUsername')]",
@@ -306,17 +306,17 @@ Proměnnou generovaného *machineSettings* je komplexní objekt obsahující sm�
         }
     },
 
-Všimněte si, že *osImageReference* načte hodnoty z *osSettings* proměnná definovaná v šabloně hlavní. To znamená, že můžete snadno změnit operační systém pro virtuální počítač – zcela nebo v závislosti na předvoleb šablony příjemce.
+Všimněte si, že *osImageReference* načte hello hodnoty z hello *osSettings* proměnná definovaná v šabloně hlavní hello. To znamená, že můžete snadno změnit hello operačního systému pro virtuální počítač – zcela nebo v závislosti na hello předvoleb šablony příjemce.
 
 #### <a name="vmscripts"></a>vmScripts
-*VmScripts* objekt obsahuje podrobnosti o skripty ke stažení a spuštění na instanci virtuálního počítače, včetně odkazů a vnější. Mimo obsahovat odkazy na infrastrukturu.
-Odkazy uvnitř zahrnují nainstalovaného softwaru nainstalovaného a konfigurace.
+Hello *vmScripts* objektu obsahuje podrobnosti o toodownload hello skripty a spustit v instanci virtuálního počítače, včetně odkazů a vnější. Mimo zahrnovat odkazy hello infrastruktury.
+Odkazy uvnitř zahrnují nainstalovaný hello nainstalovaný software a konfigurace.
 
-Můžete použít *scriptsToDownload* vlastnost seznam skripty ke stažení do virtuálního počítače. Tento objekt obsahuje taky odkazy na argumenty příkazového řádku pro různé typy akcí. Mezi ně patří provádění výchozí instalace pro všechny jednotlivé uzly, instalaci, která spustí po všechny uzly, jsou nasazené a jakékoli další skripty, které mohou být specifické pro dané šablony.
+Použít hello *scriptsToDownload* vlastnost toolist hello skriptů toodownload toohello virtuálních počítačů. Tento objekt obsahuje taky odkazy na řádku toocommand argumenty pro různé typy akcí. Mezi ně patří provádění hello výchozí instalace pro všechny jednotlivé uzly, instalaci, která spustí po všechny uzly, jsou nasazené a další skripty, které mohou být konkrétní tooa zadané šablony.
 
-V tomto příkladu je ze šablony použít k nasazení MongoDB, který vyžaduje arbiter zajistit vysokou dostupnost. *ArbiterNodeInstallCommand* byl přidán do *vmScripts* k instalaci arbiter.
+V tomto příkladu je z šablony použité toodeploy MongoDB, které vyžaduje arbiter toodeliver vysokou dostupnost. Hello *arbiterNodeInstallCommand* byla přidána příliš*vmScripts* tooinstall hello arbiter.
 
-V části proměnné je, kde najít proměnné, které definují konkrétní text pro spuštění skriptu s správné hodnoty.
+část proměnné Hello je, kde najít hello proměnné, které definují hello určitý text tooexecute hello skriptu s hello správné hodnoty.
 
     "vmScripts": {
         "scriptsToDownload": [
@@ -330,9 +330,9 @@ V části proměnné je, kde najít proměnné, které definují konkrétní tex
 
 
 ## <a name="return-state-from-a-template"></a>Návratový stav ze šablony
-Nejenže můžete předat data do šablony, můžete také sdílet data zpět do volání šablony. V **výstupy** část propojené šablony, můžete zadat dvojice klíč/hodnota, které mohou být spotřebovávána zdrojovou šablonu.
+Nejenže můžete předat data do šablony, můžete také sdílení dat toohello zpětné volání šablony. V hello **výstupy** část propojené šablony, můžete zadat dvojice klíč/hodnota, které mohou být spotřebovávána hello zdrojové šabloně.
 
-Následující příklad ukazuje, jak předat privátní IP adresu vygenerovaných propojené šablony.
+Hello následující příklad ukazuje, jak toopass hello vygenerovaných šablonu propojené privátní IP adresu.
 
     "outputs": {
         "masterip": {
@@ -341,11 +341,11 @@ Následující příklad ukazuje, jak předat privátní IP adresu vygenerovaný
          }
     }
 
-V rámci hlavní šablony můžete tato data s následující syntaxí:
+V rámci hello hlavní šablony můžete tato data s hello následující syntaxi:
 
     "[reference('master-node').outputs.masterip.value]"
 
-Můžete použít tento výraz v části výstupy nebo oddílu prostředků hlavní šablony. V sekci proměnných nelze použít ve výrazu, protože závisí na stav modulu runtime. Vrácená hodnota z hlavní šablony, použijte:
+Můžete použít tento výraz v části výstupy hello nebo oddílu prostředků hello hello hlavní šablony. V části hello proměnné nelze použít hello výraz, protože závisí na stav modulu runtime hello. tooreturn tuto hodnotu z hello hlavní šablony, použijte:
 
     "outputs": {
       "masterIpAddress": {
@@ -353,10 +353,10 @@ Můžete použít tento výraz v části výstupy nebo oddílu prostředků hlav
         "type": "string"
       }
 
-Příklad použití části výstupy propojené šablony pro vrácení datových disků pro virtuální počítač, naleznete v části [vytváření více datových disků pro virtuální počítač](resource-group-create-multiple.md).
+Příklad použití hello výstupy část propojené šablony tooreturn datových disků pro virtuální počítač, najdete v části [vytváření více datových disků pro virtuální počítač](resource-group-create-multiple.md).
 
 ## <a name="define-authentication-settings-for-virtual-machine"></a>Zadejte nastavení ověřování pro virtuální počítač
-Stejného vzoru zobrazovaného dříve nastavení konfigurace můžete použít k určení nastavení ověřování pro virtuální počítač. Vytvoření parametru pro předávání v typ ověřování.
+Můžete použít hello stejného vzoru zobrazovaného dříve pro nastavení ověřování hello toospecify pro konfiguraci nastavení pro virtuální počítač. Vytvoření parametru pro předávání v hello typ ověřování.
 
     "parameters": {
       "authenticationType": {
@@ -372,7 +372,7 @@ Stejného vzoru zobrazovaného dříve nastavení konfigurace můžete použít 
       }
     }
 
-Přidejte proměnných pro typy různých ověřování a proměnnou pro uložení jaký typ se používá pro toto nasazení na základě hodnoty parametru.
+Přidáte proměnných pro hello různá ověřovací typy a proměnné toostore, jaký typ se používá pro toto nasazení na základě hello hodnoty parametru hello.
 
     "variables": {
       "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
@@ -400,7 +400,7 @@ Přidejte proměnných pro typy různých ověřování a proměnnou pro uložen
       }
     }
 
-Při definování virtuální počítač, můžete nastavit **osProfile** do proměnné, které jste vytvořili.
+Při definování hello virtuálního počítače, nastavíte hello **osProfile** toohello proměnné, které jste vytvořili.
 
     {
       "type": "Microsoft.Compute/virtualMachines",
@@ -410,5 +410,5 @@ Při definování virtuální počítač, můžete nastavit **osProfile** do pro
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o části šablony najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md)
-* Funkce, které jsou k dispozici v rámci šablon najdete v sekci [funkce šablon Azure Resource Manager](resource-group-template-functions.md)
+* toolearn o části hello hello šablony, najdete v části [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md)
+* toosee hello funkce, které jsou k dispozici v rámci šablon, najdete v části [funkce šablon Azure Resource Manager](resource-group-template-functions.md)

@@ -1,6 +1,6 @@
 ---
-title: "Použít konektor Office 365 Video ve vašich Logic apps | Microsoft Docs"
-description: "Začněte používat konektor Office 365 Video v aplikaci Microsoft Azure App service Logic apps"
+title: "konektor Office 365 Video hello aaaUse ve vašich Logic apps | Microsoft Docs"
+description: "Začněte používat konektor Office 365 Video hello v aplikaci Microsoft Azure App service Logic apps"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: f0e3613d4a3fd5478787c0365eb7a0bcde886c81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e0a4b658d166d1cf8096d50f4bf2d502053aa43
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Začínáme s konektor Office 365 Video
-Připojte k Office 365 videu se získat informace o Office 365 videa, získat seznam videa a další. Video Office 365 můžete:
+# <a name="get-started-with-hello-office365-video-connector"></a>Začínáme s konektor Office 365 Video hello
+Připojte tooOffice 365 Video tooget informace o video Office 365, získat seznam videa a další. Video Office 365 můžete:
 
-* Sestavení vaší firmy toku na základě dat, které můžete získat z Office 365 Video. 
-* Pomocí akcí, které zkontrolujte video portálu stav, získat seznam všech video v kanálu a další. Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce. Můžete například použít konektor Bing vyhledávání pro vyhledávání služeb Office 365 videa a pak použít video konektor Office 365 a získat informace o tomto video. Pokud se na video vyhovovat vašim požadavkům, můžete toto video účtovat ve službě Facebook. 
+* Sestavení vaší firmy toku na základě hello dat, které můžete získat z Office 365 Video. 
+* Pomocí akcí, které zkontrolujte hello video portálu stav, získat seznam všech video v kanálu a další. Tyto akce se odpověď a pak proveďte výstup hello k dispozici pro další akce. Můžete například využít hello Bing vyhledávání konektor toosearch pro Office 365 videa a pak pomocí hello Office 365 video konektor tooget informace o tomto video. Pokud hello video vyhovovat vašim požadavkům, můžete toto video účtovat ve službě Facebook. 
 
 Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Umožňuje vytvořit připojení k Office 365 Video konektoru
-Když přidáte tento konektor aplikace logiky, musíte přihlásit ke svému účtu Office 365 Video a povolit logic apps, abyste připojení k vašemu účtu.
+## <a name="create-a-connection-toooffice365-video-connector"></a>Vytvořit konektor Video tooOffice365 připojení
+Když přidáte tento konektor tooyour logiku aplikace, musíte se odhlásit – v tooyour Office 365 Video účtu a povolit aplikace logiky tooconnect tooyour účet.
 
-> [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
+> [!INCLUDE [Steps toocreate a connection tooOffice 365 Video](../../includes/connectors-create-api-office365video.md)]
 > 
 > 
 
-Po vytvoření připojení, zadejte vlastnosti videa Office 365, jako je název klienta nebo kanálu ID. 
+Po vytvoření připojení hello, zadejte vlastnosti videa hello Office 365, jako je název klienta hello nebo kanálu ID. 
 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/office365videoconnector/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/office365videoconnector/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).

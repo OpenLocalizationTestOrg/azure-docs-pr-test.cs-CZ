@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s Application Insights ve webovém projektu Java"
+title: "aaaTroubleshoot Application Insights ve webovém projektu Java"
 description: "Průvodce odstraňováním potíží s – monitorování provozu aplikace v jazyce Java pomocí Application Insights."
 services: application-insights
 documentationcenter: java
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.openlocfilehash: ce46a4f561a273dc340b090a5bf0c8932a308722
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c274c01b1992971fae194c3e510512ca06ab76b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
 
 ## <a name="build-errors"></a>Chyby sestavení
-**V prostředí Eclipse, při přidání Application Insights SDK prostřednictvím Maven nebo Gradle zobrazuje se chyby ověření sestavení nebo kontrolního součtu.**
+**V prostředí Eclipse při přidávání hello Application Insights SDK prostřednictvím Maven nebo Gradle, zobrazuje chyby ověření sestavení nebo kontrolního součtu.**
 
-* Pokud závislost <version> element je pomocí vzoru se zástupnými znaky (například (Maven) `<version>[1.0,)</version>` nebo (Gradle) `version:'1.0.+'`), zkuste místo toho zadat konkrétní verzi jako `1.0.2`. Najdete v článku [poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) na nejnovější verzi.
+* Pokud hello závislostí <version> element je pomocí vzoru se zástupnými znaky (například (Maven) `<version>[1.0,)</version>` nebo (Gradle) `version:'1.0.+'`), zkuste místo toho zadat konkrétní verzi jako `1.0.2`. V tématu hello [poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) hello nejnovější verzi.
 
 ## <a name="no-data"></a>Žádná data
-**I přidat Application Insights úspěšně a spustil mé aplikace, ale nikdy, uloží se data na portálu.**
+**I přidat Application Insights úspěšně a spustil mé aplikace, ale nikdy, uloží se data hello portálu.**
 
-* Počkejte několik minut a klikněte na tlačítko Aktualizovat. Pravidelně grafy sami obnovit, ale můžete taky aktualizovat ručně. Interval aktualizace závisí na časové rozmezí grafu.
-* Zkontrolujte, zda máte klíč instrumentace definované v souboru ApplicationInsights.xml (ve složce prostředky ve vašem projektu)
-* Ověřte, zda je žádné `<DisableTelemetry>true</DisableTelemetry>` uzlu v souboru xml.
-* V bráně firewall můžete chtít otevřít porty TCP 80 a 443 pro odchozí přenosy na adresu dc.services.visualstudio.com. Najdete v článku [úplný seznam výjimky brány firewall](app-insights-ip-addresses.md)
-* Ve službě Microsoft Azure spustit Tabule, podívejte se na mapě služby stavu. Pokud jsou některé výstrahy indikace, počkejte, dokud se změnil na OK a pak zavřete a znovu otevřete okně vaší aplikace Application Insights.
-* Povolení protokolování v okně konzoly IDE přidáním `<SDKLogger />` prvek v rámci kořenového uzlu souboru ApplicationInsights.xml (ve složce prostředky ve vašem projektu) a zkontrolujte položky, kterými [Chyba].
-* Ujistěte se, že správný soubor ApplicationInsights.xml byl úspěšně načten Java SDK prohlížením výstup zprávy v konzole pro příkaz "konfigurační soubor byl úspěšně nalezl".
-* Pokud není nalezen konfigurační soubor, zkontrolujte zprávy výstup zobrazíte, kde má být vyhledán do konfiguračního souboru pro a ujistěte se, že soubor ApplicationInsights.xml nachází v jednom z těchto umístění vyhledávání. Jako existuje pravidlo můžete umístit do konfiguračního souboru téměř Application Insights SDK JARs. Příklad: v Tomcat, to znamená složce webové-INF/lib.
+* Počkejte několik minut a klikněte na tlačítko Aktualizovat. pravidelně Hello grafy sami obnovit, ale můžete taky aktualizovat ručně. interval obnovování Hello závisí na hello časové rozmezí hello grafu.
+* Zkontrolujte, že máte klíč instrumentace, který je definován v souboru ApplicationInsights.xml hello (ve složce hello prostředky ve vašem projektu)
+* Ověřte, zda je žádné `<DisableTelemetry>true</DisableTelemetry>` uzlu v souboru xml hello.
+* V bráně firewall můžete mít tooopen porty TCP 80 a 443 pro odchozí provoz toodc.services.visualstudio.com. V tématu hello [úplný seznam výjimky brány firewall](app-insights-ip-addresses.md)
+* V hello Microsoft Azure spustit Tabule, podívejte se na mapě stav služby hello. Pokud jsou některé výstrahy indikace, počkejte, dokud se vrátili tooOK a pak zavřete a znovu otevřete okně vaší aplikace Application Insights.
+* Zapnout protokolování okna konzoly toohello IDE, tak, že přidáte `<SDKLogger />` prvek v rámci hello kořenového uzlu souboru ApplicationInsights.xml hello (ve složce hello prostředky ve vašem projektu) a zkontrolujte položky, kterými [Chyba].
+* Ujistěte se, že hello správné souboru ApplicationInsights.xml byl úspěšně načten podle hello sady Java SDK prohlížením zprávy výstup hello konzoly pro příkaz "konfigurační soubor byl úspěšně nalezl".
+* Pokud není nalezen hello konfigurační soubor, zkontrolujte toosee zprávy výstup hello, kde má být vyhledán hello konfiguračního souboru pro a ujistěte se, že hello ApplicationInsights.xml se nachází v jedné z těchto umístění vyhledávání. Jako existuje pravidlo můžete umístit hello konfiguračního souboru téměř hello Application Insights SDK JARs. Příklad: v Tomcat, to znamená hello složku WEB-INF/lib.
 
-#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Mohu použít chcete zobrazit data, ale byla zastavena
-* Zkontrolujte [stav blog](http://blogs.msdn.com/b/applicationinsights-status/).
-* Jste nedosáhli vaše měsíční kvóta datových bodů? Otevřete nastavení nebo kvóty a cena chcete zjistit. Pokud ano, můžete upgradovat plán nebo platit dodatečnou kapacitu. Najdete v článku [ceny schéma](https://azure.microsoft.com/pricing/details/application-insights/).
+#### <a name="i-used-toosee-data-but-it-has-stopped"></a>Mohu použít toosee data, ale byla zastavena
+* Zkontrolujte hello [stav blog](http://blogs.msdn.com/b/applicationinsights-status/).
+* Jste nedosáhli vaše měsíční kvóta datových bodů? Otevřete nastavení nebo kvóty a cena toofind limitu. Pokud ano, můžete upgradovat plán nebo platit dodatečnou kapacitu. V tématu hello [ceny schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 
-#### <a name="i-dont-see-all-the-data-im-expecting"></a>Všechna data, která se byla očekávána se nezobrazí
-* Otevřete kvóty a ceny okno a zkontrolujte, zda [vzorkování](app-insights-sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Službu Application Insights můžete nastavit tak, aby přijímal pouze část telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci vaší měsíční kvóta telemetrie. 
+#### <a name="i-dont-see-all-hello-data-im-expecting"></a>Nejsou zobrazeny všechny hello data, která se byla očekávána
+* Otevřete hello kvóty a ceny okno a zkontrolujte, zda [vzorkování](app-insights-sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Hello služby Application Insights může být sada tooaccept pouze část hello telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci vaší měsíční kvóta telemetrie. 
 
 ## <a name="no-usage-data"></a>Žádná data o využití
 **Zobrazuje, data o žádosti a doby odezvy, ale žádné zobrazení stránky, prohlížeč nebo uživatelská data.**
 
-Jste úspěšně nastavili aplikace k odesílání telemetrie ze serveru. Teď je dalším krokem je [nastavení webové stránky k odesílání telemetrie z webového prohlížeče][usage].
+Byl úspěšně nainstalován se telemetrie aplikace toosend ze serveru hello. Teď je dalším krokem je příliš[nastavení webové stránky toosend telemetrii z webového prohlížeče hello][usage].
 
 Případně pokud se váš klient je aplikace v [telefonu nebo jiné zařízení][platforms], mohla odesílat telemetrii z ní. 
 
-Použijte stejný klíč instrumentace nastavit telemetrie klient i server. Data se zobrazí v rámci stejné prostředku Application Insights a budete moct korelovat události z klienta a serveru.
+Použití hello stejné instrumentace klíče tooset si klient i server telemetrie. Hello data se zobrazí v hello stejný prostředek Application Insights, a budete moct toocorrelate události z klienta a serveru.
 
 
 ## <a name="disabling-telemetry"></a>Vypnutí telemetrie
@@ -69,29 +69,29 @@ V kódu:
 
 **Nebo** 
 
-Aktualizujte soubor ApplicationInsights.xml (ve složce prostředky ve vašem projektu). Přidejte následující do kořenového uzlu:
+Aktualizujte soubor ApplicationInsights.xml (ve složce hello prostředky ve vašem projektu). Přidejte následující hello pod hello kořenového uzlu:
 
 ```XML
 
     <DisableTelemetry>true</DisableTelemetry>
 ```
 
-Pomocí metody XML, musíte aplikaci restartovat při změně hodnota.
+Pomocí metody hello XML, když změníte hodnotu hello mít toorestart hello aplikaci.
 
-## <a name="changing-the-target"></a>Změna cíle
+## <a name="changing-hello-target"></a>Změna cílové hello
 **Jak můžete změnit který Azure prostředek projektu odešle data?**
 
-* [Získejte klíč instrumentace nového prostředku.][java]
-* Pokud jste přidali Application Insights do projektu pomocí sady nástrojů pro Azure pro prostředí Eclipse, klikněte pravým tlačítkem na webový projekt, vyberte **Azure**, **konfigurovat Application Insights**a změňte klíč.
-* V opačném aktualizujte klíč v ApplicationInsights.xml ve složce prostředky ve vašem projektu.
+* [Získejte klíč instrumentace hello hello nový prostředek.][java]
+* Pokud jste přidali Application Insights tooyour projekt pomocí hello Azure Toolkit pro Eclipse, klikněte pravým tlačítkem na webový projekt, vyberte **Azure**, **konfigurovat Application Insights**a změňte hello klíč.
+* V opačném aktualizujte klíč hello v ApplicationInsights.xml do složky hello prostředky ve vašem projektu.
 
-## <a name="debug-data-from-the-sdk"></a>Ladění data ze sady SDK
+## <a name="debug-data-from-hello-sdk"></a>Ladění data z hello SDK
 
-**Jak můžete zjistit, co je to sada SDK?**
+**Jak můžete zjistit, jaké hello provádí SDK?**
 
-Chcete-li získat další informace o co se děje v rozhraní API, přidejte `<SDKLogger/>` do kořenového uzlu souboru ApplicationInsights.xml konfigurace.
+Přidat další informace o co se děje v hello rozhraní API, tooget `<SDKLogger/>` pod hello kořenového uzlu souboru ApplicationInsights.xml konfigurace hello.
 
-Můžete také určit, aby protokoly pro výstup do souboru:
+Můžete také určit, aby hello protokolovacího nástroje toooutput tooa souboru:
 
 ```XML
 
@@ -101,27 +101,27 @@ Můžete také určit, aby protokoly pro výstup do souboru:
     </SDKLogger>
 ```
 
-Soubory lze nalézt v `%temp%\javasdklogs` nebo `java.io.tmpdir` v případě Tomcat server.
+soubory Hello najdete v části `%temp%\javasdklogs` nebo `java.io.tmpdir` v případě Tomcat server.
 
 
-## <a name="the-azure-start-screen"></a>Na obrazovce Azure start
-**Dívám se na [portálu Azure](https://portal.azure.com). Mapy chci se dozvědět něco o mé aplikaci?**
+## <a name="hello-azure-start-screen"></a>Hello Azure úvodní obrazovce
+**Dívám se na [hello portál Azure](https://portal.azure.com). Hello mapy chci se dozvědět něco o mé aplikaci?**
 
-Ne, zobrazuje stav servery Azure po celém světě.
+Ne, zobrazuje stav hello servery Azure kolem hello, world.
 
-*Z Azure počáteční Tabule (domovskou obrazovku) jak lze najít data o mé aplikaci?*
+*Z hello Azure počáteční Tabule (domovskou obrazovku) jak lze najít data o mé aplikaci?*
 
-Za předpokladu, že jste [nastavit aplikaci pro službu Application Insights][java], klikněte na tlačítko Procházet, vyberte Application Insights a vyberte prostředek aplikace, který jste vytvořili pro vaši aplikaci. Chcete-li získat existuje rychlejší v budoucnosti budete moct připnout aplikaci Tabule start.
+Za předpokladu, že jste [nastavit aplikaci pro službu Application Insights][java], klikněte na tlačítko Procházet, vyberte Application Insights a vyberte prostředek aplikace hello jste vytvořili pro vaši aplikaci. tooget existuje rychlejší v budoucnosti budete moct připnout Tabule start toohello vaší aplikace.
 
 ## <a name="intranet-servers"></a>Intranetové servery
 **Můžete sledovat server v mém intranetu?**
 
-Ano, pokud že váš server mohla odesílat telemetrii do portálu služby Application Insights prostřednictvím veřejného Internetu. 
+Ano, pokud váš server může odesílat telemetrii toohello Application Insights portál prostřednictvím hello veřejného Internetu. 
 
-V bráně firewall můžete chtít otevřít porty TCP 80 a 443 pro odchozí přenosy na adresu dc.services.visualstudio.com a f5.services.visualstudio.com.
+V bráně firewall můžete mít tooopen porty TCP 80 a 443 pro odchozí provoz toodc.services.visualstudio.com a f5.services.visualstudio.com.
 
 ## <a name="data-retention"></a>Uchovávání dat
-**Jak dlouho se data uchovávají v portálu? Je bezpečné?**
+**Jak dlouho se data uchovávají portálu hello? Je bezpečné?**
 
 V tématu [uchovávání dat a ochrana osobních údajů][data].
 
@@ -131,7 +131,7 @@ V tématu [uchovávání dat a ochrana osobních údajů][data].
 * [Monitorování dostupnosti webových stránek][availability]
 * [Sledování využití webové stránky][usage]
 * [Sledování využití a diagnostikovat problémy ve svých aplikacích zařízení][platforms]
-* [Zápis kódu pro sledování využití vaší aplikace][track]
+* [Zápis kódu tootrack využití vaší aplikace][track]
 * [Zaznamenat diagnostických protokolů][javalogs]
 
 ## <a name="get-help"></a>Podpora

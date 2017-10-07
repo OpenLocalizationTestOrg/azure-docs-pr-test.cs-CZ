@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Bus funkce triggerů a vazeb | Microsoft Docs"
-description: "Pochopit, jak používat Azure Service Bus triggerů a vazeb v Azure Functions."
+title: "aaaAzure funkce služby Service Bus triggerů a vazeb | Microsoft Docs"
+description: Pochopit, jak se aktivuje toouse Azure Service Bus a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: b3ee306cd37ebf88dc9369ccc2dc6c670557fd5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dff9e89bd3840b8c11f91cae41e13502afc7aa60
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Service Bus funkce vazby
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje postup konfigurace a práce s vazeb Azure Service Bus v Azure Functions. 
+Tento článek vysvětluje, jak tooconfigure a práce s vazeb Azure Service Bus v Azure Functions. 
 
 Azure Functions podporuje aktivaci a výstupní vazby pro fronty sběrnice a témata.
 
@@ -34,18 +34,18 @@ Azure Functions podporuje aktivaci a výstupní vazby pro fronty sběrnice a té
 <a name="trigger"></a>
 
 ## <a name="service-bus-trigger"></a>Aktivace služby Service Bus
-Použijte aktivační událost Service Bus reagovat na zprávy z fronty sběrnice nebo téma. 
+Použijte hello Service Bus aktivační událost toorespond toomessages z fronty sběrnice nebo téma. 
 
-Následující objekty JSON v jsou definovány aktivační události pro frontu a téma sběrnice `bindings` pole function.json:
+Hello Service Bus frontu a téma aktivační události jsou definovány hello následující objekty JSON v hello `bindings` pole function.json:
 
 * *fronty* aktivační události:
 
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -56,48 +56,48 @@ Následující objekty JSON v jsou definovány aktivační události pro frontu 
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
     ```
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* Pro `connection`, [vytvoření nastavení aplikace v aplikaci funkce](functions-how-to-use-azure-function-app-settings.md) obsahující připojovací řetězec k oboru názvů Service Bus, pak zadejte název nastavení aplikace v `connection` vlastnost aktivační událost. Získat připojovací řetězec pomocí následujících kroků, zobrazuje se v [získat přihlašovací údaje správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Připojovací řetězec musí být v případě oboru názvů Service Bus, bez omezení konkrétní fronty nebo téma.
-  Pokud necháte `connection` prázdná, aktivační událost se předpokládá, že je zadán připojovací řetězec sběrnice výchozí v aplikaci nastavení s názvem `AzureWebJobsServiceBus`.
-* Pro `accessRights`, dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá **spravovat** nastavit oprávnění, `accessRights` k `listen`. Funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují, jinak hodnota spravovat práva.
+* Pro `connection`, [vytvoření nastavení aplikace v aplikaci funkce](functions-how-to-use-azure-function-app-settings.md) obsahující hello připojovací řetězec tooyour oboru názvů Service Bus, potom zadejte název nastavení aplikace hello hello do hello `connection` vlastnost aktivační událost. Získat hello připojovací řetězec pomocí následujících kroků hello zobrazuje se v [získání přihlašovacích údajů pro správu hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  Hello připojovací řetězec musí být pro obor názvů, mimo jiné tooa konkrétní fronty nebo téma sběrnice.
+  Pokud necháte `connection` prázdná, aktivační události hello předpokládá, že připojovací řetězec sběrnice výchozí je zadán v aplikaci nastavení s názvem `AzureWebJobsServiceBus`.
+* Pro `accessRights`, dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota Hello je `manage`, což znamená, že hello `connection` má hello **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá hello **spravovat** nastavit oprávnění, `accessRights` příliš`listen`. Funkce hello runtime může selhat snažíme toodo činnosti, které vyžadují, jinak hodnota spravovat práva.
 
 ## <a name="trigger-behavior"></a>Aktivační událost chování
-* **Dělení na vlákna jedním** – ve výchozím nastavení funkce procesy runtime více zpráv současně. Přímé modulu runtime zpracovat jenom jeden fronta nebo téma zprávy najednou, nastavte `serviceBus.maxConcurrentCalls` 1 v *host.json*. 
+* **Dělení na vlákna jedním** – ve výchozím nastavení hello funkce runtime procesy více zpráv současně. nastavit toodirect hello runtime tooprocess pouze do jedné fronta nebo téma zprávy najednou, `serviceBus.maxConcurrentCalls` too1 v *host.json*. 
   Informace o *host.json*, najdete v části [struktura složek](functions-reference.md#folder-structure) a [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 * **Zpracování škodlivých zpráv** -Service Bus nepodporuje svůj vlastní zpracování poškozených zpráv, které nelze řídí nebo nakonfigurované v Azure Functions konfigurace nebo kódu. 
-* **Chování PeekLock** – modul runtime Functions přijme nějakou zprávu v [ `PeekLock` režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) a volání `Complete` na zprávu, pokud funkci skončí úspěšně, nebo volání `Abandon` Pokud funkce se nezdaří. 
-  Pokud je funkce spuštěná déle, než `PeekLock` automaticky obnovují vždy vypršel časový limit, zámek.
+* **Chování PeekLock** -hello Functions runtime přijme nějakou zprávu v [ `PeekLock` režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) a volání `Complete` na uvítací zprávu, pokud funkce hello skončí úspěšně, nebo volání `Abandon` Pokud hello funkce se nezdaří. 
+  Pokud poběží déle než hello hello funkce `PeekLock` automaticky obnovují vždy vypršel časový limit, hello zámku.
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Aktivační události využití
-V této části se dozvíte, jak používat vaše aktivační události služby Service Bus ve vašem kódu funkce. 
+Tato část uvádí, jak toouse Service Bus spustit ve vašem kódu funkce. 
 
-V jazyce C# a F # lze deserializovat zpráva aktivační události služby Service Bus ke kterékoli z následujících typů vstupu:
+V C# a F # může být uvítací zprávu aktivační události služby Service Bus deserializovat tooany hello následující vstupní typy:
 
 * `string`-užitečné pro řetězec zprávy
 * `byte[]`-vhodné pro binární data
 * Všechny [objekt](https://msdn.microsoft.com/library/system.object.aspx) – vhodné pro data serializací JSON.
-  Pokud je deklarovat vlastní typ vstupu, například `CustomType`, Azure Functions se pokusí rekonstruovat JSON data do zadaného typu.
-* `BrokeredMessage`-vám deserializovat zprávu s [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metoda.
+  Pokud je deklarovat vlastní typ vstupu, například `CustomType`, Azure Functions pokusí toodeserialize hello JSON data do zadaného typu.
+* `BrokeredMessage`-poskytuje můžete hello deserializovat zprávu s hello [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metoda.
 
-V Node.js aktivační událost zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
+V Node.js uvítací zprávu aktivační události služby Service Bus je předán do funkce hello jako řetězec nebo objekt JSON.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Ukázka aktivační události
-Předpokládejme, že máte následující function.json:
+Předpokládejme, že máte následující function.json hello:
 
 ```json
 {
@@ -114,7 +114,7 @@ Předpokládejme, že máte následující function.json:
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který zpracuje zprávu fronty Service Bus.
+V tématu vzorku hello konkrétní jazyk, který zpracuje zprávu fronty Service Bus.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -154,16 +154,16 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>Service Bus výstup vazby
-Výstup frontu a téma sběrnice pro funkci použití následujících objektů JSON `bindings` pole function.json:
+Hello výstup frontu a téma sběrnice pro funkci použít následující objekty JSON v hello hello `bindings` pole function.json:
 
 * *fronty* výstup:
 
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -173,41 +173,41 @@ Výstup frontu a téma sběrnice pro funkci použití následujících objektů 
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
     ```
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* Pro `connection`, [vytvoření nastavení aplikace v aplikaci funkce](functions-how-to-use-azure-function-app-settings.md) obsahující připojovací řetězec k oboru názvů Service Bus, pak zadejte název nastavení aplikace v `connection` vlastnost Výstupní vazba. Získat připojovací řetězec pomocí následujících kroků, zobrazuje se v [získat přihlašovací údaje správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Připojovací řetězec musí být v případě oboru názvů Service Bus, bez omezení konkrétní fronty nebo téma.
-  Pokud necháte `connection` prázdná, vazba výstup předpokládá, že připojovací řetězec sběrnice výchozí je zadán v aplikaci nastavení s názvem `AzureWebJobsServiceBus`.
-* Pro `accessRights`, dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá **spravovat** nastavit oprávnění, `accessRights` k `listen`. Funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují, jinak hodnota spravovat práva.
+* Pro `connection`, [vytvoření nastavení aplikace v aplikaci funkce](functions-how-to-use-azure-function-app-settings.md) obsahující hello připojovací řetězec tooyour oboru názvů Service Bus, potom zadejte název nastavení aplikace hello hello do hello `connection` vlastnost ve výstupu vazba. Získat hello připojovací řetězec pomocí následujících kroků hello zobrazuje se v [získání přihlašovacích údajů pro správu hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  Hello připojovací řetězec musí být pro obor názvů, mimo jiné tooa konkrétní fronty nebo téma sběrnice.
+  Pokud necháte `connection` prázdná, hello výstup vazby předpokládá, že připojovací řetězec sběrnice výchozí je zadán v aplikaci nastavení s názvem `AzureWebJobsServiceBus`.
+* Pro `accessRights`, dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota Hello je `manage`, což znamená, že hello `connection` má hello **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá hello **spravovat** nastavit oprávnění, `accessRights` příliš`listen`. Funkce hello runtime může selhat snažíme toodo činnosti, které vyžadují, jinak hodnota spravovat práva.
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Využití výstupní
-V jazyce C# a F # můžete Azure Functions vytvořit zprávu fronty Service Bus z libovolného z následujících typů:
+V jazyce C# a F # můžete Azure Functions vytvořit zprávu fronty Service Bus z jakéhokoli z hello následující typy:
 
 * Všechny [objekt](https://msdn.microsoft.com/library/system.object.aspx) -definici parametru vypadá jako `out T paramName` (C#).
-  Funkce deserializuje objekt do formátu JSON zprávy. Pokud jsou výstupní hodnotu null při ukončení funkce, funkce vytvoří zprávu s objektem hodnotu null.
-* `string`-Vypadá parametr definice `out string paraName` (C#). Pokud je hodnota parametru jinou hodnotu než null při ukončení funkce, funkce vytvoří zprávu.
-* `byte[]`-Vypadá parametr definice `out byte[] paraName` (C#). Pokud je hodnota parametru jinou hodnotu než null při ukončení funkce, funkce vytvoří zprávu.
-* `BrokeredMessage`Definici parametru vypadá jako `out BrokeredMessage paraName` (C#). Pokud je hodnota parametru jinou hodnotu než null při ukončení funkce, funkce vytvoří zprávu.
+  Funkce deserializuje hello objekt do formátu JSON zprávy. Pokud je hodnota výstup hello při ukončení hello funkce null, funkce vytvoří zprávu hello objekt s hodnotou null.
+* `string`-Vypadá parametr definice `out string paraName` (C#). Pokud hodnota parametru hello jinou hodnotu než null při ukončení hello funkce, funkce vytvoří zprávu.
+* `byte[]`-Vypadá parametr definice `out byte[] paraName` (C#). Pokud hodnota parametru hello jinou hodnotu než null při ukončení hello funkce, funkce vytvoří zprávu.
+* `BrokeredMessage`Definici parametru vypadá jako `out BrokeredMessage paraName` (C#). Pokud hodnota parametru hello jinou hodnotu než null při ukončení hello funkce, funkce vytvoří zprávu.
 
-Pro vytvoření více zpráv ve funkci jazyka C#, můžete použít `ICollector<T>` nebo `IAsyncCollector<T>`. Zprávu se vytvoří při volání `Add` metoda.
+Pro vytvoření více zpráv ve funkci jazyka C#, můžete použít `ICollector<T>` nebo `IAsyncCollector<T>`. Zprávu se vytvoří při volání hello `Add` metoda.
 
-V Node.js, můžete přiřadit řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) na `context.binding.<paramName>`.
+V Node.js, můžete přiřadit řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) příliš`context.binding.<paramName>`.
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ukázkový výstup
-Předpokládejme, že máte následující function.json, která definuje výstupní fronty Service Bus:
+Předpokládejme, že máte následující function.json, která definuje výstupní fronty Service Bus hello:
 
 ```json
 {
@@ -231,7 +231,7 @@ Předpokládejme, že máte následující function.json, která definuje výstu
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který odešle zprávu do fronty service bus.
+V tématu vzorku hello konkrétní jazyk, který odešle frontu sběrnice zpráv toohello.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -250,7 +250,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 }
 ```
 
-Nebo, chcete-li vytvořit více zpráv:
+Nebo toocreate více zpráv:
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
@@ -286,7 +286,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Nebo, chcete-li vytvořit více zpráv:
+Nebo toocreate více zpráv:
 
 ```javascript
 module.exports = function (context, myTimer) {

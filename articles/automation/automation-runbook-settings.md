@@ -1,6 +1,6 @@
 ---
-title: "Nastavení sady Runbook | Microsoft Docs"
-description: "Popisuje konfiguraci nastavení pro sady runbook v Azure Automation a jak ji pomocí portálu pro správu Azure a prostředí Windows PowerShell změnit."
+title: "nastavení aaaRunbook | Microsoft Docs"
+description: "Popisuje hello nastavení konfigurace pro sady runbook ve službě Azure Automation a jak toochange je pomocí obou hello portálu pro správu Azure a prostředí Windows PowerShell."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f0ef09c148355a351464424c22c33df9300f0dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="runbook-settings"></a>Nastavení runbooku
-Každá sada runbook ve službě Azure Automation má několik nastavení, která pomáhají identifikovat a změnit její chování při protokolování. Každá z těchto nastavení je popsána níže následují procedury na tom, jak je upravit.
+Každá sada runbook ve službě Azure Automation má několik nastavení, které jej pomáhají identifikovat toobe a toochange její chování při protokolování. Každá z těchto nastavení je popsána níže následují procedury na postupy toomodify je.
 
 ## <a name="settings"></a>Nastavení
 ### <a name="name-and-description"></a>Název a popis
-Název sady runbook nelze změnit po jeho vytvoření. Popis je volitelný a může mít až 512 znaků.
+Hello název sady runbook nelze změnit po jeho vytvoření. Hello popis je volitelný a může být až too512 znaků.
 
 ### <a name="tags"></a>Značky
-Značky umožňují přiřadit různá slova a slovní spojení, která pomáhají sadu runbook identifikovat. Například když odešlete sady runbook [Galerie prostředí PowerShell](https://www.powershellgallery.com/), zadejte konkrétní značky k identifikaci kategorie, které sada runbook by měl být uvedený v. Můžete určit více značek pro sadu runbook oddělte je čárkami.
+Značky povolit, že jste tooassign různá slova a frází toohelp sadu runbook identifikovat. Například při odeslání runbook toohello [Galerie prostředí PowerShell](https://www.powershellgallery.com/), můžete zadat konkrétní značky tooidentify kategorie, které hello runbook by měl být uvedený v. Můžete určit více značek pro sadu runbook oddělte je čárkami.
 
 ### <a name="logging"></a>Protokolování
-Ve výchozím nastavení nejsou podrobné a průběh záznamy zapisují do historie úlohy. Můžete změnit nastavení pro konkrétní runbook tyto záznamy protokolu. Další informace o tyto záznamy, najdete v části [výstup a zprávy Runbooku](automation-runbook-output-and-messages.md).
+Ve výchozím nastavení nezapisují podrobné a průběh záznamy historie toojob. Můžete změnit hello nastavení pro konkrétní runbook toolog tyto záznamy. Další informace o tyto záznamy, najdete v části [výstup a zprávy Runbooku](automation-runbook-output-and-messages.md).
 
 ## <a name="changing-runbook-settings"></a>Změna nastavení sady runbook
 
-### <a name="changing-runbook-settings-with-the-azure-portal"></a>Změna nastavení sady runbook pomocí portálu Azure
-Můžete změnit nastavení sady runbook na portálu Azure z **nastavení** okno pro sadu runbook.
+### <a name="changing-runbook-settings-with-hello-azure-portal"></a>Změna nastavení sady runbook pomocí portálu Azure hello
+Můžete změnit nastavení sady runbook v portálu Azure hello hello **nastavení** okno hello sady runbook.
 
-1. Na portálu Azure vyberte **automatizace** a pak klikněte na název účtu automation.
-2. Vyberte **Runbooky** kartě.
-3. Klikněte na název sady runbook a přejdete do okna nastavení pro sadu runbook. Odsud můžete zadat nebo změnit značky, popis sady runbook, nakonfigurovat nastavení trasování a protokolování a přístup k nástrojů podpory, které pomáhají při řešení problémů.     
+1. V hello portálu Azure, vyberte **automatizace** a pak klikněte hello název účtu automation.
+2. Vyberte hello **Runbooky** kartě.
+3. Klikněte na název hello sady runbook a jste okno nastavení směrovanou toohello hello sady runbook. Odsud můžete zadat nebo změnit značky, hello popis sady runbook, konfigurovat protokolování a nastavení pro trasování a přístup k toohelp Podpora nástrojů pro řešení problémů.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Změna nastavení sady runbook pomocí prostředí Windows PowerShell
-Můžete použít [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) rutiny změnit nastavení pro sady runbook. Pokud chcete zadat více značek, můžete buď zadat pole nebo jeden řetězec s čárkami hodnoty na parametr značky. Můžete získat aktuální značky s [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+Můžete použít hello [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) rutiny toochange hello nastavení sady runbook. Pokud chcete toospecify více značek, můžete buď zadat pole nebo jeden řetězec s parametrem značky toohello hodnoty oddělené čárkami. Můžete získat aktuální značky hello s hello [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
 
-Následující vzorové příkazy ukazují, jak nastavit vlastnosti pro sady runbook. Tato ukázka přidá tři značky pro existující značky a určuje, zda mají být protokolovány podrobných záznamů.
+Hello následující vzorové příkazy ukazují, jak tooset hello vlastností pro sadu runbook. Tato ukázka přidá tři značky toohello existující značky a určuje, zda mají být protokolovány podrobných záznamů.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -56,6 +56,6 @@ Následující vzorové příkazy ukazují, jak nastavit vlastnosti pro sady run
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o vytvoření a ze sady runbook načíst výstupní a chybové zprávy naleznete v tématu [výstup a zprávy Runbooku](automation-runbook-output-and-messages.md) 
-* Abyste pochopili, jak přidat sadu runbook, která již byla vyvinuta komunity nebo jiný zdroj, nebo vytvořte vlastní sady runbook viz [vytvoření nebo import Runbooku](automation-creating-importing-runbook.md) 
+* jak zjistit, toocreate a načtení výstupní a chybové zprávy ze sady runbook, toolearn [výstup a zprávy Runbooku](automation-runbook-output-and-messages.md) 
+* jak zjistit, tooadd sady runbook, která již vyvinula hello komunity nebo jiné zdroje nebo toocreate vlastní runbook toounderstand [vytvoření nebo import Runbooku](automation-creating-importing-runbook.md) 
 

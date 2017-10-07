@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Adobe Creative cloudu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Adobe Creative cloudu."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Adobe Creative cloudu."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,137 +13,137 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 3d13608612c77236346b0e98551d7fc427d602e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e66255e9785465974a23cd3ef79c24e28c0250f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Azure Active Directory integrace s Adobe Creative cloudu
 
-V tomto kurzu zjistěte, jak integrovat Adobe Creative cloudu s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Adobe Creative cloudu s Azure Active Directory (Azure AD).
 
-Integrace Adobe Creative cloudu s Azure AD poskytuje následující výhody:
+Integrace Adobe Creative cloudu s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup do cloudu tvůrčí Adobe
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Adobe Creative cloudu (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooAdobe tvůrčí cloudu
+- Vaši uživatelé tooautomatically get přihlášeného tooAdobe tvůrčí cloudu (jednotné přihlášení) můžete povolit pomocí jejich účtů Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Adobe Creative cloudu, potřebujete následující položky:
+tooconfigure integrace Azure AD s Adobe Creative cloudu, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Tvůrčí cloudu Adobe jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Adobe Creative cloudu z Galerie
+1. Přidání Adobe Creative cloudu z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Přidání Adobe Creative cloudu z Galerie
-Při konfiguraci Integrace Adobe Creative cloudu do služby Azure AD, potřebujete přidat Adobe Creative cloudu z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-adobe-creative-cloud-from-hello-gallery"></a>Přidání Adobe Creative cloudu z Galerie hello
+tooconfigure hello Integrace Adobe Creative cloudu do Azure AD, je nutné tooadd Adobe Creative cloudu hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Adobe Creative cloudu z galerie, postupujte takto:**
+**tooadd Adobe Creative cloudu z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Adobe Creative cloudu**.
+4. Hello vyhledávacího pole zadejte **Adobe Creative cloudu**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_000.png)
 
-5. Na panelu výsledků vyberte **Adobe Creative cloudu**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **Adobe Creative cloudu**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_0001.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Adobe Creative cloudu podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v cloudu tvůrčí Adobe je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v cloudu tvůrčí Adobe musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v cloudu tvůrčí Adobe je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v cloudu tvůrčí Adobe musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Adobe Creative cloudu.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Adobe Creative cloudu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Adobe Creative cloudu, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s Adobe Creative cloudu, je třeba toocomplete hello stavební bloky následující:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele Adobe Creative cloudu](#creating-an-adobe-creative-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon Adobe Creative cloudu, který je propojený s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření testovacího uživatele Adobe Creative cloudu](#creating-an-adobe-creative-cloud-test-user)**  -toohave protějšek Britta Simon Adobe Creative cloudu, který je jí reprezentace toohello propojené služby Azure AD.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci Adobe Creative cloudu.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci Adobe Creative cloudu.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Adobe Creative cloudu, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Adobe Creative cloudu, proveďte následující kroky hello:**
 
-1. Na portálu Azure Management portal na **Adobe Creative cloudu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V hello Azure Management portal na hello **Adobe Creative cloudu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
+2. Na hello **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** jednotného přihlašování k tooenable.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_01.png)
 
-3. Na **Adobe Creative cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na hello **Adobe Creative cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete aplikace hello tooconfigure hello **IDP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu jako:`https://www.okta.com/saml2/service-provider/<token>`
+    a. V hello **identifikátor** textovému poli, hodnota typu hello jako:`https://www.okta.com/saml2/service-provider/<token>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
     > [!NOTE] 
-    > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečným identifikátorem a adresa URL odpovědi. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Pokud potřebujete vytvořit uživatele s ručně, budete muset kontaktujte tým podpory Adobe Creative cloudu.
+    > Upozorňujeme, že tyto nejsou hello skutečné hodnoty. Máte tooupdate tyto hodnoty pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Zde, doporučujeme vám toouse hello jedinečnou hodnotu řetězce v hello identifikátor. Pokud potřebujete toocreate uživatelé ručně, je nutné tým podpory Adobe Creative cloudu toocontact hello.
 
-4. Na **Adobe Creative cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Na hello **Adobe Creative cloudové domény a adresy URL** část, proveďte následující kroky, pokud chcete aplikace hello tooconfigure hello **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_url2.png)
 
-    a. Klikněte na **zobrazit upřesňující nastavení adresy URL** možnost
+    a. Klikněte na hello **zobrazit upřesňující nastavení adresy URL** možnost
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu jako:`https://adobe.com`
+    b. V hello **přihlašovací adresa URL** textovému poli, hodnota typu hello jako:`https://adobe.com`
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+5. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_05.png) 
 
-6. Na **Adobe Creative konfigurace cloudu** klikněte na tlačítko **konfigurace cloudu tvůrčí Adobe** otevřete **konfigurovat přihlášení** okno. Zkopírujte **SAML Entity Id** a **adresa URL služby Jednotné přihlašování SAML** z Stručná referenční příručka oddílu.
+6. Na hello **Adobe Creative konfigurace cloudu** klikněte na tlačítko **konfigurace cloudu tvůrčí Adobe** tooopen **konfigurovat přihlášení** okno. Zkopírujte hello **SAML Entity Id** a **adresa URL služby Jednotné přihlašování SAML** z Stručná referenční příručka oddílu.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_06.png) 
 
-7. V okně prohlížeče jiný web přihlášení jako správce klienta Adobe Creative cloudu.
+7. V okně prohlížeče jiný web, klienta Adobe Creative cloudových tooyour přihlášení jako správce.
 
-8.  Přejděte na **Identity** na levém navigačním podokně a klikněte na doménu. Potom proveďte následující kroky na **jeden znak na konfigurace požadované** části.
+8.  Přejděte příliš**Identity** hello levém navigačním podokně a klikněte na doménu. Potom proveďte následující kroky hello **jeden znak na konfigurace požadované** části.
 
     ![Nastavení](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_001.png "nastavení")
 
-9. Klikněte na tlačítko **Procházet** na kterou odešlete certifikát stažený z Azure AD **IDP certifikát**.
+9. Klikněte na tlačítko **Procházet** tooupload hello stáhnout certifikát z Azure AD příliš**IDP certifikát**.
 
-10. V **IDP vystavitele** textovému poli, vložte hodnotu **SAML Entity Id** který jste zkopírovali ze **konfigurovat přihlášení** části na portálu Azure.
+10. V hello **IDP vystavitele** textovému poli, vložte hodnotu hello z **SAML Entity Id** který jste zkopírovali ze **konfigurovat přihlášení** části na portálu Azure.
 
-11. V **IDP přihlašovací adresa URL** textovému poli, vložte hodnotu **adresa URL služby Jednotné přihlašování SAML** který jste zkopírovali ze **konfigurovat přihlášení** části na portálu Azure.
+11. V hello **IDP přihlašovací adresa URL** textovému poli, vložte hodnotu hello z **adresa URL služby Jednotné přihlašování SAML** který jste zkopírovali ze **konfigurovat přihlášení** části na portálu Azure.
 
 12. Vyberte **HTTP - přesměrování** jako **IDP vazby**.
 
@@ -151,55 +151,55 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
  
 14. Klikněte na tlačítko **Uložit** tlačítko.
 
-15. Řídicí panel bude nyní k dispozici soubor XML **"Stáhnout Metadata"** souboru. Obsahuje EntityDescriptor adresy URL a adresy URL AssertionConsumerService na Adobe. Otevřete soubor a nakonfigurujete je v aplikaci Azure AD.
+15. řídicí panel Hello teď nabídne hello XML **"Stáhnout Metadata"** souboru. Obsahuje EntityDescriptor adresy URL a adresy URL AssertionConsumerService na Adobe. Otevřete soubor hello a nakonfigurujte je hello aplikaci Azure AD.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_002.png)
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. Použijte hodnotu EntityDescriptor Adobe zadaný pro **identifikátor** na **nakonfigurovat nastavení aplikace** dialogové okno.
+    a. Použití hello EntityDescriptor hodnota Adobe zadaný pro **identifikátor** na hello **nakonfigurovat nastavení aplikace** dialogové okno.
 
-    b. Použijte hodnotu AssertionConsumerService Adobe zadaný pro **adresa URL odpovědi** na **nakonfigurovat nastavení aplikace** dialogové okno.
+    b. Použití hello AssertionConsumerService hodnota Adobe zadaný pro **adresa URL odpovědi** na hello **nakonfigurovat nastavení aplikace** dialogové okno.
  
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+2. Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="creating-an-adobe-creative-cloud-test-user"></a>Vytváření testovacího uživatele Adobe Creative cloudu
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do cloudu tvůrčí Adobe, musí být zřízená do Adobe Creative cloudu.  
-V případě Adobe Creative cloudu zřizování je ruční úloha.
+V pořadí tooenable Azure AD Uživatelé toolog do Adobe Creative cloudu musí být zřízená do Adobe Creative cloudu.  
+V případě hello Adobe Creative cloudu zřizování je ruční úloha.
 
-**Ke zřízení uživatelských účtů, proveďte následující kroky:**
+**tooprovision uživatelské účty, provádět hello následující kroky:**
 
-1. Přihlaste se na váš web společnosti Adobe Creative Cloud jako správce.
+1. Přihlaste se tooyour Adobe Creative cloudu na webu společnosti jako správce.
 
 2. Klikněte na tlačítko **osoby**.
 
@@ -209,34 +209,34 @@ V případě Adobe Creative cloudu zřizování je ruční úloha.
 
     ![Uživatele pozvat](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_002.png "pozvat uživatele")
 
-4. Na **pozvat osoby** dialogové okno proveďte následující kroky:
+4. Na hello **pozvat osoby** dialogové okno proveďte hello následující kroky:
 
     ![Pozvěte lidi, kteří](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_003.png "pozvat uživatele")
 
-    a. V **e-mailu** textovému poli, zadejte e-mailovou adresu účtu Britta Simon.
+    a. V hello **e-mailu** textovému poli, typ hello e-mailovou adresu účtu Britta Simon.
     
     b. Klikněte na tlačítko **pozvat**.
 
     > [!NOTE]
-    > Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní.
+    > Držitel účtu Azure Active Directory Hello bude dostávat e-mailu a postupujte podle tooconfirm odkaz svého účtu před stane aktivní.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup do cloudu tvůrčí Adobe Azure jednotné přihlašování.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte svůj přístup tooAdobe tvůrčí cloudu.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon Adobe Creative cloudu, proveďte následující kroky:**
+**tooassign tooAdobe Britta Simon tvůrčí cloudu, proveďte následující kroky hello:**
 
-1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Adobe Creative cloudu**.
+2. V seznamu aplikace hello vyberte **Adobe Creative cloudu**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_50.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -244,7 +244,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup d
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -252,14 +252,14 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup d
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici Adobe Creative cloudu na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Adobe Creative cloudu.
+Když kliknete na dlaždici Adobe Creative cloudu hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Adobe Creative cloudových aplikací.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

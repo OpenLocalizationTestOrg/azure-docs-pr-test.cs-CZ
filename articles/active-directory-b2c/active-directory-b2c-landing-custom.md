@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28a39f282488b81fc9e2ab7841b5f2cb4cd58715
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: Registrace a přihlašování uživatelů aplikace s využitím vlastních zásad
-Vlastní zásady jsou konfigurační soubory, které určují chování tenanta služby Azure AD B2C. Vývojář identit je může plně upravit a přizpůsobit je pro skoro neomezené množství úloh.
+Vlastní zásady jsou konfigurační soubory, které definují chování hello klienta služby Azure AD B2C. Může se jednat o plně upravit toocomplete vývojáře identity near neomezený počet úloh.
 
-## <a name="how-to-articles"></a>Články s návody
-Další informace o použití konkrétních funkcí Azure Active Directory B2C:
+## <a name="how-tooarticles"></a>Jak tooarticles
+Zjistěte, jak konkrétních funkcí Azure Active Directory B2C toouse:
 
 * [Začínáme](active-directory-b2c-overview-custom.md)
 * Konfigurovat zprostředkovatelů OIDC, jako je [Azure AD](active-directory-b2c-setup-aad-custom.md).
@@ -39,7 +39,7 @@ Další informace o použití konkrétních funkcí Azure Active Directory B2C:
 * Řešení potíží [shromažďováním protokolů pomocí Application Insights](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="whats-new"></a>Co je nového
-Pravidelně kontrolujte tuto stránku, abyste se dovědět o budoucích změnách Azure Active Directory B2C. O všech aktualizacích budeme také tweetovat na @AzureAD.
+Pravidelně kontrolujte často toolearn o budoucí změny toohello Azure Active Directory B2C. O všech aktualizacích budeme také tweetovat na @AzureAD.
 
 
 

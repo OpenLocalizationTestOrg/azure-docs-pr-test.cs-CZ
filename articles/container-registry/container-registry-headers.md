@@ -1,6 +1,6 @@
 ---
-title: "Kontejner Azure registru úložiště | Microsoft Docs"
-description: "Jak používat Azure registru kontejner úložiště pro imagí Dockeru"
+title: "aaaAzure kontejneru registru úložiště | Microsoft Docs"
+description: "Jak toouse registru Azure kontejner úložiště pro Docker bitové kopie"
 services: container-registry
 documentationcenter: 
 author: cristy
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: cristyg
-ms.openlocfilehash: dd4feff057269ed7106990bb63eed7fcffa2dbec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 06172a63465838a78a607f268da116d8158789ee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Kontejner Azure registru úložiště
 
-Azure registrech kontejneru jsou kompatibilní s velkého množství služeb a orchestrators. Aby bylo snazší sledují zdroj služeb a agentů, ze kterých se používá ACR, jsme spustili pomocí pole hlavičky Docker v souboru Docker.config.
+Azure registrech kontejneru jsou kompatibilní s velkého množství služeb a orchestrators. toomake je snazší tootrack hello zdroj služeb a agentů, ze kterých se používá ACR, jsme spustili pomocí pole hlavičky hello Docker v souboru Docker.config hello.
 
 
 
-## <a name="viewing-repositories-in-the-portal"></a>Zobrazení úložiště na portálu
+## <a name="viewing-repositories-in-hello-portal"></a>Zobrazení úložiště v hello portálu
 
-Hlavičky ACR použijte formát:
+Hello ACR záhlaví podle hello formátu:
 ```
 X-Meta-Source-Client: <cloud>/<service>/<optionalservicename>
 ```
 
 * Cloudu: Azure, Azure zásobník, nebo jiných vládních nebo Azure cloudy jednotlivé země. I když Azure zásobníku a government cloudy nejsou aktuálně podporovány, tento parametr umožňuje podpory v budoucnu.
-* Služba: název služby.
-* Optionalservicename: volitelný parametr pro služby s subservices nebo k zadání SKU (např: odpovídají webové aplikace s Azure nebo-aplikace služby App service/web).
+* Služby: název služby hello.
+* Optionalservicename: volitelný parametr pro služby s subservices nebo toospecify SKU (např: odpovídají webové aplikace s Azure nebo-aplikace služby App service/web).
 
-Služby partnera a orchestrators doporučujeme použít hodnoty konkrétní hlavičky usnadní naše telemetrie. Uživatele můžete také upravit hodnota předaná hlavičku svého rozhodnutí.
+Služby partnera a orchestrators jsou podporovali toouse konkrétní hlavičky hodnoty toohelp s naše telemetrií. Uživatele můžete také upravit hello předaná hodnota hlavičky toohello svého rozhodnutí.
 
-Hodnoty chceme ACR partnery sloužící k vyplnění pole "X-Meta-zdroje-Client" jsou následující:
+Hello hodnoty chceme ACR partnery toouse toopopulate hello "X-Meta-zdroje-Client" pole jsou níže:
 
 | Název služby              | Záhlaví                                |
 | ------------------------- | ------------------------------------- |
@@ -57,4 +57,4 @@ Hodnoty chceme ACR partnery sloužící k vyplnění pole "X-Meta-zdroje-Client"
 
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o registrech a podporované služby a orchestrators](container-registry-intro.md)
+[Další informace o registrech a hello podporované služby a orchestrators](container-registry-intro.md)

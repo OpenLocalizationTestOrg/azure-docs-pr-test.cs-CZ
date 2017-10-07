@@ -1,6 +1,6 @@
 ---
-title: "Správce tenanta zvýšení přístupu – Azure AD | Microsoft Docs"
-description: "Toto téma popisuje předdefinovaných do rolí pro řízení přístupu na základě role (RBAC)."
+title: "Správce aaaTenant zvýšení přístupu – Azure AD | Microsoft Docs"
+description: "Toto téma popisuje hello součástí role pro řízení přístupu na základě role (RBAC)."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.openlocfilehash: bf64a92b359a6f68d84fa5ee17eda64ed6371990
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7996f2af3277dc40e2a1766cc4a7862a2399cdef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Zvýšení přístupu jako správce klienta s řízením přístupu na základě rolí
 
-Řízení přístupu na základě rolí pomáhá správci klientů získat dočasný – zvýšení úrovní oprávnění přístupu tak, aby se můžete udělit oprávnění vyšší než normální. Správce klienta můžete zvýšit samu sebe roli správce přístupu uživatelů v případě potřeby. Tato role poskytuje klienta oprávnění správce k udělení samu sebe nebo ostatní role v oboru "/".
+Řízení přístupu na základě rolí pomáhá správci klientů získat dočasný – zvýšení úrovní oprávnění přístupu tak, aby se můžete udělit oprávnění vyšší než normální. Správce klienta může zvýšit nároky samu sebe toohello role správce přístupu uživatelů v případě potřeby. Tato role poskytuje hello klienta toogrant oprávnění správce samu sebe nebo ostatní role v hello "/" oboru.
 
-Tato funkce je důležitá, protože umožňuje Správce tenanta zobrazíte všechny odběry, které existují v organizaci. Také to umožňuje pro aplikace, automatizace (jako je fakturace a auditování) pro přístup k Všechna předplatná a poskytují přesné informace o stavu organizace pro správu fakturace nebo asset.  
+Tato funkce je důležitá, protože umožňuje hello klienta správce toosee všechny hello odběry, které existují v organizaci. Také umožňuje automatizace aplikace (jako je fakturace a auditování) tooaccess všechny odběry hello a poskytují přesné informace o stavu hello hello organizace pro správu fakturace nebo asset.  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>Jak používat elevateAccess přístup klienta
+## <a name="how-toouse-elevateaccess-toogive-tenant-access"></a>Jak toouse elevateAccess toogive klienta přístup
 
-Základní proces funguje pomocí následujících kroků:
+Základní proces Hello funguje s hello následující kroky:
 
-1. Pomocí REST, volání *elevateAccess*, která vám uděluje role správce přístupu uživatelů v "/" oboru.
+1. Pomocí REST, volání *elevateAccess*, která uděluje můžete hello role správce přístupu uživatelů v "/" oboru.
 
     ```
     POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
     ```
 
-2. Vytvoření [přiřazení role](/rest/api/authorization/roleassignments) přiřadit žádnou roli v jakémkoli oboru. Následující příklad ukazuje vlastnosti přiřazení role čtenáře v "/" oboru:
+2. Vytvoření [přiřazení role](/rest/api/authorization/roleassignments) tooassign všechny role v jakémkoli oboru. Hello následující příklad ukazuje hello vlastnosti pro přiřazení hello role čtenáře v "/" oboru:
 
     ```
     { "properties":{
@@ -55,17 +55,17 @@ Základní proces funguje pomocí následujících kroků:
 4. Vaše oprávnění správce přístupu uživatelů odvolat, dokud se znovu požadován.
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>Vrácení zpět elevateAccess akce
+## <a name="how-tooundo-hello-elevateaccess-action"></a>Jak tooundo hello elevateAccess akce
 
-Při volání *elevateAccess* vytvořit přiřazení role pro sebe, aby tato oprávnění odvolat, budete muset odstranit přiřazení.
+Při volání *elevateAccess* vytvořit přiřazení role pro sebe, tak toorevoke, ty vám oprávnění potřebovat toodelete hello přiřazení.
 
-1.  Volání [GET roleDefinitions](/rest/api/authorization/roledefinitions#RoleDefinitions_Get) kde roleName = správce přístupu uživatelů k určení názvu GUID role správce přístupu uživatelů. Odpověď by měla vypadat takto:
+1.  Volání [GET roleDefinitions](/rest/api/authorization/roledefinitions#RoleDefinitions_Get) kde roleName = název hello správce přístupu uživatelů toodetermine GUID role správce přístupu uživatelů hello. Hello odpověď by měla vypadat takto:
 
     ```
     {"value":[{"properties":{
     "roleName":"User Access Administrator",
     "type":"BuiltInRole",
-    "description":"Lets you manage user access to Azure resources.",
+    "description":"Lets you manage user access tooAzure resources.",
     "assignableScopes":["/"],
     "permissions":[{"actions":["*/read","Microsoft.Authorization/*","Microsoft.Support/*"],"notActions":[]}],
     "createdOn":"0001-01-01T08:00:00.0000000Z",
@@ -78,9 +78,9 @@ Při volání *elevateAccess* vytvořit přiřazení role pro sebe, aby tato opr
     "nextLink":null}
     ```
 
-    Uložte identifikátor GUID z *název* parametr v tomto případě **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
+    Uložit hello GUID z hello *název* parametr v tomto případě **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
 
-2. Volání [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get) kde principalId = vlastní ObjectId. Rutina Vypíše seznam všech přiřazení v klientovi. Vyhledejte ten, kde je oboru "/" a končí hodnoty vlastnosti RoleDefinitionId s názvem role GUID, které jste získali v kroku 1. Přiřazení role by měl vypadat takto:
+2. Volání [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get) kde principalId = vlastní ObjectId. Rutina Vypíše seznam všech přiřazení v klientovi hello. Vyhledejte hello jeden, kde je hello oboru "/" a končí hodnoty vlastnosti RoleDefinitionId hello s rolí hello název GUID, které jste získali v kroku 1. přiřazení role Hello by měl vypadat takto:
 
     ```
     {"value":[{"properties":{
@@ -97,12 +97,12 @@ Při volání *elevateAccess* vytvořit přiřazení role pro sebe, aby tato opr
     "nextLink":null}
     ```
 
-    Znovu, uložte identifikátor GUID z *název* parametr v tomto případě **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
+    Znovu uložit hello GUID z hello *název* parametr v tomto případě **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
 
-3. Nakonec volání [roleAssignments odstranění](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById) kde roleAssignmentId = název GUID, které jste získali v kroku 2.
+3. Nakonec volání [roleAssignments odstranění](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById) kde roleAssignmentId = název hello GUID, které jste získali v kroku 2.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Správa řízení přístupu na základě rolí pomocí REST](role-based-access-control-manage-access-rest.md)
 
-- [Spravovat přístup k přiřazení](role-based-access-control-manage-assignments.md) na portálu Azure
+- [Spravovat přístup k přiřazení](role-based-access-control-manage-assignments.md) v hello portálu Azure

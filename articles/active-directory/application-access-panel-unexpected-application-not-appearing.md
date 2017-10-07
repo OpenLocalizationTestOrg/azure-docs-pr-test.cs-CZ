@@ -1,6 +1,6 @@
 ---
-title: "Přiřazená aplikace se nezobrazují na přístupovém panelu | Microsoft Docs"
-description: "Poradce při potížích se aplikace nejsou zobrazeny na přístupovém panelu"
+title: "hello přístupového panelu se nezobrazují aaaAn přiřazené aplikace | Microsoft Docs"
+description: "Poradce při potížích se aplikace nejsou zobrazeny v hello přístupového panelu"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 9ea5744d77b90929598ea5feb80c7bbdff3772fc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 089883f406267df4552c7fc991883f335ad49fd5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Přiřazená aplikace se nezobrazují přístupového panelu
+# <a name="an-assigned-application-is-not-appearing-on-hello-access-panel"></a>Přiřazená aplikace se nezobrazují hello přístupového panelu
 
-Přístupový Panel je webový portál, který umožňuje uživatele, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) k zobrazení a spustit cloudové aplikace, aby správce Azure AD má je přístup povolen. Tyto aplikace jsou konfigurovány jménem uživatele na portálu Azure AD. Aplikace musí být správně nakonfigurovaná a přiřadit uživatele nebo skupiny, kterých je uživatel členem skupiny chcete vidět aplikaci na přístupovém panelu.
+Hello přístupový Panel je webový portál, který umožňuje uživatele, který má pracovní nebo školní účet v Azure Active Directory (Azure AD) tooview a spusťte cloudové aplikace této hello správce Azure AD udělil je přístup k. Tyto aplikace jsou konfigurovány jménem uživatele hello na portálu Azure AD hello. Hello aplikace musí být správně nakonfigurované a přiřazené toohello uživatele nebo skupiny hello uživatel je členem toosee hello aplikace hello přístupového panelu.
 
-Typ aplikace, které zobrazuje uživatel možná spadají do následujících kategorií:
+Typ Hello aplikací, které zobrazuje uživatel možná spadat hello následujících kategorií:
 
 -   Aplikace Office 365
 
@@ -34,639 +34,639 @@ Typ aplikace, které zobrazuje uživatel možná spadají do následujících ka
 
 -   Aplikace s stávajících řešení pro jednotné přihlašování
 
-## <a name="general-issues-to-check-first"></a>Běžné problémy a proveďte nejprve kontrolu
+## <a name="general-issues-toocheck-first"></a>Obecné problémy toocheck nejprve
 
--   Pokud aplikace byl právě přidali na uživatele, zkuste se přihlásit a odhlašování znovu do přístupového panelu uživatele po několika minutách ověřte, zda je aplikace přidána.
+-   Pokud aplikaci jste právě přidali tooa uživatele, opakujte toosign a odhlašování do přístupového panelu hello uživatele po několika minutách toosee Pokud aplikace hello je přidána.
 
--   Pokud licence byla právě odebrána ze uživatele nebo skupinu je uživatel že členem skupiny to může trvat dlouhou dobu, v závislosti na velikost a složitost skupiny změny má být provedeno. Povolit další dobu před přihlášení k přístupovému panelu.
+-   Pokud licence byla právě odebrána ze uživatele nebo skupiny hello uživatel je že členem skupiny to může trvat dlouhou dobu, v závislosti na hello velikost a složitost hello skupiny pro toobe změny provedené. Povolit další dobu před přihlášením hello přístupového panelu.
 
-## <a name="problems-related-to-application-configuration"></a>Problémy související s konfigurace aplikace
+## <a name="problems-related-tooapplication-configuration"></a>Problémy související tooapplication konfigurace
 
-Aplikace nemusí zobrazovaných v Panel přístupu uživatele, protože není správně nakonfigurována. Tady jsou některé způsoby, jak můžete potíže související s konfigurací aplikace:
+Aplikace nemusí zobrazovaných v Panel přístupu uživatele, protože není správně nakonfigurována. Tady jsou některé způsoby, jak můžete řešit problémy související tooapplication konfigurace:
 
--   [Postup konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD](#how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application)
+-   [Jak tooconfigure federovaného jednotného přihlašování pro aplikaci Galerie Azure AD](#how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application)
 
--   [Postup konfigurace federované jednotné přihlašování pro aplikace bez Galerie](#how-to-configure-federated-single-sign-on-for-a-non-gallery-application)
+-   [Jak tooconfigure federovaného jednotného přihlašování pro aplikace bez Galerie](#how-to-configure-federated-single-sign-on-for-a-non-gallery-application)
 
--   [Postup konfigurace hesel jedné přihlášení aplikace pro aplikaci Galerie Azure AD](#how-to-configure-password-single-sign-on-for-a-non-gallery-application)
+-   [Jak tooconfigure heslo jednotné přihlašování v aplikaci pro aplikaci Galerie Azure AD](#how-to-configure-password-single-sign-on-for-a-non-gallery-application)
 
--   [Postup konfigurace hesel jedné přihlášení aplikace pro aplikaci není Galerie](#how-to-configure-password-single-sign-on-for-a-non-gallery-application)
+-   [Jak tooconfigure heslo jednotné přihlašování aplikace pro aplikaci není Galerie](#how-to-configure-password-single-sign-on-for-a-non-gallery-application)
 
-### <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Postup konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD
+### <a name="how-tooconfigure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak tooconfigure federovaného jednotného přihlašování pro aplikaci Galerie Azure AD
 
-Všechny aplikace v galerii Azure AD povolit funkce Enterprise Single Sign-On obsahuje podrobný kurz k dispozici. Dostanete [seznam kurzů k integraci aplikací SaaS v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) podrobností podrobné pokyny.
+Všechny aplikace v galerii Azure AD hello povolit funkce Enterprise Single Sign-On obsahuje podrobný kurz k dispozici. Dostanete hello [seznam kurzů toointegrate SaaS aplikací s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) podrobností podrobné pokyny.
 
-Pro konfiguraci aplikace z Galerie Azure AD, které potřebujete:
+tooconfigure aplikaci z Galerie Azure AD hello budete muset:
 
--   [Přidat aplikaci z Galerie Azure AD](#add-an-application-from-the-azure-ad-gallery)
+-   [Přidat aplikaci z Galerie Azure AD hello](#add-an-application-from-the-azure-ad-gallery)
 
--   [Nakonfigurujte hodnoty metadata aplikace ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Nakonfigurujte hodnoty metadata aplikace hello ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Vyberte uživatelský identifikátor a přidejte atributy uživatele k odeslání do aplikace](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Vyberte uživatelský identifikátor a přidejte uživatele atributy toobe odeslané toohello aplikace](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Načtení metadat Azure AD a certifikátů](#download-the-azure-ad-metadata-or-certificate)
 
--   [Konfigurovat Azure AD metadata hodnoty v aplikaci (přihlašování adresu URL, vystavitele, adresy URL odhlašovací a certifikát)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Konfigurovat Azure AD metadata hodnoty v aplikaci hello (přihlašování adresu URL, vystavitele, adresy URL odhlašovací a certifikát)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
-#### <a name="add-an-application-from-the-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD
+#### <a name="add-an-application-from-hello-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD hello
 
-Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
+tooadd aplikace hello Galerie Azure AD, postupujte podle následujících kroků hello:
 
-1.  Otevřete [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
+1.  Otevřete hello [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  klikněte **přidat** v pravém horním rohu na tlačítko **podnikové aplikace, které** okno.
+5.  Klikněte na tlačítko hello **přidat** tlačítko v pravém horním rohu hello na hello **podnikové aplikace, které** okno.
 
-6.  V **zadejte název** textbox z **přidat z Galerie** části, zadejte název aplikace.
+6.  V hello **zadejte název** textbox z hello **přidat z Galerie hello** části, název typu hello aplikace hello.
 
-7.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
+7.  Vyberte hello aplikaci tooconfigure pro jednotné přihlašování.
 
-8.  Před přidáním aplikace, můžete změnit její název ze **název** textové pole.
+8.  Před přidáním hello aplikace, můžete změnit její název hello **název** textové pole.
 
-9.  Klikněte na tlačítko **přidat** tlačítko Přidat aplikaci.
+9.  Klikněte na tlačítko **přidat** tlačítko tooadd hello aplikace.
 
-Po krátké době nebudete moci zobrazit okno Konfigurace aplikace.
+Po krátké době být okno Konfigurace aplikací mít toosee hello.
 
-#### <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurovat jednotné přihlašování pro aplikace z Galerie Azure AD
+#### <a name="configure-single-sign-on-for-an-application-from-hello-azure-ad-gallery"></a>Konfigurovat jednotné přihlašování pro aplikace z Galerie Azure AD hello
 
-Pokud chcete konfigurovat jednotné přihlašování pro aplikace, postupujte následujícím způsobem:
+tooconfigure jednotné přihlašování pro aplikace, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Vyberte **na základě SAML přihlašování** z **režimu** rozevíracího seznamu.
+8.  Vyberte **na základě SAML přihlašování** z hello **režimu** rozevíracího seznamu.
 
-9.  Zadejte požadované hodnoty v **domény a adresy URL.** Tyto hodnoty by měly získat od dodavatele aplikace.
+9.  Zadejte hello požadované hodnoty v **domény a adresy URL.** Tyto hodnoty by měly získat od dodavatele aplikace hello.
 
-   1. Chcete-li nakonfigurovat aplikaci jako spouštěná SP jednotného přihlašování adresa URL je požadovaná hodnota. Některé aplikace je identifikátor také požadovaná hodnota.
+   1. aplikace hello tooconfigure jako jednotné přihlašování iniciované SP, hello přihlašovací na adrese URL je požadovaná hodnota. Některé aplikace hello identifikátor je také požadovaná hodnota.
 
-   2. Chcete-li nakonfigurovat aplikaci jako spouštěná IdP SSO adresa URL odpovědi je požadovaná hodnota. Některé aplikace je identifikátor také požadovaná hodnota.
+   2. aplikace hello tooconfigure jako jednotné přihlašování iniciované IdP, hello adresa URL odpovědi je požadovaná hodnota. Některé aplikace hello identifikátor je také požadovaná hodnota.
 
-10. **Volitelné:** klikněte na tlačítko **zobrazit upřesňující nastavení adresy URL** Pokud budete chtít prohlédnout-požadované hodnoty.
+10. **Volitelné:** klikněte na tlačítko **zobrazit upřesňující nastavení adresy URL** Pokud chcete, aby toosee hello-požadované hodnoty.
 
-11. V **uživatelské atributy**, vyberte jedinečný identifikátor pro uživatele v **uživatelský identifikátor** rozevíracího seznamu.
+11. V hello **uživatelské atributy**, vyberte hello jedinečný identifikátor pro uživatele v hello **uživatelský identifikátor** rozevíracího seznamu.
 
-12. **Volitelné:** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** upravit atributy, které se při přihlášení uživatele odeslat do aplikace v tokenu SAML.
+12. **Volitelné:** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** tooedit hello atributy aplikace toohello toobe odeslaných v tokenu SAML hello při přihlášení uživatele.
 
-   Chcete-li přidat atribut:
+   tooadd atribut:
 
-   1. Klikněte na tlačítko **přidat atribut**. Zadejte **název** a vyberte položku **hodnotu** z rozevíracího seznamu.
+   1. Klikněte na tlačítko **přidat atribut**. Zadejte hello **název** a vyberte hello hello **hodnotu** z rozevíracího seznamu hello.
 
-   2. Klikněte na tlačítko **uložit.** Zobrazí nový atribut v tabulce.
+   2. Klikněte na tlačítko **uložit.** Zobrazí hello nový atribut v tabulce hello.
 
-13. Klikněte na tlačítko **konfigurace &lt;název aplikace&gt;**  dokumentace přístupu na tom, jak nakonfigurovat jednotné přihlašování v aplikaci. Navíc má adres URL metadat a certifikát nutný k nastavení jednotného přihlašování k aplikaci.
+13. Klikněte na tlačítko **konfigurace &lt;název aplikace&gt;**  tooaccess dokumentaci týkající se tooconfigure jednotné přihlašování v aplikaci hello. Navíc má adres URL metadat hello a certifikát vyžadovaný toosetup jednotné přihlašování s aplikací hello.
 
-14. Klikněte na tlačítko **Uložit** konfiguraci uložíte.
+14. Klikněte na tlačítko **Uložit** toosave hello konfigurace.
 
-15. Přiřazení uživatelů k aplikaci.
+15. Přiřazení uživatelů toohello aplikace.
 
-#### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Vyberte uživatelský identifikátor a přidejte atributy uživatele k odeslání do aplikace
+#### <a name="select-user-identifier-and-add-user-attributes-toobe-sent-toohello-application"></a>Vyberte uživatelský identifikátor a přidejte uživatele atributy toobe odeslané toohello aplikace
 
-K výběru identifikátor uživatele nebo přidat atributy uživatele, postupujte podle následujících kroků:
+tooselect hello identifikátor uživatele nebo přidat atributy uživatele, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci chcete zde zobrazí, použijte **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud aplikace hello chcete tooshow vytvořit tady nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikaci hello jste nakonfigurovali jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  V části **uživatelské atributy** vyberte jedinečný identifikátor pro uživatele v **uživatelský identifikátor** rozevíracího seznamu. Vybraná možnost musí odpovídat očekávaná hodnota v aplikaci k ověření uživatele.
+8.  V části hello **uživatelské atributy** vyberte hello jedinečný identifikátor pro uživatele v hello **uživatelský identifikátor** rozevíracího seznamu. Hello vybranou možnost musí toomatch hello očekávaná hodnota v uživatel hello tooauthenticate aplikace hello.
 
    >[!NOTE] 
-   >Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybraných nebo formát požadovanou aplikaci v SAML AuthRequest. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy.
+   >Azure AD vyberte hello formátu pro atribut NameID hello (identifikátor uživatele) na základě hodnoty hello vybrané nebo hello formátu požadoval hello aplikace hello SAML AuthRequest. Další informace najdete článku hello [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) pod hello části NameIDPolicy.
    >
    >
 
-9.  Chcete-li přidat atributy uživatele, klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** upravit atributy, které se při přihlášení uživatele odeslat do aplikace v tokenu SAML.
+9.  tooadd atributy uživatele, klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** tooedit hello atributy aplikace toohello toobe odeslaných v tokenu SAML hello při přihlášení uživatele.
 
-   Chcete-li přidat atribut:
+   tooadd atribut:
 
-   1. Klikněte na tlačítko **přidat atribut**. Zadejte **název** a vyberte položku **hodnotu** z rozevíracího seznamu.
+   1. Klikněte na tlačítko **přidat atribut**. Zadejte hello **název** a vyberte hello hello **hodnotu** z rozevíracího seznamu hello.
 
-   2. Klikněte na tlačítko **uložit.** Zobrazí se nový atribut v tabulce.
+   2. Klikněte na tlačítko **uložit.** Zobrazí se hello nový atribut v tabulce hello.
 
-#### <a name="download-the-azure-ad-metadata-or-certificate"></a>Stáhnout Azure AD metadata nebo certifikát
+#### <a name="download-hello-azure-ad-metadata-or-certificate"></a>Stažení metadat hello Azure AD nebo certifikát
 
-Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte podle následujících kroků:
+metadata aplikace hello toodownload nebo certifikát z Azure AD, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikaci hello jste nakonfigurovali jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
+8.  Přejděte příliš**SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace hello vyžaduje konfiguraci jednotné přihlašování najdete v části buď možnost toodownload hello hello soubor XML s metadaty nebo hello certifikátu.
 
-    Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
+    Azure AD neposkytuje adresu URL tooget hello metadat. Hello metadata mohou být načteny pouze jako soubor XML.
 
-### <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace federované jednotné přihlašování pro aplikace bez Galerie
+### <a name="how-tooconfigure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak tooconfigure federovaného jednotného přihlašování pro aplikace bez Galerie
 
-Konfigurace aplikace bez galerie, potřebujete Azure AD premium a aplikace podporuje SAML 2.0. Další informace o verzích služby Azure AD, najdete v článku [ceny služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+tooconfigure bez Galerie aplikace, budete muset toohave Azure AD premium a hello aplikace podporuje SAML 2.0. Další informace o verzích služby Azure AD, najdete v článku [ceny služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
--   [Nakonfigurujte hodnoty metadata aplikace ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)](#configuring-single-sign-on)
+-   [Nakonfigurujte hodnoty metadata aplikace hello ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)](#configuring-single-sign-on)
 
--   [Vyberte uživatelský identifikátor a přidejte atributy uživatele k odeslání do aplikace](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Vyberte uživatelský identifikátor a přidejte uživatele atributy toobe odeslané toohello aplikace](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Načtení metadat Azure AD a certifikátů](#download-the-azure-ad-metadata-or-certificate)
 
--   [Konfigurovat Azure AD metadata hodnoty v aplikaci (přihlašování adresu URL, vystavitele, adresy URL odhlašovací a certifikát)](#configuring-single-sign-on)
+-   [Konfigurovat Azure AD metadata hodnoty v aplikaci hello (přihlašování adresu URL, vystavitele, adresy URL odhlašovací a certifikát)](#configuring-single-sign-on)
 
-#### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Nakonfigurujte hodnoty metadata aplikace ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)
+#### <a name="configure-hello-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Nakonfigurujte hodnoty metadata aplikace hello ve službě Azure AD (přihlašování adresu URL, identifikátor, adresa URL odpovědi)
 
-Pokud chcete konfigurovat jednotné přihlašování pro aplikace, která není v galerii Azure AD, postupujte podle následujících kroků:
+tooconfigure jednotné přihlašování pro aplikace, která není v galerii Azure AD hello, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  klikněte **přidat** v pravém horním rohu na tlačítko **podnikové aplikace, které** okno.
+5.  Klikněte na tlačítko hello **přidat** tlačítko v pravém horním rohu hello na hello **podnikové aplikace, které** okno.
 
-6.  Klikněte na tlačítko **aplikace bez Galerie** v **přidat vlastní aplikaci** části.
+6.  Klikněte na tlačítko **aplikace bez Galerie** v hello **přidat vlastní aplikaci** části.
 
-7.  Zadejte název aplikace **název** textové pole.
+7.  Zadejte název hello aplikace hello v hello **název** textové pole.
 
-8.  Klikněte na tlačítko **přidat** tlačítko Přidat aplikaci.
+8.  Klikněte na tlačítko **přidat** tlačítko tooadd hello aplikace.
 
-9.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+9.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-10. Vyberte **na základě SAML přihlašování** v **režimu** rozevíracího seznamu.
+10. Vyberte **na základě SAML přihlašování** v hello **režimu** rozevíracího seznamu.
 
-11. Zadejte požadované hodnoty v **domény a adresy URL.** Tyto hodnoty by měly získat od dodavatele aplikace.
+11. Zadejte hello požadované hodnoty v **domény a adresy URL.** Tyto hodnoty by měly získat od dodavatele aplikace hello.
 
-   1. Chcete-li nakonfigurovat aplikaci jako jednotné přihlašování iniciované deklarací identity, zadejte adresa URL odpovědi a identifikátor.
+   1. aplikace hello tooconfigure jako jednotné přihlašování iniciované deklarací identity, zadejte hello adresa URL odpovědi a hello identifikátor.
 
-   2.  **Volitelné:** konfigurace aplikace jako spouštěná SP jednotného přihlašování adresa URL je požadovaná hodnota.
+   2.  **Volitelné:** tooconfigure hello aplikace jako jednotné přihlašování iniciované SP, hello přihlašovací na adrese URL je požadovaná hodnota.
 
-12. V **uživatelské atributy**, vyberte jedinečný identifikátor pro uživatele v **uživatelský identifikátor** rozevíracího seznamu.
+12. V hello **uživatelské atributy**, vyberte hello jedinečný identifikátor pro uživatele v hello **uživatelský identifikátor** rozevíracího seznamu.
 
-13. **Volitelné:** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** upravit atributy, které se při přihlášení uživatele odeslat do aplikace v tokenu SAML.
+13. **Volitelné:** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** tooedit hello atributy aplikace toohello toobe odeslaných v tokenu SAML hello při přihlášení uživatele.
 
-   Chcete-li přidat atribut:
+   tooadd atribut:
 
-   1. Klikněte na tlačítko **přidat atribut**. Zadejte **název** a vyberte položku **hodnotu** z rozevíracího seznamu.
+   1. Klikněte na tlačítko **přidat atribut**. Zadejte hello **název** a vyberte hello hello **hodnotu** z rozevíracího seznamu hello.
 
-   2. Klikněte na tlačítko **uložit.** Zobrazí nový atribut v tabulce.
+   2. Klikněte na tlačítko **uložit.** Zobrazí hello nový atribut v tabulce hello.
 
-14. Klikněte na tlačítko **konfigurace &lt;název aplikace&gt;**  dokumentace přístupu na tom, jak nakonfigurovat jednotné přihlašování v aplikaci. Navíc má Azure AD adresy URL a certifikát nutný pro aplikaci.
+14. Klikněte na tlačítko **konfigurace &lt;název aplikace&gt;**  tooaccess dokumentaci týkající se tooconfigure jednotné přihlašování v aplikaci hello. Navíc má Azure AD adresy URL a certifikát nutný pro aplikace hello.
 
-#### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Vyberte uživatelský identifikátor a přidejte atributy uživatele k odeslání do aplikace
+#### <a name="select-user-identifier-and-add-user-attributes-toobe-sent-toohello-application"></a>Vyberte uživatelský identifikátor a přidejte uživatele atributy toobe odeslané toohello aplikace
 
-K výběru identifikátor uživatele nebo přidat atributy uživatele, postupujte podle následujících kroků:
+tooselect hello identifikátor uživatele nebo přidat atributy uživatele, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikaci hello jste nakonfigurovali jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  V části **uživatelské atributy** vyberte jedinečný identifikátor pro uživatele v **uživatelský identifikátor** rozevíracího seznamu. Vybraná možnost musí odpovídat očekávaná hodnota v aplikaci k ověření uživatele.
+8.  V části hello **uživatelské atributy** vyberte hello jedinečný identifikátor pro uživatele v hello **uživatelský identifikátor** rozevíracího seznamu. Hello vybranou možnost musí toomatch hello očekávaná hodnota v uživatel hello tooauthenticate aplikace hello.
 
    >[!NOTE] 
-   >Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybraných nebo formát požadovanou aplikaci v SAML AuthRequest. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy.
+   >Azure AD vyberte hello formátu pro atribut NameID hello (identifikátor uživatele) na základě hodnoty hello vybrané nebo hello formátu požadoval hello aplikace hello SAML AuthRequest. Další informace najdete článku hello [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) pod hello části NameIDPolicy.
    >
    >
 
-9.  Chcete-li přidat atributy uživatele, klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** upravit atributy, které se při přihlášení uživatele odeslat do aplikace v tokenu SAML.
+9.  tooadd atributy uživatele, klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** tooedit hello atributy aplikace toohello toobe odeslaných v tokenu SAML hello při přihlášení uživatele.
 
-   Chcete-li přidat atribut:
+   tooadd atribut:
 
-   1. Klikněte na tlačítko **přidat atribut**. Zadejte **název** a vyberte položku **hodnotu** z rozevíracího seznamu.
+   1. Klikněte na tlačítko **přidat atribut**. Zadejte hello **název** a vyberte hello hello **hodnotu** z rozevíracího seznamu hello.
 
-   2. Klikněte na tlačítko **uložit.** Zobrazí nový atribut v tabulce.
+   2. Klikněte na tlačítko **uložit.** Zobrazí hello nový atribut v tabulce hello.
 
-#### <a name="download-the-azure-ad-metadata-or-certificate"></a>Stáhnout Azure AD metadata nebo certifikát
+#### <a name="download-hello-azure-ad-metadata-or-certificate"></a>Stažení metadat hello Azure AD nebo certifikát
 
-Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte podle následujících kroků:
+metadata aplikace hello toodownload nebo certifikát z Azure AD, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikaci hello jste nakonfigurovali jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
+8.  Přejděte příliš**SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace hello vyžaduje konfiguraci jednotné přihlašování najdete v části buď možnost toodownload hello hello soubor XML s metadaty nebo hello certifikátu.
 
-Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
+Azure AD neposkytuje adresu URL tooget hello metadat. Hello metadata mohou být načteny pouze jako soubor XML.
 
-### <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Postup konfigurace hesel jednotné přihlašování pro aplikaci Galerie Azure AD
+### <a name="how-tooconfigure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak tooconfigure heslo jednotného přihlašování pro aplikaci Galerie Azure AD
 
-Pro konfiguraci aplikace z Galerie Azure AD, které potřebujete:
+tooconfigure aplikaci z Galerie Azure AD hello budete muset:
 
--   [Přidat aplikaci z Galerie Azure AD](#add-an-application-from-the-azure-ad-gallery)
+-   [Přidat aplikaci z Galerie Azure AD hello](#add-an-application-from-the-azure-ad-gallery)
 
--   [Konfigurace aplikace pro heslo jednotné přihlašování](#configure-the-application-for-password-single-sign-on)
+-   [Konfigurace aplikace hello pro heslo jednotné přihlašování](#configure-the-application-for-password-single-sign-on)
 
-#### <a name="add-an-application-from-the-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD
+#### <a name="add-an-application-from-hello-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD hello
 
-Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
+tooadd aplikace hello Galerie Azure AD, postupujte podle následujících kroků hello:
 
-1.  Otevřete [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
+1.  Otevřete hello [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  klikněte **přidat** v pravém horním rohu na tlačítko **podnikové aplikace, které** okno.
+5.  Klikněte na tlačítko hello **přidat** tlačítko v pravém horním rohu hello na hello **podnikové aplikace, které** okno.
 
-6.  V **zadejte název** textbox z **přidat z Galerie** části, zadejte název aplikace.
+6.  V hello **zadejte název** textbox z hello **přidat z Galerie hello** části, název typu hello aplikace hello.
 
-7.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
+7.  Vyberte hello aplikaci tooconfigure pro jednotné přihlašování.
 
-8.  Před přidáním aplikace, můžete změnit její název ze **název** textové pole.
+8.  Před přidáním hello aplikace, můžete změnit její název hello **název** textové pole.
 
-9.  Klikněte na tlačítko **přidat** tlačítko Přidat aplikaci.
+9.  Klikněte na tlačítko **přidat** tlačítko tooadd hello aplikace.
 
-Po krátké době nebudete moci zobrazit okno Konfigurace aplikace.
+Po krátké době být okno Konfigurace aplikací mít toosee hello.
 
-#### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurace aplikace pro heslo jednotné přihlašování
+#### <a name="configure-hello-application-for-password-single-sign-on"></a>Konfigurace aplikace hello pro heslo jednotné přihlašování
 
-Pokud chcete konfigurovat jednotné přihlašování pro aplikace, postupujte následujícím způsobem:
+tooconfigure jednotné přihlašování pro aplikace, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+   * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Vyberte režim **založené na heslech přihlášení.**
+8.  Vyberte hello režimu **založené na heslech přihlášení.**
 
-9.  [Přiřazení uživatelů k aplikaci](#how-to-assign-a-user-to-an-application-directly).
+9.  [Přiřazení uživatelů s aplikací toohello](#how-to-assign-a-user-to-an-application-directly).
 
-10. Kromě toho můžete taky zadat přihlašovací údaje jménem uživatele výběrem řádky uživatelů a kliknete na **pověření aktualizace** a zadání uživatelského jména a hesla jménem uživatele. Uživatelé, jinak se výzva k zadání sami přihlašovací údaje při spuštění.
+10. Kromě toho můžete taky zadat přihlašovací údaje jménem uživatele hello výběrem řádků hello hello uživatelů a kliknete na **pověření aktualizace** a zadáním jménem uživatelů hello hello uživatelské jméno a heslo. Uživatelé, jinak nebudou výzvami tooenter hello přihlašovací údaje sami při spuštění.
 
-### <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotné přihlašování pro aplikace bez Galerie
+### <a name="how-tooconfigure-password-single-sign-on-for-a-non-gallery-application"></a>Jak tooconfigure heslo jednotného přihlašování pro aplikace bez Galerie
 
-Pro konfiguraci aplikace z Galerie Azure AD, které potřebujete:
+tooconfigure aplikaci z Galerie Azure AD hello budete muset:
 
 -   [Přidání aplikace bez Galerie](#add-a-non-gallery-application)
 
--   [Konfigurace aplikace pro heslo jednotné přihlašování](#configure-the-application-for-password-single-sign-on)
+-   [Konfigurace aplikace hello pro heslo jednotné přihlašování](#configure-the-application-for-password-single-sign-on)
 
 #### <a name="add-a-non-gallery-application"></a>Přidání aplikace bez Galerie
 
-Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
+tooadd aplikace hello Galerie Azure AD, postupujte podle následujících kroků hello:
 
-1.  Otevřete [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**.
+1.  Otevřete hello [portálu Azure](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**.
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  klikněte **přidat** v pravém horním rohu na tlačítko **podnikové aplikace, které** okno.
+5.  Klikněte na tlačítko hello **přidat** tlačítko v pravém horním rohu hello na hello **podnikové aplikace, které** okno.
 
 6.  Klikněte na tlačítko **Galerie jiná aplikace.**
 
-7.  Zadejte název vaší aplikace v **název** textové pole. Vyberte **přidat.**
+7.  Zadejte název vaší aplikace hello v hello **název** textové pole. Vyberte **přidat.**
 
-Po krátké době nebudete moci zobrazit okno Konfigurace aplikace.
+Po krátké době být okno Konfigurace aplikací mít toosee hello.
 
-#### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurace aplikace pro heslo jednotné přihlašování
+#### <a name="configure-hello-application-for-password-single-sign-on"></a>Konfigurace aplikace hello pro heslo jednotné přihlašování
 
-Pokud chcete konfigurovat jednotné přihlašování pro aplikace, postupujte následujícím způsobem:
+tooconfigure jednotné přihlašování pro aplikace, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-    1.  Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+    1.  Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte hello aplikaci tooconfigure jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** navigační nabídce vlevo aplikace.
+7.  Jakmile aplikace hello načte, klikněte na možnost hello **jednotného přihlašování** z aplikace hello levém navigační nabídky.
 
-8.  Vyberte režim **založené na heslech přihlášení.**
+8.  Vyberte hello režimu **založené na heslech přihlášení.**
 
-9.  Zadejte **přihlašovací adresa URL**. Toto je adresa URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci. Zkontrolujte, zda že přihlašovací pole jsou viditelné na adrese URL.
+9.  Zadejte hello **přihlašovací adresa URL**. Toto je hello URL, kde uživatelé zadat toosign své uživatelské jméno a heslo v k. Zkontrolujte, zda jsou viditelné na adrese URL hello hello přihlášení pole.
 
-10. [Přiřazení uživatelů k aplikaci](#how-to-assign-a-user-to-an-application-directly).
+10. [Přiřazení uživatelů s aplikací toohello](#how-to-assign-a-user-to-an-application-directly).
 
-11. Kromě toho můžete taky zadat přihlašovací údaje jménem uživatele výběrem řádky uživatelů a kliknete na **pověření aktualizace** a zadání uživatelského jména a hesla jménem uživatele. Uživatelé, jinak se výzva k zadání sami přihlašovací údaje při spuštění.
+11. Kromě toho můžete taky zadat přihlašovací údaje jménem uživatele hello výběrem řádků hello hello uživatelů a kliknete na **pověření aktualizace** a zadáním jménem uživatelů hello hello uživatelské jméno a heslo. Uživatelé, jinak nebudou výzvami tooenter hello přihlašovací údaje sami při spuštění.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>Problémy související s přiřazení aplikací pro uživatele
+## <a name="problems-related-tooassigning-applications-toousers"></a>Problémy související tooassigning aplikace toousers
 
-Uživatel nemusí být zobrazuje aplikace na jejich přístupového panelu nejsou přiřazeny k aplikaci. Tady jsou některé způsoby, jak zkontrolovat:
+Uživatel nemusí být zobrazuje aplikace na jejich přístupového panelu nejsou přiřazeny toohello aplikace. Tady jsou některé toocheck způsoby:
 
--   [Zkontrolujte, pokud uživatel je přiřazená k aplikaci](#check-if-a-user-is-assigned-to-the-application)
+-   [Zkontrolujte, pokud uživatel je přiřazená toohello aplikace](#check-if-a-user-is-assigned-to-the-application)
 
--   [Postup přiřazení uživatele k aplikaci přímo](#how-to-assign-a-user-to-an-application-directly)
+-   [Jak tooassign tooan aplikace uživatele přímo](#how-to-assign-a-user-to-an-application-directly)
 
--   [Zkontrolujte, pokud uživatel je přiřazená k licenci týkající se aplikace](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Zkontrolujte, zda uživatel je přiřazena licence tooa související toohello aplikace](#check-if-a-user-is-under-a-license-related-to-the-application)
 
--   [Přiřazení licence pro uživatele](#how-to-assign-a-user-a-license)
+-   [Jak tooassign uživatel tooa licencí](#how-to-assign-a-user-a-license)
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Zkontrolujte, pokud uživatel je přiřazená k aplikaci
+### <a name="check-if-a-user-is-assigned-toohello-application"></a>Zkontrolujte, pokud uživatel je přiřazená toohello aplikace
 
-Pokud chcete zkontrolovat, pokud má uživatel přiřazeno k aplikaci, postupujte podle následujících kroků:
+toocheck Pokud uživatel přiřazený toohello aplikace, postupujte podle kroků hello níže:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-6.  **Hledání** pro název dané žádosti.
+6.  **Hledání** pro název hello aplikace hello nejistá.
 
 7.  Klikněte na tlačítko **uživatelů a skupin**.
 
-8.  Zkontrolujte, pokud uživatel je přiřazena k aplikaci.
+8.  Toosee zkontrolujte, zda váš uživatel toohello aplikace.
 
-   * Pokud ne, postupujte podle kroků v "Jak přiřazení uživatele k aplikaci přímo" Uděláte to tak.
+   * Pokud ne, postupujte podle kroků hello v "jak tooassign tooan aplikace uživatele přímo" toodo tak.
 
-### <a name="how-to-assign-a-user-to-an-application-directly"></a>Postup přiřazení uživatele k aplikaci přímo
+### <a name="how-tooassign-a-user-tooan-application-directly"></a>Jak tooassign tooan aplikace uživatele přímo
 
-Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle následujících kroků:
+tooassign jeden nebo více uživatelů tooan aplikace přímo, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce**.
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce**.
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete přiřadit uživatele k ze seznamu.
+6.  Vyberte aplikaci hello chcete tooassign seznam uživatele toofrom hello.
 
-7.  Po načtení aplikace, klikněte na **uživatelů a skupin** navigační nabídce vlevo aplikace.
+7.  Po načtení hello aplikace, klikněte na **uživatelů a skupin** z aplikace hello levém navigační nabídky.
 
-8.  Klikněte na tlačítko **přidat** tlačítko na **uživatelů a skupin** seznamu otevřete **přidat přiřazení** okno.
+8.  Klikněte na tlačítko hello **přidat** tlačítko nad hello **uživatelů a skupin** seznamu tooopen hello **přidat přiřazení** okno.
 
-9.  Klikněte na tlačítko **uživatelů a skupin** pro výběr **přidat přiřazení** okno.
+9.  Klikněte na tlačítko hello **uživatelů a skupin** selektor z hello **přidat přiřazení** okno.
 
-10. Zadejte **celý název** nebo **e-mailová adresa** uživatele vás zajímá přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+10. Typ v hello **celý název** nebo **e-mailová adresa** hello uživatele, které vás zajímají přiřazení do hello **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
 
-11. Najeďte myší **uživatele** v seznamu na nich **políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo pro přidání uživatelů do uživatele **vybrané** seznamu.
+11. Pozastavte ukazatel myši nad hello **uživatele** v seznamu tooreveal hello **políčko**. Klikněte na profil hello políčko další toohello uživatele fotografie nebo logo tooadd vaše uživatele toohello **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** pole pro vyhledávání a klikněte na zaškrtávací políčko, chcete-li přidat tento uživatel **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli příliš**přidat více než jeden uživatel**, zadejte v jiném **celý název** nebo **e-mailová adresa** do hello **vyhledávání podle názvu nebo e-mailová adresa** pole pro vyhledávání a klikněte na zaškrtávací políčko tooadd hello tento uživatel toohello **vybrané** seznamu.
 
-13. Po dokončení výběru uživatelů klikněte na **vyberte** tlačítko, které chcete přidat do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
+13. Po dokončení výběru uživatelů klikněte na hello **vyberte** tlačítko tooadd je toohello seznam uživatelů a skupin toobe přiřazené toohello aplikace.
 
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** selektor v **přidat přiřazení** okna Vybrat roli přiřadit uživatele, který jste vybrali.
+14. **Volitelné:** klikněte na tlačítko hello **vybrat roli** selektor v hello **přidat přiřazení** okno tooselect roli uživatele toohello tooassign jste vybrali.
 
-15. Klikněte **přiřadit** tlačítko přiřadit aplikace pro vybraného uživatele.
+15. Klikněte na tlačítko hello **přiřadit** tlačítko tooassign hello aplikace toohello vybraných uživatelů.
 
-Po krátké době uživatele, které jste vybrali moci spustit tyto aplikace na přístupovém panelu.
+Po krátké době hello uživatelů, které jste vybrali být schopný toolaunch tyto aplikace v hello přístupového panelu.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Zkontrolujte, jestli je uživatel v rámci licence týkající se aplikace
+### <a name="check-if-a-user-is-under-a-license-related-toohello-application"></a>Zkontrolujte, jestli je uživatel v rámci licence související toohello aplikace
 
-Pokud chcete zkontrolovat uživatele přiřazené licence, postupujte podle následujících kroků:
+toocheck uživatele je přiřazena licence, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
-
-5.  Klikněte na tlačítko **všichni uživatelé**.
-
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
-
-7.  Klikněte na tlačítko **licence** zobrazíte, které uživatel aktuálně licence jeho přiřazení.
-
-  * Pokud uživatel je přiřazen k Office licence touto aplikací povolit první strany Office se objevily na Panel přístupu uživatele.
-
-### <a name="how-to-assign-a-user-a-license"></a>Postup přiřazení licence uživatele 
-
-Chcete-li přiřadit licenci pro uživatele, postupujte následujícím způsobem:
-
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
-
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
-
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
 
-7.  Klikněte na tlačítko **licence** zobrazíte, které uživatel aktuálně licence jeho přiřazení.
+7.  Klikněte na tlačítko **licence** toosee, kteří uživatelé hello licence má přiřazeny.
 
-8.  klikněte **přiřadit** tlačítko.
+  * Pokud uživatel hello přiřazené tooan Office licence tato povolí tooappear aplikace první strany Office na Panel přístupu hello uživatele.
 
-9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
+### <a name="how-tooassign-a-user-a-license"></a>Jak tooassign uživatelské licence 
 
-10. **Volitelné** klikněte na tlačítko **přiřazení možností** položky granularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
+tooassign licence tooa uživatele, postupujte podle kroků hello níže:
 
-11. Klikněte **přiřadit** tlačítko tyto licence přiřadit tomuto uživateli.
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Problémy související s přiřazování aplikací do skupin
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-Uživatele může být zobrazuje aplikace na jejich přístupového panelu jsou součástí skupiny, která byla přiřazena aplikace. Tady jsou některé způsoby, jak zkontrolovat:
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+
+5.  Klikněte na tlačítko **všichni uživatelé**.
+
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+
+7.  Klikněte na tlačítko **licence** toosee, kteří uživatelé hello licence má přiřazeny.
+
+8.  Klikněte na tlačítko hello **přiřadit** tlačítko.
+
+9.  Vyberte **jeden nebo více produktů** z hello seznam dostupných produktů.
+
+10. **Volitelné** klikněte na tlačítko hello **přiřazení možností** položky toogranularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
+
+11. Klikněte na tlačítko hello **přiřadit** tlačítko tooassign tyto licence toothis uživatele.
+
+## <a name="problems-related-tooassigning-applications-toogroups"></a>Problémy související tooassigning aplikace toogroups
+
+Uživatele může být zobrazuje aplikace na jejich přístupového panelu jsou součástí skupiny, která byla přiřazena aplikace hello. Tady jsou některé toocheck způsoby:
 
 -   [Zkontrolujte členství uživatele ve skupinách](#check-a-users-group-memberships)
 
--   [Tom, jak přiřadit aplikaci pro skupinu přímo](#how-to-assign-an-application-to-a-group-directly)
+-   [Jak tooassign aplikaci tooa skupiny přímo](#how-to-assign-an-application-to-a-group-directly)
 
--   [Zkontrolujte, zda uživatel je součástí skupiny přiřazené k licenci](#check-if-a-user-is-part-of-group-assigned-to-a-license)
+-   [Zkontrolujte, zda uživatel je součástí skupiny přiřazené licence tooa](#check-if-a-user-is-part-of-group-assigned-to-a-license)
 
--   [Postup přiřazení licence do skupiny](#how-to-assign-a-license-to-a-group)
+-   [Jak tooassign tooa skupiny licencí](#how-to-assign-a-license-to-a-group)
 
 ### <a name="check-a-users-group-memberships"></a>Zkontrolujte členství uživatele ve skupinách
 
-Pokud chcete zkontrolovat členství ve skupině, postupujte podle následujících kroků:
+toocheck členství ve skupině, postupujte podle následujících kroků hello:
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
-
-5.  Klikněte na tlačítko **všichni uživatelé**.
-
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
-
-7.  Klikněte na tlačítko **skupiny**.
-
-8.  Zkontrolujte, zda uživatel je součástí skupiny přiřazené k aplikaci.
-
-  * Pokud chcete odebrat uživatele ze skupiny, **klikněte na řádek** tuto skupinu a vyberte možnost odstranit.
-
-### <a name="how-to-assign-an-application-to-a-group-directly"></a>Tom, jak přiřadit aplikaci pro skupinu přímo
-
-Jeden nebo více skupin přiřadit přímo k aplikaci, postupujte podle následujících kroků:
-
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce**.
-
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
-
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
-
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
-
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
-
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny aplikace.**
-
-6.  Vyberte aplikaci, kterou chcete přiřadit uživatele k ze seznamu.
-
-7.  Po načtení aplikace, klikněte na **uživatelů a skupin** navigační nabídce vlevo aplikace.
-
-8.  Klikněte na tlačítko **přidat** tlačítko na **uživatelů a skupin** seznamu otevřete **přidat přiřazení** okno.
-
-9.  Klikněte na tlačítko **uživatelů a skupin** pro výběr **přidat přiřazení** okno.
-
-10. Zadejte **název úplné skupiny** vás zajímá přiřazení do skupiny **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
-
-11. Najeďte myší **skupiny** v seznamu na nich **políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo pro přidání uživatelů do skupiny **vybrané** seznamu.
-
-12. **Volitelné:** Pokud byste chtěli **přidat více než jednu skupinu**, typ v jiném **název úplné skupiny** do **hledat podle jména nebo e-mailové adresy** pole pro vyhledávání a klikněte na zaškrtávací políčko k přidání do této skupiny **vybrané** seznamu.
-
-13. Po dokončení výběru skupiny klikněte na **vyberte** tlačítko, které chcete přidat do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
-
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** selektor v **přidat přiřazení** okna Vybrat roli přiřadit ke skupinám, které jste vybrali.
-
-15. Klikněte **přiřadit** tlačítko přiřazení aplikace k vybraným skupinám.
-
-Po krátké době uživatele, které jste vybrali moci spustit tyto aplikace na přístupovém panelu.
-
-### <a name="check-if-a-user-is-part-of-group-assigned-to-a-license"></a>Zkontrolujte, zda uživatel je součástí skupiny přiřazené k licenci
-
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
-
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
-
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
 
 5.  Klikněte na tlačítko **všichni uživatelé**.
 
-6.  **Hledání** pro uživatele, které vás zajímají a **klikněte na řádek** vybrat.
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
 
 7.  Klikněte na tlačítko **skupiny**.
 
-8.  Klikněte na řádek určité skupiny.
+8.  Zkontrolujte toosee, pokud uživatel je součástí aplikace toohello skupiny přiřazené.
 
-9.  Klikněte na tlačítko **licence** zobrazíte, které skupiny licencí má přiřazen.
+  * Pokud chcete, aby tooremove hello uživatele ze skupiny hello **klikněte na řádek hello** hello skupiny a vyberte možnost odstranit.
 
-   * Pokud tato skupina je přiřazená k licenci Office to může povolit konkrétní aplikace Office první strany se objevily na Panel přístupu uživatele.
+### <a name="how-tooassign-an-application-tooa-group-directly"></a>Jak tooassign aplikaci tooa skupiny přímo
 
-### <a name="how-to-assign-a-license-to-a-group"></a>Postup přiřazení licence do skupiny
+tooassign jeden nebo více skupin tooan aplikace přímo, postupujte podle následujících kroků hello:
 
-Přiřadit licenci pro skupinu, postupujte podle následujících kroků:
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce**.
 
-1.  Otevřete [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **další služby** v dolní části navigační nabídce vlevo hlavní.
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+4.  Klikněte na tlačítko **podnikové aplikace, které** z hello Azure Active Directory levém navigační nabídky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+5.  Klikněte na tlačítko **všechny aplikace** tooview seznam všech aplikací.
+
+  * Pokud chcete zobrazit vytvořit tady aplikace hello nevidíte, pomocí hello **filtru** řízení hello horní části hello **seznam všech aplikací** a sadu hello **zobrazit** možnost příliš **Všechny aplikace.**
+
+6.  Vyberte aplikaci hello chcete tooassign seznam uživatele toofrom hello.
+
+7.  Po načtení hello aplikace, klikněte na **uživatelů a skupin** z aplikace hello levém navigační nabídky.
+
+8.  Klikněte na tlačítko hello **přidat** tlačítko nad hello **uživatelů a skupin** seznamu tooopen hello **přidat přiřazení** okno.
+
+9.  Klikněte na tlačítko hello **uživatelů a skupin** selektor z hello **přidat přiřazení** okno.
+
+10. Typ v hello **název úplné skupiny** hello skupiny, které vás zajímají přiřazení do hello **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+
+11. Pozastavte ukazatel myši nad hello **skupiny** v seznamu tooreveal hello **políčko**. Klikněte na tlačítko hello políčko další toohello skupiny profilu fotografie nebo logo tooadd vaše uživatele toohello **vybrané** seznamu.
+
+12. **Volitelné:** Pokud byste chtěli příliš**přidat více než jednu skupinu**, typ v jiném **název úplné skupiny** do hello **hledat podle jména nebo e-mailové adresy** vyhledávacího pole a klikněte na zaškrtávací políčko tooadd hello této skupiny toohello **vybrané** seznamu.
+
+13. Po dokončení výběru skupiny klikněte na hello **vyberte** tlačítko tooadd je toohello seznam uživatelů a skupin toobe přiřazené toohello aplikace.
+
+14. **Volitelné:** klikněte na tlačítko hello **vybrat roli** selektor v hello **přidat přiřazení** okno tooselect toohello tooassign role skupinách vybrali.
+
+15. Klikněte na tlačítko hello **přiřadit** tlačítko tooassign hello aplikace toohello vybrané skupiny.
+
+Po krátké době hello uživatelů, které jste vybrali být schopný toolaunch tyto aplikace v hello přístupového panelu.
+
+### <a name="check-if-a-user-is-part-of-group-assigned-tooa-license"></a>Zkontrolujte, zda uživatel je součástí skupiny přiřazené licence tooa
+
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
+
+5.  Klikněte na tlačítko **všichni uživatelé**.
+
+6.  **Hledání** pro uživatele hello vás zajímá a **klikněte na řádek hello** tooselect.
+
+7.  Klikněte na tlačítko **skupiny**.
+
+8.  Klikněte na řádek hello určité skupiny.
+
+9.  Klikněte na tlačítko **licence** toosee, které skupiny licencí hello přiřazenému tooit.
+
+   * Pokud skupina hello přiřazené tooan Office licence to může povolit určité aplikace tooappear první strany Office na Panel přístupu hello uživatele.
+
+### <a name="how-tooassign-a-license-tooa-group"></a>Jak tooassign tooa skupiny licencí
+
+tooassign tooa skupiny licencí, postupujte podle následujících kroků hello:
+
+1.  Otevřete hello [ **portálu Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+
+2.  Otevřete hello **rozšíření Azure Active Directory** kliknutím **další služby** dole hello v navigační nabídce vlevo hlavní hello.
+
+3.  Zadejte **"Azure Active Directory**" hello filtru vyhledávacího pole a vyberte hello **Azure Active Directory** položky.
+
+4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce hello.
 
 5.  Klikněte na tlačítko **všechny skupiny**.
 
-6.  **Hledání** pro skupinu vás zajímá a **klikněte na řádek** vybrat.
+6.  **Hledání** hello skupiny, které vás zajímají a **klikněte na řádek hello** tooselect.
 
-7.  Klikněte na tlačítko **licence** zobrazíte, které skupiny licencí aktuálně jeho přiřazení.
+7.  Klikněte na tlačítko **licence** toosee, které skupiny licencí hello má přiřazeny.
 
-8.  klikněte **přiřadit** tlačítko.
+8.  Klikněte na tlačítko hello **přiřadit** tlačítko.
 
-9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
+9.  Vyberte **jeden nebo více produktů** z hello seznam dostupných produktů.
 
-10. **Volitelné** klikněte na tlačítko **přiřazení možností** položky granularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
+10. **Volitelné** klikněte na tlačítko hello **přiřazení možností** položky toogranularly přiřadit produkty. Klikněte na tlačítko **Ok** po dokončení.
 
-11. Klikněte **přiřadit** tlačítko přiřadit tyto licence do této skupiny. To může trvat dlouhou dobu, v závislosti na velikost a složitost skupiny.
+11. Klikněte na tlačítko hello **přiřadit** tlačítko tooassign těchto toothis skupin licencí. To může trvat dlouhou dobu, v závislosti na hello velikost a složitost hello skupiny.
 
 >[!NOTE]
->Uděláte to tak rychleji, vezměte v úvahu dočasně přiřazení licence uživatele přímo. 
+>toodo to rychlejší, vezměte v úvahu dočasně přiřazení licence toohello uživatele přímo. 
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-[Přidání nových uživatelů do služby Azure Active Directory](active-directory-users-create-azure-portal.md)
+[Přidat nové uživatele tooAzure služby Active Directory](active-directory-users-create-azure-portal.md)
 

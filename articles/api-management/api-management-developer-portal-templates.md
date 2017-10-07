@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení portálu pro vývojáře API Management pomocí šablon-Azure | Microsoft Docs"
-description: "Naučte se přizpůsobovat portál pro vývojáře Azure API Management pomocí šablon."
+title: "aaaCustomize hello API Management portál pro vývojáře pomocí šablon-Azure | Microsoft Docs"
+description: "Zjistěte, jak toocustomize hello portál pro vývojáře Azure API Management pomocí šablon."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b00d5f1534e9466f30ff3920e7aae048feb8b8c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Postup přizpůsobení portálu pro vývojáře Azure API Management pomocí šablon
+# <a name="how-toocustomize-hello-azure-api-management-developer-portal-using-templates"></a>Jak toocustomize hello portál pro vývojáře Azure API Management pomocí šablon
 
-Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
+Existují tři základní způsoby toocustomize hello portál pro vývojáře ve službě Azure API Management:
 
-* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout]
-* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablony použité pro stránky vytvořený portál] [ portal-templates] (popsáno v této příručce)
+* [Upravit obsah hello statické stránky a stránky rozložení elementů][modify-content-layout]
+* [Styly hello aktualizace používané pro prvky na stránce přes portál pro vývojáře hello][customize-styles]
+* [Úprava šablony hello používá stránek generovaných hello portál] [ portal-templates] (popsáno v této příručce)
 
-Šablony slouží k přizpůsobení obsah stránky portálu generována developer (např. dokumentace rozhraní API, produktů, ověřování uživatelů atd.). Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a zadané sadu prostředků lokalizovaný řetězec, ikony a ovládací prvky stránky, máte flexibilitu při konfiguraci obsahu stránek, podle potřeby.
+Šablony jsou použité toocustomize hello obsahu portálu stránek generována developer (např. dokumentace rozhraní API, produktů, ověřování uživatelů atd.). Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a zadané sadu prostředků lokalizovaný řetězec, ikony a ovládací prvky stránky, máte flexibilitu tooconfigure hello obsah hello stránek podle svých potřeb.
 
 ## <a name="developer-portal-templates-overview"></a>Přehled šablon portálu vývojáře
-Úprava šablony se provádí z **portál pro vývojáře** při právě přihlášeni jako správce. Tam dostat nejdřív otevřete portál Azure a klikněte na tlačítko **portál vydavatele** na panelu nástrojů služby instanci služby API Management.
+Úprava šablony se provádí z hello **portál pro vývojáře** při právě přihlášeni jako správce. existuje tooget nejdřív otevřete hello portálu Azure a klikněte na tlačítko **portál vydavatele** z panelu nástrojů služby hello instanci služby API Management.
 
 ![Portál vydavatele][api-management-management-console]
 
-Potom vpravo nahoře klikněte na **Portál pro vývojáře**. 
+Potom klikněte na **portál pro vývojáře** v pravém horním hello. 
 
 ![Nabídce portálu pro vývojáře][api-management-developer-portal-menu]
 
-Pro přístup k portálu šablony vývojáře, klikněte na ikonu přizpůsobit na levé straně zobrazení nabídky přizpůsobení, a klikněte na **šablony**.
+tooaccess hello šablony na portálu vývojáře, klikněte na tlačítko hello přizpůsobit ikonu na hello levém toodisplay hello přizpůsobení nabídky a klikněte na **šablony**.
 
 ![Šablony na portálu vývojáře][api-management-customize-menu]
 
-Seznam šablon se zobrazí několik kategorií šablon pokrývajících na různých stránkách v portálu pro vývojáře. Každá šablona se liší, ale postup upravit je a publikovat změny jsou stejné. Chcete-li upravit šablonu, klikněte na název šablony.
+seznam šablon Hello se zobrazí několik kategorií šablon pokrývajících hello různých stránkách v portálu pro vývojáře hello. Každé šabloně se liší, ale tooedit kroky hello je a publikovat hello změny jsou hello stejné. tooedit šablonu, klikněte na název hello hello šablony.
 
 ![Šablony na portálu vývojáře][api-management-templates-menu]
 
-Klepnutím na šablonu přejdete na stránku portálu vývojáře, která lze přizpůsobit pomocí této šablony. V tomto příkladu **seznam produktů** se šablony zobrazí. **Seznam produktů** šablony řídí oblasti obrazovky označená červeným rámečkem. 
+Klepnutím na šablonu přejdete vývojáře toohello portálu se stránka, která lze přizpůsobit pomocí této šablony. V tento příklad hello **seznam produktů** se šablony zobrazí. Hello **seznam produktů** ovládací prvky šablony hello oblasti indikován hello red obdélníku úvodní obrazovka. 
 
 ![Šablona seznam produktů][api-management-developer-portal-templates-overview]
 
-Některé šablony, jako **profil uživatele** šablony, přizpůsobit různých součástí stejné stránky. 
+Některé šablony, jako je hello **profil uživatele** šablony, přizpůsobit různé části hello stejné stránce. 
 
 ![Šablony profilu uživatele][api-management-user-profile-templates]
 
-Editor pro každé šablony portálu pro vývojáře má dvě části, které se zobrazí v dolní části stránky. Na levé straně zobrazí podokna úprav pro šablonu, a na pravé straně datový model pro šablonu. 
+editor Hello ke každé šabloně portálu pro vývojáře má dvě části, které se zobrazí v hello dolní části stránky hello. na levé straně Hello zobrazí hello úpravy podokně hello šablony, a pravé straně hello hello datový model pro šablonu hello. 
 
-Šablona úpravy podokně obsahuje kód, který řídí vzhled a chování odpovídající stránky v portálu pro vývojáře. Značky v šabloně používají [DotLiquid](http://dotliquidmarkup.org/) syntaxe. Je jeden oblíbených editor pro DotLiquid [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené v šabloně úpravy se zobrazují v reálném čase v prohlížeči, ale nejsou, uvidí vaši zákazníci dokud [Uložit](#to-save-a-template) a [publikování](#to-publish-a-template) šablony.
+Šablona Hello úpravy podokně obsahuje hello značky, které řídí hello vzhled a chování hello odpovídající stránku v portálu pro vývojáře hello. Hello značek v šabloně hello používá hello [DotLiquid](http://dotliquidmarkup.org/) syntaxe. Je jeden oblíbených editor pro DotLiquid [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny šablony toohello během úprav se zobrazují v v reálném čase v hello prohlížeče, ale nejsou viditelné tooyour zákazníky dokud [Uložit](#to-save-a-template) a [publikování](#to-publish-a-template) hello šablony.
 
 ![Kód šablony][api-management-template]
 
-**Data šablony** podokně poskytuje návod, jak do datového modelu entity, které jsou k dispozici pro použití v konkrétní šablonu. Tato příručka poskytuje zobrazením za provozu data, která jsou aktuálně zobrazeny v portálu pro vývojáře. Podokna šablony můžete rozbalit kliknutím obdélníku v pravém horním rohu **data šablony** podokně.
+Hello **data šablony** podokně poskytuje vodítko toohello data modelu pro hello entity, které jsou k dispozici pro použití v konkrétní šablonu. Tato příručka poskytuje zobrazením hello dynamická data, která jsou aktuálně zobrazeny v portálu pro vývojáře hello. Podokna Šablony hello můžete rozbalit kliknutím hello obdélníku v pravém horním rohu hello hello **data šablony** podokně.
 
 ![Šablona datového modelu][api-management-template-data]
 
-V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře, které byly získány ze údaje zobrazené na **data šablony** podokně, jak je znázorněno v následujícím příkladu.
+V předchozím příkladu hello jsou dva zobrazí v portálu pro vývojáře hello produkty, které byly získány ze hello data zobrazená v hello **data šablony** podokně, jak ukazuje následující příklad hello.
 
 ```json
 {
@@ -84,7 +84,7 @@ V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře,
         {
             "Id": "56ec64c380ed850042060001",
             "Title": "Starter",
-            "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
+            "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",
             "Terms": "",
             "ProductState": 1,
             "AllowMultipleSubscriptions": false,
@@ -93,7 +93,7 @@ V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře,
         {
             "Id": "56ec64c380ed850042060002",
             "Title": "Unlimited",
-            "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
+            "Description": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",
             "Terms": null,
             "ProductState": 1,
             "AllowMultipleSubscriptions": false,
@@ -103,7 +103,7 @@ V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře,
 }
 ```
 
-Kód v **seznam produktů** šablony zpracovává data, která mají poskytnout požadovaný výstupní pomocí iterace kolekce produktů můžete zobrazit informace a odkaz na jednotlivé jednotlivé produkty. Poznámka: `<search-control>` a `<page-control>` elementy ve značkách. Tyto řízení zobrazení hledání a stránkování ovládací prvky na stránce. `ProductsStrings|PageTitleProducts`odkaz na lokalizovaný řetězec, který obsahuje `h2` text záhlaví pro stránku. Seznam řetězcové prostředky, ovládací prvky stránky a ikony, které jsou k dispozici pro použití v šablonách portálu vývojáře najdete v tématu [API managementu vývojáře portálu šablony](api-management-developer-portal-templates-reference.md).
+Hello značek v hello **seznam produktů** šablony procesů hello výstup hello potřeby tooprovide dat pomocí iterace kolekce hello informace o toodisplay produkty a jednotlivých produktů tooeach odkaz. Poznámka: hello `<search-control>` a `<page-control>` elementů v hello značek. Tyto řídit hello zobrazení hello vyhledávání a stránkování ovládací prvky na stránce hello. `ProductsStrings|PageTitleProducts`odkaz na lokalizovaný řetězec, který obsahuje hello `h2` text záhlaví pro stránku hello. Seznam řetězcové prostředky, ovládací prvky stránky a ikony, které jsou k dispozici pro použití v šablonách portálu vývojáře najdete v tématu [API managementu vývojáře portálu šablony](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -131,59 +131,59 @@ Kód v **seznam produktů** šablony zpracovává data, která mají poskytnout 
 </div>
 ```
 
-## <a name="to-save-a-template"></a>Pokud chcete uložit šablonu
-Chcete-li uložit šablonu, klikněte na tlačítko Uložit v editoru šablony.
+## <a name="toosave-a-template"></a>toosave šablonu
+toosave šablonu, klikněte na Uložit v editoru šablony hello.
 
 ![Uložení šablony][api-management-save-template]
 
-Změny uloženy nejsou za provozu v portálu pro vývojáře, dokud nejsou publikovány.
+Uložené změny nejsou v portálu pro vývojáře hello za provozu, dokud nejsou publikovány.
 
-## <a name="to-publish-a-template"></a>K publikování šablony
-Uložené šablony mohou být publikovány buď jednotlivě, nebo všechny společně. K publikování jednotlivých šablony, klikněte na tlačítko Publikovat v editoru šablony.
+## <a name="toopublish-a-template"></a>toopublish šablonu
+Uložené šablony mohou být publikovány buď jednotlivě, nebo všechny společně. toopublish jednotlivé šablony, klikněte na tlačítko Publikovat v editoru šablony hello.
 
 ![Publikování šablony][api-management-publish-template]
 
-Klikněte na tlačítko **Ano** potvrďte a zajistit, že šablona za provozu na portál pro vývojáře.
+Klikněte na tlačítko **Ano** tooconfirm a ujistěte se, hello šablony na portálu pro vývojáře hello za provozu.
 
 ![Potvrďte publikování][api-management-publish-template-confirm]
 
-Chcete-li publikovat všechny aktuálně publikování šablony verze, klikněte na tlačítko **publikovat** v seznamu šablon. Publikování šablon jsou označeny hvězdičkou následující název šablony. V tomto příkladu **seznam produktů** a **produktu** publikování šablony.
+toopublish všechny aktuálně Nepublikováno šablony verze, klikněte na tlačítko **publikovat** v seznamu šablon hello. Publikování šablony jsou označeny hvězdičkou následující název šablony hello. V tomto příkladu hello **seznam produktů** a **produktu** publikování šablony.
 
 ![Publikování šablon][api-management-publish-templates]
 
-Klikněte na tlačítko **publikovat vlastní nastavení** k potvrzení.
+Klikněte na tlačítko **publikovat vlastní nastavení** tooconfirm.
 
 ![Potvrďte publikování][api-management-publish-customizations]
 
-Přehled nově publikovaných šablony jsou efektivní hned v portálu pro vývojáře.
+Přehled nově publikovaných šablony jsou efektivní hned v portálu pro vývojáře hello.
 
-## <a name="to-revert-a-template-to-the-previous-version"></a>Chcete-li obnovit šablonu pro předchozí verze
-Můžete obnovit šablonu na předchozí publikovanou verzi, klikněte na tlačítko Obnovit v editoru šablony.
+## <a name="toorevert-a-template-toohello-previous-version"></a>toorevert předchozí verze toohello šablony
+toorevert šablony toohello předchozí publikovanou verzi, klikněte na tlačítko Obnovit v editoru šablony hello.
 
 ![Obnovit šablonu][api-management-revert-template]
 
-Pro potvrzení klikněte na tlačítko **Ano**.
+Klikněte na tlačítko **Ano** tooconfirm.
 
 ![Potvrďte][api-management-revert-template-confirm]
 
-Po dokončení této operace je za provozu v portálu pro vývojáře dřív publikovaná verze šablony.
+Hello dříve publikovanou verzi šablony je za provozu v portálu pro vývojáře hello, jakmile hello vrátit operaci byla dokončena.
 
-## <a name="to-restore-a-template-to-the-default-version"></a>Chcete-li obnovit šablonu výchozí verze
-Obnovení šablony na jejich výchozí verze je dvoustupňový proces. Nejprve je nutné obnovit šablony, a pak musí být publikován obnovené verze.
+## <a name="toorestore-a-template-toohello-default-version"></a>toorestore na verzi toohello výchozí šablony
+Obnovení šablony tootheir výchozí verze je dvoustupňový proces. První hello šablony, je potřeba obnovit, a pak musí být publikován hello obnovit verze.
 
-Chcete-li obnovit jednu šablonu, která má výchozí verze kliknutím na tlačítko Obnovit v editoru šablony.
+toorestore na jednu šablonu toohello výchozí verzi kliknutím na tlačítko Obnovit v editoru šablony hello.
 
 ![Obnovit šablonu][api-management-reset-template]
 
-Pro potvrzení klikněte na tlačítko **Ano**.
+Klikněte na tlačítko **Ano** tooconfirm.
 
 ![Potvrďte][api-management-reset-template-confirm]
 
-Chcete-li obnovit všechny šablony na jejich výchozí verze, klikněte na tlačítko **obnovit výchozí šablony** na seznam šablon.
+Klikněte na všechny verze výchozí šablony tootheir, toorestore **obnovit výchozí šablony** na seznam šablon hello.
 
 ![Obnovit šablony][api-management-restore-templates]
 
-Obnovená šablony musí pak publikovat samostatně nebo všechny najednou podle kroků v [k publikování šablony](#to-publish-a-template).
+Hello obnovené šablony musí pak publikovat samostatně nebo všechny najednou podle následujících kroků hello v [toopublish šablonu](#to-publish-a-template).
 
 ## <a name="next-steps"></a>Další kroky
 Referenční informace pro vývojáře portálu šablony, řetězcové prostředky, ikony a ovládací prvky stránky najdete v tématu [API managementu vývojáře portálu šablony](api-management-developer-portal-templates-reference.md).

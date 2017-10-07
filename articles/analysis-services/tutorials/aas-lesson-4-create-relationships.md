@@ -1,58 +1,40 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 4: Vytvoření relací | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit relace v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: d79af3915c718a79f60e5f589527eb4c2ae8b367
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+Title: aaa "Azure Analysis Services kurz Lekce 4: vytvoření relací | Microsoft Docs"Popis: Popisuje, jak hello toocreate vztahy v kurzu projektu Azure Analysis Services. služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "
+
+MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 05/26 nebo 2017 ms.author: owend
 ---
 # <a name="lesson-4-create-relationships"></a>Lekce 4: Vytvoření relací
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-V této lekci ověříte relace, které se automaticky vytvořily při importu dat, a přidáte nové relace mezi různými tabulkami. Relace je propojení dvou tabulek, které určuje, jakým způsobem se data v těchto tabulkách mají korelovat. Například tabulky DimProduct a DimProductSubcategory mají relaci na základě toho, že každý produkt patří do nějaké podkategorie. Další informace najdete v tématu [Relace](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
+V této lekci ověřte hello vztahy, které byly vytvořeny automaticky při importu dat a přidat nové vztahy mezi různých tabulek. Relace je připojení mezi dvěma tabulkami, které vytváří korelace hello data v těchto tabulkách. Například hello DimProduct tabulka a tabulka DimProductSubcategory hello mít vztah podle hello fakt, že každý produkt patří tooa podkategorie. Další, najdete v části toolearn [vztahy](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   
-Odhadovaný čas dokončení této lekce: **10 minut**  
+Odhadovaný čas toocomplete této lekci: **10 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 3: Označení jako tabulky kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
+Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [Lekce 3: označte jej jako tabulka kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Kontrola existujících relací a přidání nových relací  
-Při importu dat pomocí funkce Získání dat jste z databáze AdventureWorksDW2014 získali sedm tabulek. Obecně platí, že při importu dat z relačního zdroje se společně s daty automaticky importují i existující relace. Přesto byste však před tím, než budete pokračovat ve vytváření modelu, měli ověřit správné vytvoření těchto relací mezi tabulkami. Pro účely tohoto kurzu přidáte tři nové relace.  
+Při importu dat pomocí načíst Data, vy máte sedm tabulky z databáze AdventureWorksDW2014 hello. Obecně platí Pokud importujete data z relační zdroje, existující relace se automaticky importují společně s hello data. Přesto byste však před tím, než budete pokračovat ve vytváření modelu, měli ověřit správné vytvoření těchto relací mezi tabulkami. Pro účely tohoto kurzu přidáte tři nové relace.  
   
-#### <a name="to-review-existing-relationships"></a>Kontrola existujících relací  
+#### <a name="tooreview-existing-relationships"></a>tooreview existující relace  
   
-1.  Klikněte na nabídku **Model** > **Zobrazení modelu** > **Zobrazení diagramu**.  
+1.  Klikněte na tlačítko hello **modelu** nabídky > **zobrazení modelu** > **zobrazení diagramu**.  
 
-    V zobrazení diagramu se zobrazí návrhář modelů – grafický formát zobrazující všechny importované tabulky propojené čárami. Čáry mezi tabulkami označují relace, které se automaticky vytvořily při importu dat.
+    Hello modelu designer teď zobrazí v zobrazení diagramu, grafické formátu zobrazení všechny tabulky hello, kterou jste naimportovali řádků mezi nimi. Hello čáry mezi tabulkami označují hello vztahy, které byly vytvořeny automaticky při importu dat hello.
     
     ![aas-lesson4-diagram](../tutorials/media/aas-lesson4-diagram.png)
   
-    Zahrnuje co nejvíc tabulek je možné s využitím ovládacích prvků minimapy v pravém dolním rohu návrháře modelů. Můžete také kliknout na tabulky a přetáhnout je jinam, přiblížit tabulky k sobě nebo je uspořádat do určitého pořadí. Přesun tabulek nemá vliv na už existující relace mezi nimi. Pokud chcete zobrazit všechny sloupce konkrétní tabulky, klikněte na okraj tabulky a tažením ji zvětšete nebo zmenšete.  
+    Zahrnout libovolný počet tabulek hello nejblíže pomocí ovládacích prvků minimapa v pravém dolním rohu hello hello modelu návrháře. Můžete také klikněte a přetáhněte tabulky toodifferent umístění, spojením blíže tabulek, nebo jejich uvedení v určitém pořadí. Přesunutí tabulek nemá vliv na relace hello již mezi tabulkami hello. tooview všechny sloupce hello v konkrétní tabulku, klikněte na tlačítko a přetáhněte na tooexpand okraj tabulky nebo vytvořit menší.  
   
-2.  Klikněte na plnou čáru mezi tabulkami **DimCustomer** a **DimGeography**. Plná čára mezi těmito dvěma tabulkami ukazuje, že je tato relace aktivní, tzn. že se používá ve výchozím nastavení při výpočtech vzorců DAX.  
+2.  Klikněte na souvislou čáru hello mezi hello **DimCustomer** tabulky a hello **DimGeography** tabulky. Plná čára Hello mezi těmito dvěma tabulkami ukazuje, že je tento vztah aktivní, to znamená, že použije se ve výchozím nastavení při výpočtu vzorce DAX.  
   
-    Všimněte si, že se teď v rámečku zobrazuje sloupec **GeographyKey** v tabulce **DimCustomer** i sloupec **GeographyKey** v tabulce **DimGeography**. Tyto sloupce se používají v relaci. V okně **Vlastnosti** se teď také zobrazují vlastnosti relace.  
+    Všimněte si hello **GeographyKey** sloupec v hello **DimCustomer** tabulky a hello **GeographyKey** sloupec v hello **DimGeography** tabulky Nyní obě se objeví v rámci pole. V těchto sloupcích se používají v relaci hello. Hello vlastností relace nyní také zobrazí v hello **vlastnosti** okno.  
   
     > [!TIP]  
-    > Kromě použití návrháře modelů v zobrazení diagramu můžete také zobrazit relace mezi všemi tabulkami ve formátu tabulky pomocí dialogového okna Správa relací. V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Relace** > **Správa relací**.
+    > Kromě toho toousing hello Návrhář model v zobrazení diagramu, můžete použít také hello Správa relací dialogové okno pole tooshow hello vztahy mezi všechny tabulky ve formátu tabulky. V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Relace** > **Správa relací**.
   
-3.  Ověřte, že se při importu jednotlivých tabulek z databáze AdventureWorksDW vytvořily následující relace:  
+3.  Ověřte následující vztahy hello byly vytvořeny při každé z tabulek hello byly importovány z databáze AdventureWorksDW hello:  
   
     |Aktivní|Table|Související vyhledávací tabulka|  
     |----------|---------|------------------------|  
@@ -62,37 +44,37 @@ Při importu dat pomocí funkce Získání dat jste z databáze AdventureWorksDW
     |Ano|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Ano|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Pokud jakákoli z těchto relací chybí, ověřte, že váš model obsahuje následující tabulky: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory a FactInternetSales. Pokud se tabulky ze stejného připojení ke zdroji dat importují v různou dobu, případné relace mezi těmito tabulkami se nevytvoří a musí být vytvořeny ručně.  
+    Pokud některé z relací hello chybí, ověřte, že model obsahuje následující tabulky hello: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory a FactInternetSales. Pokud tabulky z hello stejné připojení ke zdroji dat jsou importovány na samostatné časy, všechny vztahy mezi těmito tabulkami nejsou vytvořeny a musí být vytvořeny ručně.  
 
 ### <a name="take-a-closer-look"></a>Bližší prozkoumání
-V zobrazení diagramu si všimněte šipky, hvězdičky a čísla na čárách znázorňujících relace mezi tabulkami.
+V zobrazení diagramu Všimněte si čísla na hello řádky, které se zobrazí hello relace mezi tabulkami, ŠIPKA a hvězdičku.
 
 ![aas-lesson4-line](../tutorials/media/aas-lesson4-line.png)
 
-Šipka zobrazuje směr filtru. Hvězdička znázorňuje, že tabulka je v kardinalitě relace 1:N na straně N, zatímco jednička znázorňuje, že tabulka je v relaci na straně 1. Pokud potřebujete upravit relaci, například změnit směr filtru relace nebo kardinalitu, dvakrát klikněte na čáru relace a otevřete dialogové okno Upravit relaci.
+Šipka Hello znázorňuje směr filtru hello. Hello hvězdičky ukazuje, že tato tabulka je hello mnoho straně v relaci hello mohutnost a hello jeden ukazuje, že je tato tabulka hello jedné straně relace hello. Pokud potřebujete tooedit vztahu; například změnit směr filtru nebo mohutnost hello relace, klikněte dvakrát na hello vztah řádku tooopen hello dialogové okno Upravit vztah.
 
 ![aas-lesson4-edit](../tutorials/media/aas-lesson4-edit.png)
 
-Tyto funkce jsou určené pro pokročilé modelování dat a jsou nad rámec tohoto kurzu. Další informace najdete v tématu [Obousměrné křížové filtry pro tabelární modely ve službě Analysis Services](https://docs.microsoft.com/sql/analysis-services/tabular-models/bi-directional-cross-filters-tabular-models-analysis-services).
+Tyto funkce jsou určené pro pokročilé dat, modelování a jsou mimo rámec tohoto návodu hello. Další, najdete v části toolearn [obousměrné křížové filtry pro tabulkové modely služby ve službě Analysis Services](https://docs.microsoft.com/sql/analysis-services/tabular-models/bi-directional-cross-filters-tabular-models-analysis-services).
 
-V některých případech můžete potřebovat vytvořit mezi tabulkami ve vašem modelu další relace pro podporu určité obchodní logiky. Pro účely tohoto kurzu potřebujete vytvořit další tři relace mezi tabulkami FactInternetSales a DimDate.  
+V některých případech může být nutné toocreate další relace mezi tabulkami v váš model toosupport určité obchodní logiku. Pro účely tohoto kurzu potřebujete toocreate tři další vztahy mezi hello FactInternetSales tabulka a tabulka DimDate hello.  
   
-#### <a name="to-add-new-relationships-between-tables"></a>Přidání nových relací mezi tabulkami  
+#### <a name="tooadd-new-relationships-between-tables"></a>tooadd nové relace mezi tabulkami.  
   
-1.  V návrháři modelů v tabulce **FactInternetSales** klikněte a přidržte sloupec **OrderDate**, přesuňte kurzor na sloupec **Date** v tabulce **DimDate** a uvolněte tlačítko.  
+1.  V Návrháři hello modelu, v hello **FactInternetSales** tabulky, klikněte na tlačítko a počkejte hello **OrderDate** sloupec a pak přetáhněte hello kurzor toohello **datum** sloupec v hello  **DimDate** tabulky a poté uvolněte.  
 
-    Zobrazí se plná čára znázorňující, že jste vytvořili aktivní relaci mezi sloupcem **OrderDate** v tabulce **Internet Sales** a sloupcem **Date** v tabulce **DimDate**. 
+    Plná čára zobrazí jste vytvořili aktivní relaci mezi hello **OrderDate** sloupec v hello **Internet prodej** tabulky a hello **datum** sloupec v hello **Datum** tabulky. 
   
       ![aas-lesson4-new](../tutorials/media/aas-lesson4-new.png) 
   
     > [!NOTE]  
-    > Při vytváření relací se kardinalita a směr filtru mezi primární tabulkou a související vyhledávací tabulkou vybere automaticky.  
+    > Při vytváření vztahů, je automaticky vybraný směr hello mohutnost a filtr mezi primární tabulce hello a hello související vyhledávací tabulka.  
   
-2.  V tabulce **FactInternetSales** klikněte a přidržte sloupec **DueDate**, přesuňte kurzor na sloupec **Date** v tabulce **DimDate** a uvolněte tlačítko.  
+2.  V hello **FactInternetSales** tabulky, klikněte na tlačítko a počkejte hello **DueDate** sloupec a pak přetáhněte hello kurzor toohello **datum** sloupec v hello **DimDate** tabulky a poté uvolněte.  
   
-    Zobrazí se tečkovaná čára znázorňující, že jste vytvořili neaktivní relaci mezi sloupcem **DueDate** v tabulce **FactInternetSales** a sloupcem **Date** v tabulce **DimDate**. Mezi tabulkami můžete mít víc relací, ale aktivní může vždy být pouze jedna relace. Neaktivní relace se můžou aktivovat pro provádění speciálních agregací ve vlastních výrazech DAX.  
+    Tečkovaná čára zobrazí jste vytvořili neaktivní relaci mezi hello **DueDate** sloupec v hello **FactInternetSales** tabulky a hello **datum** sloupec v Hello **DimDate** tabulky. Mezi tabulkami můžete mít víc relací, ale aktivní může vždy být pouze jedna relace. Neaktivní relace lze provést active tooperform speciální agregace v vlastní výrazů DAX.  
   
-3.  Nakonec vytvořte ještě jednu relaci. V tabulce **FactInternetSales** klikněte a přidržte sloupec **ShipDate**, přesuňte kurzor na sloupec **Date** v tabulce **DimDate** a uvolněte tlačítko.  
+3.  Nakonec vytvořte ještě jednu relaci. V hello **FactInternetSales** tabulky, klikněte na tlačítko a počkejte hello **DatumOdeslání** sloupec a pak přetáhněte hello kurzor toohello **datum** sloupec v hello **DimDate** tabulky a poté uvolněte.  
     
      ![aas-lesson4-newinactive](../tutorials/media/aas-lesson4-newinactive.png)
   

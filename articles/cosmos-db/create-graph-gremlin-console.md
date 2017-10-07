@@ -1,6 +1,6 @@
 ---
 title: "Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu"
-description: "Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Graph API služby Azure Cosmos DB."
+description: "Databázi Cosmos Azure rychlý start toocreates vrcholy, okraje a dotazy pomocí hello Azure Cosmos DB Graph API."
 services: cosmos-db
 author: dennyglee
 manager: jhubbard
@@ -13,29 +13,29 @@ ms.devlang: terminal
 ms.topic: hero-article
 ms.date: 07/27/2017
 ms.author: denlee
-ms.openlocfilehash: fd5cc93ce1ed2a8c7da090666ef539b338ac61c3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9de64c97fec89c45cecba9e14214db472ec76f57
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
+# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-hello-gremlin-console"></a>Azure Cosmos DB: Vytvoření dotazu a procházení graf v konzole Gremlin hello
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento rychlý start popisuje způsob vytvoření účtu služby Azure Cosmos DB a grafu (kontejneru) pomocí portálu Azure Portal a následné použití v [konzole Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z [webu Apache TinkerPop](http://tinkerpop.apache.org) pro práci s daty (náhledem) rozhraní Graph API. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
+Tento rychlý start předvádí, jak toocreate účet Azure Cosmos DB, databáze a graf (kontejner) pomocí hello portál Azure a pak použijte hello [Gremlin konzoly](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z [Apache TinkerPop](http://tinkerpop.apache.org) toowork s Data grafu rozhraní API (preview). V tomto kurzu vytvoříte a dotaz vrcholy a hranami, aktualizaci vlastnosti vrchol dotaz vrcholy, procházení hello grafu a vyřadit vrchol.
 
-![Služba Azure Cosmos DB z konzoly Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
+![Azure DB Cosmos z konzoly Apache Gremlin hello](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.5/apache-tinkerpop-gremlin-console-3.2.5-bin.zip).
+Hello Gremlin konzoly je Groovy nebo Java a běží na systému Linux, Mac a Windows. Můžete ji stáhnout z hello [Apache TinkerPop lokality](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.5/apache-tinkerpop-gremlin-console-3.2.5-bin.zip).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start, musíte mít předplatné Azure.
+Pro tento rychlý start potřebovat toohave předplatnému Azure toocreate účet Azure Cosmos DB.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší.
+Musíte taky tooinstall hello [Gremlin konzoly](http://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -45,44 +45,44 @@ Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). P
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>Připojení ke službě aplikace
-1. Než začnete používat konzolu Gremlin, vytvořte nebo upravte v adresáři apache-tinkerpop-gremlin-console-3.2.5/conf konfigurační soubor remote-secure.yaml.
+## <a id="ConnectAppService"></a>Připojit tooyour aplikační služby
+1. Před zahájením hello Gremlin konzoly, vytvoří nebo upraví hello vzdálené secure.yaml konfigurační soubor v adresáři apache-tinkerpop-gremlin-console-3.2.5/conf hello.
 2. Vyplňte parametry *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    hostitelé|[***.graphs.azure.com]|Viz snímek obrazovky níže. Toto je hodnota Gremlin URI na stránce Přehled na webu Azure Portal v hranatých závorkách a s odebraným řetězcem „:443/“ na konci.<br><br>Tuto hodnotu můžete získat také z karty Klíče s použitím hodnoty URI, ve které odeberete „https://“, změníte „documents“ na „graphs“ a odeberete „:443/“ na konci.
-    port|443|Nastavte na hodnotu 443.
-    uživatelské jméno|*Vaše uživatelské jméno*|Prostředek ve formátu `/dbs/<db>/colls/<coll>`, kde `<db>` je název vaší databáze a `<coll>` je název vaší kolekce.
-    heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je váš primární klíč, který můžete získat ze stránky Klíče na webu Azure Portal v poli Primární klíč. Pomocí tlačítka pro kopírování na levé straně pole hodnotu zkopírujte.
+    hostitelé|[***.graphs.azure.com]|Viz snímek obrazovky níže. Toto je hodnota identifikátoru URI Gremlin hello na stránce Přehled hello hello portál Azure, v hranatých závorkách s koncové hello: 443 / odebrané.<br><br>Tuto hodnotu můžete také načíst z karty hello klíče, hodnota identifikátoru URI hello pomocí odebrání https://, změna toographs dokumenty a odebrání hello koncové: 443 /.
+    port|443|Nastavit too443.
+    uživatelské jméno|*Vaše uživatelské jméno*|Hello prostředků hello formuláře `/dbs/<db>/colls/<coll>` kde `<db>` je název databáze a `<coll>` je název vaší kolekce.
+    heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je primární klíč, který může načíst ze stránky klíče hello hello portál Azure, v poli hello primární klíč. Použijte tlačítko Kopírovat hello na levé straně hello hello pole toocopy hello hodnoty.
     fond připojení|{enableSsl: true}|Nastavení fondu připojení pro protokol SSL.
-    serializátor|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Nastavte na tuto hodnotu a odstraňte případné konce řádků `\n` vzniklé vložením hodnoty.
+    serializátor|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Nastavte hodnotu toothis a odstraní všechny `\n` konce řádků při vkládání v hodnotě hello.
 
-    Pro hodnotu hostitelé zkopírujte hodnotu **Gremlin URI** ze stránky **Přehled**: ![Zobrazení a zkopírování hodnoty Gremlin URI na stránce Přehled na webu Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)
+    Pro hodnotu hello hostitele, zkopírujte hello **Gremlin URI** hodnotu z hello **přehled** stránky: ![zobrazení a zkopírování hodnota identifikátoru URI Gremlin hello na stránce Přehled hello hello portálu Azure](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    Pro hodnotu heslo zkopírujte **Primární klíč** ze stránky **Klíče**: ![Zobrazení a zkopírování primárního klíče na stránce Klíče na webu Azure Portal](./media/create-graph-gremlin-console/keys.png)
+    Hodnota hesla hello, zkopírujte hello **primární klíč** z hello **klíče** stránky: ![zobrazení a zkopírování klíče vaší primární klíč v hello portál Azure, stránka](./media/create-graph-gremlin-console/keys.png)
 
 
-3. V terminálu spuštěním příkazu `bin/gremlin.bat` nebo `bin/gremlin.sh` spusťte [konzolu Gremlin](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
-4. V terminálu se spuštěním příkazu `:remote connect tinkerpop.server conf/remote-secure.yaml` připojte k aplikační službě.
+3. V terminálu, spusťte `bin/gremlin.bat` nebo `bin/gremlin.sh` toostart hello [Gremlin konzoly](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
+4. V terminálu, spusťte `:remote connect tinkerpop.server conf/remote-secure.yaml` tooconnect tooyour aplikační služby.
 
     > [!TIP]
-    > Pokud se zobrazí chyba `No appenders could be found for logger`, zkontrolujte, že jste v souboru remote-secure.yaml aktualizovali hodnotu serializátoru, jak je popsáno v kroku 2. 
+    > Pokud se zobrazí chyba hello `No appenders could be found for logger` zajistěte aktualizovala hello serializátor hodnota hello secure.yaml vzdáleného souboru, jak je popsáno v kroku 2. 
 
-Výborně! Nastavení se nám podařilo dokončit a teď můžete spouštět některé příkazy konzoly.
+Výborně! Teď když jsme dokončili hello instalace, Začněme spuštění některých příkazů konzoly.
 
-Vyzkoušejme jednoduchý příkaz count(). Zadejte do příkazového řádku konzoly následující:
+Vyzkoušejme jednoduchý příkaz count(). Zadejte následující hello do konzoly hello hello příkazového řádku:
 ```
 :> g.V().count()
 ```
 
 > [!TIP]
-> Vidíte část příkazu `:>`, která předchází textu `g.V().count()`? 
+> Všimněte si hello `:>` který předchází hello `g.V().count()` text? 
 >
-> Tuto část příkazu je potřeba zadat ručně. Při používání konzole Gremlin s Azure Cosmos DB je to důležité.  
+> Toto je část příkazu hello, které že budete potřebovat tootype. Je důležité při použití konzole Gremlin hello s Azure Cosmos DB.  
 >
-> Vynechání této předpony `:>` dá konzole pokyn, aby příkaz spustila lokálně – často s grafem v paměti.
-> Použití `:>` informuje konzolu, že má spustit vzdálený příkaz – v tomto případě se službou Cosmos DB (buď emulátor místního hostitele, nebo > instance Azure).
+> Vynechání to `:>` předponu dá pokyn, příkaz hello tooexecute hello konzoly lokálně, často proti grafu v paměti.
+> Pomocí této `:>` informuje hello konzoly tooexecute vzdáleného příkazu, v takovém případě proti Cosmos DB (buď hello localhost emulátoru, nebo > Azure instance).
 
 
 ## <a name="create-vertices-and-edges"></a>Vytváření vrcholů a okrajů
@@ -192,7 +192,7 @@ Výstup:
 
 ## <a name="update-a-vertex"></a>Aktualizace vrcholu
 
-Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45* let.
+Umožňuje aktualizovat hello *Thomas* vrchol s novou stáří *45*.
 
 Vstup:
 ```
@@ -208,7 +208,7 @@ Výstup:
 
 Teď spustíme pro graf celou řadu dotazů.
 
-Vyzkoušejme nejdříve dotaz s filtrem pro vrácení pouze osob nad 40 let.
+Nejprve nyní si vyzkoušíte dotazu s jenom lidé filtru tooreturn, kteří jsou starší než 40 let.
 
 Vstup (dotaz s filtrem):
 
@@ -222,7 +222,7 @@ Výstup:
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
-Teď navrhněme název pro skupinu osob nad 40 let.
+Dále umožňuje projektu hello křestní jméno pro hello lidí, kteří jsou starší než 40 let.
 
 Vstup (filtru + dotaz projekce):
 
@@ -238,7 +238,7 @@ Výstup:
 
 ## <a name="traverse-your-graph"></a>Procházení grafu
 
-Umožňuje procházet graf tak, aby vrátil všechny přátele uživatele Tomáš.
+Umožňuje procházet hello grafu tooreturn všechny na blogu Thomase přátel.
 
 Vstup (přátelé uživatele Tomáš):
 
@@ -253,7 +253,7 @@ Výstup:
 ==>[id:91605c63-4988-4b60-9a30-5144719ae326,label:person,type:vertex,properties:[firstName:[[id:f760e0e6-652a-481a-92b0-1767d9bf372e,value:Robin]],lastName:[[id:352a4caa-bad6-47e3-a7dc-90ff342cf870,value:Wakefield]]]]
 ```
 
-V následujícím kroku načteme další vrstvu vrcholů. Umožňuje procházet graf tak, aby vrátil všechny přátele uživatele Tomáš.
+V dalším kroku Pojďme hello další vrstva vrcholy. Procházení všech hello přátelích přátel, na blogu Thomase tooreturn hello grafu.
 
 Vstup (přátelé přátel uživatele Tomáš):
 
@@ -268,7 +268,7 @@ Výstup:
 
 ## <a name="drop-a-vertex"></a>Vyřazení vrcholu
 
-Teď odstraníme vrchol z databáze grafu.
+Nyní odstranit umožňuje vrchol z databáze hello grafu.
 
 Vstup (vyřazení vrcholu Jan):
 
@@ -278,7 +278,7 @@ Vstup (vyřazení vrcholu Jan):
 
 ## <a name="clear-your-graph"></a>Resetování grafu
 
-Nakonec odstraníme z databáze všechny vrcholy a okraje.
+Umožňuje vymazat nakonec databáze hello všechny vrcholy a okrajů.
 
 Vstup:
 
@@ -289,20 +289,20 @@ Vstup:
 
 Blahopřejeme! Dokončili jste tento kurz rozhraní Graph API služby Azure Cosmos DB!
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Zkontrolujte SLA v hello portálu Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:  
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:  
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili se způsobem vytvoření účtu služby Azure Cosmos DB, vytvoření grafu pomocí Průzkumníku dat, vytváření vrcholů a okrajů a procházení grafu pomocí konzoly Gremlin. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tento rychlý start když jste se naučili jak toocreate účet Azure Cosmos DB vytvoření grafu pomocí hello Průzkumníku dat, vytvořte vrcholy a okrajů a procházení grafu pomocí konzoly Gremlin hello. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

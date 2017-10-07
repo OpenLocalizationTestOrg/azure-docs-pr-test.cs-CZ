@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions fronty úložiště vazby | Microsoft Docs"
-description: "Pochopit, jak používat Azure Storage triggerů a vazeb v Azure Functions."
+title: "aaaAzure funkce fronty úložiště vazby | Microsoft Docs"
+description: Pochopit, jak se aktivuje toouse Azure Storage a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,49 +16,49 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
-ms.openlocfilehash: e007acd75a2210d54f512e2c6698c90919f0fcd2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 438b4f63e823149072c86fdefa7e15bfd2a2c4df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Queue Storage funkce vazby
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek popisuje, jak nakonfigurovat a vazby Azure Queue storage kódu v Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro Azure fronty. Funkce, které jsou k dispozici v všechny vazby, najdete v části [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
+Tento článek popisuje, jak tooconfigure a kód Azure Queue storage vazeb v Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro Azure fronty. Funkce, které jsou k dispozici v všechny vazby, najdete v části [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 <a name="trigger"></a>
 
 ## <a name="queue-storage-trigger"></a>Aktivace fronty úložiště
-Aktivační událost Azure Queue storage vám umožňuje monitorovat fronty úložiště pro nové zprávy a reagovat na ně. 
+Hello Azure Queue storage aktivační událost umožňuje toomonitor fronty úložiště pro nové zprávy a toothem reagovat. 
 
-Zadejte aktivační události fronty pomocí **integrací** na portálu funkce. Vytvoří následující definice v portálu **vazby** části *function.json*:
+Zadejte aktivační události fronty pomocí hello **integrací** kartě hello funkce portálu. Hello portál vytvoří hello následující definice v hello **vazby** části *function.json*:
 
 ```json
 {
     "type": "queueTrigger",
     "direction": "in",
-    "name": "<The name used to identify the trigger data in your code>",
-    "queueName": "<Name of queue to poll>",
+    "name": "<hello name used tooidentify hello trigger data in your code>",
+    "queueName": "<Name of queue toopoll>",
     "connection":"<Name of app setting - see below>"
 }
 ```
 
-* `connection` Vlastnost musí obsahovat název nastavení aplikace, který obsahuje připojovací řetězec úložiště. Na portálu Azure, standardního editoru v **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
+* Hello `connection` vlastnost musí obsahovat název hello nastavení aplikace, který obsahuje připojovací řetězec úložiště. V hello portálu Azure, hello standardního editoru v hello **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
 
-Další nastavení lze zadat do [host.json soubor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) a vyladit aktivační procedury fronty úložiště. Můžete například změnit fronty v host.json interval dotazování.
+Další nastavení lze zadat do [host.json soubor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) toofurther doladit aktivační procedury fronty úložiště. Například můžete změnit interval dotazování hello fronty v host.json.
 
 <a name="triggerusage"></a>
 
 ## <a name="using-a-queue-trigger"></a>Pomocí aktivační procedury fronty
-Ve funkcích Node.js, přístup k frontě dat pomocí `context.bindings.<name>`.
+Ve funkcích Node.js, přístup k hello fronty dat pomocí `context.bindings.<name>`.
 
 
-V rozhraní .NET funkce, přístup k datové části fronty pomocí parametru metody, jako třeba `CloudQueueMessage paramName`. Zde `paramName` je hodnota zadaná v [konfigurace aktivační události](#trigger). Zprávy ve frontě lze deserializovat na některý z následujících typů:
+V rozhraní .NET funkce, přístup k datové části hello fronty pomocí parametru metody, jako třeba `CloudQueueMessage paramName`. Zde `paramName` je hodnota hello jste zadali v hello [konfigurace aktivační události](#trigger). uvítací zprávu fronty lze deserializovat tooany hello následující typy:
 
-* Objektů POCO objekt. Použijte, pokud datová část fronty je objekt JSON. Modul runtime funkce deserializuje datovou část do objektů POCO objektu. 
+* Objektů POCO objekt. Použijte, pokud datová část fronty hello je objekt JSON. Hello Functions runtime deserializuje datovou část hello do objektu objektů POCO hello. 
 * `string`
 * `byte[]`
 * [`CloudQueueMessage`]
@@ -66,22 +66,22 @@ V rozhraní .NET funkce, přístup k datové části fronty pomocí parametru me
 <a name="meta"></a>
 
 ### <a name="queue-trigger-metadata"></a>Metadata frontě aktivační události
-Aktivační událost fronty nabízí několik vlastností metadat. Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Hodnoty mají stejnou sémantiku jako [ `CloudQueueMessage` ].
+Aktivace fronty Hello nabízí několik vlastností metadat. Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Hello hodnoty mají hello stejnou sémantiku jako [ `CloudQueueMessage` ].
 
 * **QueueTrigger** -datové frontu (pokud platný řetězec)
-* **DequeueCount** – typ `int`. Počet časy, kdy se tato zpráva má bylo vyřazeno z fronty.
-* **ExpirationTime** – typ `DateTimeOffset?`. Čas, kdy vyprší platnost zprávy.
+* **DequeueCount** – typ `int`. počet pokusů, které se tato zpráva byla vyjmutou. Hello.
+* **ExpirationTime** – typ `DateTimeOffset?`. Hello čas vypršení platnosti zprávy hello.
 * **ID** – typ `string`. ID zprávy fronty
-* **InsertionTime** – typ `DateTimeOffset?`. Doba, která zpráva byla přidána do fronty.
-* **NextVisibleTime** – typ `DateTimeOffset?`. Čas, zprávy budou vedle viditelné.
-* **Vlastnosti PopReceipt** – typ `string`. Pop přijetí zprávy.
+* **InsertionTime** – typ `DateTimeOffset?`. čas Hello hello zpráva byla přidána toohello fronty.
+* **NextVisibleTime** – typ `DateTimeOffset?`. čas Hello hello zprávy budou vedle viditelné.
+* **Vlastnosti PopReceipt** – typ `string`. uvítací zprávu pop přijetí.
 
-V tématu Jak používat fronty metadat v [aktivační událost vzorku](#triggersample).
+V tématu Jak toouse hello metadata fronty v [aktivační událost vzorku](#triggersample).
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Ukázka aktivační události
-Předpokládejme, že máte následující function.json, která definuje aktivační procedury fronty:
+Předpokládejme, že máte hello následující function.json, který definuje aktivační procedury fronty:
 
 ```json
 {
@@ -98,7 +98,7 @@ Předpokládejme, že máte následující function.json, která definuje aktiva
 }
 ```
 
-Viz ukázka pro specifický jazyk, který načte a protokoly ve frontě metadat.
+V tématu vzorku hello konkrétní jazyk, který načte a protokoly metadata fronty.
 
 * [C#](#triggercsharp)
 * [Node.js](#triggernodejs)
@@ -160,35 +160,35 @@ module.exports = function (context) {
 ```
 
 ### <a name="handling-poison-queue-messages"></a>Zpracování poškozených fronty zpráv
-Pokud se nezdaří aktivační funkce fronty, Azure Functions opakuje této funkce až pětkrát pro danou frontu zprávy, včetně první pokus. Pokud selžou všechny pět pokusy, functions runtime přidá zprávu do fronty úložiště s názvem  *&lt;originalqueuename >-poškozených*. Můžete napsat, že je funkce, která se zpracování zpráv z fronty poškozených jejich protokolování nebo odesílání oznámení, že ruční pozornost. 
+Pokud se nezdaří aktivační funkce fronty, Azure Functions opakuje této funkce si toofive, které časy dané frontě zprávy, včetně hello nejprve provést. Pokud selžou všechny pět pokusy, hello functions runtime přidá zprávu tooa fronty úložiště s názvem  *&lt;originalqueuename >-poškozených*. Můžete napsat tooprocess funkce zprávy z fronty poškozených hello jejich protokolování nebo odeslání oznámení, že je potřeba ruční pozornost. 
 
-Pro zpracování poškozených zpráv ručně, zkontrolujte `dequeueCount` zprávy fronty (v tématu [frontě aktivační události metadata](#meta)).
+poškozených zpráv toohandle ručně, zkontrolujte hello `dequeueCount` hello zprávy fronty (v tématu [frontě aktivační události metadata](#meta)).
 
 <a name="output"></a>
 
 ## <a name="queue-storage-output-binding"></a>Vazba výstupní fronty úložiště
-Úložiště Azure queue výstup vazby umožňuje zápis zpráv do fronty. 
+Vazba vám umožní toowrite zprávy tooa fronty výstupu Hello fronty Azure storage. 
 
-Definovat pomocí vazby fronty výstupu **integrací** na portálu funkce. Vytvoří následující definice v portálu **vazby** části *function.json*:
+Definování fronty výstupu vazby pomocí hello **integrací** kartě hello funkce portálu. Hello portál vytvoří hello následující definice v hello **vazby** části *function.json*:
 
 ```json
 {
    "type": "queue",
    "direction": "out",
-   "name": "<The name used to identify the trigger data in your code>",
-   "queueName": "<Name of queue to write to>",
+   "name": "<hello name used tooidentify hello trigger data in your code>",
+   "queueName": "<Name of queue toowrite to>",
    "connection":"<Name of app setting - see below>"
 }
 ```
 
-* `connection` Vlastnost musí obsahovat název nastavení aplikace, který obsahuje připojovací řetězec úložiště. Na portálu Azure, standardního editoru v **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
+* Hello `connection` vlastnost musí obsahovat název hello nastavení aplikace, který obsahuje připojovací řetězec úložiště. V hello portálu Azure, hello standardního editoru v hello **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
 
 <a name="outputusage"></a>
 
 ## <a name="using-a-queue-output-binding"></a>Pomocí fronty výstup vazby
-V Node.js funkce, přístup k výstupu fronty pomocí `context.bindings.<name>`.
+Ve funkcích Node.js přistupujete hello výstupní fronty pomocí `context.bindings.<name>`.
 
-V rozhraní .NET funkce výstup můžete na některý z následujících typů. Pokud je parametr typu `T`, `T` musí být jeden z typů podporovaných výstupu, jako například `string` nebo objektů POCO.
+V rozhraní .NET funkce můžete výstup tooany hello následující typy. Pokud je parametr typu `T`, `T` musí být jeden z typů výstup hello podporována, jako například `string` nebo objektů POCO.
 
 * `out T`(serializovanou jako JSON)
 * `out string`
@@ -198,12 +198,12 @@ V rozhraní .NET funkce výstup můžete na některý z následujících typů. 
 * `IAsyncCollector<T>`
 * [`CloudQueue`](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
 
-Návratový typ metody můžete také použít jako výstup vazba.
+Návratový typ metody hello můžete také použít jako hello výstup vazby.
 
 <a name="outputsample"></a>
 
 ## <a name="queue-output-sample"></a>Ukázka výstupní fronty
-Následující *function.json* definuje aktivační procedury HTTP s frontou výstup vazby:
+Následující Hello *function.json* definuje aktivační procedury HTTP s frontou výstup vazby:
 
 ```json
 {
@@ -230,7 +230,7 @@ Následující *function.json* definuje aktivační procedury HTTP s frontou vý
 }
 ``` 
 
-Naleznete v ukázce pro specifický jazyk, který produkuje zprávu fronty s příchozí datové části protokolu HTTP.
+V tématu vzorku hello konkrétní jazyk, který výstupy zprávu fronty s hello příchozí datové části protokolu HTTP.
 
 * [C#](#outcsharp)
 * [Node.js](#outnodejs)
@@ -240,7 +240,7 @@ Naleznete v ukázce pro specifický jazyk, který produkuje zprávu fronty s př
 ### <a name="queue-output-sample-in-c"></a>Ukázka výstupní fronty v jazyce C# #
 
 ```cs
-// C# example of HTTP trigger binding to a custom POCO, with a queue output binding
+// C# example of HTTP trigger binding tooa custom POCO, with a queue output binding
 public class CustomQueueMessage
 {
     public string PersonName { get; set; }
@@ -253,7 +253,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, TraceWriter log)
 }
 ```
 
-Chcete-li odeslat více zpráv, použijte `ICollector`:
+toosend více zpráv používat `ICollector`:
 
 ```cs
 public static void Run(CustomQueueMessage input, ICollector<CustomQueueMessage> myQueueItem, TraceWriter log)
@@ -273,11 +273,11 @@ module.exports = function (context, input) {
 };
 ```
 
-Nebo, pokud chcete odeslat více zpráv
+Nebo toosend více zpráv
 
 ```javascript
 module.exports = function(context) {
-    // Define a message array for the myQueueItem output binding. 
+    // Define a message array for hello myQueueItem output binding. 
     context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
@@ -285,7 +285,7 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Příklad, funkci, která používá fronty úložiště triggerů a vazeb, naleznete v části [vytvořit funkci Azure připojené k služby Azure](functions-create-an-azure-connected-function.md).
+Příklad, funkci, která používá fronty úložiště triggerů a vazeb, naleznete v části [vytvořit tooan funkce Azure připojení služby Azure](functions-create-an-azure-connected-function.md).
 
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 

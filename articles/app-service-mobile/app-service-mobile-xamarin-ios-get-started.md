@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure App Service Mobile Apps pro aplikace na platformě Xamarin.iOS | Dokumentace Microsoftu"
-description: "V tomto kurzu začnete používat Mobile Apps pro vývoj na platformě Xamarin.iOS."
+title: "aaaGet začít s Azure App Service Mobile Apps pro aplikace pro Xamarin.iOS | Microsoft Docs"
+description: "Využijte tento kurz tooget začít s pomocí Mobile Apps pro vývoj na platformě Xamarin.iOS."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,66 +14,66 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: syntaxc4
-ms.openlocfilehash: 8dc965df2cd45366970effb29f246b0045a94717
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 524c5ac4d8a29d7cb858f74132aad5d6e2201d02
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-xamarinios-app"></a>Vytvoření aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-V tomto kurzu se dozvíte, jak přidat cloudovou back-end službu do mobilní aplikace Xamarin.iOS pomocí back-endu mobilní aplikace Azure.  Vytvoříte nový back-end mobilní aplikace i jednoduchou aplikaci Xamarin.iOS, která bude představovat *seznam úkolů* a bude ukládat data do Azure.
+Tento kurz ukazuje, jak tooadd back-end cloudové služby mobilní aplikace Xamarin.iOS tooa pomocí back-end mobilní aplikace Azure.  Vytvoříte nový back-end mobilní aplikace i jednoduchou aplikaci Xamarin.iOS, která bude představovat *seznam úkolů* a bude ukládat data do Azure.
 
-Dokončení tohoto kurzu se předpokládá ve všech dalších kurzech k používání funkce Mobile Apps v Azure App Service pro Xamarin.iOS.
+Dokončení tohoto kurzu je předpokladem pro Xamarin.iOS o všech dalších kurzech k používání funkce Mobile Apps hello v Azure App Service.
 
 ## <a name="prerequisites"></a>Požadavky
-Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+toocomplete tohoto kurzu budete potřebovat hello následující požadavky:
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktivní účet Azure. Pokud nemáte účet, zaregistrovat zkušební verzi Azure a zprovoznění too10 bezplatné mobilní aplikace, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Visual Studio s Xamarinem. Pokyny najdete v tématu o [nastavení a instalaci pro Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * Počítač Mac s nainstalovaným Xcode verze 7.0 nebo novějším a Xamarin Studio Community. Přečtěte si témata o [nastavení a instalaci nástrojů Visual Studio a Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) a o [nastavení, instalaci a ověření pro uživatele počítačů Mac](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Vytvoření back-endu mobilní aplikace Azure
-Podle těchto pokynů vytvořte back-end mobilní aplikace:
+Postupujte podle těchto kroků toocreate back-end mobilní aplikace.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
-Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. Dále si stáhněte serverový projekt pro jednoduchý back-end seznamu úkolů a publikujete ho v Azure.
+## <a name="configure-hello-server-project"></a>Konfigurace projektu server hello
+Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. V dalším kroku stáhnout serverový projekt pro jednoduchý "seznam úkolů" back-end a publikujete ho v tooAzure.
 
-Podle následujících kroků nakonfigurujte serverový projekt tak, aby používal buď back-end Node.js, nebo .NET.
+Postupujte podle následujících kroků tooconfigure hello serveru projektu toouse hello buď hello Node.js, nebo .NET back-end.
 
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinios-app"></a>Stáhnutí a spuštění aplikace Xamarin.iOS
-1. Otevřete v okně prohlížeče [Azure Portal].
-2. V okně nastavení mobilní aplikace klikněte na **Začínáme** > **Xamarin.iOS**. V kroku 3 klikněte na možnost **Vytvořit novou aplikaci**, pokud ještě nebyla vybrána.  Pak klikněte na tlačítko **Stáhnout**.
+## <a name="download-and-run-hello-xamarinios-app"></a>Stažení a spuštění aplikace Xamarin.iOS hello
+1. Otevřete hello [portál Azure] v okně prohlížeče.
+2. V okně Nastavení hello mobilní aplikace, klikněte na tlačítko **Začínáme** > **Xamarin.iOS**. V kroku 3 klikněte na možnost **Vytvořit novou aplikaci**, pokud ještě nebyla vybrána.  Pak klikněte na hello **Stáhnout** tlačítko.
 
-      Stáhne se klientská aplikace, která se připojí k mobilnímu back-endu. Uložte komprimovaný soubor projektu do místního počítače a poznamenejte si, kam jste jej uložili.
-3. Extrahujte projekt, který jste stáhli, a otevřete jej v nástroji Xamarin Studio (nebo v nástroji Visual Studio).
+      Je Stáhnout klientskou aplikaci, která se připojuje tooyour mobilního back-endu. Uložte hello komprimovaný soubor projektu do místního počítače a poznamenejte si kam jste jej uložili.
+3. Extrahujte hello projekt, který jste stáhli a otevřete jej v nástroji Xamarin Studio (nebo Visual Studio).
 
     ![][9]
 
     ![][8]
-4. Stiskněte klávesu F5, aby se projekt sestavil a aplikace se spustila v emulátoru iPhonu.
-5. Zadejte do aplikace smysluplný text, například *Naučit se Xamarin*, a klikněte na tlačítko **+**.
+4. Stiskněte klávesu hello F5 klíče toobuild hello projektu a spusťte hello aplikaci v emulátoru Iphonu hello.
+5. Hello aplikace zadejte smysluplný text, například *naučit se Xamarin*a potom klikněte na hello  **+**  tlačítko.
 
     ![][10]
 
-    Data z požadavku se vloží do tabulky TodoItem. Položky uložené v tabulce se vrátí back-endu mobilní aplikace a v seznamu se zobrazí data.
+    Data z požadavku hello je vloženy do tabulky TodoItem hello. Položky uložené v tabulce hello se vrátí pomocí back-end mobilní aplikace hello a data se zobrazí v seznamu hello.
 
 > [!NOTE]
-> Na kód, který přistupuje k back-endu mobilní aplikace pro dotazování a vkládání dat, se můžete podívat v souboru C# QSTodoService.cs.
+> Můžete zkontrolovat hello kód, který má přístup k vaší tooquery back-end mobilní aplikace a vkládání dat v souboru C# QSTodoService.cs hello.
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidání offline synchronizace do aplikace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [Přidání ověřování do aplikace](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Přidání nabízených oznámení do aplikace Xamarin.Android](app-service-mobile-xamarin-ios-get-started-push.md)
-* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
+* [Přidat aplikaci tooyour Offline synchronizace](app-service-mobile-xamarin-ios-get-started-offline-data.md)
+* [Přidat aplikaci tooyour ověřování](app-service-mobile-xamarin-ios-get-started-users.md)
+* [Přidat nabízená oznámení tooyour Xamarin.Android aplikaci](app-service-mobile-xamarin-ios-get-started-push.md)
+* [Jak toouse hello spravovat klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->
 [Getting started with mobile app backends]:#getting-started
@@ -87,4 +87,4 @@ Podle následujících kroků nakonfigurujte serverový projekt tak, aby použí
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/

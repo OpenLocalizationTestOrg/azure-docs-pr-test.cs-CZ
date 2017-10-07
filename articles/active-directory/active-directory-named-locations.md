@@ -1,6 +1,6 @@
 ---
-title: "Umístění ve službě Azure Active Directory s názvem | Microsoft Docs"
-description: "Konfigurace s názvem umístění, nemusíte mít IP adresy, které jsou vlastněny organizaci generovat falešně pozitivních pro Impossible dostavit do netypických míst typ události riziko."
+title: "aaaNamed umístění v Azure Active Directory | Microsoft Docs"
+description: "Konfigurace s názvem umístění, nemusíte mít IP adresy, které jsou vlastněny organizaci generovat falešně pozitivních pro umístění tooatypical Neuskutečnitelná cesta hello riziko typ události."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,48 +14,48 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ff31ded1d9d60e47e0ae5f01119de78cd7f2df38
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 591e4b94b2ec9d45e20c01711e922f9972e047e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Pojmenované umístění v Azure Active Directory
 
-Pomocí funkce s názvem umístění služby Azure Active Directory můžete označit důvěryhodné rozsahy IP adres ve vaší organizace. Ve vašem prostředí, můžete použít s názvem umístění v kontextu detekce [rizik události](active-directory-reporting-risk-events.md). Tato funkce pomáhá snížit počet hlášených falešně pozitivních pro *Impossible dostavit do netypických míst* rizik typ události. 
+S hello s názvem umístění funkce služby Azure Active Directory můžete označit důvěryhodné rozsahy IP adres ve vaší organizace. Ve vašem prostředí, můžete použít s názvem umístění v kontextu hello hello zjišťování [rizik události](active-directory-reporting-risk-events.md). Funkce Hello pomáhá snižovat hello počet hlášených falešně pozitivních pro hello *Neuskutečnitelná cesta tooatypical umístění* rizik typ události. 
 
 ## <a name="configuration"></a>Konfigurace
 
-Konfigurace s názvem umístění:
+tooconfigure s názvem umístění:
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) jako globální správce.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) jako globální správce.
 
-2. V levém podokně klikněte na **Azure Active Directory**.
+2. V levém podokně hello, klikněte na **Azure Active Directory**.
 
-    ![V levém podokně na odkaz Azure Active Directory](./media/active-directory-named-locations/01.png)
+    ![v levém podokně hello Hello odkaz Azure Active Directory](./media/active-directory-named-locations/01.png)
 
-3. Na **Azure Active Directory** okno v **zabezpečení** klikněte na tlačítko **podmíněného přístupu**.
+3. Na hello **Azure Active Directory** okno, v hello **zabezpečení** klikněte na tlačítko **podmíněného přístupu**.
 
-    ![Příkaz podmíněného přístupu](./media/active-directory-named-locations/05.png)
-
-
-4. Na **podmíněného přístupu** okno v **spravovat** klikněte na tlačítko **s názvem umístění**.
-
-    ![Příkaz pojmenované umístění](./media/active-directory-named-locations/06.png)
+    ![Hello příkaz podmíněného přístupu](./media/active-directory-named-locations/05.png)
 
 
-5. Na **s názvem umístění** okně klikněte na tlačítko **nové umístění**.
+4. Na hello **podmíněného přístupu** okno, v hello **spravovat** klikněte na tlačítko **s názvem umístění**.
 
-    ![Příkaz nové umístění](./media/active-directory-named-locations/07.png)
+    ![Hello pojmenované umístění příkaz](./media/active-directory-named-locations/06.png)
 
 
-6. Na **nový** okno, proveďte následující:
+5. Na hello **s názvem umístění** okně klikněte na tlačítko **nové umístění**.
 
-    ![Nové okno](./media/active-directory-named-locations/08.png)
+    ![Hello nový příkaz umístění](./media/active-directory-named-locations/07.png)
 
-    a. V **název** zadejte název pro vaše s názvem umístění.
 
-    b. V **rozsahy IP adres** zadejte rozsah adres IP. Rozsah IP adres musí být ve *směrování mezi doménami* formátu (CIDR).  
+6. Na hello **nový** okně hello následující:
+
+    ![Hello nové okno](./media/active-directory-named-locations/08.png)
+
+    a. V hello **název** zadejte název pro vaše s názvem umístění.
+
+    b. V hello **rozsahy IP adres** zadejte rozsah adres IP. rozsah IP Hello musí toobe v hello *směrování mezi doménami* formátu (CIDR).  
 
     c. Klikněte na možnost **Vytvořit**.
 
@@ -63,15 +63,15 @@ Konfigurace s názvem umístění:
 
 ## <a name="what-you-should-know"></a>Důležité informace
 
-**Hromadné aktualizace**: při vytváření nebo aktualizaci s názvem umístění pro hromadné aktualizace, můžete nahrát nebo stáhnout soubor CSV s rozsahy IP. Nahrávaný přidá rozsahy IP v souboru do seznamu místo přepsání seznamu.
+**Hromadné aktualizace**: při vytváření nebo aktualizaci s názvem umístění pro hromadné aktualizace, můžete nahrát nebo stáhnout soubor CSV s rozsahy IP hello. Nahrávaný přidá hello rozsahy IP adres v seznamu toohello hello souboru místo přepsání hello seznamu.
 
-![Nahrávání a stahování odkazy](./media/active-directory-named-locations/09.png)
+![Hello nahrávání a stahování odkazy](./media/active-directory-named-locations/09.png)
 
 
-**Omezení**: nesmí být delší než 60 s názvem umístění, můžete definovat s jeden rozsah IP adres přiřazené ke každému z nich. Pokud máte pouze jednu s názvem umístění nakonfigurovaný, můžete definovat maximálně 500 rozsahy IP adres pro ni.
+**Omezení**: můžete definovat nesmí být delší než 60 s názvem umístění, s jeden rozsah přiřazené tooeach IP z nich. Pokud máte pouze jednu s názvem umístění nakonfigurovaný, můžete definovat až too500 rozsahy IP adres pro ni.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rizikových událostech najdete v tématu [Azure Active Directory rizikových událostech](active-directory-reporting-risk-events.md).
+toolearn Další informace o rizikových událostech, najdete v části [Azure Active Directory rizikových událostech](active-directory-reporting-risk-events.md).
 

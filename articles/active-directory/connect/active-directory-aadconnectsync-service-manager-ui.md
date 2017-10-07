@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d33f02822097aa7f83042606ba46fd533e85ac23
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do Azure AD Connect Synchronization Service Manager uživatelského rozhraní
+# <a name="introduction-toohello-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod toohello Azure AD Connect Synchronization Service Manager uživatelského rozhraní
 
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
-**Synchronization Service Manager** uživatelského rozhraní se používá ke konfiguraci pokročilejší aspektů synchronizační modul a zobrazíte provozní aspekty služby.
+Hello **Synchronization Service Manager** uživatelského rozhraní je použité tooconfigure pokročilejší aspektů hello synchronizační modul a toosee hello provozní aspekty služby hello.
 
-Spuštění **Synchronization Service Manager** uživatelského rozhraní z nabídky start. Je název **synchronizační služba** a nachází se v **Azure AD Connect** skupiny.  
+Spustit hello **Synchronization Service Manager** uživatelského rozhraní z hello nabídky start. Je název **synchronizační služba** a nachází se v hello **Azure AD Connect** skupiny.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
 
-Kliknutím na odkazy v horní části tohoto tématu, dozvíte se další informace o různých kartách v uživatelském rozhraní.
+Kliknutím na odkazy hello hello horní části tohoto tématu toolearn Další informace o různých kartách hello v hello uživatelského rozhraní.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

@@ -1,6 +1,6 @@
 ---
-title: "Úprava textové sady runbook ve službě Azure Automation"
-description: "Tento článek obsahuje různé postupy pro práci se sadami runbook Powershellu a pracovní postup prostředí PowerShell ve službě Azure Automation pomocí textový editor."
+title: "aaaEditing textovou runbooky ve službě Azure Automation"
+description: "Tento článek obsahuje různé postupy pro práci se sadami runbook Powershellu a pracovní postup prostředí PowerShell ve službě Azure Automation pomocí hello textový editor."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 21f30e1266a444a2258973f8acad3692077f535b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3fd87d457838f300ca6c94bc345e82c679a0e011
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úprava textové sady runbook ve službě Azure Automation
-Textový editor ve službě Azure Automation lze upravit [Powershellové runbooky](automation-runbook-types.md#powershell-runbooks) a [runbooky pracovních postupů Powershellu](automation-runbook-types.md#powershell-workflow-runbooks). Tato akce nemá typické funkce editory další kód například intellisense a barevné kódování s další speciální funkce pomoc při přístupu k prostředkům, které jsou společné pro sady runbook.  Tento článek poskytuje podrobné pokyny pro provádění různé funkce pomocí tohoto editoru.
+Hello textový editor ve službě Azure Automation lze použít tooedit [Powershellové runbooky](automation-runbook-types.md#powershell-runbooks) a [runbooky pracovních postupů Powershellu](automation-runbook-types.md#powershell-workflow-runbooks). Tato akce nemá hello typické funkce další kód editory například intellisense a barevné kódování s další speciální funkce tooassist můžete při přístupu ke společné toorunbooks prostředky.  Tento článek poskytuje podrobné pokyny pro provádění různé funkce pomocí tohoto editoru.
 
-Textový editor obsahuje funkci pro vložení kódu pro aktivity, prostředky a podřízené runbooky do runbooku. Nemusíte psát kód sami, můžete vybrat ze seznamu dostupných zdrojů a odpovídající kódu vloží do runbooku.
+textový editor Hello zahrnuje funkce tooinsert kódu pro aktivity, prostředky a podřízené runbooky do runbooku. Nemusíte psát kód hello sami, můžete vybrat ze seznamu dostupných zdrojů a mají hello vložit správný kód do runbooku hello.
 
-Každá sada runbook ve službě Azure Automation má dvě verze: koncept a publikovaný. Můžete upravovat verzi konceptu sady runbook a pak ho publikujete, aby se Dal spustit. Publikovaná verze nelze upravit. V tématu [publikování runbooku](automation-creating-importing-runbook.md#publishing-a-runbook) Další informace.
+Každá sada runbook ve službě Azure Automation má dvě verze: koncept a publikovaný. Upravte hello verzi konceptu sady runbook hello a pak ho publikujete, aby se Dal spustit. Hello publikovaná verze nelze upravit. V tématu [publikování runbooku](automation-creating-importing-runbook.md#publishing-a-runbook) Další informace.
 
-Pro práci s [grafické Runbooky](automation-runbook-types.md#graphical-runbooks), najdete v části [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
+toowork s [grafické Runbooky](automation-runbook-types.md#graphical-runbooks), najdete v části [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
 
-## <a name="to-edit-a-runbook-with-the-azure-portal"></a>Chcete-li upravit sadu runbook pomocí portálu Azure
-Otevřete sadu runbook pro úpravy v textový editor, použijte následující postup.
+## <a name="tooedit-a-runbook-with-hello-azure-portal"></a>tooedit sady runbook pomocí portálu Azure hello
+Použijte následující postup tooopen sady runbook pro úpravy v textový editor hello hello.
 
-1. Na portálu Azure vyberte svůj účet automation.
-2. Kliknutím na dlaždici **Runbooky** otevřete seznam runbooků.
-3. Klikněte na název sady runbook, kterou chcete upravit a pak klikněte na **upravit** tlačítko.
-4. Udělejte požadované úpravy.
+1. V hello portálu Azure vyberte svůj účet automation.
+2. Klikněte na tlačítko hello **Runbooky** dlaždice tooopen hello seznamu sad runbook.
+3. Klikněte na název hello hello sady runbook tooedit a pak klikněte na hello **upravit** tlačítko.
+4. Proveďte potřebné úpravy hello.
 5. Klikněte na tlačítko **Uložit** při dokončení provedené úpravy se.
-6. Klikněte na tlačítko **publikovat** Pokud chcete, aby nejnovější verzi konceptu sady runbook publikovat.
+6. Klikněte na tlačítko **publikovat** Pokud chcete, aby hello nejnovější verzi konceptu hello toobe sady runbook publikovat.
 
-### <a name="to-insert-a-cmdlet-into-a-runbook"></a>Chcete-li vložit rutiny do runbooku
-1. Na plátně textový editor umístěte kurzor, kam chcete umístit rutinu.
-2. Rozbalte **rutiny** uzlu v ovládacím prvku knihovna.
-3. Rozbalte modul, který obsahuje rutinu, kterou chcete použít.
-4. Klikněte pravým tlačítkem na rutinu k vložení a vyberte **přidat na plátno**.  Pokud rutina má více než jeden parametr nastavit, se přidá výchozí sadu.  Můžete také rozšířit rutinu pro výběr sady jiným parametrem.
-5. Kód pro rutinu vložena s jeho celý seznam parametrů.
-6. Zadejte odpovídající hodnotu namísto datového typu v závorkách <> pro požadované parametry.  Odeberte všechny parametry, které nepotřebujete.
+### <a name="tooinsert-a-cmdlet-into-a-runbook"></a>tooinsert rutiny do runbooku
+1. V hello plátno hello textový editor umístěte kurzor hello místo, kde chcete tooplace hello rutiny.
+2. Rozbalte hello **rutiny** uzlu v hello prvku knihovna.
+3. Rozbalte hello modul, který obsahuje rutinu hello chcete toouse.
+4. Klikněte pravým tlačítkem na hello rutiny tooinsert a vyberte **přidat toocanvas**.  Pokud rutina hello má více než jeden parametr nastavení, bude přidán hello výchozí sadu.  Můžete také rozšířit hello rutiny tooselect jiným parametrem nastavit.
+5. Hello kód pro rutinu hello vložena s jeho celý seznam parametrů.
+6. Zadejte odpovídající hodnotu namísto hello datového typu v závorkách <> pro požadované parametry.  Odeberte všechny parametry, které nepotřebujete.
 
-### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>Vložení kódu pro podřízený runbook do runbooku
-1. Na plátně textový editor, umístěte kurzor kam chcete umístit kód [podřízeného runbooku](automation-child-runbooks.md).
-2. Rozbalte **Runbooky** uzlu v ovládacím prvku knihovna.
-3. Klikněte pravým tlačítkem na runbook pro vložení a vyberte **přidat na plátno**.
-4. Kód pro podřízený runbook vložena s zástupné symboly pro všechny parametry runbooku.
-5. Zástupné názvy nahraďte příslušnými hodnotami pro jednotlivé parametry.
+### <a name="tooinsert-code-for-a-child-runbook-into-a-runbook"></a>tooinsert kód pro podřízený runbook do runbooku
+1. V hello plátno hello textový editor, umístěte kurzor hello místo tooplace hello kód pro hello [podřízeného runbooku](automation-child-runbooks.md).
+2. Rozbalte hello **Runbooky** uzel v hello prvku knihovna.
+3. Klikněte pravým tlačítkem na tooinsert hello sady runbook a vyberte **přidat toocanvas**.
+4. Hello kód pro podřízený runbook hello vložena s zástupné symboly pro všechny parametry runbooku.
+5. Nahraďte zástupné symboly hello s příslušnými hodnotami pro jednotlivé parametry.
 
-### <a name="to-insert-an-asset-into-a-runbook"></a>Chcete-li vložit prostředek do runbooku
-1. Na plátně textový editor umístěte kurzor, kam chcete umístit kód pro podřízený runbook.
-2. Rozbalte **prostředky** uzlu v ovládacím prvku knihovna.
-3. Rozbalte uzel pro typ prostředku, který má být.
-4. Klikněte pravým tlačítkem na prostředek, který chcete vložit a vyberte **přidat na plátno**.  Pro [proměnných assetů](automation-variables.md), vyberte buď **přidat "Získat proměnnou" na plátno** nebo **přidat "Nastavit proměnnou" na plátno** v závislosti na tom, jestli chcete získat nebo nastavit proměnnou.
-5. Kód pro asset budou vložena do sady runbook.
+### <a name="tooinsert-an-asset-into-a-runbook"></a>tooinsert prostředek do runbooku
+1. V hello plátno hello textový editor umístěte kurzor hello, kde chcete tooplace hello kód pro hello podřízené sady runbook.
+2. Rozbalte hello **prostředky** uzlu v hello prvku knihovna.
+3. Rozbalte uzel hello pro typ prostředku, který má být hello.
+4. Klikněte pravým tlačítkem na hello asset tooinsert a vyberte **přidat toocanvas**.  Pro [proměnných assetů](automation-variables.md), vyberte buď **přidat "Získat proměnnou" toocanvas** nebo **přidat "Nastavit proměnnou" toocanvas** v závislosti na tom, zda mají být tooget nebo nastavit proměnnou hello.
+5. Hello kód pro prostředek hello je vložen do sady runbook hello.
 
-## <a name="to-edit-a-runbook-with-the-azure-portal"></a>Chcete-li upravit sadu runbook pomocí portálu Azure
-Otevřete sadu runbook pro úpravy v textový editor, použijte následující postup.
+## <a name="tooedit-a-runbook-with-hello-azure-portal"></a>tooedit sady runbook pomocí portálu Azure hello
+Použijte následující postup tooopen sady runbook pro úpravy v textový editor hello hello.
 
-1. Na portálu Azure vyberte **automatizace** a pak klikněte na název účtu automation.
-2. Vyberte **Runbooky** kartě.
-3. Klikněte na název sady runbook, kterou chcete upravit a pak vyberte **Autor** kartě.
-4. Klikněte **upravit** tlačítko v dolní části obrazovky.
-5. Udělejte požadované úpravy.
+1. V hello portálu Azure, vyberte **automatizace** a pak klikněte hello název účtu automation.
+2. Vyberte hello **Runbooky** kartě.
+3. Klikněte na název hello hello sady runbook mají tooedit a potom vyberte hello **Autor** kartě.
+4. Klikněte na tlačítko hello **upravit** tlačítko dole hello úvodní obrazovka.
+5. Proveďte potřebné úpravy hello.
 6. Klikněte na tlačítko **Uložit** při dokončení provedené úpravy se.
-7. Klikněte na tlačítko **publikovat** Pokud chcete, aby nejnovější verzi konceptu sady runbook publikovat.
+7. Klikněte na tlačítko **publikovat** Pokud chcete, aby hello nejnovější verzi konceptu hello toobe sady runbook publikovat.
 
-### <a name="to-insert-an-activity-into-a-runbook"></a>Vložení aktivity do sady Runbook
-1. Na plátně textový editor umístěte kurzor, kam chcete umístit aktivity.
-2. V dolní části obrazovky klikněte na tlačítko **vložit** a potom **aktivity**.
-3. V **modulu integrace** sloupce, vyberte modul, který obsahuje aktivitu.
-4. V **aktivity** podokně, vyberte aktivitu.
-5. V **popis** sloupce, všimněte popisu aktivity. Volitelně klikněte na Zobrazit podrobnou nápovědu a spustit tak nápovědu pro aktivitu v prohlížeči.
-6. Klikněte na šipku vpravo.  Pokud má aktivita parametry, budou uvedené pro vaši informaci.
-7. Klikněte na tlačítko se zaškrtnutím.  Kód pro spuštění aktivity se vloží do runbooku.
-8. Pokud aktivita vyžaduje parametry, zadejte odpovídající hodnotu namísto datového typu v závorkách <>.
+### <a name="tooinsert-an-activity-into-a-runbook"></a>tooinsert aktivity do sady Runbook
+1. V hello plátno hello textový editor umístěte kurzor hello místo, kde chcete tooplace hello aktivity.
+2. Hello dolní části úvodní obrazovka, klikněte na **vložit** a potom **aktivity**.
+3. V hello **modulu integrace** sloupce, vyberte hello modul, který obsahuje aktivitu hello.
+4. V hello **aktivity** podokně, vyberte aktivitu.
+5. V hello **popis** sloupce, popis hello Poznámka hello aktivity. Volitelně můžete kliknout na podrobné zobrazení nápovědy. toolaunch aktivity hello v prohlížeči hello.
+6. Klikněte na šipku vpravo hello.  Pokud má aktivita hello parametry, budou uvedené pro vaši informaci.
+7. Klikněte na tlačítko Zkontrolovat hello.  Kód toorun hello aktivity se vloží do runbooku hello.
+8. Pokud hello aktivita vyžaduje parametry, zadejte odpovídající hodnotu namísto datového typu hello v <> složené závorky.
 
-### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>Vložení kódu pro podřízený runbook do runbooku
-1. Na plátně textový editor, umístěte kurzor kam chcete umístit [podřízeného runbooku](automation-child-runbooks.md).
-2. V dolní části obrazovky klikněte na tlačítko **vložit** a potom **Runbook**.
-3. Vyberte runbook pro vložení v prostředním sloupci a klikněte na šipku vpravo.
-4. Pokud sada runbook obsahuje parametry, budou uvedené pro vaši informaci.
-5. Klikněte na tlačítko se zaškrtnutím.  Kód pro spuštění vybraného runbooku se vloží do aktuálního runbooku.
-6. Pokud runbook vyžaduje parametry, zadejte odpovídající hodnotu namísto datového typu v závorkách <>.
+### <a name="tooinsert-code-for-a-child-runbook-into-a-runbook"></a>tooinsert kód pro podřízený runbook do runbooku
+1. V hello plátno hello textový editor, umístěte kurzor hello místo tooplace hello [podřízeného runbooku](automation-child-runbooks.md).
+2. Hello dolní části úvodní obrazovka, klikněte na **vložit** a potom **Runbook**.
+3. Vyberte hello runbook tooinsert hello prostředním sloupci a klikněte na šipku vpravo hello.
+4. Pokud hello runbook obsahuje parametry, budou uvedené pro vaši informaci.
+5. Klikněte na tlačítko Zkontrolovat hello.  Kód toorun hello vybrané sady runbook bude vložen do aktuální sady runbook hello.
+6. Pokud hello runbook vyžaduje parametry, zadejte odpovídající hodnotu namísto datového typu hello v <> složené závorky.
 
-### <a name="to-insert-an-asset-into-a-runbook"></a>Chcete-li vložit prostředek do runbooku
-1. Na plátně textový editor umístěte kurzor, kam chcete umístit aktivity načíst asset.
-2. V dolní části obrazovky klikněte na tlačítko **vložit** a potom **nastavení**.
-3. V **akce nastavení** sloupce, vyberte akci, kterou chcete.
-4. Vyberte z dostupných prostředků v prostředním sloupci.
-5. Klikněte na tlačítko se zaškrtnutím.  Kód pro získání nebo nastavení prostředku se vloží do runbooku.
+### <a name="tooinsert-an-asset-into-a-runbook"></a>tooinsert prostředek do runbooku
+1. V hello plátno hello textový editor umístěte kurzor hello místo, kam chcete tooplace hello aktivity tooretrieve hello asset.
+2. Hello dolní části úvodní obrazovka, klikněte na **vložit** a potom **nastavení**.
+3. V hello **akce nastavení** sloupce, vyberte hello akce, který chcete.
+4. Vyberte z dostupných prostředků hello v prostředním sloupci hello.
+5. Klikněte na tlačítko Zkontrolovat hello.  Kód tooget nebo sadu hello asset se vloží do runbooku hello.
 
-## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>Chcete-li upravit runbook služby Azure Automation pomocí prostředí Windows PowerShell
-Postup úpravy sady runbook pomocí prostředí Windows PowerShell, pomocí editoru podle své volby a uložte ho do souboru s příponou .ps1. Můžete použít [Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) rutiny můžete načíst obsah runbooku a potom [Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) rutiny nahradit existující koncept runbooku upravili.
+## <a name="tooedit-an-azure-automation-runbook-using-windows-powershell"></a>tooedit runbook služby Azure Automation pomocí prostředí Windows PowerShell
+tooedit sady runbook pomocí prostředí Windows PowerShell, je použít hello editoru podle své volby a uložit jej tooa souboru .ps1. Můžete použít hello [Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) rutiny tooretrieve hello obsah hello runbook a potom [Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) rutiny tooreplace hello existující Koncept sady runbook s hello upravit jeden.
 
-### <a name="to-retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>K načtení obsahu runbooku pomocí prostředí Windows PowerShell
-Následující vzorové příkazy znázorňují postup načtení skriptu pro sadu runbook a uložit ho do souboru skriptu. V tomto příkladu se načte koncept. Je také možné načíst publikovanou verzi runbooku, i když tato verze nedá změnit.
+### <a name="tooretrieve-hello-contents-of-a-runbook-using-windows-powershell"></a>tooRetrieve hello obsah sady Runbook pomocí prostředí Windows PowerShell
+Hello následující vzorové příkazy ukazují, jak tooretrieve hello skriptu pro sadu runbook a uložit ho tooa souboru skriptu. V tomto příkladu se načte koncept hello. Je také možné tooretrieve hello publikovaná verze sady runbook hello i když tato verze nedá změnit.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -112,8 +112,8 @@ Následující vzorové příkazy znázorňují postup načtení skriptu pro sad
 
     Out-File -InputObject $runbookContent -FilePath $scriptPath
 
-### <a name="to-change-the-contents-of-a-runbook-using-windows-powershell"></a>Chcete-li změnit obsah sady Runbook pomocí prostředí Windows PowerShell
-Následující vzorové příkazy ukazují, jak nahradit existující obsah runbooku obsahem souboru skriptu. Všimněte si, že toto je stejným způsobem jako v ukázkové [import runbooku ze souboru skriptu v prostředí Windows PowerShell](automation-creating-importing-runbook.md).
+### <a name="toochange-hello-contents-of-a-runbook-using-windows-powershell"></a>tooChange hello obsah sady Runbook pomocí prostředí Windows PowerShell
+Hello následující vzorové příkazy ukazují, jak tooreplace hello stávajícího obsahu sady runbook s hello obsahem souboru skriptu. Všimněte si, že to je hello stejný postup jako v ukázkové [tooimport runbooku ze souboru skriptu v prostředí Windows PowerShell](automation-creating-importing-runbook.md).
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"

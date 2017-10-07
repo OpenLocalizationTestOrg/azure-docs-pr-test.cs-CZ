@@ -1,6 +1,6 @@
 ---
 title: 'Synchronizace Azure AD Connect: Scheduler | Microsoft Docs'
-description: "Toto téma popisuje funkci integrované plánovače v synchronizaci Azure AD Connect."
+description: "Toto téma popisuje funkce integrované scheduler hello v synchronizaci Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 63f69756b3933fecdec75cc677e1098447e5b94e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c587039cc68d305862a07beff364894b6f74cd2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: plánovače
-Toto téma popisuje předdefinované plánovače v synchronizaci Azure AD Connect (také známa jako synchronizační modul).
+Toto téma popisuje hello předdefinované plánovače v synchronizaci Azure AD Connect (také známa jako synchronizační modul).
 
 Tato funkce byla zavedená s sestavení 1.1.105.0 (vydané. února 2016).
 
 ## <a name="overview"></a>Přehled
-Synchronizace Azure AD Connect synchronizovat změny, které se vašeho místního adresáře pomocí plánovače. Existují dva procesy scheduler, jednu pro synchronizaci hesel a druhou pro objekt nebo atribut úlohy synchronizace a údržby. Toto téma popisuje ty druhé.
+Synchronizace Azure AD Connect synchronizovat změny, které se vašeho místního adresáře pomocí plánovače. Existují dva procesy scheduler, jednu pro synchronizaci hesel a druhou pro objekt nebo atribut úlohy synchronizace a údržby. Toto téma popisuje hello pozdější.
 
-V dřívějších verzích se externí synchronizačního modulu scheduler pro objekty a atributy. Použije se spustit proces synchronizace plánovače úloh systému Windows nebo samostatné služby systému Windows. Plánovač je pomocí integrované verze 1.1 na synchronizace modul a umožňují některé vlastní nastavení. Nové výchozí frekvence synchronizace je 30 minut.
+V dřívějších verzích se hello Plánovač pro objekty a atributy externí toohello synchronizační modul. Použije plánovače úloh systému Windows nebo samostatný hello synchronizace proces tootrigger služby systému Windows. Hello scheduler je s hello 1.1 verzích předdefinované toohello synchronizační modul a umožňují některé vlastní nastavení. Hello nový výchozí frekvence synchronizace je 30 minut.
 
-Plánovač zodpovídá za dvě úlohy:
+Hello scheduler je zodpovědná za dvě úlohy:
 
-* **Synchronizační cyklus**. Proces importu, synchronizaci a exportovat změny.
-* **Úlohy údržby**. Obnovení klíčů a certifikátů pro obnovení hesla a služby DRS (Device Registration). Vymazat staré položky v protokolu operací.
+* **Synchronizační cyklus**. Hello proces tooimport, synchronizaci a export změny.
+* **Úlohy údržby**. Obnovení klíčů a certifikátů pro obnovení hesla a služby DRS (Device Registration). Vymazat staré položky v protokolu operations hello.
 
-Plánovač samotné bude vždy spuštěn, ale můžete nastavit běžela jenom jedna nebo žádná z těchto úloh. Například pokud je potřeba mít vlastní proces synchronizace cyklus, můžete zakázat tuto úlohu v Plánovači ale pořád spustit úlohu údržby.
+Hello scheduler samotné bude vždy spuštěn, ale může být nakonfigurované tooonly spustit jedna nebo žádná z těchto úloh. Například pokud potřebujete toohave vlastní proces synchronizace cyklus, můžete zakázat tato úloha v Plánovači hello, ale stále spuštění hello úlohy údržby.
 
 ## <a name="scheduler-configuration"></a>Konfiguraci plánovače
-Chcete-li zobrazit aktuální nastavení konfigurace, přejděte na prostředí PowerShell a spusťte `Get-ADSyncScheduler`. Zobrazuje něco jako tomto obrázku:
+toosee aktuální nastavení konfigurace, přejděte tooPowerShell a spusťte `Get-ADSyncScheduler`. Zobrazuje něco jako tomto obrázku:
 
 ![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings2016.png)
 
-Pokud se zobrazí **příkaz synchronizace nebo rutiny není k dispozici** při spuštění této rutiny, pak není načíst modul prostředí PowerShell. Tento problém se může stát, když spustíte Azure AD Connect na řadiči domény nebo na serveru s vyšší úrovně omezení prostředí PowerShell než výchozí nastavení. Pokud se zobrazí tato chyba, spusťte `Import-Module ADSync` chcete zpřístupnit rutinu.
+Pokud se zobrazí **příkaz synchronizace hello nebo rutiny není k dispozici** při spuštění této rutiny, pak není načíst modul prostředí PowerShell hello. Tento problém se může stát, když spustíte Azure AD Connect na řadiči domény nebo na serveru s vyšší úrovně omezení prostředí PowerShell než hello výchozí nastavení. Pokud se zobrazí tato chyba, spusťte `Import-Module ADSync` toomake hello rutiny k dispozici.
 
-* **AllowedSyncCycleInterval**. Nejkratší časový interval mezi cykly synchronizace povolený Azure AD. Nelze synchronizovat častěji, než toto nastavení a přesto být podporována.
-* **CurrentlyEffectiveSyncCycleInterval**. Plán právě vliv. Má stejnou hodnotu jako CustomizedSyncInterval (Pokud nastavit) Pokud není častější, než AllowedSyncInterval. Pokud používáte sestavení před 1.1.281 a změníte CustomizedSyncCycleInterval, tato změna se projeví po příštím synchronizačním cyklu. Ze sestavení 1.1.281 změna se projeví okamžitě.
-* **CustomizedSyncCycleInterval**. Pokud chcete plánovač spustit frekvencí jakékoli jiné než výchozí 30 minut, nakonfigurujete toto nastavení. Na obrázku výše je nastavená Plánovač běžela každou hodinu. Nastavíte-li toto nastavení na hodnotu nižší než AllowedSyncInterval, k tomu je použita.
-* **NextSyncCyclePolicyType**. Rozdílová nebo počáteční. Určuje, zda příštím spuštění by měl jenom proces rozdílové změny, nebo pokud příštím spuštění musí používat úplnou import a synchronizaci. K tomu by také znovu zpracovat všechna pravidla, nové nebo změněné.
-* **NextSyncCycleStartTimeInUTC**. Příště Plánovač spustí příštím synchronizačním cyklu.
-* **PurgeRunHistoryInterval**. Čas protokoly operací by měly být udržovány. Tyto protokoly mohou být zjišťovány synchronization service manager. Výchozí hodnota je pro tyto protokoly pro 7 dní.
-* **SyncCycleEnabled**. Označuje, zda Plánovač běží import, synchronizaci a export procesy v rámci jeho operace.
-* **MaintenanceEnabled**. Zobrazí, pokud je povoleno procesu údržby. Ho aktualizuje certifikáty nebo klíče a vymaže v protokolu operací.
-* **StagingModeEnabled**. Zobrazí-li [pracovním režimu](active-directory-aadconnectsync-operations.md#staging-mode) je povoleno. Pokud je toto nastavení povoleno, pak jej potlačí exporty spuštění, ale pořád spustit import a synchronizaci.
-* **SchedulerSuspended**. Nastavte Connect během upgradu dočasně blok Plánovač spuštění.
+* **AllowedSyncCycleInterval**. Hello nejkratší časový interval mezi cykly synchronizace povolený Azure AD. Nelze synchronizovat častěji, než toto nastavení a přesto být podporována.
+* **CurrentlyEffectiveSyncCycleInterval**. Hello plán aktuálně v platnost. Má stejnou hodnotu jako CustomizedSyncInterval hello (Pokud nastavit) Pokud není častější, než AllowedSyncInterval. Pokud používáte sestavení před 1.1.281 a změníte CustomizedSyncCycleInterval, tato změna se projeví po příštím synchronizačním cyklu. Ze sestavení 1.1.281 hello změny se projeví okamžitě.
+* **CustomizedSyncCycleInterval**. Pokud chcete hello Plánovač toorun frekvencí jakékoli jiné než výchozí hello 30 minut, nakonfigurujete toto nastavení. Na obrázku hello výše hello Plánovač byla nastavena toorun každou hodinu místo. Pokud jste nastavili tato nastavení tooa hodnota nižší než AllowedSyncInterval, se používá hello pozdější.
+* **NextSyncCyclePolicyType**. Rozdílová nebo počáteční. Určuje, zda hello příštím spuštění by měl jenom rozdílové změny procesu, nebo pokud hello příštím spuštění musí používat úplnou import a synchronizaci. Hello pozdější by také znovu zpracovat všechna pravidla, nové nebo změněné.
+* **NextSyncCycleStartTimeInUTC**. Při příštím spuštění hello scheduler hello příštím synchronizačním cyklu.
+* **PurgeRunHistoryInterval**. Hello čas operace, které by měly být udržovány protokoly. Tyto protokoly mohou být zjišťovány hello synchronization service Manageru. Hello výchozí je tookeep tyto protokoly po dobu 7 dnů.
+* **SyncCycleEnabled**. Označuje, pokud hello Plánovač běží export procesy hello import, synchronizaci a jako součást své činnosti.
+* **MaintenanceEnabled**. Zobrazí, pokud je povoleno procesu údržby hello. Aktualizuje hello certifikáty nebo klíče a vyprazdňovat hello protokolu operací.
+* **StagingModeEnabled**. Zobrazí-li [pracovním režimu](active-directory-aadconnectsync-operations.md#staging-mode) je povoleno. Pokud je toto nastavení povoleno, pak jej potlačí hello exportuje spuštění, ale pořád spustit import a synchronizaci.
+* **SchedulerSuspended**. Connect nastavte během upgradu tootemporarily bloku hello scheduler spuštění.
 
-Můžete změnit některé z těchto nastavení s `Set-ADSyncScheduler`. Tyto parametry se dají změnit:
+Můžete změnit některé z těchto nastavení s `Set-ADSyncScheduler`. můžete upravit Hello následující parametry:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -63,73 +63,73 @@ Můžete změnit některé z těchto nastavení s `Set-ADSyncScheduler`. Tyto pa
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-V dřívějších sestavení Azure AD Connect **isStagingModeEnabled** byl vystavený v ADSyncScheduler sady. Je **nepodporované** pro tuto vlastnost nastavit. Vlastnost **SchedulerSuspended** by měl být upraven pouze Connect. Je **nepodporované** přímo nastavit pomocí prostředí PowerShell.
+V dřívějších sestavení Azure AD Connect **isStagingModeEnabled** byl vystavený v ADSyncScheduler sady. Je **nepodporované** tooset tuto vlastnost. Hello vlastnost **SchedulerSuspended** by měl být upraven pouze Connect. Je **nepodporované** tooset to pomocí prostředí PowerShell přímo.
 
-Konfiguraci plánovače, kterou je uložená ve službě Azure AD. Pokud máte na testovacím serveru, všechny změny na primárním serveru také ovlivní pracovní server (s výjimkou IsStagingModeEnabled).
+Konfigurace plánovače Hello je uložená ve službě Azure AD. Pokud máte na testovacím serveru, všechny změny na primárním serveru hello také ovlivní hello pracovní server (s výjimkou IsStagingModeEnabled).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Syntaxe:`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d – počet dnů, HH - hodiny, mm - minuty, ss - sekundy
 
 Příklad:`Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
-Změní Plánovač každé 3 hodiny.
+Změny hello Plánovač toorun každé 3 hodiny.
 
 Příklad:`Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-Změny změnit plánovače na každodenní spouštění.
+Změny změnit hello Plánovač toorun denně.
 
-### <a name="disable-the-scheduler"></a>Zakázat plánovače  
-Pokud potřebujete provést změny konfigurace, budete chtít zakázat plánovače. Například, když jste [konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md) nebo [změnit pravidla synchronizace](active-directory-aadconnectsync-change-the-configuration.md).
+### <a name="disable-hello-scheduler"></a>Zakázat hello plánovače  
+Pokud potřebujete toomake změny konfigurace, pak budete chtít toodisable hello plánovače. Například, když jste [konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md) nebo [proveďte změny pravidel toosynchronization](active-directory-aadconnectsync-change-the-configuration.md).
 
-Pokud chcete zakázat plánovač, spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+scheduler hello toodisable, spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
-![Zakázat plánovače](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)
+![Zakázat hello plánovače](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)
 
-Pokud jste udělali změny, nezapomeňte povolit Plánovač znovu s `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Pokud jste udělali změny, nevynechali tooenable hello scheduler znovu s `Set-ADSyncScheduler -SyncCycleEnabled $true`.
 
-## <a name="start-the-scheduler"></a>Spuštění plánovače
-Plánovač je ve výchozím nastavení spouští každých 30 minut. V některých případech můžete chtít spustit synchronizační cyklus mezi naplánované cyklů nebo budete muset spustit jiného typu.
+## <a name="start-hello-scheduler"></a>Spuštění hello plánovače
+Hello scheduler je ve výchozím nastavení spouští každých 30 minut. V některých případech můžete chtít toorun cyklus synchronizace mezi hello plánované cyklů nebo potřebujete toorun jiného typu.
 
 **Rozdílová synchronizace cyklu**  
-Cyklus synchronizace delta zahrnuje následující kroky:
+Cyklus synchronizace delta zahrnuje hello následující kroky:
 
 * Rozdílový import na všechny konektory
 * Rozdílová synchronizace na všechny konektory
 * Exportovat na všechny konektory
 
-Může to být, že máte naléhavé změny, která musí být synchronizovány okamžitě, proto musíte ručně spustit cyklus. Pokud potřebujete ručně spustit cyklus, pak z prostředí PowerShell spustit `Start-ADSyncSyncCycle -PolicyType Delta`.
+Může být, že máte naléhavé změny, která musí být synchronizovány okamžitě, proto musíte toomanually spustit cyklus. Pokud potřebujete toomanually spustit cyklus, pak z prostředí PowerShell spustit `Start-ADSyncSyncCycle -PolicyType Delta`.
 
 **Cyklus úplné synchronizace**  
-Pokud jste provedli jednu z následujících změn konfigurace, budete muset spustit cyklus úplné synchronizace (také známa jako Počáteční):
+Pokud jste provedli jednu z hello následující změny konfigurace, je třeba toorun a cyklus úplné synchronizace (také známa jako Počáteční):
 
-* Přidat další objekty nebo atributy, které mají být importována ze zdrojového adresáře
-* Změny synchronizační pravidla
+* Přidat další objekty nebo atributy toobe importovat ze zdrojového adresáře
+* Provedené změny toohello synchronizační pravidla
 * Změnit [filtrování](active-directory-aadconnectsync-configure-filtering.md) tak odlišný počet objektů, které by měly být zahrnuty
 
-Pokud jste provedli jednu z těchto změn, budete muset spustit úplnou synchronizaci cyklus, takže synchronizační modul má možnost znovu sloučit prostor konektoru. Cyklus úplné synchronizace zahrnuje následující kroky:
+Pokud jste provedli jednu z těchto změn, musíte toorun úplnou synchronizaci cyklus, takže hello synchronizační modul má prostor konektoru hello možnost tooreconsolidate hello. Cyklus úplné synchronizace zahrnuje hello následující kroky:
 
 * Úplný Import na všechny konektory
 * Plná synchronizace v všechny konektory
 * Exportovat na všechny konektory
 
-Chcete-li cyklus úplné synchronizace, spusťte `Start-ADSyncSyncCycle -PolicyType Initial` z řádku prostředí PowerShell. Tento příkaz spustí cyklus úplné synchronizace.
+Spustit tooinitiate a cyklus úplné synchronizace `Start-ADSyncSyncCycle -PolicyType Initial` z řádku prostředí PowerShell. Tento příkaz spustí cyklus úplné synchronizace.
 
-## <a name="stop-the-scheduler"></a>Zastavení plánovače
-Pokud plánovač aktuálně běží synchronizační cyklus, možná budete muset zastavte ji. Například pokud spustíte Průvodce instalací a se tato chyba:
+## <a name="stop-hello-scheduler"></a>Zastavení plánovače hello
+Pokud hello scheduler aktuálně běží synchronizační cyklus, bude pravděpodobně nutné toostop ho. Například pokud spustíte Průvodce instalací hello a se tato chyba:
 
 ![SyncCycleRunningError](./media/active-directory-aadconnectsync-feature-scheduler/synccyclerunningerror.png)
 
-Když běží synchronizační cyklus, nemůžete změnit konfiguraci. Může Počkejte, dokud Plánovač byl dokončen proces, ale můžete ho umožní vám provádět změny okamžitě také zastavit. Zastavení aktuální cyklus není škodlivé a změny čekající na zpracování se zpracují bez další spuštění.
+Když běží synchronizační cyklus, nemůžete změnit konfiguraci. Vám může Počkejte, dokud hello scheduler byl dokončen proces hello, ale můžete ho umožní vám provádět změny okamžitě také zastavit. Zastavení hello aktuální cyklus není škodlivé a změny čekající na zpracování se zpracují bez dalšího spuštění.
 
-1. Začněte tím, že se na zastavení jeho aktuální cyklus pomocí rutiny prostředí PowerShell plánovače `Stop-ADSyncSyncCycle`.
-2. Pokud používáte sestavení před 1.1.281, pak zastavování plánovače nezastaví aktuální konektor z jeho aktuální úlohy. Chcete-li vynutit konektor zastavit, proveďte následující akce: ![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
-   * Spustit **synchronizační služba** z nabídky start. Přejděte na **konektory**, zvýrazněte konektor s daným stavem **systémem**a vyberte **Zastavit** z akce.
+1. Spuštění pozastavením hello Plánovač toostop aktuálním cyklu pomocí rutiny prostředí PowerShell hello `Stop-ADSyncSyncCycle`.
+2. Pokud používáte sestavení před 1.1.281, pak zastavování plánovače hello nezastaví hello aktuální konektor z jeho aktuální úlohy. tooforce hello toostop konektor, proveďte následující akce hello: ![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
+   * Spustit **synchronizační služba** z nabídky start hello. Přejděte příliš**konektory**, zvýrazněte hello konektor stavem hello **systémem**a vyberte **Zastavit** z hello akce.
 
-Plánovač je stále aktivní, začne znovu na nejbližší příležitosti.
+Hello scheduler je stále aktivní, začne znovu na nejbližší příležitosti.
 
 ## <a name="custom-scheduler"></a>Vlastní plánovače
-Rutiny popsané v této části jsou dostupné jenom v sestavení [1.1.130.0](active-directory-aadconnect-version-history.md#111300) a novější.
+Hello rutiny popsané v této části jsou k dispozici pouze v sestavení [1.1.130.0](active-directory-aadconnect-version-history.md#111300) a novější.
 
-Pokud integrované Plánovač nevyhovuje vašim požadavkům, můžete naplánovat konektory pomocí prostředí PowerShell.
+Pokud integrované scheduler hello nevyhovuje vašim požadavkům, můžete naplánovat hello konektorů pomocí prostředí PowerShell.
 
 ### <a name="invoke-adsyncrunprofile"></a>Vyvolání ADSyncRunProfile
 Profil můžete spustit pro konektor tímto způsobem:
@@ -138,37 +138,37 @@ Profil můžete spustit pro konektor tímto způsobem:
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-Názvů pro [názvy konektorů.](active-directory-aadconnectsync-service-manager-ui-connectors.md) a [spustit profil názvy](active-directory-aadconnectsync-service-manager-ui-connectors.md#configure-run-profiles) lze nalézt v [uživatelského rozhraní Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
+Hello názvy toouse pro [názvy konektorů.](active-directory-aadconnectsync-service-manager-ui-connectors.md) a [spustit profil názvy](active-directory-aadconnectsync-service-manager-ui-connectors.md#configure-run-profiles) lze nalézt v hello [uživatelského rozhraní Správce služby synchronizace](active-directory-aadconnectsync-service-manager-ui.md).
 
 ![Vyvolání profil spuštění](./media/active-directory-aadconnectsync-feature-scheduler/invokerunprofile.png)  
 
-`Invoke-ADSyncRunProfile` Rutina je synchronní, to znamená, nevrátí řízení až konektor po dokončení operace úspěšně nebo se stala chyba.
+Hello `Invoke-ADSyncRunProfile` rutina je synchronní, to znamená, nevrátí řízení až hello konektoru po dokončení operace hello úspěšně nebo se stala chyba.
 
-Při plánování vaší konektory, doporučuje se při plánování je v následujícím pořadí:
+Při plánování vaší konektory hello doporučení je tooschedule je v hello následující pořadí:
 
 1. (Úplná nebo rozdílová) Importovat z místních adresářů, jako je Active Directory
 2. (Úplná nebo rozdílová) Import ze služby Azure AD
 3. (Úplná nebo rozdílová) Synchronizaci z místních adresářů, jako je Active Directory
 4. (Úplná nebo rozdílová) Synchronizace z Azure AD
-5. Export do služby Azure AD
-6. Exportovat do místních adresářů, jako je Active Directory
+5. Export tooAzure AD
+6. Export tooon místních adresářů, jako je Active Directory
 
-Pořadí je, jak předdefinované Plánovač běží konektory.
+Pořadí je, jak předdefinované scheduler hello spouští hello konektory.
 
 ### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-Také můžete monitorovat synchronizační modul a zjistěte, zda je zaneprázdněn nebo nečinné. Tato rutina vrací prázdný výsledek, pokud synchronizační modul je nečinnosti a není spuštěn konektor. Pokud je spuštěn konektor, vrátí název konektoru.
+Můžete také sledovat hello synchronizační modul toosee, pokud je zaneprázdněn nebo nečinné. Tato rutina vrací prázdný výsledek, pokud hello synchronizační modul je nečinnosti a není spuštěn konektor. Pokud je spuštěn konektor, vrátí hello název hello konektor.
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
 ![Stav spuštění konektoru](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png)  
-Na obrázku výše je první řádek z stavu, kdy je synchronizační modul nečinnosti. Druhý řádek z při spuštění konektor služby Azure AD.
+Hello obrázku výše je první řádek hello z stavu, kdy je hello synchronizační modul nečinnosti. druhý řádek Hello z při spuštění hello konektoru služby Azure AD.
 
 ## <a name="scheduler-and-installation-wizard"></a>Průvodce Plánovač a instalace
-Pokud spustíte Průvodce instalací, Plánovač dočasně pozastaveno. Toto chování je vzhledem k tomu, že se předpokládá, provedete změny v konfiguraci a nelze ji použít tato nastavení, pokud aktivně synchronizační modul běží. Z tohoto důvodu nenechávejte Průvodce instalací otevřete vzhledem k tomu, že zastaví synchronizační modul provádět všechny akce synchronizace.
+Pokud spustíte Průvodce instalací hello, hello scheduler dočasně pozastaveno. Toto chování je vzhledem k tomu, že se předpokládá, provedete změny v konfiguraci a nelze ji použít tato nastavení, pokud aktivně hello synchronizační modul běží. Z tohoto důvodu nenechávejte hello Průvodce instalací otevřete vzhledem k tomu, že zastaví hello synchronizační modul provádět všechny akce synchronizace.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

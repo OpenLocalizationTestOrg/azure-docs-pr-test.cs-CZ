@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Začínáme | Microsoft Docs"
-description: "Povolit Azure Active Directory Domain Services pomocí portálu Azure (Preview)"
+description: "Povolit Azure Active Directory Domain Services pomocí hello portálu Azure (Preview)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 7f420d60862adf61e4f21e5abac2932a742bd55d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7695dabb11df8d9dcfdac24996edf021af2e7f52
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure (Preview)
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-portal-preview"></a>Povolit Azure Active Directory Domain Services pomocí hello portálu Azure (Preview)
 
 
 ## <a name="before-you-begin"></a>Než začnete
-Přečtěte si článek [Důležité informace o sítích pro Azure Active Directory Domain Services](active-directory-ds-networking.md).
+Odkazovat příliš[požadavky sítě pro Azure Active Directory Domain Services](active-directory-ds-networking.md).
 
 
 ## <a name="task-2-configure-network-settings"></a>Úloha 2: Konfigurace nastavení sítě
-Další úlohou konfigurace je vytvoření virtuální sítě Azure a vyhrazené podsítě v něm. V této podsíti v rámci své virtuální sítě povolíte službu Azure Active Directory Domain Services. Také můžete vybrat existující virtuální síť a vytvořit vyhrazený podsítě v něm.
+Další úlohou konfigurace Hello je toocreate virtuální sítě Azure a vyhrazené podsítě v něm. V této podsíti v rámci své virtuální sítě povolíte službu Azure Active Directory Domain Services. Vyberte existující virtuální síť, kde můžete vytvořit hello vyhrazené podsítě v něm.
 
-1. Klikněte na tlačítko **virtuální síť** vyberte virtuální síť.
-2. Na **zvolte virtuální síť** okně se zobrazí všechny existující virtuální sítě. Zobrazí pouze virtuální sítě, které patří do skupiny prostředků a umístění Azure, které jste vybrali na **Základy** stránce průvodce.
+1. Klikněte na tlačítko **virtuální síť** tooselect virtuální sítě.
+2. Na hello **zvolte virtuální síť** okně se zobrazí všechny existující virtuální sítě. Zobrazí pouze hello virtuální sítě, které patří toohello skupinu prostředků a umístění Azure, které jste vybrali na hello **Základy** stránce průvodce.
 
-3. Vyberte virtuální síť, ve kterém by měl být povolili Azure AD Domain Services. Klikněte na tlačítko **vytvořit nový**, pokud chcete vytvořit novou virtuální síť. Důrazně doporučujeme používat vyhrazené podsíť pro Azure AD Domain Services. Pokud vyberete existující virtuální síť, [vytvořit vyhrazený podsíť pomocí virtuální sítě rozšíření](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) a pak vyberte této podsíti. 
+3. Vyberte hello virtuální síť, ve kterém by měl povolit Azure AD Domain Services. Klikněte na tlačítko **vytvořit nový**, pokud dáváte přednost toocreate nové virtuální sítě. Důrazně doporučujeme používat vyhrazené podsíť pro Azure AD Domain Services. Pokud vyberete existující virtuální síť, [vytvořit vyhrazený podsíť pomocí rozšíření virtuální sítě hello](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) a pak vyberte této podsíti. 
 
     ![Vyberte virtuální síť](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
-4. Klikněte na tlačítko **podsíť** vybrat vyhrazené podsítě v této virtuální síti, ve které chcete povolit vaší nové spravované domény. V **vytvořit podsíť** okno, zadejte název pro podsíť a klikněte na tlačítko **OK** po dokončení. Můžete například vytvořte podsíť s názvem "DomainServices", a usnadňuje pro ostatní správci zjistit, co je nasazen v rámci podsítě.
+4. Klikněte na tlačítko **podsíť** toopick hello vyhrazené podsítě v této virtuální síti, v rámci které tooenable nové spravované domény. V hello **vytvořit podsíť** okno, zadejte název pro podsíť hello a klikněte na tlačítko **OK** po dokončení. Například vytvořte podsíť s názvem hello 'DomainServices', a usnadňuje pro ostatní správci toounderstand co je nasazen v rámci podsítě hello.
 
-    ![Vyberte podsítí v rámci virtuální sítě](./media/getting-started/domain-services-blade-network-pick-subnet.png)
+    ![Vyberte podsíť v rámci virtuální sítě hello](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 
   > [!NOTE]
   > **Pokyny pro výběr podsíť**
-  > 1. Použijte vyhrazenou podsíť pro Azure AD Domain Services. Nenasazujte případných dalších virtuálních počítačů na této podsíti. Tato konfigurace umožňuje nakonfigurovat skupiny zabezpečení sítě (Nsg) pro zatížení nebo virtuální počítače bez nutnosti přerušení vaší spravované domény. Podrobnosti najdete v tématu [sítě důležité informace týkající se Azure Active Directory Domain Services](active-directory-ds-networking.md).
-  2. Nevybírejte podsíť brány pro nasazení služby Azure AD Domain Services, protože se nejedná o podporovanou konfiguraci.
-  3. Zajistěte, aby podsíť, kterou jste vybrali dostatek prostoru k dispozici adres - aspoň 3 až 5 dostupných IP adres.
+  > 1. Použijte vyhrazenou podsíť pro Azure AD Domain Services. Nenasazujte žádné jiné podsíti toothis virtuálních počítačů. Tuto konfiguraci můžete tooconfigure skupin zabezpečení sítě (Nsg) pro zatížení nebo virtuální počítače bez nutnosti přerušení vaší spravované domény. Podrobnosti najdete v tématu [sítě důležité informace týkající se Azure Active Directory Domain Services](active-directory-ds-networking.md).
+  2. Nevybírejte hello podsíť brány pro nasazení služby Azure AD Domain Services, protože se nejedná o podporovanou konfiguraci.
+  3. Zajistěte, aby byl dostatek prostoru k dispozici adres - IP adres k dispozici minimálně 3 až 5 této podsíti hello, které jste vybrali.
   >
 
-5. Až budete hotovi, klikněte na tlačítko **OK** přesunout na **skupiny správců** stránce průvodce.
+5. Až budete hotovi, klikněte na tlačítko **OK** toomove na toohello **skupiny správců** hello průvodce.
 
 
 ## <a name="next-step"></a>Další krok

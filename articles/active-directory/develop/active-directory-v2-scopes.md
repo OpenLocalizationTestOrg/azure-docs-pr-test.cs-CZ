@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory v2.0 obory, oprávnění a souhlasu | Microsoft Docs"
-description: "Popis autorizace v koncového bodu v2.0 Azure AD, včetně obory, oprávnění a souhlasu."
+title: "aaaAzure služby Active Directory v2.0 obory, oprávnění a souhlasu | Microsoft Docs"
+description: "Popis autorizace v koncového bodu v2.0 hello Azure AD, včetně obory, oprávnění a souhlasu."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,64 +15,64 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5721d368c435868bfb4ae91cff7fbb9bc4a79b66
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Obory, oprávnění a souhlasu v koncového bodu v2.0 Azure Active Directory
-Aplikace, které se integrují s Azure Active Directory (Azure AD), postupujte podle modelu autorizace, který nabízí uživatelům kontrolu nad přístupu svá data aplikace. Implementace v2.0 modelu autorizace byl aktualizován a změní způsob, jakým aplikace musí komunikovat s Azure AD. Tento článek se zabývá základními koncepty prostředí tato ověřování modelu, včetně obory, oprávnění a souhlasu.
+# <a name="scopes-permissions-and-consent-in-hello-azure-active-directory-v20-endpoint"></a>Obory, oprávnění a souhlasu v koncového bodu v2.0 hello Azure Active Directory
+Aplikace, které se integrují s Azure Active Directory (Azure AD), postupujte podle modelu autorizace, který nabízí uživatelům kontrolu nad přístupu svá data aplikace. implementace v2.0 Hello modelu autorizace hello byl aktualizován a změní způsob, jakým aplikace musí komunikovat s Azure AD. Tento článek se zabývá základními koncepty hello tohoto modelu autorizace, včetně obory, oprávnění a souhlasu.
 
 > [!NOTE]
-> Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> koncový bod v2.0 Hello nepodporuje všechny scénáře Azure Active Directory a funkce. toodetermine zda byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 >
 
 ## <a name="scopes-and-permissions"></a>Obory a oprávnění
-Azure AD implementuje [OAuth 2.0](active-directory-v2-protocols.md) protokol autorizace. OAuth 2.0 je metoda, pomocí kterého aplikace třetích stran mají přístup k webové hostované prostředkům jménem uživatele. Všechny webové hostované prostředek, který se integruje se službou Azure AD má identifikátor prostředku nebo *identifikátor ID URI aplikace*. Například některé společnosti Microsoft hostuje webové prostředky zahrnují:
+Azure AD implementuje hello [OAuth 2.0](active-directory-v2-protocols.md) protokol autorizace. OAuth 2.0 je metoda, pomocí kterého aplikace třetích stran mají přístup k webové hostované prostředkům jménem uživatele. Všechny webové hostované prostředek, který se integruje se službou Azure AD má identifikátor prostředku nebo *identifikátor ID URI aplikace*. Například některé společnosti Microsoft hostuje webové prostředky zahrnují:
 
-* Office 365 Unified e-mailu rozhraní API:`https://outlook.office.com`
-* Rozhraní Azure AD Graph API:`https://graph.windows.net`
+* Hello unifikované API e-mailu aplikace Office 365:`https://outlook.office.com`
+* Hello Azure AD Graph API:`https://graph.windows.net`
 * Microsoft Graph:`https://graph.microsoft.com`
 
-Totéž platí pro všechny prostředky třetích stran, které mají integrované s Azure AD. Kterýkoli z těchto prostředků také můžete definovat sadu oprávnění, které lze použít k rozdělení na menší bloky dat funkci prostředku. Jako příklad [Microsoft Graph](https://graph.microsoft.io) definovaných oprávnění k provést následující úlohy, mimo jiné:
+Hello totéž platí pro všechny prostředky třetích stran, které mají integrované s Azure AD. Kterýkoli z těchto prostředků také můžete definovat sadu oprávnění, které se dají použít toodivide hello funkce prostředku do menší skupiny. Jako příklad [Microsoft Graph](https://graph.microsoft.io) nemá definovánu hello toodo oprávnění následující úlohy, mimo jiné:
 
 * Číst kalendář uživatele
-* Zápis do kalendáře uživatele
+* Zápis kalendáře tooa uživatele
 * Odesílání pošty jménem uživatele
 
-Definováním tyto typy oprávnění prostředek má jemně odstupňovanou kontrolu nad jeho data a jak je vystaven data. Aplikace jiných výrobců může požádat o oprávnění z aplikace uživatele. Uživatel aplikaci musí schválit oprávnění, než aplikace může fungovat jménem uživatele. Podle rozdělování funkce prostředku do menší sady oprávnění, se dají vytvářet aplikace jiných výrobců s žádostí o pouze konkrétní oprávnění, které potřebují k provedení jejich funkce. Uživatelé aplikaci můžete věděli, přesně jak aplikace bude používat svá data, a může se jednat o větší jistotu, že aplikace není chovají se zlými úmysly.
+Definováním tyto typy oprávnění má hello prostředků jemně odstupňovanou kontrolu nad jeho data a jak je vystaven hello data. Aplikace jiných výrobců může požádat o oprávnění z aplikace uživatele. uživatel aplikace Hello musí před hello aplikace může fungovat jménem uživatele hello schválit hello oprávnění. Podle rozdělování funkce hello prostředků do menší sady oprávnění, může být aplikace jiných výrobců integrovaný toorequest pouze hello konkrétní oprávnění, které potřebují tooperform jejich funkce. Uživatelé aplikace můžete věděli, přesně jak aplikace bude používat svá data a může se jednat o větší jistotu, že tuto aplikaci hello není chovají se zlými úmysly.
 
-Ve službě Azure AD a OAuth, se nazývají tyto typy oprávnění *obory*. Taky někdy označují se jako *oAuth2Permissions*. Obor představuje ve službě Azure AD hodnotu řetězce. Pokračování příkladu Microsoft Graph s, je hodnota oboru pro každé oprávnění:
+Ve službě Azure AD a OAuth, se nazývají tyto typy oprávnění *obory*. Jsou také někdy označují tooas *oAuth2Permissions*. Obor představuje ve službě Azure AD hodnotu řetězce. Příklad Microsoft Graph hello budete pokračovat, hello oboru hodnota pro každé oprávnění je:
 
 * Číst kalendář uživatele pomocí`Calendar.Read`
-* Zápis do kalendáře uživatele pomocí`Mail.ReadWrite`
+* Zapsat kalendáře tooa uživatele pomocí`Mail.ReadWrite`
 * Odesílat poštu jménem uživatele pomocí podle`Mail.Send`
 
-Aplikace může požádat o tato oprávnění zadáním obory v požadavcích na koncový bod v2.0.
+Aplikace může požádat o tato oprávnění zadáním hello obory v koncového bodu v2.0 toohello požadavky.
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect oborů
-Implementace v2.0 OpenID Connect obsahuje několik dobře definovaný obory, které se nevztahují na konkrétní prostředek: `openid`, `email`, `profile`, a `offline_access`.
+Hello v2.0 implementaci OpenID Connect obsahuje několik dobře definovaný obory, které se nevztahují tooa konkrétní prostředek: `openid`, `email`, `profile`, a `offline_access`.
 
 ### <a name="openid"></a>openid
-Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-v2-protocols.md), musíte požádat o `openid` oboru. `openid` Oboru se zobrazuje na stránce pracovní účet souhlasu oprávnění "Přihlásit" a na stránku souhlasu účtu Microsoft osobní oprávnění "Zobrazit váš profil a připojení k aplikacím a službám pomocí účtu Microsoft". Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele ve formě `sub` deklarací identity. Také nabízí přístup k aplikaci koncovému uživateli. `openid` Oboru lze použít na koncový bod tokenu v2.0 získat tokeny typu ID, které se dají použít k zabezpečení volání protokolu HTTP mezi různými součástmi aplikace.
+Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-v2-protocols.md), musí požádat hello `openid` oboru. Hello `openid` oboru ukazuje na hello pracovní účet souhlas stránky jako hello oprávnění "Přihlásit" a na osobní účet Microsoft hello souhlas stránky jako hello "Zobrazit váš profil a připojit tooapps a služby pomocí účtu Microsoft" oprávnění. Aplikace s tímto oprávněním může přijímat jedinečný identifikátor pro uživatele hello hello tvar hello `sub` deklarací identity. Dává také koncový bod hello aplikace přístup toohello informací o uživateli. Hello `openid` oboru může být použit ve hello v2.0 koncový bod tokenu tooacquire tokeny typu ID, které můžou být použité toosecure HTTP volání mezi různými součástmi aplikace.
 
 ### <a name="email"></a>E-mailu
-`email` Oboru lze použít s `openid` oboru a všechny další. Nabízí přístup k aplikaci pro uživatele primární e-mailovou adresu ve tvaru `email` deklarací identity. `email` Deklarace identity je součástí token pouze v případě, že uživatelský účet, který není vždy případě přidružen e-mailovou adresu. Pokud se používá `email` oboru, vaše aplikace by měla připravte se na zpracovat případy, ve kterém `email` deklarace identity neexistuje v tokenu.
+Hello `email` oboru lze použít s hello `openid` oboru a všechny další. Nabízí hello aplikace přístup toohello primární e-mailovou adresu uživatele v hello formu hello `email` deklarací identity. Hello `email` deklarace identity je součástí token pouze v případě, že je přidružen hello uživatelský účet, který není vždy hello případ e-mailovou adresu. Pokud používá hello `email` oboru, vaše aplikace by měla být připravené toohandle velká písmena v které hello `email` deklarace identity v tokenu hello neexistuje.
 
 ### <a name="profile"></a>Profil
-`profile` Oboru lze použít s `openid` oboru a všechny další. Poskytuje přístup k aplikaci ke vyžadovat značné množství informací o uživateli. Obsahuje informace, které má přístup, ale není omezen na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarace, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
+Hello `profile` oboru lze použít s hello `openid` oboru a všechny další. Nabízí hello aplikace přístup tooa vyžadovat značné množství informací o uživateli hello. zahrnuje Hello informace, které má přístup, ale není omezena na hello uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu Úplný seznam hello profil deklarací identity v parametru id_tokens hello k dispozici pro konkrétního uživatele, najdete v části hello [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
-[ `offline_access` Oboru](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Na stránce pracovní účet souhlasu tento obor zobrazí jako "Přístup k datům kdykoli" oprávnění. Na osobní stránku účtu Microsoft souhlasu zobrazí se jako "Přístup k informacím kdykoli" oprávnění. Když uživatel schválí `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z koncového bodu v2.0 tokenu. Tokeny obnovení je dlouhodobé. Aplikaci můžete získat nové přístupové tokeny, protože platnost vyprší starší.
+Hello [ `offline_access` oboru](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) dává tooresources vaší aplikace přístup jménem uživatele hello delší dobu. Na stránce hello pracovní účet souhlasu se tento obor jako hello "Přístup k datům kdykoli" oprávnění. Na hello osobní stránky účtu Microsoft souhlasu zobrazí se jako hello "Přístup k informacím kdykoli" oprávnění. Když uživatel schválí hello `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z tokenu koncového bodu v2.0 hello. Tokeny obnovení je dlouhodobé. Aplikaci můžete získat nové přístupové tokeny, protože platnost vyprší starší.
 
-Pokud vaše aplikace neuvede v požadavku `offline_access` oboru, neobdrží obnovovacích tokenů. To znamená, že když uplatnit autorizační kód v [toku kódu autorizace OAuth 2.0](active-directory-v2-protocols.md), dostanete pouze přístupový token z `/token` koncový bod. Přístupový token je platný po krátkou dobu. Přístupový token se obvykle vyprší za jednu hodinu. AT, že bod, vaše aplikace musí přesměruje uživatele zpět na `/authorize` koncový bod pro získání nového kódu autorizace. Během této přesměrování, v závislosti na typu aplikace může uživatel muset znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění.
+Pokud aplikace nevyžaduje hello `offline_access` oboru, neobdrží obnovovacích tokenů. To znamená, že když uplatnit autorizační kód v hello [toku kódu autorizace OAuth 2.0](active-directory-v2-protocols.md), dostanete pouze přístupový token z hello `/token` koncový bod. Hello přístupový token je platný po krátkou dobu. Hello přístupovému tokenu vyprší platnost obvykle za jednu hodinu. V tomto bodě vaše aplikace musí tooredirect hello uživatele zpět toohello `/authorize` tooget koncový bod nové autorizační kód. Během této přesměrování, v závislosti na typu hello aplikace může uživatel hello potřebovat tooenter jejich přihlašovací údaje znovu nebo souhlas toopermissions znovu.
 
-Další informace o tom, jak získat a použít tokeny obnovení najdete v tématu [referenci na protokol v2.0](active-directory-v2-protocols.md).
+Další informace o tom, jak tooget a použití obnovovacích tokenů, najdete v části hello [referenci na protokol v2.0](active-directory-v2-protocols.md).
 
 ## <a name="requesting-individual-user-consent"></a>Vyžaduje souhlas jednotlivé uživatele
-V [OpenID Connect nebo OAuth 2.0](active-directory-v2-protocols.md) požádat o autorizaci, aplikace můžete požádat o oprávnění, je nutné pomocí `scope` parametr dotazu. Když se uživatel přihlásí do aplikace, aplikace odešle požadavek jako v následujícím příkladu (pomocí konců řádků přidat pro čitelnost):
+V [OpenID Connect nebo OAuth 2.0](active-directory-v2-protocols.md) požádat o autorizaci, aplikace můžete požádat o oprávnění hello je nutné pomocí hello `scope` parametr dotazu. Například pokud se uživatel přihlásí v aplikaci tooan, hello aplikace odešle požadavek jako hello následující ukázka (pomocí konců řádků přidat pro čitelnost):
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -86,47 +86,47 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-`scope` Parametr je seznam obory, které aplikace požaduje oddělených mezerami. Každý obor je indikován hodnota oboru připojení k prostředku identifikátoru (ID URI aplikace). V příkladu žádosti o aplikace potřebuje oprávnění pro čtení kalendáře uživatele a odesílat poštu jménem uživatele.
+Hello `scope` parametr se požaduje seznam obory, které aplikace hello oddělených mezerami. Každý obor je indikován připojování identifikátor hello oboru hodnota toohello prostředku (hello identifikátor ID URI aplikace). V příkladu požadavek hello hello aplikace potřebuje oprávnění tooread hello kalendáře uživatele a odeslání e-mailu jako uživatel hello.
 
-Poté, co uživatel zadá své přihlašovací údaje, koncový bod v2.0 vyhledává odpovídající záznam *souhlas uživatele*. Pokud uživatel nebyl žádný z požadovaných oprávnění přijata v minulosti, koncový bod v2.0 požádá uživatele a udělit požadovaná oprávnění.
+Po hello uživatel zadá své přihlašovací údaje, koncového bodu v2.0 hello vyhledává odpovídající záznam *souhlas uživatele*. Pokud se nedala souhlas uživatele hello tooany hello požadovaná oprávnění v minulosti, hello koncového bodu v2.0 hello požádá uživatele toogrant hello hello požadovaná oprávnění.
 
 ![Pracovní účet souhlasu](../../media/active-directory-v2-flows/work_account_consent.png)
 
-Když uživatel schválí oprávnění, souhlasu se zaznamenává tak, aby uživatel nemá k souhlas znovu na následující účet přihlášení.
+Když uživatel hello schválí hello oprávnění, hello souhlasu se zaznamenává tak, aby hello uživatel nemá tooconsent znovu na následující účet přihlášení.
 
 ## <a name="requesting-consent-for-an-entire-tenant"></a>Vyžaduje souhlas pro celý klienta
-Často organizace zakoupí licence nebo předplatné pro aplikaci, organizace chce plně zřídit aplikace pro své zaměstnance. V rámci tohoto procesu můžete udělit správce pro aplikaci zastupovat každý zaměstnanec souhlas. Pokud správce uděluje souhlas pro celý klienta, nebude organizace zaměstnanci zobrazit stránka s souhlasu pro aplikaci.
+Často organizace zakoupí licence nebo předplatné pro aplikaci, hello organizace chce toofully zřídit hello aplikace pro své zaměstnance. V rámci tohoto procesu můžete udělit správce pro tooact aplikace hello souhlas jménem libovolného zaměstnance. Pokud dobrý den, správce uděluje souhlas pro celý klienta hello, hello zaměstnanci zobrazen na stránce souhlasu pro aplikaci hello.
 
-Pro vyžádání souhlasu pro všechny uživatele v klientovi, může vaše aplikace používá koncový bod admin souhlasu.
+toorequest souhlasu pro všechny uživatele v klientovi, vaše aplikace můžete použít hello koncový bod souhlas správce.
 
 ## <a name="admin-restricted-scopes"></a>Správce omezený oborů
-Některé vysoká oprávnění v ekosystému Microsoft může být nastaven na *omezený správce*. Příklady těchto druhů obory jsou následující oprávnění:
+Některé vysoká oprávnění v ekosystému Microsoft hello lze nastavit příliš*omezený správce*. Tyto druhy obory příklady hello následující oprávnění:
 
 * Čtení dat adresáře organizace pomocí`Directory.Read`
-* Zapisovat data do adresáře organizace pomocí`Directory.ReadWrite`
+* Zápis dat tooan adresáři organizace pomocí`Directory.ReadWrite`
 * Číst pomocí skupin zabezpečení v adresáři organizace`Groups.Read.All`
 
-I když uživatel příjemce může udělit přístup aplikace k tomuto typu dat, jsou omezené na organizační uživatele z udělení přístupu k stejnou sadu citlivá firemní data. Pokud vaše aplikace požaduje přístup k jednomu z těchto oprávnění od organizace uživatele, uživatel obdrží chybovou zprávu s upozorněním, že uživatel nemá oprávnění k souhlas oprávnění vaší aplikace.
+I když uživatel příjemce může udělit toothis přístup aplikaci typ dat, jsou omezené na organizační uživatele z udělení přístupu toohello stejná sada citlivá firemní data. Pokud vaše aplikace požaduje přístup tooone těchto oprávnění od organizace uživatele, uživatel hello obdrží chybovou zprávu, která uvádí, že se nejedná o oprávnění autorizovaný tooconsent tooyour aplikace.
 
-Pokud vaše aplikace vyžaduje přístup k omezeným správce obory pro organizace, měli byste požádat o je přímo ze Správce společnosti, také pomocí koncového bodu souhlas správce, který je popsána dále.
+Pokud vaše aplikace vyžaduje přístup omezený tooadmin obory pro organizace, měli byste požádat o je přímo ze Správce společnosti, také pomocí hello správce souhlasu endpoint, která je popsána dále.
 
-Když správce uděluje oprávnění prostřednictvím koncový bod admin souhlasu, je pro všechny uživatele v klientovi udělen souhlas.
+Když správce uděluje, že tato oprávnění prostřednictvím Dobrý den, správce souhlas koncový bod, je pro všechny uživatele v klientovi hello udělen souhlas.
 
-## <a name="using-the-admin-consent-endpoint"></a>Pomocí koncový bod admin souhlasu
-Pokud budete postupovat podle těchto kroků, vaše aplikace může shromažďovat oprávnění pro všechny uživatele v klientovi, včetně správce omezený obory. Ukázka kódu, který implementuje kroky najdete v sekci [omezený správce obory ukázka](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
+## <a name="using-hello-admin-consent-endpoint"></a>Pomocí koncový bod souhlas správce hello
+Pokud budete postupovat podle těchto kroků, vaše aplikace může shromažďovat oprávnění pro všechny uživatele v klientovi, včetně správce omezený obory. toosee ukázka kódu, který implementuje hello kroky v tématu hello [omezený správce obory ukázka](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
 
-### <a name="request-the-permissions-in-the-app-registration-portal"></a>Žádostí o oprávnění v portálu pro registraci aplikace
-1. Přejděte do vaší aplikace v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](active-directory-v2-app-registration.md) Pokud jste tak ještě neučinili.
-2. Vyhledejte **Microsoft Graph oprávnění** části a poté přidejte oprávnění, která vaše aplikace vyžaduje.
-3. Ověřte, že je **Uložit** registrace aplikací.
+### <a name="request-hello-permissions-in-hello-app-registration-portal"></a>Žádostí o oprávnění hello v portálu pro registraci aplikace hello
+1. Přejděte tooyour aplikace hello [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](active-directory-v2-app-registration.md) Pokud jste tak ještě neučinili.
+2. Vyhledejte hello **Microsoft Graph oprávnění** části a poté přidejte hello oprávnění, která vaše aplikace vyžaduje.
+3. Ověřte, že je **Uložit** hello registrace aplikací.
 
-### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučená: Uživatele přihlaste do aplikace
-Obvykle když vytvoříte aplikaci, která používá koncový bod admin souhlasu, aplikace musí stránku nebo zobrazení, ve kterém můžete schválit správce oprávnění aplikace. Tato stránka může být součástí procesu registrace tok aplikace, součást aplikace nastavení, nebo může být vyhrazený "připojit" toku. V mnoha případech má smysl pro aplikaci Ukážeme vám to "připojit" Zobrazit pouze po je uživatel přihlášený pomocí pracovního nebo školního účtu Microsoft.
+### <a name="recommended-sign-hello-user-in-tooyour-app"></a>Doporučená: Přihlašovací hello uživatele v aplikaci tooyour
+Obvykle když vytvoříte aplikaci hello správce souhlasu koncový bod, který používá, aplikace hello musí stránku nebo zobrazení, ve které hello můžete schválit správce oprávnění aplikace hello. Tato stránka může být součástí procesu registrace tok hello aplikace, součást aplikace hello nastavení, nebo může být vyhrazený "připojit" toku. V mnoha případech má smysl pro tooshow aplikace hello to "připojit" Zobrazit pouze po je uživatel přihlášený pomocí pracovního nebo školního účtu Microsoft.
 
-Při přihlášení uživatele k aplikaci, můžete určit organizaci, ke kterému patří správce před výzvou ke schválení potřebná oprávnění. I když je to nezbytně nutné, ho můžete vytvořit více intuitivní prostředí pro organizační uživatele. Při přihlášení uživatele ve, postupujte podle našich [v2.0 protokol kurzy](active-directory-v2-protocols.md).
+Když se přihlásíte hello uživatele v aplikaci tooyour, můžete identifikovat hello organizace toowhich Dobrý den, správce patří před výzvou tooapprove hello potřebná oprávnění. I když je to nezbytně nutné, ho můžete vytvořit více intuitivní prostředí pro organizační uživatele. toosign hello uživatele v, postupujte podle našich [v2.0 protokol kurzy](active-directory-v2-protocols.md).
 
-### <a name="request-the-permissions-from-a-directory-admin"></a>Požádat správce directory oprávnění
-Až budete připraveni s žádostí o oprávnění z správce vaší organizace, můžete přesměruje uživatele na v2.0 *koncový bod admin souhlasu*.
+### <a name="request-hello-permissions-from-a-directory-admin"></a>Požádat správce directory hello oprávnění
+Pokud jste připravené toorequest oprávnění správce vaší organizace, můžete přesměrovat hello uživatele toohello v2.0 *koncový bod admin souhlasu*.
 
 ```
 // Line breaks are for legibility only.
@@ -138,7 +138,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting the below request in a browser!
+// Pro tip: Try pasting hello below request in a browser!
 ```
 
 ```
@@ -147,15 +147,15 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| Klienta |Požaduje se |Adresář klienta, který chcete, aby žádala o oprávnění z. Lze zadat ve formátu popisný název nebo identifikátor GUID. |
-| client_id |Požaduje se |ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
-| redirect_uri |Požaduje se |Identifikátor URI přesměrování místo odpověď k odeslání pro vaši aplikaci pro zpracování. Se musí přesně shodovat s jedním přesměrování identifikátory URI, který je zaregistrovaný v portálu pro registraci aplikace. |
-| state |Doporučené |Hodnota, zahrnuté v požadavku, který bude vrácen také v odpovědi tokenu. Může být řetězec o délce požadovaný obsah. Použijte ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na stav. |
+| Klienta |Požaduje se |Hello directory klienta, který má oprávnění toorequest z. Lze zadat ve formátu popisný název nebo identifikátor GUID. |
+| client_id |Požaduje se |ID tohoto hello Hello aplikace [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené tooyour aplikace. |
+| redirect_uri |Požaduje se |identifikátor URI, kam chcete toobe odpovědi hello odeslané pro vaše aplikace toohandle přesměrování Hello. Se musí přesně shodovat s jedním hello přesměrování identifikátory URI, který je zaregistrovaný v portálu pro registraci aplikace hello. |
+| state |Doporučené |Hodnota součástí hello požadavek, který bude vrácen také v odpovědi tokenu hello. Může být řetězec o délce požadovaný obsah. Použijte hello stavu tooencode informace o stavu hello uživatele v aplikaci hello předtím, než požadavek na ověření hello došlo k chybě, například stránku hello nebo zobrazení, které byly na. |
 
-V tomto okamžiku Azure AD vyžaduje správce klienta se přihlásit k dokončení požadavku. Správce se zobrazí výzva ke schválení všechna oprávnění, které jste požadovali pro aplikaci v portálu pro registraci aplikace.
+V tomto okamžiku vyžaduje Azure AD toosign správce klienta v toocomplete hello požadavku. Hello správce se zobrazí výzva, tooapprove všechny hello oprávnění, které jste požadovali pro aplikaci v portálu pro registraci aplikace hello.
 
 #### <a name="successful-response"></a>Úspěšná odpověď
-Pokud správce schválí oprávnění pro vaši aplikaci, úspěšné odpovědi vypadá takto:
+Pokud dobrý den, správce schválí hello oprávnění pro vaši aplikaci, úspěšné odpovědi hello vypadá takto:
 
 ```
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
@@ -163,12 +163,12 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Parametr | Popis |
 | --- | --- | --- |
-| Klienta |Adresář klienta, který udělena oprávnění, která byla požadována ve formátu GUID aplikace. |
-| state |Hodnota, zahrnuté v požadavku, který bude také vrácen v odpovědi tokenu. Může být řetězec o délce požadovaný obsah. Stav se používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
-| admin_consent |Bude nastavena pro **true**. |
+| Klienta |Hello directory klienta, který hello oprávnění vaší aplikace je požadovaná, ve formátu GUID. |
+| state |Hodnota součástí hello požadavek, který bude také vrácen v odpovědi tokenu hello. Může být řetězec o délce požadovaný obsah. Stav Hello je použité tooencode informace o stavu hello uživatele v aplikaci hello před došlo k požadavku hello ověřování, jako je například stránku hello nebo zobrazení, které byly na. |
+| admin_consent |Se nastaví příliš**true**. |
 
 #### <a name="error-response"></a>Chybové odpovědi
-Pokud správce nebude schvalovat oprávnění pro aplikace, se nezdařilo odpověď vypadá takto:
+Pokud dobrý den, správce nebude schvalovat hello oprávnění pro vaši aplikaci, se nezdařilo hello odpovědi vypadá takto:
 
 ```
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
@@ -176,13 +176,13 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Parametr | Popis |
 | --- | --- | --- |
-| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
-| error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby. |
+| error |Řetězec kódu chyby, který lze použít tooclassify typů chyb, ke kterým došlo a může být použité tooreact tooerrors. |
+| error_description |Konkrétní chybová zpráva, která může pomoci vývojář identifikovat hello hlavní příčinu chyby. |
 
-Po přijetí úspěšná odpověď z koncového bodu souhlas správce má oprávnění, která byla požadována získávají aplikace. Dále může požádat o token pro prostředek, který chcete.
+Po přijetí úspěšná odpověď z koncového bodu souhlas správce hello si získávají aplikace hello oprávnění, která byla požadována. Dále může požádat o token pro hello prostředek, který chcete.
 
 ## <a name="using-permissions"></a>Použití oprávnění
-Jakmile uživatel souhlasí oprávnění pro vaši aplikaci, vaše aplikace můžete získat přístupové tokeny, které představují vaší aplikace oprávnění pro přístup k prostředkům v některé kapacity. Přístupový token lze použít pouze pro jediný zdroj, ale kódovaný uvnitř přístupový token je každý oprávnění, kterému byla udělena vaší aplikace pro tento prostředek. Získat přístupový token aplikace se obrátit na token koncový bod v2.0, například takto:
+Po hello uživatel souhlasí toopermissions pro vaši aplikaci, vaše aplikace může získat přístupové tokeny, které představují vaší aplikace oprávnění tooaccess prostředku v některých kapacity. Přístupový token lze použít pouze pro jediný zdroj, ale kódovaný uvnitř hello přístupový token je každý oprávnění, kterému byla udělena vaší aplikace pro tento prostředek. tooacquire přístupový token, aplikace můžete provést žádost toohello tokenu koncovým bodem v2.0, například takto:
 
 ```
 POST common/oauth2/v2.0/token HTTP/1.1
@@ -199,6 +199,6 @@ Content-Type: application/json
 }
 ```
 
-Výsledný token přístupu můžete použít v požadavcích HTTP k prostředku. Spolehlivě označuje k prostředku, že aplikace má správná oprávnění k provedení určitého úkolu.  
+Hello výsledný token přístupu můžete použít v prostředku toohello požadavky HTTP. Označuje spolehlivě toohello prostředků, které má vaše aplikace hello správné oprávnění tooperform konkrétní úlohu.  
 
-Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najdete v článku [referenci na protokol koncový bod v2.0](active-directory-v2-protocols.md).
+Další informace o hello OAuth 2.0 protokolu a jak tooget přístupových tokenů, najdete v části hello [referenci na protokol koncový bod v2.0](active-directory-v2-protocols.md).

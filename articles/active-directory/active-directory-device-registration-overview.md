@@ -1,6 +1,6 @@
 ---
-title: "Registrace zařízení ve službě Azure Active Directory – přehled | Dokumentace Microsoftu"
-description: "Registrace zařízení služby Azure Active Directory je základem pro scénáře přístupu podmíněného zařízením. Když je zařízení registrováno, poskytne mu registrace zařízení služby Azure Active Directory identitu, která se používá k ověření zařízení při přihlášení uživatele."
+title: "aaaAzure služby Active Directory device registration přehled | Microsoft Docs"
+description: "Registrace zařízení služby Azure Active Directory je hello základem pro scénáře podmíněného přístupu podle zařízení. Když je zařízení registrováno, hello zřizuje registrace zařízení služby Azure Active Directory zařízení s identitou, která je použité tooauthenticate hello zařízení při přihlášení uživatele hello."
 services: active-directory
 keywords: "registrace zařízení, povolení registrace zařízení, registrace zařízení a MDM"
 documentationcenter: 
@@ -16,57 +16,57 @@ ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9f8605d65a3852b85a8682ca74fdf99bc785db5b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b9846e34fe873d271ebe71cbf8e70c6b4768885b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Začínáme s registrací zařízení ve službě Azure Active Directory
-Registrace zařízení služby Azure Active Directory je základem pro scénáře přístupu podmíněného zařízením. Když je zařízení registrováno, poskytne mu registrace zařízení služby Azure Active Directory identitu, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a jeho atributy pak lze použít k vynucení zásad podmíněného přístupu u aplikací, které jsou hostovány na cloudu a v místním úložišti.
+Registrace zařízení služby Azure Active Directory je hello základem pro scénáře podmíněného přístupu podle zařízení. Když je zařízení registrováno, poskytne mu nástroj registrace zařízení služby Azure Active Directory hello zařízení s identitou, která je použité tooauthenticate hello zařízení při přihlášení uživatele hello. Hello ověření zařízení a atributy hello hello zařízení, lze potom použít tooenforce zásady podmíněného přístupu pro aplikace, které jsou hostované v cloudu hello a místní.
 
-Při kombinaci s řešením správy mobilních zařízení (MDM), jako je například Microsoft Intune, budou atributy zařízení ve službě Azure Active Directory aktualizovány o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.  Další informace o registraci zařízení v Microsoft Intune najdete v tématu [Registrace zařízení pro správu v Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
+V kombinaci s řešením správy mobilních zařízení, jako je například Microsoft Intune, hello atributy zařízení ve službě Azure Active Directory jsou aktualizované o další informace o zařízení hello. Díky tomu můžete toocreate pravidla podmíněného přístupu, které vynucují přístup ze zařízení toomeet vaše standardy zabezpečení a dodržování předpisů. Další informace o registraci zařízení v Microsoft Intune najdete v tématu [Registrace zařízení pro správu v Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
 
 ## <a name="scenarios-enabled-by-azure-active-directory-device-registration"></a>Scénáře pro registraci zařízení ve službě Azure Active Directory
-Registrace zařízení služby Azure Active Directory zahrnuje podporu pro zařízení se systémy iOS, Android a Windows. Jednotlivé scénáře použití registrace zařízení služby Azure AD mohou mít konkrétněji určené požadavky a podporované platformy. Jedná se o následující scénáře:
+Registrace zařízení služby Azure Active Directory zahrnuje podporu pro zařízení se systémy iOS, Android a Windows. Hello jednotlivé scénáře použití nástroje registrace zařízení služby Azure AD mohou mít konkrétněji určené požadavky a podporované platformy. Jedná se o následující scénáře:
 
-* **Podmíněný přístup k aplikacím, které jsou hostovány na místním úložišti**: Registrovaná zařízení se zásadami přístupu můžete použít u aplikací, které jsou konfigurovány k použití služby AD FS a systému Windows Server 2012 R2. Další informace o nastavení podmíněného přístupu pro místní úložiště naleznete v tématu [Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory](active-directory-device-registration-on-premises-setup.md).
-* **Podmíněný přístup pro aplikace služby Office 365 s Microsoft Intune**: Správci IT mohou poskytnout zásady podmíněného přístupu zařízení, aby zabezpečili podnikové prostředky a zároveň umožnili pracovníkům s vhodnými zařízeními přístup ke službám. Další informace najdete v tématu [Zásady podmíněného přístupu zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md).
+* **Tooapplications podmíněného přístupu, které jsou hostované na místě**: registrovaná zařízení můžete použít se zásadami přístupu pro aplikace, které jsou nakonfigurované toouse služby AD FS v systému Windows Server 2012 R2. Další informace o nastavení podmíněného přístupu pro místní úložiště naleznete v tématu [Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory](active-directory-device-registration-on-premises-setup.md).
+* **Podmíněný přístup pro aplikace Office 365 s Microsoft Intune** : správci IT mohou poskytnout podmíněného přístupu zařízení zásady toosecure podnikovým prostředkům, zatímco v hello stejný čas povolení pracovníkům s vhodnými zařízeními tooaccess hello služby. Další informace najdete v tématu [Zásady podmíněného přístupu zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md).
 
 ## <a name="setting-up-azure-active-directory-device-registration"></a>Nastavení registrace zařízení ve službě Azure Active Directory
-Na webu Azure Portal musíte povolit registraci zařízení služby Azure AD, aby mohla mobilní zařízení zjistit službu pomocí známých záznamů DNS. Záznamy DNS vaší společnosti musíte nakonfigurovat tak, aby zařízení se systémy Windows 10, Windows 8.1, Windows 7, Android a iOS mohla službu zjistit a použít.
-Registrovaná zařízení si můžete zobrazit a povolit nebo zakázat prostřednictvím portálu správce služby Azure Active Directory.
+Je třeba registrace zařízení služby Azure AD tooenable v hello portálu Azure tak, aby mohla mobilní zařízení zjistit službu hello vyhledáváním známých záznamů DNS. Záznamy DNS vaší společnosti musíte nakonfigurovat tak, aby zařízení s Windows 10, Windows 8.1, Windows 7, Android a iOS můžete zjišťovat a používat služby hello.
+Můžete zobrazit a povolit nebo zakázat registrovaná zařízení pomocí portálu správce hello v Azure Active Directory.
 
 > [!NOTE]
-> Nejnovější pokyny k nastavení automatické registrace zařízení najdete v tématu [Nastavení automatické registrace zařízení s Windows připojených k doméně pomocí služby Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+> Pro nejnovější pokyny, jak zjistit, tooset až automatické registrace zařízení [jak toosetup automatickou registraci domény systému Windows připojené zařízení s Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 > 
 > 
 
 ### <a name="enable-azure-active-directory-device-registration-service"></a>Povolení registrace zařízení ve službě Azure Active Directory
-1. Přihlaste se k portálu Microsoft Azure jako správce.
-2. V levém podokně vyberte **Active Directory**.
-3. Na kartě **Adresář** vyberte adresář.
-4. Vyberte kartu **Konfigurace**.
-5. Přejděte na oddíl **Zařízení**.
+1. Přihlaste se toohello portálu Microsoft Azure jako správce.
+2. V levém podokně hello vyberte **služby Active Directory**.
+3. Na hello **Directory** vyberte adresáře.
+4. Vyberte hello **konfigurace** kartě.
+5. Posuňte se toohello části s názvem **zařízení**.
 6. V poli **UŽIVATELÉ, KTEŘÍ MOHOU PŘIPOJIT ZAŘÍZENÍ K PRACOVIŠTI** vyberte **VŠICHNI**.
-7. Zadejte maximální počet zařízení, která chcete povolit pro jednoho uživatele.
+7. Vyberte maximální počet hello zařízení chcete tooauthorize na uživatele.
 
 > [!NOTE]
-> Registrace ke službám Microsoft Intune nebo Správa mobilních zařízení (MDM) pro Office 365 vyžaduje připojení k pracovišti. Pokud jste nakonfigurovali některou z těchto služeb, je zvolena možnost VŠICHNI a tlačítko ŽÁDNÍ je deaktivováno.
+> Registrace ke službám Microsoft Intune nebo Správa mobilních zařízení (MDM) pro Office 365 vyžaduje připojení k pracovišti. Pokud jste nakonfigurovali některou z těchto služeb, je zvolena možnost Všichni a tlačítko NONE hello je zakázána.
 > 
 > 
 
-Ve výchozím nastavení služby není povoleno dvoufaktorové ověřování. Dvoufaktorové ověřování ale doporučujeme při registraci zařízení.
+Ve výchozím nastavení není povoleno dvoufaktorové ověřování pro službu hello. Dvoufaktorové ověřování ale doporučujeme při registraci zařízení.
 
-* Předtím, než pro tuto službu vyžádáte dvoufaktorové ověřování, musíte nakonfigurovat poskytovatele dvoufaktorového ověřování ve službě Azure Active Directory a uživatelské účty pro službu Multi-Factor Authentication. Více informací naleznete v článku [Přidání služby Multi-Factor Authentication ve službě Azure Active Directory](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+* Před pro tuto službu, které vyžadují dvoufaktorové ověřování, musíte nakonfigurovat poskytovatele dvoufaktorového ověřování ve službě Azure Active Directory a nakonfigurovat uživatelské účty pro službu Multi-Factor Authentication, najdete v části [přidání služby Multi-Factor TooAzure ověřování služby Active Directory](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
 * Pokud používáte službu AD FS a systém Windows Server 2012 R2, musíte modul dvoufaktorového ověřování nakonfigurovat ve službě AD FS. Více informací naleznete v článku [Použití služby Multi-Factor Authentication ve službě Active Directory Federation Services](../multi-factor-authentication/multi-factor-authentication-get-started-server.md).
 
 ## <a name="configure-azure-active-directory-device-registration-discovery"></a>Konfigurace zjišťování registrace zařízení ve službě Azure Active Directory
-Zařízení se systémy Windows 7 a Windows 8.1 bude registrace zařízení zjišťovat tak, že zkombinují název uživatelského účtu se známým názvem serveru registrace zařízení.
+Zařízení s Windows 7 a Windows 8.1 bude zjišťovat služby registrace zařízení hello kombinací hello název uživatelského účtu s názvem dobře známé zařízení registraci serveru.
 
-Je nutné vytvořit záznam DNS CNAME, který odkazuje na záznam A přidružený k vaší službou registrace zařízení služby Azure Active Directory. Záznam CNAME musí použít známou předponu enterpriseregistration, za kterou následuje přípona UPN, kterou používají uživatelské účty ve vaší organizaci. Pokud vaše organizace používá více přípon UPN, je nutné v záznamech DNS vytvořit více záznamů CNAME.
+Musíte vytvořit záznam DNS CNAME, který odkazuje záznam toohello A související s vaší službou registrace zařízení služby Azure Active Directory. Hello záznam CNAME musí použít hello známou předponu enterpriseregistration, za nímž následuje přípona UPN hello používá hello uživatelské účty ve vaší organizaci. Pokud vaše organizace používá více přípon UPN, je nutné v záznamech DNS vytvořit více záznamů CNAME.
 
-Pokud například v organizaci používáte dvě přípony UPN s názvy @contoso.com a @region.contoso.com, musíte vytvořit následující záznamy DNS.
+Například, pokud používáte dvě přípony UPN ve vaší organizaci s názvem @contoso.com a @region.contoso.com, vytvoříte hello následující záznamy DNS.
 
 | Záznam | Typ | Adresa |
 | --- | --- | --- |
@@ -74,17 +74,17 @@ Pokud například v organizaci používáte dvě přípony UPN s názvy @contoso
 | enterpriseregistration.region.contoso.com |CNAME |enterpriseregistration.windows.net |
 
 ## <a name="view-and-manage-device-objects-in-azure-active-directory"></a>Zobrazení a správa objektů zařízení ve službě Azure Active Directory
-1. Pomocí portálu správce Azure můžete zařízení zobrazit, zablokovat a odblokovat. Zařízení, které je zablokováno, nebude mít přístup k aplikacím, které jsou nakonfigurovány tak, aby k nim měla přístup pouze registrovaná zařízení.
-2. Přihlaste se na webu Microsoft Azure Portal jako správce.
-3. V levém podokně vyberte **Active Directory**.
+1. Z portálu správce Azure hello můžete zobrazit, zablokovat a odblokovat zařízení. Zařízení, který je blokovaný nebude mít přístup tooapplications, které jsou nakonfigurované tooallow pouze registrovaná zařízení.
+2. Přihlaste se na toohello portálu Microsoft Azure jako správce.
+3. V levém podokně hello vyberte **služby Active Directory**.
 4. Vyberte svůj adresář.
-5. Vyberte kartu **Uživatelé**. Vyberte uživatele, jehož zařízení si chcete zobrazit.
-6. Vyberte kartu **Zařízení**.
-7. Z rozevírací nabídky vyberte **Registrovaná zařízení**.
-8. Zde si můžete zobrazit, zablokovat nebo odblokovat zařízení registrovaná uživateli.
+5. Vyberte hello **uživatelé** kartě. Potom vyberte uživatele tooview svá zařízení
+6. Vyberte hello **zařízení** kartě.
+7. Vyberte **registrovaná zařízení** z hello rozevírací nabídce.
+8. Zde si můžete zobrazit, zablokovat nebo odblokovat zařízení registrovaná uživateli hello.
 
 ## <a name="additional-topics"></a>Další témata
-Zařízení se systémy Windows 7 a Windows 8.1 připojená k doméně můžete zaregistrovat pomocí registrace zařízení služby Azure AD. Následující témata poskytují další informace o požadavcích a krocích potřebných ke konfiguraci registrace zařízení u zařízení s Windows 7 a Windows 8.1.
+Zařízení se systémy Windows 7 a Windows 8.1 připojená k doméně můžete zaregistrovat pomocí registrace zařízení služby Azure AD. Následující témata Hello poskytuje další informace o požadavcích hello a registrace zařízení vyžaduje tooconfigure hello kroky na zařízeních s Windows 7 a Windows 8.1.
 
 * [Automatická registrace zařízení ve službě Azure Active Directory u zařízení se systémem Windows připojených k doméně](active-directory-conditional-access-automatic-device-registration.md)
 * [Automatická registrace zařízení ve službě Azure Active Directory u zařízení se systémem Windows 10 připojených k doméně](active-directory-azureadjoin-devices-group-policy.md)

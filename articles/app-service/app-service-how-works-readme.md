@@ -1,5 +1,5 @@
 ---
-title: Jak funguje Azure App Service
+title: aaaHow funguje Azure App Service
 description: "Seznámení s fungováním služby App Service"
 keywords: "app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service"
 services: app-service
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/23/2017
 ms.author: yochayk
-ms.openlocfilehash: 2d830963d3d2adba71a6ca99f79eac0fc8cbfb12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b20733ec8844773d063e2b6918605c4a48db1f5c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-app-service-works"></a>Jak funguje App Service
-Azure App Service je cloudová služba navržená k řešení praktických problémů, kterým čelí dnešní vývojáři.
-App Service se zaměřuje na zajištění vysoké produktivity při vývoji bez kompromisů při zajišťování aplikací v cloudovém rozsahu. 
+Aplikační služba Azure je Cloudová služba, která je hello navrženou toosolve praktické se problémy, které technici čelí dnešní.
+Služby App Service se zaměřuje na zajištění vysoké produktivity bez kompromisů v hello potřebovat toodeliver aplikace v cloudovém měřítku. 
 
-App Service navíc poskytuje funkce a rozhraní, které jsou nezbytné pro vytváření podnikových obchodních aplikací. App Service umožňuje vyvíjet aplikace v nejoblíbenějších vývojových jazycích, včetně Javy, PHP, Node.js, Pythonu a jazyků Microsoft .NET. App Service umožňuje:
+Služby App Service také nabízí hello funkce a rozhraní, které jsou potřebné pro vytvoření enterprise-obchodní aplikace. App Service umožňuje vyvíjet aplikace v nejoblíbenějších vývojových jazyků, včetně Java, PHP, Node.js, Python a jazyků, hello rozhraní Microsoft .NET. App Service umožňuje:
 
 * Vytvářet vysoce škálovatelné webové aplikace
 * Rychle vytvářet back-endy mobilních aplikací pomocí sady snadno použitelných mobilních funkcí, jako jsou datové back-endy, ověřování uživatelů nebo nabízená oznámení
@@ -36,23 +36,23 @@ App Service navíc poskytuje funkce a rozhraní, které jsou nezbytné pro vytv�
 > 
 > 
 
-Všechny typy aplikací se opírají o škálovatelnou, flexibilní platformu webových aplikací, která vývojářům umožňuje vytvářet optimalizované kompletní životní cykly: od návrhu aplikace až po její údržbu. Funkce životních cyklů umožňují:
+Všechny typy aplikací spoléhají na hello škálovatelná a flexibilní webové aplikace platformy, která umožňuje vývojářům toohave optimalizované kompletní životní prostředí z údržby tooapp návrhu aplikace. Možnosti životního cyklu Hello povolit hello následující:
 
-* **Rychlé vytváření aplikací**. Můžete začít od nuly nebo využít vhodný balíček OSS z webu Azure Marketplace.
+* **Rychlé vytváření aplikací**. Začátek od nuly nebo vyberte balíček operačního systému pro podporu (OSS) z hello Azure Marketplace.
 * **Průběžné nasazování**. Automaticky nasadíte nový kód z oblíbených řešení pro řízení zdrojů, jako je například TFS, GitHub nebo BitBucket, a můžete synchronizovat obsah ze služeb online úložiště, jako je například OneDrive nebo DropBox.
-* **Testování v produkčním prostředí**. Hladce vytvoříte předprodukční prostředí a zajistíte správu provozu, který v něm probíhá. Pokud je potřeba, odladíte nasazení v cloudu a jestliže se objeví chyby, můžete ho vrátit zpět.
+* **Testování v produkčním prostředí**. Plynule vytvořit předprovozní prostředí a spravovat hello objem provozu, který se bude toothem. Ladění v cloudu hello v případě potřeby, vrácení zpět, když se objeví chyby.
 * **Spuštění asynchronních a dávkových úloh**. Kód můžete spouštět v procesech na pozadí nebo aktivovat na základě událostí (například doručení zpráv do fronty Azure Storage) a plánovaných časů (CRON).
-* **Škálování aplikací**. K dispozici je mnoho možností automatického škálování služby – horizontálního i vertikálního – podle provozu a využití prostředků. Můžete konfigurovat privátní prostředí vyhrazená pro vaše aplikace.   
-* **Údržba aplikací**. V nabídce je mnoho funkcí ladění a diagnostiky umožňujících předcházet problémům a efektivně je řešit, ať už v reálném čase (pomocí funkcí, jako je samoopravení nebo živé ladění), nebo po jejich výskytu prostřednictvím analýzy protokolů a výpisů stavu paměti.
+* **Škálování aplikace hello**. Použijte jeden z mnoha možností tooautomatically škálování služby, vodorovně a svisle podle provozu a využití prostředků. Konfigurace privátních prostředí, které jsou vyhrazené tooyour aplikace.   
+* **Údržba aplikace hello**. Použijte řadu hello ladění a diagnostiky funkce toostay před problémy a tooefficiently řešení buď v reálném čase (pomocí funkcí, jako je samoopravení nebo živé ladění) nebo po hello fakt prostřednictvím analýzy protokolů a paměti výpisy paměti.
 
-V kostce řečeno, funkce App Service umožňují vývojářům soustředit se na kód a rychle dosáhnout stabilního a vysoce škálovatelného provozního stavu. Pomocí funkcí API Apps a Logic Apps můžou vývojáři vytvářet odolné podnikové aplikace překračující bariéry mezi různými obchodními řešeními i překážky v integraci místních prostředků s cloudem. 
+Možnosti služby App Service jako celek, povolte vývojáři toofocus na kód a rychle dosáhnout stabilního a vysoce škálovatelné provozního stavu. Hello aplikace API a funkcí Logic Apps vývojáři mohou vytvářet reálného podnikové aplikace, které přemostění překážek mezi obchodními řešeními a místní toocloud integraci. 
 
 ## <a name="videos"></a>Videa
 * [Architektura služby Azure App Service](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Víc se o App Service dozvíte v jednom z následujících témat:
+Další informace o App Service v jednom z hello následující témata:
 
 * [Co je Azure App Service?](app-service-value-prop-what-is.md)
   * [Webová aplikace](../app-service-web/app-service-web-overview.md)
@@ -61,7 +61,7 @@ Víc se o App Service dozvíte v jednom z následujících témat:
 * [Architektura služby Azure App Service (prezentace)](http://www.slideshare.net/maartenba/windows-azure-web-sites-things-they-dont-teach-kids-in-school-comunity-day-2013)
 * [Porovnání služby Azure App Service, služby Cloud Services a služby Virtual Machines](../app-service-web/choose-web-site-cloud-service-vm.md)
 * [Pochopení plánů služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md)
-* [Úvod do prostředí App Service](../app-service-web/app-service-app-service-environment-intro.md)
+* [Úvod tooApp Service Environment](../app-service-web/app-service-app-service-environment-intro.md)
   * [Cvičení: Vytvoření prostředí služby App Service](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [Podpora vývojových balíků služby Azure App Service](https://azure.microsoft.com/blog/windows-azure-websites-development-stacks-support/)
 

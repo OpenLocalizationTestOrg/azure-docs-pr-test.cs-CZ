@@ -1,6 +1,6 @@
 ---
-title: "Jak používat JavaScript SDK pro Azure Mobile Apps"
-description: "Postup použití v Azure Mobile Apps"
+title: aaaHow tooUse hello JavaScript SDK pro Azure Mobile Apps
+description: Jak v tooUse pro Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: ggailey777
@@ -14,32 +14,32 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.openlocfilehash: 0c4b4de560d70592f5bbdee28b56a7686b5689f4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3fcbb0c5bd6918a285bdafa1946ba0bd47bb21b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Používání knihovny JavaScript klienta pro Azure Mobile Apps
+# <a name="how-toouse-hello-javascript-client-library-for-azure-mobile-apps"></a>Jak tooUse hello knihovny JavaScript klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Tato příručka je určena můžete provádět běžné scénáře s využitím nejnovější [JavaScript SDK pro Azure Mobile Apps]. Pokud jste ještě Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlý Start] vytvoření back-end a vytvořte tabulku. V této příručce se zaměříme na používání mobilního back-end v HTML/JavaScript webových aplikací.
+Tato příručka je určena tooperform běžné scénáře s využitím hello nejnovější [JavaScript SDK pro Azure Mobile Apps]. Pokud jste nový tooAzure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlý Start] toocreate back-end a vytvořte tabulku. V této příručce se zaměříme na používání mobilního back-endu hello v HTML/JavaScript webových aplikací.
 
 ## <a name="supported-platforms"></a>Podporované platformy
-Omezená podpora prohlížečů na aktuální a poslední verze hlavní prohlížeče: Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že sada SDK pro funkci v libovolného relativně moderní prohlížeče.
+Jsme omezit aktuální toohello podpora prohlížeče a poslední verze hello hlavní prohlížeče: Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že toofunction SDK hello pomocí libovolného relativně moderní prohlížeče.
 
-Balíček je distribuován jako univerzální modul JavaScript, tak, aby podporuje globals, AMD, a formátuje CommonJS.
+Hello balíček je distribuován jako univerzální modul JavaScript, tak, aby podporuje globals, AMD, a formátuje CommonJS.
 
 ## <a name="Setup"></a>Instalační program a požadavky
-Tato příručka předpokládá, že jste vytvořili back-end s tabulkou. Tato příručka předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech.
+Tato příručka předpokládá, že jste vytvořili back-end s tabulkou. Tato příručka předpokládá, že tabulka hello má hello stejného schématu jako hello tabulky v těchto kurzech.
 
-Instalace Azure Mobile Apps JavaScript SDK, můžete to udělat pomocí `npm` příkaz:
+Instalace hello Azure Mobile Apps JavaScript SDK, můžete to udělat pomocí hello `npm` příkaz:
 
 ```
 npm install azure-mobile-apps-client --save
 ```
 
-Knihovny můžete použít také jako modul ES2015 v rámci CommonJS prostředí, například Browserify a Webpack a jako knihovnu AMD.  Například:
+Hello knihovně mohou sloužit také jako modul ES2015 v rámci CommonJS prostředí, například Browserify a Webpack a jako AMD knihovny.  Například:
 
 ```
 # For ECMAScript 5.1 CommonJS
@@ -48,7 +48,7 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
-Předem připravené verzi sady SDK můžete také stáhnout přímo z našich CDN:
+Můžete také předem připravené verzi hello SDK stáhnout přímo z našich CDN:
 
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
@@ -57,52 +57,52 @@ Předem připravené verzi sady SDK můžete také stáhnout přímo z našich C
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
 ## <a name="auth"></a>Postupy: ověřování uživatelů
-Azure App Service podporuje ověřování a autorizaci uživatelů aplikace pomocí různých zprostředkovatelů externí identity: Facebook, Google, Microsoft Account a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřené uživatele. Můžete také použít identitu ověřeného uživatele k implementaci autorizační pravidla v skripty serveru. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
+Azure App Service podporuje ověřování a autorizaci uživatelů aplikace pomocí různých zprostředkovatelů externí identity: Facebook, Google, Microsoft Account a Twitter. Oprávnění můžete nastavit na tabulky toorestrict přístup pro určité operace tooonly ověřeného uživatele. Můžete taky hello identity ověřené uživatele tooimplement autorizačních pravidel ve skriptech serveru. Další informace najdete v tématu hello [Začínáme s ověřováním] kurzu.
 
-Jsou podporovány dva ověřování toky: serveru a klienta tok.  Vývojový server poskytuje nejjednodušší zkušeností ověřování, jako je závislé na poskytovatele webové ověřování rozhraní. Tok klienta umožňuje hlubší integrace s funkcemi konkrétní zařízení, jako-jednotné přihlášení jako přitom spoléhá na specifický pro zprostředkovatele sady SDK.
+Jsou podporovány dva ověřování toky: serveru a klienta tok.  Vývojový server Hello poskytuje hello nejjednodušší ověřování, jako je závislé na hello zprostředkovatele webového ověření rozhraní. Hello tok klienta umožňuje hlubší integrace s funkcemi konkrétní zařízení, jako-jednotné přihlášení jako přitom spoléhá na specifický pro zprostředkovatele sady SDK.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
 ### <a name="configure-external-redirect-urls"></a>Postupy: Konfigurace služby Mobile App pro adresy URL pro externí přesměrování.
-Několik typů aplikací JavaScript pomocí funkce zpětné smyčky pro zpracování uživatelského rozhraní OAuth toky.  Tyto funkce patří:
+Několik typů aplikací JavaScript pomocí funkce toohandle zpětné smyčky, kterou toků OAuth uživatelského rozhraní.  Tyto funkce patří:
 
 * Spuštění služby místně
-* Pomocí rozhraní iontových načtěte za provozu
-* Přesměrování na službu App Service pro ověřování.
+* Načtěte za provozu pomocí hello iontových Framework
+* Přesměrování tooApp služby pro ověřování.
 
-Spuštěn místně může způsobit problémy, protože ve výchozím nastavení, ověřování služby App Service je nakonfigurovaná pouze pro povolení přístupu z váš back-end mobilní aplikace. Chcete-li změnit nastavení služby App Service povolení ověřování při místním spuštění serveru použijte následující kroky:
+Spuštěn místně může způsobit problémy, protože ve výchozím nastavení, aplikační služby ověřování je jenom nakonfigurován tooallow přístup z váš back-end mobilní aplikace. Použijte následující postup toochange hello ověřování tooenable nastavení služby App Service při místním spuštění hello server hello:
 
-1. Přihlaste se k portálu [portál Azure].
-2. Přejděte na váš back-end mobilní aplikace.
-3. Vyberte **Průzkumníka prostředků** v **nástroje pro vývoj** nabídky.
-4. Klikněte na tlačítko **přejděte** otevřete Průzkumníka prostředků pro váš back-end mobilní aplikace v nové záložky nebo okno.
-5. Rozbalte **konfigurace** > **authsettings** uzel pro vaši aplikaci.
-6. Klikněte **upravit** tlačítko povolte úpravy prostředku.
-7. Najít **allowedExternalRedirectUrls** element, který by měl mít hodnotu null. Přidejte vaší adresy URL do pole:
+1. Přihlaste se toohello [portálu Azure]
+2. Přejděte back-end mobilní aplikace tooyour.
+3. Vyberte **Průzkumníka prostředků** v hello **nástroje pro vývoj** nabídky.
+4. Klikněte na tlačítko **přejděte** tooopen hello Průzkumníka prostředků pro váš back-end mobilní aplikace v nové záložky nebo okno.
+5. Rozbalte hello **konfigurace** > **authsettings** uzel pro vaši aplikaci.
+6. Klikněte na tlačítko hello **upravit** tlačítko tooenable úpravy hello prostředku.
+7. Najde hello **allowedExternalRedirectUrls** element, který by měl mít hodnotu null. Přidejte vaší adresy URL do pole:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Nahraďte adresy URL v pole adresy URL služby, který v tomto příkladu je `http://localhost:3000` pro místní službu ukázka Node.js. Můžete také použít `http://localhost:4400` pro službu Ripple nebo některé jiné adresy URL, v závislosti na konfiguraci aplikace.
-8. V horní části stránky klikněte na tlačítko **pro čtení a zápis**, pak klikněte na tlačítko **PUT** uložte provedené změny.
+    Nahraďte hello adresy URL v poli hello hello adresy URL služby, který v tomto příkladu je `http://localhost:3000` hello místní Node.js Ukázka služby. Můžete také použít `http://localhost:4400` pro hello Ripple služby nebo některých jiných adresu URL, v závislosti na konfiguraci aplikace.
+8. V horní části hello hello stránky, klikněte na tlačítko **pro čtení a zápis**, pak klikněte na tlačítko **PUT** toosave vaše aktualizace.
 
-Musíte taky přidat stejné adresy URL zpětné smyčky do nastavení CORS seznamu povolených IP adres:
+Musíte taky tooadd hello stejné zpětné smyčky adresy URL toohello CORS povolených nastavení:
 
-1. Přejděte zpět [portál Azure].
-2. Přejděte na váš back-end mobilní aplikace.
-3. Klikněte na tlačítko **CORS** v **rozhraní API** nabídky.
-4. Zadejte jednotlivé adresy URL v prázdném **povolené zdroje** textové pole.  Vytvoří se nové textové pole.
+1. Přejděte zpět toohello [portálu Azure].
+2. Přejděte back-end mobilní aplikace tooyour.
+3. Klikněte na tlačítko **CORS** v hello **rozhraní API** nabídky.
+4. Zadejte jednotlivé adresy URL v hello prázdný **povolené zdroje** textové pole.  Vytvoří se nové textové pole.
 5. Klikněte na tlačítko **uložit**
 
-Po aktualizaci back-end, bude moci použít nové adresy URL zpětné smyčky ve vaší aplikaci.
+Po aktualizaci hello back-end, bude možné toouse hello nové zpětné smyčky adresy URL ve vaší aplikaci.
 
 <!-- URLs. -->
 [Azure Mobile Apps rychlý Start]: app-service-mobile-cordova-get-started.md
 [Začínáme s ověřováním]: app-service-mobile-cordova-get-started-users.md
-[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
+[Add authentication tooyour app]: app-service-mobile-cordova-get-started-users.md
 
-[portál Azure]: https://portal.azure.com/
+[portálu Azure]: https://portal.azure.com/
 [JavaScript SDK pro Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx

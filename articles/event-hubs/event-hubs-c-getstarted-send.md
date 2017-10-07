@@ -1,6 +1,6 @@
 ---
-title: "Odesílání událostí do centra událostí Azure pomocí jazyka C | Microsoft Docs"
-description: "Odesílání událostí do centra událostí Azure pomocí jazyka C"
+title: "aaaSend události tooAzure Event Hubs pomocí jazyka C | Microsoft Docs"
+description: "Odesílání událostí tooAzure Event Hubs pomocí jazyka C"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,37 +14,37 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a615ee39b6c3731cc7df366e9fabeed5219a71b4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bb53300c070debb4a3658a38df9d3966f08e81ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do centra událostí Azure pomocí jazyka C
+# <a name="send-events-tooazure-event-hubs-using-c"></a>Odesílání událostí tooAzure Event Hubs pomocí jazyka C
 
 ## <a name="introduction"></a>Úvod
-Event Hubs je vysoce škálovatelná služba, kterou lze přijímat miliony událostí za sekundu, povolení aplikaci zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
+Event Hubs je vysoce škálovatelná služba, která může přijímat miliony událostí za sekundu, povolení tooprocess aplikace a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikace hello. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
 
-Další informace najdete v tématu [Přehled služby Event Hubs] [Přehled služby Event Hubs].
+Další informace najdete v tématu hello [Přehled služby Event Hubs] [Přehled služby Event Hubs].
 
-V tomto kurzu se dozvíte, jak odesílat události do centra událostí pomocí konzolové aplikace v C. Chcete-li přijímat události, klikněte na tlačítko přijímající příslušný jazyk v levé tabulce obsahu.
+V tomto kurzu se dozvíte, jak toosend události tooan centra událostí pomocí konzolové aplikace v č. tooreceive události, klikněte na příslušný přijímající jazyk hello v levé tabulce hello obsahu.
 
-K dokončení tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
-* Prostředí pro vývoj C. V tomto kurzu budeme předpokládat zásobníku RSZ ve virtuálním počítači Azure Linux s Ubuntu 14.04.
+* Prostředí pro vývoj C. V tomto kurzu budeme předpokládat hello RSZ zásobníku ve virtuálním počítači Azure Linux s Ubuntu 14.04.
 * [Sadu Microsoft Visual Studio](https://www.visualstudio.com/).
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="send-messages-to-event-hubs"></a>Zasílání zpráv do služby Event Hubs
-V této části jsme zápisu aplikace C odesílat události do vašeho centra událostí. Kód používá knihovnu AMQP kanálem z [Apache Qpid projektu](http://qpid.apache.org/). Toto je obdobou pomocí front Service Bus a témat s AMQP z C, jak je znázorněno [zde](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).
+## <a name="send-messages-tooevent-hubs"></a>Odesílání zpráv tooEvent rozbočovače
+V této části jsme zápisu C aplikace toosend události tooyour centra událostí. Kód Hello používá hello knihovně kanálem AMQP z hello [Apache Qpid projektu](http://qpid.apache.org/). Toto je obdobou toousing fronty Service Bus a témat AMQP z C, jak je znázorněno [zde](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).
 
-1. Z [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html), postupujte podle pokynů k instalaci Qpid kanálem, v závislosti na vašem prostředí.
-2. Kompilace knihovně kanálem, nainstalujte následující balíčky:
+1. Z hello [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html), postupujte podle pokynů tooinstall hello Qpid kanálem, v závislosti na vašem prostředí.
+2. toocompile hello knihovně kanálem, nainstalujte hello následující balíčky:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Stažení [Qpid kanálem knihovny](http://qpid.apache.org/proton/index.html)a rozbalte ho, například:
+3. Stáhnout hello [Qpid kanálem knihovny](http://qpid.apache.org/proton/index.html)a rozbalte ho, například:
    
     ```shell
     wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
@@ -59,7 +59,7 @@ V této části jsme zápisu aplikace C odesílat události do vašeho centra ud
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Pracovní adresář, vytvořte nový soubor s názvem **sender.c** následujícím kódem. Nezapomeňte nahradit hodnoty pro název centra událostí a název oboru názvů. Také je třeba nahradit verzi klíč pro kódovaná adresou URL **SendRule** vytvořili dříve. Můžete kódování URL ho [zde](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. Pracovní adresář, vytvořte nový soubor s názvem **sender.c** s hello následující kód. Mějte na paměti, toosubstitute hello hodnotu pro název centra událostí a název oboru názvů. Také nahraďte kódovaná adresou URL verzi hello klíč pro hello **SendRule** vytvořili dříve. Můžete kódování URL ho [zde](http://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -121,7 +121,7 @@ V této části jsme zápisu aplikace C odesílat události do vašeho centra ud
     }
    
     int main(int argc, char** argv) {
-        printf("Press Ctrl-C to stop the sender process\n");
+        printf("Press Ctrl-C toostop hello sender process\n");
    
         pn_messenger_t *messenger = pn_messenger(NULL);
         pn_messenger_set_outgoing_window(messenger, 1);
@@ -140,18 +140,18 @@ V této části jsme zápisu aplikace C odesílat události do vašeho centra ud
         return 0;
     }
     ```
-6. Kompilace souboru, za předpokladu, že **RSZ**:
+6. Kompilace souboru hello za předpokladu, že **RSZ**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Tento kód používáme okno s odchozí 1 Vynutit zprávy se co nejdříve. Obecně platí aplikace se pokuste batch zprávy a pokuste se zvýšit propustnost. Najdete v článku [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html) informace o tom, jak v knihovně Qpid kanálem v tomto a dalších prostředích a z platforem, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby).
+    > V tomto kódu používáme okno s odchozí 1 tooforce hello zpráv se co nejdříve. Obecně platí vaše aplikace by měla zkuste toobatch zprávy tooincrease propustnost. V tématu hello [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html) informace o tom, jak toouse hello Qpid kanálem knihovny v tomto a dalších prostředích a z platforem, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby).
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Další informace o službě Event Hubs návštěvou hello následující odkazy:
 
 * [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md
 )

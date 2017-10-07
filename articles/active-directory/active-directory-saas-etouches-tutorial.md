@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s etouches | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a etouches."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a etouches."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,223 +14,223 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 3cd9e9d6aae924369065ca492b1f6380c0ddc5fe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5f3ff7550e660b0fc52612140ca55061504b5edd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Kurz: Azure Active Directory integrace s etouches
 
-V tomto kurzu zjistěte, jak integrovat etouches s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate etouches s Azure Active Directory (Azure AD).
 
-Integrace etouches s Azure AD poskytuje následující výhody:
+Integrace etouches s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k etouches
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k etouches (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooetouches
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooetouches (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s etouches, potřebujete následující položky:
+Integrace služby Azure AD s etouches tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Etouches jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání etouches z Galerie
+1. Přidání etouches z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-etouches-from-the-gallery"></a>Přidání etouches z Galerie
-Při konfiguraci integrace etouches do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS etouches z galerie.
+## <a name="adding-etouches-from-hello-gallery"></a>Přidání etouches z Galerie hello
+tooconfigure hello integrace etouches do Azure AD, je nutné tooadd etouches hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat etouches z galerie, proveďte následující kroky:**
+**tooadd etouches z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. Do vyhledávacího pole zadejte **etouches**, vyberte **etouches** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Hello vyhledávacího pole zadejte **etouches**, vyberte **etouches** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
 
-    ![etouches v seznamu výsledků](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_addfromgallery.png)
+    ![etouches v seznamu výsledků hello](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s etouches podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v etouches je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v etouches musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v etouches je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v etouches musí toobe navázat.
 
-V etouches, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V etouches, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s etouches, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s etouches, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovací uživatele s etouches](#create-an-etouches-test-user)**  – Pokud chcete mít protějšek Britta Simon v etouches propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvořit testovací uživatele s etouches](#create-an-etouches-test-user)**  -toohave protějšek Britta Simon v etouches, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci etouches.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci etouches.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s etouches, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s etouches, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **etouches** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **etouches** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_samlbase.png)
 
-3. Na **etouches domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **etouches domény a adresy URL** část, proveďte následující kroky hello:
 
     ![jednotné přihlašování informace etouches domény a adresy URL](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.eiseverywhere.com/<instance name>`
+    b. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://www.eiseverywhere.com/<instance name>`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Aktualizujte hodnotu skutečné znakem na adresu URL a identifikátor, který je vysvětlen později v tomto kurzu.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte hodnotu hello s hello skutečné přihlášení adresy URL a identifikátor, který je vysvětlen později v kurzu hello.
     > 
 
-4. aplikace etouches očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **atribut uživatele** aplikace. Následující snímek obrazovky ukazuje příklad pro tento. 
+4. aplikace etouches očekává hello SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte hello následující deklarace identity pro tuto aplikaci. Můžete spravovat hello hodnoty těchto atributů z hello **atribut uživatele** aplikace hello. Hello následující snímek obrazovky ukazuje příklad pro tento. 
 
     ![Atribut uživatele](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_attribute.png) 
 
-5. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
+5. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno, nakonfigurovat atribut tokenu SAML, jak je znázorněno v bitové kopii hello a provést hello následující kroky:
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |
     | E-mail | User.Mail |    
     
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
 
     ![Přidání atributu](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
 
     ![Atribut dialogové okno Přidání](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **OK**. 
 
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+6. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_certificate.png) 
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-etouches-tutorial/tutorial_general_400.png)
 
-8. Získat jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, proveďte následující kroky v aplikaci etouches: 
+8. tooget jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, proveďte následující kroky v aplikaci etouches hello hello: 
 
     ![Konfigurace etouches](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png) 
 
-    a. Přihlášení k **etouches** aplikace pomocí oprávnění správce.
+    a. Přihlášení příliš**etouches** aplikace pomocí hello práva správce.
    
-    b. Přejděte na **SAML** konfigurace.
+    b. Přejděte toohello **SAML** konfigurace.
 
-    c. V **obecné nastavení** část, otevřete svůj certifikát stažený z portálu Azure v poznámkovém bloku, kopírovat obsah a pak ji vložit do textového pole IDP metadat. 
+    c. V hello **obecné nastavení** část, otevřete svůj certifikát stažený z portálu Azure v poznámkovém bloku hello kopírování obsahu a pak ji vložit do textového pole hello IDP metadata. 
 
-    d. Klikněte na **Uložit & zůstat** tlačítko.
+    d. Klikněte na hello **Uložit & zůstat** tlačítko.
   
-    e. Klikněte na **Metadata aktualizace** tlačítko v části SAML Metadata. 
+    e. Klikněte na hello **Metadata aktualizace** tlačítka na hello oddílem metadat SAML. 
 
-    f. To otevře se stránka a provádět jednotné přihlašování. Jakmile funguje jednotné přihlašování pak můžete nastavit uživatelské jméno.
+    f. Tato otevře hello stránky a provádět jednotné přihlašování. Jednou hello jednotné přihlašování funguje pak můžete nastavit hello uživatelské jméno.
 
-    g. Do pole uživatelské jméno, vyberte **emailaddress** jak je znázorněno na obrázku níže. 
+    g. V poli hello uživatelské jméno, vyberte hello **emailaddress** jak ukazuje následující obrázek hello. 
 
-    h. Kopírování **SP entity ID** a vložte ji do **identifikátor** textovému poli, která je v **etouches domény a adresy URL** části na portálu Azure.
+    h. Kopírování hello **SP entity ID** a vložte ji do hello **identifikátor** textovému poli, která je v **etouches domény a adresy URL** části na portálu Azure.
 
-    i. Kopírování **URL jednotného přihlašování nebo ACS** a vložte ji do **přihlásit na adrese URL** textovému poli, která je v **etouches domény a adresy URL** části na portálu Azure.
+    i. Kopírování hello **URL jednotného přihlašování nebo ACS** a vložte ji do hello **přihlásit na adrese URL** textovému poli, která je v **etouches domény a adresy URL** části na portálu Azure.
    
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-etouches-tutorial/create_aaduser_01.png) 
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-etouches-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-etouches-tutorial/create_aaduser_02.png) 
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-etouches-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
-    ![Tlačítko Přidat](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-an-etouches-test-user"></a>Vytvořit uživatele s etouches testu
 
-V této části vytvoříte volal Britta Simon v etouches uživatele. Práce s [tým podpory etouches klienta](https://www.etouches.com/event-software/support/customer-support/) přidat uživatele do etouches platformy.
+V této části vytvoříte volal Britta Simon v etouches uživatele. Práce s [tým podpory etouches klienta](https://www.etouches.com/event-software/support/customer-support/) tooadd hello uživatelé v platformě etouches hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k etouches.
+V této části povolíte tak, že udělíte přístup tooetouches toouse Britta Simon Azure jednotné přihlašování.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele hello][200] 
 
-**Pokud chcete přiřadit Britta Simon etouches, proveďte následující kroky:**
+**tooassign Britta Simon tooetouches, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **etouches**.
+2. V seznamu aplikace hello vyberte **etouches**.
 
-    ![V seznamu aplikací na etouches odkaz](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_app.png) 
+    ![v seznamu aplikace hello Hello etouches odkaz](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202] 
+    ![odkaz "Uživatelé a skupiny" Hello][202] 
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -239,13 +239,13 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
+Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.
 
-Když kliknete na dlaždici etouches na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci etouches.
+Po kliknutí na tlačítko hello etouches dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour etouches aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

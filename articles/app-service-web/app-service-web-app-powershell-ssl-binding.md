@@ -1,6 +1,6 @@
 ---
-title: "Vazby certifikátů SSL pomocí prostředí PowerShell"
-description: "Postup vytvoření vazby certifikátů SSL do webové aplikace pomocí prostředí PowerShell."
+title: "Certifikáty aaaSSL vazby pomocí prostředí PowerShell"
+description: "Zjistěte, jak toobind SSL certifikáty tooyour webovou aplikaci pomocí prostředí PowerShell."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: a1fcc618fb0c68778e39cc227368a60b008f9401
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 82f0e7c796da99ab50f69f3638ef64d55a94fc8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Azure App Service vazba certifikátu protokolu SSL pomocí prostředí PowerShell
-Verze služby Microsoft Azure PowerShell verze 1.1.0 byl přidán novou rutinu, která by uživateli přidělit možnost vytvořit vazbu existující nebo nové certifikáty SSL na stávající webovou aplikaci.
+Hello verze služby Microsoft Azure PowerShell verze 1.1.0 byla přidána nová rutina, která získáte hello uživatele hello možnost toobind stávajícího nebo nového SSL certifikáty tooan stávající webovou aplikaci.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-Další informace o použití prostředí Azure PowerShell rutiny pro správu zkontrolujte vaší webové aplikace založené na Azure Resource Manager [Azure Resource Manager na základě příkazy prostředí PowerShell pro webové aplikace Azure](app-service-web-app-azure-resource-manager-powershell.md)
+toolearn o pomocí Azure Resource Manager na základě toomanage rutin prostředí Azure PowerShell vaší webové aplikace zkontrolujte [Azure Resource Manager na základě příkazy prostředí PowerShell pro webové aplikace Azure](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Odesílání a vytvoření vazby nový certifikát SSL
-Scénář: Uživatel se má vytvořit vazbu certifikátu protokolu SSL na jeden z jeho webové aplikace.
+Scénář: hello uživatele chcete toobind tooone certifikát SSL jeho webových aplikací.
 
-Znalost, název skupiny prostředků, který obsahuje webové aplikace, název webové aplikace, cesta k souboru certifikátu .pfx v počítači uživatele, heslo pro certifikát a vlastní název hostitele, jsme použijte následující příkaz prostředí PowerShell k vytvoření této vazby SSL:
+Znalost hello název skupiny prostředků, který obsahuje hello webové aplikace, název webové aplikace hello, hello certifikátu .pfx cesta k souboru na počítači uživatele hello hello heslo pro certifikát hello a hello vlastní název hostitele, můžeme použít hello následující toocreate příkaz prostředí PowerShell, Vazba SSL:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
 
-Všimněte si, že před přidáním vazbu SSL pro webovou aplikaci, musí mít název hostitele (vlastní domény) už nakonfigurovaná. Pokud není nakonfigurovaný název hostitele, pak bude dojde k chybě 'název hostitele, při spuštění New-AzureRmWebAppSSLBinding neexistuje. Můžete přidat název hostitele přímo z portálu nebo pomocí prostředí Azure PowerShell. Následující fragment kódu prostředí PowerShell lze nakonfigurovat před spuštěním AzureRmWebAppSSLBinding nový název hostitele.   
+Všimněte si, že před přidáním protokolu SSL vazby tooa webovou aplikaci, musí mít název hostitele (vlastní domény) už nakonfigurovaná. Pokud není nakonfigurovaný název hostitele hello, pak bude dojde k chybě 'název hostitele, při spuštění New-AzureRmWebAppSSLBinding neexistuje. Můžete přidat název hostitele přímo z hello portálu nebo pomocí prostředí Azure PowerShell. Hello následující fragment kódu prostředí PowerShell může být název hostitele hello tooconfigure před spuštěním AzureRmWebAppSSLBinding nový.   
 
     $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
     $hostNames = $webApp.HostNames  
     $HostNames.Add("www.contoso.com")  
     Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
 
-Je důležité si uvědomit, že rutinu Set-AzureRmWebApp přepíše názvy hostitelů pro webovou aplikaci. Proto výše uvedeném fragmentu prostředí PowerShell je připojení k existující seznam názvy hostitelů pro webové aplikace.  
+Je důležité, že toounderstand, který hello rutiny Set-AzureRmWebApp přepíše hello názvy hostitelů pro hello webovou aplikaci. Proto je hello výše fragmentu kódu Powershellu připojování toohello existující seznam hello názvy hostitelů pro hello webovou aplikaci.  
 
 ## <a name="uploading-and-binding-an-existing-ssl-certificate"></a>Odesílání a vazbu existujícího certifikátu SSL
-Scénář: Uživatel by chtěl dříve odeslaný certifikát SSL vazbu na jeden z jeho webové aplikace.
+Scénář: hello uživatele chcete toobind dříve odeslaný tooone certifikát SSL jeho webových aplikací.
 
-Můžete se nám získat seznam certifikátů, které jsou již odeslány do určité skupiny zdrojů pomocí následujícího příkazu
+Nemůžeme získat hello seznam certifikátů již nahrané tooa určité skupiny zdrojů pomocí hello následující příkaz
 
     Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
 
-Všimněte si, že certifikáty jsou místní pro konkrétní umístění a skupině prostředků, uživatel bude muset znovu nahrát na server certifikát, pokud je nakonfigurované webové aplikace v jiném umístění a skupina prostředků jiného, než který potřebný certifikát 
+Všimněte si, že jsou certifikáty hello místní tooa konkrétní umístění nebo skupině prostředků hello stačit, když uživatel toore – nahrání certifikátu hello Pokud hello nakonfigurována webová aplikace je v jiném umístění a skupina prostředků jiného, než který hello potřeby certifikátu 
 
-Znalost, název skupiny prostředků, který obsahuje webové aplikace, název webové aplikace, kryptografický otisk certifikátu a vlastní název hostitele, jsme použijte následující příkaz prostředí PowerShell k vytvoření této vazby SSL:
+Znalost hello název skupiny prostředků, který obsahuje hello webové aplikace, hello název webové aplikace, hello kryptografický otisk certifikátu a hello vlastní název hostitele, můžeme hello následující toocreate příkaz prostředí PowerShell použít tuto vazbu SSL:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Thumbprint <certificate thumbprint> -Name www.contoso.com
 
 ## <a name="deleting-an-existing-ssl-binding"></a>Odstranění stávající vazbu SSL
-Scénář: Uživatel chcete odstranit stávající vazbu SSL.
+Scénář: hello uživatele chcete toodelete stávající vazbu SSL.
 
-Zároveň budete vědět, název skupiny prostředků, který obsahuje webové aplikace, název webové aplikace a vlastní název hostitele, jsme odebrat tuto vazbu SSL pomocí následujícího příkazu Powershellu:
+Znalost hello název skupiny prostředků, který obsahuje hello webové aplikace, hello název webové aplikace a hello vlastní název hostitele, můžeme hello následující tooremove příkaz prostředí PowerShell použít tuto vazbu SSL:
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com
 
-Všimněte si, že pokud byla odebrána vazba SSL poslední vazbu pomocí certifikátu v tomto umístění, ve výchozím nastavení certifikátu se odstraní, pokud chcete zachovat certifikátu, že kterou může použít možnost DeleteCertificate zachovat certifikát uživatele
+Všimněte si, že pokud hello odebrána vazbu SSL byl hello poslední vazbu pomocí certifikátu v tomto umístění výchozí hello certifikátem budou odstraněny, pokud hello uživatele, aby certifikát hello tookeep může použít hello DeleteCertificate možnost tookeep hello certifikátu
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### <a name="references"></a>Odkazy
 * [Azure Resource Manager na základě příkazy prostředí PowerShell pro webové aplikace Azure](app-service-web-app-azure-resource-manager-powershell.md)
-* [Úvod do prostředí App Service](app-service-app-service-environment-intro.md)
+* [Úvod tooApp Service Environment](app-service-app-service-environment-intro.md)
 * [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md)
 

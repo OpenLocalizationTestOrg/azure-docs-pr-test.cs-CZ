@@ -1,6 +1,6 @@
 ---
-title: Principy Manifest aplikace Azure Active Directory | Microsoft Docs
-description: "Podrobné pokrytí manifestu aplikace Azure Active Directory, která představuje konfiguraci identity aplikace v klientovi služby Azure AD a se používá k zajištění OAuth autorizace, souhlasu prostředí a další."
+title: Azure Active Directory Application Manifest hello aaaUnderstanding | Microsoft Docs
+description: "Podrobné pokrytí manifest aplikace Azure Active Directory hello, která představuje konfiguraci identity aplikace v klientovi služby Azure AD a je použité toofacilitate autorizace OAuth, souhlasu prostředí a další."
 services: active-directory
 documentationcenter: 
 author: sureshja
@@ -16,87 +16,87 @@ ms.date: 07/20/2017
 ms.author: sureshja
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: d5e18f41d6eb69ccb7eafaa4de2646c4c38df5e2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 096c9d5501edbfc08731fea670cee559d4442ad1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="understanding-the-azure-active-directory-application-manifest"></a>Principy manifest aplikace Azure Active Directory
-Aplikace, které se integrují s Azure Active Directory (AD) musí být zaregistrován u klienta služby Azure AD, poskytuje konfiguraci trvalé identity pro aplikaci. Tato konfigurace je konzultaci za běhu, povolení scénáře, které umožňují, aby aplikace a externí zprostředkovatel ověřování/autorizace služby prostřednictvím služby Azure AD. Další informace o modelu aplikace Azure AD najdete v tématu [přidání, aktualizace a odebrání aplikace] [ ADD-UPD-RMV-APP] článku.
+# <a name="understanding-hello-azure-active-directory-application-manifest"></a>Principy hello manifest aplikace Azure Active Directory
+Aplikace, které se integrují s Azure Active Directory (AD) musí být zaregistrován u klienta služby Azure AD, poskytuje konfiguraci trvalou identitu pro aplikace hello. Tato konfigurace je konzultaci za běhu, povolení scénáře, které umožňují toooutsource a zprostředkovatele ověřování/autorizace aplikací prostřednictvím služby Azure AD. Další informace o modelu aplikace hello Azure AD najdete v tématu hello [přidání, aktualizace a odebrání aplikace] [ ADD-UPD-RMV-APP] článku.
 
 ## <a name="updating-an-applications-identity-configuration"></a>Aktualizuje se konfigurace identity aplikace
-Ve skutečnosti více možností pro nejsou k dispozici aktualizace vlastností konfigurace identity aplikace, které se liší v možnosti a stupňů potíže, včetně následujících:
+Nejsou k dispozici pro aktualizaci hello vlastnosti konfigurace identity aplikace, které se liší v možnosti a stupňů potíže, včetně následujících hello ve skutečnosti více možnosti:
 
-*  **[Portál Azure] [ AZURE-PORTAL] webové uživatelské rozhraní** umožňuje aktualizovat nejběžnější vlastností aplikace. To je chyba nejrychlejší a minimálně náchylné k chybám způsob aktualizace vlastnosti aplikace, ale není poskytnuta úplný přístup na všechny vlastnosti, jako jsou následující dvě metody.
-* Pro pokročilejší scénáře, kde je potřeba aktualizovat vlastnosti, které nejsou přístupné na portálu Azure classic, můžete upravit **manifest aplikace**. Toto je fokus v tomto článku a je podrobněji popsána spouštění v další části.
-* Je také možné **zápisu aplikace, která používá [rozhraní Graph API] [ GRAPH-API]**  aktualizovat aplikace, které vyžaduje nejvíce úsilí. To může být atraktivní možnosti i když, pokud jsou zápis software pro správu, nebo muset aktualizovat vlastnosti aplikace v pravidelných intervalech automatizovaně.
+* Hello  **[portál Azure] [ AZURE-PORTAL] webové uživatelské rozhraní** vám umožní tooupdate hello nejběžnější vlastností aplikace. Toto je hello nejrychlejší a minimálně chyba náchylné k chybám způsob aktualizace vlastností vaší aplikace, ale nemá získáte tak úplný přístup tooall vlastnosti, jako jsou hello následující dvě metody.
+* Pro pokročilejší scénáře, kde je nutné tooupdate vlastnosti, které nejsou vystaveny v hello portál Azure classic, můžete upravit hello **manifest aplikace**. To je hello zaměřením tohoto článku a je podrobněji popsána spouštění v další části hello.
+* Je také možné příliš**zápisu aplikace, která používá hello [rozhraní Graph API] [ GRAPH-API]**  tooupdate vaší aplikace, které vyžaduje hello většina úsilí. Může se jednat atraktivní možnosti, když, pokud jsou zápis software pro správu, nebo potřebujete tooupdate vlastnosti aplikace v pravidelných intervalech automatizovaně.
 
-## <a name="using-the-application-manifest-to-update-an-applications-identity-configuration"></a>Aktualizace konfigurace identity aplikace pomocí manifest aplikace
-Prostřednictvím [portál Azure][AZURE-PORTAL], konfigurace identity aplikace můžete spravovat aktualizace pomocí editoru manifestu vložené manifest aplikace. Můžete také stáhnout a nahrát manifest aplikace jako soubor ve formátu JSON. Žádný skutečný soubor je uložen v adresáři. Manifest aplikace je jenom metody GET protokolu HTTP operace u entity aplikace Azure AD Graph API a nahrávání je operace HTTP PATCH u entity aplikací.
+## <a name="using-hello-application-manifest-tooupdate-an-applications-identity-configuration"></a>Pomocí tooupdate manifestu aplikace hello konfigurace identity aplikace
+Prostřednictvím hello [portál Azure][AZURE-PORTAL], konfigurace identity aplikace můžete spravovat aktualizace pomocí editoru manifestu vložené hello manifest aplikace hello. Můžete také stáhnout a nahrát hello manifest aplikace jako soubor ve formátu JSON. Žádný skutečný soubor je uložen v adresáři hello. Hello manifest aplikace je jenom metody GET protokolu HTTP operace u entity aplikace hello Azure AD Graph API a hello se nahrávají na entity aplikace hello operace HTTP PATCH.
 
-Výsledkem je, aby bylo možné porozumět formátu a vlastnosti manifestu aplikace, budete muset odkazovat na rozhraní Graph API [aplikace entity] [ APPLICATION-ENTITY] dokumentaci. Příklady aktualizace, které lze provést, i když nahrávání manifest aplikace:
+V důsledku toho ve formátu hello toounderstand pořadí a vlastnosti hello manifest aplikace, budete potřebovat tooreference hello rozhraní Graph API [aplikace entity] [ APPLICATION-ENTITY] dokumentaci. Příklady aktualizace, které lze provést, i když nahrávání manifest aplikace:
 
-* **Deklarovat obory oprávnění (oauth2Permissions)** vystavené webového rozhraní API. V tématu "Vystavení webové rozhraní API pro další aplikace" v [integrace aplikací s Azure Active Directory] [ INTEGRATING-APPLICATIONS-AAD] informace o implementaci vystupovat jako jiný uživatel pomocí oauth2Permissions delegovaná oprávnění oboru. Jak je uvedeno nahoře, vlastností entity aplikací jsou popsané v rozhraní Graph API [Entity a komplexní typ] [ APPLICATION-ENTITY] článku, včetně oauth2Permissions vlastnost, která je kolekce z typ [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION].
-* **Deklarovat aplikační role (appRoles) vystavené aplikace**. Vlastnost entity aplikace appRoles je kolekce typu [aplikační role][APPLICATION-ENTITY-APP-ROLE]. Najdete v článku [řízení přístupu v cloudových aplikacích pomocí služby Azure AD na základě Role] [ RBAC-CLOUD-APPS-AZUREAD] článku příklad implementace.
-* **Deklarovat známé klienta aplikace (knownClientApplications)**, které umožňují logicky tie souhlasu zadaného klienta aplikace na prostředek nebo webové rozhraní API.
-* **Žádosti o službě Azure AD vydat deklaraci členství ve skupině** pro přihlášeného uživatele (groupMembershipClaims).  Můžete nakonfigurovat také vystavovat deklarace identity o členství role uživatele adresáře. Najdete v článku [autorizace v cloudových aplikací pomocí skupiny AD] [ AAD-GROUPS-FOR-AUTHORIZATION] článku příklad implementace.
-* **Aby vaše aplikace podporují OAuth 2.0 implicitní grant** toků (oauth2AllowImplicitFlow). Tento typ udělení toku se používá s embedded webové stránky JavaScript nebo jedné stránky aplikace (SPA). Další informace o poskytnutí implicitní autorizace najdete v tématu [pochopení OAuth2 implicitní tok v Azure Active Directory poskytování][IMPLICIT-GRANT].
-* **Povolit použití X509 certifikáty jako tajný klíč** (keyCredentials). Najdete v článku [vytvářet aplikace, služby a démon v Office 365] [ O365-SERVICE-DAEMON-APPS] a [– Příručka vývojáře pro ověřování s rozhraním API pro Azure Resource Manager] [ DEV-GUIDE-TO-AUTH-WITH-ARM] články Příklady implementace.
-* **Přidat nový identifikátor ID URI aplikace** pro vaši aplikaci (identifierURIs[]). Identifikátory URI ID aplikace používají k jedinečné identifikaci aplikace v rámci jeho klienta Azure AD (nebo napříč více klientů Azure AD, pro víc klientů scénáře při kvalifikovaný prostřednictvím ověřené vlastní domény). Používají se při vyžadování oprávnění na prostředek aplikace nebo získání tokenu přístupu pro aplikaci prostředků. Při aktualizaci tento prvek se stejnou aktualizaci přišla odpovídající instanční objekt servicePrincipalNames [] – kolekce, které je umístěn v domácí klienta aplikace.
+* **Deklarovat obory oprávnění (oauth2Permissions)** vystavené webového rozhraní API. Naleznete v tématu "Exposing webovým rozhraním API tooOther aplikace" hello v [integrace aplikací s Azure Active Directory] [ INTEGRATING-APPLICATIONS-AAD] informace o implementaci vystupovat jako jiný uživatel pomocí hello oauth2Permissions delegovaná oprávnění oboru. Jak je uvedeno nahoře, vlastností entity aplikací jsou popsané v hello rozhraní Graph API [Entity a komplexní typ] [ APPLICATION-ENTITY] článku, včetně hello oauth2Permissions vlastnost, která je kolekce typu [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION].
+* **Deklarovat aplikační role (appRoles) vystavené aplikace**. Hello vlastnost appRoles aplikace entity je kolekce typu [aplikační role][APPLICATION-ENTITY-APP-ROLE]. V tématu hello [řízení přístupu v cloudových aplikacích pomocí služby Azure AD na základě Role] [ RBAC-CLOUD-APPS-AZUREAD] článku příklad implementace.
+* **Deklarovat známé klienta aplikace (knownClientApplications)**, které umožňují toologically vazbě hello souhlasu hello zadaný klienta aplikace toohello prostředků nebo webové rozhraní API.
+* **Žádosti o členství ve skupinách Azure AD tooissue deklarace** pro hello přihlášení uživatele (groupMembershipClaims).  To může být také nakonfigurované tooissue deklarace identity o členství role hello uživatele v adresáři. V tématu hello [autorizace v cloudových aplikací pomocí skupiny AD] [ AAD-GROUPS-FOR-AUTHORIZATION] článku příklad implementace.
+* **Vaše aplikace toosupport OAuth 2.0 implicitní udělení povolit** toků (oauth2AllowImplicitFlow). Tento typ udělení toku se používá s embedded webové stránky JavaScript nebo jedné stránky aplikace (SPA). Další informace o udělení hello implicitní autorizace, najdete v části [Principy hello OAuth2 implicitní tok v Azure Active Directory poskytování][IMPLICIT-GRANT].
+* **Povolit použití X509 certifikáty jako tajný klíč hello** (keyCredentials). V tématu hello [vytvářet aplikace, služby a démon v Office 365] [ O365-SERVICE-DAEMON-APPS] a [tooauth Příručka pro vývojáře s rozhraním API pro Azure Resource Manager] [ DEV-GUIDE-TO-AUTH-WITH-ARM] články pro příklady implementace.
+* **Přidat nový identifikátor ID URI aplikace** pro vaši aplikaci (identifierURIs[]). ID aplikace identifikátory URI používají toouniquely identifikaci aplikace v rámci jeho klienta Azure AD (nebo napříč více klientů Azure AD, pro víc klientů scénáře při kvalifikovaný prostřednictvím ověřené vlastní domény). Používají se při požadování oprávnění tooa prostředků aplikace, nebo získání tokenu přístupu pro aplikaci prostředků. Při aktualizaci tohoto elementu hello stejnou aktualizaci se provádí kolekce [] servicePrincipalNames toohello odpovídající instančního objektu, který je umístěn v domácí klienta aplikace hello.
 
-Manifest aplikace také poskytuje vhodný způsob, jak sledovat stav registrace vaší aplikace. Protože je k dispozici ve formátu JSON, lze do zdrojového kódu, společně s zdrojový kód aplikace zkontrolovat reprezentace souboru.
+Hello manifest aplikace také poskytuje vhodný způsob tootrack hello stav registrace vaší aplikace. Protože je k dispozici ve formátu JSON, lze do zdrojového kódu, společně s zdrojový kód aplikace zkontrolovat hello soubor, který představuje.
 
 ## <a name="step-by-step-example"></a>Krok příklad krok
-Umožňuje teď provede kroky potřebné k aktualizaci konfigurace identity aplikace prostřednictvím manifest aplikace. Zvýrazníme jeden z předchozích ukázkách znázorňující na prostředek aplikace deklarovat nový obor oprávnění:
+Teď umožňuje provede požadované tooupdate hello kroky konfigurace identity aplikace prostřednictvím hello manifest aplikace. Zvýrazníme jeden z předchozích příkladech hello znázorňující, jak toodeclare nové oprávnění obor na prostředek aplikace:
 
-1. Přihlaste se na web [Azure Portal][AZURE-PORTAL].
-2. Po došlo k ověření, vyberte vyberete v pravém horním rohu stránky klientovi Azure AD.
-3. Vyberte **Azure Active Directory** rozšíření z levého navigačního panelu a klikněte na **registrace aplikace**.
-4. Vyhledávání aplikace, které chcete aktualizovat v seznamu a klikněte na něj.
-5. Na stránce aplikace klikněte na tlačítko **Manifest** otevřete editor pro vložené manifestu. 
-6. Manifest pomocí tohoto editoru lze přímo upravit. Všimněte si, že manifest dodržuje schéma pro [aplikace entity] [ APPLICATION-ENTITY] jak jsme už zmínili dřív: například za předpokladu, že chceme implementace/zveřejněte nové oprávnění názvem "Employees.Read.All" na našem prostředků aplikace (API), jednoduše přidejte element nové za sekundu kolekce oauth2Permissions ie:
+1. Přihlaste se toohello [portál Azure][AZURE-PORTAL].
+2. Po došlo k ověření, zvolte výběrem z hello pravém horním rohu stránky hello klientovi Azure AD.
+3. Vyberte **Azure Active Directory** rozšíření z hello na vlevo navigačního panelu a klikněte na tlačítko **registrace aplikace**.
+4. Najít aplikace hello tooupdate hello seznamu a klikněte na na něm.
+5. Na stránce aplikace hello, klikněte na tlačítko **Manifest** tooopen hello vložené manifestu editor. 
+6. Lze přímo upravit hello manifest pomocí tohoto editoru. Všimněte si, že manifest hello dodržuje hello schéma pro hello [aplikace entity] [ APPLICATION-ENTITY] jak jsme už zmínili dřív: například za předpokladu, že chceme tooimplement/zveřejněte nové oprávnění s názvem "Employees.Read.All" v našem prostředků aplikace (API) by kolekce oauth2Permissions toohello element nové za sekundu, přidejte jednoduše ie:
    
         "oauth2Permissions": [
         {
-        "adminConsentDescription": "Allow the application to access MyWebApplication on behalf of the signed-in user.",
+        "adminConsentDescription": "Allow hello application tooaccess MyWebApplication on behalf of hello signed-in user.",
         "adminConsentDisplayName": "Access MyWebApplication",
         "id": "aade5b35-ea3e-481c-b38d-cba4c78682a0",
         "isEnabled": true,
         "type": "User",
-        "userConsentDescription": "Allow the application to access MyWebApplication on your behalf.",
+        "userConsentDescription": "Allow hello application tooaccess MyWebApplication on your behalf.",
         "userConsentDisplayName": "Access MyWebApplication",
         "value": "user_impersonation"
         },
         {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
+        "adminConsentDescription": "Allow hello application toohave read-only access tooall Employee data.",
+        "adminConsentDisplayName": "Read-only access tooEmployee records",
         "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
         "isEnabled": true,
         "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
+        "userConsentDescription": "Allow hello application toohave read-only access tooyour Employee data.",
+        "userConsentDisplayName": "Read-only access tooyour Employee records",
         "value": "Employees.Read.All"
         }
         ],
    
-    Položka musí být jedinečný, a proto musíte vygenerovat nový globálně jedinečné ID (GUID) pro `"id"` vlastnost. V takovém případě vzhledem k tomu, že jsme zadali `"type": "User"`, toto oprávnění může být souhlas pomocí libovolného účtu Azure AD ověřit klienta v aplikaci prostředků nebo rozhraní API je zaregistrován. Tím získají klienta aplikace oprávnění k přístupu jménem účtu. Popis a zobrazovaný název řetězce se používají během souhlasu a pro zobrazení na portálu Azure.
-6. Po dokončení aktualizace manifest, klikněte na tlačítko **Uložit** uložit manifest.  
+    Hello položka musí být jedinečný, a proto musíte vygenerovat nový globálně jedinečné ID (GUID) pro hello `"id"` vlastnost. V takovém případě vzhledem k tomu, že jsme zadali `"type": "User"`, toto oprávnění může být svolení tooby libovolný účet ověřit hello klienta Azure AD, ve které hello je zaregistrovaný aplikace prostředků nebo rozhraní API. Tato oprávnění tooaccess uděluje hello klienta aplikace se jménem hello účtu. Hello popis a zobrazovaný název řetězce se používají během souhlasu a pro zobrazení v hello portálu Azure.
+6. Po dokončení aktualizace hello manifest, klikněte na tlačítko **Uložit** toosave hello manifestu.  
    
-Teď, když je uložen v manifestu, můžete udělit registrovaný klientské aplikaci přístup k nové oprávnění jsme přidali výše. Tentokrát webového uživatelského rozhraní portálu Azure můžete použít neupravujte manifest aplikace klienta:  
+Teď, když hello manifest je uložen, můžete udělit registrovaného klienta aplikace přístup toohello nové oprávnění, které jsme přidali výše. Tento čas, které můžete použít hello portál Azure webového uživatelského rozhraní neupravujte manifest aplikace hello klienta:  
 
-1. Přejděte do okna **nastavení** klientské aplikace, do které chcete přidat přístup k novým rozhraním API, klikněte na **požadovaných oprávnění** a zvolte **vybrat rozhraní API**.
-2. Pak se zobrazí se seznam registrovaných prostředků aplikace (API) v klientovi. Klikněte na aplikaci prostředků, vyberte nebo zadejte název aplikace do vyhledávacího pole. Když jste najde aplikaci, klikněte na tlačítko **vyberte**.  
-3. Bude to trvat, abyste **vyberte oprávnění** stránku, která se zobrazí v seznamu oprávnění aplikací a delegovaná oprávnění k dispozici pro aplikaci prostředků. Vyberte nové oprávnění, aby bylo možné přidat do seznamu klienta požadovaná oprávnění. Toto nové oprávnění se uloží v konfiguraci identity klientské aplikace, ve vlastnosti kolekce "requiredResourceAccess".
+1. Nejprve přejděte toohello **nastavení** okno hello klienta aplikace toowhich chcete tooadd přístup toohello nové rozhraní API, klikněte na tlačítko **požadovaných oprávnění** a zvolte **vybrat rozhraní API** .
+2. Potom zobrazí s hello seznam registrovaných prostředků aplikace (API) v klientovi hello. Klikněte na tlačítko tooselect aplikace hello prostředků, nebo název typu hello hello aplikace hello vyhledávacího pole. Když jste najde hello aplikace, klikněte na tlačítko **vyberte**.  
+3. Tím přejdete toohello **vyberte oprávnění** stránky, které se zobrazí seznam hello oprávnění aplikací a delegovaná oprávnění k dispozici pro hello prostředků aplikace. Vyberte hello nová položka oprávnění v pořadí tooadd ho toohello klienta požadované seznam oprávnění. Toto nové oprávnění se uloží v konfiguraci identity hello klientskou aplikaci v vlastnost kolekce "requiredResourceAccess" hello.
 
 
 A je to. Teď vaše aplikace bude spuštěna s použitím jejich novou konfiguraci identity.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o vztah mezi objekty aplikace a instanční objekt aplikace v [aplikace a služby hlavní objekty ve službě Azure AD][AAD-APP-OBJECTS].
-* Najdete v článku [Glosář vývojáře Azure AD] [ AAD-DEVELOPER-GLOSSARY] definice některých koncepty pro vývojáře Azure Active Directory (AD) jádra.
+* Další informace o hello vztah mezi objekty aplikace a služby hlavní aplikace v [aplikace a služby hlavní objekty ve službě Azure AD][AAD-APP-OBJECTS].
+* V tématu hello [Glosář vývojáře Azure AD] [ AAD-DEVELOPER-GLOSSARY] definice některých koncepty pro vývojáře Azure Active Directory (AD) hello jádra.
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Použijte sekci komentáře hello níže tooprovide zpětnou vazbu a Pomozte nám vylepšit a utvářejí náš obsah.
 
 <!--article references -->
 [AAD-APP-OBJECTS]: active-directory-application-objects.md

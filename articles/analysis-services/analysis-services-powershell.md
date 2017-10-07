@@ -1,5 +1,5 @@
 ---
-title: "Správa služby Azure Analysis Services pomocí prostředí PowerShell | Microsoft Docs"
+title: "aaaManage Azure Analysis Services pomocí prostředí PowerShell | Microsoft Docs"
 description: "Správa Azure Analysis Services pomocí prostředí PowerShell."
 services: analysis-services
 documentationcenter: 
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: owend
-ms.openlocfilehash: 95593053950f96a83e093c29516e9f66ebad53bf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bc4250bf77b5a0d86c1049ee57493bcf2a1f0c1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí prostředí PowerShell
 
-Tento článek popisuje rutiny prostředí PowerShell použít k provádění serveru Azure Analysis Services a úlohy správy databáze. 
+Tento článek popisuje prostředí PowerShell rutiny používané tooperform Azure Analysis Services server a databáze úlohy správy. 
 
-Úlohy správy serveru jako je například vytváření nebo odstraňování serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služeb (vrstvy) použít rutiny Azure Resource Manager (AzureRM). Další úlohy pro správu databáze například přidáním nebo odebráním členy role zpracování nebo rozdělení do oddílů pomocí rutiny zahrnuté ve stejném modulu SqlServer jako SQL Server Analysis Services.
+Úlohy správy serveru jako je například vytváření nebo odstraňování serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby hello (vrstvy) použít rutiny Azure Resource Manager (AzureRM). Další úlohy pro správu databází, jako je přidání nebo odebrání členy role, zpracování nebo rozdělení do oddílů pomocí rutiny součástí hello stejný modul SQL Server jako SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Oprávnění
-Většinu úloh prostředí PowerShell vyžadují, že abyste měli oprávnění správce na serveru služby Analysis Services, který spravujete. Naplánované úlohy prostředí PowerShell jsou bezobslužné operace. Účet, který spouští Plánovač musí mít oprávnění správce na serveru služby Analysis Services. 
+Většinu úloh prostředí PowerShell vyžadují, že abyste měli oprávnění správce na serveru služby Analysis Services hello, které spravujete. Naplánované úlohy prostředí PowerShell jsou bezobslužné operace. Hello účet, který spouští hello scheduler musí mít oprávnění správce na serveru služby Analysis Services hello. 
 
-Operace serveru pomocí rutin AzureRm, váš účet nebo účet spouštějící scheduler musíte také zařadit do roli vlastníka na zdroj v [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+Pro operace serveru pomocí rutin AzureRm, účet nebo hello účet, který spouští scheduler musí patřit také toohello roli vlastníka pro prostředek hello v [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
 
 ## <a name="server-operations"></a>Operace serveru 
-Rutiny Azure Analysis Services jsou součástí [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) součást modulu. Instalaci moduly rutin AzureRM naleznete v tématu [rutiny Azure Resource Manager](/powershell/azure/overview) v galerii prostředí PowerShell.
+Rutiny Azure Analysis Services jsou součástí hello [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) součást modulu. moduly rutin AzureRM tooinstall, najdete v části [rutiny Azure Resource Manager](/powershell/azure/overview) v hello Galerie prostředí PowerShell.
 
 |Rutina|Popis| 
 |------------|-----------------| 
-|[Export-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Export protokolu do souboru.| 
+|[Export-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Export protokolu toofile.| 
 |[Get-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver)|Získá podrobnosti instance serveru.|  
 |[Nové AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Vytvoří instanci serveru.|
 |[Odebrat AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/remove-azurermanalysisservicesserver)|Odebere instanci serveru.|  
 |[Pozastavit AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Pozastaví instanci serveru.| 
 |[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|Obnoví instanci serveru.|  
 |[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|Upravuje instanci serveru.|   
-|[Test AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Testy existence instance serveru.| 
+|[Test AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Testy existence hello instance serveru.| 
 
 ## <a name="database-operations"></a>Operace databáze
 
-Operace databáze služby Analysis Services v Azure používají stejné [SqlServer](https://www.powershellgallery.com/packages/SqlServer) modulu jako SQL Server Analysis Services. Ne všechny rutiny jsou však podporovány pro Azure Analysis Services. 
+Použití databázových operací Azure Analysis Services hello stejné [SqlServer](https://www.powershellgallery.com/packages/SqlServer) modulu jako SQL Server Analysis Services. Ne všechny rutiny jsou však podporovány pro Azure Analysis Services. 
 
-Modul SQL Server poskytuje rutiny správy specifických úkolů databáze a také obecné účely Invoke-ASCmd rutiny, která přijímá dotazu tabulkový Model skriptovací jazyk (TMSL) nebo skriptu. Následující rutiny v modulu SQL Server jsou podporovány pro Azure Analysis Services.
+modul SQL Server Hello poskytuje rutiny pro správu databáze specifických úkolů a taky hello obecné účely Invoke-ASCmd rutiny, která přijímá tabulkový Model skriptovací jazyk (TMSL) dotazu nebo skriptu. Hello následující rutiny v modulu hello SQL Server jsou podporovány pro Azure Analysis Services.
 
   
 |Rutina|Popis|
 |------------|-----------------| 
-|[Přidat RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Přidáte člena do role databáze.| 
+|[Přidat RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Přidání role databáze tooa člen.| 
 |[Zálohování ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet)|Zálohování databáze služby Analysis Services.|  
 |[Odebrat RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Odebrání člena z databázové role.|   
 |[Vyvolání ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Spuštění skriptu TMSL.|

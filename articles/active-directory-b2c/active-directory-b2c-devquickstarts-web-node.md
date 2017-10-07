@@ -1,6 +1,6 @@
 ---
-title: "Přidání přihlašování do webové aplikace Node.js pro Azure B2C | Dokumentace Microsoftu"
-description: "Jak sestavit webovou aplikaci Node.js s přihlašováním uživatelů pomocí klienta B2C."
+title: "webové aplikace Node.js aaaAdd tooa přihlášení pro Azure B2C | Microsoft Docs"
+description: "Jak toobuild webové aplikace Node.js, přihlašováním uživatelů pomocí klienta B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
@@ -14,30 +14,30 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4c334b1f7a0669df2d0864140603dc55bbb5408
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Přidání přihlašování do webové aplikace Node.js
+# <a name="azure-ad-b2c-add-sign-in-tooa-nodejs-web-app"></a>Azure AD B2C: Přidání webové aplikace Node.js tooa přihlášení
 
 **Passport** je ověřovací middleware pro Node.js. Passport je velmi flexibilní a modulární a lze ho snadno nainstalovat v jakékoli webové aplikaci využívající Express nebo Restify. Komplexní sada strategií podporuje ověřování pomocí uživatelského jména a hesla, Facebooku, Twitteru a dalších.
 
-Vyvinuli jsme strategii pro Azure Active Directory (Azure AD). Nainstalujete tento modul a poté přidáte modul plug-in Azure AD `passport-azure-ad`.
+Vyvinuli jsme strategii pro Azure Active Directory (Azure AD). Nainstalujete tento modul a poté přidejte hello Azure AD `passport-azure-ad` modulu plug-in.
 
-Budete muset:
+toodo, budete muset:
 
 1. Zaregistrovat aplikaci pomocí Azure AD.
-2. Nastavit aplikaci tak pro používání modulu plug-in `passport-azure-ad`.
-3. Použít Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD.
+2. Nastavení vaší aplikace hello toouse `passport-azure-ad` modulu plug-in.
+3. Použijte Passport tooissue-přihlášení a odhlášení požadavky tooAzure AD.
 4. Tisknout data o uživatelích.
 
-Kód k tomuto kurzu [je udržovaný na GitHubu](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS). Chcete-li kód sledovat, můžete si [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip). Kostru můžete také klonovat:
+Hello kód pro tento kurz [je udržovaný na Githubu](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS). toofollow společně, můžete [stáhnout kostru aplikace hello jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip). Můžete také hello kostru klonovat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
-Hotová aplikace je k dispozici na konci tohoto kurzu.
+aplikace Hello dokončit, je k dispozici na konci hello tohoto kurzu.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 
@@ -45,32 +45,32 @@ Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adres�
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá informace potřebné k bezpečné komunikaci s vaší aplikací. Klientská aplikace i webové rozhraní API budou mít stejné **ID aplikace**, protože společně tvoří jednu logickou aplikaci. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md). Ujistěte se, že:
+Dále musíte toocreate aplikace ve svém adresáři B2C. Díky tomu získá informace o Azure AD, je nutné toocommunicate bezpečně s vaší aplikací. Obě hello klientské aplikace a webové rozhraní API budou odpovídat jedné **ID aplikace**, protože společně tvoří jednu logickou aplikaci. toocreate na aplikace, postupujte podle [tyto pokyny](active-directory-b2c-app-registration.md). Ujistěte se, že:
 
-- Jste do aplikace zahrnuli **webovou aplikaci** / **webové rozhraní API**.
-- Jste do pole **Adresa URL odpovědi** vyplnili `http://localhost:3000/auth/openid/return`. To je výchozí URL pro tento příklad.
-- Vytvořte pro aplikaci **tajný klíč aplikace** a poznamenejte si ho. Budete ho potřebovat později. Před tím, než tuto hodnotu použijete, musí být [uvozena v XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape).
-- Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. To také budete potřebovat později.
+- Zahrnout **webové aplikace**/**webové rozhraní API** v aplikaci hello.
+- Jste do pole **Adresa URL odpovědi** vyplnili `http://localhost:3000/auth/openid/return`. Je hello výchozí adresa URL pro tuto ukázku kódu.
+- Vytvořte pro aplikaci **tajný klíč aplikace** a poznamenejte si ho. Budete ho potřebovat později. Všimněte si, že tato hodnota se musí toobe [uvozena v XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) dříve, než ho použijete.
+- Kopírování hello **ID aplikace** který je přiřazený tooyour aplikace. To také budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
 
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje tři činnosti koncového uživatele: registrace, přihlášení a přihlášení pomocí Facebooku. Tuto zásadu je třeba vytvořit pro každý typ činnosti, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje tři činnosti koncového uživatele: registrace, přihlášení a přihlášení pomocí Facebooku. Je třeba toocreate tuto zásadu každého typu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytváříte tyto tři zásady, nezapomeňte:
 
-- Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
-- Zvolit deklarace identity aplikace **Zobrazovaný název** a **ID objektu** v každé zásadě. Můžete zvolit i další deklarace identity.
-- Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
+- Zvolte hello **zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
+- Zvolte hello **zobrazovaný název** a **ID objektu** deklarace identity aplikace v každé zásadě. Můžete zvolit i další deklarace identity.
+- Kopírování hello **název** po jejím vytvoření každé zásady. Měl by mít předponu hello `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Jakmile vytvoříte tyto tři zásady, budete připraveni k sestavení aplikace.
+Po vytvoření tří zásad jste připravené toobuild vaší aplikace.
 
-Tento článek nepopisuje používání právě vytvořených zásad. Chcete-li se dozvědět, jak fungují zásady v Azure AD B2C, začněte [kurzem Začínáme s webovými aplikacemi .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Všimněte si, že tento článek nepopisuje, jak zásady hello toouse jste právě vytvořili. toolearn o tom, jak fungují zásady v Azure AD B2C, začněte s hello [webové aplikace kurzem Začínáme .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
 
-## <a name="add-prerequisites-to-your-directory"></a>Přidání požadovaných součástí do adresáře
+## <a name="add-prerequisites-tooyour-directory"></a>Přidejte adresář tooyour požadavky
 
-V příkazovém řádku přejděte do kořenové složky, pokud v ní ještě nejste. Spusťte následující příkazy:
+Z příkazového řádku hello změňte adresáře tooyour kořenové složky, pokud si nejste již existuje. Spusťte následující příkazy hello:
 
 - `npm install express`
 - `npm install ejs`
@@ -85,23 +85,23 @@ V příkazovém řádku přejděte do kořenové složky, pokud v ní ještě ne
 - `npm install express-session`
 - `npm install cookie-parser`
 
-Kromě toho jsme pro náhled v naší kostře Rychlého startu použili `passport-azure-ad`.
+Kromě toho jsme použili `passport-azure-ad` pro náhled v kostře hello hello rychlý start naší.
 
 - `npm install passport-azure-ad`
 
-To nainstaluje knihovny potřebné pro `passport-azure-ad`.
+To nainstaluje knihovny hello který `passport-azure-ad` závisí na.
 
-## <a name="set-up-your-app-to-use-the-passport-nodejs-strategy"></a>Nastavení aplikace pro použití strategie Passport-Node.js
-Nakonfigurujte middleware Express pro použití ověřovacího protokolu OpenID Connect. Passport bude mimo jiné sloužit k zasílání požadavků na přihlášení a odhlášení, ke správě uživatelských relací a k získávání informací o uživatelích.
+## <a name="set-up-your-app-toouse-hello-passport-nodejs-strategy"></a>Nastavení vaší aplikace toouse hello strategie Passport-Node.js
+Nakonfigurujte hello Express middleware toouse hello ověřovacího protokolu OpenID Connect. Passport bude použité tooissue požadavků na přihlášení a odhlášení, správě uživatelských relací a získat informace o uživatelích, mimo jiné.
 
-V kořenovém adresáři projektu otevřete soubor `config.js` a v oddílu `exports.creds` zadejte hodnoty konfigurace.
-- `clientID`: **ID aplikace** přiřazené vaší aplikaci v portálu registrace.
-- `returnURL`: **Identifikátor URI přesměrování**, který jste zadali v portálu.
-- `tenantName`: Klientský název vaší aplikace, například **contoso.onmicrosoft.com**.
+Otevřete hello `config.js` souboru v kořenovém hello hello projektu a zadejte hodnoty konfigurace vaší aplikace v hello `exports.creds` části.
+- `clientID`: hello **ID aplikace** přiřazené tooyour aplikace v portálu pro registraci hello.
+- `returnURL`: hello **identifikátor URI pro přesměrování** jste zadali v portálu hello.
+- `tenantName`: název klienta hello vaší aplikace, například **contoso.onmicrosoft.com**.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-Otevřete soubor `app.js` umístěný v kořenovém adresáři projektu. Přidejte následující volání pro vyvolání strategie `OIDCStrategy`, která přichází s `passport-azure-ad`.
+Otevřete hello `app.js` soubor v kořenovém hello hello projektu. Přidejte následující volání tooinvoke hello hello `OIDCStrategy` strategie, která se dodává s `passport-azure-ad`.
 
 
 ```JavaScript
@@ -113,10 +113,10 @@ var log = bunyan.createLogger({
 });
 ```
 
-Použijte právě přidanou strategii pro zpracování požadavků na přihlášení.
+Použijte právě přidanou toohandle žádostí o přihlášení strategii hello.
 
 ```JavaScript
-// Use the OIDCStrategy in Passport (Section 2).
+// Use hello OIDCStrategy in Passport (Section 2).
 //
 //   Strategies in Passport require a "validate" function that accepts
 //   credentials (in this case, an OpenID identifier), and invokes a callback
@@ -151,21 +151,21 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport používá podobný princip pro všechny strategie (včetně Twitteru a Facebooku). Tímto principem se řídí všichni tvůrci strategií. Při pohledu na strategii uvidíte, že jí předáváte `function()` s parametry token a `done`. Po dokončení veškeré práce se k vám strategie vrátí. Uložení uživatele a skrytí tokenu, takže je nebudete muset požadovat znovu.
+Passport používá podobný princip pro všechny strategie (včetně Twitteru a Facebooku). Vzor toothis řídí všichni tvůrci strategií. Když se podíváte na hello strategie, uvidíte předejte ji `function()` s token a `done` jako parametry hello. Hello strategie vrátí tooyou po dokončení veškeré práce. Uložení hello uživatele a skrytí tokenu hello tak, aby tooask pro ni není nutné znovu.
 
 > [!IMPORTANT]
-Předchozí kód přijme všechny uživatele, ověřené serverem. To je automatická registrace. Pokud používáte produkční servery, nechcete vpustit uživatele, kteří neprošli vámi nastaveným procesem registrace. Tento princip je často k vidění u uživatelských aplikací. Ty umožňují registraci pomocí Facebooku, ale poté vás vyzvou k vyplnění dodatečných informací. Kdyby naše aplikace nebyla pouze příklad, mohli bychom extrahovat emailovou adresu z vráceného objektu tokenu a poté vyzvat uživatele k vyplnění dodatečných informací. Protože se jedná o testovací server, jednoduše přidáme uživatele do databáze v paměti.
+Hello předchozí kód přijme všechny uživatele, kterým ověří hello server. To je automatická registrace. Pokud používáte produkční servery, nechcete toolet mezi uživateli, pokud jste prošli registračním procesem, který jste nastavili. Tento princip je často k vidění u uživatelských aplikací. Ty umožňují tooregister pomocí Facebooku, ale poté vás vyzvou toofill Další informace. Naše aplikace nebyla pouze příklad, jsme pravděpodobně extrahování e-mailovou adresu z objektu tokenu hello, která je vrácena a pak požádejte uživatele toofill hello Další informace. Protože se jedná o testovací server, jednoduše přidáme uživatele databáze v paměti toohello.
 
-Přidejte metody, které vám umožní sledovat přihlášené uživatele, jak vyžaduje Passport. To zahrnuje serializaci a deserializaci informací o uživateli:
+Přidejte hello metody, které vám umožňují sledovat tookeep uživatelů, kteří mají přihlášení, jak vyžaduje Passport. To zahrnuje serializaci a deserializaci informací o uživateli:
 
 ```JavaScript
 
 // Passport session setup. (Section 2)
 
-//   To support persistent sign-in sessions, Passport needs to be able to
+//   toosupport persistent sign-in sessions, Passport needs toobe able to
 //   serialize users into and deserialize users out of sessions. Typically,
-//   this is as simple as storing the user ID when Passport serializes a user
-//   and finding the user by ID when Passport deserializes that user.
+//   this is as simple as storing hello user ID when Passport serializes a user
+//   and finding hello user by ID when Passport deserializes that user.
 passport.serializeUser(function(user, done) {
   done(null, user.email);
 });
@@ -176,7 +176,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// Array to hold users who have signed in
+// Array toohold users who have signed in
 var users = [];
 
 var findByEmail = function(email, fn) {
@@ -192,7 +192,7 @@ var findByEmail = function(email, fn) {
 
 ```
 
-Přidejte kód pro načtení modulu Express. V následujícím příkladu vidíte, že používáme výchozí `/views` a vzor `/routes` poskytované modulem Express.
+Přidání modulu Express hello kód tooload hello. V následující hello, uvidíte, že používáme výchozí hello `/views` a `/routes` vzor, který poskytuje Express.
 
 ```JavaScript
 
@@ -209,7 +209,7 @@ app.configure(function() {
   app.use(cookieParser());
   app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
   app.use(bodyParser.urlencoded({ extended : true }));
-  // Initialize Passport!  Also use passport.session() middleware to support
+  // Initialize Passport!  Also use passport.session() middleware toosupport
   // persistent sign-in sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
@@ -219,31 +219,31 @@ app.configure(function() {
 
 ```
 
-Přidání tras `POST`, které přebírají vlastní požadavky na přihlášení do modulu `passport-azure-ad`:
+Přidat hello `POST` tras, které přebírají hello skutečné žádostí o přihlášení toohello `passport-azure-ad` modul:
 
 ```JavaScript
 
 // Our Auth routes (Section 3)
 
 // GET /auth/openid
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request. The first step in OpenID authentication involves redirecting
-//   the user to an OpenID provider. After the user is authenticated,
-//   the OpenID provider redirects the user back to this application at
+//   Use passport.authenticate() as route middleware tooauthenticate the
+//   request. hello first step in OpenID authentication involves redirecting
+//   hello user tooan OpenID provider. After hello user is authenticated,
+//   hello OpenID provider redirects hello user back toothis application at
 //   /auth/openid/return
 
 app.get('/auth/openid',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    log.info('Authentication was called in the Sample');
+    log.info('Authentication was called in hello Sample');
     res.redirect('/');
   });
 
 // GET /auth/openid/return
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request. If authentication fails, the user will be redirected back to the
-//   sign-in page. Otherwise, the primary route function will be called.
-//   In this example, it redirects the user to the home page.
+//   Use passport.authenticate() as route middleware tooauthenticate the
+//   request. If authentication fails, hello user will be redirected back toothe
+//   sign-in page. Otherwise, hello primary route function will be called.
+//   In this example, it redirects hello user toohello home page.
 app.get('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
@@ -252,10 +252,10 @@ app.get('/auth/openid/return',
   });
 
 // POST /auth/openid/return
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request. If authentication fails, the user will be redirected back to the
-//   sign-in page. Otherwise, the primary route function will be called.
-//   In this example, it will redirect the user to the home page.
+//   Use passport.authenticate() as route middleware tooauthenticate the
+//   request. If authentication fails, hello user will be redirected back toothe
+//   sign-in page. Otherwise, hello primary route function will be called.
+//   In this example, it will redirect hello user toohello home page.
 
 app.post('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -265,11 +265,11 @@ app.post('/auth/openid/return',
   });
 ```
 
-## <a name="use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Použití Passportu pro zasílání požadavků na přihlášení a odhlášení do Azure AD
+## <a name="use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>Použít Passport tooissue-přihlášení a odhlášení požadavky tooAzure AD
 
-Vaše aplikace je nyní správně nastavená pro komunikaci s koncovým bodem v2.0 pomocí ověřovacího protokolu OpenID Connect. `passport-azure-ad` se už postaral o podrobnosti ohledně vytváření ověřovacích zpráv, ověřování tokenů z Azure AD a udržování uživatelských relací. Už jen zbývá umožnit uživatelům přihlášení a odhlášení a sbírat dodatečné informace o přihlášených uživatelích.
+Aplikace je nyní správně nakonfigurované toocommunicate s hello koncového bodu v2.0 pomocí ověřovacího protokolu OpenID Connect hello. `passport-azure-ad`má postaráno hello podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelské relace. Všechno, co zůstane je toogive vaši uživatelé toosign způsob, jak v a přihlaste se na více systémů a toogather Další informace o uživatele, kteří mají přihlášení.
 
-Nejprve do souboru `app.js` přidejte metody výchozí, přihlášení, účet a odhlášení:
+Nejprve přidejte hello výchozí, přihlášení, účet a odhlášení metody tooyour `app.js` souboru:
 
 ```JavaScript
 
@@ -286,7 +286,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
 app.get('/login',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    log.info('Login was called in the Sample');
+    log.info('Login was called in hello Sample');
     res.redirect('/');
 });
 
@@ -297,22 +297,22 @@ app.get('/logout', function(req, res){
 
 ```
 
-Chcete-li si tyto metody prohlédnout podrobně:
-- Trasa `/` se přesměruje na zobrazení `index.ejs` předáním uživatele v požadavku (pokud existuje).
-- Trasa `/account` nejprve ověří, zda jste přihlášeni (příklad implementace je níže). Poté předá uživatele v požadavku, abyste o něm mohli získat dodatečné informace.
-- Trasa `/login` zavolá `azuread-openidconnect` Authenticator z `passport-azure-ad`. Pokud dojde k neúspěchu, trasa přesměruje uživatele zpět na `/login`.
-- `/logout` jednoduše volá `logout.ejs` (a jeho trasu). Zruší soubory cookies a poté vrátí uživatele zpět na `index.ejs`.
+tooreview tyto metody podrobně:
+- Hello `/` trasa přesměruje toohello `index.ejs` zobrazení předáním hello uživatele v požadavku hello (pokud existuje).
+- Hello `/account` trasy nejprve ověří, zda jste přihlášeni (hello implementace pro toto je níže). Pak předá hello uživatele v požadavku hello tak, aby mohli získat dodatečné informace o uživateli hello.
+- Hello `/login` trasy volání hello `azuread-openidconnect` authenticator z `passport-azure-ad`. Pokud dojde k neúspěchu, trasa hello přesměruje uživatele hello zpět příliš`/login`.
+- `/logout` jednoduše volá `logout.ejs` (a jeho trasu). Zruší soubory cookie a pak se vrátí hello zpět uživatele příliš`index.ejs`.
 
 
-V poslední části `app.js` přidejte metodu `EnsureAuthenticated`, která je použitá v trase `/account`.
+Pro poslední část hello `app.js`, přidejte hello `EnsureAuthenticated` metoda, která se používá v hello `/account` trasy.
 
 ```JavaScript
 
-// Simple route middleware to ensure that the user is authenticated. (Section 4)
+// Simple route middleware tooensure that hello user is authenticated. (Section 4)
 
-//   Use this route middleware on any resource that needs to be protected. If
-//   the request is authenticated (typically via a persistent sign-in session),
-//   then the request will proceed. Otherwise, the user will be redirected to the
+//   Use this route middleware on any resource that needs toobe protected. If
+//   hello request is authenticated (typically via a persistent sign-in session),
+//   then hello request will proceed. Otherwise, hello user will be redirected toothe
 //   sign-in page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
@@ -321,7 +321,7 @@ function ensureAuthenticated(req, res, next) {
 
 ```
 
-Nakonec v `app.js` vytvořte samotný server.
+Nakonec vytvořte samotný server hello v `app.js`.
 
 ```JavaScript
 
@@ -330,11 +330,11 @@ app.listen(3000);
 ```
 
 
-## <a name="create-the-views-and-routes-in-express-to-call-your-policies"></a>Vytvoření zobrazení a tras v Expressu pro volání zásad
+## <a name="create-hello-views-and-routes-in-express-toocall-your-policies"></a>Vytvoření zobrazení hello a směruje v Express toocall zásad
 
-Vaše `app.js` je nyní hotová. Potřebujete pouze přidat trasy a zobrazení, které vám umožní volat zásady pro přihlášení a odhlášení. Ty zpracovávají také dříve vytvořené trasy `/logout` a `/login`.
+Vaše `app.js` je nyní hotová. Bude třeba jen tooadd hello trasy a zobrazení, které vám umožňují toocall hello přihlášení a odhlášení zásady. Ty zpracovávají také dříve hello `/logout` a `/login` vytvořené trasy.
 
-V kořenovém adresáři vytvořte trasu `/routes/index.js`.
+Vytvoření hello `/routes/index.js` trasy pod kořenovým adresářem hello.
 
 ```JavaScript
 
@@ -347,7 +347,7 @@ exports.index = function(req, res){
 };
 ```
 
-V kořenovém adresáři vytvořte trasu `/routes/user.js`.
+Vytvoření hello `/routes/user.js` trasy pod kořenovým adresářem hello.
 
 ```JavaScript
 
@@ -360,9 +360,9 @@ exports.list = function(req, res){
 };
 ```
 
-Tyto jednoduché trasy předávají požadavky zobrazením. Obsahují i uživatele, pokud je přítomen.
+Tyto jednoduché trasy předávají požadavky tooyour zobrazení. Obsahují hello uživatele, pokud je k dispozici.
 
-V kořenovém adresáři vytvořte zobrazení `/views/index.ejs`. Toto je jednoduchá stránka, která volá zásady pro přihlášení a odhlášení. Můžete ji také použít ke sběru informací o účtu. Všimněte si, že můžete využít podmínku `if (!user)` při předávání uživatele v požadavku pro prokázání, že je přihlášen.
+Vytvoření hello `/views/index.ejs` zobrazení pod kořenovým adresářem hello. Toto je jednoduchá stránka, která volá zásady pro přihlášení a odhlášení. Můžete ji použít i toograb informace o účtu. Všimněte si, které můžete použít hello podmíněného `if (!user)` jako předávání hello uživatele v požadavku hello tooprovide důkaz, že uživatele hello je přihlášený.
 
 ```JavaScript
 <% if (!user) { %>
@@ -377,7 +377,7 @@ V kořenovém adresáři vytvořte zobrazení `/views/index.ejs`. Toto je jednod
 <% } %>
 ```
 
-V kořenovém adresáři vytvořte zobrazení `/views/account.ejs` pro zobrazení dodatečných informací, které `passport-azure-ad` vložil do uživatelského požadavku.
+Vytvoření hello `/views/account.ejs` zobrazení pod kořenovým adresářem hello, takže si můžete zobrazit další informace, `passport-azure-ad` put v požadavku uživatele hello.
 
 ```Javascript
 <% if (!user) { %>
@@ -398,28 +398,28 @@ V kořenovém adresáři vytvořte zobrazení `/views/account.ejs` pro zobrazen�
 
 Nyní můžete sestavit a spustit svoji aplikaci.
 
-Spusťte `node app.js` a přejděte na `http://localhost:3000`.
+Spustit `node app.js` a přejděte příliš`http://localhost:3000`
 
 
-Pomocí emailu nebo Facebooku se zaregistrujte nebo přihlaste k aplikaci. Odhlaste se a přihlaste se jako jiný uživatel.
+Registrace nebo přihlášení toohello aplikace pomocí emailu nebo Facebooku. Odhlaste se a přihlaste se jako jiný uživatel.
 
 ##<a name="next-steps"></a>Další kroky
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Můžete ho také klonovat z GitHubu:
+Pro referenci hello dokončit ukázka (bez vašich hodnot nastavení) [je k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Můžete ho také klonovat z GitHubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
-Nyní se můžete přesunout k pokročilejším tématům. Můžete vyzkoušet:
+Nyní se můžete přesunout na toomore advanced témata. Můžete vyzkoušet:
 
-[Zabezpečení webového rozhraní API pomocí modelu B2C v Node.js](active-directory-b2c-devquickstarts-api-node.md)
+[Zabezpečení webového rozhraní API pomocí modelu hello B2C v Node.js](active-directory-b2c-devquickstarts-api-node.md)
 
 <!--
 
 For additional resources, check out:
-You can now move on to more advanced B2C topics. You might try:
+You can now move on toomore advanced B2C topics. You might try:
 
 [Call a Node.js web API from a Node.js web app]()
 
-[Customizing the your B2C App's UX >>]()
+[Customizing hello your B2C App's UX >>]()
 
 -->

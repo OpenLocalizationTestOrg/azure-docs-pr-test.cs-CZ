@@ -1,6 +1,6 @@
 ---
-title: "Pomocí prostředí Powershell nastavit výstrahy ve službě Application Insights | Microsoft Docs"
-description: "Automatizovat konfiguraci Application Insights získat e-mailů o metriky změny."
+title: "výstrahy tooset aaaUse prostředí Powershell ve službě Application Insights | Microsoft Docs"
+description: "Automatické konfiguraci služby Application Insights tooget e-mailů o metriky změny."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: bwren
-ms.openlocfilehash: 64675c51abf80daa3a55220f910aa8fdee1042ca
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d68e5f9511bb4015f59175724bc1a4a04ecf43e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
-Můžete automatizovat konfiguraci [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
+# <a name="use-powershell-tooset-alerts-in-application-insights"></a>Pomocí prostředí PowerShell tooset výstrahy ve službě Application Insights
+Můžete automatizovat konfiguraci hello [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
 
-Kromě toho můžete [nastavit webhooky k automatizaci vaše odpověď na výstrahu](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Kromě toho můžete [nastavit webhooky tooautomate upozornění tooan odpovědi](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 > [!NOTE]
-> Pokud chcete vytvořit prostředky a výstrahy ve stejnou dobu, zvažte [pomocí šablony Azure Resource Manager](app-insights-powershell.md).
+> Pokud chcete toocreate prostředky a výstrahy v hello stejný čas, zvažte [pomocí šablony Azure Resource Manager](app-insights-powershell.md).
 >
 >
 
 ## <a name="one-time-setup"></a>Jednorázové instalace
 Pokud jste nepoužili prostředí PowerShell s předplatným Azure před:
 
-Instalace modulu Azure Powershell na počítači, kde chcete spustit skripty.
+Nainstalujte modul Azure Powershell hello na hello počítači, kde se má toorun hello skripty.
 
 * Nainstalujte [instalačního programu webové platformy (verze 5 nebo novější)](http://www.microsoft.com/web/downloads/platform.aspx).
-* Jeho použití k instalaci aplikace Microsoft Azure Powershell
+* Použít tooinstall Microsoft Azure Powershell
 
-## <a name="connect-to-azure"></a>Připojení k Azure
-Otevřete prostředí Azure PowerShell a [připojení k vašemu předplatnému](/powershell/azure/overview):
+## <a name="connect-tooazure"></a>Připojit tooAzure
+Otevřete prostředí Azure PowerShell a [připojení odběru tooyour](/powershell/azure/overview):
 
 ```PowerShell
 
@@ -65,12 +65,12 @@ Otevřete prostředí Azure PowerShell a [připojení k vašemu předplatnému](
 
 
 ## <a name="example-1"></a>Příklad 1
-Poslat mi e-mail, pokud odpověď serveru na požadavky HTTP, průměr 5 minut, je nižší než 1 sekunda. Moje prostředek Application Insights se nazývá IceCreamWebApp a je ve skupině prostředků společnosti Fabrikam. Jsem vlastník předplatného Azure.
+Poslat mi e-mail, pokud hello server odpovědi tooHTTP požadavků, která je průměrem více než 5 minut, je nižší než 1 sekunda. Moje prostředek Application Insights se nazývá IceCreamWebApp a je ve skupině prostředků společnosti Fabrikam. Jsem hello vlastník hello předplatného Azure.
 
-Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
+Hello GUID je ID předplatného hello (ne hello klíč instrumentace aplikace hello).
 
     Add-AlertRule -Name "slow responses" `
-     -Description "email me if the server responds slowly" `
+     -Description "email me if hello server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
      -MetricName "request.duration" `
@@ -81,7 +81,7 @@ Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Příklad 2
-Je nutné aplikaci, ve které používám [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) nahlásit metriky s názvem "salesPerHour." Odesílání že e-mailu na kolegové Pokud "salesPerHour" klesne pod 100, průměr po dobu 24 hodin.
+Je nutné aplikaci, ve které používám [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) tooreport metriky s názvem "salesPerHour." Odešlete e-mail toomy kolegy Pokud "salesPerHour" klesne pod 100, průměr po dobu 24 hodin.
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -94,35 +94,35 @@ Je nutné aplikaci, ve které používám [TrackMetric()](app-insights-api-custo
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Stejného pravidla lze použít pro metriku hlášené pomocí [měření parametr](app-insights-api-custom-events-metrics.md#properties) jiné sledování volání například TrackEvent nebo trackPageView.
+Hello stejného pravidla lze použít pro metriku hello hlášené pomocí hello [měření parametr](app-insights-api-custom-events-metrics.md#properties) jiné sledování volání například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Metriky názvy
 | Název metriky | Název obrazovky | Popis |
 | --- | --- | --- |
-| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycená výjimky vydané v prohlížeči. |
-| `basicExceptionServer.count` |Výjimky serveru |Počet neošetřené výjimky vyvolané aplikace |
-| `clientPerformance.clientProcess.value` |Doba zpracování klienta |Doba mezi přijetí poslední bajt dokumentu, dokud nebude modelu DOM vložen. Asynchronních připojení může být stále aktivní. |
-| `clientPerformance.networkConnection.value` |Doba připojení sítě zatížení stránky |Čas, kdy prohlížeč potřebné k připojení k síti. Může být 0, pokud do mezipaměti. |
-| `clientPerformance.receiveRequest.value` |Přijetí doba odezvy |Doba mezi prohlížeče odesílání požadavku na spuštění na obdrží odpověď. |
-| `clientPerformance.sendRequest.value` |Odeslat doba požadavku |Doba, za kterou prohlížeč k odeslání požadavku. |
+| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycená výjimky vydané v prohlížeči hello. |
+| `basicExceptionServer.count` |Výjimky serveru |Počet neošetřené výjimky vyvolané aplikace hello |
+| `clientPerformance.clientProcess.value` |Doba zpracování klienta |Doba mezi přijetí hello posledního bajtu dokumentu, dokud je načtena hello DOM. Asynchronních připojení může být stále aktivní. |
+| `clientPerformance.networkConnection.value` |Doba připojení sítě zatížení stránky |Čas hello prohlížeče trvá tooconnect toohello sítě. Může být 0, pokud do mezipaměti. |
+| `clientPerformance.receiveRequest.value` |Přijetí doba odezvy |Doba mezi prohlížeče odeslání žádosti o toostarting tooreceive odpovědi. |
+| `clientPerformance.sendRequest.value` |Odeslat doba požadavku |Doba, kterou požadavek toosend prohlížeče. |
 | `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Čas od požadavku uživatele, dokud se načtou DOM, předlohy se styly, skripty a obrázků. |
 | `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzické paměti k dispozici pro zpracování nebo pro použití systémem. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Rychlost zpracování vstupně-výstupní operace |Celkový počet bajtů za sekundu číst a zapisovat do souborů, sítě a zařízení. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Rychlost zpracování vstupně-výstupní operace |Celkový počet bajtů na druhý pro čtení a napsané toofiles, sítě a zařízení. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |míra výjimky |Výjimek vyvolaných za sekundu. |
-| `performanceCounter.percentage_processor_time.value` |Proces procesoru |Procentuální hodnotu uplynulého času, podprocesy procesu používá procesor pro spouštění instrukcí pro proces aplikace. |
-| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, kterou procesor stráví jiných než nečinných vláken. |
-| `performanceCounter.process_private_bytes.value` |Proces nesdílených bajtů |Paměť výhradně přiřazená procesy v monitorované aplikaci. |
-| `performanceCounter.request_execution_time.value` |Čas provádění požadavku ASP.NET |Čas provedení posledního požadavku. |
-| `performanceCounter.requests_in_application_queue.value` |ASP.NET požadavků ve frontě provádění |Délka frontě požadavků aplikace. |
-| `performanceCounter.requests_per_sec.value` |Rychlost požadavků ASP.NET |Počet všech požadavků na pro aplikaci za sekundu z technologie ASP.NET. |
-| `remoteDependencyFailed.durationMetric.count` |Selhání závislostí |Počet selhání volání od serverové aplikace na externí zdroje. |
-| `request.duration` |Doba odezvy serveru |Doba mezi přijetí požadavku HTTP a dokončením odeslání odpovědi. |
-| `request.rate` |Rychlost požadavků |Počet všech požadavků na pro aplikaci za sekundu. |
+| `performanceCounter.percentage_processor_time.value` |Proces procesoru |Hello procentuální hodnotu uplynulého času podprocesy procesu používané hello procesoru tooexecution pokyny pro proces aplikace hello. |
+| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Hello procento času, který hello procesor stráví v jiných než nečinných vláken. |
+| `performanceCounter.process_private_bytes.value` |Proces nesdílených bajtů |Paměť výhradně přiřazená toohello sledovat procesy aplikace. |
+| `performanceCounter.request_execution_time.value` |Čas provádění požadavku ASP.NET |Čas provedení posledního požadavku hello. |
+| `performanceCounter.requests_in_application_queue.value` |ASP.NET požadavků ve frontě provádění |Délka fronty požadavků aplikace hello. |
+| `performanceCounter.requests_per_sec.value` |Rychlost požadavků ASP.NET |Rychlost, jakou všechny požadavky aplikace toohello za sekundu z technologie ASP.NET. |
+| `remoteDependencyFailed.durationMetric.count` |Selhání závislostí |Počet selhání volání zdrojů tooexternal hello serverových aplikací. |
+| `request.duration` |Doba odezvy serveru |Doba mezi přijetí požadavku HTTP a dokončením odeslání odpovědi hello. |
+| `request.rate` |Rychlost požadavků |Rychlost, jakou všechny požadavky aplikace toohello za sekundu. |
 | `requestFailed.count` |Neúspěšné požadavky |Počet HTTP požadavků, které kód odpovědi > = 400 |
 | `view.count` |Zobrazení stránky |Počet žádostí uživatele klienta pro webovou stránku. Syntetické provoz odfiltrována. |
-| {váš vlastní název metriky} |{Název metriky} |Metriky hodnota hlášené [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) nebo [parametr měření volání sledování](app-insights-api-custom-events-metrics.md#properties). |
+| {váš vlastní název metriky} |{Název metriky} |Metriky hodnota hlášené [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) nebo v hello [parametr měření volání sledování](app-insights-api-custom-events-metrics.md#properties). |
 
-Metriky se odesílají moduly různých telemetrie:
+metriky Hello jsou odesílány moduly různých telemetrie:
 
 | Metriky skupiny | Kolekce modulu |
 | --- | --- |
@@ -132,10 +132,10 @@ Metriky se odesílají moduly různých telemetrie:
 | žádost,<br/>requestFailed |[Požadavek na serveru](app-insights-configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooky
-Můžete [automatizovat vaše odpověď na výstrahu](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Azure bude volat webovou adresu podle vaší volby, když je vydána výstraha.
+Můžete [automatizovat upozornění tooan odpovědi](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Azure bude volat webovou adresu podle vaší volby, když je vydána výstraha.
 
 ## <a name="see-also"></a>Viz také
-* [Skript, který nakonfiguruje Application Insights](app-insights-powershell-script-create-resource.md)
+* [Skript tooconfigure Application Insights](app-insights-powershell-script-create-resource.md)
 * [Vytvoření služby Application Insights a web test prostředky ze šablon](app-insights-powershell.md)
-* [Automatizovat spojovacích Microsoft Azure Diagnostics Application insights](app-insights-powershell-azure-diagnostics.md)
-* [Automatizovat vaše odpověď na výstrahu](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Automatizovat spojovacích Statistika tooApplication diagnostické nástroje sady Microsoft Azure](app-insights-powershell-azure-diagnostics.md)
+* [Automatizovat upozornění tooan odpovědi](../monitoring-and-diagnostics/insights-webhooks-alerts.md)

@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 936134bddad19964f809a17f200ebbeed5aa853c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9cecaaac429165346f7082f1965dc8a21063fe7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetování licenční požadavky pro hesla pomocí samoobslužné služby Azure AD
 
-V pořadí pro resetování hesel služby Azure AD pro funkce které **musí mít alespoň jednu licenci přiřazené ve vaší organizaci**. Nevynucovat jsme licencování na vlastní uživatelské prostředí resetování hesla na uživatele. Chcete-li udržovat kompatibilitu s licenční smlouvou Microsoft, přiřadit licence pro všechny uživatele, které používají prémiových funkcí.
+V pořadí pro resetování hesla v Azure AD toofunction jste **musí mít alespoň jednu licenci přiřazené ve vaší organizaci**. Nevynucovat jsme licencování v prostředí resetování hesla hello jednotlivé uživatele. toomaintain shody s multilicenční smlouvu vaší společnosti Microsoft, budete potřebovat tooassign licence tooany uživatelů, kteří používají prémiových funkcí.
 
 * **Jenom uživatelé v cloudu** -Office 365 (O365) žádné placené SKU nebo Azure AD Basic
 * **Cloud** nebo **místních uživatelů** – Azure AD Premium P1 nebo P2, Enterprise Mobility + Security (EMS) nebo zabezpečení produktivní Enterprise (ZAD)
 
 ## <a name="licenses-required-for-password-writeback"></a>Licence potřebné pro zpětný zápis hesla
 
-Pokud chcete používat zpětný zápis hesla, musí mít jednu z následujících licencí přiřazených ve vašem klientovi.
+zpětný zápis hesla toouse, musíte mít jednu z následujících přiřazené ve vašem klientovi licence hello.
 
 * Azure AD Premium P1
 * Azure AD Premium P2
@@ -41,9 +41,9 @@ Pokud chcete používat zpětný zápis hesla, musí mít jednu z následující
 * Secure Productive Enterprise E5
 
 > [!NOTE]
-> Samostatné Office 365 licenční plány **nepodporují zpětný zápis hesla** a vyžaduje jedna z předchozí plány pro tato funkce fungovat.
+> Samostatné Office 365 licenční plány **nepodporují zpětný zápis hesla** a vyžaduje jedna z předchozích plány pro tuto funkci toowork hello.
 
-Další informace o licencování včetně náklady najdete na následujících stránkách
+Další informace o licencování včetně náklady naleznete na následující stránky hello
 
 * [Azure Active Directory ceny lokality](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
@@ -51,20 +51,20 @@ Další informace o licencování včetně náklady najdete na následujících 
 
 ## <a name="enable-group-or-user-based-licensing"></a>Povolit skupinu nebo uživatele na základě licencí
 
-Azure AD nyní podporuje na základě skupiny licencování povolení správci přiřadit hromadných licencí pro skupinu uživatelů, nikoli po jednom přiřazení. [Přiřadit zkontrolujte a vyřešte problémy s licencí](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)
+Azure AD nyní podporuje na základě skupiny licencování povolení licence tooassign správci v hromadné tooa skupinu uživatelů, nikoli po jednom přiřazení. [Přiřadit zkontrolujte a vyřešte problémy s licencí](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)
 
-Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí určovat vlastnost "Umístění využití" na uživatele. Přiřazení licencí, lze provést v rámci uživatele > Profil > v oddílu nastavení na portálu Azure. **Při použití přiřazení skupiny licencí, zdědí všechny uživatele bez využití umístění zadané umístění adresáře.**
+Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před tooa uživatele lze přiřadit licenci, musí správce hello určit vlastnost "Využití umístění" hello hello uživatele. Přiřazení licencí, lze provést v rámci uživatele > Profil > část nastavení v hello portálu Azure. **Při použití přiřazení skupiny licencí, zdědí všechny uživatele bez zadané umístění využití hello umístění adresáře hello.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
+Hello následující odkazy obsahují další informace o resetování hesla pomocí služby Azure AD
 
 * [**Rychlý Start**](active-directory-passwords-getting-started.md) – Zprovozněte samoobslužné resetování hesla Azure AD. 
-* [**Data**](active-directory-passwords-data.md) – Pochopte požadovaná data a jejich použití pro správu hesel.
-* [**Uvedení**](active-directory-passwords-best-practices.md) – Naplánujte a nasaďte pro své uživatele samoobslužné resetování hesla pomocí zde uvedených pokynů.
-* [**Přizpůsobení**](active-directory-passwords-customize.md) – Přizpůsobte vzhled a chování samoobslužného resetování hesla pro vaši společnost.
+* [**Data** ](active-directory-passwords-data.md) – pochopit hello data, která je požadována a jak se používají pro správu hesel
+* [**Zavedení** ](active-directory-passwords-best-practices.md) -plánování a nasazení SSPR tooyour uživatelů podle pokynů hello je zde uveden
+* [**Přizpůsobení** ](active-directory-passwords-customize.md) -přizpůsobit hello vzhledu a chování hello SSPR prostředí pro vaši společnost.
 * [**Vytváření sestav**](active-directory-passwords-reporting.md) – Zjistěte, jestli, kdy a kde vaši uživatelé používají funkci samoobslužného resetování hesla.
-* [**Podrobné technické informace**](active-directory-passwords-how-it-works.md) – Nahlédněte za oponu a pochopte, jak to funguje.
-* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? – Odpovědi na otázky, na které jste se vždy chtěli zeptat.
-* [**Řešení potíží**](active-directory-passwords-troubleshoot.md) – Zjistěte, jak řešit běžné problémy, ke kterým dochází u samoobslužného resetování hesla.
+* [**Podrobné technické informace** ](active-directory-passwords-how-it-works.md) -přejděte za hello závěsem toounderstand, jak to funguje
+* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? -Odpovědi tooquestions vždy chtěli tooask
+* [**Řešení potíží s** ](active-directory-passwords-troubleshoot.md) – zjistěte, jak tooresolve běžné problémy, že vidíte s SSPR
 

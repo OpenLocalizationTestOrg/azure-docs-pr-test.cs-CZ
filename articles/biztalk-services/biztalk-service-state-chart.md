@@ -1,6 +1,6 @@
 ---
-title: "Úlohy, které jsou povoleny v různých stavů nebo stavy, které jsou ve službě BizTalk Services | Microsoft Docs"
-description: "Akce nebo operace v jiný stav MABS povoleny: zastavit, spustit, restartovat, pozastavit, obnovit, odstranit, škálovat, aktualizace konfigurace a základní nahoru"
+title: "aaaTasks povoleny v různých stavů nebo stavy, které jsou ve službě BizTalk Services | Microsoft Docs"
+description: "Hello povolené v různých MABS stav akce nebo operace: zastavit, spustit, restartovat, pozastavit, obnovit, odstranit, škálovat, aktualizace konfigurace a základní nahoru"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 643307ba6fa9b05c82b867912feab249c42b65dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Můžete a nemůže provádět pomocí stavu služby BizTalk
+# <a name="what-you-can-and-cant-do-using-hello-biztalk-service-state"></a>Můžete a nemůže provádět pomocí hello stavu služby BizTalk
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-V závislosti na aktuální stav služby BizTalk jsou operace, které lze nebo nelze provést na službu BizTalk.
+V závislosti na hello aktuální stav hello služby BizTalk jsou operace, které lze nebo nelze provést na hello služby BizTalk.
 
-Například můžete zřídit nové služby BizTalk v portálu Azure classic. Po úspěšném dokončení, služba BizTalk je v `active` stavu. V aktivním stavu můžete zastavit, pozastavit a odstranit službu BizTalk. Pokud zastavíte službu BizTalk a zastavení selže, pak službu BizTalk přejde na `StopFailed` stavu. V `StopFailed` stavu, můžete restartovat službu BizTalk. Pokud se pokusíte operaci, která není povolena, jako je obnovení, došlo k následující chybě:
+Například můžete zřídit nové služby BizTalk v hello portál Azure classic. Po úspěšném dokončení, hello služba BizTalk je v `active` stavu. V aktivním stavu hello můžete zastavit, pozastavit a odstranění služby BizTalk hello. Pokud zastavíte službu BizTalk hello a zastavení selže, pak hello služby BizTalk přejde tooa `StopFailed` stavu. V hello `StopFailed` stavu, je možné restartovat službu BizTalk hello. Pokud se pokusíte operaci, která není povolena, jako je obnovení, dojde k následující chybě hello:
 
 `Operation not allowed`
 
-## <a name="view-the-possible-states"></a>Zobrazit možné stavy
+## <a name="view-hello-possible-states"></a>Možné stavy hello zobrazení
 
-V následujících tabulkách jsou uvedeny operace nebo akce, které lze provést, pokud služba BizTalk je v určitém stavu. ✔ znamená, že operace je povolena v tomto stavu. Prázdná položka znamená, že v tomto stavu nelze provést operaci.
+Hello následující tabulky operace výpisu hello nebo akce, které lze provést, pokud je hello služby BizTalk v určitém stavu. ✔ znamená, že hello operace je povolena v tomto stavu. Prázdná položka znamená, že hello operaci nelze provést, když v tomto stavu.
 
 | Stav služby | Start | Zastavit | Restartování | Pozastavit | Obnovit | Odstranění | Měřítko | Aktualizace <br/> Konfigurace | Zálohování |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
@@ -52,11 +52,11 @@ V následujících tabulkách jsou uvedeny operace nebo akce, které lze provés
 
 
 ## <a name="see-also"></a>Viz také
-* [Vytvoření služby BizTalk pomocí portálu Azure classic](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [Co můžete dělat na řídicí panel, sledování a škálování kartách ve službě BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [Získat s edice Developer, Basic, Standard a Premium ve službě BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Postup zálohování a obnovení služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Vytvoření služby BizTalk pomocí hello portál Azure classic](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Co můžete dělat v karty řídicí panel, sledování a škálování hello ve službě BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [Získat hello Developer, Basic, Standard a Premium edicích ve službě BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Jak tooback a obnovení služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [Omezení podrobně BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [Načtení služby Service Bus a řízení přístupu vystavitele název vystavitele klíčových hodnot a pro vaši službu BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Načíst hello Service Bus a řízení přístupu vystavitele název a vystavitele klíčové hodnoty pro vaši službu BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Jak začít používat hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

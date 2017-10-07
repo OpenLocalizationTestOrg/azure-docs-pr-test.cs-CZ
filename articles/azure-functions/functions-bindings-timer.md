@@ -1,6 +1,6 @@
 ---
-title: "Azure aktivaci časovačem funkce | Microsoft Docs"
-description: "Pochopit, jak použít aktivační události časovače v Azure Functions."
+title: "aktivační událost časovače funkce aaaAzure | Microsoft Docs"
+description: "Pochopte, jak se spustí časovač toouse v Azure Functions."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -17,26 +17,26 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 6a97ab8508f889b77d064a5da70e3c726d62900c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 17fca22372dbc55d4684c8c099cc97923a7d3cf3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure aktivaci časovačem funkce
 
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje postup konfigurace a aktivační události časovače kódu v Azure Functions. Azure Functions nabízí vazbu aktivační událost časovače, který vám umožní spustit funkce kódu podle definovaného plánu. 
+Tento článek vysvětluje, jak se spustí časovač tooconfigure a kódu v Azure Functions. Azure Functions nabízí vazbu aktivační událost časovače, který vám umožní spustit funkce kódu podle definovaného plánu. 
 
-Aktivační událost časovače podporuje víc instancí Škálováním na více systémů. Ve všech instancích je spuštěna jedna instance funkce konkrétní časovače.
+aktivační událost časovače Hello podporuje víc instancí Škálováním na více systémů. Ve všech instancích je spuštěna jedna instance funkce konkrétní časovače.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 <a id="trigger"></a>
 
 ## <a name="timer-trigger"></a>Trigger časovače
-Aktivační událost časovače funkce používá následující objekt JSON v `bindings` pole function.json:
+Hello funkce tooa aktivační událost časovače používá následující objekt JSON v hello hello `bindings` pole function.json:
 
 ```json
 {
@@ -47,22 +47,22 @@ Aktivační událost časovače funkce používá následující objekt JSON v `
 }
 ```
 
-Hodnota `schedule` je [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) obsahující tyto šest polí: 
+Hello hodnotu `schedule` je [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) obsahující tyto šest polí: 
 
     {second} {minute} {hour} {day} {month} {day-of-week}
 &nbsp;
 >[!NOTE]   
->Řada výrazů cron zjistíte online vynechejte `{second}` pole. Pokud zkopírujete z jednoho z nich, bude nutné upravit pro nadbytečné `{second}` pole. Konkrétní příklady najdete v tématu [naplánovat příklady](#examples) níže.
+>Řada výrazů cron hello zjistíte online vynechejte hello `{second}` pole. Pokud zkopírujete z jednoho z nich, potřebujete tooadjust hello navíc `{second}` pole. Konkrétní příklady najdete v tématu [naplánovat příklady](#examples) níže.
 
-Použít s výrazy CRON výchozí časové pásmo je koordinovaný světový čas (UTC). Pokud chcete, aby vaše výraz CRON založený na jiném časovém pásmu, vytvořte nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE`. Nastavte hodnotu na název požadované časové pásmo, jak je znázorněno [Microsoft časové pásmo Index](https://msdn.microsoft.com/library/ms912391.aspx). 
+použít s výrazy CRON hello Hello výchozí časové pásmo je koordinovaný světový čas (UTC). toohave výraz CRON založené na jiném časovém pásmu, vytvořit nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE`. Sada hello hodnota toohello název hello potřeby časové pásmo, jak je znázorněno v hello [Microsoft časové pásmo Index](https://msdn.microsoft.com/library/ms912391.aspx). 
 
-Například *východní běžný čas* je UTC-05:00. Má vaše časovače aktivovat ještě efektivněji na 10:00 AM EST každý den, použijte následující výraz CRON účty pro časové pásmo UTC:
+Například *východní běžný čas* je UTC-05:00. toohave vaše časovače aktivovat ještě efektivněji na 10:00 AM EST každý den, hello použijte následující výraz CRON, který účty pro časové pásmo UTC:
 
 ```json
 "schedule": "0 0 15 * * *",
 ``` 
 
-Alternativně můžete přidat nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Následující výraz CRON pak může použít pro 10:00 AM EST: 
+Alternativně můžete přidat nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu hello příliš**východní běžný čas**.  Následující výraz CRON hello pak by mohly být použity 10:00 AM EST: 
 
 ```json
 "schedule": "0 0 10 * * *",
@@ -72,39 +72,39 @@ Alternativně můžete přidat nové nastavení aplikace pro funkce aplikace s n
 <a name="examples"></a>
 
 ## <a name="schedule-examples"></a>Příklady plán
-Tady jsou některé ukázky můžete použít pro výrazy CRON `schedule` vlastnost. 
+Tady jsou některé ukázky CRON výrazy, které můžete použít pro hello `schedule` vlastnost. 
 
-K aktivaci každých pět minut:
+tootrigger každých pět minut:
 
 ```json
 "schedule": "0 */5 * * * *"
 ```
 
-K aktivaci jednou v horní části každou hodinu:
+tootrigger jednou na začátku hello každou hodinu:
 
 ```json
 "schedule": "0 0 * * * *",
 ```
 
-K aktivaci každé dvě hodiny:
+tootrigger každé dvě hodiny:
 
 ```json
 "schedule": "0 0 */2 * * *",
 ```
 
-K aktivaci jednou za hodinu z 9: 00 do 17: 00:
+tootrigger jednou za hodinu z too5 9: 00 PM:
 
 ```json
 "schedule": "0 0 9-17 * * *",
 ```
 
-Spouštět v 9:30:00 každý den:
+tootrigger v 9:30:00 každý den:
 
 ```json
 "schedule": "0 30 9 * * *",
 ```
 
-Spouštět v 9:30:00 každý den v týdnu:
+tootrigger v 9:30:00 každý den v týdnu:
 
 ```json
 "schedule": "0 30 9 * * 1-5",
@@ -113,7 +113,7 @@ Spouštět v 9:30:00 každý den v týdnu:
 <a name="usage"></a>
 
 ## <a name="trigger-usage"></a>Aktivační události využití
-Po vyvolání funkce aktivační událost časovače [časovače objekt](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) je předána do funkce. Následujícím kódu JSON je příklad reprezentací objekt časovače. 
+Po vyvolání funkce aktivační událost časovače hello [časovače objekt](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) je předána do funkce hello. Hello následujícím kódu JSON je reprezentaci příklad hello časovače objektu. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Po vyvolání funkce aktivační událost časovače [časovače objekt](https:/
 <a name="sample"></a>
 
 ## <a name="trigger-sample"></a>Ukázka aktivační události
-Předpokládejme, že máte následující aktivační událost časovače `bindings` pole function.json:
+Předpokládejme, že máte následující aktivační událost časovače v hello hello `bindings` pole function.json:
 
 ```json
 {
@@ -141,7 +141,7 @@ Předpokládejme, že máte následující aktivační událost časovače `bind
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který čte objekt časovače pro zjištění, zda je spuštěna pozdní.
+V tématu vzorku hello konkrétní jazyk, který čte hello časovače objekt toosee, ať už běží pozdní.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)

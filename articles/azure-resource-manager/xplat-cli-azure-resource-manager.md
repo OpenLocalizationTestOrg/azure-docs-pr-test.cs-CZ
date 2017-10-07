@@ -1,6 +1,6 @@
 ---
-title: "Správa prostředků pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Použití rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure a skupiny"
+title: "aaaManage prostředky s hello rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Použít toomanage hello rozhraní příkazového řádku Azure (CLI) Azure prostředků a skupin"
 editor: 
 manager: timlt
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
-ms.openlocfilehash: 3ad4e68b90979fd7f9d3ddf5278e65e19cb07152
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3df70e123d14d3bbf2648c71970bac1db4afc025
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Použití rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků
+# <a name="use-hello-azure-cli-toomanage-azure-resources-and-resource-groups"></a>Použití Azure CLI toomanage hello Azure skupiny prostředků a prostředky
 > [!div class="op_single_selector"]
 > * [Azure Portal](resource-group-portal.md) 
 > * [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -29,42 +29,42 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Rozhraní příkazového řádku Azure (Azure CLI) je jedním z několik nástrojů, které můžete použít k nasazení a správě prostředků pomocí Resource Manageru. Tento článek představuje běžné způsoby ke správě prostředků Azure a skupiny prostředků pomocí rozhraní příkazového řádku Azure v režimu Resource Manager. Informace o použití rozhraní příkazového řádku pro nasazení prostředků najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md). Informace o prostředků Azure a Resource Manager, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).
+Hello rozhraní příkazového řádku Azure (Azure CLI) je jedním z několika nástrojů můžete použít toodeploy a spravovat prostředky pomocí Resource Manageru. Tento článek představuje běžné způsoby toomanage Azure prostředků a skupin prostředků pomocí hello rozhraní příkazového řádku Azure v režimu Resource Manager. Informace o použití prostředků toodeploy hello rozhraní příkazového řádku najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md). Informace o prostředků Azure a Resource Manager, najdete v článku hello [přehled Azure Resource Manageru](resource-group-overview.md).
 
 > [!NOTE]
-> Ke správě prostředků Azure pomocí Azure CLI, budete muset [nainstalovat Azure CLI](../cli-install-nodejs.md), a [přihlášení k Azure](../xplat-cli-connect.md) pomocí `azure login` příkaz. Zkontrolujte, zda je rozhraní příkazového řádku v režimu Resource Manager (Spustit `azure config mode arm`). Pokud jste provádí tyto věci, jste připravení přejít.
+> toomanage Azure prostředky s hello příkazového řádku Azure CLI, je třeba příliš[nainstalovat hello rozhraní příkazového řádku Azure](../cli-install-nodejs.md), a [přihlásit tooAzure](../xplat-cli-connect.md) pomocí hello `azure login` příkaz. Ujistěte se, hello rozhraní příkazového řádku je v režimu Resource Manager (Spustit `azure config mode arm`). Pokud jste provádí tyto věci, jste toogo připraven.
 > 
 > 
 
 ## <a name="get-resource-groups-and-resources"></a>Skupiny prostředků a prostředky
 ### <a name="resource-groups"></a>Skupiny prostředků
-Chcete-li získat seznam všech skupin prostředků ve vašem předplatném a jejich umístění, spusťte tento příkaz.
+Tento příkaz Spustit tooget seznam všech skupin prostředků v předplatného a jejich umístění.
 
     azure group list
 
 
 ### <a name="resources"></a>Zdroje
- Chcete-li vypsat všechny prostředky ve skupině, například ten, který s názvem *testRG*, použijte následující příkaz:
+ Název všechny prostředky ve skupině, například ten, který se toolist *testRG*, použijte následující příkaz hello:
 
     azure resource list testRG
 
-Chcete-li zobrazit jednotlivé zdroje v rámci skupiny, například virtuální počítač s názvem *MyUbuntuVM*, použijte příkaz takto:
+tooview jednotlivé zdroje v rámci skupiny hello, jako je například virtuální počítač s názvem *MyUbuntuVM*, použijte příkaz jako hello následující:
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-Upozornění **Microsoft.Compute/virtualMachines** parametr. Tento parametr určuje typ prostředku, který požadujete informace na.
+Všimněte si hello **Microsoft.Compute/virtualMachines** parametr. Tento parametr určuje typ hello hello prostředku, který požadujete informace na.
 
 > [!NOTE]
-> Při použití **prostředků azure** příkazy jiným než **seznamu** příkaz, musíte zadat verze rozhraní API prostředku s **-o** parametr. Pokud si nejste jisti o verze rozhraní API, projděte si soubor šablony a najít pole apiVersion pro prostředek. Další informace o verzích rozhraní API ve službě Správce prostředků najdete v tématu [zprostředkovatelé prostředků a typy](resource-manager-supported-services.md).
+> Při použití hello **prostředků azure** příkazy než hello **seznamu** příkaz, je nutné zadat hello rozhraní API verze hello prostředku s hello **-o** parametr. Pokud si nejste jisti o hello verze rozhraní API, projděte si soubor šablony hello a najít hello apiVersion pole pro prostředek hello. Další informace o verzích rozhraní API ve službě Správce prostředků najdete v tématu [zprostředkovatelé prostředků a typy](resource-manager-supported-services.md).
 > 
 > 
 
-Při zobrazení podrobností na prostředek, je často užitečné používat `--json` parametr. Tento parametr umožňuje výstup čitelnější, protože některé hodnoty jsou vnořené struktury nebo kolekce. Následující příklad ukazuje, vrátí výsledky **zobrazit** příkaz jako dokument JSON.
+Při zobrazení podrobností na prostředek, je často užitečné toouse hello `--json` parametr. Tento parametr umožňuje hello výstup čitelnější, protože některé hodnoty jsou vnořené struktury nebo kolekce. Hello následující příklad ukazuje vracejících hello výsledky hello **zobrazit** příkaz jako dokument JSON.
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json
 
 > [!NOTE]
-> Pokud chcete, ukládání dat JSON do souboru pomocí &gt; znak, který má přesměrujte výstup do souboru. Například:
+> Pokud chcete uložit toofile data JSON hello pomocí hello &gt; znak toodirect hello výstupní tooa soubor. Například:
 > 
 > `azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json > myfile.json`
 > 
@@ -74,24 +74,24 @@ Při zobrazení podrobností na prostředek, je často užitečné používat `-
 [!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
 
 ## <a name="manage-resources"></a>Správa prostředků
-Přidat prostředek, jako je například účet úložiště do skupiny prostředků, spusťte příkaz podobný:
+tooadd prostředků, jako je například úložiště účet tooa skupinu prostředků, spusťte příkaz podobný:
 
     azure resource create testRG MyStorageAccount "Microsoft.Storage/storageAccounts" "westus" -o "2015-06-15" -p "{\"accountType\": \"Standard_LRS\"}"
 
-Kromě určení verze rozhraní API prostředku s **-o** parametr, použijte **-p** parametr předat řetězec formátu JSON s jakékoli požadované nebo další vlastnosti.
+Kromě toho toospecifying hello verze rozhraní API hello prostředku s hello **-o** parametr, použijte hello **-p** řetězec formátu JSON toopass parametrů s jakékoli požadované nebo další vlastnosti.
 
-Pokud chcete odstranit existující prostředek například prostředek virtuálního počítače, použijte příkaz takto:
+toodelete na existující prostředek, jako je například prostředek virtuálního počítače, použijte příkaz jako hello následující:
 
     azure resource delete testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-Chcete-li existující prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte **přesunutí prostředku azure** příkaz. Následující příklad ukazuje, jak přesunout Redis Cache do nové skupiny prostředků. V **-i** parametr zadejte čárkami oddělený seznam id prostředku je přesunout.
+toomove existující skupiny prostředků tooanother prostředků nebo předplatného, použijte hello **přesunutí prostředku azure** příkaz. Následující příklad ukazuje, jak Hello toomove Redis Cache tooa novou skupinu prostředků. V hello **-i** parametr zadejte čárkami oddělený seznam id prostředku hello toomove.
 
     azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
 
-## <a name="control-access-to-resources"></a>Řízení přístupu k prostředkům
-Rozhraní příkazového řádku Azure můžete vytvořit a spravovat zásady pro řízení přístupu k prostředkům Azure. Pro informace o definice zásady a přiřazení zásad k prostředkům, viz [použití zásad ke správě prostředků a řízení přístupu](resource-manager-policy.md).
+## <a name="control-access-tooresources"></a>Řízení přístupu tooresources
+Můžete použít rozhraní příkazového řádku Azure toocreate hello a spravovat zásady toocontrol přístup tooAzure prostředky. Pro informace o definice zásady a přiřazení zásad tooresources viz [používat prostředky toomanage zásad a kontrolujte přístup](resource-manager-policy.md).
 
-Například definovat tyto zásady tak, aby odepřel všechny požadavky, které není umístění západní USA nebo Sever střední USA a uložte ho policy.json soubor definice zásady:
+Například hello následující zásady toodeny definovat všechny požadavky, které není umístění západní USA nebo Sever střední USA a uložte ho policy.json soubor definice zásady toohello:
 
     {
     "if" : {
@@ -105,50 +105,50 @@ Například definovat tyto zásady tak, aby odepřel všechny požadavky, které
     }
     }
 
-Spusťte **vytvoření definice zásady** příkaz:
+Spusťte hello **vytvoření definice zásady** příkaz:
 
     azure policy definition create MyPolicy -p c:\temp\policy.json
 
-Tento příkaz zobrazí výstup podobný následujícímu:
+Tento příkaz zobrazí výstup podobný toohello následující:
 
     + Vytvořením definice zásady MyPolicy data: PolicyName: MyPolicy data: PolicyDefinitionId: /subscriptions/###-###-###-###-###/providers/Microsoft.Authorization/policyDefinitions/MyPolicy
 
     data: Třída PolicyType: vlastní data: DisplayName: není definovaná data: Popis: není definovaná data: PolicyRule: pole = umístění, v = [westus, northcentralus], účinek = Odepřít
 
- K přiřazení zásady v oboru, který chcete, použijte **PolicyDefinitionId** vrácená z předchozí příkaz. V následujícím příkladu se tento obor je předplatné, ale můžete určit obor skupin prostředků nebo jednotlivé prostředky:
+ tooassign zásadu v oboru hello chcete, použijte hello **PolicyDefinitionId** vrácená z předchozí příkaz hello. V následujícím příkladu hello tento obor je hello předplatné, ale můžete určit obor skupin tooresource nebo jednotlivé prostředky:
 
     Vytvoření přiřazení zásady Azure MyPolicyAssignment -p /subscriptions/###-###-###-###-###/providers/Microsoft.Authorization/policyDefinitions/MyPolicy -s /subscriptions/###-###-###-###-### /
 
-Můžete získat, změnit nebo odebrat definice zásady pomocí **Zobrazit definice zásady**, **definici sady zásad**, a **odstranit definice zásady** příkazy.
+Můžete získat, změnit nebo odebrat definice zásady pomocí hello **Zobrazit definice zásady**, **definici sady zásad**, a **odstranit definice zásady** příkazy.
 
-Podobně můžete získat, změnit nebo odebrat přiřazení zásad pomocí **zobrazit přiřazení zásad**, **sady přiřazení zásad**, a **odstranit přiřazení zásady** příkazy.
+Podobně můžete získat, změnit nebo odebrat přiřazení zásad pomocí hello **zobrazit přiřazení zásad**, **sady přiřazení zásad**, a **odstranit přiřazení zásady** příkazy .
 
 ## <a name="export-a-resource-group-as-a-template"></a>Export skupiny prostředků jako šablonu
-Pro existující skupinu prostředků můžete zobrazit šablony Resource Manageru pro skupinu prostředků. Export šablony nabízí dvě výhody:
+Pro existující skupinu prostředků můžete zobrazit hello šablony Resource Manageru pro skupinu prostředků hello. Export šablony hello nabízí dvě výhody:
 
-1. Vzhledem k tomu, že všechny infrastruktury je definována v šabloně můžete snadno automatizovat budoucí nasazení řešení.
-2. Můžete seznámit se syntaxí šablony prohlížením formátu JSON, který představuje vaše řešení.
+1. Snadno můžete automatizovat budoucí nasazení řešení hello vzhledem k tomu, že všechny infrastruktury hello je definována v šabloně hello.
+2. Můžete seznámit se syntaxí šablony prohlížením hello formátu JSON, který představuje vaše řešení.
 
-Pomocí rozhraní příkazového řádku Azure, můžete buď vyexportovat šablonu, který představuje aktuální stav vaší skupiny prostředků, nebo stáhnout šablonu, která byla použita pro konkrétní nasazení.
+Pomocí hello rozhraní příkazového řádku Azure, můžete buď vyexportovat šablonu, která představuje hello aktuální stav vaší skupiny prostředků, nebo stáhnout hello šablonu, která byla použita pro konkrétní nasazení.
 
-* **Vyexportování šablony pro skupinu prostředků** – to je užitečné, když provedené změny do skupiny prostředků a načtení reprezentaci JSON jejím aktuálním stavu. Vygenerované šablony však obsahuje pouze minimální počet parametrů a žádné proměnné. Většina hodnot v šabloně jsou pevně. Před nasazením vygenerované šablony, můžete chtít převést více hodnot parametrů, můžete přizpůsobit nasazení pro různá prostředí.
+* **Export hello šablony pro skupinu prostředků** – to je užitečné, když jste provedli změny skupiny prostředků tooa a potřebovat tooretrieve hello reprezentace JSON v jejím aktuálním stavu. Vygenerované šablony hello však obsahuje pouze minimální počet parametrů a žádné proměnné. Většina hodnot hello v šabloně hello jsou pevně. Před nasazením hello vygenerované šablony, můžete tooconvert více hodnot hello do parametrů, můžete přizpůsobit hello nasazení pro různá prostředí.
   
-    Chcete-li exportovat šablonu pro skupinu prostředků do místního adresáře, spusťte `azure group export` příkaz, jak je znázorněno v následujícím příkladu. (Nahraďte do místního adresáře, které jsou vhodné pro vaše prostředí operačního systému.)
+    tooexport hello šablony pro prostředek skupiny tooa místní adresář, spusťte hello `azure group export` příkaz, jak ukazuje následující příklad hello. (Nahraďte do místního adresáře, které jsou vhodné pro vaše prostředí operačního systému.)
   
         azure group export testRG ~/azure/templates/
-* **Stáhněte si šablonu pro konkrétní nasazení** – to je užitečné, když potřebujete zobrazit skutečné šablony, která byla použita k nasazení prostředků. Šablona obsahuje všechny parametry a proměnné pro původní nasazení definována. Ale pokud někdo ve vaší organizaci provedené změny ve skupině prostředků mimo definice v šabloně, tato šablona nemá představují aktuální stav skupiny prostředků.
+* **Stáhnout hello šablonu pro konkrétní nasazení** – to je užitečné, když potřebujete hello tooview skutečné se šablonu, která byla toodeploy využité prostředky. Šablona Hello zahrnuje všechny parametry a proměnné definované pro původní nasazení hello. Pokud někdo ve vaší organizaci provedené změny skupiny prostředků toohello mimo hello definice v šabloně hello, ale tato šablona nepředstavuje hello aktuální stav skupiny prostředků hello.
   
-    Chcete-li stáhnout šablonu použít pro konkrétní nasazení do místního adresáře, spusťte `azure group deployment template download` příkaz. Například:
+    toodownload hello Šablona používaná pro konkrétní nasazení tooa místní adresář, spusťte hello `azure group deployment template download` příkaz. Například:
   
         azure group deployment template download TestRG testRGDeploy ~/azure/templates/downloads/
 
 > [!NOTE]
-> Export šablony je ve verzi preview, a ne všechny typy prostředků v současné době podporují export šablony. Při pokusu o export šablony, může se zobrazit chyba s oznámením, že některé prostředky nebyly exportovat. V případě potřeby ručně definovat tyto prostředky ve vaší šabloně po stáhnout.
+> Export šablony je ve verzi preview, a ne všechny typy prostředků v současné době podporují export šablony. Při pokusu o tooexport šablonu, může se zobrazit chyba s oznámením, že některé prostředky nebyly exportovat. V případě potřeby ručně definovat tyto prostředky ve vaší šabloně po stáhnout.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* Podrobnosti o operace nasazení a řešení chyb nasazení pomocí rozhraní příkazového řádku Azure najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
-* Pokud chcete používat rozhraní příkazového řádku k nastavení aplikace nebo skriptu pro přístup k prostředkům, najdete v části [pomocí rozhraní příkazového řádku Azure k vytvoření objektu služby pro přístup k prostředkům](resource-group-authenticate-service-principal-cli.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Podrobnosti o tooget operace nasazení a řešení chyby nasazení s hello rozhraní příkazového řádku Azure najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
+* Pokud chcete toouse hello rozhraní příkazového řádku tooset aplikace nebo skriptu tooaccess prostředky, najdete v části [použití Azure CLI toocreate objekt služby prostředků tooaccess](resource-group-authenticate-service-principal-cli.md).
+* Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](resource-manager-subscription-governance.md).
 

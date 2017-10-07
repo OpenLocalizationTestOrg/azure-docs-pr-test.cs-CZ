@@ -1,5 +1,5 @@
 ---
-title: "Využívat Azure spravované aplikace | Microsoft Docs"
+title: "aaaConsume Azure spravované aplikace | Microsoft Docs"
 description: "Popisuje, jak zákazník vytvoří Azure spravované aplikace z publikovaných souborů."
 services: azure-resource-manager
 author: ravbhatnagar
@@ -10,54 +10,54 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/23/2017
 ms.author: gauravbh; tomfitz
-ms.openlocfilehash: ed8fbaf2a4546c8e31eeced11cd0b5627fd62c0c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b8510086eb05304c0e351a391b7e0cf34a467568
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="consume-an-internal-managed-application"></a>Využívat interní spravované aplikace
 
-Můžete využívat Azure [spravované aplikace](managed-application-overview.md) , jsou určené pro členy vaší organizace. Spravované aplikace můžete například vybrat od vašeho IT oddělení, které zajišťují dodržování standardů organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, není v Azure Marketplace.
+Můžete využívat Azure [spravované aplikace](managed-application-overview.md) , jsou určené pro členy vaší organizace. Spravované aplikace můžete například vybrat od vašeho IT oddělení, které zajišťují dodržování standardů organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím hello katalogu služeb, hello Azure Marketplace.
 
-Než budete pokračovat v tomto článku, musíte mít k dispozici v katalogu služeb spravované aplikace pro vaše předplatné. Pokud někdo ve vaší organizaci dosud vytvořena spravované aplikace, najdete v části [publikování spravované aplikace pro interní používání](managed-application-publishing.md).
+Než budete pokračovat v tomto článku, musíte mít k dispozici v katalogu služeb hello spravované aplikace pro vaše předplatné. Pokud někdo ve vaší organizaci dosud vytvořena spravované aplikace, najdete v části [publikování spravované aplikace pro interní používání](managed-application-publishing.md).
 
-V současné době můžete rozhraní příkazového řádku Azure nebo portálu Azure využívat spravované aplikace.
+V současné době můžete použít rozhraní příkazového řádku Azure nebo hello Azure portálu tooconsume spravované aplikace.
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>Vytvoření spravované aplikace prostřednictvím portálu
+## <a name="create-hello-managed-application-by-using-hello-portal"></a>Vytvoření aplikace hello spravované pomocí portálu hello
 
-Pokud chcete nasadit spravované aplikace prostřednictvím portálu, postupujte takto:
+toodeploy spravované aplikace prostřednictvím portálu hello, postupujte takto:
 
-1. Přejděte na portálu Azure. Vyhledejte **katalogu služeb spravované aplikace**.
+1. Přejděte toohello portálu Azure. Vyhledejte **katalogu služeb spravované aplikace**.
 
    ![Katalog služeb spravované aplikace](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
-1. Vyberte spravované aplikaci, kterou chcete vytvořit ze seznamu dostupných řešení. Vyberte **Vytvořit**.
+1. Vyberte hello spravované aplikace, které chcete toocreate z hello seznam dostupných řešení. Vyberte **Vytvořit**.
 
    ![Výběr spravované aplikace](./media/managed-application-consumption/select-offer.png)
 
-1. Zadejte hodnoty pro parametry, které jsou požadovány k přidělení prostředků. Vyberte **– Západ střední USA** pro umístění. Vyberte **OK**.
+1. Zadejte hodnoty pro parametry hello, které jsou prostředky požadované tooprovision hello. Vyberte **– Západ střední USA** pro umístění. Vyberte **OK**.
 
    ![Parametry spravované aplikace](./media/managed-application-consumption/input-parameters.png)
 
-1. Šablona ověří hodnoty, které jste zadali. V případě úspěšného ověření vyberte **OK** ke spuštění nasazení.
+1. Šablona Hello ověří hello hodnoty, které jste zadali. V případě úspěšného ověření vyberte **OK** toostart hello nasazení.
 
    ![Ověřování spravovaných aplikací](./media/managed-application-consumption/validation.png)
 
-Po dokončení nasazení s příslušnými prostředky v šabloně definovánu připravené ve skupině spravovaných prostředků, které jste zadali.
+Po dokončení nasazení hello hello definovaná v šabloně hello odpovídající prostředky jsou zřízené v hello spravovaných prostředků skupinu, kterou jste zadali.
 
-## <a name="create-the-managed-application-by-using-azure-cli"></a>Vytvoření spravované aplikace pomocí rozhraní příkazového řádku Azure
+## <a name="create-hello-managed-application-by-using-azure-cli"></a>Vytvoření aplikace hello spravované pomocí rozhraní příkazového řádku Azure
 
-Existují dva způsoby vytvoření spravované aplikace pomocí rozhraní příkazového řádku Azure:
+Existují dva způsoby toocreate spravované aplikace pomocí rozhraní příkazového řádku Azure:
 
-* Použijte příkaz pro vytvoření spravovaných aplikací.
-* Použijte příkaz regulární šablonu nasazení.
+* Pro vytvoření spravované aplikace můžete použijte příkaz hello.
+* Příkaz hello regulární šablonu nasazení.
 
-### <a name="use-the-template-deployment-command"></a>Použijte příkaz nasazení šablony
+### <a name="use-hello-template-deployment-command"></a>Použijte příkaz nasazení šablony hello
 
-Nasaďte soubor applianceMainTemplate.json vytvořený dodavatele.
+Nasaďte soubor applianceMainTemplate.json hello hello dodavatele vytvořen.
 
-Pak vytvořte dvě skupiny prostředků. První skupina prostředků je, kde se má vytvořit prostředek spravované aplikace: Microsoft.Solutions/appliances. Druhý skupina prostředků obsahuje všechny prostředky, které jsou definované v mainTemplate.json. Tato skupina prostředků je spravovaný ISV.
+Pak vytvořte dvě skupiny prostředků. Hello první skupina prostředků je kde hello spravované aplikace je vytvořen prostředek: Microsoft.Solutions/appliances. Skupina prostředků druhý Hello obsahuje všechny prostředky hello definované v mainTemplate.json. Tato skupina prostředků je spravovaný hello ISV.
 
 ```azurecli
 az group create --name mainResourceGroup --location westcentralus
@@ -65,28 +65,28 @@ az group create --name managedResourceGroup --location westcentralus
 ```
 
 > [!NOTE]
-> Použití `westcentralus` jako umístění skupiny prostředků.
+> Použití `westcentralus` jako hello umístění skupiny prostředků hello.
 >
 
-Pokud chcete nasadit applianceMainTemplate.json v mainResourceGroup, použijte následující příkaz:
+toodeploy applianceMainTemplate.json v mainResourceGroup hello použijte následující příkaz:
 
 ```azurecli
 az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri
 ```
 
-Po spuštění předchozí šablony, budete vyzváni k zadání hodnot parametrů, které jsou definované v šabloně. Kromě parametrů, které jsou potřebné k zajištění prostředků v šabloně je třeba dvě hodnoty klíčů parametr:
+Po hello předcházející spustí šablony budete vyzváni k hello hodnoty hello parametrů, které jsou definované v šabloně hello. Kromě toohello parametry, které jsou potřeba tooprovision prostředky v šabloně, budete potřebovat dvě hodnoty klíčů parametr:
 
-- **managedResourceGroupId**: ID skupiny prostředků obsahující prostředky, které jsou definované v applianceMainTemplate.json. ID je ve formátu `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. V předchozím příkladu je ID `managedResourceGroup`.
-- **applianceDefinitionId**: ID definice prostředku spravované aplikace. Tato hodnota je poskytovaný ISV.
+- **managedResourceGroupId**: hello ID prostředků hello prostředků skupiny obsahující hello definované v applianceMainTemplate.json. Hello ID má podobu hello `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. V předchozím příkladu hello, to je hello ID `managedResourceGroup`.
+- **applianceDefinitionId**: hello ID hello spravované aplikace definice prostředků. Tato hodnota je poskytovaný hello ISV.
 
 > [!NOTE]
-> Vydavatel musí udělit přístup ke skupině prostředků, který obsahuje definici spravované aplikace. Definice prostředků se vytvoří ve vašem předplatném vydavatele. Přístup pro čtení k tomuto prostředku musí tedy uživatele, skupiny uživatelů nebo aplikací v klientovi zákazníka.
+> Vydavatel Hello musí udělit přístup toohello prostředků skupiny, která obsahuje definice hello spravované aplikace. Hello definice prostředků se vytvoří v předplatném hello vydavatele. Proto uživatele, skupiny uživatelů nebo aplikací v klientovi zákazníka hello musí prostředků toothis přístup pro čtení.
 
-Po dokončení nasazení úspěšně, uvidíte, že spravované aplikace se vytvoří v mainResourceGroup. StorageAccount prostředek je vytvořen v managedResourceGroup.
+Po nasazení hello skončí úspěšně, zobrazí hello spravované aplikace je vytvořena v mainResourceGroup. Hello storageAccount prostředek vytvoří v managedResourceGroup.
 
-### <a name="use-the-create-command"></a>Použijte příkaz create
+### <a name="use-hello-create-command"></a>Použití hello vytvoření příkazu
 
-Můžete použít `az managedapp create` příkaz pro vytvoření spravované aplikace z definice spravované aplikace.
+Můžete použít hello `az managedapp create` příkaz toocreate spravované aplikace z hello spravované definice aplikace.
 
 ```azurecli
 az managedapp create --name ravtestappliance401 --location "westcentralus"
@@ -97,29 +97,29 @@ az managedapp create --name ravtestappliance401 --location "westcentralus"
     --debug
 ```
 
-* **Id definice zařízení**: ID prostředku definici spravované aplikaci vytvořili v předchozím kroku. Pokud chcete získat toto ID, spusťte následující příkaz:
+* **Id definice zařízení**: ID prostředku hello hello spravované definice aplikace vytvořené v předchozím kroku hello. tooobtain toto ID, spusťte následující příkaz hello:
 
   ```azurecli
   az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
   ```
 
-  Tento příkaz vrátí definice spravovaných aplikací. Je třeba hodnotu vlastnost ID.
+  Tento příkaz vrátí definice hello spravované aplikace. Je nutné hello hodnotu vlastnosti ID hello.
 
-* **spravované id rg**: název skupiny prostředků obsahující prostředky, které jsou definované v applianceMainTemplate.json. Tato skupina prostředků je skupina spravovaných prostředků. Je spravovaný vydavatele. Pokud neexistuje, vytvoří se pro vás.
-* **Skupina prostředků**: skupině prostředků, kde se má vytvořit prostředek spravované aplikace. Microsoft.Solutions/appliance prostředků je umístěn v této skupině prostředků.
-* **Parametry**: parametry, které jsou potřebné pro prostředky, které jsou definované v applianceMainTemplate.json.
+* **spravované id rg**: název hello hello prostředků obsahující hello prostředků skupiny definované v applianceMainTemplate.json. Tato skupina prostředků je skupina hello spravovaných prostředků. Je spravovaný hello vydavatele. Pokud neexistuje, vytvoří se pro vás.
+* **Skupina prostředků**: Po vytvoření skupiny prostředků hello kde hello spravovaných prostředků aplikace. Hello Microsoft.Solutions/appliance prostředků je umístěn v této skupině prostředků.
+* **Parametry**: hello parametry, které jsou potřebné pro prostředky hello definované v applianceMainTemplate.json.
 
 ## <a name="known-issues"></a>Známé problémy
 
-Tato verze preview zahrnuje následující problémy:
+Tato verze preview zahrnuje hello následující problémy:
 
-* Při vytváření spravované aplikace se zobrazí 500 vnitřní chybu serveru. Pokud narazíte na potíže, je pravděpodobně přerušované. Opakujte operaci.
-* Novou skupinu prostředků je potřeba pro skupinu spravovaných prostředků. Pokud použijete existující skupinu prostředků, nasazení se nezdaří.
-* Skupinu prostředků, která obsahuje prostředek Microsoft.Solutions/appliances musí být vytvořené v **westcentralus** umístění.
+* Během vytváření hello hello spravované aplikace se zobrazí 500 vnitřní chybu serveru. Pokud narazíte na potíže, je pravděpodobně toobe přerušované. Opakujte operaci hello.
+* Novou skupinu prostředků je potřeba pro skupinu hello spravovaných prostředků. Pokud použijete existující skupinu prostředků, hello nasazení se nezdaří.
+* Hello skupinu prostředků, která obsahuje hello Microsoft.Solutions/appliances prostředek musí být vytvořen v hello **westcentralus** umístění.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do spravovaných aplikací, najdete v části [spravované aplikace přehled](managed-application-overview.md).
+* Úvod toomanaged aplikace naleznete v [spravované aplikace přehled](managed-application-overview.md).
 * Informace o publikování aplikace spravované katalogu služeb najdete v tématu [vytvoření a publikování aplikace spravované katalogu služeb](managed-application-publishing.md).
-* Informace o publikování spravované aplikace do Azure Marketplace najdete v tématu [Azure spravované aplikace na webu Marketplace](managed-application-author-marketplace.md).
-* Informace o využívání spravované aplikace z webu Marketplace najdete v tématu [využívat Azure spravované aplikace na webu Marketplace](managed-application-consume-marketplace.md).
+* Informace o publikování toohello spravovaných aplikací Azure Marketplace najdete v tématu [Azure spravované aplikace v hello Marketplace](managed-application-author-marketplace.md).
+* Informace o použití spravovaných aplikací z hello Marketplace najdete v tématu [využívat Azure spravované aplikace v hello Marketplace](managed-application-consume-marketplace.md).

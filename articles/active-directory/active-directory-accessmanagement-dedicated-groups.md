@@ -1,5 +1,5 @@
 ---
-title: "Vyhrazené skupiny ve službě Azure Active Directory | Microsoft Docs"
+title: aaaDedicated skupin v Azure Active Directory | Microsoft Docs
 description: "Přehled o tom, jak vyhrazené skupiny fungují v Azure Active Directory a jak se vytvářejí."
 services: active-directory
 documentationcenter: 
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
-ms.openlocfilehash: d9decd5de6a5bafc525edc5b04c82701185088ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8feec6e1a4e6b384470392d3043caeeec2b03dd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dedicated-groups-in-azure-active-directory"></a>Vyhrazené skupiny ve službě Azure Active Directory
-Funkci vyhrazené skupiny ve službě Azure Active Directory (Azure AD), automaticky vytvoří a naplní členství ve skupinách Azure AD předdefinované. Členové vyhrazené skupiny nelze přidat nebo odebrat pomocí portálu Azure classic, rutiny prostředí Windows PowerShell, nebo prostřednictvím kódu programu.
+V Azure Active Directory (Azure AD) funkce vyhrazené skupiny hello automaticky vytvoří a naplní členství ve skupinách Azure AD předdefinované. Nelze přidat členy vyhrazené skupiny nebo odebrané pomocí hello Azure classic portálu, rutiny prostředí Windows PowerShell, nebo prostřednictvím kódu programu.
 
 > [!NOTE]
 > Vyhrazené skupiny vyžadovat, že je přiřazený licenci Azure AD Premium
 >
-> * správce, který spravuje pravidlo na skupinu
-> * všichni uživatelé, kteří jsou pomocí pravidla Vybraní jako členové skupiny
+> * Hello správce, který spravuje hello pravidlo pro skupinu
+> * všichni uživatelé, kteří ve hello jsou vybrané pravidlo toobe členem skupiny hello
 >
 >
 
-**Chcete-li povolit vyhrazené skupiny**
+**tooenable vyhrazené skupiny**
 
-1. V [portál Azure classic](https://manage.windowsazure.com), vyberte **služby Active Directory**a pak otevřete adresáři vaší organizace.
-2. Vyberte **skupiny** kartě a pak otevřete skupinu, kterou chcete upravit.
-3. Vyberte **konfigurace** kartě a poté nastavte **povolte vyhrazené skupiny** k **Ano**.
+1. V hello [portál Azure classic](https://manage.windowsazure.com), vyberte **služby Active Directory**a pak otevřete adresáři vaší organizace.
+2. Vyberte hello **skupiny** kartu a pak otevřete hello skupiny chcete tooedit.
+3. Vyberte hello **konfigurace** kartě a poté nastavte **povolte vyhrazené skupiny** příliš**Ano**.
 
-Povolit vyhrazené skupiny přepínač nastavenou na hodnotu **Ano**, můžete povolit další adresář, který chcete automaticky vytvořit vyhrazenou skupinu všichni uživatelé nastavením **povolit "Všichni uživatelé" skupina** přepnout na **Ano**. Můžete pak taky upravit název této vyhrazené skupiny zadáním **zobrazovaný název "Všichni uživatelé" skupina** pole.
+Jakmile hello přepínač Povolit vyhrazené skupiny je nastaven příliš**Ano**, můžete povolit další hello directory tooautomatically vytvořit hello všichni uživatelé vyhrazené skupiny nastavení hello **povolit "Všichni uživatelé" skupiny** přepínač příliš**Ano**. Pak se taky dají upravovat hello název této vyhrazené skupiny zadáním názvu do hello **zobrazovaný název "Všichni uživatelé" skupina** pole.
 
-Všichni uživatelé skupiny lze přiřadit stejná oprávnění pro všechny uživatele ve vašem adresáři. Například můžete udělit všichni uživatelé v adresáři přístup k aplikaci SaaS přiřadit přístup pro vyhrazené skupině všichni uživatelé k této aplikaci.
+Hello všechny uživatele skupiny lze tooassign hello stejné oprávnění tooall hello uživatelé v adresáři. Například můžete udělit všichni uživatelé ve vaší directory přístup tooa aplikace SaaS přiřadit přístup pro hello všichni uživatelé vyhrazenou skupinu toothis aplikaci.
 
-Vyhrazené všichni uživatelé skupina obsahuje všechny uživatele v adresáři, včetně hostů a externí uživatele. Pokud potřebujete skupinu, vyloučí externí uživatele, a poté se dá dosáhnout vytvořením skupiny se na základě atributů dynamické pravidlo například následující:
+Hello vyhrazené všichni uživatelé skupina obsahuje všechny uživatele v adresáři hello, včetně hostů a externí uživatele. Pokud potřebujete skupinu, vyloučí externí uživatele, a poté se dá dosáhnout vytvořením skupiny se na základě atributů dynamické pravidlo například hello následující:
 
                 (user.userPrincipalName -notContains "#EXT#@")
 
-Pro skupinu, která nezahrnuje všechny hosté použijte například následující pravidlo:
+Pro skupinu, která nezahrnuje všechny hosté použijte pravidlo například hello následující:
 
                 (user.userType -ne "Guest")
 
-Další informace o vytváření *rozšířených* pravidel (která můžou obsahovat několik porovnání) pro dynamické členství ve skupině najdete v článku o [používání atributů k vytvoření rozšířených pravidel](active-directory-accessmanagement-groups-with-advanced-rules.md).
+toolearn o tom, toocreate *rozšířené* pravidel (která může obsahovat několik porovnání) pro dynamické členství ve skupině, najdete v části [pravidel pomocí atributů toocreate rozšířené](active-directory-accessmanagement-groups-with-advanced-rules.md).
 
 ### <a name="next-steps"></a>Další kroky
 Následující články poskytují další informace o službě Azure Active Directory.
 
-* [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)
+* [Správa přístupu tooresources pomocí skupin Azure Active Directory](active-directory-manage-groups.md)
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Představení služby Azure Active Directory](active-directory-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md)

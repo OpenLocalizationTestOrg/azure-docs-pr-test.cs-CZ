@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Cezanne HR softwarem | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 623c438edfce5f98c2d32d8bb25a97d86aa77909
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3675acd8871d62c2277def8074f7aa39ac46e2a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a>Kurz: Integrate Azure Active Directory s Cezanne HR softwaru
 
-V tomto kurzu zjistěte, jak integrovat Cezanne HR softwaru s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Cezanne HR software s Azure Active Directory (Azure AD).
 
-Integrace Cezanne HR softwaru s Azure AD poskytuje následující výhody. Můžete:
+Integrace Cezanne HR softwaru s Azure AD poskytuje následující výhody hello. Můžete:
 
-- Řízení ve službě Azure AD, který má přístup k softwaru Cezanne oddělení lidských zdrojů.
-- Povolte uživatelům automaticky přihlásit k Cezanne HR software s jednotné přihlašování (SSO) s jejich účty Azure AD.
-- Spravovat účty v jednom centrálním místě: portál Azure.
+- Řízení ve službě Azure AD, který má přístup tooCezanne HR softwaru.
+- Povolte přihlášení uživatelů tooautomatically tooCezanne HR software s jednotné přihlašování (SSO) s jejich účty Azure AD.
+- Spravovat účty v jednom centrálním místě: hello portálu Azure.
 
-Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn Další informace o softwaru, služba (SaaS) aplikace integraci s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Cezanne HR softwaru, potřebujete následující položky:
+tooconfigure integrace služby Azure AD s Cezanne HR softwaru, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Software Cezanne HR předplatné povolené jednotné přihlašování
 
 > [!NOTE]
-> Chcete-li otestovat kroky v tomto kurzu, doporučujeme nepoužívejte provozním prostředí.
+> Doporučujeme tootest hello kroky v tomto kurzu, nepoužívejte provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle následujících doporučení:
 
 - Nepoužívejte produkční prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,240 +49,240 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících dopor
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu Azure AD jednotného přihlašování k testování v testovacím prostředí. 
 
-Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-* Přidání softwaru Cezanne HR z Galerie
+* Přidání softwaru Cezanne HR z Galerie hello
 * Konfigurace a testování Azure AD SSO
 
-## <a name="add-cezanne-hr-software-from-the-gallery"></a>Přidat software Cezanne HR z Galerie
-Při konfiguraci integrace Cezanne HR softwaru do služby Azure AD přidáte do seznamu spravovaných aplikací SaaS Cezanne HR software z galerie.
+## <a name="add-cezanne-hr-software-from-hello-gallery"></a>Přidat software Cezanne HR z Galerie hello
+integrace hello tooconfigure Cezanne HR softwaru do služby Azure AD, přidejte Cezanne HR softwaru hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-Pokud chcete přidat Cezanne HR softwaru z galerie, postupujte takto:
+tooadd Cezanne HR softwaru z Galerie hello hello následující:
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém podokně, vyberte **Azure Active Directory** tlačítko. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko. 
 
-    ![Tlačítko "Azure Active Directory"][1]
+    ![tlačítko "Azure Active Directory" Hello][1]
 
 2. Vyberte **podnikové aplikace, které** > **všechny aplikace**.
 
-    ![Na odkaz "Všechny aplikace"][2]
+    ![Hello "Všechny aplikace" odkaz][2]
     
-3. Chcete-li přidat novou aplikaci, v horní části **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.
+3. tooadd novou aplikaci, hello horní části hello **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.
 
-    !["Nová aplikace" tlačítko][3]
+    ![Hello "Nové aplikace" tlačítko][3]
 
-4. Do vyhledávacího pole zadejte **Cezanne HR softwaru**.
+4. Hello vyhledávacího pole zadejte **Cezanne HR softwaru**.
 
-    ![Do vyhledávacího pole](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
+    ![Hello vyhledávacího pole](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
 
-5. V seznamu výsledků vyberte **Cezanne HR softwaru** a pak vyberte **přidat** tlačítko Přidat aplikaci.
+5. V seznamu výsledků hello vyberte **Cezanne HR softwaru** a pak vyberte hello **přidat** tlačítko tooadd hello aplikace.
 
-    ![Seznam výsledků](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
+    ![seznam výsledků Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 V této části můžete nakonfigurovat a otestovat jednotného přihlašování k AD Azure s Cezanne HR software založený na testovacího uživatele názvem "Britta Simon."
 
-Pro jednotné přihlašování pro práci Azure AD musí znát protějškem softwaru Cezanne HR uživatele Azure AD. Jinými slovy je potřeba vytvořit vztah propojení mezi uživatele Azure AD a související uživatelské v oddělení lidských zdrojů Cezanne softwaru.
+Azure AD pro jednotné přihlašování toowork musí tooknow hello Cezanne HR softwaru protějšku toohello uživatele Azure AD. Jinými slovy je potřeba vytvořit vztah propojení mezi uživatele Azure AD a související uživatelské hello v hello Cezanne HR softwaru.
 
-K navázání vztahu odkaz, přiřazení softwaru Cezanne HR **uživatelské jméno** hodnotu jako Azure AD **uživatelské jméno** hodnotu.
+tooestablish hello odkaz vztahu hello přiřazení softwaru Cezanne HR **uživatelské jméno** hodnotu jako hello Azure AD **uživatelské jméno** hodnotu.
 
-Nakonfigurovat a otestovat Azure AD SSO pomocí softwaru Cezanne oddělení lidských zdrojů, dokončete následující stavební bloky.
+tooconfigure a testování Azure AD jednotného přihlašování pomocí softwaru Cezanne HR dokončení hello následující stavební bloky.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurovat Azure AD jednotného přihlašování
 
-V této části můžete povolení jednotného přihlašování Azure AD na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Cezanne HR softwaru následujícím způsobem:
+V této části můžete povolení jednotného přihlašování Azure AD v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Cezanne HR softwaru pomocí tohoto postupu hello následující:
 
-1. Na portálu Azure na **Cezanne HR softwaru** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Cezanne HR softwaru** stránky integrace aplikací, vyberte **jednotného přihlašování**.
 
-    ![Příkaz "Jednotného přihlašování"][4]
+    ![příkaz "Jednotného přihlašování" Hello][4]
 
-2. Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogové okno, vyberte **režimu** jako **na základě SAML přihlašování**.
+2. tooenable jednotné přihlašování, v hello **jednotného přihlašování** dialogové okno, vyberte hello **režimu** jako **na základě SAML přihlašování**.
  
-    ![Do pole "Režim"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
+    ![pole "Režim" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
 
-3. V části **Cezanne HR softwaru domény a adresy URL**, postupujte takto:
+3. V části **Cezanne HR softwaru domény a adresy URL**, hello následující:
 
-    ![V části "Cezanne HR softwaru domény adresy URL a"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
+    ![část "Cezanne HR softwaru domény adresy URL a" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a. V **přihlašovací adresa URL** zadejte adresu URL, která má následující syntaxi:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
+    a. V hello **přihlašovací adresa URL** pole, zadejte adresu URL, která má hello následující syntaxi:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
 
-    b. V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi:`https://w3.cezanneondemand.com:443/<tenantid>`    
+    b. V hello **adresa URL odpovědi** pole, zadejte adresu URL, která má hello následující syntaxi:`https://w3.cezanneondemand.com:443/<tenantid>`    
      
     > [!NOTE] 
-    > Předchozí hodnoty nejsou skutečné. Adresa URL skutečné odpovědi a adresa URL přihlašování je aktualizujte. Chcete-li získat hodnoty, obraťte se [tým podpory klientský software Cezanne HR](mailto:info@cezannehr.com).
+    > Hello předchozí hodnoty nejsou skutečné. Adresa URL hello skutečné odpovědi a hello přihlašovací adresa URL je aktualizujte. tooobtain hello hodnoty, kontaktujte hello [tým podpory klientský software Cezanne HR](mailto:info@cezannehr.com).
 
-4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu v počítači.
+4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu hello ve vašem počítači.
 
-    ![V části "SAML podpisový certifikát"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
+    ![Hello část "SAML podpisový certifikát"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
 
 5. Vyberte **Uložit**.
 
-    ![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
+    ![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
     
-6. V části **Cezanne HR softwarové konfigurace**, vyberte **konfigurace softwaru HR Cezanne** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID** a **SAML-služby přihlášení** adresa URL z **Stručná referenční příručka** části.
+6. V části **Cezanne HR softwarové konfigurace**, vyberte **konfigurace softwaru HR Cezanne** tooopen hello **konfigurovat přihlášení** okno. Kopírování hello **SAML Entity ID** a **SAML-služby přihlášení** adresa URL z hello **Stručná referenční příručka** části.
 
-    ![V části "Konfigurace softwaru HR Cezanne"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Hello "Cezanne HR softwaru konfigurace"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se ke klientovi Cezanne HR softwaru jako správce.
+7. V okně prohlížeče jiných webových přihlaste tooyour Cezanne HR softwaru klienta jako správce.
 
-8. V levém podokně vyberte **nastavení systému**. Vyberte **nastavení zabezpečení** > **jednotné přihlašování konfigurace**.
+8. V levém podokně hello vyberte **nastavení systému**. Vyberte **nastavení zabezpečení** > **jednotné přihlašování konfigurace**.
 
-    ![Na odkaz "Jednoho přihlášení konfigurace"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![odkaz "Jednoho přihlášení konfigurace" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. V **umožňují uživatelům přihlásit pomocí následujících služeb jednotné přihlašování (SSO)** podokně, vyberte **SAML 2.0** zaškrtávací políčko a vyberte **Upřesnit konfiguraci** možnost.
+9. V hello **povolit uživatelům toolog pomocí hello následující služby Jednotné přihlašování (SSO)** podokně, vyberte hello **SAML 2.0** zaškrtávací políčko a vyberte hello **Upřesnit konfiguraci** možnost.
 
     ![Jednotné přihlašování možnosti služeb](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 10. Vyberte **přidat nové**.
 
-    ![Tlačítko "Přidat nové"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![tlačítko "Přidat nové" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. V části **zprostředkovatelů Identity SAML 2.0**, postupujte takto:
+11. V části **zprostředkovatelů Identity SAML 2.0**, hello následující:
 
-    ![V části "Zprostředkovatelů Identity SAML 2.0"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![část "Zprostředkovatelů Identity SAML 2.0" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
-    a. V **zobrazovaný název** pole, zadejte název zprostředkovatele identity.
+    a. V hello **zobrazovaný název** zadejte hello název zprostředkovatele identity.
 
-    b. V **identifikátor Entity** pole, vložte **SAML Entity ID** který jste zkopírovali z portálu Azure. 
+    b. V hello **identifikátor Entity** pole, vložte hello **SAML Entity ID** který jste zkopírovali ze hello portálu Azure. 
 
-    c. V **SAML vazby** pole se seznamem, vyberte **POST**.
+    c. V hello **SAML vazby** pole se seznamem, vyberte **POST**.
 
-    d. V **koncový bod služby tokenu zabezpečení** pole, vložte **SAML-služby přihlášení** adresu URL, kterou jste zkopírovali z portálu Azure. 
+    d. V hello **koncový bod služby tokenu zabezpečení** pole, vložte hello **SAML-služby přihlášení** adresu URL, kterou jste zkopírovali z hello portálu Azure. 
     
-    e. V **název atributu ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. V hello **název atributu ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
-    f. Chcete-li nahrát na server certifikát stažený z Azure AD, vyberte **nahrát** tlačítko.
+    f. tooupload hello stáhnout certifikát z Azure AD, vyberte hello **nahrát** tlačítko.
     
     g. Vyberte **OK**. 
 
 12. Vyberte **Uložit**.
 
-    ![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> Jak nastavit aplikaci si můžete přečíst stručným verzi podle předchozích pokynů v [portál Azure](https://portal.azure.com). Po přidání aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotného přihlašování** kartě. Přejděte k embedded dokumentace z **konfigurace** části. 
+> Při nastavování aplikace hello, si můžete přečíst stručným verzi hello předchozích pokynů v hello [portál Azure](https://portal.azure.com). Po přidání aplikace hello z hello **služby Active Directory** > **podnikové aplikace, které** části, vyberte hello **jednotného přihlašování** kartě. Potom přístup hello vložených dokumentace z hello **konfigurace** části. 
 
-Další informace o funkci embedded dokumentaci najdete v tématu [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+toolearn Další informace o funkci embedded dokumentace hello, najdete v části [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-V této části vytvoříte testovacího uživatele Britta Simon na portálu Azure.
+V této části vytvoříte testovacího uživatele Britta Simon v hello portálu Azure.
 
-![Britta Simon testovacího uživatele][100]
+![Hello testovacího uživatele Britta Simon][100]
 
-Vytvoření zkušebního uživatele ve službě Azure AD, postupujte takto:
+toocreate testovacího uživatele ve službě Azure AD, hello následující:
 
-1. V **portál Azure**, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+1. V hello **portál Azure**, v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko.
 
-    ![Tlačítko "Azure Active Directory"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
+    ![tlačítko "Azure Active Directory" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.
     
-    ![Na odkaz "Všichni uživatelé"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
+    ![Hello "Všichni uživatelé" odkaz](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
     
-    **Všichni uživatelé** otevře se dialogové okno.
+    Hello **všichni uživatelé** otevře se dialogové okno.
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat**.
+3. tooopen hello **uživatele** dialogové okno, vyberte **přidat**.
  
-    ![Tlačítko "Přidat"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
+    ![tlačítko "Přidat" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
 
-4. V **uživatele** dialogové okno pole, postupujte takto:
+4. V hello **uživatele** dialogové okno pole, hello následující:
  
-    ![Dialogové okno "User"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno "User" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. V hello **název** zadejte **BrittaSimon**.
 
-    b. V **uživatelské jméno** pole, zadejte uživatele Britta Simon **e-mailová adresa**.
+    b. V hello **uživatelské jméno** pole, zadejte uživatele Britta Simon **e-mailová adresa**.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a poznamenejte si hodnotu, která byla vygenerována v **heslo** pole.
+    c. Vyberte hello **zobrazit hesla** zaškrtávací políčko a potom Poznámka hello hodnotu, která byla vygenerována v hello **heslo** pole.
 
     d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-cezanne-hr-software-test-user"></a>Vytvoření zkušebního uživatele Cezanne HR softwaru
 
-Povolit uživatelům Azure AD přihlášení k Cezanne HR softwaru, musí být zřízená do Cezanne HR softwaru. V případě Cezanne HR softwaru zřizování je ruční úloha.
+Uživatelé toosign tooenable Azure AD v softwaru tooCezanne oddělení lidských zdrojů, se musí být zřízená do Cezanne HR softwaru. V případě hello Cezanne HR softwaru zřizování je ruční úloha.
 
-Poskytnutí uživatelského účtu následujícím způsobem:
+Poskytnutí uživatelského účtu pomocí tohoto postupu hello následující:
 
-1.  Přihlaste se k serveru vaší společnosti softwaru Cezanne HR jako správce.
+1.  Přihlaste se tooyour Cezanne HR softwaru společnosti lokality jako správce.
 
-2.  V levém podokně vyberte **nastavení systému** > **spravovat uživatele** > **přidat nové uživatele**.
+2.  V levém podokně hello vyberte **nastavení systému** > **spravovat uživatele** > **přidat nové uživatele**.
 
-    ![Na odkaz "Přidat nový uživatel"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "nového uživatele")
+    ![odkaz "Přidat nový uživatel" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "nového uživatele")
 
-3.  V části **osoba podrobnosti**, postupujte takto:
+3.  V části **osoba podrobnosti**, hello následující:
 
-    ![V části "Osoba podrobnosti"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "nového uživatele")
+    ![Hello části osoba detaily.](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "nového uživatele")
     
     a. Nastavit **interní uživatele** jako **OFF**.
     
-    b. V **křestní jméno** zadejte jméno uživatele, například **Britta**.  
+    b. V hello **křestní jméno** pole, typ hello křestní jméno uživatele, například **Britta**.  
  
-    c. V **příjmení** zadejte příjmení uživatele, například **Simon**.
+    c. V hello **příjmení** pole, typ hello příjmení uživatele, například **Simon**.
     
-    d. V **e-mailu** zadejte e-mailovou adresu uživatele, například Brittasimon@contoso.com.
+    d. V hello **e-mailu** hello uživatele e-mailovou adresu, zadejte například Brittasimon@contoso.com.
 
-4.  V části **informace o účtu**, postupujte takto:
+4.  V části **informace o účtu**, hello následující:
 
-    ![V části "Informace o účtu"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "nového uživatele")
+    ![Hello část "Informace o účtu"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "nového uživatele")
     
-    a. V **uživatelské jméno** zadejte e-mailovou adresu uživatele, například Brittasimon@contoso.com.
+    a. V hello **uživatelské jméno** hello uživatele e-mailovou adresu, zadejte například Brittasimon@contoso.com.
     
-    b. V **heslo** zadejte heslo uživatele.
+    b. V hello **heslo** zadejte heslo uživatele hello.
     
-    c. V **Role zabezpečení** vyberte **HR Professional**.
+    c. V hello **Role zabezpečení** vyberte **HR Professional**.
     
     d. Vyberte **OK**.
 
-5. Na **jednotného přihlašování** ve **SAML 2.0 identifikátory** vyberte **přidat nové**.
+5. Na hello **jednotného přihlašování** na kartě hello **SAML 2.0 identifikátory** vyberte **přidat nové**.
 
-    ![Tlačítko "Přidat nové"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "uživatele")
+    ![tlačítko "Přidat nové" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "uživatele")
 
-6. V **zprostředkovatele Identity** vyberte zprostředkovatele identity. V **uživatelský identifikátor** zadejte e-mailovou adresu pro testovací uživatele Britta Simon na účet.
+6. V hello **zprostředkovatele Identity** vyberte zprostředkovatele identity. V hello **uživatelský identifikátor** zadejte hello e-mailovou adresu pro testovací uživatele Britta Simon na účet.
 
-    ![Do polí "Zprostředkovatele Identity" a "Uživatelský identifikátor"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "uživatele")
+    ![Hello polí "Zprostředkovatele Identity" a "Uživatelský identifikátor"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "uživatele")
     
 7. Vyberte **Uložit**.
 
-    ![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")
+    ![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte testovacího uživatele Britta Simon používat jednotného přihlašování k Azure tak, že udělíte přístup k softwaru Cezanne oddělení lidských zdrojů.
+V této části povolíte testovacího uživatele Britta Simon toouse Azure jednotného přihlašování k udělení přístupu tooCezanne HR softwaru.
 
 ![Test přístupu uživatele][200] 
 
-1. Na portálu Azure otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře. Vyberte **podnikové aplikace, které** > **všechny aplikace**.
+1. V hello portálu Azure otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení. Vyberte **podnikové aplikace, které** > **všechny aplikace**.
 
-    ![Na odkaz "Všechny aplikace"][201] 
+    ![Hello "Všechny aplikace" odkaz][201] 
 
-2. V seznamu aplikací vyberte **Cezanne HR softwaru**.
+2. V seznamu aplikace hello vyberte **Cezanne HR softwaru**.
 
-    ![Seznam "Aplikací"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
+    ![seznam "Aplikací" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce hello na levé straně hello vyberte **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Vyberte **Přidat**. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
+4. Vyberte **Přidat**. Potom v hello **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
 
     !["Uživatelé a skupiny" odkaz][203]
 
-5. V **uživatelů a skupin** v dialogovém **uživatelé** seznamu, vyberte **Britta Simon**.
+5. V hello **uživatelů a skupin** dialogové okno, v hello **uživatelé** seznamu, vyberte **Britta Simon**.
 
-6. V **uživatelů a skupin** dialogové okno, vyberte **vyberte**.
+6. V hello **uživatelů a skupin** dialogové okno, vyberte **vyberte**.
 
-7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
+7. V hello **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
     
 ### <a name="test-sso"></a>Test jednotného přihlašování
 
-V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí přístupového panelu.
+V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí hello přístupového panelu.
 
-Když vyberete dlaždici Cezanne HR softwaru na přístupovém panelu, můžete přihlásit automaticky do vaší aplikace Cezanne HR softwaru.
+Když vyberete hello Cezanne HR softwaru dlaždice v hello přístupového panelu, přihlásit automaticky tooyour Cezanne HR softwarová aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů toointegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

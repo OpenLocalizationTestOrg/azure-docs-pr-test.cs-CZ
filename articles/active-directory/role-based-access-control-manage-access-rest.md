@@ -1,6 +1,6 @@
 ---
-title: "Řízení přístupu na základě role se zbytkem – Azure AD | Microsoft Docs"
-description: "Správa řízení přístupu na základě rolí pomocí rozhraní REST API"
+title: "Řízení přístupu na základě aaaRole se zbytkem – Azure AD | Microsoft Docs"
+description: "Správa řízení přístupu na základě rolí pomocí rozhraní REST API hello"
 services: active-directory
 documentationcenter: na
 author: andredm7
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: andredm
-ms.openlocfilehash: a5c19fd87ce1ae3e199bf1dfc8cf82f5653baac2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ccd402fd4fe4583288076cac23753dd067694681
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Správa řízení přístupu na základě rolí pomocí rozhraní REST API
+# <a name="manage-role-based-access-control-with-hello-rest-api"></a>Správa řízení přístupu na základě rolí pomocí rozhraní REST API hello
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
-Na základě rolí řízení přístupu (RBAC) na portálu Azure a rozhraní API služby Azure Resource Manager můžete spravovat přístup k vaše předplatné a prostředky na velice přesné úrovni. Pomocí této funkce můžete udělit přístup pro uživatele, skupiny nebo objekty služby Active Directory přiřazením některé role je v určitém rozsahu.
+Na základě rolí řízení přístupu (RBAC) v hello portál Azure a rozhraní API služby Azure Resource Manager pomáhá spravovat předplatné tooyour přístup a prostředky na velice přesné úrovni. Pomocí této funkce můžete udělit přístup pro uživatele, skupiny nebo objekty služby Active Directory přiřazením některé role toothem v určitém rozsahu.
 
 ## <a name="list-all-role-assignments"></a>Zobrazí seznam všech přiřazení rolí
-Zobrazí seznam všech přiřazení role v zadaném oboru a subscopes.
+Zobrazí všechna přiřazení rolí hello v hello zadaný obor a subscopes.
 
-K přiřazení rolí seznamu je nutné mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+přiřazení rolí toolist, musíte mít přístup příliš`Microsoft.Authorization/roleAssignments/read` operace v oboru hello. Všechny hello předdefinované role jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+Použití hello **získat** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, pro kterou chcete toolist hello přiřazení rolí. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{api-version}* s 2015-07-01.
-3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu přiřazení role:
+3. Nahraďte *{filtru}* s podmínkou hello chcete tooapply toofilter hello role přiřazení seznamu:
 
-   * Seznam přiřazení rolí pro pouze zadaný obor, není včetně přiřazení rolí v subscopes:`atScope()`    
+   * Seznam přiřazení rolí pro pouze hello zadaný obor, není včetně hello přiřazení rolí v subscopes:`atScope()`    
    * Seznam přiřazení rolí pro konkrétního uživatele, skupinu nebo aplikaci:`principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * Seznam přiřazení rolí pro konkrétního uživatele, včetně těch, které jsou zděděno od skupiny |`assignedTo('{objectId of user}')`
 
@@ -79,23 +79,23 @@ Stavový kód: 200
 ```
 
 ## <a name="get-information-about-a-role-assignment"></a>Získat informace o přiřazení role
-Získá informace o přiřazení jedné role určeného identifikátor přiřazení role.
+Získá informace o přiřazení role jednoho zadaného identifikátorem přiřazení role hello.
 
-Chcete-li získat informace o přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+tooget informace o přiřazení role, je nutné mít přístup příliš`Microsoft.Authorization/roleAssignments/read` operaci. Všechny hello předdefinované role jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+Použití hello **získat** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, pro kterou chcete toolist hello přiřazení rolí. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s identifikátorem GUID přiřazení role.
+2. Nahraďte *{id role přiřazení}* s identifikátorem GUID hello hello přiřazení role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
 ### <a name="response"></a>Odpověď
@@ -120,26 +120,26 @@ Stavový kód: 200
 ```
 
 ## <a name="create-a-role-assignment"></a>Umožňuje vytvořit přiřazení Role
-Vytvořte přiřazení role v zadaném oboru pro zadaný objekt zabezpečení udělení zadané roli.
+Umožňuje vytvořit roli přiřazení v hello zadaný obor pro hello zadaný hlavní poskytující hello zadané roli.
 
-Pokud chcete vytvořit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toocreate přiřazení role, je nutné mít přístup příliš`Microsoft.Authorization/roleAssignments/write` operaci. Hello předdefinovaných rolí, pouze *vlastníka* a *správce uživatelského přístupu* jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
+Použití hello **PUT** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* k oboru, ve kterém chcete vytvořit přiřazení role. Když vytvoříte přiřazení role v nadřazeném oboru, všechny podřízené obory dědí stejné přiřazení role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, ve kterém chcete toocreate přiřazení rolí hello. Když vytvoříte přiřazení role v nadřazeném oboru, že všechny podřízené obory dědí hello stejné přiřazení role. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1   
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s nový identifikátor GUID, který se stane identifikátor GUID nové přiřazení role.
+2. Nahraďte *{id role přiřazení}* s nový identifikátor GUID, který se stane identifikátor GUID hello hello nové přiřazení role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
-Tělo žádosti zadejte hodnoty v následujícím formátu:
+Hello tělo žádosti zadejte hodnoty hello v hello následující formát:
 
 ```
 {
@@ -153,8 +153,8 @@ Tělo žádosti zadejte hodnoty v následujícím formátu:
 
 | Název elementu | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
-| hodnoty vlastnosti roleDefinitionId |Ano |Řetězec |Identifikátor role. Formát identifikátoru je:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |Ano |Řetězec |objectId přiřazenou roli hlavního Azure AD (uživatele, skupinu nebo objekt služby). |
+| hodnoty vlastnosti roleDefinitionId |Ano |Řetězec |identifikátor Hello hello role. Formát Hello hello identifikátoru je:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId |Ano |Řetězec |objectId objektu hello Azure AD (uživatele, skupiny nebo instanční objekt) toowhich hello role je přiřazená. |
 
 ### <a name="response"></a>Odpověď
 Stavový kód: 201
@@ -178,23 +178,23 @@ Stavový kód: 201
 ```
 
 ## <a name="delete-a-role-assignment"></a>Umožňuje odstranit přiřazení Role
-Umožňuje odstranit přiřazení role v zadaném oboru.
+Odstranit přiřazení role v hello zadaný obor.
 
-Pokud chcete odstranit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toodelete přiřazení role musí mít přístup toohello `Microsoft.Authorization/roleAssignments/delete` operaci. Hello předdefinovaných rolí, pouze *vlastníka* a *správce uživatelského přístupu* jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **odstranit** metoda s následující identifikátor URI:
+Použití hello **odstranit** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* k oboru, ve kterém chcete vytvořit přiřazení role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, ve kterém chcete toocreate přiřazení rolí hello. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s id přiřazení role identifikátor GUID.
+2. Nahraďte *{id role přiřazení}* s id přiřazení role hello identifikátor GUID.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
 ### <a name="response"></a>Odpověď
@@ -219,27 +219,27 @@ Stavový kód: 200
 ```
 
 ## <a name="list-all-roles"></a>Zobrazí seznam všech rolí
-Obsahuje seznam všech rolí, které jsou k dispozici pro přiřazení v zadaném oboru.
+Zobrazí seznam všech rolí hello, které jsou k dispozici pro přiřazení v hello zadaný obor.
 
-Seznam rolí musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toolist role, je nutné mít přístup příliš`Microsoft.Authorization/roleDefinitions/read` operace v oboru hello. Všechny hello předdefinované role jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+Použití hello **získat** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, pro kterou chcete toolist hello role. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * /Subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 prostředků  
 2. Nahraďte *{api-version}* s 2015-07-01.
-3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu rolí:
+3. Nahraďte *{filtru}* s podmínkou hello chcete tooapply toofilter hello seznamu rolí:
 
-   * Seznam rolí, které jsou k dispozici pro přiřazení v zadaném oboru a všechny její podřízené obory:`atScopeAndBelow()`
-   * Vyhledejte roli pomocí přesný zobrazovaný název: `roleName%20eq%20'{role-display-name}'`. Pomocí formuláře kódovaná adresou URL přesný zobrazovaného názvu role. Pro instanci,`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+   * Seznam rolí, které jsou k dispozici pro přiřazení v hello zadaný obor a všechny její podřízené obory:`atScopeAndBelow()`
+   * Vyhledejte roli pomocí přesný zobrazovaný název: `roleName%20eq%20'{role-display-name}'`. Použijte hello kódovaná adresou URL formu hello přesný zobrazovaný název role hello. Pro instanci,`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 ### <a name="response"></a>Odpověď
 Stavový kód: 200
@@ -251,7 +251,7 @@ Stavový kód: 200
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -302,23 +302,23 @@ Stavový kód: 200
 ```
 
 ## <a name="get-information-about-a-role"></a>Získat informace o roli
-Získá informace o jedné role určeného identifikátor definice role. Chcete-li získat informace o jedné role pomocí názvu zobrazení, přečtěte si téma [seznam všech rolí](role-based-access-control-manage-access-rest.md#list-all-roles).
+Získá informace o jedné role určeného identifikátor definice role hello. tooget informace o jedné role pomocí názvu zobrazení, naleznete v [seznam všech rolí](role-based-access-control-manage-access-rest.md#list-all-roles).
 
-Chcete-li získat informace o roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+tooget informace o roli, musíte mít přístup příliš`Microsoft.Authorization/roleDefinitions/read` operaci. Všechny hello předdefinované role jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+Použití hello **získat** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, pro kterou chcete toolist hello přiřazení rolí. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s identifikátorem GUID definice role.
+2. Nahraďte *{id role definice}* s identifikátorem GUID hello definice role hello.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
 ### <a name="response"></a>Odpověď
@@ -331,7 +331,7 @@ Stavový kód: 200
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -384,24 +384,24 @@ Stavový kód: 200
 ## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 Vytvořte vlastní roli.
 
-Pokud chcete vytvořit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toocreate vlastní roli, musíte mít přístup příliš`Microsoft.Authorization/roleDefinitions/write` operace na všechny hello `AssignableScopes`. Hello předdefinovaných rolí, pouze *vlastníka* a *správce uživatelského přístupu* jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
+Použití hello **PUT** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s prvním *AssignableScope* vlastní role. Následující příklady ukazují, jak lze určit obor pro různé úrovně.
+1. Nahraďte *{oboru}* s hello první *AssignableScope* hello vlastní role. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně.
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s nový identifikátor GUID, který se stane identifikátor GUID novou vlastní roli.
+2. Nahraďte *{id role definice}* s nový identifikátor GUID, který se stane identifikátor GUID hello hello novou vlastní roli.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
-Tělo žádosti zadejte hodnoty v následujícím formátu:
+Hello tělo žádosti zadejte hodnoty hello v hello následující formát:
 
 ```
 {
@@ -436,13 +436,13 @@ Tělo žádosti zadejte hodnoty v následujícím formátu:
 
 | Název elementu | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
-| jméno |Ano |Řetězec |Identifikátor GUID vlastní role. |
-| properties.roleName |Ano |Řetězec |Zobrazovaný název vlastní role. Maximální velikost 128 znaků. |
-| Properties.Description |Ne |Řetězec |Popis vlastní role. Maximální velikost 1024 znaků. |
-| Properties.Type |Ano |Řetězec |Nastavte na "CustomRole." |
-| Properties.Permissions.Actions |Ano |řetězec] |Pole řetězců akce zadání operace udělit pomocí vlastní role. |
-| properties.permissions.notActions |Ne |řetězec] |Pole řetězců akce zadání operace, které chcete vyloučit z operace udělit pomocí vlastní role. |
-| properties.assignableScopes |Ano |řetězec] |Pole obory, kde můžete použít vlastní role. |
+| jméno |Ano |Řetězec |Identifikátor GUID hello vlastní role. |
+| properties.roleName |Ano |Řetězec |Zobrazovaný název hello vlastní role. Maximální velikost 128 znaků. |
+| Properties.Description |Ne |Řetězec |Popis vlastní role hello. Maximální velikost 1024 znaků. |
+| Properties.Type |Ano |Řetězec |Nastavení příliš "CustomRole." |
+| Properties.Permissions.Actions |Ano |řetězec] |Pole Akce řetězce zadání hello operations udělují hello vlastní role. |
+| properties.permissions.notActions |Ne |řetězec] |Pole řetězců akce zadání hello operations tooexclude hello operacích udělují hello vlastní role. |
+| properties.assignableScopes |Ano |řetězec] |Pole obory, ve které hello je možné vlastní role. |
 
 ### <a name="response"></a>Odpověď
 Stavový kód: 201
@@ -487,24 +487,24 @@ Stavový kód: 201
 ## <a name="update-a-custom-role"></a>Aktualizovat vlastní Role
 Upravte vlastní roli.
 
-Pokud chcete upravit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toomodify vlastní roli, musíte mít přístup příliš`Microsoft.Authorization/roleDefinitions/write` operace na všechny hello `AssignableScopes`. Hello předdefinovaných rolí, pouze *vlastníka* a *správce uživatelského přístupu* jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
+Použití hello **PUT** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s prvním *AssignableScope* vlastní role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* s hello první *AssignableScope* hello vlastní role. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s identifikátorem GUID vlastní role.
+2. Nahraďte *{id role definice}* s identifikátorem GUID hello hello vlastní role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
-Tělo žádosti zadejte hodnoty v následujícím formátu:
+Hello tělo žádosti zadejte hodnoty hello v hello následující formát:
 
 ```
 {
@@ -539,13 +539,13 @@ Tělo žádosti zadejte hodnoty v následujícím formátu:
 
 | Název elementu | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
-| jméno |Ano |Řetězec |Identifikátor GUID vlastní role. |
-| properties.roleName |Ano |Řetězec |Zobrazovaný název aktualizované vlastní role. |
-| Properties.Description |Ne |Řetězec |Popis aktualizované vlastní role. |
-| Properties.Type |Ano |Řetězec |Nastavte na "CustomRole." |
-| Properties.Permissions.Actions |Ano |řetězec] |Pole řetězců akce zadání operací, u kterých aktualizované vlastní role uděluje přístup. |
-| properties.permissions.notActions |Ne |řetězec] |Pole určující operace, které chcete vyloučit z operací, které aktualizované vlastní role uděluje řetězce akce. |
-| properties.assignableScopes |Ano |řetězec] |Pole obory, ve kterých lze použít aktualizované vlastní role. |
+| jméno |Ano |Řetězec |Identifikátor GUID hello vlastní role. |
+| properties.roleName |Ano |Řetězec |Zobrazovaný název hello aktualizovat vlastní role. |
+| Properties.Description |Ne |Řetězec |Popis hello aktualizovat vlastní role. |
+| Properties.Type |Ano |Řetězec |Nastavení příliš "CustomRole." |
+| Properties.Permissions.Actions |Ano |řetězec] |Pole řetězců akce zadání hello operations toowhich hello aktualizovat vlastní role uděluje přístup. |
+| properties.permissions.notActions |Ne |řetězec] |Pole Akce řetězce zadání tooexclude operations hello hello operacích, které hello aktualizovat vlastní role uděluje. |
+| properties.assignableScopes |Ano |řetězec] |Pole obory, ve které hello je možné aktualizované vlastní role. |
 
 ### <a name="response"></a>Odpověď
 Stavový kód: 201
@@ -590,21 +590,21 @@ Stavový kód: 201
 ## <a name="delete-a-custom-role"></a>Odstranit vlastní roli
 Odstraňte vlastní roli.
 
-Chcete-li odstranit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/delete` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
+toodelete vlastní roli, musíte mít přístup příliš`Microsoft.Authorization/roleDefinitions/delete` operace na všechny hello `AssignableScopes`. Hello předdefinovaných rolí, pouze *vlastníka* a *správce uživatelského přístupu* jsou udělena toothis operace přístupu. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Žádost
-Použití **odstranit** metoda s následující identifikátor URI:
+Použití hello **odstranit** metoda s hello následující identifikátor URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+V rámci hello identifikátor URI proveďte hello následující náhrady toocustomize vaší žádosti:
 
-1. Nahraďte *{oboru}* s oborem, na které chcete odstranit definici role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+1. Nahraďte *{oboru}* hello oboru, ve kterém chcete definice role toodelete hello. Hello následující příklady ukazují, jak toospecify hello oboru pro různé úrovně:
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
    * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s id definice role GUID vlastní role.
+2. Nahraďte *{id role definice}* s id definice role GUID hello hello vlastní role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
 ### <a name="response"></a>Odpověď

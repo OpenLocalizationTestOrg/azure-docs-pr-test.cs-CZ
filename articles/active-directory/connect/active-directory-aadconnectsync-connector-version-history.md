@@ -1,6 +1,6 @@
 ---
-title: "Konektor historie verzí | Microsoft Docs"
-description: "Toto téma uvádí všechny verze konektorů pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM)"
+title: "aaaConnector historie verzí | Microsoft Docs"
+description: "Toto téma obsahuje seznam všech verzích hello konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM)"
 services: active-directory
 documentationcenter: 
 author: fimguy
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/24/2017
 ms.author: fimguy
-ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3522f17c30e46542eaa367ecdefdfd2fc47f71a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connector-version-release-history"></a>Historie vydaných verzí konektoru
-Konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM) jsou často aktualizuje.
+Hello konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM) jsou často aktualizuje.
 
 > [!NOTE]
-> Toto téma je k dispozici pouze v produktu FIM a MIM. Tyto konektory nejsou podporovány pro instalaci na Azure AD Connect. Vydaná konektory jsou předinstalované na službu AADConnect. při upgradu na zadaná sestavení.
+> Toto téma je k dispozici pouze v produktu FIM a MIM. Tyto konektory nejsou podporovány pro instalaci na Azure AD Connect. Vydaná konektory jsou předinstalovat službu AADConnect. při upgradu toospecified sestavení.
 
-Toto téma uvádí všechny verze konektory, které byly vydány.
+Toto téma uvádí všechny verze hello konektory, které byly vydány.
 
 Související odkazy:
 
@@ -46,20 +46,20 @@ Související odkazy:
 * Obecné webové služby:
   * Byl opraven problém brání vytváří při nebyly k dispozici dva nebo víc koncových bodů protokolu SOAP projektu.
 * Obecné SQL:
-  * Operace importu GSQL nebyl konvertování času správně, když se uloží do prostoru konektoru. Výchozí formát data a času pro konektor místa GSQL byl změněn z "rrrr MM-dd: ssZ" na "rrrr MM-dd: ssZ..
+  * V operaci hello importu hello GSQL nebyl konvertování času správně, při uložení tooconnector místa. Hello výchozí formát data a času pro konektor místo hello GSQL byl změněn z 'rrrr MM-dd: ssZ' too'yyyy-MM-dd: ssZ '.
 
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
 
 ### <a name="fixed-issues"></a>Opravené problémy:
 
 * Obecné webové služby:
-  * Nástroj Wsconfig nepřevádět správně pole Json z "Ukázková žádost" pro metodu služby REST. Příčinou problémů s serializace toto pole Json pro požadavek REST.
+  * Nástroj Wsconfig Hello nepřevádět správně pole Json hello z "Ukázková žádost" pro metodu služby REST hello. Toto pole Json pro požadavek REST hello příčinou problémů s serializace.
   * Webové služby konektoru konfigurační nástroj nepodporuje názvy atributů JSON využití místa symbolů 
-    * Vzor nahrazení lze přidat ručně soubor WSConfigTool.exe.config, například```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Vzor nahrazení lze přidat ručně toohello WSConfigTool.exe.config souboru, například```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
 
 * Lotus Notes:
-  * Pokud možnost **povolit vlastní udělení licence certifikátorům pro organizace nebo organizační jednotky** je po exportu toku Domino, ale v době exportu, exportují se všechny atributy zakázán konektoru selže při exportu (Update) KeyNotFoundException dochází k synchronizaci. 
-    * K tomu dojde, protože operace přejmenování se nezdařila při pokusu změnit rozlišující název (uživatelské jméno atribut) změnou jeden z atributů níže:  
+  * Když hello možnost **povolit vlastní udělení licence certifikátorům pro organizace nebo organizační jednotky** je zakázána, pak hello konektoru selže při exportu (Update) po exportu hello toku všechny atributy jsou exportovaný tooDomino, ale v době hello Export KeyNotFoundException se vrátí tooSync. 
+    * To je způsobeno hello přejmenovat operace selže, když se ho pokusí toochange rozlišující název (uživatelské jméno atribut) tak, že změníte jeden z atributů hello níže:  
       - Příjmení
       - FirstName
       - Indexována
@@ -89,7 +89,7 @@ Související odkazy:
   * OverflowException v konektoru GSQL s DB2 na AS / 400
 
 Lotus:
-  * Přidání možnosti enable\disable hledání organizační jednotky před otevřením GlobalParameters stránky
+  * Přidání možnost tooenable\disable hledání organizační jednotky před otevřením GlobalParameters stránky
 
 ## <a name="114430"></a>1.1.443.0
 
@@ -98,18 +98,18 @@ Vydáno: 2017 března
 ### <a name="enhancements"></a>Vylepšení
 
 * Obecné SQL:</br>
-  **Scénář příznaky:** je dobře známé omezení s konektorem SQL, které jsme pouze povolit odkaz na typ jeden objekt a vyžadují křížových odkazů se členy. </br>
-  **Popis řešení:** v kroku zpracování odkazy byly "*" zvolíte možnost, všechny kombinace typů objektu se vrátí zpět synchronizační modul.
+  **Scénář příznaky:** je dobře známé omezení s hello konektor SQL, kde jsme pouze povolit typu odkaz tooone objektu a vyžadují křížových odkazů se členy. </br>
+  **Popis řešení:** v krok zpracování hello odkazů na byly "*" zvolíte možnost, všechny kombinace typů objektů bude vrácen zpět toohello synchronizační modul.
 
 >[!Important]
 - Tím se vytvoří mnoho zástupné symboly
-- Je vyžadována zajistěte, aby byl pojmenování jedinečný pro různé typy objektů.
+- Je požadováno toomake se, že názvy hello je jedinečný pro různé typy objektů.
 
 
 * Obecné LDAP:</br>
- **Scénář:** na konkrétní oddíl je vybrána pouze několik kontejnerů, pak vyhledávání stále bude provedeno v celý oddíl. Konkrétní bude filtrováno podle synchronizační služba, ale ne podle MA, což by mohlo způsobit snížení výkonu. </br>
+ **Scénář:** na konkrétní oddíl je vybrána pouze několik kontejnerů, pak hello vyhledávání stále bude provedeno v celý oddíl. Konkrétní bude filtrováno podle synchronizační služba, ale ne podle MA, což by mohlo způsobit snížení výkonu. </br>
 
- **Popis řešení:** kód změnit GLDAP konektor bylo možné přejít přes všechny kontejnery a hledání objektů v každé z nich, namísto hledání v celé oddílu.
+ **Popis řešení:** toomake kód změnit GLDAP konektor možné projít všechny kontejnery a hledání objektů v každé z nich, namísto hledání v celé oddílu hello.
 
 
 * Lotus Domino:
@@ -119,15 +119,15 @@ Vydáno: 2017 března
 
 ### <a name="fixed-issues"></a>Opravené problémy:
 * Obecné webové služby:
- * Při změně ve výchozí adresa URL služby SAP wsconfig projekty prostřednictvím webové služby konfigurační nástroj a dochází k následující chybě: Nelze najít součást cesty
+ * Při změně adresy URL služby hello ve výchozím SAP wsconfig projekty prostřednictvím webové služby konfigurační nástroj pak se stane hello následující chyba: Nelze najít část cesty hello
 
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * Obecné LDAP:
  * Konektor GLDAP nejsou vidět všechny atributy ve službě AD LDS
- * Průvodce zalomení při zjištění žádné atributy UPN ze schématu adresáře LDAP
+ * Průvodce zalomení při zjištění žádné atributy UPN ze schématu adresáře LDAP hello
  * Rozdílová importy selhání s chybami zjišťování nejsou k dispozici během úplný import, pokud není vybraná atribut "objectclass"
- * Na stránce konfigurace "Konfigurace oddílů a hierarchií", nezobrazí všechny objekty typů, které se rovná oddílu pro nové servery v obecné  
+ * Na stránce konfigurace "Konfigurace oddílů a hierarchií", nezobrazí všechny objekty, který typ je rovna toohello oddílu pro nové servery v hello obecné  
 LDAP MA. Ukázalo se pouze objekty z oddílu RootDSE.
 
 
@@ -137,13 +137,13 @@ LDAP MA. Ukázalo se pouze objekty z oddílu RootDSE.
 
 
 * Lotus Notes:
- * Konkrétní pole "Úplný název" se zobrazí správně v úložišti metaverse ale při exportu do poznámky hodnotu pro atribut má hodnotu Null nebo prázdný.
+ * Konkrétní pole, které "Úplný název" se zobrazí v úložišti metaverse hello správně ale při exportu tooNotes hello hodnotu pro atribut hello má hodnotu Null nebo prázdný.
  * Opravit duplicitní Certifier došlo k chybě
- * Když je vybraný objekt bez všechna data na konektoru Lotus Domino s jinými objekty potom jsme zobrazí zjišťování Chyba při provádění úplné importu.
- * Pokud se rozdílový Import se systémem konektoru Lotus Domino na konci tohoto spustit Microsoft.IdentityManagement.MA.LotusDomino.Service.exe služby někdy vrátí chyby aplikace.
- * Skupiny členství celkové funguje bez problémů a zůstane zachované, s výjimkou při spuštění exportu do pokuste se odebrat uživatele z členství se zobrazí jako úspěšně dokončený s aktualizací, ale není ve skutečnosti získat odstranění uživatele z členství v Lotus Notes.
- * Možnost zvolit režim exportu "Připojení položka v dolní části" se přidala v konfiguraci grafického uživatelského rozhraní systému Lotus MA pro připojení nové položky v dolní části během exportu pro více hodnot atributů.
- * Konektor přidá logice potřebné k odstranění tohoto souboru ze složky e-mailu a ID trezoru.
+ * Pokud je vybrána hello objektu bez všechna data na hello konektoru Lotus Domino s jinými objekty potom jsme chyba se zobrazí hello zjišťování při provádění úplné importu.
+ * Pokud se rozdílový Import se službou na hello konektoru Lotus Domino na konci hello této spuštění, hello Microsoft.IdentityManagement.MA.LotusDomino.Service.exe někdy vrátí chybu aplikace.
+ * Skupiny členství celkové funguje bez problémů a zůstane zachované, s výjimkou při spuštění hello export tootry tooremove uživatele z členství se zobrazí jako úspěšně dokončený s aktualizací, ale není získat z členství v Lotus Notes ve skutečnosti odebrán uživatel hello.
+ * Režim toochoose příležitost exportu jako "Připojení položka v dolní části" byl přidán v konfiguraci grafického uživatelského rozhraní Lotus MA tooappend nové položky v dolní části během exportu hello více hodnot atributů.
+ * Konektor přidá hello potřebné logiky toodelete hello soubor z hello složku pošty a ID trezoru.
  * Odstraňte členství nefunguje mezi NAB člen.
  * Hodnoty by měla být úspěšně odstraněna z vícehodnotového atributu
 
@@ -151,33 +151,33 @@ LDAP MA. Ukázalo se pouze objekty z oddílu RootDSE.
 Vydáno: března 2016
 
 **Nový konektor**  
-Počáteční verze [obecné konektor SQL](active-directory-aadconnectsync-connector-genericsql.md).
+Počáteční verze hello [obecné konektor SQL](active-directory-aadconnectsync-connector-genericsql.md).
 
 **Nové funkce:**
 
 * Generický konektor LDAP:
   * Přidaná podpora pro Rozdílový import s Isode.
 * Konektor webových služeb:
-  * Aktualizovat csEntryChangeResult aktivity a aktivity setImportErrorCode umožňující objekt úrovně chyby vrátit zpět do synchronizační modul.
-  * Aktualizovat SAP6 a SAP6User šablony využívat nové funkce úrovně Chyba objektu.
+  * Aktualizované hello csEntryChangeResult aktivity a setImportErrorCode aktivity tooallow objekt úrovně chyby toobe vrácený back toohello synchronizační modul.
+  * Aktualizované hello SAP6 a SAP6User šablony toouse hello nový objekt úrovně Chyba funkce.
 * Konektoru Lotus Domino:
-  * Pro export budete potřebovat jeden certifier na adresář. Nyní můžete stejné heslo pro všechny udělení licence certifikátorům v zájmu snazší správy.
+  * Pro export budete potřebovat jeden certifier na adresář. Můžete teď hello použijte stejné heslo pro všechny udělení licence certifikátorům toomake hello správu jednodušší.
 
 **Opravené problémy:**
 
 * Generický konektor LDAP:
   * Pro IBM Tivoli DS nebyla zjištěna správně některé atributy typu odkaz.
-  * Otevřete protokol během Rozdílový import bylo zkráceno mezery na začátku a konci řetězce.
-  * Novell a NetIQ přejmenovat, přesunout objekt mezi organizační jednotky nebo kontejnery a současně export objektu se nezdařilo.
+  * Otevřete protokol během Rozdílový import bylo zkráceno prázdné znaky na hello začátku a konci řetězce.
+  * Novell a NetIQ export, přesunout objekt mezi organizační jednotky nebo kontejnery a na hello stejný čas přejmenovat hello objektu se nezdařilo.
 * Konektor webových služeb:
-  * Pokud webová služba měli víc koncových bodů pro stejnou vazbu, pak konektor není zjistit správně těchto koncových bodů.
+  * Pokud webová služba hello měli víc koncových bodů pro stejnou vazbu, pak hello konektor není zjistit správně těchto koncových bodů.
 * Konektoru Lotus Domino:
-  * Exportu atribut fullName k e-mailu v databázi nebyla úspěšná.
-  * Exportu, což jak přidat nebo odebrat člena ze skupiny exportovat pouze přidaných členů.
-  * Pokud dokument poznámky je neplatný (isValid atributu nastavena na hodnotu false), pak konektor selže.
+  * Exportu hello fullName atribut tooa e-mailu v databázi nebyla úspěšná.
+  * Export, který jak přidat nebo odebrat člena ze skupiny jen exportovaný hello přidat členy.
+  * Pokud poznámky k dokumentu je neplatný (hello atribut isValid nastavit toofalse), pak hello konektoru selže.
 
 ## <a name="older-releases"></a>Starší verze
-Před. března 2016 byly vydané konektory jako témata týkající se podpory.
+Před. března 2016 byly vydané hello konektory jako témata týkající se podpory.
 
 **Obecné LDAP**
 
@@ -205,6 +205,6 @@ Před. března 2016 byly vydané konektory jako témata týkající se podpory.
 * [KB2875551](https://support.microsoft.com/kb/2875551) -5.3.0534, srpen 2013
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
+Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

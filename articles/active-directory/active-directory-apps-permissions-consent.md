@@ -1,7 +1,7 @@
 ---
 title: "Aplikace, oprávnění a vyjádření souhlasu v Azure Active Directory | Dokumentace Microsoftu"
-description: "Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD."
-keywords: "úvod k Azure AD, aplikace, co je Azure AD Connect, instalace active directory"
+description: "Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To vám umožní tooprovide společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD."
+keywords: "tooAzure Úvod AD, aplikace, co je Azure AD Connect, nainstalovat službu active directory"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -17,96 +17,96 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af0c2669199736fdb41e85876a7e3a7064e80770
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Aplikace, oprávnění a vyjádření souhlasu v Azure Active Directory
-V rámci Azure Active Directory můžete do svého adresáře přidávat aplikace.  Aplikace se mohou lišit v závislosti na typu aplikace.  Pokud chcete zobrazit aplikace na portálu Classic, vyberte adresář a zvolte Aplikace.
+V rámci Azure Active Directory můžete přidat adresář tooyour aplikace.  aplikace Hello se může lišit v závislosti na typu hello aplikace.  tooview aplikace hello portálu classic, vyberte adresář a vyberte aplikace.
 
 ![](media/active-directory-apps-permissions-consent/apps1.png)
 
 > [!IMPORTANT]
-> Společnost Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal namísto používání portálu Azure Classic, na který odkazuje tento článek.
+> Společnost Microsoft doporučuje, která můžete spravovat Azure AD pomocí hello [centra pro správu Azure AD](https://aad.portal.azure.com) v hello hello portál Azure místo použití portálu Azure classic, kterou se odkazuje v tomto článku.
 
 ## <a name="types-of-apps"></a>Typy aplikací
 
 1. **Aplikace s jedním tenantem** </br>
-    - **Aplikace s jedním tenantem** – Často označované jako obchodní aplikace. To je případ, kdy někdo v rámci vaší organizace vytvoří vlastní aplikaci a chce umožnit uživatelům v organizaci přihlásit se k ní.
+    - **Jednoho klienta aplikace** -často označuje tooas-obchodní (LOB) aplikace. Toto je hello případ, kdy někdo v rámci vaší organizace sama vyvinula vlastní aplikaci a mají uživatelé v hello organizace toobe možné toosign v toohello aplikaci.
     ![](media/active-directory-apps-permissions-consent/apps2.png)
-    - **Aplikace App Proxy** – Pokud zveřejňujete místní aplikaci pomocí Azure AD App Proxy, zaregistruje se ve vašem tenantovi aplikace s jedním tenantem (vedle služby App Proxy). Taková aplikace reprezentuje vaši místní aplikaci pro veškeré cloudové interakce (například ověřování). (App Proxy vyžaduje Azure AD Basic nebo vyšší.)
+    - **Proxy aplikace aplikace** – Pokud vystavit místní aplikace s Proxy aplikace Azure AD, aplikace na jednoho klienta je zaregistrován ve vašem klientovi (v toohello přidání Proxy aplikace služby). Taková aplikace reprezentuje vaši místní aplikaci pro veškeré cloudové interakce (například ověřování). (App Proxy vyžaduje Azure AD Basic nebo vyšší.)
 
 
 2. **Aplikace s více tenanty**
-    - **Aplikace s více tenanty, se kterými mohou ostatní vyjádřit souhlas** – Podobné jako aplikace s jedním tenantem, které vyvíjí vaše organizace. Hlavní rozdíl (kromě samotné logiky aplikace) je, že uživatelé z jiných tenantů mohou také vyjádřit souhlas s aplikací a přihlašovat se k ní.</br>
+    - **Víceklientské aplikace, které můžete s ostatními souhlasit** – podobné příliš "jednoho klienta aplikace, které vaše organizace sama vyvinula". Hlavní rozdíl Hello (kromě hello logiku hello aplikace) je uživatelé z jiných klientů můžete také souhlas tooand přihlášení toohello aplikace.</br>
     ![](media/active-directory-apps-permissions-consent/apps4.png)
-    - **Aplikace s více tenanty vyvíjené ostatními, se kterými může Contoso vyjádřit souhlas**. (zkráceně odsouhlasené aplikace) Jedná se o pravý opak aplikací s více tenanty, které vyvíjí vaše organizace. Když některá jiná organizace vytvoří aplikaci s více tenanty, uživatelé vaší organizace s ní budou moci vyjádřit souhlas a přihlašovat se k ní.
-    - **Vlastní aplikace Microsoftu** – Aplikace, které představují služby Microsoftu. Vyjádřením souhlasu se rozumí registrace do služby. Některé vlastní aplikace mohou obsahovat speciální uživatelské prostředí a logiku, které často slouží k vytváření zásad kolem přístupu k aplikaci.</br>
+    - **Aplikace s více tenanty vyvíjené ostatními, se kterými může Contoso vyjádřit souhlas**. (zkráceně odsouhlasené aplikace) Toto je straně překlopit hello "víceklientské aplikací, které vaše organizace sama vyvinula". Když jiné organizaci sama vyvinula víceklientské aplikace, můžete uživatele organizaci souhlas toohello aplikace a přihlaste tooit.
+    - **Vlastní aplikace Microsoftu** – Aplikace, které představují služby Microsoftu. Souhlas doprovází hello skutečnost, že registrace pro službu hello. Je někdy speciální UX a logiku pro určité aplikace první strany, která se často používá při vytváření zásady kolem toohello aplikace access.</br>
     ![](media/active-directory-apps-permissions-consent/apps3.png)
-    - **Předem integrované aplikace** – Aplikace dostupné v Azure AD App Gallery, které můžete přidat do svého adresáře pro poskytování jednotného přihlašování k oblíbeným aplikacím SaaS (v některých případech i jejich zřizování).
-    - **Jednotné přihlašování Azure AD**: Opravdové jednotné přihlašování pro aplikace, které lze integrovat s Azure AD, prostřednictvím podporovaného přihlašovacího protokolu, jako je SAML 2.0 nebo OpenID Connect. Průvodce vás provede procesem jeho nastavení.
-    - **Jednotné přihlašování pomocí hesla**: Azure AD bezpečně ukládá přihlašovací údaje uživatele k aplikaci. Rozšíření prohlížeče Azure AD App Access následně přihlašovací údaje vkládá do přihlašovacího formuláře. Označuje se také jako ukládání hesel do trezoru.
+    - **Předběžně integrované aplikace** – aplikace, které jsou k dispozici v hello Azure AD aplikace Galerie, které můžete přidat tooyour directory tooprovide jedním přihlašování (a v některých případech zřizování) toopopular SaaS aplikace.
+    - **Jednotné přihlašování Azure AD**: Opravdové jednotné přihlašování pro aplikace, které lze integrovat s Azure AD, prostřednictvím podporovaného přihlašovacího protokolu, jako je SAML 2.0 nebo OpenID Connect. Hello Průvodce vás provede procesem jeho nastavení.
+    - **Heslo jednotné přihlašování**: Azure AD bezpečně uloží hello uživatelská pověření pro aplikace hello a hello přihlašovací údaje jsou "vloženy" do hello přihlašovací formulář hello rozšíření prohlížeče přístup k aplikaci Azure AD. Označuje se také jako ukládání hesel do trezoru.
 
 ## <a name="permissions"></a>Oprávnění
 
-Při registraci aplikace uživatel, který registraci aplikace provádí (tedy vývojář), definuje, k jakým oprávněním a prostředkům potřebuje aplikace přístup. (Prostředky samotné jsou definované jako ostatní aplikace.) Například někdo, kdo vytváří aplikaci pro čtení pošty, by uvedl, že jeho aplikace požaduje oprávnění „Access mailboxes as the signed-in user“ (Přístup k poštovním schránkám jménem přihlášeného uživatele) v prostředku „Office 365 Exchange Online“:
+Při registraci aplikace hello uživatele provedení registrace aplikace hello (tedy hello vývojáře) definuje, které aplikace hello oprávnění potřebuje přístup k a prostředky, ke kterým. (hello prostředky jsou, sami definován jako ostatní aplikace). Například někdo vytváření aplikaci čtečky pomocí e-mailu, by stavu, že jejich aplikace vyžaduje oprávnění hello "Přístup k poštovním schránkám jako hello přihlášeného uživatele" hello "Office 365 Exchange Online" prostředků:
     
 ![](media/active-directory-apps-permissions-consent/apps6.png)
 
-Aby mohla jedna aplikace (klient) požadovat určitá oprávnění z jiné aplikace (prostředku), vývojář aplikace prostředku definuje existující oprávnění. V našem příkladu Microsoft, vlastník aplikace prostředku „Office 365 Exchange Online“, definoval oprávnění s názvem „Access mailboxes as the signed-in user“ (Přístup k poštovním schránkám jménem přihlášeného uživatele).
+V pořadí pro jednu aplikaci (klient hello) toorequest oprávnění z jiné aplikace (hello prostředků) definuje hello vývojáře hello prostředků aplikace hello oprávnění, která neexistuje. V našem příkladu společnosti Microsoft, vlastníka hello prostředků aplikace "Office 365 Exchange Online" hello definovali oprávnění s názvem "Přístup k poštovním schránkám jako hello přihlášeného uživatele".
 
-Při definování oprávnění musí vývojář aplikace definovat, jestli je možné s oprávněním vyjádřit souhlas, nebo jestli vyžaduje souhlas správce. Vývojáři tak mohou umožnit uživatelům samostatně vyjádřit souhlas s aplikacemi, které požadují méně citlivá oprávnění, a zároveň vyžadovat souhlas správce, pokud jde o citlivějšími oprávněními. Například aplikace prostředku Azure Active Directory je definována tak, že aby uživatelé mohli vyjadřovat souhlas s aplikacemi, vyžaduje omezená oprávnění pouze pro čtení.  Pro úplná oprávnění ke čtení a veškerá oprávnění k zápisu však vyžaduje souhlas správce.
+Při definování oprávnění, vývojáři aplikace hello musí definovat, pokud může být souhlas hello oprávnění, nebo jestli vyžaduje souhlas správce. To umožňuje vývojářům tooconsent tooallow uživatelé na svých vlastních tooapps vyžaduje pouze oprávnění nízká citlivosti, ale vyžadují admins tooconsent toomore citlivé oprávnění. Například hello "Azure Active Directory" prostředků aplikace, byla definována, takže uživatelé mohou souhlas tooapps, požaduje omezenými oprávněními jen pro čtení.  Pro úplná oprávnění ke čtení a veškerá oprávnění k zápisu však vyžaduje souhlas správce.
 
-Vzhledem k tomu, že se nativní klienti neověřují, aplikace definovaná jako nativní klientská aplikace může požadovat pouze delegovaná oprávnění. To znamená, že získání tokenu se musí vždy účastnit i skutečný uživatel. Webové aplikace a webová rozhraní API (důvěrní klienti) se musí při každém získání přístupového tokenu ověřovat pomocí Azure AD. To znamená, že mají také možnost požadovat oprávnění jen pro aplikace. Pokud se například jedna služba back-end potřebuje ověřit v jiné službě back-end. Aplikace vyžadující oprávnění jen pro aplikace vždy vyžadují souhlas správce.
+Vzhledem k tomu, že se nativní klienti neověřují, aplikace definovaná jako nativní klientská aplikace může požadovat pouze delegovaná oprávnění. To znamená, že získání tokenu se musí vždy účastnit i skutečný uživatel. Webové aplikace a webová rozhraní API (důvěrní klienti) se musí při každém získání přístupového tokenu ověřovat pomocí Azure AD. Znamená, mají možnost hello požadovat oprávnění jen pro aplikace. Například jedna služba back-end potřebuje tooauthenticate tooanother back-end službu. Aplikace vyžadující oprávnění jen pro aplikace vždy vyžadují souhlas správce.
 
 Shrňme si to:
 
 
 
-- Aplikace (klient) uvádí pro ostatní aplikace (prostředky), jaká oprávnění potřebuje.
-- Aplikace (prostředek) uvádí pro ostatní aplikace (klienty), jaká oprávnění vystavuje.
+- Aplikace (klient) stavy hello oprávnění, která potřebuje pro jiné aplikace (prostředky).
+- Aplikace (prostředků) určují, jaká oprávnění jsou zveřejněné tooother aplikace (klientů).
 - Oprávnění může být jen pro aplikace nebo delegované.
 - Delegované oprávnění může být označeno jako „umožňuje souhlas uživatele“ nebo „vyžaduje souhlas správce“.
-- Aplikace se může chovat jako klient (prohlášením, že potřebuje oprávnění k prostředku), jako prostředek (prohlášením, jaká oprávnění vystavuje), nebo jako obojí.
+- Aplikace se může chovat jako klient (deklarováním potřebuje oprávnění tooa prostředku), jako prostředek (deklarováním oprávnění, která zpřístupňuje) nebo obě.
 
 ## <a name="controls"></a>Ovládací prvky
 
-Následuje seznam ovládacích prvků správce, které jsou k dispozici pro toto chování. Ovládací prvky správce jsou přístupné v adresáři na portálu Classic pod možností Konfigurovat.
+Hello následuje seznam hello jiný správce kontrolních mechanismů pro toto chování. Dobrý den, správce, které jsou přístupné ovládací prvky portálu classic hello z konfigurace v adresáři hello.
 
 ![](media/active-directory-apps-permissions-consent/apps7.png)
 
-Na webu Azure Portal v části **Spravovat**, **Uživatelské nastavení**.
+V hello Azure portálu pod **spravovat**, **uživatelská nastavení**.
 
 ![](media/active-directory-apps-permissions-consent/apps11.png)
 
 
 
-- Můžete řídit, jestli uživatelé mohou souhlasit s aplikacemi:
+- Můžete řídit, jestli uživatelé mohou souhlas tooapps:
 
-Na portálu Classic vyberte možnost „**Users may give applications permissions to access their data**“ (Uživatelé mohou udělovat aplikacím oprávnění k přístupu ke svým datům).
+Na portálu classic hello vyberte **uživatelé mohou poskytnout tooaccess oprávnění aplikací svá data.**
 ![](media/active-directory-apps-permissions-consent/apps8.png)
 
-Na webu Azure Portal vyberte **Uživatelé můžou povolit aplikacím přístup ke svým datům**.
+V hello portálu Azure, vyberte **uživatelé můžou aplikace tooaccess svá data**.
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- Můžete řídit, jestli uživatelé mohou registrovat své vlastní obchodní aplikace s jedním tenantem: Na portálu Classic vyberte možnost „**Users may add integrated applications**“ (Uživatelé mohou přidávat integrované aplikace).
+- Můžete řídit, jestli uživatelé mohou registrovat své vlastní obchodní aplikace jednoho klienta: V hello klasického portálu vyberte **uživatelé mohou přidat integrovaných aplikací.**
 ![](media/active-directory-apps-permissions-consent/apps9.png)
 
-Na webu Azure Portal vyberte **Uživatelé můžou povolit aplikacím přístup ke svým datům**.
+V hello portálu Azure, vyberte **uživatelé můžou aplikace tooaccess svá data**.
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
->I v případě, že uživatelům umožníte registrovat obchodní aplikace pro jednoho tenanta, existují omezení ohledně toho, co mohou registrovat.  
+>I v případě, že uživatelům umožnit tooregister jednoho klienta obchodní aplikace, existují omezení, které lze registrovat toowhat.  
 >Například vývojáři, kteří nejsou správci adresáře.
 >
 >- Uživatelé nemohou udělat z aplikace pro jednoho tenanta aplikaci pro více tenantů.
->- Při registraci obchodní aplikace pro jednoho tenanta uživatelé nemohou požadovat oprávnění jen pro aplikace k jiným aplikacím.
->- Při registraci obchodní aplikace pro jednoho tenanta uživatelé nemohou požadovat delegovaná oprávnění k jiným aplikacím, pokud taková oprávnění vyžadují souhlas správce.
->- Uživatelé nemohou provádět změny aplikací, pokud nejsou jejich vlastníky.
+>- Při registraci aplikace LOB jednoho klienta, uživatelé požádat o oprávnění jen aplikace tooother aplikace.
+>- Při registraci aplikace LOB jednoho klienta, uživatelé nemůže požádat o aplikace tooother delegovaných oprávnění, pokud tato oprávnění vyžadovat souhlas správce.
+>- Mohou uživatelé provádět tooapps změny, které nejsou vlastníky.
 
 
 
@@ -114,24 +114,24 @@ Na webu Azure Portal vyberte **Uživatelé můžou povolit aplikacím přístup 
 
 
 
-- Můžete řídit, za jakých podmínek je aplikace přístupná (tj. podmíněný přístup). Mějte na paměti, že to platí pro klientské aplikace i pro aplikace prostředků. Řekněme třeba, že jste nastavili zásadu podmíněného přístupu, která říká, že aplikace Office 365 Exchange Online je přístupná pouze ze zařízení dodržujících předpisy.  Tato zásada se uplatní také ve chvíli, kdy se uživatel pokusí použít klientskou aplikaci, která požaduje oprávnění k Exchange Online.
+- Můžete řídit, za jakých podmínek je aplikace přístupná (tj. podmíněný přístup). Mějte na paměti, že platí toohello klientská aplikace i toohello prostředků aplikace. Ano stát, že nastavit zásady podmíněného přístupu s upozorněním, že tuto aplikaci "Office 365 Exchange Online" hello lze přistupovat pouze z počítačů, které splňují předpisy.  Tato zásada se nové i když se uživatel pokusí toouse klientské aplikace, který vyžaduje oprávnění tooExchange Online.
 
 
 
-- Máte přehled o odsouhlasených a používaných aplikacích.
+- Máte přehled, do kterého byla aplikace svolení tooand ty, které jsou používány.
 
-1.  Když uživatel vyjádří souhlas s aplikací, v tenantovi se vytvoří objekt ServicePrincipal. Vytvoření objektu ServicePrincipal je součástí sestavy auditu.
-2.  Sestavy aktivit přihlašování uživatele vám řeknou, ke které aplikaci se uživatel přihlašuje. 
+1.  Když uživatel souhlasí tooan aplikace, vytvoří se objekt ServicePrincipal v klientovi hello. Vytvoření ServicePrincipal je součástí sestava auditu hello.
+2.  Sestavy aktivit přihlášení uživatele zjistíte, které aplikace hello uživatele je přihlášení k. 
 
 ## <a name="example"></a>Příklad
 
-Jako příklad si vezměme aplikaci FabrikamMail for Office 365, protože jste si všimli, že se k ní připojují uživatelé ve vašem tenantovi. FabrikamMail je aplikace pro čtení pošty pro Android vytvořená společností Fabrikam, Inc. Spadá do kategorie Aplikace s více tenanty vyvíjené ostatními, se kterými může Contoso vyjádřit souhlas.
+Jako příklad Podívejme aplikaci "FabrikamMail pro Office 365" hello, která jste si všimli, že uživatelé ve vašem klientovi se přihlašujete k. FabrikamMail je aplikace pro čtení pošty pro Android vytvořená společností Fabrikam, Inc. To, které patří do hello "víceklientské aplikace jiné vývoj, které můžete souhlas Contoso".
 
-Pokud je uživatelům dovoleno vyjadřovat souhlas, při prvním přihlášení se jim zobrazí dialogové okno pro vyjádření souhlasu: ![](media/active-directory-apps-permissions-consent/apps14.png)
+Pokud mají uživatelé povoleno tooconsent, získají vyzvat hello souhlasu při prvním přihlášení:![](media/active-directory-apps-permissions-consent/apps14.png)
 
-„Access your mailboxes“ (Přístup k vašim poštovním schránkám) je řetězec souhlasu zobrazený uživateli pro oprávnění „Access mailboxes as the signed-in user“ (Přístup k poštovním schránkám jménem přihlášeného uživatele), které vystavuje Office 365 Exchange Online (tedy Exchange).
+"Přístup k vaší poštovní schránky" je hello uživatelsky orientovaný souhlasu řetězec oprávnění "Přístup k poštovním schránkám jako hello přihlášeného uživatele" hello "Office 365 Exchange Online" (Exchange) vystavené.
 
-Oprávnění můžete zobrazit vyhledáním objektu ServicePricipal pro Exchange (prostředek), který se přidal, když jste se zaregistrovali k Office 365. Objekt ServicePrincipal si můžete představit jako instanci aplikace ve vašem tenantovi, která slouží k zaznamenávání různých možností a konfigurací.  Můžete to zobrazit pomocí rutiny prostředí PowerShell `Get-AzureADServicePrincipal`.
+Uvidíte hello oprávnění vyhledáním hello ServicePrincipal objekt pro Exchange (hello prostředků), která byla přidána při registraci pro Office 365. Objekt ServicePrincipal hello "instance" hello aplikace si můžete představit ve vašem klientovi, který se používá k zaznamenání různé možnosti a konfigurace.  Můžete to vidět pomocí hello `Get-AzureADServicePrincipal` v prostředí PowerShell.
 
     PS C:\> Get-AzureADServicePrincipal -ObjectId 383f7b97-6754-4d3d-9474-3908ebcba1c6 | fl *
     
@@ -151,12 +151,12 @@ Oprávnění můžete zobrazit vyhledáním objektu ServicePricipal pro Exchange
     LogoutUrl                 : 
     Oauth2Permissions         : {...
                                 , class OAuth2Permission {
-                                  AdminConsentDescription : Allows the app to have the same access to mailboxes as the signed-in user via Exchange Web Services.
-                                  AdminConsentDisplayName : Access mailboxes as the signed-in user via Exchange Web Services
+                                  AdminConsentDescription : Allows hello app toohave hello same access toomailboxes as hello signed-in user via Exchange Web Services.
+                                  AdminConsentDisplayName : Access mailboxes as hello signed-in user via Exchange Web Services
                                   Id                      : 3b5f3d61-589b-4a3c-a359-5dd4b5ee5bd5
                                   IsEnabled               : True
                                   Type                    : User
-                                  UserConsentDescription  : Allows the app full access to your mailboxes on your behalf.
+                                  UserConsentDescription  : Allows hello app full access tooyour mailboxes on your behalf.
                                   UserConsentDisplayName  : Access your mailboxes
                                   Value                   : full_access_as_user
                                 },
@@ -169,7 +169,7 @@ Oprávnění můžete zobrazit vyhledáním objektu ServicePricipal pro Exchange
                                 00000002-0000-0ff1-ce00-000000000000/*.outlook.com...}
     Tags                      : {}
 
-Souhlas začne platit, když uživatel klikne na Přijmout. Nejprve se v tenantovi vytvoří objekt ServicePrincipal pro aplikaci FabrikamMail for Office 365. Objekt ServicePrincipal vypadá nějak takto:
+Souhlas je vyvoláno hello kliknutí na tlačítko "Přijmout". Nejprve je vytvořen objekt ServicePrincipal pro "FabrikamMail pro Office 365" v klientovi hello. Hello ServicePrincipal vypadá přibližně takto:
 
     PS C:\> Get-AzureADServicePrincipal -SearchString "FabrikamMail for Office 365" | fl *
     
@@ -195,14 +195,14 @@ Souhlas začne platit, když uživatel klikne na Přijmout. Nejprve se v tenanto
     ServicePrincipalNames     : {aba7c072-2267-4031-8960-e7a2db6e0590}
     Tags                      : {WindowsAzureActiveDirectoryIntegratedApp}
 
-Souhlas s aplikací vytvoří propojení Oauth2PermissionGrant mezi následujícími položkami:
+Souhlas tooan aplikace vytvoří odkaz Oauth2PermissionGrant mezi hello následující:
   
-- objekt uživatele
-- ServicePrincipalName (hlavní název služby – SPN) klientské aplikace
-- ServicePrincipalName (hlavní název služby – SPN) aplikace prostředku
-- oprávnění v aplikaci prostředku  
+- objekt uživatele Hello
+- klientské aplikace Hello ServicePrincipalName (SPN)
+- Hello prostředků aplikace ServicePrincipalName (SPN)
+- oprávnění v hello prostředků aplikace.  
 
-V případě FabrikamMail to vypadá přibližně takto:
+V případě hello FabrikamMail vypadá přibližně takto:
 
     PS C:\> Get-AzureADUserOAuth2PermissionGrant -ObjectId ddiggle@aadpremiumlab.onmicrosoft.com | fl *
     
@@ -215,7 +215,7 @@ V případě FabrikamMail to vypadá přibližně takto:
     Scope       : full_access_as_user
     StartTime   : 01/01/0001 12:00:00 AM
 
-(**ClientId** je ID instančního objektu aplikace FabrikamMail (který se právě vytvořil), **PrincipalId** je ID objektu uživatele (který vyjádřil souhlas), **ResourceId** je ID instančního objektu aplikace Exchange, Scope je oprávnění v aplikaci Exchange, se kterým se souhlasilo).
+(**ClientId** je ID objektu zabezpečení služby je FabrikamMail (hello, ten, který právě nebyl vytvořen), **PrincipalId** je ID objektu uživatelské hello (of hello uživatel, který dá souhlas), **ResourceId**je služba Exchange pro ID objektu zabezpečení, rozsahu je hello oprávnění v systému Exchange, které se souhlas).
 
-Pokud uživatelům není povoleno vyjadřovat souhlas, zobrazí se jim obrazovka s upozorněním, že je vyžadováno oprávnění.
+Pokud uživatelé nejsou povoleny tooconsent, zobrazí se obrazovky s upozorněním, že oprávnění je vyžadováno.
 

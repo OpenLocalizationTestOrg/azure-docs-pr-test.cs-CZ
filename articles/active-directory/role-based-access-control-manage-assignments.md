@@ -1,6 +1,6 @@
 ---
-title: "Zobrazení prostředků Azure přístup k přiřazení | Microsoft Docs"
-description: "Zobrazit a spravovat všechna přiřazení na základě rolí řízení přístupu pro všechny uživatele nebo skupinu na portálu Azure"
+title: "přiřazení přístupu prostředků Azure aaaView | Microsoft Docs"
+description: "Zobrazit a spravovat všechna přiřazení hello řízení přístupu na základě Role u uživatele nebo skupiny v hello portálu Azure"
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: andredm
-ms.openlocfilehash: 72c695d08bdf5de003d51ffb0768184e1e4d00ba
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ec96c9d4b9e2cb4925949b8bac78767bd564c8ed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure
+# <a name="view-access-assignments-for-users-and-groups-in-hello-azure-portal"></a>Zobrazení přiřazení přístupu pro uživatele a skupiny v hello portálu Azure
 > [!div class="op_single_selector"]
 > * [Správa přístupu podle uživatele nebo skupiny](role-based-access-control-manage-assignments.md)
 > * [Správa přístupu podle prostředku](role-based-access-control-configure.md)
 
-Pomocí řízení přístupu na základě rolí (RBAC) ve službě Azure Active Directory (Azure AD) můžete spravovat přístup k prostředkům Azure. 
+Pomocí řízení přístupu na základě rolí (RBAC) v hello Azure Active Directory (Azure AD), můžete spravovat přístup tooyour Azure prostředky. 
 
-Přístup přiřazeny RBAC je podrobných, protože existují dva způsoby, můžete omezit oprávnění:
+Přístup přiřazeny RBAC je podrobných, protože můžete omezit oprávnění hello dvěma způsoby:
 
-* **Obor:** přiřazení rolí pro RBAC jsou omezená na konkrétní předplatné, skupinu prostředků nebo prostředek. Uživatel poskytnut přístup k jedinému prostředku nemůže získat přístup k žádné další prostředky ve stejném předplatném.
-* **Role:** v rámci oboru přiřazení přístupu zúžit ještě i přiřazení role. Role může být vysoké úrovně, jako je vlastník, nebo konkrétní, jako je virtuální počítač čtečky.
+* **Obor:** přiřazení rolí pro RBAC jsou vymezená tooa konkrétní předplatné, skupinu prostředků nebo prostředek. Uživatel zadaný přístup tooa jediný zdroj nelze přístup k jiným prostředkům v hello stejného předplatného.
+* **Role:** v rámci oboru hello hello přiřazení, je přístup zúžit ještě i přiřazení role. Role může být vysoké úrovně, jako je vlastník, nebo konkrétní, jako je virtuální počítač čtečky.
 
-Role můžete přiřadit pouze z v rámci předplatné, skupinu prostředků nebo prostředek, který je v rozsahu přiřazení. Ale můžete zobrazit všechna přiřazení přístupu pro daného uživatele nebo skupinu na jednom místě. Můžete mít až 2000 přiřazení rolí v každém předplatném. 
+Role můžete přiřadit pouze z v rámci hello předplatné, skupinu prostředků nebo prostředek, který je hello oboru pro přiřazení hello. Ale můžete zobrazit všechna přiřazení hello přístup pro daného uživatele nebo skupinu na jednom místě. Může obsahovat maximálně too2000 přiřazení rolí v každém předplatném. 
 
-Další informace o tom, jak [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](role-based-access-control-configure.md).
+Získat další informace o příliš[používat roli přiřazení toomanage přístup tooyour předplatného Azure prostředky](role-based-access-control-configure.md).
 
 ## <a name="view-access-assignments"></a>Přiřazení přístupu zobrazení
-K vyhledání přiřazení přístupu pro jednoho uživatele nebo skupinu, spustit v Azure Active Directory v [portál Azure](http://portal.azure.com).
+toolook až hello přiřazení přístupu pro jednoho uživatele nebo skupinu, spustit v Azure Active Directory v hello [portál Azure](http://portal.azure.com).
 
-1. Vyberte **Azure Active Directory**. Pokud tato možnost není zobrazena v seznamu navigace, vyberte **více služeb** a posuňte se dolů najít **Azure Active Directory**.
+1. Vyberte **Azure Active Directory**. Pokud tato možnost není zobrazena v seznamu navigace, vyberte **více služeb** a posuňte se dolů toofind **Azure Active Directory**.
 2. Vyberte **uživatelů a skupin**a potom buď **všichni uživatelé** nebo **všechny skupiny**. V tomto příkladu zaměříme na jednotlivé uživatele.
     ![Správa uživatelů a skupin v Azure Active Directory – snímek obrazovky](./media/role-based-access-control-manage-assignments/rbac_users_groups.png)
-3. Vyhledat uživatele podle názvu nebo uživatelské jméno.
-4. V okně uživatele vyberte **Prostředky Azure**. Zobrazí všechna přiřazení přístupu pro tohoto uživatele.
+3. Hledat hello uživatelské jméno nebo uživatelské jméno.
+4. Vyberte **prostředky Azure** v okně hello uživatele. Zobrazí všechna přiřazení hello přístup pro daného uživatele.
 
-### <a name="read-permissions-to-view-assignments"></a>Oprávnění ke čtení pro zobrazení přiřazení
-Tato stránka se zobrazí pouze přiřazení přístupu, které máte oprávnění ke čtení. Například oprávnění ke čtení pro předplatné A a přejděte do okna prostředků Azure zkontrolujte přiřazení uživatele. Můžete zobrazit jeho přiřazení přístupu pro předplatné A, ale nemůžete zobrazit také, že uživatel je přiřazení přístupu na základě předplatného B.
+### <a name="read-permissions-tooview-assignments"></a>Oprávnění ke čtení tooview přiřazení
+Tato stránka zobrazuje pouze přiřazení přístupu hello, zda máte oprávnění tooread. Například máte toosubscription přístup pro čtení A a přejděte toohello prostředky Azure okno toocheck přiřazení uživatele. Můžete zobrazit jeho přiřazení přístupu pro předplatné A, ale nemůžete zobrazit také, že uživatel je přiřazení přístupu na základě předplatného B.
 
 ## <a name="delete-access-assignments"></a>Odstranit přiřazení přístupu
-V tomto okně můžete odstranit přiřazení přístupu, které byly přiřazeny přímo na uživatele nebo skupinu. Pokud přístup přiřazení byla zděděna od nadřazené skupiny, budete muset přejít do prostředků nebo předplatného a spravovat přiřazení existuje.
+V tomto okně můžete odstranit přiřazení přístupu, které byly přímo přiřazeny tooa uživatele nebo skupinu. Pokud přiřazení přístupu hello byla zděděna od nadřazené skupiny, můžete potřebovat toogo toohello prostředků nebo předplatného a spravovat hello přiřazení došlo.
 
-1. Seznam všech přiřazení přístupu pro uživatele nebo skupinu vyberte ten, který chcete odstranit.
-2. Vyberte **odebrat** a potom **Ano** k potvrzení.
+1. Hello seznamu všech hello přiřazení přístupu pro uživatele nebo skupinu vyberte hello jeden chcete toodelete.
+2. Vyberte **odebrat** a potom **Ano** tooconfirm.
     ![Odebrat přiřazení přístupu – snímek obrazovky](./media/role-based-access-control-manage-assignments/delete_assignment.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Začínáme s řízením přístupu na základě rolí k [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](role-based-access-control-configure.md)
-* Další informace najdete v článku [Vestavěné role řízení přístupu na základě role v Azure](role-based-access-built-in-roles.md).
+* Začínáme s řízením přístupu na základě rolí příliš[používat roli přiřazení toomanage přístup tooyour předplatného Azure prostředky](role-based-access-control-configure.md)
+* V tématu hello [předdefinované role RBAC](role-based-access-built-in-roles.md)
 

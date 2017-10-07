@@ -1,6 +1,6 @@
 ---
-title: "Historie verzí služby Azure AD Connect Health"
-description: "Tento dokument popisuje verze pro Azure AD Connect Health a co byl zahrnut v těchto verzích."
+title: "aaaAzure AD Connect Health historie verzí"
+description: "Tento dokument popisuje hello verze pro Azure AD Connect Health a co byl zahrnut v těchto verzích."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 6c990a184d44771c78330f54f518bb4c35a36a35
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a583263e412f5da9af75947f3431de2494042388
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
-Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Health se nové funkce a funkce. V tomto článku jsou uvedené verze a funkce, které byly vydány.
+tým služby Azure Active Directory Hello pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek obsahuje seznam verzí hello a funkce, které byly vydány.
 
 ## <a name="october-2016"></a>Října 2016
 **Aktualizace agenta:**
 
 * Agent Azure AD Connect Health pro službu AD FS \(verze 2.6.408.0\)
   1. Vylepšení detekce klientských IP adres v žádosti o ověření
-  2. Opravy chyb, které souvisí s výstrahami
+  2. Opravy chyb souvisejících s tooAlerts
 * Agent Azure AD Connect Health pro službu AD DS (verze 2.6.408.0)
-  1. Opravy chyb, které souvisí s výstrahami.
+  1. Opravy chyb souvisejících s tooAlerts.
 * Agent Azure AD Connect Health pro synchronizaci (verze 2.6.353.0) vydané službou Azure AD Connect verze 1.1.281.0
-  1. Zadejte požadovaná data pro sestavy chyb synchronizace
-  2. Opravy chyb, které souvisí s výstrahami
+  1. Zadejte data hello požadované pro hello sestavy chyb synchronizace
+  2. Opravy chyb souvisejících s tooAlerts
 
 **Nové funkce verze preview:**
 
@@ -41,7 +41,7 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
 
 **Nové funkce:**
 
-* Azure AD Connect Health pro AD FS – pole IP adresy je k dispozici v sestavě o nejčastějších 50 uživatelů s chybné uživatelské jméno a heslo.
+* Azure AD Connect Health pro AD FS – pole IP adresy je k dispozici v sestavě hello o nejčastějších 50 uživatelů s chybné uživatelské jméno a heslo.
 
 ## <a name="july-2016"></a>Července 2016
 **Nové funkce verze preview:**
@@ -74,9 +74,9 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
 **Nové funkce:**
 
 * Nesprávný uživatelské jméno hesla sestav pro službu AD FS
-* Podpora konfigurace neověřené Proxy protokolu HTTP
-* Podpora konfigurace agenta na jádru serveru
-* Vylepšení výstrah pro službu AD FS
+* Podpora tooconfigure Unauthenticated HTTP Proxy
+* Podpora tooconfigure agenta v jádru serveru
+* Vylepšení tooAlerts pro službu AD FS
 * Vylepšení v agenta Azure AD Connect Health pro službu AD FS pro připojení a data nahrát.
 
 **Opravené problémy:**
@@ -89,11 +89,11 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
 **Nové funkce:**
 
 * Výstrahy sledování serverů služby AD FS a Proxy služby AD FS s e-mailová oznámení.
-* Snadný přístup k topologie služby AD FS a vzory v čítače výkonu služby AD FS.
+* Snadný přístup tooAD FS topologie a vzory v čítače výkonu služby AD FS.
 * Trend úspěšné žádosti o tokeny na serverech služby AD FS, které jsou seskupené podle aplikací, metody ověřování, žádosti o síťové umístění atd.
 * Trendy v chybných požadavků na serverech služby AD FS, které jsou seskupené podle aplikací, chyba typy atd.
 * Jednodušší nasazení agenta pomocí přihlašovacích údajů Azure AD globálního správce.  
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [monitorování vaší místní infrastruktury identit a synchronizaci služeb v cloudu](active-directory-aadconnect-health.md).
+Další informace o [monitorování vaší místní infrastruktury identit a synchronizace služeb v cloudu hello](active-directory-aadconnect-health.md).
 

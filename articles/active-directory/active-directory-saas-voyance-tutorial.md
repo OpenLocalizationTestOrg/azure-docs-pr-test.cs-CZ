@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Voyance | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Voyance."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Voyance."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,128 +14,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e860b810904fb7972d75d55d913d5622ff9a406a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e2cb9eb6b20e8611a9f6e8529b7c85a8d86ec3e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Azure Active Directory integrace s Voyance
 
-V tomto kurzu zjistěte, jak integrovat Voyance s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Voyance s Azure Active Directory (Azure AD).
 
-Integrace Voyance s Azure AD poskytuje následující výhody:
+Integrace Voyance s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Voyance
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Voyance (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooVoyance
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooVoyance (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Voyance, potřebujete následující položky:
+Integrace služby Azure AD s Voyance tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Voyance jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Voyance z Galerie
+1. Přidání Voyance z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-voyance-from-the-gallery"></a>Přidání Voyance z Galerie
-Při konfiguraci integrace Voyance do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Voyance z galerie.
+## <a name="adding-voyance-from-hello-gallery"></a>Přidání Voyance z Galerie hello
+tooconfigure hello integrace Voyance do Azure AD, je nutné tooadd Voyance hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Voyance z galerie, proveďte následující kroky:**
+**tooadd Voyance z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. Do vyhledávacího pole zadejte **Voyance**, vyberte **Voyance** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Hello vyhledávacího pole zadejte **Voyance**, vyberte **Voyance** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
 
-    ![Voyance v seznamu výsledků](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_addfromgallery.png)
+    ![Voyance v seznamu výsledků hello](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Voyance podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Voyance je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Voyance musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Voyance je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Voyance musí toobe navázat.
 
-V Voyance, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Voyance, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Voyance, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s Voyance, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Voyance](#create-a-voyance-test-user)**  – Pokud chcete mít protějšek Britta Simon v Voyance propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Voyance](#create-a-voyance-test-user)**  -toohave protějšek Britta Simon v Voyance, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Voyance.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Voyance.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Voyance, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Voyance, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **Voyance** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Voyance** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_samlbase.png)
 
-3. Na **Voyance domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na hello **Voyance domény a adresy URL** část, proveďte následující kroky, pokud chcete aplikace hello tooconfigure hello **IDP** iniciované režimu:
 
     ![Voyance domény a adresy URL jednotné přihlašování informace o rozšíření IDP](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.nyansa.com`
+    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.nyansa.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.nyansa.com/saml/create/`
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.nyansa.com/saml/create/`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a proveďte následující krok, pokud chcete aplikace hello tooconfigure hello **SP** iniciované režimu:
 
     ![Voyance domény a adresy URL jednotné přihlašování informace pro poskytovatele služeb](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.nyansa.com/`
+    V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<companyname>.nyansa.com/`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Voyance klienta](mailto:support@nyansa.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Voyance klienta](mailto:support@nyansa.com) tooget tyto hodnoty. 
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+5. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-voyance-tutorial/tutorial_general_400.png)
     
-7. Na **Voyance konfigurace** klikněte na tlačítko **konfigurace Voyance** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na hello **Voyance konfigurace** klikněte na tlačítko **konfigurace Voyance** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurace Voyance](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_configure.png) 
 
-8. V okně prohlížeče jiných webových přihlašování ke klientovi Voyance jako správce.
+8. V okně prohlížeče jiný web, klienta Voyance tooyour přihlášení jako správce.
 
-9. Přejděte na pravém horním rohu na navigačním panelu a klikněte na rozevírací seznam, která uvádí, že "**pokusná univerzity**".
+9. Přejděte toohello pravém horním rohu hello navigačním panelu a klikněte na hello rozevíracího seznamu, která uvádí, že "**pokusná univerzity**".
     
     ![Konfigurovat jednotné přihlašování v aplikaci straně pokusná univerzity](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_001.png) 
 
@@ -147,90 +147,90 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurace jednotného přihlašování na straně aplikace uživatele přístup](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_003.png)
 
-12. Klikněte na tlačítko "**jednotné přihlašování je zakázána**" tlačítko Konfigurovat Azure AD jako deklarací identity pomocí SAML 2.0.
+12. Klikněte na tlačítko hello "**jednotné přihlašování je zakázána**" tooconfigure tlačítko Azure AD jako deklarací identity pomocí SAML 2.0.
 
     ![Konfigurovat jednotné přihlašování v aplikaci straně SSO vypnutá tlačítko](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_004.png)
 
-13. Přejděte na **SAML v2** části a proveďte následující kroky:
+13. Přejděte příliš**SAML v2** části a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování na straně aplikace SAML v2](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_005.png)
     
     a. Vyberte **povoleno**.
     
-    b. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **IdP přihlašovací adresa URL** textové pole.
+    b. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z hello portálu Azure do hello **IdP přihlašovací adresa URL** textové pole.
 
-    c. V poznámkovém bloku otevřete váš stažený certifikát kódovaný v Base64, zkopírujte obsah ho do schránky a vložte jej do **IdP Cert** textové pole.
+    c. Otevřete váš stažený certifikát kódovaný v Base64 v poznámkovém bloku hello kopírování obsahu ho do schránky a pak ji vložit toohello **IdP Cert** textové pole.
     
     d. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-voyance-tutorial/create_aaduser_01.png) 
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-voyance-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-voyance-tutorial/create_aaduser_02.png) 
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-voyance-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
-    ![Tlačítko Přidat](./media/active-directory-saas-voyance-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-voyance-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-voyance-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-voyance-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-voyance-test-user"></a>Vytvoření zkušebního uživatele Voyance
 
-Cílem této části je vytvoření uživatele v Voyance nazývá Britta Simon. Voyance podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Voyance, pokud ještě neexistuje.
+Hello cílem této části je toocreate volal Britta Simon v Voyance uživatele. Voyance podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud ještě neexistuje, vytvoří se nový uživatel během pokusu o tooaccess Voyance.
 
 >[!NOTE]
->Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Voyance](maiLto:support@nyansa.com).
+>Pokud potřebujete toocreate uživatel ručně, je nutné toocontact [tým podpory Voyance](maiLto:support@nyansa.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Voyance.
+V této části povolíte tak, že udělíte přístup tooVoyance toouse Britta Simon Azure jednotné přihlašování.
 
-![Přiřadit role uživatele][200]
+![Přiřadit role uživatele hello][200]
 
-**Pokud chcete přiřadit Britta Simon Voyance, proveďte následující kroky:**
+**tooassign Britta Simon tooVoyance, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Voyance**.
+2. V seznamu aplikace hello vyberte **Voyance**.
 
-    ![V seznamu aplikací na Voyance odkaz](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_app.png) 
+    ![v seznamu aplikace hello Hello Voyance odkaz](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![odkaz "Uživatelé a skupiny" Hello][202]
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -238,13 +238,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici Voyance na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Voyance.
+Když kliknete na dlaždici Voyance hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Voyance aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

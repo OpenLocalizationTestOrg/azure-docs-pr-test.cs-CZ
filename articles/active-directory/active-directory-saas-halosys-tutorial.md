@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Halosys | Microsoft Docs'
-description: "Další informace o použití Halosys s Azure Active Directory umožňující jednotné přihlašování, automatického zřizování a další!"
+description: "Zjistěte, jak toouse Halosys s Azure Active Directory tooenable jednotné přihlašování, automatického zřizování a další!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 18043ed1b6f7ab45c59cfd36252bef1621618e51
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Kurz: Azure Active Directory integrace s Halosys
 
-V tomto kurzu zjistěte, jak integrovat Halosys s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate Halosys s Azure Active Directory (Azure AD).
 
-Integrace Halosys s Azure AD poskytuje následující výhody:
+Integrace Halosys s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Halosys
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Halosys (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě – portál Azure classic
+- Můžete řídit ve službě Azure AD, který má přístup tooHalosys
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooHalosys (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portál Azure classic
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Halosys, potřebujete následující položky:
+Integrace služby Azure AD s Halosys tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Halosys jednotného přihlašování povolené předplatné
 
 
 > [!NOTE] 
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Provozním prostředí byste neměli používat, pokud je to nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
@@ -52,151 +52,151 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Halosys z Galerie
+1. Přidání Halosys z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 
-## <a name="adding-halosys-from-the-gallery"></a>Přidání Halosys z Galerie
-Při konfiguraci integrace Halosys do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Halosys z galerie.
+## <a name="adding-halosys-from-hello-gallery"></a>Přidání Halosys z Galerie hello
+tooconfigure hello integrace Halosys do Azure AD, je nutné tooadd Halosys hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Halosys z galerie, proveďte následující kroky:**
+**tooadd Halosys z Galerie hello, proveďte následující kroky hello:**
 
-1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**.
+1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**.
 
     ![Active Directory][1]
-2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
+2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
 
-3. Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
+3. Klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
 
     ![Aplikace][2]
 
-4. Klikněte na tlačítko **přidat** v dolní části stránky.
+4. Klikněte na tlačítko **přidat** na hello dolní části stránky hello.
 
     ![Aplikace][3]
 
-5. Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie**.
+5. Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie hello**.
 
     ![Aplikace][4]
 
-6. Do vyhledávacího pole zadejte **Halosys**.
+6. Hello vyhledávacího pole zadejte **Halosys**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_01.png)
     
-7. V podokně výsledků vyberte **Halosys**a potom klikněte na **Complete** tuto aplikaci přidat.
+7. V podokně výsledků hello, vyberte **Halosys**a potom klikněte na **Complete** tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_011.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Halosys podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Halosys je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Halosys musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Halosys je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Halosys musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Halosys.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v Halosys.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Halosys, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s Halosys, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Halosys](#creating-a-halosys-test-user)**  – Pokud chcete mít protějšek Britta Simon v Halosys propojeném s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Halosys](#creating-a-halosys-test-user)**  -toohave protějšek Britta Simon v Halosys, která je jí reprezentace toohello propojené služby Azure AD.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu classic a nakonfigurovat jednotné přihlašování v aplikaci Halosys.
+V této části můžete povolit Azure AD jednotné přihlašování v portálu classic hello a nakonfigurovat jednotné přihlašování v aplikaci Halosys.
 
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Halosys, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Halosys, proveďte následující kroky hello:**
 
-1. Na portálu classic na **Halosys** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** otevřete **nakonfigurovat jednotné přihlašování** dialogové okno.
+1. Na portálu classic hello na hello **Halosys** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** tooopen hello **nakonfigurovat jednotné přihlašování** dialogové okno.
      
     ![Konfigurovat jednotné přihlašování][6] 
 
-2. Na **jak chcete uživatelům se přihlásit Halosys** vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
+2. Na hello **jak jste by například uživatelé toosign na tooHalosys** vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_03.png) 
 
-3. Na **nakonfigurovat nastavení aplikace** dialogové okno proveďte následující kroky:
+3. Na hello **nakonfigurovat nastavení aplikace** dialogové okno proveďte hello následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_04.png) 
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá uživatelům přihlášení do aplikace Halosys pomocí následujícího vzorce: `https://<company-name>.Halosys.com/client-api/api`.
+    a. V hello **přihlašovací adresa URL** textovému poli, adresa URL typu hello používá vaše aplikace Halosys tooyour toosign na uživatele pomocí hello následující vzor: `https://<company-name>.Halosys.com/client-api/api`.
 
-    b.In **identifikátoru adresy URL** textovému poli, zadejte adresu URL v následujících vzoru: `https://<company-name>.Halosys.com`.   
+    b.In hello **identifikátoru adresy URL** textovému poli, zadejte adresu URL hello v hello následující vzor: `https://<company-name>.Halosys.com`. 
          
-4. Na **nakonfigurovat jednotné přihlašování v Halosys** klikněte na tlačítko **stáhnout metadata**a potom uložte soubor v počítači:
+4. Na hello **nakonfigurovat jednotné přihlašování v Halosys** klikněte na tlačítko **stáhnout metadata**a potom uložte soubor hello ve vašem počítači:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_05.png)
    
-5. Pokud chcete získat jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, kontaktujte tým podpory Halosys a poskytněte s následujícími službami:
+5. tooget jednotné přihlašování, které jsou nakonfigurované pro aplikace, obraťte se na tým podpory Halosys a poskytnout hello následující:
 
-    • Stažené **soubor metadat**
+    • hello Stáhnout **soubor metadat**
     
-    • **URL jednotné přihlašování SAML**
+    • hello **URL jednotné přihlašování SAML**
     
 
-6. Klasický portál, vyberte potvrzení konfigurace přihlášení a pak klikněte na **Další**.
+6. Hello portálu classic, vyberte hello potvrzení konfigurace přihlášení a pak klikněte na **Další**.
     
     ![Azure AD jednotné přihlášení][10]
 
-7. Na **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
+7. Na hello **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
  
     ![Azure AD jednotné přihlášení][11]
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-V této části vytvoříte testovacího uživatele na portálu classic názvem Britta Simon.
+V této části vytvoříte na portálu classic hello názvem Britta Simon testovacího uživatele.
 
 
 ![Vytvořit uživatele Azure AD][20]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**.
+1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_09.png) 
 
-2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
+2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
 
-3. Chcete-li zobrazit seznam uživatelů, v nabídce v horní části, klikněte na tlačítko **uživatelé**.
+3. Klikněte na tlačítko toodisplay hello seznam uživatelů, v nabídce hello hello nahoře **uživatelé**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_03.png) 
 
-4. Chcete-li otevřít **přidat uživatele** dialogovém okně, na panelu nástrojů v dolní části, klikněte na tlačítko **přidat uživatele**.
+4. tooopen hello **přidat uživatele** dialogové okno, ve hello nástrojů v dolní části hello, klikněte na tlačítko **přidat uživatele**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. Na **Povězte nám o tohoto uživatele** dialogové okno stránky, proveďte následující kroky: ![vytváření testovací uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. Na hello **Povězte nám o tohoto uživatele** dialogové okno proveďte následující kroky hello: ![vytváření testovací uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
     a. Jako typ uživatele vyberte nového uživatele ve vaší organizaci.
 
-    b. V uživatelské jméno **textbox**, typ **BrittaSimon**.
+    b. V hello uživatelské jméno **textbox**, typ **BrittaSimon**.
 
     c. Klikněte na **Další**.
 
-6.  Na **profil uživatele** dialogové okno stránky, proveďte následující kroky: ![vytváření testovací uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
+6.  Na hello **profil uživatele** dialogové okno proveďte následující kroky hello: ![vytváření testovací uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
 
-    a. V **křestní jméno** textovému poli, typ **Britta**.  
+    a. V hello **křestní jméno** textovému poli, typ **Britta**.  
 
-    b. V **příjmení** textovému poli, typ, **Simon**.
+    b. V hello **příjmení** textovému poli, typ, **Simon**.
 
-    c. V **zobrazovaný název** textovému poli, typ **Britta Simon**.
+    c. V hello **zobrazovaný název** textovému poli, typ **Britta Simon**.
 
-    d. V **Role** seznamu, vyberte **uživatele**.
+    d. V hello **Role** seznamu, vyberte **uživatele**.
 
     e. Klikněte na **Další**.
 
-7. Na **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
+7. Na hello **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_07.png) 
 
-8. Na **získat dočasné heslo** dialogové okno stránky, proveďte následující kroky:
+8. Na hello **získat dočasné heslo** dialogové okno proveďte hello následující kroky:
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-Halosys-tutorial/create_aaduser_08.png) 
 
-    a. Poznamenejte si hodnotu **nové heslo**.
+    a. Poznamenejte si hodnotu hello hello **nové heslo**.
 
     b. Klikněte na **Dokončit**.   
 
@@ -204,46 +204,46 @@ V této části vytvoříte testovacího uživatele na portálu classic názvem 
 
 ### <a name="creating-a-halosys-test-user"></a>Vytvoření zkušebního uživatele Halosys
 
-V této části vytvoříte volal Britta Simon v Halosys uživatele. Spojte se s Halosys tým podpory pro přidání uživatele v platformě Halosys.
+V této části vytvoříte volal Britta Simon v Halosys uživatele. Spojte se s Halosys podporu team tooadd hello uživatelé v platformě Halosys hello.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k Halosys Azure jednotné přihlašování.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování, poskytněte tooHalosys svůj přístup.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Halosys, proveďte následující kroky:**
+**tooassign Britta Simon tooHalosys, proveďte následující kroky hello:**
 
-1. Na portálu classic k otevření zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
+1. Na portálu classic hello, klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Halosys**.
+2. V seznamu aplikace hello vyberte **Halosys**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_50.png) 
 
-3. V nabídce v horní části, klikněte na tlačítko **uživatelé**.
+3. V nabídce hello hello nahoře, klikněte na tlačítko **uživatelé**.
 
     ![Přiřadit uživatele][203]
 
-4. V seznamu uživatelů vyberte **Britta Simon**.
+4. V seznamu uživatelé hello vyberte **Britta Simon**.
 
-5. Na panelu nástrojů v dolní části klikněte na tlačítko **přiřadit**.
+5. V panelu nástrojů hello na dolní hello, klikněte na **přiřadit**.
 
     ![Přiřadit uživatele][205]
 
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici Halosys na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Halosys.
+Po kliknutí na tlačítko hello Halosys dlaždici v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Halosys aplikace.
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

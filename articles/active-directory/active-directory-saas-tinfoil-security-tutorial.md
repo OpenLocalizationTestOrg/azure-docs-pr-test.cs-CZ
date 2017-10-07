@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s TINFOIL SECURITY | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TINFOIL SECURITY."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a TINFOIL SECURITY."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,105 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 614e4de3335574f4b56c7d641af4fcfafdb17d12
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1a3fa9880d9e026c2d6d6548188df2269ff69139
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Kurz: Azure Active Directory integrace s TINFOIL SECURITY
 
-V tomto kurzu zjistěte, jak integrovat TINFOIL SECURITY s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate TINFOIL SECURITY s Azure Active Directory (Azure AD).
 
-Integrace TINFOIL SECURITY s Azure AD poskytuje následující výhody:
+Integrace TINFOIL SECURITY s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k TINFOIL SECURITY
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k TINFOIL SECURITY (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooTINFOIL zabezpečení
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooTINFOIL zabezpečení (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s TINFOIL SECURITY, potřebujete následující položky:
+tooconfigure integrace Azure AD s TINFOIL SECURITY, budete potřebovat hello následující položky:
 
 - Předplatné služby Azure AD
 - TINFOIL SECURITY jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidat TINFOIL SECURITY z Galerie
+1. Přidat TINFOIL SECURITY z Galerie hello
 2. Konfigurace a otestování Azure AD jednotné přihlašování
 
-## <a name="add-tinfoil-security-from-the-gallery"></a>Přidat TINFOIL SECURITY z Galerie
-Při konfiguraci integrace TINFOIL SECURITY do služby Azure AD potřebujete přidat TINFOIL SECURITY z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-tinfoil-security-from-hello-gallery"></a>Přidat TINFOIL SECURITY z Galerie hello
+tooconfigure hello integrace TINFOIL SECURITY do Azure AD, je nutné tooadd TINFOIL SECURITY hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat TINFOIL SECURITY z galerie, proveďte následující kroky:**
+**tooadd TINFOIL SECURITY z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **TINFOIL SECURITY**, vyberte **TINFOIL SECURITY** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Hello vyhledávacího pole zadejte **TINFOIL SECURITY**, vyberte **TINFOIL SECURITY** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.
 
     ![TINFOIL SECURITY z Galerie](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s TINFOIL SECURITY podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v TINFOIL SECURITY je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v TINFOIL SECURITY musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v TINFOIL SECURITY je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v TINFOIL SECURITY musí toobe navázat.
 
-V TINFOIL SECURITY přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V TINFOIL SECURITY přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TINFOIL SECURITY, budete muset provést následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s TINFOIL SECURITY, budete potřebovat následující stavební bloky hello toocomplete:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  – Pokud chcete mít protějšek Britta Simon v TINFOIL SECURITY propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  -toohave protějšek Britta Simon v TINFOIL SECURITY, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci TINFOIL SECURITY.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci TINFOIL SECURITY.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s TINFOIL SECURITY, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s TINFOIL SECURITY, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **TINFOIL SECURITY** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **TINFOIL SECURITY** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Přihlášení na základě SAML](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. Na **TINFOIL zabezpečení domény a adresy URL** části uživatel nemusí provádět žádné kroky, protože aplikace je už předem integrováno s Azure.
+3. Na hello **TINFOIL zabezpečení domény a adresy URL** část, hello uživatel nemá tooperform žádné kroky jako aplikace hello je už předem integrováno s Azure.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. Na **SAML podpisový certifikát** část, zkopírujte **kryptografický OTISK** hodnotu.
+4. Na hello **SAML podpisový certifikát** část, kopie hello **kryptografický OTISK** hodnotu.
 
     ![Certifikát pro podpis SAML části](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. Pokud chcete přidat mapování požadovaný atribut, proveďte následující kroky:
+5. mapování atributů tooadd hello vyžaduje, proveďte následující kroky hello:
     
     ![Atributy](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "atributy")
     
@@ -126,9 +126,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     ![Přidat atribut](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "atributy")
     
-    b. V **název atributu** textovému poli, typ **accountid**.
+    b. V hello **název atributu** textovému poli, typ **accountid**.
     
-    c. V **hodnota atributu** textovému poli, vložte ID účtu hodnotu, která budete mít později v kurzu.
+    c. V hello **hodnota atributu** textovému poli, vložte hello účet ID hodnotu, která budete mít později v kurzu hello.
     
     d. Klikněte na tlačítko **OK**.    
 
@@ -136,13 +136,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Tlačítko Uložit](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. Na **TINFOIL SECURITY Configuration** klikněte na tlačítko **konfigurace TINFOIL SECURITY** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na hello **TINFOIL SECURITY Configuration** klikněte na tlačítko **konfigurace TINFOIL SECURITY** tooopen **konfigurovat přihlášení** okno. Kopírování hello **SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurace zabezpečení aplikace TINFOIL](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
 8. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti TINFOIL SECURITY.
 
-9. Na panelu nástrojů v horní části klikněte na tlačítko **Můj účet**.
+9. V panelu nástrojů hello hello nahoře, klikněte na **Můj účet**.
    
     ![Řídicí panel](./media/active-directory-saas-tinfoil-security-tutorial/ic798971.png "řídicí panel")
 
@@ -150,7 +150,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Zabezpečení](./media/active-directory-saas-tinfoil-security-tutorial/ic798972.png "zabezpečení")
 
-11. Na **jednotné přihlašování** konfigurace proveďte následující kroky:
+11. Na hello **jednotné přihlašování** konfigurace proveďte hello následující kroky:
    
     ![Jednotné přihlašování](./media/active-directory-saas-tinfoil-security-tutorial/ic798973.png "jednotného přihlašování")
    
@@ -158,81 +158,81 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     b. Klikněte na tlačítko **ruční konfigurace**.
    
-    c. V **SAML Post URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure
+    c. V **SAML Post URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure
    
-    d. V **otisků certifikátu SAML** textovému poli, vložte hodnotu **kryptografický otisk** který jste zkopírovali z **SAML podpisový certifikát** části.
+    d. V **otisků certifikátu SAML** textovému poli, vložte hodnotu hello **kryptografický otisk** který jste zkopírovali z **SAML podpisový certifikát** části.
   
-    e. Kopírování **vaše ID účtu** a vložte hodnotu v **hodnota atributu** textového pole pod **přidat atribut** části na portálu Azure.
+    e. Kopírování **vaše ID účtu** a vložte hodnotu hello v **hodnota atributu** textového pole pod **přidat atribut** části na portálu Azure.
    
     f. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Uživatelé a skupiny -> všichni uživatelé ](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Uživatel](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-tinfoil-security-test-user"></a>Vytvoření zkušebního uživatele TINFOIL SECURITY
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do TINFOIL SECURITY, musí být zřízená do TINFOIL SECURITY. V případě TINFOIL SECURITY zřizování je ruční úloha.
+V pořadí tooenable Azure AD Uživatelé toolog do TINFOIL SECURITY musí být zřízená do TINFOIL SECURITY. V případě hello TINFOIL SECURITY zřizování je ruční úloha.
 
-**Pokud chcete získat uživatele zřízený, proveďte následující kroky:**
+**tooget uživatele zřízený, proveďte následující kroky hello:**
 
-1. Pokud uživatel je součástí účet podnikové sítě, budete muset [kontaktujte tým podpory TINFOIL SECURITY](https://www.tinfoilsecurity.com/contact) se získat uživatelský účet vytvořený.
+1. Pokud je uživatel hello součástí účet podnikové sítě, je třeba příliš[kontaktujte tým podpory TINFOIL SECURITY hello](https://www.tinfoilsecurity.com/contact) tooget hello uživatelský účet vytvořený.
 
-2. Pokud je uživatel běžný uživatel TINFOIL SECURITY SaaS, pak uživatel může přidávat spolupracovníka pro žádného uživatele lokalit. Tím se spustí proces k odeslání pozvánky k zadané e-mailu k vytvoření nového uživatelského účtu TINFOIL SECURITY.
+2. Pokud je uživatel hello běžný uživatel TINFOIL SECURITY SaaS, můžete přidat uživatele hello spolupracovník tooany lokalit hello uživatele. Tento aktivační události procesu toosend, toohello pozvánku k zadané e-mailu toocreate nový uživatelský účet TINFOIL SECURITY.
 
 > [!NOTE]
-> Další nástroje pro tvorbu TINFOIL SECURITY uživatelského účtu nebo rozhraní API poskytovaných TINFOIL SECURITY můžete použít ke zřízení uživatelských účtů Azure AD.
+> Můžete použít všechny ostatní TINFOIL SECURITY uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované TINFOIL SECURITY tooprovision uživatelské účty Azure AD.
 > 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu TINFOIL SECURITY.
+V této části povolíte tak, že udělíte přístup tooTINFOIL zabezpečení Britta Simon toouse Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon TINFOIL SECURITY, proveďte následující kroky:**
+**tooassign Britta Simon tooTINFOIL zabezpečení, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **TINFOIL SECURITY**.
+2. V seznamu aplikace hello vyberte **TINFOIL SECURITY**.
 
     ![Vyberte TINFOIL SECURITY](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -240,7 +240,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -248,13 +248,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici TINFOIL SECURITY na přístupovém panelu, jste měli získat automaticky přihlášení k aplikace TINFOIL SECURITY. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici TINFOIL SECURITY hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour aplikace TINFOIL SECURITY. Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

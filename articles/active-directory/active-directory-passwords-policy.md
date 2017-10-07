@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4b35c5d126375735f070a7fe2331896c524b5a61
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af7cb13794bf3a9fee91d355f788aa5c2246e57c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
-Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s uživatelskými účty, které jsou uložené v klientovi služby Azure AD.
+Tento článek popisuje hello zásady pro hesla a požadavky na složitost spojené s uživatelskými účty, které jsou uložené v klientovi služby Azure AD.
 
 ## <a name="administrator-password-policy-differences"></a>Rozdíly zásady hesla správce
 
 Microsoft vynucuje silné výchozí zásady resetování hesel se **dvěma branami** pro libovolnou roli správce Azure (příklad: globální správce, správce technické podpory, správce hesel atd.).
 
-To zakáže správci pomocí bezpečnostních otázek a vynucuje následující.
+To zakáže správci pomocí bezpečnostních otázek a vynucuje následující hello.
 
-Dvě zásady, které vyžadují dva kusy data ověřování brány (e-mailová adresa **a** telefonní číslo), v následujících případech se vztahuje
+Dvě zásady, které vyžadují dva kusy data ověřování brány (e-mailová adresa **a** telefonní číslo), platí v následujících případech hello
 
 * Všechny role Správce služby Azure
   * Správce technické podpory
@@ -60,84 +60,84 @@ Dvě zásady, které vyžadují dva kusy data ověřování brány (e-mailová a
 * Azure AD Connect je synchronizaci identit z vašeho místního adresáře
 
 ### <a name="exceptions"></a>Výjimky
-Jedna brána zásadu, vyžadující jeden prvek ověření dat (e-mailová adresa **nebo** telefonní číslo), v následujících případech se vztahuje
+Jedna brána zásadu, vyžadující jeden prvek ověření dat (e-mailová adresa **nebo** telefonní číslo), platí v následujících případech hello
 
 * Prvních 30 dnů a zkušební **nebo**
 * Jednoduché domény není k dispozici (*. onmicrosoft.com) **a** Azure AD Connect není synchronizaci identit
 
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zásady, které platí pro všechny uživatelské účty
+## <a name="userprincipalname-policies-that-apply-tooall-user-accounts"></a>UserPrincipalName zásady, které se vztahují tooall uživatelské účty
 
-Každý uživatelský účet, který se musí přihlásit do služby Azure AD musí mít hodnotu atributu jedinečného uživatelského hlavní název (UPN) přidružené k účtu. Následující tabulce jsou podrobněji popsány dále zásady, které platí pro místní uživatelské účty služby Active Directory synchronizovat do cloudu a jenom pro cloud uživatelské účty.
+Každý uživatelský účet, který potřebuje toosign v tooAzure AD musí mít hodnotu atributu jedinečného uživatelského hlavní název (UPN) přidružené k účtu. Hello tabulce obrysy, které hello zásady, které se vztahují tooboth místní služby Active Directory uživatelské účty synchronizovány toohello cloudu a jen toocloud uživatelské účty.
 
 | Vlastnost | UserPrincipalName požadavky |
 | --- | --- |
 | Povolené znaky |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
-| Znaky nejsou povoleny |<ul> <li>Všechny ' @' znak, který není oddělení uživatelské jméno z domény.</li> <li>Nesmí obsahovat znak tečky '.' bezprostředně před ' @' – symbol</li></ul> |
-| Omezení délky |<ul> <li>Celková délka nesmí přesáhnout délku 113 znaků</li><li>než 64 znaků ' @' – symbol</li><li>48 znaků po ' @' – symbol</li></ul> |
+| Znaky nejsou povoleny |<ul> <li>Všechny ' @' znak, který není oddělení hello uživatelské jméno z domény hello.</li> <li>Nesmí obsahovat znak tečky '.' okamžitě předchozí hello ' @' – symbol</li></ul> |
+| Omezení délky |<ul> <li>Celková délka nesmí přesáhnout délku 113 znaků</li><li>64 znaků před hello ' @' – symbol</li><li>48 znaků po hello ' @' – symbol</li></ul> |
 
-## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>Zásady pro hesla, které se vztahují pouze na uživatelské účty v cloudu
+## <a name="password-policies-that-apply-only-toocloud-user-accounts"></a>Zásady pro hesla, které se vztahují pouze toocloud uživatelské účty
 
-Následující tabulka popisuje nastavení zásad k dispozici heslo, které mohou být použity pro uživatelské účty, které jsou vytvořeny a spravované ve službě Azure AD.
+Hello následující tabulka popisuje nastavení zásad hello k dispozici heslo, které můžou být použité toouser účty, které jsou vytvořeny a spravované ve službě Azure AD.
 
 | Vlastnost | Požadavky |
 | --- | --- |
 | Povolené znaky |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Znaky nejsou povoleny |<ul><li>Znaky kódování Unicode</li><li>Mezery</li><li> **Silná hesla jenom**: nesmí obsahovat tečku znak '.' bezprostředně předcházející ' @' symbol</li></ul> |
-| Omezení hesla |<ul><li>minimální 8 znaků a maximálně 16 znaků.</li><li>**Silná hesla jenom**: vyžaduje 3 mimo 4 z následujících akcí:<ul><li>Malá písmena</li><li>Velká písmena</li><li>Čísla (0-9)</li><li>Symboly (viz výše uvedené omezení hesla)</li></ul></li></ul> |
-| Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů </li><li>Hodnota je možné konfigurovat pomocí rutiny Set-MsolPasswordPolicy z Azure Active Directory modul pro prostředí Windows PowerShell.</li></ul> |
-| Oznámení o vypršení hesla |<ul><li>Výchozí hodnota: **14** (před vypršením platnosti hesla)</li><li>Hodnota je možné konfigurovat pomocí rutiny Set-MsolPasswordPolicy.</li></ul> |
-| Vypršení platnosti hesla |<ul><li>Výchozí hodnota: **false** dní (to znamená, že vypršení platnosti hesla je povolené) </li><li>Hodnota jde konfigurovat pomocí rutiny Set-MsolUser jednotlivých uživatelských účtů. </li></ul> |
+| Znaky nejsou povoleny |<ul><li>Znaky kódování Unicode</li><li>Mezery</li><li> **Silná hesla jenom**: nesmí obsahovat tečku znak '.' okamžitě předchozí hello ' @' symbol</li></ul> |
+| Omezení hesla |<ul><li>minimální 8 znaků a maximálně 16 znaků.</li><li>**Silná hesla jenom**: vyžaduje 3 mimo 4 hello následující:<ul><li>Malá písmena</li><li>Velká písmena</li><li>Čísla (0-9)</li><li>Symboly (viz výše uvedené omezení hesla)</li></ul></li></ul> |
+| Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů </li><li>Hodnota je možné konfigurovat pomocí rutiny Set-MsolPasswordPolicy hello z hello Azure Active Directory modul pro prostředí Windows PowerShell.</li></ul> |
+| Oznámení o vypršení hesla |<ul><li>Výchozí hodnota: **14** (před vypršením platnosti hesla)</li><li>Hodnota je možné konfigurovat pomocí rutiny Set-MsolPasswordPolicy hello.</li></ul> |
+| Vypršení platnosti hesla |<ul><li>Výchozí hodnota: **false** dní (to znamená, že vypršení platnosti hesla je povolené) </li><li>Hodnota jde konfigurovat pro jednotlivé uživatelské účty pomocí rutiny Set-MsolUser hello. </li></ul> |
 | Heslo **změnit** historie |Poslední heslo **nelze** znovu použít při **změna** heslo. |
 | Heslo **resetovat** historie | Poslední heslo **může** znovu použít při **resetování** zapomenuté heslo. |
-| Uzamčení účtu |Po 10 neúspěšných pokusech o přihlášení (chybné heslo) bude uživatel uzamčen po dobu jedné minuty. Další nesprávný pokusy o přihlášení uzamčení uživatele pro zvýšení doby trvání. |
+| Uzamčení účtu |Po 10 neúspěšných pokusech o přihlášení (chybné heslo) bude uživatel hello uzamčena na jednu minutu. Další nesprávný pokusy o přihlášení uzamčení hello uživatele pro zvýšení doby trvání. |
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>Nastavení zásad vypršení platnosti hesla ve službě Azure Active Directory
 
-Globální správce pro cloudové služby Microsoftu vám pomůže nastavit uživatelská hesla nechcete vyprší Microsoft Azure Active Directory modul pro prostředí Windows PowerShell. Rutiny prostředí Windows PowerShell můžete použít také k odebrání nikdy-vyprší platnost konfigurace, nebo pokud chcete zjistit, které uživatel hesla jsou nastavte nikoli k vypršení platnosti. Tyto pokyny platí pro jiných poskytovatelů, jako například Microsoft Intune a Office 365, které také závisí na Microsoft Azure Active Directory pro identitu a adresářové služby.
+Globální správce pro cloudové služby Microsoftu můžete použít Microsoft Azure Active Directory modul pro prostředí Windows PowerShell tooset hello až uživatelská hesla není tooexpire. Můžete také použít rutiny tooremove hello nikdy-vyprší platnost konfigurace nebo toosee které uživatelská hesla jsou nastavit není tooexpire prostředí Windows PowerShell. Tyto pokyny platí tooother poskytovatelů, jako například Microsoft Intune a Office 365, které také závisí na Microsoft Azure Active Directory pro identitu a adresářové služby.
 
 > [!NOTE]
-> Jenom hesla pro uživatelské účty, které nejsou synchronizovány pomocí synchronizace adresáře může být nakonfigurován pro nevyprší platnost. Další informace o synchronizaci adresářů v tématu[AD s Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Jenom hesla pro uživatelské účty, které nejsou synchronizovány pomocí synchronizace adresářů lze nakonfigurovat toonot vyprší. Další informace o synchronizaci adresářů v tématu[AD s Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
 >
 
 ## <a name="set-or-check-password-policies-using-powershell"></a>Nastavte nebo zkontrolujte zásady pro hesla pomocí prostředí PowerShell
 
-Chcete-li začít pracovat, je potřeba [stáhněte a nainstalujte modul Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Až budete mít nainstalováno, můžete postupujte podle pokynů níže nakonfigurujte každé pole.
+tooget spuštění, budete potřebovat příliš[stáhněte a nainstalujte modul Azure AD PowerShell hello](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Až budete mít nainstalováno, můžete provést následující tooconfigure postup hello každé pole.
 
-### <a name="how-to-check-expiration-policy-for-a-password"></a>Postup kontroly zásad vypršení platnosti hesla
-1. Připojení k prostředí Windows PowerShell pomocí svých přihlašovacích údajů správce společnosti.
-2. Spusťte jeden z následujících příkazů:
+### <a name="how-toocheck-expiration-policy-for-a-password"></a>Jak toocheck zásad vypršení platnosti hesla
+1. Připojte tooWindows prostředí PowerShell pomocí svých přihlašovacích údajů správce společnosti.
+2. Spusťte jeden z hello následující příkazy:
 
-   * Pokud chcete zobrazit, zda je nastaven jednoho uživatelského hesla bez vypršení platnosti, spusťte následující rutinu pomocí hlavního názvu uživatele (UPN) (například aprilr@contoso.onmicrosoft.com) nebo ID uživatele uživatele, které chcete zkontrolovat:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
-   * Pokud chcete zobrazit nastavení "Heslo je platné stále" pro všechny uživatele, spusťte následující rutinu:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+   * toosee jenom jednoho konkrétního uživatele heslo se nastavuje, zda toonever vyprší, spusťte následující rutinu pomocí hello hlavní název uživatele (UPN) hello (například aprilr@contoso.onmicrosoft.com) nebo hello ID uživatele hello uživatele chcete toocheck:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * toosee hello "Heslo je platné stále" nastavení pro všechny uživatele, spusťte následující rutinu hello:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
-### <a name="set-a-password-to-expire"></a>Nastavení hesla vyprší
+### <a name="set-a-password-tooexpire"></a>Nastavit heslo tooexpire
 
-1. Připojení k prostředí Windows PowerShell pomocí svých přihlašovacích údajů správce společnosti.
-2. Spusťte jeden z následujících příkazů:
+1. Připojte tooWindows prostředí PowerShell pomocí svých přihlašovacích údajů správce společnosti.
+2. Spusťte jeden z hello následující příkazy:
 
-   * Nastavte heslo jednoho uživatele, aby vyprší platnost hesla, spusťte následující rutinu pomocí hlavního názvu uživatele (UPN) nebo ID uživatele, uživatel:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
-   * Nastavte hesla všichni uživatelé v organizaci, aby vypršení jejich platnosti, použijte následující rutinu:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+   * heslo hello tooset jednoho uživatele tak, aby hello hesla vyprší, spusťte následující rutinu pomocí hello hlavní název uživatele (UPN) hello nebo hello ID uživatele hello:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
+   * tooset hello hesel všech uživatelů v organizaci hello tak, aby vypršení jejich platnosti, použijte následující rutinu hello:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
-### <a name="set-a-password-to-never-expire"></a>Nastavení hesla bez vypršení platnosti
+### <a name="set-a-password-toonever-expire"></a>Sada toonever heslo vyprší
 
-1. Připojení k prostředí Windows PowerShell pomocí svých přihlašovacích údajů správce společnosti.
-2. Spusťte jeden z následujících příkazů:
+1. Připojte tooWindows prostředí PowerShell pomocí svých přihlašovacích údajů správce společnosti.
+2. Spusťte jeden z hello následující příkazy:
 
-   * Pokud chcete nastavit heslo jeden uživatel nikdy nevyprší, spusťte následující rutinu pomocí hlavního názvu uživatele (UPN) nebo ID uživatele, uživatel:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
-   * Pokud chcete nastavit hesel všech uživatelů v organizaci bez vypršení platnosti, spusťte následující rutinu:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+   * heslo hello tooset jeden uživatel toonever vypršení platnosti, spusťte následující rutinu pomocí hello hlavní název uživatele (UPN) hello nebo hello ID uživatele hello:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
+   * tooset hello hesel všech uživatelů hello v toonever organizaci vypršení platnosti, spusťte následující rutinu hello:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
 ## <a name="next-steps"></a>Další kroky
 
-Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
+Hello následující odkazy obsahují další informace o resetování hesla pomocí služby Azure AD
 
 * [**Rychlý Start**](active-directory-passwords-getting-started.md) – Zprovozněte samoobslužné resetování hesla Azure AD. 
 * [**Správa licencí**](active-directory-passwords-licensing.md) – Konfigurujte licencování Azure AD.
-* [**Data**](active-directory-passwords-data.md) – Pochopte požadovaná data a jejich použití pro správu hesel.
-* [**Uvedení**](active-directory-passwords-best-practices.md) – Naplánujte a nasaďte pro své uživatele samoobslužné resetování hesla pomocí zde uvedených pokynů.
-* [**Přizpůsobení**](active-directory-passwords-customize.md) – Přizpůsobte vzhled a chování samoobslužného resetování hesla pro vaši společnost.
+* [**Data** ](active-directory-passwords-data.md) – pochopit hello data, která je požadována a jak se používají pro správu hesel
+* [**Zavedení** ](active-directory-passwords-best-practices.md) -plánování a nasazení SSPR tooyour uživatelů podle pokynů hello je zde uveden
+* [**Přizpůsobení** ](active-directory-passwords-customize.md) -přizpůsobit hello vzhledu a chování hello SSPR prostředí pro vaši společnost.
 * [**Vytváření sestav**](active-directory-passwords-reporting.md) – Zjistěte, jestli, kdy a kde vaši uživatelé používají funkci samoobslužného resetování hesla.
-* [**Podrobné technické informace**](active-directory-passwords-how-it-works.md) – Nahlédněte za oponu a pochopte, jak to funguje.
-* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? – Odpovědi na otázky, na které jste se vždy chtěli zeptat.
-* [**Řešení potíží**](active-directory-passwords-troubleshoot.md) – Zjistěte, jak řešit běžné problémy, ke kterým dochází u samoobslužného resetování hesla.
+* [**Podrobné technické informace** ](active-directory-passwords-how-it-works.md) -přejděte za hello závěsem toounderstand, jak to funguje
+* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? -Odpovědi tooquestions vždy chtěli tooask
+* [**Řešení potíží s** ](active-directory-passwords-troubleshoot.md) – zjistěte, jak tooresolve běžné problémy, že vidíte s SSPR

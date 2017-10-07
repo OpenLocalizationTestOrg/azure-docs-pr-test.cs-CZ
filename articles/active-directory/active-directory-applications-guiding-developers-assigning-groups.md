@@ -1,6 +1,6 @@
 ---
-title: "Přiřadit skupiny aplikace Azure AD | Microsoft Docs"
-description: "Popisuje, jak implementovat přiřazení skupiny pro aplikace Azure."
+title: "aaaAssign skupin aplikací tooAzure AD | Microsoft Docs"
+description: "Jak tooimplement skupiny přiřazení pro aplikace Azure."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -16,26 +16,26 @@ ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 robots: noindex
-ms.openlocfilehash: e0b0b87a454db96747f024e81882fe83d62fdbe2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 086619df09c13bf259afc3128d45ed804b99e519
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-azure-active-directory-groups-to-an-application"></a>Přiřazení skupiny Azure Active Directory k aplikaci
-Než uživatelé a skupiny můžete přiřadit k aplikaci, musí vyžadovat přiřazení uživatelů. Další postupy vyžadují přiřazení uživatelů najdete v tématu [nutnosti přiřazení uživatelských](active-directory-applications-guiding-developers-requiring-user-assignment.md) článku.
+# <a name="assign-azure-active-directory-groups-tooan-application"></a>Přiřazení skupiny Azure Active Directory tooan aplikace
+Předtím, než můžete přiřadit uživatele a skupiny tooan aplikace, musí vyžadovat přiřazení uživatelů. toolearn jak přiřazení uživatelských toorequire, najdete v části hello [nutnosti přiřazení uživatelských](active-directory-applications-guiding-developers-requiring-user-assignment.md) článku.
 
-Tento článek předpokládá, že jste již vytvořili skupiny ve službě active directory, který používáte pro tuto aplikaci.
+Tento článek předpokládá, že jste již vytvořili skupiny ve službě active directory hello, který používáte pro tuto aplikaci.
 
-## <a name="assigning-groups-to-an-application"></a>Přiřazení skupiny k aplikaci
-1. Přihlaste se k portálu Azure pomocí účtu správce.
-2. Klikněte na **všechny položky** položku v hlavní nabídce.
-3. Vyberte adresář, který používáte pro aplikaci.
-4. Klikněte na **aplikace** kartě.
-5. Vyberte aplikaci ze seznamu aplikací přidružených k tomuto adresáři.
-6. Klikněte **uživatele a skupiny** kartě.
-7. Filtrování seznamu skupin ve službě active directory pomocí **skupiny** rozevíracího seznamu.
-8. Vyberte skupinu.
+## <a name="assigning-groups-tooan-application"></a>Přiřazení skupiny tooan aplikace
+1. Přihlaste se toohello portálu Azure pomocí účtu správce.
+2. Klikněte na hello **všechny položky** položku v hlavní nabídce hello.
+3. Vyberte hello adresář, který používáte pro aplikaci hello.
+4. Klikněte na hello **aplikace** kartě.
+5. Vyberte aplikaci hello hello seznamu aplikací přidružených k tomuto adresáři.
+6. Klikněte na tlačítko hello **uživatele a skupiny** kartě.
+7. Filtr hello seznam skupin ve vašem active directory pomocí hello **skupiny** rozevíracího seznamu.
+8. Vyberte skupinu hello.
 9. Klikněte na tlačítko **přiřadit**.
 10. Klikněte na tlačítko **Ano** po zobrazení výzvy.
 

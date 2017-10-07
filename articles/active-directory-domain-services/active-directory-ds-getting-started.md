@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Začínáme | Microsoft Docs"
-description: "Povolit Azure Active Directory Domain Services pomocí portálu Azure (Preview)"
+description: "Povolit Azure Active Directory Domain Services pomocí hello portálu Azure (Preview)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: maheshu
-ms.openlocfilehash: 47507096a6245d4f1ba57a652ddf5167b3776ae9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 79cbb21c4a50194f5ad8ca1a4a8493ee4a260a9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure (Preview)
-Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí portálu Azure.
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-portal-preview"></a>Povolit Azure Active Directory Domain Services pomocí hello portálu Azure (Preview)
+Tento článek ukazuje, jak hello tooenable Azure Active Directory Domain Services (Azure AD DS) pomocí portálu Azure.
 
 
-Ke spuštění **povolit Azure AD Domain Services** průvodce proveďte následující kroky:
+toolaunch hello **povolit Azure AD Domain Services** průvodce, dokončení hello následující kroky:
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
-2. V levém podokně klikněte na **nový**.
-3. V **nový** okno, zadejte **Domain Services** do panelu vyhledávání.
+1. Přejděte toohello [portál Azure](https://portal.azure.com).
+2. V levém podokně hello, klikněte na **nový**.
+3. V hello **nový** okno, zadejte **Domain Services** do panelu Hledat hello.
 
     ![Vyhledání služeb domény](./media/getting-started/search-domain-services.png)
 
-4. Kliknutím vyberte **Azure AD Domain Services** ze seznamu návrhy vyhledávání. Na **Azure AD Domain Services** okně klikněte **vytvořit** tlačítko.
+4. Klikněte na tlačítko tooselect **Azure AD Domain Services** ze seznamu hello návrhy vyhledávání. Na hello **Azure AD Domain Services** okně klikněte na tlačítko hello **vytvořit** tlačítko.
 
     ![Okno služby domény](./media/getting-started/domain-services-blade.png)
 
-5. **Povolit Azure AD Domain Services** se spustí průvodce.
+5. Hello **povolit Azure AD Domain Services** se spustí průvodce.
 
 
 ## <a name="task-1-configure-basic-settings"></a>Úloha 1: nakonfigurovali základní nastavení
-V **Základy** stránku průvodce, můžete zadat název domény DNS pro spravovanou doménu. Můžete také zvolit skupinu prostředků a umístění Azure, ke které by měly být nasazeny spravované doméně.
+V hello **Základy** stránku hello průvodce, můžete zadat název domény DNS hello hello spravované domény. Můžete také vybrat skupinu prostředků hello a umístění Azure toowhich hello spravované domény by měl být nasazena.
 
 ![Základní informace o konfiguraci](./media/getting-started/domain-services-blade-basics.png)
 
-1. Vyberte **název domény DNS** vaší spravované domény.
+1. Zvolte hello **název domény DNS** vaší spravované domény.
 
-   * Výchozí název domény adresáře (s **. onmicrosoft.com** příponu) je zadána ve výchozím nastavení.
+   * Hello výchozí název domény hello adresáře (s **. onmicrosoft.com** příponu) je zadána ve výchozím nastavení.
 
-   * Můžete také zadat v názvu vlastní domény. V tomto příkladu je použit vlastní název domény *contoso100.com*.
+   * Můžete také zadat v názvu vlastní domény. V tomto příkladu je název vlastní domény hello *contoso100.com*.
 
      > [!WARNING]
-     > Předpona zadaného názvu domény (například *contoso100* v případě názvu domény *contoso100.com*) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravované doméně s předponou delší než 15 znaků.
+     > Předpona Hello vaší zadaného názvu domény (například *contoso100* v hello *contoso100.com* název domény) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravované doméně s předponou delší než 15 znaků.
      >
      >
 
-2. Ujistěte se, že vámi zvolený název domény DNS pro spravovanou doménu ještě ve virtuální síti neexistuje. Konkrétně, zkontrolujte, zda:
+2. Zkontrolujte název domény DNS hello, které jste vybrali pro hello spravované domény ve virtuální síti hello již neexistuje. Konkrétně, zkontrolujte, zda:
 
-   * Ve virtuální síti již existuje doména se stejným názvem domény DNS.
+   * Už máte doménu hello stejným názvem domény DNS ve virtuální síti hello.
 
-   * Virtuální síť, kde budete chtít povolit spravované domény nemá připojení k síti VPN s vaší místní síti. V tomto scénáři Ujistěte se, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
+   * Hello virtuální síť, kde plánujete tooenable hello spravované domény nemá připojení k síti VPN s vaší místní síti. V tomto scénáři, ujistěte se, nemáte doménu hello stejným názvem domény DNS ve vaší místní síti.
 
-   * Ve virtuální síti existuje cloudová služba s tímto názvem.
+   * Máte stávající cloudovou službu s tímto názvem ve virtuální síti hello.
 
-3. Vyberte **typ virtuální sítě**. Ve výchozím nastavení **Resource Manager** je vybrán virtuální sítě. Doporučujeme použít tento typ virtuální sítě pro všechny nově vytvořený spravované domény.
+3. Zvolte hello **typ virtuální sítě**. Ve výchozím nastavení, hello **Resource Manager** je vybrán virtuální sítě. Doporučujeme použít tento typ virtuální sítě pro všechny nově vytvořený spravované domény.
 
-4. Vyberte Azure **předplatné** ve kterém chcete vytvořit spravované domény.
+4. Vyberte hello Azure **předplatné** ve kterém chcete toocreate hello spravované domény.
 
-5. Vyberte **skupiny prostředků** k spravované doméně by měly patřit. Můžete buď **vytvořit nový** nebo **použít existující** možnosti vybrat skupinu prostředků.
+5. Vyberte hello **skupiny prostředků** by měly patřit toowhich hello spravované domény. Můžete buď hello **vytvořit nový** nebo **použít existující** skupiny prostředků hello tooselect možnosti.
 
-6. Zvolte Azure **umístění** ve které má být vytvořena spravované domény. Na **sítě** stránky v průvodci zobrazí pouze virtuální sítě, které patří do umístění, které jste vybrali.
+6. Zvolte hello Azure **umístění** v které hello je potřeba vytvořit spravované domény. Na hello **sítě** stránku hello Průvodce zobrazí pouze virtuální sítě, které patří toohello umístění, které jste vybrali.
 
-7. Až budete hotovi, klikněte na tlačítko **OK** přesunout na **sítě** stránce průvodce.
+7. Až budete hotovi, klikněte na tlačítko **OK** toomove na toohello **sítě** hello průvodce.
 
 
 ## <a name="next-step"></a>Další krok

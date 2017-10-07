@@ -1,6 +1,6 @@
 ---
-title: "Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework | Dokumentace Microsoftu"
-description: "V tomto kurzu se naučíte přijímat události z Azure Event Hubs pomocí rozhraní .NET Framework."
+title: "hello aaaReceive události z Azure Event Hubs pomocí rozhraní .NET Framework | Microsoft Docs"
+description: "Postupujte podle tohoto kurzu tooreceive události z Azure Event Hubs pomocí hello rozhraní .NET Framework."
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2017
 ms.author: sethm
-ms.openlocfilehash: 581af52b3264b1a7c57315c65d5385a372308c27
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a88c3feeacfd3de9622dbb86e25222e861750204
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework
+# <a name="receive-events-from-azure-event-hubs-using-hello-net-framework"></a>Přijímat události z Azure Event Hubs pomocí hello rozhraní .NET Framework
 
 ## <a name="introduction"></a>Úvod
 
-Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT).
+Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Po shromažďovat data do centra událostí, můžete ukládat data hello pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele analýzu v reálném čase. Tato schopnost shromažďovat a zpracovávat rozsáhlé událostí je klíčovou komponentou moderních aplikačních architektur, například hello Internet věcí (IoT).
 
-Tento kurz ukazuje, jak psát aplikace konzoly rozhraní .NET Framework, která přijímá zprávy z centra událostí pomocí třídy **[Event Processor Host][EventProcessorHost]**. Pokud chcete odesílat události pomocí rozhraní .NET Framework, přečtěte si článek [Odesílání událostí do Azure Event Hubs pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) nebo klikněte na příslušný odesílající jazyk v obsahu vlevo.
+Tento kurz ukazuje, jak toowrite rozhraní .NET Framework Konzolová aplikace, která přijímá zprávy z centra událostí pomocí hello  **[Event Processor Host][EventProcessorHost]**. toosend událostí pomocí hello rozhraní .NET Framework, najdete v části hello [odesílat události tooAzure Event Hubs pomocí hello rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) článek, nebo klikněte na příslušný odesílání jazyk hello v levé tabulce hello obsahu.
 
-[Event Processor Host][EventProcessorHost] je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy [Event Processor Host][Event Processor Host] můžete události rozdělit mezi několik příjemců, i když jsou hostované v různých uzlech. Tento příklad ukazuje způsob použití třídy [Event Processor Host][EventProcessorHost] pro jednoho příjemce. Ukázka metody [Horizontální navýšení kapacity zpracování událostí][Scale out Event Processing with Event Hubs] znázorňuje způsob použití třídy [Event Processor Host][EventProcessorHost] v případě několika příjemců.
+Hello [Event Processor Host] [ EventProcessorHost] je třída rozhraní .NET, která zjednodušuje přijímání události ze služby event hubs tím, že spravuje trvalé kontrolní body a paralelní příjemce událostí ze služby event hubs. Pomocí hello [Event Processor Host][Event Processor Host], i když jsou hostované v různých uzlech můžete události rozdělit mezi několik příjemců. Tento příklad ukazuje, jak toouse hello [Event Processor Host] [ EventProcessorHost] pro jednoho příjemce. Hello [horizontální navýšení kapacity zpracování událostí] [ Scale out Event Processing with Event Hubs] ukázkové ukazuje, jak toouse hello [Event Processor Host] [ EventProcessorHost] s několika příjemců.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+toocomplete tohoto kurzu budete potřebovat hello následující požadavky:
 
-* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). Pro snímky obrazovky v tomto kurzu se používá Visual Studio 2017.
+* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). snímky obrazovky Hello v tomto kurzu použít Visual Studio 2017.
 * Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
 
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
+prvním krokem Hello je toouse hello [portál Azure](https://portal.azure.com) toocreate a obor názvů zadejte Event Hubs a získání přihlašovacích údajů pro správu aplikace musí toocommunicate s centrem událostí hello hello. toocreate obor názvů a centra událostí, postupujte podle postupu hello v [v tomto článku](event-hubs-create.md), pak pokračujte hello následující kroky v tomto kurzu.
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Pokud chcete používat třídu [Event Processor Host][EventProcessorHost], musíte mít [Účet služby Azure Storage][Azure Storage account]:
+toouse hello [Event Processor Host][EventProcessorHost], musíte mít [účet úložiště Azure][Azure Storage account]:
 
-1. Přihlaste se na web [Azure Portal][Azure portal] a v levém horním rohu obrazovky klikněte na **Nový**.
+1. Přihlaste se toohello [portál Azure][Azure portal]a klikněte na tlačítko **nový** v hello levém horním rohu úvodní obrazovka.
 2. Klikněte na **Storage** a poté klikněte na **Účet úložiště**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. V okně **Vytvořit účet úložiště** zadejte název účtu úložiště. Zvolte předplatné Azure, skupinu prostředků a umístění, ve kterém se má prostředek vytvořit. Poté klikněte na **Vytvořit**.
+3. V hello **vytvořit účet úložiště** okno, zadejte název pro účet úložiště hello. Vyberte příslušné předplatné Azure, skupinu prostředků a umístění v který toocreate hello prostředek. Poté klikněte na **Vytvořit**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
-4. V seznamu účtů úložiště klikněte na nově vytvořený účet úložiště.
-5. V okně účtu úložiště klikněte na **Přístupové klávesy**. Zkopírujte hodnotu **key1** pro pozdější použití v tomto kurzu.
+4. V seznamu hello účtů úložiště klikněte na tlačítko hello nově vytvořený účet úložiště.
+5. V okně účtu úložiště hello, klikněte na tlačítko **přístupové klíče**. Zkopírujte hodnotu hello **key1** toouse později v tomto kurzu.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
 ## <a name="create-a-receiver-console-application"></a>Vytvoření konzolové aplikace Příjemce
 
-1. Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt nazvěte **Receiver** (Příjemce).
+1. V sadě Visual Studio vytvořte nový projekt aplikace Visual C# plocha pomocí hello **konzolové aplikace** šablona projektu. Název projektu hello **příjemce**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-2. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Receiver** a potom klikněte na **Spravovat balíčky NuGet pro řešení**.
-3. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klikněte na **Instalovat** a přijměte podmínky použití.
+2. V Průzkumníku řešení klikněte pravým tlačítkem na hello **příjemce** projektu a pak klikněte na **spravovat balíčky NuGet pro řešení**.
+3. Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
-    Visual Studio stáhne, nainstaluje a přidá odkaz na [balíček NuGet třídy EventProcessorHost služby Event Hub ve službě Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) se všemi jeho závislostmi.
-4. Klikněte pravým tlačítkem na projekt **Receiver**, **Přidat** a potom na **Třída**. Pojmenujte novou třídu **SimpleEventProcessor** a potom kliknutím na **Přidat** třídu vytvořte.
+    Visual Studio stáhne, nainstaluje a přidá odkaz toohello [centra událostí Azure Service Bus - balíček NuGet třídy EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost), se všemi jeho závislostmi.
+4. Klikněte pravým tlačítkem na hello **příjemce** projektu, klikněte na tlačítko **přidat**a potom klikněte na **třída**. Pojmenujte novou třídu hello **SimpleEventProcessor**a potom klikněte na **přidat** toocreate hello třídy.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
-5. Na začátek souboru SimpleEventProcessor.cs přidejte následující příkazy:
+5. Přidejte následující příkazy hello horní části souboru SimpleEventProcessor.cs hello hello:
     
   ```csharp
   using Microsoft.ServiceBus.Messaging;
   using System.Diagnostics;
   ```
     
-  Potom nahraďte tělo třídy následujícím kódem:
+  Potom nahraďte hello následující kód pro hello textu hello třídy:
     
   ```csharp
   class SimpleEventProcessor : IEventProcessor
@@ -122,14 +122,14 @@ Pokud chcete používat třídu [Event Processor Host][EventProcessorHost], mus�
   }
   ```
     
-  Tuto třídu volá třída **EventProcessorHost** kvůli zpracování událostí přijatých z centra událostí. Třída `SimpleEventProcessor` používá stopky, aby pravidelně volala metodu kontrolního bodu v kontextu třídy **EventProcessorHost**. Tímto způsobem je zajištěno, že příjemce v případě restartování neztratí víc než pět minut práce potřebné ke zpracování.
-6. Ve třídě **Program** přidejte na začátek souboru následující příkaz `using`:
+  Tato třída volá hello **EventProcessorHost** tooprocess událostí přijatých z centra událostí hello. Hello `SimpleEventProcessor` třída používá metodu stopky tooperiodically volání hello kontrolního bodu na hello **EventProcessorHost** kontextu. Zpracování zajistí, že pokud je restartován hello příjemce, ztratí více než pět minut práce potřebné ke zpracování.
+6. V hello **programu** třídy, přidejte následující hello `using` příkaz hello horní části souboru hello:
     
   ```csharp
   using Microsoft.ServiceBus.Messaging;
   ```
     
-  Potom nahraďte metodu `Main` ve třídě `Program` následujícím kódem, kde nahradíte název centra událostí a připojovací řetězec na úrovni oboru názvů, který jste si dříve uložili, a účet úložiště spolu s klíčem, který jste si v předchozích částech zkopírovali. 
+  Potom nahraďte hello `Main` metoda v hello `Program` třídy s hello následující kód, nahraďte název centra událostí hello a připojení hello úrovni oboru názvů řetězce, který jste předtím uložili, a hello účet úložiště a klíč, který jste zkopírovali v hello předchozí části. 
     
   ```csharp
   static void Main(string[] args)
@@ -147,25 +147,25 @@ Pokud chcete používat třídu [Event Processor Host][EventProcessorHost], mus�
     options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
     eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
     
-    Console.WriteLine("Receiving. Press enter key to stop worker.");
+    Console.WriteLine("Receiving. Press enter key toostop worker.");
     Console.ReadLine();
     eventProcessorHost.UnregisterEventProcessorAsync().Wait();
   }
   ```
 
-7. Spusťte program a zkontrolujte, že nejsou žádné chyby.
+7. Spuštění programu hello a ujistěte se, že nejsou žádné chyby.
   
-Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí třídy Event Processor Host.
+Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí hello Event Processor Host.
 
 
 > [!NOTE]
-> Tento kurz používá jednu instanci třídy [EventProcessorHost][EventProcessorHost]. Pokud chcete zvýšit propustnost, spusťte několik instancí třídy [EventProcessorHost][EventProcessorHost], jak je znázorněno v ukázce metody [Horizontální navýšení kapacity zpracování událostí][Horizontální navýšení kapacity zpracování událostí]. V těchto případech se spolu různé instance navzájem automaticky koordinují, aby dokázaly vyrovnávat zatížení přijatých událostí. Pokud chcete, aby každý z několika příjemců zpracovával *všechny* události, musíte použít koncept **ConsumerGroup**. Když přijímáte události z různých počítačů, může být užitečné nazvat instance třídy [EventProcessorHost][EventProcessorHost] podle počítačů (nebo rolí), ve kterých jsou nasazené. Další informace o těchto tématech najdete v tématech [Přehled služby Event Hubs][Event Hubs overview] a [Průvodce programováním pro službu Event Hubs][Event Hubs Programming Guide].
+> Tento kurz používá jednu instanci třídy [EventProcessorHost][EventProcessorHost]. tooincrease propustnost, doporučujeme spustit více instancí [EventProcessorHost][EventProcessorHost], jak je znázorněno v hello [měřítkem kapacity zpracování událostí] [měřítkem kapacity zpracování událostí] ukázka. V takových případech hello různých instancí automaticky koordinují mezi sebou tooload vyrovnávání hello přijatých událostí. Pokud chcete, aby více příjemců tooeach proces *všechny* hello události, je nutné použít hello **ConsumerGroup** koncept. Když přijímáte události z různých počítačů, může to být užitečné toospecify názvy pro [EventProcessorHost] [ EventProcessorHost] instancí na základě u počítačů hello (nebo rolí), ve kterých jsou nasazené. Další informace o těchto tématech najdete v tématu hello [Přehled služby Event Hubs] [ Event Hubs overview] a hello [Průvodce programováním pro službu Event Hubs] [ Event Hubs Programming Guide] témata.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
 
-Sestavili jste funkční aplikaci, která vytvoří centrum událostí a odesílá i přijímá data. Nyní se můžete dozvědět víc návštěvou následujících odkazů:
+Teď, sestavili jste funkční aplikaci, která vytvoří Centrum událostí a odesílá a přijímá data, další informace získáte hello následující odkazy:
 
 * [Event Processor Host][Event Processor Host]
 * [Přehled služby Event Hubs][Event Hubs overview]

@@ -13,81 +13,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: fd5988b2d4170166902bb5cc39603d4a0f83be59
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 39c0b127d3dcf6f45607ad8b4647a9ad79dfc732
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Nejčastější dotazy pro Azure Active Directory Connect
 
 ## <a name="general-installation"></a>Obecné instalace
-**Otázka: bude fungovat instalace Azure AD globálního správce má 2FA povolené?**  
-S sestavení z února 2016 to je podporováno.
+**Otázka: bude instalace fungovat, pokud hello Azure AD globálního správce má 2FA povolené?**  
+S hello sestavení z února 2016 to je podporováno.
 
-**Otázka: je způsob, jak nainstalovat Azure AD Connect bezobslužné?**  
-Je podporován pouze pro instalaci Azure AD Connect s použitím Průvodce instalací. Bezobslužné a bezobslužné instalace není podporována.
+**Otázka: je způsob, jak tooinstall bezobslužné Azure AD Connect?**  
+Je pouze podporované tooinstall Azure AD Connect pomocí Průvodce instalací hello. Bezobslužné a bezobslužné instalace není podporována.
 
 **Otázka: je nutné do doménové struktury, kde nelze kontaktovat jednu doménu. Instalace Azure AD Connect**  
-S sestavení z února 2016 to je podporováno.
+S hello sestavení z února 2016 to je podporováno.
 
-**Otázka: agenta stavu služby AD DS funguje na jádro serveru?**  
-Ano. Po instalaci agenta, můžete dokončit proces registrace pomocí následující rutiny prostředí PowerShell: 
+**Otázka: hello pracovní agenta stavu služby AD DS na jádro serveru?**  
+Ano. Po instalaci agenta hello, může dokončení procesu registrace hello pomocí hello následující rutiny prostředí PowerShell: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
 ## <a name="network"></a>Síť
-**Otázka: je nutné bránu firewall, síťové zařízení, nebo něco jiného, který omezuje maximální dobu, po připojení můžete zůstat otevřené v mé síti. Jak dlouho mají Moje prahová hodnota časového limitu straně klienta se při použití Azure AD Connect?**  
-Všechny sítě softwaru, fyzických zařízení nebo cokoliv jiného, který omezuje maximální dobu, po připojení může zůstat otevřené by měl používat prahovou hodnotu alespoň 5 minut (300 sekund) pro připojení mezi serverem, kde je nainstalován klient Azure AD Connect a Azure Active Directory. To platí také pro všechny dřív vydaných synchronizace nástroje Microsoft Identity.
+**Otázka: je nutné bránu firewall, síťové zařízení, nebo něco jiného, který omezuje hello maximální dobu, po připojení můžete zůstat otevřené v mé síti. Jak dlouho mají Moje prahová hodnota časového limitu straně klienta se při použití Azure AD Connect?**  
+Všechny síťové softwaru, fyzických zařízení nebo cokoliv jiného, co omezení, které hello maximální dobu, které připojení zůstat otevřené měli používat prahovou hodnotu alespoň 5 minut (300 sekund) pro připojení mezi hello serveru, kde hello Azure AD Connect je nainstalován klient a Azure Active Directory. To platí také nástrojů pro synchronizaci tooall dřív vydané Microsoft Identity.
 
 **Otázka: jsou podporovány domény SLD (jedné domény štítek)?**  
 Ne, Azure AD Connect místními doménovými strukturami nebo doménami pomocí domény SLD nepodporuje.
 
 **Otázka: je "s tečkami" s názvem pro rozhraní NetBios podporovány?**  
-Ne, Azure AD Connect nepodporuje místními doménovými strukturami nebo doménami, kde název NetBios obsahuje tečku "." v názvu.
+Ne, Azure AD Connect nepodporuje místními doménovými strukturami nebo doménami, kde název pro rozhraní NetBios hello obsahuje tečku "." v názvu hello.
 
 ## <a name="federation"></a>Federace
-**Otázka: Co mám dělat, když se zobrazí e-mailu, zpráva se žádostí o obnovení certifikátu Moje Office 365**  
-Použijte pokyny, které je uvedené v [obnovení certifikátů](active-directory-aadconnect-o365-certs.md) téma o tom, jak obnovit certifikát.
+**Otázka: Co mám dělat, když se zobrazí e-mailu, výzva toorenew Moje certifikát Office 365**  
+Použít hello pokyny, které je uvedené v hello [obnovení certifikátů](active-directory-aadconnect-o365-certs.md) téma na tom, jak toorenew hello certifikátu.
 
-**Otázka: je nutné "Automaticky aktualizovat předávající strany" sadu O365 předávající strany. Je nutné provádět žádnou akci, když můj automaticky podpisový certifikát tokenu navyšování?**  
-Použijte pokyny, které je popsané v článku [obnovení certifikátů](active-directory-aadconnect-o365-certs.md).
+**Otázka: je nutné "Automaticky aktualizovat předávající strany" sadu O365 předávající strany. Je nutné provést tootake žádnou akci při navyšování Moje automaticky podpisový certifikát tokenu?**  
+Použít hello pokyny, které je popsané v článku hello [obnovení certifikátů](active-directory-aadconnect-o365-certs.md).
 
 ## <a name="environment"></a>Prostředí
-**Otázka: je podporována přejmenování serveru po instalaci Azure AD Connect?**  
-Ne. Změna názvu serveru způsobí, že synchronizační modul nebude moct připojit k databázi SQL a služba nebude možné spustit.
+**Otázka: je it podporované toorename hello server po instalaci Azure AD Connect?**  
+Ne. Změna názvu serveru hello bude příčina hello synchronizační modul toonot možné tooconnect toohello SQL database a hello služba nebude možné toostart.
 
 ## <a name="identity-data"></a>Data identit
-**Otázka: vybraný atribut UPN (userPrincipalName) ve službě Azure AD neodpovídá názvu UPN místní - proč?**  
+**Otázka: hello atribut UPN (userPrincipalName) ve službě Azure AD neodpovídá hello místní UPN - proč?**  
 Najdete v těchto článcích:
 
-* [Uživatelská jména v Office 365, Azure nebo Intune se neshodují místní UPN nebo alternativním přihlašovacím ID](https://support.microsoft.com/en-us/kb/2523192)
-* [Změny nejsou synchronizovány pomocí nástroje Azure Active Directory Sync po změně UPN uživatelský účet používat jiné federované domény](https://support.microsoft.com/en-us/kb/2669550)
+* [Uživatelská jména v Office 365, Azure nebo Intune se neshodují hello místní UPN nebo alternativním přihlašovacím ID](https://support.microsoft.com/en-us/kb/2523192)
+* [Změny nejsou synchronizovány pomocí nástroje Azure Active Directory Sync hello po změně hello UPN uživatel účet toouse jiné federované domény](https://support.microsoft.com/en-us/kb/2669550)
 
-Můžete také konfigurovat Azure AD umožňuje synchronizační modul aktualizovat userPrincipalName, jak je popsáno v [funkce služby Azure AD Connect sync](active-directory-aadconnectsyncservice-features.md).
+Můžete také konfigurovat Azure AD tooallow hello synchronizační modul tooupdate hello userPrincipalName, jak je popsáno v [funkce služby Azure AD Connect sync](active-directory-aadconnectsyncservice-features.md).
 
-**Otázka: je to, že nepodporuje logicky shodu místní AD skupiny nebo kontaktu objekty s existující objekty Azure AD skupiny nebo kontaktu?**  
+**Otázka: je it podporované toosoft shodu místní objekty AD skupiny nebo kontaktu s existující objekty Azure AD skupiny nebo kontaktu?**  
 Ne, to není aktuálně podporováno.
 
-**Otázka: je to, že nepodporuje ručně nastavit atribut ImmutableId u stávajících objektů Azure AD skupiny nebo kontaktu pevného odpovídat jej do místní AD skupiny nebo kontaktu objekty?**  
+**Otázka: je it podporované toomanually nastavte atribut ImmutableId na existující Azure AD skupiny nebo kontaktu objekty toohard shodovat se tooon místní AD skupiny nebo kontaktu objekty?**  
 Ne, to není aktuálně podporováno.
 
 
 
 ## <a name="custom-configuration"></a>Vlastní konfigurace
-**Otázka: kde popsané rutiny prostředí PowerShell pro Azure AD Connect?**  
-S výjimkou rutiny popsané v této lokalitě nejsou podporované jinými rutinami prostředí PowerShell nalezen ve službě Azure AD Connect pro použití zákazníka.
+**Otázka: kde jsou hello rutiny prostředí PowerShell pro Azure AD Connect zdokumentovaný?**  
+S výjimkou hello hello rutiny popsané v této lokalitě nejsou podporované jinými rutinami prostředí PowerShell nalezen ve službě Azure AD Connect pro použití zákazníka.
 
-**Otázka: je možné použít "Serveru serveru pro export/import" nalezena v *Synchronization Service Manager* přesunutí konfigurací mezi servery?**  
-Ne. Tato možnost nebude načíst všechna nastavení konfigurace a by se neměla používat. Místo toho používejte Průvodce a vytvořte základní konfigurace na druhý server, použijte editor pravidla synchronizace ke generování skriptů prostředí PowerShell přesunout všechny vlastní pravidlo mezi servery. V tématu [kyvu migrace](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
+**Otázka: je možné použít "Serveru serveru pro export/import" nalezena v *Synchronization Service Manager* konfigurace toomove mezi servery?**  
+Ne. Tato možnost nebude načíst všechna nastavení konfigurace a by se neměla používat. Místo toho by měla použijte hello Průvodce toocreate hello základní konfigurace na druhý server hello a pomocí hello synchronizační pravidlo editor toogenerate prostředí PowerShell skripty toomove žádné vlastní pravidlo mezi servery. V tématu [kyvu migrace](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
 
-**Otázka: je možné hesla do mezipaměti Azure přihlašovací stránku a můžete to možné, protože obsahuje element input pro heslo pomocí automatického dokončování = "false" atribut?**</br>
-Aktuálně nepodporujeme změna atributů HTML vstupní pole pro heslo, včetně automatického dokončování značky. Právě pracujeme na funkce, která vám umožní pro vlastní Javascript, která vám umožní přidat všechny atributy, do pole heslo. To by měl být k dispozici novější součástí 2017.
+**Otázka: je možné hesla do mezipaměti pro stránku hello Azure přihlášení a může to možné, protože obsahuje element input pro heslo pomocí funkce Automatické dokončování hello = "false" atribut?**</br>
+Aktuálně nepodporujeme změny atributy HTML hello hello vstupní pole pro heslo, včetně hello automatického dokončování značky. Právě pracujeme na funkce, která vám umožní pro vlastní Javascript, která vám umožní tooadd každé pole atributu toohello heslo. To by měl být k dispozici novější součástí 2017.
 
-**Otázka: na Azure přihlašovací stránce se zobrazí uživatelská jména pro uživatele, kteří mají dříve úspěšně přihlášení.  Lze toto chování vypnout?**</br>
-Aktuálně nepodporujeme změna atributů HTML přihlašovací stránky. Právě pracujeme na funkce, která vám umožní pro vlastní Javascript, která vám umožní přidat všechny atributy, do pole heslo. To by měl být k dispozici novější součástí 2017.
+**Otázka: na hello Azure přihlašovací stránce se zobrazí uživatelských jmen pro uživatele, kteří mají dříve úspěšně přihlášení.  Lze toto chování vypnout?**</br>
+Aktuálně nepodporujeme změny atributů HTML hello hello přihlašovací stránky. Právě pracujeme na funkce, která vám umožní pro vlastní Javascript, která vám umožní tooadd každé pole atributu toohello heslo. To by měl být k dispozici novější součástí 2017.
 
-**Otázka: je způsob, jak zabránit souběžných relací?**</br>
+**Otázka: je způsob, jak tooprevent souběžných relací?**</br>
 Ne.
 
 
@@ -95,15 +95,15 @@ Ne.
 ## <a name="troubleshooting"></a>Řešení potíží
 **Otázka: jak můžete získat pomoc s Azure AD Connect?**
 
-[Znalostní bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Hledání hello znalostní báze Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
-* Vyhledejte Microsoft Knowledge Base (KB) pro technické řešení pro běžné problémy opravu o podpoře pro Azure AD Connect.
+* Hledání hello znalostní báze Microsoft Knowledge Base (KB) technické řešení toocommon opravu problémů o podpoře pro Azure AD Connect.
 
 [Fóra Microsoft Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 
-* Můžete vyhledat a procházet technical otázky a odpovědi od komunity nebo položte svou vlastní otázku kliknutím [zde](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
+* Můžete vyhledat a procházet technical otázky a odpovědi od komunity hello nebo položte svou vlastní otázku kliknutím [zde](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 
 [Azure AD Connect zákaznickou podporu](https://manage.windowsazure.com/?getsupport=true)
 
-* Použijte tento odkaz k získání podpory prostřednictvím portálu Azure.
+* Použijte tento odkaz tooget podporu prostřednictvím hello portálu Azure.
 

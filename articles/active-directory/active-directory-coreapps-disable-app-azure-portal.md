@@ -1,6 +1,6 @@
 ---
-title: "Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory | Microsoft Docs"
-description: "Zakázání podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu v Azure Active Directory"
+title: "aaaDisable uživatelská přihlášení pro podnikové aplikace v Azure Active Directory | Microsoft Docs"
+description: "Jak toodisable podniková aplikace tak, aby žádní uživatelé můžou přihlásit tooit v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 5d27046370eada0c371c94fb573fa1bcf536f7cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c560b59359d433b0852a7606cc2cc0204866234
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory
-Je snadné zakázat podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.
+Je snadno toodisable podniková aplikace tak, aby žádní uživatelé můžou přihlásit tooit v Azure Active Directory (Azure AD). Musíte mít hello příslušná oprávnění toomanage hello firemní aplikace a musí být globální správce adresáře hello.
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>Jakým způsobem vypnout uživatelská přihlášení?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
-3. Na **Azure Active Directory** -  ***directoryname*** okno (to znamená, Azure AD okna pro adresář spravujete), vyberte **podnikové aplikace, které**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **Azure Active Directory** v hello textového pole a pak vyberte **Enter**.
+3. Na hello **Azure Active Directory** -  ***directoryname*** okno (tedy hello Azure AD okno pro adresář hello spravujete), vyberte **podnikové aplikace, které**.
 
     ![Otevírání podnikové aplikace](./media/active-directory-coreapps-disable-app-azure-portal/open-enterprise-apps.png)
-4. Na **podnikové aplikace, které** vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
-5. Na **podnikové aplikace – všechny aplikace** okně, vyberte aplikaci.
-6. Na ***appname*** okno (to znamená, v okně s názvem vybranou aplikaci v názvu), vyberte **vlastnosti**.
+4. Na hello **podnikové aplikace, které** vyberte **všechny aplikace**. Zobrazí seznam hello aplikací, které můžete spravovat.
+5. Na hello **podnikové aplikace – všechny aplikace** okně, vyberte aplikaci.
+6. Na hello ***appname*** okno (tedy hello okno s názvem hello hello vybrané aplikace ve hello title), vyberte **vlastnosti**.
 
-    ![Výběr příkaz všechny aplikace](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
-7. Na ***appname*** - **vlastnosti** vyberte **ne** pro **povolit pro uživatele přihlásit?**.
-8. Vyberte **Uložit** příkaz.
+    ![Výběr hello příkaz všechny aplikace](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
+7. Na hello ***appname*** - **vlastnosti** vyberte **ne** pro **povolit pro uživatele v toosign?**.
+8. Vyberte hello **Uložit** příkaz.
 
 ## <a name="next-steps"></a>Další kroky
 * [Zobrazení všech Moje skupin](active-directory-groups-view-azure-portal.md)
-* [Přiřazení uživatele nebo skupiny do aplikace enterprise](active-directory-coreapps-assign-user-azure-portal.md)
+* [Přiřadit uživatele nebo skupinu tooan firemní aplikace](active-directory-coreapps-assign-user-azure-portal.md)
 * [Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace.](active-directory-coreapps-remove-assignment-azure-portal.md)
-* [Změna názvu nebo logo aplikace enterprise](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Změňte název hello nebo logo aplikace enterprise](active-directory-coreapps-change-app-logo-user-azure-portal.md)
