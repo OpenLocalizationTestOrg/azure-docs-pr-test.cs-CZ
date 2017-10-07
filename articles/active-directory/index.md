@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-description: "Naučte se synchronizovat místní adresáře a povolit jednotné přihlašování. V dokumentaci se dozvíte, jak integrovat kompletní sadu možností pro správu identit."
-title: "Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+description: "Zjistěte, jak toosynchronize adresářů a povolení jednotného přihlašování. Dokumentace se dozvíte, jak toointegrate úplná sada funkcí správy identit."
+title: "aaaAzure dokumentace Active Directory - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
 services: active-directory
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8933c77013d7b0d886d3e309dc0b1a72026eb677
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a99aa3cc979a518c5b53cb1540f037b6776fb157
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentace k Azure Active Directory
 
-Naučte se synchronizovat adresáře a povolit jednotné přihlašování pomocí Azure Active Directory (Azure AD). Kurzy, reference k rozhraní API a další dokumentace ukazují postupy integrace možností pro správu identit, včetně vícefaktorového ověřování, registrace zařízení, řízení přístupu na základě rolí, sledování a výstrah zabezpečení.
+Zjistěte, jak toosynchronize adresářů a povolení jednotného přihlašování službou Azure Active Directory (Azure AD). Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak řídit funkce správy identit toointegrate, včetně vícefaktorového ověřování, registrace zařízení, přístup na základě rolí a monitorování zabezpečení a výstrahy.
 
 <ul class="panelContent cardsFTitle">
     <li>

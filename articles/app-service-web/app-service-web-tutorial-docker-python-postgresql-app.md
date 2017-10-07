@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace Docker Python a PostgreSQL v Azure | Microsoft Docs"
-description: "Další informace o získání a Docker Python aplikaci v Azure, funguje s připojením k databázi PostgreSQL."
+title: "aaaBuild Docker Pythonu a PostgreSQL webové aplikace v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooget Docker Python aplikace v Azure funguje s připojení tooa PostgreSQL databáze."
 services: app-service\web
 documentationcenter: python
 author: berndverst
@@ -15,65 +15,65 @@ ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: e70f85a1eb4a6e1a81e0ca4fae228ca97deca6fe
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e594ef9ec8c04ef2bf725e5f998691f3fb8cf815
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a><span data-ttu-id="669f3-103">Vytvoření webové aplikace Docker Python a PostgreSQL v Azure</span><span class="sxs-lookup"><span data-stu-id="669f3-103">Build a Docker Python and PostgreSQL web app in Azure</span></span>
+# <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a><span data-ttu-id="f5b17-103">Vytvoření webové aplikace Docker Python a PostgreSQL v Azure</span><span class="sxs-lookup"><span data-stu-id="f5b17-103">Build a Docker Python and PostgreSQL web app in Azure</span></span>
 
-<span data-ttu-id="669f3-104">Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby.</span><span class="sxs-lookup"><span data-stu-id="669f3-104">Azure Web Apps provides a highly scalable, self-patching web hosting service.</span></span> <span data-ttu-id="669f3-105">Tento kurz ukazuje, jak vytvořit základní webovou aplikaci Docker Python v Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-105">This tutorial shows how to create a basic Docker Python web app in Azure.</span></span> <span data-ttu-id="669f3-106">Tuto aplikaci budete připojit k databázi PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-106">You'll connect this app to a PostgreSQL database.</span></span> <span data-ttu-id="669f3-107">Když jste hotovi, budete mít k aplikaci Python Flask systémem v rámci kontejner Docker [Azure App Service Web Apps](app-service-web-overview.md).</span><span class="sxs-lookup"><span data-stu-id="669f3-107">When you're done, you'll have a Python Flask application running within a Docker container on [Azure App Service Web Apps](app-service-web-overview.md).</span></span>
+<span data-ttu-id="f5b17-104">Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby.</span><span class="sxs-lookup"><span data-stu-id="f5b17-104">Azure Web Apps provides a highly scalable, self-patching web hosting service.</span></span> <span data-ttu-id="f5b17-105">Tento kurz ukazuje, jak toocreate základní Python Docker webové aplikace v Azure.</span><span class="sxs-lookup"><span data-stu-id="f5b17-105">This tutorial shows how toocreate a basic Docker Python web app in Azure.</span></span> <span data-ttu-id="f5b17-106">Budete připojit databázi PostgreSQL tooa této aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-106">You'll connect this app tooa PostgreSQL database.</span></span> <span data-ttu-id="f5b17-107">Když jste hotovi, budete mít k aplikaci Python Flask systémem v rámci kontejner Docker [Azure App Service Web Apps](app-service-web-overview.md).</span><span class="sxs-lookup"><span data-stu-id="f5b17-107">When you're done, you'll have a Python Flask application running within a Docker container on [Azure App Service Web Apps](app-service-web-overview.md).</span></span>
 
 ![Docker Python Flask aplikace v Azure App Service](./media/app-service-web-tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
-<span data-ttu-id="669f3-109">Postupujte podle těchto kroků v systému macOS.</span><span class="sxs-lookup"><span data-stu-id="669f3-109">You can follow the steps below on macOS.</span></span> <span data-ttu-id="669f3-110">Pokyny pro Linux a Windows jsou stejné ve většině případů, ale rozdíly nejsou popsané v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="669f3-110">Linux and Windows instructions are the same in most cases, but the differences are not detailed in this tutorial.</span></span>
+<span data-ttu-id="f5b17-109">V systému macOS můžete provést následující postup hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-109">You can follow hello steps below on macOS.</span></span> <span data-ttu-id="f5b17-110">Pokyny pro Linux a Windows jsou stejné hello ve většině případů, ale hello rozdíly nejsou popsané v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-110">Linux and Windows instructions are hello same in most cases, but hello differences are not detailed in this tutorial.</span></span>
  
-## <a name="prerequisites"></a><span data-ttu-id="669f3-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="669f3-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="f5b17-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="f5b17-111">Prerequisites</span></span>
 
-<span data-ttu-id="669f3-112">Pro absolvování tohoto kurzu potřebujete:</span><span class="sxs-lookup"><span data-stu-id="669f3-112">To complete this tutorial:</span></span>
+<span data-ttu-id="f5b17-112">toocomplete v tomto kurzu:</span><span class="sxs-lookup"><span data-stu-id="f5b17-112">toocomplete this tutorial:</span></span>
 
-1. <span data-ttu-id="669f3-113">[Nainstalovat Git](https://git-scm.com/).</span><span class="sxs-lookup"><span data-stu-id="669f3-113">[Install Git](https://git-scm.com/)</span></span>
-1. <span data-ttu-id="669f3-114">[Nainstalovat Python](https://www.python.org/downloads/).</span><span class="sxs-lookup"><span data-stu-id="669f3-114">[Install Python](https://www.python.org/downloads/)</span></span>
-1. [<span data-ttu-id="669f3-115">Nainstalujte a spusťte PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="669f3-115">Install and run PostgreSQL</span></span>](https://www.postgresql.org/download/)
-1. [<span data-ttu-id="669f3-116">Nainstalujte Docker Community Edition</span><span class="sxs-lookup"><span data-stu-id="669f3-116">Install Docker Community Edition</span></span>](https://www.docker.com/community-edition)
+1. <span data-ttu-id="f5b17-113">[Nainstalovat Git](https://git-scm.com/).</span><span class="sxs-lookup"><span data-stu-id="f5b17-113">[Install Git](https://git-scm.com/)</span></span>
+1. <span data-ttu-id="f5b17-114">[Nainstalovat Python](https://www.python.org/downloads/).</span><span class="sxs-lookup"><span data-stu-id="f5b17-114">[Install Python](https://www.python.org/downloads/)</span></span>
+1. [<span data-ttu-id="f5b17-115">Nainstalujte a spusťte PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="f5b17-115">Install and run PostgreSQL</span></span>](https://www.postgresql.org/download/)
+1. [<span data-ttu-id="f5b17-116">Nainstalujte Docker Community Edition</span><span class="sxs-lookup"><span data-stu-id="f5b17-116">Install Docker Community Edition</span></span>](https://www.docker.com/community-edition)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="669f3-117">Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="669f3-117">If you choose to install and use the CLI locally, this topic requires that you are running the Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="669f3-118">Verzi zjistíte spuštěním příkazu `az --version`.</span><span class="sxs-lookup"><span data-stu-id="669f3-118">Run `az --version` to find the version.</span></span> <span data-ttu-id="669f3-119">Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="669f3-119">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="f5b17-117">Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="f5b17-117">If you choose tooinstall and use hello CLI locally, this topic requires that you are running hello Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="f5b17-118">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="f5b17-118">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="f5b17-119">Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="f5b17-119">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="test-local-postgresql-installation-and-create-a-database"></a><span data-ttu-id="669f3-120">Testování místní instalaci PostgreSQL a vytvořit databázi</span><span class="sxs-lookup"><span data-stu-id="669f3-120">Test local PostgreSQL installation and create a database</span></span>
+## <a name="test-local-postgresql-installation-and-create-a-database"></a><span data-ttu-id="f5b17-120">Testování místní instalaci PostgreSQL a vytvořit databázi</span><span class="sxs-lookup"><span data-stu-id="f5b17-120">Test local PostgreSQL installation and create a database</span></span>
 
-<span data-ttu-id="669f3-121">Otevřete okno terminálu a spusťte `psql postgres` pro připojení k místní server PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-121">Open the terminal window and run `psql postgres` to connect to your local PostgreSQL server.</span></span>
+<span data-ttu-id="f5b17-121">Otevřete okno terminálu hello a spusťte `psql postgres` tooconnect tooyour místní PostgreSQL server.</span><span class="sxs-lookup"><span data-stu-id="f5b17-121">Open hello terminal window and run `psql postgres` tooconnect tooyour local PostgreSQL server.</span></span>
 
 ```bash
 psql postgres
 ```
 
-<span data-ttu-id="669f3-122">Pokud připojení úspěšné, je databáze PostgreSQL spuštěna.</span><span class="sxs-lookup"><span data-stu-id="669f3-122">If your connection is successful, your PostgreSQL database is running.</span></span> <span data-ttu-id="669f3-123">Pokud ne, ujistěte se, zda je spuštěná místní databázi PostgresQL podle kroků v [stáhne - PostgreSQL základní distribuční](https://www.postgresql.org/download/).</span><span class="sxs-lookup"><span data-stu-id="669f3-123">If not, make sure that your local PostgresQL database is started by following the steps at [Downloads - PostgreSQL Core Distribution](https://www.postgresql.org/download/).</span></span>
+<span data-ttu-id="f5b17-122">Pokud připojení úspěšné, je databáze PostgreSQL spuštěna.</span><span class="sxs-lookup"><span data-stu-id="f5b17-122">If your connection is successful, your PostgreSQL database is running.</span></span> <span data-ttu-id="f5b17-123">Pokud ne, ujistěte se, zda je spuštěná místní databázi PostgresQL podle následujících kroků hello v [stáhne - PostgreSQL základní distribuční](https://www.postgresql.org/download/).</span><span class="sxs-lookup"><span data-stu-id="f5b17-123">If not, make sure that your local PostgresQL database is started by following hello steps at [Downloads - PostgreSQL Core Distribution](https://www.postgresql.org/download/).</span></span>
 
-<span data-ttu-id="669f3-124">Vytvoření databáze názvem *eventregistration* a nastavení uživatele samostatné databáze s názvem *manager* heslem *supersecretpass*.</span><span class="sxs-lookup"><span data-stu-id="669f3-124">Create a database called *eventregistration* and set up a separate database user named *manager* with password *supersecretpass*.</span></span>
+<span data-ttu-id="f5b17-124">Vytvoření databáze názvem *eventregistration* a nastavení uživatele samostatné databáze s názvem *manager* heslem *supersecretpass*.</span><span class="sxs-lookup"><span data-stu-id="f5b17-124">Create a database called *eventregistration* and set up a separate database user named *manager* with password *supersecretpass*.</span></span>
 
 ```bash
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE eventregistration toomanager;
 ```
-<span data-ttu-id="669f3-125">Typ *\q* ukončíte klienta PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-125">Type *\q* to exit the PostgreSQL client.</span></span> 
+<span data-ttu-id="f5b17-125">Typ *\q* tooexit hello PostgreSQL klienta.</span><span class="sxs-lookup"><span data-stu-id="f5b17-125">Type *\q* tooexit hello PostgreSQL client.</span></span> 
 
 <a name="step2"></a>
 
-## <a name="create-local-python-flask-application"></a><span data-ttu-id="669f3-126">Vytvořit místní aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="669f3-126">Create local Python Flask application</span></span>
+## <a name="create-local-python-flask-application"></a><span data-ttu-id="f5b17-126">Vytvořit místní aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="f5b17-126">Create local Python Flask application</span></span>
 
-<span data-ttu-id="669f3-127">V tomto kroku nastavíte místní projekt Python Flask.</span><span class="sxs-lookup"><span data-stu-id="669f3-127">In this step, you set up the local Python Flask project.</span></span>
+<span data-ttu-id="f5b17-127">V tomto kroku nastavíte místní projekt Python Flask hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-127">In this step, you set up hello local Python Flask project.</span></span>
 
-### <a name="clone-the-sample-application"></a><span data-ttu-id="669f3-128">Klonování ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="669f3-128">Clone the sample application</span></span>
+### <a name="clone-hello-sample-application"></a><span data-ttu-id="f5b17-128">Klonování hello ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="f5b17-128">Clone hello sample application</span></span>
 
-<span data-ttu-id="669f3-129">Otevřete okno terminálu a `CD` do pracovního adresáře.</span><span class="sxs-lookup"><span data-stu-id="669f3-129">Open the terminal window, and `CD` to a working directory.</span></span>  
+<span data-ttu-id="f5b17-129">Hello otevřete okno terminálu, a `CD` tooa pracovní adresář.</span><span class="sxs-lookup"><span data-stu-id="f5b17-129">Open hello terminal window, and `CD` tooa working directory.</span></span>  
 
-<span data-ttu-id="669f3-130">Spusťte následující příkazy a klonovat úložiště v ukázkové přejít na *0,1 initialapp* verzi.</span><span class="sxs-lookup"><span data-stu-id="669f3-130">Run the following commands to clone the sample repository and go to the *0.1-initialapp* release.</span></span>
+<span data-ttu-id="f5b17-130">Hello spusťte následující příkazy tooclone hello Ukázka úložiště a přejděte toohello *0,1 initialapp* verzi.</span><span class="sxs-lookup"><span data-stu-id="f5b17-130">Run hello following commands tooclone hello sample repository and go toohello *0.1-initialapp* release.</span></span>
 
 ```bash
 git clone https://github.com/Azure-Samples/docker-flask-postgres.git
@@ -81,14 +81,14 @@ cd docker-flask-postgres
 git checkout tags/0.1-initialapp
 ```
 
-<span data-ttu-id="669f3-131">Tato ukázka úložiště obsahuje [Flask](http://flask.pocoo.org/) aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-131">This sample repository contains a [Flask](http://flask.pocoo.org/) application.</span></span> 
+<span data-ttu-id="f5b17-131">Tato ukázka úložiště obsahuje [Flask](http://flask.pocoo.org/) aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-131">This sample repository contains a [Flask](http://flask.pocoo.org/) application.</span></span> 
 
-### <a name="run-the-application"></a><span data-ttu-id="669f3-132">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="669f3-132">Run the application</span></span>
+### <a name="run-hello-application"></a><span data-ttu-id="f5b17-132">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="f5b17-132">Run hello application</span></span>
 
 > [!NOTE] 
-> <span data-ttu-id="669f3-133">Později tento proces zjednodušit podle budovy kontejner Docker pro použití s produkční databázi.</span><span class="sxs-lookup"><span data-stu-id="669f3-133">In a later step you simplify this process by building a Docker container to use with the production database.</span></span>
+> <span data-ttu-id="f5b17-133">Později tento proces zjednodušit podle budovy toouse kontejner Docker s hello produkční databázi.</span><span class="sxs-lookup"><span data-stu-id="f5b17-133">In a later step you simplify this process by building a Docker container toouse with hello production database.</span></span>
 
-<span data-ttu-id="669f3-134">Nainstalujte požadované balíčky a spusťte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="669f3-134">Install the required packages and start the application.</span></span>
+<span data-ttu-id="f5b17-134">Instalace hello požadované balíčky a spuštění aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-134">Install hello required packages and start hello application.</span></span>
 
 ```bash
 pip install virtualenv
@@ -100,61 +100,61 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-<span data-ttu-id="669f3-135">Po úplným načtením aplikace se zobrazí podobná následující zpráva:</span><span class="sxs-lookup"><span data-stu-id="669f3-135">When the app is fully loaded, you see something similar to the following message:</span></span>
+<span data-ttu-id="f5b17-135">Když je aplikace hello úplným načtením, uvidíte něco podobné toohello následující zprávou:</span><span class="sxs-lookup"><span data-stu-id="f5b17-135">When hello app is fully loaded, you see something similar toohello following message:</span></span>
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
  * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C tooquit)
 ```
 
-<span data-ttu-id="669f3-136">Přejděte do http://127.0.0.1:5000 v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="669f3-136">Navigate to http://127.0.0.1:5000 in a browser.</span></span> <span data-ttu-id="669f3-137">Klikněte na tlačítko **zaregistrovat!**</span><span class="sxs-lookup"><span data-stu-id="669f3-137">Click **Register!**</span></span> <span data-ttu-id="669f3-138">a vytvoření zkušebního uživatele.</span><span class="sxs-lookup"><span data-stu-id="669f3-138">and create a test user.</span></span>
+<span data-ttu-id="f5b17-136">Přejděte toohttp://127.0.0.1:5000 v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="f5b17-136">Navigate toohttp://127.0.0.1:5000 in a browser.</span></span> <span data-ttu-id="f5b17-137">Klikněte na tlačítko **zaregistrovat!**</span><span class="sxs-lookup"><span data-stu-id="f5b17-137">Click **Register!**</span></span> <span data-ttu-id="f5b17-138">a vytvoření zkušebního uživatele.</span><span class="sxs-lookup"><span data-stu-id="f5b17-138">and create a test user.</span></span>
 
 ![Aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 
-<span data-ttu-id="669f3-140">Ukázkovou aplikaci Flask ukládá data uživatele v databázi.</span><span class="sxs-lookup"><span data-stu-id="669f3-140">The Flask sample application stores user data in the database.</span></span> <span data-ttu-id="669f3-141">Pokud jste úspěšné při registraci uživatele, je vaše aplikace zápisu dat do místní databázi PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-141">If you are successful at registering a user, your app is writing data to the local PostgreSQL database.</span></span>
+<span data-ttu-id="f5b17-140">Hello Flask ukázkové aplikace ukládá data uživatele v databázi hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-140">hello Flask sample application stores user data in hello database.</span></span> <span data-ttu-id="f5b17-141">Pokud jste úspěšné při registraci uživatele, aplikace je zápis dat toohello místní databázi PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="f5b17-141">If you are successful at registering a user, your app is writing data toohello local PostgreSQL database.</span></span>
 
-<span data-ttu-id="669f3-142">Kdykoli zastavit Flask server kdykoli, zadejte Ctrl + C v terminálu.</span><span class="sxs-lookup"><span data-stu-id="669f3-142">To stop the Flask server at anytime, type Ctrl+C in the terminal.</span></span> 
+<span data-ttu-id="f5b17-142">server Flask hello toostop v kdykoli, zadejte Ctrl + C hello terminálu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-142">toostop hello Flask server at anytime, type Ctrl+C in hello terminal.</span></span> 
 
-## <a name="create-a-production-postgresql-database"></a><span data-ttu-id="669f3-143">Vytvořit databázi PostgreSQL výroby</span><span class="sxs-lookup"><span data-stu-id="669f3-143">Create a production PostgreSQL database</span></span>
+## <a name="create-a-production-postgresql-database"></a><span data-ttu-id="f5b17-143">Vytvořit databázi PostgreSQL výroby</span><span class="sxs-lookup"><span data-stu-id="f5b17-143">Create a production PostgreSQL database</span></span>
 
-<span data-ttu-id="669f3-144">V tomto kroku vytvoříte databázi PostgreSQL v Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-144">In this step, you create a PostgreSQL database in Azure.</span></span> <span data-ttu-id="669f3-145">Při nasazení aplikace do Azure, použije tuto databázi cloudu.</span><span class="sxs-lookup"><span data-stu-id="669f3-145">When your app is deployed to Azure, it will use this cloud database.</span></span>
+<span data-ttu-id="f5b17-144">V tomto kroku vytvoříte databázi PostgreSQL v Azure.</span><span class="sxs-lookup"><span data-stu-id="f5b17-144">In this step, you create a PostgreSQL database in Azure.</span></span> <span data-ttu-id="f5b17-145">Pokud je vaše aplikace nasazené tooAzure, použije tuto databázi cloudu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-145">When your app is deployed tooAzure, it will use this cloud database.</span></span>
 
-### <a name="log-in-to-azure"></a><span data-ttu-id="669f3-146">Přihlaste se k Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-146">Log in to Azure</span></span>
+### <a name="log-in-tooazure"></a><span data-ttu-id="f5b17-146">Přihlaste se tooAzure</span><span class="sxs-lookup"><span data-stu-id="f5b17-146">Log in tooAzure</span></span>
 
-<span data-ttu-id="669f3-147">Nyní se chystáte použít 2.0 rozhraní příkazového řádku Azure k vytvoření prostředky potřebné k hostování vaší aplikace Python ve službě Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="669f3-147">You are now going to use the Azure CLI 2.0 to create the resources needed to host your Python application in Azure App Service.</span></span>  <span data-ttu-id="669f3-148">Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce.</span><span class="sxs-lookup"><span data-stu-id="669f3-148">Log in to your Azure subscription with the [az login](/cli/azure/#login) command and follow the on-screen directions.</span></span> 
+<span data-ttu-id="f5b17-147">Jste nyní probíhající toouse hello Azure CLI 2.0 toocreate hello prostředky potřebné toohost aplikace Python ve službě Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="f5b17-147">You are now going toouse hello Azure CLI 2.0 toocreate hello resources needed toohost your Python application in Azure App Service.</span></span>  <span data-ttu-id="f5b17-148">Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů.</span><span class="sxs-lookup"><span data-stu-id="f5b17-148">Log in tooyour Azure subscription with hello [az login](/cli/azure/#login) command and follow hello on-screen directions.</span></span> 
 
 ```azurecli
 az login 
 ``` 
    
-### <a name="create-a-resource-group"></a><span data-ttu-id="669f3-149">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="669f3-149">Create a resource group</span></span>
+### <a name="create-a-resource-group"></a><span data-ttu-id="f5b17-149">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="f5b17-149">Create a resource group</span></span>
 
-<span data-ttu-id="669f3-150">Vytvořte pomocí příkazu [az group create](/cli/azure/group#create) [skupinu prostředků](../azure-resource-manager/resource-group-overview.md).</span><span class="sxs-lookup"><span data-stu-id="669f3-150">Create a [resource group](../azure-resource-manager/resource-group-overview.md) with the [az group create](/cli/azure/group#create).</span></span> 
+<span data-ttu-id="f5b17-150">Vytvoření [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) s hello [vytvořit skupinu az](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="f5b17-150">Create a [resource group](../azure-resource-manager/resource-group-overview.md) with hello [az group create](/cli/azure/group#create).</span></span> 
 
 [!INCLUDE [Resource group intro](../../includes/resource-group.md)]
 
-<span data-ttu-id="669f3-151">Následující příklad vytvoří skupinu prostředků v oblasti západní USA:</span><span class="sxs-lookup"><span data-stu-id="669f3-151">The following example creates a resource group in the West US region:</span></span>
+<span data-ttu-id="f5b17-151">Hello následující příklad vytvoří skupinu prostředků v oblasti západní USA hello:</span><span class="sxs-lookup"><span data-stu-id="f5b17-151">hello following example creates a resource group in hello West US region:</span></span>
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West US"
 ```
 
-<span data-ttu-id="669f3-152">Použití [az služby App Service seznamu umístění](/cli/azure/appservice#list-locations) příkaz rozhraní příkazového řádku Azure k seznamu dostupných umístění.</span><span class="sxs-lookup"><span data-stu-id="669f3-152">Use the [az appservice list-locations](/cli/azure/appservice#list-locations) Azure CLI command to list available locations.</span></span>
+<span data-ttu-id="f5b17-152">Použití hello [míst seznamu služby App Service az](/cli/azure/appservice#list-locations) rozhraní příkazového řádku Azure příkaz toolist dostupná umístění.</span><span class="sxs-lookup"><span data-stu-id="f5b17-152">Use hello [az appservice list-locations](/cli/azure/appservice#list-locations) Azure CLI command toolist available locations.</span></span>
 
-### <a name="create-an-azure-database-for-postgresql-server"></a><span data-ttu-id="669f3-153">Vytvoření serveru Azure Database for PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="669f3-153">Create an Azure Database for PostgreSQL server</span></span>
+### <a name="create-an-azure-database-for-postgresql-server"></a><span data-ttu-id="f5b17-153">Vytvoření serveru Azure Database for PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="f5b17-153">Create an Azure Database for PostgreSQL server</span></span>
 
-<span data-ttu-id="669f3-154">Vytvoření serveru PostgreSQL s [az postgres server vytvořit](/cli/azure/documentdb#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="669f3-154">Create a PostgreSQL server with the [az postgres server create](/cli/azure/documentdb#create) command.</span></span>
+<span data-ttu-id="f5b17-154">Vytvoření serveru PostgreSQL s hello [az postgres server vytvořit](/cli/azure/documentdb#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="f5b17-154">Create a PostgreSQL server with hello [az postgres server create](/cli/azure/documentdb#create) command.</span></span>
 
-<span data-ttu-id="669f3-155">V následujícím příkazu nahraďte název jedinečný serveru  *\<postgresql_name >* zástupný symbol a uživatel název  *\<admin_username >* zástupný symbol.</span><span class="sxs-lookup"><span data-stu-id="669f3-155">In the following command, substitute a unique server name for the *\<postgresql_name>* placeholder and a user name for the *\<admin_username>* placeholder.</span></span> <span data-ttu-id="669f3-156">Název serveru slouží jako součást váš koncový bod PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže název musí být jedinečný v rámci všech serverech v Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-156">The server name is used as part of your PostgreSQL endpoint (`https://<postgresql_name>.postgres.database.azure.com`), so the name needs to be unique across all servers in Azure.</span></span> <span data-ttu-id="669f3-157">Uživatelské jméno je pro uživatelský účet správce počáteční databáze.</span><span class="sxs-lookup"><span data-stu-id="669f3-157">The user name is for the initial database admin user account.</span></span> <span data-ttu-id="669f3-158">Zobrazí se výzva k vyberte heslo pro tohoto uživatele.</span><span class="sxs-lookup"><span data-stu-id="669f3-158">You are prompted to pick a password for this user.</span></span>
+<span data-ttu-id="f5b17-155">V hello následující příkaz, nahraďte název jedinečný server hello  *\<postgresql_name >* zástupný symbol a uživatelské jméno pro hello  *\<admin_username >* zástupný symbol .</span><span class="sxs-lookup"><span data-stu-id="f5b17-155">In hello following command, substitute a unique server name for hello *\<postgresql_name>* placeholder and a user name for hello *\<admin_username>* placeholder.</span></span> <span data-ttu-id="f5b17-156">název serveru Hello se používá jako součást váš koncový bod PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže název hello musí toobe jedinečné ve všech serverech v Azure.</span><span class="sxs-lookup"><span data-stu-id="f5b17-156">hello server name is used as part of your PostgreSQL endpoint (`https://<postgresql_name>.postgres.database.azure.com`), so hello name needs toobe unique across all servers in Azure.</span></span> <span data-ttu-id="f5b17-157">Hello uživatelské jméno je hello počáteční databáze správce uživatelského účtu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-157">hello user name is for hello initial database admin user account.</span></span> <span data-ttu-id="f5b17-158">Jste výzvami toopick heslo pro tohoto uživatele.</span><span class="sxs-lookup"><span data-stu-id="f5b17-158">You are prompted toopick a password for this user.</span></span>
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>
 ```
 
-<span data-ttu-id="669f3-159">Při vytvoření databáze Azure PostgreSQL server pro rozhraní příkazového řádku Azure obsahuje informace o podobně jako v následujícím příkladu:</span><span class="sxs-lookup"><span data-stu-id="669f3-159">When the Azure Database for PostgreSQL server is created, the Azure CLI shows information similar to the following example:</span></span>
+<span data-ttu-id="f5b17-159">Při vytvoření hello Azure databáze pro PostgreSQL server je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:</span><span class="sxs-lookup"><span data-stu-id="f5b17-159">When hello Azure Database for PostgreSQL server is created, hello Azure CLI shows information similar toohello following example:</span></span>
 
 ```json
 {
@@ -180,15 +180,15 @@ az postgres server create --resource-group myResourceGroup --name <postgresql_na
 }
 ```
 
-### <a name="create-a-firewall-rule-for-the-azure-database-for-postgresql-server"></a><span data-ttu-id="669f3-160">Vytvoření pravidla firewallu pro databázi Azure pro PostgreSQL serveru</span><span class="sxs-lookup"><span data-stu-id="669f3-160">Create a firewall rule for the Azure Database for PostgreSQL server</span></span>
+### <a name="create-a-firewall-rule-for-hello-azure-database-for-postgresql-server"></a><span data-ttu-id="f5b17-160">Vytvořte pravidlo brány firewall pro hello Azure databáze PostgreSQL serveru</span><span class="sxs-lookup"><span data-stu-id="f5b17-160">Create a firewall rule for hello Azure Database for PostgreSQL server</span></span>
 
-<span data-ttu-id="669f3-161">Spusťte následující příkaz rozhraní příkazového řádku Azure pro povolení přístupu k databázi z všechny IP adresy.</span><span class="sxs-lookup"><span data-stu-id="669f3-161">Run the following Azure CLI command to allow access to the database from all IP addresses.</span></span>
+<span data-ttu-id="f5b17-161">Spusťte následující příkaz příkazového řádku Azure CLI, tooallow databázi toohello access ze všech IP adres hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-161">Run hello following Azure CLI command tooallow access toohello database from all IP addresses.</span></span>
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=255.255.255.255 --name AllowAllIPs
 ```
 
-<span data-ttu-id="669f3-162">Rozhraní příkazového řádku Azure potvrdí vytvoření pravidla brány firewall se výstup podobný v následujícím příkladu:</span><span class="sxs-lookup"><span data-stu-id="669f3-162">The Azure CLI confirms the firewall rule creation with output similar to the following example:</span></span>
+<span data-ttu-id="f5b17-162">Hello rozhraní příkazového řádku Azure potvrdí hello vytvoření pravidla brány firewall se výstup podobný toohello následující ukázka:</span><span class="sxs-lookup"><span data-stu-id="f5b17-162">hello Azure CLI confirms hello firewall rule creation with output similar toohello following example:</span></span>
 
 ```json
 {
@@ -201,69 +201,69 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 }
 ```
 
-## <a name="connect-your-python-flask-application-to-the-database"></a><span data-ttu-id="669f3-163">Připojení k databázi aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="669f3-163">Connect your Python Flask application to the database</span></span>
+## <a name="connect-your-python-flask-application-toohello-database"></a><span data-ttu-id="f5b17-163">Připojit databáze toohello aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="f5b17-163">Connect your Python Flask application toohello database</span></span>
 
-<span data-ttu-id="669f3-164">V tomto kroku připojíte vaši ukázkovou aplikaci Python Flask pro Azure databázi PostgreSQL serveru, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="669f3-164">In this step, you connect your Python Flask sample application to the Azure Database for PostgreSQL server you created.</span></span>
+<span data-ttu-id="f5b17-164">V tomto kroku připojíte vaší Python Flask ukázkové aplikace toohello Azure databáze PostgreSQL serveru, který jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="f5b17-164">In this step, you connect your Python Flask sample application toohello Azure Database for PostgreSQL server you created.</span></span>
 
-### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a><span data-ttu-id="669f3-165">Vytvořit prázdnou databázi a nastavení nového uživatele databáze aplikace</span><span class="sxs-lookup"><span data-stu-id="669f3-165">Create an empty database and set up a new database application user</span></span>
+### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a><span data-ttu-id="f5b17-165">Vytvořit prázdnou databázi a nastavení nového uživatele databáze aplikace</span><span class="sxs-lookup"><span data-stu-id="f5b17-165">Create an empty database and set up a new database application user</span></span>
 
-<span data-ttu-id="669f3-166">Vytvořte uživatele databáze s přístupem k jedné databáze.</span><span class="sxs-lookup"><span data-stu-id="669f3-166">Create a database user with access to a single database only.</span></span> <span data-ttu-id="669f3-167">Tyto přihlašovací údaje použijete k neudělujte aplikace úplný přístup k serveru.</span><span class="sxs-lookup"><span data-stu-id="669f3-167">You'll use these credentials to avoid giving the application full access to the server.</span></span>
+<span data-ttu-id="f5b17-166">Vytvořte uživatele databáze s tooa jedné databáze access jenom.</span><span class="sxs-lookup"><span data-stu-id="f5b17-166">Create a database user with access tooa single database only.</span></span> <span data-ttu-id="f5b17-167">Tyto přihlašovací údaje tooavoid poskytnutí hello aplikační úplný přístup toohello server budete používat.</span><span class="sxs-lookup"><span data-stu-id="f5b17-167">You'll use these credentials tooavoid giving hello application full access toohello server.</span></span>
 
-<span data-ttu-id="669f3-168">Připojení k databázi (se zobrazí výzva k zadání hesla správce).</span><span class="sxs-lookup"><span data-stu-id="669f3-168">Connect to the database (you're prompted for your admin password).</span></span>
+<span data-ttu-id="f5b17-168">Připojte databáze toohello (se zobrazí výzva k zadání hesla správce).</span><span class="sxs-lookup"><span data-stu-id="f5b17-168">Connect toohello database (you're prompted for your admin password).</span></span>
 
 ```bash
 psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
 ```
 
-<span data-ttu-id="669f3-169">Vytvoření databáze a uživatele z příkazového řádku PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-169">Create the database and user from the PostgreSQL CLI.</span></span>
+<span data-ttu-id="f5b17-169">Vytvoření databáze hello a uživatele z hello PostgreSQL rozhraní příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="f5b17-169">Create hello database and user from hello PostgreSQL CLI.</span></span>
 
 ```bash
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE eventregistration toomanager;
 ```
 
-<span data-ttu-id="669f3-170">Typ *\q* ukončíte klienta PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-170">Type *\q* to exit the PostgreSQL client.</span></span>
+<span data-ttu-id="f5b17-170">Typ *\q* tooexit hello PostgreSQL klienta.</span><span class="sxs-lookup"><span data-stu-id="f5b17-170">Type *\q* tooexit hello PostgreSQL client.</span></span>
 
-### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a><span data-ttu-id="669f3-171">Testování aplikace místně v databázi Azure PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="669f3-171">Test the application locally against the Azure PostgreSQL database</span></span> 
+### <a name="test-hello-application-locally-against-hello-azure-postgresql-database"></a><span data-ttu-id="f5b17-171">Testování aplikace hello místně na databázi Azure PostgreSQL hello</span><span class="sxs-lookup"><span data-stu-id="f5b17-171">Test hello application locally against hello Azure PostgreSQL database</span></span> 
 
-<span data-ttu-id="669f3-172">Po návratu teď do *aplikace* složky klonovaný úložiště Github, můžete spustit aplikace Python Flask aktualizací proměnné prostředí databáze.</span><span class="sxs-lookup"><span data-stu-id="669f3-172">Going back now to the *app* folder of the cloned Github repository, you can run the Python Flask application by updating the database environment variables.</span></span>
+<span data-ttu-id="f5b17-172">Návratem teď toohello *aplikace* složky hello klonovat úložiště Github, můžete spustit aplikace Python Flask hello aktualizací proměnné prostředí hello databáze.</span><span class="sxs-lookup"><span data-stu-id="f5b17-172">Going back now toohello *app* folder of hello cloned Github repository, you can run hello Python Flask application by updating hello database environment variables.</span></span>
 
 ```bash
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-<span data-ttu-id="669f3-173">Po úplným načtením aplikace se zobrazí podobná následující zpráva:</span><span class="sxs-lookup"><span data-stu-id="669f3-173">When the app is fully loaded, you see something similar to the following message:</span></span>
+<span data-ttu-id="f5b17-173">Když je aplikace hello úplným načtením, uvidíte něco podobné toohello následující zprávou:</span><span class="sxs-lookup"><span data-stu-id="f5b17-173">When hello app is fully loaded, you see something similar toohello following message:</span></span>
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
  * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C tooquit)
 ```
 
-<span data-ttu-id="669f3-174">Přejděte do http://127.0.0.1:5000 v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="669f3-174">Navigate to http://127.0.0.1:5000 in a browser.</span></span> <span data-ttu-id="669f3-175">Klikněte na tlačítko **zaregistrovat!**</span><span class="sxs-lookup"><span data-stu-id="669f3-175">Click **Register!**</span></span> <span data-ttu-id="669f3-176">a vytvořit testovací registrace.</span><span class="sxs-lookup"><span data-stu-id="669f3-176">and create a test registration.</span></span> <span data-ttu-id="669f3-177">Jsou nyní zápis dat do databáze v Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-177">You are now writing data to the database in Azure.</span></span>
+<span data-ttu-id="f5b17-174">Přejděte toohttp://127.0.0.1:5000 v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="f5b17-174">Navigate toohttp://127.0.0.1:5000 in a browser.</span></span> <span data-ttu-id="f5b17-175">Klikněte na tlačítko **zaregistrovat!**</span><span class="sxs-lookup"><span data-stu-id="f5b17-175">Click **Register!**</span></span> <span data-ttu-id="f5b17-176">a vytvořit testovací registrace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-176">and create a test registration.</span></span> <span data-ttu-id="f5b17-177">Databáze toohello data jsou nyní zápisu v Azure.</span><span class="sxs-lookup"><span data-stu-id="f5b17-177">You are now writing data toohello database in Azure.</span></span>
 
 ![Aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 
-### <a name="running-the-application-from-a-docker-container"></a><span data-ttu-id="669f3-179">Spuštění aplikace z kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="669f3-179">Running the application from a Docker Container</span></span>
+### <a name="running-hello-application-from-a-docker-container"></a><span data-ttu-id="f5b17-179">Spuštění aplikace hello z kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="f5b17-179">Running hello application from a Docker Container</span></span>
 
-<span data-ttu-id="669f3-180">Sestavení Docker kontejneru bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="669f3-180">Build the Docker container image.</span></span>
+<span data-ttu-id="f5b17-180">Sestavení bitové kopie kontejner Docker hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-180">Build hello Docker container image.</span></span>
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 ```
 
-<span data-ttu-id="669f3-181">Docker zobrazí potvrzení, že úspěšně vytvořil kontejneru.</span><span class="sxs-lookup"><span data-stu-id="669f3-181">Docker displays a confirmation that it successfully created the container.</span></span>
+<span data-ttu-id="f5b17-181">Docker zobrazí potvrzení tohoto kontejneru hello it byl úspěšně vytvořen.</span><span class="sxs-lookup"><span data-stu-id="f5b17-181">Docker displays a confirmation that it successfully created hello container.</span></span>
 
 ```bash
 Successfully built 7548f983a36b
 ```
 
-<span data-ttu-id="669f3-182">Přidání proměnné prostředí databáze do souboru proměnné prostředí *db.env*.</span><span class="sxs-lookup"><span data-stu-id="669f3-182">Add database environment variables to an environment variable file *db.env*.</span></span> <span data-ttu-id="669f3-183">Aplikace se připojí k produkční databázi PostgreSQL v Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-183">The app will connect to the PostgreSQL production database in Azure.</span></span>
+<span data-ttu-id="f5b17-182">Přidání databáze prostředí proměnné tooan prostředí proměnné souboru *db.env*.</span><span class="sxs-lookup"><span data-stu-id="f5b17-182">Add database environment variables tooan environment variable file *db.env*.</span></span> <span data-ttu-id="f5b17-183">aplikace Hello připojí produkční databázi PostgreSQL toohello v Azure.</span><span class="sxs-lookup"><span data-stu-id="f5b17-183">hello app will connect toohello PostgreSQL production database in Azure.</span></span>
 
 ```text
 DBHOST="<postgresql_name>.postgres.database.azure.com"
@@ -272,38 +272,38 @@ DBNAME="eventregistration"
 DBPASS="supersecretpass"
 ```
 
-<span data-ttu-id="669f3-184">Spusťte aplikaci v rámci kontejner Docker.</span><span class="sxs-lookup"><span data-stu-id="669f3-184">Run the app from within the Docker container.</span></span> <span data-ttu-id="669f3-185">Následující příkaz určuje soubor proměnných prostředí a Flask výchozí port 5000 se mapuje na místní port 5000.</span><span class="sxs-lookup"><span data-stu-id="669f3-185">The following command specifies the environment variable file and maps the default Flask port 5000 to local port 5000.</span></span>
+<span data-ttu-id="f5b17-184">Spuštění aplikace hello z v rámci kontejner Docker hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-184">Run hello app from within hello Docker container.</span></span> <span data-ttu-id="f5b17-185">Hello následující příkaz určuje hello souboru proměnných prostředí a mapuje hello výchozí Flask port 5000 toolocal port 5000.</span><span class="sxs-lookup"><span data-stu-id="f5b17-185">hello following command specifies hello environment variable file and maps hello default Flask port 5000 toolocal port 5000.</span></span>
 
 ```bash
 docker run -it --env-file db.env -p 5000:5000 flask-postgresql-sample
 ```
 
-<span data-ttu-id="669f3-186">Výstup se podobá jste viděli dříve.</span><span class="sxs-lookup"><span data-stu-id="669f3-186">The output is similar to what you saw earlier.</span></span> <span data-ttu-id="669f3-187">Ale migrace počáteční databáze už je nutné provést a proto bude přeskočena.</span><span class="sxs-lookup"><span data-stu-id="669f3-187">However, the initial database migration no longer needs to be performed and therefore is skipped.</span></span>
+<span data-ttu-id="f5b17-186">výstup Hello je podobné toowhat, které jste viděli dříve.</span><span class="sxs-lookup"><span data-stu-id="f5b17-186">hello output is similar toowhat you saw earlier.</span></span> <span data-ttu-id="f5b17-187">Migrace počáteční databáze hello však již nepotřebuje toobe provést a proto se přeskočí.</span><span class="sxs-lookup"><span data-stu-id="f5b17-187">However, hello initial database migration no longer needs toobe performed and therefore is skipped.</span></span>
 
 ```bash
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
  * Serving Flask app "app"
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C tooquit)
 ```
 
-<span data-ttu-id="669f3-188">Databáze již obsahuje registrace, kterou jste vytvořili dříve.</span><span class="sxs-lookup"><span data-stu-id="669f3-188">The database already contains the registration you created previously.</span></span>
+<span data-ttu-id="f5b17-188">Hello databáze již obsahuje hello registrace, které jste vytvořili dříve.</span><span class="sxs-lookup"><span data-stu-id="f5b17-188">hello database already contains hello registration you created previously.</span></span>
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-docker.png)
 
-## <a name="upload-the-docker-container-to-a-container-registry"></a><span data-ttu-id="669f3-190">Odešlete do kontejneru registru kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="669f3-190">Upload the Docker container to a container registry</span></span>
+## <a name="upload-hello-docker-container-tooa-container-registry"></a><span data-ttu-id="f5b17-190">Nahrát hello Docker kontejneru tooa kontejneru registru</span><span class="sxs-lookup"><span data-stu-id="f5b17-190">Upload hello Docker container tooa container registry</span></span>
 
-<span data-ttu-id="669f3-191">V tomto kroku nahrajte kontejner Docker do registru kontejneru.</span><span class="sxs-lookup"><span data-stu-id="669f3-191">In this step, you upload the Docker container to a container registry.</span></span> <span data-ttu-id="669f3-192">Budete používat Azure kontejneru registru, ale můžete také použít další oblíbených těch, jako je například Docker Hub.</span><span class="sxs-lookup"><span data-stu-id="669f3-192">You'll use Azure Container Registry, but you could also use other popular ones such as Docker Hub.</span></span>
+<span data-ttu-id="f5b17-191">V tomto kroku nahrát hello Docker kontejneru tooa kontejneru registru.</span><span class="sxs-lookup"><span data-stu-id="f5b17-191">In this step, you upload hello Docker container tooa container registry.</span></span> <span data-ttu-id="f5b17-192">Budete používat Azure kontejneru registru, ale můžete také použít další oblíbených těch, jako je například Docker Hub.</span><span class="sxs-lookup"><span data-stu-id="f5b17-192">You'll use Azure Container Registry, but you could also use other popular ones such as Docker Hub.</span></span>
 
-### <a name="create-an-azure-container-registry"></a><span data-ttu-id="669f3-193">Vytvoření služby Azure Container Registry</span><span class="sxs-lookup"><span data-stu-id="669f3-193">Create an Azure Container Registry</span></span>
+### <a name="create-an-azure-container-registry"></a><span data-ttu-id="f5b17-193">Vytvoření služby Azure Container Registry</span><span class="sxs-lookup"><span data-stu-id="f5b17-193">Create an Azure Container Registry</span></span>
 
-<span data-ttu-id="669f3-194">V následujícím příkazu k vytvoření kontejneru registru nahradit  *\<registry_name >* s názvem registru jedinečný kontejner Azure podle svého výběru.</span><span class="sxs-lookup"><span data-stu-id="669f3-194">In the following command to create a container registry replace *\<registry_name>* with a unique Azure container registry name of your choice.</span></span>
+<span data-ttu-id="f5b17-194">V následující příkaz toocreate registru kontejneru hello nahraďte  *\<registry_name >* s názvem registru jedinečný kontejner Azure podle svého výběru.</span><span class="sxs-lookup"><span data-stu-id="f5b17-194">In hello following command toocreate a container registry replace *\<registry_name>* with a unique Azure container registry name of your choice.</span></span>
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
-<span data-ttu-id="669f3-195">Výstup</span><span class="sxs-lookup"><span data-stu-id="669f3-195">Output</span></span>
+<span data-ttu-id="f5b17-195">Výstup</span><span class="sxs-lookup"><span data-stu-id="f5b17-195">Output</span></span>
 ```json
 {
   "adminUserEnabled": false,
@@ -325,16 +325,16 @@ az acr create --name <registry_name> --resource-group myResourceGroup --location
 }
 ```
 
-### <a name="retrieve-the-registry-credentials-for-pushing-and-pulling-docker-images"></a><span data-ttu-id="669f3-196">Načtení registru přihlašovací údaje pro vkládání a stahování imagí Dockeru</span><span class="sxs-lookup"><span data-stu-id="669f3-196">Retrieve the registry credentials for pushing and pulling Docker images</span></span>
+### <a name="retrieve-hello-registry-credentials-for-pushing-and-pulling-docker-images"></a><span data-ttu-id="f5b17-196">Načíst hello registru pověření pro vkládání a stahování imagí Dockeru</span><span class="sxs-lookup"><span data-stu-id="f5b17-196">Retrieve hello registry credentials for pushing and pulling Docker images</span></span>
 
-<span data-ttu-id="669f3-197">Zobrazíte registru přihlašovací údaje, nejprve povolte režim správce.</span><span class="sxs-lookup"><span data-stu-id="669f3-197">To show registry credentials, enable admin mode first.</span></span>
+<span data-ttu-id="f5b17-197">přihlašovací údaje tooshow registru, nejprve povolte režim správce.</span><span class="sxs-lookup"><span data-stu-id="f5b17-197">tooshow registry credentials, enable admin mode first.</span></span>
 
 ```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
 
-<span data-ttu-id="669f3-198">Zobrazí dvě hesla.</span><span class="sxs-lookup"><span data-stu-id="669f3-198">You see two passwords.</span></span> <span data-ttu-id="669f3-199">Poznamenejte si uživatelské jméno a heslo první.</span><span class="sxs-lookup"><span data-stu-id="669f3-199">Make note of the user name and the first password.</span></span>
+<span data-ttu-id="f5b17-198">Zobrazí dvě hesla.</span><span class="sxs-lookup"><span data-stu-id="f5b17-198">You see two passwords.</span></span> <span data-ttu-id="f5b17-199">Poznamenejte si hello uživatelské jméno a heslo první hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-199">Make note of hello user name and hello first password.</span></span>
 
 ```json
 {
@@ -352,7 +352,7 @@ az acr credential show -n <registry_name>
 }
 ```
 
-### <a name="upload-your-docker-container-to-azure-container-registry"></a><span data-ttu-id="669f3-200">Nahrát váš kontejner Docker do registru kontejner Azure</span><span class="sxs-lookup"><span data-stu-id="669f3-200">Upload your Docker container to Azure Container Registry</span></span>
+### <a name="upload-your-docker-container-tooazure-container-registry"></a><span data-ttu-id="f5b17-200">Nahrát váš tooAzure kontejner Docker registru kontejneru</span><span class="sxs-lookup"><span data-stu-id="f5b17-200">Upload your Docker container tooAzure Container Registry</span></span>
 
 ```bash
 docker login <registry_name>.azurecr.io -u <registry_name> -p "<registry_password>"
@@ -360,23 +360,23 @@ docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-s
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
 ```
 
-## <a name="deploy-the-docker-python-flask-application-to-azure"></a><span data-ttu-id="669f3-201">Nasaďte aplikaci Docker Python Flask do Azure</span><span class="sxs-lookup"><span data-stu-id="669f3-201">Deploy the Docker Python Flask application to Azure</span></span>
+## <a name="deploy-hello-docker-python-flask-application-tooazure"></a><span data-ttu-id="f5b17-201">Nasazení tooAzure aplikace Docker Python Flask hello</span><span class="sxs-lookup"><span data-stu-id="f5b17-201">Deploy hello Docker Python Flask application tooAzure</span></span>
 
-<span data-ttu-id="669f3-202">V tomto kroku nasadíte Docker na základě kontejneru aplikace Python Flask do služby Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="669f3-202">In this step, you deploy your Docker container-based Python Flask application to Azure App Service.</span></span>
+<span data-ttu-id="f5b17-202">V tomto kroku nasadíte vaší Docker na základě kontejneru Python Flask aplikace tooAzure služby App Service.</span><span class="sxs-lookup"><span data-stu-id="f5b17-202">In this step, you deploy your Docker container-based Python Flask application tooAzure App Service.</span></span>
 
-### <a name="create-an-app-service-plan"></a><span data-ttu-id="669f3-203">Vytvoření plánu služby App Service</span><span class="sxs-lookup"><span data-stu-id="669f3-203">Create an App Service plan</span></span>
+### <a name="create-an-app-service-plan"></a><span data-ttu-id="f5b17-203">Vytvoření plánu služby App Service</span><span class="sxs-lookup"><span data-stu-id="f5b17-203">Create an App Service plan</span></span>
 
-<span data-ttu-id="669f3-204">Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#create) vytvořte plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="669f3-204">Create an App Service plan with the [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span> 
+<span data-ttu-id="f5b17-204">Vytvořte plán služby App Service s hello [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="f5b17-204">Create an App Service plan with hello [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span> 
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-<span data-ttu-id="669f3-205">Následující příklad vytvoří plán aplikační služby se systémem Linux s názvem *myAppServicePlan* pomocí S1 cenová úroveň:</span><span class="sxs-lookup"><span data-stu-id="669f3-205">The following example creates a Linux-based App Service plan named *myAppServicePlan* using the S1 pricing tier:</span></span>
+<span data-ttu-id="f5b17-205">Hello následující příklad vytvoří plán aplikační služby se systémem Linux s názvem *myAppServicePlan* pomocí hello S1 cenové úrovně:</span><span class="sxs-lookup"><span data-stu-id="f5b17-205">hello following example creates a Linux-based App Service plan named *myAppServicePlan* using hello S1 pricing tier:</span></span>
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
-<span data-ttu-id="669f3-206">Když je vytvořen plán služby App Service, rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu:</span><span class="sxs-lookup"><span data-stu-id="669f3-206">When the App Service plan is created, the Azure CLI shows information similar to the following example:</span></span>
+<span data-ttu-id="f5b17-206">Při vytvoření hello plán služby App Service je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:</span><span class="sxs-lookup"><span data-stu-id="f5b17-206">When hello App Service plan is created, hello Azure CLI shows information similar toohello following example:</span></span>
 
 ```json 
 {
@@ -414,19 +414,19 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 }
 ``` 
 
-### <a name="create-a-web-app"></a><span data-ttu-id="669f3-207">Vytvoření webové aplikace</span><span class="sxs-lookup"><span data-stu-id="669f3-207">Create a web app</span></span>
+### <a name="create-a-web-app"></a><span data-ttu-id="f5b17-207">Vytvoření webové aplikace</span><span class="sxs-lookup"><span data-stu-id="f5b17-207">Create a web app</span></span>
 
-<span data-ttu-id="669f3-208">Vytvoření webové aplikace v *myAppServicePlan* plán služby App Service pomocí [az webapp vytvořit](/cli/azure/webapp#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="669f3-208">Create a web app in the *myAppServicePlan* App Service plan with the [az webapp create](/cli/azure/webapp#create) command.</span></span> 
+<span data-ttu-id="f5b17-208">Vytvoření webové aplikace v hello *myAppServicePlan* plán služby App Service se hello [az webapp vytvořit](/cli/azure/webapp#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="f5b17-208">Create a web app in hello *myAppServicePlan* App Service plan with hello [az webapp create](/cli/azure/webapp#create) command.</span></span> 
 
-<span data-ttu-id="669f3-209">Webová aplikace získáte hostování místa k nasazení kódu a poskytuje adresu URL zobrazení nasazené aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-209">The web app gives you a hosting space to deploy your code and provides a URL for you to view the deployed application.</span></span> <span data-ttu-id="669f3-210">Použijte k vytvoření webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-210">Use  to create the web app.</span></span> 
+<span data-ttu-id="f5b17-209">Hello webové aplikace poskytuje můžete hostování místo toodeploy kódu a poskytuje adresu URL pro vás tooview hello nasazené aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-209">hello web app gives you a hosting space toodeploy your code and provides a URL for you tooview hello deployed application.</span></span> <span data-ttu-id="f5b17-210">Použití toocreate hello webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-210">Use  toocreate hello web app.</span></span> 
 
-<span data-ttu-id="669f3-211">V následujícím příkazu nahraďte  *\<app_name >* zástupný symbol s jedinečným názvem aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-211">In the following command, replace the *\<app_name>* placeholder with a unique app name.</span></span> <span data-ttu-id="669f3-212">Tento název je součástí výchozí adresa URL pro webovou aplikaci, tak název musí být jedinečný v rámci všech aplikací v Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="669f3-212">This name is part of the default URL for the web app, so the name needs to be unique across all apps in Azure App Service.</span></span> 
+<span data-ttu-id="f5b17-211">Následující příkaz a nahraďte v hello hello  *\<app_name >* zástupný symbol s jedinečným názvem aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-211">In hello following command, replace hello *\<app_name>* placeholder with a unique app name.</span></span> <span data-ttu-id="f5b17-212">Tento název je součástí hello výchozí adresa URL pro webovou aplikaci hello, takže název hello musí toobe jedinečný mezi všechny aplikace v Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="f5b17-212">This name is part of hello default URL for hello web app, so hello name needs toobe unique across all apps in Azure App Service.</span></span> 
 
 ```azurecli
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-<span data-ttu-id="669f3-213">Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI zobrazí podobné informace jako v následujícím příkladu:</span><span class="sxs-lookup"><span data-stu-id="669f3-213">When the web app has been created, the Azure CLI shows information similar to the following example:</span></span> 
+<span data-ttu-id="f5b17-213">Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka:</span><span class="sxs-lookup"><span data-stu-id="f5b17-213">When hello web app has been created, hello Azure CLI shows information similar toohello following example:</span></span> 
 
 ```json 
 {
@@ -443,69 +443,69 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 }
 ```
 
-### <a name="configure-the-database-environment-variables"></a><span data-ttu-id="669f3-214">Konfigurace databáze proměnné prostředí</span><span class="sxs-lookup"><span data-stu-id="669f3-214">Configure the database environment variables</span></span>
+### <a name="configure-hello-database-environment-variables"></a><span data-ttu-id="f5b17-214">Nakonfigurujte proměnné prostředí databáze hello</span><span class="sxs-lookup"><span data-stu-id="f5b17-214">Configure hello database environment variables</span></span>
 
-<span data-ttu-id="669f3-215">V tomto kurzu definované proměnné prostředí pro připojení k vaší databázi PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="669f3-215">Earlier in the tutorial, you defined environment variables to connect to your PostgreSQL database.</span></span>
+<span data-ttu-id="f5b17-215">V kurzu hello jste definovali databázi PostgreSQL tooyour tooconnect proměnné prostředí.</span><span class="sxs-lookup"><span data-stu-id="f5b17-215">Earlier in hello tutorial, you defined environment variables tooconnect tooyour PostgreSQL database.</span></span>
 
-<span data-ttu-id="669f3-216">Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí [az webapp konfigurace appsettings sadu](/cli/azure/webapp/config#set) příkaz.</span><span class="sxs-lookup"><span data-stu-id="669f3-216">In App Service, you set environment variables as _app settings_ by using the [az webapp config appsettings set](/cli/azure/webapp/config#set) command.</span></span> 
+<span data-ttu-id="f5b17-216">Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí hello [az webapp konfigurace appsettings sadu](/cli/azure/webapp/config#set) příkaz.</span><span class="sxs-lookup"><span data-stu-id="f5b17-216">In App Service, you set environment variables as _app settings_ by using hello [az webapp config appsettings set](/cli/azure/webapp/config#set) command.</span></span> 
 
-<span data-ttu-id="669f3-217">Následující příklad určuje podrobnosti připojení databáze jako nastavení aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-217">The following example specifies the database connection details as app settings.</span></span> <span data-ttu-id="669f3-218">Používá také *PORT* proměnnou mapu PORT 5000 z vaší kontejner Docker pro příjem provozu HTTP na portu 80.</span><span class="sxs-lookup"><span data-stu-id="669f3-218">It also uses the *PORT* variable to map PORT 5000 from your Docker Container to receive HTTP traffic on PORT 80.</span></span>
+<span data-ttu-id="f5b17-217">Hello následující příklad určuje hello podrobnosti připojení databáze jako nastavení aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-217">hello following example specifies hello database connection details as app settings.</span></span> <span data-ttu-id="f5b17-218">Používá také hello *PORT* proměnné toomap PORT 5000 z provozu kontejner Docker tooreceive HTTP na portu 80.</span><span class="sxs-lookup"><span data-stu-id="f5b17-218">It also uses hello *PORT* variable toomap PORT 5000 from your Docker Container tooreceive HTTP traffic on PORT 80.</span></span>
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
 ```
 
-### <a name="configure-docker-container-deployment"></a><span data-ttu-id="669f3-219">Konfigurace nasazení kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="669f3-219">Configure Docker container deployment</span></span> 
+### <a name="configure-docker-container-deployment"></a><span data-ttu-id="f5b17-219">Konfigurace nasazení kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="f5b17-219">Configure Docker container deployment</span></span> 
 
-<span data-ttu-id="669f3-220">Služby App Service může automaticky stáhnout a spusťte kontejner Docker.</span><span class="sxs-lookup"><span data-stu-id="669f3-220">AppService can automatically download and run a Docker container.</span></span>
+<span data-ttu-id="f5b17-220">Služby App Service může automaticky stáhnout a spusťte kontejner Docker.</span><span class="sxs-lookup"><span data-stu-id="f5b17-220">AppService can automatically download and run a Docker container.</span></span>
 
 ```azurecli
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-custom-image-name "<registry_name>.azurecr.io/flask-postgresql-sample" --docker-registry-server-url "https://<registry_name>.azurecr.io"
 ```
 
-<span data-ttu-id="669f3-221">Kdykoli aktualizovat kontejner Docker nebo změnit nastavení, restartujte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="669f3-221">Whenever you update the Docker container or change the settings, restart the app.</span></span> <span data-ttu-id="669f3-222">Restartování zajišťuje, že všechna nastavení použita a kontejneru nejnovější pocházejí z registru.</span><span class="sxs-lookup"><span data-stu-id="669f3-222">Restarting ensures that all settings are applied and the latest container is pulled from the registry.</span></span>
+<span data-ttu-id="f5b17-221">Vždy, když se aktualizovat kontejner Docker hello nebo změnit nastavení hello, restartujte aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-221">Whenever you update hello Docker container or change hello settings, restart hello app.</span></span> <span data-ttu-id="f5b17-222">Restartování zajišťuje, že všechna nastavení použita a nejnovější kontejneru hello pocházejí z registru hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-222">Restarting ensures that all settings are applied and hello latest container is pulled from hello registry.</span></span>
 
 ```azurecli-interactive
 az webapp restart --resource-group myResourceGroup --name <app_name>
 ```
 
-### <a name="browse-to-the-azure-web-app"></a><span data-ttu-id="669f3-223">Přejděte do webové aplikace Azure</span><span class="sxs-lookup"><span data-stu-id="669f3-223">Browse to the Azure web app</span></span> 
+### <a name="browse-toohello-azure-web-app"></a><span data-ttu-id="f5b17-223">Procházet toohello webové aplikace Azure</span><span class="sxs-lookup"><span data-stu-id="f5b17-223">Browse toohello Azure web app</span></span> 
 
-<span data-ttu-id="669f3-224">Přejděte do nasazené webové aplikace pomocí webového prohlížeče.</span><span class="sxs-lookup"><span data-stu-id="669f3-224">Browse to the deployed web app using your web browser.</span></span> 
+<span data-ttu-id="f5b17-224">Procházet toohello nasadit webovou aplikaci pomocí webového prohlížeče.</span><span class="sxs-lookup"><span data-stu-id="f5b17-224">Browse toohello deployed web app using your web browser.</span></span> 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
 ```
 > [!NOTE]
-> <span data-ttu-id="669f3-225">Webové aplikace trvá déle, načíst, protože má kontejneru se stáhnou a spustí po změně konfigurace kontejneru.</span><span class="sxs-lookup"><span data-stu-id="669f3-225">The web app takes longer to load because the container has to be downloaded and started after the container configuration is changed.</span></span>
+> <span data-ttu-id="f5b17-225">webové aplikace Hello využívá delší tooload, protože hello kontejneru má toobe stáhnou a spustí po změně konfigurace kontejneru hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-225">hello web app takes longer tooload because hello container has toobe downloaded and started after hello container configuration is changed.</span></span>
 
-<span data-ttu-id="669f3-226">Zobrazí dříve zaregistrovaný hosté, které byly uloženy do Azure produkční databázi v předchozím kroku.</span><span class="sxs-lookup"><span data-stu-id="669f3-226">You see previously registered guests that were saved to the Azure production database in the previous step.</span></span>
+<span data-ttu-id="f5b17-226">Zobrazí dříve zaregistrovaný hosté, uložené v předchozím kroku hello toohello Azure produkční databázi.</span><span class="sxs-lookup"><span data-stu-id="f5b17-226">You see previously registered guests that were saved toohello Azure production database in hello previous step.</span></span>
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/docker-app-deployed.png)
 
-<span data-ttu-id="669f3-228">**Blahopřejeme!**</span><span class="sxs-lookup"><span data-stu-id="669f3-228">**Congratulations!**</span></span> <span data-ttu-id="669f3-229">Používáte Docker aplikace Python Flask na základě kontejneru ve službě Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="669f3-229">You're running a Docker container-based Python Flask app in Azure App Service.</span></span>
+<span data-ttu-id="f5b17-228">**Blahopřejeme!**</span><span class="sxs-lookup"><span data-stu-id="f5b17-228">**Congratulations!**</span></span> <span data-ttu-id="f5b17-229">Používáte Docker aplikace Python Flask na základě kontejneru ve službě Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="f5b17-229">You're running a Docker container-based Python Flask app in Azure App Service.</span></span>
 
-## <a name="update-data-model-and-redeploy"></a><span data-ttu-id="669f3-230">Aktualizace datový model a znovu ho zaveďte</span><span class="sxs-lookup"><span data-stu-id="669f3-230">Update data model and redeploy</span></span>
+## <a name="update-data-model-and-redeploy"></a><span data-ttu-id="f5b17-230">Aktualizace datový model a znovu ho zaveďte</span><span class="sxs-lookup"><span data-stu-id="f5b17-230">Update data model and redeploy</span></span>
 
-<span data-ttu-id="669f3-231">V tomto kroku přidáte počtu účastníků k registraci jednotlivých událostí aktualizací modelu hosta.</span><span class="sxs-lookup"><span data-stu-id="669f3-231">In this step, you add the number of attendees to each event registration by updating the Guest model.</span></span>
+<span data-ttu-id="f5b17-231">V tomto kroku přidáte hello počet registrace události tooeach účastníci aktualizací hello hosta modelu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-231">In this step, you add hello number of attendees tooeach event registration by updating hello Guest model.</span></span>
 
-<span data-ttu-id="669f3-232">Podívejte se *0,2 Migrace* verzi pomocí následujícího příkazu git:</span><span class="sxs-lookup"><span data-stu-id="669f3-232">Check out the *0.2-migration* release with the following git command:</span></span>
+<span data-ttu-id="f5b17-232">Podívejte se na hello *0,2 Migrace* verzi s hello následující příkaz git:</span><span class="sxs-lookup"><span data-stu-id="f5b17-232">Check out hello *0.2-migration* release with hello following git command:</span></span>
 
 ```bash
 git checkout tags/0.2-migration
 ```
 
-<span data-ttu-id="669f3-233">Tato verze již provedli nezbytné změny zobrazení, řadiče a modelu.</span><span class="sxs-lookup"><span data-stu-id="669f3-233">This release already made the necessary changes to views, controllers, and model.</span></span> <span data-ttu-id="669f3-234">Zahrnuje také migrace databáze generované prostřednictvím *destilační přístroj* (`flask db migrate`).</span><span class="sxs-lookup"><span data-stu-id="669f3-234">It also includes a database migration generated via *alembic* (`flask db migrate`).</span></span> <span data-ttu-id="669f3-235">Zobrazí všechny změny provedené pomocí následujícího příkazu git:</span><span class="sxs-lookup"><span data-stu-id="669f3-235">You can see all changes made via the following git command:</span></span>
+<span data-ttu-id="f5b17-233">Tato verze už provedených hello tooviews potřebné změny, řadiče a modelu.</span><span class="sxs-lookup"><span data-stu-id="f5b17-233">This release already made hello necessary changes tooviews, controllers, and model.</span></span> <span data-ttu-id="f5b17-234">Zahrnuje také migrace databáze generované prostřednictvím *destilační přístroj* (`flask db migrate`).</span><span class="sxs-lookup"><span data-stu-id="f5b17-234">It also includes a database migration generated via *alembic* (`flask db migrate`).</span></span> <span data-ttu-id="f5b17-235">Zobrazí všechny změny provedené pomocí následujícího příkazu git hello:</span><span class="sxs-lookup"><span data-stu-id="f5b17-235">You can see all changes made via hello following git command:</span></span>
 
 ```bash
 git diff 0.1-initialapp 0.2-migration
 ```
 
-### <a name="test-your-changes-locally"></a><span data-ttu-id="669f3-236">Otestujte provedené změny místně</span><span class="sxs-lookup"><span data-stu-id="669f3-236">Test your changes locally</span></span>
+### <a name="test-your-changes-locally"></a><span data-ttu-id="f5b17-236">Otestujte provedené změny místně</span><span class="sxs-lookup"><span data-stu-id="f5b17-236">Test your changes locally</span></span>
 
-<span data-ttu-id="669f3-237">Spusťte následující příkazy k testování změny místně spuštěním flask server.</span><span class="sxs-lookup"><span data-stu-id="669f3-237">Run the following commands to test your changes locally by running the flask server.</span></span>
+<span data-ttu-id="f5b17-237">Spusťte následující příkazy tootest hello změny místně používají server flask hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-237">Run hello following commands tootest your changes locally by running hello flask server.</span></span>
 
-<span data-ttu-id="669f3-238">Mac / Linux:</span><span class="sxs-lookup"><span data-stu-id="669f3-238">Mac / Linux:</span></span>
+<span data-ttu-id="f5b17-238">Mac / Linux:</span><span class="sxs-lookup"><span data-stu-id="f5b17-238">Mac / Linux:</span></span>
 ```bash
 source venv/bin/activate
 cd app
@@ -513,13 +513,13 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-<span data-ttu-id="669f3-239">Přejděte do http://127.0.0.1:5000 v prohlížeči a prohlédněte si změny.</span><span class="sxs-lookup"><span data-stu-id="669f3-239">Navigate to http://127.0.0.1:5000 in your browser to view the changes.</span></span> <span data-ttu-id="669f3-240">Vytvořte testovací registrace.</span><span class="sxs-lookup"><span data-stu-id="669f3-240">Create a test registration.</span></span>
+<span data-ttu-id="f5b17-239">Přejděte v prohlížeči tooview hello změny toohttp://127.0.0.1:5000.</span><span class="sxs-lookup"><span data-stu-id="f5b17-239">Navigate toohttp://127.0.0.1:5000 in your browser tooview hello changes.</span></span> <span data-ttu-id="f5b17-240">Vytvořte testovací registrace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-240">Create a test registration.</span></span>
 
 ![Docker na základě kontejneru aplikace Python Flask spuštěn místně](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app-v2.png)
 
-### <a name="publish-changes-to-azure"></a><span data-ttu-id="669f3-242">Publikování změn do Azure</span><span class="sxs-lookup"><span data-stu-id="669f3-242">Publish changes to Azure</span></span>
+### <a name="publish-changes-tooazure"></a><span data-ttu-id="f5b17-242">Publikování změn tooAzure</span><span class="sxs-lookup"><span data-stu-id="f5b17-242">Publish changes tooAzure</span></span>
 
-<span data-ttu-id="669f3-243">Vytvořit novou bitovou kopii docker, push registru kontejneru a restartujte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="669f3-243">Build the new docker image, push it to the container registry, and restart the app.</span></span>
+<span data-ttu-id="f5b17-243">Sestavení hello novou bitovou kopii docker, poslat ho toohello kontejneru registru a restartujte aplikaci hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-243">Build hello new docker image, push it toohello container registry, and restart hello app.</span></span>
 
 ```bash
 docker build -t flask-postgresql-sample .
@@ -528,7 +528,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 az appservice web restart --resource-group myResourceGroup --name <app_name>
 ```
 
-<span data-ttu-id="669f3-244">Přejděte do vaší webové aplikace Azure a znovu vyzkoušet nové funkce.</span><span class="sxs-lookup"><span data-stu-id="669f3-244">Navigate to your Azure web app and try out the new functionality again.</span></span> <span data-ttu-id="669f3-245">Vytvořte další registrace události.</span><span class="sxs-lookup"><span data-stu-id="669f3-245">Create another event registration.</span></span>
+<span data-ttu-id="f5b17-244">Přejděte tooyour webové aplikace Azure a znovu vyzkoušet nové funkce hello.</span><span class="sxs-lookup"><span data-stu-id="f5b17-244">Navigate tooyour Azure web app and try out hello new functionality again.</span></span> <span data-ttu-id="f5b17-245">Vytvořte další registrace události.</span><span class="sxs-lookup"><span data-stu-id="f5b17-245">Create another event registration.</span></span>
 
 ```bash 
 http://<app_name>.azurewebsites.net 
@@ -536,21 +536,21 @@ http://<app_name>.azurewebsites.net
 
 ![Docker Python Flask aplikace v Azure App Service](./media/app-service-web-tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
-## <a name="manage-your-azure-web-app"></a><span data-ttu-id="669f3-247">Správa Azure webové aplikace</span><span class="sxs-lookup"><span data-stu-id="669f3-247">Manage your Azure web app</span></span>
+## <a name="manage-your-azure-web-app"></a><span data-ttu-id="f5b17-247">Správa Azure webové aplikace</span><span class="sxs-lookup"><span data-stu-id="f5b17-247">Manage your Azure web app</span></span>
 
-<span data-ttu-id="669f3-248">Přejděte na [portál Azure](https://portal.azure.com) zobrazíte webové aplikace, které jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="669f3-248">Go to the [Azure portal](https://portal.azure.com) to see the web app you created.</span></span>
+<span data-ttu-id="f5b17-248">Přejděte toohello [portál Azure](https://portal.azure.com) toosee hello webovou aplikaci jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="f5b17-248">Go toohello [Azure portal](https://portal.azure.com) toosee hello web app you created.</span></span>
 
-<span data-ttu-id="669f3-249">V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.</span><span class="sxs-lookup"><span data-stu-id="669f3-249">From the left menu, click **App Services**, then click the name of your Azure web app.</span></span>
+<span data-ttu-id="f5b17-249">V levé nabídce hello, klikněte na **App Services**, pak klikněte na název hello Azure webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-249">From hello left menu, click **App Services**, then click hello name of your Azure web app.</span></span>
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-docker-python-postgresql-app/app-resource.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-tutorial-docker-python-postgresql-app/app-resource.png)
 
-<span data-ttu-id="669f3-251">Ve výchozím nastavení, zobrazí na portálu vaší webové aplikace **přehled** stránky.</span><span class="sxs-lookup"><span data-stu-id="669f3-251">By default, the portal shows your web app's **Overview** page.</span></span> <span data-ttu-id="669f3-252">Tato stránka poskytuje přehled, jak si vaše aplikace stojí.</span><span class="sxs-lookup"><span data-stu-id="669f3-252">This page gives you a view of how your app is doing.</span></span> <span data-ttu-id="669f3-253">Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.</span><span class="sxs-lookup"><span data-stu-id="669f3-253">Here, you can also perform basic management tasks like browse, stop, start, restart, and delete.</span></span> <span data-ttu-id="669f3-254">Karty na levé straně stránky zobrazí stránek jinou konfiguraci, že můžete otevřít.</span><span class="sxs-lookup"><span data-stu-id="669f3-254">The tabs on the left side of the page show the different configuration pages you can open.</span></span>
+<span data-ttu-id="f5b17-251">Ve výchozím nastavení, hello portál zobrazuje vaší webové aplikace **přehled** stránky.</span><span class="sxs-lookup"><span data-stu-id="f5b17-251">By default, hello portal shows your web app's **Overview** page.</span></span> <span data-ttu-id="f5b17-252">Tato stránka poskytuje přehled, jak si vaše aplikace stojí.</span><span class="sxs-lookup"><span data-stu-id="f5b17-252">This page gives you a view of how your app is doing.</span></span> <span data-ttu-id="f5b17-253">Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.</span><span class="sxs-lookup"><span data-stu-id="f5b17-253">Here, you can also perform basic management tasks like browse, stop, start, restart, and delete.</span></span> <span data-ttu-id="f5b17-254">Hello karty na levé straně stránky hello hello zobrazit stránky hello jinou konfiguraci, které můžete otevřít.</span><span class="sxs-lookup"><span data-stu-id="f5b17-254">hello tabs on hello left side of hello page show hello different configuration pages you can open.</span></span>
 
 ![Stránka služby App Service na webu Azure Portal](./media/app-service-web-tutorial-docker-python-postgresql-app/app-mgmt.png)
 
-## <a name="next-steps"></a><span data-ttu-id="669f3-256">Další kroky</span><span class="sxs-lookup"><span data-stu-id="669f3-256">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f5b17-256">Další kroky</span><span class="sxs-lookup"><span data-stu-id="f5b17-256">Next steps</span></span>
 
-<span data-ttu-id="669f3-257">Přechodu na dalším kurzu se dozvíte, jak namapovat vlastní název DNS do vaší webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="669f3-257">Advance to the next tutorial to learn how to map a custom DNS name to your web app.</span></span>
+<span data-ttu-id="f5b17-257">Posunutí toohello další kurz toolearn jak toomap vlastní DNS název tooyour webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="f5b17-257">Advance toohello next tutorial toolearn how toomap a custom DNS name tooyour web app.</span></span>
 
 > [!div class="nextstepaction"] 
-> [<span data-ttu-id="669f3-258">Mapování existujícího vlastního názvu DNS na Azure Web Apps</span><span class="sxs-lookup"><span data-stu-id="669f3-258">Map an existing custom DNS name to Azure Web Apps</span></span>](app-service-web-tutorial-custom-domain.md)
+> [<span data-ttu-id="f5b17-258">Mapovat existující vlastní DNS název tooAzure webové aplikace</span><span class="sxs-lookup"><span data-stu-id="f5b17-258">Map an existing custom DNS name tooAzure Web Apps</span></span>](app-service-web-tutorial-custom-domain.md)

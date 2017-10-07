@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Intacct | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Intacct."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Intacct."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,252 +13,252 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c203b192b9da0d280cbd7f6c123219242ee4a3d1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3500039615166c2f61fb408d85bb82dfaefba134
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-intacct"></a><span data-ttu-id="96f49-103">Kurz: Azure Active Directory integrace s Intacct</span><span class="sxs-lookup"><span data-stu-id="96f49-103">Tutorial: Azure Active Directory integration with Intacct</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-intacct"></a><span data-ttu-id="e8b93-103">Kurz: Azure Active Directory integrace s Intacct</span><span class="sxs-lookup"><span data-stu-id="e8b93-103">Tutorial: Azure Active Directory integration with Intacct</span></span>
 
-<span data-ttu-id="96f49-104">V tomto kurzu zjistěte, jak integrovat Intacct s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="96f49-104">In this tutorial, you learn how to integrate Intacct with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="e8b93-104">V tomto kurzu zjistíte, jak toointegrate Intacct s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="e8b93-104">In this tutorial, you learn how toointegrate Intacct with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="96f49-105">Integrace Intacct s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="96f49-105">Integrating Intacct with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="e8b93-105">Integrace Intacct s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="e8b93-105">Integrating Intacct with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="96f49-106">Můžete řídit ve službě Azure AD, který má přístup k Intacct</span><span class="sxs-lookup"><span data-stu-id="96f49-106">You can control in Azure AD who has access to Intacct</span></span>
-- <span data-ttu-id="96f49-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k Intacct (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="96f49-107">You can enable your users to automatically get signed-on to Intacct (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="96f49-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="96f49-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="e8b93-106">Můžete řídit ve službě Azure AD, který má přístup tooIntacct</span><span class="sxs-lookup"><span data-stu-id="e8b93-106">You can control in Azure AD who has access tooIntacct</span></span>
+- <span data-ttu-id="e8b93-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooIntacct (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="e8b93-107">You can enable your users tooautomatically get signed-on tooIntacct (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="e8b93-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="e8b93-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="96f49-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="96f49-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="e8b93-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="e8b93-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="96f49-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="96f49-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e8b93-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="e8b93-110">Prerequisites</span></span>
 
-<span data-ttu-id="96f49-111">Konfigurace integrace Azure AD s Intacct, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="96f49-111">To configure Azure AD integration with Intacct, you need the following items:</span></span>
+<span data-ttu-id="e8b93-111">Integrace služby Azure AD s Intacct tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="e8b93-111">tooconfigure Azure AD integration with Intacct, you need hello following items:</span></span>
 
-- <span data-ttu-id="96f49-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="96f49-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="96f49-113">Intacct jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="96f49-113">An Intacct single sign-on enabled subscription</span></span>
+- <span data-ttu-id="e8b93-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="e8b93-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="e8b93-113">Intacct jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="e8b93-113">An Intacct single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="96f49-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="96f49-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="e8b93-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="e8b93-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="96f49-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="96f49-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="e8b93-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="e8b93-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="96f49-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="96f49-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="96f49-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="96f49-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="e8b93-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="e8b93-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="e8b93-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="e8b93-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="96f49-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="96f49-118">Scenario description</span></span>
-<span data-ttu-id="96f49-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="96f49-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="96f49-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="96f49-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="e8b93-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="e8b93-118">Scenario description</span></span>
+<span data-ttu-id="e8b93-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="e8b93-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="e8b93-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="e8b93-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="96f49-121">Přidání Intacct z Galerie</span><span class="sxs-lookup"><span data-stu-id="96f49-121">Adding Intacct from the gallery</span></span>
-2. <span data-ttu-id="96f49-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="96f49-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="e8b93-121">Přidání Intacct z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="e8b93-121">Adding Intacct from hello gallery</span></span>
+2. <span data-ttu-id="e8b93-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e8b93-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-intacct-from-the-gallery"></a><span data-ttu-id="96f49-123">Přidání Intacct z Galerie</span><span class="sxs-lookup"><span data-stu-id="96f49-123">Adding Intacct from the gallery</span></span>
-<span data-ttu-id="96f49-124">Při konfiguraci integrace Intacct do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Intacct z galerie.</span><span class="sxs-lookup"><span data-stu-id="96f49-124">To configure the integration of Intacct into Azure AD, you need to add Intacct from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-intacct-from-hello-gallery"></a><span data-ttu-id="e8b93-123">Přidání Intacct z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="e8b93-123">Adding Intacct from hello gallery</span></span>
+<span data-ttu-id="e8b93-124">tooconfigure hello integrace Intacct do Azure AD, je nutné tooadd Intacct hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="e8b93-124">tooconfigure hello integration of Intacct into Azure AD, you need tooadd Intacct from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="96f49-125">**Pokud chcete přidat Intacct z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="96f49-125">**To add Intacct from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="e8b93-125">**tooadd Intacct z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="e8b93-125">**tooadd Intacct from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="96f49-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="96f49-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="e8b93-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="e8b93-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="96f49-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="96f49-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="96f49-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="96f49-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="e8b93-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="e8b93-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="96f49-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="e8b93-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e8b93-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="96f49-133">Do vyhledávacího pole zadejte **Intacct**.</span><span class="sxs-lookup"><span data-stu-id="96f49-133">In the search box, type **Intacct**.</span></span>
+4. <span data-ttu-id="e8b93-133">Hello vyhledávacího pole zadejte **Intacct**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-133">In hello search box, type **Intacct**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_search.png)
 
-5. <span data-ttu-id="96f49-135">Na panelu výsledků vyberte **Intacct**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="96f49-135">In the results panel, select **Intacct**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="e8b93-135">Na panelu výsledků hello vyberte **Intacct**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="e8b93-135">In hello results panel, select **Intacct**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="96f49-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="96f49-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="96f49-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Intacct podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="96f49-138">In this section, you configure and test Azure AD single sign-on with Intacct based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="e8b93-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e8b93-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="e8b93-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Intacct podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="e8b93-138">In this section, you configure and test Azure AD single sign-on with Intacct based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="96f49-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Intacct je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="96f49-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Intacct is to a user in Azure AD.</span></span> <span data-ttu-id="96f49-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Intacct musí navázat.</span><span class="sxs-lookup"><span data-stu-id="96f49-140">In other words, a link relationship between an Azure AD user and the related user in Intacct needs to be established.</span></span>
+<span data-ttu-id="e8b93-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Intacct je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e8b93-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Intacct is tooa user in Azure AD.</span></span> <span data-ttu-id="e8b93-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Intacct musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="e8b93-140">In other words, a link relationship between an Azure AD user and hello related user in Intacct needs toobe established.</span></span>
 
-<span data-ttu-id="96f49-141">V Intacct, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="96f49-141">In Intacct, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="e8b93-141">V Intacct, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="e8b93-141">In Intacct, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="96f49-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Intacct, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="96f49-142">To configure and test Azure AD single sign-on with Intacct, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="e8b93-142">tooconfigure a testu Azure AD jednotné přihlašování s Intacct, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="e8b93-142">tooconfigure and test Azure AD single sign-on with Intacct, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="96f49-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="96f49-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="96f49-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="96f49-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="96f49-145">**[Vytváření testovacího uživatele Intacct](#creating-an-intacct-test-user)**  – Pokud chcete mít protějšek Britta Simon v Intacct propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="96f49-145">**[Creating an Intacct test user](#creating-an-intacct-test-user)** - to have a counterpart of Britta Simon in Intacct that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="96f49-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="96f49-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="96f49-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="96f49-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="e8b93-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="e8b93-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="e8b93-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="e8b93-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="e8b93-145">**[Vytváření testovacího uživatele Intacct](#creating-an-intacct-test-user)**  -toohave protějšek Britta Simon v Intacct, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="e8b93-145">**[Creating an Intacct test user](#creating-an-intacct-test-user)** - toohave a counterpart of Britta Simon in Intacct that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="e8b93-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e8b93-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="e8b93-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="e8b93-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="96f49-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="96f49-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="e8b93-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="e8b93-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="96f49-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Intacct.</span><span class="sxs-lookup"><span data-stu-id="96f49-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Intacct application.</span></span>
+<span data-ttu-id="e8b93-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Intacct.</span><span class="sxs-lookup"><span data-stu-id="e8b93-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Intacct application.</span></span>
 
-<span data-ttu-id="96f49-150">**Ke konfiguraci Azure AD jednotné přihlašování s Intacct, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="96f49-150">**To configure Azure AD single sign-on with Intacct, perform the following steps:**</span></span>
+<span data-ttu-id="e8b93-150">**tooconfigure Azure AD jednotné přihlašování s Intacct, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="e8b93-150">**tooconfigure Azure AD single sign-on with Intacct, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="96f49-151">Na portálu Azure na **Intacct** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="96f49-151">In the Azure portal, on the **Intacct** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="e8b93-151">V portálu Azure, na hello hello **Intacct** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-151">In hello Azure portal, on hello **Intacct** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="96f49-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="96f49-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="e8b93-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e8b93-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_samlbase.png)
 
-3. <span data-ttu-id="96f49-155">Na **Intacct domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="96f49-155">On the **Intacct Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="e8b93-155">Na hello **Intacct domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="e8b93-155">On hello **Intacct Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_url.png)
 
-    <span data-ttu-id="96f49-157">V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:</span><span class="sxs-lookup"><span data-stu-id="96f49-157">In the **Reply URL** textbox, type a URL using the following pattern:</span></span>
+    <span data-ttu-id="e8b93-157">V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:</span><span class="sxs-lookup"><span data-stu-id="e8b93-157">In hello **Reply URL** textbox, type a URL using hello following pattern:</span></span>
     | |
     |--|
     | `https://<companyname>.intacct.com/ia/acct/sso_response.phtml`|
     | `https://www.intacct.com/ia/acct/sso_response.phtml` |
 
     > [!NOTE] 
-    > <span data-ttu-id="96f49-158">Tato hodnota není skutečné.</span><span class="sxs-lookup"><span data-stu-id="96f49-158">This value is not real.</span></span> <span data-ttu-id="96f49-159">Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="96f49-159">Update this value with the actual Reply URL.</span></span> <span data-ttu-id="96f49-160">Obraťte se na [tým podpory Intacct](https://us.intacct.com/support) získat tuto hodnotu.</span><span class="sxs-lookup"><span data-stu-id="96f49-160">Contact [Intacct support team](https://us.intacct.com/support) to get this value.</span></span>
+    > <span data-ttu-id="e8b93-158">Tato hodnota není skutečné.</span><span class="sxs-lookup"><span data-stu-id="e8b93-158">This value is not real.</span></span> <span data-ttu-id="e8b93-159">Aktualizujte tuto hodnotu s hello skutečná adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="e8b93-159">Update this value with hello actual Reply URL.</span></span> <span data-ttu-id="e8b93-160">Obraťte se na [tým podpory Intacct](https://us.intacct.com/support) tooget tuto hodnotu.</span><span class="sxs-lookup"><span data-stu-id="e8b93-160">Contact [Intacct support team](https://us.intacct.com/support) tooget this value.</span></span>
 
-4. <span data-ttu-id="96f49-161">Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.</span><span class="sxs-lookup"><span data-stu-id="96f49-161">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="e8b93-161">Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="e8b93-161">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_certificate.png) 
 
-5. <span data-ttu-id="96f49-163">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="96f49-163">Click **Save** button.</span></span>
+5. <span data-ttu-id="e8b93-163">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e8b93-163">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="96f49-165">Na **Intacct konfigurace** klikněte na tlačítko **konfigurace Intacct** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-165">On the **Intacct Configuration** section, click **Configure Intacct** to open **Configure sign-on** window.</span></span> <span data-ttu-id="96f49-166">Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="96f49-166">Copy the **SAML Entity ID and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="e8b93-165">Na hello **Intacct konfigurace** klikněte na tlačítko **konfigurace Intacct** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="e8b93-165">On hello **Intacct Configuration** section, click **Configure Intacct** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="e8b93-166">Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="e8b93-166">Copy hello **SAML Entity ID and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_configure.png) 
 
-7. <span data-ttu-id="96f49-168">V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti Intacct jako správce.</span><span class="sxs-lookup"><span data-stu-id="96f49-168">In a different web browser window, sign in to your Intacct company site as an administrator.</span></span>
+7. <span data-ttu-id="e8b93-168">V okně prohlížeče jiný web přihlaste jako správce tooyour Intacct společnosti lokality.</span><span class="sxs-lookup"><span data-stu-id="e8b93-168">In a different web browser window, sign in tooyour Intacct company site as an administrator.</span></span>
 
-8. <span data-ttu-id="96f49-169">Klikněte **společnosti** a pak klikněte **informace společnosti**.</span><span class="sxs-lookup"><span data-stu-id="96f49-169">Click the **Company** tab, and then click **Company Info**.</span></span>
+8. <span data-ttu-id="e8b93-169">Klikněte na tlačítko hello **společnosti** a pak klikněte **informace společnosti**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-169">Click hello **Company** tab, and then click **Company Info**.</span></span>
 
-    <span data-ttu-id="96f49-170">![Společnosti](./media/active-directory-saas-intacct-tutorial/ic790037.png "společnosti")</span><span class="sxs-lookup"><span data-stu-id="96f49-170">![Company](./media/active-directory-saas-intacct-tutorial/ic790037.png "Company")</span></span>
+    <span data-ttu-id="e8b93-170">![Společnosti](./media/active-directory-saas-intacct-tutorial/ic790037.png "společnosti")</span><span class="sxs-lookup"><span data-stu-id="e8b93-170">![Company](./media/active-directory-saas-intacct-tutorial/ic790037.png "Company")</span></span>
 
-9. <span data-ttu-id="96f49-171">Klikněte **zabezpečení** a pak klikněte **upravit**.</span><span class="sxs-lookup"><span data-stu-id="96f49-171">Click the **Security** tab, and then click **Edit**.</span></span>
+9. <span data-ttu-id="e8b93-171">Klikněte na tlačítko hello **zabezpečení** a pak klikněte **upravit**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-171">Click hello **Security** tab, and then click **Edit**.</span></span>
 
-    <span data-ttu-id="96f49-172">![Zabezpečení](./media/active-directory-saas-intacct-tutorial/ic790038.png "zabezpečení")</span><span class="sxs-lookup"><span data-stu-id="96f49-172">![Security](./media/active-directory-saas-intacct-tutorial/ic790038.png "Security")</span></span>
+    <span data-ttu-id="e8b93-172">![Zabezpečení](./media/active-directory-saas-intacct-tutorial/ic790038.png "zabezpečení")</span><span class="sxs-lookup"><span data-stu-id="e8b93-172">![Security](./media/active-directory-saas-intacct-tutorial/ic790038.png "Security")</span></span>
 
-10. <span data-ttu-id="96f49-173">V **jednotné přihlašování (SSO)** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="96f49-173">In the **Single sign on (SSO)** section, perform the following steps:</span></span>
+10. <span data-ttu-id="e8b93-173">V hello **jednotné přihlašování (SSO)** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="e8b93-173">In hello **Single sign on (SSO)** section, perform hello following steps:</span></span>
 
-    <span data-ttu-id="96f49-174">![Jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/ic790039.png "jednotné přihlašování")</span><span class="sxs-lookup"><span data-stu-id="96f49-174">![Single sign on](./media/active-directory-saas-intacct-tutorial/ic790039.png "single sign on")</span></span>
+    <span data-ttu-id="e8b93-174">![Jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/ic790039.png "jednotné přihlašování")</span><span class="sxs-lookup"><span data-stu-id="e8b93-174">![Single sign on](./media/active-directory-saas-intacct-tutorial/ic790039.png "single sign on")</span></span>
 
-    <span data-ttu-id="96f49-175">a.</span><span class="sxs-lookup"><span data-stu-id="96f49-175">a.</span></span> <span data-ttu-id="96f49-176">Vyberte **povolení jednotného přihlašování na**.</span><span class="sxs-lookup"><span data-stu-id="96f49-176">Select **Enable single sign on**.</span></span>
+    <span data-ttu-id="e8b93-175">a.</span><span class="sxs-lookup"><span data-stu-id="e8b93-175">a.</span></span> <span data-ttu-id="e8b93-176">Vyberte **povolení jednotného přihlašování na**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-176">Select **Enable single sign on**.</span></span>
 
-    <span data-ttu-id="96f49-177">b.</span><span class="sxs-lookup"><span data-stu-id="96f49-177">b.</span></span> <span data-ttu-id="96f49-178">Jako **typ zprostředkovatele Identity**, vyberte **SAML 2.0**.</span><span class="sxs-lookup"><span data-stu-id="96f49-178">As **Identity provider type**, select **SAML 2.0**.</span></span>
+    <span data-ttu-id="e8b93-177">b.</span><span class="sxs-lookup"><span data-stu-id="e8b93-177">b.</span></span> <span data-ttu-id="e8b93-178">Jako **typ zprostředkovatele Identity**, vyberte **SAML 2.0**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-178">As **Identity provider type**, select **SAML 2.0**.</span></span>
 
-    <span data-ttu-id="96f49-179">c.</span><span class="sxs-lookup"><span data-stu-id="96f49-179">c.</span></span> <span data-ttu-id="96f49-180">V **URL vystavitele** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="96f49-180">In **Issuer URL** textbox, paste the value of **SAML Entity ID** which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="e8b93-179">c.</span><span class="sxs-lookup"><span data-stu-id="e8b93-179">c.</span></span> <span data-ttu-id="e8b93-180">V **URL vystavitele** textovému poli, vložte hodnotu hello **SAML Entity ID** který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="e8b93-180">In **Issuer URL** textbox, paste hello value of **SAML Entity ID** which you have copied from Azure portal.</span></span>
    
-    <span data-ttu-id="96f49-181">d.</span><span class="sxs-lookup"><span data-stu-id="96f49-181">d.</span></span> <span data-ttu-id="96f49-182">V **přihlašovací adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="96f49-182">In **Login URL** textbox, paste the value of **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="e8b93-181">d.</span><span class="sxs-lookup"><span data-stu-id="e8b93-181">d.</span></span> <span data-ttu-id="e8b93-182">V **přihlašovací adresa URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="e8b93-182">In **Login URL** textbox, paste hello value of **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
 
-    <span data-ttu-id="96f49-183">e.</span><span class="sxs-lookup"><span data-stu-id="96f49-183">e.</span></span> <span data-ttu-id="96f49-184">Otevřete váš **kódování base-64** kódování certifikátu v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **certifikát** pole.</span><span class="sxs-lookup"><span data-stu-id="96f49-184">Open your **base-64** encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **Certificate** box.</span></span>
+    <span data-ttu-id="e8b93-183">e.</span><span class="sxs-lookup"><span data-stu-id="e8b93-183">e.</span></span> <span data-ttu-id="e8b93-184">Otevřete váš **kódování base-64** kódování certifikátu v poznámkovém bloku hello kopírování obsahu ho do schránky a pak ji vložit toohello **certifikát** pole.</span><span class="sxs-lookup"><span data-stu-id="e8b93-184">Open your **base-64** encoded certificate in notepad, copy hello content of it into your clipboard, and then paste it toohello **Certificate** box.</span></span>
    
-    <span data-ttu-id="96f49-185">f.</span><span class="sxs-lookup"><span data-stu-id="96f49-185">f.</span></span> <span data-ttu-id="96f49-186">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="96f49-186">Click **Save**.</span></span>
+    <span data-ttu-id="e8b93-185">f.</span><span class="sxs-lookup"><span data-stu-id="e8b93-185">f.</span></span> <span data-ttu-id="e8b93-186">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-186">Click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="96f49-187">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="96f49-187">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="96f49-188">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="96f49-188">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="96f49-189">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="96f49-189">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="e8b93-187">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="e8b93-187">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="e8b93-188">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="e8b93-188">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="e8b93-189">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="e8b93-189">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="96f49-190">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="96f49-190">Creating an Azure AD test user</span></span>
-<span data-ttu-id="96f49-191">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="96f49-191">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="e8b93-190">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="e8b93-190">Creating an Azure AD test user</span></span>
+<span data-ttu-id="e8b93-191">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="e8b93-191">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="96f49-193">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="96f49-193">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="e8b93-193">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="e8b93-193">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="96f49-194">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="96f49-194">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="e8b93-194">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="e8b93-194">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="96f49-196">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="96f49-196">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="e8b93-196">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-196">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="96f49-198">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-198">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="e8b93-198">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="e8b93-198">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="96f49-200">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="96f49-200">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="e8b93-200">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="e8b93-200">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="96f49-202">a.</span><span class="sxs-lookup"><span data-stu-id="96f49-202">a.</span></span> <span data-ttu-id="96f49-203">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="96f49-203">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="e8b93-202">a.</span><span class="sxs-lookup"><span data-stu-id="e8b93-202">a.</span></span> <span data-ttu-id="e8b93-203">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-203">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="96f49-204">b.</span><span class="sxs-lookup"><span data-stu-id="96f49-204">b.</span></span> <span data-ttu-id="96f49-205">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="96f49-205">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="e8b93-204">b.</span><span class="sxs-lookup"><span data-stu-id="e8b93-204">b.</span></span> <span data-ttu-id="e8b93-205">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="e8b93-205">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="96f49-206">c.</span><span class="sxs-lookup"><span data-stu-id="96f49-206">c.</span></span> <span data-ttu-id="96f49-207">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="96f49-207">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="e8b93-206">c.</span><span class="sxs-lookup"><span data-stu-id="e8b93-206">c.</span></span> <span data-ttu-id="e8b93-207">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-207">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="96f49-208">d.</span><span class="sxs-lookup"><span data-stu-id="96f49-208">d.</span></span> <span data-ttu-id="96f49-209">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="96f49-209">Click **Create**.</span></span>
+    <span data-ttu-id="e8b93-208">d.</span><span class="sxs-lookup"><span data-stu-id="e8b93-208">d.</span></span> <span data-ttu-id="e8b93-209">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-209">Click **Create**.</span></span>
  
-### <a name="creating-an-intacct-test-user"></a><span data-ttu-id="96f49-210">Vytváření testovacího uživatele Intacct</span><span class="sxs-lookup"><span data-stu-id="96f49-210">Creating an Intacct test user</span></span>
+### <a name="creating-an-intacct-test-user"></a><span data-ttu-id="e8b93-210">Vytváření testovacího uživatele Intacct</span><span class="sxs-lookup"><span data-stu-id="e8b93-210">Creating an Intacct test user</span></span>
 
-<span data-ttu-id="96f49-211">Nastavit uživatele Azure AD, takže se můžete přihlásit k Intacct, musí být zřízená do Intacct.</span><span class="sxs-lookup"><span data-stu-id="96f49-211">To set up Azure AD users so they can sign in to Intacct, they must be provisioned into Intacct.</span></span> <span data-ttu-id="96f49-212">Pro Intacct zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="96f49-212">For Intacct, provisioning is a manual task.</span></span>
+<span data-ttu-id="e8b93-211">tooset přidávání uživatelů Azure AD, se můžete přihlásit tooIntacct, se musí být zřízená do Intacct.</span><span class="sxs-lookup"><span data-stu-id="e8b93-211">tooset up Azure AD users so they can sign in tooIntacct, they must be provisioned into Intacct.</span></span> <span data-ttu-id="e8b93-212">Pro Intacct zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="e8b93-212">For Intacct, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="96f49-213">**Ke zřízení uživatelských účtů, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="96f49-213">**To provision user accounts, perform the following steps:**</span></span>
+<span data-ttu-id="e8b93-213">**tooprovision uživatelské účty, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="e8b93-213">**tooprovision user accounts, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="96f49-214">Přihlaste se k vaší **Intacct** klienta.</span><span class="sxs-lookup"><span data-stu-id="96f49-214">Sign in to your **Intacct** tenant.</span></span>
+1. <span data-ttu-id="e8b93-214">Přihlaste se tooyour **Intacct** klienta.</span><span class="sxs-lookup"><span data-stu-id="e8b93-214">Sign in tooyour **Intacct** tenant.</span></span>
 
-2. <span data-ttu-id="96f49-215">Klikněte **společnosti** a pak klikněte **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="96f49-215">Click the **Company** tab, and then click **Users**.</span></span>
+2. <span data-ttu-id="e8b93-215">Klikněte na tlačítko hello **společnosti** a pak klikněte **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-215">Click hello **Company** tab, and then click **Users**.</span></span>
 
-    <span data-ttu-id="96f49-216">![Uživatelé](./media/active-directory-saas-intacct-tutorial/ic790041.png "uživatelů")</span><span class="sxs-lookup"><span data-stu-id="96f49-216">![Users](./media/active-directory-saas-intacct-tutorial/ic790041.png "Users")</span></span>
-3. <span data-ttu-id="96f49-217">Klikněte **přidat** kartě.</span><span class="sxs-lookup"><span data-stu-id="96f49-217">Click the **Add** tab.</span></span>
+    <span data-ttu-id="e8b93-216">![Uživatelé](./media/active-directory-saas-intacct-tutorial/ic790041.png "uživatelů")</span><span class="sxs-lookup"><span data-stu-id="e8b93-216">![Users](./media/active-directory-saas-intacct-tutorial/ic790041.png "Users")</span></span>
+3. <span data-ttu-id="e8b93-217">Klikněte na tlačítko hello **přidat** kartě.</span><span class="sxs-lookup"><span data-stu-id="e8b93-217">Click hello **Add** tab.</span></span>
 
-    <span data-ttu-id="96f49-218">![Přidat](./media/active-directory-saas-intacct-tutorial/ic790042.png "přidat")</span><span class="sxs-lookup"><span data-stu-id="96f49-218">![Add](./media/active-directory-saas-intacct-tutorial/ic790042.png "Add")</span></span>
-4. <span data-ttu-id="96f49-219">V **informace o uživateli** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="96f49-219">In the **User Information** section, perform the following steps:</span></span>
+    <span data-ttu-id="e8b93-218">![Přidat](./media/active-directory-saas-intacct-tutorial/ic790042.png "přidat")</span><span class="sxs-lookup"><span data-stu-id="e8b93-218">![Add](./media/active-directory-saas-intacct-tutorial/ic790042.png "Add")</span></span>
+4. <span data-ttu-id="e8b93-219">V hello **informace o uživateli** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="e8b93-219">In hello **User Information** section, perform hello following steps:</span></span>
 
-    <span data-ttu-id="96f49-220">![Informace o uživateli](./media/active-directory-saas-intacct-tutorial/ic790043.png "informace o uživateli")</span><span class="sxs-lookup"><span data-stu-id="96f49-220">![User Information](./media/active-directory-saas-intacct-tutorial/ic790043.png "User Information")</span></span>
+    <span data-ttu-id="e8b93-220">![Informace o uživateli](./media/active-directory-saas-intacct-tutorial/ic790043.png "informace o uživateli")</span><span class="sxs-lookup"><span data-stu-id="e8b93-220">![User Information](./media/active-directory-saas-intacct-tutorial/ic790043.png "User Information")</span></span>
 
-    <span data-ttu-id="96f49-221">a.</span><span class="sxs-lookup"><span data-stu-id="96f49-221">a.</span></span> <span data-ttu-id="96f49-222">Zadejte **ID uživatele**, **příjmení**, **křestní jméno**, **e-mailová adresa**, **název**a **Phone** účtu Azure AD, který chcete mají být zahrnuty do **informace o uživateli** části.</span><span class="sxs-lookup"><span data-stu-id="96f49-222">Enter the **User ID**, the **Last name**, **First name**, the **Email address**, the **Title**, and the **Phone** of an Azure AD account that you want to provision into the **User Information** section.</span></span>
+    <span data-ttu-id="e8b93-221">a.</span><span class="sxs-lookup"><span data-stu-id="e8b93-221">a.</span></span> <span data-ttu-id="e8b93-222">Zadejte hello **ID uživatele**, hello **příjmení**, **křestní jméno**, hello **e-mailová adresa**, hello **název**, a hello **Phone** účtu Azure AD, které chcete do hello tooprovision **informace o uživateli** části.</span><span class="sxs-lookup"><span data-stu-id="e8b93-222">Enter hello **User ID**, hello **Last name**, **First name**, hello **Email address**, hello **Title**, and hello **Phone** of an Azure AD account that you want tooprovision into hello **User Information** section.</span></span>
 
-    <span data-ttu-id="96f49-223">b.</span><span class="sxs-lookup"><span data-stu-id="96f49-223">b.</span></span> <span data-ttu-id="96f49-224">Vyberte **oprávnění správce** účtu Azure AD, který chcete zřídit.</span><span class="sxs-lookup"><span data-stu-id="96f49-224">Select the **Admin privileges** of an Azure AD account that you want to provision.</span></span>
+    <span data-ttu-id="e8b93-223">b.</span><span class="sxs-lookup"><span data-stu-id="e8b93-223">b.</span></span> <span data-ttu-id="e8b93-224">Vyberte hello **oprávnění správce** účtu Azure AD, které chcete tooprovision.</span><span class="sxs-lookup"><span data-stu-id="e8b93-224">Select hello **Admin privileges** of an Azure AD account that you want tooprovision.</span></span>
    
-    <span data-ttu-id="96f49-225">c.</span><span class="sxs-lookup"><span data-stu-id="96f49-225">c.</span></span> <span data-ttu-id="96f49-226">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="96f49-226">Click **Save**.</span></span> <span data-ttu-id="96f49-227">Držitel účtu Azure AD obdrží e-mailu a dodržuje odkaz potvrďte svůj účet, pak se změní na aktivní.</span><span class="sxs-lookup"><span data-stu-id="96f49-227">The Azure AD account holder receives an email and follows a link to confirm their account before it becomes active.</span></span>
+    <span data-ttu-id="e8b93-225">c.</span><span class="sxs-lookup"><span data-stu-id="e8b93-225">c.</span></span> <span data-ttu-id="e8b93-226">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-226">Click **Save**.</span></span> <span data-ttu-id="e8b93-227">Držitel účtu Azure AD Hello obdrží e-mailu a dodržuje odkaz tooconfirm svého účtu před stane aktivní.</span><span class="sxs-lookup"><span data-stu-id="e8b93-227">hello Azure AD account holder receives an email and follows a link tooconfirm their account before it becomes active.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="96f49-228">Ke zřízení uživatelských účtů Azure AD, můžete použít jiné nástroje pro tvorbu Intacct uživatelského účtu nebo rozhraní API, které jsou poskytovány Intacct.</span><span class="sxs-lookup"><span data-stu-id="96f49-228">To provision Azure AD user accounts, you can use other Intacct user account creation tools or APIs that are provided by Intacct.</span></span>
+><span data-ttu-id="e8b93-228">tooprovision Azure AD uživatelské účty, můžete použít jiné nástroje pro tvorbu Intacct uživatelského účtu nebo rozhraní API, které jsou poskytovány Intacct.</span><span class="sxs-lookup"><span data-stu-id="e8b93-228">tooprovision Azure AD user accounts, you can use other Intacct user account creation tools or APIs that are provided by Intacct.</span></span>
         
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="96f49-229">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="96f49-229">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="e8b93-229">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="e8b93-229">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="96f49-230">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Intacct.</span><span class="sxs-lookup"><span data-stu-id="96f49-230">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Intacct.</span></span>
+<span data-ttu-id="e8b93-230">V této části povolíte tak, že udělíte přístup tooIntacct toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e8b93-230">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooIntacct.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="96f49-232">**Pokud chcete přiřadit Britta Simon Intacct, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="96f49-232">**To assign Britta Simon to Intacct, perform the following steps:**</span></span>
+<span data-ttu-id="e8b93-232">**tooassign Britta Simon tooIntacct, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="e8b93-232">**tooassign Britta Simon tooIntacct, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="96f49-233">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="96f49-233">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="e8b93-233">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-233">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="96f49-235">V seznamu aplikací vyberte **Intacct**.</span><span class="sxs-lookup"><span data-stu-id="96f49-235">In the applications list, select **Intacct**.</span></span>
+2. <span data-ttu-id="e8b93-235">V seznamu aplikace hello vyberte **Intacct**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-235">In hello applications list, select **Intacct**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_app.png) 
 
-3. <span data-ttu-id="96f49-237">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="96f49-237">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="e8b93-237">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="e8b93-237">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="96f49-239">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="96f49-239">Click **Add** button.</span></span> <span data-ttu-id="96f49-240">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-240">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="e8b93-239">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e8b93-239">Click **Add** button.</span></span> <span data-ttu-id="e8b93-240">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e8b93-240">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="96f49-242">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="96f49-242">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="e8b93-242">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="e8b93-242">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="96f49-243">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-243">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="e8b93-243">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e8b93-243">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="96f49-244">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="96f49-244">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="e8b93-244">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e8b93-244">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="96f49-245">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="96f49-245">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="e8b93-245">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="e8b93-245">Testing single sign-on</span></span>
 
-<span data-ttu-id="96f49-246">V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="96f49-246">In this section, you test your Azure AD single sign-on configuration by using the Access Panel.</span></span>
+<span data-ttu-id="e8b93-246">V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="e8b93-246">In this section, you test your Azure AD single sign-on configuration by using hello Access Panel.</span></span>
 
-<span data-ttu-id="96f49-247">Když kliknete na dlaždici Intacct na přístupovém panelu, můžete by měl být automaticky přihlášeni do vaší aplikace Intacct.</span><span class="sxs-lookup"><span data-stu-id="96f49-247">When you click the Intacct tile in the Access Panel, you should be automatically signed in to your Intacct application.</span></span>
+<span data-ttu-id="e8b93-247">Když kliknete na dlaždici Intacct hello v hello přístupového panelu, by měl být automaticky přihlášeni tooyour Intacct aplikace.</span><span class="sxs-lookup"><span data-stu-id="e8b93-247">When you click hello Intacct tile in hello Access Panel, you should be automatically signed in tooyour Intacct application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="96f49-248">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="96f49-248">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e8b93-248">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="e8b93-248">Additional resources</span></span>
 
-* [<span data-ttu-id="96f49-249">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="96f49-249">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="96f49-250">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="96f49-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="e8b93-249">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="e8b93-249">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="e8b93-250">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="e8b93-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

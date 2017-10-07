@@ -1,6 +1,6 @@
 ---
-title: Instalace Azure Toolkit pro IntelliJ | Microsoft Docs
-description: "Naučte se nainstalovat sadu Azure pro IntelliJ IDEA."
+title: "aaaInstalling hello nástrojů Azure pro IntelliJ | Microsoft Docs"
+description: "Zjistěte, jak tooinstall hello Azure Toolkit pro IntelliJ IDEA hello."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,98 +14,98 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: bf11a8580500f78c4a96a02953f221501eeffe6c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a39f27002835c356fc4da09bf9f45359c3c30b34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="installing-the-azure-toolkit-for-intellij"></a><span data-ttu-id="ed24d-103">Instalace Azure Toolkit pro IntelliJ</span><span class="sxs-lookup"><span data-stu-id="ed24d-103">Installing the Azure Toolkit for IntelliJ</span></span>
-<span data-ttu-id="ed24d-104">Sada Azure pro IntelliJ obsahuje šablony a funkce, které vám umožní snadno vytvářet, vývoj, testování a nasazení aplikace na platformě Azure pomocí IntelliJ IDEA vývojové prostředí.</span><span class="sxs-lookup"><span data-stu-id="ed24d-104">The Azure Toolkit for IntelliJ provides templates and functionality that allow you to easily create, develop, test, and deploy Azure applications using the IntelliJ IDEA development environment.</span></span> <span data-ttu-id="ed24d-105">Sada nástrojů Azure pro IntelliJ je projekt Open Source, jejichž zdrojový kód je k dispozici v části licencí MIT z lokality projektu na Githubu na následující adrese URL:</span><span class="sxs-lookup"><span data-stu-id="ed24d-105">The Azure Toolkit for IntelliJ is an Open Source project, whose source code is available under the MIT License from the project's site on GitHub at the following URL:</span></span>
+# <a name="installing-hello-azure-toolkit-for-intellij"></a><span data-ttu-id="ed3c9-103">Instalace hello Azure Toolkit pro IntelliJ</span><span class="sxs-lookup"><span data-stu-id="ed3c9-103">Installing hello Azure Toolkit for IntelliJ</span></span>
+<span data-ttu-id="ed3c9-104">Hello nástrojů Azure pro IntelliJ obsahuje šablony a funkce, které umožňují tooeasily vytvoření, vývoj, testování a nasazení aplikace na platformě Azure pomocí hello IntelliJ IDEA vývojové prostředí.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-104">hello Azure Toolkit for IntelliJ provides templates and functionality that allow you tooeasily create, develop, test, and deploy Azure applications using hello IntelliJ IDEA development environment.</span></span> <span data-ttu-id="ed3c9-105">Hello nástrojů Azure pro IntelliJ je projekt Open Source, jejichž zdrojový kód je k dispozici v části hello licencí MIT z lokality hello projektu na Githubu v hello následující adresu URL:</span><span class="sxs-lookup"><span data-stu-id="ed3c9-105">hello Azure Toolkit for IntelliJ is an Open Source project, whose source code is available under hello MIT License from hello project's site on GitHub at hello following URL:</span></span>
 
-<span data-ttu-id="ed24d-106"><https://github.com/Microsoft/Azure-Tools-for-Java></span><span class="sxs-lookup"><span data-stu-id="ed24d-106"><https://github.com/microsoft/azure-tools-for-java></span></span>
+<span data-ttu-id="ed3c9-106"><https://github.com/Microsoft/Azure-Tools-for-Java></span><span class="sxs-lookup"><span data-stu-id="ed3c9-106"><https://github.com/microsoft/azure-tools-for-java></span></span>
 
-<span data-ttu-id="ed24d-107">Existují dvě metody instalace nástrojů Azure pro IntelliJ z dialogového okna nastavení a v nabídce konfigurovat na obrazovce start; Obě metody instalace je popsána v následujících krocích.</span><span class="sxs-lookup"><span data-stu-id="ed24d-107">There are two methods of installing the Azure Toolkit for IntelliJ, from the Settings dialog box and from the Configure menu on the start screen; both installation methods will be demonstrated in the following steps.</span></span>
+<span data-ttu-id="ed3c9-107">Existují dvě metody instalace hello Azure Toolkit pro IntelliJ, dialogové okno nastavení hello a z nabídky konfigurovat hello na úvodní obrazovce hello; Obě metody instalace je popsána v hello následující kroky.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-107">There are two methods of installing hello Azure Toolkit for IntelliJ, from hello Settings dialog box and from hello Configure menu on hello start screen; both installation methods will be demonstrated in hello following steps.</span></span>
 
 [!INCLUDE [azure-toolkit-for-IntelliJ-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="to-install-the-azure-toolkit-for-intellij-from-the-settings-dialog-box"></a><span data-ttu-id="ed24d-108">K instalaci sady nástrojů Azure pro IntelliJ z dialogové okno nastavení</span><span class="sxs-lookup"><span data-stu-id="ed24d-108">To install the Azure Toolkit for IntelliJ from the settings dialog box</span></span>
-1. <span data-ttu-id="ed24d-109">Spusťte IntelliJ IDEA.</span><span class="sxs-lookup"><span data-stu-id="ed24d-109">Start IntelliJ IDEA.</span></span>
-2. <span data-ttu-id="ed24d-110">Když IntelliJ IDEA otevře, klikněte na tlačítko **soubor**, pak klikněte na tlačítko **nastavení**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-110">When the IntelliJ IDEA opens, click **File**, then click **Settings**.</span></span>
+## <a name="tooinstall-hello-azure-toolkit-for-intellij-from-hello-settings-dialog-box"></a><span data-ttu-id="ed3c9-108">tooinstall hello nástrojů Azure pro IntelliJ z dialogové okno nastavení hello</span><span class="sxs-lookup"><span data-stu-id="ed3c9-108">tooinstall hello Azure Toolkit for IntelliJ from hello settings dialog box</span></span>
+1. <span data-ttu-id="ed3c9-109">Spusťte IntelliJ IDEA.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-109">Start IntelliJ IDEA.</span></span>
+2. <span data-ttu-id="ed3c9-110">Když hello IntelliJ IDEA otevře, klikněte na tlačítko **soubor**, pak klikněte na tlačítko **nastavení**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-110">When hello IntelliJ IDEA opens, click **File**, then click **Settings**.</span></span>
    
-    ![Otevřete dialogové okno IntelliJ IDEA nastavení][01a]
-3. <span data-ttu-id="ed24d-112">V dialogovém okně nastavení klikněte na **modulů plug-in**a potom klikněte na **procházet úložiště**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-112">In the Settings dialog box, click **Plugins**, and then click **Browse repositories**.</span></span>
+    ![Otevřete dialogové okno nastavení IntelliJ IDEA hello][01a]
+3. <span data-ttu-id="ed3c9-112">V dialogové okno nastavení hello, klikněte na **modulů plug-in**a potom klikněte na **procházet úložiště**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-112">In hello Settings dialog box, click **Plugins**, and then click **Browse repositories**.</span></span>
    
     ![Dialogové okno nastavení IntelliJ IDEA][02a]
-4. <span data-ttu-id="ed24d-114">V **procházet úložiště** dialogové okno vyhledávacího pole zadejte "Azure".</span><span class="sxs-lookup"><span data-stu-id="ed24d-114">In the **Browse Repositories** dialog box, type "Azure" in the search box.</span></span> <span data-ttu-id="ed24d-115">Zvýrazněte **nástrojů Azure pro IntelliJ**a potom klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-115">Highlight **Azure Toolkit for IntelliJ**, and then click **Install**.</span></span>
+4. <span data-ttu-id="ed3c9-114">V hello **procházet úložiště** dialogové okno hello vyhledávacího pole zadejte "Azure".</span><span class="sxs-lookup"><span data-stu-id="ed3c9-114">In hello **Browse Repositories** dialog box, type "Azure" in hello search box.</span></span> <span data-ttu-id="ed3c9-115">Zvýrazněte **nástrojů Azure pro IntelliJ**a potom klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-115">Highlight **Azure Toolkit for IntelliJ**, and then click **Install**.</span></span>
    
-    ![Vyhledejte IntelliJ Azure sady Toolkit][03]
+    ![Vyhledejte hello Azure Toolkit pro IntelliJ][03]
    
-    <span data-ttu-id="ed24d-117">IntelliJ IDEA zobrazí průběh instalace v dialogovém okně.</span><span class="sxs-lookup"><span data-stu-id="ed24d-117">IntelliJ IDEA will display the installation progress in a dialog box.</span></span>
+    <span data-ttu-id="ed3c9-117">IntelliJ IDEA zobrazí průběh instalace hello v dialogovém okně.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-117">IntelliJ IDEA will display hello installation progress in a dialog box.</span></span>
    
     ![Průběh instalace][04]
-5. <span data-ttu-id="ed24d-119">Po dokončení instalace, klikněte na tlačítko **restartujte IntelliJ IDEA**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-119">When the installation has completed, click **Restart IntelliJ IDEA**.</span></span>
+5. <span data-ttu-id="ed3c9-119">Po dokončení instalace hello, klikněte na tlačítko **restartujte IntelliJ IDEA**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-119">When hello installation has completed, click **Restart IntelliJ IDEA**.</span></span>
    
     ![Restartujte IntelliJ IDEA][05]
-6. <span data-ttu-id="ed24d-121">Klikněte na tlačítko **OK** zavřete dialogové okno nastavení.</span><span class="sxs-lookup"><span data-stu-id="ed24d-121">Click **OK** to close the Settings dialog box.</span></span>
+6. <span data-ttu-id="ed3c9-121">Klikněte na tlačítko **OK** tooclose dialogové okno nastavení hello.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-121">Click **OK** tooclose hello Settings dialog box.</span></span>
    
     ![Zavřete dialogové okno nastavení IntelliJ IDEA][06]
-7. <span data-ttu-id="ed24d-123">Po zobrazení výzvy k restartování IntelliJ IDEA nebo odložit, klikněte na **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-123">When prompted to restart IntelliJ IDEA or postpone, click **Restart**.</span></span>
+7. <span data-ttu-id="ed3c9-123">Po zobrazení výzvy toorestart IntelliJ IDEA nebo odložit, klikněte na tlačítko **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-123">When prompted toorestart IntelliJ IDEA or postpone, click **Restart**.</span></span>
    
     ![Restartujte IntelliJ IDEA][07]
 
-## <a name="to-install-the-azure-toolkit-for-intellij-from-the-start-screen"></a><span data-ttu-id="ed24d-125">K instalaci sady nástrojů Azure pro IntelliJ z obrazovky start</span><span class="sxs-lookup"><span data-stu-id="ed24d-125">To install the Azure Toolkit for IntelliJ from the start screen</span></span>
-1. <span data-ttu-id="ed24d-126">Spusťte IntelliJ IDEA.</span><span class="sxs-lookup"><span data-stu-id="ed24d-126">Start IntelliJ IDEA.</span></span>
-2. <span data-ttu-id="ed24d-127">Jakmile se zobrazí na úvodní obrazovce IntelliJ IDEA, klikněte na tlačítko **konfigurace**, pak klikněte na tlačítko **modulů plug-in**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-127">When the IntelliJ IDEA start screen appears, click **Configure**, then click **Plugins**.</span></span>
+## <a name="tooinstall-hello-azure-toolkit-for-intellij-from-hello-start-screen"></a><span data-ttu-id="ed3c9-125">tooinstall hello nástrojů Azure pro IntelliJ z hello úvodní obrazovka</span><span class="sxs-lookup"><span data-stu-id="ed3c9-125">tooinstall hello Azure Toolkit for IntelliJ from hello start screen</span></span>
+1. <span data-ttu-id="ed3c9-126">Spusťte IntelliJ IDEA.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-126">Start IntelliJ IDEA.</span></span>
+2. <span data-ttu-id="ed3c9-127">Jakmile se zobrazí úvodní obrazovka start IntelliJ IDEA, klikněte na tlačítko **konfigurace**, pak klikněte na tlačítko **modulů plug-in**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-127">When hello IntelliJ IDEA start screen appears, click **Configure**, then click **Plugins**.</span></span>
    
     ![Instalace modulů plug-in IntelliJ IDEA][01b]
-3. <span data-ttu-id="ed24d-129">V **modulů plug-in** dialogové okno, klikněte na tlačítko **procházet úložiště**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-129">In the **Plugins** dialog box, click **Browse repositories**.</span></span>
+3. <span data-ttu-id="ed3c9-129">V hello **modulů plug-in** dialogové okno, klikněte na tlačítko **procházet úložiště**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-129">In hello **Plugins** dialog box, click **Browse repositories**.</span></span>
    
     ![Procházet IntelliJ IDEA modulu plug-in úložiště][02b]
-4. <span data-ttu-id="ed24d-131">V **procházet úložiště** dialogové okno vyhledávacího pole zadejte "Azure".</span><span class="sxs-lookup"><span data-stu-id="ed24d-131">In the **Browse Repositories** dialog box, type "Azure" in the search box.</span></span> <span data-ttu-id="ed24d-132">Zvýrazněte **nástrojů Azure pro IntelliJ**a potom klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-132">Highlight **Azure Toolkit for IntelliJ**, and then click **Install**.</span></span>
+4. <span data-ttu-id="ed3c9-131">V hello **procházet úložiště** dialogové okno hello vyhledávacího pole zadejte "Azure".</span><span class="sxs-lookup"><span data-stu-id="ed3c9-131">In hello **Browse Repositories** dialog box, type "Azure" in hello search box.</span></span> <span data-ttu-id="ed3c9-132">Zvýrazněte **nástrojů Azure pro IntelliJ**a potom klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-132">Highlight **Azure Toolkit for IntelliJ**, and then click **Install**.</span></span>
    
-    ![Vyhledejte IntelliJ Azure sady Toolkit][03]
+    ![Vyhledejte hello Azure Toolkit pro IntelliJ][03]
    
-    <span data-ttu-id="ed24d-134">IntelliJ IDEA zobrazí průběh instalace v dialogovém okně.</span><span class="sxs-lookup"><span data-stu-id="ed24d-134">IntelliJ IDEA will display the installation progress in a dialog box.</span></span>
+    <span data-ttu-id="ed3c9-134">IntelliJ IDEA zobrazí průběh instalace hello v dialogovém okně.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-134">IntelliJ IDEA will display hello installation progress in a dialog box.</span></span>
    
     ![Průběh instalace][04]
-5. <span data-ttu-id="ed24d-136">Po dokončení instalace, klikněte na tlačítko **restartujte IntelliJ IDEA**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-136">When the installation has completed, click **Restart IntelliJ IDEA**.</span></span>
+5. <span data-ttu-id="ed3c9-136">Po dokončení instalace hello, klikněte na tlačítko **restartujte IntelliJ IDEA**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-136">When hello installation has completed, click **Restart IntelliJ IDEA**.</span></span>
    
     ![Restartujte IntelliJ IDEA][05]
-6. <span data-ttu-id="ed24d-138">Po zobrazení výzvy k restartování IntelliJ IDEA nebo odložit, klikněte na **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="ed24d-138">When prompted to restart IntelliJ IDEA or postpone, click **Restart**.</span></span>
+6. <span data-ttu-id="ed3c9-138">Po zobrazení výzvy toorestart IntelliJ IDEA nebo odložit, klikněte na tlačítko **restartujte**.</span><span class="sxs-lookup"><span data-stu-id="ed3c9-138">When prompted toorestart IntelliJ IDEA or postpone, click **Restart**.</span></span>
    
     ![Restartujte IntelliJ IDEA][07]
 
-## <a name="see-also"></a><span data-ttu-id="ed24d-140">Viz také</span><span class="sxs-lookup"><span data-stu-id="ed24d-140">See Also</span></span>
-<span data-ttu-id="ed24d-141">Další informace o sadách Azure Toolkit pro integrovaná vývojová prostředí pro Javu najdete na následujících odkazech:</span><span class="sxs-lookup"><span data-stu-id="ed24d-141">For more information about the Azure Toolkits for Java IDEs, see the following links:</span></span>
+## <a name="see-also"></a><span data-ttu-id="ed3c9-140">Viz také</span><span class="sxs-lookup"><span data-stu-id="ed3c9-140">See Also</span></span>
+<span data-ttu-id="ed3c9-141">Další informace o hello sadách Azure pro integrovaného vývojového prostředí Java najdete v tématu hello následující odkazy:</span><span class="sxs-lookup"><span data-stu-id="ed3c9-141">For more information about hello Azure Toolkits for Java IDEs, see hello following links:</span></span>
 
-* <span data-ttu-id="ed24d-142">[Azure nástrojů pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed24d-142">[Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="ed24d-143">[Novinky v sadě Azure Toolkit pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed24d-143">[What's New in the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="ed24d-144">[Instalace sady Azure Toolkit pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed24d-144">[Installing the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="ed24d-145">[Pokyny k přihlášení pro sadu Azure Toolkit pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed24d-145">[Sign In Instructions for the Azure Toolkit for Eclipse]</span></span>
-  * <span data-ttu-id="ed24d-146">[Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed24d-146">[Create a Hello World Web App for Azure in Eclipse]</span></span>
-* <span data-ttu-id="ed24d-147">[Sada Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed24d-147">[Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="ed24d-148">[Novinky v sadě Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed24d-148">[What's New in the Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="ed24d-149">*Instalace Azure Toolkit pro IntelliJ (v tomto článku)*</span><span class="sxs-lookup"><span data-stu-id="ed24d-149">*Installing the Azure Toolkit for IntelliJ (This Article)*</span></span>
-  * <span data-ttu-id="ed24d-150">[Pokyny k přihlášení pro sadu Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed24d-150">[Sign In Instructions for the Azure Toolkit for IntelliJ]</span></span>
-  * <span data-ttu-id="ed24d-151">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed24d-151">[Create a Hello World Web App for Azure in IntelliJ]</span></span>
+* <span data-ttu-id="ed3c9-142">[Azure nástrojů pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-142">[Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="ed3c9-143">[Co je nového v hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-143">[What's New in hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="ed3c9-144">[Instalace hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-144">[Installing hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="ed3c9-145">[Přihlášení v pokyny pro hello nástrojů Azure pro Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-145">[Sign In Instructions for hello Azure Toolkit for Eclipse]</span></span>
+  * <span data-ttu-id="ed3c9-146">[Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-146">[Create a Hello World Web App for Azure in Eclipse]</span></span>
+* <span data-ttu-id="ed3c9-147">[Sada Azure Toolkit pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-147">[Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="ed3c9-148">[Co je nového v hello nástrojů Azure pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-148">[What's New in hello Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="ed3c9-149">*Instalace hello Azure Toolkit pro IntelliJ (v tomto článku)*</span><span class="sxs-lookup"><span data-stu-id="ed3c9-149">*Installing hello Azure Toolkit for IntelliJ (This Article)*</span></span>
+  * <span data-ttu-id="ed3c9-150">[Přihlášení v pokyny pro hello nástrojů Azure pro IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-150">[Sign In Instructions for hello Azure Toolkit for IntelliJ]</span></span>
+  * <span data-ttu-id="ed3c9-151">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]</span><span class="sxs-lookup"><span data-stu-id="ed3c9-151">[Create a Hello World Web App for Azure in IntelliJ]</span></span>
 
-<span data-ttu-id="ed24d-152">Další informace o používání Javy v Azure najdete na webu [Středisko pro vývojáře Java].</span><span class="sxs-lookup"><span data-stu-id="ed24d-152">For more information about using Azure with Java, see the [Azure Java Developer Center].</span></span>
+<span data-ttu-id="ed3c9-152">Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java].</span><span class="sxs-lookup"><span data-stu-id="ed3c9-152">For more information about using Azure with Java, see hello [Azure Java Developer Center].</span></span>
 
 <!-- URL List -->
 
-<span data-ttu-id="ed24d-153">[Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-153">[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md</span></span>
-<span data-ttu-id="ed24d-154">[Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-154">[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md</span></span>
-<span data-ttu-id="ed24d-155">[Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-155">[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md</span></span>
-<span data-ttu-id="ed24d-156">[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-156">[Create a Hello World Web App for Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md</span></span>
-<span data-ttu-id="ed24d-157">[Instalace sady Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-157">[Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md</span></span>
-[Installing the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-<span data-ttu-id="ed24d-158">[Pokyny k přihlášení pro sadu Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-158">[Sign In Instructions for the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span></span>
-<span data-ttu-id="ed24d-159">[Pokyny k přihlášení pro sadu Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-159">[Sign In Instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md</span></span>
-<span data-ttu-id="ed24d-160">[Novinky v sadě Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-160">[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md</span></span>
-<span data-ttu-id="ed24d-161">[Novinky v sadě Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md</span><span class="sxs-lookup"><span data-stu-id="ed24d-161">[What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md</span></span>
+[Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse.md
+[Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md
+[Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Instalace hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Installing hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Přihlášení v pokyny pro hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Přihlášení v pokyny pro hello nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Co je nového v hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Co je nového v hello nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-<span data-ttu-id="ed24d-162">[Středisko pro vývojáře Java]: https://azure.microsoft.com/develop/java/</span><span class="sxs-lookup"><span data-stu-id="ed24d-162">[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/</span></span>
+[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
 
 <!-- IMG List -->
 

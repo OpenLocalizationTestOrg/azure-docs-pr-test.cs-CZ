@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s vyrovná se se zatížením pro správu vzdělávacího procesu | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vyrovná se se zatížením pro správu vzdělávacího procesu."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a vyrovná se se zatížením pro správu vzdělávacího procesu."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,267 +14,267 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 3c68c3ac7d6be593476d419f8c015931b206eead
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a140a78a3a9474a6372a3ad4fb8251bd2452c990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a><span data-ttu-id="87bf2-103">Kurz: Azure Active Directory integrace s vyrovná se se zatížením pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="87bf2-103">Tutorial: Azure Active Directory integration with Absorb LMS</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a><span data-ttu-id="8d938-103">Kurz: Azure Active Directory integrace s vyrovná se se zatížením pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="8d938-103">Tutorial: Azure Active Directory integration with Absorb LMS</span></span>
 
-<span data-ttu-id="87bf2-104">V tomto kurzu zjistěte, jak integrovat vyrovná se se zatížením pro správu vzdělávacího procesu s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="87bf2-104">In this tutorial, you learn how to integrate Absorb LMS with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="8d938-104">V tomto kurzu zjistíte, jak toointegrate Absorb pro správu vzdělávacího procesu s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="8d938-104">In this tutorial, you learn how toointegrate Absorb LMS with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="87bf2-105">Integrace vyrovná se se zatížením pro správu vzdělávacího procesu s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="87bf2-105">Integrating Absorb LMS with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="8d938-105">Integrace vyrovná se se zatížením pro správu vzdělávacího procesu s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="8d938-105">Integrating Absorb LMS with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="87bf2-106">Můžete řídit ve službě Azure AD, který má přístup k vyrovná se se zatížením pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="87bf2-106">You can control in Azure AD who has access to Absorb LMS</span></span>
-- <span data-ttu-id="87bf2-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k vyrovná se se zatížením vzdělávacího procesu (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="87bf2-107">You can enable your users to automatically get signed-on to Absorb LMS (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="87bf2-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="87bf2-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="8d938-106">Můžete řídit ve službě Azure AD, který má tooAbsorb přístup pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="8d938-106">You can control in Azure AD who has access tooAbsorb LMS</span></span>
+- <span data-ttu-id="8d938-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooAbsorb pro správu vzdělávacího procesu (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="8d938-107">You can enable your users tooautomatically get signed-on tooAbsorb LMS (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="8d938-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="8d938-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="87bf2-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma.</span><span class="sxs-lookup"><span data-stu-id="87bf2-109">If you want to know more details about SaaS app integration with Azure AD, see.</span></span> <span data-ttu-id="87bf2-110">[Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="87bf2-110">[What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="8d938-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v článku.</span><span class="sxs-lookup"><span data-stu-id="8d938-109">If you want tooknow more details about SaaS app integration with Azure AD, see.</span></span> <span data-ttu-id="8d938-110">[Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="8d938-110">[What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="87bf2-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="87bf2-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8d938-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="8d938-111">Prerequisites</span></span>
 
-<span data-ttu-id="87bf2-112">Konfigurace integrace Azure AD s vyrovná se se zatížením pro správu vzdělávacího procesu, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="87bf2-112">To configure Azure AD integration with Absorb LMS, you need the following items:</span></span>
+<span data-ttu-id="8d938-112">tooconfigure integrace Azure AD s vyrovná se se zatížením pro správu vzdělávacího procesu, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="8d938-112">tooconfigure Azure AD integration with Absorb LMS, you need hello following items:</span></span>
 
-- <span data-ttu-id="87bf2-113">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="87bf2-113">An Azure AD subscription</span></span>
-- <span data-ttu-id="87bf2-114">Vyrovná se se zatížením pro správu vzdělávacího procesu jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="87bf2-114">An Absorb LMS single-sign on enabled subscription</span></span>
+- <span data-ttu-id="8d938-113">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="8d938-113">An Azure AD subscription</span></span>
+- <span data-ttu-id="8d938-114">Vyrovná se se zatížením pro správu vzdělávacího procesu jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="8d938-114">An Absorb LMS single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="87bf2-115">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="87bf2-115">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="8d938-115">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="8d938-115">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="87bf2-116">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="87bf2-116">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="8d938-116">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="8d938-116">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="87bf2-117">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="87bf2-117">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="87bf2-118">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="87bf2-118">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="8d938-117">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="8d938-117">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="8d938-118">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="8d938-118">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="87bf2-119">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="87bf2-119">Scenario description</span></span>
-<span data-ttu-id="87bf2-120">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="87bf2-120">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="87bf2-121">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="87bf2-121">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="8d938-119">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="8d938-119">Scenario description</span></span>
+<span data-ttu-id="8d938-120">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="8d938-120">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="8d938-121">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="8d938-121">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="87bf2-122">Přidání vyrovná se se zatížením pro správu vzdělávacího procesu z Galerie</span><span class="sxs-lookup"><span data-stu-id="87bf2-122">Adding Absorb LMS from the gallery</span></span>
-2. <span data-ttu-id="87bf2-123">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="87bf2-123">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="8d938-122">Přidání vyrovná se se zatížením pro správu vzdělávacího procesu z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="8d938-122">Adding Absorb LMS from hello gallery</span></span>
+2. <span data-ttu-id="8d938-123">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="8d938-123">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-absorb-lms-from-the-gallery"></a><span data-ttu-id="87bf2-124">Přidání vyrovná se se zatížením pro správu vzdělávacího procesu z Galerie</span><span class="sxs-lookup"><span data-stu-id="87bf2-124">Adding Absorb LMS from the gallery</span></span>
-<span data-ttu-id="87bf2-125">Pokud chcete nakonfigurovat integraci vyrovná se se zatížením pro správu vzdělávacího procesu v do Azure AD, potřebujete přidat vyrovná se se zatížením pro správu vzdělávacího procesu z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="87bf2-125">To configure the integration of Absorb LMS in to Azure AD, you need to add Absorb LMS from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-absorb-lms-from-hello-gallery"></a><span data-ttu-id="8d938-124">Přidání vyrovná se se zatížením pro správu vzdělávacího procesu z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="8d938-124">Adding Absorb LMS from hello gallery</span></span>
+<span data-ttu-id="8d938-125">tooconfigure hello integrace vyrovná se se zatížením pro správu vzdělávacího procesu v tooAzure AD, je nutné tooadd Absorb pro správu vzdělávacího procesu hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="8d938-125">tooconfigure hello integration of Absorb LMS in tooAzure AD, you need tooadd Absorb LMS from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="87bf2-126">**Pokud chcete přidat vyrovná se se zatížením pro správu vzdělávacího procesu z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="87bf2-126">**To add Absorb LMS from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="8d938-126">**tooadd Absorb pro správu vzdělávacího procesu z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="8d938-126">**tooadd Absorb LMS from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="87bf2-127">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-127">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="8d938-127">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="8d938-127">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. <span data-ttu-id="87bf2-129">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-129">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="87bf2-130">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-130">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="8d938-129">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="8d938-129">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="8d938-130">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="8d938-130">Then go too**All applications**.</span></span>
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. <span data-ttu-id="87bf2-132">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-132">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="8d938-132">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="8d938-132">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. <span data-ttu-id="87bf2-134">Do vyhledávacího pole zadejte **vyrovná se se zatížením pro správu vzdělávacího procesu**, vyberte **vyrovná se se zatížením pro správu vzdělávacího procesu** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="87bf2-134">In the search box, type **Absorb LMS**, select **Absorb LMS** from result panel then click **Add** button to add the application.</span></span>
+4. <span data-ttu-id="8d938-134">Hello vyhledávacího pole zadejte **vyrovná se se zatížením pro správu vzdělávacího procesu**, vyberte **vyrovná se se zatížením pro správu vzdělávacího procesu** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="8d938-134">In hello search box, type **Absorb LMS**, select **Absorb LMS** from result panel then click **Add** button tooadd hello application.</span></span>
 
-    ![Vyrovná se se zatížením pro správu vzdělávacího procesu v seznamu výsledků](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_addfromgallery.png)
+    ![Vyrovná se se zatížením pro správu vzdělávacího procesu v seznamu výsledků hello](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="87bf2-136">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="87bf2-136">Configure and test Azure AD single sign-on</span></span>
+## <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="8d938-136">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="8d938-136">Configure and test Azure AD single sign-on</span></span>
 
-<span data-ttu-id="87bf2-137">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s vyrovná se se zatížením vzdělávacího procesu na základě testovací uživatele, nazývá "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="87bf2-137">In this section, you configure and test Azure AD single sign-on with Absorb LMS based on a test user called "Britta Simon."</span></span>
+<span data-ttu-id="8d938-137">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s vyrovná se se zatížením vzdělávacího procesu na základě testovací uživatele, nazývá "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="8d938-137">In this section, you configure and test Azure AD single sign-on with Absorb LMS based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="87bf2-138">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v vyrovná se se zatížením pro správu vzdělávacího procesu je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="87bf2-138">For single sign-on to work, Azure AD needs to know what the counterpart user in Absorb LMS is to a user in Azure AD.</span></span> <span data-ttu-id="87bf2-139">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v vyrovná se se zatížením pro správu vzdělávacího procesu musí navázat.</span><span class="sxs-lookup"><span data-stu-id="87bf2-139">In other words, a link relationship between an Azure AD user and the related user in Absorb LMS needs to be established.</span></span>
+<span data-ttu-id="8d938-138">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v vyrovná se se zatížením pro správu vzdělávacího procesu je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="8d938-138">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Absorb LMS is tooa user in Azure AD.</span></span> <span data-ttu-id="8d938-139">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v vyrovná se se zatížením pro správu vzdělávacího procesu musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="8d938-139">In other words, a link relationship between an Azure AD user and hello related user in Absorb LMS needs toobe established.</span></span>
 
-<span data-ttu-id="87bf2-140">Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-140">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Absorb LMS.</span></span>
+<span data-ttu-id="8d938-140">Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="8d938-140">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in Absorb LMS.</span></span>
 
-<span data-ttu-id="87bf2-141">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vyrovná se se zatížením pro správu vzdělávacího procesu, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="87bf2-141">To configure and test Azure AD single sign-on with Absorb LMS, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="8d938-141">tooconfigure a testu Azure AD jednotné přihlašování s vyrovná se se zatížením pro správu vzdělávacího procesu, je třeba toocomplete hello stavební bloky následující:</span><span class="sxs-lookup"><span data-stu-id="8d938-141">tooconfigure and test Azure AD single sign-on with Absorb LMS, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="87bf2-142">**[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="87bf2-142">**[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="87bf2-143">**[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-143">**[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="87bf2-144">**[Vytvořit testovací uživatele s vyrovná se se zatížením pro správu vzdělávacího procesu](#create-an-absorb-lms-test-user)**  – Pokud chcete mít protějšek Britta Simon v vzdělávacího procesu vyrovná se se zatížením, propojené služby Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="87bf2-144">**[Create an Absorb LMS test user](#create-an-absorb-lms-test-user)** - to have a counterpart of Britta Simon in Absorb LMS that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="87bf2-145">**[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="87bf2-145">**[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="87bf2-146">**[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="87bf2-146">**[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="8d938-142">**[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="8d938-142">**[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="8d938-143">**[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8d938-143">**[Create an Azure AD test user](#create-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="8d938-144">**[Vytvořit testovací uživatele s vyrovná se se zatížením pro správu vzdělávacího procesu](#create-an-absorb-lms-test-user)**  -toohave protějšek Britta Simon v vzdělávacího procesu vyrovná se se zatížením, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="8d938-144">**[Create an Absorb LMS test user](#create-an-absorb-lms-test-user)** - toohave a counterpart of Britta Simon in Absorb LMS that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="8d938-145">**[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="8d938-145">**[Assign hello Azure AD test user](#assign-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="8d938-146">**[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="8d938-146">**[Test single sign-on](#test-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configure-azure-ad-single-sign-on"></a><span data-ttu-id="87bf2-147">Konfigurovat Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="87bf2-147">Configure Azure AD single sign-on</span></span>
+### <a name="configure-azure-ad-single-sign-on"></a><span data-ttu-id="8d938-147">Konfigurovat Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="8d938-147">Configure Azure AD single sign-on</span></span>
 
-<span data-ttu-id="87bf2-148">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-148">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Absorb LMS application.</span></span>
+<span data-ttu-id="8d938-148">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="8d938-148">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Absorb LMS application.</span></span>
 
-<span data-ttu-id="87bf2-149">**Ke konfiguraci Azure AD jednotné přihlašování s vyrovná se se zatížením pro správu vzdělávacího procesu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="87bf2-149">**To configure Azure AD single sign-on with Absorb LMS, perform the following steps:**</span></span>
+<span data-ttu-id="8d938-149">**tooconfigure Azure AD jednotné přihlašování s vzdělávacího procesu vyrovná se se zatížením, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="8d938-149">**tooconfigure Azure AD single sign-on with Absorb LMS, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="87bf2-150">Na portálu Azure na **vyrovná se se zatížením pro správu vzdělávacího procesu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-150">In the Azure portal, on the **Absorb LMS** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="8d938-150">V portálu Azure, na hello hello **vyrovná se se zatížením pro správu vzdělávacího procesu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="8d938-150">In hello Azure portal, on hello **Absorb LMS** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurace propojení přihlášení][4]
 
-2. <span data-ttu-id="87bf2-152">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="87bf2-152">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="8d938-152">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="8d938-152">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_samlbase.png)
 
-3. <span data-ttu-id="87bf2-154">Na **vyrovná se se zatížením pro správu vzdělávacího procesu domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="87bf2-154">On the **Absorb LMS Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="8d938-154">Na hello **vyrovná se se zatížením pro správu vzdělávacího procesu domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="8d938-154">On hello **Absorb LMS Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Pro správu vzdělávacího procesu adresy URL jeden přihlašování informace o doméně a vyrovná se se zatížením](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_url.png)
 
-    <span data-ttu-id="87bf2-156">a.</span><span class="sxs-lookup"><span data-stu-id="87bf2-156">a.</span></span> <span data-ttu-id="87bf2-157">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.myabsorb.com/Account/SAML`</span><span class="sxs-lookup"><span data-stu-id="87bf2-157">In the **Identifier** textbox, type a URL using the following pattern: `https://<subdomain>.myabsorb.com/Account/SAML`</span></span>
+    <span data-ttu-id="8d938-156">a.</span><span class="sxs-lookup"><span data-stu-id="8d938-156">a.</span></span> <span data-ttu-id="8d938-157">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.myabsorb.com/Account/SAML`</span><span class="sxs-lookup"><span data-stu-id="8d938-157">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<subdomain>.myabsorb.com/Account/SAML`</span></span>
 
-    <span data-ttu-id="87bf2-158">b.</span><span class="sxs-lookup"><span data-stu-id="87bf2-158">b.</span></span> <span data-ttu-id="87bf2-159">V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.myabsorb.com/Account/SAML`</span><span class="sxs-lookup"><span data-stu-id="87bf2-159">In the **Reply URL** textbox, type a URL using the following pattern: `https://<subdomain>.myabsorb.com/Account/SAML`</span></span>
+    <span data-ttu-id="8d938-158">b.</span><span class="sxs-lookup"><span data-stu-id="8d938-158">b.</span></span> <span data-ttu-id="8d938-159">V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.myabsorb.com/Account/SAML`</span><span class="sxs-lookup"><span data-stu-id="8d938-159">In hello **Reply URL** textbox, type a URL using hello following pattern: `https://<subdomain>.myabsorb.com/Account/SAML`</span></span>
      
     > [!NOTE] 
-    > <span data-ttu-id="87bf2-160">Tyto hodnoty nejsou reálné.</span><span class="sxs-lookup"><span data-stu-id="87bf2-160">These values are not the real.</span></span> <span data-ttu-id="87bf2-161">Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="87bf2-161">Update these values with the actual Identifier and Reply URL.</span></span> <span data-ttu-id="87bf2-162">Obraťte se na [tým podpory vyrovná se se zatížením klienta pro správu vzdělávacího procesu](https://www.absorblms.com/support) k získání těchto hodnot.</span><span class="sxs-lookup"><span data-stu-id="87bf2-162">Contact [Absorb LMS Client support team](https://www.absorblms.com/support) to get these values.</span></span> 
+    > <span data-ttu-id="8d938-160">Tyto hodnoty nejsou skutečné hello.</span><span class="sxs-lookup"><span data-stu-id="8d938-160">These values are not hello real.</span></span> <span data-ttu-id="8d938-161">Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL.</span><span class="sxs-lookup"><span data-stu-id="8d938-161">Update these values with hello actual Identifier and Reply URL.</span></span> <span data-ttu-id="8d938-162">Obraťte se na [tým podpory vyrovná se se zatížením klienta pro správu vzdělávacího procesu](https://www.absorblms.com/support) tooget tyto hodnoty.</span><span class="sxs-lookup"><span data-stu-id="8d938-162">Contact [Absorb LMS Client support team](https://www.absorblms.com/support) tooget these values.</span></span> 
 
-4. <span data-ttu-id="87bf2-163">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="87bf2-163">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+4. <span data-ttu-id="8d938-163">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="8d938-163">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_certificate.png) 
 
-6. <span data-ttu-id="87bf2-165">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="87bf2-165">Click **Save** button.</span></span>
+6. <span data-ttu-id="8d938-165">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="8d938-165">Click **Save** button.</span></span>
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
-7. <span data-ttu-id="87bf2-167">Na **vyrovná se se zatížením konfigurace pro správu vzdělávacího procesu** klikněte na tlačítko **konfigurace vyrovná se se zatížením vzdělávacího procesu** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-167">On the **Absorb LMS Configuration** section, click **Configure Absorb LMS** to open **Configure sign-on** window.</span></span> <span data-ttu-id="87bf2-168">Kopírování **Sign-Out adresu URL a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="87bf2-168">Copy the **Sign-Out URL and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+7. <span data-ttu-id="8d938-167">Na hello **vyrovná se se zatížením konfigurace pro správu vzdělávacího procesu** klikněte na tlačítko **konfigurace vyrovná se se zatížením vzdělávacího procesu** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="8d938-167">On hello **Absorb LMS Configuration** section, click **Configure Absorb LMS** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="8d938-168">Kopírování hello **Sign-Out adresu URL a SAML jeden přihlašování služby URL** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="8d938-168">Copy hello **Sign-Out URL and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Vyrovná se se zatížením konfigurace pro správu vzdělávacího procesu](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_configure.png) 
 
-8. <span data-ttu-id="87bf2-170">V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti vyrovná se se zatížením pro správu vzdělávacího procesu jako správce.</span><span class="sxs-lookup"><span data-stu-id="87bf2-170">In a different web browser window, log in to your Absorb LMS company site as an administrator.</span></span>
+8. <span data-ttu-id="8d938-170">V okně prohlížeče jiný web Přihlaste se jako správce na webu společnosti tooyour vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="8d938-170">In a different web browser window, log in tooyour Absorb LMS company site as an administrator.</span></span>
 
-9. <span data-ttu-id="87bf2-171">Klikněte **ikonu účtu** v rozhraní správce.</span><span class="sxs-lookup"><span data-stu-id="87bf2-171">Click the **Account Icon** on the admin interface.</span></span> 
+9. <span data-ttu-id="8d938-171">Klikněte na tlačítko hello **ikonu účtu** na rozhraní správce hello.</span><span class="sxs-lookup"><span data-stu-id="8d938-171">Click hello **Account Icon** on hello admin interface.</span></span> 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-absorblms-tutorial/1.png)
 
-10. <span data-ttu-id="87bf2-173">Klikněte na tlačítko **nastavení portálu**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-173">Click **Portal Settings**.</span></span>
+10. <span data-ttu-id="8d938-173">Klikněte na tlačítko **nastavení portálu**.</span><span class="sxs-lookup"><span data-stu-id="8d938-173">Click **Portal Settings**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-absorblms-tutorial/2.png)
     
-11. <span data-ttu-id="87bf2-175">Klikněte **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="87bf2-175">Click the **Users** tab.</span></span>
+11. <span data-ttu-id="8d938-175">Klikněte na tlačítko hello **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="8d938-175">Click hello **Users** tab.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-absorblms-tutorial/3.png)
 
-12. <span data-ttu-id="87bf2-177">Proveďte následující kroky pro přístup k konfigurační pole jednotné přihlašování:</span><span class="sxs-lookup"><span data-stu-id="87bf2-177">Perform the following steps to access the Single Sign-On configuration fields:</span></span>
+12. <span data-ttu-id="8d938-177">Proveďte následující kroky tooaccess hello jednotné přihlašování konfigurační pole hello:</span><span class="sxs-lookup"><span data-stu-id="8d938-177">Perform hello following steps tooaccess hello Single Sign-On configuration fields:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    <span data-ttu-id="87bf2-179">a.</span><span class="sxs-lookup"><span data-stu-id="87bf2-179">a.</span></span> <span data-ttu-id="87bf2-180">Vyberte odpovídající **režimu**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-180">Select the appropriate **Mode**.</span></span>
+    <span data-ttu-id="8d938-179">a.</span><span class="sxs-lookup"><span data-stu-id="8d938-179">a.</span></span> <span data-ttu-id="8d938-180">Vyberte odpovídající hello **režimu**.</span><span class="sxs-lookup"><span data-stu-id="8d938-180">Select hello appropriate **Mode**.</span></span>
 
-    <span data-ttu-id="87bf2-181">b.</span><span class="sxs-lookup"><span data-stu-id="87bf2-181">b.</span></span> <span data-ttu-id="87bf2-182">Otevřete odebrat certifikát, který jste stáhli z portálu Azure v poznámkovém bloku **---BEGIN CERTIFICATE,** a **---END CERTIFICATE---** značku a potom vložte zbývající obsah **klíč** textové pole.</span><span class="sxs-lookup"><span data-stu-id="87bf2-182">Open the Certificate that you have downloaded from the Azure portal in notepad, remove the **---BEGIN CERTIFICATE---** and **---END CERTIFICATE---** tag and then paste the remaining content in the **Key** textbox.</span></span>
+    <span data-ttu-id="8d938-181">b.</span><span class="sxs-lookup"><span data-stu-id="8d938-181">b.</span></span> <span data-ttu-id="8d938-182">Otevřete hello certifikát, který jste si stáhli z portálu Azure v poznámkovém bloku hello odebrat hello **---BEGIN CERTIFICATE---** a **---END CERTIFICATE---** značku a potom vložte hello zbývající obsah Hello **klíč** textové pole.</span><span class="sxs-lookup"><span data-stu-id="8d938-182">Open hello Certificate that you have downloaded from hello Azure portal in notepad, remove hello **---BEGIN CERTIFICATE---** and **---END CERTIFICATE---** tag and then paste hello remaining content in hello **Key** textbox.</span></span>
     
-    <span data-ttu-id="87bf2-183">c.</span><span class="sxs-lookup"><span data-stu-id="87bf2-183">c.</span></span> <span data-ttu-id="87bf2-184">V **Vlastnost Id**, vyberte odpovídající atribut, který jste nakonfigurovali jako identifikátor uživatele ve službě Azure AD (např. Pokud userprinciplename je vybrána ve službě Azure AD, pak uživatelské jméno by zde vybraný.)</span><span class="sxs-lookup"><span data-stu-id="87bf2-184">In the **Id Property**, select the appropriate attribute which you have configured as the user identifier in the Azure AD (For example, If the userprinciplename is selected in Azure AD, then Username would be selected here.)</span></span>
+    <span data-ttu-id="8d938-183">c.</span><span class="sxs-lookup"><span data-stu-id="8d938-183">c.</span></span> <span data-ttu-id="8d938-184">V hello **Vlastnost Id**, vyberte hello odpovídající atribut, který jste nakonfigurovali jako hello identifikátor uživatele v hello Azure AD (například pokud hello userprinciplename je vybrána ve službě Azure AD, pak uživatelské jméno by zde vybraný.)</span><span class="sxs-lookup"><span data-stu-id="8d938-184">In hello **Id Property**, select hello appropriate attribute which you have configured as hello user identifier in hello Azure AD (For example, If hello userprinciplename is selected in Azure AD, then Username would be selected here.)</span></span>
 
-    <span data-ttu-id="87bf2-185">d.</span><span class="sxs-lookup"><span data-stu-id="87bf2-185">d.</span></span> <span data-ttu-id="87bf2-186">V **přihlašovací adresa URL**, vložte **"SAML jeden přihlašování adresa URL služby"** hodnotu zkopírovanou z **konfigurovat přihlášení** okno portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="87bf2-186">In the **Login URL**, paste the **“SAML Single Sign-On Service URL”** value you have copied from the **Configure sign-on** window of the Azure portal.</span></span>
+    <span data-ttu-id="8d938-185">d.</span><span class="sxs-lookup"><span data-stu-id="8d938-185">d.</span></span> <span data-ttu-id="8d938-186">V hello **přihlašovací adresa URL**, vložte hello **"SAML jeden přihlašování adresa URL služby"** hodnotu zkopírovanou z hello **konfigurovat přihlášení** okno hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="8d938-186">In hello **Login URL**, paste hello **“SAML Single Sign-On Service URL”** value you have copied from hello **Configure sign-on** window of hello Azure portal.</span></span>
 
-    <span data-ttu-id="87bf2-187">e.</span><span class="sxs-lookup"><span data-stu-id="87bf2-187">e.</span></span> <span data-ttu-id="87bf2-188">V **adresy URL odhlašovací**, vložte **"Adresa URL Sign-Out"** hodnotu zkopírovanou z **konfigurovat přihlášení** okno portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="87bf2-188">In the **Logout URL**, paste the **“Sign-Out URL”** value you have copied from the **Configure sign-on** window of the Azure portal.</span></span>
+    <span data-ttu-id="8d938-187">e.</span><span class="sxs-lookup"><span data-stu-id="8d938-187">e.</span></span> <span data-ttu-id="8d938-188">V hello **adresy URL odhlašovací**, vložte hello **"Adresa URL Sign-Out"** hodnotu zkopírovanou z hello **konfigurovat přihlášení** okno hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="8d938-188">In hello **Logout URL**, paste hello **“Sign-Out URL”** value you have copied from hello **Configure sign-on** window of hello Azure portal.</span></span>
 
-13. <span data-ttu-id="87bf2-189">Povolit **"Povolit jenom přihlášení SSO"**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-189">Enable **‘Only Allow SSO Login’**.</span></span>
+13. <span data-ttu-id="8d938-189">Povolit **"Povolit jenom přihlášení SSO"**.</span><span class="sxs-lookup"><span data-stu-id="8d938-189">Enable **‘Only Allow SSO Login’**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-absorblms-tutorial/5.png)
 
-14. <span data-ttu-id="87bf2-191">Klikněte na tlačítko **"Uložit."**</span><span class="sxs-lookup"><span data-stu-id="87bf2-191">Click **"Save."**</span></span>
+14. <span data-ttu-id="8d938-191">Klikněte na tlačítko **"Uložit."**</span><span class="sxs-lookup"><span data-stu-id="8d938-191">Click **"Save."**</span></span>
 
 > [!TIP]
-> <span data-ttu-id="87bf2-192">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="87bf2-192">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="87bf2-193">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="87bf2-193">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="87bf2-194">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="87bf2-194">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="8d938-192">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="8d938-192">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="8d938-193">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="8d938-193">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="8d938-194">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="8d938-194">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="87bf2-195">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="87bf2-195">Create an Azure AD test user</span></span>
+### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="8d938-195">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="8d938-195">Create an Azure AD test user</span></span>
 
-<span data-ttu-id="87bf2-196">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-196">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+<span data-ttu-id="8d938-196">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="8d938-196">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-<span data-ttu-id="87bf2-198">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="87bf2-198">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="8d938-198">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="8d938-198">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="87bf2-199">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-199">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="8d938-199">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="8d938-199">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-absorblms-tutorial/create_aaduser_01.png) 
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-absorblms-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="87bf2-201">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-201">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="8d938-201">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="8d938-201">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-absorblms-tutorial/create_aaduser_02.png) 
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-absorblms-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="87bf2-203">V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-203">At the top of the dialog click **Add** to open the **User** dialog.</span></span>
+3. <span data-ttu-id="8d938-203">V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="8d938-203">At hello top of hello dialog click **Add** tooopen hello **User** dialog.</span></span>
  
-    ![Tlačítko Přidat](./media/active-directory-saas-absorblms-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-absorblms-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="87bf2-205">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="87bf2-205">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="8d938-205">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="8d938-205">On hello **User** dialog page, perform hello following steps:</span></span>
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-absorblms-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-absorblms-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="87bf2-207">a.</span><span class="sxs-lookup"><span data-stu-id="87bf2-207">a.</span></span> <span data-ttu-id="87bf2-208">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-208">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="8d938-207">a.</span><span class="sxs-lookup"><span data-stu-id="8d938-207">a.</span></span> <span data-ttu-id="8d938-208">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="8d938-208">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="87bf2-209">b.</span><span class="sxs-lookup"><span data-stu-id="87bf2-209">b.</span></span> <span data-ttu-id="87bf2-210">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-210">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="8d938-209">b.</span><span class="sxs-lookup"><span data-stu-id="8d938-209">b.</span></span> <span data-ttu-id="8d938-210">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="8d938-210">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="87bf2-211">c.</span><span class="sxs-lookup"><span data-stu-id="87bf2-211">c.</span></span> <span data-ttu-id="87bf2-212">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-212">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="8d938-211">c.</span><span class="sxs-lookup"><span data-stu-id="8d938-211">c.</span></span> <span data-ttu-id="8d938-212">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="8d938-212">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="87bf2-213">d.</span><span class="sxs-lookup"><span data-stu-id="87bf2-213">d.</span></span> <span data-ttu-id="87bf2-214">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-214">Click **Create**.</span></span>
+    <span data-ttu-id="8d938-213">d.</span><span class="sxs-lookup"><span data-stu-id="8d938-213">d.</span></span> <span data-ttu-id="8d938-214">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="8d938-214">Click **Create**.</span></span>
 
-### <a name="create-an-absorb-lms-test-user"></a><span data-ttu-id="87bf2-215">Vytvořit testovací uživatele s vyrovná se se zatížením pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="87bf2-215">Create an Absorb LMS test user</span></span>
+### <a name="create-an-absorb-lms-test-user"></a><span data-ttu-id="8d938-215">Vytvořit testovací uživatele s vyrovná se se zatížením pro správu vzdělávacího procesu</span><span class="sxs-lookup"><span data-stu-id="8d938-215">Create an Absorb LMS test user</span></span>
 
-<span data-ttu-id="87bf2-216">Pokud chcete povolit uživatelům Azure AD přihlášení do vyrovná se se zatížením pro správu vzdělávacího procesu, se musí být zřízená v k vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-216">To enable Azure AD users to log in to Absorb LMS, they must be provisioned in to Absorb LMS.</span></span>  
-<span data-ttu-id="87bf2-217">Pro vyrovná se se zatížením vzdělávacího procesu zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="87bf2-217">For Absorb LMS, provisioning is a manual task.</span></span>
+<span data-ttu-id="8d938-216">Uživatelé toolog tooenable Azure AD v tooAbsorb pro správu vzdělávacího procesu, se musí být zřízená v tooAbsorb pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="8d938-216">tooenable Azure AD users toolog in tooAbsorb LMS, they must be provisioned in tooAbsorb LMS.</span></span>  
+<span data-ttu-id="8d938-217">Pro vyrovná se se zatížením vzdělávacího procesu zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="8d938-217">For Absorb LMS, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="87bf2-218">**K poskytnutí uživatelského účtu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="87bf2-218">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="8d938-218">**tooprovision uživatelský účet, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="8d938-218">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="87bf2-219">Přihlaste se k serveru vaší společnosti vyrovná se se zatížením pro správu vzdělávacího procesu jako správce.</span><span class="sxs-lookup"><span data-stu-id="87bf2-219">Log in to your Absorb LMS company site as an administrator.</span></span>
+1. <span data-ttu-id="8d938-219">Přihlaste se tooyour vyrovná se se zatížením pro správu vzdělávacího procesu společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="8d938-219">Log in tooyour Absorb LMS company site as an administrator.</span></span>
 
-2. <span data-ttu-id="87bf2-220">Klikněte na tlačítko **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="87bf2-220">Click **Users** tab.</span></span>
+2. <span data-ttu-id="8d938-220">Klikněte na tlačítko **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="8d938-220">Click **Users** tab.</span></span>
 
     ![Pozvat uživatele](./media/active-directory-saas-absorblms-tutorial/absorblms_users.png)
 
-3. <span data-ttu-id="87bf2-222">Klikněte na tlačítko **uživatelé** pod **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="87bf2-222">Click **Users** under the **Users** tab.</span></span>
+3. <span data-ttu-id="8d938-222">Klikněte na tlačítko **uživatelé** pod hello **uživatelé** kartě.</span><span class="sxs-lookup"><span data-stu-id="8d938-222">Click **Users** under hello **Users** tab.</span></span>
 
     ![Pozvat uživatele](./media/active-directory-saas-absorblms-tutorial/absorblms_userssub.png)
 
-4.  <span data-ttu-id="87bf2-224">Vyberte **uživatele** z **přidat nové** rozevíracího seznamu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-224">Select **User** from **Add New** drop-down.</span></span>
+4.  <span data-ttu-id="8d938-224">Vyberte **uživatele** z **přidat nové** rozevíracího seznamu.</span><span class="sxs-lookup"><span data-stu-id="8d938-224">Select **User** from **Add New** drop-down.</span></span>
 
     ![Pozvat uživatele](./media/active-directory-saas-absorblms-tutorial/absorblms_createuser.png)
 
-5. <span data-ttu-id="87bf2-226">Na **přidat uživatele** proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="87bf2-226">On the **Add User** page, perform the following steps:</span></span>
+5. <span data-ttu-id="8d938-226">Na hello **přidat uživatele** proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="8d938-226">On hello **Add User** page, perform hello following steps:</span></span>
 
     ![Pozvat uživatele](./media/active-directory-saas-absorblms-tutorial/user.png)
 
-    <span data-ttu-id="87bf2-228">a.</span><span class="sxs-lookup"><span data-stu-id="87bf2-228">a.</span></span> <span data-ttu-id="87bf2-229">V **křestní jméno** textovému poli, název typu první jako Britta.</span><span class="sxs-lookup"><span data-stu-id="87bf2-229">In the **First Name** textbox, type the first name like Britta.</span></span>
+    <span data-ttu-id="8d938-228">a.</span><span class="sxs-lookup"><span data-stu-id="8d938-228">a.</span></span> <span data-ttu-id="8d938-229">V hello **křestní jméno** textovému poli, typ hello křestní jméno jako Britta.</span><span class="sxs-lookup"><span data-stu-id="8d938-229">In hello **First Name** textbox, type hello first name like Britta.</span></span>
 
-    <span data-ttu-id="87bf2-230">b.</span><span class="sxs-lookup"><span data-stu-id="87bf2-230">b.</span></span> <span data-ttu-id="87bf2-231">V **příjmení** textovému poli, zadejte příjmení jako Simon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-231">In the **Last Name** textbox, type the last name like Simon.</span></span>
+    <span data-ttu-id="8d938-230">b.</span><span class="sxs-lookup"><span data-stu-id="8d938-230">b.</span></span> <span data-ttu-id="8d938-231">V hello **příjmení** textovému poli, typ hello příjmení jako Simon.</span><span class="sxs-lookup"><span data-stu-id="8d938-231">In hello **Last Name** textbox, type hello last name like Simon.</span></span>
     
-    <span data-ttu-id="87bf2-232">c.</span><span class="sxs-lookup"><span data-stu-id="87bf2-232">c.</span></span> <span data-ttu-id="87bf2-233">V **uživatelské jméno** textovému poli, zadejte uživatelské jméno jako Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-233">In the **Username** textbox, type the user name like Britta Simon.</span></span>
+    <span data-ttu-id="8d938-232">c.</span><span class="sxs-lookup"><span data-stu-id="8d938-232">c.</span></span> <span data-ttu-id="8d938-233">V hello **uživatelské jméno** textovému poli, zadejte jméno uživatele hello jako Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8d938-233">In hello **Username** textbox, type hello user name like Britta Simon.</span></span>
 
-    <span data-ttu-id="87bf2-234">d.</span><span class="sxs-lookup"><span data-stu-id="87bf2-234">d.</span></span> <span data-ttu-id="87bf2-235">V **heslo** textovému poli, zadejte heslo Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="87bf2-235">In the **Password** textbox, type the password of Britta Simon.</span></span>
+    <span data-ttu-id="8d938-234">d.</span><span class="sxs-lookup"><span data-stu-id="8d938-234">d.</span></span> <span data-ttu-id="8d938-235">V hello **heslo** textovému poli, zadejte heslo hello Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8d938-235">In hello **Password** textbox, type hello password of Britta Simon.</span></span>
 
-    <span data-ttu-id="87bf2-236">e.</span><span class="sxs-lookup"><span data-stu-id="87bf2-236">e.</span></span> <span data-ttu-id="87bf2-237">V **Potvrdit heslo** textovému poli, zadejte stejné heslo.</span><span class="sxs-lookup"><span data-stu-id="87bf2-237">In the **Confirm Password** textbox, type the same password.</span></span>
+    <span data-ttu-id="8d938-236">e.</span><span class="sxs-lookup"><span data-stu-id="8d938-236">e.</span></span> <span data-ttu-id="8d938-237">V hello **Potvrdit heslo** textovému poli, typ hello stejné heslo.</span><span class="sxs-lookup"><span data-stu-id="8d938-237">In hello **Confirm Password** textbox, type hello same password.</span></span>
     
-    <span data-ttu-id="87bf2-238">f.</span><span class="sxs-lookup"><span data-stu-id="87bf2-238">f.</span></span> <span data-ttu-id="87bf2-239">Nastavit jej jako **ACTIVE**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-239">Make it as **ACTIVE**.</span></span>   
+    <span data-ttu-id="8d938-238">f.</span><span class="sxs-lookup"><span data-stu-id="8d938-238">f.</span></span> <span data-ttu-id="8d938-239">Nastavit jej jako **ACTIVE**.</span><span class="sxs-lookup"><span data-stu-id="8d938-239">Make it as **ACTIVE**.</span></span>   
 
-6. <span data-ttu-id="87bf2-240">Klikněte na tlačítko **"Uložit."**</span><span class="sxs-lookup"><span data-stu-id="87bf2-240">Click **"Save."**</span></span>
+6. <span data-ttu-id="8d938-240">Klikněte na tlačítko **"Uložit."**</span><span class="sxs-lookup"><span data-stu-id="8d938-240">Click **"Save."**</span></span>
  
-### <a name="assign-the-azure-ad-test-user"></a><span data-ttu-id="87bf2-241">Přiřadit testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="87bf2-241">Assign the Azure AD test user</span></span>
+### <a name="assign-hello-azure-ad-test-user"></a><span data-ttu-id="8d938-241">Přiřadit hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="8d938-241">Assign hello Azure AD test user</span></span>
 
-<span data-ttu-id="87bf2-242">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-242">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Absorb LMS.</span></span>
+<span data-ttu-id="8d938-242">V této části povolíte tak, že udělíte přístup tooAbsorb pro správu vzdělávacího procesu Britta Simon toouse Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="8d938-242">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooAbsorb LMS.</span></span>
 
-![Přiřadit role uživatele][200]
+![Přiřadit role uživatele hello][200]
 
-<span data-ttu-id="87bf2-244">**Pokud chcete přiřadit Britta Simon vyrovná se se zatížením pro správu vzdělávacího procesu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="87bf2-244">**To assign Britta Simon to Absorb LMS, perform the following steps:**</span></span>
+<span data-ttu-id="8d938-244">**tooassign tooAbsorb Britta Simon vzdělávacího procesu, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="8d938-244">**tooassign Britta Simon tooAbsorb LMS, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="87bf2-245">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-245">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="8d938-245">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="8d938-245">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="87bf2-247">V seznamu aplikací vyberte **vyrovná se se zatížením pro správu vzdělávacího procesu**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-247">In the applications list, select **Absorb LMS**.</span></span>
+2. <span data-ttu-id="8d938-247">V seznamu aplikace hello vyberte **vyrovná se se zatížením pro správu vzdělávacího procesu**.</span><span class="sxs-lookup"><span data-stu-id="8d938-247">In hello applications list, select **Absorb LMS**.</span></span>
 
-    ![Odkaz vyrovná se se zatížením pro správu vzdělávacího procesu v seznamu aplikací](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_app.png) 
+    ![Hello vyrovná se se zatížením pro správu vzdělávacího procesu odkaz v seznamu aplikace hello](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_app.png) 
 
-3. <span data-ttu-id="87bf2-249">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="87bf2-249">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="8d938-249">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="8d938-249">In hello menu on hello left, click **Users and groups**.</span></span>
 
-    ![Odkaz "Uživatelé a skupiny"][202] 
+    ![odkaz "Uživatelé a skupiny" Hello][202] 
 
-4. <span data-ttu-id="87bf2-251">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="87bf2-251">Click **Add** button.</span></span> <span data-ttu-id="87bf2-252">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-252">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="8d938-251">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="8d938-251">Click **Add** button.</span></span> <span data-ttu-id="8d938-252">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="8d938-252">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. <span data-ttu-id="87bf2-254">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="87bf2-254">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="8d938-254">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="8d938-254">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="87bf2-255">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-255">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="8d938-255">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="8d938-255">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="87bf2-256">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="87bf2-256">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="8d938-256">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="8d938-256">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="test-single-sign-on"></a><span data-ttu-id="87bf2-257">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="87bf2-257">Test single sign-on</span></span>
+### <a name="test-single-sign-on"></a><span data-ttu-id="8d938-257">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="8d938-257">Test single sign-on</span></span>
 
-<span data-ttu-id="87bf2-258">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-258">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="8d938-258">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="8d938-258">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="87bf2-259">Klikněte na dlaždici vyrovná se se zatížením pro správu vzdělávacího procesu na přístupovém panelu, můžete se získat automaticky přihlášení k aplikaci vyrovná se se zatížením pro správu vzdělávacího procesu.</span><span class="sxs-lookup"><span data-stu-id="87bf2-259">Click the Absorb LMS tile in the Access Panel, you will get automatically signed-on to your Absorb LMS application.</span></span> <span data-ttu-id="87bf2-260">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="87bf2-260">For more information about the Access Panel, see [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span>
+<span data-ttu-id="8d938-259">Klikněte na tlačítko hello vyrovná se se zatížením pro správu vzdělávacího procesu dlaždici v hello přístupového panelu, zobrazí se automaticky přihlášeného tooyour vyrovná se se zatížením pro správu vzdělávacího procesu aplikace.</span><span class="sxs-lookup"><span data-stu-id="8d938-259">Click hello Absorb LMS tile in hello Access Panel, you will get automatically signed-on tooyour Absorb LMS application.</span></span> <span data-ttu-id="8d938-260">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="8d938-260">For more information about the Access Panel, see [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="87bf2-261">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="87bf2-261">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="8d938-261">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="8d938-261">Additional resources</span></span>
 
-* [<span data-ttu-id="87bf2-262">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="87bf2-262">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="87bf2-263">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="87bf2-263">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="8d938-262">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="8d938-262">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="8d938-263">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="8d938-263">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->

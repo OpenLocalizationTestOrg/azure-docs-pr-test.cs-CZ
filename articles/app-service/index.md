@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure App Service – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Zjistěte, jak používat App Service k vytváření webových a mobilních aplikací pro jakoukoliv platformu nebo zařízení, pomocí kurzů, videí, referencí k rozhraní API a další dokumentace."
+title: "aaaAzure dokumentace k aplikaci služby - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse služby App Service toocreate webových a mobilních aplikací pro všechny platformy a zařízení pomocí kurzy, videa, odkazy na rozhraní API a další dokumentaci."
 services: app-service
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a9b7cb3492fa71b33c4aa6b2c0ecda9eaac9ea4b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d4ec0970232d2a12065a05d2f0211f7aae16d3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="app-service-documentation"></a>Dokumentace ke službě App Service
 
-Zjistěte, jak používat App Service k vývoji a hostování webových a mobilních aplikací pro jakoukoliv platformu nebo zařízení, pomocí kurzů, videí, referencí k rozhraní API a další dokumentace. Naučte se integrovat aplikace s řešeními SaaS, propojovat je s lokálními aplikacemi a automatizovat firemní procesy.
+Zjistěte, jak toouse toodevelop a hostitele webové aplikace služby a mobilních aplikací pro všechny platformy a zařízení pomocí kurzy, videa, odkazy na rozhraní API a další dokumentaci. Zjistěte, jak připojit k místním aplikacím toointegrate aplikace s řešeními SaaS a automatizovat firemní procesy.
 
 <ul class="panelContent cardsFTitle">
     <li>

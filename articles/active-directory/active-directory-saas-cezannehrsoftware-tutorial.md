@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Cezanne HR softwarem | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,277 +13,277 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 623c438edfce5f98c2d32d8bb25a97d86aa77909
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3675acd8871d62c2277def8074f7aa39ac46e2a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a><span data-ttu-id="9f61f-103">Kurz: Integrate Azure Active Directory s Cezanne HR softwaru</span><span class="sxs-lookup"><span data-stu-id="9f61f-103">Tutorial: Integrate Azure Active Directory with Cezanne HR software</span></span>
+# <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a><span data-ttu-id="07c08-103">Kurz: Integrate Azure Active Directory s Cezanne HR softwaru</span><span class="sxs-lookup"><span data-stu-id="07c08-103">Tutorial: Integrate Azure Active Directory with Cezanne HR software</span></span>
 
-<span data-ttu-id="9f61f-104">V tomto kurzu zjistěte, jak integrovat Cezanne HR softwaru s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="9f61f-104">In this tutorial, you learn how to integrate Cezanne HR software with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="07c08-104">V tomto kurzu zjistíte, jak toointegrate Cezanne HR software s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="07c08-104">In this tutorial, you learn how toointegrate Cezanne HR software with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="9f61f-105">Integrace Cezanne HR softwaru s Azure AD poskytuje následující výhody.</span><span class="sxs-lookup"><span data-stu-id="9f61f-105">Integrating Cezanne HR software with Azure AD provides you with the following benefits.</span></span> <span data-ttu-id="9f61f-106">Můžete:</span><span class="sxs-lookup"><span data-stu-id="9f61f-106">You can:</span></span>
+<span data-ttu-id="07c08-105">Integrace Cezanne HR softwaru s Azure AD poskytuje následující výhody hello.</span><span class="sxs-lookup"><span data-stu-id="07c08-105">Integrating Cezanne HR software with Azure AD provides you with hello following benefits.</span></span> <span data-ttu-id="07c08-106">Můžete:</span><span class="sxs-lookup"><span data-stu-id="07c08-106">You can:</span></span>
 
-- <span data-ttu-id="9f61f-107">Řízení ve službě Azure AD, který má přístup k softwaru Cezanne oddělení lidských zdrojů.</span><span class="sxs-lookup"><span data-stu-id="9f61f-107">Control in Azure AD who has access to Cezanne HR software.</span></span>
-- <span data-ttu-id="9f61f-108">Povolte uživatelům automaticky přihlásit k Cezanne HR software s jednotné přihlašování (SSO) s jejich účty Azure AD.</span><span class="sxs-lookup"><span data-stu-id="9f61f-108">Enable your users to automatically sign in to Cezanne HR software with single sign-on (SSO) with their Azure AD accounts.</span></span>
-- <span data-ttu-id="9f61f-109">Spravovat účty v jednom centrálním místě: portál Azure.</span><span class="sxs-lookup"><span data-stu-id="9f61f-109">Manage your accounts in one central location: the Azure portal.</span></span>
+- <span data-ttu-id="07c08-107">Řízení ve službě Azure AD, který má přístup tooCezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="07c08-107">Control in Azure AD who has access tooCezanne HR software.</span></span>
+- <span data-ttu-id="07c08-108">Povolte přihlášení uživatelů tooautomatically tooCezanne HR software s jednotné přihlašování (SSO) s jejich účty Azure AD.</span><span class="sxs-lookup"><span data-stu-id="07c08-108">Enable your users tooautomatically sign in tooCezanne HR software with single sign-on (SSO) with their Azure AD accounts.</span></span>
+- <span data-ttu-id="07c08-109">Spravovat účty v jednom centrálním místě: hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="07c08-109">Manage your accounts in one central location: hello Azure portal.</span></span>
 
-<span data-ttu-id="9f61f-110">Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="9f61f-110">To learn more about software as a service (SaaS) app integration with Azure AD, see [What is application access and SSO with Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="07c08-110">toolearn Další informace o softwaru, služba (SaaS) aplikace integraci s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="07c08-110">toolearn more about software as a service (SaaS) app integration with Azure AD, see [What is application access and SSO with Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9f61f-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9f61f-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="07c08-111">Požadavky</span><span class="sxs-lookup"><span data-stu-id="07c08-111">Prerequisites</span></span>
 
-<span data-ttu-id="9f61f-112">Konfigurace integrace Azure AD s Cezanne HR softwaru, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="9f61f-112">To configure Azure AD integration with Cezanne HR software, you need the following items:</span></span>
+<span data-ttu-id="07c08-112">tooconfigure integrace služby Azure AD s Cezanne HR softwaru, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="07c08-112">tooconfigure Azure AD integration with Cezanne HR software, you need hello following items:</span></span>
 
-- <span data-ttu-id="9f61f-113">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="9f61f-113">An Azure AD subscription</span></span>
-- <span data-ttu-id="9f61f-114">Software Cezanne HR předplatné povolené jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="9f61f-114">A Cezanne HR software SSO-enabled subscription</span></span>
+- <span data-ttu-id="07c08-113">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="07c08-113">An Azure AD subscription</span></span>
+- <span data-ttu-id="07c08-114">Software Cezanne HR předplatné povolené jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="07c08-114">A Cezanne HR software SSO-enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="9f61f-115">Chcete-li otestovat kroky v tomto kurzu, doporučujeme nepoužívejte provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="9f61f-115">To test the steps in this tutorial, we recommend that you do not use a production environment.</span></span>
+> <span data-ttu-id="07c08-115">Doporučujeme tootest hello kroky v tomto kurzu, nepoužívejte provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="07c08-115">tootest hello steps in this tutorial, we recommend that you do not use a production environment.</span></span>
 
-<span data-ttu-id="9f61f-116">Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:</span><span class="sxs-lookup"><span data-stu-id="9f61f-116">To test the steps in this tutorial, follow these recommendations:</span></span>
+<span data-ttu-id="07c08-116">tootest hello kroky v tomto kurzu, postupujte podle následujících doporučení:</span><span class="sxs-lookup"><span data-stu-id="07c08-116">tootest hello steps in this tutorial, follow these recommendations:</span></span>
 
-- <span data-ttu-id="9f61f-117">Nepoužívejte produkční prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="9f61f-117">Don't use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="9f61f-118">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="9f61f-118">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="07c08-117">Nepoužívejte produkční prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="07c08-117">Don't use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="07c08-118">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="07c08-118">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="9f61f-119">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="9f61f-119">Scenario description</span></span>
-<span data-ttu-id="9f61f-120">V tomto kurzu Azure AD jednotného přihlašování k testování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="9f61f-120">In this tutorial, you test Azure AD SSO in a test environment.</span></span> 
+## <a name="scenario-description"></a><span data-ttu-id="07c08-119">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="07c08-119">Scenario description</span></span>
+<span data-ttu-id="07c08-120">V tomto kurzu Azure AD jednotného přihlašování k testování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="07c08-120">In this tutorial, you test Azure AD SSO in a test environment.</span></span> 
 
-<span data-ttu-id="9f61f-121">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="9f61f-121">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+<span data-ttu-id="07c08-121">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="07c08-121">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-* <span data-ttu-id="9f61f-122">Přidání softwaru Cezanne HR z Galerie</span><span class="sxs-lookup"><span data-stu-id="9f61f-122">Adding Cezanne HR software from the gallery</span></span>
-* <span data-ttu-id="9f61f-123">Konfigurace a testování Azure AD SSO</span><span class="sxs-lookup"><span data-stu-id="9f61f-123">Configuring and testing Azure AD SSO</span></span>
+* <span data-ttu-id="07c08-122">Přidání softwaru Cezanne HR z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="07c08-122">Adding Cezanne HR software from hello gallery</span></span>
+* <span data-ttu-id="07c08-123">Konfigurace a testování Azure AD SSO</span><span class="sxs-lookup"><span data-stu-id="07c08-123">Configuring and testing Azure AD SSO</span></span>
 
-## <a name="add-cezanne-hr-software-from-the-gallery"></a><span data-ttu-id="9f61f-124">Přidat software Cezanne HR z Galerie</span><span class="sxs-lookup"><span data-stu-id="9f61f-124">Add Cezanne HR software from the gallery</span></span>
-<span data-ttu-id="9f61f-125">Při konfiguraci integrace Cezanne HR softwaru do služby Azure AD přidáte do seznamu spravovaných aplikací SaaS Cezanne HR software z galerie.</span><span class="sxs-lookup"><span data-stu-id="9f61f-125">To configure the integration of Cezanne HR software into Azure AD, add Cezanne HR software from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="add-cezanne-hr-software-from-hello-gallery"></a><span data-ttu-id="07c08-124">Přidat software Cezanne HR z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="07c08-124">Add Cezanne HR software from hello gallery</span></span>
+<span data-ttu-id="07c08-125">integrace hello tooconfigure Cezanne HR softwaru do služby Azure AD, přidejte Cezanne HR softwaru hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="07c08-125">tooconfigure hello integration of Cezanne HR software into Azure AD, add Cezanne HR software from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="9f61f-126">Pokud chcete přidat Cezanne HR softwaru z galerie, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-126">To add Cezanne HR software from the gallery, do the following:</span></span>
+<span data-ttu-id="07c08-126">tooadd Cezanne HR softwaru z Galerie hello hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-126">tooadd Cezanne HR software from hello gallery, do hello following:</span></span>
 
-1. <span data-ttu-id="9f61f-127">V  **[portál Azure](https://portal.azure.com)**, v levém podokně, vyberte **Azure Active Directory** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="9f61f-127">In the **[Azure portal](https://portal.azure.com)**, in the left pane, select the **Azure Active Directory** button.</span></span> 
+1. <span data-ttu-id="07c08-127">V hello  **[portál Azure](https://portal.azure.com)**, v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="07c08-127">In hello **[Azure portal](https://portal.azure.com)**, in hello left pane, select hello **Azure Active Directory** button.</span></span> 
 
-    ![Tlačítko "Azure Active Directory"][1]
+    ![tlačítko "Azure Active Directory" Hello][1]
 
-2. <span data-ttu-id="9f61f-129">Vyberte **podnikové aplikace, které** > **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-129">Select **Enterprise applications** > **All applications**.</span></span>
+2. <span data-ttu-id="07c08-129">Vyberte **podnikové aplikace, které** > **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="07c08-129">Select **Enterprise applications** > **All applications**.</span></span>
 
-    ![Na odkaz "Všechny aplikace"][2]
+    ![Hello "Všechny aplikace" odkaz][2]
     
-3. <span data-ttu-id="9f61f-131">Chcete-li přidat novou aplikaci, v horní části **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-131">To add a new application, at the top of the **All applications** dialog box, select **New application**.</span></span>
+3. <span data-ttu-id="07c08-131">tooadd novou aplikaci, hello horní části hello **všechny aplikace** dialogové okno, vyberte **novou aplikaci**.</span><span class="sxs-lookup"><span data-stu-id="07c08-131">tooadd a new application, at hello top of hello **All applications** dialog box, select **New application**.</span></span>
 
-    !["Nová aplikace" tlačítko][3]
+    ![Hello "Nové aplikace" tlačítko][3]
 
-4. <span data-ttu-id="9f61f-133">Do vyhledávacího pole zadejte **Cezanne HR softwaru**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-133">In the search box, type **Cezanne HR Software**.</span></span>
+4. <span data-ttu-id="07c08-133">Hello vyhledávacího pole zadejte **Cezanne HR softwaru**.</span><span class="sxs-lookup"><span data-stu-id="07c08-133">In hello search box, type **Cezanne HR Software**.</span></span>
 
-    ![Do vyhledávacího pole](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
+    ![Hello vyhledávacího pole](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
 
-5. <span data-ttu-id="9f61f-135">V seznamu výsledků vyberte **Cezanne HR softwaru** a pak vyberte **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="9f61f-135">In the results list, select **Cezanne HR Software** and then select the **Add** button to add the application.</span></span>
+5. <span data-ttu-id="07c08-135">V seznamu výsledků hello vyberte **Cezanne HR softwaru** a pak vyberte hello **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="07c08-135">In hello results list, select **Cezanne HR Software** and then select hello **Add** button tooadd hello application.</span></span>
 
-    ![Seznam výsledků](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
+    ![seznam výsledků Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="9f61f-137">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="9f61f-137">Configure and test Azure AD single sign-on</span></span>
-<span data-ttu-id="9f61f-138">V této části můžete nakonfigurovat a otestovat jednotného přihlašování k AD Azure s Cezanne HR software založený na testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="9f61f-138">In this section, you configure and test Azure AD SSO with Cezanne HR software based on a test user called "Britta Simon."</span></span>
+## <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="07c08-137">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="07c08-137">Configure and test Azure AD single sign-on</span></span>
+<span data-ttu-id="07c08-138">V této části můžete nakonfigurovat a otestovat jednotného přihlašování k AD Azure s Cezanne HR software založený na testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="07c08-138">In this section, you configure and test Azure AD SSO with Cezanne HR software based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="9f61f-139">Pro jednotné přihlašování pro práci Azure AD musí znát protějškem softwaru Cezanne HR uživatele Azure AD.</span><span class="sxs-lookup"><span data-stu-id="9f61f-139">For SSO to work, Azure AD needs to know the Cezanne HR software counterpart to the Azure AD user.</span></span> <span data-ttu-id="9f61f-140">Jinými slovy je potřeba vytvořit vztah propojení mezi uživatele Azure AD a související uživatelské v oddělení lidských zdrojů Cezanne softwaru.</span><span class="sxs-lookup"><span data-stu-id="9f61f-140">In other words, you must establish a link relationship between an Azure AD user and the related user in the Cezanne HR software.</span></span>
+<span data-ttu-id="07c08-139">Azure AD pro jednotné přihlašování toowork musí tooknow hello Cezanne HR softwaru protějšku toohello uživatele Azure AD.</span><span class="sxs-lookup"><span data-stu-id="07c08-139">For SSO toowork, Azure AD needs tooknow hello Cezanne HR software counterpart toohello Azure AD user.</span></span> <span data-ttu-id="07c08-140">Jinými slovy je potřeba vytvořit vztah propojení mezi uživatele Azure AD a související uživatelské hello v hello Cezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="07c08-140">In other words, you must establish a link relationship between an Azure AD user and hello related user in hello Cezanne HR software.</span></span>
 
-<span data-ttu-id="9f61f-141">K navázání vztahu odkaz, přiřazení softwaru Cezanne HR **uživatelské jméno** hodnotu jako Azure AD **uživatelské jméno** hodnotu.</span><span class="sxs-lookup"><span data-stu-id="9f61f-141">To establish the link relationship, assign the Cezanne HR software **user name** value as the Azure AD **Username** value.</span></span>
+<span data-ttu-id="07c08-141">tooestablish hello odkaz vztahu hello přiřazení softwaru Cezanne HR **uživatelské jméno** hodnotu jako hello Azure AD **uživatelské jméno** hodnotu.</span><span class="sxs-lookup"><span data-stu-id="07c08-141">tooestablish hello link relationship, assign hello Cezanne HR software **user name** value as hello Azure AD **Username** value.</span></span>
 
-<span data-ttu-id="9f61f-142">Nakonfigurovat a otestovat Azure AD SSO pomocí softwaru Cezanne oddělení lidských zdrojů, dokončete následující stavební bloky.</span><span class="sxs-lookup"><span data-stu-id="9f61f-142">To configure and test Azure AD SSO by using Cezanne HR software, complete the following building blocks.</span></span>
+<span data-ttu-id="07c08-142">tooconfigure a testování Azure AD jednotného přihlašování pomocí softwaru Cezanne HR dokončení hello následující stavební bloky.</span><span class="sxs-lookup"><span data-stu-id="07c08-142">tooconfigure and test Azure AD SSO by using Cezanne HR software, complete hello following building blocks.</span></span>
 
-### <a name="configure-azure-ad-sso"></a><span data-ttu-id="9f61f-143">Konfigurovat Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="9f61f-143">Configure Azure AD SSO</span></span>
+### <a name="configure-azure-ad-sso"></a><span data-ttu-id="07c08-143">Konfigurovat Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="07c08-143">Configure Azure AD SSO</span></span>
 
-<span data-ttu-id="9f61f-144">V této části můžete povolení jednotného přihlašování Azure AD na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Cezanne HR softwaru následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="9f61f-144">In this section, you can enable Azure AD SSO in the Azure portal and configure SSO in your Cezanne HR software application by doing the following:</span></span>
+<span data-ttu-id="07c08-144">V této části můžete povolení jednotného přihlašování Azure AD v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Cezanne HR softwaru pomocí tohoto postupu hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-144">In this section, you can enable Azure AD SSO in hello Azure portal and configure SSO in your Cezanne HR software application by doing hello following:</span></span>
 
-1. <span data-ttu-id="9f61f-145">Na portálu Azure na **Cezanne HR softwaru** stránky integrace aplikací, vyberte **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-145">In the Azure portal, on the **Cezanne HR Software** application integration page, select **Single sign-on**.</span></span>
+1. <span data-ttu-id="07c08-145">V portálu Azure, na hello hello **Cezanne HR softwaru** stránky integrace aplikací, vyberte **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="07c08-145">In hello Azure portal, on hello **Cezanne HR Software** application integration page, select **Single sign-on**.</span></span>
 
-    ![Příkaz "Jednotného přihlašování"][4]
+    ![příkaz "Jednotného přihlašování" Hello][4]
 
-2. <span data-ttu-id="9f61f-147">Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogové okno, vyberte **režimu** jako **na základě SAML přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-147">To enable SSO, in the **Single sign-on** dialog box, select the **Mode** as **SAML-based Sign-on**.</span></span>
+2. <span data-ttu-id="07c08-147">tooenable jednotné přihlašování, v hello **jednotného přihlašování** dialogové okno, vyberte hello **režimu** jako **na základě SAML přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="07c08-147">tooenable SSO, in hello **Single sign-on** dialog box, select hello **Mode** as **SAML-based Sign-on**.</span></span>
  
-    ![Do pole "Režim"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
+    ![pole "Režim" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
 
-3. <span data-ttu-id="9f61f-149">V části **Cezanne HR softwaru domény a adresy URL**, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-149">Under **Cezanne HR Software Domain and URLs**, do the following:</span></span>
+3. <span data-ttu-id="07c08-149">V části **Cezanne HR softwaru domény a adresy URL**, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-149">Under **Cezanne HR Software Domain and URLs**, do hello following:</span></span>
 
-    ![V části "Cezanne HR softwaru domény adresy URL a"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
+    ![část "Cezanne HR softwaru domény adresy URL a" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    <span data-ttu-id="9f61f-151">a.</span><span class="sxs-lookup"><span data-stu-id="9f61f-151">a.</span></span> <span data-ttu-id="9f61f-152">V **přihlašovací adresa URL** zadejte adresu URL, která má následující syntaxi:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`</span><span class="sxs-lookup"><span data-stu-id="9f61f-152">In the **Sign-on URL** box, type a URL that has the following syntax: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`</span></span>
+    <span data-ttu-id="07c08-151">a.</span><span class="sxs-lookup"><span data-stu-id="07c08-151">a.</span></span> <span data-ttu-id="07c08-152">V hello **přihlašovací adresa URL** pole, zadejte adresu URL, která má hello následující syntaxi:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`</span><span class="sxs-lookup"><span data-stu-id="07c08-152">In hello **Sign-on URL** box, type a URL that has hello following syntax: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`</span></span>
 
-    <span data-ttu-id="9f61f-153">b.</span><span class="sxs-lookup"><span data-stu-id="9f61f-153">b.</span></span> <span data-ttu-id="9f61f-154">V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi:`https://w3.cezanneondemand.com:443/<tenantid>`</span><span class="sxs-lookup"><span data-stu-id="9f61f-154">In the **Reply URL** box, type a URL that has the following syntax: `https://w3.cezanneondemand.com:443/<tenantid>`</span></span>    
+    <span data-ttu-id="07c08-153">b.</span><span class="sxs-lookup"><span data-stu-id="07c08-153">b.</span></span> <span data-ttu-id="07c08-154">V hello **adresa URL odpovědi** pole, zadejte adresu URL, která má hello následující syntaxi:`https://w3.cezanneondemand.com:443/<tenantid>`</span><span class="sxs-lookup"><span data-stu-id="07c08-154">In hello **Reply URL** box, type a URL that has hello following syntax: `https://w3.cezanneondemand.com:443/<tenantid>`</span></span>    
      
     > [!NOTE] 
-    > <span data-ttu-id="9f61f-155">Předchozí hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="9f61f-155">The preceding values are not real.</span></span> <span data-ttu-id="9f61f-156">Adresa URL skutečné odpovědi a adresa URL přihlašování je aktualizujte.</span><span class="sxs-lookup"><span data-stu-id="9f61f-156">Update them with the actual reply URL and the sign-on URL.</span></span> <span data-ttu-id="9f61f-157">Chcete-li získat hodnoty, obraťte se [tým podpory klientský software Cezanne HR](mailto:info@cezannehr.com).</span><span class="sxs-lookup"><span data-stu-id="9f61f-157">To obtain the values, contact the [Cezanne HR software client support team](mailto:info@cezannehr.com).</span></span>
+    > <span data-ttu-id="07c08-155">Hello předchozí hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="07c08-155">hello preceding values are not real.</span></span> <span data-ttu-id="07c08-156">Adresa URL hello skutečné odpovědi a hello přihlašovací adresa URL je aktualizujte.</span><span class="sxs-lookup"><span data-stu-id="07c08-156">Update them with hello actual reply URL and hello sign-on URL.</span></span> <span data-ttu-id="07c08-157">tooobtain hello hodnoty, kontaktujte hello [tým podpory klientský software Cezanne HR](mailto:info@cezannehr.com).</span><span class="sxs-lookup"><span data-stu-id="07c08-157">tooobtain hello values, contact hello [Cezanne HR software client support team](mailto:info@cezannehr.com).</span></span>
 
-4. <span data-ttu-id="9f61f-158">V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu v počítači.</span><span class="sxs-lookup"><span data-stu-id="9f61f-158">Under **SAML Signing Certificate**, select **Certificate (Base64)**, and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="07c08-158">V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="07c08-158">Under **SAML Signing Certificate**, select **Certificate (Base64)**, and then save hello certificate file on your computer.</span></span>
 
-    ![V části "SAML podpisový certifikát"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
+    ![Hello část "SAML podpisový certifikát"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
 
-5. <span data-ttu-id="9f61f-160">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-160">Select **Save**.</span></span>
+5. <span data-ttu-id="07c08-160">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="07c08-160">Select **Save**.</span></span>
 
-    ![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
+    ![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
     
-6. <span data-ttu-id="9f61f-162">V části **Cezanne HR softwarové konfigurace**, vyberte **konfigurace softwaru HR Cezanne** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="9f61f-162">Under **Cezanne HR Software Configuration**, select **Configure Cezanne HR Software** to open the **Configure sign-on** window.</span></span> <span data-ttu-id="9f61f-163">Kopírování **SAML Entity ID** a **SAML-služby přihlášení** adresa URL z **Stručná referenční příručka** části.</span><span class="sxs-lookup"><span data-stu-id="9f61f-163">Copy the **SAML Entity ID** and **SAML Single Sign-On Service** URL from the **Quick Reference** section.</span></span>
+6. <span data-ttu-id="07c08-162">V části **Cezanne HR softwarové konfigurace**, vyberte **konfigurace softwaru HR Cezanne** tooopen hello **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="07c08-162">Under **Cezanne HR Software Configuration**, select **Configure Cezanne HR Software** tooopen hello **Configure sign-on** window.</span></span> <span data-ttu-id="07c08-163">Kopírování hello **SAML Entity ID** a **SAML-služby přihlášení** adresa URL z hello **Stručná referenční příručka** části.</span><span class="sxs-lookup"><span data-stu-id="07c08-163">Copy hello **SAML Entity ID** and **SAML Single Sign-On Service** URL from hello **Quick Reference** section.</span></span>
 
-    ![V části "Konfigurace softwaru HR Cezanne"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Hello "Cezanne HR softwaru konfigurace"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
 
-7. <span data-ttu-id="9f61f-165">V okně prohlížeče jiný web Přihlaste se ke klientovi Cezanne HR softwaru jako správce.</span><span class="sxs-lookup"><span data-stu-id="9f61f-165">In a different web browser window, sign on to your Cezanne HR software tenant as an administrator.</span></span>
+7. <span data-ttu-id="07c08-165">V okně prohlížeče jiných webových přihlaste tooyour Cezanne HR softwaru klienta jako správce.</span><span class="sxs-lookup"><span data-stu-id="07c08-165">In a different web browser window, sign on tooyour Cezanne HR software tenant as an administrator.</span></span>
 
-8. <span data-ttu-id="9f61f-166">V levém podokně vyberte **nastavení systému**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-166">In the left pane, select **System Setup**.</span></span> <span data-ttu-id="9f61f-167">Vyberte **nastavení zabezpečení** > **jednotné přihlašování konfigurace**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-167">Select **Security Settings** > **Single Sign-On Configuration**.</span></span>
+8. <span data-ttu-id="07c08-166">V levém podokně hello vyberte **nastavení systému**.</span><span class="sxs-lookup"><span data-stu-id="07c08-166">In hello left pane, select **System Setup**.</span></span> <span data-ttu-id="07c08-167">Vyberte **nastavení zabezpečení** > **jednotné přihlašování konfigurace**.</span><span class="sxs-lookup"><span data-stu-id="07c08-167">Select **Security Settings** > **Single Sign-On Configuration**.</span></span>
 
-    ![Na odkaz "Jednoho přihlášení konfigurace"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![odkaz "Jednoho přihlášení konfigurace" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. <span data-ttu-id="9f61f-169">V **umožňují uživatelům přihlásit pomocí následujících služeb jednotné přihlašování (SSO)** podokně, vyberte **SAML 2.0** zaškrtávací políčko a vyberte **Upřesnit konfiguraci** možnost.</span><span class="sxs-lookup"><span data-stu-id="9f61f-169">In the **Allow users to log in using the following Single Sign-On (SSO) services** pane, select the **SAML 2.0** check box and select the **Advanced Configuration** option.</span></span>
+9. <span data-ttu-id="07c08-169">V hello **povolit uživatelům toolog pomocí hello následující služby Jednotné přihlašování (SSO)** podokně, vyberte hello **SAML 2.0** zaškrtávací políčko a vyberte hello **Upřesnit konfiguraci** možnost.</span><span class="sxs-lookup"><span data-stu-id="07c08-169">In hello **Allow users toolog in using hello following Single Sign-On (SSO) services** pane, select hello **SAML 2.0** check box and select hello **Advanced Configuration** option.</span></span>
 
     ![Jednotné přihlašování možnosti služeb](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-10. <span data-ttu-id="9f61f-171">Vyberte **přidat nové**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-171">Select **Add New**.</span></span>
+10. <span data-ttu-id="07c08-171">Vyberte **přidat nové**.</span><span class="sxs-lookup"><span data-stu-id="07c08-171">Select **Add New**.</span></span>
 
-    ![Tlačítko "Přidat nové"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![tlačítko "Přidat nové" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. <span data-ttu-id="9f61f-173">V části **zprostředkovatelů Identity SAML 2.0**, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-173">Under **SAML 2.0 Identity Providers**, do the following:</span></span>
+11. <span data-ttu-id="07c08-173">V části **zprostředkovatelů Identity SAML 2.0**, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-173">Under **SAML 2.0 Identity Providers**, do hello following:</span></span>
 
-    ![V části "Zprostředkovatelů Identity SAML 2.0"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![část "Zprostředkovatelů Identity SAML 2.0" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
-    <span data-ttu-id="9f61f-175">a.</span><span class="sxs-lookup"><span data-stu-id="9f61f-175">a.</span></span> <span data-ttu-id="9f61f-176">V **zobrazovaný název** pole, zadejte název zprostředkovatele identity.</span><span class="sxs-lookup"><span data-stu-id="9f61f-176">In the **Display Name** box, enter the name of your identity provider.</span></span>
+    <span data-ttu-id="07c08-175">a.</span><span class="sxs-lookup"><span data-stu-id="07c08-175">a.</span></span> <span data-ttu-id="07c08-176">V hello **zobrazovaný název** zadejte hello název zprostředkovatele identity.</span><span class="sxs-lookup"><span data-stu-id="07c08-176">In hello **Display Name** box, enter hello name of your identity provider.</span></span>
 
-    <span data-ttu-id="9f61f-177">b.</span><span class="sxs-lookup"><span data-stu-id="9f61f-177">b.</span></span> <span data-ttu-id="9f61f-178">V **identifikátor Entity** pole, vložte **SAML Entity ID** který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="9f61f-178">In the **Entity Identifier** box, paste the **SAML Entity ID** that you copied from the Azure portal.</span></span> 
+    <span data-ttu-id="07c08-177">b.</span><span class="sxs-lookup"><span data-stu-id="07c08-177">b.</span></span> <span data-ttu-id="07c08-178">V hello **identifikátor Entity** pole, vložte hello **SAML Entity ID** který jste zkopírovali ze hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="07c08-178">In hello **Entity Identifier** box, paste hello **SAML Entity ID** that you copied from hello Azure portal.</span></span> 
 
-    <span data-ttu-id="9f61f-179">c.</span><span class="sxs-lookup"><span data-stu-id="9f61f-179">c.</span></span> <span data-ttu-id="9f61f-180">V **SAML vazby** pole se seznamem, vyberte **POST**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-180">In the **SAML Binding** list box, select **POST**.</span></span>
+    <span data-ttu-id="07c08-179">c.</span><span class="sxs-lookup"><span data-stu-id="07c08-179">c.</span></span> <span data-ttu-id="07c08-180">V hello **SAML vazby** pole se seznamem, vyberte **POST**.</span><span class="sxs-lookup"><span data-stu-id="07c08-180">In hello **SAML Binding** list box, select **POST**.</span></span>
 
-    <span data-ttu-id="9f61f-181">d.</span><span class="sxs-lookup"><span data-stu-id="9f61f-181">d.</span></span> <span data-ttu-id="9f61f-182">V **koncový bod služby tokenu zabezpečení** pole, vložte **SAML-služby přihlášení** adresu URL, kterou jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="9f61f-182">In the **Security Token Service Endpoint** box, paste the **SAML Single Sign-On Service** URL that you copied from the Azure portal.</span></span> 
+    <span data-ttu-id="07c08-181">d.</span><span class="sxs-lookup"><span data-stu-id="07c08-181">d.</span></span> <span data-ttu-id="07c08-182">V hello **koncový bod služby tokenu zabezpečení** pole, vložte hello **SAML-služby přihlášení** adresu URL, kterou jste zkopírovali z hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="07c08-182">In hello **Security Token Service Endpoint** box, paste hello **SAML Single Sign-On Service** URL that you copied from hello Azure portal.</span></span> 
     
-    <span data-ttu-id="9f61f-183">e.</span><span class="sxs-lookup"><span data-stu-id="9f61f-183">e.</span></span> <span data-ttu-id="9f61f-184">V **název atributu ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.</span><span class="sxs-lookup"><span data-stu-id="9f61f-184">In the **User ID Attribute Name** box, enter `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.</span></span>
+    <span data-ttu-id="07c08-183">e.</span><span class="sxs-lookup"><span data-stu-id="07c08-183">e.</span></span> <span data-ttu-id="07c08-184">V hello **název atributu ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.</span><span class="sxs-lookup"><span data-stu-id="07c08-184">In hello **User ID Attribute Name** box, enter `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.</span></span>
     
-    <span data-ttu-id="9f61f-185">f.</span><span class="sxs-lookup"><span data-stu-id="9f61f-185">f.</span></span> <span data-ttu-id="9f61f-186">Chcete-li nahrát na server certifikát stažený z Azure AD, vyberte **nahrát** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="9f61f-186">To upload the downloaded certificate from Azure AD, select the **Upload** button.</span></span>
+    <span data-ttu-id="07c08-185">f.</span><span class="sxs-lookup"><span data-stu-id="07c08-185">f.</span></span> <span data-ttu-id="07c08-186">tooupload hello stáhnout certifikát z Azure AD, vyberte hello **nahrát** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="07c08-186">tooupload hello downloaded certificate from Azure AD, select hello **Upload** button.</span></span>
     
-    <span data-ttu-id="9f61f-187">g.</span><span class="sxs-lookup"><span data-stu-id="9f61f-187">g.</span></span> <span data-ttu-id="9f61f-188">Vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-188">Select **OK**.</span></span> 
+    <span data-ttu-id="07c08-187">g.</span><span class="sxs-lookup"><span data-stu-id="07c08-187">g.</span></span> <span data-ttu-id="07c08-188">Vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="07c08-188">Select **OK**.</span></span> 
 
-12. <span data-ttu-id="9f61f-189">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-189">Select **Save**.</span></span>
+12. <span data-ttu-id="07c08-189">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="07c08-189">Select **Save**.</span></span>
 
-    ![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> <span data-ttu-id="9f61f-191">Jak nastavit aplikaci si můžete přečíst stručným verzi podle předchozích pokynů v [portál Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="9f61f-191">As you set up the app, you can read a concise version of the preceding instructions in the [Azure portal](https://portal.azure.com).</span></span> <span data-ttu-id="9f61f-192">Po přidání aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotného přihlašování** kartě. Přejděte k embedded dokumentace z **konfigurace** části.</span><span class="sxs-lookup"><span data-stu-id="9f61f-192">After you add the app from the **Active Directory** > **Enterprise applications** section, select the **Single sign-on** tab. Then access the embedded documentation from the **Configuration** section.</span></span> 
+> <span data-ttu-id="07c08-191">Při nastavování aplikace hello, si můžete přečíst stručným verzi hello předchozích pokynů v hello [portál Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="07c08-191">As you set up hello app, you can read a concise version of hello preceding instructions in hello [Azure portal](https://portal.azure.com).</span></span> <span data-ttu-id="07c08-192">Po přidání aplikace hello z hello **služby Active Directory** > **podnikové aplikace, které** části, vyberte hello **jednotného přihlašování** kartě. Potom přístup hello vložených dokumentace z hello **konfigurace** části.</span><span class="sxs-lookup"><span data-stu-id="07c08-192">After you add hello app from hello **Active Directory** > **Enterprise applications** section, select hello **Single sign-on** tab. Then access hello embedded documentation from hello **Configuration** section.</span></span> 
 
-<span data-ttu-id="9f61f-193">Další informace o funkci embedded dokumentaci najdete v tématu [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).</span><span class="sxs-lookup"><span data-stu-id="9f61f-193">To learn more about the embedded documentation feature, see [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985).</span></span>
+<span data-ttu-id="07c08-193">toolearn Další informace o funkci embedded dokumentace hello, najdete v části [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).</span><span class="sxs-lookup"><span data-stu-id="07c08-193">toolearn more about hello embedded documentation feature, see [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985).</span></span>
 > 
 
-### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="9f61f-194">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="9f61f-194">Create an Azure AD test user</span></span>
-<span data-ttu-id="9f61f-195">V této části vytvoříte testovacího uživatele Britta Simon na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="9f61f-195">In this section, you create test user Britta Simon in the Azure portal.</span></span>
+### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="07c08-194">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="07c08-194">Create an Azure AD test user</span></span>
+<span data-ttu-id="07c08-195">V této části vytvoříte testovacího uživatele Britta Simon v hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="07c08-195">In this section, you create test user Britta Simon in hello Azure portal.</span></span>
 
-![Britta Simon testovacího uživatele][100]
+![Hello testovacího uživatele Britta Simon][100]
 
-<span data-ttu-id="9f61f-197">Vytvoření zkušebního uživatele ve službě Azure AD, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-197">To create a test user in Azure AD, do the following:</span></span>
+<span data-ttu-id="07c08-197">toocreate testovacího uživatele ve službě Azure AD, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-197">toocreate a test user in Azure AD, do hello following:</span></span>
 
-1. <span data-ttu-id="9f61f-198">V **portál Azure**, v levém podokně, vyberte **Azure Active Directory** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="9f61f-198">In the **Azure portal**, in the left pane, select the **Azure Active Directory** button.</span></span>
+1. <span data-ttu-id="07c08-198">V hello **portál Azure**, v levém podokně text hello, vyberte hello **Azure Active Directory** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="07c08-198">In hello **Azure portal**, in hello left pane, select hello **Azure Active Directory** button.</span></span>
 
-    ![Tlačítko "Azure Active Directory"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
+    ![tlačítko "Azure Active Directory" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="9f61f-200">Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-200">To display the list of users, select **Users and groups** > **All users**.</span></span>
+2. <span data-ttu-id="07c08-200">toodisplay hello seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="07c08-200">toodisplay hello list of users, select **Users and groups** > **All users**.</span></span>
     
-    ![Na odkaz "Všichni uživatelé"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
+    ![Hello "Všichni uživatelé" odkaz](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
     
-    <span data-ttu-id="9f61f-202">**Všichni uživatelé** otevře se dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9f61f-202">The **All users** dialog box opens.</span></span>
+    <span data-ttu-id="07c08-202">Hello **všichni uživatelé** otevře se dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="07c08-202">hello **All users** dialog box opens.</span></span>
 
-3. <span data-ttu-id="9f61f-203">Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-203">To open the **User** dialog box, select **Add**.</span></span>
+3. <span data-ttu-id="07c08-203">tooopen hello **uživatele** dialogové okno, vyberte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="07c08-203">tooopen hello **User** dialog box, select **Add**.</span></span>
  
-    ![Tlačítko "Přidat"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
+    ![tlačítko "Přidat" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="9f61f-205">V **uživatele** dialogové okno pole, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-205">In the **User** dialog box, do the following:</span></span>
+4. <span data-ttu-id="07c08-205">V hello **uživatele** dialogové okno pole, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-205">In hello **User** dialog box, do hello following:</span></span>
  
-    ![Dialogové okno "User"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno "User" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="9f61f-207">a.</span><span class="sxs-lookup"><span data-stu-id="9f61f-207">a.</span></span> <span data-ttu-id="9f61f-208">V **název** zadejte **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-208">In the **Name** box, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="07c08-207">a.</span><span class="sxs-lookup"><span data-stu-id="07c08-207">a.</span></span> <span data-ttu-id="07c08-208">V hello **název** zadejte **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="07c08-208">In hello **Name** box, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="9f61f-209">b.</span><span class="sxs-lookup"><span data-stu-id="9f61f-209">b.</span></span> <span data-ttu-id="9f61f-210">V **uživatelské jméno** pole, zadejte uživatele Britta Simon **e-mailová adresa**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-210">In the **User name** box, type user Britta Simon's **email address**.</span></span>
+    <span data-ttu-id="07c08-209">b.</span><span class="sxs-lookup"><span data-stu-id="07c08-209">b.</span></span> <span data-ttu-id="07c08-210">V hello **uživatelské jméno** pole, zadejte uživatele Britta Simon **e-mailová adresa**.</span><span class="sxs-lookup"><span data-stu-id="07c08-210">In hello **User name** box, type user Britta Simon's **email address**.</span></span>
 
-    <span data-ttu-id="9f61f-211">c.</span><span class="sxs-lookup"><span data-stu-id="9f61f-211">c.</span></span> <span data-ttu-id="9f61f-212">Vyberte **zobrazit hesla** zaškrtněte políčko a poznamenejte si hodnotu, která byla vygenerována v **heslo** pole.</span><span class="sxs-lookup"><span data-stu-id="9f61f-212">Select the **Show Password** check box, and then note the value that was generated in the **Password** box.</span></span>
+    <span data-ttu-id="07c08-211">c.</span><span class="sxs-lookup"><span data-stu-id="07c08-211">c.</span></span> <span data-ttu-id="07c08-212">Vyberte hello **zobrazit hesla** zaškrtávací políčko a potom Poznámka hello hodnotu, která byla vygenerována v hello **heslo** pole.</span><span class="sxs-lookup"><span data-stu-id="07c08-212">Select hello **Show Password** check box, and then note hello value that was generated in hello **Password** box.</span></span>
 
-    <span data-ttu-id="9f61f-213">d.</span><span class="sxs-lookup"><span data-stu-id="9f61f-213">d.</span></span> <span data-ttu-id="9f61f-214">Vyberte **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-214">Select **Create**.</span></span>
+    <span data-ttu-id="07c08-213">d.</span><span class="sxs-lookup"><span data-stu-id="07c08-213">d.</span></span> <span data-ttu-id="07c08-214">Vyberte **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="07c08-214">Select **Create**.</span></span>
  
-### <a name="create-a-cezanne-hr-software-test-user"></a><span data-ttu-id="9f61f-215">Vytvoření zkušebního uživatele Cezanne HR softwaru</span><span class="sxs-lookup"><span data-stu-id="9f61f-215">Create a Cezanne HR software test user</span></span>
+### <a name="create-a-cezanne-hr-software-test-user"></a><span data-ttu-id="07c08-215">Vytvoření zkušebního uživatele Cezanne HR softwaru</span><span class="sxs-lookup"><span data-stu-id="07c08-215">Create a Cezanne HR software test user</span></span>
 
-<span data-ttu-id="9f61f-216">Povolit uživatelům Azure AD přihlášení k Cezanne HR softwaru, musí být zřízená do Cezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="9f61f-216">To enable Azure AD users to sign in to Cezanne HR software, they must be provisioned into Cezanne HR software.</span></span> <span data-ttu-id="9f61f-217">V případě Cezanne HR softwaru zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="9f61f-217">In the case of Cezanne HR software, provisioning is a manual task.</span></span>
+<span data-ttu-id="07c08-216">Uživatelé toosign tooenable Azure AD v softwaru tooCezanne oddělení lidských zdrojů, se musí být zřízená do Cezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="07c08-216">tooenable Azure AD users toosign in tooCezanne HR software, they must be provisioned into Cezanne HR software.</span></span> <span data-ttu-id="07c08-217">V případě hello Cezanne HR softwaru zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="07c08-217">In hello case of Cezanne HR software, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="9f61f-218">Poskytnutí uživatelského účtu následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="9f61f-218">Provision a user account by doing the following:</span></span>
+<span data-ttu-id="07c08-218">Poskytnutí uživatelského účtu pomocí tohoto postupu hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-218">Provision a user account by doing hello following:</span></span>
 
-1.  <span data-ttu-id="9f61f-219">Přihlaste se k serveru vaší společnosti softwaru Cezanne HR jako správce.</span><span class="sxs-lookup"><span data-stu-id="9f61f-219">Sign in to your Cezanne HR software company site as an administrator.</span></span>
+1.  <span data-ttu-id="07c08-219">Přihlaste se tooyour Cezanne HR softwaru společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="07c08-219">Sign in tooyour Cezanne HR software company site as an administrator.</span></span>
 
-2.  <span data-ttu-id="9f61f-220">V levém podokně vyberte **nastavení systému** > **spravovat uživatele** > **přidat nové uživatele**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-220">In the left pane, select **System Setup** > **Manage Users** > **Add New User**.</span></span>
+2.  <span data-ttu-id="07c08-220">V levém podokně hello vyberte **nastavení systému** > **spravovat uživatele** > **přidat nové uživatele**.</span><span class="sxs-lookup"><span data-stu-id="07c08-220">In hello left pane, select **System Setup** > **Manage Users** > **Add New User**.</span></span>
 
-    <span data-ttu-id="9f61f-221">![Na odkaz "Přidat nový uživatel"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-221">![The "Add New User" link](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "New User")</span></span>
+    <span data-ttu-id="07c08-221">![odkaz "Přidat nový uživatel" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-221">![hello "Add New User" link](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "New User")</span></span>
 
-3.  <span data-ttu-id="9f61f-222">V části **osoba podrobnosti**, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-222">Under **Person Details**, do the following:</span></span>
+3.  <span data-ttu-id="07c08-222">V části **osoba podrobnosti**, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-222">Under **Person Details**, do hello following:</span></span>
 
-    <span data-ttu-id="9f61f-223">![V části "Osoba podrobnosti"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-223">![The "Person Details" section](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")</span></span>
+    <span data-ttu-id="07c08-223">![Hello části osoba detaily.](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-223">![hello "Person Details" section](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")</span></span>
     
-    <span data-ttu-id="9f61f-224">a.</span><span class="sxs-lookup"><span data-stu-id="9f61f-224">a.</span></span> <span data-ttu-id="9f61f-225">Nastavit **interní uživatele** jako **OFF**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-225">Set **Internal User** as **OFF**.</span></span>
+    <span data-ttu-id="07c08-224">a.</span><span class="sxs-lookup"><span data-stu-id="07c08-224">a.</span></span> <span data-ttu-id="07c08-225">Nastavit **interní uživatele** jako **OFF**.</span><span class="sxs-lookup"><span data-stu-id="07c08-225">Set **Internal User** as **OFF**.</span></span>
     
-    <span data-ttu-id="9f61f-226">b.</span><span class="sxs-lookup"><span data-stu-id="9f61f-226">b.</span></span> <span data-ttu-id="9f61f-227">V **křestní jméno** zadejte jméno uživatele, například **Britta**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-227">In the **First Name** box, type the user's first name, for example, **Britta**.</span></span>  
+    <span data-ttu-id="07c08-226">b.</span><span class="sxs-lookup"><span data-stu-id="07c08-226">b.</span></span> <span data-ttu-id="07c08-227">V hello **křestní jméno** pole, typ hello křestní jméno uživatele, například **Britta**.</span><span class="sxs-lookup"><span data-stu-id="07c08-227">In hello **First Name** box, type hello user's first name, for example, **Britta**.</span></span>  
  
-    <span data-ttu-id="9f61f-228">c.</span><span class="sxs-lookup"><span data-stu-id="9f61f-228">c.</span></span> <span data-ttu-id="9f61f-229">V **příjmení** zadejte příjmení uživatele, například **Simon**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-229">In the **Last Name** box, type the user's last name, for example, **Simon**.</span></span>
+    <span data-ttu-id="07c08-228">c.</span><span class="sxs-lookup"><span data-stu-id="07c08-228">c.</span></span> <span data-ttu-id="07c08-229">V hello **příjmení** pole, typ hello příjmení uživatele, například **Simon**.</span><span class="sxs-lookup"><span data-stu-id="07c08-229">In hello **Last Name** box, type hello user's last name, for example, **Simon**.</span></span>
     
-    <span data-ttu-id="9f61f-230">d.</span><span class="sxs-lookup"><span data-stu-id="9f61f-230">d.</span></span> <span data-ttu-id="9f61f-231">V **e-mailu** zadejte e-mailovou adresu uživatele, například Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="9f61f-231">In the **E-mail** box, type the user's email address, for example, Brittasimon@contoso.com.</span></span>
+    <span data-ttu-id="07c08-230">d.</span><span class="sxs-lookup"><span data-stu-id="07c08-230">d.</span></span> <span data-ttu-id="07c08-231">V hello **e-mailu** hello uživatele e-mailovou adresu, zadejte například Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="07c08-231">In hello **E-mail** box, type hello user's email address, for example, Brittasimon@contoso.com.</span></span>
 
-4.  <span data-ttu-id="9f61f-232">V části **informace o účtu**, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="9f61f-232">Under **Account Information**, do the following:</span></span>
+4.  <span data-ttu-id="07c08-232">V části **informace o účtu**, hello následující:</span><span class="sxs-lookup"><span data-stu-id="07c08-232">Under **Account Information**, do hello following:</span></span>
 
-    <span data-ttu-id="9f61f-233">![V části "Informace o účtu"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-233">![The "Account Information" section](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")</span></span>
+    <span data-ttu-id="07c08-233">![Hello část "Informace o účtu"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "nového uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-233">![hello "Account Information" section](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")</span></span>
     
-    <span data-ttu-id="9f61f-234">a.</span><span class="sxs-lookup"><span data-stu-id="9f61f-234">a.</span></span> <span data-ttu-id="9f61f-235">V **uživatelské jméno** zadejte e-mailovou adresu uživatele, například Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="9f61f-235">In the **Username** box, type the user's email address, for example, Brittasimon@contoso.com.</span></span>
+    <span data-ttu-id="07c08-234">a.</span><span class="sxs-lookup"><span data-stu-id="07c08-234">a.</span></span> <span data-ttu-id="07c08-235">V hello **uživatelské jméno** hello uživatele e-mailovou adresu, zadejte například Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="07c08-235">In hello **Username** box, type hello user's email address, for example, Brittasimon@contoso.com.</span></span>
     
-    <span data-ttu-id="9f61f-236">b.</span><span class="sxs-lookup"><span data-stu-id="9f61f-236">b.</span></span> <span data-ttu-id="9f61f-237">V **heslo** zadejte heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="9f61f-237">In the **Password** box, type the user's password.</span></span>
+    <span data-ttu-id="07c08-236">b.</span><span class="sxs-lookup"><span data-stu-id="07c08-236">b.</span></span> <span data-ttu-id="07c08-237">V hello **heslo** zadejte heslo uživatele hello.</span><span class="sxs-lookup"><span data-stu-id="07c08-237">In hello **Password** box, type hello user's password.</span></span>
     
-    <span data-ttu-id="9f61f-238">c.</span><span class="sxs-lookup"><span data-stu-id="9f61f-238">c.</span></span> <span data-ttu-id="9f61f-239">V **Role zabezpečení** vyberte **HR Professional**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-239">In the **Security Role** box, select **HR Professional**.</span></span>
+    <span data-ttu-id="07c08-238">c.</span><span class="sxs-lookup"><span data-stu-id="07c08-238">c.</span></span> <span data-ttu-id="07c08-239">V hello **Role zabezpečení** vyberte **HR Professional**.</span><span class="sxs-lookup"><span data-stu-id="07c08-239">In hello **Security Role** box, select **HR Professional**.</span></span>
     
-    <span data-ttu-id="9f61f-240">d.</span><span class="sxs-lookup"><span data-stu-id="9f61f-240">d.</span></span> <span data-ttu-id="9f61f-241">Vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-241">Select **OK**.</span></span>
+    <span data-ttu-id="07c08-240">d.</span><span class="sxs-lookup"><span data-stu-id="07c08-240">d.</span></span> <span data-ttu-id="07c08-241">Vyberte **OK**.</span><span class="sxs-lookup"><span data-stu-id="07c08-241">Select **OK**.</span></span>
 
-5. <span data-ttu-id="9f61f-242">Na **jednotného přihlašování** ve **SAML 2.0 identifikátory** vyberte **přidat nové**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-242">On the **Single sign-on** tab, in the **SAML 2.0 Identifiers** section, select **Add New**.</span></span>
+5. <span data-ttu-id="07c08-242">Na hello **jednotného přihlašování** na kartě hello **SAML 2.0 identifikátory** vyberte **přidat nové**.</span><span class="sxs-lookup"><span data-stu-id="07c08-242">On hello **Single sign-on** tab, in hello **SAML 2.0 Identifiers** section, select **Add New**.</span></span>
 
-    <span data-ttu-id="9f61f-243">![Tlačítko "Přidat nové"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-243">![The "Add New" button](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")</span></span>
+    <span data-ttu-id="07c08-243">![tlačítko "Přidat nové" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-243">![hello "Add New" button](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")</span></span>
 
-6. <span data-ttu-id="9f61f-244">V **zprostředkovatele Identity** vyberte zprostředkovatele identity.</span><span class="sxs-lookup"><span data-stu-id="9f61f-244">In the **Identity Provider** list box, select your identity provider.</span></span> <span data-ttu-id="9f61f-245">V **uživatelský identifikátor** zadejte e-mailovou adresu pro testovací uživatele Britta Simon na účet.</span><span class="sxs-lookup"><span data-stu-id="9f61f-245">In the **User Identifier** box, enter the email address for test user Britta Simon's account.</span></span>
+6. <span data-ttu-id="07c08-244">V hello **zprostředkovatele Identity** vyberte zprostředkovatele identity.</span><span class="sxs-lookup"><span data-stu-id="07c08-244">In hello **Identity Provider** list box, select your identity provider.</span></span> <span data-ttu-id="07c08-245">V hello **uživatelský identifikátor** zadejte hello e-mailovou adresu pro testovací uživatele Britta Simon na účet.</span><span class="sxs-lookup"><span data-stu-id="07c08-245">In hello **User Identifier** box, enter hello email address for test user Britta Simon's account.</span></span>
 
-    <span data-ttu-id="9f61f-246">![Do polí "Zprostředkovatele Identity" a "Uživatelský identifikátor"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-246">![The "Identity Provider" and "User Identifier" boxes](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")</span></span>
+    <span data-ttu-id="07c08-246">![Hello polí "Zprostředkovatele Identity" a "Uživatelský identifikátor"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-246">![hello "Identity Provider" and "User Identifier" boxes](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")</span></span>
     
-7. <span data-ttu-id="9f61f-247">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-247">Select **Save**.</span></span>
+7. <span data-ttu-id="07c08-247">Vyberte **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="07c08-247">Select **Save**.</span></span>
 
-    <span data-ttu-id="9f61f-248">![Tlačítko "Uložit"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="9f61f-248">![The "Save" button](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")</span></span>
+    <span data-ttu-id="07c08-248">![tlačítko "Uložit" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")</span><span class="sxs-lookup"><span data-stu-id="07c08-248">![hello "Save" button](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")</span></span>
 
-### <a name="assign-the-azure-ad-test-user"></a><span data-ttu-id="9f61f-249">Přiřadit testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="9f61f-249">Assign the Azure AD test user</span></span>
+### <a name="assign-hello-azure-ad-test-user"></a><span data-ttu-id="07c08-249">Přiřadit hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="07c08-249">Assign hello Azure AD test user</span></span>
 
-<span data-ttu-id="9f61f-250">V této části povolíte testovacího uživatele Britta Simon používat jednotného přihlašování k Azure tak, že udělíte přístup k softwaru Cezanne oddělení lidských zdrojů.</span><span class="sxs-lookup"><span data-stu-id="9f61f-250">In this section, you enable test user Britta Simon to use Azure SSO by granting access to Cezanne HR software.</span></span>
+<span data-ttu-id="07c08-250">V této části povolíte testovacího uživatele Britta Simon toouse Azure jednotného přihlašování k udělení přístupu tooCezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="07c08-250">In this section, you enable test user Britta Simon toouse Azure SSO by granting access tooCezanne HR software.</span></span>
 
 ![Test přístupu uživatele][200] 
 
-1. <span data-ttu-id="9f61f-252">Na portálu Azure otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře.</span><span class="sxs-lookup"><span data-stu-id="9f61f-252">In the Azure portal, open the applications view and then go to the directory view.</span></span> <span data-ttu-id="9f61f-253">Vyberte **podnikové aplikace, které** > **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-253">Select **Enterprise applications** > **All applications**.</span></span>
+1. <span data-ttu-id="07c08-252">V hello portálu Azure otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení.</span><span class="sxs-lookup"><span data-stu-id="07c08-252">In hello Azure portal, open hello applications view and then go toohello directory view.</span></span> <span data-ttu-id="07c08-253">Vyberte **podnikové aplikace, které** > **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="07c08-253">Select **Enterprise applications** > **All applications**.</span></span>
 
-    ![Na odkaz "Všechny aplikace"][201] 
+    ![Hello "Všechny aplikace" odkaz][201] 
 
-2. <span data-ttu-id="9f61f-255">V seznamu aplikací vyberte **Cezanne HR softwaru**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-255">In the applications list, select **Cezanne HR Software**.</span></span>
+2. <span data-ttu-id="07c08-255">V seznamu aplikace hello vyberte **Cezanne HR softwaru**.</span><span class="sxs-lookup"><span data-stu-id="07c08-255">In hello applications list, select **Cezanne HR Software**.</span></span>
 
-    ![Seznam "Aplikací"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
+    ![seznam "Aplikací" Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
 
-3. <span data-ttu-id="9f61f-257">V nabídce na levé straně vyberte **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-257">In the menu on the left, select **Users and groups**.</span></span>
+3. <span data-ttu-id="07c08-257">V nabídce hello na levé straně hello vyberte **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="07c08-257">In hello menu on hello left, select **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="9f61f-259">Vyberte **Přidat**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-259">Select **Add**.</span></span> <span data-ttu-id="9f61f-260">Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-260">Then in the **Add Assignment** dialog box, select **Users and groups**.</span></span>
+4. <span data-ttu-id="07c08-259">Vyberte **Přidat**.</span><span class="sxs-lookup"><span data-stu-id="07c08-259">Select **Add**.</span></span> <span data-ttu-id="07c08-260">Potom v hello **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="07c08-260">Then in hello **Add Assignment** dialog box, select **Users and groups**.</span></span>
 
     !["Uživatelé a skupiny" odkaz][203]
 
-5. <span data-ttu-id="9f61f-262">V **uživatelů a skupin** v dialogovém **uživatelé** seznamu, vyberte **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-262">In the **Users and groups** dialog box, in the **Users** list, select **Britta Simon**.</span></span>
+5. <span data-ttu-id="07c08-262">V hello **uživatelů a skupin** dialogové okno, v hello **uživatelé** seznamu, vyberte **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="07c08-262">In hello **Users and groups** dialog box, in hello **Users** list, select **Britta Simon**.</span></span>
 
-6. <span data-ttu-id="9f61f-263">V **uživatelů a skupin** dialogové okno, vyberte **vyberte**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-263">In the **Users and groups** dialog box, select **Select**.</span></span>
+6. <span data-ttu-id="07c08-263">V hello **uživatelů a skupin** dialogové okno, vyberte **vyberte**.</span><span class="sxs-lookup"><span data-stu-id="07c08-263">In hello **Users and groups** dialog box, select **Select**.</span></span>
 
-7. <span data-ttu-id="9f61f-264">V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.</span><span class="sxs-lookup"><span data-stu-id="9f61f-264">In the **Add Assignment** dialog box, select **Assign**.</span></span>
+7. <span data-ttu-id="07c08-264">V hello **přidat přiřazení** dialogové okno, vyberte **přiřadit**.</span><span class="sxs-lookup"><span data-stu-id="07c08-264">In hello **Add Assignment** dialog box, select **Assign**.</span></span>
     
-### <a name="test-sso"></a><span data-ttu-id="9f61f-265">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="9f61f-265">Test SSO</span></span>
+### <a name="test-sso"></a><span data-ttu-id="07c08-265">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="07c08-265">Test SSO</span></span>
 
-<span data-ttu-id="9f61f-266">V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="9f61f-266">In this section, you test your Azure AD SSO configuration by using the Access Panel.</span></span>
+<span data-ttu-id="07c08-266">V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="07c08-266">In this section, you test your Azure AD SSO configuration by using hello Access Panel.</span></span>
 
-<span data-ttu-id="9f61f-267">Když vyberete dlaždici Cezanne HR softwaru na přístupovém panelu, můžete přihlásit automaticky do vaší aplikace Cezanne HR softwaru.</span><span class="sxs-lookup"><span data-stu-id="9f61f-267">When you select the Cezanne HR software tile in the Access Panel, you sign on automatically to your Cezanne HR software application.</span></span>
+<span data-ttu-id="07c08-267">Když vyberete hello Cezanne HR softwaru dlaždice v hello přístupového panelu, přihlásit automaticky tooyour Cezanne HR softwarová aplikace.</span><span class="sxs-lookup"><span data-stu-id="07c08-267">When you select hello Cezanne HR software tile in hello Access Panel, you sign on automatically tooyour Cezanne HR software application.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="9f61f-268">Další kroky</span><span class="sxs-lookup"><span data-stu-id="9f61f-268">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="07c08-268">Další kroky</span><span class="sxs-lookup"><span data-stu-id="07c08-268">Next steps</span></span>
 
-* [<span data-ttu-id="9f61f-269">Seznam kurzů k integraci aplikací SaaS v Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="9f61f-269">List of tutorials on how to integrate SaaS apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="9f61f-270">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="9f61f-270">What is application access and SSO with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="07c08-269">Seznam kurzů toointegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="07c08-269">List of tutorials on how toointegrate SaaS apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="07c08-270">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="07c08-270">What is application access and SSO with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

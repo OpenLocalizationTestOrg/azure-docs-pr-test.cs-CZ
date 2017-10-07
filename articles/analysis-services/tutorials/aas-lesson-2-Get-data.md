@@ -1,160 +1,143 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 2: Získání dat | Dokumentace Microsoftu"
-description: "Popisuje, jak získat a importovat data v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 06/01/2017
-ms.author: owend
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+<span data-ttu-id="a0daf-101">Title: aaa "Azure Analysis Services kurz Lekce 2: získání dat | Microsoft Docs"Popis: Popisuje, jak hello tooget a import dat v kurzu projektu Azure Analysis Services.</span><span class="sxs-lookup"><span data-stu-id="a0daf-101">title: aaa"Azure Analysis Services tutorial lesson 2: Get data | Microsoft Docs" description: Describes how tooget and import data in hello Azure Analysis Services tutorial project.</span></span> <span data-ttu-id="a0daf-102">služby: documentationcenter služby analysis services: '' Autor: minewiskan správce: erikre editor: '' značky: "</span><span class="sxs-lookup"><span data-stu-id="a0daf-102">services: analysis-services documentationcenter: '' author: minewiskan manager: erikre editor: '' tags: ''</span></span>
+
+<span data-ttu-id="a0daf-103">MS.AssetID: ms.service: ms.devlang služby analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 01/06/2017 ms.author: owend</span><span class="sxs-lookup"><span data-stu-id="a0daf-103">ms.assetid: ms.service: analysis-services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 06/01/2017 ms.author: owend</span></span>
 ---
-# <a name="lesson-2-get-data"></a><span data-ttu-id="06fb9-103">Lekce 2: Získání dat</span><span class="sxs-lookup"><span data-stu-id="06fb9-103">Lesson 2: Get data</span></span>
+
+# <a name="lesson-2-get-data"></a><span data-ttu-id="a0daf-104">Lekce 2: Získání dat</span><span class="sxs-lookup"><span data-stu-id="a0daf-104">Lesson 2: Get data</span></span>
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-<span data-ttu-id="06fb9-104">V této lekci se pomocí funkce Získání dat v SSDT připojíte k ukázkové databázi AdventureWorksDW2014, vyberete data, zobrazíte jejich náhled, použijete filtr a potom je naimportujete do pracovního prostoru modelu.</span><span class="sxs-lookup"><span data-stu-id="06fb9-104">In this lesson, you use Get Data in SSDT to connect to the AdventureWorksDW2014 sample database, select data, preview and filter, and then import into your model workspace.</span></span>  
+<span data-ttu-id="a0daf-105">V této lekci použijete načíst Data v rozšíření SSDT tooconnect toohello AdventureWorksDW2014 ukázkovou databázi, vyberte data, náhled a filtr a potom importovat do pracovního prostoru modelu.</span><span class="sxs-lookup"><span data-stu-id="a0daf-105">In this lesson, you use Get Data in SSDT tooconnect toohello AdventureWorksDW2014 sample database, select data, preview and filter, and then import into your model workspace.</span></span>  
   
-<span data-ttu-id="06fb9-105">Pomocí funkce Získání dat můžete importovat data z celé řady zdrojů: Azure SQL Database, Oracle, Sybase, kanál OData, Teradata, soubory a další.</span><span class="sxs-lookup"><span data-stu-id="06fb9-105">By using Get Data, you can import data from a wide variety of sources: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, files and more.</span></span> <span data-ttu-id="06fb9-106">Data umožňují také dotazy pomocí výrazu se vzorci Power Query M.</span><span class="sxs-lookup"><span data-stu-id="06fb9-106">Data can also be queried using a Power Query M formula expression.</span></span>
+<span data-ttu-id="a0daf-106">Pomocí funkce Získání dat můžete importovat data z celé řady zdrojů: Azure SQL Database, Oracle, Sybase, kanál OData, Teradata, soubory a další.</span><span class="sxs-lookup"><span data-stu-id="a0daf-106">By using Get Data, you can import data from a wide variety of sources: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, files and more.</span></span> <span data-ttu-id="a0daf-107">Data umožňují také dotazy pomocí výrazu se vzorci Power Query M.</span><span class="sxs-lookup"><span data-stu-id="a0daf-107">Data can also be queried using a Power Query M formula expression.</span></span>
   
-<span data-ttu-id="06fb9-107">Odhadovaný čas dokončení této lekce: **10 minut**</span><span class="sxs-lookup"><span data-stu-id="06fb9-107">Estimated time to complete this lesson: **10 minutes**</span></span>  
+<span data-ttu-id="a0daf-108">Odhadovaný čas toocomplete této lekci: **10 minut**</span><span class="sxs-lookup"><span data-stu-id="a0daf-108">Estimated time toocomplete this lesson: **10 minutes**</span></span>  
   
-## <a name="prerequisites"></a><span data-ttu-id="06fb9-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="06fb9-108">Prerequisites</span></span>  
-<span data-ttu-id="06fb9-109">Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí.</span><span class="sxs-lookup"><span data-stu-id="06fb9-109">This topic is part of a tabular modeling tutorial, which should be completed in order.</span></span> <span data-ttu-id="06fb9-110">Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).</span><span class="sxs-lookup"><span data-stu-id="06fb9-110">Before performing the tasks in this lesson, you should have completed the previous lesson: [Lesson 1: Create a new tabular model project](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).</span></span>  
+## <a name="prerequisites"></a><span data-ttu-id="a0daf-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="a0daf-109">Prerequisites</span></span>  
+<span data-ttu-id="a0daf-110">Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí.</span><span class="sxs-lookup"><span data-stu-id="a0daf-110">This topic is part of a tabular modeling tutorial, which should be completed in order.</span></span> <span data-ttu-id="a0daf-111">Před provedením úlohy hello v této lekci, by měl mít dokončit předchozí lekci hello: [lekci 1: vytvoření nového projektu tabulkový model](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).</span><span class="sxs-lookup"><span data-stu-id="a0daf-111">Before performing hello tasks in this lesson, you should have completed hello previous lesson: [Lesson 1: Create a new tabular model project](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).</span></span>  
   
-## <a name="create-a-connection"></a><span data-ttu-id="06fb9-111">Vytvoření připojení</span><span class="sxs-lookup"><span data-stu-id="06fb9-111">Create a connection</span></span>  
+## <a name="create-a-connection"></a><span data-ttu-id="a0daf-112">Vytvoření připojení</span><span class="sxs-lookup"><span data-stu-id="a0daf-112">Create a connection</span></span>  
   
-#### <a name="to-create-a-connection-to-the-adventureworksdw2014-database"></a><span data-ttu-id="06fb9-112">Vytvoření připojení k databázi AdventureWorksDW2014</span><span class="sxs-lookup"><span data-stu-id="06fb9-112">To create a connection to the AdventureWorksDW2014 database</span></span>  
+#### <a name="toocreate-a-connection-toohello-adventureworksdw2014-database"></a><span data-ttu-id="a0daf-113">toocreate databázi toohello AdventureWorksDW2014 připojení</span><span class="sxs-lookup"><span data-stu-id="a0daf-113">toocreate a connection toohello AdventureWorksDW2014 database</span></span>  
   
-1.  <span data-ttu-id="06fb9-113">V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Zdroje dat** > **Importovat ze zdroje dat**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-113">In Tabular Model Explorer, right-click **Data Sources** > **Import from Data Source**.</span></span>  
+1.  <span data-ttu-id="a0daf-114">V Průzkumníku tabelárních modelů klikněte pravým tlačítkem na **Zdroje dat** > **Importovat ze zdroje dat**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-114">In Tabular Model Explorer, right-click **Data Sources** > **Import from Data Source**.</span></span>  
   
-    <span data-ttu-id="06fb9-114">Spustí se funkce Získání dat, která vás provede připojením ke zdroji dat.</span><span class="sxs-lookup"><span data-stu-id="06fb9-114">This launches Get Data, which guides you through connecting to a data source.</span></span> <span data-ttu-id="06fb9-115">Pokud se Průzkumník tabelárních modelů nezobrazuje, v **Průzkumníku řešení** dvakrát klikněte na **Model.bim** a otevřete model v návrháři.</span><span class="sxs-lookup"><span data-stu-id="06fb9-115">If you don't see Tabular Model Explorer, in **Solution Explorer**, double-click **Model.bim** to open the model in the designer.</span></span> 
+    <span data-ttu-id="a0daf-115">Spustí se získat Data, která vás provede připojování zdroje dat tooa.</span><span class="sxs-lookup"><span data-stu-id="a0daf-115">This launches Get Data, which guides you through connecting tooa data source.</span></span> <span data-ttu-id="a0daf-116">Pokud nevidíte v tabulkovém modelu Průzkumníku **Průzkumníku řešení**, dvakrát klikněte na **Model.bim** tooopen hello modelu v Návrháři hello.</span><span class="sxs-lookup"><span data-stu-id="a0daf-116">If you don't see Tabular Model Explorer, in **Solution Explorer**, double-click **Model.bim** tooopen hello model in hello designer.</span></span> 
     
     ![aas-lesson2-getdata](../tutorials/media/aas-lesson2-getdata.png)
   
-2.  <span data-ttu-id="06fb9-117">Ve funkci Získání dat klikněte na **Databáze** > **Databáze SQL Serveru** > **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-117">In Get Data, click **Database** > **SQL Server Database** > **Connect**.</span></span>  
+2.  <span data-ttu-id="a0daf-118">Ve funkci Získání dat klikněte na **Databáze** > **Databáze SQL Serveru** > **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-118">In Get Data, click **Database** > **SQL Server Database** > **Connect**.</span></span>  
   
-3.  <span data-ttu-id="06fb9-118">V dialogovém okně **Databáze SQL Serveru** v části **Server** zadejte název serveru, na který jste nainstalovali databázi AdventureWorksDW2014, a klikněte na **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-118">In the **SQL Server Database** dialog, in **Server**, type the name of the server where you installed the AdventureWorksDW2014 database, and then click **Connect**.</span></span>  
+3.  <span data-ttu-id="a0daf-119">V hello **databáze systému SQL Server** dialogové okno, v **Server**, zadejte název hello hello serveru, kam jste nainstalovali hello AdventureWorksDW2014 databáze a pak klikněte na tlačítko **Connect**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-119">In hello **SQL Server Database** dialog, in **Server**, type hello name of hello server where you installed hello AdventureWorksDW2014 database, and then click **Connect**.</span></span>  
 
-4.  <span data-ttu-id="06fb9-119">Po zobrazení výzvy k zadání přihlašovacích údajů je potřeba zadat přihlašovací údaje, pomocí kterých se služba Analysis Services připojuje ke zdroji dat při importu a zpracování dat.</span><span class="sxs-lookup"><span data-stu-id="06fb9-119">When prompted to enter credentials, you need to specify the credentials Analysis Services uses to connect to the data source when importing and processing data.</span></span> <span data-ttu-id="06fb9-120">V části **Režim zosobnění** vyberte **Zosobnit účet**, zadejte přihlašovací údaje a klikněte na **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-120">In **Impersonation Mode**, select **Impersonate Account**, then enter credentials, and then click **Connect**.</span></span> <span data-ttu-id="06fb9-121">Doporučujeme použít účet, u kterého nedochází k vypršení platnosti hesla.</span><span class="sxs-lookup"><span data-stu-id="06fb9-121">It's recommended you use an account where the password doesn't expire.</span></span>
+4.  <span data-ttu-id="a0daf-120">Po zobrazení výzvy tooenter přihlašovací údaje, je nutné toospecify hello pověření služby Analysis Services používá tooconnect toohello zdroj dat při importu a zpracování dat.</span><span class="sxs-lookup"><span data-stu-id="a0daf-120">When prompted tooenter credentials, you need toospecify hello credentials Analysis Services uses tooconnect toohello data source when importing and processing data.</span></span> <span data-ttu-id="a0daf-121">V části **Režim zosobnění** vyberte **Zosobnit účet**, zadejte přihlašovací údaje a klikněte na **Připojit**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-121">In **Impersonation Mode**, select **Impersonate Account**, then enter credentials, and then click **Connect**.</span></span> <span data-ttu-id="a0daf-122">Doporučuje se, že používáte účet, kde není hello heslo vyprší.</span><span class="sxs-lookup"><span data-stu-id="a0daf-122">It's recommended you use an account where hello password doesn't expire.</span></span>
 
     ![aas-lesson2-account](../tutorials/media/aas-lesson2-account.png)
   
     > [!NOTE]  
-    > <span data-ttu-id="06fb9-123">Nejbezpečnější metodu připojení ke zdroji dat poskytuje použití uživatelského účtu a hesla systému Windows.</span><span class="sxs-lookup"><span data-stu-id="06fb9-123">Using a Windows user account and password provides the most secure method of connecting to a data source.</span></span>
+    > <span data-ttu-id="a0daf-124">Pomocí uživatelského účtu systému Windows a hesla poskytuje nejbezpečnější metodou hello připojování zdroje dat tooa.</span><span class="sxs-lookup"><span data-stu-id="a0daf-124">Using a Windows user account and password provides hello most secure method of connecting tooa data source.</span></span>
   
-5.  <span data-ttu-id="06fb9-124">V části Navigátor vyberte databázi **AdventureWorksDW2014** a klikněte na **OK**. Tím se vytvoří připojení k databázi.</span><span class="sxs-lookup"><span data-stu-id="06fb9-124">In Navigator, select the **AdventureWorksDW2014** database, and then click **OK**.This creates the connection to the database.</span></span> 
+5.  <span data-ttu-id="a0daf-125">V tabulce dat, vyberte hello **AdventureWorksDW2014** databáze a potom klikněte na **OK**. Tím se vytvoří databáze toohello hello připojení.</span><span class="sxs-lookup"><span data-stu-id="a0daf-125">In Navigator, select hello **AdventureWorksDW2014** database, and then click **OK**.This creates hello connection toohello database.</span></span> 
   
-6.  <span data-ttu-id="06fb9-125">V části Navigátor zaškrtněte políčka u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** a **FactInternetSales**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-125">In Navigator, select the check box for the following tables: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, and **FactInternetSales**.</span></span>  
+6.  <span data-ttu-id="a0daf-126">V tabulce dat, vyberte hello zaškrtávací políčko pro hello následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, a **FactInternetSales**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-126">In Navigator, select hello check box for hello following tables: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, and **FactInternetSales**.</span></span>  
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-<span data-ttu-id="06fb9-127">Po kliknutí na OK se otevře Editor dotazů.</span><span class="sxs-lookup"><span data-stu-id="06fb9-127">After you click OK, Query Editor opens.</span></span> <span data-ttu-id="06fb9-128">V další části vyberete jenom data, která chcete importovat.</span><span class="sxs-lookup"><span data-stu-id="06fb9-128">In the next section, you select only the data you want to import.</span></span>
+<span data-ttu-id="a0daf-128">Po kliknutí na OK se otevře Editor dotazů.</span><span class="sxs-lookup"><span data-stu-id="a0daf-128">After you click OK, Query Editor opens.</span></span> <span data-ttu-id="a0daf-129">V další části hello vyberte pouze hello data, která chcete tooimport.</span><span class="sxs-lookup"><span data-stu-id="a0daf-129">In hello next section, you select only hello data you want tooimport.</span></span>
 
   
-## <a name="filter-the-table-data"></a><span data-ttu-id="06fb9-129">Filtrování tabulkových dat</span><span class="sxs-lookup"><span data-stu-id="06fb9-129">Filter the table data</span></span>  
-<span data-ttu-id="06fb9-130">Tabulky v ukázkové databázi AdventureWorksDW2014 obsahují data, která není nutné zahrnout do modelu.</span><span class="sxs-lookup"><span data-stu-id="06fb9-130">Tables in the AdventureWorksDW2014 sample database have data that isn't necessary to include in your model.</span></span> <span data-ttu-id="06fb9-131">Pokud je to možné, nepotřebná data byste měli vyfiltrovat, abyste ušetřili místo v paměti využívané modelem.</span><span class="sxs-lookup"><span data-stu-id="06fb9-131">When possible, you want to filter out unnecessary data to save in-memory space used by the model.</span></span> <span data-ttu-id="06fb9-132">Vyfiltrujete z tabulek některé ze sloupců, aby se neimportovaly do databáze pracovního prostoru nebo databáze modelu, až bude nasazena.</span><span class="sxs-lookup"><span data-stu-id="06fb9-132">You filter out some of the columns from tables so they're not imported into the workspace database, or the model database after it has been deployed.</span></span> 
+## <a name="filter-hello-table-data"></a><span data-ttu-id="a0daf-130">Filtrování dat v tabulce hello</span><span class="sxs-lookup"><span data-stu-id="a0daf-130">Filter hello table data</span></span>  
+<span data-ttu-id="a0daf-131">Tabulky v ukázkové databázi AdventureWorksDW2014 hello mají data, která není nutné tooinclude v modelu.</span><span class="sxs-lookup"><span data-stu-id="a0daf-131">Tables in hello AdventureWorksDW2014 sample database have data that isn't necessary tooinclude in your model.</span></span> <span data-ttu-id="a0daf-132">Pokud je to možné, budete chtít toofilter se místo v paměti toosave nepotřebných dat používaný modelem hello.</span><span class="sxs-lookup"><span data-stu-id="a0daf-132">When possible, you want toofilter out unnecessary data toosave in-memory space used by hello model.</span></span> <span data-ttu-id="a0daf-133">Můžete filtrovat některé z hello sloupce z tabulky, aby nejsou importovány do databáze pracovního prostoru hello hello model databáze, nebo po jeho nasazení.</span><span class="sxs-lookup"><span data-stu-id="a0daf-133">You filter out some of hello columns from tables so they're not imported into hello workspace database, or hello model database after it has been deployed.</span></span> 
   
-#### <a name="to-filter-the-table-data-before-importing"></a><span data-ttu-id="06fb9-133">Filtrování tabulkových dat před importem</span><span class="sxs-lookup"><span data-stu-id="06fb9-133">To filter the table data before importing</span></span>  
+#### <a name="toofilter-hello-table-data-before-importing"></a><span data-ttu-id="a0daf-134">data tabulky hello toofilter před importem</span><span class="sxs-lookup"><span data-stu-id="a0daf-134">toofilter hello table data before importing</span></span>  
   
-1.  <span data-ttu-id="06fb9-134">V Editoru dotazů vyberte tabulku **DimCustomer**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-134">In Query Editor, select the **DimCustomer** table.</span></span> <span data-ttu-id="06fb9-135">Otevře se zobrazení tabulky DimCustomer ve zdroji dat (vaše ukázková databáze AdventureWorksDWQ2014).</span><span class="sxs-lookup"><span data-stu-id="06fb9-135">A view of the DimCustomer table at the datasource (your AdventureWorksDWQ2014 sample database) appears.</span></span> 
+1.  <span data-ttu-id="a0daf-135">V editoru dotazů vyberte hello **DimCustomer** tabulky.</span><span class="sxs-lookup"><span data-stu-id="a0daf-135">In Query Editor, select hello **DimCustomer** table.</span></span> <span data-ttu-id="a0daf-136">Hello DimCustomer tabulky na zdroj dat hello (ukázkové databázi AdventureWorksDWQ2014) se zobrazí.</span><span class="sxs-lookup"><span data-stu-id="a0daf-136">A view of hello DimCustomer table at hello datasource (your AdventureWorksDWQ2014 sample database) appears.</span></span> 
   
-2.  <span data-ttu-id="06fb9-136">Vyberte (Ctrl + kliknutí) sloupce **SpanishEducation**, **FrenchEducation**, **SpanishOccupation** a **FrenchOccupation**, klikněte pravým tlačítkem a potom klikněte na **Odebrat sloupce**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-136">Multi-select (Ctrl + click) **SpanishEducation**, **FrenchEducation**, **SpanishOccupation**, **FrenchOccupation**, then right-click, and then click **Remove Columns**.</span></span> 
+2.  <span data-ttu-id="a0daf-137">Vyberte (Ctrl + kliknutí) sloupce **SpanishEducation**, **FrenchEducation**, **SpanishOccupation** a **FrenchOccupation**, klikněte pravým tlačítkem a potom klikněte na **Odebrat sloupce**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-137">Multi-select (Ctrl + click) **SpanishEducation**, **FrenchEducation**, **SpanishOccupation**, **FrenchOccupation**, then right-click, and then click **Remove Columns**.</span></span> 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
-    <span data-ttu-id="06fb9-138">Vzhledem k tomu, že tyto sloupce nejsou pro analýzu prodejů přes internet relevantní, není nutné je importovat.</span><span class="sxs-lookup"><span data-stu-id="06fb9-138">Since the values for these columns are not relevant to Internet sales analysis, there is no need to import these columns.</span></span> <span data-ttu-id="06fb9-139">Díky odstranění nepotřebných sloupců bude váš model menší a efektivnější.</span><span class="sxs-lookup"><span data-stu-id="06fb9-139">Eliminating unnecessary columns makes your model smaller and more efficient.</span></span>  
+    <span data-ttu-id="a0daf-139">Vzhledem k tomu, že hello hodnoty pro tyto sloupce nejsou relevantní tooInternet prodejní analýzy, není tooimport bez nutnosti tyto sloupce.</span><span class="sxs-lookup"><span data-stu-id="a0daf-139">Since hello values for these columns are not relevant tooInternet sales analysis, there is no need tooimport these columns.</span></span> <span data-ttu-id="a0daf-140">Díky odstranění nepotřebných sloupců bude váš model menší a efektivnější.</span><span class="sxs-lookup"><span data-stu-id="a0daf-140">Eliminating unnecessary columns makes your model smaller and more efficient.</span></span>  
   
-4.  <span data-ttu-id="06fb9-140">Filtrujte zbývající tabulky odebráním následujících sloupců v každé z nich:</span><span class="sxs-lookup"><span data-stu-id="06fb9-140">Filter the remaining tables by removing the following columns in each table:</span></span>  
+4.  <span data-ttu-id="a0daf-141">Filtrovat hello zbývající tabulky odebráním hello následující sloupce v každé tabulce:</span><span class="sxs-lookup"><span data-stu-id="a0daf-141">Filter hello remaining tables by removing hello following columns in each table:</span></span>  
     
-    <span data-ttu-id="06fb9-141">**DimDate**</span><span class="sxs-lookup"><span data-stu-id="06fb9-141">**DimDate**</span></span>
+    <span data-ttu-id="a0daf-142">**DimDate**</span><span class="sxs-lookup"><span data-stu-id="a0daf-142">**DimDate**</span></span>
     
-      |<span data-ttu-id="06fb9-142">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-142">Column</span></span>|  
+      |<span data-ttu-id="a0daf-143">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-143">Column</span></span>|  
       |--------|  
-      |<span data-ttu-id="06fb9-143">DateKey</span><span class="sxs-lookup"><span data-stu-id="06fb9-143">DateKey</span></span>|  
-      |<span data-ttu-id="06fb9-144">**SpanishDayNameOfWeek**</span><span class="sxs-lookup"><span data-stu-id="06fb9-144">**SpanishDayNameOfWeek**</span></span>|  
-      |<span data-ttu-id="06fb9-145">**FrenchDayNameOfWeek**</span><span class="sxs-lookup"><span data-stu-id="06fb9-145">**FrenchDayNameOfWeek**</span></span>|  
-      |<span data-ttu-id="06fb9-146">**SpanishMonthName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-146">**SpanishMonthName**</span></span>|  
-      |<span data-ttu-id="06fb9-147">**FrenchMonthName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-147">**FrenchMonthName**</span></span>|  
+      |<span data-ttu-id="a0daf-144">DateKey</span><span class="sxs-lookup"><span data-stu-id="a0daf-144">DateKey</span></span>|  
+      |<span data-ttu-id="a0daf-145">**SpanishDayNameOfWeek**</span><span class="sxs-lookup"><span data-stu-id="a0daf-145">**SpanishDayNameOfWeek**</span></span>|  
+      |<span data-ttu-id="a0daf-146">**FrenchDayNameOfWeek**</span><span class="sxs-lookup"><span data-stu-id="a0daf-146">**FrenchDayNameOfWeek**</span></span>|  
+      |<span data-ttu-id="a0daf-147">**SpanishMonthName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-147">**SpanishMonthName**</span></span>|  
+      |<span data-ttu-id="a0daf-148">**FrenchMonthName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-148">**FrenchMonthName**</span></span>|  
   
-    <span data-ttu-id="06fb9-148">**DimGeography**</span><span class="sxs-lookup"><span data-stu-id="06fb9-148">**DimGeography**</span></span>
+    <span data-ttu-id="a0daf-149">**DimGeography**</span><span class="sxs-lookup"><span data-stu-id="a0daf-149">**DimGeography**</span></span>
   
-      |<span data-ttu-id="06fb9-149">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-149">Column</span></span>|  
+      |<span data-ttu-id="a0daf-150">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-150">Column</span></span>|  
       |-------------|  
-      |<span data-ttu-id="06fb9-150">**SpanishCountryRegionName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-150">**SpanishCountryRegionName**</span></span>|  
-      |<span data-ttu-id="06fb9-151">**FrenchCountryRegionName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-151">**FrenchCountryRegionName**</span></span>|  
-      |<span data-ttu-id="06fb9-152">**IpAddressLocator**</span><span class="sxs-lookup"><span data-stu-id="06fb9-152">**IpAddressLocator**</span></span>|  
+      |<span data-ttu-id="a0daf-151">**SpanishCountryRegionName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-151">**SpanishCountryRegionName**</span></span>|  
+      |<span data-ttu-id="a0daf-152">**FrenchCountryRegionName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-152">**FrenchCountryRegionName**</span></span>|  
+      |<span data-ttu-id="a0daf-153">**IpAddressLocator**</span><span class="sxs-lookup"><span data-stu-id="a0daf-153">**IpAddressLocator**</span></span>|  
   
-    <span data-ttu-id="06fb9-153">**DimProduct**</span><span class="sxs-lookup"><span data-stu-id="06fb9-153">**DimProduct**</span></span>
+    <span data-ttu-id="a0daf-154">**DimProduct**</span><span class="sxs-lookup"><span data-stu-id="a0daf-154">**DimProduct**</span></span>
   
-      |<span data-ttu-id="06fb9-154">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-154">Column</span></span>|  
+      |<span data-ttu-id="a0daf-155">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-155">Column</span></span>|  
       |-----------|  
-      |<span data-ttu-id="06fb9-155">**SpanishProductName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-155">**SpanishProductName**</span></span>|  
-      |<span data-ttu-id="06fb9-156">**FrenchProductName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-156">**FrenchProductName**</span></span>|  
-      |<span data-ttu-id="06fb9-157">**FrenchDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-157">**FrenchDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-158">**ChineseDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-158">**ChineseDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-159">**ArabicDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-159">**ArabicDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-160">**HebrewDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-160">**HebrewDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-161">**ThaiDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-161">**ThaiDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-162">**GermanDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-162">**GermanDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-163">**JapaneseDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-163">**JapaneseDescription**</span></span>|  
-      |<span data-ttu-id="06fb9-164">**TurkishDescription**</span><span class="sxs-lookup"><span data-stu-id="06fb9-164">**TurkishDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-156">**SpanishProductName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-156">**SpanishProductName**</span></span>|  
+      |<span data-ttu-id="a0daf-157">**FrenchProductName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-157">**FrenchProductName**</span></span>|  
+      |<span data-ttu-id="a0daf-158">**FrenchDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-158">**FrenchDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-159">**ChineseDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-159">**ChineseDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-160">**ArabicDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-160">**ArabicDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-161">**HebrewDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-161">**HebrewDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-162">**ThaiDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-162">**ThaiDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-163">**GermanDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-163">**GermanDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-164">**JapaneseDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-164">**JapaneseDescription**</span></span>|  
+      |<span data-ttu-id="a0daf-165">**TurkishDescription**</span><span class="sxs-lookup"><span data-stu-id="a0daf-165">**TurkishDescription**</span></span>|  
   
-    <span data-ttu-id="06fb9-165">**DimProductCategory**</span><span class="sxs-lookup"><span data-stu-id="06fb9-165">**DimProductCategory**</span></span>
+    <span data-ttu-id="a0daf-166">**DimProductCategory**</span><span class="sxs-lookup"><span data-stu-id="a0daf-166">**DimProductCategory**</span></span>
   
-      |<span data-ttu-id="06fb9-166">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-166">Column</span></span>|  
+      |<span data-ttu-id="a0daf-167">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-167">Column</span></span>|  
       |--------------------|  
-      |<span data-ttu-id="06fb9-167">**SpanishProductCategoryName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-167">**SpanishProductCategoryName**</span></span>|  
-      |<span data-ttu-id="06fb9-168">**FrenchProductCategoryName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-168">**FrenchProductCategoryName**</span></span>|  
+      |<span data-ttu-id="a0daf-168">**SpanishProductCategoryName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-168">**SpanishProductCategoryName**</span></span>|  
+      |<span data-ttu-id="a0daf-169">**FrenchProductCategoryName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-169">**FrenchProductCategoryName**</span></span>|  
   
-    <span data-ttu-id="06fb9-169">**DimProductSubcategory**</span><span class="sxs-lookup"><span data-stu-id="06fb9-169">**DimProductSubcategory**</span></span>
+    <span data-ttu-id="a0daf-170">**DimProductSubcategory**</span><span class="sxs-lookup"><span data-stu-id="a0daf-170">**DimProductSubcategory**</span></span>
   
-      |<span data-ttu-id="06fb9-170">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-170">Column</span></span>|  
+      |<span data-ttu-id="a0daf-171">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-171">Column</span></span>|  
       |-----------------------|  
-      |<span data-ttu-id="06fb9-171">**SpanishProductSubcategoryName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-171">**SpanishProductSubcategoryName**</span></span>|  
-      |<span data-ttu-id="06fb9-172">**FrenchProductSubcategoryName**</span><span class="sxs-lookup"><span data-stu-id="06fb9-172">**FrenchProductSubcategoryName**</span></span>|  
+      |<span data-ttu-id="a0daf-172">**SpanishProductSubcategoryName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-172">**SpanishProductSubcategoryName**</span></span>|  
+      |<span data-ttu-id="a0daf-173">**FrenchProductSubcategoryName**</span><span class="sxs-lookup"><span data-stu-id="a0daf-173">**FrenchProductSubcategoryName**</span></span>|  
   
-    <span data-ttu-id="06fb9-173">**FactInternetSales**</span><span class="sxs-lookup"><span data-stu-id="06fb9-173">**FactInternetSales**</span></span>
+    <span data-ttu-id="a0daf-174">**FactInternetSales**</span><span class="sxs-lookup"><span data-stu-id="a0daf-174">**FactInternetSales**</span></span>
   
-      |<span data-ttu-id="06fb9-174">Sloupec</span><span class="sxs-lookup"><span data-stu-id="06fb9-174">Column</span></span>|  
+      |<span data-ttu-id="a0daf-175">Sloupec</span><span class="sxs-lookup"><span data-stu-id="a0daf-175">Column</span></span>|  
       |------------------|  
-      |<span data-ttu-id="06fb9-175">**OrderDateKey**</span><span class="sxs-lookup"><span data-stu-id="06fb9-175">**OrderDateKey**</span></span>|  
-      |<span data-ttu-id="06fb9-176">**DueDateKey**</span><span class="sxs-lookup"><span data-stu-id="06fb9-176">**DueDateKey**</span></span>|  
-      |<span data-ttu-id="06fb9-177">**ShipDateKey**</span><span class="sxs-lookup"><span data-stu-id="06fb9-177">**ShipDateKey**</span></span>|   
+      |<span data-ttu-id="a0daf-176">**OrderDateKey**</span><span class="sxs-lookup"><span data-stu-id="a0daf-176">**OrderDateKey**</span></span>|  
+      |<span data-ttu-id="a0daf-177">**DueDateKey**</span><span class="sxs-lookup"><span data-stu-id="a0daf-177">**DueDateKey**</span></span>|  
+      |<span data-ttu-id="a0daf-178">**ShipDateKey**</span><span class="sxs-lookup"><span data-stu-id="a0daf-178">**ShipDateKey**</span></span>|   
   
-## <span data-ttu-id="06fb9-178"><a name="Import"></a>Import vybraných tabulek a dat sloupců</span><span class="sxs-lookup"><span data-stu-id="06fb9-178"><a name="Import"></a>Import the selected tables and column data</span></span>  
-<span data-ttu-id="06fb9-179">Teď, když jste zobrazili náhled a vyfiltrovali nepotřebná data, můžete importovat zbývající požadovaná data.</span><span class="sxs-lookup"><span data-stu-id="06fb9-179">Now that you've previewed and filtered out unnecessary data, you can import the rest of the data you do want.</span></span> <span data-ttu-id="06fb9-180">Průvodce importuje kromě tabulkových dat také případné relace mezi tabulkami.</span><span class="sxs-lookup"><span data-stu-id="06fb9-180">The wizard imports the table data along with any relationships between tables.</span></span> <span data-ttu-id="06fb9-181">V modelu se vytvoří nové tabulky a sloupce a data, která jste vyfiltrovali, se neimportují.</span><span class="sxs-lookup"><span data-stu-id="06fb9-181">New tables and columns are created in the model and data that you filtered out is not be imported.</span></span>  
+## <span data-ttu-id="a0daf-179"><a name="Import"></a>Import hello vybrané tabulky a sloupce dat</span><span class="sxs-lookup"><span data-stu-id="a0daf-179"><a name="Import"></a>Import hello selected tables and column data</span></span>  
+<span data-ttu-id="a0daf-180">Teď, když jste náhled a odfiltrovat nepotřebná data, můžete importovat hello zbytek hello data, která ho.</span><span class="sxs-lookup"><span data-stu-id="a0daf-180">Now that you've previewed and filtered out unnecessary data, you can import hello rest of hello data you do want.</span></span> <span data-ttu-id="a0daf-181">Hello Průvodce naimportuje data tabulky hello společně s všechny vztahy mezi tabulkami.</span><span class="sxs-lookup"><span data-stu-id="a0daf-181">hello wizard imports hello table data along with any relationships between tables.</span></span> <span data-ttu-id="a0daf-182">Nové tabulky a sloupce, které jsou vytvořené v modelu hello a data, která můžete odfiltrovat není importován.</span><span class="sxs-lookup"><span data-stu-id="a0daf-182">New tables and columns are created in hello model and data that you filtered out is not be imported.</span></span>  
   
-#### <a name="to-import-the-selected-tables-and-column-data"></a><span data-ttu-id="06fb9-182">Import vybraných tabulek a dat sloupců</span><span class="sxs-lookup"><span data-stu-id="06fb9-182">To import the selected tables and column data</span></span>  
+#### <a name="tooimport-hello-selected-tables-and-column-data"></a><span data-ttu-id="a0daf-183">tooimport hello vybrané tabulky a sloupce dat</span><span class="sxs-lookup"><span data-stu-id="a0daf-183">tooimport hello selected tables and column data</span></span>  
   
-1.  <span data-ttu-id="06fb9-183">Zkontrolujte váš výběr.</span><span class="sxs-lookup"><span data-stu-id="06fb9-183">Review your selections.</span></span> <span data-ttu-id="06fb9-184">Pokud vše vypadá v pořádku, klikněte na **Importovat**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-184">If everything looks okay, click **Import**.</span></span> <span data-ttu-id="06fb9-185">V dialogovém okně Zpracování dat se zobrazí stav importování dat ze zdroje dat do databáze pracovního prostoru.</span><span class="sxs-lookup"><span data-stu-id="06fb9-185">The Data Processing dialog shows the status of data being imported from your datasource into your workspace database.</span></span>
+1.  <span data-ttu-id="a0daf-184">Zkontrolujte váš výběr.</span><span class="sxs-lookup"><span data-stu-id="a0daf-184">Review your selections.</span></span> <span data-ttu-id="a0daf-185">Pokud vše vypadá v pořádku, klikněte na **Importovat**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-185">If everything looks okay, click **Import**.</span></span> <span data-ttu-id="a0daf-186">Dialogové okno Hello zpracování dat se zobrazuje stav hello dat importovaných z zdroj dat do databáze pracovního prostoru.</span><span class="sxs-lookup"><span data-stu-id="a0daf-186">hello Data Processing dialog shows hello status of data being imported from your datasource into your workspace database.</span></span>
   
     ![aas-lesson2-success](../tutorials/media/aas-lesson2-success.png) 
   
-2.  <span data-ttu-id="06fb9-187">Klikněte na **Zavřít**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-187">Click **Close**.</span></span>  
+2.  <span data-ttu-id="a0daf-188">Klikněte na **Zavřít**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-188">Click **Close**.</span></span>  
 
   
-## <a name="save-your-model-project"></a><span data-ttu-id="06fb9-188">Uložení projektu s modelem</span><span class="sxs-lookup"><span data-stu-id="06fb9-188">Save your model project</span></span>  
-<span data-ttu-id="06fb9-189">Je důležité projekt s modelem často ukládat.</span><span class="sxs-lookup"><span data-stu-id="06fb9-189">It's important to frequently save your model project.</span></span>  
+## <a name="save-your-model-project"></a><span data-ttu-id="a0daf-189">Uložení projektu s modelem</span><span class="sxs-lookup"><span data-stu-id="a0daf-189">Save your model project</span></span>  
+<span data-ttu-id="a0daf-190">Je důležité toofrequently uložit projektu modelu.</span><span class="sxs-lookup"><span data-stu-id="a0daf-190">It's important toofrequently save your model project.</span></span>  
   
-#### <a name="to-save-the-model-project"></a><span data-ttu-id="06fb9-190">Uložení projektu s modelem</span><span class="sxs-lookup"><span data-stu-id="06fb9-190">To save the model project</span></span>  
+#### <a name="toosave-hello-model-project"></a><span data-ttu-id="a0daf-191">projekt modelu toosave hello</span><span class="sxs-lookup"><span data-stu-id="a0daf-191">toosave hello model project</span></span>  
   
--   <span data-ttu-id="06fb9-191">Klikněte na **Soubor** > **Uložit vše**.</span><span class="sxs-lookup"><span data-stu-id="06fb9-191">Click **File** > **Save All**.</span></span>  
+-   <span data-ttu-id="a0daf-192">Klikněte na **Soubor** > **Uložit vše**.</span><span class="sxs-lookup"><span data-stu-id="a0daf-192">Click **File** > **Save All**.</span></span>  
   
-## <a name="whats-next"></a><span data-ttu-id="06fb9-192">Co dále?</span><span class="sxs-lookup"><span data-stu-id="06fb9-192">What's next?</span></span>
-<span data-ttu-id="06fb9-193">[Lekce 3: Označení jako tabulky kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md)</span><span class="sxs-lookup"><span data-stu-id="06fb9-193">[Lesson 3: Mark as Date Table](../tutorials/aas-lesson-3-mark-as-date-table.md).</span></span>
+## <a name="whats-next"></a><span data-ttu-id="a0daf-193">Co dále?</span><span class="sxs-lookup"><span data-stu-id="a0daf-193">What's next?</span></span>
+<span data-ttu-id="a0daf-194">[Lekce 3: Označení jako tabulky kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md)</span><span class="sxs-lookup"><span data-stu-id="a0daf-194">[Lesson 3: Mark as Date Table](../tutorials/aas-lesson-3-mark-as-date-table.md).</span></span>
 
   
   

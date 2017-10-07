@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží: Chybějící data v protokolech aktivity služby Azure Active Directory | Dokumentace Microsoftu"
-description: "Obsahuje seznam různých dostupných sestav pro Azure Active Directory."
+title: "Řešení potíží: Chybějící data v hello protokol činnosti Azure Active Directory | Microsoft Docs"
+description: "Seznamy hello různých dostupných sestav pro Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,31 +15,31 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47617f8f727027de113a0f503308c8accc58859e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7bbec94ab42eb5b54a7e65e124060d057b4a1a34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a><span data-ttu-id="94d20-103">Nemůžu v protokolu aktivity Azure Active Directory najít některé provedené akce</span><span class="sxs-lookup"><span data-stu-id="94d20-103">I can’t find some actions that I performed in the Azure Active Directory activity log</span></span>
+# <a name="i-cant-find-some-actions-that-i-performed-in-hello-azure-active-directory-activity-log"></a><span data-ttu-id="72c90-103">Nelze nalézt některé akce provedené v protokolu aktivit hello Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="72c90-103">I can’t find some actions that I performed in hello Azure Active Directory activity log</span></span>
 
 
-## <a name="symptoms"></a><span data-ttu-id="94d20-104">Příznaky</span><span class="sxs-lookup"><span data-stu-id="94d20-104">Symptoms</span></span>
+## <a name="symptoms"></a><span data-ttu-id="72c90-104">Příznaky</span><span class="sxs-lookup"><span data-stu-id="72c90-104">Symptoms</span></span>
 
-<span data-ttu-id="94d20-105">Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.</span><span class="sxs-lookup"><span data-stu-id="94d20-105">I performed some actions in the Azure portal and expected to see the audit logs for those actions in the `Activity logs > Audit Logs` blade, but I can’t find them.</span></span>
+<span data-ttu-id="72c90-105">I provést některé akce v hello portál Azure a v hello byl očekáván toosee hello protokoly auditu pro tyto akce `Activity logs > Audit Logs` okno, ale I jejich nelze najít.</span><span class="sxs-lookup"><span data-stu-id="72c90-105">I performed some actions in hello Azure portal and expected toosee hello audit logs for those actions in hello `Activity logs > Audit Logs` blade, but I can’t find them.</span></span>
 
  ![Vytváření sestav](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
-## <a name="cause"></a><span data-ttu-id="94d20-107">Příčina</span><span class="sxs-lookup"><span data-stu-id="94d20-107">Cause</span></span>
+## <a name="cause"></a><span data-ttu-id="72c90-107">Příčina</span><span class="sxs-lookup"><span data-stu-id="72c90-107">Cause</span></span>
 
-<span data-ttu-id="94d20-108">Akce se v protokolu auditu aktivity nezobrazí okamžitě.</span><span class="sxs-lookup"><span data-stu-id="94d20-108">Actions don’t appear immediately in the Activity Audit log.</span></span> <span data-ttu-id="94d20-109">Zobrazení operací v protokolech auditu na portálu může od jejich provedení trvat 15 minut až jednu hodinu.</span><span class="sxs-lookup"><span data-stu-id="94d20-109">It can take anywhere from 15 minutes to an hour to see the audit logs in the portal from the time the operation is performed.</span></span>
+<span data-ttu-id="72c90-108">Akce při protokol auditování aktivity hello nezobrazí okamžitě.</span><span class="sxs-lookup"><span data-stu-id="72c90-108">Actions don’t appear immediately in hello Activity Audit log.</span></span> <span data-ttu-id="72c90-109">Ho může trvat od 15 minut, po které protokoly tooan hodinu toosee hello auditu portálu hello z hello době hello operace.</span><span class="sxs-lookup"><span data-stu-id="72c90-109">It can take anywhere from 15 minutes tooan hour toosee hello audit logs in hello portal from hello time hello operation is performed.</span></span>
 
-## <a name="resolution"></a><span data-ttu-id="94d20-110">Řešení</span><span class="sxs-lookup"><span data-stu-id="94d20-110">Resolution</span></span>
+## <a name="resolution"></a><span data-ttu-id="72c90-110">Řešení</span><span class="sxs-lookup"><span data-stu-id="72c90-110">Resolution</span></span>
 
-<span data-ttu-id="94d20-111">Počkejte 15 minut až hodinu a pak se podívejte, jestli se akce v protokolu zobrazily.</span><span class="sxs-lookup"><span data-stu-id="94d20-111">Wait for 15 minutes to an hour and see if the actions appear in the log.</span></span> <span data-ttu-id="94d20-112">Pokud je stále nevidíte, vytvořte prosím lístek podpory a my se na to podíváme.</span><span class="sxs-lookup"><span data-stu-id="94d20-112">If you still don’t see them, please raise a support ticket with us and we will look into it.</span></span>
+<span data-ttu-id="72c90-111">Počkejte hodinu tooan 15 minut a zobrazit, pokud hello akce se zobrazí v protokolu hello.</span><span class="sxs-lookup"><span data-stu-id="72c90-111">Wait for 15 minutes tooan hour and see if hello actions appear in hello log.</span></span> <span data-ttu-id="72c90-112">Pokud je stále nevidíte, vytvořte prosím lístek podpory a my se na to podíváme.</span><span class="sxs-lookup"><span data-stu-id="72c90-112">If you still don’t see them, please raise a support ticket with us and we will look into it.</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="94d20-113">Další kroky</span><span class="sxs-lookup"><span data-stu-id="94d20-113">Next steps</span></span>
-<span data-ttu-id="94d20-114">Přečtěte si [nejčastější dotazy ke generování sestav v Azure Active Directory](active-directory-reporting-faq.md).</span><span class="sxs-lookup"><span data-stu-id="94d20-114">See the [Azure Active Directory reporting FAQ](active-directory-reporting-faq.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="72c90-113">Další kroky</span><span class="sxs-lookup"><span data-stu-id="72c90-113">Next steps</span></span>
+<span data-ttu-id="72c90-114">V tématu hello [Azure Active Directory, vytváření sestav – nejčastější dotazy](active-directory-reporting-faq.md).</span><span class="sxs-lookup"><span data-stu-id="72c90-114">See hello [Azure Active Directory reporting FAQ](active-directory-reporting-faq.md).</span></span>
 

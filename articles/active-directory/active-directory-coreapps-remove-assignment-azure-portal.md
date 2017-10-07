@@ -1,6 +1,6 @@
 ---
-title: "Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory | Microsoft Docs"
-description: "Postup přiřazení přístup uživatele nebo skupinu odebrat z podnikové aplikace v Azure Active Directory"
+title: "aaaRemove uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory | Microsoft Docs"
+description: "Jak tooremove hello přistupovat k přiřazení uživatele nebo skupiny z podnikové aplikace v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 02f122acfb53c2107e2b0af66c6195aa127a2c77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c067ecf59b4dedfe8f848357ca8bd545bdc610eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a><span data-ttu-id="2a38c-103">Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="2a38c-103">Remove a user or group assignment from an enterprise app in Azure Active Directory</span></span>
-<span data-ttu-id="2a38c-104">Je snadno odebrat uživatele nebo skupiny z se přiřadí přístup k jednomu z vaší podnikové aplikace v Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="2a38c-104">It's easy to remove a user or a group from being assigned access to one of your enterprise applications in Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="2a38c-105">Musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.</span><span class="sxs-lookup"><span data-stu-id="2a38c-105">You must have the appropriate permissions to manage the enterprise app, and you must be global admin for the directory.</span></span>
+# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a><span data-ttu-id="7eb86-103">Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="7eb86-103">Remove a user or group assignment from an enterprise app in Azure Active Directory</span></span>
+<span data-ttu-id="7eb86-104">Je snadno tooremove uživatele nebo skupiny z přiřazení přístupu tooone podnikových aplikací ve službě Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="7eb86-104">It's easy tooremove a user or a group from being assigned access tooone of your enterprise applications in Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="7eb86-105">Musíte mít hello příslušná oprávnění toomanage hello firemní aplikace a musí být globální správce adresáře hello.</span><span class="sxs-lookup"><span data-stu-id="7eb86-105">You must have hello appropriate permissions toomanage hello enterprise app, and you must be global admin for hello directory.</span></span>
 
-## <a name="how-do-i-remove-a-user-or-group-assignment"></a><span data-ttu-id="2a38c-106">Jak odebrat uživatele nebo přiřazení skupiny?</span><span class="sxs-lookup"><span data-stu-id="2a38c-106">How do I remove a user or group assignment?</span></span>
-1. <span data-ttu-id="2a38c-107">Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.</span><span class="sxs-lookup"><span data-stu-id="2a38c-107">Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.</span></span>
-2. <span data-ttu-id="2a38c-108">Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.</span><span class="sxs-lookup"><span data-stu-id="2a38c-108">Select **More services**, enter **Azure Active Directory** in the text box, and then select **Enter**.</span></span>
-3. <span data-ttu-id="2a38c-109">Na **Azure Active Directory – *directoryname***  okno (to znamená, Azure AD okna pro adresář spravujete), vyberte **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="2a38c-109">On the **Azure Active Directory - *directoryname*** blade (that is, the Azure AD blade for the directory you are managing), select **Enterprise applications**.</span></span>
+## <a name="how-do-i-remove-a-user-or-group-assignment"></a><span data-ttu-id="7eb86-106">Jak odebrat uživatele nebo přiřazení skupiny?</span><span class="sxs-lookup"><span data-stu-id="7eb86-106">How do I remove a user or group assignment?</span></span>
+1. <span data-ttu-id="7eb86-107">Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.</span><span class="sxs-lookup"><span data-stu-id="7eb86-107">Sign in toohello [Azure portal](https://portal.azure.com) with an account that's a global admin for hello directory.</span></span>
+2. <span data-ttu-id="7eb86-108">Vyberte **další služby**, zadejte **Azure Active Directory** v hello textového pole a pak vyberte **Enter**.</span><span class="sxs-lookup"><span data-stu-id="7eb86-108">Select **More services**, enter **Azure Active Directory** in hello text box, and then select **Enter**.</span></span>
+3. <span data-ttu-id="7eb86-109">Na hello **Azure Active Directory - *directoryname***  okno (tedy hello Azure AD okno pro adresář hello spravujete), vyberte **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="7eb86-109">On hello **Azure Active Directory - *directoryname*** blade (that is, hello Azure AD blade for hello directory you are managing), select **Enterprise applications**.</span></span>
 
     ![Otevírání podnikové aplikace](./media/active-directory-coreapps-remove-assignment-user-azure-portal/open-enterprise-apps.png)
-4. <span data-ttu-id="2a38c-111">Na **podnikové aplikace, které** vyberte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="2a38c-111">On the **Enterprise applications** blade, select **All applications**.</span></span> <span data-ttu-id="2a38c-112">Zobrazí seznam aplikací, které můžete spravovat.</span><span class="sxs-lookup"><span data-stu-id="2a38c-112">You'll see a list of the apps you can manage.</span></span>
-5. <span data-ttu-id="2a38c-113">Na **podnikové aplikace – všechny aplikace** okně, vyberte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="2a38c-113">On the **Enterprise applications - All applications** blade, select an app.</span></span>
-6. <span data-ttu-id="2a38c-114">Na ***appname*** okno (to znamená, v okně s názvem vybranou aplikaci v názvu), vyberte **uživatelé a skupiny**.</span><span class="sxs-lookup"><span data-stu-id="2a38c-114">On the ***appname*** blade (that is, the blade with the name of the selected app in the title), select **Users & Groups**.</span></span>
+4. <span data-ttu-id="7eb86-111">Na hello **podnikové aplikace, které** vyberte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="7eb86-111">On hello **Enterprise applications** blade, select **All applications**.</span></span> <span data-ttu-id="7eb86-112">Zobrazí se seznam hello aplikací, které můžete spravovat.</span><span class="sxs-lookup"><span data-stu-id="7eb86-112">You'll see a list of hello apps you can manage.</span></span>
+5. <span data-ttu-id="7eb86-113">Na hello **podnikové aplikace – všechny aplikace** okně, vyberte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="7eb86-113">On hello **Enterprise applications - All applications** blade, select an app.</span></span>
+6. <span data-ttu-id="7eb86-114">Na hello ***appname*** okno (tedy hello okno s názvem hello hello vybrané aplikace ve hello title), vyberte **uživatelé a skupiny**.</span><span class="sxs-lookup"><span data-stu-id="7eb86-114">On hello ***appname*** blade (that is, hello blade with hello name of hello selected app in hello title), select **Users & Groups**.</span></span>
 
     ![Výběr uživatelů nebo skupin](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-app-users.png)
-7. <span data-ttu-id="2a38c-116">Na ***appname*** **-uživatele & přiřazení skupiny** okně, vyberte jednu z další uživatele nebo skupiny a pak vyberte **odebrat** příkaz.</span><span class="sxs-lookup"><span data-stu-id="2a38c-116">On the ***appname*** **- User & Group Assignment** blade, select one of more users or groups and then select the **Remove** command.</span></span> <span data-ttu-id="2a38c-117">Zkontrolujte vaše rozhodnutí příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="2a38c-117">Confirm your decision at the prompt.</span></span>
+7. <span data-ttu-id="7eb86-116">Na hello ***appname*** **-uživatele & přiřazení skupiny** okně, vyberte jednu z další uživatele nebo skupiny a pak vyberte hello **odebrat** příkaz.</span><span class="sxs-lookup"><span data-stu-id="7eb86-116">On hello ***appname*** **- User & Group Assignment** blade, select one of more users or groups and then select hello **Remove** command.</span></span> <span data-ttu-id="7eb86-117">Zkontrolujte vaše rozhodnutí hello příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="7eb86-117">Confirm your decision at hello prompt.</span></span>
 
-    ![Vyberte příkaz odebrat](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-users.png)
+    ![Vyberte příkaz odebrat hello](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-users.png)
 
-## <a name="next-steps"></a><span data-ttu-id="2a38c-119">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2a38c-119">Next steps</span></span>
-* [<span data-ttu-id="2a38c-120">Zobrazit všechny moje skupin</span><span class="sxs-lookup"><span data-stu-id="2a38c-120">See all of my groups</span></span>](active-directory-groups-view-azure-portal.md)
-* [<span data-ttu-id="2a38c-121">Přiřazení uživatele nebo skupiny do aplikace enterprise</span><span class="sxs-lookup"><span data-stu-id="2a38c-121">Assign a user or group to an enterprise app</span></span>](active-directory-coreapps-assign-user-azure-portal.md)
-* [<span data-ttu-id="2a38c-122">Zakázat přihlášení uživatele pro aplikaci, enterprise</span><span class="sxs-lookup"><span data-stu-id="2a38c-122">Disable user sign-ins for an enterprise app</span></span>](active-directory-coreapps-disable-app-azure-portal.md)
-* [<span data-ttu-id="2a38c-123">Změna názvu nebo logo aplikace enterprise</span><span class="sxs-lookup"><span data-stu-id="2a38c-123">Change the name or logo of an enterprise app</span></span>](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+## <a name="next-steps"></a><span data-ttu-id="7eb86-119">Další kroky</span><span class="sxs-lookup"><span data-stu-id="7eb86-119">Next steps</span></span>
+* [<span data-ttu-id="7eb86-120">Zobrazit všechny moje skupin</span><span class="sxs-lookup"><span data-stu-id="7eb86-120">See all of my groups</span></span>](active-directory-groups-view-azure-portal.md)
+* [<span data-ttu-id="7eb86-121">Přiřadit uživatele nebo skupinu tooan firemní aplikace</span><span class="sxs-lookup"><span data-stu-id="7eb86-121">Assign a user or group tooan enterprise app</span></span>](active-directory-coreapps-assign-user-azure-portal.md)
+* [<span data-ttu-id="7eb86-122">Zakázat přihlášení uživatele pro aplikaci, enterprise</span><span class="sxs-lookup"><span data-stu-id="7eb86-122">Disable user sign-ins for an enterprise app</span></span>](active-directory-coreapps-disable-app-azure-portal.md)
+* [<span data-ttu-id="7eb86-123">Změňte název hello nebo logo aplikace enterprise</span><span class="sxs-lookup"><span data-stu-id="7eb86-123">Change hello name or logo of an enterprise app</span></span>](active-directory-coreapps-change-app-logo-user-azure-portal.md)

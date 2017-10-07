@@ -1,6 +1,6 @@
 ---
-title: "Přesun okruhů ExpressRoute z classic do Resource Manager: prostředí PowerShell: Azure | Microsoft Docs"
-description: "Tato stránka popisuje, jak přesunout classic okruhu do modelu nasazení Resource Manager pomocí prostředí PowerShell."
+title: "Přesun okruhů ExpressRoute z classic tooResource správce: prostředí PowerShell: Azure | Microsoft Docs"
+description: "Tato stránka popisuje, jak model toomove toohello classic okruh nasazení Resource Manager pomocí prostředí PowerShell."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,149 +15,149 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8dcadafca5e4f40773902cec5786eba1dbe133eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a><span data-ttu-id="16252-103">Přesun okruhů ExpressRoute z classic do modelu nasazení Resource Manager pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="16252-103">Move ExpressRoute circuits from the classic to the Resource Manager deployment model using PowerShell</span></span>
+# <a name="move-expressroute-circuits-from-hello-classic-toohello-resource-manager-deployment-model-using-powershell"></a><span data-ttu-id="19571-103">Přesun okruhů ExpressRoute z hello toohello klasického modelu nasazení Resource Manager pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="19571-103">Move ExpressRoute circuits from hello classic toohello Resource Manager deployment model using PowerShell</span></span>
 
-<span data-ttu-id="16252-104">Pokud chcete použít okruhu ExpressRoute pro classic i modelech nasazení Resource Manager, je třeba přesunout okruh do modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-104">To use an ExpressRoute circuit for both the classic and Resource Manager deployment models, you must move the circuit to the Resource Manager deployment model.</span></span> <span data-ttu-id="16252-105">V následujících částech můžete přesunout váš okruh pomocí prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="16252-105">The following sections help you move your circuit by using PowerShell.</span></span>
+<span data-ttu-id="19571-104">toouse okruhu ExpressRoute pro hello classic a modelech nasazení Resource Manager, musíte přesunout modelu nasazení Resource Manager toohello okruhu hello.</span><span class="sxs-lookup"><span data-stu-id="19571-104">toouse an ExpressRoute circuit for both hello classic and Resource Manager deployment models, you must move hello circuit toohello Resource Manager deployment model.</span></span> <span data-ttu-id="19571-105">Hello následující části vám pomohou přesunutí okruhu pomocí prostředí PowerShell.</span><span class="sxs-lookup"><span data-stu-id="19571-105">hello following sections help you move your circuit by using PowerShell.</span></span>
 
-## <a name="before-you-begin"></a><span data-ttu-id="16252-106">Než začnete</span><span class="sxs-lookup"><span data-stu-id="16252-106">Before you begin</span></span>
+## <a name="before-you-begin"></a><span data-ttu-id="19571-106">Než začnete</span><span class="sxs-lookup"><span data-stu-id="19571-106">Before you begin</span></span>
 
-* <span data-ttu-id="16252-107">Ověřte, že máte nejnovější verzi modulů prostředí Azure PowerShell (minimálně verze 1.0).</span><span class="sxs-lookup"><span data-stu-id="16252-107">Verify that you have the latest version of the Azure PowerShell modules (at least version 1.0).</span></span> <span data-ttu-id="16252-108">Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="16252-108">For more information, see [How to install and configure Azure PowerShell](/powershell/azure/overview).</span></span>
-* <span data-ttu-id="16252-109">Ujistěte se, že jste si přečetli [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.</span><span class="sxs-lookup"><span data-stu-id="16252-109">Make sure that you have reviewed the [prerequisites](expressroute-prerequisites.md), [routing requirements](expressroute-routing.md), and [workflows](expressroute-workflows.md) before you begin configuration.</span></span>
-* <span data-ttu-id="16252-110">Zkontrolujte informace, které jsou poskytovány na základě [přesun okruhu ExpressRoute z classic do Resource Manager](expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="16252-110">Review the information that is provided under [Moving an ExpressRoute circuit from classic to Resource Manager](expressroute-move.md).</span></span> <span data-ttu-id="16252-111">Ujistěte se, že rozumíte plně limity a omezení.</span><span class="sxs-lookup"><span data-stu-id="16252-111">Make sure that you fully understand the limits and limitations.</span></span>
-* <span data-ttu-id="16252-112">Ověřte, že je okruh v modelu nasazení classic plně funkční.</span><span class="sxs-lookup"><span data-stu-id="16252-112">Verify that the circuit is fully operational in the classic deployment model.</span></span>
-* <span data-ttu-id="16252-113">Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-113">Ensure that you have a resource group that was created in the Resource Manager deployment model.</span></span>
+* <span data-ttu-id="19571-107">Ověřte, že máte nejnovější verzi modulů prostředí Azure PowerShell hello hello (minimálně verze 1.0).</span><span class="sxs-lookup"><span data-stu-id="19571-107">Verify that you have hello latest version of hello Azure PowerShell modules (at least version 1.0).</span></span> <span data-ttu-id="19571-108">Další informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="19571-108">For more information, see [How tooinstall and configure Azure PowerShell](/powershell/azure/overview).</span></span>
+* <span data-ttu-id="19571-109">Ujistěte se, že jste si přečetli hello [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.</span><span class="sxs-lookup"><span data-stu-id="19571-109">Make sure that you have reviewed hello [prerequisites](expressroute-prerequisites.md), [routing requirements](expressroute-routing.md), and [workflows](expressroute-workflows.md) before you begin configuration.</span></span>
+* <span data-ttu-id="19571-110">Zkontrolujte hello informace jsou poskytovány na základě [přesun okruhu ExpressRoute z classic tooResource Manager](expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="19571-110">Review hello information that is provided under [Moving an ExpressRoute circuit from classic tooResource Manager](expressroute-move.md).</span></span> <span data-ttu-id="19571-111">Ujistěte se, že rozumíte plně hello limity a omezení.</span><span class="sxs-lookup"><span data-stu-id="19571-111">Make sure that you fully understand hello limits and limitations.</span></span>
+* <span data-ttu-id="19571-112">Ověřte, že hello okruh v modelu nasazení classic hello plně funkční.</span><span class="sxs-lookup"><span data-stu-id="19571-112">Verify that hello circuit is fully operational in hello classic deployment model.</span></span>
+* <span data-ttu-id="19571-113">Ujistěte se, že máte skupinu prostředků, který byl vytvořen v modelu nasazení Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="19571-113">Ensure that you have a resource group that was created in hello Resource Manager deployment model.</span></span>
 
-## <a name="move-an-expressroute-circuit"></a><span data-ttu-id="16252-114">Přesun okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="16252-114">Move an ExpressRoute circuit</span></span>
+## <a name="move-an-expressroute-circuit"></a><span data-ttu-id="19571-114">Přesun okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="19571-114">Move an ExpressRoute circuit</span></span>
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a><span data-ttu-id="16252-115">Krok 1: Shromáždění podrobností okruh z modelu nasazení classic</span><span class="sxs-lookup"><span data-stu-id="16252-115">Step 1: Gather circuit details from the classic deployment model</span></span>
+### <a name="step-1-gather-circuit-details-from-hello-classic-deployment-model"></a><span data-ttu-id="19571-115">Krok 1: Shromáždění podrobností okruh z modelu nasazení classic hello</span><span class="sxs-lookup"><span data-stu-id="19571-115">Step 1: Gather circuit details from hello classic deployment model</span></span>
 
-<span data-ttu-id="16252-116">Přihlaste se k prostředí Azure classic a shromáždit klíč služby.</span><span class="sxs-lookup"><span data-stu-id="16252-116">Sign in to the Azure classic environment and gather the service key.</span></span>
+<span data-ttu-id="19571-116">Přihlaste se toohello prostředí Azure classic a shromažďovat klíče služby hello.</span><span class="sxs-lookup"><span data-stu-id="19571-116">Sign in toohello Azure classic environment and gather hello service key.</span></span>
 
-1. <span data-ttu-id="16252-117">Přihlaste se k účtu Azure.</span><span class="sxs-lookup"><span data-stu-id="16252-117">Sign in to your Azure account.</span></span>
+1. <span data-ttu-id="19571-117">Přihlaste se tooyour účet Azure.</span><span class="sxs-lookup"><span data-stu-id="19571-117">Sign in tooyour Azure account.</span></span>
 
   ```powershell
   Add-AzureAccount
   ```
 
-2. <span data-ttu-id="16252-118">Vyberte příslušné předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="16252-118">Select the appropriate Azure subscription.</span></span>
+2. <span data-ttu-id="19571-118">Vyberte příslušné předplatné Azure hello.</span><span class="sxs-lookup"><span data-stu-id="19571-118">Select hello appropriate Azure subscription.</span></span>
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
   ```
 
-3. <span data-ttu-id="16252-119">Importujte další moduly Powershellu pro Azure a ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="16252-119">Import the PowerShell modules for Azure and ExpressRoute.</span></span>
+3. <span data-ttu-id="19571-119">Importujte hello moduly Powershellu pro Azure a ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="19571-119">Import hello PowerShell modules for Azure and ExpressRoute.</span></span>
 
   ```powershell
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
   ```
 
-4. <span data-ttu-id="16252-120">Použijte následující rutinu k získání klíče služby pro všechny vaše okruhy ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="16252-120">Use the cmdlet below to get the service keys for all of your ExpressRoute circuits.</span></span> <span data-ttu-id="16252-121">Po načtení klíče, zkopírujte **klíč služby** okruhu, který chcete přesunout do modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-121">After retrieving the keys, copy the **service key** of the circuit that you want to move to the Resource Manager deployment model.</span></span>
+4. <span data-ttu-id="19571-120">Pomocí rutiny hello níže tooget hello služby klíče pro všechny vaše okruhy ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="19571-120">Use hello cmdlet below tooget hello service keys for all of your ExpressRoute circuits.</span></span> <span data-ttu-id="19571-121">Po načtení hello klíče, zkopírujte hello **klíč služby** hello okruhu, které chcete modelu nasazení Resource Manager toohello toomove.</span><span class="sxs-lookup"><span data-stu-id="19571-121">After retrieving hello keys, copy hello **service key** of hello circuit that you want toomove toohello Resource Manager deployment model.</span></span>
 
   ```powershell
   Get-AzureDedicatedCircuit
   ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a><span data-ttu-id="16252-122">Krok 2: Přihlaste se a vytvořte skupinu prostředků</span><span class="sxs-lookup"><span data-stu-id="16252-122">Step 2: Sign in and create a resource group</span></span>
+### <a name="step-2-sign-in-and-create-a-resource-group"></a><span data-ttu-id="19571-122">Krok 2: Přihlaste se a vytvořte skupinu prostředků</span><span class="sxs-lookup"><span data-stu-id="19571-122">Step 2: Sign in and create a resource group</span></span>
 
-<span data-ttu-id="16252-123">Přihlaste se k prostředí Resource Manager a vytvořte novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="16252-123">Sign in to the Resource Manager environment and create a new resource group.</span></span>
+<span data-ttu-id="19571-123">Přihlaste se toohello Resource Manager prostředí a vytvořit novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="19571-123">Sign in toohello Resource Manager environment and create a new resource group.</span></span>
 
-1. <span data-ttu-id="16252-124">Přihlaste se do prostředí Azure Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-124">Sign in to your Azure Resource Manager environment.</span></span>
+1. <span data-ttu-id="19571-124">Přihlaste se tooyour prostředí Azure Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="19571-124">Sign in tooyour Azure Resource Manager environment.</span></span>
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-2. <span data-ttu-id="16252-125">Vyberte příslušné předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="16252-125">Select the appropriate Azure subscription.</span></span>
+2. <span data-ttu-id="19571-125">Vyberte příslušné předplatné Azure hello.</span><span class="sxs-lookup"><span data-stu-id="19571-125">Select hello appropriate Azure subscription.</span></span>
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
   ```
 
-3. <span data-ttu-id="16252-126">Chcete-li vytvořit novou skupinu prostředků, pokud ještě nemáte skupinu prostředků fragment upravte.</span><span class="sxs-lookup"><span data-stu-id="16252-126">Modify the snippet below to create a new resource group if you don't already have a resource group.</span></span>
+3. <span data-ttu-id="19571-126">Upravte hello fragment kódu níže toocreate novou skupinu prostředků, pokud ještě nemáte skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="19571-126">Modify hello snippet below toocreate a new resource group if you don't already have a resource group.</span></span>
 
   ```powershell
   New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a><span data-ttu-id="16252-127">Krok 3: Přesunout okruh ExpressRoute do modelu nasazení Resource Manager</span><span class="sxs-lookup"><span data-stu-id="16252-127">Step 3: Move the ExpressRoute circuit to the Resource Manager deployment model</span></span>
+### <a name="step-3-move-hello-expressroute-circuit-toohello-resource-manager-deployment-model"></a><span data-ttu-id="19571-127">Krok 3: Přesunutí okruhu ExpressRoute hello, toohello modelu nasazení Resource Manager</span><span class="sxs-lookup"><span data-stu-id="19571-127">Step 3: Move hello ExpressRoute circuit toohello Resource Manager deployment model</span></span>
 
-<span data-ttu-id="16252-128">Nyní jste připraveni pro přesun okruhu ExpressRoute z modelu nasazení classic do modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-128">You are now ready to move your ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.</span></span> <span data-ttu-id="16252-129">Než budete pokračovat, přečtěte si informace uvedené v [přesun okruhu ExpressRoute z klasického modelu nasazení Resource Manager](expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="16252-129">Before proceeding, review the information provided in [Moving an ExpressRoute circuit from the classic to the Resource Manager deployment model](expressroute-move.md).</span></span>
+<span data-ttu-id="19571-128">Můžete je nyní připraven toomove váš okruh ExpressRoute z modelu nasazení classic hello, toohello modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="19571-128">You are now ready toomove your ExpressRoute circuit from hello classic deployment model toohello Resource Manager deployment model.</span></span> <span data-ttu-id="19571-129">Než budete pokračovat, zkontrolujte hello informací uvedených v [přesun okruhu ExpressRoute z modelu nasazení Resource Manager classic toohello hello](expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="19571-129">Before proceeding, review hello information provided in [Moving an ExpressRoute circuit from hello classic toohello Resource Manager deployment model](expressroute-move.md).</span></span>
 
-<span data-ttu-id="16252-130">Chcete-li přesunout váš okruh, upravit a spusťte následující fragment kódu:</span><span class="sxs-lookup"><span data-stu-id="16252-130">To move your circuit, modify and run the following snippet:</span></span>
+<span data-ttu-id="19571-130">toomove váš okruh, upravit a spusťte hello následující fragment kódu:</span><span class="sxs-lookup"><span data-stu-id="19571-130">toomove your circuit, modify and run hello following snippet:</span></span>
 
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="16252-131">Po dokončení přesunu nový název, který je uvedený v předchozí rutiny bude používat k adresování prostředku.</span><span class="sxs-lookup"><span data-stu-id="16252-131">After the move has finished, the new name that is listed in the previous cmdlet will be used to address the resource.</span></span> <span data-ttu-id="16252-132">Okruhu bude v podstatě přejmenovat.</span><span class="sxs-lookup"><span data-stu-id="16252-132">The circuit will essentially be renamed.</span></span>
+> <span data-ttu-id="19571-131">Po dokončení přesunu hello hello nový název, který je uvedený v předchozí rutiny hello bude použité tooaddress hello prostředků.</span><span class="sxs-lookup"><span data-stu-id="19571-131">After hello move has finished, hello new name that is listed in hello previous cmdlet will be used tooaddress hello resource.</span></span> <span data-ttu-id="19571-132">Hello okruhu bude v podstatě přejmenovat.</span><span class="sxs-lookup"><span data-stu-id="19571-132">hello circuit will essentially be renamed.</span></span>
 > 
 
-## <a name="modify-circuit-access"></a><span data-ttu-id="16252-133">Úprava okruhu přístup</span><span class="sxs-lookup"><span data-stu-id="16252-133">Modify circuit access</span></span>
+## <a name="modify-circuit-access"></a><span data-ttu-id="19571-133">Úprava okruhu přístup</span><span class="sxs-lookup"><span data-stu-id="19571-133">Modify circuit access</span></span>
 
-### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a><span data-ttu-id="16252-134">Chcete-li povolit přístup k okruhu ExpressRoute pro oba modely nasazení</span><span class="sxs-lookup"><span data-stu-id="16252-134">To enable ExpressRoute circuit access for both deployment models</span></span>
+### <a name="tooenable-expressroute-circuit-access-for-both-deployment-models"></a><span data-ttu-id="19571-134">tooenable přístup okruhu ExpressRoute pro oba modely nasazení</span><span class="sxs-lookup"><span data-stu-id="19571-134">tooenable ExpressRoute circuit access for both deployment models</span></span>
 
-<span data-ttu-id="16252-135">Po přesunutí classic okruhu ExpressRoute do modelu nasazení Resource Manager, můžete povolit přístup k oběma modelům nasazení.</span><span class="sxs-lookup"><span data-stu-id="16252-135">After moving your classic ExpressRoute circuit to the Resource Manager deployment model, you can enable access to both deployment models.</span></span> <span data-ttu-id="16252-136">Spusťte následující rutiny a povolte tak přístup k oběma modelům nasazení:</span><span class="sxs-lookup"><span data-stu-id="16252-136">Run the following cmdlets to enable access to both deployment models:</span></span>
+<span data-ttu-id="19571-135">Po přesunutí classic Resource Manager nasazení modelu toohello okruh ExpressRoute, můžete povolit modely nasazení tooboth přístup.</span><span class="sxs-lookup"><span data-stu-id="19571-135">After moving your classic ExpressRoute circuit toohello Resource Manager deployment model, you can enable access tooboth deployment models.</span></span> <span data-ttu-id="19571-136">Spusťte následující rutiny tooenable přístup tooboth nasazení modely hello:</span><span class="sxs-lookup"><span data-stu-id="19571-136">Run hello following cmdlets tooenable access tooboth deployment models:</span></span>
 
-1. <span data-ttu-id="16252-137">Získání podrobností o okruhu.</span><span class="sxs-lookup"><span data-stu-id="16252-137">Get the circuit details.</span></span>
+1. <span data-ttu-id="19571-137">Získáte podrobnosti o okruhu hello.</span><span class="sxs-lookup"><span data-stu-id="19571-137">Get hello circuit details.</span></span>
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. <span data-ttu-id="16252-138">Nastavení "Povolit klasické operace" na hodnotu TRUE.</span><span class="sxs-lookup"><span data-stu-id="16252-138">Set "Allow Classic Operations" to TRUE.</span></span>
+2. <span data-ttu-id="19571-138">Nastavit tooTRUE "Povolit klasické operace".</span><span class="sxs-lookup"><span data-stu-id="19571-138">Set "Allow Classic Operations" tooTRUE.</span></span>
 
   ```powershell
   $ckt.AllowClassicOperations = $true
   ```
 
-3. <span data-ttu-id="16252-139">Aktualizujte okruh.</span><span class="sxs-lookup"><span data-stu-id="16252-139">Update the circuit.</span></span> <span data-ttu-id="16252-140">Po úspěšném dokončení této operace bude moci zobrazit okruh v modelu nasazení classic.</span><span class="sxs-lookup"><span data-stu-id="16252-140">After this operation has finished successfully, you will be able to view the circuit in the classic deployment model.</span></span>
+3. <span data-ttu-id="19571-139">Aktualizujte hello okruh.</span><span class="sxs-lookup"><span data-stu-id="19571-139">Update hello circuit.</span></span> <span data-ttu-id="19571-140">Po úspěšném dokončení této operace bude možné tooview hello okruh v modelu nasazení classic hello.</span><span class="sxs-lookup"><span data-stu-id="19571-140">After this operation has finished successfully, you will be able tooview hello circuit in hello classic deployment model.</span></span>
 
   ```powershell
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-4. <span data-ttu-id="16252-141">Spusťte následující rutiny můžete získat podrobnosti o okruhu ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="16252-141">Run the following cmdlet to get the details of the ExpressRoute circuit.</span></span> <span data-ttu-id="16252-142">Musí umět klíč služby uvedené v tématu.</span><span class="sxs-lookup"><span data-stu-id="16252-142">You must be able to see the service key listed.</span></span>
+4. <span data-ttu-id="19571-141">Spusťte následující rutinu tooget hello podrobnosti o hello okruh ExpressRoute hello.</span><span class="sxs-lookup"><span data-stu-id="19571-141">Run hello following cmdlet tooget hello details of hello ExpressRoute circuit.</span></span> <span data-ttu-id="19571-142">Musí být schopný toosee hello služby klíč uvedené.</span><span class="sxs-lookup"><span data-stu-id="19571-142">You must be able toosee hello service key listed.</span></span>
 
   ```powershell
   get-azurededicatedcircuit
   ```
 
-5. <span data-ttu-id="16252-143">Teď můžete spravovat odkazy na okruh ExpressRoute pomocí příkazů modelu nasazení classic pro virtuální sítě classic a Resource Manager příkazy pro virtuální sítě Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="16252-143">You can now manage links to the ExpressRoute circuit using the classic deployment model commands for classic VNets, and the Resource Manager commands for Resource Manager VNets.</span></span> <span data-ttu-id="16252-144">Tyto články vám pomůžou spravovat odkazy na okruh ExpressRoute:</span><span class="sxs-lookup"><span data-stu-id="16252-144">The following articles help you manage links to the ExpressRoute circuit:</span></span>
+5. <span data-ttu-id="19571-143">Teď můžete spravovat okruh ExpressRoute toohello odkazů pomocí příkazů modelu nasazení classic hello virtuální sítě classic a Resource Manager příkazy hello pro virtuální sítě Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="19571-143">You can now manage links toohello ExpressRoute circuit using hello classic deployment model commands for classic VNets, and hello Resource Manager commands for Resource Manager VNets.</span></span> <span data-ttu-id="19571-144">Hello následující články vám pomůžou spravovat odkazy toohello okruh ExpressRoute:</span><span class="sxs-lookup"><span data-stu-id="19571-144">hello following articles help you manage links toohello ExpressRoute circuit:</span></span>
 
-    * [<span data-ttu-id="16252-145">Propojení virtuální sítě k okruhu ExpressRoute v modelu nasazení Resource Manager</span><span class="sxs-lookup"><span data-stu-id="16252-145">Link your virtual network to your ExpressRoute circuit in the Resource Manager deployment model</span></span>](expressroute-howto-linkvnet-arm.md)
-    * [<span data-ttu-id="16252-146">Propojení virtuální sítě k okruhu ExpressRoute v modelu nasazení classic</span><span class="sxs-lookup"><span data-stu-id="16252-146">Link your virtual network to your ExpressRoute circuit in the classic deployment model</span></span>](expressroute-howto-linkvnet-classic.md)
+    * [<span data-ttu-id="19571-145">Propojení vaší virtuální sítě tooyour okruh ExpressRoute v modelu nasazení Resource Manager hello</span><span class="sxs-lookup"><span data-stu-id="19571-145">Link your virtual network tooyour ExpressRoute circuit in hello Resource Manager deployment model</span></span>](expressroute-howto-linkvnet-arm.md)
+    * [<span data-ttu-id="19571-146">Propojení vaší virtuální sítě tooyour okruh ExpressRoute v modelu nasazení classic hello</span><span class="sxs-lookup"><span data-stu-id="19571-146">Link your virtual network tooyour ExpressRoute circuit in hello classic deployment model</span></span>](expressroute-howto-linkvnet-classic.md)
 
-### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a><span data-ttu-id="16252-147">Chcete-li zakázat přístup k okruhu ExpressRoute do modelu nasazení classic</span><span class="sxs-lookup"><span data-stu-id="16252-147">To disable ExpressRoute circuit access to the classic deployment model</span></span>
+### <a name="toodisable-expressroute-circuit-access-toohello-classic-deployment-model"></a><span data-ttu-id="19571-147">okruh ExpressRoute toodisable, přístup k modelu nasazení classic toohello</span><span class="sxs-lookup"><span data-stu-id="19571-147">toodisable ExpressRoute circuit access toohello classic deployment model</span></span>
 
-<span data-ttu-id="16252-148">Spusťte následující rutiny můžete zakázat přístup k modelu nasazení classic.</span><span class="sxs-lookup"><span data-stu-id="16252-148">Run the following cmdlets to disable access to the classic deployment model.</span></span>
+<span data-ttu-id="19571-148">Spusťte následující rutiny toodisable přístup k modelu nasazení classic pro toohello hello.</span><span class="sxs-lookup"><span data-stu-id="19571-148">Run hello following cmdlets toodisable access toohello classic deployment model.</span></span>
 
-1. <span data-ttu-id="16252-149">Získáte podrobnosti o okruhu ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="16252-149">Get details of the ExpressRoute circuit.</span></span>
+1. <span data-ttu-id="19571-149">Získáte podrobnosti o hello okruh ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="19571-149">Get details of hello ExpressRoute circuit.</span></span>
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. <span data-ttu-id="16252-150">Nastavení "Povolit klasické operace" na hodnotu FALSE.</span><span class="sxs-lookup"><span data-stu-id="16252-150">Set "Allow Classic Operations" to FALSE.</span></span>
+2. <span data-ttu-id="19571-150">Nastavit tooFALSE "Povolit klasické operace".</span><span class="sxs-lookup"><span data-stu-id="19571-150">Set "Allow Classic Operations" tooFALSE.</span></span>
 
   ```powershell
   $ckt.AllowClassicOperations = $false
   ```
 
-3. <span data-ttu-id="16252-151">Aktualizujte okruh.</span><span class="sxs-lookup"><span data-stu-id="16252-151">Update the circuit.</span></span> <span data-ttu-id="16252-152">Po této operaci byl úspěšně dokončen, nebudete moci zobrazit okruh v modelu nasazení classic.</span><span class="sxs-lookup"><span data-stu-id="16252-152">After this operation has finished successfully, you will not be able to view the circuit in the classic deployment model.</span></span>
+3. <span data-ttu-id="19571-151">Aktualizujte hello okruh.</span><span class="sxs-lookup"><span data-stu-id="19571-151">Update hello circuit.</span></span> <span data-ttu-id="19571-152">Po úspěšném dokončení této operace nebudou moct tooview hello okruh v modelu nasazení classic hello.</span><span class="sxs-lookup"><span data-stu-id="19571-152">After this operation has finished successfully, you will not be able tooview hello circuit in hello classic deployment model.</span></span>
 
   ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-## <a name="next-steps"></a><span data-ttu-id="16252-153">Další kroky</span><span class="sxs-lookup"><span data-stu-id="16252-153">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="19571-153">Další kroky</span><span class="sxs-lookup"><span data-stu-id="19571-153">Next steps</span></span>
 
-* [<span data-ttu-id="16252-154">Vytvoření a úprava směrování pro okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="16252-154">Create and modify routing for your ExpressRoute circuit</span></span>](expressroute-howto-routing-arm.md)
-* [<span data-ttu-id="16252-155">Propojení virtuální sítě k okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="16252-155">Link your virtual network to your ExpressRoute circuit</span></span>](expressroute-howto-linkvnet-arm.md)
+* [<span data-ttu-id="19571-154">Vytvoření a úprava směrování pro okruhu ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="19571-154">Create and modify routing for your ExpressRoute circuit</span></span>](expressroute-howto-routing-arm.md)
+* [<span data-ttu-id="19571-155">Propojení vaší virtuální sítě tooyour okruh ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="19571-155">Link your virtual network tooyour ExpressRoute circuit</span></span>](expressroute-howto-linkvnet-arm.md)

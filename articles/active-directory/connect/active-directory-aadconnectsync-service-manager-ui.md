@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d33f02822097aa7f83042606ba46fd533e85ac23
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a><span data-ttu-id="08355-103">Úvod do Azure AD Connect Synchronization Service Manager uživatelského rozhraní</span><span class="sxs-lookup"><span data-stu-id="08355-103">Introduction to the Azure AD Connect Synchronization Service Manager UI</span></span>
+# <a name="introduction-toohello-azure-ad-connect-synchronization-service-manager-ui"></a><span data-ttu-id="4c9c6-103">Úvod toohello Azure AD Connect Synchronization Service Manager uživatelského rozhraní</span><span class="sxs-lookup"><span data-stu-id="4c9c6-103">Introduction toohello Azure AD Connect Synchronization Service Manager UI</span></span>
 
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
-<span data-ttu-id="08355-105">**Synchronization Service Manager** uživatelského rozhraní se používá ke konfiguraci pokročilejší aspektů synchronizační modul a zobrazíte provozní aspekty služby.</span><span class="sxs-lookup"><span data-stu-id="08355-105">The **Synchronization Service Manager** UI is used to configure more advanced aspects of the sync engine and to see the operational aspects of the service.</span></span>
+<span data-ttu-id="4c9c6-105">Hello **Synchronization Service Manager** uživatelského rozhraní je použité tooconfigure pokročilejší aspektů hello synchronizační modul a toosee hello provozní aspekty služby hello.</span><span class="sxs-lookup"><span data-stu-id="4c9c6-105">hello **Synchronization Service Manager** UI is used tooconfigure more advanced aspects of hello sync engine and toosee hello operational aspects of hello service.</span></span>
 
-<span data-ttu-id="08355-106">Spuštění **Synchronization Service Manager** uživatelského rozhraní z nabídky start.</span><span class="sxs-lookup"><span data-stu-id="08355-106">You start the **Synchronization Service Manager** UI from the start menu.</span></span> <span data-ttu-id="08355-107">Je název **synchronizační služba** a nachází se v **Azure AD Connect** skupiny.</span><span class="sxs-lookup"><span data-stu-id="08355-107">It is named **Synchronization Service** and can be found in the **Azure AD Connect** group.</span></span>  
-<span data-ttu-id="08355-108">![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="08355-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>
+<span data-ttu-id="4c9c6-106">Spustit hello **Synchronization Service Manager** uživatelského rozhraní z hello nabídky start.</span><span class="sxs-lookup"><span data-stu-id="4c9c6-106">You start hello **Synchronization Service Manager** UI from hello start menu.</span></span> <span data-ttu-id="4c9c6-107">Je název **synchronizační služba** a nachází se v hello **Azure AD Connect** skupiny.</span><span class="sxs-lookup"><span data-stu-id="4c9c6-107">It is named **Synchronization Service** and can be found in hello **Azure AD Connect** group.</span></span>  
+<span data-ttu-id="4c9c6-108">![Správce synchronizace služby](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="4c9c6-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>
 
-<span data-ttu-id="08355-109">Kliknutím na odkazy v horní části tohoto tématu, dozvíte se další informace o různých kartách v uživatelském rozhraní.</span><span class="sxs-lookup"><span data-stu-id="08355-109">Click the links at the top of this topic to learn more about the different tabs in the UI.</span></span>
+<span data-ttu-id="4c9c6-109">Kliknutím na odkazy hello hello horní části tohoto tématu toolearn Další informace o různých kartách hello v hello uživatelského rozhraní.</span><span class="sxs-lookup"><span data-stu-id="4c9c6-109">Click hello links at hello top of this topic toolearn more about hello different tabs in hello UI.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="08355-110">Další kroky</span><span class="sxs-lookup"><span data-stu-id="08355-110">Next steps</span></span>
-<span data-ttu-id="08355-111">Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.</span><span class="sxs-lookup"><span data-stu-id="08355-111">Learn more about the [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="4c9c6-110">Další kroky</span><span class="sxs-lookup"><span data-stu-id="4c9c6-110">Next steps</span></span>
+<span data-ttu-id="4c9c6-111">Další informace o hello [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.</span><span class="sxs-lookup"><span data-stu-id="4c9c6-111">Learn more about hello [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.</span></span>
 
-<span data-ttu-id="08355-112">Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).</span><span class="sxs-lookup"><span data-stu-id="08355-112">Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).</span></span>
+<span data-ttu-id="4c9c6-112">Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).</span><span class="sxs-lookup"><span data-stu-id="4c9c6-112">Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).</span></span>
