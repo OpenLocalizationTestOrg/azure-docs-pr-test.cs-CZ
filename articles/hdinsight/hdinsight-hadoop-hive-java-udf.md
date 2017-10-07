@@ -1,6 +1,6 @@
 ---
-title: "Java uživatelem definované funkce (UDF) s Hive v HDInsight - Azure | Microsoft Docs"
-description: "Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF), funguje s Hive. Tento příklad UDF převede tabulku textové řetězce na malá písmena."
+title: "aaaJava uživatelem definované funkce (UDF) s Hive v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate založené na jazyce Java uživatelem definované funkce (UDF), který funguje s Hive. Tento příklad UDF převede tabulku toolowercase textového řetězce."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 392b4cfb73299d2f6c1e8e825a4201b48d501388
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a><span data-ttu-id="8228d-104">Použít Java UDF s Hive v HDInsight</span><span class="sxs-lookup"><span data-stu-id="8228d-104">Use a Java UDF with Hive in HDInsight</span></span>
+# <a name="use-a-java-udf-with-hive-in-hdinsight"></a><span data-ttu-id="29bc8-104">Použít Java UDF s Hive v HDInsight</span><span class="sxs-lookup"><span data-stu-id="29bc8-104">Use a Java UDF with Hive in HDInsight</span></span>
 
-<span data-ttu-id="8228d-105">Postup vytvoření založené na jazyce Java uživatelem definované funkce (UDF), funguje s Hive.</span><span class="sxs-lookup"><span data-stu-id="8228d-105">Learn how to create a Java-based user-defined function (UDF) that works with Hive.</span></span> <span data-ttu-id="8228d-106">Java UDF v tomto příkladu převede tabulku textové řetězce na malá všechny znaky.</span><span class="sxs-lookup"><span data-stu-id="8228d-106">The Java UDF in this example converts a table of text strings to all-lowercase characters.</span></span>
+<span data-ttu-id="29bc8-105">Zjistěte, jak toocreate založené na jazyce Java uživatelem definované funkce (UDF), který funguje s Hive.</span><span class="sxs-lookup"><span data-stu-id="29bc8-105">Learn how toocreate a Java-based user-defined function (UDF) that works with Hive.</span></span> <span data-ttu-id="29bc8-106">v tomto příkladu Hello Java UDF převede tabulku textových řetězců tooall malá znaků.</span><span class="sxs-lookup"><span data-stu-id="29bc8-106">hello Java UDF in this example converts a table of text strings tooall-lowercase characters.</span></span>
 
-## <a name="requirements"></a><span data-ttu-id="8228d-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="8228d-107">Requirements</span></span>
+## <a name="requirements"></a><span data-ttu-id="29bc8-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="29bc8-107">Requirements</span></span>
 
-* <span data-ttu-id="8228d-108">Cluster služby HDInsight</span><span class="sxs-lookup"><span data-stu-id="8228d-108">An HDInsight cluster</span></span> 
-
-    > [!IMPORTANT]
-    > <span data-ttu-id="8228d-109">HDInsight od verze 3.4 výše používá výhradně operační systém Linux.</span><span class="sxs-lookup"><span data-stu-id="8228d-109">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="8228d-110">Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="8228d-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
-
-    <span data-ttu-id="8228d-111">Většina kroky v tomto dokumentu fungovat na obou clusterech se systémem Windows a Linux.</span><span class="sxs-lookup"><span data-stu-id="8228d-111">Most steps in this document work on both Windows- and Linux-based clusters.</span></span> <span data-ttu-id="8228d-112">Nicméně jsou specifické pro clustery se systémem Linux s postupem nahrání kompilované UDF do clusteru a potom ho spusťte.</span><span class="sxs-lookup"><span data-stu-id="8228d-112">However, the steps used to upload the compiled UDF to the cluster and run it are specific to Linux-based clusters.</span></span> <span data-ttu-id="8228d-113">Jsou uvedeny odkazy na informace, které lze použít s clustery se systémem Windows.</span><span class="sxs-lookup"><span data-stu-id="8228d-113">Links are provided to information that can be used with Windows-based clusters.</span></span>
-
-* <span data-ttu-id="8228d-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, jako je například OpenJDK)</span><span class="sxs-lookup"><span data-stu-id="8228d-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 or later (or an equivalent, such as OpenJDK)</span></span>
-
-* [<span data-ttu-id="8228d-115">Apache Maven</span><span class="sxs-lookup"><span data-stu-id="8228d-115">Apache Maven</span></span>](http://maven.apache.org/)
-
-* <span data-ttu-id="8228d-116">Textového editoru nebo Java IDE</span><span class="sxs-lookup"><span data-stu-id="8228d-116">A text editor or Java IDE</span></span>
+* <span data-ttu-id="29bc8-108">Cluster služby HDInsight</span><span class="sxs-lookup"><span data-stu-id="29bc8-108">An HDInsight cluster</span></span> 
 
     > [!IMPORTANT]
-    > <span data-ttu-id="8228d-117">Pokud vytvoříte soubory Python v klientovi Windows, musíte použít editor, který používá LF jako ukončování řádků.</span><span class="sxs-lookup"><span data-stu-id="8228d-117">If you create the Python files on a Windows client, you must use an editor that uses LF as a line ending.</span></span> <span data-ttu-id="8228d-118">Pokud si nejste jisti, zda vaše editor používá LF nebo Line FEED, přečtěte si téma [Poradce při potížích s](#troubleshooting) na odebrání znak CR kroky v sekci.</span><span class="sxs-lookup"><span data-stu-id="8228d-118">If you are not sure whether your editor uses LF or CRLF, see the [Troubleshooting](#troubleshooting) section for steps on removing the CR character.</span></span>
+    > <span data-ttu-id="29bc8-109">Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="29bc8-109">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="29bc8-110">Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="29bc8-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-## <a name="create-an-example-java-udf"></a><span data-ttu-id="8228d-119">Vytvořte například Java UDF</span><span class="sxs-lookup"><span data-stu-id="8228d-119">Create an example Java UDF</span></span> 
+    <span data-ttu-id="29bc8-111">Většina kroky v tomto dokumentu fungovat na obou clusterech se systémem Windows a Linux.</span><span class="sxs-lookup"><span data-stu-id="29bc8-111">Most steps in this document work on both Windows- and Linux-based clusters.</span></span> <span data-ttu-id="29bc8-112">Ale hello postupem tooupload hello zkompilovat UDF toohello clusteru a spusťte ho jsou konkrétní clustery založené na tooLinux.</span><span class="sxs-lookup"><span data-stu-id="29bc8-112">However, hello steps used tooupload hello compiled UDF toohello cluster and run it are specific tooLinux-based clusters.</span></span> <span data-ttu-id="29bc8-113">Tooinformation, který lze použít s clustery se systémem Windows jsou k dispozici odkazy.</span><span class="sxs-lookup"><span data-stu-id="29bc8-113">Links are provided tooinformation that can be used with Windows-based clusters.</span></span>
 
-1. <span data-ttu-id="8228d-120">Z příkazového řádku použijte následující postupy k vytvoření nového projektu Maven:</span><span class="sxs-lookup"><span data-stu-id="8228d-120">From a command line, use the following to create a new Maven project:</span></span>
+* <span data-ttu-id="29bc8-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, jako je například OpenJDK)</span><span class="sxs-lookup"><span data-stu-id="29bc8-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 or later (or an equivalent, such as OpenJDK)</span></span>
+
+* [<span data-ttu-id="29bc8-115">Apache Maven</span><span class="sxs-lookup"><span data-stu-id="29bc8-115">Apache Maven</span></span>](http://maven.apache.org/)
+
+* <span data-ttu-id="29bc8-116">Textového editoru nebo Java IDE</span><span class="sxs-lookup"><span data-stu-id="29bc8-116">A text editor or Java IDE</span></span>
+
+    > [!IMPORTANT]
+    > <span data-ttu-id="29bc8-117">Pokud vytvoříte soubory Python v klientovi Windows hello, musíte použít editor, který používá LF jako ukončování řádků.</span><span class="sxs-lookup"><span data-stu-id="29bc8-117">If you create hello Python files on a Windows client, you must use an editor that uses LF as a line ending.</span></span> <span data-ttu-id="29bc8-118">Pokud si nejste jisti, zda vaše editor používá LF nebo Line FEED, přečtěte si téma hello [Poradce při potížích s](#troubleshooting) části pro postup odebrání hello CR znak.</span><span class="sxs-lookup"><span data-stu-id="29bc8-118">If you are not sure whether your editor uses LF or CRLF, see hello [Troubleshooting](#troubleshooting) section for steps on removing hello CR character.</span></span>
+
+## <a name="create-an-example-java-udf"></a><span data-ttu-id="29bc8-119">Vytvořte například Java UDF</span><span class="sxs-lookup"><span data-stu-id="29bc8-119">Create an example Java UDF</span></span> 
+
+1. <span data-ttu-id="29bc8-120">Z příkazového řádku použijte následující toocreate nový projekt Maven hello:</span><span class="sxs-lookup"><span data-stu-id="29bc8-120">From a command line, use hello following toocreate a new Maven project:</span></span>
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > <span data-ttu-id="8228d-121">Pokud používáte prostředí PowerShell, je nutné umístit parametry v uvozovkách.</span><span class="sxs-lookup"><span data-stu-id="8228d-121">If you are using PowerShell, you must put quotes around the parameters.</span></span> <span data-ttu-id="8228d-122">Například, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span><span class="sxs-lookup"><span data-stu-id="8228d-122">For example, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span></span>
+   > <span data-ttu-id="29bc8-121">Pokud používáte prostředí PowerShell, je nutné umístit hello parametry v uvozovkách.</span><span class="sxs-lookup"><span data-stu-id="29bc8-121">If you are using PowerShell, you must put quotes around hello parameters.</span></span> <span data-ttu-id="29bc8-122">Například, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span><span class="sxs-lookup"><span data-stu-id="29bc8-122">For example, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span></span>
 
-    <span data-ttu-id="8228d-123">Tento příkaz vytvoří adresář s názvem **exampleudf**, který obsahuje projekt Maven.</span><span class="sxs-lookup"><span data-stu-id="8228d-123">This command creates a directory named **exampleudf**, which contains the Maven project.</span></span>
+    <span data-ttu-id="29bc8-123">Tento příkaz vytvoří adresář s názvem **exampleudf**, který obsahuje projekt Maven hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-123">This command creates a directory named **exampleudf**, which contains hello Maven project.</span></span>
 
-2. <span data-ttu-id="8228d-124">Po vytvoření projektu odstranit **exampleudf/src/testování** adresář, který byl vytvořen jako součást projektu.</span><span class="sxs-lookup"><span data-stu-id="8228d-124">Once the project has been created, delete the **exampleudf/src/test** directory that was created as part of the project.</span></span>
+2. <span data-ttu-id="29bc8-124">Po vytvoření projektu hello odstranit hello **exampleudf/src/testování** adresář, který byl vytvořen jako součást hello projektu.</span><span class="sxs-lookup"><span data-stu-id="29bc8-124">Once hello project has been created, delete hello **exampleudf/src/test** directory that was created as part of hello project.</span></span>
 
-3. <span data-ttu-id="8228d-125">Otevřete **exampleudf/pom.xml**a nahradit existující `<dependencies>` položka se následující kód XML:</span><span class="sxs-lookup"><span data-stu-id="8228d-125">Open the **exampleudf/pom.xml**, and replace the existing `<dependencies>` entry with the following XML:</span></span>
+3. <span data-ttu-id="29bc8-125">Otevřete hello **exampleudf/pom.xml**a nahradit stávající hello `<dependencies>` položka se hello následující XML:</span><span class="sxs-lookup"><span data-stu-id="29bc8-125">Open hello **exampleudf/pom.xml**, and replace hello existing `<dependencies>` entry with hello following XML:</span></span>
 
     ```xml
     <dependencies>
@@ -77,9 +77,9 @@ ms.lasthandoff: 08/03/2017
     </dependencies>
     ```
 
-    <span data-ttu-id="8228d-126">Tyto položky zadejte verzi systému Hadoop a Hive součástí HDInsight 3.5.</span><span class="sxs-lookup"><span data-stu-id="8228d-126">These entries specify the version of Hadoop and Hive included with HDInsight 3.5.</span></span> <span data-ttu-id="8228d-127">Informace o verzích Hadoop a Hive s HDInsight z můžete najít [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.</span><span class="sxs-lookup"><span data-stu-id="8228d-127">You can find information on the versions of Hadoop and Hive provided with HDInsight from the [HDInsight component versioning](hdinsight-component-versioning.md) document.</span></span>
+    <span data-ttu-id="29bc8-126">Tyto položky zadejte hello verzi systému Hadoop a Hive součástí HDInsight 3.5.</span><span class="sxs-lookup"><span data-stu-id="29bc8-126">These entries specify hello version of Hadoop and Hive included with HDInsight 3.5.</span></span> <span data-ttu-id="29bc8-127">Můžete najít informace o verzích hello Hadoop a Hive s HDInsight získané z hello [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.</span><span class="sxs-lookup"><span data-stu-id="29bc8-127">You can find information on hello versions of Hadoop and Hive provided with HDInsight from hello [HDInsight component versioning](hdinsight-component-versioning.md) document.</span></span>
 
-    <span data-ttu-id="8228d-128">Přidat `<build>` části před `</project>` řádek na konec souboru.</span><span class="sxs-lookup"><span data-stu-id="8228d-128">Add a `<build>` section before the `</project>` line at the end of the file.</span></span> <span data-ttu-id="8228d-129">V této části by měl obsahovat následující kód XML:</span><span class="sxs-lookup"><span data-stu-id="8228d-129">This section should contain the following XML:</span></span>
+    <span data-ttu-id="29bc8-128">Přidat `<build>` část před syntaxí hello `</project>` řádku na konci hello hello souboru.</span><span class="sxs-lookup"><span data-stu-id="29bc8-128">Add a `<build>` section before hello `</project>` line at hello end of hello file.</span></span> <span data-ttu-id="29bc8-129">V této části by měl obsahovat hello následující XML:</span><span class="sxs-lookup"><span data-stu-id="29bc8-129">This section should contain hello following XML:</span></span>
 
     ```xml
     <build>
@@ -133,13 +133,13 @@ ms.lasthandoff: 08/03/2017
     </build>
     ```
 
-    <span data-ttu-id="8228d-130">Tyto položky definovat, jak sestavte projekt.</span><span class="sxs-lookup"><span data-stu-id="8228d-130">These entries define how to build the project.</span></span> <span data-ttu-id="8228d-131">Konkrétně verze Java, která používá projektu a jak sestavit uberjar pro nasazení do clusteru.</span><span class="sxs-lookup"><span data-stu-id="8228d-131">Specifically, the version of Java that the project uses and how to build an uberjar for deployment to the cluster.</span></span>
+    <span data-ttu-id="29bc8-130">Tyto položky definovat, jak toobuild hello projektu.</span><span class="sxs-lookup"><span data-stu-id="29bc8-130">These entries define how toobuild hello project.</span></span> <span data-ttu-id="29bc8-131">Konkrétně hello verzi jazyka Java, která hello používá projektu a jak toobuild uberjar pro cluster toohello nasazení.</span><span class="sxs-lookup"><span data-stu-id="29bc8-131">Specifically, hello version of Java that hello project uses and how toobuild an uberjar for deployment toohello cluster.</span></span>
 
-    <span data-ttu-id="8228d-132">Po provedení změn uložte soubor.</span><span class="sxs-lookup"><span data-stu-id="8228d-132">Save the file once the changes have been made.</span></span>
+    <span data-ttu-id="29bc8-132">Uložte soubor hello po provedení změn hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-132">Save hello file once hello changes have been made.</span></span>
 
-4. <span data-ttu-id="8228d-133">Přejmenování **exampleudf/src/main/java/com/microsoft/examples/App.java** k **ExampleUDF.java**a pak otevřete soubor ve svém editoru.</span><span class="sxs-lookup"><span data-stu-id="8228d-133">Rename **exampleudf/src/main/java/com/microsoft/examples/App.java** to **ExampleUDF.java**, and then open the file in your editor.</span></span>
+4. <span data-ttu-id="29bc8-133">Přejmenování **exampleudf/src/main/java/com/microsoft/examples/App.java** příliš**ExampleUDF.java**a pak otevřete soubor hello ve svém editoru.</span><span class="sxs-lookup"><span data-stu-id="29bc8-133">Rename **exampleudf/src/main/java/com/microsoft/examples/App.java** too**ExampleUDF.java**, and then open hello file in your editor.</span></span>
 
-5. <span data-ttu-id="8228d-134">Nahraďte obsah **ExampleUDF.java** soubor s následující a pak soubor uložte.</span><span class="sxs-lookup"><span data-stu-id="8228d-134">Replace the contents of the **ExampleUDF.java** file with the following, then save the file.</span></span>
+5. <span data-ttu-id="29bc8-134">Nahraďte obsah hello hello **ExampleUDF.java** soubor s hello následující a potom uložte soubor hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-134">Replace hello contents of hello **ExampleUDF.java** file with hello following, then save hello file.</span></span>
 
     ```java
     package com.microsoft.examples;
@@ -148,69 +148,69 @@ ms.lasthandoff: 08/03/2017
     import org.apache.hadoop.hive.ql.exec.UDF;
     import org.apache.hadoop.io.*;
 
-    // Description of the UDF
+    // Description of hello UDF
     @Description(
         name="ExampleUDF",
-        value="returns a lower case version of the input string.",
+        value="returns a lower case version of hello input string.",
         extended="select ExampleUDF(deviceplatform) from hivesampletable limit 10;"
     )
     public class ExampleUDF extends UDF {
         // Accept a string input
         public String evaluate(String input) {
-            // If the value is null, return a null
+            // If hello value is null, return a null
             if(input == null)
                 return null;
-            // Lowercase the input string and return it
+            // Lowercase hello input string and return it
             return input.toLowerCase();
         }
     }
     ```
 
-    <span data-ttu-id="8228d-135">Tento kód implementuje UDF, který přijímá hodnotu řetězce a vrátí malá verzi řetězce.</span><span class="sxs-lookup"><span data-stu-id="8228d-135">This code implements a UDF that accepts a string value, and returns a lowercase version of the string.</span></span>
+    <span data-ttu-id="29bc8-135">Tento kód implementuje UDF, který přijímá hodnotu řetězce a vrátí malá verzi hello řetězec.</span><span class="sxs-lookup"><span data-stu-id="29bc8-135">This code implements a UDF that accepts a string value, and returns a lowercase version of hello string.</span></span>
 
-## <a name="build-and-install-the-udf"></a><span data-ttu-id="8228d-136">Sestavení a nainstalujte UDF</span><span class="sxs-lookup"><span data-stu-id="8228d-136">Build and install the UDF</span></span>
+## <a name="build-and-install-hello-udf"></a><span data-ttu-id="29bc8-136">Sestavení a nainstalujte hello UDF</span><span class="sxs-lookup"><span data-stu-id="29bc8-136">Build and install hello UDF</span></span>
 
-1. <span data-ttu-id="8228d-137">Pro zkompilování a balíček UDF použijte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="8228d-137">Use the following command to compile and package the UDF:</span></span>
+1. <span data-ttu-id="29bc8-137">Použijte následující příkaz toocompile hello a balíček hello UDF:</span><span class="sxs-lookup"><span data-stu-id="29bc8-137">Use hello following command toocompile and package hello UDF:</span></span>
 
     ```bash
     mvn compile package
     ```
 
-    <span data-ttu-id="8228d-138">Tento příkaz vytvoří a balíčky UDF do `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souboru.</span><span class="sxs-lookup"><span data-stu-id="8228d-138">This command builds and packages the UDF into the `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` file.</span></span>
+    <span data-ttu-id="29bc8-138">Tento příkaz vytvoří a balíčky hello UDF do hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souboru.</span><span class="sxs-lookup"><span data-stu-id="29bc8-138">This command builds and packages hello UDF into hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` file.</span></span>
 
-2. <span data-ttu-id="8228d-139">Použití `scp` příkaz pro kopírování souboru do clusteru HDInsight.</span><span class="sxs-lookup"><span data-stu-id="8228d-139">Use the `scp` command to copy the file to the HDInsight cluster.</span></span>
+2. <span data-ttu-id="29bc8-139">Použití hello `scp` příkaz toocopy hello souboru toohello clusteru HDInsight.</span><span class="sxs-lookup"><span data-stu-id="29bc8-139">Use hello `scp` command toocopy hello file toohello HDInsight cluster.</span></span>
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    <span data-ttu-id="8228d-140">Nahraďte `myuser` pomocí uživatelského účtu SSH pro váš cluster.</span><span class="sxs-lookup"><span data-stu-id="8228d-140">Replace `myuser` with the SSH user account for your cluster.</span></span> <span data-ttu-id="8228d-141">Nahraďte `mycluster` se název clusteru.</span><span class="sxs-lookup"><span data-stu-id="8228d-141">Replace `mycluster` with the cluster name.</span></span> <span data-ttu-id="8228d-142">Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla.</span><span class="sxs-lookup"><span data-stu-id="8228d-142">If you used a password to secure the SSH account, you are prompted to enter the password.</span></span> <span data-ttu-id="8228d-143">Pokud jste použili certifikát, budete možná muset použít `-i` parametr k určení souboru privátního klíče.</span><span class="sxs-lookup"><span data-stu-id="8228d-143">If you used a certificate, you may need to use the `-i` parameter to specify the private key file.</span></span>
+    <span data-ttu-id="29bc8-140">Nahraďte `myuser` s hello účtu uživatele SSH pro váš cluster.</span><span class="sxs-lookup"><span data-stu-id="29bc8-140">Replace `myuser` with hello SSH user account for your cluster.</span></span> <span data-ttu-id="29bc8-141">Nahraďte `mycluster` s názvem clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-141">Replace `mycluster` with hello cluster name.</span></span> <span data-ttu-id="29bc8-142">Pokud jste použili hello toosecure a heslo účtu SSH, jste výzvami tooenter hello heslo.</span><span class="sxs-lookup"><span data-stu-id="29bc8-142">If you used a password toosecure hello SSH account, you are prompted tooenter hello password.</span></span> <span data-ttu-id="29bc8-143">Pokud jste použili certifikát, pravděpodobně bude třeba toouse hello `-i` parametr toospecify hello soubor privátního klíče.</span><span class="sxs-lookup"><span data-stu-id="29bc8-143">If you used a certificate, you may need toouse hello `-i` parameter toospecify hello private key file.</span></span>
 
-3. <span data-ttu-id="8228d-144">Připojte se ke clusteru pomocí protokolu SSH.</span><span class="sxs-lookup"><span data-stu-id="8228d-144">Connect to the cluster using SSH.</span></span>
+3. <span data-ttu-id="29bc8-144">Připojte toohello clusteru pomocí protokolu SSH.</span><span class="sxs-lookup"><span data-stu-id="29bc8-144">Connect toohello cluster using SSH.</span></span>
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    <span data-ttu-id="8228d-145">Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="8228d-145">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
+    <span data-ttu-id="29bc8-145">Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="29bc8-145">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
 
-4. <span data-ttu-id="8228d-146">Z relace SSH zkopírujte soubor jar do úložiště HDInsight.</span><span class="sxs-lookup"><span data-stu-id="8228d-146">From the SSH session, copy the jar file to HDInsight storage.</span></span>
+4. <span data-ttu-id="29bc8-146">Z relace SSH hello zkopírujte úložiště tooHDInsight souborů jar hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-146">From hello SSH session, copy hello jar file tooHDInsight storage.</span></span>
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a><span data-ttu-id="8228d-147">Použití UDF z Hive</span><span class="sxs-lookup"><span data-stu-id="8228d-147">Use the UDF from Hive</span></span>
+## <a name="use-hello-udf-from-hive"></a><span data-ttu-id="29bc8-147">Použít hello UDF z Hive</span><span class="sxs-lookup"><span data-stu-id="29bc8-147">Use hello UDF from Hive</span></span>
 
-1. <span data-ttu-id="8228d-148">Použijte následující spuštění klienta Beeline z relace SSH.</span><span class="sxs-lookup"><span data-stu-id="8228d-148">Use the following to start the Beeline client from the SSH session.</span></span>
+1. <span data-ttu-id="29bc8-148">Použijte následující toostart hello Beeline klienta z relace SSH hello hello.</span><span class="sxs-lookup"><span data-stu-id="29bc8-148">Use hello following toostart hello Beeline client from hello SSH session.</span></span>
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-    <span data-ttu-id="8228d-149">Tento příkaz předpokládá, že jste použili výchozí **správce** pro přihlašovací účet pro váš cluster.</span><span class="sxs-lookup"><span data-stu-id="8228d-149">This command assumes that you used the default of **admin** for the login account for your cluster.</span></span>
+    <span data-ttu-id="29bc8-149">Tento příkaz předpokládá, že jste použili výchozí hello **správce** pro hello přihlašovací účet pro váš cluster.</span><span class="sxs-lookup"><span data-stu-id="29bc8-149">This command assumes that you used hello default of **admin** for hello login account for your cluster.</span></span>
 
-2. <span data-ttu-id="8228d-150">Až přijedete do `jdbc:hive2://localhost:10001/>` výzva, zadejte následující příkaz a přidejte UDF do Hive a vystavit jako funkce.</span><span class="sxs-lookup"><span data-stu-id="8228d-150">Once you arrive at the `jdbc:hive2://localhost:10001/>` prompt, enter the following to add the UDF to Hive and expose it as a function.</span></span>
+2. <span data-ttu-id="29bc8-150">Až přijedete do hello `jdbc:hive2://localhost:10001/>` výzva, zadejte následující tooadd hello UDF tooHive hello a vystavit jako funkce.</span><span class="sxs-lookup"><span data-stu-id="29bc8-150">Once you arrive at hello `jdbc:hive2://localhost:10001/>` prompt, enter hello following tooadd hello UDF tooHive and expose it as a function.</span></span>
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -218,15 +218,15 @@ ms.lasthandoff: 08/03/2017
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="8228d-151">Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro cluster.</span><span class="sxs-lookup"><span data-stu-id="8228d-151">This example assumes that Azure Storage is default storage for the cluster.</span></span> <span data-ttu-id="8228d-152">Pokud váš cluster používá místo Data Lake Store, změňte `wasb:///` hodnotu `adl:///`.</span><span class="sxs-lookup"><span data-stu-id="8228d-152">If your cluster uses Data Lake Store instead, change the `wasb:///` value to `adl:///`.</span></span>
+    > <span data-ttu-id="29bc8-151">Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro hello cluster.</span><span class="sxs-lookup"><span data-stu-id="29bc8-151">This example assumes that Azure Storage is default storage for hello cluster.</span></span> <span data-ttu-id="29bc8-152">Pokud váš cluster používá místo Data Lake Store, změňte hello `wasb:///` hodnota příliš`adl:///`.</span><span class="sxs-lookup"><span data-stu-id="29bc8-152">If your cluster uses Data Lake Store instead, change hello `wasb:///` value too`adl:///`.</span></span>
 
-3. <span data-ttu-id="8228d-153">Použijte UDF k převedení hodnoty získané z tabulky na řetězce na malá písmena.</span><span class="sxs-lookup"><span data-stu-id="8228d-153">Use the UDF to convert values retrieved from a table to lower case strings.</span></span>
+3. <span data-ttu-id="29bc8-153">Použijte hello UDF tooconvert hodnoty získané z řetězce případu tabulky toolower.</span><span class="sxs-lookup"><span data-stu-id="29bc8-153">Use hello UDF tooconvert values retrieved from a table toolower case strings.</span></span>
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    <span data-ttu-id="8228d-154">Tento dotaz vybere platforem zařízení (Android, Windows, iOS, atd.) z tabulky, převést řetězec, který má nižší případ a jejich zobrazení.</span><span class="sxs-lookup"><span data-stu-id="8228d-154">This query selects the device platform (Android, Windows, iOS, etc.) from the table, convert the string to lower case, and then display them.</span></span> <span data-ttu-id="8228d-155">Výstup se zobrazí podobná následující text:</span><span class="sxs-lookup"><span data-stu-id="8228d-155">The output appears similar to the following text:</span></span>
+    <span data-ttu-id="29bc8-154">Tento dotaz, vybere hello platforem zařízení (Android, Windows, iOS, atd.) z tabulky hello převést hello řetězec toolower případ a jejich zobrazení.</span><span class="sxs-lookup"><span data-stu-id="29bc8-154">This query selects hello device platform (Android, Windows, iOS, etc.) from hello table, convert hello string toolower case, and then display them.</span></span> <span data-ttu-id="29bc8-155">Zobrazí výstup Hello podobné toohello následující text:</span><span class="sxs-lookup"><span data-stu-id="29bc8-155">hello output appears similar toohello following text:</span></span>
 
         +----------+--+
         |   _c0    |
@@ -243,8 +243,8 @@ ms.lasthandoff: 08/03/2017
         | android  |
         +----------+--+
 
-## <a name="next-steps"></a><span data-ttu-id="8228d-156">Další kroky</span><span class="sxs-lookup"><span data-stu-id="8228d-156">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="29bc8-156">Další kroky</span><span class="sxs-lookup"><span data-stu-id="29bc8-156">Next steps</span></span>
 
-<span data-ttu-id="8228d-157">Další způsoby, jak pracovat s Hive, najdete v části [používání Hive s HDInsight](hdinsight-use-hive.md).</span><span class="sxs-lookup"><span data-stu-id="8228d-157">For other ways to work with Hive, see [Use Hive with HDInsight](hdinsight-use-hive.md).</span></span>
+<span data-ttu-id="29bc8-157">Jiné způsoby toowork s Hive, najdete v části [používání Hive s HDInsight](hdinsight-use-hive.md).</span><span class="sxs-lookup"><span data-stu-id="29bc8-157">For other ways toowork with Hive, see [Use Hive with HDInsight](hdinsight-use-hive.md).</span></span>
 
-<span data-ttu-id="8228d-158">Další informace týkající se Hive User-Defined funkcí najdete v tématu [Hive operátory a funkce definované uživatelem](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) části wiki Hive na apache.org.</span><span class="sxs-lookup"><span data-stu-id="8228d-158">For more information on Hive User-Defined Functions, see [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) section of the Hive wiki at apache.org.</span></span>
+<span data-ttu-id="29bc8-158">Další informace týkající se Hive User-Defined funkcí najdete v tématu [Hive operátory a funkce definované uživatelem](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) části hello wiki Hive na apache.org.</span><span class="sxs-lookup"><span data-stu-id="29bc8-158">For more information on Hive User-Defined Functions, see [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) section of hello Hive wiki at apache.org.</span></span>

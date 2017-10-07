@@ -1,6 +1,6 @@
 ---
-title: "Připojení zařízení pomocí Node.js | Microsoft Docs"
-description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js."
+title: "aaaConnect zařízení pomocí Node.js | Microsoft Docs"
+description: "Popisuje, jak tooconnect toohello zařízení Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 6459b6196eb7f4a083b67e5a421bcc0d51d39e5c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 80bf2b70f15f539bfce4f135d533c46dd2b3f5a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a><span data-ttu-id="f6596-103">Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Node.js)</span><span class="sxs-lookup"><span data-stu-id="f6596-103">Connect your device to the remote monitoring preconfigured solution (Node.js)</span></span>
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-nodejs"></a><span data-ttu-id="511a4-103">Připojit vaše zařízení toohello (Node.js) předkonfigurovanému řešení vzdáleného monitorování</span><span class="sxs-lookup"><span data-stu-id="511a4-103">Connect your device toohello remote monitoring preconfigured solution (Node.js)</span></span>
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## <a name="create-a-nodejs-sample-solution"></a><span data-ttu-id="f6596-104">Vytvoření ukázkové řešení node.js</span><span class="sxs-lookup"><span data-stu-id="f6596-104">Create a node.js sample solution</span></span>
+## <a name="create-a-nodejs-sample-solution"></a><span data-ttu-id="511a4-104">Vytvoření ukázkové řešení node.js</span><span class="sxs-lookup"><span data-stu-id="511a4-104">Create a node.js sample solution</span></span>
 
-<span data-ttu-id="f6596-105">Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývojovém počítači.</span><span class="sxs-lookup"><span data-stu-id="f6596-105">Ensure that Node.js version 0.11.5 or later is installed on your development machine.</span></span> <span data-ttu-id="f6596-106">Můžete spustit `node --version` na příkazovém řádku, které chcete zkontrolovat verzi.</span><span class="sxs-lookup"><span data-stu-id="f6596-106">You can run `node --version` at the command line to check the version.</span></span>
+<span data-ttu-id="511a4-105">Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývojovém počítači.</span><span class="sxs-lookup"><span data-stu-id="511a4-105">Ensure that Node.js version 0.11.5 or later is installed on your development machine.</span></span> <span data-ttu-id="511a4-106">Můžete spustit `node --version` hello příkazového řádku toocheck hello verzi.</span><span class="sxs-lookup"><span data-stu-id="511a4-106">You can run `node --version` at hello command line toocheck hello version.</span></span>
 
-1. <span data-ttu-id="f6596-107">Vytvořte složku s názvem **RemoteMonitoring** na vývojovém počítači.</span><span class="sxs-lookup"><span data-stu-id="f6596-107">Create a folder called **RemoteMonitoring** on your development machine.</span></span> <span data-ttu-id="f6596-108">Přejděte do této složky ve vašem prostředí příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="f6596-108">Navigate to this folder in your command-line environment.</span></span>
+1. <span data-ttu-id="511a4-107">Vytvořte složku s názvem **RemoteMonitoring** na vývojovém počítači.</span><span class="sxs-lookup"><span data-stu-id="511a4-107">Create a folder called **RemoteMonitoring** on your development machine.</span></span> <span data-ttu-id="511a4-108">Přejděte toothis složky ve vašem prostředí příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="511a4-108">Navigate toothis folder in your command-line environment.</span></span>
 
-1. <span data-ttu-id="f6596-109">Spusťte následující příkazy ke stažení a instalaci balíčků, že které potřebujete k dokončení ukázkovou aplikaci:</span><span class="sxs-lookup"><span data-stu-id="f6596-109">Run the following commands to download and install the packages you need to complete the sample app:</span></span>
+1. <span data-ttu-id="511a4-109">Spuštění hello následující příkazy toodownload a nainstalovat balíčky hello potřebujete toocomplete hello ukázkovou aplikaci:</span><span class="sxs-lookup"><span data-stu-id="511a4-109">Run hello following commands toodownload and install hello packages you need toocomplete hello sample app:</span></span>
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. <span data-ttu-id="f6596-110">V **RemoteMonitoring** složky, vytvořte soubor s názvem **remote_monitoring.js**.</span><span class="sxs-lookup"><span data-stu-id="f6596-110">In the **RemoteMonitoring** folder, create a file called **remote_monitoring.js**.</span></span> <span data-ttu-id="f6596-111">Otevřete tento soubor v textovém editoru.</span><span class="sxs-lookup"><span data-stu-id="f6596-111">Open this file in a text editor.</span></span>
+1. <span data-ttu-id="511a4-110">V hello **RemoteMonitoring** složky, vytvořte soubor s názvem **remote_monitoring.js**.</span><span class="sxs-lookup"><span data-stu-id="511a4-110">In hello **RemoteMonitoring** folder, create a file called **remote_monitoring.js**.</span></span> <span data-ttu-id="511a4-111">Otevřete tento soubor v textovém editoru.</span><span class="sxs-lookup"><span data-stu-id="511a4-111">Open this file in a text editor.</span></span>
 
-1. <span data-ttu-id="f6596-112">V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:</span><span class="sxs-lookup"><span data-stu-id="f6596-112">In the **remote_monitoring.js** file, add the following `require` statements:</span></span>
+1. <span data-ttu-id="511a4-112">V hello **remote_monitoring.js** soubor, přidejte následující hello `require` příkazy:</span><span class="sxs-lookup"><span data-stu-id="511a4-112">In hello **remote_monitoring.js** file, add hello following `require` statements:</span></span>
 
     ```nodejs
     'use strict';
@@ -50,14 +50,14 @@ ms.lasthandoff: 08/29/2017
     var Message = require('azure-iot-device').Message;
     ```
 
-1. <span data-ttu-id="f6596-113">Přidejte následující deklarace proměnných za příkazy `require`.</span><span class="sxs-lookup"><span data-stu-id="f6596-113">Add the following variable declarations after the `require` statements.</span></span> <span data-ttu-id="f6596-114">Nahraďte zástupné hodnoty [Device Id] (ID zařízení) a [Device Key] (Klíč zařízení) hodnotami, které jste si pro své zařízení poznamenali na řídicím panelu řešení vzdáleného monitorování.</span><span class="sxs-lookup"><span data-stu-id="f6596-114">Replace the placeholder values [Device Id] and [Device Key] with values you noted for your device in the remote monitoring solution dashboard.</span></span> <span data-ttu-id="f6596-115">K nahrazení hodnoty [IoTHub Name] (Název služby IoT Hub) použijte název hostitele služby IoT Hub z řídicího panelu řešení.</span><span class="sxs-lookup"><span data-stu-id="f6596-115">Use the IoT Hub Hostname from the solution dashboard to replace [IoTHub Name].</span></span> <span data-ttu-id="f6596-116">Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:</span><span class="sxs-lookup"><span data-stu-id="f6596-116">For example, if your IoT Hub Hostname is **contoso.azure-devices.net**, replace [IoTHub Name] with **contoso**:</span></span>
+1. <span data-ttu-id="511a4-113">Přidejte následující deklarace proměnných po hello hello `require` příkazy.</span><span class="sxs-lookup"><span data-stu-id="511a4-113">Add hello following variable declarations after hello `require` statements.</span></span> <span data-ttu-id="511a4-114">Nahraďte zástupný symbol hodnoty hello [Id zařízení] a [klíč zařízení] s hodnotami, které jste si poznamenali pro vaše zařízení v panelu řešení vzdáleného monitorování hello.</span><span class="sxs-lookup"><span data-stu-id="511a4-114">Replace hello placeholder values [Device Id] and [Device Key] with values you noted for your device in hello remote monitoring solution dashboard.</span></span> <span data-ttu-id="511a4-115">Použijte hello název hostitele centra IoT z tooreplace řídicí panel řešení hello [IoTHub Name].</span><span class="sxs-lookup"><span data-stu-id="511a4-115">Use hello IoT Hub Hostname from hello solution dashboard tooreplace [IoTHub Name].</span></span> <span data-ttu-id="511a4-116">Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:</span><span class="sxs-lookup"><span data-stu-id="511a4-116">For example, if your IoT Hub Hostname is **contoso.azure-devices.net**, replace [IoTHub Name] with **contoso**:</span></span>
 
     ```nodejs
     var connectionString = 'HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. <span data-ttu-id="f6596-117">Přidejte následující proměnné na definovat některé základní telemetrická data:</span><span class="sxs-lookup"><span data-stu-id="f6596-117">Add the following variables to define some base telemetry data:</span></span>
+1. <span data-ttu-id="511a4-117">Přidejte následující proměnné toodefine hello některé základní telemetrická data:</span><span class="sxs-lookup"><span data-stu-id="511a4-117">Add hello following variables toodefine some base telemetry data:</span></span>
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/29/2017
     var externalTemperature = 55;
     ```
 
-1. <span data-ttu-id="f6596-118">Přidejte následující podpůrná funkce Tisknout výsledky operace:</span><span class="sxs-lookup"><span data-stu-id="f6596-118">Add the following helper function to print operation results:</span></span>
+1. <span data-ttu-id="511a4-118">Přidejte následující výsledky operace tooprint pomocné funkce hello:</span><span class="sxs-lookup"><span data-stu-id="511a4-118">Add hello following helper function tooprint operation results:</span></span>
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-1. <span data-ttu-id="f6596-119">Přidejte následující pomocné funkce sloužící k náhodné telemetrie hodnoty:</span><span class="sxs-lookup"><span data-stu-id="f6596-119">Add the following helper function to use to randomize the telemetry values:</span></span>
+1. <span data-ttu-id="511a4-119">Přidejte následující pomocné funkce toouse toorandomize hello telemetrie hodnoty hello:</span><span class="sxs-lookup"><span data-stu-id="511a4-119">Add hello following helper function toouse toorandomize hello telemetry values:</span></span>
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +83,7 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-1. <span data-ttu-id="f6596-120">Přidejte následující definice pro **DeviceInfo** objektu zařízení odesílá při spuštění:</span><span class="sxs-lookup"><span data-stu-id="f6596-120">Add the following definition for the **DeviceInfo** object the device sends on startup:</span></span>
+1. <span data-ttu-id="511a4-120">Přidejte následující definice hello hello **DeviceInfo** objekt hello zařízení odesílá při spuštění:</span><span class="sxs-lookup"><span data-stu-id="511a4-120">Add hello following definition for hello **DeviceInfo** object hello device sends on startup:</span></span>
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
     };
     ```
 
-1. <span data-ttu-id="f6596-121">Přidejte následující definice dvojče zařízení hlášené hodnoty.</span><span class="sxs-lookup"><span data-stu-id="f6596-121">Add the following definition for the device twin reported values.</span></span> <span data-ttu-id="f6596-122">Tato definice obsahuje popisy přímé metod, které podporuje zařízení:</span><span class="sxs-lookup"><span data-stu-id="f6596-122">This definition includes descriptions of the direct methods the device supports:</span></span>
+1. <span data-ttu-id="511a4-121">Přidejte následující hello Definice dvojče zařízení hello hlášené hodnoty.</span><span class="sxs-lookup"><span data-stu-id="511a4-121">Add hello following definition for hello device twin reported values.</span></span> <span data-ttu-id="511a4-122">Tato definice obsahuje popisy hello přímé metod, které podporuje hello zařízení:</span><span class="sxs-lookup"><span data-stu-id="511a4-122">This definition includes descriptions of hello direct methods hello device supports:</span></span>
 
     ```nodejs
     var reportedProperties = {
@@ -126,63 +126,63 @@ ms.lasthandoff: 08/29/2017
             "Longitude": -122.125497
         },
         "SupportedMethods": {
-            "Reboot": "Reboot the device",
-            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file"
+            "Reboot": "Reboot hello device",
+            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI toospecifiy hello URI of hello firmware file"
         },
     }
     ```
 
-1. <span data-ttu-id="f6596-123">Přidejte následující funkci pro zpracování **restartovat** přímé volání metody:</span><span class="sxs-lookup"><span data-stu-id="f6596-123">Add the following function to handle the **Reboot** direct method call:</span></span>
+1. <span data-ttu-id="511a4-123">Přidejte následující funkce toohandle hello hello **restartovat** přímé volání metody:</span><span class="sxs-lookup"><span data-stu-id="511a4-123">Add hello following function toohandle hello **Reboot** direct method call:</span></span>
 
     ```nodejs
     function onReboot(request, response) {
         // Implement actual logic here.
         console.log('Simulated reboot...');
 
-        // Complete the response
+        // Complete hello response
         response.send(200, "Rebooting device", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
     }
     ```
 
-1. <span data-ttu-id="f6596-124">Přidejte následující funkci pro zpracování **InitiateFirmwareUpdate** přímé volání metody.</span><span class="sxs-lookup"><span data-stu-id="f6596-124">Add the following function to handle the **InitiateFirmwareUpdate** direct method call.</span></span> <span data-ttu-id="f6596-125">Tato metoda přímé používá parametr k určení umístění bitové kopie firmware ke stažení a iniciuje firmwaru v zařízení asynchronní aktualizace:</span><span class="sxs-lookup"><span data-stu-id="f6596-125">This direct method uses a parameter to specify the location of the firmware image to download, and initiates the firmware update on the device asynchronously:</span></span>
+1. <span data-ttu-id="511a4-124">Přidejte následující funkce toohandle hello hello **InitiateFirmwareUpdate** přímé volání metody.</span><span class="sxs-lookup"><span data-stu-id="511a4-124">Add hello following function toohandle hello **InitiateFirmwareUpdate** direct method call.</span></span> <span data-ttu-id="511a4-125">Tato metoda přímé používá parametr toospecify hello umístění ve hello firmware image toodownload a iniciuje asynchronní hello aktualizaci firmwaru na hello zařízení:</span><span class="sxs-lookup"><span data-stu-id="511a4-125">This direct method uses a parameter toospecify hello location of hello firmware image toodownload, and initiates hello firmware update on hello device asynchronously:</span></span>
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
         console.log('Simulated firmware update initiated, using: ' + request.payload.FwPackageURI);
 
-        // Complete the response
+        // Complete hello response
         response.send(200, "Firmware update initiated", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
 
-        // Add logic here to perform the firmware update asynchronously
+        // Add logic here tooperform hello firmware update asynchronously
     }
     ```
 
-1. <span data-ttu-id="f6596-126">Přidejte následující kód k vytvoření instance klienta:</span><span class="sxs-lookup"><span data-stu-id="f6596-126">Add the following code to create a client instance:</span></span>
+1. <span data-ttu-id="511a4-126">Přidejte následující kód toocreate instanci klienta hello:</span><span class="sxs-lookup"><span data-stu-id="511a4-126">Add hello following code toocreate a client instance:</span></span>
 
     ```nodejs
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-1. <span data-ttu-id="f6596-127">Přidejte následující kód do:</span><span class="sxs-lookup"><span data-stu-id="f6596-127">Add the following code to:</span></span>
+1. <span data-ttu-id="511a4-127">Přidejte následující kód do hello:</span><span class="sxs-lookup"><span data-stu-id="511a4-127">Add hello following code to:</span></span>
 
-    * <span data-ttu-id="f6596-128">Otevření připojení.</span><span class="sxs-lookup"><span data-stu-id="f6596-128">Open the connection.</span></span>
-    * <span data-ttu-id="f6596-129">Odeslat **DeviceInfo** objektu.</span><span class="sxs-lookup"><span data-stu-id="f6596-129">Send the **DeviceInfo** object.</span></span>
-    * <span data-ttu-id="f6596-130">Nastavte obslužnou rutinu pro požadované vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="f6596-130">Set up a handler for desired properties.</span></span>
-    * <span data-ttu-id="f6596-131">Odešlete oznámenou vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="f6596-131">Send reported properties.</span></span>
-    * <span data-ttu-id="f6596-132">Zaregistrujte obslužné rutiny pro přímé metody.</span><span class="sxs-lookup"><span data-stu-id="f6596-132">Register handlers for the direct methods.</span></span>
-    * <span data-ttu-id="f6596-133">Zahájit odesílání telemetrie.</span><span class="sxs-lookup"><span data-stu-id="f6596-133">Start sending telemetry.</span></span>
+    * <span data-ttu-id="511a4-128">Otevře připojení hello.</span><span class="sxs-lookup"><span data-stu-id="511a4-128">Open hello connection.</span></span>
+    * <span data-ttu-id="511a4-129">Odeslat hello **DeviceInfo** objektu.</span><span class="sxs-lookup"><span data-stu-id="511a4-129">Send hello **DeviceInfo** object.</span></span>
+    * <span data-ttu-id="511a4-130">Nastavte obslužnou rutinu pro požadované vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="511a4-130">Set up a handler for desired properties.</span></span>
+    * <span data-ttu-id="511a4-131">Odešlete oznámenou vlastnosti.</span><span class="sxs-lookup"><span data-stu-id="511a4-131">Send reported properties.</span></span>
+    * <span data-ttu-id="511a4-132">Zaregistrujte obslužné rutiny pro přímé metody hello.</span><span class="sxs-lookup"><span data-stu-id="511a4-132">Register handlers for hello direct methods.</span></span>
+    * <span data-ttu-id="511a4-133">Zahájit odesílání telemetrie.</span><span class="sxs-lookup"><span data-stu-id="511a4-133">Start sending telemetry.</span></span>
 
     ```nodejs
     client.open(function (err) {
@@ -242,9 +242,9 @@ ms.lasthandoff: 08/29/2017
     });
     ```
 
-1. <span data-ttu-id="f6596-134">Uložit změny **remote_monitoring.js** souboru.</span><span class="sxs-lookup"><span data-stu-id="f6596-134">Save the changes to the **remote_monitoring.js** file.</span></span>
+1. <span data-ttu-id="511a4-134">Uložit změny toohello hello **remote_monitoring.js** souboru.</span><span class="sxs-lookup"><span data-stu-id="511a4-134">Save hello changes toohello **remote_monitoring.js** file.</span></span>
 
-1. <span data-ttu-id="f6596-135">Spusťte následující příkaz na příkazovém řádku spusťte ukázkovou aplikaci:</span><span class="sxs-lookup"><span data-stu-id="f6596-135">Run the following command at a command prompt to launch the sample application:</span></span>
+1. <span data-ttu-id="511a4-135">Spusťte následující příkaz v příkazovém řádku toolaunch hello ukázkové aplikace hello:</span><span class="sxs-lookup"><span data-stu-id="511a4-135">Run hello following command at a command prompt toolaunch hello sample application:</span></span>
    
     ```
     node remote_monitoring.js

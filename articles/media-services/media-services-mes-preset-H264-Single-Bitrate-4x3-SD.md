@@ -1,6 +1,6 @@
 ---
-title: "SD Media Encoder Standard přednastavených H264 jednou přenosovou rychlostí 4 x 3 – Azure | Microsoft Docs"
-description: "Téma nabízí přehled ** přednastavení úloh H264 jednou přenosovou rychlostí 4 x 3 SD **."
+title: "aaaH264 jednou přenosovou rychlostí 4 x 3 SD Media Encoder Standard přednastavených - Azure | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** přednastavení úloh H264 jednou přenosovou rychlostí 4 x 3 SD **."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 61fac597c6e9ee425cedd1df2d819acebb148280
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 212d76104b04217d99c1f199b63d3fe6c73b7419
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-single-bitrate-4x3-sd"></a><span data-ttu-id="d1d25-103">H264 SD jednou přenosovou rychlostí 4 x 3</span><span class="sxs-lookup"><span data-stu-id="d1d25-103">H264 Single Bitrate 4x3 SD</span></span>
-<span data-ttu-id="d1d25-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="d1d25-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="d1d25-105">Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média.</span><span class="sxs-lookup"><span data-stu-id="d1d25-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="d1d25-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="d1d25-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="d1d25-107">By pak předejte vlastní přednastavení kodéru.</span><span class="sxs-lookup"><span data-stu-id="d1d25-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="d1d25-108">Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="d1d25-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-single-bitrate-4x3-sd"></a><span data-ttu-id="66ec4-103">H264 SD jednou přenosovou rychlostí 4 x 3</span><span class="sxs-lookup"><span data-stu-id="66ec4-103">H264 Single Bitrate 4x3 SD</span></span>
+<span data-ttu-id="66ec4-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="66ec4-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="66ec4-105">Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru.</span><span class="sxs-lookup"><span data-stu-id="66ec4-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="66ec4-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="66ec4-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="66ec4-107">By pak předejte kodér vlastní přednastavené toohello hello.</span><span class="sxs-lookup"><span data-stu-id="66ec4-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="66ec4-108">Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="66ec4-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="d1d25-109">Toto téma ukazuje `H264 Single Bitrate 4x3 SD` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="d1d25-109">This topic shows the `H264 Single Bitrate 4x3 SD` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="66ec4-109">Toto téma ukazuje hello `H264 Single Bitrate 4x3 SD` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="66ec4-109">This topic shows hello `H264 Single Bitrate 4x3 SD` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="d1d25-110">Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 1 800 kB/s a stereo AAC zvukovém souboru.</span><span class="sxs-lookup"><span data-stu-id="d1d25-110">This preset produces a single MP4 file with a bitrate of 1800 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="d1d25-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="d1d25-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="d1d25-112">Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.</span><span class="sxs-lookup"><span data-stu-id="d1d25-112">For explanations of what each element in these presets means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
+ <span data-ttu-id="66ec4-110">Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 1 800 kB/s a stereo AAC zvukovém souboru.</span><span class="sxs-lookup"><span data-stu-id="66ec4-110">This preset produces a single MP4 file with a bitrate of 1800 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="66ec4-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="66ec4-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="66ec4-112">Vysvětlení co každý prvek v těchto přednastavení znamená a hello platné hodnoty pro každý element, najdete v části hello [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.</span><span class="sxs-lookup"><span data-stu-id="66ec4-112">For explanations of what each element in these presets means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
   
- <span data-ttu-id="d1d25-113">XML</span><span class="sxs-lookup"><span data-stu-id="d1d25-113">XML</span></span>  
+ <span data-ttu-id="66ec4-113">XML</span><span class="sxs-lookup"><span data-stu-id="66ec4-113">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="d1d25-114">JSON</span><span class="sxs-lookup"><span data-stu-id="d1d25-114">JSON</span></span>  
+ <span data-ttu-id="66ec4-114">JSON</span><span class="sxs-lookup"><span data-stu-id="66ec4-114">JSON</span></span>  
   
 ```  
 {  

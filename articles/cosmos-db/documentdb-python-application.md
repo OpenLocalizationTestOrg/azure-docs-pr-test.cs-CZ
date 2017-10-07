@@ -1,6 +1,6 @@
 ---
-title: "Kurz webové aplikace Python Flask pro službu Azure Cosmos DB | Dokumentace Microsoftu"
-description: "Projděte si databázový kurz na téma, jak pomocí služby Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Python Flask hostované v Azure. Naleznete zde řešení pro vývoj aplikací."
+title: "aaaPython Flask webové aplikace kurz pro Azure Cosmos DB | Microsoft Docs"
+description: "Projděte si databázový kurz na používání Azure Cosmos DB toostore a přístup dat z webové aplikace Python Flask hostované v Azure. Naleznete zde řešení pro vývoj aplikací."
 keywords: "Vývoj aplikací, python flask, webová aplikace python, vývoj pro web python"
 services: cosmos-db
 documentationcenter: python
@@ -16,88 +16,88 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed5284b5a265840c43dbc9890082a7c038d22975
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 87b73c656ed96a7efbd162843a1529d435f027f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a><span data-ttu-id="d9755-105">Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="d9755-105">Build a Python Flask web application using Azure Cosmos DB</span></span>
+# <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a><span data-ttu-id="dffbc-105">Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="dffbc-105">Build a Python Flask web application using Azure Cosmos DB</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="d9755-106">.NET</span><span class="sxs-lookup"><span data-stu-id="d9755-106">.NET</span></span>](documentdb-dotnet-application.md)
-> * [<span data-ttu-id="d9755-107">Node.js</span><span class="sxs-lookup"><span data-stu-id="d9755-107">Node.js</span></span>](documentdb-nodejs-application.md)
-> * [<span data-ttu-id="d9755-108">Java</span><span class="sxs-lookup"><span data-stu-id="d9755-108">Java</span></span>](documentdb-java-application.md)
-> * [<span data-ttu-id="d9755-109">Python</span><span class="sxs-lookup"><span data-stu-id="d9755-109">Python</span></span>](documentdb-python-application.md)
+> * [<span data-ttu-id="dffbc-106">.NET</span><span class="sxs-lookup"><span data-stu-id="dffbc-106">.NET</span></span>](documentdb-dotnet-application.md)
+> * [<span data-ttu-id="dffbc-107">Node.js</span><span class="sxs-lookup"><span data-stu-id="dffbc-107">Node.js</span></span>](documentdb-nodejs-application.md)
+> * [<span data-ttu-id="dffbc-108">Java</span><span class="sxs-lookup"><span data-stu-id="dffbc-108">Java</span></span>](documentdb-java-application.md)
+> * [<span data-ttu-id="dffbc-109">Python</span><span class="sxs-lookup"><span data-stu-id="dffbc-109">Python</span></span>](documentdb-python-application.md)
 > 
 > 
 
-<span data-ttu-id="d9755-110">V tomto kurzu se dozvíte, jak pomocí služby Azure Cosmos DB zajistit ukládání a přístup k datům z webové aplikace Python hostované v Azure. Předpokládá se, že máte zkušenosti s používáním Pythonu a služby Azure Websites.</span><span class="sxs-lookup"><span data-stu-id="d9755-110">This tutorial shows you how to use Azure Cosmos DB to store and access data from a Python web application hosted on Azure and presumes that you have some prior experience using Python and Azure websites.</span></span>
+<span data-ttu-id="dffbc-110">Tento kurz ukazuje, jak data toostore a přístup k databázi Azure Cosmos toouse z Python webové aplikace hostované v Azure a předpokládá, že máte zkušenosti s používáním Pythonu a webů Azure.</span><span class="sxs-lookup"><span data-stu-id="dffbc-110">This tutorial shows you how toouse Azure Cosmos DB toostore and access data from a Python web application hosted on Azure and presumes that you have some prior experience using Python and Azure websites.</span></span>
 
-<span data-ttu-id="d9755-111">Tento databázový kurz se zabývá:</span><span class="sxs-lookup"><span data-stu-id="d9755-111">This database tutorial covers:</span></span>
+<span data-ttu-id="dffbc-111">Tento databázový kurz se zabývá:</span><span class="sxs-lookup"><span data-stu-id="dffbc-111">This database tutorial covers:</span></span>
 
-1. <span data-ttu-id="d9755-112">Vytváření a zřizování účtu Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="d9755-112">Creating and provisioning a Cosmos DB account.</span></span>
-2. <span data-ttu-id="d9755-113">Vytvoření aplikace Python Flask.</span><span class="sxs-lookup"><span data-stu-id="d9755-113">Creating a Python Flask application.</span></span>
-3. <span data-ttu-id="d9755-114">Připojením ke službě Cosmos DB a jejím používáním z webové aplikace</span><span class="sxs-lookup"><span data-stu-id="d9755-114">Connecting to and using Cosmos DB from your web application.</span></span>
-4. <span data-ttu-id="d9755-115">Nasazení webové aplikace do Azure.</span><span class="sxs-lookup"><span data-stu-id="d9755-115">Deploying the web application to Azure.</span></span>
+1. <span data-ttu-id="dffbc-112">Vytváření a zřizování účtu Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="dffbc-112">Creating and provisioning a Cosmos DB account.</span></span>
+2. <span data-ttu-id="dffbc-113">Vytvoření aplikace Python Flask.</span><span class="sxs-lookup"><span data-stu-id="dffbc-113">Creating a Python Flask application.</span></span>
+3. <span data-ttu-id="dffbc-114">Připojení tooand pomocí Cosmos DB z webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="dffbc-114">Connecting tooand using Cosmos DB from your web application.</span></span>
+4. <span data-ttu-id="dffbc-115">Nasazení hello webové aplikace tooAzure.</span><span class="sxs-lookup"><span data-stu-id="dffbc-115">Deploying hello web application tooAzure.</span></span>
 
-<span data-ttu-id="d9755-116">Podle postupu uvedeného v tomto kurzu sestavíte jednoduchou hlasovací aplikaci, která vám umožní hlasovat v anketě.</span><span class="sxs-lookup"><span data-stu-id="d9755-116">By following this tutorial, you will build a simple voting application that allows you to vote for a poll.</span></span>
+<span data-ttu-id="dffbc-116">Podle tohoto kurzu sestavíte jednoduchou hlasovací aplikaci, která vám umožní toovote v anketě.</span><span class="sxs-lookup"><span data-stu-id="dffbc-116">By following this tutorial, you will build a simple voting application that allows you toovote for a poll.</span></span>
 
-![Snímek obrazovky hlasovací aplikace vytvořené v tomto kurzu databáze](./media/documentdb-python-application/cosmos-db-pythonr-run-application.png)
+![Snímek obrazovky hlasovací aplikace hello vytvořené v tomto kurzu databáze](./media/documentdb-python-application/cosmos-db-pythonr-run-application.png)
 
-## <a name="database-tutorial-prerequisites"></a><span data-ttu-id="d9755-118">Předpoklady pro databázový kurz</span><span class="sxs-lookup"><span data-stu-id="d9755-118">Database tutorial prerequisites</span></span>
-<span data-ttu-id="d9755-119">Než budete postupovat podle pokynů tohoto článku, měli byste se ujistit, že máte následující:</span><span class="sxs-lookup"><span data-stu-id="d9755-119">Before following the instructions in this article, you should ensure that you have the following installed:</span></span>
+## <a name="database-tutorial-prerequisites"></a><span data-ttu-id="dffbc-118">Předpoklady pro databázový kurz</span><span class="sxs-lookup"><span data-stu-id="dffbc-118">Database tutorial prerequisites</span></span>
+<span data-ttu-id="dffbc-119">Před následující hello pokyny v tomto článku, se ujistěte, že máte nainstalované tyto položky hello:</span><span class="sxs-lookup"><span data-stu-id="dffbc-119">Before following hello instructions in this article, you should ensure that you have hello following installed:</span></span>
 
-* <span data-ttu-id="d9755-120">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="d9755-120">An active Azure account.</span></span> <span data-ttu-id="d9755-121">Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet.</span><span class="sxs-lookup"><span data-stu-id="d9755-121">If you don't have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="d9755-122">Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="d9755-122">For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="dffbc-120">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="dffbc-120">An active Azure account.</span></span> <span data-ttu-id="dffbc-121">Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet.</span><span class="sxs-lookup"><span data-stu-id="dffbc-121">If you don't have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="dffbc-122">Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-122">For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
  
-    <span data-ttu-id="d9755-123">NEBO</span><span class="sxs-lookup"><span data-stu-id="d9755-123">OR</span></span> 
+    <span data-ttu-id="dffbc-123">NEBO</span><span class="sxs-lookup"><span data-stu-id="dffbc-123">OR</span></span> 
 
-    <span data-ttu-id="d9755-124">Místní instalaci [emulátoru služby Azure Cosmos DB](local-emulator.md).</span><span class="sxs-lookup"><span data-stu-id="d9755-124">A local installation of the [Azure Cosmos DB Emulator](local-emulator.md).</span></span>
-* <span data-ttu-id="d9755-125">[Microsoft Visual Studio Community 2017](http://www.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="d9755-125">[Microsoft Visual Studio Community 2017](http://www.visualstudio.com/).</span></span>  
-* <span data-ttu-id="d9755-126">[Python Tools pro Visual Studio](https://github.com/Microsoft/PTVS/).</span><span class="sxs-lookup"><span data-stu-id="d9755-126">[Python Tools for Visual Studio](https://github.com/Microsoft/PTVS/).</span></span>  
-* <span data-ttu-id="d9755-127">[Microsoft Azure SDK pro Python 2.7](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="d9755-127">[Microsoft Azure SDK for Python 2.7](https://azure.microsoft.com/downloads/).</span></span> 
-* <span data-ttu-id="d9755-128">[Python 2.7.13](https://www.python.org/downloads/windows/).</span><span class="sxs-lookup"><span data-stu-id="d9755-128">[Python 2.7.13](https://www.python.org/downloads/windows/).</span></span> 
+    <span data-ttu-id="dffbc-124">Místní instalace hello [emulátoru DB Cosmos Azure](local-emulator.md).</span><span class="sxs-lookup"><span data-stu-id="dffbc-124">A local installation of hello [Azure Cosmos DB Emulator](local-emulator.md).</span></span>
+* <span data-ttu-id="dffbc-125">[Microsoft Visual Studio Community 2017](http://www.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-125">[Microsoft Visual Studio Community 2017](http://www.visualstudio.com/).</span></span>  
+* <span data-ttu-id="dffbc-126">[Python Tools pro Visual Studio](https://github.com/Microsoft/PTVS/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-126">[Python Tools for Visual Studio](https://github.com/Microsoft/PTVS/).</span></span>  
+* <span data-ttu-id="dffbc-127">[Microsoft Azure SDK pro Python 2.7](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-127">[Microsoft Azure SDK for Python 2.7](https://azure.microsoft.com/downloads/).</span></span> 
+* <span data-ttu-id="dffbc-128">[Python 2.7.13](https://www.python.org/downloads/windows/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-128">[Python 2.7.13](https://www.python.org/downloads/windows/).</span></span> 
 
 > [!IMPORTANT]
-> <span data-ttu-id="d9755-129">Pokud Python 2.7 instalujete poprvé, ujistěte se, že na obrazovce přizpůsobit Python 2.7.13 vyberete **přidat python.exe do cesty**.</span><span class="sxs-lookup"><span data-stu-id="d9755-129">If you are installing Python 2.7 for the first time, ensure that in the Customize Python 2.7.13 screen, you select **Add python.exe to Path**.</span></span>
+> <span data-ttu-id="dffbc-129">Pokud instalujete Python 2.7 pro hello poprvé, ujistěte se, že v úvodní obrazovka přizpůsobit Python 2.7.13, vyberete **přidat python.exe tooPath**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-129">If you are installing Python 2.7 for hello first time, ensure that in hello Customize Python 2.7.13 screen, you select **Add python.exe tooPath**.</span></span>
 > 
-> ![Snímek obrazovky Customize Python 2.7.11 (Přizpůsobit Python 2.7.11), kde je nutné vybrat možnost Add python.exe to Path (Přidat python.exe do proměnné PATH)](./media/documentdb-python-application/cosmos-db-python-install.png)
+> ![Snímek obrazovky úvodní obrazovka přizpůsobit Python 2.7.11, kde je nutné tooselect přidat python.exe tooPath](./media/documentdb-python-application/cosmos-db-python-install.png)
 > 
 > 
 
-* <span data-ttu-id="d9755-131">[Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).</span><span class="sxs-lookup"><span data-stu-id="d9755-131">[Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).</span></span>
+* <span data-ttu-id="dffbc-131">[Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).</span><span class="sxs-lookup"><span data-stu-id="dffbc-131">[Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).</span></span>
 
-## <a name="step-1-create-an-azure-cosmos-db-database-account"></a><span data-ttu-id="d9755-132">Krok 1: Vytvoření účtu databáze Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="d9755-132">Step 1: Create an Azure Cosmos DB database account</span></span>
-<span data-ttu-id="d9755-133">Začněme vytvořením účtu služby Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="d9755-133">Let's start by creating an Cosmos DB account.</span></span> <span data-ttu-id="d9755-134">Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Krok 2: Vytvoření nové webové aplikace Python Flask](#step-2-create-a-new-python-flask-web-application).</span><span class="sxs-lookup"><span data-stu-id="d9755-134">If you already have an account or if you are using the Azure Cosmos DB Emulator for this tutorial, you can skip to [Step 2: Create a new Python Flask web application](#step-2-create-a-new-python-flask-web-application).</span></span>
+## <a name="step-1-create-an-azure-cosmos-db-database-account"></a><span data-ttu-id="dffbc-132">Krok 1: Vytvoření účtu databáze Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="dffbc-132">Step 1: Create an Azure Cosmos DB database account</span></span>
+<span data-ttu-id="dffbc-133">Začněme vytvořením účtu služby Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="dffbc-133">Let's start by creating an Cosmos DB account.</span></span> <span data-ttu-id="dffbc-134">Pokud již máte účet, nebo pokud používáte hello emulátoru DB Cosmos Azure pro účely tohoto kurzu, můžete přeskočit příliš[krok 2: vytvoření nové webové aplikace Python Flask](#step-2-create-a-new-python-flask-web-application).</span><span class="sxs-lookup"><span data-stu-id="dffbc-134">If you already have an account or if you are using hello Azure Cosmos DB Emulator for this tutorial, you can skip too[Step 2: Create a new Python Flask web application](#step-2-create-a-new-python-flask-web-application).</span></span>
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
-<span data-ttu-id="d9755-135">Nyní vám ukážeme, jak od základů vytvořit novou webovou aplikaci Python Flask.</span><span class="sxs-lookup"><span data-stu-id="d9755-135">We will now walk through how to create a new Python Flask web application from the ground up.</span></span>
+<span data-ttu-id="dffbc-135">Nyní vám ukážeme jak toocreate nové webové aplikace Python Flask z hello pozadí.</span><span class="sxs-lookup"><span data-stu-id="dffbc-135">We will now walk through how toocreate a new Python Flask web application from hello ground up.</span></span>
 
-## <a name="step-2-create-a-new-python-flask-web-application"></a><span data-ttu-id="d9755-136">Krok 2: Vytvoření nové webové aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="d9755-136">Step 2: Create a new Python Flask web application</span></span>
-1. <span data-ttu-id="d9755-137">V nástroji Visual Studio najeďte myší v nabídce **Soubor** na **Nový** a klikněte na **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="d9755-137">In Visual Studio, on the **File** menu, point to **New**, and then click **Project**.</span></span>
+## <a name="step-2-create-a-new-python-flask-web-application"></a><span data-ttu-id="dffbc-136">Krok 2: Vytvoření nové webové aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="dffbc-136">Step 2: Create a new Python Flask web application</span></span>
+1. <span data-ttu-id="dffbc-137">V sadě Visual Studio na hello **soubor** nabídce bodu příliš**nový**a potom klikněte na **projektu**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-137">In Visual Studio, on hello **File** menu, point too**New**, and then click **Project**.</span></span>
    
-    <span data-ttu-id="d9755-138">Zobrazí se dialogové okno **Nový projekt**.</span><span class="sxs-lookup"><span data-stu-id="d9755-138">The **New Project** dialog box appears.</span></span>
-2. <span data-ttu-id="d9755-139">V levém podokně rozbalte **Šablony**, pak **Python** a klikněte na **Web**.</span><span class="sxs-lookup"><span data-stu-id="d9755-139">In the left pane, expand **Templates** and then **Python**, and then click **Web**.</span></span> 
-3. <span data-ttu-id="d9755-140">Ve středním podokně vyberte **Webový projekt Flask**, do pole **Název** zadejte **tutorial** a klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="d9755-140">Select **Flask  Web Project** in the center pane, then in the **Name** box type **tutorial**, and then click **OK**.</span></span> <span data-ttu-id="d9755-141">Nezapomeňte, že názvy balíčků Python by měly být celé malými písmeny, jak je popsáno v [průvodci správným stylem pro kód Python](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).</span><span class="sxs-lookup"><span data-stu-id="d9755-141">Remember that Python package names should be all lowercase, as described in the [Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).</span></span>
+    <span data-ttu-id="dffbc-138">Hello **nový projekt** zobrazí se dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="dffbc-138">hello **New Project** dialog box appears.</span></span>
+2. <span data-ttu-id="dffbc-139">V levém podokně hello rozbalte **šablony** a potom **Python**a potom klikněte na **webové**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-139">In hello left pane, expand **Templates** and then **Python**, and then click **Web**.</span></span> 
+3. <span data-ttu-id="dffbc-140">Vyberte **webový projekt Flask** v prostředním podokně hello a potom v hello **název** zadejte **kurzu**a potom klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-140">Select **Flask  Web Project** in hello center pane, then in hello **Name** box type **tutorial**, and then click **OK**.</span></span> <span data-ttu-id="dffbc-141">Mějte na paměti, že názvy balíčků Python by měl být celé malými písmeny, jak je popsáno v hello [průvodci správným stylem pro kód Python](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).</span><span class="sxs-lookup"><span data-stu-id="dffbc-141">Remember that Python package names should be all lowercase, as described in hello [Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).</span></span>
    
-    <span data-ttu-id="d9755-142">Je-li pro vás Python Flask nový, je to rozhraní pro vývoj webových aplikací, které urychluje tvorbu webových aplikací v Pythonu.</span><span class="sxs-lookup"><span data-stu-id="d9755-142">For those new to Python Flask, it is a web application development framework that helps you build web applications in Python faster.</span></span>
+    <span data-ttu-id="dffbc-142">Tyto nové tooPython Flask je architektura vývoj webových aplikací, které urychluje tvorbu webových aplikací v Pythonu rychlejší.</span><span class="sxs-lookup"><span data-stu-id="dffbc-142">For those new tooPython Flask, it is a web application development framework that helps you build web applications in Python faster.</span></span>
    
-    ![Snímek obrazovky okna Nový projekt v nástroji Visual Studio se zvýrazněným Pythonem vlevo, vybraným webovým projektem Python Flask uprostřed a názvem tutorial v poli Název](./media/documentdb-python-application/image9.png)
-4. <span data-ttu-id="d9755-144">V okně **Python Tools for Visual Studio** klikněte na **Nainstalovat do virtuálního prostředí**.</span><span class="sxs-lookup"><span data-stu-id="d9755-144">In the **Python Tools for Visual Studio** window, click **Install into a virtual environment**.</span></span> 
+    ![Snímek obrazovky znázorňující hello okno Nový projekt v sadě Visual Studio se zvýrazněným hello vlevo, vybraným hello uprostřed a názvem tutorial hello v poli Název hello Python Flask webovým projektem Python](./media/documentdb-python-application/image9.png)
+4. <span data-ttu-id="dffbc-144">V hello **Python Tools pro Visual Studio** okně klikněte na tlačítko **nainstalovat do virtuálního prostředí**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-144">In hello **Python Tools for Visual Studio** window, click **Install into a virtual environment**.</span></span> 
    
-    ![Snímek obrazovky databázového kurzu – okno Python Tools for Visual Studio](./media/documentdb-python-application/python-install-virtual-environment.png)
-5. <span data-ttu-id="d9755-146">V okně **Přidání virtuálního prostředí** můžete přijmout výchozí hodnoty a použít Python 2.7 jako základní prostředí, protože PyDocumentDB v tuto chvíli nepodporuje Python 3.x. Pak klikněte na **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="d9755-146">In the **Add Virtual Environment** window, you can accept the defaults and use Python 2.7 as the base environment because PyDocumentDB does not currently support Python 3.x, and then click **Create**.</span></span> <span data-ttu-id="d9755-147">Tím se pro projekt nastaví požadované virtuální prostředí Python.</span><span class="sxs-lookup"><span data-stu-id="d9755-147">This sets up the required Python virtual environment for your project.</span></span>
+    ![Snímek obrazovky databázového kurzu hello – nástroje Python Tools pro Visual Studio – okno](./media/documentdb-python-application/python-install-virtual-environment.png)
+5. <span data-ttu-id="dffbc-146">V hello **Přidání virtuálního prostředí** okně můžete přijmout výchozí hodnoty hello a použít Python 2.7 jako základní prostředí hello, protože pydocumentdb v tuto aktuálně nepodporuje Python 3.x a pak klikněte na tlačítko **vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-146">In hello **Add Virtual Environment** window, you can accept hello defaults and use Python 2.7 as hello base environment because PyDocumentDB does not currently support Python 3.x, and then click **Create**.</span></span> <span data-ttu-id="dffbc-147">Toto nastaví hello požadované virtuální prostředí Python pro váš projekt.</span><span class="sxs-lookup"><span data-stu-id="dffbc-147">This sets up hello required Python virtual environment for your project.</span></span>
    
-    ![Snímek obrazovky databázového kurzu – okno Python Tools for Visual Studio](./media/documentdb-python-application/image10_A.png)
+    ![Snímek obrazovky databázového kurzu hello – nástroje Python Tools pro Visual Studio – okno](./media/documentdb-python-application/image10_A.png)
    
-    <span data-ttu-id="d9755-149">Jakmile je prostředí úspěšně nainstalováno, ve výstupním okně se zobrazí `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`.</span><span class="sxs-lookup"><span data-stu-id="d9755-149">The output window displays `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` when the environment is successfully installed.</span></span>
+    <span data-ttu-id="dffbc-149">Zobrazí okno výstup Hello `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` při hello prostředí úspěšně nainstalováno.</span><span class="sxs-lookup"><span data-stu-id="dffbc-149">hello output window displays `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` when hello environment is successfully installed.</span></span>
 
-## <a name="step-3-modify-the-python-flask-web-application"></a><span data-ttu-id="d9755-150">Krok 3: Úprava webové aplikace Python Flask</span><span class="sxs-lookup"><span data-stu-id="d9755-150">Step 3: Modify the Python Flask web application</span></span>
-### <a name="add-the-python-flask-packages-to-your-project"></a><span data-ttu-id="d9755-151">Přidání balíčků Python Flask do projektu</span><span class="sxs-lookup"><span data-stu-id="d9755-151">Add the Python Flask packages to your project</span></span>
-<span data-ttu-id="d9755-152">Po nastavení projektu bude nutné do projektu přidat požadované balíčky Flask, včetně pydocumentdb, tedy balíčku Python pro DocumentDB.</span><span class="sxs-lookup"><span data-stu-id="d9755-152">After your project is set up, you'll need to add the required Flask packages to your project, including pydocumentdb, the Python package for DocumentDB.</span></span>
+## <a name="step-3-modify-hello-python-flask-web-application"></a><span data-ttu-id="dffbc-150">Krok 3: Úprava webové aplikace Python Flask hello</span><span class="sxs-lookup"><span data-stu-id="dffbc-150">Step 3: Modify hello Python Flask web application</span></span>
+### <a name="add-hello-python-flask-packages-tooyour-project"></a><span data-ttu-id="dffbc-151">Přidání projektu tooyour balíčků Python Flask hello</span><span class="sxs-lookup"><span data-stu-id="dffbc-151">Add hello Python Flask packages tooyour project</span></span>
+<span data-ttu-id="dffbc-152">Po nastavení projektu, budete potřebovat tooadd hello požadované balíčky tooyour projekt Flask, včetně pydocumentdb, tedy hello balíčku Python pro DocumentDB.</span><span class="sxs-lookup"><span data-stu-id="dffbc-152">After your project is set up, you'll need tooadd hello required Flask packages tooyour project, including pydocumentdb, hello Python package for DocumentDB.</span></span>
 
-1. <span data-ttu-id="d9755-153">V Průzkumníkovi řešení otevřete soubor s názvem **requirements.txt** a nahraďte jeho obsah následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="d9755-153">In Solution Explorer, open the file named **requirements.txt** and replace the contents with the following:</span></span>
+1. <span data-ttu-id="dffbc-153">V Průzkumníku řešení otevřete soubor hello s názvem **requirements.txt** a nahraďte obsah hello hello následující:</span><span class="sxs-lookup"><span data-stu-id="dffbc-153">In Solution Explorer, open hello file named **requirements.txt** and replace hello contents with hello following:</span></span>
    
         flask==0.9
         flask-mail==0.7.6
@@ -110,34 +110,34 @@ ms.lasthandoff: 08/18/2017
         flask-babel==0.8
         flup
         pydocumentdb>=1.0.0
-2. <span data-ttu-id="d9755-154">Uložte soubor **requirements.txt**.</span><span class="sxs-lookup"><span data-stu-id="d9755-154">Save the **requirements.txt** file.</span></span> 
-3. <span data-ttu-id="d9755-155">V Průzkumníkovi řešení klikněte pravým tlačítkem na **env** a pak levým na **Nainstalovat z requirements.txt**.</span><span class="sxs-lookup"><span data-stu-id="d9755-155">In Solution Explorer, right-click **env** and click **Install from requirements.txt**.</span></span>
+2. <span data-ttu-id="dffbc-154">Uložit hello **requirements.txt** souboru.</span><span class="sxs-lookup"><span data-stu-id="dffbc-154">Save hello **requirements.txt** file.</span></span> 
+3. <span data-ttu-id="dffbc-155">V Průzkumníkovi řešení klikněte pravým tlačítkem na **env** a pak levým na **Nainstalovat z requirements.txt**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-155">In Solution Explorer, right-click **env** and click **Install from requirements.txt**.</span></span>
    
-    ![Snímek obrazovky, na kterém je zvoleno env (Python 2.7) a v seznamu je zvýrazněna možnost Instalovat z requirements.txt](./media/documentdb-python-application/cosmos-db-python-install-from-requirements.png)
+    ![Snímek obrazovky znázorňující env (Python 2.7) vybraná při instalaci z requirements.txt zvýrazněných v seznamu hello](./media/documentdb-python-application/cosmos-db-python-install-from-requirements.png)
    
-    <span data-ttu-id="d9755-157">Po úspěšné instalaci se ve výstupním okně zobrazí následující:</span><span class="sxs-lookup"><span data-stu-id="d9755-157">After successful installation, the output window displays the following:</span></span>
+    <span data-ttu-id="dffbc-157">Po úspěšné instalaci se zobrazí okno výstup hello hello následující:</span><span class="sxs-lookup"><span data-stu-id="dffbc-157">After successful installation, hello output window displays hello following:</span></span>
    
         Successfully installed Babel-2.3.2 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.4 blinker-1.4 decorator-4.0.9 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.6.1 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
    
    > [!NOTE]
-   > <span data-ttu-id="d9755-158">Ve výjimečných případech se ve výstupním okně může zobrazit informace o selhání.</span><span class="sxs-lookup"><span data-stu-id="d9755-158">In rare cases, you might see a failure in the output window.</span></span> <span data-ttu-id="d9755-159">Pokud se to stane, podívejte se, jestli chyba nesouvisí s vyčištěním.</span><span class="sxs-lookup"><span data-stu-id="d9755-159">If this happens, check if the error is related to cleanup.</span></span> <span data-ttu-id="d9755-160">Někdy se vyčištění nepovede, ale instalace je přesto úspěšná (posuňte se ve výstupním okně nahoru, kde to je možné ověřit).</span><span class="sxs-lookup"><span data-stu-id="d9755-160">Sometimes the cleanup fails, but the installation will still be successful (scroll up in the output window to verify this).</span></span> <span data-ttu-id="d9755-161">Instalaci můžete zkontrolovat [ověřením virtuálního prostředí](#verify-the-virtual-environment).</span><span class="sxs-lookup"><span data-stu-id="d9755-161">You can check your installation by [Verifying the virtual environment](#verify-the-virtual-environment).</span></span> <span data-ttu-id="d9755-162">Pokud se instalace nepovedla, ale ověření proběhlo úspěšně, můžete pokračovat.</span><span class="sxs-lookup"><span data-stu-id="d9755-162">If the installation failed but the verification is successful, it's OK to continue.</span></span>
+   > <span data-ttu-id="dffbc-158">Ve výjimečných případech může se zobrazit chyba v okně výstupu hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-158">In rare cases, you might see a failure in hello output window.</span></span> <span data-ttu-id="dffbc-159">Pokud k tomu dojde, zkontrolujte, jestli chyba hello je související toocleanup.</span><span class="sxs-lookup"><span data-stu-id="dffbc-159">If this happens, check if hello error is related toocleanup.</span></span> <span data-ttu-id="dffbc-160">Někdy hello čištění nezdaří, ale bude stále k úspěšné instalace hello (Posunout nahoru v tooverify okno výstup hello to).</span><span class="sxs-lookup"><span data-stu-id="dffbc-160">Sometimes hello cleanup fails, but hello installation will still be successful (scroll up in hello output window tooverify this).</span></span> <span data-ttu-id="dffbc-161">Instalaci můžete zkontrolovat [ověření hello virtuální prostředí](#verify-the-virtual-environment).</span><span class="sxs-lookup"><span data-stu-id="dffbc-161">You can check your installation by [Verifying hello virtual environment](#verify-the-virtual-environment).</span></span> <span data-ttu-id="dffbc-162">Pokud hello instalace se nezdařila, ale je hello ověření úspěšné, je OK toocontinue.</span><span class="sxs-lookup"><span data-stu-id="dffbc-162">If hello installation failed but hello verification is successful, it's OK toocontinue.</span></span>
    > 
    > 
 
-### <a name="verify-the-virtual-environment"></a><span data-ttu-id="d9755-163">Ověření virtuálního prostředí</span><span class="sxs-lookup"><span data-stu-id="d9755-163">Verify the virtual environment</span></span>
-<span data-ttu-id="d9755-164">Ujistěme se, že se vše správně nainstalovalo.</span><span class="sxs-lookup"><span data-stu-id="d9755-164">Let's make sure that everything is installed correctly.</span></span>
+### <a name="verify-hello-virtual-environment"></a><span data-ttu-id="dffbc-163">Ověřte hello virtuálního prostředí</span><span class="sxs-lookup"><span data-stu-id="dffbc-163">Verify hello virtual environment</span></span>
+<span data-ttu-id="dffbc-164">Ujistěme se, že se vše správně nainstalovalo.</span><span class="sxs-lookup"><span data-stu-id="dffbc-164">Let's make sure that everything is installed correctly.</span></span>
 
-1. <span data-ttu-id="d9755-165">Sestavte řešení stisknutím **CTRL**+**SHIFT**+**B**.</span><span class="sxs-lookup"><span data-stu-id="d9755-165">Build the solution by pressing **Ctrl**+**Shift**+**B**.</span></span>
-2. <span data-ttu-id="d9755-166">Po úspěšném sestavení spusťte web klávesou **F5**.</span><span class="sxs-lookup"><span data-stu-id="d9755-166">Once the build succeeds, start the website by pressing **F5**.</span></span> <span data-ttu-id="d9755-167">Tímto se spustí vývojový server Flask a webový prohlížeč.</span><span class="sxs-lookup"><span data-stu-id="d9755-167">This launches the Flask development server and starts your web browser.</span></span> <span data-ttu-id="d9755-168">Měla by se zobrazit následující stránka:</span><span class="sxs-lookup"><span data-stu-id="d9755-168">You should see the following page.</span></span>
+1. <span data-ttu-id="dffbc-165">Vytvoření řešení hello stisknutím **Ctrl**+**Shift**+**B**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-165">Build hello solution by pressing **Ctrl**+**Shift**+**B**.</span></span>
+2. <span data-ttu-id="dffbc-166">Po úspěšném sestavení hello spustit hello webu stisknutím **F5**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-166">Once hello build succeeds, start hello website by pressing **F5**.</span></span> <span data-ttu-id="dffbc-167">Tím se spustí vývojový server Flask hello a spustí webový prohlížeč.</span><span class="sxs-lookup"><span data-stu-id="dffbc-167">This launches hello Flask development server and starts your web browser.</span></span> <span data-ttu-id="dffbc-168">Měli byste vidět následující stránku hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-168">You should see hello following page.</span></span>
    
-    ![Prázdný webový vývojový projekt Python Flask zobrazený v prohlížeči](./media/documentdb-python-application/image12.png)
-3. <span data-ttu-id="d9755-170">Klávesami **SHIFT**+**F5** v nástroji Visual Studio ukončete ladění webu.</span><span class="sxs-lookup"><span data-stu-id="d9755-170">Stop debugging the website by pressing **Shift**+**F5** in Visual Studio.</span></span>
+    ![Hello prázdný Python Flask webový vývojový projekt zobrazí v prohlížeči](./media/documentdb-python-application/image12.png)
+3. <span data-ttu-id="dffbc-170">Ukončete ladění webu hello stisknutím **Shift**+**F5** v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="dffbc-170">Stop debugging hello website by pressing **Shift**+**F5** in Visual Studio.</span></span>
 
-### <a name="create-database-collection-and-document-definitions"></a><span data-ttu-id="d9755-171">Vytvoření definic databáze, kolekcí a dokumentů</span><span class="sxs-lookup"><span data-stu-id="d9755-171">Create database, collection, and document definitions</span></span>
-<span data-ttu-id="d9755-172">Nyní vytvořte hlasovací aplikaci tak, že přidáme nové soubory a jiné aktualizujeme.</span><span class="sxs-lookup"><span data-stu-id="d9755-172">Now let's create your voting application by adding new files and updating others.</span></span>
+### <a name="create-database-collection-and-document-definitions"></a><span data-ttu-id="dffbc-171">Vytvoření definic databáze, kolekcí a dokumentů</span><span class="sxs-lookup"><span data-stu-id="dffbc-171">Create database, collection, and document definitions</span></span>
+<span data-ttu-id="dffbc-172">Nyní vytvořte hlasovací aplikaci tak, že přidáme nové soubory a jiné aktualizujeme.</span><span class="sxs-lookup"><span data-stu-id="dffbc-172">Now let's create your voting application by adding new files and updating others.</span></span>
 
-1. <span data-ttu-id="d9755-173">V Průzkumníkovi řešení klikněte pravým tlačítkem na projekt **tutorial**, pak levým na **Přidat** a nakonec také levým na **Nová položka**.</span><span class="sxs-lookup"><span data-stu-id="d9755-173">In Solution Explorer, right-click the **tutorial** project, click **Add**, and then click **New Item**.</span></span> <span data-ttu-id="d9755-174">Vyberte **Prázdný soubor Python** a pojmenujte jej **forms.py**.</span><span class="sxs-lookup"><span data-stu-id="d9755-174">Select **Empty Python File** and name the file **forms.py**.</span></span>  
-2. <span data-ttu-id="d9755-175">Do souboru forms.py přidejte následující kód a soubor uložte.</span><span class="sxs-lookup"><span data-stu-id="d9755-175">Add the following code to the forms.py file, and then save the file.</span></span>
+1. <span data-ttu-id="dffbc-173">V Průzkumníku řešení klikněte pravým tlačítkem na hello **kurzu** projektu, klikněte na tlačítko **přidat**a potom klikněte na **novou položku**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-173">In Solution Explorer, right-click hello **tutorial** project, click **Add**, and then click **New Item**.</span></span> <span data-ttu-id="dffbc-174">Vyberte **prázdný soubor Python** a název souboru hello **forms.py**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-174">Select **Empty Python File** and name hello file **forms.py**.</span></span>  
+2. <span data-ttu-id="dffbc-175">Přidejte následující kód toohello forms.py soubor hello a pak hello soubor uložte.</span><span class="sxs-lookup"><span data-stu-id="dffbc-175">Add hello following code toohello forms.py file, and then save hello file.</span></span>
 
 ```python
 from flask.ext.wtf import Form
@@ -151,9 +151,9 @@ class VoteForm(Form):
 ```
 
 
-### <a name="add-the-required-imports-to-viewspy"></a><span data-ttu-id="d9755-176">Přidání požadovaných importů do views.py</span><span class="sxs-lookup"><span data-stu-id="d9755-176">Add the required imports to views.py</span></span>
-1. <span data-ttu-id="d9755-177">V Průzkumníkovi řešení rozbalte složku **tutorial** a otevřete soubor **views.py**.</span><span class="sxs-lookup"><span data-stu-id="d9755-177">In Solution Explorer, expand the **tutorial** folder, and open the **views.py** file.</span></span> 
-2. <span data-ttu-id="d9755-178">Do horní části souboru **views.py** přidejte následující příkazy import a soubor uložte.</span><span class="sxs-lookup"><span data-stu-id="d9755-178">Add the following import statements to the top of the **views.py** file, then save the file.</span></span> <span data-ttu-id="d9755-179">Tyto příkazu importují balíčky Flask a PythonSDK pro službu Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="d9755-179">These import Cosmos DB's PythonSDK and the Flask packages.</span></span>
+### <a name="add-hello-required-imports-tooviewspy"></a><span data-ttu-id="dffbc-176">Přidat tooviews.py hello požadované importy</span><span class="sxs-lookup"><span data-stu-id="dffbc-176">Add hello required imports tooviews.py</span></span>
+1. <span data-ttu-id="dffbc-177">V Průzkumníku řešení rozbalte hello **kurzu** složku a otevřete hello **views.py** souboru.</span><span class="sxs-lookup"><span data-stu-id="dffbc-177">In Solution Explorer, expand hello **tutorial** folder, and open hello **views.py** file.</span></span> 
+2. <span data-ttu-id="dffbc-178">Přidejte následující import příkazy toohello horní části hello hello **views.py** uložte soubor hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-178">Add hello following import statements toohello top of hello **views.py** file, then save hello file.</span></span> <span data-ttu-id="dffbc-179">Tyto importovat Cosmos DB PythonSDK a hello balíčky Flask.</span><span class="sxs-lookup"><span data-stu-id="dffbc-179">These import Cosmos DB's PythonSDK and hello Flask packages.</span></span>
    
     ```python
     from forms import VoteForm
@@ -161,16 +161,16 @@ class VoteForm(Form):
     import pydocumentdb.document_client as document_client
     ```
 
-### <a name="create-database-collection-and-document"></a><span data-ttu-id="d9755-180">Vytvoření databáze, kolekce a dokumentu</span><span class="sxs-lookup"><span data-stu-id="d9755-180">Create database, collection, and document</span></span>
-* <span data-ttu-id="d9755-181">Na konec téhož souboru **views.py** přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="d9755-181">Still in **views.py**, add the following code to the end of the file.</span></span> <span data-ttu-id="d9755-182">Ten vytvoří databázi, která se použije ve formuláři.</span><span class="sxs-lookup"><span data-stu-id="d9755-182">This takes care of creating the database used by the form.</span></span> <span data-ttu-id="d9755-183">V souboru **views.py** neodstraňujte žádný kód, který tam již je.</span><span class="sxs-lookup"><span data-stu-id="d9755-183">Do not delete any of the existing code in **views.py**.</span></span> <span data-ttu-id="d9755-184">Pouze nový kód přidejte na konec.</span><span class="sxs-lookup"><span data-stu-id="d9755-184">Simply append this to the end.</span></span>
+### <a name="create-database-collection-and-document"></a><span data-ttu-id="dffbc-180">Vytvoření databáze, kolekce a dokumentu</span><span class="sxs-lookup"><span data-stu-id="dffbc-180">Create database, collection, and document</span></span>
+* <span data-ttu-id="dffbc-181">Pořád ještě v **views.py**, přidejte následující kód toohello konec souboru hello hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-181">Still in **views.py**, add hello following code toohello end of hello file.</span></span> <span data-ttu-id="dffbc-182">To má na starosti vytvoření databáze hello používá hello formuláře.</span><span class="sxs-lookup"><span data-stu-id="dffbc-182">This takes care of creating hello database used by hello form.</span></span> <span data-ttu-id="dffbc-183">Neodstraňujte žádný existující kód hello v **views.py**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-183">Do not delete any of hello existing code in **views.py**.</span></span> <span data-ttu-id="dffbc-184">Tomuto elementu end toohello jednoduše připojte.</span><span class="sxs-lookup"><span data-stu-id="dffbc-184">Simply append this toohello end.</span></span>
 
 ```python
 @app.route('/create')
 def create():
-    """Renders the contact page."""
+    """Renders hello contact page."""
     client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
 
-    # Attempt to delete the database.  This allows this to be used to recreate as well as create
+    # Attempt toodelete hello database.  This allows this toobe used toorecreate as well as create
     try:
         db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
         client.DeleteDatabase(db['_self'])
@@ -200,8 +200,8 @@ def create():
 ```
 
 
-### <a name="read-database-collection-document-and-submit-form"></a><span data-ttu-id="d9755-185">Čtení databáze, kolekce a dokumentu a odeslání formuláře</span><span class="sxs-lookup"><span data-stu-id="d9755-185">Read database, collection, document, and submit form</span></span>
-* <span data-ttu-id="d9755-186">Na konec téhož souboru **views.py** přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="d9755-186">Still in **views.py**, add the following code to the end of the file.</span></span> <span data-ttu-id="d9755-187">Tento kód má na starosti nastavení formuláře a čtení databáze, kolekce a dokumentu.</span><span class="sxs-lookup"><span data-stu-id="d9755-187">This takes care of setting up the form, reading the database, collection, and document.</span></span> <span data-ttu-id="d9755-188">V souboru **views.py** neodstraňujte žádný kód, který tam již je.</span><span class="sxs-lookup"><span data-stu-id="d9755-188">Do not delete any of the existing code in **views.py**.</span></span> <span data-ttu-id="d9755-189">Pouze nový kód přidejte na konec.</span><span class="sxs-lookup"><span data-stu-id="d9755-189">Simply append this to the end.</span></span>
+### <a name="read-database-collection-document-and-submit-form"></a><span data-ttu-id="dffbc-185">Čtení databáze, kolekce a dokumentu a odeslání formuláře</span><span class="sxs-lookup"><span data-stu-id="dffbc-185">Read database, collection, document, and submit form</span></span>
+* <span data-ttu-id="dffbc-186">Pořád ještě v **views.py**, přidejte následující kód toohello konec souboru hello hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-186">Still in **views.py**, add hello following code toohello end of hello file.</span></span> <span data-ttu-id="dffbc-187">To má na starosti nastavení formuláře hello a čtení hello databáze, kolekce a dokumentu.</span><span class="sxs-lookup"><span data-stu-id="dffbc-187">This takes care of setting up hello form, reading hello database, collection, and document.</span></span> <span data-ttu-id="dffbc-188">Neodstraňujte žádný existující kód hello v **views.py**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-188">Do not delete any of hello existing code in **views.py**.</span></span> <span data-ttu-id="dffbc-189">Tomuto elementu end toohello jednoduše připojte.</span><span class="sxs-lookup"><span data-stu-id="dffbc-189">Simply append this toohello end.</span></span>
 
 ```python
 @app.route('/vote', methods=['GET', 'POST'])
@@ -220,11 +220,11 @@ def vote():
         # Read documents and take first since id should not be duplicated.
         doc = next((doc for doc in client.ReadDocuments(coll['_self']) if doc['id'] == config.DOCUMENTDB_DOCUMENT))
 
-        # Take the data from the deploy_preference and increment our database
+        # Take hello data from hello deploy_preference and increment our database
         doc[form.deploy_preference.data] = doc[form.deploy_preference.data] + 1
         replaced_document = client.ReplaceDocument(doc['_self'], doc)
 
-        # Create a model to pass to results.html
+        # Create a model toopass tooresults.html
         class VoteObject:
             choices = dict()
             total_votes = 0
@@ -251,11 +251,11 @@ def vote():
 ```
 
 
-### <a name="create-the-html-files"></a><span data-ttu-id="d9755-190">Vytvoření souborů HTML</span><span class="sxs-lookup"><span data-stu-id="d9755-190">Create the HTML files</span></span>
-1. <span data-ttu-id="d9755-191">V Průzkumníkovi řešení klikněte pravým tlačítkem ve složce **tutorial** na složku **šablony**, pak levým na **Přidat** a nakonec také levým na **Nová položka**.</span><span class="sxs-lookup"><span data-stu-id="d9755-191">In Solution Explorer, in the **tutorial** folder, right click the **templates** folder, click **Add**, and then click **New Item**.</span></span> 
-2. <span data-ttu-id="d9755-192">Vyberte **Stránka HTML** do pole název zadejte **create.html**.</span><span class="sxs-lookup"><span data-stu-id="d9755-192">Select **HTML Page**, and then in the name box type **create.html**.</span></span> 
-3. <span data-ttu-id="d9755-193">Opakováním kroků 1 a 2 vytvořte dva další soubory HTML: results.html a vote.html.</span><span class="sxs-lookup"><span data-stu-id="d9755-193">Repeat steps 1 and 2 to create two additional HTML files: results.html and vote.html.</span></span>
-4. <span data-ttu-id="d9755-194">Do souboru **create.html** do elementu `<body>` přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="d9755-194">Add the following code to **create.html** in the `<body>` element.</span></span> <span data-ttu-id="d9755-195">Tento kód zobrazí zprávu, že jsme vytvořili novou databázi, kolekci a dokument.</span><span class="sxs-lookup"><span data-stu-id="d9755-195">It displays a message stating that we created a new database, collection, and document.</span></span>
+### <a name="create-hello-html-files"></a><span data-ttu-id="dffbc-190">Vytvoření souborů HTML hello</span><span class="sxs-lookup"><span data-stu-id="dffbc-190">Create hello HTML files</span></span>
+1. <span data-ttu-id="dffbc-191">V Průzkumníku řešení v hello **kurzu** složky správné, klikněte na tlačítko hello **šablony** složku, klikněte na tlačítko **přidat**a potom klikněte na **novou položku**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-191">In Solution Explorer, in hello **tutorial** folder, right click hello **templates** folder, click **Add**, and then click **New Item**.</span></span> 
+2. <span data-ttu-id="dffbc-192">Vyberte **stránku HTML**a pak do pole zadejte název hello **create.html**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-192">Select **HTML Page**, and then in hello name box type **create.html**.</span></span> 
+3. <span data-ttu-id="dffbc-193">Opakujte kroky 1 a 2 toocreate dva další soubory HTML: results.html a vote.html.</span><span class="sxs-lookup"><span data-stu-id="dffbc-193">Repeat steps 1 and 2 toocreate two additional HTML files: results.html and vote.html.</span></span>
+4. <span data-ttu-id="dffbc-194">Přidejte následující kód příliš hello**create.html** v hello `<body>` elementu.</span><span class="sxs-lookup"><span data-stu-id="dffbc-194">Add hello following code too**create.html** in hello `<body>` element.</span></span> <span data-ttu-id="dffbc-195">Tento kód zobrazí zprávu, že jsme vytvořili novou databázi, kolekci a dokument.</span><span class="sxs-lookup"><span data-stu-id="dffbc-195">It displays a message stating that we created a new database, collection, and document.</span></span>
    
     ```html
     {% extends "layout.html" %}
@@ -265,12 +265,12 @@ def vote():
     <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
     {% endblock %}
     ```
-5. <span data-ttu-id="d9755-196">Do souboru **results.html** do elementu `<body` přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="d9755-196">Add the following code to **results.html** in the `<body`> element.</span></span> <span data-ttu-id="d9755-197">Slouží k zobrazení výsledků ankety.</span><span class="sxs-lookup"><span data-stu-id="d9755-197">It displays the results of the poll.</span></span>
+5. <span data-ttu-id="dffbc-196">Přidejte následující kód příliš hello**results.html** v hello `<body`> elementu.</span><span class="sxs-lookup"><span data-stu-id="dffbc-196">Add hello following code too**results.html** in hello `<body`> element.</span></span> <span data-ttu-id="dffbc-197">Zobrazuje výsledky hello hello dotazování.</span><span class="sxs-lookup"><span data-stu-id="dffbc-197">It displays hello results of hello poll.</span></span>
    
     ```html
     {% extends "layout.html" %}
     {% block content %}
-    <h2>Results of the vote</h2>
+    <h2>Results of hello vote</h2>
         <br />
    
     {% for choice in vote_object.choices %}
@@ -290,12 +290,12 @@ def vote():
     <a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
     {% endblock %}
     ```
-6. <span data-ttu-id="d9755-198">Do souboru **vote.html** do elementu `<body` přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="d9755-198">Add the following code to **vote.html** in the `<body`> element.</span></span> <span data-ttu-id="d9755-199">Zobrazuje anketu a přijímá hlasy.</span><span class="sxs-lookup"><span data-stu-id="d9755-199">It displays the poll and accepts the votes.</span></span> <span data-ttu-id="d9755-200">Při registraci hlasů se ovládací prvek předává do views.py, kde rozpoznáme udělené hlasy a patřičně připojíme dokument.</span><span class="sxs-lookup"><span data-stu-id="d9755-200">On registering the votes, the control is passed over to views.py where we will recognize the vote cast and append the document accordingly.</span></span>
+6. <span data-ttu-id="dffbc-198">Přidejte následující kód příliš hello**vote.html** v hello `<body`> elementu.</span><span class="sxs-lookup"><span data-stu-id="dffbc-198">Add hello following code too**vote.html** in hello `<body`> element.</span></span> <span data-ttu-id="dffbc-199">Zobrazí hello dotazování a přijímá hlasy hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-199">It displays hello poll and accepts hello votes.</span></span> <span data-ttu-id="dffbc-200">Při registraci hlasů hello, hello ovládací prvek předává přes tooviews.py kde jsme rozpozná hello udělené hlasy a připojí dokument hello odpovídajícím způsobem.</span><span class="sxs-lookup"><span data-stu-id="dffbc-200">On registering hello votes, hello control is passed over tooviews.py where we will recognize hello vote cast and append hello document accordingly.</span></span>
    
     ```html
     {% extends "layout.html" %}
     {% block content %}
-    <h2>What is your favorite way to host an application on Azure?</h2>
+    <h2>What is your favorite way toohost an application on Azure?</h2>
     <form action="" method="post" name="vote">
         {{form.hidden_tag()}}
             {{form.deploy_preference}}
@@ -303,21 +303,21 @@ def vote():
     </form>
     {% endblock %}
     ```
-7. <span data-ttu-id="d9755-201">Ve složce **šablony** nahraďte obsah souboru **index.html** následujícím obsahem.</span><span class="sxs-lookup"><span data-stu-id="d9755-201">In the **templates** folder, replace the contents of **index.html** with the following.</span></span> <span data-ttu-id="d9755-202">Tato stránka slouží jako cílová stránka aplikace.</span><span class="sxs-lookup"><span data-stu-id="d9755-202">This serves as the landing page for your application.</span></span>
+7. <span data-ttu-id="dffbc-201">V hello **šablony** složky, nahraďte obsah hello **index.html** s následující hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-201">In hello **templates** folder, replace hello contents of **index.html** with hello following.</span></span> <span data-ttu-id="dffbc-202">Tato stránka slouží jako hello úvodní stránka pro vaši aplikaci.</span><span class="sxs-lookup"><span data-stu-id="dffbc-202">This serves as hello landing page for your application.</span></span>
    
     ```html
     {% extends "layout.html" %}
     {% block content %}
     <h2>Python + Azure Cosmos DB Voting Application.</h2>
     <h3>This is a sample Cosmos DB voting application using PyDocumentDB</h3>
-    <p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
+    <p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear hello Voting Database &raquo;</a></p>
     <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
     {% endblock %}
     ```
 
-### <a name="add-a-configuration-file-and-change-the-initpy"></a><span data-ttu-id="d9755-203">Přidejte konfigurační soubor a změňte \_\_init\_\_.py.</span><span class="sxs-lookup"><span data-stu-id="d9755-203">Add a configuration file and change the \_\_init\_\_.py</span></span>
-1. <span data-ttu-id="d9755-204">V Průzkumníkovi řešení klikněte pravým tlačítkem na projekt **tutorial**, pak levým na **Přidat**, dále na **Nová položka**, vyberte **Prázdný soubor Python** a pojmenujte jej **config.py**.</span><span class="sxs-lookup"><span data-stu-id="d9755-204">In Solution Explorer, right-click the **tutorial** project, click **Add**, click **New Item**, select **Empty Python File**, and then name the file **config.py**.</span></span> <span data-ttu-id="d9755-205">Formuláře ve Flasku vyžadují tento konfigurační soubor.</span><span class="sxs-lookup"><span data-stu-id="d9755-205">This config file is required by forms in Flask.</span></span> <span data-ttu-id="d9755-206">Můžete jej použít i k poskytnutí tajného klíče.</span><span class="sxs-lookup"><span data-stu-id="d9755-206">You can use it to provide a secret key as well.</span></span> <span data-ttu-id="d9755-207">Ten ale pro tento kurz není nezbytný.</span><span class="sxs-lookup"><span data-stu-id="d9755-207">This key is not needed for this tutorial though.</span></span>
-2. <span data-ttu-id="d9755-208">Do souboru config.py přidejte následující kód. V dalším kroku bude nutné upravit hodnoty **DOCUMENTDB\_HOST** a **DOCUMENTDB\_KEY**.</span><span class="sxs-lookup"><span data-stu-id="d9755-208">Add the following code to config.py, you'll need to alter the values of **DOCUMENTDB\_HOST** and **DOCUMENTDB\_KEY** in the next step.</span></span>
+### <a name="add-a-configuration-file-and-change-hello-initpy"></a><span data-ttu-id="dffbc-203">Přidejte konfigurační soubor a změňte hello \_ \_init\_\_.py</span><span class="sxs-lookup"><span data-stu-id="dffbc-203">Add a configuration file and change hello \_\_init\_\_.py</span></span>
+1. <span data-ttu-id="dffbc-204">V Průzkumníku řešení klikněte pravým tlačítkem na hello **kurzu** projektu, klikněte na tlačítko **přidat**, klikněte na tlačítko **nová položka**, vyberte **prázdný soubor Python**a potom Název souboru hello **config.py**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-204">In Solution Explorer, right-click hello **tutorial** project, click **Add**, click **New Item**, select **Empty Python File**, and then name hello file **config.py**.</span></span> <span data-ttu-id="dffbc-205">Formuláře ve Flasku vyžadují tento konfigurační soubor.</span><span class="sxs-lookup"><span data-stu-id="dffbc-205">This config file is required by forms in Flask.</span></span> <span data-ttu-id="dffbc-206">Můžete ho tooprovide tajný klíč.</span><span class="sxs-lookup"><span data-stu-id="dffbc-206">You can use it tooprovide a secret key as well.</span></span> <span data-ttu-id="dffbc-207">Ten ale pro tento kurz není nezbytný.</span><span class="sxs-lookup"><span data-stu-id="dffbc-207">This key is not needed for this tutorial though.</span></span>
+2. <span data-ttu-id="dffbc-208">Přidejte následující hello tooconfig.py kódu, budete potřebovat hodnoty hello tooalter **DOCUMENTDB\_hostitele** a **DOCUMENTDB\_klíč** v dalším kroku hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-208">Add hello following code tooconfig.py, you'll need tooalter hello values of **DOCUMENTDB\_HOST** and **DOCUMENTDB\_KEY** in hello next step.</span></span>
    
     ```python
     CSRF_ENABLED = True
@@ -330,13 +330,13 @@ def vote():
     DOCUMENTDB_COLLECTION = 'voting collection'
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
-3. <span data-ttu-id="d9755-209">Na webu [Azure Portal](https://portal.azure.com/) přejděte do okna **Klíče** tak, že kliknete na **Procházet**, **Účty služby Azure Cosmos DB**, dvakrát kliknete na název účtu, který chcete použít, a v oblasti **Základy** kliknete na tlačítko **Klíče**.</span><span class="sxs-lookup"><span data-stu-id="d9755-209">In the [Azure portal](https://portal.azure.com/), navigate to the **Keys** blade by clicking **Browse**, **Azure Cosmos DB Accounts**, double-click the name of the account to use, and then click the **Keys** button in the **Essentials** area.</span></span> <span data-ttu-id="d9755-210">V okně **Klíče** zkopírujte hodnotu **URI** a vložte ji do souboru **config.py** jako hodnotu vlastnosti **DOCUMENTDB\_HOST**.</span><span class="sxs-lookup"><span data-stu-id="d9755-210">In the **Keys** blade, copy the **URI** value and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_HOST** property.</span></span> 
-4. <span data-ttu-id="d9755-211">Zpět na Portálu Azure v okně **Klíče** zkopírujte hodnotu **Primární klíč** nebo **Sekundární klíč** a vložte ji do souboru **config.py** jako hodnotu vlastnosti **DOCUMENTDB\_KEY**.</span><span class="sxs-lookup"><span data-stu-id="d9755-211">Back in the Azure portal, in the **Keys** blade, copy the value of the **Primary Key** or the **Secondary Key**, and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_KEY** property.</span></span>
-5. <span data-ttu-id="d9755-212">Do souboru **\_\_init\_\_.py** přidejte následující řádek.</span><span class="sxs-lookup"><span data-stu-id="d9755-212">In the **\_\_init\_\_.py** file, add the following line.</span></span> 
+3. <span data-ttu-id="dffbc-209">V hello [portál Azure](https://portal.azure.com/), přejděte toohello **klíče** okno kliknutím **Procházet**, **Azure Cosmos DB účty**, klikněte dvakrát na název hello Dobrý den účtu toouse a pak klikněte na tlačítko hello **klíče** tlačítka na hello **Essentials** oblasti.</span><span class="sxs-lookup"><span data-stu-id="dffbc-209">In hello [Azure portal](https://portal.azure.com/), navigate toohello **Keys** blade by clicking **Browse**, **Azure Cosmos DB Accounts**, double-click hello name of hello account toouse, and then click hello **Keys** button in hello **Essentials** area.</span></span> <span data-ttu-id="dffbc-210">V hello **klíče** okno, kopie hello **URI** a vložte ji do hello **config.py** souboru jako hodnota hello hello **DOCUMENTDB\_hostitele**  vlastnost.</span><span class="sxs-lookup"><span data-stu-id="dffbc-210">In hello **Keys** blade, copy hello **URI** value and paste it into hello **config.py** file, as hello value for hello **DOCUMENTDB\_HOST** property.</span></span> 
+4. <span data-ttu-id="dffbc-211">Zpět v hello portál Azure, v hello **klíče** okně kopie hello hodnotu hello **primární klíč** nebo hello **sekundární klíč**a vložte jej do hello **config.py**  souboru jako hodnota hello hello **DOCUMENTDB\_klíč** vlastnost.</span><span class="sxs-lookup"><span data-stu-id="dffbc-211">Back in hello Azure portal, in hello **Keys** blade, copy hello value of hello **Primary Key** or hello **Secondary Key**, and paste it into hello **config.py** file, as hello value for hello **DOCUMENTDB\_KEY** property.</span></span>
+5. <span data-ttu-id="dffbc-212">V hello  **\_ \_init\_\_.py** soubor, přidejte následující řádek hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-212">In hello **\_\_init\_\_.py** file, add hello following line.</span></span> 
    
         app.config.from_object('config')
    
-    <span data-ttu-id="d9755-213">Obsah souboru tak bude následující:</span><span class="sxs-lookup"><span data-stu-id="d9755-213">So that the content of the file is:</span></span>
+    <span data-ttu-id="dffbc-213">Tak, aby obsah hello hello souboru je:</span><span class="sxs-lookup"><span data-stu-id="dffbc-213">So that hello content of hello file is:</span></span>
    
     ```python
     from flask import Flask
@@ -344,59 +344,59 @@ def vote():
     app.config.from_object('config')
     import tutorial.views
     ```
-6. <span data-ttu-id="d9755-214">Po přidání všech souborů by Průzkumník řešení měl vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="d9755-214">After adding all the files, Solution Explorer should look like this:</span></span>
+6. <span data-ttu-id="dffbc-214">Po přidání všech souborů hello, Průzkumník řešení by měl vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="dffbc-214">After adding all hello files, Solution Explorer should look like this:</span></span>
    
-    ![Snímek obrazovky okna Průzkumníka řešení v nástroji Visual Studio](./media/documentdb-python-application/cosmos-db-python-solution-explorer.png)
+    ![Snímek obrazovky okna Průzkumníka řešení Visual Studio hello](./media/documentdb-python-application/cosmos-db-python-solution-explorer.png)
 
-## <a name="step-4-run-your-web-application-locally"></a><span data-ttu-id="d9755-216">Krok 4: Místní spuštění webové aplikace</span><span class="sxs-lookup"><span data-stu-id="d9755-216">Step 4: Run your web application locally</span></span>
-1. <span data-ttu-id="d9755-217">Sestavte řešení stisknutím **CTRL**+**SHIFT**+**B**.</span><span class="sxs-lookup"><span data-stu-id="d9755-217">Build the solution by pressing **Ctrl**+**Shift**+**B**.</span></span>
-2. <span data-ttu-id="d9755-218">Po úspěšném sestavení spusťte web klávesou **F5**.</span><span class="sxs-lookup"><span data-stu-id="d9755-218">Once the build succeeds, start the website by pressing **F5**.</span></span> <span data-ttu-id="d9755-219">Na obrazovce byste měli vidět následující.</span><span class="sxs-lookup"><span data-stu-id="d9755-219">You should see the following on your screen.</span></span>
+## <a name="step-4-run-your-web-application-locally"></a><span data-ttu-id="dffbc-216">Krok 4: Místní spuštění webové aplikace</span><span class="sxs-lookup"><span data-stu-id="dffbc-216">Step 4: Run your web application locally</span></span>
+1. <span data-ttu-id="dffbc-217">Vytvoření řešení hello stisknutím **Ctrl**+**Shift**+**B**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-217">Build hello solution by pressing **Ctrl**+**Shift**+**B**.</span></span>
+2. <span data-ttu-id="dffbc-218">Po úspěšném sestavení hello spustit hello webu stisknutím **F5**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-218">Once hello build succeeds, start hello website by pressing **F5**.</span></span> <span data-ttu-id="dffbc-219">Měli byste vidět následující hello na obrazovce.</span><span class="sxs-lookup"><span data-stu-id="dffbc-219">You should see hello following on your screen.</span></span>
    
-    ![Snímek obrazovky hlasovací aplikace vytvořené pomocí Pythonu a služby Azure Cosmos DB zobrazené ve webovém prohlížeči](./media/documentdb-python-application/cosmos-db-pythonr-run-application.png)
-3. <span data-ttu-id="d9755-221">Klikněte na **Create/Clear the Voting Database** (Vytvořit nebo vyčistit hlasovací databázi), aby se vygenerovala databáze.</span><span class="sxs-lookup"><span data-stu-id="d9755-221">Click **Create/Clear the Voting Database** to generate the database.</span></span>
+    ![Snímek obrazovky znázorňující hello Python + Azure Cosmos DB hlasovací aplikace zobrazí ve webovém prohlížeči](./media/documentdb-python-application/cosmos-db-pythonr-run-application.png)
+3. <span data-ttu-id="dffbc-221">Klikněte na tlačítko **Create/Clear hello hlasování databáze** toogenerate hello databáze.</span><span class="sxs-lookup"><span data-stu-id="dffbc-221">Click **Create/Clear hello Voting Database** toogenerate hello database.</span></span>
    
-    ![Snímek obrazovky webové aplikace a její stránky Vytvořit – podrobnosti o vývoji](./media/documentdb-python-application/cosmos-db-python-run-create-page.png)
-4. <span data-ttu-id="d9755-223">Pak vyberte svou možnost kliknutím na **Vote** (Hlasovat).</span><span class="sxs-lookup"><span data-stu-id="d9755-223">Then, click **Vote** and select your option.</span></span>
+    ![Snímek obrazovky hello vytvořit stránku hello webové aplikace – podrobnosti o vývoji](./media/documentdb-python-application/cosmos-db-python-run-create-page.png)
+4. <span data-ttu-id="dffbc-223">Pak vyberte svou možnost kliknutím na **Vote** (Hlasovat).</span><span class="sxs-lookup"><span data-stu-id="dffbc-223">Then, click **Vote** and select your option.</span></span>
    
-    ![Snímek obrazovky webové aplikace se zobrazenou otázkou k hlasování](./media/documentdb-python-application/cosmos-db-vote.png)
-5. <span data-ttu-id="d9755-225">Každý hlas, který udělíte, navýší příslušný čítač.</span><span class="sxs-lookup"><span data-stu-id="d9755-225">For every vote you cast, it increments the appropriate counter.</span></span>
+    ![Snímek obrazovky aplikace hello webové aplikace se zobrazenou otázkou k hlasování](./media/documentdb-python-application/cosmos-db-vote.png)
+5. <span data-ttu-id="dffbc-225">Pro každý hlas, který udělíte navýší příslušný čítač hello.</span><span class="sxs-lookup"><span data-stu-id="dffbc-225">For every vote you cast, it increments hello appropriate counter.</span></span>
    
-    ![Snímek obrazovky se zobrazenou stránkou Results of the vote (Výsledek hlasování)](./media/documentdb-python-application/cosmos-db-voting-results.png)
-6. <span data-ttu-id="d9755-227">Kombinací kláves SHIFT+F5 ukončete ladění projektu.</span><span class="sxs-lookup"><span data-stu-id="d9755-227">Stop debugging the project by pressing Shift+F5.</span></span>
+    ![Snímek obrazovky hello výsledky zobrazené stránce hlasování hello](./media/documentdb-python-application/cosmos-db-voting-results.png)
+6. <span data-ttu-id="dffbc-227">Zastavte ladění projektu hello stisknutím kláves Shift + F5.</span><span class="sxs-lookup"><span data-stu-id="dffbc-227">Stop debugging hello project by pressing Shift+F5.</span></span>
 
-## <a name="step-5-deploy-the-web-application-to-azure"></a><span data-ttu-id="d9755-228">Krok 5: Nasazení webové aplikace do Azure</span><span class="sxs-lookup"><span data-stu-id="d9755-228">Step 5: Deploy the web application to Azure</span></span>
-<span data-ttu-id="d9755-229">Teď, když máte je aplikace dokončena a správně pracovat se Cosmos DB, vytvoříme ji nasaďte do Azure.</span><span class="sxs-lookup"><span data-stu-id="d9755-229">Now that you have the complete application working correctly against Cosmos DB, we're going to deploy this to Azure.</span></span>
+## <a name="step-5-deploy-hello-web-application-tooazure"></a><span data-ttu-id="dffbc-228">Krok 5: Nasazení hello webové aplikace tooAzure</span><span class="sxs-lookup"><span data-stu-id="dffbc-228">Step 5: Deploy hello web application tooAzure</span></span>
+<span data-ttu-id="dffbc-229">Teď, když máte hello hotové aplikace správně pracovat se Cosmos DB, vytvoříme toodeploy tento tooAzure.</span><span class="sxs-lookup"><span data-stu-id="dffbc-229">Now that you have hello complete application working correctly against Cosmos DB, we're going toodeploy this tooAzure.</span></span>
 
-1. <span data-ttu-id="d9755-230">Klikněte pravým tlačítkem na projekt v Průzkumníkovi řešení (ujistěte se, že aplikace již není spuštěná místně) a vyberte **Publikovat**.</span><span class="sxs-lookup"><span data-stu-id="d9755-230">Right-click the project in Solution Explorer (make sure you're not still running it locally) and select **Publish**.</span></span>  
+1. <span data-ttu-id="dffbc-230">Klikněte pravým tlačítkem na projekt hello v Průzkumníkovi řešení (ujistěte se, že nejste spuštěná místně) a vyberte **publikovat**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-230">Right-click hello project in Solution Explorer (make sure you're not still running it locally) and select **Publish**.</span></span>  
    
-     ![Snímek obrazovky projektu tutorial vybraného v Průzkumníkovi řešení se zvýrazněnou možností Publikovat](./media/documentdb-python-application/image20.png)
-2. <span data-ttu-id="d9755-232">V **publikovat** dialogové okno, vyberte **Microsoft Azure App Service**, vyberte **vytvořit nový**a potom klikněte na **publikovat**.</span><span class="sxs-lookup"><span data-stu-id="d9755-232">In the **Publish** dialog box, select **Microsoft Azure App Service**, select **Create New**, and then click **Publish**.</span></span>
+     ![Snímek obrazovky hello tutorial vybraného v Průzkumníkovi řešení se zvýrazněnou možností publikovat hello](./media/documentdb-python-application/image20.png)
+2. <span data-ttu-id="dffbc-232">V hello **publikovat** dialogové okno, vyberte **Microsoft Azure App Service**, vyberte **vytvořit nový**a potom klikněte na **publikovat**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-232">In hello **Publish** dialog box, select **Microsoft Azure App Service**, select **Create New**, and then click **Publish**.</span></span>
    
-    ![Snímek obrazovky okna publikování webu se zvýrazněnou službou Microsoft Azure App Service](./media/documentdb-python-application/cosmos-db-python-publish.png)
-3. <span data-ttu-id="d9755-234">V **vytvořit službu App Service** dialogovém okně zadejte název pro vaši webovou aplikaci spolu s vaší **předplatné**, **skupiny prostředků**, a **plán služby App Service**, pak klikněte na tlačítko **vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="d9755-234">In the **Create App Service** dialog box, enter the name for your web app along with your **Subscription**, **Resource Group**, and **App Service Plan**, then click **Create**.</span></span>
+    ![Snímek obrazovky okna publikování webu hello se zvýrazněnou službou Microsoft Azure App Service](./media/documentdb-python-application/cosmos-db-python-publish.png)
+3. <span data-ttu-id="dffbc-234">V hello **vytvořit službu App Service** dialogovém okně zadejte název hello pro vaši webovou aplikaci spolu s vaší **předplatné**, **skupiny prostředků**, a **plán služby App Service** , pak klikněte na tlačítko **vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="dffbc-234">In hello **Create App Service** dialog box, enter hello name for your web app along with your **Subscription**, **Resource Group**, and **App Service Plan**, then click **Create**.</span></span>
    
-    ![Snímek obrazovky okna Okno Microsoft Azure Web Apps](./media/documentdb-python-application/cosmos-db-python-create-app-service.png)
-4. <span data-ttu-id="d9755-236">Během pár sekund bude Visual Studio dokončí publikování app service a spustí prohlížeč, kde uvidíte vaše handiwork běžící v Azure!</span><span class="sxs-lookup"><span data-stu-id="d9755-236">In a few seconds, Visual Studio will finish publishing your app service and launch a browser where you can see your handiwork running in Azure!</span></span>
+    ![Snímek obrazovky okna okno Microsoft Azure webové aplikace hello](./media/documentdb-python-application/cosmos-db-python-create-app-service.png)
+4. <span data-ttu-id="dffbc-236">Během pár sekund bude Visual Studio dokončí publikování app service a spustí prohlížeč, kde uvidíte vaše handiwork běžící v Azure!</span><span class="sxs-lookup"><span data-stu-id="dffbc-236">In a few seconds, Visual Studio will finish publishing your app service and launch a browser where you can see your handiwork running in Azure!</span></span>
 
-    ![Snímek obrazovky okna Okno Microsoft Azure Web Apps](./media/documentdb-python-application/cosmos-db-python-appservice-created.png)
+    ![Snímek obrazovky okna okno Microsoft Azure webové aplikace hello](./media/documentdb-python-application/cosmos-db-python-appservice-created.png)
 
-## <a name="troubleshooting"></a><span data-ttu-id="d9755-238">Řešení potíží</span><span class="sxs-lookup"><span data-stu-id="d9755-238">Troubleshooting</span></span>
-<span data-ttu-id="d9755-239">Pokud je toto první aplikace Python, kterou jste spustili na svém počítači, ujistěte se, že vaše proměnná PATH obsahuje následující složky (nebo ekvivalentní umístění instalací):</span><span class="sxs-lookup"><span data-stu-id="d9755-239">If this is the first Python app you've run on your computer, ensure that the following folders (or the equivalent installation locations) are included in your PATH variable:</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="dffbc-238">Řešení potíží</span><span class="sxs-lookup"><span data-stu-id="dffbc-238">Troubleshooting</span></span>
+<span data-ttu-id="dffbc-239">Pokud je to první aplikace Python hello jste spustili na počítači, ujistěte se, že hello následující složky (nebo hello ekvivalentní umístění instalací) jsou součástí vaše proměnná PATH:</span><span class="sxs-lookup"><span data-stu-id="dffbc-239">If this is hello first Python app you've run on your computer, ensure that hello following folders (or hello equivalent installation locations) are included in your PATH variable:</span></span>
 
     C:\Python27\site-packages;C:\Python27\;C:\Python27\Scripts;
 
-<span data-ttu-id="d9755-240">Pokud jste projekt pojmenovali jinak než **tutorial** a na stránce hlasování se zobrazí chyba, ujistěte se, že soubor **\_\_init\_\_.py** odkazuje na následujícím řádku na správný projekt: `import tutorial.view`.</span><span class="sxs-lookup"><span data-stu-id="d9755-240">If you receive an error on your vote page, and you named your project something other than **tutorial**, make sure that **\_\_init\_\_.py** references the correct project name in the line: `import tutorial.view`.</span></span>
+<span data-ttu-id="dffbc-240">Pokud narazíte na chyby na stránce hlasování a jste projekt pojmenovali jinak než **kurzu**, ujistěte se, že  **\_ \_init\_\_.py** odkazy na hello název správný projekt v řádku hello: `import tutorial.view`.</span><span class="sxs-lookup"><span data-stu-id="dffbc-240">If you receive an error on your vote page, and you named your project something other than **tutorial**, make sure that **\_\_init\_\_.py** references hello correct project name in hello line: `import tutorial.view`.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="d9755-241">Další kroky</span><span class="sxs-lookup"><span data-stu-id="d9755-241">Next steps</span></span>
-<span data-ttu-id="d9755-242">Blahopřejeme!</span><span class="sxs-lookup"><span data-stu-id="d9755-242">Congratulations!</span></span> <span data-ttu-id="d9755-243">Právě dokončení svou první webovou aplikaci Python, pomocí Cosmos DB a publikovali jste ji na Azure.</span><span class="sxs-lookup"><span data-stu-id="d9755-243">You have just completed your first Python web application using Cosmos DB and published it to Azure.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="dffbc-241">Další kroky</span><span class="sxs-lookup"><span data-stu-id="dffbc-241">Next steps</span></span>
+<span data-ttu-id="dffbc-242">Blahopřejeme!</span><span class="sxs-lookup"><span data-stu-id="dffbc-242">Congratulations!</span></span> <span data-ttu-id="dffbc-243">Právě dokončení svou první webovou aplikaci Python, pomocí Cosmos DB a publikovali jste ji tooAzure.</span><span class="sxs-lookup"><span data-stu-id="dffbc-243">You have just completed your first Python web application using Cosmos DB and published it tooAzure.</span></span>
 
-<span data-ttu-id="d9755-244">Toto téma často aktualizujeme a vylepšujeme podle vaší zpětné vazby.</span><span class="sxs-lookup"><span data-stu-id="d9755-244">We update and improve this topic frequently based on your feedback.</span></span>  <span data-ttu-id="d9755-245">Až kurz dokončíte, použijte prosím hlasovací tlačítka v horní a dolní části této stránky a sdělte nám svůj názor, jaká vylepšení byste si přáli vidět.</span><span class="sxs-lookup"><span data-stu-id="d9755-245">Once you've completed the tutorial, please using the voting buttons at the top and bottom of this page, and be sure to include your feedback on what improvements you want to see made.</span></span> <span data-ttu-id="d9755-246">Pokud chcete, abychom vás kontaktovali přímo, můžete nám nechat e-mailovou adresu v komentářích.</span><span class="sxs-lookup"><span data-stu-id="d9755-246">If you'd like us to contact you directly, feel free to include your email address in your comments.</span></span>
+<span data-ttu-id="dffbc-244">Toto téma často aktualizujeme a vylepšujeme podle vaší zpětné vazby.</span><span class="sxs-lookup"><span data-stu-id="dffbc-244">We update and improve this topic frequently based on your feedback.</span></span>  <span data-ttu-id="dffbc-245">Jednou jste dokončili kurz hello, použijte prosím hlasovací tlačítka v hello horní a dolní části této stránky hello a být jisti tooinclude svůj názor, jaká vylepšení chcete toosee provedeny.</span><span class="sxs-lookup"><span data-stu-id="dffbc-245">Once you've completed hello tutorial, please using hello voting buttons at hello top and bottom of this page, and be sure tooinclude your feedback on what improvements you want toosee made.</span></span> <span data-ttu-id="dffbc-246">Pokud byste nám chtěli toocontact přímo, cítíte volné tooinclude e-mailovou adresou v komentářích.</span><span class="sxs-lookup"><span data-stu-id="dffbc-246">If you'd like us toocontact you directly, feel free tooinclude your email address in your comments.</span></span>
 
-<span data-ttu-id="d9755-247">Přidat další funkce k vaší webové aplikaci, podívejte se na rozhraní API dostupná v [Azure Cosmos DB Python SDK](documentdb-sdk-python.md).</span><span class="sxs-lookup"><span data-stu-id="d9755-247">To add additional functionality to your web application, review the APIs available in the [Azure Cosmos DB Python SDK](documentdb-sdk-python.md).</span></span>
+<span data-ttu-id="dffbc-247">tooadd další funkce tooyour webovou aplikaci, zkontrolujte hello rozhraní API dostupná v hello [Azure Cosmos DB Python SDK](documentdb-sdk-python.md).</span><span class="sxs-lookup"><span data-stu-id="dffbc-247">tooadd additional functionality tooyour web application, review hello APIs available in hello [Azure Cosmos DB Python SDK](documentdb-sdk-python.md).</span></span>
 
-<span data-ttu-id="d9755-248">Další informace o Azure, nástroji Visual Studio a Pythonu najdete v [Centru pro vývojáře v Pythonu](https://azure.microsoft.com/develop/python/).</span><span class="sxs-lookup"><span data-stu-id="d9755-248">For more information about Azure, Visual Studio, and Python, see the [Python Developer Center](https://azure.microsoft.com/develop/python/).</span></span> 
+<span data-ttu-id="dffbc-248">Další informace o Azure, Visual Studio a Pythonu najdete v tématu hello [středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).</span><span class="sxs-lookup"><span data-stu-id="dffbc-248">For more information about Azure, Visual Studio, and Python, see hello [Python Developer Center](https://azure.microsoft.com/develop/python/).</span></span> 
 
-<span data-ttu-id="d9755-249">Další kurzy Pythonu Flask najdete na stránce [Velký kurz na Flask, část I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).</span><span class="sxs-lookup"><span data-stu-id="d9755-249">For additional Python Flask tutorials, see [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).</span></span> 
+<span data-ttu-id="dffbc-249">Další kurzy Pythonu Flask najdete v části [hello Flask velký kurz, část I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).</span><span class="sxs-lookup"><span data-stu-id="dffbc-249">For additional Python Flask tutorials, see [hello Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).</span></span> 
 
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/

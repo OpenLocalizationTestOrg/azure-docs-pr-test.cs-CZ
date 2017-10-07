@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace k zabezpečení Azure – kurzy | Dokumentace Microsoftu"
-description: "Zjistěte, jak můžete přizpůsobit možnosti zabezpečení ve službách Azure, abyste splnili požadavky nasazení služeb a dat v cloudu."
+title: "aaaAzure dokumentace k zabezpečení – kurzy | Microsoft Docs"
+description: "Zjistěte, jak toocustomize možnosti zabezpečení v Azure services toomeet hello požadavků vašeho nasazení služby a data v cloudu hello."
 services: security
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 2bdb991ec16dd4daffe8605598d589918bc07b64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef845a50b32dfec102d1f74d4af98e316dd7e1c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="security-documentation"></a>Dokumentace ke službě Security
 
-Zjistěte, jak používat Azure Security k ochraně služeb a dat v cloudu. Kurzy a další dokumentace vám pomohou přizpůsobit možnosti zabezpečení ve službách Azure, abyste splnili požadavky nasazení.
+Zjistěte, jak cloudové služby tooprotect toouse zabezpečení Azure a data v hello. Kurzy a další dokumenty umožňují přizpůsobit možnosti zabezpečení v Azure services toomeet hello požadavky vašich nasazení.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Printix | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Printix."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Printix."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,226 +13,226 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 97dbb3fa0531f2f679badb6bb9752f2e42fc9cb3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 654810116091eb52912b377cc97afef803ee816e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a><span data-ttu-id="81eac-103">Kurz: Azure Active Directory integrace s Printix</span><span class="sxs-lookup"><span data-stu-id="81eac-103">Tutorial: Azure Active Directory integration with Printix</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a><span data-ttu-id="b09e2-103">Kurz: Azure Active Directory integrace s Printix</span><span class="sxs-lookup"><span data-stu-id="b09e2-103">Tutorial: Azure Active Directory integration with Printix</span></span>
 
-<span data-ttu-id="81eac-104">V tomto kurzu zjistěte, jak integrovat Printix s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="81eac-104">In this tutorial, you learn how to integrate Printix with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="b09e2-104">V tomto kurzu zjistíte, jak toointegrate Printix s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="b09e2-104">In this tutorial, you learn how toointegrate Printix with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="81eac-105">Integrace Printix s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="81eac-105">Integrating Printix with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="b09e2-105">Integrace Printix s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="b09e2-105">Integrating Printix with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="81eac-106">Můžete řídit ve službě Azure AD, který má přístup k Printix</span><span class="sxs-lookup"><span data-stu-id="81eac-106">You can control in Azure AD who has access to Printix</span></span>
-- <span data-ttu-id="81eac-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k Printix (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="81eac-107">You can enable your users to automatically get signed-on to Printix (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="81eac-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="81eac-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="b09e2-106">Můžete řídit ve službě Azure AD, který má přístup tooPrintix</span><span class="sxs-lookup"><span data-stu-id="b09e2-106">You can control in Azure AD who has access tooPrintix</span></span>
+- <span data-ttu-id="b09e2-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooPrintix (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="b09e2-107">You can enable your users tooautomatically get signed-on tooPrintix (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="b09e2-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="b09e2-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="81eac-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="81eac-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="b09e2-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="b09e2-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="81eac-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="81eac-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="b09e2-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b09e2-110">Prerequisites</span></span>
 
-<span data-ttu-id="81eac-111">Konfigurace integrace Azure AD s Printix, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="81eac-111">To configure Azure AD integration with Printix, you need the following items:</span></span>
+<span data-ttu-id="b09e2-111">Integrace služby Azure AD s Printix tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="b09e2-111">tooconfigure Azure AD integration with Printix, you need hello following items:</span></span>
 
-- <span data-ttu-id="81eac-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="81eac-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="81eac-113">Printix jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="81eac-113">A Printix single sign-on enabled subscription</span></span>
+- <span data-ttu-id="b09e2-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="b09e2-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="b09e2-113">Printix jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="b09e2-113">A Printix single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="81eac-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="81eac-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="b09e2-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="b09e2-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="81eac-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="81eac-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="b09e2-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="b09e2-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="81eac-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="81eac-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="81eac-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="81eac-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="b09e2-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="b09e2-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="b09e2-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="b09e2-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="81eac-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="81eac-118">Scenario description</span></span>
-<span data-ttu-id="81eac-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="81eac-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="81eac-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="81eac-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="b09e2-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="b09e2-118">Scenario description</span></span>
+<span data-ttu-id="b09e2-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="b09e2-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="b09e2-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="b09e2-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="81eac-121">Přidání Printix z Galerie</span><span class="sxs-lookup"><span data-stu-id="81eac-121">Adding Printix from the gallery</span></span>
-2. <span data-ttu-id="81eac-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="81eac-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="b09e2-121">Přidání Printix z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="b09e2-121">Adding Printix from hello gallery</span></span>
+2. <span data-ttu-id="b09e2-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b09e2-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-printix-from-the-gallery"></a><span data-ttu-id="81eac-123">Přidání Printix z Galerie</span><span class="sxs-lookup"><span data-stu-id="81eac-123">Adding Printix from the gallery</span></span>
-<span data-ttu-id="81eac-124">Při konfiguraci integrace Printix do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Printix z galerie.</span><span class="sxs-lookup"><span data-stu-id="81eac-124">To configure the integration of Printix into Azure AD, you need to add Printix from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-printix-from-hello-gallery"></a><span data-ttu-id="b09e2-123">Přidání Printix z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="b09e2-123">Adding Printix from hello gallery</span></span>
+<span data-ttu-id="b09e2-124">tooconfigure hello integrace Printix do Azure AD, je nutné tooadd Printix hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="b09e2-124">tooconfigure hello integration of Printix into Azure AD, you need tooadd Printix from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="81eac-125">**Pokud chcete přidat Printix z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="81eac-125">**To add Printix from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="b09e2-125">**tooadd Printix z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b09e2-125">**tooadd Printix from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="81eac-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="81eac-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="b09e2-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="b09e2-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="81eac-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="81eac-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="81eac-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="81eac-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="b09e2-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="b09e2-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="81eac-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="81eac-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="b09e2-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b09e2-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="81eac-133">Do vyhledávacího pole zadejte **Printix**.</span><span class="sxs-lookup"><span data-stu-id="81eac-133">In the search box, type **Printix**.</span></span>
+4. <span data-ttu-id="b09e2-133">Hello vyhledávacího pole zadejte **Printix**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-133">In hello search box, type **Printix**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/tutorial_printix_search.png)
 
-5. <span data-ttu-id="81eac-135">Na panelu výsledků vyberte **Printix**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="81eac-135">In the results panel, select **Printix**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="b09e2-135">Na panelu výsledků hello vyberte **Printix**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="b09e2-135">In hello results panel, select **Printix**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/tutorial_printix_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="81eac-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="81eac-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="81eac-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Printix podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="81eac-138">In this section, you configure and test Azure AD single sign-on with Printix based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="b09e2-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="b09e2-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="b09e2-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Printix podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="b09e2-138">In this section, you configure and test Azure AD single sign-on with Printix based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="81eac-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Printix je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="81eac-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Printix is to a user in Azure AD.</span></span> <span data-ttu-id="81eac-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Printix musí navázat.</span><span class="sxs-lookup"><span data-stu-id="81eac-140">In other words, a link relationship between an Azure AD user and the related user in Printix needs to be established.</span></span>
+<span data-ttu-id="b09e2-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Printix je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b09e2-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Printix is tooa user in Azure AD.</span></span> <span data-ttu-id="b09e2-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Printix musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="b09e2-140">In other words, a link relationship between an Azure AD user and hello related user in Printix needs toobe established.</span></span>
 
-<span data-ttu-id="81eac-141">V Printix, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="81eac-141">In Printix, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="b09e2-141">V Printix, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="b09e2-141">In Printix, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="81eac-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Printix, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="81eac-142">To configure and test Azure AD single sign-on with Printix, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="b09e2-142">tooconfigure a testu Azure AD jednotné přihlašování s Printix, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="b09e2-142">tooconfigure and test Azure AD single sign-on with Printix, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="81eac-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="81eac-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="81eac-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="81eac-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="81eac-145">**[Vytvoření zkušebního uživatele Printix](#creating-a-printix-test-user)**  – Pokud chcete mít protějšek Britta Simon v Printix propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="81eac-145">**[Creating a Printix test user](#creating-a-printix-test-user)** - to have a counterpart of Britta Simon in Printix that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="81eac-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="81eac-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="81eac-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="81eac-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="b09e2-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="b09e2-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="b09e2-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b09e2-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="b09e2-145">**[Vytvoření zkušebního uživatele Printix](#creating-a-printix-test-user)**  -toohave protějšek Britta Simon v Printix, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="b09e2-145">**[Creating a Printix test user](#creating-a-printix-test-user)** - toohave a counterpart of Britta Simon in Printix that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="b09e2-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b09e2-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="b09e2-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="b09e2-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="81eac-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="81eac-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="b09e2-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b09e2-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="81eac-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Printix.</span><span class="sxs-lookup"><span data-stu-id="81eac-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Printix application.</span></span>
+<span data-ttu-id="b09e2-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Printix.</span><span class="sxs-lookup"><span data-stu-id="b09e2-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Printix application.</span></span>
 
-<span data-ttu-id="81eac-150">**Ke konfiguraci Azure AD jednotné přihlašování s Printix, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="81eac-150">**To configure Azure AD single sign-on with Printix, perform the following steps:**</span></span>
+<span data-ttu-id="b09e2-150">**tooconfigure Azure AD jednotné přihlašování s Printix, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b09e2-150">**tooconfigure Azure AD single sign-on with Printix, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="81eac-151">Na portálu Azure na **Printix** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="81eac-151">In the Azure portal, on the **Printix** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="b09e2-151">V portálu Azure, na hello hello **Printix** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-151">In hello Azure portal, on hello **Printix** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="81eac-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="81eac-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="b09e2-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b09e2-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_samlbase.png)
 
-3. <span data-ttu-id="81eac-155">Na **Printix domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="81eac-155">On the **Printix Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="b09e2-155">Na hello **Printix domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="b09e2-155">On hello **Printix Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_url.png)
 
-    <span data-ttu-id="81eac-157">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.printix.net`</span><span class="sxs-lookup"><span data-stu-id="81eac-157">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<subdomain>.printix.net`</span></span>
+    <span data-ttu-id="b09e2-157">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.printix.net`</span><span class="sxs-lookup"><span data-stu-id="b09e2-157">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<subdomain>.printix.net`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="81eac-158">Hodnota není skutečné.</span><span class="sxs-lookup"><span data-stu-id="81eac-158">The value is not real.</span></span> <span data-ttu-id="81eac-159">Aktualizujte hodnotu s skutečná adresa URL přihlašování.</span><span class="sxs-lookup"><span data-stu-id="81eac-159">Update the value with the actual Sign-On URL.</span></span> <span data-ttu-id="81eac-160">Obraťte se na [tým podpory Printix klienta](mailto:support@printix.net) k získání hodnoty.</span><span class="sxs-lookup"><span data-stu-id="81eac-160">Contact [Printix Client support team](mailto:support@printix.net) to get the value.</span></span> 
+    > <span data-ttu-id="b09e2-158">Hodnota Hello není skutečné.</span><span class="sxs-lookup"><span data-stu-id="b09e2-158">hello value is not real.</span></span> <span data-ttu-id="b09e2-159">Aktualizace hello hodnotu s hello skutečná adresa URL přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b09e2-159">Update hello value with hello actual Sign-On URL.</span></span> <span data-ttu-id="b09e2-160">Obraťte se na [tým podpory Printix klienta](mailto:support@printix.net) tooget hello hodnotu.</span><span class="sxs-lookup"><span data-stu-id="b09e2-160">Contact [Printix Client support team](mailto:support@printix.net) tooget hello value.</span></span> 
  
-4. <span data-ttu-id="81eac-161">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="81eac-161">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+4. <span data-ttu-id="b09e2-161">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="b09e2-161">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_certificate.png) 
 
-5. <span data-ttu-id="81eac-163">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="81eac-163">Click **Save** button.</span></span>
+5. <span data-ttu-id="b09e2-163">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b09e2-163">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="81eac-165">Přihlášení ke klientovi Printix jako správce.</span><span class="sxs-lookup"><span data-stu-id="81eac-165">Sign-on to your Printix tenant as an administrator.</span></span>
+6. <span data-ttu-id="b09e2-165">Klient Printix tooyour přihlášení jako správce.</span><span class="sxs-lookup"><span data-stu-id="b09e2-165">Sign-on tooyour Printix tenant as an administrator.</span></span>
 
-7. <span data-ttu-id="81eac-166">V nabídce v horní části, klikněte na ikonu v pravém horním rohu a vyberte "**ověřování**".</span><span class="sxs-lookup"><span data-stu-id="81eac-166">In the menu on the top, click the icon at the upper right corner and select "**Authentication**".</span></span>
+7. <span data-ttu-id="b09e2-166">V nabídce hello hello nahoře, klikněte na ikonu hello v pravém horním rohu hello a vyberte "**ověřování**".</span><span class="sxs-lookup"><span data-stu-id="b09e2-166">In hello menu on hello top, click hello icon at hello upper right corner and select "**Authentication**".</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_06.png)
 
-8. <span data-ttu-id="81eac-168">Na **instalační program** vyberte **Azure nebo Office 365 povolit ověřování**</span><span class="sxs-lookup"><span data-stu-id="81eac-168">On the **Setup** tab, select **Enable Azure/Office 365 authentication**</span></span>
+8. <span data-ttu-id="b09e2-168">Na hello **instalace** vyberte **ověřování povolit Azure nebo Office 365**</span><span class="sxs-lookup"><span data-stu-id="b09e2-168">On hello **Setup** tab, select **Enable Azure/Office 365 authentication**</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_07.png)
 
-9. <span data-ttu-id="81eac-170">Na **Azure** kartě, zadejte adresu URL federačních metadat do textového pole z "**dokument federačních metadat**".</span><span class="sxs-lookup"><span data-stu-id="81eac-170">On the **Azure** tab, input federation metadata URL to the textbox of "**Federation metadata document**".</span></span> 
+9. <span data-ttu-id="b09e2-170">Na hello **Azure** kartě pole toohello adresa URL vstupu federační metadata z "**dokument federačních metadat**".</span><span class="sxs-lookup"><span data-stu-id="b09e2-170">On hello **Azure** tab, input federation metadata URL toohello textbox of "**Federation metadata document**".</span></span> 
 
-    <span data-ttu-id="81eac-171">Připojte soubor metadat xml, který jste si stáhli z Azure AD [tým podpory Printix](mailto:support@printix.net).</span><span class="sxs-lookup"><span data-stu-id="81eac-171">Attach the metadata xml file which you downloaded from Azure AD to [Printix support team](mailto:support@printix.net).</span></span> <span data-ttu-id="81eac-172">Pak nahrajte soubor xml a zadat adresu URL federačních metadat.</span><span class="sxs-lookup"><span data-stu-id="81eac-172">Then they upload the xml file and provide a federation metadata URL.</span></span>
+    <span data-ttu-id="b09e2-171">Připojte soubor hello metadat xml, který jste stáhli z Azure AD příliš[tým podpory Printix](mailto:support@printix.net).</span><span class="sxs-lookup"><span data-stu-id="b09e2-171">Attach hello metadata xml file which you downloaded from Azure AD too[Printix support team](mailto:support@printix.net).</span></span> <span data-ttu-id="b09e2-172">Potom nahrát soubor xml hello a zadat adresu URL federačních metadat.</span><span class="sxs-lookup"><span data-stu-id="b09e2-172">Then they upload hello xml file and provide a federation metadata URL.</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_08.png)
    
-10. <span data-ttu-id="81eac-174">Klikněte na tlačítko "**testování**"tlačítko a klikněte na tlačítko"**OK**" tlačítko, pokud byl test úspěšný.</span><span class="sxs-lookup"><span data-stu-id="81eac-174">Click the "**Test**" button and click "**OK**" button if the test was successful.</span></span>
+10. <span data-ttu-id="b09e2-174">Klikněte na tlačítko hello "**testování**"tlačítko a klikněte na tlačítko"**OK**" tlačítko Pokud hello test proběhl úspěšně.</span><span class="sxs-lookup"><span data-stu-id="b09e2-174">Click hello "**Test**" button and click "**OK**" button if hello test was successful.</span></span>
    
-     <span data-ttu-id="81eac-175">Po kliknutí na tlačítko se zobrazí stránka služby Azure active directory **testování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="81eac-175">Azure active directory page will show after clicking the **test** button.</span></span> <span data-ttu-id="81eac-176">"Test bylo úspěšné" zde znamená po zadání přihlašovacích údajů účtu Azure test, který bude pop se zobrazí zpráva "nastavení testovaný OK". Klikněte **OK** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="81eac-176">"The test was successful" here means after entering the credentials of your Azure test account it will pop up a message "Settings tested OK".Then click the **OK** button.</span></span>
+     <span data-ttu-id="b09e2-175">Stránka služby Azure active directory se zobrazí po kliknutí na hello **testování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b09e2-175">Azure active directory page will show after clicking hello **test** button.</span></span> <span data-ttu-id="b09e2-176">"hello byl test úspěšný" zde znamená po zadání přihlašovacích údajů účtu Azure test, který bude pop hello se zobrazí zpráva "nastavení testovaný OK". Pak klikněte na tlačítko hello **OK** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b09e2-176">"hello test was successful" here means after entering hello credentials of your Azure test account it will pop up a message "Settings tested OK".Then click hello **OK** button.</span></span>
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_09.png)
 
-11. <span data-ttu-id="81eac-178">Klikněte **Uložit** na tlačítko "**ověřování**" stránky.</span><span class="sxs-lookup"><span data-stu-id="81eac-178">Click the **Save** button on "**Authentication**" page.</span></span>
+11. <span data-ttu-id="b09e2-178">Klikněte na tlačítko hello **Uložit** na tlačítko "**ověřování**" stránky.</span><span class="sxs-lookup"><span data-stu-id="b09e2-178">Click hello **Save** button on "**Authentication**" page.</span></span>
 
 
 > [!TIP]
-> <span data-ttu-id="81eac-179">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="81eac-179">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="81eac-180">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="81eac-180">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="81eac-181">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="81eac-181">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="b09e2-179">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="b09e2-179">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="b09e2-180">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="b09e2-180">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="b09e2-181">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="b09e2-181">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="81eac-182">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="81eac-182">Creating an Azure AD test user</span></span>
-<span data-ttu-id="81eac-183">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="81eac-183">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="b09e2-182">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="b09e2-182">Creating an Azure AD test user</span></span>
+<span data-ttu-id="b09e2-183">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="b09e2-183">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="81eac-185">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="81eac-185">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="b09e2-185">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b09e2-185">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="81eac-186">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="81eac-186">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="b09e2-186">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="b09e2-186">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="81eac-188">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="81eac-188">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="b09e2-188">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-188">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="81eac-190">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="81eac-190">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="b09e2-190">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="b09e2-190">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="81eac-192">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="81eac-192">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="b09e2-192">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="b09e2-192">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="81eac-194">a.</span><span class="sxs-lookup"><span data-stu-id="81eac-194">a.</span></span> <span data-ttu-id="81eac-195">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="81eac-195">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="b09e2-194">a.</span><span class="sxs-lookup"><span data-stu-id="b09e2-194">a.</span></span> <span data-ttu-id="b09e2-195">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-195">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="81eac-196">b.</span><span class="sxs-lookup"><span data-stu-id="81eac-196">b.</span></span> <span data-ttu-id="81eac-197">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="81eac-197">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="b09e2-196">b.</span><span class="sxs-lookup"><span data-stu-id="b09e2-196">b.</span></span> <span data-ttu-id="b09e2-197">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="b09e2-197">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="81eac-198">c.</span><span class="sxs-lookup"><span data-stu-id="81eac-198">c.</span></span> <span data-ttu-id="81eac-199">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="81eac-199">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="b09e2-198">c.</span><span class="sxs-lookup"><span data-stu-id="b09e2-198">c.</span></span> <span data-ttu-id="b09e2-199">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-199">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="81eac-200">d.</span><span class="sxs-lookup"><span data-stu-id="81eac-200">d.</span></span> <span data-ttu-id="81eac-201">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="81eac-201">Click **Create**.</span></span>
+    <span data-ttu-id="b09e2-200">d.</span><span class="sxs-lookup"><span data-stu-id="b09e2-200">d.</span></span> <span data-ttu-id="b09e2-201">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-201">Click **Create**.</span></span>
  
-### <a name="creating-a-printix-test-user"></a><span data-ttu-id="81eac-202">Vytvoření zkušebního uživatele Printix</span><span class="sxs-lookup"><span data-stu-id="81eac-202">Creating a Printix test user</span></span>
+### <a name="creating-a-printix-test-user"></a><span data-ttu-id="b09e2-202">Vytvoření zkušebního uživatele Printix</span><span class="sxs-lookup"><span data-stu-id="b09e2-202">Creating a Printix test user</span></span>
 
-<span data-ttu-id="81eac-203">Cílem této části je vytvoření uživatele v Printix nazývá Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="81eac-203">The objective of this section is to create a user called Britta Simon in Printix.</span></span> <span data-ttu-id="81eac-204">Printix podporuje za běhu zřizování, který je ve výchozím nastavení povolené.</span><span class="sxs-lookup"><span data-stu-id="81eac-204">Printix supports just-in-time provisioning, which is by default enabled.</span></span>
+<span data-ttu-id="b09e2-203">Hello cílem této části je toocreate volal Britta Simon v Printix uživatele.</span><span class="sxs-lookup"><span data-stu-id="b09e2-203">hello objective of this section is toocreate a user called Britta Simon in Printix.</span></span> <span data-ttu-id="b09e2-204">Printix podporuje za běhu zřizování, který je ve výchozím nastavení povolené.</span><span class="sxs-lookup"><span data-stu-id="b09e2-204">Printix supports just-in-time provisioning, which is by default enabled.</span></span>
 
-<span data-ttu-id="81eac-205">Neexistuje žádná položka akce pro vás v této části.</span><span class="sxs-lookup"><span data-stu-id="81eac-205">There is no action item for you in this section.</span></span> <span data-ttu-id="81eac-206">Nový uživatel se vytvoří během pokusu o přístup k Printix, pokud ještě neexistuje.</span><span class="sxs-lookup"><span data-stu-id="81eac-206">A new user is created during an attempt to access Printix if it doesn't exist yet.</span></span> 
+<span data-ttu-id="b09e2-205">Neexistuje žádná položka akce pro vás v této části.</span><span class="sxs-lookup"><span data-stu-id="b09e2-205">There is no action item for you in this section.</span></span> <span data-ttu-id="b09e2-206">Pokud ještě neexistuje, vytvoří se nový uživatel během pokusu o tooaccess Printix.</span><span class="sxs-lookup"><span data-stu-id="b09e2-206">A new user is created during an attempt tooaccess Printix if it doesn't exist yet.</span></span> 
 
 > [!NOTE]
-> <span data-ttu-id="81eac-207">Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Printix](mailto:support@printix.net).</span><span class="sxs-lookup"><span data-stu-id="81eac-207">If you need to create a user manually, you need to contact the [Printix support team](mailto:support@printix.net).</span></span>
+> <span data-ttu-id="b09e2-207">Pokud potřebujete toocreate uživatel ručně, je nutné toocontact hello [tým podpory Printix](mailto:support@printix.net).</span><span class="sxs-lookup"><span data-stu-id="b09e2-207">If you need toocreate a user manually, you need toocontact hello [Printix support team](mailto:support@printix.net).</span></span>
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="81eac-208">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="81eac-208">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="b09e2-208">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="b09e2-208">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="81eac-209">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Printix.</span><span class="sxs-lookup"><span data-stu-id="81eac-209">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Printix.</span></span>
+<span data-ttu-id="b09e2-209">V této části povolíte tak, že udělíte přístup tooPrintix toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="b09e2-209">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooPrintix.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="81eac-211">**Pokud chcete přiřadit Britta Simon Printix, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="81eac-211">**To assign Britta Simon to Printix, perform the following steps:**</span></span>
+<span data-ttu-id="b09e2-211">**tooassign Britta Simon tooPrintix, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="b09e2-211">**tooassign Britta Simon tooPrintix, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="81eac-212">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="81eac-212">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="b09e2-212">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-212">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="81eac-214">V seznamu aplikací vyberte **Printix**.</span><span class="sxs-lookup"><span data-stu-id="81eac-214">In the applications list, select **Printix**.</span></span>
+2. <span data-ttu-id="b09e2-214">V seznamu aplikace hello vyberte **Printix**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-214">In hello applications list, select **Printix**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-printix-tutorial/tutorial_printix_app.png) 
 
-3. <span data-ttu-id="81eac-216">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="81eac-216">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="b09e2-216">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="b09e2-216">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="81eac-218">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="81eac-218">Click **Add** button.</span></span> <span data-ttu-id="81eac-219">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="81eac-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="b09e2-218">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="b09e2-218">Click **Add** button.</span></span> <span data-ttu-id="b09e2-219">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b09e2-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="81eac-221">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="81eac-221">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="b09e2-221">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="b09e2-221">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="81eac-222">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="81eac-222">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="b09e2-222">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b09e2-222">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="81eac-223">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="81eac-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="b09e2-223">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="b09e2-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="81eac-224">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="81eac-224">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="b09e2-224">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="b09e2-224">Testing single sign-on</span></span>
 
-<span data-ttu-id="81eac-225">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="81eac-225">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="b09e2-225">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="b09e2-225">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="81eac-226">Když kliknete na dlaždici Printix na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Printix.</span><span class="sxs-lookup"><span data-stu-id="81eac-226">When you click the Printix tile in the Access Panel, you should get automatically signed-on to your Printix application.</span></span>
+<span data-ttu-id="b09e2-226">Když kliknete na dlaždici Printix hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Printix aplikace.</span><span class="sxs-lookup"><span data-stu-id="b09e2-226">When you click hello Printix tile in hello Access Panel, you should get automatically signed-on tooyour Printix application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="81eac-227">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="81eac-227">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b09e2-227">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="b09e2-227">Additional resources</span></span>
 
-* [<span data-ttu-id="81eac-228">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="81eac-228">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="81eac-229">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="81eac-229">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="b09e2-228">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b09e2-228">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="b09e2-229">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="b09e2-229">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

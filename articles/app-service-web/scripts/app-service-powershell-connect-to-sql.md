@@ -1,6 +1,6 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k databázi SQL | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k databázi SQL"
+title: "aaaAzure ukázkový skript prostředí PowerShell - připojit databázi SQL webové aplikace tooa | Microsoft Docs"
+description: "Azure skript prostředí PowerShell ukázkový – připojit databázi SQL tooa webové aplikace"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,46 +16,46 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5312bf6b81d1cc48490b71c3f77323cca23e1559
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f80b940378d020cbcaec2c1bbc28bae1a3ef35a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-sql-database"></a><span data-ttu-id="b551d-103">Webovou aplikaci připojit k databázi SQL</span><span class="sxs-lookup"><span data-stu-id="b551d-103">Connect a web app to a SQL database</span></span>
+# <a name="connect-a-web-app-tooa-sql-database"></a><span data-ttu-id="f2390-103">Připojit databáze SQL tooa webové aplikace</span><span class="sxs-lookup"><span data-stu-id="f2390-103">Connect a web app tooa SQL database</span></span>
 
-<span data-ttu-id="b551d-104">V tomto scénáři se dozvíte, jak vytvářet Azure SQL database a webové aplikace Azure.</span><span class="sxs-lookup"><span data-stu-id="b551d-104">In this scenario you will learn how to create an Azure SQL database and an Azure web app.</span></span> <span data-ttu-id="b551d-105">Potom propojíte databáze SQL pro webovou aplikaci pomocí nastavení aplikace.</span><span class="sxs-lookup"><span data-stu-id="b551d-105">Then you will link the SQL database to the web app using app settings.</span></span>
+<span data-ttu-id="f2390-104">V tomto scénáři se dozvíte, jak toocreate Azure SQL database a Azure webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="f2390-104">In this scenario you will learn how toocreate an Azure SQL database and an Azure web app.</span></span> <span data-ttu-id="f2390-105">Potom propojíte hello SQL databáze toohello webovou aplikaci pomocí nastavení aplikace.</span><span class="sxs-lookup"><span data-stu-id="f2390-105">Then you will link hello SQL database toohello web app using app settings.</span></span>
 
-<span data-ttu-id="b551d-106">V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure.</span><span class="sxs-lookup"><span data-stu-id="b551d-106">If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/overview), and then run `Login-AzureRmAccount` to create a connection with Azure.</span></span>
+<span data-ttu-id="f2390-106">V případě potřeby nainstalujte prostředí Azure PowerShell pomocí hello instrukce najít v hello hello [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` toocreate připojení s Azure.</span><span class="sxs-lookup"><span data-stu-id="f2390-106">If needed, install hello Azure PowerShell using hello instruction found in hello [Azure PowerShell guide](/powershell/azure/overview), and then run `Login-AzureRmAccount` toocreate a connection with Azure.</span></span>
 
-## <a name="sample-script"></a><span data-ttu-id="b551d-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="b551d-107">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="f2390-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="f2390-107">Sample script</span></span>
 
-<span data-ttu-id="b551d-108">[!code-powershell[hlavní](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "webovou aplikaci připojit k databázi SQL")]</span><span class="sxs-lookup"><span data-stu-id="b551d-108">[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect a web app to a SQL database")]</span></span>
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect a web app tooa SQL database")]
 
-## <a name="clean-up-deployment"></a><span data-ttu-id="b551d-109">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="b551d-109">Clean up deployment</span></span> 
+## <a name="clean-up-deployment"></a><span data-ttu-id="f2390-108">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="f2390-108">Clean up deployment</span></span> 
 
-<span data-ttu-id="b551d-110">Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="b551d-110">After the script sample has been run, the following command can be used to remove the resource group, web app, and all related resources.</span></span>
+<span data-ttu-id="f2390-109">Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello, webové aplikace a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="f2390-109">After hello script sample has been run, hello following command can be used tooremove hello resource group, web app, and all related resources.</span></span>
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="script-explanation"></a><span data-ttu-id="b551d-111">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="b551d-111">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="f2390-110">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="f2390-110">Script explanation</span></span>
 
-<span data-ttu-id="b551d-112">Tento skript používá následující příkazy.</span><span class="sxs-lookup"><span data-stu-id="b551d-112">This script uses the following commands.</span></span> <span data-ttu-id="b551d-113">Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.</span><span class="sxs-lookup"><span data-stu-id="b551d-113">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="f2390-111">Tento skript používá hello následující příkazy.</span><span class="sxs-lookup"><span data-stu-id="f2390-111">This script uses hello following commands.</span></span> <span data-ttu-id="f2390-112">Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.</span><span class="sxs-lookup"><span data-stu-id="f2390-112">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="b551d-114">Příkaz</span><span class="sxs-lookup"><span data-stu-id="b551d-114">Command</span></span> | <span data-ttu-id="b551d-115">Poznámky</span><span class="sxs-lookup"><span data-stu-id="b551d-115">Notes</span></span> |
+| <span data-ttu-id="f2390-113">Příkaz</span><span class="sxs-lookup"><span data-stu-id="f2390-113">Command</span></span> | <span data-ttu-id="f2390-114">Poznámky</span><span class="sxs-lookup"><span data-stu-id="f2390-114">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="b551d-116">Nový AzureRmResourceGroup</span><span class="sxs-lookup"><span data-stu-id="b551d-116">New-AzureRmResourceGroup</span></span>](/powershell/module/azurerm.resources/new-azurermresourcegroup) | <span data-ttu-id="b551d-117">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="b551d-117">Creates a resource group in which all resources are stored.</span></span> |
-| [<span data-ttu-id="b551d-118">Nové AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="b551d-118">New-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/new-azurermappserviceplan) | <span data-ttu-id="b551d-119">Vytvoří plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="b551d-119">Creates an App Service plan.</span></span> |
-| [<span data-ttu-id="b551d-120">Nové AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="b551d-120">New-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/new-azurermwebapp) | <span data-ttu-id="b551d-121">Vytvoří webovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="b551d-121">Creates a web app.</span></span> |
-| [<span data-ttu-id="b551d-122">Nový AzureRMSQLServer</span><span class="sxs-lookup"><span data-stu-id="b551d-122">New-AzureRMSQLServer</span></span>](/powershell/module/azurerm.sql/new-azurermsqlserver) | <span data-ttu-id="b551d-123">Vytvoří databáze SQL serveru.</span><span class="sxs-lookup"><span data-stu-id="b551d-123">Creates a SQL Database server.</span></span> |
-| [<span data-ttu-id="b551d-124">New-AzureRmSqlServerFirewallRule</span><span class="sxs-lookup"><span data-stu-id="b551d-124">New-AzureRmSqlServerFirewallRule</span></span>](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | <span data-ttu-id="b551d-125">Vytvoří pravidlo brány firewall pro server databáze SQL.</span><span class="sxs-lookup"><span data-stu-id="b551d-125">Creates a firewall rule for a SQL Database server.</span></span> |
-| [<span data-ttu-id="b551d-126">Nový AzureRMSQLDatabase</span><span class="sxs-lookup"><span data-stu-id="b551d-126">New-AzureRMSQLDatabase</span></span>](/powershell/module/azurerm.sql/new-azurermsqldatabase) | <span data-ttu-id="b551d-127">Vytvoří databázi nebo elastické databáze.</span><span class="sxs-lookup"><span data-stu-id="b551d-127">Creates a database or an elastic database.</span></span> |
-| [<span data-ttu-id="b551d-128">Set-AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="b551d-128">Set-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/set-azurermwebapp) | <span data-ttu-id="b551d-129">Upraví konfiguraci webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="b551d-129">Modifies a web app's configuration.</span></span> |
+| [<span data-ttu-id="f2390-115">Nový AzureRmResourceGroup</span><span class="sxs-lookup"><span data-stu-id="f2390-115">New-AzureRmResourceGroup</span></span>](/powershell/module/azurerm.resources/new-azurermresourcegroup) | <span data-ttu-id="f2390-116">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="f2390-116">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="f2390-117">Nové AzureRmAppServicePlan</span><span class="sxs-lookup"><span data-stu-id="f2390-117">New-AzureRmAppServicePlan</span></span>](/powershell/module/azurerm.websites/new-azurermappserviceplan) | <span data-ttu-id="f2390-118">Vytvoří plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="f2390-118">Creates an App Service plan.</span></span> |
+| [<span data-ttu-id="f2390-119">Nové AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="f2390-119">New-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/new-azurermwebapp) | <span data-ttu-id="f2390-120">Vytvoří webovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="f2390-120">Creates a web app.</span></span> |
+| [<span data-ttu-id="f2390-121">Nový AzureRMSQLServer</span><span class="sxs-lookup"><span data-stu-id="f2390-121">New-AzureRMSQLServer</span></span>](/powershell/module/azurerm.sql/new-azurermsqlserver) | <span data-ttu-id="f2390-122">Vytvoří databáze SQL serveru.</span><span class="sxs-lookup"><span data-stu-id="f2390-122">Creates a SQL Database server.</span></span> |
+| [<span data-ttu-id="f2390-123">New-AzureRmSqlServerFirewallRule</span><span class="sxs-lookup"><span data-stu-id="f2390-123">New-AzureRmSqlServerFirewallRule</span></span>](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | <span data-ttu-id="f2390-124">Vytvoří pravidlo brány firewall pro server databáze SQL.</span><span class="sxs-lookup"><span data-stu-id="f2390-124">Creates a firewall rule for a SQL Database server.</span></span> |
+| [<span data-ttu-id="f2390-125">Nový AzureRMSQLDatabase</span><span class="sxs-lookup"><span data-stu-id="f2390-125">New-AzureRMSQLDatabase</span></span>](/powershell/module/azurerm.sql/new-azurermsqldatabase) | <span data-ttu-id="f2390-126">Vytvoří databázi nebo elastické databáze.</span><span class="sxs-lookup"><span data-stu-id="f2390-126">Creates a database or an elastic database.</span></span> |
+| [<span data-ttu-id="f2390-127">Set-AzureRmWebApp</span><span class="sxs-lookup"><span data-stu-id="f2390-127">Set-AzureRmWebApp</span></span>](/powershell/module/azurerm.websites/set-azurermwebapp) | <span data-ttu-id="f2390-128">Upraví konfiguraci webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="f2390-128">Modifies a web app's configuration.</span></span> |
 
-## <a name="next-steps"></a><span data-ttu-id="b551d-130">Další kroky</span><span class="sxs-lookup"><span data-stu-id="b551d-130">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f2390-129">Další kroky</span><span class="sxs-lookup"><span data-stu-id="f2390-129">Next steps</span></span>
 
-<span data-ttu-id="b551d-131">Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="b551d-131">For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
+<span data-ttu-id="f2390-130">Další informace o modulu Azure PowerShell hello najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="f2390-130">For more information on hello Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
 
-<span data-ttu-id="b551d-132">Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="b551d-132">Additional Azure Powershell samples for Azure App Service Web Apps can be found in the [Azure PowerShell samples](../app-service-powershell-samples.md).</span></span>
+<span data-ttu-id="f2390-131">Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v hello [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="f2390-131">Additional Azure Powershell samples for Azure App Service Web Apps can be found in hello [Azure PowerShell samples](../app-service-powershell-samples.md).</span></span>

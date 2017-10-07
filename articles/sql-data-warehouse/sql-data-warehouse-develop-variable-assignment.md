@@ -1,5 +1,5 @@
 ---
-title: "Přiřazení proměnné v SQL Data Warehouse | Microsoft Docs"
+title: "proměnné aaaAssign v SQL Data Warehouse | Microsoft Docs"
 description: "Tipy pro přiřazení proměnné jazyka Transact-SQL v Azure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,26 +15,26 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9de48739bb0af80ff2a117704b31512c680f78d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-variables-in-sql-data-warehouse"></a><span data-ttu-id="9f140-103">Přiřazení proměnné v SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="9f140-103">Assign variables in SQL Data Warehouse</span></span>
-<span data-ttu-id="9f140-104">Jsou nastaveny proměnné v SQL Data Warehouse pomocí `DECLARE` příkaz nebo `SET` příkaz.</span><span class="sxs-lookup"><span data-stu-id="9f140-104">Variables in SQL Data Warehouse are set using the `DECLARE` statement or the `SET` statement.</span></span>
+# <a name="assign-variables-in-sql-data-warehouse"></a><span data-ttu-id="38c25-103">Přiřazení proměnné v SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="38c25-103">Assign variables in SQL Data Warehouse</span></span>
+<span data-ttu-id="38c25-104">Jsou nastaveny proměnné v SQL Data Warehouse pomocí hello `DECLARE` příkaz nebo hello `SET` příkaz.</span><span class="sxs-lookup"><span data-stu-id="38c25-104">Variables in SQL Data Warehouse are set using hello `DECLARE` statement or hello `SET` statement.</span></span>
 
-<span data-ttu-id="9f140-105">Všechny tyto způsoby perfektně platný nastavte hodnotu proměnné:</span><span class="sxs-lookup"><span data-stu-id="9f140-105">All of the following are perfectly valid ways to set a variable value:</span></span>
+<span data-ttu-id="38c25-105">Jsou všechny následující hello perfektně platné způsoby tooset hodnotu proměnné:</span><span class="sxs-lookup"><span data-stu-id="38c25-105">All of hello following are perfectly valid ways tooset a variable value:</span></span>
 
-## <a name="setting-variables-with-declare"></a><span data-ttu-id="9f140-106">Nastavení proměnné s DECLARE</span><span class="sxs-lookup"><span data-stu-id="9f140-106">Setting variables with DECLARE</span></span>
-<span data-ttu-id="9f140-107">Inicializace proměnných s DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="9f140-107">Initializing variables with DECLARE is one of the most flexible ways to set a variable value in SQL Data Warehouse.</span></span>
+## <a name="setting-variables-with-declare"></a><span data-ttu-id="38c25-106">Nastavení proměnné s DECLARE</span><span class="sxs-lookup"><span data-stu-id="38c25-106">Setting variables with DECLARE</span></span>
+<span data-ttu-id="38c25-107">Inicializace proměnných s DECLARE je jedním z hello nejpružnější způsoby tooset hodnotu proměnné v SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="38c25-107">Initializing variables with DECLARE is one of hello most flexible ways tooset a variable value in SQL Data Warehouse.</span></span>
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-<span data-ttu-id="9f140-108">DECLARE můžete také nastavit více než jednu proměnnou najednou.</span><span class="sxs-lookup"><span data-stu-id="9f140-108">You can also use DECLARE to set more than one variable at a time.</span></span> <span data-ttu-id="9f140-109">Nemůžete použít `SELECT` nebo `UPDATE` k tomu:</span><span class="sxs-lookup"><span data-stu-id="9f140-109">You cannot use `SELECT` or `UPDATE` to do this:</span></span>
+<span data-ttu-id="38c25-108">Současně můžete také použít DECLARE tooset více než jednu proměnnou.</span><span class="sxs-lookup"><span data-stu-id="38c25-108">You can also use DECLARE tooset more than one variable at a time.</span></span> <span data-ttu-id="38c25-109">Nemůžete použít `SELECT` nebo `UPDATE` toodo toto:</span><span class="sxs-lookup"><span data-stu-id="38c25-109">You cannot use `SELECT` or `UPDATE` toodo this:</span></span>
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +42,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-<span data-ttu-id="9f140-110">Nelze inicializovat a použití proměnné v příkazu DECLARE stejné.</span><span class="sxs-lookup"><span data-stu-id="9f140-110">You cannot initialise and use a variable in the same DECLARE statement.</span></span> <span data-ttu-id="9f140-111">Pro ilustraci bodem následující příklad je **není** povolena jako @p1 jak inicializovat a použít v příkazu DECLARE stejné.</span><span class="sxs-lookup"><span data-stu-id="9f140-111">To illustrate the point the example below is **not** allowed as @p1 is both initialized and used in the same DECLARE statement.</span></span> <span data-ttu-id="9f140-112">To bude mít za následek chybu.</span><span class="sxs-lookup"><span data-stu-id="9f140-112">This will result in an error.</span></span>
+<span data-ttu-id="38c25-110">Nelze inicializovat a použití proměnné v hello stejné příkazu DECLARE.</span><span class="sxs-lookup"><span data-stu-id="38c25-110">You cannot initialise and use a variable in hello same DECLARE statement.</span></span> <span data-ttu-id="38c25-111">tooillustrate hello bodu hello následující příklad je **není** povolena jako @p1 jak inicializovat a použít v hello stejné příkazu DECLARE.</span><span class="sxs-lookup"><span data-stu-id="38c25-111">tooillustrate hello point hello example below is **not** allowed as @p1 is both initialized and used in hello same DECLARE statement.</span></span> <span data-ttu-id="38c25-112">To bude mít za následek chybu.</span><span class="sxs-lookup"><span data-stu-id="38c25-112">This will result in an error.</span></span>
 
 ```sql
 DECLARE @p1 int = 0
@@ -50,10 +50,10 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a><span data-ttu-id="9f140-113">Nastavení hodnot sadou</span><span class="sxs-lookup"><span data-stu-id="9f140-113">Setting values with SET</span></span>
-<span data-ttu-id="9f140-114">Sada je velmi běžné metody pro nastavení jednu proměnnou.</span><span class="sxs-lookup"><span data-stu-id="9f140-114">Set is a very common method for setting a single variable.</span></span>
+## <a name="setting-values-with-set"></a><span data-ttu-id="38c25-113">Nastavení hodnot sadou</span><span class="sxs-lookup"><span data-stu-id="38c25-113">Setting values with SET</span></span>
+<span data-ttu-id="38c25-114">Sada je velmi běžné metody pro nastavení jednu proměnnou.</span><span class="sxs-lookup"><span data-stu-id="38c25-114">Set is a very common method for setting a single variable.</span></span>
 
-<span data-ttu-id="9f140-115">Všechny následující příklady jsou platné způsoby nastavení proměnné sadou:</span><span class="sxs-lookup"><span data-stu-id="9f140-115">All of the examples below are valid ways of setting a variable with SET:</span></span>
+<span data-ttu-id="38c25-115">Všechny hello příklady jsou platné způsoby nastavení proměnné sadou:</span><span class="sxs-lookup"><span data-stu-id="38c25-115">All of hello examples below are valid ways of setting a variable with SET:</span></span>
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -62,13 +62,13 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-<span data-ttu-id="9f140-116">Najednou můžete sadou nastavit pouze jednu proměnnou.</span><span class="sxs-lookup"><span data-stu-id="9f140-116">You can only set one variable at a time with SET.</span></span> <span data-ttu-id="9f140-117">Je ale, jak je vidět výše složené operátory povolená.</span><span class="sxs-lookup"><span data-stu-id="9f140-117">However, as can be seen above compound operators are permissable.</span></span>
+<span data-ttu-id="38c25-116">Najednou můžete sadou nastavit pouze jednu proměnnou.</span><span class="sxs-lookup"><span data-stu-id="38c25-116">You can only set one variable at a time with SET.</span></span> <span data-ttu-id="38c25-117">Je ale, jak je vidět výše složené operátory povolená.</span><span class="sxs-lookup"><span data-stu-id="38c25-117">However, as can be seen above compound operators are permissable.</span></span>
 
-## <a name="limitations"></a><span data-ttu-id="9f140-118">Omezení</span><span class="sxs-lookup"><span data-stu-id="9f140-118">Limitations</span></span>
-<span data-ttu-id="9f140-119">Vyberte nebo aktualizaci nelze použít pro přiřazení proměnné.</span><span class="sxs-lookup"><span data-stu-id="9f140-119">You cannot use SELECT or UPDATE for variable assignment.</span></span>
+## <a name="limitations"></a><span data-ttu-id="38c25-118">Omezení</span><span class="sxs-lookup"><span data-stu-id="38c25-118">Limitations</span></span>
+<span data-ttu-id="38c25-119">Vyberte nebo aktualizaci nelze použít pro přiřazení proměnné.</span><span class="sxs-lookup"><span data-stu-id="38c25-119">You cannot use SELECT or UPDATE for variable assignment.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="9f140-120">Další kroky</span><span class="sxs-lookup"><span data-stu-id="9f140-120">Next steps</span></span>
-<span data-ttu-id="9f140-121">Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].</span><span class="sxs-lookup"><span data-stu-id="9f140-121">For more development tips, see [development overview][development overview].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="38c25-120">Další kroky</span><span class="sxs-lookup"><span data-stu-id="38c25-120">Next steps</span></span>
+<span data-ttu-id="38c25-121">Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].</span><span class="sxs-lookup"><span data-stu-id="38c25-121">For more development tips, see [development overview][development overview].</span></span>
 
 <!--Image references-->
 

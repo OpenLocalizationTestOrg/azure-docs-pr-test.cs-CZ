@@ -1,6 +1,6 @@
 ---
-title: "Webová aplikace Azure založené na správci prostředků mezi rozhraní příkazového řádku nástroje pro Azure | Microsoft Docs"
-description: "Naučte se používat nový na základě Azure Resource Manager napříč platformami příkazového řádku nástroje pro správu webových aplikacích Azure."
+title: "aaaAzure nástroje příkazového řádku založené na správci prostředků a platformy pro webové aplikace Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello nové nástroje příkazového řádku založené na Azure Resource Manager napříč platformami toomanage webových aplikacích Azure."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,167 +14,167 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
-ms.openlocfilehash: 7a03e1417617453c43edcc3787da10d171359757
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5f5e03edcb01154aef3bd220cd27358f69656ef4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-azure-resource-manager-based-xplat-cli-for-azure-app-service"></a><span data-ttu-id="fcebb-103">Pomocí příkazového řádku XPlat založené na správci prostředků Azure pro službu Azure App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-103">Using Azure Resource Manager-Based XPlat CLI for Azure App Service</span></span>
+# <a name="using-azure-resource-manager-based-xplat-cli-for-azure-app-service"></a><span data-ttu-id="9e4b7-103">Pomocí příkazového řádku XPlat založené na správci prostředků Azure pro službu Azure App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-103">Using Azure Resource Manager-Based XPlat CLI for Azure App Service</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="fcebb-104">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="fcebb-104">Azure CLI</span></span>](app-service-web-app-azure-resource-manager-xplat-cli.md)
-> * [<span data-ttu-id="fcebb-105">Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="fcebb-105">Azure PowerShell</span></span>](app-service-web-app-azure-resource-manager-powershell.md)
+> * [<span data-ttu-id="9e4b7-104">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="9e4b7-104">Azure CLI</span></span>](app-service-web-app-azure-resource-manager-xplat-cli.md)
+> * [<span data-ttu-id="9e4b7-105">Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="9e4b7-105">Azure PowerShell</span></span>](app-service-web-app-azure-resource-manager-powershell.md)
 
-<span data-ttu-id="fcebb-106">S vydáním verze nástroje příkazového řádku pro různé platformy Microsoft Azure 0.10.5 byly přidány nové příkazy.</span><span class="sxs-lookup"><span data-stu-id="fcebb-106">With the release of Microsoft Azure Cross-platform Command-Line Tools version 0.10.5, new commands have been added.</span></span> <span data-ttu-id="fcebb-107">Tyto příkazy uživateli přidělit možnost použít příkazy prostředí PowerShell využívající Azure Resource Manager ke správě služby App Service.</span><span class="sxs-lookup"><span data-stu-id="fcebb-107">These commands give the user the ability to use Azure Resource Manager-based PowerShell commands to manage App Service.</span></span>
+<span data-ttu-id="9e4b7-106">Verze hello nástroje příkazového řádku pro různé platformy Microsoft Azure verze 0.10.5 byly přidány nové příkazy.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-106">With hello release of Microsoft Azure Cross-platform Command-Line Tools version 0.10.5, new commands have been added.</span></span> <span data-ttu-id="9e4b7-107">Tyto příkazy poskytnout hello uživatele hello možnost toouse založené na správci prostředků Azure PowerShell příkazy toomanage služby App Service.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-107">These commands give hello user hello ability toouse Azure Resource Manager-based PowerShell commands toomanage App Service.</span></span>
 
-<span data-ttu-id="fcebb-108">Další informace o správě skupin prostředků, najdete v části [používat rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků](../azure-resource-manager/xplat-cli-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="fcebb-108">To learn about managing Resource Groups, see [Use the Azure CLI to manage Azure resources and resource groups](../azure-resource-manager/xplat-cli-azure-resource-manager.md).</span></span> 
+<span data-ttu-id="9e4b7-108">toolearn o správě skupin prostředků, najdete v části [pomocí rozhraní příkazového řádku Azure toomanage hello Azure skupiny prostředků a prostředky](../azure-resource-manager/xplat-cli-azure-resource-manager.md).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-108">toolearn about managing Resource Groups, see [Use hello Azure CLI toomanage Azure resources and resource groups](../azure-resource-manager/xplat-cli-azure-resource-manager.md).</span></span> 
 
 > [!NOTE] 
-> <span data-ttu-id="fcebb-109">Také si vyzkoušet [Azure CLI 2.0](https://github.com/Azure/azure-cli), rozhraní příkazového řádku příští generace, napsané v Pythonu pro model nasazení prostředků správy.</span><span class="sxs-lookup"><span data-stu-id="fcebb-109">Also, try out [Azure CLI 2.0](https://github.com/Azure/azure-cli), a next-generation CLI written in Python for the resource management deployment model.</span></span>
+> <span data-ttu-id="9e4b7-109">Také si vyzkoušet [Azure CLI 2.0](https://github.com/Azure/azure-cli), rozhraní příkazového řádku příští generace, napsané v Pythonu pro model nasazení správy prostředků hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-109">Also, try out [Azure CLI 2.0](https://github.com/Azure/azure-cli), a next-generation CLI written in Python for hello resource management deployment model.</span></span>
 >
 >
 
-## <a name="managing-app-service-plans"></a><span data-ttu-id="fcebb-110">Správa služby App Service plány</span><span class="sxs-lookup"><span data-stu-id="fcebb-110">Managing App Service Plans</span></span>
-### <a name="create-an-app-service-plan"></a><span data-ttu-id="fcebb-111">Vytvořit plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-111">Create an App Service Plan</span></span>
-<span data-ttu-id="fcebb-112">Chcete-li vytvořit plán služby app service, použijte **vytvořit azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-112">To create an app service plan, use the **azure appserviceplan create** command.</span></span>
+## <a name="managing-app-service-plans"></a><span data-ttu-id="9e4b7-110">Správa služby App Service plány</span><span class="sxs-lookup"><span data-stu-id="9e4b7-110">Managing App Service Plans</span></span>
+### <a name="create-an-app-service-plan"></a><span data-ttu-id="9e4b7-111">Vytvořit plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-111">Create an App Service Plan</span></span>
+<span data-ttu-id="9e4b7-112">toocreate plán služby app service, použijte hello **vytvořit azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-112">toocreate an app service plan, use hello **azure appserviceplan create** command.</span></span>
 
-<span data-ttu-id="fcebb-113">Následují popisy různé parametry:</span><span class="sxs-lookup"><span data-stu-id="fcebb-113">Following are descriptions of the different parameters:</span></span>
+<span data-ttu-id="9e4b7-113">Následují popisy hello různé parametry:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-113">Following are descriptions of hello different parameters:</span></span>
 
-* <span data-ttu-id="fcebb-114">**--resource-group**: skupinu prostředků, která zahrnuje tarifu nově vytvořené aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-114">**--resource-group**: resource group that includes the newly created app service plan.</span></span>
-* <span data-ttu-id="fcebb-115">**– název**: název plánu služby app service.</span><span class="sxs-lookup"><span data-stu-id="fcebb-115">**--name**: name of the app service plan.</span></span>
-* <span data-ttu-id="fcebb-116">**--umístění**: umístění plánu služby app.</span><span class="sxs-lookup"><span data-stu-id="fcebb-116">**--location**: app service plan location.</span></span>
-* <span data-ttu-id="fcebb-117">**--sku**: požadovanou cenovou sku (Možnosti jsou: F1 (Free).</span><span class="sxs-lookup"><span data-stu-id="fcebb-117">**--sku**:  the desired pricing sku (The options are: F1 (Free).</span></span> <span data-ttu-id="fcebb-118">D1 (sdílené).</span><span class="sxs-lookup"><span data-stu-id="fcebb-118">D1 (Shared).</span></span> <span data-ttu-id="fcebb-119">B1 (základní malá), B2 (základní střední) a B3 (Basic velké).</span><span class="sxs-lookup"><span data-stu-id="fcebb-119">B1 (Basic Small), B2 (Basic Medium), and B3 (Basic Large).</span></span> <span data-ttu-id="fcebb-120">S1 (standardní malé), S2 (standardní střední) a S3 (standardní velké).</span><span class="sxs-lookup"><span data-stu-id="fcebb-120">S1 (Standard Small), S2 (Standard Medium), and S3 (Standard Large).</span></span> <span data-ttu-id="fcebb-121">P1 (malé Premium), P2 (střední Premium) a P3 (velké Premium).)</span><span class="sxs-lookup"><span data-stu-id="fcebb-121">P1 (Premium Small), P2 (Premium Medium), and P3 (Premium Large).)</span></span>
-* <span data-ttu-id="fcebb-122">**--instancí**: počet pracovních procesů v aplikaci služby plán (výchozí hodnota je 1).</span><span class="sxs-lookup"><span data-stu-id="fcebb-122">**--instances**: the number of workers in the app service plan (Default value is 1).</span></span>
+* <span data-ttu-id="9e4b7-114">**--resource-group**: skupinu prostředků, která zahrnuje hello nově vytvořený plán služby app service.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-114">**--resource-group**: resource group that includes hello newly created app service plan.</span></span>
+* <span data-ttu-id="9e4b7-115">**– název**: název hello plán služby app service.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-115">**--name**: name of hello app service plan.</span></span>
+* <span data-ttu-id="9e4b7-116">**--umístění**: umístění plánu služby app.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-116">**--location**: app service plan location.</span></span>
+* <span data-ttu-id="9e4b7-117">**--sku**: hello potřeby cenovou sku (hello možnosti jsou: F1 (zdarma).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-117">**--sku**:  hello desired pricing sku (hello options are: F1 (Free).</span></span> <span data-ttu-id="9e4b7-118">D1 (sdílené).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-118">D1 (Shared).</span></span> <span data-ttu-id="9e4b7-119">B1 (základní malá), B2 (základní střední) a B3 (Basic velké).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-119">B1 (Basic Small), B2 (Basic Medium), and B3 (Basic Large).</span></span> <span data-ttu-id="9e4b7-120">S1 (standardní malé), S2 (standardní střední) a S3 (standardní velké).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-120">S1 (Standard Small), S2 (Standard Medium), and S3 (Standard Large).</span></span> <span data-ttu-id="9e4b7-121">P1 (malé Premium), P2 (střední Premium) a P3 (velké Premium).)</span><span class="sxs-lookup"><span data-stu-id="9e4b7-121">P1 (Premium Small), P2 (Premium Medium), and P3 (Premium Large).)</span></span>
+* <span data-ttu-id="9e4b7-122">**--instancí**: hello počet pracovních procesů v plánu služby app hello (výchozí hodnota je 1).</span><span class="sxs-lookup"><span data-stu-id="9e4b7-122">**--instances**: hello number of workers in hello app service plan (Default value is 1).</span></span>
 
-<span data-ttu-id="fcebb-123">Příklad pro použití této rutiny:</span><span class="sxs-lookup"><span data-stu-id="fcebb-123">Example to use this cmdlet:</span></span>
+<span data-ttu-id="9e4b7-123">Příklad toouse tuto rutinu:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-123">Example toouse this cmdlet:</span></span>
 
     azure appserviceplan create --name ContosoAppServicePlan --location "South Central US" --resource-group ContosoAzureResourceGroup --sku P1 --instances 10
 
-#### <a name="create-a-linux-app-service-plan"></a><span data-ttu-id="fcebb-124">Vytvoření plánu služby App Service pro Linux</span><span class="sxs-lookup"><span data-stu-id="fcebb-124">Create a Linux App Service Plan</span></span>
+#### <a name="create-a-linux-app-service-plan"></a><span data-ttu-id="9e4b7-124">Vytvoření plánu služby App Service pro Linux</span><span class="sxs-lookup"><span data-stu-id="9e4b7-124">Create a Linux App Service Plan</span></span>
 
-<span data-ttu-id="fcebb-125">Používající stejný **vytvořit azure appserviceplan** příkazu se speciálním parametrem **– islinux true**.</span><span class="sxs-lookup"><span data-stu-id="fcebb-125">Using the same **azure appserviceplan create** command, with the extra parameter **--islinux true**.</span></span> <span data-ttu-id="fcebb-126">Všimněte si, omezení a oblastí, které jsou popsané v [Úvod do služby App Service v systému Linux](app-service-linux-intro.md)</span><span class="sxs-lookup"><span data-stu-id="fcebb-126">Note the restrictions and regions outlined in [Introduction to App Service on Linux](app-service-linux-intro.md)</span></span>
+<span data-ttu-id="9e4b7-125">Pomocí stejné hello **vytvořit azure appserviceplan** příkazu s hello speciálním parametrem **– islinux true**.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-125">Using hello same **azure appserviceplan create** command, with hello extra parameter **--islinux true**.</span></span> <span data-ttu-id="9e4b7-126">Všimněte si hello omezení a oblastí, které jsou popsané v [Úvod tooApp služby v systému Linux](app-service-linux-intro.md)</span><span class="sxs-lookup"><span data-stu-id="9e4b7-126">Note hello restrictions and regions outlined in [Introduction tooApp Service on Linux](app-service-linux-intro.md)</span></span>
 
-### <a name="list-existing-app-service-plans"></a><span data-ttu-id="fcebb-127">Seznam existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-127">List Existing App Service Plans</span></span>
-<span data-ttu-id="fcebb-128">K zobrazení seznamu existující plány služby aplikace, použijte **seznamu azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-128">To list the existing app service plans, use **azure appserviceplan list** command.</span></span>
+### <a name="list-existing-app-service-plans"></a><span data-ttu-id="9e4b7-127">Seznam existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-127">List Existing App Service Plans</span></span>
+<span data-ttu-id="9e4b7-128">používat toolist hello existující aplikace služby plány **seznamu azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-128">toolist hello existing app service plans, use **azure appserviceplan list** command.</span></span>
 
-<span data-ttu-id="fcebb-129">K zobrazení seznamu všech plánů služby app podle určité skupiny zdrojů, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-129">To list all app service plans under a specific resource group, use:</span></span>
+<span data-ttu-id="9e4b7-129">toolist všechny plány služby app v určité skupiny zdrojů, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-129">toolist all app service plans under a specific resource group, use:</span></span>
 
     azure appserviceplan list --resource-group ContosoAzureResourceGroup
 
-<span data-ttu-id="fcebb-130">Plán služby konkrétní aplikaci, použijte **zobrazit azure appserviceplan** příkaz:</span><span class="sxs-lookup"><span data-stu-id="fcebb-130">To get a specific app service plan, use **azure appserviceplan show** command:</span></span>
+<span data-ttu-id="9e4b7-130">tooget plán služeb konkrétní aplikaci, použijte **zobrazit azure appserviceplan** příkaz:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-130">tooget a specific app service plan, use **azure appserviceplan show** command:</span></span>
 
     azure appserviceplan show --name ContosoAppServicePlan --resource-group southeastasia
 
-### <a name="configure-an-existing-app-service-plan"></a><span data-ttu-id="fcebb-131">Konfigurace existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-131">Configure an existing App Service Plan</span></span>
-<span data-ttu-id="fcebb-132">Chcete-li změnit nastavení existujícího plánu služby app, použijte **konfigurace azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-132">To change the settings for an existing app service plan, use the **azure appserviceplan config** command.</span></span> <span data-ttu-id="fcebb-133">Můžete změnit sku a počet pracovních procesů</span><span class="sxs-lookup"><span data-stu-id="fcebb-133">You can change the sku, and the number of workers</span></span> 
+### <a name="configure-an-existing-app-service-plan"></a><span data-ttu-id="9e4b7-131">Konfigurace existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-131">Configure an existing App Service Plan</span></span>
+<span data-ttu-id="9e4b7-132">toochange hello nastavení existujícího plánu služby app, použijte hello **konfigurace azure appserviceplan** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-132">toochange hello settings for an existing app service plan, use hello **azure appserviceplan config** command.</span></span> <span data-ttu-id="9e4b7-133">Můžete změnit hello sku a hello počet pracovních procesů</span><span class="sxs-lookup"><span data-stu-id="9e4b7-133">You can change hello sku, and hello number of workers</span></span> 
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1 --instances 9
 
-#### <a name="scaling-an-app-service-plan"></a><span data-ttu-id="fcebb-134">Škálování plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-134">Scaling an App Service Plan</span></span>
-<span data-ttu-id="fcebb-135">Pokud chcete použít škálování, existující plán služby App Service, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-135">To scale an existing App Service Plan, use:</span></span>
+#### <a name="scaling-an-app-service-plan"></a><span data-ttu-id="9e4b7-134">Škálování plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-134">Scaling an App Service Plan</span></span>
+<span data-ttu-id="9e4b7-135">tooscale existující plán služby App Service, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-135">tooscale an existing App Service Plan, use:</span></span>
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --instances 9
 
-#### <a name="changing-the-sku-of-an-app-service-plan"></a><span data-ttu-id="fcebb-136">Změna skladová položka plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-136">Changing the SKU of an App Service Plan</span></span>
-<span data-ttu-id="fcebb-137">Chcete-li změnit sku systému existující plán služby App Service, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-137">To change the sku of an existing App Service Plan, use:</span></span>
+#### <a name="changing-hello-sku-of-an-app-service-plan"></a><span data-ttu-id="9e4b7-136">Změna hello skladová položka plánu služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-136">Changing hello SKU of an App Service Plan</span></span>
+<span data-ttu-id="9e4b7-137">toochange skladová položka hello existující plán služby App Service, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-137">toochange hello sku of an existing App Service Plan, use:</span></span>
 
     azure appserviceplan config --name ContosoAppServicePlan --resource-group ContosoAzureResourceGroup --sku S1
 
 
-### <a name="delete-an-existing-app-service-plan"></a><span data-ttu-id="fcebb-138">Odstranit existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-138">Delete an existing App Service Plan</span></span>
-<span data-ttu-id="fcebb-139">Pokud chcete odstranit existující plán služby app service, musí všechny aplikace přiřazené přesunout ani neodstraní.</span><span class="sxs-lookup"><span data-stu-id="fcebb-139">To delete an existing app service plan, all assigned apps need to be moved or deleted first.</span></span> <span data-ttu-id="fcebb-140">Potom pomocí **odstranit azure webapp** příkaz můžete odstranit plán služby app service.</span><span class="sxs-lookup"><span data-stu-id="fcebb-140">Then using the **azure webapp delete** command you can delete the app service plan.</span></span>
+### <a name="delete-an-existing-app-service-plan"></a><span data-ttu-id="9e4b7-138">Odstranit existující plán služby App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-138">Delete an existing App Service Plan</span></span>
+<span data-ttu-id="9e4b7-139">toodelete existující plán služby app service, všechny přiřazené aplikace potřeba toobe nepřesunul nebo neodstranil nejdřív.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-139">toodelete an existing app service plan, all assigned apps need toobe moved or deleted first.</span></span> <span data-ttu-id="9e4b7-140">Potom pomocí hello **odstranit azure webapp** příkaz odstraníte hello plán služby app service.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-140">Then using hello **azure webapp delete** command you can delete hello app service plan.</span></span>
 
     azure appserviceplan delete --name ContosoAppServicePlan --resource-group southeastasia
 
-## <a name="managing-app-service-apps"></a><span data-ttu-id="fcebb-141">Správa aplikací App Service</span><span class="sxs-lookup"><span data-stu-id="fcebb-141">Managing App Service apps</span></span>
-### <a name="create-a-web-app"></a><span data-ttu-id="fcebb-142">Vytvoření webové aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-142">Create a web app</span></span>
-<span data-ttu-id="fcebb-143">Chcete-li vytvořit webovou aplikaci, použijte **vytvořit azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-143">To create a web app, use the **azure webapp create** command.</span></span>
+## <a name="managing-app-service-apps"></a><span data-ttu-id="9e4b7-141">Správa aplikací App Service</span><span class="sxs-lookup"><span data-stu-id="9e4b7-141">Managing App Service apps</span></span>
+### <a name="create-a-web-app"></a><span data-ttu-id="9e4b7-142">Vytvoření webové aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-142">Create a web app</span></span>
+<span data-ttu-id="9e4b7-143">toocreate webové aplikace, použijte hello **vytvořit azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-143">toocreate a web app, use hello **azure webapp create** command.</span></span>
 
-<span data-ttu-id="fcebb-144">Následují popisy různé parametry:</span><span class="sxs-lookup"><span data-stu-id="fcebb-144">Following are descriptions of the different parameters:</span></span>
+<span data-ttu-id="9e4b7-144">Následují popisy hello různé parametry:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-144">Following are descriptions of hello different parameters:</span></span>
 
-* <span data-ttu-id="fcebb-145">**– název**: název webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-145">**--name**: name for the web app.</span></span>
-* <span data-ttu-id="fcebb-146">**--plán**: název plánu služby použít k hostování webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-146">**--plan**: name for the service plan used to host the web app.</span></span>
-* <span data-ttu-id="fcebb-147">**--resource-group**: skupinu prostředků, který je hostitelem plán služby App service.</span><span class="sxs-lookup"><span data-stu-id="fcebb-147">**--resource-group**: resource group that hosts the App service plan.</span></span>
-* <span data-ttu-id="fcebb-148">**--umístění**: umístění webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-148">**--location**: the web app location.</span></span>
+* <span data-ttu-id="9e4b7-145">**– název**: název webové aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-145">**--name**: name for hello web app.</span></span>
+* <span data-ttu-id="9e4b7-146">**--plán**: název pro plán služby hello použít toohost hello webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-146">**--plan**: name for hello service plan used toohost hello web app.</span></span>
+* <span data-ttu-id="9e4b7-147">**--resource-group**: skupinu prostředků, který je hostitelem hello plán služby App service.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-147">**--resource-group**: resource group that hosts hello App service plan.</span></span>
+* <span data-ttu-id="9e4b7-148">**--umístění**: hello umístění webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-148">**--location**: hello web app location.</span></span>
 
-<span data-ttu-id="fcebb-149">Příklad pro použití této rutiny:</span><span class="sxs-lookup"><span data-stu-id="fcebb-149">Example to use this cmdlet:</span></span>
+<span data-ttu-id="9e4b7-149">Příklad toouse tuto rutinu:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-149">Example toouse this cmdlet:</span></span>
 
     azure webapp create --name ContosoWebApp --resource-group ContosoAzureResourceGroup --plan ContosoAppServicePlan --location "South Central US"
 
-### <a name="delete-an-existing-app"></a><span data-ttu-id="fcebb-150">Odstraňte existující aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-150">Delete an existing app</span></span>
-<span data-ttu-id="fcebb-151">Chcete-li odstranit existující aplikaci, můžete použít **odstranit azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-151">To delete an existing app, you can use the **azure webapp delete** command.</span></span> <span data-ttu-id="fcebb-152">Je třeba zadat název aplikace a název skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="fcebb-152">You need to specify the name of the app and the resource group name.</span></span>
+### <a name="delete-an-existing-app"></a><span data-ttu-id="9e4b7-150">Odstraňte existující aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-150">Delete an existing app</span></span>
+<span data-ttu-id="9e4b7-151">toodelete existující aplikaci, můžete použít hello **odstranit azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-151">toodelete an existing app, you can use hello **azure webapp delete** command.</span></span> <span data-ttu-id="9e4b7-152">Potřebujete toospecify hello název aplikace hello a název skupiny prostředků hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-152">You need toospecify hello name of hello app and hello resource group name.</span></span>
 
     azure webapp delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="list-existing-apps"></a><span data-ttu-id="fcebb-153">Zobrazí seznam stávajících aplikací</span><span class="sxs-lookup"><span data-stu-id="fcebb-153">List existing apps</span></span>
-<span data-ttu-id="fcebb-154">K zobrazení seznamu existující aplikace, použijte **azure webapp seznamu** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-154">To list the existing apps, use the **azure webapp list** command.</span></span>
+### <a name="list-existing-apps"></a><span data-ttu-id="9e4b7-153">Zobrazí seznam stávajících aplikací</span><span class="sxs-lookup"><span data-stu-id="9e4b7-153">List existing apps</span></span>
+<span data-ttu-id="9e4b7-154">toolist hello existující aplikace, použijte hello **azure webapp seznamu** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-154">toolist hello existing apps, use hello **azure webapp list** command.</span></span>
 
-<span data-ttu-id="fcebb-155">K zobrazení seznamu všech aplikací v určité skupiny zdrojů, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-155">To list all apps in a specific resource group, use:</span></span>
+<span data-ttu-id="9e4b7-155">toolist všechny aplikace v určité skupiny zdrojů, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-155">toolist all apps in a specific resource group, use:</span></span>
 
     azure webapp list --resource-group ContosoAzureResourceGroup
 
-<span data-ttu-id="fcebb-156">Chcete-li získat konkrétní aplikaci, použijte **azure webapp zobrazit** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-156">To get a specific app, use the **azure webapp show** command.</span></span>
+<span data-ttu-id="9e4b7-156">tooget konkrétní aplikaci, použijte hello **azure webapp zobrazit** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-156">tooget a specific app, use hello **azure webapp show** command.</span></span>
 
     azure webapp show --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="configure-an-existing-app"></a><span data-ttu-id="fcebb-157">Konfigurace existující aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-157">Configure an existing app</span></span>
-<span data-ttu-id="fcebb-158">Chcete-li změnit nastavení a konfigurace pro existující aplikace, použijte **set config azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-158">To change the settings and configurations for an existing app, use the **azure webapp config set** command.</span></span>
+### <a name="configure-an-existing-app"></a><span data-ttu-id="9e4b7-157">Konfigurace existující aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-157">Configure an existing app</span></span>
+<span data-ttu-id="9e4b7-158">toochange hello nastavení a konfigurace pro existující aplikace, použijte hello **set config azure webapp** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-158">toochange hello settings and configurations for an existing app, use hello **azure webapp config set** command.</span></span>
 
-<span data-ttu-id="fcebb-159">Příklad (1): změňte verzi php aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-159">Example (1): change the php version of a app</span></span> 
+<span data-ttu-id="9e4b7-159">Příklad (1): Změňte hello verzi php aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-159">Example (1): change hello php version of a app</span></span> 
 
     azure webapp config set --name ContosoWebApp --resource-group ContosoAzureResourceGroup --phpversion 5.6
 
-<span data-ttu-id="fcebb-160">Příklad (2): Přidání nebo změna nastavení aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-160">Example (2): add or change app settings</span></span>
+<span data-ttu-id="9e4b7-160">Příklad (2): Přidání nebo změna nastavení aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-160">Example (2): add or change app settings</span></span>
 
     webapp config appsettings set --name ContosoWebApp --resource-group ContosoAzureResourceGroup appsetting1=appsetting1value,appsetting2=appsetting2value
 
-<span data-ttu-id="fcebb-161">Potřebujete vědět, co může být jiná konfigurace změnit, použijte **konfigurace azure webapp nastavit -h** příkaz.</span><span class="sxs-lookup"><span data-stu-id="fcebb-161">To know what other configuration can be changed, use the **azure webapp config set -h** command.</span></span>
+<span data-ttu-id="9e4b7-161">tooknow ostatní konfigurace, které je možné změnit, použijte hello **konfigurace azure webapp nastavit -h** příkaz.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-161">tooknow what other configuration can be changed, use hello **azure webapp config set -h** command.</span></span>
 
-### <a name="change-the-state-of-an-existing-app"></a><span data-ttu-id="fcebb-162">Změnit stav existující aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-162">Change the state of an existing app</span></span>
-#### <a name="restart-an-app"></a><span data-ttu-id="fcebb-163">Restartujte aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-163">Restart an app</span></span>
-<span data-ttu-id="fcebb-164">Pokud chcete restartovat aplikaci, musíte zadat název a prostředek skupiny aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-164">To restart an app, you must specify the name and resource group of the app.</span></span>
+### <a name="change-hello-state-of-an-existing-app"></a><span data-ttu-id="9e4b7-162">Změnit stav hello existující aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-162">Change hello state of an existing app</span></span>
+#### <a name="restart-an-app"></a><span data-ttu-id="9e4b7-163">Restartujte aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-163">Restart an app</span></span>
+<span data-ttu-id="9e4b7-164">toorestart na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-164">toorestart an app, you must specify hello name and resource group of hello app.</span></span>
 
     azure webapp restart --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-#### <a name="stop-an-app"></a><span data-ttu-id="fcebb-165">Zastavte aplikaci</span><span class="sxs-lookup"><span data-stu-id="fcebb-165">Stop an app</span></span>
-<span data-ttu-id="fcebb-166">Chcete-li zastavit aplikaci, musíte zadat skupině název a prostředků pro aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-166">To stop an app, you must specify the name and resource group of the app.</span></span>
+#### <a name="stop-an-app"></a><span data-ttu-id="9e4b7-165">Zastavte aplikaci</span><span class="sxs-lookup"><span data-stu-id="9e4b7-165">Stop an app</span></span>
+<span data-ttu-id="9e4b7-166">toostop na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-166">toostop an app, you must specify hello name and resource group of hello app.</span></span>
 
     azure webapp stop --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-#### <a name="start-an-app"></a><span data-ttu-id="fcebb-167">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-167">Start an app</span></span>
-<span data-ttu-id="fcebb-168">Chcete-li spustit aplikaci, musíte zadat skupině název a prostředků pro aplikace.</span><span class="sxs-lookup"><span data-stu-id="fcebb-168">To start an app, you must specify the name and resource group of the app.</span></span>
+#### <a name="start-an-app"></a><span data-ttu-id="9e4b7-167">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-167">Start an app</span></span>
+<span data-ttu-id="9e4b7-168">toostart na aplikace, je nutné zadat název a prostředek skupiny hello aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-168">toostart an app, you must specify hello name and resource group of hello app.</span></span>
 
     azure webapp start --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-### <a name="manage-publishing-profiles-of-an-app"></a><span data-ttu-id="fcebb-169">Správa profilů publikování aplikace</span><span class="sxs-lookup"><span data-stu-id="fcebb-169">Manage publishing profiles of an app</span></span>
-<span data-ttu-id="fcebb-170">Každá aplikace má profil publikování, kterou můžete použít k publikování vašeho kódu.</span><span class="sxs-lookup"><span data-stu-id="fcebb-170">Each app has a publishing profile that can be used to publish your code.</span></span>
+### <a name="manage-publishing-profiles-of-an-app"></a><span data-ttu-id="9e4b7-169">Správa profilů publikování aplikace</span><span class="sxs-lookup"><span data-stu-id="9e4b7-169">Manage publishing profiles of an app</span></span>
+<span data-ttu-id="9e4b7-170">Každá aplikace má profil publikování, které můžou být použité toopublish vašeho kódu.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-170">Each app has a publishing profile that can be used toopublish your code.</span></span>
 
-#### <a name="get-publishing-profile"></a><span data-ttu-id="fcebb-171">Získat profil publikování</span><span class="sxs-lookup"><span data-stu-id="fcebb-171">Get Publishing Profile</span></span>
-<span data-ttu-id="fcebb-172">Profil publikování pro aplikaci, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-172">To get the publishing profile for a app, use:</span></span>
+#### <a name="get-publishing-profile"></a><span data-ttu-id="9e4b7-171">Získat profil publikování</span><span class="sxs-lookup"><span data-stu-id="9e4b7-171">Get Publishing Profile</span></span>
+<span data-ttu-id="9e4b7-172">hello tooget publikování pro aplikaci, použijte profil:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-172">tooget hello publishing profile for a app, use:</span></span>
 
     azure webapp publishingprofile --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-<span data-ttu-id="fcebb-173">Tento příkaz vrátí publikování profil uživatelské jméno a heslo na příkazový řádek.</span><span class="sxs-lookup"><span data-stu-id="fcebb-173">This command echoes the publishing profile username and password to the command line.</span></span>
+<span data-ttu-id="9e4b7-173">Tento příkaz vrátí hello publikování profil uživatelské jméno a heslo toohello příkazového řádku.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-173">This command echoes hello publishing profile username and password toohello command line.</span></span>
 
-### <a name="manage-app-hostnames"></a><span data-ttu-id="fcebb-174">Spravovat aplikace názvy hostitelů</span><span class="sxs-lookup"><span data-stu-id="fcebb-174">Manage app hostnames</span></span>
-<span data-ttu-id="fcebb-175">Chcete-li spravovat vazby názvů hostitelů pro vaši aplikaci, použijte **názvy hostitelů konfigurace azure webapp** příkaz</span><span class="sxs-lookup"><span data-stu-id="fcebb-175">To manage hostname bindings for your app, use the **azure webapp config hostnames** command</span></span>  
+### <a name="manage-app-hostnames"></a><span data-ttu-id="9e4b7-174">Spravovat aplikace názvy hostitelů</span><span class="sxs-lookup"><span data-stu-id="9e4b7-174">Manage app hostnames</span></span>
+<span data-ttu-id="9e4b7-175">vazby názvů hostitelů toomanage pro vaši aplikaci, použijte hello **názvy hostitelů konfigurace azure webapp** příkaz</span><span class="sxs-lookup"><span data-stu-id="9e4b7-175">toomanage hostname bindings for your app, use hello **azure webapp config hostnames** command</span></span>  
 
-#### <a name="list-hostname-bindings"></a><span data-ttu-id="fcebb-176">Seznam vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="fcebb-176">List hostname bindings</span></span>
-<span data-ttu-id="fcebb-177">Chcete-li získat aktuální vazby názvů hostitelů, pro aplikaci, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-177">To get the current hostname bindings for an app, use:</span></span>
+#### <a name="list-hostname-bindings"></a><span data-ttu-id="9e4b7-176">Seznam vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-176">List hostname bindings</span></span>
+<span data-ttu-id="9e4b7-177">tooget hello vazby na aktuální název hostitele pro aplikaci, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-177">tooget hello current hostname bindings for an app, use:</span></span>
 
     azure webapp config hostnames list --name ContosoWebApp --resource-group ContosoAzureResourceGroup
 
-#### <a name="add-hostname-bindings"></a><span data-ttu-id="fcebb-178">Přidat vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="fcebb-178">Add hostname bindings</span></span>
-<span data-ttu-id="fcebb-179">Chcete-li do aplikace přidat vazby názvů hostitelů, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-179">To add hostname bindings to an app, use:</span></span>
+#### <a name="add-hostname-bindings"></a><span data-ttu-id="9e4b7-178">Přidat vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-178">Add hostname bindings</span></span>
+<span data-ttu-id="9e4b7-179">tooadd hostname vazby tooan aplikace, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-179">tooadd hostname bindings tooan app, use:</span></span>
 
     azure webapp config hostnames add --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
-#### <a name="delete-hostname-bindings"></a><span data-ttu-id="fcebb-180">Odstranit vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="fcebb-180">Delete hostname bindings</span></span>
-<span data-ttu-id="fcebb-181">Chcete-li odstranit vazby názvů hostitelů, použijte:</span><span class="sxs-lookup"><span data-stu-id="fcebb-181">To delete hostname bindings, use:</span></span>
+#### <a name="delete-hostname-bindings"></a><span data-ttu-id="9e4b7-180">Odstranit vazby názvů hostitelů.</span><span class="sxs-lookup"><span data-stu-id="9e4b7-180">Delete hostname bindings</span></span>
+<span data-ttu-id="9e4b7-181">toodelete vazby názvů hostitelů, použijte:</span><span class="sxs-lookup"><span data-stu-id="9e4b7-181">toodelete hostname bindings, use:</span></span>
 
     azure webapp config hostnames delete --name ContosoWebApp --resource-group ContosoAzureResourceGroup --hostname www.contoso.com
 
-## <a name="next-steps"></a><span data-ttu-id="fcebb-182">Další kroky</span><span class="sxs-lookup"><span data-stu-id="fcebb-182">Next Steps</span></span>
-* <span data-ttu-id="fcebb-183">Další informace o podpoře Azure Resource Manager CLI, najdete v části [používat rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)</span><span class="sxs-lookup"><span data-stu-id="fcebb-183">To learn about Azure Resource Manager CLI support, see [Use the Azure CLI to manage Azure resources and resource groups.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)</span></span>
-* <span data-ttu-id="fcebb-184">Další informace o správě služby App Service pomocí prostředí PowerShell najdete v tématu [Using Azure Resource Manager-Based prostředí PowerShell ke správě Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)</span><span class="sxs-lookup"><span data-stu-id="fcebb-184">To learn about managing App Service using PowerShell, see [Using Azure Resource Manager-Based PowerShell to Manage Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)</span></span>
-* <span data-ttu-id="fcebb-185">Další informace o službě Azure App Service v systému Linux najdete v tématu [Úvod do služby App Service v systému Linux](app-service-linux-intro.md)</span><span class="sxs-lookup"><span data-stu-id="fcebb-185">To learn about Azure App Service on Linux, see [Introduction to App Service on Linux](app-service-linux-intro.md)</span></span>
+## <a name="next-steps"></a><span data-ttu-id="9e4b7-182">Další kroky</span><span class="sxs-lookup"><span data-stu-id="9e4b7-182">Next Steps</span></span>
+* <span data-ttu-id="9e4b7-183">toolearn týkající se podpory rozhraní příkazového řádku Azure Resource Manager, najdete v části [pomocí rozhraní příkazového řádku Azure toomanage hello Azure skupiny prostředků a prostředky.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)</span><span class="sxs-lookup"><span data-stu-id="9e4b7-183">toolearn about Azure Resource Manager CLI support, see [Use hello Azure CLI toomanage Azure resources and resource groups.](../azure-resource-manager/xplat-cli-azure-resource-manager.md)</span></span>
+* <span data-ttu-id="9e4b7-184">toolearn o správě služby App Service pomocí prostředí PowerShell, najdete v části [tooManage Using Azure Resource Manager-Based prostředí PowerShell Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)</span><span class="sxs-lookup"><span data-stu-id="9e4b7-184">toolearn about managing App Service using PowerShell, see [Using Azure Resource Manager-Based PowerShell tooManage Azure Web Apps.](app-service-web-app-azure-resource-manager-powershell.md)</span></span>
+* <span data-ttu-id="9e4b7-185">toolearn o službě Azure App Service pro systémy Linux, najdete v části [Úvod tooApp služby v systému Linux](app-service-linux-intro.md)</span><span class="sxs-lookup"><span data-stu-id="9e4b7-185">toolearn about Azure App Service on Linux, see [Introduction tooApp Service on Linux](app-service-linux-intro.md)</span></span>

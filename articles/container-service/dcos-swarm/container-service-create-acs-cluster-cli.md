@@ -1,5 +1,5 @@
 ---
-title: "Nasazení clusteru kontejneru Dockeru – Azure CLI | Dokumentace Microsoftu"
+title: "aaaDeploy cluster kontejner Docker - rozhraní příkazového řádku Azure | Microsoft Docs"
 description: "Nasazení řešení Kubernetes, DC/OS nebo Docker Swarm ve službě Azure Container Service pomocí Azure CLI 2.0"
 services: container-service
 documentationcenter: 
@@ -17,94 +17,94 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ecac5c255735b588ebb512b183e8a8bbbdcc905f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cdfa4ce69de343dcc7070bc2c58b5132c4062084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a><span data-ttu-id="20b1c-103">Nasazení řešení hostování kontejnerů Dockeru pomocí Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="20b1c-103">Deploy a Docker container hosting solution using the Azure CLI 2.0</span></span>
+# <a name="deploy-a-docker-container-hosting-solution-using-hello-azure-cli-20"></a><span data-ttu-id="2d632-103">Nasazení řešení pomocí Azure CLI 2.0 hello hostování kontejner Docker</span><span class="sxs-lookup"><span data-stu-id="2d632-103">Deploy a Docker container hosting solution using hello Azure CLI 2.0</span></span>
 
-<span data-ttu-id="20b1c-104">Pomocí příkazů `az acs` v Azure CLI 2.0 můžete vytvořit a spravovat clustery ve službě Azure Container Service.</span><span class="sxs-lookup"><span data-stu-id="20b1c-104">Use the `az acs` commands in the Azure CLI 2.0 to create and manage clusters in Azure Container Service.</span></span> <span data-ttu-id="20b1c-105">Cluster Azure Container Service můžete také nasadit pomocí webu [Azure Portal](container-service-deployment.md) nebo rozhraní API služby Azure Container Service.</span><span class="sxs-lookup"><span data-stu-id="20b1c-105">You can also deploy an Azure Container Service cluster by using the [Azure portal](container-service-deployment.md) or the Azure Container Service APIs.</span></span>
+<span data-ttu-id="2d632-104">Použití hello `az acs` příkazů v toocreate hello Azure CLI 2.0 a spravovat clustery v Azure Container Service.</span><span class="sxs-lookup"><span data-stu-id="2d632-104">Use hello `az acs` commands in hello Azure CLI 2.0 toocreate and manage clusters in Azure Container Service.</span></span> <span data-ttu-id="2d632-105">Můžete také nasazení clusteru Azure Container Service pomocí hello [portál Azure](container-service-deployment.md) nebo hello rozhraní API Správce Azure Container Service.</span><span class="sxs-lookup"><span data-stu-id="2d632-105">You can also deploy an Azure Container Service cluster by using hello [Azure portal](container-service-deployment.md) or hello Azure Container Service APIs.</span></span>
 
-<span data-ttu-id="20b1c-106">Nápovědu k příkazům `az acs` získáte předáním parametru `-h` příslušnému příkazu.</span><span class="sxs-lookup"><span data-stu-id="20b1c-106">For help on `az acs` commands, pass the `-h` parameter to any command.</span></span> <span data-ttu-id="20b1c-107">Například: `az acs create -h`.</span><span class="sxs-lookup"><span data-stu-id="20b1c-107">For example: `az acs create -h`.</span></span>
+<span data-ttu-id="2d632-106">Nápovědu k `az acs` příkazy, předat hello `-h` parametr tooany příkaz.</span><span class="sxs-lookup"><span data-stu-id="2d632-106">For help on `az acs` commands, pass hello `-h` parameter tooany command.</span></span> <span data-ttu-id="2d632-107">Například: `az acs create -h`.</span><span class="sxs-lookup"><span data-stu-id="2d632-107">For example: `az acs create -h`.</span></span>
 
 
 
-## <a name="prerequisites"></a><span data-ttu-id="20b1c-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="20b1c-108">Prerequisites</span></span>
-<span data-ttu-id="20b1c-109">K vytvoření clusteru Azure Container Service pomocí Azure CLI 2.0 musíte mít:</span><span class="sxs-lookup"><span data-stu-id="20b1c-109">To create an Azure Container Service cluster using the Azure CLI 2.0, you must:</span></span>
-* <span data-ttu-id="20b1c-110">účet Azure ([získejte bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)),</span><span class="sxs-lookup"><span data-stu-id="20b1c-110">have an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/))</span></span>
-* <span data-ttu-id="20b1c-111">nainstalované a nastavené [Azure CLI 2.0](/cli/azure/install-az-cli2)</span><span class="sxs-lookup"><span data-stu-id="20b1c-111">have installed and set up the [Azure CLI 2.0](/cli/azure/install-az-cli2)</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2d632-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="2d632-108">Prerequisites</span></span>
+<span data-ttu-id="2d632-109">toocreate clusteru Azure Container Service pomocí hello 2.0 rozhraní příkazového řádku Azure, musíte:</span><span class="sxs-lookup"><span data-stu-id="2d632-109">toocreate an Azure Container Service cluster using hello Azure CLI 2.0, you must:</span></span>
+* <span data-ttu-id="2d632-110">účet Azure ([získejte bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/)),</span><span class="sxs-lookup"><span data-stu-id="2d632-110">have an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/))</span></span>
+* <span data-ttu-id="2d632-111">instalaci a nastavení hello [2.0 rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2)</span><span class="sxs-lookup"><span data-stu-id="2d632-111">have installed and set up hello [Azure CLI 2.0](/cli/azure/install-az-cli2)</span></span>
 
-## <a name="get-started"></a><span data-ttu-id="20b1c-112">Začínáme</span><span class="sxs-lookup"><span data-stu-id="20b1c-112">Get started</span></span> 
-### <a name="log-in-to-your-account"></a><span data-ttu-id="20b1c-113">Přihlášení k účtu</span><span class="sxs-lookup"><span data-stu-id="20b1c-113">Log in to your account</span></span>
+## <a name="get-started"></a><span data-ttu-id="2d632-112">Začínáme</span><span class="sxs-lookup"><span data-stu-id="2d632-112">Get started</span></span> 
+### <a name="log-in-tooyour-account"></a><span data-ttu-id="2d632-113">Přihlaste se tooyour účtu</span><span class="sxs-lookup"><span data-stu-id="2d632-113">Log in tooyour account</span></span>
 ```azurecli
 az login 
 ```
 
-<span data-ttu-id="20b1c-114">Postupujte podle zobrazených výzev a interaktivně se přihlaste.</span><span class="sxs-lookup"><span data-stu-id="20b1c-114">Follow the prompts to log in interactively.</span></span> <span data-ttu-id="20b1c-115">Další způsoby přihlášení najdete v tématu [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="20b1c-115">For other methods to log in, see [Get started with Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).</span></span>
+<span data-ttu-id="2d632-114">Postupujte podle pokynů toolog hello v interaktivně.</span><span class="sxs-lookup"><span data-stu-id="2d632-114">Follow hello prompts toolog in interactively.</span></span> <span data-ttu-id="2d632-115">Ostatní metody toolog v, najdete v části [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="2d632-115">For other methods toolog in, see [Get started with Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).</span></span>
 
-### <a name="set-your-azure-subscription"></a><span data-ttu-id="20b1c-116">Nastavení předplatného Azure</span><span class="sxs-lookup"><span data-stu-id="20b1c-116">Set your Azure subscription</span></span>
+### <a name="set-your-azure-subscription"></a><span data-ttu-id="2d632-116">Nastavení předplatného Azure</span><span class="sxs-lookup"><span data-stu-id="2d632-116">Set your Azure subscription</span></span>
 
-<span data-ttu-id="20b1c-117">Pokud máte více než jedno předplatné Azure, nastavte výchozí předplatné.</span><span class="sxs-lookup"><span data-stu-id="20b1c-117">If you have more than one Azure subscription, set the default subscription.</span></span> <span data-ttu-id="20b1c-118">Například:</span><span class="sxs-lookup"><span data-stu-id="20b1c-118">For example:</span></span>
+<span data-ttu-id="2d632-117">Pokud máte více než jedno předplatné, nastavte hello výchozí předplatné.</span><span class="sxs-lookup"><span data-stu-id="2d632-117">If you have more than one Azure subscription, set hello default subscription.</span></span> <span data-ttu-id="2d632-118">Například:</span><span class="sxs-lookup"><span data-stu-id="2d632-118">For example:</span></span>
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
 ```
 
 
-### <a name="create-a-resource-group"></a><span data-ttu-id="20b1c-119">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="20b1c-119">Create a resource group</span></span>
-<span data-ttu-id="20b1c-120">Doporučujeme vytvořit skupinu prostředků pro každý cluster.</span><span class="sxs-lookup"><span data-stu-id="20b1c-120">We recommend that you create a resource group for every cluster.</span></span> <span data-ttu-id="20b1c-121">Zadejte oblast Azure, ve které je Azure Container Service [k dispozici](https://azure.microsoft.com/en-us/regions/services/).</span><span class="sxs-lookup"><span data-stu-id="20b1c-121">Specify an Azure region in which Azure Container Service is [available](https://azure.microsoft.com/en-us/regions/services/).</span></span> <span data-ttu-id="20b1c-122">Například:</span><span class="sxs-lookup"><span data-stu-id="20b1c-122">For example:</span></span>
+### <a name="create-a-resource-group"></a><span data-ttu-id="2d632-119">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="2d632-119">Create a resource group</span></span>
+<span data-ttu-id="2d632-120">Doporučujeme vytvořit skupinu prostředků pro každý cluster.</span><span class="sxs-lookup"><span data-stu-id="2d632-120">We recommend that you create a resource group for every cluster.</span></span> <span data-ttu-id="2d632-121">Zadejte oblast Azure, ve které je Azure Container Service [k dispozici](https://azure.microsoft.com/en-us/regions/services/).</span><span class="sxs-lookup"><span data-stu-id="2d632-121">Specify an Azure region in which Azure Container Service is [available](https://azure.microsoft.com/en-us/regions/services/).</span></span> <span data-ttu-id="2d632-122">Například:</span><span class="sxs-lookup"><span data-stu-id="2d632-122">For example:</span></span>
 
 ```azurecli
 az group create -n acsrg1 -l "westus"
 ```
-<span data-ttu-id="20b1c-123">Výstup je podobný tomuto:</span><span class="sxs-lookup"><span data-stu-id="20b1c-123">Output is similar to the following:</span></span>
+<span data-ttu-id="2d632-123">Výstup je podobné toohello následující:</span><span class="sxs-lookup"><span data-stu-id="2d632-123">Output is similar toohello following:</span></span>
 
 ![Vytvoření skupiny prostředků](./media/container-service-create-acs-cluster-cli/rg-create.png)
 
 
-## <a name="create-an-azure-container-service-cluster"></a><span data-ttu-id="20b1c-125">Vytvoření clusteru Azure Container Service</span><span class="sxs-lookup"><span data-stu-id="20b1c-125">Create an Azure Container Service cluster</span></span>
+## <a name="create-an-azure-container-service-cluster"></a><span data-ttu-id="2d632-125">Vytvoření clusteru Azure Container Service</span><span class="sxs-lookup"><span data-stu-id="2d632-125">Create an Azure Container Service cluster</span></span>
 
-<span data-ttu-id="20b1c-126">K vytvoření clusteru použijte příkaz `az acs create`.</span><span class="sxs-lookup"><span data-stu-id="20b1c-126">To create a cluster, use `az acs create`.</span></span>
-<span data-ttu-id="20b1c-127">Název clusteru a název skupiny prostředků vytvořené v předchozím kroku jsou povinné parametry.</span><span class="sxs-lookup"><span data-stu-id="20b1c-127">A name for the cluster and the name of the resource group created in the previous step are mandatory parameters.</span></span> 
+<span data-ttu-id="2d632-126">toocreate cluster, použijte `az acs create`.</span><span class="sxs-lookup"><span data-stu-id="2d632-126">toocreate a cluster, use `az acs create`.</span></span>
+<span data-ttu-id="2d632-127">Název pro hello cluster a hello název skupiny prostředků hello vytvořili v předchozím kroku hello jsou povinné parametry.</span><span class="sxs-lookup"><span data-stu-id="2d632-127">A name for hello cluster and hello name of hello resource group created in hello previous step are mandatory parameters.</span></span> 
 
-<span data-ttu-id="20b1c-128">Ostatní vstupy jsou nastavené na výchozí hodnoty (viz následující obrazovku), pokud nejsou přepsané pomocí příslušných přepínačů.</span><span class="sxs-lookup"><span data-stu-id="20b1c-128">Other inputs are set to default values (see the following screen) unless overwritten using their respective switches.</span></span> <span data-ttu-id="20b1c-129">Například orchestrátor je standardně nastaven na DC/OS.</span><span class="sxs-lookup"><span data-stu-id="20b1c-129">For example, the orchestrator is set by default to DC/OS.</span></span> <span data-ttu-id="20b1c-130">A pokud nezadáte předponu názvu DNS, vytvoří se na základě názvu clusteru.</span><span class="sxs-lookup"><span data-stu-id="20b1c-130">And if you don't specify one, a DNS name prefix is created based on the cluster name.</span></span>
+<span data-ttu-id="2d632-128">Další vstupní hodnoty jsou nastavené hodnoty toodefault (viz následující obrazovka hello) není-li přepsat pomocí jejich odpovídajících přepínačů.</span><span class="sxs-lookup"><span data-stu-id="2d632-128">Other inputs are set toodefault values (see hello following screen) unless overwritten using their respective switches.</span></span> <span data-ttu-id="2d632-129">Hello orchestrator je třeba nastavit ve výchozím nastavení tooDC/OS.</span><span class="sxs-lookup"><span data-stu-id="2d632-129">For example, hello orchestrator is set by default tooDC/OS.</span></span> <span data-ttu-id="2d632-130">A pokud nezadáte jeden, předpony názvu DNS je vytvořena na základě názvu clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="2d632-130">And if you don't specify one, a DNS name prefix is created based on hello cluster name.</span></span>
 
 ![použití příkazu az acs create](./media/container-service-create-acs-cluster-cli/create-help.png)
 
 
-### <a name="quick-acs-create-using-defaults"></a><span data-ttu-id="20b1c-132">Rychlý příkaz `acs create` s využitím výchozích hodnot</span><span class="sxs-lookup"><span data-stu-id="20b1c-132">Quick `acs create` using defaults</span></span>
-<span data-ttu-id="20b1c-133">Pokud máte soubor s veřejným klíčem SSH RSA `id_rsa.pub` ve výchozím umístění (nebo jste jej vytvořili pro [OS X a Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../../virtual-machines/linux/ssh-from-windows.md)), použijte příkaz podobný tomuto:</span><span class="sxs-lookup"><span data-stu-id="20b1c-133">If you have an SSH RSA public key file `id_rsa.pub` in the default location (or created one for [OS X and Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) or [Windows](../../virtual-machines/linux/ssh-from-windows.md)), use a command like the following:</span></span>
+### <a name="quick-acs-create-using-defaults"></a><span data-ttu-id="2d632-132">Rychlý příkaz `acs create` s využitím výchozích hodnot</span><span class="sxs-lookup"><span data-stu-id="2d632-132">Quick `acs create` using defaults</span></span>
+<span data-ttu-id="2d632-133">Pokud máte soubor veřejného klíče SSH RSA `id_rsa.pub` ve výchozím umístění hello (nebo jeden pro vytvoření [OS X a Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../../virtual-machines/linux/ssh-from-windows.md)), použijte příkaz jako hello následující:</span><span class="sxs-lookup"><span data-stu-id="2d632-133">If you have an SSH RSA public key file `id_rsa.pub` in hello default location (or created one for [OS X and Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) or [Windows](../../virtual-machines/linux/ssh-from-windows.md)), use a command like hello following:</span></span>
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
 ```
-<span data-ttu-id="20b1c-134">Pokud veřejný klíč SSH nemáte, použijte druhý příkaz.</span><span class="sxs-lookup"><span data-stu-id="20b1c-134">If you don't have an SSH public key, use this second command.</span></span> <span data-ttu-id="20b1c-135">Tento příkaz ho pro vás pomocí přepínače `--generate-ssh-keys` vytvoří.</span><span class="sxs-lookup"><span data-stu-id="20b1c-135">This command with the `--generate-ssh-keys` switch creates one for you.</span></span>
+<span data-ttu-id="2d632-134">Pokud veřejný klíč SSH nemáte, použijte druhý příkaz.</span><span class="sxs-lookup"><span data-stu-id="2d632-134">If you don't have an SSH public key, use this second command.</span></span> <span data-ttu-id="2d632-135">Tento příkaz s hello `--generate-ssh-keys` přepínač vytvoří za vás.</span><span class="sxs-lookup"><span data-stu-id="2d632-135">This command with hello `--generate-ssh-keys` switch creates one for you.</span></span>
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys
 ```
 
-<span data-ttu-id="20b1c-136">Po zadání příkazu počkejte asi 10 minut, než se cluster vytvoří.</span><span class="sxs-lookup"><span data-stu-id="20b1c-136">After you enter the command, wait for about 10 minutes for the cluster to be created.</span></span> <span data-ttu-id="20b1c-137">Výstup příkazu zahrnuje plně kvalifikované názvy domén hlavních i agentských uzlů a příkaz SSH pro připojení k prvnímu hlavnímu uzlu.</span><span class="sxs-lookup"><span data-stu-id="20b1c-137">The command output includes fully qualified domain names (FQDNs) of the master and agent nodes and an SSH command to connect to the first master.</span></span> <span data-ttu-id="20b1c-138">Tady je zkrácený výstup:</span><span class="sxs-lookup"><span data-stu-id="20b1c-138">Here is abbreviated output:</span></span>
+<span data-ttu-id="2d632-136">Po zadání příkazu hello, Počkejte přibližně 10 minut pro toobe hello clusteru vytvořen.</span><span class="sxs-lookup"><span data-stu-id="2d632-136">After you enter hello command, wait for about 10 minutes for hello cluster toobe created.</span></span> <span data-ttu-id="2d632-137">výstup příkazu Hello zahrnuje plně kvalifikované názvy domény (FQDN) hello hlavní a uzly agenta a SSH příkaz tooconnect toohello prvního hlavního serveru.</span><span class="sxs-lookup"><span data-stu-id="2d632-137">hello command output includes fully qualified domain names (FQDNs) of hello master and agent nodes and an SSH command tooconnect toohello first master.</span></span> <span data-ttu-id="2d632-138">Tady je zkrácený výstup:</span><span class="sxs-lookup"><span data-stu-id="2d632-138">Here is abbreviated output:</span></span>
 
 ![Obrázek s příkazem ACS create](./media/container-service-create-acs-cluster-cli/cluster-create.png)
 
 > [!TIP]
-> <span data-ttu-id="20b1c-140">[Názorný průvodce pro Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md) ukazuje, jak pomocí příkazu `az acs create` s použitím výchozích hodnot vytvořit cluster Kubernetes.</span><span class="sxs-lookup"><span data-stu-id="20b1c-140">The [Kubernetes walkthrough](../kubernetes/container-service-kubernetes-walkthrough.md) shows how to use `az acs create` with default values to create a Kubernetes cluster.</span></span>
+> <span data-ttu-id="2d632-140">Hello [Kubernetes návod](../kubernetes/container-service-kubernetes-walkthrough.md) ukazuje, jak toouse `az acs create` s toocreate výchozí hodnoty Kubernetes clusteru.</span><span class="sxs-lookup"><span data-stu-id="2d632-140">hello [Kubernetes walkthrough](../kubernetes/container-service-kubernetes-walkthrough.md) shows how toouse `az acs create` with default values toocreate a Kubernetes cluster.</span></span>
 >
 
-## <a name="manage-acs-clusters"></a><span data-ttu-id="20b1c-141">Správa clusterů ACS</span><span class="sxs-lookup"><span data-stu-id="20b1c-141">Manage ACS clusters</span></span>
+## <a name="manage-acs-clusters"></a><span data-ttu-id="2d632-141">Správa clusterů ACS</span><span class="sxs-lookup"><span data-stu-id="2d632-141">Manage ACS clusters</span></span>
 
-<span data-ttu-id="20b1c-142">Cluster můžete spravovat pomocí dalších příkazů `az acs`.</span><span class="sxs-lookup"><span data-stu-id="20b1c-142">Use additional `az acs` commands to manage your cluster.</span></span> <span data-ttu-id="20b1c-143">Zde je několik příkladů:</span><span class="sxs-lookup"><span data-stu-id="20b1c-143">Here are some examples.</span></span>
+<span data-ttu-id="2d632-142">Použití další `az acs` příkazy toomanage vašeho clusteru.</span><span class="sxs-lookup"><span data-stu-id="2d632-142">Use additional `az acs` commands toomanage your cluster.</span></span> <span data-ttu-id="2d632-143">Zde je několik příkladů:</span><span class="sxs-lookup"><span data-stu-id="2d632-143">Here are some examples.</span></span>
 
-### <a name="list-clusters-under-a-subscription"></a><span data-ttu-id="20b1c-144">Výpis clusterů v rámci předplatného</span><span class="sxs-lookup"><span data-stu-id="20b1c-144">List clusters under a subscription</span></span>
+### <a name="list-clusters-under-a-subscription"></a><span data-ttu-id="2d632-144">Výpis clusterů v rámci předplatného</span><span class="sxs-lookup"><span data-stu-id="2d632-144">List clusters under a subscription</span></span>
 
 ```azurecli
 az acs list --output table
 ```
 
-### <a name="list-clusters-in-a-resource-group"></a><span data-ttu-id="20b1c-145">Výpis clusterů ve skupině prostředků</span><span class="sxs-lookup"><span data-stu-id="20b1c-145">List clusters in a resource group</span></span>
+### <a name="list-clusters-in-a-resource-group"></a><span data-ttu-id="2d632-145">Výpis clusterů ve skupině prostředků</span><span class="sxs-lookup"><span data-stu-id="2d632-145">List clusters in a resource group</span></span>
 
 ```azurecli
 az acs list -g acsrg1 --output table
@@ -113,7 +113,7 @@ az acs list -g acsrg1 --output table
 ![příkaz acs list](./media/container-service-create-acs-cluster-cli/acs-list.png)
 
 
-### <a name="display-details-of-a-container-service-cluster"></a><span data-ttu-id="20b1c-147">Zobrazení podrobností o clusteru Container Service</span><span class="sxs-lookup"><span data-stu-id="20b1c-147">Display details of a container service cluster</span></span>
+### <a name="display-details-of-a-container-service-cluster"></a><span data-ttu-id="2d632-147">Zobrazení podrobností o clusteru Container Service</span><span class="sxs-lookup"><span data-stu-id="2d632-147">Display details of a container service cluster</span></span>
 
 ```azurecli
 az acs show -g acsrg1 -n acs-cluster --output list
@@ -122,8 +122,8 @@ az acs show -g acsrg1 -n acs-cluster --output list
 ![příkaz acs show](./media/container-service-create-acs-cluster-cli/acs-show.png)
 
 
-### <a name="scale-the-cluster"></a><span data-ttu-id="20b1c-149">Škálování clusteru</span><span class="sxs-lookup"><span data-stu-id="20b1c-149">Scale the cluster</span></span>
-<span data-ttu-id="20b1c-150">Je povolené horizontální navýšení i snížení kapacity agentských uzlů.</span><span class="sxs-lookup"><span data-stu-id="20b1c-150">Both scaling in and scaling out of agent nodes are allowed.</span></span> <span data-ttu-id="20b1c-151">Parametr `new-agent-count` určuje nový počet agentů v clusteru ACS.</span><span class="sxs-lookup"><span data-stu-id="20b1c-151">The parameter `new-agent-count` is the new number of agents in the ACS cluster.</span></span>
+### <a name="scale-hello-cluster"></a><span data-ttu-id="2d632-149">Škálování hello clusteru</span><span class="sxs-lookup"><span data-stu-id="2d632-149">Scale hello cluster</span></span>
+<span data-ttu-id="2d632-150">Je povolené horizontální navýšení i snížení kapacity agentských uzlů.</span><span class="sxs-lookup"><span data-stu-id="2d632-150">Both scaling in and scaling out of agent nodes are allowed.</span></span> <span data-ttu-id="2d632-151">Hello parametr `new-agent-count` je hello nový počet agentů v clusteru hello služby ACS.</span><span class="sxs-lookup"><span data-stu-id="2d632-151">hello parameter `new-agent-count` is hello new number of agents in hello ACS cluster.</span></span>
 
 ```azurecli
 az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
@@ -131,16 +131,16 @@ az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
 
 ![příkaz acs scale](./media/container-service-create-acs-cluster-cli/acs-scale.png)
 
-## <a name="delete-a-container-service-cluster"></a><span data-ttu-id="20b1c-153">Odstranění clusteru služby Container Service</span><span class="sxs-lookup"><span data-stu-id="20b1c-153">Delete a container service cluster</span></span>
+## <a name="delete-a-container-service-cluster"></a><span data-ttu-id="2d632-153">Odstranění clusteru služby Container Service</span><span class="sxs-lookup"><span data-stu-id="2d632-153">Delete a container service cluster</span></span>
 ```azurecli
 az acs delete -g acsrg1 -n acs-cluster 
 ```
-<span data-ttu-id="20b1c-154">Tento příkaz neodstraní všechny prostředky (sítě a úložiště), které byly vytvořené během vytváření služby Container Service.</span><span class="sxs-lookup"><span data-stu-id="20b1c-154">This command does not delete all resources (network and storage) created while creating the container service.</span></span> <span data-ttu-id="20b1c-155">Pokud chcete jednoduše odstranit všechny prostředky, doporučujeme, abyste každý cluster nasadili do jiné skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="20b1c-155">To delete all resources easily, it is recommended you deploy each cluster in a distinct resource group.</span></span> <span data-ttu-id="20b1c-156">Když už cluster nebudete potřebovat, odstraňte příslušnou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="20b1c-156">Then, delete the resource group when the cluster is no longer required.</span></span>
+<span data-ttu-id="2d632-154">Tento příkaz neodstraní všechny prostředky (sítě a úložiště), které jsou vytvořené během vytváření služby kontejneru hello.</span><span class="sxs-lookup"><span data-stu-id="2d632-154">This command does not delete all resources (network and storage) created while creating hello container service.</span></span> <span data-ttu-id="2d632-155">toodelete všechny prostředky snadno, je doporučeno, nasadíte každý cluster ve skupině prostředků jedinečné.</span><span class="sxs-lookup"><span data-stu-id="2d632-155">toodelete all resources easily, it is recommended you deploy each cluster in a distinct resource group.</span></span> <span data-ttu-id="2d632-156">Potom odstraňte skupinu prostředků hello při hello clusteru se už nevyžaduje.</span><span class="sxs-lookup"><span data-stu-id="2d632-156">Then, delete hello resource group when hello cluster is no longer required.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="20b1c-157">Další kroky</span><span class="sxs-lookup"><span data-stu-id="20b1c-157">Next steps</span></span>
-<span data-ttu-id="20b1c-158">Nyní když máte funkční cluster, nahlédněte do těchto dokumentů, kde naleznete podrobnosti týkající se připojení a správy:</span><span class="sxs-lookup"><span data-stu-id="20b1c-158">Now that you have a functioning cluster, see these documents for connection and management details:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="2d632-157">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2d632-157">Next steps</span></span>
+<span data-ttu-id="2d632-158">Nyní když máte funkční cluster, nahlédněte do těchto dokumentů, kde naleznete podrobnosti týkající se připojení a správy:</span><span class="sxs-lookup"><span data-stu-id="2d632-158">Now that you have a functioning cluster, see these documents for connection and management details:</span></span>
 
-* [<span data-ttu-id="20b1c-159">Připojení ke clusteru Azure Container Service</span><span class="sxs-lookup"><span data-stu-id="20b1c-159">Connect to an Azure Container Service cluster</span></span>](../container-service-connect.md)
-* [<span data-ttu-id="20b1c-160">Práce se službou Azure Container Service a DC/OS</span><span class="sxs-lookup"><span data-stu-id="20b1c-160">Work with Azure Container Service and DC/OS</span></span>](container-service-mesos-marathon-rest.md)
-* [<span data-ttu-id="20b1c-161">Práce se službou Azure Container Service a nástrojem Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="20b1c-161">Work with Azure Container Service and Docker Swarm</span></span>](container-service-docker-swarm.md)
-* [<span data-ttu-id="20b1c-162">Práce s Azure Container Service a Kubernetes</span><span class="sxs-lookup"><span data-stu-id="20b1c-162">Work with Azure Container Service and Kubernetes</span></span>](../kubernetes/container-service-kubernetes-walkthrough.md)
+* [<span data-ttu-id="2d632-159">Připojení clusteru Azure Container Service tooan</span><span class="sxs-lookup"><span data-stu-id="2d632-159">Connect tooan Azure Container Service cluster</span></span>](../container-service-connect.md)
+* [<span data-ttu-id="2d632-160">Práce se službou Azure Container Service a DC/OS</span><span class="sxs-lookup"><span data-stu-id="2d632-160">Work with Azure Container Service and DC/OS</span></span>](container-service-mesos-marathon-rest.md)
+* [<span data-ttu-id="2d632-161">Práce se službou Azure Container Service a nástrojem Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="2d632-161">Work with Azure Container Service and Docker Swarm</span></span>](container-service-docker-swarm.md)
+* [<span data-ttu-id="2d632-162">Práce s Azure Container Service a Kubernetes</span><span class="sxs-lookup"><span data-stu-id="2d632-162">Work with Azure Container Service and Kubernetes</span></span>](../kubernetes/container-service-kubernetes-walkthrough.md)

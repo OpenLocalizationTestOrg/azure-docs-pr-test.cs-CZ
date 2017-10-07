@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start – Cluster Azure Docker Swarm pro Linux | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker Swarm pro kontejnery Linuxu ve službě Azure Container Service."
+title: aaaQuickstart - Azure Docker Swarm clusteru pro Linux | Microsoft Docs
+description: "Naučte se rychle toocreate clusteru Docker Swarm Linux kontejnerů v Azure Container Service s hello rozhraní příkazového řádku Azure."
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -17,31 +17,31 @@ ms.workload: na
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: 1d10c347795227ed056a95d1bcd4aff82af7b876
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3028d2d00585360ec163518bf98f69bb0dd44dec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-docker-swarm-cluster"></a><span data-ttu-id="1d90d-103">Nasazení clusteru Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="1d90d-103">Deploy Docker Swarm cluster</span></span>
+# <a name="deploy-docker-swarm-cluster"></a><span data-ttu-id="e40d5-103">Nasazení clusteru Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="e40d5-103">Deploy Docker Swarm cluster</span></span>
 
-<span data-ttu-id="1d90d-104">V tomto rychlém startu se nasadí cluster Docker Swarm pomocí Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="1d90d-104">In this quick start, a Docker Swarm cluster is deployed using the Azure CLI.</span></span> <span data-ttu-id="1d90d-105">Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis.</span><span class="sxs-lookup"><span data-stu-id="1d90d-105">A multi-container application consisting of web front end and a Redis instance is then deployed and run on the cluster.</span></span> <span data-ttu-id="1d90d-106">Po dokončení bude aplikace přístupná přes internet.</span><span class="sxs-lookup"><span data-stu-id="1d90d-106">Once completed, the application is accessible over the internet.</span></span>
+<span data-ttu-id="e40d5-104">V této úvodní clusteru Docker Swarm je nasazená pomocí hello rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="e40d5-104">In this quick start, a Docker Swarm cluster is deployed using hello Azure CLI.</span></span> <span data-ttu-id="e40d5-105">Aplikace více kontejneru, který se skládá z webového front-endu a instanci Redis nasazení a poté běží na clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-105">A multi-container application consisting of web front end and a Redis instance is then deployed and run on hello cluster.</span></span> <span data-ttu-id="e40d5-106">Po dokončení aplikace hello je přístupné prostřednictvím Internetu hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-106">Once completed, hello application is accessible over hello internet.</span></span>
 
-<span data-ttu-id="1d90d-107">Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.</span><span class="sxs-lookup"><span data-stu-id="1d90d-107">If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.</span></span>
+<span data-ttu-id="e40d5-107">Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.</span><span class="sxs-lookup"><span data-stu-id="e40d5-107">If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.</span></span>
 
-<span data-ttu-id="1d90d-108">Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="1d90d-108">This quickstart requires that you are running the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="1d90d-109">Verzi zjistíte spuštěním příkazu `az --version`.</span><span class="sxs-lookup"><span data-stu-id="1d90d-109">Run `az --version` to find the version.</span></span> <span data-ttu-id="1d90d-110">Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="1d90d-110">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="e40d5-108">Tento rychlý start vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="e40d5-108">This quickstart requires that you are running hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="e40d5-109">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="e40d5-109">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="e40d5-110">Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="e40d5-110">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
 
-## <a name="create-a-resource-group"></a><span data-ttu-id="1d90d-111">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="1d90d-111">Create a resource group</span></span>
+## <a name="create-a-resource-group"></a><span data-ttu-id="e40d5-111">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="e40d5-111">Create a resource group</span></span>
 
-<span data-ttu-id="1d90d-112">Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="1d90d-112">Create a resource group with the [az group create](/cli/azure/group#create) command.</span></span> <span data-ttu-id="1d90d-113">Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="1d90d-113">An Azure resource group is a logical group in which Azure resources are deployed and managed.</span></span>
+<span data-ttu-id="e40d5-112">Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="e40d5-112">Create a resource group with hello [az group create](/cli/azure/group#create) command.</span></span> <span data-ttu-id="e40d5-113">Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="e40d5-113">An Azure resource group is a logical group in which Azure resources are deployed and managed.</span></span>
 
-<span data-ttu-id="1d90d-114">Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westus*.</span><span class="sxs-lookup"><span data-stu-id="1d90d-114">The following example creates a resource group named *myResourceGroup* in the *westus* location.</span></span>
+<span data-ttu-id="e40d5-114">Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *westus* umístění.</span><span class="sxs-lookup"><span data-stu-id="e40d5-114">hello following example creates a resource group named *myResourceGroup* in hello *westus* location.</span></span>
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-<span data-ttu-id="1d90d-115">Výstup:</span><span class="sxs-lookup"><span data-stu-id="1d90d-115">Output:</span></span>
+<span data-ttu-id="e40d5-115">Výstup:</span><span class="sxs-lookup"><span data-stu-id="e40d5-115">Output:</span></span>
 
 ```json
 {
@@ -56,28 +56,28 @@ az group create --name myResourceGroup --location westus
 }
 ```
 
-## <a name="create-docker-swarm-cluster"></a><span data-ttu-id="1d90d-116">Vytvoření clusteru Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="1d90d-116">Create Docker Swarm cluster</span></span>
+## <a name="create-docker-swarm-cluster"></a><span data-ttu-id="e40d5-116">Vytvoření clusteru Docker Swarm</span><span class="sxs-lookup"><span data-stu-id="e40d5-116">Create Docker Swarm cluster</span></span>
 
-<span data-ttu-id="1d90d-117">Vytvořte cluster Docker Swarm ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#create).</span><span class="sxs-lookup"><span data-stu-id="1d90d-117">Create a Docker Swarm cluster in Azure Container Service with the [az acs create](/cli/azure/acs#create) command.</span></span> 
+<span data-ttu-id="e40d5-117">Vytvoření clusteru Docker Swarm v Azure Container Service s hello [vytvořit acs az](/cli/azure/acs#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="e40d5-117">Create a Docker Swarm cluster in Azure Container Service with hello [az acs create](/cli/azure/acs#create) command.</span></span> 
 
-<span data-ttu-id="1d90d-118">Následující příklad vytvoří cluster *mySwarmCluster* s jedním hlavním linuxovým uzlem a třemi agentskými linuxovými uzly.</span><span class="sxs-lookup"><span data-stu-id="1d90d-118">The following example creates a cluster named *mySwarmCluster* with one Linux master node and three Linux agent nodes.</span></span>
+<span data-ttu-id="e40d5-118">Hello následující příklad vytvoří cluster s názvem *mySwarmCluster* s Linuxem jeden hlavní uzel a tři uzly Linux agent.</span><span class="sxs-lookup"><span data-stu-id="e40d5-118">hello following example creates a cluster named *mySwarmCluster* with one Linux master node and three Linux agent nodes.</span></span>
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type Swarm --resource-group myResourceGroup --generate-ssh-keys
 ```
 
-<span data-ttu-id="1d90d-119">Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.</span><span class="sxs-lookup"><span data-stu-id="1d90d-119">After several minutes, the command completes and returns json formatted information about the cluster.</span></span>
+<span data-ttu-id="e40d5-119">Po několika minutách hello příkaz dokončí a vrátí formátu json informace o clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-119">After several minutes, hello command completes and returns json formatted information about hello cluster.</span></span>
 
-## <a name="connect-to-the-cluster"></a><span data-ttu-id="1d90d-120">Připojení ke clusteru</span><span class="sxs-lookup"><span data-stu-id="1d90d-120">Connect to the cluster</span></span>
+## <a name="connect-toohello-cluster"></a><span data-ttu-id="e40d5-120">Připojte toohello cluster</span><span class="sxs-lookup"><span data-stu-id="e40d5-120">Connect toohello cluster</span></span>
 
-<span data-ttu-id="1d90d-121">V průběhu tohoto rychlého startu budete potřebovat IP adresu hlavního uzlu Dockeru Swarm i fondu agentských uzlů Dockeru.</span><span class="sxs-lookup"><span data-stu-id="1d90d-121">Throughout this quick start, you need the IP address of both the Docker Swarm master and the Docker agent pool.</span></span> <span data-ttu-id="1d90d-122">Spusťte následující příkaz, který vrátí obě IP adresy.</span><span class="sxs-lookup"><span data-stu-id="1d90d-122">Run the following command to return both IP addresses.</span></span>
+<span data-ttu-id="e40d5-121">V rámci této úvodní potřebujete adresu IP hello hello Docker Swarm hlavní a hello Docker agenta fondu.</span><span class="sxs-lookup"><span data-stu-id="e40d5-121">Throughout this quick start, you need hello IP address of both hello Docker Swarm master and hello Docker agent pool.</span></span> <span data-ttu-id="e40d5-122">Spusťte následující příkaz tooreturn hello obě IP adresy.</span><span class="sxs-lookup"><span data-stu-id="e40d5-122">Run hello following command tooreturn both IP addresses.</span></span>
 
 
 ```bash
 az network public-ip list --resource-group myResourceGroup --query '[*].{Name:name,IPAddress:ipAddress}' -o table
 ```
 
-<span data-ttu-id="1d90d-123">Výstup:</span><span class="sxs-lookup"><span data-stu-id="1d90d-123">Output:</span></span>
+<span data-ttu-id="e40d5-123">Výstup:</span><span class="sxs-lookup"><span data-stu-id="e40d5-123">Output:</span></span>
 
 ```bash
 Name                                                                 IPAddress
@@ -86,24 +86,24 @@ swarmm-agent-ip-myswarmcluster-myresourcegroup-d5b9d4agent-66066781  52.179.23.1
 swarmm-master-ip-myswarmcluster-myresourcegroup-d5b9d4mgmt-66066781  52.141.37.199
 ```
 
-<span data-ttu-id="1d90d-124">Vytvořte tunel SSH k hlavnímu uzlu Swarm.</span><span class="sxs-lookup"><span data-stu-id="1d90d-124">Create an SSH tunnel to the Swarm master.</span></span> <span data-ttu-id="1d90d-125">Nahraďte `IPAddress` IP adresou hlavního uzlu Swarm.</span><span class="sxs-lookup"><span data-stu-id="1d90d-125">Replace `IPAddress` with the IP address of the Swarm master.</span></span>
+<span data-ttu-id="e40d5-124">Vytvořte hlavní Swarm toohello tunelového propojení SSH.</span><span class="sxs-lookup"><span data-stu-id="e40d5-124">Create an SSH tunnel toohello Swarm master.</span></span> <span data-ttu-id="e40d5-125">Nahraďte `IPAddress` s IP adresou hello hello Swarm hlavního serveru.</span><span class="sxs-lookup"><span data-stu-id="e40d5-125">Replace `IPAddress` with hello IP address of hello Swarm master.</span></span>
 
 ```bash
 ssh -p 2200 -fNL 2375:localhost:2375 azureuser@IPAddress
 ```
 
-<span data-ttu-id="1d90d-126">Nastavte proměnnou prostředí `DOCKER_HOST`.</span><span class="sxs-lookup"><span data-stu-id="1d90d-126">Set the `DOCKER_HOST` environment variable.</span></span> <span data-ttu-id="1d90d-127">To vám umožní spouštět příkazy Dockeru pro Docker Swarm, aniž byste museli zadávat název hostitele.</span><span class="sxs-lookup"><span data-stu-id="1d90d-127">This allows you to run docker commands against the Docker Swarm without having to specify the name of the host.</span></span>
+<span data-ttu-id="e40d5-126">Sada hello `DOCKER_HOST` proměnné prostředí.</span><span class="sxs-lookup"><span data-stu-id="e40d5-126">Set hello `DOCKER_HOST` environment variable.</span></span> <span data-ttu-id="e40d5-127">To vám umožní toorun docker příkazy proti hello Docker Swarm bez nutnosti toospecify hello název hostitele hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-127">This allows you toorun docker commands against hello Docker Swarm without having toospecify hello name of hello host.</span></span>
 
 ```bash
 export DOCKER_HOST=:2375
 ```
 
-<span data-ttu-id="1d90d-128">Nyní jste připraveni spustit služby Dockeru v Dockeru Swarm.</span><span class="sxs-lookup"><span data-stu-id="1d90d-128">You are now ready to run Docker services on the Docker Swarm.</span></span>
+<span data-ttu-id="e40d5-128">Nyní je připraven toorun Docker služeb v hello Docker Swarm.</span><span class="sxs-lookup"><span data-stu-id="e40d5-128">You are now ready toorun Docker services on hello Docker Swarm.</span></span>
 
 
-## <a name="run-the-application"></a><span data-ttu-id="1d90d-129">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="1d90d-129">Run the application</span></span>
+## <a name="run-hello-application"></a><span data-ttu-id="e40d5-129">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="e40d5-129">Run hello application</span></span>
 
-<span data-ttu-id="1d90d-130">Vytvořte soubor `docker-compose.yaml` a zkopírujte do něj následující obsah.</span><span class="sxs-lookup"><span data-stu-id="1d90d-130">Create a file named `docker-compose.yaml` and copy the following content into it.</span></span>
+<span data-ttu-id="e40d5-130">Vytvořte soubor s názvem `docker-compose.yaml` a kopírování hello do něj následující obsah.</span><span class="sxs-lookup"><span data-stu-id="e40d5-130">Create a file named `docker-compose.yaml` and copy hello following content into it.</span></span>
 
 ```yaml
 version: '3'
@@ -123,16 +123,16 @@ services:
         - "80:80"
 ```
 
-<span data-ttu-id="1d90d-131">Spuštěním následujícího příkazu vytvořte službu Azure Vote.</span><span class="sxs-lookup"><span data-stu-id="1d90d-131">Run the following command to create the Azure Vote service.</span></span>
+<span data-ttu-id="e40d5-131">Spusťte následující příkaz toocreate hello Azure hlas služby hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-131">Run hello following command toocreate hello Azure Vote service.</span></span>
 
 ```bash
 docker-compose up -d
 ```
 
-<span data-ttu-id="1d90d-132">Výstup:</span><span class="sxs-lookup"><span data-stu-id="1d90d-132">Output:</span></span>
+<span data-ttu-id="e40d5-132">Výstup:</span><span class="sxs-lookup"><span data-stu-id="e40d5-132">Output:</span></span>
 
 ```bash
-Creating network "user_default" with the default driver
+Creating network "user_default" with hello default driver
 Pulling azure-vote-front (microsoft/azure-vote-front:redis-v1)...
 swarm-agent-EE873B23000005: Pulling microsoft/azure-vote-front:redis-v1...
 swarm-agent-EE873B23000004: Pulling microsoft/azure-vote-front:redis-v1... : downloaded
@@ -144,30 +144,30 @@ Creating azure-vote-front
 Creating azure-vote-back ...
 ```
 
-## <a name="test-the-application"></a><span data-ttu-id="1d90d-133">Testování aplikace</span><span class="sxs-lookup"><span data-stu-id="1d90d-133">Test the application</span></span>
+## <a name="test-hello-application"></a><span data-ttu-id="e40d5-133">Testování aplikace hello</span><span class="sxs-lookup"><span data-stu-id="e40d5-133">Test hello application</span></span>
 
-<span data-ttu-id="1d90d-134">Přejděte na IP adresu fondu agentských uzlů Swarm a otestujte aplikaci Azure Vote.</span><span class="sxs-lookup"><span data-stu-id="1d90d-134">Browse to the IP address of the Swarm agent pool to test out the Azure Vote application.</span></span>
+<span data-ttu-id="e40d5-134">Procházejte toohello IP adresu hello Swarm agenta fondu tootest si aplikaci Azure hlas hello.</span><span class="sxs-lookup"><span data-stu-id="e40d5-134">Browse toohello IP address of hello Swarm agent pool tootest out hello Azure Vote application.</span></span>
 
-![Obrázek přechodu na aplikaci Azure Vote](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
+![Obrázek procházení tooAzure hlas](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
-## <a name="delete-cluster"></a><span data-ttu-id="1d90d-136">Odstranění clusteru</span><span class="sxs-lookup"><span data-stu-id="1d90d-136">Delete cluster</span></span>
-<span data-ttu-id="1d90d-137">Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#delete).</span><span class="sxs-lookup"><span data-stu-id="1d90d-137">When the cluster is no longer needed, you can use the [az group delete](/cli/azure/group#delete) command to remove the resource group, container service, and all related resources.</span></span>
+## <a name="delete-cluster"></a><span data-ttu-id="e40d5-136">Odstranění clusteru</span><span class="sxs-lookup"><span data-stu-id="e40d5-136">Delete cluster</span></span>
+<span data-ttu-id="e40d5-137">Pokud hello cluster je již nepotřebujete, můžete použít hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove, container service a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="e40d5-137">When hello cluster is no longer needed, you can use hello [az group delete](/cli/azure/group#delete) command tooremove hello resource group, container service, and all related resources.</span></span>
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a><span data-ttu-id="1d90d-138">Získání kódu</span><span class="sxs-lookup"><span data-stu-id="1d90d-138">Get the code</span></span>
+## <a name="get-hello-code"></a><span data-ttu-id="e40d5-138">Získat kód hello</span><span class="sxs-lookup"><span data-stu-id="e40d5-138">Get hello code</span></span>
 
-<span data-ttu-id="1d90d-139">V tomto rychlém startu se k vytvoření služby Docker použily předem vytvořené image kontejneru.</span><span class="sxs-lookup"><span data-stu-id="1d90d-139">In this quick start, pre-created container images have been used to create a Docker service.</span></span> <span data-ttu-id="1d90d-140">Související kód aplikace, soubor Dockerfile a soubor Compose jsou k dispozici na GitHubu.</span><span class="sxs-lookup"><span data-stu-id="1d90d-140">The related application code, Dockerfile, and Compose file are available on GitHub.</span></span>
+<span data-ttu-id="e40d5-139">V této úvodní předem vytvořené kontejneru bitové kopie byly použité toocreate Docker služby.</span><span class="sxs-lookup"><span data-stu-id="e40d5-139">In this quick start, pre-created container images have been used toocreate a Docker service.</span></span> <span data-ttu-id="e40d5-140">Hello související s kódu aplikace, soubor Docker, a soubor vytvářené jsou dostupné na Githubu.</span><span class="sxs-lookup"><span data-stu-id="e40d5-140">hello related application code, Dockerfile, and Compose file are available on GitHub.</span></span>
 
-[<span data-ttu-id="1d90d-141">https://github.com/Azure-Samples/azure-voting-app-redis</span><span class="sxs-lookup"><span data-stu-id="1d90d-141">https://github.com/Azure-Samples/azure-voting-app-redis</span></span>](https://github.com/Azure-Samples/azure-voting-app-redis.git)
+[<span data-ttu-id="e40d5-141">https://github.com/Azure-Samples/azure-voting-app-redis</span><span class="sxs-lookup"><span data-stu-id="e40d5-141">https://github.com/Azure-Samples/azure-voting-app-redis</span></span>](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a><span data-ttu-id="1d90d-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="1d90d-142">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e40d5-142">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e40d5-142">Next steps</span></span>
 
-<span data-ttu-id="1d90d-143">V tomto rychlém startu jste nasadili cluster Docker Swarm a do něj jste nasadili vícekontejnerovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="1d90d-143">In this quick start, you deployed a Docker Swarm cluster and deployed a multi-container application to it.</span></span>
+<span data-ttu-id="e40d5-143">V této úvodní nasazení clusteru Docker Swarm a nasadit aplikace s více kontejnerů tooit.</span><span class="sxs-lookup"><span data-stu-id="e40d5-143">In this quick start, you deployed a Docker Swarm cluster and deployed a multi-container application tooit.</span></span>
 
-<span data-ttu-id="1d90d-144">Informace o integraci Dockeru Swarm s Visual Studio Team Services najdete v tématu věnovaném průběžné integraci a doručování s využitím Dockeru Swarm a VSTS.</span><span class="sxs-lookup"><span data-stu-id="1d90d-144">To learn about integrating Docker warm with Visual Studio Team Services, continue to the CI/CD with Docker Swarm and VSTS.</span></span>
+<span data-ttu-id="e40d5-144">toolearn o Docker záložním integraci s Visual Studio Team Services, pokračovat toohello CI/CD s Docker Swarm a služby VSTS.</span><span class="sxs-lookup"><span data-stu-id="e40d5-144">toolearn about integrating Docker warm with Visual Studio Team Services, continue toohello CI/CD with Docker Swarm and VSTS.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="1d90d-145">CI/CD s Docker Swarm a VSTS</span><span class="sxs-lookup"><span data-stu-id="1d90d-145">CI/CD with Docker Swarm and VSTS</span></span>](./container-service-docker-swarm-setup-ci-cd.md)
+> [<span data-ttu-id="e40d5-145">CI/CD s Docker Swarm a VSTS</span><span class="sxs-lookup"><span data-stu-id="e40d5-145">CI/CD with Docker Swarm and VSTS</span></span>](./container-service-docker-swarm-setup-ci-cd.md)

@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure AD, přihlašování a odhlašování pomocí Node.js | Microsoft Docs"
-description: "Naučte se vytvářet webové aplikace Node.js Express MVC, která se integruje se službou Azure AD pro přihlášení."
+title: "aaaGetting Začínáme s Azure AD přihlášení a odhlášení pomocí Node.js | Microsoft Docs"
+description: "Zjistěte, jak toobuild Node.js Express MVC webová aplikace, který se integruje s Azure AD pro přihlášení."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,53 +15,53 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 26481899c74741743b947bd891b65ff24ffc43c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a><span data-ttu-id="afc87-103">Webové aplikace Node.js přihlášení a odhlášení s Azure AD</span><span class="sxs-lookup"><span data-stu-id="afc87-103">Node.js web app sign-in and sign-out with Azure AD</span></span>
-<span data-ttu-id="afc87-104">Tady používáme Passport:</span><span class="sxs-lookup"><span data-stu-id="afc87-104">Here we use Passport to:</span></span>
+# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a><span data-ttu-id="d6dae-103">Webové aplikace Node.js přihlášení a odhlášení s Azure AD</span><span class="sxs-lookup"><span data-stu-id="d6dae-103">Node.js web app sign-in and sign-out with Azure AD</span></span>
+<span data-ttu-id="d6dae-104">Tady používáme Passport:</span><span class="sxs-lookup"><span data-stu-id="d6dae-104">Here we use Passport to:</span></span>
 
-* <span data-ttu-id="afc87-105">Uživatele přihlaste k aplikaci pomocí Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="afc87-105">Sign the user in to the app with Azure Active Directory (Azure AD).</span></span>
-* <span data-ttu-id="afc87-106">Zobrazí informace o uživateli.</span><span class="sxs-lookup"><span data-stu-id="afc87-106">Display information about the user.</span></span>
-* <span data-ttu-id="afc87-107">Přihlášení uživatele mimo aplikaci.</span><span class="sxs-lookup"><span data-stu-id="afc87-107">Sign the user out of the app.</span></span>
+* <span data-ttu-id="d6dae-105">Přihlašovací hello uživatele v aplikaci toohello službou Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="d6dae-105">Sign hello user in toohello app with Azure Active Directory (Azure AD).</span></span>
+* <span data-ttu-id="d6dae-106">Zobrazení informací o uživateli hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-106">Display information about hello user.</span></span>
+* <span data-ttu-id="d6dae-107">Přihlašovací hello uživatele mimo aplikaci hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-107">Sign hello user out of hello app.</span></span>
 
-<span data-ttu-id="afc87-108">Passport je ověřovací middleware pro Node.js.</span><span class="sxs-lookup"><span data-stu-id="afc87-108">Passport is authentication middleware for Node.js.</span></span> <span data-ttu-id="afc87-109">Flexibilní a modulární, Passport lze snadno vyřadit k žádnému využívající Express nebo restify webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-109">Flexible and modular, Passport can be unobtrusively dropped in to any Express-based or restify web application.</span></span> <span data-ttu-id="afc87-110">Komplexní sada strategií podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další.</span><span class="sxs-lookup"><span data-stu-id="afc87-110">A comprehensive set of strategies support authentication that uses a username and password, Facebook, Twitter, and more.</span></span> <span data-ttu-id="afc87-111">Vyvinuli jsme strategii pro Microsoft Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="afc87-111">We have developed a strategy for Microsoft Azure Active Directory.</span></span> <span data-ttu-id="afc87-112">Jsme nainstalujete tento modul a poté přidejte Microsoft Azure Active Directory `passport-azure-ad` modulu plug-in.</span><span class="sxs-lookup"><span data-stu-id="afc87-112">We install this module and then add the Microsoft Azure Active Directory `passport-azure-ad` plug-in.</span></span>
+<span data-ttu-id="d6dae-108">Passport je ověřovací middleware pro Node.js.</span><span class="sxs-lookup"><span data-stu-id="d6dae-108">Passport is authentication middleware for Node.js.</span></span> <span data-ttu-id="d6dae-109">Flexibilní a modulární, Passport lze snadno vyřadit v tooany využívající Express nebo restify webové aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-109">Flexible and modular, Passport can be unobtrusively dropped in tooany Express-based or restify web application.</span></span> <span data-ttu-id="d6dae-110">Komplexní sada strategií podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další.</span><span class="sxs-lookup"><span data-stu-id="d6dae-110">A comprehensive set of strategies support authentication that uses a username and password, Facebook, Twitter, and more.</span></span> <span data-ttu-id="d6dae-111">Vyvinuli jsme strategii pro Microsoft Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="d6dae-111">We have developed a strategy for Microsoft Azure Active Directory.</span></span> <span data-ttu-id="d6dae-112">Jsme nainstalujete tento modul a poté přidejte hello Microsoft Azure Active Directory `passport-azure-ad` modulu plug-in.</span><span class="sxs-lookup"><span data-stu-id="d6dae-112">We install this module and then add hello Microsoft Azure Active Directory `passport-azure-ad` plug-in.</span></span>
 
-<span data-ttu-id="afc87-113">Chcete-li to provést, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="afc87-113">To do this, take the following steps:</span></span>
+<span data-ttu-id="d6dae-113">toodo hello tento, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="d6dae-113">toodo this, take hello following steps:</span></span>
 
-1. <span data-ttu-id="afc87-114">Zaregistrujte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="afc87-114">Register an app.</span></span>
-2. <span data-ttu-id="afc87-115">Nastavení aplikace pro použití `passport-azure-ad` strategie.</span><span class="sxs-lookup"><span data-stu-id="afc87-115">Set up your app to use the `passport-azure-ad` strategy.</span></span>
-3. <span data-ttu-id="afc87-116">Použít Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD.</span><span class="sxs-lookup"><span data-stu-id="afc87-116">Use Passport to issue sign-in and sign-out requests to Azure AD.</span></span>
-4. <span data-ttu-id="afc87-117">Tisknout data o uživateli.</span><span class="sxs-lookup"><span data-stu-id="afc87-117">Print data about the user.</span></span>
+1. <span data-ttu-id="d6dae-114">Zaregistrujte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="d6dae-114">Register an app.</span></span>
+2. <span data-ttu-id="d6dae-115">Nastavení vaší aplikace hello toouse `passport-azure-ad` strategie.</span><span class="sxs-lookup"><span data-stu-id="d6dae-115">Set up your app toouse hello `passport-azure-ad` strategy.</span></span>
+3. <span data-ttu-id="d6dae-116">Použijte Passport tooissue-přihlášení a odhlášení požadavky tooAzure AD.</span><span class="sxs-lookup"><span data-stu-id="d6dae-116">Use Passport tooissue sign-in and sign-out requests tooAzure AD.</span></span>
+4. <span data-ttu-id="d6dae-117">Tisknout data o uživateli hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-117">Print data about hello user.</span></span>
 
-<span data-ttu-id="afc87-118">Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).</span><span class="sxs-lookup"><span data-stu-id="afc87-118">The code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).</span></span>  <span data-ttu-id="afc87-119">Chcete-li sledovat, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo tuto kostru klonovat:</span><span class="sxs-lookup"><span data-stu-id="afc87-119">To follow along, you can [download the app's skeleton as a .zip file](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) or clone the skeleton:</span></span>
+<span data-ttu-id="d6dae-118">Hello kód v tomto kurzu se udržuje [na Githubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).</span><span class="sxs-lookup"><span data-stu-id="d6dae-118">hello code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).</span></span>  <span data-ttu-id="d6dae-119">toofollow společně, můžete [stáhnout kostru aplikace hello jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo hello kostru klonovat:</span><span class="sxs-lookup"><span data-stu-id="d6dae-119">toofollow along, you can [download hello app's skeleton as a .zip file](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) or clone hello skeleton:</span></span>
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
-<span data-ttu-id="afc87-120">Dokončená aplikace je k dispozici na konci tohoto kurzu také.</span><span class="sxs-lookup"><span data-stu-id="afc87-120">The completed application is provided at the end of this tutorial as well.</span></span>
+<span data-ttu-id="d6dae-120">aplikace Hello dokončit, je k dispozici na konci hello také tohoto kurzu.</span><span class="sxs-lookup"><span data-stu-id="d6dae-120">hello completed application is provided at hello end of this tutorial as well.</span></span>
 
-## <a name="step-1-register-an-app"></a><span data-ttu-id="afc87-121">Krok 1: Registrace aplikace</span><span class="sxs-lookup"><span data-stu-id="afc87-121">Step 1: Register an app</span></span>
-1. <span data-ttu-id="afc87-122">Přihlaste se k webu [Azure Portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="afc87-122">Sign in to the [Azure portal](https://portal.azure.com).</span></span>
+## <a name="step-1-register-an-app"></a><span data-ttu-id="d6dae-121">Krok 1: Registrace aplikace</span><span class="sxs-lookup"><span data-stu-id="d6dae-121">Step 1: Register an app</span></span>
+1. <span data-ttu-id="d6dae-122">Přihlaste se toohello [portál Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="d6dae-122">Sign in toohello [Azure portal](https://portal.azure.com).</span></span>
 
-2. <span data-ttu-id="afc87-123">V nabídce v horní části stránky vyberte svůj účet.</span><span class="sxs-lookup"><span data-stu-id="afc87-123">In the menu at the top of the page, select your account.</span></span> <span data-ttu-id="afc87-124">V části **Directory** vyberte klienta služby Active Directory, kde chcete registrace vaší aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-124">Under the **Directory** list, choose the Active Directory tenant where you want to register your application.</span></span>
+2. <span data-ttu-id="d6dae-123">V nabídce hello hello horní části stránky hello vyberte svůj účet.</span><span class="sxs-lookup"><span data-stu-id="d6dae-123">In hello menu at hello top of hello page, select your account.</span></span> <span data-ttu-id="d6dae-124">V části hello **Directory** vyberte místo, kam chcete tooregister klienta služby Active Directory hello vaší aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-124">Under hello **Directory** list, choose hello Active Directory tenant where you want tooregister your application.</span></span>
 
-3. <span data-ttu-id="afc87-125">Vyberte **více služeb** v nabídce na levé straně obrazovky a pak vyberte **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="afc87-125">Select **More Services** in the menu on the left side of the screen, and then select **Azure Active Directory**.</span></span>
+3. <span data-ttu-id="d6dae-125">Vyberte **více služeb** v hello nabídky na hello levé strany úvodní obrazovka a pak vyberte **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="d6dae-125">Select **More Services** in hello menu on hello left side of hello screen, and then select **Azure Active Directory**.</span></span>
 
-4. <span data-ttu-id="afc87-126">Vyberte **registrace aplikace**a potom vyberte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="afc87-126">Select **App registrations**, and then select **Add**.</span></span>
+4. <span data-ttu-id="d6dae-126">Vyberte **registrace aplikace**a potom vyberte **přidat**.</span><span class="sxs-lookup"><span data-stu-id="d6dae-126">Select **App registrations**, and then select **Add**.</span></span>
 
-5. <span data-ttu-id="afc87-127">Postupujte podle výzev a vytvořte **webové aplikace** nebo **WebAPI**.</span><span class="sxs-lookup"><span data-stu-id="afc87-127">Follow the prompts to create a **Web Application** and/or **WebAPI**.</span></span>
-  * <span data-ttu-id="afc87-128">**Název** aplikace popisuje vaší aplikace pro uživatele.</span><span class="sxs-lookup"><span data-stu-id="afc87-128">The **name** of the application describes your application to users.</span></span>
+5. <span data-ttu-id="d6dae-127">Postupujte podle pokynů toocreate hello **webové aplikace** nebo **WebAPI**.</span><span class="sxs-lookup"><span data-stu-id="d6dae-127">Follow hello prompts toocreate a **Web Application** and/or **WebAPI**.</span></span>
+  * <span data-ttu-id="d6dae-128">Hello **název** z hello aplikace popisuje toousers vaší aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-128">hello **name** of hello application describes your application toousers.</span></span>
 
-  * <span data-ttu-id="afc87-129">**Přihlašovací adresa URL** je základní adresu URL aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-129">The **Sign-On URL** is the base URL of your app.</span></span>  <span data-ttu-id="afc87-130">Kostru je výchozí hodnota je ' http://localhost: 3000/auth/openid nebo vrátit hodnotu.</span><span class="sxs-lookup"><span data-stu-id="afc87-130">The skeleton's default is `http://localhost:3000/auth/openid/return`\`.</span></span>
+  * <span data-ttu-id="d6dae-129">Hello **přihlašovací adresa URL** je hello základní adresu URL aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-129">hello **Sign-On URL** is hello base URL of your app.</span></span>  <span data-ttu-id="d6dae-130">Hello kostru je výchozí hodnota je ' http://localhost: 3000/auth/openid nebo vrátit hodnotu.</span><span class="sxs-lookup"><span data-stu-id="d6dae-130">hello skeleton's default is `http://localhost:3000/auth/openid/return`\`.</span></span>
 
-6. <span data-ttu-id="afc87-131">Po registraci, Azure AD přiřadí vaší aplikace ID jedinečný aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-131">After you register, Azure AD assigns your app a unique application ID.</span></span> <span data-ttu-id="afc87-132">Je třeba tuto hodnotu v následujících částech, zkopírujte jej ze stránky aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-132">You need this value in the following sections, so copy it from the application page.</span></span>
-7. <span data-ttu-id="afc87-133">Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace.</span><span class="sxs-lookup"><span data-stu-id="afc87-133">From the **Settings** -> **Properties** page for your application, update the App ID URI.</span></span> <span data-ttu-id="afc87-134">**Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci.</span><span class="sxs-lookup"><span data-stu-id="afc87-134">The **App ID URI** is a unique identifier for your application.</span></span> <span data-ttu-id="afc87-135">Konvence, je použít formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.</span><span class="sxs-lookup"><span data-stu-id="afc87-135">The convention is to use the format `https://<tenant-domain>/<app-name>`, for example: `https://contoso.onmicrosoft.com/my-first-aad-app`.</span></span>
+6. <span data-ttu-id="d6dae-131">Po registraci, Azure AD přiřadí vaší aplikace ID jedinečný aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-131">After you register, Azure AD assigns your app a unique application ID.</span></span> <span data-ttu-id="d6dae-132">Je třeba tuto hodnotu v hello následující oddíly, takže zkopírovat ze stránky aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-132">You need this value in hello following sections, so copy it from hello application page.</span></span>
+7. <span data-ttu-id="d6dae-133">Z hello **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte hello identifikátor ID URI aplikace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-133">From hello **Settings** -> **Properties** page for your application, update hello App ID URI.</span></span> <span data-ttu-id="d6dae-134">Hello **identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci.</span><span class="sxs-lookup"><span data-stu-id="d6dae-134">hello **App ID URI** is a unique identifier for your application.</span></span> <span data-ttu-id="d6dae-135">konvence Hello je formát hello toouse `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.</span><span class="sxs-lookup"><span data-stu-id="d6dae-135">hello convention is toouse hello format `https://<tenant-domain>/<app-name>`, for example: `https://contoso.onmicrosoft.com/my-first-aad-app`.</span></span>
 
-## <a name="step-2-add-prerequisites-to-your-directory"></a><span data-ttu-id="afc87-136">Krok 2: Přidání požadovaných součástí do adresáře</span><span class="sxs-lookup"><span data-stu-id="afc87-136">Step 2: Add prerequisites to your directory</span></span>
-1. <span data-ttu-id="afc87-137">Z příkazového řádku, změňte adresáře na kořenové složky a pokud si nejste již existuje, a poté spusťte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="afc87-137">From the command line, change directories to your root folder if you're not already there, and then run the following commands:</span></span>
+## <a name="step-2-add-prerequisites-tooyour-directory"></a><span data-ttu-id="d6dae-136">Krok 2: Přidejte adresář tooyour požadavky</span><span class="sxs-lookup"><span data-stu-id="d6dae-136">Step 2: Add prerequisites tooyour directory</span></span>
+1. <span data-ttu-id="d6dae-137">Z příkazového řádku hello, změňte adresáře tooyour kořenové složky, pokud si nejste již existuje, a pak spusťte hello následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="d6dae-137">From hello command line, change directories tooyour root folder if you're not already there, and then run hello following commands:</span></span>
 
     * `npm install express`
     * `npm install ejs`
@@ -72,23 +72,23 @@ ms.lasthandoff: 07/11/2017
     * `npm install assert-plus`
     * `npm install passport`
 
-2. <span data-ttu-id="afc87-138">Kromě toho musíte `passport-azure-ad`:</span><span class="sxs-lookup"><span data-stu-id="afc87-138">In addition, you need `passport-azure-ad`:</span></span>
+2. <span data-ttu-id="d6dae-138">Kromě toho musíte `passport-azure-ad`:</span><span class="sxs-lookup"><span data-stu-id="d6dae-138">In addition, you need `passport-azure-ad`:</span></span>
     * `npm install passport-azure-ad`
 
-<span data-ttu-id="afc87-139">Tím se nainstaluje do knihoven, `passport-azure-ad` závisí na.</span><span class="sxs-lookup"><span data-stu-id="afc87-139">This installs the libraries that `passport-azure-ad` depends on.</span></span>
+<span data-ttu-id="d6dae-139">To nainstaluje knihovny hello který `passport-azure-ad` závisí na.</span><span class="sxs-lookup"><span data-stu-id="d6dae-139">This installs hello libraries that `passport-azure-ad` depends on.</span></span>
 
-## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a><span data-ttu-id="afc87-140">Krok 3: Nastavení aplikace k použití strategie passport uzlu js</span><span class="sxs-lookup"><span data-stu-id="afc87-140">Step 3: Set up your app to use the passport-node-js strategy</span></span>
-<span data-ttu-id="afc87-141">Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="afc87-141">Here, we configure Express to use the OpenID Connect authentication protocol.</span></span>  <span data-ttu-id="afc87-142">Passport umožňuje provádět různé akce, včetně požadavků na přihlášení a odhlášení problém, spravovat relace uživatele a získat informace o uživateli.</span><span class="sxs-lookup"><span data-stu-id="afc87-142">Passport is used to do various things, including issue sign-in and sign-out requests, manage the user's session, and get information about the user.</span></span>
+## <a name="step-3-set-up-your-app-toouse-hello-passport-node-js-strategy"></a><span data-ttu-id="d6dae-140">Krok 3: Nastavení strategie passport uzlu js hello toouse aplikace</span><span class="sxs-lookup"><span data-stu-id="d6dae-140">Step 3: Set up your app toouse hello passport-node-js strategy</span></span>
+<span data-ttu-id="d6dae-141">Zde jsme nakonfigurovat Express toouse hello ověřovacího protokolu OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="d6dae-141">Here, we configure Express toouse hello OpenID Connect authentication protocol.</span></span>  <span data-ttu-id="d6dae-142">Passport je použité toodo různé položky, včetně požadavků na přihlášení a odhlášení problém, spravovat relace hello uživatele a získat informace o uživateli hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-142">Passport is used toodo various things, including issue sign-in and sign-out requests, manage hello user's session, and get information about hello user.</span></span>
 
-1. <span data-ttu-id="afc87-143">Chcete-li začít, otevřete `config.js` souboru v kořenovém adresáři projektu a potom zadejte hodnoty konfigurace vaší aplikace v `exports.creds` oddílu.</span><span class="sxs-lookup"><span data-stu-id="afc87-143">To begin, open the `config.js` file at the root of the project, and then enter your app's configuration values in the `exports.creds` section.</span></span>
+1. <span data-ttu-id="d6dae-143">toobegin, otevřete hello `config.js` souboru v kořenovém hello hello projektu a potom zadejte hodnoty konfigurace vaší aplikace v hello `exports.creds` části.</span><span class="sxs-lookup"><span data-stu-id="d6dae-143">toobegin, open hello `config.js` file at hello root of hello project, and then enter your app's configuration values in hello `exports.creds` section.</span></span>
 
-  * <span data-ttu-id="afc87-144">`clientID` Je **Id aplikace** přiřazené vaší aplikaci v portálu pro registraci.</span><span class="sxs-lookup"><span data-stu-id="afc87-144">The `clientID` is the **Application Id** that's assigned to your app in the registration portal.</span></span>
+  * <span data-ttu-id="d6dae-144">Hello `clientID` je hello **Id aplikace** který je přiřazený tooyour aplikace v portálu pro registraci hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-144">hello `clientID` is hello **Application Id** that's assigned tooyour app in hello registration portal.</span></span>
 
-  * <span data-ttu-id="afc87-145">`returnURL` Je **identifikátor Uri pro přesměrování** kterou jste zadali v portálu.</span><span class="sxs-lookup"><span data-stu-id="afc87-145">The `returnURL` is the **Redirect Uri** that you entered in the portal.</span></span>
+  * <span data-ttu-id="d6dae-145">Hello `returnURL` je hello **identifikátor Uri pro přesměrování** kterou jste zadali v portálu hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-145">hello `returnURL` is hello **Redirect Uri** that you entered in hello portal.</span></span>
 
-  * <span data-ttu-id="afc87-146">`clientSecret` Je tajný klíč, který jste vygenerovali na portálu.</span><span class="sxs-lookup"><span data-stu-id="afc87-146">The `clientSecret` is the secret that you generated in the portal.</span></span>
+  * <span data-ttu-id="d6dae-146">Hello `clientSecret` je hello tajný klíč, který jste vygenerovali hello portálu.</span><span class="sxs-lookup"><span data-stu-id="d6dae-146">hello `clientSecret` is hello secret that you generated in hello portal.</span></span>
 
-2. <span data-ttu-id="afc87-147">Dále otevřete `app.js` soubor v kořenovém adresáři projektu.</span><span class="sxs-lookup"><span data-stu-id="afc87-147">Next, open the `app.js` file in the root of the project.</span></span> <span data-ttu-id="afc87-148">Pak přidejte následující volání pro vyvolání `OIDCStrategy` strategie, která se dodává s `passport-azure-ad`.</span><span class="sxs-lookup"><span data-stu-id="afc87-148">Then add the following call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`.</span></span>
+2. <span data-ttu-id="d6dae-147">Dále otevřete hello `app.js` soubor v kořenovém hello hello projektu.</span><span class="sxs-lookup"><span data-stu-id="d6dae-147">Next, open hello `app.js` file in hello root of hello project.</span></span> <span data-ttu-id="d6dae-148">Pak přidejte následující volání tooinvoke hello hello `OIDCStrategy` strategie, která se dodává s `passport-azure-ad`.</span><span class="sxs-lookup"><span data-stu-id="d6dae-148">Then add hello following call tooinvoke hello `OIDCStrategy` strategy that comes with `passport-azure-ad`.</span></span>
 
     ```JavaScript
     var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -100,10 +100,10 @@ ms.lasthandoff: 07/11/2017
     });
     ```
 
-3. <span data-ttu-id="afc87-149">Potom použijte strategii jsme právě přidanou pro zpracování naše žádostí o přihlášení.</span><span class="sxs-lookup"><span data-stu-id="afc87-149">After that, use the strategy we just referenced to handle our sign-in requests.</span></span>
+3. <span data-ttu-id="d6dae-149">Potom použijte hello strategii jsme právě přidanou toohandle naše žádostí o přihlášení.</span><span class="sxs-lookup"><span data-stu-id="d6dae-149">After that, use hello strategy we just referenced toohandle our sign-in requests.</span></span>
 
     ```JavaScript
-    // Use the OIDCStrategy within Passport. (Section 2)
+    // Use hello OIDCStrategy within Passport. (Section 2)
     //
     //   Strategies in passport require a `validate` function that accepts
     //   credentials (in this case, an OpenID identifier), and invokes a callback
@@ -140,22 +140,22 @@ ms.lasthandoff: 07/11/2017
     }
     ));
     ```
-<span data-ttu-id="afc87-150">Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Facebooku a tak dále), které řídí všichni autoři strategií k.</span><span class="sxs-lookup"><span data-stu-id="afc87-150">Passport uses a similar pattern for all its strategies (Twitter, Facebook, and so on) that all strategy writers adhere to.</span></span> <span data-ttu-id="afc87-151">Prohlížení strategie, uvidíte, že jsme předáváme funkci, která má token a done jako parametry.</span><span class="sxs-lookup"><span data-stu-id="afc87-151">Looking at the strategy, you see that we pass it a function that has a token and a done as the parameters.</span></span> <span data-ttu-id="afc87-152">Strategie vrátí do us po jeho činnosti provede.</span><span class="sxs-lookup"><span data-stu-id="afc87-152">The strategy comes back to us after it does its work.</span></span> <span data-ttu-id="afc87-153">Potom chceme uložení uživatele a skrytí tokenu, takže jsme nemusíte požadovat znovu.</span><span class="sxs-lookup"><span data-stu-id="afc87-153">Then we want to store the user and stash the token so we don't need to ask for it again.</span></span>
+<span data-ttu-id="d6dae-150">Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Facebooku a tak dále), které řídí všichni autoři strategií k.</span><span class="sxs-lookup"><span data-stu-id="d6dae-150">Passport uses a similar pattern for all its strategies (Twitter, Facebook, and so on) that all strategy writers adhere to.</span></span> <span data-ttu-id="d6dae-151">Prohlížení hello strategie, uvidíte, že jsme předat funkci, která má token a done jako parametry hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-151">Looking at hello strategy, you see that we pass it a function that has a token and a done as hello parameters.</span></span> <span data-ttu-id="d6dae-152">po jeho činnosti provede se dodává zpět toous strategie Hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-152">hello strategy comes back toous after it does its work.</span></span> <span data-ttu-id="d6dae-153">Potom chceme toostore hello uživatele a dočasné ukládání hello token, společnost Microsoft nepotřebuje tooask pro něj znovu.</span><span class="sxs-lookup"><span data-stu-id="d6dae-153">Then we want toostore hello user and stash hello token so we don't need tooask for it again.</span></span>
 
 > [!IMPORTANT]
-<span data-ttu-id="afc87-154">Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřování na našem server.</span><span class="sxs-lookup"><span data-stu-id="afc87-154">The previous code takes any user that happens to authenticate to our server.</span></span> <span data-ttu-id="afc87-155">To se označuje jako Automatická registrace.</span><span class="sxs-lookup"><span data-stu-id="afc87-155">This is known as auto-registration.</span></span> <span data-ttu-id="afc87-156">Doporučujeme vám, že nedošlo každý, kdo ověření na provozním serveru, aniž by bylo nejdříve je registrovat prostřednictvím procesu, který se rozhodnete.</span><span class="sxs-lookup"><span data-stu-id="afc87-156">We    recommend that you don't let anyone authenticate to a production server without first having them register via a process that you decide on.</span></span> <span data-ttu-id="afc87-157">To je obvykle vzor, který můžete vidět u uživatelských aplikací, které umožňují registraci pomocí Facebooku, ale poté vás požádají o poskytují další informace.</span><span class="sxs-lookup"><span data-stu-id="afc87-157">This is usually the pattern you see in consumer apps, which allow you to register with Facebook but then ask you to provide additional information.</span></span> <span data-ttu-id="afc87-158">Pokud to nebyly ukázkovou aplikaci, mohli bychom extrahovat e-mailovou adresu uživatele z tokenu objektu, který se vrátí a poté požádat uživatele k vyplnění dodatečných informací.</span><span class="sxs-lookup"><span data-stu-id="afc87-158">If this weren't a sample application, we could have extracted the user's email address from the token object that is returned and then asked the user to fill out additional information.</span></span> <span data-ttu-id="afc87-159">Protože se jedná o testovací server, jsme je přidat k databázi v paměti.</span><span class="sxs-lookup"><span data-stu-id="afc87-159">Because this is a test server, we add them to the in-memory database.</span></span>
+<span data-ttu-id="d6dae-154">Předchozí kód Hello trvá každý uživatel, který se stane tooauthenticate tooour serveru.</span><span class="sxs-lookup"><span data-stu-id="d6dae-154">hello previous code takes any user that happens tooauthenticate tooour server.</span></span> <span data-ttu-id="d6dae-155">To se označuje jako Automatická registrace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-155">This is known as auto-registration.</span></span> <span data-ttu-id="d6dae-156">Doporučujeme vám, že nedošlo každý, kdo ověřovat tooa provozním serveru, aniž by bylo nejdříve je registrovat prostřednictvím procesu, který se rozhodnete.</span><span class="sxs-lookup"><span data-stu-id="d6dae-156">We    recommend that you don't let anyone authenticate tooa production server without first having them register via a process that you decide on.</span></span> <span data-ttu-id="d6dae-157">Je to obvykle hello vzor, který můžete vidět u uživatelských aplikací, které umožňují tooregister službou Facebook, ale poté vás požádají tooprovide Další informace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-157">This is usually hello pattern you see in consumer apps, which allow you tooregister with Facebook but then ask you tooprovide additional information.</span></span> <span data-ttu-id="d6dae-158">Pokud to nebyly ukázkovou aplikaci, mohli bychom extrahovat hello uživatele e-mailovou adresu z hello tokenu objektu, který je vrácen a poté požádat uživatele toofill hello Další informace.</span><span class="sxs-lookup"><span data-stu-id="d6dae-158">If this weren't a sample application, we could have extracted hello user's email address from hello token object that is returned and then asked hello user toofill out additional information.</span></span> <span data-ttu-id="d6dae-159">Protože se jedná o testovací server, přidáme je toohello databáze v paměti.</span><span class="sxs-lookup"><span data-stu-id="d6dae-159">Because this is a test server, we add them toohello in-memory database.</span></span>
 
 
-4. <span data-ttu-id="afc87-160">V dalším kroku přidejme metody, které umožní, abychom mohli sledovat přihlášených uživatelů podle požadavků Passport.</span><span class="sxs-lookup"><span data-stu-id="afc87-160">Next, let's add the methods that enable us to track the signed-in users as required by Passport.</span></span> <span data-ttu-id="afc87-161">Tyto metody zahrnují serializaci a deserializaci informací o uživateli.</span><span class="sxs-lookup"><span data-stu-id="afc87-161">These methods include serializing and deserializing the user's information.</span></span>
+4. <span data-ttu-id="d6dae-160">V dalším kroku přidejme hello metody, které nám umožní tootrack hello přihlášeného uživatele jako vyžaduje Passport.</span><span class="sxs-lookup"><span data-stu-id="d6dae-160">Next, let's add hello methods that enable us tootrack hello signed-in users as required by Passport.</span></span> <span data-ttu-id="d6dae-161">Tyto metody zahrnují serializaci a deserializaci informací o uživateli hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-161">These methods include serializing and deserializing hello user's information.</span></span>
 
     ```JavaScript
 
             // Passport session setup. (Section 2)
 
-            //   To support persistent sign-in sessions, Passport needs to be able to
-            //   serialize users into the session and deserialize them out of the session. Typically,
-            //   this is done simply by storing the user ID when serializing and finding
-            //   the user by ID when deserializing.
+            //   toosupport persistent sign-in sessions, Passport needs toobe able to
+            //   serialize users into hello session and deserialize them out of hello session. Typically,
+            //   this is done simply by storing hello user ID when serializing and finding
+            //   hello user by ID when deserializing.
             passport.serializeUser(function(user, done) {
             done(null, user.email);
             });
@@ -166,7 +166,7 @@ ms.lasthandoff: 07/11/2017
             });
             });
 
-            // array to hold signed-in users
+            // array toohold signed-in users
             var users = [];
 
             var findByEmail = function(email, fn) {
@@ -181,7 +181,7 @@ ms.lasthandoff: 07/11/2017
             };
     ```
 
-5.  <span data-ttu-id="afc87-162">Dále umožňuje přidat kód pro načtení modulu Express.</span><span class="sxs-lookup"><span data-stu-id="afc87-162">Next, let's add the code to load the Express engine.</span></span> <span data-ttu-id="afc87-163">Tady používáme výchozí /views a poskytuje /routes vzor, který Express.</span><span class="sxs-lookup"><span data-stu-id="afc87-163">Here we use the default /views and /routes pattern that Express provides.</span></span>
+5.  <span data-ttu-id="d6dae-162">V dalším kroku přidejme modulu Express hello kód tooload hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-162">Next, let's add hello code tooload hello Express engine.</span></span> <span data-ttu-id="d6dae-163">Tady používáme hello výchozí /views a poskytuje /routes vzor, který Express.</span><span class="sxs-lookup"><span data-stu-id="d6dae-163">Here we use hello default /views and /routes pattern that Express provides.</span></span>
 
     ```JavaScript
 
@@ -196,7 +196,7 @@ ms.lasthandoff: 07/11/2017
           app.use(cookieParser());
           app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
           app.use(bodyParser.urlencoded({ extended : true }));
-          // Initialize Passport!  Also use passport.session() middleware, to support
+          // Initialize Passport!  Also use passport.session() middleware, toosupport
           // persistent login sessions (recommended).
           app.use(passport.initialize());
           app.use(passport.session());
@@ -206,7 +206,7 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-6. <span data-ttu-id="afc87-164">Nakonec přidejme tras, které přebírají skutečné přihlášení žádosti, které chcete `passport-azure-ad` modul:</span><span class="sxs-lookup"><span data-stu-id="afc87-164">Finally, let's add the routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:</span></span>
+6. <span data-ttu-id="d6dae-164">Nakonec přidejme hello tras, že můžete předat hello skutečné žádostí o přihlášení toohello `passport-azure-ad` modul:</span><span class="sxs-lookup"><span data-stu-id="d6dae-164">Finally, let's add hello routes that hand off hello actual sign-in requests toohello `passport-azure-ad` engine:</span></span>
 
 
        ```JavaScript
@@ -214,23 +214,23 @@ ms.lasthandoff: 07/11/2017
         // Our Auth routes (section 3)
 
         // GET /auth/openid
-        //   Use passport.authenticate() as route middleware to authenticate the
-        //   request. The first step in OpenID authentication involves redirecting
-        //   the user to their OpenID provider. After authenticating, the OpenID
-        //   provider redirects the user back to this application at
+        //   Use passport.authenticate() as route middleware tooauthenticate the
+        //   request. hello first step in OpenID authentication involves redirecting
+        //   hello user tootheir OpenID provider. After authenticating, hello OpenID
+        //   provider redirects hello user back toothis application at
         //   /auth/openid/return.
         app.get('/auth/openid',
         passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
         function(req, res) {
-            log.info('Authentication was called in the Sample');
+            log.info('Authentication was called in hello Sample');
             res.redirect('/');
         });
 
             // GET /auth/openid/return
-            //   Use passport.authenticate() as route middleware to authenticate the
-            //   request. If authentication fails, the user is redirected back to the
-            //   sign-in page. Otherwise, the primary route function is called,
-            //   which, in this example, redirects the user to the home page.
+            //   Use passport.authenticate() as route middleware tooauthenticate the
+            //   request. If authentication fails, hello user is redirected back toothe
+            //   sign-in page. Otherwise, hello primary route function is called,
+            //   which, in this example, redirects hello user toohello home page.
             app.get('/auth/openid/return',
               passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
               function(req, res) {
@@ -239,10 +239,10 @@ ms.lasthandoff: 07/11/2017
               });
 
             // POST /auth/openid/return
-            //   Use passport.authenticate() as route middleware to authenticate the
-            //   request. If authentication fails, the user is redirected back to the
-            //   sign-in page. Otherwise, the primary route function is called,
-            //   which, in this example, redirects the user to the home page.
+            //   Use passport.authenticate() as route middleware tooauthenticate the
+            //   request. If authentication fails, hello user is redirected back toothe
+            //   sign-in page. Otherwise, hello primary route function is called,
+            //   which, in this example, redirects hello user toohello home page.
             app.post('/auth/openid/return',
               passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
               function(req, res) {
@@ -252,10 +252,10 @@ ms.lasthandoff: 07/11/2017
        ```
 
 
-## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a><span data-ttu-id="afc87-165">Krok 4: Použití služby Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD</span><span class="sxs-lookup"><span data-stu-id="afc87-165">Step 4: Use Passport to issue sign-in and sign-out requests to Azure AD</span></span>
-<span data-ttu-id="afc87-166">Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pomocí ověřovacího protokolu OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="afc87-166">Your app is now properly configured to communicate with the endpoint by using the OpenID Connect authentication protocol.</span></span>  <span data-ttu-id="afc87-167">`passport-azure-ad`má postaráno všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací.</span><span class="sxs-lookup"><span data-stu-id="afc87-167">`passport-azure-ad` has taken care of all the details of crafting authentication messages, validating tokens from Azure AD, and maintaining user sessions.</span></span> <span data-ttu-id="afc87-168">Všechny, které zůstává je udělení uživatelům způsob, jak přihlášení a odhlášení a shromažďování Další informace o přihlášených uživatelů.</span><span class="sxs-lookup"><span data-stu-id="afc87-168">All that remains is giving your users a way to sign in and sign out, and gathering additional information about the signed-in users.</span></span>
+## <a name="step-4-use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a><span data-ttu-id="d6dae-165">Krok 4: Použití Passport tooissue přihlášení a odhlášení požadavky tooAzure AD</span><span class="sxs-lookup"><span data-stu-id="d6dae-165">Step 4: Use Passport tooissue sign-in and sign-out requests tooAzure AD</span></span>
+<span data-ttu-id="d6dae-166">Aplikace je nyní správně nakonfigurované toocommunicate s koncovým bodem hello pomocí ověřovacího protokolu OpenID Connect hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-166">Your app is now properly configured toocommunicate with hello endpoint by using hello OpenID Connect authentication protocol.</span></span>  <span data-ttu-id="d6dae-167">`passport-azure-ad`má postaráno všech podrobností o hello věnujte zpráv ověřování, ověřování tokenů z Azure AD a správa uživatelských relací.</span><span class="sxs-lookup"><span data-stu-id="d6dae-167">`passport-azure-ad` has taken care of all hello details of crafting authentication messages, validating tokens from Azure AD, and maintaining user sessions.</span></span> <span data-ttu-id="d6dae-168">Všechno, co zůstane je udělení uživatelům, odhlaste se a způsob toosign v a shromáždění Další informace o hello přihlášeného uživatele.</span><span class="sxs-lookup"><span data-stu-id="d6dae-168">All that remains is giving your users a way toosign in and sign out, and gathering additional information about hello signed-in users.</span></span>
 
-1. <span data-ttu-id="afc87-169">Nejprve přidejme výchozí, přihlášení, účet a odhlášení metody pro naše `app.js` souboru:</span><span class="sxs-lookup"><span data-stu-id="afc87-169">First, let's add the default, sign-in, account, and sign-out methods to our `app.js` file:</span></span>
+1. <span data-ttu-id="d6dae-169">Nejprve přidejme hello výchozí, přihlášení, účet a odhlášení metody tooour `app.js` souboru:</span><span class="sxs-lookup"><span data-stu-id="d6dae-169">First, let's add hello default, sign-in, account, and sign-out methods tooour `app.js` file:</span></span>
 
     ```JavaScript
 
@@ -272,7 +272,7 @@ ms.lasthandoff: 07/11/2017
         app.get('/login',
           passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
           function(req, res) {
-            log.info('Login was called in the Sample');
+            log.info('Login was called in hello Sample');
             res.redirect('/');
         });
 
@@ -283,22 +283,22 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-2.  <span data-ttu-id="afc87-170">Pojďme si podrobněji:</span><span class="sxs-lookup"><span data-stu-id="afc87-170">Let's review these in detail:</span></span>
+2.  <span data-ttu-id="d6dae-170">Pojďme si podrobněji:</span><span class="sxs-lookup"><span data-stu-id="d6dae-170">Let's review these in detail:</span></span>
 
-  * <span data-ttu-id="afc87-171">`/`Trasa přesměruje na zobrazení index.ejs předávání uživatele v požadavku (pokud existuje).</span><span class="sxs-lookup"><span data-stu-id="afc87-171">The `/`route redirects to the index.ejs view, passing the user in the request (if it exists).</span></span>
-  * <span data-ttu-id="afc87-172">`/account` Směrovat nejprve *zajistí jsme se ověří* (jsme implementovat, v následujícím příkladu) a poté předá uživatele v požadavku tak, aby se nám můžete získat další informace o uživateli.</span><span class="sxs-lookup"><span data-stu-id="afc87-172">The `/account` route first *ensures we are authenticated* (we implement that in the following example), and then passes the user in the request so that we can get additional information about the user.</span></span>
-  * <span data-ttu-id="afc87-173">`/login` Trasy volá naše azuread openidconnect authenticator z `passport-azuread`.</span><span class="sxs-lookup"><span data-stu-id="afc87-173">The `/login` route calls our azuread-openidconnect authenticator from `passport-azuread`.</span></span> <span data-ttu-id="afc87-174">Pokud není úspěšné, přesměruje uživatele zpět na Publikace1.</span><span class="sxs-lookup"><span data-stu-id="afc87-174">If that doesn't succeed, it redirects the user back to /login.</span></span>
-  * <span data-ttu-id="afc87-175">`/logout` Směrování jednoduše volání logout.ejs (a trasy), které vymaže soubory cookie a poté vrátí uživatele zpět na index.ejs.</span><span class="sxs-lookup"><span data-stu-id="afc87-175">The `/logout` route simply calls the logout.ejs (and route), which clears cookies and then returns the user back to index.ejs.</span></span>
+  * <span data-ttu-id="d6dae-171">Hello `/`trasa přesměruje toohello index.ejs zobrazení, předávání hello uživatele v požadavku hello (pokud existuje).</span><span class="sxs-lookup"><span data-stu-id="d6dae-171">hello `/`route redirects toohello index.ejs view, passing hello user in hello request (if it exists).</span></span>
+  * <span data-ttu-id="d6dae-172">Hello `/account` směrovat nejprve *zajistí jsme se ověří* (jsme implementovat, v následující ukázka hello), a potom předává hello uživatele v požadavku hello tak, aby se nám můžete získat další informace o uživateli hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-172">hello `/account` route first *ensures we are authenticated* (we implement that in hello following example), and then passes hello user in hello request so that we can get additional information about hello user.</span></span>
+  * <span data-ttu-id="d6dae-173">Hello `/login` trasy volá naše azuread openidconnect authenticator z `passport-azuread`.</span><span class="sxs-lookup"><span data-stu-id="d6dae-173">hello `/login` route calls our azuread-openidconnect authenticator from `passport-azuread`.</span></span> <span data-ttu-id="d6dae-174">Pokud není úspěšné, přesměruje hello back příliš nebo přihlášení uživatele.</span><span class="sxs-lookup"><span data-stu-id="d6dae-174">If that doesn't succeed, it redirects hello user back too/login.</span></span>
+  * <span data-ttu-id="d6dae-175">Hello `/logout` trasy jednoduše volá hello logout.ejs (a trasy), které vymaže soubory cookie a pak vrátí hello back tooindex.ejs uživatele.</span><span class="sxs-lookup"><span data-stu-id="d6dae-175">hello `/logout` route simply calls hello logout.ejs (and route), which clears cookies and then returns hello user back tooindex.ejs.</span></span>
 
-3. <span data-ttu-id="afc87-176">Pro poslední část `app.js`, přidejme **EnsureAuthenticated** metoda, která se používá v `/account`, jako je uvedené výše.</span><span class="sxs-lookup"><span data-stu-id="afc87-176">For the last part of `app.js`, let's add the **EnsureAuthenticated** method that is used in `/account`, as shown earlier.</span></span>
+3. <span data-ttu-id="d6dae-176">Pro poslední část hello `app.js`, přidejme hello **EnsureAuthenticated** metoda, která se používá v `/account`, jako je uvedené výše.</span><span class="sxs-lookup"><span data-stu-id="d6dae-176">For hello last part of `app.js`, let's add hello **EnsureAuthenticated** method that is used in `/account`, as shown earlier.</span></span>
 
     ```JavaScript
 
-        // Simple route middleware to ensure user is authenticated. (section 4)
+        // Simple route middleware tooensure user is authenticated. (section 4)
 
-        //   Use this route middleware on any resource that needs to be protected. If
-        //   the request is authenticated (typically via a persistent sign-in session),
-        //   the request proceeds. Otherwise, the user is redirected to the
+        //   Use this route middleware on any resource that needs toobe protected. If
+        //   hello request is authenticated (typically via a persistent sign-in session),
+        //   hello request proceeds. Otherwise, hello user is redirected toothe
         //   sign-in page.
         function ensureAuthenticated(req, res, next) {
           if (req.isAuthenticated()) { return next(); }
@@ -306,7 +306,7 @@ ms.lasthandoff: 07/11/2017
         }
     ```
 
-4. <span data-ttu-id="afc87-177">Nakonec vytvořte samotný server v `app.js`:</span><span class="sxs-lookup"><span data-stu-id="afc87-177">Finally, let's create the server itself in `app.js`:</span></span>
+4. <span data-ttu-id="d6dae-177">Nakonec vytvořte samotný server hello v `app.js`:</span><span class="sxs-lookup"><span data-stu-id="d6dae-177">Finally, let's create hello server itself in `app.js`:</span></span>
 
 ```JavaScript
 
@@ -315,10 +315,10 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="step-5-to-display-our-user-in-the-website-create-the-views-and-routes-in-express"></a><span data-ttu-id="afc87-178">Krok 5: Pokud chcete zobrazit naše uživatele na webu, zobrazení a vytvořte tras ve Express</span><span class="sxs-lookup"><span data-stu-id="afc87-178">Step 5: To display our user in the website, create the views and routes in Express</span></span>
-<span data-ttu-id="afc87-179">Nyní `app.js` dokončení.</span><span class="sxs-lookup"><span data-stu-id="afc87-179">Now `app.js` is complete.</span></span> <span data-ttu-id="afc87-180">Musíme jednoduše přidat trasy a zobrazení, které zobrazují informace jsme získat uživateli, stejně jako zpracování `/logout` a `/login` tras, které jsme vytvořili.</span><span class="sxs-lookup"><span data-stu-id="afc87-180">We simply need to add the routes and views that show the information we get to the user, as well as handle the `/logout` and `/login` routes that we  created.</span></span>
+## <a name="step-5-toodisplay-our-user-in-hello-website-create-hello-views-and-routes-in-express"></a><span data-ttu-id="d6dae-178">Krok 5: toodisplay naše uživatele hello webu, vytvoření hello zobrazení a trasy v Express</span><span class="sxs-lookup"><span data-stu-id="d6dae-178">Step 5: toodisplay our user in hello website, create hello views and routes in Express</span></span>
+<span data-ttu-id="d6dae-179">Nyní `app.js` dokončení.</span><span class="sxs-lookup"><span data-stu-id="d6dae-179">Now `app.js` is complete.</span></span> <span data-ttu-id="d6dae-180">Můžeme jednoduše potřebovat tooadd hello trasy a zobrazení tyto informace zobrazit hello jsme získat toohello uživatele, stejně jako zpracovává hello `/logout` a `/login` tras, které jsme vytvořili.</span><span class="sxs-lookup"><span data-stu-id="d6dae-180">We simply need tooadd hello routes and views that show hello information we get toohello user, as well as handle hello `/logout` and `/login` routes that we  created.</span></span>
 
-1. <span data-ttu-id="afc87-181">V kořenovém adresáři vytvořte trasu `/routes/index.js`.</span><span class="sxs-lookup"><span data-stu-id="afc87-181">Create the `/routes/index.js` route under the root directory.</span></span>
+1. <span data-ttu-id="d6dae-181">Vytvoření hello `/routes/index.js` trasy pod kořenovým adresářem hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-181">Create hello `/routes/index.js` route under hello root directory.</span></span>
 
     ```JavaScript
                 /*
@@ -330,7 +330,7 @@ ms.lasthandoff: 07/11/2017
                 };
     ```
 
-2. <span data-ttu-id="afc87-182">V kořenovém adresáři vytvořte trasu `/routes/user.js`.</span><span class="sxs-lookup"><span data-stu-id="afc87-182">Create the `/routes/user.js` route under the root directory.</span></span>
+2. <span data-ttu-id="d6dae-182">Vytvoření hello `/routes/user.js` trasy pod kořenovým adresářem hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-182">Create hello `/routes/user.js` route under hello root directory.</span></span>
 
                 ```JavaScript
                 /*
@@ -342,9 +342,9 @@ ms.lasthandoff: 07/11/2017
                 };
                 ```
 
- <span data-ttu-id="afc87-183">Tyto předají požadavek na našem zobrazení, včetně uživatele, pokud je k dispozici.</span><span class="sxs-lookup"><span data-stu-id="afc87-183">These pass along the request to our views, including the user if present.</span></span>
+ <span data-ttu-id="d6dae-183">Tyto předají hello požadavek tooour zobrazení, včetně uživatelských hello, pokud je k dispozici.</span><span class="sxs-lookup"><span data-stu-id="d6dae-183">These pass along hello request tooour views, including hello user if present.</span></span>
 
-3. <span data-ttu-id="afc87-184">V kořenovém adresáři vytvořte zobrazení `/views/index.ejs`.</span><span class="sxs-lookup"><span data-stu-id="afc87-184">Create the `/views/index.ejs` view under the root directory.</span></span> <span data-ttu-id="afc87-185">Toto je jednoduchá stránka, která volá metody, naše přihlášení a odhlášení a umožňuje nám se získat informace o účtu.</span><span class="sxs-lookup"><span data-stu-id="afc87-185">This is a simple page that calls our login and logout methods and enables us to grab account information.</span></span> <span data-ttu-id="afc87-186">Všimněte si, že budeme moci použít podmínku `if (!user)` jako uživatel předávány prostřednictvím v požadavku je důkaz máme přihlášeného uživatele.</span><span class="sxs-lookup"><span data-stu-id="afc87-186">Notice that we can use the conditional `if (!user)` as the user being passed through in the request is evidence we have a signed-in user.</span></span>
+3. <span data-ttu-id="d6dae-184">Vytvoření hello `/views/index.ejs` zobrazení pod kořenovým adresářem hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-184">Create hello `/views/index.ejs` view under hello root directory.</span></span> <span data-ttu-id="d6dae-185">Toto je jednoduchá stránka, která volá metody, naše přihlášení a odhlášení a umožňuje nám informace o účtu toograb.</span><span class="sxs-lookup"><span data-stu-id="d6dae-185">This is a simple page that calls our login and logout methods and enables us toograb account information.</span></span> <span data-ttu-id="d6dae-186">Všimněte si, že můžeme použít hello podmíněného `if (!user)` jako uživatel hello předávány prostřednictvím v žádosti o hello je důkaz máme přihlášeného uživatele.</span><span class="sxs-lookup"><span data-stu-id="d6dae-186">Notice that we can use hello conditional `if (!user)` as hello user being passed through in hello request is evidence we have a signed-in user.</span></span>
 
     ```JavaScript
     <% if (!user) { %>
@@ -357,7 +357,7 @@ ms.lasthandoff: 07/11/2017
     <% } %>
     ```
 
-4. <span data-ttu-id="afc87-187">Vytvořte `/views/account.ejs` zobrazení pod kořenovým adresářem, takže jsme můžete zobrazit další informace, `passport-azuread` pozastavil v požadavku uživatele.</span><span class="sxs-lookup"><span data-stu-id="afc87-187">Create the `/views/account.ejs` view under the root directory so that we can view additional information that `passport-azuread` has put in the user request.</span></span>
+4. <span data-ttu-id="d6dae-187">Vytvoření hello `/views/account.ejs` zobrazení pod kořenovým adresářem hello, takže jsme můžete zobrazit další informace, `passport-azuread` pozastavil v požadavku uživatele hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-187">Create hello `/views/account.ejs` view under hello root directory so that we can view additional information that `passport-azuread` has put in hello user request.</span></span>
 
     ```Javascript
     <% if (!user) { %>
@@ -376,7 +376,7 @@ ms.lasthandoff: 07/11/2017
     <% } %>
     ```
 
-5. <span data-ttu-id="afc87-188">Umožňuje, aby tento vzhled dobrý přidání rozložení.</span><span class="sxs-lookup"><span data-stu-id="afc87-188">Let's make this look good by adding a layout.</span></span> <span data-ttu-id="afc87-189">Vytvořte ' / zobrazení se views/layout.ejs v kořenovém adresáři.</span><span class="sxs-lookup"><span data-stu-id="afc87-189">Create the '/views/layout.ejs' view under the root directory.</span></span>
+5. <span data-ttu-id="d6dae-188">Umožňuje, aby tento vzhled dobrý přidání rozložení.</span><span class="sxs-lookup"><span data-stu-id="d6dae-188">Let's make this look good by adding a layout.</span></span> <span data-ttu-id="d6dae-189">Vytvoření hello "/ zobrazení se views/layout.ejs pod hello kořenový adresář.</span><span class="sxs-lookup"><span data-stu-id="d6dae-189">Create hello '/views/layout.ejs' view under hello root directory.</span></span>
 
     ```HTML
 
@@ -403,17 +403,17 @@ ms.lasthandoff: 07/11/2017
     </html>
     ```
 
-##<a name="next-steps"></a><span data-ttu-id="afc87-190">Další kroky</span><span class="sxs-lookup"><span data-stu-id="afc87-190">Next steps</span></span>
-<span data-ttu-id="afc87-191">Nakonec sestavte a spusťte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="afc87-191">Finally, build and run your app.</span></span> <span data-ttu-id="afc87-192">Spustit `node app.js`a pak přejděte na `http://localhost:3000`.</span><span class="sxs-lookup"><span data-stu-id="afc87-192">Run `node app.js`, and then go to `http://localhost:3000`.</span></span>
+##<a name="next-steps"></a><span data-ttu-id="d6dae-190">Další kroky</span><span class="sxs-lookup"><span data-stu-id="d6dae-190">Next steps</span></span>
+<span data-ttu-id="d6dae-191">Nakonec sestavte a spusťte aplikaci.</span><span class="sxs-lookup"><span data-stu-id="d6dae-191">Finally, build and run your app.</span></span> <span data-ttu-id="d6dae-192">Spustit `node app.js`a potom přejděte příliš`http://localhost:3000`.</span><span class="sxs-lookup"><span data-stu-id="d6dae-192">Run `node app.js`, and then go too`http://localhost:3000`.</span></span>
 
-<span data-ttu-id="afc87-193">Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak se v seznamu /account projeví identitu uživatele.</span><span class="sxs-lookup"><span data-stu-id="afc87-193">Sign in with either a personal Microsoft account or a work or school account, and notice how the user's identity is reflected in the /account list.</span></span> <span data-ttu-id="afc87-194">Nyní máte webovou aplikaci, která je zabezpečen pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.</span><span class="sxs-lookup"><span data-stu-id="afc87-194">You now have a web app that's secured with industry standard protocols that can authenticate users with both their personal and work/school accounts.</span></span>
+<span data-ttu-id="d6dae-193">Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak je identita uživatele hello projeví v seznamu /account hello.</span><span class="sxs-lookup"><span data-stu-id="d6dae-193">Sign in with either a personal Microsoft account or a work or school account, and notice how hello user's identity is reflected in hello /account list.</span></span> <span data-ttu-id="d6dae-194">Nyní máte webovou aplikaci, která je zabezpečen pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.</span><span class="sxs-lookup"><span data-stu-id="d6dae-194">You now have a web app that's secured with industry standard protocols that can authenticate users with both their personal and work/school accounts.</span></span>
 
-<span data-ttu-id="afc87-195">Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="afc87-195">For reference, the completed sample (without your configuration values) [is provided as a .zip file](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip).</span></span> <span data-ttu-id="afc87-196">Alternativně můžete klonovat z Githubu:</span><span class="sxs-lookup"><span data-stu-id="afc87-196">Alternatively, you can clone it from GitHub:</span></span>
+<span data-ttu-id="d6dae-195">Pro referenci hello dokončit ukázka (bez vašich hodnot nastavení) [je k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="d6dae-195">For reference, hello completed sample (without your configuration values) [is provided as a .zip file](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip).</span></span> <span data-ttu-id="d6dae-196">Alternativně můžete klonovat z Githubu:</span><span class="sxs-lookup"><span data-stu-id="d6dae-196">Alternatively, you can clone it from GitHub:</span></span>
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
-<span data-ttu-id="afc87-197">Nyní se můžete přesunout na pokročilejší témata.</span><span class="sxs-lookup"><span data-stu-id="afc87-197">You can now move onto more advanced topics.</span></span> <span data-ttu-id="afc87-198">Můžete se pokusit:</span><span class="sxs-lookup"><span data-stu-id="afc87-198">You might want to try:</span></span>
+<span data-ttu-id="d6dae-197">Nyní se můžete přesunout na pokročilejší témata.</span><span class="sxs-lookup"><span data-stu-id="d6dae-197">You can now move onto more advanced topics.</span></span> <span data-ttu-id="d6dae-198">Můžete chtít tootry:</span><span class="sxs-lookup"><span data-stu-id="d6dae-198">You might want tootry:</span></span>
 
-[<span data-ttu-id="afc87-199">Zabezpečení webového rozhraní API pomocí Azure AD</span><span class="sxs-lookup"><span data-stu-id="afc87-199">Secure a Web API with Azure AD</span></span>](active-directory-devquickstarts-webapi-nodejs.md)
+[<span data-ttu-id="d6dae-199">Zabezpečení webového rozhraní API pomocí Azure AD</span><span class="sxs-lookup"><span data-stu-id="d6dae-199">Secure a Web API with Azure AD</span></span>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

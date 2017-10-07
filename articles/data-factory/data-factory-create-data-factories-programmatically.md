@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření datových kanálů pomocí sady Azure .NET SDK | Microsoft Docs"
-description: "Naučte se vytvořit prostřednictvím kódu programu, sledovat a spravovat objekty pro vytváření dat Azure pomocí sady SDK Data Factory."
+title: "aaaCreate datových kanálů pomocí sady Azure .NET SDK | Microsoft Docs"
+description: "Zjistěte, jak tooprogrammatically vytvořit, sledovat a spravovat objekty pro vytváření dat Azure pomocí sady SDK Data Factory."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 9d9dac75321c5d4e079f49320d9b7c6f56e48754
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 190b5f99edbb3c27e1e8efb8990b9e601b22458f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a><span data-ttu-id="34aa0-103">Vytvoření, sledovat a spravovat Azure data Factory pomocí .NET SDK služby Azure Data Factory</span><span class="sxs-lookup"><span data-stu-id="34aa0-103">Create, monitor, and manage Azure data factories using Azure Data Factory .NET SDK</span></span>
-## <a name="overview"></a><span data-ttu-id="34aa0-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="34aa0-104">Overview</span></span>
-<span data-ttu-id="34aa0-105">Můžete vytvořit, sledovat a spravovat Azure data Factory programově pomocí .NET SDK služby Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-105">You can create, monitor, and manage Azure data factories programmatically using Data Factory .NET SDK.</span></span> <span data-ttu-id="34aa0-106">Tento článek obsahuje návod, který můžete přejít k vytvoření ukázkové aplikace konzoly .NET, která vytvoří a sleduje služby data factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-106">This article contains a walkthrough that you can follow to create a sample .NET console application that creates and monitors a data factory.</span></span> 
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a><span data-ttu-id="66b4c-103">Vytvoření, sledovat a spravovat Azure data Factory pomocí .NET SDK služby Azure Data Factory</span><span class="sxs-lookup"><span data-stu-id="66b4c-103">Create, monitor, and manage Azure data factories using Azure Data Factory .NET SDK</span></span>
+## <a name="overview"></a><span data-ttu-id="66b4c-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="66b4c-104">Overview</span></span>
+<span data-ttu-id="66b4c-105">Můžete vytvořit, sledovat a spravovat Azure data Factory programově pomocí .NET SDK služby Data Factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-105">You can create, monitor, and manage Azure data factories programmatically using Data Factory .NET SDK.</span></span> <span data-ttu-id="66b4c-106">Tento článek obsahuje návod, který může sledovat toocreate ukázkové aplikace konzoly .NET, která vytvoří a sleduje služby data factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-106">This article contains a walkthrough that you can follow toocreate a sample .NET console application that creates and monitors a data factory.</span></span> 
 
 > [!NOTE]
-> <span data-ttu-id="34aa0-107">Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-107">This article does not cover all the Data Factory .NET API.</span></span> <span data-ttu-id="34aa0-108">V tématu [Data Factory .NET API – referenční informace](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o .NET API pro Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-108">See [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) for comprehensive documentation on .NET API for Data Factory.</span></span> 
+> <span data-ttu-id="66b4c-107">Tento článek nepopisuje všechny hello Data Factory .NET API.</span><span class="sxs-lookup"><span data-stu-id="66b4c-107">This article does not cover all hello Data Factory .NET API.</span></span> <span data-ttu-id="66b4c-108">V tématu [Data Factory .NET API – referenční informace](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o .NET API pro Data Factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-108">See [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) for comprehensive documentation on .NET API for Data Factory.</span></span> 
 
-## <a name="prerequisites"></a><span data-ttu-id="34aa0-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="34aa0-109">Prerequisites</span></span>
-* <span data-ttu-id="34aa0-110">Visual Studio 2012 nebo 2013 nebo 2015</span><span class="sxs-lookup"><span data-stu-id="34aa0-110">Visual Studio 2012 or 2013 or 2015</span></span>
-* <span data-ttu-id="34aa0-111">Stáhněte a nainstalujte [Azure .NET SDK](http://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="34aa0-111">Download and install [Azure .NET SDK](http://azure.microsoft.com/downloads/).</span></span>
-* <span data-ttu-id="34aa0-112">Azure Powershell</span><span class="sxs-lookup"><span data-stu-id="34aa0-112">Azure PowerShell.</span></span> <span data-ttu-id="34aa0-113">Podle pokynů v článku [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) si na počítač nainstalujte prostředí Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="34aa0-113">Follow instructions in [How to install and configure Azure PowerShell](/powershell/azure/overview) article to install Azure PowerShell on your computer.</span></span> <span data-ttu-id="34aa0-114">K vytvoření aplikace v Azure Active Directory použijete Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="34aa0-114">You use Azure PowerShell to create an Azure Active Directory application.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="66b4c-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="66b4c-109">Prerequisites</span></span>
+* <span data-ttu-id="66b4c-110">Visual Studio 2012 nebo 2013 nebo 2015</span><span class="sxs-lookup"><span data-stu-id="66b4c-110">Visual Studio 2012 or 2013 or 2015</span></span>
+* <span data-ttu-id="66b4c-111">Stáhněte a nainstalujte [Azure .NET SDK](http://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="66b4c-111">Download and install [Azure .NET SDK](http://azure.microsoft.com/downloads/).</span></span>
+* <span data-ttu-id="66b4c-112">Azure Powershell</span><span class="sxs-lookup"><span data-stu-id="66b4c-112">Azure PowerShell.</span></span> <span data-ttu-id="66b4c-113">Postupujte podle pokynů v [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článek tooinstall prostředí Azure PowerShell ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="66b4c-113">Follow instructions in [How tooinstall and configure Azure PowerShell](/powershell/azure/overview) article tooinstall Azure PowerShell on your computer.</span></span> <span data-ttu-id="66b4c-114">Používáte prostředí Azure PowerShell toocreate aplikaci Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-114">You use Azure PowerShell toocreate an Azure Active Directory application.</span></span>
 
-### <a name="create-an-application-in-azure-active-directory"></a><span data-ttu-id="34aa0-115">Vytvoření aplikace v Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="34aa0-115">Create an application in Azure Active Directory</span></span>
-<span data-ttu-id="34aa0-116">Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a přiřaďte ho roli **Přispěvatel Data Factory**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-116">Create an Azure Active Directory application, create a service principal for the application, and assign it to the **Data Factory Contributor** role.</span></span>
+### <a name="create-an-application-in-azure-active-directory"></a><span data-ttu-id="66b4c-115">Vytvoření aplikace v Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="66b4c-115">Create an application in Azure Active Directory</span></span>
+<span data-ttu-id="66b4c-116">Vytvoření aplikace Azure Active Directory, vytvořit objekt služby pro aplikaci hello a přiřaďte ho toohello **Data Factory Přispěvatel** role.</span><span class="sxs-lookup"><span data-stu-id="66b4c-116">Create an Azure Active Directory application, create a service principal for hello application, and assign it toohello **Data Factory Contributor** role.</span></span>
 
-1. <span data-ttu-id="34aa0-117">Spusťte **PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-117">Launch **PowerShell**.</span></span>
-2. <span data-ttu-id="34aa0-118">Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="34aa0-118">Run the following command and enter the user name and password that you use to sign in to the Azure portal.</span></span>
+1. <span data-ttu-id="66b4c-117">Spusťte **PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-117">Launch **PowerShell**.</span></span>
+2. <span data-ttu-id="66b4c-118">Spusťte následující příkaz hello a zadejte hello uživatelské jméno a heslo použít toosign v toohello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="66b4c-118">Run hello following command and enter hello user name and password that you use toosign in toohello Azure portal.</span></span>
 
     ```PowerShell
     Login-AzureRmAccount
     ```
-3. <span data-ttu-id="34aa0-119">Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.</span><span class="sxs-lookup"><span data-stu-id="34aa0-119">Run the following command to view all the subscriptions for this account.</span></span>
+3. <span data-ttu-id="66b4c-119">Spusťte následující příkaz tooview hello všechny hello předplatná pro tento účet.</span><span class="sxs-lookup"><span data-stu-id="66b4c-119">Run hello following command tooview all hello subscriptions for this account.</span></span>
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
-4. <span data-ttu-id="34aa0-120">Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat.</span><span class="sxs-lookup"><span data-stu-id="34aa0-120">Run the following command to select the subscription that you want to work with.</span></span> <span data-ttu-id="34aa0-121">Místo **&lt;NameOfAzureSubscription**&gt; zadejte název svého předplatného Azure.</span><span class="sxs-lookup"><span data-stu-id="34aa0-121">Replace **&lt;NameOfAzureSubscription**&gt; with the name of your Azure subscription.</span></span>
+4. <span data-ttu-id="66b4c-120">Spusťte následující příkaz tooselect hello předplatné, které chcete toowork s hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-120">Run hello following command tooselect hello subscription that you want toowork with.</span></span> <span data-ttu-id="66b4c-121">Nahraďte  **&lt;NameOfAzureSubscription** &gt; s názvem hello předplatného Azure.</span><span class="sxs-lookup"><span data-stu-id="66b4c-121">Replace **&lt;NameOfAzureSubscription**&gt; with hello name of your Azure subscription.</span></span>
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
 
    > [!IMPORTANT]
-   > <span data-ttu-id="34aa0-122">Poznamenejte si **SubscriptionId** a **TenantId** z výstupu tohoto příkazu.</span><span class="sxs-lookup"><span data-stu-id="34aa0-122">Note down **SubscriptionId** and **TenantId** from the output of this command.</span></span>
+   > <span data-ttu-id="66b4c-122">Poznamenejte si **SubscriptionId** a **TenantId** z hello výstup tohoto příkazu.</span><span class="sxs-lookup"><span data-stu-id="66b4c-122">Note down **SubscriptionId** and **TenantId** from hello output of this command.</span></span>
 
-5. <span data-ttu-id="34aa0-123">Spuštěním následujícího příkazu v PowerShellu vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-123">Create an Azure resource group named **ADFTutorialResourceGroup** by running the following command in the PowerShell.</span></span>
+5. <span data-ttu-id="66b4c-123">Vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup** tak, že spustíte následující příkaz v hello prostředí PowerShell hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-123">Create an Azure resource group named **ADFTutorialResourceGroup** by running hello following command in hello PowerShell.</span></span>
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
-    <span data-ttu-id="34aa0-124">Pokud skupina prostředků už existuje, určete, jestli se má aktualizovat (Y), nebo ponechat tak, jak je (N).</span><span class="sxs-lookup"><span data-stu-id="34aa0-124">If the resource group already exists, you specify whether to update it (Y) or keep it as (N).</span></span>
+    <span data-ttu-id="66b4c-124">Pokud skupina prostředků hello již existuje, zadejte zda tooupdate ho (Y) nebo jej zachovat jako (ne).</span><span class="sxs-lookup"><span data-stu-id="66b4c-124">If hello resource group already exists, you specify whether tooupdate it (Y) or keep it as (N).</span></span>
 
-    <span data-ttu-id="34aa0-125">Pokud používáte jinou skupinu prostředků, použijte v postupech v tomto kurzu místo skupiny ADFTutorialResourceGroup název vaší skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="34aa0-125">If you use a different resource group, you need to use the name of your resource group in place of ADFTutorialResourceGroup in this tutorial.</span></span>
-6. <span data-ttu-id="34aa0-126">Vytvořte aplikaci Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-126">Create an Azure Active Directory application.</span></span>
+    <span data-ttu-id="66b4c-125">Pokud používáte jiné skupině prostředků, musíte v tomto kurzu toouse hello název vaší skupiny prostředků místo skupiny ADFTutorialResourceGroup.</span><span class="sxs-lookup"><span data-stu-id="66b4c-125">If you use a different resource group, you need toouse hello name of your resource group in place of ADFTutorialResourceGroup in this tutorial.</span></span>
+6. <span data-ttu-id="66b4c-126">Vytvořte aplikaci Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-126">Create an Azure Active Directory application.</span></span>
 
     ```PowerShell
     $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
-    <span data-ttu-id="34aa0-127">Pokud se zobrazí následující chyba, zadejte jinou adresu URL a spusťte příkaz znovu.</span><span class="sxs-lookup"><span data-stu-id="34aa0-127">If you get the following error, specify a different URL and run the command again.</span></span>
+    <span data-ttu-id="66b4c-127">Pokud dojde k následující chybě hello, zadejte jinou adresu URL a znovu spusťte příkaz hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-127">If you get hello following error, specify a different URL and run hello command again.</span></span>
     
     ```PowerShell
-    Another object with the same value for property identifierUris already exists.
+    Another object with hello same value for property identifierUris already exists.
     ```
-7. <span data-ttu-id="34aa0-128">Vytvořte instanční objekt služby AD.</span><span class="sxs-lookup"><span data-stu-id="34aa0-128">Create the AD service principal.</span></span>
+7. <span data-ttu-id="66b4c-128">Vytvořte hello objekt služby AD.</span><span class="sxs-lookup"><span data-stu-id="66b4c-128">Create hello AD service principal.</span></span>
 
     ```PowerShell
     New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
-8. <span data-ttu-id="34aa0-129">Přidejte instanční objekt k roli **Přispěvatel Data Factory**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-129">Add service principal to the **Data Factory Contributor** role.</span></span>
+8. <span data-ttu-id="66b4c-129">Přidání služby hlavní toohello **Data Factory Přispěvatel** role.</span><span class="sxs-lookup"><span data-stu-id="66b4c-129">Add service principal toohello **Data Factory Contributor** role.</span></span>
 
     ```PowerShell
     New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
-9. <span data-ttu-id="34aa0-130">Získejte ID aplikace.</span><span class="sxs-lookup"><span data-stu-id="34aa0-130">Get the application ID.</span></span>
+9. <span data-ttu-id="66b4c-130">Získání ID hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="66b4c-130">Get hello application ID.</span></span>
 
     ```PowerShell
     $azureAdApplication 
     ```
-    <span data-ttu-id="34aa0-131">Poznamenejte si ID aplikace (applicationID) ve výstupu.</span><span class="sxs-lookup"><span data-stu-id="34aa0-131">Note down the application ID (applicationID) from the output.</span></span>
+    <span data-ttu-id="66b4c-131">Poznamenejte si ID aplikace hello (applicationID) z výstupu hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-131">Note down hello application ID (applicationID) from hello output.</span></span>
 
-<span data-ttu-id="34aa0-132">Z těchto kroků byste měli mít tyto čtyři hodnoty:</span><span class="sxs-lookup"><span data-stu-id="34aa0-132">You should have following four values from these steps:</span></span>
+<span data-ttu-id="66b4c-132">Z těchto kroků byste měli mít tyto čtyři hodnoty:</span><span class="sxs-lookup"><span data-stu-id="66b4c-132">You should have following four values from these steps:</span></span>
 
-* <span data-ttu-id="34aa0-133">ID tenanta</span><span class="sxs-lookup"><span data-stu-id="34aa0-133">Tenant ID</span></span>
-* <span data-ttu-id="34aa0-134">ID předplatného</span><span class="sxs-lookup"><span data-stu-id="34aa0-134">Subscription ID</span></span>
-* <span data-ttu-id="34aa0-135">ID aplikace</span><span class="sxs-lookup"><span data-stu-id="34aa0-135">Application ID</span></span>
-* <span data-ttu-id="34aa0-136">Heslo (zadané v prvním příkazu)</span><span class="sxs-lookup"><span data-stu-id="34aa0-136">Password (specified in the first command)</span></span>
+* <span data-ttu-id="66b4c-133">ID tenanta</span><span class="sxs-lookup"><span data-stu-id="66b4c-133">Tenant ID</span></span>
+* <span data-ttu-id="66b4c-134">ID předplatného</span><span class="sxs-lookup"><span data-stu-id="66b4c-134">Subscription ID</span></span>
+* <span data-ttu-id="66b4c-135">ID aplikace</span><span class="sxs-lookup"><span data-stu-id="66b4c-135">Application ID</span></span>
+* <span data-ttu-id="66b4c-136">Heslo (zadané v první příkaz hello)</span><span class="sxs-lookup"><span data-stu-id="66b4c-136">Password (specified in hello first command)</span></span>
 
-## <a name="walkthrough"></a><span data-ttu-id="34aa0-137">Názorný postup</span><span class="sxs-lookup"><span data-stu-id="34aa0-137">Walkthrough</span></span>
-<span data-ttu-id="34aa0-138">V tomto návodu vytvoříte objekt pro vytváření dat kanál, který obsahuje aktivitu kopírování.</span><span class="sxs-lookup"><span data-stu-id="34aa0-138">In the walkthrough, you create a data factory with a pipeline that contains a copy activity.</span></span> <span data-ttu-id="34aa0-139">Aktivita kopírování kopíruje data ze složky ve službě Azure blob storage do jiné složky v stejné úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="34aa0-139">The copy activity copies data from a folder in your Azure blob storage to another folder in the same blob storage.</span></span> 
+## <a name="walkthrough"></a><span data-ttu-id="66b4c-137">Názorný postup</span><span class="sxs-lookup"><span data-stu-id="66b4c-137">Walkthrough</span></span>
+<span data-ttu-id="66b4c-138">V Průvodci hello vytvoříte objekt pro vytváření dat kanál, který obsahuje aktivitu kopírování.</span><span class="sxs-lookup"><span data-stu-id="66b4c-138">In hello walkthrough, you create a data factory with a pipeline that contains a copy activity.</span></span> <span data-ttu-id="66b4c-139">Hello aktivity kopírování kopíruje data ze složky ve složce tooanother úložiště objektů blob v Azure aplikace hello stejné úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="66b4c-139">hello copy activity copies data from a folder in your Azure blob storage tooanother folder in hello same blob storage.</span></span> 
 
-<span data-ttu-id="34aa0-140">Aktivita kopírování provádí přesun dat ve službě Azure Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-140">The Copy Activity performs the data movement in Azure Data Factory.</span></span> <span data-ttu-id="34aa0-141">Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem.</span><span class="sxs-lookup"><span data-stu-id="34aa0-141">The activity is powered by a globally available service that can copy data between various data stores in a secure, reliable, and scalable way.</span></span> <span data-ttu-id="34aa0-142">Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).</span><span class="sxs-lookup"><span data-stu-id="34aa0-142">See [Data Movement Activities](data-factory-data-movement-activities.md) article for details about the Copy Activity.</span></span>
+<span data-ttu-id="66b4c-140">Hello aktivita kopírování provádí přesun dat hello v Azure Data Factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-140">hello Copy Activity performs hello data movement in Azure Data Factory.</span></span> <span data-ttu-id="66b4c-141">Hello aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelné způsobem.</span><span class="sxs-lookup"><span data-stu-id="66b4c-141">hello activity is powered by a globally available service that can copy data between various data stores in a secure, reliable, and scalable way.</span></span> <span data-ttu-id="66b4c-142">V tématu [aktivity přesunu dat](data-factory-data-movement-activities.md) článku podrobnosti o aktivitě kopírování hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-142">See [Data Movement Activities](data-factory-data-movement-activities.md) article for details about hello Copy Activity.</span></span>
 
-1. <span data-ttu-id="34aa0-143">Pomocí sady Visual Studio 2012/2013/2015 vytvořte konzolovou aplikaci C# .NET.</span><span class="sxs-lookup"><span data-stu-id="34aa0-143">Using Visual Studio 2012/2013/2015, create a C# .NET console application.</span></span>
-   1. <span data-ttu-id="34aa0-144">Spusťte **Visual Studio** 2012/2013/2015.</span><span class="sxs-lookup"><span data-stu-id="34aa0-144">Launch **Visual Studio** 2012/2013/2015.</span></span>
-   2. <span data-ttu-id="34aa0-145">Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-145">Click **File**, point to **New**, and click **Project**.</span></span>
-   3. <span data-ttu-id="34aa0-146">Rozbalte **Šablony** a vyberte **Visual C#**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-146">Expand **Templates**, and select **Visual C#**.</span></span> <span data-ttu-id="34aa0-147">V tomto názorném postupu použijete C#, ale mohli byste využít libovolný jazyk .NET.</span><span class="sxs-lookup"><span data-stu-id="34aa0-147">In this walkthrough, you use C#, but you can use any .NET language.</span></span>
-   4. <span data-ttu-id="34aa0-148">V seznamu typů projektů napravo vyberte **Konzolová aplikace**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-148">Select **Console Application** from the list of project types on the right.</span></span>
-   5. <span data-ttu-id="34aa0-149">Jako název zadejte **DataFactoryAPITestApp**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-149">Enter **DataFactoryAPITestApp** for the Name.</span></span>
-   6. <span data-ttu-id="34aa0-150">Jako umístění vyberte **C:\ADFGetStarted**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-150">Select **C:\ADFGetStarted** for the Location.</span></span>
-   7. <span data-ttu-id="34aa0-151">Projekt vytvoříte kliknutím na **OK**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-151">Click **OK** to create the project.</span></span>
-2. <span data-ttu-id="34aa0-152">Klikněte na **Nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola Správce balíčků**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-152">Click **Tools**, point to **NuGet Package Manager**, and click **Package Manager Console**.</span></span>
-3. <span data-ttu-id="34aa0-153">V **Konzole Správce balíčků** postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="34aa0-153">In the **Package Manager Console**, do the following steps:</span></span>
-   1. <span data-ttu-id="34aa0-154">Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`</span><span class="sxs-lookup"><span data-stu-id="34aa0-154">Run the following command to install Data Factory package: `Install-Package Microsoft.Azure.Management.DataFactories`</span></span>
-   2. <span data-ttu-id="34aa0-155">Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`</span><span class="sxs-lookup"><span data-stu-id="34aa0-155">Run the following command to install Azure Active Directory package (you use Active Directory API in the code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`</span></span>
-4. <span data-ttu-id="34aa0-156">Nahraďte obsah **App.config** v projektu s následujícím obsahem:</span><span class="sxs-lookup"><span data-stu-id="34aa0-156">Replace the contents of **App.config** file in the project with the following content:</span></span> 
+1. <span data-ttu-id="66b4c-143">Pomocí sady Visual Studio 2012/2013/2015 vytvořte konzolovou aplikaci C# .NET.</span><span class="sxs-lookup"><span data-stu-id="66b4c-143">Using Visual Studio 2012/2013/2015, create a C# .NET console application.</span></span>
+   1. <span data-ttu-id="66b4c-144">Spusťte **Visual Studio** 2012/2013/2015.</span><span class="sxs-lookup"><span data-stu-id="66b4c-144">Launch **Visual Studio** 2012/2013/2015.</span></span>
+   2. <span data-ttu-id="66b4c-145">Klikněte na tlačítko **soubor**, bod příliš**nový**a klikněte na tlačítko **projektu**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-145">Click **File**, point too**New**, and click **Project**.</span></span>
+   3. <span data-ttu-id="66b4c-146">Rozbalte **Šablony** a vyberte **Visual C#**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-146">Expand **Templates**, and select **Visual C#**.</span></span> <span data-ttu-id="66b4c-147">V tomto názorném postupu použijete C#, ale mohli byste využít libovolný jazyk .NET.</span><span class="sxs-lookup"><span data-stu-id="66b4c-147">In this walkthrough, you use C#, but you can use any .NET language.</span></span>
+   4. <span data-ttu-id="66b4c-148">Vyberte **konzolové aplikace** hello seznamu typů projektu na hello správné.</span><span class="sxs-lookup"><span data-stu-id="66b4c-148">Select **Console Application** from hello list of project types on hello right.</span></span>
+   5. <span data-ttu-id="66b4c-149">Zadejte **DataFactoryAPITestApp** pro hello název.</span><span class="sxs-lookup"><span data-stu-id="66b4c-149">Enter **DataFactoryAPITestApp** for hello Name.</span></span>
+   6. <span data-ttu-id="66b4c-150">Vyberte **C:\ADFGetStarted** pro hello umístění.</span><span class="sxs-lookup"><span data-stu-id="66b4c-150">Select **C:\ADFGetStarted** for hello Location.</span></span>
+   7. <span data-ttu-id="66b4c-151">Klikněte na tlačítko **OK** toocreate hello projektu.</span><span class="sxs-lookup"><span data-stu-id="66b4c-151">Click **OK** toocreate hello project.</span></span>
+2. <span data-ttu-id="66b4c-152">Klikněte na tlačítko **nástroje**, bod příliš**Správce balíčků NuGet**a klikněte na tlačítko **Konzola správce balíčků**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-152">Click **Tools**, point too**NuGet Package Manager**, and click **Package Manager Console**.</span></span>
+3. <span data-ttu-id="66b4c-153">V hello **Konzola správce balíčků**, hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="66b4c-153">In hello **Package Manager Console**, do hello following steps:</span></span>
+   1. <span data-ttu-id="66b4c-154">Spusťte následující příkaz tooinstall Data Factory balíček hello:`Install-Package Microsoft.Azure.Management.DataFactories`</span><span class="sxs-lookup"><span data-stu-id="66b4c-154">Run hello following command tooinstall Data Factory package: `Install-Package Microsoft.Azure.Management.DataFactories`</span></span>
+   2. <span data-ttu-id="66b4c-155">Spusťte následující příkaz tooinstall Azure Active Directory balíčku (použít Active Directory API v kódu hello) hello:`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`</span><span class="sxs-lookup"><span data-stu-id="66b4c-155">Run hello following command tooinstall Azure Active Directory package (you use Active Directory API in hello code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`</span></span>
+4. <span data-ttu-id="66b4c-156">Nahraďte obsah hello **App.config** soubor v projektu hello s hello následující obsah:</span><span class="sxs-lookup"><span data-stu-id="66b4c-156">Replace hello contents of **App.config** file in hello project with hello following content:</span></span> 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -127,14 +127,14 @@ ms.lasthandoff: 08/18/2017
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
             <add key="ApplicationId" value="your application ID" />
-            <add key="Password" value="Password you used while creating the AAD application" />
+            <add key="Password" value="Password you used while creating hello AAD application" />
             <add key="SubscriptionId" value= "Subscription ID" />
             <add key="ActiveDirectoryTenantId" value="Tenant ID" />
         </appSettings>
     </configuration>
     ```
-5. <span data-ttu-id="34aa0-157">V souboru App.Config aktualizujte hodnoty pro  **&lt;ID aplikace&gt;**,  **&lt;heslo&gt;**,  **&lt;předplatného ID&gt;**, a  **&lt;ID klienta&gt;**  vlastními hodnotami.</span><span class="sxs-lookup"><span data-stu-id="34aa0-157">In the App.Config file, update values for **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;**, and **&lt;tenant ID&gt;** with your own values.</span></span>
-6. <span data-ttu-id="34aa0-158">Přidejte následující **pomocí** příkazy **Program.cs** v projektu.</span><span class="sxs-lookup"><span data-stu-id="34aa0-158">Add the following **using** statements to the **Program.cs** file in the project.</span></span>
+5. <span data-ttu-id="66b4c-157">V souboru App.Config hello aktualizujte hodnoty pro  **&lt;ID aplikace&gt;**,  **&lt;heslo&gt;**,  **&lt; ID předplatného&gt;**, a  **&lt;ID klienta&gt;**  vlastními hodnotami.</span><span class="sxs-lookup"><span data-stu-id="66b4c-157">In hello App.Config file, update values for **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;**, and **&lt;tenant ID&gt;** with your own values.</span></span>
+6. <span data-ttu-id="66b4c-158">Přidejte následující hello **pomocí** příkazy toohello **Program.cs** soubor v projektu hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-158">Add hello following **using** statements toohello **Program.cs** file in hello project.</span></span>
 
     ```csharp
     using System.Configuration;
@@ -150,15 +150,15 @@ ms.lasthandoff: 08/18/2017
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     ```
-6. <span data-ttu-id="34aa0-159">Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataPipelineManagementClient**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-159">Add the following code that creates an instance of **DataPipelineManagementClient** class to the **Main** method.</span></span> <span data-ttu-id="34aa0-160">Tento objekt použijete k vytvoření objektu pro vytváření dat, propojené služby, vstupních a výstupních datových sad a kanálu.</span><span class="sxs-lookup"><span data-stu-id="34aa0-160">You use this object to create a data factory, a linked service, input and output datasets, and a pipeline.</span></span> <span data-ttu-id="34aa0-161">Použijete ho také k monitorování řezů datových sad při spuštění.</span><span class="sxs-lookup"><span data-stu-id="34aa0-161">You also use this object to monitor slices of a dataset at runtime.</span></span>
+6. <span data-ttu-id="66b4c-159">Přidejte následující kód, který vytvoří instanci hello **DataPipelineManagementClient** třída toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-159">Add hello following code that creates an instance of **DataPipelineManagementClient** class toohello **Main** method.</span></span> <span data-ttu-id="66b4c-160">Tento objekt toocreate použijete objekt pro vytváření dat, propojené služby, vstupní a výstupní datové sady a kanál.</span><span class="sxs-lookup"><span data-stu-id="66b4c-160">You use this object toocreate a data factory, a linked service, input and output datasets, and a pipeline.</span></span> <span data-ttu-id="66b4c-161">Tento objekt toomonitor řezy datové sady se také použít za běhu.</span><span class="sxs-lookup"><span data-stu-id="66b4c-161">You also use this object toomonitor slices of a dataset at runtime.</span></span>
 
     ```csharp
     // create data factory management client
 
-    //IMPORTANT: specify the name of Azure resource group here
+    //IMPORTANT: specify hello name of Azure resource group here
     string resourceGroupName = "ADFTutorialResourceGroup";
 
-    //IMPORTANT: the name of the data factory must be globally unique.
+    //IMPORTANT: hello name of hello data factory must be globally unique.
     // Therefore, update this value. For example:APITutorialFactory05122017
     string dataFactoryName = "APITutorialFactory";
 
@@ -172,10 +172,10 @@ ms.lasthandoff: 08/18/2017
     ```
 
    > [!IMPORTANT]
-   > <span data-ttu-id="34aa0-162">Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure.</span><span class="sxs-lookup"><span data-stu-id="34aa0-162">Replace the value of **resourceGroupName** with the name of your Azure resource group.</span></span> <span data-ttu-id="34aa0-163">Můžete vytvořit skupinu prostředků pomocí [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny.</span><span class="sxs-lookup"><span data-stu-id="34aa0-163">You can create a resource group using the [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet.</span></span>
+   > <span data-ttu-id="66b4c-162">Nahraďte hodnotu hello **resourceGroupName** s hello název vaší skupiny prostředků Azure.</span><span class="sxs-lookup"><span data-stu-id="66b4c-162">Replace hello value of **resourceGroupName** with hello name of your Azure resource group.</span></span> <span data-ttu-id="66b4c-163">Můžete vytvořit skupinu prostředků pomocí hello [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny.</span><span class="sxs-lookup"><span data-stu-id="66b4c-163">You can create a resource group using hello [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet.</span></span>
    >
-   > <span data-ttu-id="34aa0-164">Aktualizujte název datové továrny (dataFactoryName) tak, aby byl jedinečný.</span><span class="sxs-lookup"><span data-stu-id="34aa0-164">Update name of the data factory (dataFactoryName) to be unique.</span></span> <span data-ttu-id="34aa0-165">Název objektu pro vytváření dat musí být globálně jedinečný.</span><span class="sxs-lookup"><span data-stu-id="34aa0-165">Name of the data factory must be globally unique.</span></span> <span data-ttu-id="34aa0-166">V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-166">See [Data Factory - Naming Rules](data-factory-naming-rules.md) topic for naming rules for Data Factory artifacts.</span></span>
-7. <span data-ttu-id="34aa0-167">Do metody **Main** přidejte následující kód, který vytvoří **objekt pro vytváření dat**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-167">Add the following code that creates a **data factory** to the **Main** method.</span></span>
+   > <span data-ttu-id="66b4c-164">Aktualizujte název hello data factory (dataFactoryName) toobe jedinečný.</span><span class="sxs-lookup"><span data-stu-id="66b4c-164">Update name of hello data factory (dataFactoryName) toobe unique.</span></span> <span data-ttu-id="66b4c-165">Název objektu pro vytváření dat hello musí být globálně jedinečný.</span><span class="sxs-lookup"><span data-stu-id="66b4c-165">Name of hello data factory must be globally unique.</span></span> <span data-ttu-id="66b4c-166">V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-166">See [Data Factory - Naming Rules](data-factory-naming-rules.md) topic for naming rules for Data Factory artifacts.</span></span>
+7. <span data-ttu-id="66b4c-167">Přidejte následující kód, který vytvoří hello **objekt pro vytváření dat** toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-167">Add hello following code that creates a **data factory** toohello **Main** method.</span></span>
 
     ```csharp
     // create a data factory
@@ -192,10 +192,10 @@ ms.lasthandoff: 08/18/2017
         }
     );
     ```
-8. <span data-ttu-id="34aa0-168">Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-168">Add the following code that creates an **Azure Storage linked service** to the **Main** method.</span></span>
+8. <span data-ttu-id="66b4c-168">Přidejte následující kód, který vytvoří hello **propojená služba Azure Storage** toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-168">Add hello following code that creates an **Azure Storage linked service** toohello **Main** method.</span></span>
 
    > [!IMPORTANT]
-   > <span data-ttu-id="34aa0-169">Položky **storageaccountname** a **accountkey** nahraďte názvem svého účtu Azure Storage a jeho klíčem.</span><span class="sxs-lookup"><span data-stu-id="34aa0-169">Replace **storageaccountname** and **accountkey** with name and key of your Azure Storage account.</span></span>
+   > <span data-ttu-id="66b4c-169">Položky **storageaccountname** a **accountkey** nahraďte názvem svého účtu Azure Storage a jeho klíčem.</span><span class="sxs-lookup"><span data-stu-id="66b4c-169">Replace **storageaccountname** and **accountkey** with name and key of your Azure Storage account.</span></span>
 
     ```csharp
     // create a linked service for input data store: Azure Storage
@@ -214,11 +214,11 @@ ms.lasthandoff: 08/18/2017
         }
     );
     ```
-9. <span data-ttu-id="34aa0-170">Do metody **Main** přidejte následující kód, který vytvoří **vstupní a výstupní datové sady**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-170">Add the following code that creates **input and output datasets** to the **Main** method.</span></span>
+9. <span data-ttu-id="66b4c-170">Přidejte následující kód, který vytvoří hello **vstupní a výstupní datové sady** toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-170">Add hello following code that creates **input and output datasets** toohello **Main** method.</span></span>
 
-    <span data-ttu-id="34aa0-171">**FolderPath** vstupního objektu blob je nastavený na **adftutorial /** kde **adftutorial** je název kontejneru ve službě blob storage.</span><span class="sxs-lookup"><span data-stu-id="34aa0-171">The **FolderPath** for the input blob is set to **adftutorial/** where **adftutorial** is the name of the container in your blob storage.</span></span> <span data-ttu-id="34aa0-172">Pokud tento kontejner ve službě Azure blob storage neexistuje, vytvořit kontejner s tímto názvem: **adftutorial** a odešlete textový soubor do kontejneru.</span><span class="sxs-lookup"><span data-stu-id="34aa0-172">If this container does not exist in your Azure blob storage, create a container with this name: **adftutorial** and upload a text file to the container.</span></span>
+    <span data-ttu-id="66b4c-171">Hello **FolderPath** hello vstupního objektu blob je nastavený příliš**adftutorial /** kde **adftutorial** je název hello hello kontejneru ve službě blob storage.</span><span class="sxs-lookup"><span data-stu-id="66b4c-171">hello **FolderPath** for hello input blob is set too**adftutorial/** where **adftutorial** is hello name of hello container in your blob storage.</span></span> <span data-ttu-id="66b4c-172">Pokud tento kontejner ve službě Azure blob storage neexistuje, vytvořit kontejner s tímto názvem: **adftutorial** a nahrát textový soubor toohello kontejner.</span><span class="sxs-lookup"><span data-stu-id="66b4c-172">If this container does not exist in your Azure blob storage, create a container with this name: **adftutorial** and upload a text file toohello container.</span></span>
 
-    <span data-ttu-id="34aa0-173">FolderPath pro výstup objektů blob je nastavena na: **adftutorial/apifactoryoutput / {řezu}** kde **řez** je počítáno dynamicky podle hodnotu **SliceStart** () Spusťte každý řez datum a čas.)</span><span class="sxs-lookup"><span data-stu-id="34aa0-173">The FolderPath for the output blob is set to: **adftutorial/apifactoryoutput/{Slice}** where **Slice** is dynamically calculated based on the value of **SliceStart** (start date-time of each slice.)</span></span>
+    <span data-ttu-id="66b4c-173">výstup Hello FolderPath pro hello objektu blob je nastavena na: **adftutorial/apifactoryoutput / {řezu}** kde **řez** je hodnota dynamicky počítané na základě hello **SliceStart**(spustit datum a čas každý řez.)</span><span class="sxs-lookup"><span data-stu-id="66b4c-173">hello FolderPath for hello output blob is set to: **adftutorial/apifactoryoutput/{Slice}** where **Slice** is dynamically calculated based on hello value of **SliceStart** (start date-time of each slice.)</span></span>
 
     ```csharp
     // create input and output datasets
@@ -294,9 +294,9 @@ ms.lasthandoff: 08/18/2017
         }
     });
     ```
-10. <span data-ttu-id="34aa0-174">Do metody **Main** přidejte následující kód, který **vytvoří a aktivuje kanál**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-174">Add the following code that **creates and activates a pipeline** to the **Main** method.</span></span> <span data-ttu-id="34aa0-175">Tento kanál má aktivitu **CopyActivity**, která jako zdroj používá **BlobSource** a jako jímku používá **BlobSink**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-175">This pipeline has a **CopyActivity** that takes **BlobSource** as a source and **BlobSink** as a sink.</span></span>
+10. <span data-ttu-id="66b4c-174">Přidat hello následující kód, který **vytvoří a aktivuje kanálu** toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-174">Add hello following code that **creates and activates a pipeline** toohello **Main** method.</span></span> <span data-ttu-id="66b4c-175">Tento kanál má aktivitu **CopyActivity**, která jako zdroj používá **BlobSource** a jako jímku používá **BlobSink**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-175">This pipeline has a **CopyActivity** that takes **BlobSource** as a source and **BlobSink** as a sink.</span></span>
 
-    <span data-ttu-id="34aa0-176">Aktivita kopírování provádí přesun dat ve službě Azure Data Factory.</span><span class="sxs-lookup"><span data-stu-id="34aa0-176">The Copy Activity performs the data movement in Azure Data Factory.</span></span> <span data-ttu-id="34aa0-177">Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem.</span><span class="sxs-lookup"><span data-stu-id="34aa0-177">The activity is powered by a globally available service that can copy data between various data stores in a secure, reliable, and scalable way.</span></span> <span data-ttu-id="34aa0-178">Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).</span><span class="sxs-lookup"><span data-stu-id="34aa0-178">See [Data Movement Activities](data-factory-data-movement-activities.md) article for details about the Copy Activity.</span></span>
+    <span data-ttu-id="66b4c-176">Hello aktivita kopírování provádí přesun dat hello v Azure Data Factory.</span><span class="sxs-lookup"><span data-stu-id="66b4c-176">hello Copy Activity performs hello data movement in Azure Data Factory.</span></span> <span data-ttu-id="66b4c-177">Hello aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelné způsobem.</span><span class="sxs-lookup"><span data-stu-id="66b4c-177">hello activity is powered by a globally available service that can copy data between various data stores in a secure, reliable, and scalable way.</span></span> <span data-ttu-id="66b4c-178">V tématu [aktivity přesunu dat](data-factory-data-movement-activities.md) článku podrobnosti o aktivitě kopírování hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-178">See [Data Movement Activities](data-factory-data-movement-activities.md) article for details about hello Copy Activity.</span></span>
 
     ```csharp
     // create a pipeline
@@ -315,7 +315,7 @@ ms.lasthandoff: 08/18/2017
             {
                 Description = "Demo Pipeline for data transfer between blobs",
     
-                // Initial value for pipeline's active period. With this, you won't need to set slice status
+                // Initial value for pipeline's active period. With this, you won't need tooset slice status
                 Start = PipelineActivePeriodStartTime,
                 End = PipelineActivePeriodEndTime,
     
@@ -354,7 +354,7 @@ ms.lasthandoff: 08/18/2017
         }
     });
     ```
-12. <span data-ttu-id="34aa0-179">Do metody **Main** přidejte následující kód pro získání stavu datového řezu výstupní datové sady.</span><span class="sxs-lookup"><span data-stu-id="34aa0-179">Add the following code to the **Main** method to get the status of a data slice of the output dataset.</span></span> <span data-ttu-id="34aa0-180">Není v této ukázce se očekává pouze jeden řez.</span><span class="sxs-lookup"><span data-stu-id="34aa0-180">There is only one slice expected in this sample.</span></span>
+12. <span data-ttu-id="66b4c-179">Přidejte následující kód toohello hello **hlavní** metoda tooget hello stav datový řez ze hello výstupní datovou sadu.</span><span class="sxs-lookup"><span data-stu-id="66b4c-179">Add hello following code toohello **Main** method tooget hello status of a data slice of hello output dataset.</span></span> <span data-ttu-id="66b4c-180">Není v této ukázce se očekává pouze jeden řez.</span><span class="sxs-lookup"><span data-stu-id="66b4c-180">There is only one slice expected in this sample.</span></span>
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -363,8 +363,8 @@ ms.lasthandoff: 08/18/2017
     
     while (DateTime.Now - start < TimeSpan.FromMinutes(5) && !done)
     {
-        Console.WriteLine("Pulling the slice status");
-        // wait before the next status check
+        Console.WriteLine("Pulling hello slice status");
+        // wait before hello next status check
         Thread.Sleep(1000 * 12);
     
         var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Dataset_Destination,
@@ -389,13 +389,13 @@ ms.lasthandoff: 08/18/2017
         }
     }
     ```
-13. <span data-ttu-id="34aa0-181">**(volitelné)**  Přidejte následující kód, který získat podrobnosti o pro datový řez pro spuštění **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="34aa0-181">**(optional)** Add the following code to get run details for a data slice to the **Main** method.</span></span>
+13. <span data-ttu-id="66b4c-181">**(volitelné)**  Přidat hello následující kód tooget spustit podrobnosti datový řez toohello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="66b4c-181">**(optional)** Add hello following code tooget run details for a data slice toohello **Main** method.</span></span>
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
     
-    // give it a few minutes for the output slice to be ready
-    Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
+    // give it a few minutes for hello output slice toobe ready
+    Console.WriteLine("\nGive it a few minutes for hello output slice toobe ready and press any key.");
     Console.ReadKey();
     
     var datasliceRunListResponse = client.DataSliceRuns.List(
@@ -418,10 +418,10 @@ ms.lasthandoff: 08/18/2017
         Console.WriteLine("ErrorMessage: \t{0}", run.ErrorMessage);
     }
     
-    Console.WriteLine("\nPress any key to exit.");
+    Console.WriteLine("\nPress any key tooexit.");
     Console.ReadKey();
     ```
-14. <span data-ttu-id="34aa0-182">Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-182">Add the following helper method used by the **Main** method to the **Program** class.</span></span> <span data-ttu-id="34aa0-183">Tato metoda otevře dialogové okno, který umožňuje zadat **uživatelské jméno** a **heslo** který používáte k přihlášení k portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="34aa0-183">This method pops a dialog box that that lets you provide **user name** and **password** that you use to log in to Azure portal.</span></span>
+14. <span data-ttu-id="66b4c-182">Přidejte následující metodu helper používané hello hello **hlavní** metoda toohello **Program** třídy.</span><span class="sxs-lookup"><span data-stu-id="66b4c-182">Add hello following helper method used by hello **Main** method toohello **Program** class.</span></span> <span data-ttu-id="66b4c-183">Tato metoda otevře dialogové okno, který umožňuje zadat **uživatelské jméno** a **heslo** použijete toolog tooAzure portálu.</span><span class="sxs-lookup"><span data-stu-id="66b4c-183">This method pops a dialog box that that lets you provide **user name** and **password** that you use toolog in tooAzure portal.</span></span>
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -437,29 +437,29 @@ ms.lasthandoff: 08/18/2017
         if (result != null)
             return result.AccessToken;
 
-        throw new InvalidOperationException("Failed to acquire token");
+        throw new InvalidOperationException("Failed tooacquire token");
     }
     ```
 
-15. <span data-ttu-id="34aa0-184">V Průzkumníku řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a klikněte na tlačítko **přidat odkaz na**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-184">In the Solution Explorer, expand the project: **DataFactoryAPITestApp**, right-click **References**, and click **Add Reference**.</span></span> <span data-ttu-id="34aa0-185">Zaškrtněte políčko u `System.Configuration` sestavení a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-185">Select check box for `System.Configuration` assembly and click **OK**.</span></span>
-15. <span data-ttu-id="34aa0-186">Sestavte konzolovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="34aa0-186">Build the console application.</span></span> <span data-ttu-id="34aa0-187">Klikněte v nabídce na **Sestavit** a potom klikněte na **Sestavit řešení**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-187">Click **Build** on the menu and click **Build Solution**.</span></span>
-16. <span data-ttu-id="34aa0-188">Potvrďte, že existuje alespoň jeden soubor adftutorial kontejneru ve službě Azure blob storage.</span><span class="sxs-lookup"><span data-stu-id="34aa0-188">Confirm that there is at least one file in the adftutorial container in your Azure blob storage.</span></span> <span data-ttu-id="34aa0-189">Pokud ne, vytvořte soubor Emp.txt v poznámkovém bloku s následujícím obsahem a nahrajte ho do kontejneru adftutorial.</span><span class="sxs-lookup"><span data-stu-id="34aa0-189">If not, create Emp.txt file in Notepad with the following content and upload it to the adftutorial container.</span></span>
+15. <span data-ttu-id="66b4c-184">V Průzkumníku řešení hello, rozbalte projekt hello: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a klikněte na tlačítko **přidat odkaz na**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-184">In hello Solution Explorer, expand hello project: **DataFactoryAPITestApp**, right-click **References**, and click **Add Reference**.</span></span> <span data-ttu-id="66b4c-185">Zaškrtněte políčko u `System.Configuration` sestavení a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-185">Select check box for `System.Configuration` assembly and click **OK**.</span></span>
+15. <span data-ttu-id="66b4c-186">Vytvoření konzolové aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-186">Build hello console application.</span></span> <span data-ttu-id="66b4c-187">Klikněte na tlačítko **sestavení** na hello nabídky a klikněte na **sestavit řešení**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-187">Click **Build** on hello menu and click **Build Solution**.</span></span>
+16. <span data-ttu-id="66b4c-188">Potvrďte, že existuje alespoň jeden soubor hello adftutorial kontejneru ve službě Azure blob storage.</span><span class="sxs-lookup"><span data-stu-id="66b4c-188">Confirm that there is at least one file in hello adftutorial container in your Azure blob storage.</span></span> <span data-ttu-id="66b4c-189">Pokud ne, vytvořte soubor Emp.txt v poznámkovém bloku s hello následující obsahu a nahrajte ho toohello adftutorial kontejneru.</span><span class="sxs-lookup"><span data-stu-id="66b4c-189">If not, create Emp.txt file in Notepad with hello following content and upload it toohello adftutorial container.</span></span>
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. <span data-ttu-id="34aa0-190">Ukázku spusťte kliknutím na **Ladit** -> **Spustit ladění** v nabídce.</span><span class="sxs-lookup"><span data-stu-id="34aa0-190">Run the sample by clicking **Debug** -> **Start Debugging** on the menu.</span></span> <span data-ttu-id="34aa0-191">Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-191">When you see the **Getting run details of a data slice**, wait for a few minutes, and press **ENTER**.</span></span>
-18. <span data-ttu-id="34aa0-192">Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:</span><span class="sxs-lookup"><span data-stu-id="34aa0-192">Use the Azure portal to verify that the data factory **APITutorialFactory** is created with the following artifacts:</span></span>
-    * <span data-ttu-id="34aa0-193">Propojená služba: **AzureStorageLinkedService**</span><span class="sxs-lookup"><span data-stu-id="34aa0-193">Linked service: **AzureStorageLinkedService**</span></span>
-    * <span data-ttu-id="34aa0-194">Datová sada: **DatasetBlobSource** a **DatasetBlobDestination**.</span><span class="sxs-lookup"><span data-stu-id="34aa0-194">Dataset: **DatasetBlobSource** and **DatasetBlobDestination**.</span></span>
-    * <span data-ttu-id="34aa0-195">Kanál: **PipelineBlobSample**</span><span class="sxs-lookup"><span data-stu-id="34aa0-195">Pipeline: **PipelineBlobSample**</span></span>
-19. <span data-ttu-id="34aa0-196">Ověřte, že výstupní soubor je vytvořen v **apifactoryoutput** složku **adftutorial** kontejneru.</span><span class="sxs-lookup"><span data-stu-id="34aa0-196">Verify that an output file is created in the **apifactoryoutput** folder in the **adftutorial** container.</span></span>
+17. <span data-ttu-id="66b4c-190">Hello ukázku spustit kliknutím **ladění** -> **spustit ladění** v nabídce hello.</span><span class="sxs-lookup"><span data-stu-id="66b4c-190">Run hello sample by clicking **Debug** -> **Start Debugging** on hello menu.</span></span> <span data-ttu-id="66b4c-191">Až se zobrazí hello **získávání spustit podrobnosti datový řez**, počkejte několik minut a stiskněte klávesu **ENTER**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-191">When you see hello **Getting run details of a data slice**, wait for a few minutes, and press **ENTER**.</span></span>
+18. <span data-ttu-id="66b4c-192">Použití této datové továrně hello hello Azure portálu tooverify **APITutorialFactory** je vytvořena s hello artefakty následující:</span><span class="sxs-lookup"><span data-stu-id="66b4c-192">Use hello Azure portal tooverify that hello data factory **APITutorialFactory** is created with hello following artifacts:</span></span>
+    * <span data-ttu-id="66b4c-193">Propojená služba: **AzureStorageLinkedService**</span><span class="sxs-lookup"><span data-stu-id="66b4c-193">Linked service: **AzureStorageLinkedService**</span></span>
+    * <span data-ttu-id="66b4c-194">Datová sada: **DatasetBlobSource** a **DatasetBlobDestination**.</span><span class="sxs-lookup"><span data-stu-id="66b4c-194">Dataset: **DatasetBlobSource** and **DatasetBlobDestination**.</span></span>
+    * <span data-ttu-id="66b4c-195">Kanál: **PipelineBlobSample**</span><span class="sxs-lookup"><span data-stu-id="66b4c-195">Pipeline: **PipelineBlobSample**</span></span>
+19. <span data-ttu-id="66b4c-196">Ověřte, že výstupní soubor je vytvořen v hello **apifactoryoutput** složky v hello **adftutorial** kontejneru.</span><span class="sxs-lookup"><span data-stu-id="66b4c-196">Verify that an output file is created in hello **apifactoryoutput** folder in hello **adftutorial** container.</span></span>
 
-## <a name="get-a-list-of-failed-data-slices"></a><span data-ttu-id="34aa0-197">Získat seznam neúspěšných datové řezy</span><span class="sxs-lookup"><span data-stu-id="34aa0-197">Get a list of failed data slices</span></span> 
+## <a name="get-a-list-of-failed-data-slices"></a><span data-ttu-id="66b4c-197">Získat seznam neúspěšných datové řezy</span><span class="sxs-lookup"><span data-stu-id="66b4c-197">Get a list of failed data slices</span></span> 
 
 ```csharp
-// Parse the resource path
+// Parse hello resource path
 var ResourceGroupName = "ADFTutorialResourceGroup";
 var DataFactoryName = "DataFactoryAPITestApp";
 
@@ -495,7 +495,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="34aa0-198">Další kroky</span><span class="sxs-lookup"><span data-stu-id="34aa0-198">Next steps</span></span>
-<span data-ttu-id="34aa0-199">Podívejte se na následující příklad k vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z Azure blob storage do Azure SQL database:</span><span class="sxs-lookup"><span data-stu-id="34aa0-199">See the following example for creating a pipeline using .NET SDK that copies data from an Azure blob storage to an Azure SQL database:</span></span> 
+## <a name="next-steps"></a><span data-ttu-id="66b4c-198">Další kroky</span><span class="sxs-lookup"><span data-stu-id="66b4c-198">Next steps</span></span>
+<span data-ttu-id="66b4c-199">Viz následující ukázka pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z Azure blob storage tooan Azure SQL database hello:</span><span class="sxs-lookup"><span data-stu-id="66b4c-199">See hello following example for creating a pipeline using .NET SDK that copies data from an Azure blob storage tooan Azure SQL database:</span></span> 
 
-- [<span data-ttu-id="34aa0-200">Vytvoření kanálu pro zkopírování dat z úložiště objektů Blob do databáze SQL</span><span class="sxs-lookup"><span data-stu-id="34aa0-200">Create a pipeline to copy data from Blob Storage to SQL Database</span></span>](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [<span data-ttu-id="66b4c-200">Vytvoření kanálu toocopy dat z úložiště objektů Blob tooSQL databáze</span><span class="sxs-lookup"><span data-stu-id="66b4c-200">Create a pipeline toocopy data from Blob Storage tooSQL Database</span></span>](data-factory-copy-activity-tutorial-using-dotnet-api.md)

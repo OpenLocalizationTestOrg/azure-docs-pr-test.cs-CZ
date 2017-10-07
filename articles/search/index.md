@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Search – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se přidávat do vlastních webových nebo mobilních aplikací robustní možnosti vyhledávání. Reference k rozhraním API a další dokumentace."
+title: "aaaAzure dokumentace k vyhledávání – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak hledat tooadd robustní možnosti, včetně monitorování aktivit, toocustom webové a mobilní aplikace. Reference k rozhraním API a další dokumentace."
 services: search
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2ef61d7bf68e94c4429ba1b13709ee9b31093b71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-search-documentation"></a>Dokumentace ke službě Azure Search
 
-Naučte se přidávat do vlastních webových nebo mobilních aplikací možnosti vyhledávání s použitím spravované cloudové vyhledávací služby Azure Search. V kurzech, referencích k rozhraním API a další dokumentaci najdete informace o tom, jak přidat škálovatelné fulltextové vyhledávání ve více jazycích, geografické vyhledávání, filtrování a fasetovou navigaci, našeptávání dotazů, zvýraznění shod a vlastní analyzátory.
+Zjistěte, jak hledat tooadd možnosti tooyour vlastní web nebo používání služby Azure Search, spravované Cloudová vyhledávací služba mobilní aplikace. Kurzy, odkazy na rozhraní API a další dokumentaci ukazuje vám, jak tooadd škálovatelné fulltextové vyhledávání v několika jazycích, geograficky prostorových vyhledávání, filtrování a Fasetové navigace, našeptávání dotazů, zvýrazňování a vlastní analyzátorů.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Naučte se přidávat do vlastních webových nebo mobilních aplikací možnost
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou Azure Search s využitím webu Azure Portal</h3>
+                        <h3>Začínáme s Azure Search pomocí portálu Azure hello</h3>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ---
-title: "Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET | Microsoft Docs"
-description: "Toto téma ukazuje, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů."
+title: "aaaHow tooperform živé streamování s místními kodéry pomocí rozhraní .NET | Microsoft Docs"
+description: "Toto téma ukazuje, jak toouse .NET tooperform live kódování pomocí místních kodérů."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,60 +14,60 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 3ef6065f5b9e05e0ea5716548699943a2c877bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 332582c9f925f8b9270929b3fa8140fce010bbf9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a><span data-ttu-id="55dd2-103">Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="55dd2-103">How to perform live streaming with on-premises encoders using .NET</span></span>
+# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-net"></a><span data-ttu-id="e72bd-103">Jak tooperform živé streamování s místními kodéry, pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="e72bd-103">How tooperform live streaming with on-premises encoders using .NET</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="55dd2-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="55dd2-104">Portal</span></span>](media-services-portal-live-passthrough-get-started.md)
-> * [<span data-ttu-id="55dd2-105">.NET</span><span class="sxs-lookup"><span data-stu-id="55dd2-105">.NET</span></span>](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [<span data-ttu-id="55dd2-106">REST</span><span class="sxs-lookup"><span data-stu-id="55dd2-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [<span data-ttu-id="e72bd-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="e72bd-104">Portal</span></span>](media-services-portal-live-passthrough-get-started.md)
+> * [<span data-ttu-id="e72bd-105">.NET</span><span class="sxs-lookup"><span data-stu-id="e72bd-105">.NET</span></span>](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+> * [<span data-ttu-id="e72bd-106">REST</span><span class="sxs-lookup"><span data-stu-id="e72bd-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
-<span data-ttu-id="55dd2-107">Tento kurz vás provede kroky vytváření pomocí .NET SDK služby Azure Media Services **kanál** který je nakonfigurován pro průchozí doručování.</span><span class="sxs-lookup"><span data-stu-id="55dd2-107">This tutorial walks you through the steps of using the Azure Media Services .NET SDK to create a **Channel** that is configured for a pass-through delivery.</span></span> 
+<span data-ttu-id="e72bd-107">Tento kurz vás provede kroky hello hello Azure Media Services .NET SDK toocreate **kanál** který je nakonfigurován pro průchozí doručování.</span><span class="sxs-lookup"><span data-stu-id="e72bd-107">This tutorial walks you through hello steps of using hello Azure Media Services .NET SDK toocreate a **Channel** that is configured for a pass-through delivery.</span></span> 
 
-## <a name="prerequisites"></a><span data-ttu-id="55dd2-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="55dd2-108">Prerequisites</span></span>
-<span data-ttu-id="55dd2-109">K dokončení kurzu potřebujete následující:</span><span class="sxs-lookup"><span data-stu-id="55dd2-109">The following are required to complete the tutorial:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e72bd-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="e72bd-108">Prerequisites</span></span>
+<span data-ttu-id="e72bd-109">Hello následují požadované toocomplete hello kurzu:</span><span class="sxs-lookup"><span data-stu-id="e72bd-109">hello following are required toocomplete hello tutorial:</span></span>
 
-* <span data-ttu-id="55dd2-110">Účet Azure.</span><span class="sxs-lookup"><span data-stu-id="55dd2-110">An Azure account.</span></span>
-* <span data-ttu-id="55dd2-111">Účet Media Services.</span><span class="sxs-lookup"><span data-stu-id="55dd2-111">A Media Services account.</span></span>    <span data-ttu-id="55dd2-112">Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="55dd2-112">To create a Media Services account, see [How to Create a Media Services Account](media-services-portal-create-account.md).</span></span>
-* <span data-ttu-id="55dd2-113">Nastavení prostředí vývojářů.</span><span class="sxs-lookup"><span data-stu-id="55dd2-113">Set up your dev environment.</span></span> <span data-ttu-id="55dd2-114">Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).</span><span class="sxs-lookup"><span data-stu-id="55dd2-114">For more information, see [Set up your environment](media-services-set-up-computer.md).</span></span>
-* <span data-ttu-id="55dd2-115">Webová kamera.</span><span class="sxs-lookup"><span data-stu-id="55dd2-115">A webcam.</span></span> <span data-ttu-id="55dd2-116">Například [kodér Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).</span><span class="sxs-lookup"><span data-stu-id="55dd2-116">For example, [Telestream Wirecast encoder](http://www.telestream.net/wirecast/overview.htm).</span></span>
+* <span data-ttu-id="e72bd-110">Účet Azure.</span><span class="sxs-lookup"><span data-stu-id="e72bd-110">An Azure account.</span></span>
+* <span data-ttu-id="e72bd-111">Účet Media Services.</span><span class="sxs-lookup"><span data-stu-id="e72bd-111">A Media Services account.</span></span>    <span data-ttu-id="e72bd-112">toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="e72bd-112">toocreate a Media Services account, see [How tooCreate a Media Services Account](media-services-portal-create-account.md).</span></span>
+* <span data-ttu-id="e72bd-113">Nastavení prostředí vývojářů.</span><span class="sxs-lookup"><span data-stu-id="e72bd-113">Set up your dev environment.</span></span> <span data-ttu-id="e72bd-114">Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).</span><span class="sxs-lookup"><span data-stu-id="e72bd-114">For more information, see [Set up your environment](media-services-set-up-computer.md).</span></span>
+* <span data-ttu-id="e72bd-115">Webová kamera.</span><span class="sxs-lookup"><span data-stu-id="e72bd-115">A webcam.</span></span> <span data-ttu-id="e72bd-116">Například [kodér Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).</span><span class="sxs-lookup"><span data-stu-id="e72bd-116">For example, [Telestream Wirecast encoder](http://www.telestream.net/wirecast/overview.htm).</span></span>
 
-<span data-ttu-id="55dd2-117">Doporučujeme přečtení následujících článků:</span><span class="sxs-lookup"><span data-stu-id="55dd2-117">Recommended to review the following articles:</span></span>
+<span data-ttu-id="e72bd-117">Doporučené tooreview hello následující články:</span><span class="sxs-lookup"><span data-stu-id="e72bd-117">Recommended tooreview hello following articles:</span></span>
 
-* [<span data-ttu-id="55dd2-118">Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding</span><span class="sxs-lookup"><span data-stu-id="55dd2-118">Azure Media Services RTMP Support and Live Encoders</span></span>](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
-* [<span data-ttu-id="55dd2-119">Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi</span><span class="sxs-lookup"><span data-stu-id="55dd2-119">Live streaming with on-premises encoders that create multi-bitrate streams</span></span>](media-services-live-streaming-with-onprem-encoders.md)
+* [<span data-ttu-id="e72bd-118">Podpora RTMP ve službě Azure Media Services a kodéry služby Live Encoding</span><span class="sxs-lookup"><span data-stu-id="e72bd-118">Azure Media Services RTMP Support and Live Encoders</span></span>](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
+* [<span data-ttu-id="e72bd-119">Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi</span><span class="sxs-lookup"><span data-stu-id="e72bd-119">Live streaming with on-premises encoders that create multi-bitrate streams</span></span>](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="55dd2-120">Vytvoření a konfigurace projektu Visual Studia</span><span class="sxs-lookup"><span data-stu-id="55dd2-120">Create and configure a Visual Studio project</span></span>
+## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="e72bd-120">Vytvoření a konfigurace projektu Visual Studia</span><span class="sxs-lookup"><span data-stu-id="e72bd-120">Create and configure a Visual Studio project</span></span>
 
-<span data-ttu-id="55dd2-121">Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="55dd2-121">Set up your development environment and populate the app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+<span data-ttu-id="e72bd-121">Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="e72bd-121">Set up your development environment and populate hello app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
 
-## <a name="example"></a><span data-ttu-id="55dd2-122">Příklad</span><span class="sxs-lookup"><span data-stu-id="55dd2-122">Example</span></span>
-<span data-ttu-id="55dd2-123">Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:</span><span class="sxs-lookup"><span data-stu-id="55dd2-123">The following code example demonstrates how to achieve the following tasks:</span></span>
+## <a name="example"></a><span data-ttu-id="e72bd-122">Příklad</span><span class="sxs-lookup"><span data-stu-id="e72bd-122">Example</span></span>
+<span data-ttu-id="e72bd-123">Hello následující příklad kódu ukazuje, jak tooachieve hello následující úkoly:</span><span class="sxs-lookup"><span data-stu-id="e72bd-123">hello following code example demonstrates how tooachieve hello following tasks:</span></span>
 
-* <span data-ttu-id="55dd2-124">Připojení ke službě Media Services</span><span class="sxs-lookup"><span data-stu-id="55dd2-124">Connect to Media Services</span></span>
-* <span data-ttu-id="55dd2-125">Vytvoření kanálu</span><span class="sxs-lookup"><span data-stu-id="55dd2-125">Create a channel</span></span>
-* <span data-ttu-id="55dd2-126">Aktualizace kanál</span><span class="sxs-lookup"><span data-stu-id="55dd2-126">Update the channel</span></span>
-* <span data-ttu-id="55dd2-127">Načtěte vstupní koncový bod v kanálu.</span><span class="sxs-lookup"><span data-stu-id="55dd2-127">Retrieve the channel’s input endpoint.</span></span> <span data-ttu-id="55dd2-128">Místní kodéru za provozu by měly být zadané vstupní koncový bod.</span><span class="sxs-lookup"><span data-stu-id="55dd2-128">The input endpoint should be provided to the on-premises live encoder.</span></span> <span data-ttu-id="55dd2-129">Za provozu kodér převede signály z kamery do datových proudů, které se odesílají do tohoto kanálu vstup (ingestování) koncového bodu.</span><span class="sxs-lookup"><span data-stu-id="55dd2-129">The live encoder converts signals from the camera to streams that are sent to the channel’s input (ingest) endpoint.</span></span>
-* <span data-ttu-id="55dd2-130">Načtení koncového bodu náhledu kanálu</span><span class="sxs-lookup"><span data-stu-id="55dd2-130">Retrieve the channel’s preview endpoint</span></span>
-* <span data-ttu-id="55dd2-131">Vytvořte a spusťte program</span><span class="sxs-lookup"><span data-stu-id="55dd2-131">Create and start a program</span></span>
-* <span data-ttu-id="55dd2-132">Vytvořit lokátor potřebné pro přístup k programu</span><span class="sxs-lookup"><span data-stu-id="55dd2-132">Create a locator needed to access the program</span></span>
-* <span data-ttu-id="55dd2-133">Vytvoření a spuštění StreamingEndpoint</span><span class="sxs-lookup"><span data-stu-id="55dd2-133">Create and start a StreamingEndpoint</span></span>
-* <span data-ttu-id="55dd2-134">Aktualizace koncového bodu streamování</span><span class="sxs-lookup"><span data-stu-id="55dd2-134">Update the streaming endpoint</span></span>
-* <span data-ttu-id="55dd2-135">Vypnout prostředky</span><span class="sxs-lookup"><span data-stu-id="55dd2-135">Shut down resources</span></span>
+* <span data-ttu-id="e72bd-124">Připojení služby tooMedia</span><span class="sxs-lookup"><span data-stu-id="e72bd-124">Connect tooMedia Services</span></span>
+* <span data-ttu-id="e72bd-125">Vytvoření kanálu</span><span class="sxs-lookup"><span data-stu-id="e72bd-125">Create a channel</span></span>
+* <span data-ttu-id="e72bd-126">Aktualizace hello kanálu</span><span class="sxs-lookup"><span data-stu-id="e72bd-126">Update hello channel</span></span>
+* <span data-ttu-id="e72bd-127">Načtěte hello kanál vstupní koncový bod.</span><span class="sxs-lookup"><span data-stu-id="e72bd-127">Retrieve hello channel’s input endpoint.</span></span> <span data-ttu-id="e72bd-128">vstupní koncový bod Hello je třeba poskytnout toohello místní kodér za provozu.</span><span class="sxs-lookup"><span data-stu-id="e72bd-128">hello input endpoint should be provided toohello on-premises live encoder.</span></span> <span data-ttu-id="e72bd-129">Hello za provozu Kodér převádí signály z toostreams hello fotoaparát, odeslaný zadat toohello kanál (ingestování) koncového bodu.</span><span class="sxs-lookup"><span data-stu-id="e72bd-129">hello live encoder converts signals from hello camera toostreams that are sent toohello channel’s input (ingest) endpoint.</span></span>
+* <span data-ttu-id="e72bd-130">Načtení koncového bodu náhledu kanálu hello</span><span class="sxs-lookup"><span data-stu-id="e72bd-130">Retrieve hello channel’s preview endpoint</span></span>
+* <span data-ttu-id="e72bd-131">Vytvořte a spusťte program</span><span class="sxs-lookup"><span data-stu-id="e72bd-131">Create and start a program</span></span>
+* <span data-ttu-id="e72bd-132">Vytvořit lokátor potřeby tooaccess hello programu</span><span class="sxs-lookup"><span data-stu-id="e72bd-132">Create a locator needed tooaccess hello program</span></span>
+* <span data-ttu-id="e72bd-133">Vytvoření a spuštění StreamingEndpoint</span><span class="sxs-lookup"><span data-stu-id="e72bd-133">Create and start a StreamingEndpoint</span></span>
+* <span data-ttu-id="e72bd-134">Aktualizovat hello koncový bod streamování</span><span class="sxs-lookup"><span data-stu-id="e72bd-134">Update hello streaming endpoint</span></span>
+* <span data-ttu-id="e72bd-135">Vypnout prostředky</span><span class="sxs-lookup"><span data-stu-id="e72bd-135">Shut down resources</span></span>
 
 >[!IMPORTANT]
-><span data-ttu-id="55dd2-136">Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**.</span><span class="sxs-lookup"><span data-stu-id="55dd2-136">Make sure the streaming endpoint from which you want to stream content is in the **Running** state.</span></span> 
+><span data-ttu-id="e72bd-136">Zkontrolujte, zda text hello, ze kterého chcete obsah toostream koncový bod streamování je v hello **systémem** stavu.</span><span class="sxs-lookup"><span data-stu-id="e72bd-136">Make sure hello streaming endpoint from which you want toostream content is in hello **Running** state.</span></span> 
     
 >[!NOTE]
-><span data-ttu-id="55dd2-137">Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="55dd2-137">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="55dd2-138">Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad.</span><span class="sxs-lookup"><span data-stu-id="55dd2-138">You should use the same policy ID if you are always using the same days / access permissions, for example, policies for locators that are intended to remain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="55dd2-139">Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.</span><span class="sxs-lookup"><span data-stu-id="55dd2-139">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
+><span data-ttu-id="e72bd-137">Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="e72bd-137">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="e72bd-138">Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady).</span><span class="sxs-lookup"><span data-stu-id="e72bd-138">You should use hello same policy ID if you are always using hello same days / access permissions, for example, policies for locators that are intended tooremain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="e72bd-139">Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.</span><span class="sxs-lookup"><span data-stu-id="e72bd-139">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
 
-<span data-ttu-id="55dd2-140">Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora RTMP ve službě Azure Media Services a kodéry Live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span><span class="sxs-lookup"><span data-stu-id="55dd2-140">For information on how to configure a live encoder, see [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span></span>
+<span data-ttu-id="e72bd-140">Informace o tom najdete v části tooconfigure za provozu encoder [podpora RTMP ve službě Azure Media Services a kodéry Live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span><span class="sxs-lookup"><span data-stu-id="e72bd-140">For information on how tooconfigure a live encoder, see [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span></span>
 
     using System;
     using System.Collections.Generic;
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -103,11 +103,11 @@ ms.lasthandoff: 08/29/2017
 
             IChannel channel = CreateAndStartChannel();
 
-            // Set the Live Encoder to point to the channel's input endpoint:
+            // Set hello Live Encoder toopoint toohello channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
-            // Use the previewEndpoint to preview and verify
-            // that the input from the encoder is actually reaching the Channel.
+            // Use hello previewEndpoint toopreview and verify
+            // that hello input from hello encoder is actually reaching hello Channel.
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             IProgram program = CreateAndStartProgram(channel);
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/29/2017
 
         public static IChannel CreateAndStartChannel()
         {
-            //If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions’s Output property.
+            //If you want toochange hello Smooth fragments tooHLS segment ratio, you would set hello ChannelCreationOptions’s Output property.
 
             IChannel channel = _context.Channels.Create(
             new ChannelCreationOptions
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/29/2017
             Preview = CreateChannelPreview()
             });
 
-            //Starting and stopping Channels can take some time to execute. To determine the state of operations after calling Start or Stop, query the IChannel.State .
+            //Starting and stopping Channels can take some time tooexecute. toodetermine hello state of operations after calling Start or Stop, query hello IChannel.State .
 
             channel.Start();
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelInput001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -171,7 +171,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelPreview001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -213,7 +213,7 @@ ms.lasthandoff: 08/29/2017
         {
             IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
 
-            // Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
+            // Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
             // however each Program must have a unique name within your Media Services account.
             IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
             program.Start();
@@ -379,11 +379,11 @@ ms.lasthandoff: 08/29/2017
         }
     }
 
-## <a name="next-step"></a><span data-ttu-id="55dd2-141">Další krok</span><span class="sxs-lookup"><span data-stu-id="55dd2-141">Next Step</span></span>
-<span data-ttu-id="55dd2-142">Zkontrolujte kurzů ke službě Media Services</span><span class="sxs-lookup"><span data-stu-id="55dd2-142">Review Media Services learning paths</span></span>
+## <a name="next-step"></a><span data-ttu-id="e72bd-141">Další krok</span><span class="sxs-lookup"><span data-stu-id="e72bd-141">Next Step</span></span>
+<span data-ttu-id="e72bd-142">Zkontrolujte kurzů ke službě Media Services</span><span class="sxs-lookup"><span data-stu-id="e72bd-142">Review Media Services learning paths</span></span>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="55dd2-143">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="55dd2-143">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="e72bd-143">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="e72bd-143">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

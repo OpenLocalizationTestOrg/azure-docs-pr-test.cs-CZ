@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure IoT - lekci 2 malin platformy (uzel): získat nástroje (Windows) | Microsoft Docs"
-description: "Ve Windows 7 a novějších verzích nainstalujte Python a rozhraní příkazového řádku Azure (Azure CLI)."
+title: "Připojit malin platformy (uzel) tooAzure IoT - lekci 2: získání nástroje (Windows) | Microsoft Docs"
+description: "Ve Windows 7 a novějších verzích nainstalujte Python a hello rozhraní příkazového řádku Azure (Azure CLI)."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,60 +17,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: c7b927997b738f7a80b71c06d4dff2278dc7c64e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 25b50214322137ea32861fd1131c474e2fc7ebb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-azure-tools-windows-7-and-later"></a><span data-ttu-id="2c80b-104">Získat nástroje Azure (Windows 7 a novější)</span><span class="sxs-lookup"><span data-stu-id="2c80b-104">Get Azure tools (Windows 7 and later)</span></span>
+# <a name="get-azure-tools-windows-7-and-later"></a><span data-ttu-id="050c3-104">Získat nástroje Azure (Windows 7 a novější)</span><span class="sxs-lookup"><span data-stu-id="050c3-104">Get Azure tools (Windows 7 and later)</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="2c80b-105">Windows 7 a novější</span><span class="sxs-lookup"><span data-stu-id="2c80b-105">Windows 7 and later</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
-> * [<span data-ttu-id="2c80b-106">Ubuntu 16.04</span><span class="sxs-lookup"><span data-stu-id="2c80b-106">Ubuntu 16.04</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
-> * [<span data-ttu-id="2c80b-107">systému macOS 10.10</span><span class="sxs-lookup"><span data-stu-id="2c80b-107">macOS 10.10</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
+> * [<span data-ttu-id="050c3-105">Windows 7 a novější</span><span class="sxs-lookup"><span data-stu-id="050c3-105">Windows 7 and later</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+> * [<span data-ttu-id="050c3-106">Ubuntu 16.04</span><span class="sxs-lookup"><span data-stu-id="050c3-106">Ubuntu 16.04</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
+> * [<span data-ttu-id="050c3-107">systému macOS 10.10</span><span class="sxs-lookup"><span data-stu-id="050c3-107">macOS 10.10</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 
-## <a name="what-you-will-do"></a><span data-ttu-id="2c80b-108">Co provedete</span><span class="sxs-lookup"><span data-stu-id="2c80b-108">What you will do</span></span>
-<span data-ttu-id="2c80b-109">Instalace jazyka Python a rozhraní příkazového řádku Azure (Azure CLI).</span><span class="sxs-lookup"><span data-stu-id="2c80b-109">Install Python and the Azure command-line interface (Azure CLI).</span></span> <span data-ttu-id="2c80b-110">Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="2c80b-110">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="050c3-108">Co provedete</span><span class="sxs-lookup"><span data-stu-id="050c3-108">What you will do</span></span>
+<span data-ttu-id="050c3-109">Nainstalujte Python a hello rozhraní příkazového řádku Azure (Azure CLI).</span><span class="sxs-lookup"><span data-stu-id="050c3-109">Install Python and hello Azure command-line interface (Azure CLI).</span></span> <span data-ttu-id="050c3-110">Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="050c3-110">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="2c80b-111">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="2c80b-111">What you will learn</span></span>
-<span data-ttu-id="2c80b-112">V tomto článku se dozvíte:</span><span class="sxs-lookup"><span data-stu-id="2c80b-112">In this article, you will learn:</span></span>
-* <span data-ttu-id="2c80b-113">Postup instalace Python.</span><span class="sxs-lookup"><span data-stu-id="2c80b-113">How to install Python.</span></span>
-* <span data-ttu-id="2c80b-114">Postup instalace rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-114">How to install the Azure CLI.</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="050c3-111">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="050c3-111">What you will learn</span></span>
+<span data-ttu-id="050c3-112">V tomto článku se dozvíte:</span><span class="sxs-lookup"><span data-stu-id="050c3-112">In this article, you will learn:</span></span>
+* <span data-ttu-id="050c3-113">Jak tooinstall Python.</span><span class="sxs-lookup"><span data-stu-id="050c3-113">How tooinstall Python.</span></span>
+* <span data-ttu-id="050c3-114">Jak tooinstall hello rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-114">How tooinstall hello Azure CLI.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="2c80b-115">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="2c80b-115">What you need</span></span>
-* <span data-ttu-id="2c80b-116">Počítač Windows s připojením k Internetu.</span><span class="sxs-lookup"><span data-stu-id="2c80b-116">A Windows computer with an Internet connection.</span></span>
-* <span data-ttu-id="2c80b-117">Aktivní předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-117">An active Azure subscription.</span></span> <span data-ttu-id="2c80b-118">Pokud nemáte účet Azure, vytvořte [Bezplatný zkušební účet Azure](http://azure.microsoft.com/pricing/free-trial/) za několik minut.</span><span class="sxs-lookup"><span data-stu-id="2c80b-118">If you don't have an Azure account, create a [free Azure trial account](http://azure.microsoft.com/pricing/free-trial/) in just a few minutes.</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="050c3-115">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="050c3-115">What you need</span></span>
+* <span data-ttu-id="050c3-116">Počítač Windows s připojením k Internetu.</span><span class="sxs-lookup"><span data-stu-id="050c3-116">A Windows computer with an Internet connection.</span></span>
+* <span data-ttu-id="050c3-117">Aktivní předplatné Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-117">An active Azure subscription.</span></span> <span data-ttu-id="050c3-118">Pokud nemáte účet Azure, vytvořte [Bezplatný zkušební účet Azure](http://azure.microsoft.com/pricing/free-trial/) za několik minut.</span><span class="sxs-lookup"><span data-stu-id="050c3-118">If you don't have an Azure account, create a [free Azure trial account](http://azure.microsoft.com/pricing/free-trial/) in just a few minutes.</span></span>
 
-## <a name="install-python"></a><span data-ttu-id="2c80b-119">Instalace jazyka Python</span><span class="sxs-lookup"><span data-stu-id="2c80b-119">Install Python</span></span>
-<span data-ttu-id="2c80b-120">[Instalaci Pythonu](https://www.python.org/downloads/) na počítači s Windows.</span><span class="sxs-lookup"><span data-stu-id="2c80b-120">[Install Python](https://www.python.org/downloads/) on your Windows computer.</span></span> <span data-ttu-id="2c80b-121">Můžete nainstalovat Python 2.7, 3.4 nebo 3.5.</span><span class="sxs-lookup"><span data-stu-id="2c80b-121">You can install Python 2.7, 3.4 or 3.5.</span></span> <span data-ttu-id="2c80b-122">V tomto kurzu vychází z Python 2.7.</span><span class="sxs-lookup"><span data-stu-id="2c80b-122">This tutorial is based on Python 2.7.</span></span> <span data-ttu-id="2c80b-123">Pokud jste již nainstalovali Python, přejděte k další části a nainstalujte rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-123">If you've already installed Python, go to the next section and install the Azure CLI.</span></span>
+## <a name="install-python"></a><span data-ttu-id="050c3-119">Instalace jazyka Python</span><span class="sxs-lookup"><span data-stu-id="050c3-119">Install Python</span></span>
+<span data-ttu-id="050c3-120">[Instalaci Pythonu](https://www.python.org/downloads/) na počítači s Windows.</span><span class="sxs-lookup"><span data-stu-id="050c3-120">[Install Python](https://www.python.org/downloads/) on your Windows computer.</span></span> <span data-ttu-id="050c3-121">Můžete nainstalovat Python 2.7, 3.4 nebo 3.5.</span><span class="sxs-lookup"><span data-stu-id="050c3-121">You can install Python 2.7, 3.4 or 3.5.</span></span> <span data-ttu-id="050c3-122">V tomto kurzu vychází z Python 2.7.</span><span class="sxs-lookup"><span data-stu-id="050c3-122">This tutorial is based on Python 2.7.</span></span> <span data-ttu-id="050c3-123">Pokud jste již nainstalovali Python, přejděte toohello další části a nainstalujte hello rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-123">If you've already installed Python, go toohello next section and install hello Azure CLI.</span></span>
 
-<span data-ttu-id="2c80b-124">Musíte taky přidat cestu složky, kde jsou v systému nainstalovány python.exe a pip.exe `PATH` proměnné prostředí.</span><span class="sxs-lookup"><span data-stu-id="2c80b-124">You also need to add the path of the folders where python.exe and pip.exe are installed to the system `PATH` environment variable.</span></span> <span data-ttu-id="2c80b-125">Ve výchozím nastavení je python.exe nainstalován v `C:\Python27` a pip.exe je nainstalován v `C:\Python27\Scripts`.</span><span class="sxs-lookup"><span data-stu-id="2c80b-125">By default, python.exe is installed in `C:\Python27` and pip.exe is installed in `C:\Python27\Scripts`.</span></span>
+<span data-ttu-id="050c3-124">Musíte taky tooadd hello cesta hello složek, kdy jsou python.exe a pip.exe systému nainstalovaná toohello `PATH` proměnné prostředí.</span><span class="sxs-lookup"><span data-stu-id="050c3-124">You also need tooadd hello path of hello folders where python.exe and pip.exe are installed toohello system `PATH` environment variable.</span></span> <span data-ttu-id="050c3-125">Ve výchozím nastavení je python.exe nainstalován v `C:\Python27` a pip.exe je nainstalován v `C:\Python27\Scripts`.</span><span class="sxs-lookup"><span data-stu-id="050c3-125">By default, python.exe is installed in `C:\Python27` and pip.exe is installed in `C:\Python27\Scripts`.</span></span>
 
-## <a name="install-the-azure-cli"></a><span data-ttu-id="2c80b-126">Instalace rozhraní příkazového řádku Azure CLI</span><span class="sxs-lookup"><span data-stu-id="2c80b-126">Install the Azure CLI</span></span>
-<span data-ttu-id="2c80b-127">Rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-127">The Azure CLI provides a multiplatform command-line experience for Azure.</span></span> <span data-ttu-id="2c80b-128">Můžete pracovat přímo z vašeho příkazového řádku a zřizovat a spravovat prostředky.</span><span class="sxs-lookup"><span data-stu-id="2c80b-128">You work directly from your command-line to provision and manage resources.</span></span>
+## <a name="install-hello-azure-cli"></a><span data-ttu-id="050c3-126">Nainstalujte hello rozhraní příkazového řádku Azure</span><span class="sxs-lookup"><span data-stu-id="050c3-126">Install hello Azure CLI</span></span>
+<span data-ttu-id="050c3-127">Hello rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-127">hello Azure CLI provides a multiplatform command-line experience for Azure.</span></span> <span data-ttu-id="050c3-128">Práce přímo z vašeho příkazového řádku tooprovision a spravovat prostředky.</span><span class="sxs-lookup"><span data-stu-id="050c3-128">You work directly from your command-line tooprovision and manage resources.</span></span>
 
-<span data-ttu-id="2c80b-129">Pokud chcete nainstalovat rozhraní příkazového řádku Azure, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="2c80b-129">To install the Azure CLI, follow these steps:</span></span>
+<span data-ttu-id="050c3-129">tooinstall hello rozhraní příkazového řádku Azure, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="050c3-129">tooinstall hello Azure CLI, follow these steps:</span></span>
 
-1. <span data-ttu-id="2c80b-130">Otevřete okno příkazového řádku jako správce.</span><span class="sxs-lookup"><span data-stu-id="2c80b-130">Open a Command Prompt window as an administrator.</span></span>
-2. <span data-ttu-id="2c80b-131">Spusťte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="2c80b-131">Run the following commands:</span></span>
+1. <span data-ttu-id="050c3-130">Otevřete okno příkazového řádku jako správce.</span><span class="sxs-lookup"><span data-stu-id="050c3-130">Open a Command Prompt window as an administrator.</span></span>
+2. <span data-ttu-id="050c3-131">Spusťte následující příkazy hello:</span><span class="sxs-lookup"><span data-stu-id="050c3-131">Run hello following commands:</span></span>
 
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-3. <span data-ttu-id="2c80b-132">Ověřte instalaci tak, že spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="2c80b-132">Verify the installation by running the following command:</span></span>
+3. <span data-ttu-id="050c3-132">Hello instalaci ověřte spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="050c3-132">Verify hello installation by running hello following command:</span></span>
 
    ```bash
    az iot -h
    ```
 
-<span data-ttu-id="2c80b-133">Pokud je instalace úspěšná, zobrazí se následující výstup.</span><span class="sxs-lookup"><span data-stu-id="2c80b-133">You see the following output if the installation is successful.</span></span>
+<span data-ttu-id="050c3-133">Uvidíte, že hello následující výstup, pokud hello instalace byla úspěšně dokončena.</span><span class="sxs-lookup"><span data-stu-id="050c3-133">You see hello following output if hello installation is successful.</span></span>
 
 ![Výstup, který označuje úspěch](media/iot-hub-raspberry-pi-lessons/lesson2/az_iot_help_win.png)
 
-## <a name="summary"></a><span data-ttu-id="2c80b-135">Souhrn</span><span class="sxs-lookup"><span data-stu-id="2c80b-135">Summary</span></span>
-<span data-ttu-id="2c80b-136">Instalaci rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-136">You've installed the Azure CLI.</span></span> <span data-ttu-id="2c80b-137">Svůj další úkol k vytvoření Azure IoT hub a zařízení identity pomocí rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="2c80b-137">Your next task to create your Azure IoT hub and device identity by using the Azure CLI.</span></span>
+## <a name="summary"></a><span data-ttu-id="050c3-135">Souhrn</span><span class="sxs-lookup"><span data-stu-id="050c3-135">Summary</span></span>
+<span data-ttu-id="050c3-136">Jste nainstalovali hello rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-136">You've installed hello Azure CLI.</span></span> <span data-ttu-id="050c3-137">Vaše další úloh toocreate Azure IoT hub a zařízení identity pomocí hello rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="050c3-137">Your next task toocreate your Azure IoT hub and device identity by using hello Azure CLI.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="2c80b-138">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2c80b-138">Next steps</span></span>
-[<span data-ttu-id="2c80b-139">Vytvoření služby IoT hub a zaregistrujte malin pí 3</span><span class="sxs-lookup"><span data-stu-id="2c80b-139">Create your IoT hub and register Raspberry Pi 3</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
+## <a name="next-steps"></a><span data-ttu-id="050c3-138">Další kroky</span><span class="sxs-lookup"><span data-stu-id="050c3-138">Next steps</span></span>
+[<span data-ttu-id="050c3-139">Vytvoření služby IoT hub a zaregistrujte malin pí 3</span><span class="sxs-lookup"><span data-stu-id="050c3-139">Create your IoT hub and register Raspberry Pi 3</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
 
